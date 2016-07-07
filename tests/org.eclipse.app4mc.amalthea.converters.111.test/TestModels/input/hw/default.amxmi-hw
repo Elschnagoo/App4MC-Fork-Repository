@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hw:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:hw="http://www.amalthea.itea2.org/model/1.2.0/hw" xmi:id="_1Iy38L98EeWFjLGtonZfOQ">
+  <prescaler xmi:id="_JtFbYL99EeWFjLGtonZfOQ" name="" quartz="_3D6g0L98EeWFjLGtonZfOQ"/>
+  <ecus xmi:id="_1wzTIL98EeWFjLGtonZfOQ">
+    <memories xmi:id="_4M6JML98EeWFjLGtonZfOQ">
+      <quartzes xmi:id="_5THjUL98EeWFjLGtonZfOQ" type="STATIC"/>
+    </memories>
+    <quartzes xmi:id="_3D6g0L98EeWFjLGtonZfOQ" type="STATIC"/>
+    <microcontrollers xmi:id="_6tRNIL98EeWFjLGtonZfOQ">
+      <quartzes xmi:id="_7CiSgL98EeWFjLGtonZfOQ"/>
+    </microcontrollers>
+  </ecus>
+</hw:System>

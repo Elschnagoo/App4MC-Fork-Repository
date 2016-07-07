@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<os:OSModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:os="http://www.amalthea.itea2.org/model/1.1.0/os" xmi:id="_Ket8cJK2EeWQC6k3Y09j_A">
+  <scheduler xmi:id="_QGrDcJK2EeWQC6k3Y09j_A" name="s1"/>
+  <scheduler xmi:id="_RUx1UJK2EeWQC6k3Y09j_A" name="s2"/>
+</os:OSModel>

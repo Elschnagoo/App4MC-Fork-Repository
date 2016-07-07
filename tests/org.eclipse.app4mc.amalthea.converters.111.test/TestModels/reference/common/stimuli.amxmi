@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:common="http://www.amalthea.itea2.org/model/1.3.0/common" xmlns:os="http://www.amalthea.itea2.org/model/1.3.0/os" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.3.0/stimuli" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_VjdKAMANEeWFjLGtonZfOQ">
+  <stimuliModel xmi:id="_WYetgMANEeWFjLGtonZfOQ">
+    <stimuli xsi:type="stimuli:InterProcess" xmi:id="_HhTBYMAOEeWFjLGtonZfOQ">
+      <stimulusDeviation xmi:id="_IRdTAMAOEeWFjLGtonZfOQ">
+        <lowerBound xsi:type="common:SignedTime" xmi:id="_M-YVIMAOEeWFjLGtonZfOQ" unit="us" />
+        <upperBound xsi:type="common:SignedTime" xmi:id="_RA-n4MAOEeWFjLGtonZfOQ" unit="ms" />
+        <distribution xsi:type="common:GaussDistribution" xmi:id="_XcTskMAOEeWFjLGtonZfOQ">
+          <sd xsi:type="common:SignedTime" xmi:id="_qTfN8MAOEeWFjLGtonZfOQ" unit="ms" />
+          <mean xsi:type="common:SignedTime" xmi:id="_8kDT4MAREeWFjLGtonZfOQ" unit="ps" />
+        </distribution>
+      </stimulusDeviation>
+    </stimuli>
+    <stimuli xsi:type="stimuli:Periodic" xmi:id="_6ZB9QMBSEeWFjLGtonZfOQ">
+      <offset xmi:id="_fCChgMBTEeWFjLGtonZfOQ" unit="ns" />
+      <recurrence xmi:id="_gjRDsMBTEeWFjLGtonZfOQ" unit="us" />
+    </stimuli>
+    <stimuli xsi:type="stimuli:Single" xmi:id="_DtUMEMBTEeWFjLGtonZfOQ" />
+    <stimuli xsi:type="stimuli:PeriodicEvent" xmi:id="_GLZ_IMBTEeWFjLGtonZfOQ" name="" />
+    <clocks xsi:type="stimuli:ClockSinusFunction" xmi:id="_arCH0MANEeWFjLGtonZfOQ" name="csf">
+      <shift xmi:id="_djnegMANEeWFjLGtonZfOQ" unit="ns" />
+    </clocks>
+    <clocks xsi:type="stimuli:ClockTriangleFunction" xmi:id="_gKxG8MANEeWFjLGtonZfOQ">
+      <shift xmi:id="_gmzisMANEeWFjLGtonZfOQ" unit="us" />
+    </clocks>
+  </stimuliModel>
+</central:AMALTHEA>

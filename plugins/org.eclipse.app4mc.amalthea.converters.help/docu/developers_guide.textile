@@ -1,0 +1,123 @@
+
+h2. Technologies used
+
+For migration of AMALTHEA models, plane java approach has been used (_non EMF_) along with the following 3rd party libraries :
+
+* JDOM 2
+* JAXEN
+* XALAN
+* XERCES
+
+
+h2. Framework for model migration
+
+Using the above specified technologies, eclipse plugin based framework for model migration is developed.
+
+* _*org.eclipse.app4mc.amalthea.converters.common*_  plugin consists of _Model migration framework_
+
+h3. Components of Model Migration Framework
+
+* Converters
+* Cache Builders
+* Pre Processor
+* Post Processor
+
+All the above specified components are contributed as extension points in the plugin  _*org.eclipse.app4mc.amalthea.converters.common*_ 
+
+Detailed description of each component can be found below:
+
+*Converters:* This component is responsible for converting the model (xmi) content from one version to another. A Converter component is executed for selected model files and the corresponding referred model files for migration (_each execution is w.r.t. specific model file_).
+
+Converter can be registered by adding extension definition for : @org.eclipse.app4mc.amalthea.model.converters@ and defining the following  parameters :
+* ID : This is the unique identifier of a Converters component with which it is identified
+* Name : Name of the component
+* Input model version : AMALTHEA model version in which the input model content is present.  
+* Output model version : AMALTHEA model version to which the input model content should be converted to.
+bq. All AMALTHEA/AMALTHEA4Public ITEA releases are specified with prefix *itea* (e.g: itea.103, itea.110, itea.111) and APP4MC releases are specifeid with their version number (e.g: 0.7.0)
+
+* Converter Class : Java class implementing @org.eclipse.app4mc.amalthea.converters.common.base.IConverter@ interface and providing the definition for method : @public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,	final List<ICache> caches) throws Exception@
+* enabled : By specifiying true/false - &gt; specific converter invocation can be enabled or disabled
+
+!(#gray_scale)../pictures/dev_guide/converters_content.png!
+
+* Converter dependencies : A Converter can be dependent on other Converter components. During the execution of a specific Converter component first its dependencies are invoked and then dependent converter is invoked.
+
+Converter dependencies can be specified at the extension level in the following way:
+
+!(#gray_scale)../pictures/dev_guide/converters_dependencies.png!
+!(#gray_scale)../pictures/dev_guide/converters_dependencies_details.png!
+
+
+*Cache Builders:* This component is responsible for building the required cache, by querying the input models or storing the necessary information - &gt; before executing the Converters for specific migration step (_e.g: itea.103 to itea.110_)
+Scope of each Cache Builder component is only during a step of model migration (_e.g: itea.103 to itea.110_)
+
+Cache Builder can be registered by adding extension definition for : @org.eclipse.app4mc.amalthea.model.converters.cachebuilders@ and defining the following  parameters :
+
+* ID : This is the unique identifier of a Cache Builder component with which it is identified
+* name : Name of the component
+* class : Java class implementing @org.eclipse.app4mc.amalthea.converters.common.base.ICache@ interface and providing implementation for following methods : @public void buildCache(final Map<File, Document> fileName_documentsMap)@, @public Map<File, Map<String, Object>> getCacheMap()@, @public void clearCacheMap()@
+* enabled : By specifiying true/false - &gt; specific Cache Builder components invocation can be enabled or disabled
+* input-model-version : AMALTHEA model version in which the model content is present.
+bq. Each Cache Builder component is tightly coupled to a specific AMALTHEA model version 
+
+!(#gray_scale)../pictures/dev_guide/cache_builder.png!
+
+*Pre Processor:* This component is responsible for fetching/modifying specific information before invocation of Cache Builders/Converters components.
+
+bq. This component is tighlty coupled to input version of the AMALTHEA model files which are selected (explicitly/implicitly) for model migration. Each Pre-Processor component is executed only once for the input model files, irrespective of number of migration steps.
+
+Pre Processor component can be registered by adding extension definition for : @org.eclipse.app4mc.amalthea.model.converters.preprocessor@ and defining the following  parameters :
+
+* ID : This is the unique identifier of a Pre-Procssor component with which it is identified
+* class : Java class implementing @org.eclipse.app4mc.amalthea.converters.common.base.IPreProcessor@ interface and providing implementation for method : @public void process(final File targetFile, final Map<File, Document> fileName_documentsMap) throws Exception@
+* input-model-version : AMALTHEA model version in which the model content can be present. There is a possibility to specify multiple input-model-version's, during the runtime if the supplied AMALTHEA models version matches to atleast one of the specified versions - &gt; then corresponding pre-processor is executed
+bq. Each Pre processor component is tightly coupled to the specified AMALTHEA model versions
+
+!(#gray_scale)../pictures/dev_guide/pre_processor.png! 
+
+*Post Processor:* This component is responsible for adding/modifying specific information after invocation of Cache Builders/Converters components for a specific migration step (_e.g: itea.103 to itea.110_)
+
+bq. This component is tighlty coupled to input and output version of the AMALTHEA model files which are selected (explicitly/implicitly) for model migration. Each Pre-Processor component is executed after the migration step if the below criteria is full filled:
+
+Post Processor component can be registered by adding extension definition for : @org.eclipse.app4mc.amalthea.model.converters.postprocessor@ and defining the following  parameters :
+
+* ID : This is the unique identifier of a Post-Processor component with which it is identified
+* class : Java class implementing @org.eclipse.app4mc.amalthea.converters.common.base.IPostProcessor@ interface and providing implementation for method : @public void process(final Map<File, Document> fileName_documentsMap, final AbstractHelper helper) throws Exception@
+* input-model-version : AMALTHEA model version in which the model content can be present. There is a possibility to specify multiple input-model-version's.
+* output-model-version : AMALTHEA model version to which the model content is converted as a part of one of the migration step. There is a possibility to specify multiple output-model-version's.
+
+!(#gray_scale)../pictures/dev_guide/post_processor.png!
+
+_Example how Post-Processor's are invoked:_
+
+ If Post-Processor is defined with input-model-versions : itea.103, itea.110 and outputversion 0.7.0.
+ 
+ In case if the migration is invoked from itea.103 to 0.7.0 for the specified AMALTHEA models.
+ 
+ Following migration steps are to be performed internally:
+ 
+* itea.103 to itea.110
+* itea.110 to itea.111
+* itea.110 to 0.7.0 (APP4MC)
+
+bq. In this case post-processor is invoked after migration step itea.110 to itea.111. 
+
+Flexibility of post-processor's is, they are defined in a generalized way to specify in the direction which they should be invoked as a part of model migration.
+
+h3. Model migration sequence
+
+Sequence in which various components are invoked during model migration
+
+!(#gray_scale)../sequence_diagram/model_migration_sequence_diagram.png!
+
+h2. How to add custom Model Migration components
+
+As described above, Model Migration framework is part of  _*org.eclipse.app4mc.amalthea.converters.common*_ plugin. This plugin should be added as a dependency to the custom plugin which shall contain Model Migraiton components.
+
+Below are the various extension points available as a part of Model Migration framework: 
+
+!(#gray_scale)../pictures/dev_guide/converters_extension_points.png!
+
+For defining custom Model Migration, minimum requirement is to define a extension for @org.eclipse.app4mc.amalthea.model.converters@ extension point and specify the class which has the implementation for migrating the model contents.
+
+CacheBuilders, PreProcessor, PostProcessor components are optional - &gt; based on the scenarios to migrate the model elements, it must me decided if these components are required.

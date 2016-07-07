@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ease.modules">
+      <category
+            id="org.eclipse.app4mc.ease.main"
+            name="APP4MC">
+      </category>
+      <module
+            category="org.eclipse.app4mc.ease.main"
+            class="org.eclipse.app4mc.amalthea.workflow.ease.WorkflowModule"
+            id="org.eclipse.app4mc.ease.module.workflow"
+            name="Workflow"
+            visible="true">
+      </module>
+   </extension>
+
+</plugin>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:os="http://www.amalthea.itea2.org/model/1.2.0/os" xmlns:sw="http://www.amalthea.itea2.org/model/1.2.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_NGnLwJK2EeWQC6k3Y09j_A">
+  <osModel xmi:id="_TrPWYJK2EeWQC6k3Y09j_A">
+    <operatingSystems name="OperatingSystem">
+      <interruptControllers xmi:id="_oCWkAhtvEeaeUbeItvDLDA" name="interruptController2_migration_generated">
+        <schedulingAlgorithm xsi:type="os:PriorityBased" xmi:id="_oCWkAxtvEeaeUbeItvDLDA" />
+      </interruptControllers>
+      <taskSchedulers xmi:id="_T_4JoJK2EeWQC6k3Y09j_A" name="s3" />
+      <taskSchedulers xmi:id="_U4biQJK2EeWQC6k3Y09j_A" name="s4" />
+    </operatingSystems>
+  </osModel>
+</central:AMALTHEA>

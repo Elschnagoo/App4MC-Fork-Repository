@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:os="http://www.amalthea.itea2.org/model/1.2.0/os" xmlns:sw="http://www.amalthea.itea2.org/model/1.2.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <swModel>
+    <isrs name="ISR1" />
+    <tasks name="Task1" />
+    <runnables name="Runnable1" />
+  </swModel>
+</central:AMALTHEA>

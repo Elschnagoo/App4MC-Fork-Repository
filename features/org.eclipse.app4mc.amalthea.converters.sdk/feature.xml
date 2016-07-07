@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.app4mc.amalthea.converters.sdk"
+      label="APP4MC AMALTHEA Converters SDK"
+      version="0.7.0.qualifier"
+      provider-name="Eclipse.org"
+      license-feature="org.eclipse.license"
+      license-feature-version="1.0.1.qualifier">
+
+   <description url="https://projects.eclipse.org/projects/technology.app4mc">
+      APP4MC AMALTHEA Model converters
+   </description>
+
+   <copyright url="https://projects.eclipse.org/projects/technology.app4mc">
+      (c) Copyright Eclipse APP4MC contributors and others. 2016. 
+All rights reserved.
+   </copyright>
+
+   <includes
+         id="org.eclipse.app4mc.amalthea.converters"
+         version="0.0.0"
+         name="APP4MC AMALTHEA Converters"/>
+
+   <includes
+         id="org.eclipse.app4mc.docu.sdk"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.converters.110.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.converters.111.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.converters.common.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.converters.ui.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.jdom2.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.converters.070.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

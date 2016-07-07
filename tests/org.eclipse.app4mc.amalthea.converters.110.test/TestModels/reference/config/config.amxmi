@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:config="http://www.amalthea.itea2.org/model/1.2.0/config" xmlns:events="http://www.amalthea.itea2.org/model/1.2.0/events" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_CS_28JNgEeWQC6k3Y09j_A">
+  <eventModel xmi:id="_HlC_YJNgEeWQC6k3Y09j_A">
+    <events xsi:type="events:LabelEvent" xmi:id="_IPKTYJNgEeWQC6k3Y09j_A" name="labelEvent1" />
+    <events xsi:type="events:ProcessEvent" xmi:id="_WCqDAJNhEeWQC6k3Y09j_A" name="ProcessEvent1" />
+    <events xsi:type="events:RunnableEvent" xmi:id="_Xl5XYJNhEeWQC6k3Y09j_A" name="RunnableEvent">
+      <entity href="sw.amxmi#_IVipMJNVEeWQC6k3Y09j_A" />
+    </events>
+  </eventModel>
+  <configModel xmi:id="_DKJhYJNgEeWQC6k3Y09j_A">
+    <eventsToTrace xsi:type="config:EventConfigElement" xmi:id="_M7MksJNgEeWQC6k3Y09j_A" name="test">
+      <event xsi:type="events:CustomEvent" xmi:id="_Qu3DkJNgEeWQC6k3Y09j_A" name="e1" description="desc" eventType="type" />
+    </eventsToTrace>
+    <eventsToTrace xsi:type="config:EventConfigLink" xmi:id="_ZrpYYJNgEeWQC6k3Y09j_A" name="e2" event="_Qu3DkJNgEeWQC6k3Y09j_A" />
+    <eventsToTrace xsi:type="config:EventConfigElement" xmi:id="_bBc4QJNhEeWQC6k3Y09j_A">
+      <event xsi:type="events:RunnableEvent" xmi:id="_bs3z0JNhEeWQC6k3Y09j_A" name="localRunnable">
+        <entity href="sw.amxmi#_Jo8VUJNWEeWQC6k3Y09j_A" />
+      </event>
+    </eventsToTrace>
+    <eventsToTrace xsi:type="config:EventConfigLink" xmi:id="_eQUA8JNhEeWQC6k3Y09j_A" name="configLink2" event="_WCqDAJNhEeWQC6k3Y09j_A" />
+  </configModel>
+</central:AMALTHEA>

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Amalthea Converters to Itea-1.1.0 Test
+Bundle-SymbolicName: org.eclipse.app4mc.amalthea.converters.110.test
+Bundle-Version: 0.7.0.qualifier
+Fragment-Host: org.eclipse.app4mc.amalthea.converters.110
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.junit,
+ com.google.guava
+Bundle-Vendor: Eclipse.org

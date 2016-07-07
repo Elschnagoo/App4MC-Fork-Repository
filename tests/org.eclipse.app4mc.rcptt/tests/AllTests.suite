@@ -1,0 +1,18 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: AllTests
+Element-Type: testsuite
+Element-Version: 2.0
+Id: _AcrhgL6BEeWuPctAETKdsw
+Runtime-Version: 2.0.1.201508250612
+Save-Time: 1/19/16 8:48 AM
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_0yzYkKe8EeWKy_GaRsFWZw	// kind: 'suite' name: 'EditorSuite' path: 'EditorSuite.suite'
+_tovwMKe9EeWKy_GaRsFWZw	// kind: 'suite' name: 'ExamplesSuite' path: 'ExamplesSuite.suite'
+_A5Ta4Ke-EeWKy_GaRsFWZw	// kind: 'suite' name: 'WizardSuite' path: 'WizardSuite.suite'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

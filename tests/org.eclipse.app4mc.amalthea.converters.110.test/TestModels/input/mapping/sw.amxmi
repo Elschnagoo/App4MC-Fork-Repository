@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:central="http://www.amalthea.itea2.org/model/1.1.0/central" xmi:id="_Eu7vIJK2EeWQC6k3Y09j_A">
+  <swModel xmi:id="_WVMbMJK2EeWQC6k3Y09j_A">
+    <isrs xmi:id="_ZXxbYJK2EeWQC6k3Y09j_A" name="ISR1"/>
+    <tasks xmi:id="_YOuvsJK2EeWQC6k3Y09j_A" name="T1"/>
+    <runnables xmi:id="_XLRHkJK2EeWQC6k3Y09j_A" name="R1"/>
+  </swModel>
+</central:AMALTHEA>

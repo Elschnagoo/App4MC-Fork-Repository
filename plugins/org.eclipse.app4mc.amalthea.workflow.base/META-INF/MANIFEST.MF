@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Amalthea Workflow Base
+Bundle-SymbolicName: org.eclipse.app4mc.amalthea.workflow.base;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: Eclipse.org
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.apache.log4j,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.mwe2.launch,
+ org.eclipse.emf.mwe2.lib,
+ org.eclipse.emf.ecore.xcore,
+ org.eclipse.emf.ecore.xcore.lib,
+ org.eclipse.app4mc.amalthea.model
+Export-Package: org.eclipse.app4mc.amalthea.workflow.base,
+ org.eclipse.app4mc.amalthea.workflow.util

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.2.0/stimuli">
+  <swModel>
+    <labels name="Label"/>
+  </swModel>
+  <stimuliModel>
+    <stimuli xsi:type="stimuli:ArrivalCurve">
+      <setLabelsList>
+        <entries valueProvider="//@swModel/@labels.0"/>
+      </setLabelsList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:CustomStimulus">
+      <setLabelsList>
+        <entries valueProvider="//@swModel/@labels.0"/>
+      </setLabelsList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:InterProcess">
+      <setLabelsList>
+        <entries valueProvider="//@swModel/@labels.0"/>
+      </setLabelsList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:Periodic" name="PeriodicElement">
+      <setLabelsList>
+        <entries valueProvider="//@swModel/@labels.0" value="1"/>
+        <entries valueProvider="//@swModel/@labels.0" value="2"/>
+      </setLabelsList>
+      <enablingLabelsList>
+        <entries valueProvider="//@swModel/@labels.0"/>
+      </enablingLabelsList>
+      <disablingLabelsList>
+        <entries valueProvider="//@swModel/@labels.0"/>
+      </disablingLabelsList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:PeriodicEvent">
+      <setLabelsList>
+        <entries valueProvider="//@swModel/@labels.0"/>
+      </setLabelsList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:Single">
+      <setLabelsList>
+        <entries valueProvider="//@swModel/@labels.0"/>
+      </setLabelsList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:Sporadic">
+      <setLabelsList>
+        <entries valueProvider="//@swModel/@labels.0"/>
+      </setLabelsList>
+    </stimuli>
+  </stimuliModel>
+</central:AMALTHEA>

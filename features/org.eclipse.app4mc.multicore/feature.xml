@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.app4mc.amalthea.multicore"
+      label="APP4MC AMALTHEA Multicore Support"
+      version="0.7.0.qualifier"
+      provider-name="Eclipse.org"
+      license-feature="org.eclipse.license"
+      license-feature-version="1.0.1.qualifier">
+
+   <description url="https://projects.eclipse.org/projects/technology.app4mc">
+      APP4MC AMALTHEA Multicore Support
+   </description>
+
+   <copyright url="https://projects.eclipse.org/projects/technology.app4mc">
+      (c) Copyright Eclipse APP4MC contributors and others. 2016. 
+All rights reserved.
+   </copyright>
+
+   <includes
+         id="org.eclipse.app4mc.amalthea.workflow"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.app4mc.amalthea.models"
+         version="0.0.0"/>
+
+   <requires>
+      <import plugin="org.apache.log4j"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.console"/>
+      <import plugin="org.eclipse.emf.compare"/>
+      <import plugin="org.eclipse.emf.mwe2.lib"/>
+      <import plugin="org.eclipse.emf.mwe2.launch"/>
+      <import plugin="org.eclipse.app4mc.amalthea.model"/>
+      <import plugin="org.eclipse.app4mc.amalthea.workflow.base"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.sphinx.emf"/>
+      <import plugin="org.slf4j.jcl"/>
+      <import plugin="org.eclipse.app4mc.multicore.openmapping" version="0.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.help"/>
+      <import plugin="org.eclipse.emf.common.ui"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.openmapping"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.partitioning"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.jgrapht"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.ojalgo"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.jenetics"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.help"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.examples.installer"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+</feature>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+   <extension
+         point="org.eclipse.sphinx.emf.metaModelDescriptors">
+      <descriptor
+            class="org.eclipse.app4mc.amalthea.sphinx.AmaltheaMetaModelDescriptor"
+            id="org.eclipse.app4mc.amalthea.model">
+      </descriptor>
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.emf.ecore.xmi"
+            file-extensions="amxmi"
+            id="org.eclipse.app4mc.amalthea.xmi.contentType"
+            name="AMALTHEA XMI File"
+            priority="normal">
+      </content-type>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.content_parser">
+      <parser
+            class="org.eclipse.app4mc.amalthea.sphinx.AmaltheaResourceFactory"
+            contentTypeIdentifier="org.eclipse.app4mc.amalthea.xmi.contentType">
+      </parser>
+   </extension>
+   <extension
+         point="org.eclipse.sphinx.emf.resourceScopeProviders">
+      <provider
+            class="org.eclipse.app4mc.amalthea.sphinx.ContainerResourceScopeProvider"
+            id="org.eclipse.app4mc.amalthea.model.containerscope">
+         <applicableFor
+               metaModelDescriptorIdPattern="org.eclipse.app4mc.amalthea.model">
+         </applicableFor>
+      </provider>
+   </extension>
+</plugin>

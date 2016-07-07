@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Concepts Root" link_to="../org.eclipse.app4mc.help/mainToc.xml#app4mc.docu.userguide">
+   <topic label="Concepts">
+      <link toc="toc/user_hw-toc.xml"/>
+      <link toc="toc/user_sw_develop-toc.xml"/>
+      <link toc="toc/user_sw_runtime-toc.xml"/>
+      <link toc="toc/user_concepts-toc.xml"/>
+   </topic>
+  
+</toc>

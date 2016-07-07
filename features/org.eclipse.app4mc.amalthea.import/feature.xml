@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.app4mc.amalthea.import"
+      label="APP4MC AMALTHEA Import"
+      version="0.7.0.qualifier"
+      provider-name="Eclipse.org"
+      license-feature="org.eclipse.license"
+      license-feature-version="1.0.1.qualifier">
+
+   <description url="https://projects.eclipse.org/projects/technology.app4mc">
+      APP4MC AMALTHEA Import
+   </description>
+
+   <copyright url="https://projects.eclipse.org/projects/technology.app4mc">
+      (c) Copyright Eclipse APP4MC contributors and others. 2016. 
+All rights reserved.
+   </copyright>
+
+   <includes
+         id="org.eclipse.app4mc.amalthea.models"
+         version="0.0.0"/>
+
+   <requires>
+      <import plugin="org.sqlite.jdbc"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.app4mc.amalthea.model"/>
+      <import plugin="org.eclipse.help"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.import.atdb"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.import.help"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+</feature>

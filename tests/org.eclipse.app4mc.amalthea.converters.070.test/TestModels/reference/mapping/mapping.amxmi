@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <swModel>
+    <isrs name="ISR1" />
+    <tasks name="Task1" />
+  </swModel>
+  <hwModel>
+    <system name="">
+      <memories name="mem_local" />
+    </system>
+  </hwModel>
+  <osModel>
+    <operatingSystems>
+      <taskSchedulers name="Scheduler1" />
+      <interruptControllers name="InterruptController1" />
+    </operatingSystems>
+  </osModel>
+  <mappingModel>
+    <mapping xsi:type="am:SectionMapping">
+      <memory href="amlt:/#mem_hw?type=Memory" />
+    </mapping>
+    <mapping xsi:type="am:AbstractElementMapping">
+      <memory href="amlt:/#mem_hw?type=Memory" />
+      <abstractElement xsi:type="am:ISR" href="amlt:/#ISR_SW?type=ISR" />
+    </mapping>
+    <mapping xsi:type="am:SectionMapping" memory="mem_local?type=Memory" />
+    <taskAllocation task="Task1?type=Task" scheduler="Scheduler1?type=TaskScheduler" />
+    <taskAllocation>
+      <task href="amlt:/#Task_sw?type=Task" />
+      <scheduler href="amlt:/#scheduler_os?type=TaskScheduler" />
+    </taskAllocation>
+    <isrAllocation isr="ISR1?type=ISR" controller="InterruptController1?type=InterruptController" />
+    <isrAllocation>
+      <isr href="amlt:/#ISR_SW?type=ISR" />
+      <controller href="amlt:/#IC_os?type=InterruptController" />
+    </isrAllocation>
+  </mappingModel>
+</am:Amalthea>

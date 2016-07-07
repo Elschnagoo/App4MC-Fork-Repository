@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:components="http://amalthea.itea2.org/model/1.3.0/components" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_pK640BzTEeaJJLR170GADQ">
+  <componentsModel xmi:id="_pK640RzTEeaJJLR170GADQ">
+    <components xmi:id="_pK640hzTEeaJJLR170GADQ">
+      <ports xsi:type="components:FInterfacePort" xmi:id="_pK640xzTEeaJJLR170GADQ" name="refP" kind="PROVIDES" />
+    </components>
+    <components xsi:type="components:Composite" xmi:id="_pK641BzTEeaJJLR170GADQ">
+      <componentInstances xmi:id="_pK641RzTEeaJJLR170GADQ" name="refInst" />
+      <connectors xmi:id="_pK641hzTEeaJJLR170GADQ" name="c1" />
+    </components>
+    <systems xmi:id="_pK641xzTEeaJJLR170GADQ">
+      <connectors xmi:id="_pK642BzTEeaJJLR170GADQ" name="n1">
+        <sourcePort xmi:id="_pK642RzTEeaJJLR170GADQ" instance="_pK641RzTEeaJJLR170GADQ" port="_pK640xzTEeaJJLR170GADQ" />
+      </connectors>
+      <componentInstances xmi:id="_pK642hzTEeaJJLR170GADQ" name="n1" type="_pK640hzTEeaJJLR170GADQ" />
+    </systems>
+  </componentsModel>
+</central:AMALTHEA>

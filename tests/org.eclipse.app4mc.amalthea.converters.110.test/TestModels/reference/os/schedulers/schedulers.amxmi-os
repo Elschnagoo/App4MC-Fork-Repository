@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<os:OSModel xmlns:os="http://www.amalthea.itea2.org/model/1.2.0/os" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_kM5iUI4KEeWdOZ8lzUgh5g">
+  <operatingSystems name="OperatingSystem">
+    <taskSchedulers xmi:id="_l91UcI4KEeWdOZ8lzUgh5g" name="Scheduler1">
+      <schedulingAlgorithm xsi:type="os:EarliestDeadlineFirst" xmi:id="_i0sbcI4ZEeWdOZ8lzUgh5g" />
+      <schedulingUnit xsi:type="os:SchedulingHWUnit" xmi:id="_DyQlgI4WEeWdOZ8lzUgh5g" />
+    </taskSchedulers>
+    <taskSchedulers xmi:id="_0x6rcI4YEeWdOZ8lzUgh5g" name="Scheduler2">
+      <schedulingAlgorithm xsi:type="os:PartlyPFairPD2" xmi:id="_kbrnYI4ZEeWdOZ8lzUgh5g" />
+      <schedulingUnit xsi:type="os:SchedulingHWUnit" xmi:id="_0x6rco4YEeWdOZ8lzUgh5g" />
+    </taskSchedulers>
+    <taskSchedulers xmi:id="_056w4I4YEeWdOZ8lzUgh5g" name="Scheduler3">
+      <schedulingAlgorithm xsi:type="os:PriorityBasedRoundRobin" xmi:id="_l8R3cI4ZEeWdOZ8lzUgh5g" />
+      <schedulingUnit xsi:type="os:SchedulingHWUnit" xmi:id="_056w4o4YEeWdOZ8lzUgh5g" />
+    </taskSchedulers>
+    <taskSchedulers xmi:id="_1BCskI4YEeWdOZ8lzUgh5g" name="Scheduler4">
+      <schedulingAlgorithm xsi:type="os:DeadlineMonotonic" xmi:id="_1BCskY4YEeWdOZ8lzUgh5g" />
+      <schedulingUnit xsi:type="os:SchedulingHWUnit" xmi:id="_1BCsko4YEeWdOZ8lzUgh5g" />
+    </taskSchedulers>
+    <taskSchedulers xmi:id="_1HvxgI4YEeWdOZ8lzUgh5g" name="Scheduler5">
+      <schedulingAlgorithm xsi:type="os:DeadlineMonotonic" xmi:id="_1HvxgY4YEeWdOZ8lzUgh5g" />
+      <schedulingUnit xsi:type="os:SchedulingHWUnit" xmi:id="_1Hvxgo4YEeWdOZ8lzUgh5g" />
+    </taskSchedulers>
+    <taskSchedulers xmi:id="_1PQuwI4YEeWdOZ8lzUgh5g" name="Scheduler6">
+      <schedulingAlgorithm xsi:type="os:DeadlineMonotonic" xmi:id="_1PQuwY4YEeWdOZ8lzUgh5g" />
+      <schedulingUnit xsi:type="os:SchedulingHWUnit" xmi:id="_1PQuwo4YEeWdOZ8lzUgh5g" />
+    </taskSchedulers>
+  </operatingSystems>
+</os:OSModel>

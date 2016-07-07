@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:components="http://amalthea.itea2.org/model/1.2.0/components" xmi:id="_JiQGcMEUEeWFjLGtonZfOQ">
+  <componentsModel xmi:id="_KB_9gMEUEeWFjLGtonZfOQ">
+    <elements xsi:type="components:Component" xmi:id="_Ssx8UMEUEeWFjLGtonZfOQ" name="comp1">
+      <ports xsi:type="components:FInterfacePort" xmi:id="_pcM6kMEUEeWFjLGtonZfOQ"/>
+    </elements>
+    <elements xsi:type="components:Composite" xmi:id="_TKWpIMEUEeWFjLGtonZfOQ" name="Composition">
+      <ports xsi:type="components:FInterfacePort" xmi:id="_qNf0oMEUEeWFjLGtonZfOQ"/>
+    </elements>
+    <elements xsi:type="components:System" xmi:id="_TnGPgMEUEeWFjLGtonZfOQ" name="System1">
+      <elements xsi:type="components:Connector" xmi:id="_rwU5UMEUEeWFjLGtonZfOQ"/>
+    </elements>
+    <elements xsi:type="components:Component" xmi:id="_AYQQgMEeEeWFjLGtonZfOQ" name="Comp2">
+      <ports xsi:type="components:FInterfacePort" xmi:id="_Cu8bEMEeEeWFjLGtonZfOQ"/>
+    </elements>
+    <elements xsi:type="components:Composite" xmi:id="_BTFhEMEeEeWFjLGtonZfOQ" name="Composition2">
+      <ports xsi:type="components:FInterfacePort" xmi:id="_DG5oEMEeEeWFjLGtonZfOQ"/>
+      <elements xsi:type="components:ComponentInstance" xmi:id="_IMb-gMEeEeWFjLGtonZfOQ" name="comp3" type="_Ssx8UMEUEeWFjLGtonZfOQ"/>
+      <elements xsi:type="components:Connector" xmi:id="_Imut0MEeEeWFjLGtonZfOQ"/>
+    </elements>
+    <elements xsi:type="components:System" xmi:id="_CImz0MEeEeWFjLGtonZfOQ">
+      <elements xsi:type="components:Connector" xmi:id="_DngawMEeEeWFjLGtonZfOQ">
+        <sourcePort xmi:id="_RKfXQMEhEeWFjLGtonZfOQ" instance="_IMb-gMEeEeWFjLGtonZfOQ" port="_pcM6kMEUEeWFjLGtonZfOQ"/>
+      </elements>
+      <elements xsi:type="components:ComponentInstance" xmi:id="_GjKTkMEeEeWFjLGtonZfOQ" name="comp4" type="_AYQQgMEeEeWFjLGtonZfOQ"/>
+      <elements xsi:type="components:ComponentInstance" xmi:id="_06GkQMNkEeWBM6uFowTedA" name="comp5" type="_Ssx8UMEUEeWFjLGtonZfOQ"/>
+    </elements>
+  </componentsModel>
+</central:AMALTHEA>

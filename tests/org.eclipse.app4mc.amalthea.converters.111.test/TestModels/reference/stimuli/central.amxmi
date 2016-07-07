@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.3.0/stimuli" xmlns:sw="http://www.amalthea.itea2.org/model/1.3.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_bqpwcAq5Eeazh8PnCHJqDQ">
+  <swModel xmi:id="_cc664Aq5Eeazh8PnCHJqDQ">
+    <tasks xmi:id="_dvKl4Aq5Eeazh8PnCHJqDQ" name="Task_Test" preemption="cooperative">
+      <callGraph xmi:id="_f-XoYAq5Eeazh8PnCHJqDQ">
+        <graphEntries xmi:id="_g7sMQAq5Eeazh8PnCHJqDQ" valueProvider="_4R8b0CDEEeaapuV49CSqeg" xsi:type="sw:ModeSwitch">
+          <entries xmi:id="_n6E6sAq5Eeazh8PnCHJqDQ" isDefault="true" value="_4SBUUSDEEeaapuV49CSqeg" />
+          <entries xmi:id="_rjEy8Aq_Eeazh8PnCHJqDQ" value="_4SBUUiDEEeaapuV49CSqeg" />
+          <entries xmi:id="_tIbnMAq_Eeazh8PnCHJqDQ" value="_4SBUUyDEEeaapuV49CSqeg" />
+        </graphEntries>
+        <graphEntries xmi:id="_J29AEAuPEeatw45e4IN1FQ" xsi:type="sw:ModeSwitch">
+          <valueProvider href="cross.amxmi#_4R8b0SDEEeaapuV49CSqeg" xsi:type="sw:ModeLabel" />
+          <entries xmi:id="_LEH90AuPEeatw45e4IN1FQ" value="_4SBUVCDEEeaapuV49CSqeg" />
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <labels xmi:id="_igTZoAq5Eeazh8PnCHJqDQ" name="Label_Test" />
+    <modes name="mode_stimuli_1_migration_generated" xmi:id="_4R70wCDEEeaapuV49CSqeg">
+      <literals name="20" xmi:id="_4R70wSDEEeaapuV49CSqeg" />
+    </modes>
+    <modeLabels name="Label_Test" xmi:id="_4R8b0CDEEeaapuV49CSqeg" />
+    <modes name="mode_sw_0_migration_generated" xmi:id="_4SBUUCDEEeaapuV49CSqeg">
+      <literals name="0" xmi:id="_4SBUUSDEEeaapuV49CSqeg" />
+      <literals name="1" xmi:id="_4SBUUiDEEeaapuV49CSqeg" />
+      <literals name="100" xmi:id="_4SBUUyDEEeaapuV49CSqeg" />
+      <literals name="22" xmi:id="_4SBUVCDEEeaapuV49CSqeg" />
+    </modes>
+  </swModel>
+  <stimuliModel xmi:id="_E4cAcAsHEeatw45e4IN1FQ">
+    <stimuli xsi:type="stimuli:Periodic" xmi:id="_GGnq0AsHEeatw45e4IN1FQ" name="periodic_element">
+      <disablingModeValueList xmi:id="_G3YZYAsHEeatw45e4IN1FQ">
+        <entries xmi:id="_Hf38wAsHEeatw45e4IN1FQ" valueProvider="_4R8b0CDEEeaapuV49CSqeg" value="_4R70wSDEEeaapuV49CSqeg" />
+        <entries xmi:id="_HCgigAuPEeatw45e4IN1FQ" value="_4R70wSDEEeaapuV49CSqeg">
+          <valueProvider href="cross.amxmi#_4R8b0SDEEeaapuV49CSqeg" xsi:type="sw:ModeLabel" />
+        </entries>
+      </disablingModeValueList>
+    </stimuli>
+  </stimuliModel>
+</central:AMALTHEA>

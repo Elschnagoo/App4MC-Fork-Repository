@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.3.0/stimuli" xmlns:sw="http://www.amalthea.itea2.org/model/1.3.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_Dnd_AAuPEeatw45e4IN1FQ">
+  <swModel xmi:id="_EL2ecAuPEeatw45e4IN1FQ">
+    <labels xmi:id="_EvG8gAuPEeatw45e4IN1FQ" name="Label_2" />
+    <modeLabels name="Label_2" xmi:id="_4R8b0SDEEeaapuV49CSqeg" />
+  </swModel>
+</central:AMALTHEA>

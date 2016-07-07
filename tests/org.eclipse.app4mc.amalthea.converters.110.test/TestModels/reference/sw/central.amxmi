@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:hw="http://www.amalthea.itea2.org/model/1.2.0/hw" xmlns:mapping="http://www.amalthea.itea2.org/model/1.2.0/mapping" xmlns:os="http://www.amalthea.itea2.org/model/1.2.0/os" xmlns:sw="http://www.amalthea.itea2.org/model/1.2.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_KsVi4JLQEeWQC6k3Y09j_A">
+  <swModel xmi:id="_L8PEgJLQEeWQC6k3Y09j_A">
+    <isrs xmi:id="_RpLZMJLQEeWQC6k3Y09j_A" name="ISR1" />
+    <tasks xmi:id="_QcnfcJLQEeWQC6k3Y09j_A" name="Task1" />
+    <runnables xmi:id="_N8EOQJLQEeWQC6k3Y09j_A" name="Runnable1" />
+    <labels xmi:id="_PZ8hgJLQEeWQC6k3Y09j_A" name="Label1" />
+  </swModel>
+  <hwModel xmi:id="_MdjB0JLQEeWQC6k3Y09j_A">
+    <networkTypes xsi:type="hw:Bridge" xmi:id="_UlZSsJLQEeWQC6k3Y09j_A" name="bridge1" />
+  </hwModel>
+  <osModel xmi:id="_LSpU8JLQEeWQC6k3Y09j_A">
+    <operatingSystems name="OperatingSystem">
+      <taskSchedulers xmi:id="_WHsy8JLQEeWQC6k3Y09j_A" name="scheduler1" />
+      <interruptControllers xmi:id="_yPE0gBtgEeamCaeoBHuoxA" name="interruptController1_migration_generated">
+        <schedulingAlgorithm xsi:type="os:PriorityBased" xmi:id="_yPE0gRtgEeamCaeoBHuoxA" />
+      </interruptControllers>
+      <taskSchedulers xmi:id="_XbnR4JLQEeWQC6k3Y09j_A" name="scheduler2" />
+    </operatingSystems>
+  </osModel>
+  <mappingModel xmi:id="_NECaEJLQEeWQC6k3Y09j_A">
+    <processAllocation xsi:type="mapping:TaskAllocation" xmi:id="_aX5c0JLQEeWQC6k3Y09j_A" scheduler="_WHsy8JLQEeWQC6k3Y09j_A" process="_QcnfcJLQEeWQC6k3Y09j_A" />
+    <runnableAllocation xsi:type="mapping:RunnableAllocation" xmi:id="_dxbkcJLQEeWQC6k3Y09j_A" scheduler="_WHsy8JLQEeWQC6k3Y09j_A" entity="_N8EOQJLQEeWQC6k3Y09j_A" />
+    <processAllocation xsi:type="mapping:ISRAllocation" xmi:id="_hoQsEJLQEeWQC6k3Y09j_A" scheduler="_yPE0gBtgEeamCaeoBHuoxA" process="_RpLZMJLQEeWQC6k3Y09j_A" />
+  </mappingModel>
+</central:AMALTHEA>

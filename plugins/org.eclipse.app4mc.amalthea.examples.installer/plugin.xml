@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.app4mc.amalthea.Examples"
+            name="%_UI_AMALTHEA_ExamplesCategory_name"
+            parentCategory="org.eclipse.ui.Examples">
+      </category>
+            <wizard
+            id="org.eclipse.app4mc.amalthea.examples.HwmodelExamplesWizard"
+            name="%_UI_AMALTHEA_HwmodelExamplesWizard_name"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            category="org.eclipse.ui.Examples/org.eclipse.app4mc.amalthea.Examples"
+            project="true"
+            icon="icons/full/ctool16/NewEMFExample.gif">
+         <description>%_UI_AMALTHEA_HwmodelExamplesWizard_desc</description>
+      </wizard>
+            <wizard
+            id="org.eclipse.app4mc.amalthea.examples.ModelingExamplesWizard"
+            name="%_UI_AMALTHEA_ModelingExamplesWizard_name"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            category="org.eclipse.ui.Examples/org.eclipse.app4mc.amalthea.Examples"
+            project="true"
+            icon="icons/full/ctool16/NewEMFExample.gif">
+         <description>%_UI_AMALTHEA_ModelingExamplesWizard_desc</description>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.emf.common.ui.examples">
+      <example
+            id="org.eclipse.app4mc.amalthea.examples.Examples"
+            wizardID="org.eclipse.app4mc.amalthea.examples.HwmodelExamplesWizard"
+            pageImage="icons/full/wizban/NewEMFExample.gif">
+                        <projectDescriptor
+               name="org.eclipse.app4mc.amalthea.example.hwmodel"
+               contentURI="examples/org.eclipse.app4mc.amalthea.example.hwmodel/"
+               description="%_UI_AMALTHEA_Example_Hwmodel_Project_desc"/>
+      </example>
+      <example
+            id="org.eclipse.app4mc.amalthea.examples.Examples"
+            wizardID="org.eclipse.app4mc.amalthea.examples.ModelingExamplesWizard"
+            pageImage="icons/full/wizban/NewEMFExample.gif">
+                        <projectDescriptor
+               name="org.eclipse.app4mc.amalthea.example.modeling"
+               contentURI="examples/org.eclipse.app4mc.amalthea.example.modeling/"
+               description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
+               <projectDescriptor
+               name="org.eclipse.app4mc.amalthea.example.modeling2"
+               contentURI="examples/org.eclipse.app4mc.amalthea.example.modeling2/"
+               description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
+      </example>
+      
+      
+    </extension>
+</plugin>

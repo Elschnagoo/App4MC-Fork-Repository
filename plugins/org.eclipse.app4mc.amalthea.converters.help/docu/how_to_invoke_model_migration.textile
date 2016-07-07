@@ -1,0 +1,44 @@
+
+h1. How to invoke AMALTHEA model migration
+
+AMALTHEA model migration utility is developed as a eclipse plugin and it is part of APP4MC distribution (_from release 0.7.0_)
+
+Model migration utility can be invoked by selecting the required models to be migrated in the UI and specifying the target AMALTHEA version to which models should be migrated
+
+* **Step 1:** Selection of AMALTHEA models
+
+!(#gray_scale)../pictures/ui/models_selection.png!
+
+* *Step 2:* Opening AMALTHEA Model Migration dialog and configuring migration inputs
+
+On click of AMALTHEA Model Migration action, selected files are parsed and the following information is retrieved:
+
+# AMALTHEA model version to which model is belonging to
+# Referred AMALTHEA models inside the selected model (_i.e. case of cross document references_) 
+** AMALTHEA model version to which these models are belonging to
+
+Once the above information is sucessfully retreived, following Model Migration dialog is opened:
+
+!(#gray_scale)../pictures/ui/migration_dialog.png!
+
+Model Migration dialog consists of following information:
+
+# Selected AMALTHEA model files : These are the models which are explicity selected by the user
+# Model scope files : These are the model files which are referred in the models explicitly selected by the user<div><br></br>_Example:_ In the dialog shown above, mapping.amxmi is the file selected by the user, and it contains references to the model elements of : sw.amxmi, sw.amxmi-sw, default.amxmi-os. Due to this reason, all these referred models are selected implicitly for model migration <br></br>*_Note:_* In case if the selected/referred models are having the different AMALTHEA model versions, migration can not be proceeded and the following error dialog is displayed  !(#gray_scale)../pictures/ui/different_model_versions.png! </div>
+# Input model version : This is the AMALTHEA model version to which both selected & referred models are belonging to<div><br></br> *_Note:_* AMALTHEA model versions are represented with the following naming convention in this dialog<br></br><br></br><table><tr><td>AMALTHEA 1.0.3</td><td>itea.103</td></tr><tr><td>AMALTHEA4public 1.1.0</td><td>itea.110</td></tr><tr><td>AMALTHEA4public 1.1.1</td><td>itea.111</td></tr><tr><td>APP4MC 0.7.0</td><td>0.7.0</td></tr></table></div>
+# Output model version : This is the AMALTHEA model version to which both selected & referred models should be migrated to
+# Output directory : This is the location where migrated AMALTHEA models should be generated. <div>*_Note:_* <u>This option is available only if the specified output model version is 1.1.1 or higher.</u><br></br> In case of AMALTHEA model versions 1.0.3 and 1.1.0 - &gt; Model scope is set as project, where as from version 1.1.1 and higher - &gt; model scope is limited to a folder. Due to this reason below is the behaviour of model migration utility : <ul><li>If the output model version is selected as 1.1.1 or higher - &gt; <u>migrated models are generated in a single folder (due to scope restriction) specified by the user</u></li><li>If the output model version is selected as 1.1.0 - &gt; <u>input model files will be overwritten by the migrated model files</u></li></ul></div>
+
+* *Step 3:* Model migration
+
+Once the required parameters are configured in the model migration dialog, click on "Migrate Models" button in the dialog to invoke migration.
+
+
+*Special cases:*
+
+* *Handling of input model files with name in the following format :* <model name>.amxmi-<sub model name> (_Example: test.amxmi-sw_)
+** From 1.1.1 version, files of these extension are not recognized by the AMALTHEA loader as AMALTHEA models, due to this reason if such files are supplied as input to model mgiration utility - &gt; generated files will be of following convention  <model name>.amxmi-<sub model name>.amxmi (_Example: test.amxmi-sw.amxmi_). <div>For details refer to the below image containing both input models and migrated models :<br></br> !(#gray_scale)../pictures/ui/generated_model_file_names.png!</div>
+ 
+
+
+

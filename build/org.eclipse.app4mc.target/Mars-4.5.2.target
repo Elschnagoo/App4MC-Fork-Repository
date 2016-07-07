@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="Mars 4.5.2" sequenceNumber="6">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="1.0.300.v20150430-1836"/>
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.11.2.v20160202-2102"/>
+<unit id="org.eclipse.jdt.feature.group" version="3.11.2.v20160212-1500"/>
+<unit id="org.eclipse.pde.feature.group" version="3.11.2.v20160212-1500"/>
+<unit id="org.eclipse.platform.ide" version="4.5.2.M20160212-1500"/>
+<unit id="org.eclipse.platform.sdk" version="4.5.2.M20160212-1500"/>
+<repository location="http://download.eclipse.org/eclipse/updates/4.5"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.license.feature.group" version="1.0.1.v20140414-1359"/>
+<repository location="http://download.eclipse.org/cbi/updates/license/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="epp.package.automotive" version="4.5.1.20150917-1200"/>
+<unit id="org.eclipse.cdt.sdk.feature.group" version="8.8.1.201602051005"/>
+<unit id="org.eclipse.ecf.core.feature.group" version="3.12.0.v20151130-0157"/>
+<unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="1.3.2.v20160209-0349"/>
+<unit id="org.eclipse.emf.mwe.sdk.feature.group" version="1.3.13.v201512160556"/>
+<unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="2.8.3.v201512160556"/>
+<unit id="org.eclipse.gmf.sdk.feature.group" version="3.3.1.201509020853"/>
+<unit id="org.eclipse.graphiti.sdk.feature.feature.group" version="0.12.2.v20160120-1255"/>
+<unit id="org.eclipse.ocl.all.sdk.feature.group" version="5.1.0.v20160118-1848"/>
+<unit id="org.eclipse.remote.feature.group" version="2.0.2.201601141453"/>
+<unit id="org.eclipse.sphinx.sdk.feature.group" version="0.9.2.201601200932"/>
+<unit id="org.eclipse.uml2.sdk.feature.group" version="5.1.2.v20160201-0816"/>
+<unit id="org.eclipse.wst.xml_ui.feature.feature.group" version="3.7.2.v201511240257"/>
+<unit id="org.eclipse.xsd.sdk.feature.group" version="2.11.0.v20160208-0841"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.9.1.v201512180746"/>
+<repository location="http://download.eclipse.org/releases/mars/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="3.1.1.201509120604"/>
+<unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="3.1.1.201509120604"/>
+<repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/3.1/R201509120604"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.rmf.reqif10.sdk.feature.feature.group" version="0.13.0.201509161042"/>
+<unit id="org.eclipse.rmf.reqif10.pror.sdk.feature.feature.group" version="0.13.0.201509161042"/>
+<repository location="http://download.eclipse.org/rmf/updates"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.cdt.remote.feature.group" version="8.8.0.201509131935"/>
+<repository location="http://download.eclipse.org/tools/cdt/releases/8.8"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.jetty.bundles.f.feature.group" version="8.1.18.201510140934"/>
+<repository location="http://download.eclipse.org/jetty/updates/jetty-bundles-8.x/8.1.18.v20150929"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.franca.core.sdk.feature.group" version="0.10.0.201507291433"/>
+<unit id="org.franca.ui.sdk.feature.group" version="0.10.0.201507291433"/>
+<repository location="http://franca.github.io/franca/update_site/releases"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.yakindu.sct.feature.group" version="2.6.0.201604061309"/>
+<unit id="org.yakindu.sct.generator.c.feature.group" version="2.6.0.201604061309"/>
+<unit id="org.yakindu.sct.generator.cpp.feature.group" version="2.6.0.201604061309"/>
+<repository location="http://updates.yakindu.org/sct/mars/releases"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.sirius.doc.feature.feature.jar" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.doc.feature.source.feature.jar" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.runtime.acceleo.feature.jar" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.runtime.acceleo.source.feature.jar" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.jar" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.jar" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.runtime.ide.ui.source.feature.jar" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.runtime.source.feature.jar" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.samples.source.feature.jar" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.jar" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.source.feature.jar" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.specifier.ide.ui.aql.feature.group" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.specifier.ide.ui.aql.source.feature.jar" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.specifier.ide.ui.feature.jar" version="3.1.4.201602091241"/>
+<unit id="org.eclipse.sirius.specifier.ide.ui.source.feature.jar" version="3.1.4.201602091241"/>
+<repository location="http://download.eclipse.org/sirius/updates/releases/3.1.4/mars"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.incquery.databinding.runtime.feature.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.databinding.runtime.feature.source.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.querybasedfeatures.runtime.feature.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.querybasedfeatures.runtime.feature.source.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.querybasedfeatures.tooling" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.querybasedfeatures.tooling.feature.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.querybasedfeatures.tooling.feature.source.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.runtime.evm.transactions" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.runtime.evm.transactions.feature.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.runtime.evm.transactions.feature.source.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.runtime.feature.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.runtime.feature.source.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.runtime.generic.feature.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.runtime.generic.feature.source.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.sdk.feature.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.sdk.feature.source.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.tooling.generator.model.ui" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.validation.runtime.feature.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.validation.runtime.feature.source.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.validation.runtime.ui" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.validation.tooling" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.validation.tooling.feature.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.validation.tooling.feature.source.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.viewers.runtime.feature.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.viewers.runtime.feature.source.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.viewers.tooling.ui" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.viewers.tooling.ui.feature.feature.jar" version="1.1.0.201512031022"/>
+<unit id="org.eclipse.incquery.viewers.tooling.ui.feature.source.feature.jar" version="1.1.0.201512031022"/>
+<repository location="http://download.eclipse.org/incquery/updates/release"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.ease.feature.feature.group" version="0.3.0.I201602290929"/>
+<unit id="org.eclipse.ease.javascript.feature.feature.group" version="0.3.0.I201602290929"/>
+<unit id="org.eclipse.ease.modules.feature.feature.group" version="0.3.0.I201602251323"/>
+<unit id="org.eclipse.ease.ui.feature.feature.group" version="0.3.0.I201605121005"/>
+<repository location="http://download.eclipse.org/ease/update/release"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.acceleo.sdk.feature.group" version="3.6.3.201602090916"/>
+<repository location="http://download.eclipse.org/acceleo/updates/releases/3.6"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="com.sun.xml.bind" version="2.2.0.v201505121915"/>
+<unit id="java_cup.runtime" version="0.10.0.v201005080400"/>
+<unit id="javax.activation" version="1.1.0.v201211130549"/>
+<unit id="javax.annotation" version="1.2.0.v201401042248"/>
+<unit id="javax.el" version="2.2.0.v201303151357"/>
+<unit id="javax.servlet" version="3.1.0.v201410161800"/>
+<unit id="javax.ws.rs" version="2.0.1.v201504171603"/>
+<unit id="javax.xml" version="1.3.4.v201005080400"/>
+<unit id="javax.xml.bind" version="2.2.0.v201105210648"/>
+<unit id="javax.xml.stream" version="1.0.1.v201004272200"/>
+<unit id="org.antlr.runtime" version="3.2.0.v201101311130"/>
+<unit id="org.apache.batik.css" version="1.7.0.v201011041433"/>
+<unit id="org.apache.batik.util" version="1.7.0.v201011041433"/>
+<unit id="org.apache.batik.util.gui" version="1.7.0.v200903091627"/>
+<unit id="org.apache.bcel" version="5.2.0.v201005080400"/>
+<unit id="org.apache.commons.codec" version="1.6.0.v201305230611"/>
+<unit id="org.apache.commons.io" version="2.2.0.v201405211200"/>
+<unit id="org.apache.commons.lang" version="2.6.0.v201404270220"/>
+<unit id="org.apache.commons.logging" version="1.1.1.v201101211721"/>
+<unit id="org.apache.httpcomponents.httpclient" version="4.3.6.v201411290715B"/>
+<unit id="org.apache.httpcomponents.httpcore" version="4.3.3.v201411290715"/>
+<unit id="org.apache.xalan" version="2.7.1.v201005080400"/>
+<unit id="org.apache.xerces" version="2.9.0.v201101211617"/>
+<unit id="org.apache.xml.resolver" version="1.2.0.v201005080400"/>
+<unit id="org.apache.xml.serializer" version="2.7.1.v201005080400"/>
+<unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
+<unit id="org.slf4j.api" version="1.7.2.v20121108-1250"/>
+<unit id="org.slf4j.jcl" version="1.7.2.v20130115-1340"/>
+<unit id="org.slf4j.log4j" version="1.7.2.v20130115-1340"/>
+<unit id="org.swtchart" version="0.7.0.v201201201914"/>
+<unit id="org.easymock" version="2.4.0.v20090202-0900"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/"/>
+</location>
+</locations>
+</target>

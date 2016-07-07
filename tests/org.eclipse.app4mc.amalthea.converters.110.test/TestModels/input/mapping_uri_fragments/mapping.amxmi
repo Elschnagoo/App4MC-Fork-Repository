@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.1.0/central" xmlns:mapping="http://www.amalthea.itea2.org/model/1.1.0/mapping" xmlns:sw="http://www.amalthea.itea2.org/model/1.1.0/sw">
+  <swModel/>
+  <mappingModel>
+    <executableAllocation xsi:type="mapping:ProcessAllocation">
+      <scheduler href="os.amxmi#//@osModel/@scheduler.0"/>
+      <process xsi:type="sw:ISR" href="sw.amxmi#//@swModel/@isrs.0"/>
+    </executableAllocation>
+    <executableAllocation xsi:type="mapping:RunnableAllocation">
+      <scheduler href="os.amxmi#//@osModel/@scheduler.0"/>
+      <entity href="sw.amxmi#//@swModel/@runnables.0"/>
+    </executableAllocation>
+    <executableAllocation xsi:type="mapping:ProcessAllocation">
+      <scheduler href="os.amxmi#//@osModel/@scheduler.0"/>
+      <process xsi:type="sw:Task" href="sw.amxmi#//@swModel/@tasks.0"/>
+    </executableAllocation>
+    <mapping xsi:type="mapping:AbstractElementMapping">
+      <mem href="hw.amxmi#//@hwModel/@system/@memories.0"/>
+      <abstractElement xsi:type="sw:ISR" href="sw.amxmi#//@swModel/@isrs.0"/>
+    </mapping>
+    <mapping xsi:type="mapping:AbstractElementMapping">
+      <mem href="hw.amxmi#//@hwModel/@system/@memories.0"/>
+      <abstractElement xsi:type="sw:Runnable" href="sw.amxmi#//@swModel/@runnables.0"/>
+    </mapping>
+    <mapping xsi:type="mapping:AbstractElementMapping">
+      <mem href="hw.amxmi#//@hwModel/@system/@memories.0"/>
+      <abstractElement xsi:type="sw:Task" href="sw.amxmi#//@swModel/@tasks.0"/>
+    </mapping>
+  </mappingModel>
+</central:AMALTHEA>

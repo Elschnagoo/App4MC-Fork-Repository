@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<propertyconstraints:PropertyConstraintsModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:common="http://www.amalthea.itea2.org/model/1.3.0/common" xmlns:hw="http://www.amalthea.itea2.org/model/1.3.0/hw" xmlns:propertyconstraints="http://www.amalthea.itea2.org/model/1.3.0/propertyconstraints" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <customProperties key="key">
+    <value xsi:type="common:ReferenceObject">
+      <value xsi:type="hw:Memory" href="amlt:/#Memory1?type=hw.Memory"/>
+    </value>
+  </customProperties>
+  <customProperties key="key">
+    <value xsi:type="common:ReferenceObject">
+      <value xsi:type="hw:System" href="amlt:/#sys?type=hw.System"/>
+    </value>
+  </customProperties>
+  <customProperties key="key">
+    <value xsi:type="common:ReferenceObject">
+      <value xsi:type="hw:Component" href="amlt:/#Comp1?type=hw.Component"/>
+    </value>
+  </customProperties>
+  <customProperties key="key">
+    <value xsi:type="common:ReferenceObject">
+      <value xsi:type="hw:Port" href="amlt:/#sys/hwPort?type=hw.Port"/>
+    </value>
+  </customProperties>
+  <customProperties key="key">
+    <value xsi:type="common:ReferenceObject">
+      <value xsi:type="hw:SystemType" href="amlt:/#no-name?type=hw.SystemType"/>
+    </value>
+  </customProperties>
+  <customProperties key="key">
+    <value xsi:type="common:ReferenceObject">
+      <value xsi:type="hw:ECUType" href="amlt:/#no-name?type=hw.ECUType"/>
+    </value>
+  </customProperties>
+</propertyconstraints:PropertyConstraintsModel>

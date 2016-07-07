@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sw:SWModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sw="http://www.amalthea.itea2.org/model/1.2.0/sw" xmi:id="_3E3sEMjdEeWBM6uFowTedA">
+  <isrs xmi:id="_gJYyUMjeEeWBM6uFowTedA">
+    <callGraph xmi:id="_hM-WQMjeEeWBM6uFowTedA">
+      <graphEntries xsi:type="sw:CallSequence" xmi:id="_PVGgUMjfEeWBM6uFowTedA">
+        <calls xsi:type="sw:WaitEvent" xmi:id="_Rt4VkMjfEeWBM6uFowTedA" maskType="OR"/>
+      </graphEntries>
+      <graphEntries xsi:type="sw:CallSequence" xmi:id="_jFjMAMjfEeWBM6uFowTedA">
+        <calls xsi:type="sw:WaitEvent" xmi:id="_j38SQMjfEeWBM6uFowTedA" maskType="OR"/>
+      </graphEntries>
+    </callGraph>
+  </isrs>
+  <tasks xmi:id="_kHnmgMpfEeWbk6OrAk7OIw" preemption="unknown">
+    <callGraph xmi:id="_ZE2y4Ms_EeWhPNHEM6LJDg">
+      <graphEntries xsi:type="sw:CallSequence" xmi:id="_aSpbsMs_EeWhPNHEM6LJDg">
+        <calls xsi:type="sw:WaitEvent" xmi:id="_bhfNYMs_EeWhPNHEM6LJDg" maskType="OR" waitingBehaviour="unspecified"/>
+      </graphEntries>
+      <graphEntries xsi:type="sw:LabelSwitch" xmi:id="_2Ljv8MvGEeWhPNHEM6LJDg" label="_3oN7MMvGEeWhPNHEM6LJDg">
+        <entries xmi:id="_73MdEMvGEeWhPNHEM6LJDg" value="20">
+          <graphEntries xsi:type="sw:LabelSwitch" xmi:id="_AVz9cMvHEeWhPNHEM6LJDg" label="_3oN7MMvGEeWhPNHEM6LJDg">
+            <entries xmi:id="_BwVasMvHEeWhPNHEM6LJDg" value="500">
+              <graphEntries xsi:type="sw:LabelSwitch" xmi:id="_DJqlIMvHEeWhPNHEM6LJDg" label="_3oN7MMvGEeWhPNHEM6LJDg"/>
+            </entries>
+          </graphEntries>
+        </entries>
+      </graphEntries>
+    </callGraph>
+  </tasks>
+  <runnables xmi:id="_Hlo7IMpcEeWbk6OrAk7OIw">
+    <runnableItems xsi:type="sw:LabelAccess" xmi:id="_zyuU0MpcEeWbk6OrAk7OIw" access="write"/>
+    <runnableItems xsi:type="sw:ProbabilityGroup" xmi:id="_FDlYoMpdEeWbk6OrAk7OIw">
+      <items xmi:id="_FeS-sMpdEeWbk6OrAk7OIw">
+        <runnableItem xsi:type="sw:LabelAccess" xmi:id="_GOr50MpdEeWbk6OrAk7OIw" access="write"/>
+      </items>
+    </runnableItems>
+    <runnableItems xsi:type="sw:Group" xmi:id="_QpkkUMpdEeWbk6OrAk7OIw">
+      <items xmi:id="_RIptAMpdEeWbk6OrAk7OIw">
+        <runnableItem xsi:type="sw:LabelAccess" xmi:id="_TRtEMMpdEeWbk6OrAk7OIw" access="write"/>
+      </items>
+    </runnableItems>
+    <runnableItems xsi:type="sw:SemaphoreAccess" xmi:id="_xjjcoMpeEeWbk6OrAk7OIw" accessEnum="exclusive"/>
+    <runnableItems xsi:type="sw:AsynchronousServerCall" xmi:id="_XQk8YMtAEeWhPNHEM6LJDg" serverRunnable="_Hlo7IMpcEeWbk6OrAk7OIw" resultRunnable="_Hlo7IMpcEeWbk6OrAk7OIw"/>
+    <runnableItems xsi:type="sw:SynchronousServerCall" xmi:id="_aEAtUMtAEeWhPNHEM6LJDg" serverRunnable="_Hlo7IMpcEeWbk6OrAk7OIw" waitingBehaviour="active"/>
+    <runnableItems xsi:type="sw:ProbabilityGroup" xmi:id="_zZwh4MtyEeWhPNHEM6LJDg">
+      <items xmi:id="_0AtNIMtyEeWhPNHEM6LJDg">
+        <runnableItem xsi:type="sw:SynchronousServerCall" xmi:id="_14l70MtyEeWhPNHEM6LJDg" waitingBehaviour="active"/>
+      </items>
+    </runnableItems>
+  </runnables>
+  <labels xmi:id="_3oN7MMvGEeWhPNHEM6LJDg" name="Label1"/>
+  <processPrototypes xmi:id="_wSnYUMjhEeWBM6uFowTedA" preemption="preemptive">
+    <accessPrecedenceSpec xmi:id="_xXJXcMjhEeWBM6uFowTedA" orderType="enforceRW"/>
+    <orderPrecedenceSpec xmi:id="_uGXg4MpaEeWbk6OrAk7OIw" orderType="directOrder"/>
+  </processPrototypes>
+</sw:SWModel>

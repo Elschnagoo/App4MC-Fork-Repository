@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hw:NetworkType xmlns:hw="http://www.amalthea.itea2.org/model/1.3.0/hw" xmlns:os="http://www.amalthea.itea2.org/model/1.3.0/os" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_5B8dUL-IEeWFjLGtonZfOQ" schedPolicy="RROBIN" />

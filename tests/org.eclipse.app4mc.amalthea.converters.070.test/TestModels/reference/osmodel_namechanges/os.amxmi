@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <osModel>
+    <semaphores name="Sema1">
+      <customProperties key="cust_os_instruction">
+        <value xsi:type="am:ReferenceObject" value="Sema1?type=Semaphore" />
+      </customProperties>
+    </semaphores>
+    <operatingSystems name="OperatingSystem_1" overhead="//@osModel/@osOverheads.0" />
+    <osOverheads name="OsInstruction_1" />
+  </osModel>
+</am:Amalthea>

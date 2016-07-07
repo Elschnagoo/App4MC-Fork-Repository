@@ -1,0 +1,85 @@
+@startuml
+
+title Overall Sample
+autonumber
+
+actor User	 #green
+
+participant sample_workflow.js
+
+User -> sample_workflow.js : Run As -> Ease Script
+activate sample_workflow.js
+
+sample_workflow.js -> sample_workflow.js : general setup like load modules,\n import packages, setup logging
+
+box "Context" #LightGreen
+participant DefaultContext
+end box
+
+box "Workflow Components" #LightBlue
+participant ModelReader
+participant CreateTasks
+participant ModelWriter
+participant GenerateMapping
+end box
+
+create DefaultContext
+sample_workflow.js -> DefaultContext : create
+
+create ModelReader
+sample_workflow.js -> ModelReader : create
+
+sample_workflow.js -> ModelReader : configurations with setXXX methods
+sample_workflow.js -> ModelReader : run
+activate ModelReader
+
+ModelReader -> DefaultContext : set model to "amalthea" slot
+ModelReader --> sample_workflow.js : end
+deactivate ModelReader
+
+create CreateTasks
+sample_workflow.js -> CreateTasks : create
+sample_workflow.js -> CreateTasks : run
+activate CreateTasks
+
+CreateTasks -> DefaultContext : get model from "amalthea" slot
+CreateTasks -> DefaultContext : set result model to "createtasks" slot
+CreateTasks --> sample_workflow.js : end
+deactivate CreateTasks
+
+create ModelWriter
+sample_workflow.js -> ModelWriter : create
+sample_workflow.js -> ModelWriter : setModelSlot("createtasks")
+sample_workflow.js -> ModelWriter : configurations with setXXX methods
+sample_workflow.js -> ModelWriter : run
+activate ModelWriter
+ModelWriter -> DefaultContext : get model from "createtasks" slot
+ModelWriter --> sample_workflow.js : end
+deactivate ModelWriter
+
+create GenerateMapping
+sample_workflow.js -> GenerateMapping : create
+sample_workflow.js -> GenerateMapping : configurations with setXXX methods
+sample_workflow.js -> GenerateMapping : run
+activate GenerateMapping
+GenerateMapping -> DefaultContext : get model from "createtasks" slot
+GenerateMapping -> DefaultContext : set result model to "mapping" slot
+GenerateMapping --> sample_workflow.js : end
+deactivate GenerateMapping
+
+sample_workflow.js -> ModelWriter : create
+sample_workflow.js -> ModelWriter : setModelSlot("mapping")
+sample_workflow.js -> ModelWriter : configurations with setXXX methods
+sample_workflow.js -> ModelWriter : run
+activate ModelWriter
+ModelWriter -> DefaultContext : get model from "mapping" slot
+ModelWriter --> sample_workflow.js : end
+deactivate ModelWriter
+
+... additional steps ...
+
+sample_workflow.js -> sample_workflow.js : endWorkflow()
+sample_workflow.js -> User : end
+deactivate sample_workflow.js
+
+@enduml

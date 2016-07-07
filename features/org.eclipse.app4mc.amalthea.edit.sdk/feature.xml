@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.app4mc.amalthea.edit.sdk"
+      label="APP4MC AMALTHEA Edit Support SDK"
+      version="0.7.0.qualifier"
+      provider-name="Eclipse.org"
+      license-feature="org.eclipse.license"
+      license-feature-version="1.0.1.qualifier">
+
+   <description url="https://projects.eclipse.org/projects/technology.app4mc">
+      APP4MC AMALTHEA Edit Support SDK
+   </description>
+
+   <copyright url="https://projects.eclipse.org/projects/technology.app4mc">
+      (c) Copyright Eclipse APP4MC contributors and others. 2016. 
+All rights reserved.
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <includes
+         id="org.eclipse.app4mc.amalthea.models.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.app4mc.amalthea.edit"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.sphinx.ui.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.sphinx.ui.editors.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.emf.util.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.model.edit.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

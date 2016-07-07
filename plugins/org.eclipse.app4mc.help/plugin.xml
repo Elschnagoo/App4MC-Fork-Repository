@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.help.toc">
+
+      <toc	file="mainToc.xml"						primary="true"> </toc>
+
+      <toc	file="toc/introduction-toc.xml"			primary="false"> </toc>
+
+      <toc	file="toc/user_faq-toc.xml"				primary="false"> </toc>
+      
+      <toc	file="toc/example_modeling_1-toc.xml"	primary="false"> </toc>
+      <toc	file="toc/example_modeling_2-toc.xml"	primary="false"> </toc>
+      <toc	file="toc/example_democar-toc.xml"		primary="false"> </toc>
+      <toc	file="toc/example_hardware-toc.xml"		primary="false"> </toc>
+            
+      <toc	file="toc/dev_overview-toc.xml"			primary="false"> </toc>
+      <toc	file="toc/dev_atdb-toc.xml"				primary="false"> </toc>
+      <toc	file="toc/roadmap-toc.xml"				primary="false"> </toc>
+      <toc
+            file="toc/release_notes-toc.xml"
+            primary="false">
+      </toc>
+   </extension>
+
+</plugin>

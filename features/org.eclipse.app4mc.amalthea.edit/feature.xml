@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.app4mc.amalthea.edit"
+      label="APP4MC AMALTHEA Edit Support"
+      version="0.7.0.qualifier"
+      provider-name="Eclipse.org"
+      license-feature="org.eclipse.license"
+      license-feature-version="1.0.1.qualifier">
+
+   <description url="https://projects.eclipse.org/projects/technology.app4mc">
+      APP4MC AMALTHEA Edit Support
+   </description>
+
+   <copyright url="https://projects.eclipse.org/projects/technology.app4mc">
+      (c) Copyright Eclipse APP4MC contributors and others. 2016. 
+All rights reserved.
+   </copyright>
+
+   <includes
+         id="org.eclipse.app4mc.amalthea.models"
+         version="0.0.0"/>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.eclipse.sphinx.emf"/>
+      <import plugin="org.eclipse.ui.navigator"/>
+      <import plugin="org.eclipse.app4mc.amalthea.model"/>
+      <import plugin="org.apache.commons.lang"/>
+      <import plugin="org.eclipse.search"/>
+      <import plugin="org.eclipse.sphinx.emf.explorer"/>
+      <import plugin="org.eclipse.sphinx.emf.editors.forms"/>
+      <import plugin="org.eclipse.sphinx.emf.check"/>
+      <import plugin="org.eclipse.sphinx.emf.validation"/>
+      <import plugin="com.google.guava"/>
+      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.eclipse.xtend.lib"/>
+      <import plugin="org.eclipse.xtend.lib.macro"/>
+      <import plugin="org.franca.core"/>
+      <import plugin="org.franca.core.edit"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.help"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.emf.util"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.sphinx.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.sphinx.ui.editors"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.model.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.edit.help"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

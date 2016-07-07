@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <hwModel>
+    <coreTypes name="DefaultCore" instructionsPerCycle="1" />
+    <system name="Democar">
+      <ecus name="ECU_1">
+        <quartzes name="QuartzOscillator_1" frequency="200000000" type="STATIC" />
+        <quartzes name="QuartzOscillator_2" frequency="200000000" type="STATIC" />
+        <microcontrollers name="Processor_1">
+          <memories name="Mem_1">
+            <ports xsi:type="am:ComplexPort" name="Mem_1_port" bitWidth="16" direction="R" writeCycles="10" readCycles="10" />
+          </memories>
+          <cores name="Core_1" coreType="DefaultCore?type=CoreType">
+            <prescaler name="Core_1_prescaler" clockRatio="1.0" quartz="QuartzOscillator_1?type=Quartz" />
+          </cores>
+          <cores name="Core_2" coreType="DefaultCore?type=CoreType">
+            <prescaler name="Core_2_prescaler" clockRatio="1.0" quartz="QuartzOscillator_2?type=Quartz" />
+          </cores>
+        </microcontrollers>
+      </ecus>
+    </system>
+  </hwModel>
+</am:Amalthea>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:common="http://www.amalthea.itea2.org/model/1.3.0/common" xmlns:os="http://www.amalthea.itea2.org/model/1.3.0/os" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_7dq2sL95EeWFjLGtonZfOQ">
+  <osModel xmi:id="_7-XwAL95EeWFjLGtonZfOQ">
+    <operatingSystems xmi:id="_8wUxYL95EeWFjLGtonZfOQ">
+      <taskSchedulers xmi:id="_v8Hu8MBREeWFjLGtonZfOQ">
+        <schedulingUnit xsi:type="os:SchedulingHWUnit" xmi:id="_wvdQYMBREeWFjLGtonZfOQ">
+          <delay xmi:id="_x2xdwMBREeWFjLGtonZfOQ" unit="ns" />
+        </schedulingUnit>
+      </taskSchedulers>
+      <taskSchedulers xmi:id="_XXYdgMEEEeWFjLGtonZfOQ">
+        <schedulingUnit xsi:type="os:SchedulingHWUnit" xmi:id="_fckb8MEEEeWFjLGtonZfOQ">
+          <delay xmi:id="_lrjtwMEEEeWFjLGtonZfOQ" unit="ps" />
+        </schedulingUnit>
+      </taskSchedulers>
+      <interruptControllers xmi:id="_9QI54L95EeWFjLGtonZfOQ">
+        <schedulingUnit xsi:type="os:SchedulingHWUnit" xmi:id="_nJ57EMEEEeWFjLGtonZfOQ" />
+      </interruptControllers>
+    </operatingSystems>
+    <operatingSystems xsi:type="os:VendorOperatingSystem" xmi:id="_-_5nUL95EeWFjLGtonZfOQ">
+      <customProperties xmi:id="__b_tcL95EeWFjLGtonZfOQ" key="test">
+        <value xsi:type="common:BooleanObject" xmi:id="_AsDAEL96EeWFjLGtonZfOQ" value="true" />
+      </customProperties>
+    </operatingSystems>
+  </osModel>
+</central:AMALTHEA>

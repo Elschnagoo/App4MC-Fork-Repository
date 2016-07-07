@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Trace Converter - OT1
+Bundle-SymbolicName: org.eclipse.app4mc.tracing.converter.ot1;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: Eclipse.org
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8,
+ JavaSE-1.7
+Export-Package: org.eclipse.app4mc.tracing.converter.ot1.OT1,
+ org.eclipse.app4mc.tracing.converter.ot1.OT1.impl,
+ org.eclipse.app4mc.tracing.converter.ot1.OT1.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport
+Bundle-ActivationPolicy: lazy

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:components="http://amalthea.itea2.org/model/1.2.0/components" xmi:id="_pK5qsBzTEeaJJLR170GADQ">
+  <componentsModel xmi:id="_pK5qsRzTEeaJJLR170GADQ">
+    <elements xsi:type="components:Component" xmi:id="_pK5qshzTEeaJJLR170GADQ" name="Comp1">
+      <ports xsi:type="components:FInterfacePort" xmi:id="_pK5qsxzTEeaJJLR170GADQ" name="p1"/>
+    </elements>
+    <elements xsi:type="components:Composite" xmi:id="_pK5qtBzTEeaJJLR170GADQ" name="Composite1">
+      <elements xsi:type="components:ComponentInstance" xmi:id="_pK5qtRzTEeaJJLR170GADQ" type="_pK5qshzTEeaJJLR170GADQ"/>
+      <elements xsi:type="components:Connector" xmi:id="_pK5qthzTEeaJJLR170GADQ" name="">
+        <sourcePort xmi:id="_pK5qtxzTEeaJJLR170GADQ" instance="_pK5qtRzTEeaJJLR170GADQ" port="_pK5qsxzTEeaJJLR170GADQ"/>
+        <targetPort xmi:id="_pK5quBzTEeaJJLR170GADQ" instance="_pK5qtRzTEeaJJLR170GADQ" port="_pK5qsxzTEeaJJLR170GADQ"/>
+      </elements>
+      <elements xsi:type="components:ComponentInstance" xmi:id="_pK5quRzTEeaJJLR170GADQ">
+        <type href="test.amxmi#_pK641BzTEeaJJLR170GADQ"/>
+      </elements>
+      <elements xsi:type="components:ComponentInstance" xmi:id="_pK5quhzTEeaJJLR170GADQ">
+        <type href="test.amxmi#_pK641BzTEeaJJLR170GADQ"/>
+      </elements>
+    </elements>
+    <elements xsi:type="components:System" xmi:id="_pK5quxzTEeaJJLR170GADQ">
+      <elements xsi:type="components:Connector" xmi:id="_pK5qvBzTEeaJJLR170GADQ">
+        <sourcePort xmi:id="_pK5qvRzTEeaJJLR170GADQ">
+          <instance href="test.amxmi#_pK641RzTEeaJJLR170GADQ"/>
+          <port xsi:type="components:FInterfacePort" href="test.amxmi#_pK640xzTEeaJJLR170GADQ"/>
+        </sourcePort>
+        <targetPort xmi:id="_pK5qvhzTEeaJJLR170GADQ" instance="_pK5qvxzTEeaJJLR170GADQ" port="_pK5qsxzTEeaJJLR170GADQ"/>
+      </elements>
+      <elements xsi:type="components:ComponentInstance" xmi:id="_pK5qvxzTEeaJJLR170GADQ" name="c1" type="_pK5qshzTEeaJJLR170GADQ"/>
+    </elements>
+  </componentsModel>
+</central:AMALTHEA>

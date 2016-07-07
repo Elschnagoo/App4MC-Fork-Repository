@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <hwModel>
+    <system>
+      <memories name="mem" type="memType_pc?type=MemoryType" />
+      <memories name="mem2">
+        <type href="amlt:/#memType2?type=MemoryType" />
+      </memories>
+    </system>
+  </hwModel>
+  <propertyConstraintsModel>
+    <customProperties key="key">
+      <value xsi:type="am:ReferenceObject" value="memType_pc?type=MemoryType" />
+    </customProperties>
+    <memoryTypeDefinitions name="memType_pc" type="RAM" />
+  </propertyConstraintsModel>
+</am:Amalthea>

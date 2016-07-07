@@ -1,0 +1,30 @@
+
+h1. Configuration Model
+
+The purpose of the configuration model is to provide a common mechanism for configuration purpose.
+The included configurations can contain elements for further processing or build steps.
+The namespace of the model is "http://app4mc.eclipse.org/amalthea/0.7.0/config".
+
+The central element is the __ConfigModel__ class.
+
+!../pictures/model_config_overview.png!
+
+h2. Event Configuration
+
+h3. General Structure
+
+The event configuration represents target events to trace, either in a simulation or on a target hardware platform. The configuration can contain two types of events to trace, which are stored in the ConfigModel class as list with the name __eventsToTrace__:
+
+# __EventConfigLink__: References to already defined events in the event model
+# __EventConfigElement__: Define general event types by adding the attributes to match the events of the __Events__ model.
+
+h3. Sample
+
+An example use case can be to trace all __Process__ activate events. To express this in the configuration, one contained element must be of type __EventConfigElement__ with the corresponding __Event__ configuration and not pointing to an already existent element. The contained __Event__ is of type __ProcessEvent__ and the __ProcessEventType__ is set to __activate__. The other attributes are left blank to not limit the configuration to one __Process__ with a given name for example.
+
+The consumer of the configuration must then match and filter the relevant elements for further processing.
+
+The following screenshot is showing this minimal configuration.
+
+!(#gray)../pictures/model_config_sample.png!
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:common="http://www.amalthea.itea2.org/model/1.3.0/common" xmlns:components="http://amalthea.itea2.org/model/1.3.0/components" xmlns:config="http://www.amalthea.itea2.org/model/1.3.0/config" xmlns:constraints="http://www.amalthea.itea2.org/model/1.3.0/constraints" xmlns:events="http://www.amalthea.itea2.org/model/1.3.0/events" xmlns:hw="http://www.amalthea.itea2.org/model/1.3.0/hw" xmlns:mapping="http://www.amalthea.itea2.org/model/1.3.0/mapping" xmlns:os="http://www.amalthea.itea2.org/model/1.3.0/os" xmlns:propertyconstraints="http://www.amalthea.itea2.org/model/1.3.0/propertyconstraints" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.3.0/stimuli" xmlns:sw="http://www.amalthea.itea2.org/model/1.3.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <swModel>
+    <labels>
+      <customProperties key="key" />
+      <customProperties key="key" />
+      <customProperties key="key" />
+      <customProperties key="key" />
+      <customProperties key="key" />
+    </labels>
+  </swModel>
+</central:AMALTHEA>

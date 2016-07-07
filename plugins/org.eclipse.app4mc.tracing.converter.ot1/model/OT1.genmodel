@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="*******************************************************************************&#xD;&#xA; Copyright (c) 2013 Timing-Architects Embedded Systems GmbH and others.&#xD;&#xA; All rights reserved. This program and the accompanying materials&#xD;&#xA; are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA; which accompanies this distribution, and is available at&#xD;&#xA; http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;&#xD;&#xA;    Generated using Eclipse EMF&#xD;&#xA;&#xD;&#xA;*******************************************************************************"
+    modelDirectory="/org.eclipse.app4mc.tracing.converter.ot1/src" modelPluginID="org.eclipse.app4mc.tracing.converter.ot1"
+    forceOverwrite="true" modelName="OT1" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="7.0" copyrightFields="false">
+  <foreignModel>OT1.ecore</foreignModel>
+  <genPackages prefix="OT1" basePackage="org.eclipse.app4mc.tracing.converter.ot1" resource="XML"
+      disposableProviderFactory="true" ecorePackage="OT1.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="OT1.ecore#//EventTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/schedActivation"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/schedActivationFailed"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/schedStart"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/schedStop"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/schedWait"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/schedRelease"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/schedPreempt"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/schedResume"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/schedTerminate"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/runnableStart"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/runnableStop"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/timestamp"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/timestampData"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/timerangeStart"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/timerangeStop"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/functionStart"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/functionStop"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/codeblockStart"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/codeblockStop"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/pduTransmit"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/pduReceive"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/sigTransmit"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/sigReceive"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/frameTransmit"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/frameReceive"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/msgTransmit"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/msgReceive"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/sync"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//EventTypeEnum/error"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="OT1.ecore#//ExecutionOrderConstraintTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//ExecutionOrderConstraintTypeEnum/total"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//ExecutionOrderConstraintTypeEnum/partial"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="OT1.ecore#//InterruptTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//InterruptTypeEnum/category1"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//InterruptTypeEnum/category2"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="OT1.ecore#//LatencyTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//LatencyTypeEnum/age"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//LatencyTypeEnum/reaction"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="OT1.ecore#//TaskTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TaskTypeEnum/preemptive"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TaskTypeEnum/nonPreemptive"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TaskTypeEnum/cooperative"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="OT1.ecore#//ThresholdTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//ThresholdTypeEnum/min"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//ThresholdTypeEnum/max"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="OT1.ecore#//TimeBaseEnum">
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimeBaseEnum/s"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimeBaseEnum/ms"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimeBaseEnum/us"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimeBaseEnum/ns"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="OT1.ecore#//TimingInformationSourceEnum">
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationSourceEnum/configuration"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationSourceEnum/trace"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationSourceEnum/simulation"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationSourceEnum/analysis"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationSourceEnum/budget"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationSourceEnum/estimation"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationSourceEnum/unknown"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="OT1.ecore#//TimingInformationSubTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationSubTypeEnum/min"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationSubTypeEnum/max"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationSubTypeEnum/average"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationSubTypeEnum/mean"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationSubTypeEnum/stdDeviation"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationSubTypeEnum/frequency"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="OT1.ecore#//TimingInformationTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/CET"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/GET"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/DT"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/ST"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/RT"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/IPT"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/PRE"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/PER"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/WT"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/CPU"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/CAF"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/DAF"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/DAT"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TimingInformationTypeEnum/TT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="OT1.ecore#//TracingOverheadDescriptionEnum">
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TracingOverheadDescriptionEnum/totalOverhead"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TracingOverheadDescriptionEnum/beforeTakingTime"/>
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//TracingOverheadDescriptionEnum/afterTakingTime"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="OT1.ecore#//VersionType">
+      <genEnumLiterals ecoreEnumLiteral="OT1.ecore#//VersionType/_02"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="OT1.ecore#//EventTypeEnumObject"/>
+    <genDataTypes ecoreDataType="OT1.ecore#//ExecutionOrderConstraintTypeEnumObject"/>
+    <genDataTypes ecoreDataType="OT1.ecore#//InterruptTypeEnumObject"/>
+    <genDataTypes ecoreDataType="OT1.ecore#//LatencyTypeEnumObject"/>
+    <genDataTypes ecoreDataType="OT1.ecore#//TaskTypeEnumObject"/>
+    <genDataTypes ecoreDataType="OT1.ecore#//ThresholdTypeEnumObject"/>
+    <genDataTypes ecoreDataType="OT1.ecore#//TimeBaseEnumObject"/>
+    <genDataTypes ecoreDataType="OT1.ecore#//TimingInformationSourceEnumObject"/>
+    <genDataTypes ecoreDataType="OT1.ecore#//TimingInformationSubTypeEnumObject"/>
+    <genDataTypes ecoreDataType="OT1.ecore#//TimingInformationTypeEnumObject"/>
+    <genDataTypes ecoreDataType="OT1.ecore#//TracingOverheadDescriptionEnumObject"/>
+    <genDataTypes ecoreDataType="OT1.ecore#//VersionTypeObject"/>
+    <genClasses ecoreClass="OT1.ecore#//AddressRangeType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//AddressRangeType/endAddress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//AddressRangeType/startAddress"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//AnyDataType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute OT1.ecore#//AnyDataType/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//AnyDataType/tool"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//AnyDataType/vendor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//AnyDataType/version"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="OT1.ecore#//ApplicationElementType"/>
+    <genClasses ecoreClass="OT1.ecore#//ArbitraryEventTriggeringConstraintType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//ArbitraryEventTriggeringConstraintType/lowerBound"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//ArbitraryEventTriggeringConstraintType/upperBound"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//ArbitraryEventTriggeringType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//ArbitraryEventTriggeringType/minDistance"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//ArbitraryEventTriggeringType/maxDistance"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//AutosarOsType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//AutosarOsType/kernelPriority"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//CanBusType"/>
+    <genClasses ecoreClass="OT1.ecore#//ClockType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//ClockType/tickduration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//ClockType/maxAbsTime"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//CodeBlockType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//CodeBlockType/addressRange"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//CodeBlockType/symbolRange"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//CommentDataType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//CommentDataType/comment"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="OT1.ecore#//CommunicationElementType"/>
+    <genClasses ecoreClass="OT1.ecore#//CustomDataType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//CustomDataType/data"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="OT1.ecore#//DataElementType"/>
+    <genClasses ecoreClass="OT1.ecore#//DataRangeElementType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//DataRangeElementType/addressRange"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//DataRangeElementType/symbolRange"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference OT1.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference OT1.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//DocumentRoot/oT1"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//ElementType"/>
+    <genClasses ecoreClass="OT1.ecore#//EventChainElementType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//EventChainElementType/eventChain"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//EventChainType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//EventChainType/stimulusEventReference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//EventChainType/interChainEventReferenceId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//EventChainType/responseEventReference"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//EventDescriptionType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//EventDescriptionType/eventIdMapping"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//EventIdMappingType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//EventIdMappingType/eventId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//EventIdMappingType/eventType"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//EventReferenceElementType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//EventReferenceElementType/eventReference"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//EventReferenceType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//EventReferenceType/elementRefId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//EventReferenceType/eventType"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//EventTriggeringConstraintType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//EventTriggeringConstraintType/eventId"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//EventTriggeringType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//EventTriggeringType/eventReference"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//ExecutionOrderConstraintType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//ExecutionOrderConstraintType/eventChainId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//ExecutionOrderConstraintType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//FlexRayBusType"/>
+    <genClasses ecoreClass="OT1.ecore#//FrameElementType"/>
+    <genClasses ecoreClass="OT1.ecore#//FunctionType"/>
+    <genClasses ecoreClass="OT1.ecore#//IdentifiableElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//IdentifiableElement/id"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//InterruptType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//InterruptType/priority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//InterruptType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//LatencyTimingConstraintType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//LatencyTimingConstraintType/minimum"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//LatencyTimingConstraintType/maximum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//LatencyTimingConstraintType/eventChainId"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//LinBusType"/>
+    <genClasses ecoreClass="OT1.ecore#//MessageType"/>
+    <genClasses ecoreClass="OT1.ecore#//MostBusType"/>
+    <genClasses ecoreClass="OT1.ecore#//OffsetTimingConstraintType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//OffsetTimingConstraintType/minimum"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//OffsetTimingConstraintType/maximum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//OffsetTimingConstraintType/sourceEventId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//OffsetTimingConstraintType/targetEventId"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//OsekOsType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//OsekOsType/kernelPriority"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//OT1HexTraceType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//OT1HexTraceType/data"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//OT1TraceLinkType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//OT1TraceLinkType/link"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//OT1Type">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//OT1Type/comments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//OT1Type/customData"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//OT1Type/tool"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//OT1Type/vendor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//OT1Type/version"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//OT1Type1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//OT1Type1/schedulingEntity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//OT1Type1/version"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//PduType"/>
+    <genClasses ecoreClass="OT1.ecore#//PeriodicEventTriggeringConstraintType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//PeriodicEventTriggeringConstraintType/period"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//PeriodicEventTriggeringConstraintType/jitter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//PeriodicEventTriggeringConstraintType/minInterArrivalTime"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//PosixOsType"/>
+    <genClasses ecoreClass="OT1.ecore#//ProcessType"/>
+    <genClasses ecoreClass="OT1.ecore#//RunnableType"/>
+    <genClasses ecoreClass="OT1.ecore#//SchedulableApplicationElementType"/>
+    <genClasses image="false" ecoreClass="OT1.ecore#//SchedulingEntityElementType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//SchedulingEntityElementType/element"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//SchedulingEntityElementType/timingValues"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//SchedulingEntityElementType/timingConstraints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//SchedulingEntityElementType/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="OT1.ecore#//SchedulingEntityType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//SchedulingEntityType/clock"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//SchedulingEntityType/eventDescription"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//SchedulingEntityType/tracingOverheadContainer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//SchedulingEntityType/element"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//SchedulingEntityType/traces"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//SchedulingEntityType/name"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//SignalType"/>
+    <genClasses ecoreClass="OT1.ecore#//SporadicEventTriggeringConstraintType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//SporadicEventTriggeringConstraintType/period"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//SporadicEventTriggeringConstraintType/jitter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//SporadicEventTriggeringConstraintType/minInterArrivalTime"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//SporadicEventTriggeringConstraintType/maxInterArrivalTime"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//SymbolRangeType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//SymbolRangeType/endSymbol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//SymbolRangeType/startSymbol"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//TaskType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TaskType/offset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TaskType/period"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TaskType/priority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TaskType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//ThreadType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//ThreadType/priority"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//TimeRangeElementType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TimeRangeElementType/latency"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//TimeStampElementType"/>
+    <genClasses ecoreClass="OT1.ecore#//TimeValueType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TimeValueType/denominator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TimeValueType/nominator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TimeValueType/unit"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="OT1.ecore#//TimingConstraintElementType"/>
+    <genClasses ecoreClass="OT1.ecore#//TimingConstraintsType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//TimingConstraintsType/timingConstraint"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//TimingInformationConstraintType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//TimingInformationConstraintType/threshold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TimingInformationConstraintType/thresholdType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TimingInformationConstraintType/timingValueType"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//TimingInformationElementType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//TimingInformationElementType/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TimingInformationElementType/subType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TimingInformationElementType/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="OT1.ecore#//TimingValueElementType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TimingValueElementType/request"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TimingValueElementType/source"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//TimingValuesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//TimingValuesType/timingValue"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//TraceCommentType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TraceCommentType/comment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TraceCommentType/time1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TraceCommentType/time2"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//TraceEntryType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TraceEntryType/data"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TraceEntryType/elementRefId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TraceEntryType/eventId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TraceEntryType/time"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//TracesType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//TracesType/oT1TraceLink"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//TracesType/oT1HexTrace"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//TracesType/xmlTrace"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//TracingOverheadContainerType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//TracingOverheadContainerType/tracingOverhead"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//TracingOverheadType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//TracingOverheadType/time"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TracingOverheadType/eventId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//TracingOverheadType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//UniqueElementType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//UniqueElementType/uuid"/>
+    </genClasses>
+    <genClasses ecoreClass="OT1.ecore#//VariableType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OT1.ecore#//VariableType/length"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="OT1.ecore#//VirtualElementType"/>
+    <genClasses ecoreClass="OT1.ecore#//WindowsOsType"/>
+    <genClasses ecoreClass="OT1.ecore#//XmlTraceType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//XmlTraceType/traceEntry"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OT1.ecore#//XmlTraceType/traceComment"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

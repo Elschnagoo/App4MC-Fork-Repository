@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sw:SWModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:sw="http://www.amalthea.itea2.org/model/1.1.0/sw">
+  <tasks name="1"/>
+  <runnables name="1"/>
+</sw:SWModel>

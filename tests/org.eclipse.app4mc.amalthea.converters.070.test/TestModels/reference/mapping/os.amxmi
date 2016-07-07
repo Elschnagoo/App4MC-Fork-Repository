@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:OSModel xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <operatingSystems>
+    <taskSchedulers name="scheduler_os" />
+    <interruptControllers name="IC_os" />
+  </operatingSystems>
+</am:OSModel>

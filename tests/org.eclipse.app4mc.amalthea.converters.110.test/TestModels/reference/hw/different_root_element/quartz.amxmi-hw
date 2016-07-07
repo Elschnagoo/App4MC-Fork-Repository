@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hw:Quartz xmlns:hw="http://www.amalthea.itea2.org/model/1.2.0/hw" xmlns:common="http://www.amalthea.itea2.org/model/1.2.0/common" xmlns:components="http://amalthea.itea2.org/model/1.2.0/components" xmlns:config="http://www.amalthea.itea2.org/model/1.2.0/config" xmlns:constraints="http://www.amalthea.itea2.org/model/1.2.0/constraints" xmlns:events="http://www.amalthea.itea2.org/model/1.2.0/events" xmlns:mapping="http://www.amalthea.itea2.org/model/1.2.0/mapping" xmlns:os="http://www.amalthea.itea2.org/model/1.2.0/os" xmlns:propertyconstraints="http://www.amalthea.itea2.org/model/1.2.0/propertyconstraints" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.2.0/stimuli" xmlns:sw="http://www.amalthea.itea2.org/model/1.2.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_Roc4EI38EeWdOZ8lzUgh5g">
+  <attribute xsi:type="hw:BoolValue" xmi:id="_Splk8I38EeWdOZ8lzUgh5g" />
+  <components xmi:id="_TEZRoI38EeWdOZ8lzUgh5g">
+    <components xmi:id="_ThVsUI38EeWdOZ8lzUgh5g">
+      <networks xmi:id="_UhloYI38EeWdOZ8lzUgh5g">
+        <prescaler xmi:id="_VHjcMI38EeWdOZ8lzUgh5g" />
+      </networks>
+    </components>
+  </components>
+</hw:Quartz>

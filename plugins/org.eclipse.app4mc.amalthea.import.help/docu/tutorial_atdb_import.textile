@@ -1,0 +1,31 @@
+
+
+h2. AMALTHEA Trace Database (ATDB) Import Example
+
+The following section describes how to use the information contained within an AMALTHEA Trace Database (ATDB) to create a model.
+
+*Step 1*
+
+!../pictures/amalthea_trace_db_example.png!
+
+The figure above shows content of "Amalthea_ArExampleEngine.atdb", an AMALTHEA Trace database provided with the "Democar Example". 
+To get this file create a new example project (see "Creating an example"), based on the "Democar Example".
+
+*Step 2*
+
+!../pictures/amalthea_import_options.png!
+
+Right-click on the project folder "org.eclipse.app4mc.amalthea.example.democar" or any other. You will see several possible options. In that option menu press "Import..." then.
+This will open a dialogue where the different import options available are listed. Open the folder called "AMALTHEA" by clicking on cross next to the title. This is shown in the figure above.
+
+*Step 3*
+
+!../pictures/atdb_import_dialogue.png!
+
+Next, choose mark the option "From AMALTHEA Trace DB" by clicking on it and proceed to the next page by either double-clicking the option name or by pressing the "Next" button. There you are prompted to enter the location of the ATDB file you want to import. Click the upper "Browse..." button to navigate your file system and select the wanted file. If you want to change the target project the model will be created in press the lower "Browse..." button and make your choice. The figure above shows an example input.
+
+*Step 4*
+
+!../pictures/atdb_import_result.png!
+
+After you have made all required inputs, click on "Finish". This will start the analysis of the database. Once the model creation is done the dialogue will close and the newly created amxmi file opened on the AMALTHEA Model editor as shown in the figure above.

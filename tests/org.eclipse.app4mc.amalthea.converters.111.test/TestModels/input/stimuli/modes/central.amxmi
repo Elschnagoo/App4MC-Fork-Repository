@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.2.0/stimuli" xmlns:sw="http://www.amalthea.itea2.org/model/1.2.0/sw" xmi:id="_bqpwcAq5Eeazh8PnCHJqDQ">
+  <swModel xmi:id="_cc664Aq5Eeazh8PnCHJqDQ">
+    <tasks xmi:id="_dvKl4Aq5Eeazh8PnCHJqDQ" name="Task_Test">
+      <callGraph xmi:id="_f-XoYAq5Eeazh8PnCHJqDQ">
+        <graphEntries xsi:type="sw:LabelSwitch" xmi:id="_g7sMQAq5Eeazh8PnCHJqDQ" label="_igTZoAq5Eeazh8PnCHJqDQ">
+          <entries xmi:id="_n6E6sAq5Eeazh8PnCHJqDQ" isDefault="true"/>
+          <entries xmi:id="_rjEy8Aq_Eeazh8PnCHJqDQ" value="1"/>
+          <entries xmi:id="_tIbnMAq_Eeazh8PnCHJqDQ" value="100"/>
+        </graphEntries>
+        <graphEntries xsi:type="sw:LabelSwitch" xmi:id="_J29AEAuPEeatw45e4IN1FQ">
+          <label href="cross.amxmi#_EvG8gAuPEeatw45e4IN1FQ"/>
+          <entries xmi:id="_LEH90AuPEeatw45e4IN1FQ" value="22"/>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <labels xmi:id="_igTZoAq5Eeazh8PnCHJqDQ" name="Label_Test"/>
+  </swModel>
+  <stimuliModel xmi:id="_E4cAcAsHEeatw45e4IN1FQ">
+    <stimuli xsi:type="stimuli:Periodic" xmi:id="_GGnq0AsHEeatw45e4IN1FQ" name="periodic_element">
+      <disablingLabelsList xmi:id="_G3YZYAsHEeatw45e4IN1FQ">
+        <entries xmi:id="_Hf38wAsHEeatw45e4IN1FQ" valueProvider="_igTZoAq5Eeazh8PnCHJqDQ" value="20"/>
+        <entries xmi:id="_HCgigAuPEeatw45e4IN1FQ" value="20">
+          <valueProvider xsi:type="sw:Label" href="cross.amxmi#_EvG8gAuPEeatw45e4IN1FQ"/>
+        </entries>
+      </disablingLabelsList>
+    </stimuli>
+  </stimuliModel>
+</central:AMALTHEA>

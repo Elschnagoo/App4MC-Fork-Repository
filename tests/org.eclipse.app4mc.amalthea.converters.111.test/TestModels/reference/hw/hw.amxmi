@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:hw="http://www.amalthea.itea2.org/model/1.3.0/hw" xmlns:os="http://www.amalthea.itea2.org/model/1.3.0/os" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_MMKX0L97EeWFjLGtonZfOQ">
+  <hwModel xmi:id="_M6k9AL97EeWFjLGtonZfOQ">
+    <ecuTypes xmi:id="_afalkL98EeWFjLGtonZfOQ" />
+    <memoryTypes xmi:id="_P6pXkL-CEeWFjLGtonZfOQ" name="M1" type="CACHE" />
+    <memoryTypes xmi:id="_W1_ZEL-CEeWFjLGtonZfOQ" name="M2" type="RAM" />
+    <memoryTypes xmi:id="_Z5AeIL-CEeWFjLGtonZfOQ" name="M3" type="RAM" />
+    <networkTypes xsi:type="hw:Bus" xmi:id="_FodEIL-EEeWFjLGtonZfOQ" name="B1" busType="TTCAN" schedPolicy="RROBIN" />
+    <networkTypes xsi:type="hw:Bus" xmi:id="_j32a8L-EEeWFjLGtonZfOQ" name="B2" busType="CAN" schedPolicy="RROBIN" />
+    <networkTypes xmi:id="_q1F9EL-IEeWFjLGtonZfOQ" name="NT2" schedPolicy="RROBIN" />
+    <networkTypes xmi:id="_tGy58L-IEeWFjLGtonZfOQ" name="NT1" schedPolicy="PRIORITY" />
+    <system xmi:id="_fQqjgL97EeWFjLGtonZfOQ">
+      <features xsi:type="hw:FeatureTypes" xmi:id="_HpD-EL-REeWFjLGtonZfOQ" value="floatingPointUnit" />
+      <memories xmi:id="_rx72QL98EeWFjLGtonZfOQ">
+        <quartzes xmi:id="_tLrQYL98EeWFjLGtonZfOQ" type="DYNAMIC" />
+      </memories>
+      <networks xmi:id="_ucCFAL98EeWFjLGtonZfOQ">
+        <quartzes xmi:id="_u1HTYL98EeWFjLGtonZfOQ" type="DYNAMIC" />
+        <ports xsi:type="hw:ComplexPort" xmi:id="_U4h0kL-HEeWFjLGtonZfOQ" direction="R">
+          <pins xsi:type="hw:ComplexPin" xmi:id="_VQ21AL-HEeWFjLGtonZfOQ" type="DIGITAL" direction="R" />
+        </ports>
+      </networks>
+      <quartzes xmi:id="_f2FkwL97EeWFjLGtonZfOQ" type="STATIC" />
+      <ports xsi:type="hw:ComplexPort" xmi:id="_ZphT0L-GEeWFjLGtonZfOQ" direction="R">
+        <pins xsi:type="hw:ComplexPin" xmi:id="_SQT1IL-HEeWFjLGtonZfOQ" direction="R" type="ANALOG" />
+      </ports>
+      <prescaler xmi:id="_UtLrwL99EeWFjLGtonZfOQ" quartz="_f2FkwL97EeWFjLGtonZfOQ" />
+      <ecus xmi:id="_pfxmYL98EeWFjLGtonZfOQ">
+        <quartzes xmi:id="_p7WIEL98EeWFjLGtonZfOQ" type="STATIC" />
+      </ecus>
+    </system>
+  </hwModel>
+  <propertyConstraintsModel xmi:id="_gRecEL-CEeWFjLGtonZfOQ">
+    <memTypeDefinitions xmi:id="_gwf6YL-CEeWFjLGtonZfOQ" name="M4" type="RAM" />
+    <memTypeDefinitions xmi:id="_h4v74L-CEeWFjLGtonZfOQ" name="M5" type="FLASH_INT" />
+    <memTypeDefinitions xmi:id="_jdJt4L-CEeWFjLGtonZfOQ" name="M6" type="RAM" />
+  </propertyConstraintsModel>
+</central:AMALTHEA>

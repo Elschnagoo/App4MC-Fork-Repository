@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cc:Catalog xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cc="http://www.eclipse.org/sphinx/check/catalog"
+    id="ValidationRules"
+    label="Amalthea Validation Rules">
+
+  <categories
+    id="Basic"
+    label="Basic Model Checks"/>
+
+  <categories
+    id="WeibullParametersConstraint"
+    label="Weibull Parameter Bound"/>
+
+  <categories
+    id="MappingModelConstraint"
+    label="MappingModel Constraint(Process->Scheduler->Core)"/>
+
+  <categories
+    id="EventModelConstraint"
+    label="EventModel Mapping"/>
+
+  <categories
+    id="ConstraintsModelConstraint"
+    label="EventChain Consistency"/>
+
+  <categories
+    id="HardwareModelConstraint"
+    label="Custom Attribute/Feature Duplicate Key"/>
+
+
+  <constraints
+    id="DuplicateUniqueName"
+    label="Duplicate Unique Name"
+    description="Checks for duplicate unique names of IReferable objects"
+    severity="Error"
+    message="Duplicate name found: {0}"
+    categories="Basic"/>
+
+  <constraints
+    id="CustomPropertyDuplicateKey"
+    label="Custom Property Duplicate Key"
+    description="Checks for duplicate property keys"
+    message="{0} - Duplicate property found: {1}"
+    categories="Basic"/>
+
+  <constraints
+    id="WeibullParametersConstraint"
+    label="Weibull Parameter Constraint"
+    description="Checks if the values of a component's parameters are valid"
+    severity="Warning"
+    message="Deviation Dist contains invalid Weibull parameters: lowerBound: (long) {0} upperBound: (long) {1}"
+    categories="WeibullParametersConstraint"/>
+
+  <constraints
+    id="Process2Scheduler2CoreMappingConstraint"
+    label=""
+    severity="Error"
+    categories="MappingModelConstraint"
+    message="{0}"/>
+
+  <constraints
+    id="LabelEventMappingConstraint"
+    label="LabelEvent Constraint"
+    description="Checks on LabelEvent for complete mapping information"
+    severity="Error"
+    message="LabelEvent &quot;{0}&quot;: Missing mapping information for property &quot;{1}&quot;"
+    categories="EventModelConstraint"/>
+
+  <constraints
+    id="ProcessEventMappingConstraint"
+    label="ProcessEvent Constraint"
+    description="Checks on ProcessEvent for complete mapping information"
+    severity="Error"
+    message="ProcessEvent &quot;{0}&quot;: Missing mapping information for property &quot;{1}&quot;"
+    categories="EventModelConstraint"/>
+
+  <constraints
+    id="RunnableEventMappingConstraint"
+    label="RunnableEvent Constraint"
+    description="Checks on RunnableEvent for complete mapping information"
+    severity="Error"
+    message="RunnableEvent &quot;{0}&quot;: Missing mapping information for property &quot;{1}&quot;"
+    categories="EventModelConstraint"/>
+
+  <constraints
+    id="SemaphoreEventMappingConstraint"
+    label="SemaphoreEvent Constraint"
+    description="Checks on SemaphoreEvent for complete mapping information"
+    severity="Error"
+    message="SemaphoreEvent &quot;{0}&quot;: Missing mapping information for property &quot;{1}&quot;"
+    categories="EventModelConstraint"/>
+
+  <constraints
+    id="StimulusEventMappingConstraint"
+    label="StimulusEvent Constraint"
+    description="Checks on StimulusEvent for complete mapping information"
+    severity="Error"
+    message="StimulusEvent &quot;{0}&quot;: Missing mapping information for property &quot;{1}&quot;"
+    categories="EventModelConstraint"/>
+
+  <constraints
+    id="EventChainsConstraint"
+    label="EventChains Constraint"
+    description="Checks on EventChains for correctly chained response/stimulus pairs"
+    severity="Error"
+    message="&quot;{0}&quot;"
+    categories="ConstraintsModelConstraint"/>
+
+  <constraints
+    id="HwModelAbstractTypeDuplicateNameConstriant"
+    label="HwModel AbstractType Duplicate Name Constraint"
+    description="Checks on HwModel for duplicate attribute/feature name (key) in Abstract Types like CoreType, ECUType, System"
+    severity="Error"
+    message="&quot;{0}&quot;"
+    categories="HardwareModelConstraint"/>
+
+</cc:Catalog>

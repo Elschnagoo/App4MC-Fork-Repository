@@ -1,0 +1,55 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _DGqOIKPrEeWDWL6qw48qbg,_rd2zAKP5EeWDWL6qw48qbg
+Element-Name: ShowTypes
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _0NvUQKP5EeWDWL6qw48qbg
+Runtime-Version: 2.0.1.201508250612
+Save-Time: 1/19/16 8:45 AM
+Testcase-Type: ecl
+Verifications: _DBrfIKP5EeWDWL6qw48qbg
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Model Explorer" | get-tree | select "org.eclipse.app4mc.amalthea.example.modeling/modeling_example_1.amxmi"
+	| double-click
+
+with [get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.amxmi Contents" | get-tree] {
+    get-item AMALTHEA | get-property caption | equals AMALTHEA | verify-true
+    get-item "AMALTHEA/Software" | get-property caption | equals Software | verify-true
+    get-item "AMALTHEA/Hardware" | get-property caption | equals Hardware | verify-true
+    get-item "AMALTHEA/Operating System" | get-property caption | equals "Operating System" | verify-true
+    get-item "AMALTHEA/Stimuli" | get-property caption | equals Stimuli | verify-true
+    get-item "AMALTHEA/Constraints" | get-property caption | equals Constraints | verify-true
+    get-item "AMALTHEA/Events" | get-property caption | equals Events | verify-true
+    get-item "AMALTHEA/Mapping none" | get-property caption | equals "Mapping none" | verify-true
+}
+get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.amxmi Contents" 
+    | get-button "Show types of model elements" | click
+with [get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.amxmi Contents" | get-tree] {
+    get-item "AMALTHEA \\[AMALTHEA\\]" | get-property caption | equals "AMALTHEA [AMALTHEA]" | verify-true
+    get-item "AMALTHEA \\[AMALTHEA\\]/Software \\[SWModel\\]" | get-property caption | equals "Software [SWModel]" 
+        | verify-true
+    get-item "AMALTHEA \\[AMALTHEA\\]/Hardware \\[HWModel\\]" | get-property caption | equals "Hardware [HWModel]" 
+        | verify-true
+    get-item "AMALTHEA \\[AMALTHEA\\]/Operating System \\[OSModel\\]" | get-property caption 
+        | equals "Operating System [OSModel]" | verify-true
+    get-item "AMALTHEA \\[AMALTHEA\\]/Stimuli \\[StimuliModel\\]" | get-property caption 
+        | equals "Stimuli [StimuliModel]" | verify-true
+    get-item "AMALTHEA \\[AMALTHEA\\]/Constraints \\[ConstraintsModel\\]" | get-property caption 
+        | equals "Constraints [ConstraintsModel]" | verify-true
+    get-item "AMALTHEA \\[AMALTHEA\\]/Events \\[EventModel\\]" | get-property caption | equals "Events [EventModel]" 
+        | verify-true
+    get-item "AMALTHEA \\[AMALTHEA\\]/Mapping none \\[MappingModel\\]" | get-property caption 
+        | equals "Mapping none [MappingModel]" | verify-true
+}
+//clearing state of ShowTypes to false/default
+get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.amxmi Contents" 
+    | get-button "Show types of model elements" | click
+get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.amxmi Contents" 
+    | get-button "Show types of model elements" | get-property selected | equals false | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

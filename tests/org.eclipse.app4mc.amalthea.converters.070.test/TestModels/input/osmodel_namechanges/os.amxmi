@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:common="http://www.amalthea.itea2.org/model/1.3.0/common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <osModel>
+    <semaphores name="Sema1">
+      <customProperties key="cust_os_instruction">
+        <value xsi:type="common:ReferenceObject" value="Sema1?type=os.Semaphore"/>
+      </customProperties>
+    </semaphores>
+    <operatingSystems name="OperatingSystem_1" overhead="//@osModel/@osOverheads.0"/>
+    <osOverheads name="OsInstruction_1"/>
+  </osModel>
+</central:AMALTHEA>

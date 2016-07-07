@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry exported="true" kind="lib" path="libs/jgrapht-core-0.9.0.jar" sourcepath="libs-src/jgrapht-source.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/org.jgrapht/libs-doc/jgrapht-javadoc.zip!/javadoc"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

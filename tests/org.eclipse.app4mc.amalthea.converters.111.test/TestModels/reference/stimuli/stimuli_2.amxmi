@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:common="http://www.amalthea.itea2.org/model/1.3.0/common" xmlns:components="http://amalthea.itea2.org/model/1.3.0/components" xmlns:config="http://www.amalthea.itea2.org/model/1.3.0/config" xmlns:constraints="http://www.amalthea.itea2.org/model/1.3.0/constraints" xmlns:events="http://www.amalthea.itea2.org/model/1.3.0/events" xmlns:hw="http://www.amalthea.itea2.org/model/1.3.0/hw" xmlns:mapping="http://www.amalthea.itea2.org/model/1.3.0/mapping" xmlns:os="http://www.amalthea.itea2.org/model/1.3.0/os" xmlns:propertyconstraints="http://www.amalthea.itea2.org/model/1.3.0/propertyconstraints" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.3.0/stimuli" xmlns:sw="http://www.amalthea.itea2.org/model/1.3.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <swModel>
+    <labels name="Label" />
+    <modes name="mode_stimuli_2_migration_generated" xmi:id="_4R9C4CDEEeaapuV49CSqeg">
+      <literals name="0" xmi:id="_4R9C4SDEEeaapuV49CSqeg" />
+      <literals name="1" xmi:id="_4R9C4iDEEeaapuV49CSqeg" />
+      <literals name="2" xmi:id="_4R9C4yDEEeaapuV49CSqeg" />
+    </modes>
+    <modeLabels name="Label" xmi:id="_4R9p8CDEEeaapuV49CSqeg" />
+  </swModel>
+  <stimuliModel>
+    <stimuli xsi:type="stimuli:ArrivalCurve">
+      <setModeValueList>
+        <entries valueProvider="_4R9p8CDEEeaapuV49CSqeg" value="_4R9C4SDEEeaapuV49CSqeg" />
+      </setModeValueList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:CustomStimulus">
+      <setModeValueList>
+        <entries valueProvider="_4R9p8CDEEeaapuV49CSqeg" value="_4R9C4SDEEeaapuV49CSqeg" />
+      </setModeValueList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:InterProcess">
+      <setModeValueList>
+        <entries valueProvider="_4R9p8CDEEeaapuV49CSqeg" value="_4R9C4SDEEeaapuV49CSqeg" />
+      </setModeValueList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:Periodic" name="PeriodicElement">
+      <setModeValueList>
+        <entries valueProvider="_4R9p8CDEEeaapuV49CSqeg" value="_4R9C4iDEEeaapuV49CSqeg" />
+        <entries valueProvider="_4R9p8CDEEeaapuV49CSqeg" value="_4R9C4yDEEeaapuV49CSqeg" />
+      </setModeValueList>
+      <enablingModeValueList>
+        <entries valueProvider="_4R9p8CDEEeaapuV49CSqeg" value="_4R9C4SDEEeaapuV49CSqeg" />
+      </enablingModeValueList>
+      <disablingModeValueList>
+        <entries valueProvider="_4R9p8CDEEeaapuV49CSqeg" value="_4R9C4SDEEeaapuV49CSqeg" />
+      </disablingModeValueList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:PeriodicEvent">
+      <setModeValueList>
+        <entries valueProvider="_4R9p8CDEEeaapuV49CSqeg" value="_4R9C4SDEEeaapuV49CSqeg" />
+      </setModeValueList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:Single">
+      <setModeValueList>
+        <entries valueProvider="_4R9p8CDEEeaapuV49CSqeg" value="_4R9C4SDEEeaapuV49CSqeg" />
+      </setModeValueList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:Sporadic">
+      <setModeValueList>
+        <entries valueProvider="_4R9p8CDEEeaapuV49CSqeg" value="_4R9C4SDEEeaapuV49CSqeg" />
+      </setModeValueList>
+    </stimuli>
+  </stimuliModel>
+</central:AMALTHEA>

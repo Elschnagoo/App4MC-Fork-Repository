@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?compositeMetadataRepository version='1.0.0'?>
+<repository name='APP4MC Tool Platform' type='org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository' version='1'>
+  <properties size='2'>
+    <property name='p2.timestamp' value='1397033440899'/>
+  </properties>
+  <children size='9'>
+    <child location='http://download.eclipse.org/modeling/emf/emf/updates/releases'/>
+    <child location='http://download.eclipse.org/modeling/emf/compare/updates/releases'/>
+    <child location='http://download.eclipse.org/rmf/updates'/>
+    <child location='http://download.eclipse.org/sphinx/updates/interim'/>
+    <child location='http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases'/>
+    <child location='http://franca.eclipselabs.org.codespot.com/git/update_site/releases'/>
+    <child location='http://updates.yakindu.org/sct/kepler/releases'/>
+  </children>
+</repository>

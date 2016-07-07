@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hw:HWModel xmlns:hw="http://www.amalthea.itea2.org/model/1.2.0/hw" xmlns:common="http://www.amalthea.itea2.org/model/1.2.0/common" xmlns:components="http://amalthea.itea2.org/model/1.2.0/components" xmlns:config="http://www.amalthea.itea2.org/model/1.2.0/config" xmlns:constraints="http://www.amalthea.itea2.org/model/1.2.0/constraints" xmlns:events="http://www.amalthea.itea2.org/model/1.2.0/events" xmlns:mapping="http://www.amalthea.itea2.org/model/1.2.0/mapping" xmlns:os="http://www.amalthea.itea2.org/model/1.2.0/os" xmlns:propertyconstraints="http://www.amalthea.itea2.org/model/1.2.0/propertyconstraints" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.2.0/stimuli" xmlns:sw="http://www.amalthea.itea2.org/model/1.2.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <coreTypes name="DefaultCore" instructionsPerCycle="1" />
+  <system name="Democar">
+    <ecus name="ECU_1">
+      <quartzes name="QuartzOscillator_1" frequency="200000000" type="STATIC" />
+      <quartzes name="QuartzOscillator_2" frequency="200000000" type="STATIC" />
+      <microcontrollers name="Processor_1">
+        <memories name="Mem_1">
+          <ports xsi:type="hw:ComplexPort" bitWidth="16" writeCycles="10" readCycles="10" name="Mem_1_port" />
+        </memories>
+        <cores name="Core_1" coreType="//@coreTypes.0">
+          <prescaler name="Core_1_prescaler" clockRatio="1.0" quartz="//@system/@ecus.0/@quartzes.0" />
+        </cores>
+        <cores name="Core_2" coreType="//@coreTypes.0">
+          <prescaler name="Core_2_prescaler" clockRatio="1.0" quartz="//@system/@ecus.0/@quartzes.1" />
+        </cores>
+      </microcontrollers>
+    </ecus>
+  </system>
+</hw:HWModel>

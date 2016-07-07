@@ -1,0 +1,105 @@
+
+h1. Introduction
+
+AMALTHEA comes with a predefined perspective available in the Eclipse menu under Window -> Open Perspective -> Other -> AMALTHEA. This perspective consists of the following elements:
+
+* AMALTHEA Model Explorer
+* Editor
+** Tree Editor showing the structure of the model content
+** Standard Properties Tab is used to work on elements attributes
+The following screenshot is showing this perspective and its contained elements.
+
+!../pictures/user_guide_editor_structure.png!
+
+h2. Steps to create a new AMALTHEA model
+
+AMALTHEA provides a standard wizard to create a new model from scratch.
+The next steps are showing this wizard and how to deal with it.
+
+Basic starting point is __File__ -> __New__ -> __Other__
+An entry for a new AMALTHEA model can be found.
+
+!../pictures/user_guide_wizard_step1.png!
+
+In the next screen the content of the file must be chosen.
+At the first option __Metamodel__ the __AMALTHEA Model__ should be chosen.
+The second option __Root element package__ gives the option to chose one of the provided AMALTHEA submodels. 
+If you want to have one file containing all or more than one submodel, you should use the __central__.
+
+!../pictures/user_guide_wizard_step2_1.png!
+
+As a third point the __Root element class__ must be chosen.
+For the __central__ model only one element is available, the __AMALTHEA__ element, which is able to hold the other submodels.
+
+!../pictures/user_guide_wizard_step2_2.png!
+
+Choosing another submodel, there is always one central element available for every submodel. These elements are shown in more detail in the next table:
+
+|_. SubModel |_. Central element |
+| sw | SWModel |
+| constraints | ConstraintsModel |
+| config | ConfigModel |
+| propertyconstraints | PropertyConstraintsModel |
+| central | AMALTHEA |
+| events | EventModel |
+| hw | HWModel |
+| os | OSModel |
+| stimuli | StimuliModel |
+| mapping | MappingModel |
+
+In the last step a name for the new model file has to be given.
+
+h2. AMALTHEA Editor
+
+The AMALTHEA Editor shows either the entire model that contains sub models or one of the sub models.
+The next screenshot shows the "New Child" menu with all its possibilities.  
+
+!(#gray)../pictures/user_editor_with_central_model.png!
+
+In addition the AMALTHEA Editor has two commands available at the top right of the Editor.
+
+!(#gray)../pictures/user_guide_editor_commands.png!
+
+h3. Show types of model elements
+
+The Show types of elements button triggers the editor to show the direct type of the element in the tree editor using [element_type]. The following screenshot shows the toggle and the types marked with an underline.
+
+!(#gray)../pictures/user_guide_editor_showtypes.png!
+
+h3. Search for model elements
+
+The editor provides the possibility to filter model elements by using the available name attribute. This can be used for example to filter all elements in the model which has abs in their name. The search and result view is using the Eclipse search as result view.
+
+!(#gray)../pictures/user_guide_editor_search_input.png!
+
+The search result is using the Eclipse Search View.
+
+!(#gray)../pictures/user_guide_editor_search_result1.png!
+
+An additional option is to toggle the search results to group them by type as shown in the next screenshot.
+
+!(#gray)../pictures/user_guide_editor_search_result2.png!
+
+
+h2. AMALTHEA Examples
+
+The AMALTHEA tool platform comes with several examples. This section will describe how a new project based on these examples can be created. 
+
+*Step 1*
+
+!../pictures/ExampleMapping/01CreateNewExample.png!
+
+The first step is to create project. To do this, click the "new" icon in the top left corner and select "Example...".
+
+*Step 2*
+
+!../pictures/ExampleMapping/02DemoCarExample.png!
+
+The "New Example" wizard will pop up and you chose one from several examples. Select one of this examples and hit next to continue.
+
+*Step 3*
+
+!../pictures/ExampleMapping/03DemoCarExampleFinish.png!
+
+You will see a summary of the example projects that will be imported. Click "Finish" to close this dialog and import the listed project(s). You can now navigate through the Project Explorer and inspect the models.
+

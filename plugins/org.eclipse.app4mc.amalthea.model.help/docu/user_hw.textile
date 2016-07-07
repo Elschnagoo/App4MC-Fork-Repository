@@ -1,0 +1,15 @@
+
+h2. Hardware
+
+The AMALTHEA hardware model is used to describe hardware systems. The overall structure of this model is as followed:
+
+* A *System* contains one or more *ECUs*
+* An *ECU* contains one or more *Microcontrollers*
+* A *Microcontroller* contains one or more *Cores*
+* (Optional) Each of these abstractions can contain one or more memories, networks or peripheral elements. 
+
+Usually, this is also considered the least amount of information which *must* be present in the model. 
+
+Since the hardware model is meant to be utilized for a wide range of use cases, additional information might be required w.r.t. the specific use case. Examples for its usage, as well as the resp. minimal amount of required information, are provided within the example section (*User Guide* -> *Examples* -> *Hwmodel Example*).
+
+The information, which is required in determining a software-to-hardware-mapping with the AMALTHEA Mapping Plugin, is listed in Deliverable D3.4. Examples of hardware models for this use case will be generated during the mapping tutorials (See sections *User Guide* -> *Tutorials* -> *Mapping Example 1/2*). 

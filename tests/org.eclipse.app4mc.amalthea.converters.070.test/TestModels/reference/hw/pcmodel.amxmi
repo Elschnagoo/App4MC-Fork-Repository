@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:PropertyConstraintsModel xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <customProperties key="key">
+    <value xsi:type="am:ReferenceObject">
+      <value xsi:type="am:Memory" href="amlt:/#Memory1?type=Memory" />
+    </value>
+  </customProperties>
+  <customProperties key="key">
+    <value xsi:type="am:ReferenceObject">
+      <value xsi:type="am:HwSystem" href="amlt:/#sys?type=HwSystem" />
+    </value>
+  </customProperties>
+  <customProperties key="key">
+    <value xsi:type="am:ReferenceObject">
+      <value xsi:type="am:HwComponent" href="amlt:/#Comp1?type=HwComponent" />
+    </value>
+  </customProperties>
+  <customProperties key="key">
+    <value xsi:type="am:ReferenceObject">
+      <value xsi:type="am:HwPort" href="amlt:/#sys/hwPort?type=HwPort" />
+    </value>
+  </customProperties>
+  <customProperties key="key">
+    <value xsi:type="am:ReferenceObject">
+      <value xsi:type="am:SystemType" href="amlt:/#no-name?type=SystemType" />
+    </value>
+  </customProperties>
+  <customProperties key="key">
+    <value xsi:type="am:ReferenceObject">
+      <value xsi:type="am:ECUType" href="amlt:/#no-name?type=ECUType" />
+    </value>
+  </customProperties>
+</am:PropertyConstraintsModel>

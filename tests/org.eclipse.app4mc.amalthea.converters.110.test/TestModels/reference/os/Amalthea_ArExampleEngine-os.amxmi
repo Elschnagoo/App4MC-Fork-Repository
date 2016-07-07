@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * *******************************************************************************
+ *  Copyright (c) 2013 LaS3 (Regensburg University of Applied Sciences) and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *  Contributors:
+ *     LaS3 (Regensburg University of Applied Sciences) - initial draft
+ * 
+ *  Description:
+ *  This AMALTHEA example file describes a part of an engine management system.
+ *  It is loosely based on the publicly available information taken from 
+ *  "Patrick Frey - A Timing Model for Real-Time Control-Systems and 
+ *  its Application on Simulation and Monitoring of AUTOSAR Systems"
+ *  (http://vts.uni-ulm.de/docs/2011/7505/vts_7505_10701.pdf)
+ *
+ * *******************************************************************************
+ */
+-->
+<os:OSModel xmlns:os="http://www.amalthea.itea2.org/model/1.2.0/os" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <osBuffering />
+  <operatingSystems name="OperatingSystem">
+    <taskSchedulers name="Task_Scheduler_Core_1">
+      <schedulingAlgorithm xsi:type="os:OSEK" />
+      <schedulingUnit xsi:type="os:SchedulingHWUnit">
+        <delay value="1" unit="ns" />
+      </schedulingUnit>
+    </taskSchedulers>
+    <taskSchedulers name="Task_Scheduler_Core_2">
+      <schedulingAlgorithm xsi:type="os:OSEK" />
+      <schedulingUnit xsi:type="os:SchedulingHWUnit">
+        <delay value="1" unit="ns" />
+      </schedulingUnit>
+    </taskSchedulers>
+  </operatingSystems>
+</os:OSModel>

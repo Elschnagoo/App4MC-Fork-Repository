@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:HWModel xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <systemTypes />
+  <ecuTypes />
+  <memoryTypes name="MemType1" type="FLASH_INT" />
+  <system name="sys">
+    <memories name="Memory1" type="MemType1?type=MemoryType" />
+    <memories name="memory2" />
+    <components name="Comp1">
+      <components name="subComp">
+        <components name="sub_sub_component" />
+      </components>
+    </components>
+    <components name="hwComp1">
+      <ports name="hwPort2" />
+    </components>
+    <ports name="hwPort" />
+  </system>
+</am:HWModel>

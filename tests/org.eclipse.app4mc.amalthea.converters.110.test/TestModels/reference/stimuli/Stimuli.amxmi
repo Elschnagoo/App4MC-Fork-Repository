@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:common="http://www.amalthea.itea2.org/model/1.2.0/common" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.2.0/stimuli" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_0eEDQJNmEeWQC6k3Y09j_A">
+  <stimuliModel xmi:id="_1F5fUJNmEeWQC6k3Y09j_A">
+    <stimuli xsi:type="stimuli:Single" xmi:id="_4APJgJNmEeWQC6k3Y09j_A">
+      <stimulusDeviation xmi:id="_6eGTEJNmEeWQC6k3Y09j_A">
+        <lowerBound xsi:type="common:SignedTime" xmi:id="_AcF7gJNnEeWQC6k3Y09j_A" />
+        <upperBound xsi:type="common:SignedTime" xmi:id="_A9n7QJNnEeWQC6k3Y09j_A" value="10" />
+        <distribution xsi:type="common:UniformDistribution" xmi:id="_7MPLcJNmEeWQC6k3Y09j_A" />
+      </stimulusDeviation>
+      <activation xmi:id="_4h328JNmEeWQC6k3Y09j_A" value="10" />
+    </stimuli>
+    <stimuli xsi:type="stimuli:Sporadic" xmi:id="_CluhgJNnEeWQC6k3Y09j_A">
+      <stimulusDeviation xmi:id="_C793QJNnEeWQC6k3Y09j_A">
+        <distribution xsi:type="common:GaussDistribution" xmi:id="_Dr9w0JNnEeWQC6k3Y09j_A">
+          <sd xsi:type="common:SignedTime" xmi:id="_EM5ToJNnEeWQC6k3Y09j_A" value="10" />
+        </distribution>
+      </stimulusDeviation>
+    </stimuli>
+    <clocks xsi:type="stimuli:ClockMultiplierList" xmi:id="_1fCYEJNmEeWQC6k3Y09j_A">
+      <entries xmi:id="_1vVd4JNmEeWQC6k3Y09j_A" multiplier="5.0" />
+      <entries xmi:id="_2rTW4JNmEeWQC6k3Y09j_A" multiplier="8.0" />
+    </clocks>
+  </stimuliModel>
+</central:AMALTHEA>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:sw="http://www.amalthea.itea2.org/model/1.3.0/sw" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <tasks name="Task">
+      <callGraph>
+        <graphEntries xsi:type="sw:ModeSwitch">
+          <entries value="Mode1/ModeLiteral_1?type=common.ModeLiteral" isDefault="true"/>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <runnables name="Runnable1">
+      <runnableItems xsi:type="sw:LabelAccess" data="label1?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:Group" isOrdered="true">
+        <items>
+          <runnableItem xsi:type="sw:LabelAccess" data="label1?type=sw.Label" access="read" isBuffered="notBuffered"/>
+        </items>
+      </runnableItems>
+      <runnableItems xsi:type="sw:ProbabilityGroup">
+        <items>
+          <runnableItem xsi:type="sw:RunnableCall" runnable="Runnable1?type=sw.Runnable"/>
+        </items>
+      </runnableItems>
+      <runnableItems xsi:type="sw:LabelAccess" access="read" isBuffered="buffered">
+        <data href="amlt:/#no-name?type=sw.Label"/>
+      </runnableItems>
+      <runnableItems xsi:type="sw:Group" isOrdered="true">
+        <items>
+          <runnableItem xsi:type="sw:RunnableCall"/>
+        </items>
+        <items>
+          <runnableItem xsi:type="sw:RunnableCall"/>
+        </items>
+        <items>
+          <runnableItem xsi:type="sw:SemaphoreAccess" accessEnum="release"/>
+        </items>
+        <items>
+          <runnableItem xsi:type="sw:Group" isOrdered="true">
+            <items>
+              <runnableItem xsi:type="sw:Group" isOrdered="true">
+                <items>
+                  <runnableItem xsi:type="sw:SemaphoreAccess" accessEnum="exclusive"/>
+                </items>
+                <items>
+                  <runnableItem xsi:type="sw:SenderReceiverWrite" isBuffered="true"/>
+                </items>
+                <items>
+                  <runnableItem xsi:type="sw:SenderReceiverRead" isBuffered="true" label="label1?type=sw.Label"/>
+                </items>
+              </runnableItem>
+            </items>
+          </runnableItem>
+        </items>
+      </runnableItems>
+      <runnableItems xsi:type="sw:SemaphoreAccess" accessEnum="request"/>
+    </runnables>
+    <labels name="label1" isBuffered="notBuffered"/>
+    <modes name="Mode1">
+      <literals name="ModeLiteral_1"/>
+    </modes>
+  </swModel>
+</central:AMALTHEA>

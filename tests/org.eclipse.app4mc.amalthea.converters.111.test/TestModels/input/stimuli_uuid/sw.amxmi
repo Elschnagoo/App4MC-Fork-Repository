@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmi:id="__YWE0Bz1EeaQE4BT-v2fIw">
+  <swModel xmi:id="__YWE0Rz1EeaQE4BT-v2fIw">
+    <labels xmi:id="__YWE0hz1EeaQE4BT-v2fIw" name="L1_SW"/>
+  </swModel>
+</central:AMALTHEA>

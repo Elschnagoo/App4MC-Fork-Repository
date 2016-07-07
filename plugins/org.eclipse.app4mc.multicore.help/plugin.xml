@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="root-tutorial_multicore-toc.xml"
+            primary="false">
+      </toc>
+      <toc
+            file="toc/tutorial_create_task-toc.xml"
+            primary="false">
+      </toc>
+      <toc
+            file="toc/tutorial_mapping_1-toc.xml"
+            primary="false">
+      </toc>
+      <toc
+            file="toc/tutorial_mapping_2-toc.xml"
+            primary="false">
+      </toc>
+      
+      <toc
+            file="root-dev_partitioning-toc.xml"
+            primary="false">
+      </toc>
+      <toc
+            file="toc/dev_partitioning-toc.xml"
+            primary="false">
+      </toc>
+   </extension>
+
+</plugin>

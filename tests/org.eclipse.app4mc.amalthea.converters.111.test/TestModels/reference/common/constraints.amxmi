@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:constraints="http://www.amalthea.itea2.org/model/1.3.0/constraints" xmlns:os="http://www.amalthea.itea2.org/model/1.3.0/os" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_k_j50L-YEeWFjLGtonZfOQ">
+  <constraintsModel xmi:id="_uCJUoL-YEeWFjLGtonZfOQ">
+    <timingConstraints xsi:type="constraints:DelayConstraint" xmi:id="_579bQL-YEeWFjLGtonZfOQ">
+      <lower xmi:id="_8APAIL-YEeWFjLGtonZfOQ" unit="ns" />
+    </timingConstraints>
+    <timingConstraints xsi:type="constraints:AgeConstraint" xmi:id="_N2czwL-ZEeWFjLGtonZfOQ">
+      <maximum xmi:id="_OfDE0L-ZEeWFjLGtonZfOQ" unit="ns" />
+    </timingConstraints>
+    <timingConstraints xsi:type="constraints:SynchronisationConstraint" xmi:id="_UsuQUMBPEeWFjLGtonZfOQ">
+      <tolerance xmi:id="_VO8MkMBPEeWFjLGtonZfOQ" unit="ps" />
+    </timingConstraints>
+    <dataAgeConstraints xmi:id="_Fh8dUMBREeWFjLGtonZfOQ">
+      <dataAge xsi:type="constraints:DataAgeTime" xmi:id="_GY7IoMBREeWFjLGtonZfOQ">
+        <minimumTime xmi:id="_IZWIQMBREeWFjLGtonZfOQ" unit="ps" />
+        <maximumTime xmi:id="_HpJaYMBREeWFjLGtonZfOQ" unit="ps" />
+      </dataAge>
+    </dataAgeConstraints>
+  </constraintsModel>
+</central:AMALTHEA>

@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Documentation
+Bundle-SymbolicName: org.eclipse.app4mc.help;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: Eclipse.org

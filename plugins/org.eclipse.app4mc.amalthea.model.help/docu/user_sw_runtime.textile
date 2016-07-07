@@ -1,0 +1,52 @@
+
+h1. Software (runtime)
+
+During runtime, the dynamic behavior of the software can be observed. The following Gantt chart shows an excerpt of such a dynamic behavior.
+
+!{width: 1000px}../pictures/user_sw_runtime_gantt.png!
+
+To model the observed behavior in the AMALTHEA model there are schedulable units (Processes) that contain the basic software units (Runnables) and stimuli that describe when the processes are executed. Statistical elements like distributions (Gauss, Weibull, ...) are also available in the model. They allow describing the variation of values if there are multiple occurrences.  
+
+In the following sections, a high level description of the individual elements of a software description that define the dynamic behavior are presented.
+
+h2. Processes (Tasks or ISRs)
+
+!{width: 1000px}../pictures/user_sw_runtime_gantt_task.png!
+
+Processes represent executable units that are managed by an operating system scheduler. A process is thus the smallest schedulable unit managed by the operating system. Each process also has its own name space and resources (including memory) protected against use from other processes. In general, two different kinds of processes can be distinguished: task and Interrupt Service Routine (ISR). Latter is a software routine called in case of an interrupt. ISRs have normally higher priority than tasks and can only be suspended by another ISR which presents a higher priority than the one running. In the Gantt chart above, a task called 'TASK_InputProcessing' can be seen. In the following sections all elements, that run within the context of a process, are described.
+
+
+h3. Runnables
+
+!{width: 1000px}../pictures/user_sw_runtime_gantt_runnable.png!
+
+Runnables are basic software units. In general it can be said, that a Runnable is comparable to a function. It runs within the context of a process and is described by a sequence of instructions. Those instructions can again represent different actions that define the dynamic behavior of the software. Following, such possible actions are listed:
+* Semaphore Access: request/release of a semaphore
+* Label Access: reading/writing a data signal
+* Instructions: number of unspecified instructions to be executed
+* ...
+
+!../pictures/user_sw_new_runnable_iItem.png!
+
+In the following sections elements, that can be of concern within a runnable, are described in more detail.
+
+h4. Labels
+
+!{width: 1000px}../pictures/user_sw_runtime_gantt_signal.png!
+
+Labels represent the system's view of data exchange. As a consequence, labels are used to represent communication in a flattened structure, with (at least) one label defined for each data element sent or received by a Runnable instance.
+
+h4. Semaphore
+
+!{width: 1000px}../pictures/user_sw_runtime_gantt_semaphore.png!
+
+The main functionality of a semaphore is to control simultaneous use of a single resource by several entities, e.g. scheduling of requests, multiple access protection.
+
+h2. Stimulation
+
+Before, we described the dynamic behavior of a specific process instance. In general however, a process is not only activated once but many times. The action of activating a process is called stimulation. The following three stimulation patterns can thereby be distinguished:
+* Single: single activation of a process
+* Periodic: periodic activation of a process with a specific frequency
+* Sporadic: recurring activation of a process without following a specific pattern  
+
+!../pictures/model__stimuli.png!

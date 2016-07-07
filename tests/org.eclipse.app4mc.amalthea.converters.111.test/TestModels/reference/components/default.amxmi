@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:components="http://amalthea.itea2.org/model/1.3.0/components" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <componentsModel>
+    <components name="Comp1">
+      <ports xsi:type="components:FInterfacePort" name="p1" kind="PROVIDES" />
+    </components>
+    <components xsi:type="components:Composite" name="Composite1">
+      <componentInstances type="//@componentsModel/@elements.0" />
+      <connectors name="">
+        <sourcePort instance="//@componentsModel/@elements.1/@elements.0" port="//@componentsModel/@elements.0/@ports.0" />
+        <targetPort instance="//@componentsModel/@elements.1/@elements.0" port="//@componentsModel/@elements.0/@ports.0" />
+      </connectors>
+      <componentInstances>
+        <type href="test.amxmi#//@componentsModel/@elements.1" />
+      </componentInstances>
+      <componentInstances>
+        <type href="test.amxmi#//@componentsModel/@elements.1" />
+      </componentInstances>
+    </components>
+    <systems>
+      <connectors>
+        <sourcePort>
+          <instance href="test.amxmi#//@componentsModel/@elements.1/@elements.0" />
+          <port xsi:type="components:FInterfacePort" href="test.amxmi#//@componentsModel/@elements.0/@ports.0" />
+        </sourcePort>
+        <targetPort instance="//@componentsModel/@elements.2/@elements.1" port="//@componentsModel/@elements.0/@ports.0" />
+      </connectors>
+      <componentInstances name="c1" type="//@componentsModel/@elements.0" />
+    </systems>
+  </componentsModel>
+</central:AMALTHEA>

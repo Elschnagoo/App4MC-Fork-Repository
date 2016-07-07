@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Tool Platform IDE
+Bundle-SymbolicName: org.eclipse.app4mc.platform.ide;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: Eclipse.org
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8,
+ JavaSE-1.7
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.equinox.app,
+ org.eclipse.platform,
+ org.eclipse.sphinx.emf.explorer,
+ org.eclipse.ui.navigator,
+ org.eclipse.ui.navigator.resources,
+ org.eclipse.ui,
+ org.eclipse.ui.ide.application,
+ org.eclipse.ui.intro
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.eclipse.app4mc.platform.ide.IDEPlugin

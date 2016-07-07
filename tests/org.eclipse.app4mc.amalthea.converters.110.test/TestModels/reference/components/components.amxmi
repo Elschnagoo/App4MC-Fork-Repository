@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:common="http://www.amalthea.itea2.org/model/1.2.0/common" xmlns:components="http://amalthea.itea2.org/model/1.2.0/components" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_vwMaoJLREeWQC6k3Y09j_A">
+  <componentsModel xmi:id="_wYLnsJLREeWQC6k3Y09j_A">
+    <elements xsi:type="components:Component" xmi:id="_wxtiAJLREeWQC6k3Y09j_A">
+      <customProperties xmi:id="_yAGAsJLREeWQC6k3Y09j_A" key="1">
+        <value xsi:type="common:BooleanObject" xmi:id="_ziHNEJLREeWQC6k3Y09j_A" />
+      </customProperties>
+      <ports xsi:type="components:FInterfacePort" xmi:id="_xQ28IJLREeWQC6k3Y09j_A" />
+    </elements>
+  </componentsModel>
+</central:AMALTHEA>

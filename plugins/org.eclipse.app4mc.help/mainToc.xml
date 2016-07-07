@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="APP4MC Documentation">
+   <link toc="toc/introduction-toc.xml"/>
+   <anchor id="app4mc.docu.root"/>
+   <topic label="User Guide">
+      <anchor id="app4mc.docu.userguide"/>
+      <topic label="Examples">
+         <link toc="toc/example_modeling_1-toc.xml"/>
+         <link toc="toc/example_modeling_2-toc.xml"/>
+         <link toc="toc/example_democar-toc.xml"/>
+         <link toc="toc/example_hardware-toc.xml"/>
+         <anchor id="app4mc.docu.examples"/>
+      </topic>
+      <topic label="Tutorials">
+         <anchor id="app4mc.docu.tutorials"/>
+      </topic>
+      <anchor id="app4mc.docu.editors"/>
+      <anchor id="app4mc.docu.validation"/>
+      <anchor id="app4mc.docu.converters"/>
+      <anchor id="app4mc.docu.misc"/>
+   </topic>
+   <anchor id="app4mc.docu.models"/>
+   <topic label="Developer Guide">
+      <anchor id="app4mc.docu.devguide"/>
+      <link toc="toc/dev_overview-toc.xml"/>
+      <anchor id="app4mc.docu.dev.editors"/>
+      <anchor id="app4mc.docu.dev.validation"/>
+      <anchor id="app4mc.docu.dev.workflow"/>
+      <anchor id="app4mc.docu.dev.converters"/>
+      <anchor id="app4mc.docu.dev.multicore"/>
+      <anchor id="app4mc.docu.dev.misc"/>
+   </topic>
+   <link toc="toc/release_notes-toc.xml"/>
+   <link toc="toc/roadmap-toc.xml"/>
+</toc>

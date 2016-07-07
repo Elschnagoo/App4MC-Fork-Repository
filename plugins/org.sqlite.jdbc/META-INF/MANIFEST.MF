@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SQLite JDBC Driver
+Bundle-SymbolicName: org.sqlite.jdbc
+Bundle-Version: 3.7.2.qualifier
+Bundle-ClassPath: sqlite-jdbc-3.7.2.jar,
+ sqlite-jdbc-3.7.2-javadoc.jar
+Bundle-Vendor: Taro L. Saito, David Crawshaw
+Export-Package: org.ibex.nestedvm,
+ org.ibex.nestedvm.util,
+ org.sqlite
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8,
+ JavaSE-1.7

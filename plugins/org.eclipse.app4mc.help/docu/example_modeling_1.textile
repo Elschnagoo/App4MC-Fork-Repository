@@ -1,0 +1,126 @@
+
+
+h2. Modeling Example 1
+
+h3. General information
+
+Modeling Example 1 describes a simple system consisting of 4 Tasks, which is running on a dual core processor.
+The following figure shows the execution footprint in a Gantt chart:
+!../pictures/ExampleModeling/modeling_1_gantt.png!
+In the following sections, the individual parts of the AMALTHEA model for Modeling Example 1 are presented followed by a short description of its elements.
+
+h3. Hardware Model
+
+!../pictures/ExampleModeling/modeling_1_hw.png!
+
+The hardware model of Modeling Example 1 consists as already mentioned of a dual core processor.
+The following gives a structural overview on the modeled elements.
+There, the two cores, 'Core_1' and 'Core_2', have a static processing frequency of 100 MHz each, which is specified by the corresponding quartz oscillator 'Quartz'.
+
+h3. Operating System Model
+
+!../pictures/ExampleModeling/modeling_1_schedulers.png!
+
+The operating system (OS) model defines in case of Modeling Example 1 only the needed Scheduler.
+Since a dual core processor has to be managed, two schedulers are modeled correspondingly.
+In addition to the scheduling algorithm used by the scheduler, in this case OSEK, a delay of 100 ns is set, which is the presumed time the scheduler needs for context switches.
+A comprehension of the modeled properties can be found in the following table:
+
+table{text-align:center; border:1px solid black; background:#eee}.
+|_.Scheduler|_.Type|_.Algorithm|_.Delay|
+|*Scheduler_1*|SchedulingHWUnit|OSEK|100 ns|
+|*Scheduler_2*|SchedulingHWUnit|OSEK|100 ns|
+
+h3. Mapping Model
+
+!../pictures/ExampleModeling/modeling_1_mapping.png!
+
+The mapping model defines allocations between different model parts.
+On the one hand, this is the allocation of processes to a scheduler.
+In case of Example 1, 'Task_1' and 'Task_2' are managed by 'Scheduler_1', while the other tasks are managed by 'Scheduler_2'.
+On the other hand the allocation of cores to a scheduler is set.
+For Modeling Example 1 two local schedulers were modeled.
+As a consequence, each scheduler manages one of the processing cores.
+A comprehension of the modeled properties can be found in the following tables:
+
+h4. Executable Allocation
+
+table{text-align:center; border:1px solid black; background:#eee}.
+|_.Scheduler|_.Process|
+|Scheduler_1|Task_1|
+|Scheduler_1|Task_2|
+|Scheduler_2|Task_3|
+|Scheduler_2|Task_4|
+
+h4. Core Allocation
+
+table{text-align:center; border:1px solid black; background:#eee}.
+|_.Scheduler|_.Core|
+|Scheduler_1|Core_1|
+|Scheduler_2|Core_2|
+
+h3. Software Model
+
+h4. Tasks
+
+!../pictures/ExampleModeling/modeling_1_tasks.png!
+
+As already mentioned above, the software model of Modeling Example 1 consists exactly of four tasks, named 'Task_1' to 'Task_4'.
+Each task is preemptive and has a priority assigned according its deadline, meaning the one with the shortest deadline, 'Task_1', has the highest priority, and so on.
+Each task also calls a definitive number of Runnables in a sequential order.
+A comprehension of the modeled properties can be found in the following table:
+
+table{text-align:center; border:1px solid black; background:#eee}.
+|_.Task|_.Priority|_.Preemption|_.MTA*|_.Deadline|_.Calls|
+|*Task_1*|4|Preemptive|1|75 ms| 1) Runnable_1_1|
+|/2.*Task_2*|/2.3|/2.Preemptive|/2.1|/2.115 ms| 1) Runnable_2_1|
+| 2) Runnable_2_2|
+|/3.*Task_3*|/3.2|/3.Preemptive|/3.1|/3.300 ms| 1) Runnable_3_1|
+| 2) Runnable_3_2|
+| 3) Runnable_3_3|
+|/4.*Task_4*|/4.1|/4.Preemptive|/4.1|/4.960 ms| 1) Runnable_4_1|
+| 2) Runnable_4_2|
+| 3) Runnable_4_3|
+| 4) Runnable_4_4|
+
+*MTA = Multiple Task Activation Limit
+
+h4. Runnables
+
+!../pictures/ExampleModeling/modeling_1_runnables.png!
+
+In addition to the task, the software model also contains a definition of Runnables.
+For Modeling Example 1, ten individual Runnables are defined.
+The only function of those in this example is to consume processing resources.
+Therefore, for each Runnable a constant number of instruction cycles is stated.
+A comprehension of the modeled properties can be found in the following table:
+
+table{text-align:center; border:1px solid black; background:#eee}.
+|_.Runnable|_.InstructionCycles|
+|Runnable_1_1|1500000|
+|Runnable_2_1|1500000|
+|Runnable_2_2|1500000|
+|Runnable_3_1|1000000|
+|Runnable_3_2|2000000|
+|Runnable_3_3|1000000|
+|Runnable_4_1|1000000|
+|Runnable_4_2|2000000|
+|Runnable_4_3|3000000|
+|Runnable_4_4|2000000|
+
+h3. Stimuli Model
+
+!../pictures/ExampleModeling/modeling_1_stimuli.png!
+
+The stimulation model defines the activations of tasks.
+Since the four tasks of Modeling Example 1 are activated periodically, four stimuli according their recurrence are modeled.
+A comprehension of the modeled properties can be found in the following table:
+
+table{text-align:center; border:1px solid black; background:#eee}.
+|_.Stimulus|_.Type|_.Offset|_.Recurrence|
+|Stimulus_Task_1|Periodic|0 ms|180 ms|
+|Stimulus_Task_2|Periodic|0 ms|200 ms|
+|Stimulus_Task_3|Periodic|0 ms|300 ms|
+|Stimulus_Task_4|Periodic|0 ms|1 s|
+
+

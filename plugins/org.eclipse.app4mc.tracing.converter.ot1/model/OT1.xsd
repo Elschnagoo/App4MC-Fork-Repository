@@ -1,0 +1,1232 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema elementFormDefault="qualified"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!-- OT1 specification is published as open format, which is defined as 
+		follows: - OT1 is accessible to everyone free of charge. - OT1 and Gliwa 
+		GmbH do not favour one implementer over another for any reason other than 
+		the technical standards compliance of a vendor’s implementation. - OT1 is 
+		published under royalty-free terms - OT1 remains accessible and free of charge 
+		- OT1 is accessible free of charge and documented in all its details (i.e. 
+		all aspects of the standard are transparent and documented, and both access 
+		to and use of the documentation is free) - OT1 is free for all to implement, 
+		with no royalty or fee. Certification of compliance by Gliwa GmbH may involve 
+		a fee. - OT1 implementations may be extended, or offered in subset form. 
+		However, certification organisations may decline to certify subset implementations, 
+		and may place requirements upon extensions - OT1 extensions have to be integrated 
+		in OT1 and published under this open format license. -->
+	<xs:element name="OT1">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" name="SchedulingEntity"
+					type="SchedulingEntityType" />
+			</xs:sequence>
+			<xs:attribute name="version" type="VersionType" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="VersionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="de">OT1 Version
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0.2" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TimeBaseEnum">
+		<xs:annotation>
+			<xs:documentation xml:lang="de">Zeitbasen für
+				Timing-Werte
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="s" />
+			<xs:enumeration value="ms" />
+			<xs:enumeration value="us" />
+			<xs:enumeration value="ns" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="TimeValueType">
+		<xs:annotation>
+			<xs:documentation xml:lang="de">Der Typ "TimeValueType"
+				beschreibt ein Zeitstempel oder ein Zeitbereich anhand Zähler,
+				Nenner und Einheit.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="nominator" type="xs:unsignedLong"
+			use="required" />
+		<xs:attribute name="denominator" type="xs:unsignedLong"
+			use="required" />
+		<xs:attribute name="unit" type="TimeBaseEnum" use="required" />
+	</xs:complexType>
+	<xs:complexType name="OT1Type">
+		<xs:annotation>
+			<xs:documentation>Basis-Type für alle Elemente dieses Formats. Dieser
+				Typ definiert optionale Zusatzelemente, wie Comments oder
+				CunstomData, welche beliebige Daten oder tollspezifische
+				Erweiterungen beinhalten können.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="1" name="Comments"
+				type="CommentDataType" />
+			<xs:element minOccurs="0" maxOccurs="1" name="CustomData"
+				type="CustomDataType" />
+		</xs:sequence>
+		<xs:attribute name="vendor" type="xs:string" use="optional" />
+		<xs:attribute name="tool" type="xs:string" use="optional" />
+		<xs:attribute name="version" type="xs:string" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="AnyDataType">
+		<xs:annotation>
+			<xs:documentation>Der Type "AnyDataType" steht als Datencontainer für
+				toolspezifische Erweiterungen oder Zusatzdaten. Die Identifizierung
+				der Tools kann anhand der Attribute "vendor", "tool" und "version"
+				durchgeführt werden.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="vendor" type="xs:string" use="optional" />
+		<xs:attribute name="tool" type="xs:string" use="optional" />
+		<xs:attribute name="version" type="xs:string" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="CustomDataType">
+		<xs:annotation>
+			<xs:documentation>Dieser Typ dient als Container für beliebige
+				Zusatzelemente.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="Data"
+				type="AnyDataType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CommentDataType">
+		<xs:annotation>
+			<xs:documentation>Dieser Typ dient als Container für beliebige
+				Kommentare.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="Comment"
+				type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ElementType">
+		<xs:annotation>
+			<xs:documentation>BasisType für alle Elemente einer
+				OT1-Konfiguration.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="OT1Type" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UniqueElementType">
+		<xs:annotation>
+			<xs:documentation>Basis-Type für alle global eindeutigen Elemente
+				über OT1-Konfigurationen hinweg.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="ElementType">
+				<xs:attribute name="uuid" type="xs:unsignedInt" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="IdentifiableElement">
+		<xs:annotation>
+			<xs:documentation>Basis-Type für alle eindeutigen Elemente innerhalb
+				einer Element-Typ-Klasse. Folgende Klassen sind definiert:
+				-
+				TaskType, InterruptType, ThreadType
+				- RunnableType, ProcessType
+				-
+				FunctionType
+				- CodeBlockType
+				- TimeStampElementType
+				-
+				TimeRangeElementType
+				- PduType, SignalType, FrameType, MessageType
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="ElementType">
+				<xs:attribute name="id" type="xs:unsignedLong" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OT1HexTraceType">
+		<xs:annotation>
+			<xs:documentation>Dieser Type definiert einen OT1-Trace in
+				Hexadezimal Darstellung, nach dem OT1-Trace-Format.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="ElementType">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="Data"
+						type="xs:string" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OT1TraceLinkType">
+		<xs:annotation>
+			<xs:documentation>Dieser Type beschreibt eine Link zu einem
+				OT1-Binär-Trace.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="ElementType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="link"
+						type="xs:anyURI" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="XmlTraceType">
+		<xs:annotation>
+			<xs:documentation>"XmlTraceType" beschreibt einen OT1-Trace aus
+				XML-Elementen. Ein OT1-Trace kann 0..n Einträge/Events (TraceEntry)
+				haben und zusätzlich 0..n Kommentare (TraceComment).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="UniqueElementType">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="TraceEntry"
+						type="TraceEntryType" />
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="TraceComment"
+						type="TraceCommentType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TraceEntryType">
+		<xs:annotation>
+			<xs:documentation>Ein Trace-Einträg (TraceEntryType) besitzt immer
+				eine Zeitstempel (time), der eindeutig beschreibt, wann ein Ereignis
+				(value) stattfand. Optional können immer noch Daten in Form eines
+				strings hinzugefügt werden.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="1" name="data" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="time" type="xs:unsignedLong" use="required" />
+		<xs:attribute name="eventId" type="xs:unsignedLong" use="required" />
+		<xs:attribute name="elementRefId" type="xs:unsignedLong"
+			use="required" />
+	</xs:complexType>
+	<xs:complexType name="TraceCommentType">
+		<xs:annotation>
+			<xs:documentation>Mit einem Element vom Typ "TraceCommentType" kann
+				ein Trace um einen Kommantar erweitert werden. Das Element "comment"
+				beinhaltet den eigentlichen Kommentar als string. Optional kann ein
+				Zeitstempel (time1 &gt; 0) oder ein Zeitbereich (time1 &gt; 0 UND
+				time2 &gt; 0) angegeben werden für die exakt dieser Kommentar gilt.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="OT1Type">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="Comment"
+						type="xs:string" />
+				</xs:sequence>
+				<xs:attribute name="time1" type="xs:unsignedLong" />
+				<xs:attribute name="time2" type="xs:unsignedLong" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ClockType">
+		<xs:annotation>
+			<xs:documentation>Der Typ "ClockType" beschreibt die Basisgrößen über
+				den zum Messen/Tracen verwendeten Timer, wie "tickduration" und die
+				maximale, absolute Zeit des Timers (maxAbsTime).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element minOccurs="1" maxOccurs="1" name="Tickduration"
+				type="TimeValueType" />
+		</xs:sequence>
+		<xs:attribute name="maxAbsTime" type="xs:unsignedLong"
+			use="required" />
+	</xs:complexType>
+	<xs:complexType name="SchedulingEntityType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Ein "SchedulingEntityType" bescheibt eine
+				Basiseinheit, die einem Scheduler unterliegt. Diese global
+				eindeutige Einheit muss über weitere SchedulingEnityTypes hinweg
+				eindeutig sein (uuid).
+				Jeder SchedulingEntity muss eine "Clock" vom
+				Type "ClockType" definieren,
+				die Aufschluß über den zum Messen
+				verwendeten Timer gibt.
+				Ein solches "SchedulingEntity" kann beleibeig
+				viele Elemente vom Typ
+				"SchedulingEntityElementType" haben, die das
+				System beschreiben.
+				Ein SchedulingEntity beinhaltet auch die
+				komplette Beschreibung aller
+				möglichen Events und EventChains, die in
+				den Traces vorkommen
+				dürfen.
+				Jeder Trace gehört zu genau einer
+				SchedulingEntity, daher kann eine
+				SchdulingEntity 0..n Traces haben.
+				Die Referenzgröße, die die
+				Zusammengehärigkeit definiert ist die
+				"uuid".
+				Weiter kann im Element "TracingOverheadContainer" der
+				Mess-Overhead für
+				beliebeige Events definiert werden. Diese Größen
+				können zur
+				Korrectur der Messergebnisse herangezogen werden.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="UniqueElementType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="Clock"
+						type="ClockType" />
+					<xs:element minOccurs="1" maxOccurs="1" name="EventDescription"
+						type="EventDescriptionType" />
+					<xs:element minOccurs="0" maxOccurs="unbounded"
+						name="TracingOverheadContainer" type="TracingOverheadContainerType" />
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="Element"
+						type="SchedulingEntityElementType" />
+					<xs:element minOccurs="0" maxOccurs="1" name="Traces">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element minOccurs="0" maxOccurs="unbounded" name="OT1TraceLink"
+									type="OT1TraceLinkType" />
+								<xs:element minOccurs="0" maxOccurs="unbounded" name="OT1HexTrace"
+									type="OT1HexTraceType" />
+								<xs:element minOccurs="0" maxOccurs="unbounded" name="XmlTrace"
+									type="XmlTraceType" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="name" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EventDescriptionType">
+		<xs:annotation>
+			<xs:documentation>Der "EventDescriptionContainerType" beschreibt alle
+				möglichen Events vom Type EventDescriptionType" und EventChains vom
+				Typ "EventChainDescriptionType".
+				Jedes Event, das in den Messungen
+				oder Traces vorkommt muss in diesem
+				Container aufgelistet und
+				eindeutig referenzierbar sein.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="OT1Type">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="EventIdMapping"
+						type="EventIdMappingType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EventIdMappingType">
+		<xs:attribute name="eventType" type="EventTypeEnum" use="required" />
+		<xs:attribute name="eventId" type="xs:unsignedLong" use="required" />
+	</xs:complexType>
+	<xs:simpleType name="EventTypeEnum">
+		<xs:annotation>
+			<xs:documentation>Diese Enumeration listet alle EventTypen auf.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="sched_activation" />
+			<xs:enumeration value="sched_activationFailed" />
+			<xs:enumeration value="sched_start" />
+			<xs:enumeration value="sched_stop" />
+			<xs:enumeration value="sched_wait" />
+			<xs:enumeration value="sched_release" />
+			<xs:enumeration value="sched_preempt" />
+			<xs:enumeration value="sched_resume" />
+			<xs:enumeration value="sched_terminate" />
+			<xs:enumeration value="runnable_start" />
+			<xs:enumeration value="runnable_stop" />
+			<xs:enumeration value="timestamp" />
+			<xs:enumeration value="timestamp_data" />
+			<xs:enumeration value="timerange_start" />
+			<xs:enumeration value="timerange_stop" />
+			<xs:enumeration value="function_start" />
+			<xs:enumeration value="function_stop" />
+			<xs:enumeration value="codeblock_start" />
+			<xs:enumeration value="codeblock_stop" />
+			<xs:enumeration value="pdu_transmit" />
+			<xs:enumeration value="pdu_receive" />
+			<xs:enumeration value="sig_transmit" />
+			<xs:enumeration value="sig_receive" />
+			<xs:enumeration value="frame_transmit" />
+			<xs:enumeration value="frame_receive" />
+			<xs:enumeration value="msg_transmit" />
+			<xs:enumeration value="msg_receive" />
+			<xs:enumeration value="sync" />
+			<xs:enumeration value="error" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="EventReferenceType">
+		<xs:annotation>
+			<xs:documentation>Jedes Event muss ein Mapping von einem Wert (value)
+				auf einen Event-Typ (eventType) und ein OT1-Element (elementRefId)
+				aufweisen. Nur so kann ein Event eindeutig die Frage "Was is bei wem
+				passiert?" beantworten.
+				Jede Event-Beschreibung hat seine eigene ID,
+				die innerhalb eines
+				SchedulingEntity eindeutig sein muss. Über diese
+				ID können weitere
+				Element sich auf eine Event-Beschreibung
+				referenzieren.
+				Optional kann pro Event eine weitere Beschreibung
+				(description) angegeben
+				werden.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="OT1Type">
+				<xs:attribute name="eventType" type="EventTypeEnum"
+					use="required" />
+				<xs:attribute name="elementRefId" type="xs:unsignedLong"
+					use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EventChainType">
+		<xs:annotation>
+			<xs:documentation>Eine Event-Kette kann über den Type
+				"EventChainDescriptionType" definiert werden. Diese Ketten bestehen
+				immer aus einem Start- und einem Ende-Event, die anhand der Event-ID
+				referenziert werden, und optional aus 0..n Kettenelementen/-events
+				(InterChainEventId).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="IdentifiableElement">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1"
+						name="StimulusEventReference" type="EventReferenceType" />
+					<xs:element minOccurs="0" maxOccurs="unbounded"
+						name="InterChainEventReferenceId" type="xs:unsignedLong" />
+					<xs:element minOccurs="1" maxOccurs="1"
+						name="ResponseEventReference" type="EventReferenceType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TracingOverheadType">
+		<xs:annotation>
+			<xs:documentation>Ein Tracing-Overhead muss imer eine Zeit angeben,
+				die für das Tracen eines Events verbraucht wird.
+				Dieser Typ ist
+				allgemein gehalten, daher ist es auch möglich einen
+				Overhead
+				anzugeben, ohne ein direkte Referenz zu einem Event. In
+				diesem Fall
+				gilt dieser Overhead für alle Events, für die es keinen
+				expliziten
+				Overhead gibt.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="OT1Type">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="Time"
+						type="TimeValueType" />
+				</xs:sequence>
+				<xs:attribute name="eventId" type="xs:unsignedLong"
+					use="optional" />
+				<xs:attribute name="type" type="TracingOverheadDescriptionEnum"
+					use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="TracingOverheadDescriptionEnum">
+		<xs:annotation>
+			<xs:documentation>Es gibt 3 Arten (Overhead-)Zeiten, die beim Messen
+				von Zeitstempeln beachtet werden müssen. Es ist möglich die Zeit von
+				Beginn der Trace-Prozedur bis zum Lesen der Systemzeit (before
+				taking time) anzugeben und die Zeit vom LEsen der Systemzeit bis zum
+				Ende der Tracing-Prozedur (after taking time) oder eine Zeit, die
+				die andern zwei Zeiten beinhaltet (total overhead).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="total overhead" />
+			<xs:enumeration value="before taking time" />
+			<xs:enumeration value="after taking time" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="TracingOverheadContainerType">
+		<xs:annotation>
+			<xs:documentation>Dieser Container ist eine Ansammlung aller
+				Overhead-Elemente.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="OT1Type">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="TracingOverhead"
+						type="TracingOverheadType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OsekOsType">
+		<xs:annotation>
+			<xs:documentation>Die "SchedulingEntity" OsekOsType beschreibt ein
+				OSEK OS.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulingEntityType">
+				<xs:attribute name="kernelPriority" type="xs:unsignedInt"
+					use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AutosarOsType">
+		<xs:annotation>
+			<xs:documentation>Die "SchedulingEntity" AutosarOsType beschreibt ein
+				AUTOSAR OS.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulingEntityType">
+				<xs:attribute name="kernelPriority" type="xs:unsignedInt"
+					use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PosixOsType">
+		<xs:annotation>
+			<xs:documentation>Die "SchedulingEntity" PosixOsType beschreibt ein
+				POSIX OS.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulingEntityType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="WindowsOsType">
+		<xs:annotation>
+			<xs:documentation>Die "SchedulingEntity" WindowsOsType beschreibt ein
+				Windows OS.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulingEntityType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CanBusType">
+		<xs:annotation>
+			<xs:documentation>Die "SchedulingEntity" CanBusType beschreibt einen
+				CAN Bus.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulingEntityType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FlexRayBusType">
+		<xs:annotation>
+			<xs:documentation>Die "SchedulingEntity" FlexRayBusType beschreibt
+				einen FlexRay Bus.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulingEntityType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="LinBusType">
+		<xs:annotation>
+			<xs:documentation>Die "SchedulingEntity" LinBusType beschreibt einen
+				LIN Bus.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulingEntityType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MostBusType">
+		<xs:annotation>
+			<xs:documentation>Die "SchedulingEntity" MostBusType beschreibt einen
+				MOST Bus.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulingEntityType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SchedulingEntityElementType"
+		abstract="true">
+		<xs:annotation>
+			<xs:documentation>Ein "SchedulingEntityElementType" beschreibt ein
+				Element eines SchedulingEntities, also ein Element, welches von
+				einem Scheduler verwaltet wird.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="IdentifiableElement">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="Element"
+						type="SchedulingEntityElementType" />
+					<xs:element name="TimingValues">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element minOccurs="0" maxOccurs="unbounded" name="TimingValue"
+									type="TimingValueElementType" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="TimingConstraints">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element minOccurs="0" maxOccurs="unbounded"
+									name="TimingConstraint" type="TimingConstraintElementType" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="name" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ApplicationElementType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Elemente vom Type "ApplicationElementType" sind in
+				der Regel Elemente, die Code ausführen und zu einer
+				Anwendung/Applikation gehören. Beispiele sind Task oder Interrupts.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulingEntityElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CommunicationElementType"
+		abstract="true">
+		<xs:annotation>
+			<xs:documentation>Elemente vom Type "CommunicationElementType" sind
+				in der Regel Elemente, die für die Kommunikation verantwortlich sind
+				oder als Träger von Daten während der Kommunikation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulingEntityElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="VirtualElementType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Elemente vom Type "VirtualElementType" sind in der
+				Regel virtuelle Elemente, die vom Benutzer oder Tool angesetzt
+				werden, wie z.B. Stoppuhr-Elemente oder benutzerdefinerte
+				Event-Marker.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulingEntityElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DataElementType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Elemente vom Type "DataElementType" sind in der
+				Regel Elemente, die Daten beinhalten, z.B. Variablen oder Puffer.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulingEntityElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SchedulableApplicationElementType"
+		final="" block="">
+		<xs:annotation>
+			<xs:documentation>Elemente vom Type
+				"SchedulableApplicationElementType" sind Elemente, die Code
+				ausführen und vom Scheduler als Schedule-Einheit angesehen werden
+				(Tasks, Interrupts, Thread (Posix/Windows), Process
+				(Posix/Windows)).
+
+				Alle Elemente dieses Typs (und der abgeleiteten
+				Typen) teilen sich einen
+				ID-Raum!!
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="ApplicationElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TaskType">
+		<xs:annotation>
+			<xs:documentation>Ein TaskType beschreibt eine Task in einem OS.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulableApplicationElementType">
+				<xs:attribute name="priority" type="xs:unsignedInt"
+					use="optional" />
+				<xs:attribute name="period" type="xs:unsignedInt" use="optional" />
+				<xs:attribute name="offset" type="xs:unsignedInt" use="optional" />
+				<xs:attribute name="type" type="TaskTypeEnum" use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="TaskTypeEnum">
+		<xs:annotation>
+			<xs:documentation>Diese Auflistung listet die Ausprägungen einer
+				Task.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="preemptive" />
+			<xs:enumeration value="nonPreemptive" />
+			<xs:enumeration value="cooperative" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="InterruptType">
+		<xs:annotation>
+			<xs:documentation>Ein InterruptType beschreibt einen Interrupt in
+				einem OS.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulableApplicationElementType">
+				<xs:attribute name="priority" type="xs:unsignedInt"
+					use="optional" />
+				<xs:attribute name="type" type="InterruptTypeEnum" use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="InterruptTypeEnum">
+		<xs:annotation>
+			<xs:documentation>Diese Auflistung listet die Ausprägungen eines
+				Interrupts.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="category_1" />
+			<xs:enumeration value="category_2" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ThreadType">
+		<xs:annotation>
+			<xs:documentation>Ein ThreadType beschreibt eine Thread in einem OS
+				(Posix, Windows).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulableApplicationElementType">
+				<xs:attribute name="priority" type="xs:unsignedInt"
+					use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProcessType">
+		<xs:annotation>
+			<xs:documentation>Ein ProcessType beschreibt eine Prozess in einem OS
+				(Posix, Windows).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="SchedulableApplicationElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RunnableType">
+		<xs:annotation>
+			<xs:documentation>Ein RunnableType beschreibt ein Runnable.
+
+				Alle
+				Elemente dieses Typs (und der abgeleiteten Typen) teilen sich einen
+				ID-Raum!!
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="ApplicationElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FunctionType">
+		<xs:annotation>
+			<xs:documentation>Ein FunctionType beschreibt eine Funktion.
+
+				Alle
+				Elemente dieses Typs (und der abgeleiteten Typen) teilen sich einen
+				ID-Raum!!
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="ApplicationElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CodeBlockType">
+		<xs:annotation>
+			<xs:documentation>Ein CodeBlockType beschreibt einen Code-Block.
+
+				Alle
+				Elemente dieses Typs (und der abgeleiteten Typen) teilen sich einen
+				ID-Raum!!
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="ApplicationElementType">
+				<xs:choice>
+					<xs:element minOccurs="1" maxOccurs="1" name="AddressRange">
+						<xs:complexType>
+							<xs:complexContent mixed="false">
+								<xs:extension base="AddressRangeType" />
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element minOccurs="1" maxOccurs="1" name="SymbolRange"
+						type="SymbolRangeType" />
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="LatencyTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="age" />
+			<xs:enumeration value="reaction" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="TimeRangeElementType">
+		<xs:annotation>
+			<xs:documentation>Ein TimeRangeElementType definiert eine beliebige
+				Zeitspanne, für welche Timing-Informationen gewonnen werden können.
+
+				Alle Elemente dieses Typs (und der abgeleiteten Typen) teilen sich
+				einen ID-Raum!!
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="VirtualElementType">
+				<xs:attribute name="latency" type="LatencyTypeEnum" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EventChainElementType">
+		<xs:annotation>
+			<xs:documentation>Ein EventChainElementType definiert eine
+				"Event-Kette", bestehend aus beliebig vielen Events, mindestens aber
+				2.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="TimeRangeElementType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="EventChain"
+						type="EventChainType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TimeStampElementType">
+		<xs:annotation>
+			<xs:documentation>Ein TimeStampElementType definiert eine beliebige
+				Zeitspanne, für welche Timing-Informationen gewonnen werden können.
+
+				Alle Elemente dieses Typs (und der abgeleiteten Typen) teilen sich
+				einen ID-Raum!!
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="VirtualElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EventReferenceElementType">
+		<xs:annotation>
+			<xs:documentation>Dieses Element beschreibt eine Referenz auf ein
+				bestimmtes Event.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="TimeStampElementType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="EventReference"
+						type="EventReferenceType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FrameElementType">
+		<xs:annotation>
+			<xs:documentation>Alle Elemente dieses Typs (und der abgeleiteten
+				Typen) teilen sich einen ID-Raum!!
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="CommunicationElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PduType">
+		<xs:annotation>
+			<xs:documentation>Alle Elemente dieses Typs (und der abgeleiteten
+				Typen) teilen sich einen ID-Raum!!
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="CommunicationElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MessageType">
+		<xs:annotation>
+			<xs:documentation>Alle Elemente dieses Typs (und der abgeleiteten
+				Typen) teilen sich einen ID-Raum!!
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="CommunicationElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SignalType">
+		<xs:annotation>
+			<xs:documentation>Alle Elemente dieses Typs (und der abgeleiteten
+				Typen) teilen sich einen ID-Raum!!
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="CommunicationElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="VariableType">
+		<xs:annotation>
+			<xs:documentation>Beschreibt eine Variable oder ein Daten-Symbol.
+
+				Alle Elemente dieses Typs (und der abgeleiteten Typen) teilen sich
+				einen ID-Raum!!
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="DataElementType">
+				<xs:attribute name="Length" type="xs:unsignedLong" use="required">
+					<xs:annotation>
+						<xs:documentation>Definiert die Laenge der Variablen/des Symbols
+							in Bytes
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DataRangeElementType">
+		<xs:annotation>
+			<xs:documentation>Alle Elemente dieses Typs (und der abgeleiteten
+				Typen) teilen sich einen ID-Raum!!
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="DataElementType">
+				<xs:choice>
+					<xs:element minOccurs="1" maxOccurs="1" name="AddressRange"
+						type="AddressRangeType" />
+					<xs:element minOccurs="1" maxOccurs="1" name="SymbolRange"
+						type="SymbolRangeType" />
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TimingValueElementType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>alle Elemente vom Type "TimingValueElementType"
+				können Timing-Daten speichern oder diese anfordern (request). Diese
+				enthalten die gemessenen oder analysierten Ergebnisse oder auch die
+				angenommenen Werte.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="ElementType">
+				<xs:attribute name="request" type="xs:boolean" use="optional" />
+				<xs:attribute name="source" type="TimingInformationSourceEnum"
+					use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TimingInformationElementType">
+		<xs:annotation>
+			<xs:documentation>Die Basis-Timing-Informationen werden in Elemente
+				vom Typ "TimingInformationenElementType" gespeichert. Diese bestehen
+				immer aus dem Wert an sich (Value), einem Typ "type", einem Sub-Typ
+				"subType" und der Quelle der Information "source".
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="TimingValueElementType">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="1" name="Value"
+						type="TimeValueType" />
+				</xs:sequence>
+				<xs:attribute name="type" type="TimingInformationTypeEnum"
+					use="required" />
+				<xs:attribute name="subType" type="TimingInformationSubTypeEnum"
+					use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="TimingInformationTypeEnum">
+		<xs:annotation>
+			<xs:documentation>Die Auflistung aller Basis-Timing-Typen:
+				CET: Core
+				Execution Time
+				GET: Gross Execution Time
+				DT: Delta Time
+				RT: Response
+				Time
+				ST: Slack Time
+				IPT: Inital Pending Time
+				PRE: Preemption Time
+				OFF:
+				Offset
+				PER: Period
+				CPU: CPU load
+				CAF: Code Access Frequency
+				DAF: Data
+				Access Frequency
+				DAT: Data Access Time
+				TT: Transmission Time
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CET" />
+			<xs:enumeration value="GET" />
+			<xs:enumeration value="DT" />
+			<xs:enumeration value="ST" />
+			<xs:enumeration value="RT" />
+			<xs:enumeration value="IPT" />
+			<xs:enumeration value="PRE" />
+			<xs:enumeration value="OFF" />
+			<xs:enumeration value="PER" />
+			<xs:enumeration value="WT" />
+			<xs:enumeration value="CPU" />
+			<xs:enumeration value="CAF" />
+			<xs:enumeration value="DAF" />
+			<xs:enumeration value="DAT" />
+			<xs:enumeration value="TT" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TimingInformationSubTypeEnum">
+		<xs:annotation>
+			<xs:documentation>Die Auflistung aller Basis-Timing-Sub-Typen.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="min" />
+			<xs:enumeration value="max" />
+			<xs:enumeration value="average" />
+			<xs:enumeration value="mean" />
+			<xs:enumeration value="stdDeviation" />
+			<xs:enumeration value="frequency" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TimingInformationSourceEnum">
+		<xs:annotation>
+			<xs:documentation>Die Auflistung aller Timing-Quellen.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="configuration" />
+			<xs:enumeration value="trace" />
+			<xs:enumeration value="simulation" />
+			<xs:enumeration value="analysis" />
+			<xs:enumeration value="budget" />
+			<xs:enumeration value="estimation" />
+			<xs:enumeration value="unknown" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="EventTriggeringType">
+		<xs:complexContent mixed="false">
+			<xs:extension base="TimingValueElementType">
+				<xs:sequence>
+					<xs:element name="EventReference" type="EventReferenceType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ArbitraryEventTriggeringType">
+		<xs:complexContent mixed="false">
+			<xs:extension base="EventTriggeringType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="unbounded" name="MinDistance"
+						type="TimeValueType" />
+					<xs:element minOccurs="1" maxOccurs="unbounded" name="MaxDistance"
+						type="TimeValueType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TimingConstraintElementType"
+		abstract="true">
+		<xs:annotation>
+			<xs:documentation>Der Basistyp für alle Timing-Constraints.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="ElementType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TimingInformationConstraintType">
+		<xs:annotation>
+			<xs:documentation>Über den Typ "TimingInformationConstraintType"
+				können Timing-Constraints oder Min- bzw. Max-Grenzen (thresholdType)
+				für alle Basis-Timing-Informationen (timingValueType) definiert
+				werden. "Threshold" ist die zu überwachende Grenze.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="TimingConstraintElementType">
+				<xs:sequence>
+					<xs:element name="Threshold" type="TimeValueType" />
+				</xs:sequence>
+				<xs:attribute name="timingValueType" type="TimingInformationTypeEnum"
+					use="required" />
+				<xs:attribute name="thresholdType" type="ThresholdTypeEnum"
+					use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="ThresholdTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="min" />
+			<xs:enumeration value="max" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="EventTriggeringConstraintType">
+		<xs:annotation>
+			<xs:documentation>siehe AUTOSAR_TPS_TimingExtensions.pdf
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="TimingConstraintElementType">
+				<xs:attribute name="eventId" type="xs:unsignedLong"
+					use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PeriodicEventTriggeringConstraintType">
+		<xs:annotation>
+			<xs:documentation>siehe AUTOSAR_TPS_TimingExtensions.pdf
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="EventTriggeringConstraintType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="Period"
+						type="TimeValueType" />
+					<xs:element minOccurs="1" maxOccurs="1" name="Jitter"
+						type="TimeValueType" />
+					<xs:element minOccurs="1" maxOccurs="1"
+						name="MinInterArrivalTime" type="TimeValueType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SporadicEventTriggeringConstraintType">
+		<xs:annotation>
+			<xs:documentation>siehe AUTOSAR_TPS_TimingExtensions.pdf
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="EventTriggeringConstraintType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="Period"
+						type="TimeValueType" />
+					<xs:element minOccurs="1" maxOccurs="1" name="Jitter"
+						type="TimeValueType" />
+					<xs:element minOccurs="1" maxOccurs="1"
+						name="MinInterArrivalTime" type="TimeValueType" />
+					<xs:element minOccurs="1" maxOccurs="1"
+						name="MaxInterArrivalTime" type="TimeValueType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ArbitraryEventTriggeringConstraintType">
+		<xs:annotation>
+			<xs:documentation>siehe AUTOSAR_TPS_TimingExtensions.pdf
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="EventTriggeringConstraintType">
+				<xs:sequence>
+					<xs:element name="LowerBound" type="TimeValueType" />
+					<xs:element name="UpperBound" type="TimeValueType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="LatencyTimingConstraintType">
+		<xs:annotation>
+			<xs:documentation>siehe AUTOSAR_TPS_TimingExtensions.pdf
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="TimingConstraintElementType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="Minimum"
+						type="TimeValueType" />
+					<xs:element minOccurs="1" maxOccurs="1" name="Maximum"
+						type="TimeValueType" />
+				</xs:sequence>
+				<xs:attribute name="eventChainId" type="xs:unsignedLong"
+					use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OffsetTimingConstraintType">
+		<xs:annotation>
+			<xs:documentation>siehe AUTOSAR_TPS_TimingExtensions.pdf
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="TimingConstraintElementType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="Minimum"
+						type="TimeValueType" />
+					<xs:element minOccurs="1" maxOccurs="1" name="Maximum"
+						type="TimeValueType" />
+				</xs:sequence>
+				<xs:attribute name="sourceEventId" type="xs:unsignedLong"
+					use="required" />
+				<xs:attribute name="targetEventId" type="xs:unsignedLong"
+					use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="ExecutionOrderConstraintTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="total" />
+			<xs:enumeration value="partial" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ExecutionOrderConstraintType">
+		<xs:annotation>
+			<xs:documentation>siehe AUTOSAR_TPS_TimingExtensions.pdf
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="TimingConstraintElementType">
+				<xs:attribute name="eventChainId" type="xs:unsignedLong"
+					use="required" />
+				<xs:attribute name="type" type="ExecutionOrderConstraintTypeEnum"
+					use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AddressRangeType">
+		<xs:attribute name="StartAddress" type="xs:unsignedLong"
+			use="required" />
+		<xs:attribute name="EndAddress" type="xs:unsignedLong"
+			use="required" />
+	</xs:complexType>
+	<xs:complexType name="SymbolRangeType">
+		<xs:attribute name="StartSymbol" type="xs:string" use="required" />
+		<xs:attribute name="EndSymbol" type="xs:string" use="required" />
+	</xs:complexType>
+</xs:schema>

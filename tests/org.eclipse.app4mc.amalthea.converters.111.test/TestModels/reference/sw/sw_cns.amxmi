@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:common="http://www.amalthea.itea2.org/model/1.3.0/common" xmlns:components="http://amalthea.itea2.org/model/1.3.0/components" xmlns:config="http://www.amalthea.itea2.org/model/1.3.0/config" xmlns:constraints="http://www.amalthea.itea2.org/model/1.3.0/constraints" xmlns:events="http://www.amalthea.itea2.org/model/1.3.0/events" xmlns:hw="http://www.amalthea.itea2.org/model/1.3.0/hw" xmlns:mapping="http://www.amalthea.itea2.org/model/1.3.0/mapping" xmlns:os="http://www.amalthea.itea2.org/model/1.3.0/os" xmlns:propertyconstraints="http://www.amalthea.itea2.org/model/1.3.0/propertyconstraints" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.3.0/stimuli" xmlns:sw="http://www.amalthea.itea2.org/model/1.3.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_20IhkMtzEeWhPNHEM6LJDg">
+  <swModel xmi:id="_Pfn4YMvLEeWhPNHEM6LJDg">
+    <isrs xmi:id="_DM9ZgB30Eea8RuOocJrj6A" name="ISR1" />
+    <tasks xmi:id="_SXUeABz7Eea-WPwAn2OKkw" name="t1" preemption="cooperative">
+      <callGraph xmi:id="_TkbxoMvLEeWhPNHEM6LJDg">
+        <graphEntries xmi:id="_UJPH0MvLEeWhPNHEM6LJDg" valueProvider="_RHl00CDHEeaapuV49CSqeg" xsi:type="sw:ModeSwitch">
+          <entries xmi:id="_8Pl4gMvSEeWhPNHEM6LJDg" value="_RHl00yDHEeaapuV49CSqeg" />
+        </graphEntries>
+        <graphEntries xsi:type="sw:ProbabiltitySwitch" xmi:id="_HMiLYMvMEeWhPNHEM6LJDg">
+          <entries xmi:id="_HtgxgMvMEeWhPNHEM6LJDg">
+            <graphEntries xmi:id="_IgXKwMvMEeWhPNHEM6LJDg" xsi:type="sw:ModeSwitch">
+              <valueProvider href="default.amxmi-sw.amxmi#_RHl00SDHEeaapuV49CSqeg" xsi:type="sw:ModeLabel" />
+            </graphEntries>
+          </entries>
+        </graphEntries>
+        <graphEntries xsi:type="sw:CallSequence" xmi:id="_iSpMMB4BEea8RuOocJrj6A" name="cs1">
+          <calls xsi:type="sw:WaitEvent" xmi:id="_36KuQB4BEea8RuOocJrj6A" maskType="AND" />
+        </graphEntries>
+        <graphEntries xmi:id="_2857IB4JEea8RuOocJrj6A" valueProvider="_RHl00CDHEeaapuV49CSqeg" xsi:type="sw:ModeSwitch">
+          <entries xmi:id="_-tb4MB4JEea8RuOocJrj6A" value="_RHl01CDHEeaapuV49CSqeg" />
+          <entries xmi:id="_Z-7TcB4KEea8RuOocJrj6A" value="_RHl01SDHEeaapuV49CSqeg" />
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <runnables xmi:id="_cCSqkM5DEeWhPNHEM6LJDg" name="R1">
+      <runnableItems xsi:type="sw:RunnableCall" xmi:id="_dMtPQM5DEeWhPNHEM6LJDg" />
+      <runnableItems xsi:type="sw:SynchronousServerCall" xmi:id="_d2g3wB4EEea8RuOocJrj6A" />
+      <runnableItems xsi:type="sw:LabelAccess" xmi:id="_uo-dcB4GEea8RuOocJrj6A" access="read" />
+      <runnableItems xsi:type="sw:SemaphoreAccess" xmi:id="_bgoeIB4HEea8RuOocJrj6A" accessEnum="request" />
+    </runnables>
+    <labels xmi:id="_QFsZ4MvLEeWhPNHEM6LJDg" name="RL">
+      <tags href="default.amxmi-sw.amxmi#_bEIdIBz7Eea-WPwAn2OKkw" />
+    </labels>
+    <processPrototypes xmi:id="_xuJaIBz_Eea-WPwAn2OKkw" name="test" preemption="cooperative">
+      <accessPrecedenceSpec xmi:id="_ZbHOAB4FEea8RuOocJrj6A" orderType="ignoreWR" />
+      <orderPrecedenceSpec xmi:id="_N8ZSgB4GEea8RuOocJrj6A" orderType="order" />
+    </processPrototypes>
+    <tags xmi:id="_VVIS8Bz7Eea-WPwAn2OKkw" tagType="test" name="test_tag" />
+    <modeLabels name="RL" xmi:id="_RHl00CDHEeaapuV49CSqeg" />
+    <modes name="mode_sw_0_migration_generated" xmi:id="_RHl00iDHEeaapuV49CSqeg">
+      <literals name="11" xmi:id="_RHl00yDHEeaapuV49CSqeg" />
+      <literals name="22" xmi:id="_RHl01CDHEeaapuV49CSqeg" />
+      <literals name="333" xmi:id="_RHl01SDHEeaapuV49CSqeg" />
+    </modes>
+  </swModel>
+  <osModel xmi:id="_5Qa90MtzEeWhPNHEM6LJDg">
+    <operatingSystems xmi:id="_7-5WQMtzEeWhPNHEM6LJDg">
+      <taskSchedulers xmi:id="_8yq8kMtzEeWhPNHEM6LJDg">
+        <schedulingUnit xsi:type="os:SchedulingHWUnit" xmi:id="_-XiBkMtzEeWhPNHEM6LJDg" />
+      </taskSchedulers>
+    </operatingSystems>
+  </osModel>
+  <componentsModel xmi:id="_Y7c8kBz_Eea-WPwAn2OKkw">
+    <components xmi:id="_Zo21IBz_Eea-WPwAn2OKkw" />
+    <tags xmi:id="_aYbQ4Bz_Eea-WPwAn2OKkw" tagType="components_model" name="test_tag_1" />
+  </componentsModel>
+  <constraintsModel>
+    <requirements xsi:type="constraints:ProcessRequirement" name="ISR1" severity="Cosmetic" process="_DM9ZgB30Eea8RuOocJrj6A">
+      <limit xsi:type="constraints:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="0" unit="ps" />
+      </limit>
+    </requirements>
+    <requirements xsi:type="constraints:ProcessRequirement" name="t1" severity="Cosmetic" process="_SXUeABz7Eea-WPwAn2OKkw">
+      <limit xsi:type="constraints:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="22" unit="ns" />
+      </limit>
+    </requirements>
+    <requirements xsi:type="constraints:ProcessRequirement" name="test" severity="Cosmetic" process="_xuJaIBz_Eea-WPwAn2OKkw">
+      <limit xsi:type="constraints:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="50" unit="ps" />
+      </limit>
+    </requirements>
+  </constraintsModel>
+</central:AMALTHEA>

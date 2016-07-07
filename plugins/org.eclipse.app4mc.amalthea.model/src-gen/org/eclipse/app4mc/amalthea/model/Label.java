@@ -1,0 +1,163 @@
+/**
+ * *******************************************************************************
+ *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *     Generated using Eclipse EMF
+ * 
+ * *******************************************************************************
+ */
+package org.eclipse.app4mc.amalthea.model;
+
+import org.eclipse.emf.common.util.EList;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Label</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * Data representation, which can be accessed by run entities.
+ * <!-- end-model-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getDataType <em>Data Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#isConstant <em>Constant</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#isBVolatile <em>BVolatile</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getBuffered <em>Buffered</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getLabelAccesses <em>Label Accesses</em>}</li>
+ * </ul>
+ *
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel()
+ * @model
+ * @generated
+ */
+public interface Label extends AbstractElementMemoryInformation {
+	/**
+	 * Returns the value of the '<em><b>Data Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Data Type</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Data Type</em>' containment reference.
+	 * @see #setDataType(DataType)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_DataType()
+	 * @model containment="true"
+	 * @generated
+	 */
+	DataType getDataType();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Label#getDataType <em>Data Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Data Type</em>' containment reference.
+	 * @see #getDataType()
+	 * @generated
+	 */
+	void setDataType(DataType value);
+
+	/**
+	 * Returns the value of the '<em><b>Constant</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Defines the label as a constant, not modifiable entity
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Constant</em>' attribute.
+	 * @see #setConstant(boolean)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_Constant()
+	 * @model unique="false"
+	 * @generated
+	 */
+	boolean isConstant();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Label#isConstant <em>Constant</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Constant</em>' attribute.
+	 * @see #isConstant()
+	 * @generated
+	 */
+	void setConstant(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>BVolatile</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Defines if the label value is volatile or persistent to survive shutdown and start of system
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>BVolatile</em>' attribute.
+	 * @see #setBVolatile(boolean)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_BVolatile()
+	 * @model unique="false"
+	 * @generated
+	 */
+	boolean isBVolatile();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Label#isBVolatile <em>BVolatile</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>BVolatile</em>' attribute.
+	 * @see #isBVolatile()
+	 * @generated
+	 */
+	void setBVolatile(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Buffered</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.LabelBuffering}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Defines if the label is buffered or not
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Buffered</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.LabelBuffering
+	 * @see #setBuffered(LabelBuffering)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_Buffered()
+	 * @model unique="false"
+	 * @generated
+	 */
+	LabelBuffering getBuffered();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Label#getBuffered <em>Buffered</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Buffered</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.LabelBuffering
+	 * @see #getBuffered()
+	 * @generated
+	 */
+	void setBuffered(LabelBuffering value);
+
+	/**
+	 * Returns the value of the '<em><b>Label Accesses</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.LabelAccess}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Label Accesses</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Label Accesses</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_LabelAccesses()
+	 * @model opposite="dataLinkInt" transient="true" changeable="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @generated
+	 */
+	EList<LabelAccess> getLabelAccesses();
+
+} // Label

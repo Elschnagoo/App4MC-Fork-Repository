@@ -1,0 +1,4 @@
+
+h1. Frequently Asked Questions
+
+Here comes the content for the FAQ.

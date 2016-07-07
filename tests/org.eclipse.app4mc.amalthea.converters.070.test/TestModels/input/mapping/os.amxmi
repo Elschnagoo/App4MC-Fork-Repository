@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<os:OSModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:os="http://www.amalthea.itea2.org/model/1.3.0/os">
+  <operatingSystems>
+    <taskSchedulers name="scheduler_os"/>
+    <interruptControllers name="IC_os"/>
+  </operatingSystems>
+</os:OSModel>

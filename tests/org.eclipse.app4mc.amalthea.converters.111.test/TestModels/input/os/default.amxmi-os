@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<os:OSModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:common="http://www.amalthea.itea2.org/model/1.2.0/common" xmlns:os="http://www.amalthea.itea2.org/model/1.2.0/os" xmi:id="_Fd0F8L96EeWFjLGtonZfOQ">
+  <operatingSystems xmi:id="_GDUmwL96EeWFjLGtonZfOQ">
+    <interruptControllers xmi:id="_GmFVkL96EeWFjLGtonZfOQ"/>
+  </operatingSystems>
+  <operatingSystems xsi:type="os:VendorOperatingSystem" xmi:id="_IERx4L96EeWFjLGtonZfOQ">
+    <customProperties xmi:id="_IYsisL96EeWFjLGtonZfOQ" key="test">
+      <value xsi:type="common:BooleanObject" xmi:id="_JjC18L96EeWFjLGtonZfOQ"/>
+    </customProperties>
+  </operatingSystems>
+</os:OSModel>

@@ -1,0 +1,120 @@
+
+h1. AMALTHEA Trace Database
+
+The AMALTHEA Trace Database stores traces in a way, that - especially for graphical user interfaces - information can be extracted efficiently.
+
+h2. General information
+
+The Database is stored as "SQLite Database":http://www.sqlite.org/ with extension *.atdb*.
+All numbers are stored as integer values.
+
+h2. Database structure
+
+The Database contains a mixture of statically and dynamically defined tables, which are described in more detail below:
+* Static
+** MetaInformation
+** Entity
+** EntityInstance
+** EntitySource 
+** EntityType
+** EventType
+* Dynamic
+** EventTable
+
+!../pictures/atdb_erm_model.png!
+
+
+h3. MetaInformation
+
+MetaInformation contains a simple key-value list of information about the Trace:
+
+* Fields
+** Name: Text - Primary Key
+** Value: Text
+
+By now, the following list of keys is defined:
+* *db_version*: version of the AMALTHEA Trace Database scheme with syntax "v#.#.#". Current version is "v0.2.0"
+* *events_written*: The amount of events stored in the database
+* *input*: path to the file, from which the information was produced
+* *time_base*: The base time in which time-values are stored
+
+h3. Entity
+
+Entity contains information about the Entities used in the database.
+
+* Fields
+** Id: Number - Primary Key
+** Name: Text - *Case-Sensitive* Unique
+** EntityType: Number - 1:n Reference to EntityType-Table
+** HasEvents: Number - possible values
+*** 1:  Events for that Entity were produced
+*** _null_: No Events for that Entity were produced
+** EventTableName: Text - The name of the table in which, the events for that entity are stored
+
+h3. EntityType
+
+EntityType contains information about the EntityTypes used in the database.
+
+* Fields
+** Id: Number - Primary Key
+** Name: Text
+
+By now, the following EntityTypes are defined:
+* Core
+* EventChain
+* Interrupt
+* InstructionBlock
+* Process
+* Runnable
+* Scheduler
+* SemaphoreAccess
+* Semaphore
+* Signal
+* Stimulus
+* Task
+
+h3. EventType
+
+
+* Fields
+** Id: Number - Primary Key
+** Name: Text
+
+The list of EventTypes which may occur can be retrieved from "AMALTHEA_BTF_Specification".
+
+h3. EntitySource
+
+EntitySource contains information about which Entity has events caused by which other Entities.
+
+* Fields
+** EntityId: Number - Primary Key; EntityId references the Entity events occurred for
+** SourceEntityId: Number - Primary Key; SourceId references the Entity, which caused the event
+
+h3. EntityInstance
+
+EntityInstance contains information about the time span an instance of an entity was active.
+
+* Fields
+** Id: Number - Primary Key
+** EntityId: Number - Reference to an entity
+** EntityInstanceId: Number - Instance number for that entity
+** TimeFrom: Number - Start-Time of the instance
+** TimeTo: Number - End-Time of the instance
+
+h3. EventTables
+
+There is a dynamic amount of EventTables. An EventTable contains events of 1 or more entities. The information which entity is part of which EventTable is stored in Entity-Table.
+
+* Fields
+** Id: Number - Primary Key, ascending id-number for each EventTable
+** TimeStamp: Number - Time at which the event occurred in base_unit defined at MetaInformation
+** Remainder: Number - Time modulo 1000 to get a more precise value in cases it is required
+** SQCNR: Number - A strictly ascending sequential number telling the order of event at same time stamp
+** EntityId: Number - Reference to entity, for which the event occurred
+** EntityInstanceId: Number - Instance of the entity
+** SourceEntityId: Number - Reference to entity, which caused the event 
+** SourceEntityInstanceId: Number - Instance of the source entity
+** EventTypeId: Number - Reference to EventType
+** Value: String - Additional unstructured data for an event like e.g. the written value in case of a Signal Write event
+
+

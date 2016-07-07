@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:common="http://www.amalthea.itea2.org/model/1.2.0/common" xmlns:os="http://www.amalthea.itea2.org/model/1.2.0/os" xmlns:sw="http://www.amalthea.itea2.org/model/1.2.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_oRQNUJNUEeWQC6k3Y09j_A">
+  <swModel xmi:id="_o8_R8JNUEeWQC6k3Y09j_A">
+    <runnables xmi:id="_IVipMJNVEeWQC6k3Y09j_A" name="R1">
+      <runnableItems xsi:type="sw:LabelAccess" xmi:id="_Z7ArEJNVEeWQC6k3Y09j_A" access="write">
+        <data href="central.amxmi#_PZ8hgJLQEeWQC6k3Y09j_A" />
+        <statistic xmi:id="_-kM1gJNVEeWQC6k3Y09j_A">
+          <value xsi:type="common:MinAvgMaxStatistic" xmi:id="_IRk5wJNWEeWQC6k3Y09j_A" avg="1" max="2" />
+          <cacheMisses xsi:type="common:MinAvgMaxStatistic" xmi:id="_HSrBgJNWEeWQC6k3Y09j_A" min="8" avg="-1" max="5" />
+        </statistic>
+      </runnableItems>
+    </runnables>
+    <runnables xmi:id="_Jo8VUJNWEeWQC6k3Y09j_A" name="R2">
+      <runnableItems xsi:type="sw:LabelAccess" xmi:id="_K853kJNWEeWQC6k3Y09j_A" data="_9SS-MJNUEeWQC6k3Y09j_A">
+        <statistic xmi:id="_MH6SIJNWEeWQC6k3Y09j_A">
+          <value xsi:type="common:SingleValueStatistic" xmi:id="_MlMEAJNWEeWQC6k3Y09j_A" value="0.1" />
+          <cacheMisses xsi:type="common:SingleValueStatistic" xmi:id="_Ngl8UJNWEeWQC6k3Y09j_A" value="600.0" />
+        </statistic>
+      </runnableItems>
+    </runnables>
+    <labels xmi:id="_9SS-MJNUEeWQC6k3Y09j_A" name="loc_label" initialValue="5000000" />
+  </swModel>
+</central:AMALTHEA>

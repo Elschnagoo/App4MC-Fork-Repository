@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <hwModel>
+    <coreTypes name="Cortex-A9" bitWidth="32" instructionsPerCycle="1">
+      <customProperties key="EnEf-Volt_High">
+        <value xsi:type="am:DoubleObject" value="1.15"/>
+      </customProperties>
+      <customProperties key="EnEf-Volt_Low">
+        <value xsi:type="am:DoubleObject" value="1.05"/>
+      </customProperties>
+      <customProperties key="EnEf-Scale_High">
+        <value xsi:type="am:DoubleObject" value="1.0"/>
+      </customProperties>
+      <customProperties key="EnEf-Scale_Low">
+        <value xsi:type="am:DoubleObject" value="0.5"/>
+      </customProperties>
+    </coreTypes>
+    <system name="Homogeneous Example System">
+      <quartzes name="792MHZ Quartz" frequency="792000000" type="DYNAMIC"/>
+      <ecus name="Freescale i.MX6 Board">
+        <microcontrollers name="i.MX 6 Series Processor">
+          <cores name="Cortex-A9 #1" coreType="Cortex-A9?type=CoreType">
+            <prescaler name="PS" clockRatio="100.0" quartz="792MHZ+Quartz?type=Quartz"/>
+          </cores>
+          <cores name="Cortex-A9 #2" coreType="Cortex-A9?type=CoreType">
+            <prescaler name="PS" clockRatio="100.0" quartz="792MHZ+Quartz?type=Quartz"/>
+          </cores>
+        </microcontrollers>
+      </ecus>
+    </system>
+  </hwModel>
+</am:Amalthea>

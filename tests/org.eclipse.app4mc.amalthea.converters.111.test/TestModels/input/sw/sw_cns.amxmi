@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:components="http://amalthea.itea2.org/model/1.2.0/components" xmlns:os="http://www.amalthea.itea2.org/model/1.2.0/os" xmlns:sw="http://www.amalthea.itea2.org/model/1.2.0/sw" xmi:id="_20IhkMtzEeWhPNHEM6LJDg">
+  <swModel xmi:id="_Pfn4YMvLEeWhPNHEM6LJDg">
+    <isrs xmi:id="_DM9ZgB30Eea8RuOocJrj6A" name="ISR1">
+      <deadline xmi:id="_EzUTUB30Eea8RuOocJrj6A"/>
+    </isrs>
+    <tasks xmi:id="_SXUeABz7Eea-WPwAn2OKkw" name="t1">
+      <deadline xmi:id="_olOJkMwoEeWhPNHEM6LJDg" value="22" unit="ns"/>
+      <callGraph xmi:id="_TkbxoMvLEeWhPNHEM6LJDg">
+        <graphEntries xsi:type="sw:LabelSwitch" xmi:id="_UJPH0MvLEeWhPNHEM6LJDg" label="_QFsZ4MvLEeWhPNHEM6LJDg">
+          <entries xmi:id="_8Pl4gMvSEeWhPNHEM6LJDg" value="11"/>
+        </graphEntries>
+        <graphEntries xsi:type="sw:ProbabiltitySwitch" xmi:id="_HMiLYMvMEeWhPNHEM6LJDg">
+          <entries xmi:id="_HtgxgMvMEeWhPNHEM6LJDg">
+            <graphEntries xsi:type="sw:LabelSwitch" xmi:id="_IgXKwMvMEeWhPNHEM6LJDg">
+              <label href="default.amxmi-sw#_3oN7MMvGEeWhPNHEM6LJDg"/>
+            </graphEntries>
+          </entries>
+        </graphEntries>
+        <graphEntries xsi:type="sw:CallSequence" xmi:id="_iSpMMB4BEea8RuOocJrj6A" name="cs1">
+          <calls xsi:type="sw:WaitEvent" xmi:id="_36KuQB4BEea8RuOocJrj6A"/>
+        </graphEntries>
+        <graphEntries xsi:type="sw:LabelSwitch" xmi:id="_2857IB4JEea8RuOocJrj6A" label="_QFsZ4MvLEeWhPNHEM6LJDg">
+          <entries xmi:id="_-tb4MB4JEea8RuOocJrj6A" value="22"/>
+          <entries xmi:id="_Z-7TcB4KEea8RuOocJrj6A" value="333"/>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <runnables xmi:id="_cCSqkM5DEeWhPNHEM6LJDg" name="R1">
+      <runnableItems xsi:type="sw:RunnableCall" xmi:id="_dMtPQM5DEeWhPNHEM6LJDg"/>
+      <runnableItems xsi:type="sw:SynchronousServerCall" xmi:id="_d2g3wB4EEea8RuOocJrj6A"/>
+      <runnableItems xsi:type="sw:LabelAccess" xmi:id="_uo-dcB4GEea8RuOocJrj6A"/>
+      <runnableItems xsi:type="sw:SemaphoreAccess" xmi:id="_bgoeIB4HEea8RuOocJrj6A"/>
+    </runnables>
+    <labels xmi:id="_QFsZ4MvLEeWhPNHEM6LJDg" name="RL" initialValue="50">
+      <tags href="default.amxmi-sw#_bEIdIBz7Eea-WPwAn2OKkw"/>
+    </labels>
+    <processPrototypes xmi:id="_xuJaIBz_Eea-WPwAn2OKkw" name="test">
+      <deadline xmi:id="_yTnesBz_Eea-WPwAn2OKkw" value="50"/>
+      <accessPrecedenceSpec xmi:id="_ZbHOAB4FEea8RuOocJrj6A"/>
+      <orderPrecedenceSpec xmi:id="_N8ZSgB4GEea8RuOocJrj6A"/>
+    </processPrototypes>
+    <tags xmi:id="_VVIS8Bz7Eea-WPwAn2OKkw" tagName="test_tag" tagType="test"/>
+  </swModel>
+  <osModel xmi:id="_5Qa90MtzEeWhPNHEM6LJDg">
+    <operatingSystems xmi:id="_7-5WQMtzEeWhPNHEM6LJDg">
+      <taskSchedulers xmi:id="_8yq8kMtzEeWhPNHEM6LJDg">
+        <schedulingUnit xsi:type="os:SchedulingHWUnit" xmi:id="_-XiBkMtzEeWhPNHEM6LJDg"/>
+      </taskSchedulers>
+    </operatingSystems>
+  </osModel>
+  <componentsModel xmi:id="_Y7c8kBz_Eea-WPwAn2OKkw">
+    <elements xsi:type="components:Component" xmi:id="_Zo21IBz_Eea-WPwAn2OKkw"/>
+    <tags xmi:id="_aYbQ4Bz_Eea-WPwAn2OKkw" tagName="test_tag_1" tagType="components_model"/>
+  </componentsModel>
+</central:AMALTHEA>

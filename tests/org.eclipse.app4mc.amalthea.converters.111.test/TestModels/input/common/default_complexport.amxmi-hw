@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hw:ComplexPort xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hw="http://www.amalthea.itea2.org/model/1.2.0/hw" xmi:id="_a0mKYL-HEeWFjLGtonZfOQ">
+  <pins xsi:type="hw:ComplexPin" xmi:id="_bXzlIL-HEeWFjLGtonZfOQ" name="" direction="RW"/>
+</hw:ComplexPort>

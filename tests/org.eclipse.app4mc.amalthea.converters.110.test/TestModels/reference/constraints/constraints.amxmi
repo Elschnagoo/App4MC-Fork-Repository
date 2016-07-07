@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:constraints="http://www.amalthea.itea2.org/model/1.2.0/constraints" xmlns:events="http://www.amalthea.itea2.org/model/1.2.0/events" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_xIADMJNiEeWQC6k3Y09j_A">
+  <constraintsModel xmi:id="_yCDQoJNiEeWQC6k3Y09j_A">
+    <eventChains xmi:id="_GpkHMJNjEeWQC6k3Y09j_A" name="ec1">
+      <response xsi:type="events:StimulusEvent" href="default.amxmi#_Qu3DkJNgEeWQC6k3Y09j_A" />
+      <strands xsi:type="constraints:SubEventChain" xmi:id="_JLyzYJNjEeWQC6k3Y09j_A">
+        <eventChain xmi:id="_J-HBIJNjEeWQC6k3Y09j_A" name="subec1">
+          <stimulus xsi:type="events:CustomEvent" href="default.amxmi#_abS-8Bd-Eea3AoorCOXNXA" />
+          <response xsi:type="events:StimulusEvent" href="default.amxmi#_Qu3DkJNgEeWQC6k3Y09j_A" />
+        </eventChain>
+      </strands>
+    </eventChains>
+    <timingConstraints xsi:type="constraints:AgeConstraint" xmi:id="_3HHF8JNiEeWQC6k3Y09j_A" name="ag1">
+      <maximum xmi:id="_72e_IJNiEeWQC6k3Y09j_A" value="10" />
+      <minimum xmi:id="_8_ZH8JNiEeWQC6k3Y09j_A" value="3" />
+    </timingConstraints>
+    <timingConstraints xsi:type="constraints:SynchronisationConstraint" xmi:id="__wGVAJNiEeWQC6k3Y09j_A" name="syc1">
+      <events xsi:type="events:StimulusEvent" href="default.amxmi#_Qu3DkJNgEeWQC6k3Y09j_A" />
+      <events xsi:type="events:LabelEvent" href="default.amxmi#_a5zf4Bd-Eea3AoorCOXNXA" />
+      <events xsi:type="events:RunnableEvent" href="default.amxmi#_cjpLgBd-Eea3AoorCOXNXA" />
+    </timingConstraints>
+    <affinityConstraints xsi:type="constraints:ProcessPairingConstraint" xmi:id="_yfA5cJNiEeWQC6k3Y09j_A" name="pc1" />
+    <affinityConstraints xsi:type="constraints:ProcessSeparationConstraint" xmi:id="_zry1oJNiEeWQC6k3Y09j_A" name="pc2" />
+    <affinityConstraints xsi:type="constraints:SchedulerSeparationConstraint" xmi:id="_1S1E4JNiEeWQC6k3Y09j_A" name="sc1" />
+  </constraintsModel>
+</central:AMALTHEA>

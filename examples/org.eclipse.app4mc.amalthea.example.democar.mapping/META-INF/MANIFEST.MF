@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Amalthea Mapping Example
+Bundle-SymbolicName: org.eclipse.app4mc.amalthea.example.democar.mapping
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: Eclipse.org
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

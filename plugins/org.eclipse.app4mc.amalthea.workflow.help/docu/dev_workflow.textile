@@ -1,0 +1,221 @@
+
+h1. Model Workflow
+
+h2. Introduction
+
+The APP4MC AMALTHEA platform provides the option to define a workflow on a model with different steps. AMALTHEA provides a simple API for implementing such a workflow. The definition of the workflow can be done either in plain Java or any other language, which is able to access Java classes. The "EASE":https://www.eclipse.org/ease/ framework provides a scripting environment inside of Eclipse with different script engines like  Rhino (JavaScript), Jython or Groovy. AMALTHEA provides a sample and some convenient helpers based on EASE to define and execute such a workflow.
+AMALTHEA provides several plugins for this purpose: 
+
+* __org.eclipse.app4mc.amalthea.workflow.core__: Includes basic API and some predefined workflow components
+* __org.eclipse.app4mc.amalthea.workflow.ease__: Provides some helper modules for EASE
+
+h2. General Structure
+
+The plugin __org.eclipse.app4mc.amalthea.workflow.core__ provides a general abstract class @org.eclipse.app4mc.amalthea.workflow.core.WorkflowComponent@ which can be used to extend in the case to provide or implement an own workflow step.
+
+!../pictures/uml_workflow_component.png!
+
+It provides the following features:
+
+* Defines the constant @AMALTHEA_SLOT@, which can be used to store and retrieve the AMALTHEA model from the @org.eclipse.app4mc.amalthea.workflow.core.Context@.
+* Provides some convenient methods to retrieve the model from the context, get a copy of the model or store the model in the context.
+
+The interface @org.eclipse.app4mc.amalthea.workflow.core.Context@ provides convenient methods to store and retrieve data in a @org.eclipse.app4mc.amalthea.workflow.core.WorkflowComponent@.
+
+!../pictures/uml_context.png!
+
+The class @org.eclipse.app4mc.amalthea.workflow.core.DefaultContext@ is a default implementation using an internal @java.util.HashMap@ to store the data.
+
+!../pictures/uml_default_context.png!
+
+A sample workflow implementation with two components @WorkfklowComponent1@ and @WorkflowComponent2@ can look like the following structure.
+
+Both classes are extending @org.eclipse.app4mc.amalthea.workflow.core.WorkflowComponent@.
+
+!../pictures/uml_workflow_overview.png!
+
+The next step is to create a __WorkflowDefinition__, which needs to do the following steps:
+
+# Create an instance of a @org.eclipse.app4mc.amalthea.workflow.core.Context@ using the @org.eclipse.app4mc.amalthea.workflow.core.DefaultContext@
+# Create an instance of @WorkfklowComponent1@ and configure it if needed with the proper setter methods
+# Call the __run__ method of @WorkfklowComponent1@ and pass the context
+# Create an instance of @WorkfklowComponent2@ and configure it if needed with the proper setter methods
+# Call the __run__ method of @WorkfklowComponent2@ and pass the context
+
+Therefore using the context, data can be shared between the different workflow component implementations.
+The following diagram shows this flow in more detail:
+
+!../pictures/uml_workflow_overview_sequence.png!
+
+h2(#AC). Available Basic Components
+
+The AMALTHEA platform ships with some available workflow steps, which can be used out of the box.
+
+h3. Model Reader
+
+The component @org.eclipse.app4mc.amalthea.workflow.component.ModelReader@ reads a given list of files containing AMALTHEA models. The result model is stored in the @AMALTHEA_SLOT@ as default. Please refer the JavaDoc for more details.
+
+!../pictures/uml_model_reader.png!
+
+Simple configuration inside of a workflow can look like the following:
+
+bc.. 
+ModelReader reader = new ModelReader();
+reader.addFileName("path to file");
+reader.run(ctx);
+
+h3. Model Writer
+
+The component @org.eclipse.app4mc.amalthea.workflow.component.ModelWriter@ writes a given AMALTHEA model to either one file or several files. As default the current available model in the @AMALTHEA_SLOT@ is taken.
+The following parameters are available to set:
+* @boolean singleFile@ default @true@
+* @String@ @outputDir@
+* @String@ @fileName@, if output is set to split files the different models are separated by an additional suffix in the name indicating the contained model.
+
+!../pictures/uml_model_writer.png!
+
+Sample configuration inside of a workflow:
+
+bc.. 
+ModelWriter writer = new ModelWriter();
+writer.setOutputDir("path to dir");
+writer.setFileName("output.amxmi");
+writer.run(ctx);
+
+h3. Add Schedule Points
+
+The component @org.eclipse.app4mc.amalthea.workflow.component.AddSchedulePoints@ modifies a given model (default in the @AMALTHEA_SLOT@) in that way, that in the @org.eclipse.app4mc.amalthea.model.sw.SWModel@ the contained @org.eclipse.app4mc.amalthea.model.sw.Task@ elements are checked if the preemption is set to cooperative. If this is the case, it will add between the elements of the @org.eclipse.app4mc.amalthea.model.sw.CallGraph@ new elements of type @org.eclipse.app4mc.amalthea.model.sw.SchedulePoint@.
+
+!../pictures/uml_add_schedule_points.png!
+
+Sample configuration inside of a workflow:
+
+bc.. 
+AddSchedulePoints addSchedulePoints = new AddSchedulePoints();
+addSchedulePoints.run(ctx);
+
+h2. Other Components
+
+h3. Create Tasks
+
+The component @org.eclipse.app4mc.multicore.openmapping.workflow.CreateTasks@ from the plugin __org.eclipse.app4mc.multicore.openmapping__ is the corresponding workflow element for the "Task creation example":./examples.html#tce. It takes a copy of a given model (defaults to @AMALTHEA_SLOT@) and performs the action @org.eclipse.app4mc.multicore.openmapping.algorithms.taskgen.pragmatic.PragmaticTaskCreator@. The result of this action is stored as default in the model slot __createtasks__.
+
+!../pictures/uml_create_tasks.png!
+
+Sample configuration inside of a workflow:
+
+bc.. 
+CreateTasks ct = new CreateTasks();
+ct.run(ctx);
+
+h3. Generate Mapping
+
+The component @org.eclipse.app4mc.multicore.openmapping.workflow.GenerateMapping@ from the plugin __org.eclipse.app4mc.multicore.openmapping__ is the corresponding workflow element for the "Mapping example":./examples.html#me. It takes a copy of a given model (defaults to @AMALTHEA_SLOT@) and performs one of the actions @org.eclipse.app4mc.multicore.openmapping.algorithms.heuristic.lb.LoadBalancingDFG@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.lb.ILPBasedLoadBalancing@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimization.EnergyMinimization@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ga.lb.GABasedLoadBalancing@ depending on the parameter @mappingAlg@. The result of this action is stored as default in the model slot __mapping__.
+Parameter:
+
+* @String@ @mappingAlg@ with the value of either __dfg__ or __ilp_lb__ or __ilp_energy__ or __ga_lb__
+
+Sample configuration inside of a workflow:
+
+bc.. 
+GenerateMapping mappingDfg = new GenerateMapping();
+mappingDfg.setModelSlot("createtasks");
+mappingDfg.setMappingAlg("dfg");
+mappingDfg.setEnableLog(true);
+mappingDfg.run(ctx);
+
+h2. EASE modules
+
+The purpose of using EASE is to provide one way to define and run a workflow for a model.
+Therefore APP4MC provides some helper methods to be used in the "EASE":https://www.eclipse.org/ease/ scripting environment. 
+The modules are provided by the plugin __org.eclipse.app4mc.amalthea.workflow.ease__.
+
+h3. Workflow Module
+
+The workflow module provides some helpers regarding running a APP4MC workflow definition based on EASE.
+The general module can be loaded with the following line:
+
+bc. 
+loadModule('/APP4MC/Workflow')
+
+EASE opens an own Eclipse console by default to show the output of the executed script when using right click and __Run as -> EASE Script__. Therefore if you are using Log4J for your logging, you can use the following provided methods to configure dedicated Log4J Loggers to use also the EASE console for output.
+
+The following overview gives an overview about the available helper methods:
+
+|_. Method |_. Params |_. Description |
+| addLoggerToConsole | String loggerName | Adds a Log4J logger to the output of the current used output of the EASE script engine. |
+| addLoggerToConsole | String loggerName, String pattern | Adds a Log4J logger to the output of the current used output of the EASE script engine with a given pattern, see @org.apache.log4j.PatternLayout@ for more details |
+| endWorkflow | - | Basic finish actions to be performed, should be called at the end |
+
+
+h2. Overall Sample
+
+A sample workflow is available in the AMALTHEA example projects inside of @org.eclipse.app4mc.amalthea.example.democar.mapping/workflow/sample_workflow.js@. In general this workflow contains all steps as shown in the AMALTHEA examples tutorial "Task creation":./examples.html#tce and "Mapping example":./examples.html#me, but it can be executed in one script. Execute it by doing a right click and then __Run As -> EASE Script__.
+The following steps are performed in the sample configuration:
+
+# Read the files __AMALTHEA_Democar_MappingExample.amxmi__ and __AMALTHEA_Democar_MappingExample-hw.amxmi__ inside if the model folder. Result model is saved in the default @AMALTHEA_SLOT@.
+# Perform the "Create Tasks":#CreateTasks component
+# Write the result model available in the __createtasks__ model slot to a single model file __createtasks__ in the directory __workflow-output__.
+# Perform the "Generate Mapping":#GenerateMapping component with the dfg algorithm on the result of the Create Tasks component. This is done by specifying @modelSlot = "createtasks"@.
+# Write the result model available in the __mapping__ model slot to a single model file __mapping_dfg__ in the directory __workflow-output__.
+# Perform the "Generate Mapping":#GenerateMapping component with the ilp algorithm on the result of the Create Tasks component. This is done by specifying @modelSlot = "createtasks"@. In addition the result slot is overwritten by @resultSlot = "mappingilp"@, as the previous run of Generate Mapping is already stored in the mapping slot.
+# Write the result model available in the __mapping_ilp__ model slot to a single model file __mapping_ilp__ in the directory __workflow-output__.
+
+The following diagram shows a snippet of this workflow:
+
+!../pictures/sample_workflow.png!
+
+h2. Adding a new workflow component
+
+Below you will find a sample how to add and implement a new workflow component.
+
+h3. Create project
+
+# Add a new plugin project with the name __my.sample.workflow__
+# Open the __MANIFEST.MF__ in the META-INF folder.
+# Switch to the tab Dependencies to add the following plugin dependencies: org.eclipse.app4mc.amalthea.workflow.core
+# Add a new class @my.sample.workflow.HelloWorld@, which is extending @org.eclipse.app4mc.amalthea.workflow.core.WorkflowComponent@.
+# Implement something in the @runInternal(Context ctx) throws WorkflowException@ method (see sample below).
+
+bc.. 
+@Override
+protected void runInternal(Context ctx) throws WorkflowException {
+	// some checking if sw model is available
+	if (null == getAmaltheaModel(ctx).getSwModel()) {
+		throw new WorkflowException("No proper SWModel available!");
+	}
+	this.log.info("Number of tasks in model: " + getAmaltheaModel(ctx).getSwModel().getTasks().size());
+}
+
+h3. Execute the new component in the available sample
+
+The previous created class @my.sample.workflow.HelloWorld@ should be added to a workflow.
+Therefore we are using the provided sample project from APP4MC __org.eclipse.app4mc.amalthea.example.democar.mapping__.
+Before starting with the next steps, we need to start a new runtime from the existing workspace, so that the plugin __my.sample.workflow__ is already loaded.
+
+*Note:* If you want to use the classes from the plugin __my.sample.workflow__ in a EASE script located in the same workspace, you can create an instance of it at runtime using the JVM module of EASE. Please consider the EASE documentation for more details.
+
+# Add the AMALTHEA democar samples to your workspace (File - New - Example - Democar Examples)
+# Go to the project __org.eclipse.app4mc.amalthea.example.democar.mapping__.
+# Open the __sample_workflow.js__ located in the workflow folder.
+# Add to the imports: @importPackage(my.sample.workflow)@
+# Add to the logger configs: @addLoggerToConsole("my.sample.workflow")@
+# Add the First snippet below after the first AmaltheaReader component and before the CreateTasks component.
+# Run the script by doing a right click -> Run As -> EASE Script
+
+bc.. 
+var ctx = new DefaultContext()
+
+//Reader
+var reader = new ModelReader()
+reader.addFileName(MODEL_LOCATION1)
+reader.addFileName(MODEL_LOCATION2)
+reader.run(ctx)
+
+var hw = new HelloWorld()
+hw.run(ctx)
+
+//create tasks based on initial model
+//result is saved in modelslot createtasks
+var createTasks = new CreateTasks()
+createTasks.run(ctx)

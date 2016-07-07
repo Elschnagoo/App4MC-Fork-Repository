@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.eclipse.app4mc.multicore.partitioning.handlers.PartitioningHandler"
+            commandId="org.eclipse.app4mc.multicore.partitioning.perform">
+      </handler>
+      <handler
+            class="org.eclipse.app4mc.multicore.partitioning.handlers.WriteAppletHandler"
+            commandId="org.eclipse.app4mc.multicore.partitioning.visualize">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="org.eclipse.app4mc.multicore.partitioning.perform"
+               id="org.eclipse.app4mc.multicore.partitioning.popups.perform"
+               label="Perform Partitioning"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <instanceof
+                           value="org.eclipse.core.resources.IResource">
+                     </instanceof>
+                     <test
+                           property="org.eclipse.core.resources.extension"
+                           value="amxmi">
+                     </test>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.eclipse.app4mc.multicore.partitioning.visualize"
+               id="org.eclipse.app4mc.multicore.partitioning.popups.visualize"
+               label="Create Applet"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <instanceof
+                           value="org.eclipse.core.resources.IResource">
+                     </instanceof>
+                     <test
+                           property="org.eclipse.core.resources.extension"
+                           value="amxmi">
+                     </test>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.eclipse.app4mc.multicore.partitioning.perform"
+            name="Perform Partitioning">
+      </command>
+      <command
+            id="org.eclipse.app4mc.multicore.partitioning.visualize"
+            name="Generate Applet">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.eclipse.app4mc.multicore.partitioning.preferences.PartitioningPreferences"
+            id="org.eclipse.app4mc.multicore.partitioning.preferences.PartitioningPreferences"
+            name="AMALTHEA Partitioning">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipse.app4mc.multicore.partitioning.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+
+</plugin>

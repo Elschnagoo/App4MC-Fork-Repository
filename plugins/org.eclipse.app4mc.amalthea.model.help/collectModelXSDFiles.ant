@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<project basedir=".">
+	<property name="model.dir" location="help-model" />
+	<property name="xsd.dir" value="${model.dir}/xsd" />
+	<property name="xsd.archive" value="${model.dir}/xml-schema-definitions.zip" />
+
+	<target name="deleteModelDir">
+		<delete dir="${model.dir}"/>
+	</target>
+
+	<target name="createModelDir">
+		<mkdir dir="${model.dir}"/>
+		<mkdir dir="${xsd.dir}"/>
+	</target>
+	
+	<target name="copyModelXsd">
+		<!--Step 1:  Copy the xsd files -->
+		<copy todir="${xsd.dir}" flatten="true">
+			<fileset dir = "../../" includes="plugins/org.eclipse.app4mc.amalthea.model/model/*.xsd"/>
+		</copy>
+		
+		
+		<!--Step 2:  Rename the files
+		This renames the files to lower-case and removes the "XMI" from the name.
+		The "XMI.xsd" is not renamed becasue of the regex in b). 
+		-->
+		<move todir="${xsd.dir}">
+			<fileset dir="${xsd.dir}"/>
+			<chainedmapper>
+				<!-- a) to lower case-->
+				<scriptmapper language="javascript">
+					self.addMappedName(source.toLowerCase());
+				</scriptmapper>
+				
+				<!-- b) remove "XMI"-->
+				<regexpmapper from="^(.+)xmi\.xsd$" to="\1.xsd"/>
+			</chainedmapper>
+		</move>
+		
+	</target>
+	
+	<target name="zip">
+		<zip destfile="${xsd.archive}" basedir="${xsd.dir}"/>
+	</target>
+</project>

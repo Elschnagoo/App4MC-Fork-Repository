@@ -1,0 +1,95 @@
+
+h1. OS Model
+
+This part of the AMALTHEA model describes the provided functionality of an operating system. It mainly provides a way to specify how access is given to certain system resources. Therefore the concepts of scheduling, buffering, and semaphores are supported, which are described in detail in the following chapter.
+
+!../pictures/model_os_overview.png!
+
+
+h2. Operating System
+
+The basic element in the OS Model is the operating system. There can multiple operating systems in one model. The operating system type can be used to describe a generic operating system. It is also possible to use the vendor operating system type to define a vendor specific OS. A operating system contains a number of task schedulers and interrupt controllers. A task scheduler controls the execution of a task on one or multiple processor cores. A interrupt controller is the controller for the execution of ISRs and can be also mapped to multiple cores. The mapping of tasks and ISRs to their controller and the mapping of the controller to the cores can be done in the Mapping Model. An operating system can also contain a description of the overhead it produces. For this there is a more detailed explanation below.  
+ 
+!../pictures/model_os_operatingsystem.png!
+
+
+h2. Scheduler
+
+Interrupt controller and task scheduler have a scheduling algorithm. The picture below shows that both types are inherited of the scheduler type. Each scheduler has a scheduling unit. The scheduling unit can be either a hardware scheduling unit or a software scheduling unit. 
+
+!../pictures/model_os_scheduler.png!
+
+h3. Scheduling HW Unit
+
+This class is used when scheduling is done by a hardware unit. The only attribute of this class
+is the delay attribute. It represents the amount of time that is required to execute scheduling.
+
+!../pictures/model_os_hwunit.png!
+
+h3. Scheduling SW Unit
+
+This class is used when scheduling is done by software unit.
+
+!../pictures/model_os_swunit.png!
+
+h3. Scheduling Algorithm
+
+This is an abstract class for the different scheduling algorithms.
+
+|_. Scheduling Algorithm  |_. Description |
+| OSEK | OSEK compliant Scheduling Algorithm |
+| PfairPD2 | Proportionate Fair PD ^2^ Scheduling Algorithm |
+| PartlyPFairPD2 | PPfair-PD ^2^ (Partly Proportionate Fair PD ^2^ Scheduling Algorithm) |
+| PartlyEarlyReleaseFairPD2 | P-ERfair-PD ^2^ (Partly Early Release Fair PD ^2^ Scheduling Algorithm) |
+| EarlyReleaseFairPD2 | ERfair-PD ^2^ (Early Release Fair PD ^2^ Scheduling Algorithm) |
+| LeastLocalRemainingExecutionTimeFirst | Task with the smallest local remaining execution time gets the highest priority |
+| EarliestDeadlineFirst | EDF (Earliest Deadline First Scheduling Algorithm): Task with the earliest deadline gets the highest priority |
+| DeadlineMonotonic | DMS (Deadline Monotonic Scheduling Algorithm): Task with the shortest period gets the lowest priority |
+| RateMonotonic | RMS (Rate Monotonic Scheduling Algorithm): Task with the shortest period gets the highest priority |
+| PriorityBasedRoundRobin | Round Robin Scheduling Algorithm with prioritized processes |
+| UserSpecificSchedulingAlgorithm | This class contains a list of algorithm parameter. Each parameter has a key and a value (both Strings). A user can store all information for its own specific scheduling algorithm here |
+
+
+h2. OS Buffering
+
+The OS buffering object specifies the sections where the buffering for inter-core communication occurs. The buffering can be done at runnable, process, and schedule section level. When buffering is enabled for a level, the required data for a section of this level (e.g. runnable) is read before its execution starts. After the execution of the section, the data is copied back.
+
+!../pictures/model_os_buffering.png!
+
+
+h2. Semaphore
+
+With this object, a semaphore can be described which limits the access of several processes to one resource at the same time.
+
+!../pictures/model_os_semaphore.png!
+
+|_. Attribute  |_. Description |
+| __name__ | Name of semaphore (inherited from ReferableBaseObject) |
+| __maxValue__ | Maximum number of processes that can concurrently access the semaphore |
+| __initialValue__ | Initial number of processes that access the semaphore |
+| __priorityCeilingPrototcol__ | Defines if the priority ceiling protocol is activated. If it is activated, a process that accesses the semaphore gets a higher priority as the processes that can also access the same semaphore |
+
+
+h2. Os Overhead
+
+It is possible to define the the overhead that is produced by an operating system. The defined overhead can be assigned to an operating system definition. Each overhead information is defined as a set of instructions that has to be executed when the corresponding OS function is used. The instructions can be either a constant set or a deviation of instructions. It is possible to define the overhead for the ISR category one and two and for a number of operating system API functions.
+
+!../pictures/model_os_osoverhead.png!
+
+h3. ISR Overhead
+
+* ISR category 1 & 2: Describes the overhead for ISRs of category one and two by adding a set of instructions that is executed at start and terminate of the ISR 
+
+h3. API Overhead
+
+There exists also an overhead for API calls. The following API calls are considered:
+* API Activate Task: Runtime overhead for the activation of a task or ISR by another task or ISR (inside the activating process)
+* API Terminate Task: Runtime for explicit task termination call (inside a task)
+* API Schedule: Runtime for task scheduling (on scheduling request)
+* API Request Resource: Runtime overhead for requesting a semaphore (inside a runnable)
+* API Release Resource: Runtime overhead for releasing a semaphore (inside a runnable)
+* API Set Event: Runtime overhead for requesting an OS event (inside a task or ISR)
+* API Wait Event: Runtime overhead for waiting for an OS event (inside a task or ISR)
+* API Clear Event: Runtime overhead for clearing an OS event (inside a task or ISR)
+* API Send Message: Runtime overhead for activating another process on another core or setting a event for a process on another core (inside a task or ISR) 
+* API Enforced Migration: Runtime overhead for migrating from one scheduler to another scheduler (inside a task or ISR)

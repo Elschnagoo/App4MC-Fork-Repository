@@ -1,0 +1,48 @@
+@startuml
+
+skinparam backgroundColor #EEEBDC
+title AMALTHEA model migration
+autonumber
+
+actor User	 #green
+
+box "ModelLoaderJob" #LightBlue
+participant XMLLoader
+participant Referred_Models
+end box
+
+User -> XMLLoader : AMALTHEA model files \n to be migrated
+
+XMLLoader --> Referred_Models : Identifying \nreferred AMALTHEA models
+
+Referred_Models -> User : list of explicit & implicit \nAMALTHEA model files which shall be migrated
+
+User -> Model_Migration : invocation of model migration by specifying output model version
+
+box "ModelMigrationJob" #LightGreen
+	participant PreProcessors
+	participant Migration_Step
+	participant CacheBuilders
+	participant Converters
+	participant PostProcessors
+	participant Model_Save
+
+end box
+
+Model_Migration --> PreProcessors : invocation of pre-processors \n configured for \n input model version
+
+Model_Migration --> Migration_Step: (1-*) based on input and output model versions, \n dynamically migration steps are created
+
+loop migration step execution (1-*)
+
+Migration_Step --> CacheBuilders : building of cache
+Migration_Step --> Converters : invocation of converters\n configured \nfor the migration step
+Migration_Step --> PostProcessors : invocation of post processors configured \nfor the migration step
+
+end
+Migration_Step --> Model_Save : saving of migrated models \n (after all migration steps are completed)
+Migration_Step -->Model_Migration : completion of all migration steps
+
+Model_Migration -> User : model migration completed
+
+@enduml

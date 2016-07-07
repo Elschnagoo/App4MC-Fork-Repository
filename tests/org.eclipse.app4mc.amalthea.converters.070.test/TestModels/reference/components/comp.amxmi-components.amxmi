@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:ComponentsModel xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_BP7M4BFCEea1jpJ4wy-zDw">
+  <components xmi:id="_B4C80BFCEea1jpJ4wy-zDw">
+    <ports xsi:type="am:FInterfacePort" xmi:id="_CPJOMBFCEea1jpJ4wy-zDw" kind="provides">
+      <customProperties xmi:id="_ygCegBHlEeaRXaRtbzce4w" key="t1">
+        <value xsi:type="am:IntegerObject" xmi:id="_zx8yUBHlEeaRXaRtbzce4w" value="11" />
+      </customProperties>
+      <customProperties xmi:id="_9GW1kBHoEeayhfIeO0U0WA" key="Franca interface">
+        <value xsi:type="am:StringObject" xmi:id="_9GW1kRHoEeayhfIeO0U0WA" value="interfaces.fidl#//@interfaces.0" />
+      </customProperties>
+    </ports>
+  </components>
+  <components xsi:type="am:Composite" xmi:id="_DwuVsBFCEea1jpJ4wy-zDw">
+    <ports xsi:type="am:FInterfacePort" xmi:id="_FrgnYBFCEea1jpJ4wy-zDw" kind="provides">
+      <customProperties xmi:id="_9GW1khHoEeayhfIeO0U0WA" key="Franca interface">
+        <value xsi:type="am:StringObject" xmi:id="_9GW1kxHoEeayhfIeO0U0WA" value="interfaces.fidl#//@interfaces.1" />
+      </customProperties>
+    </ports>
+    <componentInstances xmi:id="_G7C8oBFCEea1jpJ4wy-zDw" />
+  </components>
+  <systems xmi:id="_J5YgkBFDEea1jpJ4wy-zDw">
+    <connectors xmi:id="_KlVAkBFDEea1jpJ4wy-zDw">
+      <sourcePort xmi:id="_LJBjgBFDEea1jpJ4wy-zDw" instance="_G7C8oBFCEea1jpJ4wy-zDw" port="_CPJOMBFCEea1jpJ4wy-zDw" />
+    </connectors>
+  </systems>
+</am:ComponentsModel>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:common="http://www.amalthea.itea2.org/model/1.2.0/common" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.2.0/stimuli" xmi:id="_VjdKAMANEeWFjLGtonZfOQ">
+  <stimuliModel xmi:id="_WYetgMANEeWFjLGtonZfOQ">
+    <stimuli xsi:type="stimuli:InterProcess" xmi:id="_HhTBYMAOEeWFjLGtonZfOQ">
+      <stimulusDeviation xmi:id="_IRdTAMAOEeWFjLGtonZfOQ">
+        <lowerBound xsi:type="common:SignedTime" xmi:id="_M-YVIMAOEeWFjLGtonZfOQ"  />
+        <upperBound xsi:type="common:SignedTime" xmi:id="_RA-n4MAOEeWFjLGtonZfOQ"  />
+        <distribution xsi:type="common:GaussDistribution" xmi:id="_XcTskMAOEeWFjLGtonZfOQ">
+          <sd xsi:type="common:SignedTime" xmi:id="_qTfN8MAOEeWFjLGtonZfOQ" />
+          <mean xsi:type="common:SignedTime" xmi:id="_8kDT4MAREeWFjLGtonZfOQ"/>
+        </distribution>
+      </stimulusDeviation>
+    </stimuli>
+    <clocks xsi:type="stimuli:ClockSinusFunction" xmi:id="_arCH0MANEeWFjLGtonZfOQ" name="csf">
+      <shift xmi:id="_djnegMANEeWFjLGtonZfOQ" unit="ps" />
+    </clocks>
+    <clocks xsi:type="stimuli:ClockTriangleFunction" xmi:id="_gKxG8MANEeWFjLGtonZfOQ">
+      <shift xmi:id="_gmzisMANEeWFjLGtonZfOQ"  />
+    </clocks>
+  </stimuliModel>
+</central:AMALTHEA>

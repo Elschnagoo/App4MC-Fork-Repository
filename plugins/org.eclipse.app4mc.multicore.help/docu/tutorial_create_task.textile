@@ -1,0 +1,25 @@
+
+
+h2(#tce). Task creation example
+
+The following section will describe how to generate tasks out of software models with __sequencing constraints__.
+
+*Step 1*
+
+!../pictures/ExampleMapping/02-democar-example.png!
+
+Create a new example project based on the "Democar Example" (*File -> New -> Example*).
+
+*Step 2*
+
+!(#gray)../pictures/ExampleMapping/04-generate-tasks.png!
+
+Click on the left arrow of the "org.eclipse.app4mc.amalthea.example.democar.mapping" project to expand it. You will see several files with models of the democar project, each of them containing one specific model, e.g. "AMALTHEA_Democar_MappingExample.amxmi" with the software model and constraints model. Usually, a software model needs to be partitioned before it can be mapped. You can either use the partitioning plugin for this, or the included (already partitioned) software model.
+Right-click on the file "AMALTHEA_Democar_MappingExample.amxmi" and click "Generate Tasks" to start the task generation process. This will also convert the __Activation__ elements from the partitioned software model to __Stimuli__ and store these in a stimulation model.
+
+*Step 3*
+
+!../pictures/ExampleMapping/05-output-model.png!
+
+Once the tasks have been generated, a new file with tasks will be created in the "output" folder. The file "AMALTHEA_Democar_MappingExample_withTasks.amxmi" contains the final software model, the stimulation model and the constraints model and is ready to be mapped.
+

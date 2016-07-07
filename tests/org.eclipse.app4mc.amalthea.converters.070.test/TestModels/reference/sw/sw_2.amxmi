@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:SWModel xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <isrs name="ISR_1">
+    <callGraph>
+      <graphEntries xsi:type="am:ModeSwitch">
+        <entries default="true">
+          <value href="amlt:/#Mode1/ModeLiteral_1?type=ModeLiteral" />
+        </entries>
+      </graphEntries>
+    </callGraph>
+  </isrs>
+  <labels buffered="buffered" />
+</am:SWModel>

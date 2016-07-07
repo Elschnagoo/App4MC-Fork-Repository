@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stimuli:StimuliModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.1.0/stimuli">
+  <stimuli xsi:type="stimuli:Periodic" name="OsScheduleTable_2_EP_0">
+    <offset unit="s"/>
+    <recurrence value="10" unit="ms"/>
+  </stimuli>
+  <stimuli xsi:type="stimuli:Periodic" name="OsScheduleTable_1_EP_0">
+    <offset unit="s"/>
+    <recurrence value="20" unit="ms"/>
+  </stimuli>
+</stimuli:StimuliModel>

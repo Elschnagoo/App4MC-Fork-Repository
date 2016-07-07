@@ -1,0 +1,27 @@
+
+
+h2(#meef). Mapping example 2
+
+The following section will describe how to calculate a mapping with the AMALTHEA Tool Platform using the experimental energy minimization algorithm.
+
+*Step 1*
+
+!../pictures/ExampleMapping/09-preferences.png!
+
+The first step is to change the mapping algorithm into the "Energy efficient mapping" algorithm. Do this by clicking on "Window" and then "Preferences" in the menu bar. The preferences window will open and you are able to configure the mapping plugin on its preferences page under the point "AMALTHEA Mapping".
+Select "Energy efficient mapping (Experimental)" and close the page using the OK button on the bottom.
+
+*Step 2*
+
+The algorithm for energy efficient mapping (minimization of the energy consumption) comes with specifically altered model files based on the Democar and HVAC use case which are stored in the folder "modelEnergyEfficient". Open this folder, right click on one of the two "AMALTHEA????_EnergyEfficientMappingExample.amxmi" files and select perform mapping. As this algorithm comes with its own task creation algorithm, we can skip the task creation process.
+
+*Step 3*
+
+Similar to the previous example, the name of the project as well as the path have already been entered for you. To perform the mapping, specify the path to the hardware model. This is done by clicking the second search button from the top and locating the file "IMX6.amxmi-hw" within the "modelEnergyEfficient" folder. Start the mapping calculation by hitting the "Create Mapping" button.
+
+*Step 4*
+
+!../pictures/ExampleMapping/10Inspect.png!
+Once the mapping is performed, two additional files will be generated in the "output" folder. The mapping can be found in the file "AMALTHEA_????_MappingExample_withTasks_mapping.amxmi-mapping". To inspect this file, just double-click on it to open a content tree explorer.
+Additional information about the mapping is provided in the console.
+

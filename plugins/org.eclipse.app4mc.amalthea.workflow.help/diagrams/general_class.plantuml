@@ -1,0 +1,9 @@
+@startuml
+
+abstract class WorkflowComponent
+
+WorkflowComponent <|-- WorkflowComponent1
+
+WorkflowComponent <|-- WorkflowComponent2
+
+@enduml

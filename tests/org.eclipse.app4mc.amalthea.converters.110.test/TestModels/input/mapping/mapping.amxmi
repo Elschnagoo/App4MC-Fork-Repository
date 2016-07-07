@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.1.0/central" xmlns:mapping="http://www.amalthea.itea2.org/model/1.1.0/mapping" xmlns:sw="http://www.amalthea.itea2.org/model/1.1.0/sw" xmi:id="_O-GR0JK2EeWQC6k3Y09j_A">
+  <mappingModel xmi:id="_fBQMYJK2EeWQC6k3Y09j_A">
+    <executableAllocation xsi:type="mapping:ProcessAllocation" xmi:id="_fdmKIJK2EeWQC6k3Y09j_A">
+      <scheduler href="default.amxmi-os#_QGrDcJK2EeWQC6k3Y09j_A"/>
+      <process xsi:type="sw:ISR" href="sw.amxmi#_ZXxbYJK2EeWQC6k3Y09j_A"/>
+    </executableAllocation>
+    <executableAllocation xsi:type="mapping:RunnableAllocation" xmi:id="_hjmNUJK2EeWQC6k3Y09j_A">
+      <scheduler href="default.amxmi-os#_RUx1UJK2EeWQC6k3Y09j_A"/>
+      <entity href="sw.amxmi#_XLRHkJK2EeWQC6k3Y09j_A"/>
+    </executableAllocation>
+    <executableAllocation xsi:type="mapping:ProcessAllocation" xmi:id="_j5cDUJK2EeWQC6k3Y09j_A">
+      <scheduler href="os.amxmi#_T_4JoJK2EeWQC6k3Y09j_A"/>
+      <process xsi:type="sw:Task" href="sw.amxmi#_YOuvsJK2EeWQC6k3Y09j_A"/>
+    </executableAllocation>
+    <executableAllocation xsi:type="mapping:ProcessAllocation" xmi:id="_l1pRUJK2EeWQC6k3Y09j_A">
+      <scheduler href="os.amxmi#_T_4JoJK2EeWQC6k3Y09j_A"/>
+      <process xsi:type="sw:ISR" href="sw.amxmi-sw#_dJBfcJK2EeWQC6k3Y09j_A"/>
+    </executableAllocation>
+    <executableAllocation xsi:type="mapping:ProcessAllocation" xmi:id="_nqSewJK2EeWQC6k3Y09j_A">
+      <scheduler href="os.amxmi#_U4biQJK2EeWQC6k3Y09j_A"/>
+      <process xsi:type="sw:Task" href="sw.amxmi-sw#_cAJL0JK2EeWQC6k3Y09j_A"/>
+    </executableAllocation>
+  </mappingModel>
+</central:AMALTHEA>

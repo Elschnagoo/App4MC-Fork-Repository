@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.2.0/stimuli" xmlns:sw="http://www.amalthea.itea2.org/model/1.2.0/sw" xmi:id="_ckIvsMW5EeWBM6uFowTedA">
+  <stimuliModel xmi:id="_iLxtoMW5EeWBM6uFowTedA">
+    <stimuli xsi:type="stimuli:CustomStimulus" xmi:id="_ivdCcMW5EeWBM6uFowTedA">
+      <disablingLabelsList xmi:id="_jQvKkMW5EeWBM6uFowTedA">
+        <entries xmi:id="_juXhwMW5EeWBM6uFowTedA">
+          <valueProvider xsi:type="sw:Label" href="modes/cross.amxmi#_EvG8gAuPEeatw45e4IN1FQ"/>
+        </entries>
+      </disablingLabelsList>
+    </stimuli>
+  </stimuliModel>
+</central:AMALTHEA>

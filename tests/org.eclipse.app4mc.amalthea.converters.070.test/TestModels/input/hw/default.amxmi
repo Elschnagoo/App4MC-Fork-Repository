@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hw:HWModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:hw="http://www.amalthea.itea2.org/model/1.3.0/hw">
+  <systemTypes/>
+  <ecuTypes/>
+  <memoryTypes name="MemType1" type="FLASH_INT"/>
+  <system name="sys">
+    <memories name="Memory1" type="MemType1?type=hw.MemType"/>
+    <memories name="memory2"/>
+    <components name="Comp1">
+      <components name="subComp">
+        <components name="sub_sub_component"/>
+      </components>
+    </components>
+    <components name="hwComp1">
+      <ports name="hwPort2"/>
+    </components>
+    <ports name="hwPort"/>
+  </system>
+</hw:HWModel>

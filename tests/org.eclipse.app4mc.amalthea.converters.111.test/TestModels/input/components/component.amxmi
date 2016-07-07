@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:components="http://amalthea.itea2.org/model/1.2.0/components" xmi:id="_wG3_oMEQEeWFjLGtonZfOQ">
+  <componentsModel xmi:id="_w9jI8MEQEeWFjLGtonZfOQ">
+    <elements xsi:type="components:Component" xmi:id="_yGOBMMEQEeWFjLGtonZfOQ">
+      <ports xsi:type="components:FInterfacePort" xmi:id="_gjjJwMESEeWFjLGtonZfOQ"/>
+    </elements>
+    <elements xsi:type="components:Composite" xmi:id="_1kLV0MEQEeWFjLGtonZfOQ">
+      <ports xsi:type="components:FInterfacePort" xmi:id="_4idE0MEQEeWFjLGtonZfOQ"  >
+        <interface href="HVAC_Interfaces.fidl#//@interfaces.6"/>
+      </ports>
+    </elements>
+  </componentsModel>
+</central:AMALTHEA>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <wizard
+            category="org.eclipse.app4mc.amalthea.import.amalthea"
+            class="org.eclipse.app4mc.amalthea._import.atdb.wizard.ImportWizard"
+            icon="icons/amalthea.gif"
+            id="org.eclipse.app4mc.amalthea.import.atdb.wizard"
+            name="From AMALTHEA Trace DB">
+      </wizard>
+      <category
+            id="org.eclipse.app4mc.amalthea.import.amalthea"
+            name="AMALTHEA">
+      </category>
+   </extension>
+
+</plugin>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:common="http://www.amalthea.itea2.org/model/1.3.0/common" xmlns:components="http://amalthea.itea2.org/model/1.3.0/components" xmlns:config="http://www.amalthea.itea2.org/model/1.3.0/config" xmlns:constraints="http://www.amalthea.itea2.org/model/1.3.0/constraints" xmlns:events="http://www.amalthea.itea2.org/model/1.3.0/events" xmlns:hw="http://www.amalthea.itea2.org/model/1.3.0/hw" xmlns:mapping="http://www.amalthea.itea2.org/model/1.3.0/mapping" xmlns:os="http://www.amalthea.itea2.org/model/1.3.0/os" xmlns:propertyconstraints="http://www.amalthea.itea2.org/model/1.3.0/propertyconstraints" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.3.0/stimuli" xmlns:sw="http://www.amalthea.itea2.org/model/1.3.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_l6kzYNotEeWXsaNW2kxe8A">
+  <swModel xmi:id="_mgMB4NotEeWXsaNW2kxe8A">
+    <tasks xmi:id="_nDgKUNotEeWXsaNW2kxe8A" name="SecondTask" preemption="cooperative" />
+  </swModel>
+  <stimuliModel xmi:id="_WgLWsBhOEea3AoorCOXNXA">
+    <stimuli xsi:type="stimuli:CustomStimulus" xmi:id="_Xxhp0BhOEea3AoorCOXNXA" name="Stimulus_1" />
+  </stimuliModel>
+  <componentsModel xmi:id="_lioCMBhOEea3AoorCOXNXA">
+    <components xmi:id="_oCwnMBhPEea3AoorCOXNXA" name="comp1">
+      <tasks xsi:type="sw:Task" href="default.amxmi#_Zp_LgNotEeWXsaNW2kxe8A" />
+      <tasks xsi:type="sw:Task" href="#_nDgKUNotEeWXsaNW2kxe8A" />
+    </components>
+    <tags xmi:id="_6PbocBhOEea3AoorCOXNXA" tagType="grouping" name="test_tag" />
+  </componentsModel>
+</central:AMALTHEA>

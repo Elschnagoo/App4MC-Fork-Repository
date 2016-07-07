@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping:MappingModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mapping="http://www.amalthea.itea2.org/model/1.1.0/mapping" xmlns:sw="http://www.amalthea.itea2.org/model/1.1.0/sw">
+  <executableAllocation xsi:type="mapping:ProcessAllocation">
+    <scheduler href="os.amxmi-os#//@scheduler.0"/>
+    <process xsi:type="sw:Task" href="sw.amxmi-sw#//@tasks.0"/>
+  </executableAllocation>
+  <executableAllocation xsi:type="mapping:RunnableAllocation">
+    <scheduler href="os.amxmi-os#//@scheduler.1"/>
+    <entity href="sw.amxmi-sw#//@runnables.0"/>
+  </executableAllocation>
+</mapping:MappingModel>

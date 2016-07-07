@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:events="http://www.amalthea.itea2.org/model/1.2.0/events" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_lhnBgBd9Eea3AoorCOXNXA">
+  <stimuliModel xmi:id="_-H3lkBd9Eea3AoorCOXNXA" />
+  <eventModel xmi:id="_zH9icBd9Eea3AoorCOXNXA">
+    <events xsi:type="events:StimulusEvent" xmi:id="_Qu3DkJNgEeWQC6k3Y09j_A" name="sEvent" />
+    <events xsi:type="events:CustomEvent" xmi:id="_abS-8Bd-Eea3AoorCOXNXA" name="cEvent" />
+    <events xsi:type="events:LabelEvent" xmi:id="_a5zf4Bd-Eea3AoorCOXNXA" name="lEvent" />
+    <events xsi:type="events:ProcessEvent" xmi:id="_brYt0Bd-Eea3AoorCOXNXA" name="pEvent" />
+    <events xsi:type="events:RunnableEvent" xmi:id="_cjpLgBd-Eea3AoorCOXNXA" name="rEvent" />
+    <events xsi:type="events:SemaphoreEvent" xmi:id="_dBN4UBd-Eea3AoorCOXNXA" name="sEvent" />
+  </eventModel>
+</central:AMALTHEA>

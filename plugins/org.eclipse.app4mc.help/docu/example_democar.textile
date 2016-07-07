@@ -1,0 +1,25 @@
+
+
+h2. Democar Example
+
+The so called Democar model presented in the AMALTHEA example files describe a simple engine management system.
+
+h3. Origin
+
+The Democar example is loosely based on the publicly available information taken from
+
+bq. 
+ *A Timing Model for Real-Time Control-Systems and its Application*
+ *on Simulation and Monitoring of AUTOSAR Systems*
+ _Author: Patrick Frey_
+
+A version of the dissertation can be downloaded from University of Ulm: "pdf":http://vts.uni-ulm.de/docs/2011/7505/vts_7505_10701.pdf.
+
+h3. Files
+
+*AMALTHEA_Democar.amxmi*
+contains the complete model, consisting of a hardware model, a model of the operating system, a stimulation model and a model that describes the software system.
+
+*Amalthea_ArExampleEngine.atdb*
+is an AMALTHEA Trace Database and it contains a trace that is the result of a simulation of this example. 
+

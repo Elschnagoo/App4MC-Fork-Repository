@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.2.0/stimuli" xmi:id="__YTokBz1EeaQE4BT-v2fIw">
+  <swModel xmi:id="__YTokRz1EeaQE4BT-v2fIw">
+    <labels xmi:id="__YTokhz1EeaQE4BT-v2fIw" name="Label"/>
+  </swModel>
+  <stimuliModel xmi:id="__YTokxz1EeaQE4BT-v2fIw">
+    <stimuli xsi:type="stimuli:ArrivalCurve" xmi:id="__YTolBz1EeaQE4BT-v2fIw">
+      <setLabelsList xmi:id="__YTolRz1EeaQE4BT-v2fIw">
+        <entries xmi:id="__YTolhz1EeaQE4BT-v2fIw" valueProvider="__YTokhz1EeaQE4BT-v2fIw"/>
+      </setLabelsList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:CustomStimulus" xmi:id="__YTolxz1EeaQE4BT-v2fIw">
+      <setLabelsList xmi:id="__YTomBz1EeaQE4BT-v2fIw">
+        <entries xmi:id="__YTomRz1EeaQE4BT-v2fIw" valueProvider="__YTokhz1EeaQE4BT-v2fIw"/>
+      </setLabelsList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:InterProcess" xmi:id="__YTomhz1EeaQE4BT-v2fIw">
+      <setLabelsList xmi:id="__YTomxz1EeaQE4BT-v2fIw">
+        <entries xmi:id="__YTonBz1EeaQE4BT-v2fIw" valueProvider="__YTokhz1EeaQE4BT-v2fIw"/>
+      </setLabelsList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:Periodic" xmi:id="__YTonRz1EeaQE4BT-v2fIw" name="PeriodicElement">
+      <setLabelsList xmi:id="__YTonhz1EeaQE4BT-v2fIw">
+        <entries xmi:id="__YTonxz1EeaQE4BT-v2fIw" valueProvider="__YTokhz1EeaQE4BT-v2fIw" value="1"/>
+        <entries xmi:id="__YTooBz1EeaQE4BT-v2fIw" valueProvider="__YTokhz1EeaQE4BT-v2fIw" value="2"/>
+      </setLabelsList>
+      <enablingLabelsList xmi:id="__YTooRz1EeaQE4BT-v2fIw">
+        <entries xmi:id="__YToohz1EeaQE4BT-v2fIw" valueProvider="__YTokhz1EeaQE4BT-v2fIw"/>
+      </enablingLabelsList>
+      <disablingLabelsList xmi:id="__YTooxz1EeaQE4BT-v2fIw">
+        <entries xmi:id="__YTopBz1EeaQE4BT-v2fIw" valueProvider="__YTokhz1EeaQE4BT-v2fIw"/>
+      </disablingLabelsList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:PeriodicEvent" xmi:id="__YTopRz1EeaQE4BT-v2fIw">
+      <setLabelsList xmi:id="__YTophz1EeaQE4BT-v2fIw">
+        <entries xmi:id="__YTopxz1EeaQE4BT-v2fIw" valueProvider="__YTokhz1EeaQE4BT-v2fIw"/>
+      </setLabelsList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:Single" xmi:id="__YToqBz1EeaQE4BT-v2fIw">
+      <setLabelsList xmi:id="__YToqRz1EeaQE4BT-v2fIw">
+        <entries xmi:id="__YToqhz1EeaQE4BT-v2fIw" valueProvider="__YTokhz1EeaQE4BT-v2fIw"/>
+      </setLabelsList>
+    </stimuli>
+    <stimuli xsi:type="stimuli:Sporadic" xmi:id="__YToqxz1EeaQE4BT-v2fIw">
+      <setLabelsList xmi:id="__YTorBz1EeaQE4BT-v2fIw">
+        <entries xmi:id="__YTorRz1EeaQE4BT-v2fIw" valueProvider="__YTokhz1EeaQE4BT-v2fIw"/>
+      </setLabelsList>
+    </stimuli>
+  </stimuliModel>
+</central:AMALTHEA>

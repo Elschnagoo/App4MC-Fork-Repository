@@ -1,0 +1,8 @@
+h1. Roadmap
+
+Short overview of planned changes/enhancements in AMALTHEA in the current project "AMALTHEA4Public":https://itea3.org/project/amalthea4public.html:
+
+* Enhanced model handling to exchange different model parts
+* Better mode support for modeling, like startup/shutdown phase
+
+All further releases are provided by the Eclipse project "APP4MC":https://projects.eclipse.org/projects/technology.app4mc.

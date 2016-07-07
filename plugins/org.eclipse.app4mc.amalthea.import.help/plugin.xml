@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="root-tutorial_import-toc.xml"
+            primary="false">
+      </toc>
+      <toc
+            file="toc/tutorial_atdb_import-toc.xml"
+            primary="false">
+      </toc>
+   </extension>
+
+</plugin>

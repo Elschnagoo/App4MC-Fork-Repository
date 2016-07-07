@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:common="http://www.amalthea.itea2.org/model/1.3.0/common" xmlns:components="http://amalthea.itea2.org/model/1.3.0/components" xmlns:config="http://www.amalthea.itea2.org/model/1.3.0/config" xmlns:constraints="http://www.amalthea.itea2.org/model/1.3.0/constraints" xmlns:events="http://www.amalthea.itea2.org/model/1.3.0/events" xmlns:hw="http://www.amalthea.itea2.org/model/1.3.0/hw" xmlns:mapping="http://www.amalthea.itea2.org/model/1.3.0/mapping" xmlns:os="http://www.amalthea.itea2.org/model/1.3.0/os" xmlns:propertyconstraints="http://www.amalthea.itea2.org/model/1.3.0/propertyconstraints" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.3.0/stimuli" xmlns:sw="http://www.amalthea.itea2.org/model/1.3.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_SlcxwNotEeWXsaNW2kxe8A">
+  <swModel xmi:id="_VbRvYNotEeWXsaNW2kxe8A">
+    <tasks xmi:id="_Zp_LgNotEeWXsaNW2kxe8A" name="FirstTask" preemption="cooperative" />
+    <labels xmi:id="_WC7lQNotEeWXsaNW2kxe8A" name="FirstLabel">
+      <customProperties xmi:id="_Wc8AsNotEeWXsaNW2kxe8A" key="custPropKey">
+        <value xsi:type="common:ReferenceObject" xmi:id="_bSW3gNotEeWXsaNW2kxe8A" value="_Zp_LgNotEeWXsaNW2kxe8A" />
+      </customProperties>
+    </labels>
+    <labels xmi:id="_o1-NgNotEeWXsaNW2kxe8A" name="SecondLabel">
+      <customProperties xmi:id="_qefqgNotEeWXsaNW2kxe8A" key="custKey">
+        <value xsi:type="common:ReferenceObject" xmi:id="_rwIRgNotEeWXsaNW2kxe8A">
+          <value href="default1.amxmi#_nDgKUNotEeWXsaNW2kxe8A" xsi:type="sw:Task" />
+        </value>
+      </customProperties>
+      <customProperties xmi:id="_S9ujoBhOEea3AoorCOXNXA" key="custKey_stimuli" />
+      <customProperties xmi:id="_fNuVoBhOEea3AoorCOXNXA" key="custKey_tag">
+        <value xsi:type="common:ReferenceObject" xmi:id="_fNuVoRhOEea3AoorCOXNXA">
+          <value href="default1.amxmi#_6PbocBhOEea3AoorCOXNXA" xsi:type="common:Tag" />
+        </value>
+      </customProperties>
+      <customProperties xmi:id="_MqWEkBhPEea3AoorCOXNXA" key="custKey_amalthea_1" />
+      <customProperties xmi:id="_QU8HABhPEea3AoorCOXNXA" key="custKey_amalthea_2" />
+      <customProperties xmi:id="_A0YGsBhQEea3AoorCOXNXA" key="custKey_abstractProcess">
+        <value xsi:type="common:ReferenceObject" xmi:id="_A0YGsRhQEea3AoorCOXNXA">
+          <value href="default1.amxmi#_nDgKUNotEeWXsaNW2kxe8A" xsi:type="sw:Task" />
+        </value>
+      </customProperties>
+      <customProperties xmi:id="_NaacUBhfEea3AoorCOXNXA" key="custKey_group_refobjs">
+        <value xsi:type="common:ListObject" xmi:id="_8b8TkBhfEea3AoorCOXNXA">
+          <values xsi:type="common:ReferenceObject" xmi:id="__kW2ABhfEea3AoorCOXNXA">
+            <value href="default1.amxmi#_nDgKUNotEeWXsaNW2kxe8A" xsi:type="sw:Task" />
+          </values>
+          <values xsi:type="common:ReferenceObject" xmi:id="__0BpsBhfEea3AoorCOXNXA">
+            <value href="default1.amxmi#_6PbocBhOEea3AoorCOXNXA" xsi:type="common:Tag" />
+          </values>
+        </value>
+      </customProperties>
+    </labels>
+  </swModel>
+  <hwModel xmi:id="_TmR8oNotEeWXsaNW2kxe8A">
+    <coreTypes xmi:id="_UFlu0NotEeWXsaNW2kxe8A" />
+  </hwModel>
+</central:AMALTHEA>

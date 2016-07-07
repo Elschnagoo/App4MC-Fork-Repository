@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.help.toc">
+
+      <toc
+            file="root-data_models-toc.xml"
+            primary="false">
+      </toc>
+         
+      <toc	file="toc/model_introduction-toc.xml"			primary="false"> </toc>
+      <toc	file="toc/model_hw-toc.xml"						primary="false"> </toc>
+      <toc	file="toc/model_common-toc.xml"					primary="false"> </toc>
+      <toc	file="toc/model_config-toc.xml"					primary="false"> </toc>
+      <toc	file="toc/model_constraints-toc.xml"			primary="false"> </toc>
+      <toc	file="toc/model_events-toc.xml"					primary="false"> </toc>
+      <toc	file="toc/model_mapping-toc.xml"				primary="false"> </toc>
+      <toc	file="toc/model_os-toc.xml"						primary="false"> </toc>
+      <toc	file="toc/model_propertyconstraints-toc.xml"	primary="false"> </toc>
+      <toc	file="toc/model_stimuli-toc.xml"				primary="false"> </toc>
+      <toc	file="toc/model_sw-toc.xml"						primary="false"> </toc>
+      <toc	file="toc/model_components-toc.xml"				primary="false"> </toc>
+
+      <toc
+            file="root-user_concepts-toc.xml"
+            primary="false">
+      </toc>
+
+      <toc	file="toc/user_hw-toc.xml"						primary="false"> </toc>
+      <toc	file="toc/user_sw_develop-toc.xml"				primary="false"> </toc>
+      <toc	file="toc/user_sw_runtime-toc.xml"				primary="false"> </toc>
+      <toc	file="toc/user_concepts-toc.xml"				primary="false"> </toc>
+
+      <toc
+            file="root-dev_xsd-toc.xml"
+            primary="false">
+      </toc>
+
+      <toc	file="toc/dev_model_xsd-toc.xml"				primary="false"> </toc>
+
+   </extension>
+
+</plugin>

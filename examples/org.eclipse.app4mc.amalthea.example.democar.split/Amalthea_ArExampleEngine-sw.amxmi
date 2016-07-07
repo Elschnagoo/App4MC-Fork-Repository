@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <swModel>
+    <tasks name="Task10ms" priority="4" preemption="cooperative" multipleTaskActivationLimit="3">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence">
+          <calls xsi:type="am:TaskRunnableCall" runnable="APedVoter?type=Runnable" />
+          <calls xsi:type="am:TaskRunnableCall" runnable="ThrottleController?type=Runnable" />
+          <calls xsi:type="am:TaskRunnableCall" runnable="ThrottleActuator?type=Runnable" />
+          <calls xsi:type="am:TaskRunnableCall" runnable="BaseFuelMass?type=Runnable" />
+          <calls xsi:type="am:TaskRunnableCall" runnable="TransientFuelMass?type=Runnable" />
+          <calls xsi:type="am:TaskRunnableCall" runnable="TotalFuelMass?type=Runnable" />
+          <calls xsi:type="am:TaskRunnableCall" runnable="IgnitionTiming?type=Runnable" />
+        </graphEntries>
+      </callGraph>
+      <stimuli xsi:type="am:Periodic" href="amlt:/#OsScheduleTable_2_EP_0?type=Periodic" />
+    </tasks>
+    <tasks name="Task5ms" priority="6" preemption="cooperative" multipleTaskActivationLimit="3">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence">
+          <calls xsi:type="am:TaskRunnableCall" runnable="APedSensor?type=Runnable" />
+          <calls xsi:type="am:TaskRunnableCall" runnable="ThrottleSensor?type=Runnable" />
+          <calls xsi:type="am:TaskRunnableCall" runnable="MassAirFlowSensor?type=Runnable" />
+        </graphEntries>
+      </callGraph>
+      <stimuli xsi:type="am:Periodic" href="amlt:/#OsScheduleTable_1_EP_0?type=Periodic" />
+    </tasks>
+    <tasks name="TaskCylNum" priority="8" preemption="cooperative" multipleTaskActivationLimit="1">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence">
+          <calls xsi:type="am:TaskRunnableCall" runnable="CylNumObserver?type=Runnable" />
+        </graphEntries>
+      </callGraph>
+      <stimuli xsi:type="am:Periodic" href="amlt:/#OsScheduleTable_2_EP_0?type=Periodic" />
+    </tasks>
+    <tasks name="TaskInjIgnActuation" priority="8" preemption="cooperative" multipleTaskActivationLimit="1">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence">
+          <calls xsi:type="am:TaskRunnableCall" runnable="InjectionTimeActuation?type=Runnable" />
+          <calls xsi:type="am:TaskRunnableCall" runnable="IgnitionTimeActuation?type=Runnable" />
+        </graphEntries>
+      </callGraph>
+      <stimuli xsi:type="am:Periodic" href="amlt:/#OsScheduleTable_2_EP_0?type=Periodic" />
+    </tasks>
+    <runnables name="APedSensor" tags="SwcEngineSensors?type=Tag">
+      <runnableItems xsi:type="am:LabelAccess" data="APedSensor1Voltage?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="APedSensor2Voltage?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="APedPosition1?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="APedPosition2?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="72000" />
+          <upperBound xsi:type="am:LongObject" value="88000" />
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+            <mean xsi:type="am:LongObject" value="80000" />
+          </distribution>
+        </deviation>
+      </runnableItems>
+    </runnables>
+    <runnables name="APedVoter" tags="SwcEngineController?type=Tag">
+      <runnableItems xsi:type="am:LabelAccess" data="APedPosition1?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="APedPosition2?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VotedAPedPosition?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="72000" />
+          <upperBound xsi:type="am:LongObject" value="88000" />
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+            <mean xsi:type="am:LongObject" value="80000" />
+          </distribution>
+        </deviation>
+      </runnableItems>
+    </runnables>
+    <runnables name="BaseFuelMass" tags="SwcEngineController?type=Tag">
+      <runnableItems xsi:type="am:LabelAccess" data="MassAirFlow?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BaseFuelMassPerStroke?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="MAFRate?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="72000" />
+          <upperBound xsi:type="am:LongObject" value="88000" />
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+            <mean xsi:type="am:LongObject" value="80000" />
+          </distribution>
+        </deviation>
+      </runnableItems>
+    </runnables>
+    <runnables name="CylNumObserver" tags="SwcCylNumObserver?type=Tag">
+      <runnableItems xsi:type="am:LabelAccess" data="CylinderNumber?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="TriggeredCylinderNumber?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="72000" />
+          <upperBound xsi:type="am:LongObject" value="88000" />
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+            <mean xsi:type="am:LongObject" value="80000" />
+          </distribution>
+        </deviation>
+      </runnableItems>
+    </runnables>
+    <runnables name="IgnitionTimeActuation" tags="SwcInjIgnActuation?type=Tag">
+      <runnableItems xsi:type="am:LabelAccess" data="TriggeredCylinderNumber?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime1?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime2?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime3?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime4?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime5?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime6?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime7?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime8?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="72000" />
+          <upperBound xsi:type="am:LongObject" value="88000" />
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+            <mean xsi:type="am:LongObject" value="80000" />
+          </distribution>
+        </deviation>
+      </runnableItems>
+    </runnables>
+    <runnables name="IgnitionTiming" tags="SwcEngineController?type=Tag">
+      <runnableItems xsi:type="am:LabelAccess" data="MAFRate?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="72000" />
+          <upperBound xsi:type="am:LongObject" value="88000" />
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+            <mean xsi:type="am:LongObject" value="80000" />
+          </distribution>
+        </deviation>
+      </runnableItems>
+    </runnables>
+    <runnables name="InjectionTimeActuation" tags="SwcInjIgnActuation?type=Tag">
+      <runnableItems xsi:type="am:LabelAccess" data="TriggeredCylinderNumber?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="TotalFuelMassPerStroke?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime1?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime2?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime3?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime4?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime5?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime6?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime7?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime8?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="72000" />
+          <upperBound xsi:type="am:LongObject" value="88000" />
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+            <mean xsi:type="am:LongObject" value="80000" />
+          </distribution>
+        </deviation>
+      </runnableItems>
+    </runnables>
+    <runnables name="MassAirFlowSensor" tags="SwcEngineSensors?type=Tag">
+      <runnableItems xsi:type="am:LabelAccess" data="MAFSensorVoltage?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="MassAirFlow?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="72000" />
+          <upperBound xsi:type="am:LongObject" value="88000" />
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+            <mean xsi:type="am:LongObject" value="80000" />
+          </distribution>
+        </deviation>
+      </runnableItems>
+    </runnables>
+    <runnables name="ThrottleActuator" tags="SwcEngineController?type=Tag">
+      <runnableItems xsi:type="am:LabelAccess" data="DesiredThrottlePosition?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DesiredThrottlePositionVoltage?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="72000" />
+          <upperBound xsi:type="am:LongObject" value="88000" />
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+            <mean xsi:type="am:LongObject" value="80000" />
+          </distribution>
+        </deviation>
+      </runnableItems>
+    </runnables>
+    <runnables name="ThrottleController" tags="SwcEngineController?type=Tag">
+      <runnableItems xsi:type="am:LabelAccess" data="VotedAPedPosition?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ThrottlePosition?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DesiredThrottlePosition?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="72000" />
+          <upperBound xsi:type="am:LongObject" value="88000" />
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+            <mean xsi:type="am:LongObject" value="80000" />
+          </distribution>
+        </deviation>
+      </runnableItems>
+    </runnables>
+    <runnables name="ThrottleSensor" tags="SwcEngineSensors?type=Tag">
+      <runnableItems xsi:type="am:LabelAccess" data="ThrottleSensor1Voltage?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ThrottleSensor2Voltage?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ThrottlePosition?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="72000" />
+          <upperBound xsi:type="am:LongObject" value="88000" />
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+            <mean xsi:type="am:LongObject" value="80000" />
+          </distribution>
+        </deviation>
+      </runnableItems>
+    </runnables>
+    <runnables name="TotalFuelMass" tags="SwcEngineController?type=Tag">
+      <runnableItems xsi:type="am:LabelAccess" data="TransientFuelMassPerStroke?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="TotalFuelMassPerStroke?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="72000" />
+          <upperBound xsi:type="am:LongObject" value="88000" />
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+            <mean xsi:type="am:LongObject" value="80000" />
+          </distribution>
+        </deviation>
+      </runnableItems>
+    </runnables>
+    <runnables name="TransientFuelMass" tags="SwcEngineController?type=Tag">
+      <runnableItems xsi:type="am:LabelAccess" data="BaseFuelMassPerStroke?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="TransientFuelMassPerStroke?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="72000" />
+          <upperBound xsi:type="am:LongObject" value="88000" />
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+            <mean xsi:type="am:LongObject" value="80000" />
+          </distribution>
+        </deviation>
+      </runnableItems>
+    </runnables>
+    <labels name="APedPosition1" buffered="notBuffered">
+      <size numberBits="8" />
+    </labels>
+    <labels name="APedPosition2" buffered="notBuffered">
+      <size numberBits="8" />
+    </labels>
+    <labels name="APedSensor1Voltage" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="APedSensor2Voltage" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="BaseFuelMassPerStroke" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="CylinderNumber" buffered="notBuffered">
+      <size numberBits="8" />
+    </labels>
+    <labels name="DesiredThrottlePosition" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="DesiredThrottlePositionVoltage" buffered="notBuffered">
+      <size numberBits="8" />
+    </labels>
+    <labels name="IgnitionTime" buffered="notBuffered">
+      <size numberBits="8" />
+    </labels>
+    <labels name="IgnitionTime1" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="IgnitionTime2" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="IgnitionTime3" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="IgnitionTime4" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="IgnitionTime5" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="IgnitionTime6" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="IgnitionTime7" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="IgnitionTime8" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="InjectionTime1" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="InjectionTime2" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="InjectionTime3" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="InjectionTime4" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="InjectionTime5" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="InjectionTime6" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="InjectionTime7" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="InjectionTime8" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="MAFRate" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="MAFSensorVoltage" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="MassAirFlow" buffered="notBuffered">
+      <size numberBits="8" />
+    </labels>
+    <labels name="ThrottlePosition" buffered="notBuffered">
+      <size numberBits="16" />
+    </labels>
+    <labels name="ThrottleSensor1Voltage" buffered="notBuffered">
+      <size numberBits="8" />
+    </labels>
+    <labels name="ThrottleSensor2Voltage" buffered="notBuffered">
+      <size numberBits="8" />
+    </labels>
+    <labels name="TotalFuelMassPerStroke" buffered="notBuffered">
+      <size numberBits="8" />
+    </labels>
+    <labels name="TransientFuelMassPerStroke" buffered="notBuffered">
+      <size numberBits="8" />
+    </labels>
+    <labels name="TriggeredCylinderNumber" buffered="notBuffered">
+      <size numberBits="8" />
+    </labels>
+    <labels name="VotedAPedPosition" buffered="notBuffered">
+      <size numberBits="8" />
+    </labels>
+    <tags name="SwcCylNumObserver" tagType="SOFTWARE_COMPONENT" />
+    <tags name="SwcEngineController" tagType="SOFTWARE_COMPONENT" />
+    <tags name="SwcEngineSensors" tagType="SOFTWARE_COMPONENT" />
+    <tags name="SwcInjIgnActuation" tagType="SOFTWARE_COMPONENT" />
+  </swModel>
+</am:Amalthea>

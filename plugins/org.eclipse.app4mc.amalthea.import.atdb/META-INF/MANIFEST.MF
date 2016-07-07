@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Amalthea ATDB Importer
+Bundle-SymbolicName: org.eclipse.app4mc.amalthea.import.atdb;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Activator: org.eclipse.app4mc.amalthea._import.atdb.Activator
+Require-Bundle: org.sqlite.jdbc,
+ org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.ide,
+ org.eclipse.core.resources,
+ org.eclipse.app4mc.amalthea.model
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: Eclipse.org

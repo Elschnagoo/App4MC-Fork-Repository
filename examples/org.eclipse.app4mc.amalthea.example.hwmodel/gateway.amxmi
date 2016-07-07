@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <hwModel>
+    <networkTypes xsi:type="am:Bus" name="LIN" schedPolicy="PRIORITY" bitWidth="64" busType="LIN" />
+    <system name="LIN Gateway Example">
+      <networks name="Local Interconnect Network" type="LIN?type=Bus" />
+      <components name="Sensor A">
+        <ports xsi:type="am:ComplexPort" name="Instruction_ToggleMeasurement_Sensor_A" network="Local+Interconnect+Network?type=Network" bitWidth="8" baseAddress="1" direction="W" />
+        <ports xsi:type="am:ComplexPort" name="Instruction_ReadData_Sensor_A" network="Local+Interconnect+Network?type=Network" bitWidth="16" baseAddress="2" direction="R" />
+      </components>
+      <components name="Sensor B">
+        <ports xsi:type="am:ComplexPort" name="Instruction_ToggleMeasurement_Sensor_B" network="Local+Interconnect+Network?type=Network" bitWidth="8" baseAddress="3" direction="W" />
+        <ports xsi:type="am:ComplexPort" name="Instruction_ReadData_Sensor_B" network="Local+Interconnect+Network?type=Network" bitWidth="16" baseAddress="4" direction="R" />
+      </components>
+      <ecus name="Sample ECU">
+        <microcontrollers name="Gateway">
+          <ports xsi:type="am:ComplexPort" name="CONN_Gateway" master="true" bitWidth="64" direction="RW" />
+          <cores name="Sample Core" />
+        </microcontrollers>
+      </ecus>
+    </system>
+  </hwModel>
+</am:Amalthea>

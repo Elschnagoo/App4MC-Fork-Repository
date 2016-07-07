@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.1.0/central" xmlns:propertyconstraints="http://www.amalthea.itea2.org/model/1.1.0/propertyconstraints" xmi:id="_CaHOwJNkEeWQC6k3Y09j_A">
+  <propertyConstraintsModel xmi:id="_FYkj8JNkEeWQC6k3Y09j_A">
+    <allocationConstraints xsi:type="propertyconstraints:ProcessAllocationConstraint" xmi:id="_JqeeAJNkEeWQC6k3Y09j_A">
+      <hwConstraint xsi:type="propertyconstraints:HwCoreConjunction" xmi:id="_LzO6QJNkEeWQC6k3Y09j_A">
+        <firstConstraint xsi:type="propertyconstraints:HwCoreConjunction" xmi:id="_MNAsMJNkEeWQC6k3Y09j_A">
+          <secondConstraint xsi:type="propertyconstraints:HwCoreConjunction" xmi:id="_Mpo90JNkEeWQC6k3Y09j_A">
+            <secondConstraint xsi:type="propertyconstraints:HwCoreConjunction" xmi:id="_NKfoIJNkEeWQC6k3Y09j_A">
+              <firstConstraint xsi:type="propertyconstraints:HwCoreConjunction" xmi:id="_Pgl80JNkEeWQC6k3Y09j_A" conjunction="or"/>
+            </secondConstraint>
+          </secondConstraint>
+        </firstConstraint>
+      </hwConstraint>
+    </allocationConstraints>
+    <mappingConstraints xsi:type="propertyconstraints:AbstractElementMappingConstraint" xmi:id="_X_SncJNkEeWQC6k3Y09j_A">
+      <hwConstraint xsi:type="propertyconstraints:HwMemoryProperty" xmi:id="_YZq2UJNkEeWQC6k3Y09j_A">
+        <memory xmi:id="_aim4wJNkEeWQC6k3Y09j_A" name="test"/>
+      </hwConstraint>
+    </mappingConstraints>
+    <mappingConstraints xsi:type="propertyconstraints:SectionMappingConstraint" xmi:id="_d8IZUJNkEeWQC6k3Y09j_A">
+      <hwConstraint xsi:type="propertyconstraints:HwMemoryConjunction" xmi:id="_ezGdkJNkEeWQC6k3Y09j_A"/>
+    </mappingConstraints>
+  </propertyConstraintsModel>
+</central:AMALTHEA>

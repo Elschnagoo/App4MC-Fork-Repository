@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <hwModel>
+    <coreTypes name="e200z0" bitWidth="32" instructionsPerCycle="1">
+      <customProperties key="feature#FeatureTypes#">
+        <value xsi:type="am:StringObject" value="floatingPointUnit" />
+      </customProperties>
+      <customProperties key="feature#instructionSet">
+        <value xsi:type="am:StringObject" value="PowerArchitectureInstructionSet" />
+      </customProperties>
+      <customProperties key="feature#instructionSet">
+        <value xsi:type="am:StringObject" value="VLE" />
+      </customProperties>
+    </coreTypes>
+    <coreTypes name="e200z6" bitWidth="32" instructionsPerCycle="1" />
+    <memoryTypes name="CACHE_e200z6" type="CACHE" size="32768" />
+    <memoryTypes name="SRAM_512KB" type="RAM" size="524288" />
+    <memoryTypes name="SRAM_80KB" type="RAM" size="81920" />
+    <memoryTypes name="FLASH2MB" type="FLASH_INT" size="2097152" />
+    <networkTypes xsi:type="am:CrossbarSwitch" name="AMBA_Crossbar" schedPolicy="RROBIN" bitWidth="64" conConnections="6" />
+    <networkTypes xsi:type="am:Bridge" name="AIPS_A" schedPolicy="RROBIN" bitWidth="32" />
+    <system name="Example System">
+      <ecus name="MPC5668G Demo Board">
+        <microcontrollers name="MPC5668G">
+          <memories name="SRAM_512KB" type="SRAM_512KB?type=MemoryType">
+            <ports xsi:type="am:ComplexPort" name="CONN_SRAM512KB" network="AMBA+Crossbar+Switch?type=Network" bitWidth="64" baseAddress="1073741824" addressRange="524288" direction="RW" writeCycles="1" readCycles="1" />
+            <prescaler name="PS_SRAM512KB" clockRatio="1.0" quartz="Q116MHZ?type=Quartz" />
+          </memories>
+          <memories name="SRAM_80KB" type="SRAM_80KB?type=MemoryType">
+            <ports xsi:type="am:ComplexPort" name="CONN_SRAM80KB" network="AMBA+Crossbar+Switch?type=Network" bitWidth="64" baseAddress="1074266112" addressRange="81920" direction="RW" writeCycles="1" readCycles="1" />
+            <prescaler name="PS_SRAM80KB" clockRatio="1.0" />
+          </memories>
+          <memories name="FLASH2MB" type="FLASH2MB?type=MemoryType">
+            <ports xsi:type="am:ComplexPort" name="CONN_z6_FLASH2MB" network="AMBA+Crossbar+Switch?type=Network" bitWidth="64" addressRange="536870911" direction="R" readCycles="3" />
+            <ports xsi:type="am:ComplexPort" name="CONN_others_FLASH2MB" network="AMBA+Crossbar+Switch?type=Network" bitWidth="64" addressRange="536870911" direction="R" readCycles="3" />
+            <prescaler name="PS_FLASH2MB" clockRatio="1.0" quartz="Q116MHZ?type=Quartz" />
+          </memories>
+          <networks name="AMBA Crossbar Switch" type="AMBA_Crossbar?type=CrossbarSwitch" />
+          <components name="AIPS_PeripheralBridge_A">
+            <networks name="AIPS_A" type="AIPS_A?type=Bridge" />
+            <ports xsi:type="am:ComplexPort" name="CONN_AIPS_A" network="AMBA+Crossbar+Switch?type=Network" bitWidth="32" baseAddress="3221225472" addressRange="536870912" direction="RW" writeCycles="2" readCycles="2" />
+            <prescaler name="PS_AIPS_A" clockRatio="0.5" quartz="Q116MHZ?type=Quartz" />
+          </components>
+          <components name="AIPS_PeripheralBridge_B">
+            <networks name="AIPS_B" type="AIPS_A?type=Bridge" />
+            <ports xsi:type="am:ComplexPort" name="CONN_AIPS_B" network="AMBA+Crossbar+Switch?type=Network" bitWidth="32" baseAddress="3758096384" addressRange="536870912" direction="RW" writeCycles="2" readCycles="2" />
+            <prescaler name="PS_AIPS_B" clockRatio="0.5" quartz="Q116MHZ?type=Quartz" />
+          </components>
+          <components name="FlexRay">
+            <ports xsi:type="am:ComplexPort" name="CONN_FlexRayBusMasterInterface" network="AMBA+Crossbar+Switch?type=Network" master="true" bitWidth="64" direction="RW" writeCycles="1" readCycles="1" schedValue="2" />
+            <ports xsi:type="am:ComplexPort" name="CONN_FlexRayControlHostInterface" network="AIPS_A?type=Network" bitWidth="32" baseAddress="3288186880" addressRange="16384" direction="R" />
+          </components>
+          <components name="Ethernet">
+            <ports xsi:type="am:ComplexPort" name="CONN_Ethernet" network="AMBA+Crossbar+Switch?type=Network" master="true" bitWidth="64" direction="RW" writeCycles="1" readCycles="1" schedValue="2" />
+            <ports xsi:type="am:ComplexPort" name="CONN_FEC" network="AIPS_B?type=Network" bitWidth="32" baseAddress="4294230016" addressRange="16384" direction="R" />
+          </components>
+          <quartzes name="Q116MHZ" frequency="116000000" type="STATIC" />
+          <cores name="e200z6" coreType="e200z0?type=CoreType">
+            <memories name="CACHE_e200z6" type="CACHE_e200z6?type=MemoryType" />
+            <ports xsi:type="am:ComplexPort" name="CONN_e200z6" network="AMBA+Crossbar+Switch?type=Network" master="true" bitWidth="64" direction="RW" writeCycles="1" readCycles="1" />
+            <prescaler name="PS_e200z6" clockRatio="1.0" quartz="Q116MHZ?type=Quartz" />
+          </cores>
+          <cores name="e200z0" coreType="e200z6?type=CoreType">
+            <ports xsi:type="am:ComplexPort" name="CONN_e200z0" network="AMBA+Crossbar+Switch?type=Network" master="true" bitWidth="32" direction="RW" writeCycles="1" readCycles="1" />
+            <prescaler name="PS_e200z0" clockRatio="0.5" quartz="Q116MHZ?type=Quartz" />
+          </cores>
+        </microcontrollers>
+      </ecus>
+    </system>
+  </hwModel>
+</am:Amalthea>

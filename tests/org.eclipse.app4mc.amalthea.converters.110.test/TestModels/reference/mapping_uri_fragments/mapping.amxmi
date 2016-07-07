@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:mapping="http://www.amalthea.itea2.org/model/1.2.0/mapping" xmlns:os="http://www.amalthea.itea2.org/model/1.2.0/os" xmlns:sw="http://www.amalthea.itea2.org/model/1.2.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <swModel />
+  <mappingModel>
+    <processAllocation xsi:type="mapping:ISRAllocation">
+      <scheduler href="os.amxmi#_piBk0BtgEeamCaeoBHuoxA" xmi:type="os:TaskScheduler" xsi:type="os:InterruptController" />
+      <process xsi:type="sw:ISR" href="sw.amxmi#//@swModel/@isrs.0" />
+    </processAllocation>
+    <runnableAllocation xsi:type="mapping:RunnableAllocation">
+      <scheduler href="os.amxmi#//@osModel/@operatingSystems.0/@taskSchedulers.0" xmi:type="os:TaskScheduler" xsi:type="os:TaskScheduler" />
+      <entity href="sw.amxmi#//@swModel/@runnables.0" />
+    </runnableAllocation>
+    <processAllocation xsi:type="mapping:TaskAllocation">
+      <scheduler href="os.amxmi#//@osModel/@operatingSystems.0/@taskSchedulers.0" xmi:type="os:TaskScheduler" xsi:type="os:TaskScheduler" />
+      <process xsi:type="sw:Task" href="sw.amxmi#//@swModel/@tasks.0" />
+    </processAllocation>
+    <mapping xsi:type="mapping:AbstractElementMapping">
+      <mem href="hw.amxmi#//@hwModel/@system/@memories.0" />
+      <abstractElement xsi:type="sw:ISR" href="sw.amxmi#//@swModel/@isrs.0" />
+    </mapping>
+    <mapping xsi:type="mapping:AbstractElementMapping">
+      <mem href="hw.amxmi#//@hwModel/@system/@memories.0" />
+      <abstractElement xsi:type="sw:Runnable" href="sw.amxmi#//@swModel/@runnables.0" />
+    </mapping>
+    <mapping xsi:type="mapping:AbstractElementMapping">
+      <mem href="hw.amxmi#//@hwModel/@system/@memories.0" />
+      <abstractElement xsi:type="sw:Task" href="sw.amxmi#//@swModel/@tasks.0" />
+    </mapping>
+  </mappingModel>
+</central:AMALTHEA>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <hwModel>
+    <systemTypes name="sysT1" />
+    <ecuTypes name="ecuT1" />
+    <memoryTypes name="memT1" type="RAM" />
+    <system name="sys1" systemType="//@hwModel/@systemTypes.0">
+      <memories name="mem1" type="//@hwModel/@memoryTypes.0" />
+      <components name="comp1" />
+      <ports />
+    </system>
+  </hwModel>
+</am:Amalthea>

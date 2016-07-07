@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components:ComponentsModel xmlns:components="http://amalthea.itea2.org/model/1.3.0/components" xmlns:common="http://www.amalthea.itea2.org/model/1.3.0/common" xmlns:config="http://www.amalthea.itea2.org/model/1.3.0/config" xmlns:constraints="http://www.amalthea.itea2.org/model/1.3.0/constraints" xmlns:events="http://www.amalthea.itea2.org/model/1.3.0/events" xmlns:hw="http://www.amalthea.itea2.org/model/1.3.0/hw" xmlns:mapping="http://www.amalthea.itea2.org/model/1.3.0/mapping" xmlns:os="http://www.amalthea.itea2.org/model/1.3.0/os" xmlns:propertyconstraints="http://www.amalthea.itea2.org/model/1.3.0/propertyconstraints" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.3.0/stimuli" xmlns:sw="http://www.amalthea.itea2.org/model/1.3.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_BP7M4BFCEea1jpJ4wy-zDw">
+  <components xmi:id="_B4C80BFCEea1jpJ4wy-zDw">
+    <ports xsi:type="components:FInterfacePort" xmi:id="_CPJOMBFCEea1jpJ4wy-zDw" kind="PROVIDES">
+      <customProperties xmi:id="_ygCegBHlEeaRXaRtbzce4w" key="t1">
+        <value xsi:type="common:IntegerObject" xmi:id="_zx8yUBHlEeaRXaRtbzce4w" value="11" />
+      </customProperties>
+      <interface href="interfaces.fidl#//@interfaces.0" />
+    </ports>
+  </components>
+  <components xsi:type="components:Composite" xmi:id="_DwuVsBFCEea1jpJ4wy-zDw">
+    <ports xsi:type="components:FInterfacePort" xmi:id="_FrgnYBFCEea1jpJ4wy-zDw" kind="PROVIDES">
+      <interface href="interfaces.fidl#//@interfaces.1" />
+    </ports>
+    <componentInstances xmi:id="_G7C8oBFCEea1jpJ4wy-zDw" />
+  </components>
+  <systems xmi:id="_J5YgkBFDEea1jpJ4wy-zDw">
+    <connectors xmi:id="_KlVAkBFDEea1jpJ4wy-zDw">
+      <sourcePort xmi:id="_LJBjgBFDEea1jpJ4wy-zDw" instance="_G7C8oBFCEea1jpJ4wy-zDw" port="_CPJOMBFCEea1jpJ4wy-zDw" />
+    </connectors>
+  </systems>
+</components:ComponentsModel>

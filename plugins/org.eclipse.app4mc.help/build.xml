@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * *******************************************************************************
+ *  Copyright (c) 2013 Robert Bosch GmbH and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *  Contributors:
+ *     Robert Bosch GmbH - initial implementation
+ * *******************************************************************************
+-->
+
+<!-- =================================
+		Documentation Project
+		Generates the documentation
+     ================================= -->
+
+<project name="docuproject" default="generate-help">
+
+	<description>
+	   Generates the documentation
+	</description>
+
+	<!-- path to wikitext standalone package -->
+	<property name="lib.folder" value="/shared/common/mylyn-wikitext/2.9.0.v20160513-1433"/>
+	<property name="docu.folder" value="${basedir}/docu"/>
+	<property name="styles.folder" value="${basedir}/../org.eclipse.app4mc.help/styles"/>
+	<property name="build.folder" value="${basedir}/build"/>
+	<property name="target.folder.help" value="${basedir}/help"/>
+	<property name="target.folder.toc" value="${basedir}/toc"/>
+	<property name="index.file" value="${docu.folder}/_index.txt"/>
+	<property name="dest.build.file" value="${build.folder}/documentation.textile"/>
+
+	<path id="wikitext.classpath">
+		<fileset dir="${lib.folder}">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<!-- - - - - - - - - - - - - - - - - -
+      taskdefs
+     - - - - - - - - - - - - - - - - - -->
+	<taskdef classpathref="wikitext.classpath" resource="org/eclipse/mylyn/wikitext/core/ant/tasks.properties" />
+
+	<!-- - - - - - - - - - - - - - - - - -
+      target: init
+     - - - - - - - - - - - - - - - - - -->
+    <target name="init" depends="init-build">
+    </target>
+
+	<!-- - - - - - - - - - - - - - - - - -
+          clean targets
+     - - - - - - - - - - - - - - - - - -->
+    <target name="init-build">
+    	<delete dir="${build.folder}"/>
+    	<mkdir dir="${build.folder}"/>
+    </target>
+
+	<!-- - - - - - - - - - - - - - - - - -
+      assemble one file for processing
+     - - - - - - - - - - - - - - - - - -->
+	<target name="assemble">
+		<loadfile srcfile="${index.file}" property="inputfiles">
+			<filterchain>
+				<tokenfilter>
+					<replacestring from="\n" to=","/>
+				</tokenfilter>
+			</filterchain>
+		</loadfile>
+		<concat destfile="${dest.build.file}" append="false" fixlastline="yes">
+			<filelist dir="${docu.folder}" files="${inputfiles}"/>
+		</concat>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - -
+      generate targets
+     - - - - - - - - - - - - - - - - - -->
+	<target name="generate-help" description="Generate Eclipse help from textile source" depends="init-build">
+		<copy todir="${build.folder}">
+			<fileset dir="${docu.folder}" includes="**/*.textile" excludes="pdf-*.textile">
+			</fileset>
+		</copy>
+		<wikitext-to-eclipse-help markupLanguage="Textile"
+			multipleOutputFiles="true"
+			navigationImages="true"
+			helpPrefix="help"
+			formatoutput="true">
+			<fileset dir="${build.folder}">
+    				<include name="**/*.textile"/>
+			</fileset>
+		    <stylesheet url="help.css" />
+		</wikitext-to-eclipse-help>
+
+		<copy todir="${target.folder.help}">
+			<fileset dir="${build.folder}">
+				<include name="**/*.html"/>
+			</fileset>
+		</copy>
+		<copydir
+			src="${styles.folder}"
+			dest="${target.folder.help}">
+		</copydir>
+
+		<copy todir="${target.folder.toc}">
+			<fileset dir="${build.folder}">
+				<include name="**/*-toc.xml"/>
+			</fileset>
+		</copy>
+
+<!-- NOT NECESSARY
+	 Only the location of the PRIMARY toc file is relevant
+
+		<replace dir="${target.folder.toc}"
+			token="=&quot;help/"
+			value="=&quot;../help/"/>
+-->
+		<delete dir="${build.folder}"/>
+	</target>
+
+</project>

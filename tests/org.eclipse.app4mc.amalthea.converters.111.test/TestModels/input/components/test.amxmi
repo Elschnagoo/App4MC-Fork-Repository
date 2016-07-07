@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:components="http://amalthea.itea2.org/model/1.2.0/components">
+  <componentsModel>
+    <elements xsi:type="components:Component">
+      <ports xsi:type="components:FInterfacePort" name="refP"/>
+    </elements>
+    <elements xsi:type="components:Composite">
+      <elements xsi:type="components:ComponentInstance" name="refInst"/>
+      <elements xsi:type="components:Connector" name="c1"/>
+    </elements>
+    <elements xsi:type="components:System">
+      <elements xsi:type="components:Connector" name="n1">
+        <sourcePort instance="//@componentsModel/@elements.1/@elements.0" port="//@componentsModel/@elements.0/@ports.0"/>
+      </elements>
+      <elements xsi:type="components:ComponentInstance" name="n1" type="//@componentsModel/@elements.0"/>
+    </elements>
+  </componentsModel>
+</central:AMALTHEA>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+ 
+<toc label="Converters User Guide Root" link_to="../org.eclipse.app4mc.help/mainToc.xml#app4mc.docu.converters">
+   <topic label="Model Migration">
+      <link toc="toc/model_migration-toc.xml"/>
+      <link toc="toc/supported_model_migrations-toc.xml"/>
+      <link toc="toc/prerequisites_for_model_migration-toc.xml"/>
+      <link toc="toc/how_to_invoke_model_migration-toc.xml"/>
+      <link toc="toc/additional_details-toc.xml"/>
+   </topic>
+ 
+   
+  
+</toc>

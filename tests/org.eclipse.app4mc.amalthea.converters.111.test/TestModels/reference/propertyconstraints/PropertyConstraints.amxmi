@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:propertyconstraints="http://www.amalthea.itea2.org/model/1.3.0/propertyconstraints" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_RLCdgMaKEeWBM6uFowTedA">
+  <propertyConstraintsModel xmi:id="_fimjgMaLEeWBM6uFowTedA">
+    <allocationConstraints xsi:type="propertyconstraints:ProcessAllocationConstraint" xmi:id="_hu1KgMaLEeWBM6uFowTedA">
+      <hwConstraint xsi:type="propertyconstraints:HwCoreConjunction" xmi:id="_jLbrYMaLEeWBM6uFowTedA" conjunction="and">
+        <firstConstraint xsi:type="propertyconstraints:HwCoreProperty" xmi:id="_mubRAMaLEeWBM6uFowTedA" comparator="equal" />
+        <secondConstraint xsi:type="propertyconstraints:HwCoreConjunction" xmi:id="_ncAPEMaTEeWBM6uFowTedA" conjunction="and">
+          <firstConstraint xsi:type="propertyconstraints:HwCoreProperty" xmi:id="_o-9PkMaTEeWBM6uFowTedA" comparator="equal" />
+          <secondConstraint xsi:type="propertyconstraints:HwCoreProperty" xmi:id="_p8t4UMaTEeWBM6uFowTedA" comparator="equal" />
+        </secondConstraint>
+      </hwConstraint>
+    </allocationConstraints>
+    <allocationConstraints xsi:type="propertyconstraints:ProcessPrototypeAllocationConstraint" xmi:id="_qvp4gMaQEeWBM6uFowTedA">
+      <hwConstraint xsi:type="propertyconstraints:HwCoreProperty" xmi:id="_rcmeEMaQEeWBM6uFowTedA" comparator="equal" />
+    </allocationConstraints>
+    <allocationConstraints xsi:type="propertyconstraints:RunnableAllocationConstraint" xmi:id="_usdsUMaQEeWBM6uFowTedA">
+      <hwConstraint xsi:type="propertyconstraints:HwCoreProperty" xmi:id="_veci4MaQEeWBM6uFowTedA" comparator="equal" />
+    </allocationConstraints>
+    <allocationConstraints xsi:type="propertyconstraints:RunnableAllocationConstraint" xmi:id="_63S4MMaVEeWBM6uFowTedA">
+      <hwConstraint xsi:type="propertyconstraints:HwCoreConjunction" xmi:id="_7l8G4MaVEeWBM6uFowTedA" conjunction="and">
+        <firstConstraint xsi:type="propertyconstraints:HwCoreConjunction" xmi:id="_9sgKwMaVEeWBM6uFowTedA" conjunction="and">
+          <firstConstraint xsi:type="propertyconstraints:HwCoreConjunction" xmi:id="_-qCxEMaVEeWBM6uFowTedA" conjunction="and" />
+        </firstConstraint>
+      </hwConstraint>
+    </allocationConstraints>
+    <mappingConstraints xsi:type="propertyconstraints:AbstractElementMappingConstraint" xmi:id="_ODpqQMaUEeWBM6uFowTedA">
+      <hwConstraint xsi:type="propertyconstraints:HwMemoryProperty" xmi:id="_PBa6EMaUEeWBM6uFowTedA" comparator="equal" />
+    </mappingConstraints>
+    <mappingConstraints xsi:type="propertyconstraints:SectionMappingConstraint" xmi:id="_S2oREMaUEeWBM6uFowTedA">
+      <hwConstraint xsi:type="propertyconstraints:HwMemoryConjunction" xmi:id="_ThaTcMaUEeWBM6uFowTedA" conjunction="and">
+        <secondConstraint xsi:type="propertyconstraints:HwMemoryConjunction" xmi:id="_Vh7ZsMaUEeWBM6uFowTedA" conjunction="and">
+          <firstConstraint xsi:type="propertyconstraints:HwMemoryConjunction" xmi:id="_Wp0O0MaUEeWBM6uFowTedA" conjunction="and">
+            <firstConstraint xsi:type="propertyconstraints:HwMemoryConjunction" xmi:id="_XS_HoMaUEeWBM6uFowTedA" conjunction="and">
+              <firstConstraint xsi:type="propertyconstraints:HwMemoryProperty" xmi:id="_YB74UMaUEeWBM6uFowTedA" comparator="equal" />
+              <secondConstraint xsi:type="propertyconstraints:HwMemoryProperty" xmi:id="_pOx-0MaUEeWBM6uFowTedA" comparator="equal" />
+            </firstConstraint>
+          </firstConstraint>
+        </secondConstraint>
+      </hwConstraint>
+    </mappingConstraints>
+    <mappingConstraints xsi:type="propertyconstraints:AbstractElementMappingConstraint" xmi:id="_NU74MMaWEeWBM6uFowTedA">
+      <hwConstraint xsi:type="propertyconstraints:HwMemoryConjunction" xmi:id="_PHaicMaWEeWBM6uFowTedA" conjunction="and" />
+    </mappingConstraints>
+  </propertyConstraintsModel>
+</central:AMALTHEA>

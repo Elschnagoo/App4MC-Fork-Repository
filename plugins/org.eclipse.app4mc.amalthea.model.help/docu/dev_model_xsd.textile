@@ -1,0 +1,35 @@
+
+h1. AMALTHEA Model XSD Schema
+
+The AMALHTEA model is specified with the Eclipse Modeling Framework (EMF). In EMF data-models are defined with the Ecore/Xcore format. Eclipse developers can use the AMALTHEA Platform to work with the model. For developers that are not using Java or Eclipse, the specification is also provided in the XSD format. A XSD file for each package can be found "here":../help-model/xml-schema-definitions.zip.
+
+The AMALTHEA model references two external model definitions:
+- The Ecore model (http://www.eclipse.org/emf/2002/Ecore)
+- The Franca model (http://core.franca.org) 
+
+The XSD file for the Ecore model can be found on the "Eclipse EMF download page":http://www.eclipse.org/modeling/emf/downloads/ 
+Download the __Models__ package from __Latest Releases__. The download contains a folder "org.eclipse.emf.ecore_*". This folder contains the XSD schema for Ecore.
+
+The Franca model is only available as Ecore file. To generate an XSD schema open the AMALTHEA Tool Platform and do the following steps:
+
+Open the Plug-Ins View by selecting __Window -> Show View -> Other__ and select Plug-Ins View in the folder Plug-in Development:
+
+!../pictures/xsd/show_plugins_view.png!
+
+Select the plug-in __org.franca.core__ and import it as __Binary Project__:
+
+!../pictures/xsd/import_franca-core.png!
+
+Open the model folder in the imported project, do a right click on the "franca.genmodel" file and select "Export Model".
+
+!../pictures/xsd/export_model.png!
+
+Select the entry "XML Schema for XMI" in the first wizard page.
+
+!../pictures/xsd/export_wizard1.png!
+
+Navigate to the last wizard page, select "org.franca.core.franca" and click finish.
+
+!../pictures/xsd/export_wizard2.png!
+
+Now there the file "francaXMI.xsd" in the model folder.

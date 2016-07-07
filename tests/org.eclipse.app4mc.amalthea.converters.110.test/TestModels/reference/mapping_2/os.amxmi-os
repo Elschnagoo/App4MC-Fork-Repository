@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<os:OSModel xmlns:os="http://www.amalthea.itea2.org/model/1.2.0/os" xmlns:sw="http://www.amalthea.itea2.org/model/1.2.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <operatingSystems name="OperatingSystem">
+    <taskSchedulers name="1">
+      <schedulingAlgorithm xsi:type="os:DeadlineMonotonic" />
+    </taskSchedulers>
+    <taskSchedulers name="2">
+      <schedulingAlgorithm xsi:type="os:EarlyReleaseFairPD2" />
+    </taskSchedulers>
+  </operatingSystems>
+</os:OSModel>

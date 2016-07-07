@@ -1,0 +1,31 @@
+
+h1. Supported versions for model Migration
+
+Model migration functionality provides a possibility to migrate the models (_created from previous releases of AMALTHEA_ ) to the latest versions
+
+_Only forward migration is supported_
+
+**AMALTHEA metamodel versions information**
+
+Below were the releases of AMALTHEA metamodel during its phase of being as a ITEA2 funded project ( For details refer : "http://www.amalthea-project.org":http://www.amalthea-project.org/index.php/roadmap )
+
+* 1.0.3
+* 1.1.0
+* 1.1.1
+
+From below version, AMALTHEA metamodel is a part of official eclipse project : "APP4MC":https://projects.eclipse.org/projects/technology.app4mc
+
+* 0.7.0
+
+**Model migration**
+
+As described above, only forward migration is supported by the AMALTHEA model migration utility.
+
+Model migration utility migrates the specified model sequentially to the next versions (step by step) till expected version is reached.
+
+
+Below figure represents the steps involved in the migration of model from ITEA2 1.0.3 version to APP4MC 0.7.0 version:
+
+!(#scale)../pictures/migration_flow.png!
+
+

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:sw="http://www.amalthea.itea2.org/model/1.3.0/sw" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <runnables name="hVAC_YSCT__drvTempAdapter__runCycle" activation="20+ms?type=sw.Periodic">
+      <runnableItems xsi:type="sw:InstructionsConstant" value="1531"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__hmi__drvTempTicks?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__coordinator__tmpMode?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__drvTempAdapter__temp?type=sw.Label" access="write" isBuffered="inherited"/>
+    </runnables>
+    <runnables name="hVAC_YSCT__coordinator__runCycle" activation="20+ms?type=sw.Periodic">
+      <runnableItems xsi:type="sw:InstructionsConstant" value="4119"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__hmi__switches?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__coordinator__airFlaps?type=sw.Label" access="write" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__coordinator__blwCtrl?type=sw.Label" access="write" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__coordinator__states?type=sw.Label" access="write" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__coordinator__tmpMode?type=sw.Label" access="write" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=sw.Label" access="read" isBuffered="inherited"/>
+    </runnables>
+    <runnables name="hVAC_YSCT__hvacFlaps__setFlaps" activation="20+ms?type=sw.Periodic">
+      <runnableItems xsi:type="sw:InstructionsConstant" value="939313"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__coordinator__airFlaps?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__drvTempFlapCtrl__flap?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__passTempFlapCtrl__flap?type=sw.Label" access="read" isBuffered="inherited"/>
+    </runnables>
+    <runnables name="hVAC_YSCT__hmi__receiveFromUI" activation="20+ms?type=sw.Periodic">
+      <runnableItems xsi:type="sw:InstructionsConstant" value="419925"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__hmi__switches?type=sw.Label" access="write" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__hmi__drvTempTicks?type=sw.Label" access="write" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__hmi__passTempTicks?type=sw.Label" access="write" isBuffered="inherited"/>
+    </runnables>
+    <runnables name="hVAC_YSCT__passTempAdapter__runCycle" activation="20+ms?type=sw.Periodic">
+      <runnableItems xsi:type="sw:InstructionsConstant" value="1488"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__hmi__passTempTicks?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__coordinator__tmpMode?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__passTempAdapter__temp?type=sw.Label" access="write" isBuffered="inherited"/>
+    </runnables>
+    <runnables name="hVAC_YSCT__hmi__sendToUI" activation="20+ms?type=sw.Periodic">
+      <runnableItems xsi:type="sw:InstructionsConstant" value="1450"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__coordinator__states?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__drvTempAdapter__temp?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__passTempAdapter__temp?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=sw.Label" access="read" isBuffered="inherited"/>
+    </runnables>
+    <runnables name="hVAC_YSCT__drvTempFlapCtrl__runCycle" activation="100+ms?type=sw.Periodic">
+      <runnableItems xsi:type="sw:InstructionsConstant" value="1256"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__drvTempAdapter__temp?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__drvTempFlapCtrl__flap?type=sw.Label" access="write" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=sw.Label" access="read" isBuffered="inherited"/>
+    </runnables>
+    <runnables name="hVAC_YSCT__blowerCtrl__runCycle" activation="100+ms?type=sw.Periodic">
+      <runnableItems xsi:type="sw:InstructionsConstant" value="1275"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__coordinator__blwCtrl?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__drvTempAdapter__temp?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__passTempAdapter__temp?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=sw.Label" access="write" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=sw.Label" access="read" isBuffered="inherited"/>
+    </runnables>
+    <runnables name="hVAC_YSCT__hvacBlower__setPower" activation="100+ms?type=sw.Periodic">
+      <runnableItems xsi:type="sw:InstructionsConstant" value="825"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=sw.Label" access="read" isBuffered="inherited"/>
+    </runnables>
+    <runnables name="hVAC_YSCT__hvacItos__readTemp" activation="100+ms?type=sw.Periodic">
+      <runnableItems xsi:type="sw:InstructionsConstant" value="13575"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=sw.Label" access="write" isBuffered="inherited"/>
+    </runnables>
+    <runnables name="hVAC_YSCT__passTempFlapCtrl__runCycle" activation="100+ms?type=sw.Periodic">
+      <runnableItems xsi:type="sw:InstructionsConstant" value="1231"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__passTempAdapter__temp?type=sw.Label" access="read" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__passTempFlapCtrl__flap?type=sw.Label" access="write" isBuffered="inherited"/>
+      <runnableItems xsi:type="sw:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=sw.Label" access="read" isBuffered="inherited"/>
+    </runnables>
+    <labels name="hVAC_YSCT__hmi__switches" isBuffered="notBuffered"/>
+    <labels name="hVAC_YSCT__hmi__drvTempTicks" isBuffered="notBuffered"/>
+    <labels name="hVAC_YSCT__hmi__passTempTicks" isBuffered="notBuffered"/>
+    <labels name="hVAC_YSCT__coordinator__blwCtrl" isBuffered="notBuffered"/>
+    <labels name="hVAC_YSCT__coordinator__tmpMode" isBuffered="notBuffered"/>
+    <labels name="hVAC_YSCT__coordinator__states" isBuffered="notBuffered"/>
+    <labels name="hVAC_YSCT__coordinator__airFlaps" isBuffered="notBuffered"/>
+    <labels name="hVAC_YSCT__drvTempAdapter__temp" isBuffered="notBuffered"/>
+    <labels name="hVAC_YSCT__drvTempFlapCtrl__flap" isBuffered="notBuffered"/>
+    <labels name="hVAC_YSCT__passTempAdapter__temp" isBuffered="notBuffered"/>
+    <labels name="hVAC_YSCT__passTempFlapCtrl__flap" isBuffered="notBuffered"/>
+    <labels name="hVAC_YSCT__blowerCtrl__blwPower" isBuffered="notBuffered"/>
+    <labels name="hVAC_YSCT__hvacItos__interiorTemp" isBuffered="notBuffered"/>
+    <activations xsi:type="sw:Periodic" name="20 ms">
+      <offset value="20" unit="us"/>
+    </activations>
+    <activations xsi:type="sw:Periodic" name="100 ms">
+      <offset value="100" unit="ms"/>
+    </activations>
+  </swModel>
+  <constraintsModel>
+    <runnableSequencingConstraints name="3" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__blowerCtrl__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hmi__sendToUI?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="7" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__drvTempAdapter__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__drvTempFlapCtrl__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="8" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__drvTempFlapCtrl__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hvacFlaps__setFlaps?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="11" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__passTempAdapter__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__blowerCtrl__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="12" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__passTempAdapter__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__passTempFlapCtrl__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="13" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__passTempFlapCtrl__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hvacFlaps__setFlaps?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="14" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__coordinator__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__blowerCtrl__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="16" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__drvTempAdapter__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__blowerCtrl__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="18" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hvacItos__readTemp?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hmi__sendToUI?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="0" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__coordinator__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hmi__sendToUI?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="1" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__drvTempAdapter__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hmi__sendToUI?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="4" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hmi__receiveFromUI?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__coordinator__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="5" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hmi__receiveFromUI?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__drvTempAdapter__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="19" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hvacItos__readTemp?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__drvTempFlapCtrl__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="21" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hvacItos__readTemp?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__blowerCtrl__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="2" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__passTempAdapter__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hmi__sendToUI?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="9" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hmi__receiveFromUI?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__passTempAdapter__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="17" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__blowerCtrl__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hvacBlower__setPower?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="20" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hvacItos__readTemp?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__passTempFlapCtrl__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+    <runnableSequencingConstraints name="22" orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__coordinator__runCycle?type=sw.Runnable"/>
+      </runnableGroups>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="hVAC_YSCT__hvacFlaps__setFlaps?type=sw.Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+  </constraintsModel>
+</central:AMALTHEA>

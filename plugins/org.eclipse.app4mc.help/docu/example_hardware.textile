@@ -1,0 +1,15 @@
+
+
+h2. Hwmodel Example
+
+This example contains several hardware model examples. These are:
+
+*gateway.amxmi*
+which describes how to model master/slave Networks. It shows a Local Interconnect Network(R) (LIN) with one Master, represented by a the microcontroller "Gateway" and two sensors which respond to multiple unique commands. The lin specification is publicly available under "http://www.lin-subbus.org/":http://www.lin-subbus.org/.
+
+*memory.amxmi*
+which describes how to model memory segments with the AMALTHEA hardware model.
+
+*MPC5668G.amxmi*
+which describes a sample system consisting of a Freescale MPC5668G Demo Board and its SoC.
+It is loosely based on the publicly available information taken from the Freescale website: "Product summary MPC5668G":http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=MPC5668G.

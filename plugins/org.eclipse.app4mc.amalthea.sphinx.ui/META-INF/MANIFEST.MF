@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Amalthea Sphinx UI Support
+Bundle-SymbolicName: org.eclipse.app4mc.amalthea.sphinx.ui;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.emf.common,
+ org.eclipse.emf.edit,
+ org.eclipse.sphinx.emf,
+ org.eclipse.ui.navigator,
+ org.eclipse.app4mc.amalthea.model,
+ org.eclipse.app4mc.amalthea.model.edit
+Bundle-Vendor: Eclipse.org
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+Export-Package: org.eclipse.app4mc.amalthea.sphinx.ui,
+ org.eclipse.app4mc.amalthea.sphinx.ui.sw.container,
+ org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended

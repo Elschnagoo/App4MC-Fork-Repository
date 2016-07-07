@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:central="http://www.amalthea.itea2.org/model/1.2.0/central" xmlns:components="http://amalthea.itea2.org/model/1.2.0/components" xmi:id="_pK640BzTEeaJJLR170GADQ">
+  <componentsModel xmi:id="_pK640RzTEeaJJLR170GADQ">
+    <elements xsi:type="components:Component" xmi:id="_pK640hzTEeaJJLR170GADQ">
+      <ports xsi:type="components:FInterfacePort" xmi:id="_pK640xzTEeaJJLR170GADQ" name="refP"/>
+    </elements>
+    <elements xsi:type="components:Composite" xmi:id="_pK641BzTEeaJJLR170GADQ">
+      <elements xsi:type="components:ComponentInstance" xmi:id="_pK641RzTEeaJJLR170GADQ" name="refInst"/>
+      <elements xsi:type="components:Connector" xmi:id="_pK641hzTEeaJJLR170GADQ" name="c1"/>
+    </elements>
+    <elements xsi:type="components:System" xmi:id="_pK641xzTEeaJJLR170GADQ">
+      <elements xsi:type="components:Connector" xmi:id="_pK642BzTEeaJJLR170GADQ" name="n1">
+        <sourcePort xmi:id="_pK642RzTEeaJJLR170GADQ" instance="_pK641RzTEeaJJLR170GADQ" port="_pK640xzTEeaJJLR170GADQ"/>
+      </elements>
+      <elements xsi:type="components:ComponentInstance" xmi:id="_pK642hzTEeaJJLR170GADQ" name="n1" type="_pK640hzTEeaJJLR170GADQ"/>
+    </elements>
+  </componentsModel>
+</central:AMALTHEA>

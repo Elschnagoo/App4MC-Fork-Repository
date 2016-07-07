@@ -1,0 +1,54 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _DGqOIKPrEeWDWL6qw48qbg,_8iD4sKPqEeWDWL6qw48qbg
+Element-Name: DemocarWorkflowExecution
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _kOzJIKPqEeWDWL6qw48qbg
+Runtime-Version: 2.0.1.201508250612
+Save-Time: 1/21/16 3:51 PM
+Testcase-Type: ecl
+Verifications: _OCzUMKM-EeW6_Mq9rZ9GtQ
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Creates the Democar samples and performs the available workflow.
+Verifies also the created result files.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Model Explorer" | get-tree | select "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow/sample_workflow.mwe2"
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow/sample_workflow.mwe2" 
+    | get-menu "Run As/2 MWE2 Workflow" | click
+//Hack to wait 15 sec till MWE2 workflow is finished
+wait 15000
+//checking for available results
+get-view "Model Explorer" | get-tree | get-item "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow-output" 
+    | get-property caption | equals "workflow-output" | verify-true
+with [get-view "Model Explorer" | get-tree] {
+    get-item "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow-output" | get-property caption 
+        | equals "workflow-output" | verify-true
+    get-item "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow-output" | get-property childCount | equals 4 
+        | verify-true
+}
+get-view "Model Explorer" | get-tree | get-item "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow-output/create" 
+    | get-property caption | equals create | verify-true
+get-view "Model Explorer" | get-tree 
+    | get-item "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow-output/create/createtasks.amxmi" 
+    | get-property caption | equals "createtasks.amxmi" | verify-true
+get-view "Model Explorer" | get-tree 
+    | get-item "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow-output/dfg/mapping_dfg.amxmi" 
+    | get-property caption | equals "mapping_dfg.amxmi" | verify-true
+get-view "Model Explorer" | get-tree 
+    | get-item "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow-output/ga/mapping_galb.amxmi" 
+    | get-property caption | equals "mapping_galb.amxmi" | verify-true
+get-view "Model Explorer" | get-tree 
+    | get-item "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow-output/ilp/mapping_ilplb.amxmi" 
+    | get-property caption | equals "mapping_ilplb.amxmi" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

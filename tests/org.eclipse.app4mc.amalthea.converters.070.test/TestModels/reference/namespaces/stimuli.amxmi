@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_VjdKAMANEeWFjLGtonZfOQ">
+  <stimuliModel xmi:id="_WYetgMANEeWFjLGtonZfOQ">
+    <stimuli xsi:type="am:InterProcess" xmi:id="_HhTBYMAOEeWFjLGtonZfOQ">
+      <stimulusDeviation xmi:id="_IRdTAMAOEeWFjLGtonZfOQ">
+        <lowerBound xsi:type="am:SignedTime" xmi:id="_M-YVIMAOEeWFjLGtonZfOQ" unit="us" />
+        <upperBound xsi:type="am:SignedTime" xmi:id="_RA-n4MAOEeWFjLGtonZfOQ" unit="ms" />
+        <distribution xsi:type="am:GaussDistribution" xmi:id="_XcTskMAOEeWFjLGtonZfOQ">
+          <sd xsi:type="am:SignedTime" xmi:id="_qTfN8MAOEeWFjLGtonZfOQ" unit="ms" />
+          <mean xsi:type="am:SignedTime" xmi:id="_8kDT4MAREeWFjLGtonZfOQ" unit="ps" />
+        </distribution>
+      </stimulusDeviation>
+    </stimuli>
+    <stimuli xsi:type="am:Periodic" xmi:id="_6ZB9QMBSEeWFjLGtonZfOQ">
+      <offset xmi:id="_fCChgMBTEeWFjLGtonZfOQ" unit="ns" />
+      <recurrence xmi:id="_gjRDsMBTEeWFjLGtonZfOQ" unit="us" />
+    </stimuli>
+    <stimuli xsi:type="am:Single" xmi:id="_DtUMEMBTEeWFjLGtonZfOQ" />
+    <stimuli xsi:type="am:PeriodicEvent" xmi:id="_GLZ_IMBTEeWFjLGtonZfOQ" name="" />
+    <clocks xsi:type="am:ClockSinusFunction" xmi:id="_arCH0MANEeWFjLGtonZfOQ" name="csf">
+      <shift xmi:id="_djnegMANEeWFjLGtonZfOQ" unit="ns" />
+    </clocks>
+    <clocks xsi:type="am:ClockTriangleFunction" xmi:id="_gKxG8MANEeWFjLGtonZfOQ">
+      <shift xmi:id="_gmzisMANEeWFjLGtonZfOQ" unit="us" />
+    </clocks>
+  </stimuliModel>
+</am:Amalthea>

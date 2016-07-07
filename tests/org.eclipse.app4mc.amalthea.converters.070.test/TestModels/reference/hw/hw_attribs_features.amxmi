@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:HWModel xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <system>
+    <ports xsi:type="am:ComplexPort" name="complex_port" master="true" />
+    <ecus>
+      <microcontrollers>
+        <cores>
+          <memories>
+            <networks>
+              <quartzes>
+                <components>
+                  <customProperties key="attribute#a1">
+                    <value xsi:type="am:BooleanObject" value="true" />
+                  </customProperties>
+                  <customProperties key="attribute#c1">
+                    <value xsi:type="am:StringObject" value="a" />
+                  </customProperties>
+                  <customProperties key="attribute#d1">
+                    <value xsi:type="am:DoubleObject" value="11.0" />
+                  </customProperties>
+                  <customProperties key="attribute#i1">
+                    <value xsi:type="am:IntegerObject" value="11" />
+                  </customProperties>
+                  <customProperties key="attribute#l1">
+                    <value xsi:type="am:LongObject" value="2222222222" />
+                  </customProperties>
+                  <customProperties key="attribute#st1">
+                    <value xsi:type="am:StringObject" value="aaaaaaaaaaaa" />
+                  </customProperties>
+                  <customProperties key="attribute#FeatureTypes#ft1">
+                    <value xsi:type="am:StringObject" value="floatingPointUnit" />
+                  </customProperties>
+                  <customProperties key="attribute#feature_b1">
+                    <value xsi:type="am:BooleanObject" value="true" />
+                  </customProperties>
+                  <customProperties key="attribute#feature_c1">
+                    <value xsi:type="am:StringObject" value="b" />
+                  </customProperties>
+                  <customProperties key="attribute#feature_d1">
+                    <value xsi:type="am:DoubleObject" />
+                  </customProperties>
+                  <customProperties key="attribute#FeatureTypes#feature_ft1">
+                    <value xsi:type="am:StringObject" value="floatingPointUnit" />
+                  </customProperties>
+                  <customProperties key="attribute#feature_int">
+                    <value xsi:type="am:IntegerObject" value="111" />
+                  </customProperties>
+                  <customProperties key="attribute#feature_l1">
+                    <value xsi:type="am:LongObject" value="4444444" />
+                  </customProperties>
+                  <customProperties key="attribute#feature_st1">
+                    <value xsi:type="am:StringObject" value="tttt" />
+                  </customProperties>
+                </components>
+                <customProperties key="attribute#a1">
+                  <value xsi:type="am:BooleanObject" value="true" />
+                </customProperties>
+                <customProperties key="attribute#c1">
+                  <value xsi:type="am:StringObject" value="a" />
+                </customProperties>
+                <customProperties key="attribute#d1">
+                  <value xsi:type="am:DoubleObject" value="11.0" />
+                </customProperties>
+                <customProperties key="attribute#i1">
+                  <value xsi:type="am:IntegerObject" value="11" />
+                </customProperties>
+                <customProperties key="attribute#l1">
+                  <value xsi:type="am:LongObject" value="2222222222" />
+                </customProperties>
+                <customProperties key="attribute#st1">
+                  <value xsi:type="am:StringObject" value="aaaaaaaaaaaa" />
+                </customProperties>
+                <customProperties key="attribute#FeatureTypes#ft1">
+                  <value xsi:type="am:StringObject" value="floatingPointUnit" />
+                </customProperties>
+                <customProperties key="attribute#feature_b1">
+                  <value xsi:type="am:BooleanObject" value="true" />
+                </customProperties>
+                <customProperties key="attribute#feature_c1">
+                  <value xsi:type="am:StringObject" value="b" />
+                </customProperties>
+                <customProperties key="attribute#feature_d1">
+                  <value xsi:type="am:DoubleObject" />
+                </customProperties>
+                <customProperties key="attribute#FeatureTypes#feature_ft1">
+                  <value xsi:type="am:StringObject" value="floatingPointUnit" />
+                </customProperties>
+                <customProperties key="attribute#feature_int">
+                  <value xsi:type="am:IntegerObject" value="111" />
+                </customProperties>
+                <customProperties key="attribute#feature_l1">
+                  <value xsi:type="am:LongObject" value="4444444" />
+                </customProperties>
+                <customProperties key="attribute#feature_st1">
+                  <value xsi:type="am:StringObject" value="tttt" />
+                </customProperties>
+              </quartzes>
+              <customProperties key="attribute#a1">
+                <value xsi:type="am:BooleanObject" value="true" />
+              </customProperties>
+              <customProperties key="attribute#c1">
+                <value xsi:type="am:StringObject" value="a" />
+              </customProperties>
+              <customProperties key="attribute#d1">
+                <value xsi:type="am:DoubleObject" value="11.0" />
+              </customProperties>
+              <customProperties key="attribute#i1">
+                <value xsi:type="am:IntegerObject" value="11" />
+              </customProperties>
+              <customProperties key="attribute#l1">
+                <value xsi:type="am:LongObject" value="2222222222" />
+              </customProperties>
+              <customProperties key="attribute#st1">
+                <value xsi:type="am:StringObject" value="aaaaaaaaaaaa" />
+              </customProperties>
+              <customProperties key="attribute#FeatureTypes#ft1">
+                <value xsi:type="am:StringObject" value="floatingPointUnit" />
+              </customProperties>
+              <customProperties key="attribute#feature_b1">
+                <value xsi:type="am:BooleanObject" value="true" />
+              </customProperties>
+              <customProperties key="attribute#feature_c1">
+                <value xsi:type="am:StringObject" value="b" />
+              </customProperties>
+              <customProperties key="attribute#feature_d1">
+                <value xsi:type="am:DoubleObject" />
+              </customProperties>
+              <customProperties key="attribute#FeatureTypes#feature_ft1">
+                <value xsi:type="am:StringObject" value="floatingPointUnit" />
+              </customProperties>
+              <customProperties key="attribute#feature_int">
+                <value xsi:type="am:IntegerObject" value="111" />
+              </customProperties>
+              <customProperties key="attribute#feature_l1">
+                <value xsi:type="am:LongObject" value="4444444" />
+              </customProperties>
+              <customProperties key="attribute#feature_st1">
+                <value xsi:type="am:StringObject" value="tttt" />
+              </customProperties>
+            </networks>
+            <customProperties key="attribute#a1">
+              <value xsi:type="am:BooleanObject" value="true" />
+            </customProperties>
+            <customProperties key="attribute#c1">
+              <value xsi:type="am:StringObject" value="a" />
+            </customProperties>
+            <customProperties key="attribute#d1">
+              <value xsi:type="am:DoubleObject" value="11.0" />
+            </customProperties>
+            <customProperties key="attribute#i1">
+              <value xsi:type="am:IntegerObject" value="11" />
+            </customProperties>
+            <customProperties key="attribute#l1">
+              <value xsi:type="am:LongObject" value="2222222222" />
+            </customProperties>
+            <customProperties key="attribute#st1">
+              <value xsi:type="am:StringObject" value="aaaaaaaaaaaa" />
+            </customProperties>
+            <customProperties key="attribute#FeatureTypes#ft1">
+              <value xsi:type="am:StringObject" value="floatingPointUnit" />
+            </customProperties>
+            <customProperties key="attribute#feature_b1">
+              <value xsi:type="am:BooleanObject" value="true" />
+            </customProperties>
+            <customProperties key="attribute#feature_c1">
+              <value xsi:type="am:StringObject" value="b" />
+            </customProperties>
+            <customProperties key="attribute#feature_d1">
+              <value xsi:type="am:DoubleObject" />
+            </customProperties>
+            <customProperties key="attribute#FeatureTypes#feature_ft1">
+              <value xsi:type="am:StringObject" value="floatingPointUnit" />
+            </customProperties>
+            <customProperties key="attribute#feature_int">
+              <value xsi:type="am:IntegerObject" value="111" />
+            </customProperties>
+            <customProperties key="attribute#feature_l1">
+              <value xsi:type="am:LongObject" value="4444444" />
+            </customProperties>
+            <customProperties key="attribute#feature_st1">
+              <value xsi:type="am:StringObject" value="tttt" />
+            </customProperties>
+          </memories>
+          <customProperties key="attribute#a1">
+            <value xsi:type="am:BooleanObject" value="true" />
+          </customProperties>
+          <customProperties key="attribute#c1">
+            <value xsi:type="am:StringObject" value="a" />
+          </customProperties>
+          <customProperties key="attribute#d1">
+            <value xsi:type="am:DoubleObject" value="11.0" />
+          </customProperties>
+          <customProperties key="attribute#i1">
+            <value xsi:type="am:IntegerObject" value="11" />
+          </customProperties>
+          <customProperties key="attribute#l1">
+            <value xsi:type="am:LongObject" value="2222222222" />
+          </customProperties>
+          <customProperties key="attribute#st1">
+            <value xsi:type="am:StringObject" value="aaaaaaaaaaaa" />
+          </customProperties>
+          <customProperties key="attribute#FeatureTypes#ft1">
+            <value xsi:type="am:StringObject" value="floatingPointUnit" />
+          </customProperties>
+          <customProperties key="attribute#feature_b1">
+            <value xsi:type="am:BooleanObject" value="true" />
+          </customProperties>
+          <customProperties key="attribute#feature_c1">
+            <value xsi:type="am:StringObject" value="b" />
+          </customProperties>
+          <customProperties key="attribute#feature_d1">
+            <value xsi:type="am:DoubleObject" />
+          </customProperties>
+          <customProperties key="attribute#FeatureTypes#feature_ft1">
+            <value xsi:type="am:StringObject" value="floatingPointUnit" />
+          </customProperties>
+          <customProperties key="attribute#feature_int">
+            <value xsi:type="am:IntegerObject" value="111" />
+          </customProperties>
+          <customProperties key="attribute#feature_l1">
+            <value xsi:type="am:LongObject" value="4444444" />
+          </customProperties>
+          <customProperties key="attribute#feature_st1">
+            <value xsi:type="am:StringObject" value="tttt" />
+          </customProperties>
+        </cores>
+        <customProperties key="attribute#a1">
+          <value xsi:type="am:BooleanObject" value="true" />
+        </customProperties>
+        <customProperties key="attribute#c1">
+          <value xsi:type="am:StringObject" value="a" />
+        </customProperties>
+        <customProperties key="attribute#d1">
+          <value xsi:type="am:DoubleObject" value="11.0" />
+        </customProperties>
+        <customProperties key="attribute#i1">
+          <value xsi:type="am:IntegerObject" value="11" />
+        </customProperties>
+        <customProperties key="attribute#l1">
+          <value xsi:type="am:LongObject" value="2222222222" />
+        </customProperties>
+        <customProperties key="attribute#st1">
+          <value xsi:type="am:StringObject" value="aaaaaaaaaaaa" />
+        </customProperties>
+        <customProperties key="attribute#FeatureTypes#ft1">
+          <value xsi:type="am:StringObject" value="floatingPointUnit" />
+        </customProperties>
+        <customProperties key="attribute#feature_b1">
+          <value xsi:type="am:BooleanObject" value="true" />
+        </customProperties>
+        <customProperties key="attribute#feature_c1">
+          <value xsi:type="am:StringObject" value="b" />
+        </customProperties>
+        <customProperties key="attribute#feature_d1">
+          <value xsi:type="am:DoubleObject" />
+        </customProperties>
+        <customProperties key="attribute#FeatureTypes#feature_ft1">
+          <value xsi:type="am:StringObject" value="floatingPointUnit" />
+        </customProperties>
+        <customProperties key="attribute#feature_int">
+          <value xsi:type="am:IntegerObject" value="111" />
+        </customProperties>
+        <customProperties key="attribute#feature_l1">
+          <value xsi:type="am:LongObject" value="4444444" />
+        </customProperties>
+        <customProperties key="attribute#feature_st1">
+          <value xsi:type="am:StringObject" value="tttt" />
+        </customProperties>
+      </microcontrollers>
+      <customProperties key="attribute#a1">
+        <value xsi:type="am:BooleanObject" value="true" />
+      </customProperties>
+      <customProperties key="attribute#c1">
+        <value xsi:type="am:StringObject" value="a" />
+      </customProperties>
+      <customProperties key="attribute#d1">
+        <value xsi:type="am:DoubleObject" value="11.0" />
+      </customProperties>
+      <customProperties key="attribute#i1">
+        <value xsi:type="am:IntegerObject" value="11" />
+      </customProperties>
+      <customProperties key="attribute#l1">
+        <value xsi:type="am:LongObject" value="2222222222" />
+      </customProperties>
+      <customProperties key="attribute#st1">
+        <value xsi:type="am:StringObject" value="aaaaaaaaaaaa" />
+      </customProperties>
+      <customProperties key="attribute#FeatureTypes#ft1">
+        <value xsi:type="am:StringObject" value="floatingPointUnit" />
+      </customProperties>
+      <customProperties key="attribute#feature_b1">
+        <value xsi:type="am:BooleanObject" value="true" />
+      </customProperties>
+      <customProperties key="attribute#feature_c1">
+        <value xsi:type="am:StringObject" value="b" />
+      </customProperties>
+      <customProperties key="attribute#feature_d1">
+        <value xsi:type="am:DoubleObject" />
+      </customProperties>
+      <customProperties key="attribute#FeatureTypes#feature_ft1">
+        <value xsi:type="am:StringObject" value="floatingPointUnit" />
+      </customProperties>
+      <customProperties key="attribute#feature_int">
+        <value xsi:type="am:IntegerObject" value="111" />
+      </customProperties>
+      <customProperties key="attribute#feature_l1">
+        <value xsi:type="am:LongObject" value="4444444" />
+      </customProperties>
+      <customProperties key="attribute#feature_st1">
+        <value xsi:type="am:StringObject" value="tttt" />
+      </customProperties>
+    </ecus>
+    <customProperties key="attribute#a1">
+      <value xsi:type="am:BooleanObject" value="true" />
+    </customProperties>
+    <customProperties key="attribute#c1">
+      <value xsi:type="am:StringObject" value="a" />
+    </customProperties>
+    <customProperties key="attribute#d1">
+      <value xsi:type="am:DoubleObject" value="11.0" />
+    </customProperties>
+    <customProperties key="attribute#i1">
+      <value xsi:type="am:IntegerObject" value="11" />
+    </customProperties>
+    <customProperties key="attribute#l1">
+      <value xsi:type="am:LongObject" value="2222222222" />
+    </customProperties>
+    <customProperties key="attribute#st1">
+      <value xsi:type="am:StringObject" value="aaaaaaaaaaaa" />
+    </customProperties>
+    <customProperties key="attribute#FeatureTypes#ft1">
+      <value xsi:type="am:StringObject" value="floatingPointUnit" />
+    </customProperties>
+    <customProperties key="attribute#feature_b1">
+      <value xsi:type="am:BooleanObject" value="true" />
+    </customProperties>
+    <customProperties key="feature#feature_c1">
+      <value xsi:type="am:StringObject" value="b" />
+    </customProperties>
+    <customProperties key="feature#feature_d1">
+      <value xsi:type="am:DoubleObject" />
+    </customProperties>
+    <customProperties key="feature#FeatureTypes#feature_ft1">
+      <value xsi:type="am:StringObject" value="floatingPointUnit" />
+    </customProperties>
+    <customProperties key="feature#feature_int">
+      <value xsi:type="am:IntegerObject" value="111" />
+    </customProperties>
+    <customProperties key="feature#feature_l1">
+      <value xsi:type="am:LongObject" value="4444444" />
+    </customProperties>
+    <customProperties key="feature#feature_st1">
+      <value xsi:type="am:StringObject" value="tttt" />
+    </customProperties>
+  </system>
+</am:HWModel>

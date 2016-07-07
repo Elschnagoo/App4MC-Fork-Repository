@@ -1,0 +1,56 @@
+h1. Release Notes
+
+
+h2. Eclipse APP4MC Version 0.7.0 -- May 2016
+
+Model handling
+* One consolidated model
+* Additional opposite references (transient) to ease model navigation
+
+Model changes
+* (todo)
+
+h2. AMALTHEA Version 1.1.1 -- October 2015
+
+Model handling
+* Changed serialized model references to __name based references__
+* Restricted __model scope__ to surrounding folder (without sub folders)
+
+Model changes
+* Added __HwAccessPath__ to hardware model to describe an access path either by using latencies or available hardware elements
+* Added __Modes__ to common model and __ModeLabels__ to software model to describe alternative execution paths of tasks
+* Added __isBuffered__ attribute to Labels and LabelAccesses to describe data consistency requirements
+* Added __Requirements__ to constraints model to describe quality requirements for the dynamic architecture
+* Added __DataCoherencyGroups__ to constraints model to describe data coherency requirements
+* Added __ProcessChains__ to software model to describe data processing over multiple tasks
+
+* Switched validations to Sphinx check based and added different model validations
+* New values for __CustomAttributes__ with __Time__ and __SignedTime__
+
+Features
+* New __AMALTHEA Trace Database (ATDB) Import__ to create an AMALTHEA model from a trace
+
+Documentation
+* Updated model documentation / class diagrams
+* Updated user guide documentation to include steps for create a new AMALTHEA model with wizard
+* Updated user guide documentation to include a tutorial for using the AMALTHEA Trace Database (ATDB) Import
+
+h3. Known Limitations
+
+* Maximum *one* Franca file (*.fidl) is supported per model (folder)
+
+
+
+h2. AMALTHEA Version 1.1.0 -- August 2015
+
+* Updated OS model to include now possibility to describe the operating system in more detail, like OS overhead
+* Added Event Sets to Event model to allow the definition of an unspecified order for events in an event chain
+* Added Data Age Constraints to constraints model
+* Added Label Value Lists to Stimulus model to enable and disable stimuli by label values or to set label values by the activation of a stimulus 
+* Added Arrival Curve Stimulus to Stimulus model 
+* Added Terminate Task for Call Graph in Software model to allow the termination of a task within a switch
+* Added a address attribute in the Mapping model to allow the definition of a memory address in the memory mapping
+* Added CustomAttributes to all model AMALTHEA model elements
+* Added first version of OSLC adapter
+* Replace of attribute read/write in LabelAccessStatistic with value and readCacheMisses with cacheMisses
+* Added documentation for Counter element in SW model

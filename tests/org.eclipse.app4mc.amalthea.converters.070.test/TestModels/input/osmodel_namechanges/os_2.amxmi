@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central">
+  <osModel>
+    <operatingSystems name="Os2">
+      <overhead href="amlt:/#//@osModel/@osOverheads.0"/>
+    </operatingSystems>
+  </osModel>
+</central:AMALTHEA>

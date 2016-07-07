@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.eclipse.app4mc.build</groupId>
+	<artifactId>parent</artifactId>
+	<version>0.7.0-SNAPSHOT</version>
+
+	<packaging>pom</packaging>
+
+	<url>http://projects.eclipse.org/projects/technology.app4mc</url>
+	<name>APP4MC Tool Platform</name>
+
+	<properties>
+		<tycho.version>0.25.0</tycho.version>
+		<build-helper.version>1.9.1</build-helper.version>
+		<org.jboss.tools.tycho-plugins.version>0.23.2</org.jboss.tools.tycho-plugins.version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<!-- Common plugins and features contained in the open source distribution -->
+	<modules>
+		<!-- Plugins -->
+		<module>../../plugins/org.eclipse.app4mc.amalthea.emf.util</module>
+
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.mapping</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.split</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.hwmodel</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling2</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.workflow</module>
+
+
+
+		<module>../../plugins/org.eclipse.app4mc.amalthea.examples.installer</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.examples.installer</module>
+		<module>../../plugins/org.eclipse.app4mc.workflow.examples.installer</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.export.osek</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.franca.sphinx</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.import.atdb</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.model</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.model.edit</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx.ui</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx.ui.editors</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.openmapping</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.partitioning</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.validation</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.base</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.core</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.ease</module>
+		<module>../../plugins/org.eclipse.app4mc.atdb.metrics</module>
+		<module>../../plugins/org.eclipse.app4mc.platform.ide</module>
+		<module>../../plugins/org.eclipse.app4mc.tracing.converter</module>
+		<module>../../plugins/org.eclipse.app4mc.tracing.converter.atdb</module>
+		<module>../../plugins/org.eclipse.app4mc.tracing.converter.ot1</module>
+		<module>../../plugins/org.jenetics</module>
+		<module>../../plugins/org.jgrapht</module>
+		<module>../../plugins/org.ojalgo</module>
+		<module>../../plugins/org.sqlite.jdbc</module>
+
+		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.070</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.110</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.111</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.common</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.ui</module>
+		<module>../../plugins/org.jdom2</module>
+		<module>../../plugins/org.jaxen</module>
+
+		<module>../../plugins/org.eclipse.app4mc.help</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.help</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.model.help</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.edit.help</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.editors.help</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.import.help</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.help</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.help</module>
+		<module>../../plugins/org.eclipse.app4mc.validation.help</module>
+
+		<!-- Features -->
+		<module>../../features/org.eclipse.app4mc.amalthea.converters</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.converters.sdk</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.edit</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.edit.sdk</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.editors</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.editors.sdk</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.export</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.export.sdk</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.import</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.import.sdk</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.models</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.models.sdk</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.workflow</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.workflow.sdk</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.workflow.common</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.workflow.common.sdk</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.workflow.scripting</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.workflow.scripting.sdk</module>
+		<module>../../features/org.eclipse.app4mc.docu</module>
+		<module>../../features/org.eclipse.app4mc.docu.sdk</module>
+		<module>../../features/org.eclipse.app4mc.examples</module>
+		<module>../../features/org.eclipse.app4mc.examples.sdk</module>
+		<module>../../features/org.eclipse.app4mc.multicore</module>
+		<module>../../features/org.eclipse.app4mc.multicore.sdk</module>
+		<module>../../features/org.eclipse.app4mc.platform</module>
+		<module>../../features/org.eclipse.app4mc.platform.3rdparty</module>
+		<module>../../features/org.eclipse.app4mc.platform.sdk</module>
+		<module>../../features/org.eclipse.app4mc.tracing</module>
+		<module>../../features/org.eclipse.app4mc.tracing.sdk</module>
+		<module>../../features/org.eclipse.app4mc.validation</module>
+		<module>../../features/org.eclipse.app4mc.validation.sdk</module>
+
+
+
+		<!-- Other -->
+		<module>../org.eclipse.app4mc.p2repo</module>
+		<module>../org.eclipse.app4mc.platform.product</module>
+		<module>../org.eclipse.app4mc.target</module>
+		<module>../org.eclipse.app4mc.converters.p2repo</module>
+
+		<!-- Tests -->
+		<module>../../tests/org.eclipse.app4mc.amalthea.validation.test</module>
+		<!--module>../../tests/org.eclipse.app4mc.rcptt</module-->
+		<module>../../tests/org.eclipse.app4mc.amalthea.converters.110.test</module>
+		<module>../../tests/org.eclipse.app4mc.amalthea.converters.111.test</module>
+		<module>../../tests/org.eclipse.app4mc.amalthea.converters.070.test</module>
+	</modules>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho.version}</version>
+
+					<dependencies>
+						<dependency>
+							<groupId>org.eclipse.tycho.extras</groupId>
+							<artifactId>tycho-buildtimestamp-jgit</artifactId>
+							<version>${tycho.version}</version>
+						</dependency>
+					</dependencies>
+
+					<configuration>
+						<timestampProvider>jgit</timestampProvider>
+						<jgit.ignore>pom.xml</jgit.ignore>
+						<jgit.dirtyWorkingTree>ignore</jgit.dirtyWorkingTree>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-p2-plugin</artifactId>
+					<version>${tycho.version}</version>
+
+					<configuration>
+						<baselineRepositories>
+							<repository>
+								<url>https://git.eclipse.org/r/app4mc/org.eclipse.app4mc</url>
+							</repository>
+						</baselineRepositories>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+
+				<configuration>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+
+					<target>
+						<artifact>
+							<groupId>org.eclipse.app4mc.build</groupId>
+							<artifactId>org.eclipse.app4mc.target</artifactId>
+							<version>0.7.0-SNAPSHOT</version>
+							<classifier>Mars-4.5.2</classifier>
+						</artifact>
+					</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+
+				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho.version}</version>
+
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho.version}</version>
+
+				<configuration>
+					<includes>
+						<forkMode>never</forkMode>
+						<include>**/*Test.java</include>
+						<include>**/*Tests.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.4.201502262128</version>
+
+				<executions>
+					<!-- Prepares the property pointing to the JaCoCo runtime agent which
+						is passed as VM argument when Maven the Surefire plugin is executed. -->
+					<execution>
+						<id>pre-unit-test</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<!-- Sets the path to the file which contains the execution data. -->
+							<destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
+						</configuration>
+					</execution>
+
+					<!-- Ensures that the code coverage report for unit tests is created
+						after unit tests have been run. -->
+					<execution>
+						<id>post-unit-test</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<!-- Sets the path to the file which contains the execution data. -->
+							<dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
+							<!-- Sets the output directory for the code coverage report. -->
+							<outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

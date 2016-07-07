@@ -1,0 +1,26 @@
+
+
+h2(#me). Mapping example 1
+
+The following section will describe how to calculate a mapping with the AMALTHEA tool platform using the DFG and ILP based load balancing algorithms.
+
+*Step 1*
+
+!../pictures/ExampleMapping/06-perform-mapping.png!
+
+The mapping example required a software model with tasks. You can either use the resulting model from the previous task creation example ("AMALTHEA_Democar_MappingExample_withTasks.amxmi") or the already existing software model example. Right-click the file with the software model you would like to map and select "Perform Mapping" to open the GUI for the mapping.
+
+*Step 2*
+
+!../pictures/ExampleMapping/07-perform-mapping-ui.png!
+
+The name of the project as well as the path to the software project have already been entered for you. To perform the mapping, you need to specify the path to a hardware model. This can be done by clicking on the second "Search" button from the top and locating the file "AMALTHEA_Democar_MappingExample-hw.amxmi". Now you only need to click "Create Mapping" to perform the calculations and create a mapping from tasks to cores.
+
+*Step 3*
+
+!(#gray)../pictures/ExampleMapping/08-inspect.png!
+
+Once the mapping is performed, a new file will be generated in the "output" folder. Mapping and OS can be found in the file "AMALTHEA_Democar_MappingExample_withTasks_out.amxmi". To inspect this file, just double-click on it to open a content tree explorer.
+Additional information about the mapping is provided in the console.
+
+

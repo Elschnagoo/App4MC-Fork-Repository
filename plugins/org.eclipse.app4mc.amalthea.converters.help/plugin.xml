@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.help.toc">
+         <toc
+               file="root-dev_migration-toc.xml"
+               primary="false">
+         </toc>
+      <toc
+            file="root-user_migration-toc.xml"
+            primary="false">
+      </toc>
+       <toc
+            file="toc/model_migration-toc.xml"
+            primary="false">
+      </toc>
+       <toc
+            file="toc/supported_model_migrations-toc.xml"
+            primary="false">
+      </toc>
+      <toc
+            file="toc/developers_guide-toc.xml"
+            primary="false">
+      </toc>
+      <toc
+            file="toc/how_to_invoke_model_migration-toc.xml"
+            primary="false">
+      </toc>
+         <toc
+            file="toc/model_changes_migration_behavior-toc.xml"
+            primary="false">
+      </toc>
+         <toc
+               file="toc/prerequisites_for_model_migration-toc.xml"
+               primary="false">
+         </toc>
+           <toc
+               file="toc/additional_details-toc.xml"
+               primary="false">
+         </toc>
+   </extension>
+
+</plugin>

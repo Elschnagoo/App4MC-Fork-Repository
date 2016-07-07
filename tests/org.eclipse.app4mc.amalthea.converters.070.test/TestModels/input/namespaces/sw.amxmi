@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:stimuli="http://www.amalthea.itea2.org/model/1.3.0/stimuli" xmlns:sw="http://www.amalthea.itea2.org/model/1.3.0/sw" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0" xmi:id="_M52-sMBUEeWFjLGtonZfOQ">
+  <swModel xmi:id="_NeR6YMBUEeWFjLGtonZfOQ">
+    <runnables xmi:id="_E6wcEMECEeWFjLGtonZfOQ" name="Runnable1">
+      <deadline xmi:id="_guQYMMECEeWFjLGtonZfOQ" unit="ns" />
+    </runnables>
+    <activations xsi:type="sw:Periodic" xmi:id="_PVfToMBUEeWFjLGtonZfOQ">
+      <min xmi:id="_iaSk0MBVEeWFjLGtonZfOQ" unit="ns" />
+      <max xmi:id="_hrZegMBVEeWFjLGtonZfOQ" unit="us" />
+      <offset xmi:id="_2zergMBVEeWFjLGtonZfOQ" unit="ms" />
+      <deadline xmi:id="_hBMD4MBVEeWFjLGtonZfOQ" unit="ms" />
+    </activations>
+    <activations xsi:type="sw:SingleActivation" xmi:id="_QWW6wMBUEeWFjLGtonZfOQ">
+      <min xmi:id="_69HaYMBVEeWFjLGtonZfOQ" unit="ms" />
+      <max xmi:id="_5vE58MBVEeWFjLGtonZfOQ" unit="us" />
+    </activations>
+    <activations xsi:type="sw:SporadicActivation" xmi:id="_Q7PJcMBUEeWFjLGtonZfOQ" />
+    <activations xsi:type="sw:CustomActivation" xmi:id="_RTcOEMBUEeWFjLGtonZfOQ" />
+  </swModel>
+  <stimuliModel xmi:id="_VR7K8MBWEeWFjLGtonZfOQ">
+    <stimuli xsi:type="stimuli:Single" xmi:id="_V6EJAMBWEeWFjLGtonZfOQ">
+      <activation xmi:id="_IZ_DoMBgEeWFjLGtonZfOQ" unit="ns" />
+    </stimuli>
+    <stimuli xsi:type="stimuli:ArrivalCurve" xmi:id="_rzXDMMDoEeWFjLGtonZfOQ">
+      <arrivalCurveEntries xmi:id="_s8VdcMDoEeWFjLGtonZfOQ">
+        <lowerTimeBorder xmi:id="_uBiK8MDoEeWFjLGtonZfOQ" unit="ns" />
+        <upperTimeBorder xmi:id="_vYjoQMDoEeWFjLGtonZfOQ" unit="us" />
+      </arrivalCurveEntries>
+    </stimuli>
+    <clocks xsi:type="stimuli:ClockTriangleFunction" xmi:id="_J7MZcMDpEeWFjLGtonZfOQ">
+      <period xmi:id="_OMpAgMDpEeWFjLGtonZfOQ" unit="us" />
+    </clocks>
+    <clocks xsi:type="stimuli:ClockSinusFunction" xmi:id="_Sv4iMMDpEeWFjLGtonZfOQ">
+      <period xmi:id="_TLOaYMDpEeWFjLGtonZfOQ" unit="us" />
+    </clocks>
+    <clocks xsi:type="stimuli:ClockMultiplierList" xmi:id="_m1A1sMDvEeWFjLGtonZfOQ">
+      <entries xmi:id="_of64UMDvEeWFjLGtonZfOQ">
+        <time xmi:id="_pMzMcMDvEeWFjLGtonZfOQ" unit="us" />
+      </entries>
+    </clocks>
+  </stimuliModel>
+</central:AMALTHEA>

@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Amalthea Model Sphinx Extensions
+Bundle-SymbolicName: org.eclipse.app4mc.amalthea.sphinx;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Activator: org.eclipse.app4mc.amalthea.sphinx.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.edit,
+ org.eclipse.sphinx.emf
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Export-Package: org.eclipse.app4mc.amalthea.sphinx,
+ org.eclipse.app4mc.amalthea.sphinx.validation.api
+Bundle-Vendor: Eclipse.org

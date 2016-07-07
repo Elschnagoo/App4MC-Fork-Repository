@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.eclipse.app4mc.tracing.converter.atdb.ATDBConvertHandler"
+            id="org.eclipse.app4mc.tracing.converter.atdb.convert"
+            name="convert">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=additions">
+         <command
+               commandId="org.eclipse.app4mc.tracing.converter.atdb.convert"
+               label="Convert to ATDB"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <instanceof
+                           value="org.eclipse.core.resources.IResource">
+                     </instanceof>
+                     <or>
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="ot1">
+                        </test>
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="xml">
+                        </test></or>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+</plugin>

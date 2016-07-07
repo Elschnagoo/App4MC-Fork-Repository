@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<central:AMALTHEA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:central="http://www.amalthea.itea2.org/model/1.3.0/central" xmlns:mapping="http://www.amalthea.itea2.org/model/1.3.0/mapping" xmlns:os="http://www.amalthea.itea2.org/model/1.3.0/os" xmlns:sw="http://www.amalthea.itea2.org/model/1.3.0/sw" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <isrs name="ISR1"/>
+    <tasks name="Task1"/>
+  </swModel>
+  <hwModel>
+    <system name="">
+      <memories name="mem_local"/>
+    </system>
+  </hwModel>
+  <osModel>
+    <operatingSystems>
+      <taskSchedulers name="Scheduler1"/>
+      <interruptControllers name="InterruptController1"/>
+    </operatingSystems>
+  </osModel>
+  <mappingModel>
+    <processAllocation xsi:type="mapping:ISRAllocation" process="ISR1?type=sw.ISR" scheduler="InterruptController1?type=os.InterruptController"/>
+    <processAllocation xsi:type="mapping:TaskAllocation" process="Task1?type=sw.Task" scheduler="Scheduler1?type=os.TaskScheduler"/>
+    <processAllocation xsi:type="mapping:ISRAllocation">
+      <process xsi:type="sw:ISR" href="amlt:/#ISR_SW?type=sw.ISR"/>
+      <scheduler xsi:type="os:InterruptController" href="amlt:/#IC_os?type=os.InterruptController"/>
+    </processAllocation>
+    <processAllocation xsi:type="mapping:TaskAllocation">
+      <process xsi:type="sw:Task" href="amlt:/#Task_sw?type=sw.Task"/>
+      <scheduler xsi:type="os:TaskScheduler" href="amlt:/#scheduler_os?type=os.TaskScheduler"/>
+    </processAllocation>
+    <mapping xsi:type="mapping:SectionMapping">
+      <mem href="amlt:/#mem_hw?type=hw.Memory"/>
+    </mapping>
+    <mapping xsi:type="mapping:AbstractElementMapping">
+      <mem href="amlt:/#mem_hw?type=hw.Memory"/>
+      <abstractElement xsi:type="sw:ISR" href="amlt:/#ISR_SW?type=sw.ISR"/>
+    </mapping>
+    <mapping xsi:type="mapping:SectionMapping" mem="mem_local?type=hw.Memory"/>
+  </mappingModel>
+</central:AMALTHEA>

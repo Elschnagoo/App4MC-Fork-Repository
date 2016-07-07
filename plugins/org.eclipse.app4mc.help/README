@@ -1,0 +1,37 @@
+This project is used to generate an Eclipse help 
+based on the Mylyn Wiki Text project.
+Therefore textile templates are used to write the content of the help, 
+which are located in the docu folder.
+To generate the help or a pdf based on these templates,
+a build.xml is existent with the two relevant targets:
+
+generate-help (default)
+generate-pdf
+
+The result of the pdf build is then located in a new folder out.
+The result of the help target is available after successful run in the help and toc folder.
+
+To get it run, the following step is neccessary:
+Download and extract the Mylyn Wiki Text standalone distribution from the Eclipse site (http://www.eclipse.org/mylyn/downloads/).
+Set the property lib.folder in the build.xml to target the folder.
+Note: all dependencies needed from Wikitext must be also available in this folder.
+Sample content of this folder can be the following list:
+
+avalon-framework-4.2.0.jar
+batik-all-1.7.jar
+commons-io-1.3.1.jar
+commons-logging-1.0.4.jar
+fop.jar
+info
+org.eclipse.mylyn.wikitext.confluence.core_1.8.0.I20130206-1602.jar
+org.eclipse.mylyn.wikitext.core_1.8.0.I20130206-1602.jar
+org.eclipse.mylyn.wikitext.mediawiki.core_1.8.0.I20130206-1602.jar
+org.eclipse.mylyn.wikitext.textile.core_1.8.0.I20130206-1602.jar
+org.eclipse.mylyn.wikitext.tracwiki.core_1.8.0.I20130206-1602.jar
+org.eclipse.mylyn.wikitext.twiki.core_1.8.0.I20130206-1602.jar
+serializer-2.7.0.jar
+xalan-2.7.0.jar
+xercesImpl-2.7.1.jar
+xml-apis-1.3.04.jar
+xml-apis-ext-1.3.04.jar
+xmlgraphics-commons-1.5.jar

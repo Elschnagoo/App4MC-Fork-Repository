@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Amalthea EMF Util
+Bundle-SymbolicName: org.eclipse.app4mc.amalthea.emf.util
+Bundle-Version: 0.7.0.qualifier
+Bundle-Activator: org.eclipse.app4mc.amalthea.emf.util.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.edit
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8,
+ JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: Eclipse.org
+Export-Package: org.eclipse.app4mc.amalthea.emf.util.edit

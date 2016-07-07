@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<os:OSModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:os="http://www.amalthea.itea2.org/model/1.1.0/os">
+  <scheduler name="1">
+    <schedulingAlgorithm xsi:type="os:DeadlineMonotinic"/>
+  </scheduler>
+  <scheduler name="2">
+    <schedulingAlgorithm xsi:type="os:EarlyReleaseFairPD2"/>
+  </scheduler>
+</os:OSModel>

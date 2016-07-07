@@ -1,0 +1,56 @@
+@startuml
+
+skinparam backgroundColor #EEEBDC
+title General Workflow Overview
+autonumber
+
+actor User	 #green
+
+User -> WorkflowDefinition : Run workflow
+activate WorkflowDefinition
+
+create DefaultContext
+WorkflowDefinition -> DefaultContext : create
+
+create WorkflowComponent1
+WorkflowDefinition -> WorkflowComponent1 : create
+
+WorkflowDefinition -> WorkflowComponent1 : run
+activate WorkflowComponent1
+
+WorkflowComponent1 -> WorkflowComponent1 : checkInternal
+activate WorkflowComponent1
+deactivate WorkflowComponent1
+
+WorkflowComponent1 -> WorkflowComponent1 : runInternal
+activate WorkflowComponent1
+
+WorkflowComponent1 -> DefaultContext : access data
+deactivate WorkflowComponent1
+
+WorkflowComponent1 -> WorkflowDefinition : end
+destroy WorkflowComponent1
+
+create WorkflowComponent2
+WorkflowDefinition -> WorkflowComponent2 : create
+
+WorkflowDefinition -> WorkflowComponent2 : run
+activate WorkflowComponent2
+
+WorkflowComponent2 -> WorkflowComponent2 : checkInternal
+activate WorkflowComponent2
+deactivate WorkflowComponent2
+
+WorkflowComponent2 -> WorkflowComponent2 : runInternal
+activate WorkflowComponent2
+
+WorkflowComponent2 -> DefaultContext : access data
+deactivate WorkflowComponent2
+
+WorkflowComponent2 -> WorkflowDefinition : end
+destroy WorkflowComponent2
+
+WorkflowDefinition -> User : End workflow
+destroy WorkflowDefinition
+
+@enduml

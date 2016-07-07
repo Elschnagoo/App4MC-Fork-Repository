@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hw:Quartz xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hw="http://www.amalthea.itea2.org/model/1.1.0/hw" xmi:id="_Roc4EI38EeWdOZ8lzUgh5g">
+  <attribute xsi:type="hw:BoolValue" xmi:id="_Splk8I38EeWdOZ8lzUgh5g"/>
+  <components xmi:id="_TEZRoI38EeWdOZ8lzUgh5g">
+    <components xmi:id="_ThVsUI38EeWdOZ8lzUgh5g">
+      <networks xmi:id="_UhloYI38EeWdOZ8lzUgh5g">
+        <prescaler xmi:id="_VHjcMI38EeWdOZ8lzUgh5g"/>
+      </networks>
+    </components>
+  </components>
+</hw:Quartz>
