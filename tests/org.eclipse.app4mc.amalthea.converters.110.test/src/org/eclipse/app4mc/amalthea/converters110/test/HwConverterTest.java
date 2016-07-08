@@ -39,15 +39,16 @@ public class HwConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConverter() {
-		
+
 		super.testConversion(CentralConverter.class);
 
 	}
-	
+
 	@Test
-	public void verification(){ 
+	@Override
+	public void verification() {
 		super.verification();
-		
+
 	}
- 
+
 }

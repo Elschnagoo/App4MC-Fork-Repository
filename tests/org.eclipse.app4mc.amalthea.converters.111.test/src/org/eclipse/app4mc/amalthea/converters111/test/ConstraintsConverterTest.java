@@ -26,6 +26,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.junit.runners.Parameterized;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(Parameterized.class)
 public class ConstraintsConverterTest extends AbstractConverterTest {
@@ -42,97 +43,105 @@ public class ConstraintsConverterTest extends AbstractConverterTest {
 		super(xmlFileRelativeLocation, canExecuteTestCase);
 	}
 
-	
+
 	@Test
 	public void testConverter() {
-		super.testConversion(CommonConverter.class,ConstraintsConverter.class);
+		super.testConversion(CommonConverter.class, ConstraintsConverter.class);
 	}
-	
+
+	@Override
 	@Test
-	public void verification(){ 
+	public void verification() {
 		super.verification();
 	}
-	
-	
 
- 
-	
+
 	@Test
-	public void verification_maximumCyle(){
+	public void verification_maximumCyle() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
 
 			/*- verifying Task ref existence in CustomProperty */
 
-			List<Element> elements = getXpathResult(document.getRootElement(), ".//dataAge[@xsi:type=\"constraints:DataAgeCycle\" and @xmi:id=\"_KUT7oMadEeWBM6uFowTedA\"]");
+			final List<Element> elements = getXpathResult(document.getRootElement(),
+					".//dataAge[@xsi:type=\"constraints:DataAgeCycle\" and @xmi:id=\"_KUT7oMadEeWBM6uFowTedA\"]");
 
-			for (Element element : elements) {
-				
-				List<Attribute> tagNames = getXpathResult_Attributes(element, "./@maximumCycle");
-					
-					assertTrue("Unable to migrate tag name attributes", tagNames.size()>0);
-				
+			for (final Element element : elements) {
+
+				final List<Attribute> tagNames = getXpathResult_Attributes(element, "./@maximumCycle");
+
+				assertTrue("Unable to migrate tag name attributes", tagNames.size() > 0);
+
 
 			}
 
 		}
-		
-	
+
+
 	}
-	
+
 	@Test
-	public void verification_RunnableOrderType(){
+	public void verification_RunnableOrderType() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
+		final Collection<Document> values = this.fileName_documentsMap.values();
 
-			List<Element> elements = getXpathResult(document.getRootElement(), ".//runnableSequencingConstraints");
-			
+		for (final Document document : values) {
 
-			for (Element element : elements) {
-				
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@orderType");
-					
-					assertTrue("Unable to create RunnableOrderType enum attribute orderType for RunnableSequencingConstraint object ", attributes.size()>=0  );
-					assertTrue("Unable to set default value (from 1.1.0) for RunnableOrderType enum attribute orderType in RunnableSequencingConstraint object",  attributes.get(0).getValue().equals("successor"));
-				
+			final List<Element> elements = getXpathResult(document.getRootElement(),
+					".//runnableSequencingConstraints");
+
+
+			for (final Element element : elements) {
+
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@orderType");
+
+				assertTrue(
+						"Unable to create RunnableOrderType enum attribute orderType for RunnableSequencingConstraint object ",
+						attributes.size() >= 0);
+				assertTrue(
+						"Unable to set default value (from 1.1.0) for RunnableOrderType enum attribute orderType in RunnableSequencingConstraint object",
+						attributes.get(0).getValue().equals("successor"));
+
 
 			}
 
 		}
-		
+
 	}
-	
+
 	@Test
-	public void verification_RunnableGroupingType(){
+	public void verification_RunnableGroupingType() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
+		final Collection<Document> values = this.fileName_documentsMap.values();
 
-			List<Element> elements = getXpathResult(document.getRootElement(), ".//runnableGroups");
-			
+		for (final Document document : values) {
 
-			for (Element element : elements) {
-				
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@groupingType");
-					
-					assertTrue("Unable to create RunnableGroupingType enum attribute groupingType for ProcessRunnableGroup object ", attributes.size()>=0  );
-					assertTrue("Unable to set default value (from 1.1.0) for RunnableGroupingType enum attribute groupingType in ProcessRunnableGroup object",  attributes.get(0).getValue().equals("allOfThem"));
-				
+			final List<Element> elements = getXpathResult(document.getRootElement(), ".//runnableGroups");
+
+
+			for (final Element element : elements) {
+
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@groupingType");
+
+				assertTrue(
+						"Unable to create RunnableGroupingType enum attribute groupingType for ProcessRunnableGroup object ",
+						attributes.size() >= 0);
+				assertTrue(
+						"Unable to set default value (from 1.1.0) for RunnableGroupingType enum attribute groupingType in ProcessRunnableGroup object",
+						attributes.get(0).getValue().equals("allOfThem"));
+
 
 			}
 
 		}
-		
+
 	}
 }

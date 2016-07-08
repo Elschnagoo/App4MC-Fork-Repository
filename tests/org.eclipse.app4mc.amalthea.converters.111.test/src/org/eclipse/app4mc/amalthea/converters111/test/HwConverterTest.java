@@ -26,6 +26,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.junit.runners.Parameterized;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(Parameterized.class)
 public class HwConverterTest extends AbstractConverterTest {
@@ -50,184 +51,186 @@ public class HwConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConverter() {
-		super.testConversion(CommonConverter.class,HwConverter.class);
+		super.testConversion(CommonConverter.class, HwConverter.class);
 	}
-	
+
+	@Override
 	@Test
-	public void verification(){ 
+	public void verification() {
 		super.verification();
 	}
-	
+
 	@Test
-	public void verification_QType(){
+	public void verification_QType() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
-			
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
+
 			final StringBuffer xpathBuffer = new StringBuffer();
 
-			xpathBuffer
-			.append(".//quartzes|/hw:Quartz");
- 
-			List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+			xpathBuffer.append(".//quartzes|/hw:Quartz");
 
-			for (Element element : elements) {
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@type");
-					assertTrue("Unable to set default value (from 1.1.0) of QType for element having tag name : "+element.getName(),  attributes.get(0).getValue()!=null);
+			final List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+
+			for (final Element element : elements) {
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@type");
+				assertTrue("Unable to set default value (from 1.1.0) of QType for element having tag name : "
+						+ element.getName(), attributes.get(0).getValue() != null);
 			}
 
 		}
-		
+
 	}
-	
+
 	@Test
-	public void verification_MemoryType(){
+	public void verification_MemoryType() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
-			
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
+
 			final StringBuffer xpathBuffer = new StringBuffer();
 
-			xpathBuffer
-			.append(".//memoryTypes|.//memTypeDefinitions|/hw:MemType");
- 
-			List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+			xpathBuffer.append(".//memoryTypes|.//memTypeDefinitions|/hw:MemType");
 
-			for (Element element : elements) {
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@type");
-					assertTrue("Unable to set default value (from 1.1.0) of MemoryType for element having tag name : "+element.getName(),  attributes.get(0).getValue()!=null);
+			final List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+
+			for (final Element element : elements) {
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@type");
+				assertTrue("Unable to set default value (from 1.1.0) of MemoryType for element having tag name : "
+						+ element.getName(), attributes.get(0).getValue() != null);
 			}
 
 		}
-		
+
 	}
-	
+
 	@Test
-	public void verification_BusType(){
+	public void verification_BusType() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
-			
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
+
 			final StringBuffer xpathBuffer = new StringBuffer();
 
-			xpathBuffer
-			.append(".//networkTypes[(@xsi:type=\"hw:Bus\")]|/hw:Bus");
- 
-			List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+			xpathBuffer.append(".//networkTypes[(@xsi:type=\"hw:Bus\")]|/hw:Bus");
 
-			for (Element element : elements) {
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@busType");
-					assertTrue("Unable to set default value (from 1.1.0) of BusType for element having tag name : "+element.getName(),  attributes.get(0).getValue()!=null);
+			final List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+
+			for (final Element element : elements) {
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@busType");
+				assertTrue("Unable to set default value (from 1.1.0) of BusType for element having tag name : "
+						+ element.getName(), attributes.get(0).getValue() != null);
 			}
 
 		}
-		
+
 	}
-	
+
 	@Test
-	public void verification_RWType(){
+	public void verification_RWType() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
-			
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
+
 			final StringBuffer xpathBuffer = new StringBuffer();
 
-			xpathBuffer
-			.append(".//ports[(@xsi:type=\"hw:ComplexPort\")]|.//pins[(@xsi:type=\"hw:ComplexPin\")]|/hw:ComplexPort|/hw:ComplexPin");
- 
-			List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+			xpathBuffer.append(
+					".//ports[(@xsi:type=\"hw:ComplexPort\")]|.//pins[(@xsi:type=\"hw:ComplexPin\")]|/hw:ComplexPort|/hw:ComplexPin");
 
-			for (Element element : elements) {
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@direction");
-					assertTrue("Unable to set default value (from 1.1.0) of RWType for element having tag name : "+element.getName(),  attributes.get(0).getValue()!=null);
+			final List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+
+			for (final Element element : elements) {
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@direction");
+				assertTrue("Unable to set default value (from 1.1.0) of RWType for element having tag name : "
+						+ element.getName(), attributes.get(0).getValue() != null);
 			}
 
 		}
-		
+
 	}
-	
+
 	@Test
-	public void verification_SchedType(){
+	public void verification_SchedType() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
-			
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
+
 			final StringBuffer xpathBuffer = new StringBuffer();
 
-			xpathBuffer
-			.append(".//networkTypes|/hw:NetworkType");
- 
-			List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+			xpathBuffer.append(".//networkTypes|/hw:NetworkType");
 
-			for (Element element : elements) {
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@schedPolicy");
-					assertTrue("Unable to set default value (from 1.1.0) of SchedType for element having tag name : "+element.getName(),  attributes.get(0).getValue()!=null);
+			final List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+
+			for (final Element element : elements) {
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@schedPolicy");
+				assertTrue("Unable to set default value (from 1.1.0) of SchedType for element having tag name : "
+						+ element.getName(), attributes.get(0).getValue() != null);
 			}
 		}
 	}
-	
+
 	@Test
-	public void verification_PinType(){
+	public void verification_PinType() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
-			
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
+
 			final StringBuffer xpathBuffer = new StringBuffer();
 
-			xpathBuffer
-			.append(".//pins[(@xsi:type=\"hw:ComplexPin\")]|/hw:ComplexPin");
- 
-			List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+			xpathBuffer.append(".//pins[(@xsi:type=\"hw:ComplexPin\")]|/hw:ComplexPin");
 
-			for (Element element : elements) {
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@type");
-					assertTrue("Unable to set default value (from 1.1.0) of PinType for element having tag name : "+element.getName(),  attributes.get(0).getValue()!=null);
+			final List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+
+			for (final Element element : elements) {
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@type");
+				assertTrue("Unable to set default value (from 1.1.0) of PinType for element having tag name : "
+						+ element.getName(), attributes.get(0).getValue() != null);
 			}
 
 		}
-		
+
 	}
-	
+
 	@Test
-	public void verification_FeatureType(){
+	public void verification_FeatureType() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
-			
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
+
 			final StringBuffer xpathBuffer = new StringBuffer();
 
-			xpathBuffer
-			.append(".//features[(@xsi:type=\"hw:FeatureTypes\")]|/hw:FeatureTypes");
- 
-			List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+			xpathBuffer.append(".//features[(@xsi:type=\"hw:FeatureTypes\")]|/hw:FeatureTypes");
 
-			for (Element element : elements) {
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@value");
-					assertTrue("Unable to set default value (from 1.1.0) of FeatureType for element having tag name : "+element.getName(),  attributes.get(0).getValue()!=null);
+			final List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+
+			for (final Element element : elements) {
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@value");
+				assertTrue("Unable to set default value (from 1.1.0) of FeatureType for element having tag name : "
+						+ element.getName(), attributes.get(0).getValue() != null);
 			}
 
 		}
-		
+
 	}
 }

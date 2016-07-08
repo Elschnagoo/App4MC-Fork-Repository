@@ -38,15 +38,16 @@ public class EventsConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConverter() {
-		
+
 		super.testConversion(EventsConverter.class);
 
 	}
-	
+
+	@Override
 	@Test
-	public void verification(){ 
+	public void verification() {
 		super.verification();
-		
+
 	}
- 
+
 }

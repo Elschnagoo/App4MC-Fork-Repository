@@ -26,6 +26,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.junit.runners.Parameterized;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(Parameterized.class)
 public class StimuliConverterTest extends AbstractConverterTest {
@@ -45,146 +46,158 @@ public class StimuliConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConverter() {
-		super.testConversion( CommonConverter.class,StimuliConverter.class,SwConverter.class);
+		super.testConversion(CommonConverter.class, StimuliConverter.class, SwConverter.class);
 	}
-	
+
+	@Override
 	@Test
-	public void verification(){ 
+	public void verification() {
 		super.verification();
 	}
-	
- 
-	
+
+
 	@Test
-	public void verification_setLabelsList(){
+	public void verification_setLabelsList() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
 
 			/*- verifying Task ref existence in CustomProperty */
 
 			List<Element> elements = getXpathResult(document.getRootElement(), ".//stimuli/setLabelsList");
-			
-			String baseURI = document.getBaseURI();
 
-			if(baseURI.endsWith("stimuli_2.amxmi")){
-				assertTrue("Unable to migrate tag \"setLabelsList\" present in Stimuli model", elements.size()==0);
+			final String baseURI = document.getBaseURI();
+
+			if (baseURI.endsWith("stimuli_2.amxmi")) {
+				assertTrue("Unable to migrate tag \"setLabelsList\" present in Stimuli model", elements.size() == 0);
 			}
-			
-		  elements = getXpathResult(document.getRootElement(), ".//stimuli[@name=\"PeriodicElement\"]");
-		  
-		  for (Element element : elements) {
-			  elements = getXpathResult(element, "./setModeValueList/entries");
 
-			  assertTrue("Unable to migrate tag \"setLabelsList--> entries \"  present inside Stimuli : PeriodicElement" , elements.size()>0);
-			
-		}
- 
+			elements = getXpathResult(document.getRootElement(), ".//stimuli[@name=\"PeriodicElement\"]");
+
+			for (final Element element : elements) {
+				elements = getXpathResult(element, "./setModeValueList/entries");
+
+				assertTrue(
+						"Unable to migrate tag \"setLabelsList--> entries \"  present inside Stimuli : PeriodicElement",
+						elements.size() > 0);
+
+			}
+
 
 		}
-		
-	
+
+
 	}
-	
+
 	@Test
-	public void verification_enablingLabelsList (){
+	public void verification_enablingLabelsList() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
 
 			/*- verifying Task ref existence in CustomProperty */
 
 			List<Element> elements = getXpathResult(document.getRootElement(), ".//stimuli/enablingLabelsList");
-			
-			String baseURI = document.getBaseURI();
 
-			if(baseURI.endsWith("stimuli_2.amxmi")){
-				assertTrue("Unable to migrate tag \"enablingLabelsList\" present in Stimuli model", elements.size()==0);
+			final String baseURI = document.getBaseURI();
+
+			if (baseURI.endsWith("stimuli_2.amxmi")) {
+				assertTrue("Unable to migrate tag \"enablingLabelsList\" present in Stimuli model",
+						elements.size() == 0);
 			}
-			
-		  elements = getXpathResult(document.getRootElement(), ".//stimuli[@name=\"PeriodicElement\"]");
-		  
-		  for (Element element : elements) {
 
-			  assertTrue("Unable to migrate tag \"enablingLabelsList--> entries \"  present inside Stimuli : PeriodicElement" , getXpathResult(element, "./enablingModeValueList/entries").size()>0);
-			
+			elements = getXpathResult(document.getRootElement(), ".//stimuli[@name=\"PeriodicElement\"]");
+
+			for (final Element element : elements) {
+
+				assertTrue(
+						"Unable to migrate tag \"enablingLabelsList--> entries \"  present inside Stimuli : PeriodicElement",
+						getXpathResult(element, "./enablingModeValueList/entries").size() > 0);
+
+			}
+
 		}
 
-		}
-	
 	}
-	
+
 	@Test
-	public void verification_disablingLabelsList  (){
+	public void verification_disablingLabelsList() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
 
 			/*- verifying Task ref existence in CustomProperty */
 
 			List<Element> elements = getXpathResult(document.getRootElement(), ".//stimuli/disablingLabelsList");
-			
-			String baseURI = document.getBaseURI();
 
-			if(baseURI.endsWith("stimuli_2.amxmi")){
-				assertTrue("Unable to migrate tag \"disablingLabelsList \" present in Stimuli model", elements.size()==0);
+			final String baseURI = document.getBaseURI();
+
+			if (baseURI.endsWith("stimuli_2.amxmi")) {
+				assertTrue("Unable to migrate tag \"disablingLabelsList \" present in Stimuli model",
+						elements.size() == 0);
 			}
-			
-		  elements = getXpathResult(document.getRootElement(), ".//stimuli[@name=\"PeriodicElement\"]");
-		  
-		  for (Element element : elements) {
 
-			  assertTrue("Unable to migrate tag \"disablingModeValueList  --> entries \"  present inside Stimuli : PeriodicElement" , getXpathResult(element, "./disablingModeValueList/entries").size()>0);
-			
-		}
- 
+			elements = getXpathResult(document.getRootElement(), ".//stimuli[@name=\"PeriodicElement\"]");
+
+			for (final Element element : elements) {
+
+				assertTrue(
+						"Unable to migrate tag \"disablingModeValueList  --> entries \"  present inside Stimuli : PeriodicElement",
+						getXpathResult(element, "./disablingModeValueList/entries").size() > 0);
+
+			}
+
 
 		}
-		
-	
+
+
 	}
-	
-	
-	
+
+
 	@Test
-	public void verification_modeLabels_modeLiterals  (){
+	public void verification_modeLabels_modeLiterals() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
 
 			/*- verifying Task ref existence in CustomProperty */
 
-			
-			String baseURI = document.getBaseURI();
 
-			if(baseURI.endsWith("stimuli_2.amxmi")){
+			final String baseURI = document.getBaseURI();
+
+			if (baseURI.endsWith("stimuli_2.amxmi")) {
 				List<Element> elements = getXpathResult(document.getRootElement(), ".//swModel/modes");
-				
-				assertTrue("Unable to create Modes (and its corresponding literals) based on label references inside Stimuli elements  ", elements.size()>0);
 
-				assertTrue("Unable to migrate Label literals present in Stimuli (PeriodicElement) as Modes (and its corresponding literals)  ",  getXpathResult(elements.get(0), "./literals").size()>0);
+				assertTrue(
+						"Unable to create Modes (and its corresponding literals) based on label references inside Stimuli elements  ",
+						elements.size() > 0);
+
+				assertTrue(
+						"Unable to migrate Label literals present in Stimuli (PeriodicElement) as Modes (and its corresponding literals)  ",
+						getXpathResult(elements.get(0), "./literals").size() > 0);
 
 				elements = getXpathResult(document.getRootElement(), ".//swModel/modeLabels");
-				
-				assertTrue("Unable to create ModeLabels based on label references inside Stimuli elements  ", elements.size()>0);
-				
+
+				assertTrue("Unable to create ModeLabels based on label references inside Stimuli elements  ",
+						elements.size() > 0);
+
 			}
 
 		}
-		
-	
+
+
 	}
-	
+
 }

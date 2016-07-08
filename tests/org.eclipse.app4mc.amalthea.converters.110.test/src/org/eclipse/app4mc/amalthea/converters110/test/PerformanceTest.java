@@ -59,29 +59,25 @@ public class PerformanceTest extends AbstractConverterTest {
 		super(xmlFileRelativeLocation, canExecuteTestCase);
 	}
 
-	
+
 	@Test
 	public void testConverter() {
-		
-		super.testConversion( OsConverter.class, SwConverter.class, SchedulerRefsConverter.class,MappingConverter.class, HwConverter.class,
-				CommonsConverter.class, ComponentsConverter.class, StimuliConverter.class,
+
+		super.testConversion(OsConverter.class, SwConverter.class, SchedulerRefsConverter.class, MappingConverter.class,
+				HwConverter.class, CommonsConverter.class, ComponentsConverter.class, StimuliConverter.class,
 				PropertyConstraintsConverter.class, EventsConverter.class, ConstraintsConverter.class,
 				ConfigConverter.class);
 
 	}
-	
+
+	@Override
 	@Test
-	public void verification(){ 
+	public void verification() {
 		super.verification();
-		
+
 	}
-	
-	
- 
-	
-	
- 
-	
+
+
 	@Test
 	public void testConverter_CustomPropsCheck_RefBaseObject() {
 
@@ -89,7 +85,7 @@ public class PerformanceTest extends AbstractConverterTest {
 			return;
 		}
 		try {
-			
+
 			parseGeneratedXMLFiles();
 
 			System.setProperty("junit:tags_Elements_ReferableBaseObject", this.inputGlobalTestsDirectory
@@ -154,7 +150,8 @@ public class PerformanceTest extends AbstractConverterTest {
 				this.helper.saveFile(this.fileName_documentsMap.get(file),
 						this.localOutputDirectory + File.separator + file.getName(), true, true);
 			}
-		} catch (final Exception e) {
+		}
+		catch (final Exception e) {
 			fail(e.getMessage());
 		}
 	}
@@ -245,7 +242,8 @@ public class PerformanceTest extends AbstractConverterTest {
 
 				uriFragment = uriFragment.substring(0, lastIndexOf) + "[" + arrayIndex + "]";
 
-			} catch (final Exception e) {
+			}
+			catch (final Exception e) {
 
 				// TODO:
 				e.printStackTrace();

@@ -21,6 +21,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.junit.runners.Parameterized;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(Parameterized.class)
 public class CentralConverterTest extends AbstractConverterTest {
@@ -40,17 +41,17 @@ public class CentralConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConverter() {
-		
-		super.testConversion(CentralConverter.class, OsConverter.class,MappingConverter.class);
+
+		super.testConversion(CentralConverter.class, OsConverter.class, MappingConverter.class);
 
 	}
-	
+
+	@Override
 	@Test
-	public void verification(){ 
+	public void verification() {
 		super.verification();
-		
+
 	}
 
-	
 
 }

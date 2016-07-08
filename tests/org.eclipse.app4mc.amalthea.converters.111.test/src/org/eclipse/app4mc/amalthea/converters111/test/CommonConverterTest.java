@@ -26,6 +26,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.junit.runners.Parameterized;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(Parameterized.class)
 public class CommonConverterTest extends AbstractConverterTest {
@@ -52,35 +53,33 @@ public class CommonConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConverter() {
-		super.testConversion(CommonConverter.class,HwConverter.class);
+		super.testConversion(CommonConverter.class, HwConverter.class);
 	}
-	
+
+	@Override
 	@Test
-	public void verification(){ 
+	public void verification() {
 		super.verification();
 	}
-	
- 
-	
+
+
 	@Test
-	public void verification_TimeUnit(){
+	public void verification_TimeUnit() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
-			
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
+
 			final StringBuffer timeXpathBuffer = new StringBuffer();
 
-			timeXpathBuffer.append(
-					".//timingConstraints[(@xsi:type=\"constraints:SynchronisationConstraint\")]/tolerance");
-			timeXpathBuffer.append("|");
 			timeXpathBuffer
-					.append(".//timingConstraints[(@xsi:type=\"constraints:ReactionConstraint\")]/minimum");
+					.append(".//timingConstraints[(@xsi:type=\"constraints:SynchronisationConstraint\")]/tolerance");
 			timeXpathBuffer.append("|");
-			timeXpathBuffer
-					.append(".//timingConstraints[(@xsi:type=\"constraints:ReactionConstraint\")]/maximum");
+			timeXpathBuffer.append(".//timingConstraints[(@xsi:type=\"constraints:ReactionConstraint\")]/minimum");
+			timeXpathBuffer.append("|");
+			timeXpathBuffer.append(".//timingConstraints[(@xsi:type=\"constraints:ReactionConstraint\")]/maximum");
 			timeXpathBuffer.append("|");
 			timeXpathBuffer.append(".//timingConstraints[(@xsi:type=\"constraints:DelayConstraint\")]/upper");
 			timeXpathBuffer.append("|");
@@ -90,20 +89,17 @@ public class CommonConverterTest extends AbstractConverterTest {
 			timeXpathBuffer.append("|");
 			timeXpathBuffer.append(".//timingConstraints[(@xsi:type=\"constraints:AgeConstraint\")]/minimum");
 			timeXpathBuffer.append("|");
-			timeXpathBuffer
-					.append(".//timingConstraints[(@xsi:type=\"constraints:RepetitionConstraint\")]/lower");
+			timeXpathBuffer.append(".//timingConstraints[(@xsi:type=\"constraints:RepetitionConstraint\")]/lower");
+			timeXpathBuffer.append("|");
+			timeXpathBuffer.append(".//timingConstraints[(@xsi:type=\"constraints:RepetitionConstraint\")]/upper");
+			timeXpathBuffer.append("|");
+			timeXpathBuffer.append(".//timingConstraints[(@xsi:type=\"constraints:RepetitionConstraint\")]/jitter");
 			timeXpathBuffer.append("|");
 			timeXpathBuffer
-					.append(".//timingConstraints[(@xsi:type=\"constraints:RepetitionConstraint\")]/upper");
+					.append(".//dataAgeConstraints/dataAge[(@xsi:type=\"constraints:DataAgeTime\")]/minimumTime");
 			timeXpathBuffer.append("|");
 			timeXpathBuffer
-					.append(".//timingConstraints[(@xsi:type=\"constraints:RepetitionConstraint\")]/jitter");
-			timeXpathBuffer.append("|");
-			timeXpathBuffer.append(
-					".//dataAgeConstraints/dataAge[(@xsi:type=\"constraints:DataAgeTime\")]/minimumTime");
-			timeXpathBuffer.append("|");
-			timeXpathBuffer.append(
-					".//dataAgeConstraints/dataAge[(@xsi:type=\"constraints:DataAgeTime\")]/maximumTime");
+					.append(".//dataAgeConstraints/dataAge[(@xsi:type=\"constraints:DataAgeTime\")]/maximumTime");
 			timeXpathBuffer.append("|");
 			timeXpathBuffer.append(".//schedulingUnit[(@xsi:type=\"os:SchedulingHWUnit\")]/delay");
 			timeXpathBuffer.append("|");
@@ -125,11 +121,11 @@ public class CommonConverterTest extends AbstractConverterTest {
 			timeXpathBuffer.append("|");
 			timeXpathBuffer.append(".//stimuli[(@xsi:type=\"stimuli:Single\")]/activation");
 			timeXpathBuffer.append("|");
-			timeXpathBuffer.append(
-					".//stimuli[(@xsi:type=\"stimuli:ArrivalCurve\")]/arrivalCurveEntries/lowerTimeBorder");
+			timeXpathBuffer
+					.append(".//stimuli[(@xsi:type=\"stimuli:ArrivalCurve\")]/arrivalCurveEntries/lowerTimeBorder");
 			timeXpathBuffer.append("|");
-			timeXpathBuffer.append(
-					".//stimuli[(@xsi:type=\"stimuli:ArrivalCurve\")]/arrivalCurveEntries/upperTimeBorder");
+			timeXpathBuffer
+					.append(".//stimuli[(@xsi:type=\"stimuli:ArrivalCurve\")]/arrivalCurveEntries/upperTimeBorder");
 			timeXpathBuffer.append("|");
 			timeXpathBuffer.append(".//clocks[(@xsi:type=\"stimuli:ClockTriangleFunction\")]/period");
 			timeXpathBuffer.append("|");
@@ -141,24 +137,23 @@ public class CommonConverterTest extends AbstractConverterTest {
 			timeXpathBuffer.append("|");
 			timeXpathBuffer.append(".//schedulingUnit[(@xsi:type=\"sw:SchedulingSWUnit\")]/runnable/deadline");
 
- 
+
 			List<Element> elements = getXpathResult(document.getRootElement(), timeXpathBuffer.toString());
 
-			for (Element element : elements) {
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@unit");
-					assertTrue("Unable to set default value (from 1.1.0) of TimeUnit for element having tag name : "+element.getName(),  attributes.get(0).getValue()!=null);
+			for (final Element element : elements) {
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@unit");
+				assertTrue("Unable to set default value (from 1.1.0) of TimeUnit for element having tag name : "
+						+ element.getName(), attributes.get(0).getValue() != null);
 			}
 
-			
+
 			final StringBuffer signedTimeXpathBuffer = new StringBuffer();
-			signedTimeXpathBuffer
-					.append(".//stimuli/stimulusDeviation/lowerBound[(@xsi:type=\"common:SignedTime\") ]");
+			signedTimeXpathBuffer.append(".//stimuli/stimulusDeviation/lowerBound[(@xsi:type=\"common:SignedTime\") ]");
+			signedTimeXpathBuffer.append("|");
+			signedTimeXpathBuffer.append(".//stimuli/stimulusDeviation/upperBound[(@xsi:type=\"common:SignedTime\") ]");
 			signedTimeXpathBuffer.append("|");
 			signedTimeXpathBuffer
-					.append(".//stimuli/stimulusDeviation/upperBound[(@xsi:type=\"common:SignedTime\") ]");
-			signedTimeXpathBuffer.append("|");
-			signedTimeXpathBuffer.append(
-					".//stimuli/stimulusDeviation/distribution/*[(@xsi:type=\"common:SignedTime\") ]");
+					.append(".//stimuli/stimulusDeviation/distribution/*[(@xsi:type=\"common:SignedTime\") ]");
 			signedTimeXpathBuffer.append("|");
 
 			signedTimeXpathBuffer.append(".//clocks[(@xsi:type=\"stimuli:ClockTriangleFunction\")]/shift");
@@ -167,13 +162,14 @@ public class CommonConverterTest extends AbstractConverterTest {
 
 			elements = getXpathResult(document.getRootElement(), signedTimeXpathBuffer.toString());
 
-			for (Element element : elements) {
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@unit");
-					assertTrue("Unable to set default value (from 1.1.0) of TimeUnit for element having tag name : "+element.getName(),  attributes.get(0).getValue()!=null);
+			for (final Element element : elements) {
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@unit");
+				assertTrue("Unable to set default value (from 1.1.0) of TimeUnit for element having tag name : "
+						+ element.getName(), attributes.get(0).getValue() != null);
 			}
-			
-			
+
+
 		}
-		
+
 	}
 }

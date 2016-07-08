@@ -37,18 +37,19 @@ public class ConstraintsConverterTest extends AbstractConverterTest {
 
 		super(xmlFileRelativeLocation, canExecuteTestCase);
 	}
-	
+
 	@Test
 	public void testConverter() {
-		
-		super.testConversion(ConfigConverter.class,ConstraintsConverter.class);
+
+		super.testConversion(ConfigConverter.class, ConstraintsConverter.class);
 
 	}
-	
+
+	@Override
 	@Test
-	public void verification(){ 
+	public void verification() {
 		super.verification();
-		
+
 	}
-	
+
 }

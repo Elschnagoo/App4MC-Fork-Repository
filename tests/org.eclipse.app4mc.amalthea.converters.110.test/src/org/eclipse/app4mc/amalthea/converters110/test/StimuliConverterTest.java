@@ -36,20 +36,20 @@ public class StimuliConverterTest extends AbstractConverterTest {
 
 		super(xmlFileRelativeLocation, canExecuteTestCase);
 	}
-	
+
 	@Test
 	public void testConverter() {
-		
+
 		super.testConversion(StimuliConverter.class);
 
 	}
-	
+
 	@Test
-	public void verification(){ 
+	@Override
+	public void verification() {
 		super.verification();
-		
+
 	}
-	
-	
- 
+
+
 }

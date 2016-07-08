@@ -13,9 +13,11 @@ package org.eclipse.app4mc.amalthea.converters.common.postprocessor;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.AbstractMap;
 import java.util.ArrayList;
@@ -42,12 +44,12 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 	public CustomPropsPostProcessor() {
 	}
 
-	private   AbstractHelper helper;
+	private AbstractHelper helper;
 
 	@Override
 	public void process(final Map<File, Document> fileName_documentsMap, final AbstractHelper helper) throws Exception {
-		
-		this.helper=helper;
+
+		this.helper = helper;
 
 		/*-Map holding File name as a Key and value as a Map:
 		 * containing key as : uriFragment or xmi ID of AMALTHEA element
@@ -94,29 +96,27 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 			 *Case 3: List of Ref objects
 			 *
 			 *<customProperties xmi:id="_rnhEIBaeEeasLIggkXJ5XQ" key="group_labels">
-        	 *   <value xsi:type="common:ListObject" xmi:id="_sJ_fEBaeEeasLIggkXJ5XQ">
-		     *     <values xsi:type="common:ReferenceObject" xmi:id="_t-0SsBaeEeasLIggkXJ5XQ" value="_hk2sYBaeEeasLIggkXJ5XQ"/>
-		     *     <values xsi:type="common:ReferenceObject" xmi:id="_vzxCIBaeEeasLIggkXJ5XQ" value="_k5wysBaeEeasLIggkXJ5XQ"/>
-		     *     <values xsi:type="common:ReferenceObject" xmi:id="_yQN2cBaeEeasLIggkXJ5XQ" value="_lDRUABaeEeasLIggkXJ5XQ"/>
-		     *     <values xsi:type="common:ReferenceObject" xmi:id="_9YBRUBaeEeasLIggkXJ5XQ">
-             *	       <value href="slave_default.amxmi#_hk2sYBaeEeasLIggkXJ5XQ"/>
-             *       </values>
-             *    </value>
-             *   </customProperties>
+			 *   <value xsi:type="common:ListObject" xmi:id="_sJ_fEBaeEeasLIggkXJ5XQ">
+			 *     <values xsi:type="common:ReferenceObject" xmi:id="_t-0SsBaeEeasLIggkXJ5XQ" value="_hk2sYBaeEeasLIggkXJ5XQ"/>
+			 *     <values xsi:type="common:ReferenceObject" xmi:id="_vzxCIBaeEeasLIggkXJ5XQ" value="_k5wysBaeEeasLIggkXJ5XQ"/>
+			 *     <values xsi:type="common:ReferenceObject" xmi:id="_yQN2cBaeEeasLIggkXJ5XQ" value="_lDRUABaeEeasLIggkXJ5XQ"/>
+			 *     <values xsi:type="common:ReferenceObject" xmi:id="_9YBRUBaeEeasLIggkXJ5XQ">
+			 *	       <value href="slave_default.amxmi#_hk2sYBaeEeasLIggkXJ5XQ"/>
+			 *       </values>
+			 *    </value>
+			 *   </customProperties>
 			 */
-			
-			
+
+
 			final StringBuffer xpathBuffer = new StringBuffer();
 
 			xpathBuffer.append(".//customProperties/value[@xsi:type=\"common:ReferenceObject\"]");
 			xpathBuffer.append("|");
 			xpathBuffer.append(".//customProperties/value/values[@xsi:type=\"common:ReferenceObject\"]");
-			
-			
 
-			final List<Element> value_custProps_refObjects = helper.getXpathResult(rootElement,
-					xpathBuffer.toString(), Element.class,
-					helper.getGenericNS("xsi"));
+
+			final List<Element> value_custProps_refObjects = helper.getXpathResult(rootElement, xpathBuffer.toString(),
+					Element.class, helper.getGenericNS("xsi"));
 
 
 			for (final Element element : value_custProps_refObjects) {
@@ -200,27 +200,27 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 
 
 							/*- check is performed here to verify if Element associated to id is implementing ReferableBaseObject*/
-							
-							Entry<Boolean, ElementRef> result=isElementOfRefBaseObject(refFile, id, idElementsCacheMap,
-									tags_refbaseObjectsMap);
-							
+
+							final Entry<Boolean, ElementRef> result = isElementOfRefBaseObject(refFile, id,
+									idElementsCacheMap, tags_refbaseObjectsMap);
+
 							isRefBaseObjectType = result.getKey();
-							
-							ElementRef elementRef=result.getValue();
-							
+
+							final ElementRef elementRef = result.getValue();
+
 							/*- in case where elements are referred from other model, corresponding types of it should be updated at the place where they are referred*/
-							
-							updateTypeForAllElements(values,elementRef!=null? elementRef.getType():null);
-							
+
+							updateTypeForAllElements(values, elementRef != null ? elementRef.getType() : null);
+
 
 						}
 						else {
 							/*- case of refering elements within the same model*/
 
-							Entry<Boolean, ElementRef> result= isElementOfRefBaseObject(modelFile, refString, idElementsCacheMap,
-									tags_refbaseObjectsMap);
+							final Entry<Boolean, ElementRef> result = isElementOfRefBaseObject(modelFile, refString,
+									idElementsCacheMap, tags_refbaseObjectsMap);
 							isRefBaseObjectType = result.getKey();
-							
+
 						}
 
 					}
@@ -279,12 +279,12 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 
 					if (parentName != null) {
 						if (xsdElementRef.getName().equals(parentName)) {
-							
+
 							/*- setting the type from the XSD element .. in a case where ElementRef Type is not available from XMI */
-							if(elementRef.getType()==null){
+							if (elementRef.getType() == null) {
 								elementRef.setType(elementRef2.getType());
 							}
-							
+
 							isParentSame = true;
 							break mainLoop;
 						}
@@ -341,64 +341,60 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 					final boolean result = isElementOfRefBaseObject(elementRef, tags_refbaseObjectsMap);
 
 					if (result) {
-						return new AbstractMap.SimpleEntry<Boolean, ElementRef>(true,elementRef);
+						return new AbstractMap.SimpleEntry<Boolean, ElementRef>(true, elementRef);
 					}
 
 				}
 
 			}
 		}
-		  return new AbstractMap.SimpleEntry<Boolean, ElementRef>(false,null);
+		return new AbstractMap.SimpleEntry<Boolean, ElementRef>(false, null);
 	}
 
 	/**
 	 * This method is used to remove the element from the XML Document
-	 * 
-	 * @param values 
-	 * 
-	 * Note: List<Element> consists of either<br>
-	 * 1. value element which is the first sub-element of CustomProperties<br>
-	 * 2. values element which is the second sub-element of CustomProperties (incase of List of RefObjects) <br>
-	 * 
-	 * 
-	 * Case 1:
-	 * 
-	 * <customProperties xmi:id="_A0YGsBhQEea3AoorCOXNXA" key="custKey_abstractProcess">
-        <value xsi:type="common:ReferenceObject" xmi:id="_A0YGsRhQEea3AoorCOXNXA"> -------------------------> This element is part of List
-          <value href="default1.amxmi#_nDgKUNotEeWXsaNW2kxe8A" />
-        </value>
-      </customProperties>
-     *
-     * Case 2:
-     * 
-     * <customProperties xmi:id="_NaacUBhfEea3AoorCOXNXA" key="custKey_group_refobjs">
-        <value xsi:type="common:ListObject" xmi:id="_8b8TkBhfEea3AoorCOXNXA">
-          <values xsi:type="common:ReferenceObject" xmi:id="__kW2ABhfEea3AoorCOXNXA">  -------------------------> This element is part of List
-            <value href="default1.amxmi#_nDgKUNotEeWXsaNW2kxe8A" />
-          </values>
-          <values xsi:type="common:ReferenceObject" xmi:id="__0BpsBhfEea3AoorCOXNXA">
-            <value href="default1.amxmi#_6PbocBhOEea3AoorCOXNXA" />
-          </values>
-        </value>
-      </customProperties>
-     * 
-     * 
-	 * 
+	 *
+	 * @param values
+	 *
+	 *            Note: List<Element> consists of either<br>
+	 *            1. value element which is the first sub-element of CustomProperties<br>
+	 *            2. values element which is the second sub-element of CustomProperties (incase of List of RefObjects)
+	 *            <br>
+	 *
+	 *
+	 *            Case 1:
+	 *
+	 *            <customProperties xmi:id="_A0YGsBhQEea3AoorCOXNXA" key="custKey_abstractProcess">
+	 *            <value xsi:type="common:ReferenceObject" xmi:id="_A0YGsRhQEea3AoorCOXNXA"> ------------------------->
+	 *            This element is part of List <value href="default1.amxmi#_nDgKUNotEeWXsaNW2kxe8A" /> </value>
+	 *            </customProperties>
+	 *
+	 *            Case 2:
+	 *
+	 *            <customProperties xmi:id="_NaacUBhfEea3AoorCOXNXA" key="custKey_group_refobjs">
+	 *            <value xsi:type="common:ListObject" xmi:id="_8b8TkBhfEea3AoorCOXNXA">
+	 *            <values xsi:type="common:ReferenceObject" xmi:id="__kW2ABhfEea3AoorCOXNXA"> ------------------------->
+	 *            This element is part of List <value href="default1.amxmi#_nDgKUNotEeWXsaNW2kxe8A" /> </values>
+	 *            <values xsi:type="common:ReferenceObject" xmi:id="__0BpsBhfEea3AoorCOXNXA">
+	 *            <value href="default1.amxmi#_6PbocBhOEea3AoorCOXNXA" /> </values> </value> </customProperties>
+	 *
+	 *
+	 *
 	 */
 	private void detachElements(final List<Element> values) {
 		for (final Element element : values) {
-			
-			String tag_name = element.getName();
-			
-			String key="";
-			
-			if(tag_name.equals("value")){
-				  key = element.getParentElement() != null ? element.getParentElement().getAttributeValue("key")
-						: null;
-				
-			}else if(tag_name.equals("values")){
-				 key = element.getParentElement() != null ? element.getParentElement().getParentElement() !=null ? element.getParentElement().getParentElement().getAttributeValue("key"):null
-							: null;
+
+			final String tag_name = element.getName();
+
+			String key = "";
+
+			if (tag_name.equals("value")) {
+				key = element.getParentElement() != null ? element.getParentElement().getAttributeValue("key") : null;
+
+			}
+			else if (tag_name.equals("values")) {
+				key = element.getParentElement() != null ? element.getParentElement().getParentElement() != null
+						? element.getParentElement().getParentElement().getAttributeValue("key") : null : null;
 			}
 
 
@@ -413,62 +409,60 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 			element.detach();
 		}
 	}
-	
+
 	/**
 	 * This method is used to remove the element from the XML Document
-	 * 
-	 * @param values  List<Element>
-	 * @param type String (e.g: hw:Memory) 
-	 * 
-	 * Note: List<Element> consists of either<br>
-	 * 1. value element which is the first sub-element of CustomProperties<br>
-	 * 2. values element which is the second sub-element of CustomProperties (incase of List of RefObjects) <br>
-	 * 
-	 * 
-	 * Case 1:
-	 * 
-	 * <customProperties xmi:id="_A0YGsBhQEea3AoorCOXNXA" key="custKey_abstractProcess">
-        <value xsi:type="common:ReferenceObject" xmi:id="_A0YGsRhQEea3AoorCOXNXA"> -------------------------> This element is part of List
-          <value href="default1.amxmi#_nDgKUNotEeWXsaNW2kxe8A" />
-        </value>
-      </customProperties>
-     *
-     * Case 2:
-     * 
-     * <customProperties xmi:id="_NaacUBhfEea3AoorCOXNXA" key="custKey_group_refobjs">
-        <value xsi:type="common:ListObject" xmi:id="_8b8TkBhfEea3AoorCOXNXA">
-          <values xsi:type="common:ReferenceObject" xmi:id="__kW2ABhfEea3AoorCOXNXA">  -------------------------> This element is part of List
-            <value href="default1.amxmi#_nDgKUNotEeWXsaNW2kxe8A" />
-          </values>
-          <values xsi:type="common:ReferenceObject" xmi:id="__0BpsBhfEea3AoorCOXNXA">
-            <value href="default1.amxmi#_6PbocBhOEea3AoorCOXNXA" />
-          </values>
-        </value>
-      </customProperties>
-     * 
-     * 
-	 * 
+	 *
+	 * @param values
+	 *            List<Element>
+	 * @param type
+	 *            String (e.g: hw:Memory)
+	 *
+	 *            Note: List<Element> consists of either<br>
+	 *            1. value element which is the first sub-element of CustomProperties<br>
+	 *            2. values element which is the second sub-element of CustomProperties (incase of List of RefObjects)
+	 *            <br>
+	 *
+	 *
+	 *            Case 1:
+	 *
+	 *            <customProperties xmi:id="_A0YGsBhQEea3AoorCOXNXA" key="custKey_abstractProcess">
+	 *            <value xsi:type="common:ReferenceObject" xmi:id="_A0YGsRhQEea3AoorCOXNXA"> ------------------------->
+	 *            This element is part of List <value href="default1.amxmi#_nDgKUNotEeWXsaNW2kxe8A" /> </value>
+	 *            </customProperties>
+	 *
+	 *            Case 2:
+	 *
+	 *            <customProperties xmi:id="_NaacUBhfEea3AoorCOXNXA" key="custKey_group_refobjs">
+	 *            <value xsi:type="common:ListObject" xmi:id="_8b8TkBhfEea3AoorCOXNXA">
+	 *            <values xsi:type="common:ReferenceObject" xmi:id="__kW2ABhfEea3AoorCOXNXA"> ------------------------->
+	 *            This element is part of List <value href="default1.amxmi#_nDgKUNotEeWXsaNW2kxe8A" /> </values>
+	 *            <values xsi:type="common:ReferenceObject" xmi:id="__0BpsBhfEea3AoorCOXNXA">
+	 *            <value href="default1.amxmi#_6PbocBhOEea3AoorCOXNXA" /> </values> </value> </customProperties>
+	 *
+	 *
+	 *
 	 */
-	
-	private void updateTypeForAllElements(final List<Element> values, String type) {
-		
-		if(type==null){
+
+	private void updateTypeForAllElements(final List<Element> values, final String type) {
+
+		if (type == null) {
 			return;
 		}
-		
-		for (final Element element : values) { 
-			
-			Element child = element.getChild("value");
-			
-			if(child !=null){
-				
-				String attributeValue = child.getAttributeValue("type",this.helper.getGenericNS("xsi"));
-				
-				if(attributeValue ==null && type !=null){
-					
-					child.setAttribute("type",type,this.helper.getGenericNS("xsi"));
+
+		for (final Element element : values) {
+
+			final Element child = element.getChild("value");
+
+			if (child != null) {
+
+				final String attributeValue = child.getAttributeValue("type", this.helper.getGenericNS("xsi"));
+
+				if (attributeValue == null) {
+
+					child.setAttribute("type", type, this.helper.getGenericNS("xsi"));
 				}
-				
+
 			}
 		}
 	}
@@ -483,30 +477,18 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 
 		final Map<String, List<XSDElement>> map = new HashMap<String, List<XSDElement>>();
 
-		URL url;
-		try {
 
-			/*-
-			 * Text file contains the content in the following format (which replicates the containment relationship):
-			 *
-			 * swModel,sw:SWModel,labels,sw:Label,,
-			 *
-			 * Elements on the left side are the parents
-			 */
+		/*-
+		 * Text file contains the content in the following format (which replicates the containment relationship):
+		 *
+		 * swModel,sw:SWModel,labels,sw:Label,,
+		 *
+		 * Elements on the left side are the parents
+		 */
 
-			InputStream inputStream = null;
+		try (final InputStream inputStream = getInputStream();
 
-			if (System.getProperty("junit:tags_Elements_ReferableBaseObject") != null) {
-
-				inputStream = new FileInputStream(
-						new File(System.getProperty("junit:tags_Elements_ReferableBaseObject")));
-			}
-			else {
-				url = new URL(
-						"platform:/plugin/org.eclipse.app4mc.amalthea.converters.common/resources/tags_Elements_ReferableBaseObject.txt");
-				inputStream = url.openConnection().getInputStream();
-			}
-			final BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+				final BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));) {
 			String inputLine;
 
 			while ((inputLine = in.readLine()) != null) {
@@ -547,23 +529,23 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 
 							final List<XSDElement> existingElements = map.get(processingElement.getName());
 
-							boolean isElementWithSamePropsExisting=false;
-							
+							boolean isElementWithSamePropsExisting = false;
+
 							for (final XSDElement xsdElementRef : existingElements) {
 
 								if ((processingElement.getName().equals(xsdElementRef.getName()))
 										&& (processingElement.getType().equals(xsdElementRef.getType()))) {
 
 									processingElement = xsdElementRef;
-									
-									isElementWithSamePropsExisting=true;
+
+									isElementWithSamePropsExisting = true;
 									break;
 
 								}
 
 							}
-							
-							if(!isElementWithSamePropsExisting){
+
+							if (!isElementWithSamePropsExisting) {
 								map.get(processingElement.getName()).add(processingElement);
 							}
 						}
@@ -581,15 +563,28 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 				}
 
 			}
-
-			in.close();
-
 		}
-		catch (final IOException e) {
+		catch (final Exception e) {
 			e.printStackTrace();
 		}
 
+
 		return map;
+	}
+
+	private InputStream getInputStream() throws FileNotFoundException, MalformedURLException, IOException {
+		if (System.getProperty("junit:tags_Elements_ReferableBaseObject") != null) {
+
+			final InputStream inputStream = new FileInputStream(
+					new File(System.getProperty("junit:tags_Elements_ReferableBaseObject")));
+			return inputStream;
+
+		}
+		final URL url = new URL(
+				"platform:/plugin/org.eclipse.app4mc.amalthea.converters.common/resources/tags_Elements_ReferableBaseObject.txt");
+		final InputStream inputStream = url.openConnection().getInputStream();
+		return inputStream;
+
 	}
 
 
@@ -602,14 +597,14 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 	 * @param node
 	 * @return
 	 */
-	private   ElementRef elementRefBuilder(final Element node) {
+	private ElementRef elementRefBuilder(final Element node) {
 
 		final String tagName = node.getName();
 
 		final ElementRef elementRef = new ElementRef();
 
 		elementRef.setName(tagName);
-		
+
 		/*- element type from the XMI is fetched */
 		elementRef.setType(node.getAttributeValue("type", this.helper.getGenericNS("xsi")));
 
@@ -768,7 +763,7 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 
 	private Map<File, Map<String, List<Element>>> buildCache(final Map<File, Document> fileName_documentsMap,
 			final AbstractHelper helper) {
-		Map<File, Map<String, List<Element>>> cacheMap = new HashMap<File, Map<String, List<Element>>>();
+		final Map<File, Map<String, List<Element>>> cacheMap = new HashMap<File, Map<String, List<Element>>>();
 
 		for (final File targetFile : fileName_documentsMap.keySet()) {
 

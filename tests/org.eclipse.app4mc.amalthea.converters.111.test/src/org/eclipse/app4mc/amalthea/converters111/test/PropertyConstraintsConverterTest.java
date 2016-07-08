@@ -26,6 +26,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.junit.runners.Parameterized;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(Parameterized.class)
 public class PropertyConstraintsConverterTest extends AbstractConverterTest {
@@ -44,133 +45,134 @@ public class PropertyConstraintsConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConverter() {
-		super.testConversion(CommonConverter.class,PropertyConstraintsConverter.class);
+		super.testConversion(CommonConverter.class, PropertyConstraintsConverter.class);
 	}
-	
+
+	@Override
 	@Test
-	public void verification(){ 
+	public void verification() {
 		super.verification();
 	}
-	
-	
+
+
 	@Test
-	public void verification_ComparatorType  (){
+	public void verification_ComparatorType() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
-			
-			
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
+
+
 			final StringBuffer xpathBuffer = new StringBuffer();
 
-			xpathBuffer
-			.append("(.//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreProperty\") ])");
+			xpathBuffer.append(
+					"(.//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreProperty\") ])");
 
 			xpathBuffer.append("|");
 
-			xpathBuffer
-			.append("(.//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]//firstConstraint[(@xsi:type=\"propertyconstraints:HwCoreProperty\")])");
-
-
-			xpathBuffer.append("|");
-
-			xpathBuffer
-					.append("(.//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]//secondConstraint[(@xsi:type=\"propertyconstraints:HwCoreProperty\") ])");
-
-			xpathBuffer.append("|");
-
-			xpathBuffer
-					.append("(.//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryProperty\") ])");
-
-			xpathBuffer.append("|");
-
-			xpathBuffer
-					.append("(.//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]//firstConstraint[(@xsi:type=\"propertyconstraints:HwMemoryProperty\") ])");
+			xpathBuffer.append(
+					"(.//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]//firstConstraint[(@xsi:type=\"propertyconstraints:HwCoreProperty\")])");
 
 
 			xpathBuffer.append("|");
 
-			xpathBuffer
-					.append("(.//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]//secondConstraint[(@xsi:type=\"propertyconstraints:HwMemoryProperty\") ])");
+			xpathBuffer.append(
+					"(.//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]//secondConstraint[(@xsi:type=\"propertyconstraints:HwCoreProperty\") ])");
 
-			
-			
+			xpathBuffer.append("|");
 
-			List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
-			
+			xpathBuffer.append(
+					"(.//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryProperty\") ])");
 
-			for (Element element : elements) {
-				
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@comparator");
-					
-					assertTrue("Unable to set default value (from 1.1.0) of ComparatorType for element having tag name : "+element.getName(),  attributes.get(0).getValue().equals("equal"));
-				
+			xpathBuffer.append("|");
+
+			xpathBuffer.append(
+					"(.//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]//firstConstraint[(@xsi:type=\"propertyconstraints:HwMemoryProperty\") ])");
+
+
+			xpathBuffer.append("|");
+
+			xpathBuffer.append(
+					"(.//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]//secondConstraint[(@xsi:type=\"propertyconstraints:HwMemoryProperty\") ])");
+
+
+			final List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+
+
+			for (final Element element : elements) {
+
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@comparator");
+
+				assertTrue("Unable to set default value (from 1.1.0) of ComparatorType for element having tag name : "
+						+ element.getName(), attributes.get(0).getValue().equals("equal"));
+
 
 			}
 
 		}
-		
+
 	}
-	
-	
+
+
 	@Test
-	public void verification_ConjunctionType(){
+	public void verification_ConjunctionType() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
-			
-			
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
+
+
 			final StringBuffer xpathBuffer = new StringBuffer();
 
-			xpathBuffer
-			.append(".//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")  ]");
+			xpathBuffer.append(
+					".//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")  ]");
 
 			xpathBuffer.append("|");
 
-			xpathBuffer
-					.append(".//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]// firstConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")  ]");
-
-
-			xpathBuffer.append("|");
-
-			xpathBuffer
-					.append(".//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]// secondConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")  ] ");
-
-			xpathBuffer.append("|");
-
-			xpathBuffer
-			.append(".//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")  ]");
-
-			xpathBuffer.append("|");
-
-			xpathBuffer
-					.append(".//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]// firstConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")  ] ");
+			xpathBuffer.append(
+					".//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]// firstConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")  ]");
 
 
 			xpathBuffer.append("|");
 
-			xpathBuffer
-					.append(".//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]// secondConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")  ] ");
+			xpathBuffer.append(
+					".//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]// secondConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")  ] ");
+
+			xpathBuffer.append("|");
+
+			xpathBuffer.append(
+					".//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")  ]");
+
+			xpathBuffer.append("|");
+
+			xpathBuffer.append(
+					".//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]// firstConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")  ] ");
 
 
-			List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
-			
+			xpathBuffer.append("|");
 
-			for (Element element : elements) {
-				
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@conjunction");
-					
-					assertTrue("Unable to set default value (from 1.1.0) of ConjunctionType for element having tag name : "+element.getName(),  attributes.get(0).getValue().equals("and"));
-				
+			xpathBuffer.append(
+					".//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]// secondConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")  ] ");
+
+
+			final List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+
+
+			for (final Element element : elements) {
+
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@conjunction");
+
+				assertTrue("Unable to set default value (from 1.1.0) of ConjunctionType for element having tag name : "
+						+ element.getName(), attributes.get(0).getValue().equals("and"));
+
 
 			}
 
 		}
-		
+
 	}
 }

@@ -20,6 +20,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.junit.runners.Parameterized;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(Parameterized.class)
 public class OsConverterTest extends AbstractConverterTest {
@@ -38,13 +39,14 @@ public class OsConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConverter() {
-		super.testConversion( CommonConverter.class,OSConverter.class);
+		super.testConversion(CommonConverter.class, OSConverter.class);
 	}
-	
+
+	@Override
 	@Test
-	public void verification(){ 
+	public void verification() {
 		super.verification();
 	}
-	
- 
+
+
 }

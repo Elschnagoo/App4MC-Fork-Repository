@@ -16,6 +16,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ HwConverterTest.class, OsConverterTest.class, MappingConverterTest.class,
 		StimuliConverterTest.class })
-public class Converter_103_110_TestSuite {
 
+public class Converter_103_110_TestSuite {
+	// test suite
 }

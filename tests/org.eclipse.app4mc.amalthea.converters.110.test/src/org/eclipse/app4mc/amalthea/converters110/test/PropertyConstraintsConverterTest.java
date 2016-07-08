@@ -38,16 +38,17 @@ public class PropertyConstraintsConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConverter() {
-		
+
 		super.testConversion(PropertyConstraintsConverter.class);
 
 	}
-	
+
 	@Test
-	public void verification(){ 
+	@Override
+	public void verification() {
 		super.verification();
-		
+
 	}
-	
- 
+
+
 }

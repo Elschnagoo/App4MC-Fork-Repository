@@ -301,6 +301,7 @@ public class ContentConverter implements IConverter {
 
 	}
 
+	@SuppressWarnings("unused")
 	private HelperUtils_111_070 getHelper(final AbstractHelper helper) {
 		if (!(helper instanceof HelperUtils_111_070)) {
 

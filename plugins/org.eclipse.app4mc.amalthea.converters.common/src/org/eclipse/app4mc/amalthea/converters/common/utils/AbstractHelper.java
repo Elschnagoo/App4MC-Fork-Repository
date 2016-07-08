@@ -345,14 +345,13 @@ public abstract class AbstractHelper {
 			file.getParentFile().mkdirs();
 		}
 
-		final FileOutputStream out = new FileOutputStream(file);
 
-		try {
+		try (FileOutputStream out = new FileOutputStream(file)) {
 			xout.output(doc, out);
 		}
-		finally {
+		catch (final Exception e) {
 
-			out.close();
+			e.printStackTrace();
 		}
 	}
 
@@ -380,9 +379,12 @@ public abstract class AbstractHelper {
 			outputFile.getParentFile().mkdirs();
 		}
 
-		final FileOutputStream out = new FileOutputStream(outputFile);
-		xout.output(doc, out);
-		out.close();
+		try (FileOutputStream out = new FileOutputStream(outputFile);) {
+			xout.output(doc, out);
+		}
+		catch (final Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 
@@ -427,7 +429,7 @@ public abstract class AbstractHelper {
 			return;
 		}
 
-		if(!Files.getFileExtension(targetFile.getAbsolutePath()).contains("amxmi")){
+		if (!Files.getFileExtension(targetFile.getAbsolutePath()).contains("amxmi")) {
 			System.out.println("Non amalthea files will not be considered for model migration");
 			return;
 		}
@@ -479,9 +481,9 @@ public abstract class AbstractHelper {
 		}
 
 		for (final String relativePath : referredFilePaths) {
-			
-			if(relativePath !=null && relativePath.length()>0){
-				
+
+			if (relativePath != null && relativePath.length() > 0) {
+
 				buildXMLDocumentsMap(new File(targetFile.getParent() + File.separator + relativePath), map);
 			}
 

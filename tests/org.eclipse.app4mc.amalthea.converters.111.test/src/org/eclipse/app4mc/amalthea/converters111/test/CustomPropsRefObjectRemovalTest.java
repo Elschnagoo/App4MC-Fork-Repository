@@ -50,118 +50,119 @@ public class CustomPropsRefObjectRemovalTest extends AbstractConverterTest {
 
 	@Test
 	public void testConverter() {
-		super.testConversion(CommonConverter.class,SwConverter.class,ComponentConverter.class);
+		super.testConversion(CommonConverter.class, SwConverter.class, ComponentConverter.class);
 	}
-	
+
+	@Override
 	@Test
-	public void verification(){ 
+	public void verification() {
 		super.verification();
 	}
-	
-	
-	@Test
-	public void verificationCustomprops_referenceObjects(){
-		
-		parseGeneratedXMLFiles();
-		
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
-			
+
+	@Test
+	public void verificationCustomprops_referenceObjects() {
+
+		parseGeneratedXMLFiles();
+
+
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
+
 			final StringBuffer xpathBuffer = new StringBuffer();
 
-			
+
 			/*- verifying Task ref existence in CustomProperty */
-			
-			xpathBuffer.append(
-					".//customProperties[@key=\"custKey\"]");
+
+			xpathBuffer.append(".//customProperties[@key=\"custKey\"]");
 
 
-		  List<Element> elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(), Element.class,
-					this.helper.getNS_111("hw"), this.helper.getGenericNS("xsi"));
-			
-			for (Element element : elements) {
-			
-			assertTrue("Value is a reference of Task object, and it should not be removed during migration " + document.getBaseURI(), element.getChild("value")!=null);
+			List<Element> elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(),
+					Element.class, this.helper.getNS_111("hw"), this.helper.getGenericNS("xsi"));
+
+			for (final Element element : elements) {
+
+				assertTrue("Value is a reference of Task object, and it should not be removed during migration "
+						+ document.getBaseURI(), element.getChild("value") != null);
 			}
 
 			/*- verifying stimuli ref existence in CustomProperty */
 			xpathBuffer.setLength(0);
-			xpathBuffer.append(
-					".//customProperties[@key=\"custKey_stimuli\"]");
+			xpathBuffer.append(".//customProperties[@key=\"custKey_stimuli\"]");
 
 
-		   elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(), Element.class,
+			elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(), Element.class,
 					this.helper.getNS_111("hw"), this.helper.getGenericNS("xsi"));
-			
-			for (Element element : elements) {
-			
-			assertTrue("Value is a reference of Stimuli object, and it should be removed during migration " + document.getBaseURI(), element.getChild("value")==null);
+
+			for (final Element element : elements) {
+
+				assertTrue("Value is a reference of Stimuli object, and it should be removed during migration "
+						+ document.getBaseURI(), element.getChild("value") == null);
 			}
-			
-			
+
+
 			/*- verifying Tag ref existence in CustomProperty */
 			xpathBuffer.setLength(0);
 
-			xpathBuffer.append(
-					".//customProperties[@key=\"custKey_tag\"]");
+			xpathBuffer.append(".//customProperties[@key=\"custKey_tag\"]");
 
 
-		   elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(), Element.class,
+			elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(), Element.class,
 					this.helper.getNS_111("hw"), this.helper.getGenericNS("xsi"));
-			
-			for (Element element : elements) {
-			
-			assertTrue("Value is a reference of Tag object, and it should not be removed during migration " + document.getBaseURI(), element.getChild("value")!=null);
+
+			for (final Element element : elements) {
+
+				assertTrue("Value is a reference of Tag object, and it should not be removed during migration "
+						+ document.getBaseURI(), element.getChild("value") != null);
 			}
-			
+
 			/*- verifying AMALTHEA ref existence in CustomProperty */
 			xpathBuffer.setLength(0);
 
-			xpathBuffer.append(
-					".//customProperties[@key=\"custKey_amalthea_1\"]");
-			xpathBuffer.append(
-					"|");
-			xpathBuffer.append(
-					".//customProperties[@key=\"custKey_amalthea_2\"]");
+			xpathBuffer.append(".//customProperties[@key=\"custKey_amalthea_1\"]");
+			xpathBuffer.append("|");
+			xpathBuffer.append(".//customProperties[@key=\"custKey_amalthea_2\"]");
 
 
-		   elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(), Element.class,
+			elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(), Element.class,
 					this.helper.getNS_111("hw"), this.helper.getGenericNS("xsi"));
-			
-			for (Element element : elements) {
-			
-			assertTrue("Value is a reference of AMALTHEA object, and it should be removed during migration " + document.getBaseURI(), element.getChild("value")==null);
+
+			for (final Element element : elements) {
+
+				assertTrue("Value is a reference of AMALTHEA object, and it should be removed during migration "
+						+ document.getBaseURI(), element.getChild("value") == null);
 			}
-			
+
 			/*- verifying AbstractProcess ref existence in CustomProperty */
 			xpathBuffer.setLength(0);
 
-			xpathBuffer.append(
-					".//customProperties[@key=\"custKey_abstractProcess\"]");
+			xpathBuffer.append(".//customProperties[@key=\"custKey_abstractProcess\"]");
 
 
-		   elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(), Element.class,
+			elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(), Element.class,
 					this.helper.getNS_111("hw"), this.helper.getGenericNS("xsi"));
-			
-			for (Element element : elements) {
-			
-			assertTrue("Value is a reference of AbstractProcess (i.e. either ProcessPrototype or Task or ISR object), and it should not be removed during migration " + document.getBaseURI(), element.getChild("value")!=null);
+
+			for (final Element element : elements) {
+
+				assertTrue(
+						"Value is a reference of AbstractProcess (i.e. either ProcessPrototype or Task or ISR object), and it should not be removed during migration "
+								+ document.getBaseURI(),
+						element.getChild("value") != null);
 			}
-			
-			/*- verifying if removal of elements which are not implementing ReferableBaseObjects are successful inside CustomProperty custKey_group_refobjs 
-			 * 
+
+			/*- verifying if removal of elements which are not implementing ReferableBaseObjects are successful inside CustomProperty custKey_group_refobjs
+			 *
 			 * Note: List consists of following elements
-			 * 
+			 *
 			 * 1.AMALTHEA object
 			 * 2.Task object
 			 * 3.Hardware object
 			 * 4.Tag object
-			 * 
-			 * 
-			 * Below is the content from model file: 
-			 * 
+			 *
+			 *
+			 * Below is the content from model file:
+			 *
 			 * 	<customProperties xmi:id="_NaacUBhfEea3AoorCOXNXA" key="custKey_group_refobjs">
 			 *         <	 xsi:type="common:ListObject" xmi:id="_8b8TkBhfEea3AoorCOXNXA">
 			 *           <values xsi:type="common:ReferenceObject" xmi:id="_912FwBhfEea3AoorCOXNXA">
@@ -172,67 +173,78 @@ public class CustomPropsRefObjectRemovalTest extends AbstractConverterTest {
 			 *           </values>
 			 *           <values xsi:type="common:ReferenceObject" xmi:id="__s_0oBhfEea3AoorCOXNXA" value="_TmR8oNotEeWXsaNW2kxe8A"/>
 			 *           <values xsi:type="common:ReferenceObject" xmi:id="__0BpsBhfEea3AoorCOXNXA">
-		     *      <value href="default1.amxmi#_6PbocBhOEea3AoorCOXNXA"/>
-		     *    </values>
-		     *  </value>
-		     * /customProperties>
-			 * 
+			 *      <value href="default1.amxmi#_6PbocBhOEea3AoorCOXNXA"/>
+			 *    </values>
+			 *  </value>
+			 * /customProperties>
+			 *
 			 *  */
 			xpathBuffer.setLength(0);
-			xpathBuffer.append(
-					".//customProperties[@key=\"custKey_group_refobjs\"]");
+			xpathBuffer.append(".//customProperties[@key=\"custKey_group_refobjs\"]");
 
 
-		   elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(), Element.class,
+			elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(), Element.class,
 					this.helper.getNS_111("hw"), this.helper.getGenericNS("xsi"));
-			
-			for (Element element : elements) {
-			
-			Element child = element.getChild("value");
-			
-			assertTrue("Value of group custproperty should not be null", child!=null);
-			
-			List<Element> children = child.getChildren();
-			
-			Map<String, Element> id_childElementsMap=new HashMap<String, Element>();
-			
-			for (Element valuesElement : children) {
-				id_childElementsMap.put(valuesElement.getAttributeValue("id",this.helper.getGenericNS("xmi")), valuesElement);
+
+			for (final Element element : elements) {
+
+				final Element child = element.getChild("value");
+
+				assertTrue("Value of group custproperty should not be null", child != null);
+
+				final List<Element> children = child.getChildren();
+
+				final Map<String, Element> id_childElementsMap = new HashMap<String, Element>();
+
+				for (final Element valuesElement : children) {
+					id_childElementsMap.put(valuesElement.getAttributeValue("id", this.helper.getGenericNS("xmi")),
+							valuesElement);
+				}
+
+				/*- ref to AMALTHEA object should be removed */
+				if (id_childElementsMap.containsKey("_8b8TkBhfEea3AoorCOXNXA")) {
+
+					assertTrue(
+							"Value is a reference of AMALTHEA object, and it should be removed during migration "
+									+ document.getBaseURI(),
+							id_childElementsMap.get("_8b8TkBhfEea3AoorCOXNXA") == null);
+				}
+
+				/*- ref to Task object should be removed */
+				if (id_childElementsMap.containsKey("__kW2ABhfEea3AoorCOXNXA")) {
+
+					assertTrue(
+							"Value is a reference of Task object, and it should not be removed during migration "
+									+ document.getBaseURI(),
+							id_childElementsMap.get("__kW2ABhfEea3AoorCOXNXA") != null);
+				}
+
+
+				/*- ref to Hardware object should be removed */
+				if (id_childElementsMap.containsKey("__s_0oBhfEea3AoorCOXNXA")) {
+
+					assertTrue(
+							"Value is a reference of Hardware object, and it should be removed during migration "
+									+ document.getBaseURI(),
+							id_childElementsMap.get("__s_0oBhfEea3AoorCOXNXA") == null);
+				}
+
+				/*- ref to Tag object should be removed */
+				if (id_childElementsMap.containsKey("__0BpsBhfEea3AoorCOXNXA")) {
+
+					assertTrue(
+							"Value is a reference of Tag object, and it should not be removed during migration "
+									+ document.getBaseURI(),
+							id_childElementsMap.get("__0BpsBhfEea3AoorCOXNXA") != null);
+				}
+
 			}
-			
-			/*- ref to AMALTHEA object should be removed */
-			if(id_childElementsMap.containsKey("_8b8TkBhfEea3AoorCOXNXA")){
-				
-				assertTrue("Value is a reference of AMALTHEA object, and it should be removed during migration " + document.getBaseURI(), id_childElementsMap.get("_8b8TkBhfEea3AoorCOXNXA")==null);
-			}
-			
-			/*- ref to Task object should be removed */
-			if(id_childElementsMap.containsKey("__kW2ABhfEea3AoorCOXNXA")){
-				
-				assertTrue("Value is a reference of Task object, and it should not be removed during migration " + document.getBaseURI(), id_childElementsMap.get("__kW2ABhfEea3AoorCOXNXA")!=null);
-			}
-			
-			
-			/*- ref to Hardware object should be removed */
-			if(id_childElementsMap.containsKey("__s_0oBhfEea3AoorCOXNXA")){
-				
-				assertTrue("Value is a reference of Hardware object, and it should be removed during migration " + document.getBaseURI(), id_childElementsMap.get("__s_0oBhfEea3AoorCOXNXA")==null);
-			}
-			
-			/*- ref to Tag object should be removed */
-			if(id_childElementsMap.containsKey("__0BpsBhfEea3AoorCOXNXA")){
-				
-				assertTrue("Value is a reference of Tag object, and it should not be removed during migration " + document.getBaseURI(), id_childElementsMap.get("__0BpsBhfEea3AoorCOXNXA")!=null);
-			}
-			
-			}
-			
-			
+
+
 		}
-		
+
 	}
-	
-	
+
 
 }
 

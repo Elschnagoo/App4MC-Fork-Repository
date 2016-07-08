@@ -66,7 +66,6 @@ import org.eclipse.swt.widgets.Text;
 
 public class ModelMigrationDialog extends Dialog {
 	private MigrationSettings migrationSettings;
-	private DataBindingContext m_bindingContext;
 	private Text txtInputModelVersion;
 	private Text txtOutputDirectory;
 	private TableViewer tableViewer;
@@ -92,6 +91,7 @@ public class ModelMigrationDialog extends Dialog {
 		// newShell.setSize(800, 500);
 		newShell.setText("AMALTHEA Model Migration");
 	}
+
 
 	@Override
 	protected Control createDialogArea(final Composite parent) {
@@ -171,38 +171,37 @@ public class ModelMigrationDialog extends Dialog {
 			@Override
 			public void modifyText(final ModifyEvent e) {
 
-				final String version = ModelMigrationDialog.this.txtInputModelVersion.getText();
+				final String version = ModelMigrationDialog.this.getTxtInputModelVersion().getText();
 
 				if (version != null) {
 					if (version.equals("itea.103")) {
-						ModelMigrationDialog.this.mig_model_version_combo
+						ModelMigrationDialog.this.getMig_model_version_combo()
 								.setItems(new String[] { "0.7.0", "itea.111", "itea.110" });
 
 					}
 					else if (version.equals("itea.110")) {
-						ModelMigrationDialog.this.mig_model_version_combo
+						ModelMigrationDialog.this.getMig_model_version_combo()
 								.setItems(new String[] { "0.7.0", "itea.111" });
 					}
 					else if (version.equals("itea.111")) {
-						ModelMigrationDialog.this.mig_model_version_combo.setItems(new String[] { "0.7.0" });
+						ModelMigrationDialog.this.getMig_model_version_combo().setItems(new String[] { "0.7.0" });
 					}
 					else if (version.equals("0.7.0")) {
-						ModelMigrationDialog.this.mig_model_version_combo.setItems(new String[] { "" });
+						ModelMigrationDialog.this.getMig_model_version_combo().setItems(new String[] { "" });
 
-						ModelMigrationDialog.this.migrateModelsButton.setEnabled(false);
+						ModelMigrationDialog.this.getMig_model_version_combo().setEnabled(false);
 
-						ModelMigrationDialog.this.mig_model_version_combo.setEnabled(false);
+						ModelMigrationDialog.this.getMig_model_version_combo().setEnabled(false);
 					}
-					ModelMigrationDialog.this.mig_model_version_combo.select(0);
+					ModelMigrationDialog.this.getMig_model_version_combo().select(0);
 
 				}
 
 			}
 		});
 
-		new Label(grpInitialModel, SWT.NONE);
-		new Label(grpInitialModel, SWT.NONE);
-		new Label(grpInitialModel, SWT.NONE);
+
+		addEmptyLabels(grpInitialModel);
 
 
 		final Group grpMigrationModels = new Group(shlAmalthea, SWT.NONE);
@@ -265,11 +264,11 @@ public class ModelMigrationDialog extends Dialog {
 				if (selectedPath != null) {
 					System.out.println(ModelMigrationDialog.this.getMigrationSettings().getOutputDirectoryLocation());
 
-					ModelMigrationDialog.this.outputDirectoryLocation = selectedPath;
+					ModelMigrationDialog.this.setOutputDirectoryLocation(selectedPath);
 
 					// AmaltheaModelMigrationDialog.this.migDataModel.setOutputDirectoryLocation(selectedPath);
 
-					ModelMigrationDialog.this.txtOutputDirectory.setText(selectedPath);
+					ModelMigrationDialog.this.getTxtOutputDirectory().setText(selectedPath);
 
 				}
 
@@ -291,18 +290,18 @@ public class ModelMigrationDialog extends Dialog {
 			@Override
 			public void widgetSelected(final SelectionEvent e) {
 
-				final String selection = ModelMigrationDialog.this.mig_model_version_combo.getText();
+				final String selection = ModelMigrationDialog.this.getMig_model_version_combo().getText();
 
 				if (selection != null && selection.equals("itea.110")) {
-					ModelMigrationDialog.this.txtOutputDirectory.setText("");
+					ModelMigrationDialog.this.getTxtOutputDirectory().setText("");
 					sl_mig_folder_selection_composite.topControl = empty_composite;
 					mig_folder_selection_composite.layout();
 
 				}
 				else {
 
-					ModelMigrationDialog.this.txtOutputDirectory
-							.setText(ModelMigrationDialog.this.outputDirectoryLocation);
+					ModelMigrationDialog.this.getTxtOutputDirectory()
+							.setText(ModelMigrationDialog.this.getOutputDirectoryLocation());
 
 					sl_mig_folder_selection_composite.topControl = mig_output_directory_selection_composite;
 					mig_folder_selection_composite.layout();
@@ -312,10 +311,16 @@ public class ModelMigrationDialog extends Dialog {
 
 			}
 		});
-		this.m_bindingContext = initDataBindings();
+		initDataBindings();
 
 
 		return shlAmalthea;
+	}
+
+	private void addEmptyLabels(final Group grpInitialModel) {
+		new Label(grpInitialModel, SWT.NONE);
+		new Label(grpInitialModel, SWT.NONE);
+		new Label(grpInitialModel, SWT.NONE);
 	}
 
 	private TableViewerColumn createTableViewerColumn(final TableViewer tableViewer, final String title) {
@@ -427,7 +432,7 @@ public class ModelMigrationDialog extends Dialog {
 
 			}
 		});
-		this.m_bindingContext = initDataBindings();
+		initDataBindings();
 	}
 
 	public MigrationSettings getMigrationSettings() {
@@ -463,5 +468,53 @@ public class ModelMigrationDialog extends Dialog {
 				migrationModelVersionMigrationSettingsObserveValue, null, null);
 		//
 		return bindingContext;
+	}
+
+	public Combo getMig_model_version_combo() {
+		return this.mig_model_version_combo;
+	}
+
+	public void setMig_model_version_combo(final Combo mig_model_version_combo) {
+		this.mig_model_version_combo = mig_model_version_combo;
+	}
+
+	public String getOutputDirectoryLocation() {
+		return this.outputDirectoryLocation;
+	}
+
+	public void setOutputDirectoryLocation(final String outputDirectoryLocation) {
+		this.outputDirectoryLocation = outputDirectoryLocation;
+	}
+
+	public Text getTxtInputModelVersion() {
+		return this.txtInputModelVersion;
+	}
+
+	public void setTxtInputModelVersion(final Text txtInputModelVersion) {
+		this.txtInputModelVersion = txtInputModelVersion;
+	}
+
+	public Text getTxtOutputDirectory() {
+		return this.txtOutputDirectory;
+	}
+
+	public void setTxtOutputDirectory(final Text txtOutputDirectory) {
+		this.txtOutputDirectory = txtOutputDirectory;
+	}
+
+	public Label getLblOutputDirectory() {
+		return this.lblOutputDirectory;
+	}
+
+	public void setLblOutputDirectory(final Label lblOutputDirectory) {
+		this.lblOutputDirectory = lblOutputDirectory;
+	}
+
+	public Button getCancelMigrationButton() {
+		return this.cancelMigrationButton;
+	}
+
+	public void setCancelMigrationButton(final Button cancelMigrationButton) {
+		this.cancelMigrationButton = cancelMigrationButton;
 	}
 }

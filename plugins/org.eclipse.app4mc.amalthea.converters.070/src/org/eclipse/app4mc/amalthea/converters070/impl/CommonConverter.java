@@ -16,16 +16,12 @@ import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
-import org.eclipse.app4mc.amalthea.converters070.utils.HelperUtils_111_070;
 import org.jdom2.Document;
-import org.jdom2.Element;
 
 public class CommonConverter implements IConverter {
 
-	private final HelperUtils_111_070 helper;
 
 	public CommonConverter() {
-		this.helper = HelperUtils_111_070.getInstance();
 	}
 
 	@Override
@@ -37,8 +33,6 @@ public class CommonConverter implements IConverter {
 		if (root == null) {
 			return;
 		}
-		final Element rootElement = root.getRootElement();
-
 
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
 	}

@@ -46,72 +46,74 @@ public class SwConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConverter() {
-		
-		super.testConversion(OsConverter.class,MappingConverter.class, SwConverter.class);
+
+		super.testConversion(OsConverter.class, MappingConverter.class, SwConverter.class);
 
 	}
-	
+
 	@Test
-	public void verification(){ 
+	@Override
+	public void verification() {
 		super.verification();
-		
+
 	}
-	
-	
+
+
 	@Test
-	public void verificiation_LabelAccessStatistic_Contents(){
+	public void verificiation_LabelAccessStatistic_Contents() {
 
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
+		final Collection<Document> values = this.fileName_documentsMap.values();
 
+		for (final Document document : values) {
 
 
 			/*- verifying Task ref existence in CustomProperty */
 
 
-			List<Element> elements = getXpathResult(document.getRootElement(), ".//swModel");
-			
+			final List<Element> elements = getXpathResult(document.getRootElement(), ".//swModel");
 
-			for (Element element : elements) {
-				
-				List<Element> statistics = getXpathResult(element, "./runnables[@name=\"R1\"]/runnableItems[@access=\"write\"]/statistic ");
-				
-				if(statistics.size()>0){
-					
+
+			for (final Element element : elements) {
+
+				final List<Element> statistics = getXpathResult(element,
+						"./runnables[@name=\"R1\"]/runnableItems[@access=\"write\"]/statistic ");
+
+				if (statistics.size() > 0) {
+
 					/*
-					 *  <statistic xmi:id="_-kM1gJNVEeWQC6k3Y09j_A">
-          			 *			<value xsi:type="common:MinAvgMaxStatistic" xmi:id="_IRk5wJNWEeWQC6k3Y09j_A" avg="1" max="2" />
-          			 *		<cacheMisses xsi:type="common:MinAvgMaxStatistic" xmi:id="_HSrBgJNWEeWQC6k3Y09j_A" min="8" avg="-1" max="5" />
-        			 *  </statistic>
+					 * <statistic xmi:id="_-kM1gJNVEeWQC6k3Y09j_A"> <value xsi:type="common:MinAvgMaxStatistic"
+					 * xmi:id="_IRk5wJNWEeWQC6k3Y09j_A" avg="1" max="2" /> <cacheMisses
+					 * xsi:type="common:MinAvgMaxStatistic" xmi:id="_HSrBgJNWEeWQC6k3Y09j_A" min="8" avg="-1" max="5" />
+					 * </statistic>
 					 */
 
-					Element valueElement = statistics.get(0).getChild("value");
-					
-					assertTrue("Unable to migrate \"write\" tag to \"value\" tag ", valueElement!=null);
+					final Element valueElement = statistics.get(0).getChild("value");
 
-					String avgAttribute = valueElement.getAttributeValue("avg");
+					assertTrue("Unable to migrate \"write\" tag to \"value\" tag ", valueElement != null);
 
-					String maxAttribute = valueElement.getAttributeValue("max");
-					
-					assertTrue("Unable to migrate the contents of write tag ", (avgAttribute.equals("1")&& maxAttribute.equals("2")));
-					
-					Element cacheMisses = statistics.get(0).getChild("cacheMisses");
-					
-					assertTrue("Unable to migrate readCacheMisses tag to cacheMisses", (cacheMisses!=null));
-					
-					
+					final String avgAttribute = valueElement.getAttributeValue("avg");
+
+					final String maxAttribute = valueElement.getAttributeValue("max");
+
+					assertTrue("Unable to migrate the contents of write tag ",
+							(avgAttribute.equals("1") && maxAttribute.equals("2")));
+
+					final Element cacheMisses = statistics.get(0).getChild("cacheMisses");
+
+					assertTrue("Unable to migrate readCacheMisses tag to cacheMisses", (cacheMisses != null));
+
+
 				}
-				
+
 
 			}
 
 		}
-		
-	
+
+
 	}
-	
+
 }

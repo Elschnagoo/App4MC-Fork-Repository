@@ -37,7 +37,8 @@ public class MappingConverterTest extends AbstractConverterTest {
 	@Parameterized.Parameters(name = "{index}: Test file: {0}")
 	public static Collection<Object[]> getTestData() {
 
-		return Arrays.asList(new Object[][] { { "/mapping/mapping.amxmi", true } ,{ "/mapping_2/mapping.amxmi-mapping", true } , { "/mapping_uri_fragments/mapping.amxmi", true } });
+		return Arrays.asList(new Object[][] { { "/mapping/mapping.amxmi", true },
+				{ "/mapping_2/mapping.amxmi-mapping", true }, { "/mapping_uri_fragments/mapping.amxmi", true } });
 	}
 
 	public MappingConverterTest(final String xmlFileRelativeLocation, final boolean canExecuteTestCase) {
@@ -47,67 +48,75 @@ public class MappingConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConverter() {
-		
-		super.testConversion( OsConverter.class, SwConverter.class,SchedulerRefsConverter.class,HwConverter.class,MappingConverter.class);
+
+		super.testConversion(OsConverter.class, SwConverter.class, SchedulerRefsConverter.class, HwConverter.class,
+				MappingConverter.class);
 
 	}
-	
+
 	@Test
-	public void verification(){ 
+	@Override
+	public void verification() {
 		super.verification();
-		
-	}
-	
 
- 
-	
+	}
+
+
 	@Test
-	public void verificiation_mapping_model(){
+	public void verificiation_mapping_model() {
 
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
+		final Collection<Document> values = this.fileName_documentsMap.values();
 
+		for (final Document document : values) {
 
 
 			/*- verifying Task ref existence in CustomProperty */
 
 
-			List<Element> elements = getXpathResult(document.getRootElement(), ".//mappingModel");
-			
+			final List<Element> elements = getXpathResult(document.getRootElement(), ".//mappingModel");
 
-			for (Element element : elements) {
-				
-				List<Element> processAllocationElements = getXpathResult(element, "./processAllocation");
-				
-				assertTrue("Unable to convert all the ExecutableAllocation objects having Task references -> to ProcessAllocations", processAllocationElements.size()>=2);
-				
-				for (Element processAllocation : processAllocationElements) {
-					
-					Element scheduler = processAllocation.getChild("scheduler");
-					Element process = processAllocation.getChild("process");
-					
-					assertTrue("Process and Scheduler couldn't be migrated successfully", scheduler!=null && process !=null);
-					
-					if(process.getAttributeValue("type", this.helper.getGenericNS("xsi")).equals("sw:ISR")){
-						assertTrue("InterruptController object is not associated to ProcessAllocation having ISR : ", scheduler.getAttributeValue("type", this.helper.getGenericNS("xsi")).equals("os:InterruptController"));
-					}else if(process.getAttributeValue("type", this.helper.getGenericNS("xsi")).equals("sw:Task")){
-						assertTrue("TaskScheduler object is not associated to ProcessAllocation having Task ", scheduler.getAttributeValue("type", this.helper.getGenericNS("xsi")).equals("os:TaskScheduler"));
+
+			for (final Element element : elements) {
+
+				final List<Element> processAllocationElements = getXpathResult(element, "./processAllocation");
+
+				assertTrue(
+						"Unable to convert all the ExecutableAllocation objects having Task references -> to ProcessAllocations",
+						processAllocationElements.size() >= 2);
+
+				for (final Element processAllocation : processAllocationElements) {
+
+					final Element scheduler = processAllocation.getChild("scheduler");
+					final Element process = processAllocation.getChild("process");
+
+					assertTrue("Process and Scheduler couldn't be migrated successfully",
+							scheduler != null && process != null);
+
+					if (process.getAttributeValue("type", this.helper.getGenericNS("xsi")).equals("sw:ISR")) {
+						assertTrue("InterruptController object is not associated to ProcessAllocation having ISR : ",
+								scheduler.getAttributeValue("type", this.helper.getGenericNS("xsi"))
+										.equals("os:InterruptController"));
+					}
+					else if (process.getAttributeValue("type", this.helper.getGenericNS("xsi")).equals("sw:Task")) {
+						assertTrue("TaskScheduler object is not associated to ProcessAllocation having Task ", scheduler
+								.getAttributeValue("type", this.helper.getGenericNS("xsi")).equals("os:TaskScheduler"));
 					}
 				}
-				
-				List<Element> runnableAllocationElements = getXpathResult(element, "./runnableAllocation");
 
-				assertTrue("Unable to convert all the ExecutableAllocation objects having Runnable references -> to RunnableAllocations", runnableAllocationElements.size()>=1);
+				final List<Element> runnableAllocationElements = getXpathResult(element, "./runnableAllocation");
+
+				assertTrue(
+						"Unable to convert all the ExecutableAllocation objects having Runnable references -> to RunnableAllocations",
+						runnableAllocationElements.size() >= 1);
 
 			}
 
 		}
-		
-	
+
+
 	}
 
 

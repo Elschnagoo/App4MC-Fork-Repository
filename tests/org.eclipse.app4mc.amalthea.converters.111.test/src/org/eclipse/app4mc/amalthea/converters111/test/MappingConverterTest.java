@@ -26,6 +26,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.junit.runners.Parameterized;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(Parameterized.class)
 public class MappingConverterTest extends AbstractConverterTest {
@@ -34,8 +35,8 @@ public class MappingConverterTest extends AbstractConverterTest {
 	@Parameterized.Parameters(name = "{index}: Test file: {0}")
 	public static Collection<Object[]> getTestData() {
 
-		return Arrays.asList(new Object[][] { { "/mapping/mapping.amxmi", true },
-				{ "/mapping/default.amxmi-mapping", true } });
+		return Arrays.asList(
+				new Object[][] { { "/mapping/mapping.amxmi", true }, { "/mapping/default.amxmi-mapping", true } });
 	}
 
 	public MappingConverterTest(final String xmlFileRelativeLocation, final boolean canExecuteTestCase) {
@@ -45,37 +46,40 @@ public class MappingConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConverter() {
-		super.testConversion(CommonConverter.class,MappingConverter.class);
+		super.testConversion(CommonConverter.class, MappingConverter.class);
 	}
-	
+
+	@Override
 	@Test
-	public void verification(){ 
+	public void verification() {
 		super.verification();
 	}
-	
-	
+
+
 	@Test
-	public void verification_MemoryAddressMappingType(){
+	public void verification_MemoryAddressMappingType() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
-			
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
+
 			final StringBuffer xpathBuffer = new StringBuffer();
 
-			xpathBuffer
-			.append(".//mappingModel|/mapping:MappingModel");
- 
-			List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+			xpathBuffer.append(".//mappingModel|/mapping:MappingModel");
 
-			for (Element element : elements) {
-				List<Attribute> attributes = getXpathResult_Attributes(element, "./@addressMappingType");
-					assertTrue("Unable to set default value (from 1.1.0) of MemoryAddressMappingType for element having tag name : "+element.getName(),  attributes.get(0).getValue()!=null);
+			final List<Element> elements = getXpathResult(document.getRootElement(), xpathBuffer.toString());
+
+			for (final Element element : elements) {
+				final List<Attribute> attributes = getXpathResult_Attributes(element, "./@addressMappingType");
+				assertTrue(
+						"Unable to set default value (from 1.1.0) of MemoryAddressMappingType for element having tag name : "
+								+ element.getName(),
+						attributes.get(0).getValue() != null);
 			}
 
 		}
-		
+
 	}
 }

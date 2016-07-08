@@ -17,7 +17,6 @@ import org.eclipse.app4mc.amalthea.converters.common.base.IPreProcessor;
 import org.eclipse.app4mc.amalthea.converters.common.utils.AbstractHelper;
 import org.eclipse.app4mc.amalthea.converters.common.utils.BaseHelperUtils;
 import org.jdom2.Document;
-import org.jdom2.Element;
 
 public class CustomPropsPreProcessor implements IPreProcessor {
 
@@ -35,7 +34,6 @@ public class CustomPropsPreProcessor implements IPreProcessor {
 		if (root == null) {
 			return;
 		}
-		final Element rootElement = root.getRootElement();
 
 
 		/*-
@@ -63,18 +61,18 @@ public class CustomPropsPreProcessor implements IPreProcessor {
 		 * final List<Element> value_custProps_refObjects = this.helper.getXpathResult(rootElement,
 		 * ".//customProperties/value[@xsi:type=\"common:ReferenceObject\"]", Element.class,
 		 * this.helper.getGenericNS("xsi"));
-		 * 
+		 *
 		 * for (final Element element : value_custProps_refObjects) { final Element parentElement =
 		 * element.getParentElement();
-		 * 
+		 *
 		 * final String key = parentElement.getAttributeValue("key");
-		 * 
+		 *
 		 * element.detach();
-		 * 
+		 *
 		 * System.out.println( "Reference Object -> associated as value in CustomProperty having key: \"" + key +
 		 * "\" is removed"); }
-		 * 
-		 * 
+		 *
+		 *
 		 * fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
 		 */
 	}

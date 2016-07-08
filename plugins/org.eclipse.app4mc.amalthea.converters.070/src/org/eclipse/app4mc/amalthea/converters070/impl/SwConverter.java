@@ -178,6 +178,7 @@ public class SwConverter implements IConverter {
 	 *
 	 * @param rootElement
 	 */
+	@SuppressWarnings("unused")
 	private void updatePeriodic(final Element rootElement) {
 
 

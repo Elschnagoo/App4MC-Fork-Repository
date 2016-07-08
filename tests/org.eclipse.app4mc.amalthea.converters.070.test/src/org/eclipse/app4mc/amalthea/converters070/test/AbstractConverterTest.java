@@ -46,7 +46,7 @@ public abstract class AbstractConverterTest {
 	protected HelperUtils_111_070 helper;
 
 	protected final String inputXmlFilePath;
-	
+
 	protected final String outputXmlFilePath;
 
 	protected final String xmlFileRelativeLocation;
@@ -71,11 +71,11 @@ public abstract class AbstractConverterTest {
 	}
 
 	public void parseInputXMLFiles() {
-		
-		
+
+
 		System.out.println("Parsing input files");
 
-		fileName_documentsMap.clear();
+		this.fileName_documentsMap.clear();
 		if (!this.canExecuteTestCase) {
 			return;
 		}
@@ -91,14 +91,14 @@ public abstract class AbstractConverterTest {
 			fail(e.getMessage());
 		}
 	}
-	
-	
+
+
 	public void parseGeneratedXMLFiles() {
-		
-		
+
+
 		System.out.println("Parsing generated files");
 
-		fileName_documentsMap.clear();
+		this.fileName_documentsMap.clear();
 
 		if (!this.canExecuteTestCase) {
 			return;
@@ -109,17 +109,17 @@ public abstract class AbstractConverterTest {
 		try {
 
 			/*-
-			 * Special handling for fetching the files is implemented as in certain cases, file extensions are updated during model migration 
+			 * Special handling for fetching the files is implemented as in certain cases, file extensions are updated during model migration
 			 */
 			File targetFile = new File(this.outputXmlFilePath);
-			if(!targetFile.exists()){
-				String fileExtension = Files.getFileExtension(targetFile.getAbsolutePath());
-				
-				if(!fileExtension.equalsIgnoreCase("amxmi")){
-					targetFile = new File(this.outputXmlFilePath+".amxmi");
+			if (!targetFile.exists()) {
+				final String fileExtension = Files.getFileExtension(targetFile.getAbsolutePath());
+
+				if (!fileExtension.equalsIgnoreCase("amxmi")) {
+					targetFile = new File(this.outputXmlFilePath + ".amxmi");
 				}
 			}
-			
+
 			this.helper.buildXMLDocumentsMap(targetFile, this.fileName_documentsMap);
 
 		}
@@ -133,39 +133,41 @@ public abstract class AbstractConverterTest {
 		final List<ICache> caches = new ArrayList<ICache>();
 
 
-//		final ComponentModelRefsCacheBuilder componentModelChangesCacheBuilder = new ComponentModelRefsCacheBuilder();
-//
-//		final LabelValueProviderRefsCacheBuilder labelValueProviderRefsCacheBuilder = new LabelValueProviderRefsCacheBuilder();
-//		
-//		final ModeLabelsCacheBuilder modeLabelsCacheBuilder=new ModeLabelsCacheBuilder();
-//
-//		caches.add(componentModelChangesCacheBuilder);
-//
-//		caches.add(labelValueProviderRefsCacheBuilder);
-//		
-//		caches.add(modeLabelsCacheBuilder);
-//
-//		for (final ICache iCache : caches) {
-//			iCache.buildCache(this.fileName_documentsMap);
-//		}
+		// final ComponentModelRefsCacheBuilder componentModelChangesCacheBuilder = new
+		// ComponentModelRefsCacheBuilder();
+		//
+		// final LabelValueProviderRefsCacheBuilder labelValueProviderRefsCacheBuilder = new
+		// LabelValueProviderRefsCacheBuilder();
+		//
+		// final ModeLabelsCacheBuilder modeLabelsCacheBuilder=new ModeLabelsCacheBuilder();
+		//
+		// caches.add(componentModelChangesCacheBuilder);
+		//
+		// caches.add(labelValueProviderRefsCacheBuilder);
+		//
+		// caches.add(modeLabelsCacheBuilder);
+		//
+		// for (final ICache iCache : caches) {
+		// iCache.buildCache(this.fileName_documentsMap);
+		// }
 		return caches;
 	}
 
 
 	@SafeVarargs
 	final protected void invokeDependentConverters_ForAll_Files(final Set<File> files,
-			final Map<File, Document> fileName_documentsMap, final List<ICache> caches, final Class<?>... converterClasss)
-			throws InstantiationException, IllegalAccessException, Exception {
+			final Map<File, Document> fileName_documentsMap, final List<ICache> caches,
+			final Class<?>... converterClasss) throws InstantiationException, IllegalAccessException, Exception {
 
 		if (converterClasss != null) {
 			for (final Class<?> class1 : converterClasss) {
 
 				if (IConverter.class.isAssignableFrom(class1)) {
-					
-					IConverter newInstance = (IConverter) class1.newInstance();
-					for(File file: files){
+
+					final IConverter newInstance = (IConverter) class1.newInstance();
+					for (final File file : files) {
 						newInstance.convert(file, fileName_documentsMap, caches);
-						
+
 					}
 
 				}
@@ -173,53 +175,57 @@ public abstract class AbstractConverterTest {
 
 		}
 	}
-	
-	
+
+
 	/**
-	 * This method is used to verify if the AMALTHEA namespaces used in this document are of AMALTHEA 1.1.1 
+	 * This method is used to verify if the AMALTHEA namespaces used in this document are of AMALTHEA 1.1.1
+	 * 
 	 * @param document
 	 */
-	protected void namespaceVerification(Document document) {
-		List<Namespace> namespacesInScope = document.getRootElement().getNamespacesInScope();
-		
-		for (Namespace namespace : namespacesInScope) {
+	protected void namespaceVerification(final Document document) {
+		final List<Namespace> namespacesInScope = document.getRootElement().getNamespacesInScope();
 
-			String prefix = namespace.getPrefix();
-			
-			if(prefix.equals("xmlns")||prefix.equals("xmi")||prefix.equals("xsi")||prefix.equals("")||prefix.equals("xml")){
+		for (final Namespace namespace : namespacesInScope) {
+
+			final String prefix = namespace.getPrefix();
+
+			if (prefix.equals("xmlns") || prefix.equals("xmi") || prefix.equals("xsi") || prefix.equals("")
+					|| prefix.equals("xml")) {
 				continue;
 			}
-			boolean isAmaltheaNameSpacePrefix = this.helper.enumTypeContainsIn070(prefix);
-			
-			if(isAmaltheaNameSpacePrefix){
-				boolean ns_AvailableIn_070 = this.helper.isNS_AvailableIn_070(namespace);
-				
-				assertTrue("Expected namespace from AMALTHEA 0.7.0 : "+ namespace.getURI()+"  --> "+ document.getBaseURI(),ns_AvailableIn_070);
-				
-			}else{
-				assertTrue("Invalid namespace is present in AMALTHEA model file : " +namespace.getURI(), false);
+			final boolean isAmaltheaNameSpacePrefix = this.helper.enumTypeContainsIn070(prefix);
+
+			if (isAmaltheaNameSpacePrefix) {
+				final boolean ns_AvailableIn_070 = this.helper.isNS_AvailableIn_070(namespace);
+
+				assertTrue("Expected namespace from AMALTHEA 0.7.0 : " + namespace.getURI() + "  --> "
+						+ document.getBaseURI(), ns_AvailableIn_070);
+
 			}
-			
+			else {
+				assertTrue("Invalid namespace is present in AMALTHEA model file : " + namespace.getURI(), false);
+			}
+
 		}
 	}
 
 	/**
 	 * This method is used to save all migrated files
+	 * 
 	 * @throws Exception
 	 */
 	protected void saveMigratedFiles() throws Exception {
-		
-		saveFiles(true, this.localOutputDirectory);
- }
-	
-	private void saveFiles( 
-			final boolean updateFileNames, String outputDirectoryLocation) throws Exception {
 
-		new FileNameUpdationProcessor().process(this.fileName_documentsMap, helper);
+		saveFiles(true, this.localOutputDirectory);
+	}
+
+	private void saveFiles(final boolean updateFileNames, final String outputDirectoryLocation) throws Exception {
+
+		new FileNameUpdationProcessor().process(this.fileName_documentsMap, this.helper);
 
 		final List<File> outputFiles = new ArrayList<File>();
 
-		final Set<File> keySet = fileName_documentsMap.keySet();
+		final Set<File> keySet = this.fileName_documentsMap.keySet();
 
 		for (final File inputFile : keySet) {
 
@@ -244,7 +250,7 @@ public abstract class AbstractConverterTest {
 			if (outputDirectoryLocation != null && !outputDirectoryLocation.equals("")) {
 
 				final String location = outputDirectoryLocation + File.separator + convertedFileName;
-				this.helper.saveFile(fileName_documentsMap.get(inputFile), location, true, true);
+				this.helper.saveFile(this.fileName_documentsMap.get(inputFile), location, true, true);
 
 				outputFile = new File(location);
 				/*-adding new file path */
@@ -253,7 +259,7 @@ public abstract class AbstractConverterTest {
 			else {
 				final String location = inputFile.getParentFile().getAbsolutePath() + File.separator
 						+ convertedFileName;
-				this.helper.saveFile(fileName_documentsMap.get(inputFile), location, true, true);
+				this.helper.saveFile(this.fileName_documentsMap.get(inputFile), location, true, true);
 
 				/*-adding new file path */
 
@@ -265,86 +271,90 @@ public abstract class AbstractConverterTest {
 		}
 
 
-
 	}
-	
-	@Rule public TestName testName = new TestName();
-	  
+
+	@Rule
+	public TestName testName = new TestName();
+
 	@Before
-    public void before() {
-        System.out.println("******************** Executing test case : "+ testName.getMethodName()+" *****************************");
-    }
-	
+	public void before() {
+		System.out.println("******************** Executing test case : " + this.testName.getMethodName()
+				+ " *****************************");
+	}
+
 	@After
-    public void after() {
-		System.out.println("******************** Completed execution of test case :  "+ testName.getMethodName()+" *****************************");
-    }
-	
+	public void after() {
+		System.out.println("******************** Completed execution of test case :  " + this.testName.getMethodName()
+				+ " *****************************");
+	}
+
 	/**
 	 * This method is used to apply the Xpath and query the contents
-	 * 
+	 *
 	 * Note: This mehtod is used only to query the Nodes, not the attributes
+	 * 
 	 * @param element
 	 * @param xpath
 	 * @return
 	 */
-	protected List<Element> getXpathResult(Element element, String xpath ) {
+	protected List<Element> getXpathResult(final Element element, final String xpath) {
 		final StringBuffer xpathBuffer = new StringBuffer();
-		xpathBuffer.append(
-				xpath);
+		xpathBuffer.append(xpath);
 
-		List<Element> elements = this.helper.getXpathResult(element, xpathBuffer.toString(), Element.class , getNameSpaces());
+		final List<Element> elements = this.helper.getXpathResult(element, xpathBuffer.toString(), Element.class,
+				getNameSpaces());
 		return elements;
 	}
 
 	private Namespace[] getNameSpaces() {
-		Namespace xmiNs = this.helper.getGenericNS("xmi");
+		final Namespace xmiNs = this.helper.getGenericNS("xmi");
 
-		Namespace xsiNs = this.helper.getGenericNS("xsi");
-		
-		List<Namespace> nsList=new ArrayList<Namespace>();
-		
+		final Namespace xsiNs = this.helper.getGenericNS("xsi");
+
+		final List<Namespace> nsList = new ArrayList<Namespace>();
+
 		nsList.add(xmiNs);
-		
-		nsList.add(xsiNs);
-		
-		NameSpace_111[] ns = NameSpace_111.values();
 
-		for (NameSpace_111 namespace : ns) {
-			
+		nsList.add(xsiNs);
+
+		final NameSpace_111[] ns = NameSpace_111.values();
+
+		for (final NameSpace_111 namespace : ns) {
+
 			nsList.add(this.helper.getNS_111(namespace.name()));
 		}
-		
-		NameSpace_070[] ns1 = NameSpace_070.values();
 
-		for (NameSpace_070 namespace : ns1) {
-			
+		final NameSpace_070[] ns1 = NameSpace_070.values();
+
+		for (final NameSpace_070 namespace : ns1) {
+
 			nsList.add(this.helper.getNS_070(namespace.name()));
 		}
 
-	  Namespace[] array = nsList.toArray( new Namespace[]{});
+		final Namespace[] array = nsList.toArray(new Namespace[] {});
 		return array;
 	}
-	
+
 	/**
 	 * This method is used to apply the Xpath and query the contents
-	 * 
+	 *
 	 * Note: This mehtod is used only to query the attributes, not the elements
+	 * 
 	 * @param element
 	 * @param xpath
 	 * @return
 	 */
-	protected List<Attribute> getXpathResult_Attributes(Element element, String xpath) {
+	protected List<Attribute> getXpathResult_Attributes(final Element element, final String xpath) {
 		final StringBuffer xpathBuffer = new StringBuffer();
-		xpathBuffer.append(
-				xpath);
+		xpathBuffer.append(xpath);
 
 
-		List<Attribute> attributes = this.helper.getXpathResult(element, xpathBuffer.toString(), Attribute.class,getNameSpaces());
+		final List<Attribute> attributes = this.helper.getXpathResult(element, xpathBuffer.toString(), Attribute.class,
+				getNameSpaces());
 		return attributes;
 	}
-	
-	public void testConversion(Class<?>...classes ) {
+
+	public void testConversion(final Class<?>... classes) {
 
 		if (!this.canExecuteTestCase) {
 			return;
@@ -354,29 +364,29 @@ public abstract class AbstractConverterTest {
 			parseInputXMLFiles();
 
 			final List<ICache> caches = buildCaches();
-			
-				invokeDependentConverters_ForAll_Files( this.fileName_documentsMap.keySet(), this.fileName_documentsMap, caches,
-						classes);
 
-				saveMigratedFiles();
+			invokeDependentConverters_ForAll_Files(this.fileName_documentsMap.keySet(), this.fileName_documentsMap,
+					caches, classes);
+
+			saveMigratedFiles();
 		}
 		catch (final Exception e) {
 			fail(e.getMessage());
 		}
 	}
-	
-	public void verification(){
+
+	public void verification() {
 
 		parseGeneratedXMLFiles();
 
-		Collection<Document> values = this.fileName_documentsMap.values();
-		
-		for (Document document : values) {
-			
+		final Collection<Document> values = this.fileName_documentsMap.values();
+
+		for (final Document document : values) {
+
 			/*- verifying the namespace */
 			namespaceVerification(document);
-			
+
 		}
-		
+
 	}
 }

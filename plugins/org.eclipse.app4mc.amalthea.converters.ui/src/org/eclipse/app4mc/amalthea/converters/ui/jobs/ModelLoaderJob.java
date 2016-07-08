@@ -55,33 +55,31 @@ public class ModelLoaderJob extends Job {
 		final Map<File, MigrationInputFile> modelFilesMap = new HashMap<File, MigrationInputFile>();
 
 		subMonitor.setTaskName("Loading selected model files ...");
-		
+
 		try {
-			populateModels(modelFilesMap, inputModels,subMonitor);
-		} catch (Exception e1) {
+			populateModels(modelFilesMap, this.inputModels, subMonitor);
+		}
+		catch (final Exception e1) {
 			return new Status(IStatus.CANCEL, "unknown", 1, e1.getMessage(), e1);
 		}
 
-		
-	 
-		/*for (final File file : this.inputModels) {
 
-			subMonitor.setTaskName("Loading file :  " + file.getAbsolutePath());
+		/*
+		 * for (final File file : this.inputModels) {
+		 * 
+		 * subMonitor.setTaskName("Loading file :  " + file.getAbsolutePath());
+		 * 
+		 * try { populateModels(modelFilesMap, file, false);
+		 * 
+		 * }
+		 * 
+		 * catch (final Exception e) {
+		 * 
+		 * return new Status(IStatus.CANCEL, "unknown", 1, e.getMessage(), e); }
+		 * 
+		 * subMonitor.worked(1); }
+		 */
 
-			try {
-				populateModels(modelFilesMap, file, false);
-				
-			}
-
-			catch (final Exception e) {
-
-				return new Status(IStatus.CANCEL, "unknown", 1, e.getMessage(), e);
-			}
-
-			subMonitor.worked(1);
-		}*/
-		
-	 
 
 		this.migrationSettings.getMigModelFiles().addAll(modelFilesMap.values());
 
@@ -90,23 +88,24 @@ public class ModelLoaderJob extends Job {
 	}
 
 
-	private void populateModels(Map<File, MigrationInputFile> modelFilesMap, List<File> inputModelFiles, SubMonitor subMonitor) throws Exception {
-		
-		Map<File, Document> loaded_documents_map=new HashMap<File, Document>();
-		
-		for (File file : inputModelFiles) {
+	private void populateModels(final Map<File, MigrationInputFile> modelFilesMap, final List<File> inputModelFiles,
+			final SubMonitor subMonitor) throws Exception {
+
+		final Map<File, Document> loaded_documents_map = new HashMap<File, Document>();
+
+		for (final File file : inputModelFiles) {
 
 			this.helper.buildXMLDocumentsMap(file, loaded_documents_map);
-			
+
 			subMonitor.worked(1);
 		}
-		
-		Set<File> filesForMigration = loaded_documents_map.keySet();
-		
-		for (File inputFile : filesForMigration) {
-			
-			Document xmlDocument = loaded_documents_map.get(inputFile);
-			
+
+		final Set<File> filesForMigration = loaded_documents_map.keySet();
+
+		for (final File inputFile : filesForMigration) {
+
+			final Document xmlDocument = loaded_documents_map.get(inputFile);
+
 			final MigrationInputFile migModelFile = new MigrationInputFile(this.migrationSettings);
 
 			migModelFile.setFile(inputFile);
@@ -117,10 +116,10 @@ public class ModelLoaderJob extends Job {
 			migModelFile.setDocument(xmlDocument);
 
 			setModelFileVersion(migModelFile, xmlDocument);
-			
+
 			modelFilesMap.put(inputFile, migModelFile);
 		}
-		
+
 	}
 
 	@Deprecated
@@ -165,11 +164,12 @@ public class ModelLoaderJob extends Job {
 			}
 
 			for (final String relativePath : referredFilePaths) {
-				
-				if(relativePath !=null && relativePath.length()>0){
-					
-					final File referredFile = new File(migModelFile.getFile().getParent() + File.separator + relativePath);
-					
+
+				if (relativePath != null && relativePath.length() > 0) {
+
+					final File referredFile = new File(
+							migModelFile.getFile().getParent() + File.separator + relativePath);
+
 					if (!referredFile.exists()) {
 						// TODO: log an error message
 					}
@@ -178,7 +178,7 @@ public class ModelLoaderJob extends Job {
 						final File canonicalFile = referredFile.getCanonicalFile();
 						final boolean isRefFileSelected = this.inputModels.contains(canonicalFile);
 						populateModels(modelFilesMap, canonicalFile, !isRefFileSelected);
-						
+
 					}
 				}
 
