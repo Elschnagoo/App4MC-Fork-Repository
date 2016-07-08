@@ -104,6 +104,15 @@ public interface AmaltheaFactory extends EFactory {
 	StringObject createStringObject();
 
 	/**
+	 * Returns a new object of class '<em>Big Integer Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Big Integer Object</em>'.
+	 * @generated
+	 */
+	BigIntegerObject createBigIntegerObject();
+
+	/**
 	 * Returns a new object of class '<em>Reference Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -37,6 +37,7 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
+import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.Bridge;
@@ -492,6 +493,13 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				StringObject stringObject = (StringObject)theEObject;
 				T1 result = caseStringObject(stringObject);
 				if (result == null) result = caseValue(stringObject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.BIG_INTEGER_OBJECT: {
+				BigIntegerObject bigIntegerObject = (BigIntegerObject)theEObject;
+				T1 result = caseBigIntegerObject(bigIntegerObject);
+				if (result == null) result = caseValue(bigIntegerObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3329,6 +3337,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseStringObject(StringObject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Big Integer Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Big Integer Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseBigIntegerObject(BigIntegerObject object) {
 		return null;
 	}
 

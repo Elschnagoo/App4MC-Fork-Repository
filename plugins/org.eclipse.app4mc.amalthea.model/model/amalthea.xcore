@@ -270,6 +270,19 @@ class StringObject extends Value{
 }
 
 /*
+ * Object for using the elementary datatype String as generic parameter
+ */
+class BigIntegerObject extends Value{ 
+	BigInteger[1] value
+	op String toString() {
+		if (value == null)
+			return "(BigInteger) null"
+		else
+			return "(BigInteger) \"" + value + "\""
+	}
+}
+
+/*
  * Object for using object reference as generic parameter
  */
 class ReferenceObject extends Value

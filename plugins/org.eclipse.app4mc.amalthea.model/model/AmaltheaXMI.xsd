@@ -676,6 +676,21 @@ exclusive: gets access to requested semaphore only when there is no other user a
       <xsd:documentation>Object for using the elementary datatype String as generic parameter</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="BigIntegerObject">
+    <xsd:annotation>
+      <xsd:documentation>Object for using the elementary datatype String as generic parameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Value">
+        <xsd:attribute name="value" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="BigIntegerObject" type="am:BigIntegerObject">
+    <xsd:annotation>
+      <xsd:documentation>Object for using the elementary datatype String as generic parameter</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="ReferenceObject">
     <xsd:annotation>
       <xsd:documentation>Object for using object reference as generic parameter</xsd:documentation>

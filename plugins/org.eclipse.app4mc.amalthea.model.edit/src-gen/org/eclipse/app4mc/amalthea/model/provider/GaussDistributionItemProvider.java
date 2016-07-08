@@ -201,6 +201,11 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
+				 AmaltheaFactory.eINSTANCE.createBigIntegerObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
 				 AmaltheaFactory.eINSTANCE.createReferenceObject()));
 
 		newChildDescriptors.add
@@ -1467,6 +1472,11 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
 				 AmaltheaFactory.eINSTANCE.createStringObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
+				 AmaltheaFactory.eINSTANCE.createBigIntegerObject()));
 
 		newChildDescriptors.add
 			(createChildParameter

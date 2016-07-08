@@ -37,6 +37,7 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
+import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.Bridge;
@@ -448,6 +449,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseStringObject(StringObject object) {
 				return createStringObjectAdapter();
+			}
+			@Override
+			public Adapter caseBigIntegerObject(BigIntegerObject object) {
+				return createBigIntegerObjectAdapter();
 			}
 			@Override
 			public Adapter caseReferenceObject(ReferenceObject object) {
@@ -1860,6 +1865,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStringObjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.BigIntegerObject <em>Big Integer Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.BigIntegerObject
+	 * @generated
+	 */
+	public Adapter createBigIntegerObjectAdapter() {
 		return null;
 	}
 

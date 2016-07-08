@@ -1,6 +1,7 @@
 package org.eclipse.app4mc.amalthea.model.provider;
 
 import com.google.common.base.Objects;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
+import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
@@ -471,6 +473,45 @@ public class CustomItemProviderService {
         _xifexpression_1 = "null";
       } else {
         String _value_1 = ((StringObject)object).getValue();
+        String _plus = ("\"" + _value_1);
+        _xifexpression_1 = (_plus + "\"");
+      }
+      final String s2 = _xifexpression_1;
+      return (s1 + s2);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  /**
+   * BigIntegerObjectItemProvider
+   */
+  public static String getBigIntegerObjectItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof BigIntegerObject)) {
+      EStructuralFeature _eContainingFeature = null;
+      if (((BigIntegerObject)object)!=null) {
+        _eContainingFeature=((BigIntegerObject)object).eContainingFeature();
+      }
+      final EStructuralFeature feature = _eContainingFeature;
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, null);
+      if (_equals) {
+        _xifexpression = "";
+      } else {
+        String _name = feature.getName();
+        _xifexpression = (_name + ": ");
+      }
+      final String s1 = _xifexpression;
+      String _xifexpression_1 = null;
+      BigInteger _value = null;
+      if (((BigIntegerObject)object)!=null) {
+        _value=((BigIntegerObject)object).getValue();
+      }
+      boolean _equals_1 = Objects.equal(_value, null);
+      if (_equals_1) {
+        _xifexpression_1 = "null";
+      } else {
+        BigInteger _value_1 = ((BigIntegerObject)object).getValue();
         String _plus = ("\"" + _value_1);
         _xifexpression_1 = (_plus + "\"");
       }

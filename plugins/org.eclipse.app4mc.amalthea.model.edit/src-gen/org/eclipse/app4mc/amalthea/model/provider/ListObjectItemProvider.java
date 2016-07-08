@@ -166,6 +166,11 @@ public class ListObjectItemProvider extends ValueItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getListObject_Values(),
+				 AmaltheaFactory.eINSTANCE.createBigIntegerObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getListObject_Values(),
 				 AmaltheaFactory.eINSTANCE.createReferenceObject()));
 
 		newChildDescriptors.add

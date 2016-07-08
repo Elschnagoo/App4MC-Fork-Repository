@@ -39,6 +39,7 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
+import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.Bridge;
@@ -489,6 +490,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass stringObjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass bigIntegerObjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3313,6 +3321,33 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EOperation getStringObject__ToString() {
 		return stringObjectEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBigIntegerObject() {
+		return bigIntegerObjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBigIntegerObject_Value() {
+		return (EAttribute)bigIntegerObjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getBigIntegerObject__ToString() {
+		return bigIntegerObjectEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -10758,6 +10793,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(stringObjectEClass, STRING_OBJECT__VALUE);
 		createEOperation(stringObjectEClass, STRING_OBJECT___TO_STRING);
 
+		bigIntegerObjectEClass = createEClass(BIG_INTEGER_OBJECT);
+		createEAttribute(bigIntegerObjectEClass, BIG_INTEGER_OBJECT__VALUE);
+		createEOperation(bigIntegerObjectEClass, BIG_INTEGER_OBJECT___TO_STRING);
+
 		referenceObjectEClass = createEClass(REFERENCE_OBJECT);
 		createEReference(referenceObjectEClass, REFERENCE_OBJECT__VALUE);
 		createEOperation(referenceObjectEClass, REFERENCE_OBJECT___TO_STRING);
@@ -11915,6 +11954,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		signedTimeEClass.getESuperTypes().add(this.getAbstractTime());
 		listObjectEClass.getESuperTypes().add(this.getValue());
 		stringObjectEClass.getESuperTypes().add(this.getValue());
+		bigIntegerObjectEClass.getESuperTypes().add(this.getValue());
 		referenceObjectEClass.getESuperTypes().add(this.getValue());
 		integerObjectEClass.getESuperTypes().add(this.getValue());
 		longObjectEClass.getESuperTypes().add(this.getValue());
@@ -12336,6 +12376,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getStringObject_Value(), theEcorePackage.getEString(), "value", null, 1, 1, StringObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getStringObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(bigIntegerObjectEClass, BigIntegerObject.class, "BigIntegerObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBigIntegerObject_Value(), theEcorePackage.getEBigInteger(), "value", null, 1, 1, BigIntegerObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getBigIntegerObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(referenceObjectEClass, ReferenceObject.class, "ReferenceObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReferenceObject_Value(), this.getIReferable(), null, "value", null, 0, 1, ReferenceObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

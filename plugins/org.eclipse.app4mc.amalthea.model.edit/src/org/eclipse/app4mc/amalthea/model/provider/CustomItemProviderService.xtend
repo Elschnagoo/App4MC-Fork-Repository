@@ -126,6 +126,7 @@ import org.eclipse.app4mc.amalthea.model.PercentageMetric
 import org.eclipse.app4mc.amalthea.model.TimeMetric
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry
+import org.eclipse.app4mc.amalthea.model.BigIntegerObject
 
 class CustomItemProviderService {
 
@@ -274,6 +275,20 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getStringObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof StringObject) {
+			val feature = object?.eContainingFeature()
+			val s1 = if(feature == null) "" else feature.name + ": "
+			val s2 = if(object?.value == null) "null" else "\"" + object.value + "\"";
+			return s1 + s2
+		} else {
+			return defaultText
+		}
+	}
+
+	/*****************************************************************************
+	 * 						BigIntegerObjectItemProvider
+	 *****************************************************************************/
+	def static String getBigIntegerObjectItemProviderText(Object object, String defaultText) {
+		if (object instanceof BigIntegerObject) {
 			val feature = object?.eContainingFeature()
 			val s1 = if(feature == null) "" else feature.name + ": "
 			val s2 = if(object?.value == null) "null" else "\"" + object.value + "\"";

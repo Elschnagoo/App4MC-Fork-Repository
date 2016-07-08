@@ -31,6 +31,7 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurve;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
+import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.Bridge;
@@ -352,6 +353,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CUSTOM_PROPERTY: return (EObject)createCustomProperty();
 			case AmaltheaPackage.LIST_OBJECT: return createListObject();
 			case AmaltheaPackage.STRING_OBJECT: return createStringObject();
+			case AmaltheaPackage.BIG_INTEGER_OBJECT: return createBigIntegerObject();
 			case AmaltheaPackage.REFERENCE_OBJECT: return createReferenceObject();
 			case AmaltheaPackage.INTEGER_OBJECT: return createIntegerObject();
 			case AmaltheaPackage.LONG_OBJECT: return createLongObject();
@@ -845,6 +847,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public StringObject createStringObject() {
 		StringObjectImpl stringObject = new StringObjectImpl();
 		return stringObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BigIntegerObject createBigIntegerObject() {
+		BigIntegerObjectImpl bigIntegerObject = new BigIntegerObjectImpl();
+		return bigIntegerObject;
 	}
 
 	/**

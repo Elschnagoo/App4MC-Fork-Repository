@@ -289,6 +289,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.BigIntegerObject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BigIntegerObjectItemProvider bigIntegerObjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.BigIntegerObject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBigIntegerObjectAdapter() {
+		if (bigIntegerObjectItemProvider == null) {
+			bigIntegerObjectItemProvider = new BigIntegerObjectItemProvider(this);
+		}
+
+		return bigIntegerObjectItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ReferenceObject} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5686,6 +5709,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (customPropertyItemProvider != null) customPropertyItemProvider.dispose();
 		if (listObjectItemProvider != null) listObjectItemProvider.dispose();
 		if (stringObjectItemProvider != null) stringObjectItemProvider.dispose();
+		if (bigIntegerObjectItemProvider != null) bigIntegerObjectItemProvider.dispose();
 		if (referenceObjectItemProvider != null) referenceObjectItemProvider.dispose();
 		if (integerObjectItemProvider != null) integerObjectItemProvider.dispose();
 		if (longObjectItemProvider != null) longObjectItemProvider.dispose();

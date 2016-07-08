@@ -218,6 +218,11 @@ public class CustomPropertyItemProvider extends AmaltheaExtendedItemProviderAdap
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getCustomProperty_Value(),
+				 AmaltheaFactory.eINSTANCE.createBigIntegerObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getCustomProperty_Value(),
 				 AmaltheaFactory.eINSTANCE.createReferenceObject()));
 
 		newChildDescriptors.add
