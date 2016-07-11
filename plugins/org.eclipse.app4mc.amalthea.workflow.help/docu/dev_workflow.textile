@@ -3,11 +3,14 @@ h1. Model Workflow
 
 h2. Introduction
 
-The APP4MC AMALTHEA platform provides the option to define a workflow on a model with different steps. AMALTHEA provides a simple API for implementing such a workflow. The definition of the workflow can be done either in plain Java or any other language, which is able to access Java classes. The "EASE":https://www.eclipse.org/ease/ framework provides a scripting environment inside of Eclipse with different script engines like  Rhino (JavaScript), Jython or Groovy. AMALTHEA provides a sample and some convenient helpers based on EASE to define and execute such a workflow.
+The APP4MC AMALTHEA platform provides the option to define a workflow on a model with different steps. AMALTHEA provides a simple API for implementing such a workflow. The definition of the workflow can be done either in plain Java or any other language, which is able to access Java classes. 
+The "EASE":https://www.eclipse.org/ease/ framework provides a scripting environment inside of Eclipse with different script engines like  Rhino (JavaScript), Jython or Groovy. AMALTHEA provides a sample and some convenient helpers based on EASE to define and execute such a workflow.
+As an alternative APP4MC provides also an implementation for the "Modeling Workflow Engine 2 (MWE2)":http://www.eclipse.org/Xtext/documentation/302_configuration.html, coming from the Xtext framework. The definition of the workflow can be done in a textual syntax from MWE2, containing different components which are working on the given model.  
 AMALTHEA provides several plugins for this purpose: 
 
-* __org.eclipse.app4mc.amalthea.workflow.core__: Includes basic API and some predefined workflow components
+* __org.eclipse.app4mc.amalthea.workflow.core__: Includes basic API and some predefined workflow components, which can be used independent from any framework. 
 * __org.eclipse.app4mc.amalthea.workflow.ease__: Provides some helper modules for EASE
+* __org.eclipse.app4mc.amalthea.workflow.base__: Provides basic classes for usage with MWE2
 
 h2. General Structure
 
@@ -43,13 +46,13 @@ The next step is to create a __WorkflowDefinition__, which needs to do the follo
 # Call the __run__ method of @WorkfklowComponent2@ and pass the context
 
 Therefore using the context, data can be shared between the different workflow component implementations.
-The following diagram shows this flow in more detail:
+The following diagram is showing this flow in more detail:
 
 !../pictures/uml_workflow_overview_sequence.png!
 
 h2(#AC). Available Basic Components
 
-The AMALTHEA platform ships with some available workflow steps, which can be used out of the box.
+The APP4MC AMALTHEA platform ships with some available workflow steps, which can be used out of the box.
 
 h3. Model Reader
 
@@ -146,6 +149,92 @@ The following overview gives an overview about the available helper methods:
 | addLoggerToConsole | String loggerName | Adds a Log4J logger to the output of the current used output of the EASE script engine. |
 | addLoggerToConsole | String loggerName, String pattern | Adds a Log4J logger to the output of the current used output of the EASE script engine with a given pattern, see @org.apache.log4j.PatternLayout@ for more details |
 | endWorkflow | - | Basic finish actions to be performed, should be called at the end |
+
+h2. MWE2 Workflow
+
+The plugin __org.eclipse.app4mc.amalthea.workflow.base__ provides a general class @org.eclipse.app4mc.amalthea.workflow.base.AmaltheaWorkflow@ which can be used to extend in the case to provide or implement an own workflow step based on "Modeling Workflow Engine 2 (MWE2)":http://www.eclipse.org/Xtext/documentation/302_configuration.html. 
+It provides the following features:
+
+* Extends @org.eclipse.emf.mwe.core.lib.WorkflowComponentWithModelSlot@
+* Defines the constant AMALTHEA_SLOT, which can be used to store and retrieve the AMALTHEA model from the @org.eclipse.emf.mwe.core.WorkflowContext@.
+* Provides some convenient methods to retrieve the model from the context, get a copy of the model or store the model in the context.
+
+!../pictures/uml_workflow_component_mwe2.png!
+
+To use the AMALTHEA model workflow component, currently the following dependencies are needed in addition to the AMALTHEA model plugins:
+
+* org.eclipse.app4mc.amalthea.workflow.base
+* org.eclipse.emf.mwe2.lib
+* org.eclipse.emf.mwe2.launch
+* org.apache.log4j
+
+h3. MWE2 Components
+
+The APP4MC AMALTHEA platform ships with some available workflow steps for usage together with MWE2. 
+Note: To use the components below as shown in the corresponding configurations, the classes must be imported!
+
+h4. Reader
+
+The component @org.eclipse.app4mc.amalthea.workflow.util.AmaltheaReader@ reads a given list of files containing AMALTHEA models. The result model is stored in the __AMALTHEA_SLOT__ as default.
+
+!../pictures/uml_model_reader_mwe2.png!
+
+Sample configuration inside of a workflow:
+
+bc. 
+component = AmaltheaReader {
+	fileName = "${base}/model/AMALTHEA_Democar_MappingExample.amxmi"
+	fileName = "${base}/model/AMALTHEA_Democar_MappingExample-hw.amxmi"
+}
+
+h4. Writer
+
+The component @org.eclipse.app4mc.amalthea.workflow.util.AmaltheaWriter@ writes a given AMALTHEA model to either one file or several files. As default the current available model in the __AMALTHEA_SLOT__ is taken. 
+The following parameters are available to set:
+
+* boolean singleFile default true
+* String outputDir
+* String fileName, if output is set to split files the different models are separated by an additional suffix in the name indicating the contained model.
+
+!../pictures/uml_model_writer_mwe2.png!
+
+Sample configuration inside of a workflow:
+
+bc. 
+component = AmaltheaWriter {
+	fileName = "createtasks"
+	singleFile = true
+	outputDir = "${base}/workflow-output"
+}
+
+h4. Add Schedule Points
+
+The component @org.eclipse.app4mc.amalthea.workflow.util.AddSchedulePoints@ modifies a given model (default in the AMALTHEA_SLOT) in that way, that in the @org.eclipse.app4mc.amalthea.model.SWModel@ the contained @org.eclipse.app4mc.amalthea.model.Task@ elements are checked if the preemption is set to cooperative. If this is the case, it will add between the elements of the @org.eclipse.app4mc.amalthea.model.CallGraph@ new elements of type @org.eclipse.app4mc.amalthea.model.SchedulePoint@.
+
+!../pictures/uml_add_schedule_points_mwe2.png!
+
+Sample configuration inside of a workflow:
+
+bc. 
+component = AddSchedulePoints {
+}
+
+h2. Current Limitations / Open Points
+
+As there are two options available (Basic Java/EASE and MWE2 based) for running a workflow, there are currently also some limitations existent. The following table should help you to chose the right base:
+
+|_.Use Case  |_. Supported in MWE2 |_.Supported in EASE |_.Reason |
+|Loading of AMALTHEA model files (with cross document references) using workflow/script file | no | yes | <ul><li> Separate Java runtime is started by MWE2, Sphinx relies in running Eclipse instance </li><li> EASE makes use of the runtime from runtime workbench</li></ul> |
+|Using workflow components which are available in the runtime (i.e. workflow component class’s which are already available in plugins as a part of the runtime product)| yes | yes | <ul><li> Separate runtime is started by MWE2 and if plugin (containing workflow component) is added as dependency then its classes are loaded </li><li> EASE makes use of the runtime from runtime workbench and has access to all classes </li></ul> |
+|Defining custom workflow components (Java class’s) and using them in the workflow/script file located in the same workspace| yes | yes | <ul><li> MWE2: Custom workflow component objects can be directly created in MWE2 script file(as in Java) and there is no restriction [irrespective of whether there is constructor] </li> <li> EASE: As the runtime from the launched workbench (runtime workbench) is used, custom Java classes available in the workspace are not part of the classpath. For creation of objects of custom workflow components (Java classes) : EASE JVM module – “createInstance” API should be used by specifying the absolute path of the Java class </li></ul> |
+| Using Java classes (available in the runtime workspace from other plugins --> these classes are not part of runtime workbench) inside custom workflow component Java classes | yes | yes | <ul><li> MWE2 : works perfectly (just like native) </li><li> EASE : works, for creation of object from custom Java classes, EASE JVM module is used, which compiles the used Java classes and creates objects of them </li></ul> |
+|Using classes (API) from 3rd party libraries (added in the classpath of the plugin)inside custom workflow component java classes| yes | no | <ul><li> MWE2: As new Java runtime is created, all the required plugins & jars are added in the classpath </li><li> EASE:  In the current implementation only the runtime from workbench is considered, jars from the classpath of a plugin (created newly in the runtime workbench) are not loaded in the runtime of EASE. Due to this reason, execution of the script fails with an exception java.lang.NoClassDefFoundError: <your used class from 3rd party lib>
+</li></ul> |
+
+Sample for using EASE JVM module to load a class from the same workspace:
+
+bc. 
+var labelsCreationComponent = createInstance("workspace://com.ease.example/src/org/eclipse/app4mc/amalthea/example/workflow/components/CreateLabelsComponent.java")
 
 
 h2. Overall Sample
