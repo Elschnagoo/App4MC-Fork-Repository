@@ -24,7 +24,7 @@
 	</description>
 
 	<!-- path to wikitext standalone package -->
-	<property name="lib.folder" value="/shared/common/mylyn-wikitext/2.9.0.v20160513-1433"/>
+	<property name="lib.folder" value="${basedir}/../../dev_env_lib/help_docu"/>
 	<property name="docu.folder" value="${basedir}/docu"/>
 	<property name="styles.folder" value="${basedir}/../org.eclipse.app4mc.help/styles"/>
 	<property name="build.folder" value="${basedir}/build"/>
