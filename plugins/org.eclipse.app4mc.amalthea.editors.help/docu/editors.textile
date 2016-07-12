@@ -4,12 +4,17 @@ h1. Editors / Viewers
 Additional editors and viewers:
 
 * AMALTHEA Trace Database Metrics Viewer
-* xxx
+* __more (under development)__
 
 
 h2. AMALTHEA Trace Database Metrics Viewer
 
+!../pictures/metric-viewer_open.png!
 
-here comes the text
+!../pictures/metric-viewer_table.png!
 
-h2. xxx
+
+
+h2. __more__
+
+__Additional editors / viewers are under development__
