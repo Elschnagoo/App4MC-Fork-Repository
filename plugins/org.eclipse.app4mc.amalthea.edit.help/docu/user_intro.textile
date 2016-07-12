@@ -25,7 +25,7 @@ bq..  The scope of an AMALTHEA model is defined by its enclosing container (proj
 
 p. *Step 2: Create a new folder inside of the created project*
 
-bq..  It is recommended to create a folder (__although a project is also a possible container__).
+bq..  It is recommended to create a folder ( __although a project is also a possible container__ ).
   
       !../pictures/user_guide_step2_create-folder.png!
 

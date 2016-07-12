@@ -8,9 +8,11 @@ The "EASE":https://www.eclipse.org/ease/ framework provides a scripting environm
 As an alternative APP4MC provides also an implementation for the "Modeling Workflow Engine 2 (MWE2)":http://www.eclipse.org/Xtext/documentation/302_configuration.html, coming from the Xtext framework. The definition of the workflow can be done in a textual syntax from MWE2, containing different components which are working on the given model.
 AMALTHEA provides several plugins for this purpose:
 
-* __org.eclipse.app4mc.amalthea.workflow.core__: Includes basic API and some predefined workflow components, which can be used independent from any framework.
-* __org.eclipse.app4mc.amalthea.workflow.ease__: Provides some helper modules for EASE
-* __org.eclipse.app4mc.amalthea.workflow.base__: Provides basic classes for usage with MWE2
+- org.eclipse.app4mc.amalthea.workflow.core := Includes basic API and some predefined workflow components, which can be used independent from any framework.
+
+- org.eclipse.app4mc.amalthea.workflow.ease := Provides some helper modules for EASE
+
+- org.eclipse.app4mc.amalthea.workflow.base := Provides basic classes for usage with MWE2
 
 h2. General Structure
 
@@ -226,10 +228,9 @@ As there are two options available (Basic Java/EASE and MWE2 based) for running 
 |_.Use Case  |_. Supported in MWE2 |_.Supported in EASE |_.Reason |
 |Loading of AMALTHEA model files (with cross document references) using workflow/script file | no | yes | <ul><li> *MWE2*: Separate Java runtime is started by MWE2, Sphinx relies in running Eclipse instance </li><li> *EASE*: Makes use of the runtime from runtime workbench</li></ul> |
 |Using workflow components which are available in the runtime (i.e. workflow component classes which are already available in plugins as a part of the runtime product)| yes | yes | <ul><li> *MWE2*: Separate runtime is started by MWE2 and if plugin (containing workflow component) is added as dependency then its classes are loaded </li><li> *EASE*: Makes use of the runtime from runtime workbench and has access to all classes </li></ul> |
-|Defining custom workflow components (Java classes) and using them in the workflow/script file located in the same workspace| yes | yes | <ul><li> *MWE2*: Custom workflow component objects can be directly created in MWE2 script file(as in Java) and there is no restriction [irrespective of whether there is constructor] </li> <li> *EASE*: As the runtime from the launched workbench (runtime workbench) is used, custom Java classes available in the workspace are not part of the classpath. For creation of objects of custom workflow components (Java classes): EASE JVM module @createInstance@ API should be used by specifying the absolute path of the Java class </li></ul> |
+|Defining custom workflow components (Java classes) and using them in the workflow/script file located in the same workspace| yes | yes | <ul><li> *MWE2*: Custom workflow component objects can be directly created in MWE2 script file(as in Java) and there is no restriction [irrespective of whether there is constructor] </li><li> *EASE*: As the runtime from the launched workbench (runtime workbench) is used, custom Java classes available in the workspace are not part of the classpath. For creation of objects of custom workflow components (Java classes): EASE JVM module @createInstance@ API should be used by specifying the absolute path of the Java class </li></ul> |
 | Using Java classes (available in the runtime workspace from other plugins --> these classes are not part of runtime workbench) inside custom workflow component Java classes | yes | yes | <ul><li> *MWE2*: works perfectly (just like native) </li><li> *EASE*: works, for creation of object from custom Java classes, EASE JVM module is used, which compiles the used Java classes and creates objects of them </li></ul> |
-|Using classes (API) from 3rd party libraries (added in the classpath of the plugin)inside custom workflow component java classes| yes | no(*) | <ul><li> *MWE2*: As new Java runtime is created, all the required plugins & jars are added in the classpath </li><li> *EASE*:  In the current implementation only the runtime from workbench is considered, jars from the classpath of a plugin (created newly in the runtime workbench) are not loaded in the runtime of EASE. Due to this reason, execution of the script fails with an exception java.lang.NoClassDefFoundError: <your used class from 3rd party lib>
-</li></ul> |
+|Using classes (API) from 3rd party libraries (added in the classpath of the plugin)inside custom workflow component java classes| yes | no(*) | <ul><li> *MWE2*: As new Java runtime is created, all the required plugins & jars are added in the classpath </li><li> *EASE*:  In the current implementation only the runtime from workbench is considered, jars from the classpath of a plugin (created newly in the runtime workbench) are not loaded in the runtime of EASE. Due to this reason, execution of the script fails with an exception java.lang.NoClassDefFoundError: <your used class from 3rd party lib> </li></ul> |
 
 *: This feature is already available in the master branch of EASE. Consider to update it to an newer version than 0.3.0 if it is needed.
 
