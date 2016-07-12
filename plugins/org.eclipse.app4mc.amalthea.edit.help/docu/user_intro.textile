@@ -1,7 +1,7 @@
 
 h1. Introduction
 
-AMALTHEA comes with a predefined perspective available in the Eclipse menu under Window -> Open Perspective -> Other -> AMALTHEA. This perspective consists of the following elements:
+APP4MC comes with a predefined perspective available in the Eclipse menu under Window -> Open Perspective -> Other -> APP4MC. This perspective consists of the following elements:
 
 * AMALTHEA Model Explorer
 * Editor
@@ -11,43 +11,34 @@ The following screenshot is showing this perspective and its contained elements.
 
 !../pictures/user_guide_editor_structure.png!
 
+
 h2. Steps to create a new AMALTHEA model
 
-AMALTHEA provides a standard wizard to create a new model from scratch.
-The next steps are showing this wizard and how to deal with it.
+APP4MC provides a standard wizard to create a new AMALTHEA model from scratch.
 
-Basic starting point is __File__ -> __New__ -> __Other__
-An entry for a new AMALTHEA model can be found.
+p. *Step 1: Create a new general project*
 
-!../pictures/user_guide_wizard_step1.png!
+bq..  The scope of an AMALTHEA model is defined by its enclosing container (project or folder).
+      Therefore a project is required.
 
-In the next screen the content of the file must be chosen.
-At the first option __Metamodel__ the __AMALTHEA Model__ should be chosen.
-The second option __Root element package__ gives the option to chose one of the provided AMALTHEA submodels. 
-If you want to have one file containing all or more than one submodel, you should use the __central__.
+      !../pictures/user_guide_step1_create-project.png!
 
-!../pictures/user_guide_wizard_step2_1.png!
+p. *Step 2: Create a new folder inside of the created project*
 
-As a third point the __Root element class__ must be chosen.
-For the __central__ model only one element is available, the __AMALTHEA__ element, which is able to hold the other submodels.
+bq..  It is recommended to create a folder (__although a project is also a possible container__).
+  
+      !../pictures/user_guide_step2_create-folder.png!
 
-!../pictures/user_guide_wizard_step2_2.png!
+p. *Step 3: Create a new AMALTHEA model*
 
-Choosing another submodel, there is always one central element available for every submodel. These elements are shown in more detail in the next table:
+bq..  In the context menu (right mouse button) an entry for a new AMALTHEA model can be found.
 
-|_. SubModel |_. Central element |
-| sw | SWModel |
-| constraints | ConstraintsModel |
-| config | ConfigModel |
-| propertyconstraints | PropertyConstraintsModel |
-| central | AMALTHEA |
-| events | EventModel |
-| hw | HWModel |
-| os | OSModel |
-| stimuli | StimuliModel |
-| mapping | MappingModel |
+      !../pictures/user_guide_step3_create-model.png!
 
-In the last step a name for the new model file has to be given.
+      Another starting point is __File__ -> __New__ -> __Other__
+
+      In the dialog you can select the parent folder and the file name.
+
 
 h2. AMALTHEA Editor
 
@@ -85,21 +76,24 @@ h2. AMALTHEA Examples
 
 The AMALTHEA tool platform comes with several examples. This section will describe how a new project based on these examples can be created. 
 
-*Step 1*
+p. *Step 1*
 
-!../pictures/ExampleMapping/01CreateNewExample.png!
+bq..  Click the "new" icon in the top left corner and select "Example...".
 
-The first step is to create project. To do this, click the "new" icon in the top left corner and select "Example...".
+      !../pictures/example-mapping/01-create-new-example.png!
 
-*Step 2*
+p. *Step 2*
 
-!../pictures/ExampleMapping/02DemoCarExample.png!
+bq..  The "New Example" wizard will pop up and shows several examples.
+      Select one examples and hit continue.
 
-The "New Example" wizard will pop up and you chose one from several examples. Select one of this examples and hit next to continue.
+      !../pictures/example-mapping/02-select-democar-example.png!
+ 
+p. *Step 3*
 
-*Step 3*
+bq..  You will see a summary of the example projects that will be created.
+      Click "Finish" to exit this dialog.
+      
+      !../pictures/example-mapping/03_democar-example-finish.png!
 
-!../pictures/ExampleMapping/03DemoCarExampleFinish.png!
-
-You will see a summary of the example projects that will be imported. Click "Finish" to close this dialog and import the listed project(s). You can now navigate through the Project Explorer and inspect the models.
-
+      You can now open the editor to inspect the models.
