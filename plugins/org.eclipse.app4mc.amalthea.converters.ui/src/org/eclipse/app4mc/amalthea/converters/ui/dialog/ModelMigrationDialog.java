@@ -12,6 +12,8 @@ package org.eclipse.app4mc.amalthea.converters.ui.dialog;
 
 import java.util.Comparator;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.ui.jobs.IMigrationJobConstants;
 import org.eclipse.app4mc.amalthea.converters.ui.jobs.ModelMigrationJob;
 import org.eclipse.app4mc.amalthea.converters.ui.providers.MigrationInputDataProvider;
@@ -75,9 +77,12 @@ public class ModelMigrationDialog extends Dialog {
 	private Button migrateModelsButton;
 	private String outputDirectoryLocation;
 
+	private final Logger logger; 
 
 	public ModelMigrationDialog(final Shell parentShell, final MigrationSettings migrationSettings) {
 		super(parentShell);
+		logger=LogManager.getLogger("Model-Migration");
+		
 		setMigrationSettings(migrationSettings);
 
 		if (getMigrationSettings() == null) {
@@ -262,7 +267,7 @@ public class ModelMigrationDialog extends Dialog {
 				final String selectedPath = dialog.open();
 
 				if (selectedPath != null) {
-					System.out.println(ModelMigrationDialog.this.getMigrationSettings().getOutputDirectoryLocation());
+					logger.info(ModelMigrationDialog.this.getMigrationSettings().getOutputDirectoryLocation());
 
 					ModelMigrationDialog.this.setOutputDirectoryLocation(selectedPath);
 
@@ -401,12 +406,11 @@ public class ModelMigrationDialog extends Dialog {
 											"Model Migration successful !!");
 
 									try {
-										getMigrationSettings().getiProject().refreshLocal(IResource.DEPTH_ONE,
+										getMigrationSettings().getiProject().refreshLocal(IResource.DEPTH_INFINITE,
 												new NullProgressMonitor());
 									}
 									catch (final CoreException e) {
-										// TODO MEZ2RNG Auto-generated catch block
-										e.printStackTrace();
+										logger.error(e.getMessage(), e);
 									}
 
 								}

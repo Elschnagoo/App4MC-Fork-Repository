@@ -77,7 +77,7 @@ public class ComponentModelRefsConverter implements IConverter {
 
 					final String updated_uriFragment = this.helper.getURIFragment(element, ModelVersion._111);
 
-					System.out.println(uriFragment + " : : " + element + " : : " + updated_uriFragment);
+					logger.info(uriFragment + " : : " + element + " : : " + updated_uriFragment);
 
 					final List<Attribute> list = uriFragment_component_attribs_map.get(uriFragment);
 

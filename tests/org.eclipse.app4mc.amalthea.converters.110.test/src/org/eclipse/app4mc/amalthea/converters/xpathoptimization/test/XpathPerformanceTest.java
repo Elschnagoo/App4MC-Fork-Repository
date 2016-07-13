@@ -87,7 +87,7 @@ public class XpathPerformanceTest extends AbstractConverterTest
 		final Map<String, List<Element>> resultsMap = bulkXpathOperation.invokeXpath(document, xpaths, this.helper);
 
 		for (final String string : xpaths) {
-			System.out.println("xpath : " + string + " elements : " + resultsMap.get(string).size());
+			this.logger.info("xpath : " + string + " elements : " + resultsMap.get(string).size());
 		}
 
 	}

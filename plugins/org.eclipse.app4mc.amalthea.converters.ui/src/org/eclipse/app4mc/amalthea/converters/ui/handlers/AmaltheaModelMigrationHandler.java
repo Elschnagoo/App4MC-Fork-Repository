@@ -15,10 +15,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.utils.BaseHelperUtils;
 import org.eclipse.app4mc.amalthea.converters.ui.dialog.MigrationErrorDialog;
 import org.eclipse.app4mc.amalthea.converters.ui.dialog.ModelMigrationDialog;
 import org.eclipse.app4mc.amalthea.converters.ui.jobs.ModelLoaderJob;
+import org.eclipse.app4mc.amalthea.converters.ui.log.utils.CustomEclipseLogAppender;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.MigrationInputFile;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.MigrationSettings;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -41,9 +44,17 @@ import org.eclipse.ui.handlers.HandlerUtil;
 public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler {
 
 	private MigrationSettings migrationSettings;
-
+	
+	private final Logger logger=LogManager.getLogger("Model-Migration");
+	
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
+		
+		logger.removeAllAppenders();
+
+		logger.addAppender(new CustomEclipseLogAppender());
+		
+		logger.setAdditivity(false);
 
 		this.migrationSettings = new MigrationSettings();
 
@@ -107,8 +118,8 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 							inputModels.add(file.getCanonicalFile());
 						}
 						catch (final IOException e) {
-							// TODO: log message -> unable to build canonical file from the selected path
-							e.printStackTrace();
+							logger.error("Error fetching the file : "+iFile.toString(), e);
+							
 						}
 
 					}

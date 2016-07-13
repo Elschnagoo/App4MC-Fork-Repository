@@ -125,7 +125,7 @@ public class PerformanceTest extends AbstractConverterTest {
 			final List<Attribute> schedulerHrefs = this.helper.getXpathResult(rootDocument, ".//scheduler/@href",
 					Attribute.class);
 
-			System.out.println(".//scheduler/@href " + schedulerHrefs.size());
+			this.logger.info(".//scheduler/@href " + schedulerHrefs.size());
 
 			Timer.end("xpath for scheduler href");
 
@@ -134,7 +134,7 @@ public class PerformanceTest extends AbstractConverterTest {
 			final List<Attribute> schedulerRefs = this.helper.getXpathResult(rootDocument,
 					".//@scheduler[contains(., \"/\")]", Attribute.class);
 
-			System.out.println(".//@scheduler " + schedulerRefs.size());
+			this.logger.info(".//@scheduler " + schedulerRefs.size());
 
 			Timer.end("Time taken for scheduler attributes");
 
@@ -174,7 +174,7 @@ public class PerformanceTest extends AbstractConverterTest {
 
 		/*- map containing key as URIFragment and value as List of Element objects */
 
-		System.out.println("unique uri fragments : " + uriFragment_AttributesMap.keySet());
+		this.logger.info("unique uri fragments : " + uriFragment_AttributesMap.keySet());
 
 		final Map<String, List<Element>> uriFragment_ElementsMap = new HashMap<String, List<Element>>();
 
@@ -184,28 +184,28 @@ public class PerformanceTest extends AbstractConverterTest {
 
 				final String xpath = getXpathString(uriFragment);
 
-				System.out.println("==========================================");
-				System.out.println(xpath);
+				this.logger.info("==========================================");
+				this.logger.info(xpath);
 
 				final List<Element> schedulers = this.helper.getXpathResult(doc, xpath, Element.class);
 
 				for (final Element element : schedulers) {
-					System.out.println(element.getAttributeValue("name"));
+					this.logger.info(element.getAttributeValue("name"));
 				}
 
-				System.out.println("==========================================");
+				this.logger.info("==========================================");
 
 				uriFragment_ElementsMap.put(uriFragment, schedulers);
 			}
 		}
 
-		System.out.println(uriFragment_AttributesMap);
+		this.logger.info(uriFragment_AttributesMap);
 
-		System.out.println(uriFragment_ElementsMap);
+		this.logger.info(uriFragment_ElementsMap);
 
-		System.out.println("==========================================================");
+		this.logger.info("==========================================================");
 
-		System.out.println("Printing URI fragment contents : ");
+		this.logger.info("Printing URI fragment contents : ");
 
 		final Set<String> keySet = uriFragment_ElementsMap.keySet();
 
@@ -215,7 +215,7 @@ public class PerformanceTest extends AbstractConverterTest {
 
 			for (final Element element : list) {
 
-				System.out.println(" standard uri fragment is : " + uriFragment + "  Xpath is : "
+				this.logger.info(" standard uri fragment is : " + uriFragment + "  Xpath is : "
 						+ getXpathString(uriFragment) + " generated uri fragment : " + getURIFragment(element));
 			}
 		}

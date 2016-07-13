@@ -131,12 +131,11 @@ public class SWConverterTest extends AbstractConverterTest {
 
 			for (final Element element : elements) {
 
-				System.out.println("LabelAccess present in model file : " + element.getDocument().getBaseURI());
+				this.logger.info("LabelAccess present in model file : " + element.getDocument().getBaseURI());
 
-				System.out.println("element.getAttributeValue(buffered) : " + element.getAttributeValue("buffered"));
+				this.logger.info("element.getAttributeValue(buffered) : " + element.getAttributeValue("buffered"));
 
-				System.out
-						.println("element.getAttributeValue(isBuffered) : " + element.getAttributeValue("isBuffered"));
+				this.logger.info("element.getAttributeValue(isBuffered) : " + element.getAttributeValue("isBuffered"));
 
 				assertTrue("Unable to migrate the data of isBuffered to buffered. In model file :   "
 						+ document.getBaseURI(), element.getAttribute("buffered") != null);

@@ -401,7 +401,7 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 			if (key != null) {
 
 				// TODO: log info/warning message using logger
-				System.out.println("Value of CustomProperty  : " + key
+				logger.info("Value of CustomProperty  : " + key
 						+ " is removed (as it is not inheriting RefereableBaseObject)");
 			}
 
@@ -565,7 +565,7 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 			}
 		}
 		catch (final Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 
 

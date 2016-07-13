@@ -21,6 +21,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters.common.base.IFormatter;
@@ -49,6 +51,8 @@ public class ModelMigrationJob extends Job {
 	private final MigrationSettings migrationSettings;
 
 	protected AbstractHelper helper;
+	
+	private final Logger logger=LogManager.getLogger("Model-Migration");
 
 	public ModelMigrationJob(final String name, final MigrationSettings migrationSettings) {
 		super(name);
@@ -188,6 +192,7 @@ public class ModelMigrationJob extends Job {
 		}
 		catch (final Exception e) {
 
+			logger.error(e.getMessage(),e);
 
 			return new Status(IStatus.CANCEL, " org.eclipse.app4mc.amalthea.converters.ui", IMigrationStatus.ERROR,
 					"Error during migration ", e);
@@ -251,7 +256,7 @@ public class ModelMigrationJob extends Job {
 				outputFiles.add(outputFile);
 			}
 
-			System.out.println("File saved : " + outputFile.getAbsolutePath());
+			logger.info("File saved : " + outputFile.getAbsolutePath());
 		}
 
 		subMonitor.worked(1);
@@ -703,7 +708,7 @@ public class ModelMigrationJob extends Job {
 
 		final List<ICache> caches = getAllCacheObjectsFromExtensions(inputModelVersion);
 
-		System.out.println("start to build cache for models : " + inputModelVersion);
+		logger.info("start to build cache for models : " + inputModelVersion);
 
 		st = System.currentTimeMillis();
 
@@ -712,9 +717,9 @@ public class ModelMigrationJob extends Job {
 		end = System.currentTimeMillis();
 
 
-		System.out.println("end of building cache for models " + inputModelVersion);
+		logger.info("end of building cache for models " + inputModelVersion);
 
-		System.out.println("total time taken to build cache for " + inputModelVersion + " models:  " + (end - st));
+		logger.info("total time taken to build cache for " + inputModelVersion + " models:  " + (end - st));
 
 
 		allConverterExtensions = getAllConverterExtensions();
@@ -748,6 +753,7 @@ public class ModelMigrationJob extends Job {
 					return (IFormatter) iConverter;
 				}
 				catch (final CoreException e) {
+					logger.error(e.getMessage(),e);
 					e.printStackTrace();
 				}
 				

@@ -16,12 +16,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.utils.AbstractHelper;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
 public class BulkXpathOperation {
 
+	private final Logger logger=LogManager.getLogger("Model-Migration");
 	/**
 	 * This method takes Xml Document object and the list of Xpath Strings as input-> and returns a Map with key as
 	 * Xpath and Value as the List<Element> JDOM elements
@@ -149,7 +152,7 @@ public class BulkXpathOperation {
 
 			for (final String string : keySet) {
 
-				System.out.println("Xpath Fragment : " + string + "associated Xpath chunk :  "
+				logger.info("Xpath Fragment : " + string + "associated Xpath chunk :  "
 						+ fragmentsMap.get(string).getValue());
 
 			}
@@ -174,14 +177,14 @@ public class BulkXpathOperation {
 
 						resultsMap.put(xpath, xmlElements);
 
-						System.out.println("xpath : " + xpath + " elements : " + xmlElements.size());
+						logger.info("xpath : " + xpath + " elements : " + xmlElements.size());
 					}
 				}
 			}
 		}
 		catch (final Exception e) {
-
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
+			throw e;
 		}
 		return resultsMap;
 

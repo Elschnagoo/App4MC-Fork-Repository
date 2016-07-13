@@ -21,6 +21,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters110.utils.HelperUtils_103_110;
@@ -56,6 +60,7 @@ public abstract class AbstractConverterTest {
 
 	protected final String localOutputDirectory;
 
+	protected final Logger logger;
 
 	public AbstractConverterTest(final String xmlFileRelativeLocation, final boolean canExecuteTestCase) {
 
@@ -65,6 +70,8 @@ public abstract class AbstractConverterTest {
 		this.xmlFileRelativeLocation = xmlFileRelativeLocation;
 		this.fileName_documentsMap = new HashMap<File, Document>();
 		this.localOutputDirectory = new File(this.outputGlobalTestsDirectory, this.xmlFileRelativeLocation).getParent();
+		this.logger=LogManager.getLogger("Model-Migration");
+		logger.addAppender(new ConsoleAppender(new PatternLayout("%d{ISO8601} %-5p [%c]: %m%n")));
 	}
 
 
@@ -108,7 +115,7 @@ public abstract class AbstractConverterTest {
 	public void parseInputXMLFiles() {
 
 
-		System.out.println("Parsing input files");
+		this.logger.info("Parsing input files");
 
 		this.fileName_documentsMap.clear();
 		if (!this.canExecuteTestCase) {
@@ -130,7 +137,7 @@ public abstract class AbstractConverterTest {
 
 	public void parseGeneratedXMLFiles() {
 
-		System.out.println("Parsing generated files");
+		this.logger.info("Parsing generated files");
 
 		this.fileName_documentsMap.clear();
 
@@ -234,13 +241,13 @@ public abstract class AbstractConverterTest {
 
 	@Before
 	public void before() {
-		System.out.println("******************** Executing test case : " + this.testName.getMethodName()
+		this.logger.info("******************** Executing test case : " + this.testName.getMethodName()
 				+ " *****************************");
 	}
 
 	@After
 	public void after() {
-		System.out.println("******************** Completed execution of test case :  " + this.testName.getMethodName()
+		this.logger.info("******************** Completed execution of test case :  " + this.testName.getMethodName()
 				+ " *****************************");
 	}
 

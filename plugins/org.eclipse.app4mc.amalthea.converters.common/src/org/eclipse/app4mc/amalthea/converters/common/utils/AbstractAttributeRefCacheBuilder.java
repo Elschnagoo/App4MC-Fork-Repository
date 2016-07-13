@@ -198,8 +198,9 @@ public abstract class AbstractAttributeRefCacheBuilder implements ICache {
 			}
 			catch (final Exception e) {
 
-				// TODO:
-				e.printStackTrace();
+				logger.error("Exception occured during conversion of URIFragment : "+uriFragment+" to Xpath String", e);
+				
+				throw e;
 			}
 		}
 

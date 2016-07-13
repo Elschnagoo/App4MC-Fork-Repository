@@ -22,6 +22,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -40,7 +42,8 @@ import com.google.common.io.Files;
 @SuppressWarnings("unchecked")
 public abstract class AbstractHelper {
 
-
+	public final Logger logger=LogManager.getLogger("Model-Migration");
+	
 	public void addAdditionalNameSpace(final Element rootElement, final Namespace... namespaces) {
 
 		for (final Namespace namespace2 : namespaces) {
@@ -306,7 +309,7 @@ public abstract class AbstractHelper {
 
 		// throw new JDOMParseException("E");
 
-		System.out.println("Total time taken to load file :" + path + " : " + (end - start) + " milli seconds");
+		logger.info("Total time taken to load file :" + path + " : " + (end - start) + " milli seconds");
 
 		return doc;
 	}
@@ -351,7 +354,9 @@ public abstract class AbstractHelper {
 		}
 		catch (final Exception e) {
 
-			e.printStackTrace();
+			logger.error("Error occured during saving file : "+ file,e);
+			
+			throw e;
 		}
 	}
 
@@ -383,7 +388,8 @@ public abstract class AbstractHelper {
 			xout.output(doc, out);
 		}
 		catch (final Exception e) {
-			e.printStackTrace();
+			logger.error("Error occured during saving file : "+ outputFile.getAbsolutePath(),e);
+			throw e;
 		}
 	}
 
@@ -425,12 +431,12 @@ public abstract class AbstractHelper {
 		}
 
 		if (!targetFile.exists()) {
-			System.err.println("Referred file does not exists : " + targetFile.getAbsolutePath());
+			logger.error("Referred file does not exists : " + targetFile.getAbsolutePath());
 			return;
 		}
 
 		if (!Files.getFileExtension(targetFile.getAbsolutePath()).contains("amxmi")) {
-			System.out.println("Non amalthea files will not be considered for model migration");
+			logger.info("Non amalthea files will not be considered for model migration");
 			return;
 		}
 		final Document xmlDoc = loadFile(targetFile.getAbsolutePath());

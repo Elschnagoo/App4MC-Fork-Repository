@@ -59,7 +59,7 @@ public class GenericXpathTest extends AbstractConverterTest {
 
 			for (final File file : keySet) {
 
-				System.out.println(file.getAbsolutePath());
+				this.logger.info(file.getAbsolutePath());
 				final Document rootDocument = this.fileName_documentsMap.get(file);
 
 				final StringBuffer signedTimeXpathBuffer = new StringBuffer();
@@ -85,7 +85,7 @@ public class GenericXpathTest extends AbstractConverterTest {
 
 				assertTrue("Xpath supplied to fetch the elements is not working ",adsMappingTypes.size()==5);
 				
-				System.out.println(" Result : " + adsMappingTypes.size());
+				this.logger.info(" Result : " + adsMappingTypes.size());
 
 			}
 

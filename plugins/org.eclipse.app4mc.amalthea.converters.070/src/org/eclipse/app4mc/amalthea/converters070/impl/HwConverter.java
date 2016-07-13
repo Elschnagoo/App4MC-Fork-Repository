@@ -17,6 +17,7 @@ import java.util.Map;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters070.utils.HelperUtils_111_070;
+import org.eclipse.osgi.util.NLS;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -158,7 +159,8 @@ public class HwConverter implements IConverter {
 					valueElement.setAttribute("value", String.copyValueOf(chars));
 				}
 				catch (final Exception e) {
-					// TODO: log info that there was some issue during the conversion
+					logger.error( "Exception occured during coversion of String :"+value+" to Integer" , e);
+					throw e;
 				}
 			}
 		}

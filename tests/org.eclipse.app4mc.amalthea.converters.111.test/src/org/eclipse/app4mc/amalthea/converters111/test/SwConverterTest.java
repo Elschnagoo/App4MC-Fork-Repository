@@ -336,11 +336,11 @@ public class SwConverterTest extends AbstractConverterTest {
 
 			for (final Element element : elements) {
 
-				System.out.println("Printing contents of : .//modes[@name=\"mode_sw_0_migration_generated\"]");
+				this.logger.info("Printing contents of : .//modes[@name=\"mode_sw_0_migration_generated\"]");
 
-				System.out.println("Mode object found in document : " + element.getDocument().getBaseURI());
+				this.logger.info("Mode object found in document : " + element.getDocument().getBaseURI());
 
-				System.out.println("Total mode literals found are : " + element.getChildren("literals").size());
+				this.logger.info("Total mode literals found are : " + element.getChildren("literals").size());
 
 				assertTrue("Unable to migrate the data of LabelSwitchEntry to Mode Literals ",
 						element.getChildren("literals").size() >= 0);

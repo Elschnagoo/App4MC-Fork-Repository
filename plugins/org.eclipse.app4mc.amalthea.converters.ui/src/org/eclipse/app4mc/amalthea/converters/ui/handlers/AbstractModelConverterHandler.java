@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters.common.base.IFormatter;
@@ -38,6 +40,8 @@ public abstract class AbstractModelConverterHandler extends AbstractHandler {
 
 	protected AbstractHelper helper;
 
+	private final Logger logger=LogManager.getLogger("Model-Migration");
+	
 	protected void executeConversion(final IConverter converter, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
@@ -283,7 +287,7 @@ public abstract class AbstractModelConverterHandler extends AbstractHandler {
 
 		final List<ICache> caches = getAllCacheObjectsFromExtensions(inputModelVersion);
 
-		System.out.println("start to build cache for models : " + inputModelVersion);
+		logger.info("start to build cache for models : " + inputModelVersion);
 
 		st = System.currentTimeMillis();
 
@@ -292,9 +296,9 @@ public abstract class AbstractModelConverterHandler extends AbstractHandler {
 		end = System.currentTimeMillis();
 
 
-		System.out.println("end of building cache for models " + inputModelVersion);
+		logger.info("end of building cache for models " + inputModelVersion);
 
-		System.out.println("total time taken to build cache for " + inputModelVersion + " models:  " + (end - st));
+		logger.info("total time taken to build cache for " + inputModelVersion + " models:  " + (end - st));
 
 
 		allConverterExtensions = getAllConverterExtensions();
@@ -323,7 +327,8 @@ public abstract class AbstractModelConverterHandler extends AbstractHandler {
 				return (IFormatter) iConverter;
 			}
 			catch (final CoreException e) {
-				e.printStackTrace();
+
+				logger.error("Error occured during Object creation of Formatter class ", e);
 			}
 
 

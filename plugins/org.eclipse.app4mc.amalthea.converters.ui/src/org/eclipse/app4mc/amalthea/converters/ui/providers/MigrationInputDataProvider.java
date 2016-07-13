@@ -13,6 +13,8 @@ package org.eclipse.app4mc.amalthea.converters.ui.providers;
 import java.io.File;
 import java.util.List;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.MigrationInputFile;
 import org.eclipse.jface.resource.FontDescriptor;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
@@ -30,6 +32,7 @@ import org.eclipse.swt.widgets.Display;
 public class MigrationInputDataProvider extends DelegatingStyledCellLabelProvider
 		implements IStructuredContentProvider {
 
+	private final Logger logger=LogManager.getLogger("Model-Migration");
 
 	public MigrationInputDataProvider(final IStyledLabelProvider labelProvider) {
 		super(labelProvider);
@@ -71,7 +74,8 @@ public class MigrationInputDataProvider extends DelegatingStyledCellLabelProvide
 					return new StyledString(path);
 				}
 				catch (final Exception e) {
-					// TODO: log exception (as it is not possible to build the relative path)
+					
+					logger.warn("unable to build the relative path for file : " + file.getAbsolutePath(), e);
 
 					/*- Displaying the absolute path of the file, as it is not possible to construct relative path*/
 					return new StyledString(file.getAbsolutePath());

@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.utils.AbstractHelper;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.MigrationInputFile;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.MigrationSettings;
@@ -35,6 +37,7 @@ public class ModelLoaderJob extends Job {
 	private final MigrationSettings migrationSettings;
 	private final List<File> inputModels;
 	private final AbstractHelper helper;
+	private final Logger logger=LogManager.getLogger("Model-Migration");
 
 	public ModelLoaderJob(final String name, final MigrationSettings migrationSettings, final List<File> inputModels,
 			final AbstractHelper helper) {
@@ -60,6 +63,9 @@ public class ModelLoaderJob extends Job {
 			populateModels(modelFilesMap, this.inputModels, subMonitor);
 		}
 		catch (final Exception e1) {
+			
+			logger.error(e1.getMessage(),e1);
+			
 			return new Status(IStatus.CANCEL, "unknown", 1, e1.getMessage(), e1);
 		}
 
