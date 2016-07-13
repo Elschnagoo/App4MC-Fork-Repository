@@ -29,6 +29,7 @@
 					<exclude name=".settings/org.eclipse.pde.api.tools.prefs" />
 					<exclude name="**/.gitignore" />
 					<exclude name="**/release.*" />
+					<exclude name="**/pom.xml" />
 					<include name="**" />
 				</fileset>
 			</copy>
