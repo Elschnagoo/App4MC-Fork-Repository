@@ -160,8 +160,10 @@ public class ExtendedBasicTransactionalFormEditor extends BasicTransactionalForm
 
 				if(metaModelDescriptor!=null){
 
+					/*- Extracting namespace from MetaModel */
 					String nsURIFromMetaModel = metaModelDescriptor.getRootEPackage().getNsURI();
 
+					/*- Extracting namespace from Model file */
 					String nsURIFromModel = EcorePlatformUtil.readModelNamespace(iFileObject);
 
 					String versionFromMetaModel="";
@@ -183,12 +185,17 @@ public class ExtendedBasicTransactionalFormEditor extends BasicTransactionalForm
 							int indexOfSlash = subString.indexOf("/");
 
 							versionFromMetaModel=indexOfSlash!=-1?subString.substring(0,indexOfSlash):nsURIFromMetaModel;
+							
+							versionFromMetaModel="itea."+versionFromMetaModel;
+							
 						}else if( nsURIFromMetaModel.startsWith(legacyAMALTHEANameSpacePrefix_2)){
 
 							String subString = nsURIFromMetaModel.replace(legacyAMALTHEANameSpacePrefix_2, "");
 							int indexOfSlash = subString.indexOf("/");
 
 							versionFromMetaModel=indexOfSlash!=-1?subString.substring(0,indexOfSlash):nsURIFromMetaModel;
+							
+							versionFromMetaModel="itea."+versionFromMetaModel;
 						}
 						
 						else  {
@@ -204,6 +211,9 @@ public class ExtendedBasicTransactionalFormEditor extends BasicTransactionalForm
 							int indexOfSlash = subString.indexOf("/");
 
 							versionFromModel=indexOfSlash!=-1?subString.substring(0,indexOfSlash):nsURIFromModel;
+							
+							versionFromModel="itea."+versionFromModel;
+							
 						}else if( nsURIFromModel.startsWith(legacyAMALTHEANameSpacePrefix_2)){
 
 							String subString = nsURIFromModel.replace(legacyAMALTHEANameSpacePrefix_2, "");
@@ -211,6 +221,8 @@ public class ExtendedBasicTransactionalFormEditor extends BasicTransactionalForm
 							int indexOfSlash = subString.indexOf("/");
 
 							versionFromModel=indexOfSlash!=-1?subString.substring(0,indexOfSlash):nsURIFromModel;
+							
+							versionFromModel="itea."+versionFromModel;
 						}else  {
 							versionFromModel=nsURIFromModel.lastIndexOf("/")!=-1?nsURIFromModel.substring(nsURIFromModel.lastIndexOf("/")+1):nsURIFromModel;
 						} 
