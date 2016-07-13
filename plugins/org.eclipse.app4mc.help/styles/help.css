@@ -1,4 +1,4 @@
-/* these are additional styles */
+/* Additional styles */
 
 h1 {
     font-size: 36px;
@@ -8,8 +8,6 @@ h1 {
     color: #015A20;
     margin: 40px 0;
     padding: 10px;
-    // border: solid 2px;
-    // border-radius: 5px;
 }
 
 h2 {
@@ -78,4 +76,34 @@ td {
 #shadow {
 	box-shadow: 0px 0px 5px 8px #ccc;
 	margin: 10px;
+}
+
+
+/* styling of code listings and code snippets */
+
+pre, code {
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+}
+
+pre {
+	padding: 10px;
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+	border-radius: 5px;
+}
+
+code {
+	vertical-align: 5%;
+	padding: 1px 3px 0px;
+    color: #d14;
+	border-radius: 2px;
+}
+
+pre code {
+	padding: 0px;
+    color: inherit;
+    background-color: transparent;
+    border: 0;
 }
