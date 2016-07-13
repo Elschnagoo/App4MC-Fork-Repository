@@ -22,6 +22,7 @@ Similar to the previous example, the name of the project as well as the path hav
 *Step 4*
 
 !../pictures/ExampleMapping/10Inspect.png!
+
 Once the mapping is performed, two additional files will be generated in the "output" folder. The mapping can be found in the file "AMALTHEA_????_MappingExample_withTasks_mapping.amxmi-mapping". To inspect this file, just double-click on it to open a content tree explorer.
 Additional information about the mapping is provided in the console.
 

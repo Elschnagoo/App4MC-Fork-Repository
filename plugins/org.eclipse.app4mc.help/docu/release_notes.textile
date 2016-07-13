@@ -1,7 +1,7 @@
 h1. Release Notes
 
 
-h2. Eclipse APP4MC Version 0.7.0 -- May 2016
+h2. Eclipse APP4MC Version 0.7.0 -- July 2016
 
 Model handling
 * One consolidated model

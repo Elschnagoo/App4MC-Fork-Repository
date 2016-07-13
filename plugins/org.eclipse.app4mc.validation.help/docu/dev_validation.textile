@@ -46,7 +46,6 @@ Create a class which is extending @org.eclipse.sphinx.emf.check.AbstractCheckVal
 
 
 bc.. 
-
 import org.eclipse.sphinx.emf.check.AbstractCheckValidator;
 import org.eclipse.sphinx.emf.check.Check;
 import org.eclipse.app4mc.amalthea.model.central.AMALTHEA;
@@ -78,7 +77,7 @@ public class BasicExampleConstraint extends AbstractCheckValidator {
 		issue(ama, ama.eContainingFeature()); 
 	}
 }
-
+p. 
 
 p. Create your own class and insert at least one method extended by the @check@ Sphinx annotation. The method should contain exactly one parameter of at least the type of the most generic model element of the AMALTHEA model (i.e. @org.eclipse.app4mc.amalthea.model.central.AMALTHEA@).
 Implement the validate method by adding your own custom validation.

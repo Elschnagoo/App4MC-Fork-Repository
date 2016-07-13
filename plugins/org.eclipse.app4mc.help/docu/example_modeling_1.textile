@@ -26,10 +26,10 @@ Since a dual core processor has to be managed, two schedulers are modeled corres
 In addition to the scheduling algorithm used by the scheduler, in this case OSEK, a delay of 100 ns is set, which is the presumed time the scheduler needs for context switches.
 A comprehension of the modeled properties can be found in the following table:
 
-table{text-align:center; border:1px solid black; background:#eee}.
-|_.Scheduler|_.Type|_.Algorithm|_.Delay|
-|*Scheduler_1*|SchedulingHWUnit|OSEK|100 ns|
-|*Scheduler_2*|SchedulingHWUnit|OSEK|100 ns|
+table(#classic){text-align:center; background:#f8f8f8}.
+{background:#eee}.|_.Scheduler|_.Type|_.Algorithm|_.Delay|
+| *Scheduler_1* | SchedulingHWUnit | OSEK | 100 ns |
+| *Scheduler_2* | SchedulingHWUnit | OSEK | 100 ns |
 
 h3. Mapping Model
 
@@ -45,19 +45,19 @@ A comprehension of the modeled properties can be found in the following tables:
 
 h4. Executable Allocation
 
-table{text-align:center; border:1px solid black; background:#eee}.
-|_.Scheduler|_.Process|
-|Scheduler_1|Task_1|
-|Scheduler_1|Task_2|
-|Scheduler_2|Task_3|
-|Scheduler_2|Task_4|
+table(#classic){text-align:center; background:#f8f8f8}.
+{background:#eee}.|_.Scheduler|_.Process|
+| Scheduler_1 | Task_1 |
+| Scheduler_1 | Task_2 |
+| Scheduler_2 | Task_3 |
+| Scheduler_2 | Task_4 |
 
 h4. Core Allocation
 
-table{text-align:center; border:1px solid black; background:#eee}.
-|_.Scheduler|_.Core|
-|Scheduler_1|Core_1|
-|Scheduler_2|Core_2|
+table(#classic){text-align:center; background:#f8f8f8}.
+{background:#eee}.|_.Scheduler|_.Core|
+| Scheduler_1 | Core_1 |
+| Scheduler_2 | Core_2 |
 
 h3. Software Model
 
@@ -70,8 +70,8 @@ Each task is preemptive and has a priority assigned according its deadline, mean
 Each task also calls a definitive number of Runnables in a sequential order.
 A comprehension of the modeled properties can be found in the following table:
 
-table{text-align:center; border:1px solid black; background:#eee}.
-|_.Task|_.Priority|_.Preemption|_.MTA*|_.Deadline|_.Calls|
+table(#classic){text-align:center; background:#f8f8f8}.
+{background:#eee}.|_.Task|_.Priority|_.Preemption|_.MTA*|_.Deadline|_.Calls|
 |*Task_1*|4|Preemptive|1|75 ms| 1) Runnable_1_1|
 |/2.*Task_2*|/2.3|/2.Preemptive|/2.1|/2.115 ms| 1) Runnable_2_1|
 | 2) Runnable_2_2|
@@ -95,18 +95,18 @@ The only function of those in this example is to consume processing resources.
 Therefore, for each Runnable a constant number of instruction cycles is stated.
 A comprehension of the modeled properties can be found in the following table:
 
-table{text-align:center; border:1px solid black; background:#eee}.
-|_.Runnable|_.InstructionCycles|
-|Runnable_1_1|1500000|
-|Runnable_2_1|1500000|
-|Runnable_2_2|1500000|
-|Runnable_3_1|1000000|
-|Runnable_3_2|2000000|
-|Runnable_3_3|1000000|
-|Runnable_4_1|1000000|
-|Runnable_4_2|2000000|
-|Runnable_4_3|3000000|
-|Runnable_4_4|2000000|
+table(#classic){text-align:center; background:#f8f8f8}.
+{background:#eee}.|_.Runnable|_.InstructionCycles|
+| Runnable_1_1 | 1500000 |
+| Runnable_2_1 | 1500000 |
+| Runnable_2_2 | 1500000 |
+| Runnable_3_1 | 1000000 |
+| Runnable_3_2 | 2000000 |
+| Runnable_3_3 | 1000000 |
+| Runnable_4_1 | 1000000 |
+| Runnable_4_2 | 2000000 |
+| Runnable_4_3 | 3000000 |
+| Runnable_4_4 | 2000000 |
 
 h3. Stimuli Model
 
@@ -116,11 +116,11 @@ The stimulation model defines the activations of tasks.
 Since the four tasks of Modeling Example 1 are activated periodically, four stimuli according their recurrence are modeled.
 A comprehension of the modeled properties can be found in the following table:
 
-table{text-align:center; border:1px solid black; background:#eee}.
-|_.Stimulus|_.Type|_.Offset|_.Recurrence|
-|Stimulus_Task_1|Periodic|0 ms|180 ms|
-|Stimulus_Task_2|Periodic|0 ms|200 ms|
-|Stimulus_Task_3|Periodic|0 ms|300 ms|
-|Stimulus_Task_4|Periodic|0 ms|1 s|
+table(#classic){text-align:center; background:#f8f8f8}.
+{background:#eee}.|_.Stimulus|_.Type|_.Offset|_.Recurrence|
+| Stimulus_Task_1 | Periodic | 0 ms | 180 ms |
+| Stimulus_Task_2 | Periodic | 0 ms | 200 ms |
+| Stimulus_Task_3 | Periodic | 0 ms | 300 ms |
+| Stimulus_Task_4 | Periodic | 0 ms | 1 s    |
 
 
