@@ -9,6 +9,7 @@ Below are the changes in the metamodel from ITEA 1.1.0 version to ITEA 1.1.1
 
 * *Changes in the namespaces:* 
 
+table(#classic){margin-left:40px}. 
 | *_AMALTHEA Namespace (version ITEA 1.0.3)_* | *_AMALTHEA Namespace  (verison ITEA 1.1.0)_* |
 |http://www.amalthea.itea2.org/model/1.1.0/sw |http://www.amalthea.itea2.org/model/1.2.0/sw |
 |http://www.amalthea.itea2.org/model/1.1.0/stimuli |http://www.amalthea.itea2.org/model/1.2.0/stimuli|
@@ -24,22 +25,24 @@ Below are the changes in the metamodel from ITEA 1.1.0 version to ITEA 1.1.1
 |http://amalthea.itea2.org/model/1.1.0/components|http://amalthea.itea2.org/model/1.2.0/components|
 
 * *Following Class names are changed:*
+
+table(#classic){margin-left:40px}. 
 |*Class name in 1.0.3*|*Changed Class name in 1.1.0*|*Amalthea sub-model*|
 |DeadlineMonotinic|DeadlineMonotonic |OS|
 
 * *Below are the references which are removed:*
- 
+
+table(#classic){margin-left:40px}. 
 | *_Variable Name (version ITEA 1.0.3)_* |  *_Class containing Variable_* | *_AMALTHEA sub model_* | *_how migration is done from 1.0.3 models to 1.1.0_* |
 |scheduler|OSModel| OS model| <div>"scheduler" elements contained inside OSModel element are converted into TaskScheduler elements in the following way: <ul><li>OperatingSystem element is created and associated to the OSModel element _(Note: OperatingSystem class is newly introduced in 1.1.0)_</li><li>All the Scheduler elements present inside the OSModel element are moved to the OperatingSystem element as TaskScheduler's </li><li>All the places where Scheduler elements were referred earlier, are updated so as to refer corresponding TaskScheduler element</li></ul></div>|
 |read, write |LabelAccessStatistic| Software model| <div>"read" elements contained inside LabelAccessStatistic element are removed and "write" elements are replaced by tag name "value" based on the following criteria : <ul><li>If the LabelAccess element containing LabelAccessStatistic -&gt;contains the access as "write", then all the "read" elements of LabelAccessStatistic are removed </li> </ul><br></br>"write" elements contained inside LabelAccessStatistic element are removed and "read" elements are replaced by tag name "value" based on the following criteria : <ul><li>If the LabelAccess element containing LabelAccessStatistic -&gt;contains the access as "read", then all the "write" elements of LabelAccessStatistic are removed </li> </ul></div>|
 
 * *Below are the changes in the reference names :*
 
- 
+table(#classic){margin-left:40px}. 
 | *_Variable Name (version ITEA 1.0.3)_* | *_Changed Variable Name (version ITEA 1.1.0)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* | *_how migration is done from 1.0.3 models to 1.1.0_* |
 | readCacheMisses | cacheMisses | LabelAccessStatistic | Software model | "readCacheMisses" is changed to "cacheMisses" in all the places where LabelAccessStatistic definition is present |
 | executableAllocation | processAllocation, runnableAllocation | MappingModel | Mapping model | <div>Based on the content of the "executableAllocation", accordingly either "processAllocation" or "runnableAllocation" elements are created and the corresponding data of "exeuctableAllocation" is mapped. <ul>Below are the criterions  :<br></br> <li>If "executableAllocation" consists of Task element and Scheduler mapping then - &gt; "ProcessAllocation" of type "mapping:TaskAllocation" is created</li><li>If "executableAllocation" consists of ISR element and Scheduler mapping then - &gt; "ProcessAllocation" of type "mapping:ISRAllocation" is created, and to it corresponding ISR element and "InterruptController" element are associated (_<b>Note:</b>If there is a mapping to "ISR" and "Scheduler" in "executableAllocation", InterruptController element is created and referred in the "executableAllocation". In this case previous mapping to the Scheduler element is lost_) </li><li>If "executableAllocation" consists of Runnable element and Scheduler mapping then - &gt; "RunnableAllocation" of type "mapping:RunnableAllocation" is created</li></ul></div> |
-
 
 h2. Version ITEA 1.1.0 to ITEA 1.1.1
 
@@ -47,6 +50,7 @@ Below are the changes in the metamodel from ITEA 1.1.0 version to ITEA 1.1.1
 
 * *Changes in the namespaces:* 
 
+table(#classic){margin-left:40px}. 
 | *_AMALTHEA Namespace (version ITEA 1.1.0)_* | *_AMALTHEA Namespace  (version ITEA 1.1.1)_* |
 |http://www.amalthea.itea2.org/model/1.2.0/sw |http://www.amalthea.itea2.org/model/1.3.0/sw |
 |http://www.amalthea.itea2.org/model/1.2.0/stimuli |http://www.amalthea.itea2.org/model/1.3.0/stimuli|
@@ -64,7 +68,7 @@ Below are the changes in the metamodel from ITEA 1.1.0 version to ITEA 1.1.1
 
 * *Below are the changes in the reference names :*
 
- 
+table(#classic){margin-left:40px}. 
 | *_Variable Name (version ITEA 1.1.0)_* | *_Changed Variable Name (version ITEA 1.1.1)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* | *_how migration is done from 1.1.0 models to 1.1.1_* |
 | tagName | name | Tag | Software model, Components model | attribute "tagName" is changed to "name" in all the places where Tag definition is present |
 | elements | components, systems  | ComponentsModel | Components model | <div> <ol><li>XML child elements of ComponentsModel having name as "elements" and attribute "xsi:type" as either "components:Component" or "components:Composite" are changed to "components"</li><li> XML child elements of ComponentsModel having name as "elements" and attribute "xsi:type" as "components:System" are changed to "systems" </li></ol></div> |
@@ -76,58 +80,59 @@ Below are the changes in the metamodel from ITEA 1.1.0 version to ITEA 1.1.1
 
 * *Below are the references which are removed:*
 
- 
+table(#classic){margin-left:40px}. 
 | *_Variable Name (version ITEA 1.1.0)_* |  *_Class containing Variable_* | *_AMALTHEA sub model_* | *_how migration is done from 1.1.0 models to 1.1.1_* |
 |deadline|Task, ISR, ProcessPrototype| Software model| <div>"deadline" specified at the Process, ProcessPrototype is converted into a constraint element in the following way: <ul><li>with the name of corresponding Process/ProcessPrototype -&gt; ProcessRequirement object is created and the object of Process/ProcessPrototype is linked to it</li><li>TimeRequirement object is created with the following properties and associated to the created ProcessRequirement: <br></br><ol><li>limitType as upperlimit</li><li>metric as responsetime</li><li>SignedTime elment is created with the following properties and associated to the TimeRequirement element : value and unit - &gt; values for these elements are fetched from the "deadline" object available at Process/ProcessPrototype</li></ol> </li> <li> once the required content from the "deadline" element of Process/ProcessPrototype is fetched, "deadline" is removed </li></ul></div>|
 |initialValue|Label|Software model|Initial value attribute is removed from all the Label objects|
 
 * *Below are the changes in the default values of Enums*  :
 
- 
+table(#classic){margin-left:40px}. 
 | *_Enum Name_*| *_Default value (version ITEA 1.1.0)_* | *_Default value (version ITEA 1.1.1)_* | *_AMALTHEA sub model_* |*_Behaviour model migration to migrated 1.1.0 models to 1.1.1_* |
-| TimeUnit | ps | _ _undefined_ _  | Common model |Attribute "unit" with value as "ps" is created (when it is missing in the input model) -> for all the XMI tags where TimeUnit defintion should be present   |
-| InterfaceKind | PROVIDES | _ _undefined_ _ | Components model |Attribute "kind" with value as "PROVIDES" is created (when it is missing in the input model) -> for all the XMI tags where InterfaceKind defintion should be present   |
-| RunnableOrderType | successor | _ _undefined_ _ | Constraints model |Attribute "orderType" with value as "successor" is created (when it is missing in the input model)-> for all the XMI tags where RunnableOrderType defintion should be present   |
-| RunnableGroupingType | allOfThem | _ _undefined_ _ | Constraints model |Attribute "groupingType" with value as "allOfThem" is created (when it is missing in the input model)-> for all the XMI tags where RunnableGroupingType defintion should be present   |
-| QType | DYNAMIC | _ _undefined_ _ | Hardware model |Attribute "type" with value as "DYNAMIC" is created (when it is missing in the input model)-> for all the XMI tags where QType defintion should be present   |
-| MemoryType | RAM | _ _undefined_ _ | Hardware model |Attribute "type" with value as "RAM" is created (when it is missing in the input model)-> for all the XMI tags where MemoryType defintion should be present   |
-| BusType | CAN | _ _undefined_ _ | Hardware model |Attribute "busType" with value as "CAN" is created (when it is missing in the input model)-> for all the XMI tags where BusType defintion should be present   |
-| RWType | R | _ _undefined_ _ | Hardware model |Attribute "direction" with value as "R" is created (when it is missing in the input model)-> for all the XMI tags where RWType defintion should be present   |
-| SchedType | RROBIN | _ _undefined_ _ | Hardware model |Attribute "schedPolicy" with value as "RROBIN" is created (when it is missing in the input model)-> for all the XMI tags where SchedType defintion should be present   |
-| PinType | ANALOG | _ _undefined_ _ | Hardware model |Attribute "type" with value as "ANALOG" is created (when it is missing in the input model)-> for all the XMI tags where PinType defintion should be present   |
-| FeatureType | floatingPointUnit | _ _undefined_ _ | Hardware model |Attribute "value" with value as "floatingPointUnit" is created (when it is missing in the input model)-> for all the XMI tags where FeatureType defintion should be present   |
-| MemoryAddressMappingType | none | _ _undefined_ _ | Mapping model |Attribute "addressMappingType" with value as "none" is created (when it is missing in the input model)-> for all the XMI tags where MemoryAddressMappingType defintion should be present   |
-| ComparatorType | equal | _ _undefined_ _ | Property Constraints model |Attribute "comparator" with value as "equal" is created (when it is missing in the input model)-> for all the XMI tags where ComparatorType defintion should be present   |
-| ConjunctionType | and | _ _undefined_ _ | Property Constraints model |Attribute "conjunction" with value as "and" is created (when it is missing in the input model)-> for all the XMI tags where ConjunctionType defintion should be present   |
-| WaitEventType | AND | _ _undefined_ _ | Software model |Attribute "maskType" with value as "AND" is created (when it is missing in the input model)-> for all the XMI tags where WaitEventType defintion should be present   |
-| WaitingBehaviour | unspecified | _ _undefined_ _ | Software model | In sw:WaitEvent/ sw:SynchronousServerCall / sw:SynchronousServerCall -> if attribute "waitingBehaviour" is with value as "unspecified", then attribute "waitingBehaviour" and its value are removed in the XML, so that the default value for "waitingBehaviour" as per 1.1.1 :  "_ _unspecified_ _" is consisdered|
-| AccessPrecedenceType | ignoreWR | _ _undefined_ _ | Software model |Attribute "orderType" with value as "ignoreWR" is created (when it is missing in the input model)-> for all the XMI tags where AccessPrecedenceType defintion should be present   |
-| OrderType | order | _ _undefined_ _ | Software model |Attribute "orderType" with value as "order" is created (when it is missing in the input model)-> for all the XMI tags where OrderType defintion should be present   |
-| LabelAccessEnum | read | _ _undefined_ _ | Software model |Attribute "access" with value as "read" is created (when it is missing in the input model)-> for all the XMI tags where LabelAccessEnum defintion should be present   |
-| SemaphoreAccessEnum | request | _ _undefined_ _ | Software model |Attribute "accessEnum" with value as "request" is created (when it is missing in the input model)-> for all the XMI tags where SemaphoreAccessEnum defintion should be present   |
-| Preemption | cooperative | _ _undefined_ _ | Software model |Attribute "preemption" with value as "cooperative" is created (when it is missing in the input model)-> for all the XMI tags where Preemption defintion should be present   |
+| TimeUnit | ps | <notextile>_undefined_</notextile> | Common model |Attribute "unit" with value as "ps" is created (when it is missing in the input model) -> for all the XMI tags where TimeUnit defintion should be present   |
+| InterfaceKind | PROVIDES | <notextile>_undefined_</notextile> | Components model |Attribute "kind" with value as "PROVIDES" is created (when it is missing in the input model) -> for all the XMI tags where InterfaceKind defintion should be present   |
+| RunnableOrderType | successor | <notextile>_undefined_</notextile> | Constraints model |Attribute "orderType" with value as "successor" is created (when it is missing in the input model)-> for all the XMI tags where RunnableOrderType defintion should be present   |
+| RunnableGroupingType | allOfThem | <notextile>_undefined_</notextile> | Constraints model |Attribute "groupingType" with value as "allOfThem" is created (when it is missing in the input model)-> for all the XMI tags where RunnableGroupingType defintion should be present   |
+| QType | DYNAMIC | <notextile>_undefined_</notextile> | Hardware model |Attribute "type" with value as "DYNAMIC" is created (when it is missing in the input model)-> for all the XMI tags where QType defintion should be present   |
+| MemoryType | RAM | <notextile>_undefined_</notextile> | Hardware model |Attribute "type" with value as "RAM" is created (when it is missing in the input model)-> for all the XMI tags where MemoryType defintion should be present   |
+| BusType | CAN | <notextile>_undefined_</notextile> | Hardware model |Attribute "busType" with value as "CAN" is created (when it is missing in the input model)-> for all the XMI tags where BusType defintion should be present   |
+| RWType | R | <notextile>_undefined_</notextile> | Hardware model |Attribute "direction" with value as "R" is created (when it is missing in the input model)-> for all the XMI tags where RWType defintion should be present   |
+| SchedType | RROBIN | <notextile>_undefined_</notextile> | Hardware model |Attribute "schedPolicy" with value as "RROBIN" is created (when it is missing in the input model)-> for all the XMI tags where SchedType defintion should be present   |
+| PinType | ANALOG | <notextile>_undefined_</notextile> | Hardware model |Attribute "type" with value as "ANALOG" is created (when it is missing in the input model)-> for all the XMI tags where PinType defintion should be present   |
+| FeatureType | floatingPointUnit | <notextile>_undefined_</notextile> | Hardware model |Attribute "value" with value as "floatingPointUnit" is created (when it is missing in the input model)-> for all the XMI tags where FeatureType defintion should be present   |
+| MemoryAddressMappingType | none | <notextile>_undefined_</notextile> | Mapping model |Attribute "addressMappingType" with value as "none" is created (when it is missing in the input model)-> for all the XMI tags where MemoryAddressMappingType defintion should be present   |
+| ComparatorType | equal | <notextile>_undefined_</notextile> | Property Constraints model |Attribute "comparator" with value as "equal" is created (when it is missing in the input model)-> for all the XMI tags where ComparatorType defintion should be present   |
+| ConjunctionType | and | <notextile>_undefined_</notextile> | Property Constraints model |Attribute "conjunction" with value as "and" is created (when it is missing in the input model)-> for all the XMI tags where ConjunctionType defintion should be present   |
+| WaitEventType | AND | <notextile>_undefined_</notextile> | Software model |Attribute "maskType" with value as "AND" is created (when it is missing in the input model)-> for all the XMI tags where WaitEventType defintion should be present   |
+| WaitingBehaviour | unspecified | <notextile>_undefined_</notextile> | Software model | In sw:WaitEvent/ sw:SynchronousServerCall / sw:SynchronousServerCall -> if attribute "waitingBehaviour" is with value as "unspecified", then attribute "waitingBehaviour" and its value are removed in the XML, so that the default value for "waitingBehaviour" as per 1.1.1 :  "_ _unspecified_ _" is consisdered|
+| AccessPrecedenceType | ignoreWR | <notextile>_undefined_</notextile> | Software model |Attribute "orderType" with value as "ignoreWR" is created (when it is missing in the input model)-> for all the XMI tags where AccessPrecedenceType defintion should be present   |
+| OrderType | order | <notextile>_undefined_</notextile> | Software model |Attribute "orderType" with value as "order" is created (when it is missing in the input model)-> for all the XMI tags where OrderType defintion should be present   |
+| LabelAccessEnum | read | <notextile>_undefined_</notextile> | Software model |Attribute "access" with value as "read" is created (when it is missing in the input model)-> for all the XMI tags where LabelAccessEnum defintion should be present   |
+| SemaphoreAccessEnum | request | <notextile>_undefined_</notextile> | Software model |Attribute "accessEnum" with value as "request" is created (when it is missing in the input model)-> for all the XMI tags where SemaphoreAccessEnum defintion should be present   |
+| Preemption | cooperative | <notextile>_undefined_</notextile> | Software model |Attribute "preemption" with value as "cooperative" is created (when it is missing in the input model)-> for all the XMI tags where Preemption defintion should be present   |
 
 
 * *Below are the Class's/Enum's moved to different sub models*  :
 
+table(#classic){margin-left:40px}. 
 | *_Enum/Class Name_*| *_Namespace (version ITEA 1.1.0)_* | *_Namespace (version ITEA 1.1.1)_* |*_Behaviour model migration to migrated 1.1.0 models to 1.1.1_* |
 | SchedulingSWUnit | sw | os |Attribute "xsi:type" of XML node of TaskScheduler/InterruptController is updated to "os:SchedulingSWUnit"   |
 
 
 * *ITEA 1.1.0 Class's removed in ITEA 1.1.1, details how data of these class's is migrated* :
 
-# *_LabelSwitchEntry_* _(present in Software model)_ Class is removed in ITEA 1.1.1, and as replacement following Class is introduced:  "ModeSwitchEntry" 
-# *_LabelSwitch_* _(present in Software model)_ Class is removed in ITEA 1.1.1, and as replacement following Class's are introduced:  "ModeSwitch, ModeLabel" 
-# *LabelValueEntry* _(present in Stimuli model)_ Class is removed in ITEA 1.1.1, and as replacement following Class is introduced:  "ModeValueListEntry" 
+<div style="margin-left:40px">
+- *_LabelSwitchEntry_* _(present in Software model)_ := Class is removed in ITEA 1.1.1, and as replacement following Class is introduced:  "ModeSwitchEntry" 
+- *_LabelSwitch_* _(present in Software model)_ := Class is removed in ITEA 1.1.1, and as replacement following Class's are introduced:  "ModeSwitch, ModeLabel" 
+- *LabelValueEntry* _(present in Stimuli model)_ := Class is removed in ITEA 1.1.1, and as replacement following Class is introduced:  "ModeValueListEntry" 
+</div>
 
 * *Model migration behaviour*:
 ** *_LabelSwitch_* : <div><ul><li>From the referred "Label" element inside "LabelSwitch", "ModeLabel" element is created with the same name -> and associated to the same Software Model where "Label" element is defined</li><li>"LabelSwitch" element is replaced with "ModeSwitch" element, and it refers to the "ModelLabel" (created in the above step)</li></ul></div>
 ** *_LabelSwitchEntry_* : <div><ul><li>For all the LabelSwitchEntry objects inside a specific AMALTHEA model file, a single "Mode" element is created ( with the following naming convention :  "mode_sw_&lt;counter&gt;_migration_generated" )</li><li>Based on the unique values of LabelSwitchEntry elements, ModeLiteral objects are created</li><li> LabelSwitchEntry is replaced by ModeSwitchEntry, based on the earlier "value" specified for LabelSwitchEntry -&gt; corresponding ModeLiteral element is referred </li></ul></div>
-*** For details refer to the below figure: 
-**** !(#gray_scale)../pictures/labelswitch_migration.png!
+*** For details refer to the below figure: <br/><br/> !(#gray_scale)../pictures/labelswitch_migration.png! <br/><br/>
 ** *_LabelValueEntry_* :  <div><ul><li>For Label referred inside each LabelValueEntry, corresponding ModeLabel object is created in the software model and it is associated to the entry object.</li></ul></div><div><ul><li>For all the LabelValueEntry objects inside a specific AMALTHEA model file, a single "Mode" element is created ( with the following naming convention :  "mode_stimuli_&lt;counter&gt;_migration_generated" )</li><li>Based on the unique values of LabelValueEntry elements, ModeLiteral objects are created</li><li> LabelValueEntry is replaced by ModeValueListEntry, based on the "value" specified for LabelValueEntry -&gt; corresponding ModeLiteral element is referred instead of "value" </li></ul></div>  
-*** For details refer to the below figure: 
-**** !(#gray_scale)../pictures/labelvalueentry_stimuli_migration.png!
+*** For details refer to the below figure: <br/><br/> !(#gray_scale)../pictures/labelvalueentry_stimuli_migration.png! <br/><br/>
 
 
 h2. Version ITEA 1.1.1 to App4MC 0.7.0
@@ -147,8 +152,12 @@ Below are the changes in the metamodel from ITEA 1.1.1 version to APP4MC 0.7.0
 **  *Impact on 0.7.0 model file due to this change:* 
 *** If AMALTHEA models from previous versions have the reference to Franca Interface ports, as a part of migration this reference is removed. (_In this case, reference to the Franca Interface element is stored as a CustomProperty of type String inside FInterfacePort element_)
 # InterfaceKind ENUM literal values are changed from PROVIDES, REQUIRES to provides, requires
-# Following class names are changed                                                                                
-** !(#gray_scale)../pictures/class_name_changes_itea1.1.0_0.7.0.png!
+# Following class names are changed <br/><br/> !(#gray_scale)../pictures/class_name_changes_itea1.1.0_0.7.0.png! <br/><br/>
+
+table(#classic){margin-left:40px}. 
+|{color:red}. **TODO** | **Replace image above** |
+| use table instead | _will be more useful if copy&paste is required_ |
+
 # Below references are removed inside ComplexNode and HardwareTypeDescription (_both these class's are part of Hardware Model_)
 ** AbstractType[] attribute , AbstractType[] features
 *** *Impact on 0.7.0 model file due to this change:* Content inside the attribute and features is stored as a CustomProperty elements inside the corresponding elements. 
@@ -157,10 +166,10 @@ Below are the changes in the metamodel from ITEA 1.1.1 version to APP4MC 0.7.0
 *** Below figure shows the changes between 1.1.1 model (_containing attributes & features_) and the corresponding 0.7.0 model (_created using model migration utility_)!(#gray_scale)../pictures/hwmodel_attributes_features.png! 
 # ProcessAllocation class removed from MappingModel, instead ISRAllocation (_maps ISR and InterruptController_)  and TaskAllocation (_maps Task and Scheduler_) 
 ** *Impact on 0.7.0 model file due to this change:* 
-*** processAllocation tag is removed from mappingModel, and instead of this taskAllocation and isrAllocation tags will be generated accordingly. For details refer to the image !(#gray_scale)../pictures/mappingmodel_processallocations.png!
+*** processAllocation tag is removed from mappingModel, and instead of this taskAllocation and isrAllocation tags will be generated accordingly. <br/> For details refer to the image <br/> !(#gray_scale)../pictures/mappingmodel_processallocations.png!
 # Below are the changes in the reference names :
 
- 
+table(#classic){margin-left:40px}. 
 | *_Variable Name (version ITEA 1.1.1)_* | *_Changed Variable Name (version APP4MC 0.7.0)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* |
 | isMaster | master | ComplexPort | Hardware model |
 | mem | memory | Mapping | Mapping model  |

@@ -7,7 +7,7 @@ Default max heap memory (Xmx) used by the APP4MC distribution is 2 GB. In case o
 
 Follow the below steps to increase the heap memory setting of APP4MC :
 
-* Open *amalthea.ini* file (_present in the location where APP4MC is installed_) and change the parameter -Xmx from 2g to 4g. (_*Note*: In case if APP4MC plugins are integrated inside custom eclipse application, then corresponding &lt;application_name&gt;.ini file -Xmx parameter should be updated as specified below_)
+* Open *app4mc.ini* file (_present in the location where APP4MC is installed_) and change the parameter -Xmx from 2g to 4g. (_*Note*: In case if APP4MC plugins are integrated inside custom eclipse application, then corresponding &lt;application_name&gt;.ini file -Xmx parameter should be updated as specified below_)
  
  !(#gray_scale)../pictures/ui/vm_arguments_configuration.png!
 
@@ -44,24 +44,25 @@ Once it is identified that modles contain Xpath like URI fragments, it is recomm
  
 For update of models to have UUID's,  use one of the below plugin (depending on the model version) and execute it in the corresponding AMALTHEA distribution to which model is belonging to
 
+table(#classic).
 |*AMALTHEA Model Version*|*Utility plugin to convert URI Fragments to UUID's*|
 |1.0.3| <div><a href="../util_plugins/1.0.3_org.itea2.amalthea.urifragments.converter.zip">download : 1.0.3 AMALTHEA models converter</a> </div>|
 |1.1.0| <div><a href="../util_plugins/1.1.0_org.itea2.amalthea.urifragments.converter.zip">download : 1.1.0 AMALTHEA models converter</a> </div>|
 
 Follow the below steps to convert URI Fragments to UUID's:
 
-# Import the dowloaded utility plugin into corresponding AMALTHEA distribution <div> !(#gray_scale)../pictures/utility/import.png!</div>
-** Select the option "Existing Projects into Workspace" <div> !(#gray_scale)../pictures/utility/import_existing_projects.png!</div>
-** Select the location of zip file (downloaded utility plugin) <div> !(#gray_scale)../pictures/utility/select_project_to_import.png!</div>
-# Open the models folder in the project - &gt; remove the existing models and copy the models which should be updated for UUID's  (_It is imporatant to have all the models and the dependent models copied with the same folder structure_)<div> !(#gray_scale)../pictures/utility/copy_models.png!</div>
-# Configuring the copied models to be considered for UUID's updation : <div> !(#gray_scale)../pictures/utility/configuring_models_mwe2.png!</div>
-# Executing workflow to update the Amalthea models : <div> !(#gray_scale)../pictures/utility/execute_workflow.png!</div>
+# Import the dowloaded utility plugin into corresponding AMALTHEA distribution <br/><br/> !(#gray_scale)../pictures/utility/import.png! <br/><br/>
+** Select the option "Existing Projects into Workspace" <br/><br/> !(#gray_scale)../pictures/utility/import_existing_projects.png! <br/><br/>
+** Select the location of zip file (downloaded utility plugin) <br/><br/> !(#gray_scale)../pictures/utility/select_project_to_import.png! <br/><br/>
+# Open the models folder in the project - &gt; remove the existing models and copy the models which should be updated for UUID's  (_It is imporatant to have all the models and the dependent models copied with the same folder structure_) <br/><br/> !(#gray_scale)../pictures/utility/copy_models.png! <br/><br/>
+# Configuring the copied models to be considered for UUID's updation : <br/><br/> !(#gray_scale)../pictures/utility/configuring_models_mwe2.png! <br/><br/>
+# Executing workflow to update the Amalthea models : <br/><br/> !(#gray_scale)../pictures/utility/execute_workflow.png! <br/><br/>
 # Updated model files (with UUID's) will overwrite the input models. *These model files should be used for model migration*
 
 *Special behaviour*
 
 During the UUID update process following behaviour is performed:
-* If AMALTHEA model elements are referring to Franca Interfaces, references are removed but the content of the reference is copied as CustomProperty for FInterfacePort element <div> !(#gray_scale)../pictures/utility/franca_interface_handling.png!</div>
+* If AMALTHEA model elements are referring to Franca Interfaces, references are removed but the content of the reference is copied as CustomProperty for FInterfacePort element <br/><br/> !(#gray_scale)../pictures/utility/franca_interface_handling.png! <br/><br/>
 
 
 

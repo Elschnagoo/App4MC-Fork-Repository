@@ -7,13 +7,13 @@ _Only forward migration is supported_
 
 **AMALTHEA metamodel versions information**
 
-Below were the releases of AMALTHEA metamodel during its phase of being as a ITEA2 funded project ( For details refer : "http://www.amalthea-project.org":http://www.amalthea-project.org/index.php/roadmap )
+Below were the releases of AMALTHEA metamodel during its phase of being as a ITEA2 funded project ( For details refer : "www.amalthea-project.org":http://www.amalthea-project.org/index.php/roadmap )
 
 * 1.0.3
 * 1.1.0
 * 1.1.1
 
-From below version, AMALTHEA metamodel is a part of official eclipse project : "APP4MC":https://projects.eclipse.org/projects/technology.app4mc
+From below version, AMALTHEA metamodel is a part of the official  project Eclipse APP4MC ( See: "www.eclipse.org/app4mc":https://www.eclipse.org/app4mc )
 
 * 0.7.0
 
