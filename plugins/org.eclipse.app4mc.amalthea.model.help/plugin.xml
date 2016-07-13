@@ -32,11 +32,12 @@
       <toc	file="toc/user_concepts-toc.xml"				primary="false"> </toc>
 
       <toc
-            file="root-dev_xsd-toc.xml"
+            file="root-dev_misc-toc.xml"
             primary="false">
       </toc>
 
       <toc	file="toc/dev_model_xsd-toc.xml"				primary="false"> </toc>
+      <toc	file="toc/dev_model_details-toc.xml"				primary="false"> </toc>
 
    </extension>
 

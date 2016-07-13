@@ -1,0 +1,19 @@
+
+h1. Model Details
+
+h2. Unique ID generation
+
+AMALTHEA uses a named based schema to reference other elements inside of a model.
+A custom implementation is used instead of the standard EMF mechanism, which uses an index based implementation.
+The target element id is identified by the following schema:
+
+bc. 
+java.net.URLEncoder.encode(<name of element>, StandardCharsets.UTF_8.toString)) + "?type=" +  <element>.eClass.name
+
+Samples:
+
+Referencing a Runnable element with name foo in a TaskRunnableCall looks like the following snippet:
+
+bc. 
+<calls xsi:type="am:TaskRunnableCall" runnable="foo?type=Runnable" />
+
