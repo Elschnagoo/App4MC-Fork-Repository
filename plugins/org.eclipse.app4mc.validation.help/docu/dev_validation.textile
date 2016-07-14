@@ -44,7 +44,6 @@ Create a class which is extending @org.eclipse.sphinx.emf.check.AbstractCheckVal
 (e.g. validations related to the AMALTHEA software model may only appear when right-clicking on an appropriate model element of type Software)
 
 
-
 bc.. 
 import org.eclipse.sphinx.emf.check.AbstractCheckValidator;
 import org.eclipse.sphinx.emf.check.Check;
@@ -79,7 +78,7 @@ public class BasicExampleConstraint extends AbstractCheckValidator {
 }
 p. 
 
-p. Create your own class and insert at least one method extended by the @check@ Sphinx annotation. The method should contain exactly one parameter of at least the type of the most generic model element of the AMALTHEA model (i.e. @org.eclipse.app4mc.amalthea.model.central.AMALTHEA@).
+Create your own class and insert at least one method extended by the @check@ Sphinx annotation. The method should contain exactly one parameter of at least the type of the most generic model element of the AMALTHEA model (i.e. @org.eclipse.app4mc.amalthea.model.central.AMALTHEA@).
 Implement the validate method by adding your own custom validation.
 
 h3. Plugin configuration

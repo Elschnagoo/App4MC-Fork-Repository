@@ -68,6 +68,7 @@ bc..
 ModelReader reader = new ModelReader();
 reader.addFileName("path to file");
 reader.run(ctx);
+p. 
 
 h3. Model Writer
 
@@ -86,6 +87,7 @@ ModelWriter writer = new ModelWriter();
 writer.setOutputDir("path to dir");
 writer.setFileName("output.amxmi");
 writer.run(ctx);
+p. 
 
 h3. Add Schedule Points
 
@@ -98,6 +100,7 @@ Sample configuration inside of a workflow:
 bc.. 
 AddSchedulePoints addSchedulePoints = new AddSchedulePoints();
 addSchedulePoints.run(ctx);
+p. 
 
 h2. Other Components
 
@@ -112,6 +115,7 @@ Sample configuration inside of a workflow:
 bc.. 
 CreateTasks ct = new CreateTasks();
 ct.run(ctx);
+p. 
 
 h3. Generate Mapping
 
@@ -128,6 +132,7 @@ mappingDfg.setModelSlot("createtasks");
 mappingDfg.setMappingAlg("dfg");
 mappingDfg.setEnableLog(true);
 mappingDfg.run(ctx);
+p. 
 
 h2. EASE modules
 
