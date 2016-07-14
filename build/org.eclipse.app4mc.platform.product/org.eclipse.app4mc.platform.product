@@ -30,7 +30,7 @@ All rights reserved.
       startupProgressRect="5,275,445,15"
       startupMessageRect="7,252,445,20"
       startupForegroundColor="003813" />
-   <launcher name="amalthea">
+   <launcher name="app4mc">
       <solaris/>
       <win useIco="false">
          <ico path="icons/amalthea-logo.ico"/>
