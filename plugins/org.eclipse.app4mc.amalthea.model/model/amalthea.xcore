@@ -533,6 +533,7 @@ class QualifiedPort extends BaseObject {
 
 class FInterfacePort extends Port {
 	InterfaceKind kind
+	String interfaceName
 	//refers FInterface ^interface
 }
 
@@ -2409,7 +2410,7 @@ class CallSequence extends GraphEntryBase
 }
 
 /*
- * A switch in the call graph, the selected path depends on a label�s value
+ * A switch in the call graph, the selected path depends on the value of the provided ModeLabel
  */
 class ModeSwitch extends GraphEntryBase
 {
@@ -2418,8 +2419,8 @@ class ModeSwitch extends GraphEntryBase
 }
 
 /*
- * A switch entry for a LabelSwitch. 
- * It describes a path of the switch and the required label value to use this path
+ * A switch entry for a ModeSwitch. 
+ * It describes a path of the switch and the required mode value to use this path
  */
 class ModeSwitchEntry extends BaseObject
 {

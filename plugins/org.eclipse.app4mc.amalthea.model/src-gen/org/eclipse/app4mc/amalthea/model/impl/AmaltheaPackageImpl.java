@@ -4111,6 +4111,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getFInterfacePort_InterfaceName() {
+		return (EAttribute)fInterfacePortEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConfigModel() {
 		return configModelEClass;
 	}
@@ -10913,6 +10922,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		fInterfacePortEClass = createEClass(FINTERFACE_PORT);
 		createEAttribute(fInterfacePortEClass, FINTERFACE_PORT__KIND);
+		createEAttribute(fInterfacePortEClass, FINTERFACE_PORT__INTERFACE_NAME);
 
 		configModelEClass = createEClass(CONFIG_MODEL);
 		createEReference(configModelEClass, CONFIG_MODEL__EVENTS_TO_TRACE);
@@ -12517,6 +12527,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(fInterfacePortEClass, FInterfacePort.class, "FInterfacePort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFInterfacePort_Kind(), this.getInterfaceKind(), "kind", null, 0, 1, FInterfacePort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFInterfacePort_InterfaceName(), theEcorePackage.getEString(), "interfaceName", null, 0, 1, FInterfacePort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(configModelEClass, ConfigModel.class, "ConfigModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConfigModel_EventsToTrace(), this.getEventConfig(), null, "eventsToTrace", null, 0, -1, ConfigModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

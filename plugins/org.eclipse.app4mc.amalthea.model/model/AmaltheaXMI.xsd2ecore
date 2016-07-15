@@ -493,6 +493,7 @@
     <nested inputs="amalthea.xcore#/EPackage/QualifiedPort" outputs="AmaltheaXMI.xsd#//QualifiedPort;XSDElementDeclaration=49"/>
     <nested inputs="amalthea.xcore#/EPackage/FInterfacePort" outputs="AmaltheaXMI.xsd#//FInterfacePort;XSDComplexTypeDefinition=50">
       <nested inputs="amalthea.xcore#/EPackage/FInterfacePort/kind" outputs="AmaltheaXMI.xsd#//FInterfacePort;XSDComplexTypeDefinition=50/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/FInterfacePort/interfaceName" outputs="AmaltheaXMI.xsd#//FInterfacePort;XSDComplexTypeDefinition=50/XSDAttributeUse=1"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/FInterfacePort" outputs="AmaltheaXMI.xsd#//FInterfacePort;XSDElementDeclaration=50"/>
     <nested inputs="amalthea.xcore#/EPackage/ConfigModel" outputs="AmaltheaXMI.xsd#//ConfigModel;XSDComplexTypeDefinition=51">

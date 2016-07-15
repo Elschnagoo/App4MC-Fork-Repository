@@ -20,8 +20,8 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A switch entry for a LabelSwitch.
- * It describes a path of the switch and the required label value to use this path
+ * A switch entry for a ModeSwitch.
+ * It describes a path of the switch and the required mode value to use this path
  * <!-- end-model-doc -->
  *
  * <p>

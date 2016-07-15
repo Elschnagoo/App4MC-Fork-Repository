@@ -23,6 +23,7 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.FInterfacePort#getKind <em>Kind</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.FInterfacePort#getInterfaceName <em>Interface Name</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getFInterfacePort()
@@ -58,5 +59,31 @@ public interface FInterfacePort extends Port {
 	 * @generated
 	 */
 	void setKind(InterfaceKind value);
+
+	/**
+	 * Returns the value of the '<em><b>Interface Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Interface Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Interface Name</em>' attribute.
+	 * @see #setInterfaceName(String)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getFInterfacePort_InterfaceName()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getInterfaceName();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.FInterfacePort#getInterfaceName <em>Interface Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Interface Name</em>' attribute.
+	 * @see #getInterfaceName()
+	 * @generated
+	 */
+	void setInterfaceName(String value);
 
 } // FInterfacePort

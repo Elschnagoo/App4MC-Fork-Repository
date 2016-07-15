@@ -1142,6 +1142,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     <xsd:complexContent>
       <xsd:extension base="am:Port">
         <xsd:attribute name="kind" type="am:InterfaceKind"/>
+        <xsd:attribute name="interfaceName" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -4212,7 +4213,7 @@ Generalizes interrupt service routines and tasks</xsd:documentation>
   </xsd:element>
   <xsd:complexType name="ModeSwitch">
     <xsd:annotation>
-      <xsd:documentation>A switch in the call graph, the selected path depends on a labelï¿½s value</xsd:documentation>
+      <xsd:documentation>A switch in the call graph, the selected path depends on the value of the provided ModeLabel</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:GraphEntryBase">
@@ -4226,13 +4227,13 @@ Generalizes interrupt service routines and tasks</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="ModeSwitch" type="am:ModeSwitch">
     <xsd:annotation>
-      <xsd:documentation>A switch in the call graph, the selected path depends on a labelï¿½s value</xsd:documentation>
+      <xsd:documentation>A switch in the call graph, the selected path depends on the value of the provided ModeLabel</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ModeSwitchEntry">
     <xsd:annotation>
-      <xsd:documentation>A switch entry for a LabelSwitch.
-It describes a path of the switch and the required label value to use this path</xsd:documentation>
+      <xsd:documentation>A switch entry for a ModeSwitch.
+It describes a path of the switch and the required mode value to use this path</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
@@ -4247,8 +4248,8 @@ It describes a path of the switch and the required label value to use this path<
   </xsd:complexType>
   <xsd:element name="ModeSwitchEntry" type="am:ModeSwitchEntry">
     <xsd:annotation>
-      <xsd:documentation>A switch entry for a LabelSwitch.
-It describes a path of the switch and the required label value to use this path</xsd:documentation>
+      <xsd:documentation>A switch entry for a ModeSwitch.
+It describes a path of the switch and the required mode value to use this path</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ProbabiltitySwitch">

@@ -52,6 +52,7 @@ public class FInterfacePortItemProvider extends PortItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addKindPropertyDescriptor(object);
+			addInterfaceNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -69,6 +70,28 @@ public class FInterfacePortItemProvider extends PortItemProvider {
 				 getString("_UI_FInterfacePort_kind_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_FInterfacePort_kind_feature", "_UI_FInterfacePort_type"),
 				 AmaltheaPackage.eINSTANCE.getFInterfacePort_Kind(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Interface Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInterfaceNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FInterfacePort_interfaceName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FInterfacePort_interfaceName_feature", "_UI_FInterfacePort_type"),
+				 AmaltheaPackage.eINSTANCE.getFInterfacePort_InterfaceName(),
 				 true,
 				 false,
 				 false,
@@ -130,6 +153,7 @@ public class FInterfacePortItemProvider extends PortItemProvider {
 
 		switch (notification.getFeatureID(FInterfacePort.class)) {
 			case AmaltheaPackage.FINTERFACE_PORT__KIND:
+			case AmaltheaPackage.FINTERFACE_PORT__INTERFACE_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

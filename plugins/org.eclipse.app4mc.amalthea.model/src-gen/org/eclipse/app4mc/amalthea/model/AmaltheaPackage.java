@@ -3191,13 +3191,22 @@ public interface AmaltheaPackage extends EPackage {
 	int FINTERFACE_PORT__KIND = PORT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINTERFACE_PORT__INTERFACE_NAME = PORT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>FInterface Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FINTERFACE_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 1;
+	int FINTERFACE_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -23724,6 +23733,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getFInterfacePort_Kind();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.FInterfacePort#getInterfaceName <em>Interface Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Interface Name</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.FInterfacePort#getInterfaceName()
+	 * @see #getFInterfacePort()
+	 * @generated
+	 */
+	EAttribute getFInterfacePort_InterfaceName();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ConfigModel <em>Config Model</em>}'.

@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A switch in the call graph, the selected path depends on a label�s value
+ * A switch in the call graph, the selected path depends on the value of the provided ModeLabel
  * <!-- end-model-doc -->
  *
  * <p>
