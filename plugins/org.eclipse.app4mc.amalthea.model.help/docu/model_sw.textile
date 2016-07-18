@@ -2,7 +2,6 @@
 h1. Software Model
 
 The AMALTHEA software model is central accessible through the __SWModel__ element. 
-The namespace for the model is "http://app4mc.eclipse.org/amalthea/0.7.0/sw".
 
 
 h2. Memory Information

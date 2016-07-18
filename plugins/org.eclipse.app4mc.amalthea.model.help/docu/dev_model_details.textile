@@ -8,7 +8,7 @@ A custom implementation is used instead of the standard EMF mechanism, which use
 The target element id is identified by the following schema:
 
 bc. 
-java.net.URLEncoder.encode(<name of element>, StandardCharsets.UTF_8.toString)) + "?type=" +  <element>.eClass.name
+java.net.URLEncoder.encode(<name of element>, StandardCharsets.UTF_8.toString)) + "?type=" + <element>.eClass.name
 
 Samples:
 

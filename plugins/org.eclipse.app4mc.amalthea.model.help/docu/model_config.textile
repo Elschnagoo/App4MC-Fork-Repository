@@ -3,7 +3,6 @@ h1. Configuration Model
 
 The purpose of the configuration model is to provide a common mechanism for configuration purpose.
 The included configurations can contain elements for further processing or build steps.
-The namespace of the model is "http://app4mc.eclipse.org/amalthea/0.7.0/config".
 
 The central element is the __ConfigModel__ class.
 

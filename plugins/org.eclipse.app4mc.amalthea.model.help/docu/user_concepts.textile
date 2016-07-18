@@ -8,7 +8,7 @@ It is possible to use "Tags":./model_common.html#Tags for grouping elements of t
 # Components
 # Software (SW)
 
-Both models are storing the relevant Tags in a local list, available in the @org.eclipse.app4mc.amalthea.model.components.ComponentsModel@ and @org.eclipse.app4mc.amalthea.model.sw.SWModel@ class. 
+Both models are storing the relevant Tags in a local list, available in the @org.eclipse.app4mc.amalthea.model.ComponentsModel@ and @org.eclipse.app4mc.amalthea.model.SWModel@ class. 
 The reason for doing this is that Tags used in the components have another type of technical background than Tags in the software model. It should not be the case that elements in the software model are referencing Tags from a components model and reverse.
 
 h2. Custom Properties

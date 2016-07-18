@@ -143,10 +143,11 @@ Below are the changes in the metamodel from ITEA 1.1.1 version to APP4MC 0.7.0
 # Instead of multiple namespaces (e.g: sw,hw,constraints,components etc.,) a single namespace "am" is introduced
 ** *Impact on 0.7.0 model file due to this change:* 
 *** xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0 is included in the xmi file, instead of other namespaces (e.g: xmlns:hw, xmlns:sw etc.,)
-*** xsi:type attributes will consists of namespace prefix as "am" in the value @(eg : <ports xsi:type="am:ComplexPort" name="Mem_1_port" bitWidth="16" direction="R" writeCycles="10" readCycles="10"/>)@
-*** Root tag will have "am" as the prefix @(eg : <am:HWModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0"/>)@
-# Reference pattern is changed from @<Element Name>?type=<NameSpace prefix>.<ElementClassName>@ to @<Element Name>?type=<ElementClassName>@
-** As there is single model namespace in 0.7.0, namespace prefix is removed before the class name @(eg: "ABSMode?type=Label")@ 
+*** xsi:type attributes will consists of namespace prefix as "am" in the value. Example: <br/> @<ports xsi:type="am:ComplexPort" name="Mem_1_port" bitWidth="16" direction="R" writeCycles="10" readCycles="10"/>@
+*** Root tag will have "am" as the prefix. Example: <br/> @<am:HWModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0"/>@
+# Reference pattern is changed. <br/> As there is single model namespace in 0.7.0, namespace prefix is removed before the class name (eg: "ABSMode?type=Label").
+** old: @<Element Name>?type=<NameSpace prefix>.<ElementClassName>@
+** new: @<Element Name>?type=<ElementClassName>@
 # Root tag of the model, changed from *AMALTHEA* to *Amalthea* 
 # *IPort* interface is changed to abstract class *Port*
 # FInterface reference (i.e. Franca Interface) is removed from class FInterfacePort 

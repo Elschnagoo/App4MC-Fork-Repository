@@ -2,7 +2,6 @@
 h1. Components Model
 
 The AMALTHEA component model is central accessible through the __ComponentsModel__ element.
-The namespace for the model is "http://app4mc.eclipse.org/amalthea/0.7.0/components".
 
 It holds the following types:
 
@@ -28,7 +27,7 @@ The 'Component' class represents a component. Components could be created direct
 
 !(#scale)../pictures/model_components_component_references.png!
 
-It contains several ports which must implement the 'IPort' interface. A component refers the classes 'OSEvent', 'Label', 'Runnable' and 'AbstractProcess' from the software model and the class 'Semaphore' from the OS model.
+It contains several ports which must implement the 'IPort' interface. A component refers the classes 'OsEvent', 'Label', 'Runnable' and 'AbstractProcess' from the software model and the class 'Semaphore' from the OS model.
 
 h3. System
 
@@ -43,7 +42,9 @@ h3. ComponentInstance and Connector
 
 The 'ComponentInstance' and the 'Connector' can be created within a 'System' or a 'Composite'. 'ComponentInstances' are used to represent instances of component- or composite-types. The 'Connector' class is used to connect the component instances to each other via their Ports. The connector contains a source and target 'QualifiedPort'. A 'Qualified' port refers a 'ComponentInstance' and an 'IPort'.
 
-The 'FInterfacePort' class contains the attribute 'kind' to set the port direction ('provides' or 'requires'). Additionally it refers the Franca IDL where a detailed description of the interfaces is possible. 
+The 'FInterfacePort' class contains the attribute 'kind' to set the port direction ('provides' or 'requires').
+The attribute 'interface name' can be used to refer to an external definition, e.g. described in detail with the Franca IDL. 
+
 
 h2. Franca IDL
 
@@ -53,7 +54,7 @@ The Franca IDL files (*.fidl) are valid model resources in AMALTHEA projects. Th
 
 !../pictures/model_franca_editor_screenshot.png!
 
-The interfaces in Franca can be referenced from AMALTHEA ports.
+AMALTHEA ports can specify the 'interface name' to refer to interfaces in Franca.
 
 !../pictures/model_components_Franca_IDL.png!
 

@@ -6,7 +6,7 @@ The AMALTHEA hardware model is used to described hardware systems which usually 
 * SystemType
 * ECUType
 * CoreType
-* MemType
+* MemoryType
 * NetworkType
 * System
 * AccessPath

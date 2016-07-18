@@ -2,7 +2,6 @@
 h1. Common Model
 
 The AMALTHEA common model is not a model by itself, but provides standard elements used by other models as containments.
-The namespace of the model is "http://app4mc.eclipse.org/amalthea/0.7.0/common".
 
 h2. Time and Time Unit
 
@@ -80,4 +79,3 @@ The other possibility is to set a single value using the __SingleValueStatistic_
 The values itself are set as a normal __int__ value or in case of the single value as __float__.
 
 !../pictures/model_common_statistic.png!
-
