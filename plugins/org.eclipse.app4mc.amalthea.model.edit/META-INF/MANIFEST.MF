@@ -17,8 +17,6 @@ Require-Bundle: org.apache.commons.lang,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
- org.franca.core;visibility:=reexport,
- org.franca.core.edit;visibility:=reexport,
  org.eclipse.app4mc.amalthea.model;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 

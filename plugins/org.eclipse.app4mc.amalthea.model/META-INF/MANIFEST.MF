@@ -16,6 +16,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xcore.lib,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.sphinx.emf;visibility:=reexport,
- org.eclipse.app4mc.amalthea.sphinx;visibility:=reexport,
- org.franca.core;visibility:=reexport
+ org.eclipse.app4mc.amalthea.sphinx;visibility:=reexport
 Bundle-ActivationPolicy: lazy

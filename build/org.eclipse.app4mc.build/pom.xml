@@ -114,6 +114,7 @@
 		<module>../../features/org.eclipse.app4mc.tracing.sdk</module>
 		<module>../../features/org.eclipse.app4mc.validation</module>
 		<module>../../features/org.eclipse.app4mc.validation.sdk</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.addon.franca</module>
 
 
 

@@ -26,23 +26,14 @@ All rights reserved.
 
    <requires>
       <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.eclipse.sphinx.emf"/>
-      <import plugin="org.eclipse.xtext"/>
-      <import plugin="org.franca.core"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.sphinx.emf"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.emf.ecore.xcore.lib"/>
       <import plugin="org.eclipse.xtext.xbase.lib"/>
       <import plugin="org.eclipse.ui"/>
    </requires>
-
-   <plugin
-         id="org.eclipse.app4mc.amalthea.franca.sphinx"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
    <plugin
          id="org.eclipse.app4mc.amalthea.sphinx"

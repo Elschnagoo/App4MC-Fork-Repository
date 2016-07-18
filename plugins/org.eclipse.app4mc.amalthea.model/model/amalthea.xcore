@@ -33,7 +33,6 @@ package org.eclipse.app4mc.amalthea.model
 
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
-//import org.franca.core.franca.FInterface
 
 
  /**
@@ -534,7 +533,6 @@ class QualifiedPort extends BaseObject {
 class FInterfacePort extends Port {
 	InterfaceKind kind
 	String interfaceName
-	//refers FInterface ^interface
 }
 
 enum InterfaceKind {

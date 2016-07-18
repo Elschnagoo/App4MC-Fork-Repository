@@ -90,6 +90,9 @@
    <feature url="features/org.eclipse.app4mc.amalthea.workflow.scripting.sdk_0.7.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.workflow.scripting.sdk" version="0.7.0.qualifier">
       <category name="org.eclipse.app4mc.amalthea.workflow"/>
    </feature>
+   <feature url="features/org.eclipse.app4mc.amalthea.addon.franca_0.7.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.addon.franca" version="0.7.0.qualifier">
+      <category name="org.eclipse.app4mc.amalthea.addons"/>
+   </feature>
    <category-def name="org.eclipse.app4mc.platform" label="APP4MC Tool Platform"/>
    <category-def name="org.eclipse.app4mc.docu" label="APP4MC Documentation"/>
    <category-def name="org.eclipse.app4mc.amalthea.model" label="APP4MC AMALTHEA Model"/>
@@ -103,4 +106,5 @@
    <category-def name="org.eclipse.app4mc.tracing" label="APP4MC Tracing"/>
    <category-def name="org.eclipse.app4mc.validation" label="APP4MC Validation"/>
    <category-def name="org.eclipse.app4mc.examples" label="APP4MC Examples"/>
+   <category-def name="org.eclipse.app4mc.amalthea.addons" label="APP4MC AMALTHEA Addons"/>
 </site>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.app4mc.amalthea.models.sdk"
-      label="APP4MC AMALTHEA Models SDK"
+      id="org.eclipse.app4mc.amalthea.addon.franca"
+      label="APP4MC AMALTHEA Franca Integration"
       version="0.7.0.qualifier"
       provider-name="Eclipse.org"
       license-feature="org.eclipse.license"
       license-feature-version="1.0.1.qualifier">
 
    <description url="https://projects.eclipse.org/projects/technology.app4mc">
-      APP4MC AMALTHEA Models SDK
+      APP4MC AMALTHEA Franca Integration
    </description>
 
    <copyright url="https://projects.eclipse.org/projects/technology.app4mc">
@@ -16,27 +16,19 @@
 All rights reserved.
    </copyright>
 
-   <includes
-         id="org.eclipse.app4mc.amalthea.models"
-         version="0.0.0"/>
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
 
-   <includes
-         id="org.eclipse.app4mc.docu.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.app4mc.examples.sdk"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.eclipse.app4mc.amalthea.sphinx.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.sphinx.emf"/>
+      <import plugin="org.eclipse.xtext"/>
+      <import plugin="org.franca.core"/>
+   </requires>
 
    <plugin
-         id="org.eclipse.app4mc.amalthea.model.source"
+         id="org.eclipse.app4mc.amalthea.franca.sphinx"
          download-size="0"
          install-size="0"
          version="0.0.0"
