@@ -11,8 +11,7 @@
  ******************************************************************************/
 package org.eclipse.app4mc.multicore.openmapping.sharedlibs;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -30,7 +29,7 @@ public class ConsoleOutputHandler {
 	private final String name;
 	private final MessageConsole console;
 	private MessageConsoleStream outStream;
-	private final Log log = LogFactory.getLog("org.eclipse.app4mc.multicore.openmapping");
+	private final Logger log = Logger.getLogger("org.eclipse.app4mc.multicore.openmapping");
 
 	@SuppressWarnings("javadoc")
 	public ConsoleOutputHandler(final String name) {

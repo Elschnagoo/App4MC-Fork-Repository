@@ -16,7 +16,7 @@ package org.eclipse.app4mc.amalthea.workflow.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
@@ -38,7 +38,7 @@ public class AddSchedulePoints extends AmaltheaWorkflow {
 	@SuppressWarnings("javadoc")
 	public AddSchedulePoints() {
 		super();
-		this.log = LogFactory.getLog("AddSchedulePoints");
+		this.log = Logger.getLogger("AddSchedulePoints");
 	}
 
 	/**

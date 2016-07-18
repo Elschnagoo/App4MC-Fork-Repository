@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
@@ -75,7 +75,7 @@ public class AmaltheaWriter extends AmaltheaWorkflow {
 	@SuppressWarnings("javadoc")
 	public AmaltheaWriter() {
 		super();
-		this.log = LogFactory.getLog("AmaltheaWriter");
+		this.log = Logger.getLogger("AmaltheaWriter");
 	}
 
 	/**

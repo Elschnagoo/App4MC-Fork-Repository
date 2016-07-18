@@ -18,8 +18,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
@@ -57,7 +56,7 @@ public class UniversalHandler {
 	private boolean verboseOutputEnable = false;
 	private String pluginId = "ERR_PLUGINID_UNSET";
 	private ILog iLog;
-	private Log aLog;
+	private Logger aLog;
 	private SWModel swModel;
 	private HWModel hwModel;
 	private ConstraintsModel conModel;
@@ -290,7 +289,7 @@ public class UniversalHandler {
 		if (null == getLog()) {
 			// Workflow, fall back to APACHE Commons Logging
 			if (null == this.aLog) {
-				this.aLog = LogFactory.getLog(this.pluginId);
+				this.aLog = Logger.getLogger(this.pluginId);
 			}
 			switch (severity) {
 				case IStatus.OK:
@@ -392,7 +391,7 @@ public class UniversalHandler {
 	 */
 	public void setPluginId(final String pluginId) {
 		// Overwrite Apache Commins Logging
-		this.aLog = LogFactory.getLog(pluginId);
+		this.aLog = Logger.getLogger(pluginId);
 		// Remember the Plugin ID
 		this.pluginId = pluginId;
 	}

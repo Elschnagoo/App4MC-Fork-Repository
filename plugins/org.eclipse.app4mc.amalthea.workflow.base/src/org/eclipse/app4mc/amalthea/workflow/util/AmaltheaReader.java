@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.ComponentsModel;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
@@ -54,7 +54,7 @@ public class AmaltheaReader extends AmaltheaWorkflow {
 	@SuppressWarnings("javadoc")
 	public AmaltheaReader() {
 		super();
-		this.log = LogFactory.getLog("AmaltheaReader");
+		this.log = Logger.getLogger("AmaltheaReader");
 	}
 
 	/**

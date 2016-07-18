@@ -10,8 +10,7 @@
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.algorithms;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.IConsoleManager;
@@ -20,7 +19,7 @@ import org.eclipse.ui.console.MessageConsoleStream;
 
 public class PartLog {
 
-	protected Log partlog;
+	protected Logger partlog;
 	private boolean enableTargetConsoleLog;
 	private boolean enableSourceConsoleLog;
 	private MessageConsole console;
@@ -35,7 +34,7 @@ public class PartLog {
 	}
 
 	public void setLogName(final String name) {
-		this.partlog = LogFactory.getLog(name);
+		this.partlog = Logger.getLogger(name);
 	}
 
 	public void log(final String message) {

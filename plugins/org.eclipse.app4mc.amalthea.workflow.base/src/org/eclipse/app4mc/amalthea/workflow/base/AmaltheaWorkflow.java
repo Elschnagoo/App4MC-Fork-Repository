@@ -13,8 +13,7 @@
  */
 package org.eclipse.app4mc.amalthea.workflow.base;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -30,7 +29,7 @@ public abstract class AmaltheaWorkflow extends WorkflowComponentWithModelSlot {
 	/**
 	 * Default log for workflow components
 	 */
-	protected Log log = LogFactory.getLog(getClass());
+	protected Logger log = Logger.getLogger(getClass());
 
 	/**
 	 * Default slot for the AMALTHEA model in the {@link WorkflowContext}
