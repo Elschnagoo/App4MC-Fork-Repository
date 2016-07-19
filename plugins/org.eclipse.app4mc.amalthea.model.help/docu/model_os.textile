@@ -36,6 +36,7 @@ h3. Scheduling Algorithm
 
 This is an abstract class for the different scheduling algorithms.
 
+table(#classic). 
 |_. Scheduling Algorithm  |_. Description |
 | OSEK | OSEK compliant Scheduling Algorithm |
 | PfairPD2 | Proportionate Fair PD ^2^ Scheduling Algorithm |
@@ -63,6 +64,7 @@ With this object, a semaphore can be described which limits the access of severa
 
 !../pictures/model_os_semaphore.png!
 
+table(#classic). 
 |_. Attribute  |_. Description |
 | __name__ | Name of semaphore (inherited from ReferableBaseObject) |
 | __maxValue__ | Maximum number of processes that can concurrently access the semaphore |

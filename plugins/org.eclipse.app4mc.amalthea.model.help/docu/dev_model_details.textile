@@ -17,3 +17,63 @@ Referencing a Runnable element with name foo in a TaskRunnableCall looks like th
 bc. 
 <calls xsi:type="am:TaskRunnableCall" runnable="foo?type=Runnable" />
 
+
+h2. Transient back pointers
+
+AMALTHEA maintains a (small) number of back pointers in the model. A transient reference of an object 'points back' to the object referring to it. This allows easier navigation, at the expense of greater memory use.
+
+h4. Current back pointers
+
+| | Back pointer (read only) |>. Reference | |
+| @LabelAccess@ |{color:green}. &#8592; *labelAccesses* |>. *data* &#8594; | @Label@ |
+| @TaskRunnableCall@ |{color:green}. &#8592; *taskRunnableCalls* |>. *runnable* &#8594; | @Runnable@ |
+| @RunnableCall@ |{color:green}. &#8592; *runnableCalls* |>. *runnable* &#8594; | @Runnable@ |
+| @CoreAllocation@ |{color:green}. &#8592; *coreAllocation* |>. *scheduler* &#8594; | @Scheduler@ |
+| @Mapping@ |{color:green}. &#8592; *mapping* |>. *memory* &#8594; | @Memory@ |
+
+h4. Implementation
+
+**Xcore:**
+
+In addition to a reference %*&lt;reference&gt;*% there is a transient reference named  %*&lt;reference&gt;LinkInt*%.
+The visiblity in the generated code and in the user interface is controlled by %*@GenModel*% annotations.
+
+bc.. 
+class TaskRunnableCall extends CallSequenceItem
+{	...
+	refers Runnable[1] runnable
+	
+	@GenModel(suppressedGetVisibility="true",suppressedSetVisibility="true")
+	@GenModel(property="None")
+	refers transient Runnable[1] runnableLinkInt opposite taskRunnableCalls
+}
+
+class Runnable extends AbstractElementMemoryInformation
+{	...	
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers readonly transient TaskRunnableCall[] taskRunnableCalls opposite runnableLinkInt 
+}
+p. 
+
+**Classes and references:**
+
+!../pictures/impl/model_transient_backpointer.png!
+
+**Generated code:**
+
+EMF code generation allows the use of dynamic templates. AMALTHEA uses this technology to additionally set the transient value in the  setter code of the standard value. The dynamic template is triggered by the name pattern %'&lt;reference&gt;%' and %'&lt;reference&gt;LinkInt'%.
+
+bc.. 
+public class TaskRunnableCallImpl ... {
+	...
+	public void setRunnable(org.eclipse.app4mc.amalthea.model.Runnable newRunnable) {
+		...
+ 		//Additional setting transient value for transient bi-directional reference
+ 		setRunnableLinkInt(newRunnable);
+	}
+}
+p. 
+
+h4. User Interface
+
+!../pictures/impl/model_transient_backpointer_ui.png!
