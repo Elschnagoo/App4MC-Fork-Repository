@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.xpath.utils.BulkXpathOperation;
 import org.jdom2.Attribute;
@@ -33,6 +35,7 @@ public abstract class AbstractAttributeRefCacheBuilder implements ICache {
 
 	protected AbstractHelper helper;
 
+	protected final Logger logger=LogManager.getLogger(this.getClass());
 
 	@Override
 	public Map<File, Map<String, Object>> getCacheMap() {

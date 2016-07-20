@@ -13,13 +13,9 @@ package org.eclipse.app4mc.amalthea.converters.common.base;
 import java.io.File;
 import java.util.Map;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom2.Document;
 
 public interface ICache {
-
-	public final Logger logger=LogManager.getLogger("Model-Migration");
 
 	public void buildCache(final Map<File, Document> fileName_documentsMap);
 

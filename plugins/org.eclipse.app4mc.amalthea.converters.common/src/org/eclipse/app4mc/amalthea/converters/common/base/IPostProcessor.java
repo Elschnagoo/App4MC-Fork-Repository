@@ -13,14 +13,11 @@ package org.eclipse.app4mc.amalthea.converters.common.base;
 import java.io.File;
 import java.util.Map;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.utils.AbstractHelper;
 import org.jdom2.Document;
 
 public interface IPostProcessor {
 
-	public final Logger logger=LogManager.getLogger("Model-Migration");
 	
 	public void process(final Map<File, Document> fileName_documentsMap, final AbstractHelper helper) throws Exception;
 }

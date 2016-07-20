@@ -16,13 +16,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom2.Document;
 
 public interface IConverter {
-	
-	public final Logger logger=LogManager.getLogger("Model-Migration");
 	
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap, List<ICache> caches)
 			throws Exception;

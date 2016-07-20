@@ -14,10 +14,11 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters070.utils.HelperUtils_111_070;
-import org.eclipse.osgi.util.NLS;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -25,9 +26,12 @@ import org.jdom2.Element;
 public class HwConverter implements IConverter {
 
 	private final HelperUtils_111_070 helper;
+	
+	private final Logger logger ;
 
 	public HwConverter() {
 		this.helper = HelperUtils_111_070.getInstance();
+		this.logger=LogManager.getLogger(this.getClass());
 	}
 
 	@Override

@@ -52,7 +52,7 @@ public class ModelMigrationJob extends Job {
 
 	protected AbstractHelper helper;
 	
-	private final Logger logger=LogManager.getLogger("Model-Migration");
+	private final Logger logger=LogManager.getLogger(this.getClass());
 
 	public ModelMigrationJob(final String name, final MigrationSettings migrationSettings) {
 		super(name);

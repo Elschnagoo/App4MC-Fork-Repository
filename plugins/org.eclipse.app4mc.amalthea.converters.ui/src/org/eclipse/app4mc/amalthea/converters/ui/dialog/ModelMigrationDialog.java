@@ -81,7 +81,7 @@ public class ModelMigrationDialog extends Dialog {
 
 	public ModelMigrationDialog(final Shell parentShell, final MigrationSettings migrationSettings) {
 		super(parentShell);
-		logger=LogManager.getLogger("Model-Migration");
+		logger=LogManager.getLogger(this.getClass());
 		
 		setMigrationSettings(migrationSettings);
 

@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.utils.BaseHelperUtils;
 import org.eclipse.app4mc.amalthea.converters.ui.dialog.MigrationErrorDialog;
 import org.eclipse.app4mc.amalthea.converters.ui.dialog.ModelMigrationDialog;
@@ -45,11 +44,12 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 
 	private MigrationSettings migrationSettings;
 	
-	private final Logger logger=LogManager.getLogger("Model-Migration");
 	
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 		
+		logger=LogManager.getLogger("org.eclipse.app4mc.amalthea");
+
 		logger.removeAllAppenders();
 
 		logger.addAppender(new CustomEclipseLogAppender());

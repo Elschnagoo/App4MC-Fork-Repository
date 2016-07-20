@@ -76,7 +76,7 @@ public abstract class AbstractConverterTest {
 		this.xmlFileRelativeLocation = xmlFileRelativeLocation;
 		this.fileName_documentsMap = new HashMap<File, Document>();
 		this.localOutputDirectory = new File(this.outputGlobalTestsDirectory, this.xmlFileRelativeLocation).getParent();
-		this.logger=LogManager.getLogger("Model-Migration");
+		this.logger=LogManager.getLogger("org.eclipse.app4mc.amalthea");
 		logger.addAppender(new ConsoleAppender(new PatternLayout("%d{ISO8601} %-5p [%c]: %m%n")));
 	}
 

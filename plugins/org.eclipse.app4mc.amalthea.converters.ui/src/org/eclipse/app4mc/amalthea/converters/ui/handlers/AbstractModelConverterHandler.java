@@ -40,7 +40,7 @@ public abstract class AbstractModelConverterHandler extends AbstractHandler {
 
 	protected AbstractHelper helper;
 
-	private final Logger logger=LogManager.getLogger("Model-Migration");
+	protected Logger logger=LogManager.getLogger("org.eclipse.app4mc.amalthea");
 	
 	protected void executeConversion(final IConverter converter, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {

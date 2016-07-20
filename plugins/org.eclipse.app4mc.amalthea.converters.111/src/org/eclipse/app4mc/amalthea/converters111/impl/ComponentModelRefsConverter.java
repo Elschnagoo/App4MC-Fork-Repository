@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters.common.utils.ModelVersion;
@@ -31,6 +33,8 @@ import com.google.common.collect.Table;
 public class ComponentModelRefsConverter implements IConverter {
 
 	private final HelperUtils_110_111 helper;
+	
+	private final Logger logger=LogManager.getLogger(this.getClass());
 
 	public ComponentModelRefsConverter() {
 		this.helper = HelperUtils_110_111.getInstance();

@@ -37,7 +37,7 @@ public class ModelLoaderJob extends Job {
 	private final MigrationSettings migrationSettings;
 	private final List<File> inputModels;
 	private final AbstractHelper helper;
-	private final Logger logger=LogManager.getLogger("Model-Migration");
+	private final Logger logger=LogManager.getLogger(this.getClass());
 
 	public ModelLoaderJob(final String name, final MigrationSettings migrationSettings, final List<File> inputModels,
 			final AbstractHelper helper) {

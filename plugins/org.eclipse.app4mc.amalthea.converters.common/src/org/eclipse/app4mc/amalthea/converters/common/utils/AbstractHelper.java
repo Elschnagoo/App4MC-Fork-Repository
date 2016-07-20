@@ -42,7 +42,7 @@ import com.google.common.io.Files;
 @SuppressWarnings("unchecked")
 public abstract class AbstractHelper {
 
-	public final Logger logger=LogManager.getLogger("Model-Migration");
+	public final Logger logger=LogManager.getLogger(this.getClass());
 	
 	public void addAdditionalNameSpace(final Element rootElement, final Namespace... namespaces) {
 

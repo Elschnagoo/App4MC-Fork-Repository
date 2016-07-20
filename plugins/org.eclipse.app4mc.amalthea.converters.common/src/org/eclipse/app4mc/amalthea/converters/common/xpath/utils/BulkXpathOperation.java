@@ -24,7 +24,7 @@ import org.jdom2.Element;
 
 public class BulkXpathOperation {
 
-	private final Logger logger=LogManager.getLogger("Model-Migration");
+	private final Logger logger=LogManager.getLogger(this.getClass());
 	/**
 	 * This method takes Xml Document object and the list of Xpath Strings as input-> and returns a Map with key as
 	 * Xpath and Value as the List<Element> JDOM elements

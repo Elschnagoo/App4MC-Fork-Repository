@@ -28,6 +28,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.StringTokenizer;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.IPostProcessor;
 import org.eclipse.app4mc.amalthea.converters.common.utils.AbstractHelper;
 import org.jdom2.Document;
@@ -43,6 +45,8 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 
 	public CustomPropsPostProcessor() {
 	}
+	
+	private final Logger logger=LogManager.getLogger(this.getClass());
 
 	private AbstractHelper helper;
 
