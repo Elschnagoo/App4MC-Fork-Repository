@@ -44,6 +44,7 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 
 	private MigrationSettings migrationSettings;
 	
+	private final String LATEST_MODEL_VERSION="0.7.0";
 	
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
@@ -190,9 +191,17 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 
 									}
 									else {
-										final ModelMigrationDialog dialog = new ModelMigrationDialog(shell,
-												getMigrationSettings());
-										dialog.open();
+										
+										if(getMigrationSettings().getInputModelVersion()!=null && getMigrationSettings().getInputModelVersion().equals(LATEST_MODEL_VERSION)){
+
+											MessageDialog.openInformation(shell, "AMALTHEA Model Migration", "Selected models are compatible to latest AMALTHEA meta-model version ("+LATEST_MODEL_VERSION +")\nIt is not required to migrate these models !!");
+										}else{
+											final ModelMigrationDialog dialog = new ModelMigrationDialog(shell,
+													getMigrationSettings());
+											dialog.open();
+											
+										}
+										
 
 
 									}
