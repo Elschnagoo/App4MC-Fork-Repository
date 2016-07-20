@@ -140,36 +140,44 @@ h2. Version ITEA 1.1.1 to App4MC 0.7.0
 
 Below are the changes in the metamodel from ITEA 1.1.1 version to APP4MC 0.7.0
 
-# Instead of multiple namespaces (e.g: sw,hw,constraints,components etc.,) a single namespace "am" is introduced
+* Instead of multiple namespaces (e.g: sw,hw,constraints,components etc.,) a single namespace "am" is introduced
 ** *Impact on 0.7.0 model file due to this change:* 
 *** xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0 is included in the xmi file, instead of other namespaces (e.g: xmlns:hw, xmlns:sw etc.,)
 *** xsi:type attributes will consists of namespace prefix as "am" in the value. Example: <br/> @<ports xsi:type="am:ComplexPort" name="Mem_1_port" bitWidth="16" direction="R" writeCycles="10" readCycles="10"/>@
 *** Root tag will have "am" as the prefix. Example: <br/> @<am:HWModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0"/>@
-# Reference pattern is changed. <br/> As there is single model namespace in 0.7.0, namespace prefix is removed before the class name (eg: "ABSMode?type=Label").
+* Reference pattern is changed. <br/> As there is single model namespace in 0.7.0, namespace prefix is removed before the class name (eg: "ABSMode?type=Label").
 ** old: @<Element Name>?type=<NameSpace prefix>.<ElementClassName>@
 ** new: @<Element Name>?type=<ElementClassName>@
-# Root tag of the model, changed from *AMALTHEA* to *Amalthea* 
-# *IPort* interface is changed to abstract class *Port*
-# FInterface reference (i.e. Franca Interface) is removed from class FInterfacePort 
+* Root tag of the model, changed from *AMALTHEA* to *Amalthea* 
+* *IPort* interface is changed to abstract class *Port*
+* FInterface reference (i.e. Franca Interface) is removed from class FInterfacePort 
 **  *Impact on 0.7.0 model file due to this change:* 
 *** If AMALTHEA models from previous versions have the reference to Franca Interface ports, as a part of migration this reference is removed. (_In this case, reference to the Franca Interface element is stored as a CustomProperty of type String inside FInterfacePort element_)
-# InterfaceKind ENUM literal values are changed from PROVIDES, REQUIRES to provides, requires
-# Following class names are changed <br/><br/> !(#gray_scale)../pictures/class_name_changes_itea1.1.0_0.7.0.png! <br/><br/>
+* InterfaceKind ENUM literal values are changed from PROVIDES, REQUIRES to provides, requires
+* Following class names are changed <br/><br/>  
 
 table(#classic){margin-left:40px}. 
-|{color:red}. **TODO** | **Replace image above** |
-| use table instead | _will be more useful if copy&paste is required_ |
+|**Class name from 1.1.1** | **Changed Class name in 0.7.0** |
+| OSEvent | OsEvent |
+| MemType | MemoryType |
+| System | HwSystem |
+| Component | HwComponent |
+| Port | HwPort |
+| AbstractionType | AbstractionTypeDescription |
+| MemoryType | MemoryTypeEnum |
+| OSInstructions | OsInstructions |
+| Periodic | PeriodicActivation |
 
-# Below references are removed inside ComplexNode and HardwareTypeDescription (_both these class's are part of Hardware Model_)
+* Below references are removed inside ComplexNode and HardwareTypeDescription (_both these class's are part of Hardware Model_)
 ** AbstractType[] attribute , AbstractType[] features
 *** *Impact on 0.7.0 model file due to this change:* Content inside the attribute and features is stored as a CustomProperty elements inside the corresponding elements. 
 **** Content of "AbstractType[] attribute" is stored in the CustomProperty, with key as "attribute#<attribute name>" and value as <attribute value>
 **** Content of "AbstractType[] features" is stored in the CustomProperty, with key as "feature#<feature name>" and value as <feature value>
 *** Below figure shows the changes between 1.1.1 model (_containing attributes & features_) and the corresponding 0.7.0 model (_created using model migration utility_)!(#gray_scale)../pictures/hwmodel_attributes_features.png! 
-# ProcessAllocation class removed from MappingModel, instead ISRAllocation (_maps ISR and InterruptController_)  and TaskAllocation (_maps Task and Scheduler_) 
+* ProcessAllocation class removed from MappingModel, instead ISRAllocation (_maps ISR and InterruptController_)  and TaskAllocation (_maps Task and Scheduler_) 
 ** *Impact on 0.7.0 model file due to this change:* 
 *** processAllocation tag is removed from mappingModel, and instead of this taskAllocation and isrAllocation tags will be generated accordingly. <br/> For details refer to the image <br/> !(#gray_scale)../pictures/mappingmodel_processallocations.png!
-# Below are the changes in the reference names :
+* Below are the changes in the reference names :
 
 table(#classic){margin-left:40px}. 
 | *_Variable Name (version ITEA 1.1.1)_* | *_Changed Variable Name (version APP4MC 0.7.0)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* |
