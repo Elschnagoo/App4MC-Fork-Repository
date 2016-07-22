@@ -37,10 +37,11 @@
 
 				<configuration>
 					<compress/>
+					<finalName>${artifactId}-${project.version}-${buildQualifier}</finalName>
 				</configuration>
 			</plugin>
 
-			<plugin>
+			<!--plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-director-plugin</artifactId>
 				<version>${tycho.version}</version>
@@ -60,8 +61,8 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			
+			</plugin-->
+
 			<plugin>
 				<groupId>org.jboss.tools.tycho-plugins</groupId>
 				<artifactId>repository-utils</artifactId>
@@ -71,14 +72,14 @@
 					<execution>
 						<id>generate-facade</id>
 						<phase>package</phase>
-	
+
 						<goals>
 							<goal>generate-repository-facade</goal>
 						</goals>
-	
+
 						<configuration>
 							<siteTemplateFolder>siteTemplate</siteTemplateFolder>
-							
+
 							<!-- Symbols are used while expanding index.html template -->
 							<symbols>
 								<update.site.name>${project.parent.name}</update.site.name>
