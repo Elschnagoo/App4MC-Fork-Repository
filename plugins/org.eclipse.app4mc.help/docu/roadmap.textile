@@ -1,12 +1,16 @@
 h1. Roadmap
 
-Short overview of current changes/enhancements in AMALTHEA in the current project "AMALTHEA4Public":https://itea3.org/project/amalthea4public.html:
+Current topics:
 
 * Enhanced model handling to exchange different model parts
 * Better mode support for modeling, like startup/shutdown phase
+* Simplified hardware model
+* Interactive help (visualization of model and meta model structure)
 
 All new releases are provided by the Eclipse project "APP4MC":https://projects.eclipse.org/projects/technology.app4mc.
 
+
 For details see:
 
-(todo) link to bugzilla entries
+* "Bugzilla entries for version 0.7.1":https://bugs.eclipse.org/bugs/buglist.cgi?classification=Technology&list_id=14802324&product=App4mc&query_format=advanced&version=0.7.1
+
