@@ -17,6 +17,10 @@ if [ ${#tag_name} -gt 0 ]; then
   mkdir -p $release_folder/$tag_name
   cp -v $release_build_folder/org.eclipse.app4mc.*.zip "$release_folder/$tag_name"
   cp -v $p2_build_folder/org.eclipse.app4mc.p2repo*.zip "$release_folder/$tag_name"
+  echo 'Removing SNAPSHOT in names...'
+  for file in "$release_folder/$tag_name"/*.zip; do
+    mv -v "$file" "${file/-SNAPSHOT/}"
+  done
   echo 'Creating updatesites folder for tag '$tag_name
   mkdir -p $updatesite_folder/$tag_name
   unzip $p2_build_folder/org.eclipse.app4mc.p2repo*.zip -d $updatesite_folder/$tag_name
