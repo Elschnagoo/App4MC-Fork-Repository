@@ -6,6 +6,7 @@ The mapping model is intended to provide tools that use hardware and software mo
 * schedulers and cores: A scheduler can manage one or more cores and deploy computations on these
 * data and memories: Data (such as functions, variables, heap etc) is mapped on static and volatile memories.
 
+
 h2. Overview
 
 The Meta Model specifying the Mapping Model is shown below. 
@@ -15,6 +16,7 @@ The Meta Model specifying the Mapping Model is shown below.
 h3. MappingModel
 
 The __MappingModel__ serves as a container for each of the mapping rules, i.e. __Allocations__ (executable software and cores which are allocated to schedulers) and __Mappings__ (labels and software which is mapped to memories).
+
 
 h2. Mapping
 
@@ -28,10 +30,8 @@ h3. AbstractElementMapping
 
 The __AbstractElementMapping__ is a specialization of the __Mapping__. It is used to associate specializations of the __AbstractElementMemoryInformation__ (i.e. __Label__, __Runnable__, __TaskPrototype__ and __Process__), specified within the software model, with a __Memory__. 
 
+
 h2. Allocation
-
-!(#scale)../pictures/model_mapping_allocation.png!
-
 
 h3. CoreAllocation
 
