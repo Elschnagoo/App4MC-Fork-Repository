@@ -5,19 +5,33 @@ h2. Features
 There are two top-level features of the AMALTHEA Tool Platform, the AMALTHEA Tool Platform and the AMALTHEA Tool Platform SDK features. The non-SDK feature contains everything you need to run the AMALTHEA tools and models. If you like to develop new tools on top of the models or extend the models you may need the SDK. It contains beside the runtime all sources.
 
 The top-level feature itself contains basic platform plug-ins and tools as well as several sub-features. These are
-* AMALTHEA Models - The AMALTHEA EMF models.
-* AMALTHEA Editors - Editors and validation for the models.
-* AMALTHEA Workflow - Defining workflows on the model.
-* AMALTHEA Variability - AMALTHEA Variability model and tools.
-* AMALTHEA Multicore - Algorithms for multicore develepment like partitioning and mapping.
+
+* APP4MC Platform - Platform (includes all features and 3rd party libraries).
+* APP4MC Docu - Basic Help (is extended by loading other features).
+* APP4MC Examples - Examples that can be added by the example wizard.
+
+* APP4MC Multicore - Algorithms for multicore develepment like partitioning and mapping.
+* APP4MC Tracing - Record, analyze and transform runtime traces of the embedded system.
+* APP4MC Validation - Model validations (an be selected and executed on demand).
+
+* AMALTHEA Models - AMALTHEA models (EMF).
+* AMALTHEA Edit - AMALTHEA model edit support.
+* AMALTHEA Editors - Editors for the models.
+
+* AMALTHEA Converters - Independent feature for AMALTHEA model migration.
+
+* AMALTHEA Workflow Common - Basic elements to define workflows on the model.
+* AMALTHEA Workflow - Defining workflows (based on MWE2 workflow engine).
+* AMALTHEA Workflow Scripting - Defining workflows (based on EASE scripting).
+
+* AMALTHEA Import - Import of the models.
 * AMALTHEA Export - Exports of the models.
-* AMALTHEA Tracing - Record, analyze and transform runtime traces of the embedded system.
-* AMALTHEA Documentation - Help and Examples of AMALTHEA projects that can be added to the workbench in runtime by the example wizard.
-* AMALTHEA License - The license of the AMALTHEA Tool Platform (EPL).
 
-!../pictures/amalthea_features.png!
 
-For all of these features there also exists an SDK containing the sources. If you install the AMALTHEA Tool Platform SDK, it contains all features as SDKs.
+
+!../pictures/app4mc_platform_features.png!
+
+For all features there also exists an SDK containing the sources. If you install the AMALTHEA Tool Platform SDK, it contains all features as SDKs.
 
 h2. Plug-ins
 
