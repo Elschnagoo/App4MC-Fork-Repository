@@ -37,6 +37,14 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+		      <products>
+		        <product>
+		          <id>org.eclipse.app4mc.platform.product</id>
+		          <archiveFileName>org.eclipse.app4mc.platform-${project.version}-${maven.build.timestamp}</archiveFileName>
+		        </product>
+		      </products>
+		    </configuration>
 			</plugin>
 
 		</plugins>
