@@ -10,6 +10,8 @@
 
 (c) Copyright Eclipse APP4MC contributors and others. 2016. 
 All rights reserved.
+
+Version 0.7.0
       </text>
    </aboutInfo>
 
@@ -23,7 +25,7 @@ All rights reserved.
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/org.eclipse.app4mc.platform.ide/icons/amalthea-logo-16.png" i32="/org.eclipse.app4mc.platform.ide/icons/amalthea-logo-32.png" i48="/org.eclipse.app4mc.platform.ide/icons/amalthea-logo-48.png" i64="/org.eclipse.app4mc.platform.ide/icons/amalthea-logo-64.png" i128="/org.eclipse.app4mc.platform.ide/icons/amalthea-logo-128.png"/>
+   <windowImages i16="/org.eclipse.app4mc.platform.ide/icons/app4mc-logo-16.png" i32="/org.eclipse.app4mc.platform.ide/icons/app4mc-logo-32.png" i48="/org.eclipse.app4mc.platform.ide/icons/app4mc-logo-48.png" i64="/org.eclipse.app4mc.platform.ide/icons/app4mc-logo-64.png" i128="/org.eclipse.app4mc.platform.ide/icons/app4mc-logo-128.png" i256="/org.eclipse.app4mc.platform.ide/icons/app4mc-logo-256.png"/>
 
    <splash
       location="org.eclipse.app4mc.platform.ide"
