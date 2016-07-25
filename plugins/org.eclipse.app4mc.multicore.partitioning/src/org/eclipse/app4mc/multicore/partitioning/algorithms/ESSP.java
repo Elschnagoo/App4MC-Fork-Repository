@@ -46,6 +46,7 @@ public class ESSP {
 	public ConstraintsModel cm;
 	private final EList<ProcessPrototype> tasks = new BasicEList<ProcessPrototype>();
 	private final EList<Runnable> assignedNodes = new BasicEList<Runnable>();
+
 	final Map<Runnable, Long> cache = new HashMap<Runnable, Long>();
 	final private Map<ProcessPrototype, Long> TargetRT = new HashMap<ProcessPrototype, Long>();
 	private Stack<Runnable> runs = new Stack<Runnable>();
@@ -165,6 +166,15 @@ public class ESSP {
 			sb.append("ProcessPrototype " + pp.getName() + "(" + getPPInstructions(pp) + ") : ");
 			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
 				sb.append(trc.getRunnable().getName() + " ");
+			}
+			if (pp.getActivation() == null) {
+				try {
+					pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getActivation());
+				}
+				catch (final Exception e) {
+					PartLog.getInstance().log("Runnable " + pp.getRunnableCalls().get(0).getRunnable().getName()
+							+ " has no activation, this might be a problem for mapping ", null);
+				}
 			}
 			PartLog.getInstance().log(sb.toString());
 		}

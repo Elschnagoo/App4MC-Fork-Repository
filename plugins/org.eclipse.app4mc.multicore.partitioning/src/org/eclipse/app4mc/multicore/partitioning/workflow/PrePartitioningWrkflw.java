@@ -5,7 +5,6 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.workflow.core.Context;
 import org.eclipse.app4mc.amalthea.workflow.core.WorkflowComponent;
-import org.eclipse.app4mc.amalthea.workflow.core.exception.ConfigurationException;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.PartLog;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.PrePartitioning;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -41,12 +40,6 @@ public class PrePartitioningWrkflw extends WorkflowComponent {
 		}
 		PartLog.getInstance().log("Setting result model in slot: " + getResultSlot());
 		ctx.set(getResultSlot(), amodels);
-	}
-
-
-	@Override
-	protected void checkInternal() throws ConfigurationException {
-		// TODO perform checks
 	}
 
 	private String getResultSlot() {

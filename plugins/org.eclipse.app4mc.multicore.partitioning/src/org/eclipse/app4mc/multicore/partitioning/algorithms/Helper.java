@@ -93,7 +93,7 @@ public class Helper {
 				}
 			}
 		}
-		PartLog.getInstance().log("getPPFromR did not find PP for Runnable" + runnable.getName(), null);
+		PartLog.getInstance().log("getPPFromR did not find PP for Runnable " + runnable.getName(), null);
 		return null;
 	}
 
@@ -254,5 +254,46 @@ public class Helper {
 				}
 			}
 		}
+	}
+
+	public ConstraintsModel updateRSCs(final Amalthea amodels) {
+		for (final RunnableSequencingConstraint rsc : amodels.getConstraintsModel()
+				.getRunnableSequencingConstraints()) {
+			final Runnable source = rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable();
+			final Runnable target = rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable();
+			for (final ProcessPrototype pp : amodels.getSwModel().getProcessPrototypes()) {
+				for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+					if (trc.getRunnable().equals(source)) {
+						rsc.getRunnableGroups().get(0).getEntries().get(0).getProcessScope().clear();
+						rsc.getRunnableGroups().get(0).getEntries().get(0).getProcessScope().add(pp);
+					}
+					else if (trc.getRunnable().equals(target)) {
+						rsc.getRunnableGroups().get(1).getEntries().get(0).getProcessScope().clear();
+						rsc.getRunnableGroups().get(1).getEntries().get(0).getProcessScope().add(pp);
+					}
+				}
+			}
+		}
+		return amodels.getConstraintsModel();
+	}
+
+	public String writePPs(final EList<ProcessPrototype> processPrototypes) {
+		final StringBuffer sb = new StringBuffer();
+		for (final ProcessPrototype pp : processPrototypes) {
+			sb.append("ProcessPrototype " + pp.getName() + "(" + getPPInstructions(pp) + ") : ");
+			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+				sb.append(trc.getRunnable().getName() + " ");
+			}
+			sb.append("\n");
+		}
+		return sb.toString();
+	}
+
+	public long getPPInstructions(final ProcessPrototype pp) {
+		long instrSum = 0;
+		for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+			instrSum += new Helper().getInstructions(trc.getRunnable());
+		}
+		return instrSum;
 	}
 }

@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
+import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
@@ -299,7 +300,10 @@ public class CPP {
 		}
 		// retain RSCs
 		this.cm.getRunnableSequencingConstraints().addAll(cm2.getRunnableSequencingConstraints());
-		updatepprefs();
+		final Amalthea amodels = AmaltheaFactory.eINSTANCE.createAmalthea();
+		amodels.setConstraintsModel(this.cm);
+		amodels.setSwModel(this.swm);
+		this.cm = new Helper().updateRSCs(amodels);
 		for (final Runnable r : this.swm.getRunnables()) {
 			if (null != r.getActivation() && !this.swm.getActivations().contains(r.getActivation())) {
 				this.swm.getActivations().add(r.getActivation());
@@ -378,25 +382,6 @@ public class CPP {
 		return targets;
 	}
 
-	private void updatepprefs() {
-		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
-			final Runnable source = rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable();
-			final Runnable target = rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable();
-			for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
-				for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-					if (trc.getRunnable().equals(source)) {
-						rsc.getRunnableGroups().get(0).getEntries().get(0).getProcessScope().clear();
-						rsc.getRunnableGroups().get(0).getEntries().get(0).getProcessScope().add(pp);
-					}
-					else if (trc.getRunnable().equals(target)) {
-						rsc.getRunnableGroups().get(1).getEntries().get(0).getProcessScope().clear();
-						rsc.getRunnableGroups().get(1).getEntries().get(0).getProcessScope().add(pp);
-					}
-				}
-			}
-		}
-	}
-
 	private long getNextAssignableRunnablesRT(final long time, final SWModel swm2) {
 		long RunnablesCurrentStartTime = Long.MAX_VALUE;
 		for (final Runnable r : swm2.getRunnables()) {
@@ -423,21 +408,23 @@ public class CPP {
 	private Runnable getMostEffectiveNode(final EList<Runnable> an) {
 		// from all assignable runnables, check preceding unassigned runnable
 		// instruction sums
-		final HashMap<Runnable, Long> hm = new HashMap<Runnable, Long>();
+		final HashMap<Runnable, Float> hm = new HashMap<Runnable, Float>();
 		for (final Runnable r : an) {
-			long prio = 1;
+			float prio = 1;
 			prio += getCommunicationOverhead(r);
 			final tf TF = this.cache.get(r);
-			prio += (TF.lit - TF.eit);
+			// lit-eit --> the smaller the value the higher their prio
+			// e.g. cpl=20, lit-eit=5; prio is multiplied by shift factor 5/20
+			prio *= (TF.lit - TF.eit) / this.globalCP.getPathLength(this.globalCP.getCP());
 			hm.put(r, prio);
 		}
 
-		int temp = 0;
+		float temp = 0;
 		Runnable ret = null;
 		for (final Runnable r : hm.keySet()) {
-			if (hm.get(r).intValue() > temp) {
+			if (hm.get(r).floatValue() > temp) {
 				ret = r;
-				temp = hm.get(r).intValue();
+				temp = hm.get(r).floatValue();
 			}
 		}
 		return ret;

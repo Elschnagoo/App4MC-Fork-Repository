@@ -79,7 +79,7 @@ public class PerformPartitioning {
 		try {
 			if (store.getBoolean("boolCPP") == true) {
 				PartLog.getInstance().log("--Starting critical path partitioning--");
-				final CPP cpp = new CPP(amodels.getSwModel(), amodels.getConstraintsModel());
+				final CPP cpp = new CPP(amodels.getSwModel(),amodels.getConstraintsModel());
 				cpp.bglobalCP = store.getBoolean("boolGCP");
 				cpp.build(monitor);
 				amodels.setConstraintsModel(cpp.cm);
@@ -216,8 +216,7 @@ public class PerformPartitioning {
 						final AccessPrecedenceSpec aps = it.next();
 						if (aps.getOrigin().getName().contains("CumulatedRunnable")
 								|| aps.getTarget().getName().contains("CumulatedRunnable")) {
-							pp.getAccessPrecedenceSpec().remove(aps);
-							// it.remove();
+							it.remove();
 						}
 					}
 				}
@@ -234,6 +233,8 @@ public class PerformPartitioning {
 			amodels.setConstraintsModel(ce.getCm());
 			amodels.setSwModel(ce.getSwm());
 		}
+		// check if rscs all reference a processprototype
+		amodels.setConstraintsModel(new Helper().updateRSCs(amodels));
 		return amodels;
 	}
 
@@ -290,7 +291,7 @@ public class PerformPartitioning {
 
 	/**
 	 * Runnable sequencing constraints (contained and @return in the @param cm
-	 * constraints model) are updated to the original label accesses (requred
+	 * constraints model) are updated to the original label accesses (required
 	 * for affinityConstraints)
 	 *
 	 */
@@ -310,9 +311,11 @@ public class PerformPartitioning {
 								final EList<Runnable> wrs = getAccessingRunnables(l, LabelAccessEnum.WRITE,
 										am.getSwModel());
 								for (final Runnable rr : wrs) {
-									final RunnableSequencingConstraint rsc = createRSC(rr, or);
-									if (!CMcontains(am.getConstraintsModel(), rsc)) {
-										am.getConstraintsModel().getRunnableSequencingConstraints().add(rsc);
+									if (!rr.getName().contains("CumulatedRunnable")) {
+										final RunnableSequencingConstraint rsc = createRSC(rr, or, am.getSwModel());
+										if (!CMcontains(am.getConstraintsModel(), rsc)) {
+											am.getConstraintsModel().getRunnableSequencingConstraints().add(rsc);
+										}
 									}
 								}
 							}
@@ -321,9 +324,11 @@ public class PerformPartitioning {
 								final EList<Runnable> rrs = getAccessingRunnables(l, LabelAccessEnum.READ,
 										am.getSwModel());
 								for (final Runnable rr : rrs) {
-									final RunnableSequencingConstraint rsc = createRSC(or, rr);
-									if (!CMcontains(am.getConstraintsModel(), rsc)) {
-										am.getConstraintsModel().getRunnableSequencingConstraints().add(rsc);
+									if (!rr.getName().contains("CumulatedRunnable")) {
+										final RunnableSequencingConstraint rsc = createRSC(or, rr, am.getSwModel());
+										if (!CMcontains(am.getConstraintsModel(), rsc)) {
+											am.getConstraintsModel().getRunnableSequencingConstraints().add(rsc);
+										}
 									}
 								}
 							}
@@ -380,7 +385,7 @@ public class PerformPartitioning {
 	 * @return a RunnableSequencingConstraint, having two groups. First group
 	 *         contains @param source, second group contains @param target
 	 */
-	private RunnableSequencingConstraint createRSC(final Runnable source, final Runnable target) {
+	private RunnableSequencingConstraint createRSC(final Runnable source, final Runnable target, final SWModel swm) {
 		final AmaltheaFactory af = AmaltheaFactory.eINSTANCE;
 		final RunnableSequencingConstraint rsc = af.createRunnableSequencingConstraint();
 		rsc.setName(source.getName() + "-->" + target.getName());
@@ -392,6 +397,8 @@ public class PerformPartitioning {
 		final ProcessRunnableGroupEntry prge2 = af.createProcessRunnableGroupEntry();
 		prge1.setRunnable(source);
 		prge2.setRunnable(target);
+		prge1.getProcessScope().add(new Helper().getPPfromR(source, swm));
+		prge2.getProcessScope().add(new Helper().getPPfromR(target, swm));
 		prg1.getEntries().add(prge1);
 		prg2.getEntries().add(prge2);
 		rsc.getRunnableGroups().add(prg1);

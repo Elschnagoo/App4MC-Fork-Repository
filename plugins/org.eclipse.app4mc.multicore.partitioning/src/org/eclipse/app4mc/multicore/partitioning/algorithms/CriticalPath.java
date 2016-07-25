@@ -78,6 +78,16 @@ public class CriticalPath {
 		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
 			test.addEdge(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable(),
 					rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable(), rsc);
+			try {
+				test.setEdgeWeight(rsc,
+						new Helper()
+								.getCommonLabel(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable(),
+										rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable())
+								.getSize().getNumberBytes());
+			}
+			catch (final Exception e) {
+				// no data type available
+			}
 		}
 
 		return test;
@@ -359,4 +369,10 @@ public class CriticalPath {
 	public DirectedAcyclicGraph<Runnable, RunnableSequencingConstraint> getGraph() {
 		return this.graph;
 	}
+
+
+	public Map<Runnable, CriticalPath.tf> getCache() {
+		return this.cache;
+	}
+
 }

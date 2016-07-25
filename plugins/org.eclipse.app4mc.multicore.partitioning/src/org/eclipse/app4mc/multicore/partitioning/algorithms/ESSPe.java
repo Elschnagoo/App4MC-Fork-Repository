@@ -112,14 +112,18 @@ public class ESSPe {
 		}
 
 		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
-			final StringBuffer sb = new StringBuffer();
 			pp.setName("ESSP" + this.swm.getProcessPrototypes().indexOf(pp));
-			sb.append("ProcessPrototype " + pp.getName() + "(" + getPPInstructions(pp) + ") : ");
-			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-				sb.append(trc.getRunnable().getName() + " ");
+			if (pp.getActivation() == null) {
+				try {
+					pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getActivation());
+				}
+				catch (final Exception e) {
+					PartLog.getInstance().log("Runnable " + pp.getRunnableCalls().get(0).getRunnable().getName()
+							+ " has no activation, this might be a problem for mapping ", null);
+				}
 			}
-			PartLog.getInstance().log(sb.toString());
 		}
+		PartLog.getInstance().log(new Helper().writePPs(this.swm.getProcessPrototypes()));
 		PartLog.getInstance().log("ESS finished");
 
 		// Retain AccessPrecedences
@@ -186,7 +190,7 @@ public class ESSPe {
 		int index = 0;
 		long min = Long.MAX_VALUE;
 		for (final ProcessPrototype pp : ppl) {
-			final long ppi = getPPInstructions(pp);
+			final long ppi = new Helper().getPPInstructions(pp);
 			if (ppi < min) {
 				min = ppi;
 				index = ppl.indexOf(pp);
@@ -219,17 +223,6 @@ public class ESSPe {
 	}
 
 	/**
-	 * @return the sum of @param pp's runnable's instructions
-	 */
-	private long getPPInstructions(final ProcessPrototype pp) {
-		long instrSum = 0;
-		for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-			instrSum += new Helper().getInstructions(trc.getRunnable());
-		}
-		return instrSum;
-	}
-
-	/**
 	 * ensures to select a PP that can be parallelized: at least 2 entries and
 	 * not containing a sequence
 	 *
@@ -243,7 +236,7 @@ public class ESSPe {
 		ProcessPrototype pps = null;// this.swm.getProcessPrototypes().get(0);
 		long max = 0;
 		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
-			final long temp = getPPInstructions(pp);
+			final long temp = new Helper().getPPInstructions(pp);
 			if (!this.exceptPPs.isEmpty()) {
 				if (temp > max && !this.exceptPPs.contains(pp)) {
 					max = temp;
