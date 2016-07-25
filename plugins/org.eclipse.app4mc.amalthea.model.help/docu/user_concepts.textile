@@ -3,13 +3,17 @@ h1. General Concepts
 
 h2. Grouping of elements (Tags, Tag groups)
 
-It is possible to use "Tags":./model_common.html#Tags for grouping elements of the model. Currently two AMALTHEA models are supporting Tags:
+It is possible to use "Tags":./model_common.html#Tags for grouping elements of the model. Currently the following AMALTHEA sub models are supporting Tags:
 
 # Components
 # Software (SW)
+# Hardware (HW)
 
-Both models are storing the relevant Tags in a local list, available in the @org.eclipse.app4mc.amalthea.model.ComponentsModel@ and @org.eclipse.app4mc.amalthea.model.SWModel@ class. 
-The reason for doing this is that Tags used in the components have another type of technical background than Tags in the software model. It should not be the case that elements in the software model are referencing Tags from a components model and reverse.
+The corresponding model classes are storing the relevant Tags in a local list, available in: 
+* @org.eclipse.app4mc.amalthea.model.ComponentsModel@
+* @org.eclipse.app4mc.amalthea.model.SWModel@
+* @org.eclipse.app4mc.amalthea.model.HWModel@
+The reason for doing this is that Tags used in the sub models mostly have a different technical background. It should  be avoided that e.g. elements in the software model are referencing Tags from a components model.
 
 h2. Custom Properties
 

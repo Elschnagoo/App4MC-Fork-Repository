@@ -1,12 +1,14 @@
 
 h1. Editors / Viewers
 
-Additional editors and viewers:
+In addition to the standard model editor there are editors and viewers for specific purposes:
 
 * AMALTHEA Trace Database Metrics Viewer
 
 
 h2. AMALTHEA Trace Database Metrics Viewer
+
+This is a simple viewer that shows how to access the AMALTHEA trace database.
 
 !../pictures/metric-viewer_open.png!
 
@@ -16,4 +18,4 @@ h2. AMALTHEA Trace Database Metrics Viewer
 
 h2. ...
 
-__Additional editors / viewers are under development__
+__Further (graphical) editors / viewers are under development__
