@@ -37,7 +37,7 @@
 
 				<configuration>
 					<compress/>
-					<finalName>${artifactId}-${project.version}-${buildQualifier}</finalName>
+					<finalName>${project.artifactId}-${project.version}-${buildQualifier}</finalName>
 				</configuration>
 			</plugin>
 
