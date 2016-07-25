@@ -248,7 +248,7 @@
                </test>
                   <test
                         property="org.eclipse.sphinx.emf.metaModelIdMatches"
-                        value="org\.eclipse\.app4mc\.amalthea">
+                        value="org\.eclipse\.app4mc\.amalthea\.model">
                   </test>
             </and>
          </triggerPoints>
