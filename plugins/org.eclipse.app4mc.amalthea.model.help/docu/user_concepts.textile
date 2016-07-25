@@ -13,7 +13,7 @@ The corresponding model classes are storing the relevant Tags in a local list, a
 * @org.eclipse.app4mc.amalthea.model.ComponentsModel@
 * @org.eclipse.app4mc.amalthea.model.SWModel@
 * @org.eclipse.app4mc.amalthea.model.HWModel@
-The reason for doing this is that Tags used in the sub models mostly have a different technical background. It should  be avoided that e.g. elements in the software model are referencing Tags from a components model.
+The reason for doing this is that Tags used in the sub models mostly have a different technical background. It should  be avoided that e.g. elements in the software model are referring to Tags from a components model.
 
 h2. Custom Properties
 
