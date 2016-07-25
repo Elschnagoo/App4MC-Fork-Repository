@@ -33,15 +33,14 @@ All rights reserved.
    <launcher name="app4mc">
       <solaris/>
       <win useIco="false">
-         <ico path="icons/amalthea-logo.ico"/>
          <bmp
-            winSmallHigh="icons/amalthea-logo-16.bmp"
-            winSmallLow="icons/amalthea-logo-16-8bit.bmp"
-            winMediumHigh="icons/amalthea-logo-32.bmp"
-            winMediumLow="icons/amalthea-logo-32-8bit.bmp"
-            winLargeHigh="icons/amalthea-logo-48.bmp"
-            winLargeLow="icons/amalthea-logo-48-8bit.bmp"
-            winExtraLargeHigh="icons/amalthea-logo-256.bmp"/>
+            winSmallHigh="icons/app4mc-logo-16.bmp"
+            winSmallLow="icons/app4mc-logo-16.bmp"
+            winMediumHigh="icons/app4mc-logo-32.bmp"
+            winMediumLow="icons/app4mc-logo-32.bmp"
+            winLargeHigh="icons/app4mc-logo-48.bmp"
+            winLargeLow="icons/app4mc-logo-48.bmp"
+            winExtraLargeHigh="icons/app4mc-logo-256.bmp"/>
       </win>
    </launcher>
 

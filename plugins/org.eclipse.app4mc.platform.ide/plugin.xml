@@ -29,11 +29,11 @@
          </property>
          <property
                name="aboutText"
-               value="APP4MC Tool Platform&#x0A;&#x0A;(c) Copyright Eclipse APP4MC contributors and others. 2016. &#x0A;All rights reserved.">
+               value="APP4MC Tool Platform&#x0A;&#x0A;(c) Copyright Eclipse APP4MC contributors and others. 2016. &#x0A;All rights reserved.&#x0A;&#x0A;Version 0.7.0">
          </property>
          <property
                name="windowImages"
-               value="icons/amalthea-logo-16.png,icons/amalthea-logo-32.png,icons/amalthea-logo-48.png,icons/amalthea-logo-64.png,icons/amalthea-logo-128.png">
+               value="icons/app4mc-logo-16.png,icons/app4mc-logo-32.png,icons/app4mc-logo-48.png,icons/app4mc-logo-64.png,icons/app4mc-logo-128.png">
          </property>
    		<property
          		name="cssTheme"
@@ -103,7 +103,7 @@
       <perspective
             class="org.eclipse.app4mc.platform.ide.perspective.PerspectiveFactory"
             fixed="false"
-            icon="icons/amalthea-logo-16.png"
+            icon="icons/app4mc-logo-16.png"
             id="org.eclipse.app4mc.platform.ide.perspective"
             name="APP4MC">
       </perspective>
@@ -113,7 +113,7 @@
       <view
             allowMultiple="false"
             class="org.eclipse.sphinx.emf.explorer.ExtendedCommonNavigator"
-            icon="icons/amalthea-logo-16.png"
+            icon="icons/app4mc-logo-16.png"
             id="org.eclipse.app4mc.platform.ide.views.modelExplorer"
             name="Model Explorer">
       </view>
