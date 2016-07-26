@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _kOzJIKPqEeWDWL6qw48qbg
 Runtime-Version: 2.0.1.201508250612
-Save-Time: 1/21/16 3:51 PM
+Save-Time: 7/25/16 2:42 PM
 Testcase-Type: ecl
 Verifications: _OCzUMKM-EeW6_Mq9rZ9GtQ
 
@@ -22,11 +22,11 @@ Verifies also the created result files.
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Model Explorer" | get-tree | select "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow/sample_workflow.mwe2"
+get-view "Model Explorer" | get-tree | select "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow/sample_workflow.js"
 get-view "Model Explorer" | get-tree 
-    | select "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow/sample_workflow.mwe2" 
-    | get-menu "Run As/2 MWE2 Workflow" | click
-//Hack to wait 15 sec till MWE2 workflow is finished
+    | select "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow/sample_workflow.js" 
+    | get-menu "Run As/1 EASE Script" | click
+//Hack to wait 15 sec till EASE workflow is finished
 wait 15000
 //checking for available results
 get-view "Model Explorer" | get-tree | get-item "org.eclipse.app4mc.amalthea.example.democar.mapping/workflow-output" 

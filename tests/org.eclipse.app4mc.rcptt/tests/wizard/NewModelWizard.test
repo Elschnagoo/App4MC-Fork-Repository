@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _zwvhIKP3EeWDWL6qw48qbg
-Runtime-Version: 2.0.2.201511100828
-Save-Time: 12/21/15 9:39 AM
+Runtime-Version: 2.0.1.201508250612
+Save-Time: 7/25/16 3:12 PM
 Testcase-Type: ecl
 Verifications: _DBrfIKP5EeWDWL6qw48qbg
 
@@ -16,32 +16,20 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 get-view "Model Explorer" | get-tree | select testproject | get-menu "New/AMALTHEA Model" | click
-get-window "New Model File" | get-combo -after [get-label Metamodel] | select "AMALTHEA Model"
-with [get-window "New Model File" | get-combo -after [get-label "Root element package"]] {
-    get-property "getItemCount()" | equals 10 | verify-true
+get-window "Model Creation Wizard" | get-label "AMALTHEA Model" | get-property caption | equals "AMALTHEA Model" 
+    | verify-true
+get-window "Model Creation Wizard" | get-editbox -after [get-label "File name:"] | get-property text 
+    | equals "default.amxmi" | verify-true
+get-window "Model Creation Wizard" | get-button Finish | click
+get-tab-folder -index 1 | get-property activePage | equals "default.amxmi" | verify-true
+with [get-editor "default.amxmi" | get-section "default.amxmi Contents" | get-tree] {
+    get-item Amalthea | get-property caption | equals Amalthea | verify-true
+    get-item Amalthea | get-property childCount | equals 0 | verify-true
 }
-with [get-window "New Model File"] {
-    get-combo -after [get-label "Root element package"] | select central
-    get-combo -after [get-label "Root element class"] | select AMALTHEA
-    get-button "Next >" | click
-    get-button Finish | click
-}
-with [get-editor "default.amxmi" | get-section "default.amxmi Contents"] {
-    with [get-label "default.amxmi Contents"] {
-        get-property className | equals "org.eclipse.swt.widgets.Label" | verify-true
-        get-property caption | equals "default.amxmi Contents" | verify-true
-    }
-    with [get-tree] {
-        get-item AMALTHEA | get-property caption | equals AMALTHEA | verify-true
-        get-item AMALTHEA | get-property childCount | equals 0 | verify-true
-    }
-}
-get-editor "default.amxmi" | get-section "default.amxmi Contents" | get-tree | select AMALTHEA
-get-view Properties | get-label AMALTHEA | get-property caption | equals AMALTHEA | verify-true
 with [get-view "Model Explorer" | get-tree] {
+    get-item testproject | get-property caption | equals testproject | verify-true
+    get-item testproject | get-property childCount | equals 1 | verify-true
     get-item "testproject/default.amxmi" | get-property caption | equals "default.amxmi" | verify-true
-    get-item "testproject/default.amxmi" | get-property childCount | equals 1 | verify-true
-    get-item "testproject/default.amxmi/AMALTHEA" | get-property caption | equals AMALTHEA | verify-true
-    get-item "testproject/default.amxmi/AMALTHEA" | get-property childCount | equals 0 | verify-true
+    get-item "testproject/default.amxmi" | get-property index | equals 0 | verify-true
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

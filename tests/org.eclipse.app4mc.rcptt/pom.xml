@@ -24,7 +24,7 @@
       <id>rcptt-snapshots</id>
       <name>RCPTT Maven Snapshots repository</name>
       <snapshots>
-        <updatePolicy>always</updatePolicy>
+        <updatePolicy>never</updatePolicy>
       </snapshots>
       <url>https://repo.eclipse.org/content/repositories/rcptt-snapshots/</url>
     </pluginRepository>
@@ -45,7 +45,7 @@
                 <version>${rcptt-maven-version}</version>
             </runner>
 						<aut>
-	            <explicit>../../build/org.eclipse.app4mc.platform.product/target/products/org.eclipse.app4mc.platform.product-[platform].zip</explicit>
+	            <explicit>../../build/org.eclipse.app4mc.platform.product/target/products/org.eclipse.app4mc.platform.*-[platform].zip</explicit>
 	          </aut>
         </configuration>
       </plugin>

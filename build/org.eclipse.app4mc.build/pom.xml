@@ -127,7 +127,7 @@
 
 		<!-- Tests -->
 		<module>../../tests/org.eclipse.app4mc.amalthea.validation.test</module>
-		<!--module>../../tests/org.eclipse.app4mc.rcptt</module-->
+		<module>../../tests/org.eclipse.app4mc.rcptt</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.110.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.111.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.070.test</module>
