@@ -34,15 +34,9 @@ Version 0.7.0
       startupForegroundColor="003813" />
    <launcher name="app4mc">
       <solaris/>
-      <win useIco="false">
-         <bmp
-            winSmallHigh="icons/app4mc-logo-16.bmp"
-            winSmallLow="icons/app4mc-logo-16.bmp"
-            winMediumHigh="icons/app4mc-logo-32.bmp"
-            winMediumLow="icons/app4mc-logo-32.bmp"
-            winLargeHigh="icons/app4mc-logo-48.bmp"
-            winLargeLow="icons/app4mc-logo-48.bmp"
-            winExtraLargeHigh="icons/app4mc-logo-256.bmp"/>
+      <win useIco="true">
+         <ico path="/org.eclipse.app4mc.platform.product/icons/app4mc-logo.ico"/>
+         <bmp/>
       </win>
    </launcher>
 
@@ -258,5 +252,12 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="4" />
    </configurations>
+
+   <preferencesInfo>
+      <targetfile overwrite="false"/>
+   </preferencesInfo>
+
+   <cssInfo>
+   </cssInfo>
 
 </product>
