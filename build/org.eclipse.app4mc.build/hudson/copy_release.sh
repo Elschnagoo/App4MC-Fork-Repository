@@ -5,7 +5,7 @@ absolute=$(readlink -f $script_dir)
 release_build_folder=$absolute/../../org.eclipse.app4mc.platform.product/target/products
 p2_build_folder=$absolute/../../org.eclipse.app4mc.p2repo/target
 download_folder='/home/data/httpd/download.eclipse.org/app4mc'
-release_folder=$download_folder/releases
+release_folder=$download_folder/downloads
 updatesite_folder=$download_folder/updatesites
 commit_id=$(git rev-parse HEAD)
 echo 'Commit id is: '$commit_id
