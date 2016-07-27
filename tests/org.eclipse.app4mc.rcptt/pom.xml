@@ -30,7 +30,7 @@
     </pluginRepository>
   </pluginRepositories>
   <properties>
-    <rcptt-maven-version>2.1.0-SNAPSHOT</rcptt-maven-version>
+    <rcptt-maven-version>2.2.0-SNAPSHOT</rcptt-maven-version>
   </properties>
 
 	<build>
