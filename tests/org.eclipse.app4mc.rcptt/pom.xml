@@ -45,7 +45,7 @@
                 <version>${rcptt-maven-version}</version>
             </runner>
 						<aut>
-	            <explicit>../../build/org.eclipse.app4mc.platform.product/target/products/org.eclipse.app4mc.platform.*-[platform].zip</explicit>
+	            <explicit>../../build/org.eclipse.app4mc.platform.product/target/products/org.eclipse.app4mc.platform-${project.version}-${buildQualifier}-[platform].zip</explicit>
 	          </aut>
         </configuration>
       </plugin>
