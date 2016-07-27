@@ -10,7 +10,11 @@ download_folder='/home/data/httpd/download.eclipse.org/app4mc'
 product_folder=$download_folder/products
 updatesite_folder=$download_folder/updatesites
 
-commit_id=$(git rev-parse HEAD)
+if [ ${#COMMIT_ID} -gt 0 ]; then
+	commit_id=$COMMIT_ID
+else
+	commit_id=$(git rev-parse HEAD)
+fi
 echo 'Commit id is: '$commit_id
 
 tag_name=''
