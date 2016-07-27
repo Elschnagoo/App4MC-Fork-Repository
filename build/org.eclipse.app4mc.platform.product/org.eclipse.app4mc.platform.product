@@ -35,7 +35,7 @@ Version 0.7.0
    <launcher name="app4mc">
       <solaris/>
       <win useIco="true">
-         <ico path="/org.eclipse.app4mc.platform.product/icons/app4mc-logo.ico"/>
+         <ico path="icons/app4mc-logo.ico"/>
          <bmp/>
       </win>
    </launcher>

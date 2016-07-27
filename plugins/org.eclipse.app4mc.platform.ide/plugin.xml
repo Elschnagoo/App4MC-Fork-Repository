@@ -33,7 +33,7 @@
          </property>
          <property
                name="windowImages"
-               value="icons/app4mc-logo-16.png,icons/app4mc-logo-32.png,icons/app4mc-logo-48.png,icons/app4mc-logo-64.png,icons/app4mc-logo-128.png">
+               value="icons/app4mc-logo-16.png,icons/app4mc-logo-32.png,icons/app4mc-logo-48.png,icons/app4mc-logo-64.png,icons/app4mc-logo-128.png,icons/app4mc-logo-256.png">
          </property>
    		<property
          		name="cssTheme"
