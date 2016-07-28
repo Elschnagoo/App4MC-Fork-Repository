@@ -1,0 +1,29 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _DGqOIKPrEeWDWL6qw48qbg,_cQbr8FPUEeaS0O6Kqo42Fw
+Element-Name: modelmigration-itea_110-0_7_0
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _xUFfYFPpEeayW6ylYvxLSQ
+Runtime-Version: 2.1.0.201605312320
+Save-Time: 7/27/16 1:28 PM
+Testcase-Type: ecl
+Verifications: _OCzUMKM-EeW6_Mq9rZ9GtQ
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Model Explorer" | get-tree | select "ModelMigration-itea.110-0.7.0/hw.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree | select "ModelMigration-itea.110-0.7.0/_migration/hw.amxmi" | double-click
+get-editor "hw.amxmi" | get-section "hw.amxmi Contents" | get-button "Search for model elements" | click
+with [get-window -class SearchGUI] {
+    get-editbox -after [get-label "Search string:"] | set-text NT1
+    get-button Search | click
+}
+get-view Search | get-tree | select "Network Type NT1" | double-click
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
