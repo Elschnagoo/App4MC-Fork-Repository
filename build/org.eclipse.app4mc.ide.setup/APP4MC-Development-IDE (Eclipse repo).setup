@@ -116,9 +116,103 @@
     <requirement
         name="org.eclipse.acceleo.feature.group"/>
     <requirement
+        name="org.eclipse.sirius.runtime.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.doc.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.ide.eef.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.ide.xtext.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.ide.ui.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.acceleo.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.aql.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.ocl.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.interpreter.feature.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.properties.feature.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.tests.support.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.tests.support.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.doc.feature.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.ide.eef.source.feature.group"/>
+    <requirement
+        name="org.eclipse.acceleo.query.feature.group"/>
+    <requirement
+        name="org.eclipse.acceleo.query.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.aql.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.aql.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.ide.xtext.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.ide.ui.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.acceleo.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.aql.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.ocl.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.samples.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.ide.ui.acceleo.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.ide.ui.aql.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.ide.ui.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.properties.feature.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.interpreter.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.properties.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.properties.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.samples.feature.group"/>
+    <requirement
+        name="org.eclipse.sphinx.testutils.feature.group"/>
+    <requirement
+        name="org.eclipse.sphinx.thirdparty.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.ide.ui.aql.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.specifier.ide.ui.feature.group"/>
+    <requirement
         name="org.eclipse.sirius.runtime.aql.feature.group"/>
     <requirement
         name="org.eclipse.acceleo.sdk.feature.group"/>
+    <requirement
+        name="org.eclipse.sphinx.feature.group"/>
+    <requirement
+        name="org.eclipse.emf.ecoretools.explorer.contextual.feature.group"/>
+    <requirement
+        name="org.eclipse.emf.ecoretools.design.feature.group"/>
+    <requirement
+        name="org.eclipse.emf.ecoretools.sdk.feature.group"/>
+    <requirement
+        name="org.eclipse.sphinx.sdk.feature.group"/>
     <requirement
         name="org.eclipse.emf.ecoretools.design.feature.group"/>
     <requirement
@@ -130,11 +224,13 @@
     <repository
         url="https://raw.github.com/inventage/version-tiger-repos/master/releases/"/>
     <repository
-        url="http://download.eclipse.org/sirius/updates/releases/3.1.4/mars"/>
+        url="http://download.eclipse.org/sirius/updates/releases/4.0.0/neon"/>
     <repository
-        url="http://download.eclipse.org/ecoretools/updates/releases/3.0.1/mars"/>
+        url="http://download.eclipse.org/sphinx/releases/0.10.x"/>
     <repository
         url="http://download.eclipse.org/rcptt/release/2.0.2/repository"/>
+    <repository
+        url="http://download.eclipse.org/ecoretools/updates/nightly/3.1.0/neon/"/>
     <repository
         url="http://download.eclipse.org/acceleo/updates/releases/3.6"/>
     <repository
