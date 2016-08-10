@@ -59,7 +59,7 @@
 <unit id="org.yakindu.sct.feature.group" version="2.6.0.201604061309"/>
 <unit id="org.yakindu.sct.generator.c.feature.group" version="2.6.0.201604061309"/>
 <unit id="org.yakindu.sct.generator.cpp.feature.group" version="2.6.0.201604061309"/>
-<repository location="http://updates.yakindu.org/sct/mars/releases"/>
+<repository location="http://updates.yakindu.org/sct/releases/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.sirius.doc.feature.feature.jar" version="3.1.4.201602091241"/>

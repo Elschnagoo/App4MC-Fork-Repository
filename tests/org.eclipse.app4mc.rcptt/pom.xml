@@ -18,6 +18,9 @@
     <pluginRepository>
       <id>rcptt-releases</id>
       <name>RCPTT Maven repository</name>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
       <url>https://repo.eclipse.org/content/repositories/rcptt-releases/</url>
     </pluginRepository>
     <pluginRepository>
@@ -45,7 +48,7 @@
                 <version>${rcptt-maven-version}</version>
             </runner>
 						<aut>
-	            <explicit>../../build/org.eclipse.app4mc.platform.product/target/products/org.eclipse.app4mc.platform-${project.version}-${buildQualifier}-[platform].zip</explicit>
+	            <explicit>../../build/org.eclipse.app4mc.platform.product/target/products/org.eclipse.app4mc.platform-${project.version}-${maven.build.timestamp}-[platform].zip</explicit>
 	          </aut>
         </configuration>
       </plugin>
