@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Amalthea Converters to Itea-1.1.0
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.converters.110;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.7.1.qualifier
 Bundle-Activator: org.eclipse.app4mc.amalthea.converters110.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.app4mc.amalthea.converters.common
