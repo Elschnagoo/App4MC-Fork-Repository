@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<xsd:schema xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://app4mc.eclipse.org/amalthea/0.7.0">
+<xsd:schema xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://app4mc.eclipse.org/amalthea/0.7.1">
   <xsd:annotation>
     <xsd:documentation>*
 *******************************************************************************
@@ -676,6 +676,21 @@ exclusive: gets access to requested semaphore only when there is no other user a
       <xsd:documentation>Object for using the elementary datatype String as generic parameter</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="BigIntegerObject">
+    <xsd:annotation>
+      <xsd:documentation>Object for using the elementary datatype String as generic parameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Value">
+        <xsd:attribute name="value" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="BigIntegerObject" type="am:BigIntegerObject">
+    <xsd:annotation>
+      <xsd:documentation>Object for using the elementary datatype String as generic parameter</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="ReferenceObject">
     <xsd:annotation>
       <xsd:documentation>Object for using object reference as generic parameter</xsd:documentation>
@@ -1127,6 +1142,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     <xsd:complexContent>
       <xsd:extension base="am:Port">
         <xsd:attribute name="kind" type="am:InterfaceKind"/>
+        <xsd:attribute name="interfaceName" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -4197,7 +4213,7 @@ Generalizes interrupt service routines and tasks</xsd:documentation>
   </xsd:element>
   <xsd:complexType name="ModeSwitch">
     <xsd:annotation>
-      <xsd:documentation>A switch in the call graph, the selected path depends on a label�s value</xsd:documentation>
+      <xsd:documentation>A switch in the call graph, the selected path depends on the value of the provided ModeLabel</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:GraphEntryBase">
@@ -4211,13 +4227,13 @@ Generalizes interrupt service routines and tasks</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="ModeSwitch" type="am:ModeSwitch">
     <xsd:annotation>
-      <xsd:documentation>A switch in the call graph, the selected path depends on a label�s value</xsd:documentation>
+      <xsd:documentation>A switch in the call graph, the selected path depends on the value of the provided ModeLabel</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ModeSwitchEntry">
     <xsd:annotation>
-      <xsd:documentation>A switch entry for a LabelSwitch.
-It describes a path of the switch and the required label value to use this path</xsd:documentation>
+      <xsd:documentation>A switch entry for a ModeSwitch.
+It describes a path of the switch and the required mode value to use this path</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
@@ -4232,8 +4248,8 @@ It describes a path of the switch and the required label value to use this path<
   </xsd:complexType>
   <xsd:element name="ModeSwitchEntry" type="am:ModeSwitchEntry">
     <xsd:annotation>
-      <xsd:documentation>A switch entry for a LabelSwitch.
-It describes a path of the switch and the required label value to use this path</xsd:documentation>
+      <xsd:documentation>A switch entry for a ModeSwitch.
+It describes a path of the switch and the required mode value to use this path</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ProbabiltitySwitch">
