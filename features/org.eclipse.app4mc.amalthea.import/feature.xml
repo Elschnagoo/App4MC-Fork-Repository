@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.app4mc.amalthea.import"
       label="APP4MC AMALTHEA Import"
-      version="0.7.0.qualifier"
+      version="0.7.1.qualifier"
       provider-name="Eclipse.org"
       license-feature="org.eclipse.license"
       license-feature-version="1.0.1.qualifier">

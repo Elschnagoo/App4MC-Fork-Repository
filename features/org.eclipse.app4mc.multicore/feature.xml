@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.app4mc.amalthea.multicore"
       label="APP4MC AMALTHEA Multicore Support"
-      version="0.7.0.qualifier"
+      version="0.7.1.qualifier"
       provider-name="Eclipse.org"
       license-feature="org.eclipse.license"
       license-feature-version="1.0.1.qualifier">
@@ -39,7 +39,7 @@ All rights reserved.
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.sphinx.emf"/>
       <import plugin="org.slf4j.jcl"/>
-      <import plugin="org.eclipse.app4mc.multicore.openmapping" version="0.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.app4mc.multicore.openmapping" version="0.7.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.help"/>
       <import plugin="org.eclipse.emf.common.ui"/>
    </requires>
