@@ -670,217 +670,217 @@
       <runnableItems xsi:type="am:LabelAccess" data="VotedWheelSpeed?type=Label" access="write" buffered="inherited" />
     </runnables>
     <labels name="ABSActivation" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="ABSMode" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="APedPosition1" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="APedPosition2" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="APedSensor1Voltage" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="APedSensor2Voltage" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="ArbitratedBrakeForce" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="ArbitratedDiagnosisRequest" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="BaseFuelMassPerStroke" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="BrakeApplication" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="BrakeForce" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="BrakeForceCurrent" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="BrakeForceFeedback" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="BrakeForceVoltage" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="BrakeMonitorLevel" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="BrakePedalPosition" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="BrakePedalPosition1" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="BrakePedalPosition2" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="BrakePedalPositionVoltage1" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="BrakePedalPositionVoltage2" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="BrakeSafetyLevel" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="BrakeSafetyState" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="CalculatedBrakeForce" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="CaliperPosition" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="CylinderNumber" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="DecelerationRate1" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="DecelerationRate2" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="DecelerationVoltage1" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="DecelerationVoltage2" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="DesiredThrottlePosition" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="DesiredThrottlePositionVoltage" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="IgnitionTime" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="IgnitionTime1" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="IgnitionTime2" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="IgnitionTime3" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="IgnitionTime4" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="IgnitionTime5" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="IgnitionTime6" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="IgnitionTime7" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="IgnitionTime8" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="InjectionTime1" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="InjectionTime2" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="InjectionTime3" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="InjectionTime4" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="InjectionTime5" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="InjectionTime6" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="InjectionTime7" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="InjectionTime8" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="MAFRate" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="MAFSensorVoltage" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="MassAirFlow" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="MonitoredVehicleState" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="ThrottlePosition" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="ThrottleSensor1Voltage" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="ThrottleSensor2Voltage" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="TotalFuelMassPerStroke" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="TransientFuelMassPerStroke" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="TriggeredCylinderNumber" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="VehicleSpeed1" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="VehicleSpeed2" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="VehicleSpeedVoltage1" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="VehicleSpeedVoltage2" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="VotedAPedPosition" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="VotedBrakePedalPosition" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="VotedDecelerationRate" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="VotedVehicleSpeed" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="VotedWheelSpeed" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="WheelSpeed1" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="WheelSpeed2" buffered="notBuffered">
-      <size numberBits="8" />
+      <size value="8" unit="bit"/>
     </labels>
     <labels name="WheelSpeedVoltage1" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <labels name="WheelSpeedVoltage2" buffered="notBuffered">
-      <size numberBits="16" />
+      <size value="16" unit="bit"/>
     </labels>
     <tags name="SwcEngineController" tagType="SOFTWARE_COMPONENT" />
     <tags name="SwcActuators" tagType="SOFTWARE_COMPONENT" />
