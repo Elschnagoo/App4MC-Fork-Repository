@@ -43,19 +43,19 @@ import org.eclipse.ui.handlers.HandlerUtil;
 public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler {
 
 	private MigrationSettings migrationSettings;
-	
-	private final String LATEST_MODEL_VERSION="0.7.0";
-	
+
+	private final String LATEST_MODEL_VERSION = "0.7.1";
+
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
-		
-		logger=LogManager.getLogger("org.eclipse.app4mc.amalthea");
 
-		logger.removeAllAppenders();
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea");
 
-		logger.addAppender(new CustomEclipseLogAppender());
-		
-		logger.setAdditivity(false);
+		this.logger.removeAllAppenders();
+
+		this.logger.addAppender(new CustomEclipseLogAppender());
+
+		this.logger.setAdditivity(false);
 
 		this.migrationSettings = new MigrationSettings();
 
@@ -119,8 +119,8 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 							inputModels.add(file.getCanonicalFile());
 						}
 						catch (final IOException e) {
-							logger.error("Error fetching the file : "+iFile.toString(), e);
-							
+							this.logger.error("Error fetching the file : " + iFile.toString(), e);
+
 						}
 
 					}
@@ -191,17 +191,22 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 
 									}
 									else {
-										
-										if(getMigrationSettings().getInputModelVersion()!=null && getMigrationSettings().getInputModelVersion().equals(LATEST_MODEL_VERSION)){
 
-											MessageDialog.openInformation(shell, "AMALTHEA Model Migration", "Selected models are compatible to latest AMALTHEA meta-model version ("+LATEST_MODEL_VERSION +")\nIt is not required to migrate these models !!");
-										}else{
+										if (getMigrationSettings().getInputModelVersion() != null
+												&& getMigrationSettings().getInputModelVersion().equals(
+														AmaltheaModelMigrationHandler.this.LATEST_MODEL_VERSION)) {
+
+											MessageDialog.openInformation(shell, "AMALTHEA Model Migration",
+													"Selected models are compatible to latest AMALTHEA meta-model version ("
+															+ AmaltheaModelMigrationHandler.this.LATEST_MODEL_VERSION
+															+ ")\nIt is not required to migrate these models !!");
+										}
+										else {
 											final ModelMigrationDialog dialog = new ModelMigrationDialog(shell,
 													getMigrationSettings());
 											dialog.open();
-											
+
 										}
-										
 
 
 									}
@@ -258,8 +263,8 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 									/*- if version is not among itea.103/itea.110/itea.111/0.7.0*/
 									if (!((inputModelVersion != null) && (inputModelVersion.equals("itea.103")
 											|| inputModelVersion.equals("itea.110")
-											|| inputModelVersion.equals("itea.111")
-											|| inputModelVersion.equals("0.7.0")))) {
+											|| inputModelVersion.equals("itea.111") || inputModelVersion.equals("0.7.0")
+											|| inputModelVersion.equals("0.7.1")))) {
 
 										list.add(migModelFile);
 									}

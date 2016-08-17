@@ -42,8 +42,8 @@ import com.google.common.io.Files;
 @SuppressWarnings("unchecked")
 public abstract class AbstractHelper {
 
-	public final Logger logger=LogManager.getLogger(this.getClass());
-	
+	public final Logger logger = LogManager.getLogger(this.getClass());
+
 	public void addAdditionalNameSpace(final Element rootElement, final Namespace... namespaces) {
 
 		for (final Namespace namespace2 : namespaces) {
@@ -71,6 +71,24 @@ public abstract class AbstractHelper {
 
 	}
 
+	public boolean isNS_AvailableIn_071(final Namespace namespace) {
+
+		if (namespace != null) {
+
+			final String ns_prefix = namespace.getPrefix();
+
+			final String ns_uri = namespace.getURI();
+
+			if (enumTypeContainsIn071(ns_prefix)) {
+
+				if (ns_uri.equals(NameSpace_071.valueOf(ns_prefix).getNSValue())) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 
 	public boolean isNS_AvailableIn_070(final Namespace namespace) {
 
@@ -188,6 +206,15 @@ public abstract class AbstractHelper {
 		return Namespace.getNamespace("", "");
 	}
 
+	public Namespace getNS_071(final String prefix) {
+
+		if (enumTypeContainsIn071(prefix)) {
+			return Namespace.getNamespace(prefix, NameSpace_071.valueOf(prefix).getNSValue());
+		}
+
+		return Namespace.getNamespace("", "");
+	}
+
 	public boolean enumTypeContainsIn110(final String s) {
 		try {
 			NameSpace_110.valueOf(s);
@@ -229,6 +256,17 @@ public abstract class AbstractHelper {
 		}
 		return true;
 	}
+
+	public boolean enumTypeContainsIn071(final String s) {
+		try {
+			NameSpace_071.valueOf(s);
+		}
+		catch (final IllegalArgumentException iae) {
+			return false;
+		}
+		return true;
+	}
+
 
 	public Namespace getGenericNS(final String prefix) {
 
@@ -309,7 +347,7 @@ public abstract class AbstractHelper {
 
 		// throw new JDOMParseException("E");
 
-		logger.info("Total time taken to load file :" + path + " : " + (end - start) + " milli seconds");
+		this.logger.info("Total time taken to load file :" + path + " : " + (end - start) + " milli seconds");
 
 		return doc;
 	}
@@ -354,8 +392,8 @@ public abstract class AbstractHelper {
 		}
 		catch (final Exception e) {
 
-			logger.error("Error occured during saving file : "+ file,e);
-			
+			this.logger.error("Error occured during saving file : " + file, e);
+
 			throw e;
 		}
 	}
@@ -388,7 +426,7 @@ public abstract class AbstractHelper {
 			xout.output(doc, out);
 		}
 		catch (final Exception e) {
-			logger.error("Error occured during saving file : "+ outputFile.getAbsolutePath(),e);
+			this.logger.error("Error occured during saving file : " + outputFile.getAbsolutePath(), e);
 			throw e;
 		}
 	}
@@ -431,12 +469,12 @@ public abstract class AbstractHelper {
 		}
 
 		if (!targetFile.exists()) {
-			logger.error("Referred file does not exists : " + targetFile.getAbsolutePath());
+			this.logger.error("Referred file does not exists : " + targetFile.getAbsolutePath());
 			return;
 		}
 
 		if (!Files.getFileExtension(targetFile.getAbsolutePath()).contains("amxmi")) {
-			logger.info("Non amalthea files will not be considered for model migration");
+			this.logger.info("Non amalthea files will not be considered for model migration");
 			return;
 		}
 		final Document xmlDoc = loadFile(targetFile.getAbsolutePath());

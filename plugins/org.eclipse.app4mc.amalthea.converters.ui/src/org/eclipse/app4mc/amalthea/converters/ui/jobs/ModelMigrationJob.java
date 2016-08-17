@@ -51,8 +51,8 @@ public class ModelMigrationJob extends Job {
 	private final MigrationSettings migrationSettings;
 
 	protected AbstractHelper helper;
-	
-	private final Logger logger=LogManager.getLogger(this.getClass());
+
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	public ModelMigrationJob(final String name, final MigrationSettings migrationSettings) {
 		super(name);
@@ -100,6 +100,18 @@ public class ModelMigrationJob extends Job {
 				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
 				migStepEntries.add(entry3);
 			}
+			else if (outputModelVersion.equals("0.7.1")) {
+				final Entry<String, String> entry1 = new AbstractMap.SimpleEntry<String, String>("itea.103",
+						"itea.110");
+				migStepEntries.add(entry1);
+				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
+						"itea.111");
+				migStepEntries.add(entry2);
+				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
+				migStepEntries.add(entry3);
+				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
+				migStepEntries.add(entry4);
+			}
 		}
 		else if (inputModelVersion.equals("itea.110")) {
 
@@ -117,6 +129,16 @@ public class ModelMigrationJob extends Job {
 				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
 				migStepEntries.add(entry3);
 			}
+			else if (outputModelVersion.equals("0.7.1")) {
+
+				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
+						"itea.111");
+				migStepEntries.add(entry2);
+				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
+				migStepEntries.add(entry3);
+				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
+				migStepEntries.add(entry4);
+			}
 		}
 		else if (inputModelVersion.equals("itea.111")) {
 
@@ -124,6 +146,21 @@ public class ModelMigrationJob extends Job {
 
 				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
 				migStepEntries.add(entry2);
+			}
+			else if (outputModelVersion.equals("0.7.1")) {
+
+				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
+				migStepEntries.add(entry2);
+				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
+				migStepEntries.add(entry4);
+			}
+		}
+		else if (inputModelVersion.equals("0.7.0")) {
+
+			if (outputModelVersion.equals("0.7.1")) {
+
+				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
+				migStepEntries.add(entry4);
 			}
 		}
 
@@ -181,7 +218,8 @@ public class ModelMigrationJob extends Job {
 				// TODO: Implement a generalized logic so as to support future versions
 				boolean updateFileNames = false;
 				if (inputModelVersion.equals("itea.103") || inputModelVersion.equals("itea.110")) {
-					if (outputModelVersion.equals("itea.111") || outputModelVersion.equals("0.7.0")) {
+					if (outputModelVersion.equals("itea.111") || outputModelVersion.equals("0.7.0")
+							|| outputModelVersion.equals("0.7.1")) {
 						updateFileNames = true;
 					}
 				}
@@ -192,7 +230,7 @@ public class ModelMigrationJob extends Job {
 		}
 		catch (final Exception e) {
 
-			logger.error(e.getMessage(),e);
+			this.logger.error(e.getMessage(), e);
 
 			return new Status(IStatus.CANCEL, " org.eclipse.app4mc.amalthea.converters.ui", IMigrationStatus.ERROR,
 					"Error during migration ", e);
@@ -256,7 +294,7 @@ public class ModelMigrationJob extends Job {
 				outputFiles.add(outputFile);
 			}
 
-			logger.info("File saved : " + outputFile.getAbsolutePath());
+			this.logger.info("File saved : " + outputFile.getAbsolutePath());
 		}
 
 		subMonitor.worked(1);
@@ -708,7 +746,7 @@ public class ModelMigrationJob extends Job {
 
 		final List<ICache> caches = getAllCacheObjectsFromExtensions(inputModelVersion);
 
-		logger.info("start to build cache for models : " + inputModelVersion);
+		this.logger.info("start to build cache for models : " + inputModelVersion);
 
 		st = System.currentTimeMillis();
 
@@ -717,9 +755,9 @@ public class ModelMigrationJob extends Job {
 		end = System.currentTimeMillis();
 
 
-		logger.info("end of building cache for models " + inputModelVersion);
+		this.logger.info("end of building cache for models " + inputModelVersion);
 
-		logger.info("total time taken to build cache for " + inputModelVersion + " models:  " + (end - st));
+		this.logger.info("total time taken to build cache for " + inputModelVersion + " models:  " + (end - st));
 
 
 		allConverterExtensions = getAllConverterExtensions();
@@ -736,28 +774,29 @@ public class ModelMigrationJob extends Job {
 
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();
 
-		if(registry==null)
+		if (registry == null) {
 			return null;
+		}
 		final IExtensionPoint extensionPoint = registry
 				.getExtensionPoint("org.eclipse.app4mc.amalthea.model.converters.formatter");
-		
-		if(extensionPoint!=null){
-			
+
+		if (extensionPoint != null) {
+
 			final IConfigurationElement[] extensions = extensionPoint.getConfigurationElements();
-			
+
 			for (final IConfigurationElement iConfigurationElement : extensions) {
-				
+
 				Object iConverter;
 				try {
 					iConverter = iConfigurationElement.createExecutableExtension("class");
 					return (IFormatter) iConverter;
 				}
 				catch (final CoreException e) {
-					logger.error(e.getMessage(),e);
+					this.logger.error(e.getMessage(), e);
 					e.printStackTrace();
 				}
-				
-				
+
+
 			}
 		}
 

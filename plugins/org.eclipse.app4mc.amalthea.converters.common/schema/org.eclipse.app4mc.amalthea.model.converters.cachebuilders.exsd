@@ -97,6 +97,8 @@
                   </enumeration>
                   <enumeration value="itea.111">
                   </enumeration>
+                  <enumeration value="0.7.0">
+                  </enumeration>
                </restriction>
             </simpleType>
          </attribute>

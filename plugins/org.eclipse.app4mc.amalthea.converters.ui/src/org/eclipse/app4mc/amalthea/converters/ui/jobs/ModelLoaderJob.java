@@ -37,7 +37,7 @@ public class ModelLoaderJob extends Job {
 	private final MigrationSettings migrationSettings;
 	private final List<File> inputModels;
 	private final AbstractHelper helper;
-	private final Logger logger=LogManager.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	public ModelLoaderJob(final String name, final MigrationSettings migrationSettings, final List<File> inputModels,
 			final AbstractHelper helper) {
@@ -63,26 +63,26 @@ public class ModelLoaderJob extends Job {
 			populateModels(modelFilesMap, this.inputModels, subMonitor);
 		}
 		catch (final Exception e1) {
-			
-			logger.error(e1.getMessage(),e1);
-			
+
+			this.logger.error(e1.getMessage(), e1);
+
 			return new Status(IStatus.CANCEL, "unknown", 1, e1.getMessage(), e1);
 		}
 
 
 		/*
 		 * for (final File file : this.inputModels) {
-		 * 
+		 *
 		 * subMonitor.setTaskName("Loading file :  " + file.getAbsolutePath());
-		 * 
+		 *
 		 * try { populateModels(modelFilesMap, file, false);
-		 * 
+		 *
 		 * }
-		 * 
+		 *
 		 * catch (final Exception e) {
-		 * 
+		 *
 		 * return new Status(IStatus.CANCEL, "unknown", 1, e.getMessage(), e); }
-		 * 
+		 *
 		 * subMonitor.worked(1); }
 		 */
 
@@ -208,6 +208,9 @@ public class ModelLoaderJob extends Job {
 		}
 		else if (this.helper.isNS_AvailableIn_070(namespace)) {
 			migModelFile.setModelVersion("0.7.0");
+		}
+		else if (this.helper.isNS_AvailableIn_071(namespace)) {
+			migModelFile.setModelVersion("0.7.1");
 		}
 		else {
 			migModelFile.setModelVersion("invalid");

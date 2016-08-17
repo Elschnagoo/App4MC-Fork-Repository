@@ -77,12 +77,12 @@ public class ModelMigrationDialog extends Dialog {
 	private Button migrateModelsButton;
 	private String outputDirectoryLocation;
 
-	private final Logger logger; 
+	final Logger logger;
 
 	public ModelMigrationDialog(final Shell parentShell, final MigrationSettings migrationSettings) {
 		super(parentShell);
-		logger=LogManager.getLogger(this.getClass());
-		
+		this.logger = LogManager.getLogger(this.getClass());
+
 		setMigrationSettings(migrationSettings);
 
 		if (getMigrationSettings() == null) {
@@ -181,17 +181,22 @@ public class ModelMigrationDialog extends Dialog {
 				if (version != null) {
 					if (version.equals("itea.103")) {
 						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.7.0", "itea.111", "itea.110" });
+								.setItems(new String[] { "0.7.1", "0.7.0", "itea.111", "itea.110" });
 
 					}
 					else if (version.equals("itea.110")) {
 						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.7.0", "itea.111" });
+								.setItems(new String[] { "0.7.1", "0.7.0", "itea.111" });
 					}
 					else if (version.equals("itea.111")) {
-						ModelMigrationDialog.this.getMig_model_version_combo().setItems(new String[] { "0.7.0" });
+						ModelMigrationDialog.this.getMig_model_version_combo()
+								.setItems(new String[] { "0.7.1", "0.7.0" });
 					}
 					else if (version.equals("0.7.0")) {
+						ModelMigrationDialog.this.getMig_model_version_combo().setItems(new String[] { "0.7.1" });
+
+					}
+					else if (version.equals("0.7.1")) {
 						ModelMigrationDialog.this.getMig_model_version_combo().setItems(new String[] { "" });
 
 						ModelMigrationDialog.this.getMig_model_version_combo().setEnabled(false);
@@ -224,7 +229,7 @@ public class ModelMigrationDialog extends Dialog {
 		mig_model_version_text.setBounds(0, 0, 84, 15);
 		mig_model_version_text.setText("Model Version");
 
-		this.mig_model_version_combo = new Combo(mig_model_version_composite, SWT.NONE);
+		this.mig_model_version_combo = new Combo(mig_model_version_composite, SWT.READ_ONLY);
 		this.mig_model_version_combo.setBounds(150, 0, 91, 23);
 		// this.mig_model_version_combo.setItems(new String[] { "0.7.0", "itea.111", "itea.110" });
 		this.mig_model_version_combo.select(0);
@@ -267,7 +272,8 @@ public class ModelMigrationDialog extends Dialog {
 				final String selectedPath = dialog.open();
 
 				if (selectedPath != null) {
-					logger.info(ModelMigrationDialog.this.getMigrationSettings().getOutputDirectoryLocation());
+					ModelMigrationDialog.this.logger
+							.info(ModelMigrationDialog.this.getMigrationSettings().getOutputDirectoryLocation());
 
 					ModelMigrationDialog.this.setOutputDirectoryLocation(selectedPath);
 
@@ -322,6 +328,7 @@ public class ModelMigrationDialog extends Dialog {
 		return shlAmalthea;
 	}
 
+	@SuppressWarnings("unused")
 	private void addEmptyLabels(final Group grpInitialModel) {
 		new Label(grpInitialModel, SWT.NONE);
 		new Label(grpInitialModel, SWT.NONE);
@@ -410,7 +417,7 @@ public class ModelMigrationDialog extends Dialog {
 												new NullProgressMonitor());
 									}
 									catch (final CoreException e) {
-										logger.error(e.getMessage(), e);
+										ModelMigrationDialog.this.logger.error(e.getMessage(), e);
 									}
 
 								}
