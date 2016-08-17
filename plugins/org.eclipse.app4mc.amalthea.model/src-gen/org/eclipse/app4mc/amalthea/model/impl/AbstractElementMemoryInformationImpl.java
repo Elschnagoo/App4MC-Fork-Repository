@@ -16,7 +16,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.DataUnit;
+import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.Tag;
 
@@ -65,7 +65,7 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	 * @generated
 	 * @ordered
 	 */
-	protected DataUnit size;
+	protected DataSize size;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,10 +103,10 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataUnit getSize() {
+	public DataSize getSize() {
 		if (size != null && size.eIsProxy()) {
 			InternalEObject oldSize = (InternalEObject)size;
-			size = (DataUnit)eResolveProxy(oldSize);
+			size = (DataSize)eResolveProxy(oldSize);
 			if (size != oldSize) {
 				InternalEObject newSize = (InternalEObject)size;
 				NotificationChain msgs = oldSize.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE, null, null);
@@ -126,7 +126,7 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataUnit basicGetSize() {
+	public DataSize basicGetSize() {
 		return size;
 	}
 
@@ -135,8 +135,8 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSize(DataUnit newSize, NotificationChain msgs) {
-		DataUnit oldSize = size;
+	public NotificationChain basicSetSize(DataSize newSize, NotificationChain msgs) {
+		DataSize oldSize = size;
 		size = newSize;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE, oldSize, newSize);
@@ -150,7 +150,7 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSize(DataUnit newSize) {
+	public void setSize(DataSize newSize) {
 		if (newSize != size) {
 			NotificationChain msgs = null;
 			if (size != null)
@@ -209,7 +209,7 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 				getTags().addAll((Collection<? extends Tag>)newValue);
 				return;
 			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE:
-				setSize((DataUnit)newValue);
+				setSize((DataSize)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -227,7 +227,7 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 				getTags().clear();
 				return;
 			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE:
-				setSize((DataUnit)null);
+				setSize((DataSize)null);
 				return;
 		}
 		super.eUnset(featureID);

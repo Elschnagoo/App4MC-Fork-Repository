@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.DataUnit;
+import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.Section;
 
@@ -55,7 +55,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * @generated
 	 * @ordered
 	 */
-	protected DataUnit size;
+	protected DataSize size;
 
 	/**
 	 * The cached value of the '{@link #getLabels() <em>Labels</em>}' reference list.
@@ -101,7 +101,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataUnit getSize() {
+	public DataSize getSize() {
 		return size;
 	}
 
@@ -110,8 +110,8 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSize(DataUnit newSize, NotificationChain msgs) {
-		DataUnit oldSize = size;
+	public NotificationChain basicSetSize(DataSize newSize, NotificationChain msgs) {
+		DataSize oldSize = size;
 		size = newSize;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SECTION__SIZE, oldSize, newSize);
@@ -125,7 +125,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSize(DataUnit newSize) {
+	public void setSize(DataSize newSize) {
 		if (newSize != size) {
 			NotificationChain msgs = null;
 			if (size != null)
@@ -205,7 +205,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.SECTION__SIZE:
-				setSize((DataUnit)newValue);
+				setSize((DataSize)newValue);
 				return;
 			case AmaltheaPackage.SECTION__LABELS:
 				getLabels().clear();
@@ -228,7 +228,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.SECTION__SIZE:
-				setSize((DataUnit)null);
+				setSize((DataSize)null);
 				return;
 			case AmaltheaPackage.SECTION__LABELS:
 				getLabels().clear();

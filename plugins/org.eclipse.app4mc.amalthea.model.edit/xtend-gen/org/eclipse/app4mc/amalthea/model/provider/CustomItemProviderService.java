@@ -42,8 +42,9 @@ import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
+import org.eclipse.app4mc.amalthea.model.DataSize;
+import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
-import org.eclipse.app4mc.amalthea.model.DataUnit;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem;
 import org.eclipse.app4mc.amalthea.model.Distribution;
@@ -206,6 +207,34 @@ public class CustomItemProviderService {
       _xifexpression = _unit_1.getLiteral();
     }
     final String unit = _xifexpression;
+    return ((value + " ") + unit);
+  }
+  
+  private static String getDataSizeText(final DataSize size) {
+    boolean _equals = Objects.equal(size, null);
+    if (_equals) {
+      return "<data size>";
+    }
+    String _xifexpression = null;
+    BigInteger _value = size.getValue();
+    boolean _equals_1 = Objects.equal(_value, null);
+    if (_equals_1) {
+      _xifexpression = "???";
+    } else {
+      BigInteger _value_1 = size.getValue();
+      _xifexpression = _value_1.toString();
+    }
+    final String value = _xifexpression;
+    String _xifexpression_1 = null;
+    DataSizeUnit _unit = size.getUnit();
+    boolean _equals_2 = Objects.equal(_unit, DataSizeUnit._UNDEFINED_);
+    if (_equals_2) {
+      _xifexpression_1 = "<unit>";
+    } else {
+      DataSizeUnit _unit_1 = size.getUnit();
+      _xifexpression_1 = _unit_1.getLiteral();
+    }
+    final String unit = _xifexpression_1;
     return ((value + " ") + unit);
   }
   
@@ -558,33 +587,6 @@ public class CustomItemProviderService {
   }
   
   /**
-   * DataUnitItemProvider
-   */
-  public static String getDataUnitItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DataUnit)) {
-      EStructuralFeature _eContainingFeature = null;
-      if (((DataUnit)object)!=null) {
-        _eContainingFeature=((DataUnit)object).eContainingFeature();
-      }
-      final EStructuralFeature feature = _eContainingFeature;
-      String _xifexpression = null;
-      boolean _equals = Objects.equal(feature, null);
-      if (_equals) {
-        _xifexpression = "";
-      } else {
-        String _name = feature.getName();
-        _xifexpression = (_name + ": ");
-      }
-      final String s1 = _xifexpression;
-      int _numberBits = ((DataUnit)object).getNumberBits();
-      String _plus = (s1 + Integer.valueOf(_numberBits));
-      return (_plus + " bits");
-    } else {
-      return defaultText;
-    }
-  }
-  
-  /**
    * FrequencyItemProvider
    */
   public static String getFrequencyItemProviderText(final Object object, final String defaultText) {
@@ -605,6 +607,32 @@ public class CustomItemProviderService {
       final String s1 = _xifexpression;
       String _frequencyText = CustomItemProviderService.getFrequencyText(((Frequency)object));
       return (s1 + _frequencyText);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  /**
+   * DataSizeItemProvider
+   */
+  public static String getDataSizeItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof DataSize)) {
+      EStructuralFeature _eContainingFeature = null;
+      if (((DataSize)object)!=null) {
+        _eContainingFeature=((DataSize)object).eContainingFeature();
+      }
+      final EStructuralFeature feature = _eContainingFeature;
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, null);
+      if (_equals) {
+        _xifexpression = "";
+      } else {
+        String _name = feature.getName();
+        _xifexpression = (_name + ": ");
+      }
+      final String s1 = _xifexpression;
+      String _dataSizeText = CustomItemProviderService.getDataSizeText(((DataSize)object));
+      return (s1 + _dataSizeText);
     } else {
       return defaultText;
     }

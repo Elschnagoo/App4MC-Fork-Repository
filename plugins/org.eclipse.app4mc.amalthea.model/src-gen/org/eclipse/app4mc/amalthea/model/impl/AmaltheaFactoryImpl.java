@@ -77,8 +77,11 @@ import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
 import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
+import org.eclipse.app4mc.amalthea.model.DataRate;
+import org.eclipse.app4mc.amalthea.model.DataRateUnit;
+import org.eclipse.app4mc.amalthea.model.DataSize;
+import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
-import org.eclipse.app4mc.amalthea.model.DataUnit;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
@@ -349,7 +352,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.TIME: return createTime();
 			case AmaltheaPackage.SIGNED_TIME: return createSignedTime();
 			case AmaltheaPackage.FREQUENCY: return createFrequency();
-			case AmaltheaPackage.DATA_UNIT: return createDataUnit();
+			case AmaltheaPackage.DATA_SIZE: return createDataSize();
+			case AmaltheaPackage.DATA_RATE: return createDataRate();
 			case AmaltheaPackage.CUSTOM_PROPERTY: return (EObject)createCustomProperty();
 			case AmaltheaPackage.LIST_OBJECT: return createListObject();
 			case AmaltheaPackage.STRING_OBJECT: return createStringObject();
@@ -601,6 +605,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createTimeUnitFromString(eDataType, initialValue);
 			case AmaltheaPackage.FREQUENCY_UNIT:
 				return createFrequencyUnitFromString(eDataType, initialValue);
+			case AmaltheaPackage.DATA_SIZE_UNIT:
+				return createDataSizeUnitFromString(eDataType, initialValue);
+			case AmaltheaPackage.DATA_RATE_UNIT:
+				return createDataRateUnitFromString(eDataType, initialValue);
 			case AmaltheaPackage.INTERFACE_KIND:
 				return createInterfaceKindFromString(eDataType, initialValue);
 			case AmaltheaPackage.RUNNABLE_ORDER_TYPE:
@@ -686,6 +694,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertTimeUnitToString(eDataType, instanceValue);
 			case AmaltheaPackage.FREQUENCY_UNIT:
 				return convertFrequencyUnitToString(eDataType, instanceValue);
+			case AmaltheaPackage.DATA_SIZE_UNIT:
+				return convertDataSizeUnitToString(eDataType, instanceValue);
+			case AmaltheaPackage.DATA_RATE_UNIT:
+				return convertDataRateUnitToString(eDataType, instanceValue);
 			case AmaltheaPackage.INTERFACE_KIND:
 				return convertInterfaceKindToString(eDataType, instanceValue);
 			case AmaltheaPackage.RUNNABLE_ORDER_TYPE:
@@ -814,9 +826,19 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataUnit createDataUnit() {
-		DataUnitImpl dataUnit = new DataUnitImpl();
-		return dataUnit;
+	public DataSize createDataSize() {
+		DataSizeImpl dataSize = new DataSizeImpl();
+		return dataSize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataRate createDataRate() {
+		DataRateImpl dataRate = new DataRateImpl();
+		return dataRate;
 	}
 
 	/**
@@ -3196,6 +3218,46 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertFrequencyUnitToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataSizeUnit createDataSizeUnitFromString(EDataType eDataType, String initialValue) {
+		DataSizeUnit result = DataSizeUnit.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDataSizeUnitToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataRateUnit createDataRateUnitFromString(EDataType eDataType, String initialValue) {
+		DataRateUnit result = DataRateUnit.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDataRateUnitToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

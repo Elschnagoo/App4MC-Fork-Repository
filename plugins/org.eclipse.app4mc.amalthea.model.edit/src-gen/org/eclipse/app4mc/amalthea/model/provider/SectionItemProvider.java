@@ -206,7 +206,7 @@ public class SectionItemProvider extends ReferableBaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSection_Size(),
-				 AmaltheaFactory.eINSTANCE.createDataUnit()));
+				 AmaltheaFactory.eINSTANCE.createDataSize()));
 	}
 
 }

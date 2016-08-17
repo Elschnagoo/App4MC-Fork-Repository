@@ -77,13 +77,22 @@ public interface AmaltheaFactory extends EFactory {
 	Frequency createFrequency();
 
 	/**
-	 * Returns a new object of class '<em>Data Unit</em>'.
+	 * Returns a new object of class '<em>Data Size</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Unit</em>'.
+	 * @return a new object of class '<em>Data Size</em>'.
 	 * @generated
 	 */
-	DataUnit createDataUnit();
+	DataSize createDataSize();
+
+	/**
+	 * Returns a new object of class '<em>Data Rate</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Rate</em>'.
+	 * @generated
+	 */
+	DataRate createDataRate();
 
 	/**
 	 * Returns a new object of class '<em>List Object</em>'.

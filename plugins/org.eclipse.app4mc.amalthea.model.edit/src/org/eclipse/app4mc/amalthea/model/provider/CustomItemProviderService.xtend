@@ -25,7 +25,7 @@ import org.eclipse.app4mc.amalthea.model.DataAgeTime
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition
-import org.eclipse.app4mc.amalthea.model.DataUnit
+import org.eclipse.app4mc.amalthea.model.DataSize
 import org.eclipse.app4mc.amalthea.model.Deviation
 import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem
 import org.eclipse.app4mc.amalthea.model.DoubleObject
@@ -127,6 +127,7 @@ import org.eclipse.app4mc.amalthea.model.TimeMetric
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject
+import org.eclipse.app4mc.amalthea.model.DataSizeUnit
 
 class CustomItemProviderService {
 
@@ -149,6 +150,14 @@ class CustomItemProviderService {
 		
 		val value = Integer.toString(time.value)
 		val unit = if (time.unit == TimeUnit::_UNDEFINED_) "<unit>" else time.unit.literal
+		return value + " " + unit
+	}
+
+	private def static getDataSizeText(DataSize size) {
+		if (size == null) return "<data size>"
+		
+		val value = if (size.value == null) "???" else size.value.toString
+		val unit = if (size.unit == DataSizeUnit::_UNDEFINED_) "<unit>" else size.unit.literal
 		return value + " " + unit
 	}
 
@@ -336,19 +345,6 @@ class CustomItemProviderService {
 
 
 	/*****************************************************************************
-	 * 						DataUnitItemProvider
-	 *****************************************************************************/
-	def static String getDataUnitItemProviderText(Object object, String defaultText) {
-	if (object instanceof DataUnit) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + object.numberBits + " bits";
-		} else {
-			return defaultText
-		}
-	}
-
-	/*****************************************************************************
 	 * 						FrequencyItemProvider
 	 *****************************************************************************/
 	def static String getFrequencyItemProviderText(Object object, String defaultText) {
@@ -360,8 +356,21 @@ class CustomItemProviderService {
 			return defaultText
 		}
 	}
+
+	/*****************************************************************************
+	 * 						DataSizeItemProvider
+	 *****************************************************************************/
+	def static String getDataSizeItemProviderText(Object object, String defaultText) {
+	if (object instanceof DataSize) {
+			val feature = object?.eContainingFeature()
+			val s1 = if(feature == null) "" else feature.name + ": "
+			return s1 + getDataSizeText(object)
+		} else {
+			return defaultText
+		}
+	}
 	
-	
+
 	/*****************************************************************************
 	 * 						DeviationItemProvider
 	 *****************************************************************************/

@@ -82,9 +82,10 @@ import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
+import org.eclipse.app4mc.amalthea.model.DataRate;
+import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
-import org.eclipse.app4mc.amalthea.model.DataUnit;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
@@ -464,9 +465,15 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.DATA_UNIT: {
-				DataUnit dataUnit = (DataUnit)theEObject;
-				T1 result = caseDataUnit(dataUnit);
+			case AmaltheaPackage.DATA_SIZE: {
+				DataSize dataSize = (DataSize)theEObject;
+				T1 result = caseDataSize(dataSize);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.DATA_RATE: {
+				DataRate dataRate = (DataRate)theEObject;
+				T1 result = caseDataRate(dataRate);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3266,17 +3273,32 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Unit</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Data Size</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Unit</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Data Size</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataUnit(DataUnit object) {
+	public T1 caseDataSize(DataSize object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Rate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Rate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseDataRate(DataRate object) {
 		return null;
 	}
 

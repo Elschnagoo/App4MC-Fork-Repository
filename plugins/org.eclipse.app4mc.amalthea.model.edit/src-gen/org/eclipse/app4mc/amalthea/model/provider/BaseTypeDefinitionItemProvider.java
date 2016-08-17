@@ -158,7 +158,7 @@ public class BaseTypeDefinitionItemProvider extends TypeDefinitionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getBaseTypeDefinition_Size(),
-				 AmaltheaFactory.eINSTANCE.createDataUnit()));
+				 AmaltheaFactory.eINSTANCE.createDataSize()));
 
 		newChildDescriptors.add
 			(createChildParameter

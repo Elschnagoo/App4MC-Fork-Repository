@@ -82,9 +82,10 @@ import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
+import org.eclipse.app4mc.amalthea.model.DataRate;
+import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
-import org.eclipse.app4mc.amalthea.model.DataUnit;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
@@ -431,8 +432,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createFrequencyAdapter();
 			}
 			@Override
-			public Adapter caseDataUnit(DataUnit object) {
-				return createDataUnitAdapter();
+			public Adapter caseDataSize(DataSize object) {
+				return createDataSizeAdapter();
+			}
+			@Override
+			public Adapter caseDataRate(DataRate object) {
+				return createDataRateAdapter();
 			}
 			@Override
 			public Adapter caseCustomProperty(Map.Entry<String, Value> object) {
@@ -1799,16 +1804,30 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DataUnit <em>Data Unit</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DataSize <em>Data Size</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.DataUnit
+	 * @see org.eclipse.app4mc.amalthea.model.DataSize
 	 * @generated
 	 */
-	public Adapter createDataUnitAdapter() {
+	public Adapter createDataSizeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DataRate <em>Data Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.DataRate
+	 * @generated
+	 */
+	public Adapter createDataRateAdapter() {
 		return null;
 	}
 

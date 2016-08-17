@@ -91,9 +91,12 @@ import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
+import org.eclipse.app4mc.amalthea.model.DataRate;
+import org.eclipse.app4mc.amalthea.model.DataRateUnit;
+import org.eclipse.app4mc.amalthea.model.DataSize;
+import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
-import org.eclipse.app4mc.amalthea.model.DataUnit;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
@@ -461,7 +464,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dataUnitEClass = null;
+	private EClass dataSizeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataRateEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2540,6 +2550,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum dataSizeUnitEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum dataRateUnitEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum interfaceKindEEnum = null;
 
 	/**
@@ -3184,8 +3208,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDataUnit() {
-		return dataUnitEClass;
+	public EClass getDataSize() {
+		return dataSizeEClass;
 	}
 
 	/**
@@ -3193,8 +3217,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDataUnit_NumberBits() {
-		return (EAttribute)dataUnitEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDataSize_Value() {
+		return (EAttribute)dataSizeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3202,8 +3226,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDataUnit__ToString() {
-		return dataUnitEClass.getEOperations().get(0);
+	public EAttribute getDataSize_Unit() {
+		return (EAttribute)dataSizeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3211,8 +3235,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDataUnit__GetNumberBytes() {
-		return dataUnitEClass.getEOperations().get(1);
+	public EOperation getDataSize__ToString() {
+		return dataSizeEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -3220,8 +3244,53 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDataUnit__SetNumberBytes__int() {
-		return dataUnitEClass.getEOperations().get(2);
+	public EOperation getDataSize__GetNumberBits() {
+		return dataSizeEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSize__GetNumberBytes() {
+		return dataSizeEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataRate() {
+		return dataRateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataRate_Value() {
+		return (EAttribute)dataRateEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataRate_Unit() {
+		return (EAttribute)dataRateEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataRate__ToString() {
+		return dataRateEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -10402,6 +10471,24 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getDataSizeUnit() {
+		return dataSizeUnitEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getDataRateUnit() {
+		return dataRateUnitEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getInterfaceKind() {
 		return interfaceKindEEnum;
 	}
@@ -10781,11 +10868,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEOperation(frequencyEClass, FREQUENCY___CONTAINER_NOTIFICATION_REQUIRED);
 		createEOperation(frequencyEClass, FREQUENCY___TO_STRING);
 
-		dataUnitEClass = createEClass(DATA_UNIT);
-		createEAttribute(dataUnitEClass, DATA_UNIT__NUMBER_BITS);
-		createEOperation(dataUnitEClass, DATA_UNIT___TO_STRING);
-		createEOperation(dataUnitEClass, DATA_UNIT___GET_NUMBER_BYTES);
-		createEOperation(dataUnitEClass, DATA_UNIT___SET_NUMBER_BYTES__INT);
+		dataSizeEClass = createEClass(DATA_SIZE);
+		createEAttribute(dataSizeEClass, DATA_SIZE__VALUE);
+		createEAttribute(dataSizeEClass, DATA_SIZE__UNIT);
+		createEOperation(dataSizeEClass, DATA_SIZE___TO_STRING);
+		createEOperation(dataSizeEClass, DATA_SIZE___GET_NUMBER_BITS);
+		createEOperation(dataSizeEClass, DATA_SIZE___GET_NUMBER_BYTES);
+
+		dataRateEClass = createEClass(DATA_RATE);
+		createEAttribute(dataRateEClass, DATA_RATE__VALUE);
+		createEAttribute(dataRateEClass, DATA_RATE__UNIT);
+		createEOperation(dataRateEClass, DATA_RATE___TO_STRING);
 
 		customPropertyEClass = createEClass(CUSTOM_PROPERTY);
 		createEAttribute(customPropertyEClass, CUSTOM_PROPERTY__KEY);
@@ -11879,6 +11972,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
 		frequencyUnitEEnum = createEEnum(FREQUENCY_UNIT);
+		dataSizeUnitEEnum = createEEnum(DATA_SIZE_UNIT);
+		dataRateUnitEEnum = createEEnum(DATA_RATE_UNIT);
 		interfaceKindEEnum = createEEnum(INTERFACE_KIND);
 		runnableOrderTypeEEnum = createEEnum(RUNNABLE_ORDER_TYPE);
 		runnableGroupingTypeEEnum = createEEnum(RUNNABLE_GROUPING_TYPE);
@@ -12359,15 +12454,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getFrequency__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(dataUnitEClass, DataUnit.class, "DataUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataUnit_NumberBits(), theEcorePackage.getEInt(), "numberBits", null, 0, 1, DataUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(dataSizeEClass, DataSize.class, "DataSize", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataSize_Value(), theEcorePackage.getEBigInteger(), "value", null, 0, 1, DataSize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataSize_Unit(), this.getDataSizeUnit(), "unit", null, 0, 1, DataSize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getDataUnit__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSize__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getDataUnit__GetNumberBytes(), theEcorePackage.getEInt(), "getNumberBytes", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSize__GetNumberBits(), theEcorePackage.getELong(), "getNumberBits", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getDataUnit__SetNumberBytes__int(), null, "setNumberBytes", 0, 1, !IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theEcorePackage.getEInt(), "numberBytes", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSize__GetNumberBytes(), theEcorePackage.getELong(), "getNumberBytes", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(dataRateEClass, DataRate.class, "DataRate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataRate_Value(), theEcorePackage.getEBigInteger(), "value", null, 0, 1, DataRate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataRate_Unit(), this.getDataRateUnit(), "unit", null, 0, 1, DataRate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getDataRate__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(customPropertyEClass, Map.Entry.class, "CustomProperty", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomProperty_Key(), theEcorePackage.getEString(), "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -13230,7 +13331,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getSWModel_ModeLabels(), this.getModeLabel(), null, "modeLabels", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractElementMemoryInformationEClass, AbstractElementMemoryInformation.class, "AbstractElementMemoryInformation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAbstractElementMemoryInformation_Size(), this.getDataUnit(), null, "size", null, 0, 1, AbstractElementMemoryInformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractElementMemoryInformation_Size(), this.getDataSize(), null, "size", null, 0, 1, AbstractElementMemoryInformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractProcessEClass, AbstractProcess.class, "AbstractProcess", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractProcess_Priority(), theEcorePackage.getEInt(), "priority", null, 0, 1, AbstractProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -13361,7 +13462,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(modeLabelEClass, ModeLabel.class, "ModeLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(sectionEClass, Section.class, "Section", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSection_Size(), this.getDataUnit(), null, "size", null, 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSection_Size(), this.getDataSize(), null, "size", null, 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSection_Labels(), this.getLabel(), null, "labels", null, 0, -1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSection_RunEntities(), this.getRunnable(), null, "runEntities", null, 0, -1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -13469,7 +13570,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getDataTypeDefinition_DataType(), this.getDataType(), null, "dataType", null, 0, 1, DataTypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(baseTypeDefinitionEClass, BaseTypeDefinition.class, "BaseTypeDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBaseTypeDefinition_Size(), this.getDataUnit(), null, "size", null, 0, 1, BaseTypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBaseTypeDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, BaseTypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBaseTypeDefinition_DataMapping(), this.getDataPlatformMapping(), null, "dataMapping", null, 0, -1, BaseTypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(activationEClass, Activation.class, "Activation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -13516,6 +13617,48 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(frequencyUnitEEnum, FrequencyUnit.KHZ);
 		addEEnumLiteral(frequencyUnitEEnum, FrequencyUnit.MHZ);
 		addEEnumLiteral(frequencyUnitEEnum, FrequencyUnit.GHZ);
+
+		initEEnum(dataSizeUnitEEnum, DataSizeUnit.class, "DataSizeUnit");
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit._UNDEFINED_);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.BIT);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.KBIT);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.MBIT);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.GBIT);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.TBIT);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.KIBIT);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.MIBIT);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.GIBIT);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.TIBIT);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.BYTE);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.KB);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.MB);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.GB);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.TB);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.KI_B);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.MI_B);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.GI_B);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.TI_B);
+
+		initEEnum(dataRateUnitEEnum, DataRateUnit.class, "DataRateUnit");
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit._UNDEFINED_);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.BIT_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.KBIT_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.MBIT_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.GBIT_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.TBIT_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.KIBIT_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.MIBIT_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.GIBIT_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.TIBIT_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.BYTE_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.KB_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.MB_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.GB_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.TB_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.KI_BPER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.MI_BPER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.GI_BPER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.TI_BPER_SECOND);
 
 		initEEnum(interfaceKindEEnum, InterfaceKind.class, "InterfaceKind");
 		addEEnumLiteral(interfaceKindEEnum, InterfaceKind._UNDEFINED_);

@@ -38,12 +38,12 @@ public interface AbstractElementMemoryInformation extends ReferableBaseObject, I
 	 * Specifying the size of the element corresponding to the needed memory allocation
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Size</em>' containment reference.
-	 * @see #setSize(DataUnit)
+	 * @see #setSize(DataSize)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractElementMemoryInformation_Size()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	DataUnit getSize();
+	DataSize getSize();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation#getSize <em>Size</em>}' containment reference.
@@ -53,6 +53,6 @@ public interface AbstractElementMemoryInformation extends ReferableBaseObject, I
 	 * @see #getSize()
 	 * @generated
 	 */
-	void setSize(DataUnit value);
+	void setSize(DataSize value);
 
 } // AbstractElementMemoryInformation

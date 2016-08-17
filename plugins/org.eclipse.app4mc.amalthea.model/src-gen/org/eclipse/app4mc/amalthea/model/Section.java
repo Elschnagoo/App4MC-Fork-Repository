@@ -47,12 +47,12 @@ public interface Section extends ReferableBaseObject {
 	 * Size of all contained objects
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Size</em>' containment reference.
-	 * @see #setSize(DataUnit)
+	 * @see #setSize(DataSize)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection_Size()
 	 * @model containment="true"
 	 * @generated
 	 */
-	DataUnit getSize();
+	DataSize getSize();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Section#getSize <em>Size</em>}' containment reference.
@@ -62,7 +62,7 @@ public interface Section extends ReferableBaseObject {
 	 * @see #getSize()
 	 * @generated
 	 */
-	void setSize(DataUnit value);
+	void setSize(DataSize value);
 
 	/**
 	 * Returns the value of the '<em><b>Labels</b></em>' reference list.

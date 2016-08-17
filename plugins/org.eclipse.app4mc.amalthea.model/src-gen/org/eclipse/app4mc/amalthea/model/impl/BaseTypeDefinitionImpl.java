@@ -17,7 +17,7 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
-import org.eclipse.app4mc.amalthea.model.DataUnit;
+import org.eclipse.app4mc.amalthea.model.DataSize;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -55,7 +55,7 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	 * @generated
 	 * @ordered
 	 */
-	protected DataUnit size;
+	protected DataSize size;
 
 	/**
 	 * The cached value of the '{@link #getDataMapping() <em>Data Mapping</em>}' containment reference list.
@@ -91,10 +91,10 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataUnit getSize() {
+	public DataSize getSize() {
 		if (size != null && size.eIsProxy()) {
 			InternalEObject oldSize = (InternalEObject)size;
-			size = (DataUnit)eResolveProxy(oldSize);
+			size = (DataSize)eResolveProxy(oldSize);
 			if (size != oldSize) {
 				InternalEObject newSize = (InternalEObject)size;
 				NotificationChain msgs = oldSize.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.BASE_TYPE_DEFINITION__SIZE, null, null);
@@ -114,7 +114,7 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataUnit basicGetSize() {
+	public DataSize basicGetSize() {
 		return size;
 	}
 
@@ -123,8 +123,8 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSize(DataUnit newSize, NotificationChain msgs) {
-		DataUnit oldSize = size;
+	public NotificationChain basicSetSize(DataSize newSize, NotificationChain msgs) {
+		DataSize oldSize = size;
 		size = newSize;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.BASE_TYPE_DEFINITION__SIZE, oldSize, newSize);
@@ -138,7 +138,7 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSize(DataUnit newSize) {
+	public void setSize(DataSize newSize) {
 		if (newSize != size) {
 			NotificationChain msgs = null;
 			if (size != null)
@@ -207,7 +207,7 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.BASE_TYPE_DEFINITION__SIZE:
-				setSize((DataUnit)newValue);
+				setSize((DataSize)newValue);
 				return;
 			case AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING:
 				getDataMapping().clear();
@@ -226,7 +226,7 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.BASE_TYPE_DEFINITION__SIZE:
-				setSize((DataUnit)null);
+				setSize((DataSize)null);
 				return;
 			case AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING:
 				getDataMapping().clear();

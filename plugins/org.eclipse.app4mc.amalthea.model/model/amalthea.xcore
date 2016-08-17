@@ -183,6 +183,7 @@ enum FrequencyUnit {
 	kHz
 	MHz
 	GHz
+//	rpm ???
 }
 
 /*
@@ -202,31 +203,89 @@ class Frequency {
 }
 
 /*
- * Representing size of data in bits / bytes.
+ * Representing data sizes
  */
-class DataUnit
-{
-	/*
-	 * Size of the data in bit
-	 */
-	int numberBits
+enum DataSizeUnit {
+	_undefined_ // Display: "<unit>"
+	bit
+	kbit
+	Mbit
+	Gbit
+	Tbit
+	
+	kibit
+	Mibit
+	Gibit
+	Tibit
+	
+	byte
+	kB
+	MB
+	GB
+	TB
+	
+	KiB
+	MiB
+	GiB
+	TiB
+}
+
+class DataSize {
+	BigInteger value
+	DataSizeUnit unit
 	
 	op String toString() {
-		return numberBits + " bit"
+		return value + " " +  if (unit == DataSizeUnit::_UNDEFINED_ ) "<unit>" else unit.literal
 	}
 	
 	/*
-	 * Convenient method to retrieve the size in Bytes
+	 * Convenience methods to retrieve the size in Bits and Bytes
 	 */
-	op int getNumberBytes() {
-		return Math::ceil(numberBits / 8).intValue
+	op long getNumberBits() {
+		return AmaltheaServices.convertToBit(this).longValue
 	}
-	/*
-	 * Convenient method to set the size in Bytes.
-	 */
-	op void setNumberBytes(int numberBytes) {
-		setNumberBits(numberBytes * 8)
+	
+	op long getNumberBytes() {
+		return Math::ceil(getNumberBits() / 8).longValue
 	}
+}
+
+/*
+ * Representing data rates
+ */
+enum DataRateUnit {
+	_undefined_ // Display: "<unit>"
+	bitPerSecond // Display: "bit/s"
+	kbitPerSecond
+	MbitPerSecond
+	GbitPerSecond
+	TbitPerSecond
+	
+	kibitPerSecond
+	MibitPerSecond
+	GibitPerSecond
+	TibitPerSecond
+	
+	bytePerSecond
+	kBPerSecond
+	MBPerSecond
+	GBPerSecond
+	TBPerSecond
+	
+	KiBPerSecond
+	MiBPerSecond
+	GiBPerSecond
+	TiBPerSecond
+}
+
+class DataRate {
+	BigInteger value
+	DataRateUnit unit
+	
+	op String toString() {
+		return value + " " +  if (unit == DataRateUnit::_UNDEFINED_ ) "<unit>" else unit.literal.replace("PerSecond", "/s")
+	}
+	
 }
 
 /*
@@ -2346,7 +2405,7 @@ abstract class AbstractElementMemoryInformation extends ReferableBaseObject, ITa
 	/*
 	 * Specifying the size of the element corresponding to the needed memory allocation
 	 */
-	contains resolving DataUnit size
+	contains resolving DataSize size
 }
 
 abstract class AbstractProcess extends AbstractElementMemoryInformation
@@ -2745,7 +2804,7 @@ class Section extends ReferableBaseObject
 	/*
 	 * Size of all contained objects
 	 */
-	contains DataUnit size
+	contains DataSize size
 	refers Label[] labels
 	//	refers AbstractRunEntity[] runEntities
 	refers Runnable[] runEntities
@@ -3082,7 +3141,7 @@ class BaseTypeDefinition extends TypeDefinition
 	/*
 	 * Size of the data type
 	 */
-	contains resolving DataUnit size
+	contains resolving DataSize size
 	/*
 	 * Data mappings of target platforms
 	 */

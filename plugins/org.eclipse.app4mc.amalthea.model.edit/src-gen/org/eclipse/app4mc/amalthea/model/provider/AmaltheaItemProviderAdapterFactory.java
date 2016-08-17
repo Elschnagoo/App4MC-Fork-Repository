@@ -197,26 +197,49 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DataUnit} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DataSize} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DataUnitItemProvider dataUnitItemProvider;
+	protected DataSizeItemProvider dataSizeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DataUnit}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DataSize}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createDataUnitAdapter() {
-		if (dataUnitItemProvider == null) {
-			dataUnitItemProvider = new DataUnitItemProvider(this);
+	public Adapter createDataSizeAdapter() {
+		if (dataSizeItemProvider == null) {
+			dataSizeItemProvider = new DataSizeItemProvider(this);
 		}
 
-		return dataUnitItemProvider;
+		return dataSizeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DataRate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DataRateItemProvider dataRateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DataRate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDataRateAdapter() {
+		if (dataRateItemProvider == null) {
+			dataRateItemProvider = new DataRateItemProvider(this);
+		}
+
+		return dataRateItemProvider;
 	}
 
 	/**
@@ -5705,7 +5728,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (timeItemProvider != null) timeItemProvider.dispose();
 		if (signedTimeItemProvider != null) signedTimeItemProvider.dispose();
 		if (frequencyItemProvider != null) frequencyItemProvider.dispose();
-		if (dataUnitItemProvider != null) dataUnitItemProvider.dispose();
+		if (dataSizeItemProvider != null) dataSizeItemProvider.dispose();
+		if (dataRateItemProvider != null) dataRateItemProvider.dispose();
 		if (customPropertyItemProvider != null) customPropertyItemProvider.dispose();
 		if (listObjectItemProvider != null) listObjectItemProvider.dispose();
 		if (stringObjectItemProvider != null) stringObjectItemProvider.dispose();

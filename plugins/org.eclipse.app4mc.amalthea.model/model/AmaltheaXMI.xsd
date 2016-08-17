@@ -37,6 +37,58 @@
       <xsd:enumeration value="GHz"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="DataSizeUnit">
+    <xsd:annotation>
+      <xsd:documentation>Representing data sizes</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="bit"/>
+      <xsd:enumeration value="kbit"/>
+      <xsd:enumeration value="Mbit"/>
+      <xsd:enumeration value="Gbit"/>
+      <xsd:enumeration value="Tbit"/>
+      <xsd:enumeration value="kibit"/>
+      <xsd:enumeration value="Mibit"/>
+      <xsd:enumeration value="Gibit"/>
+      <xsd:enumeration value="Tibit"/>
+      <xsd:enumeration value="byte"/>
+      <xsd:enumeration value="kB"/>
+      <xsd:enumeration value="MB"/>
+      <xsd:enumeration value="GB"/>
+      <xsd:enumeration value="TB"/>
+      <xsd:enumeration value="KiB"/>
+      <xsd:enumeration value="MiB"/>
+      <xsd:enumeration value="GiB"/>
+      <xsd:enumeration value="TiB"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DataRateUnit">
+    <xsd:annotation>
+      <xsd:documentation>Representing data rates</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="bitPerSecond"/>
+      <xsd:enumeration value="kbitPerSecond"/>
+      <xsd:enumeration value="MbitPerSecond"/>
+      <xsd:enumeration value="GbitPerSecond"/>
+      <xsd:enumeration value="TbitPerSecond"/>
+      <xsd:enumeration value="kibitPerSecond"/>
+      <xsd:enumeration value="MibitPerSecond"/>
+      <xsd:enumeration value="GibitPerSecond"/>
+      <xsd:enumeration value="TibitPerSecond"/>
+      <xsd:enumeration value="bytePerSecond"/>
+      <xsd:enumeration value="kBPerSecond"/>
+      <xsd:enumeration value="MBPerSecond"/>
+      <xsd:enumeration value="GBPerSecond"/>
+      <xsd:enumeration value="TBPerSecond"/>
+      <xsd:enumeration value="KiBPerSecond"/>
+      <xsd:enumeration value="MiBPerSecond"/>
+      <xsd:enumeration value="GiBPerSecond"/>
+      <xsd:enumeration value="TiBPerSecond"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="InterfaceKind">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -599,26 +651,26 @@ exclusive: gets access to requested semaphore only when there is no other user a
       <xsd:documentation>General frequency class to define a frequency value</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="DataUnit">
-    <xsd:annotation>
-      <xsd:documentation>Representing size of data in bits / bytes.</xsd:documentation>
-    </xsd:annotation>
+  <xsd:complexType name="DataSize">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="numberBits" type="xsd:int">
-      <xsd:annotation>
-        <xsd:documentation>Size of the data in bit</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
+    <xsd:attribute name="value" type="xsd:string"/>
+    <xsd:attribute name="unit" type="am:DataSizeUnit"/>
   </xsd:complexType>
-  <xsd:element name="DataUnit" type="am:DataUnit">
-    <xsd:annotation>
-      <xsd:documentation>Representing size of data in bits / bytes.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="DataSize" type="am:DataSize"/>
+  <xsd:complexType name="DataRate">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+    <xsd:attribute name="unit" type="am:DataRateUnit"/>
+  </xsd:complexType>
+  <xsd:element name="DataRate" type="am:DataRate"/>
   <xsd:complexType name="CustomProperty">
     <xsd:annotation>
       <xsd:documentation>custom property container for map</xsd:documentation>
@@ -4086,7 +4138,7 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
-          <xsd:element name="size" type="am:DataUnit">
+          <xsd:element name="size" type="am:DataSize">
             <xsd:annotation>
               <xsd:documentation>Specifying the size of the element corresponding to the needed memory allocation</xsd:documentation>
             </xsd:annotation>
@@ -4712,7 +4764,7 @@ which are belonging together.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="size" type="am:DataUnit">
+          <xsd:element name="size" type="am:DataSize">
             <xsd:annotation>
               <xsd:documentation>Size of all contained objects</xsd:documentation>
             </xsd:annotation>
@@ -5238,7 +5290,7 @@ The deviation is optional</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:TypeDefinition">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="size" type="am:DataUnit">
+          <xsd:element name="size" type="am:DataSize">
             <xsd:annotation>
               <xsd:documentation>Size of the data type</xsd:documentation>
             </xsd:annotation>
