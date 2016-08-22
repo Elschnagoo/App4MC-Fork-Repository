@@ -53,9 +53,32 @@ public class GroupItemProvider extends RunnableItemItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addNamePropertyDescriptor(object);
 			addOrderedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Group_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Group_name_feature", "_UI_Group_type"),
+				 AmaltheaPackage.eINSTANCE.getGroup_Name(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -142,8 +165,10 @@ public class GroupItemProvider extends RunnableItemItemProvider {
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		Group group = (Group)object;
-		return getString("_UI_Group_type") + " " + group.isOrdered();
+		String label = ((Group)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Group_type") :
+			getString("_UI_Group_type") + " " + label;
 	}
 
 	/**
@@ -167,6 +192,7 @@ public class GroupItemProvider extends RunnableItemItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Group.class)) {
+			case AmaltheaPackage.GROUP__NAME:
 			case AmaltheaPackage.GROUP__ORDERED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

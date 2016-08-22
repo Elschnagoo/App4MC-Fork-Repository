@@ -1820,7 +1820,8 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/ProbabilityRunnableItem" outputs="AmaltheaXMI.xsd#//ProbabilityRunnableItem;XSDElementDeclaration=282"/>
     <nested inputs="amalthea.xcore#/EPackage/Group" outputs="AmaltheaXMI.xsd#//Group;XSDComplexTypeDefinition=283">
-      <nested inputs="amalthea.xcore#/EPackage/Group/ordered" outputs="AmaltheaXMI.xsd#//Group;XSDComplexTypeDefinition=283/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/Group/name" outputs="AmaltheaXMI.xsd#//Group;XSDComplexTypeDefinition=283/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/Group/ordered" outputs="AmaltheaXMI.xsd#//Group;XSDComplexTypeDefinition=283/XSDAttributeUse=1"/>
       <nested inputs="amalthea.xcore#/EPackage/Group/items" outputs="AmaltheaXMI.xsd#//Group;XSDComplexTypeDefinition=283/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/Group" outputs="AmaltheaXMI.xsd#//Group;XSDElementDeclaration=283"/>
