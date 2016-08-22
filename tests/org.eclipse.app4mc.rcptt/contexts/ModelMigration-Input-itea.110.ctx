@@ -1,28 +1,38 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Context-Type: org.eclipse.rcptt.ctx.workspace
-Element-Name: ModelMigration-itea.110-0.7.0
+Element-Name: ModelMigration-Input-itea.110
 Element-Type: context
 Element-Version: 2.0
 Id: _cQbr8FPUEeaS0O6Kqo42Fw
 Runtime-Version: 2.1.0.201605312320
-Save-Time: 7/27/16 1:57 PM
+Save-Time: 8/19/16 3:29 PM
 
 ------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf
 Content-Type: q7/binary
 Entry-Name: .q7.content
 
-UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAACVkU9LxDAQxe+C3yHk
-3qRdRJfSugdxQaSoiOhNsulsN9omNZ2afnyn67ZexD+3zPB+b95MstXQ1OwdfGeczXkiYs7AalcaW+W8
-x2205Kvz46PM+UqArk3bgfC6RRQaBxGcf+1apSF9nF4XziIMyIbGpLPvYvSlSbZLqZ/zHWKbShlCEK6p
-BJnLp+Jqkvwya8YnzYjvdZJ0ctZxZlVD6sKVUBem8gopTGQQlEiSOIrF2RjLlDl/1ncbv1zfPlyCuo9v
-Tq/f3MliHThtzlimx5Us7gsqW+9eQGP3J/sDRNjW1DAx4uBBxx5A96g2NXXR98Dl98QuCNXQ7X4gMjkl
-+4wtv3Jn8r//R9AHUEsHCF15V+0JAQAAHAIAAFBLAQIUABQACAgIAAAAIQBdeVftCQEAABwCAAAIAAkA
-AAAAAAAAAAAAAAAAAAAuY29udGVudFVUBQABAAAAAFBLBQYAAAAAAQABAD8AAABIAQAAAAA=
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAACVkdFLwzAQxt8F/4eQ
+9ybrEBmldQ/iYEhREdE3ydJbF22TmF5N/3xvc60vQ/Etd/y+77675MuhbdgnhM44W/BUzDgDq11lbF3w
+HrfJgi+vzs9yF2oBujG+AxG0RxQaBxFdeO+80pA9j69rZxEGZENrssl3vvelSbbLqF/wHaLPpIwxCtfW
+gszlS7kekT9mTfKR2csPnCROThxnVrVEl66CpjR1UEhhkrX1PSYGQYk0pVimKvirftiExer+6QbU4+zu
+8vbDXcxXkdPmjOV6v5LFQ0GlD+4NNHan7SfjI06CrWlgpMVRTWceQPeoNg11MfTA5WnFLgrV0tV+UeRy
+zPQdWP4kzuV/f45EX1BLBwhXM4XHCgEAABYCAABQSwECFAAUAAgICAAAACEAVzOFxwoBAAAWAgAACAAJ
+AAAAAAAAAAAAAAAAAAAALmNvbnRlbnRVVAUAAQAAAABQSwUGAAAAAAEAAQA/AAAASQEAAAAA
 ------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf--
-------=_contents/ModelMigration-itea.110-0.7.0/hw.amxmi-5a53d0e2-fd85-3107-9f6d-eceefd12e6e4
+------=_contents/ModelMigration-itea.110/.project-fbe0a8c3-20a1-340e-9073-5a0dd35ae19c
 Content-Type: q7/binary
-Entry-Name: contents/ModelMigration-itea.110-0.7.0/hw.amxmi
+Entry-Name: contents/ModelMigration-itea.110/.project
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAABVjs0OwiAQhM+a+A4N
+95Zy80DpxXjrSX0AhE2zhp8GqPHxLbVquO03MzsZ3r+sqZ4QInrXEda0pAKnvEY3duR2PddH0ovDnk/B
+P0ClE0QVcEpLelF33EkLYvAazIBjkFmvMYFsGGs5Xd0cU95acElw+r2yunXGFWhB9xmNvkygPl6JTqY5
+wPb2h19FOfINUEsHCKzY6UmOAAAA4wAAAFBLAQIUABQACAgIAAAAIQCs2OlJjgAAAOMAAAAIAAkAAAAA
+AAAAAAAAAAAAAAAuY29udGVudFVUBQABAAAAAFBLBQYAAAAAAQABAD8AAADNAAAAAAA=
+------=_contents/ModelMigration-itea.110/.project-fbe0a8c3-20a1-340e-9073-5a0dd35ae19c--
+------=_contents/ModelMigration-itea.110/hw.amxmi-5cf19168-3f29-37f0-bd94-0817a41d0887
+Content-Type: q7/binary
+Entry-Name: contents/ModelMigration-itea.110/hw.amxmi
 
 UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAACVll1zojAUhu93Zv8D
 w70i1Po1ZTuUitLF1o9023rTyWIQFAiFUHR//UaFGtHY9tJ4nvec8+Yk4ep6FfjCO4oTD4eqKFdrooBC
@@ -39,14 +49,4 @@ PpndY4jrtrTJWRx3aXfed4+OlL86u19RjCMUk7WO6asZQy8kSelNmo+RfeKGZ671zfm/RY4XeoQ+6kzR
 88xpvPBv9/rB48BVcevvzTpf5bIwwbC0Sf/VvAdfk13M7sgZ2UauQkeEY9Hm60Yqf97Qxf9QSwcIO2eV
 ldYCAAAbCQAAUEsBAhQAFAAICAgAAAAhADtnlZXWAgAAGwkAAAgACQAAAAAAAAAAAAAAAAAAAC5jb250
 ZW50VVQFAAEAAAAAUEsFBgAAAAABAAEAPwAAABUDAAAAAA==
-------=_contents/ModelMigration-itea.110-0.7.0/hw.amxmi-5a53d0e2-fd85-3107-9f6d-eceefd12e6e4--
-------=_contents/ModelMigration-itea.110-0.7.0/.project-cde03022-4939-3504-8346-0d2d307c7bcb
-Content-Type: q7/binary
-Entry-Name: contents/ModelMigration-itea.110-0.7.0/.project
-
-UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAABVjssOgjAQRdea+A+k
-+z5Y6aLAhrhjpX5ALRMyhj7SFuPnSxE17ObcOXMzsnmZsXhCiOhsRUomSAFWux7tUJHb9UxPpKkPe+mD
-e4BOLUQd0KfZntOdtMpA3bkexg6HoHJOMYFiZSmoYEcmJF+cLGtnDNhUS/6dcro2xwX4hu4Tjv3Fg/7s
-tmhVmgKsZ3/4VWxffQNQSwcIt3z3WpMAAADpAAAAUEsBAhQAFAAICAgAAAAhALd891qTAAAA6QAAAAgA
-CQAAAAAAAAAAAAAAAAAAAC5jb250ZW50VVQFAAEAAAAAUEsFBgAAAAABAAEAPwAAANIAAAAAAA==
-------=_contents/ModelMigration-itea.110-0.7.0/.project-cde03022-4939-3504-8346-0d2d307c7bcb--
+------=_contents/ModelMigration-itea.110/hw.amxmi-5cf19168-3f29-37f0-bd94-0817a41d0887--

@@ -1,0 +1,32 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _NPmxEFPUEeaS0O6Kqo42Fw
+Element-Name: modelmigration-itea_103-itea_110
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _n3dJ0GhWEeae078dVmHT3A
+Runtime-Version: 2.1.0.201605312320
+Save-Time: 8/22/16 1:02 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Model Explorer" | get-tree | select "ModelMigration-itea.103/central.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+with [get-window "AMALTHEA Model Migration"] {
+    get-group "Migration details" | get-combo -after [get-label "Model Version"] | select "itea.110"
+    get-button "Migrate Models" | click
+}
+get-window "AMALTHEA Model Migration" | get-button OK | click
+with [get-view "Model Explorer" | get-tree] {
+    select "ModelMigration-itea.103" | key-type F5
+    select "ModelMigration-itea.103/central.amxmi" | select "ModelMigration-itea.103/central.amxmi" 
+        | get-menu "Open With/Text Editor" | click
+}
+get-editor "central.amxmi" | get-text-viewer | get-property "getText()" 
+    | contains "xmlns:central=\"http://www.amalthea.itea2.org/model/1.2.0/central\" xmlns:common=\"http://www.amalthea.itea2.org/model/1.2.0/common\" xmlns:components=\"http://amalthea.itea2.org/model/1.2.0/components\" xmlns:config=\"http://www.amalthea.itea2.org/model/1.2.0/config\" xmlns:constraints=\"http://www.amalthea.itea2.org/model/1.2.0/constraints\" xmlns:events=\"http://www.amalthea.itea2.org/model/1.2.0/events\" xmlns:hw=\"http://www.amalthea.itea2.org/model/1.2.0/hw\" xmlns:mapping=\"http://www.amalthea.itea2.org/model/1.2.0/mapping\" xmlns:os=\"http://www.amalthea.itea2.org/model/1.2.0/os\" xmlns:propertyconstraints=\"http://www.amalthea.itea2.org/model/1.2.0/propertyconstraints\" xmlns:stimuli=\"http://www.amalthea.itea2.org/model/1.2.0/stimuli\" xmlns:sw=\"http://www.amalthea.itea2.org/model/1.2.0/sw\"" 
+    | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

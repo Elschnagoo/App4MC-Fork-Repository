@@ -1,38 +1,26 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Context-Type: org.eclipse.rcptt.ctx.workspace
-Element-Name: ModelMigration-0.7.0-0.7.0
+Element-Name: ModelMigration-Input-0.7.0
 Element-Type: context
 Element-Version: 2.0
 Id: _RUAtwFPsEeayW6ylYvxLSQ
 Runtime-Version: 2.1.0.201605312320
-Save-Time: 7/27/16 1:22 PM
+Save-Time: 8/19/16 3:28 PM
 
-------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf
+------=_contents/ModelMigration-0.7.0/.project-67b36edf-f14c-33f0-bf12-73c91943aeb4
 Content-Type: q7/binary
-Entry-Name: .q7.content
+Entry-Name: contents/ModelMigration-0.7.0/.project
 
-UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAACVkU9LxDAQxe+C3yHk
-vpPqQaW0uyyiIljwD7J6kpLO1miblGTcdr+90+62exEWLyGTvPd7M0my6OpKbNAH42wqzyCSAq12hbFl
-Kn9oPbuSi/npSeJ8Cagr0wQErxsi0NRB6/x3aHKN8WrcXTtL2JHoahNP3POey0k2xHyeyk+iJlaqbVtw
-dQkMV2/Z/Sg5kjXZR01vH3SKdWrSSWHzmtWZK7DKTOlz4mZmEVxCtFulMEUqP55fl9TePoYbzLeri231
-vukeXp4kjy1Eovt5LA0Fl413X6gpHGfvHexZmwpHA+wBUv19f4cWGYbFQIa85veatIka43e9qUNzifrv
-D7HpF1BLBwjT46kEAQEAAP4BAABQSwECFAAUAAgICAAAACEA0+OpBAEBAAD+AQAACAAJAAAAAAAAAAAA
-AAAAAAAALmNvbnRlbnRVVAUAAQAAAABQSwUGAAAAAAEAAQA/AAAAQAEAAAAA
-------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf--
-------=_contents/ModelMigration-0.7.0-0.7.0/.project-147f4263-3b4b-3ece-baab-c7e7700062b7
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAABVjs0OwiAQhM+a+A4N
+9wKe9EDpxXjrSX0AhE2D4S9AjY9vqVXDbb+Z2cmw/mVN84SYtHcd2mOKGnDSK+3GDt2u5/aIer7bshD9
+A2Q+QZJRhzynZ3XDnLDAB6/ADHqMougtxQdMGVmskpHeWnCZM/K9iroWpgVIRfdJG3UJID9ejU7kKcL6
+9odfRb3wDVBLBwjbH9QsjAAAAOAAAABQSwECFAAUAAgICAAAACEA2x/ULIwAAADgAAAACAAJAAAAAAAA
+AAAAAAAAAAAALmNvbnRlbnRVVAUAAQAAAABQSwUGAAAAAAEAAQA/AAAAywAAAAAA
+------=_contents/ModelMigration-0.7.0/.project-67b36edf-f14c-33f0-bf12-73c91943aeb4--
+------=_contents/ModelMigration-0.7.0/GeneratedModel.amxmi-b237bbe9-8be8-3123-bf5d-81ccd4fde48d
 Content-Type: q7/binary
-Entry-Name: contents/ModelMigration-0.7.0-0.7.0/.project
-
-UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAACzsa/IzVEoSy0qzszP
-s1Uy1DNQUkjNS85PycxLt1UKDXHTtVCyt+Plsikoys9KTS5xSS1OLsosKAGqBopy2uQl5qba+eanpOb4
-ZqYXJYLEdQ30zPUMIKSNPlgBSGVyfm5ual6JnY0+jAUShRpbDOboo/CSSjNzUoILUpMhcqjcvMSS0qJU
-qDYEB24EqjsBUEsHCLJcuFuOAAAA5gAAAFBLAQIUABQACAgIAAAAIQCyXLhbjgAAAOYAAAAIAAkAAAAA
-AAAAAAAAAAAAAAAuY29udGVudFVUBQABAAAAAFBLBQYAAAAAAQABAD8AAADNAAAAAAA=
-------=_contents/ModelMigration-0.7.0-0.7.0/.project-147f4263-3b4b-3ece-baab-c7e7700062b7--
-------=_contents/ModelMigration-0.7.0-0.7.0/GeneratedModel.amxmi-50a014d4-7151-3470-8b45-f7e086059db9
-Content-Type: q7/binary
-Entry-Name: contents/ModelMigration-0.7.0-0.7.0/GeneratedModel.amxmi
+Entry-Name: contents/ModelMigration-0.7.0/GeneratedModel.amxmi
 
 UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAADkvVuPJdl15/duwN+h
 0e8i91r7TpAjyGPZEKCBB+oxPG9EqVmg2u7oKld1i6Nv7zh5MouVfWIdRpxYv4id8DxMi1VZOyNPxl7X
@@ -2884,4 +2872,17 @@ tS/i/vC3qX5k4d/9+h9/s7/o6j/9lVefH3r198Ou/pf3/ge/9feHnf+/3GG/8On/Naf/z0///Ninf3/8
 Av3oe6t/6OmvH3r1/KFXjx92dv7nyfzpxw7Dd3J+9NE5v+zu+v+9hL/72//1weLf/+Gff/fz96O/+9s/
 f67419/+/Kd/+d1vv8f/A1BLBwiKFMWhYZsCAGnyQQBQSwECFAAUAAgICAAAACEAihTFoWGbAgBp8kEA
 CAAJAAAAAAAAAAAAAAAAAAAALmNvbnRlbnRVVAUAAQAAAABQSwUGAAAAAAEAAQA/AAAAoJsCAAAA
-------=_contents/ModelMigration-0.7.0-0.7.0/GeneratedModel.amxmi-50a014d4-7151-3470-8b45-f7e086059db9--
+------=_contents/ModelMigration-0.7.0/GeneratedModel.amxmi-b237bbe9-8be8-3123-bf5d-81ccd4fde48d--
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf
+Content-Type: q7/binary
+Entry-Name: .q7.content
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAACVkU9LxDAQxe+C3yHk
+3mT1oFJaFxGVBQv+QXY9SU1nazRNQjrddr+90+62XhbFW2b4vTdvJsm8qwzbQKi1syk/ETPOwCpXaFum
+vMF1dMHnl8dHiQulAGW0r0EE5RGFwk60LnzVPlcQL8fXtbMIHbKu0vHke9r70iRbx9RP+Qeij6Vs21a4
+qhRkLlfZYkT+mDXJR6aXD5wkTk4cZzaviM5cASbTZciRwkQL6xuMZuK8z6SLlL89vVxhe/tQ30C+XZ5t
+zeumu39+5LQ2Y4nq97E4FFT64D5BYX3Ye+e6Z4leawMjKvZSOnAHqsH83VAXQwNcHlbcgQUyhmKYIvKK
+bveLOpFjuF1y+RM9kf/9PxJ9A1BLBwgXR2iOEAEAABwCAABQSwECFAAUAAgICAAAACEAF0dojhABAAAc
+AgAACAAJAAAAAAAAAAAAAAAAAAAALmNvbnRlbnRVVAUAAQAAAABQSwUGAAAAAAEAAQA/AAAATwEAAAAA
+
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf--
