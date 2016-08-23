@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
@@ -64,7 +65,7 @@ public abstract class AbstractConverterTest {
 	protected final String localOutputDirectory;
 
 	protected final Logger logger;
-	
+
 	public AbstractConverterTest(final String xmlFileRelativeLocation, final boolean canExecuteTestCase) {
 
 		this.inputXmlFilePath = this.inputGlobalTestsDirectory + File.separator + xmlFileRelativeLocation;
@@ -73,9 +74,9 @@ public abstract class AbstractConverterTest {
 		this.xmlFileRelativeLocation = xmlFileRelativeLocation;
 		this.fileName_documentsMap = new HashMap<File, Document>();
 		this.localOutputDirectory = new File(this.outputGlobalTestsDirectory, this.xmlFileRelativeLocation).getParent();
-		this.logger=LogManager.getLogger("org.eclipse.app4mc.amalthea");
-		logger.addAppender(new ConsoleAppender(new PatternLayout("%d{ISO8601} %-5p [%c]: %m%n")));
-		
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea");
+		this.logger.addAppender(new ConsoleAppender(new PatternLayout("%d{ISO8601} %-5p [%c]: %m%n")));
+		this.logger.setLevel(Level.ERROR);
 	}
 
 	public void parseInputXMLFiles() {
@@ -187,7 +188,7 @@ public abstract class AbstractConverterTest {
 
 	/**
 	 * This method is used to verify if the AMALTHEA namespaces used in this document are of AMALTHEA 1.1.1
-	 * 
+	 *
 	 * @param document
 	 */
 	protected void namespaceVerification(final Document document) {
@@ -219,7 +220,7 @@ public abstract class AbstractConverterTest {
 
 	/**
 	 * This method is used to save all migrated files
-	 * 
+	 *
 	 * @throws Exception
 	 */
 	protected void saveMigratedFiles() throws Exception {
@@ -300,7 +301,7 @@ public abstract class AbstractConverterTest {
 	 * This method is used to apply the Xpath and query the contents
 	 *
 	 * Note: This mehtod is used only to query the Nodes, not the attributes
-	 * 
+	 *
 	 * @param element
 	 * @param xpath
 	 * @return
@@ -347,7 +348,7 @@ public abstract class AbstractConverterTest {
 	 * This method is used to apply the Xpath and query the contents
 	 *
 	 * Note: This mehtod is used only to query the attributes, not the elements
-	 * 
+	 *
 	 * @param element
 	 * @param xpath
 	 * @return
