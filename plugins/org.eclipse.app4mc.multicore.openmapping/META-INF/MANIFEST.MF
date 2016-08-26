@@ -14,7 +14,7 @@ Require-Bundle: org.apache.log4j,
  org.jenetics,
  org.ojalgo,
  org.eclipse.app4mc.amalthea.model,
- org.eclipse.app4mc.amalthea.workflow.core;bundle-version="0.7.1"
+ org.eclipse.app4mc.amalthea.workflow.core
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: Eclipse.org
