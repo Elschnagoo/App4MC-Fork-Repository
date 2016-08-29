@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.GroupImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.GroupImpl#isOrdered <em>Ordered</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.GroupImpl#getItems <em>Items</em>}</li>
  * </ul>
@@ -46,6 +47,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class GroupImpl extends RunnableItemImpl implements Group {
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Ordered</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -93,6 +114,27 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getGroup();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.GROUP__NAME, oldName, name));
 	}
 
 	/**
@@ -150,6 +192,8 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.GROUP__NAME:
+				return getName();
 			case AmaltheaPackage.GROUP__ORDERED:
 				return isOrdered();
 			case AmaltheaPackage.GROUP__ITEMS:
@@ -167,6 +211,9 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AmaltheaPackage.GROUP__NAME:
+				setName((String)newValue);
+				return;
 			case AmaltheaPackage.GROUP__ORDERED:
 				setOrdered((Boolean)newValue);
 				return;
@@ -186,6 +233,9 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.GROUP__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 			case AmaltheaPackage.GROUP__ORDERED:
 				setOrdered(ORDERED_EDEFAULT);
 				return;
@@ -204,6 +254,8 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.GROUP__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case AmaltheaPackage.GROUP__ORDERED:
 				return ordered != ORDERED_EDEFAULT;
 			case AmaltheaPackage.GROUP__ITEMS:
@@ -222,7 +274,9 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (ordered: ");
+		result.append(" (name: ");
+		result.append(name);
+		result.append(", ordered: ");
 		result.append(ordered);
 		result.append(')');
 		return result.toString();

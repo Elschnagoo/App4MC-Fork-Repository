@@ -5028,6 +5028,7 @@ It can be also a group of runnable items without deviation, because the deviatio
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="items" type="am:DeviationRunnableItem"/>
         </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="ordered" type="xsd:boolean"/>
       </xsd:extension>
     </xsd:complexContent>

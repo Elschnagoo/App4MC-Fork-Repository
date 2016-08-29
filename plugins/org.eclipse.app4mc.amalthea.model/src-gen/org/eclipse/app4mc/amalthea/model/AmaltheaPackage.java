@@ -20407,13 +20407,22 @@ public interface AmaltheaPackage extends EPackage {
 	int GROUP__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP__NAME = RUNNABLE_ITEM_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Ordered</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__ORDERED = RUNNABLE_ITEM_FEATURE_COUNT + 0;
+	int GROUP__ORDERED = RUNNABLE_ITEM_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -20422,7 +20431,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__ITEMS = RUNNABLE_ITEM_FEATURE_COUNT + 1;
+	int GROUP__ITEMS = RUNNABLE_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Group</em>' class.
@@ -20431,7 +20440,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
+	int GROUP_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -30651,6 +30660,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getGroup();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Group#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Group#getName()
+	 * @see #getGroup()
+	 * @generated
+	 */
+	EAttribute getGroup_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Group#isOrdered <em>Ordered</em>}'.

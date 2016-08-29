@@ -9922,7 +9922,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGroup_Ordered() {
+	public EAttribute getGroup_Name() {
 		return (EAttribute)groupEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -9931,8 +9931,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGroup_Ordered() {
+		return (EAttribute)groupEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getGroup_Items() {
-		return (EReference)groupEClass.getEStructuralFeatures().get(1);
+		return (EReference)groupEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -11885,6 +11894,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(probabilityRunnableItemEClass, PROBABILITY_RUNNABLE_ITEM__RUNNABLE_ITEM);
 
 		groupEClass = createEClass(GROUP);
+		createEAttribute(groupEClass, GROUP__NAME);
 		createEAttribute(groupEClass, GROUP__ORDERED);
 		createEReference(groupEClass, GROUP__ITEMS);
 
@@ -13512,6 +13522,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getProbabilityRunnableItem_RunnableItem(), this.getRunnableItem(), null, "runnableItem", null, 0, 1, ProbabilityRunnableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(groupEClass, Group.class, "Group", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGroup_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGroup_Ordered(), theEcorePackage.getEBoolean(), "ordered", null, 0, 1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGroup_Items(), this.getDeviationRunnableItem(), null, "items", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
