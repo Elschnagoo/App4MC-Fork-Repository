@@ -144,6 +144,7 @@ import org.eclipse.app4mc.amalthea.model.HwMemoryProperty;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwSystem;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
+import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.INamedElement;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
@@ -423,6 +424,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass iReferableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iDisplayNameEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3066,6 +3074,24 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EOperation getIReferable__Encode__String() {
 		return iReferableEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getIDisplayName() {
+		return iDisplayNameEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIDisplayName_DisplayName() {
+		return (EAttribute)iDisplayNameEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -10857,6 +10883,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEOperation(iReferableEClass, IREFERABLE___COMPUTE_UNIQUE_NAME);
 		createEOperation(iReferableEClass, IREFERABLE___ENCODE__STRING);
 
+		iDisplayNameEClass = createEClass(IDISPLAY_NAME);
+		createEAttribute(iDisplayNameEClass, IDISPLAY_NAME__DISPLAY_NAME);
+
 		tagEClass = createEClass(TAG);
 		createEAttribute(tagEClass, TAG__TAG_TYPE);
 
@@ -12361,8 +12390,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		orderPrecedenceSpecEClass.getESuperTypes().add(this.getGeneralPrecedence());
 		runnableEClass.getESuperTypes().add(this.getAbstractElementMemoryInformation());
 		labelEClass.getESuperTypes().add(this.getAbstractElementMemoryInformation());
+		labelEClass.getESuperTypes().add(this.getIDisplayName());
 		modeLabelEClass.getESuperTypes().add(this.getAbstractElementMemoryInformation());
 		modeLabelEClass.getESuperTypes().add(this.getModeValueProvider());
+		modeLabelEClass.getESuperTypes().add(this.getIDisplayName());
 		sectionEClass.getESuperTypes().add(this.getReferableBaseObject());
 		runnableItemEClass.getESuperTypes().add(this.getBaseObject());
 		modeLabelAccessEClass.getESuperTypes().add(this.getRunnableItem());
@@ -12438,6 +12469,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		EOperation op = initEOperation(getIReferable__Encode__String(), theEcorePackage.getEString(), "encode", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theEcorePackage.getEString(), "str", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(iDisplayNameEClass, IDisplayName.class, "IDisplayName", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIDisplayName_DisplayName(), theEcorePackage.getEString(), "displayName", null, 0, 1, IDisplayName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tagEClass, Tag.class, "Tag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTag_TagType(), theEcorePackage.getEString(), "tagType", null, 0, 1, Tag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -13,6 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeLabelImpl#getMode <em>Mode</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeLabelImpl#getInitialValue <em>Initial Value</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeLabelImpl#getDisplayName <em>Display Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,6 +61,26 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 	 * @ordered
 	 */
 	protected ModeLiteral initialValue;
+
+	/**
+	 * The default value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDisplayName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DISPLAY_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDisplayName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String displayName = DISPLAY_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -160,6 +182,27 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDisplayName(String newDisplayName) {
+		String oldDisplayName = displayName;
+		displayName = newDisplayName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_LABEL__DISPLAY_NAME, oldDisplayName, displayName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -169,6 +212,8 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 			case AmaltheaPackage.MODE_LABEL__INITIAL_VALUE:
 				if (resolve) return getInitialValue();
 				return basicGetInitialValue();
+			case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME:
+				return getDisplayName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -186,6 +231,9 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 				return;
 			case AmaltheaPackage.MODE_LABEL__INITIAL_VALUE:
 				setInitialValue((ModeLiteral)newValue);
+				return;
+			case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME:
+				setDisplayName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -205,6 +253,9 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 			case AmaltheaPackage.MODE_LABEL__INITIAL_VALUE:
 				setInitialValue((ModeLiteral)null);
 				return;
+			case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME:
+				setDisplayName(DISPLAY_NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -221,6 +272,8 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 				return mode != null;
 			case AmaltheaPackage.MODE_LABEL__INITIAL_VALUE:
 				return initialValue != null;
+			case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME:
+				return DISPLAY_NAME_EDEFAULT == null ? displayName != null : !DISPLAY_NAME_EDEFAULT.equals(displayName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -236,6 +289,12 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 			switch (derivedFeatureID) {
 				case AmaltheaPackage.MODE_LABEL__MODE: return AmaltheaPackage.MODE_VALUE_PROVIDER__MODE;
 				case AmaltheaPackage.MODE_LABEL__INITIAL_VALUE: return AmaltheaPackage.MODE_VALUE_PROVIDER__INITIAL_VALUE;
+				default: return -1;
+			}
+		}
+		if (baseClass == IDisplayName.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME: return AmaltheaPackage.IDISPLAY_NAME__DISPLAY_NAME;
 				default: return -1;
 			}
 		}
@@ -256,7 +315,29 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 				default: return -1;
 			}
 		}
+		if (baseClass == IDisplayName.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.IDISPLAY_NAME__DISPLAY_NAME: return AmaltheaPackage.MODE_LABEL__DISPLAY_NAME;
+				default: return -1;
+			}
+		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (displayName: ");
+		result.append(displayName);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ModeLabelImpl

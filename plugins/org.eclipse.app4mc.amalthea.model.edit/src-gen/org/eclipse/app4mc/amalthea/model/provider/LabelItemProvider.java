@@ -58,12 +58,35 @@ public class LabelItemProvider extends AbstractElementMemoryInformationItemProvi
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addDisplayNamePropertyDescriptor(object);
 			addConstantPropertyDescriptor(object);
 			addBVolatilePropertyDescriptor(object);
 			addBufferedPropertyDescriptor(object);
 			addLabelAccessesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Display Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDisplayNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IDisplayName_displayName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IDisplayName_displayName_feature", "_UI_IDisplayName_type"),
+				 AmaltheaPackage.eINSTANCE.getIDisplayName_DisplayName(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -234,6 +257,7 @@ public class LabelItemProvider extends AbstractElementMemoryInformationItemProvi
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Label.class)) {
+			case AmaltheaPackage.LABEL__DISPLAY_NAME:
 			case AmaltheaPackage.LABEL__CONSTANT:
 			case AmaltheaPackage.LABEL__BVOLATILE:
 			case AmaltheaPackage.LABEL__BUFFERED:

@@ -23,6 +23,7 @@ The following attributes are describing a label:
 table(#minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name  |_. Description |
 | __name__ | The name represented as String value (derived from __AbstractElementMemoryInformation__) |
+| __displayName__ | In addition to the name attribute, which must be unique, a label can also be described by an additional and optional display name. The displayName attribute must not be unique. It can be used for example to represent specification data, which can be different from the unique name (like a symbol) of an available software build. |
 | __dataType__ | Reference to the data type definition |
 | __constant__ | Boolean value to represent, if label is representing a constant value |
 | __isBuffered__ | Enumeration value to represent, if label has to be buffered or not |
@@ -277,6 +278,7 @@ The __Mode Label__ element represents a value of a specific __Mode__. Is is desc
 table(#minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
 | __name__ | Name of the mode label |
+| __displayName__ | In addition to the name attribute, which must be unique, a mode label can also be described by an additional and optional display name. The displayName attribute must not be unique. It can be used for example to represent specification data, which can be different from the unique name (like a symbol) of an available software build. |
 | __mode__ | Reference of the __Mode__ |
 | __initialValue__ | Initial value of the referenced mode |
 

@@ -123,6 +123,11 @@ interface IReferable
 	}
 }
 
+interface IDisplayName
+{
+	String displayName
+}
+
 /*
  * A tag for processes, runnables, events and labels
  */
@@ -2762,7 +2767,7 @@ class Runnable extends AbstractElementMemoryInformation
 /*
  * Data representation, which can be accessed by run entities.
  */
-class Label extends AbstractElementMemoryInformation
+class Label extends AbstractElementMemoryInformation, IDisplayName
 {
 	contains DataType dataType
 	/*
@@ -2783,7 +2788,7 @@ class Label extends AbstractElementMemoryInformation
 	refers readonly transient LabelAccess[] labelAccesses opposite dataLinkInt
 }
 
-class ModeLabel extends AbstractElementMemoryInformation, ModeValueProvider
+class ModeLabel extends AbstractElementMemoryInformation, ModeValueProvider, IDisplayName
 {
 }
 

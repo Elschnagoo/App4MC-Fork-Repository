@@ -132,6 +132,7 @@ import org.eclipse.app4mc.amalthea.model.HwMemoryProperty;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwSystem;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
+import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.INamedElement;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ISR;
@@ -427,6 +428,12 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.IREFERABLE: {
 				IReferable iReferable = (IReferable)theEObject;
 				T1 result = caseIReferable(iReferable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.IDISPLAY_NAME: {
+				IDisplayName iDisplayName = (IDisplayName)theEObject;
+				T1 result = caseIDisplayName(iDisplayName);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2725,6 +2732,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				Label label = (Label)theEObject;
 				T1 result = caseLabel(label);
 				if (result == null) result = caseAbstractElementMemoryInformation(label);
+				if (result == null) result = caseIDisplayName(label);
 				if (result == null) result = caseReferableBaseObject(label);
 				if (result == null) result = caseITaggable(label);
 				if (result == null) result = caseIAnnotatable(label);
@@ -2737,6 +2745,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseModeLabel(modeLabel);
 				if (result == null) result = caseAbstractElementMemoryInformation(modeLabel);
 				if (result == null) result = caseModeValueProvider(modeLabel);
+				if (result == null) result = caseIDisplayName(modeLabel);
 				if (result == null) result = caseReferableBaseObject(modeLabel);
 				if (result == null) result = caseITaggable(modeLabel);
 				if (result == null) result = caseIAnnotatable(modeLabel);
@@ -3194,6 +3203,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseIReferable(IReferable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IDisplay Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IDisplay Name</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseIDisplayName(IDisplayName object) {
 		return null;
 	}
 

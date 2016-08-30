@@ -14,6 +14,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DataType;
+import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelBuffering;
@@ -39,6 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getDisplayName <em>Display Name</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getDataType <em>Data Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#isConstant <em>Constant</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#isBVolatile <em>BVolatile</em>}</li>
@@ -49,6 +51,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class LabelImpl extends AbstractElementMemoryInformationImpl implements Label {
+	/**
+	 * The default value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDisplayName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DISPLAY_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDisplayName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String displayName = DISPLAY_NAME_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getDataType() <em>Data Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -146,6 +168,27 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getLabel();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDisplayName(String newDisplayName) {
+		String oldDisplayName = displayName;
+		displayName = newDisplayName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL__DISPLAY_NAME, oldDisplayName, displayName));
 	}
 
 	/**
@@ -305,6 +348,8 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.LABEL__DISPLAY_NAME:
+				return getDisplayName();
 			case AmaltheaPackage.LABEL__DATA_TYPE:
 				return getDataType();
 			case AmaltheaPackage.LABEL__CONSTANT:
@@ -327,6 +372,9 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AmaltheaPackage.LABEL__DISPLAY_NAME:
+				setDisplayName((String)newValue);
+				return;
 			case AmaltheaPackage.LABEL__DATA_TYPE:
 				setDataType((DataType)newValue);
 				return;
@@ -351,6 +399,9 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.LABEL__DISPLAY_NAME:
+				setDisplayName(DISPLAY_NAME_EDEFAULT);
+				return;
 			case AmaltheaPackage.LABEL__DATA_TYPE:
 				setDataType((DataType)null);
 				return;
@@ -375,6 +426,8 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.LABEL__DISPLAY_NAME:
+				return DISPLAY_NAME_EDEFAULT == null ? displayName != null : !DISPLAY_NAME_EDEFAULT.equals(displayName);
 			case AmaltheaPackage.LABEL__DATA_TYPE:
 				return dataType != null;
 			case AmaltheaPackage.LABEL__CONSTANT:
@@ -395,11 +448,45 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == IDisplayName.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.LABEL__DISPLAY_NAME: return AmaltheaPackage.IDISPLAY_NAME__DISPLAY_NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == IDisplayName.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.IDISPLAY_NAME__DISPLAY_NAME: return AmaltheaPackage.LABEL__DISPLAY_NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (constant: ");
+		result.append(" (displayName: ");
+		result.append(displayName);
+		result.append(", constant: ");
 		result.append(constant);
 		result.append(", bVolatile: ");
 		result.append(bVolatile);
