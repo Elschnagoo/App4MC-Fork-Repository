@@ -40,8 +40,8 @@ public abstract class AbstractModelConverterHandler extends AbstractHandler {
 
 	protected AbstractHelper helper;
 
-	protected Logger logger=LogManager.getLogger("org.eclipse.app4mc.amalthea");
-	
+	protected Logger logger = LogManager.getLogger("org.eclipse.app4mc.amalthea");
+
 	protected void executeConversion(final IConverter converter, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
@@ -253,7 +253,7 @@ public abstract class AbstractModelConverterHandler extends AbstractHandler {
 
 	protected void invokeAllConvertersHeirarchially(final Collection<ConverterElement> converterObjects,
 			final List<String> iconverters, final Map<File, Document> fileName_documentsMap, final List<ICache> caches)
-					throws Exception {
+			throws Exception {
 
 		for (final ConverterElement converterElement : converterObjects) {
 
@@ -287,7 +287,7 @@ public abstract class AbstractModelConverterHandler extends AbstractHandler {
 
 		final List<ICache> caches = getAllCacheObjectsFromExtensions(inputModelVersion);
 
-		logger.info("start to build cache for models : " + inputModelVersion);
+		this.logger.info("start to build cache for models : " + inputModelVersion);
 
 		st = System.currentTimeMillis();
 
@@ -296,9 +296,9 @@ public abstract class AbstractModelConverterHandler extends AbstractHandler {
 		end = System.currentTimeMillis();
 
 
-		logger.info("end of building cache for models " + inputModelVersion);
+		this.logger.info("end of building cache for models " + inputModelVersion);
 
-		logger.info("total time taken to build cache for " + inputModelVersion + " models:  " + (end - st));
+		this.logger.info("total time taken to build cache for " + inputModelVersion + " models:  " + (end - st));
 
 
 		allConverterExtensions = getAllConverterExtensions();
@@ -328,7 +328,7 @@ public abstract class AbstractModelConverterHandler extends AbstractHandler {
 			}
 			catch (final CoreException e) {
 
-				logger.error("Error occured during Object creation of Formatter class ", e);
+				this.logger.error("Error occured during Object creation of Formatter class ", e);
 			}
 
 

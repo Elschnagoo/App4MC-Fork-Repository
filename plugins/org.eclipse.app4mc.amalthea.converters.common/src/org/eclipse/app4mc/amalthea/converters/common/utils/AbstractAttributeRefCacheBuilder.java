@@ -35,7 +35,7 @@ public abstract class AbstractAttributeRefCacheBuilder implements ICache {
 
 	protected AbstractHelper helper;
 
-	protected final Logger logger=LogManager.getLogger(this.getClass());
+	protected final Logger logger = LogManager.getLogger(this.getClass());
 
 	@Override
 	public Map<File, Map<String, Object>> getCacheMap() {
@@ -201,8 +201,9 @@ public abstract class AbstractAttributeRefCacheBuilder implements ICache {
 			}
 			catch (final Exception e) {
 
-				logger.error("Exception occured during conversion of URIFragment : "+uriFragment+" to Xpath String", e);
-				
+				this.logger.error(
+						"Exception occured during conversion of URIFragment : " + uriFragment + " to Xpath String", e);
+
 				throw e;
 			}
 		}

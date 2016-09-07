@@ -24,7 +24,8 @@ import org.jdom2.Element;
 
 public class BulkXpathOperation {
 
-	private final Logger logger=LogManager.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
+
 	/**
 	 * This method takes Xml Document object and the list of Xpath Strings as input-> and returns a Map with key as
 	 * Xpath and Value as the List<Element> JDOM elements
@@ -152,7 +153,7 @@ public class BulkXpathOperation {
 
 			for (final String string : keySet) {
 
-				logger.info("Xpath Fragment : " + string + "associated Xpath chunk :  "
+				this.logger.info("Xpath Fragment : " + string + "associated Xpath chunk :  "
 						+ fragmentsMap.get(string).getValue());
 
 			}
@@ -177,13 +178,13 @@ public class BulkXpathOperation {
 
 						resultsMap.put(xpath, xmlElements);
 
-						logger.info("xpath : " + xpath + " elements : " + xmlElements.size());
+						this.logger.info("xpath : " + xpath + " elements : " + xmlElements.size());
 					}
 				}
 			}
 		}
 		catch (final Exception e) {
-			logger.error(e.getMessage(),e);
+			this.logger.error(e.getMessage(), e);
 			throw e;
 		}
 		return resultsMap;
