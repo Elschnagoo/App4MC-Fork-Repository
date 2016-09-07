@@ -191,3 +191,15 @@ table(#classic){margin-left:40px}.
 | isBuffered | buffered | SenderReceiverCommunication | Software model |
 | isOrdered | ordered | Group | Software model |
 
+h2. Version App4MC 0.7.0 to App4MC 0.7.1
+
+Below are the changes in the metamodel from App4MC 0.7.0 to App4MC 0.7.1
+
+* *Change in the namespace:* 
+
+table(#classic){margin-left:40px}. 
+| *_AMALTHEA Namespace (version App4MC 0.7.0)_* | *_AMALTHEA Namespace  (version App4MC 0.7.1)_* |
+|http://app4mc.eclipse.org/amalthea/0.7.0 |http://app4mc.eclipse.org/amalthea/0.7.1 |
+
+* *DataSize:* Attribute "numberBits" is replaced by "value" (of type BigInteger) and "unit" (of type DataSizeUnit)
+** _Behaviour of model migration_ :  content from "numberBits" is copied into "value" and "unit" is set as "bit" 
