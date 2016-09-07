@@ -11,6 +11,14 @@
             name="namespace"
             output-model-version="0.7.1">
       </converter>
+      <converter
+            converter-class="org.eclipse.app4mc.amalthea.converters071.impl.SwConverter"
+            enabled="true"
+            id="converters.071.sw"
+            input-model-version="0.7.0"
+            name="Sw Converter"
+            output-model-version="0.7.1">
+      </converter>
    </extension>
 
 </plugin>

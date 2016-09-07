@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <isrs name="ISR1">
+      <size numberBits="30"/>
+    </isrs>
+    <tasks name="Task1">
+      <size numberBits="30"/>
+    </tasks>
+    <runnables name="Runnable1">
+      <size numberBits="33"/>
+    </runnables>
+    <labels name="Label1">
+      <size numberBits="30"/>
+    </labels>
+    <processPrototypes name="ProcessPrototype1">
+      <size numberBits="20"/>
+    </processPrototypes>
+    <sections name="Section1">
+      <size numberBits="20"/>
+    </sections>
+    
+     <typeDefinitions xsi:type="am:BaseTypeDefinition" name="baseTypeDef">
+      <size numberBits="20"/>
+    </typeDefinitions>
+    
+     <sections name="Section2">
+      <size numberBits="20"/>
+    </sections>
+    
+     <tasks name="task_1">
+      <size numberBits="20"/>
+    </tasks>
+    
+     <isrs name="isr_1">
+      <size numberBits="20"/>
+    </isrs>
+    
+     <processPrototypes name="processprototype_1">
+      <size numberBits="20"/>
+    </processPrototypes>
+    
+     <modeLabels name="modelabel_2">
+      <size numberBits="20"/>
+    </modeLabels>
+    
+     <customEntities name="customentity_1">
+      <size numberBits="20"/>
+    </customEntities>
+    
+    
+    <tags name="SwcEngineController" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcActuators" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcBrakeForceArbiter" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcABSCalculation" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcSensors" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcSensorPostprocessing" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcCylNumObserver" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcBrakeForceCalculation" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcEngineSensors" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcInjIgnActuation" tagType="SOFTWARE_COMPONENT"/>
+    <typeDefinitions xsi:type="am:BaseTypeDefinition" name="BaseTypeDef1">
+      <size numberBits="50"/>
+    </typeDefinitions>
+    <customEntities name="CustomEntity1">
+      <size numberBits="55"/>
+    </customEntities>
+    <modeLabels name="ModeLabel1">
+      <size numberBits="20"/>
+    </modeLabels>
+  </swModel>
+  <hwModel>
+    <coreTypes name="Default" instructionsPerCycle="1"/>
+    <system name="Democar">
+      <ecus name="ECU_1">
+        <quartzes name="QuartzOscillator_1" frequency="200000000" type="STATIC"/>
+        <microcontrollers name="Processor_1">
+          <memories name="Mem_1">
+            <ports xsi:type="am:ComplexPort" name="Mem_1_port" bitWidth="16" direction="R" writeCycles="10" readCycles="10"/>
+          </memories>
+          <cores name="Core_1" coreType="Default?type=CoreType">
+            <prescaler name="Core_1_prescaler" quartz="QuartzOscillator_1?type=Quartz"/>
+          </cores>
+        </microcontrollers>
+      </ecus>
+    </system>
+  </hwModel>
+  <osModel>
+    <operatingSystems name="OperatingSystem">
+      <taskSchedulers name="Task_Scheduler_Core_1">
+        <schedulingUnit xsi:type="am:SchedulingHWUnit">
+          <delay value="1" unit="ns"/>
+        </schedulingUnit>
+        <schedulingAlgorithm xsi:type="am:OSEK"/>
+      </taskSchedulers>
+    </operatingSystems>
+  </osModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:Periodic" name="Timer_10MS">
+      <offset unit="ms"/>
+      <recurrence value="10" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:Periodic" name="Timer_20MS">
+      <offset unit="ms"/>
+      <recurrence value="20" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:Periodic" name="Timer_5MS">
+      <offset unit="ms"/>
+      <recurrence value="5" unit="ms"/>
+    </stimuli>
+  </stimuliModel>
+  <constraintsModel>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_05" severity="Critical">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="5" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_10" severity="Critical">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="10" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_20" severity="Critical">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="20" unit="ms"/>
+      </limit>
+    </requirements>
+  </constraintsModel>
+</am:Amalthea>
