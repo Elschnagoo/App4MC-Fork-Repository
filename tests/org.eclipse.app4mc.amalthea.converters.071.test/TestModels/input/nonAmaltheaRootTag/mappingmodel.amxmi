@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:MappingModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <customProperties/>
+  <coreAllocation>
+    <customProperties key="cust"/>
+  </coreAllocation>
+  <mapping xsi:type="am:SectionMapping"/>
+</am:MappingModel>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:HWModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0">
+  <system>
+    <ecus>
+      <memories name="Mem1"/>
+    </ecus>
+  </system>
+</am:HWModel>

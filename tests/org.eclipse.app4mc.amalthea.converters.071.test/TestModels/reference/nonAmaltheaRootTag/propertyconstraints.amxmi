@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <propertyConstraintsModel>
+    <allocationConstraints xsi:type="am:ProcessPrototypeAllocationConstraint" />
+    <mappingConstraints xsi:type="am:SectionMappingConstraint">
+      <hwConstraint xsi:type="am:HwMemoryConjunction" conjunction="and" />
+    </mappingConstraints>
+    <coreTypeDefinitions />
+  </propertyConstraintsModel>
+</am:Amalthea>

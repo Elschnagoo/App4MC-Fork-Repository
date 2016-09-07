@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <stimuliModel>
+    <stimuli xsi:type="am:ArrivalCurve">
+      <customProperties />
+      <disablingModeValueList>
+        <entries />
+      </disablingModeValueList>
+    </stimuli>
+    <clocks xsi:type="am:ClockSinusFunction" />
+  </stimuliModel>
+</am:Amalthea>

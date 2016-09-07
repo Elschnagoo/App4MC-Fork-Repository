@@ -282,6 +282,34 @@ public abstract class AbstractHelper {
 		return Namespace.getNamespace("", "");
 	}
 
+	/**
+	 * This method is used to copy the root namespace and additional namespaces from the source element and set them to
+	 * the target element
+	 *
+	 * @param source
+	 *            Element. Containing root namespace and additional namespaces
+	 * @param target
+	 *            Element. This element should be populated with the root namespace and additional namespaces
+	 */
+	public void copyAllNameSpaces(final Element source, final Element target) {
+
+		final Namespace namespace = source.getNamespace();
+		/*-setting target namespace */
+		target.setNamespace(namespace);
+
+		final List<Namespace> additionalNamespaces = source.getAdditionalNamespaces();
+
+		for (final Namespace additionalNS : additionalNamespaces) {
+
+			/*-setting additional namespace */
+
+			target.addNamespaceDeclaration(additionalNS);
+		}
+
+
+	}
+
+
 	public <T> List<T> getXpathResult(final Document document, final String xpath, final Class<T> expectedType,
 			final Namespace... nameSpaces) {
 

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:ComponentsModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <components>
+    <ports xsi:type="am:FInterfacePort">
+      <customProperties key="customprop"/>
+    </ports>
+  </components>
+</am:ComponentsModel>
