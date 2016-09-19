@@ -2405,29 +2405,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.AbstractionType} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AbstractionTypeItemProvider abstractionTypeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.AbstractionType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAbstractionTypeAdapter() {
-		if (abstractionTypeItemProvider == null) {
-			abstractionTypeItemProvider = new AbstractionTypeItemProvider(this);
-		}
-
-		return abstractionTypeItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SystemType} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5824,7 +5801,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (networkItemProvider != null) networkItemProvider.dispose();
 		if (quartzItemProvider != null) quartzItemProvider.dispose();
 		if (hwComponentItemProvider != null) hwComponentItemProvider.dispose();
-		if (abstractionTypeItemProvider != null) abstractionTypeItemProvider.dispose();
 		if (systemTypeItemProvider != null) systemTypeItemProvider.dispose();
 		if (ecuTypeItemProvider != null) ecuTypeItemProvider.dispose();
 		if (microcontrollerTypeItemProvider != null) microcontrollerTypeItemProvider.dispose();

@@ -1468,7 +1468,7 @@ abstract class HardwareTypeDescription extends ReferableBaseObject, ITaggable
 {
 }
 
-class AbstractionType extends HardwareTypeDescription
+abstract class AbstractionType extends HardwareTypeDescription
 {
 }
 

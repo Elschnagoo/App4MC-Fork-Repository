@@ -932,15 +932,6 @@ public interface AmaltheaFactory extends EFactory {
 	HwComponent createHwComponent();
 
 	/**
-	 * Returns a new object of class '<em>Abstraction Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Abstraction Type</em>'.
-	 * @generated
-	 */
-	AbstractionType createAbstractionType();
-
-	/**
 	 * Returns a new object of class '<em>System Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

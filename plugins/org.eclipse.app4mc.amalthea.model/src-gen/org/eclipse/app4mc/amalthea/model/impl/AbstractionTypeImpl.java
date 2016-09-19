@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class AbstractionTypeImpl extends HardwareTypeDescriptionImpl implements AbstractionType {
+public abstract class AbstractionTypeImpl extends HardwareTypeDescriptionImpl implements AbstractionType {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

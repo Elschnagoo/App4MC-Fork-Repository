@@ -583,6 +583,15 @@ exclusive: gets access to requested semaphore only when there is no other user a
       <xsd:documentation>IReferable: Name attribute and computed ID for name based references</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="IDisplayName">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="displayName" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="IDisplayName" type="am:IDisplayName"/>
   <xsd:complexType name="Tag">
     <xsd:annotation>
       <xsd:documentation>A tag for processes, runnables, events and labels</xsd:documentation>
@@ -2595,7 +2604,7 @@ core: The core that processes the process/runnable that accesses the semaphore (
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="HardwareTypeDescription" type="am:HardwareTypeDescription"/>
-  <xsd:complexType name="AbstractionType">
+  <xsd:complexType abstract="true" name="AbstractionType">
     <xsd:complexContent>
       <xsd:extension base="am:HardwareTypeDescription"/>
     </xsd:complexContent>
@@ -4719,6 +4728,7 @@ The final state can be several Tasks, which can be computed using provided infor
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="dataType" type="am:DataType"/>
         </xsd:choice>
+        <xsd:attribute name="displayName" type="xsd:string"/>
         <xsd:attribute name="constant" type="xsd:boolean">
           <xsd:annotation>
             <xsd:documentation>Defines the label as a constant, not modifiable entity</xsd:documentation>
@@ -4751,6 +4761,7 @@ The final state can be several Tasks, which can be computed using provided infor
         </xsd:choice>
         <xsd:attribute name="mode" type="xsd:string"/>
         <xsd:attribute name="initialValue" type="xsd:string"/>
+        <xsd:attribute name="displayName" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5028,6 +5039,7 @@ It can be also a group of runnable items without deviation, because the deviatio
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="items" type="am:DeviationRunnableItem"/>
         </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="ordered" type="xsd:boolean"/>
       </xsd:extension>
     </xsd:complexContent>

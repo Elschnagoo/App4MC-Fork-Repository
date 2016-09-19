@@ -20,7 +20,7 @@ package org.eclipse.app4mc.amalthea.model;
  *
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractionType()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface AbstractionType extends HardwareTypeDescription {

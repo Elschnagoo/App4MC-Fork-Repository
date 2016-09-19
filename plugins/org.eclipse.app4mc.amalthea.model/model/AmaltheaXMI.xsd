@@ -2604,7 +2604,7 @@ core: The core that processes the process/runnable that accesses the semaphore (
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="HardwareTypeDescription" type="am:HardwareTypeDescription"/>
-  <xsd:complexType name="AbstractionType">
+  <xsd:complexType abstract="true" name="AbstractionType">
     <xsd:complexContent>
       <xsd:extension base="am:HardwareTypeDescription"/>
     </xsd:complexContent>

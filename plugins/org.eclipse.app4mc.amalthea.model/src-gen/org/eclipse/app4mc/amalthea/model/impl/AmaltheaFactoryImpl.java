@@ -16,7 +16,6 @@ import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AbstractElementMapping;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
-import org.eclipse.app4mc.amalthea.model.AbstractionType;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
@@ -448,7 +447,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.NETWORK: return createNetwork();
 			case AmaltheaPackage.QUARTZ: return createQuartz();
 			case AmaltheaPackage.HW_COMPONENT: return createHwComponent();
-			case AmaltheaPackage.ABSTRACTION_TYPE: return createAbstractionType();
 			case AmaltheaPackage.SYSTEM_TYPE: return createSystemType();
 			case AmaltheaPackage.ECU_TYPE: return createECUType();
 			case AmaltheaPackage.MICROCONTROLLER_TYPE: return createMicrocontrollerType();
@@ -1779,16 +1777,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public HwComponent createHwComponent() {
 		HwComponentImpl hwComponent = new HwComponentImpl();
 		return hwComponent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AbstractionType createAbstractionType() {
-		AbstractionTypeImpl abstractionType = new AbstractionTypeImpl();
-		return abstractionType;
 	}
 
 	/**
