@@ -2002,7 +2002,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getGroupItemProviderText(Object object, String defaultText) {
 		if (object instanceof Group) {
-			val name = if (object.name == null && object.name.length == 0) null else object.name
+			val name = if (object.name.isNullOrEmpty) null else object.name
 			val ordered = if(object == null) false else object.isOrdered
 			val result = if(ordered) "Sequence" else "Set"
 			return if (name == null) result else result + " " + name

@@ -4023,7 +4023,9 @@ public class CustomItemProviderService {
   public static String getGroupItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof Group)) {
       String _xifexpression = null;
-      if ((Objects.equal(((Group)object).getName(), null) && (((Group)object).getName().length() == 0))) {
+      String _name = ((Group)object).getName();
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name);
+      if (_isNullOrEmpty) {
         _xifexpression = null;
       } else {
         _xifexpression = ((Group)object).getName();
