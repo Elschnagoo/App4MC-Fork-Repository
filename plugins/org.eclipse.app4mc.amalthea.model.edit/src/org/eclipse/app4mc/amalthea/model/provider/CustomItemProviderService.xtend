@@ -544,11 +544,13 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getFInterfacePortItemProviderText(Object object, String defaultText) {
 		if (object instanceof FInterfacePort) {
+			val cName = (object?.eContainer as Component).name
 			val kind = object?.kind
 			val name = object?.name
-			val s1 = if(kind == null || kind == InterfaceKind::_UNDEFINED_) "<kind>" else kind.literal
-			val s2 = if(name.isNullOrEmpty) "<port>" else name
-			return s1 + " " + s2
+			val s1 = if(cName.isNullOrEmpty) "<component>" else cName
+			val s2 = if(kind == null || kind == InterfaceKind::_UNDEFINED_) "<kind>" else kind.literal
+			val s3 = if(name.isNullOrEmpty) "<port>" else name
+			return s1 + " " + s2 + " " + s3
 		} else {
 			return defaultText
 		}
@@ -564,13 +566,31 @@ class CustomItemProviderService {
 			val instName = object?.instance?.name
 			val portName = object?.port?.name
 			val s1 = if(feature == null) "" else feature.name + ": "
-			val s2 = if(instName.isNullOrEmpty) "<instance>" else instName
+			var String s2 = ""
+			var String s4 = ""
+			if (object?.instance == null) {
+				s4 = " (enclosing composite)"
+			} else {
+				s2 = if(instName.isNullOrEmpty) "??? / " else instName + " / "
+			}
 			val s3 = if(portName.isNullOrEmpty) "<port>" else portName
-			return s1 + s2 + " / " + s3
+			return s1 + s2 + s3 + s4
 		} else {
 			return defaultText
 		}
 	}
+
+	def static List<ViewerNotification> getQualifiedPortItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(QualifiedPort)) {
+			case AmaltheaPackage::QUALIFIED_PORT__INSTANCE,
+			case AmaltheaPackage::QUALIFIED_PORT__PORT:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+		}
+		return list
+	}
+
 
 	/*****************************************************************************
 	 * 						SystemItemProvider

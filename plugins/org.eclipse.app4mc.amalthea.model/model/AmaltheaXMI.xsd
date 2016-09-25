@@ -1096,6 +1096,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="componentInstances" type="am:ComponentInstance"/>
       <xsd:element name="connectors" type="am:Connector"/>
+      <xsd:element name="groundedPorts" type="am:QualifiedPort"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
@@ -1141,6 +1142,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="componentInstances" type="am:ComponentInstance"/>
           <xsd:element name="connectors" type="am:Connector"/>
+          <xsd:element name="groundedPorts" type="am:QualifiedPort"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -1153,6 +1155,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
           <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="componentInstances" type="am:ComponentInstance"/>
           <xsd:element name="connectors" type="am:Connector"/>
+          <xsd:element name="groundedPorts" type="am:QualifiedPort"/>
         </xsd:choice>
         <xsd:attribute name="tags" type="xsd:string"/>
       </xsd:extension>

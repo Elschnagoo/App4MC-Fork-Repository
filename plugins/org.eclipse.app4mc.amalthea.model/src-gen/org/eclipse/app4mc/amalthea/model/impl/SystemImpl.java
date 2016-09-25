@@ -15,10 +15,12 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.ComponentInstance;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ISystem;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
+import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.Tag;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -43,6 +45,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SystemImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SystemImpl#getComponentInstances <em>Component Instances</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SystemImpl#getConnectors <em>Connectors</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SystemImpl#getGroundedPorts <em>Grounded Ports</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SystemImpl#getInnerPorts <em>Inner Ports</em>}</li>
  * </ul>
  *
  * @generated
@@ -77,6 +81,16 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 	 * @ordered
 	 */
 	protected EList<Connector> connectors;
+
+	/**
+	 * The cached value of the '{@link #getGroundedPorts() <em>Grounded Ports</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroundedPorts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<QualifiedPort> groundedPorts;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,6 +152,27 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<QualifiedPort> getGroundedPorts() {
+		if (groundedPorts == null) {
+			groundedPorts = new EObjectContainmentEList<QualifiedPort>(QualifiedPort.class, this, AmaltheaPackage.SYSTEM__GROUNDED_PORTS);
+		}
+		return groundedPorts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<QualifiedPort> getInnerPorts() {
+		return AmaltheaServices.getInnerPorts(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -145,6 +180,8 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 				return ((InternalEList<?>)getComponentInstances()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.SYSTEM__CONNECTORS:
 				return ((InternalEList<?>)getConnectors()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.SYSTEM__GROUNDED_PORTS:
+				return ((InternalEList<?>)getGroundedPorts()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -163,6 +200,10 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 				return getComponentInstances();
 			case AmaltheaPackage.SYSTEM__CONNECTORS:
 				return getConnectors();
+			case AmaltheaPackage.SYSTEM__GROUNDED_PORTS:
+				return getGroundedPorts();
+			case AmaltheaPackage.SYSTEM__INNER_PORTS:
+				return getInnerPorts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -188,6 +229,10 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 				getConnectors().clear();
 				getConnectors().addAll((Collection<? extends Connector>)newValue);
 				return;
+			case AmaltheaPackage.SYSTEM__GROUNDED_PORTS:
+				getGroundedPorts().clear();
+				getGroundedPorts().addAll((Collection<? extends QualifiedPort>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -209,6 +254,9 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 			case AmaltheaPackage.SYSTEM__CONNECTORS:
 				getConnectors().clear();
 				return;
+			case AmaltheaPackage.SYSTEM__GROUNDED_PORTS:
+				getGroundedPorts().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -227,6 +275,10 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 				return componentInstances != null && !componentInstances.isEmpty();
 			case AmaltheaPackage.SYSTEM__CONNECTORS:
 				return connectors != null && !connectors.isEmpty();
+			case AmaltheaPackage.SYSTEM__GROUNDED_PORTS:
+				return groundedPorts != null && !groundedPorts.isEmpty();
+			case AmaltheaPackage.SYSTEM__INNER_PORTS:
+				return !getInnerPorts().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -248,6 +300,8 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 			switch (derivedFeatureID) {
 				case AmaltheaPackage.SYSTEM__COMPONENT_INSTANCES: return AmaltheaPackage.ISYSTEM__COMPONENT_INSTANCES;
 				case AmaltheaPackage.SYSTEM__CONNECTORS: return AmaltheaPackage.ISYSTEM__CONNECTORS;
+				case AmaltheaPackage.SYSTEM__GROUNDED_PORTS: return AmaltheaPackage.ISYSTEM__GROUNDED_PORTS;
+				case AmaltheaPackage.SYSTEM__INNER_PORTS: return AmaltheaPackage.ISYSTEM__INNER_PORTS;
 				default: return -1;
 			}
 		}
@@ -271,6 +325,8 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 			switch (baseFeatureID) {
 				case AmaltheaPackage.ISYSTEM__COMPONENT_INSTANCES: return AmaltheaPackage.SYSTEM__COMPONENT_INSTANCES;
 				case AmaltheaPackage.ISYSTEM__CONNECTORS: return AmaltheaPackage.SYSTEM__CONNECTORS;
+				case AmaltheaPackage.ISYSTEM__GROUNDED_PORTS: return AmaltheaPackage.SYSTEM__GROUNDED_PORTS;
+				case AmaltheaPackage.ISYSTEM__INNER_PORTS: return AmaltheaPackage.SYSTEM__INNER_PORTS;
 				default: return -1;
 			}
 		}

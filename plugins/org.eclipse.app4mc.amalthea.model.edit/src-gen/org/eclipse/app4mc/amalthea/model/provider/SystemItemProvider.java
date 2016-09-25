@@ -52,6 +52,7 @@ public class SystemItemProvider extends ReferableBaseObjectItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addTagsPropertyDescriptor(object);
+			addInnerPortsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -78,6 +79,30 @@ public class SystemItemProvider extends ReferableBaseObjectItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Inner Ports feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInnerPortsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ISystem_innerPorts_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ISystem_innerPorts_feature", "_UI_ISystem_type"),
+				 AmaltheaPackage.eINSTANCE.getISystem_InnerPorts(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -91,6 +116,7 @@ public class SystemItemProvider extends ReferableBaseObjectItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getISystem_ComponentInstances());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getISystem_Connectors());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getISystem_GroundedPorts());
 		}
 		return childrenFeatures;
 	}
@@ -161,6 +187,7 @@ public class SystemItemProvider extends ReferableBaseObjectItemProvider {
 		switch (notification.getFeatureID(org.eclipse.app4mc.amalthea.model.System.class)) {
 			case AmaltheaPackage.SYSTEM__COMPONENT_INSTANCES:
 			case AmaltheaPackage.SYSTEM__CONNECTORS:
+			case AmaltheaPackage.SYSTEM__GROUNDED_PORTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -186,6 +213,11 @@ public class SystemItemProvider extends ReferableBaseObjectItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getISystem_Connectors(),
 				 AmaltheaFactory.eINSTANCE.createConnector()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getISystem_GroundedPorts(),
+				 AmaltheaFactory.eINSTANCE.createQualifiedPort()));
 	}
 
 }

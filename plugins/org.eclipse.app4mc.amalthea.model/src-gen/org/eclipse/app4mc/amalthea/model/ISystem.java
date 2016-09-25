@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ISystem#getComponentInstances <em>Component Instances</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ISystem#getConnectors <em>Connectors</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ISystem#getGroundedPorts <em>Grounded Ports</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ISystem#getInnerPorts <em>Inner Ports</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getISystem()
@@ -65,5 +67,38 @@ public interface ISystem extends EObject {
 	 * @generated
 	 */
 	EList<Connector> getConnectors();
+
+	/**
+	 * Returns the value of the '<em><b>Grounded Ports</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.QualifiedPort}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Grounded Ports</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Grounded Ports</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getISystem_GroundedPorts()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<QualifiedPort> getGroundedPorts();
+
+	/**
+	 * Returns the value of the '<em><b>Inner Ports</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.QualifiedPort}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inner Ports</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inner Ports</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getISystem_InnerPorts()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return <%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.getInnerPorts(this);'"
+	 * @generated
+	 */
+	EList<QualifiedPort> getInnerPorts();
 
 } // ISystem

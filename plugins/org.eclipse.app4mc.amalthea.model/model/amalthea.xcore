@@ -555,6 +555,12 @@ interface INamedElement {
 interface ISystem {
 	contains ComponentInstance[] componentInstances
 	contains Connector[] connectors
+	contains QualifiedPort[] groundedPorts
+	
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers derived readonly QualifiedPort[] innerPorts get {
+		AmaltheaServices.getInnerPorts(this);
+	}
 }
 
 

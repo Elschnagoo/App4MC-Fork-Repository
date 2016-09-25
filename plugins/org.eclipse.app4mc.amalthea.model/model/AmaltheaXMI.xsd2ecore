@@ -489,6 +489,7 @@
     <nested inputs="amalthea.xcore#/EPackage/ISystem" outputs="AmaltheaXMI.xsd#//ISystem;XSDComplexTypeDefinition=44">
       <nested inputs="amalthea.xcore#/EPackage/ISystem/componentInstances" outputs="AmaltheaXMI.xsd#//ISystem;XSDComplexTypeDefinition=44/XSDParticle/XSDModelGroup/XSDParticle"/>
       <nested inputs="amalthea.xcore#/EPackage/ISystem/connectors" outputs="AmaltheaXMI.xsd#//ISystem;XSDComplexTypeDefinition=44/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/ISystem/groundedPorts" outputs="AmaltheaXMI.xsd#//ISystem;XSDComplexTypeDefinition=44/XSDParticle/XSDModelGroup/XSDParticle=2"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/ISystem" outputs="AmaltheaXMI.xsd#//ISystem;XSDElementDeclaration=44"/>
     <nested inputs="amalthea.xcore#/EPackage/Port" outputs="AmaltheaXMI.xsd#//Port;XSDComplexTypeDefinition=45"/>
@@ -514,12 +515,14 @@
     <nested inputs="amalthea.xcore#/EPackage/Composite" outputs="AmaltheaXMI.xsd#//Composite;XSDComplexTypeDefinition=47"/>
     <nested inputs="amalthea.xcore#/EPackage/ISystem/componentInstances" outputs="AmaltheaXMI.xsd#//Composite;XSDComplexTypeDefinition=47/XSDParticle/XSDModelGroup/XSDParticle"/>
     <nested inputs="amalthea.xcore#/EPackage/ISystem/connectors" outputs="AmaltheaXMI.xsd#//Composite;XSDComplexTypeDefinition=47/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+    <nested inputs="amalthea.xcore#/EPackage/ISystem/groundedPorts" outputs="AmaltheaXMI.xsd#//Composite;XSDComplexTypeDefinition=47/XSDParticle/XSDModelGroup/XSDParticle=2"/>
     <nested inputs="amalthea.xcore#/EPackage/Composite" outputs="AmaltheaXMI.xsd#//Composite;XSDElementDeclaration=47"/>
     <nested inputs="amalthea.xcore#/EPackage/System" outputs="AmaltheaXMI.xsd#//System;XSDComplexTypeDefinition=48"/>
     <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//System;XSDComplexTypeDefinition=48/XSDAttributeUse"/>
     <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//System;XSDComplexTypeDefinition=48/XSDParticle/XSDModelGroup/XSDParticle"/>
     <nested inputs="amalthea.xcore#/EPackage/ISystem/componentInstances" outputs="AmaltheaXMI.xsd#//System;XSDComplexTypeDefinition=48/XSDParticle/XSDModelGroup/XSDParticle=1"/>
     <nested inputs="amalthea.xcore#/EPackage/ISystem/connectors" outputs="AmaltheaXMI.xsd#//System;XSDComplexTypeDefinition=48/XSDParticle/XSDModelGroup/XSDParticle=2"/>
+    <nested inputs="amalthea.xcore#/EPackage/ISystem/groundedPorts" outputs="AmaltheaXMI.xsd#//System;XSDComplexTypeDefinition=48/XSDParticle/XSDModelGroup/XSDParticle=3"/>
     <nested inputs="amalthea.xcore#/EPackage/System" outputs="AmaltheaXMI.xsd#//System;XSDElementDeclaration=48"/>
     <nested inputs="amalthea.xcore#/EPackage/ComponentInstance" outputs="AmaltheaXMI.xsd#//ComponentInstance;XSDComplexTypeDefinition=49">
       <nested inputs="amalthea.xcore#/EPackage/ComponentInstance/type" outputs="AmaltheaXMI.xsd#//ComponentInstance;XSDComplexTypeDefinition=49/XSDAttributeUse=1"/>

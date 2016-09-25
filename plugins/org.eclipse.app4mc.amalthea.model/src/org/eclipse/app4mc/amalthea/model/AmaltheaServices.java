@@ -1,6 +1,11 @@
 package org.eclipse.app4mc.amalthea.model;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
 
 public class AmaltheaServices {
 
@@ -55,5 +60,25 @@ public class AmaltheaServices {
 		}
 		
 		return null;
+	}
+	
+	public static EList<QualifiedPort> getInnerPorts(ISystem system) {
+		List<QualifiedPort> qualifiedPorts = new ArrayList<QualifiedPort>();
+		for (ComponentInstance inst : system.getComponentInstances()) {
+			if (inst.getType() != null) {
+				for (Port port : inst.getType().getPorts()) {
+					QualifiedPort qp = AmaltheaFactory.eINSTANCE.createQualifiedPort();
+					qp.setInstance(inst);
+					qp.setPort(port);
+					qualifiedPorts.add(qp);
+				}
+			}
+		}
+		
+		if (qualifiedPorts.isEmpty()) {
+			return  ECollections.emptyEList();			
+		} else {
+			return ECollections.unmodifiableEList(qualifiedPorts);
+		}
 	}
 }

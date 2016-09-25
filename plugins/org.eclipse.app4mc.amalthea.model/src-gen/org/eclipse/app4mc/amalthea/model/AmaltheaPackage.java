@@ -2528,13 +2528,31 @@ public interface AmaltheaPackage extends EPackage {
 	int ISYSTEM__CONNECTORS = 1;
 
 	/**
+	 * The feature id for the '<em><b>Grounded Ports</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISYSTEM__GROUNDED_PORTS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Inner Ports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISYSTEM__INNER_PORTS = 3;
+
+	/**
 	 * The number of structural features of the '<em>ISystem</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISYSTEM_FEATURE_COUNT = 2;
+	int ISYSTEM_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>ISystem</em>' class.
@@ -2882,13 +2900,31 @@ public interface AmaltheaPackage extends EPackage {
 	int COMPOSITE__CONNECTORS = COMPONENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Grounded Ports</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE__GROUNDED_PORTS = COMPONENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Inner Ports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE__INNER_PORTS = COMPONENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Composite</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 2;
+	int COMPOSITE_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -2982,13 +3018,31 @@ public interface AmaltheaPackage extends EPackage {
 	int SYSTEM__CONNECTORS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Grounded Ports</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__GROUNDED_PORTS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Inner Ports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__INNER_PORTS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
+	int SYSTEM_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -23733,6 +23787,28 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getISystem_Connectors();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ISystem#getGroundedPorts <em>Grounded Ports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Grounded Ports</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ISystem#getGroundedPorts()
+	 * @see #getISystem()
+	 * @generated
+	 */
+	EReference getISystem_GroundedPorts();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.ISystem#getInnerPorts <em>Inner Ports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Inner Ports</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ISystem#getInnerPorts()
+	 * @see #getISystem()
+	 * @generated
+	 */
+	EReference getISystem_InnerPorts();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Port <em>Port</em>}'.

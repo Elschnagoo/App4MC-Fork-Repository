@@ -4017,6 +4017,24 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getISystem_GroundedPorts() {
+		return (EReference)iSystemEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getISystem_InnerPorts() {
+		return (EReference)iSystemEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPort() {
 		return portEClass;
 	}
@@ -11024,6 +11042,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		iSystemEClass = createEClass(ISYSTEM);
 		createEReference(iSystemEClass, ISYSTEM__COMPONENT_INSTANCES);
 		createEReference(iSystemEClass, ISYSTEM__CONNECTORS);
+		createEReference(iSystemEClass, ISYSTEM__GROUNDED_PORTS);
+		createEReference(iSystemEClass, ISYSTEM__INNER_PORTS);
 
 		portEClass = createEClass(PORT);
 		createEOperation(portEClass, PORT___COMPUTE_UNIQUE_NAME);
@@ -12642,6 +12662,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(iSystemEClass, ISystem.class, "ISystem", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getISystem_ComponentInstances(), this.getComponentInstance(), null, "componentInstances", null, 0, -1, ISystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getISystem_Connectors(), this.getConnector(), null, "connectors", null, 0, -1, ISystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getISystem_GroundedPorts(), this.getQualifiedPort(), null, "groundedPorts", null, 0, -1, ISystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getISystem_InnerPorts(), this.getQualifiedPort(), null, "innerPorts", null, 0, -1, ISystem.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(portEClass, Port.class, "Port", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

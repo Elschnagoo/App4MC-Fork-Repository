@@ -159,6 +159,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -959,6 +960,11 @@ public class CustomItemProviderService {
    */
   public static String getFInterfacePortItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof FInterfacePort)) {
+      EObject _eContainer = null;
+      if (((FInterfacePort)object)!=null) {
+        _eContainer=((FInterfacePort)object).eContainer();
+      }
+      final String cName = ((Component) _eContainer).getName();
       InterfaceKind _kind = null;
       if (((FInterfacePort)object)!=null) {
         _kind=((FInterfacePort)object).getKind();
@@ -970,21 +976,29 @@ public class CustomItemProviderService {
       }
       final String name = _name;
       String _xifexpression = null;
-      if ((Objects.equal(kind, null) || Objects.equal(kind, InterfaceKind._UNDEFINED_))) {
-        _xifexpression = "<kind>";
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(cName);
+      if (_isNullOrEmpty) {
+        _xifexpression = "<component>";
       } else {
-        _xifexpression = kind.getLiteral();
+        _xifexpression = cName;
       }
       final String s1 = _xifexpression;
       String _xifexpression_1 = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression_1 = "<port>";
+      if ((Objects.equal(kind, null) || Objects.equal(kind, InterfaceKind._UNDEFINED_))) {
+        _xifexpression_1 = "<kind>";
       } else {
-        _xifexpression_1 = name;
+        _xifexpression_1 = kind.getLiteral();
       }
       final String s2 = _xifexpression_1;
-      return ((s1 + " ") + s2);
+      String _xifexpression_2 = null;
+      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(name);
+      if (_isNullOrEmpty_1) {
+        _xifexpression_2 = "<port>";
+      } else {
+        _xifexpression_2 = name;
+      }
+      final String s3 = _xifexpression_2;
+      return ((((s1 + " ") + s2) + " ") + s3);
     } else {
       return defaultText;
     }
@@ -1027,14 +1041,25 @@ public class CustomItemProviderService {
         _xifexpression = (_name_2 + ": ");
       }
       final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(instName);
-      if (_isNullOrEmpty) {
-        _xifexpression_1 = "<instance>";
-      } else {
-        _xifexpression_1 = instName;
+      String s2 = "";
+      String s4 = "";
+      ComponentInstance _instance_1 = null;
+      if (((QualifiedPort)object)!=null) {
+        _instance_1=((QualifiedPort)object).getInstance();
       }
-      final String s2 = _xifexpression_1;
+      boolean _equals_1 = Objects.equal(_instance_1, null);
+      if (_equals_1) {
+        s4 = " (enclosing composite)";
+      } else {
+        String _xifexpression_1 = null;
+        boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(instName);
+        if (_isNullOrEmpty) {
+          _xifexpression_1 = "??? / ";
+        } else {
+          _xifexpression_1 = (instName + " / ");
+        }
+        s2 = _xifexpression_1;
+      }
       String _xifexpression_2 = null;
       boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(portName);
       if (_isNullOrEmpty_1) {
@@ -1043,10 +1068,30 @@ public class CustomItemProviderService {
         _xifexpression_2 = portName;
       }
       final String s3 = _xifexpression_2;
-      return (((s1 + s2) + " / ") + s3);
+      return (((s1 + s2) + s3) + s4);
     } else {
       return defaultText;
     }
+  }
+  
+  public static List<ViewerNotification> getQualifiedPortItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(QualifiedPort.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.QUALIFIED_PORT__INSTANCE)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.QUALIFIED_PORT__PORT)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+    }
+    return list;
   }
   
   /**

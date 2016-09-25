@@ -22,6 +22,7 @@ import org.eclipse.app4mc.amalthea.model.Composite;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -51,8 +52,33 @@ public class CompositeItemProvider extends ComponentItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addInnerPortsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Inner Ports feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInnerPortsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ISystem_innerPorts_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ISystem_innerPorts_feature", "_UI_ISystem_type"),
+				 AmaltheaPackage.eINSTANCE.getISystem_InnerPorts(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**
@@ -69,6 +95,7 @@ public class CompositeItemProvider extends ComponentItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getISystem_ComponentInstances());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getISystem_Connectors());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getISystem_GroundedPorts());
 		}
 		return childrenFeatures;
 	}
@@ -140,6 +167,7 @@ public class CompositeItemProvider extends ComponentItemProvider {
 		switch (notification.getFeatureID(Composite.class)) {
 			case AmaltheaPackage.COMPOSITE__COMPONENT_INSTANCES:
 			case AmaltheaPackage.COMPOSITE__CONNECTORS:
+			case AmaltheaPackage.COMPOSITE__GROUNDED_PORTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -165,6 +193,11 @@ public class CompositeItemProvider extends ComponentItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getISystem_Connectors(),
 				 AmaltheaFactory.eINSTANCE.createConnector()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getISystem_GroundedPorts(),
+				 AmaltheaFactory.eINSTANCE.createQualifiedPort()));
 	}
 
 }
