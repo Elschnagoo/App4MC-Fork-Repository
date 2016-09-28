@@ -156,6 +156,7 @@ import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
+import org.eclipse.app4mc.amalthea.model.ModeSwitchItem;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.Network;
@@ -224,6 +225,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableEventType;
 import org.eclipse.app4mc.amalthea.model.RunnableGroupingType;
+import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
@@ -558,6 +560,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.MODE_LABEL: return createModeLabel();
 			case AmaltheaPackage.SECTION: return createSection();
 			case AmaltheaPackage.MODE_LABEL_ACCESS: return createModeLabelAccess();
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH: return createRunnableModeSwitch();
+			case AmaltheaPackage.MODE_SWITCH_ITEM: return createModeSwitchItem();
 			case AmaltheaPackage.LABEL_ACCESS: return createLabelAccess();
 			case AmaltheaPackage.SEMAPHORE_ACCESS: return createSemaphoreAccess();
 			case AmaltheaPackage.SENDER_RECEIVER_READ: return createSenderReceiverRead();
@@ -2887,6 +2891,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public ModeLabelAccess createModeLabelAccess() {
 		ModeLabelAccessImpl modeLabelAccess = new ModeLabelAccessImpl();
 		return modeLabelAccess;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RunnableModeSwitch createRunnableModeSwitch() {
+		RunnableModeSwitchImpl runnableModeSwitch = new RunnableModeSwitchImpl();
+		return runnableModeSwitch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModeSwitchItem createModeSwitchItem() {
+		ModeSwitchItemImpl modeSwitchItem = new ModeSwitchItemImpl();
+		return modeSwitchItem;
 	}
 
 	/**

@@ -4842,6 +4842,31 @@ It can be used to define which mode value is written to the label.</xsd:document
       <xsd:documentation>Representation of a mode label access of a run entity.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="RunnableModeSwitch">
+    <xsd:complexContent>
+      <xsd:extension base="am:RunnableItem">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="valueProvider" type="am:ModeValueProvider"/>
+          <xsd:element name="modeItems" type="am:ModeSwitchItem"/>
+          <xsd:element name="defaultItems" type="am:RunnableItem"/>
+        </xsd:choice>
+        <xsd:attribute name="valueProvider" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="RunnableModeSwitch" type="am:RunnableModeSwitch"/>
+  <xsd:complexType name="ModeSwitchItem">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="value" type="am:ModeLiteral"/>
+          <xsd:element name="runnableItems" type="am:RunnableItem"/>
+        </xsd:choice>
+        <xsd:attribute name="value" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ModeSwitchItem" type="am:ModeSwitchItem"/>
   <xsd:complexType name="LabelAccess">
     <xsd:annotation>
       <xsd:documentation>Representation of a label access of a run entity.</xsd:documentation>

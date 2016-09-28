@@ -16,8 +16,10 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -26,23 +28,22 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Runnable} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class RunnableItemProvider extends AbstractElementMemoryInformationItemProvider {
+public class RunnableModeSwitchItemProvider extends RunnableItemItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RunnableItemProvider(AdapterFactory adapterFactory) {
+	public RunnableModeSwitchItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -57,127 +58,31 @@ public class RunnableItemProvider extends AbstractElementMemoryInformationItemPr
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addActivationPropertyDescriptor(object);
-			addCallbackPropertyDescriptor(object);
-			addServicePropertyDescriptor(object);
-			addRunnableCallsPropertyDescriptor(object);
-			addTaskRunnableCallsPropertyDescriptor(object);
+			addValueProviderPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Activation feature.
+	 * This adds a property descriptor for the Value Provider feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addActivationPropertyDescriptor(Object object) {
+	protected void addValueProviderPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Runnable_activation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Runnable_activation_feature", "_UI_Runnable_type"),
-				 AmaltheaPackage.eINSTANCE.getRunnable_Activation(),
+				 getString("_UI_RunnableModeSwitch_valueProvider_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_RunnableModeSwitch_valueProvider_feature", "_UI_RunnableModeSwitch_type"),
+				 AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_ValueProvider(),
 				 true,
 				 false,
 				 true,
 				 null,
 				 null,
 				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Callback feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCallbackPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Runnable_callback_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Runnable_callback_feature", "_UI_Runnable_type"),
-				 AmaltheaPackage.eINSTANCE.getRunnable_Callback(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Service feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addServicePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Runnable_service_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Runnable_service_feature", "_UI_Runnable_type"),
-				 AmaltheaPackage.eINSTANCE.getRunnable_Service(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Runnable Calls feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRunnableCallsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Runnable_runnableCalls_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Runnable_runnableCalls_feature", "_UI_Runnable_type"),
-				 AmaltheaPackage.eINSTANCE.getRunnable_RunnableCalls(),
-				 false,
-				 false,
-				 false,
-				 null,
-				 getString("_UI_ReadonlyPropertyCategory"),
-				 new String[] {
-					"org.eclipse.ui.views.properties.expert"
-				 }));
-	}
-
-	/**
-	 * This adds a property descriptor for the Task Runnable Calls feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTaskRunnableCallsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Runnable_taskRunnableCalls_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Runnable_taskRunnableCalls_feature", "_UI_Runnable_type"),
-				 AmaltheaPackage.eINSTANCE.getRunnable_TaskRunnableCalls(),
-				 false,
-				 false,
-				 false,
-				 null,
-				 getString("_UI_ReadonlyPropertyCategory"),
-				 new String[] {
-					"org.eclipse.ui.views.properties.expert"
-				 }));
 	}
 
 	/**
@@ -192,8 +97,8 @@ public class RunnableItemProvider extends AbstractElementMemoryInformationItemPr
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnable_Deadline());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_ModeItems());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems());
 		}
 		return childrenFeatures;
 	}
@@ -212,14 +117,14 @@ public class RunnableItemProvider extends AbstractElementMemoryInformationItemPr
 	}
 
 	/**
-	 * This returns Runnable.gif.
+	 * This returns RunnableModeSwitch.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Runnable"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/RunnableModeSwitch"));
 	}
 
 	/**
@@ -236,14 +141,23 @@ public class RunnableItemProvider extends AbstractElementMemoryInformationItemPr
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((org.eclipse.app4mc.amalthea.model.Runnable)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Runnable_type") :
-			getString("_UI_Runnable_type") + " " + label;
+		if (object instanceof RunnableModeSwitch) {
+			StringBuffer result = new StringBuffer("Mode Switch");
+			RunnableModeSwitch modeSwitch = (RunnableModeSwitch) object;
+			if (null != modeSwitch.getValueProvider() 
+					&& StringUtils.isNotEmpty(modeSwitch.getValueProvider().getName()))
+			{
+				result.append(" ").append(modeSwitch.getValueProvider().getName());
+			}
+			else
+				result.append(" <mode label>");
+			return result.toString();
+		}
+		return getString("_UI_RunnableModeSwitch_type");
 	}
 	
 
@@ -258,13 +172,9 @@ public class RunnableItemProvider extends AbstractElementMemoryInformationItemPr
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(org.eclipse.app4mc.amalthea.model.Runnable.class)) {
-			case AmaltheaPackage.RUNNABLE__CALLBACK:
-			case AmaltheaPackage.RUNNABLE__SERVICE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
-			case AmaltheaPackage.RUNNABLE__DEADLINE:
+		switch (notification.getFeatureID(RunnableModeSwitch.class)) {
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__MODE_ITEMS:
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ITEMS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -284,73 +194,73 @@ public class RunnableItemProvider extends AbstractElementMemoryInformationItemPr
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_ModeItems(),
+				 AmaltheaFactory.eINSTANCE.createModeSwitchItem()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
 				 AmaltheaFactory.eINSTANCE.createModeLabelAccess()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
 				 AmaltheaFactory.eINSTANCE.createRunnableModeSwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
 				 AmaltheaFactory.eINSTANCE.createLabelAccess()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
 				 AmaltheaFactory.eINSTANCE.createSemaphoreAccess()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
 				 AmaltheaFactory.eINSTANCE.createSenderReceiverRead()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
 				 AmaltheaFactory.eINSTANCE.createSenderReceiverWrite()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
 				 AmaltheaFactory.eINSTANCE.createSynchronousServerCall()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
 				 AmaltheaFactory.eINSTANCE.createAsynchronousServerCall()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
 				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
 				 AmaltheaFactory.eINSTANCE.createGroup()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
 				 AmaltheaFactory.eINSTANCE.createRunnableCall()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
 				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
 				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_Deadline(),
-				 AmaltheaFactory.eINSTANCE.createTime()));
 	}
 
 }

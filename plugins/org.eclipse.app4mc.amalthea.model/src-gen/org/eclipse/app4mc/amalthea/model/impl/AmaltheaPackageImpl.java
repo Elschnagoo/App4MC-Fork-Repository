@@ -193,6 +193,7 @@ import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
+import org.eclipse.app4mc.amalthea.model.ModeSwitchItem;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
@@ -276,6 +277,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableEventType;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableGroupingType;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
@@ -2293,6 +2295,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass modeLabelAccessEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass runnableModeSwitchEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modeSwitchItemEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -9723,6 +9739,69 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getRunnableModeSwitch() {
+		return runnableModeSwitchEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRunnableModeSwitch_ValueProvider() {
+		return (EReference)runnableModeSwitchEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRunnableModeSwitch_ModeItems() {
+		return (EReference)runnableModeSwitchEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRunnableModeSwitch_DefaultItems() {
+		return (EReference)runnableModeSwitchEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getModeSwitchItem() {
+		return modeSwitchItemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModeSwitchItem_Value() {
+		return (EReference)modeSwitchItemEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModeSwitchItem_RunnableItems() {
+		return (EReference)modeSwitchItemEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLabelAccess() {
 		return labelAccessEClass;
 	}
@@ -11906,6 +11985,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(modeLabelAccessEClass, MODE_LABEL_ACCESS__ACCESS);
 		createEReference(modeLabelAccessEClass, MODE_LABEL_ACCESS__MODE_VALUE);
 
+		runnableModeSwitchEClass = createEClass(RUNNABLE_MODE_SWITCH);
+		createEReference(runnableModeSwitchEClass, RUNNABLE_MODE_SWITCH__VALUE_PROVIDER);
+		createEReference(runnableModeSwitchEClass, RUNNABLE_MODE_SWITCH__MODE_ITEMS);
+		createEReference(runnableModeSwitchEClass, RUNNABLE_MODE_SWITCH__DEFAULT_ITEMS);
+
+		modeSwitchItemEClass = createEClass(MODE_SWITCH_ITEM);
+		createEReference(modeSwitchItemEClass, MODE_SWITCH_ITEM__VALUE);
+		createEReference(modeSwitchItemEClass, MODE_SWITCH_ITEM__RUNNABLE_ITEMS);
+
 		labelAccessEClass = createEClass(LABEL_ACCESS);
 		createEReference(labelAccessEClass, LABEL_ACCESS__DATA);
 		createEAttribute(labelAccessEClass, LABEL_ACCESS__ACCESS);
@@ -12417,6 +12505,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		sectionEClass.getESuperTypes().add(this.getReferableBaseObject());
 		runnableItemEClass.getESuperTypes().add(this.getBaseObject());
 		modeLabelAccessEClass.getESuperTypes().add(this.getRunnableItem());
+		runnableModeSwitchEClass.getESuperTypes().add(this.getRunnableItem());
+		modeSwitchItemEClass.getESuperTypes().add(this.getBaseObject());
 		labelAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		semaphoreAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		senderReceiverCommunicationEClass.getESuperTypes().add(this.getRunnableItem());
@@ -13540,6 +13630,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getModeLabelAccess_Data(), this.getModeLabel(), null, "data", null, 1, 1, ModeLabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModeLabelAccess_Access(), this.getLabelAccessEnum(), "access", null, 0, 1, ModeLabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModeLabelAccess_ModeValue(), this.getModeLiteral(), null, "modeValue", null, 0, 1, ModeLabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(runnableModeSwitchEClass, RunnableModeSwitch.class, "RunnableModeSwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRunnableModeSwitch_ValueProvider(), this.getModeValueProvider(), null, "valueProvider", null, 0, 1, RunnableModeSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunnableModeSwitch_ModeItems(), this.getModeSwitchItem(), null, "modeItems", null, 0, -1, RunnableModeSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunnableModeSwitch_DefaultItems(), this.getRunnableItem(), null, "defaultItems", null, 0, -1, RunnableModeSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(modeSwitchItemEClass, ModeSwitchItem.class, "ModeSwitchItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModeSwitchItem_Value(), this.getModeLiteral(), null, "value", null, 0, 1, ModeSwitchItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeSwitchItem_RunnableItems(), this.getRunnableItem(), null, "runnableItems", null, 0, -1, ModeSwitchItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(labelAccessEClass, LabelAccess.class, "LabelAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLabelAccess_Data(), this.getLabel(), null, "data", null, 1, 1, LabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -174,6 +174,7 @@ import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
+import org.eclipse.app4mc.amalthea.model.ModeSwitchItem;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
@@ -249,6 +250,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
@@ -2776,6 +2778,23 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseRunnableItem(modeLabelAccess);
 				if (result == null) result = caseBaseObject(modeLabelAccess);
 				if (result == null) result = caseIAnnotatable(modeLabelAccess);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH: {
+				RunnableModeSwitch runnableModeSwitch = (RunnableModeSwitch)theEObject;
+				T1 result = caseRunnableModeSwitch(runnableModeSwitch);
+				if (result == null) result = caseRunnableItem(runnableModeSwitch);
+				if (result == null) result = caseBaseObject(runnableModeSwitch);
+				if (result == null) result = caseIAnnotatable(runnableModeSwitch);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.MODE_SWITCH_ITEM: {
+				ModeSwitchItem modeSwitchItem = (ModeSwitchItem)theEObject;
+				T1 result = caseModeSwitchItem(modeSwitchItem);
+				if (result == null) result = caseBaseObject(modeSwitchItem);
+				if (result == null) result = caseIAnnotatable(modeSwitchItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -7208,6 +7227,36 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseModeLabelAccess(ModeLabelAccess object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Runnable Mode Switch</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Runnable Mode Switch</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseRunnableModeSwitch(RunnableModeSwitch object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Mode Switch Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Mode Switch Item</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseModeSwitchItem(ModeSwitchItem object) {
 		return null;
 	}
 

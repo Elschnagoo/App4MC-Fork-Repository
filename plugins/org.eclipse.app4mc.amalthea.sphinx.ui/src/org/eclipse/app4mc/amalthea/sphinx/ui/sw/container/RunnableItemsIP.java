@@ -81,6 +81,7 @@ public class RunnableItemsIP extends TransientItemProvider {
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableCall()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createInstructionsDeviation()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createInstructionsConstant()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableModeSwitch()));
 	}
 
 	/**

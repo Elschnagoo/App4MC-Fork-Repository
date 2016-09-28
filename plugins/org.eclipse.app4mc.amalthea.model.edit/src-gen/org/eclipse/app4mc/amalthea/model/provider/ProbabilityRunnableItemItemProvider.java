@@ -201,6 +201,11 @@ public class ProbabilityRunnableItemItemProvider extends BaseObjectItemProvider 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getProbabilityRunnableItem_RunnableItem(),
+				 AmaltheaFactory.eINSTANCE.createRunnableModeSwitch()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getProbabilityRunnableItem_RunnableItem(),
 				 AmaltheaFactory.eINSTANCE.createLabelAccess()));
 
 		newChildDescriptors.add

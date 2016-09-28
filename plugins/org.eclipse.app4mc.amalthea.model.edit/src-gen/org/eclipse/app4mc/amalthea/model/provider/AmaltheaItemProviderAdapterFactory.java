@@ -4958,6 +4958,52 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RunnableModeSwitchItemProvider runnableModeSwitchItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRunnableModeSwitchAdapter() {
+		if (runnableModeSwitchItemProvider == null) {
+			runnableModeSwitchItemProvider = new RunnableModeSwitchItemProvider(this);
+		}
+
+		return runnableModeSwitchItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeSwitchItem} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModeSwitchItemItemProvider modeSwitchItemItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeSwitchItem}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createModeSwitchItemAdapter() {
+		if (modeSwitchItemItemProvider == null) {
+			modeSwitchItemItemProvider = new ModeSwitchItemItemProvider(this);
+		}
+
+		return modeSwitchItemItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.LabelAccess} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5912,6 +5958,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (modeLabelItemProvider != null) modeLabelItemProvider.dispose();
 		if (sectionItemProvider != null) sectionItemProvider.dispose();
 		if (modeLabelAccessItemProvider != null) modeLabelAccessItemProvider.dispose();
+		if (runnableModeSwitchItemProvider != null) runnableModeSwitchItemProvider.dispose();
+		if (modeSwitchItemItemProvider != null) modeSwitchItemItemProvider.dispose();
 		if (labelAccessItemProvider != null) labelAccessItemProvider.dispose();
 		if (semaphoreAccessItemProvider != null) semaphoreAccessItemProvider.dispose();
 		if (senderReceiverReadItemProvider != null) senderReceiverReadItemProvider.dispose();
