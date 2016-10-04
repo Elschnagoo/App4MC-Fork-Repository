@@ -124,7 +124,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.Section;
-import org.eclipse.app4mc.amalthea.model.SectionMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum;
@@ -3555,47 +3554,6 @@ public class CustomItemProviderService {
     int _featureID = notification.getFeatureID(AbstractElementMappingConstraint.class);
     boolean _matched = false;
     if (Objects.equal(_featureID, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING_CONSTRAINT__ABSTRACT_ELEMENT)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
-    }
-    return list;
-  }
-  
-  /**
-   * SectionMappingConstraintItemProvider
-   */
-  public static String getSectionMappingConstraintItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof SectionMappingConstraint)) {
-      Section _section = null;
-      if (((SectionMappingConstraint)object)!=null) {
-        _section=((SectionMappingConstraint)object).getSection();
-      }
-      String _name = null;
-      if (_section!=null) {
-        _name=_section.getName();
-      }
-      final String secName = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(secName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<section>";
-      } else {
-        _xifexpression = ("Section " + secName);
-      }
-      final String s1 = _xifexpression;
-      return ("Constraint mapping of " + s1);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static List<ViewerNotification> getSectionMappingConstraintItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(SectionMappingConstraint.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.SECTION_MAPPING_CONSTRAINT__SECTION)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);

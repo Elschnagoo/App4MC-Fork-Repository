@@ -177,11 +177,6 @@ public class PropertyConstraintsModelItemProvider extends BaseObjectItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getPropertyConstraintsModel_MappingConstraints(),
-				 AmaltheaFactory.eINSTANCE.createSectionMappingConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getPropertyConstraintsModel_MappingConstraints(),
 				 AmaltheaFactory.eINSTANCE.createAbstractElementMappingConstraint()));
 
 		newChildDescriptors.add

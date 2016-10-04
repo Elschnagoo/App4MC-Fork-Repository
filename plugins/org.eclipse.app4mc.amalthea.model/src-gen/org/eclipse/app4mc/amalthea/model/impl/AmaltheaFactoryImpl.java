@@ -242,7 +242,6 @@ import org.eclipse.app4mc.amalthea.model.SchedulerSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
-import org.eclipse.app4mc.amalthea.model.SectionMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum;
@@ -509,7 +508,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.PROCESS_ALLOCATION_CONSTRAINT: return createProcessAllocationConstraint();
 			case AmaltheaPackage.PROCESS_PROTOTYPE_ALLOCATION_CONSTRAINT: return createProcessPrototypeAllocationConstraint();
 			case AmaltheaPackage.RUNNABLE_ALLOCATION_CONSTRAINT: return createRunnableAllocationConstraint();
-			case AmaltheaPackage.SECTION_MAPPING_CONSTRAINT: return createSectionMappingConstraint();
 			case AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING_CONSTRAINT: return createAbstractElementMappingConstraint();
 			case AmaltheaPackage.HW_CORE_PROPERTY: return createHwCoreProperty();
 			case AmaltheaPackage.HW_CORE_CONJUNCTION: return createHwCoreConjunction();
@@ -2384,16 +2382,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public RunnableAllocationConstraint createRunnableAllocationConstraint() {
 		RunnableAllocationConstraintImpl runnableAllocationConstraint = new RunnableAllocationConstraintImpl();
 		return runnableAllocationConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SectionMappingConstraint createSectionMappingConstraint() {
-		SectionMappingConstraintImpl sectionMappingConstraint = new SectionMappingConstraintImpl();
-		return sectionMappingConstraint;
 	}
 
 	/**

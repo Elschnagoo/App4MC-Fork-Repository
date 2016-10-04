@@ -3785,29 +3785,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SectionMappingConstraint} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SectionMappingConstraintItemProvider sectionMappingConstraintItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SectionMappingConstraint}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSectionMappingConstraintAdapter() {
-		if (sectionMappingConstraintItemProvider == null) {
-			sectionMappingConstraintItemProvider = new SectionMappingConstraintItemProvider(this);
-		}
-
-		return sectionMappingConstraintItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5884,7 +5861,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (processAllocationConstraintItemProvider != null) processAllocationConstraintItemProvider.dispose();
 		if (processPrototypeAllocationConstraintItemProvider != null) processPrototypeAllocationConstraintItemProvider.dispose();
 		if (runnableAllocationConstraintItemProvider != null) runnableAllocationConstraintItemProvider.dispose();
-		if (sectionMappingConstraintItemProvider != null) sectionMappingConstraintItemProvider.dispose();
 		if (abstractElementMappingConstraintItemProvider != null) abstractElementMappingConstraintItemProvider.dispose();
 		if (hwCorePropertyItemProvider != null) hwCorePropertyItemProvider.dispose();
 		if (hwCoreConjunctionItemProvider != null) hwCoreConjunctionItemProvider.dispose();

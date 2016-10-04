@@ -2199,15 +2199,7 @@ class RunnableAllocationConstraint extends AllocationConstraint
 	refers Runnable runnable
 }
 
-/*
- * SectionMappingConstraints describe the constraints for Section-to-Memory 
- * Mapping
- */
-class SectionMappingConstraint extends MappingConstraint
-{
-	refers Section section
-}
-
+ 
 /*
  * AbstractElementMappingConstraints describe the constraints for 
  * AbstractElementMemoryInformation-to-Memory Mapping

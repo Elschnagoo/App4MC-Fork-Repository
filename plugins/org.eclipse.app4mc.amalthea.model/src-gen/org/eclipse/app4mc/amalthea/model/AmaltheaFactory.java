@@ -1472,15 +1472,6 @@ public interface AmaltheaFactory extends EFactory {
 	RunnableAllocationConstraint createRunnableAllocationConstraint();
 
 	/**
-	 * Returns a new object of class '<em>Section Mapping Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Section Mapping Constraint</em>'.
-	 * @generated
-	 */
-	SectionMappingConstraint createSectionMappingConstraint();
-
-	/**
 	 * Returns a new object of class '<em>Abstract Element Mapping Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

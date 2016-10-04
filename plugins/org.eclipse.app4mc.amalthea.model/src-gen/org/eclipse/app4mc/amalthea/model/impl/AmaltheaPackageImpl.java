@@ -298,7 +298,6 @@ import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
-import org.eclipse.app4mc.amalthea.model.SectionMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum;
@@ -1861,13 +1860,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass runnableAllocationConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass sectionMappingConstraintEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -8146,24 +8138,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSectionMappingConstraint() {
-		return sectionMappingConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSectionMappingConstraint_Section() {
-		return (EReference)sectionMappingConstraintEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getAbstractElementMappingConstraint() {
 		return abstractElementMappingConstraintEClass;
 	}
@@ -11818,9 +11792,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runnableAllocationConstraintEClass = createEClass(RUNNABLE_ALLOCATION_CONSTRAINT);
 		createEReference(runnableAllocationConstraintEClass, RUNNABLE_ALLOCATION_CONSTRAINT__RUNNABLE);
 
-		sectionMappingConstraintEClass = createEClass(SECTION_MAPPING_CONSTRAINT);
-		createEReference(sectionMappingConstraintEClass, SECTION_MAPPING_CONSTRAINT__SECTION);
-
 		abstractElementMappingConstraintEClass = createEClass(ABSTRACT_ELEMENT_MAPPING_CONSTRAINT);
 		createEReference(abstractElementMappingConstraintEClass, ABSTRACT_ELEMENT_MAPPING_CONSTRAINT__ABSTRACT_ELEMENT);
 
@@ -12518,7 +12489,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		processAllocationConstraintEClass.getESuperTypes().add(this.getAllocationConstraint());
 		processPrototypeAllocationConstraintEClass.getESuperTypes().add(this.getAllocationConstraint());
 		runnableAllocationConstraintEClass.getESuperTypes().add(this.getAllocationConstraint());
-		sectionMappingConstraintEClass.getESuperTypes().add(this.getMappingConstraint());
 		abstractElementMappingConstraintEClass.getESuperTypes().add(this.getMappingConstraint());
 		hwCoreConstraintEClass.getESuperTypes().add(this.getBaseObject());
 		hwMemoryConstraintEClass.getESuperTypes().add(this.getBaseObject());
@@ -13466,9 +13436,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(runnableAllocationConstraintEClass, RunnableAllocationConstraint.class, "RunnableAllocationConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnableAllocationConstraint_Runnable(), this.getRunnable(), null, "runnable", null, 0, 1, RunnableAllocationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(sectionMappingConstraintEClass, SectionMappingConstraint.class, "SectionMappingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSectionMappingConstraint_Section(), this.getSection(), null, "section", null, 0, 1, SectionMappingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractElementMappingConstraintEClass, AbstractElementMappingConstraint.class, "AbstractElementMappingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAbstractElementMappingConstraint_AbstractElement(), this.getAbstractElementMemoryInformation(), null, "abstractElement", null, 0, 1, AbstractElementMappingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

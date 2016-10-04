@@ -268,7 +268,6 @@ import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
-import org.eclipse.app4mc.amalthea.model.SectionMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
 import org.eclipse.app4mc.amalthea.model.SemaphoreEvent;
@@ -2199,15 +2198,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseAllocationConstraint(runnableAllocationConstraint);
 				if (result == null) result = caseBaseObject(runnableAllocationConstraint);
 				if (result == null) result = caseIAnnotatable(runnableAllocationConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.SECTION_MAPPING_CONSTRAINT: {
-				SectionMappingConstraint sectionMappingConstraint = (SectionMappingConstraint)theEObject;
-				T1 result = caseSectionMappingConstraint(sectionMappingConstraint);
-				if (result == null) result = caseMappingConstraint(sectionMappingConstraint);
-				if (result == null) result = caseBaseObject(sectionMappingConstraint);
-				if (result == null) result = caseIAnnotatable(sectionMappingConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -6289,21 +6279,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseRunnableAllocationConstraint(RunnableAllocationConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Section Mapping Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Section Mapping Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseSectionMappingConstraint(SectionMappingConstraint object) {
 		return null;
 	}
 

@@ -1,5 +1,6 @@
 package org.eclipse.app4mc.amalthea.model.provider
 
+import java.util.ArrayList
 import java.util.List
 import java.util.Map
 import org.eclipse.app4mc.amalthea.model.AbstractElementMapping
@@ -81,6 +82,8 @@ import org.eclipse.app4mc.amalthea.model.OsISRInstructions
 import org.eclipse.app4mc.amalthea.model.OsInstructions
 import org.eclipse.app4mc.amalthea.model.PercentageMetric
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping
 import org.eclipse.app4mc.amalthea.model.ProbabilityGroup
 import org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint
@@ -96,7 +99,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableCall
 import org.eclipse.app4mc.amalthea.model.RunnableItem
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement
 import org.eclipse.app4mc.amalthea.model.RunnableScope
-import org.eclipse.app4mc.amalthea.model.SectionMappingConstraint
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum
 import org.eclipse.app4mc.amalthea.model.SenderReceiverRead
@@ -127,9 +129,6 @@ import org.eclipse.emf.common.notify.AdapterFactory
 import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
-import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping
-import java.util.ArrayList
-import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint
 
 class CustomItemProviderService {
 
@@ -1808,29 +1807,6 @@ class CustomItemProviderService {
 		}
 		return list
 	}
-
-	/*****************************************************************************
-	 * 						SectionMappingConstraintItemProvider
-	 *****************************************************************************/
-	def static String getSectionMappingConstraintItemProviderText(Object object, String defaultText) {
-		if (object instanceof SectionMappingConstraint) {
-			val secName = object?.section?.name
-			val s1 = if(secName.isNullOrEmpty) "<section>" else "Section " + secName
-			return "Constraint mapping of " + s1
-		} else {
-			return defaultText
-		}
-	}
-
-	def static List<ViewerNotification> getSectionMappingConstraintItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(SectionMappingConstraint)) {
-			case AmaltheaPackage::SECTION_MAPPING_CONSTRAINT__SECTION:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-		}
-		return list
-	}
-
 
 
 ///// _________________________ Stimuli _________________________

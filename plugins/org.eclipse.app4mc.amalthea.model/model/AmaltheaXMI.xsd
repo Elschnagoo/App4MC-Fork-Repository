@@ -3720,26 +3720,6 @@ Runnable-to-Core allocations</xsd:documentation>
 Runnable-to-Core allocations</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="SectionMappingConstraint">
-    <xsd:annotation>
-      <xsd:documentation>SectionMappingConstraints describe the constraints for Section-to-Memory
-Mapping</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:MappingConstraint">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="section" type="am:Section"/>
-        </xsd:choice>
-        <xsd:attribute name="section" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="SectionMappingConstraint" type="am:SectionMappingConstraint">
-    <xsd:annotation>
-      <xsd:documentation>SectionMappingConstraints describe the constraints for Section-to-Memory
-Mapping</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType name="AbstractElementMappingConstraint">
     <xsd:annotation>
       <xsd:documentation>AbstractElementMappingConstraints describe the constraints for

@@ -988,11 +988,6 @@ public class DeviationItemProvider extends AmaltheaExtendedItemProviderAdapter i
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getDeviation_LowerBound(),
-				 AmaltheaFactory.eINSTANCE.createSectionMappingConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviation_LowerBound(),
 				 AmaltheaFactory.eINSTANCE.createAbstractElementMappingConstraint()));
 
 		newChildDescriptors.add
@@ -2264,11 +2259,6 @@ public class DeviationItemProvider extends AmaltheaExtendedItemProviderAdapter i
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getDeviation_UpperBound(),
 				 AmaltheaFactory.eINSTANCE.createRunnableAllocationConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviation_UpperBound(),
-				 AmaltheaFactory.eINSTANCE.createSectionMappingConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter

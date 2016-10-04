@@ -268,7 +268,6 @@ import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
-import org.eclipse.app4mc.amalthea.model.SectionMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
 import org.eclipse.app4mc.amalthea.model.SemaphoreEvent;
@@ -1232,10 +1231,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseRunnableAllocationConstraint(RunnableAllocationConstraint object) {
 				return createRunnableAllocationConstraintAdapter();
-			}
-			@Override
-			public Adapter caseSectionMappingConstraint(SectionMappingConstraint object) {
-				return createSectionMappingConstraintAdapter();
 			}
 			@Override
 			public Adapter caseAbstractElementMappingConstraint(AbstractElementMappingConstraint object) {
@@ -4610,20 +4605,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRunnableAllocationConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SectionMappingConstraint <em>Section Mapping Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SectionMappingConstraint
-	 * @generated
-	 */
-	public Adapter createSectionMappingConstraintAdapter() {
 		return null;
 	}
 
