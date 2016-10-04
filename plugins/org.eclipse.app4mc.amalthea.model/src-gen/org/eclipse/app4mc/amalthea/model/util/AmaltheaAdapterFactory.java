@@ -201,6 +201,8 @@ import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.PeriodicEvent;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
 import org.eclipse.app4mc.amalthea.model.Pin;
 import org.eclipse.app4mc.amalthea.model.Pointer;
 import org.eclipse.app4mc.amalthea.model.Port;
@@ -266,7 +268,6 @@ import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
-import org.eclipse.app4mc.amalthea.model.SectionMapping;
 import org.eclipse.app4mc.amalthea.model.SectionMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
@@ -749,6 +750,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createTimingConstraintAdapter();
 			}
 			@Override
+			public Adapter casePhysicalSectionConstraint(PhysicalSectionConstraint object) {
+				return createPhysicalSectionConstraintAdapter();
+			}
+			@Override
 			public Adapter caseOrderConstraint(OrderConstraint object) {
 				return createOrderConstraintAdapter();
 			}
@@ -1053,12 +1058,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createCoreAllocationAdapter();
 			}
 			@Override
-			public Adapter caseMapping(Mapping object) {
-				return createMappingAdapter();
+			public Adapter casePhysicalSectionMapping(PhysicalSectionMapping object) {
+				return createPhysicalSectionMappingAdapter();
 			}
 			@Override
-			public Adapter caseSectionMapping(SectionMapping object) {
-				return createSectionMappingAdapter();
+			public Adapter caseMapping(Mapping object) {
+				return createMappingAdapter();
 			}
 			@Override
 			public Adapter caseAbstractElementMapping(AbstractElementMapping object) {
@@ -2915,6 +2920,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint <em>Physical Section Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint
+	 * @generated
+	 */
+	public Adapter createPhysicalSectionConstraintAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OrderConstraint <em>Order Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -3979,6 +3998,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping <em>Physical Section Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping
+	 * @generated
+	 */
+	public Adapter createPhysicalSectionMappingAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Mapping <em>Mapping</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -3989,20 +4022,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMappingAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SectionMapping <em>Section Mapping</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SectionMapping
-	 * @generated
-	 */
-	public Adapter createSectionMappingAdapter() {
 		return null;
 	}
 

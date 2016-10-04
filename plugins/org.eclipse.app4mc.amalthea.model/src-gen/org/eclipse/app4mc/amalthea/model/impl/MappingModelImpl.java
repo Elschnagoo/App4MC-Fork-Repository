@@ -20,6 +20,7 @@ import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.Mapping;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType;
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 
@@ -49,6 +50,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MappingModelImpl#getRunnableAllocation <em>Runnable Allocation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MappingModelImpl#getCoreAllocation <em>Core Allocation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MappingModelImpl#getMapping <em>Mapping</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MappingModelImpl#getPhysicalSectionMapping <em>Physical Section Mapping</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MappingModelImpl#getAddressMappingType <em>Address Mapping Type</em>}</li>
  * </ul>
  *
@@ -104,6 +106,16 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 * @ordered
 	 */
 	protected EList<Mapping> mapping;
+
+	/**
+	 * The cached value of the '{@link #getPhysicalSectionMapping() <em>Physical Section Mapping</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPhysicalSectionMapping()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<PhysicalSectionMapping> physicalSectionMapping;
 
 	/**
 	 * The default value of the '{@link #getAddressMappingType() <em>Address Mapping Type</em>}' attribute.
@@ -209,6 +221,18 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<PhysicalSectionMapping> getPhysicalSectionMapping() {
+		if (physicalSectionMapping == null) {
+			physicalSectionMapping = new EObjectContainmentEList.Resolving<PhysicalSectionMapping>(PhysicalSectionMapping.class, this, AmaltheaPackage.MAPPING_MODEL__PHYSICAL_SECTION_MAPPING);
+		}
+		return physicalSectionMapping;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public MemoryAddressMappingType getAddressMappingType() {
 		return addressMappingType;
 	}
@@ -243,6 +267,8 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 				return ((InternalEList<?>)getCoreAllocation()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.MAPPING_MODEL__MAPPING:
 				return ((InternalEList<?>)getMapping()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.MAPPING_MODEL__PHYSICAL_SECTION_MAPPING:
+				return ((InternalEList<?>)getPhysicalSectionMapping()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -265,6 +291,8 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 				return getCoreAllocation();
 			case AmaltheaPackage.MAPPING_MODEL__MAPPING:
 				return getMapping();
+			case AmaltheaPackage.MAPPING_MODEL__PHYSICAL_SECTION_MAPPING:
+				return getPhysicalSectionMapping();
 			case AmaltheaPackage.MAPPING_MODEL__ADDRESS_MAPPING_TYPE:
 				return getAddressMappingType();
 		}
@@ -300,6 +328,10 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 				getMapping().clear();
 				getMapping().addAll((Collection<? extends Mapping>)newValue);
 				return;
+			case AmaltheaPackage.MAPPING_MODEL__PHYSICAL_SECTION_MAPPING:
+				getPhysicalSectionMapping().clear();
+				getPhysicalSectionMapping().addAll((Collection<? extends PhysicalSectionMapping>)newValue);
+				return;
 			case AmaltheaPackage.MAPPING_MODEL__ADDRESS_MAPPING_TYPE:
 				setAddressMappingType((MemoryAddressMappingType)newValue);
 				return;
@@ -330,6 +362,9 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 			case AmaltheaPackage.MAPPING_MODEL__MAPPING:
 				getMapping().clear();
 				return;
+			case AmaltheaPackage.MAPPING_MODEL__PHYSICAL_SECTION_MAPPING:
+				getPhysicalSectionMapping().clear();
+				return;
 			case AmaltheaPackage.MAPPING_MODEL__ADDRESS_MAPPING_TYPE:
 				setAddressMappingType(ADDRESS_MAPPING_TYPE_EDEFAULT);
 				return;
@@ -355,6 +390,8 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 				return coreAllocation != null && !coreAllocation.isEmpty();
 			case AmaltheaPackage.MAPPING_MODEL__MAPPING:
 				return mapping != null && !mapping.isEmpty();
+			case AmaltheaPackage.MAPPING_MODEL__PHYSICAL_SECTION_MAPPING:
+				return physicalSectionMapping != null && !physicalSectionMapping.isEmpty();
 			case AmaltheaPackage.MAPPING_MODEL__ADDRESS_MAPPING_TYPE:
 				return addressMappingType != ADDRESS_MAPPING_TYPE_EDEFAULT;
 		}

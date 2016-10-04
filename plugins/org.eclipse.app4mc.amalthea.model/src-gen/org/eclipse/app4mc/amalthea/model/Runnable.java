@@ -34,10 +34,13 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#isService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getRunnableCalls <em>Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getTaskRunnableCalls <em>Task Runnable Calls</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getSection <em>Section</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable()
- * @model
+ * @model features="sectionLinkInt" 
+ *        sectionLinkIntType="org.eclipse.app4mc.amalthea.model.Section" sectionLinkIntOpposite="runnables" sectionLinkIntTransient="true" sectionLinkIntSuppressedGetVisibility="true" sectionLinkIntSuppressedSetVisibility="true"
+ *        sectionLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
  * @generated
  */
 public interface Runnable extends AbstractElementMemoryInformation {
@@ -193,5 +196,31 @@ public interface Runnable extends AbstractElementMemoryInformation {
 	 * @generated
 	 */
 	EList<TaskRunnableCall> getTaskRunnableCalls();
+
+	/**
+	 * Returns the value of the '<em><b>Section</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Section</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Section</em>' reference.
+	 * @see #setSection(Section)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_Section()
+	 * @model
+	 * @generated
+	 */
+	Section getSection();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Runnable#getSection <em>Section</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Section</em>' reference.
+	 * @see #getSection()
+	 * @generated
+	 */
+	void setSection(Section value);
 
 } // Runnable

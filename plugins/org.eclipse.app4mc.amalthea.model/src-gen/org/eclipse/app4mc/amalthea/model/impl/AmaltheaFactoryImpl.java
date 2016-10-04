@@ -14,6 +14,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.util.Map;
 
+import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMapping;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
@@ -181,6 +182,8 @@ import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.PeriodicEvent;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
 import org.eclipse.app4mc.amalthea.model.Pin;
 import org.eclipse.app4mc.amalthea.model.PinType;
 import org.eclipse.app4mc.amalthea.model.Pointer;
@@ -239,7 +242,6 @@ import org.eclipse.app4mc.amalthea.model.SchedulerSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
-import org.eclipse.app4mc.amalthea.model.SectionMapping;
 import org.eclipse.app4mc.amalthea.model.SectionMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
@@ -407,6 +409,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.EVENT_CHAIN: return createEventChain();
 			case AmaltheaPackage.EVENT_CHAIN_REFERENCE: return createEventChainReference();
 			case AmaltheaPackage.SUB_EVENT_CHAIN: return createSubEventChain();
+			case AmaltheaPackage.PHYSICAL_SECTION_CONSTRAINT: return createPhysicalSectionConstraint();
 			case AmaltheaPackage.ORDER_CONSTRAINT: return createOrderConstraint();
 			case AmaltheaPackage.SYNCHRONISATION_CONSTRAINT: return createSynchronisationConstraint();
 			case AmaltheaPackage.REACTION_CONSTRAINT: return createReactionConstraint();
@@ -470,7 +473,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.HW_ELEMENT_REF: return createHwElementRef();
 			case AmaltheaPackage.MAPPING_MODEL: return createMappingModel();
 			case AmaltheaPackage.CORE_ALLOCATION: return createCoreAllocation();
-			case AmaltheaPackage.SECTION_MAPPING: return createSectionMapping();
+			case AmaltheaPackage.PHYSICAL_SECTION_MAPPING: return createPhysicalSectionMapping();
 			case AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING: return createAbstractElementMapping();
 			case AmaltheaPackage.TASK_ALLOCATION: return createTaskAllocation();
 			case AmaltheaPackage.ISR_ALLOCATION: return createISRAllocation();
@@ -675,6 +678,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createPreemptionFromString(eDataType, initialValue);
 			case AmaltheaPackage.CONCURRENCY_TYPE:
 				return createConcurrencyTypeFromString(eDataType, initialValue);
+			case AmaltheaPackage.ASIL_TYPE:
+				return createASILTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -764,6 +769,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertPreemptionToString(eDataType, instanceValue);
 			case AmaltheaPackage.CONCURRENCY_TYPE:
 				return convertConcurrencyTypeToString(eDataType, instanceValue);
+			case AmaltheaPackage.ASIL_TYPE:
+				return convertASILTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -1377,6 +1384,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public SubEventChain createSubEventChain() {
 		SubEventChainImpl subEventChain = new SubEventChainImpl();
 		return subEventChain;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PhysicalSectionConstraint createPhysicalSectionConstraint() {
+		PhysicalSectionConstraintImpl physicalSectionConstraint = new PhysicalSectionConstraintImpl();
+		return physicalSectionConstraint;
 	}
 
 	/**
@@ -2014,9 +2031,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SectionMapping createSectionMapping() {
-		SectionMappingImpl sectionMapping = new SectionMappingImpl();
-		return sectionMapping;
+	public PhysicalSectionMapping createPhysicalSectionMapping() {
+		PhysicalSectionMappingImpl physicalSectionMapping = new PhysicalSectionMappingImpl();
+		return physicalSectionMapping;
 	}
 
 	/**
@@ -3926,6 +3943,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertConcurrencyTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ASILType createASILTypeFromString(EDataType eDataType, String initialValue) {
+		ASILType result = ASILType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertASILTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -201,6 +201,8 @@ import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.PeriodicEvent;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
 import org.eclipse.app4mc.amalthea.model.Pin;
 import org.eclipse.app4mc.amalthea.model.Pointer;
 import org.eclipse.app4mc.amalthea.model.Port;
@@ -266,7 +268,6 @@ import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
-import org.eclipse.app4mc.amalthea.model.SectionMapping;
 import org.eclipse.app4mc.amalthea.model.SectionMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
@@ -1118,6 +1119,16 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.PHYSICAL_SECTION_CONSTRAINT: {
+				PhysicalSectionConstraint physicalSectionConstraint = (PhysicalSectionConstraint)theEObject;
+				T1 result = casePhysicalSectionConstraint(physicalSectionConstraint);
+				if (result == null) result = caseReferableBaseObject(physicalSectionConstraint);
+				if (result == null) result = caseBaseObject(physicalSectionConstraint);
+				if (result == null) result = caseIAnnotatable(physicalSectionConstraint);
+				if (result == null) result = caseIReferable(physicalSectionConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.ORDER_CONSTRAINT: {
 				OrderConstraint orderConstraint = (OrderConstraint)theEObject;
 				T1 result = caseOrderConstraint(orderConstraint);
@@ -1815,20 +1826,20 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.PHYSICAL_SECTION_MAPPING: {
+				PhysicalSectionMapping physicalSectionMapping = (PhysicalSectionMapping)theEObject;
+				T1 result = casePhysicalSectionMapping(physicalSectionMapping);
+				if (result == null) result = caseReferableBaseObject(physicalSectionMapping);
+				if (result == null) result = caseIAnnotatable(physicalSectionMapping);
+				if (result == null) result = caseIReferable(physicalSectionMapping);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.MAPPING: {
 				Mapping mapping = (Mapping)theEObject;
 				T1 result = caseMapping(mapping);
 				if (result == null) result = caseBaseObject(mapping);
 				if (result == null) result = caseIAnnotatable(mapping);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.SECTION_MAPPING: {
-				SectionMapping sectionMapping = (SectionMapping)theEObject;
-				T1 result = caseSectionMapping(sectionMapping);
-				if (result == null) result = caseMapping(sectionMapping);
-				if (result == null) result = caseBaseObject(sectionMapping);
-				if (result == null) result = caseIAnnotatable(sectionMapping);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -4467,6 +4478,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Physical Section Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Physical Section Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 casePhysicalSectionConstraint(PhysicalSectionConstraint object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Order Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -5607,6 +5633,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Physical Section Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Physical Section Mapping</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 casePhysicalSectionMapping(PhysicalSectionMapping object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Mapping</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -5618,21 +5659,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseMapping(Mapping object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Section Mapping</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Section Mapping</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseSectionMapping(SectionMapping object) {
 		return null;
 	}
 

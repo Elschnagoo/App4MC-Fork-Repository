@@ -1485,6 +1485,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PhysicalSectionConstraintItemProvider physicalSectionConstraintItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPhysicalSectionConstraintAdapter() {
+		if (physicalSectionConstraintItemProvider == null) {
+			physicalSectionConstraintItemProvider = new PhysicalSectionConstraintItemProvider(this);
+		}
+
+		return physicalSectionConstraintItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OrderConstraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2934,26 +2957,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SectionMapping} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SectionMappingItemProvider sectionMappingItemProvider;
+	protected PhysicalSectionMappingItemProvider physicalSectionMappingItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SectionMapping}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSectionMappingAdapter() {
-		if (sectionMappingItemProvider == null) {
-			sectionMappingItemProvider = new SectionMappingItemProvider(this);
+	public Adapter createPhysicalSectionMappingAdapter() {
+		if (physicalSectionMappingItemProvider == null) {
+			physicalSectionMappingItemProvider = new PhysicalSectionMappingItemProvider(this);
 		}
 
-		return sectionMappingItemProvider;
+		return physicalSectionMappingItemProvider;
 	}
 
 	/**
@@ -5761,6 +5784,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (eventChainItemProvider != null) eventChainItemProvider.dispose();
 		if (eventChainReferenceItemProvider != null) eventChainReferenceItemProvider.dispose();
 		if (subEventChainItemProvider != null) subEventChainItemProvider.dispose();
+		if (physicalSectionConstraintItemProvider != null) physicalSectionConstraintItemProvider.dispose();
 		if (orderConstraintItemProvider != null) orderConstraintItemProvider.dispose();
 		if (synchronisationConstraintItemProvider != null) synchronisationConstraintItemProvider.dispose();
 		if (reactionConstraintItemProvider != null) reactionConstraintItemProvider.dispose();
@@ -5824,7 +5848,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (hwElementRefItemProvider != null) hwElementRefItemProvider.dispose();
 		if (mappingModelItemProvider != null) mappingModelItemProvider.dispose();
 		if (coreAllocationItemProvider != null) coreAllocationItemProvider.dispose();
-		if (sectionMappingItemProvider != null) sectionMappingItemProvider.dispose();
+		if (physicalSectionMappingItemProvider != null) physicalSectionMappingItemProvider.dispose();
 		if (abstractElementMappingItemProvider != null) abstractElementMappingItemProvider.dispose();
 		if (taskAllocationItemProvider != null) taskAllocationItemProvider.dispose();
 		if (isrAllocationItemProvider != null) isrAllocationItemProvider.dispose();

@@ -63,6 +63,7 @@ public class LabelItemProvider extends AbstractElementMemoryInformationItemProvi
 			addBVolatilePropertyDescriptor(object);
 			addBufferedPropertyDescriptor(object);
 			addLabelAccessesPropertyDescriptor(object);
+			addSectionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -177,6 +178,28 @@ public class LabelItemProvider extends AbstractElementMemoryInformationItemProvi
 				 new String[] {
 					"org.eclipse.ui.views.properties.expert"
 				 }));
+	}
+
+	/**
+	 * This adds a property descriptor for the Section feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSectionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Label_section_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Label_section_feature", "_UI_Label_type"),
+				 AmaltheaPackage.eINSTANCE.getLabel_Section(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

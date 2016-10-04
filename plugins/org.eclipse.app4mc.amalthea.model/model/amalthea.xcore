@@ -127,7 +127,6 @@ interface IDisplayName
 {
 	String displayName
 }
-
 /*
  * A tag for processes, runnables, events and labels
  */
@@ -669,6 +668,8 @@ class ConstraintsModel extends BaseObject
 	contains resolving Requirement [] requirements
 	
 	contains resolving DataCoherencyGroup [] dataCoherencyGroups
+	
+	contains resolving PhysicalSectionConstraint[] physicalSectionConstraints
 }
 
 //////////////////////////Runnable Sequencing constraints (proposal)
@@ -955,6 +956,16 @@ class SubEventChain extends EventChainItem, BaseObject
 abstract class TimingConstraint extends ReferableBaseObject
 {
 //String name
+}
+
+ 
+/*
+ * This contraints is used to limit a section in  Memories
+ */
+class PhysicalSectionConstraint extends ReferableBaseObject, BaseObject
+{
+	refers Section section
+	refers Memory[+] memories
 }
 
 /*
@@ -1696,6 +1707,7 @@ class MappingModel extends BaseObject
 	contains resolving RunnableAllocation[] runnableAllocation
 	contains resolving CoreAllocation[] coreAllocation
 	contains resolving Mapping[] mapping
+	contains resolving PhysicalSectionMapping[] physicalSectionMapping
 	
 	MemoryAddressMappingType addressMappingType
 }
@@ -1719,6 +1731,30 @@ class CoreAllocation extends BaseObject
 //	@GenModel(property="None")
 //	refers transient Core[] coreLinkInt opposite coreAllocation
 }
+
+
+class PhysicalSectionMapping extends ReferableBaseObject
+{
+	@GenModel(propertyCategory="Main")
+	refers Section[+] origin 
+	
+	@GenModel(propertyCategory="Memory")
+	refers Memory[1] memory
+
+	@GenModel(propertyCategory="Memory")
+	long startAddress	
+
+	@GenModel(propertyCategory="Memory")
+	long endAddress	
+
+	refers Label[] labels  
+
+	refers Runnable[] runEntities	
+ 
+  
+}
+
+
 
 /*
  * Generalization for all Mapping types.
@@ -1759,10 +1795,7 @@ enum MemoryAddressMappingType
  * Sections (D4.2, Chapter 3.3.2)
  * Sections refer to Labels and/or Runnables.
  */
-class SectionMapping extends Mapping
-{
-	refers Section[1] section
-}
+ 
 
 /*
  * AbstractElementMemoryInformation (D4.2, Chapter 3.3.2)
@@ -2768,6 +2801,12 @@ class Runnable extends AbstractElementMemoryInformation
 	
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers readonly transient TaskRunnableCall[] taskRunnableCalls opposite runnableLinkInt 
+	
+	refers Section section
+	
+	@GenModel(suppressedGetVisibility="true",suppressedSetVisibility="true")
+	@GenModel(property="None")
+	refers transient Section sectionLinkInt opposite runnables
 }
 
 /*
@@ -2791,7 +2830,14 @@ class Label extends AbstractElementMemoryInformation, IDisplayName
 	LabelBuffering buffered
 	
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers readonly transient LabelAccess[] labelAccesses opposite dataLinkInt
+	refers readonly transient  LabelAccess[] labelAccesses opposite dataLinkInt
+	
+	refers Section section
+	
+	@GenModel(suppressedGetVisibility="true",suppressedSetVisibility="true")
+	@GenModel(property="None")
+	refers transient Section sectionLinkInt opposite labels
+	
 }
 
 class ModeLabel extends AbstractElementMemoryInformation, ModeValueProvider, IDisplayName
@@ -2811,14 +2857,18 @@ enum LabelBuffering {
  */
 class Section extends ReferableBaseObject
 {
-	//String name
+	
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers readonly transient Label[] labels opposite sectionLinkInt 
+	
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers readonly transient Runnable[] runnables opposite sectionLinkInt 
+	
 	/*
-	 * Size of all contained objects
+	 * for specifying the ASIL level for the "virtual memory sections"
 	 */
-	contains DataSize size
-	refers Label[] labels
-	//	refers AbstractRunEntity[] runEntities
-	refers Runnable[] runEntities
+ 	ASILType asilLevel
+ 
 }
 
 /*
@@ -3220,4 +3270,14 @@ class InstructionFetch extends BaseObject
 class RunEntityCallStatistic extends BaseObject
 {
 	contains resolving NumericStatistic statistic
+}
+
+enum ASILType
+{
+	_undefined_ // Display: "<ASIL Level>"
+	D
+	C
+	B
+	A
+	QM
 }

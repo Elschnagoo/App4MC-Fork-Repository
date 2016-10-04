@@ -572,6 +572,15 @@ public interface AmaltheaFactory extends EFactory {
 	SubEventChain createSubEventChain();
 
 	/**
+	 * Returns a new object of class '<em>Physical Section Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Physical Section Constraint</em>'.
+	 * @generated
+	 */
+	PhysicalSectionConstraint createPhysicalSectionConstraint();
+
+	/**
 	 * Returns a new object of class '<em>Order Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1139,13 +1148,13 @@ public interface AmaltheaFactory extends EFactory {
 	CoreAllocation createCoreAllocation();
 
 	/**
-	 * Returns a new object of class '<em>Section Mapping</em>'.
+	 * Returns a new object of class '<em>Physical Section Mapping</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Section Mapping</em>'.
+	 * @return a new object of class '<em>Physical Section Mapping</em>'.
 	 * @generated
 	 */
-	SectionMapping createSectionMapping();
+	PhysicalSectionMapping createPhysicalSectionMapping();
 
 	/**
 	 * Returns a new object of class '<em>Abstract Element Mapping</em>'.

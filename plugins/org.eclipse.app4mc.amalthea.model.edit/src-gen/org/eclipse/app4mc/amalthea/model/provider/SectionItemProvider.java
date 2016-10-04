@@ -15,18 +15,14 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
-
-import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Section;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -58,7 +54,8 @@ public class SectionItemProvider extends ReferableBaseObjectItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addLabelsPropertyDescriptor(object);
-			addRunEntitiesPropertyDescriptor(object);
+			addRunnablesPropertyDescriptor(object);
+			addAsilLevelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -77,64 +74,60 @@ public class SectionItemProvider extends ReferableBaseObjectItemProvider {
 				 getString("_UI_Section_labels_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Section_labels_feature", "_UI_Section_type"),
 				 AmaltheaPackage.eINSTANCE.getSection_Labels(),
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
-				 null,
-				 null));
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**
-	 * This adds a property descriptor for the Run Entities feature.
+	 * This adds a property descriptor for the Runnables feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRunEntitiesPropertyDescriptor(Object object) {
+	protected void addRunnablesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Section_runEntities_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Section_runEntities_feature", "_UI_Section_type"),
-				 AmaltheaPackage.eINSTANCE.getSection_RunEntities(),
+				 getString("_UI_Section_runnables_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Section_runnables_feature", "_UI_Section_type"),
+				 AmaltheaPackage.eINSTANCE.getSection_Runnables(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
+
+	/**
+	 * This adds a property descriptor for the Asil Level feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAsilLevelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Section_asilLevel_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Section_asilLevel_feature", "_UI_Section_type"),
+				 AmaltheaPackage.eINSTANCE.getSection_AsilLevel(),
 				 true,
 				 false,
-				 true,
-				 null,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
-	}
-
-	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSection_Size());
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -185,8 +178,8 @@ public class SectionItemProvider extends ReferableBaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Section.class)) {
-			case AmaltheaPackage.SECTION__SIZE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			case AmaltheaPackage.SECTION__ASIL_LEVEL:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -202,11 +195,6 @@ public class SectionItemProvider extends ReferableBaseObjectItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSection_Size(),
-				 AmaltheaFactory.eINSTANCE.createDataSize()));
 	}
 
 }

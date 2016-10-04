@@ -39,6 +39,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getRunnableAllocation <em>Runnable Allocation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getCoreAllocation <em>Core Allocation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getMapping <em>Mapping</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getPhysicalSectionMapping <em>Physical Section Mapping</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getAddressMappingType <em>Address Mapping Type</em>}</li>
  * </ul>
  *
@@ -126,6 +127,22 @@ public interface MappingModel extends BaseObject {
 	 * @generated
 	 */
 	EList<Mapping> getMapping();
+
+	/**
+	 * Returns the value of the '<em><b>Physical Section Mapping</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Physical Section Mapping</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Physical Section Mapping</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_PhysicalSectionMapping()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	EList<PhysicalSectionMapping> getPhysicalSectionMapping();
 
 	/**
 	 * Returns the value of the '<em><b>Address Mapping Type</b></em>' attribute.

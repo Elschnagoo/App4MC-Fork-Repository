@@ -18,6 +18,7 @@ import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.Section;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
 
@@ -50,6 +51,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#isService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getRunnableCalls <em>Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getTaskRunnableCalls <em>Task Runnable Calls</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getSection <em>Section</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getSectionLinkInt <em>Section Link Int</em>}</li>
  * </ul>
  *
  * @generated
@@ -144,6 +147,26 @@ public class RunnableImpl extends AbstractElementMemoryInformationImpl implement
 	 * @ordered
 	 */
 	protected EList<TaskRunnableCall> taskRunnableCalls;
+
+	/**
+	 * The cached value of the '{@link #getSection() <em>Section</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSection()
+	 * @generated
+	 * @ordered
+	 */
+	protected Section section;
+
+	/**
+	 * The cached value of the '{@link #getSectionLinkInt() <em>Section Link Int</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSectionLinkInt()
+	 * @generated
+	 * @ordered
+	 */
+	protected Section sectionLinkInt;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -328,6 +351,106 @@ public class RunnableImpl extends AbstractElementMemoryInformationImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Section getSection() {
+		if (section != null && section.eIsProxy()) {
+			InternalEObject oldSection = (InternalEObject)section;
+			section = (Section)eResolveProxy(oldSection);
+			if (section != oldSection) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE__SECTION, oldSection, section));
+			}
+		}
+		return section;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Section basicGetSection() {
+		return section;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSection(Section newSection) {
+		Section oldSection = section;
+		section = newSection;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__SECTION, oldSection, section));
+ 		//Additional setting transient value for transient bi-directional reference
+ 		setSectionLinkInt(newSection);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Section getSectionLinkInt() {
+		if (sectionLinkInt != null && sectionLinkInt.eIsProxy()) {
+			InternalEObject oldSectionLinkInt = (InternalEObject)sectionLinkInt;
+			sectionLinkInt = (Section)eResolveProxy(oldSectionLinkInt);
+			if (sectionLinkInt != oldSectionLinkInt) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE__SECTION_LINK_INT, oldSectionLinkInt, sectionLinkInt));
+			}
+		}
+		return sectionLinkInt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Section basicGetSectionLinkInt() {
+		return sectionLinkInt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSectionLinkInt(Section newSectionLinkInt, NotificationChain msgs) {
+		Section oldSectionLinkInt = sectionLinkInt;
+		sectionLinkInt = newSectionLinkInt;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__SECTION_LINK_INT, oldSectionLinkInt, newSectionLinkInt);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSectionLinkInt(Section newSectionLinkInt) {
+		if (newSectionLinkInt != sectionLinkInt) {
+			NotificationChain msgs = null;
+			if (sectionLinkInt != null)
+				msgs = ((InternalEObject)sectionLinkInt).eInverseRemove(this, AmaltheaPackage.SECTION__RUNNABLES, Section.class, msgs);
+			if (newSectionLinkInt != null)
+				msgs = ((InternalEObject)newSectionLinkInt).eInverseAdd(this, AmaltheaPackage.SECTION__RUNNABLES, Section.class, msgs);
+			msgs = basicSetSectionLinkInt(newSectionLinkInt, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__SECTION_LINK_INT, newSectionLinkInt, newSectionLinkInt));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -336,6 +459,10 @@ public class RunnableImpl extends AbstractElementMemoryInformationImpl implement
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRunnableCalls()).basicAdd(otherEnd, msgs);
 			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTaskRunnableCalls()).basicAdd(otherEnd, msgs);
+			case AmaltheaPackage.RUNNABLE__SECTION_LINK_INT:
+				if (sectionLinkInt != null)
+					msgs = ((InternalEObject)sectionLinkInt).eInverseRemove(this, AmaltheaPackage.SECTION__RUNNABLES, Section.class, msgs);
+				return basicSetSectionLinkInt((Section)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -356,6 +483,8 @@ public class RunnableImpl extends AbstractElementMemoryInformationImpl implement
 				return ((InternalEList<?>)getRunnableCalls()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
 				return ((InternalEList<?>)getTaskRunnableCalls()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.RUNNABLE__SECTION_LINK_INT:
+				return basicSetSectionLinkInt(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -383,6 +512,12 @@ public class RunnableImpl extends AbstractElementMemoryInformationImpl implement
 				return getRunnableCalls();
 			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
 				return getTaskRunnableCalls();
+			case AmaltheaPackage.RUNNABLE__SECTION:
+				if (resolve) return getSection();
+				return basicGetSection();
+			case AmaltheaPackage.RUNNABLE__SECTION_LINK_INT:
+				if (resolve) return getSectionLinkInt();
+				return basicGetSectionLinkInt();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -412,6 +547,12 @@ public class RunnableImpl extends AbstractElementMemoryInformationImpl implement
 			case AmaltheaPackage.RUNNABLE__SERVICE:
 				setService((Boolean)newValue);
 				return;
+			case AmaltheaPackage.RUNNABLE__SECTION:
+				setSection((Section)newValue);
+				return;
+			case AmaltheaPackage.RUNNABLE__SECTION_LINK_INT:
+				setSectionLinkInt((Section)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -439,6 +580,12 @@ public class RunnableImpl extends AbstractElementMemoryInformationImpl implement
 			case AmaltheaPackage.RUNNABLE__SERVICE:
 				setService(SERVICE_EDEFAULT);
 				return;
+			case AmaltheaPackage.RUNNABLE__SECTION:
+				setSection((Section)null);
+				return;
+			case AmaltheaPackage.RUNNABLE__SECTION_LINK_INT:
+				setSectionLinkInt((Section)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -465,6 +612,10 @@ public class RunnableImpl extends AbstractElementMemoryInformationImpl implement
 				return runnableCalls != null && !runnableCalls.isEmpty();
 			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
 				return taskRunnableCalls != null && !taskRunnableCalls.isEmpty();
+			case AmaltheaPackage.RUNNABLE__SECTION:
+				return section != null;
+			case AmaltheaPackage.RUNNABLE__SECTION_LINK_INT:
+				return sectionLinkInt != null;
 		}
 		return super.eIsSet(featureID);
 	}

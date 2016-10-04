@@ -3,29 +3,38 @@ package org.eclipse.app4mc.amalthea.model.provider
 import java.util.List
 import java.util.Map
 import org.eclipse.app4mc.amalthea.model.AbstractElementMapping
+import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint
 import org.eclipse.app4mc.amalthea.model.AbstractTime
 import org.eclipse.app4mc.amalthea.model.AccessPathRef
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec
+import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement
+import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition
+import org.eclipse.app4mc.amalthea.model.BigIntegerObject
 import org.eclipse.app4mc.amalthea.model.BooleanObject
+import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype
+import org.eclipse.app4mc.amalthea.model.ClearEvent
+import org.eclipse.app4mc.amalthea.model.CoherencyDirection
 import org.eclipse.app4mc.amalthea.model.Component
 import org.eclipse.app4mc.amalthea.model.ComponentInstance
 import org.eclipse.app4mc.amalthea.model.ComponentScope
 import org.eclipse.app4mc.amalthea.model.Composite
 import org.eclipse.app4mc.amalthea.model.Connector
 import org.eclipse.app4mc.amalthea.model.CoreAllocation
+import org.eclipse.app4mc.amalthea.model.CountMetric
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit
 import org.eclipse.app4mc.amalthea.model.DataAgeCycle
 import org.eclipse.app4mc.amalthea.model.DataAgeTime
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping
-import org.eclipse.app4mc.amalthea.model.DataTypeDefinition
 import org.eclipse.app4mc.amalthea.model.DataSize
+import org.eclipse.app4mc.amalthea.model.DataSizeUnit
+import org.eclipse.app4mc.amalthea.model.DataTypeDefinition
 import org.eclipse.app4mc.amalthea.model.Deviation
 import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem
 import org.eclipse.app4mc.amalthea.model.DoubleObject
@@ -35,6 +44,7 @@ import org.eclipse.app4mc.amalthea.model.EventConfigLink
 import org.eclipse.app4mc.amalthea.model.FInterfacePort
 import org.eclipse.app4mc.amalthea.model.FloatObject
 import org.eclipse.app4mc.amalthea.model.Frequency
+import org.eclipse.app4mc.amalthea.model.FrequencyMetric
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit
 import org.eclipse.app4mc.amalthea.model.Group
@@ -51,24 +61,31 @@ import org.eclipse.app4mc.amalthea.model.LabelAccess
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum
 import org.eclipse.app4mc.amalthea.model.LatencyAccessPath
 import org.eclipse.app4mc.amalthea.model.LatencyConstant
+import org.eclipse.app4mc.amalthea.model.LatencyDeviation
 import org.eclipse.app4mc.amalthea.model.LimitType
 import org.eclipse.app4mc.amalthea.model.LongObject
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic
 import org.eclipse.app4mc.amalthea.model.ModeLabelAccess
+import org.eclipse.app4mc.amalthea.model.ModeLiteral
 import org.eclipse.app4mc.amalthea.model.ModeSwitch
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry
 import org.eclipse.app4mc.amalthea.model.ModeValueList
+import org.eclipse.app4mc.amalthea.model.ModeValueListEntry
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec
+import org.eclipse.app4mc.amalthea.model.OrderType
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions
 import org.eclipse.app4mc.amalthea.model.OsBuffering
 import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant
 import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions
 import org.eclipse.app4mc.amalthea.model.OsInstructions
+import org.eclipse.app4mc.amalthea.model.PercentageMetric
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit
 import org.eclipse.app4mc.amalthea.model.ProbabilityGroup
 import org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint
+import org.eclipse.app4mc.amalthea.model.ProcessChainRequirement
+import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement
 import org.eclipse.app4mc.amalthea.model.ProcessScope
 import org.eclipse.app4mc.amalthea.model.QualifiedPort
@@ -79,7 +96,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableCall
 import org.eclipse.app4mc.amalthea.model.RunnableItem
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement
 import org.eclipse.app4mc.amalthea.model.RunnableScope
-import org.eclipse.app4mc.amalthea.model.SectionMapping
 import org.eclipse.app4mc.amalthea.model.SectionMappingConstraint
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum
@@ -98,43 +114,29 @@ import org.eclipse.app4mc.amalthea.model.TargetCallSequence
 import org.eclipse.app4mc.amalthea.model.TaskAllocation
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall
 import org.eclipse.app4mc.amalthea.model.Time
+import org.eclipse.app4mc.amalthea.model.TimeMetric
 import org.eclipse.app4mc.amalthea.model.TimeObject
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit
 import org.eclipse.app4mc.amalthea.model.TimeUnit
 import org.eclipse.app4mc.amalthea.model.TypeDefinition
 import org.eclipse.app4mc.amalthea.model.TypeRef
+import org.eclipse.app4mc.amalthea.model.WaitEvent
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl
 import org.eclipse.emf.common.notify.AdapterFactory
 import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
-import org.eclipse.app4mc.amalthea.model.CoherencyDirection
-import org.eclipse.app4mc.amalthea.model.WaitEvent
-import org.eclipse.app4mc.amalthea.model.ClearEvent
-import org.eclipse.app4mc.amalthea.model.OrderType
-import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType
-import org.eclipse.app4mc.amalthea.model.ModeLiteral
-import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint
-import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint
-import org.eclipse.app4mc.amalthea.model.LatencyDeviation
-import org.eclipse.app4mc.amalthea.model.ProcessChainRequirement
-import org.eclipse.app4mc.amalthea.model.CountMetric
-import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric
-import org.eclipse.app4mc.amalthea.model.FrequencyMetric
-import org.eclipse.app4mc.amalthea.model.PercentageMetric
-import org.eclipse.app4mc.amalthea.model.TimeMetric
-import org.eclipse.app4mc.amalthea.model.ModeValueListEntry
-import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry
-import org.eclipse.app4mc.amalthea.model.BigIntegerObject
-import org.eclipse.app4mc.amalthea.model.DataSizeUnit
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping
+import java.util.ArrayList
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint
 
 class CustomItemProviderService {
 
 
 
 ///// _________________________ Common _________________________
-
+ 
 
 
 	private def static getFrequencyText(Frequency frequency) {
@@ -1181,6 +1183,62 @@ class CustomItemProviderService {
 ///// _________________________ Events _________________________
 
 
+	/*****************************************************************************
+	 * 						PhysicalSectionConstraintItemProvider
+	 *****************************************************************************/
+	def static String getPhysicalSectionConstraintItemProviderText(Object object, String defaultText) {
+		if (object instanceof PhysicalSectionConstraint) {
+			val section = object?.section
+			val memories = object?.memories
+
+			val sectionString = if(section?.name.isNullOrEmpty) "<section>" else "Section :  " + section.name
+			
+			val List<String> memoryNames=new ArrayList<String>()
+			
+			if(!memories.isNullOrEmpty){
+				memories.forEach[it|
+					val st= if(it?.name.isNullOrEmpty) "<memory>" else it.name
+					memoryNames.add(st)
+				]
+			}
+			
+			
+			
+			val memoriesString = if(memoryNames.isNullOrEmpty) {"<memories>"}  else { 
+				
+				if(memoryNames.size>10) {
+				" Memories : "+memoryNames.subList(0,10).join('|')+"|..."
+				}
+				else if(memoryNames.size>1) {
+				" Memories : "+memoryNames.join('|')
+				}  
+				else 
+				{" Memory : "+memoryNames.join('|') }
+			}
+			
+			val s0= if(object?.name.isNullOrEmpty) "<name>" else  object.name
+			
+			return s0 + " [ "+"(" + sectionString + ")" + " -- (" + memoriesString + ")"+ " ]";
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getPhysicalSectionConstraintItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(PhysicalSectionConstraint)) {
+			case AmaltheaPackage::PHYSICAL_SECTION_CONSTRAINT__NAME:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, false))
+			case AmaltheaPackage::PHYSICAL_SECTION_CONSTRAINT__SECTION:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+			case AmaltheaPackage::PHYSICAL_SECTION_CONSTRAINT__MEMORIES:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+		}
+		return list
+	}
+
+
 
 
 
@@ -1517,27 +1575,57 @@ class CustomItemProviderService {
 		return list
 	}
 
+ 
+ 
+
 	/*****************************************************************************
-	 * 						SectionMappingItemProvider
+	 * 						PhysicalSectionMappingItemProvider
 	 *****************************************************************************/
-	def static String getSectionMappingItemProviderText(Object object, String defaultText) {
-		if (object instanceof SectionMapping) {
-			val memName = object?.memory?.name
-			val secName = object?.section?.name
-			val s1 = if(memName.isNullOrEmpty) "<memory>" else "Memory " + memName
-			val s2 = if(secName.isNullOrEmpty) "<section>" else "Section " + secName
-			return "Mapping: " + s1 + " -- " + s2;
+	def static String getPhysicalSectionMappingItemProviderText(Object object, String defaultText) {
+		if (object instanceof PhysicalSectionMapping) {
+			val memory = object?.memory
+			val sections = object?.origin
+
+			val memoryString = if(memory?.name.isNullOrEmpty) "<memory>" else "Memory :  " + memory.name
+			
+			val List<String> sectionNames=new ArrayList<String>()
+			
+			if(!sections.isNullOrEmpty){
+				sections.forEach[it|
+					val st= if(it?.name.isNullOrEmpty) "<section>" else it.name
+					sectionNames.add(st)
+				]
+			}
+			
+			val sectionsString = if(sectionNames.isNullOrEmpty) {"<sections>"}
+			 else {
+			 	if(sectionNames.size>10) {
+			 	" Sections : "+sectionNames.subList(0,10).join('|')+"|..."
+			 	}else if(sectionNames.size>1) {
+			 	" Sections : "+sectionNames.join('|')
+			 	} else {
+			 	" Section : "+sectionNames.join('|')
+			 	}
+			 }
+			
+			val s0= if(object?.name.isNullOrEmpty) "<name>" else  object.name
+			
+			return s0 + " [ "+"(" + sectionsString + ")" + " -- (" + memoryString + ")"+ " ]";
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getSectionMappingItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getPhysicalSectionMappingItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(SectionMapping)) {
-			case AmaltheaPackage::SECTION_MAPPING__MEMORY,
-			case AmaltheaPackage::SECTION_MAPPING__SECTION:
+
+		switch notification.getFeatureID(typeof(PhysicalSectionMapping)) {
+			case AmaltheaPackage::PHYSICAL_SECTION_MAPPING__MEMORY:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+			case AmaltheaPackage::PHYSICAL_SECTION_MAPPING__ORIGIN:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+			case AmaltheaPackage::PHYSICAL_SECTION_MAPPING__NAME:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
 		}
 		return list
 	}

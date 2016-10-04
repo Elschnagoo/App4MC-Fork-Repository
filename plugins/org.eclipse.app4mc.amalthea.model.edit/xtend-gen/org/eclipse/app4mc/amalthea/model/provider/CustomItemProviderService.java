@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMapping;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation;
@@ -101,6 +102,8 @@ import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
 import org.eclipse.app4mc.amalthea.model.PercentageMetric;
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
 import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.ProbabilityGroup;
 import org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem;
@@ -121,7 +124,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.Section;
-import org.eclipse.app4mc.amalthea.model.SectionMapping;
 import org.eclipse.app4mc.amalthea.model.SectionMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
@@ -2261,6 +2263,131 @@ public class CustomItemProviderService {
   }
   
   /**
+   * PhysicalSectionConstraintItemProvider
+   */
+  public static String getPhysicalSectionConstraintItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof PhysicalSectionConstraint)) {
+      Section _section = null;
+      if (((PhysicalSectionConstraint)object)!=null) {
+        _section=((PhysicalSectionConstraint)object).getSection();
+      }
+      final Section section = _section;
+      EList<Memory> _memories = null;
+      if (((PhysicalSectionConstraint)object)!=null) {
+        _memories=((PhysicalSectionConstraint)object).getMemories();
+      }
+      final EList<Memory> memories = _memories;
+      String _xifexpression = null;
+      String _name = null;
+      if (section!=null) {
+        _name=section.getName();
+      }
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name);
+      if (_isNullOrEmpty) {
+        _xifexpression = "<section>";
+      } else {
+        String _name_1 = section.getName();
+        _xifexpression = ("Section :  " + _name_1);
+      }
+      final String sectionString = _xifexpression;
+      final List<String> memoryNames = new ArrayList<String>();
+      boolean _isNullOrEmpty_1 = IterableExtensions.isNullOrEmpty(memories);
+      boolean _not = (!_isNullOrEmpty_1);
+      if (_not) {
+        final Consumer<Memory> _function = (Memory it) -> {
+          String _xifexpression_1 = null;
+          String _name_2 = null;
+          if (it!=null) {
+            _name_2=it.getName();
+          }
+          boolean _isNullOrEmpty_2 = StringExtensions.isNullOrEmpty(_name_2);
+          if (_isNullOrEmpty_2) {
+            _xifexpression_1 = "<memory>";
+          } else {
+            _xifexpression_1 = it.getName();
+          }
+          final String st = _xifexpression_1;
+          memoryNames.add(st);
+        };
+        memories.forEach(_function);
+      }
+      String _xifexpression_1 = null;
+      boolean _isNullOrEmpty_2 = IterableExtensions.isNullOrEmpty(memoryNames);
+      if (_isNullOrEmpty_2) {
+        _xifexpression_1 = "<memories>";
+      } else {
+        String _xifexpression_2 = null;
+        int _size = memoryNames.size();
+        boolean _greaterThan = (_size > 10);
+        if (_greaterThan) {
+          List<String> _subList = memoryNames.subList(0, 10);
+          String _join = IterableExtensions.join(_subList, "|");
+          String _plus = (" Memories : " + _join);
+          _xifexpression_2 = (_plus + "|...");
+        } else {
+          String _xifexpression_3 = null;
+          int _size_1 = memoryNames.size();
+          boolean _greaterThan_1 = (_size_1 > 1);
+          if (_greaterThan_1) {
+            String _join_1 = IterableExtensions.join(memoryNames, "|");
+            _xifexpression_3 = (" Memories : " + _join_1);
+          } else {
+            String _join_2 = IterableExtensions.join(memoryNames, "|");
+            _xifexpression_3 = (" Memory : " + _join_2);
+          }
+          _xifexpression_2 = _xifexpression_3;
+        }
+        _xifexpression_1 = _xifexpression_2;
+      }
+      final String memoriesString = _xifexpression_1;
+      String _xifexpression_4 = null;
+      String _name_2 = null;
+      if (((PhysicalSectionConstraint)object)!=null) {
+        _name_2=((PhysicalSectionConstraint)object).getName();
+      }
+      boolean _isNullOrEmpty_3 = StringExtensions.isNullOrEmpty(_name_2);
+      if (_isNullOrEmpty_3) {
+        _xifexpression_4 = "<name>";
+      } else {
+        _xifexpression_4 = ((PhysicalSectionConstraint)object).getName();
+      }
+      final String s0 = _xifexpression_4;
+      return ((((((((s0 + " [ ") + "(") + sectionString) + ")") + " -- (") + memoriesString) + ")") + " ]");
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getPhysicalSectionConstraintItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(PhysicalSectionConstraint.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_CONSTRAINT__NAME)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, false);
+      list.add(_viewerNotification);
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_CONSTRAINT__SECTION)) {
+        _matched=true;
+        Object _notifier_1 = notification.getNotifier();
+        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
+        list.add(_viewerNotification_1);
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_CONSTRAINT__MEMORIES)) {
+        _matched=true;
+        Object _notifier_2 = notification.getNotifier();
+        ViewerNotification _viewerNotification_2 = new ViewerNotification(notification, _notifier_2, true, true);
+        list.add(_viewerNotification_2);
+      }
+    }
+    return list;
+  }
+  
+  /**
    * HwAccessPathItemProvider
    */
   public static String getHwAccessPathItemProviderText(final Object object, final String defaultText) {
@@ -2996,66 +3123,126 @@ public class CustomItemProviderService {
   }
   
   /**
-   * SectionMappingItemProvider
+   * PhysicalSectionMappingItemProvider
    */
-  public static String getSectionMappingItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof SectionMapping)) {
+  public static String getPhysicalSectionMappingItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof PhysicalSectionMapping)) {
       Memory _memory = null;
-      if (((SectionMapping)object)!=null) {
-        _memory=((SectionMapping)object).getMemory();
+      if (((PhysicalSectionMapping)object)!=null) {
+        _memory=((PhysicalSectionMapping)object).getMemory();
       }
-      String _name = null;
-      if (_memory!=null) {
-        _name=_memory.getName();
+      final Memory memory = _memory;
+      EList<Section> _origin = null;
+      if (((PhysicalSectionMapping)object)!=null) {
+        _origin=((PhysicalSectionMapping)object).getOrigin();
       }
-      final String memName = _name;
-      Section _section = null;
-      if (((SectionMapping)object)!=null) {
-        _section=((SectionMapping)object).getSection();
-      }
-      String _name_1 = null;
-      if (_section!=null) {
-        _name_1=_section.getName();
-      }
-      final String secName = _name_1;
+      final EList<Section> sections = _origin;
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(memName);
+      String _name = null;
+      if (memory!=null) {
+        _name=memory.getName();
+      }
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name);
       if (_isNullOrEmpty) {
         _xifexpression = "<memory>";
       } else {
-        _xifexpression = ("Memory " + memName);
+        String _name_1 = memory.getName();
+        _xifexpression = ("Memory :  " + _name_1);
       }
-      final String s1 = _xifexpression;
+      final String memoryString = _xifexpression;
+      final List<String> sectionNames = new ArrayList<String>();
+      boolean _isNullOrEmpty_1 = IterableExtensions.isNullOrEmpty(sections);
+      boolean _not = (!_isNullOrEmpty_1);
+      if (_not) {
+        final Consumer<Section> _function = (Section it) -> {
+          String _xifexpression_1 = null;
+          String _name_2 = null;
+          if (it!=null) {
+            _name_2=it.getName();
+          }
+          boolean _isNullOrEmpty_2 = StringExtensions.isNullOrEmpty(_name_2);
+          if (_isNullOrEmpty_2) {
+            _xifexpression_1 = "<section>";
+          } else {
+            _xifexpression_1 = it.getName();
+          }
+          final String st = _xifexpression_1;
+          sectionNames.add(st);
+        };
+        sections.forEach(_function);
+      }
       String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(secName);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<section>";
+      boolean _isNullOrEmpty_2 = IterableExtensions.isNullOrEmpty(sectionNames);
+      if (_isNullOrEmpty_2) {
+        _xifexpression_1 = "<sections>";
       } else {
-        _xifexpression_1 = ("Section " + secName);
+        String _xifexpression_2 = null;
+        int _size = sectionNames.size();
+        boolean _greaterThan = (_size > 10);
+        if (_greaterThan) {
+          List<String> _subList = sectionNames.subList(0, 10);
+          String _join = IterableExtensions.join(_subList, "|");
+          String _plus = (" Sections : " + _join);
+          _xifexpression_2 = (_plus + "|...");
+        } else {
+          String _xifexpression_3 = null;
+          int _size_1 = sectionNames.size();
+          boolean _greaterThan_1 = (_size_1 > 1);
+          if (_greaterThan_1) {
+            String _join_1 = IterableExtensions.join(sectionNames, "|");
+            _xifexpression_3 = (" Sections : " + _join_1);
+          } else {
+            String _join_2 = IterableExtensions.join(sectionNames, "|");
+            _xifexpression_3 = (" Section : " + _join_2);
+          }
+          _xifexpression_2 = _xifexpression_3;
+        }
+        _xifexpression_1 = _xifexpression_2;
       }
-      final String s2 = _xifexpression_1;
-      return ((("Mapping: " + s1) + " -- ") + s2);
+      final String sectionsString = _xifexpression_1;
+      String _xifexpression_4 = null;
+      String _name_2 = null;
+      if (((PhysicalSectionMapping)object)!=null) {
+        _name_2=((PhysicalSectionMapping)object).getName();
+      }
+      boolean _isNullOrEmpty_3 = StringExtensions.isNullOrEmpty(_name_2);
+      if (_isNullOrEmpty_3) {
+        _xifexpression_4 = "<name>";
+      } else {
+        _xifexpression_4 = ((PhysicalSectionMapping)object).getName();
+      }
+      final String s0 = _xifexpression_4;
+      return ((((((((s0 + " [ ") + "(") + sectionsString) + ")") + " -- (") + memoryString) + ")") + " ]");
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getSectionMappingItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getPhysicalSectionMappingItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(SectionMapping.class);
+    int _featureID = notification.getFeatureID(PhysicalSectionMapping.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.SECTION_MAPPING__MEMORY)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_MAPPING__MEMORY)) {
       _matched=true;
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.SECTION_MAPPING__SECTION)) {
-        _matched=true;
-      }
-    }
-    if (_matched) {
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_MAPPING__ORIGIN)) {
+        _matched=true;
+        Object _notifier_1 = notification.getNotifier();
+        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
+        list.add(_viewerNotification_1);
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_MAPPING__NAME)) {
+        _matched=true;
+        Object _notifier_2 = notification.getNotifier();
+        ViewerNotification _viewerNotification_2 = new ViewerNotification(notification, _notifier_2, true, false);
+        list.add(_viewerNotification_2);
+      }
     }
     return list;
   }

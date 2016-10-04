@@ -62,6 +62,7 @@ public class RunnableItemProvider extends AbstractElementMemoryInformationItemPr
 			addServicePropertyDescriptor(object);
 			addRunnableCallsPropertyDescriptor(object);
 			addTaskRunnableCallsPropertyDescriptor(object);
+			addSectionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -178,6 +179,28 @@ public class RunnableItemProvider extends AbstractElementMemoryInformationItemPr
 				 new String[] {
 					"org.eclipse.ui.views.properties.expert"
 				 }));
+	}
+
+	/**
+	 * This adds a property descriptor for the Section feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSectionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Runnable_section_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Runnable_section_feature", "_UI_Runnable_type"),
+				 AmaltheaPackage.eINSTANCE.getRunnable_Section(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

@@ -29,9 +29,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Section#getSize <em>Size</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Section#getLabels <em>Labels</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Section#getRunEntities <em>Run Entities</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Section#getRunnables <em>Runnables</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Section#getAsilLevel <em>Asil Level</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection()
@@ -39,31 +39,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Section extends ReferableBaseObject {
-	/**
-	 * Returns the value of the '<em><b>Size</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Size of all contained objects
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Size</em>' containment reference.
-	 * @see #setSize(DataSize)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection_Size()
-	 * @model containment="true"
-	 * @generated
-	 */
-	DataSize getSize();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Section#getSize <em>Size</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Size</em>' containment reference.
-	 * @see #getSize()
-	 * @generated
-	 */
-	void setSize(DataSize value);
-
 	/**
 	 * Returns the value of the '<em><b>Labels</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Label}.
@@ -75,25 +50,55 @@ public interface Section extends ReferableBaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Labels</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection_Labels()
-	 * @model
+	 * @model opposite="sectionLinkInt" transient="true" changeable="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
 	EList<Label> getLabels();
 
 	/**
-	 * Returns the value of the '<em><b>Run Entities</b></em>' reference list.
+	 * Returns the value of the '<em><b>Runnables</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Runnable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Run Entities</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Runnables</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Run Entities</em>' reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection_RunEntities()
-	 * @model
+	 * @return the value of the '<em>Runnables</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection_Runnables()
+	 * @model opposite="sectionLinkInt" transient="true" changeable="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
-	EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunEntities();
+	EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables();
+
+	/**
+	 * Returns the value of the '<em><b>Asil Level</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.ASILType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * for specifying the ASIL level for the "virtual memory sections"
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Asil Level</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.ASILType
+	 * @see #setAsilLevel(ASILType)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection_AsilLevel()
+	 * @model unique="false"
+	 * @generated
+	 */
+	ASILType getAsilLevel();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Section#getAsilLevel <em>Asil Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Asil Level</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.ASILType
+	 * @see #getAsilLevel()
+	 * @generated
+	 */
+	void setAsilLevel(ASILType value);
 
 } // Section

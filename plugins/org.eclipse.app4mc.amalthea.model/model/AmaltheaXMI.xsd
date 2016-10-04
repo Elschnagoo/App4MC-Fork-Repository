@@ -453,6 +453,16 @@ exclusive: gets access to requested semaphore only when there is no other user a
       <xsd:enumeration value="SingleCorePrioSafe"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="ASILType">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="D"/>
+      <xsd:enumeration value="C"/>
+      <xsd:enumeration value="B"/>
+      <xsd:enumeration value="A"/>
+      <xsd:enumeration value="QM"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:complexType name="Amalthea">
     <xsd:annotation>
       <xsd:documentation>*
@@ -1292,6 +1302,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
           <xsd:element name="dataAgeConstraints" type="am:DataAgeConstraint"/>
           <xsd:element name="requirements" type="am:Requirement"/>
           <xsd:element name="dataCoherencyGroups" type="am:DataCoherencyGroup"/>
+          <xsd:element name="physicalSectionConstraints" type="am:PhysicalSectionConstraint"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -1870,6 +1881,26 @@ strands: alternative event paths</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="TimingConstraint" type="am:TimingConstraint"/>
+  <xsd:complexType name="PhysicalSectionConstraint">
+    <xsd:annotation>
+      <xsd:documentation>This contraints is used to limit a section in  Memories</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="section" type="am:Section"/>
+          <xsd:element name="memories" type="am:Memory"/>
+        </xsd:choice>
+        <xsd:attribute name="section" type="xsd:string"/>
+        <xsd:attribute name="memories" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PhysicalSectionConstraint" type="am:PhysicalSectionConstraint">
+    <xsd:annotation>
+      <xsd:documentation>This contraints is used to limit a section in  Memories</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="OrderConstraint">
     <xsd:annotation>
       <xsd:documentation>The order constraint defines a sequence of events
@@ -2884,6 +2915,7 @@ core: The core that processes the process/runnable that accesses the semaphore (
           <xsd:element name="runnableAllocation" type="am:RunnableAllocation"/>
           <xsd:element name="coreAllocation" type="am:CoreAllocation"/>
           <xsd:element name="mapping" type="am:Mapping"/>
+          <xsd:element name="physicalSectionMapping" type="am:PhysicalSectionMapping"/>
         </xsd:choice>
         <xsd:attribute name="addressMappingType" type="am:MemoryAddressMappingType"/>
       </xsd:extension>
@@ -2921,6 +2953,25 @@ core: The core that processes the process/runnable that accesses the semaphore (
       <xsd:documentation>Allocation of Cores to schedulers</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="PhysicalSectionMapping">
+    <xsd:complexContent>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="origin" type="am:Section"/>
+          <xsd:element name="memory" type="am:Memory"/>
+          <xsd:element name="labels" type="am:Label"/>
+          <xsd:element name="runEntities" type="am:Runnable"/>
+        </xsd:choice>
+        <xsd:attribute name="startAddress" type="xsd:long"/>
+        <xsd:attribute name="endAddress" type="xsd:long"/>
+        <xsd:attribute name="origin" type="xsd:string"/>
+        <xsd:attribute name="memory" type="xsd:string"/>
+        <xsd:attribute name="labels" type="xsd:string"/>
+        <xsd:attribute name="runEntities" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PhysicalSectionMapping" type="am:PhysicalSectionMapping"/>
   <xsd:complexType abstract="true" name="Mapping">
     <xsd:annotation>
       <xsd:documentation>Generalization for all Mapping types.
@@ -2954,33 +3005,10 @@ Mappings assign Runnables/Signals to memories</xsd:documentation>
 Mappings assign Runnables/Signals to memories</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="SectionMapping">
-    <xsd:annotation>
-      <xsd:documentation>Sections (D4.2, Chapter 3.3.2)
-Sections refer to Labels and/or Runnables.</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Mapping">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="section" type="am:Section"/>
-        </xsd:choice>
-        <xsd:attribute name="section" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="SectionMapping" type="am:SectionMapping">
-    <xsd:annotation>
-      <xsd:documentation>Sections (D4.2, Chapter 3.3.2)
-Sections refer to Labels and/or Runnables.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType name="AbstractElementMapping">
     <xsd:annotation>
-      <xsd:documentation>AbstractElementMemoryInformation (D4.2, Chapter 3.3.2)
-Generalization of Label, Runnable, AbstractProcess ( ISR &amp; Task) and
-TaskPrototype.
-This mapping describes the allocation of its specializations to a specific
-memory.</xsd:documentation>
+      <xsd:documentation>Sections (D4.2, Chapter 3.3.2)
+Sections refer to Labels and/or Runnables.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Mapping">
@@ -2993,11 +3021,8 @@ memory.</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="AbstractElementMapping" type="am:AbstractElementMapping">
     <xsd:annotation>
-      <xsd:documentation>AbstractElementMemoryInformation (D4.2, Chapter 3.3.2)
-Generalization of Label, Runnable, AbstractProcess ( ISR &amp; Task) and
-TaskPrototype.
-This mapping describes the allocation of its specializations to a specific
-memory.</xsd:documentation>
+      <xsd:documentation>Sections (D4.2, Chapter 3.3.2)
+Sections refer to Labels and/or Runnables.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="TaskAllocation">
@@ -4702,6 +4727,7 @@ The final state can be several Tasks, which can be computed using provided infor
               <xsd:documentation>Optional parameter for allocation to task or time slice.</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
+          <xsd:element name="section" type="am:Section"/>
         </xsd:choice>
         <xsd:attribute name="callback" type="xsd:boolean">
           <xsd:annotation>
@@ -4714,6 +4740,7 @@ The final state can be several Tasks, which can be computed using provided infor
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="activation" type="xsd:string"/>
+        <xsd:attribute name="section" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -4730,6 +4757,7 @@ The final state can be several Tasks, which can be computed using provided infor
       <xsd:extension base="am:AbstractElementMemoryInformation">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="dataType" type="am:DataType"/>
+          <xsd:element name="section" type="am:Section"/>
         </xsd:choice>
         <xsd:attribute name="displayName" type="xsd:string"/>
         <xsd:attribute name="constant" type="xsd:boolean">
@@ -4747,6 +4775,7 @@ The final state can be several Tasks, which can be computed using provided infor
             <xsd:documentation>Defines if the label is buffered or not</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="section" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -4777,17 +4806,11 @@ which are belonging together.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="size" type="am:DataSize">
-            <xsd:annotation>
-              <xsd:documentation>Size of all contained objects</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
-          <xsd:element name="labels" type="am:Label"/>
-          <xsd:element name="runEntities" type="am:Runnable"/>
-        </xsd:choice>
-        <xsd:attribute name="labels" type="xsd:string"/>
-        <xsd:attribute name="runEntities" type="xsd:string"/>
+        <xsd:attribute name="asilLevel" type="am:ASILType">
+          <xsd:annotation>
+            <xsd:documentation>for specifying the ASIL level for the "virtual memory sections"</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

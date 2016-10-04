@@ -18,6 +18,7 @@ import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelBuffering;
+import org.eclipse.app4mc.amalthea.model.Section;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -46,6 +47,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#isBVolatile <em>BVolatile</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getBuffered <em>Buffered</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getLabelAccesses <em>Label Accesses</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getSection <em>Section</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getSectionLinkInt <em>Section Link Int</em>}</li>
  * </ul>
  *
  * @generated
@@ -150,6 +153,26 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 	 * @ordered
 	 */
 	protected EList<LabelAccess> labelAccesses;
+
+	/**
+	 * The cached value of the '{@link #getSection() <em>Section</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSection()
+	 * @generated
+	 * @ordered
+	 */
+	protected Section section;
+
+	/**
+	 * The cached value of the '{@link #getSectionLinkInt() <em>Section Link Int</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSectionLinkInt()
+	 * @generated
+	 * @ordered
+	 */
+	protected Section sectionLinkInt;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -314,12 +337,116 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Section getSection() {
+		if (section != null && section.eIsProxy()) {
+			InternalEObject oldSection = (InternalEObject)section;
+			section = (Section)eResolveProxy(oldSection);
+			if (section != oldSection) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.LABEL__SECTION, oldSection, section));
+			}
+		}
+		return section;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Section basicGetSection() {
+		return section;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSection(Section newSection) {
+		Section oldSection = section;
+		section = newSection;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL__SECTION, oldSection, section));
+ 		//Additional setting transient value for transient bi-directional reference
+ 		setSectionLinkInt(newSection);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Section getSectionLinkInt() {
+		if (sectionLinkInt != null && sectionLinkInt.eIsProxy()) {
+			InternalEObject oldSectionLinkInt = (InternalEObject)sectionLinkInt;
+			sectionLinkInt = (Section)eResolveProxy(oldSectionLinkInt);
+			if (sectionLinkInt != oldSectionLinkInt) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.LABEL__SECTION_LINK_INT, oldSectionLinkInt, sectionLinkInt));
+			}
+		}
+		return sectionLinkInt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Section basicGetSectionLinkInt() {
+		return sectionLinkInt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSectionLinkInt(Section newSectionLinkInt, NotificationChain msgs) {
+		Section oldSectionLinkInt = sectionLinkInt;
+		sectionLinkInt = newSectionLinkInt;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL__SECTION_LINK_INT, oldSectionLinkInt, newSectionLinkInt);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSectionLinkInt(Section newSectionLinkInt) {
+		if (newSectionLinkInt != sectionLinkInt) {
+			NotificationChain msgs = null;
+			if (sectionLinkInt != null)
+				msgs = ((InternalEObject)sectionLinkInt).eInverseRemove(this, AmaltheaPackage.SECTION__LABELS, Section.class, msgs);
+			if (newSectionLinkInt != null)
+				msgs = ((InternalEObject)newSectionLinkInt).eInverseAdd(this, AmaltheaPackage.SECTION__LABELS, Section.class, msgs);
+			msgs = basicSetSectionLinkInt(newSectionLinkInt, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL__SECTION_LINK_INT, newSectionLinkInt, newSectionLinkInt));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLabelAccesses()).basicAdd(otherEnd, msgs);
+			case AmaltheaPackage.LABEL__SECTION_LINK_INT:
+				if (sectionLinkInt != null)
+					msgs = ((InternalEObject)sectionLinkInt).eInverseRemove(this, AmaltheaPackage.SECTION__LABELS, Section.class, msgs);
+				return basicSetSectionLinkInt((Section)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -336,6 +463,8 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 				return basicSetDataType(null, msgs);
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				return ((InternalEList<?>)getLabelAccesses()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.LABEL__SECTION_LINK_INT:
+				return basicSetSectionLinkInt(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -360,6 +489,12 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 				return getBuffered();
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				return getLabelAccesses();
+			case AmaltheaPackage.LABEL__SECTION:
+				if (resolve) return getSection();
+				return basicGetSection();
+			case AmaltheaPackage.LABEL__SECTION_LINK_INT:
+				if (resolve) return getSectionLinkInt();
+				return basicGetSectionLinkInt();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -386,6 +521,12 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 				return;
 			case AmaltheaPackage.LABEL__BUFFERED:
 				setBuffered((LabelBuffering)newValue);
+				return;
+			case AmaltheaPackage.LABEL__SECTION:
+				setSection((Section)newValue);
+				return;
+			case AmaltheaPackage.LABEL__SECTION_LINK_INT:
+				setSectionLinkInt((Section)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -414,6 +555,12 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 			case AmaltheaPackage.LABEL__BUFFERED:
 				setBuffered(BUFFERED_EDEFAULT);
 				return;
+			case AmaltheaPackage.LABEL__SECTION:
+				setSection((Section)null);
+				return;
+			case AmaltheaPackage.LABEL__SECTION_LINK_INT:
+				setSectionLinkInt((Section)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -438,6 +585,10 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 				return buffered != BUFFERED_EDEFAULT;
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				return labelAccesses != null && !labelAccesses.isEmpty();
+			case AmaltheaPackage.LABEL__SECTION:
+				return section != null;
+			case AmaltheaPackage.LABEL__SECTION_LINK_INT:
+				return sectionLinkInt != null;
 		}
 		return super.eIsSet(featureID);
 	}

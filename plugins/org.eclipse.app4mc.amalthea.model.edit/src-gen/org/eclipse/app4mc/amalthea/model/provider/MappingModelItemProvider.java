@@ -103,6 +103,7 @@ public class MappingModelItemProvider extends BaseObjectItemProvider {
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_RunnableAllocation());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_CoreAllocation());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_Mapping());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_PhysicalSectionMapping());
 		}
 		return childrenFeatures;
 	}
@@ -184,6 +185,7 @@ public class MappingModelItemProvider extends BaseObjectItemProvider {
 			case AmaltheaPackage.MAPPING_MODEL__RUNNABLE_ALLOCATION:
 			case AmaltheaPackage.MAPPING_MODEL__CORE_ALLOCATION:
 			case AmaltheaPackage.MAPPING_MODEL__MAPPING:
+			case AmaltheaPackage.MAPPING_MODEL__PHYSICAL_SECTION_MAPPING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -224,12 +226,12 @@ public class MappingModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getMappingModel_Mapping(),
-				 AmaltheaFactory.eINSTANCE.createSectionMapping()));
+				 AmaltheaFactory.eINSTANCE.createAbstractElementMapping()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getMappingModel_Mapping(),
-				 AmaltheaFactory.eINSTANCE.createAbstractElementMapping()));
+				(AmaltheaPackage.eINSTANCE.getMappingModel_PhysicalSectionMapping(),
+				 AmaltheaFactory.eINSTANCE.createPhysicalSectionMapping()));
 	}
 
 }

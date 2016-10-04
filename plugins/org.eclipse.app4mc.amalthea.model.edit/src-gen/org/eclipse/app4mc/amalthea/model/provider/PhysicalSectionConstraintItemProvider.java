@@ -17,7 +17,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.SectionMapping;
+import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -25,18 +25,17 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.SectionMapping} object. <!--
- * begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
-public class SectionMappingItemProvider extends MappingItemProvider {
+public class PhysicalSectionConstraintItemProvider extends ReferableBaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SectionMappingItemProvider(AdapterFactory adapterFactory) {
+	public PhysicalSectionConstraintItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -51,6 +50,7 @@ public class SectionMappingItemProvider extends MappingItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addSectionPropertyDescriptor(object);
+			addMemoriesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -65,9 +65,9 @@ public class SectionMappingItemProvider extends MappingItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SectionMapping_section_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SectionMapping_section_feature", "_UI_SectionMapping_type"),
-				 AmaltheaPackage.eINSTANCE.getSectionMapping_Section(),
+				 getString("_UI_PhysicalSectionConstraint_section_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalSectionConstraint_section_feature", "_UI_PhysicalSectionConstraint_type"),
+				 AmaltheaPackage.eINSTANCE.getPhysicalSectionConstraint_Section(),
 				 true,
 				 false,
 				 true,
@@ -77,13 +77,34 @@ public class SectionMappingItemProvider extends MappingItemProvider {
 	}
 
 	/**
-	 * This returns SectionMapping.gif.
+	 * This adds a property descriptor for the Memories feature.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMemoriesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PhysicalSectionConstraint_memories_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalSectionConstraint_memories_feature", "_UI_PhysicalSectionConstraint_type"),
+				 AmaltheaPackage.eINSTANCE.getPhysicalSectionConstraint_Memories(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns PhysicalSectionConstraint.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SectionMapping"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/PhysicalSectionConstraint"));
 	}
 
 	/**
@@ -101,8 +122,10 @@ public class SectionMappingItemProvider extends MappingItemProvider {
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		SectionMapping sectionMapping = (SectionMapping)object;
-		return getString("_UI_SectionMapping_type") + " " + sectionMapping.getMemoryPositionAddress();
+		String label = ((PhysicalSectionConstraint)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PhysicalSectionConstraint_type") :
+			getString("_UI_PhysicalSectionConstraint_type") + " " + label;
 	}
 
 	/**
@@ -111,14 +134,14 @@ public class SectionMappingItemProvider extends MappingItemProvider {
 	@Override
 	public String getText(final Object object) {
 		// delegate to custom item provider
-		return CustomItemProviderService.getSectionMappingItemProviderText(object, getTextGen(object));
+		return CustomItemProviderService.getPhysicalSectionConstraintItemProviderText(object, getTextGen(object));
 	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
 	 * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void notifyChangedGen(Notification notification) {
@@ -135,7 +158,7 @@ public class SectionMappingItemProvider extends MappingItemProvider {
 
 		// delegate to custom item provider and execute locally
 		final List<ViewerNotification> notifications = CustomItemProviderService
-				.getSectionMappingItemProviderNotifications(notification);
+				.getPhysicalSectionConstraintItemProviderNotifications(notification);
 		for (final ViewerNotification vn : notifications) {
 			fireNotifyChanged(vn);
 		}

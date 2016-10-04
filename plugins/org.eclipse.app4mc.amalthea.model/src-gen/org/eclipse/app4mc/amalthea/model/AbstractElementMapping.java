@@ -19,11 +19,8 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * AbstractElementMemoryInformation (D4.2, Chapter 3.3.2)
- * Generalization of Label, Runnable, AbstractProcess ( ISR & Task) and
- * TaskPrototype.
- * This mapping describes the allocation of its specializations to a specific
- * memory.
+ * Sections (D4.2, Chapter 3.3.2)
+ * Sections refer to Labels and/or Runnables.
  * <!-- end-model-doc -->
  *
  * <p>
