@@ -2674,9 +2674,11 @@ core: The core that processes the process/runnable that accesses the semaphore (
   <xsd:complexType name="MemoryType">
     <xsd:complexContent>
       <xsd:extension base="am:HardwareTypeDescription">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="size" type="am:DataSize"/>
+        </xsd:choice>
         <xsd:attribute name="xAccessPattern" type="xsd:string"/>
         <xsd:attribute name="type" type="am:MemoryTypeEnum"/>
-        <xsd:attribute name="size" type="xsd:long"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

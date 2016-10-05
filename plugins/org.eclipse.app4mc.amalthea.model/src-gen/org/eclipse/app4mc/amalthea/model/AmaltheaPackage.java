@@ -10630,7 +10630,7 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY_TYPE__TYPE = HARDWARE_TYPE_DESCRIPTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Size</b></em>' attribute.
+	 * The feature id for the '<em><b>Size</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -26819,15 +26819,15 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getMemoryType_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.MemoryType#getSize <em>Size</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.MemoryType#getSize <em>Size</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Size</em>'.
+	 * @return the meta object for the containment reference '<em>Size</em>'.
 	 * @see org.eclipse.app4mc.amalthea.model.MemoryType#getSize()
 	 * @see #getMemoryType()
 	 * @generated
 	 */
-	EAttribute getMemoryType_Size();
+	EReference getMemoryType_Size();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.NetworkType <em>Network Type</em>}'.

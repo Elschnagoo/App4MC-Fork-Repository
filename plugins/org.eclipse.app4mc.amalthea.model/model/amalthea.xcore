@@ -1511,7 +1511,7 @@ class MemoryType extends HardwareTypeDescription
 {
 	String xAccessPattern
 	MemoryTypeEnum ^type
-	long size
+	contains DataSize size
 }
 
 class NetworkType extends HardwareTypeDescription

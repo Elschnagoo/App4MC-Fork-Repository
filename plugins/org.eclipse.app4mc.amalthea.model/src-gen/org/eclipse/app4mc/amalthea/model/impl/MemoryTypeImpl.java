@@ -13,12 +13,15 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.MemoryTypeEnum;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -79,24 +82,14 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 	protected MemoryTypeEnum type = TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
+	 * The cached value of the '{@link #getSize() <em>Size</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSize()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long SIZE_EDEFAULT = 0L;
-
-	/**
-	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSize()
-	 * @generated
-	 * @ordered
-	 */
-	protected long size = SIZE_EDEFAULT;
+	protected DataSize size;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,7 +157,7 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getSize() {
+	public DataSize getSize() {
 		return size;
 	}
 
@@ -173,11 +166,47 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSize(long newSize) {
-		long oldSize = size;
+	public NotificationChain basicSetSize(DataSize newSize, NotificationChain msgs) {
+		DataSize oldSize = size;
 		size = newSize;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_TYPE__SIZE, oldSize, size));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_TYPE__SIZE, oldSize, newSize);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSize(DataSize newSize) {
+		if (newSize != size) {
+			NotificationChain msgs = null;
+			if (size != null)
+				msgs = ((InternalEObject)size).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MEMORY_TYPE__SIZE, null, msgs);
+			if (newSize != null)
+				msgs = ((InternalEObject)newSize).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MEMORY_TYPE__SIZE, null, msgs);
+			msgs = basicSetSize(newSize, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_TYPE__SIZE, newSize, newSize));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.MEMORY_TYPE__SIZE:
+				return basicSetSize(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -213,7 +242,7 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 				setType((MemoryTypeEnum)newValue);
 				return;
 			case AmaltheaPackage.MEMORY_TYPE__SIZE:
-				setSize((Long)newValue);
+				setSize((DataSize)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -234,7 +263,7 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 				setType(TYPE_EDEFAULT);
 				return;
 			case AmaltheaPackage.MEMORY_TYPE__SIZE:
-				setSize(SIZE_EDEFAULT);
+				setSize((DataSize)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -253,7 +282,7 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 			case AmaltheaPackage.MEMORY_TYPE__TYPE:
 				return type != TYPE_EDEFAULT;
 			case AmaltheaPackage.MEMORY_TYPE__SIZE:
-				return size != SIZE_EDEFAULT;
+				return size != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -272,8 +301,6 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 		result.append(xAccessPattern);
 		result.append(", type: ");
 		result.append(type);
-		result.append(", size: ");
-		result.append(size);
 		result.append(')');
 		return result.toString();
 	}

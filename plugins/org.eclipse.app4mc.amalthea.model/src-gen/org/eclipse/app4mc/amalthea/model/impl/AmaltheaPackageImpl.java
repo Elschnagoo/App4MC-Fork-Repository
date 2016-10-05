@@ -6464,8 +6464,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMemoryType_Size() {
-		return (EAttribute)memoryTypeEClass.getEStructuralFeatures().get(2);
+	public EReference getMemoryType_Size() {
+		return (EReference)memoryTypeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -11539,7 +11539,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		memoryTypeEClass = createEClass(MEMORY_TYPE);
 		createEAttribute(memoryTypeEClass, MEMORY_TYPE__XACCESS_PATTERN);
 		createEAttribute(memoryTypeEClass, MEMORY_TYPE__TYPE);
-		createEAttribute(memoryTypeEClass, MEMORY_TYPE__SIZE);
+		createEReference(memoryTypeEClass, MEMORY_TYPE__SIZE);
 
 		networkTypeEClass = createEClass(NETWORK_TYPE);
 		createEAttribute(networkTypeEClass, NETWORK_TYPE__SCHED_POLICY);
@@ -13177,7 +13177,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(memoryTypeEClass, MemoryType.class, "MemoryType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMemoryType_XAccessPattern(), theEcorePackage.getEString(), "xAccessPattern", null, 0, 1, MemoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMemoryType_Type(), this.getMemoryTypeEnum(), "type", null, 0, 1, MemoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMemoryType_Size(), theEcorePackage.getELong(), "size", null, 0, 1, MemoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemoryType_Size(), this.getDataSize(), null, "size", null, 0, 1, MemoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(networkTypeEClass, NetworkType.class, "NetworkType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNetworkType_SchedPolicy(), this.getSchedType(), "schedPolicy", null, 0, 1, NetworkType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
