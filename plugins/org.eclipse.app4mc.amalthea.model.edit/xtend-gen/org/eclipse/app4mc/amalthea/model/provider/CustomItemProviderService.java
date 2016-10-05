@@ -2320,18 +2320,18 @@ public class CustomItemProviderService {
         boolean _greaterThan = (_size > 10);
         if (_greaterThan) {
           List<String> _subList = memoryNames.subList(0, 10);
-          String _join = IterableExtensions.join(_subList, "|");
+          String _join = IterableExtensions.join(_subList, ",");
           String _plus = (" Memories : " + _join);
-          _xifexpression_2 = (_plus + "|...");
+          _xifexpression_2 = (_plus + ",...");
         } else {
           String _xifexpression_3 = null;
           int _size_1 = memoryNames.size();
           boolean _greaterThan_1 = (_size_1 > 1);
           if (_greaterThan_1) {
-            String _join_1 = IterableExtensions.join(memoryNames, "|");
+            String _join_1 = IterableExtensions.join(memoryNames, ",");
             _xifexpression_3 = (" Memories : " + _join_1);
           } else {
-            String _join_2 = IterableExtensions.join(memoryNames, "|");
+            String _join_2 = IterableExtensions.join(memoryNames, ",");
             _xifexpression_3 = (" Memory : " + _join_2);
           }
           _xifexpression_2 = _xifexpression_3;
@@ -3180,18 +3180,18 @@ public class CustomItemProviderService {
         boolean _greaterThan = (_size > 10);
         if (_greaterThan) {
           List<String> _subList = sectionNames.subList(0, 10);
-          String _join = IterableExtensions.join(_subList, "|");
+          String _join = IterableExtensions.join(_subList, ",");
           String _plus = (" Sections : " + _join);
-          _xifexpression_2 = (_plus + "|...");
+          _xifexpression_2 = (_plus + ",...");
         } else {
           String _xifexpression_3 = null;
           int _size_1 = sectionNames.size();
           boolean _greaterThan_1 = (_size_1 > 1);
           if (_greaterThan_1) {
-            String _join_1 = IterableExtensions.join(sectionNames, "|");
+            String _join_1 = IterableExtensions.join(sectionNames, ",");
             _xifexpression_3 = (" Sections : " + _join_1);
           } else {
-            String _join_2 = IterableExtensions.join(sectionNames, "|");
+            String _join_2 = IterableExtensions.join(sectionNames, ",");
             _xifexpression_3 = (" Section : " + _join_2);
           }
           _xifexpression_2 = _xifexpression_3;

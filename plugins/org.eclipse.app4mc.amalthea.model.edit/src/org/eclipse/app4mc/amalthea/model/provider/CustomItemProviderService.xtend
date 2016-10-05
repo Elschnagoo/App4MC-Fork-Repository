@@ -1206,13 +1206,13 @@ class CustomItemProviderService {
 			val memoriesString = if(memoryNames.isNullOrEmpty) {"<memories>"}  else { 
 				
 				if(memoryNames.size>10) {
-				" Memories : "+memoryNames.subList(0,10).join('|')+"|..."
+				" Memories : "+memoryNames.subList(0,10).join(',')+",..."
 				}
 				else if(memoryNames.size>1) {
-				" Memories : "+memoryNames.join('|')
+				" Memories : "+memoryNames.join(',')
 				}  
 				else 
-				{" Memory : "+memoryNames.join('|') }
+				{" Memory : "+memoryNames.join(',') }
 			}
 			
 			val s0= if(object?.name.isNullOrEmpty) "<name>" else  object.name
@@ -1599,11 +1599,11 @@ class CustomItemProviderService {
 			val sectionsString = if(sectionNames.isNullOrEmpty) {"<sections>"}
 			 else {
 			 	if(sectionNames.size>10) {
-			 	" Sections : "+sectionNames.subList(0,10).join('|')+"|..."
+			 	" Sections : "+sectionNames.subList(0,10).join(',')+",..."
 			 	}else if(sectionNames.size>1) {
-			 	" Sections : "+sectionNames.join('|')
+			 	" Sections : "+sectionNames.join(',')
 			 	} else {
-			 	" Section : "+sectionNames.join('|')
+			 	" Section : "+sectionNames.join(',')
 			 	}
 			 }
 			
