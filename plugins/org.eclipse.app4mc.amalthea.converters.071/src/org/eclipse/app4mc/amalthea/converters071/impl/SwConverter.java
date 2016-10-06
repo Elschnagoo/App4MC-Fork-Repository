@@ -48,12 +48,11 @@ public class SwConverter implements IConverter {
 		final Element rootElement = root.getRootElement();
 
 		/*- Migration of DataSize attributes */
-		update_DataSize(rootElement);
-
-		this.helper.updateRootElement_NameSpaces_to_071(rootElement);
+		update_DataSize_SW(rootElement);
 
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
 	}
+
 
 	/**
 	 * This method is used to migrate the contents of "DataSize" element which can be contained inside following
@@ -75,7 +74,7 @@ public class SwConverter implements IConverter {
 	 * @param rootElement
 	 *            root XML Element
 	 */
-	private void update_DataSize(final Element rootElement) {
+	private void update_DataSize_SW(final Element rootElement) {
 
 
 		final StringBuffer xpathBuffer = new StringBuffer();
@@ -121,5 +120,6 @@ public class SwConverter implements IConverter {
 		}
 
 	}
+
 
 }

@@ -203,3 +203,6 @@ table(#classic){margin-left:40px}.
 
 * *DataSize:* Attribute "numberBits" is replaced by "value" (of type BigInteger) and "unit" (of type DataSizeUnit)
 ** _Behaviour of model migration_ :  content from "numberBits" is copied into "value" and "unit" is set as "bit" 
+* *Size attribute in MemoryType class:* Attribute "size" is removed from MemoryType class. MemoryType object now contains a object of DataSize using which size of Memory and the corresponding Unit can be specified. 
+** _Behaviour of model migration_ :  content from "size" attribute of MemoryType is copied into DataSize objects attribute : "value" and the corresponding "unit" attribute of DataSize is set as default (i.e. _undefined_) 
+

@@ -26,16 +26,16 @@ import org.junit.runners.Parameterized;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(Parameterized.class)
-public class SwConverterTest extends AbstractConverterTest {
+public class PropertyConstraintsConverterTest extends AbstractConverterTest {
 
 
 	@Parameterized.Parameters(name = "{index}: Test file: {0}")
 	public static Collection<Object[]> getTestData() {
 
-		return Arrays.asList(new Object[][] { { "/sw/AMALTHEA_Democar.amxmi", true } });
+		return Arrays.asList(new Object[][] { { "/propertyconstraints/memorytype_size.amxmi", true } });
 	}
 
-	public SwConverterTest(final String xmlFileRelativeLocation, final boolean canExecuteTestCase) {
+	public PropertyConstraintsConverterTest(final String xmlFileRelativeLocation, final boolean canExecuteTestCase) {
 
 		super(xmlFileRelativeLocation, canExecuteTestCase);
 	}

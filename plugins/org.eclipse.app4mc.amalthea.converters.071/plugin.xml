@@ -33,6 +33,28 @@
             name="Root Element Converter"
             output-model-version="0.7.1">
       </converter>
+      <converter
+            converter-class="org.eclipse.app4mc.amalthea.converters071.impl.HwConverter"
+            enabled="true"
+            id="converters.071.hw"
+            input-model-version="0.7.0"
+            name="Hw Converter"
+            output-model-version="0.7.1">
+         <dependent-on-converter
+               id="converters.071.rootelement">
+         </dependent-on-converter>
+      </converter>
+      <converter
+            converter-class="org.eclipse.app4mc.amalthea.converters071.impl.PropertyConstraintsConverter"
+            enabled="true"
+            id="converters.071.propertyconstraints"
+            input-model-version="0.7.0"
+            name="PropertyConstraints Converter"
+            output-model-version="0.7.1">
+         <dependent-on-converter
+               id="converters.071.rootelement">
+         </dependent-on-converter>
+      </converter>
    </extension>
 
 </plugin>

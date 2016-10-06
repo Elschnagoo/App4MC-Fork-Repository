@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <swModel>
+    <labels name="label">
+      <size value="10" unit="bit" />
+    </labels>
+  </swModel>
+  <hwModel>
+    <memoryTypes name="MemType1">
+      <size value="10" />
+    </memoryTypes>
+    <memoryTypes />
+  </hwModel>
+  <propertyConstraintsModel>
+    <memoryTypeDefinitions name="aa">
+      <size value="200" />
+    </memoryTypeDefinitions>
+  </propertyConstraintsModel>
+</am:Amalthea>
