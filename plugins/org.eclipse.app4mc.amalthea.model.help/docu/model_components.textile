@@ -27,23 +27,51 @@ The 'Component' class represents a component. Components could be created direct
 
 !(#scale)../pictures/model_components_component_references.png!
 
-It contains several ports which must implement the 'IPort' interface. A component refers the classes 'OsEvent', 'Label', 'Runnable' and 'AbstractProcess' from the software model and the class 'Semaphore' from the OS model.
+It contains several ports of type 'Port'. A component refers the classes 'OsEvent', 'Label', 'Runnable' and 'AbstractProcess' from the software model and the class 'Semaphore' from the OS model.
 
-h3. System
+h3. System and Composite
 
-Systems are defined as top level elements within a component model. A system contains several component- and
-connection-instances and is used to define the architecture of a technical system. It inherits (like Composite) from the interface 'ISystem'.
+Systems are defined as top level elements within a component model. A system contains several Component- and
+Connection-instances and is used to define the architecture of a technical system. 
 
-h3. Composite
+A 'Composite' is a special component type to aggregate Component- and Connection-instances compositely.
+So it could be used to create hierarchical component structures.
 
-A 'Composite' is a special component type which also inherits from ISystem to aggregate Component- or Composite- and Connection-instances compositely. So it could be used to create hierarchical component structures.
+System and Composite implement the interface 'ISystem'.
+The following diagram shows the main elements to represent the hierarchical structure.
+
+!../pictures/model_components_isystem.png!
+
+In general each inner port should be connected. If a port is intentionally left unconnected it has to be added to the list of 'groundedPorts'.
 
 h3. ComponentInstance and Connector
 
-The 'ComponentInstance' and the 'Connector' can be created within a 'System' or a 'Composite'. 'ComponentInstances' are used to represent instances of component- or composite-types. The 'Connector' class is used to connect the component instances to each other via their Ports. The connector contains a source and target 'QualifiedPort'. A 'Qualified' port refers a 'ComponentInstance' and an 'IPort'.
+The 'ComponentInstance' and the 'Connector' can be created within a 'System' or a 'Composite'. 'ComponentInstances' are used to represent instances of component- or composite-types. The 'Connector' class is used to connect the component instances to each other via their Ports. The connector contains a source and target 'QualifiedPort'.
+
+h3. QualifiedPort
+
+A 'qualified' port refers a 'ComponentInstance' and a 'Port'.
+If the 'instance' link is null then the QualifiedPort refers to a port of the enclosing composite. 
+
+h3. FInterfacePort
 
 The 'FInterfacePort' class contains the attribute 'kind' to set the port direction ('provides' or 'requires').
 The attribute 'interface name' can be used to refer to an external definition, e.g. described in detail with the Franca IDL. 
+
+
+h2. Example
+
+h3. Diagram
+
+The diagram of the example shows a composite 'A' that contains two component instances 'X' and 'Y' of type 'B'. The connections between the ports are named 'c1' to 'c4'. The grounded port 'in_3' of instance 'X' (intentionally left unconnected) is marked green. The second unconnected port 'in_2' of instance 'Y' is unspecified. It is marked red and has to be changed, either declared as grounded or connected to another port. 
+
+!../pictures/model_components_example.png!
+
+h3. Model Editor
+
+The same example is shown in the standard AMALTHEA editor.
+
+!../pictures/model_components_example_treeview.png!
 
 
 h2. Franca IDL
