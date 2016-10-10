@@ -3,7 +3,7 @@ h1. Common Model
 
 The AMALTHEA common model is not a model by itself, but provides standard elements used by other models as containments.
 
-h2. Time and Time Unit
+h2. Time (and Time Unit)
 
 The AMALTHEA data model includes two common elements to describe time ranges in an easy way, the __Time__ and __SignedTime__ element. The __SignedTime__ is like the general __Time__ class but explicit allows defining negative time values.
 These elements can be referenced by any other element for specifying attributes to store time information.
@@ -13,17 +13,48 @@ To support different time ranges, especially different time units, AMALTHEA pred
 !(#scale)../pictures/model_common_time.png!
 
 
-h2. Frequency and Frequency Unit
+h2. Frequency (and Frequency Unit)
 
 !(#scale)../pictures/model_common_frequency.png!
 
 
-h2. Data Unit
+h2. Data Size (and Data Size Unit)
 
-The __DataUnit__ contains the size in bits and provides convenience methods to set and get the
-size also in bytes. It is internally converted from bits to bytes and can be set and retrieved in both ways.
+The  __DataSize__ (and  __DataRate__) definition contains units and prefixes
+* according to the SI Standard
+* for binary multiples
 
-!(#scale)../pictures/model_common_data_unit.png! 
+International System of Units (SI)
+
+table(#classic). 
+|_. Name |_. Prefix |_. Factor |
+| kilo | k | 10 ^3^ |
+| mega | M | 10 ^6^ |
+| giga | G | 10 ^9^ |
+| tera | T | 10 ^12^ |
+| _peta_ | _P_ | _10 ^15^_ |
+
+
+Prefixes for binary multiples
+
+table(#classic). 
+|_. Name |_. Prefix |_. Factor |
+| kibi | Ki | 2 ^10^ |
+| mebi | Mi | 2 ^20^ |
+| gibi | Gi | 2 ^30^ |
+| tebi | Ti | 2 ^40^ |
+| pebi | Pi | 2 ^50^ |
+| _exbi_ | _Ei_ | _2 ^60^_ |
+
+The __DataSize__ provides convenience methods to get the size also in bit and byte.
+It is internally converted and can be retrieved in both ways.
+
+!(#scale)../pictures/model_common_data_size.png! 
+
+
+h2. Data Rate (and Data Rate Unit)
+
+!(#scale)../pictures/model_common_data_rate.png! 
 
 
 h2. Interfaces and base objects
