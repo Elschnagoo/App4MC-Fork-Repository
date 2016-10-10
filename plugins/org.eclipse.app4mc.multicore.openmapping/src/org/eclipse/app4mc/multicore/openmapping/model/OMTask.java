@@ -29,17 +29,12 @@ import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
 import org.eclipse.core.runtime.IStatus;
-//import org.jgrapht.DirectedGraph;
-//import org.jgrapht.experimental.dag.DirectedAcyclicGraph;
-//import org.jgrapht.graph.DefaultEdge;
 
 public class OMTask {
 	private final Task taskRef;
 	private OMTask predecessor = null;
 	private long iInstructionCount = -1;
 	private long iRunnableCount = -1;
-//	private final DirectedGraph<OMRunnable, DefaultEdge> runnableGraph = new DirectedAcyclicGraph<OMRunnable, DefaultEdge>(
-//			DefaultEdge.class);
 
 	public OMTask(final Task taskRef) {
 		this.taskRef = taskRef;
@@ -201,7 +196,7 @@ public class OMTask {
 
 	/**
 	 * Fetches the referenced stimuli and sets the recursion factor, i.e. how often this task is being executed
-	 * DEPRECATED: This method is deprecated. The overall concept of using a recursion factor will be replaced by a more
+	 * DEPRECATED: This method is deprecated. The overall concept of using a recursion factor should be replaced by a more
 	 * accurate and/or efficient approach.
 	 *
 	 * @return
@@ -232,23 +227,23 @@ public class OMTask {
 			final Time rec;
 			final TimeUnit u;
 			// Check if the Recurrence is set
-			if ((rec = pSt.getOffset()) == null) {
+			if ((rec = pSt.getRecurrence()) == null) {
 				UniversalHandler.getInstance()
-						.log("Unexpected Stimulus: The recurrence value (\"Offset\") is unset.\nSkipping Recurence factor calculation for Task "
+						.log("Unexpected Periodic Stimulus: The recurrence value is unset.\nSkipping Recurence factor calculation for Task "
 								+ this.taskRef.getName(), null);
 				return faktor;
 			}
 			// Check if the Recurrence Value is set
 			if ((value = rec.getValue()) == 0) {
 				UniversalHandler.getInstance()
-						.log("Unexpected Stimulus: The recurrence value is 0.\nSkipping Recurence factor calculation for Task "
+						.log("Unexpected Periodic Stimulus: The recurrence value is 0.\nSkipping Recurence factor calculation for Task "
 								+ this.taskRef.getName(), null);
 				return faktor;
 			}
 			// Check if the Recurrence Values Time Unit is set
 			if ((u = rec.getUnit()) == null) {
 				UniversalHandler.getInstance()
-						.log("Unexpected Stimulus: The TimeUnit is unset.\nSkipping Recurence factor calculation for Task "
+						.log("Unexpected Periodic Stimulus: The TimeUnit is unset.\nSkipping Recurence factor calculation for Task "
 								+ this.taskRef.getName(), null);
 				return faktor;
 			}
