@@ -40,6 +40,7 @@ public class SwConverterTest extends AbstractConverterTest {
 		super(xmlFileRelativeLocation, canExecuteTestCase);
 	}
 
+
 	@Test
 	public void testConversion() {
 		super.testConversion(RootElementConverter.class, NamespaceConverter.class, SwConverter.class, HwConverter.class,

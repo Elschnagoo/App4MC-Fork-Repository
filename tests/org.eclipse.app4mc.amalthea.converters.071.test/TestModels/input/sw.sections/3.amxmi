@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0">
+  <swModel>
+    <runnables name="Runnable7"/>
+    <labels name="label6"/>
+    <sections name="Section6">
+      <labels href="amlt:/#label3?type=Label"/>
+      <labels href="amlt:/#label6?type=Label"/>
+      <runEntities href="amlt:/#Runnable7?type=Runnable"/>
+      <runEntities href="amlt:/#Runnable3?type=Runnable"/>
+      <runEntities href="amlt:/#runnable4?type=Runnable"/>
+    </sections>
+  </swModel>
+</am:Amalthea>

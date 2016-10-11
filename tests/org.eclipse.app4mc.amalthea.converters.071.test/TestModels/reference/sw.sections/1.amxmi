@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <swModel>
+    <runnables name="Runnable1">
+      <runnableItems xsi:type="am:LabelAccess" data="label1?type=Label" />
+      <runnableItems xsi:type="am:LabelAccess" data="label1?type=Label" />
+      <section href="amlt:/#Section1?type=Section" />
+    </runnables>
+    <runnables name="Runnable2">
+      <section href="amlt:/#Section2?type=Section" />
+    </runnables>
+    <labels name="label1">
+      <section href="amlt:/#Section1?type=Section" />
+    </labels>
+    <labels name="label2">
+      <section href="amlt:/#Section2?type=Section" />
+    </labels>
+    <sections name="Section1" />
+    <sections name="Section2" />
+  </swModel>
+  <propertyConstraintsModel />
+  <mappingModel />
+</am:Amalthea>

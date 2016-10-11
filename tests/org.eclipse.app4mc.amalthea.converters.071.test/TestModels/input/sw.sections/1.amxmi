@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <runnables name="Runnable1">
+      <runnableItems xsi:type="am:LabelAccess" data="label1?type=Label"/>
+      <runnableItems xsi:type="am:LabelAccess" data="label1?type=Label"/>
+    </runnables>
+    <runnables name="Runnable2"/>
+    <labels name="label1"/>
+    <labels name="label2"/>
+    <sections name="Section1" labels="label1?type=Label" runEntities="Runnable1?type=Runnable"/>
+    <sections name="Section2" labels="label2?type=Label" runEntities="Runnable2?type=Runnable"/>
+  </swModel>
+  <hwModel>
+    <system>
+      <memories name="Mem1"/>
+    </system>
+  </hwModel>
+  <propertyConstraintsModel>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+    <mappingConstraints xsi:type="am:SectionMappingConstraint" section="Section1?type=Section"/>
+  </propertyConstraintsModel>
+  <mappingModel>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:SectionMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" section="Section1?type=Section"/>
+    <mapping xsi:type="am:AbstractElementMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" abstractElement="label1?type=Label"/>
+  </mappingModel>
+</am:Amalthea>

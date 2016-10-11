@@ -32,6 +32,7 @@ import org.eclipse.app4mc.amalthea.converters.common.postprocessor.FileNameUpdat
 import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_070;
 import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_071;
 import org.eclipse.app4mc.amalthea.converters071.utils.HelperUtils_070_071;
+import org.eclipse.app4mc.amalthea.converters071.utils.SectionRunnableLabelCacheBuilder;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -50,11 +51,10 @@ public abstract class AbstractConverterTest {
 
 	protected HelperUtils_070_071 helper;
 
-	protected final String inputXmlFilePath;
+	// protected String inputXmlFilePath;
+	//
+	// protected String outputXmlFilePath;
 
-	protected final String outputXmlFilePath;
-
-	protected final String xmlFileRelativeLocation;
 
 	protected final boolean canExecuteTestCase;
 
@@ -62,22 +62,48 @@ public abstract class AbstractConverterTest {
 
 	protected final String outputGlobalTestsDirectory = "./TestModels/output";
 
-	protected final String localOutputDirectory;
+	protected String localOutputDirectory;
 
 	protected final Logger logger;
 
+	protected final Map<String, String> filesMap_input_output;
+
 	public AbstractConverterTest(final String xmlFileRelativeLocation, final boolean canExecuteTestCase) {
 
-		this.inputXmlFilePath = this.inputGlobalTestsDirectory + File.separator + xmlFileRelativeLocation;
-		this.outputXmlFilePath = this.outputGlobalTestsDirectory + File.separator + xmlFileRelativeLocation;
+		this.filesMap_input_output = new HashMap<String, String>();
+
+
+		final String inputXmlFilePath = this.inputGlobalTestsDirectory + File.separator + xmlFileRelativeLocation;
+		final String outputXmlFilePath = this.outputGlobalTestsDirectory + File.separator + xmlFileRelativeLocation;
+
+		this.filesMap_input_output.put(inputXmlFilePath, outputXmlFilePath);
+
 		this.canExecuteTestCase = canExecuteTestCase;
-		this.xmlFileRelativeLocation = xmlFileRelativeLocation;
 		this.fileName_documentsMap = new HashMap<File, Document>();
-		this.localOutputDirectory = new File(this.outputGlobalTestsDirectory, this.xmlFileRelativeLocation).getParent();
+		this.localOutputDirectory = new File(this.outputGlobalTestsDirectory, xmlFileRelativeLocation).getParent();
 		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea");
 		this.logger.addAppender(new ConsoleAppender(new PatternLayout("%d{ISO8601} %-5p [%c]: %m%n")));
 		this.logger.setLevel(Level.ERROR);
+	}
 
+	public AbstractConverterTest(final String[] xmlFilesRelative, final boolean canExecuteTestCase) {
+
+		this.filesMap_input_output = new HashMap<String, String>();
+
+		for (final String xmlFileRelativeLocation : xmlFilesRelative) {
+			final String inputXmlFilePath = this.inputGlobalTestsDirectory + File.separator + xmlFileRelativeLocation;
+			final String outputXmlFilePath = this.outputGlobalTestsDirectory + File.separator + xmlFileRelativeLocation;
+
+			this.filesMap_input_output.put(inputXmlFilePath, outputXmlFilePath);
+
+			this.localOutputDirectory = new File(this.outputGlobalTestsDirectory, xmlFileRelativeLocation).getParent();
+		}
+		this.canExecuteTestCase = canExecuteTestCase;
+
+		this.fileName_documentsMap = new HashMap<File, Document>();
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea");
+		this.logger.addAppender(new ConsoleAppender(new PatternLayout("%d{ISO8601} %-5p [%c]: %m%n")));
+		this.logger.setLevel(Level.ERROR);
 	}
 
 	public void parseInputXMLFiles() {
@@ -93,8 +119,13 @@ public abstract class AbstractConverterTest {
 		this.helper = HelperUtils_070_071.getInstance();
 
 		try {
+			final Set<String> inputFiles = this.filesMap_input_output.keySet();
 
-			this.helper.buildXMLDocumentsMap(new File(this.inputXmlFilePath), this.fileName_documentsMap);
+			for (final String inputFilePath : inputFiles) {
+				this.helper.buildXMLDocumentsMap(new File(inputFilePath), this.fileName_documentsMap);
+
+			}
+
 
 		}
 		catch (final Exception e) {
@@ -118,19 +149,25 @@ public abstract class AbstractConverterTest {
 
 		try {
 
-			/*-
-			 * Special handling for fetching the files is implemented as in certain cases, file extensions are updated during model migration
-			 */
-			File targetFile = new File(this.outputXmlFilePath);
-			if (!targetFile.exists()) {
-				final String fileExtension = Files.getFileExtension(targetFile.getAbsolutePath());
+			final Collection<String> outputFiles = this.filesMap_input_output.values();
 
-				if (!fileExtension.equalsIgnoreCase("amxmi")) {
-					targetFile = new File(this.outputXmlFilePath + ".amxmi");
+			for (final String outputFilePath : outputFiles) {
+
+				/*-
+				 * Special handling for fetching the files is implemented as in certain cases, file extensions are updated during model migration
+				 */
+				File targetFile = new File(outputFilePath);
+				if (!targetFile.exists()) {
+					final String fileExtension = Files.getFileExtension(targetFile.getAbsolutePath());
+
+					if (!fileExtension.equalsIgnoreCase("amxmi")) {
+						targetFile = new File(outputFilePath + ".amxmi");
+					}
 				}
+
+				this.helper.buildXMLDocumentsMap(targetFile, this.fileName_documentsMap);
 			}
 
-			this.helper.buildXMLDocumentsMap(targetFile, this.fileName_documentsMap);
 
 		}
 		catch (final Exception e) {
@@ -141,6 +178,13 @@ public abstract class AbstractConverterTest {
 
 	protected List<ICache> buildCaches() {
 		final List<ICache> caches = new ArrayList<ICache>();
+
+		final SectionRunnableLabelCacheBuilder cacheBuilder = new SectionRunnableLabelCacheBuilder();
+
+		cacheBuilder.buildCache(this.fileName_documentsMap);
+
+		caches.add(cacheBuilder);
+
 		return caches;
 	}
 
