@@ -2611,7 +2611,9 @@ core: The core that processes the process/runnable that accesses the semaphore (
   <xsd:complexType name="Quartz">
     <xsd:complexContent>
       <xsd:extension base="am:ComplexNode">
-        <xsd:attribute name="frequency" type="xsd:int"/>
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="frequency" type="am:Frequency"/>
+        </xsd:choice>
         <xsd:attribute name="type" type="am:QType"/>
       </xsd:extension>
     </xsd:complexContent>
