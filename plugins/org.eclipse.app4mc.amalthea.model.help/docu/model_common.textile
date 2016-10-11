@@ -23,28 +23,33 @@ h2. Data Size (and Data Size Unit)
 The  __DataSize__ (and  __DataRate__) definition contains units and prefixes
 * according to the SI Standard
 * for binary multiples
-
-International System of Units (SI)
-
+ <table>
+ <tr>
+ <th style="padding:15px">International System of Units (SI)</th>
+ <th style="padding:15px">Prefixes for binary multiples</th>
+ </tr>
+ <tr>
+ <td style="vertical-align:top; padding:15px"> 
 table(#classic). 
-|_. Name |_. Prefix |_. Factor |
-| kilo | k | 10 ^3^ |
-| mega | M | 10 ^6^ |
-| giga | G | 10 ^9^ |
-| tera | T | 10 ^12^ |
-| _peta_ | _P_ | _10 ^15^_ |
-
-
-Prefixes for binary multiples
-
+| _*Name*_ | _*Prefix*_ | _*Factor*_ |
+| kilo | k | 10<sup>3</sup> |
+| mega | M | 10<sup>6</sup> |
+| giga | G | 10<sup>9</sup> |
+| tera | T | 10<sup>12</sup> |
+| _peta_ | _P_ | _10<sup>15</sup>_ |
+ </td>
+ <td style="vertical-align:top; padding:15px"> 
 table(#classic). 
-|_. Name |_. Prefix |_. Factor |
-| kibi | Ki | 2 ^10^ |
-| mebi | Mi | 2 ^20^ |
-| gibi | Gi | 2 ^30^ |
-| tebi | Ti | 2 ^40^ |
-| pebi | Pi | 2 ^50^ |
-| _exbi_ | _Ei_ | _2 ^60^_ |
+| _*Name*_ | _*Prefix*_ | _*Factor*_ |
+| kibi | Ki | 2<sup>10</sup> |
+| mebi | Mi | 2<sup>20</sup> |
+| gibi | Gi | 2<sup>30</sup> |
+| tebi | Ti | 2<sup>40</sup> |
+| pebi | Pi | 2<sup>50</sup> |
+| _exbi_ | _Ei_ | _2<sup>60</sup>_ |
+ </td>
+ </tr>
+ </table>
 
 The __DataSize__ provides convenience methods to get the size also in bit and byte.
 It is internally converted and can be retrieved in both ways.
