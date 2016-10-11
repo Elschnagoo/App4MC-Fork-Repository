@@ -74,11 +74,11 @@ public class AmaltheaServices {
 		case HZ:
 			return BigDecimal.valueOf(freqValue);
 		case KHZ:
-			return BigDecimal.valueOf(freqValue).multiply(BigDecimal.ONE.pow(3));
+			return BigDecimal.valueOf(freqValue).multiply(BigDecimal.TEN.pow(3));
 		case MHZ:
-			return BigDecimal.valueOf(freqValue).multiply(BigDecimal.ONE.pow(6));
+			return BigDecimal.valueOf(freqValue).multiply(BigDecimal.TEN.pow(6));
 		case GHZ:
-			return BigDecimal.valueOf(freqValue).multiply(BigDecimal.ONE.pow(9));
+			return BigDecimal.valueOf(freqValue).multiply(BigDecimal.TEN.pow(9));
 		}
 		
 		return null;
