@@ -16,7 +16,9 @@
       </customProperties>
     </coreTypes>
     <system name="Homogeneous Example System">
-      <quartzes name="792MHZ Quartz" frequency="792000000" type="DYNAMIC"/>
+      <quartzes name="792MHZ Quartz" type="DYNAMIC">
+        <frequency unit="MHz" value="792.0"/>
+      </quartzes>
       <ecus name="Freescale i.MX6 Board">
         <microcontrollers name="i.MX 6 Series Processor">
           <cores name="Cortex-A9 #1" coreType="Cortex-A9?type=CoreType">

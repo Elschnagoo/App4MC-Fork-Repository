@@ -2,7 +2,7 @@
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <hwModel>
     <memoryTypes name="1MBMemoryType" type="RAM">
-      <size value="1048576" unit="byte"/>
+      <size value="1" unit="MB"/>
     </memoryTypes>
     <system name="Segment Example">
       <ecus name="Sample ECU">
