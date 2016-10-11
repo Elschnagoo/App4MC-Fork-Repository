@@ -9857,7 +9857,7 @@ public interface AmaltheaPackage extends EPackage {
 	int QUARTZ__PORTS = COMPLEX_NODE__PORTS;
 
 	/**
-	 * The feature id for the '<em><b>Frequency</b></em>' attribute.
+	 * The feature id for the '<em><b>Frequency</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -26662,15 +26662,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getQuartz();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Quartz#getFrequency <em>Frequency</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Quartz#getFrequency <em>Frequency</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Frequency</em>'.
+	 * @return the meta object for the containment reference '<em>Frequency</em>'.
 	 * @see org.eclipse.app4mc.amalthea.model.Quartz#getFrequency()
 	 * @see #getQuartz()
 	 * @generated
 	 */
-	EAttribute getQuartz_Frequency();
+	EReference getQuartz_Frequency();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Quartz#getType <em>Type</em>}'.

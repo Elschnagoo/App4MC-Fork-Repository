@@ -11,8 +11,12 @@
  ******************************************************************************/
 package org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimization;
 
+import java.math.BigDecimal;
+
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreType;
+import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
@@ -79,10 +83,13 @@ public class ExtendedCore implements Comparable<ExtendedCore> {
 			return;
 		}
 		this.ticksPerCycle = ct.getInstructionsPerCycle();
+		
+		BigDecimal frequency = AmaltheaServices.convertToHz(q.getFrequency());
 
-		this.frequencyQuartz = q.getFrequency();
+		this.frequencyQuartz = frequency.doubleValue();
 		this.ticksPerSecond = this.frequencyQuartz * this.ratioPrescaler;
 		this.cyclesPerSecond = this.ticksPerSecond * this.ticksPerCycle;
+		System.out.println("DEBUG::"+this.frequencyQuartz);
 		UniversalHandler.getInstance().logCon(toString());
 	}
 

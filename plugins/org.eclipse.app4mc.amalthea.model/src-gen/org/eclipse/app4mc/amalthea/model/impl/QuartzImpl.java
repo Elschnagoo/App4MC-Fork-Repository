@@ -13,12 +13,15 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.QType;
 import org.eclipse.app4mc.amalthea.model.Quartz;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -38,24 +41,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class QuartzImpl extends ComplexNodeImpl implements Quartz {
 	/**
-	 * The default value of the '{@link #getFrequency() <em>Frequency</em>}' attribute.
+	 * The cached value of the '{@link #getFrequency() <em>Frequency</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getFrequency()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int FREQUENCY_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getFrequency() <em>Frequency</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFrequency()
-	 * @generated
-	 * @ordered
-	 */
-	protected int frequency = FREQUENCY_EDEFAULT;
+	protected Frequency frequency;
 
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -101,7 +94,7 @@ public class QuartzImpl extends ComplexNodeImpl implements Quartz {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getFrequency() {
+	public Frequency getFrequency() {
 		return frequency;
 	}
 
@@ -110,11 +103,33 @@ public class QuartzImpl extends ComplexNodeImpl implements Quartz {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFrequency(int newFrequency) {
-		int oldFrequency = frequency;
+	public NotificationChain basicSetFrequency(Frequency newFrequency, NotificationChain msgs) {
+		Frequency oldFrequency = frequency;
 		frequency = newFrequency;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.QUARTZ__FREQUENCY, oldFrequency, frequency));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.QUARTZ__FREQUENCY, oldFrequency, newFrequency);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFrequency(Frequency newFrequency) {
+		if (newFrequency != frequency) {
+			NotificationChain msgs = null;
+			if (frequency != null)
+				msgs = ((InternalEObject)frequency).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.QUARTZ__FREQUENCY, null, msgs);
+			if (newFrequency != null)
+				msgs = ((InternalEObject)newFrequency).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.QUARTZ__FREQUENCY, null, msgs);
+			msgs = basicSetFrequency(newFrequency, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.QUARTZ__FREQUENCY, newFrequency, newFrequency));
 	}
 
 	/**
@@ -144,6 +159,20 @@ public class QuartzImpl extends ComplexNodeImpl implements Quartz {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.QUARTZ__FREQUENCY:
+				return basicSetFrequency(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.QUARTZ__FREQUENCY:
@@ -163,7 +192,7 @@ public class QuartzImpl extends ComplexNodeImpl implements Quartz {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.QUARTZ__FREQUENCY:
-				setFrequency((Integer)newValue);
+				setFrequency((Frequency)newValue);
 				return;
 			case AmaltheaPackage.QUARTZ__TYPE:
 				setType((QType)newValue);
@@ -181,7 +210,7 @@ public class QuartzImpl extends ComplexNodeImpl implements Quartz {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.QUARTZ__FREQUENCY:
-				setFrequency(FREQUENCY_EDEFAULT);
+				setFrequency((Frequency)null);
 				return;
 			case AmaltheaPackage.QUARTZ__TYPE:
 				setType(TYPE_EDEFAULT);
@@ -199,7 +228,7 @@ public class QuartzImpl extends ComplexNodeImpl implements Quartz {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.QUARTZ__FREQUENCY:
-				return frequency != FREQUENCY_EDEFAULT;
+				return frequency != null;
 			case AmaltheaPackage.QUARTZ__TYPE:
 				return type != TYPE_EDEFAULT;
 		}
@@ -216,9 +245,7 @@ public class QuartzImpl extends ComplexNodeImpl implements Quartz {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (frequency: ");
-		result.append(frequency);
-		result.append(", type: ");
+		result.append(" (type: ");
 		result.append(type);
 		result.append(')');
 		return result.toString();

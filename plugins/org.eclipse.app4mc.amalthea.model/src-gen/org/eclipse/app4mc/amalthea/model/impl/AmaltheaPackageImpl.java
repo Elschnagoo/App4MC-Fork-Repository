@@ -6329,8 +6329,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getQuartz_Frequency() {
-		return (EAttribute)quartzEClass.getEStructuralFeatures().get(0);
+	public EReference getQuartz_Frequency() {
+		return (EReference)quartzEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11516,7 +11516,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(networkEClass, NETWORK__TYPE);
 
 		quartzEClass = createEClass(QUARTZ);
-		createEAttribute(quartzEClass, QUARTZ__FREQUENCY);
+		createEReference(quartzEClass, QUARTZ__FREQUENCY);
 		createEAttribute(quartzEClass, QUARTZ__TYPE);
 
 		hwComponentEClass = createEClass(HW_COMPONENT);
@@ -13154,7 +13154,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getNetwork_Type(), this.getNetworkType(), null, "type", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(quartzEClass, Quartz.class, "Quartz", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getQuartz_Frequency(), theEcorePackage.getEInt(), "frequency", null, 0, 1, Quartz.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQuartz_Frequency(), this.getFrequency(), null, "frequency", null, 0, 1, Quartz.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuartz_Type(), this.getQType(), "type", null, 0, 1, Quartz.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwComponentEClass, HwComponent.class, "HwComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -11,6 +11,9 @@
  ******************************************************************************/
 package org.eclipse.app4mc.multicore.openmapping.model;
 
+import java.math.BigDecimal;
+
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
@@ -55,7 +58,7 @@ public class OMCore {
 
 		final double clockRatio = prescaler.getClockRatio();
 		if (clockRatio <= 0) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the refered Prescaler of Core '"
+			UniversalHandler.getInstance().log("Invalid Hardware Model, the referred Prescaler of Core '"
 					+ this.coreRef.getName() + "' contains an invalid value in attribute clockRatio.", null);
 			return -1;
 		}
@@ -63,14 +66,15 @@ public class OMCore {
 		// Check the Quartz element and its attribute
 		final Quartz quartz = prescaler.getQuartz();
 		if (quartz == null) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the refered Prescaler of Core '"
+			UniversalHandler.getInstance().log("Invalid Hardware Model, the referred Prescaler of Core '"
 					+ this.coreRef.getName() + "' has an invalid or missing reference to Quartz.", null);
 			return -1;
 		}
-
-		final long frequency = quartz.getFrequency();
+		BigDecimal frequencyQuartz = AmaltheaServices.convertToHz(quartz.getFrequency());
+		long frequency = frequencyQuartz.longValue();
+		
 		if (frequency <= 0) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the refered Quartz of Core '"
+			UniversalHandler.getInstance().log("Invalid Hardware Model, the referred Quartz of Core '"
 					+ this.coreRef.getName() + "' contains an invalid value in attribute frequency.", null);
 			return -1;
 		}
@@ -85,7 +89,7 @@ public class OMCore {
 
 		final int instructionsPerCycle = type.getInstructionsPerCycle();
 		if (instructionsPerCycle <= 0) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the refered CoreType of Core '"
+			UniversalHandler.getInstance().log("Invalid Hardware Model, the referred CoreType of Core '"
 					+ this.coreRef.getName() + "' contains an invalid value in attribute instructionsPerCycle.", null);
 			return -1;
 		}

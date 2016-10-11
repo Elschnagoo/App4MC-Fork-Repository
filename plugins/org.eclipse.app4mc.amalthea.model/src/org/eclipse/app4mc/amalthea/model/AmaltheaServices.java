@@ -1,5 +1,6 @@
 package org.eclipse.app4mc.amalthea.model;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,27 @@ public class AmaltheaServices {
 			return byteBase.multiply(BigInteger.valueOf(2).pow(30));
 		case TI_B:
 			return byteBase.multiply(BigInteger.valueOf(2).pow(40));
+		}
+		
+		return null;
+	}
+	
+	public static BigDecimal convertToHz(Frequency frequency) {
+		if (frequency == null || frequency.getValue() == 0.0) return null;
+
+		double freqValue = frequency.getValue();
+		
+		switch (frequency.getUnit()) {
+		case _UNDEFINED_:
+			return null;
+		case HZ:
+			return BigDecimal.valueOf(freqValue);
+		case KHZ:
+			return BigDecimal.valueOf(freqValue).multiply(BigDecimal.ONE.pow(3));
+		case MHZ:
+			return BigDecimal.valueOf(freqValue).multiply(BigDecimal.ONE.pow(6));
+		case GHZ:
+			return BigDecimal.valueOf(freqValue).multiply(BigDecimal.ONE.pow(9));
 		}
 		
 		return null;

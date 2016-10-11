@@ -1471,7 +1471,7 @@ class Network extends ComplexNode
 
 class Quartz extends ComplexNode
 {
-	int frequency
+	contains Frequency frequency
 	QType ^type
 }
 

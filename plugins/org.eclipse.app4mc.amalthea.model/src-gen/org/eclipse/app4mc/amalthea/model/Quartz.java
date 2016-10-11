@@ -32,30 +32,30 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface Quartz extends ComplexNode {
 	/**
-	 * Returns the value of the '<em><b>Frequency</b></em>' attribute.
+	 * Returns the value of the '<em><b>Frequency</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Frequency</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Frequency</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Frequency</em>' attribute.
-	 * @see #setFrequency(int)
+	 * @return the value of the '<em>Frequency</em>' containment reference.
+	 * @see #setFrequency(Frequency)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getQuartz_Frequency()
-	 * @model unique="false"
+	 * @model containment="true"
 	 * @generated
 	 */
-	int getFrequency();
+	Frequency getFrequency();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Quartz#getFrequency <em>Frequency</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Quartz#getFrequency <em>Frequency</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Frequency</em>' attribute.
+	 * @param value the new value of the '<em>Frequency</em>' containment reference.
 	 * @see #getFrequency()
 	 * @generated
 	 */
-	void setFrequency(int value);
+	void setFrequency(Frequency value);
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
