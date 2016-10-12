@@ -12,6 +12,8 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.util.Collection;
+
 import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -206,9 +208,18 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AmaltheaPackage.SECTION__LABELS:
+				getLabels().clear();
+				getLabels().addAll((Collection<? extends Label>)newValue);
+				return;
+			case AmaltheaPackage.SECTION__RUNNABLES:
+				getRunnables().clear();
+				getRunnables().addAll((Collection<? extends org.eclipse.app4mc.amalthea.model.Runnable>)newValue);
+				return;
 			case AmaltheaPackage.SECTION__ASIL_LEVEL:
 				setAsilLevel((ASILType)newValue);
 				return;
@@ -224,6 +235,12 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.SECTION__LABELS:
+				getLabels().clear();
+				return;
+			case AmaltheaPackage.SECTION__RUNNABLES:
+				getRunnables().clear();
+				return;
 			case AmaltheaPackage.SECTION__ASIL_LEVEL:
 				setAsilLevel(ASIL_LEVEL_EDEFAULT);
 				return;

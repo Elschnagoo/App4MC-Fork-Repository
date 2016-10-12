@@ -30,6 +30,8 @@ h4. Current back pointers
 | @RunnableCall@ |{color:green}. &#8592; *runnableCalls* |>. *runnable* &#8594; | @Runnable@ |
 | @CoreAllocation@ |{color:green}. &#8592; *coreAllocation* |>. *scheduler* &#8594; | @Scheduler@ |
 | @Mapping@ |{color:green}. &#8592; *mapping* |>. *memory* &#8594; | @Memory@ |
+| @Label@ |{color:green}. &#8592; *labels* |>. *section* &#8594; | @Section@ |
+| @Runnable@ |{color:green}. &#8592; *runnables* |>. *section* &#8594; | @Section@ |
 
 h4. Implementation
 
@@ -43,15 +45,17 @@ class TaskRunnableCall extends CallSequenceItem
 {	...
 	refers Runnable[1] runnable
 	
-	@GenModel(suppressedGetVisibility="true",suppressedSetVisibility="true")
-	@GenModel(property="None")
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true"))
 	refers transient Runnable[1] runnableLinkInt opposite taskRunnableCalls
 }
 
 class Runnable extends AbstractElementMemoryInformation
 {	...	
+	// back pointer (readonly)
+	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers readonly transient TaskRunnableCall[] taskRunnableCalls opposite runnableLinkInt 
+	refers transient TaskRunnableCall[] taskRunnableCalls opposite runnableLinkInt 
 }
 p. 
 

@@ -97,7 +97,7 @@ public class MemoryItemProvider extends ComplexNodeItemProvider {
 				 AmaltheaPackage.eINSTANCE.getMemory_Mapping(),
 				 false,
 				 false,
-				 false,
+				 true,
 				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {

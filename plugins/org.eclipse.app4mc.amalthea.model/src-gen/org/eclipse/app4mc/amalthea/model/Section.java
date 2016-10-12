@@ -50,8 +50,8 @@ public interface Section extends ReferableBaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Labels</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection_Labels()
-	 * @model opposite="sectionLinkInt" transient="true" changeable="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model opposite="sectionLinkInt" transient="true" suppressedSetVisibility="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
 	EList<Label> getLabels();
@@ -67,8 +67,8 @@ public interface Section extends ReferableBaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnables</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection_Runnables()
-	 * @model opposite="sectionLinkInt" transient="true" changeable="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model opposite="sectionLinkInt" transient="true" suppressedSetVisibility="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
 	EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables();

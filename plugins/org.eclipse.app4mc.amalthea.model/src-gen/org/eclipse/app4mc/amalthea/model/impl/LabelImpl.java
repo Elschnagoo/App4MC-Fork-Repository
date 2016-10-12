@@ -12,6 +12,8 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.util.Collection;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
@@ -504,6 +506,7 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -521,6 +524,10 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 				return;
 			case AmaltheaPackage.LABEL__BUFFERED:
 				setBuffered((LabelBuffering)newValue);
+				return;
+			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
+				getLabelAccesses().clear();
+				getLabelAccesses().addAll((Collection<? extends LabelAccess>)newValue);
 				return;
 			case AmaltheaPackage.LABEL__SECTION:
 				setSection((Section)newValue);
@@ -554,6 +561,9 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 				return;
 			case AmaltheaPackage.LABEL__BUFFERED:
 				setBuffered(BUFFERED_EDEFAULT);
+				return;
+			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
+				getLabelAccesses().clear();
 				return;
 			case AmaltheaPackage.LABEL__SECTION:
 				setSection((Section)null);

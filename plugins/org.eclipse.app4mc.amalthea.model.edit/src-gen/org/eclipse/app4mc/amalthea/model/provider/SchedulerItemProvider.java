@@ -102,7 +102,7 @@ public class SchedulerItemProvider extends ReferableBaseObjectItemProvider {
 				 AmaltheaPackage.eINSTANCE.getScheduler_CoreAllocation(),
 				 false,
 				 false,
-				 false,
+				 true,
 				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {

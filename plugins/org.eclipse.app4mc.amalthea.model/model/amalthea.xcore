@@ -1460,8 +1460,10 @@ class Memory extends ComplexNode
 {
 	refers MemoryType ^type
 	
+	// back pointer (readonly)
+	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers readonly transient Mapping mapping opposite memoryLinkInt
+	refers transient Mapping mapping opposite memoryLinkInt
 }
 
 class Network extends ComplexNode
@@ -1722,8 +1724,8 @@ class CoreAllocation extends BaseObject
 	refers Scheduler[1] scheduler
 	refers Core[+] core
 	
-	@GenModel(suppressedGetVisibility="true",suppressedSetVisibility="true")
-	@GenModel(property="None")
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
 	refers transient Scheduler schedulerLinkInt opposite coreAllocation
 
 // *** Handling of lists ???
@@ -1771,8 +1773,8 @@ abstract class Mapping extends BaseObject
 	 */
 	long memoryPositionAddress
 	
-	@GenModel(suppressedGetVisibility="true",suppressedSetVisibility="true")
-	@GenModel(property="None")
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
 	refers transient Memory memoryLinkInt opposite mapping
 }
 
@@ -1886,8 +1888,10 @@ abstract class Scheduler extends ReferableBaseObject
 	contains resolving SchedulingUnit schedulingUnit
 	int scheduleUnitPriority
 	
+	// back pointer (readonly)
+	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers readonly transient CoreAllocation coreAllocation opposite schedulerLinkInt
+	refers transient CoreAllocation coreAllocation opposite schedulerLinkInt
 }
 
 /*
@@ -2641,8 +2645,8 @@ class TaskRunnableCall extends CallSequenceItem
 	refers Runnable[1] runnable
 	contains resolving RunEntityCallStatistic statistic
 	
-	@GenModel(suppressedGetVisibility="true",suppressedSetVisibility="true")
-	@GenModel(property="None")
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
 	refers transient Runnable[1] runnableLinkInt opposite taskRunnableCalls
 }
 
@@ -2788,16 +2792,20 @@ class Runnable extends AbstractElementMemoryInformation
 	 */
 	boolean service = "false"
 	
+	// back pointer (readonly)
+	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers readonly transient RunnableCall[] runnableCalls opposite runnableLinkInt
+	refers transient RunnableCall[] runnableCalls opposite runnableLinkInt
 	
+	// back pointer (readonly)
+	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers readonly transient TaskRunnableCall[] taskRunnableCalls opposite runnableLinkInt 
+	refers transient TaskRunnableCall[] taskRunnableCalls opposite runnableLinkInt 
 	
 	refers Section section
 	
-	@GenModel(suppressedGetVisibility="true",suppressedSetVisibility="true")
-	@GenModel(property="None")
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
 	refers transient Section sectionLinkInt opposite runnables
 }
 
@@ -2821,13 +2829,15 @@ class Label extends AbstractElementMemoryInformation, IDisplayName
 	 */
 	LabelBuffering buffered
 	
+	// back pointer (readonly)
+	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers readonly transient  LabelAccess[] labelAccesses opposite dataLinkInt
+	refers transient LabelAccess[] labelAccesses opposite dataLinkInt
 	
 	refers Section section
 	
-	@GenModel(suppressedGetVisibility="true",suppressedSetVisibility="true")
-	@GenModel(property="None")
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
 	refers transient Section sectionLinkInt opposite labels
 	
 }
@@ -2850,11 +2860,15 @@ enum LabelBuffering {
 class Section extends ReferableBaseObject
 {
 	
+	// back pointer (readonly)
+	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers readonly transient Label[] labels opposite sectionLinkInt 
+	refers transient Label[] labels opposite sectionLinkInt 
 	
+	// back pointer (readonly)
+	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers readonly transient Runnable[] runnables opposite sectionLinkInt 
+	refers transient Runnable[] runnables opposite sectionLinkInt 
 	
 	/*
 	 * for specifying the ASIL level for the "virtual memory sections"
@@ -2906,8 +2920,8 @@ class LabelAccess extends RunnableItem
 	 */
 	LabelAccessBuffering buffered
 
-	@GenModel(suppressedGetVisibility="true",suppressedSetVisibility="true")
-	@GenModel(property="None")
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
 	refers transient Label[1] dataLinkInt opposite labelAccesses
 }
 
@@ -3050,8 +3064,8 @@ class RunnableCall extends RunnableItem
 	refers Runnable[1] runnable
 	contains resolving RunEntityCallStatistic statistic
 	
-	@GenModel(suppressedGetVisibility="true",suppressedSetVisibility="true")
-	@GenModel(property="None")
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
 	refers transient Runnable[1] runnableLinkInt opposite runnableCalls
 }
 

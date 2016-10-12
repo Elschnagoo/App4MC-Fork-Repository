@@ -1053,8 +1053,8 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/Network" outputs="AmaltheaXMI.xsd#//Network;XSDElementDeclaration=136"/>
     <nested inputs="amalthea.xcore#/EPackage/Quartz" outputs="AmaltheaXMI.xsd#//Quartz;XSDComplexTypeDefinition=137">
-      <nested inputs="amalthea.xcore#/EPackage/Quartz/frequency" outputs="AmaltheaXMI.xsd#//Quartz;XSDComplexTypeDefinition=137/XSDAttributeUse"/>
-      <nested inputs="amalthea.xcore#/EPackage/Quartz/type" outputs="AmaltheaXMI.xsd#//Quartz;XSDComplexTypeDefinition=137/XSDAttributeUse=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/Quartz/type" outputs="AmaltheaXMI.xsd#//Quartz;XSDComplexTypeDefinition=137/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/Quartz/frequency" outputs="AmaltheaXMI.xsd#//Quartz;XSDComplexTypeDefinition=137/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/Quartz" outputs="AmaltheaXMI.xsd#//Quartz;XSDElementDeclaration=137"/>
     <nested inputs="amalthea.xcore#/EPackage/HwComponent" outputs="AmaltheaXMI.xsd#//HwComponent;XSDComplexTypeDefinition=138">

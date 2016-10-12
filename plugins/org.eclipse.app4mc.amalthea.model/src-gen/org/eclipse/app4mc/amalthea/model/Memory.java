@@ -67,8 +67,8 @@ public interface Memory extends ComplexNode {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mapping</em>' reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemory_Mapping()
-	 * @model opposite="memoryLinkInt" transient="true" changeable="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model opposite="memoryLinkInt" transient="true" suppressedSetVisibility="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
 	Mapping getMapping();

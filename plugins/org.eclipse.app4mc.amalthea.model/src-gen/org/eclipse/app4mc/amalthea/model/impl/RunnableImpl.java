@@ -547,6 +547,14 @@ public class RunnableImpl extends AbstractElementMemoryInformationImpl implement
 			case AmaltheaPackage.RUNNABLE__SERVICE:
 				setService((Boolean)newValue);
 				return;
+			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
+				getRunnableCalls().clear();
+				getRunnableCalls().addAll((Collection<? extends RunnableCall>)newValue);
+				return;
+			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
+				getTaskRunnableCalls().clear();
+				getTaskRunnableCalls().addAll((Collection<? extends TaskRunnableCall>)newValue);
+				return;
 			case AmaltheaPackage.RUNNABLE__SECTION:
 				setSection((Section)newValue);
 				return;
@@ -579,6 +587,12 @@ public class RunnableImpl extends AbstractElementMemoryInformationImpl implement
 				return;
 			case AmaltheaPackage.RUNNABLE__SERVICE:
 				setService(SERVICE_EDEFAULT);
+				return;
+			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
+				getRunnableCalls().clear();
+				return;
+			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
+				getTaskRunnableCalls().clear();
 				return;
 			case AmaltheaPackage.RUNNABLE__SECTION:
 				setSection((Section)null);

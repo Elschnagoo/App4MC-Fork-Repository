@@ -174,8 +174,8 @@ public interface Runnable extends AbstractElementMemoryInformation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable Calls</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_RunnableCalls()
-	 * @model opposite="runnableLinkInt" transient="true" changeable="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model opposite="runnableLinkInt" transient="true" suppressedSetVisibility="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
 	EList<RunnableCall> getRunnableCalls();
@@ -191,8 +191,8 @@ public interface Runnable extends AbstractElementMemoryInformation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Task Runnable Calls</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_TaskRunnableCalls()
-	 * @model opposite="runnableLinkInt" transient="true" changeable="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model opposite="runnableLinkInt" transient="true" suppressedSetVisibility="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
 	EList<TaskRunnableCall> getTaskRunnableCalls();

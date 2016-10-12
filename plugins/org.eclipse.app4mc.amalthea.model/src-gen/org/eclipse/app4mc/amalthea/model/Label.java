@@ -157,8 +157,8 @@ public interface Label extends AbstractElementMemoryInformation, IDisplayName {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Label Accesses</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_LabelAccesses()
-	 * @model opposite="dataLinkInt" transient="true" changeable="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model opposite="dataLinkInt" transient="true" suppressedSetVisibility="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
 	EList<LabelAccess> getLabelAccesses();

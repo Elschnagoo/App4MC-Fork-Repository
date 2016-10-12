@@ -76,7 +76,7 @@ public class SectionItemProvider extends ReferableBaseObjectItemProvider {
 				 AmaltheaPackage.eINSTANCE.getSection_Labels(),
 				 false,
 				 false,
-				 false,
+				 true,
 				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {
@@ -100,7 +100,7 @@ public class SectionItemProvider extends ReferableBaseObjectItemProvider {
 				 AmaltheaPackage.eINSTANCE.getSection_Runnables(),
 				 false,
 				 false,
-				 false,
+				 true,
 				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {

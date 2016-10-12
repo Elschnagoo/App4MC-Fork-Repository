@@ -233,6 +233,25 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void setCoreAllocation(CoreAllocation newCoreAllocation) {
+		if (newCoreAllocation != coreAllocation) {
+			NotificationChain msgs = null;
+			if (coreAllocation != null)
+				msgs = ((InternalEObject)coreAllocation).eInverseRemove(this, AmaltheaPackage.CORE_ALLOCATION__SCHEDULER_LINK_INT, CoreAllocation.class, msgs);
+			if (newCoreAllocation != null)
+				msgs = ((InternalEObject)newCoreAllocation).eInverseAdd(this, AmaltheaPackage.CORE_ALLOCATION__SCHEDULER_LINK_INT, CoreAllocation.class, msgs);
+			msgs = basicSetCoreAllocation(newCoreAllocation, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SCHEDULER__CORE_ALLOCATION, newCoreAllocation, newCoreAllocation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -294,6 +313,9 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 			case AmaltheaPackage.SCHEDULER__SCHEDULE_UNIT_PRIORITY:
 				setScheduleUnitPriority((Integer)newValue);
 				return;
+			case AmaltheaPackage.SCHEDULER__CORE_ALLOCATION:
+				setCoreAllocation((CoreAllocation)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -311,6 +333,9 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 				return;
 			case AmaltheaPackage.SCHEDULER__SCHEDULE_UNIT_PRIORITY:
 				setScheduleUnitPriority(SCHEDULE_UNIT_PRIORITY_EDEFAULT);
+				return;
+			case AmaltheaPackage.SCHEDULER__CORE_ALLOCATION:
+				setCoreAllocation((CoreAllocation)null);
 				return;
 		}
 		super.eUnset(featureID);

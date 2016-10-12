@@ -163,6 +163,25 @@ public class MemoryImpl extends ComplexNodeImpl implements Memory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void setMapping(Mapping newMapping) {
+		if (newMapping != mapping) {
+			NotificationChain msgs = null;
+			if (mapping != null)
+				msgs = ((InternalEObject)mapping).eInverseRemove(this, AmaltheaPackage.MAPPING__MEMORY_LINK_INT, Mapping.class, msgs);
+			if (newMapping != null)
+				msgs = ((InternalEObject)newMapping).eInverseAdd(this, AmaltheaPackage.MAPPING__MEMORY_LINK_INT, Mapping.class, msgs);
+			msgs = basicSetMapping(newMapping, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY__MAPPING, newMapping, newMapping));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -217,6 +236,9 @@ public class MemoryImpl extends ComplexNodeImpl implements Memory {
 			case AmaltheaPackage.MEMORY__TYPE:
 				setType((MemoryType)newValue);
 				return;
+			case AmaltheaPackage.MEMORY__MAPPING:
+				setMapping((Mapping)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -231,6 +253,9 @@ public class MemoryImpl extends ComplexNodeImpl implements Memory {
 		switch (featureID) {
 			case AmaltheaPackage.MEMORY__TYPE:
 				setType((MemoryType)null);
+				return;
+			case AmaltheaPackage.MEMORY__MAPPING:
+				setMapping((Mapping)null);
 				return;
 		}
 		super.eUnset(featureID);
