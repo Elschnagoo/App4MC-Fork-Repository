@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.app4mc.amalthea.export.sdk"
-      label="App4MC AMALTHEA Export SDK"
+      label="APP4MC AMALTHEA Export SDK"
       version="0.7.1.qualifier"
       provider-name="Eclipse.org"
       license-feature="org.eclipse.license"

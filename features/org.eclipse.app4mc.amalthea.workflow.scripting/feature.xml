@@ -16,10 +16,6 @@
 All rights reserved.
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
-   </license>
-
    <requires>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.ease" version="0.3.0" match="greaterOrEqual"/>
