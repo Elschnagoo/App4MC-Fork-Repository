@@ -45,6 +45,9 @@ public class HwConverter extends AbstractConverter {
 
 		update_Size_MemoryType(rootElement, "./hwModel/memoryTypes");
 
+		/*- Migration of frequency attribute of Quartz to Frequency element */
+		update_frequency_Quartz(rootElement, "./hwModel/system//quartzes[@frequency]");
+
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
 	}
 

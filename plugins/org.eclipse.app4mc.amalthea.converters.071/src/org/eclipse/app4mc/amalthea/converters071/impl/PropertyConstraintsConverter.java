@@ -45,6 +45,11 @@ public class PropertyConstraintsConverter extends AbstractConverter {
 
 		update_Size_MemoryType(rootElement, "./propertyConstraintsModel/memoryTypeDefinitions");
 
+		/*- Migration of frequency attribute of Quartz to Frequency element */
+
+		update_frequency_Quartz(rootElement,
+				"./propertyConstraintsModel/mappingConstraints/hwConstraint//quartzes[@frequency]");
+
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
 	}
 
