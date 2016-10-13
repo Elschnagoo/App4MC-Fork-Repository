@@ -86,19 +86,19 @@ public abstract class AbstractConverter implements IConverter {
 	 * Input : <quartzes frequency="100"/>
 	 *
 	 * Output :
-	 *  <memoryTypes name="MemType1">
-	  		<size value="10" />
-	 *	</memoryTypes>
+	 *  <quartzes>
+	 *      <frequency value="100.0" />
+	 *  </quartzes>
 	 *
 	 * </code>
 	 *
-	 * Note: In the above case, size attribute is converted to DataSize element -> which will be contained inside
-	 * MemoryType
+	 * Note: In the above case, frequency attribute is converted to Frequency element -> which is contained inside
+	 * Quartz element
 	 *
 	 * @param rootElement
 	 *            Root element of the AMALTHEA model
 	 * @param xpath
-	 *            corresponding Xpath to fetch the element which is the equivalent of "MemoryType"
+	 *            corresponding Xpath to fetch the element which is the equivalent of "Quartz"
 	 */
 
 	protected void update_frequency_Quartz(final Element rootElement, final String xpath) {
@@ -137,13 +137,6 @@ public abstract class AbstractConverter implements IConverter {
 		 * ./propertyConstraintsModel/mappingConstraints/hwConstraint//quartzes[@frequency]
 		 *
 		 */
-
-
-		final StringBuffer xpathBuffer = new StringBuffer();
-		xpathBuffer.append("./hwModel/system//quartzes[@frequency]");
-		xpathBuffer.append("|");
-		xpathBuffer.append("./propertyConstraintsModel/mappingConstraints/hwConstraint//quartzes[@frequency]");
-
 
 		final List<Element> quartzElements = this.helper.getXpathResult(rootElement, xpath, Element.class,
 				this.helper.getNS_071("am"));
