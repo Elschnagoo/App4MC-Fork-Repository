@@ -18,6 +18,13 @@
     <sections name="Section1" />
     <sections name="Section2" />
   </swModel>
+  <hwModel>
+    <system>
+      <memories name="Mem1" />
+    </system>
+  </hwModel>
   <propertyConstraintsModel />
-  <mappingModel />
+  <mappingModel>
+    <mapping xsi:type="am:AbstractElementMapping" memory="Mem1?type=Memory" memoryPositionAddress="200" abstractElement="label1?type=Label" />
+  </mappingModel>
 </am:Amalthea>

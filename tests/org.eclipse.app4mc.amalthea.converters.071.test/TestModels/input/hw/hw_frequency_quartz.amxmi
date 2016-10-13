@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0">
+  <hwModel>
+    <system>
+      <quartzes name="" frequency="100">
+        <quartzes frequency="100">
+          <quartzes frequency="100">
+            <quartzes frequency="100"/>
+            <memories>
+              <quartzes frequency="100">
+                <quartzes frequency="100"/>
+                <memories/>
+                <networks/>
+                <components/>
+              </quartzes>
+            </memories>
+            <networks>
+              <quartzes frequency="100">
+                <quartzes frequency="100"/>
+                <memories/>
+                <networks/>
+                <components/>
+              </quartzes>
+            </networks>
+            <components>
+              <quartzes frequency="100">
+                <quartzes frequency="100">
+                  <quartzes frequency="100">
+                    <quartzes frequency="100"/>
+                    <memories/>
+                    <networks/>
+                    <components/>
+                  </quartzes>
+                </quartzes>
+                <memories/>
+                <networks/>
+                <components/>
+              </quartzes>
+            </components>
+          </quartzes>
+        </quartzes>
+        <memories/>
+        <networks/>
+        <components/>
+      </quartzes>
+      <memories>
+        <quartzes frequency="100">
+          <quartzes frequency="100"/>
+          <memories/>
+          <networks/>
+          <components/>
+        </quartzes>
+      </memories>
+      <networks>
+        <quartzes frequency="100">
+          <quartzes frequency="100">
+            <quartzes frequency="100">
+              <quartzes frequency="100"/>
+              <memories/>
+              <networks/>
+              <components/>
+            </quartzes>
+          </quartzes>
+          <memories>
+            <quartzes frequency="100">
+              <quartzes frequency="100"/>
+              <memories/>
+              <networks/>
+              <components/>
+            </quartzes>
+          </memories>
+          <networks>
+            <quartzes frequency="100">
+              <quartzes frequency="100"/>
+              <memories/>
+              <networks/>
+              <components/>
+            </quartzes>
+          </networks>
+          <components>
+            <quartzes frequency="100">
+              <quartzes frequency="100"/>
+              <memories/>
+              <networks/>
+              <components/>
+            </quartzes>
+          </components>
+        </quartzes>
+      </networks>
+      <components>
+        <quartzes frequency="100">
+          <quartzes frequency="100">
+            <quartzes frequency="100">
+              <quartzes frequency="100"/>
+              <memories/>
+              <networks/>
+              <components/>
+            </quartzes>
+          </quartzes>
+          <memories/>
+          <networks/>
+          <components/>
+        </quartzes>
+      </components>
+      <ecus>
+        <quartzes frequency="100">
+          <quartzes frequency="100">
+            <quartzes frequency="100">
+              <quartzes frequency="100"/>
+              <memories/>
+              <networks/>
+              <components/>
+            </quartzes>
+          </quartzes>
+          <memories/>
+          <networks/>
+          <components/>
+        </quartzes>
+        <microcontrollers>
+          <quartzes frequency="100">
+            <quartzes frequency="100">
+              <quartzes frequency="100">
+                <quartzes frequency="100"/>
+                <memories/>
+                <networks/>
+                <components/>
+              </quartzes>
+            </quartzes>
+            <memories/>
+            <networks/>
+            <components/>
+          </quartzes>
+          <cores>
+            <quartzes frequency="100">
+              <quartzes frequency="100">
+                <quartzes frequency="100">
+                  <quartzes frequency="100"/>
+                  <memories/>
+                  <networks/>
+                  <components/>
+                </quartzes>
+              </quartzes>
+              <memories/>
+              <networks/>
+              <components/>
+            </quartzes>
+          </cores>
+        </microcontrollers>
+      </ecus>
+    </system>
+  </hwModel>
+</am:Amalthea>

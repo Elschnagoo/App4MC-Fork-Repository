@@ -32,7 +32,8 @@ public class HwConverterTest extends AbstractConverterTest {
 	@Parameterized.Parameters(name = "{index}: Test file: {0}")
 	public static Collection<Object[]> getTestData() {
 
-		return Arrays.asList(new Object[][] { { "/hw/memorytype_size.amxmi", true } });
+		return Arrays.asList(
+				new Object[][] { { "/hw/memorytype_size.amxmi", true }, { "/hw/hw_frequency_quartz.amxmi", true } });
 	}
 
 	public HwConverterTest(final String xmlFileRelativeLocation, final boolean canExecuteTestCase) {
@@ -50,7 +51,10 @@ public class HwConverterTest extends AbstractConverterTest {
 	@Override
 	@Test
 	public void verification() {
+
 		super.verification();
+
+		verify_frequency_Quartz("./hwModel/system//quartzes");
 	}
 
 

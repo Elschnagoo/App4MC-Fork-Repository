@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <hwModel>
+    <system>
+      <quartzes name="">
+        <quartzes>
+          <quartzes>
+            <quartzes>
+              <frequency value="100.0" />
+            </quartzes>
+            <memories>
+              <quartzes>
+                <quartzes>
+                  <frequency value="100.0" />
+                </quartzes>
+                <memories />
+                <networks />
+                <components />
+                <frequency value="100.0" />
+              </quartzes>
+            </memories>
+            <networks>
+              <quartzes>
+                <quartzes>
+                  <frequency value="100.0" />
+                </quartzes>
+                <memories />
+                <networks />
+                <components />
+                <frequency value="100.0" />
+              </quartzes>
+            </networks>
+            <components>
+              <quartzes>
+                <quartzes>
+                  <quartzes>
+                    <quartzes>
+                      <frequency value="100.0" />
+                    </quartzes>
+                    <memories />
+                    <networks />
+                    <components />
+                    <frequency value="100.0" />
+                  </quartzes>
+                  <frequency value="100.0" />
+                </quartzes>
+                <memories />
+                <networks />
+                <components />
+                <frequency value="100.0" />
+              </quartzes>
+            </components>
+            <frequency value="100.0" />
+          </quartzes>
+          <frequency value="100.0" />
+        </quartzes>
+        <memories />
+        <networks />
+        <components />
+        <frequency value="100.0" />
+      </quartzes>
+      <memories>
+        <quartzes>
+          <quartzes>
+            <frequency value="100.0" />
+          </quartzes>
+          <memories />
+          <networks />
+          <components />
+          <frequency value="100.0" />
+        </quartzes>
+      </memories>
+      <networks>
+        <quartzes>
+          <quartzes>
+            <quartzes>
+              <quartzes>
+                <frequency value="100.0" />
+              </quartzes>
+              <memories />
+              <networks />
+              <components />
+              <frequency value="100.0" />
+            </quartzes>
+            <frequency value="100.0" />
+          </quartzes>
+          <memories>
+            <quartzes>
+              <quartzes>
+                <frequency value="100.0" />
+              </quartzes>
+              <memories />
+              <networks />
+              <components />
+              <frequency value="100.0" />
+            </quartzes>
+          </memories>
+          <networks>
+            <quartzes>
+              <quartzes>
+                <frequency value="100.0" />
+              </quartzes>
+              <memories />
+              <networks />
+              <components />
+              <frequency value="100.0" />
+            </quartzes>
+          </networks>
+          <components>
+            <quartzes>
+              <quartzes>
+                <frequency value="100.0" />
+              </quartzes>
+              <memories />
+              <networks />
+              <components />
+              <frequency value="100.0" />
+            </quartzes>
+          </components>
+          <frequency value="100.0" />
+        </quartzes>
+      </networks>
+      <components>
+        <quartzes>
+          <quartzes>
+            <quartzes>
+              <quartzes>
+                <frequency value="100.0" />
+              </quartzes>
+              <memories />
+              <networks />
+              <components />
+              <frequency value="100.0" />
+            </quartzes>
+            <frequency value="100.0" />
+          </quartzes>
+          <memories />
+          <networks />
+          <components />
+          <frequency value="100.0" />
+        </quartzes>
+      </components>
+      <ecus>
+        <quartzes>
+          <quartzes>
+            <quartzes>
+              <quartzes>
+                <frequency value="100.0" />
+              </quartzes>
+              <memories />
+              <networks />
+              <components />
+              <frequency value="100.0" />
+            </quartzes>
+            <frequency value="100.0" />
+          </quartzes>
+          <memories />
+          <networks />
+          <components />
+          <frequency value="100.0" />
+        </quartzes>
+        <microcontrollers>
+          <quartzes>
+            <quartzes>
+              <quartzes>
+                <quartzes>
+                  <frequency value="100.0" />
+                </quartzes>
+                <memories />
+                <networks />
+                <components />
+                <frequency value="100.0" />
+              </quartzes>
+              <frequency value="100.0" />
+            </quartzes>
+            <memories />
+            <networks />
+            <components />
+            <frequency value="100.0" />
+          </quartzes>
+          <cores>
+            <quartzes>
+              <quartzes>
+                <quartzes>
+                  <quartzes>
+                    <frequency value="100.0" />
+                  </quartzes>
+                  <memories />
+                  <networks />
+                  <components />
+                  <frequency value="100.0" />
+                </quartzes>
+                <frequency value="100.0" />
+              </quartzes>
+              <memories />
+              <networks />
+              <components />
+              <frequency value="100.0" />
+            </quartzes>
+          </cores>
+        </microcontrollers>
+      </ecus>
+    </system>
+  </hwModel>
+</am:Amalthea>

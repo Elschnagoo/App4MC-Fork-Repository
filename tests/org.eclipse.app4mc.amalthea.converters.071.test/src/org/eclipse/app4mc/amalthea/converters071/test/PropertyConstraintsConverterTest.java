@@ -32,7 +32,8 @@ public class PropertyConstraintsConverterTest extends AbstractConverterTest {
 	@Parameterized.Parameters(name = "{index}: Test file: {0}")
 	public static Collection<Object[]> getTestData() {
 
-		return Arrays.asList(new Object[][] { { "/propertyconstraints/memorytype_size.amxmi", true } });
+		return Arrays.asList(new Object[][] { { "/propertyconstraints/memorytype_size.amxmi", true },
+				{ "/propertyconstraints/pc_frequency_quartz.amxmi", true } });
 	}
 
 	public PropertyConstraintsConverterTest(final String xmlFileRelativeLocation, final boolean canExecuteTestCase) {
@@ -50,7 +51,10 @@ public class PropertyConstraintsConverterTest extends AbstractConverterTest {
 	@Override
 	@Test
 	public void verification() {
+
 		super.verification();
+
+		verify_frequency_Quartz("./propertyConstraintsModel/mappingConstraints/hwConstraint//quartzes");
 	}
 
 

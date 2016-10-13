@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <propertyConstraintsModel>
+    <mappingConstraints xsi:type="am:AbstractElementMappingConstraint">
+      <hwConstraint xsi:type="am:HwMemoryConjunction">
+        <firstConstraint xsi:type="am:HwMemoryConjunction">
+          <firstConstraint xsi:type="am:HwMemoryProperty">
+            <memory name="mem">
+              <quartzes name="q1" type="DYNAMIC">
+                <frequency value="200.0" />
+              </quartzes>
+            </memory>
+          </firstConstraint>
+          <secondConstraint xsi:type="am:HwMemoryConjunction">
+            <firstConstraint xsi:type="am:HwMemoryConjunction">
+              <secondConstraint xsi:type="am:HwMemoryProperty">
+                <memory name="Mem2">
+                  <quartzes name="q2">
+                    <quartzes name="q3" type="DYNAMIC">
+                      <frequency value="4200.0" />
+                    </quartzes>
+                    <frequency value="220.0" />
+                  </quartzes>
+                </memory>
+              </secondConstraint>
+            </firstConstraint>
+            <secondConstraint xsi:type="am:HwMemoryConjunction">
+              <firstConstraint xsi:type="am:HwMemoryConjunction">
+                <secondConstraint xsi:type="am:HwMemoryProperty">
+                  <memory name="Mem3">
+                    <quartzes name="q21">
+                      <quartzes name="q32" type="DYNAMIC">
+                        <quartzes name="q23">
+                          <quartzes name="q34" type="DYNAMIC">
+                            <quartzes name="q25">
+                              <quartzes name="q36" type="DYNAMIC">
+                                <quartzes name="q27">
+                                  <quartzes name="q38" type="DYNAMIC">
+                                    <frequency value="4200.0" />
+                                  </quartzes>
+                                  <frequency value="220.0" />
+                                </quartzes>
+                                <frequency value="4200.0" />
+                              </quartzes>
+                              <frequency value="220.0" />
+                            </quartzes>
+                            <frequency value="4200.0" />
+                          </quartzes>
+                          <frequency value="220.0" />
+                        </quartzes>
+                        <frequency value="4200.0" />
+                      </quartzes>
+                      <frequency value="220.0" />
+                    </quartzes>
+                  </memory>
+                </secondConstraint>
+              </firstConstraint>
+            </secondConstraint>
+          </secondConstraint>
+        </firstConstraint>
+      </hwConstraint>
+    </mappingConstraints>
+  </propertyConstraintsModel>
+</am:Amalthea>

@@ -16,15 +16,11 @@
     <processPrototypes name="ProcessPrototype1">
       <size value="20" unit="bit" />
     </processPrototypes>
-    <sections name="Section1">
-      <size value="20" unit="bit" />
-    </sections>
+    <sections name="Section1" />
     <typeDefinitions xsi:type="am:BaseTypeDefinition" name="baseTypeDef">
       <size value="20" unit="bit" />
     </typeDefinitions>
-    <sections name="Section2">
-      <size value="20" unit="bit" />
-    </sections>
+    <sections name="Section2" />
     <tasks name="task_1">
       <size value="20" unit="bit" />
     </tasks>
@@ -64,7 +60,9 @@
     <coreTypes name="Default" instructionsPerCycle="1" />
     <system name="Democar">
       <ecus name="ECU_1">
-        <quartzes name="QuartzOscillator_1" frequency="200000000" type="STATIC" />
+        <quartzes name="QuartzOscillator_1" type="STATIC">
+          <frequency value="2.0E8" />
+        </quartzes>
         <microcontrollers name="Processor_1">
           <memories name="Mem_1">
             <ports xsi:type="am:ComplexPort" name="Mem_1_port" bitWidth="16" direction="R" writeCycles="10" readCycles="10" />

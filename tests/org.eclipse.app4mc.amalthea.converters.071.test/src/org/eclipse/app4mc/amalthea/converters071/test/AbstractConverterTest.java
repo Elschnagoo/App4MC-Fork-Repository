@@ -38,6 +38,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
@@ -421,6 +422,61 @@ public abstract class AbstractConverterTest {
 			/*- verifying the namespace */
 			namespaceVerification(document);
 
+		}
+
+	}
+
+	/**
+	 * This method is used to verify if the Model Migration is successful w.r.t migration of frequency attribute inside
+	 * Quartz Element
+	 *
+	 * @param xpath
+	 *            as Quartz can exists in both HW Model and PropertyConstraints Model, appropriate Xpath is supplied
+	 *            each time this method should be invoked
+	 */
+
+	protected void verify_frequency_Quartz(final String xpath) {
+
+
+		for (final File file : this.fileName_documentsMap.keySet()) {
+
+			final Document document = this.fileName_documentsMap.get(file);
+
+			/*- Fetching the Quartz elements inside PropertyConstraints model */
+			final List<Element> quartzElements = this.helper.getXpathResult(document.getRootElement(), xpath,
+					Element.class, this.helper.getNS_071("am"));
+
+			if (quartzElements.size() > 0) {
+
+				for (final Element quartzElement : quartzElements) {
+
+					boolean frequencyFound = false;
+
+					final Element frequencyElement = quartzElement.getChild("frequency");
+
+					if (frequencyElement == null) {
+
+						/*- it is expected that Frequency element exists as a child of Quartz */
+						Assert.assertTrue(
+								"Model migration is not performed for \"frequency of Quartz\" elements in file : "
+										+ file.getName(),
+								quartzElement.getAttribute("frequency") != null);
+
+					}
+					else {
+						frequencyFound = true;
+
+						final String attributeValue = frequencyElement.getAttributeValue("value");
+
+						Assert.assertTrue(
+								"Appropriate value not set for the \"value\" attribute of Quartz " + file.getName(),
+								attributeValue != null);
+
+					}
+					Assert.assertTrue("Frequency not found inside Quartz element", frequencyFound);
+				}
+
+			}
 		}
 
 	}
