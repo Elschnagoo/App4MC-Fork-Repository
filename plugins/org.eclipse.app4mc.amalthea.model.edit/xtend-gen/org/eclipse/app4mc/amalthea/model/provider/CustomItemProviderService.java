@@ -2505,11 +2505,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(PhysicalSectionConstraint.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_CONSTRAINT__NAME)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, false);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_CONSTRAINT__NAME)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, false);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_CONSTRAINT__SECTION)) {
@@ -3401,27 +3403,28 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(PhysicalSectionMapping.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_MAPPING__MEMORY)) {
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_MAPPING__MEMORY)) {
         _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
       }
-      if (!_matched) {
+    }
+    if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_MAPPING__ORIGIN)) {
-          _matched=true;
+        _matched=true;
         Object _notifier_1 = notification.getNotifier();
         ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
         list.add(_viewerNotification_1);
-        }
       }
+    }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_MAPPING__NAME)) {
         _matched=true;
         Object _notifier_2 = notification.getNotifier();
         ViewerNotification _viewerNotification_2 = new ViewerNotification(notification, _notifier_2, true, false);
         list.add(_viewerNotification_2);
-      }
       }
     }
     return list;
@@ -3747,8 +3750,6 @@ public class CustomItemProviderService {
         ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
         list.add(_viewerNotification);
       }
-    }
-    if (!_matched) {
     }
     return list;
   }
