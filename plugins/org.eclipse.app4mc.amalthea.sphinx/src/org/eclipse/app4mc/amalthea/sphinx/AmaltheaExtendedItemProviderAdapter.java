@@ -14,17 +14,27 @@
 
 package org.eclipse.app4mc.amalthea.sphinx;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.command.CopyCommand.Helper;
+import org.eclipse.emf.edit.command.InitializeCopyCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sphinx.emf.edit.ExtendedItemProviderAdapter;
 
 
@@ -107,5 +117,86 @@ public class AmaltheaExtendedItemProviderAdapter extends ExtendedItemProviderAda
 		}
 
 		return false;
+	}
+
+	/**
+	 * This method is overridden to enhance the copy elements action -> so that "back reference" mechanism of AMALTHEA
+	 * works in the same way as eOpposite is handled by standard EMF copy/paste action
+	 *
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createInitializeCopyCommand(org.eclipse.emf.edit.domain.EditingDomain,
+	 *      org.eclipse.emf.ecore.EObject, org.eclipse.emf.edit.command.CopyCommand.Helper)
+	 */
+	@Override
+	protected Command createInitializeCopyCommand(final EditingDomain domain, final EObject owner,
+			final Helper helper) {
+
+
+		return new InitializeCopyCommand(domain, owner, helper) {
+
+			@Override
+			protected void copyReferences() {
+
+				/*-- This is the default copy references invocation */
+				super.copyReferences();
+				/*
+				 * Below code is to unset the value of EStructuralFeature for which LinkInt is mapped (as per the back
+				 * reference mechanism introduced in AMALTHEA)
+				 */
+
+				final EClass eClass = this.copy.eClass();
+
+				if (eClass != null) {
+					final EList<EStructuralFeature> eAllStructuralFeatures = eClass.getEAllStructuralFeatures();
+
+					/*- EStructuralFeature's Map -> key is name of EStructuralFeature and value is EStructuralFeature object */
+
+					final Map<String, EStructuralFeature> eFeaturesMap = new HashMap<String, EStructuralFeature>();
+
+					/*- List of EStructuralFeature's which are  having eOpposite and are part of the "back reference mechanism introduced in AMALTHEA"*/
+
+					final List<String> linkIntFeatures = new ArrayList<String>();
+
+					for (final EStructuralFeature eStructuralFeature : eAllStructuralFeatures) {
+
+						/*- In eFeaturesMap data belonging to EReference objects is added  */
+						if (eStructuralFeature instanceof EReference) {
+
+							final String name = eStructuralFeature.getName();
+
+							eFeaturesMap.put(name, eStructuralFeature);
+
+							if (name.endsWith("LinkInt")) {
+								linkIntFeatures.add(name);
+							}
+						}
+
+
+					}
+
+					/*- loop through "LinkInt features" and find the matching features (e.g: In LabelAccess EClass -> EStructuralFeature "dataLinkInt" is the mapped to EStructualFeature "data"  */
+
+					for (final String linkIntFeatureName : linkIntFeatures) {
+
+						final int lastIndexOf = linkIntFeatureName.lastIndexOf("LinkInt");
+
+						if (lastIndexOf != -1) {
+							final String matchingFeatureName = linkIntFeatureName.substring(0, lastIndexOf);
+
+							final EStructuralFeature eStructuralFeature = eFeaturesMap.get(matchingFeatureName);
+
+							if (eStructuralFeature != null) {
+								/*- unset the value for mapped EStructuralFeature  (e.g: data of LabelAccess eClass) of LinkInt EStructuralFeature (e.g: dataLinkInt of LabelAccess eclass) */
+								this.copy.eSet(eStructuralFeature, null);
+							}
+						}
+
+					}
+
+
+				}
+
+
+			}
+		};
 	}
 }
