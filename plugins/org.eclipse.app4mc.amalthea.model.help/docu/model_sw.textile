@@ -72,20 +72,25 @@ Activations are independent of other top level elements in the AMALTHEA model. S
 
 h2. Counter
 
-The __Counter__ element describes an offset for activating a target element.
+The __Counter__ element describes an activation of a target element that happens only every n<sup>th</sup> time.
 
-* offset: Gives the number for the activation offset, like if set to 2, at every second activation the target element is triggered.
-* prescaler: Initial shift for the first target element activation.
+table(#minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __prescaler__ | Gives the number n for the activation,<br>e.g. if set to 2, the target element is executed every second time. |
+| __offset__ | Initial shift for the first execution of the target. |
 
-It is available at the following elements:
+If for example __prescaler__ is 5 and __offset__ is 2 it is executed on the 2<sup>nd</sup>, 7<sup>th</sup>, 12<sup>th</sup>, … time.
 
-* __ClearEvent__
+Counters are available at the following elements:
+
+* __TaskRunnableCall__
 * __EnforcedMigration__
 * __InterProcessActivation__
+* __TerminateProcess__
 * __SchedulePoint__
 * __SetEvent__
-* __TaskRunnableCall__
 * __WaitEvent__
+* __ClearEvent__
 
 
 h2. Runnables and Services
