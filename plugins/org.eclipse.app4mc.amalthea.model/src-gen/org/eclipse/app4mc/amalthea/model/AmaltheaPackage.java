@@ -22738,7 +22738,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getASILType()
 	 * @generated
 	 */
-	int ASIL_TYPE = 347;
+	int ASIL_TYPE = 349;
 
 
 	/**
