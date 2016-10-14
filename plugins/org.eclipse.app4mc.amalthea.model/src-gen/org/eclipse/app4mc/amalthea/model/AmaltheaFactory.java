@@ -1931,6 +1931,24 @@ public interface AmaltheaFactory extends EFactory {
 	ModeLabelAccess createModeLabelAccess();
 
 	/**
+	 * Returns a new object of class '<em>Runnable Mode Switch</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Runnable Mode Switch</em>'.
+	 * @generated
+	 */
+	RunnableModeSwitch createRunnableModeSwitch();
+
+	/**
+	 * Returns a new object of class '<em>Mode Switch Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Mode Switch Item</em>'.
+	 * @generated
+	 */
+	ModeSwitchItem createModeSwitchItem();
+
+	/**
 	 * Returns a new object of class '<em>Label Access</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

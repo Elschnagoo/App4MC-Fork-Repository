@@ -281,11 +281,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(Map.Entry.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.CUSTOM_PROPERTY__KEY)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.CUSTOM_PROPERTY__KEY)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.CUSTOM_PROPERTY__VALUE)) {
@@ -647,32 +649,62 @@ public class CustomItemProviderService {
     final Deviation<Object> element = ((Deviation<Object>) object);
     final StringBuffer sb = new StringBuffer();
     sb.append(defaultText);
-    if (((null != element.getDistribution()) && rootAF.isFactoryForType(element.getDistribution()))) {
-      Distribution<Object> _distribution = element.getDistribution();
-      final Object plainAdapter = rootAF.adapt(_distribution, IItemLabelProvider.class);
+    boolean _and = false;
+    Distribution<Object> _distribution = element.getDistribution();
+    boolean _tripleNotEquals = (null != _distribution);
+    if (!_tripleNotEquals) {
+      _and = false;
+    } else {
+      Distribution<Object> _distribution_1 = element.getDistribution();
+      boolean _isFactoryForType = rootAF.isFactoryForType(_distribution_1);
+      _and = _isFactoryForType;
+    }
+    if (_and) {
+      Distribution<Object> _distribution_2 = element.getDistribution();
+      final Object plainAdapter = rootAF.adapt(_distribution_2, IItemLabelProvider.class);
       if ((plainAdapter instanceof IItemLabelProvider)) {
-        Distribution<Object> _distribution_1 = element.getDistribution();
-        final String tmp = ((IItemLabelProvider)plainAdapter).getText(_distribution_1);
+        Distribution<Object> _distribution_3 = element.getDistribution();
+        final String tmp = ((IItemLabelProvider)plainAdapter).getText(_distribution_3);
         StringBuffer _append = sb.append(" ");
         _append.append(tmp);
       }
     }
-    if (((null != element.getLowerBound()) && rootAF.isFactoryForType(element.getLowerBound()))) {
-      Object _lowerBound = element.getLowerBound();
-      final Object plainAdapter_1 = rootAF.adapt(_lowerBound, IItemLabelProvider.class);
+    boolean _and_1 = false;
+    Object _lowerBound = element.getLowerBound();
+    boolean _tripleNotEquals_1 = (null != _lowerBound);
+    if (!_tripleNotEquals_1) {
+      _and_1 = false;
+    } else {
+      Object _lowerBound_1 = element.getLowerBound();
+      boolean _isFactoryForType_1 = rootAF.isFactoryForType(_lowerBound_1);
+      _and_1 = _isFactoryForType_1;
+    }
+    if (_and_1) {
+      Object _lowerBound_2 = element.getLowerBound();
+      final Object plainAdapter_1 = rootAF.adapt(_lowerBound_2, IItemLabelProvider.class);
       if ((plainAdapter_1 instanceof IItemLabelProvider)) {
-        Object _lowerBound_1 = element.getLowerBound();
-        final String tmp_1 = ((IItemLabelProvider)plainAdapter_1).getText(_lowerBound_1);
+        Object _lowerBound_3 = element.getLowerBound();
+        final String tmp_1 = ((IItemLabelProvider)plainAdapter_1).getText(_lowerBound_3);
         StringBuffer _append_1 = sb.append(" ");
         _append_1.append(tmp_1);
       }
     }
-    if (((null != element.getUpperBound()) && rootAF.isFactoryForType(element.getUpperBound()))) {
-      Object _upperBound = element.getUpperBound();
-      final Object plainAdapter_2 = rootAF.adapt(_upperBound, IItemLabelProvider.class);
+    boolean _and_2 = false;
+    Object _upperBound = element.getUpperBound();
+    boolean _tripleNotEquals_2 = (null != _upperBound);
+    if (!_tripleNotEquals_2) {
+      _and_2 = false;
+    } else {
+      Object _upperBound_1 = element.getUpperBound();
+      boolean _isFactoryForType_2 = rootAF.isFactoryForType(_upperBound_1);
+      _and_2 = _isFactoryForType_2;
+    }
+    if (_and_2) {
+      Object _upperBound_2 = element.getUpperBound();
+      final Object plainAdapter_2 = rootAF.adapt(_upperBound_2, IItemLabelProvider.class);
       if ((plainAdapter_2 instanceof IItemLabelProvider)) {
-        Object _upperBound_1 = element.getUpperBound();
-        final String tmp_2 = ((IItemLabelProvider)plainAdapter_2).getText(_upperBound_1);
+        Object _upperBound_3 = element.getUpperBound();
+        final String tmp_2 = ((IItemLabelProvider)plainAdapter_2).getText(_upperBound_3);
         StringBuffer _append_2 = sb.append(" ");
         _append_2.append(tmp_2);
       }
@@ -684,23 +716,25 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(Deviation.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION__LOWER_BOUND)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION__UPPER_BOUND)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION__LOWER_BOUND)) {
         _matched=true;
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION__DISTRIBUTION)) {
-        _matched=true;
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION__UPPER_BOUND)) {
+          _matched=true;
+        }
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION__DISTRIBUTION)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -884,18 +918,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ComponentInstance.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.COMPONENT_INSTANCE__NAME)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.COMPONENT_INSTANCE__TYPE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.COMPONENT_INSTANCE__NAME)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.COMPONENT_INSTANCE__TYPE)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.COMPONENT_INSTANCE__CUSTOM_PROPERTIES)) {
@@ -985,7 +1021,15 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       String _xifexpression_1 = null;
-      if ((Objects.equal(kind, null) || Objects.equal(kind, InterfaceKind._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals = Objects.equal(kind, null);
+      if (_equals) {
+        _or = true;
+      } else {
+        boolean _equals_1 = Objects.equal(kind, InterfaceKind._UNDEFINED_);
+        _or = _equals_1;
+      }
+      if (_or) {
         _xifexpression_1 = "<kind>";
       } else {
         _xifexpression_1 = kind.getLiteral();
@@ -1079,18 +1123,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(QualifiedPort.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.QUALIFIED_PORT__INSTANCE)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.QUALIFIED_PORT__PORT)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.QUALIFIED_PORT__INSTANCE)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.QUALIFIED_PORT__PORT)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -1143,7 +1189,15 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       String s2 = "";
-      if (((!Objects.equal(event, null)) && rootAF.isFactoryForType(event))) {
+      boolean _and = false;
+      boolean _notEquals = (!Objects.equal(event, null));
+      if (!_notEquals) {
+        _and = false;
+      } else {
+        boolean _isFactoryForType = rootAF.isFactoryForType(event);
+        _and = _isFactoryForType;
+      }
+      if (_and) {
         final Adapter plainAdapter = rootAF.adapt(event, IItemLabelProvider.class);
         if ((plainAdapter instanceof IItemLabelProvider)) {
           String _text = ((IItemLabelProvider)plainAdapter).getText(event);
@@ -1162,11 +1216,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(EventConfigElement.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CONFIG_ELEMENT__NAME)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CONFIG_ELEMENT__NAME)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CONFIG_ELEMENT__EVENT)) {
@@ -1203,7 +1259,15 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       String s2 = "";
-      if (((!Objects.equal(event, null)) && rootAF.isFactoryForType(event))) {
+      boolean _and = false;
+      boolean _notEquals = (!Objects.equal(event, null));
+      if (!_notEquals) {
+        _and = false;
+      } else {
+        boolean _isFactoryForType = rootAF.isFactoryForType(event);
+        _and = _isFactoryForType;
+      }
+      if (_and) {
         final Adapter plainAdapter = rootAF.adapt(event, IItemLabelProvider.class);
         if ((plainAdapter instanceof IItemLabelProvider)) {
           String _text = ((IItemLabelProvider)plainAdapter).getText(event);
@@ -1222,18 +1286,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(EventConfigLink.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CONFIG_LINK__NAME)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CONFIG_LINK__EVENT)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CONFIG_LINK__NAME)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CONFIG_LINK__EVENT)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -1290,11 +1356,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ComponentScope.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.COMPONENT_SCOPE__COMPONENT)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.COMPONENT_SCOPE__COMPONENT)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -1335,11 +1403,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ProcessScope.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_SCOPE__PROCESS)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_SCOPE__PROCESS)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -1376,11 +1446,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(RunnableScope.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_SCOPE__RUNNABLE)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_SCOPE__RUNNABLE)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -1430,18 +1502,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ArchitectureRequirement.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.ARCHITECTURE_REQUIREMENT__NAME)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.ARCHITECTURE_REQUIREMENT__COMPONENT)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.ARCHITECTURE_REQUIREMENT__NAME)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.ARCHITECTURE_REQUIREMENT__COMPONENT)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -1470,7 +1544,15 @@ public class CustomItemProviderService {
       }
       final int limitValue = _xifexpression;
       String _xifexpression_1 = null;
-      if ((Objects.equal(metric, null) || Objects.equal(metric, CountMetric._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals_1 = Objects.equal(metric, null);
+      if (_equals_1) {
+        _or = true;
+      } else {
+        boolean _equals_2 = Objects.equal(metric, CountMetric._UNDEFINED_);
+        _or = _equals_2;
+      }
+      if (_or) {
         _xifexpression_1 = "<count metric>";
       } else {
         String _literal = metric.getLiteral();
@@ -1518,7 +1600,15 @@ public class CustomItemProviderService {
       }
       final double limitValue = _xifexpression;
       String _xifexpression_1 = null;
-      if ((Objects.equal(metric, null) || Objects.equal(metric, CPUPercentageMetric._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals_1 = Objects.equal(metric, null);
+      if (_equals_1) {
+        _or = true;
+      } else {
+        boolean _equals_2 = Objects.equal(metric, CPUPercentageMetric._UNDEFINED_);
+        _or = _equals_2;
+      }
+      if (_or) {
         _xifexpression_1 = "<CPU % metric>";
       } else {
         _xifexpression_1 = metric.getLiteral();
@@ -1562,7 +1652,15 @@ public class CustomItemProviderService {
       }
       final Frequency limitValue = _limitValue;
       String _xifexpression = null;
-      if ((Objects.equal(metric, null) || Objects.equal(metric, FrequencyMetric._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals = Objects.equal(metric, null);
+      if (_equals) {
+        _or = true;
+      } else {
+        boolean _equals_1 = Objects.equal(metric, FrequencyMetric._UNDEFINED_);
+        _or = _equals_1;
+      }
+      if (_or) {
         _xifexpression = "<frequency metric>";
       } else {
         _xifexpression = metric.getLiteral();
@@ -1580,11 +1678,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(FrequencyRequirementLimit.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.FREQUENCY_REQUIREMENT_LIMIT__METRIC)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.FREQUENCY_REQUIREMENT_LIMIT__METRIC)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.FREQUENCY_REQUIREMENT_LIMIT__LIMIT_VALUE)) {
@@ -1621,7 +1721,15 @@ public class CustomItemProviderService {
       }
       final double limitValue = _xifexpression;
       String _xifexpression_1 = null;
-      if ((Objects.equal(metric, null) || Objects.equal(metric, PercentageMetric._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals_1 = Objects.equal(metric, null);
+      if (_equals_1) {
+        _or = true;
+      } else {
+        boolean _equals_2 = Objects.equal(metric, PercentageMetric._UNDEFINED_);
+        _or = _equals_2;
+      }
+      if (_or) {
         _xifexpression_1 = "<% metric>";
       } else {
         _xifexpression_1 = metric.getLiteral();
@@ -1657,7 +1765,15 @@ public class CustomItemProviderService {
       }
       final SignedTime limitValue = _limitValue;
       String _xifexpression = null;
-      if ((Objects.equal(metric, null) || Objects.equal(metric, TimeMetric._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals = Objects.equal(metric, null);
+      if (_equals) {
+        _or = true;
+      } else {
+        boolean _equals_1 = Objects.equal(metric, TimeMetric._UNDEFINED_);
+        _or = _equals_1;
+      }
+      if (_or) {
         _xifexpression = "<time metric>";
       } else {
         _xifexpression = metric.getLiteral();
@@ -1675,11 +1791,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(TimeRequirementLimit.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.TIME_REQUIREMENT_LIMIT__METRIC)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.TIME_REQUIREMENT_LIMIT__METRIC)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.TIME_REQUIREMENT_LIMIT__LIMIT_VALUE)) {
@@ -1741,18 +1859,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ProcessRequirement.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_REQUIREMENT__NAME)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_REQUIREMENT__PROCESS)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_REQUIREMENT__NAME)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_REQUIREMENT__PROCESS)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -1802,18 +1922,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(RunnableRequirement.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_REQUIREMENT__NAME)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_REQUIREMENT__RUNNABLE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_REQUIREMENT__NAME)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_REQUIREMENT__RUNNABLE)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -1863,18 +1985,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ProcessChainRequirement.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_CHAIN_REQUIREMENT__NAME)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_CHAIN_REQUIREMENT__PROCESS_CHAIN)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_CHAIN_REQUIREMENT__NAME)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_CHAIN_REQUIREMENT__PROCESS_CHAIN)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -1923,18 +2047,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(DataAgeTime.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DATA_AGE_TIME__MINIMUM_TIME)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DATA_AGE_TIME__MAXIMUM_TIME)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.DATA_AGE_TIME__MINIMUM_TIME)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.DATA_AGE_TIME__MAXIMUM_TIME)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -1968,7 +2094,15 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       String _xifexpression_1 = null;
-      if ((Objects.equal(direction, null) || Objects.equal(direction, CoherencyDirection._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals = Objects.equal(direction, null);
+      if (_equals) {
+        _or = true;
+      } else {
+        boolean _equals_1 = Objects.equal(direction, CoherencyDirection._UNDEFINED_);
+        _or = _equals_1;
+      }
+      if (_or) {
         _xifexpression_1 = "<direction>";
       } else {
         _xifexpression_1 = direction.getLiteral();
@@ -1976,23 +2110,25 @@ public class CustomItemProviderService {
       final String s2 = _xifexpression_1;
       String _switchResult = null;
       boolean _matched = false;
-      if (scope instanceof RunnableScope) {
-        _matched=true;
-        String _xifexpression_2 = null;
-        org.eclipse.app4mc.amalthea.model.Runnable _runnable = ((RunnableScope)scope).getRunnable();
-        String _name_1 = null;
-        if (_runnable!=null) {
-          _name_1=_runnable.getName();
+      if (!_matched) {
+        if (scope instanceof RunnableScope) {
+          _matched=true;
+          String _xifexpression_2 = null;
+          org.eclipse.app4mc.amalthea.model.Runnable _runnable = ((RunnableScope)scope).getRunnable();
+          String _name_1 = null;
+          if (_runnable!=null) {
+            _name_1=_runnable.getName();
+          }
+          boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(_name_1);
+          if (_isNullOrEmpty_1) {
+            _xifexpression_2 = "<runnable>";
+          } else {
+            org.eclipse.app4mc.amalthea.model.Runnable _runnable_1 = ((RunnableScope)scope).getRunnable();
+            String _name_2 = _runnable_1.getName();
+            _xifexpression_2 = ("Runnable " + _name_2);
+          }
+          _switchResult = _xifexpression_2;
         }
-        boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(_name_1);
-        if (_isNullOrEmpty_1) {
-          _xifexpression_2 = "<runnable>";
-        } else {
-          org.eclipse.app4mc.amalthea.model.Runnable _runnable_1 = ((RunnableScope)scope).getRunnable();
-          String _name_2 = _runnable_1.getName();
-          _xifexpression_2 = ("Runnable " + _name_2);
-        }
-        _switchResult = _xifexpression_2;
       }
       if (!_matched) {
         if (scope instanceof ProcessScope) {
@@ -2052,18 +2188,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(DataCoherencyGroup.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DATA_COHERENCY_GROUP__NAME)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DATA_COHERENCY_GROUP__DIRECTION)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.DATA_COHERENCY_GROUP__NAME)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.DATA_COHERENCY_GROUP__DIRECTION)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.DATA_COHERENCY_GROUP__SCOPE)) {
@@ -2122,11 +2260,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(EventChainReference.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CHAIN_REFERENCE__EVENT_CHAIN)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CHAIN_REFERENCE__EVENT_CHAIN)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -2177,11 +2317,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(SubEventChain.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -2218,11 +2360,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(TagGroup.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.TAG_GROUP__TAG)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.TAG_GROUP__TAG)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -2448,23 +2592,25 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(HwAccessPath.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH__NAME)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH__SOURCE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH__NAME)) {
         _matched=true;
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH__TARGET)) {
-        _matched=true;
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH__SOURCE)) {
+          _matched=true;
+        }
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH__TARGET)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH__HW_ELEMENTS)) {
@@ -2534,11 +2680,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(HwAccessPathRef.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH_REF__REF)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH_REF__REF)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -2575,11 +2723,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(HwElementRef.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.HW_ELEMENT_REF__PORT)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_ELEMENT_REF__PORT)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -2646,23 +2796,25 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(LatencyAccessPath.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_ACCESS_PATH__NAME)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_ACCESS_PATH__SOURCE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_ACCESS_PATH__NAME)) {
         _matched=true;
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_ACCESS_PATH__TARGET)) {
-        _matched=true;
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_ACCESS_PATH__SOURCE)) {
+          _matched=true;
+        }
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_ACCESS_PATH__TARGET)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_ACCESS_PATH__LATENCIES)) {
@@ -2694,7 +2846,15 @@ public class CustomItemProviderService {
       }
       final long value = _xifexpression;
       String _xifexpression_1 = null;
-      if ((Objects.equal(type, null) || Objects.equal(type, RWType._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals_1 = Objects.equal(type, null);
+      if (_equals_1) {
+        _or = true;
+      } else {
+        boolean _equals_2 = Objects.equal(type, RWType._UNDEFINED_);
+        _or = _equals_2;
+      }
+      if (_or) {
         _xifexpression_1 = "?";
       } else {
         _xifexpression_1 = type.getLiteral();
@@ -2735,7 +2895,15 @@ public class CustomItemProviderService {
       }
       final String distName = _name;
       String _xifexpression = null;
-      if ((Objects.equal(type, null) || Objects.equal(type, RWType._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals = Objects.equal(type, null);
+      if (_equals) {
+        _or = true;
+      } else {
+        boolean _equals_1 = Objects.equal(type, RWType._UNDEFINED_);
+        _or = _equals_1;
+      }
+      if (_or) {
         _xifexpression = "?";
       } else {
         _xifexpression = type.getLiteral();
@@ -2759,11 +2927,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(LatencyDeviation.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_DEVIATION__ACCESS_TYPE)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_DEVIATION__ACCESS_TYPE)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_DEVIATION__DEVIATION)) {
@@ -2833,18 +3003,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(CoreAllocation.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.CORE_ALLOCATION__SCHEDULER)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.CORE_ALLOCATION__CORE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.CORE_ALLOCATION__SCHEDULER)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.CORE_ALLOCATION__CORE)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.CORE_ALLOCATION__CUSTOM_PROPERTIES)) {
@@ -2906,18 +3078,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ISRAllocation.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.ISR_ALLOCATION__CONTROLLER)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.ISR_ALLOCATION__ISR)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.ISR_ALLOCATION__CONTROLLER)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.ISR_ALLOCATION__ISR)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -2971,18 +3145,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(RunnableAllocation.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_ALLOCATION__ENTITY)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_ALLOCATION__SCHEDULER)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_ALLOCATION__ENTITY)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_ALLOCATION__SCHEDULER)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -3036,18 +3212,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(TaskAllocation.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.TASK_ALLOCATION__TASK)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.TASK_ALLOCATION__SCHEDULER)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.TASK_ALLOCATION__TASK)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.TASK_ALLOCATION__SCHEDULER)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -3105,18 +3283,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(AbstractElementMapping.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING__MEMORY)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING__ABSTRACT_ELEMENT)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING__MEMORY)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING__ABSTRACT_ELEMENT)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -3222,25 +3402,26 @@ public class CustomItemProviderService {
     int _featureID = notification.getFeatureID(PhysicalSectionMapping.class);
     boolean _matched = false;
     if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_MAPPING__MEMORY)) {
-      _matched=true;
+        _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
-    }
-    if (!_matched) {
+      }
+      if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_MAPPING__ORIGIN)) {
-        _matched=true;
+          _matched=true;
         Object _notifier_1 = notification.getNotifier();
         ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
         list.add(_viewerNotification_1);
+        }
       }
-    }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.PHYSICAL_SECTION_MAPPING__NAME)) {
         _matched=true;
         Object _notifier_2 = notification.getNotifier();
         ViewerNotification _viewerNotification_2 = new ViewerNotification(notification, _notifier_2, true, false);
         list.add(_viewerNotification_2);
+      }
       }
     }
     return list;
@@ -3422,11 +3603,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ProcessPrototypeAllocationConstraint.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_PROTOTYPE_ALLOCATION_CONSTRAINT__PROCESS_PROTOTYPE)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_PROTOTYPE_ALLOCATION_CONSTRAINT__PROCESS_PROTOTYPE)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -3467,11 +3650,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ProcessAllocationConstraint.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_ALLOCATION_CONSTRAINT__PROCESS)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_ALLOCATION_CONSTRAINT__PROCESS)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -3508,11 +3693,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(RunnableAllocationConstraint.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_ALLOCATION_CONSTRAINT__RUNNABLE)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_ALLOCATION_CONSTRAINT__RUNNABLE)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -3553,11 +3740,15 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(AbstractElementMappingConstraint.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING_CONSTRAINT__ABSTRACT_ELEMENT)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING_CONSTRAINT__ABSTRACT_ELEMENT)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
+    }
+    if (!_matched) {
     }
     return list;
   }
@@ -3633,18 +3824,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ModeValueListEntry.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE_LIST_ENTRY__VALUE)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE_LIST_ENTRY__VALUE_PROVIDER)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE_LIST_ENTRY__VALUE)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE_LIST_ENTRY__VALUE_PROVIDER)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -3682,11 +3875,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ArrivalCurveEntry.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_EVENTS)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_EVENTS)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.ARRIVAL_CURVE_ENTRY__LOWER_TIME_BORDER)) {
@@ -3709,9 +3904,11 @@ public class CustomItemProviderService {
   private static String getRunnableItemText(final RunnableItem item) {
     String _switchResult = null;
     boolean _matched = false;
-    if (item instanceof LabelAccess) {
-      _matched=true;
-      _switchResult = CustomItemProviderService.getLabelAccessItemProviderText(item, null);
+    if (!_matched) {
+      if (item instanceof LabelAccess) {
+        _matched=true;
+        _switchResult = CustomItemProviderService.getLabelAccessItemProviderText(item, null);
+      }
     }
     if (!_matched) {
       if (item instanceof RunnableCall) {
@@ -3844,7 +4041,15 @@ public class CustomItemProviderService {
       }
       final String s3 = _xifexpression_2;
       String _xifexpression_3 = null;
-      if ((Objects.equal(accessType, null) || Objects.equal(accessType, AccessPrecedenceType._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals = Objects.equal(accessType, null);
+      if (_equals) {
+        _or = true;
+      } else {
+        boolean _equals_1 = Objects.equal(accessType, AccessPrecedenceType._UNDEFINED_);
+        _or = _equals_1;
+      }
+      if (_or) {
         _xifexpression_3 = "<access>";
       } else {
         _xifexpression_3 = accessType.getLiteral();
@@ -3860,28 +4065,30 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(AccessPrecedenceSpec.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.ACCESS_PRECEDENCE_SPEC__ORDER_TYPE)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.ACCESS_PRECEDENCE_SPEC__ORIGIN)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.ACCESS_PRECEDENCE_SPEC__ORDER_TYPE)) {
         _matched=true;
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.ACCESS_PRECEDENCE_SPEC__TARGET)) {
-        _matched=true;
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.ACCESS_PRECEDENCE_SPEC__ORIGIN)) {
+          _matched=true;
+        }
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.ACCESS_PRECEDENCE_SPEC__LABEL)) {
-        _matched=true;
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.ACCESS_PRECEDENCE_SPEC__TARGET)) {
+          _matched=true;
+        }
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.ACCESS_PRECEDENCE_SPEC__LABEL)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -3931,7 +4138,15 @@ public class CustomItemProviderService {
       }
       final String s2 = _xifexpression_1;
       String _xifexpression_2 = null;
-      if ((Objects.equal(order, null) || Objects.equal(order, OrderType._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals = Objects.equal(order, null);
+      if (_equals) {
+        _or = true;
+      } else {
+        boolean _equals_1 = Objects.equal(order, OrderType._UNDEFINED_);
+        _or = _equals_1;
+      }
+      if (_or) {
         _xifexpression_2 = "<order>";
       } else {
         _xifexpression_2 = order.getLiteral();
@@ -3947,23 +4162,25 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(OrderPrecedenceSpec.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.ORDER_PRECEDENCE_SPEC__ORDER_TYPE)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.ORDER_PRECEDENCE_SPEC__ORIGIN)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.ORDER_PRECEDENCE_SPEC__ORDER_TYPE)) {
         _matched=true;
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.ORDER_PRECEDENCE_SPEC__TARGET)) {
-        _matched=true;
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.ORDER_PRECEDENCE_SPEC__ORIGIN)) {
+          _matched=true;
+        }
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.ORDER_PRECEDENCE_SPEC__TARGET)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -4017,18 +4234,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(AsynchronousServerCall.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.ASYNCHRONOUS_SERVER_CALL__SERVER_RUNNABLE)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.ASYNCHRONOUS_SERVER_CALL__RESULT_RUNNABLE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.ASYNCHRONOUS_SERVER_CALL__SERVER_RUNNABLE)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.ASYNCHRONOUS_SERVER_CALL__RESULT_RUNNABLE)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -4061,7 +4280,15 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       String _xifexpression_1 = null;
-      if ((Objects.equal(waiting, null) || Objects.equal(waiting, WaitingBehaviour._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals = Objects.equal(waiting, null);
+      if (_equals) {
+        _or = true;
+      } else {
+        boolean _equals_1 = Objects.equal(waiting, WaitingBehaviour._UNDEFINED_);
+        _or = _equals_1;
+      }
+      if (_or) {
         _xifexpression_1 = "undefined";
       } else {
         _xifexpression_1 = waiting.getLiteral();
@@ -4077,18 +4304,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(SynchronousServerCall.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.SYNCHRONOUS_SERVER_CALL__SERVER_RUNNABLE)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.SYNCHRONOUS_SERVER_CALL__WAITING_BEHAVIOUR)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.SYNCHRONOUS_SERVER_CALL__SERVER_RUNNABLE)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.SYNCHRONOUS_SERVER_CALL__WAITING_BEHAVIOUR)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -4141,23 +4370,25 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ChainedProcessPrototype.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.CHAINED_PROCESS_PROTOTYPE__PROTOTYPE)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.CHAINED_PROCESS_PROTOTYPE__APPLY)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.CHAINED_PROCESS_PROTOTYPE__PROTOTYPE)) {
         _matched=true;
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.CHAINED_PROCESS_PROTOTYPE__OFFSET)) {
-        _matched=true;
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.CHAINED_PROCESS_PROTOTYPE__APPLY)) {
+          _matched=true;
+        }
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.CHAINED_PROCESS_PROTOTYPE__OFFSET)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -4191,18 +4422,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(DeviationRunnableItem.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION_RUNNABLE_ITEM__DEVIATION)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION_RUNNABLE_ITEM__RUNNABLE_ITEM)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION_RUNNABLE_ITEM__DEVIATION)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION_RUNNABLE_ITEM__RUNNABLE_ITEM)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -4329,11 +4562,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(InstructionsDeviation.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.INSTRUCTIONS_DEVIATION__DEVIATION)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.INSTRUCTIONS_DEVIATION__DEVIATION)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -4370,11 +4605,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(InterProcessActivation.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.INTER_PROCESS_ACTIVATION__STIMULUS)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.INTER_PROCESS_ACTIVATION__STIMULUS)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -4437,11 +4674,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ModeSwitch.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH__VALUE_PROVIDER)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH__VALUE_PROVIDER)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH__ENTRIES)) {
@@ -4494,18 +4733,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ModeSwitchEntry.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__DEFAULT)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__VALUE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__DEFAULT)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__VALUE)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -4542,11 +4783,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(TaskRunnableCall.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.TASK_RUNNABLE_CALL__RUNNABLE)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.TASK_RUNNABLE_CALL__RUNNABLE)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.TASK_RUNNABLE_CALL__STATISTIC)) {
@@ -4579,7 +4822,15 @@ public class CustomItemProviderService {
       }
       final String labelName = _name;
       String _xifexpression = null;
-      if ((Objects.equal(access, null) || Objects.equal(access, LabelAccessEnum._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals = Objects.equal(access, null);
+      if (_equals) {
+        _or = true;
+      } else {
+        boolean _equals_1 = Objects.equal(access, LabelAccessEnum._UNDEFINED_);
+        _or = _equals_1;
+      }
+      if (_or) {
         _xifexpression = "<access>";
       } else {
         _xifexpression = access.getLiteral();
@@ -4603,18 +4854,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(LabelAccess.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.LABEL_ACCESS__ACCESS)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.LABEL_ACCESS__DATA)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.LABEL_ACCESS__ACCESS)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.LABEL_ACCESS__DATA)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.LABEL_ACCESS__STATISTIC)) {
@@ -4647,7 +4900,15 @@ public class CustomItemProviderService {
       }
       final String semName = _name;
       String _xifexpression = null;
-      if ((Objects.equal(access, null) || Objects.equal(access, SemaphoreAccessEnum._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals = Objects.equal(access, null);
+      if (_equals) {
+        _or = true;
+      } else {
+        boolean _equals_1 = Objects.equal(access, SemaphoreAccessEnum._UNDEFINED_);
+        _or = _equals_1;
+      }
+      if (_or) {
         _xifexpression = "<access>";
       } else {
         _xifexpression = access.getLiteral();
@@ -4671,18 +4932,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(SemaphoreAccess.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.SEMAPHORE_ACCESS__ACCESS)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.SEMAPHORE_ACCESS__SEMAPHORE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.SEMAPHORE_ACCESS__ACCESS)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.SEMAPHORE_ACCESS__SEMAPHORE)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -4707,7 +4970,15 @@ public class CustomItemProviderService {
       }
       final String label = _name;
       String _xifexpression = null;
-      if ((Objects.equal(access, null) || Objects.equal(access, LabelAccessEnum._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals = Objects.equal(access, null);
+      if (_equals) {
+        _or = true;
+      } else {
+        boolean _equals_1 = Objects.equal(access, LabelAccessEnum._UNDEFINED_);
+        _or = _equals_1;
+      }
+      if (_or) {
         _xifexpression = "<access>";
       } else {
         _xifexpression = access.getLiteral();
@@ -4731,18 +5002,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ModeLabelAccess.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.MODE_LABEL_ACCESS__ACCESS)) {
-      _matched=true;
-    }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.MODE_LABEL_ACCESS__DATA)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_LABEL_ACCESS__ACCESS)) {
         _matched=true;
       }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.MODE_LABEL_ACCESS__DATA)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -4779,11 +5052,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(RunnableCall.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_CALL__RUNNABLE)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_CALL__RUNNABLE)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_CALL__STATISTIC)) {
@@ -4833,11 +5108,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ProbabilityRunnableItem.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.PROBABILITY_RUNNABLE_ITEM__PROBABILITY)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.PROBABILITY_RUNNABLE_ITEM__PROBABILITY)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.PROBABILITY_RUNNABLE_ITEM__RUNNABLE_ITEM)) {
@@ -4882,11 +5159,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(SenderReceiverRead.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.SENDER_RECEIVER_READ__LABEL)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.SENDER_RECEIVER_READ__LABEL)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -4923,11 +5202,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(SenderReceiverWrite.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.SENDER_RECEIVER_WRITE__LABEL)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.SENDER_RECEIVER_WRITE__LABEL)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -4968,11 +5249,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(SetEvent.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.SET_EVENT__PROCESS)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.SET_EVENT__PROCESS)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }
@@ -4988,7 +5271,15 @@ public class CustomItemProviderService {
       }
       final WaitingBehaviour waiting = _waitingBehaviour;
       String _xifexpression = null;
-      if ((Objects.equal(waiting, null) || Objects.equal(waiting, WaitingBehaviour._UNDEFINED_))) {
+      boolean _or = false;
+      boolean _equals = Objects.equal(waiting, null);
+      if (_equals) {
+        _or = true;
+      } else {
+        boolean _equals_1 = Objects.equal(waiting, WaitingBehaviour._UNDEFINED_);
+        _or = _equals_1;
+      }
+      if (_or) {
         _xifexpression = "<waiting>";
       } else {
         _xifexpression = waiting.getLiteral();
@@ -5091,11 +5382,13 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(TypeRef.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.TYPE_REF__TYPE_DEF)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.TYPE_REF__TYPE_DEF)) {
+        _matched=true;
+        Object _notifier = notification.getNotifier();
+        ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+        list.add(_viewerNotification);
+      }
     }
     return list;
   }

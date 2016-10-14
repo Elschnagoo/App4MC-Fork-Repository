@@ -2902,6 +2902,19 @@ class ModeLabelAccess extends RunnableItem
 	 refers ModeLiteral modeValue
 }
 
+class RunnableModeSwitch extends RunnableItem
+{
+	refers ModeValueProvider valueProvider
+	contains resolving ModeSwitchItem[] modeItems
+	contains resolving RunnableItem[] defaultItems
+}
+
+class ModeSwitchItem extends BaseObject
+{
+	refers ModeLiteral value
+	contains resolving RunnableItem[] runnableItems
+}
+
 
 /*
  * Representation of a label access of a run entity.

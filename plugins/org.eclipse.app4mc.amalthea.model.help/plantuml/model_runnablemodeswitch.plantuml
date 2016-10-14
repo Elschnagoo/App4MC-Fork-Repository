@@ -1,0 +1,19 @@
+@startuml
+
+abstract RunnableItem
+interface ModeValueProvider
+
+RunnableItem <|-- RunnableModeSwitch
+RunnableModeSwitch .. ModeValueProvider : valueProvider
+RunnableModeSwitch *-- "*" ModeSwitchItem : modeItems
+RunnableModeSwitch *-- "*" RunnableItem : defaultItems
+
+ModeSwitchItem .. ModeLiteral : value
+ModeSwitchItem *-- "*" RunnableItem : runnableItems
+
+ModeValueProvider .. Mode : mode
+ModeValueProvider .. ModeLiteral : initialValue
+
+Mode .. "*" ModeLiteral : literals
+
+@enduml

@@ -5,9 +5,9 @@
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
  *  http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  *     Generated using Eclipse EMF
- *
+ * 
  * *******************************************************************************
  */
 package org.eclipse.app4mc.amalthea.model.provider;
@@ -18,32 +18,36 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem;
+import org.eclipse.app4mc.amalthea.model.ModeSwitchItem;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.DeviationRunnableItem} object. <!--
- * begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeSwitchItem} object.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
  * @generated
  */
-public class DeviationRunnableItemItemProvider extends BaseObjectItemProvider {
+public class ModeSwitchItemItemProvider extends BaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DeviationRunnableItemItemProvider(AdapterFactory adapterFactory) {
+	public ModeSwitchItemItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
 	/**
 	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -51,30 +55,53 @@ public class DeviationRunnableItemItemProvider extends BaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ModeSwitchItem_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ModeSwitchItem_value_feature", "_UI_ModeSwitchItem_type"),
+				 AmaltheaPackage.eINSTANCE.getModeSwitchItem_Value(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_Deviation());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems());
 		}
 		return childrenFeatures;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -86,17 +113,19 @@ public class DeviationRunnableItemItemProvider extends BaseObjectItemProvider {
 	}
 
 	/**
-	 * This returns DeviationRunnableItem.gif.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This returns ModeSwitchItem.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/DeviationRunnableItem"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModeSwitchItem"));
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -110,7 +139,7 @@ public class DeviationRunnableItemItemProvider extends BaseObjectItemProvider {
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		return getString("_UI_DeviationRunnableItem_type");
+		return getString("_UI_ModeSwitchItem_type");
 	}
 
 	/**
@@ -118,23 +147,35 @@ public class DeviationRunnableItemItemProvider extends BaseObjectItemProvider {
 	 */
 	@Override
 	public String getText(final Object object) {
-		// delegate to custom item provider
-		return CustomItemProviderService.getDeviationRunnableItemItemProviderText(object, getTextGen(object));
+		if (object instanceof ModeSwitchItem) {
+			ModeSwitchItem switchItem = (ModeSwitchItem) object;
+			String value = null;
+			if (null != switchItem.getValue() && getRootAdapterFactory().isFactoryForType(switchItem.getValue())) {
+				Object plainAdapter = getRootAdapterFactory().adapt(switchItem.getValue(), IItemLabelProvider.class);
+				if (plainAdapter instanceof IItemLabelProvider) {
+					value = ((IItemLabelProvider)plainAdapter).getText(switchItem.getValue());
+				}
+			}
+			String text = null == value ? "<mode>" : value;
+			return "Switch " + text;
+		} 
+		return getTextGen(object);
 	}
+	
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
-	 * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChangedGen(Notification notification) {
+	@Override
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(DeviationRunnableItem.class)) {
-			case AmaltheaPackage.DEVIATION_RUNNABLE_ITEM__RUNNABLE_ITEM:
-			case AmaltheaPackage.DEVIATION_RUNNABLE_ITEM__DEVIATION:
+		switch (notification.getFeatureID(ModeSwitchItem.class)) {
+			case AmaltheaPackage.MODE_SWITCH_ITEM__RUNNABLE_ITEMS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -142,26 +183,10 @@ public class DeviationRunnableItemItemProvider extends BaseObjectItemProvider {
 	}
 
 	/**
-	 * @generated NOT
-	 */
-	@Override
-	public void notifyChanged(final Notification notification) {
-		updateChildren(notification);
-
-		// delegate to custom item provider and execute locally
-		final List<ViewerNotification> notifications = CustomItemProviderService
-				.getDeviationRunnableItemItemProviderNotifications(notification);
-		for (final ViewerNotification vn : notifications) {
-			fireNotifyChanged(vn);
-		}
-
-		super.notifyChanged(notification);
-	}
-
-	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -170,73 +195,68 @@ public class DeviationRunnableItemItemProvider extends BaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem(),
+				(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createModeLabelAccess()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem(),
+				(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createRunnableModeSwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem(),
+				(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createLabelAccess()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem(),
+				(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createSemaphoreAccess()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem(),
+				(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createSenderReceiverRead()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem(),
+				(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createSenderReceiverWrite()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem(),
+				(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createSynchronousServerCall()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem(),
+				(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createAsynchronousServerCall()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem(),
+				(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem(),
+				(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createGroup()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem(),
+				(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createRunnableCall()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem(),
+				(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_RunnableItem(),
+				(AmaltheaPackage.eINSTANCE.getModeSwitchItem_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviationRunnableItem_Deviation(),
-				 AmaltheaFactory.eINSTANCE.createDeviation()));
 	}
 
 }

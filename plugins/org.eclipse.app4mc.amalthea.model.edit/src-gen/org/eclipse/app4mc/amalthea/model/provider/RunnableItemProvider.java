@@ -313,6 +313,11 @@ public class RunnableItemProvider extends AbstractElementMemoryInformationItemPr
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
+				 AmaltheaFactory.eINSTANCE.createRunnableModeSwitch()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createLabelAccess()));
 
 		newChildDescriptors.add
