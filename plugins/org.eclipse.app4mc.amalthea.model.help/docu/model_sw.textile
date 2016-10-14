@@ -157,6 +157,14 @@ table(#minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 |_. Name |_. Description |
 | __ModeLabelAccess__ | Describes the access to an existing __ModeLabel__ (set as reference). The type of access is represented using the values of __LabelAccessEnum__: @write@ represents the change of a mode label. The defined __ModeLiteral__ is set. @read@ indicates that the behavior of the runnable is influenced by the current value of the __ModeLabel__. |
 
+h3. Runnable Mode Switch
+
+!../pictures/model_runnablemodeswitch.png!
+
+With the __RunnableModeSwitch__ it is possible to define different execution paths. They can be used like __if-else__ or __switch-case__ statements in a programming language. A __RunnableModeSwitch__ uses the value of a __Mode__ (with the help of __ModeValueProvider__) to decide which path has to be executed. 
+A __ModeSwitchItem__ object is referenced to represent the different paths and each entry defines the value the mode must have to execute the path with the help of the __ModeLiteral__ value.
+At the __RunnableModeSwitch__ it is also possible to define a default path, which is executed if none of the __ModeSwitchItem__ fits to the current set value of the mode.
+
 h3. Instructions
 
 In the next picture a more detailed overview is given about the __Instructions__.
