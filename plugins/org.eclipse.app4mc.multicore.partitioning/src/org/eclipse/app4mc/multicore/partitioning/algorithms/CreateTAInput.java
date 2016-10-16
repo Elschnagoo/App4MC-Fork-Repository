@@ -38,8 +38,7 @@ public class CreateTAInput {
 						prgen.setRunnable(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(1)
 								.getEntries().get(0).getRunnable());
 						try {
-							prgen.getProcessScope().add(cmta.getRunnableSequencingConstraints().get(j)
-									.getRunnableGroups().get(1).getEntries().get(0).getProcessScope().get(0));
+							cmta.getRunnableSequencingConstraints().get(i).getProcessScope().add(cmta.getRunnableSequencingConstraints().get(j).getProcessScope().get(0));
 						}
 						catch (final Exception e) {
 							PartLog.getInstance().log(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups()
@@ -58,8 +57,7 @@ public class CreateTAInput {
 						prgen.setRunnable(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(0)
 								.getEntries().get(0).getRunnable());
 						try {
-							prgen.getProcessScope().add(cmta.getRunnableSequencingConstraints().get(j)
-									.getRunnableGroups().get(0).getEntries().get(0).getProcessScope().get(0));
+							cmta.getRunnableSequencingConstraints().get(i).getProcessScope().add(cmta.getRunnableSequencingConstraints().get(j).getProcessScope().get(0));
 						}
 						catch (final Exception e) {
 							PartLog.getInstance().log(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups()

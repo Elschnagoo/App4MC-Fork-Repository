@@ -17,7 +17,6 @@ import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableGroupingType;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
@@ -110,8 +109,6 @@ public class CheckLabels {
 										RSC.setOrderType(RunnableOrderType.SUCCESSOR);
 										final ProcessRunnableGroup prg1 = cinstance.createProcessRunnableGroup();
 										final ProcessRunnableGroup prg2 = cinstance.createProcessRunnableGroup();
-										prg1.setGroupingType(RunnableGroupingType.ALL_OF_THEM);
-										prg2.setGroupingType(RunnableGroupingType.ALL_OF_THEM);
 										final ProcessRunnableGroupEntry prge1 = cinstance
 												.createProcessRunnableGroupEntry();
 										final ProcessRunnableGroupEntry prge2 = cinstance

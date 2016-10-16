@@ -139,32 +139,30 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 					null);
 			return;
 		}
-
-		final ProcessRunnableGroupEntry originEntry = originGroup.getEntries().get(0);
-		final ProcessRunnableGroupEntry targetEntry = targetGroup.getEntries().get(0);
-
+		
 		// Has each entry a process scope?
-		if (originEntry.getProcessScope().size() != 1 || targetEntry.getProcessScope().size() != 1) {
+		if (1 != rsc.getProcessScope().size()) {
 			UniversalHandler.getInstance().log(
 					"Invalid ProcessRunnableGroupEntry.\nProcessRunnableGroupEntry must reference one AbstractProcess.\nSkipping...",
 					null);
 			return;
 		}
 
-		final AbstractProcess originAProcess = originEntry.getProcessScope().get(0);
-		final AbstractProcess targetAProcess = targetEntry.getProcessScope().get(0);
-
-		// Are those references to ProcessPrototypes?
-		if (!(originAProcess instanceof ProcessPrototype) || !(targetAProcess instanceof ProcessPrototype)) {
+		final ProcessRunnableGroupEntry originEntry = originGroup.getEntries().get(0);
+		final ProcessRunnableGroupEntry targetEntry = targetGroup.getEntries().get(0);
+		
+		final AbstractProcess abstractProcess = rsc.getProcessScope().get(0);
+		
+		// Is this reference to ProcessPrototypes?
+		if (false == (abstractProcess instanceof ProcessPrototype)) {
 			UniversalHandler.getInstance().log(
 					"Invalid ProcessScope reference.\nThe ProcessScope must reference a ProcessPrototype.\nSkipping...",
 					null);
 			return;
 		}
 
-		final ProcessPrototype ppOrigin = (ProcessPrototype) originAProcess;
-		final ProcessPrototype ppTarget = (ProcessPrototype) targetAProcess;
-
+		final ProcessPrototype processPrototype = (ProcessPrototype) abstractProcess;
+		
 		final Runnable originRunnable;
 		final Runnable targetRunnable;
 		// Now, check if both Entries have the Runnable reference set
@@ -178,20 +176,8 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 
 		// From here on: Check which process prototypes are influenced by this
 		// Constraint
-		if (ppOrigin.equals(ppTarget)) {
-			// Same ProcessPrototype, so they describe an Edge inside the same
-			// Task!
-			final ExtendedProcessPrototype epp = this.lProcessPrototypes.get(ppOrigin);
-			epp.addEdge(originRunnable, targetRunnable);
-		}
-		else {
-			// Different ProcessPrototypes, but there may be still "new"
-			// Runnables specified
-			final ExtendedProcessPrototype eppOrigin = this.lProcessPrototypes.get(ppOrigin);
-			final ExtendedProcessPrototype eppTarget = this.lProcessPrototypes.get(ppTarget);
-			eppOrigin.addOrphanRunnable(originRunnable);
-			eppTarget.addOrphanRunnable(targetRunnable);
-		}
+		final ExtendedProcessPrototype epp = this.lProcessPrototypes.get(processPrototype);
+		epp.addEdge(originRunnable, targetRunnable);
 	}
 
 	private boolean createRunnableDependencyGraph() {

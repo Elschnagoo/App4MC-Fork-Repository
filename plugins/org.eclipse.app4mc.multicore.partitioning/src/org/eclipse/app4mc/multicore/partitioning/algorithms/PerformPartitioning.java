@@ -24,7 +24,6 @@ import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableGroupingType;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
@@ -391,19 +390,25 @@ public class PerformPartitioning {
 		rsc.setName(source.getName() + "-->" + target.getName());
 		final ProcessRunnableGroup prg1 = af.createProcessRunnableGroup();
 		final ProcessRunnableGroup prg2 = af.createProcessRunnableGroup();
-		prg1.setGroupingType(RunnableGroupingType.ALL_OF_THEM);
-		prg2.setGroupingType(RunnableGroupingType.ALL_OF_THEM);
 		final ProcessRunnableGroupEntry prge1 = af.createProcessRunnableGroupEntry();
 		final ProcessRunnableGroupEntry prge2 = af.createProcessRunnableGroupEntry();
 		prge1.setRunnable(source);
 		prge2.setRunnable(target);
-		prge1.getProcessScope().add(new Helper().getPPfromR(source, swm));
-		prge2.getProcessScope().add(new Helper().getPPfromR(target, swm));
-		prg1.getEntries().add(prge1);
-		prg2.getEntries().add(prge2);
-		rsc.getRunnableGroups().add(prg1);
-		rsc.getRunnableGroups().add(prg2);
-		rsc.setOrderType(RunnableOrderType.SUCCESSOR);
+		//
+		ProcessPrototype sourcePP = new Helper().getPPfromR(source, swm);
+		ProcessPrototype targetPP = new Helper().getPPfromR(target, swm);
+		if(true == sourcePP.equals(targetPP)) {
+			rsc.getProcessScope().add(sourcePP);
+			prg1.getEntries().add(prge1);
+			prg2.getEntries().add(prge2);
+			rsc.getRunnableGroups().add(prg1);
+			rsc.getRunnableGroups().add(prg2);
+			rsc.setOrderType(RunnableOrderType.SUCCESSOR);
+		} else {
+			PartLog.getInstance()
+			.log("Two different process prototypes of source and target runnable", null);
+		}
+		
 		return rsc;
 	}
 

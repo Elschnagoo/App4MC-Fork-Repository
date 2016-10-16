@@ -50,8 +50,7 @@ public class WriteGraphvizHandler extends org.eclipse.core.commands.AbstractHand
 					for (int j = 0; j < cm.getRunnableSequencingConstraints().size(); j++) {
 						for (int k = 0; k < cm.getRunnableSequencingConstraints().get(i).getRunnableGroups()
 								.size(); k++) {
-							if (cm.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(k).getEntries()
-									.get(0).getProcessScope().get(0).equals(swm.getProcessPrototypes().get(i))) {
+							if (cm.getRunnableSequencingConstraints().get(j).getProcessScope().get(0).equals(swm.getProcessPrototypes().get(i))) {
 								output.write(" " + cm.getRunnableSequencingConstraints().get(j).getRunnableGroups()
 										.get(k).getEntries().get(0).getRunnable().getName() + ";\n");
 							}

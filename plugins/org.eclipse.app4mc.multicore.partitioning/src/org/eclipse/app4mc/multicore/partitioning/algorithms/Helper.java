@@ -264,12 +264,12 @@ public class Helper {
 			for (final ProcessPrototype pp : amodels.getSwModel().getProcessPrototypes()) {
 				for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
 					if (trc.getRunnable().equals(source)) {
-						rsc.getRunnableGroups().get(0).getEntries().get(0).getProcessScope().clear();
-						rsc.getRunnableGroups().get(0).getEntries().get(0).getProcessScope().add(pp);
+						rsc.getProcessScope().clear();
+						rsc.getProcessScope().add(pp);
 					}
 					else if (trc.getRunnable().equals(target)) {
-						rsc.getRunnableGroups().get(1).getEntries().get(0).getProcessScope().clear();
-						rsc.getRunnableGroups().get(1).getEntries().get(0).getProcessScope().add(pp);
+						rsc.getProcessScope().clear();
+						rsc.getProcessScope().add(pp);
 					}
 				}
 			}
