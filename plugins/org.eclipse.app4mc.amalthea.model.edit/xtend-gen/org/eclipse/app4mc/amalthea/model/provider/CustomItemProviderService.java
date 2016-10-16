@@ -563,6 +563,13 @@ public class CustomItemProviderService {
   }
   
   /**
+   * BetaDistributionItemProvider
+   */
+  public static String getBetaDistributionItemProviderText(final Object object, final String defaultText) {
+    return "Dist: Beta";
+  }
+  
+  /**
    * GaussDistributionItemProvider
    */
   public static String getGaussDistributionItemProviderText(final Object object, final String defaultText) {
