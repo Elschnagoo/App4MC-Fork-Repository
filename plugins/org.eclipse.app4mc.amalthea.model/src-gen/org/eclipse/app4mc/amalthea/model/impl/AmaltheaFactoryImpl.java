@@ -20,7 +20,6 @@ import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
-import org.eclipse.app4mc.amalthea.model.AgeConstraint;
 import org.eclipse.app4mc.amalthea.model.AlgorithmParameter;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
@@ -31,6 +30,7 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurve;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
+import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
@@ -76,9 +76,11 @@ import org.eclipse.app4mc.amalthea.model.DataAgeConstraint;
 import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
 import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
+import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
+import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
@@ -93,12 +95,15 @@ import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EventChain;
+import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
+import org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.EventConfigElement;
 import org.eclipse.app4mc.amalthea.model.EventConfigLink;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
+import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
@@ -134,16 +139,19 @@ import org.eclipse.app4mc.amalthea.model.LabelAccessBuffering;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 import org.eclipse.app4mc.amalthea.model.LabelBuffering;
+import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelEventType;
 import org.eclipse.app4mc.amalthea.model.LatencyAccessPath;
 import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
+import org.eclipse.app4mc.amalthea.model.LatencyType;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.LimitType;
 import org.eclipse.app4mc.amalthea.model.ListObject;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
+import org.eclipse.app4mc.amalthea.model.MappingType;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
@@ -165,7 +173,6 @@ import org.eclipse.app4mc.amalthea.model.NetworkType;
 import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
-import org.eclipse.app4mc.amalthea.model.OrderConstraint;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
@@ -217,7 +224,6 @@ import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.RWType;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
-import org.eclipse.app4mc.amalthea.model.ReactionConstraint;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
 import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
 import org.eclipse.app4mc.amalthea.model.RunEntityCallStatistic;
@@ -227,7 +233,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableEventType;
-import org.eclipse.app4mc.amalthea.model.RunnableGroupingType;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
@@ -236,11 +241,9 @@ import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
+import org.eclipse.app4mc.amalthea.model.SamplingType;
 import org.eclipse.app4mc.amalthea.model.SchedType;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
-import org.eclipse.app4mc.amalthea.model.SchedulerEntityGroup;
-import org.eclipse.app4mc.amalthea.model.SchedulerPairingConstraint;
-import org.eclipse.app4mc.amalthea.model.SchedulerSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
@@ -266,13 +269,15 @@ import org.eclipse.app4mc.amalthea.model.StringObject;
 import org.eclipse.app4mc.amalthea.model.Struct;
 import org.eclipse.app4mc.amalthea.model.StructEntry;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
-import org.eclipse.app4mc.amalthea.model.SynchronisationConstraint;
+import org.eclipse.app4mc.amalthea.model.SynchronizationType;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
+import org.eclipse.app4mc.amalthea.model.Synthetic;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
 import org.eclipse.app4mc.amalthea.model.TargetCallSequence;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
+import org.eclipse.app4mc.amalthea.model.TargetMemory;
 import org.eclipse.app4mc.amalthea.model.TargetProcess;
 import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -285,6 +290,7 @@ import org.eclipse.app4mc.amalthea.model.TimeMetric;
 import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
+import org.eclipse.app4mc.amalthea.model.TimestampList;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
@@ -374,6 +380,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.UNIFORM_DISTRIBUTION: return createUniformDistribution();
 			case AmaltheaPackage.BOUNDARIES: return createBoundaries();
 			case AmaltheaPackage.GAUSS_DISTRIBUTION: return createGaussDistribution();
+			case AmaltheaPackage.BETA_DISTRIBUTION: return createBetaDistribution();
 			case AmaltheaPackage.MIN_AVG_MAX_STATISTIC: return createMinAvgMaxStatistic();
 			case AmaltheaPackage.SINGLE_VALUE_STATISTIC: return createSingleValueStatistic();
 			case AmaltheaPackage.MODE: return createMode();
@@ -395,15 +402,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP_ENTRY: return createProcessRunnableGroupEntry();
 			case AmaltheaPackage.RUNNABLE_SEPARATION_CONSTRAINT: return createRunnableSeparationConstraint();
 			case AmaltheaPackage.PROCESS_SEPARATION_CONSTRAINT: return createProcessSeparationConstraint();
-			case AmaltheaPackage.SCHEDULER_SEPARATION_CONSTRAINT: return createSchedulerSeparationConstraint();
+			case AmaltheaPackage.DATA_SEPARATION_CONSTRAINT: return createDataSeparationConstraint();
 			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT: return createRunnablePairingConstraint();
 			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT: return createProcessPairingConstraint();
-			case AmaltheaPackage.SCHEDULER_PAIRING_CONSTRAINT: return createSchedulerPairingConstraint();
+			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT: return createDataPairingConstraint();
+			case AmaltheaPackage.TARGET_MEMORY: return createTargetMemory();
 			case AmaltheaPackage.TARGET_CORE: return createTargetCore();
 			case AmaltheaPackage.TARGET_SCHEDULER: return createTargetScheduler();
 			case AmaltheaPackage.TARGET_PROCESS: return createTargetProcess();
 			case AmaltheaPackage.TARGET_CALL_SEQUENCE: return createTargetCallSequence();
-			case AmaltheaPackage.SCHEDULER_ENTITY_GROUP: return createSchedulerEntityGroup();
+			case AmaltheaPackage.LABEL_ENTITY_GROUP: return createLabelEntityGroup();
 			case AmaltheaPackage.RUNNABLE_ENTITY_GROUP: return createRunnableEntityGroup();
 			case AmaltheaPackage.PROCESS_ENTITY_GROUP: return createProcessEntityGroup();
 			case AmaltheaPackage.TAG_GROUP: return createTagGroup();
@@ -411,11 +419,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.EVENT_CHAIN_REFERENCE: return createEventChainReference();
 			case AmaltheaPackage.SUB_EVENT_CHAIN: return createSubEventChain();
 			case AmaltheaPackage.PHYSICAL_SECTION_CONSTRAINT: return createPhysicalSectionConstraint();
-			case AmaltheaPackage.ORDER_CONSTRAINT: return createOrderConstraint();
-			case AmaltheaPackage.SYNCHRONISATION_CONSTRAINT: return createSynchronisationConstraint();
-			case AmaltheaPackage.REACTION_CONSTRAINT: return createReactionConstraint();
+			case AmaltheaPackage.EVENT_SYNCHRONIZATION_CONSTRAINT: return createEventSynchronizationConstraint();
+			case AmaltheaPackage.EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT: return createEventChainSynchronizationConstraint();
 			case AmaltheaPackage.DELAY_CONSTRAINT: return createDelayConstraint();
-			case AmaltheaPackage.AGE_CONSTRAINT: return createAgeConstraint();
+			case AmaltheaPackage.EVENT_CHAIN_LATENCY_CONSTRAINT: return createEventChainLatencyConstraint();
 			case AmaltheaPackage.REPETITION_CONSTRAINT: return createRepetitionConstraint();
 			case AmaltheaPackage.DATA_AGE_CONSTRAINT: return createDataAgeConstraint();
 			case AmaltheaPackage.DATA_AGE_CYCLE: return createDataAgeCycle();
@@ -520,6 +527,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.MODE_VALUE_LIST_ENTRY: return createModeValueListEntry();
 			case AmaltheaPackage.PERIODIC: return createPeriodic();
 			case AmaltheaPackage.PERIODIC_EVENT: return createPeriodicEvent();
+			case AmaltheaPackage.SYNTHETIC: return createSynthetic();
+			case AmaltheaPackage.TIMESTAMP_LIST: return createTimestampList();
 			case AmaltheaPackage.CUSTOM_STIMULUS: return createCustomStimulus();
 			case AmaltheaPackage.SINGLE: return createSingle();
 			case AmaltheaPackage.INTER_PROCESS: return createInterProcess();
@@ -612,12 +621,18 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createDataSizeUnitFromString(eDataType, initialValue);
 			case AmaltheaPackage.DATA_RATE_UNIT:
 				return createDataRateUnitFromString(eDataType, initialValue);
+			case AmaltheaPackage.SAMPLING_TYPE:
+				return createSamplingTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.INTERFACE_KIND:
 				return createInterfaceKindFromString(eDataType, initialValue);
 			case AmaltheaPackage.RUNNABLE_ORDER_TYPE:
 				return createRunnableOrderTypeFromString(eDataType, initialValue);
-			case AmaltheaPackage.RUNNABLE_GROUPING_TYPE:
-				return createRunnableGroupingTypeFromString(eDataType, initialValue);
+			case AmaltheaPackage.SYNCHRONIZATION_TYPE:
+				return createSynchronizationTypeFromString(eDataType, initialValue);
+			case AmaltheaPackage.MAPPING_TYPE:
+				return createMappingTypeFromString(eDataType, initialValue);
+			case AmaltheaPackage.LATENCY_TYPE:
+				return createLatencyTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.SEVERITY:
 				return createSeverityFromString(eDataType, initialValue);
 			case AmaltheaPackage.LIMIT_TYPE:
@@ -703,12 +718,18 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertDataSizeUnitToString(eDataType, instanceValue);
 			case AmaltheaPackage.DATA_RATE_UNIT:
 				return convertDataRateUnitToString(eDataType, instanceValue);
+			case AmaltheaPackage.SAMPLING_TYPE:
+				return convertSamplingTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.INTERFACE_KIND:
 				return convertInterfaceKindToString(eDataType, instanceValue);
 			case AmaltheaPackage.RUNNABLE_ORDER_TYPE:
 				return convertRunnableOrderTypeToString(eDataType, instanceValue);
-			case AmaltheaPackage.RUNNABLE_GROUPING_TYPE:
-				return convertRunnableGroupingTypeToString(eDataType, instanceValue);
+			case AmaltheaPackage.SYNCHRONIZATION_TYPE:
+				return convertSynchronizationTypeToString(eDataType, instanceValue);
+			case AmaltheaPackage.MAPPING_TYPE:
+				return convertMappingTypeToString(eDataType, instanceValue);
+			case AmaltheaPackage.LATENCY_TYPE:
+				return convertLatencyTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.SEVERITY:
 				return convertSeverityToString(eDataType, instanceValue);
 			case AmaltheaPackage.LIMIT_TYPE:
@@ -1033,6 +1054,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public <T> BetaDistribution<T> createBetaDistribution() {
+		BetaDistributionImpl<T> betaDistribution = new BetaDistributionImpl<T>();
+		return betaDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public MinAvgMaxStatistic createMinAvgMaxStatistic() {
 		MinAvgMaxStatisticImpl minAvgMaxStatistic = new MinAvgMaxStatisticImpl();
 		return minAvgMaxStatistic;
@@ -1243,9 +1274,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SchedulerSeparationConstraint createSchedulerSeparationConstraint() {
-		SchedulerSeparationConstraintImpl schedulerSeparationConstraint = new SchedulerSeparationConstraintImpl();
-		return schedulerSeparationConstraint;
+	public DataSeparationConstraint createDataSeparationConstraint() {
+		DataSeparationConstraintImpl dataSeparationConstraint = new DataSeparationConstraintImpl();
+		return dataSeparationConstraint;
 	}
 
 	/**
@@ -1273,9 +1304,19 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SchedulerPairingConstraint createSchedulerPairingConstraint() {
-		SchedulerPairingConstraintImpl schedulerPairingConstraint = new SchedulerPairingConstraintImpl();
-		return schedulerPairingConstraint;
+	public DataPairingConstraint createDataPairingConstraint() {
+		DataPairingConstraintImpl dataPairingConstraint = new DataPairingConstraintImpl();
+		return dataPairingConstraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TargetMemory createTargetMemory() {
+		TargetMemoryImpl targetMemory = new TargetMemoryImpl();
+		return targetMemory;
 	}
 
 	/**
@@ -1323,9 +1364,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SchedulerEntityGroup createSchedulerEntityGroup() {
-		SchedulerEntityGroupImpl schedulerEntityGroup = new SchedulerEntityGroupImpl();
-		return schedulerEntityGroup;
+	public LabelEntityGroup createLabelEntityGroup() {
+		LabelEntityGroupImpl labelEntityGroup = new LabelEntityGroupImpl();
+		return labelEntityGroup;
 	}
 
 	/**
@@ -1403,9 +1444,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OrderConstraint createOrderConstraint() {
-		OrderConstraintImpl orderConstraint = new OrderConstraintImpl();
-		return orderConstraint;
+	public EventSynchronizationConstraint createEventSynchronizationConstraint() {
+		EventSynchronizationConstraintImpl eventSynchronizationConstraint = new EventSynchronizationConstraintImpl();
+		return eventSynchronizationConstraint;
 	}
 
 	/**
@@ -1413,19 +1454,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SynchronisationConstraint createSynchronisationConstraint() {
-		SynchronisationConstraintImpl synchronisationConstraint = new SynchronisationConstraintImpl();
-		return synchronisationConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ReactionConstraint createReactionConstraint() {
-		ReactionConstraintImpl reactionConstraint = new ReactionConstraintImpl();
-		return reactionConstraint;
+	public EventChainSynchronizationConstraint createEventChainSynchronizationConstraint() {
+		EventChainSynchronizationConstraintImpl eventChainSynchronizationConstraint = new EventChainSynchronizationConstraintImpl();
+		return eventChainSynchronizationConstraint;
 	}
 
 	/**
@@ -1443,9 +1474,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AgeConstraint createAgeConstraint() {
-		AgeConstraintImpl ageConstraint = new AgeConstraintImpl();
-		return ageConstraint;
+	public EventChainLatencyConstraint createEventChainLatencyConstraint() {
+		EventChainLatencyConstraintImpl eventChainLatencyConstraint = new EventChainLatencyConstraintImpl();
+		return eventChainLatencyConstraint;
 	}
 
 	/**
@@ -2493,6 +2524,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Synthetic createSynthetic() {
+		SyntheticImpl synthetic = new SyntheticImpl();
+		return synthetic;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimestampList createTimestampList() {
+		TimestampListImpl timestampList = new TimestampListImpl();
+		return timestampList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CustomStimulus createCustomStimulus() {
 		CustomStimulusImpl customStimulus = new CustomStimulusImpl();
 		return customStimulus;
@@ -3283,6 +3334,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SamplingType createSamplingTypeFromString(EDataType eDataType, String initialValue) {
+		SamplingType result = SamplingType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSamplingTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InterfaceKind createInterfaceKindFromString(EDataType eDataType, String initialValue) {
 		InterfaceKind result = InterfaceKind.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -3323,8 +3394,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RunnableGroupingType createRunnableGroupingTypeFromString(EDataType eDataType, String initialValue) {
-		RunnableGroupingType result = RunnableGroupingType.get(initialValue);
+	public SynchronizationType createSynchronizationTypeFromString(EDataType eDataType, String initialValue) {
+		SynchronizationType result = SynchronizationType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -3334,7 +3405,47 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertRunnableGroupingTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertSynchronizationTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MappingType createMappingTypeFromString(EDataType eDataType, String initialValue) {
+		MappingType result = MappingType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMappingTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LatencyType createLatencyTypeFromString(EDataType eDataType, String initialValue) {
+		LatencyType result = LatencyType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLatencyTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

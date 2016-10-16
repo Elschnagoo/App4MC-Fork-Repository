@@ -19,7 +19,6 @@ import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
 import org.eclipse.app4mc.amalthea.model.ProcessConstraintTarget;
-import org.eclipse.app4mc.amalthea.model.SchedulerConstraintTarget;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
 import org.eclipse.app4mc.amalthea.model.Value;
 
@@ -211,11 +210,6 @@ public class TargetCoreImpl extends RunnableConstraintTargetImpl implements Targ
 				default: return -1;
 			}
 		}
-		if (baseClass == SchedulerConstraintTarget.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
 		if (baseClass == IAnnotatable.class) {
 			switch (derivedFeatureID) {
 				case AmaltheaPackage.TARGET_CORE__CUSTOM_PROPERTIES: return AmaltheaPackage.IANNOTATABLE__CUSTOM_PROPERTIES;
@@ -238,11 +232,6 @@ public class TargetCoreImpl extends RunnableConstraintTargetImpl implements Targ
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == ProcessConstraintTarget.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == SchedulerConstraintTarget.class) {
 			switch (baseFeatureID) {
 				default: return -1;
 			}

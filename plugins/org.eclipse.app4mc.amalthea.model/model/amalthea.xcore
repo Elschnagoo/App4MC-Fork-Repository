@@ -420,10 +420,25 @@ class SignedTimeObject extends AbstractTime, Value {
 	}
 }
 
+/*
+ *
+ * The types of sampling
+ */
+enum SamplingType
+{
+	^default // Display: "<sampling>"
+	BestCase
+	WorstCase
+	AverageCase
+	CornerCase
+	Uniform
+}
+
 class Deviation<T>{
 	contains resolving T lowerBound
 	contains resolving T upperBound
 	contains resolving Distribution<T> distribution
+	SamplingType samplingType
 }
 
 /*
@@ -483,6 +498,13 @@ class GaussDistribution<T> extends Distribution<T>{
 	contains resolving T mean
 }
 
+/*
+ * Beta distribution
+ */
+class BetaDistribution<T> extends Distribution<T>{
+	double alpha
+	double beta
+}
 interface NumericStatistic
 {
 }
@@ -686,24 +708,17 @@ class RunnableSequencingConstraint extends ReferableBaseObject
 	//String name
 	RunnableOrderType orderType
 	contains resolving ProcessRunnableGroup[2..*] runnableGroups
-}
-
-enum RunnableGroupingType{
-	_undefined_ // Display: "<grouping>"
-	allOfThem
-	atLeastOneOfThem
+	refers AbstractProcess[] processScope
 }
 
 class ProcessRunnableGroup extends BaseObject
 {
-	RunnableGroupingType groupingType
 	contains resolving ProcessRunnableGroupEntry[1..*] entries
 }
 
 class ProcessRunnableGroupEntry extends BaseObject
 {
 	refers Runnable[1] runnable
-	refers AbstractProcess[] processScope
 }
 
 ///////////////////////////Affinity constraints:
@@ -745,12 +760,12 @@ abstract class RunnableConstraint
 }
 
 /*
- * A abstract superclass for all scheduler related constraint
- * The target describes the entity on which the schedulers can be mapped
+ * A abstract superclass for all data related constraint
+ * The target describes the entity on which the data can be mapped
  */
-abstract class SchedulerConstraint
+abstract class DataConstraint
 {
-	contains resolving SchedulerConstraintTarget target
+	contains resolving DataConstraintTarget target
 }
 
 /*
@@ -774,13 +789,13 @@ class ProcessSeparationConstraint extends SeparationConstraint,ProcessConstraint
 }
 
 /*
- * A scheduler-separation-constraint
- * groups describes the scheduler-groups that should be separated from each other on the target
- * if there is only one group then this means that the schedulers of this group are not allowed to be executed on the target
+ * A data-separation-constraint
+ * groups describes the label-groups that should be separated from each other on the target
+ * if there is only one group then this means that the label of this group is not allowed to be executed on the target
  */
-class SchedulerSeparationConstraint extends SeparationConstraint,SchedulerConstraint, BaseObject
+class DataSeparationConstraint extends SeparationConstraint,DataConstraint, BaseObject
 {
-	contains resolving SchedulerEntityGroup[1..2] groups
+	contains resolving LabelEntityGroup[1..2] groups
 }
 
 /*
@@ -802,12 +817,12 @@ class ProcessPairingConstraint extends PairingConstraint,ProcessConstraint, Base
 }
 
 /*
- * A scheduler-pairing-constraint
- * schedulers describes the group of schedulers that should be paired on the target
+ * A data-pairing-constraint
+ * labels describes the group of labels that should be paired on the target
  */
-class SchedulerPairingConstraint extends PairingConstraint,SchedulerConstraint, BaseObject
+class DataPairingConstraint extends PairingConstraint,DataConstraint, BaseObject
 {
-	contains resolving SchedulerEntityGroup schedulers
+	contains resolving LabelEntityGroup labels
 }
 
 /*
@@ -825,10 +840,21 @@ abstract class ProcessConstraintTarget
 }
 
 /*
- * A abstract superclass for all possible targets for scheduler-constraints
+ * A abstract superclass for all possible targets for data-constraints
  */
-abstract class SchedulerConstraintTarget
+abstract class DataConstraintTarget
 {
+}
+
+/*
+ * A memory target description
+ * A memory can be a target for data-constraints
+ * memories: the reference to zero or more Memories. If this list is empty, the target stands for all memories! 
+ */
+class TargetMemory extends DataConstraintTarget, BaseObject
+
+{
+	refers Memory[] memories
 }
 
 /*
@@ -836,7 +862,7 @@ abstract class SchedulerConstraintTarget
  * A core can be a target for runnable-constraints, process-constraints and scheduler-constraints
  * cores: the reference to zero or more Cores. If this list is empty, the target stands for all cores! 
  */
-class TargetCore extends RunnableConstraintTarget, ProcessConstraintTarget, SchedulerConstraintTarget, BaseObject
+class TargetCore extends RunnableConstraintTarget, ProcessConstraintTarget, BaseObject
 {
 	refers Core[] cores
 }
@@ -886,11 +912,11 @@ abstract class ProcessGroup
 }
 
 /*
- * A group of schedulers that can be paired or separated by a scheduler-constraint
+ * A group of labels that can be paired or separated by a data-constraint
  */
-class SchedulerEntityGroup extends BaseObject
+class LabelEntityGroup extends BaseObject
 {
-	refers Scheduler[] schedulers
+	refers Label[] labels
 }
 
 /*
@@ -969,29 +995,44 @@ class PhysicalSectionConstraint extends ReferableBaseObject, BaseObject
 }
 
 /*
- * The order constraint defines a sequence of events
- * The restriction is based on the correct order of the occurrences
+ * Base class for synchronization constraints, which limit the distance between events
+ * multipleOccurrencesAllowed: Defines whether multiple event occurrences are allowed for analysis
+ * tolerance: Maximum allowed tolerance
  */
-class OrderConstraint extends TimingConstraint, BaseObject
+abstract class SynchronizationConstraint extends TimingConstraint
 {
-	refers EntityEvent source
-	refers EntityEvent target
+	boolean multipleOccurrencesAllowed
+	contains resolving Time tolerance
 }
 
 /*
  * The synchronization constraint considers a group of events and limits the distance of the events within this group.
  */
-class SynchronisationConstraint extends TimingConstraint
+class EventSynchronizationConstraint extends SynchronizationConstraint
 {
-	refers EntityEvent[] events
-	contains resolving Time tolerance
+	refers EntityEvent[] events	
 }
 
-class ReactionConstraint extends TimingConstraint
+enum SynchronizationType {
+	StimulusSynchronization 
+	ResponseSynchronization
+}
+
+/*
+ * A synchronization constraint describes the allowed tolerance in synchronization between two event chains
+ * scope: Considered event chains that have to by in sync
+ * type: Defines which parts of the event chains have to be in sync
+ */
+class EventChainSynchronizationConstraint extends SynchronizationConstraint
 {
-	refers EventChain scope
-	contains resolving Time minimum
-	contains resolving Time maximum
+	refers EventChain[2] scope
+	SynchronizationType ^type
+}
+
+enum MappingType {
+	OneToOne
+	Reaction
+	UniqueReaction
 }
 
 /*
@@ -999,17 +1040,31 @@ class ReactionConstraint extends TimingConstraint
  */
 class DelayConstraint extends TimingConstraint
 {
+	MappingType mappingType
 	refers EntityEvent source
 	refers EntityEvent target
 	contains resolving Time upper
 	contains resolving Time lower
 }
 
-class AgeConstraint extends TimingConstraint
+enum LatencyType {
+	AgeLatency
+	ReactionLatency
+}
+
+/*
+ * A latency constraint describes the allowed range in latency between a stimulus and its response.
+ * scope: Considered event chain that defines the stimulus and response relation
+ * type: Defines the point of view (forward or backward)
+ * minimum: Minimum allowed latency
+ * maximum: Maximum allowed latency
+ */
+class EventChainLatencyConstraint extends TimingConstraint
 {
 	refers EventChain scope
-	contains resolving Time maximum
+	LatencyType ^type
 	contains resolving Time minimum
+	contains resolving Time maximum
 }
 
 /*
@@ -2322,6 +2377,24 @@ class PeriodicEvent extends Stimulus
 }
 
 /*
+ * Activations triggered depending on a defined list of trigger times
+ * offset: to shift the occurrences in negative or positive direction on the time bar
+ * period: to set the period, after which the trigger times are to be repeated
+ * triggerTimes: the list of all trigger times
+ */
+class Synthetic extends Stimulus
+{
+	contains resolving Time offset
+	contains resolving Time period
+	contains resolving TimestampList triggerTimes
+}
+
+class TimestampList extends BaseObject
+{
+	contains resolving Time[] timestamps
+}
+
+/*
  * Stimulus to describe own custom types of activations, including properties
  */
 class CustomStimulus extends Stimulus
@@ -2670,6 +2743,7 @@ class TerminateProcess extends CallSequenceItem
  */
 class Task extends Process
 {
+	int osekTaskGroup
 	Preemption preemption
 	int multipleTaskActivationLimit
 }

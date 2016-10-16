@@ -15,6 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
+import org.eclipse.app4mc.amalthea.model.MappingType;
 import org.eclipse.app4mc.amalthea.model.Time;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DelayConstraintImpl#getMappingType <em>Mapping Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DelayConstraintImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DelayConstraintImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DelayConstraintImpl#getUpper <em>Upper</em>}</li>
@@ -42,6 +44,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class DelayConstraintImpl extends TimingConstraintImpl implements DelayConstraint {
+	/**
+	 * The default value of the '{@link #getMappingType() <em>Mapping Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMappingType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final MappingType MAPPING_TYPE_EDEFAULT = MappingType.ONE_TO_ONE;
+
+	/**
+	 * The cached value of the '{@link #getMappingType() <em>Mapping Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMappingType()
+	 * @generated
+	 * @ordered
+	 */
+	protected MappingType mappingType = MAPPING_TYPE_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -99,6 +121,27 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getDelayConstraint();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MappingType getMappingType() {
+		return mappingType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMappingType(MappingType newMappingType) {
+		MappingType oldMappingType = mappingType;
+		mappingType = newMappingType == null ? MAPPING_TYPE_EDEFAULT : newMappingType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DELAY_CONSTRAINT__MAPPING_TYPE, oldMappingType, mappingType));
 	}
 
 	/**
@@ -333,6 +376,8 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.DELAY_CONSTRAINT__MAPPING_TYPE:
+				return getMappingType();
 			case AmaltheaPackage.DELAY_CONSTRAINT__SOURCE:
 				if (resolve) return getSource();
 				return basicGetSource();
@@ -357,6 +402,9 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AmaltheaPackage.DELAY_CONSTRAINT__MAPPING_TYPE:
+				setMappingType((MappingType)newValue);
+				return;
 			case AmaltheaPackage.DELAY_CONSTRAINT__SOURCE:
 				setSource((EntityEvent)newValue);
 				return;
@@ -381,6 +429,9 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.DELAY_CONSTRAINT__MAPPING_TYPE:
+				setMappingType(MAPPING_TYPE_EDEFAULT);
+				return;
 			case AmaltheaPackage.DELAY_CONSTRAINT__SOURCE:
 				setSource((EntityEvent)null);
 				return;
@@ -405,6 +456,8 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.DELAY_CONSTRAINT__MAPPING_TYPE:
+				return mappingType != MAPPING_TYPE_EDEFAULT;
 			case AmaltheaPackage.DELAY_CONSTRAINT__SOURCE:
 				return source != null;
 			case AmaltheaPackage.DELAY_CONSTRAINT__TARGET:
@@ -415,6 +468,22 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 				return lower != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (mappingType: ");
+		result.append(mappingType);
+		result.append(')');
+		return result.toString();
 	}
 
 } //DelayConstraintImpl

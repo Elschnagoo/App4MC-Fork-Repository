@@ -281,6 +281,11 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
+				 AmaltheaFactory.eINSTANCE.createBetaDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
 				 AmaltheaFactory.eINSTANCE.createMinAvgMaxStatistic()));
 
 		newChildDescriptors.add
@@ -386,7 +391,7 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
-				 AmaltheaFactory.eINSTANCE.createSchedulerSeparationConstraint()));
+				 AmaltheaFactory.eINSTANCE.createDataSeparationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -401,7 +406,12 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
-				 AmaltheaFactory.eINSTANCE.createSchedulerPairingConstraint()));
+				 AmaltheaFactory.eINSTANCE.createDataPairingConstraint()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
+				 AmaltheaFactory.eINSTANCE.createTargetMemory()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -426,7 +436,7 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
-				 AmaltheaFactory.eINSTANCE.createSchedulerEntityGroup()));
+				 AmaltheaFactory.eINSTANCE.createLabelEntityGroup()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -466,17 +476,12 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
-				 AmaltheaFactory.eINSTANCE.createOrderConstraint()));
+				 AmaltheaFactory.eINSTANCE.createEventSynchronizationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
-				 AmaltheaFactory.eINSTANCE.createSynchronisationConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
-				 AmaltheaFactory.eINSTANCE.createReactionConstraint()));
+				 AmaltheaFactory.eINSTANCE.createEventChainSynchronizationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -486,7 +491,7 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
-				 AmaltheaFactory.eINSTANCE.createAgeConstraint()));
+				 AmaltheaFactory.eINSTANCE.createEventChainLatencyConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -1007,6 +1012,16 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
 				 AmaltheaFactory.eINSTANCE.createPeriodicEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
+				 AmaltheaFactory.eINSTANCE.createSynthetic()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
+				 AmaltheaFactory.eINSTANCE.createTimestampList()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -1566,6 +1581,11 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
+				 AmaltheaFactory.eINSTANCE.createBetaDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
 				 AmaltheaFactory.eINSTANCE.createMinAvgMaxStatistic()));
 
 		newChildDescriptors.add
@@ -1671,7 +1691,7 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
-				 AmaltheaFactory.eINSTANCE.createSchedulerSeparationConstraint()));
+				 AmaltheaFactory.eINSTANCE.createDataSeparationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -1686,7 +1706,12 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
-				 AmaltheaFactory.eINSTANCE.createSchedulerPairingConstraint()));
+				 AmaltheaFactory.eINSTANCE.createDataPairingConstraint()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
+				 AmaltheaFactory.eINSTANCE.createTargetMemory()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -1711,7 +1736,7 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
-				 AmaltheaFactory.eINSTANCE.createSchedulerEntityGroup()));
+				 AmaltheaFactory.eINSTANCE.createLabelEntityGroup()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -1751,17 +1776,12 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
-				 AmaltheaFactory.eINSTANCE.createOrderConstraint()));
+				 AmaltheaFactory.eINSTANCE.createEventSynchronizationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
-				 AmaltheaFactory.eINSTANCE.createSynchronisationConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
-				 AmaltheaFactory.eINSTANCE.createReactionConstraint()));
+				 AmaltheaFactory.eINSTANCE.createEventChainSynchronizationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -1771,7 +1791,7 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
-				 AmaltheaFactory.eINSTANCE.createAgeConstraint()));
+				 AmaltheaFactory.eINSTANCE.createEventChainLatencyConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -2292,6 +2312,16 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
 				 AmaltheaFactory.eINSTANCE.createPeriodicEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
+				 AmaltheaFactory.eINSTANCE.createSynthetic()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
+				 AmaltheaFactory.eINSTANCE.createTimestampList()));
 
 		newChildDescriptors.add
 			(createChildParameter

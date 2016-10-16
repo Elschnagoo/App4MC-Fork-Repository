@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -57,10 +58,33 @@ public class DelayConstraintItemProvider extends TimingConstraintItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addMappingTypePropertyDescriptor(object);
 			addSourcePropertyDescriptor(object);
 			addTargetPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Mapping Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMappingTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DelayConstraint_mappingType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DelayConstraint_mappingType_feature", "_UI_DelayConstraint_type"),
+				 AmaltheaPackage.eINSTANCE.getDelayConstraint_MappingType(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -186,6 +210,9 @@ public class DelayConstraintItemProvider extends TimingConstraintItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DelayConstraint.class)) {
+			case AmaltheaPackage.DELAY_CONSTRAINT__MAPPING_TYPE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case AmaltheaPackage.DELAY_CONSTRAINT__UPPER:
 			case AmaltheaPackage.DELAY_CONSTRAINT__LOWER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

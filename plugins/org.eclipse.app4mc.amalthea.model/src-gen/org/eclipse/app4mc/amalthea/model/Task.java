@@ -27,6 +27,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Task#getOsekTaskGroup <em>Osek Task Group</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Task#getPreemption <em>Preemption</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Task#getMultipleTaskActivationLimit <em>Multiple Task Activation Limit</em>}</li>
  * </ul>
@@ -36,6 +37,32 @@ package org.eclipse.app4mc.amalthea.model;
  * @generated
  */
 public interface Task extends org.eclipse.app4mc.amalthea.model.Process {
+	/**
+	 * Returns the value of the '<em><b>Osek Task Group</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Osek Task Group</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Osek Task Group</em>' attribute.
+	 * @see #setOsekTaskGroup(int)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTask_OsekTaskGroup()
+	 * @model unique="false"
+	 * @generated
+	 */
+	int getOsekTaskGroup();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Task#getOsekTaskGroup <em>Osek Task Group</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Osek Task Group</em>' attribute.
+	 * @see #getOsekTaskGroup()
+	 * @generated
+	 */
+	void setOsekTaskGroup(int value);
+
 	/**
 	 * Returns the value of the '<em><b>Preemption</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.Preemption}.

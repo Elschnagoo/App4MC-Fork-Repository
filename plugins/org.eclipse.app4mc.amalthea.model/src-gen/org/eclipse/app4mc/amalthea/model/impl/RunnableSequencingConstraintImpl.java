@@ -14,6 +14,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.util.Collection;
 
+import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -42,6 +44,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableSequencingConstraintImpl#getOrderType <em>Order Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableSequencingConstraintImpl#getRunnableGroups <em>Runnable Groups</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableSequencingConstraintImpl#getProcessScope <em>Process Scope</em>}</li>
  * </ul>
  *
  * @generated
@@ -76,6 +79,16 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 	 * @ordered
 	 */
 	protected EList<ProcessRunnableGroup> runnableGroups;
+
+	/**
+	 * The cached value of the '{@link #getProcessScope() <em>Process Scope</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProcessScope()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AbstractProcess> processScope;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -134,6 +147,18 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<AbstractProcess> getProcessScope() {
+		if (processScope == null) {
+			processScope = new EObjectResolvingEList<AbstractProcess>(AbstractProcess.class, this, AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__PROCESS_SCOPE);
+		}
+		return processScope;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -155,6 +180,8 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 				return getOrderType();
 			case AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__RUNNABLE_GROUPS:
 				return getRunnableGroups();
+			case AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__PROCESS_SCOPE:
+				return getProcessScope();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -175,6 +202,10 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 				getRunnableGroups().clear();
 				getRunnableGroups().addAll((Collection<? extends ProcessRunnableGroup>)newValue);
 				return;
+			case AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__PROCESS_SCOPE:
+				getProcessScope().clear();
+				getProcessScope().addAll((Collection<? extends AbstractProcess>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -193,6 +224,9 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 			case AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__RUNNABLE_GROUPS:
 				getRunnableGroups().clear();
 				return;
+			case AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__PROCESS_SCOPE:
+				getProcessScope().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -209,6 +243,8 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 				return orderType != ORDER_TYPE_EDEFAULT;
 			case AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__RUNNABLE_GROUPS:
 				return runnableGroups != null && !runnableGroups.isEmpty();
+			case AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__PROCESS_SCOPE:
+				return processScope != null && !processScope.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

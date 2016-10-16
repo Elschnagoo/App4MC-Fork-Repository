@@ -248,6 +248,15 @@ public interface AmaltheaFactory extends EFactory {
 	<T> GaussDistribution<T> createGaussDistribution();
 
 	/**
+	 * Returns a new object of class '<em>Beta Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Beta Distribution</em>'.
+	 * @generated
+	 */
+	<T> BetaDistribution<T> createBetaDistribution();
+
+	/**
 	 * Returns a new object of class '<em>Min Avg Max Statistic</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -437,13 +446,13 @@ public interface AmaltheaFactory extends EFactory {
 	ProcessSeparationConstraint createProcessSeparationConstraint();
 
 	/**
-	 * Returns a new object of class '<em>Scheduler Separation Constraint</em>'.
+	 * Returns a new object of class '<em>Data Separation Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Scheduler Separation Constraint</em>'.
+	 * @return a new object of class '<em>Data Separation Constraint</em>'.
 	 * @generated
 	 */
-	SchedulerSeparationConstraint createSchedulerSeparationConstraint();
+	DataSeparationConstraint createDataSeparationConstraint();
 
 	/**
 	 * Returns a new object of class '<em>Runnable Pairing Constraint</em>'.
@@ -464,13 +473,22 @@ public interface AmaltheaFactory extends EFactory {
 	ProcessPairingConstraint createProcessPairingConstraint();
 
 	/**
-	 * Returns a new object of class '<em>Scheduler Pairing Constraint</em>'.
+	 * Returns a new object of class '<em>Data Pairing Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Scheduler Pairing Constraint</em>'.
+	 * @return a new object of class '<em>Data Pairing Constraint</em>'.
 	 * @generated
 	 */
-	SchedulerPairingConstraint createSchedulerPairingConstraint();
+	DataPairingConstraint createDataPairingConstraint();
+
+	/**
+	 * Returns a new object of class '<em>Target Memory</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Target Memory</em>'.
+	 * @generated
+	 */
+	TargetMemory createTargetMemory();
 
 	/**
 	 * Returns a new object of class '<em>Target Core</em>'.
@@ -509,13 +527,13 @@ public interface AmaltheaFactory extends EFactory {
 	TargetCallSequence createTargetCallSequence();
 
 	/**
-	 * Returns a new object of class '<em>Scheduler Entity Group</em>'.
+	 * Returns a new object of class '<em>Label Entity Group</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Scheduler Entity Group</em>'.
+	 * @return a new object of class '<em>Label Entity Group</em>'.
 	 * @generated
 	 */
-	SchedulerEntityGroup createSchedulerEntityGroup();
+	LabelEntityGroup createLabelEntityGroup();
 
 	/**
 	 * Returns a new object of class '<em>Runnable Entity Group</em>'.
@@ -581,31 +599,22 @@ public interface AmaltheaFactory extends EFactory {
 	PhysicalSectionConstraint createPhysicalSectionConstraint();
 
 	/**
-	 * Returns a new object of class '<em>Order Constraint</em>'.
+	 * Returns a new object of class '<em>Event Synchronization Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Order Constraint</em>'.
+	 * @return a new object of class '<em>Event Synchronization Constraint</em>'.
 	 * @generated
 	 */
-	OrderConstraint createOrderConstraint();
+	EventSynchronizationConstraint createEventSynchronizationConstraint();
 
 	/**
-	 * Returns a new object of class '<em>Synchronisation Constraint</em>'.
+	 * Returns a new object of class '<em>Event Chain Synchronization Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Synchronisation Constraint</em>'.
+	 * @return a new object of class '<em>Event Chain Synchronization Constraint</em>'.
 	 * @generated
 	 */
-	SynchronisationConstraint createSynchronisationConstraint();
-
-	/**
-	 * Returns a new object of class '<em>Reaction Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reaction Constraint</em>'.
-	 * @generated
-	 */
-	ReactionConstraint createReactionConstraint();
+	EventChainSynchronizationConstraint createEventChainSynchronizationConstraint();
 
 	/**
 	 * Returns a new object of class '<em>Delay Constraint</em>'.
@@ -617,13 +626,13 @@ public interface AmaltheaFactory extends EFactory {
 	DelayConstraint createDelayConstraint();
 
 	/**
-	 * Returns a new object of class '<em>Age Constraint</em>'.
+	 * Returns a new object of class '<em>Event Chain Latency Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Age Constraint</em>'.
+	 * @return a new object of class '<em>Event Chain Latency Constraint</em>'.
 	 * @generated
 	 */
-	AgeConstraint createAgeConstraint();
+	EventChainLatencyConstraint createEventChainLatencyConstraint();
 
 	/**
 	 * Returns a new object of class '<em>Repetition Constraint</em>'.
@@ -1560,6 +1569,24 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	PeriodicEvent createPeriodicEvent();
+
+	/**
+	 * Returns a new object of class '<em>Synthetic</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Synthetic</em>'.
+	 * @generated
+	 */
+	Synthetic createSynthetic();
+
+	/**
+	 * Returns a new object of class '<em>Timestamp List</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Timestamp List</em>'.
+	 * @generated
+	 */
+	TimestampList createTimestampList();
 
 	/**
 	 * Returns a new object of class '<em>Custom Stimulus</em>'.

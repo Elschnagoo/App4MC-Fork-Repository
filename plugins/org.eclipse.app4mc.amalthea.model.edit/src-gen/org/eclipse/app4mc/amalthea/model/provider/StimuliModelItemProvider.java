@@ -168,6 +168,11 @@ public class StimuliModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimuliModel_Stimuli(),
+				 AmaltheaFactory.eINSTANCE.createSynthetic()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getStimuliModel_Stimuli(),
 				 AmaltheaFactory.eINSTANCE.createCustomStimulus()));
 
 		newChildDescriptors.add

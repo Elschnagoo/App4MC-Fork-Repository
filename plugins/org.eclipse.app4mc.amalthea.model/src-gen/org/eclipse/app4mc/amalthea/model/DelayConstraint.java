@@ -26,6 +26,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.DelayConstraint#getMappingType <em>Mapping Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.DelayConstraint#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.DelayConstraint#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.DelayConstraint#getUpper <em>Upper</em>}</li>
@@ -37,6 +38,35 @@ package org.eclipse.app4mc.amalthea.model;
  * @generated
  */
 public interface DelayConstraint extends TimingConstraint {
+	/**
+	 * Returns the value of the '<em><b>Mapping Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.MappingType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Mapping Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mapping Type</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.MappingType
+	 * @see #setMappingType(MappingType)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDelayConstraint_MappingType()
+	 * @model unique="false"
+	 * @generated
+	 */
+	MappingType getMappingType();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.DelayConstraint#getMappingType <em>Mapping Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Mapping Type</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.MappingType
+	 * @see #getMappingType()
+	 * @generated
+	 */
+	void setMappingType(MappingType value);
+
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->

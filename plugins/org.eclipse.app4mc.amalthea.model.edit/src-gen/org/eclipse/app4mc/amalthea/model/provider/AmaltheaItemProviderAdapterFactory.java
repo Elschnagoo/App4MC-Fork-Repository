@@ -657,6 +657,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.BetaDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BetaDistributionItemProvider betaDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.BetaDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBetaDistributionAdapter() {
+		if (betaDistributionItemProvider == null) {
+			betaDistributionItemProvider = new BetaDistributionItemProvider(this);
+		}
+
+		return betaDistributionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1140,26 +1163,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SchedulerSeparationConstraint} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DataSeparationConstraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SchedulerSeparationConstraintItemProvider schedulerSeparationConstraintItemProvider;
+	protected DataSeparationConstraintItemProvider dataSeparationConstraintItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulerSeparationConstraint}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DataSeparationConstraint}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSchedulerSeparationConstraintAdapter() {
-		if (schedulerSeparationConstraintItemProvider == null) {
-			schedulerSeparationConstraintItemProvider = new SchedulerSeparationConstraintItemProvider(this);
+	public Adapter createDataSeparationConstraintAdapter() {
+		if (dataSeparationConstraintItemProvider == null) {
+			dataSeparationConstraintItemProvider = new DataSeparationConstraintItemProvider(this);
 		}
 
-		return schedulerSeparationConstraintItemProvider;
+		return dataSeparationConstraintItemProvider;
 	}
 
 	/**
@@ -1209,26 +1232,49 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SchedulerPairingConstraint} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DataPairingConstraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SchedulerPairingConstraintItemProvider schedulerPairingConstraintItemProvider;
+	protected DataPairingConstraintItemProvider dataPairingConstraintItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulerPairingConstraint}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DataPairingConstraint}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSchedulerPairingConstraintAdapter() {
-		if (schedulerPairingConstraintItemProvider == null) {
-			schedulerPairingConstraintItemProvider = new SchedulerPairingConstraintItemProvider(this);
+	public Adapter createDataPairingConstraintAdapter() {
+		if (dataPairingConstraintItemProvider == null) {
+			dataPairingConstraintItemProvider = new DataPairingConstraintItemProvider(this);
 		}
 
-		return schedulerPairingConstraintItemProvider;
+		return dataPairingConstraintItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TargetMemory} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TargetMemoryItemProvider targetMemoryItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TargetMemory}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTargetMemoryAdapter() {
+		if (targetMemoryItemProvider == null) {
+			targetMemoryItemProvider = new TargetMemoryItemProvider(this);
+		}
+
+		return targetMemoryItemProvider;
 	}
 
 	/**
@@ -1324,26 +1370,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SchedulerEntityGroup} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.LabelEntityGroup} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SchedulerEntityGroupItemProvider schedulerEntityGroupItemProvider;
+	protected LabelEntityGroupItemProvider labelEntityGroupItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulerEntityGroup}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.LabelEntityGroup}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSchedulerEntityGroupAdapter() {
-		if (schedulerEntityGroupItemProvider == null) {
-			schedulerEntityGroupItemProvider = new SchedulerEntityGroupItemProvider(this);
+	public Adapter createLabelEntityGroupAdapter() {
+		if (labelEntityGroupItemProvider == null) {
+			labelEntityGroupItemProvider = new LabelEntityGroupItemProvider(this);
 		}
 
-		return schedulerEntityGroupItemProvider;
+		return labelEntityGroupItemProvider;
 	}
 
 	/**
@@ -1508,72 +1554,49 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OrderConstraint} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OrderConstraintItemProvider orderConstraintItemProvider;
+	protected EventSynchronizationConstraintItemProvider eventSynchronizationConstraintItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.OrderConstraint}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createOrderConstraintAdapter() {
-		if (orderConstraintItemProvider == null) {
-			orderConstraintItemProvider = new OrderConstraintItemProvider(this);
+	public Adapter createEventSynchronizationConstraintAdapter() {
+		if (eventSynchronizationConstraintItemProvider == null) {
+			eventSynchronizationConstraintItemProvider = new EventSynchronizationConstraintItemProvider(this);
 		}
 
-		return orderConstraintItemProvider;
+		return eventSynchronizationConstraintItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SynchronisationConstraint} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SynchronisationConstraintItemProvider synchronisationConstraintItemProvider;
+	protected EventChainSynchronizationConstraintItemProvider eventChainSynchronizationConstraintItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SynchronisationConstraint}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSynchronisationConstraintAdapter() {
-		if (synchronisationConstraintItemProvider == null) {
-			synchronisationConstraintItemProvider = new SynchronisationConstraintItemProvider(this);
+	public Adapter createEventChainSynchronizationConstraintAdapter() {
+		if (eventChainSynchronizationConstraintItemProvider == null) {
+			eventChainSynchronizationConstraintItemProvider = new EventChainSynchronizationConstraintItemProvider(this);
 		}
 
-		return synchronisationConstraintItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ReactionConstraint} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ReactionConstraintItemProvider reactionConstraintItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ReactionConstraint}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createReactionConstraintAdapter() {
-		if (reactionConstraintItemProvider == null) {
-			reactionConstraintItemProvider = new ReactionConstraintItemProvider(this);
-		}
-
-		return reactionConstraintItemProvider;
+		return eventChainSynchronizationConstraintItemProvider;
 	}
 
 	/**
@@ -1600,26 +1623,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.AgeConstraint} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AgeConstraintItemProvider ageConstraintItemProvider;
+	protected EventChainLatencyConstraintItemProvider eventChainLatencyConstraintItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.AgeConstraint}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createAgeConstraintAdapter() {
-		if (ageConstraintItemProvider == null) {
-			ageConstraintItemProvider = new AgeConstraintItemProvider(this);
+	public Adapter createEventChainLatencyConstraintAdapter() {
+		if (eventChainLatencyConstraintItemProvider == null) {
+			eventChainLatencyConstraintItemProvider = new EventChainLatencyConstraintItemProvider(this);
 		}
 
-		return ageConstraintItemProvider;
+		return eventChainLatencyConstraintItemProvider;
 	}
 
 	/**
@@ -4015,6 +4038,52 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Synthetic} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SyntheticItemProvider syntheticItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Synthetic}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSyntheticAdapter() {
+		if (syntheticItemProvider == null) {
+			syntheticItemProvider = new SyntheticItemProvider(this);
+		}
+
+		return syntheticItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimestampList} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimestampListItemProvider timestampListItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimestampList}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimestampListAdapter() {
+		if (timestampListItemProvider == null) {
+			timestampListItemProvider = new TimestampListItemProvider(this);
+		}
+
+		return timestampListItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CustomStimulus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5771,6 +5840,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (uniformDistributionItemProvider != null) uniformDistributionItemProvider.dispose();
 		if (boundariesItemProvider != null) boundariesItemProvider.dispose();
 		if (gaussDistributionItemProvider != null) gaussDistributionItemProvider.dispose();
+		if (betaDistributionItemProvider != null) betaDistributionItemProvider.dispose();
 		if (minAvgMaxStatisticItemProvider != null) minAvgMaxStatisticItemProvider.dispose();
 		if (singleValueStatisticItemProvider != null) singleValueStatisticItemProvider.dispose();
 		if (modeItemProvider != null) modeItemProvider.dispose();
@@ -5792,15 +5862,16 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (processRunnableGroupEntryItemProvider != null) processRunnableGroupEntryItemProvider.dispose();
 		if (runnableSeparationConstraintItemProvider != null) runnableSeparationConstraintItemProvider.dispose();
 		if (processSeparationConstraintItemProvider != null) processSeparationConstraintItemProvider.dispose();
-		if (schedulerSeparationConstraintItemProvider != null) schedulerSeparationConstraintItemProvider.dispose();
+		if (dataSeparationConstraintItemProvider != null) dataSeparationConstraintItemProvider.dispose();
 		if (runnablePairingConstraintItemProvider != null) runnablePairingConstraintItemProvider.dispose();
 		if (processPairingConstraintItemProvider != null) processPairingConstraintItemProvider.dispose();
-		if (schedulerPairingConstraintItemProvider != null) schedulerPairingConstraintItemProvider.dispose();
+		if (dataPairingConstraintItemProvider != null) dataPairingConstraintItemProvider.dispose();
+		if (targetMemoryItemProvider != null) targetMemoryItemProvider.dispose();
 		if (targetCoreItemProvider != null) targetCoreItemProvider.dispose();
 		if (targetSchedulerItemProvider != null) targetSchedulerItemProvider.dispose();
 		if (targetProcessItemProvider != null) targetProcessItemProvider.dispose();
 		if (targetCallSequenceItemProvider != null) targetCallSequenceItemProvider.dispose();
-		if (schedulerEntityGroupItemProvider != null) schedulerEntityGroupItemProvider.dispose();
+		if (labelEntityGroupItemProvider != null) labelEntityGroupItemProvider.dispose();
 		if (runnableEntityGroupItemProvider != null) runnableEntityGroupItemProvider.dispose();
 		if (processEntityGroupItemProvider != null) processEntityGroupItemProvider.dispose();
 		if (tagGroupItemProvider != null) tagGroupItemProvider.dispose();
@@ -5808,11 +5879,10 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (eventChainReferenceItemProvider != null) eventChainReferenceItemProvider.dispose();
 		if (subEventChainItemProvider != null) subEventChainItemProvider.dispose();
 		if (physicalSectionConstraintItemProvider != null) physicalSectionConstraintItemProvider.dispose();
-		if (orderConstraintItemProvider != null) orderConstraintItemProvider.dispose();
-		if (synchronisationConstraintItemProvider != null) synchronisationConstraintItemProvider.dispose();
-		if (reactionConstraintItemProvider != null) reactionConstraintItemProvider.dispose();
+		if (eventSynchronizationConstraintItemProvider != null) eventSynchronizationConstraintItemProvider.dispose();
+		if (eventChainSynchronizationConstraintItemProvider != null) eventChainSynchronizationConstraintItemProvider.dispose();
 		if (delayConstraintItemProvider != null) delayConstraintItemProvider.dispose();
-		if (ageConstraintItemProvider != null) ageConstraintItemProvider.dispose();
+		if (eventChainLatencyConstraintItemProvider != null) eventChainLatencyConstraintItemProvider.dispose();
 		if (repetitionConstraintItemProvider != null) repetitionConstraintItemProvider.dispose();
 		if (dataAgeConstraintItemProvider != null) dataAgeConstraintItemProvider.dispose();
 		if (dataAgeCycleItemProvider != null) dataAgeCycleItemProvider.dispose();
@@ -5917,6 +5987,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (modeValueListEntryItemProvider != null) modeValueListEntryItemProvider.dispose();
 		if (periodicItemProvider != null) periodicItemProvider.dispose();
 		if (periodicEventItemProvider != null) periodicEventItemProvider.dispose();
+		if (syntheticItemProvider != null) syntheticItemProvider.dispose();
+		if (timestampListItemProvider != null) timestampListItemProvider.dispose();
 		if (customStimulusItemProvider != null) customStimulusItemProvider.dispose();
 		if (singleItemProvider != null) singleItemProvider.dispose();
 		if (interProcessItemProvider != null) interProcessItemProvider.dispose();

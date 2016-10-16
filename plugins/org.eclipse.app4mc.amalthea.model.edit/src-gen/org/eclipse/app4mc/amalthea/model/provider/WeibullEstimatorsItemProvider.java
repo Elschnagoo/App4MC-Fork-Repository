@@ -307,6 +307,11 @@ public class WeibullEstimatorsItemProvider extends WeibullDistributionItemProvid
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
+				 AmaltheaFactory.eINSTANCE.createBetaDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
 				 AmaltheaFactory.eINSTANCE.createMinAvgMaxStatistic()));
 
 		newChildDescriptors.add
@@ -412,7 +417,7 @@ public class WeibullEstimatorsItemProvider extends WeibullDistributionItemProvid
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createSchedulerSeparationConstraint()));
+				 AmaltheaFactory.eINSTANCE.createDataSeparationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -427,7 +432,12 @@ public class WeibullEstimatorsItemProvider extends WeibullDistributionItemProvid
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createSchedulerPairingConstraint()));
+				 AmaltheaFactory.eINSTANCE.createDataPairingConstraint()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
+				 AmaltheaFactory.eINSTANCE.createTargetMemory()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -452,7 +462,7 @@ public class WeibullEstimatorsItemProvider extends WeibullDistributionItemProvid
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createSchedulerEntityGroup()));
+				 AmaltheaFactory.eINSTANCE.createLabelEntityGroup()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -492,17 +502,12 @@ public class WeibullEstimatorsItemProvider extends WeibullDistributionItemProvid
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createOrderConstraint()));
+				 AmaltheaFactory.eINSTANCE.createEventSynchronizationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createSynchronisationConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createReactionConstraint()));
+				 AmaltheaFactory.eINSTANCE.createEventChainSynchronizationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -512,7 +517,7 @@ public class WeibullEstimatorsItemProvider extends WeibullDistributionItemProvid
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createAgeConstraint()));
+				 AmaltheaFactory.eINSTANCE.createEventChainLatencyConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -1033,6 +1038,16 @@ public class WeibullEstimatorsItemProvider extends WeibullDistributionItemProvid
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
 				 AmaltheaFactory.eINSTANCE.createPeriodicEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
+				 AmaltheaFactory.eINSTANCE.createSynthetic()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
+				 AmaltheaFactory.eINSTANCE.createTimestampList()));
 
 		newChildDescriptors.add
 			(createChildParameter

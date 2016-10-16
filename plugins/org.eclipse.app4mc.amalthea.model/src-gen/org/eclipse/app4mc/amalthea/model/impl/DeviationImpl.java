@@ -15,6 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
+import org.eclipse.app4mc.amalthea.model.SamplingType;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
@@ -38,6 +39,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DeviationImpl#getLowerBound <em>Lower Bound</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DeviationImpl#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DeviationImpl#getDistribution <em>Distribution</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DeviationImpl#getSamplingType <em>Sampling Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -72,6 +74,26 @@ public class DeviationImpl<T> extends AmaltheaExtendedEObjectImpl implements Dev
 	 * @ordered
 	 */
 	protected Distribution<T> distribution;
+
+	/**
+	 * The default value of the '{@link #getSamplingType() <em>Sampling Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSamplingType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final SamplingType SAMPLING_TYPE_EDEFAULT = SamplingType.DEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSamplingType() <em>Sampling Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSamplingType()
+	 * @generated
+	 * @ordered
+	 */
+	protected SamplingType samplingType = SAMPLING_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -298,6 +320,27 @@ public class DeviationImpl<T> extends AmaltheaExtendedEObjectImpl implements Dev
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SamplingType getSamplingType() {
+		return samplingType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSamplingType(SamplingType newSamplingType) {
+		SamplingType oldSamplingType = samplingType;
+		samplingType = newSamplingType == null ? SAMPLING_TYPE_EDEFAULT : newSamplingType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DEVIATION__SAMPLING_TYPE, oldSamplingType, samplingType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -328,6 +371,8 @@ public class DeviationImpl<T> extends AmaltheaExtendedEObjectImpl implements Dev
 			case AmaltheaPackage.DEVIATION__DISTRIBUTION:
 				if (resolve) return getDistribution();
 				return basicGetDistribution();
+			case AmaltheaPackage.DEVIATION__SAMPLING_TYPE:
+				return getSamplingType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -350,6 +395,9 @@ public class DeviationImpl<T> extends AmaltheaExtendedEObjectImpl implements Dev
 			case AmaltheaPackage.DEVIATION__DISTRIBUTION:
 				setDistribution((Distribution<T>)newValue);
 				return;
+			case AmaltheaPackage.DEVIATION__SAMPLING_TYPE:
+				setSamplingType((SamplingType)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -371,6 +419,9 @@ public class DeviationImpl<T> extends AmaltheaExtendedEObjectImpl implements Dev
 			case AmaltheaPackage.DEVIATION__DISTRIBUTION:
 				setDistribution((Distribution<T>)null);
 				return;
+			case AmaltheaPackage.DEVIATION__SAMPLING_TYPE:
+				setSamplingType(SAMPLING_TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -389,8 +440,26 @@ public class DeviationImpl<T> extends AmaltheaExtendedEObjectImpl implements Dev
 				return upperBound != null;
 			case AmaltheaPackage.DEVIATION__DISTRIBUTION:
 				return distribution != null;
+			case AmaltheaPackage.DEVIATION__SAMPLING_TYPE:
+				return samplingType != SAMPLING_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (samplingType: ");
+		result.append(samplingType);
+		result.append(')');
+		return result.toString();
 	}
 
 } //DeviationImpl

@@ -17,17 +17,13 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
-import org.eclipse.app4mc.amalthea.model.RunnableGroupingType;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -40,33 +36,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessRunnableGroupImpl#getGroupingType <em>Grouping Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessRunnableGroupImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ProcessRunnableGroupImpl extends BaseObjectImpl implements ProcessRunnableGroup {
-	/**
-	 * The default value of the '{@link #getGroupingType() <em>Grouping Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGroupingType()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final RunnableGroupingType GROUPING_TYPE_EDEFAULT = RunnableGroupingType._UNDEFINED_;
-
-	/**
-	 * The cached value of the '{@link #getGroupingType() <em>Grouping Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGroupingType()
-	 * @generated
-	 * @ordered
-	 */
-	protected RunnableGroupingType groupingType = GROUPING_TYPE_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -94,27 +69,6 @@ public class ProcessRunnableGroupImpl extends BaseObjectImpl implements ProcessR
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getProcessRunnableGroup();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RunnableGroupingType getGroupingType() {
-		return groupingType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setGroupingType(RunnableGroupingType newGroupingType) {
-		RunnableGroupingType oldGroupingType = groupingType;
-		groupingType = newGroupingType == null ? GROUPING_TYPE_EDEFAULT : newGroupingType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PROCESS_RUNNABLE_GROUP__GROUPING_TYPE, oldGroupingType, groupingType));
 	}
 
 	/**
@@ -151,8 +105,6 @@ public class ProcessRunnableGroupImpl extends BaseObjectImpl implements ProcessR
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__GROUPING_TYPE:
-				return getGroupingType();
 			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__ENTRIES:
 				return getEntries();
 		}
@@ -168,9 +120,6 @@ public class ProcessRunnableGroupImpl extends BaseObjectImpl implements ProcessR
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__GROUPING_TYPE:
-				setGroupingType((RunnableGroupingType)newValue);
-				return;
 			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__ENTRIES:
 				getEntries().clear();
 				getEntries().addAll((Collection<? extends ProcessRunnableGroupEntry>)newValue);
@@ -187,9 +136,6 @@ public class ProcessRunnableGroupImpl extends BaseObjectImpl implements ProcessR
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__GROUPING_TYPE:
-				setGroupingType(GROUPING_TYPE_EDEFAULT);
-				return;
 			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__ENTRIES:
 				getEntries().clear();
 				return;
@@ -205,28 +151,10 @@ public class ProcessRunnableGroupImpl extends BaseObjectImpl implements ProcessR
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__GROUPING_TYPE:
-				return groupingType != GROUPING_TYPE_EDEFAULT;
 			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__ENTRIES:
 				return entries != null && !entries.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (groupingType: ");
-		result.append(groupingType);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ProcessRunnableGroupImpl

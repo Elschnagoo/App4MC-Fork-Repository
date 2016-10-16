@@ -25,7 +25,6 @@ import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
-import org.eclipse.app4mc.amalthea.model.AgeConstraint;
 import org.eclipse.app4mc.amalthea.model.AlgorithmParameter;
 import org.eclipse.app4mc.amalthea.model.AllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
@@ -37,6 +36,7 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
+import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
@@ -81,8 +81,12 @@ import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
 import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope;
+import org.eclipse.app4mc.amalthea.model.DataConstraint;
+import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
+import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
+import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
@@ -101,13 +105,16 @@ import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.Event;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
+import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
+import org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
 import org.eclipse.app4mc.amalthea.model.EventConfigElement;
 import org.eclipse.app4mc.amalthea.model.EventConfigLink;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
+import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
@@ -151,6 +158,7 @@ import org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
+import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.Latency;
 import org.eclipse.app4mc.amalthea.model.LatencyAccessPath;
@@ -184,7 +192,6 @@ import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
-import org.eclipse.app4mc.amalthea.model.OrderConstraint;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
 import org.eclipse.app4mc.amalthea.model.OsBuffering;
@@ -235,7 +242,6 @@ import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
-import org.eclipse.app4mc.amalthea.model.ReactionConstraint;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 import org.eclipse.app4mc.amalthea.model.ReferableObject;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
@@ -261,11 +267,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
-import org.eclipse.app4mc.amalthea.model.SchedulerConstraint;
-import org.eclipse.app4mc.amalthea.model.SchedulerConstraintTarget;
-import org.eclipse.app4mc.amalthea.model.SchedulerEntityGroup;
-import org.eclipse.app4mc.amalthea.model.SchedulerPairingConstraint;
-import org.eclipse.app4mc.amalthea.model.SchedulerSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
@@ -293,13 +294,15 @@ import org.eclipse.app4mc.amalthea.model.StringObject;
 import org.eclipse.app4mc.amalthea.model.Struct;
 import org.eclipse.app4mc.amalthea.model.StructEntry;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
-import org.eclipse.app4mc.amalthea.model.SynchronisationConstraint;
+import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
+import org.eclipse.app4mc.amalthea.model.Synthetic;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
 import org.eclipse.app4mc.amalthea.model.TargetCallSequence;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
+import org.eclipse.app4mc.amalthea.model.TargetMemory;
 import org.eclipse.app4mc.amalthea.model.TargetProcess;
 import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -311,6 +314,7 @@ import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
+import org.eclipse.app4mc.amalthea.model.TimestampList;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
@@ -633,6 +637,13 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.BETA_DISTRIBUTION: {
+				BetaDistribution<?> betaDistribution = (BetaDistribution<?>)theEObject;
+				T1 result = caseBetaDistribution(betaDistribution);
+				if (result == null) result = caseDistribution(betaDistribution);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.NUMERIC_STATISTIC: {
 				NumericStatistic numericStatistic = (NumericStatistic)theEObject;
 				T1 result = caseNumericStatistic(numericStatistic);
@@ -889,9 +900,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.SCHEDULER_CONSTRAINT: {
-				SchedulerConstraint schedulerConstraint = (SchedulerConstraint)theEObject;
-				T1 result = caseSchedulerConstraint(schedulerConstraint);
+			case AmaltheaPackage.DATA_CONSTRAINT: {
+				DataConstraint dataConstraint = (DataConstraint)theEObject;
+				T1 result = caseDataConstraint(dataConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -921,16 +932,16 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.SCHEDULER_SEPARATION_CONSTRAINT: {
-				SchedulerSeparationConstraint schedulerSeparationConstraint = (SchedulerSeparationConstraint)theEObject;
-				T1 result = caseSchedulerSeparationConstraint(schedulerSeparationConstraint);
-				if (result == null) result = caseSeparationConstraint(schedulerSeparationConstraint);
-				if (result == null) result = caseSchedulerConstraint(schedulerSeparationConstraint);
-				if (result == null) result = caseBaseObject(schedulerSeparationConstraint);
-				if (result == null) result = caseAffinityConstraint(schedulerSeparationConstraint);
-				if (result == null) result = caseReferableBaseObject(schedulerSeparationConstraint);
-				if (result == null) result = caseIAnnotatable(schedulerSeparationConstraint);
-				if (result == null) result = caseIReferable(schedulerSeparationConstraint);
+			case AmaltheaPackage.DATA_SEPARATION_CONSTRAINT: {
+				DataSeparationConstraint dataSeparationConstraint = (DataSeparationConstraint)theEObject;
+				T1 result = caseDataSeparationConstraint(dataSeparationConstraint);
+				if (result == null) result = caseSeparationConstraint(dataSeparationConstraint);
+				if (result == null) result = caseDataConstraint(dataSeparationConstraint);
+				if (result == null) result = caseBaseObject(dataSeparationConstraint);
+				if (result == null) result = caseAffinityConstraint(dataSeparationConstraint);
+				if (result == null) result = caseReferableBaseObject(dataSeparationConstraint);
+				if (result == null) result = caseIAnnotatable(dataSeparationConstraint);
+				if (result == null) result = caseIReferable(dataSeparationConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -960,16 +971,16 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.SCHEDULER_PAIRING_CONSTRAINT: {
-				SchedulerPairingConstraint schedulerPairingConstraint = (SchedulerPairingConstraint)theEObject;
-				T1 result = caseSchedulerPairingConstraint(schedulerPairingConstraint);
-				if (result == null) result = casePairingConstraint(schedulerPairingConstraint);
-				if (result == null) result = caseSchedulerConstraint(schedulerPairingConstraint);
-				if (result == null) result = caseBaseObject(schedulerPairingConstraint);
-				if (result == null) result = caseAffinityConstraint(schedulerPairingConstraint);
-				if (result == null) result = caseReferableBaseObject(schedulerPairingConstraint);
-				if (result == null) result = caseIAnnotatable(schedulerPairingConstraint);
-				if (result == null) result = caseIReferable(schedulerPairingConstraint);
+			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT: {
+				DataPairingConstraint dataPairingConstraint = (DataPairingConstraint)theEObject;
+				T1 result = caseDataPairingConstraint(dataPairingConstraint);
+				if (result == null) result = casePairingConstraint(dataPairingConstraint);
+				if (result == null) result = caseDataConstraint(dataPairingConstraint);
+				if (result == null) result = caseBaseObject(dataPairingConstraint);
+				if (result == null) result = caseAffinityConstraint(dataPairingConstraint);
+				if (result == null) result = caseReferableBaseObject(dataPairingConstraint);
+				if (result == null) result = caseIAnnotatable(dataPairingConstraint);
+				if (result == null) result = caseIReferable(dataPairingConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -985,9 +996,18 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.SCHEDULER_CONSTRAINT_TARGET: {
-				SchedulerConstraintTarget schedulerConstraintTarget = (SchedulerConstraintTarget)theEObject;
-				T1 result = caseSchedulerConstraintTarget(schedulerConstraintTarget);
+			case AmaltheaPackage.DATA_CONSTRAINT_TARGET: {
+				DataConstraintTarget dataConstraintTarget = (DataConstraintTarget)theEObject;
+				T1 result = caseDataConstraintTarget(dataConstraintTarget);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TARGET_MEMORY: {
+				TargetMemory targetMemory = (TargetMemory)theEObject;
+				T1 result = caseTargetMemory(targetMemory);
+				if (result == null) result = caseDataConstraintTarget(targetMemory);
+				if (result == null) result = caseBaseObject(targetMemory);
+				if (result == null) result = caseIAnnotatable(targetMemory);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -996,7 +1016,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseTargetCore(targetCore);
 				if (result == null) result = caseRunnableConstraintTarget(targetCore);
 				if (result == null) result = caseProcessConstraintTarget(targetCore);
-				if (result == null) result = caseSchedulerConstraintTarget(targetCore);
 				if (result == null) result = caseBaseObject(targetCore);
 				if (result == null) result = caseIAnnotatable(targetCore);
 				if (result == null) result = defaultCase(theEObject);
@@ -1042,11 +1061,11 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.SCHEDULER_ENTITY_GROUP: {
-				SchedulerEntityGroup schedulerEntityGroup = (SchedulerEntityGroup)theEObject;
-				T1 result = caseSchedulerEntityGroup(schedulerEntityGroup);
-				if (result == null) result = caseBaseObject(schedulerEntityGroup);
-				if (result == null) result = caseIAnnotatable(schedulerEntityGroup);
+			case AmaltheaPackage.LABEL_ENTITY_GROUP: {
+				LabelEntityGroup labelEntityGroup = (LabelEntityGroup)theEObject;
+				T1 result = caseLabelEntityGroup(labelEntityGroup);
+				if (result == null) result = caseBaseObject(labelEntityGroup);
+				if (result == null) result = caseIAnnotatable(labelEntityGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1130,34 +1149,35 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.ORDER_CONSTRAINT: {
-				OrderConstraint orderConstraint = (OrderConstraint)theEObject;
-				T1 result = caseOrderConstraint(orderConstraint);
-				if (result == null) result = caseTimingConstraint(orderConstraint);
-				if (result == null) result = caseBaseObject(orderConstraint);
-				if (result == null) result = caseReferableBaseObject(orderConstraint);
-				if (result == null) result = caseIAnnotatable(orderConstraint);
-				if (result == null) result = caseIReferable(orderConstraint);
+			case AmaltheaPackage.SYNCHRONIZATION_CONSTRAINT: {
+				SynchronizationConstraint synchronizationConstraint = (SynchronizationConstraint)theEObject;
+				T1 result = caseSynchronizationConstraint(synchronizationConstraint);
+				if (result == null) result = caseTimingConstraint(synchronizationConstraint);
+				if (result == null) result = caseReferableBaseObject(synchronizationConstraint);
+				if (result == null) result = caseIAnnotatable(synchronizationConstraint);
+				if (result == null) result = caseIReferable(synchronizationConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.SYNCHRONISATION_CONSTRAINT: {
-				SynchronisationConstraint synchronisationConstraint = (SynchronisationConstraint)theEObject;
-				T1 result = caseSynchronisationConstraint(synchronisationConstraint);
-				if (result == null) result = caseTimingConstraint(synchronisationConstraint);
-				if (result == null) result = caseReferableBaseObject(synchronisationConstraint);
-				if (result == null) result = caseIAnnotatable(synchronisationConstraint);
-				if (result == null) result = caseIReferable(synchronisationConstraint);
+			case AmaltheaPackage.EVENT_SYNCHRONIZATION_CONSTRAINT: {
+				EventSynchronizationConstraint eventSynchronizationConstraint = (EventSynchronizationConstraint)theEObject;
+				T1 result = caseEventSynchronizationConstraint(eventSynchronizationConstraint);
+				if (result == null) result = caseSynchronizationConstraint(eventSynchronizationConstraint);
+				if (result == null) result = caseTimingConstraint(eventSynchronizationConstraint);
+				if (result == null) result = caseReferableBaseObject(eventSynchronizationConstraint);
+				if (result == null) result = caseIAnnotatable(eventSynchronizationConstraint);
+				if (result == null) result = caseIReferable(eventSynchronizationConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.REACTION_CONSTRAINT: {
-				ReactionConstraint reactionConstraint = (ReactionConstraint)theEObject;
-				T1 result = caseReactionConstraint(reactionConstraint);
-				if (result == null) result = caseTimingConstraint(reactionConstraint);
-				if (result == null) result = caseReferableBaseObject(reactionConstraint);
-				if (result == null) result = caseIAnnotatable(reactionConstraint);
-				if (result == null) result = caseIReferable(reactionConstraint);
+			case AmaltheaPackage.EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT: {
+				EventChainSynchronizationConstraint eventChainSynchronizationConstraint = (EventChainSynchronizationConstraint)theEObject;
+				T1 result = caseEventChainSynchronizationConstraint(eventChainSynchronizationConstraint);
+				if (result == null) result = caseSynchronizationConstraint(eventChainSynchronizationConstraint);
+				if (result == null) result = caseTimingConstraint(eventChainSynchronizationConstraint);
+				if (result == null) result = caseReferableBaseObject(eventChainSynchronizationConstraint);
+				if (result == null) result = caseIAnnotatable(eventChainSynchronizationConstraint);
+				if (result == null) result = caseIReferable(eventChainSynchronizationConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1171,13 +1191,13 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.AGE_CONSTRAINT: {
-				AgeConstraint ageConstraint = (AgeConstraint)theEObject;
-				T1 result = caseAgeConstraint(ageConstraint);
-				if (result == null) result = caseTimingConstraint(ageConstraint);
-				if (result == null) result = caseReferableBaseObject(ageConstraint);
-				if (result == null) result = caseIAnnotatable(ageConstraint);
-				if (result == null) result = caseIReferable(ageConstraint);
+			case AmaltheaPackage.EVENT_CHAIN_LATENCY_CONSTRAINT: {
+				EventChainLatencyConstraint eventChainLatencyConstraint = (EventChainLatencyConstraint)theEObject;
+				T1 result = caseEventChainLatencyConstraint(eventChainLatencyConstraint);
+				if (result == null) result = caseTimingConstraint(eventChainLatencyConstraint);
+				if (result == null) result = caseReferableBaseObject(eventChainLatencyConstraint);
+				if (result == null) result = caseIAnnotatable(eventChainLatencyConstraint);
+				if (result == null) result = caseIReferable(eventChainLatencyConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2314,6 +2334,24 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(periodicEvent);
 				if (result == null) result = caseIAnnotatable(periodicEvent);
 				if (result == null) result = caseIReferable(periodicEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.SYNTHETIC: {
+				Synthetic synthetic = (Synthetic)theEObject;
+				T1 result = caseSynthetic(synthetic);
+				if (result == null) result = caseStimulus(synthetic);
+				if (result == null) result = caseReferableBaseObject(synthetic);
+				if (result == null) result = caseIAnnotatable(synthetic);
+				if (result == null) result = caseIReferable(synthetic);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TIMESTAMP_LIST: {
+				TimestampList timestampList = (TimestampList)theEObject;
+				T1 result = caseTimestampList(timestampList);
+				if (result == null) result = caseBaseObject(timestampList);
+				if (result == null) result = caseIAnnotatable(timestampList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3662,6 +3700,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Beta Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Beta Distribution</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public <T> T1 caseBetaDistribution(BetaDistribution<T> object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Numeric Statistic</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -4112,17 +4165,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Scheduler Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Data Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Scheduler Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Data Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSchedulerConstraint(SchedulerConstraint object) {
+	public T1 caseDataConstraint(DataConstraint object) {
 		return null;
 	}
 
@@ -4157,17 +4210,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Scheduler Separation Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Data Separation Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Scheduler Separation Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Data Separation Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSchedulerSeparationConstraint(SchedulerSeparationConstraint object) {
+	public T1 caseDataSeparationConstraint(DataSeparationConstraint object) {
 		return null;
 	}
 
@@ -4202,17 +4255,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Scheduler Pairing Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Data Pairing Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Scheduler Pairing Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Data Pairing Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSchedulerPairingConstraint(SchedulerPairingConstraint object) {
+	public T1 caseDataPairingConstraint(DataPairingConstraint object) {
 		return null;
 	}
 
@@ -4247,17 +4300,32 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Scheduler Constraint Target</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Data Constraint Target</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Scheduler Constraint Target</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Data Constraint Target</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSchedulerConstraintTarget(SchedulerConstraintTarget object) {
+	public T1 caseDataConstraintTarget(DataConstraintTarget object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Target Memory</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Target Memory</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseTargetMemory(TargetMemory object) {
 		return null;
 	}
 
@@ -4352,17 +4420,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Scheduler Entity Group</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Label Entity Group</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Scheduler Entity Group</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Label Entity Group</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSchedulerEntityGroup(SchedulerEntityGroup object) {
+	public T1 caseLabelEntityGroup(LabelEntityGroup object) {
 		return null;
 	}
 
@@ -4502,47 +4570,47 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Order Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Synchronization Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Order Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Synchronization Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOrderConstraint(OrderConstraint object) {
+	public T1 caseSynchronizationConstraint(SynchronizationConstraint object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Synchronisation Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Event Synchronization Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Synchronisation Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Event Synchronization Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSynchronisationConstraint(SynchronisationConstraint object) {
+	public T1 caseEventSynchronizationConstraint(EventSynchronizationConstraint object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Reaction Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Event Chain Synchronization Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Reaction Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Event Chain Synchronization Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseReactionConstraint(ReactionConstraint object) {
+	public T1 caseEventChainSynchronizationConstraint(EventChainSynchronizationConstraint object) {
 		return null;
 	}
 
@@ -4562,17 +4630,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Age Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Event Chain Latency Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Age Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Event Chain Latency Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAgeConstraint(AgeConstraint object) {
+	public T1 caseEventChainLatencyConstraint(EventChainLatencyConstraint object) {
 		return null;
 	}
 
@@ -6493,6 +6561,36 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 casePeriodicEvent(PeriodicEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Synthetic</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Synthetic</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseSynthetic(Synthetic object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Timestamp List</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Timestamp List</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseTimestampList(TimestampList object) {
 		return null;
 	}
 

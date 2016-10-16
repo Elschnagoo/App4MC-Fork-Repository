@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint#getOrderType <em>Order Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint#getRunnableGroups <em>Runnable Groups</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint#getProcessScope <em>Process Scope</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableSequencingConstraint()
@@ -76,5 +77,21 @@ public interface RunnableSequencingConstraint extends ReferableBaseObject {
 	 * @generated
 	 */
 	EList<ProcessRunnableGroup> getRunnableGroups();
+
+	/**
+	 * Returns the value of the '<em><b>Process Scope</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.AbstractProcess}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Process Scope</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Process Scope</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableSequencingConstraint_ProcessScope()
+	 * @model
+	 * @generated
+	 */
+	EList<AbstractProcess> getProcessScope();
 
 } // RunnableSequencingConstraint

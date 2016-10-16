@@ -175,17 +175,12 @@ public class ConstraintsModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConstraintsModel_TimingConstraints(),
-				 AmaltheaFactory.eINSTANCE.createOrderConstraint()));
+				 AmaltheaFactory.eINSTANCE.createEventSynchronizationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConstraintsModel_TimingConstraints(),
-				 AmaltheaFactory.eINSTANCE.createSynchronisationConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getConstraintsModel_TimingConstraints(),
-				 AmaltheaFactory.eINSTANCE.createReactionConstraint()));
+				 AmaltheaFactory.eINSTANCE.createEventChainSynchronizationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -195,7 +190,7 @@ public class ConstraintsModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConstraintsModel_TimingConstraints(),
-				 AmaltheaFactory.eINSTANCE.createAgeConstraint()));
+				 AmaltheaFactory.eINSTANCE.createEventChainLatencyConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -215,7 +210,7 @@ public class ConstraintsModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConstraintsModel_AffinityConstraints(),
-				 AmaltheaFactory.eINSTANCE.createSchedulerSeparationConstraint()));
+				 AmaltheaFactory.eINSTANCE.createDataSeparationConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -230,7 +225,7 @@ public class ConstraintsModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConstraintsModel_AffinityConstraints(),
-				 AmaltheaFactory.eINSTANCE.createSchedulerPairingConstraint()));
+				 AmaltheaFactory.eINSTANCE.createDataPairingConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter

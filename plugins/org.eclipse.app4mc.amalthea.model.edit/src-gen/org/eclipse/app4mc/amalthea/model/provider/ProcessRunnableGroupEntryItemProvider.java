@@ -53,7 +53,6 @@ public class ProcessRunnableGroupEntryItemProvider extends BaseObjectItemProvide
 			super.getPropertyDescriptors(object);
 
 			addRunnablePropertyDescriptor(object);
-			addProcessScopePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -72,28 +71,6 @@ public class ProcessRunnableGroupEntryItemProvider extends BaseObjectItemProvide
 				 getString("_UI_ProcessRunnableGroupEntry_runnable_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ProcessRunnableGroupEntry_runnable_feature", "_UI_ProcessRunnableGroupEntry_type"),
 				 AmaltheaPackage.eINSTANCE.getProcessRunnableGroupEntry_Runnable(),
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Process Scope feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addProcessScopePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ProcessRunnableGroupEntry_processScope_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProcessRunnableGroupEntry_processScope_feature", "_UI_ProcessRunnableGroupEntry_type"),
-				 AmaltheaPackage.eINSTANCE.getProcessRunnableGroupEntry_ProcessScope(),
 				 true,
 				 false,
 				 true,

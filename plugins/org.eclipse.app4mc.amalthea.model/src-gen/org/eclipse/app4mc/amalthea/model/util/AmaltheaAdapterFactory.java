@@ -25,7 +25,6 @@ import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
-import org.eclipse.app4mc.amalthea.model.AgeConstraint;
 import org.eclipse.app4mc.amalthea.model.AlgorithmParameter;
 import org.eclipse.app4mc.amalthea.model.AllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
@@ -37,6 +36,7 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
+import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
@@ -81,8 +81,12 @@ import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
 import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope;
+import org.eclipse.app4mc.amalthea.model.DataConstraint;
+import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
+import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
+import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
@@ -101,13 +105,16 @@ import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.Event;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
+import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
+import org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
 import org.eclipse.app4mc.amalthea.model.EventConfigElement;
 import org.eclipse.app4mc.amalthea.model.EventConfigLink;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
+import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
@@ -151,6 +158,7 @@ import org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
+import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.Latency;
 import org.eclipse.app4mc.amalthea.model.LatencyAccessPath;
@@ -184,7 +192,6 @@ import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
-import org.eclipse.app4mc.amalthea.model.OrderConstraint;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
 import org.eclipse.app4mc.amalthea.model.OsBuffering;
@@ -235,7 +242,6 @@ import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
-import org.eclipse.app4mc.amalthea.model.ReactionConstraint;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 import org.eclipse.app4mc.amalthea.model.ReferableObject;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
@@ -261,11 +267,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
-import org.eclipse.app4mc.amalthea.model.SchedulerConstraint;
-import org.eclipse.app4mc.amalthea.model.SchedulerConstraintTarget;
-import org.eclipse.app4mc.amalthea.model.SchedulerEntityGroup;
-import org.eclipse.app4mc.amalthea.model.SchedulerPairingConstraint;
-import org.eclipse.app4mc.amalthea.model.SchedulerSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
@@ -293,13 +294,15 @@ import org.eclipse.app4mc.amalthea.model.StringObject;
 import org.eclipse.app4mc.amalthea.model.Struct;
 import org.eclipse.app4mc.amalthea.model.StructEntry;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
-import org.eclipse.app4mc.amalthea.model.SynchronisationConstraint;
+import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
+import org.eclipse.app4mc.amalthea.model.Synthetic;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
 import org.eclipse.app4mc.amalthea.model.TargetCallSequence;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
+import org.eclipse.app4mc.amalthea.model.TargetMemory;
 import org.eclipse.app4mc.amalthea.model.TargetProcess;
 import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -311,6 +314,7 @@ import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
+import org.eclipse.app4mc.amalthea.model.TimestampList;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
@@ -531,6 +535,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createGaussDistributionAdapter();
 			}
 			@Override
+			public <T> Adapter caseBetaDistribution(BetaDistribution<T> object) {
+				return createBetaDistributionAdapter();
+			}
+			@Override
 			public Adapter caseNumericStatistic(NumericStatistic object) {
 				return createNumericStatisticAdapter();
 			}
@@ -651,8 +659,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createRunnableConstraintAdapter();
 			}
 			@Override
-			public Adapter caseSchedulerConstraint(SchedulerConstraint object) {
-				return createSchedulerConstraintAdapter();
+			public Adapter caseDataConstraint(DataConstraint object) {
+				return createDataConstraintAdapter();
 			}
 			@Override
 			public Adapter caseRunnableSeparationConstraint(RunnableSeparationConstraint object) {
@@ -663,8 +671,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createProcessSeparationConstraintAdapter();
 			}
 			@Override
-			public Adapter caseSchedulerSeparationConstraint(SchedulerSeparationConstraint object) {
-				return createSchedulerSeparationConstraintAdapter();
+			public Adapter caseDataSeparationConstraint(DataSeparationConstraint object) {
+				return createDataSeparationConstraintAdapter();
 			}
 			@Override
 			public Adapter caseRunnablePairingConstraint(RunnablePairingConstraint object) {
@@ -675,8 +683,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createProcessPairingConstraintAdapter();
 			}
 			@Override
-			public Adapter caseSchedulerPairingConstraint(SchedulerPairingConstraint object) {
-				return createSchedulerPairingConstraintAdapter();
+			public Adapter caseDataPairingConstraint(DataPairingConstraint object) {
+				return createDataPairingConstraintAdapter();
 			}
 			@Override
 			public Adapter caseRunnableConstraintTarget(RunnableConstraintTarget object) {
@@ -687,8 +695,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createProcessConstraintTargetAdapter();
 			}
 			@Override
-			public Adapter caseSchedulerConstraintTarget(SchedulerConstraintTarget object) {
-				return createSchedulerConstraintTargetAdapter();
+			public Adapter caseDataConstraintTarget(DataConstraintTarget object) {
+				return createDataConstraintTargetAdapter();
+			}
+			@Override
+			public Adapter caseTargetMemory(TargetMemory object) {
+				return createTargetMemoryAdapter();
 			}
 			@Override
 			public Adapter caseTargetCore(TargetCore object) {
@@ -715,8 +727,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createProcessGroupAdapter();
 			}
 			@Override
-			public Adapter caseSchedulerEntityGroup(SchedulerEntityGroup object) {
-				return createSchedulerEntityGroupAdapter();
+			public Adapter caseLabelEntityGroup(LabelEntityGroup object) {
+				return createLabelEntityGroupAdapter();
 			}
 			@Override
 			public Adapter caseRunnableEntityGroup(RunnableEntityGroup object) {
@@ -755,24 +767,24 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createPhysicalSectionConstraintAdapter();
 			}
 			@Override
-			public Adapter caseOrderConstraint(OrderConstraint object) {
-				return createOrderConstraintAdapter();
+			public Adapter caseSynchronizationConstraint(SynchronizationConstraint object) {
+				return createSynchronizationConstraintAdapter();
 			}
 			@Override
-			public Adapter caseSynchronisationConstraint(SynchronisationConstraint object) {
-				return createSynchronisationConstraintAdapter();
+			public Adapter caseEventSynchronizationConstraint(EventSynchronizationConstraint object) {
+				return createEventSynchronizationConstraintAdapter();
 			}
 			@Override
-			public Adapter caseReactionConstraint(ReactionConstraint object) {
-				return createReactionConstraintAdapter();
+			public Adapter caseEventChainSynchronizationConstraint(EventChainSynchronizationConstraint object) {
+				return createEventChainSynchronizationConstraintAdapter();
 			}
 			@Override
 			public Adapter caseDelayConstraint(DelayConstraint object) {
 				return createDelayConstraintAdapter();
 			}
 			@Override
-			public Adapter caseAgeConstraint(AgeConstraint object) {
-				return createAgeConstraintAdapter();
+			public Adapter caseEventChainLatencyConstraint(EventChainLatencyConstraint object) {
+				return createEventChainLatencyConstraintAdapter();
 			}
 			@Override
 			public Adapter caseRepetitionConstraint(RepetitionConstraint object) {
@@ -1285,6 +1297,14 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePeriodicEvent(PeriodicEvent object) {
 				return createPeriodicEventAdapter();
+			}
+			@Override
+			public Adapter caseSynthetic(Synthetic object) {
+				return createSyntheticAdapter();
+			}
+			@Override
+			public Adapter caseTimestampList(TimestampList object) {
+				return createTimestampListAdapter();
 			}
 			@Override
 			public Adapter caseCustomStimulus(CustomStimulus object) {
@@ -2155,6 +2175,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.BetaDistribution <em>Beta Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.BetaDistribution
+	 * @generated
+	 */
+	public Adapter createBetaDistributionAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.NumericStatistic <em>Numeric Statistic</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -2575,16 +2609,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SchedulerConstraint <em>Scheduler Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DataConstraint <em>Data Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SchedulerConstraint
+	 * @see org.eclipse.app4mc.amalthea.model.DataConstraint
 	 * @generated
 	 */
-	public Adapter createSchedulerConstraintAdapter() {
+	public Adapter createDataConstraintAdapter() {
 		return null;
 	}
 
@@ -2617,16 +2651,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SchedulerSeparationConstraint <em>Scheduler Separation Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DataSeparationConstraint <em>Data Separation Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SchedulerSeparationConstraint
+	 * @see org.eclipse.app4mc.amalthea.model.DataSeparationConstraint
 	 * @generated
 	 */
-	public Adapter createSchedulerSeparationConstraintAdapter() {
+	public Adapter createDataSeparationConstraintAdapter() {
 		return null;
 	}
 
@@ -2659,16 +2693,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SchedulerPairingConstraint <em>Scheduler Pairing Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DataPairingConstraint <em>Data Pairing Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SchedulerPairingConstraint
+	 * @see org.eclipse.app4mc.amalthea.model.DataPairingConstraint
 	 * @generated
 	 */
-	public Adapter createSchedulerPairingConstraintAdapter() {
+	public Adapter createDataPairingConstraintAdapter() {
 		return null;
 	}
 
@@ -2701,16 +2735,30 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SchedulerConstraintTarget <em>Scheduler Constraint Target</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DataConstraintTarget <em>Data Constraint Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SchedulerConstraintTarget
+	 * @see org.eclipse.app4mc.amalthea.model.DataConstraintTarget
 	 * @generated
 	 */
-	public Adapter createSchedulerConstraintTargetAdapter() {
+	public Adapter createDataConstraintTargetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TargetMemory <em>Target Memory</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.TargetMemory
+	 * @generated
+	 */
+	public Adapter createTargetMemoryAdapter() {
 		return null;
 	}
 
@@ -2799,16 +2847,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SchedulerEntityGroup <em>Scheduler Entity Group</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.LabelEntityGroup <em>Label Entity Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SchedulerEntityGroup
+	 * @see org.eclipse.app4mc.amalthea.model.LabelEntityGroup
 	 * @generated
 	 */
-	public Adapter createSchedulerEntityGroupAdapter() {
+	public Adapter createLabelEntityGroupAdapter() {
 		return null;
 	}
 
@@ -2939,44 +2987,44 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OrderConstraint <em>Order Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SynchronizationConstraint <em>Synchronization Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.OrderConstraint
+	 * @see org.eclipse.app4mc.amalthea.model.SynchronizationConstraint
 	 * @generated
 	 */
-	public Adapter createOrderConstraintAdapter() {
+	public Adapter createSynchronizationConstraintAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SynchronisationConstraint <em>Synchronisation Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint <em>Event Synchronization Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SynchronisationConstraint
+	 * @see org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint
 	 * @generated
 	 */
-	public Adapter createSynchronisationConstraintAdapter() {
+	public Adapter createEventSynchronizationConstraintAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ReactionConstraint <em>Reaction Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint <em>Event Chain Synchronization Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ReactionConstraint
+	 * @see org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint
 	 * @generated
 	 */
-	public Adapter createReactionConstraintAdapter() {
+	public Adapter createEventChainSynchronizationConstraintAdapter() {
 		return null;
 	}
 
@@ -2995,16 +3043,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AgeConstraint <em>Age Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint <em>Event Chain Latency Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.AgeConstraint
+	 * @see org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint
 	 * @generated
 	 */
-	public Adapter createAgeConstraintAdapter() {
+	public Adapter createEventChainLatencyConstraintAdapter() {
 		return null;
 	}
 
@@ -4797,6 +4845,34 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPeriodicEventAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Synthetic <em>Synthetic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.Synthetic
+	 * @generated
+	 */
+	public Adapter createSyntheticAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TimestampList <em>Timestamp List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.TimestampList
+	 * @generated
+	 */
+	public Adapter createTimestampListAdapter() {
 		return null;
 	}
 

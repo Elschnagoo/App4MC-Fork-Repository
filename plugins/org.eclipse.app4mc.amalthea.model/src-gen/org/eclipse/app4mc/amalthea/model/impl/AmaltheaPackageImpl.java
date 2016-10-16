@@ -27,7 +27,6 @@ import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
-import org.eclipse.app4mc.amalthea.model.AgeConstraint;
 import org.eclipse.app4mc.amalthea.model.AlgorithmParameter;
 import org.eclipse.app4mc.amalthea.model.AllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
@@ -40,6 +39,7 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
+import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
@@ -91,9 +91,13 @@ import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
 import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope;
+import org.eclipse.app4mc.amalthea.model.DataConstraint;
+import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
+import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
+import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.DataType;
@@ -112,13 +116,16 @@ import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.Event;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
+import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
+import org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
 import org.eclipse.app4mc.amalthea.model.EventConfigElement;
 import org.eclipse.app4mc.amalthea.model.EventConfigLink;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
+import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
@@ -167,6 +174,7 @@ import org.eclipse.app4mc.amalthea.model.LabelAccessBuffering;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 import org.eclipse.app4mc.amalthea.model.LabelBuffering;
+import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelEventType;
 import org.eclipse.app4mc.amalthea.model.Latency;
@@ -174,6 +182,7 @@ import org.eclipse.app4mc.amalthea.model.LatencyAccessPath;
 import org.eclipse.app4mc.amalthea.model.LatencyAccessPathElement;
 import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
+import org.eclipse.app4mc.amalthea.model.LatencyType;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.LimitType;
 import org.eclipse.app4mc.amalthea.model.ListObject;
@@ -181,6 +190,7 @@ import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Mapping;
 import org.eclipse.app4mc.amalthea.model.MappingConstraint;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
+import org.eclipse.app4mc.amalthea.model.MappingType;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
@@ -203,7 +213,6 @@ import org.eclipse.app4mc.amalthea.model.NetworkType;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
-import org.eclipse.app4mc.amalthea.model.OrderConstraint;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
@@ -261,7 +270,6 @@ import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.RWType;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
-import org.eclipse.app4mc.amalthea.model.ReactionConstraint;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 import org.eclipse.app4mc.amalthea.model.ReferableObject;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
@@ -278,7 +286,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableEventType;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableGroupingType;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
@@ -288,14 +295,10 @@ import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
+import org.eclipse.app4mc.amalthea.model.SamplingType;
 import org.eclipse.app4mc.amalthea.model.SchedType;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
-import org.eclipse.app4mc.amalthea.model.SchedulerConstraint;
-import org.eclipse.app4mc.amalthea.model.SchedulerConstraintTarget;
-import org.eclipse.app4mc.amalthea.model.SchedulerEntityGroup;
-import org.eclipse.app4mc.amalthea.model.SchedulerPairingConstraint;
-import org.eclipse.app4mc.amalthea.model.SchedulerSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
@@ -326,13 +329,16 @@ import org.eclipse.app4mc.amalthea.model.StringObject;
 import org.eclipse.app4mc.amalthea.model.Struct;
 import org.eclipse.app4mc.amalthea.model.StructEntry;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
-import org.eclipse.app4mc.amalthea.model.SynchronisationConstraint;
+import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
+import org.eclipse.app4mc.amalthea.model.SynchronizationType;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
+import org.eclipse.app4mc.amalthea.model.Synthetic;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
 import org.eclipse.app4mc.amalthea.model.TargetCallSequence;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
+import org.eclipse.app4mc.amalthea.model.TargetMemory;
 import org.eclipse.app4mc.amalthea.model.TargetProcess;
 import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -346,6 +352,7 @@ import org.eclipse.app4mc.amalthea.model.TimeMetric;
 import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
+import org.eclipse.app4mc.amalthea.model.TimestampList;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
@@ -636,6 +643,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass betaDistributionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass numericStatisticEClass = null;
 
 	/**
@@ -846,7 +860,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass schedulerConstraintEClass = null;
+	private EClass dataConstraintEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -867,7 +881,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass schedulerSeparationConstraintEClass = null;
+	private EClass dataSeparationConstraintEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -888,7 +902,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass schedulerPairingConstraintEClass = null;
+	private EClass dataPairingConstraintEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -909,7 +923,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass schedulerConstraintTargetEClass = null;
+	private EClass dataConstraintTargetEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass targetMemoryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -958,7 +979,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass schedulerEntityGroupEClass = null;
+	private EClass labelEntityGroupEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1028,21 +1049,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass orderConstraintEClass = null;
+	private EClass synchronizationConstraintEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass synchronisationConstraintEClass = null;
+	private EClass eventSynchronizationConstraintEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass reactionConstraintEClass = null;
+	private EClass eventChainSynchronizationConstraintEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1056,7 +1077,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass ageConstraintEClass = null;
+	private EClass eventChainLatencyConstraintEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1959,6 +1980,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass syntheticEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass timestampListEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass customStimulusEClass = null;
 
 	/**
@@ -2589,6 +2624,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum samplingTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum interfaceKindEEnum = null;
 
 	/**
@@ -2603,7 +2645,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum runnableGroupingTypeEEnum = null;
+	private EEnum synchronizationTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum mappingTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum latencyTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3708,6 +3764,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDeviation_SamplingType() {
+		return (EAttribute)deviationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDistribution() {
 		return distributionEClass;
 	}
@@ -3818,6 +3883,33 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getGaussDistribution_Mean() {
 		return (EReference)gaussDistributionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBetaDistribution() {
+		return betaDistributionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBetaDistribution_Alpha() {
+		return (EAttribute)betaDistributionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBetaDistribution_Beta() {
+		return (EAttribute)betaDistributionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4437,6 +4529,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getRunnableSequencingConstraint_ProcessScope() {
+		return (EReference)runnableSequencingConstraintEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProcessRunnableGroup() {
 		return processRunnableGroupEClass;
 	}
@@ -4446,17 +4547,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProcessRunnableGroup_GroupingType() {
-		return (EAttribute)processRunnableGroupEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getProcessRunnableGroup_Entries() {
-		return (EReference)processRunnableGroupEClass.getEStructuralFeatures().get(1);
+		return (EReference)processRunnableGroupEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4475,15 +4567,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getProcessRunnableGroupEntry_Runnable() {
 		return (EReference)processRunnableGroupEntryEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getProcessRunnableGroupEntry_ProcessScope() {
-		return (EReference)processRunnableGroupEntryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4554,8 +4637,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSchedulerConstraint() {
-		return schedulerConstraintEClass;
+	public EClass getDataConstraint() {
+		return dataConstraintEClass;
 	}
 
 	/**
@@ -4563,8 +4646,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSchedulerConstraint_Target() {
-		return (EReference)schedulerConstraintEClass.getEStructuralFeatures().get(0);
+	public EReference getDataConstraint_Target() {
+		return (EReference)dataConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4608,8 +4691,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSchedulerSeparationConstraint() {
-		return schedulerSeparationConstraintEClass;
+	public EClass getDataSeparationConstraint() {
+		return dataSeparationConstraintEClass;
 	}
 
 	/**
@@ -4617,8 +4700,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSchedulerSeparationConstraint_Groups() {
-		return (EReference)schedulerSeparationConstraintEClass.getEStructuralFeatures().get(0);
+	public EReference getDataSeparationConstraint_Groups() {
+		return (EReference)dataSeparationConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4662,8 +4745,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSchedulerPairingConstraint() {
-		return schedulerPairingConstraintEClass;
+	public EClass getDataPairingConstraint() {
+		return dataPairingConstraintEClass;
 	}
 
 	/**
@@ -4671,8 +4754,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSchedulerPairingConstraint_Schedulers() {
-		return (EReference)schedulerPairingConstraintEClass.getEStructuralFeatures().get(0);
+	public EReference getDataPairingConstraint_Labels() {
+		return (EReference)dataPairingConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4698,8 +4781,26 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSchedulerConstraintTarget() {
-		return schedulerConstraintTargetEClass;
+	public EClass getDataConstraintTarget() {
+		return dataConstraintTargetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTargetMemory() {
+		return targetMemoryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTargetMemory_Memories() {
+		return (EReference)targetMemoryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4797,8 +4898,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSchedulerEntityGroup() {
-		return schedulerEntityGroupEClass;
+	public EClass getLabelEntityGroup() {
+		return labelEntityGroupEClass;
 	}
 
 	/**
@@ -4806,8 +4907,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSchedulerEntityGroup_Schedulers() {
-		return (EReference)schedulerEntityGroupEClass.getEStructuralFeatures().get(0);
+	public EReference getLabelEntityGroup_Labels() {
+		return (EReference)labelEntityGroupEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5004,8 +5105,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOrderConstraint() {
-		return orderConstraintEClass;
+	public EClass getSynchronizationConstraint() {
+		return synchronizationConstraintEClass;
 	}
 
 	/**
@@ -5013,8 +5114,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOrderConstraint_Source() {
-		return (EReference)orderConstraintEClass.getEStructuralFeatures().get(0);
+	public EAttribute getSynchronizationConstraint_MultipleOccurrencesAllowed() {
+		return (EAttribute)synchronizationConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5022,8 +5123,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOrderConstraint_Target() {
-		return (EReference)orderConstraintEClass.getEStructuralFeatures().get(1);
+	public EReference getSynchronizationConstraint_Tolerance() {
+		return (EReference)synchronizationConstraintEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -5031,8 +5132,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSynchronisationConstraint() {
-		return synchronisationConstraintEClass;
+	public EClass getEventSynchronizationConstraint() {
+		return eventSynchronizationConstraintEClass;
 	}
 
 	/**
@@ -5040,8 +5141,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSynchronisationConstraint_Events() {
-		return (EReference)synchronisationConstraintEClass.getEStructuralFeatures().get(0);
+	public EReference getEventSynchronizationConstraint_Events() {
+		return (EReference)eventSynchronizationConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5049,8 +5150,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSynchronisationConstraint_Tolerance() {
-		return (EReference)synchronisationConstraintEClass.getEStructuralFeatures().get(1);
+	public EClass getEventChainSynchronizationConstraint() {
+		return eventChainSynchronizationConstraintEClass;
 	}
 
 	/**
@@ -5058,8 +5159,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getReactionConstraint() {
-		return reactionConstraintEClass;
+	public EReference getEventChainSynchronizationConstraint_Scope() {
+		return (EReference)eventChainSynchronizationConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5067,26 +5168,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getReactionConstraint_Scope() {
-		return (EReference)reactionConstraintEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getReactionConstraint_Minimum() {
-		return (EReference)reactionConstraintEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getReactionConstraint_Maximum() {
-		return (EReference)reactionConstraintEClass.getEStructuralFeatures().get(2);
+	public EAttribute getEventChainSynchronizationConstraint_Type() {
+		return (EAttribute)eventChainSynchronizationConstraintEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -5103,8 +5186,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDelayConstraint_Source() {
-		return (EReference)delayConstraintEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDelayConstraint_MappingType() {
+		return (EAttribute)delayConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5112,7 +5195,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDelayConstraint_Target() {
+	public EReference getDelayConstraint_Source() {
 		return (EReference)delayConstraintEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -5121,7 +5204,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDelayConstraint_Upper() {
+	public EReference getDelayConstraint_Target() {
 		return (EReference)delayConstraintEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -5130,7 +5213,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDelayConstraint_Lower() {
+	public EReference getDelayConstraint_Upper() {
 		return (EReference)delayConstraintEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -5139,8 +5222,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getAgeConstraint() {
-		return ageConstraintEClass;
+	public EReference getDelayConstraint_Lower() {
+		return (EReference)delayConstraintEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -5148,8 +5231,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAgeConstraint_Scope() {
-		return (EReference)ageConstraintEClass.getEStructuralFeatures().get(0);
+	public EClass getEventChainLatencyConstraint() {
+		return eventChainLatencyConstraintEClass;
 	}
 
 	/**
@@ -5157,8 +5240,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAgeConstraint_Maximum() {
-		return (EReference)ageConstraintEClass.getEStructuralFeatures().get(1);
+	public EReference getEventChainLatencyConstraint_Scope() {
+		return (EReference)eventChainLatencyConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5166,8 +5249,26 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAgeConstraint_Minimum() {
-		return (EReference)ageConstraintEClass.getEStructuralFeatures().get(2);
+	public EAttribute getEventChainLatencyConstraint_Type() {
+		return (EAttribute)eventChainLatencyConstraintEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEventChainLatencyConstraint_Minimum() {
+		return (EReference)eventChainLatencyConstraintEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEventChainLatencyConstraint_Maximum() {
+		return (EReference)eventChainLatencyConstraintEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -8478,6 +8579,60 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSynthetic() {
+		return syntheticEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSynthetic_Offset() {
+		return (EReference)syntheticEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSynthetic_Period() {
+		return (EReference)syntheticEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSynthetic_TriggerTimes() {
+		return (EReference)syntheticEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTimestampList() {
+		return timestampListEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTimestampList_Timestamps() {
+		return (EReference)timestampListEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCustomStimulus() {
 		return customStimulusEClass;
 	}
@@ -9378,7 +9533,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTask_Preemption() {
+	public EAttribute getTask_OsekTaskGroup() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -9387,8 +9542,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTask_MultipleTaskActivationLimit() {
+	public EAttribute getTask_Preemption() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTask_MultipleTaskActivationLimit() {
+		return (EAttribute)taskEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -10737,6 +10901,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getSamplingType() {
+		return samplingTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getInterfaceKind() {
 		return interfaceKindEEnum;
 	}
@@ -10755,8 +10928,26 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getRunnableGroupingType() {
-		return runnableGroupingTypeEEnum;
+	public EEnum getSynchronizationType() {
+		return synchronizationTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getMappingType() {
+		return mappingTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getLatencyType() {
+		return latencyTypeEEnum;
 	}
 
 	/**
@@ -11193,6 +11384,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(deviationEClass, DEVIATION__LOWER_BOUND);
 		createEReference(deviationEClass, DEVIATION__UPPER_BOUND);
 		createEReference(deviationEClass, DEVIATION__DISTRIBUTION);
+		createEAttribute(deviationEClass, DEVIATION__SAMPLING_TYPE);
 
 		distributionEClass = createEClass(DISTRIBUTION);
 
@@ -11213,6 +11405,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		gaussDistributionEClass = createEClass(GAUSS_DISTRIBUTION);
 		createEReference(gaussDistributionEClass, GAUSS_DISTRIBUTION__SD);
 		createEReference(gaussDistributionEClass, GAUSS_DISTRIBUTION__MEAN);
+
+		betaDistributionEClass = createEClass(BETA_DISTRIBUTION);
+		createEAttribute(betaDistributionEClass, BETA_DISTRIBUTION__ALPHA);
+		createEAttribute(betaDistributionEClass, BETA_DISTRIBUTION__BETA);
 
 		numericStatisticEClass = createEClass(NUMERIC_STATISTIC);
 
@@ -11304,14 +11500,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runnableSequencingConstraintEClass = createEClass(RUNNABLE_SEQUENCING_CONSTRAINT);
 		createEAttribute(runnableSequencingConstraintEClass, RUNNABLE_SEQUENCING_CONSTRAINT__ORDER_TYPE);
 		createEReference(runnableSequencingConstraintEClass, RUNNABLE_SEQUENCING_CONSTRAINT__RUNNABLE_GROUPS);
+		createEReference(runnableSequencingConstraintEClass, RUNNABLE_SEQUENCING_CONSTRAINT__PROCESS_SCOPE);
 
 		processRunnableGroupEClass = createEClass(PROCESS_RUNNABLE_GROUP);
-		createEAttribute(processRunnableGroupEClass, PROCESS_RUNNABLE_GROUP__GROUPING_TYPE);
 		createEReference(processRunnableGroupEClass, PROCESS_RUNNABLE_GROUP__ENTRIES);
 
 		processRunnableGroupEntryEClass = createEClass(PROCESS_RUNNABLE_GROUP_ENTRY);
 		createEReference(processRunnableGroupEntryEClass, PROCESS_RUNNABLE_GROUP_ENTRY__RUNNABLE);
-		createEReference(processRunnableGroupEntryEClass, PROCESS_RUNNABLE_GROUP_ENTRY__PROCESS_SCOPE);
 
 		affinityConstraintEClass = createEClass(AFFINITY_CONSTRAINT);
 
@@ -11325,8 +11520,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runnableConstraintEClass = createEClass(RUNNABLE_CONSTRAINT);
 		createEReference(runnableConstraintEClass, RUNNABLE_CONSTRAINT__TARGET);
 
-		schedulerConstraintEClass = createEClass(SCHEDULER_CONSTRAINT);
-		createEReference(schedulerConstraintEClass, SCHEDULER_CONSTRAINT__TARGET);
+		dataConstraintEClass = createEClass(DATA_CONSTRAINT);
+		createEReference(dataConstraintEClass, DATA_CONSTRAINT__TARGET);
 
 		runnableSeparationConstraintEClass = createEClass(RUNNABLE_SEPARATION_CONSTRAINT);
 		createEReference(runnableSeparationConstraintEClass, RUNNABLE_SEPARATION_CONSTRAINT__GROUPS);
@@ -11334,8 +11529,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		processSeparationConstraintEClass = createEClass(PROCESS_SEPARATION_CONSTRAINT);
 		createEReference(processSeparationConstraintEClass, PROCESS_SEPARATION_CONSTRAINT__GROUPS);
 
-		schedulerSeparationConstraintEClass = createEClass(SCHEDULER_SEPARATION_CONSTRAINT);
-		createEReference(schedulerSeparationConstraintEClass, SCHEDULER_SEPARATION_CONSTRAINT__GROUPS);
+		dataSeparationConstraintEClass = createEClass(DATA_SEPARATION_CONSTRAINT);
+		createEReference(dataSeparationConstraintEClass, DATA_SEPARATION_CONSTRAINT__GROUPS);
 
 		runnablePairingConstraintEClass = createEClass(RUNNABLE_PAIRING_CONSTRAINT);
 		createEReference(runnablePairingConstraintEClass, RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES);
@@ -11343,14 +11538,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		processPairingConstraintEClass = createEClass(PROCESS_PAIRING_CONSTRAINT);
 		createEReference(processPairingConstraintEClass, PROCESS_PAIRING_CONSTRAINT__PROCESSES);
 
-		schedulerPairingConstraintEClass = createEClass(SCHEDULER_PAIRING_CONSTRAINT);
-		createEReference(schedulerPairingConstraintEClass, SCHEDULER_PAIRING_CONSTRAINT__SCHEDULERS);
+		dataPairingConstraintEClass = createEClass(DATA_PAIRING_CONSTRAINT);
+		createEReference(dataPairingConstraintEClass, DATA_PAIRING_CONSTRAINT__LABELS);
 
 		runnableConstraintTargetEClass = createEClass(RUNNABLE_CONSTRAINT_TARGET);
 
 		processConstraintTargetEClass = createEClass(PROCESS_CONSTRAINT_TARGET);
 
-		schedulerConstraintTargetEClass = createEClass(SCHEDULER_CONSTRAINT_TARGET);
+		dataConstraintTargetEClass = createEClass(DATA_CONSTRAINT_TARGET);
+
+		targetMemoryEClass = createEClass(TARGET_MEMORY);
+		createEReference(targetMemoryEClass, TARGET_MEMORY__MEMORIES);
 
 		targetCoreEClass = createEClass(TARGET_CORE);
 		createEReference(targetCoreEClass, TARGET_CORE__CORES);
@@ -11368,8 +11566,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		processGroupEClass = createEClass(PROCESS_GROUP);
 
-		schedulerEntityGroupEClass = createEClass(SCHEDULER_ENTITY_GROUP);
-		createEReference(schedulerEntityGroupEClass, SCHEDULER_ENTITY_GROUP__SCHEDULERS);
+		labelEntityGroupEClass = createEClass(LABEL_ENTITY_GROUP);
+		createEReference(labelEntityGroupEClass, LABEL_ENTITY_GROUP__LABELS);
 
 		runnableEntityGroupEClass = createEClass(RUNNABLE_ENTITY_GROUP);
 		createEReference(runnableEntityGroupEClass, RUNNABLE_ENTITY_GROUP__RUNNABLES);
@@ -11401,29 +11599,29 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(physicalSectionConstraintEClass, PHYSICAL_SECTION_CONSTRAINT__SECTION);
 		createEReference(physicalSectionConstraintEClass, PHYSICAL_SECTION_CONSTRAINT__MEMORIES);
 
-		orderConstraintEClass = createEClass(ORDER_CONSTRAINT);
-		createEReference(orderConstraintEClass, ORDER_CONSTRAINT__SOURCE);
-		createEReference(orderConstraintEClass, ORDER_CONSTRAINT__TARGET);
+		synchronizationConstraintEClass = createEClass(SYNCHRONIZATION_CONSTRAINT);
+		createEAttribute(synchronizationConstraintEClass, SYNCHRONIZATION_CONSTRAINT__MULTIPLE_OCCURRENCES_ALLOWED);
+		createEReference(synchronizationConstraintEClass, SYNCHRONIZATION_CONSTRAINT__TOLERANCE);
 
-		synchronisationConstraintEClass = createEClass(SYNCHRONISATION_CONSTRAINT);
-		createEReference(synchronisationConstraintEClass, SYNCHRONISATION_CONSTRAINT__EVENTS);
-		createEReference(synchronisationConstraintEClass, SYNCHRONISATION_CONSTRAINT__TOLERANCE);
+		eventSynchronizationConstraintEClass = createEClass(EVENT_SYNCHRONIZATION_CONSTRAINT);
+		createEReference(eventSynchronizationConstraintEClass, EVENT_SYNCHRONIZATION_CONSTRAINT__EVENTS);
 
-		reactionConstraintEClass = createEClass(REACTION_CONSTRAINT);
-		createEReference(reactionConstraintEClass, REACTION_CONSTRAINT__SCOPE);
-		createEReference(reactionConstraintEClass, REACTION_CONSTRAINT__MINIMUM);
-		createEReference(reactionConstraintEClass, REACTION_CONSTRAINT__MAXIMUM);
+		eventChainSynchronizationConstraintEClass = createEClass(EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT);
+		createEReference(eventChainSynchronizationConstraintEClass, EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT__SCOPE);
+		createEAttribute(eventChainSynchronizationConstraintEClass, EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT__TYPE);
 
 		delayConstraintEClass = createEClass(DELAY_CONSTRAINT);
+		createEAttribute(delayConstraintEClass, DELAY_CONSTRAINT__MAPPING_TYPE);
 		createEReference(delayConstraintEClass, DELAY_CONSTRAINT__SOURCE);
 		createEReference(delayConstraintEClass, DELAY_CONSTRAINT__TARGET);
 		createEReference(delayConstraintEClass, DELAY_CONSTRAINT__UPPER);
 		createEReference(delayConstraintEClass, DELAY_CONSTRAINT__LOWER);
 
-		ageConstraintEClass = createEClass(AGE_CONSTRAINT);
-		createEReference(ageConstraintEClass, AGE_CONSTRAINT__SCOPE);
-		createEReference(ageConstraintEClass, AGE_CONSTRAINT__MAXIMUM);
-		createEReference(ageConstraintEClass, AGE_CONSTRAINT__MINIMUM);
+		eventChainLatencyConstraintEClass = createEClass(EVENT_CHAIN_LATENCY_CONSTRAINT);
+		createEReference(eventChainLatencyConstraintEClass, EVENT_CHAIN_LATENCY_CONSTRAINT__SCOPE);
+		createEAttribute(eventChainLatencyConstraintEClass, EVENT_CHAIN_LATENCY_CONSTRAINT__TYPE);
+		createEReference(eventChainLatencyConstraintEClass, EVENT_CHAIN_LATENCY_CONSTRAINT__MINIMUM);
+		createEReference(eventChainLatencyConstraintEClass, EVENT_CHAIN_LATENCY_CONSTRAINT__MAXIMUM);
 
 		repetitionConstraintEClass = createEClass(REPETITION_CONSTRAINT);
 		createEReference(repetitionConstraintEClass, REPETITION_CONSTRAINT__EVENT);
@@ -11920,6 +12118,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		periodicEventEClass = createEClass(PERIODIC_EVENT);
 
+		syntheticEClass = createEClass(SYNTHETIC);
+		createEReference(syntheticEClass, SYNTHETIC__OFFSET);
+		createEReference(syntheticEClass, SYNTHETIC__PERIOD);
+		createEReference(syntheticEClass, SYNTHETIC__TRIGGER_TIMES);
+
+		timestampListEClass = createEClass(TIMESTAMP_LIST);
+		createEReference(timestampListEClass, TIMESTAMP_LIST__TIMESTAMPS);
+
 		customStimulusEClass = createEClass(CUSTOM_STIMULUS);
 
 		singleEClass = createEClass(SINGLE);
@@ -12056,6 +12262,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		terminateProcessEClass = createEClass(TERMINATE_PROCESS);
 
 		taskEClass = createEClass(TASK);
+		createEAttribute(taskEClass, TASK__OSEK_TASK_GROUP);
 		createEAttribute(taskEClass, TASK__PREEMPTION);
 		createEAttribute(taskEClass, TASK__MULTIPLE_TASK_ACTIVATION_LIMIT);
 
@@ -12258,9 +12465,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		frequencyUnitEEnum = createEEnum(FREQUENCY_UNIT);
 		dataSizeUnitEEnum = createEEnum(DATA_SIZE_UNIT);
 		dataRateUnitEEnum = createEEnum(DATA_RATE_UNIT);
+		samplingTypeEEnum = createEEnum(SAMPLING_TYPE);
 		interfaceKindEEnum = createEEnum(INTERFACE_KIND);
 		runnableOrderTypeEEnum = createEEnum(RUNNABLE_ORDER_TYPE);
-		runnableGroupingTypeEEnum = createEEnum(RUNNABLE_GROUPING_TYPE);
+		synchronizationTypeEEnum = createEEnum(SYNCHRONIZATION_TYPE);
+		mappingTypeEEnum = createEEnum(MAPPING_TYPE);
+		latencyTypeEEnum = createEEnum(LATENCY_TYPE);
 		severityEEnum = createEEnum(SEVERITY);
 		limitTypeEEnum = createEEnum(LIMIT_TYPE);
 		timeMetricEEnum = createEEnum(TIME_METRIC);
@@ -12330,6 +12540,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		ETypeParameter uniformDistributionEClass_T = addETypeParameter(uniformDistributionEClass, "T");
 		ETypeParameter boundariesEClass_T = addETypeParameter(boundariesEClass, "T");
 		ETypeParameter gaussDistributionEClass_T = addETypeParameter(gaussDistributionEClass, "T");
+		ETypeParameter betaDistributionEClass_T = addETypeParameter(betaDistributionEClass, "T");
 
 		// Set bounds for type parameters
 
@@ -12379,6 +12590,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		g2 = createEGenericType(gaussDistributionEClass_T);
 		g1.getETypeArguments().add(g2);
 		gaussDistributionEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getDistribution());
+		g2 = createEGenericType(betaDistributionEClass_T);
+		g1.getETypeArguments().add(g2);
+		betaDistributionEClass.getEGenericSuperTypes().add(g1);
 		minAvgMaxStatisticEClass.getESuperTypes().add(this.getNumericStatistic());
 		singleValueStatisticEClass.getESuperTypes().add(this.getNumericStatistic());
 		modeEClass.getESuperTypes().add(this.getReferableBaseObject());
@@ -12419,21 +12634,22 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		processSeparationConstraintEClass.getESuperTypes().add(this.getSeparationConstraint());
 		processSeparationConstraintEClass.getESuperTypes().add(this.getProcessConstraint());
 		processSeparationConstraintEClass.getESuperTypes().add(this.getBaseObject());
-		schedulerSeparationConstraintEClass.getESuperTypes().add(this.getSeparationConstraint());
-		schedulerSeparationConstraintEClass.getESuperTypes().add(this.getSchedulerConstraint());
-		schedulerSeparationConstraintEClass.getESuperTypes().add(this.getBaseObject());
+		dataSeparationConstraintEClass.getESuperTypes().add(this.getSeparationConstraint());
+		dataSeparationConstraintEClass.getESuperTypes().add(this.getDataConstraint());
+		dataSeparationConstraintEClass.getESuperTypes().add(this.getBaseObject());
 		runnablePairingConstraintEClass.getESuperTypes().add(this.getPairingConstraint());
 		runnablePairingConstraintEClass.getESuperTypes().add(this.getRunnableConstraint());
 		runnablePairingConstraintEClass.getESuperTypes().add(this.getBaseObject());
 		processPairingConstraintEClass.getESuperTypes().add(this.getPairingConstraint());
 		processPairingConstraintEClass.getESuperTypes().add(this.getProcessConstraint());
 		processPairingConstraintEClass.getESuperTypes().add(this.getBaseObject());
-		schedulerPairingConstraintEClass.getESuperTypes().add(this.getPairingConstraint());
-		schedulerPairingConstraintEClass.getESuperTypes().add(this.getSchedulerConstraint());
-		schedulerPairingConstraintEClass.getESuperTypes().add(this.getBaseObject());
+		dataPairingConstraintEClass.getESuperTypes().add(this.getPairingConstraint());
+		dataPairingConstraintEClass.getESuperTypes().add(this.getDataConstraint());
+		dataPairingConstraintEClass.getESuperTypes().add(this.getBaseObject());
+		targetMemoryEClass.getESuperTypes().add(this.getDataConstraintTarget());
+		targetMemoryEClass.getESuperTypes().add(this.getBaseObject());
 		targetCoreEClass.getESuperTypes().add(this.getRunnableConstraintTarget());
 		targetCoreEClass.getESuperTypes().add(this.getProcessConstraintTarget());
-		targetCoreEClass.getESuperTypes().add(this.getSchedulerConstraintTarget());
 		targetCoreEClass.getESuperTypes().add(this.getBaseObject());
 		targetSchedulerEClass.getESuperTypes().add(this.getRunnableConstraintTarget());
 		targetSchedulerEClass.getESuperTypes().add(this.getProcessConstraintTarget());
@@ -12442,7 +12658,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		targetProcessEClass.getESuperTypes().add(this.getBaseObject());
 		targetCallSequenceEClass.getESuperTypes().add(this.getRunnableConstraintTarget());
 		targetCallSequenceEClass.getESuperTypes().add(this.getBaseObject());
-		schedulerEntityGroupEClass.getESuperTypes().add(this.getBaseObject());
+		labelEntityGroupEClass.getESuperTypes().add(this.getBaseObject());
 		runnableEntityGroupEClass.getESuperTypes().add(this.getRunnableGroup());
 		runnableEntityGroupEClass.getESuperTypes().add(this.getBaseObject());
 		processEntityGroupEClass.getESuperTypes().add(this.getProcessGroup());
@@ -12458,12 +12674,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		timingConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
 		physicalSectionConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
 		physicalSectionConstraintEClass.getESuperTypes().add(this.getBaseObject());
-		orderConstraintEClass.getESuperTypes().add(this.getTimingConstraint());
-		orderConstraintEClass.getESuperTypes().add(this.getBaseObject());
-		synchronisationConstraintEClass.getESuperTypes().add(this.getTimingConstraint());
-		reactionConstraintEClass.getESuperTypes().add(this.getTimingConstraint());
+		synchronizationConstraintEClass.getESuperTypes().add(this.getTimingConstraint());
+		eventSynchronizationConstraintEClass.getESuperTypes().add(this.getSynchronizationConstraint());
+		eventChainSynchronizationConstraintEClass.getESuperTypes().add(this.getSynchronizationConstraint());
 		delayConstraintEClass.getESuperTypes().add(this.getTimingConstraint());
-		ageConstraintEClass.getESuperTypes().add(this.getTimingConstraint());
+		eventChainLatencyConstraintEClass.getESuperTypes().add(this.getTimingConstraint());
 		repetitionConstraintEClass.getESuperTypes().add(this.getTimingConstraint());
 		dataAgeConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
 		dataAgeCycleEClass.getESuperTypes().add(this.getDataAge());
@@ -12590,6 +12805,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		modeValueListEntryEClass.getESuperTypes().add(this.getBaseObject());
 		periodicEClass.getESuperTypes().add(this.getStimulus());
 		periodicEventEClass.getESuperTypes().add(this.getStimulus());
+		syntheticEClass.getESuperTypes().add(this.getStimulus());
+		timestampListEClass.getESuperTypes().add(this.getBaseObject());
 		customStimulusEClass.getESuperTypes().add(this.getStimulus());
 		singleEClass.getESuperTypes().add(this.getStimulus());
 		interProcessEClass.getESuperTypes().add(this.getStimulus());
@@ -12833,6 +13050,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		g2 = createEGenericType(deviationEClass_T);
 		g1.getETypeArguments().add(g2);
 		initEReference(getDeviation_Distribution(), g1, null, "distribution", null, 0, 1, Deviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeviation_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, Deviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(distributionEClass, Distribution.class, "Distribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -12856,6 +13074,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getGaussDistribution_Sd(), g1, null, "sd", null, 0, 1, GaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(gaussDistributionEClass_T);
 		initEReference(getGaussDistribution_Mean(), g1, null, "mean", null, 0, 1, GaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(betaDistributionEClass, BetaDistribution.class, "BetaDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBetaDistribution_Alpha(), theEcorePackage.getEDouble(), "alpha", null, 0, 1, BetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBetaDistribution_Beta(), theEcorePackage.getEDouble(), "beta", null, 0, 1, BetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(numericStatisticEClass, NumericStatistic.class, "NumericStatistic", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -12950,14 +13172,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(runnableSequencingConstraintEClass, RunnableSequencingConstraint.class, "RunnableSequencingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRunnableSequencingConstraint_OrderType(), this.getRunnableOrderType(), "orderType", null, 0, 1, RunnableSequencingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnableSequencingConstraint_RunnableGroups(), this.getProcessRunnableGroup(), null, "runnableGroups", null, 2, -1, RunnableSequencingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunnableSequencingConstraint_ProcessScope(), this.getAbstractProcess(), null, "processScope", null, 0, -1, RunnableSequencingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processRunnableGroupEClass, ProcessRunnableGroup.class, "ProcessRunnableGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProcessRunnableGroup_GroupingType(), this.getRunnableGroupingType(), "groupingType", null, 0, 1, ProcessRunnableGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessRunnableGroup_Entries(), this.getProcessRunnableGroupEntry(), null, "entries", null, 1, -1, ProcessRunnableGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processRunnableGroupEntryEClass, ProcessRunnableGroupEntry.class, "ProcessRunnableGroupEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProcessRunnableGroupEntry_Runnable(), this.getRunnable(), null, "runnable", null, 1, 1, ProcessRunnableGroupEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProcessRunnableGroupEntry_ProcessScope(), this.getAbstractProcess(), null, "processScope", null, 0, -1, ProcessRunnableGroupEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(affinityConstraintEClass, AffinityConstraint.class, "AffinityConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -12971,8 +13192,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(runnableConstraintEClass, RunnableConstraint.class, "RunnableConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnableConstraint_Target(), this.getRunnableConstraintTarget(), null, "target", null, 0, 1, RunnableConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(schedulerConstraintEClass, SchedulerConstraint.class, "SchedulerConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSchedulerConstraint_Target(), this.getSchedulerConstraintTarget(), null, "target", null, 0, 1, SchedulerConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(dataConstraintEClass, DataConstraint.class, "DataConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataConstraint_Target(), this.getDataConstraintTarget(), null, "target", null, 0, 1, DataConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableSeparationConstraintEClass, RunnableSeparationConstraint.class, "RunnableSeparationConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnableSeparationConstraint_Groups(), this.getRunnableGroup(), null, "groups", null, 1, 2, RunnableSeparationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -12980,8 +13201,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(processSeparationConstraintEClass, ProcessSeparationConstraint.class, "ProcessSeparationConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProcessSeparationConstraint_Groups(), this.getProcessGroup(), null, "groups", null, 1, 2, ProcessSeparationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(schedulerSeparationConstraintEClass, SchedulerSeparationConstraint.class, "SchedulerSeparationConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSchedulerSeparationConstraint_Groups(), this.getSchedulerEntityGroup(), null, "groups", null, 1, 2, SchedulerSeparationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(dataSeparationConstraintEClass, DataSeparationConstraint.class, "DataSeparationConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataSeparationConstraint_Groups(), this.getLabelEntityGroup(), null, "groups", null, 1, 2, DataSeparationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnablePairingConstraintEClass, RunnablePairingConstraint.class, "RunnablePairingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnablePairingConstraint_Runnables(), this.getRunnableGroup(), null, "runnables", null, 0, 1, RunnablePairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -12989,14 +13210,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(processPairingConstraintEClass, ProcessPairingConstraint.class, "ProcessPairingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProcessPairingConstraint_Processes(), this.getProcessGroup(), null, "processes", null, 0, 1, ProcessPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(schedulerPairingConstraintEClass, SchedulerPairingConstraint.class, "SchedulerPairingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSchedulerPairingConstraint_Schedulers(), this.getSchedulerEntityGroup(), null, "schedulers", null, 0, 1, SchedulerPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(dataPairingConstraintEClass, DataPairingConstraint.class, "DataPairingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataPairingConstraint_Labels(), this.getLabelEntityGroup(), null, "labels", null, 0, 1, DataPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableConstraintTargetEClass, RunnableConstraintTarget.class, "RunnableConstraintTarget", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(processConstraintTargetEClass, ProcessConstraintTarget.class, "ProcessConstraintTarget", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(schedulerConstraintTargetEClass, SchedulerConstraintTarget.class, "SchedulerConstraintTarget", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(dataConstraintTargetEClass, DataConstraintTarget.class, "DataConstraintTarget", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(targetMemoryEClass, TargetMemory.class, "TargetMemory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTargetMemory_Memories(), this.getMemory(), null, "memories", null, 0, -1, TargetMemory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(targetCoreEClass, TargetCore.class, "TargetCore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTargetCore_Cores(), this.getCore(), null, "cores", null, 0, -1, TargetCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -13014,8 +13238,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(processGroupEClass, ProcessGroup.class, "ProcessGroup", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(schedulerEntityGroupEClass, SchedulerEntityGroup.class, "SchedulerEntityGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSchedulerEntityGroup_Schedulers(), this.getScheduler(), null, "schedulers", null, 0, -1, SchedulerEntityGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(labelEntityGroupEClass, LabelEntityGroup.class, "LabelEntityGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLabelEntityGroup_Labels(), this.getLabel(), null, "labels", null, 0, -1, LabelEntityGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableEntityGroupEClass, RunnableEntityGroup.class, "RunnableEntityGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnableEntityGroup_Runnables(), this.getRunnable(), null, "runnables", null, 0, -1, RunnableEntityGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -13048,29 +13272,29 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getPhysicalSectionConstraint_Section(), this.getSection(), null, "section", null, 0, 1, PhysicalSectionConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPhysicalSectionConstraint_Memories(), this.getMemory(), null, "memories", null, 1, -1, PhysicalSectionConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(orderConstraintEClass, OrderConstraint.class, "OrderConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOrderConstraint_Source(), this.getEntityEvent(), null, "source", null, 0, 1, OrderConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOrderConstraint_Target(), this.getEntityEvent(), null, "target", null, 0, 1, OrderConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(synchronizationConstraintEClass, SynchronizationConstraint.class, "SynchronizationConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSynchronizationConstraint_MultipleOccurrencesAllowed(), theEcorePackage.getEBoolean(), "multipleOccurrencesAllowed", null, 0, 1, SynchronizationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSynchronizationConstraint_Tolerance(), this.getTime(), null, "tolerance", null, 0, 1, SynchronizationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(synchronisationConstraintEClass, SynchronisationConstraint.class, "SynchronisationConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSynchronisationConstraint_Events(), this.getEntityEvent(), null, "events", null, 0, -1, SynchronisationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSynchronisationConstraint_Tolerance(), this.getTime(), null, "tolerance", null, 0, 1, SynchronisationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(eventSynchronizationConstraintEClass, EventSynchronizationConstraint.class, "EventSynchronizationConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEventSynchronizationConstraint_Events(), this.getEntityEvent(), null, "events", null, 0, -1, EventSynchronizationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(reactionConstraintEClass, ReactionConstraint.class, "ReactionConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReactionConstraint_Scope(), this.getEventChain(), null, "scope", null, 0, 1, ReactionConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getReactionConstraint_Minimum(), this.getTime(), null, "minimum", null, 0, 1, ReactionConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getReactionConstraint_Maximum(), this.getTime(), null, "maximum", null, 0, 1, ReactionConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(eventChainSynchronizationConstraintEClass, EventChainSynchronizationConstraint.class, "EventChainSynchronizationConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEventChainSynchronizationConstraint_Scope(), this.getEventChain(), null, "scope", null, 2, 2, EventChainSynchronizationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEventChainSynchronizationConstraint_Type(), this.getSynchronizationType(), "type", null, 0, 1, EventChainSynchronizationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(delayConstraintEClass, DelayConstraint.class, "DelayConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDelayConstraint_MappingType(), this.getMappingType(), "mappingType", null, 0, 1, DelayConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDelayConstraint_Source(), this.getEntityEvent(), null, "source", null, 0, 1, DelayConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDelayConstraint_Target(), this.getEntityEvent(), null, "target", null, 0, 1, DelayConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDelayConstraint_Upper(), this.getTime(), null, "upper", null, 0, 1, DelayConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDelayConstraint_Lower(), this.getTime(), null, "lower", null, 0, 1, DelayConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(ageConstraintEClass, AgeConstraint.class, "AgeConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAgeConstraint_Scope(), this.getEventChain(), null, "scope", null, 0, 1, AgeConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAgeConstraint_Maximum(), this.getTime(), null, "maximum", null, 0, 1, AgeConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAgeConstraint_Minimum(), this.getTime(), null, "minimum", null, 0, 1, AgeConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(eventChainLatencyConstraintEClass, EventChainLatencyConstraint.class, "EventChainLatencyConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEventChainLatencyConstraint_Scope(), this.getEventChain(), null, "scope", null, 0, 1, EventChainLatencyConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEventChainLatencyConstraint_Type(), this.getLatencyType(), "type", null, 0, 1, EventChainLatencyConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEventChainLatencyConstraint_Minimum(), this.getTime(), null, "minimum", null, 0, 1, EventChainLatencyConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEventChainLatencyConstraint_Maximum(), this.getTime(), null, "maximum", null, 0, 1, EventChainLatencyConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(repetitionConstraintEClass, RepetitionConstraint.class, "RepetitionConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRepetitionConstraint_Event(), this.getEntityEvent(), null, "event", null, 0, 1, RepetitionConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -13579,6 +13803,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(periodicEventEClass, PeriodicEvent.class, "PeriodicEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(syntheticEClass, Synthetic.class, "Synthetic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSynthetic_Offset(), this.getTime(), null, "offset", null, 0, 1, Synthetic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSynthetic_Period(), this.getTime(), null, "period", null, 0, 1, Synthetic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSynthetic_TriggerTimes(), this.getTimestampList(), null, "triggerTimes", null, 0, 1, Synthetic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(timestampListEClass, TimestampList.class, "TimestampList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTimestampList_Timestamps(), this.getTime(), null, "timestamps", null, 0, -1, TimestampList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(customStimulusEClass, CustomStimulus.class, "CustomStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(singleEClass, Single.class, "Single", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -13715,6 +13947,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(terminateProcessEClass, TerminateProcess.class, "TerminateProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTask_OsekTaskGroup(), theEcorePackage.getEInt(), "osekTaskGroup", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Preemption(), this.getPreemption(), "preemption", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_MultipleTaskActivationLimit(), theEcorePackage.getEInt(), "multipleTaskActivationLimit", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -13977,6 +14210,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.GI_BPER_SECOND);
 		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.TI_BPER_SECOND);
 
+		initEEnum(samplingTypeEEnum, SamplingType.class, "SamplingType");
+		addEEnumLiteral(samplingTypeEEnum, SamplingType.DEFAULT);
+		addEEnumLiteral(samplingTypeEEnum, SamplingType.BEST_CASE);
+		addEEnumLiteral(samplingTypeEEnum, SamplingType.WORST_CASE);
+		addEEnumLiteral(samplingTypeEEnum, SamplingType.AVERAGE_CASE);
+		addEEnumLiteral(samplingTypeEEnum, SamplingType.CORNER_CASE);
+		addEEnumLiteral(samplingTypeEEnum, SamplingType.UNIFORM);
+
 		initEEnum(interfaceKindEEnum, InterfaceKind.class, "InterfaceKind");
 		addEEnumLiteral(interfaceKindEEnum, InterfaceKind._UNDEFINED_);
 		addEEnumLiteral(interfaceKindEEnum, InterfaceKind.PROVIDES);
@@ -13989,10 +14230,18 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(runnableOrderTypeEEnum, RunnableOrderType.IMMEDIATE_SUCCESSOR_ANY_SEQUENCE);
 		addEEnumLiteral(runnableOrderTypeEEnum, RunnableOrderType.IMMEDIATE_SUCCESSOR_END_SEQUENCE);
 
-		initEEnum(runnableGroupingTypeEEnum, RunnableGroupingType.class, "RunnableGroupingType");
-		addEEnumLiteral(runnableGroupingTypeEEnum, RunnableGroupingType._UNDEFINED_);
-		addEEnumLiteral(runnableGroupingTypeEEnum, RunnableGroupingType.ALL_OF_THEM);
-		addEEnumLiteral(runnableGroupingTypeEEnum, RunnableGroupingType.AT_LEAST_ONE_OF_THEM);
+		initEEnum(synchronizationTypeEEnum, SynchronizationType.class, "SynchronizationType");
+		addEEnumLiteral(synchronizationTypeEEnum, SynchronizationType.STIMULUS_SYNCHRONIZATION);
+		addEEnumLiteral(synchronizationTypeEEnum, SynchronizationType.RESPONSE_SYNCHRONIZATION);
+
+		initEEnum(mappingTypeEEnum, MappingType.class, "MappingType");
+		addEEnumLiteral(mappingTypeEEnum, MappingType.ONE_TO_ONE);
+		addEEnumLiteral(mappingTypeEEnum, MappingType.REACTION);
+		addEEnumLiteral(mappingTypeEEnum, MappingType.UNIQUE_REACTION);
+
+		initEEnum(latencyTypeEEnum, LatencyType.class, "LatencyType");
+		addEEnumLiteral(latencyTypeEEnum, LatencyType.AGE_LATENCY);
+		addEEnumLiteral(latencyTypeEEnum, LatencyType.REACTION_LATENCY);
 
 		initEEnum(severityEEnum, Severity.class, "Severity");
 		addEEnumLiteral(severityEEnum, Severity._UNDEFINED_);

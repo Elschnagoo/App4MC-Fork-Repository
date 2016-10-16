@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskImpl#getOsekTaskGroup <em>Osek Task Group</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskImpl#getPreemption <em>Preemption</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskImpl#getMultipleTaskActivationLimit <em>Multiple Task Activation Limit</em>}</li>
  * </ul>
@@ -37,6 +38,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class TaskImpl extends ProcessImpl implements Task {
+	/**
+	 * The default value of the '{@link #getOsekTaskGroup() <em>Osek Task Group</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOsekTaskGroup()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int OSEK_TASK_GROUP_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getOsekTaskGroup() <em>Osek Task Group</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOsekTaskGroup()
+	 * @generated
+	 * @ordered
+	 */
+	protected int osekTaskGroup = OSEK_TASK_GROUP_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getPreemption() <em>Preemption</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -101,6 +122,27 @@ public class TaskImpl extends ProcessImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getOsekTaskGroup() {
+		return osekTaskGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOsekTaskGroup(int newOsekTaskGroup) {
+		int oldOsekTaskGroup = osekTaskGroup;
+		osekTaskGroup = newOsekTaskGroup;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TASK__OSEK_TASK_GROUP, oldOsekTaskGroup, osekTaskGroup));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Preemption getPreemption() {
 		return preemption;
 	}
@@ -146,6 +188,8 @@ public class TaskImpl extends ProcessImpl implements Task {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.TASK__OSEK_TASK_GROUP:
+				return getOsekTaskGroup();
 			case AmaltheaPackage.TASK__PREEMPTION:
 				return getPreemption();
 			case AmaltheaPackage.TASK__MULTIPLE_TASK_ACTIVATION_LIMIT:
@@ -162,6 +206,9 @@ public class TaskImpl extends ProcessImpl implements Task {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AmaltheaPackage.TASK__OSEK_TASK_GROUP:
+				setOsekTaskGroup((Integer)newValue);
+				return;
 			case AmaltheaPackage.TASK__PREEMPTION:
 				setPreemption((Preemption)newValue);
 				return;
@@ -180,6 +227,9 @@ public class TaskImpl extends ProcessImpl implements Task {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.TASK__OSEK_TASK_GROUP:
+				setOsekTaskGroup(OSEK_TASK_GROUP_EDEFAULT);
+				return;
 			case AmaltheaPackage.TASK__PREEMPTION:
 				setPreemption(PREEMPTION_EDEFAULT);
 				return;
@@ -198,6 +248,8 @@ public class TaskImpl extends ProcessImpl implements Task {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.TASK__OSEK_TASK_GROUP:
+				return osekTaskGroup != OSEK_TASK_GROUP_EDEFAULT;
 			case AmaltheaPackage.TASK__PREEMPTION:
 				return preemption != PREEMPTION_EDEFAULT;
 			case AmaltheaPackage.TASK__MULTIPLE_TASK_ACTIVATION_LIMIT:
@@ -216,7 +268,9 @@ public class TaskImpl extends ProcessImpl implements Task {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (preemption: ");
+		result.append(" (osekTaskGroup: ");
+		result.append(osekTaskGroup);
+		result.append(", preemption: ");
 		result.append(preemption);
 		result.append(", multipleTaskActivationLimit: ");
 		result.append(multipleTaskActivationLimit);

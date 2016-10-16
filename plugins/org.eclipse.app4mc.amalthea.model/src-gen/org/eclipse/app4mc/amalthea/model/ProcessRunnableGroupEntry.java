@@ -12,7 +12,6 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry#getRunnable <em>Runnable</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry#getProcessScope <em>Process Scope</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessRunnableGroupEntry()
@@ -57,21 +55,5 @@ public interface ProcessRunnableGroupEntry extends BaseObject {
 	 * @generated
 	 */
 	void setRunnable(org.eclipse.app4mc.amalthea.model.Runnable value);
-
-	/**
-	 * Returns the value of the '<em><b>Process Scope</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.AbstractProcess}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Process Scope</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Process Scope</em>' reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessRunnableGroupEntry_ProcessScope()
-	 * @model
-	 * @generated
-	 */
-	EList<AbstractProcess> getProcessScope();
 
 } // ProcessRunnableGroupEntry
