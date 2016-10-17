@@ -163,9 +163,8 @@ public class Sw_SectionConverterTest extends AbstractConverterTest {
 
 			}
 
-			Assert.assertTrue("No section info found in the provided test data", checkData);
-
 		}
+		Assert.assertTrue("No section info found in the provided test data", checkData);
 	}
 
 	/**
