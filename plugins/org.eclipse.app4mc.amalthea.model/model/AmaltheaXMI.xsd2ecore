@@ -83,19 +83,20 @@
           outputs="AmaltheaXMI.xsd#//RunnableOrderType;XSDSimpleTypeDefinition=6/XSDEnumerationFacet=4"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/SynchronizationType" outputs="AmaltheaXMI.xsd#//SynchronizationType;XSDSimpleTypeDefinition=7">
-      <nested inputs="amalthea.xcore#/EPackage/SynchronizationType/StimulusSynchronization"
-          outputs="AmaltheaXMI.xsd#//SynchronizationType;XSDSimpleTypeDefinition=7/XSDEnumerationFacet"/>
-      <nested inputs="amalthea.xcore#/EPackage/SynchronizationType/ResponseSynchronization"
-          outputs="AmaltheaXMI.xsd#//SynchronizationType;XSDSimpleTypeDefinition=7/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/SynchronizationType/_undefined_" outputs="AmaltheaXMI.xsd#//SynchronizationType;XSDSimpleTypeDefinition=7/XSDEnumerationFacet"/>
+      <nested inputs="amalthea.xcore#/EPackage/SynchronizationType/Stimulus" outputs="AmaltheaXMI.xsd#//SynchronizationType;XSDSimpleTypeDefinition=7/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/SynchronizationType/Response" outputs="AmaltheaXMI.xsd#//SynchronizationType;XSDSimpleTypeDefinition=7/XSDEnumerationFacet=2"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/MappingType" outputs="AmaltheaXMI.xsd#//MappingType;XSDSimpleTypeDefinition=8">
-      <nested inputs="amalthea.xcore#/EPackage/MappingType/OneToOne" outputs="AmaltheaXMI.xsd#//MappingType;XSDSimpleTypeDefinition=8/XSDEnumerationFacet"/>
-      <nested inputs="amalthea.xcore#/EPackage/MappingType/Reaction" outputs="AmaltheaXMI.xsd#//MappingType;XSDSimpleTypeDefinition=8/XSDEnumerationFacet=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/MappingType/UniqueReaction" outputs="AmaltheaXMI.xsd#//MappingType;XSDSimpleTypeDefinition=8/XSDEnumerationFacet=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/MappingType/_undefined_" outputs="AmaltheaXMI.xsd#//MappingType;XSDSimpleTypeDefinition=8/XSDEnumerationFacet"/>
+      <nested inputs="amalthea.xcore#/EPackage/MappingType/OneToOne" outputs="AmaltheaXMI.xsd#//MappingType;XSDSimpleTypeDefinition=8/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/MappingType/Reaction" outputs="AmaltheaXMI.xsd#//MappingType;XSDSimpleTypeDefinition=8/XSDEnumerationFacet=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/MappingType/UniqueReaction" outputs="AmaltheaXMI.xsd#//MappingType;XSDSimpleTypeDefinition=8/XSDEnumerationFacet=3"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/LatencyType" outputs="AmaltheaXMI.xsd#//LatencyType;XSDSimpleTypeDefinition=9">
-      <nested inputs="amalthea.xcore#/EPackage/LatencyType/AgeLatency" outputs="AmaltheaXMI.xsd#//LatencyType;XSDSimpleTypeDefinition=9/XSDEnumerationFacet"/>
-      <nested inputs="amalthea.xcore#/EPackage/LatencyType/ReactionLatency" outputs="AmaltheaXMI.xsd#//LatencyType;XSDSimpleTypeDefinition=9/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/LatencyType/_undefined_" outputs="AmaltheaXMI.xsd#//LatencyType;XSDSimpleTypeDefinition=9/XSDEnumerationFacet"/>
+      <nested inputs="amalthea.xcore#/EPackage/LatencyType/Age" outputs="AmaltheaXMI.xsd#//LatencyType;XSDSimpleTypeDefinition=9/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/LatencyType/Reaction" outputs="AmaltheaXMI.xsd#//LatencyType;XSDSimpleTypeDefinition=9/XSDEnumerationFacet=2"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/Severity" outputs="AmaltheaXMI.xsd#//Severity;XSDSimpleTypeDefinition=10">
       <nested inputs="amalthea.xcore#/EPackage/Severity/_undefined_" outputs="AmaltheaXMI.xsd#//Severity;XSDSimpleTypeDefinition=10/XSDEnumerationFacet"/>
@@ -842,6 +843,7 @@
       <nested inputs="amalthea.xcore#/EPackage/RepetitionConstraint/lower" outputs="AmaltheaXMI.xsd#//RepetitionConstraint;XSDComplexTypeDefinition=99/XSDParticle/XSDModelGroup/XSDParticle=1"/>
       <nested inputs="amalthea.xcore#/EPackage/RepetitionConstraint/upper" outputs="AmaltheaXMI.xsd#//RepetitionConstraint;XSDComplexTypeDefinition=99/XSDParticle/XSDModelGroup/XSDParticle=2"/>
       <nested inputs="amalthea.xcore#/EPackage/RepetitionConstraint/jitter" outputs="AmaltheaXMI.xsd#//RepetitionConstraint;XSDComplexTypeDefinition=99/XSDParticle/XSDModelGroup/XSDParticle=3"/>
+      <nested inputs="amalthea.xcore#/EPackage/RepetitionConstraint/period" outputs="AmaltheaXMI.xsd#//RepetitionConstraint;XSDComplexTypeDefinition=99/XSDParticle/XSDModelGroup/XSDParticle=4"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/RepetitionConstraint" outputs="AmaltheaXMI.xsd#//RepetitionConstraint;XSDElementDeclaration=99"/>
     <nested inputs="amalthea.xcore#/EPackage/DataAgeConstraint" outputs="AmaltheaXMI.xsd#//DataAgeConstraint;XSDComplexTypeDefinition=100">

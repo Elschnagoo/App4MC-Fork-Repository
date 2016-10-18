@@ -120,12 +120,14 @@
   </xsd:simpleType>
   <xsd:simpleType name="SynchronizationType">
     <xsd:restriction base="xsd:NCName">
-      <xsd:enumeration value="StimulusSynchronization"/>
-      <xsd:enumeration value="ResponseSynchronization"/>
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="Stimulus"/>
+      <xsd:enumeration value="Response"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="MappingType">
     <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
       <xsd:enumeration value="OneToOne"/>
       <xsd:enumeration value="Reaction"/>
       <xsd:enumeration value="UniqueReaction"/>
@@ -133,8 +135,9 @@
   </xsd:simpleType>
   <xsd:simpleType name="LatencyType">
     <xsd:restriction base="xsd:NCName">
-      <xsd:enumeration value="AgeLatency"/>
-      <xsd:enumeration value="ReactionLatency"/>
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="Age"/>
+      <xsd:enumeration value="Reaction"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="Severity">

@@ -1018,8 +1018,9 @@ class EventSynchronizationConstraint extends SynchronizationConstraint
 }
 
 enum SynchronizationType {
-	StimulusSynchronization 
-	ResponseSynchronization
+	_undefined_ // Display: "<synchronization>"
+	Stimulus
+	Response
 }
 
 /*
@@ -1034,6 +1035,7 @@ class EventChainSynchronizationConstraint extends SynchronizationConstraint
 }
 
 enum MappingType {
+	_undefined_ // Display: "<mapping>"
 	OneToOne
 	Reaction
 	UniqueReaction
@@ -1052,8 +1054,9 @@ class DelayConstraint extends TimingConstraint
 }
 
 enum LatencyType {
-	AgeLatency
-	ReactionLatency
+	_undefined_ // Display: "<latency>"
+	Age
+	Reaction
 }
 
 /*
