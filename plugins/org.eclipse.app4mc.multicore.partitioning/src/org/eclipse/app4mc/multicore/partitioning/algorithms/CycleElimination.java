@@ -97,8 +97,8 @@ public class CycleElimination {
 		}
 		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
 			try {
-				test.addEdge(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable(),
-						rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable(), rsc);
+				test.addEdge(rsc.getRunnableGroups().get(0).getRunnables().get(0),
+						rsc.getRunnableGroups().get(1).getRunnables().get(0), rsc);
 			}
 			catch (final Exception e) {
 				PartLog.getInstance().log(rsc.getName() + " " + e.getMessage(), e);
@@ -171,8 +171,8 @@ public class CycleElimination {
 			final RunnableSequencingConstraint rsc) {
 		PartLog.getInstance()
 				.log("RSC to be converted to AccessPrecedence: "
-						+ rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable().getName() + "-->"
-						+ rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable().getName());
+						+ rsc.getRunnableGroups().get(0).getRunnables().get(0).getName() + "-->"
+						+ rsc.getRunnableGroups().get(1).getRunnables().get(0).getName());
 		convertRSCToAP(rsc);
 		graph.removeEdge(rsc);
 		final TarjanSimpleCycles<Runnable, RunnableSequencingConstraint> tsc = new TarjanSimpleCycles<>(graph);
@@ -200,10 +200,10 @@ public class CycleElimination {
 	private void convertRSCToAP(final RunnableSequencingConstraint rsc) {
 		final AmaltheaFactory swf = AmaltheaFactory.eINSTANCE;
 		final AccessPrecedenceSpec ap = swf.createAccessPrecedenceSpec();
-		ap.setLabel(new Helper().getCommonLabel(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable(),
-				rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable()));
-		ap.setOrigin(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable());
-		ap.setTarget(rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable());
+		ap.setLabel(new Helper().getCommonLabel(rsc.getRunnableGroups().get(0).getRunnables().get(0),
+				rsc.getRunnableGroups().get(1).getRunnables().get(0)));
+		ap.setOrigin(rsc.getRunnableGroups().get(0).getRunnables().get(0));
+		ap.setTarget(rsc.getRunnableGroups().get(1).getRunnables().get(0));
 		ap.setOrderType(AccessPrecedenceType.IGNORE_WR);
 		if (this.swm.getProcessPrototypes().size() > 0) {
 			final Set<AccessPrecedenceSpec> aps = new HashSet<AccessPrecedenceSpec>();
@@ -266,17 +266,17 @@ public class CycleElimination {
 			if (preceding) {
 				while (bc.incomingEdgesOf(source).size() == 1
 						&& ((RunnableSequencingConstraint) bc.incomingEdgesOf(source).toArray()[0]).getRunnableGroups()
-								.get(0).getEntries().get(0).getRunnable() != source2) {
+								.get(0).getRunnables().get(0) != source2) {
 					removeMe = (RunnableSequencingConstraint) bc.incomingEdgesOf(source).toArray()[0];
-					source = removeMe.getRunnableGroups().get(0).getEntries().get(0).getRunnable();
+					source = removeMe.getRunnableGroups().get(0).getRunnables().get(0);
 				}
 			}
 			else {
 				while (bc.outgoingEdgesOf(source).size() == 1
 						&& ((RunnableSequencingConstraint) bc.outgoingEdgesOf(source).toArray()[0]).getRunnableGroups()
-								.get(1).getEntries().get(0).getRunnable() != source2) {
+								.get(1).getRunnables().get(0) != source2) {
 					removeMe = (RunnableSequencingConstraint) bc.outgoingEdgesOf(source).toArray()[0];
-					source = removeMe.getRunnableGroups().get(1).getEntries().get(0).getRunnable();
+					source = removeMe.getRunnableGroups().get(1).getRunnables().get(0);
 				}
 			}
 		}

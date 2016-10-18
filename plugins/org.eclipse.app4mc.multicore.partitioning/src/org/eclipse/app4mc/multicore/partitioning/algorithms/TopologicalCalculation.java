@@ -14,7 +14,6 @@ import java.util.LinkedList;
 
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
@@ -54,7 +53,7 @@ public class TopologicalCalculation {
 		final LinkedList<RunnableSequencingConstraint> rscs = getOrigins(r);
 		if (!sinks.contains(r)) {
 			for (int edges = 0; edges < rscs.size(); edges++) {
-				final Runnable target = rscs.get(edges).getRunnableGroups().get(1).getEntries().get(0).getRunnable();
+				final Runnable target = rscs.get(edges).getRunnableGroups().get(1).getRunnables().get(0);
 				distList.add(calcNodesToSink(target));
 			}
 		}
@@ -79,15 +78,15 @@ public class TopologicalCalculation {
 		final LinkedList<Runnable> sinks = new LinkedList<Runnable>();
 		final LinkedList<Runnable> origins = new LinkedList<Runnable>();
 		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
-			origins.add(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable());
+			origins.add(rsc.getRunnableGroups().get(0).getRunnables().get(0));
 		}
 		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
-			if (!(origins.contains(rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable()))
-					&& !sinks.contains(rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable())) {
-				sinks.add(rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable());
+			if (!(origins.contains(rsc.getRunnableGroups().get(1).getRunnables().get(0)))
+					&& !sinks.contains(rsc.getRunnableGroups().get(1).getRunnables().get(0))) {
+				sinks.add(rsc.getRunnableGroups().get(1).getRunnables().get(0));
 			}
-			if (!this.swm.getRunnables().contains(rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable())) {
-				sinks.add(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable());
+			if (!this.swm.getRunnables().contains(rsc.getRunnableGroups().get(1).getRunnables().get(0))) {
+				sinks.add(rsc.getRunnableGroups().get(0).getRunnables().get(0));
 			}
 		}
 		return sinks;
@@ -107,9 +106,9 @@ public class TopologicalCalculation {
 	private LinkedList<RunnableSequencingConstraint> getOrigins(final Runnable r) {
 		final LinkedList<RunnableSequencingConstraint> rscs = new LinkedList<RunnableSequencingConstraint>();
 		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
-			for (final ProcessRunnableGroupEntry prge : rsc.getRunnableGroups().get(0).getEntries()) {
+			for (final Runnable r2 : rsc.getRunnableGroups().get(0).getRunnables()) {
 				try {
-					if (prge.getRunnable().getName().equals(r.getName()) && !(rscs.contains(rsc))) {
+					if (r2.getName().equals(r.getName()) && !(rscs.contains(rsc))) {
 						rscs.add(rsc);
 					}
 				}

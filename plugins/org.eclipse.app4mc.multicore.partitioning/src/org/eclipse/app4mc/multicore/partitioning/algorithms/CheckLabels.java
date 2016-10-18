@@ -15,7 +15,6 @@ import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
@@ -56,17 +55,17 @@ public class CheckLabels {
 	private boolean RSCLReveals(final RunnableSequencingConstraint RSC) {
 		try {
 			for (final RunnableSequencingConstraint rsc : this.CM.getRunnableSequencingConstraints()) {
-				if (rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable()
-						.equals(RSC.getRunnableGroups().get(0).getEntries().get(0).getRunnable())
-						&& rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable()
-								.equals(RSC.getRunnableGroups().get(1).getEntries().get(0).getRunnable())) {
+				if (rsc.getRunnableGroups().get(0).getRunnables().get(0)
+						.equals(RSC.getRunnableGroups().get(0).getRunnables().get(0))
+						&& rsc.getRunnableGroups().get(1).getRunnables().get(0)
+								.equals(RSC.getRunnableGroups().get(1).getRunnables().get(0))) {
 					return true;
 				}
 			}
 		}
 		catch (final NullPointerException e) {
-			final AmaltheaFactory cf = AmaltheaFactory.eINSTANCE;
-			final ConstraintsModel cm = cf.createConstraintsModel();
+			final AmaltheaFactory factory = AmaltheaFactory.eINSTANCE;
+			final ConstraintsModel cm = factory.createConstraintsModel();
 			this.CM = cm;
 		}
 		return false;
@@ -83,9 +82,9 @@ public class CheckLabels {
 
 		monitor.beginTask("Performing label access analysis...", this.swm.getRunnables().size());
 		PartLog.getInstance().setLogName("RSC Generation");
-		final AmaltheaFactory cinstance = AmaltheaFactory.eINSTANCE;
+		final AmaltheaFactory factory = AmaltheaFactory.eINSTANCE;
 		if (this.CM == null) {
-			this.CM = cinstance.createConstraintsModel();
+			this.CM = factory.createConstraintsModel();
 		}
 
 		for (final Runnable r1 : this.swm.getRunnables()) {
@@ -104,19 +103,13 @@ public class CheckLabels {
 											&& la2.getAccess().equals(LabelAccessEnum.WRITE))
 											|| (la1.getAccess().equals(LabelAccessEnum.WRITE)
 													&& la2.getAccess().equals(LabelAccessEnum.READ)))) {
-										final RunnableSequencingConstraint RSC = cinstance
+										final RunnableSequencingConstraint RSC = factory
 												.createRunnableSequencingConstraint();
 										RSC.setOrderType(RunnableOrderType.SUCCESSOR);
-										final ProcessRunnableGroup prg1 = cinstance.createProcessRunnableGroup();
-										final ProcessRunnableGroup prg2 = cinstance.createProcessRunnableGroup();
-										final ProcessRunnableGroupEntry prge1 = cinstance
-												.createProcessRunnableGroupEntry();
-										final ProcessRunnableGroupEntry prge2 = cinstance
-												.createProcessRunnableGroupEntry();
-										prge1.setRunnable(r1);
-										prge2.setRunnable(r2);
-										prg1.getEntries().add(prge1);
-										prg2.getEntries().add(prge2);
+										final ProcessRunnableGroup prg1 = factory.createProcessRunnableGroup();
+										final ProcessRunnableGroup prg2 = factory.createProcessRunnableGroup();
+										prg1.getRunnables().add(r1);
+										prg2.getRunnables().add(r2);
 										if (la1.getAccess().equals(LabelAccessEnum.WRITE)
 												&& la2.getAccess().equals(LabelAccessEnum.READ)) {
 											RSC.getRunnableGroups().add(prg1);

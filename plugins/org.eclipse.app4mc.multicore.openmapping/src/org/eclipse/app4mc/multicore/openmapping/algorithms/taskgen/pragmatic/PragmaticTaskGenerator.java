@@ -25,7 +25,6 @@ import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
@@ -133,7 +132,7 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 		final ProcessRunnableGroup targetGroup = rsc.getRunnableGroups().get(1);
 
 		// Is there one ProcessRunnableGroupEntry per group?
-		if (originGroup.getEntries().size() != 1 || targetGroup.getEntries().size() != 1) {
+		if (originGroup.getRunnables().size() != 1 || targetGroup.getRunnables().size() != 1) {
 			UniversalHandler.getInstance().log(
 					"Invalid ProcessRunnableGroup.\nProcessRunnableGroup must contain one ProcessRunnableGroupEntry.\nSkipping...",
 					null);
@@ -148,8 +147,8 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 			return;
 		}
 
-		final ProcessRunnableGroupEntry originEntry = originGroup.getEntries().get(0);
-		final ProcessRunnableGroupEntry targetEntry = targetGroup.getEntries().get(0);
+		final Runnable originRunnable = originGroup.getRunnables().get(0);
+		final Runnable targetRunnable = targetGroup.getRunnables().get(0);
 		
 		final AbstractProcess abstractProcess = rsc.getProcessScope().get(0);
 		
@@ -163,11 +162,8 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 
 		final ProcessPrototype processPrototype = (ProcessPrototype) abstractProcess;
 		
-		final Runnable originRunnable;
-		final Runnable targetRunnable;
 		// Now, check if both Entries have the Runnable reference set
-		if ((originRunnable = originEntry.getRunnable()) == null
-				|| (targetRunnable = targetEntry.getRunnable()) == null) {
+		if (originRunnable == null || targetRunnable == null) {
 			UniversalHandler.getInstance().log(
 					"Invalid ProcessRunnableGroupEntry.\nProcessRunnableGroupEntry must reference one Runnable.\nSkipping...",
 					null);

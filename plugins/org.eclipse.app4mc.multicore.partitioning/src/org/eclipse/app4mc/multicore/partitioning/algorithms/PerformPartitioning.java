@@ -21,7 +21,6 @@ import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
@@ -189,8 +188,8 @@ public class PerformPartitioning {
 			final EList<RunnableSequencingConstraint> rrsc = new BasicEList<RunnableSequencingConstraint>();
 			for (final RunnableSequencingConstraint rsc : amodels.getConstraintsModel()
 					.getRunnableSequencingConstraints()) {
-				if (cumuRuns.contains(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable())
-						|| cumuRuns.contains(rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable())) {
+				if (cumuRuns.contains(rsc.getRunnableGroups().get(0).getRunnables().get(0))
+						|| cumuRuns.contains(rsc.getRunnableGroups().get(1).getRunnables().get(0))) {
 					rrsc.add(rsc);
 				}
 			}
@@ -370,10 +369,10 @@ public class PerformPartitioning {
 	 */
 	private boolean CMcontains(final ConstraintsModel cm, final RunnableSequencingConstraint rsc) {
 		for (final RunnableSequencingConstraint orsc : cm.getRunnableSequencingConstraints()) {
-			if (orsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable()
-					.equals(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable())
-					&& orsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable()
-							.equals(rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable())) {
+			if (orsc.getRunnableGroups().get(0).getRunnables().get(0)
+					.equals(rsc.getRunnableGroups().get(0).getRunnables().get(0))
+					&& orsc.getRunnableGroups().get(1).getRunnables().get(0)
+							.equals(rsc.getRunnableGroups().get(1).getRunnables().get(0))) {
 				return true;
 			}
 		}
@@ -385,22 +384,18 @@ public class PerformPartitioning {
 	 *         contains @param source, second group contains @param target
 	 */
 	private RunnableSequencingConstraint createRSC(final Runnable source, final Runnable target, final SWModel swm) {
-		final AmaltheaFactory af = AmaltheaFactory.eINSTANCE;
-		final RunnableSequencingConstraint rsc = af.createRunnableSequencingConstraint();
+		final AmaltheaFactory factory = AmaltheaFactory.eINSTANCE;
+		final RunnableSequencingConstraint rsc = factory.createRunnableSequencingConstraint();
 		rsc.setName(source.getName() + "-->" + target.getName());
-		final ProcessRunnableGroup prg1 = af.createProcessRunnableGroup();
-		final ProcessRunnableGroup prg2 = af.createProcessRunnableGroup();
-		final ProcessRunnableGroupEntry prge1 = af.createProcessRunnableGroupEntry();
-		final ProcessRunnableGroupEntry prge2 = af.createProcessRunnableGroupEntry();
-		prge1.setRunnable(source);
-		prge2.setRunnable(target);
-		//
+		final ProcessRunnableGroup prg1 = factory.createProcessRunnableGroup();
+		final ProcessRunnableGroup prg2 = factory.createProcessRunnableGroup();
+
 		ProcessPrototype sourcePP = new Helper().getPPfromR(source, swm);
 		ProcessPrototype targetPP = new Helper().getPPfromR(target, swm);
 		if(true == sourcePP.equals(targetPP)) {
 			rsc.getProcessScope().add(sourcePP);
-			prg1.getEntries().add(prge1);
-			prg2.getEntries().add(prge2);
+			prg1.getRunnables().add(source);
+			prg2.getRunnables().add(target);
 			rsc.getRunnableGroups().add(prg1);
 			rsc.getRunnableGroups().add(prg2);
 			rsc.setOrderType(RunnableOrderType.SUCCESSOR);

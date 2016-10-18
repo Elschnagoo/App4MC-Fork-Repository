@@ -155,8 +155,8 @@ public class CPP {
 				rscl.add(rsc);
 			}
 			for (final RunnableSequencingConstraint rsc : rscl) {
-				if (llr.contains(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable())
-						&& llr.contains(rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable())) {
+				if (llr.contains(rsc.getRunnableGroups().get(0).getRunnables().get(0))
+						&& llr.contains(rsc.getRunnableGroups().get(1).getRunnables().get(0))) {
 					cm2.getRunnableSequencingConstraints().add(rsc);
 				}
 			}

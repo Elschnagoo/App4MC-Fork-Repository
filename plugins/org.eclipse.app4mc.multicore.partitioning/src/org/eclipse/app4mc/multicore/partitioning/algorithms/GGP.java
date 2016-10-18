@@ -234,8 +234,8 @@ public class GGP {
 		}
 		// update PP references in constraints model
 		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
-			final Runnable source = rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable();
-			final Runnable target = rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable();
+			final Runnable source = rsc.getRunnableGroups().get(0).getRunnables().get(0);
+			final Runnable target = rsc.getRunnableGroups().get(1).getRunnables().get(0);
 			if (!this.swm.getRunnables().contains(source) || !this.swm.getRunnables().contains(target)) {
 				PartLog.getInstance().log("Runnable " + source.getName() + " / " + target.getName()
 						+ " could not be found. SWM.size:" + this.swm.getRunnables().size(), null);

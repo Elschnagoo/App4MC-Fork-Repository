@@ -52,7 +52,7 @@ public class WriteGraphvizHandler extends org.eclipse.core.commands.AbstractHand
 								.size(); k++) {
 							if (cm.getRunnableSequencingConstraints().get(j).getProcessScope().get(0).equals(swm.getProcessPrototypes().get(i))) {
 								output.write(" " + cm.getRunnableSequencingConstraints().get(j).getRunnableGroups()
-										.get(k).getEntries().get(0).getRunnable().getName() + ";\n");
+										.get(k).getRunnables().get(0).getName() + ";\n");
 							}
 						}
 					}

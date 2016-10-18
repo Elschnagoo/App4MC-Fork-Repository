@@ -145,8 +145,8 @@ public class ESSP {
 		this.swm.getProcessPrototypes().addAll(this.tasks);
 		// correct rsc processScopes
 		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
-			final Runnable source = rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable();
-			final Runnable target = rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable();
+			final Runnable source = rsc.getRunnableGroups().get(0).getRunnables().get(0);
+			final Runnable target = rsc.getRunnableGroups().get(1).getRunnables().get(0);
 			for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
 				for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
 					if (trc.getRunnable().equals(source)) {
@@ -248,8 +248,8 @@ public class ESSP {
 		final EList<Runnable> latestRunnablesAtTasks = getLatestRunnablesAtTasks();
 		final EList<Integer> TaskIndexes = new BasicEList<Integer>();
 		for (final RunnableSequencingConstraint rsc : prevRuns) {
-			if (latestRunnablesAtTasks.contains(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable())) {
-				TaskIndexes.add(getTaskIndexOf(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable()));
+			if (latestRunnablesAtTasks.contains(rsc.getRunnableGroups().get(0).getRunnables().get(0))) {
+				TaskIndexes.add(getTaskIndexOf(rsc.getRunnableGroups().get(0).getRunnables().get(0)));
 			}
 		}
 		return TaskIndexes;

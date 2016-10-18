@@ -64,7 +64,7 @@ public class Cycle<V, E> extends SzwarcfiterLauerSimpleCycles<V, E> {
 		while (it.hasNext()) {
 			final E e = it.next();
 			if (scc.contains(
-					((RunnableSequencingConstraint) e).getRunnableGroups().get(1).getEntries().get(0).getRunnable())) {
+					((RunnableSequencingConstraint) e).getRunnableGroups().get(1).getRunnables().get(0))) {
 				this.removedEdges.add(e);
 				this.graph.removeEdge(e);
 				break;

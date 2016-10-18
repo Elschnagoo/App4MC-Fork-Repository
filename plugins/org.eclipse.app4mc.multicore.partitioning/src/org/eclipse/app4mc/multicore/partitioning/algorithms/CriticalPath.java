@@ -76,13 +76,13 @@ public class CriticalPath {
 			test.addVertex(r);
 		}
 		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
-			test.addEdge(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable(),
-					rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable(), rsc);
+			test.addEdge(rsc.getRunnableGroups().get(0).getRunnables().get(0),
+					rsc.getRunnableGroups().get(1).getRunnables().get(0), rsc);
 			try {
 				test.setEdgeWeight(rsc,
 						new Helper()
-								.getCommonLabel(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable(),
-										rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable())
+								.getCommonLabel(rsc.getRunnableGroups().get(0).getRunnables().get(0),
+										rsc.getRunnableGroups().get(1).getRunnables().get(0))
 								.getSize().getNumberBytes());
 			}
 			catch (final Exception e) {

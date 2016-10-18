@@ -31,7 +31,6 @@ import org.eclipse.app4mc.amalthea.model.Microcontroller;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
@@ -578,21 +577,18 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 		final ProcessRunnableGroup targetGroup = rsc.getRunnableGroups().get(1);
 
 		// Is there one ProcessRunnableGroupEntry per group?
-		if (originGroup.getEntries().size() != 1 || targetGroup.getEntries().size() != 1) {
+		if (originGroup.getRunnables().size() != 1 || targetGroup.getRunnables().size() != 1) {
 			UniversalHandler.getInstance().log(
 					"Invalid ProcessRunnableGroup.\nProcessRunnableGroup must contain one ProcessRunnableGroupEntry.\nSkipping...",
 					null);
 			return;
 		}
 
-		final ProcessRunnableGroupEntry originEntry = originGroup.getEntries().get(0);
-		final ProcessRunnableGroupEntry targetEntry = targetGroup.getEntries().get(0);
+		final Runnable originRunnable = originGroup.getRunnables().get(0);
+		final Runnable targetRunnable = targetGroup.getRunnables().get(0);
 
-		final Runnable originRunnable;
-		final Runnable targetRunnable;
 		// Now, check if both Entries have the Runnable reference set
-		if ((originRunnable = originEntry.getRunnable()) == null
-				|| (targetRunnable = targetEntry.getRunnable()) == null) {
+		if (originRunnable == null || targetRunnable == null) {
 			UniversalHandler.getInstance().log(
 					"Invalid ProcessRunnableGroupEntry.\nProcessRunnableGroupEntry must reference one Runnable.\nSkipping...",
 					null);

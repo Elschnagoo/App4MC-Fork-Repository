@@ -115,10 +115,10 @@ public class Helper {
 		long rt = 0;
 		this.visited.add(r);
 		for (final RunnableSequencingConstraint rsc : cm.getRunnableSequencingConstraints()) {
-			if (rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable().equals(r)
-					&& !this.visited.contains(rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable())) {
+			if (rsc.getRunnableGroups().get(1).getRunnables().get(0).equals(r)
+					&& !this.visited.contains(rsc.getRunnableGroups().get(0).getRunnables().get(0))) {
 				final long temp = getPreceedingRunTimeCycle(cm,
-						rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable());
+						rsc.getRunnableGroups().get(0).getRunnables().get(0));
 				if (temp > rt) {
 					rt = temp;
 				}
@@ -146,10 +146,10 @@ public class Helper {
 		long rt = 0;
 		this.visited.add(r);
 		for (final RunnableSequencingConstraint rsc : cm.getRunnableSequencingConstraints()) {
-			if (rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable().equals(r)
-					&& !this.visited.contains(rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable())) {
+			if (rsc.getRunnableGroups().get(0).getRunnables().get(0).equals(r)
+					&& !this.visited.contains(rsc.getRunnableGroups().get(1).getRunnables().get(0))) {
 				final long temp = getSucceedingRunTimeCycle(cm,
-						rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable());
+						rsc.getRunnableGroups().get(1).getRunnables().get(0));
 				if (temp > rt) {
 					rt = temp;
 				}
@@ -259,8 +259,8 @@ public class Helper {
 	public ConstraintsModel updateRSCs(final Amalthea amodels) {
 		for (final RunnableSequencingConstraint rsc : amodels.getConstraintsModel()
 				.getRunnableSequencingConstraints()) {
-			final Runnable source = rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable();
-			final Runnable target = rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable();
+			final Runnable source = rsc.getRunnableGroups().get(0).getRunnables().get(0);
+			final Runnable target = rsc.getRunnableGroups().get(1).getRunnables().get(0);
 			for (final ProcessPrototype pp : amodels.getSwModel().getProcessPrototypes()) {
 				for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
 					if (trc.getRunnable().equals(source)) {

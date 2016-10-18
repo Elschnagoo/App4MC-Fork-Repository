@@ -106,8 +106,8 @@ public class WriteAppletHandler extends org.eclipse.core.commands.AbstractHandle
 			for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
 				try {
 					output.append("		g.addEdge(\""
-							+ rsc.getRunnableGroups().get(0).getEntries().get(0).getRunnable().getName() + "\",\""
-							+ rsc.getRunnableGroups().get(1).getEntries().get(0).getRunnable().getName() + "\");\n");
+							+ rsc.getRunnableGroups().get(0).getRunnables().get(0).getName() + "\",\""
+							+ rsc.getRunnableGroups().get(1).getRunnables().get(0).getName() + "\");\n");
 				}
 				catch (final Exception e) {
 					e.printStackTrace();

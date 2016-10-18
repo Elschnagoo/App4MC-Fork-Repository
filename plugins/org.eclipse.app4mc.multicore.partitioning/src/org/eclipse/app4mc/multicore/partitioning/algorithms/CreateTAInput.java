@@ -10,9 +10,7 @@
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.algorithms;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
 
 public class CreateTAInput {
 	ConstraintsModel cm;
@@ -30,41 +28,32 @@ public class CreateTAInput {
 		for (int i = 0; i < cmta.getRunnableSequencingConstraints().size(); i++) {
 			for (int j = i + 1; j < cmta.getRunnableSequencingConstraints().size(); j++) {
 				try {
-					if (cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(0).getEntries().get(0)
-							.getRunnable().equals(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups()
-									.get(0).getEntries().get(0).getRunnable())) {
-						final AmaltheaFactory cf = AmaltheaFactory.eINSTANCE;
-						final ProcessRunnableGroupEntry prgen = cf.createProcessRunnableGroupEntry();
-						prgen.setRunnable(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(1)
-								.getEntries().get(0).getRunnable());
+					if (cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(0).getRunnables().get(0).equals(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups()
+									.get(0).getRunnables().get(0))) {
 						try {
 							cmta.getRunnableSequencingConstraints().get(i).getProcessScope().add(cmta.getRunnableSequencingConstraints().get(j).getProcessScope().get(0));
 						}
 						catch (final Exception e) {
 							PartLog.getInstance().log(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups()
-									.get(1).getEntries().get(0).getRunnable().getName() + "has no processScope", e);
+									.get(1).getRunnables().get(0).getName() + "has no processScope", e);
 						}
-						cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(1).getEntries()
-								.add(prgen);
+						cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(1).getRunnables()
+								.add(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(1).getRunnables().get(0));
 						cmta.getRunnableSequencingConstraints().remove(j);
 						j--;
 					}
-					else if (cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(1).getEntries()
-							.get(0).getRunnable().equals(cmta.getRunnableSequencingConstraints().get(j)
-									.getRunnableGroups().get(1).getEntries().get(0).getRunnable())) {
-						final AmaltheaFactory cf = AmaltheaFactory.eINSTANCE;
-						final ProcessRunnableGroupEntry prgen = cf.createProcessRunnableGroupEntry();
-						prgen.setRunnable(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(0)
-								.getEntries().get(0).getRunnable());
+					else if (cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(1).getRunnables().get(0).equals(
+							cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(1).getRunnables().get(0))) {
 						try {
 							cmta.getRunnableSequencingConstraints().get(i).getProcessScope().add(cmta.getRunnableSequencingConstraints().get(j).getProcessScope().get(0));
 						}
 						catch (final Exception e) {
 							PartLog.getInstance().log(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups()
-									.get(0).getEntries().get(0).getRunnable().getName() + " has no processScope", e);
+									.get(0).getRunnables().get(0).getName() + " has no processScope", e);
 						}
-						cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(0).getEntries()
-								.add(prgen);
+						cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(0).getRunnables()
+								.add(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(0)
+										.getRunnables().get(0));
 						cmta.getRunnableSequencingConstraints().remove(j);
 						j--;
 					}
