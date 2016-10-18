@@ -1381,23 +1381,13 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="entries" type="am:ProcessRunnableGroupEntry"/>
+          <xsd:element name="runnables" type="am:Runnable"/>
         </xsd:choice>
+        <xsd:attribute name="runnables" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ProcessRunnableGroup" type="am:ProcessRunnableGroup"/>
-  <xsd:complexType name="ProcessRunnableGroupEntry">
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="runnable" type="am:Runnable"/>
-        </xsd:choice>
-        <xsd:attribute name="runnable" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ProcessRunnableGroupEntry" type="am:ProcessRunnableGroupEntry"/>
   <xsd:complexType abstract="true" name="AffinityConstraint">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject"/>

@@ -717,12 +717,7 @@ class RunnableSequencingConstraint extends ReferableBaseObject
 
 class ProcessRunnableGroup extends BaseObject
 {
-	contains resolving ProcessRunnableGroupEntry[1..*] entries
-}
-
-class ProcessRunnableGroupEntry extends BaseObject
-{
-	refers Runnable[1] runnable
+	refers Runnable[1..*] runnables
 }
 
 ///////////////////////////Affinity constraints:
