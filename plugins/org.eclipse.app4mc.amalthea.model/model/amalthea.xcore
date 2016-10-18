@@ -439,6 +439,10 @@ class Deviation<T>{
 	contains resolving T upperBound
 	contains resolving Distribution<T> distribution
 	SamplingType samplingType
+	
+	op boolean containerNotificationRequired() {
+		return true
+	}
 }
 
 /*

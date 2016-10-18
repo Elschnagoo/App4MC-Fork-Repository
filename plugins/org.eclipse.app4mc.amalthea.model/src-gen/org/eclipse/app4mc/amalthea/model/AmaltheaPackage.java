@@ -1774,13 +1774,22 @@ public interface AmaltheaPackage extends EPackage {
 	int DEVIATION_FEATURE_COUNT = 4;
 
 	/**
+	 * The operation id for the '<em>Container Notification Required</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEVIATION___CONTAINER_NOTIFICATION_REQUIRED = 0;
+
+	/**
 	 * The number of operations of the '<em>Deviation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEVIATION_OPERATION_COUNT = 0;
+	int DEVIATION_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DistributionImpl <em>Distribution</em>}' class.
@@ -24040,6 +24049,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDeviation_SamplingType();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Deviation#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Container Notification Required</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.Deviation#containerNotificationRequired()
+	 * @generated
+	 */
+	EOperation getDeviation__ContainerNotificationRequired();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Distribution <em>Distribution</em>}'.

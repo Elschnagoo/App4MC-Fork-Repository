@@ -160,8 +160,7 @@ public class DeviationItemProvider extends AmaltheaExtendedItemProviderAdapter i
 	@Override
 	public String getText(final Object object) {
 		// delegate to custom item provider
-		return CustomItemProviderService.getDeviationItemProviderText(object, getTextGen(object),
-				getRootAdapterFactory());
+		return CustomItemProviderService.getDeviationItemProviderText(object, getTextGen(object), getRootAdapterFactory());
 	}
 
 	/**

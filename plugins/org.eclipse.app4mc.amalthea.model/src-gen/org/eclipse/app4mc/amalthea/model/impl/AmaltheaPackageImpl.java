@@ -3773,6 +3773,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getDeviation__ContainerNotificationRequired() {
+		return deviationEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDistribution() {
 		return distributionEClass;
 	}
@@ -11385,6 +11394,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(deviationEClass, DEVIATION__UPPER_BOUND);
 		createEReference(deviationEClass, DEVIATION__DISTRIBUTION);
 		createEAttribute(deviationEClass, DEVIATION__SAMPLING_TYPE);
+		createEOperation(deviationEClass, DEVIATION___CONTAINER_NOTIFICATION_REQUIRED);
 
 		distributionEClass = createEClass(DISTRIBUTION);
 
@@ -13051,6 +13061,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		g1.getETypeArguments().add(g2);
 		initEReference(getDeviation_Distribution(), g1, null, "distribution", null, 0, 1, Deviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDeviation_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, Deviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getDeviation__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(distributionEClass, Distribution.class, "Distribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

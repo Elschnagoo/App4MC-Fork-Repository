@@ -127,12 +127,23 @@ import org.eclipse.app4mc.amalthea.model.WaitingBehaviour
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl
 import org.eclipse.emf.common.notify.AdapterFactory
 import org.eclipse.emf.common.notify.Notification
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
 
 class CustomItemProviderService {
 
+	private def static getContainingFeatureName(EObject object, String defaultText, String separator) {
+		val feature = object?.eContainingFeature()
+		val name = if(feature == null) defaultText else feature.name + separator
+		return name
+	}
 
+	private def static getContainingFeatureName(EObject object) {
+		return getContainingFeatureName(object, "", ": ")
+	}
+	
+//String defaultText
 
 ///// _________________________ Common _________________________
  
@@ -194,9 +205,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	 def static String getBooleanObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof BooleanObject) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + object
+			return getContainingFeatureName(object) + object
 		} else {
 			return defaultText
 		}
@@ -207,9 +216,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getDoubleObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof DoubleObject) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + object
+			return getContainingFeatureName(object) + object
 		} else {
 			return defaultText
 		}
@@ -220,9 +227,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getFloatObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof FloatObject) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + object
+			return getContainingFeatureName(object) + object
 		} else {
 			return defaultText
 		}
@@ -233,9 +238,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getIntegerObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof IntegerObject) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + object
+			return getContainingFeatureName(object) + object
 		} else {
 			return defaultText
 		}
@@ -246,9 +249,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getLongObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof LongObject) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + object
+			return getContainingFeatureName(object) + object
 		} else {
 			return defaultText
 		}
@@ -259,9 +260,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getSignedTimeObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof SignedTimeObject) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + getTimeText(object)
+			return getContainingFeatureName(object) + getTimeText(object)
 		} else {
 			return defaultText
 		}
@@ -272,9 +271,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getTimeObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof TimeObject) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + getTimeText(object)
+			return getContainingFeatureName(object) + getTimeText(object)
 		} else {
 			return defaultText
 		}
@@ -285,8 +282,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getStringObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof StringObject) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
+			val s1 = getContainingFeatureName(object)
 			val s2 = if(object?.value == null) "null" else "\"" + object.value + "\"";
 			return s1 + s2
 		} else {
@@ -299,8 +295,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getBigIntegerObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof BigIntegerObject) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
+			val s1 = getContainingFeatureName(object)
 			val s2 = if(object?.value == null) "null" else "\"" + object.value + "\"";
 			return s1 + s2
 		} else {
@@ -314,6 +309,13 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getBoundariesItemProviderText(Object object, String defaultText) {
 		return "Dist: Boundaries"
+	}
+
+	/*****************************************************************************
+	 * 						BetaDistributionItemProvider
+	 *****************************************************************************/
+	def static String getBetaDistributionItemProviderText(Object object, String defaultText) {
+		return "Dist: Beta"
 	}
 
 	/*****************************************************************************
@@ -334,14 +336,14 @@ class CustomItemProviderService {
 	 * 						WeibullEstimatorsItemProvider
 	 *****************************************************************************/
 	def static String getWeibullEstimatorsItemProviderText(Object object, String defaultText) {
-		return "Dist: Weibull Estimators";
+		return "Dist: WeibullEstimators";
 	}
 
 	/*****************************************************************************
 	 * 						WeibullParametersItemProvider
 	 *****************************************************************************/
 	def static String getWeibullParametersItemProviderText(Object object, String defaultText) {
-		return "Dist: Weibull Parameters";
+		return "Dist: WeibullParameters";
 	}
 
 
@@ -350,9 +352,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getFrequencyItemProviderText(Object object, String defaultText) {
 		if (object instanceof Frequency) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + getFrequencyText(object)
+			return getContainingFeatureName(object) + getFrequencyText(object)
 		} else {
 			return defaultText
 		}
@@ -363,9 +363,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getDataSizeItemProviderText(Object object, String defaultText) {
 	if (object instanceof DataSize) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + getDataSizeText(object)
+			return getContainingFeatureName(object) + getDataSizeText(object)
 		} else {
 			return defaultText
 		}
@@ -376,33 +374,18 @@ class CustomItemProviderService {
 	 * 						DeviationItemProvider
 	 *****************************************************************************/
 	def static String getDeviationItemProviderText(Object object, String defaultText, AdapterFactory rootAF) {
-// TODO: update method
-		val element = object as Deviation<Object>
-
-		val StringBuffer sb = new StringBuffer()
-		sb.append(defaultText)
-		if (null !== element.getDistribution() && rootAF.isFactoryForType(element.getDistribution())) {
-			val Object plainAdapter = rootAF.adapt(element.getDistribution(), typeof(IItemLabelProvider))
-			if (plainAdapter instanceof IItemLabelProvider) {
-				val String tmp = plainAdapter.getText(element.getDistribution())
-				sb.append(" ").append(tmp)
-			}
+		if (object instanceof Deviation<?>) {
+			val distName = object?.distribution?.eClass()?.name
+			val lower = object?.lowerBound
+			val upper = object?.upperBound
+			val sampling = object?.samplingType			
+			val s1 = if(distName.isNullOrEmpty) "Dist: ???" else "Dist: " + distName
+			val s2 = if(lower == null) "" else " lowerBound: " + lower
+			val s3 = if(upper == null) "" else " upperBound: " + upper
+			val s4 = if(sampling == null) "" else " -- " + sampling.literal + " sampling"
+			
+	 		return s1 + s2 + s3 + s4
 		}
-		if (null !== element.getLowerBound() && rootAF.isFactoryForType(element.getLowerBound())) {
-			val Object plainAdapter = rootAF.adapt(element.getLowerBound(), typeof(IItemLabelProvider))
-			if (plainAdapter instanceof IItemLabelProvider) {
-				val String tmp = plainAdapter.getText(element.getLowerBound())
-				sb.append(" ").append(tmp)
-			}
-		}
-		if (null !== element.getUpperBound() && rootAF.isFactoryForType(element.getUpperBound())) {
-			val Object plainAdapter = rootAF.adapt(element.getUpperBound(), typeof(IItemLabelProvider))
-			if (plainAdapter instanceof IItemLabelProvider) {
-				val String tmp = plainAdapter.getText(element.getUpperBound())
-				sb.append(" ").append(tmp)
-			}
-		}
-		return sb.toString()
 	}
 
 	def static List<ViewerNotification> getDeviationItemProviderNotifications(Notification notification) {
@@ -410,6 +393,7 @@ class CustomItemProviderService {
 		switch notification.getFeatureID(typeof(Deviation)) {
 			case AmaltheaPackage::DEVIATION__LOWER_BOUND,
 			case AmaltheaPackage::DEVIATION__UPPER_BOUND,
+			case AmaltheaPackage::DEVIATION__SAMPLING_TYPE,
 			case AmaltheaPackage::DEVIATION__DISTRIBUTION:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 		}
@@ -421,8 +405,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getMinAvgMaxStatisticItemProviderText(Object object, String defaultText) {
 		if (object instanceof MinAvgMaxStatistic) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
+			val s1 = getContainingFeatureName(object)
 			return s1 + object.min + " : " + object.avg + " : " + object.max
 		} else {
 			return defaultText
@@ -434,9 +417,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getSingleValueStatisticItemProviderText(Object object, String defaultText) {
 		if (object instanceof SingleValueStatistic) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + object.value
+			return getContainingFeatureName(object) + object.value
 		} else {
 			return defaultText
 		}
@@ -447,9 +428,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getSignedTimeItemProviderText(Object object, String defaultText) {
 		if (object instanceof SignedTime) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + getTimeText(object)
+			return getContainingFeatureName(object) + getTimeText(object)
 		} else {
 			return defaultText
 		}
@@ -460,9 +439,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getTimeItemProviderText(Object object, String defaultText) {
 		if (object instanceof Time) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + getTimeText(object)
+			return getContainingFeatureName(object) + getTimeText(object)
 		} else {
 			return defaultText
 		}
@@ -563,10 +540,8 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getQualifiedPortItemProviderText(Object object, String defaultText) {
 		if (object instanceof QualifiedPort) {
-			val feature = object?.eContainingFeature()
 			val instName = object?.instance?.name
 			val portName = object?.port?.name
-			val s1 = if(feature == null) "" else feature.name + ": "
 			var String s2 = ""
 			var String s4 = ""
 			if (object?.instance == null) {
@@ -575,7 +550,7 @@ class CustomItemProviderService {
 				s2 = if(instName.isNullOrEmpty) "??? / " else instName + " / "
 			}
 			val s3 = if(portName.isNullOrEmpty) "<port>" else portName
-			return s1 + s2 + s3 + s4
+			return getContainingFeatureName(object) + s2 + s3 + s4
 		} else {
 			return defaultText
 		}
@@ -1077,9 +1052,8 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getEventChainReferenceItemProviderText(Object object, String defaultText) {
 		if (object instanceof EventChainReference) {
-			val feature = object?.eContainingFeature()
 			val chainName = object?.eventChain?.name
-			val s1 = if(feature == null) "" else feature.name + ": "
+			val s1 = getContainingFeatureName(object)
 			val s2 = if(chainName.isNullOrEmpty) "<chain>" else chainName
 			return "Chain Ref " + s1 + s2
 		} else {
@@ -1102,11 +1076,10 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getSubEventChainItemProviderText(Object object, String defaultText) {
 		if (object instanceof SubEventChain) {
-			val feature = object?.eContainingFeature()
 			val chainName = object?.eventChain?.name
-			val s1 = if(feature == null) "" else feature.name + ":"
+			val s1 = getContainingFeatureName(object)
 			val s2 = if(chainName.isNullOrEmpty) "<sub chain>" else "Sub Chain " + chainName
-			return s1 + " " + s2
+			return s1 + s2
 		} else {
 			return defaultText
 		}
@@ -1640,9 +1613,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getOsAPIInstructionsItemProviderText(Object object, String defaultText) {
 		if (object instanceof OsAPIInstructions) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "API Instructions" else feature.name
-			return s1
+			return getContainingFeatureName(object, "API Instructions", "")
 		} else {
 			return defaultText
 		}
@@ -1666,9 +1637,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getOsExecutionInstructionsConstantItemProviderText(Object object, String defaultText) {
 		if (object instanceof OsExecutionInstructionsConstant) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "Execution Instructions (constant)" else feature.name
-			return s1
+			return getContainingFeatureName(object, "Execution Instructions (constant)", "")
 		} else {
 			return defaultText
 		}
@@ -1679,9 +1648,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getOsExecutionInstructionsDeviationItemProviderText(Object object, String defaultText) {
 		if (object instanceof OsExecutionInstructionsDeviation) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "Execution Instructions (deviation)" else feature.name
-			return s1
+			return getContainingFeatureName(object, "Execution Instructions (deviation)", "")
 		} else {
 			return defaultText
 		}
@@ -1818,9 +1785,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getModeValueListItemProviderText(Object object, String defaultText) {
 		if (object instanceof ModeValueList) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name + ": "
-			return s1 + defaultText
+			return getContainingFeatureName(object) + defaultText
 		} else {
 			return defaultText
 		}

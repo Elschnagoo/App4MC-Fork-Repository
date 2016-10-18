@@ -133,7 +133,8 @@ public class BetaDistributionItemProvider extends DistributionItemProvider {
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		return getString("_UI_BetaDistribution_type");
+		BetaDistribution<?> betaDistribution = (BetaDistribution<?>)object;
+		return getString("_UI_BetaDistribution_type") + " " + betaDistribution.getAlpha();
 	}
 
 	/**
@@ -142,7 +143,7 @@ public class BetaDistributionItemProvider extends DistributionItemProvider {
 	@Override
 	public String getText(Object object) {
 		// delegate to custom item provider
-		return CustomItemProviderService.getBetaDistributionItemProviderText(object, getTextGen(object));
+		return CustomItemProviderService.getBetaDistributionItemProviderText(object, getString("_UI_BetaDistribution_type"));
 	}
 	
 
