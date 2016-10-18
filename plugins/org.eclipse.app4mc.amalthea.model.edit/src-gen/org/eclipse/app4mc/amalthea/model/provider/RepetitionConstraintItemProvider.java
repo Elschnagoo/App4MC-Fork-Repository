@@ -123,6 +123,7 @@ public class RepetitionConstraintItemProvider extends TimingConstraintItemProvid
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Lower());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Upper());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Jitter());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Period());
 		}
 		return childrenFeatures;
 	}
@@ -194,6 +195,7 @@ public class RepetitionConstraintItemProvider extends TimingConstraintItemProvid
 			case AmaltheaPackage.REPETITION_CONSTRAINT__LOWER:
 			case AmaltheaPackage.REPETITION_CONSTRAINT__UPPER:
 			case AmaltheaPackage.REPETITION_CONSTRAINT__JITTER:
+			case AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -225,6 +227,11 @@ public class RepetitionConstraintItemProvider extends TimingConstraintItemProvid
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Jitter(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Period(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
 	}
 
 	/**
@@ -241,7 +248,8 @@ public class RepetitionConstraintItemProvider extends TimingConstraintItemProvid
 		boolean qualify =
 			childFeature == AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Lower() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Upper() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Jitter();
+			childFeature == AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Jitter() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Period();
 
 		if (qualify) {
 			return getString

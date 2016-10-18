@@ -31,6 +31,7 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.RepetitionConstraint#getLower <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.RepetitionConstraint#getUpper <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.RepetitionConstraint#getJitter <em>Jitter</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.RepetitionConstraint#getPeriod <em>Period</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRepetitionConstraint()
@@ -167,5 +168,31 @@ public interface RepetitionConstraint extends TimingConstraint {
 	 * @generated
 	 */
 	void setJitter(Time value);
+
+	/**
+	 * Returns the value of the '<em><b>Period</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Period</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Period</em>' containment reference.
+	 * @see #setPeriod(Time)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRepetitionConstraint_Period()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	Time getPeriod();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.RepetitionConstraint#getPeriod <em>Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Period</em>' containment reference.
+	 * @see #getPeriod()
+	 * @generated
+	 */
+	void setPeriod(Time value);
 
 } // RepetitionConstraint

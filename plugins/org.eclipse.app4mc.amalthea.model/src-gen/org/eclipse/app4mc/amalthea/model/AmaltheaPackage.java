@@ -6399,13 +6399,22 @@ public interface AmaltheaPackage extends EPackage {
 	int REPETITION_CONSTRAINT__JITTER = TIMING_CONSTRAINT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Period</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPETITION_CONSTRAINT__PERIOD = TIMING_CONSTRAINT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Repetition Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REPETITION_CONSTRAINT_FEATURE_COUNT = TIMING_CONSTRAINT_FEATURE_COUNT + 5;
+	int REPETITION_CONSTRAINT_FEATURE_COUNT = TIMING_CONSTRAINT_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -25887,6 +25896,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRepetitionConstraint_Jitter();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.RepetitionConstraint#getPeriod <em>Period</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Period</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.RepetitionConstraint#getPeriod()
+	 * @see #getRepetitionConstraint()
+	 * @generated
+	 */
+	EReference getRepetitionConstraint_Period();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DataAgeConstraint <em>Data Age Constraint</em>}'.

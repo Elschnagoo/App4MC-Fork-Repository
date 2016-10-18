@@ -2091,6 +2091,7 @@ maximum: Maximum allowed latency</xsd:documentation>
           <xsd:element name="lower" type="am:Time"/>
           <xsd:element name="upper" type="am:Time"/>
           <xsd:element name="jitter" type="am:Time"/>
+          <xsd:element name="period" type="am:Time"/>
         </xsd:choice>
         <xsd:attribute name="span" type="xsd:int"/>
         <xsd:attribute name="event" type="xsd:string"/>

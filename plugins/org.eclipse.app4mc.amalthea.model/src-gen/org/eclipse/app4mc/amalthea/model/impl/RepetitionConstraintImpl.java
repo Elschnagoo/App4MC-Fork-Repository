@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RepetitionConstraintImpl#getLower <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RepetitionConstraintImpl#getUpper <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RepetitionConstraintImpl#getJitter <em>Jitter</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RepetitionConstraintImpl#getPeriod <em>Period</em>}</li>
  * </ul>
  *
  * @generated
@@ -102,6 +103,16 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * @ordered
 	 */
 	protected Time jitter;
+
+	/**
+	 * The cached value of the '{@link #getPeriod() <em>Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPeriod()
+	 * @generated
+	 * @ordered
+	 */
+	protected Time period;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -384,6 +395,72 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Time getPeriod() {
+		if (period != null && period.eIsProxy()) {
+			InternalEObject oldPeriod = (InternalEObject)period;
+			period = (Time)eResolveProxy(oldPeriod);
+			if (period != oldPeriod) {
+				InternalEObject newPeriod = (InternalEObject)period;
+				NotificationChain msgs = oldPeriod.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD, null, null);
+				if (newPeriod.eInternalContainer() == null) {
+					msgs = newPeriod.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD, oldPeriod, period));
+			}
+		}
+		return period;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Time basicGetPeriod() {
+		return period;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPeriod(Time newPeriod, NotificationChain msgs) {
+		Time oldPeriod = period;
+		period = newPeriod;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD, oldPeriod, newPeriod);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPeriod(Time newPeriod) {
+		if (newPeriod != period) {
+			NotificationChain msgs = null;
+			if (period != null)
+				msgs = ((InternalEObject)period).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD, null, msgs);
+			if (newPeriod != null)
+				msgs = ((InternalEObject)newPeriod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD, null, msgs);
+			msgs = basicSetPeriod(newPeriod, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD, newPeriod, newPeriod));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -393,6 +470,8 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 				return basicSetUpper(null, msgs);
 			case AmaltheaPackage.REPETITION_CONSTRAINT__JITTER:
 				return basicSetJitter(null, msgs);
+			case AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD:
+				return basicSetPeriod(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -419,6 +498,9 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 			case AmaltheaPackage.REPETITION_CONSTRAINT__JITTER:
 				if (resolve) return getJitter();
 				return basicGetJitter();
+			case AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD:
+				if (resolve) return getPeriod();
+				return basicGetPeriod();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -445,6 +527,9 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 				return;
 			case AmaltheaPackage.REPETITION_CONSTRAINT__JITTER:
 				setJitter((Time)newValue);
+				return;
+			case AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD:
+				setPeriod((Time)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -473,6 +558,9 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 			case AmaltheaPackage.REPETITION_CONSTRAINT__JITTER:
 				setJitter((Time)null);
 				return;
+			case AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD:
+				setPeriod((Time)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -495,6 +583,8 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 				return upper != null;
 			case AmaltheaPackage.REPETITION_CONSTRAINT__JITTER:
 				return jitter != null;
+			case AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD:
+				return period != null;
 		}
 		return super.eIsSet(featureID);
 	}

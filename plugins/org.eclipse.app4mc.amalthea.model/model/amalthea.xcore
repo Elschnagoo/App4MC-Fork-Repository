@@ -1081,6 +1081,7 @@ class RepetitionConstraint extends TimingConstraint
 	contains resolving Time lower
 	contains resolving Time upper
 	contains resolving Time jitter
+	contains resolving Time period
 }
 
 //////////////////////////Data Age Constraint
