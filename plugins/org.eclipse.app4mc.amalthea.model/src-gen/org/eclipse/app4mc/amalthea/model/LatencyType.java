@@ -29,54 +29,79 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum LatencyType implements Enumerator {
 	/**
-	 * The '<em><b>Age Latency</b></em>' literal object.
+	 * The '<em><b>undefined </b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #AGE_LATENCY_VALUE
+	 * @see #_UNDEFINED__VALUE
 	 * @generated
 	 * @ordered
 	 */
-	AGE_LATENCY(0, "AgeLatency", "AgeLatency"),
+	_UNDEFINED_(0, "_undefined_", "_undefined_"),
 
 	/**
-	 * The '<em><b>Reaction Latency</b></em>' literal object.
+	 * The '<em><b>Age</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #REACTION_LATENCY_VALUE
+	 * @see #AGE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	REACTION_LATENCY(0, "ReactionLatency", "ReactionLatency");
+	AGE(0, "Age", "Age"),
 
 	/**
-	 * The '<em><b>Age Latency</b></em>' literal value.
+	 * The '<em><b>Reaction</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #REACTION_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	REACTION(0, "Reaction", "Reaction");
+
+	/**
+	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Age Latency</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #AGE_LATENCY
-	 * @model name="AgeLatency"
+	 * @see #_UNDEFINED_
+	 * @model name="_undefined_"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int AGE_LATENCY_VALUE = 0;
+	public static final int _UNDEFINED__VALUE = 0;
 
 	/**
-	 * The '<em><b>Reaction Latency</b></em>' literal value.
+	 * The '<em><b>Age</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Reaction Latency</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Age</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #REACTION_LATENCY
-	 * @model name="ReactionLatency"
+	 * @see #AGE
+	 * @model name="Age"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REACTION_LATENCY_VALUE = 0;
+	public static final int AGE_VALUE = 0;
+
+	/**
+	 * The '<em><b>Reaction</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Reaction</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #REACTION
+	 * @model name="Reaction"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REACTION_VALUE = 0;
 
 	/**
 	 * An array of all the '<em><b>Latency Type</b></em>' enumerators.
@@ -86,8 +111,9 @@ public enum LatencyType implements Enumerator {
 	 */
 	private static final LatencyType[] VALUES_ARRAY =
 		new LatencyType[] {
-			AGE_LATENCY,
-			REACTION_LATENCY,
+			_UNDEFINED_,
+			AGE,
+			REACTION,
 		};
 
 	/**
@@ -144,7 +170,7 @@ public enum LatencyType implements Enumerator {
 	 */
 	public static LatencyType get(int value) {
 		switch (value) {
-			case AGE_LATENCY_VALUE: return AGE_LATENCY;
+			case _UNDEFINED__VALUE: return _UNDEFINED_;
 		}
 		return null;
 	}

@@ -52,7 +52,7 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	 * @generated
 	 * @ordered
 	 */
-	protected static final MappingType MAPPING_TYPE_EDEFAULT = MappingType.ONE_TO_ONE;
+	protected static final MappingType MAPPING_TYPE_EDEFAULT = MappingType._UNDEFINED_;
 
 	/**
 	 * The cached value of the '{@link #getMappingType() <em>Mapping Type</em>}' attribute.

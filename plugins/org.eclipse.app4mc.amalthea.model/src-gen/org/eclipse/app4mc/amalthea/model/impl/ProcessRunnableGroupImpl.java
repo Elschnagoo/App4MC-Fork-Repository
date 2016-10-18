@@ -16,17 +16,12 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
-
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,21 +31,21 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessRunnableGroupImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessRunnableGroupImpl#getRunnables <em>Runnables</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ProcessRunnableGroupImpl extends BaseObjectImpl implements ProcessRunnableGroup {
 	/**
-	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
+	 * The cached value of the '{@link #getRunnables() <em>Runnables</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEntries()
+	 * @see #getRunnables()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProcessRunnableGroupEntry> entries;
+	protected EList<org.eclipse.app4mc.amalthea.model.Runnable> runnables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,25 +71,11 @@ public class ProcessRunnableGroupImpl extends BaseObjectImpl implements ProcessR
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ProcessRunnableGroupEntry> getEntries() {
-		if (entries == null) {
-			entries = new EObjectContainmentEList.Resolving<ProcessRunnableGroupEntry>(ProcessRunnableGroupEntry.class, this, AmaltheaPackage.PROCESS_RUNNABLE_GROUP__ENTRIES);
+	public EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables() {
+		if (runnables == null) {
+			runnables = new EObjectResolvingEList<org.eclipse.app4mc.amalthea.model.Runnable>(org.eclipse.app4mc.amalthea.model.Runnable.class, this, AmaltheaPackage.PROCESS_RUNNABLE_GROUP__RUNNABLES);
 		}
-		return entries;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__ENTRIES:
-				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+		return runnables;
 	}
 
 	/**
@@ -105,8 +86,8 @@ public class ProcessRunnableGroupImpl extends BaseObjectImpl implements ProcessR
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__ENTRIES:
-				return getEntries();
+			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__RUNNABLES:
+				return getRunnables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,9 +101,9 @@ public class ProcessRunnableGroupImpl extends BaseObjectImpl implements ProcessR
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__ENTRIES:
-				getEntries().clear();
-				getEntries().addAll((Collection<? extends ProcessRunnableGroupEntry>)newValue);
+			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__RUNNABLES:
+				getRunnables().clear();
+				getRunnables().addAll((Collection<? extends org.eclipse.app4mc.amalthea.model.Runnable>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -136,8 +117,8 @@ public class ProcessRunnableGroupImpl extends BaseObjectImpl implements ProcessR
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__ENTRIES:
-				getEntries().clear();
+			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__RUNNABLES:
+				getRunnables().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -151,8 +132,8 @@ public class ProcessRunnableGroupImpl extends BaseObjectImpl implements ProcessR
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__ENTRIES:
-				return entries != null && !entries.isEmpty();
+			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP__RUNNABLES:
+				return runnables != null && !runnables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup#getRunnables <em>Runnables</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessRunnableGroup()
@@ -32,19 +32,19 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ProcessRunnableGroup extends BaseObject {
 	/**
-	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry}.
+	 * Returns the value of the '<em><b>Runnables</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Runnable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Entries</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Runnables</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Entries</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessRunnableGroup_Entries()
-	 * @model containment="true" resolveProxies="true" required="true"
+	 * @return the value of the '<em>Runnables</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessRunnableGroup_Runnables()
+	 * @model required="true"
 	 * @generated
 	 */
-	EList<ProcessRunnableGroupEntry> getEntries();
+	EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables();
 
 } // ProcessRunnableGroup

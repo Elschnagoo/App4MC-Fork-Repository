@@ -419,15 +419,6 @@ public interface AmaltheaFactory extends EFactory {
 	ProcessRunnableGroup createProcessRunnableGroup();
 
 	/**
-	 * Returns a new object of class '<em>Process Runnable Group Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Process Runnable Group Entry</em>'.
-	 * @generated
-	 */
-	ProcessRunnableGroupEntry createProcessRunnableGroupEntry();
-
-	/**
 	 * Returns a new object of class '<em>Runnable Separation Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -261,7 +261,6 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
 import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
@@ -812,13 +811,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass processRunnableGroupEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass processRunnableGroupEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4556,26 +4548,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProcessRunnableGroup_Entries() {
+	public EReference getProcessRunnableGroup_Runnables() {
 		return (EReference)processRunnableGroupEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getProcessRunnableGroupEntry() {
-		return processRunnableGroupEntryEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getProcessRunnableGroupEntry_Runnable() {
-		return (EReference)processRunnableGroupEntryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11522,10 +11496,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(runnableSequencingConstraintEClass, RUNNABLE_SEQUENCING_CONSTRAINT__PROCESS_SCOPE);
 
 		processRunnableGroupEClass = createEClass(PROCESS_RUNNABLE_GROUP);
-		createEReference(processRunnableGroupEClass, PROCESS_RUNNABLE_GROUP__ENTRIES);
-
-		processRunnableGroupEntryEClass = createEClass(PROCESS_RUNNABLE_GROUP_ENTRY);
-		createEReference(processRunnableGroupEntryEClass, PROCESS_RUNNABLE_GROUP_ENTRY__RUNNABLE);
+		createEReference(processRunnableGroupEClass, PROCESS_RUNNABLE_GROUP__RUNNABLES);
 
 		affinityConstraintEClass = createEClass(AFFINITY_CONSTRAINT);
 
@@ -12644,7 +12615,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		constraintsModelEClass.getESuperTypes().add(this.getBaseObject());
 		runnableSequencingConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
 		processRunnableGroupEClass.getESuperTypes().add(this.getBaseObject());
-		processRunnableGroupEntryEClass.getESuperTypes().add(this.getBaseObject());
 		affinityConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
 		separationConstraintEClass.getESuperTypes().add(this.getAffinityConstraint());
 		pairingConstraintEClass.getESuperTypes().add(this.getAffinityConstraint());
@@ -13197,10 +13167,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getRunnableSequencingConstraint_ProcessScope(), this.getAbstractProcess(), null, "processScope", null, 0, -1, RunnableSequencingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processRunnableGroupEClass, ProcessRunnableGroup.class, "ProcessRunnableGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProcessRunnableGroup_Entries(), this.getProcessRunnableGroupEntry(), null, "entries", null, 1, -1, ProcessRunnableGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(processRunnableGroupEntryEClass, ProcessRunnableGroupEntry.class, "ProcessRunnableGroupEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProcessRunnableGroupEntry_Runnable(), this.getRunnable(), null, "runnable", null, 1, 1, ProcessRunnableGroupEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessRunnableGroup_Runnables(), this.getRunnable(), null, "runnables", null, 1, -1, ProcessRunnableGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(affinityConstraintEClass, AffinityConstraint.class, "AffinityConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -14254,17 +14221,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(runnableOrderTypeEEnum, RunnableOrderType.IMMEDIATE_SUCCESSOR_END_SEQUENCE);
 
 		initEEnum(synchronizationTypeEEnum, SynchronizationType.class, "SynchronizationType");
-		addEEnumLiteral(synchronizationTypeEEnum, SynchronizationType.STIMULUS_SYNCHRONIZATION);
-		addEEnumLiteral(synchronizationTypeEEnum, SynchronizationType.RESPONSE_SYNCHRONIZATION);
+		addEEnumLiteral(synchronizationTypeEEnum, SynchronizationType._UNDEFINED_);
+		addEEnumLiteral(synchronizationTypeEEnum, SynchronizationType.STIMULUS);
+		addEEnumLiteral(synchronizationTypeEEnum, SynchronizationType.RESPONSE);
 
 		initEEnum(mappingTypeEEnum, MappingType.class, "MappingType");
+		addEEnumLiteral(mappingTypeEEnum, MappingType._UNDEFINED_);
 		addEEnumLiteral(mappingTypeEEnum, MappingType.ONE_TO_ONE);
 		addEEnumLiteral(mappingTypeEEnum, MappingType.REACTION);
 		addEEnumLiteral(mappingTypeEEnum, MappingType.UNIQUE_REACTION);
 
 		initEEnum(latencyTypeEEnum, LatencyType.class, "LatencyType");
-		addEEnumLiteral(latencyTypeEEnum, LatencyType.AGE_LATENCY);
-		addEEnumLiteral(latencyTypeEEnum, LatencyType.REACTION_LATENCY);
+		addEEnumLiteral(latencyTypeEEnum, LatencyType._UNDEFINED_);
+		addEEnumLiteral(latencyTypeEEnum, LatencyType.AGE);
+		addEEnumLiteral(latencyTypeEEnum, LatencyType.REACTION);
 
 		initEEnum(severityEEnum, Severity.class, "Severity");
 		addEEnumLiteral(severityEEnum, Severity._UNDEFINED_);

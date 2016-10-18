@@ -29,54 +29,79 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum SynchronizationType implements Enumerator {
 	/**
-	 * The '<em><b>Stimulus Synchronization</b></em>' literal object.
+	 * The '<em><b>undefined </b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #STIMULUS_SYNCHRONIZATION_VALUE
+	 * @see #_UNDEFINED__VALUE
 	 * @generated
 	 * @ordered
 	 */
-	STIMULUS_SYNCHRONIZATION(0, "StimulusSynchronization", "StimulusSynchronization"),
+	_UNDEFINED_(0, "_undefined_", "_undefined_"),
 
 	/**
-	 * The '<em><b>Response Synchronization</b></em>' literal object.
+	 * The '<em><b>Stimulus</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #RESPONSE_SYNCHRONIZATION_VALUE
+	 * @see #STIMULUS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	RESPONSE_SYNCHRONIZATION(0, "ResponseSynchronization", "ResponseSynchronization");
+	STIMULUS(0, "Stimulus", "Stimulus"),
 
 	/**
-	 * The '<em><b>Stimulus Synchronization</b></em>' literal value.
+	 * The '<em><b>Response</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #RESPONSE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	RESPONSE(0, "Response", "Response");
+
+	/**
+	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Stimulus Synchronization</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #STIMULUS_SYNCHRONIZATION
-	 * @model name="StimulusSynchronization"
+	 * @see #_UNDEFINED_
+	 * @model name="_undefined_"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STIMULUS_SYNCHRONIZATION_VALUE = 0;
+	public static final int _UNDEFINED__VALUE = 0;
 
 	/**
-	 * The '<em><b>Response Synchronization</b></em>' literal value.
+	 * The '<em><b>Stimulus</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Response Synchronization</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Stimulus</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #RESPONSE_SYNCHRONIZATION
-	 * @model name="ResponseSynchronization"
+	 * @see #STIMULUS
+	 * @model name="Stimulus"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int RESPONSE_SYNCHRONIZATION_VALUE = 0;
+	public static final int STIMULUS_VALUE = 0;
+
+	/**
+	 * The '<em><b>Response</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Response</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #RESPONSE
+	 * @model name="Response"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RESPONSE_VALUE = 0;
 
 	/**
 	 * An array of all the '<em><b>Synchronization Type</b></em>' enumerators.
@@ -86,8 +111,9 @@ public enum SynchronizationType implements Enumerator {
 	 */
 	private static final SynchronizationType[] VALUES_ARRAY =
 		new SynchronizationType[] {
-			STIMULUS_SYNCHRONIZATION,
-			RESPONSE_SYNCHRONIZATION,
+			_UNDEFINED_,
+			STIMULUS,
+			RESPONSE,
 		};
 
 	/**
@@ -144,7 +170,7 @@ public enum SynchronizationType implements Enumerator {
 	 */
 	public static SynchronizationType get(int value) {
 		switch (value) {
-			case STIMULUS_SYNCHRONIZATION_VALUE: return STIMULUS_SYNCHRONIZATION;
+			case _UNDEFINED__VALUE: return _UNDEFINED_;
 		}
 		return null;
 	}

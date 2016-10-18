@@ -1094,29 +1094,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ProcessRunnableGroupEntryItemProvider processRunnableGroupEntryItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createProcessRunnableGroupEntryAdapter() {
-		if (processRunnableGroupEntryItemProvider == null) {
-			processRunnableGroupEntryItemProvider = new ProcessRunnableGroupEntryItemProvider(this);
-		}
-
-		return processRunnableGroupEntryItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5859,7 +5836,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (constraintsModelItemProvider != null) constraintsModelItemProvider.dispose();
 		if (runnableSequencingConstraintItemProvider != null) runnableSequencingConstraintItemProvider.dispose();
 		if (processRunnableGroupItemProvider != null) processRunnableGroupItemProvider.dispose();
-		if (processRunnableGroupEntryItemProvider != null) processRunnableGroupEntryItemProvider.dispose();
 		if (runnableSeparationConstraintItemProvider != null) runnableSeparationConstraintItemProvider.dispose();
 		if (processSeparationConstraintItemProvider != null) processSeparationConstraintItemProvider.dispose();
 		if (dataSeparationConstraintItemProvider != null) dataSeparationConstraintItemProvider.dispose();

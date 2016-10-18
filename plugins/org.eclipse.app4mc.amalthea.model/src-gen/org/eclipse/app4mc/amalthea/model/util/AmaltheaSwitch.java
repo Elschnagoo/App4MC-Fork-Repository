@@ -235,7 +235,6 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
 import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
@@ -848,14 +847,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseProcessRunnableGroup(processRunnableGroup);
 				if (result == null) result = caseBaseObject(processRunnableGroup);
 				if (result == null) result = caseIAnnotatable(processRunnableGroup);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP_ENTRY: {
-				ProcessRunnableGroupEntry processRunnableGroupEntry = (ProcessRunnableGroupEntry)theEObject;
-				T1 result = caseProcessRunnableGroupEntry(processRunnableGroupEntry);
-				if (result == null) result = caseBaseObject(processRunnableGroupEntry);
-				if (result == null) result = caseIAnnotatable(processRunnableGroupEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -4071,21 +4062,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseProcessRunnableGroup(ProcessRunnableGroup object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Process Runnable Group Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Process Runnable Group Entry</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseProcessRunnableGroupEntry(ProcessRunnableGroupEntry object) {
 		return null;
 	}
 

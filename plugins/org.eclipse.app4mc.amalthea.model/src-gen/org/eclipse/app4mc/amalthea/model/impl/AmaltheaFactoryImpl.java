@@ -215,7 +215,6 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
 import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
@@ -399,7 +398,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CONSTRAINTS_MODEL: return createConstraintsModel();
 			case AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT: return createRunnableSequencingConstraint();
 			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP: return createProcessRunnableGroup();
-			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP_ENTRY: return createProcessRunnableGroupEntry();
 			case AmaltheaPackage.RUNNABLE_SEPARATION_CONSTRAINT: return createRunnableSeparationConstraint();
 			case AmaltheaPackage.PROCESS_SEPARATION_CONSTRAINT: return createProcessSeparationConstraint();
 			case AmaltheaPackage.DATA_SEPARATION_CONSTRAINT: return createDataSeparationConstraint();
@@ -1237,16 +1235,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public ProcessRunnableGroup createProcessRunnableGroup() {
 		ProcessRunnableGroupImpl processRunnableGroup = new ProcessRunnableGroupImpl();
 		return processRunnableGroup;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ProcessRunnableGroupEntry createProcessRunnableGroupEntry() {
-		ProcessRunnableGroupEntryImpl processRunnableGroupEntry = new ProcessRunnableGroupEntryImpl();
-		return processRunnableGroupEntry;
 	}
 
 	/**

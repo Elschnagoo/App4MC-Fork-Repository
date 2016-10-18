@@ -235,7 +235,6 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry;
 import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
@@ -633,10 +632,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseProcessRunnableGroup(ProcessRunnableGroup object) {
 				return createProcessRunnableGroupAdapter();
-			}
-			@Override
-			public Adapter caseProcessRunnableGroupEntry(ProcessRunnableGroupEntry object) {
-				return createProcessRunnableGroupEntryAdapter();
 			}
 			@Override
 			public Adapter caseAffinityConstraint(AffinityConstraint object) {
@@ -2521,20 +2516,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createProcessRunnableGroupAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry <em>Process Runnable Group Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ProcessRunnableGroupEntry
-	 * @generated
-	 */
-	public Adapter createProcessRunnableGroupEntryAdapter() {
 		return null;
 	}
 

@@ -62,7 +62,7 @@ public class EventChainSynchronizationConstraintImpl extends SynchronizationCons
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SynchronizationType TYPE_EDEFAULT = SynchronizationType.STIMULUS_SYNCHRONIZATION;
+	protected static final SynchronizationType TYPE_EDEFAULT = SynchronizationType._UNDEFINED_;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.

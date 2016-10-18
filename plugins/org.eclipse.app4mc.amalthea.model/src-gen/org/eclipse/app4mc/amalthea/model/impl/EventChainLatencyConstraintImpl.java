@@ -61,7 +61,7 @@ public class EventChainLatencyConstraintImpl extends TimingConstraintImpl implem
 	 * @generated
 	 * @ordered
 	 */
-	protected static final LatencyType TYPE_EDEFAULT = LatencyType.AGE_LATENCY;
+	protected static final LatencyType TYPE_EDEFAULT = LatencyType._UNDEFINED_;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.

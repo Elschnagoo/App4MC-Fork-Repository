@@ -29,6 +29,16 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum MappingType implements Enumerator {
 	/**
+	 * The '<em><b>undefined </b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #_UNDEFINED__VALUE
+	 * @generated
+	 * @ordered
+	 */
+	_UNDEFINED_(0, "_undefined_", "_undefined_"),
+
+	/**
 	 * The '<em><b>One To One</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -57,6 +67,21 @@ public enum MappingType implements Enumerator {
 	 * @ordered
 	 */
 	UNIQUE_REACTION(0, "UniqueReaction", "UniqueReaction");
+
+	/**
+	 * The '<em><b>undefined </b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #_UNDEFINED_
+	 * @model name="_undefined_"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int _UNDEFINED__VALUE = 0;
 
 	/**
 	 * The '<em><b>One To One</b></em>' literal value.
@@ -111,6 +136,7 @@ public enum MappingType implements Enumerator {
 	 */
 	private static final MappingType[] VALUES_ARRAY =
 		new MappingType[] {
+			_UNDEFINED_,
 			ONE_TO_ONE,
 			REACTION,
 			UNIQUE_REACTION,
@@ -170,7 +196,7 @@ public enum MappingType implements Enumerator {
 	 */
 	public static MappingType get(int value) {
 		switch (value) {
-			case ONE_TO_ONE_VALUE: return ONE_TO_ONE;
+			case _UNDEFINED__VALUE: return _UNDEFINED_;
 		}
 		return null;
 	}
