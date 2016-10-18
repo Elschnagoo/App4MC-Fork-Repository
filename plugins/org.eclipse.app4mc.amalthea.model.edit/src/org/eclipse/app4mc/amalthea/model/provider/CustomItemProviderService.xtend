@@ -130,6 +130,7 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
+import org.eclipse.app4mc.amalthea.model.SamplingType
 
 class CustomItemProviderService {
 
@@ -143,7 +144,16 @@ class CustomItemProviderService {
 		return getContainingFeatureName(object, "", ": ")
 	}
 	
-//String defaultText
+	private def static getLabelProviderText(Object object, AdapterFactory rootAF) {
+		if (object != null && rootAF.isFactoryForType(object)) {
+			val plainAdapter = rootAF.adapt(object, typeof(IItemLabelProvider))
+			if (plainAdapter instanceof IItemLabelProvider) {
+				return plainAdapter.getText(object)
+			}
+		}
+		return ""
+	}
+
 
 ///// _________________________ Common _________________________
  
@@ -171,6 +181,12 @@ class CustomItemProviderService {
 		val value = if (size.value == null) "???" else size.value.toString
 		val unit = if (size.unit == DataSizeUnit::_UNDEFINED_) "<unit>" else size.unit.literal
 		return value + " " + unit
+	}
+
+	private def static trimDistName(String name) {
+		if (name == null) return ""
+		
+		return name.replace("Distribution", "").replace("Estimators", "").replace("Parameters", "")
 	}
 
 
@@ -336,14 +352,14 @@ class CustomItemProviderService {
 	 * 						WeibullEstimatorsItemProvider
 	 *****************************************************************************/
 	def static String getWeibullEstimatorsItemProviderText(Object object, String defaultText) {
-		return "Dist: WeibullEstimators";
+		return "Dist: Weibull Estimators";
 	}
 
 	/*****************************************************************************
 	 * 						WeibullParametersItemProvider
 	 *****************************************************************************/
 	def static String getWeibullParametersItemProviderText(Object object, String defaultText) {
-		return "Dist: WeibullParameters";
+		return "Dist: Weibull Parameters";
 	}
 
 
@@ -373,16 +389,16 @@ class CustomItemProviderService {
 	/*****************************************************************************
 	 * 						DeviationItemProvider
 	 *****************************************************************************/
-	def static String getDeviationItemProviderText(Object object, String defaultText, AdapterFactory rootAF) {
+	def static String getDeviationItemProviderText(Object object, String defaultText) {
 		if (object instanceof Deviation<?>) {
-			val distName = object?.distribution?.eClass()?.name
+			val distName = object?.distribution?.eClass?.name
 			val lower = object?.lowerBound
 			val upper = object?.upperBound
 			val sampling = object?.samplingType			
-			val s1 = if(distName.isNullOrEmpty) "Dist: ???" else "Dist: " + distName
+			val s1 = if(distName.isNullOrEmpty) "Dist: ???" else "Dist: " + trimDistName(distName)
 			val s2 = if(lower == null) "" else " lowerBound: " + lower
 			val s3 = if(upper == null) "" else " upperBound: " + upper
-			val s4 = if(sampling == null) "" else " -- " + sampling.literal + " sampling"
+			val s4 = if(sampling == null || sampling == SamplingType::DEFAULT) "" else " -- " + sampling.literal + " sampling"
 			
 	 		return s1 + s2 + s3 + s4
 		}
@@ -591,32 +607,16 @@ class CustomItemProviderService {
 	 * 						EventConfigElementItemProvider
 	 *****************************************************************************/
 	def static String getEventConfigElementItemProviderText(Object object, String defaultText, AdapterFactory rootAF) {
-// TODO: update method
 		if (object instanceof EventConfigElement) {
 			val name = object?.name
 			val event = object?.event
 			val s1 = if(name.isNullOrEmpty) "" else name + " "
-			var s2 = ""
-			if (event != null && rootAF.isFactoryForType(event)) {
-				val plainAdapter = rootAF.adapt(event, typeof(IItemLabelProvider))
-				if (plainAdapter instanceof IItemLabelProvider) {
-					s2 = " {" + plainAdapter.getText(event) + "}"
-				}
-			}
-			return "Config " + s1 + s2
+			var s2 = getLabelProviderText(event, rootAF)
+			
+			return "Config " + s1 + "{" + s2 + "}"
 		} else {
 			return defaultText
 		}
-
-//		if (null != element.getEvent() && getRootAdapterFactory().isFactoryForType(element.getEvent())) {
-//			final Object plainAdapter = getRootAdapterFactory().adapt(element.getEvent(), IItemLabelProvider.class);
-//			if (plainAdapter instanceof IItemLabelProvider) {
-//				final String tmp = ((IItemLabelProvider) plainAdapter).getText(element.getEvent());
-//				return getString("_UI_EventConfigElement_type") + " [" + tmp + "]";
-//			}
-//		}
-//		return getString("_UI_EventConfigElement_type");
-
 	}
 
 	def static List<ViewerNotification> getEventConfigElementItemProviderNotifications(Notification notification) {
@@ -635,32 +635,16 @@ class CustomItemProviderService {
 	 * 						EventConfigLinkItemProvider
 	 *****************************************************************************/
 	def static String getEventConfigLinkItemProviderText(Object object, String defaultText, AdapterFactory rootAF) {
-// TODO: update method
 		if (object instanceof EventConfigLink) {
 			val name = object?.name
 			val event = object?.event
 			val s1 = if(name.isNullOrEmpty) "" else name + " "
-			var s2 = ""
-			if (event != null && rootAF.isFactoryForType(event)) {
-				val plainAdapter = rootAF.adapt(event, typeof(IItemLabelProvider))
-				if (plainAdapter instanceof IItemLabelProvider) {
-					s2 = " {" + plainAdapter.getText(event) + "}"
-				}
-			}
-			return "Config Link " + s1 + s2
+			var s2 = getLabelProviderText(event, rootAF)
+			
+			return "Config Link " + s1 + "{" + s2 + "}"
 		} else {
 			return defaultText
 		}
-
-//		if (null != link.getEvent() && getRootAdapterFactory().isFactoryForType(link.getEvent())) {
-//			final Object plainAdapter = getRootAdapterFactory().adapt(link.getEvent(), IItemLabelProvider.class);
-//			if (plainAdapter instanceof IItemLabelProvider) {
-//				final String tmp = ((IItemLabelProvider) plainAdapter).getText(link.getEvent());
-//				return getString("_UI_EventConfigLink_type") + " [" + tmp + "]";
-//			}
-//		}
-//		return getString("_UI_EventConfigLink_type");
-
 	}
 
 	def static List<ViewerNotification> getEventConfigLinkItemProviderNotifications(Notification notification) {
@@ -717,7 +701,7 @@ class CustomItemProviderService {
 	def static String getProcessScopeItemProviderText(Object object, String defaultText) {
 		if (object instanceof ProcessScope) {
 			val proc = object?.process
-			val s1 = if(proc?.name.isNullOrEmpty) "<process>" else proc.eClass().name + " " + proc.name
+			val s1 = if(proc?.name.isNullOrEmpty) "<process>" else proc.eClass.name + " " + proc.name
 			return "Scope: " + s1
 		} else {
 			return defaultText
@@ -903,7 +887,7 @@ class CustomItemProviderService {
 			val reqName = object?.name
 			val proc = object?.process
 			val s1 = if(reqName.isNullOrEmpty) "???" else reqName
-			val s2 = if(proc?.name.isNullOrEmpty) "<process>" else proc.eClass().name + " " + proc.name
+			val s2 = if(proc?.name.isNullOrEmpty) "<process>" else proc.eClass.name + " " + proc.name
 			return "Req " + s1 + " -- " + s2
 		} else {
 			return defaultText
@@ -1383,7 +1367,7 @@ class CustomItemProviderService {
 			val type = object?.accessType
 			val distName = object?.deviation?.distribution?.eClass?.name
 			val s1 = if(type == null || type == RWType::_UNDEFINED_) "?" else type.literal
-			val s2 = if(distName.isNullOrEmpty) "<distribution>" else distName
+			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
 			return "Access: " + s1 + " -- Latency (deviation): " + s2
 		} else {
 			return defaultText
@@ -1397,7 +1381,7 @@ class CustomItemProviderService {
 			case AmaltheaPackage::LATENCY_DEVIATION__ACCESS_TYPE:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 			case AmaltheaPackage::LATENCY_DEVIATION__DEVIATION:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 		}
 		return list
 	}
@@ -1530,7 +1514,7 @@ class CustomItemProviderService {
 			val memName = object?.memory?.name
 			val elem = object?.abstractElement
 			val s1 = if(memName.isNullOrEmpty) "<memory>" else "Memory " + memName
-			val s2 = if(elem?.name.isNullOrEmpty) "<element>" else elem.eClass().name + " " + elem.name
+			val s2 = if(elem?.name.isNullOrEmpty) "<element>" else elem.eClass.name + " " + elem.name
 			return "Mapping: " + s1 + " -- " + s2;
 		} else {
 			return defaultText
@@ -1714,7 +1698,7 @@ class CustomItemProviderService {
 	def static String getProcessAllocationConstraintItemProviderText(Object object, String defaultText) {
 		if (object instanceof ProcessAllocationConstraint) {
 			val proc = object?.process
-			val s1 = if(proc?.name.isNullOrEmpty) "<process>" else proc.eClass().name + " " + proc.name
+			val s1 = if(proc?.name.isNullOrEmpty) "<process>" else proc.eClass.name + " " + proc.name
 			return "Constraint allocation of " + s1
 		} else {
 			return defaultText
@@ -1758,7 +1742,7 @@ class CustomItemProviderService {
 	def static String getAbstractElementMappingConstraintItemProviderText(Object object, String defaultText) {
 		if (object instanceof AbstractElementMappingConstraint) {
 			val elem = object?.abstractElement
-			val s1 = if(elem?.name.isNullOrEmpty) "<element>" else elem.eClass().name + " " + elem.name
+			val s1 = if(elem?.name.isNullOrEmpty) "<element>" else elem.eClass.name + " " + elem.name
 			return "Constraint mapping of " + s1
 		} else {
 			return defaultText
@@ -2083,8 +2067,8 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getInstructionsDeviationItemProviderText(Object object, String defaultText) {
 		if (object instanceof InstructionsDeviation) {
-			val distName = object?.deviation?.distribution?.eClass()?.name
-			val s1 = if(distName.isNullOrEmpty) "<distribution>" else distName
+			val distName = object?.deviation?.distribution?.eClass?.name
+			val s1 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
 			return "instructions (deviation): " + s1
 		} else {
 			return defaultText
@@ -2403,7 +2387,7 @@ class CustomItemProviderService {
 	def static String getSetEventItemProviderText(Object object, String defaultText) {
 		if (object instanceof SetEvent) {
 			val proc = object?.process
-			val s1 = if(proc?.name.isNullOrEmpty) "<process>" else proc.eClass().name + " " + proc.name
+			val s1 = if(proc?.name.isNullOrEmpty) "<process>" else proc.eClass.name + " " + proc.name
 			return "SetEvent " + s1
 		} else {
 			return defaultText

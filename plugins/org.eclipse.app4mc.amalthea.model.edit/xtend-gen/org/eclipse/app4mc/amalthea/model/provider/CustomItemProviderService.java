@@ -156,7 +156,6 @@ import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl;
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -193,6 +192,16 @@ public class CustomItemProviderService {
   
   private static String getContainingFeatureName(final EObject object) {
     return CustomItemProviderService.getContainingFeatureName(object, "", ": ");
+  }
+  
+  private static String getLabelProviderText(final Object object, final AdapterFactory rootAF) {
+    if (((!Objects.equal(object, null)) && rootAF.isFactoryForType(object))) {
+      final Object plainAdapter = rootAF.adapt(object, IItemLabelProvider.class);
+      if ((plainAdapter instanceof IItemLabelProvider)) {
+        return ((IItemLabelProvider)plainAdapter).getText(object);
+      }
+    }
+    return "";
   }
   
   private static String getFrequencyText(final Frequency frequency) {
@@ -261,6 +270,16 @@ public class CustomItemProviderService {
     }
     final String unit = _xifexpression_1;
     return ((value + " ") + unit);
+  }
+  
+  private static String trimDistName(final String name) {
+    boolean _equals = Objects.equal(name, null);
+    if (_equals) {
+      return "";
+    }
+    String _replace = name.replace("Distribution", "");
+    String _replace_1 = _replace.replace("Estimators", "");
+    return _replace_1.replace("Parameters", "");
   }
   
   /**
@@ -491,14 +510,14 @@ public class CustomItemProviderService {
    * WeibullEstimatorsItemProvider
    */
   public static String getWeibullEstimatorsItemProviderText(final Object object, final String defaultText) {
-    return "Dist: WeibullEstimators";
+    return "Dist: Weibull Estimators";
   }
   
   /**
    * WeibullParametersItemProvider
    */
   public static String getWeibullParametersItemProviderText(final Object object, final String defaultText) {
-    return "Dist: WeibullParameters";
+    return "Dist: Weibull Parameters";
   }
   
   /**
@@ -530,7 +549,7 @@ public class CustomItemProviderService {
   /**
    * DeviationItemProvider
    */
-  public static String getDeviationItemProviderText(final Object object, final String defaultText, final AdapterFactory rootAF) {
+  public static String getDeviationItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof Deviation<?>)) {
       Distribution<?> _distribution = null;
       if (((Deviation<?>)object)!=null) {
@@ -565,7 +584,8 @@ public class CustomItemProviderService {
       if (_isNullOrEmpty) {
         _xifexpression = "Dist: ???";
       } else {
-        _xifexpression = ("Dist: " + distName);
+        String _trimDistName = CustomItemProviderService.trimDistName(distName);
+        _xifexpression = ("Dist: " + _trimDistName);
       }
       final String s1 = _xifexpression;
       String _xifexpression_1 = null;
@@ -585,8 +605,7 @@ public class CustomItemProviderService {
       }
       final String s3 = _xifexpression_2;
       String _xifexpression_3 = null;
-      boolean _equals_2 = Objects.equal(sampling, null);
-      if (_equals_2) {
+      if ((Objects.equal(sampling, null) || Objects.equal(sampling, SamplingType.DEFAULT))) {
         _xifexpression_3 = "";
       } else {
         String _literal = sampling.getLiteral();
@@ -1003,17 +1022,8 @@ public class CustomItemProviderService {
         _xifexpression = (name + " ");
       }
       final String s1 = _xifexpression;
-      String s2 = "";
-      if (((!Objects.equal(event, null)) && rootAF.isFactoryForType(event))) {
-        final Adapter plainAdapter = rootAF.adapt(event, IItemLabelProvider.class);
-        if ((plainAdapter instanceof IItemLabelProvider)) {
-          String _text = ((IItemLabelProvider)plainAdapter).getText(event);
-          String _plus = (" {" + _text);
-          String _plus_1 = (_plus + "}");
-          s2 = _plus_1;
-        }
-      }
-      return (("Config " + s1) + s2);
+      String s2 = CustomItemProviderService.getLabelProviderText(event, rootAF);
+      return (((("Config " + s1) + "{") + s2) + "}");
     } else {
       return defaultText;
     }
@@ -1063,17 +1073,8 @@ public class CustomItemProviderService {
         _xifexpression = (name + " ");
       }
       final String s1 = _xifexpression;
-      String s2 = "";
-      if (((!Objects.equal(event, null)) && rootAF.isFactoryForType(event))) {
-        final Adapter plainAdapter = rootAF.adapt(event, IItemLabelProvider.class);
-        if ((plainAdapter instanceof IItemLabelProvider)) {
-          String _text = ((IItemLabelProvider)plainAdapter).getText(event);
-          String _plus = (" {" + _text);
-          String _plus_1 = (_plus + "}");
-          s2 = _plus_1;
-        }
-      }
-      return (("Config Link " + s1) + s2);
+      String s2 = CustomItemProviderService.getLabelProviderText(event, rootAF);
+      return (((("Config Link " + s1) + "{") + s2) + "}");
     } else {
       return defaultText;
     }
@@ -2581,7 +2582,7 @@ public class CustomItemProviderService {
       if (_isNullOrEmpty) {
         _xifexpression_1 = "<distribution>";
       } else {
-        _xifexpression_1 = distName;
+        _xifexpression_1 = CustomItemProviderService.trimDistName(distName);
       }
       final String s2 = _xifexpression_1;
       return ((("Access: " + s1) + " -- Latency (deviation): ") + s2);
@@ -2604,7 +2605,7 @@ public class CustomItemProviderService {
       if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_DEVIATION__DEVIATION)) {
         _matched=true;
         Object _notifier_1 = notification.getNotifier();
-        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);
+        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
         list.add(_viewerNotification_1);
       }
     }
@@ -4099,7 +4100,7 @@ public class CustomItemProviderService {
       if (_isNullOrEmpty) {
         _xifexpression = "<distribution>";
       } else {
-        _xifexpression = distName;
+        _xifexpression = CustomItemProviderService.trimDistName(distName);
       }
       final String s1 = _xifexpression;
       return ("instructions (deviation): " + s1);
