@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0">
+  <swModel>
+    <isrs name="isr1"/>
+    <tasks name="t1"/>
+    <runnables name="r1"/>
+    <runnables name="r2"/>
+    <runnables name="r3"/>
+  </swModel>
+</am:Amalthea>

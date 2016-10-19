@@ -87,7 +87,8 @@ public abstract class AbstractConverterTest {
 		this.logger.setLevel(Level.ERROR);
 	}
 
-	public AbstractConverterTest(final String[] xmlFilesRelative, final boolean canExecuteTestCase) {
+	public AbstractConverterTest(final String testDataId, final String[] xmlFilesRelative,
+			final boolean canExecuteTestCase) {
 
 		this.filesMap_input_output = new HashMap<String, String>();
 

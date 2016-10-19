@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <isrs name="isr1"/>
+    <tasks name="t1"/>
+    <runnables name="r1"/>
+    <runnables name="r2"/>
+    <runnables name="r3"/>
+  </swModel>
+  <hwModel>
+    <system/>
+  </hwModel>
+  <osModel>
+    <operatingSystems>
+      <taskSchedulers name="ts1"/>
+    </operatingSystems>
+  </osModel>
+  <constraintsModel>
+    <affinityConstraints xsi:type="am:SchedulerPairingConstraint" name="spc1">
+      <schedulers schedulers="ts1?type=TaskScheduler"/>
+    </affinityConstraints>
+    <affinityConstraints xsi:type="am:SchedulerSeparationConstraint" name="spc2">
+      <groups schedulers="ts1?type=TaskScheduler"/>
+    </affinityConstraints>
+    <runnableSequencingConstraints>
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="r1?type=Runnable" processScope="isr1?type=ISR t1?type=Task"/>
+        <entries runnable="r1?type=Runnable" processScope="isr1?type=ISR t1?type=Task"/>
+        <entries runnable="r1?type=Runnable">
+          <processScope xsi:type="am:ISR" href="amlt:/#isr1?type=ISR"/>
+          <processScope xsi:type="am:Task" href="amlt:/#t1?type=Task"/>
+          <processScope xsi:type="am:ISR" href="amlt:/#isr1?type=ISR"/>
+          <processScope xsi:type="am:Task" href="amlt:/#t1?type=Task"/>
+        </entries>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+  </constraintsModel>
+</am:Amalthea>

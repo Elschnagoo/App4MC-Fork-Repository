@@ -35,19 +35,19 @@ import org.junit.runners.Parameterized;
 public class Sw_SectionConverterTest extends AbstractConverterTest {
 
 
-	@Parameterized.Parameters(name = "{index}: Test file: {1}")
+	@Parameterized.Parameters(name = "{index}: Test data ID: {0}")
 	public static Collection<Object[]> getTestData() {
 
 
 		final String[] inputFiles = new String[] { "/sw.sections/1.amxmi", "/sw.sections/2.amxmi",
 				"/sw.sections/3.amxmi" };
 
-		return Arrays.asList(new Object[][] { { true, inputFiles } });
+		return Arrays.asList(new Object[][] { { "Sections-Constraints-Conversion : 1", true, inputFiles } });
 	}
 
-	public Sw_SectionConverterTest(final boolean canExecuteTestCase, final String[] xmlFiles) {
+	public Sw_SectionConverterTest(final String testDataID, final boolean canExecuteTestCase, final String[] xmlFiles) {
 
-		super(xmlFiles, canExecuteTestCase);
+		super(testDataID, xmlFiles, canExecuteTestCase);
 	}
 
 
