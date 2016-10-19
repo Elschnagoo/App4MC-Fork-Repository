@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0">
+  <swModel>
+    <runnables name="r1"/>
+    <runnables name="r2"/>
+  </swModel>
+  <constraintsModel>
+    <runnableSequencingConstraints orderType="successor">
+      <runnableGroups groupingType="allOfThem">
+        <entries runnable="r1?type=Runnable"/>
+        <entries runnable="r2?type=Runnable"/>
+        <entries runnable="r1?type=Runnable"/>
+      </runnableGroups>
+    </runnableSequencingConstraints>
+  </constraintsModel>
+</am:Amalthea>

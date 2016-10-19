@@ -38,7 +38,8 @@ public class ConstraintsConverterTest extends AbstractConverterTest {
 	@Parameterized.Parameters(name = "{index}: Test data ID: {0}. Description : {3}")
 	public static Collection<Object[]> getTestData() {
 
-		final String[] inputFiles_500501 = new String[] { "/constraints/constraints_500502.amxmi" };
+		final String[] inputFiles_500501 = new String[] { "/constraints/constraints_500501.amxmi",
+				"/constraints/constraints_2_500501.amxmi" };
 
 		final String[] inputFiles_500502 = new String[] { "/constraints/constraints_500502.amxmi",
 				"/constraints/constraints_sw_model.amxmi" };
@@ -111,12 +112,13 @@ public class ConstraintsConverterTest extends AbstractConverterTest {
 	private void verify_ProcessRunnableGroup(final File file, final Element rootElement) {
 
 		final List<Element> runnableGroups = this.helper.getXpathResult(rootElement,
-				"./constraintsModel/runnableSequencingConstraints/runnableGroups[@groupingType]", Element.class,
-				this.helper.getGenericNS("xsi"), this.helper.getNS_071("am"));
+				"./constraintsModel/runnableSequencingConstraints/runnableGroups[@groupingType or not(./runnables)]",
+				Element.class, this.helper.getGenericNS("xsi"), this.helper.getNS_071("am"));
 
 
 		Assert.assertTrue("ProcessRunnableGroup is not migrated to 0.7.1 format in model file : " + file.getName(),
 				runnableGroups.size() == 0);
+
 
 	}
 
