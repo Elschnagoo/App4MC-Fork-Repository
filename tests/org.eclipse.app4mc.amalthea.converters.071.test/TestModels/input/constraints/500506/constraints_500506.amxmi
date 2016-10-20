@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <constraintsModel>
+    <eventChains name="ec1"/>
+    <timingConstraints xsi:type="am:OrderConstraint" name="oc1" source="le?type=LabelEvent" target="le?type=LabelEvent"/>
+    <timingConstraints xsi:type="am:OrderConstraint" name="oc2" source="le?type=LabelEvent" target="le?type=LabelEvent"/>
+    <timingConstraints xsi:type="am:OrderConstraint" name="oc3" source="le?type=LabelEvent" target="le?type=LabelEvent"/>
+    <timingConstraints xsi:type="am:OrderConstraint" name="oc4" source="le?type=LabelEvent" target="le?type=LabelEvent"/>
+    <timingConstraints xsi:type="am:AgeConstraint" name="ac1" scope="ec1?type=EventChain">
+      <maximum value="55" unit="s"/>
+      <minimum value="555" unit="s"/>
+    </timingConstraints>
+    <timingConstraints xsi:type="am:ReactionConstraint" name="rc1" scope="ec1?type=EventChain"/>
+    <timingConstraints xsi:type="am:DelayConstraint" name="dc1" source="le?type=LabelEvent" target="le?type=LabelEvent"/>
+    <timingConstraints xsi:type="am:DelayConstraint" name="dc2" source="le?type=LabelEvent" target="le?type=LabelEvent"/>
+    <timingConstraints xsi:type="am:DelayConstraint" name="dc3" source="le?type=LabelEvent" target="le?type=LabelEvent"/>
+    <timingConstraints xsi:type="am:DelayConstraint" name="dc4" source="le?type=LabelEvent" target="le?type=LabelEvent"/>
+    <timingConstraints xsi:type="am:DelayConstraint" name="dc5" source="le?type=LabelEvent" target="le?type=LabelEvent"/>
+    <timingConstraints xsi:type="am:SynchronisationConstraint" name="sc1" events="le?type=LabelEvent">
+      <tolerance value="33" unit="ms"/>
+    </timingConstraints>
+  </constraintsModel>
+  <configModel>
+    <eventsToTrace xsi:type="am:EventConfigElement" name="ecf">
+      <event xsi:type="am:LabelEvent" name="le" eventType="read"/>
+    </eventsToTrace>
+  </configModel>
+</am:Amalthea>

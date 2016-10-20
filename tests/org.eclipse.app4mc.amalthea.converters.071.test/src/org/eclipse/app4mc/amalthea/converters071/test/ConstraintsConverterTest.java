@@ -38,14 +38,17 @@ public class ConstraintsConverterTest extends AbstractConverterTest {
 	@Parameterized.Parameters(name = "{index}: Test data ID: {0}. Description : {3}")
 	public static Collection<Object[]> getTestData() {
 
-		final String[] inputFiles_500501 = new String[] { "/constraints/constraints_500501.amxmi",
-				"/constraints/constraints_2_500501.amxmi" };
+		final String[] inputFiles_500501 = new String[] { "/constraints/500501/constraints_500501.amxmi",
+				"/constraints/500501/constraints_2_500501.amxmi" };
 
-		final String[] inputFiles_500502 = new String[] { "/constraints/constraints_500502.amxmi",
-				"/constraints/constraints_sw_model.amxmi" };
+		final String[] inputFiles_500502 = new String[] { "/constraints/500502/constraints_500502.amxmi",
+				"/constraints/500502/constraints_sw_model.amxmi" };
+
+		final String[] inputFiles_500506 = new String[] { "/constraints/500506/constraints_500506.amxmi" };
 
 		return Arrays.asList(new Object[][] { { "500501", true, inputFiles_500501, "AffinityConstraint change" },
-				{ "500502", true, inputFiles_500502, "RunnableSequencingConstraint change" } });
+				{ "500502", true, inputFiles_500502, "RunnableSequencingConstraint change" },
+				{ "500506", true, inputFiles_500506, "Timing Constraints  change" } });
 	}
 
 	public ConstraintsConverterTest(final String testDataID, final boolean canExecuteTestCase, final String[] xmlFiles,
@@ -79,6 +82,17 @@ public class ConstraintsConverterTest extends AbstractConverterTest {
 			 */
 			verify_affinityConstraints(file, rootElement);
 
+			/*-
+			 * ===Verifying existance of OrderConstraint content===
+			 */
+			verify_OrderConstraints(file, rootElement);
+
+			/*-
+			 * ===Verifying existance of EventChainLatencyConstraint content (Age/Reaction), DelayConstraints -> mappingType, SynchronisationConstraint
+			===
+			 */
+			verify_Age_Reaction_Delay_Synchronisation__Constraints(file, rootElement);
+
 
 			/* ============Verifying ProcessRunnableGroupEntry content ========== */
 
@@ -89,6 +103,48 @@ public class ConstraintsConverterTest extends AbstractConverterTest {
 			verify_ProcessRunnableGroup(file, rootElement);
 
 		}
+
+
+	}
+
+	private void verify_Age_Reaction_Delay_Synchronisation__Constraints(final File file, final Element rootElement) {
+
+		final List<Element> age_reaction_Constraints = this.helper.getXpathResult(rootElement,
+				"./constraintsModel/timingConstraints[@xsi:type=\"am:AgeConstraint\" or @xsi:type=\"am:ReactionConstraint\"]",
+				Element.class, this.helper.getGenericNS("xsi"), this.helper.getNS_071("am"));
+
+		Assert.assertTrue("Age/Reaction Constraints are not migrated to 0.7.1 format in model file : " + file.getName(),
+				age_reaction_Constraints.size() == 0);
+
+
+		final List<Element> delayConstraints = this.helper.getXpathResult(rootElement,
+				"./constraintsModel/timingConstraints[@xsi:type=\"am:DelayConstraint\" and not(@mappingType)]",
+				Element.class, this.helper.getGenericNS("xsi"), this.helper.getNS_071("am"));
+
+		Assert.assertTrue("DelayConstraints are not migrated to 0.7.1 format in model file : " + file.getName(),
+				delayConstraints.size() == 0);
+
+
+		final List<Element> synchronisationConstraints = this.helper.getXpathResult(rootElement,
+				"./constraintsModel/timingConstraints[@xsi:type=\"am:SynchronisationConstraint\"]", Element.class,
+				this.helper.getGenericNS("xsi"), this.helper.getNS_071("am"));
+
+		Assert.assertTrue(
+				"SynchronisationConstraints are not migrated to 0.7.1 format in model file : " + file.getName(),
+				synchronisationConstraints.size() == 0);
+
+
+	}
+
+	private void verify_OrderConstraints(final File file, final Element rootElement) {
+
+
+		final List<Element> orderConstraints = this.helper.getXpathResult(rootElement,
+				"./constraintsModel/timingConstraints[@xsi:type=\"am:OrderConstraint\"]", Element.class,
+				this.helper.getGenericNS("xsi"), this.helper.getNS_071("am"));
+
+		Assert.assertTrue("OrderConstraint are not migrated to 0.7.1 format in model file : " + file.getName(),
+				orderConstraints.size() == 0);
 
 
 	}

@@ -19,6 +19,7 @@ import java.util.Set;
 import org.apache.log4j.LogManager;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters071.utils.HelperUtils_070_071;
+import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
@@ -51,6 +52,103 @@ public class ConstraintsConverter extends AbstractConverter {
 		/*- Migration of groupingType attribute of ProcessRunnableGroup  --> as per Bug: 500501 */
 
 		update_ProcessRunnableGroup(rootElement);
+
+		/*- Migration of OrderConstraint as per Bug: 500506 */
+
+		remove_OrderConstraints(rootElement);
+
+		/*- Migration of Age/Reaction/Delay/Synchronisation Constraints as per Bug: 500506 */
+
+		update_Age_Reaction_Delay_SynchronisationConstraints(rootElement);
+	}
+
+	/**
+	 * Bug: 500506<br>
+	 * This method is used to migrate the below Elements:
+	 *
+	 * <pre>
+	 * 1. AgeConstraint
+	 *			 AgeConstraint object is changed to EventChainLatencyConstraint.
+	 *			 LatencyType attribute should be : Age
+	 * 2. ReactionConstraint
+	 *			 ReactionConstraint object is changed to EventChainLatencyConstraint
+	 *			 LatencyType attribute should be : Reaction
+	 * 3. DelayConstraint
+	 *			 mappingType value is set as "Reaction"
+	 *
+	 * </pre>
+	 *
+	 * @param rootElement
+	 *            Root Element of AMALTHEA model file
+	 */
+	private void update_Age_Reaction_Delay_SynchronisationConstraints(final Element rootElement) {
+
+
+		final List<Element> ageConstraints = this.helper.getXpathResult(rootElement,
+				"./constraintsModel/timingConstraints[@xsi:type=\"am:AgeConstraint\" or @xsi:type=\"am:ReactionConstraint\" or  @xsi:type=\"am:DelayConstraint\" or @xsi:type=\"am:SynchronisationConstraint\"]",
+				Element.class, this.helper.getGenericNS("xsi"), this.helper.getNS_071("am"));
+
+		for (final Element constraint : ageConstraints) {
+
+			final Attribute typeAttrib = constraint.getAttribute("type", this.helper.getGenericNS("xsi"));
+
+			final String attribValue = typeAttrib.getValue();
+
+			if (attribValue.equals("am:AgeConstraint")) {
+
+				/*- Migrating AgeConstraint elements to EventChainLatencyConstraint */
+
+				typeAttrib.setValue("am:EventChainLatencyConstraint");
+
+				constraint.setAttribute("type", "Age");
+
+			}
+			else if (attribValue.equals("am:ReactionConstraint")) {
+
+				/*- Migrating ReactionConstraint elements to EventChainLatencyConstraint */
+
+				typeAttrib.setValue("am:EventChainLatencyConstraint");
+
+				constraint.setAttribute("type", "Reaction");
+
+			}
+			else if (attribValue.equals("am:SynchronisationConstraint")) {
+
+				/*- Migrating SynchronisationConstraint elements to EventSynchronizationConstraint */
+
+				typeAttrib.setValue("am:EventSynchronizationConstraint");
+
+			}
+			else if (attribValue.equals("am:DelayConstraint")) {
+
+				/*- Migrating DelayConstraint */
+
+				constraint.setAttribute("mappingType", "Reaction");
+			}
+
+
+		}
+
+
+	}
+
+	/**
+	 * As per the changes introduced in 0.7.1, OrderConstraint elements are removed from data model
+	 *
+	 * For details refer to : Bug: 500506
+	 *
+	 * @param rootElement
+	 */
+	private void remove_OrderConstraints(final Element rootElement) {
+
+		final List<Element> constraints = this.helper.getXpathResult(rootElement,
+				"./constraintsModel/timingConstraints[@xsi:type=\"am:OrderConstraint\"]", Element.class,
+				this.helper.getGenericNS("xsi"), this.helper.getNS_071("am"));
+
+		for (final Element constraint : constraints) {
+			constraint.getParentElement().removeContent(constraint);
+		}
+
 	}
 
 	/**

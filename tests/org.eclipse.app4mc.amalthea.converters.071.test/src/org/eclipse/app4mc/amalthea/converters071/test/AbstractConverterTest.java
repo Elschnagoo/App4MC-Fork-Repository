@@ -414,6 +414,10 @@ public abstract class AbstractConverterTest {
 
 	public void verification() {
 
+		if (!this.canExecuteTestCase) {
+			return;
+		}
+
 		parseGeneratedXMLFiles();
 
 		final Collection<Document> values = this.fileName_documentsMap.values();
