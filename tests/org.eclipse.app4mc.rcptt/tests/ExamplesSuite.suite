@@ -4,8 +4,8 @@ Element-Name: ExamplesSuite
 Element-Type: testsuite
 Element-Version: 2.0
 Id: _tovwMKe9EeWKy_GaRsFWZw
-Runtime-Version: 2.0.2.201511100828
-Save-Time: 12/21/15 9:35 AM
+Runtime-Version: 2.0.1.201508250612
+Save-Time: 10/21/16 3:19 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -13,5 +13,6 @@ Entry-Name: testcase-items
 
 _Zq41kKPWEeWVxtFugvjRhw	// kind: 'test' name: 'CheckExamplesExisting' path: 'examples/CheckExamplesExisting.test'
 _kOzJIKPqEeWDWL6qw48qbg	// kind: 'test' name: 'DemocarWorkflowExecution' path: 'examples/DemocarWorkflowExecution.test'
+_CcJU0JaLEeafz_EptLyTIQ	// kind: 'test' name: 'CheckExamplesProblems' path: 'examples/CheckExamplesProblems.test'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
