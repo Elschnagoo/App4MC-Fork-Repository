@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ComponentScopeImpl extends DataCoherencyGroupScopeImpl implements ComponentScope {
+public class ComponentScopeImpl extends DataGroupScopeImpl implements ComponentScope {
 	/**
 	 * The cached value of the '{@link #getComponent() <em>Component</em>}' reference.
 	 * <!-- begin-user-doc -->

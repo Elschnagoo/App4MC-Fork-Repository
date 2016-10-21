@@ -80,14 +80,15 @@ import org.eclipse.app4mc.amalthea.model.DataAgeConstraint;
 import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
 import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
-import org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataConstraint;
 import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
+import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
+import org.eclipse.app4mc.amalthea.model.DataStabilityGroup;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
@@ -850,8 +851,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createDataCoherencyGroupAdapter();
 			}
 			@Override
-			public Adapter caseDataCoherencyGroupScope(DataCoherencyGroupScope object) {
-				return createDataCoherencyGroupScopeAdapter();
+			public Adapter caseDataStabilityGroup(DataStabilityGroup object) {
+				return createDataStabilityGroupAdapter();
+			}
+			@Override
+			public Adapter caseDataGroupScope(DataGroupScope object) {
+				return createDataGroupScopeAdapter();
 			}
 			@Override
 			public Adapter caseProcessScope(ProcessScope object) {
@@ -3276,16 +3281,30 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope <em>Data Coherency Group Scope</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DataStabilityGroup <em>Data Stability Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope
+	 * @see org.eclipse.app4mc.amalthea.model.DataStabilityGroup
 	 * @generated
 	 */
-	public Adapter createDataCoherencyGroupScopeAdapter() {
+	public Adapter createDataStabilityGroupAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DataGroupScope <em>Data Group Scope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.DataGroupScope
+	 * @generated
+	 */
+	public Adapter createDataGroupScopeAdapter() {
 		return null;
 	}
 

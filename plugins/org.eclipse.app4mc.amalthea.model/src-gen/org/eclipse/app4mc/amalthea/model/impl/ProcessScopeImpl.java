@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ProcessScopeImpl extends DataCoherencyGroupScopeImpl implements ProcessScope {
+public class ProcessScopeImpl extends DataGroupScopeImpl implements ProcessScope {
 	/**
 	 * The cached value of the '{@link #getProcess() <em>Process</em>}' reference.
 	 * <!-- begin-user-doc -->

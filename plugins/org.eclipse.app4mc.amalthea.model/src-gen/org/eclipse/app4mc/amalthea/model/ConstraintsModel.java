@@ -41,6 +41,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ConstraintsModel#getDataAgeConstraints <em>Data Age Constraints</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ConstraintsModel#getRequirements <em>Requirements</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ConstraintsModel#getDataCoherencyGroups <em>Data Coherency Groups</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ConstraintsModel#getDataStabilityGroups <em>Data Stability Groups</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ConstraintsModel#getPhysicalSectionConstraints <em>Physical Section Constraints</em>}</li>
  * </ul>
  *
@@ -160,6 +161,22 @@ public interface ConstraintsModel extends BaseObject {
 	 * @generated
 	 */
 	EList<DataCoherencyGroup> getDataCoherencyGroups();
+
+	/**
+	 * Returns the value of the '<em><b>Data Stability Groups</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.DataStabilityGroup}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Data Stability Groups</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Data Stability Groups</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConstraintsModel_DataStabilityGroups()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	EList<DataStabilityGroup> getDataStabilityGroups();
 
 	/**
 	 * Returns the value of the '<em><b>Physical Section Constraints</b></em>' containment reference list.

@@ -80,14 +80,15 @@ import org.eclipse.app4mc.amalthea.model.DataAgeConstraint;
 import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
 import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
-import org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataConstraint;
 import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
+import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
+import org.eclipse.app4mc.amalthea.model.DataStabilityGroup;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
@@ -1325,30 +1326,39 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.DATA_COHERENCY_GROUP_SCOPE: {
-				DataCoherencyGroupScope dataCoherencyGroupScope = (DataCoherencyGroupScope)theEObject;
-				T1 result = caseDataCoherencyGroupScope(dataCoherencyGroupScope);
+			case AmaltheaPackage.DATA_STABILITY_GROUP: {
+				DataStabilityGroup dataStabilityGroup = (DataStabilityGroup)theEObject;
+				T1 result = caseDataStabilityGroup(dataStabilityGroup);
+				if (result == null) result = caseReferableBaseObject(dataStabilityGroup);
+				if (result == null) result = caseIAnnotatable(dataStabilityGroup);
+				if (result == null) result = caseIReferable(dataStabilityGroup);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.DATA_GROUP_SCOPE: {
+				DataGroupScope dataGroupScope = (DataGroupScope)theEObject;
+				T1 result = caseDataGroupScope(dataGroupScope);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.PROCESS_SCOPE: {
 				ProcessScope processScope = (ProcessScope)theEObject;
 				T1 result = caseProcessScope(processScope);
-				if (result == null) result = caseDataCoherencyGroupScope(processScope);
+				if (result == null) result = caseDataGroupScope(processScope);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.RUNNABLE_SCOPE: {
 				RunnableScope runnableScope = (RunnableScope)theEObject;
 				T1 result = caseRunnableScope(runnableScope);
-				if (result == null) result = caseDataCoherencyGroupScope(runnableScope);
+				if (result == null) result = caseDataGroupScope(runnableScope);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.COMPONENT_SCOPE: {
 				ComponentScope componentScope = (ComponentScope)theEObject;
 				T1 result = caseComponentScope(componentScope);
-				if (result == null) result = caseDataCoherencyGroupScope(componentScope);
+				if (result == null) result = caseDataGroupScope(componentScope);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -4876,17 +4886,32 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Coherency Group Scope</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Data Stability Group</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Coherency Group Scope</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Data Stability Group</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataCoherencyGroupScope(DataCoherencyGroupScope object) {
+	public T1 caseDataStabilityGroup(DataStabilityGroup object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Group Scope</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Group Scope</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseDataGroupScope(DataGroupScope object) {
 		return null;
 	}
 

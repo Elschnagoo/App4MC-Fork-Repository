@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope;
+import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
@@ -25,18 +25,18 @@ import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data Coherency Group Scope</b></em>'.
+ * An implementation of the model object '<em><b>Data Group Scope</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public abstract class DataCoherencyGroupScopeImpl extends AmaltheaExtendedEObjectImpl implements DataCoherencyGroupScope {
+public abstract class DataGroupScopeImpl extends AmaltheaExtendedEObjectImpl implements DataGroupScope {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DataCoherencyGroupScopeImpl() {
+	protected DataGroupScopeImpl() {
 		super();
 	}
 
@@ -47,7 +47,7 @@ public abstract class DataCoherencyGroupScopeImpl extends AmaltheaExtendedEObjec
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getDataCoherencyGroupScope();
+		return AmaltheaPackage.eINSTANCE.getDataGroupScope();
 	}
 
 	/**
@@ -67,10 +67,10 @@ public abstract class DataCoherencyGroupScopeImpl extends AmaltheaExtendedEObjec
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.DATA_COHERENCY_GROUP_SCOPE___CONTAINER_NOTIFICATION_REQUIRED:
+			case AmaltheaPackage.DATA_GROUP_SCOPE___CONTAINER_NOTIFICATION_REQUIRED:
 				return containerNotificationRequired();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
 
-} //DataCoherencyGroupScopeImpl
+} //DataGroupScopeImpl

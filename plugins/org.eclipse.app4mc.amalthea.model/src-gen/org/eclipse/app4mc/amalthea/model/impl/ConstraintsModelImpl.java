@@ -19,6 +19,7 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.DataAgeConstraint;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
+import org.eclipse.app4mc.amalthea.model.DataStabilityGroup;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.Requirement;
@@ -50,6 +51,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ConstraintsModelImpl#getDataAgeConstraints <em>Data Age Constraints</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ConstraintsModelImpl#getRequirements <em>Requirements</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ConstraintsModelImpl#getDataCoherencyGroups <em>Data Coherency Groups</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ConstraintsModelImpl#getDataStabilityGroups <em>Data Stability Groups</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ConstraintsModelImpl#getPhysicalSectionConstraints <em>Physical Section Constraints</em>}</li>
  * </ul>
  *
@@ -125,6 +127,16 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 * @ordered
 	 */
 	protected EList<DataCoherencyGroup> dataCoherencyGroups;
+
+	/**
+	 * The cached value of the '{@link #getDataStabilityGroups() <em>Data Stability Groups</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDataStabilityGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<DataStabilityGroup> dataStabilityGroups;
 
 	/**
 	 * The cached value of the '{@link #getPhysicalSectionConstraints() <em>Physical Section Constraints</em>}' containment reference list.
@@ -244,6 +256,18 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<DataStabilityGroup> getDataStabilityGroups() {
+		if (dataStabilityGroups == null) {
+			dataStabilityGroups = new EObjectContainmentEList.Resolving<DataStabilityGroup>(DataStabilityGroup.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__DATA_STABILITY_GROUPS);
+		}
+		return dataStabilityGroups;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<PhysicalSectionConstraint> getPhysicalSectionConstraints() {
 		if (physicalSectionConstraints == null) {
 			physicalSectionConstraints = new EObjectContainmentEList.Resolving<PhysicalSectionConstraint>(PhysicalSectionConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__PHYSICAL_SECTION_CONSTRAINTS);
@@ -273,6 +297,8 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 				return ((InternalEList<?>)getRequirements()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.CONSTRAINTS_MODEL__DATA_COHERENCY_GROUPS:
 				return ((InternalEList<?>)getDataCoherencyGroups()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.CONSTRAINTS_MODEL__DATA_STABILITY_GROUPS:
+				return ((InternalEList<?>)getDataStabilityGroups()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.CONSTRAINTS_MODEL__PHYSICAL_SECTION_CONSTRAINTS:
 				return ((InternalEList<?>)getPhysicalSectionConstraints()).basicRemove(otherEnd, msgs);
 		}
@@ -301,6 +327,8 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 				return getRequirements();
 			case AmaltheaPackage.CONSTRAINTS_MODEL__DATA_COHERENCY_GROUPS:
 				return getDataCoherencyGroups();
+			case AmaltheaPackage.CONSTRAINTS_MODEL__DATA_STABILITY_GROUPS:
+				return getDataStabilityGroups();
 			case AmaltheaPackage.CONSTRAINTS_MODEL__PHYSICAL_SECTION_CONSTRAINTS:
 				return getPhysicalSectionConstraints();
 		}
@@ -344,6 +372,10 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 				getDataCoherencyGroups().clear();
 				getDataCoherencyGroups().addAll((Collection<? extends DataCoherencyGroup>)newValue);
 				return;
+			case AmaltheaPackage.CONSTRAINTS_MODEL__DATA_STABILITY_GROUPS:
+				getDataStabilityGroups().clear();
+				getDataStabilityGroups().addAll((Collection<? extends DataStabilityGroup>)newValue);
+				return;
 			case AmaltheaPackage.CONSTRAINTS_MODEL__PHYSICAL_SECTION_CONSTRAINTS:
 				getPhysicalSectionConstraints().clear();
 				getPhysicalSectionConstraints().addAll((Collection<? extends PhysicalSectionConstraint>)newValue);
@@ -381,6 +413,9 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 			case AmaltheaPackage.CONSTRAINTS_MODEL__DATA_COHERENCY_GROUPS:
 				getDataCoherencyGroups().clear();
 				return;
+			case AmaltheaPackage.CONSTRAINTS_MODEL__DATA_STABILITY_GROUPS:
+				getDataStabilityGroups().clear();
+				return;
 			case AmaltheaPackage.CONSTRAINTS_MODEL__PHYSICAL_SECTION_CONSTRAINTS:
 				getPhysicalSectionConstraints().clear();
 				return;
@@ -410,6 +445,8 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 				return requirements != null && !requirements.isEmpty();
 			case AmaltheaPackage.CONSTRAINTS_MODEL__DATA_COHERENCY_GROUPS:
 				return dataCoherencyGroups != null && !dataCoherencyGroups.isEmpty();
+			case AmaltheaPackage.CONSTRAINTS_MODEL__DATA_STABILITY_GROUPS:
+				return dataStabilityGroups != null && !dataStabilityGroups.isEmpty();
 			case AmaltheaPackage.CONSTRAINTS_MODEL__PHYSICAL_SECTION_CONSTRAINTS:
 				return physicalSectionConstraints != null && !physicalSectionConstraints.isEmpty();
 		}

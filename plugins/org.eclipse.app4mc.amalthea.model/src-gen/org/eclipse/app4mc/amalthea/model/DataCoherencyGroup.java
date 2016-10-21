@@ -58,12 +58,12 @@ public interface DataCoherencyGroup extends ReferableBaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scope</em>' containment reference.
-	 * @see #setScope(DataCoherencyGroupScope)
+	 * @see #setScope(DataGroupScope)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataCoherencyGroup_Scope()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	DataCoherencyGroupScope getScope();
+	DataGroupScope getScope();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.DataCoherencyGroup#getScope <em>Scope</em>}' containment reference.
@@ -73,7 +73,7 @@ public interface DataCoherencyGroup extends ReferableBaseObject {
 	 * @see #getScope()
 	 * @generated
 	 */
-	void setScope(DataCoherencyGroupScope value);
+	void setScope(DataGroupScope value);
 
 	/**
 	 * Returns the value of the '<em><b>Direction</b></em>' attribute.

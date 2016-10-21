@@ -29,7 +29,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface ComponentScope extends DataCoherencyGroupScope {
+public interface ComponentScope extends DataGroupScope {
 	/**
 	 * Returns the value of the '<em><b>Component</b></em>' reference.
 	 * <!-- begin-user-doc -->

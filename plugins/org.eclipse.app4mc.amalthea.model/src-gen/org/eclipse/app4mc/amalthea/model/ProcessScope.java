@@ -29,7 +29,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface ProcessScope extends DataCoherencyGroupScope {
+public interface ProcessScope extends DataGroupScope {
 	/**
 	 * Returns the value of the '<em><b>Process</b></em>' reference.
 	 * <!-- begin-user-doc -->

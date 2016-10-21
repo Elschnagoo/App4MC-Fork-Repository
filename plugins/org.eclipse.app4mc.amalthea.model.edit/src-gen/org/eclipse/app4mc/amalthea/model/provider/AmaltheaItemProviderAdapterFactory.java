@@ -1945,6 +1945,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DataStabilityGroup} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DataStabilityGroupItemProvider dataStabilityGroupItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DataStabilityGroup}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDataStabilityGroupAdapter() {
+		if (dataStabilityGroupItemProvider == null) {
+			dataStabilityGroupItemProvider = new DataStabilityGroupItemProvider(this);
+		}
+
+		return dataStabilityGroupItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ProcessScope} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5873,6 +5896,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (countRequirementLimitItemProvider != null) countRequirementLimitItemProvider.dispose();
 		if (timeRequirementLimitItemProvider != null) timeRequirementLimitItemProvider.dispose();
 		if (dataCoherencyGroupItemProvider != null) dataCoherencyGroupItemProvider.dispose();
+		if (dataStabilityGroupItemProvider != null) dataStabilityGroupItemProvider.dispose();
 		if (processScopeItemProvider != null) processScopeItemProvider.dispose();
 		if (runnableScopeItemProvider != null) runnableScopeItemProvider.dispose();
 		if (componentScopeItemProvider != null) componentScopeItemProvider.dispose();

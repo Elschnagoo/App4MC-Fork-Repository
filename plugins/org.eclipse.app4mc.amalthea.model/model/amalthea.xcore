@@ -694,6 +694,7 @@ class ConstraintsModel extends BaseObject
 	contains resolving Requirement [] requirements
 	
 	contains resolving DataCoherencyGroup [] dataCoherencyGroups
+	contains resolving DataStabilityGroup [] dataStabilityGroups
 	
 	contains resolving PhysicalSectionConstraint[] physicalSectionConstraints
 }
@@ -1241,36 +1242,41 @@ enum FrequencyMetric {
 }
 
 
-//////////////////////////// Data Coherency Group
+//////////////////////////// Data Groups (Coherency and Stability)
 
 class DataCoherencyGroup extends ReferableBaseObject {
 	refers Label [] labels
-	contains resolving DataCoherencyGroupScope scope
+	contains resolving DataGroupScope scope
 	CoherencyDirection direction
-}
-
-abstract class DataCoherencyGroupScope {
-	op boolean containerNotificationRequired() {
-		return true
-	}
-}
-
-class ProcessScope extends DataCoherencyGroupScope {
-	refers AbstractProcess process
-}
-
-class RunnableScope extends DataCoherencyGroupScope {
-	refers Runnable runnable
-}
-
-class ComponentScope  extends DataCoherencyGroupScope {
-	refers Component component
 }
 
 enum CoherencyDirection {
 	_undefined_ // Display: "<direction>"
 	input
 	output
+}
+
+class DataStabilityGroup extends ReferableBaseObject {
+	refers Label [] labels
+	contains resolving DataGroupScope scope
+}
+
+abstract class DataGroupScope {
+	op boolean containerNotificationRequired() {
+		return true
+	}
+}
+
+class ProcessScope extends DataGroupScope {
+	refers AbstractProcess process
+}
+
+class RunnableScope extends DataGroupScope {
+	refers Runnable runnable
+}
+
+class ComponentScope  extends DataGroupScope {
+	refers Component component
 }
 
 

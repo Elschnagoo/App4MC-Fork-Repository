@@ -83,6 +83,7 @@ import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
+import org.eclipse.app4mc.amalthea.model.DataStabilityGroup;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
@@ -435,6 +436,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.COUNT_REQUIREMENT_LIMIT: return createCountRequirementLimit();
 			case AmaltheaPackage.TIME_REQUIREMENT_LIMIT: return createTimeRequirementLimit();
 			case AmaltheaPackage.DATA_COHERENCY_GROUP: return createDataCoherencyGroup();
+			case AmaltheaPackage.DATA_STABILITY_GROUP: return createDataStabilityGroup();
 			case AmaltheaPackage.PROCESS_SCOPE: return createProcessScope();
 			case AmaltheaPackage.RUNNABLE_SCOPE: return createRunnableScope();
 			case AmaltheaPackage.COMPONENT_SCOPE: return createComponentScope();
@@ -1605,6 +1607,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public DataCoherencyGroup createDataCoherencyGroup() {
 		DataCoherencyGroupImpl dataCoherencyGroup = new DataCoherencyGroupImpl();
 		return dataCoherencyGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataStabilityGroup createDataStabilityGroup() {
+		DataStabilityGroupImpl dataStabilityGroup = new DataStabilityGroupImpl();
+		return dataStabilityGroup;
 	}
 
 	/**

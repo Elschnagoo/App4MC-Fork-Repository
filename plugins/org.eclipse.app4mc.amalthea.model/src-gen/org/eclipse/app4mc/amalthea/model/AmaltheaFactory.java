@@ -752,6 +752,15 @@ public interface AmaltheaFactory extends EFactory {
 	DataCoherencyGroup createDataCoherencyGroup();
 
 	/**
+	 * Returns a new object of class '<em>Data Stability Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Stability Group</em>'.
+	 * @generated
+	 */
+	DataStabilityGroup createDataStabilityGroup();
+
+	/**
 	 * Returns a new object of class '<em>Process Scope</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

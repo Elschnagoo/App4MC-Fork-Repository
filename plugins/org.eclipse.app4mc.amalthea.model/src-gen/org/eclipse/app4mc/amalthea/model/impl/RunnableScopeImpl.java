@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class RunnableScopeImpl extends DataCoherencyGroupScopeImpl implements RunnableScope {
+public class RunnableScopeImpl extends DataGroupScopeImpl implements RunnableScope {
 	/**
 	 * The cached value of the '{@link #getRunnable() <em>Runnable</em>}' reference.
 	 * <!-- begin-user-doc -->

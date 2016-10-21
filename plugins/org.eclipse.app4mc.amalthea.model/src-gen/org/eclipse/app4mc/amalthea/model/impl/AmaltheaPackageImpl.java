@@ -90,9 +90,9 @@ import org.eclipse.app4mc.amalthea.model.DataAgeConstraint;
 import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
 import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
-import org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataConstraint;
 import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
+import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
@@ -100,6 +100,7 @@ import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
+import org.eclipse.app4mc.amalthea.model.DataStabilityGroup;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
@@ -1195,7 +1196,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dataCoherencyGroupScopeEClass = null;
+	private EClass dataStabilityGroupEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataGroupScopeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4494,8 +4502,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getConstraintsModel_PhysicalSectionConstraints() {
+	public EReference getConstraintsModel_DataStabilityGroups() {
 		return (EReference)constraintsModelEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConstraintsModel_PhysicalSectionConstraints() {
+		return (EReference)constraintsModelEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -5736,8 +5753,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDataCoherencyGroupScope() {
-		return dataCoherencyGroupScopeEClass;
+	public EClass getDataStabilityGroup() {
+		return dataStabilityGroupEClass;
 	}
 
 	/**
@@ -5745,8 +5762,35 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDataCoherencyGroupScope__ContainerNotificationRequired() {
-		return dataCoherencyGroupScopeEClass.getEOperations().get(0);
+	public EReference getDataStabilityGroup_Labels() {
+		return (EReference)dataStabilityGroupEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataStabilityGroup_Scope() {
+		return (EReference)dataStabilityGroupEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataGroupScope() {
+		return dataGroupScopeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataGroupScope__ContainerNotificationRequired() {
+		return dataGroupScopeEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -11488,6 +11532,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(constraintsModelEClass, CONSTRAINTS_MODEL__DATA_AGE_CONSTRAINTS);
 		createEReference(constraintsModelEClass, CONSTRAINTS_MODEL__REQUIREMENTS);
 		createEReference(constraintsModelEClass, CONSTRAINTS_MODEL__DATA_COHERENCY_GROUPS);
+		createEReference(constraintsModelEClass, CONSTRAINTS_MODEL__DATA_STABILITY_GROUPS);
 		createEReference(constraintsModelEClass, CONSTRAINTS_MODEL__PHYSICAL_SECTION_CONSTRAINTS);
 
 		runnableSequencingConstraintEClass = createEClass(RUNNABLE_SEQUENCING_CONSTRAINT);
@@ -11683,8 +11728,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(dataCoherencyGroupEClass, DATA_COHERENCY_GROUP__SCOPE);
 		createEAttribute(dataCoherencyGroupEClass, DATA_COHERENCY_GROUP__DIRECTION);
 
-		dataCoherencyGroupScopeEClass = createEClass(DATA_COHERENCY_GROUP_SCOPE);
-		createEOperation(dataCoherencyGroupScopeEClass, DATA_COHERENCY_GROUP_SCOPE___CONTAINER_NOTIFICATION_REQUIRED);
+		dataStabilityGroupEClass = createEClass(DATA_STABILITY_GROUP);
+		createEReference(dataStabilityGroupEClass, DATA_STABILITY_GROUP__LABELS);
+		createEReference(dataStabilityGroupEClass, DATA_STABILITY_GROUP__SCOPE);
+
+		dataGroupScopeEClass = createEClass(DATA_GROUP_SCOPE);
+		createEOperation(dataGroupScopeEClass, DATA_GROUP_SCOPE___CONTAINER_NOTIFICATION_REQUIRED);
 
 		processScopeEClass = createEClass(PROCESS_SCOPE);
 		createEReference(processScopeEClass, PROCESS_SCOPE__PROCESS);
@@ -12684,9 +12733,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		countRequirementLimitEClass.getESuperTypes().add(this.getRequirementLimit());
 		timeRequirementLimitEClass.getESuperTypes().add(this.getRequirementLimit());
 		dataCoherencyGroupEClass.getESuperTypes().add(this.getReferableBaseObject());
-		processScopeEClass.getESuperTypes().add(this.getDataCoherencyGroupScope());
-		runnableScopeEClass.getESuperTypes().add(this.getDataCoherencyGroupScope());
-		componentScopeEClass.getESuperTypes().add(this.getDataCoherencyGroupScope());
+		dataStabilityGroupEClass.getESuperTypes().add(this.getReferableBaseObject());
+		processScopeEClass.getESuperTypes().add(this.getDataGroupScope());
+		runnableScopeEClass.getESuperTypes().add(this.getDataGroupScope());
+		componentScopeEClass.getESuperTypes().add(this.getDataGroupScope());
 		eventModelEClass.getESuperTypes().add(this.getBaseObject());
 		eventEClass.getESuperTypes().add(this.getReferableBaseObject());
 		eventSetEClass.getESuperTypes().add(this.getEvent());
@@ -13159,6 +13209,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getConstraintsModel_DataAgeConstraints(), this.getDataAgeConstraint(), null, "dataAgeConstraints", null, 0, -1, ConstraintsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConstraintsModel_Requirements(), this.getRequirement(), null, "requirements", null, 0, -1, ConstraintsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConstraintsModel_DataCoherencyGroups(), this.getDataCoherencyGroup(), null, "dataCoherencyGroups", null, 0, -1, ConstraintsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConstraintsModel_DataStabilityGroups(), this.getDataStabilityGroup(), null, "dataStabilityGroups", null, 0, -1, ConstraintsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConstraintsModel_PhysicalSectionConstraints(), this.getPhysicalSectionConstraint(), null, "physicalSectionConstraints", null, 0, -1, ConstraintsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableSequencingConstraintEClass, RunnableSequencingConstraint.class, "RunnableSequencingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -13353,12 +13404,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(dataCoherencyGroupEClass, DataCoherencyGroup.class, "DataCoherencyGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataCoherencyGroup_Labels(), this.getLabel(), null, "labels", null, 0, -1, DataCoherencyGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataCoherencyGroup_Scope(), this.getDataCoherencyGroupScope(), null, "scope", null, 0, 1, DataCoherencyGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataCoherencyGroup_Scope(), this.getDataGroupScope(), null, "scope", null, 0, 1, DataCoherencyGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataCoherencyGroup_Direction(), this.getCoherencyDirection(), "direction", null, 0, 1, DataCoherencyGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataCoherencyGroupScopeEClass, DataCoherencyGroupScope.class, "DataCoherencyGroupScope", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(dataStabilityGroupEClass, DataStabilityGroup.class, "DataStabilityGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataStabilityGroup_Labels(), this.getLabel(), null, "labels", null, 0, -1, DataStabilityGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataStabilityGroup_Scope(), this.getDataGroupScope(), null, "scope", null, 0, 1, DataStabilityGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getDataCoherencyGroupScope__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEClass(dataGroupScopeEClass, DataGroupScope.class, "DataGroupScope", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getDataGroupScope__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(processScopeEClass, ProcessScope.class, "ProcessScope", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProcessScope_Process(), this.getAbstractProcess(), null, "process", null, 0, 1, ProcessScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

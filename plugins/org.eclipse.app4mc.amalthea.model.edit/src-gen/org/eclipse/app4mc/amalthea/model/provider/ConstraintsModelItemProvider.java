@@ -79,6 +79,7 @@ public class ConstraintsModelItemProvider extends BaseObjectItemProvider {
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getConstraintsModel_DataAgeConstraints());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getConstraintsModel_Requirements());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getConstraintsModel_DataCoherencyGroups());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getConstraintsModel_DataStabilityGroups());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getConstraintsModel_PhysicalSectionConstraints());
 		}
 		return childrenFeatures;
@@ -149,6 +150,7 @@ public class ConstraintsModelItemProvider extends BaseObjectItemProvider {
 			case AmaltheaPackage.CONSTRAINTS_MODEL__DATA_AGE_CONSTRAINTS:
 			case AmaltheaPackage.CONSTRAINTS_MODEL__REQUIREMENTS:
 			case AmaltheaPackage.CONSTRAINTS_MODEL__DATA_COHERENCY_GROUPS:
+			case AmaltheaPackage.CONSTRAINTS_MODEL__DATA_STABILITY_GROUPS:
 			case AmaltheaPackage.CONSTRAINTS_MODEL__PHYSICAL_SECTION_CONSTRAINTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -261,6 +263,11 @@ public class ConstraintsModelItemProvider extends BaseObjectItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConstraintsModel_DataCoherencyGroups(),
 				 AmaltheaFactory.eINSTANCE.createDataCoherencyGroup()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConstraintsModel_DataStabilityGroups(),
+				 AmaltheaFactory.eINSTANCE.createDataStabilityGroup()));
 
 		newChildDescriptors.add
 			(createChildParameter

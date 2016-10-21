@@ -1347,6 +1347,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
           <xsd:element name="dataAgeConstraints" type="am:DataAgeConstraint"/>
           <xsd:element name="requirements" type="am:Requirement"/>
           <xsd:element name="dataCoherencyGroups" type="am:DataCoherencyGroup"/>
+          <xsd:element name="dataStabilityGroups" type="am:DataStabilityGroup"/>
           <xsd:element name="physicalSectionConstraints" type="am:PhysicalSectionConstraint"/>
         </xsd:choice>
       </xsd:extension>
@@ -2261,7 +2262,7 @@ maximum: Maximum allowed latency</xsd:documentation>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="labels" type="am:Label"/>
-          <xsd:element name="scope" type="am:DataCoherencyGroupScope"/>
+          <xsd:element name="scope" type="am:DataGroupScope"/>
         </xsd:choice>
         <xsd:attribute name="direction" type="am:CoherencyDirection"/>
         <xsd:attribute name="labels" type="xsd:string"/>
@@ -2269,17 +2270,29 @@ maximum: Maximum allowed latency</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="DataCoherencyGroup" type="am:DataCoherencyGroup"/>
-  <xsd:complexType abstract="true" name="DataCoherencyGroupScope">
+  <xsd:complexType name="DataStabilityGroup">
+    <xsd:complexContent>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="labels" type="am:Label"/>
+          <xsd:element name="scope" type="am:DataGroupScope"/>
+        </xsd:choice>
+        <xsd:attribute name="labels" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DataStabilityGroup" type="am:DataStabilityGroup"/>
+  <xsd:complexType abstract="true" name="DataGroupScope">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
   </xsd:complexType>
-  <xsd:element name="DataCoherencyGroupScope" type="am:DataCoherencyGroupScope"/>
+  <xsd:element name="DataGroupScope" type="am:DataGroupScope"/>
   <xsd:complexType name="ProcessScope">
     <xsd:complexContent>
-      <xsd:extension base="am:DataCoherencyGroupScope">
+      <xsd:extension base="am:DataGroupScope">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="process" type="am:AbstractProcess"/>
         </xsd:choice>
@@ -2290,7 +2303,7 @@ maximum: Maximum allowed latency</xsd:documentation>
   <xsd:element name="ProcessScope" type="am:ProcessScope"/>
   <xsd:complexType name="RunnableScope">
     <xsd:complexContent>
-      <xsd:extension base="am:DataCoherencyGroupScope">
+      <xsd:extension base="am:DataGroupScope">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="runnable" type="am:Runnable"/>
         </xsd:choice>
@@ -2301,7 +2314,7 @@ maximum: Maximum allowed latency</xsd:documentation>
   <xsd:element name="RunnableScope" type="am:RunnableScope"/>
   <xsd:complexType name="ComponentScope">
     <xsd:complexContent>
-      <xsd:extension base="am:DataCoherencyGroupScope">
+      <xsd:extension base="am:DataGroupScope">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="component" type="am:Component"/>
         </xsd:choice>

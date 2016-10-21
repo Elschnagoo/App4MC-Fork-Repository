@@ -16,15 +16,15 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Data Coherency Group Scope</b></em>'.
+ * A representation of the model object '<em><b>Data Group Scope</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataCoherencyGroupScope()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataGroupScope()
  * @model abstract="true"
  * @generated
  */
-public interface DataCoherencyGroupScope extends EObject {
+public interface DataGroupScope extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -34,4 +34,4 @@ public interface DataCoherencyGroupScope extends EObject {
 	 */
 	boolean containerNotificationRequired();
 
-} // DataCoherencyGroupScope
+} // DataGroupScope
