@@ -609,217 +609,217 @@
       </runnableItems>
     </runnables>
     <labels name="ABSActivation" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="ABSMode" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="APedPosition1" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="APedPosition2" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="APedSensor1Voltage" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="APedSensor2Voltage" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="ArbitratedBrakeForce" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="ArbitratedDiagnosisRequest" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="BaseFuelMassPerStroke" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="BrakeApplication" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="BrakeForce" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="BrakeForceCurrent" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="BrakeForceFeedback" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="BrakeForceVoltage" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="BrakeMonitorLevel" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="BrakePedalPosition" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="BrakePedalPosition1" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="BrakePedalPosition2" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="BrakePedalPositionVoltage1" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="BrakePedalPositionVoltage2" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="BrakeSafetyLevel" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="BrakeSafetyState" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="CalculatedBrakeForce" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="CaliperPosition" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="CylinderNumber" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="DecelerationRate1" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="DecelerationRate2" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="DecelerationVoltage1" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="DecelerationVoltage2" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="DesiredThrottlePosition" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="DesiredThrottlePositionVoltage" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="IgnitionTime" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="IgnitionTime1" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="IgnitionTime2" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="IgnitionTime3" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="IgnitionTime4" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="IgnitionTime5" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="IgnitionTime6" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="IgnitionTime7" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="IgnitionTime8" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="InjectionTime1" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="InjectionTime2" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="InjectionTime3" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="InjectionTime4" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="InjectionTime5" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="InjectionTime6" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="InjectionTime7" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="InjectionTime8" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="MAFRate" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="MAFSensorVoltage" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="MassAirFlow" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="MonitoredVehicleState" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="ThrottlePosition" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="ThrottleSensor1Voltage" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="ThrottleSensor2Voltage" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="TotalFuelMassPerStroke" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="TransientFuelMassPerStroke" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="TriggeredCylinderNumber" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="VehicleSpeed1" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="VehicleSpeed2" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="VehicleSpeedVoltage1" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="VehicleSpeedVoltage2" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="VotedAPedPosition" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="VotedBrakePedalPosition" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="VotedDecelerationRate" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="VotedVehicleSpeed" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="VotedWheelSpeed" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="WheelSpeed1" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="WheelSpeed2" buffered="notBuffered">
-      <size value="8" unit="bit"/>
+      <size value="8" unit="bit" />
     </labels>
     <labels name="WheelSpeedVoltage1" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <labels name="WheelSpeedVoltage2" buffered="notBuffered">
-      <size value="16" unit="bit"/>
+      <size value="16" unit="bit" />
     </labels>
     <activations xsi:type="am:PeriodicActivation" name="Timer_10MS">
       <offset value="100" unit="us" />
@@ -843,347 +843,347 @@
   </swModel>
   <constraintsModel>
     <runnableSequencingConstraints name="0" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="DecelerationSensorVoter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#DecelerationSensorVoter?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="ABSCalculation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#ABSCalculation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="1" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="VehicleSpeedSensorVoter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#VehicleSpeedSensorVoter?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="ABSCalculation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#ABSCalculation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="2" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="WheelSpeedSensorVoter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#WheelSpeedSensorVoter?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="ABSCalculation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#ABSCalculation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="3" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="APedSensor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#APedSensor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="APedVoter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#APedVoter?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="4" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="MassAirFlowSensor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#MassAirFlowSensor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BaseFuelMass?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BaseFuelMass?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="5" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="CaliperPositionCalculation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#CaliperPositionCalculation?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeActuator?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeActuator?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="6" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeForceActuation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeForceActuation?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeActuatorMonitor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeActuatorMonitor?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="7" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="ABSCalculation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#ABSCalculation?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeForceActuation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeForceActuation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="8" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeForceArbiter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeForceArbiter?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="ABSCalculation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#ABSCalculation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="9" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeForceCalculation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeForceCalculation?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeForceArbiter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeForceArbiter?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="10" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeSafetyMonitor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeSafetyMonitor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeForceArbiter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeForceArbiter?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="12" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="CheckPlausability?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#CheckPlausability?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeForceCalculation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeForceCalculation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="13" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="EcuBrakePedalSensor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#EcuBrakePedalSensor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakePedalSensorDiagnosis?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakePedalSensorDiagnosis?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="14" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="EcuBrakePedalSensor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#EcuBrakePedalSensor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakePedalSensorTranslation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakePedalSensorTranslation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="15" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakePedalSensorTranslation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakePedalSensorTranslation?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakePedalSensorVoter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakePedalSensorVoter?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="16" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeForceCalculation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeForceCalculation?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeSafetyMonitor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeSafetyMonitor?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="17" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="CheckPlausability?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#CheckPlausability?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeSafetyMonitor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeSafetyMonitor?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="18" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeForceActuation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeForceActuation?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="CaliperPositionCalculation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#CaliperPositionCalculation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="19" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakePedalSensorVoter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakePedalSensorVoter?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="CheckPlausability?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#CheckPlausability?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="20" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="EcuDecelerationSensor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#EcuDecelerationSensor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="DecelerationSensorDiagnosis?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#DecelerationSensorDiagnosis?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="21" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="EcuDecelerationSensor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#EcuDecelerationSensor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="DecelerationSensorTranslation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#DecelerationSensorTranslation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="22" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="DecelerationSensorTranslation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#DecelerationSensorTranslation?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="DecelerationSensorVoter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#DecelerationSensorVoter?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="23" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeActuator?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeActuator?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="EcuBrakeActuator?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#EcuBrakeActuator?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="24" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="StopLightActuator?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#StopLightActuator?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="EcuStopLightActuator?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#EcuStopLightActuator?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="25" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="EcuVehicleSpeedSensor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#EcuVehicleSpeedSensor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="VehicleSpeedSensorDiagnosis?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#VehicleSpeedSensorDiagnosis?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="26" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="EcuVehicleSpeedSensor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#EcuVehicleSpeedSensor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="VehicleSpeedSensorTranslation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#VehicleSpeedSensorTranslation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="27" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="EcuWheelSpeedSensor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#EcuWheelSpeedSensor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="WheelSpeedSensorDiagnosis?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#WheelSpeedSensorDiagnosis?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="28" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="EcuWheelSpeedSensor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#EcuWheelSpeedSensor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="WheelSpeedSensorTranslation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#WheelSpeedSensorTranslation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="29" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="CylNumObserver?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#CylNumObserver?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="IgnitionTimeActuation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#IgnitionTimeActuation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="30" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="IgnitionTiming?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#IgnitionTiming?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="IgnitionTimeActuation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#IgnitionTimeActuation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="31" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BaseFuelMass?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BaseFuelMass?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="IgnitionTiming?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#IgnitionTiming?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="32" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="CylNumObserver?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#CylNumObserver?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="InjectionTimeActuation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#InjectionTimeActuation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="33" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="TotalFuelMass?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#TotalFuelMass?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="InjectionTimeActuation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#InjectionTimeActuation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="34" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeForceArbiter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeForceArbiter?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="StopLightActuator?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#StopLightActuator?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="35" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="ThrottleController?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#ThrottleController?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="ThrottleActuator?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#ThrottleActuator?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="36" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="APedVoter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#APedVoter?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="ThrottleController?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#ThrottleController?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="37" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="ThrottleSensor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#ThrottleSensor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="ThrottleController?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#ThrottleController?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="38" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="TransientFuelMass?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#TransientFuelMass?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="TotalFuelMass?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#TotalFuelMass?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="39" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BaseFuelMass?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BaseFuelMass?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="TransientFuelMass?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#TransientFuelMass?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="40" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="VehicleSpeedSensorTranslation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#VehicleSpeedSensorTranslation?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="VehicleSpeedSensorVoter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#VehicleSpeedSensorVoter?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="41" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="VehicleStateMonitor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#VehicleStateMonitor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeForceCalculation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeForceCalculation?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="42" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="VehicleStateMonitor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#VehicleStateMonitor?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="BrakeSafetyMonitor?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#BrakeSafetyMonitor?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="43" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="WheelSpeedSensorTranslation?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#WheelSpeedSensorTranslation?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="WheelSpeedSensorVoter?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#WheelSpeedSensorVoter?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
   </constraintsModel>

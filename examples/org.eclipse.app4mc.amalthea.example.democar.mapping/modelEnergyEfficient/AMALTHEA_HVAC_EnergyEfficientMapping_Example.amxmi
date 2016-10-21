@@ -92,163 +92,163 @@
   </swModel>
   <constraintsModel>
     <runnableSequencingConstraints name="3" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hmi__sendToUI?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hmi__sendToUI?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="7" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__drvTempFlapCtrl__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__drvTempFlapCtrl__runCycle?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="8" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__drvTempFlapCtrl__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__drvTempFlapCtrl__runCycle?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hvacFlaps__setFlaps?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hvacFlaps__setFlaps?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="11" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__passTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__passTempAdapter__runCycle?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="12" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__passTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__passTempAdapter__runCycle?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__passTempFlapCtrl__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__passTempFlapCtrl__runCycle?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="13" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__passTempFlapCtrl__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__passTempFlapCtrl__runCycle?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hvacFlaps__setFlaps?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hvacFlaps__setFlaps?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="14" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__coordinator__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__coordinator__runCycle?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="16" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="18" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hvacItos__readTemp?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hvacItos__readTemp?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hmi__sendToUI?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hmi__sendToUI?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="0" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__coordinator__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__coordinator__runCycle?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hmi__sendToUI?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hmi__sendToUI?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="1" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hmi__sendToUI?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hmi__sendToUI?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="4" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hmi__receiveFromUI?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hmi__receiveFromUI?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__coordinator__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__coordinator__runCycle?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="5" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hmi__receiveFromUI?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hmi__receiveFromUI?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="19" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hvacItos__readTemp?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hvacItos__readTemp?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__drvTempFlapCtrl__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__drvTempFlapCtrl__runCycle?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="21" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hvacItos__readTemp?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hvacItos__readTemp?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="2" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__passTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__passTempAdapter__runCycle?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hmi__sendToUI?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hmi__sendToUI?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="9" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hmi__receiveFromUI?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hmi__receiveFromUI?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__passTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__passTempAdapter__runCycle?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="17" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hvacBlower__setPower?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hvacBlower__setPower?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="20" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hvacItos__readTemp?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hvacItos__readTemp?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__passTempFlapCtrl__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__passTempFlapCtrl__runCycle?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="22" orderType="successor">
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__coordinator__runCycle?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__coordinator__runCycle?type=Runnable" />
       </runnableGroups>
-      <runnableGroups groupingType="allOfThem">
-        <entries runnable="hVAC_YSCT__hvacFlaps__setFlaps?type=Runnable" />
+      <runnableGroups>
+        <runnables href="amlt:/#hVAC_YSCT__hvacFlaps__setFlaps?type=Runnable" />
       </runnableGroups>
     </runnableSequencingConstraints>
   </constraintsModel>
