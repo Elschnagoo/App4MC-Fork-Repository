@@ -76,7 +76,7 @@ The __Counter__ element describes an activation of a target element that happens
 
 table(#minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
-| __prescaler__ | Gives the number n for the activation,<br>e.g. if set to 2, the target element is executed every second time. |
+| __prescaler__ | Gives the number n for the activation,<br/>e.g. if set to 2, the target element is executed every second time. |
 | __offset__ | Initial shift for the first execution of the target. |
 
 If for example __prescaler__ is 5 and __offset__ is 2 it is executed on the 2<sup>nd</sup>, 7<sup>th</sup>, 12<sup>th</sup>, … time.
