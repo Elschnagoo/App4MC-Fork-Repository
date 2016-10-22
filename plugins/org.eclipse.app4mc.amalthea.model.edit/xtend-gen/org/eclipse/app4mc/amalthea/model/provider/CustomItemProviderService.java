@@ -41,7 +41,7 @@ import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
 import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
-import org.eclipse.app4mc.amalthea.model.DataCoherencyGroupScope;
+import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
@@ -1816,11 +1816,11 @@ public class CustomItemProviderService {
         _direction=((DataCoherencyGroup)object).getDirection();
       }
       final CoherencyDirection direction = _direction;
-      DataCoherencyGroupScope _scope = null;
+      DataGroupScope _scope = null;
       if (((DataCoherencyGroup)object)!=null) {
         _scope=((DataCoherencyGroup)object).getScope();
       }
-      final DataCoherencyGroupScope scope = _scope;
+      final DataGroupScope scope = _scope;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
       if (_isNullOrEmpty) {
