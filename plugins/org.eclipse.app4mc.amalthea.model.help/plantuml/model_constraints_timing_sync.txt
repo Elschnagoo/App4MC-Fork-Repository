@@ -1,0 +1,39 @@
+@startuml
+
+abstract class TimingConstraint {
+}
+
+TimingConstraint <|-- SynchronizationConstraint
+
+abstract class SynchronizationConstraint {
+	multipleOccurrencesAllowed : boolean
+}
+
+SynchronizationConstraint <|-- EventSynchronizationConstraint
+
+class EventSynchronizationConstraint {
+}
+
+
+
+package common {
+	class Time {
+		value : int
+		unit : TimeUnit
+	}
+
+	SynchronizationConstraint *--> "[0..1] tolerance" Time
+}
+
+
+
+package events {
+	abstract class EntityEvent {
+		name : String
+		description : String
+	}
+	
+	EntityEvent "[0..*] events" <--o EventSynchronizationConstraint
+}
+
+@enduml

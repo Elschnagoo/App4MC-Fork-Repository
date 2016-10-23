@@ -1,0 +1,46 @@
+@startuml
+
+interface IReferable {
+	name : String
+}
+
+IReferable <|-- AbstractProcess
+
+abstract class AbstractProcess {
+	priority : int
+}
+
+AbstractProcess <|-- Process
+
+abstract class Process {
+}
+
+abstract class Stimulus {
+}
+
+Stimulus "[0..*] stimuli" <- Process
+
+Process *-> "[0..1] callGraph" CallGraph
+
+class Task {
+	preemption : Preemption = _undefined_
+	multipleTaskActivationLimit : int
+	osekTaskGroup : int
+}
+
+Process <|-- Task
+
+
+class ISR {
+}
+
+Process <|-- ISR
+
+enum Preemption {
+	_undefined_
+	cooperative
+	preemptive
+	unknown
+}
+
+@enduml

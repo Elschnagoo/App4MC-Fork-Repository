@@ -1,0 +1,34 @@
+@startuml
+
+interface IReferable {
+	name : String
+}
+
+IReferable <|-- RunnableSequencingConstraint
+
+class RunnableSequencingConstraint {
+	orderType : RunnableOrderType = _undefined_
+}
+
+
+enum RunnableOrderType {
+	_undefined_
+	successor
+	immediateSuccessorStartSequence
+	immediateSuccessorAnySequence
+	immediateSuccessorEndSequence
+}
+
+RunnableSequencingConstraint *--> "[2..*] runnableGroups" ProcessRunnableGroup
+RunnableSequencingConstraint o--> "[0..*] processScope" AbstractProcess
+
+class ProcessRunnableGroup {
+}
+
+ProcessRunnableGroup o--> "[1..*] runnables" Runnable
+
+class Runnable {
+
+}
+
+@enduml

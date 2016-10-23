@@ -5,7 +5,15 @@ The Stimuli Model contains stimulus and clock objects.
 
 !(#scale)../pictures/model_stimuli.png!
 
-A stimulus is responsible to activate processes and there are different types of it. The stimulus of type Single activates the process only once. The inter-process stimulus defines an activation based on an explicit inter-process activation. The periodic stimulus has an offset time and a recurrence time. The first activation occurs at the offset time. Every following activation occurs after recurrence time.
+A stimulus is responsible to activate processes. The folowing different types are available:
+* *ArrivalCurve*: A list of time-borders in which a specified number of events are expected
+* *CustomStimulus*: To describe own custom types of activations, including properties
+* *InterProcess*: Activations based on an explicit inter-process activation*
+* *Periodic*: Periodic activations based on an offset and a recurrence.
+* *Single*: Activates the process only once
+* *Sporadic*: Sporadic activations of processes
+* *Synthetic*:  Activations periodically triggered depending on a defined list of trigger times.
+* *PeriodicEvent*: Periodic avtivations based on other events, like rotation speed dependency
 
 It is possible to define a deviation of time for every type of stimulus. For this, a stimulus can have an object of type Deviation, which refers to the deviation in the common model. This reference uses the class SignedTime as parameter for the generic values of the deviation. So the deviation is about time. The values (negative or positive) represents a shift of the activation to left or right on the time line. In this way it is possible to increase or decrease the activation time.
 

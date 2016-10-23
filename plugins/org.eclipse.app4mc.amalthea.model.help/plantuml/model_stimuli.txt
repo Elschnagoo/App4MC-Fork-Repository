@@ -1,0 +1,48 @@
+@startuml
+
+class StimuliModel {
+}
+
+StimuliModel *--> "[0..*] clocks" Clock
+
+abstract class Clock {
+}
+Clock <|-- ClockMultiplierList
+
+ClockMultiplierList *--> "[0..*] entries" ClockMultiplierListEntry
+
+class ClockMultiplierListEntry {
+multiplier : EDouble
+}
+
+Clock <|-- ClockTriangleFunction
+class ClockTriangleFunction {
+max : EDouble
+min : EDouble
+}
+
+Clock <|-- ClockSinusFunction
+class ClockSinusFunction {
+amplitude : EDouble
+yOffset : EDouble
+}
+
+StimuliModel *--> "[0..*] stimuli" Stimulus
+
+abstract class Stimulus {
+}
+
+Deviation "[0..1] stimulusDeviation" <-* Stimulus
+class Deviation <<T>>{
+}
+
+Stimulus <|-- Periodic
+Stimulus <|-- PeriodicEvent
+Stimulus <|-- Single
+Stimulus <|-- ArrivalCurve
+Stimulus <|-- Sporadic
+Stimulus <|-- InterProcess
+Stimulus <|-- CustomStimulus
+Stimulus <|-- Synthetic
+
+@enduml

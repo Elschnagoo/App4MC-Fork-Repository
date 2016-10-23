@@ -201,6 +201,7 @@ table(#minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 |_. Name |_. Description |
 | __name__ | Name of the process |
 | __priority__ | Priority of the process for priority based scheduling. |
+| __osekTaskGroup__ | Priority for defining groups of tasks according OSEK
 | __callGraph__ | List of task calls. This specifies the behavior of the process. The objects will be executed in the same order they are stored in the list. |
 | __preemption__ | Defines the preemption of a task by higher priority tasks. |
 | __multipleTaskActivationLimit__ | Defines the maximal number of existing instances from the same task, which is checked for load limitation reasons when a task is activated. For the case of an exceeded multipleTaskActivationLimit, the activation is ignored.|
