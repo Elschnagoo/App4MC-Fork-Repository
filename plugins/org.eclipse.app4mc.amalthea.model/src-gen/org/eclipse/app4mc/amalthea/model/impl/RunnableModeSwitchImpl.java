@@ -15,7 +15,8 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ModeSwitchItem;
+import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
+import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
@@ -42,8 +43,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableModeSwitchImpl#getValueProvider <em>Value Provider</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableModeSwitchImpl#getModeItems <em>Mode Items</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableModeSwitchImpl#getDefaultItems <em>Default Items</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableModeSwitchImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableModeSwitchImpl#getDefaultEntry <em>Default Entry</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,24 +61,24 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	protected ModeValueProvider valueProvider;
 
 	/**
-	 * The cached value of the '{@link #getModeItems() <em>Mode Items</em>}' containment reference list.
+	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getModeItems()
+	 * @see #getEntries()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ModeSwitchItem> modeItems;
+	protected EList<ModeSwitchEntry<RunnableItem>> entries;
 
 	/**
-	 * The cached value of the '{@link #getDefaultItems() <em>Default Items</em>}' containment reference list.
+	 * The cached value of the '{@link #getDefaultEntry() <em>Default Entry</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultItems()
+	 * @see #getDefaultEntry()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RunnableItem> defaultItems;
+	protected ModeSwitchDefault<RunnableItem> defaultEntry;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -141,11 +142,11 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ModeSwitchItem> getModeItems() {
-		if (modeItems == null) {
-			modeItems = new EObjectContainmentEList.Resolving<ModeSwitchItem>(ModeSwitchItem.class, this, AmaltheaPackage.RUNNABLE_MODE_SWITCH__MODE_ITEMS);
+	public EList<ModeSwitchEntry<RunnableItem>> getEntries() {
+		if (entries == null) {
+			entries = new EObjectContainmentEList.Resolving<ModeSwitchEntry<RunnableItem>>(ModeSwitchEntry.class, this, AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES);
 		}
-		return modeItems;
+		return entries;
 	}
 
 	/**
@@ -153,11 +154,66 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<RunnableItem> getDefaultItems() {
-		if (defaultItems == null) {
-			defaultItems = new EObjectContainmentEList.Resolving<RunnableItem>(RunnableItem.class, this, AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ITEMS);
+	@SuppressWarnings("unchecked")
+	public ModeSwitchDefault<RunnableItem> getDefaultEntry() {
+		if (defaultEntry != null && defaultEntry.eIsProxy()) {
+			InternalEObject oldDefaultEntry = (InternalEObject)defaultEntry;
+			defaultEntry = (ModeSwitchDefault<RunnableItem>)eResolveProxy(oldDefaultEntry);
+			if (defaultEntry != oldDefaultEntry) {
+				InternalEObject newDefaultEntry = (InternalEObject)defaultEntry;
+				NotificationChain msgs = oldDefaultEntry.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY, null, null);
+				if (newDefaultEntry.eInternalContainer() == null) {
+					msgs = newDefaultEntry.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY, oldDefaultEntry, defaultEntry));
+			}
 		}
-		return defaultItems;
+		return defaultEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModeSwitchDefault<RunnableItem> basicGetDefaultEntry() {
+		return defaultEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDefaultEntry(ModeSwitchDefault<RunnableItem> newDefaultEntry, NotificationChain msgs) {
+		ModeSwitchDefault<RunnableItem> oldDefaultEntry = defaultEntry;
+		defaultEntry = newDefaultEntry;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY, oldDefaultEntry, newDefaultEntry);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefaultEntry(ModeSwitchDefault<RunnableItem> newDefaultEntry) {
+		if (newDefaultEntry != defaultEntry) {
+			NotificationChain msgs = null;
+			if (defaultEntry != null)
+				msgs = ((InternalEObject)defaultEntry).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY, null, msgs);
+			if (newDefaultEntry != null)
+				msgs = ((InternalEObject)newDefaultEntry).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY, null, msgs);
+			msgs = basicSetDefaultEntry(newDefaultEntry, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY, newDefaultEntry, newDefaultEntry));
 	}
 
 	/**
@@ -168,10 +224,10 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__MODE_ITEMS:
-				return ((InternalEList<?>)getModeItems()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ITEMS:
-				return ((InternalEList<?>)getDefaultItems()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES:
+				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY:
+				return basicSetDefaultEntry(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -187,10 +243,11 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER:
 				if (resolve) return getValueProvider();
 				return basicGetValueProvider();
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__MODE_ITEMS:
-				return getModeItems();
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ITEMS:
-				return getDefaultItems();
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES:
+				return getEntries();
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY:
+				if (resolve) return getDefaultEntry();
+				return basicGetDefaultEntry();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -207,13 +264,12 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER:
 				setValueProvider((ModeValueProvider)newValue);
 				return;
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__MODE_ITEMS:
-				getModeItems().clear();
-				getModeItems().addAll((Collection<? extends ModeSwitchItem>)newValue);
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES:
+				getEntries().clear();
+				getEntries().addAll((Collection<? extends ModeSwitchEntry<RunnableItem>>)newValue);
 				return;
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ITEMS:
-				getDefaultItems().clear();
-				getDefaultItems().addAll((Collection<? extends RunnableItem>)newValue);
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY:
+				setDefaultEntry((ModeSwitchDefault<RunnableItem>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -230,11 +286,11 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER:
 				setValueProvider((ModeValueProvider)null);
 				return;
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__MODE_ITEMS:
-				getModeItems().clear();
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES:
+				getEntries().clear();
 				return;
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ITEMS:
-				getDefaultItems().clear();
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY:
+				setDefaultEntry((ModeSwitchDefault<RunnableItem>)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -250,10 +306,10 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 		switch (featureID) {
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER:
 				return valueProvider != null;
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__MODE_ITEMS:
-				return modeItems != null && !modeItems.isEmpty();
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ITEMS:
-				return defaultItems != null && !defaultItems.isEmpty();
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES:
+				return entries != null && !entries.isEmpty();
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY:
+				return defaultEntry != null;
 		}
 		return super.eIsSet(featureID);
 	}

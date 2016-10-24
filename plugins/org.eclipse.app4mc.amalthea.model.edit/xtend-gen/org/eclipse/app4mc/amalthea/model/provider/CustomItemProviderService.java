@@ -120,6 +120,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.SamplingType;
@@ -4227,13 +4228,61 @@ public class CustomItemProviderService {
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
     }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH__ENTRIES)) {
-        _matched=true;
-        Object _notifier_1 = notification.getNotifier();
-        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);
-        list.add(_viewerNotification_1);
+    return list;
+  }
+  
+  /**
+   * RunnableModeSwitchItemProvider
+   */
+  public static String getRunnableModeSwitchItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof RunnableModeSwitch)) {
+      ModeValueProvider _valueProvider = ((RunnableModeSwitch)object).getValueProvider();
+      String _name = null;
+      if (_valueProvider!=null) {
+        _name=_valueProvider.getName();
       }
+      final String valueName = _name;
+      ModeValueProvider _valueProvider_1 = ((RunnableModeSwitch)object).getValueProvider();
+      Mode _mode = null;
+      if (_valueProvider_1!=null) {
+        _mode=_valueProvider_1.getMode();
+      }
+      String _name_1 = null;
+      if (_mode!=null) {
+        _name_1=_mode.getName();
+      }
+      final String modeName = _name_1;
+      String _xifexpression = null;
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(valueName);
+      if (_isNullOrEmpty) {
+        _xifexpression = "<mode label>";
+      } else {
+        _xifexpression = valueName;
+      }
+      final String s1 = _xifexpression;
+      String _xifexpression_1 = null;
+      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(modeName);
+      if (_isNullOrEmpty_1) {
+        _xifexpression_1 = "<mode>";
+      } else {
+        _xifexpression_1 = modeName;
+      }
+      final String s2 = _xifexpression_1;
+      return (((("Switch " + s1) + " (") + s2) + ")");
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getRunnableModeSwitchItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(RunnableModeSwitch.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH__VALUE_PROVIDER)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
     }
     return list;
   }
@@ -4242,32 +4291,28 @@ public class CustomItemProviderService {
    * ModeSwitchEntryItemProvider
    */
   public static String getModeSwitchEntryItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ModeSwitchEntry)) {
-      final boolean isDefault = ((ModeSwitchEntry)object).isDefault();
-      ModeLiteral _value = null;
-      if (((ModeSwitchEntry)object)!=null) {
-        _value=((ModeSwitchEntry)object).getValue();
+    if ((object instanceof ModeSwitchEntry<?>)) {
+      EList<ModeLiteral> _values = null;
+      if (((ModeSwitchEntry<?>)object)!=null) {
+        _values=((ModeSwitchEntry<?>)object).getValues();
       }
-      String _name = null;
-      if (_value!=null) {
-        _name=_value.getName();
+      String _join = null;
+      if (_values!=null) {
+        final Function1<ModeLiteral, CharSequence> _function = (ModeLiteral it) -> {
+          return it.getName();
+        };
+        _join=IterableExtensions.<ModeLiteral>join(_values, "", ", ", "", _function);
       }
-      final String valueName = _name;
+      final String valueName = _join;
+      final String s1 = "case: ";
       String _xifexpression = null;
-      if (isDefault) {
-        _xifexpression = "default: ";
-      } else {
-        _xifexpression = "case: ";
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(valueName);
       if (_isNullOrEmpty) {
-        _xifexpression_1 = "<mode literal>";
+        _xifexpression = "<mode literals>";
       } else {
-        _xifexpression_1 = valueName;
+        _xifexpression = valueName;
       }
-      final String s2 = _xifexpression_1;
+      final String s2 = _xifexpression;
       return (s1 + s2);
     } else {
       return defaultText;
@@ -4278,20 +4323,20 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ModeSwitchEntry.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__DEFAULT)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES)) {
       _matched=true;
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__VALUE)) {
-        _matched=true;
-      }
-    }
-    if (_matched) {
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
     }
     return list;
+  }
+  
+  /**
+   * ModeSwitchDefaultItemProvider
+   */
+  public static String getModeSwitchDefaultItemProviderText(final Object object, final String defaultText) {
+    return "default";
   }
   
   /**

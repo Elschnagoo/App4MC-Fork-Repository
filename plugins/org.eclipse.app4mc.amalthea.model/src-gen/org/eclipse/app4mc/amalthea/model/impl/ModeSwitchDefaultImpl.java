@@ -15,8 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ModeLiteral;
-import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
+import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -27,34 +26,22 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Mode Switch Entry</b></em>'.
+ * An implementation of the model object '<em><b>Mode Switch Default</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchEntryImpl#getValues <em>Values</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchEntryImpl#getItems <em>Items</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchDefaultImpl#getItems <em>Items</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitchEntry<T> {
-	/**
-	 * The cached value of the '{@link #getValues() <em>Values</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValues()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ModeLiteral> values;
-
+public class ModeSwitchDefaultImpl<T> extends BaseObjectImpl implements ModeSwitchDefault<T> {
 	/**
 	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -70,7 +57,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModeSwitchEntryImpl() {
+	protected ModeSwitchDefaultImpl() {
 		super();
 	}
 
@@ -81,19 +68,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getModeSwitchEntry();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<ModeLiteral> getValues() {
-		if (values == null) {
-			values = new EObjectResolvingEList<ModeLiteral>(ModeLiteral.class, this, AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES);
-		}
-		return values;
+		return AmaltheaPackage.eINSTANCE.getModeSwitchDefault();
 	}
 
 	/**
@@ -103,7 +78,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 */
 	public EList<T> getItems() {
 		if (items == null) {
-			items = new EObjectContainmentEList.Resolving<T>(EObject.class, this, AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS);
+			items = new EObjectContainmentEList.Resolving<T>(EObject.class, this, AmaltheaPackage.MODE_SWITCH_DEFAULT__ITEMS);
 		}
 		return items;
 	}
@@ -116,7 +91,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
+			case AmaltheaPackage.MODE_SWITCH_DEFAULT__ITEMS:
 				return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -130,9 +105,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES:
-				return getValues();
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
+			case AmaltheaPackage.MODE_SWITCH_DEFAULT__ITEMS:
 				return getItems();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -147,11 +120,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES:
-				getValues().clear();
-				getValues().addAll((Collection<? extends ModeLiteral>)newValue);
-				return;
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
+			case AmaltheaPackage.MODE_SWITCH_DEFAULT__ITEMS:
 				getItems().clear();
 				getItems().addAll((Collection<? extends T>)newValue);
 				return;
@@ -167,10 +136,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES:
-				getValues().clear();
-				return;
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
+			case AmaltheaPackage.MODE_SWITCH_DEFAULT__ITEMS:
 				getItems().clear();
 				return;
 		}
@@ -185,12 +151,10 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES:
-				return values != null && !values.isEmpty();
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
+			case AmaltheaPackage.MODE_SWITCH_DEFAULT__ITEMS:
 				return items != null && !items.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ModeSwitchEntryImpl
+} //ModeSwitchDefaultImpl

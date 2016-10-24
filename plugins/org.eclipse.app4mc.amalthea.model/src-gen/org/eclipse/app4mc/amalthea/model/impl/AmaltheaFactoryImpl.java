@@ -165,8 +165,8 @@ import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
+import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ModeSwitchItem;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.Network;
@@ -546,6 +546,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CALL_SEQUENCE: return createCallSequence();
 			case AmaltheaPackage.MODE_SWITCH: return createModeSwitch();
 			case AmaltheaPackage.MODE_SWITCH_ENTRY: return createModeSwitchEntry();
+			case AmaltheaPackage.MODE_SWITCH_DEFAULT: return createModeSwitchDefault();
 			case AmaltheaPackage.PROBABILTITY_SWITCH: return createProbabiltitySwitch();
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY: return createProbabilitySwitchEntry();
 			case AmaltheaPackage.COUNTER: return createCounter();
@@ -571,7 +572,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.SECTION: return createSection();
 			case AmaltheaPackage.MODE_LABEL_ACCESS: return createModeLabelAccess();
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH: return createRunnableModeSwitch();
-			case AmaltheaPackage.MODE_SWITCH_ITEM: return createModeSwitchItem();
 			case AmaltheaPackage.LABEL_ACCESS: return createLabelAccess();
 			case AmaltheaPackage.SEMAPHORE_ACCESS: return createSemaphoreAccess();
 			case AmaltheaPackage.SENDER_RECEIVER_READ: return createSenderReceiverRead();
@@ -2704,9 +2704,19 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModeSwitchEntry createModeSwitchEntry() {
-		ModeSwitchEntryImpl modeSwitchEntry = new ModeSwitchEntryImpl();
+	public <T> ModeSwitchEntry<T> createModeSwitchEntry() {
+		ModeSwitchEntryImpl<T> modeSwitchEntry = new ModeSwitchEntryImpl<T>();
 		return modeSwitchEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <T> ModeSwitchDefault<T> createModeSwitchDefault() {
+		ModeSwitchDefaultImpl<T> modeSwitchDefault = new ModeSwitchDefaultImpl<T>();
+		return modeSwitchDefault;
 	}
 
 	/**
@@ -2957,16 +2967,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public RunnableModeSwitch createRunnableModeSwitch() {
 		RunnableModeSwitchImpl runnableModeSwitch = new RunnableModeSwitchImpl();
 		return runnableModeSwitch;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ModeSwitchItem createModeSwitchItem() {
-		ModeSwitchItemImpl modeSwitchItem = new ModeSwitchItemImpl();
-		return modeSwitchItem;
 	}
 
 	/**

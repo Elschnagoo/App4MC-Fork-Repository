@@ -1739,7 +1739,16 @@ public interface AmaltheaFactory extends EFactory {
 	 * @return a new object of class '<em>Mode Switch Entry</em>'.
 	 * @generated
 	 */
-	ModeSwitchEntry createModeSwitchEntry();
+	<T> ModeSwitchEntry<T> createModeSwitchEntry();
+
+	/**
+	 * Returns a new object of class '<em>Mode Switch Default</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Mode Switch Default</em>'.
+	 * @generated
+	 */
+	<T> ModeSwitchDefault<T> createModeSwitchDefault();
 
 	/**
 	 * Returns a new object of class '<em>Probabiltity Switch</em>'.
@@ -1965,15 +1974,6 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	RunnableModeSwitch createRunnableModeSwitch();
-
-	/**
-	 * Returns a new object of class '<em>Mode Switch Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mode Switch Item</em>'.
-	 * @generated
-	 */
-	ModeSwitchItem createModeSwitchItem();
 
 	/**
 	 * Returns a new object of class '<em>Label Access</em>'.

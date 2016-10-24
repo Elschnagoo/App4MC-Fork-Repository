@@ -24,8 +24,8 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getValueProvider <em>Value Provider</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getModeItems <em>Mode Items</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getDefaultItems <em>Default Items</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getDefaultEntry <em>Default Entry</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableModeSwitch()
@@ -60,35 +60,45 @@ public interface RunnableModeSwitch extends RunnableItem {
 	void setValueProvider(ModeValueProvider value);
 
 	/**
-	 * Returns the value of the '<em><b>Mode Items</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ModeSwitchItem}.
+	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry}&lt;org.eclipse.app4mc.amalthea.model.RunnableItem>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Mode Items</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Entries</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Mode Items</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableModeSwitch_ModeItems()
+	 * @return the value of the '<em>Entries</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableModeSwitch_Entries()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList<ModeSwitchItem> getModeItems();
+	EList<ModeSwitchEntry<RunnableItem>> getEntries();
 
 	/**
-	 * Returns the value of the '<em><b>Default Items</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableItem}.
+	 * Returns the value of the '<em><b>Default Entry</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Default Items</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Default Entry</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Default Items</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableModeSwitch_DefaultItems()
+	 * @return the value of the '<em>Default Entry</em>' containment reference.
+	 * @see #setDefaultEntry(ModeSwitchDefault)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableModeSwitch_DefaultEntry()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList<RunnableItem> getDefaultItems();
+	ModeSwitchDefault<RunnableItem> getDefaultEntry();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getDefaultEntry <em>Default Entry</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default Entry</em>' containment reference.
+	 * @see #getDefaultEntry()
+	 * @generated
+	 */
+	void setDefaultEntry(ModeSwitchDefault<RunnableItem> value);
 
 } // RunnableModeSwitch

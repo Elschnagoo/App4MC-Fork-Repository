@@ -18132,13 +18132,22 @@ public interface AmaltheaPackage extends EPackage {
 	int MODE_SWITCH__ENTRIES = GRAPH_ENTRY_BASE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Default Entry</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_SWITCH__DEFAULT_ENTRY = GRAPH_ENTRY_BASE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Mode Switch</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODE_SWITCH_FEATURE_COUNT = GRAPH_ENTRY_BASE_FEATURE_COUNT + 2;
+	int MODE_SWITCH_FEATURE_COUNT = GRAPH_ENTRY_BASE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Mode Switch</em>' class.
@@ -18169,31 +18178,22 @@ public interface AmaltheaPackage extends EPackage {
 	int MODE_SWITCH_ENTRY__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' reference.
+	 * The feature id for the '<em><b>Values</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODE_SWITCH_ENTRY__VALUE = BASE_OBJECT_FEATURE_COUNT + 0;
+	int MODE_SWITCH_ENTRY__VALUES = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Default</b></em>' attribute.
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODE_SWITCH_ENTRY__DEFAULT = BASE_OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Graph Entries</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODE_SWITCH_ENTRY__GRAPH_ENTRIES = BASE_OBJECT_FEATURE_COUNT + 2;
+	int MODE_SWITCH_ENTRY__ITEMS = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Mode Switch Entry</em>' class.
@@ -18202,7 +18202,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODE_SWITCH_ENTRY_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 3;
+	int MODE_SWITCH_ENTRY_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Mode Switch Entry</em>' class.
@@ -18214,6 +18214,52 @@ public interface AmaltheaPackage extends EPackage {
 	int MODE_SWITCH_ENTRY_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchDefaultImpl <em>Mode Switch Default</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ModeSwitchDefaultImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeSwitchDefault()
+	 * @generated
+	 */
+	int MODE_SWITCH_DEFAULT = 251;
+
+	/**
+	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_SWITCH_DEFAULT__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_SWITCH_DEFAULT__ITEMS = BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Mode Switch Default</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_SWITCH_DEFAULT_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Mode Switch Default</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_SWITCH_DEFAULT_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ProbabiltitySwitchImpl <em>Probabiltity Switch</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18221,7 +18267,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProbabiltitySwitch()
 	 * @generated
 	 */
-	int PROBABILTITY_SWITCH = 251;
+	int PROBABILTITY_SWITCH = 252;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18267,7 +18313,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProbabilitySwitchEntry()
 	 * @generated
 	 */
-	int PROBABILITY_SWITCH_ENTRY = 252;
+	int PROBABILITY_SWITCH_ENTRY = 253;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18322,7 +18368,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCounter()
 	 * @generated
 	 */
-	int COUNTER = 253;
+	int COUNTER = 254;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18377,7 +18423,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCallSequenceItem()
 	 * @generated
 	 */
-	int CALL_SEQUENCE_ITEM = 254;
+	int CALL_SEQUENCE_ITEM = 255;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18423,7 +18469,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWaitEvent()
 	 * @generated
 	 */
-	int WAIT_EVENT = 255;
+	int WAIT_EVENT = 256;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18496,7 +18542,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSetEvent()
 	 * @generated
 	 */
-	int SET_EVENT = 256;
+	int SET_EVENT = 257;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18560,7 +18606,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClearEvent()
 	 * @generated
 	 */
-	int CLEAR_EVENT = 257;
+	int CLEAR_EVENT = 258;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18615,7 +18661,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventMask()
 	 * @generated
 	 */
-	int EVENT_MASK = 258;
+	int EVENT_MASK = 259;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18661,7 +18707,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsEvent()
 	 * @generated
 	 */
-	int OS_EVENT = 259;
+	int OS_EVENT = 260;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18752,7 +18798,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterProcessActivation()
 	 * @generated
 	 */
-	int INTER_PROCESS_ACTIVATION = 260;
+	int INTER_PROCESS_ACTIVATION = 261;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18807,7 +18853,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEnforcedMigration()
 	 * @generated
 	 */
-	int ENFORCED_MIGRATION = 261;
+	int ENFORCED_MIGRATION = 262;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18862,7 +18908,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTaskRunnableCall()
 	 * @generated
 	 */
-	int TASK_RUNNABLE_CALL = 262;
+	int TASK_RUNNABLE_CALL = 263;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18935,7 +18981,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSchedulePoint()
 	 * @generated
 	 */
-	int SCHEDULE_POINT = 263;
+	int SCHEDULE_POINT = 264;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18981,7 +19027,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTerminateProcess()
 	 * @generated
 	 */
-	int TERMINATE_PROCESS = 264;
+	int TERMINATE_PROCESS = 265;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19027,7 +19073,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTask()
 	 * @generated
 	 */
-	int TASK = 265;
+	int TASK = 266;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19172,7 +19218,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getISR()
 	 * @generated
 	 */
-	int ISR = 266;
+	int ISR = 267;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19290,7 +19336,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessPrototype()
 	 * @generated
 	 */
-	int PROCESS_PROTOTYPE = 267;
+	int PROCESS_PROTOTYPE = 268;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19462,7 +19508,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChainedProcessPrototype()
 	 * @generated
 	 */
-	int CHAINED_PROCESS_PROTOTYPE = 268;
+	int CHAINED_PROCESS_PROTOTYPE = 269;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19526,7 +19572,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGeneralPrecedence()
 	 * @generated
 	 */
-	int GENERAL_PRECEDENCE = 269;
+	int GENERAL_PRECEDENCE = 270;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19581,7 +19627,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAccessPrecedenceSpec()
 	 * @generated
 	 */
-	int ACCESS_PRECEDENCE_SPEC = 270;
+	int ACCESS_PRECEDENCE_SPEC = 271;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19654,7 +19700,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOrderPrecedenceSpec()
 	 * @generated
 	 */
-	int ORDER_PRECEDENCE_SPEC = 271;
+	int ORDER_PRECEDENCE_SPEC = 272;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19718,7 +19764,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnable()
 	 * @generated
 	 */
-	int RUNNABLE = 272;
+	int RUNNABLE = 273;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19890,7 +19936,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabel()
 	 * @generated
 	 */
-	int LABEL = 273;
+	int LABEL = 274;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20053,7 +20099,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeLabel()
 	 * @generated
 	 */
-	int MODE_LABEL = 274;
+	int MODE_LABEL = 275;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20171,7 +20217,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSection()
 	 * @generated
 	 */
-	int SECTION = 275;
+	int SECTION = 276;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20271,7 +20317,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableItem()
 	 * @generated
 	 */
-	int RUNNABLE_ITEM = 276;
+	int RUNNABLE_ITEM = 277;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20317,7 +20363,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeLabelAccess()
 	 * @generated
 	 */
-	int MODE_LABEL_ACCESS = 277;
+	int MODE_LABEL_ACCESS = 278;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20390,7 +20436,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableModeSwitch()
 	 * @generated
 	 */
-	int RUNNABLE_MODE_SWITCH = 278;
+	int RUNNABLE_MODE_SWITCH = 279;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20411,22 +20457,22 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_MODE_SWITCH__VALUE_PROVIDER = RUNNABLE_ITEM_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Mode Items</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_MODE_SWITCH__MODE_ITEMS = RUNNABLE_ITEM_FEATURE_COUNT + 1;
+	int RUNNABLE_MODE_SWITCH__ENTRIES = RUNNABLE_ITEM_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Default Items</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Default Entry</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_MODE_SWITCH__DEFAULT_ITEMS = RUNNABLE_ITEM_FEATURE_COUNT + 2;
+	int RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY = RUNNABLE_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Runnable Mode Switch</em>' class.
@@ -20454,61 +20500,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RUNNABLE_MODE_SWITCH_OPERATION_COUNT = RUNNABLE_ITEM_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchItemImpl <em>Mode Switch Item</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ModeSwitchItemImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeSwitchItem()
-	 * @generated
-	 */
-	int MODE_SWITCH_ITEM = 279;
-
-	/**
-	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODE_SWITCH_ITEM__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODE_SWITCH_ITEM__VALUE = BASE_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Runnable Items</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODE_SWITCH_ITEM__RUNNABLE_ITEMS = BASE_OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Mode Switch Item</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODE_SWITCH_ITEM_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Mode Switch Item</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODE_SWITCH_ITEM_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl <em>Label Access</em>}' class.
@@ -30551,6 +30542,17 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getModeSwitch_Entries();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.ModeSwitch#getDefaultEntry <em>Default Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Default Entry</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitch#getDefaultEntry()
+	 * @see #getModeSwitch()
+	 * @generated
+	 */
+	EReference getModeSwitch_DefaultEntry();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry <em>Mode Switch Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -30561,37 +30563,47 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getModeSwitchEntry();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getValue <em>Value</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getValues <em>Values</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Value</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getValue()
+	 * @return the meta object for the reference list '<em>Values</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getValues()
 	 * @see #getModeSwitchEntry()
 	 * @generated
 	 */
-	EReference getModeSwitchEntry_Value();
+	EReference getModeSwitchEntry_Values();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#isDefault <em>Default</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getItems <em>Items</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Default</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#isDefault()
+	 * @return the meta object for the containment reference list '<em>Items</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getItems()
 	 * @see #getModeSwitchEntry()
 	 * @generated
 	 */
-	EAttribute getModeSwitchEntry_Default();
+	EReference getModeSwitchEntry_Items();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getGraphEntries <em>Graph Entries</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchDefault <em>Mode Switch Default</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Graph Entries</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getGraphEntries()
-	 * @see #getModeSwitchEntry()
+	 * @return the meta object for class '<em>Mode Switch Default</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchDefault
 	 * @generated
 	 */
-	EReference getModeSwitchEntry_GraphEntries();
+	EClass getModeSwitchDefault();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchDefault#getItems <em>Items</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Items</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchDefault#getItems()
+	 * @see #getModeSwitchDefault()
+	 * @generated
+	 */
+	EReference getModeSwitchDefault_Items();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch <em>Probabiltity Switch</em>}'.
@@ -31555,58 +31567,26 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getRunnableModeSwitch_ValueProvider();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getModeItems <em>Mode Items</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getEntries <em>Entries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Mode Items</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getModeItems()
+	 * @return the meta object for the containment reference list '<em>Entries</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getEntries()
 	 * @see #getRunnableModeSwitch()
 	 * @generated
 	 */
-	EReference getRunnableModeSwitch_ModeItems();
+	EReference getRunnableModeSwitch_Entries();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getDefaultItems <em>Default Items</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getDefaultEntry <em>Default Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Default Items</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getDefaultItems()
+	 * @return the meta object for the containment reference '<em>Default Entry</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getDefaultEntry()
 	 * @see #getRunnableModeSwitch()
 	 * @generated
 	 */
-	EReference getRunnableModeSwitch_DefaultItems();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchItem <em>Mode Switch Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Mode Switch Item</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchItem
-	 * @generated
-	 */
-	EClass getModeSwitchItem();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchItem#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Value</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchItem#getValue()
-	 * @see #getModeSwitchItem()
-	 * @generated
-	 */
-	EReference getModeSwitchItem_Value();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchItem#getRunnableItems <em>Runnable Items</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Runnable Items</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchItem#getRunnableItems()
-	 * @see #getModeSwitchItem()
-	 * @generated
-	 */
-	EReference getModeSwitchItem_RunnableItems();
+	EReference getRunnableModeSwitch_DefaultEntry();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.LabelAccess <em>Label Access</em>}'.

@@ -15,7 +15,9 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
+import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
 
@@ -42,6 +44,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchImpl#getValueProvider <em>Value Provider</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchImpl#getDefaultEntry <em>Default Entry</em>}</li>
  * </ul>
  *
  * @generated
@@ -65,7 +68,17 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ModeSwitchEntry> entries;
+	protected EList<ModeSwitchEntry<GraphEntryBase>> entries;
+
+	/**
+	 * The cached value of the '{@link #getDefaultEntry() <em>Default Entry</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultEntry()
+	 * @generated
+	 * @ordered
+	 */
+	protected ModeSwitchDefault<GraphEntryBase> defaultEntry;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -129,11 +142,78 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ModeSwitchEntry> getEntries() {
+	public EList<ModeSwitchEntry<GraphEntryBase>> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList.Resolving<ModeSwitchEntry>(ModeSwitchEntry.class, this, AmaltheaPackage.MODE_SWITCH__ENTRIES);
+			entries = new EObjectContainmentEList.Resolving<ModeSwitchEntry<GraphEntryBase>>(ModeSwitchEntry.class, this, AmaltheaPackage.MODE_SWITCH__ENTRIES);
 		}
 		return entries;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public ModeSwitchDefault<GraphEntryBase> getDefaultEntry() {
+		if (defaultEntry != null && defaultEntry.eIsProxy()) {
+			InternalEObject oldDefaultEntry = (InternalEObject)defaultEntry;
+			defaultEntry = (ModeSwitchDefault<GraphEntryBase>)eResolveProxy(oldDefaultEntry);
+			if (defaultEntry != oldDefaultEntry) {
+				InternalEObject newDefaultEntry = (InternalEObject)defaultEntry;
+				NotificationChain msgs = oldDefaultEntry.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY, null, null);
+				if (newDefaultEntry.eInternalContainer() == null) {
+					msgs = newDefaultEntry.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY, oldDefaultEntry, defaultEntry));
+			}
+		}
+		return defaultEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModeSwitchDefault<GraphEntryBase> basicGetDefaultEntry() {
+		return defaultEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDefaultEntry(ModeSwitchDefault<GraphEntryBase> newDefaultEntry, NotificationChain msgs) {
+		ModeSwitchDefault<GraphEntryBase> oldDefaultEntry = defaultEntry;
+		defaultEntry = newDefaultEntry;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY, oldDefaultEntry, newDefaultEntry);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefaultEntry(ModeSwitchDefault<GraphEntryBase> newDefaultEntry) {
+		if (newDefaultEntry != defaultEntry) {
+			NotificationChain msgs = null;
+			if (defaultEntry != null)
+				msgs = ((InternalEObject)defaultEntry).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY, null, msgs);
+			if (newDefaultEntry != null)
+				msgs = ((InternalEObject)newDefaultEntry).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY, null, msgs);
+			msgs = basicSetDefaultEntry(newDefaultEntry, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY, newDefaultEntry, newDefaultEntry));
 	}
 
 	/**
@@ -146,6 +226,8 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 		switch (featureID) {
 			case AmaltheaPackage.MODE_SWITCH__ENTRIES:
 				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY:
+				return basicSetDefaultEntry(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -163,6 +245,9 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 				return basicGetValueProvider();
 			case AmaltheaPackage.MODE_SWITCH__ENTRIES:
 				return getEntries();
+			case AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY:
+				if (resolve) return getDefaultEntry();
+				return basicGetDefaultEntry();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -181,7 +266,10 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 				return;
 			case AmaltheaPackage.MODE_SWITCH__ENTRIES:
 				getEntries().clear();
-				getEntries().addAll((Collection<? extends ModeSwitchEntry>)newValue);
+				getEntries().addAll((Collection<? extends ModeSwitchEntry<GraphEntryBase>>)newValue);
+				return;
+			case AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY:
+				setDefaultEntry((ModeSwitchDefault<GraphEntryBase>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -201,6 +289,9 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 			case AmaltheaPackage.MODE_SWITCH__ENTRIES:
 				getEntries().clear();
 				return;
+			case AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY:
+				setDefaultEntry((ModeSwitchDefault<GraphEntryBase>)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -217,6 +308,8 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 				return valueProvider != null;
 			case AmaltheaPackage.MODE_SWITCH__ENTRIES:
 				return entries != null && !entries.isEmpty();
+			case AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY:
+				return defaultEntry != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -182,8 +182,8 @@ import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
+import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ModeSwitchItem;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
@@ -1391,8 +1391,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createModeSwitchAdapter();
 			}
 			@Override
-			public Adapter caseModeSwitchEntry(ModeSwitchEntry object) {
+			public <T> Adapter caseModeSwitchEntry(ModeSwitchEntry<T> object) {
 				return createModeSwitchEntryAdapter();
+			}
+			@Override
+			public <T> Adapter caseModeSwitchDefault(ModeSwitchDefault<T> object) {
+				return createModeSwitchDefaultAdapter();
 			}
 			@Override
 			public Adapter caseProbabiltitySwitch(ProbabiltitySwitch object) {
@@ -1505,10 +1509,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseRunnableModeSwitch(RunnableModeSwitch object) {
 				return createRunnableModeSwitchAdapter();
-			}
-			@Override
-			public Adapter caseModeSwitchItem(ModeSwitchItem object) {
-				return createModeSwitchItemAdapter();
 			}
 			@Override
 			public Adapter caseLabelAccess(LabelAccess object) {
@@ -5185,6 +5185,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchDefault <em>Mode Switch Default</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchDefault
+	 * @generated
+	 */
+	public Adapter createModeSwitchDefaultAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch <em>Probabiltity Switch</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -5573,20 +5587,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRunnableModeSwitchAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchItem <em>Mode Switch Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchItem
-	 * @generated
-	 */
-	public Adapter createModeSwitchItemAdapter() {
 		return null;
 	}
 

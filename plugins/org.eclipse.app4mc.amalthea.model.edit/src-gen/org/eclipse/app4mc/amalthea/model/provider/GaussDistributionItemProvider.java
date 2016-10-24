@@ -1111,6 +1111,11 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
+				 AmaltheaFactory.eINSTANCE.createModeSwitchDefault()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
 				 AmaltheaFactory.eINSTANCE.createProbabiltitySwitch()));
 
 		newChildDescriptors.add
@@ -1232,11 +1237,6 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
 				 AmaltheaFactory.eINSTANCE.createRunnableModeSwitch()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
-				 AmaltheaFactory.eINSTANCE.createModeSwitchItem()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -2411,6 +2411,11 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
+				 AmaltheaFactory.eINSTANCE.createModeSwitchDefault()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
 				 AmaltheaFactory.eINSTANCE.createProbabiltitySwitch()));
 
 		newChildDescriptors.add
@@ -2532,11 +2537,6 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
 				 AmaltheaFactory.eINSTANCE.createRunnableModeSwitch()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
-				 AmaltheaFactory.eINSTANCE.createModeSwitchItem()));
 
 		newChildDescriptors.add
 			(createChildParameter

@@ -15,8 +15,6 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
-
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
@@ -97,8 +95,8 @@ public class RunnableModeSwitchItemProvider extends RunnableItemItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_ModeItems());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_Entries());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultEntry());
 		}
 		return childrenFeatures;
 	}
@@ -141,25 +139,23 @@ public class RunnableModeSwitchItemProvider extends RunnableItemItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
-		if (object instanceof RunnableModeSwitch) {
-			StringBuffer result = new StringBuffer("Mode Switch");
-			RunnableModeSwitch modeSwitch = (RunnableModeSwitch) object;
-			if (null != modeSwitch.getValueProvider() 
-					&& StringUtils.isNotEmpty(modeSwitch.getValueProvider().getName()))
-			{
-				result.append(" ").append(modeSwitch.getValueProvider().getName());
-			}
-			else
-				result.append(" <mode label>");
-			return result.toString();
-		}
+
+	public String getTextGen(Object object) {
 		return getString("_UI_RunnableModeSwitch_type");
 	}
 	
+	
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomItemProviderService.getRunnableModeSwitchItemProviderText(object, getTextGen(object));
+	}
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -168,19 +164,36 @@ public class RunnableModeSwitchItemProvider extends RunnableItemItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(RunnableModeSwitch.class)) {
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__MODE_ITEMS:
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ITEMS:
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES:
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final List<ViewerNotification> notifications = CustomItemProviderService
+				.getRunnableModeSwitchItemProviderNotifications(notification);
+		for (final ViewerNotification vn : notifications) {
+			fireNotifyChanged(vn);
+		}
+
+		super.notifyChanged(notification);
+	}
+	
+	
 	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
@@ -194,73 +207,13 @@ public class RunnableModeSwitchItemProvider extends RunnableItemItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_ModeItems(),
-				 AmaltheaFactory.eINSTANCE.createModeSwitchItem()));
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_Entries(),
+				 AmaltheaFactory.eINSTANCE.createModeSwitchEntry()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
-				 AmaltheaFactory.eINSTANCE.createModeLabelAccess()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
-				 AmaltheaFactory.eINSTANCE.createRunnableModeSwitch()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
-				 AmaltheaFactory.eINSTANCE.createLabelAccess()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
-				 AmaltheaFactory.eINSTANCE.createSemaphoreAccess()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
-				 AmaltheaFactory.eINSTANCE.createSenderReceiverRead()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
-				 AmaltheaFactory.eINSTANCE.createSenderReceiverWrite()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
-				 AmaltheaFactory.eINSTANCE.createSynchronousServerCall()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
-				 AmaltheaFactory.eINSTANCE.createAsynchronousServerCall()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
-				 AmaltheaFactory.eINSTANCE.createGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
-				 AmaltheaFactory.eINSTANCE.createRunnableCall()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
-				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultItems(),
-				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
+				(AmaltheaPackage.eINSTANCE.getRunnableModeSwitch_DefaultEntry(),
+				 AmaltheaFactory.eINSTANCE.createModeSwitchDefault()));
 	}
 
 }

@@ -4425,6 +4425,7 @@ Generalizes interrupt service routines and tasks</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="valueProvider" type="am:ModeValueProvider"/>
           <xsd:element name="entries" type="am:ModeSwitchEntry"/>
+          <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
         </xsd:choice>
         <xsd:attribute name="valueProvider" type="xsd:string"/>
       </xsd:extension>
@@ -4438,25 +4439,34 @@ Generalizes interrupt service routines and tasks</xsd:documentation>
   <xsd:complexType name="ModeSwitchEntry">
     <xsd:annotation>
       <xsd:documentation>A switch entry for a ModeSwitch.
-It describes a path of the switch and the required mode value to use this path</xsd:documentation>
+It describes a path of the switch and the required mode values to use this path</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="value" type="am:ModeLiteral"/>
-          <xsd:element name="graphEntries" type="am:GraphEntryBase"/>
+          <xsd:element name="values" type="am:ModeLiteral"/>
+          <xsd:element name="items" type="ecore:EObject"/>
         </xsd:choice>
-        <xsd:attribute name="default" type="xsd:boolean"/>
-        <xsd:attribute name="value" type="xsd:string"/>
+        <xsd:attribute name="values" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeSwitchEntry" type="am:ModeSwitchEntry">
     <xsd:annotation>
       <xsd:documentation>A switch entry for a ModeSwitch.
-It describes a path of the switch and the required mode value to use this path</xsd:documentation>
+It describes a path of the switch and the required mode values to use this path</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="ModeSwitchDefault">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="items" type="ecore:EObject"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ModeSwitchDefault" type="am:ModeSwitchDefault"/>
   <xsd:complexType name="ProbabiltitySwitch">
     <xsd:annotation>
       <xsd:documentation>A switch in the call graph, each path has a probability</xsd:documentation>
@@ -4987,26 +4997,14 @@ It can be used to define which mode value is written to the label.</xsd:document
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="valueProvider" type="am:ModeValueProvider"/>
-          <xsd:element name="modeItems" type="am:ModeSwitchItem"/>
-          <xsd:element name="defaultItems" type="am:RunnableItem"/>
+          <xsd:element name="entries" type="am:ModeSwitchEntry"/>
+          <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
         </xsd:choice>
         <xsd:attribute name="valueProvider" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="RunnableModeSwitch" type="am:RunnableModeSwitch"/>
-  <xsd:complexType name="ModeSwitchItem">
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="value" type="am:ModeLiteral"/>
-          <xsd:element name="runnableItems" type="am:RunnableItem"/>
-        </xsd:choice>
-        <xsd:attribute name="value" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ModeSwitchItem" type="am:ModeSwitchItem"/>
   <xsd:complexType name="LabelAccess">
     <xsd:annotation>
       <xsd:documentation>Representation of a label access of a run entity.</xsd:documentation>

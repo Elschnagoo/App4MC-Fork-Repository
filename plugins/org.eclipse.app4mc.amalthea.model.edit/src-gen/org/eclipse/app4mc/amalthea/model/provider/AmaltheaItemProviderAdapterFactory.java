@@ -4475,6 +4475,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeSwitchDefault} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModeSwitchDefaultItemProvider modeSwitchDefaultItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeSwitchDefault}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createModeSwitchDefaultAdapter() {
+		if (modeSwitchDefaultItemProvider == null) {
+			modeSwitchDefaultItemProvider = new ModeSwitchDefaultItemProvider(this);
+		}
+
+		return modeSwitchDefaultItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5047,29 +5070,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return runnableModeSwitchItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeSwitchItem} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ModeSwitchItemItemProvider modeSwitchItemItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeSwitchItem}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createModeSwitchItemAdapter() {
-		if (modeSwitchItemItemProvider == null) {
-			modeSwitchItemItemProvider = new ModeSwitchItemItemProvider(this);
-		}
-
-		return modeSwitchItemItemProvider;
 	}
 
 	/**
@@ -6006,6 +6006,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (callSequenceItemProvider != null) callSequenceItemProvider.dispose();
 		if (modeSwitchItemProvider != null) modeSwitchItemProvider.dispose();
 		if (modeSwitchEntryItemProvider != null) modeSwitchEntryItemProvider.dispose();
+		if (modeSwitchDefaultItemProvider != null) modeSwitchDefaultItemProvider.dispose();
 		if (probabiltitySwitchItemProvider != null) probabiltitySwitchItemProvider.dispose();
 		if (probabilitySwitchEntryItemProvider != null) probabilitySwitchEntryItemProvider.dispose();
 		if (counterItemProvider != null) counterItemProvider.dispose();
@@ -6031,7 +6032,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (sectionItemProvider != null) sectionItemProvider.dispose();
 		if (modeLabelAccessItemProvider != null) modeLabelAccessItemProvider.dispose();
 		if (runnableModeSwitchItemProvider != null) runnableModeSwitchItemProvider.dispose();
-		if (modeSwitchItemItemProvider != null) modeSwitchItemItemProvider.dispose();
 		if (labelAccessItemProvider != null) labelAccessItemProvider.dispose();
 		if (semaphoreAccessItemProvider != null) semaphoreAccessItemProvider.dispose();
 		if (senderReceiverReadItemProvider != null) senderReceiverReadItemProvider.dispose();

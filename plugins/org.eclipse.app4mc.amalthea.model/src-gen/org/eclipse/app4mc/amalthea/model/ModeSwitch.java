@@ -29,6 +29,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeSwitch#getValueProvider <em>Value Provider</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeSwitch#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeSwitch#getDefaultEntry <em>Default Entry</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeSwitch()
@@ -64,7 +65,7 @@ public interface ModeSwitch extends GraphEntryBase {
 
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry}&lt;org.eclipse.app4mc.amalthea.model.GraphEntryBase>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Entries</em>' containment reference list isn't clear,
@@ -76,6 +77,32 @@ public interface ModeSwitch extends GraphEntryBase {
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList<ModeSwitchEntry> getEntries();
+	EList<ModeSwitchEntry<GraphEntryBase>> getEntries();
+
+	/**
+	 * Returns the value of the '<em><b>Default Entry</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Default Entry</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Default Entry</em>' containment reference.
+	 * @see #setDefaultEntry(ModeSwitchDefault)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeSwitch_DefaultEntry()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	ModeSwitchDefault<GraphEntryBase> getDefaultEntry();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeSwitch#getDefaultEntry <em>Default Entry</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default Entry</em>' containment reference.
+	 * @see #getDefaultEntry()
+	 * @generated
+	 */
+	void setDefaultEntry(ModeSwitchDefault<GraphEntryBase> value);
 
 } // ModeSwitch

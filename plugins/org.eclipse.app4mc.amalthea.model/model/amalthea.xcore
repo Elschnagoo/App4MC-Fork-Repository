@@ -2594,18 +2594,23 @@ class CallSequence extends GraphEntryBase
 class ModeSwitch extends GraphEntryBase
 {
 	refers ModeValueProvider valueProvider
-	contains resolving ModeSwitchEntry[] entries
+	contains resolving ModeSwitchEntry<GraphEntryBase>[] entries
+	contains resolving ModeSwitchDefault<GraphEntryBase> defaultEntry	
 }
 
 /*
  * A switch entry for a ModeSwitch. 
- * It describes a path of the switch and the required mode value to use this path
+ * It describes a path of the switch and the required mode values to use this path
  */
-class ModeSwitchEntry extends BaseObject
+class ModeSwitchEntry<T> extends BaseObject
 {
-	refers ModeLiteral value
-	boolean ^default
-	contains resolving GraphEntryBase[] graphEntries
+	refers ModeLiteral[+] values
+	contains resolving T[] items
+}
+
+class ModeSwitchDefault<T> extends BaseObject
+{
+	contains resolving T[] items
 }
 
 /*
@@ -2988,16 +2993,9 @@ class ModeLabelAccess extends RunnableItem
 class RunnableModeSwitch extends RunnableItem
 {
 	refers ModeValueProvider valueProvider
-	contains resolving ModeSwitchItem[] modeItems
-	contains resolving RunnableItem[] defaultItems
+	contains resolving ModeSwitchEntry<RunnableItem>[] entries
+	contains resolving ModeSwitchDefault<RunnableItem> defaultEntry
 }
-
-class ModeSwitchItem extends BaseObject
-{
-	refers ModeLiteral value
-	contains resolving RunnableItem[] runnableItems
-}
-
 
 /*
  * Representation of a label access of a run entity.

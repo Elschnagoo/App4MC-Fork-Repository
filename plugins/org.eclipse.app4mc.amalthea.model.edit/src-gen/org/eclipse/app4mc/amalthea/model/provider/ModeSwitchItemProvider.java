@@ -91,6 +91,7 @@ public class ModeSwitchItemProvider extends GraphEntryBaseItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getModeSwitch_Entries());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getModeSwitch_DefaultEntry());
 		}
 		return childrenFeatures;
 	}
@@ -156,6 +157,7 @@ public class ModeSwitchItemProvider extends GraphEntryBaseItemProvider {
 
 		switch (notification.getFeatureID(ModeSwitch.class)) {
 			case AmaltheaPackage.MODE_SWITCH__ENTRIES:
+			case AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -193,6 +195,11 @@ public class ModeSwitchItemProvider extends GraphEntryBaseItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getModeSwitch_Entries(),
 				 AmaltheaFactory.eINSTANCE.createModeSwitchEntry()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getModeSwitch_DefaultEntry(),
+				 AmaltheaFactory.eINSTANCE.createModeSwitchDefault()));
 	}
 
 }
