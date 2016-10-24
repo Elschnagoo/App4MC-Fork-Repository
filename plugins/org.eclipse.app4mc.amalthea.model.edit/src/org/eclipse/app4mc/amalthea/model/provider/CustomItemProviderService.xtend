@@ -2139,7 +2139,10 @@ class CustomItemProviderService {
 		val list = newArrayList
 		switch notification.getFeatureID(typeof(ModeSwitch)) {
 			case AmaltheaPackage::MODE_SWITCH__VALUE_PROVIDER:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))	
+			case AmaltheaPackage.MODE_SWITCH__ENTRIES,
+			case AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
 		}
 		return list
 	}
@@ -2162,10 +2165,12 @@ class CustomItemProviderService {
 
 	def static List<ViewerNotification> getRunnableModeSwitchItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-
 		switch notification.getFeatureID(typeof(RunnableModeSwitch)) {
-			case AmaltheaPackage::MODE_SWITCH__VALUE_PROVIDER:
+			case AmaltheaPackage::RUNNABLE_MODE_SWITCH__VALUE_PROVIDER:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES,
+			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
 		}
 		return list
 	}
@@ -2183,16 +2188,6 @@ class CustomItemProviderService {
 		} else {
 			return defaultText
 		}
-	}
-
-	def static List<ViewerNotification> getModeSwitchEntryItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
-		switch notification.getFeatureID(typeof(ModeSwitchEntry)) {
-			case AmaltheaPackage::MODE_SWITCH_ENTRY__VALUES:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-		}
-		return list
 	}
 
 

@@ -4228,6 +4228,21 @@ public class CustomItemProviderService {
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
     }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH__ENTRIES)) {
+        _matched=true;
+      }
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier_1 = notification.getNotifier();
+        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);
+        list.add(_viewerNotification_1);
+      }
+    }
     return list;
   }
   
@@ -4278,11 +4293,26 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(RunnableModeSwitch.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH__VALUE_PROVIDER)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES)) {
+        _matched=true;
+      }
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier_1 = notification.getNotifier();
+        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);
+        list.add(_viewerNotification_1);
+      }
     }
     return list;
   }
@@ -4317,19 +4347,6 @@ public class CustomItemProviderService {
     } else {
       return defaultText;
     }
-  }
-  
-  public static List<ViewerNotification> getModeSwitchEntryItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(ModeSwitchEntry.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
-    }
-    return list;
   }
   
   /**
