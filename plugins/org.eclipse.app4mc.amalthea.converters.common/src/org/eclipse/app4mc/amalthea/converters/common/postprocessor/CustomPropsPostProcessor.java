@@ -45,8 +45,8 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 
 	public CustomPropsPostProcessor() {
 	}
-	
-	private final Logger logger=LogManager.getLogger(this.getClass());
+
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	private AbstractHelper helper;
 
@@ -405,7 +405,7 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 			if (key != null) {
 
 				// TODO: log info/warning message using logger
-				logger.info("Value of CustomProperty  : " + key
+				this.logger.info("Value of CustomProperty  : " + key
 						+ " is removed (as it is not inheriting RefereableBaseObject)");
 			}
 
@@ -569,7 +569,7 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 			}
 		}
 		catch (final Exception e) {
-			logger.error(e.getMessage(), e);
+			this.logger.error(e.getMessage(), e);
 		}
 
 

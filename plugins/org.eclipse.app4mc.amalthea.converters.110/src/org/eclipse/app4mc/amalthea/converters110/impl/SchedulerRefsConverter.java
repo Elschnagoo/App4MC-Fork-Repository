@@ -33,8 +33,8 @@ import com.google.common.collect.Table;
 public class SchedulerRefsConverter implements IConverter {
 
 	private final HelperUtils_103_110 helper;
-	
-	private final Logger logger=LogManager.getLogger(this.getClass());
+
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	public SchedulerRefsConverter() {
 		this.helper = HelperUtils_103_110.getInstance();
@@ -81,7 +81,7 @@ public class SchedulerRefsConverter implements IConverter {
 
 					final String updated_uriFragment = this.helper.getURIFragment(element, ModelVersion._110);
 
-					logger.info(uriFragment + " : : " + element + " : : " + updated_uriFragment);
+					this.logger.info(uriFragment + " : : " + element + " : : " + updated_uriFragment);
 
 					final List<Attribute> list = uriFragment_attribs_map.get(uriFragment);
 

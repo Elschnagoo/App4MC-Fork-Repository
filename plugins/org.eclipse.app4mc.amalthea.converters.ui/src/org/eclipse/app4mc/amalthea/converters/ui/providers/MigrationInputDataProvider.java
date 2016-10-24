@@ -32,7 +32,7 @@ import org.eclipse.swt.widgets.Display;
 public class MigrationInputDataProvider extends DelegatingStyledCellLabelProvider
 		implements IStructuredContentProvider {
 
-	private final Logger logger=LogManager.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	public MigrationInputDataProvider(final IStyledLabelProvider labelProvider) {
 		super(labelProvider);
@@ -74,8 +74,8 @@ public class MigrationInputDataProvider extends DelegatingStyledCellLabelProvide
 					return new StyledString(path);
 				}
 				catch (final Exception e) {
-					
-					logger.warn("unable to build the relative path for file : " + file.getAbsolutePath(), e);
+
+					this.logger.warn("unable to build the relative path for file : " + file.getAbsolutePath(), e);
 
 					/*- Displaying the absolute path of the file, as it is not possible to construct relative path*/
 					return new StyledString(file.getAbsolutePath());

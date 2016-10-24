@@ -33,8 +33,8 @@ import com.google.common.collect.Table;
 public class ComponentModelRefsConverter implements IConverter {
 
 	private final HelperUtils_110_111 helper;
-	
-	private final Logger logger=LogManager.getLogger(this.getClass());
+
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	public ComponentModelRefsConverter() {
 		this.helper = HelperUtils_110_111.getInstance();
@@ -81,7 +81,7 @@ public class ComponentModelRefsConverter implements IConverter {
 
 					final String updated_uriFragment = this.helper.getURIFragment(element, ModelVersion._111);
 
-					logger.info(uriFragment + " : : " + element + " : : " + updated_uriFragment);
+					this.logger.info(uriFragment + " : : " + element + " : : " + updated_uriFragment);
 
 					final List<Attribute> list = uriFragment_component_attribs_map.get(uriFragment);
 

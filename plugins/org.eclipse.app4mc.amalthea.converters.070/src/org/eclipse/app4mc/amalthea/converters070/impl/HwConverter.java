@@ -26,12 +26,12 @@ import org.jdom2.Element;
 public class HwConverter implements IConverter {
 
 	private final HelperUtils_111_070 helper;
-	
-	private final Logger logger ;
+
+	private final Logger logger;
 
 	public HwConverter() {
 		this.helper = HelperUtils_111_070.getInstance();
-		this.logger=LogManager.getLogger(this.getClass());
+		this.logger = LogManager.getLogger(this.getClass());
 	}
 
 	@Override
@@ -163,7 +163,7 @@ public class HwConverter implements IConverter {
 					valueElement.setAttribute("value", String.copyValueOf(chars));
 				}
 				catch (final Exception e) {
-					logger.error( "Exception occured during coversion of String :"+value+" to Integer" , e);
+					this.logger.error("Exception occured during coversion of String :" + value + " to Integer", e);
 					throw e;
 				}
 			}
