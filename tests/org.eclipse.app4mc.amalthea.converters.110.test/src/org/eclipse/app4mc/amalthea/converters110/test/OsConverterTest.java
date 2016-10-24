@@ -38,8 +38,8 @@ public class OsConverterTest extends AbstractConverterTest {
 	@Parameterized.Parameters(name = "{index}: Test file: {0}")
 	public static Collection<Object[]> getTestData() {
 
-		return Arrays.asList(new Object[][] { { "/Os/schedulers/schedulers.amxmi-os", true },
-				{ "/Os/Amalthea_ArExampleEngine-os.amxmi", true } });
+		return Arrays.asList(new Object[][] { { "/os/schedulers/schedulers.amxmi-os", true },
+				{ "/os/Amalthea_ArExampleEngine-os.amxmi", true } });
 	}
 
 	@Test

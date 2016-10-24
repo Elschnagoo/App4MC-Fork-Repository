@@ -35,7 +35,7 @@ public class ConstraintsConverterTest extends AbstractConverterTest {
 	@Parameterized.Parameters(name = "{index}: Test file: {0}")
 	public static Collection<Object[]> getTestData() {
 
-		return Arrays.asList(new Object[][] { { "/constraints/Constraints.amxmi", true } });
+		return Arrays.asList(new Object[][] { { "/constraints/constraints.amxmi", true } });
 	}
 
 	public ConstraintsConverterTest(final String xmlFileRelativeLocation, final boolean canExecuteTestCase) {
