@@ -30,5 +30,14 @@ public enum SectionRunnableLabelCacheEnum {
 
 	/*- Cache is stored in following format :   List<String>
 	 *  */
-	Section_Names
+	Section_Names,
+
+	/*- Cache is stored in following format :   Map<String, List<String>>
+	 *  */
+	Label_UUID_Sections,
+
+	/*- Cache is stored in following format :   Map<String, List<String>>
+	 *  */
+
+	Runnable_UUID_Sections
 }

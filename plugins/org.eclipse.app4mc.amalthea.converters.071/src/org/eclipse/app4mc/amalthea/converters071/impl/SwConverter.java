@@ -150,6 +150,7 @@ public class SwConverter implements IConverter {
 	 *            Xml Element of amalthea model file
 	 */
 
+	@SuppressWarnings("null")
 	private void update_MemoryElements_With_Section_Info(final Element rootElement) {
 
 
@@ -167,15 +168,29 @@ public class SwConverter implements IConverter {
 
 			final String memoryElementName = memoryElement.getAttributeValue("name");
 
+			final String memoryElementID = memoryElement.getAttributeValue("id", this.helper.getGenericNS("xmi"));
+
+
 			List<String> sections = new ArrayList<String>();
+
 			if (memoryElement.getName().equals("labels")) {
 
 				sections = getAssociatedSection_FromCache(SectionRunnableLabelCacheEnum.Label_Sections,
 						memoryElementName);
+
+				/*- fetching the elements based on the UUID */
+
+				sections.addAll(getAssociatedSection_FromCache(SectionRunnableLabelCacheEnum.Label_UUID_Sections,
+						memoryElementID));
 			}
 			else if (memoryElement.getName().equals("runnables")) {
 				sections = getAssociatedSection_FromCache(SectionRunnableLabelCacheEnum.Runnable_Sections,
 						memoryElementName);
+
+				/*- fetching the elements based on the UUID */
+
+				sections.addAll(getAssociatedSection_FromCache(SectionRunnableLabelCacheEnum.Runnable_UUID_Sections,
+						memoryElementID));
 
 			}
 
@@ -219,8 +234,8 @@ public class SwConverter implements IConverter {
 	 * @param type
 	 *            SectionRunnableLabelCacheEnum name. This parameter is supplied to identify the MemoryElement type i.e.
 	 *            Runnable/Label and accordingly fetch the cached content
-	 * @param memoryElementName
-	 *            String. This parameter is the name of the MemoryElement for which accordingly the corresponding
+	 * @param memoryElementName_or_UUID
+	 *            String. This parameter is the name/UUID of the MemoryElement for which accordingly the corresponding
 	 *            Sections are fetched
 	 *
 	 * @return
@@ -228,7 +243,7 @@ public class SwConverter implements IConverter {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private List<String> getAssociatedSection_FromCache(final SectionRunnableLabelCacheEnum type,
-			final String memoryElementName) {
+			final String memoryElementName_or_UUID) {
 
 		final SectionRunnableLabelCacheBuilder iCache = getSectionRunnableLabelCacheBuilder();
 
@@ -249,8 +264,8 @@ public class SwConverter implements IConverter {
 			final Object object = map.get(type.name());
 
 			if (object instanceof Map) {
-				if (((Map) object).containsKey(memoryElementName)) {
-					return (List<String>) ((Map) object).get(memoryElementName);
+				if (((Map) object).containsKey(memoryElementName_or_UUID)) {
+					return (List<String>) ((Map) object).get(memoryElementName_or_UUID);
 				}
 
 			}

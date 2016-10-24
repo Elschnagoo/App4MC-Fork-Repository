@@ -63,6 +63,21 @@ public class SectionRunnableLabelCacheBuilder implements ICache {
 
 			getCacheMap().get(targetFile).put(SectionRunnableLabelCacheEnum.Section_Names.name(), section_Names);
 
+
+			/*-
+			 * Note: Below two cache elements are used to support the models which are migrated from version 1.0.3/1.1.0 to the higher versions
+			 */
+
+			final Map<String, List<String>> labelUUID_Sections = new HashMap<String, List<String>>();
+
+			getCacheMap().get(targetFile).put(SectionRunnableLabelCacheEnum.Label_UUID_Sections.name(),
+					labelUUID_Sections);
+
+			final Map<String, List<String>> runnableUUID_Sections = new HashMap<String, List<String>>();
+
+			getCacheMap().get(targetFile).put(SectionRunnableLabelCacheEnum.Runnable_UUID_Sections.name(),
+					runnableUUID_Sections);
+
 			/*- End : Cache initialization */
 
 
@@ -80,30 +95,34 @@ public class SectionRunnableLabelCacheBuilder implements ICache {
 				final Attribute labelsAttribute = sectionElement.getAttribute("labels");
 
 				if (labelsAttribute != null) {
-					extract_MemoryElement_Section_Info(label_Sections_Map, sectionName, labelsAttribute);
+					extract_MemoryElement_Section_Info(label_Sections_Map, sectionName, labelsAttribute,
+							labelUUID_Sections);
 				}
 
 				final Attribute runEntitiesAttribute = sectionElement.getAttribute("runEntities");
 
 				if (runEntitiesAttribute != null) {
-					extract_MemoryElement_Section_Info(runnable_Sections_Map, sectionName, runEntitiesAttribute);
+					extract_MemoryElement_Section_Info(runnable_Sections_Map, sectionName, runEntitiesAttribute,
+							runnableUUID_Sections);
 				}
 
 
 				final List<Element> labelElements = sectionElement.getChildren("labels");
 
 				for (final Element element : labelElements) {
-					extract_MemoryElement_Section_Info(label_Sections_Map, sectionName, element);
+					extract_MemoryElement_Section_Info(label_Sections_Map, sectionName, element, labelUUID_Sections);
 				}
 
 				final List<Element> runnableElements = sectionElement.getChildren("runEntities");
 
 				for (final Element element : runnableElements) {
-					extract_MemoryElement_Section_Info(runnable_Sections_Map, sectionName, element);
+					extract_MemoryElement_Section_Info(runnable_Sections_Map, sectionName, element,
+							runnableUUID_Sections);
 
 				}
 			}
 		}
+
 	}
 
 	/**
@@ -121,9 +140,11 @@ public class SectionRunnableLabelCacheBuilder implements ICache {
 	 *            section, then the corresponding references of label/runnable are generated inside labels/runEntities
 	 *            attribute<br>
 	 *            Example: <sections name="section6" labels="label6?type=Label" runEntities="Runnable7?type=Runnable"/>
+	 * @param memMElementUUID_Sections
 	 */
 	private void extract_MemoryElement_Section_Info(final Map<String, List<String>> memoryElement_Sections_Map,
-			final String sectionName, final Attribute memoryElementAttribute) {
+			final String sectionName, final Attribute memoryElementAttribute,
+			final Map<String, List<String>> memMElementUUID_Sections) {
 		final String memoryElementAttributeValue = memoryElementAttribute.getValue();
 
 		final StringTokenizer stk = new StringTokenizer(memoryElementAttributeValue);
@@ -136,6 +157,21 @@ public class SectionRunnableLabelCacheBuilder implements ICache {
 				final String memoryElementName = memoryElementReferenceString.substring(0, lastIndexOf);
 
 				addEntry(memoryElement_Sections_Map, memoryElementName, sectionName);
+			}
+			else {
+				/*-
+				 *  This is a case of UUID instead of AMALTHEA references
+				 *  Example:
+				 *  labels="_o_iL8JnJEeaK1-VgfUoZ4A _qHmnQJnJEeaK1-VgfUoZ4A"
+				 */
+
+				List<String> list = memMElementUUID_Sections.get(memoryElementReferenceString);
+
+				if (list == null) {
+					list = new ArrayList<String>();
+					memMElementUUID_Sections.put(memoryElementReferenceString, list);
+				}
+				list.add(sectionName);
 			}
 		}
 	}
@@ -163,22 +199,47 @@ public class SectionRunnableLabelCacheBuilder implements ICache {
 	 *            <runEntities href="amlt:/#Runnable2?type=Runnable"/><br>
 	 *            <runEntities href="amlt:/#Runnable3?type=Runnable"/><br>
 	 *            </sections><br>
+	 * @param memMElementUUID_Sections
 	 */
 	private void extract_MemoryElement_Section_Info(final Map<String, List<String>> memoryElement_Sections_Map,
-			final String sectionName, final Element memoryElement) {
+			final String sectionName, final Element memoryElement,
+			final Map<String, List<String>> memElementUUID_Sections) {
 
 		final String memoryElementAttributeValue = memoryElement.getAttributeValue("href");
 
 		if (memoryElementAttributeValue != null) {
 
-			final int firstIndexOf = memoryElementAttributeValue.lastIndexOf("#");
+			final int indexOfHash = memoryElementAttributeValue.lastIndexOf("#");
 
-			final int lastIndexOf = memoryElementAttributeValue.lastIndexOf("?");
+			final int indexOfQuestionmark = memoryElementAttributeValue.lastIndexOf("?");
 
-			if ((firstIndexOf != -1) && (lastIndexOf != -1)) {
-				final String memroyElementName = memoryElementAttributeValue.substring(firstIndexOf + 1, lastIndexOf);
+			if ((indexOfHash != -1) && (indexOfQuestionmark != -1)) {
+				final String memroyElementName = memoryElementAttributeValue.substring(indexOfHash + 1,
+						indexOfQuestionmark);
 
 				addEntry(memoryElement_Sections_Map, memroyElementName, sectionName);
+			}
+			else if (indexOfHash != -1) {
+				/*-
+				 *  This is a case of UUID instead of AMALTHEA references
+				 *  Example:
+				 *  <sections xmi:id="_rcL0kJnJEeaK1-VgfUoZ4A" name="s1" >
+				 *		<labels href="#_o_iL8JnJEeaK1-VgfUoZ4A"/>
+				 *		<labels href="#_qHmnQJnJEeaK1-VgfUoZ4A"/>
+				 *		<labels href="default1.amxmi#_fjEtAJnTEeaK1-VgfUoZ4A "/>
+				 *	</sections>
+				 */
+
+				final String memoryElementID = memoryElementAttributeValue.substring(indexOfHash + 1);
+
+				List<String> list = memElementUUID_Sections.get(memoryElementID);
+
+				if (list == null) {
+					list = new ArrayList<String>();
+					memElementUUID_Sections.put(memoryElementID, list);
+				}
+
+				list.add(sectionName);
 			}
 		}
 
