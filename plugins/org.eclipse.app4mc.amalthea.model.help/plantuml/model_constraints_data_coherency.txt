@@ -40,14 +40,14 @@ package ConstraintsModel {
 }
 
 package SWModel\n {
-	DataCoherencyGroup *--> "1..*" Label : labels
-	RunnableScope *--> "1..*" Runnable : runnables
-	ProcessScope *--> "1..*" AbstractProcess : processes
+	DataCoherencyGroup *--> "0..*" Label : labels
+	RunnableScope *--> "1" Runnable : runnables
+	ProcessScope *--> "1" AbstractProcess : processes
 
 }
 
 package ComponentsModel\n {
-	ComponentScope *--> "1..*" Component : components
+	ComponentScope *--> "1" Component : components
 }
 
 

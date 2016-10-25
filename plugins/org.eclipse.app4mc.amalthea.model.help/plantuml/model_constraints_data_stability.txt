@@ -33,14 +33,14 @@ package ConstraintsModel {
 }
 
 package SWModel\n {
-	DataStabilityGroup *--> "1..*" Label : labels
-	RunnableScope *--> "1..*" Runnable : runnables
-	ProcessScope *--> "1..*" AbstractProcess : processes
+	DataStabilityGroup *--> "0..*" Label : labels
+	RunnableScope *--> "1" Runnable : runnables
+	ProcessScope *--> "1" AbstractProcess : processes
 
 }
 
 package ComponentsModel\n {
-	ComponentScope *--> "1..*" Component : components
+	ComponentScope *--> "1" Component : components
 }
 
 
