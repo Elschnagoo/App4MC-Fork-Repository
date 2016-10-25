@@ -1,0 +1,37 @@
+@startuml
+
+skinparam packageStyle rect
+
+package ConstraintsModel {
+
+	abstract class TimingConstraint {
+	}
+	
+	class EventChainLatencyConstraint {
+		type : LatencyType = _undefined_
+	}
+	
+	class EventChain {
+	}
+	
+	enum LatencyType {
+		_undefined_
+		Age
+		Reaction
+	}
+
+	TimingConstraint <|-- EventChainLatencyConstraint
+	EventChainLatencyConstraint *--> "0..1" EventChain : scope
+}
+
+package CommonModel\n {
+	class Time {
+		value : int
+		unit : TimeUnit
+	}
+
+	EventChainLatencyConstraint --> "0..1" Time : minimum
+	EventChainLatencyConstraint --> "0..1" Time : maximum
+}
+
+@enduml

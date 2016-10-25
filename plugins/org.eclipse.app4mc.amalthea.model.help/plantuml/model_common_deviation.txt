@@ -1,0 +1,71 @@
+@startuml
+
+together {
+	class WeibullParameters
+	class WeibullEstimators
+}
+
+together {
+	class WeibullDistribution
+	class GaussDistribution
+}
+class T {
+}
+
+class Deviation <T> {
+	samplingType : SamplingType = default
+}
+
+abstract class Distribution <T> {
+}
+
+class GaussDistribution <T> {
+}
+
+class Bounadries <T> {
+}
+
+abstract class WeibullDistribution <T> {
+}
+
+class UniformDistribution <T> {
+}
+
+class BetaDistribution <T> {
+	alpha : double
+	beta : double
+}
+
+class WeibullParameters <T> {
+	kappa : double
+	lambda : double
+}
+
+class WeibullEstimators <T> {
+	pRemainPromille : double
+}
+
+enum SamplingType {
+	default
+	BestCase
+	WorstCase
+	AverageCase
+	CornerCase
+	Uniform
+}
+
+T "0..1" <-* Deviation : \tlowerBound
+T "0..1" <-* Deviation : \tupperBound
+Deviation *--> "0..1" Distribution : distribution
+Distribution <|-- GaussDistribution
+T "0..1" <--* GaussDistribution : mean
+T "  0..1" <--* GaussDistribution : sd
+Distribution <|-- Bounadries
+Distribution <|-- WeibullDistribution
+WeibullDistribution <|-- WeibullEstimators
+WeibullDistribution <|-- WeibullParameters
+T "0..1" <--* WeibullEstimators : mean
+Distribution <|-- UniformDistribution
+Distribution <|-- BetaDistribution
+
+@enduml

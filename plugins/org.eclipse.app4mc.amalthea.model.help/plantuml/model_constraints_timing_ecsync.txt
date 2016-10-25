@@ -11,31 +11,31 @@ package ConstraintsModel {
 		multipleOccurrencesAllowed : boolean
 	}
 	
-	class EventSynchronizationConstraint {
+	class EventChainSynchronizationConstraint {
+		type : SynchronizationType = _undefined_
+	}
+	
+	class EventChain {
+	}
+	
+	enum SynchronizationType {
+		_undefined_
+		Stimulus
+		Response
 	}
 
 	TimingConstraint <|-- SynchronizationConstraint
-	SynchronizationConstraint <|-- EventSynchronizationConstraint
+	SynchronizationConstraint <|-- EventChainSynchronizationConstraint
+	EventChainSynchronizationConstraint *--> "2..2" EventChain : scope
 }
 
-package CommonModel\n {
+package CommonModel {
 	class Time {
 		value : int
 		unit : TimeUnit
 	}
 
 	SynchronizationConstraint *--> "0..1" Time : tolerance
-}
-
-
-
-package EventModel\n {
-	abstract class EntityEvent {
-		name : String
-		description : String
-	}
-	
-	EventSynchronizationConstraint o--> "0..*" EntityEvent : event
 }
 
 @enduml

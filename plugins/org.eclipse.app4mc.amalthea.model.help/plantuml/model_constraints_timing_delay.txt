@@ -1,0 +1,44 @@
+@startuml
+
+skinparam packageStyle rect
+
+package ConstraintsModel {
+	abstract class TimingConstraint {
+	}
+	
+	class DelayConstraint {
+		mappingType : MappingType = _undefined_
+	}
+	
+	enum MappingType {
+		_undefined_
+		OneToOne
+		Reaction
+		UniqueReaction
+	}
+
+	TimingConstraint <|-- DelayConstraint
+}
+
+package CommonModel\n {
+	class Time {
+		value : int
+		unit : TimeUnit
+	}
+
+	DelayConstraint --> "0..1" Time : lower
+	DelayConstraint --> "0..1" Time : upper
+}
+
+
+
+package EventModel\n {
+	abstract class EntityEvent {
+		name : String
+		description : String
+	}
+	DelayConstraint *--> "0..1" EntityEvent : source
+	DelayConstraint *--> "0..1" EntityEvent : target
+}
+
+@enduml

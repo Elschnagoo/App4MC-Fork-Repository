@@ -1,34 +1,38 @@
 @startuml
 
-interface IReferable {
-	name : String
+skinparam packageStyle rect
+
+package CommonModel {
+	interface IReferable {
+		name : String
+	}
 }
 
-IReferable <|-- RunnableSequencingConstraint
+package ConstraintsModel {
+	class RunnableSequencingConstraint {
+		orderType : RunnableOrderType = _undefined_
+	}
+	
+	class ProcessRunnableGroup {
+	}
 
-class RunnableSequencingConstraint {
-	orderType : RunnableOrderType = _undefined_
+	enum RunnableOrderType {
+		_undefined_
+		successor
+		immediateSuccessorStartSequence
+		immediateSuccessorAnySequence
+		immediateSuccessorEndSequence
+	}
+
+	IReferable <|-- RunnableSequencingConstraint
+	RunnableSequencingConstraint *--> "2..*" ProcessRunnableGroup : runnableGroups
+	RunnableSequencingConstraint o--> "0..*" AbstractProcess : processScope
 }
 
-
-enum RunnableOrderType {
-	_undefined_
-	successor
-	immediateSuccessorStartSequence
-	immediateSuccessorAnySequence
-	immediateSuccessorEndSequence
+package SWModel\n {
+	class Runnable {
+	}
+	
+	ProcessRunnableGroup o--> "1..*" Runnable : runnables
 }
-
-RunnableSequencingConstraint *--> "[2..*] runnableGroups" ProcessRunnableGroup
-RunnableSequencingConstraint o--> "[0..*] processScope" AbstractProcess
-
-class ProcessRunnableGroup {
-}
-
-ProcessRunnableGroup o--> "[1..*] runnables" Runnable
-
-class Runnable {
-
-}
-
 @enduml

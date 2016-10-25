@@ -3,13 +3,13 @@
 class StimuliModel {
 }
 
-StimuliModel *--> "[0..*] clocks" Clock
+StimuliModel *--> "0..*" Clock : clocks
 
 abstract class Clock {
 }
 Clock <|-- ClockMultiplierList
 
-ClockMultiplierList *--> "[0..*] entries" ClockMultiplierListEntry
+ClockMultiplierList *--> "0..*" ClockMultiplierListEntry : entries
 
 class ClockMultiplierListEntry {
 multiplier : EDouble
@@ -27,13 +27,13 @@ amplitude : EDouble
 yOffset : EDouble
 }
 
-StimuliModel *--> "[0..*] stimuli" Stimulus
+StimuliModel *--> "0..*" Stimulus : stimuli
 
 abstract class Stimulus {
 }
 
-Deviation "[0..1] stimulusDeviation" <-* Stimulus
-class Deviation <<T>>{
+Deviation "0..1" <-* Stimulus : stimulusDeviation
+class Deviation <T>{
 }
 
 Stimulus <|-- Periodic

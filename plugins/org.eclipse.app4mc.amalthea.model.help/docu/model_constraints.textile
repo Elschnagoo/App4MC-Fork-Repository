@@ -34,11 +34,11 @@ h2. Runnable Sequencing Constraints
 These constraints can be used to define execution orders of runnables, or in other words, the dependencies between runnables. These dependencies can result from data exchange or any functional dependency, which is not necessarily visible by other model parameter.
 
 The following requirements can be specified with this constraint:
-- Execution sequence of runnables A->B, meaning A has to be finished before B starts
-- Scope on certain process(es), when a runnable is executed multiple times in different process contexts
-- Binding of runnables within a process (loosely, strict)
-- Position, where sequence should start (start sequence), end (end sequence) or at any position
-- Occurrence attribute for multiple preceding/succeeding runnables (all or at least one)
+* Execution sequence of runnables A->B, meaning A has to be finished before B starts
+* Scope on certain process(es), when a runnable is executed multiple times in different process contexts
+* Binding of runnables within a process (loosely, strict)
+* Position, where sequence should start (start sequence), end (end sequence) or at any position
+* Occurrence attribute for multiple preceding/succeeding runnables (all or at least one)
 
 
 A __RunnableSequencingConstraint__ contains a list of __ProcessRunnableGroup__ elements and an enumeration describing the basic rule for the sequencing. Each runnable group collects references to the runnables that should be sequenced. The sequence is defined by the order of the runnable groups within the sequencing constraint. The order of the runnables references within a group is unimportant. To sequence two runnables it is necessary to create the __RunnableSequencingConstraint__ and two __ProcessRunnableGroups__, each referencing a runnable.
@@ -64,18 +64,18 @@ The __RunnableSequencingConstraint__ in this figure has two processes as a scope
 
 Each runnable-sequencing-constraint has a runnable-order-type.
 This type can be:
-- loose binding
-- loose binding & unspecified start runnable
-- strict binding & any sequence
-- strict binding & start sequence
-- strict binding & end sequence
+* loose binding
+* loose binding & unspecified start runnable
+* strict binding & any sequence
+* strict binding & start sequence
+* strict binding & end sequence
  
 The meaning of "loose binding" is that the runnables of a constraint do not have to follow each other directly, they can be also separated by other runnables that are not part of the sequencing-constraint.
 "Unspecified start runnable" means that the order of runnables must be fulfilled (this is always the case) but it does not matter which of the runnables is the runnable to start with.
 So with an "unspecified start runnable" the sequence can be:
-- "R1" -> "R3" -> "R4" 
-- "R3" -> "R4" -> "R1"
-- "R4" -> "R1" -> "R3"
+* "R1" -> "R3" -> "R4" 
+* "R3" -> "R4" -> "R1"
+* "R4" -> "R1" -> "R3"
 
 The opposite of loose binding is strict binding. It means that, if the runnables are executed within the same process, they have to be executed directly after each other. It is not allowed that other runnables than the sequencing runnables execute within this sequence.
 The mode "start sequence" means that the first runnable has to be at the beginning of its process. Assuming that all runnables are executed on the same processes, the combination "strict binding & start sequence" means that all runnables of the constraint have to be executed in the correct order at the beginning of the process.
@@ -91,11 +91,21 @@ Data Age constraints are used to define when the information in a label becomes 
 
 h2. Data Coherency Groups
 
-Data Coherency Groups are used to define data coherency requirements for a group of labels.
-The Direction hereby is used to specify if the labels have to be read or written coherently. Moreover, the Scope attributes define the context of the coherent read or write requirement. Possible Scopes are Component Scope, Process Scope and Runnable Scope.
+A __DataCoherencyGroup__ is used to define data coherency requirements for a group of labels.
+The Direction hereby is used to specify if the labels have to be read or written coherently. Moreover, the scope attribute defines the context of the coherent read or write requirement. Possible scopes are components, processses, and runnables.
 
 !../pictures/model_constraints_data_coherency.png!
 
+h2. Data Stability Groups
+
+A __DataStabilityGroup__ is used to define that the values of labels have to be kept stable within a given execution context.
+Currently, the following execution contexts are covered by the scope:
+* Component
+* Process
+* Runnable
+This means, that it has to be garanteed that the values of labels are identical either within the runnable, the process, or the component in which the denoted labels are accessed.
+
+!../pictures/model_constraints_data_stability.png!
 
 h2. Event Chains
 
@@ -137,6 +147,7 @@ h3. Event Synchronization Constraint
 
 An __EventSynchronizationConstraint__ describes how tightly the occurrences of a group of events follow each other.
 There must exist a sequence of time windows of width tolerance, such that every occurrence of every event in events belongs to at least one window, and every window is populated by at least one occurrence of every event.
+The parameter __multipleOccurrencesAllowed__ defines, whether for the constraint all occurences have to be considered or just the subsequent ones.
 
 !../pictures/model_constraints_timing_sync.png!
 
@@ -151,42 +162,53 @@ h3. Delay Constraint
 
 A Delay Constraint imposes limits between the occurrences of an event called source and an event called target.
 Every instance of source must be matched by an instance of target, within a time window starting at lower and ending at upper time units relative to the source occurrence.
+In addition, a __MappingType__ defines whether there is a strong ( __OneToOne__ ), neutral ( __Reaction__ ), or weak ( __UniqueReaction__ ) delay relation between the events.
 
 !../pictures/model_constraints_timing_delay.png!
 
-h3. Age Constraint
+h3. Event Chain Latency Constraint
 
-An Age Constraint defines how long before each response a corresponding stimulus must have occurred.
-It always refers to an EventChains.
-
-!../pictures/model_constraints_timing_age.png!
-
-h3. Reaction Constraint
-
-A Reaction Constraint defines how long after a stimulus a corresponding response must occur.
+An __EventChainLatencyConstraint__ defines how long before before each response a corresponding stimulus must have occurred ( __Age__ ), or how long after a stimulus a corresponding response must occur ( __Reaction__ ).
 It always refers to an EventChain.
 
-!../pictures/model_constraints_timing_reaction.png!
+!../pictures/model_constraints_timing_latency.png!
 
+h3. Event Chain Synchronization Constraint
+
+An __EventChainSynchronizationConstraint__ describes how tightly the occurrences of an event chain follow the occurrences of a different event chain.
+The __SynchronizationType__ defines which parts of the event chains have to be in sync, stimuls or response, and the width of a time window sets the allowed tolerance.
+The parameter __multipleOccurrencesAllowed__ defines, whether for the constraint all occurences have to be considered or just the subsequent ones.
+
+!../pictures/model_constraints_timing_ecsync.png!
 
 h2. Affinity Constraints
 
 Affinity constraints are used to define the mapping of executable objects to each other.
 The objects that can be mapped are:
-
-- Runnables
-- Processes (Task or ISR)
-- Schedulers
+* Runnables
+* Processes (Task or ISR)
+* Labels
 
 !../pictures/model_constraints_affinity.png!
 
-Each affinity constraint has one or more targets. The type of the target depends on the type that should be mapped. A scheduler-affinity-constraint can only have cores as targets. Processes can be mapped on schedulers or cores. Runnables can be mapped on schedulers, cores and processes. 
-
 An affinity constraint can either be a pairing or a separation constraint. A pairing constraint contains one amount of objects and a target. The pairing constraints say "All these objects must run together on this target". A separation constraint contains two groups of objects and a target. It says "This group of objects is not allowed to be mapped with the other group of objects on the specific target". So the separation constraint can be used to forbid a combination of objects on a target. It can also be used to say "These objects are not allowed to be mapped on this target". In this case only one group of the separation constraint is used.
 
+Each affinity constraint has one or more targets. The type of the target depends on the type that should be mapped.
+
+h3. Data Affinity Constraints
+
+A __DataConstraint__ is used to to define the mapping of label objects to memory units.
+
+!../pictures/model_constraints_affinity_data.png!
+
+h3. Process Affinity Constraints
+
+A __ProcessConstraint__ is used to to define the mapping of process (Task or ISR) objects to processing cores or scheduling units.
 
 !../pictures/model_constraints_affinity_process.png!
 
+h3. Runnable Affinity Constraints
+
+A __RunnableConstraint__ is used to to define the mapping of runnable objects to processes, call sequences, processing cores, or schedulin units.
+
 !../pictures/model_constraints_affinity_runnable.png!
-
-

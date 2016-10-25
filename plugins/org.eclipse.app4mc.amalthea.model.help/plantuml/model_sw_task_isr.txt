@@ -18,9 +18,9 @@ abstract class Process {
 abstract class Stimulus {
 }
 
-Stimulus "[0..*] stimuli" <- Process
+Stimulus "0..*" <- Process : stimuli
 
-Process *-> "[0..1] callGraph" CallGraph
+Process *-> "0..1" CallGraph : callGraph
 
 class Task {
 	preemption : Preemption = _undefined_

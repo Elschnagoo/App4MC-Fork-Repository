@@ -1,0 +1,45 @@
+@startuml
+
+skinparam packageStyle rect
+
+package ConstraintsModel {
+	abstract class DataConstraint {
+	}
+
+	class DataSeparationConstraint {
+	}
+
+	class DataPairingConstraint {
+	}
+
+	abstract class DataConstraintTarget {
+	}
+
+	class TargetMemory {
+	}
+
+	class LabelEntityGroup {
+	}
+
+	DataConstraint <|-- DataSeparationConstraint
+	DataConstraint <|-- DataPairingConstraint
+	DataConstraint *--> "0..1" DataConstraintTarget : target
+	DataConstraintTarget <|-- TargetMemory
+	DataPairingConstraint *--> "1..1" LabelEntityGroup : labels
+	DataSeparationConstraint *--> "1..2" LabelEntityGroup : groups
+}
+
+package SWModel\n {
+	class Label {
+	}
+	LabelEntityGroup o--> "0..*" Label : labels
+}
+
+package HWModel\n {
+	class Memory {
+	}
+	
+	TargetMemory o--> "0..*" Memory : memories
+}
+
+@enduml

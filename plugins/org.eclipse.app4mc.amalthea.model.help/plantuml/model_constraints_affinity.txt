@@ -1,0 +1,44 @@
+@startuml
+
+interface IReferable {
+	name : String
+}
+
+abstract class AffinityConstraint {
+}
+
+abstract class SeparationConstraint {
+}
+
+abstract class PairingConstraint {
+}
+
+class RunnableSeparationConstrraint {
+}
+
+class RunnablePairingConstraint {
+}
+
+class ProcessSeparationConstraint {
+}
+
+class ProcessPairingConstraint {
+}
+
+class DataSeparationConstraint {
+}
+
+class DataPairingConstraint {
+}
+
+IReferable <|-- AffinityConstraint
+AffinityConstraint <|-- SeparationConstraint
+SeparationConstraint <|-- RunnableSeparationConstrraint
+SeparationConstraint <|-- ProcessSeparationConstraint
+SeparationConstraint <|-- DataSeparationConstraint
+AffinityConstraint <|-- PairingConstraint
+PairingConstraint <|-- RunnablePairingConstraint
+PairingConstraint <|-- ProcessPairingConstraint
+PairingConstraint <|-- DataPairingConstraint
+
+@enduml

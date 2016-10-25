@@ -1,33 +1,39 @@
 @startuml
 
-abstract class TimingConstraint {
+skinparam packageStyle rect
+
+package ConstraintsModel {
+
+	abstract class TimingConstraint {
+	}
+	
+	class RepetitionConstraint {
+		span : int
+	}
+
+	TimingConstraint <|-- RepetitionConstraint
 }
 
-TimingConstraint <|-- RepetitionConstraint
 
-class RepetitionConstraint {
-	span : int
-}
-
-package common {
+package CommonModel\n {
 	class Time {
 		value : int
 		unit : TimeUnit
 	}
 
-	RepetitionConstraint *--> "[0..1] lower\n[0..1] upper" Time
-	RepetitionConstraint *--> Time
-	RepetitionConstraint *--> Time
-	RepetitionConstraint *--> "[0..1] period\n[0..1] jitter" Time
+	RepetitionConstraint *--> "0..1" Time : lower
+	RepetitionConstraint *--> "0..1" Time : upper
+	RepetitionConstraint *--> "0..1" Time : period
+	RepetitionConstraint *--> "0..1" Time : jitter
 }
 
-package events {
+package EventModel\n {
 	abstract class EntityEvent {
 		name : String
 		description : String
 	}
 	
-	EntityEvent "[0..*] events" <--o RepetitionConstraint
+	RepetitionConstraint o--> "0..*" EntityEvent : events
 }
 
 @enduml

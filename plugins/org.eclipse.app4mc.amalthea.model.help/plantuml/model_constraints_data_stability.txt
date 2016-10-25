@@ -1,0 +1,50 @@
+@startuml
+
+skinparam packageStyle rect
+
+package CommonModel {
+	interface IReferable {
+		name : String
+	}
+}
+
+package ConstraintsModel {
+
+	class DataStabilityGroup{
+	}
+
+	abstract class DataGroupScope {
+	}
+
+	class RunnableScope {
+	}
+
+	class ProcessScope {
+	}
+
+	class ComponentScope {
+	}
+
+	IReferable <|-- DataStabilityGroup
+	DataStabilityGroup *--> "1" DataGroupScope : scope
+	DataGroupScope <|-- RunnableScope
+	DataGroupScope <|-- ProcessScope
+	DataGroupScope <|-- ComponentScope
+}
+
+package SWModel\n {
+	DataStabilityGroup *--> "1..*" Label : labels
+	RunnableScope *--> "1..*" Runnable : runnables
+	ProcessScope *--> "1..*" AbstractProcess : processes
+
+}
+
+package ComponentsModel\n {
+	ComponentScope *--> "1..*" Component : components
+}
+
+
+
+
+
+@enduml

@@ -1,0 +1,57 @@
+@startuml
+
+skinparam packageStyle rect
+
+package CommonModel {
+	interface IReferable {
+		name : String
+	}
+}
+
+package ConstraintsModel {
+
+	class DataCoherencyGroup{
+		direction : CoherencyDirection = _undefined_
+	}
+
+	abstract class DataGroupScope {
+	}
+
+	class RunnableScope {
+	}
+
+	class ProcessScope {
+	}
+
+	class ComponentScope {
+	}
+	
+	enum CoherencyDirection {
+		_undefined_
+		input
+		output
+	}
+
+	IReferable <|-- DataCoherencyGroup
+	DataCoherencyGroup *--> "1" DataGroupScope : scope
+	DataGroupScope <|-- RunnableScope
+	DataGroupScope <|-- ProcessScope
+	DataGroupScope <|-- ComponentScope
+}
+
+package SWModel\n {
+	DataCoherencyGroup *--> "1..*" Label : labels
+	RunnableScope *--> "1..*" Runnable : runnables
+	ProcessScope *--> "1..*" AbstractProcess : processes
+
+}
+
+package ComponentsModel\n {
+	ComponentScope *--> "1..*" Component : components
+}
+
+
+
+
+
+@enduml
