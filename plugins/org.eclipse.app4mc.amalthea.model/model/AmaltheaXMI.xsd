@@ -4492,7 +4492,7 @@ It describes a path of the switch and it's probability</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="graphEntries" type="am:GraphEntryBase"/>
+          <xsd:element name="items" type="am:GraphEntryBase"/>
         </xsd:choice>
         <xsd:attribute name="probability" type="xsd:double"/>
       </xsd:extension>

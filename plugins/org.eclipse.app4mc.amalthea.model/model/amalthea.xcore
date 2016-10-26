@@ -2628,7 +2628,7 @@ class ProbabiltitySwitch extends GraphEntryBase
 class ProbabilitySwitchEntry extends BaseObject
 {
 	double probability
-	contains resolving GraphEntryBase[] graphEntries
+	contains resolving GraphEntryBase[] items
 }
 
 /*

@@ -18334,13 +18334,13 @@ public interface AmaltheaPackage extends EPackage {
 	int PROBABILITY_SWITCH_ENTRY__PROBABILITY = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Graph Entries</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROBABILITY_SWITCH_ENTRY__GRAPH_ENTRIES = BASE_OBJECT_FEATURE_COUNT + 1;
+	int PROBABILITY_SWITCH_ENTRY__ITEMS = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Probability Switch Entry</em>' class.
@@ -30648,15 +30648,15 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getProbabilitySwitchEntry_Probability();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry#getGraphEntries <em>Graph Entries</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry#getItems <em>Items</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Graph Entries</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry#getGraphEntries()
+	 * @return the meta object for the containment reference list '<em>Items</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry#getItems()
 	 * @see #getProbabilitySwitchEntry()
 	 * @generated
 	 */
-	EReference getProbabilitySwitchEntry_GraphEntries();
+	EReference getProbabilitySwitchEntry_Items();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Counter <em>Counter</em>}'.

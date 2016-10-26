@@ -9317,7 +9317,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProbabilitySwitchEntry_GraphEntries() {
+	public EReference getProbabilitySwitchEntry_Items() {
 		return (EReference)probabilitySwitchEntryEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -12253,7 +12253,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		probabilitySwitchEntryEClass = createEClass(PROBABILITY_SWITCH_ENTRY);
 		createEAttribute(probabilitySwitchEntryEClass, PROBABILITY_SWITCH_ENTRY__PROBABILITY);
-		createEReference(probabilitySwitchEntryEClass, PROBABILITY_SWITCH_ENTRY__GRAPH_ENTRIES);
+		createEReference(probabilitySwitchEntryEClass, PROBABILITY_SWITCH_ENTRY__ITEMS);
 
 		counterEClass = createEClass(COUNTER);
 		createEAttribute(counterEClass, COUNTER__OFFSET);
@@ -13952,7 +13952,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(probabilitySwitchEntryEClass, ProbabilitySwitchEntry.class, "ProbabilitySwitchEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProbabilitySwitchEntry_Probability(), theEcorePackage.getEDouble(), "probability", null, 0, 1, ProbabilitySwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProbabilitySwitchEntry_GraphEntries(), this.getGraphEntryBase(), null, "graphEntries", null, 0, -1, ProbabilitySwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProbabilitySwitchEntry_Items(), this.getGraphEntryBase(), null, "items", null, 0, -1, ProbabilitySwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(counterEClass, Counter.class, "Counter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCounter_Offset(), theEcorePackage.getELong(), "offset", null, 0, 1, Counter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

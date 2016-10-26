@@ -29,7 +29,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry#getProbability <em>Probability</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry#getGraphEntries <em>Graph Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry#getItems <em>Items</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabilitySwitchEntry()
@@ -64,19 +64,19 @@ public interface ProbabilitySwitchEntry extends BaseObject {
 	void setProbability(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Graph Entries</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.GraphEntryBase}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Graph Entries</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Items</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Graph Entries</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabilitySwitchEntry_GraphEntries()
+	 * @return the value of the '<em>Items</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabilitySwitchEntry_Items()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList<GraphEntryBase> getGraphEntries();
+	EList<GraphEntryBase> getItems();
 
 } // ProbabilitySwitchEntry

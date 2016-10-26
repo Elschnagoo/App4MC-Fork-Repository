@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProbabilitySwitchEntryImpl#getProbability <em>Probability</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProbabilitySwitchEntryImpl#getGraphEntries <em>Graph Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProbabilitySwitchEntryImpl#getItems <em>Items</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,14 +67,14 @@ public class ProbabilitySwitchEntryImpl extends BaseObjectImpl implements Probab
 	protected double probability = PROBABILITY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getGraphEntries() <em>Graph Entries</em>}' containment reference list.
+	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getGraphEntries()
+	 * @see #getItems()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<GraphEntryBase> graphEntries;
+	protected EList<GraphEntryBase> items;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,11 +121,11 @@ public class ProbabilitySwitchEntryImpl extends BaseObjectImpl implements Probab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<GraphEntryBase> getGraphEntries() {
-		if (graphEntries == null) {
-			graphEntries = new EObjectContainmentEList.Resolving<GraphEntryBase>(GraphEntryBase.class, this, AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__GRAPH_ENTRIES);
+	public EList<GraphEntryBase> getItems() {
+		if (items == null) {
+			items = new EObjectContainmentEList.Resolving<GraphEntryBase>(GraphEntryBase.class, this, AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS);
 		}
-		return graphEntries;
+		return items;
 	}
 
 	/**
@@ -136,8 +136,8 @@ public class ProbabilitySwitchEntryImpl extends BaseObjectImpl implements Probab
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__GRAPH_ENTRIES:
-				return ((InternalEList<?>)getGraphEntries()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS:
+				return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -152,8 +152,8 @@ public class ProbabilitySwitchEntryImpl extends BaseObjectImpl implements Probab
 		switch (featureID) {
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__PROBABILITY:
 				return getProbability();
-			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__GRAPH_ENTRIES:
-				return getGraphEntries();
+			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS:
+				return getItems();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -170,9 +170,9 @@ public class ProbabilitySwitchEntryImpl extends BaseObjectImpl implements Probab
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__PROBABILITY:
 				setProbability((Double)newValue);
 				return;
-			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__GRAPH_ENTRIES:
-				getGraphEntries().clear();
-				getGraphEntries().addAll((Collection<? extends GraphEntryBase>)newValue);
+			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS:
+				getItems().clear();
+				getItems().addAll((Collection<? extends GraphEntryBase>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -189,8 +189,8 @@ public class ProbabilitySwitchEntryImpl extends BaseObjectImpl implements Probab
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__PROBABILITY:
 				setProbability(PROBABILITY_EDEFAULT);
 				return;
-			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__GRAPH_ENTRIES:
-				getGraphEntries().clear();
+			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS:
+				getItems().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -206,8 +206,8 @@ public class ProbabilitySwitchEntryImpl extends BaseObjectImpl implements Probab
 		switch (featureID) {
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__PROBABILITY:
 				return probability != PROBABILITY_EDEFAULT;
-			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__GRAPH_ENTRIES:
-				return graphEntries != null && !graphEntries.isEmpty();
+			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS:
+				return items != null && !items.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

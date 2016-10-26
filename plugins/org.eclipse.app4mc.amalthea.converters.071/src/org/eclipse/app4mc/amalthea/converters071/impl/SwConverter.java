@@ -75,9 +75,129 @@ public class SwConverter implements IConverter {
 		/*- Removing SectionMapping and SectionMappingConstraint elements */
 		remove_SectionMapping_and_SectionMappingConstraint(rootElement);
 
+		/* Update ModeSwitch */
+
+		update_ModeSwitch(rootElement);
+
+
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
 	}
 
+
+	/**
+	 * Based on model changes of 0.7.1 :
+	 *
+	 *
+	 * @param rootElement
+	 */
+
+	private void update_ModeSwitch(final Element rootElement) {
+
+
+		final StringBuffer xpathBuffer = new StringBuffer();
+
+
+		// xpathBuffer.append(".swModel/tasks/callGraph/graphEntries[@xsi:type=\"am:ModeSwitch\"]/entries");
+		xpathBuffer.append("./swModel/tasks/callGraph//graphEntries");
+		// xpathBuffer.append("|");
+		// xpathBuffer.append(".swModel/isrs/callGraph/graphEntries[@xsi:type=\"am:ModeSwitch\"]/entries");
+
+		final List<Element> graphEntryBaseElements = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
+				Element.class, this.helper.getGenericNS("xsi"), this.helper.getNS_071("am"));
+
+		/*-
+		 *    <callGraph>
+					<graphEntries xsi:type="am:CallSequence"/>
+					<graphEntries xsi:type="am:ModeSwitch"/>
+					<graphEntries xsi:type="am:ProbabiltitySwitch"/>
+			 </callGraph>
+		 */
+		for (final Element graphEntryBaseElement : graphEntryBaseElements) {
+
+
+			/*-
+			 * Elements whicha are part of : "graphEntries" are to be verified if the parent is "CallGraph".
+			 * For the elements whose parent is other than "CallGraph" should be renamed to "items"
+			 */
+
+			if (!graphEntryBaseElement.getParentElement().getName().equals("callGraph")) {
+				graphEntryBaseElement.setName("items");
+			}
+
+			final String graphEntryBaseObjectType = graphEntryBaseElement.getAttributeValue("type",
+					this.helper.getGenericNS("xsi"));
+
+			if (graphEntryBaseObjectType != null && graphEntryBaseObjectType.equals("am:ModeSwitch")) {
+
+				final List<Element> entriesElements = graphEntryBaseElement.getChildren("entries");
+
+				/*-
+				 *       <callGraph>
+							<graphEntries xsi:type="am:ModeSwitch">
+								<entries value="md12/a?type=ModeLiteral" default="true">
+										<graphEntries xsi:type="am:CallSequence" name="cs2"/>
+								</entries>
+							</graphEntries>
+						 </callGraph>
+				 */
+
+				/*-
+				 * As per change in 0.7.1: Inside a ModeSwitch -> only one ModeSwitchEntry can be default.
+				 * 			In previous versions of APP4MC -> it was possible to have several ModeSwitchEntry objects as default (which can not happen practically)
+				 *
+				 * Based on the change in 0.7.1 :
+				 * 				- first encountered ModeSwitchEntry with default property as "true" is transformed as "defaultEntry"
+				 * 				- the other ModeSwitchEntry objects are transformed as "non default" -> eventough they have default as "true"
+				 */
+				boolean isDefaultFound = false;
+
+				for (final Element entriesElement : entriesElements) {
+
+
+					final Attribute defaultAttribute = entriesElement.getAttribute("default");
+
+					if (defaultAttribute != null) {
+
+						if (isDefaultFound == false) {
+							isDefaultFound = true;
+
+							/*- First ModeSwitchEntry with default value as "true" -> should have a tag name as "defaultEntry" */
+							entriesElement.setName("defaultEntry");
+
+							entriesElement.removeAttribute("value");
+
+							entriesElement.removeChild("value");
+						}
+						/*- "default" attribute is removed from ModeSwitchEntry object */
+
+						entriesElement.removeAttribute("default");
+
+					}
+
+
+					/*- renaming "value" attribute to "values" */
+
+					final Attribute valueAttribute = entriesElement.getAttribute("value");
+
+					if (valueAttribute != null) {
+						valueAttribute.setName("values");
+					}
+					else {
+						final Element valueElement = entriesElement.getChild("value");
+
+						if (valueElement != null) {
+							valueElement.setName("values");
+						}
+					}
+				}
+
+			}
+
+
+		}
+
+
+	}
 
 	/**
 	 * Based on Bug 500856 : It is no longer required to have SectionMapping and SectionMappingConstraint definitions in

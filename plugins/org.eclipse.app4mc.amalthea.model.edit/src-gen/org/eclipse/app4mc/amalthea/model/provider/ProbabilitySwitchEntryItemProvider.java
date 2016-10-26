@@ -97,7 +97,7 @@ public class ProbabilitySwitchEntryItemProvider extends BaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_GraphEntries());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_Items());
 		}
 		return childrenFeatures;
 	}
@@ -164,7 +164,7 @@ public class ProbabilitySwitchEntryItemProvider extends BaseObjectItemProvider {
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__PROBABILITY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__GRAPH_ENTRIES:
+			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -184,17 +184,17 @@ public class ProbabilitySwitchEntryItemProvider extends BaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_GraphEntries(),
+				(AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_Items(),
 				 AmaltheaFactory.eINSTANCE.createCallSequence()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_GraphEntries(),
+				(AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_Items(),
 				 AmaltheaFactory.eINSTANCE.createModeSwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_GraphEntries(),
+				(AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_Items(),
 				 AmaltheaFactory.eINSTANCE.createProbabiltitySwitch()));
 	}
 

@@ -1698,8 +1698,7 @@
     <nested inputs="amalthea.xcore#/EPackage/ProbabilitySwitchEntry" outputs="AmaltheaXMI.xsd#//ProbabilitySwitchEntry;XSDComplexTypeDefinition=253">
       <nested inputs="amalthea.xcore#/EPackage/ProbabilitySwitchEntry/probability"
           outputs="AmaltheaXMI.xsd#//ProbabilitySwitchEntry;XSDComplexTypeDefinition=253/XSDAttributeUse"/>
-      <nested inputs="amalthea.xcore#/EPackage/ProbabilitySwitchEntry/graphEntries"
-          outputs="AmaltheaXMI.xsd#//ProbabilitySwitchEntry;XSDComplexTypeDefinition=253/XSDParticle/XSDModelGroup/XSDParticle"/>
+      <nested inputs="amalthea.xcore#/EPackage/ProbabilitySwitchEntry/items" outputs="AmaltheaXMI.xsd#//ProbabilitySwitchEntry;XSDComplexTypeDefinition=253/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/ProbabilitySwitchEntry" outputs="AmaltheaXMI.xsd#//ProbabilitySwitchEntry;XSDElementDeclaration=253"/>
     <nested inputs="amalthea.xcore#/EPackage/Counter" outputs="AmaltheaXMI.xsd#//Counter;XSDComplexTypeDefinition=254">
