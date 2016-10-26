@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cc:Catalog xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cc="http://www.eclipse.org/sphinx/check/catalog"
+    id="ValidationRules"
+    label="TA Validation Rules">
+
+<categories
+    id="TAConstraint"
+    label="TA Constraints"/>
+
+<!--start AMALTHEA Model -->
+<constraints
+    id="UniqueNameConstraint"
+    label="UniqueName"
+    description="Checks if each referable object's name is unique"
+    severity="Error"
+    message="The name {0} of the object is not unique!"
+    categories="TAConstraint"/>
+<constraints
+    id="DeviationConstraint"
+    label="Deviation"
+    description="Checks if all parameters of Deviation are valid"
+    severity="Error"
+    message="A parameter of the Deviation object is invalid!"
+    categories="TAConstraint"/>
+<constraints
+    id="UniformDistributionConstraint"
+    label="UniformDistribution"
+    description="Checks if all parameters of UniformDistribution are valid"
+    severity="Error"
+    message="A parameter of the UniformDistribution object is invalid!"
+    categories="TAConstraint"/>
+<constraints
+    id="GaussDistributionConstraint"
+    label="GaussDistribution"
+    description="Checks if all parameters of GaussDistribution are valid"
+    severity="Error"
+    message="A parameter of the GaussDistribution object is invalid!"
+    categories="TAConstraint"/>
+<constraints
+    id="WeibullParametersConstraint"
+    label="WeibullParameters"
+    description="Checks if all parameters of WeibullParameters are valid"
+    severity="Error"
+    message="A parameter of the WeibullParameters object is invalid!"
+    categories="TAConstraint"/>
+ <constraints
+    id="WeibullEstimatorsConstraint"
+    label="WeibullEstimators"
+    description="Checks if all parameters of WeibullEstimators are valid"
+    severity="Error"
+    message="A parameter of the WeibullEstimators object is invalid!"
+    categories="TAConstraint"/>
+<!--end AMALTHEA Model -->
+
+<!--start CONSTRAINTS Model -->
+<constraints
+    id="EDFDeadlineAvailabilityConstraint"
+    label="EDF Deadline"
+    description="Checks in case of EDF scheduling algorithm if for each process a deadline is set"
+    severity="Error"
+    message="Task {0} is missing a deadline requirement necessary for EDF scheduling!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="DeadlineValueConstraint"
+    label="Deadline Value"
+    description="Checks if deadline is not less or equal to zero "
+    severity="Error"
+    message="The deadline contains an invalid value: {0} {1}!"
+    categories="TAConstraint"/>
+<!--end CONSTRAINTS Model -->
+
+<!--start HW Model -->
+<constraints
+    id="QuartzFrequencyConstraint"
+    label="Quartz Frequency"
+    description="Checks if frequency value of Quartz is not less or equal to zero"
+    severity="Error"
+    message="The frequency parameter of Quartz contains an invalid value: {0}!"
+ 	categories="TAConstraint"/>
+    
+<constraints
+    id="InstructionsPerCycleConstraint"
+    label="CoreType InstructionsPerCycle"
+    description="Checks if instructionsPerCycle value of CoreType is not less or equal to zero"
+    severity="Error"
+    message="The instructionsPerCycle parameter of CoreType contains an invalid value: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="QuartzReferenceOfPrescalerConstraint"
+    label="Prescaler Quartz"
+    description="Checks if reference to Quartz is valid"
+    severity="Error"
+    message="The Quartz reference of Prescaler is invalid!"
+    categories="TAConstraint"/>
+<!--end HW Model -->
+
+<!--start STIMULI Model -->
+<constraints
+    id="PeriodicRecurrenceConstraint"
+    label="Periodic Recurrence"
+    description="Checks if recurrence parameter of Periodic is not less or equal to zero"
+    severity="Error"
+    message="The recurrence parameter of Periodic contains an invalid value: {0} {1}!"
+    categories="TAConstraint"/>
+<constraints
+    id="ClockReferenceOfPeriodicConstraint"
+    label="Periodic Clock"
+    description="Checks if reference to Clock is valid"
+    severity="Error"
+    message="The Clock reference of Periodic is invalid!"
+    categories="TAConstraint"/>
+<constraints
+    id="ClockTriangleFunctionConstraint"
+    label="ClockTriangleFunction"
+    description="Checks if the parameters of ClockTriangleFunction are valid"
+    severity="Error"
+    message="The parameter of ClockTriangleFunction is invalid!"
+    categories="TAConstraint"/>
+<constraints
+    id="ClockSinusFunctionConstraint"
+    label="ClockSinusFunction"
+    description="Checks if the parameters of ClockSinusFunction are valid"
+    severity="Error"
+    message="The parameter of ClockSinusFunction is invalid!"
+    categories="TAConstraint"/>
+<!--end STIMULI Model -->
+
+<!--start SW Model -->
+<constraints
+    id="LabelSizeConstraint"
+    label="Label Size"
+    description="Checks if size parameter of Label is not less or equal to zero"
+    severity="Error"
+    message="The size parameter of Label contains an invalid value: {0}!"
+    categories="TAConstraint"/>
+<constraints
+    id="RunnableReferenceOfRunnableCallConstraint"
+    label="RunnableCall Runnable"
+    description="Checks if reference to Runnable of RunnableCall is valid"
+    severity="Error"
+    message="The Runnable reference of RunnableCall is invalid!"
+    categories="TAConstraint"/>
+<constraints
+    id="RunnableReferenceOfTaskRunnableCallConstraint"
+    label="TaskRunnableCall Runnable"
+    description="Checks if reference to Runnable of TaskRunnableCall is valid"
+    severity="Error"
+    message="The Runnable reference of TaskRunnableCall is invalid!"
+    categories="TAConstraint"/>
+<constraints
+    id="OsEventReferenceOfEventMaskConstraint"
+    label="EventMask Events"
+    description="Checks if references to OsEvent of EventMask are valid"
+    severity="Error"
+    message="The EventMask contains an invalid OsEvent reference!"
+    categories="TAConstraint"/>
+<constraints
+    id="EventMaskEventsConstraint"
+    label="EventMask Events"
+    description="Checks if for each OsEvent in EventMasks of WaitEvents an SetEvent exists"
+    severity="Error"
+    message="The OsEvent {0} of the EventMask is never set!"
+    categories="TAConstraint"/>
+ <constraints
+    id="ModeValueProviderConstraint"
+    label="ModeSwitch ValueProvider"
+    description="Checks if reference to ModeLabel of ModeSwitch is valid"
+    severity="Error"
+    message="The ValueProvider reference of ModeSwitch is invalid!"
+    categories="TAConstraint"/>
+ <constraints
+    id="ModeSwitchEntryValueConstraint"
+    label="ModeSwitchEntry Value"
+    description="Checks if the parameter Value of ModeSwitchEntry is valid"
+    severity="Error"
+    message="The parameter Value of ModeSwitchEntry is invalid!"
+    categories="TAConstraint"/>
+ <constraints
+    id="ModeValueProviderValueConstraint"
+    label="ModeValueProvider Value"
+    description="Checks if the parameter Value of ModeValueProvider is valid"
+    severity="Error"
+    message="The parameter Value of ModeValueProvider is invalid!"
+    categories="TAConstraint"/>   
+ <constraints
+    id="ModeValueProviderModeConstraint"
+    label="ModeValueProvider Mode"
+    description="Checks if the reference to Mode of ModeValueProvider is valid"
+    severity="Error"
+    message="The Mode reference of ModeValueProvider is invalid!"
+    categories="TAConstraint"/>     
+ <constraints
+    id="ModeValueProviderInitialValueConstraint"
+    label="ModeValueProvider InitialValue"
+    description="Checks if the parameter InitialValue of ModeValueProvider is valid"
+    severity="Error"
+    message="The parameter InitialValue of ModeValueProvider is invalid!"
+    categories="TAConstraint"/>
+<constraints
+    id="ServerCallServerRunnableConstraint"
+    label="ServerCall ServerRunnable"
+    description="Checks if the ServerRunnable reference of ModeValueProvider is valid"
+    severity="Error"
+    message="The ServerRunnable reference of ServerCall is invalid!"
+    categories="TAConstraint"/>  
+<!--end SW Model --> 
+
+<!--start MAPPING Model -->
+<constraints
+    id="CoreReferenceOfCoreAllocationConstraint"
+    label="CoreAllocation Core"
+    description="Checks if reference to Core of CoreAllocation is valid"
+    severity="Error"
+    message="The Core reference of CoreAllocation is invalid!"
+    categories="TAConstraint"/>
+<!--end MAPPING Model -->
+
+</cc:Catalog>

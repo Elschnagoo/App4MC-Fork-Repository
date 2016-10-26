@@ -24,5 +24,21 @@
             catalog="catalog/Amalthea.checkcatalog"
             class="org.eclipse.app4mc.amalthea.validation.checks.MappingModelCheckValidator">
       </validator>
+      <validator
+            catalog="catalog/TA.checkcatalog"
+            class="org.eclipse.app4mc.amalthea.validation.ta.checks.HWModelValidator">
+      </validator>
+      <validator
+            catalog="catalog/TA.checkcatalog"
+            class="org.eclipse.app4mc.amalthea.validation.ta.checks.StimuliModelValidator">
+      </validator>
+      <validator
+            catalog="catalog/TA.checkcatalog"
+            class="org.eclipse.app4mc.amalthea.validation.ta.checks.SWModelValidator">
+      </validator>
+      <validator
+            catalog="catalog/TA.checkcatalog"
+            class="org.eclipse.app4mc.amalthea.validation.ta.checks.ConstraintsModelValidator">
+      </validator>
    </extension>
 </plugin>
