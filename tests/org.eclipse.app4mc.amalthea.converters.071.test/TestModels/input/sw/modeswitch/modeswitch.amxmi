@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <tasks name="T1">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence"/>
+        <graphEntries xsi:type="am:ModeSwitch"/>
+        <graphEntries xsi:type="am:ProbabiltitySwitch"/>
+      </callGraph>
+    </tasks>
+    <tasks name="T2">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence">
+          <calls xsi:type="am:TaskRunnableCall" runnable="R1?type=Runnable"/>
+        </graphEntries>
+        <graphEntries xsi:type="am:ModeSwitch">
+          <entries default="true">
+            <value href="amlt:/#mode2/abc?type=ModeLiteral"/>
+            <graphEntries xsi:type="am:CallSequence">
+              <calls xsi:type="am:TaskRunnableCall" runnable="R1?type=Runnable"/>
+            </graphEntries>
+          </entries>
+          <entries default="true">
+            <value href="amlt:/#mode2/abc?type=ModeLiteral"/>
+            <graphEntries xsi:type="am:CallSequence">
+              <calls xsi:type="am:TaskRunnableCall" runnable="R1?type=Runnable"/>
+            </graphEntries>
+            <graphEntries xsi:type="am:ModeSwitch">
+              <entries value="m1/1?type=ModeLiteral">
+                <graphEntries xsi:type="am:ProbabiltitySwitch">
+                  <entries probability="222.0">
+                    <graphEntries xsi:type="am:CallSequence" name="a">
+                      <calls xsi:type="am:TaskRunnableCall" runnable="R1?type=Runnable"/>
+                    </graphEntries>
+                  </entries>
+                </graphEntries>
+              </entries>
+            </graphEntries>
+          </entries>
+        </graphEntries>
+        <graphEntries xsi:type="am:ProbabiltitySwitch">
+          <entries probability="22.0">
+            <graphEntries xsi:type="am:ModeSwitch">
+              <entries value="m1/1?type=ModeLiteral" default="true"/>
+            </graphEntries>
+          </entries>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <runnables name="R1"/>
+    <modes name="m1">
+      <literals name="1"/>
+    </modes>
+  </swModel>
+</am:Amalthea>
