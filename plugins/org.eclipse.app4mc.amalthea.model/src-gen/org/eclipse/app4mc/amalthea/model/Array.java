@@ -37,6 +37,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface Array extends CompoundType, BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Number Elements</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Number Elements</em>' attribute isn't clear,
@@ -46,7 +47,7 @@ public interface Array extends CompoundType, BaseObject {
 	 * @return the value of the '<em>Number Elements</em>' attribute.
 	 * @see #setNumberElements(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getArray_NumberElements()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getNumberElements();

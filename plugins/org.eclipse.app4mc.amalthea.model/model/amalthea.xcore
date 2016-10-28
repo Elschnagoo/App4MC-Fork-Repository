@@ -150,7 +150,7 @@ enum TimeUnit
 }
 
 abstract class AbstractTime {
-	int value
+	int value="0"
 	TimeUnit unit
 	
 	op String toString() {
@@ -195,7 +195,7 @@ enum FrequencyUnit {
  */
 class Frequency {
 	FrequencyUnit unit
-	double value
+	double value="0.0"
 	
 	op boolean containerNotificationRequired() {
 		return true
@@ -235,7 +235,7 @@ enum DataSizeUnit {
 }
 
 class DataSize {
-	BigInteger value
+	BigInteger value="0"
 	DataSizeUnit unit
 	
 	op String toString() {
@@ -283,7 +283,7 @@ enum DataRateUnit {
 }
 
 class DataRate {
-	BigInteger value
+	BigInteger value ="0"
 	DataRateUnit unit
 	
 	op String toString() {
@@ -335,7 +335,7 @@ class StringObject extends Value{
  * Object for using the elementary datatype String as generic parameter
  */
 class BigIntegerObject extends Value{ 
-	BigInteger[1] value
+	BigInteger[1] value ="0"
 	op String toString() {
 		if (value == null)
 			return "(BigInteger) null"
@@ -362,7 +362,7 @@ class ReferenceObject extends Value
  * Object for using the elementary datatype integer as generic parameter
  */
 class IntegerObject extends Value{
-	int[1] value
+	int[1] value="0"
 	op String toString() {
 		return "(int) " + value
 	}
@@ -372,7 +372,7 @@ class IntegerObject extends Value{
  * Object for using the elementary datatype long as generic parameter
  */
 class LongObject extends Value{
-	long[1] value
+	long[1] value="0"
 	op String toString() {
 		return "(long) " + value
 	}
@@ -382,7 +382,7 @@ class LongObject extends Value{
  * Object for using the elementary datatype float as generic parameter
  */
 class FloatObject extends Value{
-	float[1] value
+	float[1] value="0f"
 	op String toString() {
 		return "(float) " + value
 	}
@@ -392,7 +392,7 @@ class FloatObject extends Value{
  * Object for using the elementary datatype double as generic parameter
  */
 class DoubleObject extends Value{
-	double[1] value
+	double[1] value="0.0"
 	op String toString() {
 		return "(double) " + value
 	}
@@ -402,7 +402,7 @@ class DoubleObject extends Value{
  * Object for using the elementary datatype boolean as generic parameter
  */
 class BooleanObject extends Value{
-	boolean[1] value
+	boolean[1] value ="false"
 	op String toString() {
 		return "(boolean) " + value
 	}
@@ -466,8 +466,8 @@ abstract class WeibullDistribution<T> extends Distribution<T>
  */
 class WeibullParameters<T> extends WeibullDistribution<T>
 {
-	double kappa
-	double lambda
+	double kappa="0.0"
+	double lambda="0.0"
 }
 
 /*
@@ -477,7 +477,7 @@ class WeibullParameters<T> extends WeibullDistribution<T>
 class WeibullEstimators<T> extends WeibullDistribution<T>
 {
 	contains resolving T mean
-	double pRemainPromille
+	double pRemainPromille="0.0"
 }
 
 /*
@@ -506,8 +506,8 @@ class GaussDistribution<T> extends Distribution<T>{
  * Beta distribution
  */
 class BetaDistribution<T> extends Distribution<T>{
-	double alpha
-	double beta
+	double alpha="0.0"
+	double beta="0.0"
 }
 interface NumericStatistic
 {
@@ -518,14 +518,14 @@ interface NumericStatistic
  */
 class MinAvgMaxStatistic extends NumericStatistic
 {
-	int min
-	int avg
-	int max
+	int min="0"
+	int avg="0"
+	int max="0"
 }
 
 class SingleValueStatistic extends NumericStatistic
 {
-	float value
+	float value="0f"
 }
 
 /*
@@ -1001,7 +1001,7 @@ class PhysicalSectionConstraint extends ReferableBaseObject, BaseObject
  */
 abstract class SynchronizationConstraint extends TimingConstraint
 {
-	boolean multipleOccurrencesAllowed
+	boolean multipleOccurrencesAllowed ="false"
 	contains resolving Time tolerance
 }
 
@@ -1076,7 +1076,7 @@ class EventChainLatencyConstraint extends TimingConstraint
 class RepetitionConstraint extends TimingConstraint
 {
 	refers EntityEvent event
-	int span
+	int span="0"
 	contains resolving Time lower
 	contains resolving Time upper
 	contains resolving Time jitter
@@ -1097,8 +1097,8 @@ abstract class DataAge
 
 class DataAgeCycle extends DataAge
 {
-	int minimumCycle
-	int maximumCycle
+	int minimumCycle="0"
+	int maximumCycle="0"
 }
 
 class DataAgeTime extends DataAge
@@ -1142,7 +1142,7 @@ abstract class RequirementLimit {
 
 class CPUPercentageRequirementLimit extends RequirementLimit {
 	CPUPercentageMetric metric
-	double limitValue
+	double limitValue="0.0"
 	// can be ECU, Processor or Core
 	refers ComplexNode hardwareContext
 }
@@ -1154,12 +1154,12 @@ class FrequencyRequirementLimit extends RequirementLimit {
 
 class PercentageRequirementLimit extends RequirementLimit {
 	PercentageMetric metric
-	double limitValue
+	double limitValue="0.0"
 }
 
 class CountRequirementLimit extends RequirementLimit {
 	CountMetric metric
-	int limitValue
+	int limitValue="0"
 }
 
 class TimeRequirementLimit extends RequirementLimit {
@@ -1517,7 +1517,7 @@ class Microcontroller extends ComplexNode
 class Core extends ComplexNode
 {
 	refers CoreType coreType
-	int lockstepGroup
+	int lockstepGroup="0"
 }
 
 class Memory extends ComplexNode
@@ -1569,8 +1569,8 @@ class MicrocontrollerType extends AbstractionType
 
 class CoreType extends AbstractionType
 {
-	int bitWidth
-	int instructionsPerCycle
+	int bitWidth="0"
+	int instructionsPerCycle="0"
 }
 
 class MemoryType extends HardwareTypeDescription
@@ -1583,7 +1583,7 @@ class MemoryType extends HardwareTypeDescription
 class NetworkType extends HardwareTypeDescription
 {
 	SchedType schedPolicy
-	int bitWidth
+	int bitWidth="0"
 }
 
 // Element for Autosar PinGroup entities
@@ -1606,34 +1606,34 @@ class Pin extends ReferableBaseObject
 class ComplexPort extends HwPort
 {
 	refers Network[1] network
-	boolean master
-	int bitWidth
-	long baseAddress
-	long addressRange
+	boolean master ="false"
+	int bitWidth="0"
+	long baseAddress="0"
+	long addressRange="0"
 	RWType direction
-	int writeCycles
-	int readCycles
-	int schedValue
+	int writeCycles="0"
+	int readCycles="0"
+	int schedValue="0"
 }
 
 // Specialization of the Pin with additional attributes
 class ComplexPin extends Pin
 {
 	PinType ^type
-	long baseAddress
+	long baseAddress="0"
 	RWType direction
 }
 
 class Prescaler
 {
 	String name
-	double clockRatio
+	double clockRatio="0.0"
 	refers Quartz[1] quartz
 }
 
 class CrossbarSwitch extends NetworkType
 {
-	int conConnections
+	int conConnections="0"
 }
 
 class Bus extends NetworkType
@@ -1726,13 +1726,13 @@ class AccessPathRef extends LatencyAccessPathElement
 interface Latency extends LatencyAccessPathElement
 {
 	RWType accessType
-	long transferSize
+	long transferSize="0"
 	refers Quartz[1] quartz
 }
 
 class LatencyConstant extends Latency
 {
-	long value
+	long value="0"
 }
 
 class LatencyDeviation extends Latency
@@ -1808,10 +1808,10 @@ class PhysicalSectionMapping extends ReferableBaseObject
 	refers Memory[1] memory
 
 	@GenModel(propertyCategory="Memory")
-	long startAddress	
+	long startAddress	="0"
 
 	@GenModel(propertyCategory="Memory")
-	long endAddress	
+	long endAddress	="0"
 
 	refers Label[] labels  
 
@@ -1835,7 +1835,7 @@ abstract class Mapping extends BaseObject
 	/*
 	 * The position of the element in the mapped memory
 	 */
-	long memoryPositionAddress
+	long memoryPositionAddress="0"
 	
 	// hidden link (internal)
 	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
@@ -1923,9 +1923,9 @@ class OSModel extends BaseObject
  */
 class OsBuffering extends BaseObject
 {
-	boolean runnableLevel
-	boolean processLevel
-	boolean scheduleSectionLevel
+	boolean runnableLevel ="false"
+	boolean processLevel ="false"
+	boolean scheduleSectionLevel ="false"
 	String bufferingAlgorithm
 }
 
@@ -1938,9 +1938,9 @@ class OsBuffering extends BaseObject
  */
 class Semaphore extends ReferableBaseObject
 {
-	int initalValue
-	int maxValue
-	boolean priorityCeilingProtocol
+	int initalValue="0"
+	int maxValue="0"
+	boolean priorityCeilingProtocol ="false"
 }
 
 /*
@@ -1950,7 +1950,7 @@ class Semaphore extends ReferableBaseObject
 abstract class Scheduler extends ReferableBaseObject
 {
 	contains resolving SchedulingUnit schedulingUnit
-	int scheduleUnitPriority
+	int scheduleUnitPriority="0"
 	
 	// back pointer (readonly)
 	@GenModel(property="Readonly", suppressedSetVisibility="true")
@@ -1986,7 +1986,7 @@ class OSEK extends TaskSchedulingAlgorithm
  */
 class PartlyPFairPD2 extends TaskSchedulingAlgorithm
 {
-	int quantSizeNs
+	int quantSizeNs="0"
 }
 
 /*
@@ -1994,7 +1994,7 @@ class PartlyPFairPD2 extends TaskSchedulingAlgorithm
  */
 class PfairPD2 extends TaskSchedulingAlgorithm
 {
-	int quantSizeNs
+	int quantSizeNs="0"
 }
 
 /*
@@ -2002,7 +2002,7 @@ class PfairPD2 extends TaskSchedulingAlgorithm
  */
 class PartlyEarlyReleaseFairPD2 extends TaskSchedulingAlgorithm
 {
-	int quantSizeNs
+	int quantSizeNs="0"
 }
 
 /*
@@ -2010,7 +2010,7 @@ class PartlyEarlyReleaseFairPD2 extends TaskSchedulingAlgorithm
  */
 class EarlyReleaseFairPD2 extends TaskSchedulingAlgorithm
 {
-	int quantSizeNs
+	int quantSizeNs="0"
 }
 
 /*
@@ -2099,7 +2099,7 @@ class SchedulingSWUnit extends SchedulingUnit, BaseObject
 	/*
 	 * The priority of the scheduling ISR
 	 */
-	int priority
+	int priority="0"
 	/*
 	 * The instructions of the scheduling ISR
 	 */
@@ -2179,7 +2179,7 @@ class OsExecutionInstructionsDeviation extends OsExecutionInstructions, BaseObje
  */
 class OsExecutionInstructionsConstant extends OsExecutionInstructions, BaseObject
 {
-	long value
+	long value="0"
 }
 
 
@@ -2442,7 +2442,7 @@ class ArrivalCurve extends Stimulus
 
 class ArrivalCurveEntry extends BaseObject
 {
-	int numberOfEvents
+	int numberOfEvents="0"
 	contains resolving Time lowerTimeBorder
 	contains resolving Time upperTimeBorder
 }
@@ -2460,16 +2460,16 @@ class ClockTriangleFunction extends Clock
 {
 	contains resolving SignedTime shift
 	contains resolving Time period
-	double max
-	double min
+	double max="0.0"
+	double min="0.0"
 }
 
 class ClockSinusFunction extends Clock
 {
 	contains resolving SignedTime shift
 	contains resolving Time period
-	double amplitude
-	double yOffset
+	double amplitude="0.0"
+	double yOffset="0.0"
 }
 
 /*
@@ -2486,7 +2486,7 @@ class ClockMultiplierList extends Clock
  */
 class ClockMultiplierListEntry extends BaseObject
 {
-	double multiplier
+	double multiplier="0.0"
 	contains resolving Time time
 }
 
@@ -2532,7 +2532,7 @@ abstract class AbstractElementMemoryInformation extends ReferableBaseObject, ITa
 
 abstract class AbstractProcess extends AbstractElementMemoryInformation
 {
-	int priority
+	int priority="0"
 }
 
 /*
@@ -2627,7 +2627,7 @@ class ProbabiltitySwitch extends GraphEntryBase
  */
 class ProbabilitySwitchEntry extends BaseObject
 {
-	double probability
+	double probability="0.0"
 	contains resolving GraphEntryBase[] items
 }
 
@@ -2636,8 +2636,8 @@ class ProbabilitySwitchEntry extends BaseObject
  */
 class Counter extends BaseObject
 {
-	long offset
-	long prescaler
+	long offset="0"
+	long prescaler="0"
 }
 
 /*
@@ -2705,7 +2705,7 @@ class EventMask extends BaseObject
  */
 class OsEvent extends ReferableBaseObject, ITaggable
 {
-	int communicationOverheadInBit
+	int communicationOverheadInBit="0"
 }
 
 /*
@@ -2757,9 +2757,10 @@ class TerminateProcess extends CallSequenceItem
  */
 class Task extends Process
 {
-	int osekTaskGroup
+	int osekTaskGroup="0"
 	Preemption preemption
-	int multipleTaskActivationLimit
+	
+	int multipleTaskActivationLimit = "0"
 }
 
 /*
@@ -2795,8 +2796,8 @@ class ProcessPrototype extends AbstractProcess
 class ChainedProcessPrototype extends BaseObject
 {
 	refers ProcessPrototype[1] prototype
-	int apply
-	int offset
+	int apply="0"
+	int offset="0"
 }
 
 /*
@@ -2906,11 +2907,11 @@ class Label extends AbstractElementMemoryInformation, IDisplayName
 	/*
 	 * Defines the label as a constant, not modifiable entity
 	 */
-	boolean constant
+	boolean constant ="false"
 	/*
 	 * Defines if the label value is volatile or persistent to survive shutdown and start of system
 	 */
-	boolean bVolatile
+	boolean bVolatile ="false"
 	
 	/*
 	 * Defines if the label is buffered or not
@@ -3066,7 +3067,7 @@ enum SemaphoreAccessEnum
  */
 abstract class SenderReceiverCommunication extends RunnableItem
 {
-	boolean buffered
+	boolean buffered ="false"
 	refers Label[1] label
 }
 
@@ -3125,7 +3126,7 @@ class ProbabilityGroup extends RunnableItem
  */
 class ProbabilityRunnableItem extends BaseObject
 {
-	int probability
+	int probability="0"
 	contains resolving RunnableItem runnableItem
 }
 
@@ -3136,7 +3137,7 @@ class ProbabilityRunnableItem extends BaseObject
 class Group extends RunnableItem
 {
 	String name
-	boolean ordered
+	boolean ordered ="false"
 	contains resolving DeviationRunnableItem[] items
 }
 
@@ -3187,7 +3188,7 @@ class InstructionsDeviation extends Instructions
  */
 class InstructionsConstant extends Instructions
 {
-	long value
+	long value="0"
 }
 
 /*
@@ -3254,7 +3255,7 @@ class StructEntry extends BaseObject
  */
 class Array extends CompoundType, BaseObject
 {
-	int numberElements
+	int numberElements="0"
 	contains DataType dataType
 }
 

@@ -66,6 +66,7 @@ public interface ComplexPort extends HwPort {
 
 	/**
 	 * Returns the value of the '<em><b>Master</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Master</em>' attribute isn't clear,
@@ -75,7 +76,7 @@ public interface ComplexPort extends HwPort {
 	 * @return the value of the '<em>Master</em>' attribute.
 	 * @see #setMaster(boolean)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComplexPort_Master()
-	 * @model unique="false"
+	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isMaster();
@@ -92,6 +93,7 @@ public interface ComplexPort extends HwPort {
 
 	/**
 	 * Returns the value of the '<em><b>Bit Width</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Bit Width</em>' attribute isn't clear,
@@ -101,7 +103,7 @@ public interface ComplexPort extends HwPort {
 	 * @return the value of the '<em>Bit Width</em>' attribute.
 	 * @see #setBitWidth(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComplexPort_BitWidth()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getBitWidth();
@@ -118,6 +120,7 @@ public interface ComplexPort extends HwPort {
 
 	/**
 	 * Returns the value of the '<em><b>Base Address</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Base Address</em>' attribute isn't clear,
@@ -127,7 +130,7 @@ public interface ComplexPort extends HwPort {
 	 * @return the value of the '<em>Base Address</em>' attribute.
 	 * @see #setBaseAddress(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComplexPort_BaseAddress()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	long getBaseAddress();
@@ -144,6 +147,7 @@ public interface ComplexPort extends HwPort {
 
 	/**
 	 * Returns the value of the '<em><b>Address Range</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Address Range</em>' attribute isn't clear,
@@ -153,7 +157,7 @@ public interface ComplexPort extends HwPort {
 	 * @return the value of the '<em>Address Range</em>' attribute.
 	 * @see #setAddressRange(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComplexPort_AddressRange()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	long getAddressRange();
@@ -199,6 +203,7 @@ public interface ComplexPort extends HwPort {
 
 	/**
 	 * Returns the value of the '<em><b>Write Cycles</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Write Cycles</em>' attribute isn't clear,
@@ -208,7 +213,7 @@ public interface ComplexPort extends HwPort {
 	 * @return the value of the '<em>Write Cycles</em>' attribute.
 	 * @see #setWriteCycles(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComplexPort_WriteCycles()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getWriteCycles();
@@ -225,6 +230,7 @@ public interface ComplexPort extends HwPort {
 
 	/**
 	 * Returns the value of the '<em><b>Read Cycles</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Read Cycles</em>' attribute isn't clear,
@@ -234,7 +240,7 @@ public interface ComplexPort extends HwPort {
 	 * @return the value of the '<em>Read Cycles</em>' attribute.
 	 * @see #setReadCycles(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComplexPort_ReadCycles()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getReadCycles();
@@ -251,6 +257,7 @@ public interface ComplexPort extends HwPort {
 
 	/**
 	 * Returns the value of the '<em><b>Sched Value</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sched Value</em>' attribute isn't clear,
@@ -260,7 +267,7 @@ public interface ComplexPort extends HwPort {
 	 * @return the value of the '<em>Sched Value</em>' attribute.
 	 * @see #setSchedValue(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComplexPort_SchedValue()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getSchedValue();

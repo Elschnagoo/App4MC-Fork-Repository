@@ -39,6 +39,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface Task extends org.eclipse.app4mc.amalthea.model.Process {
 	/**
 	 * Returns the value of the '<em><b>Osek Task Group</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Osek Task Group</em>' attribute isn't clear,
@@ -48,7 +49,7 @@ public interface Task extends org.eclipse.app4mc.amalthea.model.Process {
 	 * @return the value of the '<em>Osek Task Group</em>' attribute.
 	 * @see #setOsekTaskGroup(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTask_OsekTaskGroup()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getOsekTaskGroup();
@@ -94,6 +95,7 @@ public interface Task extends org.eclipse.app4mc.amalthea.model.Process {
 
 	/**
 	 * Returns the value of the '<em><b>Multiple Task Activation Limit</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Multiple Task Activation Limit</em>' attribute isn't clear,
@@ -103,7 +105,7 @@ public interface Task extends org.eclipse.app4mc.amalthea.model.Process {
 	 * @return the value of the '<em>Multiple Task Activation Limit</em>' attribute.
 	 * @see #setMultipleTaskActivationLimit(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTask_MultipleTaskActivationLimit()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getMultipleTaskActivationLimit();

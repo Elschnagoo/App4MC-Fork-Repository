@@ -36,6 +36,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface BooleanObject extends Value {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
@@ -45,7 +46,7 @@ public interface BooleanObject extends Value {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(boolean)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBooleanObject_Value()
-	 * @model unique="false" required="true"
+	 * @model default="false" unique="false" required="true"
 	 * @generated
 	 */
 	boolean isValue();

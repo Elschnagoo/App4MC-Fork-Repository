@@ -36,6 +36,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface OsEvent extends ReferableBaseObject, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Communication Overhead In Bit</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Communication Overhead In Bit</em>' attribute isn't clear,
@@ -45,7 +46,7 @@ public interface OsEvent extends ReferableBaseObject, ITaggable {
 	 * @return the value of the '<em>Communication Overhead In Bit</em>' attribute.
 	 * @see #setCommunicationOverheadInBit(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsEvent_CommunicationOverheadInBit()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getCommunicationOverheadInBit();

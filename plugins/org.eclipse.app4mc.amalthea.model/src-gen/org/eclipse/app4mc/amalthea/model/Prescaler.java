@@ -61,6 +61,7 @@ public interface Prescaler extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Clock Ratio</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Clock Ratio</em>' attribute isn't clear,
@@ -70,7 +71,7 @@ public interface Prescaler extends EObject {
 	 * @return the value of the '<em>Clock Ratio</em>' attribute.
 	 * @see #setClockRatio(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPrescaler_ClockRatio()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getClockRatio();

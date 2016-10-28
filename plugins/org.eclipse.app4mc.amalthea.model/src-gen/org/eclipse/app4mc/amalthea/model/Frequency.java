@@ -67,6 +67,7 @@ public interface Frequency extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
@@ -76,7 +77,7 @@ public interface Frequency extends EObject {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getFrequency_Value()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getValue();

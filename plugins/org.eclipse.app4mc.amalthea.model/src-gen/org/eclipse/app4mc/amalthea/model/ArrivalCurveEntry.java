@@ -34,6 +34,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface ArrivalCurveEntry extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Number Of Events</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Number Of Events</em>' attribute isn't clear,
@@ -43,7 +44,7 @@ public interface ArrivalCurveEntry extends BaseObject {
 	 * @return the value of the '<em>Number Of Events</em>' attribute.
 	 * @see #setNumberOfEvents(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getArrivalCurveEntry_NumberOfEvents()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getNumberOfEvents();

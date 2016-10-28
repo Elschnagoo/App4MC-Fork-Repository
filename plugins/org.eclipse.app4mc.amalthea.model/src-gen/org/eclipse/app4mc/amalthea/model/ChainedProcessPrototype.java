@@ -60,6 +60,7 @@ public interface ChainedProcessPrototype extends BaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Apply</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Apply</em>' attribute isn't clear,
@@ -69,7 +70,7 @@ public interface ChainedProcessPrototype extends BaseObject {
 	 * @return the value of the '<em>Apply</em>' attribute.
 	 * @see #setApply(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getChainedProcessPrototype_Apply()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getApply();
@@ -86,6 +87,7 @@ public interface ChainedProcessPrototype extends BaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Offset</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Offset</em>' attribute isn't clear,
@@ -95,7 +97,7 @@ public interface ChainedProcessPrototype extends BaseObject {
 	 * @return the value of the '<em>Offset</em>' attribute.
 	 * @see #setOffset(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getChainedProcessPrototype_Offset()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getOffset();

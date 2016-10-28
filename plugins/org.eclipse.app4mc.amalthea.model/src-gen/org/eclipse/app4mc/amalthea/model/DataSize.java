@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface DataSize extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
@@ -45,7 +46,7 @@ public interface DataSize extends EObject {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(BigInteger)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataSize_Value()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	BigInteger getValue();

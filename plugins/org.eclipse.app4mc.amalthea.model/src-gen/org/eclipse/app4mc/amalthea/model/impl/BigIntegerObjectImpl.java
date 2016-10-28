@@ -51,7 +51,7 @@ public class BigIntegerObjectImpl extends ValueImpl implements BigIntegerObject 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final BigInteger VALUE_EDEFAULT = null;
+	protected static final BigInteger VALUE_EDEFAULT = new BigInteger("0");
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.

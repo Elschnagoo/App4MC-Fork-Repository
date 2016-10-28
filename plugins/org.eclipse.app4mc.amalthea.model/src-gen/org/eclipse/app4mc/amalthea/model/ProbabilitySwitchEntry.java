@@ -39,6 +39,7 @@ import org.eclipse.emf.common.util.EList;
 public interface ProbabilitySwitchEntry extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Probability</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Probability</em>' attribute isn't clear,
@@ -48,7 +49,7 @@ public interface ProbabilitySwitchEntry extends BaseObject {
 	 * @return the value of the '<em>Probability</em>' attribute.
 	 * @see #setProbability(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabilitySwitchEntry_Probability()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getProbability();

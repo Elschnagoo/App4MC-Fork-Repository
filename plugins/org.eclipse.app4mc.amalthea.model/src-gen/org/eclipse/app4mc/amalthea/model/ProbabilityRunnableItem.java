@@ -37,6 +37,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface ProbabilityRunnableItem extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Probability</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Probability</em>' attribute isn't clear,
@@ -46,7 +47,7 @@ public interface ProbabilityRunnableItem extends BaseObject {
 	 * @return the value of the '<em>Probability</em>' attribute.
 	 * @see #setProbability(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabilityRunnableItem_Probability()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getProbability();

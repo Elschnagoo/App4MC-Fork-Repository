@@ -87,6 +87,7 @@ public interface ClockSinusFunction extends Clock {
 
 	/**
 	 * Returns the value of the '<em><b>Amplitude</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Amplitude</em>' attribute isn't clear,
@@ -96,7 +97,7 @@ public interface ClockSinusFunction extends Clock {
 	 * @return the value of the '<em>Amplitude</em>' attribute.
 	 * @see #setAmplitude(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getClockSinusFunction_Amplitude()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getAmplitude();
@@ -113,6 +114,7 @@ public interface ClockSinusFunction extends Clock {
 
 	/**
 	 * Returns the value of the '<em><b>YOffset</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>YOffset</em>' attribute isn't clear,
@@ -122,7 +124,7 @@ public interface ClockSinusFunction extends Clock {
 	 * @return the value of the '<em>YOffset</em>' attribute.
 	 * @see #setYOffset(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getClockSinusFunction_YOffset()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getYOffset();

@@ -40,6 +40,7 @@ import org.eclipse.emf.common.util.EList;
 public interface SchedulingSWUnit extends SchedulingUnit, BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -48,7 +49,7 @@ public interface SchedulingSWUnit extends SchedulingUnit, BaseObject {
 	 * @return the value of the '<em>Priority</em>' attribute.
 	 * @see #setPriority(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulingSWUnit_Priority()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getPriority();

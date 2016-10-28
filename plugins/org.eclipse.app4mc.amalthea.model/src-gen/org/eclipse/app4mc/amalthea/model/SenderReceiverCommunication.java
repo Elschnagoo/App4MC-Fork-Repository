@@ -37,6 +37,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface SenderReceiverCommunication extends RunnableItem {
 	/**
 	 * Returns the value of the '<em><b>Buffered</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Buffered</em>' attribute isn't clear,
@@ -46,7 +47,7 @@ public interface SenderReceiverCommunication extends RunnableItem {
 	 * @return the value of the '<em>Buffered</em>' attribute.
 	 * @see #setBuffered(boolean)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSenderReceiverCommunication_Buffered()
-	 * @model unique="false"
+	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isBuffered();

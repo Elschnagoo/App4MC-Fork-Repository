@@ -62,6 +62,7 @@ public interface NetworkType extends HardwareTypeDescription {
 
 	/**
 	 * Returns the value of the '<em><b>Bit Width</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Bit Width</em>' attribute isn't clear,
@@ -71,7 +72,7 @@ public interface NetworkType extends HardwareTypeDescription {
 	 * @return the value of the '<em>Bit Width</em>' attribute.
 	 * @see #setBitWidth(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getNetworkType_BitWidth()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getBitWidth();

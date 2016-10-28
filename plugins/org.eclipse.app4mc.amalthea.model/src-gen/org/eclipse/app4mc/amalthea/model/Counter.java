@@ -37,6 +37,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface Counter extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Offset</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Offset</em>' attribute isn't clear,
@@ -46,7 +47,7 @@ public interface Counter extends BaseObject {
 	 * @return the value of the '<em>Offset</em>' attribute.
 	 * @see #setOffset(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCounter_Offset()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	long getOffset();
@@ -63,6 +64,7 @@ public interface Counter extends BaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Prescaler</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Prescaler</em>' attribute isn't clear,
@@ -72,7 +74,7 @@ public interface Counter extends BaseObject {
 	 * @return the value of the '<em>Prescaler</em>' attribute.
 	 * @see #setPrescaler(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCounter_Prescaler()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	long getPrescaler();

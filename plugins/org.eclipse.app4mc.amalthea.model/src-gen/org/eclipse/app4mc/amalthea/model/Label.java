@@ -70,6 +70,7 @@ public interface Label extends AbstractElementMemoryInformation, IDisplayName {
 
 	/**
 	 * Returns the value of the '<em><b>Constant</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -78,7 +79,7 @@ public interface Label extends AbstractElementMemoryInformation, IDisplayName {
 	 * @return the value of the '<em>Constant</em>' attribute.
 	 * @see #setConstant(boolean)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_Constant()
-	 * @model unique="false"
+	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isConstant();
@@ -95,6 +96,7 @@ public interface Label extends AbstractElementMemoryInformation, IDisplayName {
 
 	/**
 	 * Returns the value of the '<em><b>BVolatile</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -103,7 +105,7 @@ public interface Label extends AbstractElementMemoryInformation, IDisplayName {
 	 * @return the value of the '<em>BVolatile</em>' attribute.
 	 * @see #setBVolatile(boolean)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_BVolatile()
-	 * @model unique="false"
+	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isBVolatile();

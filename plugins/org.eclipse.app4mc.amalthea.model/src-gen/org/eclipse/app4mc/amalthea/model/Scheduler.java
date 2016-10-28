@@ -65,6 +65,7 @@ public interface Scheduler extends ReferableBaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Schedule Unit Priority</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Schedule Unit Priority</em>' attribute isn't clear,
@@ -74,7 +75,7 @@ public interface Scheduler extends ReferableBaseObject {
 	 * @return the value of the '<em>Schedule Unit Priority</em>' attribute.
 	 * @see #setScheduleUnitPriority(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScheduler_ScheduleUnitPriority()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getScheduleUnitPriority();

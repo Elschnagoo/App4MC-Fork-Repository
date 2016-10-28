@@ -37,6 +37,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface BetaDistribution<T> extends Distribution<T> {
 	/**
 	 * Returns the value of the '<em><b>Alpha</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Alpha</em>' attribute isn't clear,
@@ -46,7 +47,7 @@ public interface BetaDistribution<T> extends Distribution<T> {
 	 * @return the value of the '<em>Alpha</em>' attribute.
 	 * @see #setAlpha(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBetaDistribution_Alpha()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getAlpha();
@@ -63,6 +64,7 @@ public interface BetaDistribution<T> extends Distribution<T> {
 
 	/**
 	 * Returns the value of the '<em><b>Beta</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Beta</em>' attribute isn't clear,
@@ -72,7 +74,7 @@ public interface BetaDistribution<T> extends Distribution<T> {
 	 * @return the value of the '<em>Beta</em>' attribute.
 	 * @see #setBeta(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBetaDistribution_Beta()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getBeta();

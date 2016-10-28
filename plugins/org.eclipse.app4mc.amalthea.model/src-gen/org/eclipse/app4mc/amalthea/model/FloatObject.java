@@ -36,6 +36,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface FloatObject extends Value {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * The default value is <code>"0f"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
@@ -45,7 +46,7 @@ public interface FloatObject extends Value {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(float)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getFloatObject_Value()
-	 * @model unique="false" required="true"
+	 * @model default="0f" unique="false" required="true"
 	 * @generated
 	 */
 	float getValue();

@@ -87,6 +87,7 @@ public interface ClockTriangleFunction extends Clock {
 
 	/**
 	 * Returns the value of the '<em><b>Max</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Max</em>' attribute isn't clear,
@@ -96,7 +97,7 @@ public interface ClockTriangleFunction extends Clock {
 	 * @return the value of the '<em>Max</em>' attribute.
 	 * @see #setMax(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getClockTriangleFunction_Max()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getMax();
@@ -113,6 +114,7 @@ public interface ClockTriangleFunction extends Clock {
 
 	/**
 	 * Returns the value of the '<em><b>Min</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Min</em>' attribute isn't clear,
@@ -122,7 +124,7 @@ public interface ClockTriangleFunction extends Clock {
 	 * @return the value of the '<em>Min</em>' attribute.
 	 * @see #setMin(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getClockTriangleFunction_Min()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getMin();

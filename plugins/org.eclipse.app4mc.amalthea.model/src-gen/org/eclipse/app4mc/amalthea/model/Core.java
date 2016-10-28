@@ -59,6 +59,7 @@ public interface Core extends ComplexNode {
 
 	/**
 	 * Returns the value of the '<em><b>Lockstep Group</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Lockstep Group</em>' attribute isn't clear,
@@ -68,7 +69,7 @@ public interface Core extends ComplexNode {
 	 * @return the value of the '<em>Lockstep Group</em>' attribute.
 	 * @see #setLockstepGroup(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCore_LockstepGroup()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getLockstepGroup();

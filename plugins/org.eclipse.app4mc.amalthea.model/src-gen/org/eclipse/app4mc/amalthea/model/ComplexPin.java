@@ -63,6 +63,7 @@ public interface ComplexPin extends Pin {
 
 	/**
 	 * Returns the value of the '<em><b>Base Address</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Base Address</em>' attribute isn't clear,
@@ -72,7 +73,7 @@ public interface ComplexPin extends Pin {
 	 * @return the value of the '<em>Base Address</em>' attribute.
 	 * @see #setBaseAddress(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComplexPin_BaseAddress()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	long getBaseAddress();

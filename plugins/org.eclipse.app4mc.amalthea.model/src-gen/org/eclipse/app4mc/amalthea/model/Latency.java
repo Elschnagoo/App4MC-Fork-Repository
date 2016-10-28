@@ -63,6 +63,7 @@ public interface Latency extends LatencyAccessPathElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transfer Size</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transfer Size</em>' attribute isn't clear,
@@ -72,7 +73,7 @@ public interface Latency extends LatencyAccessPathElement {
 	 * @return the value of the '<em>Transfer Size</em>' attribute.
 	 * @see #setTransferSize(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLatency_TransferSize()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	long getTransferSize();

@@ -33,6 +33,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface CoreType extends AbstractionType {
 	/**
 	 * Returns the value of the '<em><b>Bit Width</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Bit Width</em>' attribute isn't clear,
@@ -42,7 +43,7 @@ public interface CoreType extends AbstractionType {
 	 * @return the value of the '<em>Bit Width</em>' attribute.
 	 * @see #setBitWidth(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCoreType_BitWidth()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getBitWidth();
@@ -59,6 +60,7 @@ public interface CoreType extends AbstractionType {
 
 	/**
 	 * Returns the value of the '<em><b>Instructions Per Cycle</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Instructions Per Cycle</em>' attribute isn't clear,
@@ -68,7 +70,7 @@ public interface CoreType extends AbstractionType {
 	 * @return the value of the '<em>Instructions Per Cycle</em>' attribute.
 	 * @see #setInstructionsPerCycle(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCoreType_InstructionsPerCycle()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getInstructionsPerCycle();

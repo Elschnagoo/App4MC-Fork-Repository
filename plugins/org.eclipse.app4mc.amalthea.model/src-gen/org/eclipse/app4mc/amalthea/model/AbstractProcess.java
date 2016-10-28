@@ -32,6 +32,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface AbstractProcess extends AbstractElementMemoryInformation {
 	/**
 	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Priority</em>' attribute isn't clear,
@@ -41,7 +42,7 @@ public interface AbstractProcess extends AbstractElementMemoryInformation {
 	 * @return the value of the '<em>Priority</em>' attribute.
 	 * @see #setPriority(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractProcess_Priority()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getPriority();

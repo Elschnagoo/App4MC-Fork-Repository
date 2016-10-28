@@ -64,6 +64,7 @@ public interface WeibullEstimators<T> extends WeibullDistribution<T> {
 
 	/**
 	 * Returns the value of the '<em><b>PRemain Promille</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>PRemain Promille</em>' attribute isn't clear,
@@ -73,7 +74,7 @@ public interface WeibullEstimators<T> extends WeibullDistribution<T> {
 	 * @return the value of the '<em>PRemain Promille</em>' attribute.
 	 * @see #setPRemainPromille(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getWeibullEstimators_PRemainPromille()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getPRemainPromille();

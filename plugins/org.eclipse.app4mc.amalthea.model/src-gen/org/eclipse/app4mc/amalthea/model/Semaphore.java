@@ -41,6 +41,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface Semaphore extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Inital Value</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inital Value</em>' attribute isn't clear,
@@ -50,7 +51,7 @@ public interface Semaphore extends ReferableBaseObject {
 	 * @return the value of the '<em>Inital Value</em>' attribute.
 	 * @see #setInitalValue(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphore_InitalValue()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getInitalValue();
@@ -67,6 +68,7 @@ public interface Semaphore extends ReferableBaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Max Value</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Max Value</em>' attribute isn't clear,
@@ -76,7 +78,7 @@ public interface Semaphore extends ReferableBaseObject {
 	 * @return the value of the '<em>Max Value</em>' attribute.
 	 * @see #setMaxValue(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphore_MaxValue()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getMaxValue();
@@ -93,6 +95,7 @@ public interface Semaphore extends ReferableBaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Priority Ceiling Protocol</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Priority Ceiling Protocol</em>' attribute isn't clear,
@@ -102,7 +105,7 @@ public interface Semaphore extends ReferableBaseObject {
 	 * @return the value of the '<em>Priority Ceiling Protocol</em>' attribute.
 	 * @see #setPriorityCeilingProtocol(boolean)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphore_PriorityCeilingProtocol()
-	 * @model unique="false"
+	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isPriorityCeilingProtocol();

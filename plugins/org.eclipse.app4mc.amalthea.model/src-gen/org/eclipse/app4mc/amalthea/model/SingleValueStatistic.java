@@ -32,6 +32,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface SingleValueStatistic extends NumericStatistic {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * The default value is <code>"0f"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
@@ -41,7 +42,7 @@ public interface SingleValueStatistic extends NumericStatistic {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(float)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSingleValueStatistic_Value()
-	 * @model unique="false"
+	 * @model default="0f" unique="false"
 	 * @generated
 	 */
 	float getValue();

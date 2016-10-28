@@ -36,6 +36,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface OsExecutionInstructionsConstant extends OsExecutionInstructions, BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
@@ -45,7 +46,7 @@ public interface OsExecutionInstructionsConstant extends OsExecutionInstructions
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsExecutionInstructionsConstant_Value()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	long getValue();

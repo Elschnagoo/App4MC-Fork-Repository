@@ -36,6 +36,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface PartlyPFairPD2 extends TaskSchedulingAlgorithm {
 	/**
 	 * Returns the value of the '<em><b>Quant Size Ns</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Quant Size Ns</em>' attribute isn't clear,
@@ -45,7 +46,7 @@ public interface PartlyPFairPD2 extends TaskSchedulingAlgorithm {
 	 * @return the value of the '<em>Quant Size Ns</em>' attribute.
 	 * @see #setQuantSizeNs(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPartlyPFairPD2_QuantSizeNs()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getQuantSizeNs();

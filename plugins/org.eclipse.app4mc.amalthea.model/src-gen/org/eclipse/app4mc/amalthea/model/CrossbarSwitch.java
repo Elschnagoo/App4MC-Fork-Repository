@@ -32,6 +32,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface CrossbarSwitch extends NetworkType {
 	/**
 	 * Returns the value of the '<em><b>Con Connections</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Con Connections</em>' attribute isn't clear,
@@ -41,7 +42,7 @@ public interface CrossbarSwitch extends NetworkType {
 	 * @return the value of the '<em>Con Connections</em>' attribute.
 	 * @see #setConConnections(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCrossbarSwitch_ConConnections()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getConConnections();

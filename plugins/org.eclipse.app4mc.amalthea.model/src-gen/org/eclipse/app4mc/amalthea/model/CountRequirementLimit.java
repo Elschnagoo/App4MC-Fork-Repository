@@ -62,6 +62,7 @@ public interface CountRequirementLimit extends RequirementLimit {
 
 	/**
 	 * Returns the value of the '<em><b>Limit Value</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Limit Value</em>' attribute isn't clear,
@@ -71,7 +72,7 @@ public interface CountRequirementLimit extends RequirementLimit {
 	 * @return the value of the '<em>Limit Value</em>' attribute.
 	 * @see #setLimitValue(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCountRequirementLimit_LimitValue()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getLimitValue();

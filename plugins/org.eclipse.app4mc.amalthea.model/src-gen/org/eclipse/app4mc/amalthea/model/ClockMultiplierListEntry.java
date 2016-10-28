@@ -37,6 +37,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface ClockMultiplierListEntry extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Multiplier</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Multiplier</em>' attribute isn't clear,
@@ -46,7 +47,7 @@ public interface ClockMultiplierListEntry extends BaseObject {
 	 * @return the value of the '<em>Multiplier</em>' attribute.
 	 * @see #setMultiplier(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getClockMultiplierListEntry_Multiplier()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getMultiplier();

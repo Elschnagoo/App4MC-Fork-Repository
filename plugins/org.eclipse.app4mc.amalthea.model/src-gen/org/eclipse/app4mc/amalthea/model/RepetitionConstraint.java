@@ -67,6 +67,7 @@ public interface RepetitionConstraint extends TimingConstraint {
 
 	/**
 	 * Returns the value of the '<em><b>Span</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Span</em>' attribute isn't clear,
@@ -76,7 +77,7 @@ public interface RepetitionConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Span</em>' attribute.
 	 * @see #setSpan(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRepetitionConstraint_Span()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getSpan();

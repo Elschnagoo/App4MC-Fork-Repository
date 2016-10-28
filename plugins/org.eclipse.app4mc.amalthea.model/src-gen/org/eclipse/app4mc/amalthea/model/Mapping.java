@@ -66,6 +66,7 @@ public interface Mapping extends BaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Memory Position Address</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -74,7 +75,7 @@ public interface Mapping extends BaseObject {
 	 * @return the value of the '<em>Memory Position Address</em>' attribute.
 	 * @see #setMemoryPositionAddress(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMapping_MemoryPositionAddress()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	long getMemoryPositionAddress();

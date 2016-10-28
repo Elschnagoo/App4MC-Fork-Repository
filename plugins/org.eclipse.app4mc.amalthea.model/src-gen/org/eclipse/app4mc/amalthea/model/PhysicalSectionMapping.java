@@ -82,6 +82,7 @@ public interface PhysicalSectionMapping extends ReferableBaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Start Address</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Start Address</em>' attribute isn't clear,
@@ -91,7 +92,7 @@ public interface PhysicalSectionMapping extends ReferableBaseObject {
 	 * @return the value of the '<em>Start Address</em>' attribute.
 	 * @see #setStartAddress(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPhysicalSectionMapping_StartAddress()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Memory'"
 	 * @generated
 	 */
@@ -109,6 +110,7 @@ public interface PhysicalSectionMapping extends ReferableBaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>End Address</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>End Address</em>' attribute isn't clear,
@@ -118,7 +120,7 @@ public interface PhysicalSectionMapping extends ReferableBaseObject {
 	 * @return the value of the '<em>End Address</em>' attribute.
 	 * @see #setEndAddress(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPhysicalSectionMapping_EndAddress()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Memory'"
 	 * @generated
 	 */

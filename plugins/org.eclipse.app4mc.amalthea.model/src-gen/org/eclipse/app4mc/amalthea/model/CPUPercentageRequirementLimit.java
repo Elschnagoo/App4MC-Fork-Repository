@@ -63,6 +63,7 @@ public interface CPUPercentageRequirementLimit extends RequirementLimit {
 
 	/**
 	 * Returns the value of the '<em><b>Limit Value</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Limit Value</em>' attribute isn't clear,
@@ -72,7 +73,7 @@ public interface CPUPercentageRequirementLimit extends RequirementLimit {
 	 * @return the value of the '<em>Limit Value</em>' attribute.
 	 * @see #setLimitValue(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCPUPercentageRequirementLimit_LimitValue()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getLimitValue();

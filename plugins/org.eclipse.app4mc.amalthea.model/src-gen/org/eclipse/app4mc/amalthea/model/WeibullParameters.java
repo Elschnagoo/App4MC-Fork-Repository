@@ -38,6 +38,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface WeibullParameters<T> extends WeibullDistribution<T> {
 	/**
 	 * Returns the value of the '<em><b>Kappa</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Kappa</em>' attribute isn't clear,
@@ -47,7 +48,7 @@ public interface WeibullParameters<T> extends WeibullDistribution<T> {
 	 * @return the value of the '<em>Kappa</em>' attribute.
 	 * @see #setKappa(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getWeibullParameters_Kappa()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getKappa();
@@ -64,6 +65,7 @@ public interface WeibullParameters<T> extends WeibullDistribution<T> {
 
 	/**
 	 * Returns the value of the '<em><b>Lambda</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Lambda</em>' attribute isn't clear,
@@ -73,7 +75,7 @@ public interface WeibullParameters<T> extends WeibullDistribution<T> {
 	 * @return the value of the '<em>Lambda</em>' attribute.
 	 * @see #setLambda(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getWeibullParameters_Lambda()
-	 * @model unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
 	double getLambda();

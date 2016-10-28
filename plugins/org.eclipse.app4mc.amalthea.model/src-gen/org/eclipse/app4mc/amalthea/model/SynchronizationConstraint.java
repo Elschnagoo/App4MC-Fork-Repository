@@ -39,6 +39,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface SynchronizationConstraint extends TimingConstraint {
 	/**
 	 * Returns the value of the '<em><b>Multiple Occurrences Allowed</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Multiple Occurrences Allowed</em>' attribute isn't clear,
@@ -48,7 +49,7 @@ public interface SynchronizationConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Multiple Occurrences Allowed</em>' attribute.
 	 * @see #setMultipleOccurrencesAllowed(boolean)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSynchronizationConstraint_MultipleOccurrencesAllowed()
-	 * @model unique="false"
+	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isMultipleOccurrencesAllowed();

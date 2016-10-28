@@ -41,6 +41,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface OsBuffering extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Runnable Level</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Runnable Level</em>' attribute isn't clear,
@@ -50,7 +51,7 @@ public interface OsBuffering extends BaseObject {
 	 * @return the value of the '<em>Runnable Level</em>' attribute.
 	 * @see #setRunnableLevel(boolean)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsBuffering_RunnableLevel()
-	 * @model unique="false"
+	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isRunnableLevel();
@@ -67,6 +68,7 @@ public interface OsBuffering extends BaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Process Level</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Process Level</em>' attribute isn't clear,
@@ -76,7 +78,7 @@ public interface OsBuffering extends BaseObject {
 	 * @return the value of the '<em>Process Level</em>' attribute.
 	 * @see #setProcessLevel(boolean)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsBuffering_ProcessLevel()
-	 * @model unique="false"
+	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isProcessLevel();
@@ -93,6 +95,7 @@ public interface OsBuffering extends BaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Schedule Section Level</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Schedule Section Level</em>' attribute isn't clear,
@@ -102,7 +105,7 @@ public interface OsBuffering extends BaseObject {
 	 * @return the value of the '<em>Schedule Section Level</em>' attribute.
 	 * @see #setScheduleSectionLevel(boolean)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsBuffering_ScheduleSectionLevel()
-	 * @model unique="false"
+	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isScheduleSectionLevel();

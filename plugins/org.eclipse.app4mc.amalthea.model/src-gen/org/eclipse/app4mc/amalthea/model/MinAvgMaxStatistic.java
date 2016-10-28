@@ -38,6 +38,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface MinAvgMaxStatistic extends NumericStatistic {
 	/**
 	 * Returns the value of the '<em><b>Min</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Min</em>' attribute isn't clear,
@@ -47,7 +48,7 @@ public interface MinAvgMaxStatistic extends NumericStatistic {
 	 * @return the value of the '<em>Min</em>' attribute.
 	 * @see #setMin(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMinAvgMaxStatistic_Min()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getMin();
@@ -64,6 +65,7 @@ public interface MinAvgMaxStatistic extends NumericStatistic {
 
 	/**
 	 * Returns the value of the '<em><b>Avg</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Avg</em>' attribute isn't clear,
@@ -73,7 +75,7 @@ public interface MinAvgMaxStatistic extends NumericStatistic {
 	 * @return the value of the '<em>Avg</em>' attribute.
 	 * @see #setAvg(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMinAvgMaxStatistic_Avg()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getAvg();
@@ -90,6 +92,7 @@ public interface MinAvgMaxStatistic extends NumericStatistic {
 
 	/**
 	 * Returns the value of the '<em><b>Max</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Max</em>' attribute isn't clear,
@@ -99,7 +102,7 @@ public interface MinAvgMaxStatistic extends NumericStatistic {
 	 * @return the value of the '<em>Max</em>' attribute.
 	 * @see #setMax(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMinAvgMaxStatistic_Max()
-	 * @model unique="false"
+	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	int getMax();
