@@ -1,161 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <swModel>
     <tasks name="Task_4" priority="10" stimuli="Stimulus_Task_4?type=Sporadic" preemption="preemptive" multipleTaskActivationLimit="3">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_4_1">
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_1?type=Runnable"/>
+          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_1?type=Runnable" />
         </graphEntries>
       </callGraph>
     </tasks>
     <tasks name="Task_3" priority="10" stimuli="Stimulus_Task_3?type=InterProcess" preemption="preemptive" multipleTaskActivationLimit="3">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_3_1">
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_1?type=Runnable"/>
+          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_1?type=Runnable" />
         </graphEntries>
       </callGraph>
     </tasks>
     <tasks name="Task_2" priority="10" stimuli="Stimulus_Task_2?type=InterProcess" preemption="preemptive" multipleTaskActivationLimit="3">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_2_1">
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_1?type=Runnable"/>
+          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_1?type=Runnable" />
         </graphEntries>
       </callGraph>
     </tasks>
     <tasks name="Task_1" priority="10" stimuli="Stimulus_Task_1?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="3">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_1_1">
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_1?type=Runnable"/>
+          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_1?type=Runnable" />
         </graphEntries>
         <graphEntries xsi:type="am:ProbabiltitySwitch">
           <entries probability="70.0">
-            <graphEntries xsi:type="am:CallSequence" name="CallSequence_1_2a">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_2?type=Runnable"/>
-              <calls xsi:type="am:InterProcessActivation" stimulus="Stimulus_Task_2?type=InterProcess"/>
-            </graphEntries>
+            <items xsi:type="am:CallSequence" name="CallSequence_1_2a">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_2?type=Runnable" />
+              <calls xsi:type="am:InterProcessActivation" stimulus="Stimulus_Task_2?type=InterProcess" />
+            </items>
           </entries>
           <entries probability="30.0">
-            <graphEntries xsi:type="am:CallSequence" name="CallSequence_1_2b">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_3?type=Runnable"/>
-              <calls xsi:type="am:InterProcessActivation" stimulus="Stimulus_Task_3?type=InterProcess"/>
-            </graphEntries>
+            <items xsi:type="am:CallSequence" name="CallSequence_1_2b">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_3?type=Runnable" />
+              <calls xsi:type="am:InterProcessActivation" stimulus="Stimulus_Task_3?type=InterProcess" />
+            </items>
           </entries>
         </graphEntries>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_1_3">
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_4?type=Runnable"/>
+          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_4?type=Runnable" />
         </graphEntries>
       </callGraph>
     </tasks>
     <runnables name="Runnable_1_1">
-      <runnableItems xsi:type="am:InstructionsConstant" value="1000000"/>
+      <runnableItems xsi:type="am:InstructionsConstant" value="1000000" />
     </runnables>
     <runnables name="Runnable_1_2">
-      <runnableItems xsi:type="am:InstructionsConstant" value="2000000"/>
+      <runnableItems xsi:type="am:InstructionsConstant" value="2000000" />
     </runnables>
     <runnables name="Runnable_3_1">
       <runnableItems xsi:type="am:InstructionsDeviation">
         <deviation>
-          <upperBound xsi:type="am:LongObject" value="5000000"/>
+          <upperBound xsi:type="am:LongObject" value="5000000" />
           <distribution xsi:type="am:GaussDistribution">
-            <sd xsi:type="am:LongObject" value="50000"/>
-            <mean xsi:type="am:LongObject" value="1000000"/>
+            <sd xsi:type="am:LongObject" value="50000" />
+            <mean xsi:type="am:LongObject" value="1000000" />
           </distribution>
         </deviation>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4_1">
-      <runnableItems xsi:type="am:InstructionsConstant" value="1000000"/>
+      <runnableItems xsi:type="am:InstructionsConstant" value="1000000" />
     </runnables>
     <runnables name="Runnable_1_3">
-      <runnableItems xsi:type="am:InstructionsConstant" value="3000000"/>
+      <runnableItems xsi:type="am:InstructionsConstant" value="3000000" />
     </runnables>
     <runnables name="Runnable_2_1">
       <runnableItems xsi:type="am:InstructionsDeviation">
         <deviation>
-          <lowerBound xsi:type="am:LongObject" value="1000000"/>
-          <upperBound xsi:type="am:LongObject" value="5000000"/>
-          <distribution xsi:type="am:UniformDistribution"/>
+          <lowerBound xsi:type="am:LongObject" value="1000000" />
+          <upperBound xsi:type="am:LongObject" value="5000000" />
+          <distribution xsi:type="am:UniformDistribution" />
         </deviation>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1_4">
-      <runnableItems xsi:type="am:InstructionsConstant" value="4000000"/>
+      <runnableItems xsi:type="am:InstructionsConstant" value="4000000" />
     </runnables>
   </swModel>
   <hwModel>
-    <coreTypes name="Core_1_type" instructionsPerCycle="1"/>
+    <coreTypes name="Core_1_type" instructionsPerCycle="1" />
     <system>
       <ecus name="Ecu_1">
         <quartzes name="Quartz_1" type="STATIC">
-          <frequency unit="MHz" value="600.0"/>
+          <frequency unit="MHz" value="600.0" />
         </quartzes>
         <microcontrollers name="Processor_1">
           <memories name="Memory_1">
-            <ports xsi:type="am:ComplexPort" name="Memory_1_port" bitWidth="16" direction="R" writeCycles="12" readCycles="12"/>
+            <ports xsi:type="am:ComplexPort" name="Memory_1_port" bitWidth="16" direction="R" writeCycles="12" readCycles="12" />
           </memories>
           <cores name="Core_1" coreType="Core_1_type?type=CoreType">
-            <prescaler name="Core_1_prescaler" quartz="Quartz_1?type=Quartz"/>
+            <prescaler name="Core_1_prescaler" quartz="Quartz_1?type=Quartz" />
           </cores>
         </microcontrollers>
       </ecus>
     </system>
   </hwModel>
   <osModel>
-    <osBuffering/>
+    <osBuffering />
     <operatingSystems name="OperatingSystem">
       <taskSchedulers name="Scheduler_1">
         <schedulingUnit xsi:type="am:SchedulingHWUnit">
-          <delay value="100" unit="ns"/>
+          <delay value="100" unit="ns" />
         </schedulingUnit>
-        <schedulingAlgorithm xsi:type="am:OSEK"/>
+        <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
     </operatingSystems>
   </osModel>
   <stimuliModel>
-    <stimuli xsi:type="am:InterProcess" name="Stimulus_Task_2"/>
+    <stimuli xsi:type="am:InterProcess" name="Stimulus_Task_2" />
     <stimuli xsi:type="am:Sporadic" name="Stimulus_Task_4">
       <stimulusDeviation>
-        <upperBound xsi:type="am:Time" value="100" unit="ms"/>
+        <upperBound xsi:type="am:Time" value="100" unit="ms" />
         <distribution xsi:type="am:GaussDistribution">
-          <sd xsi:type="am:Time" value="5" unit="ms"/>
-          <mean xsi:type="am:Time" value="30" unit="ms"/>
+          <sd xsi:type="am:Time" value="5" unit="ms" />
+          <mean xsi:type="am:Time" value="30" unit="ms" />
         </distribution>
       </stimulusDeviation>
     </stimuli>
-    <stimuli xsi:type="am:InterProcess" name="Stimulus_Task_3"/>
+    <stimuli xsi:type="am:InterProcess" name="Stimulus_Task_3" />
     <stimuli xsi:type="am:Periodic" name="Stimulus_Task_1">
-      <offset unit="ms"/>
-      <recurrence value="25" unit="ms"/>
+      <offset unit="ms" />
+      <recurrence value="25" unit="ms" />
     </stimuli>
   </stimuliModel>
   <constraintsModel>
     <requirements xsi:type="am:ProcessRequirement" name="Deadline_4" severity="Critical" process="Task_4?type=Task">
       <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
-        <limitValue value="25" unit="ms"/>
+        <limitValue value="25" unit="ms" />
       </limit>
     </requirements>
     <requirements xsi:type="am:ProcessRequirement" name="Deadline_3" severity="Critical" process="Task_3?type=Task">
       <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
-        <limitValue value="25" unit="ms"/>
+        <limitValue value="25" unit="ms" />
       </limit>
     </requirements>
     <requirements xsi:type="am:ProcessRequirement" name="Deadline_2" severity="Critical" process="Task_2?type=Task">
       <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
-        <limitValue value="25" unit="ms"/>
+        <limitValue value="25" unit="ms" />
       </limit>
     </requirements>
     <requirements xsi:type="am:ProcessRequirement" name="Deadline_1" severity="Critical" process="Task_1?type=Task">
       <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
-        <limitValue value="25" unit="ms"/>
+        <limitValue value="25" unit="ms" />
       </limit>
     </requirements>
   </constraintsModel>
-  <eventModel/>
+  <eventModel />
   <mappingModel addressMappingType="none">
-    <taskAllocation task="Task_4?type=Task" scheduler="Scheduler_1?type=TaskScheduler"/>
-    <taskAllocation task="Task_3?type=Task" scheduler="Scheduler_1?type=TaskScheduler"/>
-    <taskAllocation task="Task_2?type=Task" scheduler="Scheduler_1?type=TaskScheduler"/>
-    <taskAllocation task="Task_1?type=Task" scheduler="Scheduler_1?type=TaskScheduler"/>
-    <coreAllocation scheduler="Scheduler_1?type=TaskScheduler" core="Core_1?type=Core"/>
+    <taskAllocation task="Task_4?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />
+    <taskAllocation task="Task_3?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />
+    <taskAllocation task="Task_2?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />
+    <taskAllocation task="Task_1?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />
+    <coreAllocation scheduler="Scheduler_1?type=TaskScheduler" core="Core_1?type=Core" />
   </mappingModel>
 </am:Amalthea>
