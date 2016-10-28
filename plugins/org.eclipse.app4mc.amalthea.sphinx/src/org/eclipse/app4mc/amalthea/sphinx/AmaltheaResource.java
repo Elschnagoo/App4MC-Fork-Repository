@@ -54,6 +54,8 @@ public class AmaltheaResource extends XMIResourceImpl {
 
 		// Also store defaults (this option has no effect on enums)
 		getDefaultLoadOptions().put(XMLResource.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
+		getDefaultSaveOptions().put(XMLResource.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
+
 
 		setIntrinsicIDToEObjectMap(new HashMap<String, EObject>());
 	}
