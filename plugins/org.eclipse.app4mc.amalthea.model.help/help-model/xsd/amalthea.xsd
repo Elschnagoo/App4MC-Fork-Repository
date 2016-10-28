@@ -89,6 +89,19 @@
       <xsd:enumeration value="TiBPerSecond"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="SamplingType">
+    <xsd:annotation>
+      <xsd:documentation>The types of sampling</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="default"/>
+      <xsd:enumeration value="BestCase"/>
+      <xsd:enumeration value="WorstCase"/>
+      <xsd:enumeration value="AverageCase"/>
+      <xsd:enumeration value="CornerCase"/>
+      <xsd:enumeration value="Uniform"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="InterfaceKind">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -105,11 +118,26 @@
       <xsd:enumeration value="immediateSuccessorEndSequence"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="RunnableGroupingType">
+  <xsd:simpleType name="SynchronizationType">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="allOfThem"/>
-      <xsd:enumeration value="atLeastOneOfThem"/>
+      <xsd:enumeration value="Stimulus"/>
+      <xsd:enumeration value="Response"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="MappingType">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="OneToOne"/>
+      <xsd:enumeration value="Reaction"/>
+      <xsd:enumeration value="UniqueReaction"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="LatencyType">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="Age"/>
+      <xsd:enumeration value="Reaction"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="Severity">
@@ -876,6 +904,7 @@ exclusive: gets access to requested semaphore only when there is no other user a
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="samplingType" type="am:SamplingType"/>
   </xsd:complexType>
   <xsd:element name="Deviation" type="am:Deviation"/>
   <xsd:complexType abstract="true" name="Distribution">
@@ -988,6 +1017,22 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
   <xsd:element name="GaussDistribution" type="am:GaussDistribution">
     <xsd:annotation>
       <xsd:documentation>Gauss distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="BetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Distribution">
+        <xsd:attribute name="alpha" type="xsd:double"/>
+        <xsd:attribute name="beta" type="xsd:double"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="BetaDistribution" type="am:BetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="NumericStatistic">
@@ -1302,6 +1347,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
           <xsd:element name="dataAgeConstraints" type="am:DataAgeConstraint"/>
           <xsd:element name="requirements" type="am:Requirement"/>
           <xsd:element name="dataCoherencyGroups" type="am:DataCoherencyGroup"/>
+          <xsd:element name="dataStabilityGroups" type="am:DataStabilityGroup"/>
           <xsd:element name="physicalSectionConstraints" type="am:PhysicalSectionConstraint"/>
         </xsd:choice>
       </xsd:extension>
@@ -1324,8 +1370,10 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="runnableGroups" type="am:ProcessRunnableGroup"/>
+          <xsd:element name="processScope" type="am:AbstractProcess"/>
         </xsd:choice>
         <xsd:attribute name="orderType" type="am:RunnableOrderType"/>
+        <xsd:attribute name="processScope" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1334,26 +1382,13 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="entries" type="am:ProcessRunnableGroupEntry"/>
+          <xsd:element name="runnables" type="am:Runnable"/>
         </xsd:choice>
-        <xsd:attribute name="groupingType" type="am:RunnableGroupingType"/>
+        <xsd:attribute name="runnables" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ProcessRunnableGroup" type="am:ProcessRunnableGroup"/>
-  <xsd:complexType name="ProcessRunnableGroupEntry">
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="runnable" type="am:Runnable"/>
-          <xsd:element name="processScope" type="am:AbstractProcess"/>
-        </xsd:choice>
-        <xsd:attribute name="runnable" type="xsd:string"/>
-        <xsd:attribute name="processScope" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ProcessRunnableGroupEntry" type="am:ProcessRunnableGroupEntry"/>
   <xsd:complexType abstract="true" name="AffinityConstraint">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject"/>
@@ -1422,22 +1457,22 @@ The target describes the entity on which the runnables can be mapped</xsd:docume
 The target describes the entity on which the runnables can be mapped</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="SchedulerConstraint">
+  <xsd:complexType abstract="true" name="DataConstraint">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all scheduler related constraint
-The target describes the entity on which the schedulers can be mapped</xsd:documentation>
+      <xsd:documentation>A abstract superclass for all data related constraint
+The target describes the entity on which the data can be mapped</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="target" type="am:SchedulerConstraintTarget"/>
+      <xsd:element name="target" type="am:DataConstraintTarget"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
   </xsd:complexType>
-  <xsd:element name="SchedulerConstraint" type="am:SchedulerConstraint">
+  <xsd:element name="DataConstraint" type="am:DataConstraint">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all scheduler related constraint
-The target describes the entity on which the schedulers can be mapped</xsd:documentation>
+      <xsd:documentation>A abstract superclass for all data related constraint
+The target describes the entity on which the data can be mapped</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="RunnableSeparationConstraint">
@@ -1484,26 +1519,26 @@ groups describes the process-groups that should be separated from each other on 
 if there is only one group then this means that the processes of this group are not allowed to be executed on the target</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="SchedulerSeparationConstraint">
+  <xsd:complexType name="DataSeparationConstraint">
     <xsd:annotation>
-      <xsd:documentation>A scheduler-separation-constraint
-groups describes the scheduler-groups that should be separated from each other on the target
-if there is only one group then this means that the schedulers of this group are not allowed to be executed on the target</xsd:documentation>
+      <xsd:documentation>A data-separation-constraint
+groups describes the label-groups that should be separated from each other on the target
+if there is only one group then this means that the label of this group is not allowed to be executed on the target</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:SeparationConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="target" type="am:SchedulerConstraintTarget"/>
-          <xsd:element name="groups" type="am:SchedulerEntityGroup"/>
+          <xsd:element name="target" type="am:DataConstraintTarget"/>
+          <xsd:element name="groups" type="am:LabelEntityGroup"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="SchedulerSeparationConstraint" type="am:SchedulerSeparationConstraint">
+  <xsd:element name="DataSeparationConstraint" type="am:DataSeparationConstraint">
     <xsd:annotation>
-      <xsd:documentation>A scheduler-separation-constraint
-groups describes the scheduler-groups that should be separated from each other on the target
-if there is only one group then this means that the schedulers of this group are not allowed to be executed on the target</xsd:documentation>
+      <xsd:documentation>A data-separation-constraint
+groups describes the label-groups that should be separated from each other on the target
+if there is only one group then this means that the label of this group is not allowed to be executed on the target</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="RunnablePairingConstraint">
@@ -1546,24 +1581,24 @@ processes describes the group of processes that should be paired on the target</
 processes describes the group of processes that should be paired on the target</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="SchedulerPairingConstraint">
+  <xsd:complexType name="DataPairingConstraint">
     <xsd:annotation>
-      <xsd:documentation>A scheduler-pairing-constraint
-schedulers describes the group of schedulers that should be paired on the target</xsd:documentation>
+      <xsd:documentation>A data-pairing-constraint
+labels describes the group of labels that should be paired on the target</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:PairingConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="target" type="am:SchedulerConstraintTarget"/>
-          <xsd:element name="schedulers" type="am:SchedulerEntityGroup"/>
+          <xsd:element name="target" type="am:DataConstraintTarget"/>
+          <xsd:element name="labels" type="am:LabelEntityGroup"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="SchedulerPairingConstraint" type="am:SchedulerPairingConstraint">
+  <xsd:element name="DataPairingConstraint" type="am:DataPairingConstraint">
     <xsd:annotation>
-      <xsd:documentation>A scheduler-pairing-constraint
-schedulers describes the group of schedulers that should be paired on the target</xsd:documentation>
+      <xsd:documentation>A data-pairing-constraint
+labels describes the group of labels that should be paired on the target</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="RunnableConstraintTarget">
@@ -1596,9 +1631,9 @@ schedulers describes the group of schedulers that should be paired on the target
       <xsd:documentation>A abstract superclass for all possible targets for process-constraints</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="SchedulerConstraintTarget">
+  <xsd:complexType abstract="true" name="DataConstraintTarget">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all possible targets for scheduler-constraints</xsd:documentation>
+      <xsd:documentation>A abstract superclass for all possible targets for data-constraints</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -1606,9 +1641,32 @@ schedulers describes the group of schedulers that should be paired on the target
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
   </xsd:complexType>
-  <xsd:element name="SchedulerConstraintTarget" type="am:SchedulerConstraintTarget">
+  <xsd:element name="DataConstraintTarget" type="am:DataConstraintTarget">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all possible targets for scheduler-constraints</xsd:documentation>
+      <xsd:documentation>A abstract superclass for all possible targets for data-constraints</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TargetMemory">
+    <xsd:annotation>
+      <xsd:documentation>A memory target description
+A memory can be a target for data-constraints
+memories: the reference to zero or more Memories. If this list is empty, the target stands for all memories!</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:DataConstraintTarget">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="customProperties" type="am:CustomProperty"/>
+          <xsd:element name="memories" type="am:Memory"/>
+        </xsd:choice>
+        <xsd:attribute name="memories" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TargetMemory" type="am:TargetMemory">
+    <xsd:annotation>
+      <xsd:documentation>A memory target description
+A memory can be a target for data-constraints
+memories: the reference to zero or more Memories. If this list is empty, the target stands for all memories!</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="TargetCore">
@@ -1733,22 +1791,22 @@ callSequences: the reference to zero or more call-sequences. If this list is emp
       <xsd:documentation>A abstract description for a group of processes that can be paired or separated by a process-constraint</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="SchedulerEntityGroup">
+  <xsd:complexType name="LabelEntityGroup">
     <xsd:annotation>
-      <xsd:documentation>A group of schedulers that can be paired or separated by a scheduler-constraint</xsd:documentation>
+      <xsd:documentation>A group of labels that can be paired or separated by a data-constraint</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="schedulers" type="am:Scheduler"/>
+          <xsd:element name="labels" type="am:Label"/>
         </xsd:choice>
-        <xsd:attribute name="schedulers" type="xsd:string"/>
+        <xsd:attribute name="labels" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="SchedulerEntityGroup" type="am:SchedulerEntityGroup">
+  <xsd:element name="LabelEntityGroup" type="am:LabelEntityGroup">
     <xsd:annotation>
-      <xsd:documentation>A group of schedulers that can be paired or separated by a scheduler-constraint</xsd:documentation>
+      <xsd:documentation>A group of labels that can be paired or separated by a data-constraint</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="RunnableEntityGroup">
@@ -1901,60 +1959,69 @@ strands: alternative event paths</xsd:documentation>
       <xsd:documentation>This contraints is used to limit a section in  Memories</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="OrderConstraint">
+  <xsd:complexType abstract="true" name="SynchronizationConstraint">
     <xsd:annotation>
-      <xsd:documentation>The order constraint defines a sequence of events
-The restriction is based on the correct order of the occurrences</xsd:documentation>
+      <xsd:documentation>Base class for synchronization constraints, which limit the distance between events
+multipleOccurrencesAllowed: Defines whether multiple event occurrences are allowed for analysis
+tolerance: Maximum allowed tolerance</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:TimingConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="source" type="am:EntityEvent"/>
-          <xsd:element name="target" type="am:EntityEvent"/>
+          <xsd:element name="tolerance" type="am:Time"/>
         </xsd:choice>
-        <xsd:attribute name="source" type="xsd:string"/>
-        <xsd:attribute name="target" type="xsd:string"/>
+        <xsd:attribute name="multipleOccurrencesAllowed" type="xsd:boolean"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="OrderConstraint" type="am:OrderConstraint">
+  <xsd:element name="SynchronizationConstraint" type="am:SynchronizationConstraint">
     <xsd:annotation>
-      <xsd:documentation>The order constraint defines a sequence of events
-The restriction is based on the correct order of the occurrences</xsd:documentation>
+      <xsd:documentation>Base class for synchronization constraints, which limit the distance between events
+multipleOccurrencesAllowed: Defines whether multiple event occurrences are allowed for analysis
+tolerance: Maximum allowed tolerance</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="SynchronisationConstraint">
+  <xsd:complexType name="EventSynchronizationConstraint">
     <xsd:annotation>
       <xsd:documentation>The synchronization constraint considers a group of events and limits the distance of the events within this group.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:TimingConstraint">
+      <xsd:extension base="am:SynchronizationConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="events" type="am:EntityEvent"/>
-          <xsd:element name="tolerance" type="am:Time"/>
         </xsd:choice>
         <xsd:attribute name="events" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="SynchronisationConstraint" type="am:SynchronisationConstraint">
+  <xsd:element name="EventSynchronizationConstraint" type="am:EventSynchronizationConstraint">
     <xsd:annotation>
       <xsd:documentation>The synchronization constraint considers a group of events and limits the distance of the events within this group.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="ReactionConstraint">
+  <xsd:complexType name="EventChainSynchronizationConstraint">
+    <xsd:annotation>
+      <xsd:documentation>A synchronization constraint describes the allowed tolerance in synchronization between two event chains
+scope: Considered event chains that have to by in sync
+type: Defines which parts of the event chains have to be in sync</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:TimingConstraint">
+      <xsd:extension base="am:SynchronizationConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="scope" type="am:EventChain"/>
-          <xsd:element name="minimum" type="am:Time"/>
-          <xsd:element name="maximum" type="am:Time"/>
         </xsd:choice>
+        <xsd:attribute name="type" type="am:SynchronizationType"/>
         <xsd:attribute name="scope" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ReactionConstraint" type="am:ReactionConstraint"/>
+  <xsd:element name="EventChainSynchronizationConstraint" type="am:EventChainSynchronizationConstraint">
+    <xsd:annotation>
+      <xsd:documentation>A synchronization constraint describes the allowed tolerance in synchronization between two event chains
+scope: Considered event chains that have to by in sync
+type: Defines which parts of the event chains have to be in sync</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="DelayConstraint">
     <xsd:annotation>
       <xsd:documentation>This constraint describes how a source and a target event are placed relative to each other</xsd:documentation>
@@ -1967,6 +2034,7 @@ The restriction is based on the correct order of the occurrences</xsd:documentat
           <xsd:element name="upper" type="am:Time"/>
           <xsd:element name="lower" type="am:Time"/>
         </xsd:choice>
+        <xsd:attribute name="mappingType" type="am:MappingType"/>
         <xsd:attribute name="source" type="xsd:string"/>
         <xsd:attribute name="target" type="xsd:string"/>
       </xsd:extension>
@@ -1977,19 +2045,35 @@ The restriction is based on the correct order of the occurrences</xsd:documentat
       <xsd:documentation>This constraint describes how a source and a target event are placed relative to each other</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="AgeConstraint">
+  <xsd:complexType name="EventChainLatencyConstraint">
+    <xsd:annotation>
+      <xsd:documentation>A latency constraint describes the allowed range in latency between a stimulus and its response.
+scope: Considered event chain that defines the stimulus and response relation
+type: Defines the point of view (forward or backward)
+minimum: Minimum allowed latency
+maximum: Maximum allowed latency</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:TimingConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="scope" type="am:EventChain"/>
-          <xsd:element name="maximum" type="am:Time"/>
           <xsd:element name="minimum" type="am:Time"/>
+          <xsd:element name="maximum" type="am:Time"/>
         </xsd:choice>
+        <xsd:attribute name="type" type="am:LatencyType"/>
         <xsd:attribute name="scope" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="AgeConstraint" type="am:AgeConstraint"/>
+  <xsd:element name="EventChainLatencyConstraint" type="am:EventChainLatencyConstraint">
+    <xsd:annotation>
+      <xsd:documentation>A latency constraint describes the allowed range in latency between a stimulus and its response.
+scope: Considered event chain that defines the stimulus and response relation
+type: Defines the point of view (forward or backward)
+minimum: Minimum allowed latency
+maximum: Maximum allowed latency</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="RepetitionConstraint">
     <xsd:annotation>
       <xsd:documentation>A repetition constraint prescribes the distribution of a single event during runtime.</xsd:documentation>
@@ -2001,6 +2085,7 @@ The restriction is based on the correct order of the occurrences</xsd:documentat
           <xsd:element name="lower" type="am:Time"/>
           <xsd:element name="upper" type="am:Time"/>
           <xsd:element name="jitter" type="am:Time"/>
+          <xsd:element name="period" type="am:Time"/>
         </xsd:choice>
         <xsd:attribute name="span" type="xsd:int"/>
         <xsd:attribute name="event" type="xsd:string"/>
@@ -2177,7 +2262,7 @@ The restriction is based on the correct order of the occurrences</xsd:documentat
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="labels" type="am:Label"/>
-          <xsd:element name="scope" type="am:DataCoherencyGroupScope"/>
+          <xsd:element name="scope" type="am:DataGroupScope"/>
         </xsd:choice>
         <xsd:attribute name="direction" type="am:CoherencyDirection"/>
         <xsd:attribute name="labels" type="xsd:string"/>
@@ -2185,17 +2270,29 @@ The restriction is based on the correct order of the occurrences</xsd:documentat
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="DataCoherencyGroup" type="am:DataCoherencyGroup"/>
-  <xsd:complexType abstract="true" name="DataCoherencyGroupScope">
+  <xsd:complexType name="DataStabilityGroup">
+    <xsd:complexContent>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="labels" type="am:Label"/>
+          <xsd:element name="scope" type="am:DataGroupScope"/>
+        </xsd:choice>
+        <xsd:attribute name="labels" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DataStabilityGroup" type="am:DataStabilityGroup"/>
+  <xsd:complexType abstract="true" name="DataGroupScope">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
   </xsd:complexType>
-  <xsd:element name="DataCoherencyGroupScope" type="am:DataCoherencyGroupScope"/>
+  <xsd:element name="DataGroupScope" type="am:DataGroupScope"/>
   <xsd:complexType name="ProcessScope">
     <xsd:complexContent>
-      <xsd:extension base="am:DataCoherencyGroupScope">
+      <xsd:extension base="am:DataGroupScope">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="process" type="am:AbstractProcess"/>
         </xsd:choice>
@@ -2206,7 +2303,7 @@ The restriction is based on the correct order of the occurrences</xsd:documentat
   <xsd:element name="ProcessScope" type="am:ProcessScope"/>
   <xsd:complexType name="RunnableScope">
     <xsd:complexContent>
-      <xsd:extension base="am:DataCoherencyGroupScope">
+      <xsd:extension base="am:DataGroupScope">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="runnable" type="am:Runnable"/>
         </xsd:choice>
@@ -2217,7 +2314,7 @@ The restriction is based on the correct order of the occurrences</xsd:documentat
   <xsd:element name="RunnableScope" type="am:RunnableScope"/>
   <xsd:complexType name="ComponentScope">
     <xsd:complexContent>
-      <xsd:extension base="am:DataCoherencyGroupScope">
+      <xsd:extension base="am:DataGroupScope">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="component" type="am:Component"/>
         </xsd:choice>
@@ -2611,7 +2708,9 @@ core: The core that processes the process/runnable that accesses the semaphore (
   <xsd:complexType name="Quartz">
     <xsd:complexContent>
       <xsd:extension base="am:ComplexNode">
-        <xsd:attribute name="frequency" type="xsd:int"/>
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="frequency" type="am:Frequency"/>
+        </xsd:choice>
         <xsd:attribute name="type" type="am:QType"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -3943,6 +4042,41 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
       <xsd:documentation>Periodic avtivation based on other events, like rotation speed dependency</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="Synthetic">
+    <xsd:annotation>
+      <xsd:documentation>Activations triggered depending on a defined list of trigger times
+offset: to shift the occurrences in negative or positive direction on the time bar
+period: to set the period, after which the trigger times are to be repeated
+triggerTimes: the list of all trigger times</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Stimulus">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="offset" type="am:Time"/>
+          <xsd:element name="period" type="am:Time"/>
+          <xsd:element name="triggerTimes" type="am:TimestampList"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Synthetic" type="am:Synthetic">
+    <xsd:annotation>
+      <xsd:documentation>Activations triggered depending on a defined list of trigger times
+offset: to shift the occurrences in negative or positive direction on the time bar
+period: to set the period, after which the trigger times are to be repeated
+triggerTimes: the list of all trigger times</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TimestampList">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="timestamps" type="am:Time"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimestampList" type="am:TimestampList"/>
   <xsd:complexType name="CustomStimulus">
     <xsd:annotation>
       <xsd:documentation>Stimulus to describe own custom types of activations, including properties</xsd:documentation>
@@ -4291,6 +4425,7 @@ Generalizes interrupt service routines and tasks</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="valueProvider" type="am:ModeValueProvider"/>
           <xsd:element name="entries" type="am:ModeSwitchEntry"/>
+          <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
         </xsd:choice>
         <xsd:attribute name="valueProvider" type="xsd:string"/>
       </xsd:extension>
@@ -4304,25 +4439,34 @@ Generalizes interrupt service routines and tasks</xsd:documentation>
   <xsd:complexType name="ModeSwitchEntry">
     <xsd:annotation>
       <xsd:documentation>A switch entry for a ModeSwitch.
-It describes a path of the switch and the required mode value to use this path</xsd:documentation>
+It describes a path of the switch and the required mode values to use this path</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="value" type="am:ModeLiteral"/>
-          <xsd:element name="graphEntries" type="am:GraphEntryBase"/>
+          <xsd:element name="values" type="am:ModeLiteral"/>
+          <xsd:element name="items" type="ecore:EObject"/>
         </xsd:choice>
-        <xsd:attribute name="default" type="xsd:boolean"/>
-        <xsd:attribute name="value" type="xsd:string"/>
+        <xsd:attribute name="values" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeSwitchEntry" type="am:ModeSwitchEntry">
     <xsd:annotation>
       <xsd:documentation>A switch entry for a ModeSwitch.
-It describes a path of the switch and the required mode value to use this path</xsd:documentation>
+It describes a path of the switch and the required mode values to use this path</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="ModeSwitchDefault">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="items" type="ecore:EObject"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ModeSwitchDefault" type="am:ModeSwitchDefault"/>
   <xsd:complexType name="ProbabiltitySwitch">
     <xsd:annotation>
       <xsd:documentation>A switch in the call graph, each path has a probability</xsd:documentation>
@@ -4348,7 +4492,7 @@ It describes a path of the switch and it's probability</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="graphEntries" type="am:GraphEntryBase"/>
+          <xsd:element name="items" type="am:GraphEntryBase"/>
         </xsd:choice>
         <xsd:attribute name="probability" type="xsd:double"/>
       </xsd:extension>
@@ -4579,6 +4723,7 @@ and includes the direct representation of all abstractions.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Process">
+        <xsd:attribute name="osekTaskGroup" type="xsd:int"/>
         <xsd:attribute name="preemption" type="am:Preemption"/>
         <xsd:attribute name="multipleTaskActivationLimit" type="xsd:int"/>
       </xsd:extension>
@@ -4847,6 +4992,19 @@ It can be used to define which mode value is written to the label.</xsd:document
       <xsd:documentation>Representation of a mode label access of a run entity.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="RunnableModeSwitch">
+    <xsd:complexContent>
+      <xsd:extension base="am:RunnableItem">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="valueProvider" type="am:ModeValueProvider"/>
+          <xsd:element name="entries" type="am:ModeSwitchEntry"/>
+          <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
+        </xsd:choice>
+        <xsd:attribute name="valueProvider" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="RunnableModeSwitch" type="am:RunnableModeSwitch"/>
   <xsd:complexType name="LabelAccess">
     <xsd:annotation>
       <xsd:documentation>Representation of a label access of a run entity.</xsd:documentation>
