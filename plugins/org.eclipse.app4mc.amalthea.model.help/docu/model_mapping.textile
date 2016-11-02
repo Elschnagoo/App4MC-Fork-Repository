@@ -22,14 +22,17 @@ h2. Mapping
 
 The __Mapping__ is an abstract class, describing the mapping of parts of the software model to __Memory__. The target memory is specified by a reference to an explicit __Memory__ within an existing hardware model. The position in memory can also be defined as address here. If the address is a absolute memory address, a offset address from the memories first address, or if the address information is not expected at all is defined by the __Memory Address Mapping Type__ enumeration in the root element of the __Mapping Model__. The  Additional attributes, e.g. to supply further information for a code generator, may be described by the containment attributeList.
 
-h3. SectionMapping
-
-The __SectionMapping__ is a specialization of the __Mapping__. It is used to associate __Sections__, specified within the software model, with a __Memory__.
 
 h3. AbstractElementMapping
 
 The __AbstractElementMapping__ is a specialization of the __Mapping__. It is used to associate specializations of the __AbstractElementMemoryInformation__ (i.e. __Label__, __Runnable__, __TaskPrototype__ and __Process__), specified within the software model, with a __Memory__. 
 
+h2. PhysicalSectionMapping
+
+The _PhysicalSectionMapping_ class (can also be called as *Physical Memory Section* ) describes the following:
+* mapping of various *Section* elements to a specific *Memory*
+* mapping various *Label and Runnable* elements to a Physical Memory Section
+* description of memory address location where the Physical Memory Section is allocated 
 
 h2. Allocation
 

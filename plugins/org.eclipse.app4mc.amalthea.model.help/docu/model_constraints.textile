@@ -210,3 +210,13 @@ h3. Runnable Affinity Constraints
 A __RunnableConstraint__ is used to define the mapping of runnable objects to processes, call sequences, processing cores, or scheduling units.
 
 !../pictures/model_constraints_affinity_runnable.png!
+
+h2. Physical Section Constraints
+
+A __PhysicalSectionConstraint__ is used to to define the mapping of Section objects to Memories. This mapping of Section object to Memory objects specifies that corresponding *PhysicalSectionMapping* associated to this *Section* element can be allocated only in the mapped Memories.
+
+bc. Example: PhysicalSectionConstraint with the below properties has the following semantic:
+	name: Ram1_Ram2_PhysicalSectionConstraint
+	Memories : RAM1, RAM2
+	Section : .abc.reini
+Semantic: PhysicalSectionMapping for .abc.reini section can only be allocated either in RAM1 or RAM2 or in both. But not in other Memories.

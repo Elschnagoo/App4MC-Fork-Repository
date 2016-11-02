@@ -45,10 +45,6 @@ h3. MappingConstraint
 
 The __MappingConstraint__ is an abstract class for describing constraints which affect the selection of a suitable __Memory__. The actual constraint on the core is described by the __HwMemoryConstraint__.
 
-h3. SectionMappingConstraint
-
-The __SectionMappingConstraint__ is a specialization of the __MappingConstraint__. It is used to specify constraints on __Memory__ elements which are used in Section to __Memory__ mappings.
-
 h3. AbstractElementMappingConstraint
 
 The __AbstractElementMappingConstaint__ is a specialization of the __MappingConstraint__. It is used to specify constraints on __Memory__ elements which are used in the mapping of __AbstractElementMemoryInformations__ specializations (i.e. __Label__, __Runnable__, __TaskPrototype__ or __Process__) to __Memories__.

@@ -351,11 +351,12 @@ The __CustomEntity__ element defines a way to add not yet available elements of 
 
 h2. Section
 
-The section is an element to model a reference from existing software components to a target memory area. It includes references to the following objects:
-* Labels
-* Runnables
-Additional it contains a name and predefined information about the needed memory size.
-If the size is not explicit set, it must be computed based on the included elements.
+Section (Vitual Memory Section) is used to group the memory elements (Labels, Runnables). This is acheived by associating the *Section* element to *Label* & *Runnable* elements
+ 
+Below are properties of Section element:
+
+* name
+* asilLevel
 
 !../pictures/model_section.png!
 
