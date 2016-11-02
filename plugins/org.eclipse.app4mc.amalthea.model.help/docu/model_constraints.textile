@@ -143,10 +143,14 @@ If a set of events is used, then all events of this group must occur fulfill the
 
 h2. Timing Constraints
 
-h3. Event Synchronization Constraint
+h3. Synchronization Constraints
 
 An __EventSynchronizationConstraint__ describes how tightly the occurrences of a group of events follow each other.
 There must exist a sequence of time windows of width tolerance, such that every occurrence of every event in events belongs to at least one window, and every window is populated by at least one occurrence of every event.
+The parameter __multipleOccurrencesAllowed__ defines, whether for the constraint all occurences have to be considered or just the subsequent ones.
+
+An __EventChainSynchronizationConstraint__ describes how tightly the occurrences of an event chain follow the occurrences of a different event chain.
+The __SynchronizationType__ defines which parts of the event chains have to be in sync, stimuls or response, and the width of a time window sets the allowed tolerance.
 The parameter __multipleOccurrencesAllowed__ defines, whether for the constraint all occurences have to be considered or just the subsequent ones.
 
 !../pictures/model_constraints_timing_sync.png!
@@ -173,13 +177,7 @@ It always refers to an EventChain.
 
 !../pictures/model_constraints_timing_latency.png!
 
-h3. Event Chain Synchronization Constraint
 
-An __EventChainSynchronizationConstraint__ describes how tightly the occurrences of an event chain follow the occurrences of a different event chain.
-The __SynchronizationType__ defines which parts of the event chains have to be in sync, stimuls or response, and the width of a time window sets the allowed tolerance.
-The parameter __multipleOccurrencesAllowed__ defines, whether for the constraint all occurences have to be considered or just the subsequent ones.
-
-!../pictures/model_constraints_timing_ecsync.png!
 
 h2. Affinity Constraints
 
