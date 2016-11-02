@@ -164,11 +164,11 @@ table(#minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 
 h3. Runnable Mode Switch
 
-!../pictures/model_runnablemodeswitch.png!
+With the __RunnableModeSwitch__ it is possible to define different execution paths. They can be used like __if-else__ or __switch-case__ statements in a programming language. A __RunnableModeSwitch__ uses the value of a __ModeLabel__ (with the help of __ModeValueProvider__) to decide which path has to be executed. 
+A __ModeSwitchEntry__ object is referenced to represent the different paths and each entry defines the value the mode must have to execute the path with the help of the __ModeLiteral__ values.
+At the __RunnableModeSwitch__ it is also possible to define a default path, which is executed if none of the __ModeSwitchEntries__ fits to the current set value of the mode.
 
-With the __RunnableModeSwitch__ it is possible to define different execution paths. They can be used like __if-else__ or __switch-case__ statements in a programming language. A __RunnableModeSwitch__ uses the value of a __Mode__ (with the help of __ModeValueProvider__) to decide which path has to be executed. 
-A __ModeSwitchItem__ object is referenced to represent the different paths and each entry defines the value the mode must have to execute the path with the help of the __ModeLiteral__ value.
-At the __RunnableModeSwitch__ it is also possible to define a default path, which is executed if none of the __ModeSwitchItem__ fits to the current set value of the mode.
+!../pictures/model_sw_runnablemodeswitch.png!
 
 h3. Instructions
 
@@ -216,7 +216,19 @@ The __Call Graph__ is used to define how a __Task__ or __ISR__ behaves during it
 
 The __Call Graph__ contains a list of elements of type __GraphEntryBase__. This is the basic, abstract type for the __Switch__ types and for the __Call Sequence__. With the __Switches__ it is possible to define different execution paths. They can be used like __if-else__ or __switch-case__ statements in a programming language. There are two different kind of __Switches__, a __Label Switch__ and a __Probability Switch__. Each __Switch__ contains a number __Switch Entry__ objects. These are the different possible program paths that can be executed. Also like the __Call Graph__, the __Switch Entry__ can contain a list of objects that can be __Switches__ or __Call Sequences__. 
 
-Each entry (path) of a __Probability Switch__ has a probability-value. As the name indicates, this is the value that defines the probability that the path is executed. A __Mode Switch__ uses the value of a __Mode Label__ to decide which entry has to be executed. Therefore a __Mode Label__ object is referenced and each entry defines the value the mode label must have to execute the path. 
+h3. Probability Switch
+
+Each entry (path) of a __Probability Switch__ has a probability-value. As the name indicates, this is the value that defines the probability that the path is executed.
+
+!(#scale)../pictures/model_sw_probabilityswitch.png!
+
+h3. Mode Switch
+
+A __Mode Switch__ uses the value of a __Mode Label__ to decide which entry has to be executed. Therefore a __Mode Label__ object is referenced (via ModeValueProvider) and each entry defines the values the mode label must have to execute the path. 
+
+!(#scale)../pictures/model_sw_modeswitch.png!
+
+h3. Call Sequence
 
 A __Call Sequence__ contains a list of elements that are executed by the __Process__. The following list gives a short overview over these elements:
 * __Wait Event__: Wait for an __OS-Event__ 
@@ -274,11 +286,11 @@ For more information about OS-Events, see the OSEK Specification 2.2.3, 2005.
 
 h2. Modes
 
-!(#scale)../pictures/model_sw_modes.png!
-
 h3. Modes and Mode Labels
 
 The __Mode__ element denotes a specific system state. It is described using the following attributes:
+
+!(#scale)../pictures/model_sw_modes.png!
 
 table(#minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
