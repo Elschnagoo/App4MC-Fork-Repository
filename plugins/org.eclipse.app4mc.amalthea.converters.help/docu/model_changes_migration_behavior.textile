@@ -195,14 +195,75 @@ h2. Version App4MC 0.7.0 to App4MC 0.7.1
 
 Below are the changes in the metamodel from App4MC 0.7.0 to App4MC 0.7.1
 
-* *Change in the namespace:* 
+*Change in the namespace:* 
 
 table(#classic){margin-left:40px}. 
 | *_AMALTHEA Namespace (version App4MC 0.7.0)_* | *_AMALTHEA Namespace  (version App4MC 0.7.1)_* |
 |http://app4mc.eclipse.org/amalthea/0.7.0 |http://app4mc.eclipse.org/amalthea/0.7.1 |
 
-* *DataSize:* Attribute "numberBits" is replaced by "value" (of type BigInteger) and "unit" (of type DataSizeUnit)
-** _Behaviour of model migration_ :  content from "numberBits" is copied into "value" and "unit" is set as "bit" 
-* *Size attribute in MemoryType class:* Attribute "size" is removed from MemoryType class. MemoryType object now contains a object of DataSize using which size of Memory and the corresponding Unit can be specified. 
-** _Behaviour of model migration_ :  content from "size" attribute of MemoryType is copied into DataSize objects attribute : "value" and the corresponding "unit" attribute of DataSize is set as default (i.e. _undefined_) 
+*Root Tag in AMALTHEA model amxmi file*: It is recommended to have "Amalthea" as a root tag in amxmi file.
 
+Based on the above statement, if the AMALTHEA model file is having sub-model tag as root element (e.g: SWModel or HWModel etc.,), as a part of model migration -> root element is changed as "Amalthea" tag and the content of sub-model is copied inside it. 
+
+ Input model (containing SWModel as the root tag):
+ 
+bc. 
+ "<am:SWModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0">
+  <labels/>
+</am:SWModel>"
+
+
+ Output model (after model migration):
+ 
+bc.  <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi="http://www.omg.org/XMI">
+  <swModel>
+    <labels />
+  </swModel>
+</am:Amalthea> 
+
+
+ 
+*Below are the changes in the reference names:*
+
+table(#classic){margin-left:40px}. 
+| *_Variable Name (version APP4MC 0.7.0)_* | *_Changed Variable Name (version APP4MC 0.7.1)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+| graphEntries | items | ModeSwitchEntry | SW Model | xml tag "graphEntries" present inside "ModeSwitchEntry" object is changed to "items" in amxmi file|
+| value | values | ModeSwitchEntry | SW Model | xml tag "value" present inside "ModeSwitchEntry" object is changed to "values" in amxmi file |
+ 
+ 
+ 
+*Below are the changes in the reference Types:*
+
+table(#classic){margin-left:40px}. 
+| *_Variable Name_* | *_Variable Type (version APP4MC 0.7.0)_* | *_Variable Type (version APP4MC 0.7.1)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+| size | Long | DataSize |MemoryType |HW Model, PropertyConstraintsModel |Attribute "size" is migrated as "DataSize" object. Long value of "size" is migrated to "value" of DataSize. As the DataSizeUnit info is not available, "unit" value is not set |
+| size | DataUnit | DataSize | AbstractElementMemoryInformation  | SW Model|"size" of type "DataUnit" is migrated as "DataSize" object. Int value of "numberBits" attribute is migrated to "value" of DataSize, "unit" attribute is set as "bit" of type DataSizeUnit|
+| size | DataUnit | DataSize | BaseTypeDefinition  | SW Model|"size" of type "DataUnit" is migrated as "DataSize" object. Int value of "numberBit" attribute is migrated to "value" of DataSize, "unit" attribute is set as "bit" of type DataSizeUnit|
+| frequency | EInt | Frequency | Quartz  |SW Model| Attribute "frequency" of type EInt is migrated as "Frequency" object. "frequency" EInt value is migrated to "value" EDouble of DataSize. As the FrequencyUnit info is not available, "unit" value is not set |
+
+
+*Below references are removed:*
+
+table(#classic){margin-left:40px}. 
+| *_Variable Name_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+| size | DataUnit | Section  |SW Model |Content is removed from the model as size can't be specified for "Section" (considered as virtual memory section) |
+| labels | [0-*] Label | Section  |SW Model |Content is removed from the model. As per APP4MC 0.7.1 semantics, Label object has the association to the Section inside which it can be allocated|
+| runEntities | [0-*] Runnable | Section  |SW Model |Content is removed from the model. As per APP4MC 0.7.1 semantics, Runnable object has the association to the Section inside which it can be allocated|
+| groupingType | RunnableGroupingType | ProcessRunnableGroup  |Constraints Model |Content is removed from the model|
+| entries | [0-*] ProcessRunnableGroupEntry | ProcessRunnableGroup  |Constraints Model |Content is removed from the model. Runnable object belonging to the ProcessRunnableGroupEntry is associated to the runnables list contained at the ProcessRunnableGroup object|
+| default | EBoolean | ModeSwitchEntry  |SW Model |Content removed from the model. If several ModeSwitchEntry objects contain attribute "default" as "true", then first ModeSwitchEntry which has "default" as "true" is converted to "ModeSwitchDefault" object |
+
+*Below Classes are removed:*
+
+table(#classic){margin-left:40px}. 
+| *_Class Name_* | *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+|SchedulerPairingConstraint|Constraints Model|Content is removed from the model. There is no equivalent of this model element in APP4MC 0.7.1|
+|SchedulerSeparationConstraint|Constraints Model|Content is removed from the model. There is no equivalent  of this model element in APP4MC 0.7.1|
+|ProcessRunnableGroupEntry|Constraints Model|This element is removed from the model, but the Runnables associated to it are associated to ProcessRunnableGroup object|
+|OrderConstraint|Constraints Model|Content is removed from the model. There is no equivalent of this model element in APP4MC 0.7.1|
+|AgeConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as “Age” |
+|ReactionConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as “Reaction”|
+|SynchronisationConstraint|Constraints model|Content is migrated as EventSynchronizationConstraint element|
+|SectionMapping|Mapping Model|Content is removed from the model. As per 0.7.1, there is a possibility to specify PhysicalSectionMapping element i.e. defining mapping of various Section elements to Memory|
+|SectionMappingConstraint|Property Constraints Model|Content is removed from the model.As per 0.7.1, there is a possibility to specify PhysicalSectionConstraint element i.e. defining possibility of Section allocation across various Memories |
+|DataUnit|Sw model| Content is migrated as DataSize. Attribute "unit" is set as DataSizeUnit of type "bit"| 

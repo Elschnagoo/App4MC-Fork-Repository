@@ -33,7 +33,7 @@ Converter can be registered by adding extension definition for : @org.eclipse.ap
 * Name : Name of the component
 * Input model version : AMALTHEA model version in which the input model content is present.  
 * Output model version : AMALTHEA model version to which the input model content should be converted to.
-bq. All AMALTHEA/AMALTHEA4Public ITEA releases are specified with prefix *itea* (e.g: itea.103, itea.110, itea.111) and APP4MC releases are specifeid with their version number (e.g: 0.7.0)
+bq. All AMALTHEA/AMALTHEA4Public ITEA releases are specified with prefix *itea* (e.g: itea.103, itea.110, itea.111) and APP4MC releases are specifeid with their version number (e.g: 0.7.0, 0.7.1)
 
 * Converter Class : Java class implementing @org.eclipse.app4mc.amalthea.converters.common.base.IConverter@ interface and providing the definition for method : @public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,	final List<ICache> caches) throws Exception@
 * enabled : By specifiying true/false - &gt; specific converter invocation can be enabled or disabled
