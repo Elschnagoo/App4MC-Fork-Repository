@@ -5,7 +5,7 @@ The Stimuli Model contains stimulus and clock objects.
 
 !(#scale)../pictures/model_stimuli.png!
 
-A stimulus is responsible to activate processes. The folowing different types are available:
+A stimulus is responsible to activate processes. The following different types are available:
 * *ArrivalCurve*: A list of time-borders in which a specified number of events are expected
 * *CustomStimulus*: To describe own custom types of activations, including properties
 * *InterProcess*: Activations based on an explicit inter-process activation*
@@ -13,7 +13,7 @@ A stimulus is responsible to activate processes. The folowing different types ar
 * *Single*: Activates the process only once
 * *Sporadic*: Sporadic activations of processes
 * *Synthetic*:  Activations periodically triggered depending on a defined list of trigger times.
-* *PeriodicEvent*: Periodic avtivations based on other events, like rotation speed dependency
+* *PeriodicEvent*: Periodic activations based on other events, like rotation speed dependency
 
 It is possible to define a deviation of time for every type of stimulus. For this, a stimulus can have an object of type Deviation, which refers to the deviation in the common model. This reference uses the class SignedTime as parameter for the generic values of the deviation. So the deviation is about time. The values (negative or positive) represents a shift of the activation to left or right on the time line. In this way it is possible to increase or decrease the activation time.
 
@@ -25,7 +25,7 @@ Beside of the deviation, a periodic stimulus can have a clock. A clock is a time
 
 !(#scale)../pictures/model_stimuli_clocks.png!
 
-It is possible to define lists of mode label values for a stimulus. A entry in this list is always a pair of a mode label and a mode literal. One of this lists is the set-mode-labels-list. Each time the stimulus is triggered all mode labels in this list are set to the corresponding value. 
+It is possible to define lists of mode label values for a stimulus. An entry in this list is always a pair of a mode label and a mode literal. One of this lists is the set-mode-labels-list. Each time the stimulus is triggered all mode labels in this list are set to the corresponding value. 
 The enabling-mode-label-list and the disabling-mode-label-list can be used to enable or disable a stimulus by setting the mode label to a specific value (e.g. by a write access with a runnable).
 * If there are entries in the disabling-mode-label-list, the stimulus is disabled if one of these mode labels has the defined value.
 * If there are entries in the enabling-mode-label-list, the stimuli is disabled if no one of these mode labels has the defined value.  
@@ -33,13 +33,14 @@ The enabling-mode-label-list and the disabling-mode-label-list can be used to en
 
 !(#scale)../pictures/model_stimuli_modevaluelist.png!
 
+
 h2. Arrival Curves
 
 An arrival curve is described as a list of time-borders in which a specified number of events are expected. The picture below shows an example for this. In the first picture there is a number of events on a timeline.
 
 !{width:400px}../pictures/model_stimuli_arrival_curve_1.png!
 
-In the picture below every distance between two events is measured. The minimum and the maximum distance is added to the table as time-border for the occurrence of two events. This means that after one event there has to be at least a gap of one time-unit before the next event can occur. It also means that there will be always a second event within eight time units after the event before. Basically this would be enought to describe an Arrival Curve Stimulus. But it is possible to create a more precise stimulus by describing additional time borders for greater number of events. This is shown in the steps below. 
+In the picture below every distance between two events is measured. The minimum and the maximum distance is added to the table as time-border for the occurrence of two events. This means that after one event there has to be at least a gap of one time-unit before the next event can occur. It also means that there will be always a second event within eight time units after the event before. Basically this would be enough to describe an Arrival Curve Stimulus. But it is possible to create a more precise stimulus by describing additional time borders for greater number of events. This is shown in the steps below. 
 
 !{width:400px}../pictures/model_stimuli_arrival_curve_2.png!
 

@@ -140,7 +140,7 @@ h3. Calls and Label Access
 table(#minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
 | __RunnableCall__ | The activation of another __Runnable__. |
-| __ServerCall__ | A abstract description for client/server communication. It refers to a required runnable that describes the called server operation |
+| __ServerCall__ | An abstract description for client/server communication. It refers to a required runnable that describes the called server operation |
 | __SenderReceiverCommunication__ | An abstract description for sender-receiver-communication (it can be read or write). If the access has to be buffered is represented using the values of __LabelAccessBuffering__. |
 | __LabelAccess__ | Describes the access to an existent __Label__ (set as reference). Type of access is represented using the values of __LabelAccessEnum__. If the access has to be buffered is represented using the values of __LabelAccessBuffering__. |
 
@@ -267,7 +267,7 @@ At a __Schedule Point__, the process calls the scheduler that currently administ
 
 h3. Terminate Process
 
-If a __Terminate Proocess__ is reached during the execution of a __Call Graph__, the __Task__ or __ISR__ terminates immediately. It is not required to insert this element at the end of a __Call Graph__. It can be used to define an execution path (by using __Switches__) that terminates a process.   
+If a __Terminate Process__ is reached during the execution of a __Call Graph__, the __Task__ or __ISR__ terminates immediately. It is not required to insert this element at the end of a __Call Graph__. It can be used to define an execution path (by using __Switches__) that terminates a process.   
 
 h3. Wait/Clear/Set Event
 

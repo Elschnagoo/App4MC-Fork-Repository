@@ -13,7 +13,7 @@ h2. Processes (Tasks or ISRs)
 
 !{width: 1000px}../pictures/user_sw_runtime_gantt_task.png!
 
-Processes represent executable units that are managed by an operating system scheduler. A process is thus the smallest schedulable unit managed by the operating system. Each process also has its own name space and resources (including memory) protected against use from other processes. In general, two different kinds of processes can be distinguished: task and Interrupt Service Routine (ISR). Latter is a software routine called in case of an interrupt. ISRs have normally higher priority than tasks and can only be suspended by another ISR which presents a higher priority than the one running. In the Gantt chart above, a task called 'TASK_InputProcessing' can be seen. In the following sections all elements, that run within the context of a process, are described.
+Processes represent executable units that are managed by an operating system scheduler. A process is thus the smallest schedulable unit managed by the operating system. Each process also has its own name space and resources (including memory) protected against use from other processes. In general, two different kinds of processes can be distinguished: task and Interrupt Service Routine (ISR). Latter is a software routine called in case of an interrupt. ISRs have normally higher priority than tasks and can only be suspended by another ISR which presents a higher priority than the one running. In the Gantt chart above, a task called 'TASK_InputProcessing' can be seen. All elements that run within the context of a process are described in the following sections.
 
 
 h3. Runnables

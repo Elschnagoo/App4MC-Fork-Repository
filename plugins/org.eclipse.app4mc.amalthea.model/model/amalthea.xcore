@@ -710,7 +710,6 @@ enum RunnableOrderType{
 
 class RunnableSequencingConstraint extends ReferableBaseObject
 {
-	//String name
 	RunnableOrderType orderType
 	contains resolving ProcessRunnableGroup[2..*] runnableGroups
 	refers AbstractProcess[] processScope
@@ -724,7 +723,6 @@ class ProcessRunnableGroup extends BaseObject
 ///////////////////////////Affinity constraints:
 abstract class AffinityConstraint extends ReferableBaseObject
 {
-//String name
 }
 
 /*
@@ -773,7 +771,7 @@ abstract class DataConstraint
  * groups describes the runnable-groups that should be separated from each other on the target
  * if there is only one group then this means that the runnables of this group are not allowed to be executed on the target
  */
-class RunnableSeparationConstraint extends SeparationConstraint,RunnableConstraint, BaseObject
+class RunnableSeparationConstraint extends SeparationConstraint, RunnableConstraint, BaseObject
 {
 	contains resolving RunnableGroup[1..2] groups
 }
@@ -783,7 +781,7 @@ class RunnableSeparationConstraint extends SeparationConstraint,RunnableConstrai
  * groups describes the process-groups that should be separated from each other on the target
  * if there is only one group then this means that the processes of this group are not allowed to be executed on the target
  */
-class ProcessSeparationConstraint extends SeparationConstraint,ProcessConstraint, BaseObject
+class ProcessSeparationConstraint extends SeparationConstraint, ProcessConstraint, BaseObject
 {
 	contains resolving ProcessGroup[1..2] groups
 }
@@ -793,7 +791,7 @@ class ProcessSeparationConstraint extends SeparationConstraint,ProcessConstraint
  * groups describes the label-groups that should be separated from each other on the target
  * if there is only one group then this means that the label of this group is not allowed to be executed on the target
  */
-class DataSeparationConstraint extends SeparationConstraint,DataConstraint, BaseObject
+class DataSeparationConstraint extends SeparationConstraint, DataConstraint, BaseObject
 {
 	contains resolving LabelEntityGroup[1..2] groups
 }
@@ -802,7 +800,7 @@ class DataSeparationConstraint extends SeparationConstraint,DataConstraint, Base
  * A runnable-pairing-constraint
  * runnables describes the group of runnables that should be paired on the target
  */
-class RunnablePairingConstraint extends PairingConstraint,RunnableConstraint, BaseObject
+class RunnablePairingConstraint extends PairingConstraint, RunnableConstraint, BaseObject
 {
 	contains resolving RunnableGroup runnables
 }
@@ -811,7 +809,7 @@ class RunnablePairingConstraint extends PairingConstraint,RunnableConstraint, Ba
  * A process-pairing-constraint
  * processes describes the group of processes that should be paired on the target
  */
-class ProcessPairingConstraint extends PairingConstraint,ProcessConstraint, BaseObject
+class ProcessPairingConstraint extends PairingConstraint, ProcessConstraint, BaseObject
 {
 	contains resolving ProcessGroup processes
 }
@@ -820,7 +818,7 @@ class ProcessPairingConstraint extends PairingConstraint,ProcessConstraint, Base
  * A data-pairing-constraint
  * labels describes the group of labels that should be paired on the target
  */
-class DataPairingConstraint extends PairingConstraint,DataConstraint, BaseObject
+class DataPairingConstraint extends PairingConstraint, DataConstraint, BaseObject
 {
 	contains resolving LabelEntityGroup labels
 }
@@ -981,7 +979,6 @@ class SubEventChain extends EventChainItem, BaseObject
 
 abstract class TimingConstraint extends ReferableBaseObject
 {
-//String name
 }
 
  
@@ -3317,7 +3314,6 @@ class BaseTypeDefinition extends TypeDefinition
  */
 abstract class Activation extends ReferableBaseObject
 {
-//String name
 }
 
 /*

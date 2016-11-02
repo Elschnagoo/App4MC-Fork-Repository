@@ -53,7 +53,7 @@ A runnable-sequencing-constraint is independent of the processes that are execut
 
 !../pictures/model_constraints_runnable_sequencing.png!
 
-The following picture shows a __RunnableSequencingConstraint__. The constrain has two runnable groups, visualized by the circles. In this case there is just one runnable in each group.
+The following picture shows a __RunnableSequencingConstraint__. The constraint has two runnable groups, visualized by the circles. In this case there is just one runnable in each group.
 The runnables in the group must be executed in the order of the group. Basically there is no restriction on which core or process the runnables are executed. It is important that the order is correct, and that the runnable of one group terminates before the runnable of the next group starts.
 
 !../pictures/model_constraints_runnable_sequencing_basic.png!
@@ -92,7 +92,7 @@ Data Age constraints are used to define when the information in a label becomes 
 h2. Data Coherency Groups
 
 A __DataCoherencyGroup__ is used to define data coherency requirements for a group of labels.
-The Direction hereby is used to specify if the labels have to be read or written coherently. Moreover, the scope attribute defines the context of the coherent read or write requirement. Possible scopes are components, processses, and runnables.
+The Direction hereby is used to specify if the labels have to be read or written coherently. Moreover, the scope attribute defines the context of the coherent read or write requirement. Possible scopes are components, processes, and runnables.
 
 !../pictures/model_constraints_data_coherency.png!
 
@@ -103,7 +103,7 @@ Currently, the following execution contexts are covered by the scope:
 * Component
 * Process
 * Runnable
-This means, that it has to be garanteed that the values of labels are identical either within the runnable, the process, or the component in which the denoted labels are accessed.
+This means, that it has to be guaranteed that the values of labels are identical either within the runnable, the process, or the component in which the denoted labels are accessed.
 
 !../pictures/model_constraints_data_stability.png!
 
@@ -119,23 +119,23 @@ The __EventChain__ consists of __EventChainItems__. These items are classified i
 # SubEventChains: Inner anonymous EventChains, which are only defined once and has no global meaning, but only in the context of the current defined EventChain.
 # EventChainReference: Used to reference already global defined EvenChains in the root list of the model.
 
-An Event Chain object references always two events, a stimulus event and a response event. To define a simple Event Chain that just contains two events, one Event Chain object is enough. In this case it would just be a chain that with its stimulus as first event adn the response as second event. 
-If more events are required it is necessary to add sub event chains. The stimulus is always the first event of an Event Chain, the response is always the last event. The events that are defined in the sub Event Chains are the events in between. 
+An Event Chain object references always two events, a stimulus event and a response event. To define a simple event chain that just contains two events, one event chain object is enough. In this case it would just be a chain that with its stimulus as first event and the response as second event. 
+If more events are required it is necessary to add sub event chains. The stimulus is always the first event of an event chain, the response is always the last event. The events that are defined in the sub event chains are the events in between. 
 
-The picture below shows a simple example for an Event Chain of four events in a row.
+The picture below shows a simple example for an event chain of four events in a row.
 The top level chain defines the first event (E1) and the last event (E4).
-It contains a number of Event Chains. They describe the way from E1 to E4. 
-These sub Event Chains are added as __strands__ to the parent. 
+It contains a number of event chains. They describe the way from E1 to E4. 
+These sub event chains are added as __strands__ to the parent. 
 For this some rules has to be considered:
-The stimulus of the first child Event Chain has to be the same as the stimulus of the parent (red in picture).
-The stimulus of other child Event Chans have to be equal to the response of the previous chain (blue in picture).
-The response of the last child Event Chain has to be the same as the response of the parent (green in picture).
+The stimulus of the first child event chain has to be the same as the stimulus of the parent (red in picture).
+The stimulus of other child event chains have to be equal to the response of the previous chain (blue in picture).
+The response of the last child event chain has to be the same as the response of the parent (green in picture).
 
 !{width: 500px}../pictures/model_constraints_eventchain_segments.png!
 
 
 As a stimulus or response event it is either possible to use an Entity Event or an Event Set.
-An Entity Event is a single event regarding to an entity like a task or a runnable. So it can be eg the start of a runnable. 
+An Entity Event is a single event regarding to an entity like a task or a runnable. So it can be e.g. the start of a runnable. 
 If a set of events is used, then all events of this group must occur fulfill the event chain. The order in which the events occur is not important. 
 
 !../pictures/model_constraints_eventchain_eventgroups.png!
@@ -147,11 +147,11 @@ h3. Synchronization Constraints
 
 An __EventSynchronizationConstraint__ describes how tightly the occurrences of a group of events follow each other.
 There must exist a sequence of time windows of width tolerance, such that every occurrence of every event in events belongs to at least one window, and every window is populated by at least one occurrence of every event.
-The parameter __multipleOccurrencesAllowed__ defines, whether for the constraint all occurences have to be considered or just the subsequent ones.
+The parameter __multipleOccurrencesAllowed__ defines, whether for the constraint all occurrences have to be considered or just the subsequent ones.
 
 An __EventChainSynchronizationConstraint__ describes how tightly the occurrences of an event chain follow the occurrences of a different event chain.
-The __SynchronizationType__ defines which parts of the event chains have to be in sync, stimuls or response, and the width of a time window sets the allowed tolerance.
-The parameter __multipleOccurrencesAllowed__ defines, whether for the constraint all occurences have to be considered or just the subsequent ones.
+The __SynchronizationType__ defines which parts of the event chains have to be in sync, stimulus or response, and the width of a time window sets the allowed tolerance.
+The parameter __multipleOccurrencesAllowed__ defines, whether for the constraint all occurrences have to be considered or just the subsequent ones.
 
 !../pictures/model_constraints_timing_sync.png!
 
@@ -195,18 +195,18 @@ Each affinity constraint has one or more targets. The type of the target depends
 
 h3. Data Affinity Constraints
 
-A __DataConstraint__ is used to to define the mapping of label objects to memory units.
+A __DataConstraint__ is used to define the mapping of label objects to memory units.
 
 !../pictures/model_constraints_affinity_data.png!
 
 h3. Process Affinity Constraints
 
-A __ProcessConstraint__ is used to to define the mapping of process (Task or ISR) objects to processing cores or scheduling units.
+A __ProcessConstraint__ is used to define the mapping of process (Task or ISR) objects to processing cores or scheduling units.
 
 !../pictures/model_constraints_affinity_process.png!
 
 h3. Runnable Affinity Constraints
 
-A __RunnableConstraint__ is used to to define the mapping of runnable objects to processes, call sequences, processing cores, or schedulin units.
+A __RunnableConstraint__ is used to define the mapping of runnable objects to processes, call sequences, processing cores, or scheduling units.
 
 !../pictures/model_constraints_affinity_runnable.png!
