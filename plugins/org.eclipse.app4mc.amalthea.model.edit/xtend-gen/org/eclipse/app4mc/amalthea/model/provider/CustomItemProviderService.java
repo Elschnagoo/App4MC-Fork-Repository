@@ -2138,7 +2138,7 @@ public class CustomItemProviderService {
           }
           boolean _isNullOrEmpty_2 = StringExtensions.isNullOrEmpty(_name_2);
           if (_isNullOrEmpty_2) {
-            _xifexpression_1 = "<memory>";
+            _xifexpression_1 = "???";
           } else {
             _xifexpression_1 = it.getName();
           }
@@ -2157,38 +2157,29 @@ public class CustomItemProviderService {
         boolean _greaterThan = (_size > 10);
         if (_greaterThan) {
           List<String> _subList = memoryNames.subList(0, 10);
-          String _join = IterableExtensions.join(_subList, ",");
+          String _join = IterableExtensions.join(_subList, ", ");
           String _plus = (" Memories : " + _join);
-          _xifexpression_2 = (_plus + ",...");
+          _xifexpression_2 = (_plus + ", ...");
         } else {
-          String _xifexpression_3 = null;
-          int _size_1 = memoryNames.size();
-          boolean _greaterThan_1 = (_size_1 > 1);
-          if (_greaterThan_1) {
-            String _join_1 = IterableExtensions.join(memoryNames, ",");
-            _xifexpression_3 = (" Memories : " + _join_1);
-          } else {
-            String _join_2 = IterableExtensions.join(memoryNames, ",");
-            _xifexpression_3 = (" Memory : " + _join_2);
-          }
-          _xifexpression_2 = _xifexpression_3;
+          String _join_1 = IterableExtensions.join(memoryNames, ", ");
+          _xifexpression_2 = (" Memories : " + _join_1);
         }
         _xifexpression_1 = _xifexpression_2;
       }
       final String memoriesString = _xifexpression_1;
-      String _xifexpression_4 = null;
+      String _xifexpression_3 = null;
       String _name_2 = null;
       if (((PhysicalSectionConstraint)object)!=null) {
         _name_2=((PhysicalSectionConstraint)object).getName();
       }
       boolean _isNullOrEmpty_3 = StringExtensions.isNullOrEmpty(_name_2);
       if (_isNullOrEmpty_3) {
-        _xifexpression_4 = "<name>";
+        _xifexpression_3 = "<name>";
       } else {
-        _xifexpression_4 = ((PhysicalSectionConstraint)object).getName();
+        _xifexpression_3 = ((PhysicalSectionConstraint)object).getName();
       }
-      final String s0 = _xifexpression_4;
-      return ((((((((s0 + " [ ") + "(") + sectionString) + ")") + " -- (") + memoriesString) + ")") + " ]");
+      final String s0 = _xifexpression_3;
+      return ((((((s0 + " : (") + sectionString) + ")") + " --> (") + memoriesString) + ")");
     } else {
       return defaultText;
     }
@@ -2998,7 +2989,7 @@ public class CustomItemProviderService {
           }
           boolean _isNullOrEmpty_2 = StringExtensions.isNullOrEmpty(_name_2);
           if (_isNullOrEmpty_2) {
-            _xifexpression_1 = "<section>";
+            _xifexpression_1 = "???";
           } else {
             _xifexpression_1 = it.getName();
           }
@@ -3017,38 +3008,29 @@ public class CustomItemProviderService {
         boolean _greaterThan = (_size > 10);
         if (_greaterThan) {
           List<String> _subList = sectionNames.subList(0, 10);
-          String _join = IterableExtensions.join(_subList, ",");
+          String _join = IterableExtensions.join(_subList, ", ");
           String _plus = (" Sections : " + _join);
-          _xifexpression_2 = (_plus + ",...");
+          _xifexpression_2 = (_plus + ", ...");
         } else {
-          String _xifexpression_3 = null;
-          int _size_1 = sectionNames.size();
-          boolean _greaterThan_1 = (_size_1 > 1);
-          if (_greaterThan_1) {
-            String _join_1 = IterableExtensions.join(sectionNames, ",");
-            _xifexpression_3 = (" Sections : " + _join_1);
-          } else {
-            String _join_2 = IterableExtensions.join(sectionNames, ",");
-            _xifexpression_3 = (" Section : " + _join_2);
-          }
-          _xifexpression_2 = _xifexpression_3;
+          String _join_1 = IterableExtensions.join(sectionNames, ", ");
+          _xifexpression_2 = (" Sections : " + _join_1);
         }
         _xifexpression_1 = _xifexpression_2;
       }
       final String sectionsString = _xifexpression_1;
-      String _xifexpression_4 = null;
+      String _xifexpression_3 = null;
       String _name_2 = null;
       if (((PhysicalSectionMapping)object)!=null) {
         _name_2=((PhysicalSectionMapping)object).getName();
       }
       boolean _isNullOrEmpty_3 = StringExtensions.isNullOrEmpty(_name_2);
       if (_isNullOrEmpty_3) {
-        _xifexpression_4 = "<name>";
+        _xifexpression_3 = "<name>";
       } else {
-        _xifexpression_4 = ((PhysicalSectionMapping)object).getName();
+        _xifexpression_3 = ((PhysicalSectionMapping)object).getName();
       }
-      final String s0 = _xifexpression_4;
-      return ((((((((s0 + " [ ") + "(") + sectionsString) + ")") + " -- (") + memoryString) + ")") + " ]");
+      final String s0 = _xifexpression_3;
+      return ((((((s0 + " : (") + sectionsString) + ")") + " --> (") + memoryString) + ")");
     } else {
       return defaultText;
     }
@@ -4176,6 +4158,60 @@ public class CustomItemProviderService {
   }
   
   /**
+   * ModeLabelItemProvider
+   */
+  public static String getModeLabelItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ModeLabel)) {
+      final String name = ((ModeLabel)object).getName();
+      Mode _mode = ((ModeLabel)object).getMode();
+      String _name = null;
+      if (_mode!=null) {
+        _name=_mode.getName();
+      }
+      final String modeName = _name;
+      String _xifexpression = null;
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
+      if (_isNullOrEmpty) {
+        _xifexpression = "<mode label>";
+      } else {
+        _xifexpression = name;
+      }
+      final String s1 = _xifexpression;
+      String _xifexpression_1 = null;
+      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(modeName);
+      if (_isNullOrEmpty_1) {
+        _xifexpression_1 = "<mode>";
+      } else {
+        _xifexpression_1 = modeName;
+      }
+      final String s2 = _xifexpression_1;
+      return (((s1 + " (") + s2) + ")");
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getModeLabelItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(ModeLabel.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.MODE_LABEL__NAME)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_LABEL__MODE)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+    }
+    return list;
+  }
+  
+  /**
    * ModeSwitchItemProvider
    */
   public static String getModeSwitchItemProviderText(final Object object, final String defaultText) {
@@ -4347,6 +4383,27 @@ public class CustomItemProviderService {
     } else {
       return defaultText;
     }
+  }
+  
+  public static List<ViewerNotification> getModeSwitchEntryItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(ModeSwitchEntry.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, false);
+      list.add(_viewerNotification);
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES)) {
+        _matched=true;
+        Object _notifier_1 = notification.getNotifier();
+        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, false, true);
+        list.add(_viewerNotification_1);
+      }
+    }
+    return list;
   }
   
   /**

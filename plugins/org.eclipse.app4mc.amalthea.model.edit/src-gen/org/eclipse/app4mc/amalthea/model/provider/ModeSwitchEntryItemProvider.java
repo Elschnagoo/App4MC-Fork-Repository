@@ -154,8 +154,7 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 	 * 
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ModeSwitchEntry.class)) {
@@ -166,6 +165,22 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 		super.notifyChanged(notification);
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final List<ViewerNotification> notifications = CustomItemProviderService
+				.getModeSwitchEntryItemProviderNotifications(notification);
+		for (final ViewerNotification vn : notifications) {
+			fireNotifyChanged(vn);
+		}
+
+		super.notifyChanged(notification);
+	}
 
 	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children

@@ -66,6 +66,7 @@ import org.eclipse.app4mc.amalthea.model.LatencyDeviation
 import org.eclipse.app4mc.amalthea.model.LimitType
 import org.eclipse.app4mc.amalthea.model.LongObject
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic
+import org.eclipse.app4mc.amalthea.model.ModeLabel
 import org.eclipse.app4mc.amalthea.model.ModeLabelAccess
 import org.eclipse.app4mc.amalthea.model.ModeLiteral
 import org.eclipse.app4mc.amalthea.model.ModeSwitch
@@ -97,8 +98,10 @@ import org.eclipse.app4mc.amalthea.model.RunnableAllocation
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint
 import org.eclipse.app4mc.amalthea.model.RunnableCall
 import org.eclipse.app4mc.amalthea.model.RunnableItem
+import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement
 import org.eclipse.app4mc.amalthea.model.RunnableScope
+import org.eclipse.app4mc.amalthea.model.SamplingType
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum
 import org.eclipse.app4mc.amalthea.model.SenderReceiverRead
@@ -130,8 +133,6 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
-import org.eclipse.app4mc.amalthea.model.SamplingType
-import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch
 
 class CustomItemProviderService {
 
@@ -1154,28 +1155,22 @@ class CustomItemProviderService {
 			
 			if(!memories.isNullOrEmpty){
 				memories.forEach[it|
-					val st= if(it?.name.isNullOrEmpty) "<memory>" else it.name
+					val st= if(it?.name.isNullOrEmpty) "???" else it.name
 					memoryNames.add(st)
 				]
 			}
 			
-			
-			
 			val memoriesString = if(memoryNames.isNullOrEmpty) {"<memories>"}  else { 
-				
 				if(memoryNames.size>10) {
-				" Memories : "+memoryNames.subList(0,10).join(',')+",..."
+				" Memories : "+memoryNames.subList(0,10).join(', ')+", ..."
+				} else {
+				" Memories : "+memoryNames.join(', ')
 				}
-				else if(memoryNames.size>1) {
-				" Memories : "+memoryNames.join(',')
-				}  
-				else 
-				{" Memory : "+memoryNames.join(',') }
 			}
 			
 			val s0= if(object?.name.isNullOrEmpty) "<name>" else  object.name
 			
-			return s0 + " [ "+"(" + sectionString + ")" + " -- (" + memoriesString + ")"+ " ]";
+			return s0 + " : (" + sectionString + ")" + " --> (" + memoriesString + ")";
 		} else {
 			return defaultText
 		}
@@ -1549,7 +1544,7 @@ class CustomItemProviderService {
 			
 			if(!sections.isNullOrEmpty){
 				sections.forEach[it|
-					val st= if(it?.name.isNullOrEmpty) "<section>" else it.name
+					val st= if(it?.name.isNullOrEmpty) "???" else it.name
 					sectionNames.add(st)
 				]
 			}
@@ -1557,17 +1552,15 @@ class CustomItemProviderService {
 			val sectionsString = if(sectionNames.isNullOrEmpty) {"<sections>"}
 			 else {
 			 	if(sectionNames.size>10) {
-			 	" Sections : "+sectionNames.subList(0,10).join(',')+",..."
-			 	}else if(sectionNames.size>1) {
-			 	" Sections : "+sectionNames.join(',')
+			 	" Sections : "+sectionNames.subList(0,10).join(', ')+", ..."
 			 	} else {
-			 	" Section : "+sectionNames.join(',')
+			 	" Sections : "+sectionNames.join(', ')
 			 	}
 			 }
 			
 			val s0= if(object?.name.isNullOrEmpty) "<name>" else  object.name
 			
-			return s0 + " [ "+"(" + sectionsString + ")" + " -- (" + memoryString + ")"+ " ]";
+			return s0 + " : (" + sectionsString + ")" + " --> (" + memoryString + ")";
 		} else {
 			return defaultText
 		}
@@ -2120,6 +2113,34 @@ class CustomItemProviderService {
 		}
 	}
 
+
+	/*****************************************************************************
+	 * 						ModeLabelItemProvider
+	 *****************************************************************************/
+	def static String getModeLabelItemProviderText(Object object, String defaultText) {
+		if (object instanceof ModeLabel) {
+			val name = object.name
+			val modeName = object.mode?.name
+			val s1 = if(name.isNullOrEmpty) "<mode label>" else name
+			val s2 = if(modeName.isNullOrEmpty) "<mode>" else modeName
+			return s1 + " (" + s2 + ")";
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getModeLabelItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(ModeLabel)) {
+			case AmaltheaPackage::MODE_LABEL__NAME,
+			case AmaltheaPackage::MODE_LABEL__MODE:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+		}
+		return list
+	}
+
+
 	/*****************************************************************************
 	 * 						ModeSwitchItemProvider
 	 *****************************************************************************/
@@ -2188,6 +2209,18 @@ class CustomItemProviderService {
 		} else {
 			return defaultText
 		}
+	}
+
+	def static List<ViewerNotification> getModeSwitchEntryItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(ModeSwitchEntry)) {
+			case AmaltheaPackage::MODE_SWITCH_ENTRY__ITEMS:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+			case AmaltheaPackage::MODE_SWITCH_ENTRY__VALUES:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+		}
+		return list
 	}
 
 

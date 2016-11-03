@@ -155,14 +155,21 @@ public class ModeLabelItemProvider extends AbstractElementMemoryInformationItemP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		String label = ((ModeLabel)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ModeLabel_type") :
 			getString("_UI_ModeLabel_type") + " " + label;
 	}
 	
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomItemProviderService.getModeLabelItemProviderText(object, getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -171,8 +178,7 @@ public class ModeLabelItemProvider extends AbstractElementMemoryInformationItemP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ModeLabel.class)) {
@@ -183,6 +189,23 @@ public class ModeLabelItemProvider extends AbstractElementMemoryInformationItemP
 		super.notifyChanged(notification);
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final List<ViewerNotification> notifications = CustomItemProviderService
+				.getModeLabelItemProviderNotifications(notification);
+		for (final ViewerNotification vn : notifications) {
+			fireNotifyChanged(vn);
+		}
+
+		super.notifyChanged(notification);
+	}
+	
 	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
