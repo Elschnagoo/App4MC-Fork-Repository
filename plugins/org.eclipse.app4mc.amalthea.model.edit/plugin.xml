@@ -19,7 +19,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated amalthea -->
       <factory
-            uri="http://app4mc.eclipse.org/amalthea/0.7.1"
+            uri="http://app4mc.eclipse.org/amalthea/0.7.2"
             class="org.eclipse.app4mc.amalthea.model.provider.AmaltheaItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider

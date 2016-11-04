@@ -61,7 +61,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://app4mc.eclipse.org/amalthea/0.7.1";
+	String eNS_URI = "http://app4mc.eclipse.org/amalthea/0.7.2";
 
 	/**
 	 * The package namespace name.
