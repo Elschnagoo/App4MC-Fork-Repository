@@ -6,7 +6,7 @@
 
 	<groupId>org.eclipse.app4mc.build</groupId>
 	<artifactId>parent</artifactId>
-	<version>0.7.1-SNAPSHOT</version>
+	<version>0.7.2-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
 
@@ -208,7 +208,7 @@
 						<artifact>
 							<groupId>org.eclipse.app4mc.build</groupId>
 							<artifactId>org.eclipse.app4mc.target</artifactId>
-							<version>0.7.1-SNAPSHOT</version>
+							<version>0.7.2-SNAPSHOT</version>
 							<classifier>Mars-4.5.2</classifier>
 						</artifact>
 					</target>

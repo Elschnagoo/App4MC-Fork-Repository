@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Amalthea OSEK Export
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.export.osek;singleton:=true
-Bundle-Version: 0.7.1.qualifier
+Bundle-Version: 0.7.2.qualifier
 Bundle-Activator: org.eclipse.app4mc.amalthea.export.osek.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.common,

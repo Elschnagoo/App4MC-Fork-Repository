@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.app4mc.amalthea.multicore.sdk"
       label="APP4MC AMALTHEA Multicore Support SDK"
-      version="0.7.1.qualifier"
+      version="0.7.2.qualifier"
       provider-name="Eclipse.org"
       license-feature="org.eclipse.license"
       license-feature-version="1.0.1.qualifier">
