@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _L7PnsGYTEeavsN870ZZg2w
 Runtime-Version: 2.1.0.201605312320
-Save-Time: 8/19/16 3:50 PM
+Save-Time: 11/4/16 11:05 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -24,10 +24,17 @@ get-view "Model Explorer" | get-tree | select "ModelMigration-itea.103/_migratio
     | select "ModelMigration-itea.103/_migration/central.amxmi" | get-menu "Open With/Text Editor" | click
 get-editor "central.amxmi" | get-text-viewer | get-property "getText()" 
     | contains "xmlns:am=\"http://app4mc.eclipse.org/amalthea/0.7.1\"" | verify-true
-get-view "Model Explorer" | get-tree | select "ModelMigration-itea.103/_migration/central.amxmi" 
+
+/*- check root tag. As per model migration to 0.7.1 -> root tag will be am:Amalthea */
+
+get-editor "central.amxmi" | get-text-viewer | get-property "getText()" 
+    | contains "am:Amalthea" | verify-true
+      
+    
+/*get-view "Model Explorer" | get-tree | select "ModelMigration-itea.103/_migration/central.amxmi" 
     | select "ModelMigration-itea.103/_migration/central.amxmi" | get-menu "Open With/APP4MC AMALTHEA Model Editor" 
     | click
 get-editor "central.amxmi" -type "APP4MC AMALTHEA Model Editor" | get-section "central.amxmi Contents" | get-tree 
     | select "Amalthea/Software/Labels (1)/Label1"
-get-view Properties | get-tree | select "Main/Name" | activate-cell-edit -column 1
+get-view Properties | get-tree | select "Main/Name" | activate-cell-edit -column 1*/
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

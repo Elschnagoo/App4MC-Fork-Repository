@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _Lbh-IGYZEeavsN870ZZg2w
 Runtime-Version: 2.1.0.201605312320
-Save-Time: 8/23/16 2:32 PM
+Save-Time: 11/4/16 11:11 PM
 Testcase-Type: ecl
 Verifications: _ZAc7gGhlEeae078dVmHT3A
 
@@ -25,7 +25,20 @@ with [get-window "AMALTHEA Model Migration"] {
 }
 
 get-window "AMALTHEA Model Migration" | get-button OK | click
-get-view "Model Explorer" | get-tree | select "ModelMigration-itea.111/_migration/GeneratedModel.amxmi" | double-click
+
+
+get-view "Model Explorer" | get-tree | select "ModelMigration-itea.111/_migration/GeneratedModel.amxmi"  
+    | select "ModelMigration-itea.111/_migration/GeneratedModel.amxmi"  | get-menu "Open With/Text Editor" | click
+get-editor "GeneratedModel.amxmi" | get-text-viewer | get-property "getText()" 
+    | contains "xmlns:am=\"http://app4mc.eclipse.org/amalthea/0.7.1\"" | verify-true
+
+/*- check root tag. As per model migration to 0.7.1 -> root tag will be am:Amalthea */
+
+get-editor "GeneratedModel.amxmi" | get-text-viewer | get-property "getText()" 
+    | contains "am:Amalthea" | verify-true
+    
+    
+/*get-view "Model Explorer" | get-tree | select "ModelMigration-itea.111/_migration/GeneratedModel.amxmi" | double-click
 get-editor "GeneratedModel.amxmi" | get-section "GeneratedModel.amxmi Contents" | get-tree 
-    | select "Amalthea/Software/Tasks (21)/ISR_1"
+    | select "Amalthea/Software/Tasks (21)/ISR_1"*/
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
