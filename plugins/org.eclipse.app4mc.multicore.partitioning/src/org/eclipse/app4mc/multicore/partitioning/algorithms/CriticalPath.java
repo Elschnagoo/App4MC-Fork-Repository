@@ -245,6 +245,19 @@ public class CriticalPath {
 		return length;
 	}
 
+	public long getPathLength() {
+		long length = 0;
+		try {
+			for (final Runnable r : this.cp.getRunnablesL()) {
+				length += new Helper().getInstructions(r);
+			}
+		}
+		catch (final Exception e) {
+			PartLog.getInstance().log("PathLengthError", e);
+		}
+		return length;
+	}
+
 	private void updateCacheTFs() {
 		initSrtl();
 		for (final Runnable run : this.swm.getRunnables()) {

@@ -35,7 +35,7 @@ import org.eclipse.emf.common.util.EList;
 import org.jgrapht.DirectedGraph;
 
 /**
- * The critical path partitioning approach assignes runnables to
+ * The critical path partitioning approach assigns runnables to
  * ProcessPrototypes with respect to their execution cycles and dependencies.
  * The first ProcessPrototype will contain the critical path and other
  * ProcessPrototypes will contain graph branches next to the critical path. The
@@ -408,23 +408,25 @@ public class CPP {
 	private Runnable getMostEffectiveNode(final EList<Runnable> an) {
 		// from all assignable runnables, check preceding unassigned runnable
 		// instruction sums
-		final HashMap<Runnable, Float> hm = new HashMap<Runnable, Float>();
+		final HashMap<Runnable, Long> hm = new HashMap<Runnable, Long>();
+		final long cpl = this.globalCP.getPathLength();
 		for (final Runnable r : an) {
-			float prio = 1;
+			long prio = 1;
 			prio += getCommunicationOverhead(r);
 			final tf TF = this.cache.get(r);
 			// lit-eit --> the smaller the value the higher their prio
-			// e.g. cpl=20, lit-eit=5; prio is multiplied by shift factor 5/20
-			prio *= (TF.lit - TF.eit) / this.globalCP.getPathLength(this.globalCP.getCP());
+			// e.g. cpl=20, lit-eit=5; prio is multiplied by shift factor 15
+			prio *= cpl - (TF.lit - TF.eit > 0 ? TF.lit - TF.eit : 1);
+			// Todo consider runnable size
 			hm.put(r, prio);
 		}
 
 		float temp = 0;
 		Runnable ret = null;
 		for (final Runnable r : hm.keySet()) {
-			if (hm.get(r).floatValue() > temp) {
+			if (hm.get(r) > temp) {
 				ret = r;
-				temp = hm.get(r).floatValue();
+				temp = hm.get(r);
 			}
 		}
 		return ret;
