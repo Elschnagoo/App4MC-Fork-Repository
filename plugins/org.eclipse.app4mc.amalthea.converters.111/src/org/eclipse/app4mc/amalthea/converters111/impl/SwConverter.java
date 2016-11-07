@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters111.utils.CacheEnum;
@@ -39,10 +41,13 @@ public class SwConverter implements IConverter {
 
 	boolean isModeLabelCacheUpdated;
 
+	private final Logger logger;
+
 	File targetFile;
 
 	public SwConverter() {
 		this.helper = HelperUtils_110_111.getInstance();
+		this.logger = LogManager.getLogger(this.getClass());
 	}
 
 	@Override
@@ -221,6 +226,8 @@ public class SwConverter implements IConverter {
 
 				System.err.println(
 						"constraints model not present, so can't associate deadline to AbstractProcess elements");
+				this.logger.error(
+						"Model Migration (1.1.0 to 1.1.1) -> constraints model not present, so can't migrate \"deadline\" attribute of AbstractProcess elements");
 				return;
 			}
 		}

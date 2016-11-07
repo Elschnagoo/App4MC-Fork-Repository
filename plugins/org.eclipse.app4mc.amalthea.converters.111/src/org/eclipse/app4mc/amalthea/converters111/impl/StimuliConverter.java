@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters111.utils.CacheEnum;
@@ -34,12 +36,14 @@ public class StimuliConverter implements IConverter {
 	private List<ICache> caches;
 
 	private String workingDirectoryLocation;
-	
+
 	private File targetFile;
 
+	private final Logger logger;
 
 	public StimuliConverter() {
 		this.helper = HelperUtils_110_111.getInstance();
+		this.logger = LogManager.getLogger(this.getClass());
 	}
 
 	@Override
@@ -48,8 +52,8 @@ public class StimuliConverter implements IConverter {
 
 		this.caches = caches;
 
-		this.targetFile=targetFile;
-		
+		this.targetFile = targetFile;
+
 		this.workingDirectoryLocation = targetFile.getParentFile().getCanonicalPath();
 
 		final Document root = fileName_documentsMap.get(targetFile);
@@ -374,8 +378,7 @@ public class StimuliConverter implements IConverter {
 				final Set<File> fileSet = iCache.getCacheMap().keySet();
 
 				for (final File file : fileSet) {
-					
-				
+
 
 					final Map<String, Object> cacheMap = iCache.getCacheMap().get(file);
 
@@ -402,7 +405,7 @@ public class StimuliConverter implements IConverter {
 						@SuppressWarnings("unchecked")
 						final Element element = ((Map<String, Element>) URIFRAGMENT_ELEMENT_Map).get(labelReference);
 
-						if (element != null && this.targetFile==file) {
+						if (element != null && this.targetFile == file) {
 							return element;
 						}
 						continue;
@@ -553,6 +556,8 @@ public class StimuliConverter implements IConverter {
 
 		if (swModels.size() == 0) {
 			System.err.println("sw-model not present, so can't associate individual ModeLiteral values");
+			this.logger.error(
+					"Model Migration (1.1.0 to 1.1.1) -> sw-model not present, so can't associate individual ModeLiteral values which are part of ModeValueList");
 			return;
 		}
 
