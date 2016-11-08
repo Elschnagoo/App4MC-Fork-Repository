@@ -181,22 +181,27 @@ public class ModelMigrationDialog extends Dialog {
 				if (version != null) {
 					if (version.equals("itea.103")) {
 						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.7.1", "0.7.0", "itea.111", "itea.110" });
+								.setItems(new String[] { "0.7.2", "0.7.1", "0.7.0", "itea.111", "itea.110" });
 
 					}
 					else if (version.equals("itea.110")) {
 						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.7.1", "0.7.0", "itea.111" });
+								.setItems(new String[] { "0.7.2", "0.7.1", "0.7.0", "itea.111" });
 					}
 					else if (version.equals("itea.111")) {
 						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.7.1", "0.7.0" });
+								.setItems(new String[] { "0.7.2", "0.7.1", "0.7.0" });
 					}
 					else if (version.equals("0.7.0")) {
-						ModelMigrationDialog.this.getMig_model_version_combo().setItems(new String[] { "0.7.1" });
+						ModelMigrationDialog.this.getMig_model_version_combo()
+								.setItems(new String[] { "0.7.2", "0.7.1" });
 
 					}
 					else if (version.equals("0.7.1")) {
+						ModelMigrationDialog.this.getMig_model_version_combo().setItems(new String[] { "0.7.2" });
+
+					}
+					else if (version.equals("0.7.2")) {
 						ModelMigrationDialog.this.getMig_model_version_combo().setItems(new String[] { "" });
 
 						ModelMigrationDialog.this.getMig_model_version_combo().setEnabled(false);

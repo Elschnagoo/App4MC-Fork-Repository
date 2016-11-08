@@ -112,6 +112,20 @@ public class ModelMigrationJob extends Job {
 				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
 				migStepEntries.add(entry4);
 			}
+			else if (outputModelVersion.equals("0.7.2")) {
+				final Entry<String, String> entry1 = new AbstractMap.SimpleEntry<String, String>("itea.103",
+						"itea.110");
+				migStepEntries.add(entry1);
+				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
+						"itea.111");
+				migStepEntries.add(entry2);
+				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
+				migStepEntries.add(entry3);
+				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
+				migStepEntries.add(entry4);
+				final Entry<String, String> entry5 = new AbstractMap.SimpleEntry<String, String>("0.7.1", "0.7.2");
+				migStepEntries.add(entry5);
+			}
 		}
 		else if (inputModelVersion.equals("itea.110")) {
 
@@ -139,6 +153,17 @@ public class ModelMigrationJob extends Job {
 				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
 				migStepEntries.add(entry4);
 			}
+			else if (outputModelVersion.equals("0.7.2")) {
+				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
+						"itea.111");
+				migStepEntries.add(entry2);
+				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
+				migStepEntries.add(entry3);
+				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
+				migStepEntries.add(entry4);
+				final Entry<String, String> entry5 = new AbstractMap.SimpleEntry<String, String>("0.7.1", "0.7.2");
+				migStepEntries.add(entry5);
+			}
 		}
 		else if (inputModelVersion.equals("itea.111")) {
 
@@ -154,6 +179,17 @@ public class ModelMigrationJob extends Job {
 				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
 				migStepEntries.add(entry4);
 			}
+			else if (outputModelVersion.equals("0.7.2")) {
+				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
+						"itea.111");
+				migStepEntries.add(entry2);
+				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
+				migStepEntries.add(entry3);
+				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
+				migStepEntries.add(entry4);
+				final Entry<String, String> entry5 = new AbstractMap.SimpleEntry<String, String>("0.7.1", "0.7.2");
+				migStepEntries.add(entry5);
+			}
 		}
 		else if (inputModelVersion.equals("0.7.0")) {
 
@@ -161,6 +197,22 @@ public class ModelMigrationJob extends Job {
 
 				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
 				migStepEntries.add(entry4);
+			}
+			else if (outputModelVersion.equals("0.7.2")) {
+
+				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
+				migStepEntries.add(entry4);
+				final Entry<String, String> entry5 = new AbstractMap.SimpleEntry<String, String>("0.7.1", "0.7.2");
+				migStepEntries.add(entry5);
+			}
+		}
+		else if (inputModelVersion.equals("0.7.1")) {
+
+
+			if (outputModelVersion.equals("0.7.2")) {
+
+				final Entry<String, String> entry5 = new AbstractMap.SimpleEntry<String, String>("0.7.1", "0.7.2");
+				migStepEntries.add(entry5);
 			}
 		}
 
@@ -219,7 +271,7 @@ public class ModelMigrationJob extends Job {
 				boolean updateFileNames = false;
 				if (inputModelVersion.equals("itea.103") || inputModelVersion.equals("itea.110")) {
 					if (outputModelVersion.equals("itea.111") || outputModelVersion.equals("0.7.0")
-							|| outputModelVersion.equals("0.7.1")) {
+							|| outputModelVersion.equals("0.7.1") || outputModelVersion.equals("0.7.2")) {
 						updateFileNames = true;
 					}
 				}

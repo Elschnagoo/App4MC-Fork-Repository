@@ -65,6 +65,7 @@
 		<module>../../plugins/org.ojalgo</module>
 		<module>../../plugins/org.sqlite.jdbc</module>
 
+		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.072</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.071</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.070</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.110</module>
@@ -133,6 +134,7 @@
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.111.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.070.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.071.test</module>
+		<module>../../tests/org.eclipse.app4mc.amalthea.converters.072.test</module>
 	</modules>
 
 	<build>

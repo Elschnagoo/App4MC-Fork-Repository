@@ -44,7 +44,7 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 
 	private MigrationSettings migrationSettings;
 
-	private final String LATEST_MODEL_VERSION = "0.7.1";
+	private final String LATEST_MODEL_VERSION = "0.7.2";
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
@@ -260,11 +260,12 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 
 									final String inputModelVersion = migModelFile.getModelVersion();
 
-									/*- if version is not among itea.103/itea.110/itea.111/0.7.0*/
+									/*- if version is not among itea.103/itea.110/itea.111/0.7.0/0.7.1/0.7.2*/
 									if (!((inputModelVersion != null) && (inputModelVersion.equals("itea.103")
 											|| inputModelVersion.equals("itea.110")
 											|| inputModelVersion.equals("itea.111") || inputModelVersion.equals("0.7.0")
-											|| inputModelVersion.equals("0.7.1")))) {
+											|| inputModelVersion.equals("0.7.1")
+											|| inputModelVersion.equals("0.7.2")))) {
 
 										list.add(migModelFile);
 									}
