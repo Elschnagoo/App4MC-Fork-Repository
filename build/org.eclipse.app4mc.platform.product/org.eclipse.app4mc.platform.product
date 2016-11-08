@@ -141,7 +141,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <features>
       <feature id="org.eclipse.app4mc.platform.3rdparty"/>
-      <feature id="org.eclipse.app4mc.platform.sdk"/>
+      <feature id="org.eclipse.app4mc.platform"/>
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.cdt"/>
       <feature id="org.eclipse.cdt.autotools"/>
@@ -155,6 +155,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <feature id="org.eclipse.e4.rcp"/>
       <feature id="org.eclipse.ease.feature"/>
       <feature id="org.eclipse.ease.javascript.feature"/>
+      <feature id="org.eclipse.ease.lang.jvm.feature"/>
       <feature id="org.eclipse.ease.modules.feature"/>
       <feature id="org.eclipse.ease.ui.feature"/>
       <feature id="org.eclipse.ecf.core.feature"/>
@@ -192,6 +193,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <feature id="org.eclipse.emf.validation"/>
       <feature id="org.eclipse.emf.validation.ocl"/>
       <feature id="org.eclipse.emf.workspace"/>
+      <feature id="org.eclipse.epp.package.automotive.feature"/>
       <feature id="org.eclipse.equinox.core.feature"/>
       <feature id="org.eclipse.equinox.p2.core.feature"/>
       <feature id="org.eclipse.equinox.p2.discovery.feature"/>
@@ -210,8 +212,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <feature id="org.eclipse.pde"/>
       <feature id="org.eclipse.remote"/>
       <feature id="org.eclipse.rcp"/>
-      <feature id="org.eclipse.rmf.reqif10.feature"/>
-      <feature id="org.eclipse.rmf.reqif10.pror.feature"/>
       <feature id="org.eclipse.sphinx"/>
       <feature id="org.eclipse.uml2"/>
       <feature id="org.eclipse.wst.common_core.feature"/>
@@ -239,10 +239,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <feature id="org.eclipse.xtext.xbase"/>
       <feature id="org.eclipse.xtext.xbase.lib"/>
       <feature id="org.eclipse.xtext.xtext.ui"/>
-      <feature id="org.franca.core.sdk"/>
-      <feature id="org.franca.ui.sdk"/>
-      <feature id="org.yakindu.base"/>
-      <feature id="org.yakindu.sct"/>
    </features>
 
    <configurations>

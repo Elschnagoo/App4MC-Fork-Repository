@@ -91,7 +91,7 @@
     <requirement
         name="net.sourceforge.plantuml.feature.feature.group"/>
     <repository
-        url="https://raw.github.com/inventage/version-tiger-repos/master/releases/"/>
+        url="https://raw.githubusercontent.com/inventage/version-tiger-repos/master/releases/"/>
     <repository
         url="http://download.eclipse.org/sirius/updates/releases/4.0.1/neon"/>
     <repository
@@ -541,6 +541,9 @@
         <requirement
             name="org.eclipse.license.feature.group"/>
         <requirement
+            name="org.eclipse.epp.package.automotive.feature.feature.group"
+            versionRange="[4.5.0,4.6.0)"/>
+        <requirement
             name="org.eclipse.cdt.remote.feature.group"
             versionRange="[8.8.0,8.9.0)"/>
         <requirement
@@ -628,21 +631,6 @@
             name="org.eclipse.rmf.reqif10.pror.sdk.feature.feature.group"
             versionRange="[0.13.0,0.14.0)"/>
         <requirement
-            name="org.yakindu.sct.feature.group"
-            versionRange="[2.6.0,2.7.0)"/>
-        <requirement
-            name="org.yakindu.sct.generator.c.feature.group"
-            versionRange="[2.6.0,2.7.0)"/>
-        <requirement
-            name="org.yakindu.sct.generator.cpp.feature.group"
-            versionRange="[2.6.0,2.7.0)"/>
-        <requirement
-            name="org.franca.core.sdk.feature.group"
-            versionRange="[0.10.0,1.0.0)"/>
-        <requirement
-            name="org.franca.ui.sdk.feature.group"
-            versionRange="[0.10.0,1.0.0)"/>
-        <requirement
             name="org.eclipse.jetty.bundles.f.feature.group"
             versionRange="[8.1.0,8.2.0)"/>
         <requirement
@@ -701,6 +689,9 @@
             versionRange="[0.3.0,0.4.0)"/>
         <requirement
             name="org.eclipse.ease.modules.feature.feature.group"
+            versionRange="[0.3.0,0.4.0)"/>
+        <requirement
+            name="org.eclipse.ease.lang.jvm.feature.feature.group"
             versionRange="[0.3.0,0.4.0)"/>
         <requirement
             name="com.sun.xml.bind"
@@ -818,19 +809,20 @@
               url="http://download.eclipse.org/ease/update/release"/>
           <repository
               url="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/"/>
-          <repository
-              url="https://projects.itemis.de/data/amalthea/target/org.eclipse.epp.packages/"/>
-          <repository
-              url="http://franca.github.io/franca/update_site/releases"/>
-          <repository
-              url="http://updates.yakindu.org/sct/mars/releases"/>
         </repositoryList>
       </targlet>
     </setupTask>
     <setupTask
         xsi:type="projects:ProjectsImportTask">
       <sourceLocator
-          rootFolder="${git.clone.app4mc.location}"/>
+          rootFolder="${git.clone.app4mc.location}">
+        <predicate
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*franca.*"/>
+        </predicate>
+      </sourceLocator>
     </setupTask>
     <setupTask
         xsi:type="setup.workingsets:WorkingSetTask">
@@ -867,9 +859,6 @@
             <operand
                 xsi:type="predicates:NamePredicate"
                 pattern="org\.eclipse\.app4mc\.amalthea\.sphinx"/>
-            <operand
-                xsi:type="predicates:NamePredicate"
-                pattern="org\.eclipse\.app4mc\.amalthea\.franca.*"/>
             <operand
                 xsi:type="predicates:NamePredicate"
                 pattern="org\.eclipse\.app4mc\.amalthea\.emf\.util.*"/>
@@ -1134,6 +1123,9 @@
         <requirement
             name="org.eclipse.license.feature.group"/>
         <requirement
+            name="org.eclipse.epp.package.automotive.feature.feature.group"
+            versionRange="[4.5.0,4.6.0)"/>
+        <requirement
             name="org.eclipse.cdt.remote.feature.group"
             versionRange="[8.8.0,8.9.0)"/>
         <requirement
@@ -1221,21 +1213,6 @@
             name="org.eclipse.rmf.reqif10.pror.sdk.feature.feature.group"
             versionRange="[0.13.0,0.14.0)"/>
         <requirement
-            name="org.yakindu.sct.feature.group"
-            versionRange="[2.6.0,2.7.0)"/>
-        <requirement
-            name="org.yakindu.sct.generator.c.feature.group"
-            versionRange="[2.6.0,2.7.0)"/>
-        <requirement
-            name="org.yakindu.sct.generator.cpp.feature.group"
-            versionRange="[2.6.0,2.7.0)"/>
-        <requirement
-            name="org.franca.core.sdk.feature.group"
-            versionRange="[0.10.0,1.0.0)"/>
-        <requirement
-            name="org.franca.ui.sdk.feature.group"
-            versionRange="[0.10.0,1.0.0)"/>
-        <requirement
             name="org.eclipse.jetty.bundles.f.feature.group"
             versionRange="[8.1.0,8.2.0)"/>
         <requirement
@@ -1294,6 +1271,9 @@
             versionRange="[0.3.0,0.4.0)"/>
         <requirement
             name="org.eclipse.ease.modules.feature.feature.group"
+            versionRange="[0.3.0,0.4.0)"/>
+        <requirement
+            name="org.eclipse.ease.lang.jvm.feature.feature.group"
             versionRange="[0.3.0,0.4.0)"/>
         <requirement
             name="com.sun.xml.bind"
@@ -1411,19 +1391,20 @@
               url="http://download.eclipse.org/ease/update/release"/>
           <repository
               url="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/"/>
-          <repository
-              url="https://projects.itemis.de/data/amalthea/target/org.eclipse.epp.packages/"/>
-          <repository
-              url="http://franca.github.io/franca/update_site/releases"/>
-          <repository
-              url="http://updates.yakindu.org/sct/mars/releases"/>
         </repositoryList>
       </targlet>
     </setupTask>
     <setupTask
         xsi:type="projects:ProjectsImportTask">
       <sourceLocator
-          rootFolder="${git.clone.app4mc.location}"/>
+          rootFolder="${git.clone.app4mc.location}">
+        <predicate
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*franca.*"/>
+        </predicate>
+      </sourceLocator>
     </setupTask>
     <setupTask
         xsi:type="setup.workingsets:WorkingSetTask">

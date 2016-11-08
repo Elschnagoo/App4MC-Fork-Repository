@@ -27,39 +27,27 @@
 	<modules>
 		<!-- Plugins -->
 		<module>../../plugins/org.eclipse.app4mc.amalthea.emf.util</module>
-
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.mapping</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.split</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.hwmodel</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling2</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.workflow</module>
-
-
-
 		<module>../../plugins/org.eclipse.app4mc.amalthea.examples.installer</module>
-		<module>../../plugins/org.eclipse.app4mc.multicore.examples.installer</module>
-		<module>../../plugins/org.eclipse.app4mc.workflow.examples.installer</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.export.osek</module>
-		<module>../../plugins/org.eclipse.app4mc.amalthea.franca.sphinx</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.import.atdb</module>
-		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.model</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.model.edit</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx.ui</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx.ui.editors</module>
-		<module>../../plugins/org.eclipse.app4mc.multicore.openmapping</module>
-		<module>../../plugins/org.eclipse.app4mc.multicore.partitioning</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.validation</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.base</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.core</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.ease</module>
 		<module>../../plugins/org.eclipse.app4mc.atdb.metrics</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.examples.installer</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.openmapping</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.partitioning</module>
 		<module>../../plugins/org.eclipse.app4mc.platform.ide</module>
 		<module>../../plugins/org.eclipse.app4mc.tracing.converter</module>
 		<module>../../plugins/org.eclipse.app4mc.tracing.converter.atdb</module>
 		<module>../../plugins/org.eclipse.app4mc.tracing.converter.ot1</module>
+		<module>../../plugins/org.eclipse.app4mc.workflow.examples.installer</module>
 		<module>../../plugins/org.jenetics</module>
 		<module>../../plugins/org.jgrapht</module>
 		<module>../../plugins/org.ojalgo</module>
@@ -74,6 +62,14 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.ui</module>
 		<module>../../plugins/org.jdom2</module>
 		<module>../../plugins/org.jaxen</module>
+
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.mapping</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.split</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.hwmodel</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling2</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.workflow</module>
 
 		<module>../../plugins/org.eclipse.app4mc.help</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.help</module>
@@ -117,24 +113,21 @@
 		<module>../../features/org.eclipse.app4mc.tracing.sdk</module>
 		<module>../../features/org.eclipse.app4mc.validation</module>
 		<module>../../features/org.eclipse.app4mc.validation.sdk</module>
-		<module>../../features/org.eclipse.app4mc.amalthea.addon.franca</module>
-
-
 
 		<!-- Other -->
+		<module>../org.eclipse.app4mc.converters.p2repo</module>
 		<module>../org.eclipse.app4mc.p2repo</module>
 		<module>../org.eclipse.app4mc.platform.product</module>
 		<module>../org.eclipse.app4mc.target</module>
-		<module>../org.eclipse.app4mc.converters.p2repo</module>
 
 		<!-- Tests -->
-		<module>../../tests/org.eclipse.app4mc.amalthea.validation.test</module>
-		<module>../../tests/org.eclipse.app4mc.rcptt</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.110.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.111.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.070.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.071.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.072.test</module>
+		<module>../../tests/org.eclipse.app4mc.amalthea.validation.test</module>
+		<module>../../tests/org.eclipse.app4mc.rcptt</module>
 	</modules>
 
 	<build>

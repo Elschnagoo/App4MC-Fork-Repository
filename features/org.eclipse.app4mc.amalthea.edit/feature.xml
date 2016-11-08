@@ -38,8 +38,6 @@ All rights reserved.
       <import plugin="org.eclipse.xtext.xbase.lib"/>
       <import plugin="org.eclipse.xtend.lib"/>
       <import plugin="org.eclipse.xtend.lib.macro"/>
-      <import plugin="org.franca.core"/>
-      <import plugin="org.franca.core.edit"/>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.help"/>
    </requires>
