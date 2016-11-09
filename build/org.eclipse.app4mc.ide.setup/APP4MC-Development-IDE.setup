@@ -509,6 +509,16 @@
         remoteURI="https://git.eclipse.org/r/app4mc/org.eclipse.app4mc"
         pushURI=""
         checkoutBranch="master">
+      <configSections
+          name="remote">
+        <subsections
+            xsi:type="git:ConfigSection"
+            name="origin">
+          <properties
+              key="push"
+              value="HEAD:refs/heads/master"/>
+        </subsections>
+      </configSections>
       <description>APP4MC Git Repository</description>
     </setupTask>
     <setupTask
@@ -624,12 +634,6 @@
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
             versionRange="[2.9.0,2.10.0)"/>
-        <requirement
-            name="org.eclipse.rmf.reqif10.sdk.feature.feature.group"
-            versionRange="[0.13.0,0.14.0)"/>
-        <requirement
-            name="org.eclipse.rmf.reqif10.pror.sdk.feature.feature.group"
-            versionRange="[0.13.0,0.14.0)"/>
         <requirement
             name="org.eclipse.jetty.bundles.f.feature.group"
             versionRange="[8.1.0,8.2.0)"/>
@@ -793,8 +797,6 @@
               url="http://download.eclipse.org/cbi/updates/license/"/>
           <repository
               url="http://download.eclipse.org/modeling/emf/compare/updates/releases/3.1/R201509120604"/>
-          <repository
-              url="http://download.eclipse.org/rmf/updates"/>
           <repository
               url="http://download.eclipse.org/tools/cdt/releases/8.8"/>
           <repository
@@ -1091,6 +1093,16 @@
         remoteURI="https://git.eclipse.org/r/app4mc/org.eclipse.app4mc"
         pushURI=""
         checkoutBranch="develop">
+      <configSections
+          name="remote">
+        <subsections
+            xsi:type="git:ConfigSection"
+            name="origin">
+          <properties
+              key="push"
+              value="HEAD:refs/heads/develop"/>
+        </subsections>
+      </configSections>
       <description>APP4MC Git Repository</description>
     </setupTask>
     <setupTask
@@ -1206,12 +1218,6 @@
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
             versionRange="[2.9.0,2.10.0)"/>
-        <requirement
-            name="org.eclipse.rmf.reqif10.sdk.feature.feature.group"
-            versionRange="[0.13.0,0.14.0)"/>
-        <requirement
-            name="org.eclipse.rmf.reqif10.pror.sdk.feature.feature.group"
-            versionRange="[0.13.0,0.14.0)"/>
         <requirement
             name="org.eclipse.jetty.bundles.f.feature.group"
             versionRange="[8.1.0,8.2.0)"/>
@@ -1375,8 +1381,6 @@
               url="http://download.eclipse.org/cbi/updates/license/"/>
           <repository
               url="http://download.eclipse.org/modeling/emf/compare/updates/releases/3.1/R201509120604"/>
-          <repository
-              url="http://download.eclipse.org/rmf/updates"/>
           <repository
               url="http://download.eclipse.org/tools/cdt/releases/8.8"/>
           <repository
