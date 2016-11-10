@@ -193,7 +193,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <feature id="org.eclipse.emf.validation"/>
       <feature id="org.eclipse.emf.validation.ocl"/>
       <feature id="org.eclipse.emf.workspace"/>
-      <feature id="org.eclipse.epp.package.automotive.feature"/>
       <feature id="org.eclipse.equinox.core.feature"/>
       <feature id="org.eclipse.equinox.p2.core.feature"/>
       <feature id="org.eclipse.equinox.p2.discovery.feature"/>
