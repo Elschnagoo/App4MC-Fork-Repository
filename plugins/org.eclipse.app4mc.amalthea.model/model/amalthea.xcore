@@ -2514,8 +2514,8 @@ class SWModel extends BaseObject
 	contains resolving OsEvent[] events
 	contains resolving TypeDefinition[] typeDefinitions
 	contains resolving CustomEntity[] customEntities
-	contains resolving ProcessChain [] processChains
-	contains resolving Mode [] modes
+	contains resolving ProcessChain[] processChains
+	contains resolving Mode[] modes
 	contains resolving ModeLabel[] modeLabels
 }
 
@@ -2633,8 +2633,8 @@ class ProbabilitySwitchEntry extends BaseObject
  */
 class Counter extends BaseObject
 {
+	long prescaler="1"
 	long offset="0"
-	long prescaler="0"
 }
 
 /*

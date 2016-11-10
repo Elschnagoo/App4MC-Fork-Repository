@@ -55,8 +55,8 @@ public class CounterItemProvider extends BaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOffsetPropertyDescriptor(object);
 			addPrescalerPropertyDescriptor(object);
+			addOffsetPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -135,7 +135,7 @@ public class CounterItemProvider extends BaseObjectItemProvider {
 	@Override
 	public String getText(Object object) {
 		Counter counter = (Counter)object;
-		return getString("_UI_Counter_type") + " " + counter.getOffset();
+		return getString("_UI_Counter_type") + " " + counter.getPrescaler();
 	}
 	
 
@@ -151,8 +151,8 @@ public class CounterItemProvider extends BaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Counter.class)) {
-			case AmaltheaPackage.COUNTER__OFFSET:
 			case AmaltheaPackage.COUNTER__PRESCALER:
+			case AmaltheaPackage.COUNTER__OFFSET:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

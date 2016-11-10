@@ -214,7 +214,7 @@ The __Call Graph__ is used to define how a __Task__ or __ISR__ behaves during it
 
 !(#scale)../pictures/model_sw_task_callgraph.png!
 
-The __Call Graph__ contains a list of elements of type __GraphEntryBase__. This is the basic, abstract type for the __Switch__ types and for the __Call Sequence__. With the __Switches__ it is possible to define different execution paths. They can be used like __if-else__ or __switch-case__ statements in a programming language. There are two different kind of __Switches__, a __Label Switch__ and a __Probability Switch__. Each __Switch__ contains a number __Switch Entry__ objects. These are the different possible program paths that can be executed. Also like the __Call Graph__, the __Switch Entry__ can contain a list of objects that can be __Switches__ or __Call Sequences__. 
+The __Call Graph__ contains a list of elements of type __GraphEntryBase__. This is the basic, abstract type for the __Switch__ types and for the __Call Sequence__. With the __Switches__ it is possible to define different execution paths. They can be used like __if-else__ or __switch-case__ statements in a programming language. There are two different kind of __Switches__, a __Mode Switch__ and a __Probability Switch__. Each __Switch__ contains a number __Switch Entry__ objects. These are the different possible program paths that can be executed. Also like the __Call Graph__, the __Switch Entry__ can contain a list of objects that can be __Switches__ or __Call Sequences__. 
 
 h3. Probability Switch
 

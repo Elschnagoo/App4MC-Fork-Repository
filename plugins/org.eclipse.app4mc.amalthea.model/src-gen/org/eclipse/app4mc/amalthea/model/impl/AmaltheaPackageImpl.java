@@ -9335,7 +9335,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCounter_Offset() {
+	public EAttribute getCounter_Prescaler() {
 		return (EAttribute)counterEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -9344,7 +9344,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCounter_Prescaler() {
+	public EAttribute getCounter_Offset() {
 		return (EAttribute)counterEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -12256,8 +12256,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(probabilitySwitchEntryEClass, PROBABILITY_SWITCH_ENTRY__ITEMS);
 
 		counterEClass = createEClass(COUNTER);
-		createEAttribute(counterEClass, COUNTER__OFFSET);
 		createEAttribute(counterEClass, COUNTER__PRESCALER);
+		createEAttribute(counterEClass, COUNTER__OFFSET);
 
 		callSequenceItemEClass = createEClass(CALL_SEQUENCE_ITEM);
 		createEReference(callSequenceItemEClass, CALL_SEQUENCE_ITEM__COUNTER);
@@ -13955,8 +13955,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getProbabilitySwitchEntry_Items(), this.getGraphEntryBase(), null, "items", null, 0, -1, ProbabilitySwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(counterEClass, Counter.class, "Counter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCounter_Prescaler(), theEcorePackage.getELong(), "prescaler", "1", 0, 1, Counter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCounter_Offset(), theEcorePackage.getELong(), "offset", "0", 0, 1, Counter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCounter_Prescaler(), theEcorePackage.getELong(), "prescaler", "0", 0, 1, Counter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(callSequenceItemEClass, CallSequenceItem.class, "CallSequenceItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCallSequenceItem_Counter(), this.getCounter(), null, "counter", null, 0, 1, CallSequenceItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

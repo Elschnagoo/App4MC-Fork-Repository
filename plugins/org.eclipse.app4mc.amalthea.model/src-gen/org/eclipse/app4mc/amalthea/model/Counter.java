@@ -26,8 +26,8 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Counter#getOffset <em>Offset</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Counter#getPrescaler <em>Prescaler</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Counter#getOffset <em>Offset</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCounter()
@@ -35,6 +35,33 @@ package org.eclipse.app4mc.amalthea.model;
  * @generated
  */
 public interface Counter extends BaseObject {
+	/**
+	 * Returns the value of the '<em><b>Prescaler</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Prescaler</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Prescaler</em>' attribute.
+	 * @see #setPrescaler(long)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCounter_Prescaler()
+	 * @model default="1" unique="false"
+	 * @generated
+	 */
+	long getPrescaler();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Counter#getPrescaler <em>Prescaler</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Prescaler</em>' attribute.
+	 * @see #getPrescaler()
+	 * @generated
+	 */
+	void setPrescaler(long value);
+
 	/**
 	 * Returns the value of the '<em><b>Offset</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
@@ -61,32 +88,5 @@ public interface Counter extends BaseObject {
 	 * @generated
 	 */
 	void setOffset(long value);
-
-	/**
-	 * Returns the value of the '<em><b>Prescaler</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Prescaler</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Prescaler</em>' attribute.
-	 * @see #setPrescaler(long)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCounter_Prescaler()
-	 * @model default="0" unique="false"
-	 * @generated
-	 */
-	long getPrescaler();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Counter#getPrescaler <em>Prescaler</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Prescaler</em>' attribute.
-	 * @see #getPrescaler()
-	 * @generated
-	 */
-	void setPrescaler(long value);
 
 } // Counter

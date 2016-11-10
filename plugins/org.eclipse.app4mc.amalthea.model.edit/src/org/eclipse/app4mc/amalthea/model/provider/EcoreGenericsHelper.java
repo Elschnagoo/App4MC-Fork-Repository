@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EGenericType;
@@ -88,7 +90,7 @@ public class EcoreGenericsHelper {
 	}
 
 	/**
-	 * This Method corrects the child descriptors of an emf-generated item provider. It removes all child descriptors
+	 * Corrects the child descriptors of an emf-generated item provider. It removes all child descriptors
 	 * that are not allowed because of the restriction of a generic type.
 	 *
 	 * @param object
@@ -104,7 +106,7 @@ public class EcoreGenericsHelper {
 	}
 
 	/**
-	 * This Method corrects the child descriptors of an emf-generated item provider. It removes all child descriptors
+	 * Corrects the child descriptors of an emf-generated item provider. It removes all child descriptors
 	 * that are not allowed because of the restriction of a generic type.
 	 *
 	 * @param genericParameterMap
@@ -137,5 +139,44 @@ public class EcoreGenericsHelper {
 
 		newChildDescriptors.removeAll(childDescriptorsToRemove);
 	}
+	
+	
+	
+	/**
+	 * Collects the superset of child descriptors for the following objects:
+	 * ModeSwitchDefault, ModeSwitchEntry and ProbabilitySwitchEntry.
+	 * 
+	 * @param feature
+	 * @param newChildDescriptors
+	 */
+	public static void collectNewChildDescriptorsForSwitchEntry(Object feature, Collection<Object> newChildDescriptors) {
+		ArrayList<EObject> childObjects = new ArrayList<EObject>();
+		AmaltheaFactory factory = AmaltheaFactory.eINSTANCE;
+		
+		// see RunnableItemProvider
+		childObjects.add(factory.createGroup());
+		childObjects.add(factory.createInstructionsConstant());
+		childObjects.add(factory.createInstructionsDeviation());
+		childObjects.add(factory.createLabelAccess());
+		childObjects.add(factory.createModeLabelAccess());
+		childObjects.add(factory.createProbabilityGroup());
+		childObjects.add(factory.createRunnableCall());
+		childObjects.add(factory.createRunnableModeSwitch());
+		childObjects.add(factory.createSemaphoreAccess());
+		childObjects.add(factory.createSenderReceiverRead());
+		childObjects.add(factory.createSenderReceiverWrite());
+		childObjects.add(factory.createAsynchronousServerCall());
+		childObjects.add(factory.createSynchronousServerCall());
+
+		// see CallGraphItemProvider
+		childObjects.add(factory.createCallSequence());
+		childObjects.add(factory.createModeSwitch());
+		childObjects.add(factory.createProbabiltitySwitch());
+	
+		for (EObject child : childObjects) {
+			newChildDescriptors.add(new CommandParameter(null, feature, child));			
+		}
+	}
+
 
 }

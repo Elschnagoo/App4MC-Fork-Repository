@@ -29,13 +29,33 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CounterImpl#getOffset <em>Offset</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CounterImpl#getPrescaler <em>Prescaler</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CounterImpl#getOffset <em>Offset</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class CounterImpl extends BaseObjectImpl implements Counter {
+	/**
+	 * The default value of the '{@link #getPrescaler() <em>Prescaler</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPrescaler()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final long PRESCALER_EDEFAULT = 1L;
+
+	/**
+	 * The cached value of the '{@link #getPrescaler() <em>Prescaler</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPrescaler()
+	 * @generated
+	 * @ordered
+	 */
+	protected long prescaler = PRESCALER_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getOffset() <em>Offset</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -57,26 +77,6 @@ public class CounterImpl extends BaseObjectImpl implements Counter {
 	protected long offset = OFFSET_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPrescaler() <em>Prescaler</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPrescaler()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final long PRESCALER_EDEFAULT = 0L;
-
-	/**
-	 * The cached value of the '{@link #getPrescaler() <em>Prescaler</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPrescaler()
-	 * @generated
-	 * @ordered
-	 */
-	protected long prescaler = PRESCALER_EDEFAULT;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -93,27 +93,6 @@ public class CounterImpl extends BaseObjectImpl implements Counter {
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getCounter();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public long getOffset() {
-		return offset;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOffset(long newOffset) {
-		long oldOffset = offset;
-		offset = newOffset;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.COUNTER__OFFSET, oldOffset, offset));
 	}
 
 	/**
@@ -142,13 +121,34 @@ public class CounterImpl extends BaseObjectImpl implements Counter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public long getOffset() {
+		return offset;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOffset(long newOffset) {
+		long oldOffset = offset;
+		offset = newOffset;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.COUNTER__OFFSET, oldOffset, offset));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.COUNTER__OFFSET:
-				return getOffset();
 			case AmaltheaPackage.COUNTER__PRESCALER:
 				return getPrescaler();
+			case AmaltheaPackage.COUNTER__OFFSET:
+				return getOffset();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -161,11 +161,11 @@ public class CounterImpl extends BaseObjectImpl implements Counter {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.COUNTER__OFFSET:
-				setOffset((Long)newValue);
-				return;
 			case AmaltheaPackage.COUNTER__PRESCALER:
 				setPrescaler((Long)newValue);
+				return;
+			case AmaltheaPackage.COUNTER__OFFSET:
+				setOffset((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -179,11 +179,11 @@ public class CounterImpl extends BaseObjectImpl implements Counter {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.COUNTER__OFFSET:
-				setOffset(OFFSET_EDEFAULT);
-				return;
 			case AmaltheaPackage.COUNTER__PRESCALER:
 				setPrescaler(PRESCALER_EDEFAULT);
+				return;
+			case AmaltheaPackage.COUNTER__OFFSET:
+				setOffset(OFFSET_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -197,10 +197,10 @@ public class CounterImpl extends BaseObjectImpl implements Counter {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.COUNTER__OFFSET:
-				return offset != OFFSET_EDEFAULT;
 			case AmaltheaPackage.COUNTER__PRESCALER:
 				return prescaler != PRESCALER_EDEFAULT;
+			case AmaltheaPackage.COUNTER__OFFSET:
+				return offset != OFFSET_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -215,10 +215,10 @@ public class CounterImpl extends BaseObjectImpl implements Counter {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (offset: ");
-		result.append(offset);
-		result.append(", prescaler: ");
+		result.append(" (prescaler: ");
 		result.append(prescaler);
+		result.append(", offset: ");
+		result.append(offset);
 		result.append(')');
 		return result.toString();
 	}

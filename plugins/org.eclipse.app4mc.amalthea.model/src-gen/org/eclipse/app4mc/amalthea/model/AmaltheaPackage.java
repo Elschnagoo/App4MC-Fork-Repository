@@ -18380,22 +18380,22 @@ public interface AmaltheaPackage extends EPackage {
 	int COUNTER__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Offset</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COUNTER__OFFSET = BASE_OBJECT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Prescaler</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COUNTER__PRESCALER = BASE_OBJECT_FEATURE_COUNT + 1;
+	int COUNTER__PRESCALER = BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COUNTER__OFFSET = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Counter</em>' class.
@@ -30669,17 +30669,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getCounter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Counter#getOffset <em>Offset</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Offset</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Counter#getOffset()
-	 * @see #getCounter()
-	 * @generated
-	 */
-	EAttribute getCounter_Offset();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Counter#getPrescaler <em>Prescaler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -30689,6 +30678,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCounter_Prescaler();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Counter#getOffset <em>Offset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Offset</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Counter#getOffset()
+	 * @see #getCounter()
+	 * @generated
+	 */
+	EAttribute getCounter_Offset();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.CallSequenceItem <em>Call Sequence Item</em>}'.

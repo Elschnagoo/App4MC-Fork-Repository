@@ -1702,8 +1702,8 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/ProbabilitySwitchEntry" outputs="AmaltheaXMI.xsd#//ProbabilitySwitchEntry;XSDElementDeclaration=253"/>
     <nested inputs="amalthea.xcore#/EPackage/Counter" outputs="AmaltheaXMI.xsd#//Counter;XSDComplexTypeDefinition=254">
-      <nested inputs="amalthea.xcore#/EPackage/Counter/offset" outputs="AmaltheaXMI.xsd#//Counter;XSDComplexTypeDefinition=254/XSDAttributeUse"/>
-      <nested inputs="amalthea.xcore#/EPackage/Counter/prescaler" outputs="AmaltheaXMI.xsd#//Counter;XSDComplexTypeDefinition=254/XSDAttributeUse=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/Counter/prescaler" outputs="AmaltheaXMI.xsd#//Counter;XSDComplexTypeDefinition=254/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/Counter/offset" outputs="AmaltheaXMI.xsd#//Counter;XSDComplexTypeDefinition=254/XSDAttributeUse=1"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/Counter" outputs="AmaltheaXMI.xsd#//Counter;XSDElementDeclaration=254"/>
     <nested inputs="amalthea.xcore#/EPackage/CallSequenceItem" outputs="AmaltheaXMI.xsd#//CallSequenceItem;XSDComplexTypeDefinition=255">

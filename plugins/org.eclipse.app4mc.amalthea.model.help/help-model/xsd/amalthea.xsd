@@ -4510,8 +4510,8 @@ It describes a path of the switch and it's probability</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
-        <xsd:attribute name="offset" type="xsd:long"/>
         <xsd:attribute name="prescaler" type="xsd:long"/>
+        <xsd:attribute name="offset" type="xsd:long"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
