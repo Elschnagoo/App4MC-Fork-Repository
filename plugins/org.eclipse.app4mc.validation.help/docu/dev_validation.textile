@@ -10,7 +10,7 @@ A Sphinx validator optionally makes use of a Catalog. When a catalog is used, ea
 
 Following catalog is going to demonstrate the relationship between categories and constraint. 
 
-!(#gray)../pictures/validation/2015-06-19_sphinx_validation_catalog.png!
+!(gray)../pictures/validation/2015-06-19_sphinx_validation_catalog.png!
 
 Except for constraint __check 5__ each other constraint is assigned to at least one category. Constraints __check 4__ and __check 5__ are linked to multiple categories.
 

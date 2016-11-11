@@ -65,44 +65,44 @@ pre code {
 }
 
 
-/* styling of tables: #minimal, #classic */
+/* styling of tables: minimal, classic */
 
 td, th {
 	padding: 6px 6px 6px 6px;
 } 
 
 
-table#minimal td {
+table.minimal td {
 	border-top: solid black 1px;
 } 
 
 
-table#classic {
+table.classic {
 	border: solid black 1px;
 	border-collapse: collapse;
 }
 
-table#classic th, table#classic td {
+table.classic th, table.classic td {
 	border: solid black 1px;
 }
 
 
-/* borders and scaling (mainly used for images) */
+/* borders and scaling (used for images) */
 
-#gray {
+img.gray {
 	background: #dddddd;
 	padding: 5px;
 	margin: 10px;
 }
 
 
-#scale {
+img.scale {
 	max-width: 100%;
 	height: auto;
 }
 
 
-#gray_scale {
+img.gray_scale {
 	background: #dddddd;
 	padding: 5px;
 	margin: 10px;
@@ -112,15 +112,15 @@ table#classic th, table#classic td {
 }
 
 
-#shadow {
+img.shadow {
 	box-shadow: 0px 0px 5px 8px #ccc;
 	margin: 10px;
 }
 
 
-/* not applicable for img tags (because border=0 is added by default) */
+/* not applicable (because border=0 is added by default) */
 
-#dotted {
+img.dotted {
 	border-width: 2;
 	border-color: gray;
 	border-style: dotted;

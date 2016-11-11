@@ -7,7 +7,7 @@ h3. General information
 Modeling Example 2 describes a simple system consisting of 4 Tasks, which is running on a single core processor.
 The following figure shows the execution footprint in a Gantt chart:
 !../pictures/ExampleModeling/modeling_2_gantt.png!
-In the following sections, the individual parts of the AMLATHEA model for Modeling Example 2 are presented followed by a short description of its elements.
+In the following sections, the individual parts of the AMALTHEA model for Modeling Example 2 are presented followed by a short description of its elements.
 
 h3. Hardware Model
 
@@ -26,7 +26,7 @@ Since only a single core has to be managed, a single scheduler is modeled corres
 In addition to the scheduling algorithm used by the scheduler, in this case OSEK, a delay of 100 ns is set, which is the presumed time the scheduler needs for context switches.
 A comprehension of the modeled properties can be found in the following table:
 
-table(#classic){text-align:center; background:#f8f8f8}.
+table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Scheduler |_.Type|_.Algorithm|_.Delay|
 | *Scheduler_1* | SchedulingHwUnit | OSEK | 100 ns |
 
@@ -43,7 +43,7 @@ A comprehension of the modeled properties can be found in the following tables:
 
 h4. Executable Allocation
 
-table(#classic){text-align:center; background:#f8f8f8}.
+table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Scheduler|_.Process|
 | Scheduler_1 | Task_1 |
 | Scheduler_1 | Task_2 |
@@ -52,7 +52,7 @@ table(#classic){text-align:center; background:#f8f8f8}.
 
 h4. Core Allocation
 
-table(#classic){text-align:center; background:#f8f8f8}.
+table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Scheduler|_.Core|
 | Scheduler_1 | Core_1 |
 
@@ -70,7 +70,7 @@ In 70% of the cases the sequence 'Runnable_1_1', 'Runnable_1_2', 'Task_2', 'Runn
 As it can be seen, the call graph of 'Task_1' contains also interprocess activations, which activate other tasks.
 A comprehension of the modeled properties can be found in the following table:
 
-table(#classic){text-align:center; background:#f8f8f8}.
+table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Task|_.Priority|_.Preemption|_.MTA*|_.Deadline|_.Calls|
 |/8.*Task_1*|/8.10|/8.Preemptive|/8.3|/8.25 ms|<.1.1) Runnable_1_1|
 |<.1.2) Runnable_1_2|
@@ -97,7 +97,7 @@ Therefore, for each Runnable a number of instruction cycles is stated.
 The number of instruction cycles is thereby either constant or defined by a statistical distribution.
 A comprehension of the modeled properties can be found in the following table:
 
-table(#classic){text-align:center; background:#f8f8f8}.
+table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Runnable|_.Type|_.Instructions|
 |*Runnable_1_1*|Constant|1000000|
 |*Runnable_1_2*|Constant|2000000|
@@ -120,7 +120,7 @@ The stimulation model defines the activations of tasks.
 'Task_4' finally is activated sporadically following a Gauss distribution. 
 A comprehension of the modeled properties can be found in the following table:
 
-table(#classic){text-align:center; background:#f8f8f8}.
+table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Stimulus|_.Type|_.Parameters|
 |/2.*Stimulus_Task_1*|/2.Periodic|<.offset: 0 ms|
 |<.recurrence: 25 ms|

@@ -9,14 +9,14 @@ It holds the following types:
 * *System* ('systems' containment reference)
 * *Tag* ('tags' containment reference)
 
-!(#scale)../pictures/model_components.png!
+!(scale)../pictures/model_components.png!
 
 
 h2. Components Model Elements
 
 The elements of the Components Model inherit several capabilities from common elements.
 
-!(#scale)../pictures/model_components_common.png!
+!(scale)../pictures/model_components_common.png!
 
 Ports, Components, Composites and ComponentInstances are referable by unique names.
 A Connector also has a name but the name is optional and does not have to be unique.
@@ -25,7 +25,7 @@ h3. Component
 
 The 'Component' class represents a component. Components could be created directly within the 'ComponentModel' and are used as a type for a component instance.
 
-!(#scale)../pictures/model_components_component_references.png!
+!(scale)../pictures/model_components_component_references.png!
 
 It contains several ports of type 'Port'. A component refers the classes 'OsEvent', 'Label', 'Runnable' and 'AbstractProcess' from the software model and the class 'Semaphore' from the OS model.
 

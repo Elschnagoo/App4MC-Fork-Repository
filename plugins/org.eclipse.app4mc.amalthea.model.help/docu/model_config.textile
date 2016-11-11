@@ -25,5 +25,5 @@ The consumer of the configuration must then match and filter the relevant elemen
 
 The following screenshot is showing this minimal configuration.
 
-!(#gray)../pictures/model_config_sample.png!
+!(gray)../pictures/model_config_sample.png!
 

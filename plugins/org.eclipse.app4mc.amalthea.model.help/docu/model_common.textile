@@ -10,12 +10,12 @@ These elements can be referenced by any other element for specifying attributes 
 Time units are needed to describe different timing behavior and requirements, like deadlines or offsets of components.
 To support different time ranges, especially different time units, AMALTHEA predefines these types like seconds, milli-seconds, micro-seconds,  nano-seconds or pico-seconds.
 
-!(#scale)../pictures/model_common_time.png!
+!(scale)../pictures/model_common_time.png!
 
 
 h2. Frequency (and Frequency Unit)
 
-!(#scale)../pictures/model_common_frequency.png!
+!(scale)../pictures/model_common_frequency.png!
 
 
 h2. Data Size (and Data Size Unit)
@@ -30,7 +30,7 @@ The  __DataSize__ (and  __DataRate__) definition contains units and prefixes
  </tr>
  <tr>
  <td style="vertical-align:top; padding:15px"> 
-table(#classic). 
+table(classic). 
 | _*Name*_ | _*Prefix*_ | _*Factor*_ |
 | kilo | k | 10<sup>3</sup> |
 | mega | M | 10<sup>6</sup> |
@@ -39,7 +39,7 @@ table(#classic).
 | _peta_ | _P_ | _10<sup>15</sup>_ |
  </td>
  <td style="vertical-align:top; padding:15px"> 
-table(#classic). 
+table(classic). 
 | _*Name*_ | _*Prefix*_ | _*Factor*_ |
 | kibi | Ki | 2<sup>10</sup> |
 | mebi | Mi | 2<sup>20</sup> |
@@ -54,12 +54,12 @@ table(#classic).
 The __DataSize__ provides convenience methods to get the size also in bit and byte.
 It is internally converted and can be retrieved in both ways.
 
-!(#scale)../pictures/model_common_data_size.png! 
+!(scale)../pictures/model_common_data_size.png! 
 
 
 h2. Data Rate (and Data Rate Unit)
 
-!(#scale)../pictures/model_common_data_rate.png! 
+!(scale)../pictures/model_common_data_rate.png! 
 
 
 h2. Interfaces and base objects
@@ -67,7 +67,7 @@ h2. Interfaces and base objects
 Several interfaces and abstract classes are defined in the common model.
 They provide basic common functionality for all objects, which are extending it, like the possibility to add __CustomAttributes__ or __Tags__. Tags are available at different elements with the purpose to group them together or to annotate them.
 
-!(#scale)../pictures/model_common_interfaces_base_objects.png!
+!(scale)../pictures/model_common_interfaces_base_objects.png!
 
 
 h2(#CP). Custom Properties
@@ -77,7 +77,7 @@ The elements are stored in a __HashMap__. The values can be of different types a
 In addition a __ReferenceObject__ is available to store own references to other __EObject__ elements.
 The __ListObject__ can be used to store multi-valued custom properties.
 
-!(#scale)../pictures/model_common_custom_property_value.png!
+!(scale)../pictures/model_common_custom_property_value.png!
 
 
 h2. Deviation
@@ -87,7 +87,7 @@ There is a wide variety of possible use cases, where such a distribution is need
 With such a deviation for example, the variation in run times of functions or respectively their instructions can be imitated.  
 Therefore, AMALTHEA currently supports the following three statistical distributions:
 
-!(#scale)../pictures/model_common_deviation.png!
+!(scale)../pictures/model_common_deviation.png!
 
 h3. Uniform Distribution
 

@@ -18,7 +18,7 @@ The name of the project as well as the path to the software project have already
 
 *Step 3*
 
-!(#gray)../pictures/ExampleMapping/08-inspect.png!
+!(gray)../pictures/ExampleMapping/08-inspect.png!
 
 Once the mapping is performed, a new file will be generated in the "output" folder. Mapping and OS can be found in the file "AMALTHEA_Democar_MappingExample_withTasks_out.amxmi". To inspect this file, just double-click on it to open a content tree explorer.
 Additional information about the mapping is provided in the console.

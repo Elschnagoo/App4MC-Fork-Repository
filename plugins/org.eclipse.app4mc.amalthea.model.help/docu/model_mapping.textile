@@ -11,7 +11,7 @@ h2. Overview
 
 The Meta Model specifying the Mapping Model is shown below. 
 
-!(#scale)../pictures/model_mapping_overview.png!
+!(scale)../pictures/model_mapping_overview.png!
 
 h3. MappingModel
 

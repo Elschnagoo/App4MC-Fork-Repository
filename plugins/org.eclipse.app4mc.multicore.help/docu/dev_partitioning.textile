@@ -19,7 +19,7 @@ Alternatively, a workflow can be written (using the MWE2 eclipse workflow engine
 
 With regard to the partitioning configuration, the partitioning process will perform various model adaptations as shown in the following figure and described in the next sections.
 
-!(#scale)../pictures/Partitioning/psteps_small.png!
+!(scale)../pictures/Partitioning/psteps_small.png!
 
 
 h2. Prepartitioning
@@ -39,7 +39,7 @@ The label analysis comprises the comparison of read and write accesses of all ru
 h3. Cycle Elimination
 
 The cycle elimination is a mandatory step for all subsequent methods and features. Topological and graph theoretical calculations require __DAWG__s, such that a cycle elimination has to be performed in advance. A cycle may occur in case two runnables share the same resource (label) in both directions, i.e. both runnables read and write the same label, or in case runnable __A__ reads label __BA__ and writes label __AB__ and runnable __B__ reads label __AB__ and writes label __BA__. Furthermore, a cycle may be formed across multiple runnables. For the purpose of finding such cycles, the external __JgraphT__ library has been added to the project, that supports finding all of these cycles. After all cycles have been identified, a specific mechanism (configurable through 'Minimal dependency decompositions for cycle elimination' in the preference page) detects edges (dependencies), which occur in multiple cycles. This mechanism iterates over edges within multiple cycles in descending order, i.e. it starts with an edge, that occurs in most cycles for ensuring minimal edge elimination. In order to retain a dependency that has been selected for elimination, such selected edges are transformed from a @RunnableSequencingConstraint@ to an @AccessPrecedence@. After edge sharing cycles have been decomposed, all cycles that do not share any edges have to be decomposed as well. For each of these cycles an edge can be identified that provides an optimal retaining graph (configurable through 'Increase parallelization potential for cycle elimination result' in the preference page). The following figure shows 7 cycle elimination possibilities with an example graph.
-!(#scale)../pictures/Partitioning/cycle_small.png!
+!(scale)../pictures/Partitioning/cycle_small.png!
 Red transitions indicate edges, that are decomposed into @AccessPrecedences@ for the corresponding solution. Rretaining graphs are shown on the right side of each solution indicated by a dashed rectangle. For illustration purposes, we assume equal execution time for each runnable (letter). Solution 1 and 5 (green dashed rectangles) feature the minimal runtime for two tasks. This assessment is made with respect to topological graph structure respectively the __span__ of a graph (critical path) compared with its __parallelism__.
 
 
@@ -51,13 +51,13 @@ h3. Independent Graph Partitioning (GGP)
 
 The independent graph identification process, or also denoted as global graph partitioning, can be executed after the cycle elimination in case the user selected the corresponding entry in the configurations ('Create independent graph partitions'). This methodology looks for graphs or single nodes, that do not share any label with other runnables or complete graphs that do not share labels with other graphs. Such methodology allows forming tasks, which can be totally distributed to either different cores or even to totally different systems as seen in the following figure:
 
-!(#scale)../pictures/Partitioning/GGP_small.png!
+!(scale)../pictures/Partitioning/GGP_small.png!
 
 h3. Critical Path Partitioning (CPP)
 
 The __CPP__ approach considers node weights (i.e. arbitrary computation / execution cycles / instructions of @runnables@) and partitions __DAWG__s, whereas @runnables@ are equally distributed among an automatically determined number of partitions. The partitioning's objective is to reduce overall execution time and inter task communication. The subsequent mapping methodology further considers resource constraints (availability of hardware and software resources namely program and data memory). The system's critical path is assigned to the first partition and branches of the graph are subsequently assigned to additional partitions. The approach has been chosen, because the critical path features mandatory sequential ordering, that cannot be computed in parallel. Thus, the weight of a critical path provides a lower bound on the total time to perform all the jobs. A CPP example is shown in the following figure (left = input graph; right = partitioning result):
 
-!(#scale)../pictures/Partitioning/LGP_small.png!
+!(scale)../pictures/Partitioning/LGP_small.png!
 
 h3. Earliest Start Schedule Partitioning (ESSP)
 
@@ -67,7 +67,7 @@ h3. Partitioning Exmaple
 
 The following figure illustrates the resulting partitions of the previously described algorithms based on an example graph shown on the left. On the right, the partitioning results are shown for (top) - CPP, (middle) - ESSP configurated with 2 partitions and (bottom) - ESSP for 3 partitions.
 
-!(#scale)../pictures/Partitioning/partexample.png!
+!(scale)../pictures/Partitioning/partexample.png!
 
 
 h2. Further Features
@@ -78,7 +78,7 @@ h3. Applet Generation
 
 The applet generation can be triggered with a different command in the context menu via rightclicking on an __.amxmi__ file. In case the file contains a software model with __runnables__ and a constraints model with __RunnableSequencingConstraints__, a java file will be generated, that can be executed as an applet with the help of the __JgraphT__ library. Such an applet visualizes a graph and can be adapted in an applet viewer. The following figure shows such an applet.
 
-!(#scale)../pictures/Partitioning/applet_small.png!
+!(scale)../pictures/Partitioning/applet_small.png!
 
 h3. Dependency Alternative
 

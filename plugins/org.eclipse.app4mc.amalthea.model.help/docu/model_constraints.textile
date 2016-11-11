@@ -24,7 +24,7 @@ Depending on the metric unit, the following Limits can be specified
 * Percentage Requirement Limit for metrics like __OsOverheadRelative__
 * Time Requirement Limit for metrics like __ResponseTime__
 
-!(#scale)../pictures/model_constraints_requirements.png!
+!(scale)../pictures/model_constraints_requirements.png!
 
 An example for a requirement is the Deadline for a task. The Deadline is specified by an upper limit for the response time of the respective task.
 

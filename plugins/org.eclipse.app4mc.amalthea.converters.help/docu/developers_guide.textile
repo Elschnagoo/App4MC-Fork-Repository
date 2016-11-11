@@ -38,14 +38,14 @@ bq. All AMALTHEA/AMALTHEA4Public ITEA releases are specified with prefix *itea* 
 * Converter Class : Java class implementing @org.eclipse.app4mc.amalthea.converters.common.base.IConverter@ interface and providing the definition for method : @public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,	final List<ICache> caches) throws Exception@
 * enabled : By specifiying true/false - &gt; specific converter invocation can be enabled or disabled
 
-!(#gray_scale)../pictures/dev_guide/converters_content.png!
+!(gray_scale)../pictures/dev_guide/converters_content.png!
 
 * Converter dependencies : A Converter can be dependent on other Converter components. During the execution of a specific Converter component first its dependencies are invoked and then dependent converter is invoked.
 
 Converter dependencies can be specified at the extension level in the following way:
 
-!(#gray_scale)../pictures/dev_guide/converters_dependencies.png!
-!(#gray_scale)../pictures/dev_guide/converters_dependencies_details.png!
+!(gray_scale)../pictures/dev_guide/converters_dependencies.png!
+!(gray_scale)../pictures/dev_guide/converters_dependencies_details.png!
 
 
 *Cache Builders:* This component is responsible for building the required cache, by querying the input models or storing the necessary information - &gt; before executing the Converters for specific migration step (_e.g: itea.103 to itea.110_)
@@ -60,7 +60,7 @@ Cache Builder can be registered by adding extension definition for : @org.eclips
 * input-model-version : AMALTHEA model version in which the model content is present.
 bq. Each Cache Builder component is tightly coupled to a specific AMALTHEA model version 
 
-!(#gray_scale)../pictures/dev_guide/cache_builder.png!
+!(gray_scale)../pictures/dev_guide/cache_builder.png!
 
 *Pre Processor:* This component is responsible for fetching/modifying specific information before invocation of Cache Builders/Converters components.
 
@@ -73,7 +73,7 @@ Pre Processor component can be registered by adding extension definition for : @
 * input-model-version : AMALTHEA model version in which the model content can be present. There is a possibility to specify multiple input-model-version's, during the runtime if the supplied AMALTHEA models version matches to atleast one of the specified versions - &gt; then corresponding pre-processor is executed
 bq. Each Pre processor component is tightly coupled to the specified AMALTHEA model versions
 
-!(#gray_scale)../pictures/dev_guide/pre_processor.png! 
+!(gray_scale)../pictures/dev_guide/pre_processor.png! 
 
 *Post Processor:* This component is responsible for adding/modifying specific information after invocation of Cache Builders/Converters components for a specific migration step (_e.g: itea.103 to itea.110_)
 
@@ -86,7 +86,7 @@ Post Processor component can be registered by adding extension definition for : 
 * input-model-version : AMALTHEA model version in which the model content can be present. There is a possibility to specify multiple input-model-version's.
 * output-model-version : AMALTHEA model version to which the model content is converted as a part of one of the migration step. There is a possibility to specify multiple output-model-version's.
 
-!(#gray_scale)../pictures/dev_guide/post_processor.png!
+!(gray_scale)../pictures/dev_guide/post_processor.png!
 
 _Example how Post-Processor's are invoked:_
 
@@ -108,7 +108,7 @@ h3. Model migration sequence
 
 Sequence in which various components are invoked during model migration
 
-!(#gray_scale)../sequence_diagram/model_migration_sequence_diagram.png!
+!(gray_scale)../sequence_diagram/model_migration_sequence_diagram.png!
 
 h2. How to add custom Model Migration components
 
@@ -116,7 +116,7 @@ As described above, Model Migration framework is part of  _*org.eclipse.app4mc.a
 
 Below are the various extension points available as a part of Model Migration framework: 
 
-!(#gray_scale)../pictures/dev_guide/converters_extension_points.png!
+!(gray_scale)../pictures/dev_guide/converters_extension_points.png!
 
 For defining custom Model Migration, minimum requirement is to define a extension for @org.eclipse.app4mc.amalthea.model.converters@ extension point and specify the class which has the implementation for migrating the model contents.
 

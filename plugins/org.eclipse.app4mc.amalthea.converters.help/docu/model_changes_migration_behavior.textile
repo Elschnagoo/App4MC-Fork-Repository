@@ -9,7 +9,7 @@ Below are the changes in the metamodel from ITEA 1.1.0 version to ITEA 1.1.1
 
 * *Changes in the namespaces:* 
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_AMALTHEA Namespace (version ITEA 1.0.3)_* | *_AMALTHEA Namespace  (verison ITEA 1.1.0)_* |
 |http://www.amalthea.itea2.org/model/1.1.0/sw |http://www.amalthea.itea2.org/model/1.2.0/sw |
 |http://www.amalthea.itea2.org/model/1.1.0/stimuli |http://www.amalthea.itea2.org/model/1.2.0/stimuli|
@@ -26,20 +26,20 @@ table(#classic){margin-left:40px}.
 
 * *Following Class names are changed:*
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 |*Class name in 1.0.3*|*Changed Class name in 1.1.0*|*Amalthea sub-model*|
 |DeadlineMonotinic|DeadlineMonotonic |OS|
 
 * *Below are the references which are removed:*
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_Variable Name (version ITEA 1.0.3)_* |  *_Class containing Variable_* | *_AMALTHEA sub model_* | *_how migration is done from 1.0.3 models to 1.1.0_* |
 |scheduler|OSModel| OS model| <div>"scheduler" elements contained inside OSModel element are converted into TaskScheduler elements in the following way: <ul><li>OperatingSystem element is created and associated to the OSModel element _(Note: OperatingSystem class is newly introduced in 1.1.0)_</li><li>All the Scheduler elements present inside the OSModel element are moved to the OperatingSystem element as TaskScheduler's </li><li>All the places where Scheduler elements were referred earlier, are updated so as to refer corresponding TaskScheduler element</li></ul></div>|
 |read, write |LabelAccessStatistic| Software model| <div>"read" elements contained inside LabelAccessStatistic element are removed and "write" elements are replaced by tag name "value" based on the following criteria : <ul><li>If the LabelAccess element containing LabelAccessStatistic -&gt;contains the access as "write", then all the "read" elements of LabelAccessStatistic are removed </li> </ul><br/>"write" elements contained inside LabelAccessStatistic element are removed and "read" elements are replaced by tag name "value" based on the following criteria : <ul><li>If the LabelAccess element containing LabelAccessStatistic -&gt;contains the access as "read", then all the "write" elements of LabelAccessStatistic are removed </li> </ul></div>|
 
 * *Below are the changes in the reference names :*
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_Variable Name (version ITEA 1.0.3)_* | *_Changed Variable Name (version ITEA 1.1.0)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* | *_how migration is done from 1.0.3 models to 1.1.0_* |
 | readCacheMisses | cacheMisses | LabelAccessStatistic | Software model | "readCacheMisses" is changed to "cacheMisses" in all the places where LabelAccessStatistic definition is present |
 | executableAllocation | processAllocation, runnableAllocation | MappingModel | Mapping model | <div>Based on the content of the "executableAllocation", accordingly either "processAllocation" or "runnableAllocation" elements are created and the corresponding data of "exeuctableAllocation" is mapped. <br/> Below are the criterions  : <ul> <li>If "executableAllocation" consists of Task element and Scheduler mapping then - &gt; "ProcessAllocation" of type "mapping:TaskAllocation" is created</li><li>If "executableAllocation" consists of ISR element and Scheduler mapping then - &gt; "ProcessAllocation" of type "mapping:ISRAllocation" is created, and to it corresponding ISR element and "InterruptController" element are associated (_<b>Note:</b>If there is a mapping to "ISR" and "Scheduler" in "executableAllocation", InterruptController element is created and referred in the "executableAllocation". In this case previous mapping to the Scheduler element is lost_) </li><li>If "executableAllocation" consists of Runnable element and Scheduler mapping then - &gt; "RunnableAllocation" of type "mapping:RunnableAllocation" is created</li></ul></div> |
@@ -50,7 +50,7 @@ Below are the changes in the metamodel from ITEA 1.1.0 version to ITEA 1.1.1
 
 * *Changes in the namespaces:* 
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_AMALTHEA Namespace (version ITEA 1.1.0)_* | *_AMALTHEA Namespace  (version ITEA 1.1.1)_* |
 |http://www.amalthea.itea2.org/model/1.2.0/sw |http://www.amalthea.itea2.org/model/1.3.0/sw |
 |http://www.amalthea.itea2.org/model/1.2.0/stimuli |http://www.amalthea.itea2.org/model/1.3.0/stimuli|
@@ -68,7 +68,7 @@ table(#classic){margin-left:40px}.
 
 * *Below are the changes in the reference names :*
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_Variable Name (version ITEA 1.1.0)_* | *_Changed Variable Name (version ITEA 1.1.1)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* | *_how migration is done from 1.1.0 models to 1.1.1_* |
 | tagName | name | Tag | Software model, Components model | attribute "tagName" is changed to "name" in all the places where Tag definition is present |
 | elements | components, systems  | ComponentsModel | Components model | <div> <ol><li>XML child elements of ComponentsModel having name as "elements" and attribute "xsi:type" as either "components:Component" or "components:Composite" are changed to "components"</li><li> XML child elements of ComponentsModel having name as "elements" and attribute "xsi:type" as "components:System" are changed to "systems" </li></ol></div> |
@@ -80,14 +80,14 @@ table(#classic){margin-left:40px}.
 
 * *Below are the references which are removed:*
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_Variable Name (version ITEA 1.1.0)_* |  *_Class containing Variable_* | *_AMALTHEA sub model_* | *_how migration is done from 1.1.0 models to 1.1.1_* |
 |deadline|Task, ISR, ProcessPrototype| Software model| <div>"deadline" specified at the Process, ProcessPrototype is converted into a constraint element in the following way: <ul><li>with the name of corresponding Process/ProcessPrototype -&gt; ProcessRequirement object is created and the object of Process/ProcessPrototype is linked to it</li><li>TimeRequirement object is created with the following properties and associated to the created ProcessRequirement: <br/><ol><li>limitType as upperlimit</li><li>metric as responsetime</li><li>SignedTime elment is created with the following properties and associated to the TimeRequirement element : value and unit - &gt; values for these elements are fetched from the "deadline" object available at Process/ProcessPrototype</li></ol> </li> <li> once the required content from the "deadline" element of Process/ProcessPrototype is fetched, "deadline" is removed </li></ul></div>|
 |initialValue|Label|Software model|Initial value attribute is removed from all the Label objects|
 
 * *Below are the changes in the default values of Enums*  :
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_Enum Name_*| *_Default value (version ITEA 1.1.0)_* | *_Default value (version ITEA 1.1.1)_* | *_AMALTHEA sub model_* |*_Behaviour model migration to migrated 1.1.0 models to 1.1.1_* |
 | TimeUnit | ps | <notextile>_undefined_</notextile> | Common model |Attribute "unit" with value as "ps" is created (when it is missing in the input model) -> for all the XMI tags where TimeUnit defintion should be present   |
 | InterfaceKind | PROVIDES | <notextile>_undefined_</notextile> | Components model |Attribute "kind" with value as "PROVIDES" is created (when it is missing in the input model) -> for all the XMI tags where InterfaceKind defintion should be present   |
@@ -114,7 +114,7 @@ table(#classic){margin-left:40px}.
 
 * *Below are the Class's/Enum's moved to different sub models*  :
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_Enum/Class Name_*| *_Namespace (version ITEA 1.1.0)_* | *_Namespace (version ITEA 1.1.1)_* |*_Behaviour model migration to migrated 1.1.0 models to 1.1.1_* |
 | SchedulingSWUnit | sw | os |Attribute "xsi:type" of XML node of TaskScheduler/InterruptController is updated to "os:SchedulingSWUnit"   |
 
@@ -131,9 +131,9 @@ table(#classic){margin-left:40px}.
 * *Model migration behaviour*:
 ** *_LabelSwitch_* : <div><ul><li>From the referred "Label" element inside "LabelSwitch", "ModeLabel" element is created with the same name -> and associated to the same Software Model where "Label" element is defined</li><li>"LabelSwitch" element is replaced with "ModeSwitch" element, and it refers to the "ModelLabel" (created in the above step)</li></ul></div>
 ** *_LabelSwitchEntry_* : <div><ul><li>For all the LabelSwitchEntry objects inside a specific AMALTHEA model file, a single "Mode" element is created ( with the following naming convention :  "mode_sw_&lt;counter&gt;_migration_generated" )</li><li>Based on the unique values of LabelSwitchEntry elements, ModeLiteral objects are created</li><li> LabelSwitchEntry is replaced by ModeSwitchEntry, based on the earlier "value" specified for LabelSwitchEntry -&gt; corresponding ModeLiteral element is referred </li></ul></div>
-*** For details refer to the below figure: <br/><br/> !(#gray_scale)../pictures/labelswitch_migration.png! <br/><br/>
+*** For details refer to the below figure: <br/><br/> !(gray_scale)../pictures/labelswitch_migration.png! <br/><br/>
 ** *_LabelValueEntry_* :  <div><ul><li>For Label referred inside each LabelValueEntry, corresponding ModeLabel object is created in the software model and it is associated to the entry object.</li></ul></div><div><ul><li>For all the LabelValueEntry objects inside a specific AMALTHEA model file, a single "Mode" element is created ( with the following naming convention :  "mode_stimuli_&lt;counter&gt;_migration_generated" )</li><li>Based on the unique values of LabelValueEntry elements, ModeLiteral objects are created</li><li> LabelValueEntry is replaced by ModeValueListEntry, based on the "value" specified for LabelValueEntry -&gt; corresponding ModeLiteral element is referred instead of "value" </li></ul></div>  
-*** For details refer to the below figure: <br/><br/> !(#gray_scale)../pictures/labelvalueentry_stimuli_migration.png! <br/><br/>
+*** For details refer to the below figure: <br/><br/> !(gray_scale)../pictures/labelvalueentry_stimuli_migration.png! <br/><br/>
 
 
 h2. Version ITEA 1.1.1 to App4MC 0.7.0
@@ -156,7 +156,7 @@ Below are the changes in the metamodel from ITEA 1.1.1 version to APP4MC 0.7.0
 * InterfaceKind ENUM literal values are changed from PROVIDES, REQUIRES to provides, requires
 * Following class names are changed <br/><br/>  
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 |**Class name from 1.1.1** | **Changed Class name in 0.7.0** |
 | OSEvent | OsEvent |
 | MemType | MemoryType |
@@ -173,13 +173,13 @@ table(#classic){margin-left:40px}.
 *** *Impact on 0.7.0 model file due to this change:* Content inside the attribute and features is stored as a CustomProperty elements inside the corresponding elements. 
 **** Content of "AbstractType[] attribute" is stored in the CustomProperty, with key as "attribute#<attribute name>" and value as <attribute value>
 **** Content of "AbstractType[] features" is stored in the CustomProperty, with key as "feature#<feature name>" and value as <feature value>
-*** Below figure shows the changes between 1.1.1 model (_containing attributes & features_) and the corresponding 0.7.0 model (_created using model migration utility_)!(#gray_scale)../pictures/hwmodel_attributes_features.png! 
+*** Below figure shows the changes between 1.1.1 model (_containing attributes & features_) and the corresponding 0.7.0 model (_created using model migration utility_)!(gray_scale)../pictures/hwmodel_attributes_features.png! 
 * ProcessAllocation class removed from MappingModel, instead ISRAllocation (_maps ISR and InterruptController_)  and TaskAllocation (_maps Task and Scheduler_) 
 ** *Impact on 0.7.0 model file due to this change:* 
-*** processAllocation tag is removed from mappingModel, and instead of this taskAllocation and isrAllocation tags will be generated accordingly. <br/> For details refer to the image <br/> !(#gray_scale)../pictures/mappingmodel_processallocations.png!
+*** processAllocation tag is removed from mappingModel, and instead of this taskAllocation and isrAllocation tags will be generated accordingly. <br/> For details refer to the image <br/> !(gray_scale)../pictures/mappingmodel_processallocations.png!
 * Below are the changes in the reference names :
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_Variable Name (version ITEA 1.1.1)_* | *_Changed Variable Name (version APP4MC 0.7.0)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* |
 | isMaster | master | ComplexPort | Hardware model |
 | mem | memory | Mapping | Mapping model  |
@@ -197,7 +197,7 @@ Below are the changes in the metamodel from App4MC 0.7.0 to App4MC 0.7.1
 
 *Change in the namespace:* 
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_AMALTHEA Namespace (version App4MC 0.7.0)_* | *_AMALTHEA Namespace  (version App4MC 0.7.1)_* |
 |http://app4mc.eclipse.org/amalthea/0.7.0 |http://app4mc.eclipse.org/amalthea/0.7.1 |
 
@@ -225,7 +225,7 @@ bc.  <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi=
  
 *Below are the changes in the reference names:*
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_Variable Name (version APP4MC 0.7.0)_* | *_Changed Variable Name (version APP4MC 0.7.1)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
 | graphEntries | items | ModeSwitchEntry | SW Model | xml tag "graphEntries" present inside "ModeSwitchEntry" object is changed to "items" in amxmi file|
 | value | values | ModeSwitchEntry | SW Model | xml tag "value" present inside "ModeSwitchEntry" object is changed to "values" in amxmi file |
@@ -234,7 +234,7 @@ table(#classic){margin-left:40px}.
  
 *Below are the changes in the reference Types:*
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_Variable Name_* | *_Variable Type (version APP4MC 0.7.0)_* | *_Variable Type (version APP4MC 0.7.1)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
 | size | Long | DataSize |MemoryType |HW Model, PropertyConstraintsModel |Attribute "size" is migrated as "DataSize" object. Long value of "size" is migrated to "value" of DataSize. As the DataSizeUnit info is not available, "unit" value is not set |
 | size | DataUnit | DataSize | AbstractElementMemoryInformation  | SW Model|"size" of type "DataUnit" is migrated as "DataSize" object. Int value of "numberBits" attribute is migrated to "value" of DataSize, "unit" attribute is set as "bit" of type DataSizeUnit|
@@ -244,7 +244,7 @@ table(#classic){margin-left:40px}.
 
 *Below references are removed:*
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_Variable Name_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
 | size | DataUnit | Section  |SW Model |Content is removed from the model as size can't be specified for "Section" (considered as virtual memory section) |
 | labels | [0-*] Label | Section  |SW Model |Content is removed from the model. As per APP4MC 0.7.1 semantics, Label object has the association to the Section inside which it can be allocated|
@@ -255,14 +255,14 @@ table(#classic){margin-left:40px}.
 
 *Below Classes are removed:*
 
-table(#classic){margin-left:40px}. 
+table(classic){margin-left:40px}. 
 | *_Class Name_* | *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
 |SchedulerPairingConstraint|Constraints Model|Content is removed from the model. There is no equivalent of this model element in APP4MC 0.7.1|
 |SchedulerSeparationConstraint|Constraints Model|Content is removed from the model. There is no equivalent  of this model element in APP4MC 0.7.1|
 |ProcessRunnableGroupEntry|Constraints Model|This element is removed from the model, but the Runnables associated to it are associated to ProcessRunnableGroup object|
 |OrderConstraint|Constraints Model|Content is removed from the model. There is no equivalent of this model element in APP4MC 0.7.1|
-|AgeConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as “Age” |
-|ReactionConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as “Reaction”|
+|AgeConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as ï¿½Ageï¿½ |
+|ReactionConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as ï¿½Reactionï¿½|
 |SynchronisationConstraint|Constraints model|Content is migrated as EventSynchronizationConstraint element|
 |SectionMapping|Mapping Model|Content is removed from the model. As per 0.7.1, there is a possibility to specify PhysicalSectionMapping element i.e. defining mapping of various Section elements to Memory|
 |SectionMappingConstraint|Property Constraints Model|Content is removed from the model.As per 0.7.1, there is a possibility to specify PhysicalSectionConstraint element i.e. defining possibility of Section allocation across various Memories |

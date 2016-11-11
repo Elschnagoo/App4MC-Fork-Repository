@@ -26,7 +26,7 @@ Since a dual core processor has to be managed, two schedulers are modeled corres
 In addition to the scheduling algorithm used by the scheduler, in this case OSEK, a delay of 100 ns is set, which is the presumed time the scheduler needs for context switches.
 A comprehension of the modeled properties can be found in the following table:
 
-table(#classic){text-align:center; background:#f8f8f8}.
+table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Scheduler|_.Type|_.Algorithm|_.Delay|
 | *Scheduler_1* | SchedulingHWUnit | OSEK | 100 ns |
 | *Scheduler_2* | SchedulingHWUnit | OSEK | 100 ns |
@@ -45,7 +45,7 @@ A comprehension of the modeled properties can be found in the following tables:
 
 h4. Executable Allocation
 
-table(#classic){text-align:center; background:#f8f8f8}.
+table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Scheduler|_.Process|
 | Scheduler_1 | Task_1 |
 | Scheduler_1 | Task_2 |
@@ -54,7 +54,7 @@ table(#classic){text-align:center; background:#f8f8f8}.
 
 h4. Core Allocation
 
-table(#classic){text-align:center; background:#f8f8f8}.
+table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Scheduler|_.Core|
 | Scheduler_1 | Core_1 |
 | Scheduler_2 | Core_2 |
@@ -70,7 +70,7 @@ Each task is preemptive and has a priority assigned according its deadline, mean
 Each task also calls a definitive number of Runnables in a sequential order.
 A comprehension of the modeled properties can be found in the following table:
 
-table(#classic){text-align:center; background:#f8f8f8}.
+table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Task|_.Priority|_.Preemption|_.MTA*|_.Deadline|_.Calls|
 |*Task_1*|4|Preemptive|1|75 ms| 1) Runnable_1_1|
 |/2.*Task_2*|/2.3|/2.Preemptive|/2.1|/2.115 ms| 1) Runnable_2_1|
@@ -95,7 +95,7 @@ The only function of those in this example is to consume processing resources.
 Therefore, for each Runnable a constant number of instruction cycles is stated.
 A comprehension of the modeled properties can be found in the following table:
 
-table(#classic){text-align:center; background:#f8f8f8}.
+table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Runnable|_.InstructionCycles|
 | Runnable_1_1 | 1500000 |
 | Runnable_2_1 | 1500000 |
@@ -116,7 +116,7 @@ The stimulation model defines the activations of tasks.
 Since the four tasks of Modeling Example 1 are activated periodically, four stimuli according their recurrence are modeled.
 A comprehension of the modeled properties can be found in the following table:
 
-table(#classic){text-align:center; background:#f8f8f8}.
+table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Stimulus|_.Type|_.Offset|_.Recurrence|
 | Stimulus_Task_1 | Periodic | 0 ms | 180 ms |
 | Stimulus_Task_2 | Periodic | 0 ms | 200 ms |

@@ -27,6 +27,6 @@ Model migration utility migrates the specified model sequentially to the next ve
 
 Below figure represents the steps involved in the migration of model from ITEA2 1.0.3 version to APP4MC 0.7.0 version:
 
-!(#scale)../pictures/migration_flow.png!
+!(scale)../pictures/migration_flow.png!
 
 

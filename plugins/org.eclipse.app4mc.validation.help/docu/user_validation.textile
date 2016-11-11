@@ -5,15 +5,15 @@ h2. Usage of Check-based Validation
 
 The AMALTHEA validation can be triggered by right clicking a model element in the left Model Explorer View and choose in the context menu Validate - Check-based Validation.
 
-!(#gray)../pictures/validation/2015-06-18_1_sphinx_validation_trigger_command.png!
+!(gray)../pictures/validation/2015-06-18_1_sphinx_validation_trigger_command.png!
 
 All AMALTHEA sub elements of the chosen element are then included for the validation. In the next window the catalog appears allowing the selection of specific validation checks based on your selected model. Button "Select All" will select all listed validation checks for execution. Each entry of the catalog is called __Category__ which may contain several validation checks (i.e. constraints). The simplest way is to define a 1:1 relationship between category and constraint.
 
-!(#gray)../pictures/validation/2015-06-18_2_sphinx_validation_catalog.png!
+!(gray)../pictures/validation/2015-06-18_2_sphinx_validation_catalog.png!
 
 If an error is found, it is shown in the Problems view of Eclipse. A simple double click on the error will lead you to the affected elements in the AMALTHEA model. Sphinx validation distinguishes between three error types: __errors__, __warnings__ and __info__.
 
-!(#gray)../pictures/validation/2015-06-18_3_sphinx_validation_results.png!
+!(gray)../pictures/validation/2015-06-18_3_sphinx_validation_results.png!
 
 
 h2. Available Validations

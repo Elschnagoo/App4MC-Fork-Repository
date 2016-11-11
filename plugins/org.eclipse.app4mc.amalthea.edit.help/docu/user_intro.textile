@@ -45,31 +45,31 @@ h2. AMALTHEA Editor
 The AMALTHEA Editor shows either the entire model that contains sub models or one of the sub models.
 The next screenshot shows the "New Child" menu with all its possibilities.  
 
-!(#gray)../pictures/user_editor_with_central_model.png!
+!(gray)../pictures/user_editor_with_central_model.png!
 
 In addition the AMALTHEA Editor has two commands available at the top right of the Editor.
 
-!(#gray)../pictures/user_guide_editor_commands.png!
+!(gray)../pictures/user_guide_editor_commands.png!
 
 h3. Show types of model elements
 
 The Show types of elements button triggers the editor to show the direct type of the element in the tree editor using [element_type]. The following screenshot shows the toggle and the types marked with an underline.
 
-!(#gray)../pictures/user_guide_editor_showtypes.png!
+!(gray)../pictures/user_guide_editor_showtypes.png!
 
 h3. Search for model elements
 
 The editor provides the possibility to filter model elements by using the available name attribute. This can be used for example to filter all elements in the model which has abs in their name. The search and result view is using the Eclipse search as result view.
 
-!(#gray)../pictures/user_guide_editor_search_input.png!
+!(gray)../pictures/user_guide_editor_search_input.png!
 
 The search result is using the Eclipse Search View.
 
-!(#gray)../pictures/user_guide_editor_search_result1.png!
+!(gray)../pictures/user_guide_editor_search_result1.png!
 
 An additional option is to toggle the search results to group them by type as shown in the next screenshot.
 
-!(#gray)../pictures/user_guide_editor_search_result2.png!
+!(gray)../pictures/user_guide_editor_search_result2.png!
 
 
 h2. AMALTHEA Examples

@@ -3,12 +3,12 @@ h1. Event Model
 
 The event model provides the classes to describe the BTF-Events that can be used for the tracing configuration, for the modeling of event chains and for some timing constraints. 
 
-!(#scale)../pictures/model_events.png!
+!(scale)../pictures/model_events.png!
 
 
 There are different event classes for the different entity types that can be traced: 
 
-table(#classic). 
+table(classic). 
 |_. Entity |_. Event Class |
 | Process (Task, ISR) | ProcessEvent |
 | Stimulus | StimulusEvent |

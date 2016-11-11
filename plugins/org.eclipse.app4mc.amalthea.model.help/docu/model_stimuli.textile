@@ -3,7 +3,7 @@ h1. Stimuli Model
 
 The Stimuli Model contains stimulus and clock objects.
 
-!(#scale)../pictures/model_stimuli.png!
+!(scale)../pictures/model_stimuli.png!
 
 A stimulus is responsible to activate processes. The following different types are available:
 * *ArrivalCurve*: A list of time-borders in which a specified number of events are expected
@@ -23,7 +23,7 @@ The following figure shows a stimulus example. First there is a periodic stimulu
 
 Beside of the deviation, a periodic stimulus can have a clock. A clock is a time base which describes the progress of time for one or more periodic stimuli in relation to global time. If two equal stimuli have a different time base, the time of task activation can be different. There are different kind of clock functions, the clock sinus function, the clock triangle function and the clock multiplier list. The clock multiplier list is a list of timestamp-multiplier value pairs. Is a specified timestamp arrived, the clock changes to the corresponding multiplier value.
 
-!(#scale)../pictures/model_stimuli_clocks.png!
+!(scale)../pictures/model_stimuli_clocks.png!
 
 It is possible to define lists of mode label values for a stimulus. An entry in this list is always a pair of a mode label and a mode literal. One of this lists is the set-mode-labels-list. Each time the stimulus is triggered all mode labels in this list are set to the corresponding value. 
 The enabling-mode-label-list and the disabling-mode-label-list can be used to enable or disable a stimulus by setting the mode label to a specific value (e.g. by a write access with a runnable).
@@ -31,7 +31,7 @@ The enabling-mode-label-list and the disabling-mode-label-list can be used to en
 * If there are entries in the enabling-mode-label-list, the stimuli is disabled if no one of these mode labels has the defined value.  
 * If there are entries in both lists, the stimulus is disabled when at least one label of the disabling-mode-label-list has the defined value or if all labels in the enabling-mode-label-list are different to their defined value. If no one of the disabling-mode-label-list fits its value but at least one of the enabling-mode-label-list, then the stimulus is enabled. 
 
-!(#scale)../pictures/model_stimuli_modevaluelist.png!
+!(scale)../pictures/model_stimuli_modevaluelist.png!
 
 
 h2. Arrival Curves

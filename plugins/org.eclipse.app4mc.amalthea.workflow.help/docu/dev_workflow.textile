@@ -152,7 +152,7 @@ EASE opens an own Eclipse console by default to show the output of the executed 
 
 The following overview gives an overview about the available helper methods:
 
-table(#minimal). 
+table(minimal). 
 |_. Method |_. Params |_. Description |
 | addLoggerToConsole | String loggerName | Adds a Log4J logger to the output of the current used output of the EASE script engine. |
 | addLoggerToConsole | String loggerName, String pattern | Adds a Log4J logger to the output of the current used output of the EASE script engine with a given pattern, see @org.apache.log4j.PatternLayout@ for more details |
@@ -231,7 +231,7 @@ h2. Current Limitations / Open Points
 
 As there are two options available (Basic Java/EASE and MWE2 based) for running a workflow, there are currently also some limitations existent. The following table should help you to chose the right base:
 
-table(#classic). 
+table(classic). 
 |_.Use Case  |_. Supported in MWE2 |_.Supported in EASE |_.Reason |
 |Loading of AMALTHEA model files (with cross document references) using workflow/script file |{text-align:center;color:red}. *no* |{text-align:center;color:green}. *yes* | <ul><li> *MWE2*: Separate Java runtime is started by MWE2, Sphinx relies in running Eclipse instance </li><li> *EASE*: Makes use of the runtime from runtime workbench</li></ul> |
 |Using workflow components which are available in the runtime (i.e. workflow component classes which are already available in plugins as a part of the runtime product)|{text-align:center;color:green}. *yes* |{text-align:center;color:green}. *yes* | <ul><li> *MWE2*: Separate runtime is started by MWE2 and if plugin (containing workflow component) is added as dependency then its classes are loaded </li><li> *EASE*: Makes use of the runtime from runtime workbench and has access to all classes </li></ul> |

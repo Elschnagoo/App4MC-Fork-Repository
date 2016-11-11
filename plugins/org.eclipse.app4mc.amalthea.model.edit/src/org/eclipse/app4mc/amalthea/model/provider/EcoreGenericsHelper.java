@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EGenericType;
@@ -32,7 +31,7 @@ public class EcoreGenericsHelper {
 
 	/**
 	 * Finds the EClassifier objects for the generic parameters of the class of 'object', depending on the position of
-	 * 'object' in the model. This function only checks the parent elements of the emf tree to find the expected
+	 * 'object' in the model. This function only checks the parent elements of the EMF tree to find the expected
 	 * EClassifier for a generic parameter. So references to the object (that are not containment reference) with
 	 * generic parameters are ignored.
 	 *
@@ -63,7 +62,7 @@ public class EcoreGenericsHelper {
 					for (int i = 0; i < size; i++) {
 						// local class generic type parameter
 						final ETypeParameter typeParameter = typeParameters.get(i);
-						// type of parent featuer
+						// type of parent feature
 						final EGenericType type = genericTypeArguments.get(i);
 						EClassifier typeClassifier = type.getEClassifier();
 
@@ -90,7 +89,7 @@ public class EcoreGenericsHelper {
 	}
 
 	/**
-	 * Corrects the child descriptors of an emf-generated item provider. It removes all child descriptors
+	 * Corrects the child descriptors of an EMF-generated item provider. It removes all child descriptors
 	 * that are not allowed because of the restriction of a generic type.
 	 *
 	 * @param object
@@ -106,7 +105,7 @@ public class EcoreGenericsHelper {
 	}
 
 	/**
-	 * Corrects the child descriptors of an emf-generated item provider. It removes all child descriptors
+	 * Corrects the child descriptors of an EMF-generated item provider. It removes all child descriptors
 	 * that are not allowed because of the restriction of a generic type.
 	 *
 	 * @param genericParameterMap
