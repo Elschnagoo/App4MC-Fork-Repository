@@ -10,6 +10,7 @@ import org.junit.runners.Suite.SuiteClasses;
 		ConstraintsModelValidatorTests.class,
 		HWModelValidatorTests.class,
 		MappingModelValidatorTests.class,
+		OSModelValidatorTests.class,
 		StimuliModelValidatorTests.class,
 		SWModelValidatorTests.class })
 public class AllTests {

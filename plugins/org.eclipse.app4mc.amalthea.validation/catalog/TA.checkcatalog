@@ -18,7 +18,7 @@
 <constraints
     id="DeviationConstraint"
     label="Deviation"
-    description="Checks if all parameters of Deviation are valid"
+    description="Checks if all parameters of a Deviation object are valid"
     severity="Error"
     message="A parameter of the Deviation object is invalid!"
     categories="TAConstraint"/>
@@ -102,6 +102,23 @@
     message="The Quartz reference of Prescaler is invalid!"
     categories="TAConstraint"/>
 <!--end HW Model -->
+
+<!--start OS Model -->
+<constraints
+    id="SemaphoreConstraint"
+    label="Semaphore"
+    description="Checks if all parameters of a Semaphore object are valid"
+    severity="Error"
+    message="A parameter of the Semaphore object is invalid!"
+    categories="TAConstraint"/>
+ <constraints
+    id="SemaphoreReferenceConstraint"
+    label="SemaphoreReference"
+    description="Checks if all references to Semaphore objects are valid"
+    severity="Error"
+    message="A reference to a Semaphore object is invalid!"
+    categories="TAConstraint"/>
+<!--end OS Model -->
 
 <!--start STIMULI Model -->
 <constraints
