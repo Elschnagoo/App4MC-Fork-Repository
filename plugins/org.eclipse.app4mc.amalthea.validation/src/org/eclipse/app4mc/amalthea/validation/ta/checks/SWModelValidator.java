@@ -94,5 +94,10 @@ public class SWModelValidator extends AbstractCheckValidator implements IssueCre
 	public void checkServerCallServerRunnable(final Amalthea amalthea) {
 		this.softwareModelValidatorImpl.checkServerCallServerRunnable(amalthea);
 	}
+	
+	@Check(constraint = "EnforcedMigrationResourceOwnerConstraint", categories = { "TAConstraint" })
+	public void checkEnforcedMigrationResourceOwner(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkEnforcedMigrationResourceOwner(amalthea);
+	}
 
 }

@@ -18,6 +18,7 @@ import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
+import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.Mode;
@@ -25,6 +26,8 @@ import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
+import org.eclipse.app4mc.amalthea.model.OSModel;
+import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
@@ -33,6 +36,7 @@ import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
 import org.eclipse.app4mc.amalthea.validation.ta.checks.SWModelValidator;
@@ -1267,6 +1271,138 @@ public class SWModelValidatorTests {
 
 		// test
 		this.classUnderTest.checkServerCallServerRunnable(amalthea);
+
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkEnforcedMigrationResourceOwner(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkEnforcedMigrationResourceOwner_Null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Task task = AmaltheaFactory.eINSTANCE.createTask();
+		final CallGraph callGraph = AmaltheaFactory.eINSTANCE.createCallGraph();
+		final CallSequence callSequence = AmaltheaFactory.eINSTANCE.createCallSequence();
+		final EnforcedMigration enforcedMigration = AmaltheaFactory.eINSTANCE.createEnforcedMigration();
+
+		enforcedMigration.setResourceOwner(null);
+		callSequence.getCalls().add(enforcedMigration);
+		callGraph.getGraphEntries().add(callSequence);
+		task.setCallGraph(callGraph);
+		swModel.getTasks().add(task);
+		amalthea.setSwModel(swModel);
+
+		this.issueCreator.issue(enforcedMigration, AmaltheaPackage.eINSTANCE.getEnforcedMigration_ResourceOwner());
+
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkEnforcedMigrationResourceOwner(amalthea);
+
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkEnforcedMigrationResourceOwner(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkEnforcedMigrationResourceOwner_Unset() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Task task = AmaltheaFactory.eINSTANCE.createTask();
+		final CallGraph callGraph = AmaltheaFactory.eINSTANCE.createCallGraph();
+		final CallSequence callSequence = AmaltheaFactory.eINSTANCE.createCallSequence();
+		final EnforcedMigration enforcedMigration = AmaltheaFactory.eINSTANCE.createEnforcedMigration();
+
+		callSequence.getCalls().add(enforcedMigration);
+		callGraph.getGraphEntries().add(callSequence);
+		task.setCallGraph(callGraph);
+		swModel.getTasks().add(task);
+		amalthea.setSwModel(swModel);
+
+		this.issueCreator.issue(enforcedMigration, AmaltheaPackage.eINSTANCE.getEnforcedMigration_ResourceOwner());
+
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkEnforcedMigrationResourceOwner(amalthea);
+
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkEnforcedMigrationResourceOwner(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkEnforcedMigrationResourceOwner_Invalid() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Task task = AmaltheaFactory.eINSTANCE.createTask();
+		final CallGraph callGraph = AmaltheaFactory.eINSTANCE.createCallGraph();
+		final CallSequence callSequence = AmaltheaFactory.eINSTANCE.createCallSequence();
+		final EnforcedMigration enforcedMigration = AmaltheaFactory.eINSTANCE.createEnforcedMigration();
+		final TaskScheduler taskScheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
+
+		enforcedMigration.setResourceOwner(taskScheduler);
+		callSequence.getCalls().add(enforcedMigration);
+		callGraph.getGraphEntries().add(callSequence);
+		task.setCallGraph(callGraph);
+		swModel.getTasks().add(task);
+		amalthea.setSwModel(swModel);
+
+		this.issueCreator.issue(enforcedMigration, AmaltheaPackage.eINSTANCE.getEnforcedMigration_ResourceOwner());
+
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkEnforcedMigrationResourceOwner(amalthea);
+
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkEnforcedMigrationResourceOwner(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkEnforcedMigrationResourceOwner_Valid() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final OSModel osModel = AmaltheaFactory.eINSTANCE.createOSModel();
+		final OperatingSystem os = AmaltheaFactory.eINSTANCE.createOperatingSystem();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Task task = AmaltheaFactory.eINSTANCE.createTask();
+		final CallGraph callGraph = AmaltheaFactory.eINSTANCE.createCallGraph();
+		final CallSequence callSequence = AmaltheaFactory.eINSTANCE.createCallSequence();
+		final EnforcedMigration enforcedMigration = AmaltheaFactory.eINSTANCE.createEnforcedMigration();
+		final TaskScheduler taskScheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
+
+		os.getTaskSchedulers().add(taskScheduler);
+		osModel.getOperatingSystems().add(os);
+		amalthea.setOsModel(osModel);
+		
+		enforcedMigration.setResourceOwner(taskScheduler);
+		callSequence.getCalls().add(enforcedMigration);
+		callGraph.getGraphEntries().add(callSequence);
+		task.setCallGraph(callGraph);
+		swModel.getTasks().add(task);
+		amalthea.setSwModel(swModel);
+
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkEnforcedMigrationResourceOwner(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);

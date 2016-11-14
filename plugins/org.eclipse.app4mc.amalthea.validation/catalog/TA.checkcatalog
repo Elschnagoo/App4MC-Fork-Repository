@@ -211,7 +211,14 @@
     description="Checks if the ServerRunnable reference of ModeValueProvider is valid"
     severity="Error"
     message="The ServerRunnable reference of ServerCall is invalid!"
-    categories="TAConstraint"/>  
+    categories="TAConstraint"/>
+<constraints
+    id="EnforcedMigrationResourceOwnerConstraint"
+    label="EnforcedMigration ResourceOwner"
+    description="Checks if the ResourceOwner reference of EnforcedMigration is valid"
+    severity="Error"
+    message="The ResourceOwner reference of EnforcedMigration is invalid!"
+    categories="TAConstraint"/>
 <!--end SW Model --> 
 
 <!--start MAPPING Model -->

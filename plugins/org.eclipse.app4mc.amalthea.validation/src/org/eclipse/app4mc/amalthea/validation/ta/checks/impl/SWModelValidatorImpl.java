@@ -18,6 +18,7 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
+import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.Mode;
@@ -26,14 +27,17 @@ import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
+import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.SWModel;
+import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.AbstractValidatorImpl;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;
@@ -522,6 +526,42 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 						}
 					}
 				}
+			}
+		}
+	}
+	
+	
+	/*
+	 * Checks the ResourceOwner reference of {@link EnforcedMigration}. The reference must be set and reference an existing TaskScheduler.
+	 * If this is not the case, it will be handled as an error.
+	 */
+	public void checkEnforcedMigrationResourceOwner(final Amalthea amalthea) {
+		final Set<EnforcedMigration> enforcedMigrations = new HashSet<>();
+		OperatingSystem os = null;
+		
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof EnforcedMigration) {
+				final EnforcedMigration enforcedMigration = (EnforcedMigration) elem;
+				enforcedMigrations.add(enforcedMigration);
+			} else if (elem instanceof OperatingSystem) {
+				os = (OperatingSystem) elem;
+			}
+		}
+		
+		for (final EnforcedMigration enforcedMigration : enforcedMigrations) {
+			boolean found = false;
+			Scheduler scheduler = enforcedMigration.getResourceOwner();
+			if(null != os) {
+				for(TaskScheduler taskScheduler : os.getTaskSchedulers()) {
+					if(taskScheduler.equals(scheduler)) {
+						found = true;
+					}
+				}
+			}
+			if(false == found) {
+				this.issueCreator.issue(enforcedMigration, AmaltheaPackage.eINSTANCE.getEnforcedMigration_ResourceOwner());
 			}
 		}
 	}
