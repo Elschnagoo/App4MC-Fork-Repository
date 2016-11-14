@@ -43,6 +43,11 @@ public class AmaltheaModelValidator extends AbstractCheckValidator implements Is
 	public void checkUniformDistribution(final Amalthea amalthea) {
 		this.amaltheaModelValidatorImpl.checkUniformDistribution(amalthea);
 	}
+	
+	@Check(constraint = "BetaDistributionConstraint", categories = { "TAConstraint" })
+	public void checkBetaDistribution(final Amalthea amalthea) {
+		this.amaltheaModelValidatorImpl.checkBetaDistribution(amalthea);
+	}
 
 	@Check(constraint = "GaussDistributionConstraint", categories = { "TAConstraint" })
 	public void checkGaussDistribution(final Amalthea amalthea) {

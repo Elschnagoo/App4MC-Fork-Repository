@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
@@ -161,6 +162,35 @@ public class AmaltheaModelValidatorImpl extends AbstractValidatorImpl {
 							this.issueCreator.issue(deviation, AmaltheaPackage.eINSTANCE.getDeviation_LowerBound());
 							this.issueCreator.issue(deviation, AmaltheaPackage.eINSTANCE.getDeviation_UpperBound());
 						}
+					}
+				}
+			}
+		}
+	}
+	
+	/*
+	 * Checks the parameters of {@link BetaDistribution}.
+	 * The parameters alpha and beta of BetaDeviation must be set and both must be larger than zero.
+	 * If this is not the case, it will be handled as an error.
+	 */
+	public void checkBetaDistribution(final Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof Deviation<?>) {
+				final Deviation<?> deviation = (Deviation<?>) elem;
+				final Distribution<?> distribution = deviation.getDistribution();
+				if (null != distribution) {
+					if (distribution instanceof BetaDistribution<?>) {
+						double alpha = ((BetaDistribution<?>) distribution).getAlpha();
+						if(false == (0 < alpha)) {
+							this.issueCreator.issue(distribution, AmaltheaPackage.eINSTANCE.getBetaDistribution_Alpha());
+						}
+						double beta = ((BetaDistribution<?>) distribution).getBeta();
+						if(false == (0 < beta)) {
+							this.issueCreator.issue(distribution, AmaltheaPackage.eINSTANCE.getBetaDistribution_Beta());
+						}		
 					}
 				}
 			}

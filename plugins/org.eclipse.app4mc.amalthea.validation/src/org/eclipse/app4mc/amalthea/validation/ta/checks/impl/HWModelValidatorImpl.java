@@ -56,8 +56,15 @@ public class HWModelValidatorImpl extends AbstractValidatorImpl {
 			if (elem instanceof Quartz) {
 				Quartz quartz = (Quartz) elem;
 				Frequency frequency = quartz.getFrequency(); 
-				if((0 >= frequency.getValue()) && (FrequencyUnit._UNDEFINED__VALUE != frequency.getUnit().getValue())) {
-					this.issueCreator.issue(quartz, AmaltheaPackage.eINSTANCE.getQuartz_Frequency(), frequency);
+				if(null == frequency) {
+					this.issueCreator.issue(quartz, AmaltheaPackage.eINSTANCE.getQuartz_Frequency());
+				} else {
+					if(false == (0 < frequency.getValue())) {
+						this.issueCreator.issue(quartz, AmaltheaPackage.eINSTANCE.getQuartz_Frequency());	
+					}
+					if(FrequencyUnit._UNDEFINED_ == frequency.getUnit()) {
+						this.issueCreator.issue(quartz, AmaltheaPackage.eINSTANCE.getQuartz_Frequency());	
+					}
 				}
 			}
 		}

@@ -6,6 +6,7 @@
 
 package org.eclipse.app4mc.amalthea.validation.ta.checks.impl;
 
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,6 +17,7 @@ import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.DataSize;
+import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.Mode;
@@ -51,7 +53,7 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 	}
 
 	/*
-	 * Checks the parameter frequency of {@link Quartz}. The parameter must not be set to zero or lower.
+	 * Checks the parameter size of {@link Label}. The parameter must not be set to zero or lower.
 	 * If this is the case, it will be handled as an error.
 	 */
 	public void checkLabelSize(final Amalthea amalthea) {
@@ -64,9 +66,21 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 				final Label label = (Label) elem;
 				final DataSize size = label.getSize();
 				if (null != size) {
-					final long value = size.getNumberBits();
-					if (0 >= value) {
-						this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size(), value);
+					BigInteger value = size.getValue();
+					if(null == value) {
+						this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+					} else {
+						if( false == (0 < value.compareTo(BigInteger.ZERO))) {
+							this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+						}
+					}
+					DataSizeUnit unit = size.getUnit();
+					if(null == unit) {
+						this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+					} else {
+						if(DataSizeUnit._UNDEFINED_ == unit) {
+							this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+						}
 					}
 				}
 			}

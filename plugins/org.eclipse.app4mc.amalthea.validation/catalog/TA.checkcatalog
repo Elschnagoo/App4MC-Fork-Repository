@@ -30,6 +30,13 @@
     message="A parameter of the UniformDistribution object is invalid!"
     categories="TAConstraint"/>
 <constraints
+    id="BetaDistributionConstraint"
+    label="BetaDistribution"
+    description="Checks if all parameters of BetaDistribution are valid"
+    severity="Error"
+    message="A parameter of the BetaDistribution object is invalid!"
+    categories="TAConstraint"/>
+<constraints
     id="GaussDistributionConstraint"
     label="GaussDistribution"
     description="Checks if all parameters of GaussDistribution are valid"
