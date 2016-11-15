@@ -141,7 +141,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <features>
       <feature id="org.eclipse.app4mc.platform.3rdparty"/>
-      <feature id="org.eclipse.app4mc.platform"/>
+      <feature id="org.eclipse.app4mc.platform.sdk"/>
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.cdt"/>
       <feature id="org.eclipse.cdt.autotools"/>
@@ -247,6 +247,14 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="4" />
    </configurations>
+
+   <repositories>
+      <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/" enabled="true" />
+      <repository location="http://download.eclipse.org/eclipse/updates/4.5" enabled="true" />
+      <repository location="http://download.eclipse.org/releases/mars" enabled="true" />
+      <repository location="http://updates.yakindu.org/mars/releases" enabled="false" />
+      <repository location="http://updates.yakindu.org/sct/mars/releases/" enabled="false" />
+   </repositories>
 
    <preferencesInfo>
       <targetfile overwrite="false"/>
