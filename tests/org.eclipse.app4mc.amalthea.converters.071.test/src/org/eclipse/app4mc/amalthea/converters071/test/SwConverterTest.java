@@ -41,7 +41,7 @@ public class SwConverterTest extends AbstractConverterTest {
 		final String[] inputFiles_Section = new String[] { "/sw/AMALTHEA_Democar.amxmi" };
 
 		final String[] inputFiles_ModeSwitch = new String[] { "/sw/modeswitch/modeswitch.amxmi",
-				"/sw/modeswitch/modeliterals.amxmi" };
+				"/sw/modeswitch/modeliterals.amxmi", "/sw/modeswitch/modeswtich_isrs.amxmi" };
 
 		return Arrays.asList(new Object[][] { { "Sections : 1", true, inputFiles_Section },
 				{ "ModeSwitchEntry_Scenario : 2", true, inputFiles_ModeSwitch } });
@@ -81,7 +81,7 @@ public class SwConverterTest extends AbstractConverterTest {
 			if (xpathResult.size() > 0) {
 
 				final List<Attribute> xpathResult2 = this.helper.getXpathResult(xpathResult.get(0),
-						"./ancestor::tasks[1]/@name", Attribute.class);
+						"./ancestor::tasks[1]/@name|./ancestor::isrs[1]/@name", Attribute.class);
 
 
 				Assert.assertTrue(

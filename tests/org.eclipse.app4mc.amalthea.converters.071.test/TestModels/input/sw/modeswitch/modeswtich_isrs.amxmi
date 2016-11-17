@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <swModel>
+    <isrs name="ISR-8.1.3">
+      <callGraph>
+        <graphEntries xsi:type="am:ModeSwitch">
+          <entries value="no-name/Model-Literal?type=ModeLiteral">
+            <graphEntries xsi:type="am:CallSequence" />
+          </entries>
+        </graphEntries>
+      </callGraph>
+    </isrs>
+    <tasks name="Task-8.1.2" />
+    <tasks name="Task-8.1.3">
+      <callGraph>
+        <graphEntries xsi:type="am:ModeSwitch">
+          <defaultEntry />
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <runnables name="Runnable-1">
+      <customProperties key="element-size">
+        <value xsi:type="am:IntegerObject" />
+      </customProperties>
+    </runnables>
+    <runnables name="Runnable-8.1">
+      <section href="amlt:/#Section-8.1?type=Section" />
+    </runnables>
+    <runnables name="Runnable-8.1.2" />
+    <labels name="label-7-1">
+      <size value="100" unit="bit" />
+    </labels>
+    <labels name="Label-8.1">
+      <section href="amlt:/#Section-8.1?type=Section" />
+    </labels>
+    <sections name="Section-8.1" />
+    <activations xsi:type="am:PeriodicActivation" name="Periodic-activation-1" />
+    <events name="OS-Event-14" />
+    <typeDefinitions xsi:type="am:BaseTypeDefinition">
+      <size value="100" unit="bit" />
+    </typeDefinitions>
+    <modes>
+      <literals name="Model-Literal" />
+    </modes>
+  </swModel>
+   
+</am:Amalthea>
