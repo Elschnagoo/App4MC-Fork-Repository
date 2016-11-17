@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2015 Robert Bosch GmbH and others.
+ *  Copyright (c) 2016 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -11,14 +11,14 @@
 
 package org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended;
 
-import org.eclipse.app4mc.amalthea.model.provider.ProbabilityGroupItemProvider;
+import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.provider.RunnableModeSwitchItemProvider;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.app4mc.amalthea.model.Runnable;
 
-public class ExtendedProbabilityGroupItemProvider extends ProbabilityGroupItemProvider {
+public class ExtendedRunnableModeSwitchItemProvider extends RunnableModeSwitchItemProvider {
 
-	public ExtendedProbabilityGroupItemProvider(final AdapterFactory adapterFactory) {
+	public ExtendedRunnableModeSwitchItemProvider(final AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 

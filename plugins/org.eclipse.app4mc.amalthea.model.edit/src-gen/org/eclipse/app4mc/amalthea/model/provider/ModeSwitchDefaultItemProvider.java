@@ -1279,12 +1279,7 @@ public class ModeSwitchDefaultItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getModeSwitchDefault_Items(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getModeSwitchDefault_Items(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityRunnableItem()));
+				 AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter

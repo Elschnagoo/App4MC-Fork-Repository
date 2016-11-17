@@ -37,7 +37,7 @@ import org.eclipse.emf.common.util.EList;
 public interface ProbabiltitySwitch extends GraphEntryBase {
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry}&lt;org.eclipse.app4mc.amalthea.model.GraphEntryBase>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Entries</em>' containment reference list isn't clear,
@@ -49,6 +49,6 @@ public interface ProbabiltitySwitch extends GraphEntryBase {
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList<ProbabilitySwitchEntry> getEntries();
+	EList<ProbabilitySwitchEntry<GraphEntryBase>> getEntries();
 
 } // ProbabiltitySwitch

@@ -256,7 +256,7 @@ public class GroupItemProvider extends RunnableItemItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
+				 AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter

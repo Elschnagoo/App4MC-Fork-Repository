@@ -4492,7 +4492,7 @@ It describes a path of the switch and it's probability</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="items" type="am:GraphEntryBase"/>
+          <xsd:element name="items" type="ecore:EObject"/>
         </xsd:choice>
         <xsd:attribute name="probability" type="xsd:double"/>
       </xsd:extension>
@@ -5160,39 +5160,21 @@ It refers to a optional runnable that exploits the results produced by the serve
 It refers to a optional runnable that exploits the results produced by the server</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="ProbabilityGroup">
+  <xsd:complexType name="RunnableProbabilitySwitch">
     <xsd:annotation>
-      <xsd:documentation>Describes a group of runnable items with a probability</xsd:documentation>
+      <xsd:documentation>A switch in the runnable items, each path has a probability</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="items" type="am:ProbabilityRunnableItem"/>
+          <xsd:element name="entries" type="am:ProbabilitySwitchEntry"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ProbabilityGroup" type="am:ProbabilityGroup">
+  <xsd:element name="RunnableProbabilitySwitch" type="am:RunnableProbabilitySwitch">
     <xsd:annotation>
-      <xsd:documentation>Describes a group of runnable items with a probability</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="ProbabilityRunnableItem">
-    <xsd:annotation>
-      <xsd:documentation>A runnable item with a probability</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="runnableItem" type="am:RunnableItem"/>
-        </xsd:choice>
-        <xsd:attribute name="probability" type="xsd:int"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ProbabilityRunnableItem" type="am:ProbabilityRunnableItem">
-    <xsd:annotation>
-      <xsd:documentation>A runnable item with a probability</xsd:documentation>
+      <xsd:documentation>A switch in the runnable items, each path has a probability</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="Group">

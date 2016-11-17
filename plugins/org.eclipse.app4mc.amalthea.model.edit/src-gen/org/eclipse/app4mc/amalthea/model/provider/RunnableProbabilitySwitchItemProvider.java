@@ -18,7 +18,7 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ProbabilityGroup;
+import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -29,19 +29,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ProbabilityGroup} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ProbabilityGroupItemProvider extends RunnableItemItemProvider {
+public class RunnableProbabilitySwitchItemProvider extends RunnableItemItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProbabilityGroupItemProvider(AdapterFactory adapterFactory) {
+	public RunnableProbabilitySwitchItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -72,7 +72,7 @@ public class ProbabilityGroupItemProvider extends RunnableItemItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getProbabilityGroup_Items());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnableProbabilitySwitch_Entries());
 		}
 		return childrenFeatures;
 	}
@@ -91,14 +91,14 @@ public class ProbabilityGroupItemProvider extends RunnableItemItemProvider {
 	}
 
 	/**
-	 * This returns ProbabilityGroup.gif.
+	 * This returns RunnableProbabilitySwitch.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProbabilityGroup"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/RunnableProbabilitySwitch"));
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class ProbabilityGroupItemProvider extends RunnableItemItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ProbabilityGroup_type");
+		return getString("_UI_RunnableProbabilitySwitch_type");
 	}
 	
 
@@ -134,8 +134,8 @@ public class ProbabilityGroupItemProvider extends RunnableItemItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ProbabilityGroup.class)) {
-			case AmaltheaPackage.PROBABILITY_GROUP__ITEMS:
+		switch (notification.getFeatureID(RunnableProbabilitySwitch.class)) {
+			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH__ENTRIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -155,8 +155,8 @@ public class ProbabilityGroupItemProvider extends RunnableItemItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getProbabilityGroup_Items(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityRunnableItem()));
+				(AmaltheaPackage.eINSTANCE.getRunnableProbabilitySwitch_Entries(),
+				 AmaltheaFactory.eINSTANCE.createProbabilitySwitchEntry()));
 	}
 
 }

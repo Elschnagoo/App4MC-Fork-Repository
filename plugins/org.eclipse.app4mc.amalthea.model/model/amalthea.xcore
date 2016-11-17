@@ -509,6 +509,7 @@ class BetaDistribution<T> extends Distribution<T>{
 	double alpha="0.0"
 	double beta="0.0"
 }
+
 interface NumericStatistic
 {
 }
@@ -2615,17 +2616,17 @@ class ModeSwitchDefault<T> extends BaseObject
  */
 class ProbabiltitySwitch extends GraphEntryBase
 {
-	contains resolving ProbabilitySwitchEntry[] entries
+	contains resolving ProbabilitySwitchEntry<GraphEntryBase>[] entries
 }
 
 /*
  * A switch entry for a ProbabiltitySwitch
  * It describes a path of the switch and it's probability
  */
-class ProbabilitySwitchEntry extends BaseObject
+class ProbabilitySwitchEntry<T> extends BaseObject
 {
 	double probability="0.0"
-	contains resolving GraphEntryBase[] items
+	contains resolving T[] items
 }
 
 /*
@@ -3111,20 +3112,11 @@ class AsynchronousServerCall extends ServerCall
 }
 
 /*
- * Describes a group of runnable items with a probability
+ * A switch in the runnable items, each path has a probability
  */
-class ProbabilityGroup extends RunnableItem
+class RunnableProbabilitySwitch extends RunnableItem
 {
-	contains resolving ProbabilityRunnableItem[] items
-}
-
-/*
- * A runnable item with a probability
- */
-class ProbabilityRunnableItem extends BaseObject
-{
-	int probability="0"
-	contains resolving RunnableItem runnableItem
+	contains resolving ProbabilitySwitchEntry<RunnableItem>[] entries
 }
 
 /*

@@ -199,8 +199,6 @@ import org.eclipse.app4mc.amalthea.model.Preemption;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
-import org.eclipse.app4mc.amalthea.model.ProbabilityGroup;
-import org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint;
@@ -235,6 +233,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableEventType;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
+import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
@@ -577,8 +576,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.SENDER_RECEIVER_WRITE: return createSenderReceiverWrite();
 			case AmaltheaPackage.SYNCHRONOUS_SERVER_CALL: return createSynchronousServerCall();
 			case AmaltheaPackage.ASYNCHRONOUS_SERVER_CALL: return createAsynchronousServerCall();
-			case AmaltheaPackage.PROBABILITY_GROUP: return createProbabilityGroup();
-			case AmaltheaPackage.PROBABILITY_RUNNABLE_ITEM: return createProbabilityRunnableItem();
+			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH: return createRunnableProbabilitySwitch();
 			case AmaltheaPackage.GROUP: return createGroup();
 			case AmaltheaPackage.RUNNABLE_CALL: return createRunnableCall();
 			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: return createInstructionsDeviation();
@@ -2732,8 +2730,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProbabilitySwitchEntry createProbabilitySwitchEntry() {
-		ProbabilitySwitchEntryImpl probabilitySwitchEntry = new ProbabilitySwitchEntryImpl();
+	public <T> ProbabilitySwitchEntry<T> createProbabilitySwitchEntry() {
+		ProbabilitySwitchEntryImpl<T> probabilitySwitchEntry = new ProbabilitySwitchEntryImpl<T>();
 		return probabilitySwitchEntry;
 	}
 
@@ -3032,19 +3030,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProbabilityGroup createProbabilityGroup() {
-		ProbabilityGroupImpl probabilityGroup = new ProbabilityGroupImpl();
-		return probabilityGroup;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ProbabilityRunnableItem createProbabilityRunnableItem() {
-		ProbabilityRunnableItemImpl probabilityRunnableItem = new ProbabilityRunnableItemImpl();
-		return probabilityRunnableItem;
+	public RunnableProbabilitySwitch createRunnableProbabilitySwitch() {
+		RunnableProbabilitySwitchImpl runnableProbabilitySwitch = new RunnableProbabilitySwitchImpl();
+		return runnableProbabilitySwitch;
 	}
 
 	/**

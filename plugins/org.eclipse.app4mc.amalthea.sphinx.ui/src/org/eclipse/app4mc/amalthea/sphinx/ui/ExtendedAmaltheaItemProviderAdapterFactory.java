@@ -26,15 +26,17 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedInstructionsCon
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedInstructionsDeviationItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedLabelAccessItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedLabelItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeLabelAccessItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeLabelItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedOsEventItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedPeriodicActivationItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedProbabilityGroupItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedProcessChainItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedProcessPrototypeItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableCallItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableModeSwitchItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableProbabilitySwitchItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSectionItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSemaphoreAccessItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSenderReceiverReadItemProvider;
@@ -49,74 +51,13 @@ import org.eclipse.emf.common.notify.Adapter;
 public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProviderAdapterFactory {
 
 	@Override
-	public Adapter createSWModelAdapter() {
-		return new ExtendedSWModelItemProvider(this);
+	public Adapter createAsynchronousServerCallAdapter() {
+		return new ExtendedAsynchronousServerCallItemProvider(this);
 	}
 
 	@Override
-	public Adapter createRunnableAdapter() {
-		return new ExtendedRunnableItemProvider(this);
-	}
-
-	@Override
-	public Adapter createLabelAdapter() {
-		return new ExtendedLabelItemProvider(this);
-	}
-
-	@Override
-	public Adapter createModeLabelAdapter() {
-		return new ExtendedModeLabelItemProvider(this);
-	}
-
-	@Override
-	public Adapter createTaskAdapter() {
-		return new ExtendedTaskItemProvider(this);
-	}
-
-	// @Override
-	@Override
-	public Adapter createTagAdapter() {
-		return new ExtendedTagItemProvider(this);
-	}
-
-	@Override
-	public Adapter createOsEventAdapter() {
-		return new ExtendedOsEventItemProvider(this);
-	}
-
-	@Override
-	public Adapter createSectionAdapter() {
-		return new ExtendedSectionItemProvider(this);
-	}
-
-	@Override
-	public Adapter createProcessPrototypeAdapter() {
-		return new ExtendedProcessPrototypeItemProvider(this);
-	}
-
-	@Override
-	public Adapter createProcessChainAdapter() {
-		return new ExtendedProcessChainItemProvider(this);
-	}
-
-	@Override
-	public Adapter createISRAdapter() {
-		return new ExtendedISRItemProvider(this);
-	}
-
-	@Override
-	public Adapter createPeriodicActivationAdapter() {
-		return new ExtendedPeriodicActivationItemProvider(this);
-	}
-
-	@Override
-	public Adapter createSporadicActivationAdapter() {
-		return new ExtendedSporadicActivationItemProvider(this);
-	}
-
-	@Override
-	public Adapter createSingleActivationAdapter() {
-		return new ExtendedSingleActivationItemProvider(this);
+	public Adapter createBaseTypeDefinitionAdapter() {
+		return new ExtendedBaseTypeDefinitionItemProvider(this);
 	}
 
 	@Override
@@ -135,13 +76,8 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	}
 
 	@Override
-	public Adapter createBaseTypeDefinitionAdapter() {
-		return new ExtendedBaseTypeDefinitionItemProvider(this);
-	}
-
-	@Override
-	public Adapter createAsynchronousServerCallAdapter() {
-		return new ExtendedAsynchronousServerCallItemProvider(this);
+	public Adapter createGroupAdapter() {
+		return new ExtendedGroupItemProvider(this);
 	}
 
 	@Override
@@ -155,8 +91,8 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	}
 
 	@Override
-	public Adapter createGroupAdapter() {
-		return new ExtendedGroupItemProvider(this);
+	public Adapter createISRAdapter() {
+		return new ExtendedISRItemProvider(this);
 	}
 
 	@Override
@@ -165,18 +101,68 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	}
 
 	@Override
+	public Adapter createLabelAdapter() {
+		return new ExtendedLabelItemProvider(this);
+	}
+
+	@Override
+	public Adapter createModeAdapter() {
+		return new ExtendedModeItemProvider(this);
+	}
+
+	@Override
 	public Adapter createModeLabelAccessAdapter() {
 		return new ExtendedModeLabelAccessItemProvider(this);
 	}
 
 	@Override
-	public Adapter createProbabilityGroupAdapter() {
-		return new ExtendedProbabilityGroupItemProvider(this);
+	public Adapter createModeLabelAdapter() {
+		return new ExtendedModeLabelItemProvider(this);
+	}
+
+	@Override
+	public Adapter createOsEventAdapter() {
+		return new ExtendedOsEventItemProvider(this);
+	}
+
+	@Override
+	public Adapter createPeriodicActivationAdapter() {
+		return new ExtendedPeriodicActivationItemProvider(this);
+	}
+
+	@Override
+	public Adapter createProcessChainAdapter() {
+		return new ExtendedProcessChainItemProvider(this);
+	}
+
+	@Override
+	public Adapter createProcessPrototypeAdapter() {
+		return new ExtendedProcessPrototypeItemProvider(this);
+	}
+
+	@Override
+	public Adapter createRunnableAdapter() {
+		return new ExtendedRunnableItemProvider(this);
 	}
 
 	@Override
 	public Adapter createRunnableCallAdapter() {
 		return new ExtendedRunnableCallItemProvider(this);
+	}
+
+	@Override
+	public Adapter createRunnableModeSwitchAdapter() {
+		return new ExtendedRunnableModeSwitchItemProvider(this);
+	}
+
+	@Override
+	public Adapter createRunnableProbabilitySwitchAdapter() {
+		return new ExtendedRunnableProbabilitySwitchItemProvider(this);
+	}
+
+	@Override
+	public Adapter createSectionAdapter() {
+		return new ExtendedSectionItemProvider(this);
 	}
 
 	@Override
@@ -195,7 +181,33 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	}
 
 	@Override
+	public Adapter createSingleActivationAdapter() {
+		return new ExtendedSingleActivationItemProvider(this);
+	}
+
+	@Override
+	public Adapter createSporadicActivationAdapter() {
+		return new ExtendedSporadicActivationItemProvider(this);
+	}
+
+	@Override
+	public Adapter createSWModelAdapter() {
+		return new ExtendedSWModelItemProvider(this);
+	}
+
+	@Override
 	public Adapter createSynchronousServerCallAdapter() {
 		return new ExtendedSynchronousServerCallItemProvider(this);
+	}
+
+	// @Override
+	@Override
+	public Adapter createTagAdapter() {
+		return new ExtendedTagItemProvider(this);
+	}
+
+	@Override
+	public Adapter createTaskAdapter() {
+		return new ExtendedTaskItemProvider(this);
 	}
 }

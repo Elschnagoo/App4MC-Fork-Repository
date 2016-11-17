@@ -217,8 +217,6 @@ import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
-import org.eclipse.app4mc.amalthea.model.ProbabilityGroup;
-import org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint;
@@ -259,6 +257,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
+import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
@@ -1402,7 +1401,7 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createProbabiltitySwitchAdapter();
 			}
 			@Override
-			public Adapter caseProbabilitySwitchEntry(ProbabilitySwitchEntry object) {
+			public <T> Adapter caseProbabilitySwitchEntry(ProbabilitySwitchEntry<T> object) {
 				return createProbabilitySwitchEntryAdapter();
 			}
 			@Override
@@ -1542,12 +1541,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createAsynchronousServerCallAdapter();
 			}
 			@Override
-			public Adapter caseProbabilityGroup(ProbabilityGroup object) {
-				return createProbabilityGroupAdapter();
-			}
-			@Override
-			public Adapter caseProbabilityRunnableItem(ProbabilityRunnableItem object) {
-				return createProbabilityRunnableItemAdapter();
+			public Adapter caseRunnableProbabilitySwitch(RunnableProbabilitySwitch object) {
+				return createRunnableProbabilitySwitchAdapter();
 			}
 			@Override
 			public Adapter caseGroup(Group object) {
@@ -5698,30 +5693,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ProbabilityGroup <em>Probability Group</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch <em>Runnable Probability Switch</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ProbabilityGroup
+	 * @see org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch
 	 * @generated
 	 */
-	public Adapter createProbabilityGroupAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem <em>Probability Runnable Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem
-	 * @generated
-	 */
-	public Adapter createProbabilityRunnableItemAdapter() {
+	public Adapter createRunnableProbabilitySwitchAdapter() {
 		return null;
 	}
 

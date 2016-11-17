@@ -158,9 +158,9 @@ public class EcoreGenericsHelper {
 		childObjects.add(factory.createInstructionsDeviation());
 		childObjects.add(factory.createLabelAccess());
 		childObjects.add(factory.createModeLabelAccess());
-		childObjects.add(factory.createProbabilityGroup());
 		childObjects.add(factory.createRunnableCall());
 		childObjects.add(factory.createRunnableModeSwitch());
+		childObjects.add(factory.createRunnableProbabilitySwitch());
 		childObjects.add(factory.createSemaphoreAccess());
 		childObjects.add(factory.createSenderReceiverRead());
 		childObjects.add(factory.createSenderReceiverWrite());

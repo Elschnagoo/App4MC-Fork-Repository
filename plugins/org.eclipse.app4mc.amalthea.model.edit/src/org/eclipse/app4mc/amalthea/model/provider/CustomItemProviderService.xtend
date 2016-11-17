@@ -84,8 +84,6 @@ import org.eclipse.app4mc.amalthea.model.PercentageMetric
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping
-import org.eclipse.app4mc.amalthea.model.ProbabilityGroup
-import org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint
 import org.eclipse.app4mc.amalthea.model.ProcessChainRequirement
 import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint
@@ -98,6 +96,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint
 import org.eclipse.app4mc.amalthea.model.RunnableCall
 import org.eclipse.app4mc.amalthea.model.RunnableItem
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch
+import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement
 import org.eclipse.app4mc.amalthea.model.RunnableScope
 import org.eclipse.app4mc.amalthea.model.SamplingType
@@ -1240,7 +1239,7 @@ class CustomItemProviderService {
 			return defaultText
 		}
 
-// TODO: use ProviderUtil()
+// TODO: use label text of referred element
 
 //			final AccessPathRef element = (AccessPathRef) object;
 //			if (null != element.getRef()) {
@@ -1262,7 +1261,7 @@ class CustomItemProviderService {
 			return defaultText
 		}
 
-// TODO: use ProviderUtil()
+// TODO: use label text of referred element
 
 //			final HwAccessPathRef element = (HwAccessPathRef) object;
 //			if (null != element.getRef()) {
@@ -1835,7 +1834,8 @@ class CustomItemProviderService {
 			InstructionsConstant: getInstructionsConstantItemProviderText(item, null)
 			InstructionsDeviation: getInstructionsDeviationItemProviderText(item, null)
 			Group: getGroupItemProviderText(item, null)
-			ProbabilityGroup: "Probability Group"
+			RunnableModeSwitch: getRunnableModeSwitchItemProviderText(item, null)
+			RunnableProbabilitySwitch: "Probability Switch"
 			ModeLabelAccess: getModeLabelAccessItemProviderText(item, null)
 			SemaphoreAccess: getSemaphoreAccessItemProviderText(item, null)
 			SenderReceiverRead: getSenderReceiverReadItemProviderText(item, null)
@@ -2320,41 +2320,6 @@ class CustomItemProviderService {
 		}
 		return list
 	}
-
-	/*****************************************************************************
-	 * 						ProbabilityRunnableItemItemProvider
-	 *****************************************************************************/
-	def static String getProbabilityRunnableItemItemProviderText(Object object, String defaultText) {
-		if (object instanceof ProbabilityRunnableItem) {
-			val probability = if(object == null) 0 else object.probability
-			val runItem = object?.runnableItem
-			val s1 = "(" + probability + ")"
-			val s2 = if(runItem == null) "<runnable item>" else getRunnableItemText(runItem)
-			return s1 + " ~~> " + s2			
-		} else {
-			return defaultText
-		}
-	}
-// TODO: use provider ?????
-	
-//		if (null != item.getRunnableItem() && getRootAdapterFactory().isFactoryForType(item.getRunnableItem())) {
-//			final Object plainAdapter = getRootAdapterFactory().adapt(item.getRunnableItem(), IItemLabelProvider.class);
-//			if (plainAdapter instanceof IItemLabelProvider) {
-//				final String tmp = ((IItemLabelProvider) plainAdapter).getText(item.getRunnableItem());
-//				return label1 + " ~~> " + tmp;
-//			}
-
-	def static List<ViewerNotification> getProbabilityRunnableItemItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(ProbabilityRunnableItem)) {
-			case AmaltheaPackage::PROBABILITY_RUNNABLE_ITEM__PROBABILITY:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-			case AmaltheaPackage::PROBABILITY_RUNNABLE_ITEM__RUNNABLE_ITEM:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
-		}
-		return list
-	}
-
 
 	/*****************************************************************************
 	 * 						SenderReceiverReadItemProvider

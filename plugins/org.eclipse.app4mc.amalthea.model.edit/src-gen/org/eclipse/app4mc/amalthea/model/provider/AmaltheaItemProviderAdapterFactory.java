@@ -5211,49 +5211,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ProbabilityGroup} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProbabilityGroupItemProvider probabilityGroupItemProvider;
+	protected RunnableProbabilitySwitchItemProvider runnableProbabilitySwitchItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ProbabilityGroup}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createProbabilityGroupAdapter() {
-		if (probabilityGroupItemProvider == null) {
-			probabilityGroupItemProvider = new ProbabilityGroupItemProvider(this);
+	public Adapter createRunnableProbabilitySwitchAdapter() {
+		if (runnableProbabilitySwitchItemProvider == null) {
+			runnableProbabilitySwitchItemProvider = new RunnableProbabilitySwitchItemProvider(this);
 		}
 
-		return probabilityGroupItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ProbabilityRunnableItemItemProvider probabilityRunnableItemItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createProbabilityRunnableItemAdapter() {
-		if (probabilityRunnableItemItemProvider == null) {
-			probabilityRunnableItemItemProvider = new ProbabilityRunnableItemItemProvider(this);
-		}
-
-		return probabilityRunnableItemItemProvider;
+		return runnableProbabilitySwitchItemProvider;
 	}
 
 	/**
@@ -6015,8 +5992,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (senderReceiverWriteItemProvider != null) senderReceiverWriteItemProvider.dispose();
 		if (synchronousServerCallItemProvider != null) synchronousServerCallItemProvider.dispose();
 		if (asynchronousServerCallItemProvider != null) asynchronousServerCallItemProvider.dispose();
-		if (probabilityGroupItemProvider != null) probabilityGroupItemProvider.dispose();
-		if (probabilityRunnableItemItemProvider != null) probabilityRunnableItemItemProvider.dispose();
+		if (runnableProbabilitySwitchItemProvider != null) runnableProbabilitySwitchItemProvider.dispose();
 		if (groupItemProvider != null) groupItemProvider.dispose();
 		if (runnableCallItemProvider != null) runnableCallItemProvider.dispose();
 		if (instructionsDeviationItemProvider != null) instructionsDeviationItemProvider.dispose();

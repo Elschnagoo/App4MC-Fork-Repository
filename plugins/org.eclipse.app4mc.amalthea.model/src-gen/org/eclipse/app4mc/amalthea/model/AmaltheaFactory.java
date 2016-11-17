@@ -1766,7 +1766,7 @@ public interface AmaltheaFactory extends EFactory {
 	 * @return a new object of class '<em>Probability Switch Entry</em>'.
 	 * @generated
 	 */
-	ProbabilitySwitchEntry createProbabilitySwitchEntry();
+	<T> ProbabilitySwitchEntry<T> createProbabilitySwitchEntry();
 
 	/**
 	 * Returns a new object of class '<em>Counter</em>'.
@@ -2030,22 +2030,13 @@ public interface AmaltheaFactory extends EFactory {
 	AsynchronousServerCall createAsynchronousServerCall();
 
 	/**
-	 * Returns a new object of class '<em>Probability Group</em>'.
+	 * Returns a new object of class '<em>Runnable Probability Switch</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Probability Group</em>'.
+	 * @return a new object of class '<em>Runnable Probability Switch</em>'.
 	 * @generated
 	 */
-	ProbabilityGroup createProbabilityGroup();
-
-	/**
-	 * Returns a new object of class '<em>Probability Runnable Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Probability Runnable Item</em>'.
-	 * @generated
-	 */
-	ProbabilityRunnableItem createProbabilityRunnableItem();
+	RunnableProbabilitySwitch createRunnableProbabilitySwitch();
 
 	/**
 	 * Returns a new object of class '<em>Group</em>'.

@@ -104,8 +104,6 @@ import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
 import org.eclipse.app4mc.amalthea.model.Port;
-import org.eclipse.app4mc.amalthea.model.ProbabilityGroup;
-import org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem;
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessChain;
 import org.eclipse.app4mc.amalthea.model.ProcessChainRequirement;
@@ -120,6 +118,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
+import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.SamplingType;
@@ -3504,9 +3503,15 @@ public class CustomItemProviderService {
       }
     }
     if (!_matched) {
-      if (item instanceof ProbabilityGroup) {
+      if (item instanceof RunnableModeSwitch) {
         _matched=true;
-        _switchResult = "Probability Group";
+        _switchResult = CustomItemProviderService.getRunnableModeSwitchItemProviderText(item, null);
+      }
+    }
+    if (!_matched) {
+      if (item instanceof RunnableProbabilitySwitch) {
+        _matched=true;
+        _switchResult = "Probability Switch";
       }
     }
     if (!_matched) {
@@ -4647,60 +4652,6 @@ public class CustomItemProviderService {
         _matched=true;
         Object _notifier_1 = notification.getNotifier();
         ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);
-        list.add(_viewerNotification_1);
-      }
-    }
-    return list;
-  }
-  
-  /**
-   * ProbabilityRunnableItemItemProvider
-   */
-  public static String getProbabilityRunnableItemItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ProbabilityRunnableItem)) {
-      int _xifexpression = (int) 0;
-      boolean _equals = Objects.equal(object, null);
-      if (_equals) {
-        _xifexpression = 0;
-      } else {
-        _xifexpression = ((ProbabilityRunnableItem)object).getProbability();
-      }
-      final int probability = _xifexpression;
-      RunnableItem _runnableItem = null;
-      if (((ProbabilityRunnableItem)object)!=null) {
-        _runnableItem=((ProbabilityRunnableItem)object).getRunnableItem();
-      }
-      final RunnableItem runItem = _runnableItem;
-      final String s1 = (("(" + Integer.valueOf(probability)) + ")");
-      String _xifexpression_1 = null;
-      boolean _equals_1 = Objects.equal(runItem, null);
-      if (_equals_1) {
-        _xifexpression_1 = "<runnable item>";
-      } else {
-        _xifexpression_1 = CustomItemProviderService.getRunnableItemText(runItem);
-      }
-      final String s2 = _xifexpression_1;
-      return ((s1 + " ~~> ") + s2);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static List<ViewerNotification> getProbabilityRunnableItemItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(ProbabilityRunnableItem.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.PROBABILITY_RUNNABLE_ITEM__PROBABILITY)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.PROBABILITY_RUNNABLE_ITEM__RUNNABLE_ITEM)) {
-        _matched=true;
-        Object _notifier_1 = notification.getNotifier();
-        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
         list.add(_viewerNotification_1);
       }
     }

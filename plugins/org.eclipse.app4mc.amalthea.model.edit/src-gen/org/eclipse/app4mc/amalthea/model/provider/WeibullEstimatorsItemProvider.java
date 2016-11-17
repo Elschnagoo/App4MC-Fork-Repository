@@ -1297,12 +1297,7 @@ public class WeibullEstimatorsItemProvider extends WeibullDistributionItemProvid
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityRunnableItem()));
+				 AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter
