@@ -671,19 +671,17 @@
     <nested inputs="amalthea.xcore#/EPackage/DataConstraint/target" outputs="AmaltheaXMI.xsd#//DataSeparationConstraint;XSDComplexTypeDefinition=69/XSDParticle/XSDModelGroup/XSDParticle"/>
     <nested inputs="amalthea.xcore#/EPackage/DataSeparationConstraint" outputs="AmaltheaXMI.xsd#//DataSeparationConstraint;XSDElementDeclaration=69"/>
     <nested inputs="amalthea.xcore#/EPackage/RunnablePairingConstraint" outputs="AmaltheaXMI.xsd#//RunnablePairingConstraint;XSDComplexTypeDefinition=70">
-      <nested inputs="amalthea.xcore#/EPackage/RunnablePairingConstraint/runnables"
-          outputs="AmaltheaXMI.xsd#//RunnablePairingConstraint;XSDComplexTypeDefinition=70/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/RunnablePairingConstraint/group" outputs="AmaltheaXMI.xsd#//RunnablePairingConstraint;XSDComplexTypeDefinition=70/XSDParticle/XSDModelGroup/XSDParticle=1"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/RunnableConstraint/target" outputs="AmaltheaXMI.xsd#//RunnablePairingConstraint;XSDComplexTypeDefinition=70/XSDParticle/XSDModelGroup/XSDParticle"/>
     <nested inputs="amalthea.xcore#/EPackage/RunnablePairingConstraint" outputs="AmaltheaXMI.xsd#//RunnablePairingConstraint;XSDElementDeclaration=70"/>
     <nested inputs="amalthea.xcore#/EPackage/ProcessPairingConstraint" outputs="AmaltheaXMI.xsd#//ProcessPairingConstraint;XSDComplexTypeDefinition=71">
-      <nested inputs="amalthea.xcore#/EPackage/ProcessPairingConstraint/processes"
-          outputs="AmaltheaXMI.xsd#//ProcessPairingConstraint;XSDComplexTypeDefinition=71/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/ProcessPairingConstraint/group" outputs="AmaltheaXMI.xsd#//ProcessPairingConstraint;XSDComplexTypeDefinition=71/XSDParticle/XSDModelGroup/XSDParticle=1"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/ProcessConstraint/target" outputs="AmaltheaXMI.xsd#//ProcessPairingConstraint;XSDComplexTypeDefinition=71/XSDParticle/XSDModelGroup/XSDParticle"/>
     <nested inputs="amalthea.xcore#/EPackage/ProcessPairingConstraint" outputs="AmaltheaXMI.xsd#//ProcessPairingConstraint;XSDElementDeclaration=71"/>
     <nested inputs="amalthea.xcore#/EPackage/DataPairingConstraint" outputs="AmaltheaXMI.xsd#//DataPairingConstraint;XSDComplexTypeDefinition=72">
-      <nested inputs="amalthea.xcore#/EPackage/DataPairingConstraint/labels" outputs="AmaltheaXMI.xsd#//DataPairingConstraint;XSDComplexTypeDefinition=72/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/DataPairingConstraint/group" outputs="AmaltheaXMI.xsd#//DataPairingConstraint;XSDComplexTypeDefinition=72/XSDParticle/XSDModelGroup/XSDParticle=1"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/DataConstraint/target" outputs="AmaltheaXMI.xsd#//DataPairingConstraint;XSDComplexTypeDefinition=72/XSDParticle/XSDModelGroup/XSDParticle"/>
     <nested inputs="amalthea.xcore#/EPackage/DataPairingConstraint" outputs="AmaltheaXMI.xsd#//DataPairingConstraint;XSDElementDeclaration=72"/>

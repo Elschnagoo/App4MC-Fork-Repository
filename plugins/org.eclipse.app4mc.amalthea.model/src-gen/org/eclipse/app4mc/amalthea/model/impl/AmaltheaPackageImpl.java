@@ -4702,7 +4702,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRunnablePairingConstraint_Runnables() {
+	public EReference getRunnablePairingConstraint_Group() {
 		return (EReference)runnablePairingConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -4720,7 +4720,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProcessPairingConstraint_Processes() {
+	public EReference getProcessPairingConstraint_Group() {
 		return (EReference)processPairingConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -4738,7 +4738,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataPairingConstraint_Labels() {
+	public EReference getDataPairingConstraint_Group() {
 		return (EReference)dataPairingConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -11489,13 +11489,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(dataSeparationConstraintEClass, DATA_SEPARATION_CONSTRAINT__GROUPS);
 
 		runnablePairingConstraintEClass = createEClass(RUNNABLE_PAIRING_CONSTRAINT);
-		createEReference(runnablePairingConstraintEClass, RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES);
+		createEReference(runnablePairingConstraintEClass, RUNNABLE_PAIRING_CONSTRAINT__GROUP);
 
 		processPairingConstraintEClass = createEClass(PROCESS_PAIRING_CONSTRAINT);
-		createEReference(processPairingConstraintEClass, PROCESS_PAIRING_CONSTRAINT__PROCESSES);
+		createEReference(processPairingConstraintEClass, PROCESS_PAIRING_CONSTRAINT__GROUP);
 
 		dataPairingConstraintEClass = createEClass(DATA_PAIRING_CONSTRAINT);
-		createEReference(dataPairingConstraintEClass, DATA_PAIRING_CONSTRAINT__LABELS);
+		createEReference(dataPairingConstraintEClass, DATA_PAIRING_CONSTRAINT__GROUP);
 
 		runnableConstraintTargetEClass = createEClass(RUNNABLE_CONSTRAINT_TARGET);
 
@@ -13158,13 +13158,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getDataSeparationConstraint_Groups(), this.getLabelEntityGroup(), null, "groups", null, 1, 2, DataSeparationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnablePairingConstraintEClass, RunnablePairingConstraint.class, "RunnablePairingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRunnablePairingConstraint_Runnables(), this.getRunnableGroup(), null, "runnables", null, 0, 1, RunnablePairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunnablePairingConstraint_Group(), this.getRunnableGroup(), null, "group", null, 0, 1, RunnablePairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processPairingConstraintEClass, ProcessPairingConstraint.class, "ProcessPairingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProcessPairingConstraint_Processes(), this.getProcessGroup(), null, "processes", null, 0, 1, ProcessPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessPairingConstraint_Group(), this.getProcessGroup(), null, "group", null, 0, 1, ProcessPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataPairingConstraintEClass, DataPairingConstraint.class, "DataPairingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataPairingConstraint_Labels(), this.getLabelEntityGroup(), null, "labels", null, 0, 1, DataPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataPairingConstraint_Group(), this.getLabelEntityGroup(), null, "group", null, 0, 1, DataPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableConstraintTargetEClass, RunnableConstraintTarget.class, "RunnableConstraintTarget", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

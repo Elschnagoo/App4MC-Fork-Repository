@@ -803,7 +803,7 @@ class DataSeparationConstraint extends SeparationConstraint, DataConstraint, Bas
  */
 class RunnablePairingConstraint extends PairingConstraint, RunnableConstraint, BaseObject
 {
-	contains resolving RunnableGroup runnables
+	contains resolving RunnableGroup group
 }
 
 /*
@@ -812,7 +812,7 @@ class RunnablePairingConstraint extends PairingConstraint, RunnableConstraint, B
  */
 class ProcessPairingConstraint extends PairingConstraint, ProcessConstraint, BaseObject
 {
-	contains resolving ProcessGroup processes
+	contains resolving ProcessGroup group
 }
 
 /*
@@ -821,7 +821,7 @@ class ProcessPairingConstraint extends PairingConstraint, ProcessConstraint, Bas
  */
 class DataPairingConstraint extends PairingConstraint, DataConstraint, BaseObject
 {
-	contains resolving LabelEntityGroup labels
+	contains resolving LabelEntityGroup group
 }
 
 /*

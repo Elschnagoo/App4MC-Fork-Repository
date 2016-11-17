@@ -27,7 +27,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.DataPairingConstraint#getLabels <em>Labels</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.DataPairingConstraint#getGroup <em>Group</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataPairingConstraint()
@@ -36,29 +36,29 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface DataPairingConstraint extends PairingConstraint, DataConstraint, BaseObject {
 	/**
-	 * Returns the value of the '<em><b>Labels</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Group</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Labels</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Group</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Labels</em>' containment reference.
-	 * @see #setLabels(LabelEntityGroup)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataPairingConstraint_Labels()
+	 * @return the value of the '<em>Group</em>' containment reference.
+	 * @see #setGroup(LabelEntityGroup)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataPairingConstraint_Group()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	LabelEntityGroup getLabels();
+	LabelEntityGroup getGroup();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.DataPairingConstraint#getLabels <em>Labels</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.DataPairingConstraint#getGroup <em>Group</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Labels</em>' containment reference.
-	 * @see #getLabels()
+	 * @param value the new value of the '<em>Group</em>' containment reference.
+	 * @see #getGroup()
 	 * @generated
 	 */
-	void setLabels(LabelEntityGroup value);
+	void setGroup(LabelEntityGroup value);
 
 } // DataPairingConstraint

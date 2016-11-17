@@ -4570,13 +4570,13 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_PAIRING_CONSTRAINT__TARGET = PAIRING_CONSTRAINT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Runnables</b></em>' containment reference.
+	 * The feature id for the '<em><b>Group</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES = PAIRING_CONSTRAINT_FEATURE_COUNT + 1;
+	int RUNNABLE_PAIRING_CONSTRAINT__GROUP = PAIRING_CONSTRAINT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Runnable Pairing Constraint</em>' class.
@@ -4661,13 +4661,13 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESS_PAIRING_CONSTRAINT__TARGET = PAIRING_CONSTRAINT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Processes</b></em>' containment reference.
+	 * The feature id for the '<em><b>Group</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_PAIRING_CONSTRAINT__PROCESSES = PAIRING_CONSTRAINT_FEATURE_COUNT + 1;
+	int PROCESS_PAIRING_CONSTRAINT__GROUP = PAIRING_CONSTRAINT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Process Pairing Constraint</em>' class.
@@ -4752,13 +4752,13 @@ public interface AmaltheaPackage extends EPackage {
 	int DATA_PAIRING_CONSTRAINT__TARGET = PAIRING_CONSTRAINT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Labels</b></em>' containment reference.
+	 * The feature id for the '<em><b>Group</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_PAIRING_CONSTRAINT__LABELS = PAIRING_CONSTRAINT_FEATURE_COUNT + 1;
+	int DATA_PAIRING_CONSTRAINT__GROUP = PAIRING_CONSTRAINT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Data Pairing Constraint</em>' class.
@@ -25104,15 +25104,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getRunnablePairingConstraint();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint#getRunnables <em>Runnables</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint#getGroup <em>Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Runnables</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint#getRunnables()
+	 * @return the meta object for the containment reference '<em>Group</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint#getGroup()
 	 * @see #getRunnablePairingConstraint()
 	 * @generated
 	 */
-	EReference getRunnablePairingConstraint_Runnables();
+	EReference getRunnablePairingConstraint_Group();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ProcessPairingConstraint <em>Process Pairing Constraint</em>}'.
@@ -25125,15 +25125,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getProcessPairingConstraint();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.ProcessPairingConstraint#getProcesses <em>Processes</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.ProcessPairingConstraint#getGroup <em>Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Processes</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ProcessPairingConstraint#getProcesses()
+	 * @return the meta object for the containment reference '<em>Group</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ProcessPairingConstraint#getGroup()
 	 * @see #getProcessPairingConstraint()
 	 * @generated
 	 */
-	EReference getProcessPairingConstraint_Processes();
+	EReference getProcessPairingConstraint_Group();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DataPairingConstraint <em>Data Pairing Constraint</em>}'.
@@ -25146,15 +25146,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getDataPairingConstraint();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.DataPairingConstraint#getLabels <em>Labels</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.DataPairingConstraint#getGroup <em>Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Labels</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DataPairingConstraint#getLabels()
+	 * @return the meta object for the containment reference '<em>Group</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DataPairingConstraint#getGroup()
 	 * @see #getDataPairingConstraint()
 	 * @generated
 	 */
-	EReference getDataPairingConstraint_Labels();
+	EReference getDataPairingConstraint_Group();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.RunnableConstraintTarget <em>Runnable Constraint Target</em>}'.

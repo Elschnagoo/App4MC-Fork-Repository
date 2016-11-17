@@ -253,7 +253,7 @@ public class PerformPartitioning {
 						.get(crindex) instanceof RunnablePairingConstraint) {
 					// add original runnables
 					final RunnableEntityGroup reg = (RunnableEntityGroup) ((RunnablePairingConstraint) uh
-							.getConstraintsModel().getAffinityConstraints().get(crindex)).getRunnables();
+							.getConstraintsModel().getAffinityConstraints().get(crindex)).getGroup();
 					swm.getRunnables().addAll(reg.getRunnables());
 
 					// Update RunnableCalls
@@ -298,7 +298,7 @@ public class PerformPartitioning {
 			final int crindex = Integer.parseInt(cr.getName().substring(17, cr.getName().length()));
 			if (am.getConstraintsModel().getAffinityConstraints().get(crindex) instanceof RunnablePairingConstraint) {
 				final RunnableEntityGroup reg = (RunnableEntityGroup) ((RunnablePairingConstraint) am
-						.getConstraintsModel().getAffinityConstraints().get(crindex)).getRunnables();
+						.getConstraintsModel().getAffinityConstraints().get(crindex)).getGroup();
 				for (final Runnable or : reg.getRunnables()) {
 					for (final RunnableItem ri : or.getRunnableItems()) {
 						if (ri instanceof LabelAccess) {

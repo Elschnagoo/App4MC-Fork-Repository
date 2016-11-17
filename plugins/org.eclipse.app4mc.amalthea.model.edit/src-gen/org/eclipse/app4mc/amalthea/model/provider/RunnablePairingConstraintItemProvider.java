@@ -73,7 +73,7 @@ public class RunnablePairingConstraintItemProvider extends PairingConstraintItem
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnableConstraint_Target());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnablePairingConstraint_Runnables());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnablePairingConstraint_Group());
 		}
 		return childrenFeatures;
 	}
@@ -140,7 +140,7 @@ public class RunnablePairingConstraintItemProvider extends PairingConstraintItem
 
 		switch (notification.getFeatureID(RunnablePairingConstraint.class)) {
 			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__TARGET:
-			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES:
+			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -180,12 +180,12 @@ public class RunnablePairingConstraintItemProvider extends PairingConstraintItem
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnablePairingConstraint_Runnables(),
+				(AmaltheaPackage.eINSTANCE.getRunnablePairingConstraint_Group(),
 				 AmaltheaFactory.eINSTANCE.createRunnableEntityGroup()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnablePairingConstraint_Runnables(),
+				(AmaltheaPackage.eINSTANCE.getRunnablePairingConstraint_Group(),
 				 AmaltheaFactory.eINSTANCE.createTagGroup()));
 	}
 

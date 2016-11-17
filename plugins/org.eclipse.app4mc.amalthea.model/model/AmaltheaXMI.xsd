@@ -1550,7 +1550,7 @@ runnables describes the group of runnables that should be paired on the target</
       <xsd:extension base="am:PairingConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="target" type="am:RunnableConstraintTarget"/>
-          <xsd:element name="runnables" type="am:RunnableGroup"/>
+          <xsd:element name="group" type="am:RunnableGroup"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -1570,7 +1570,7 @@ processes describes the group of processes that should be paired on the target</
       <xsd:extension base="am:PairingConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="target" type="am:ProcessConstraintTarget"/>
-          <xsd:element name="processes" type="am:ProcessGroup"/>
+          <xsd:element name="group" type="am:ProcessGroup"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -1590,7 +1590,7 @@ labels describes the group of labels that should be paired on the target</xsd:do
       <xsd:extension base="am:PairingConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="target" type="am:DataConstraintTarget"/>
-          <xsd:element name="labels" type="am:LabelEntityGroup"/>
+          <xsd:element name="group" type="am:LabelEntityGroup"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>

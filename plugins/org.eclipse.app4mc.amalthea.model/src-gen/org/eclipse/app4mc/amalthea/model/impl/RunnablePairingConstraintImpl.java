@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnablePairingConstraintImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnablePairingConstraintImpl#getRunnables <em>Runnables</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnablePairingConstraintImpl#getGroup <em>Group</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,14 +53,14 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 	protected RunnableConstraintTarget target;
 
 	/**
-	 * The cached value of the '{@link #getRunnables() <em>Runnables</em>}' containment reference.
+	 * The cached value of the '{@link #getGroup() <em>Group</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRunnables()
+	 * @see #getGroup()
 	 * @generated
 	 * @ordered
 	 */
-	protected RunnableGroup runnables;
+	protected RunnableGroup group;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,22 +152,22 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RunnableGroup getRunnables() {
-		if (runnables != null && runnables.eIsProxy()) {
-			InternalEObject oldRunnables = (InternalEObject)runnables;
-			runnables = (RunnableGroup)eResolveProxy(oldRunnables);
-			if (runnables != oldRunnables) {
-				InternalEObject newRunnables = (InternalEObject)runnables;
-				NotificationChain msgs = oldRunnables.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES, null, null);
-				if (newRunnables.eInternalContainer() == null) {
-					msgs = newRunnables.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES, null, msgs);
+	public RunnableGroup getGroup() {
+		if (group != null && group.eIsProxy()) {
+			InternalEObject oldGroup = (InternalEObject)group;
+			group = (RunnableGroup)eResolveProxy(oldGroup);
+			if (group != oldGroup) {
+				InternalEObject newGroup = (InternalEObject)group;
+				NotificationChain msgs = oldGroup.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP, null, null);
+				if (newGroup.eInternalContainer() == null) {
+					msgs = newGroup.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP, null, msgs);
 				}
 				if (msgs != null) msgs.dispatch();
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES, oldRunnables, runnables));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP, oldGroup, group));
 			}
 		}
-		return runnables;
+		return group;
 	}
 
 	/**
@@ -175,8 +175,8 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RunnableGroup basicGetRunnables() {
-		return runnables;
+	public RunnableGroup basicGetGroup() {
+		return group;
 	}
 
 	/**
@@ -184,11 +184,11 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRunnables(RunnableGroup newRunnables, NotificationChain msgs) {
-		RunnableGroup oldRunnables = runnables;
-		runnables = newRunnables;
+	public NotificationChain basicSetGroup(RunnableGroup newGroup, NotificationChain msgs) {
+		RunnableGroup oldGroup = group;
+		group = newGroup;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES, oldRunnables, newRunnables);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP, oldGroup, newGroup);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -199,18 +199,18 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRunnables(RunnableGroup newRunnables) {
-		if (newRunnables != runnables) {
+	public void setGroup(RunnableGroup newGroup) {
+		if (newGroup != group) {
 			NotificationChain msgs = null;
-			if (runnables != null)
-				msgs = ((InternalEObject)runnables).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES, null, msgs);
-			if (newRunnables != null)
-				msgs = ((InternalEObject)newRunnables).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES, null, msgs);
-			msgs = basicSetRunnables(newRunnables, msgs);
+			if (group != null)
+				msgs = ((InternalEObject)group).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP, null, msgs);
+			if (newGroup != null)
+				msgs = ((InternalEObject)newGroup).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP, null, msgs);
+			msgs = basicSetGroup(newGroup, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES, newRunnables, newRunnables));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP, newGroup, newGroup));
 	}
 
 	/**
@@ -223,8 +223,8 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 		switch (featureID) {
 			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__TARGET:
 				return basicSetTarget(null, msgs);
-			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES:
-				return basicSetRunnables(null, msgs);
+			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP:
+				return basicSetGroup(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -240,9 +240,9 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
-			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES:
-				if (resolve) return getRunnables();
-				return basicGetRunnables();
+			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP:
+				if (resolve) return getGroup();
+				return basicGetGroup();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -258,8 +258,8 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__TARGET:
 				setTarget((RunnableConstraintTarget)newValue);
 				return;
-			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES:
-				setRunnables((RunnableGroup)newValue);
+			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP:
+				setGroup((RunnableGroup)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -276,8 +276,8 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__TARGET:
 				setTarget((RunnableConstraintTarget)null);
 				return;
-			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES:
-				setRunnables((RunnableGroup)null);
+			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP:
+				setGroup((RunnableGroup)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -293,8 +293,8 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 		switch (featureID) {
 			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__TARGET:
 				return target != null;
-			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES:
-				return runnables != null;
+			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP:
+				return group != null;
 		}
 		return super.eIsSet(featureID);
 	}

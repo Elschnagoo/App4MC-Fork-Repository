@@ -228,7 +228,7 @@ public class PrePartitioning {
 					final org.eclipse.app4mc.amalthea.model.Runnable r = af.createRunnable();
 					r.setName(
 							"CumulatedRunnable" + modelCopy.getConstraintsModel().getAffinityConstraints().indexOf(ac));
-					final RunnableGroup rg = rpc.getRunnables();
+					final RunnableGroup rg = rpc.getGroup();
 					final RunnableEntityGroup reg = (RunnableEntityGroup) rg;
 					long instrCum = 0;
 					for (final Runnable run : reg.getRunnables()) {
