@@ -216,7 +216,67 @@ public class GroupItemProvider extends RunnableItemItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
-				 AmaltheaFactory.eINSTANCE.createDeviationRunnableItem()));
+				 AmaltheaFactory.eINSTANCE.createModeLabelAccess()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createRunnableModeSwitch()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createLabelAccess()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createSemaphoreAccess()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createSenderReceiverRead()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createSenderReceiverWrite()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createSynchronousServerCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createAsynchronousServerCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createGroup()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createRunnableCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 	}
 
 }

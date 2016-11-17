@@ -5280,29 +5280,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DeviationRunnableItem} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DeviationRunnableItemItemProvider deviationRunnableItemItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DeviationRunnableItem}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDeviationRunnableItemAdapter() {
-		if (deviationRunnableItemItemProvider == null) {
-			deviationRunnableItemItemProvider = new DeviationRunnableItemItemProvider(this);
-		}
-
-		return deviationRunnableItemItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.RunnableCall} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6041,7 +6018,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (probabilityGroupItemProvider != null) probabilityGroupItemProvider.dispose();
 		if (probabilityRunnableItemItemProvider != null) probabilityRunnableItemItemProvider.dispose();
 		if (groupItemProvider != null) groupItemProvider.dispose();
-		if (deviationRunnableItemItemProvider != null) deviationRunnableItemItemProvider.dispose();
 		if (runnableCallItemProvider != null) runnableCallItemProvider.dispose();
 		if (instructionsDeviationItemProvider != null) instructionsDeviationItemProvider.dispose();
 		if (instructionsConstantItemProvider != null) instructionsConstantItemProvider.dispose();

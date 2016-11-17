@@ -47,7 +47,6 @@ import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
@@ -3930,51 +3929,6 @@ public class CustomItemProviderService {
   }
   
   /**
-   * DeviationRunnableItemItemProvider
-   */
-  public static String getDeviationRunnableItemItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DeviationRunnableItem)) {
-      RunnableItem _runnableItem = null;
-      if (((DeviationRunnableItem)object)!=null) {
-        _runnableItem=((DeviationRunnableItem)object).getRunnableItem();
-      }
-      final RunnableItem runItem = _runnableItem;
-      final String s1 = "( distribution )";
-      String _xifexpression = null;
-      boolean _equals = Objects.equal(runItem, null);
-      if (_equals) {
-        _xifexpression = "<runnable item>";
-      } else {
-        _xifexpression = CustomItemProviderService.getRunnableItemText(runItem);
-      }
-      final String s2 = _xifexpression;
-      return ((s1 + " ~~> ") + s2);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static List<ViewerNotification> getDeviationRunnableItemItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(DeviationRunnableItem.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION_RUNNABLE_ITEM__DEVIATION)) {
-      _matched=true;
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION_RUNNABLE_ITEM__RUNNABLE_ITEM)) {
-        _matched=true;
-      }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
-      list.add(_viewerNotification);
-    }
-    return list;
-  }
-  
-  /**
    * GroupItemProvider
    */
   public static String getGroupItemProviderText(final Object object, final String defaultText) {
@@ -3998,9 +3952,9 @@ public class CustomItemProviderService {
       final boolean ordered = _xifexpression_1;
       String _xifexpression_2 = null;
       if (ordered) {
-        _xifexpression_2 = "Sequence";
+        _xifexpression_2 = "(Sequence)";
       } else {
-        _xifexpression_2 = "Set";
+        _xifexpression_2 = "(Set)";
       }
       final String result = _xifexpression_2;
       String _xifexpression_3 = null;

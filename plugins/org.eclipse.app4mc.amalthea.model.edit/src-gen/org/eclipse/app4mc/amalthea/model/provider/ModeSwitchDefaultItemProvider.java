@@ -1294,11 +1294,6 @@ public class ModeSwitchDefaultItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getModeSwitchDefault_Items(),
-				 AmaltheaFactory.eINSTANCE.createDeviationRunnableItem()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getModeSwitchDefault_Items(),
 				 AmaltheaFactory.eINSTANCE.createRunnableCall()));
 
 		newChildDescriptors.add

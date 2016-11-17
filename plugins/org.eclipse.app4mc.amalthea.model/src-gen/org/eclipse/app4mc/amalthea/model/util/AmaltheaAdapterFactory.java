@@ -94,7 +94,6 @@ import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.ECU;
@@ -1553,10 +1552,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseGroup(Group object) {
 				return createGroupAdapter();
-			}
-			@Override
-			public Adapter caseDeviationRunnableItem(DeviationRunnableItem object) {
-				return createDeviationRunnableItemAdapter();
 			}
 			@Override
 			public Adapter caseRunnableCall(RunnableCall object) {
@@ -5741,20 +5736,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGroupAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DeviationRunnableItem <em>Deviation Runnable Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.DeviationRunnableItem
-	 * @generated
-	 */
-	public Adapter createDeviationRunnableItemAdapter() {
 		return null;
 	}
 

@@ -5203,7 +5203,7 @@ It can be also a group of runnable items without deviation, because the deviatio
     <xsd:complexContent>
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="items" type="am:DeviationRunnableItem"/>
+          <xsd:element name="items" type="am:RunnableItem"/>
         </xsd:choice>
         <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="ordered" type="xsd:boolean"/>
@@ -5214,26 +5214,6 @@ It can be also a group of runnable items without deviation, because the deviatio
     <xsd:annotation>
       <xsd:documentation>Describes a group of deviation runnable items
 It can be also a group of runnable items without deviation, because the deviation is optional for each item</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="DeviationRunnableItem">
-    <xsd:annotation>
-      <xsd:documentation>A runnable item with a deviation
-The deviation is optional</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="runnableItem" type="am:RunnableItem"/>
-          <xsd:element name="deviation" type="am:Deviation"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="DeviationRunnableItem" type="am:DeviationRunnableItem">
-    <xsd:annotation>
-      <xsd:documentation>A runnable item with a deviation
-The deviation is optional</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="RunnableCall">

@@ -3135,17 +3135,7 @@ class Group extends RunnableItem
 {
 	String name
 	boolean ordered ="false"
-	contains resolving DeviationRunnableItem[] items
-}
-
-/*
- * A runnable item with a deviation
- * The deviation is optional
- */
-class DeviationRunnableItem extends BaseObject
-{
-	contains resolving RunnableItem runnableItem
-	contains resolving Deviation<LongObject> deviation
+	contains resolving RunnableItem[] items
 }
 
 /*

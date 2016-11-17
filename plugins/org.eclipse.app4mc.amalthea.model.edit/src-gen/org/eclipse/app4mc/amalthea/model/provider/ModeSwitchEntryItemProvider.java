@@ -1324,11 +1324,6 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Items(),
-				 AmaltheaFactory.eINSTANCE.createDeviationRunnableItem()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Items(),
 				 AmaltheaFactory.eINSTANCE.createRunnableCall()));
 
 		newChildDescriptors.add

@@ -37,7 +37,6 @@ import org.eclipse.app4mc.amalthea.model.DataSize
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition
 import org.eclipse.app4mc.amalthea.model.Deviation
-import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem
 import org.eclipse.app4mc.amalthea.model.DoubleObject
 import org.eclipse.app4mc.amalthea.model.EventChainReference
 import org.eclipse.app4mc.amalthea.model.EventConfigElement
@@ -1988,50 +1987,13 @@ class CustomItemProviderService {
 
 
 	/*****************************************************************************
-	 * 						DeviationRunnableItemItemProvider
-	 *****************************************************************************/
-	def static String getDeviationRunnableItemItemProviderText(Object object, String defaultText) {
-		if (object instanceof DeviationRunnableItem) {
-			//val distribution = object?.deviation?.distribution
-			val runItem = object?.runnableItem
-			val s1 = "( distribution )"
-			val s2 = if(runItem == null) "<runnable item>" else getRunnableItemText(runItem)
-			return s1 + " ~~> " + s2			
-		} else {
-			return defaultText
-		}
-	}
-
-// TODO: use provider ?????
-	
-//		if (null != item.getRunnableItem() && getRootAdapterFactory().isFactoryForType(item.getRunnableItem())) {
-//			final Object plainAdapter = getRootAdapterFactory().adapt(item.getRunnableItem(), IItemLabelProvider.class);
-//			if (plainAdapter instanceof IItemLabelProvider) {
-//				final String tmp = ((IItemLabelProvider) plainAdapter).getText(item.getRunnableItem());
-//				return label1 + " ~~> " + tmp;
-//			}
-//		}
-//		return label1;
-
-	def static List<ViewerNotification> getDeviationRunnableItemItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(DeviationRunnableItem)) {
-			case AmaltheaPackage::DEVIATION_RUNNABLE_ITEM__DEVIATION,
-			case AmaltheaPackage::DEVIATION_RUNNABLE_ITEM__RUNNABLE_ITEM:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
-		}
-		return list
-	}
-
-
-	/*****************************************************************************
 	 * 						GroupItemProvider
 	 *****************************************************************************/
 	def static String getGroupItemProviderText(Object object, String defaultText) {
 		if (object instanceof Group) {
 			val name = if (object.name.isNullOrEmpty) null else object.name
 			val ordered = if(object == null) false else object.isOrdered
-			val result = if(ordered) "Sequence" else "Set"
+			val result = if(ordered) "(Sequence)" else "(Set)"
 			return if (name == null) result else result + " " + name
 		}
 	}

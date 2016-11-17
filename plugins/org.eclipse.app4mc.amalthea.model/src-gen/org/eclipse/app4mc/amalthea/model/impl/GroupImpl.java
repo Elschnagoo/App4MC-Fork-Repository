@@ -15,8 +15,8 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem;
 import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.RunnableItem;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -95,7 +95,7 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DeviationRunnableItem> items;
+	protected EList<RunnableItem> items;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,9 +163,9 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DeviationRunnableItem> getItems() {
+	public EList<RunnableItem> getItems() {
 		if (items == null) {
-			items = new EObjectContainmentEList.Resolving<DeviationRunnableItem>(DeviationRunnableItem.class, this, AmaltheaPackage.GROUP__ITEMS);
+			items = new EObjectContainmentEList.Resolving<RunnableItem>(RunnableItem.class, this, AmaltheaPackage.GROUP__ITEMS);
 		}
 		return items;
 	}
@@ -219,7 +219,7 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 				return;
 			case AmaltheaPackage.GROUP__ITEMS:
 				getItems().clear();
-				getItems().addAll((Collection<? extends DeviationRunnableItem>)newValue);
+				getItems().addAll((Collection<? extends RunnableItem>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -2057,15 +2057,6 @@ public interface AmaltheaFactory extends EFactory {
 	Group createGroup();
 
 	/**
-	 * Returns a new object of class '<em>Deviation Runnable Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Deviation Runnable Item</em>'.
-	 * @generated
-	 */
-	DeviationRunnableItem createDeviationRunnableItem();
-
-	/**
 	 * Returns a new object of class '<em>Runnable Call</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

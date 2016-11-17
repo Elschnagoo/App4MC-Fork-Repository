@@ -94,7 +94,6 @@ import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.ECU;
@@ -2937,14 +2936,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseRunnableItem(group);
 				if (result == null) result = caseBaseObject(group);
 				if (result == null) result = caseIAnnotatable(group);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.DEVIATION_RUNNABLE_ITEM: {
-				DeviationRunnableItem deviationRunnableItem = (DeviationRunnableItem)theEObject;
-				T1 result = caseDeviationRunnableItem(deviationRunnableItem);
-				if (result == null) result = caseBaseObject(deviationRunnableItem);
-				if (result == null) result = caseIAnnotatable(deviationRunnableItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -7522,21 +7513,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseGroup(Group object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Deviation Runnable Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Deviation Runnable Item</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseDeviationRunnableItem(DeviationRunnableItem object) {
 		return null;
 	}
 

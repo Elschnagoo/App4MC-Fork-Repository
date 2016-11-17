@@ -106,7 +106,6 @@ import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.ECUType;
@@ -2422,13 +2421,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass groupEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass deviationRunnableItemEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -10379,33 +10371,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDeviationRunnableItem() {
-		return deviationRunnableItemEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDeviationRunnableItem_RunnableItem() {
-		return (EReference)deviationRunnableItemEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDeviationRunnableItem_Deviation() {
-		return (EReference)deviationRunnableItemEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getRunnableCall() {
 		return runnableCallEClass;
 	}
@@ -12409,10 +12374,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(groupEClass, GROUP__ORDERED);
 		createEReference(groupEClass, GROUP__ITEMS);
 
-		deviationRunnableItemEClass = createEClass(DEVIATION_RUNNABLE_ITEM);
-		createEReference(deviationRunnableItemEClass, DEVIATION_RUNNABLE_ITEM__RUNNABLE_ITEM);
-		createEReference(deviationRunnableItemEClass, DEVIATION_RUNNABLE_ITEM__DEVIATION);
-
 		runnableCallEClass = createEClass(RUNNABLE_CALL);
 		createEReference(runnableCallEClass, RUNNABLE_CALL__RUNNABLE);
 		createEReference(runnableCallEClass, RUNNABLE_CALL__STATISTIC);
@@ -12906,7 +12867,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		probabilityGroupEClass.getESuperTypes().add(this.getRunnableItem());
 		probabilityRunnableItemEClass.getESuperTypes().add(this.getBaseObject());
 		groupEClass.getESuperTypes().add(this.getRunnableItem());
-		deviationRunnableItemEClass.getESuperTypes().add(this.getBaseObject());
 		runnableCallEClass.getESuperTypes().add(this.getRunnableItem());
 		instructionsEClass.getESuperTypes().add(this.getRunnableItem());
 		instructionsDeviationEClass.getESuperTypes().add(this.getInstructions());
@@ -14113,14 +14073,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(groupEClass, Group.class, "Group", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGroup_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGroup_Ordered(), theEcorePackage.getEBoolean(), "ordered", "false", 0, 1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGroup_Items(), this.getDeviationRunnableItem(), null, "items", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(deviationRunnableItemEClass, DeviationRunnableItem.class, "DeviationRunnableItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDeviationRunnableItem_RunnableItem(), this.getRunnableItem(), null, "runnableItem", null, 0, 1, DeviationRunnableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(this.getDeviation());
-		g2 = createEGenericType(this.getLongObject());
-		g1.getETypeArguments().add(g2);
-		initEReference(getDeviationRunnableItem_Deviation(), g1, null, "deviation", null, 0, 1, DeviationRunnableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGroup_Items(), this.getRunnableItem(), null, "items", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableCallEClass, RunnableCall.class, "RunnableCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnableCall_Runnable(), this.getRunnable(), null, "runnable", null, 1, 1, RunnableCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

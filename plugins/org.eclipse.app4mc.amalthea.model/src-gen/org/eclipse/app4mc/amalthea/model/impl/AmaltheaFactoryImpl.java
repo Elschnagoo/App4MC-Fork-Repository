@@ -88,7 +88,6 @@ import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.ECU;
 import org.eclipse.app4mc.amalthea.model.ECUType;
@@ -581,7 +580,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.PROBABILITY_GROUP: return createProbabilityGroup();
 			case AmaltheaPackage.PROBABILITY_RUNNABLE_ITEM: return createProbabilityRunnableItem();
 			case AmaltheaPackage.GROUP: return createGroup();
-			case AmaltheaPackage.DEVIATION_RUNNABLE_ITEM: return createDeviationRunnableItem();
 			case AmaltheaPackage.RUNNABLE_CALL: return createRunnableCall();
 			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: return createInstructionsDeviation();
 			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: return createInstructionsConstant();
@@ -3057,16 +3055,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public Group createGroup() {
 		GroupImpl group = new GroupImpl();
 		return group;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DeviationRunnableItem createDeviationRunnableItem() {
-		DeviationRunnableItemImpl deviationRunnableItem = new DeviationRunnableItemImpl();
-		return deviationRunnableItem;
 	}
 
 	/**
