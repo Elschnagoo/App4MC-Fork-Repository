@@ -132,7 +132,7 @@ table(classic){margin-left:40px}.
 ** *_LabelSwitch_* : <div><ul><li>From the referred "Label" element inside "LabelSwitch", "ModeLabel" element is created with the same name -> and associated to the same Software Model where "Label" element is defined</li><li>"LabelSwitch" element is replaced with "ModeSwitch" element, and it refers to the "ModelLabel" (created in the above step)</li></ul></div>
 ** *_LabelSwitchEntry_* : <div><ul><li>For all the LabelSwitchEntry objects inside a specific AMALTHEA model file, a single "Mode" element is created ( with the following naming convention :  "mode_sw_&lt;counter&gt;_migration_generated" )</li><li>Based on the unique values of LabelSwitchEntry elements, ModeLiteral objects are created</li><li> LabelSwitchEntry is replaced by ModeSwitchEntry, based on the earlier "value" specified for LabelSwitchEntry -&gt; corresponding ModeLiteral element is referred </li></ul></div>
 *** For details refer to the below figure: <br/><br/> !(gray_scale)../pictures/labelswitch_migration.png! <br/><br/>
-** *_LabelValueEntry_* :  <div><ul><li>For Label referred inside each LabelValueEntry, corresponding ModeLabel object is created in the software model and it is associated to the entry object.</li></ul></div><div><ul><li>For all the LabelValueEntry objects inside a specific AMALTHEA model file, a single "Mode" element is created ( with the following naming convention :  "mode_stimuli_&lt;counter&gt;_migration_generated" )</li><li>Based on the unique values of LabelValueEntry elements, ModeLiteral objects are created</li><li> LabelValueEntry is replaced by ModeValueListEntry, based on the "value" specified for LabelValueEntry -&gt; corresponding ModeLiteral element is referred instead of "value" </li></ul></div>  
+** *_LabelValueEntry_* :  <div><ul><li>For Label referred inside each LabelValueEntry, corresponding ModeLabel object is created in the software model and it is associated to the entry object.</li></ul></div><div><ul><li>For all the LabelValueEntry objects inside a specific AMALTHEA model file, a single "Mode" element is created ( with the following naming convention :  "mode_stimuli_&lt;counter&gt;_migration_generated" )</li><li>Based on the unique values of LabelValueEntry elements, ModeLiteral objects are created</li><li> LabelValueEntry is replaced by ModeValueListEntry, based on the "value" specified for LabelValueEntry -&gt; corresponding ModeLiteral element is referred instead of "value" </li><li><p style="color:#4D4DA3;">!! For LabelValueEntry migration to be successful, <b>it is mandatory to have SW-Model in the same model file</b>. In case SW-Model is not present, migration of LabelValueEntry objects will not be performed.</p></li></ul></div>  
 *** For details refer to the below figure: <br/><br/> !(gray_scale)../pictures/labelvalueentry_stimuli_migration.png! <br/><br/>
 
 
@@ -163,7 +163,7 @@ table(classic){margin-left:40px}.
 | System | HwSystem |
 | Component | HwComponent |
 | Port | HwPort |
-| AbstractionType | AbstractionTypeDescription |
+| AbstractionTypeDescription | AbstractionType |
 | MemoryType | MemoryTypeEnum |
 | OSInstructions | OsInstructions |
 | Periodic | PeriodicActivation |
