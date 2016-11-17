@@ -99,6 +99,8 @@ public class SwConverter implements IConverter {
 
 		// xpathBuffer.append(".swModel/tasks/callGraph/graphEntries[@xsi:type=\"am:ModeSwitch\"]/entries");
 		xpathBuffer.append("./swModel/tasks/callGraph//graphEntries");
+		xpathBuffer.append("|");
+		xpathBuffer.append("./swModel/isrs/callGraph//graphEntries");
 		// xpathBuffer.append("|");
 		// xpathBuffer.append(".swModel/isrs/callGraph/graphEntries[@xsi:type=\"am:ModeSwitch\"]/entries");
 
