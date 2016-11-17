@@ -17,8 +17,8 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
+import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructions;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.Value;
 
@@ -93,7 +93,7 @@ public class SchedulingSWUnitImpl extends SchedulingUnitImpl implements Scheduli
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OsExecutionInstructions> instructions;
+	protected EList<Instructions> instructions;
 
 	/**
 	 * The cached value of the '{@link #getInterruptController() <em>Interrupt Controller</em>}' reference.
@@ -162,9 +162,9 @@ public class SchedulingSWUnitImpl extends SchedulingUnitImpl implements Scheduli
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<OsExecutionInstructions> getInstructions() {
+	public EList<Instructions> getInstructions() {
 		if (instructions == null) {
-			instructions = new EObjectContainmentEList.Resolving<OsExecutionInstructions>(OsExecutionInstructions.class, this, AmaltheaPackage.SCHEDULING_SW_UNIT__INSTRUCTIONS);
+			instructions = new EObjectContainmentEList.Resolving<Instructions>(Instructions.class, this, AmaltheaPackage.SCHEDULING_SW_UNIT__INSTRUCTIONS);
 		}
 		return instructions;
 	}
@@ -262,7 +262,7 @@ public class SchedulingSWUnitImpl extends SchedulingUnitImpl implements Scheduli
 				return;
 			case AmaltheaPackage.SCHEDULING_SW_UNIT__INSTRUCTIONS:
 				getInstructions().clear();
-				getInstructions().addAll((Collection<? extends OsExecutionInstructions>)newValue);
+				getInstructions().addAll((Collection<? extends Instructions>)newValue);
 				return;
 			case AmaltheaPackage.SCHEDULING_SW_UNIT__INTERRUPT_CONTROLLER:
 				setInterruptController((InterruptController)newValue);

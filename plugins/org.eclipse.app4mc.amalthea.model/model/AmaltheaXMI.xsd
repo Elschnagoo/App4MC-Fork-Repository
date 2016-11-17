@@ -3525,7 +3525,7 @@ It describes an ISR that performs scheduling.</xsd:documentation>
       <xsd:extension base="am:SchedulingUnit">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="customProperties" type="am:CustomProperty"/>
-          <xsd:element name="instructions" type="am:OsExecutionInstructions">
+          <xsd:element name="instructions" type="am:Instructions">
             <xsd:annotation>
               <xsd:documentation>The instructions of the scheduling ISR</xsd:documentation>
             </xsd:annotation>
@@ -3615,16 +3615,16 @@ It describes an ISR that performs scheduling.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="apiSendMessage" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiTerminateTask" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiSchedule" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiRequestResource" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiReleaseResource" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiSetEvent" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiWaitEvent" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiClearEvent" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiActivateTask" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiEnforcedMigration" type="am:OsExecutionInstructions"/>
+          <xsd:element name="apiSendMessage" type="am:Instructions"/>
+          <xsd:element name="apiTerminateTask" type="am:Instructions"/>
+          <xsd:element name="apiSchedule" type="am:Instructions"/>
+          <xsd:element name="apiRequestResource" type="am:Instructions"/>
+          <xsd:element name="apiReleaseResource" type="am:Instructions"/>
+          <xsd:element name="apiSetEvent" type="am:Instructions"/>
+          <xsd:element name="apiWaitEvent" type="am:Instructions"/>
+          <xsd:element name="apiClearEvent" type="am:Instructions"/>
+          <xsd:element name="apiActivateTask" type="am:Instructions"/>
+          <xsd:element name="apiEnforcedMigration" type="am:Instructions"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -3634,57 +3634,13 @@ It describes an ISR that performs scheduling.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="preExecutionOverhead" type="am:OsExecutionInstructions"/>
-          <xsd:element name="postExecutionOverhead" type="am:OsExecutionInstructions"/>
+          <xsd:element name="preExecutionOverhead" type="am:Instructions"/>
+          <xsd:element name="postExecutionOverhead" type="am:Instructions"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="OsISRInstructions" type="am:OsISRInstructions"/>
-  <xsd:complexType abstract="true" name="OsExecutionInstructions">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="OsExecutionInstructions" type="am:OsExecutionInstructions"/>
-  <xsd:complexType name="OsExecutionInstructionsDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Represents a deviated set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:OsExecutionInstructions">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
-          <xsd:element name="deviation" type="am:Deviation"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="OsExecutionInstructionsDeviation" type="am:OsExecutionInstructionsDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Represents a deviated set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="OsExecutionInstructionsConstant">
-    <xsd:annotation>
-      <xsd:documentation>Represents a constant set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:OsExecutionInstructions">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
-        </xsd:choice>
-        <xsd:attribute name="value" type="xsd:long"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="OsExecutionInstructionsConstant" type="am:OsExecutionInstructionsConstant">
-    <xsd:annotation>
-      <xsd:documentation>Represents a constant set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType name="PropertyConstraintsModel">
     <xsd:annotation>
       <xsd:documentation>*

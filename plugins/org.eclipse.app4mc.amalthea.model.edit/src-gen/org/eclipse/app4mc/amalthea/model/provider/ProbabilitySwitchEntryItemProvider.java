@@ -966,16 +966,6 @@ public class ProbabilitySwitchEntryItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_Items(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_Items(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_Items(),
 				 AmaltheaFactory.eINSTANCE.createPropertyConstraintsModel()));
 
 		newChildDescriptors.add

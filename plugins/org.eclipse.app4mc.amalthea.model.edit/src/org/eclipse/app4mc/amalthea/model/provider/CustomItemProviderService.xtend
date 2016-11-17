@@ -76,8 +76,6 @@ import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec
 import org.eclipse.app4mc.amalthea.model.OrderType
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions
 import org.eclipse.app4mc.amalthea.model.OsBuffering
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions
 import org.eclipse.app4mc.amalthea.model.OsInstructions
 import org.eclipse.app4mc.amalthea.model.PercentageMetric
@@ -1609,28 +1607,6 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						OsExecutionInstructionsConstantItemProvider
-	 *****************************************************************************/
-	def static String getOsExecutionInstructionsConstantItemProviderText(Object object, String defaultText) {
-		if (object instanceof OsExecutionInstructionsConstant) {
-			return getContainingFeatureName(object, "Execution Instructions (constant)", "")
-		} else {
-			return defaultText
-		}
-	}
-
-	/*****************************************************************************
-	 * 						OsExecutionInstructionsDeviationItemProvider
-	 *****************************************************************************/
-	def static String getOsExecutionInstructionsDeviationItemProviderText(Object object, String defaultText) {
-		if (object instanceof OsExecutionInstructionsDeviation) {
-			return getContainingFeatureName(object, "Execution Instructions (deviation)", "")
-		} else {
-			return defaultText
-		}
-	}
-
-	/*****************************************************************************
 	 * 						OsInstructionsItemProvider
 	 *****************************************************************************/
 	def static String getOsInstructionsItemProviderText(Object object, String defaultText) {
@@ -2011,8 +1987,10 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getInstructionsConstantItemProviderText(Object object, String defaultText) {
 		if (object instanceof InstructionsConstant) {
-			val instr = if(object == null) 0 else object.value
-			return "instructions (constant): " + Long.toString(instr)
+			val feature = getContainingFeatureName(object, "", "")
+			val s1 = if(feature == "runnableItems") "" else feature + " -- "
+			val s2 = Long.toString(object.value)
+			return s1 + "instructions (constant): " + s2
 		} else {
 			return defaultText
 		}
@@ -2023,9 +2001,11 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getInstructionsDeviationItemProviderText(Object object, String defaultText) {
 		if (object instanceof InstructionsDeviation) {
+			val feature = getContainingFeatureName(object, "", "")
+			val s1 = if(feature == "runnableItems") "" else feature + " -- "
 			val distName = object?.deviation?.distribution?.eClass?.name
-			val s1 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
-			return "instructions (deviation): " + s1
+			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
+			return s1 + "instructions (deviation): " + s2
 		} else {
 			return defaultText
 		}

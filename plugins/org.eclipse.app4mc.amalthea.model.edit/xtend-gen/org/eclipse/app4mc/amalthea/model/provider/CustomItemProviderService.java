@@ -95,8 +95,6 @@ import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
 import org.eclipse.app4mc.amalthea.model.OsBuffering;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
 import org.eclipse.app4mc.amalthea.model.PercentageMetric;
@@ -3099,28 +3097,6 @@ public class CustomItemProviderService {
   }
   
   /**
-   * OsExecutionInstructionsConstantItemProvider
-   */
-  public static String getOsExecutionInstructionsConstantItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof OsExecutionInstructionsConstant)) {
-      return CustomItemProviderService.getContainingFeatureName(((EObject)object), "Execution Instructions (constant)", "");
-    } else {
-      return defaultText;
-    }
-  }
-  
-  /**
-   * OsExecutionInstructionsDeviationItemProvider
-   */
-  public static String getOsExecutionInstructionsDeviationItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof OsExecutionInstructionsDeviation)) {
-      return CustomItemProviderService.getContainingFeatureName(((EObject)object), "Execution Instructions (deviation)", "");
-    } else {
-      return defaultText;
-    }
-  }
-  
-  /**
    * OsInstructionsItemProvider
    */
   public static String getOsInstructionsItemProviderText(final Object object, final String defaultText) {
@@ -4000,16 +3976,18 @@ public class CustomItemProviderService {
    */
   public static String getInstructionsConstantItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof InstructionsConstant)) {
-      long _xifexpression = (long) 0;
-      boolean _equals = Objects.equal(object, null);
+      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, "runnableItems");
       if (_equals) {
-        _xifexpression = 0;
+        _xifexpression = "";
       } else {
-        _xifexpression = ((InstructionsConstant)object).getValue();
+        _xifexpression = (feature + " -- ");
       }
-      final long instr = _xifexpression;
-      String _string = Long.toString(instr);
-      return ("instructions (constant): " + _string);
+      final String s1 = _xifexpression;
+      long _value = ((InstructionsConstant)object).getValue();
+      final String s2 = Long.toString(_value);
+      return ((s1 + "instructions (constant): ") + s2);
     } else {
       return defaultText;
     }
@@ -4020,6 +3998,15 @@ public class CustomItemProviderService {
    */
   public static String getInstructionsDeviationItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof InstructionsDeviation)) {
+      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, "runnableItems");
+      if (_equals) {
+        _xifexpression = "";
+      } else {
+        _xifexpression = (feature + " -- ");
+      }
+      final String s1 = _xifexpression;
       Deviation<LongObject> _deviation = null;
       if (((InstructionsDeviation)object)!=null) {
         _deviation=((InstructionsDeviation)object).getDeviation();
@@ -4037,15 +4024,15 @@ public class CustomItemProviderService {
         _name=_eClass.getName();
       }
       final String distName = _name;
-      String _xifexpression = null;
+      String _xifexpression_1 = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(distName);
       if (_isNullOrEmpty) {
-        _xifexpression = "<distribution>";
+        _xifexpression_1 = "<distribution>";
       } else {
-        _xifexpression = CustomItemProviderService.trimDistName(distName);
+        _xifexpression_1 = CustomItemProviderService.trimDistName(distName);
       }
-      final String s1 = _xifexpression;
-      return ("instructions (deviation): " + s1);
+      final String s2 = _xifexpression_1;
+      return ((s1 + "instructions (deviation): ") + s2);
     } else {
       return defaultText;
     }

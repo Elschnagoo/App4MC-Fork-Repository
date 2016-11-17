@@ -2101,7 +2101,7 @@ class SchedulingSWUnit extends SchedulingUnit, BaseObject
 	/*
 	 * The instructions of the scheduling ISR
 	 */
-	contains resolving OsExecutionInstructions [] instructions
+	contains resolving Instructions [] instructions
 	/*
 	 * The Interrupt Controller that manages the scheduling ISR 
 	 */
@@ -2142,42 +2142,22 @@ class OsInstructions extends ReferableBaseObject
 
 class OsAPIInstructions extends BaseObject
 {
-	contains resolving OsExecutionInstructions apiSendMessage
-	contains resolving OsExecutionInstructions apiTerminateTask
-	contains resolving OsExecutionInstructions apiSchedule
-	contains resolving OsExecutionInstructions apiRequestResource
-	contains resolving OsExecutionInstructions apiReleaseResource
-	contains resolving OsExecutionInstructions apiSetEvent
-	contains resolving OsExecutionInstructions apiWaitEvent
-	contains resolving OsExecutionInstructions apiClearEvent
-	contains resolving OsExecutionInstructions apiActivateTask
-	contains resolving OsExecutionInstructions apiEnforcedMigration
+	contains resolving Instructions apiSendMessage
+	contains resolving Instructions apiTerminateTask
+	contains resolving Instructions apiSchedule
+	contains resolving Instructions apiRequestResource
+	contains resolving Instructions apiReleaseResource
+	contains resolving Instructions apiSetEvent
+	contains resolving Instructions apiWaitEvent
+	contains resolving Instructions apiClearEvent
+	contains resolving Instructions apiActivateTask
+	contains resolving Instructions apiEnforcedMigration
 }
 
 class OsISRInstructions extends BaseObject
 {
-	contains resolving OsExecutionInstructions preExecutionOverhead
-	contains resolving OsExecutionInstructions postExecutionOverhead
-}
-
-abstract class OsExecutionInstructions
-{
-}
-
-/*
- * Represents a deviated set of execution cycles
- */
-class OsExecutionInstructionsDeviation extends OsExecutionInstructions, BaseObject
-{
-	contains resolving Deviation<LongObject> deviation
-}
-
-/*
- * Represents a constant set of execution cycles 
- */
-class OsExecutionInstructionsConstant extends OsExecutionInstructions, BaseObject
-{
-	long value="0"
+	contains resolving Instructions preExecutionOverhead
+	contains resolving Instructions postExecutionOverhead
 }
 
 

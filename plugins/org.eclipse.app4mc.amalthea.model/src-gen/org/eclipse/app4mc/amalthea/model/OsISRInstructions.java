@@ -40,12 +40,12 @@ public interface OsISRInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Pre Execution Overhead</em>' containment reference.
-	 * @see #setPreExecutionOverhead(OsExecutionInstructions)
+	 * @see #setPreExecutionOverhead(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsISRInstructions_PreExecutionOverhead()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	OsExecutionInstructions getPreExecutionOverhead();
+	Instructions getPreExecutionOverhead();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsISRInstructions#getPreExecutionOverhead <em>Pre Execution Overhead</em>}' containment reference.
@@ -55,7 +55,7 @@ public interface OsISRInstructions extends BaseObject {
 	 * @see #getPreExecutionOverhead()
 	 * @generated
 	 */
-	void setPreExecutionOverhead(OsExecutionInstructions value);
+	void setPreExecutionOverhead(Instructions value);
 
 	/**
 	 * Returns the value of the '<em><b>Post Execution Overhead</b></em>' containment reference.
@@ -66,12 +66,12 @@ public interface OsISRInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Post Execution Overhead</em>' containment reference.
-	 * @see #setPostExecutionOverhead(OsExecutionInstructions)
+	 * @see #setPostExecutionOverhead(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsISRInstructions_PostExecutionOverhead()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	OsExecutionInstructions getPostExecutionOverhead();
+	Instructions getPostExecutionOverhead();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsISRInstructions#getPostExecutionOverhead <em>Post Execution Overhead</em>}' containment reference.
@@ -81,6 +81,6 @@ public interface OsISRInstructions extends BaseObject {
 	 * @see #getPostExecutionOverhead()
 	 * @generated
 	 */
-	void setPostExecutionOverhead(OsExecutionInstructions value);
+	void setPostExecutionOverhead(Instructions value);
 
 } // OsISRInstructions

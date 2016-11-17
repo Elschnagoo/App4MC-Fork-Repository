@@ -1427,24 +1427,6 @@ public interface AmaltheaFactory extends EFactory {
 	OsISRInstructions createOsISRInstructions();
 
 	/**
-	 * Returns a new object of class '<em>Os Execution Instructions Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Os Execution Instructions Deviation</em>'.
-	 * @generated
-	 */
-	OsExecutionInstructionsDeviation createOsExecutionInstructionsDeviation();
-
-	/**
-	 * Returns a new object of class '<em>Os Execution Instructions Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Os Execution Instructions Constant</em>'.
-	 * @generated
-	 */
-	OsExecutionInstructionsConstant createOsExecutionInstructionsConstant();
-
-	/**
 	 * Returns a new object of class '<em>Property Constraints Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

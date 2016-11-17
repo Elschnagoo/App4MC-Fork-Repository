@@ -196,9 +196,6 @@ import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
 import org.eclipse.app4mc.amalthea.model.OsBuffering;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructions;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
 import org.eclipse.app4mc.amalthea.model.PairingConstraint;
@@ -2144,30 +2141,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseOsISRInstructions(osISRInstructions);
 				if (result == null) result = caseBaseObject(osISRInstructions);
 				if (result == null) result = caseIAnnotatable(osISRInstructions);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.OS_EXECUTION_INSTRUCTIONS: {
-				OsExecutionInstructions osExecutionInstructions = (OsExecutionInstructions)theEObject;
-				T1 result = caseOsExecutionInstructions(osExecutionInstructions);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.OS_EXECUTION_INSTRUCTIONS_DEVIATION: {
-				OsExecutionInstructionsDeviation osExecutionInstructionsDeviation = (OsExecutionInstructionsDeviation)theEObject;
-				T1 result = caseOsExecutionInstructionsDeviation(osExecutionInstructionsDeviation);
-				if (result == null) result = caseOsExecutionInstructions(osExecutionInstructionsDeviation);
-				if (result == null) result = caseBaseObject(osExecutionInstructionsDeviation);
-				if (result == null) result = caseIAnnotatable(osExecutionInstructionsDeviation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.OS_EXECUTION_INSTRUCTIONS_CONSTANT: {
-				OsExecutionInstructionsConstant osExecutionInstructionsConstant = (OsExecutionInstructionsConstant)theEObject;
-				T1 result = caseOsExecutionInstructionsConstant(osExecutionInstructionsConstant);
-				if (result == null) result = caseOsExecutionInstructions(osExecutionInstructionsConstant);
-				if (result == null) result = caseBaseObject(osExecutionInstructionsConstant);
-				if (result == null) result = caseIAnnotatable(osExecutionInstructionsConstant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -6214,51 +6187,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseOsISRInstructions(OsISRInstructions object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Os Execution Instructions</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Os Execution Instructions</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseOsExecutionInstructions(OsExecutionInstructions object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Os Execution Instructions Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Os Execution Instructions Deviation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseOsExecutionInstructionsDeviation(OsExecutionInstructionsDeviation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Os Execution Instructions Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Os Execution Instructions Constant</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseOsExecutionInstructionsConstant(OsExecutionInstructionsConstant object) {
 		return null;
 	}
 

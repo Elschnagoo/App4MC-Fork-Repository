@@ -3670,52 +3670,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OsExecutionInstructionsDeviationItemProvider osExecutionInstructionsDeviationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOsExecutionInstructionsDeviationAdapter() {
-		if (osExecutionInstructionsDeviationItemProvider == null) {
-			osExecutionInstructionsDeviationItemProvider = new OsExecutionInstructionsDeviationItemProvider(this);
-		}
-
-		return osExecutionInstructionsDeviationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OsExecutionInstructionsConstantItemProvider osExecutionInstructionsConstantItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOsExecutionInstructionsConstantAdapter() {
-		if (osExecutionInstructionsConstantItemProvider == null) {
-			osExecutionInstructionsConstantItemProvider = new OsExecutionInstructionsConstantItemProvider(this);
-		}
-
-		return osExecutionInstructionsConstantItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5925,8 +5879,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (osInstructionsItemProvider != null) osInstructionsItemProvider.dispose();
 		if (osAPIInstructionsItemProvider != null) osAPIInstructionsItemProvider.dispose();
 		if (osISRInstructionsItemProvider != null) osISRInstructionsItemProvider.dispose();
-		if (osExecutionInstructionsDeviationItemProvider != null) osExecutionInstructionsDeviationItemProvider.dispose();
-		if (osExecutionInstructionsConstantItemProvider != null) osExecutionInstructionsConstantItemProvider.dispose();
 		if (propertyConstraintsModelItemProvider != null) propertyConstraintsModelItemProvider.dispose();
 		if (processAllocationConstraintItemProvider != null) processAllocationConstraintItemProvider.dispose();
 		if (processPrototypeAllocationConstraintItemProvider != null) processPrototypeAllocationConstraintItemProvider.dispose();

@@ -215,12 +215,12 @@ public class SchedulingSWUnitItemProvider extends SchedulingUnitItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSchedulingSWUnit_Instructions(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSchedulingSWUnit_Instructions(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 	}
 
 }

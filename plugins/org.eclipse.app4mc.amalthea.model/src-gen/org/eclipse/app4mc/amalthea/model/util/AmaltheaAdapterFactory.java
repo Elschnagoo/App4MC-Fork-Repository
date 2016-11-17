@@ -196,9 +196,6 @@ import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
 import org.eclipse.app4mc.amalthea.model.OsBuffering;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructions;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
 import org.eclipse.app4mc.amalthea.model.PairingConstraint;
@@ -1207,18 +1204,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseOsISRInstructions(OsISRInstructions object) {
 				return createOsISRInstructionsAdapter();
-			}
-			@Override
-			public Adapter caseOsExecutionInstructions(OsExecutionInstructions object) {
-				return createOsExecutionInstructionsAdapter();
-			}
-			@Override
-			public Adapter caseOsExecutionInstructionsDeviation(OsExecutionInstructionsDeviation object) {
-				return createOsExecutionInstructionsDeviationAdapter();
-			}
-			@Override
-			public Adapter caseOsExecutionInstructionsConstant(OsExecutionInstructionsConstant object) {
-				return createOsExecutionInstructionsConstantAdapter();
 			}
 			@Override
 			public Adapter casePropertyConstraintsModel(PropertyConstraintsModel object) {
@@ -4527,48 +4512,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOsISRInstructionsAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsExecutionInstructions <em>Os Execution Instructions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.OsExecutionInstructions
-	 * @generated
-	 */
-	public Adapter createOsExecutionInstructionsAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation <em>Os Execution Instructions Deviation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation
-	 * @generated
-	 */
-	public Adapter createOsExecutionInstructionsDeviationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant <em>Os Execution Instructions Constant</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant
-	 * @generated
-	 */
-	public Adapter createOsExecutionInstructionsConstantAdapter() {
 		return null;
 	}
 

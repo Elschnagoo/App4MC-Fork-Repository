@@ -178,8 +178,6 @@ import org.eclipse.app4mc.amalthea.model.OrderType;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
 import org.eclipse.app4mc.amalthea.model.OsBuffering;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
 import org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2;
@@ -509,8 +507,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.OS_INSTRUCTIONS: return createOsInstructions();
 			case AmaltheaPackage.OS_API_INSTRUCTIONS: return createOsAPIInstructions();
 			case AmaltheaPackage.OS_ISR_INSTRUCTIONS: return createOsISRInstructions();
-			case AmaltheaPackage.OS_EXECUTION_INSTRUCTIONS_DEVIATION: return createOsExecutionInstructionsDeviation();
-			case AmaltheaPackage.OS_EXECUTION_INSTRUCTIONS_CONSTANT: return createOsExecutionInstructionsConstant();
 			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL: return createPropertyConstraintsModel();
 			case AmaltheaPackage.PROCESS_ALLOCATION_CONSTRAINT: return createProcessAllocationConstraint();
 			case AmaltheaPackage.PROCESS_PROTOTYPE_ALLOCATION_CONSTRAINT: return createProcessPrototypeAllocationConstraint();
@@ -2353,26 +2349,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public OsISRInstructions createOsISRInstructions() {
 		OsISRInstructionsImpl osISRInstructions = new OsISRInstructionsImpl();
 		return osISRInstructions;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OsExecutionInstructionsDeviation createOsExecutionInstructionsDeviation() {
-		OsExecutionInstructionsDeviationImpl osExecutionInstructionsDeviation = new OsExecutionInstructionsDeviationImpl();
-		return osExecutionInstructionsDeviation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OsExecutionInstructionsConstant createOsExecutionInstructionsConstant() {
-		OsExecutionInstructionsConstantImpl osExecutionInstructionsConstant = new OsExecutionInstructionsConstantImpl();
-		return osExecutionInstructionsConstant;
 	}
 
 	/**
