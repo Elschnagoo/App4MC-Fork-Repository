@@ -74,147 +74,8 @@ public class ModelMigrationJob extends Job {
 
 		this.helper = BaseHelperUtils.getInstance();
 
-		final List<Entry<String, String>> migStepEntries = new ArrayList<Map.Entry<String, String>>();
-
-		if (inputModelVersion.equals("itea.103")) {
-
-			if (outputModelVersion.equals("itea.110")) {
-				final Entry<String, String> entry = new AbstractMap.SimpleEntry<String, String>("itea.103", "itea.110");
-				migStepEntries.add(entry);
-			}
-			else if (outputModelVersion.equals("itea.111")) {
-				final Entry<String, String> entry1 = new AbstractMap.SimpleEntry<String, String>("itea.103",
-						"itea.110");
-				migStepEntries.add(entry1);
-				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
-						"itea.111");
-				migStepEntries.add(entry2);
-			}
-			else if (outputModelVersion.equals("0.7.0")) {
-				final Entry<String, String> entry1 = new AbstractMap.SimpleEntry<String, String>("itea.103",
-						"itea.110");
-				migStepEntries.add(entry1);
-				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
-						"itea.111");
-				migStepEntries.add(entry2);
-				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
-				migStepEntries.add(entry3);
-			}
-			else if (outputModelVersion.equals("0.7.1")) {
-				final Entry<String, String> entry1 = new AbstractMap.SimpleEntry<String, String>("itea.103",
-						"itea.110");
-				migStepEntries.add(entry1);
-				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
-						"itea.111");
-				migStepEntries.add(entry2);
-				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
-				migStepEntries.add(entry3);
-				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
-				migStepEntries.add(entry4);
-			}
-			else if (outputModelVersion.equals("0.7.2")) {
-				final Entry<String, String> entry1 = new AbstractMap.SimpleEntry<String, String>("itea.103",
-						"itea.110");
-				migStepEntries.add(entry1);
-				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
-						"itea.111");
-				migStepEntries.add(entry2);
-				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
-				migStepEntries.add(entry3);
-				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
-				migStepEntries.add(entry4);
-				final Entry<String, String> entry5 = new AbstractMap.SimpleEntry<String, String>("0.7.1", "0.7.2");
-				migStepEntries.add(entry5);
-			}
-		}
-		else if (inputModelVersion.equals("itea.110")) {
-
-			if (outputModelVersion.equals("itea.111")) {
-
-				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
-						"itea.111");
-				migStepEntries.add(entry2);
-			}
-			else if (outputModelVersion.equals("0.7.0")) {
-
-				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
-						"itea.111");
-				migStepEntries.add(entry2);
-				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
-				migStepEntries.add(entry3);
-			}
-			else if (outputModelVersion.equals("0.7.1")) {
-
-				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
-						"itea.111");
-				migStepEntries.add(entry2);
-				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
-				migStepEntries.add(entry3);
-				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
-				migStepEntries.add(entry4);
-			}
-			else if (outputModelVersion.equals("0.7.2")) {
-				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
-						"itea.111");
-				migStepEntries.add(entry2);
-				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
-				migStepEntries.add(entry3);
-				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
-				migStepEntries.add(entry4);
-				final Entry<String, String> entry5 = new AbstractMap.SimpleEntry<String, String>("0.7.1", "0.7.2");
-				migStepEntries.add(entry5);
-			}
-		}
-		else if (inputModelVersion.equals("itea.111")) {
-
-			if (outputModelVersion.equals("0.7.0")) {
-
-				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
-				migStepEntries.add(entry2);
-			}
-			else if (outputModelVersion.equals("0.7.1")) {
-
-				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
-				migStepEntries.add(entry2);
-				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
-				migStepEntries.add(entry4);
-			}
-			else if (outputModelVersion.equals("0.7.2")) {
-				final Entry<String, String> entry2 = new AbstractMap.SimpleEntry<String, String>("itea.110",
-						"itea.111");
-				migStepEntries.add(entry2);
-				final Entry<String, String> entry3 = new AbstractMap.SimpleEntry<String, String>("itea.111", "0.7.0");
-				migStepEntries.add(entry3);
-				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
-				migStepEntries.add(entry4);
-				final Entry<String, String> entry5 = new AbstractMap.SimpleEntry<String, String>("0.7.1", "0.7.2");
-				migStepEntries.add(entry5);
-			}
-		}
-		else if (inputModelVersion.equals("0.7.0")) {
-
-			if (outputModelVersion.equals("0.7.1")) {
-
-				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
-				migStepEntries.add(entry4);
-			}
-			else if (outputModelVersion.equals("0.7.2")) {
-
-				final Entry<String, String> entry4 = new AbstractMap.SimpleEntry<String, String>("0.7.0", "0.7.1");
-				migStepEntries.add(entry4);
-				final Entry<String, String> entry5 = new AbstractMap.SimpleEntry<String, String>("0.7.1", "0.7.2");
-				migStepEntries.add(entry5);
-			}
-		}
-		else if (inputModelVersion.equals("0.7.1")) {
-
-
-			if (outputModelVersion.equals("0.7.2")) {
-
-				final Entry<String, String> entry5 = new AbstractMap.SimpleEntry<String, String>("0.7.1", "0.7.2");
-				migStepEntries.add(entry5);
-			}
-		}
+		final List<Entry<String, String>> migStepEntries = generateMigrationSteps(inputModelVersion,
+				outputModelVersion);
 
 		if (migStepEntries.size() == 0) {
 			return new Status(IStatus.CANCEL, " org.eclipse.app4mc.amalthea.converters.ui",
@@ -292,6 +153,84 @@ public class ModelMigrationJob extends Job {
 
 		return Status.OK_STATUS;
 	}
+
+
+	/**
+	 * This method is used to generate list of model migration steps which are required to migrate from one version to
+	 * other. <br>
+	 * <br>
+	 * <b>Example</b>: Below are the steps which are required to migrate from itea.103 to 0.7.2:<br>
+	 * <br>
+	 *
+	 * <table style="height: 65px;" width="120">
+	 * <tbody>
+	 * <tr>
+	 * <td style="text-align:right;">itea.103 --&gt;</td>
+	 * <td>itea.110</td>
+	 * </tr>
+	 * <tr>
+	 * <td style="text-align:right;">itea.110--&gt;</td>
+	 * <td>itea.111</td>
+	 * </tr>
+	 * <tr>
+	 * <td style="text-align:right;">itea.111--&gt;</td>
+	 * <td>0.7.0</td>
+	 * </tr>
+	 * <tr>
+	 * <td style="text-align:center;">0.7.0--&gt;</td>
+	 * <td>0.7.1</td>
+	 * </tr>
+	 * <tr>
+	 * <td style="text-align:center;">0.7.1--&gt;</td>
+	 * <td>0.7.2</td>
+	 * </tr>
+	 * </tbody>
+	 * </table>
+	 * <p>
+	 * &nbsp;
+	 * </p>
+	 *
+	 * @param inputModelVersion
+	 *            This is the version present in input AMALTHEA model file (e.g: itea.103)
+	 * @param outputModelVersion
+	 *            AMALTHEA model file should be migrated to this version (e.g: 0.7.2)
+	 * @return
+	 */
+	private List<Entry<String, String>> generateMigrationSteps(final String inputModelVersion,
+			final String outputModelVersion) {
+
+		final List<Entry<String, String>> migStepEntries = new ArrayList<Map.Entry<String, String>>();
+
+		/*- Note: These are the various AMALTHEA model versions which are released.
+		 *  Order of the below list should be same as the release order- > as based on this order, model migration steps are prepared*/
+		final List<String> versions = new ArrayList<String>();
+		versions.add("itea.103");
+		versions.add("itea.110");
+		versions.add("itea.111");
+		versions.add("0.7.0");
+		versions.add("0.7.1");
+		versions.add("0.7.2");
+
+		final int inputModelVersionIndex = versions.indexOf(inputModelVersion);
+		final int outputModelVersionIndex = versions.indexOf(outputModelVersion);
+
+		if (inputModelVersionIndex != -1 & outputModelVersionIndex != -1) {
+
+			for (int i = inputModelVersionIndex; (i <= outputModelVersionIndex)
+					&& ((i + 1) <= outputModelVersionIndex); i++) {
+
+				final Entry<String, String> entry = new AbstractMap.SimpleEntry<String, String>(versions.get(i),
+						versions.get(i + 1));
+
+				migStepEntries.add(entry);
+
+			}
+		}
+
+
+		return migStepEntries;
+	}
+
 
 	private void saveFiles(final SubMonitor subMonitor, final Map<File, Document> fileName_documentsMap,
 			final boolean updateFileNames) throws Exception {
