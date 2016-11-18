@@ -73,7 +73,7 @@ public class ProcessPairingConstraintItemProvider extends PairingConstraintItemP
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getProcessConstraint_Target());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getProcessPairingConstraint_Processes());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getProcessPairingConstraint_Group());
 		}
 		return childrenFeatures;
 	}
@@ -140,7 +140,7 @@ public class ProcessPairingConstraintItemProvider extends PairingConstraintItemP
 
 		switch (notification.getFeatureID(ProcessPairingConstraint.class)) {
 			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__TARGET:
-			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__PROCESSES:
+			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__GROUP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -170,12 +170,12 @@ public class ProcessPairingConstraintItemProvider extends PairingConstraintItemP
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getProcessPairingConstraint_Processes(),
+				(AmaltheaPackage.eINSTANCE.getProcessPairingConstraint_Group(),
 				 AmaltheaFactory.eINSTANCE.createProcessEntityGroup()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getProcessPairingConstraint_Processes(),
+				(AmaltheaPackage.eINSTANCE.getProcessPairingConstraint_Group(),
 				 AmaltheaFactory.eINSTANCE.createTagGroup()));
 	}
 

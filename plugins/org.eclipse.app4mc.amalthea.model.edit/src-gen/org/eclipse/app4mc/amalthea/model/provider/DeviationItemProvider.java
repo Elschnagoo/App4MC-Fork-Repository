@@ -995,16 +995,6 @@ public class DeviationItemProvider extends AmaltheaExtendedItemProviderAdapter i
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getDeviation_LowerBound(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviation_LowerBound(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviation_LowerBound(),
 				 AmaltheaFactory.eINSTANCE.createPropertyConstraintsModel()));
 
 		newChildDescriptors.add
@@ -1330,22 +1320,12 @@ public class DeviationItemProvider extends AmaltheaExtendedItemProviderAdapter i
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getDeviation_LowerBound(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviation_LowerBound(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityRunnableItem()));
+				 AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getDeviation_LowerBound(),
 				 AmaltheaFactory.eINSTANCE.createGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviation_LowerBound(),
-				 AmaltheaFactory.eINSTANCE.createDeviationRunnableItem()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -2295,16 +2275,6 @@ public class DeviationItemProvider extends AmaltheaExtendedItemProviderAdapter i
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getDeviation_UpperBound(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviation_UpperBound(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviation_UpperBound(),
 				 AmaltheaFactory.eINSTANCE.createPropertyConstraintsModel()));
 
 		newChildDescriptors.add
@@ -2630,22 +2600,12 @@ public class DeviationItemProvider extends AmaltheaExtendedItemProviderAdapter i
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getDeviation_UpperBound(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviation_UpperBound(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityRunnableItem()));
+				 AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getDeviation_UpperBound(),
 				 AmaltheaFactory.eINSTANCE.createGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDeviation_UpperBound(),
-				 AmaltheaFactory.eINSTANCE.createDeviationRunnableItem()));
 
 		newChildDescriptors.add
 			(createChildParameter

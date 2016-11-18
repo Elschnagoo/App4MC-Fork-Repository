@@ -93,7 +93,7 @@ public interface Group extends RunnableItem {
 
 	/**
 	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.DeviationRunnableItem}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableItem}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Items</em>' containment reference list isn't clear,
@@ -105,6 +105,6 @@ public interface Group extends RunnableItem {
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList<DeviationRunnableItem> getItems();
+	EList<RunnableItem> getItems();
 
 } // Group

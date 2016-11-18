@@ -962,16 +962,6 @@ public class WeibullEstimatorsItemProvider extends WeibullDistributionItemProvid
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
 				 AmaltheaFactory.eINSTANCE.createPropertyConstraintsModel()));
 
 		newChildDescriptors.add
@@ -1297,22 +1287,12 @@ public class WeibullEstimatorsItemProvider extends WeibullDistributionItemProvid
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityRunnableItem()));
+				 AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
 				 AmaltheaFactory.eINSTANCE.createGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(),
-				 AmaltheaFactory.eINSTANCE.createDeviationRunnableItem()));
 
 		newChildDescriptors.add
 			(createChildParameter

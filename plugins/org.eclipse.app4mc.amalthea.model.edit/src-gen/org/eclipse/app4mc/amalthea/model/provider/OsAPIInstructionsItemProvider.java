@@ -171,102 +171,102 @@ public class OsAPIInstructionsItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSendMessage(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSendMessage(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiTerminateTask(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiTerminateTask(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSchedule(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSchedule(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiRequestResource(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiRequestResource(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiReleaseResource(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiReleaseResource(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSetEvent(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSetEvent(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiWaitEvent(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiWaitEvent(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiClearEvent(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiClearEvent(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiActivateTask(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiActivateTask(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiEnforcedMigration(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiEnforcedMigration(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 	}
 
 	/**

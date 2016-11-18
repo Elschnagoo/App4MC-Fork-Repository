@@ -66,7 +66,7 @@ public interface SchedulingSWUnit extends SchedulingUnit, BaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Instructions</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.OsExecutionInstructions}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Instructions}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -77,7 +77,7 @@ public interface SchedulingSWUnit extends SchedulingUnit, BaseObject {
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList<OsExecutionInstructions> getInstructions();
+	EList<Instructions> getInstructions();
 
 	/**
 	 * Returns the value of the '<em><b>Interrupt Controller</b></em>' reference.

@@ -155,22 +155,22 @@ public class OsISRInstructionsItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsISRInstructions_PreExecutionOverhead(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsISRInstructions_PreExecutionOverhead(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsISRInstructions_PostExecutionOverhead(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsISRInstructions_PostExecutionOverhead(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 	}
 
 	/**

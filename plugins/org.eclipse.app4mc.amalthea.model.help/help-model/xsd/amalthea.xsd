@@ -1550,7 +1550,7 @@ runnables describes the group of runnables that should be paired on the target</
       <xsd:extension base="am:PairingConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="target" type="am:RunnableConstraintTarget"/>
-          <xsd:element name="runnables" type="am:RunnableGroup"/>
+          <xsd:element name="group" type="am:RunnableGroup"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -1570,7 +1570,7 @@ processes describes the group of processes that should be paired on the target</
       <xsd:extension base="am:PairingConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="target" type="am:ProcessConstraintTarget"/>
-          <xsd:element name="processes" type="am:ProcessGroup"/>
+          <xsd:element name="group" type="am:ProcessGroup"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -1590,7 +1590,7 @@ labels describes the group of labels that should be paired on the target</xsd:do
       <xsd:extension base="am:PairingConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="target" type="am:DataConstraintTarget"/>
-          <xsd:element name="labels" type="am:LabelEntityGroup"/>
+          <xsd:element name="group" type="am:LabelEntityGroup"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -3525,7 +3525,7 @@ It describes an ISR that performs scheduling.</xsd:documentation>
       <xsd:extension base="am:SchedulingUnit">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="customProperties" type="am:CustomProperty"/>
-          <xsd:element name="instructions" type="am:OsExecutionInstructions">
+          <xsd:element name="instructions" type="am:Instructions">
             <xsd:annotation>
               <xsd:documentation>The instructions of the scheduling ISR</xsd:documentation>
             </xsd:annotation>
@@ -3615,16 +3615,16 @@ It describes an ISR that performs scheduling.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="apiSendMessage" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiTerminateTask" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiSchedule" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiRequestResource" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiReleaseResource" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiSetEvent" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiWaitEvent" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiClearEvent" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiActivateTask" type="am:OsExecutionInstructions"/>
-          <xsd:element name="apiEnforcedMigration" type="am:OsExecutionInstructions"/>
+          <xsd:element name="apiSendMessage" type="am:Instructions"/>
+          <xsd:element name="apiTerminateTask" type="am:Instructions"/>
+          <xsd:element name="apiSchedule" type="am:Instructions"/>
+          <xsd:element name="apiRequestResource" type="am:Instructions"/>
+          <xsd:element name="apiReleaseResource" type="am:Instructions"/>
+          <xsd:element name="apiSetEvent" type="am:Instructions"/>
+          <xsd:element name="apiWaitEvent" type="am:Instructions"/>
+          <xsd:element name="apiClearEvent" type="am:Instructions"/>
+          <xsd:element name="apiActivateTask" type="am:Instructions"/>
+          <xsd:element name="apiEnforcedMigration" type="am:Instructions"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -3634,57 +3634,13 @@ It describes an ISR that performs scheduling.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="preExecutionOverhead" type="am:OsExecutionInstructions"/>
-          <xsd:element name="postExecutionOverhead" type="am:OsExecutionInstructions"/>
+          <xsd:element name="preExecutionOverhead" type="am:Instructions"/>
+          <xsd:element name="postExecutionOverhead" type="am:Instructions"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="OsISRInstructions" type="am:OsISRInstructions"/>
-  <xsd:complexType abstract="true" name="OsExecutionInstructions">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="OsExecutionInstructions" type="am:OsExecutionInstructions"/>
-  <xsd:complexType name="OsExecutionInstructionsDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Represents a deviated set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:OsExecutionInstructions">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
-          <xsd:element name="deviation" type="am:Deviation"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="OsExecutionInstructionsDeviation" type="am:OsExecutionInstructionsDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Represents a deviated set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="OsExecutionInstructionsConstant">
-    <xsd:annotation>
-      <xsd:documentation>Represents a constant set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:OsExecutionInstructions">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
-        </xsd:choice>
-        <xsd:attribute name="value" type="xsd:long"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="OsExecutionInstructionsConstant" type="am:OsExecutionInstructionsConstant">
-    <xsd:annotation>
-      <xsd:documentation>Represents a constant set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType name="PropertyConstraintsModel">
     <xsd:annotation>
       <xsd:documentation>*
@@ -4492,7 +4448,7 @@ It describes a path of the switch and it's probability</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="items" type="am:GraphEntryBase"/>
+          <xsd:element name="items" type="ecore:EObject"/>
         </xsd:choice>
         <xsd:attribute name="probability" type="xsd:double"/>
       </xsd:extension>
@@ -5160,39 +5116,21 @@ It refers to a optional runnable that exploits the results produced by the serve
 It refers to a optional runnable that exploits the results produced by the server</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="ProbabilityGroup">
+  <xsd:complexType name="RunnableProbabilitySwitch">
     <xsd:annotation>
-      <xsd:documentation>Describes a group of runnable items with a probability</xsd:documentation>
+      <xsd:documentation>A switch in the runnable items, each path has a probability</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="items" type="am:ProbabilityRunnableItem"/>
+          <xsd:element name="entries" type="am:ProbabilitySwitchEntry"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ProbabilityGroup" type="am:ProbabilityGroup">
+  <xsd:element name="RunnableProbabilitySwitch" type="am:RunnableProbabilitySwitch">
     <xsd:annotation>
-      <xsd:documentation>Describes a group of runnable items with a probability</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="ProbabilityRunnableItem">
-    <xsd:annotation>
-      <xsd:documentation>A runnable item with a probability</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="runnableItem" type="am:RunnableItem"/>
-        </xsd:choice>
-        <xsd:attribute name="probability" type="xsd:int"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ProbabilityRunnableItem" type="am:ProbabilityRunnableItem">
-    <xsd:annotation>
-      <xsd:documentation>A runnable item with a probability</xsd:documentation>
+      <xsd:documentation>A switch in the runnable items, each path has a probability</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="Group">
@@ -5203,7 +5141,7 @@ It can be also a group of runnable items without deviation, because the deviatio
     <xsd:complexContent>
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="items" type="am:DeviationRunnableItem"/>
+          <xsd:element name="items" type="am:RunnableItem"/>
         </xsd:choice>
         <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="ordered" type="xsd:boolean"/>
@@ -5214,26 +5152,6 @@ It can be also a group of runnable items without deviation, because the deviatio
     <xsd:annotation>
       <xsd:documentation>Describes a group of deviation runnable items
 It can be also a group of runnable items without deviation, because the deviation is optional for each item</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="DeviationRunnableItem">
-    <xsd:annotation>
-      <xsd:documentation>A runnable item with a deviation
-The deviation is optional</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="runnableItem" type="am:RunnableItem"/>
-          <xsd:element name="deviation" type="am:Deviation"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="DeviationRunnableItem" type="am:DeviationRunnableItem">
-    <xsd:annotation>
-      <xsd:documentation>A runnable item with a deviation
-The deviation is optional</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="RunnableCall">

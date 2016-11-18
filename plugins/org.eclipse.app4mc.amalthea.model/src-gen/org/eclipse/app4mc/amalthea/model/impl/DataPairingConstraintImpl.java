@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DataPairingConstraintImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DataPairingConstraintImpl#getLabels <em>Labels</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DataPairingConstraintImpl#getGroup <em>Group</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,14 +53,14 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 	protected DataConstraintTarget target;
 
 	/**
-	 * The cached value of the '{@link #getLabels() <em>Labels</em>}' containment reference.
+	 * The cached value of the '{@link #getGroup() <em>Group</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLabels()
+	 * @see #getGroup()
 	 * @generated
 	 * @ordered
 	 */
-	protected LabelEntityGroup labels;
+	protected LabelEntityGroup group;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,22 +152,22 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LabelEntityGroup getLabels() {
-		if (labels != null && labels.eIsProxy()) {
-			InternalEObject oldLabels = (InternalEObject)labels;
-			labels = (LabelEntityGroup)eResolveProxy(oldLabels);
-			if (labels != oldLabels) {
-				InternalEObject newLabels = (InternalEObject)labels;
-				NotificationChain msgs = oldLabels.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_PAIRING_CONSTRAINT__LABELS, null, null);
-				if (newLabels.eInternalContainer() == null) {
-					msgs = newLabels.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_PAIRING_CONSTRAINT__LABELS, null, msgs);
+	public LabelEntityGroup getGroup() {
+		if (group != null && group.eIsProxy()) {
+			InternalEObject oldGroup = (InternalEObject)group;
+			group = (LabelEntityGroup)eResolveProxy(oldGroup);
+			if (group != oldGroup) {
+				InternalEObject newGroup = (InternalEObject)group;
+				NotificationChain msgs = oldGroup.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP, null, null);
+				if (newGroup.eInternalContainer() == null) {
+					msgs = newGroup.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP, null, msgs);
 				}
 				if (msgs != null) msgs.dispatch();
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.DATA_PAIRING_CONSTRAINT__LABELS, oldLabels, labels));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP, oldGroup, group));
 			}
 		}
-		return labels;
+		return group;
 	}
 
 	/**
@@ -175,8 +175,8 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LabelEntityGroup basicGetLabels() {
-		return labels;
+	public LabelEntityGroup basicGetGroup() {
+		return group;
 	}
 
 	/**
@@ -184,11 +184,11 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetLabels(LabelEntityGroup newLabels, NotificationChain msgs) {
-		LabelEntityGroup oldLabels = labels;
-		labels = newLabels;
+	public NotificationChain basicSetGroup(LabelEntityGroup newGroup, NotificationChain msgs) {
+		LabelEntityGroup oldGroup = group;
+		group = newGroup;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DATA_PAIRING_CONSTRAINT__LABELS, oldLabels, newLabels);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP, oldGroup, newGroup);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -199,18 +199,18 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLabels(LabelEntityGroup newLabels) {
-		if (newLabels != labels) {
+	public void setGroup(LabelEntityGroup newGroup) {
+		if (newGroup != group) {
 			NotificationChain msgs = null;
-			if (labels != null)
-				msgs = ((InternalEObject)labels).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_PAIRING_CONSTRAINT__LABELS, null, msgs);
-			if (newLabels != null)
-				msgs = ((InternalEObject)newLabels).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_PAIRING_CONSTRAINT__LABELS, null, msgs);
-			msgs = basicSetLabels(newLabels, msgs);
+			if (group != null)
+				msgs = ((InternalEObject)group).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP, null, msgs);
+			if (newGroup != null)
+				msgs = ((InternalEObject)newGroup).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP, null, msgs);
+			msgs = basicSetGroup(newGroup, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DATA_PAIRING_CONSTRAINT__LABELS, newLabels, newLabels));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP, newGroup, newGroup));
 	}
 
 	/**
@@ -223,8 +223,8 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 		switch (featureID) {
 			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__TARGET:
 				return basicSetTarget(null, msgs);
-			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__LABELS:
-				return basicSetLabels(null, msgs);
+			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP:
+				return basicSetGroup(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -240,9 +240,9 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
-			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__LABELS:
-				if (resolve) return getLabels();
-				return basicGetLabels();
+			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP:
+				if (resolve) return getGroup();
+				return basicGetGroup();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -258,8 +258,8 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__TARGET:
 				setTarget((DataConstraintTarget)newValue);
 				return;
-			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__LABELS:
-				setLabels((LabelEntityGroup)newValue);
+			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP:
+				setGroup((LabelEntityGroup)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -276,8 +276,8 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__TARGET:
 				setTarget((DataConstraintTarget)null);
 				return;
-			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__LABELS:
-				setLabels((LabelEntityGroup)null);
+			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP:
+				setGroup((LabelEntityGroup)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -293,8 +293,8 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 		switch (featureID) {
 			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__TARGET:
 				return target != null;
-			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__LABELS:
-				return labels != null;
+			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP:
+				return group != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -944,16 +944,6 @@ public class ModeSwitchDefaultItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getModeSwitchDefault_Items(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getModeSwitchDefault_Items(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getModeSwitchDefault_Items(),
 				 AmaltheaFactory.eINSTANCE.createPropertyConstraintsModel()));
 
 		newChildDescriptors.add
@@ -1279,22 +1269,12 @@ public class ModeSwitchDefaultItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getModeSwitchDefault_Items(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getModeSwitchDefault_Items(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityRunnableItem()));
+				 AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getModeSwitchDefault_Items(),
 				 AmaltheaFactory.eINSTANCE.createGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getModeSwitchDefault_Items(),
-				 AmaltheaFactory.eINSTANCE.createDeviationRunnableItem()));
 
 		newChildDescriptors.add
 			(createChildParameter

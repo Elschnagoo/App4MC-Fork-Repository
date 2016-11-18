@@ -94,7 +94,6 @@ import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.ECU;
@@ -197,9 +196,6 @@ import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
 import org.eclipse.app4mc.amalthea.model.OsBuffering;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructions;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
 import org.eclipse.app4mc.amalthea.model.PairingConstraint;
@@ -218,8 +214,6 @@ import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
-import org.eclipse.app4mc.amalthea.model.ProbabilityGroup;
-import org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint;
@@ -260,6 +254,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
+import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
@@ -1211,18 +1206,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createOsISRInstructionsAdapter();
 			}
 			@Override
-			public Adapter caseOsExecutionInstructions(OsExecutionInstructions object) {
-				return createOsExecutionInstructionsAdapter();
-			}
-			@Override
-			public Adapter caseOsExecutionInstructionsDeviation(OsExecutionInstructionsDeviation object) {
-				return createOsExecutionInstructionsDeviationAdapter();
-			}
-			@Override
-			public Adapter caseOsExecutionInstructionsConstant(OsExecutionInstructionsConstant object) {
-				return createOsExecutionInstructionsConstantAdapter();
-			}
-			@Override
 			public Adapter casePropertyConstraintsModel(PropertyConstraintsModel object) {
 				return createPropertyConstraintsModelAdapter();
 			}
@@ -1403,7 +1386,7 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createProbabiltitySwitchAdapter();
 			}
 			@Override
-			public Adapter caseProbabilitySwitchEntry(ProbabilitySwitchEntry object) {
+			public <T> Adapter caseProbabilitySwitchEntry(ProbabilitySwitchEntry<T> object) {
 				return createProbabilitySwitchEntryAdapter();
 			}
 			@Override
@@ -1543,20 +1526,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createAsynchronousServerCallAdapter();
 			}
 			@Override
-			public Adapter caseProbabilityGroup(ProbabilityGroup object) {
-				return createProbabilityGroupAdapter();
-			}
-			@Override
-			public Adapter caseProbabilityRunnableItem(ProbabilityRunnableItem object) {
-				return createProbabilityRunnableItemAdapter();
+			public Adapter caseRunnableProbabilitySwitch(RunnableProbabilitySwitch object) {
+				return createRunnableProbabilitySwitchAdapter();
 			}
 			@Override
 			public Adapter caseGroup(Group object) {
 				return createGroupAdapter();
-			}
-			@Override
-			public Adapter caseDeviationRunnableItem(DeviationRunnableItem object) {
-				return createDeviationRunnableItemAdapter();
 			}
 			@Override
 			public Adapter caseRunnableCall(RunnableCall object) {
@@ -4541,48 +4516,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsExecutionInstructions <em>Os Execution Instructions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.OsExecutionInstructions
-	 * @generated
-	 */
-	public Adapter createOsExecutionInstructionsAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation <em>Os Execution Instructions Deviation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation
-	 * @generated
-	 */
-	public Adapter createOsExecutionInstructionsDeviationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant <em>Os Execution Instructions Constant</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant
-	 * @generated
-	 */
-	public Adapter createOsExecutionInstructionsConstantAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel <em>Property Constraints Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -5703,30 +5636,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ProbabilityGroup <em>Probability Group</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch <em>Runnable Probability Switch</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ProbabilityGroup
+	 * @see org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch
 	 * @generated
 	 */
-	public Adapter createProbabilityGroupAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem <em>Probability Runnable Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem
-	 * @generated
-	 */
-	public Adapter createProbabilityRunnableItemAdapter() {
+	public Adapter createRunnableProbabilitySwitchAdapter() {
 		return null;
 	}
 
@@ -5741,20 +5660,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGroupAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DeviationRunnableItem <em>Deviation Runnable Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.DeviationRunnableItem
-	 * @generated
-	 */
-	public Adapter createDeviationRunnableItemAdapter() {
 		return null;
 	}
 

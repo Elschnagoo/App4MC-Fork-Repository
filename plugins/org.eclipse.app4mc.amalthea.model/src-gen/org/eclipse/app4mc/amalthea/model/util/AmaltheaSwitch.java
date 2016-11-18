@@ -94,7 +94,6 @@ import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.ECU;
@@ -197,9 +196,6 @@ import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
 import org.eclipse.app4mc.amalthea.model.OsBuffering;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructions;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
 import org.eclipse.app4mc.amalthea.model.PairingConstraint;
@@ -218,8 +214,6 @@ import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
-import org.eclipse.app4mc.amalthea.model.ProbabilityGroup;
-import org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint;
@@ -260,6 +254,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
+import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
@@ -2149,30 +2144,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.OS_EXECUTION_INSTRUCTIONS: {
-				OsExecutionInstructions osExecutionInstructions = (OsExecutionInstructions)theEObject;
-				T1 result = caseOsExecutionInstructions(osExecutionInstructions);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.OS_EXECUTION_INSTRUCTIONS_DEVIATION: {
-				OsExecutionInstructionsDeviation osExecutionInstructionsDeviation = (OsExecutionInstructionsDeviation)theEObject;
-				T1 result = caseOsExecutionInstructionsDeviation(osExecutionInstructionsDeviation);
-				if (result == null) result = caseOsExecutionInstructions(osExecutionInstructionsDeviation);
-				if (result == null) result = caseBaseObject(osExecutionInstructionsDeviation);
-				if (result == null) result = caseIAnnotatable(osExecutionInstructionsDeviation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.OS_EXECUTION_INSTRUCTIONS_CONSTANT: {
-				OsExecutionInstructionsConstant osExecutionInstructionsConstant = (OsExecutionInstructionsConstant)theEObject;
-				T1 result = caseOsExecutionInstructionsConstant(osExecutionInstructionsConstant);
-				if (result == null) result = caseOsExecutionInstructions(osExecutionInstructionsConstant);
-				if (result == null) result = caseBaseObject(osExecutionInstructionsConstant);
-				if (result == null) result = caseIAnnotatable(osExecutionInstructionsConstant);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL: {
 				PropertyConstraintsModel propertyConstraintsModel = (PropertyConstraintsModel)theEObject;
 				T1 result = casePropertyConstraintsModel(propertyConstraintsModel);
@@ -2582,7 +2553,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				return result;
 			}
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY: {
-				ProbabilitySwitchEntry probabilitySwitchEntry = (ProbabilitySwitchEntry)theEObject;
+				ProbabilitySwitchEntry<?> probabilitySwitchEntry = (ProbabilitySwitchEntry<?>)theEObject;
 				T1 result = caseProbabilitySwitchEntry(probabilitySwitchEntry);
 				if (result == null) result = caseBaseObject(probabilitySwitchEntry);
 				if (result == null) result = caseIAnnotatable(probabilitySwitchEntry);
@@ -2914,20 +2885,12 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.PROBABILITY_GROUP: {
-				ProbabilityGroup probabilityGroup = (ProbabilityGroup)theEObject;
-				T1 result = caseProbabilityGroup(probabilityGroup);
-				if (result == null) result = caseRunnableItem(probabilityGroup);
-				if (result == null) result = caseBaseObject(probabilityGroup);
-				if (result == null) result = caseIAnnotatable(probabilityGroup);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.PROBABILITY_RUNNABLE_ITEM: {
-				ProbabilityRunnableItem probabilityRunnableItem = (ProbabilityRunnableItem)theEObject;
-				T1 result = caseProbabilityRunnableItem(probabilityRunnableItem);
-				if (result == null) result = caseBaseObject(probabilityRunnableItem);
-				if (result == null) result = caseIAnnotatable(probabilityRunnableItem);
+			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH: {
+				RunnableProbabilitySwitch runnableProbabilitySwitch = (RunnableProbabilitySwitch)theEObject;
+				T1 result = caseRunnableProbabilitySwitch(runnableProbabilitySwitch);
+				if (result == null) result = caseRunnableItem(runnableProbabilitySwitch);
+				if (result == null) result = caseBaseObject(runnableProbabilitySwitch);
+				if (result == null) result = caseIAnnotatable(runnableProbabilitySwitch);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2937,14 +2900,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseRunnableItem(group);
 				if (result == null) result = caseBaseObject(group);
 				if (result == null) result = caseIAnnotatable(group);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.DEVIATION_RUNNABLE_ITEM: {
-				DeviationRunnableItem deviationRunnableItem = (DeviationRunnableItem)theEObject;
-				T1 result = caseDeviationRunnableItem(deviationRunnableItem);
-				if (result == null) result = caseBaseObject(deviationRunnableItem);
-				if (result == null) result = caseIAnnotatable(deviationRunnableItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -6236,51 +6191,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Os Execution Instructions</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Os Execution Instructions</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseOsExecutionInstructions(OsExecutionInstructions object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Os Execution Instructions Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Os Execution Instructions Deviation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseOsExecutionInstructionsDeviation(OsExecutionInstructionsDeviation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Os Execution Instructions Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Os Execution Instructions Constant</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseOsExecutionInstructionsConstant(OsExecutionInstructionsConstant object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Property Constraints Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -6966,7 +6876,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProbabilitySwitchEntry(ProbabilitySwitchEntry object) {
+	public <T> T1 caseProbabilitySwitchEntry(ProbabilitySwitchEntry<T> object) {
 		return null;
 	}
 
@@ -7481,32 +7391,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Probability Group</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Runnable Probability Switch</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Probability Group</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Runnable Probability Switch</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProbabilityGroup(ProbabilityGroup object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Probability Runnable Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Probability Runnable Item</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseProbabilityRunnableItem(ProbabilityRunnableItem object) {
+	public T1 caseRunnableProbabilitySwitch(RunnableProbabilitySwitch object) {
 		return null;
 	}
 
@@ -7522,21 +7417,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseGroup(Group object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Deviation Runnable Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Deviation Runnable Item</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseDeviationRunnableItem(DeviationRunnableItem object) {
 		return null;
 	}
 

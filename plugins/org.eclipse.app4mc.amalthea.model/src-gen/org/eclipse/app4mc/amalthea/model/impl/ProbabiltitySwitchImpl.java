@@ -15,6 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
 
@@ -50,7 +51,7 @@ public class ProbabiltitySwitchImpl extends GraphEntryBaseImpl implements Probab
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProbabilitySwitchEntry> entries;
+	protected EList<ProbabilitySwitchEntry<GraphEntryBase>> entries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,9 +77,9 @@ public class ProbabiltitySwitchImpl extends GraphEntryBaseImpl implements Probab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ProbabilitySwitchEntry> getEntries() {
+	public EList<ProbabilitySwitchEntry<GraphEntryBase>> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList.Resolving<ProbabilitySwitchEntry>(ProbabilitySwitchEntry.class, this, AmaltheaPackage.PROBABILTITY_SWITCH__ENTRIES);
+			entries = new EObjectContainmentEList.Resolving<ProbabilitySwitchEntry<GraphEntryBase>>(ProbabilitySwitchEntry.class, this, AmaltheaPackage.PROBABILTITY_SWITCH__ENTRIES);
 		}
 		return entries;
 	}
@@ -122,7 +123,7 @@ public class ProbabiltitySwitchImpl extends GraphEntryBaseImpl implements Probab
 		switch (featureID) {
 			case AmaltheaPackage.PROBABILTITY_SWITCH__ENTRIES:
 				getEntries().clear();
-				getEntries().addAll((Collection<? extends ProbabilitySwitchEntry>)newValue);
+				getEntries().addAll((Collection<? extends ProbabilitySwitchEntry<GraphEntryBase>>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

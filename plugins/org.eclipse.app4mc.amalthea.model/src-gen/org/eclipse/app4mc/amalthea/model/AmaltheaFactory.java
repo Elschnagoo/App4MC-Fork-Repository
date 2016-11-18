@@ -1427,24 +1427,6 @@ public interface AmaltheaFactory extends EFactory {
 	OsISRInstructions createOsISRInstructions();
 
 	/**
-	 * Returns a new object of class '<em>Os Execution Instructions Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Os Execution Instructions Deviation</em>'.
-	 * @generated
-	 */
-	OsExecutionInstructionsDeviation createOsExecutionInstructionsDeviation();
-
-	/**
-	 * Returns a new object of class '<em>Os Execution Instructions Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Os Execution Instructions Constant</em>'.
-	 * @generated
-	 */
-	OsExecutionInstructionsConstant createOsExecutionInstructionsConstant();
-
-	/**
 	 * Returns a new object of class '<em>Property Constraints Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1766,7 +1748,7 @@ public interface AmaltheaFactory extends EFactory {
 	 * @return a new object of class '<em>Probability Switch Entry</em>'.
 	 * @generated
 	 */
-	ProbabilitySwitchEntry createProbabilitySwitchEntry();
+	<T> ProbabilitySwitchEntry<T> createProbabilitySwitchEntry();
 
 	/**
 	 * Returns a new object of class '<em>Counter</em>'.
@@ -2030,22 +2012,13 @@ public interface AmaltheaFactory extends EFactory {
 	AsynchronousServerCall createAsynchronousServerCall();
 
 	/**
-	 * Returns a new object of class '<em>Probability Group</em>'.
+	 * Returns a new object of class '<em>Runnable Probability Switch</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Probability Group</em>'.
+	 * @return a new object of class '<em>Runnable Probability Switch</em>'.
 	 * @generated
 	 */
-	ProbabilityGroup createProbabilityGroup();
-
-	/**
-	 * Returns a new object of class '<em>Probability Runnable Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Probability Runnable Item</em>'.
-	 * @generated
-	 */
-	ProbabilityRunnableItem createProbabilityRunnableItem();
+	RunnableProbabilitySwitch createRunnableProbabilitySwitch();
 
 	/**
 	 * Returns a new object of class '<em>Group</em>'.
@@ -2055,15 +2028,6 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	Group createGroup();
-
-	/**
-	 * Returns a new object of class '<em>Deviation Runnable Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Deviation Runnable Item</em>'.
-	 * @generated
-	 */
-	DeviationRunnableItem createDeviationRunnableItem();
 
 	/**
 	 * Returns a new object of class '<em>Runnable Call</em>'.

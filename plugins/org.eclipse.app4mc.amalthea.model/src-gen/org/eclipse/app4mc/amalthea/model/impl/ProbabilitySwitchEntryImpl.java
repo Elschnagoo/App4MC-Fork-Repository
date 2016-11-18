@@ -15,7 +15,6 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,6 +23,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -45,7 +45,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ProbabilitySwitchEntryImpl extends BaseObjectImpl implements ProbabilitySwitchEntry {
+public class ProbabilitySwitchEntryImpl<T> extends BaseObjectImpl implements ProbabilitySwitchEntry<T> {
 	/**
 	 * The default value of the '{@link #getProbability() <em>Probability</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -74,7 +74,7 @@ public class ProbabilitySwitchEntryImpl extends BaseObjectImpl implements Probab
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<GraphEntryBase> items;
+	protected EList<T> items;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,9 +121,9 @@ public class ProbabilitySwitchEntryImpl extends BaseObjectImpl implements Probab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<GraphEntryBase> getItems() {
+	public EList<T> getItems() {
 		if (items == null) {
-			items = new EObjectContainmentEList.Resolving<GraphEntryBase>(GraphEntryBase.class, this, AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS);
+			items = new EObjectContainmentEList.Resolving<T>(EObject.class, this, AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS);
 		}
 		return items;
 	}
@@ -172,7 +172,7 @@ public class ProbabilitySwitchEntryImpl extends BaseObjectImpl implements Probab
 				return;
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS:
 				getItems().clear();
-				getItems().addAll((Collection<? extends GraphEntryBase>)newValue);
+				getItems().addAll((Collection<? extends T>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

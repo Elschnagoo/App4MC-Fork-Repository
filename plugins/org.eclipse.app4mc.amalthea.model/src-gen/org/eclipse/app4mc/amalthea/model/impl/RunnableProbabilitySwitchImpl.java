@@ -15,8 +15,9 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ProbabilityGroup;
-import org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem;
+import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
+import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -30,34 +31,34 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Probability Group</b></em>'.
+ * An implementation of the model object '<em><b>Runnable Probability Switch</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProbabilityGroupImpl#getItems <em>Items</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableProbabilitySwitchImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ProbabilityGroupImpl extends RunnableItemImpl implements ProbabilityGroup {
+public class RunnableProbabilitySwitchImpl extends RunnableItemImpl implements RunnableProbabilitySwitch {
 	/**
-	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
+	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getItems()
+	 * @see #getEntries()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProbabilityRunnableItem> items;
+	protected EList<ProbabilitySwitchEntry<RunnableItem>> entries;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProbabilityGroupImpl() {
+	protected RunnableProbabilitySwitchImpl() {
 		super();
 	}
 
@@ -68,7 +69,7 @@ public class ProbabilityGroupImpl extends RunnableItemImpl implements Probabilit
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getProbabilityGroup();
+		return AmaltheaPackage.eINSTANCE.getRunnableProbabilitySwitch();
 	}
 
 	/**
@@ -76,11 +77,11 @@ public class ProbabilityGroupImpl extends RunnableItemImpl implements Probabilit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ProbabilityRunnableItem> getItems() {
-		if (items == null) {
-			items = new EObjectContainmentEList.Resolving<ProbabilityRunnableItem>(ProbabilityRunnableItem.class, this, AmaltheaPackage.PROBABILITY_GROUP__ITEMS);
+	public EList<ProbabilitySwitchEntry<RunnableItem>> getEntries() {
+		if (entries == null) {
+			entries = new EObjectContainmentEList.Resolving<ProbabilitySwitchEntry<RunnableItem>>(ProbabilitySwitchEntry.class, this, AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH__ENTRIES);
 		}
-		return items;
+		return entries;
 	}
 
 	/**
@@ -91,8 +92,8 @@ public class ProbabilityGroupImpl extends RunnableItemImpl implements Probabilit
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILITY_GROUP__ITEMS:
-				return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH__ENTRIES:
+				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -105,8 +106,8 @@ public class ProbabilityGroupImpl extends RunnableItemImpl implements Probabilit
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILITY_GROUP__ITEMS:
-				return getItems();
+			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH__ENTRIES:
+				return getEntries();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,9 +121,9 @@ public class ProbabilityGroupImpl extends RunnableItemImpl implements Probabilit
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILITY_GROUP__ITEMS:
-				getItems().clear();
-				getItems().addAll((Collection<? extends ProbabilityRunnableItem>)newValue);
+			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH__ENTRIES:
+				getEntries().clear();
+				getEntries().addAll((Collection<? extends ProbabilitySwitchEntry<RunnableItem>>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -136,8 +137,8 @@ public class ProbabilityGroupImpl extends RunnableItemImpl implements Probabilit
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILITY_GROUP__ITEMS:
-				getItems().clear();
+			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH__ENTRIES:
+				getEntries().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -151,10 +152,10 @@ public class ProbabilityGroupImpl extends RunnableItemImpl implements Probabilit
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILITY_GROUP__ITEMS:
-				return items != null && !items.isEmpty();
+			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH__ENTRIES:
+				return entries != null && !entries.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ProbabilityGroupImpl
+} //RunnableProbabilitySwitchImpl

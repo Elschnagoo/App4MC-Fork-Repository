@@ -69,19 +69,19 @@ public class RunnableItemsIP extends TransientItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createGroup()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createInstructionsConstant()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createInstructionsDeviation()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createLabelAccess()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createModeLabelAccess()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableCall()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createSemaphoreAccess()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createModeLabelAccess()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableModeSwitch()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableProbabilitySwitch()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createSenderReceiverRead()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createSenderReceiverWrite()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createSynchronousServerCall()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createAsynchronousServerCall()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createProbabilityGroup()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createGroup()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableCall()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createInstructionsDeviation()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createInstructionsConstant()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableModeSwitch()));
 	}
 
 	/**

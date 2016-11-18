@@ -16,39 +16,39 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Probability Group</b></em>'.
+ * A representation of the model object '<em><b>Runnable Probability Switch</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Describes a group of runnable items with a probability
+ * A switch in the runnable items, each path has a probability
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ProbabilityGroup#getItems <em>Items</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch#getEntries <em>Entries</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabilityGroup()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableProbabilitySwitch()
  * @model
  * @generated
  */
-public interface ProbabilityGroup extends RunnableItem {
+public interface RunnableProbabilitySwitch extends RunnableItem {
 	/**
-	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem}.
+	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry}&lt;org.eclipse.app4mc.amalthea.model.RunnableItem>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Items</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Entries</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Items</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabilityGroup_Items()
+	 * @return the value of the '<em>Entries</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableProbabilitySwitch_Entries()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList<ProbabilityRunnableItem> getItems();
+	EList<ProbabilitySwitchEntry<RunnableItem>> getEntries();
 
-} // ProbabilityGroup
+} // RunnableProbabilitySwitch

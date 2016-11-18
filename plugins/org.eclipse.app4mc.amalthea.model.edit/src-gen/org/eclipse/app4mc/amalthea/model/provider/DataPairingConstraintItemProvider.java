@@ -73,7 +73,7 @@ public class DataPairingConstraintItemProvider extends PairingConstraintItemProv
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getDataConstraint_Target());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getDataPairingConstraint_Labels());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getDataPairingConstraint_Group());
 		}
 		return childrenFeatures;
 	}
@@ -140,7 +140,7 @@ public class DataPairingConstraintItemProvider extends PairingConstraintItemProv
 
 		switch (notification.getFeatureID(DataPairingConstraint.class)) {
 			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__TARGET:
-			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__LABELS:
+			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -165,7 +165,7 @@ public class DataPairingConstraintItemProvider extends PairingConstraintItemProv
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDataPairingConstraint_Labels(),
+				(AmaltheaPackage.eINSTANCE.getDataPairingConstraint_Group(),
 				 AmaltheaFactory.eINSTANCE.createLabelEntityGroup()));
 	}
 

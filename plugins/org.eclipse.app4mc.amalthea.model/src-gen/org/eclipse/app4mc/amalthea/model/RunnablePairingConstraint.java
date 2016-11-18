@@ -27,7 +27,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint#getRunnables <em>Runnables</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint#getGroup <em>Group</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnablePairingConstraint()
@@ -36,29 +36,29 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface RunnablePairingConstraint extends PairingConstraint, RunnableConstraint, BaseObject {
 	/**
-	 * Returns the value of the '<em><b>Runnables</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Group</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Runnables</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Group</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Runnables</em>' containment reference.
-	 * @see #setRunnables(RunnableGroup)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnablePairingConstraint_Runnables()
+	 * @return the value of the '<em>Group</em>' containment reference.
+	 * @see #setGroup(RunnableGroup)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnablePairingConstraint_Group()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	RunnableGroup getRunnables();
+	RunnableGroup getGroup();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint#getRunnables <em>Runnables</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint#getGroup <em>Group</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Runnables</em>' containment reference.
-	 * @see #getRunnables()
+	 * @param value the new value of the '<em>Group</em>' containment reference.
+	 * @see #getGroup()
 	 * @generated
 	 */
-	void setRunnables(RunnableGroup value);
+	void setGroup(RunnableGroup value);
 
 } // RunnablePairingConstraint

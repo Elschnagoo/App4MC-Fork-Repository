@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessPairingConstraintImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessPairingConstraintImpl#getProcesses <em>Processes</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessPairingConstraintImpl#getGroup <em>Group</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,14 +53,14 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 	protected ProcessConstraintTarget target;
 
 	/**
-	 * The cached value of the '{@link #getProcesses() <em>Processes</em>}' containment reference.
+	 * The cached value of the '{@link #getGroup() <em>Group</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProcesses()
+	 * @see #getGroup()
 	 * @generated
 	 * @ordered
 	 */
-	protected ProcessGroup processes;
+	protected ProcessGroup group;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,22 +152,22 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProcessGroup getProcesses() {
-		if (processes != null && processes.eIsProxy()) {
-			InternalEObject oldProcesses = (InternalEObject)processes;
-			processes = (ProcessGroup)eResolveProxy(oldProcesses);
-			if (processes != oldProcesses) {
-				InternalEObject newProcesses = (InternalEObject)processes;
-				NotificationChain msgs = oldProcesses.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__PROCESSES, null, null);
-				if (newProcesses.eInternalContainer() == null) {
-					msgs = newProcesses.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__PROCESSES, null, msgs);
+	public ProcessGroup getGroup() {
+		if (group != null && group.eIsProxy()) {
+			InternalEObject oldGroup = (InternalEObject)group;
+			group = (ProcessGroup)eResolveProxy(oldGroup);
+			if (group != oldGroup) {
+				InternalEObject newGroup = (InternalEObject)group;
+				NotificationChain msgs = oldGroup.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__GROUP, null, null);
+				if (newGroup.eInternalContainer() == null) {
+					msgs = newGroup.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__GROUP, null, msgs);
 				}
 				if (msgs != null) msgs.dispatch();
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__PROCESSES, oldProcesses, processes));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__GROUP, oldGroup, group));
 			}
 		}
-		return processes;
+		return group;
 	}
 
 	/**
@@ -175,8 +175,8 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProcessGroup basicGetProcesses() {
-		return processes;
+	public ProcessGroup basicGetGroup() {
+		return group;
 	}
 
 	/**
@@ -184,11 +184,11 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetProcesses(ProcessGroup newProcesses, NotificationChain msgs) {
-		ProcessGroup oldProcesses = processes;
-		processes = newProcesses;
+	public NotificationChain basicSetGroup(ProcessGroup newGroup, NotificationChain msgs) {
+		ProcessGroup oldGroup = group;
+		group = newGroup;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__PROCESSES, oldProcesses, newProcesses);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__GROUP, oldGroup, newGroup);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -199,18 +199,18 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProcesses(ProcessGroup newProcesses) {
-		if (newProcesses != processes) {
+	public void setGroup(ProcessGroup newGroup) {
+		if (newGroup != group) {
 			NotificationChain msgs = null;
-			if (processes != null)
-				msgs = ((InternalEObject)processes).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__PROCESSES, null, msgs);
-			if (newProcesses != null)
-				msgs = ((InternalEObject)newProcesses).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__PROCESSES, null, msgs);
-			msgs = basicSetProcesses(newProcesses, msgs);
+			if (group != null)
+				msgs = ((InternalEObject)group).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__GROUP, null, msgs);
+			if (newGroup != null)
+				msgs = ((InternalEObject)newGroup).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__GROUP, null, msgs);
+			msgs = basicSetGroup(newGroup, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__PROCESSES, newProcesses, newProcesses));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__GROUP, newGroup, newGroup));
 	}
 
 	/**
@@ -223,8 +223,8 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 		switch (featureID) {
 			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__TARGET:
 				return basicSetTarget(null, msgs);
-			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__PROCESSES:
-				return basicSetProcesses(null, msgs);
+			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__GROUP:
+				return basicSetGroup(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -240,9 +240,9 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
-			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__PROCESSES:
-				if (resolve) return getProcesses();
-				return basicGetProcesses();
+			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__GROUP:
+				if (resolve) return getGroup();
+				return basicGetGroup();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -258,8 +258,8 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__TARGET:
 				setTarget((ProcessConstraintTarget)newValue);
 				return;
-			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__PROCESSES:
-				setProcesses((ProcessGroup)newValue);
+			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__GROUP:
+				setGroup((ProcessGroup)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -276,8 +276,8 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__TARGET:
 				setTarget((ProcessConstraintTarget)null);
 				return;
-			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__PROCESSES:
-				setProcesses((ProcessGroup)null);
+			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__GROUP:
+				setGroup((ProcessGroup)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -293,8 +293,8 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 		switch (featureID) {
 			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__TARGET:
 				return target != null;
-			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__PROCESSES:
-				return processes != null;
+			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT__GROUP:
+				return group != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -47,7 +47,6 @@ import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
@@ -96,8 +95,6 @@ import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
 import org.eclipse.app4mc.amalthea.model.OsBuffering;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
 import org.eclipse.app4mc.amalthea.model.PercentageMetric;
@@ -105,8 +102,6 @@ import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
 import org.eclipse.app4mc.amalthea.model.Port;
-import org.eclipse.app4mc.amalthea.model.ProbabilityGroup;
-import org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem;
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessChain;
 import org.eclipse.app4mc.amalthea.model.ProcessChainRequirement;
@@ -121,6 +116,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
+import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.SamplingType;
@@ -3101,28 +3097,6 @@ public class CustomItemProviderService {
   }
   
   /**
-   * OsExecutionInstructionsConstantItemProvider
-   */
-  public static String getOsExecutionInstructionsConstantItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof OsExecutionInstructionsConstant)) {
-      return CustomItemProviderService.getContainingFeatureName(((EObject)object), "Execution Instructions (constant)", "");
-    } else {
-      return defaultText;
-    }
-  }
-  
-  /**
-   * OsExecutionInstructionsDeviationItemProvider
-   */
-  public static String getOsExecutionInstructionsDeviationItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof OsExecutionInstructionsDeviation)) {
-      return CustomItemProviderService.getContainingFeatureName(((EObject)object), "Execution Instructions (deviation)", "");
-    } else {
-      return defaultText;
-    }
-  }
-  
-  /**
    * OsInstructionsItemProvider
    */
   public static String getOsInstructionsItemProviderText(final Object object, final String defaultText) {
@@ -3505,9 +3479,15 @@ public class CustomItemProviderService {
       }
     }
     if (!_matched) {
-      if (item instanceof ProbabilityGroup) {
+      if (item instanceof RunnableModeSwitch) {
         _matched=true;
-        _switchResult = "Probability Group";
+        _switchResult = CustomItemProviderService.getRunnableModeSwitchItemProviderText(item, null);
+      }
+    }
+    if (!_matched) {
+      if (item instanceof RunnableProbabilitySwitch) {
+        _matched=true;
+        _switchResult = "Probability Switch";
       }
     }
     if (!_matched) {
@@ -3930,51 +3910,6 @@ public class CustomItemProviderService {
   }
   
   /**
-   * DeviationRunnableItemItemProvider
-   */
-  public static String getDeviationRunnableItemItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DeviationRunnableItem)) {
-      RunnableItem _runnableItem = null;
-      if (((DeviationRunnableItem)object)!=null) {
-        _runnableItem=((DeviationRunnableItem)object).getRunnableItem();
-      }
-      final RunnableItem runItem = _runnableItem;
-      final String s1 = "( distribution )";
-      String _xifexpression = null;
-      boolean _equals = Objects.equal(runItem, null);
-      if (_equals) {
-        _xifexpression = "<runnable item>";
-      } else {
-        _xifexpression = CustomItemProviderService.getRunnableItemText(runItem);
-      }
-      final String s2 = _xifexpression;
-      return ((s1 + " ~~> ") + s2);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static List<ViewerNotification> getDeviationRunnableItemItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(DeviationRunnableItem.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION_RUNNABLE_ITEM__DEVIATION)) {
-      _matched=true;
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION_RUNNABLE_ITEM__RUNNABLE_ITEM)) {
-        _matched=true;
-      }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
-      list.add(_viewerNotification);
-    }
-    return list;
-  }
-  
-  /**
    * GroupItemProvider
    */
   public static String getGroupItemProviderText(final Object object, final String defaultText) {
@@ -3998,9 +3933,9 @@ public class CustomItemProviderService {
       final boolean ordered = _xifexpression_1;
       String _xifexpression_2 = null;
       if (ordered) {
-        _xifexpression_2 = "Sequence";
+        _xifexpression_2 = "(Sequence)";
       } else {
-        _xifexpression_2 = "Set";
+        _xifexpression_2 = "(Set)";
       }
       final String result = _xifexpression_2;
       String _xifexpression_3 = null;
@@ -4041,16 +3976,18 @@ public class CustomItemProviderService {
    */
   public static String getInstructionsConstantItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof InstructionsConstant)) {
-      long _xifexpression = (long) 0;
-      boolean _equals = Objects.equal(object, null);
+      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, "runnableItems");
       if (_equals) {
-        _xifexpression = 0;
+        _xifexpression = "";
       } else {
-        _xifexpression = ((InstructionsConstant)object).getValue();
+        _xifexpression = (feature + " -- ");
       }
-      final long instr = _xifexpression;
-      String _string = Long.toString(instr);
-      return ("instructions (constant): " + _string);
+      final String s1 = _xifexpression;
+      long _value = ((InstructionsConstant)object).getValue();
+      final String s2 = Long.toString(_value);
+      return ((s1 + "instructions (constant): ") + s2);
     } else {
       return defaultText;
     }
@@ -4061,6 +3998,15 @@ public class CustomItemProviderService {
    */
   public static String getInstructionsDeviationItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof InstructionsDeviation)) {
+      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, "runnableItems");
+      if (_equals) {
+        _xifexpression = "";
+      } else {
+        _xifexpression = (feature + " -- ");
+      }
+      final String s1 = _xifexpression;
       Deviation<LongObject> _deviation = null;
       if (((InstructionsDeviation)object)!=null) {
         _deviation=((InstructionsDeviation)object).getDeviation();
@@ -4078,15 +4024,15 @@ public class CustomItemProviderService {
         _name=_eClass.getName();
       }
       final String distName = _name;
-      String _xifexpression = null;
+      String _xifexpression_1 = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(distName);
       if (_isNullOrEmpty) {
-        _xifexpression = "<distribution>";
+        _xifexpression_1 = "<distribution>";
       } else {
-        _xifexpression = CustomItemProviderService.trimDistName(distName);
+        _xifexpression_1 = CustomItemProviderService.trimDistName(distName);
       }
-      final String s1 = _xifexpression;
-      return ("instructions (deviation): " + s1);
+      final String s2 = _xifexpression_1;
+      return ((s1 + "instructions (deviation): ") + s2);
     } else {
       return defaultText;
     }
@@ -4693,60 +4639,6 @@ public class CustomItemProviderService {
         _matched=true;
         Object _notifier_1 = notification.getNotifier();
         ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);
-        list.add(_viewerNotification_1);
-      }
-    }
-    return list;
-  }
-  
-  /**
-   * ProbabilityRunnableItemItemProvider
-   */
-  public static String getProbabilityRunnableItemItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ProbabilityRunnableItem)) {
-      int _xifexpression = (int) 0;
-      boolean _equals = Objects.equal(object, null);
-      if (_equals) {
-        _xifexpression = 0;
-      } else {
-        _xifexpression = ((ProbabilityRunnableItem)object).getProbability();
-      }
-      final int probability = _xifexpression;
-      RunnableItem _runnableItem = null;
-      if (((ProbabilityRunnableItem)object)!=null) {
-        _runnableItem=((ProbabilityRunnableItem)object).getRunnableItem();
-      }
-      final RunnableItem runItem = _runnableItem;
-      final String s1 = (("(" + Integer.valueOf(probability)) + ")");
-      String _xifexpression_1 = null;
-      boolean _equals_1 = Objects.equal(runItem, null);
-      if (_equals_1) {
-        _xifexpression_1 = "<runnable item>";
-      } else {
-        _xifexpression_1 = CustomItemProviderService.getRunnableItemText(runItem);
-      }
-      final String s2 = _xifexpression_1;
-      return ((s1 + " ~~> ") + s2);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static List<ViewerNotification> getProbabilityRunnableItemItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(ProbabilityRunnableItem.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.PROBABILITY_RUNNABLE_ITEM__PROBABILITY)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.PROBABILITY_RUNNABLE_ITEM__RUNNABLE_ITEM)) {
-        _matched=true;
-        Object _notifier_1 = notification.getNotifier();
-        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
         list.add(_viewerNotification_1);
       }
     }

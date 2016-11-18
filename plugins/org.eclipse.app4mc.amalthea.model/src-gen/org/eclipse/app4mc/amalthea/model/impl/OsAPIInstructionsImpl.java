@@ -13,8 +13,8 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructions;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -55,7 +55,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 * @ordered
 	 */
-	protected OsExecutionInstructions apiSendMessage;
+	protected Instructions apiSendMessage;
 
 	/**
 	 * The cached value of the '{@link #getApiTerminateTask() <em>Api Terminate Task</em>}' containment reference.
@@ -65,7 +65,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 * @ordered
 	 */
-	protected OsExecutionInstructions apiTerminateTask;
+	protected Instructions apiTerminateTask;
 
 	/**
 	 * The cached value of the '{@link #getApiSchedule() <em>Api Schedule</em>}' containment reference.
@@ -75,7 +75,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 * @ordered
 	 */
-	protected OsExecutionInstructions apiSchedule;
+	protected Instructions apiSchedule;
 
 	/**
 	 * The cached value of the '{@link #getApiRequestResource() <em>Api Request Resource</em>}' containment reference.
@@ -85,7 +85,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 * @ordered
 	 */
-	protected OsExecutionInstructions apiRequestResource;
+	protected Instructions apiRequestResource;
 
 	/**
 	 * The cached value of the '{@link #getApiReleaseResource() <em>Api Release Resource</em>}' containment reference.
@@ -95,7 +95,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 * @ordered
 	 */
-	protected OsExecutionInstructions apiReleaseResource;
+	protected Instructions apiReleaseResource;
 
 	/**
 	 * The cached value of the '{@link #getApiSetEvent() <em>Api Set Event</em>}' containment reference.
@@ -105,7 +105,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 * @ordered
 	 */
-	protected OsExecutionInstructions apiSetEvent;
+	protected Instructions apiSetEvent;
 
 	/**
 	 * The cached value of the '{@link #getApiWaitEvent() <em>Api Wait Event</em>}' containment reference.
@@ -115,7 +115,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 * @ordered
 	 */
-	protected OsExecutionInstructions apiWaitEvent;
+	protected Instructions apiWaitEvent;
 
 	/**
 	 * The cached value of the '{@link #getApiClearEvent() <em>Api Clear Event</em>}' containment reference.
@@ -125,7 +125,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 * @ordered
 	 */
-	protected OsExecutionInstructions apiClearEvent;
+	protected Instructions apiClearEvent;
 
 	/**
 	 * The cached value of the '{@link #getApiActivateTask() <em>Api Activate Task</em>}' containment reference.
@@ -135,7 +135,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 * @ordered
 	 */
-	protected OsExecutionInstructions apiActivateTask;
+	protected Instructions apiActivateTask;
 
 	/**
 	 * The cached value of the '{@link #getApiEnforcedMigration() <em>Api Enforced Migration</em>}' containment reference.
@@ -145,7 +145,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 * @ordered
 	 */
-	protected OsExecutionInstructions apiEnforcedMigration;
+	protected Instructions apiEnforcedMigration;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -171,10 +171,10 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions getApiSendMessage() {
+	public Instructions getApiSendMessage() {
 		if (apiSendMessage != null && apiSendMessage.eIsProxy()) {
 			InternalEObject oldApiSendMessage = (InternalEObject)apiSendMessage;
-			apiSendMessage = (OsExecutionInstructions)eResolveProxy(oldApiSendMessage);
+			apiSendMessage = (Instructions)eResolveProxy(oldApiSendMessage);
 			if (apiSendMessage != oldApiSendMessage) {
 				InternalEObject newApiSendMessage = (InternalEObject)apiSendMessage;
 				NotificationChain msgs = oldApiSendMessage.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SEND_MESSAGE, null, null);
@@ -194,7 +194,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions basicGetApiSendMessage() {
+	public Instructions basicGetApiSendMessage() {
 		return apiSendMessage;
 	}
 
@@ -203,8 +203,8 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiSendMessage(OsExecutionInstructions newApiSendMessage, NotificationChain msgs) {
-		OsExecutionInstructions oldApiSendMessage = apiSendMessage;
+	public NotificationChain basicSetApiSendMessage(Instructions newApiSendMessage, NotificationChain msgs) {
+		Instructions oldApiSendMessage = apiSendMessage;
 		apiSendMessage = newApiSendMessage;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SEND_MESSAGE, oldApiSendMessage, newApiSendMessage);
@@ -218,7 +218,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiSendMessage(OsExecutionInstructions newApiSendMessage) {
+	public void setApiSendMessage(Instructions newApiSendMessage) {
 		if (newApiSendMessage != apiSendMessage) {
 			NotificationChain msgs = null;
 			if (apiSendMessage != null)
@@ -237,10 +237,10 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions getApiTerminateTask() {
+	public Instructions getApiTerminateTask() {
 		if (apiTerminateTask != null && apiTerminateTask.eIsProxy()) {
 			InternalEObject oldApiTerminateTask = (InternalEObject)apiTerminateTask;
-			apiTerminateTask = (OsExecutionInstructions)eResolveProxy(oldApiTerminateTask);
+			apiTerminateTask = (Instructions)eResolveProxy(oldApiTerminateTask);
 			if (apiTerminateTask != oldApiTerminateTask) {
 				InternalEObject newApiTerminateTask = (InternalEObject)apiTerminateTask;
 				NotificationChain msgs = oldApiTerminateTask.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_TERMINATE_TASK, null, null);
@@ -260,7 +260,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions basicGetApiTerminateTask() {
+	public Instructions basicGetApiTerminateTask() {
 		return apiTerminateTask;
 	}
 
@@ -269,8 +269,8 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiTerminateTask(OsExecutionInstructions newApiTerminateTask, NotificationChain msgs) {
-		OsExecutionInstructions oldApiTerminateTask = apiTerminateTask;
+	public NotificationChain basicSetApiTerminateTask(Instructions newApiTerminateTask, NotificationChain msgs) {
+		Instructions oldApiTerminateTask = apiTerminateTask;
 		apiTerminateTask = newApiTerminateTask;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_TERMINATE_TASK, oldApiTerminateTask, newApiTerminateTask);
@@ -284,7 +284,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiTerminateTask(OsExecutionInstructions newApiTerminateTask) {
+	public void setApiTerminateTask(Instructions newApiTerminateTask) {
 		if (newApiTerminateTask != apiTerminateTask) {
 			NotificationChain msgs = null;
 			if (apiTerminateTask != null)
@@ -303,10 +303,10 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions getApiSchedule() {
+	public Instructions getApiSchedule() {
 		if (apiSchedule != null && apiSchedule.eIsProxy()) {
 			InternalEObject oldApiSchedule = (InternalEObject)apiSchedule;
-			apiSchedule = (OsExecutionInstructions)eResolveProxy(oldApiSchedule);
+			apiSchedule = (Instructions)eResolveProxy(oldApiSchedule);
 			if (apiSchedule != oldApiSchedule) {
 				InternalEObject newApiSchedule = (InternalEObject)apiSchedule;
 				NotificationChain msgs = oldApiSchedule.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SCHEDULE, null, null);
@@ -326,7 +326,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions basicGetApiSchedule() {
+	public Instructions basicGetApiSchedule() {
 		return apiSchedule;
 	}
 
@@ -335,8 +335,8 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiSchedule(OsExecutionInstructions newApiSchedule, NotificationChain msgs) {
-		OsExecutionInstructions oldApiSchedule = apiSchedule;
+	public NotificationChain basicSetApiSchedule(Instructions newApiSchedule, NotificationChain msgs) {
+		Instructions oldApiSchedule = apiSchedule;
 		apiSchedule = newApiSchedule;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SCHEDULE, oldApiSchedule, newApiSchedule);
@@ -350,7 +350,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiSchedule(OsExecutionInstructions newApiSchedule) {
+	public void setApiSchedule(Instructions newApiSchedule) {
 		if (newApiSchedule != apiSchedule) {
 			NotificationChain msgs = null;
 			if (apiSchedule != null)
@@ -369,10 +369,10 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions getApiRequestResource() {
+	public Instructions getApiRequestResource() {
 		if (apiRequestResource != null && apiRequestResource.eIsProxy()) {
 			InternalEObject oldApiRequestResource = (InternalEObject)apiRequestResource;
-			apiRequestResource = (OsExecutionInstructions)eResolveProxy(oldApiRequestResource);
+			apiRequestResource = (Instructions)eResolveProxy(oldApiRequestResource);
 			if (apiRequestResource != oldApiRequestResource) {
 				InternalEObject newApiRequestResource = (InternalEObject)apiRequestResource;
 				NotificationChain msgs = oldApiRequestResource.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_RESOURCE, null, null);
@@ -392,7 +392,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions basicGetApiRequestResource() {
+	public Instructions basicGetApiRequestResource() {
 		return apiRequestResource;
 	}
 
@@ -401,8 +401,8 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiRequestResource(OsExecutionInstructions newApiRequestResource, NotificationChain msgs) {
-		OsExecutionInstructions oldApiRequestResource = apiRequestResource;
+	public NotificationChain basicSetApiRequestResource(Instructions newApiRequestResource, NotificationChain msgs) {
+		Instructions oldApiRequestResource = apiRequestResource;
 		apiRequestResource = newApiRequestResource;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_RESOURCE, oldApiRequestResource, newApiRequestResource);
@@ -416,7 +416,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiRequestResource(OsExecutionInstructions newApiRequestResource) {
+	public void setApiRequestResource(Instructions newApiRequestResource) {
 		if (newApiRequestResource != apiRequestResource) {
 			NotificationChain msgs = null;
 			if (apiRequestResource != null)
@@ -435,10 +435,10 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions getApiReleaseResource() {
+	public Instructions getApiReleaseResource() {
 		if (apiReleaseResource != null && apiReleaseResource.eIsProxy()) {
 			InternalEObject oldApiReleaseResource = (InternalEObject)apiReleaseResource;
-			apiReleaseResource = (OsExecutionInstructions)eResolveProxy(oldApiReleaseResource);
+			apiReleaseResource = (Instructions)eResolveProxy(oldApiReleaseResource);
 			if (apiReleaseResource != oldApiReleaseResource) {
 				InternalEObject newApiReleaseResource = (InternalEObject)apiReleaseResource;
 				NotificationChain msgs = oldApiReleaseResource.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_RESOURCE, null, null);
@@ -458,7 +458,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions basicGetApiReleaseResource() {
+	public Instructions basicGetApiReleaseResource() {
 		return apiReleaseResource;
 	}
 
@@ -467,8 +467,8 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiReleaseResource(OsExecutionInstructions newApiReleaseResource, NotificationChain msgs) {
-		OsExecutionInstructions oldApiReleaseResource = apiReleaseResource;
+	public NotificationChain basicSetApiReleaseResource(Instructions newApiReleaseResource, NotificationChain msgs) {
+		Instructions oldApiReleaseResource = apiReleaseResource;
 		apiReleaseResource = newApiReleaseResource;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_RESOURCE, oldApiReleaseResource, newApiReleaseResource);
@@ -482,7 +482,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiReleaseResource(OsExecutionInstructions newApiReleaseResource) {
+	public void setApiReleaseResource(Instructions newApiReleaseResource) {
 		if (newApiReleaseResource != apiReleaseResource) {
 			NotificationChain msgs = null;
 			if (apiReleaseResource != null)
@@ -501,10 +501,10 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions getApiSetEvent() {
+	public Instructions getApiSetEvent() {
 		if (apiSetEvent != null && apiSetEvent.eIsProxy()) {
 			InternalEObject oldApiSetEvent = (InternalEObject)apiSetEvent;
-			apiSetEvent = (OsExecutionInstructions)eResolveProxy(oldApiSetEvent);
+			apiSetEvent = (Instructions)eResolveProxy(oldApiSetEvent);
 			if (apiSetEvent != oldApiSetEvent) {
 				InternalEObject newApiSetEvent = (InternalEObject)apiSetEvent;
 				NotificationChain msgs = oldApiSetEvent.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SET_EVENT, null, null);
@@ -524,7 +524,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions basicGetApiSetEvent() {
+	public Instructions basicGetApiSetEvent() {
 		return apiSetEvent;
 	}
 
@@ -533,8 +533,8 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiSetEvent(OsExecutionInstructions newApiSetEvent, NotificationChain msgs) {
-		OsExecutionInstructions oldApiSetEvent = apiSetEvent;
+	public NotificationChain basicSetApiSetEvent(Instructions newApiSetEvent, NotificationChain msgs) {
+		Instructions oldApiSetEvent = apiSetEvent;
 		apiSetEvent = newApiSetEvent;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SET_EVENT, oldApiSetEvent, newApiSetEvent);
@@ -548,7 +548,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiSetEvent(OsExecutionInstructions newApiSetEvent) {
+	public void setApiSetEvent(Instructions newApiSetEvent) {
 		if (newApiSetEvent != apiSetEvent) {
 			NotificationChain msgs = null;
 			if (apiSetEvent != null)
@@ -567,10 +567,10 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions getApiWaitEvent() {
+	public Instructions getApiWaitEvent() {
 		if (apiWaitEvent != null && apiWaitEvent.eIsProxy()) {
 			InternalEObject oldApiWaitEvent = (InternalEObject)apiWaitEvent;
-			apiWaitEvent = (OsExecutionInstructions)eResolveProxy(oldApiWaitEvent);
+			apiWaitEvent = (Instructions)eResolveProxy(oldApiWaitEvent);
 			if (apiWaitEvent != oldApiWaitEvent) {
 				InternalEObject newApiWaitEvent = (InternalEObject)apiWaitEvent;
 				NotificationChain msgs = oldApiWaitEvent.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_WAIT_EVENT, null, null);
@@ -590,7 +590,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions basicGetApiWaitEvent() {
+	public Instructions basicGetApiWaitEvent() {
 		return apiWaitEvent;
 	}
 
@@ -599,8 +599,8 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiWaitEvent(OsExecutionInstructions newApiWaitEvent, NotificationChain msgs) {
-		OsExecutionInstructions oldApiWaitEvent = apiWaitEvent;
+	public NotificationChain basicSetApiWaitEvent(Instructions newApiWaitEvent, NotificationChain msgs) {
+		Instructions oldApiWaitEvent = apiWaitEvent;
 		apiWaitEvent = newApiWaitEvent;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_WAIT_EVENT, oldApiWaitEvent, newApiWaitEvent);
@@ -614,7 +614,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiWaitEvent(OsExecutionInstructions newApiWaitEvent) {
+	public void setApiWaitEvent(Instructions newApiWaitEvent) {
 		if (newApiWaitEvent != apiWaitEvent) {
 			NotificationChain msgs = null;
 			if (apiWaitEvent != null)
@@ -633,10 +633,10 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions getApiClearEvent() {
+	public Instructions getApiClearEvent() {
 		if (apiClearEvent != null && apiClearEvent.eIsProxy()) {
 			InternalEObject oldApiClearEvent = (InternalEObject)apiClearEvent;
-			apiClearEvent = (OsExecutionInstructions)eResolveProxy(oldApiClearEvent);
+			apiClearEvent = (Instructions)eResolveProxy(oldApiClearEvent);
 			if (apiClearEvent != oldApiClearEvent) {
 				InternalEObject newApiClearEvent = (InternalEObject)apiClearEvent;
 				NotificationChain msgs = oldApiClearEvent.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_CLEAR_EVENT, null, null);
@@ -656,7 +656,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions basicGetApiClearEvent() {
+	public Instructions basicGetApiClearEvent() {
 		return apiClearEvent;
 	}
 
@@ -665,8 +665,8 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiClearEvent(OsExecutionInstructions newApiClearEvent, NotificationChain msgs) {
-		OsExecutionInstructions oldApiClearEvent = apiClearEvent;
+	public NotificationChain basicSetApiClearEvent(Instructions newApiClearEvent, NotificationChain msgs) {
+		Instructions oldApiClearEvent = apiClearEvent;
 		apiClearEvent = newApiClearEvent;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_CLEAR_EVENT, oldApiClearEvent, newApiClearEvent);
@@ -680,7 +680,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiClearEvent(OsExecutionInstructions newApiClearEvent) {
+	public void setApiClearEvent(Instructions newApiClearEvent) {
 		if (newApiClearEvent != apiClearEvent) {
 			NotificationChain msgs = null;
 			if (apiClearEvent != null)
@@ -699,10 +699,10 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions getApiActivateTask() {
+	public Instructions getApiActivateTask() {
 		if (apiActivateTask != null && apiActivateTask.eIsProxy()) {
 			InternalEObject oldApiActivateTask = (InternalEObject)apiActivateTask;
-			apiActivateTask = (OsExecutionInstructions)eResolveProxy(oldApiActivateTask);
+			apiActivateTask = (Instructions)eResolveProxy(oldApiActivateTask);
 			if (apiActivateTask != oldApiActivateTask) {
 				InternalEObject newApiActivateTask = (InternalEObject)apiActivateTask;
 				NotificationChain msgs = oldApiActivateTask.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_ACTIVATE_TASK, null, null);
@@ -722,7 +722,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions basicGetApiActivateTask() {
+	public Instructions basicGetApiActivateTask() {
 		return apiActivateTask;
 	}
 
@@ -731,8 +731,8 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiActivateTask(OsExecutionInstructions newApiActivateTask, NotificationChain msgs) {
-		OsExecutionInstructions oldApiActivateTask = apiActivateTask;
+	public NotificationChain basicSetApiActivateTask(Instructions newApiActivateTask, NotificationChain msgs) {
+		Instructions oldApiActivateTask = apiActivateTask;
 		apiActivateTask = newApiActivateTask;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_ACTIVATE_TASK, oldApiActivateTask, newApiActivateTask);
@@ -746,7 +746,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiActivateTask(OsExecutionInstructions newApiActivateTask) {
+	public void setApiActivateTask(Instructions newApiActivateTask) {
 		if (newApiActivateTask != apiActivateTask) {
 			NotificationChain msgs = null;
 			if (apiActivateTask != null)
@@ -765,10 +765,10 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions getApiEnforcedMigration() {
+	public Instructions getApiEnforcedMigration() {
 		if (apiEnforcedMigration != null && apiEnforcedMigration.eIsProxy()) {
 			InternalEObject oldApiEnforcedMigration = (InternalEObject)apiEnforcedMigration;
-			apiEnforcedMigration = (OsExecutionInstructions)eResolveProxy(oldApiEnforcedMigration);
+			apiEnforcedMigration = (Instructions)eResolveProxy(oldApiEnforcedMigration);
 			if (apiEnforcedMigration != oldApiEnforcedMigration) {
 				InternalEObject newApiEnforcedMigration = (InternalEObject)apiEnforcedMigration;
 				NotificationChain msgs = oldApiEnforcedMigration.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION, null, null);
@@ -788,7 +788,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsExecutionInstructions basicGetApiEnforcedMigration() {
+	public Instructions basicGetApiEnforcedMigration() {
 		return apiEnforcedMigration;
 	}
 
@@ -797,8 +797,8 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiEnforcedMigration(OsExecutionInstructions newApiEnforcedMigration, NotificationChain msgs) {
-		OsExecutionInstructions oldApiEnforcedMigration = apiEnforcedMigration;
+	public NotificationChain basicSetApiEnforcedMigration(Instructions newApiEnforcedMigration, NotificationChain msgs) {
+		Instructions oldApiEnforcedMigration = apiEnforcedMigration;
 		apiEnforcedMigration = newApiEnforcedMigration;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION, oldApiEnforcedMigration, newApiEnforcedMigration);
@@ -812,7 +812,7 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiEnforcedMigration(OsExecutionInstructions newApiEnforcedMigration) {
+	public void setApiEnforcedMigration(Instructions newApiEnforcedMigration) {
 		if (newApiEnforcedMigration != apiEnforcedMigration) {
 			NotificationChain msgs = null;
 			if (apiEnforcedMigration != null)
@@ -909,34 +909,34 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SEND_MESSAGE:
-				setApiSendMessage((OsExecutionInstructions)newValue);
+				setApiSendMessage((Instructions)newValue);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_TERMINATE_TASK:
-				setApiTerminateTask((OsExecutionInstructions)newValue);
+				setApiTerminateTask((Instructions)newValue);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SCHEDULE:
-				setApiSchedule((OsExecutionInstructions)newValue);
+				setApiSchedule((Instructions)newValue);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_RESOURCE:
-				setApiRequestResource((OsExecutionInstructions)newValue);
+				setApiRequestResource((Instructions)newValue);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_RESOURCE:
-				setApiReleaseResource((OsExecutionInstructions)newValue);
+				setApiReleaseResource((Instructions)newValue);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SET_EVENT:
-				setApiSetEvent((OsExecutionInstructions)newValue);
+				setApiSetEvent((Instructions)newValue);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_WAIT_EVENT:
-				setApiWaitEvent((OsExecutionInstructions)newValue);
+				setApiWaitEvent((Instructions)newValue);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_CLEAR_EVENT:
-				setApiClearEvent((OsExecutionInstructions)newValue);
+				setApiClearEvent((Instructions)newValue);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_ACTIVATE_TASK:
-				setApiActivateTask((OsExecutionInstructions)newValue);
+				setApiActivateTask((Instructions)newValue);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION:
-				setApiEnforcedMigration((OsExecutionInstructions)newValue);
+				setApiEnforcedMigration((Instructions)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -951,34 +951,34 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SEND_MESSAGE:
-				setApiSendMessage((OsExecutionInstructions)null);
+				setApiSendMessage((Instructions)null);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_TERMINATE_TASK:
-				setApiTerminateTask((OsExecutionInstructions)null);
+				setApiTerminateTask((Instructions)null);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SCHEDULE:
-				setApiSchedule((OsExecutionInstructions)null);
+				setApiSchedule((Instructions)null);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_RESOURCE:
-				setApiRequestResource((OsExecutionInstructions)null);
+				setApiRequestResource((Instructions)null);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_RESOURCE:
-				setApiReleaseResource((OsExecutionInstructions)null);
+				setApiReleaseResource((Instructions)null);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SET_EVENT:
-				setApiSetEvent((OsExecutionInstructions)null);
+				setApiSetEvent((Instructions)null);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_WAIT_EVENT:
-				setApiWaitEvent((OsExecutionInstructions)null);
+				setApiWaitEvent((Instructions)null);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_CLEAR_EVENT:
-				setApiClearEvent((OsExecutionInstructions)null);
+				setApiClearEvent((Instructions)null);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_ACTIVATE_TASK:
-				setApiActivateTask((OsExecutionInstructions)null);
+				setApiActivateTask((Instructions)null);
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION:
-				setApiEnforcedMigration((OsExecutionInstructions)null);
+				setApiEnforcedMigration((Instructions)null);
 				return;
 		}
 		super.eUnset(featureID);

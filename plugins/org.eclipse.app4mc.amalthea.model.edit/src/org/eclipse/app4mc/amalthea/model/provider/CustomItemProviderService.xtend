@@ -37,7 +37,6 @@ import org.eclipse.app4mc.amalthea.model.DataSize
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition
 import org.eclipse.app4mc.amalthea.model.Deviation
-import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem
 import org.eclipse.app4mc.amalthea.model.DoubleObject
 import org.eclipse.app4mc.amalthea.model.EventChainReference
 import org.eclipse.app4mc.amalthea.model.EventConfigElement
@@ -77,16 +76,12 @@ import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec
 import org.eclipse.app4mc.amalthea.model.OrderType
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions
 import org.eclipse.app4mc.amalthea.model.OsBuffering
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions
 import org.eclipse.app4mc.amalthea.model.OsInstructions
 import org.eclipse.app4mc.amalthea.model.PercentageMetric
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping
-import org.eclipse.app4mc.amalthea.model.ProbabilityGroup
-import org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint
 import org.eclipse.app4mc.amalthea.model.ProcessChainRequirement
 import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint
@@ -99,6 +94,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint
 import org.eclipse.app4mc.amalthea.model.RunnableCall
 import org.eclipse.app4mc.amalthea.model.RunnableItem
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch
+import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement
 import org.eclipse.app4mc.amalthea.model.RunnableScope
 import org.eclipse.app4mc.amalthea.model.SamplingType
@@ -1241,7 +1237,7 @@ class CustomItemProviderService {
 			return defaultText
 		}
 
-// TODO: use ProviderUtil()
+// TODO: use label text of referred element
 
 //			final AccessPathRef element = (AccessPathRef) object;
 //			if (null != element.getRef()) {
@@ -1263,7 +1259,7 @@ class CustomItemProviderService {
 			return defaultText
 		}
 
-// TODO: use ProviderUtil()
+// TODO: use label text of referred element
 
 //			final HwAccessPathRef element = (HwAccessPathRef) object;
 //			if (null != element.getRef()) {
@@ -1611,28 +1607,6 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						OsExecutionInstructionsConstantItemProvider
-	 *****************************************************************************/
-	def static String getOsExecutionInstructionsConstantItemProviderText(Object object, String defaultText) {
-		if (object instanceof OsExecutionInstructionsConstant) {
-			return getContainingFeatureName(object, "Execution Instructions (constant)", "")
-		} else {
-			return defaultText
-		}
-	}
-
-	/*****************************************************************************
-	 * 						OsExecutionInstructionsDeviationItemProvider
-	 *****************************************************************************/
-	def static String getOsExecutionInstructionsDeviationItemProviderText(Object object, String defaultText) {
-		if (object instanceof OsExecutionInstructionsDeviation) {
-			return getContainingFeatureName(object, "Execution Instructions (deviation)", "")
-		} else {
-			return defaultText
-		}
-	}
-
-	/*****************************************************************************
 	 * 						OsInstructionsItemProvider
 	 *****************************************************************************/
 	def static String getOsInstructionsItemProviderText(Object object, String defaultText) {
@@ -1836,7 +1810,8 @@ class CustomItemProviderService {
 			InstructionsConstant: getInstructionsConstantItemProviderText(item, null)
 			InstructionsDeviation: getInstructionsDeviationItemProviderText(item, null)
 			Group: getGroupItemProviderText(item, null)
-			ProbabilityGroup: "Probability Group"
+			RunnableModeSwitch: getRunnableModeSwitchItemProviderText(item, null)
+			RunnableProbabilitySwitch: "Probability Switch"
 			ModeLabelAccess: getModeLabelAccessItemProviderText(item, null)
 			SemaphoreAccess: getSemaphoreAccessItemProviderText(item, null)
 			SenderReceiverRead: getSenderReceiverReadItemProviderText(item, null)
@@ -1988,50 +1963,13 @@ class CustomItemProviderService {
 
 
 	/*****************************************************************************
-	 * 						DeviationRunnableItemItemProvider
-	 *****************************************************************************/
-	def static String getDeviationRunnableItemItemProviderText(Object object, String defaultText) {
-		if (object instanceof DeviationRunnableItem) {
-			//val distribution = object?.deviation?.distribution
-			val runItem = object?.runnableItem
-			val s1 = "( distribution )"
-			val s2 = if(runItem == null) "<runnable item>" else getRunnableItemText(runItem)
-			return s1 + " ~~> " + s2			
-		} else {
-			return defaultText
-		}
-	}
-
-// TODO: use provider ?????
-	
-//		if (null != item.getRunnableItem() && getRootAdapterFactory().isFactoryForType(item.getRunnableItem())) {
-//			final Object plainAdapter = getRootAdapterFactory().adapt(item.getRunnableItem(), IItemLabelProvider.class);
-//			if (plainAdapter instanceof IItemLabelProvider) {
-//				final String tmp = ((IItemLabelProvider) plainAdapter).getText(item.getRunnableItem());
-//				return label1 + " ~~> " + tmp;
-//			}
-//		}
-//		return label1;
-
-	def static List<ViewerNotification> getDeviationRunnableItemItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(DeviationRunnableItem)) {
-			case AmaltheaPackage::DEVIATION_RUNNABLE_ITEM__DEVIATION,
-			case AmaltheaPackage::DEVIATION_RUNNABLE_ITEM__RUNNABLE_ITEM:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
-		}
-		return list
-	}
-
-
-	/*****************************************************************************
 	 * 						GroupItemProvider
 	 *****************************************************************************/
 	def static String getGroupItemProviderText(Object object, String defaultText) {
 		if (object instanceof Group) {
 			val name = if (object.name.isNullOrEmpty) null else object.name
 			val ordered = if(object == null) false else object.isOrdered
-			val result = if(ordered) "Sequence" else "Set"
+			val result = if(ordered) "(Sequence)" else "(Set)"
 			return if (name == null) result else result + " " + name
 		}
 	}
@@ -2049,8 +1987,10 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getInstructionsConstantItemProviderText(Object object, String defaultText) {
 		if (object instanceof InstructionsConstant) {
-			val instr = if(object == null) 0 else object.value
-			return "instructions (constant): " + Long.toString(instr)
+			val feature = getContainingFeatureName(object, "", "")
+			val s1 = if(feature == "runnableItems") "" else feature + " -- "
+			val s2 = Long.toString(object.value)
+			return s1 + "instructions (constant): " + s2
 		} else {
 			return defaultText
 		}
@@ -2061,9 +2001,11 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getInstructionsDeviationItemProviderText(Object object, String defaultText) {
 		if (object instanceof InstructionsDeviation) {
+			val feature = getContainingFeatureName(object, "", "")
+			val s1 = if(feature == "runnableItems") "" else feature + " -- "
 			val distName = object?.deviation?.distribution?.eClass?.name
-			val s1 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
-			return "instructions (deviation): " + s1
+			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
+			return s1 + "instructions (deviation): " + s2
 		} else {
 			return defaultText
 		}
@@ -2358,41 +2300,6 @@ class CustomItemProviderService {
 		}
 		return list
 	}
-
-	/*****************************************************************************
-	 * 						ProbabilityRunnableItemItemProvider
-	 *****************************************************************************/
-	def static String getProbabilityRunnableItemItemProviderText(Object object, String defaultText) {
-		if (object instanceof ProbabilityRunnableItem) {
-			val probability = if(object == null) 0 else object.probability
-			val runItem = object?.runnableItem
-			val s1 = "(" + probability + ")"
-			val s2 = if(runItem == null) "<runnable item>" else getRunnableItemText(runItem)
-			return s1 + " ~~> " + s2			
-		} else {
-			return defaultText
-		}
-	}
-// TODO: use provider ?????
-	
-//		if (null != item.getRunnableItem() && getRootAdapterFactory().isFactoryForType(item.getRunnableItem())) {
-//			final Object plainAdapter = getRootAdapterFactory().adapt(item.getRunnableItem(), IItemLabelProvider.class);
-//			if (plainAdapter instanceof IItemLabelProvider) {
-//				final String tmp = ((IItemLabelProvider) plainAdapter).getText(item.getRunnableItem());
-//				return label1 + " ~~> " + tmp;
-//			}
-
-	def static List<ViewerNotification> getProbabilityRunnableItemItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(ProbabilityRunnableItem)) {
-			case AmaltheaPackage::PROBABILITY_RUNNABLE_ITEM__PROBABILITY:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-			case AmaltheaPackage::PROBABILITY_RUNNABLE_ITEM__RUNNABLE_ITEM:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
-		}
-		return list
-	}
-
 
 	/*****************************************************************************
 	 * 						SenderReceiverReadItemProvider

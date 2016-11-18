@@ -348,7 +348,7 @@ public class RunnableItemProvider extends AbstractElementMemoryInformationItemPr
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
+				 AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter

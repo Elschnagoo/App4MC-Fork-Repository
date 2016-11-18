@@ -936,16 +936,6 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
 				 AmaltheaFactory.eINSTANCE.createPropertyConstraintsModel()));
 
 		newChildDescriptors.add
@@ -1271,22 +1261,12 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityRunnableItem()));
+				 AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
 				 AmaltheaFactory.eINSTANCE.createGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(),
-				 AmaltheaFactory.eINSTANCE.createDeviationRunnableItem()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -2236,16 +2216,6 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsDeviation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
-				 AmaltheaFactory.eINSTANCE.createOsExecutionInstructionsConstant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
 				 AmaltheaFactory.eINSTANCE.createPropertyConstraintsModel()));
 
 		newChildDescriptors.add
@@ -2571,22 +2541,12 @@ public class GaussDistributionItemProvider extends DistributionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
-				 AmaltheaFactory.eINSTANCE.createProbabilityRunnableItem()));
+				 AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
 				 AmaltheaFactory.eINSTANCE.createGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(),
-				 AmaltheaFactory.eINSTANCE.createDeviationRunnableItem()));
 
 		newChildDescriptors.add
 			(createChildParameter

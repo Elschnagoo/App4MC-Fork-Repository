@@ -106,7 +106,6 @@ import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.DeviationRunnableItem;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.ECUType;
@@ -219,9 +218,6 @@ import org.eclipse.app4mc.amalthea.model.OrderType;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
 import org.eclipse.app4mc.amalthea.model.OsBuffering;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructions;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.OsExecutionInstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
 import org.eclipse.app4mc.amalthea.model.PairingConstraint;
@@ -243,8 +239,6 @@ import org.eclipse.app4mc.amalthea.model.Preemption;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
-import org.eclipse.app4mc.amalthea.model.ProbabilityGroup;
-import org.eclipse.app4mc.amalthea.model.ProbabilityRunnableItem;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint;
@@ -290,6 +284,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
+import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
@@ -1826,27 +1821,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass osExecutionInstructionsEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass osExecutionInstructionsDeviationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass osExecutionInstructionsConstantEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass propertyConstraintsModelEClass = null;
 
 	/**
@@ -2407,14 +2381,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass probabilityGroupEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass probabilityRunnableItemEClass = null;
+	private EClass runnableProbabilitySwitchEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2422,13 +2389,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass groupEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass deviationRunnableItemEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4718,7 +4678,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRunnablePairingConstraint_Runnables() {
+	public EReference getRunnablePairingConstraint_Group() {
 		return (EReference)runnablePairingConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -4736,7 +4696,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProcessPairingConstraint_Processes() {
+	public EReference getProcessPairingConstraint_Group() {
 		return (EReference)processPairingConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -4754,7 +4714,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataPairingConstraint_Labels() {
+	public EReference getDataPairingConstraint_Group() {
 		return (EReference)dataPairingConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -8111,51 +8071,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOsExecutionInstructions() {
-		return osExecutionInstructionsEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOsExecutionInstructionsDeviation() {
-		return osExecutionInstructionsDeviationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOsExecutionInstructionsDeviation_Deviation() {
-		return (EReference)osExecutionInstructionsDeviationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOsExecutionInstructionsConstant() {
-		return osExecutionInstructionsConstantEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getOsExecutionInstructionsConstant_Value() {
-		return (EAttribute)osExecutionInstructionsConstantEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPropertyConstraintsModel() {
 		return propertyConstraintsModelEClass;
 	}
@@ -10298,8 +10213,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getProbabilityGroup() {
-		return probabilityGroupEClass;
+	public EClass getRunnableProbabilitySwitch() {
+		return runnableProbabilitySwitchEClass;
 	}
 
 	/**
@@ -10307,35 +10222,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProbabilityGroup_Items() {
-		return (EReference)probabilityGroupEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getProbabilityRunnableItem() {
-		return probabilityRunnableItemEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getProbabilityRunnableItem_Probability() {
-		return (EAttribute)probabilityRunnableItemEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getProbabilityRunnableItem_RunnableItem() {
-		return (EReference)probabilityRunnableItemEClass.getEStructuralFeatures().get(1);
+	public EReference getRunnableProbabilitySwitch_Entries() {
+		return (EReference)runnableProbabilitySwitchEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -10372,33 +10260,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getGroup_Items() {
 		return (EReference)groupEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getDeviationRunnableItem() {
-		return deviationRunnableItemEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDeviationRunnableItem_RunnableItem() {
-		return (EReference)deviationRunnableItemEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDeviationRunnableItem_Deviation() {
-		return (EReference)deviationRunnableItemEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -11559,13 +11420,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(dataSeparationConstraintEClass, DATA_SEPARATION_CONSTRAINT__GROUPS);
 
 		runnablePairingConstraintEClass = createEClass(RUNNABLE_PAIRING_CONSTRAINT);
-		createEReference(runnablePairingConstraintEClass, RUNNABLE_PAIRING_CONSTRAINT__RUNNABLES);
+		createEReference(runnablePairingConstraintEClass, RUNNABLE_PAIRING_CONSTRAINT__GROUP);
 
 		processPairingConstraintEClass = createEClass(PROCESS_PAIRING_CONSTRAINT);
-		createEReference(processPairingConstraintEClass, PROCESS_PAIRING_CONSTRAINT__PROCESSES);
+		createEReference(processPairingConstraintEClass, PROCESS_PAIRING_CONSTRAINT__GROUP);
 
 		dataPairingConstraintEClass = createEClass(DATA_PAIRING_CONSTRAINT);
-		createEReference(dataPairingConstraintEClass, DATA_PAIRING_CONSTRAINT__LABELS);
+		createEReference(dataPairingConstraintEClass, DATA_PAIRING_CONSTRAINT__GROUP);
 
 		runnableConstraintTargetEClass = createEClass(RUNNABLE_CONSTRAINT_TARGET);
 
@@ -12071,14 +11932,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(osISRInstructionsEClass, OS_ISR_INSTRUCTIONS__PRE_EXECUTION_OVERHEAD);
 		createEReference(osISRInstructionsEClass, OS_ISR_INSTRUCTIONS__POST_EXECUTION_OVERHEAD);
 
-		osExecutionInstructionsEClass = createEClass(OS_EXECUTION_INSTRUCTIONS);
-
-		osExecutionInstructionsDeviationEClass = createEClass(OS_EXECUTION_INSTRUCTIONS_DEVIATION);
-		createEReference(osExecutionInstructionsDeviationEClass, OS_EXECUTION_INSTRUCTIONS_DEVIATION__DEVIATION);
-
-		osExecutionInstructionsConstantEClass = createEClass(OS_EXECUTION_INSTRUCTIONS_CONSTANT);
-		createEAttribute(osExecutionInstructionsConstantEClass, OS_EXECUTION_INSTRUCTIONS_CONSTANT__VALUE);
-
 		propertyConstraintsModelEClass = createEClass(PROPERTY_CONSTRAINTS_MODEL);
 		createEReference(propertyConstraintsModelEClass, PROPERTY_CONSTRAINTS_MODEL__ALLOCATION_CONSTRAINTS);
 		createEReference(propertyConstraintsModelEClass, PROPERTY_CONSTRAINTS_MODEL__MAPPING_CONSTRAINTS);
@@ -12397,21 +12250,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		asynchronousServerCallEClass = createEClass(ASYNCHRONOUS_SERVER_CALL);
 		createEReference(asynchronousServerCallEClass, ASYNCHRONOUS_SERVER_CALL__RESULT_RUNNABLE);
 
-		probabilityGroupEClass = createEClass(PROBABILITY_GROUP);
-		createEReference(probabilityGroupEClass, PROBABILITY_GROUP__ITEMS);
-
-		probabilityRunnableItemEClass = createEClass(PROBABILITY_RUNNABLE_ITEM);
-		createEAttribute(probabilityRunnableItemEClass, PROBABILITY_RUNNABLE_ITEM__PROBABILITY);
-		createEReference(probabilityRunnableItemEClass, PROBABILITY_RUNNABLE_ITEM__RUNNABLE_ITEM);
+		runnableProbabilitySwitchEClass = createEClass(RUNNABLE_PROBABILITY_SWITCH);
+		createEReference(runnableProbabilitySwitchEClass, RUNNABLE_PROBABILITY_SWITCH__ENTRIES);
 
 		groupEClass = createEClass(GROUP);
 		createEAttribute(groupEClass, GROUP__NAME);
 		createEAttribute(groupEClass, GROUP__ORDERED);
 		createEReference(groupEClass, GROUP__ITEMS);
-
-		deviationRunnableItemEClass = createEClass(DEVIATION_RUNNABLE_ITEM);
-		createEReference(deviationRunnableItemEClass, DEVIATION_RUNNABLE_ITEM__RUNNABLE_ITEM);
-		createEReference(deviationRunnableItemEClass, DEVIATION_RUNNABLE_ITEM__DEVIATION);
 
 		runnableCallEClass = createEClass(RUNNABLE_CALL);
 		createEReference(runnableCallEClass, RUNNABLE_CALL__RUNNABLE);
@@ -12573,6 +12418,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		ETypeParameter betaDistributionEClass_T = addETypeParameter(betaDistributionEClass, "T");
 		ETypeParameter modeSwitchEntryEClass_T = addETypeParameter(modeSwitchEntryEClass, "T");
 		ETypeParameter modeSwitchDefaultEClass_T = addETypeParameter(modeSwitchDefaultEClass, "T");
+		ETypeParameter probabilitySwitchEntryEClass_T = addETypeParameter(probabilitySwitchEntryEClass, "T");
 
 		// Set bounds for type parameters
 
@@ -12814,10 +12660,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		osInstructionsEClass.getESuperTypes().add(this.getReferableBaseObject());
 		osAPIInstructionsEClass.getESuperTypes().add(this.getBaseObject());
 		osISRInstructionsEClass.getESuperTypes().add(this.getBaseObject());
-		osExecutionInstructionsDeviationEClass.getESuperTypes().add(this.getOsExecutionInstructions());
-		osExecutionInstructionsDeviationEClass.getESuperTypes().add(this.getBaseObject());
-		osExecutionInstructionsConstantEClass.getESuperTypes().add(this.getOsExecutionInstructions());
-		osExecutionInstructionsConstantEClass.getESuperTypes().add(this.getBaseObject());
 		propertyConstraintsModelEClass.getESuperTypes().add(this.getBaseObject());
 		allocationConstraintEClass.getESuperTypes().add(this.getBaseObject());
 		mappingConstraintEClass.getESuperTypes().add(this.getBaseObject());
@@ -12903,10 +12745,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		serverCallEClass.getESuperTypes().add(this.getRunnableItem());
 		synchronousServerCallEClass.getESuperTypes().add(this.getServerCall());
 		asynchronousServerCallEClass.getESuperTypes().add(this.getServerCall());
-		probabilityGroupEClass.getESuperTypes().add(this.getRunnableItem());
-		probabilityRunnableItemEClass.getESuperTypes().add(this.getBaseObject());
+		runnableProbabilitySwitchEClass.getESuperTypes().add(this.getRunnableItem());
 		groupEClass.getESuperTypes().add(this.getRunnableItem());
-		deviationRunnableItemEClass.getESuperTypes().add(this.getBaseObject());
 		runnableCallEClass.getESuperTypes().add(this.getRunnableItem());
 		instructionsEClass.getESuperTypes().add(this.getRunnableItem());
 		instructionsDeviationEClass.getESuperTypes().add(this.getInstructions());
@@ -13237,13 +13077,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getDataSeparationConstraint_Groups(), this.getLabelEntityGroup(), null, "groups", null, 1, 2, DataSeparationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnablePairingConstraintEClass, RunnablePairingConstraint.class, "RunnablePairingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRunnablePairingConstraint_Runnables(), this.getRunnableGroup(), null, "runnables", null, 0, 1, RunnablePairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunnablePairingConstraint_Group(), this.getRunnableGroup(), null, "group", null, 0, 1, RunnablePairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processPairingConstraintEClass, ProcessPairingConstraint.class, "ProcessPairingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProcessPairingConstraint_Processes(), this.getProcessGroup(), null, "processes", null, 0, 1, ProcessPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessPairingConstraint_Group(), this.getProcessGroup(), null, "group", null, 0, 1, ProcessPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataPairingConstraintEClass, DataPairingConstraint.class, "DataPairingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataPairingConstraint_Labels(), this.getLabelEntityGroup(), null, "labels", null, 0, 1, DataPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataPairingConstraint_Group(), this.getLabelEntityGroup(), null, "group", null, 0, 1, DataPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableConstraintTargetEClass, RunnableConstraintTarget.class, "RunnableConstraintTarget", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -13715,7 +13555,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(schedulingSWUnitEClass, SchedulingSWUnit.class, "SchedulingSWUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSchedulingSWUnit_Priority(), theEcorePackage.getEInt(), "priority", "0", 0, 1, SchedulingSWUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSchedulingSWUnit_Instructions(), this.getOsExecutionInstructions(), null, "instructions", null, 0, -1, SchedulingSWUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSchedulingSWUnit_Instructions(), this.getInstructions(), null, "instructions", null, 0, -1, SchedulingSWUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSchedulingSWUnit_InterruptController(), this.getInterruptController(), null, "interruptController", null, 0, 1, SchedulingSWUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operatingSystemEClass, OperatingSystem.class, "OperatingSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -13741,31 +13581,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getOsInstructions_IsrCategory2Overhead(), this.getOsISRInstructions(), null, "isrCategory2Overhead", null, 0, 1, OsInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(osAPIInstructionsEClass, OsAPIInstructions.class, "OsAPIInstructions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOsAPIInstructions_ApiSendMessage(), this.getOsExecutionInstructions(), null, "apiSendMessage", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiTerminateTask(), this.getOsExecutionInstructions(), null, "apiTerminateTask", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiSchedule(), this.getOsExecutionInstructions(), null, "apiSchedule", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiRequestResource(), this.getOsExecutionInstructions(), null, "apiRequestResource", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiReleaseResource(), this.getOsExecutionInstructions(), null, "apiReleaseResource", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiSetEvent(), this.getOsExecutionInstructions(), null, "apiSetEvent", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiWaitEvent(), this.getOsExecutionInstructions(), null, "apiWaitEvent", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiClearEvent(), this.getOsExecutionInstructions(), null, "apiClearEvent", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiActivateTask(), this.getOsExecutionInstructions(), null, "apiActivateTask", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiEnforcedMigration(), this.getOsExecutionInstructions(), null, "apiEnforcedMigration", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiSendMessage(), this.getInstructions(), null, "apiSendMessage", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiTerminateTask(), this.getInstructions(), null, "apiTerminateTask", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiSchedule(), this.getInstructions(), null, "apiSchedule", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiRequestResource(), this.getInstructions(), null, "apiRequestResource", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiReleaseResource(), this.getInstructions(), null, "apiReleaseResource", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiSetEvent(), this.getInstructions(), null, "apiSetEvent", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiWaitEvent(), this.getInstructions(), null, "apiWaitEvent", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiClearEvent(), this.getInstructions(), null, "apiClearEvent", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiActivateTask(), this.getInstructions(), null, "apiActivateTask", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiEnforcedMigration(), this.getInstructions(), null, "apiEnforcedMigration", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(osISRInstructionsEClass, OsISRInstructions.class, "OsISRInstructions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOsISRInstructions_PreExecutionOverhead(), this.getOsExecutionInstructions(), null, "preExecutionOverhead", null, 0, 1, OsISRInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsISRInstructions_PostExecutionOverhead(), this.getOsExecutionInstructions(), null, "postExecutionOverhead", null, 0, 1, OsISRInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(osExecutionInstructionsEClass, OsExecutionInstructions.class, "OsExecutionInstructions", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(osExecutionInstructionsDeviationEClass, OsExecutionInstructionsDeviation.class, "OsExecutionInstructionsDeviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getDeviation());
-		g2 = createEGenericType(this.getLongObject());
-		g1.getETypeArguments().add(g2);
-		initEReference(getOsExecutionInstructionsDeviation_Deviation(), g1, null, "deviation", null, 0, 1, OsExecutionInstructionsDeviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(osExecutionInstructionsConstantEClass, OsExecutionInstructionsConstant.class, "OsExecutionInstructionsConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOsExecutionInstructionsConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, OsExecutionInstructionsConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsISRInstructions_PreExecutionOverhead(), this.getInstructions(), null, "preExecutionOverhead", null, 0, 1, OsISRInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsISRInstructions_PostExecutionOverhead(), this.getInstructions(), null, "postExecutionOverhead", null, 0, 1, OsISRInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyConstraintsModelEClass, PropertyConstraintsModel.class, "PropertyConstraintsModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPropertyConstraintsModel_AllocationConstraints(), this.getAllocationConstraint(), null, "allocationConstraints", null, 0, -1, PropertyConstraintsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -13948,11 +13777,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getModeSwitchDefault_Items(), g1, null, "items", null, 0, -1, ModeSwitchDefault.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(probabiltitySwitchEClass, ProbabiltitySwitch.class, "ProbabiltitySwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProbabiltitySwitch_Entries(), this.getProbabilitySwitchEntry(), null, "entries", null, 0, -1, ProbabiltitySwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(this.getProbabilitySwitchEntry());
+		g2 = createEGenericType(this.getGraphEntryBase());
+		g1.getETypeArguments().add(g2);
+		initEReference(getProbabiltitySwitch_Entries(), g1, null, "entries", null, 0, -1, ProbabiltitySwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(probabilitySwitchEntryEClass, ProbabilitySwitchEntry.class, "ProbabilitySwitchEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProbabilitySwitchEntry_Probability(), theEcorePackage.getEDouble(), "probability", "0.0", 0, 1, ProbabilitySwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProbabilitySwitchEntry_Items(), this.getGraphEntryBase(), null, "items", null, 0, -1, ProbabilitySwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(probabilitySwitchEntryEClass_T);
+		initEReference(getProbabilitySwitchEntry_Items(), g1, null, "items", null, 0, -1, ProbabilitySwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(counterEClass, Counter.class, "Counter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCounter_Prescaler(), theEcorePackage.getELong(), "prescaler", "1", 0, 1, Counter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14103,24 +13936,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(asynchronousServerCallEClass, AsynchronousServerCall.class, "AsynchronousServerCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAsynchronousServerCall_ResultRunnable(), this.getRunnable(), null, "resultRunnable", null, 0, 1, AsynchronousServerCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(probabilityGroupEClass, ProbabilityGroup.class, "ProbabilityGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProbabilityGroup_Items(), this.getProbabilityRunnableItem(), null, "items", null, 0, -1, ProbabilityGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(probabilityRunnableItemEClass, ProbabilityRunnableItem.class, "ProbabilityRunnableItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProbabilityRunnableItem_Probability(), theEcorePackage.getEInt(), "probability", "0", 0, 1, ProbabilityRunnableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProbabilityRunnableItem_RunnableItem(), this.getRunnableItem(), null, "runnableItem", null, 0, 1, ProbabilityRunnableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(runnableProbabilitySwitchEClass, RunnableProbabilitySwitch.class, "RunnableProbabilitySwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		g1 = createEGenericType(this.getProbabilitySwitchEntry());
+		g2 = createEGenericType(this.getRunnableItem());
+		g1.getETypeArguments().add(g2);
+		initEReference(getRunnableProbabilitySwitch_Entries(), g1, null, "entries", null, 0, -1, RunnableProbabilitySwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(groupEClass, Group.class, "Group", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGroup_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGroup_Ordered(), theEcorePackage.getEBoolean(), "ordered", "false", 0, 1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGroup_Items(), this.getDeviationRunnableItem(), null, "items", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(deviationRunnableItemEClass, DeviationRunnableItem.class, "DeviationRunnableItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDeviationRunnableItem_RunnableItem(), this.getRunnableItem(), null, "runnableItem", null, 0, 1, DeviationRunnableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(this.getDeviation());
-		g2 = createEGenericType(this.getLongObject());
-		g1.getETypeArguments().add(g2);
-		initEReference(getDeviationRunnableItem_Deviation(), g1, null, "deviation", null, 0, 1, DeviationRunnableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGroup_Items(), this.getRunnableItem(), null, "items", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableCallEClass, RunnableCall.class, "RunnableCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnableCall_Runnable(), this.getRunnable(), null, "runnable", null, 1, 1, RunnableCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
