@@ -16,7 +16,8 @@ public class CreateTAInput {
 	ConstraintsModel cm;
 
 	/**
-	 * This method creates a more dynamic approach of the runnable sequencing constraints (TA input)
+	 * This method creates a more dynamic approach of the runnable sequencing
+	 * constraints (TA input)
 	 */
 	public void combineSimilarRSCs() {
 		if (this.cm == null || this.cm.getRunnableSequencingConstraints().size() == 0) {
@@ -27,43 +28,40 @@ public class CreateTAInput {
 		final ConstraintsModel cmta = this.cm;
 		for (int i = 0; i < cmta.getRunnableSequencingConstraints().size(); i++) {
 			for (int j = i + 1; j < cmta.getRunnableSequencingConstraints().size(); j++) {
-				try {
-					if (cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(0).getRunnables().get(0).equals(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups()
-									.get(0).getRunnables().get(0))) {
-						try {
-							cmta.getRunnableSequencingConstraints().get(i).getProcessScope().add(cmta.getRunnableSequencingConstraints().get(j).getProcessScope().get(0));
-						}
-						catch (final Exception e) {
-							PartLog.getInstance().log(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups()
-									.get(1).getRunnables().get(0).getName() + "has no processScope", e);
-						}
-						cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(1).getRunnables()
-								.add(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(1).getRunnables().get(0));
-						cmta.getRunnableSequencingConstraints().remove(j);
-						j--;
-					}
-					else if (cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(1).getRunnables().get(0).equals(
-							cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(1).getRunnables().get(0))) {
-						try {
-							cmta.getRunnableSequencingConstraints().get(i).getProcessScope().add(cmta.getRunnableSequencingConstraints().get(j).getProcessScope().get(0));
-						}
-						catch (final Exception e) {
-							PartLog.getInstance().log(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups()
-									.get(0).getRunnables().get(0).getName() + " has no processScope", e);
-						}
-						cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(0).getRunnables()
-								.add(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(0)
-										.getRunnables().get(0));
-						cmta.getRunnableSequencingConstraints().remove(j);
-						j--;
-					}
+				if (cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(0).getRunnables().get(0)
+						.equals(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(0).getRunnables()
+								.get(0))) {
+					setProcessScope(cmta, i, j);
+					cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(1).getRunnables()
+							.add(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(1)
+									.getRunnables().get(0));
+					cmta.getRunnableSequencingConstraints().remove(j);
+					j--;
 				}
-				catch (final Exception e) {
-					PartLog.getInstance().log("i: " + i + " j: " + j);
-					e.printStackTrace();
-					return;
+				else if (cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(1).getRunnables().get(0)
+						.equals(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(1).getRunnables()
+								.get(0))) {
+					setProcessScope(cmta, i, j);
+					cmta.getRunnableSequencingConstraints().get(i).getRunnableGroups().get(0).getRunnables()
+							.add(cmta.getRunnableSequencingConstraints().get(j).getRunnableGroups().get(0)
+									.getRunnables().get(0));
+					cmta.getRunnableSequencingConstraints().remove(j);
+					j--;
 				}
 			}
+		}
+	}
+
+
+	private void setProcessScope(final ConstraintsModel cmta, int i, int j) {
+		if (cmta.getRunnableSequencingConstraints().get(j).getProcessScope() == null) {
+			PartLog.getInstance().log(
+					cmta.getRunnableSequencingConstraints().get(j).getName() + " has no processScope",
+					null);
+		}
+		else {
+			cmta.getRunnableSequencingConstraints().get(i).getProcessScope()
+					.add(cmta.getRunnableSequencingConstraints().get(j).getProcessScope().get(0));
 		}
 	}
 

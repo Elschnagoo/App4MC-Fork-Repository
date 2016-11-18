@@ -13,9 +13,9 @@ Require-Bundle: org.apache.log4j,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.sphinx.emf,
  org.jgrapht,
- org.eclipse.app4mc.amalthea.workflow.core;bundle-version="0.7.2",
+ org.eclipse.app4mc.amalthea.workflow.core,
  org.eclipse.app4mc.amalthea.model,
- org.eclipse.app4mc.multicore.openmapping;bundle-version="0.7.2"
+ org.eclipse.app4mc.multicore.openmapping
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: Eclipse.org

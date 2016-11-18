@@ -222,13 +222,7 @@ public class CPP {
 							ppt.getRunnableCalls().add(trc);
 							ttime += (new Helper().getInstructions(an.get(0)));
 							this.assignedNodes.add(an.get(0));
-							try {
-								updateTFs(an.get(0), ttime);
-							}
-							catch (final Exception e) {
-								e.printStackTrace();
-								return;
-							}
+							updateTFs(an.get(0), ttime);
 							break;
 						default:
 							final Runnable men = getMostEffectiveNode(an);
@@ -241,13 +235,7 @@ public class CPP {
 							ppt.getRunnableCalls().add(trc2);
 							ttime += (new Helper().getInstructions(men));
 							this.assignedNodes.add(an.get(an.indexOf(men)));
-							try {
-								updateTFs(men, ttime);
-							}
-							catch (final Exception e) {
-								e.printStackTrace();
-								return;
-							}
+							updateTFs(men, ttime);
 							break;
 					}
 				}
@@ -271,20 +259,13 @@ public class CPP {
 
 		// Write result into console
 		PartLog.getInstance()
-				.log("Critical Path Partitioning finished. Createed ProcessPrototypes: " + this.result.size());
+				.log("Critical Path Partitioning finished. Created ProcessPrototypes: " + this.result.size());
 		for (final ProcessPrototype pp : this.result) {
 			final StringBuffer sb = new StringBuffer();
 			sb.append("ProcessPrototype " + pp.getName() + ": ");
 			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-				try {
-					sb.append(trc.getRunnable().getName() + " (" + this.cache.get(trc.getRunnable()).eit + ","
-							+ this.cache.get(trc.getRunnable()).lit + ") ");
-				}
-				catch (final Exception e) {
-					PartLog.getInstance().log("Error accessing Runnable name", null);
-					e.printStackTrace();
-					return;
-				}
+				sb.append(trc.getRunnable().getName() + " (" + this.cache.get(trc.getRunnable()).eit + ","
+						+ this.cache.get(trc.getRunnable()).lit + ") ");
 			}
 			PartLog.getInstance().log(sb.toString());
 		}
@@ -324,7 +305,7 @@ public class CPP {
 	 *            values
 	 * @throws Exception
 	 */
-	private void updateTFs(final Runnable r, final long ttime) throws Exception {
+	private void updateTFs(final Runnable r, final long ttime) {
 		final long assignedTime = ttime - new Helper().getInstructions(r);
 		final long eitDistance = assignedTime - this.cache.get(r).eit;
 		final long litDistance = this.cache.get(r).lit - assignedTime;
@@ -480,10 +461,10 @@ public class CPP {
 									// only add databits if shared ressource is
 									// shared with another processprototype
 									if (!opp.equals(pp) && opp.getName() != ("allRunnables")) {
-										try {
+										if (laSource.getData().getSize() != null) {
 											co += laSource.getData().getSize().getNumberBits();
 										}
-										catch (final Exception e) {
+										else {
 											// no label data available --> add 1
 											co += 1;
 										}
@@ -492,10 +473,10 @@ public class CPP {
 								else if (trc2.eContainer() instanceof CallSequence) {
 									final Task ot = (Task) trc2.eContainer().eContainer().eContainer();
 									if (!ot.equals(t)) {
-										try {
+										if (laSource.getData().getSize() != null) {
 											co += laSource.getData().getSize().getNumberBits();
 										}
-										catch (final Exception e) {
+										else {
 											// no label data available --> add 1
 											co += 1;
 										}

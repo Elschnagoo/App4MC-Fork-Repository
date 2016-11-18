@@ -168,10 +168,10 @@ public class ESSP {
 				sb.append(trc.getRunnable().getName() + " ");
 			}
 			if (pp.getActivation() == null) {
-				try {
+				if (pp.getRunnableCalls().get(0).getRunnable().getActivation() != null) {
 					pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getActivation());
 				}
-				catch (final Exception e) {
+				else {
 					PartLog.getInstance().log("Runnable " + pp.getRunnableCalls().get(0).getRunnable().getName()
 							+ " has no activation, this might be a problem for mapping ", null);
 				}
@@ -235,15 +235,10 @@ public class ESSP {
 	 */
 	private EList<Integer> getRunnablesTaskDependencyIndices(final Runnable r) {
 		final LinkedList<RunnableSequencingConstraint> prevRuns = new LinkedList<>();
-		try {
-			final Set<RunnableSequencingConstraint> rscs = new CriticalPath(this.swm, this.cm).getGraph()
-					.incomingEdgesOf(r);
-			for (final RunnableSequencingConstraint rsc : rscs) {
-				prevRuns.add(rsc);
-			}
-		}
-		catch (final Exception e) {
-			e.printStackTrace();
+		final Set<RunnableSequencingConstraint> rscs = new CriticalPath(this.swm, this.cm).getGraph()
+				.incomingEdgesOf(r);
+		for (final RunnableSequencingConstraint rsc : rscs) {
+			prevRuns.add(rsc);
 		}
 		final EList<Runnable> latestRunnablesAtTasks = getLatestRunnablesAtTasks();
 		final EList<Integer> TaskIndexes = new BasicEList<Integer>();

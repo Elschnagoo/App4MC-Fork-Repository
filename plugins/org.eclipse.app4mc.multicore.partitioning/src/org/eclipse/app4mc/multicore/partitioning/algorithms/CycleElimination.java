@@ -90,18 +90,19 @@ public class CycleElimination {
 	 * @return a directed graph with weighted edges
 	 */
 	public DirectedGraph<Runnable, RunnableSequencingConstraint> createJGraphT() {
+		if (this.swm.getRunnables() == null || this.cm.getRunnableSequencingConstraints() == null) {
+			return null;
+		}
 		final DefaultDirectedWeightedGraph<Runnable, RunnableSequencingConstraint> test = new DefaultDirectedWeightedGraph<>(
 				RunnableSequencingConstraint.class);
 		for (final Runnable r : this.swm.getRunnables()) {
 			test.addVertex(r);
 		}
 		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
-			try {
+			if (rsc.getRunnableGroups().get(0).getRunnables().get(0) != null
+					&& rsc.getRunnableGroups().get(1).getRunnables().get(0) != null) {
 				test.addEdge(rsc.getRunnableGroups().get(0).getRunnables().get(0),
 						rsc.getRunnableGroups().get(1).getRunnables().get(0), rsc);
-			}
-			catch (final Exception e) {
-				PartLog.getInstance().log(rsc.getName() + " " + e.getMessage(), e);
 			}
 		}
 		return test;
@@ -471,11 +472,9 @@ public class CycleElimination {
 	 */
 	public IStatus run(final IProgressMonitor monitor) {
 		DirectedGraph<Runnable, RunnableSequencingConstraint> graph;
-		try {
-			graph = createJGraphT();
-		}
-		catch (final Exception e) {
-			PartLog.getInstance().log("No Constraints model!", e);
+		graph = createJGraphT();
+		if (graph == null) {
+			PartLog.getInstance().log("No Constraints model!", null);
 			return Status.CANCEL_STATUS;
 		}
 		PartLog.getInstance().setLogName("Cycle Elimination");

@@ -114,12 +114,7 @@ public class PrePartitioning {
 				ca.createPPs(modelCopy.getSwModel(), modelCopy.getStimuliModel(), monitor);
 			}
 			else if (modelCopy.getStimuliModel() == null && modelCopy.getSwModel().getActivations() != null) {
-				try {
-					ca.createPPs(modelCopy.getSwModel(), monitor);
-				}
-				catch (final Exception e) {
-					e.printStackTrace();
-				}
+				ca.createPPs(modelCopy.getSwModel(), monitor);
 			}
 			else {
 				PartLog.getInstance().log(

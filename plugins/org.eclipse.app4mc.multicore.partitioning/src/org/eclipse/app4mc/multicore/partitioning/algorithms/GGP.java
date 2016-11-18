@@ -88,15 +88,7 @@ public class GGP {
 		this.graph = new CriticalPath(getSwm(), getCm()).getGraph();
 
 		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
-			try {
-				genGraphs(pp);
-			}
-			catch (final Exception e) {
-				PartLog.getInstance().log("GGP: Error during creating additional PP for Graph in PP" + pp, null);
-				e.printStackTrace();
-				PartLog.getInstance().log("Tasks: " + this.tasks.size() + " Unassigned: " + this.unassigned.size());
-				// all runnables assigned
-			}
+			genGraphs(pp);
 		}
 		final StringBuffer sb = new StringBuffer();
 		int ct = 0;
@@ -122,7 +114,7 @@ public class GGP {
 	 *
 	 * @throws Exception
 	 **/
-	private void genGraphs(final ProcessPrototype pp) throws Exception {
+	private void genGraphs(final ProcessPrototype pp) {
 		final LinkedList<Runnable> sinks = getSinks(pp);
 		if (sinks.size() == 0) {
 			PartLog.getInstance().log("getGraph didnt find unhandled Runnable at" + pp.getName() + " TRCs "
@@ -170,6 +162,9 @@ public class GGP {
 					sinks.add(r);
 				}
 			}
+		}
+		if (sinks.size() == 0) {
+			PartLog.getInstance().log("No sink found", null);
 		}
 		return sinks;
 	}

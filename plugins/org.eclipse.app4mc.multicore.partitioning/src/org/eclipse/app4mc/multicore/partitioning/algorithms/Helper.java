@@ -52,25 +52,18 @@ public class Helper {
 	 */
 	public long getInstructions(final Runnable r) {
 		long rt = 0;
-		try {
-			rt = 0;
-			for (final RunnableItem ra : r.getRunnableItems()) {
-				if (ra instanceof InstructionsDeviation) {
-					rt = (((InstructionsDeviation) ra).getDeviation().getUpperBound().getValue()
-							+ ((InstructionsDeviation) ra).getDeviation().getLowerBound().getValue()) / 2;
-				}
-				else if (ra instanceof InstructionsConstant) {
-					rt = ((InstructionsConstant) ra).getValue();
-				}
+		rt = 0;
+		for (final RunnableItem ra : r.getRunnableItems()) {
+			if (ra instanceof InstructionsDeviation) {
+				rt = (((InstructionsDeviation) ra).getDeviation().getUpperBound().getValue()
+						+ ((InstructionsDeviation) ra).getDeviation().getLowerBound().getValue()) / 2;
 			}
-			if (rt == 0) {
-				PartLog.getInstance().log("No instructions constant / deviation found at Runnable " + r.getName(),
-						null);
+			else if (ra instanceof InstructionsConstant) {
+				rt = ((InstructionsConstant) ra).getValue();
 			}
 		}
-		catch (final Exception e) {
-			PartLog.getInstance().log("getDeviation problem at Runnable " + r.getName(), e);
-			e.printStackTrace();
+		if (rt == 0) {
+			PartLog.getInstance().log("No instructions constant / deviation found at Runnable " + r.getName(), null);
 		}
 		return rt;
 	}
@@ -117,8 +110,7 @@ public class Helper {
 		for (final RunnableSequencingConstraint rsc : cm.getRunnableSequencingConstraints()) {
 			if (rsc.getRunnableGroups().get(1).getRunnables().get(0).equals(r)
 					&& !this.visited.contains(rsc.getRunnableGroups().get(0).getRunnables().get(0))) {
-				final long temp = getPreceedingRunTimeCycle(cm,
-						rsc.getRunnableGroups().get(0).getRunnables().get(0));
+				final long temp = getPreceedingRunTimeCycle(cm, rsc.getRunnableGroups().get(0).getRunnables().get(0));
 				if (temp > rt) {
 					rt = temp;
 				}
@@ -148,8 +140,7 @@ public class Helper {
 		for (final RunnableSequencingConstraint rsc : cm.getRunnableSequencingConstraints()) {
 			if (rsc.getRunnableGroups().get(0).getRunnables().get(0).equals(r)
 					&& !this.visited.contains(rsc.getRunnableGroups().get(1).getRunnables().get(0))) {
-				final long temp = getSucceedingRunTimeCycle(cm,
-						rsc.getRunnableGroups().get(1).getRunnables().get(0));
+				final long temp = getSucceedingRunTimeCycle(cm, rsc.getRunnableGroups().get(1).getRunnables().get(0));
 				if (temp > rt) {
 					rt = temp;
 				}
@@ -256,6 +247,12 @@ public class Helper {
 		}
 	}
 
+	/**
+	 * Updates ProcessScope wrt ProcessPrototypes of all RSCs
+	 *
+	 * @param amodels
+	 * @return
+	 */
 	public ConstraintsModel updateRSCs(final Amalthea amodels) {
 		for (final RunnableSequencingConstraint rsc : amodels.getConstraintsModel()
 				.getRunnableSequencingConstraints()) {
@@ -277,6 +274,37 @@ public class Helper {
 		return amodels.getConstraintsModel();
 	}
 
+	/**
+	 * Adds ProcessPrototypes' FirstRunnable, LastRunnable, and Activation
+	 * properties
+	 *
+	 * @param swm
+	 * @return
+	 */
+	public SWModel updatePPsFirstLastActParams(final SWModel swm) {
+		for (final ProcessPrototype pp : swm.getProcessPrototypes()) {
+			if (pp.getRunnableCalls().size() > 0) {
+				if (pp.getFirstRunnable() == null
+						|| pp.getFirstRunnable() != pp.getRunnableCalls().get(0).getRunnable()) {
+					pp.setFirstRunnable(pp.getRunnableCalls().get(0).getRunnable());
+				}
+				if (pp.getLastRunnable() == null || pp.getLastRunnable() != pp.getRunnableCalls()
+						.get(pp.getRunnableCalls().size() - 1).getRunnable()) {
+					pp.setLastRunnable(pp.getRunnableCalls().get(pp.getRunnableCalls().size() - 1).getRunnable());
+				}
+			}
+			if (pp.getActivation() == null && pp.getRunnableCalls().get(0).getRunnable().getActivation() != null) {
+				pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getActivation());
+			}
+		}
+		return swm;
+	}
+
+	/**
+	 *
+	 * @param processPrototypes
+	 * @return String with PP.name(sum(instructions)):Runnable1 Runnable2 ...
+	 */
 	public String writePPs(final EList<ProcessPrototype> processPrototypes) {
 		final StringBuffer sb = new StringBuffer();
 		for (final ProcessPrototype pp : processPrototypes) {
@@ -289,6 +317,11 @@ public class Helper {
 		return sb.toString();
 	}
 
+	/**
+	 *
+	 * @param pp
+	 * @return long the sum of the PP's Runnable Instructions
+	 */
 	public long getPPInstructions(final ProcessPrototype pp) {
 		long instrSum = 0;
 		for (final TaskRunnableCall trc : pp.getRunnableCalls()) {

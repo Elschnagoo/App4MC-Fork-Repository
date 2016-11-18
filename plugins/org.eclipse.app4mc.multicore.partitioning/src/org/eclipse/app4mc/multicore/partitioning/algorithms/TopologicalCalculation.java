@@ -107,13 +107,10 @@ public class TopologicalCalculation {
 		final LinkedList<RunnableSequencingConstraint> rscs = new LinkedList<RunnableSequencingConstraint>();
 		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
 			for (final Runnable r2 : rsc.getRunnableGroups().get(0).getRunnables()) {
-				try {
+				if (r2.getName() != null && r.getName() != null) {
 					if (r2.getName().equals(r.getName()) && !(rscs.contains(rsc))) {
 						rscs.add(rsc);
 					}
-				}
-				catch (final Exception e) {
-					// r or prge do not provide a name
 				}
 			}
 		}
@@ -129,25 +126,19 @@ public class TopologicalCalculation {
 		}
 		int l = 0;
 		Runnable r = null;
-		try {
-			for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
-				for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-					if (this.untreatedCNs.contains(trc.getRunnable())) {
-						final int k = calcNodesToSink(trc.getRunnable());
-						if (k > l && k < distance) {
-							l = k;
-							r = trc.getRunnable();
-						}
+		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
+			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+				if (this.untreatedCNs.contains(trc.getRunnable())) {
+					final int k = calcNodesToSink(trc.getRunnable());
+					if (k > l && k < distance) {
+						l = k;
+						r = trc.getRunnable();
 					}
 				}
 			}
-			final int temp = calcNodesToSink(r);
-			if (temp > distance && temp != 1) {
-				r = null;
-			}
 		}
-		catch (final Exception e) {
-			e.printStackTrace();
+		final int temp = calcNodesToSink(r);
+		if (temp > distance && temp != 1) {
 			r = null;
 		}
 		return r;

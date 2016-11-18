@@ -30,6 +30,7 @@ import org.eclipse.emf.common.util.EList;
 import org.jgrapht.alg.CycleDetector;
 import org.jgrapht.alg.cycle.SzwarcfiterLauerSimpleCycles;
 import org.jgrapht.experimental.dag.DirectedAcyclicGraph;
+import org.jgrapht.experimental.dag.DirectedAcyclicGraph.CycleFoundException;
 
 /**
  * This class provides critical path determination, as well as timeframe values
@@ -76,18 +77,23 @@ public class CriticalPath {
 			test.addVertex(r);
 		}
 		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
-			test.addEdge(rsc.getRunnableGroups().get(0).getRunnables().get(0),
-					rsc.getRunnableGroups().get(1).getRunnables().get(0), rsc);
 			try {
-				test.setEdgeWeight(rsc,
-						new Helper()
-								.getCommonLabel(rsc.getRunnableGroups().get(0).getRunnables().get(0),
-										rsc.getRunnableGroups().get(1).getRunnables().get(0))
-								.getSize().getNumberBytes());
+				test.addDagEdge(rsc.getRunnableGroups().get(0).getRunnables().get(0),
+						rsc.getRunnableGroups().get(1).getRunnables().get(0), rsc);
 			}
-			catch (final Exception e) {
-				// no data type available
+			catch (final CycleFoundException e) {
+				// do not add a cycle
 			}
+
+			// final Label l = new
+			// Helper().getCommonLabel(rsc.getRunnableGroups().get(0).getRunnables().get(0),
+			// rsc.getRunnableGroups().get(1).getRunnables().get(0));
+			// if (null != l) {
+			// test.setEdgeWeight(rsc, l.getSize().getNumberBytes());
+			// }
+			// else {
+			// test.setEdgeWeight(rsc, 1);
+			// }
 		}
 
 		return test;
@@ -178,12 +184,7 @@ public class CriticalPath {
 			return null;
 		}
 		LinkedList<Runnable> sinks = new LinkedList<>();
-		try {
-			sinks = new GGP(this.swm, this.cm, this.graph).getSinks();
-		}
-		catch (final Exception e) {
-			e.printStackTrace();
-		}
+		sinks = new GGP(this.swm, this.cm, this.graph).getSinks();
 		final HashMap<Runnable, Long> rts = new HashMap<Runnable, Long>();
 		for (final Runnable sink : sinks) {
 			rts.put(sink, getLongestPreceedingRT(sink));
@@ -234,26 +235,16 @@ public class CriticalPath {
 	 */
 	public long getPathLength(final EList<Runnable> rl) {
 		long length = 0;
-		try {
-			for (final Runnable r : rl) {
-				length += new Helper().getInstructions(r);
-			}
-		}
-		catch (final Exception e) {
-			PartLog.getInstance().log("PathLengthError", e);
+		for (final Runnable r : rl) {
+			length += new Helper().getInstructions(r);
 		}
 		return length;
 	}
 
 	public long getPathLength() {
 		long length = 0;
-		try {
-			for (final Runnable r : this.cp.getRunnablesL()) {
-				length += new Helper().getInstructions(r);
-			}
-		}
-		catch (final Exception e) {
-			PartLog.getInstance().log("PathLengthError", e);
+		for (final Runnable r : this.cp.getRunnablesL()) {
+			length += new Helper().getInstructions(r);
 		}
 		return length;
 	}

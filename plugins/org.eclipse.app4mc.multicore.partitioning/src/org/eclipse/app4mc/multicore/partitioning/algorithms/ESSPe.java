@@ -114,10 +114,10 @@ public class ESSPe {
 		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
 			pp.setName("ESSP" + this.swm.getProcessPrototypes().indexOf(pp));
 			if (pp.getActivation() == null) {
-				try {
+				if (pp.getRunnableCalls().get(0).getRunnable().getActivation() != null) {
 					pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getActivation());
 				}
-				catch (final Exception e) {
+				else {
 					PartLog.getInstance().log("Runnable " + pp.getRunnableCalls().get(0).getRunnable().getName()
 							+ " has no activation, this might be a problem for mapping ", null);
 				}

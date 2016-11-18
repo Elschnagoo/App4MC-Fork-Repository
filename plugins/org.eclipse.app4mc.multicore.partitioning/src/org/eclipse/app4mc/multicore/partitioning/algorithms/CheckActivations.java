@@ -77,12 +77,7 @@ public class CheckActivations {
 				}
 			}
 		}
-		try {
-			createPPs(swm, monitor);
-		}
-		catch (final Exception e) {
-			e.printStackTrace();
-		}
+		createPPs(swm, monitor);
 	}
 
 	/**
@@ -95,7 +90,7 @@ public class CheckActivations {
 	 *            activations within the software model
 	 * @throws Exception
 	 */
-	public void createPPs(final SWModel swm, final IProgressMonitor monitor) throws Exception {
+	public void createPPs(final SWModel swm, final IProgressMonitor monitor) {
 		monitor.beginTask("Acitvation Grouping", swm.getActivations().size());
 		PartLog.getInstance().setLogName("Activation Analysis");
 		if (swm.getActivations().size() != 0) {
@@ -110,14 +105,14 @@ public class CheckActivations {
 				// for (int r = 0; r < swm.getRunnables().size(); r++) {
 				for (final Runnable r : swm.getRunnables()) {
 					assert null != r.getActivation();
-					try {
+					if (null != r.getActivation()) {
 						if (r.getActivation().equals(swm.getActivations().get(act))) {
 							final TaskRunnableCall trc = instance.createTaskRunnableCall();
 							trc.setRunnable(r);
 							pp.getRunnableCalls().add(trc);
 						}
 					}
-					catch (final Exception e) {
+					else {
 						PartLog.getInstance().log("No activation reference found at runnable " + r.getName(), null);
 						return;
 					}
@@ -134,8 +129,7 @@ public class CheckActivations {
 			this.swmo = swm;
 		}
 		else {
-			PartLog.getInstance().log("No activation found within software model!");
-			throw new Exception();
+			PartLog.getInstance().log("No activation found within software model!", null);
 		}
 	}
 

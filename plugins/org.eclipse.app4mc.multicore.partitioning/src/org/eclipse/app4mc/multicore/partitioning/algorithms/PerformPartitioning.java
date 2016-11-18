@@ -74,60 +74,55 @@ public class PerformPartitioning {
 			amodels.setSwModel(createPPs(amodels.getSwModel()));
 		}
 
-		try {
-			if (store.getBoolean("boolCPP") == true) {
-				PartLog.getInstance().log("--Starting critical path partitioning--");
-				final CPP cpp = new CPP(amodels.getSwModel(),amodels.getConstraintsModel());
-				cpp.bglobalCP = store.getBoolean("boolGCP");
-				cpp.build(monitor);
-				amodels.setConstraintsModel(cpp.cm);
-				amodels.setSwModel(cpp.swm);
-				amodels = retainAffntyCnstrnts(file, uh, amodels, monitor);
-				new Helper().writeModelFile(file, "_CPP", amodels);
-				PartLog.getInstance().log("--Critical path partitioning finished--");
-				PartLog.getInstance().logSimple("CPP finished.");
-			}
-			if (Integer.parseInt(store.getString("intThreads")) > 1 && store.getBoolean("boolESSP") == true) {
-				PartLog.getInstance().log("--Starting earliest start schedule partitioning--");
-				final ESSP essp = new ESSP(amodels.getSwModel(), amodels.getConstraintsModel(),
-						Integer.parseInt(store.getString("intThreads")));
-				essp.build(monitor);
-				if (essp.swm.getProcessPrototypes().size() < Integer.parseInt(store.getString("intThreads"))) {
-					PartLog.getInstance()
-							.log("ESSP could not generate " + Integer.parseInt(store.getString("intThreads"))
-									+ " partitions since the softwaremodel's graph does not feature enough parallel runnables. "
-									+ essp.swm.getProcessPrototypes().size() + " partitions could be generated.");
-				}
-				amodels.setConstraintsModel(essp.cm);
-				amodels.setSwModel(essp.swm);
-				amodels = retainAffntyCnstrnts(file, uh, amodels, monitor);
-				new Helper().writeModelFile(file, "_ESSP", amodels);
-				PartLog.getInstance().log("--Earliest start schedule partitioning finished--");
-				PartLog.getInstance().logSimple("ESSP finished.");
-			}
-			if (store.getBoolean("boolTA")) {
-				PartLog.getInstance().log("--Starting generating a runnable sequencing constraints alternative--");
-				final CreateTAInput ctai = new CreateTAInput();
-				ctai.setCm(amodels.getConstraintsModel());
-				ctai.combineSimilarRSCs();
-				amodels.setConstraintsModel(ctai.getCm());
-				new Helper().writeModelFile(file, "_TAInput", amodels);
-				PartLog.getInstance().log("--Generating a runnable sequencing constraints alternative finished--");
-				PartLog.getInstance().logSimple("RSC alternative generation finished.");
-			}
-			if (store.getBoolean("boolVis")) {
-				PartLog.getInstance().setLogName("Applet visualization");
-				PartLog.getInstance().log("--Generating Applet--");
-				final WriteAppletHandler wa = new WriteAppletHandler();
-				wa.write(amodels.getSwModel(), amodels.getConstraintsModel(), file.getLocation().toString());
-				PartLog.getInstance().log("--Applet generation finished--");
-				PartLog.getInstance().logSimple("Applet generation finished.");
-			}
+		if (store.getBoolean("boolCPP") == true) {
+			PartLog.getInstance().log("--Starting critical path partitioning--");
+			final CPP cpp = new CPP(amodels.getSwModel(), amodels.getConstraintsModel());
+			cpp.bglobalCP = store.getBoolean("boolGCP");
+			cpp.build(monitor);
+			amodels.setConstraintsModel(cpp.cm);
+			amodels.setSwModel(cpp.swm);
+			amodels = retainAffntyCnstrnts(file, uh, amodels, monitor);
+			new Helper().writeModelFile(file, "_CPP", amodels);
+			PartLog.getInstance().log("--Critical path partitioning finished--");
+			PartLog.getInstance().logSimple("CPP finished.");
 		}
-		catch (final Exception e) {
-			PartLog.getInstance().log("Partitioning aborted. \n", e);
-			e.printStackTrace();
+		if (Integer.parseInt(store.getString("intThreads")) > 1 && store.getBoolean("boolESSP") == true) {
+			PartLog.getInstance().log("--Starting earliest start schedule partitioning--");
+			final ESSP essp = new ESSP(amodels.getSwModel(), amodels.getConstraintsModel(),
+					Integer.parseInt(store.getString("intThreads")));
+			essp.build(monitor);
+			if (essp.swm.getProcessPrototypes().size() < Integer.parseInt(store.getString("intThreads"))) {
+				PartLog.getInstance()
+						.log("ESSP could not generate " + Integer.parseInt(store.getString("intThreads"))
+								+ " partitions since the softwaremodel's graph does not feature enough parallel runnables. "
+								+ essp.swm.getProcessPrototypes().size() + " partitions could be generated.");
+			}
+			amodels.setConstraintsModel(essp.cm);
+			amodels.setSwModel(essp.swm);
+			amodels = retainAffntyCnstrnts(file, uh, amodels, monitor);
+			new Helper().writeModelFile(file, "_ESSP", amodels);
+			PartLog.getInstance().log("--Earliest start schedule partitioning finished--");
+			PartLog.getInstance().logSimple("ESSP finished.");
 		}
+		if (store.getBoolean("boolTA")) {
+			PartLog.getInstance().log("--Starting generating a runnable sequencing constraints alternative--");
+			final CreateTAInput ctai = new CreateTAInput();
+			ctai.setCm(amodels.getConstraintsModel());
+			ctai.combineSimilarRSCs();
+			amodels.setConstraintsModel(ctai.getCm());
+			new Helper().writeModelFile(file, "_TAInput", amodels);
+			PartLog.getInstance().log("--Generating a runnable sequencing constraints alternative finished--");
+			PartLog.getInstance().logSimple("RSC alternative generation finished.");
+		}
+		if (store.getBoolean("boolVis")) {
+			PartLog.getInstance().setLogName("Applet visualization");
+			PartLog.getInstance().log("--Generating Applet--");
+			final WriteAppletHandler wa = new WriteAppletHandler();
+			wa.write(amodels.getSwModel(), amodels.getConstraintsModel(), file.getLocation().toString());
+			PartLog.getInstance().log("--Applet generation finished--");
+			PartLog.getInstance().logSimple("Applet generation finished.");
+		}
+
 
 		// print result
 		final long tmp = (long) ((float) getMaxPPLength(amodels.getSwModel()) / getSWMInstructions(amodels.getSwModel())
@@ -198,16 +193,8 @@ public class PerformPartitioning {
 			// remove all temporary cumulatedRunnables
 			amodels.getSwModel().getRunnables().removeAll(cumuRuns);
 
-			// update first / last runnable ref for processPrototypes
+			// remove temporary cumulated runnables
 			for (final ProcessPrototype pp : amodels.getSwModel().getProcessPrototypes()) {
-				pp.setFirstRunnable(pp.getRunnableCalls().get(0).getRunnable());
-				pp.setLastRunnable(pp.getRunnableCalls().get(pp.getRunnableCalls().size() - 1).getRunnable());
-				try {
-					pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getActivation());
-				}
-				catch (final Exception e) {
-					// no activation available
-				}
 				if (pp.getAccessPrecedenceSpec().size() > 0) {
 					for (final Iterator<AccessPrecedenceSpec> it = pp.getAccessPrecedenceSpec().iterator(); it
 							.hasNext();) {
@@ -231,6 +218,8 @@ public class PerformPartitioning {
 			amodels.setConstraintsModel(ce.getCm());
 			amodels.setSwModel(ce.getSwm());
 		}
+		// update first / last / activation ref for ProcessPrototypes
+		amodels.setSwModel(new Helper().updatePPsFirstLastActParams(amodels.getSwModel()));
 		// check if rscs all reference a processprototype
 		amodels.setConstraintsModel(new Helper().updateRSCs(amodels));
 		return amodels;
@@ -248,40 +237,34 @@ public class PerformPartitioning {
 			final EList<Runnable> cumuRuns) {
 		for (final Runnable cr : cumuRuns) {
 			final int crindex = Integer.parseInt(cr.getName().substring(17, cr.getName().length()));
-			try {
-				if (uh.getConstraintsModel().getAffinityConstraints()
-						.get(crindex) instanceof RunnablePairingConstraint) {
-					// add original runnables
-					final RunnableEntityGroup reg = (RunnableEntityGroup) ((RunnablePairingConstraint) uh
-							.getConstraintsModel().getAffinityConstraints().get(crindex)).getRunnables();
-					swm.getRunnables().addAll(reg.getRunnables());
+			if (uh.getConstraintsModel().getAffinityConstraints().get(crindex) instanceof RunnablePairingConstraint) {
+				// add original runnables
+				final RunnableEntityGroup reg = (RunnableEntityGroup) ((RunnablePairingConstraint) uh
+						.getConstraintsModel().getAffinityConstraints().get(crindex)).getRunnables();
+				swm.getRunnables().addAll(reg.getRunnables());
 
-					// Update RunnableCalls
-					for (final ProcessPrototype pp : swm.getProcessPrototypes()) {
-						final EList<TaskRunnableCall> trcrem = new BasicEList<TaskRunnableCall>();
-						final EList<TaskRunnableCall> trcs = new BasicEList<TaskRunnableCall>();
-						int index = 0;
-						for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-							if (cr.equals(trc.getRunnable())) {
-								index = pp.getRunnableCalls().indexOf(trc);
-								final AmaltheaFactory af = AmaltheaFactory.eINSTANCE;
-								for (final Runnable or : reg.getRunnables()) {
-									// create trcs for original runnables
-									final TaskRunnableCall ntrc = af.createTaskRunnableCall();
-									ntrc.setRunnable(or);
-									trcs.add(ntrc);
-								}
-								trcrem.add(trc);
+				// Update RunnableCalls
+				for (final ProcessPrototype pp : swm.getProcessPrototypes()) {
+					final EList<TaskRunnableCall> trcrem = new BasicEList<TaskRunnableCall>();
+					final EList<TaskRunnableCall> trcs = new BasicEList<TaskRunnableCall>();
+					int index = 0;
+					for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+						if (cr.equals(trc.getRunnable())) {
+							index = pp.getRunnableCalls().indexOf(trc);
+							final AmaltheaFactory af = AmaltheaFactory.eINSTANCE;
+							for (final Runnable or : reg.getRunnables()) {
+								// create trcs for original runnables
+								final TaskRunnableCall ntrc = af.createTaskRunnableCall();
+								ntrc.setRunnable(or);
+								trcs.add(ntrc);
 							}
+							trcrem.add(trc);
 						}
-						pp.getRunnableCalls().addAll(index, trcs);
-						// remove cumulated runnable trcs
-						pp.getRunnableCalls().removeAll(trcrem);
 					}
+					pp.getRunnableCalls().addAll(index, trcs);
+					// remove cumulated runnable trcs
+					pp.getRunnableCalls().removeAll(trcrem);
 				}
-			}
-			catch (final Exception e) {
-				e.printStackTrace();
 			}
 		}
 		return swm;
@@ -390,20 +373,20 @@ public class PerformPartitioning {
 		final ProcessRunnableGroup prg1 = factory.createProcessRunnableGroup();
 		final ProcessRunnableGroup prg2 = factory.createProcessRunnableGroup();
 
-		ProcessPrototype sourcePP = new Helper().getPPfromR(source, swm);
-		ProcessPrototype targetPP = new Helper().getPPfromR(target, swm);
-		if(true == sourcePP.equals(targetPP)) {
+		final ProcessPrototype sourcePP = new Helper().getPPfromR(source, swm);
+		final ProcessPrototype targetPP = new Helper().getPPfromR(target, swm);
+		if (true == sourcePP.equals(targetPP)) {
 			rsc.getProcessScope().add(sourcePP);
 			prg1.getRunnables().add(source);
 			prg2.getRunnables().add(target);
 			rsc.getRunnableGroups().add(prg1);
 			rsc.getRunnableGroups().add(prg2);
 			rsc.setOrderType(RunnableOrderType.SUCCESSOR);
-		} else {
-			PartLog.getInstance()
-			.log("Two different process prototypes of source and target runnable", null);
 		}
-		
+		else {
+			PartLog.getInstance().log("Two different process prototypes of source and target runnable", null);
+		}
+
 		return rsc;
 	}
 

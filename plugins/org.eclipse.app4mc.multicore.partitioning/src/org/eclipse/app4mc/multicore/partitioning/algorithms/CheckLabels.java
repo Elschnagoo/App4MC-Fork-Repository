@@ -46,27 +46,27 @@ public class CheckLabels {
 	}
 
 	/**
-	 * Checks if an RSC already exists in global RSCL List of RSCs
+	 * Checks if a RSC already exists in global constraints model. No RSC
+	 * instances should have the same groups.
 	 *
 	 * @param RSC
 	 *            RunnableSequencingConstraint that may exit in global RSCL
 	 * @return true when RSCL contains RCS
 	 */
-	private boolean RSCLReveals(final RunnableSequencingConstraint RSC) {
-		try {
-			for (final RunnableSequencingConstraint rsc : this.CM.getRunnableSequencingConstraints()) {
-				if (rsc.getRunnableGroups().get(0).getRunnables().get(0)
-						.equals(RSC.getRunnableGroups().get(0).getRunnables().get(0))
-						&& rsc.getRunnableGroups().get(1).getRunnables().get(0)
-								.equals(RSC.getRunnableGroups().get(1).getRunnables().get(0))) {
+	private boolean RSCLReveals(final RunnableSequencingConstraint rsc) {
+		for (final RunnableSequencingConstraint rsc2 : this.CM.getRunnableSequencingConstraints()) {
+			if (rsc2.getRunnableGroups().size() == 2) {
+				if ((rsc2.getRunnableGroups().get(0).getRunnables().get(0)
+						.equals(rsc.getRunnableGroups().get(0).getRunnables().get(0))
+						&& rsc2.getRunnableGroups().get(1).getRunnables().get(0)
+								.equals(rsc.getRunnableGroups().get(1).getRunnables().get(0)))
+						|| (rsc2.getRunnableGroups().get(0).getRunnables().get(0)
+								.equals(rsc.getRunnableGroups().get(1).getRunnables().get(0))
+								&& rsc2.getRunnableGroups().get(1).getRunnables().get(0)
+										.equals(rsc.getRunnableGroups().get(0).getRunnables().get(0)))) {
 					return true;
 				}
 			}
-		}
-		catch (final NullPointerException e) {
-			final AmaltheaFactory factory = AmaltheaFactory.eINSTANCE;
-			final ConstraintsModel cm = factory.createConstraintsModel();
-			this.CM = cm;
 		}
 		return false;
 	}
