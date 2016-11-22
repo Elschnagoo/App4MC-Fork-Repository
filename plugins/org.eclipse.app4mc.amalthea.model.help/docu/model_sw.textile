@@ -124,14 +124,13 @@ h2. Runnable Items
 
 The __RunnableItems__ are describing the detailed behavior of a __Runnable__ element. This can be either an abstraction of instructions by representing the used running time or representing access to other elements like __Runnables__, __Labels__ and __Semaphore__. An overview of the different possibilities is given in the next pictures.
 
+
 h3. Groups
 
-!../pictures/model_sw_runnable_items_1_groups.png!
+!../pictures/model_sw_runnable_items_1_group.png!
 
-table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
-|_. Name |_. Description |
-| __Group__| With the __boolean__ attribute __isOrdered__ the execution order of the contained elements can be marked as fixed. The group contains a list of __DeviationRunnableItems__. This item contains a __RunnableItem__ to execute and an optional deviation which describes the frequency of the __RunnableItem__. If no deviation is set, the __RunnableItem__ is always executed once.|
-| __ProbabilityGroup__ | This group contains a list of __ProbabilityRunnableItems__. Each item has a probability integer value. This value defines the probability to execute a specific RunnableItem as a fraction of its value divided by the sum of all ProbabilityRunnableItems in the surrounding group.|
+A __Group__ is used to structure the __RunnableItems__. The __boolean__ attribute __isOrdered__ indicates if the execution order of the contained elements is fixed or random. 
+
 
 h3. Calls and Label Access
 
@@ -153,14 +152,15 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 |_. Name |_. Description |
 | __SemaphoreAccess__ | Represents an access of a Semaphore. The type of access is defined using the __SemaphoreAccessEnum__ values. The __Semaphore__ itself is set as a reference to an existent one. |
 
+
 h3. Mode Label Access
 
 !../pictures/model_sw_runnable_items_4_modes.png!
 
-
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
 | __ModeLabelAccess__ | Describes the access to an existing __ModeLabel__ (set as reference). The type of access is represented using the values of __LabelAccessEnum__: @write@ represents the change of a mode label. The defined __ModeLiteral__ is set. @read@ indicates that the behavior of the runnable is influenced by the current value of the __ModeLabel__. |
+
 
 h3. Runnable Mode Switch
 
@@ -169,6 +169,14 @@ A __ModeSwitchEntry__ object is referenced to represent the different paths and 
 At the __RunnableModeSwitch__ it is also possible to define a default path, which is executed if none of the __ModeSwitchEntries__ fits to the current set value of the mode.
 
 !../pictures/model_sw_runnablemodeswitch.png!
+
+
+h3. Runnable Probability Switch
+
+Each entry (path) of a __Runnable Probability Switch__ has a probability-value. As the name indicates, this is the value that defines the probability that the path is executed. It is computed as a fraction of its value divided by the sum of all __Probability Switch Entries__ in the surrounding switch.
+
+!../pictures/model_sw_runnableprobabilityswitch.png!
+
 
 h3. Instructions
 
@@ -179,6 +187,7 @@ In the next picture a more detailed overview is given about the __Instructions__
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
 | __Instructions__| As a runnable contains several instructions to perform, this is represented using different algorithms or a constant value to consume the same amount of time/ticks per cycle.|
+
 
 h3. Statistical Values
 
@@ -216,17 +225,20 @@ The __Call Graph__ is used to define how a __Task__ or __ISR__ behaves during it
 
 The __Call Graph__ contains a list of elements of type __GraphEntryBase__. This is the basic, abstract type for the __Switch__ types and for the __Call Sequence__. With the __Switches__ it is possible to define different execution paths. They can be used like __if-else__ or __switch-case__ statements in a programming language. There are two different kind of __Switches__, a __Mode Switch__ and a __Probability Switch__. Each __Switch__ contains a number __Switch Entry__ objects. These are the different possible program paths that can be executed. Also like the __Call Graph__, the __Switch Entry__ can contain a list of objects that can be __Switches__ or __Call Sequences__. 
 
-h3. Probability Switch
-
-Each entry (path) of a __Probability Switch__ has a probability-value. As the name indicates, this is the value that defines the probability that the path is executed.
-
-!(scale)../pictures/model_sw_probabilityswitch.png!
 
 h3. Mode Switch
 
 A __Mode Switch__ uses the value of a __Mode Label__ to decide which entry has to be executed. Therefore a __Mode Label__ object is referenced (via ModeValueProvider) and each entry defines the values the mode label must have to execute the path. 
 
 !(scale)../pictures/model_sw_modeswitch.png!
+
+
+h3. Probability Switch
+
+Each entry (path) of a __Probability Switch__ has a probability-value. As the name indicates, this is the value that defines the probability that the path is executed. It is computed as a fraction of its value divided by the sum of all __Probability Switch Entries__ in the surrounding switch.
+
+
+!(scale)../pictures/model_sw_probabilityswitch.png!
 
 h3. Call Sequence
 
