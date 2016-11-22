@@ -178,7 +178,6 @@ It always refers to an EventChain.
 !../pictures/model_constraints_timing_latency.png!
 
 
-
 h2. Affinity Constraints
 
 Affinity constraints are used to define the mapping of executable objects to each other.
@@ -207,9 +206,10 @@ A __ProcessConstraint__ is used to define the mapping of process (Task or ISR) o
 
 h3. Runnable Affinity Constraints
 
-A __RunnableConstraint__ is used to define the mapping of runnable objects to processes, call sequences, processing cores, or scheduling units.
+A __RunnableConstraint__ is used to define the mapping of runnable objects to processing cores or scheduling units.
 
 !../pictures/model_constraints_affinity_runnable.png!
+
 
 h2. Physical Section Constraints
 
