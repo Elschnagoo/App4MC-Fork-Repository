@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#getInitalValue <em>Inital Value</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#getInitialValue <em>Initial Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#getMaxValue <em>Max Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#isPriorityCeilingProtocol <em>Priority Ceiling Protocol</em>}</li>
  * </ul>
@@ -38,24 +38,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore {
 	/**
-	 * The default value of the '{@link #getInitalValue() <em>Inital Value</em>}' attribute.
+	 * The default value of the '{@link #getInitialValue() <em>Initial Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInitalValue()
+	 * @see #getInitialValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int INITAL_VALUE_EDEFAULT = 0;
+	protected static final int INITIAL_VALUE_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getInitalValue() <em>Inital Value</em>}' attribute.
+	 * The cached value of the '{@link #getInitialValue() <em>Initial Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInitalValue()
+	 * @see #getInitialValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected int initalValue = INITAL_VALUE_EDEFAULT;
+	protected int initialValue = INITIAL_VALUE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMaxValue() <em>Max Value</em>}' attribute.
@@ -121,8 +121,8 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getInitalValue() {
-		return initalValue;
+	public int getInitialValue() {
+		return initialValue;
 	}
 
 	/**
@@ -130,11 +130,11 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInitalValue(int newInitalValue) {
-		int oldInitalValue = initalValue;
-		initalValue = newInitalValue;
+	public void setInitialValue(int newInitialValue) {
+		int oldInitialValue = initialValue;
+		initialValue = newInitialValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SEMAPHORE__INITAL_VALUE, oldInitalValue, initalValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SEMAPHORE__INITIAL_VALUE, oldInitialValue, initialValue));
 	}
 
 	/**
@@ -187,8 +187,8 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.SEMAPHORE__INITAL_VALUE:
-				return getInitalValue();
+			case AmaltheaPackage.SEMAPHORE__INITIAL_VALUE:
+				return getInitialValue();
 			case AmaltheaPackage.SEMAPHORE__MAX_VALUE:
 				return getMaxValue();
 			case AmaltheaPackage.SEMAPHORE__PRIORITY_CEILING_PROTOCOL:
@@ -205,8 +205,8 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.SEMAPHORE__INITAL_VALUE:
-				setInitalValue((Integer)newValue);
+			case AmaltheaPackage.SEMAPHORE__INITIAL_VALUE:
+				setInitialValue((Integer)newValue);
 				return;
 			case AmaltheaPackage.SEMAPHORE__MAX_VALUE:
 				setMaxValue((Integer)newValue);
@@ -226,8 +226,8 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SEMAPHORE__INITAL_VALUE:
-				setInitalValue(INITAL_VALUE_EDEFAULT);
+			case AmaltheaPackage.SEMAPHORE__INITIAL_VALUE:
+				setInitialValue(INITIAL_VALUE_EDEFAULT);
 				return;
 			case AmaltheaPackage.SEMAPHORE__MAX_VALUE:
 				setMaxValue(MAX_VALUE_EDEFAULT);
@@ -247,8 +247,8 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SEMAPHORE__INITAL_VALUE:
-				return initalValue != INITAL_VALUE_EDEFAULT;
+			case AmaltheaPackage.SEMAPHORE__INITIAL_VALUE:
+				return initialValue != INITIAL_VALUE_EDEFAULT;
 			case AmaltheaPackage.SEMAPHORE__MAX_VALUE:
 				return maxValue != MAX_VALUE_EDEFAULT;
 			case AmaltheaPackage.SEMAPHORE__PRIORITY_CEILING_PROTOCOL:
@@ -267,8 +267,8 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (initalValue: ");
-		result.append(initalValue);
+		result.append(" (initialValue: ");
+		result.append(initialValue);
 		result.append(", maxValue: ");
 		result.append(maxValue);
 		result.append(", priorityCeilingProtocol: ");

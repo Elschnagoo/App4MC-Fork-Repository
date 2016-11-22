@@ -66,7 +66,7 @@ public interface Group extends RunnableItem {
 
 	/**
 	 * Returns the value of the '<em><b>Ordered</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ordered</em>' attribute isn't clear,
@@ -76,7 +76,7 @@ public interface Group extends RunnableItem {
 	 * @return the value of the '<em>Ordered</em>' attribute.
 	 * @see #setOrdered(boolean)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getGroup_Ordered()
-	 * @model default="false" unique="false"
+	 * @model default="true" unique="false"
 	 * @generated
 	 */
 	boolean isOrdered();

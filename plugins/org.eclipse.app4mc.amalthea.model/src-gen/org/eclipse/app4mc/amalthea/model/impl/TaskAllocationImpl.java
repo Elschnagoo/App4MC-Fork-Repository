@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getTask <em>Task</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getScheduler <em>Scheduler</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getPriority <em>Priority</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,6 +59,26 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * @ordered
 	 */
 	protected TaskScheduler scheduler;
+
+	/**
+	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PRIORITY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected int priority = PRIORITY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,6 +180,27 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getPriority() {
+		return priority;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPriority(int newPriority) {
+		int oldPriority = priority;
+		priority = newPriority;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TASK_ALLOCATION__PRIORITY, oldPriority, priority));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -168,6 +210,8 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULER:
 				if (resolve) return getScheduler();
 				return basicGetScheduler();
+			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
+				return getPriority();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -185,6 +229,9 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 				return;
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULER:
 				setScheduler((TaskScheduler)newValue);
+				return;
+			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
+				setPriority((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -204,6 +251,9 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULER:
 				setScheduler((TaskScheduler)null);
 				return;
+			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
+				setPriority(PRIORITY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -220,8 +270,26 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 				return task != null;
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULER:
 				return scheduler != null;
+			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
+				return priority != PRIORITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (priority: ");
+		result.append(priority);
+		result.append(')');
+		return result.toString();
 	}
 
 } //TaskAllocationImpl

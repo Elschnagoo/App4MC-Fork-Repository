@@ -3133,6 +3133,7 @@ Sections refer to Labels and/or Runnables.</xsd:documentation>
           <xsd:element name="task" type="am:Task"/>
           <xsd:element name="scheduler" type="am:TaskScheduler"/>
         </xsd:choice>
+        <xsd:attribute name="priority" type="xsd:int"/>
         <xsd:attribute name="task" type="xsd:string"/>
         <xsd:attribute name="scheduler" type="xsd:string"/>
       </xsd:extension>
@@ -3146,6 +3147,7 @@ Sections refer to Labels and/or Runnables.</xsd:documentation>
           <xsd:element name="isr" type="am:ISR"/>
           <xsd:element name="controller" type="am:InterruptController"/>
         </xsd:choice>
+        <xsd:attribute name="priority" type="xsd:int"/>
         <xsd:attribute name="isr" type="xsd:string"/>
         <xsd:attribute name="controller" type="xsd:string"/>
       </xsd:extension>
@@ -3230,7 +3232,7 @@ priorityCeilingProtocol: enables priority ceiling for this resource</xsd:documen
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
-        <xsd:attribute name="initalValue" type="xsd:int"/>
+        <xsd:attribute name="initialValue" type="xsd:int"/>
         <xsd:attribute name="maxValue" type="xsd:int"/>
         <xsd:attribute name="priorityCeilingProtocol" type="xsd:boolean"/>
       </xsd:extension>

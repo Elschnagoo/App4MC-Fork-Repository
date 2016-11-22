@@ -60,12 +60,12 @@ public class OSModelValidatorTests {
 		final OSModel osModel = AmaltheaFactory.eINSTANCE.createOSModel();
 		final Semaphore semaphore = AmaltheaFactory.eINSTANCE.createSemaphore();
 		
-		semaphore.setInitalValue(-10);
+		semaphore.setInitialValue(-10);
 		semaphore.setMaxValue(20);
 		osModel.getSemaphores().add(semaphore);
 		amalthea.setOsModel(osModel);
 
-		this.issueCreator.issue(semaphore, AmaltheaPackage.eINSTANCE.getSemaphore_InitalValue());
+		this.issueCreator.issue(semaphore, AmaltheaPackage.eINSTANCE.getSemaphore_InitialValue());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -87,7 +87,7 @@ public class OSModelValidatorTests {
 		final OSModel osModel = AmaltheaFactory.eINSTANCE.createOSModel();
 		final Semaphore semaphore = AmaltheaFactory.eINSTANCE.createSemaphore();
 		
-		semaphore.setInitalValue(0);
+		semaphore.setInitialValue(0);
 		semaphore.setMaxValue(20);
 		osModel.getSemaphores().add(semaphore);
 		amalthea.setOsModel(osModel);
@@ -111,7 +111,7 @@ public class OSModelValidatorTests {
 		final OSModel osModel = AmaltheaFactory.eINSTANCE.createOSModel();
 		final Semaphore semaphore = AmaltheaFactory.eINSTANCE.createSemaphore();
 		
-		semaphore.setInitalValue(10);
+		semaphore.setInitialValue(10);
 		semaphore.setMaxValue(20);
 		osModel.getSemaphores().add(semaphore);
 		amalthea.setOsModel(osModel);
@@ -135,7 +135,7 @@ public class OSModelValidatorTests {
 		final OSModel osModel = AmaltheaFactory.eINSTANCE.createOSModel();
 		final Semaphore semaphore = AmaltheaFactory.eINSTANCE.createSemaphore();
 		
-		semaphore.setInitalValue(0);
+		semaphore.setInitialValue(0);
 		semaphore.setMaxValue(-10);
 		osModel.getSemaphores().add(semaphore);
 		amalthea.setOsModel(osModel);
@@ -163,7 +163,7 @@ public class OSModelValidatorTests {
 		final OSModel osModel = AmaltheaFactory.eINSTANCE.createOSModel();
 		final Semaphore semaphore = AmaltheaFactory.eINSTANCE.createSemaphore();
 		
-		semaphore.setInitalValue(0);
+		semaphore.setInitialValue(0);
 		semaphore.setMaxValue(0);
 		osModel.getSemaphores().add(semaphore);
 		amalthea.setOsModel(osModel);
@@ -190,7 +190,7 @@ public class OSModelValidatorTests {
 		final OSModel osModel = AmaltheaFactory.eINSTANCE.createOSModel();
 		final Semaphore semaphore = AmaltheaFactory.eINSTANCE.createSemaphore();
 		
-		semaphore.setInitalValue(0);
+		semaphore.setInitialValue(0);
 		semaphore.setMaxValue(10);
 		osModel.getSemaphores().add(semaphore);
 		amalthea.setOsModel(osModel);
@@ -214,7 +214,7 @@ public class OSModelValidatorTests {
 		final OSModel osModel = AmaltheaFactory.eINSTANCE.createOSModel();
 		final Semaphore semaphore = AmaltheaFactory.eINSTANCE.createSemaphore();
 		
-		semaphore.setInitalValue(2);
+		semaphore.setInitialValue(2);
 		semaphore.setMaxValue(1);
 		osModel.getSemaphores().add(semaphore);
 		amalthea.setOsModel(osModel);

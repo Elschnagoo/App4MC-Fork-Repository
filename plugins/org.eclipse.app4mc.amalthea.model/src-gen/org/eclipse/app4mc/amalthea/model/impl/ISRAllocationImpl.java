@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ISRAllocationImpl#getIsr <em>Isr</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ISRAllocationImpl#getController <em>Controller</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ISRAllocationImpl#getPriority <em>Priority</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,6 +59,26 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 	 * @ordered
 	 */
 	protected InterruptController controller;
+
+	/**
+	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PRIORITY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected int priority = PRIORITY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,6 +180,27 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getPriority() {
+		return priority;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPriority(int newPriority) {
+		int oldPriority = priority;
+		priority = newPriority;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ISR_ALLOCATION__PRIORITY, oldPriority, priority));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -168,6 +210,8 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 			case AmaltheaPackage.ISR_ALLOCATION__CONTROLLER:
 				if (resolve) return getController();
 				return basicGetController();
+			case AmaltheaPackage.ISR_ALLOCATION__PRIORITY:
+				return getPriority();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -185,6 +229,9 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 				return;
 			case AmaltheaPackage.ISR_ALLOCATION__CONTROLLER:
 				setController((InterruptController)newValue);
+				return;
+			case AmaltheaPackage.ISR_ALLOCATION__PRIORITY:
+				setPriority((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -204,6 +251,9 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 			case AmaltheaPackage.ISR_ALLOCATION__CONTROLLER:
 				setController((InterruptController)null);
 				return;
+			case AmaltheaPackage.ISR_ALLOCATION__PRIORITY:
+				setPriority(PRIORITY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -220,8 +270,26 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 				return isr != null;
 			case AmaltheaPackage.ISR_ALLOCATION__CONTROLLER:
 				return controller != null;
+			case AmaltheaPackage.ISR_ALLOCATION__PRIORITY:
+				return priority != PRIORITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (priority: ");
+		result.append(priority);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ISRAllocationImpl

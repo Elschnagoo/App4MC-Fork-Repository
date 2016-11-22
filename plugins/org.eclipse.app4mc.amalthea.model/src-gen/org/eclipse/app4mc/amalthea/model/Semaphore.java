@@ -29,7 +29,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Semaphore#getInitalValue <em>Inital Value</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Semaphore#getInitialValue <em>Initial Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Semaphore#getMaxValue <em>Max Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Semaphore#isPriorityCeilingProtocol <em>Priority Ceiling Protocol</em>}</li>
  * </ul>
@@ -40,31 +40,31 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface Semaphore extends ReferableBaseObject {
 	/**
-	 * Returns the value of the '<em><b>Inital Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Initial Value</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Inital Value</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Initial Value</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Inital Value</em>' attribute.
-	 * @see #setInitalValue(int)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphore_InitalValue()
+	 * @return the value of the '<em>Initial Value</em>' attribute.
+	 * @see #setInitialValue(int)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphore_InitialValue()
 	 * @model default="0" unique="false"
 	 * @generated
 	 */
-	int getInitalValue();
+	int getInitialValue();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Semaphore#getInitalValue <em>Inital Value</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Semaphore#getInitialValue <em>Initial Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Inital Value</em>' attribute.
-	 * @see #getInitalValue()
+	 * @param value the new value of the '<em>Initial Value</em>' attribute.
+	 * @see #getInitialValue()
 	 * @generated
 	 */
-	void setInitalValue(int value);
+	void setInitialValue(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Max Value</b></em>' attribute.

@@ -55,7 +55,7 @@ public class SemaphoreItemProvider extends ReferableBaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addInitalValuePropertyDescriptor(object);
+			addInitialValuePropertyDescriptor(object);
 			addMaxValuePropertyDescriptor(object);
 			addPriorityCeilingProtocolPropertyDescriptor(object);
 		}
@@ -63,19 +63,19 @@ public class SemaphoreItemProvider extends ReferableBaseObjectItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Inital Value feature.
+	 * This adds a property descriptor for the Initial Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addInitalValuePropertyDescriptor(Object object) {
+	protected void addInitialValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Semaphore_initalValue_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Semaphore_initalValue_feature", "_UI_Semaphore_type"),
-				 AmaltheaPackage.eINSTANCE.getSemaphore_InitalValue(),
+				 getString("_UI_Semaphore_initialValue_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Semaphore_initialValue_feature", "_UI_Semaphore_type"),
+				 AmaltheaPackage.eINSTANCE.getSemaphore_InitialValue(),
 				 true,
 				 false,
 				 false,
@@ -176,7 +176,7 @@ public class SemaphoreItemProvider extends ReferableBaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Semaphore.class)) {
-			case AmaltheaPackage.SEMAPHORE__INITAL_VALUE:
+			case AmaltheaPackage.SEMAPHORE__INITIAL_VALUE:
 			case AmaltheaPackage.SEMAPHORE__MAX_VALUE:
 			case AmaltheaPackage.SEMAPHORE__PRIORITY_CEILING_PROTOCOL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

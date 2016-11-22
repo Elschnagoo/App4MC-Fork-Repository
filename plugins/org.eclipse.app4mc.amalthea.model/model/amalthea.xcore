@@ -1879,12 +1879,14 @@ class TaskAllocation extends BaseObject
 {
 	refers Task[1] task
 	refers TaskScheduler[1] scheduler
+	int priority="0"	// overwrites attribute "priority" of Task
 }
 
 class ISRAllocation extends BaseObject
 {
 	refers ISR[1] isr
 	refers InterruptController[1] controller
+	int priority="0"	// overwrites attribute "priority" of ISR
 }
 
 
@@ -1936,7 +1938,7 @@ class OsBuffering extends BaseObject
  */
 class Semaphore extends ReferableBaseObject
 {
-	int initalValue="0"
+	int initialValue="0"
 	int maxValue="0"
 	boolean priorityCeilingProtocol ="false"
 }
@@ -3106,7 +3108,7 @@ class RunnableProbabilitySwitch extends RunnableItem
 class Group extends RunnableItem
 {
 	String name
-	boolean ordered ="false"
+	boolean ordered ="true"
 	contains resolving RunnableItem[] items
 }
 

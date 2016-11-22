@@ -24,6 +24,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ISRAllocation#getIsr <em>Isr</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ISRAllocation#getController <em>Controller</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ISRAllocation#getPriority <em>Priority</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getISRAllocation()
@@ -82,5 +83,32 @@ public interface ISRAllocation extends BaseObject {
 	 * @generated
 	 */
 	void setController(InterruptController value);
+
+	/**
+	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Priority</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Priority</em>' attribute.
+	 * @see #setPriority(int)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getISRAllocation_Priority()
+	 * @model default="0" unique="false"
+	 * @generated
+	 */
+	int getPriority();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ISRAllocation#getPriority <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Priority</em>' attribute.
+	 * @see #getPriority()
+	 * @generated
+	 */
+	void setPriority(int value);
 
 } // ISRAllocation

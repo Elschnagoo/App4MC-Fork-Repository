@@ -27,6 +27,7 @@ h3. AbstractElementMapping
 
 The __AbstractElementMapping__ is a specialization of the __Mapping__. It is used to associate specializations of the __AbstractElementMemoryInformation__ (i.e. __Label__, __Runnable__, __TaskPrototype__ and __Process__), specified within the software model, with a __Memory__. 
 
+
 h2. PhysicalSectionMapping
 
 The _PhysicalSectionMapping_ class (can also be called as *Physical Memory Section* ) describes the following:
@@ -34,24 +35,22 @@ The _PhysicalSectionMapping_ class (can also be called as *Physical Memory Secti
 * mapping various *Label and Runnable* elements to a Physical Memory Section
 * description of memory address location where the Physical Memory Section is allocated 
 
+
 h2. Allocation
 
 h3. CoreAllocation
 
 The __CoreAllocation__ describes the allocation of cores to a __Scheduler__. This class consists of references to the respective __Scheduler__, which specified within an existing OS model, and a core, which is specified in a hardware model. Further attributes, which may be used to supply additional information, e.g. for a code generator, may be described by the containment attributeList.
 
+
 h3. RunnableAllocation
 
 The __RunnableAllocation__ is a specialization of the __ExecutableAllocation__. It is used to associate a __Runnable__, specified within an existing software model, with a __Scheduler__.
- 
-h3. ProcessAllocation
-
-This is the abstract description of the mapping of a __Process__ (i.e. __Task__ and __ISR__) to a __Scheduler__ (i.e. __TaskScheduler__ and __InterruptController__).
 
 h3. ISRAllocation
 
-This is a specification of __ProcessAllocation__. The __ISRAllocation__ is used to associate  an __ISR__ with an __InterruptConroller__.
+The __ISRAllocation__ is used to associate  an __ISR__ with an __InterruptConroller__. The attribute 'priority' can be used to assign a value for this specific context. If the value is set, it will be used instead of the default.
 
 h3. TaskAllocation
 
-This is a specification of __ProcessAllocation__. The __TaskAllocation__ is used to associate a __Task__ with a __TaskScheduler__.
+The __TaskAllocation__ is used to associate a __Task__ with a __TaskScheduler__. The attribute 'priority' can be used to assign a value for this specific context. If the value is set, it will be used instead of the default.

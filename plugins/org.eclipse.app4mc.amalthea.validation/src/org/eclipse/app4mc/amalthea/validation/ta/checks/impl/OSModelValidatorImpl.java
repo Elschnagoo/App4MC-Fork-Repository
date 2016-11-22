@@ -38,9 +38,9 @@ public class OSModelValidatorImpl extends AbstractValidatorImpl {
 			final EObject elem = amaIter.next();
 			if (elem instanceof Semaphore) {
 				Semaphore semaphore = (Semaphore) elem;
-				int initialValue = semaphore.getInitalValue();
+				int initialValue = semaphore.getInitialValue();
 				if(false == (0 <= initialValue)) {
-					this.issueCreator.issue(semaphore, AmaltheaPackage.eINSTANCE.getSemaphore_InitalValue());
+					this.issueCreator.issue(semaphore, AmaltheaPackage.eINSTANCE.getSemaphore_InitialValue());
 				}
 				int maxValue = semaphore.getMaxValue();
 				if(false == (0 < maxValue)) {

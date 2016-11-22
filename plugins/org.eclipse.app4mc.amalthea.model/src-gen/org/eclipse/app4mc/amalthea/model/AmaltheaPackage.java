@@ -12845,13 +12845,22 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK_ALLOCATION__SCHEDULER = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Priority</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_ALLOCATION__PRIORITY = BASE_OBJECT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Task Allocation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_ALLOCATION_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 2;
+	int TASK_ALLOCATION_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Task Allocation</em>' class.
@@ -12900,13 +12909,22 @@ public interface AmaltheaPackage extends EPackage {
 	int ISR_ALLOCATION__CONTROLLER = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Priority</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISR_ALLOCATION__PRIORITY = BASE_OBJECT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>ISR Allocation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISR_ALLOCATION_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 2;
+	int ISR_ALLOCATION_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>ISR Allocation</em>' class.
@@ -13156,13 +13174,13 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Inital Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Initial Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE__INITAL_VALUE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+	int SEMAPHORE__INITIAL_VALUE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Max Value</b></em>' attribute.
@@ -28100,6 +28118,17 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getTaskAllocation_Scheduler();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getPriority <em>Priority</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Priority</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TaskAllocation#getPriority()
+	 * @see #getTaskAllocation()
+	 * @generated
+	 */
+	EAttribute getTaskAllocation_Priority();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ISRAllocation <em>ISR Allocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28130,6 +28159,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getISRAllocation_Controller();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ISRAllocation#getPriority <em>Priority</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Priority</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ISRAllocation#getPriority()
+	 * @see #getISRAllocation()
+	 * @generated
+	 */
+	EAttribute getISRAllocation_Priority();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.RunnableAllocation <em>Runnable Allocation</em>}'.
@@ -28282,15 +28322,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getSemaphore();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Semaphore#getInitalValue <em>Inital Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Semaphore#getInitialValue <em>Initial Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Inital Value</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Semaphore#getInitalValue()
+	 * @return the meta object for the attribute '<em>Initial Value</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Semaphore#getInitialValue()
 	 * @see #getSemaphore()
 	 * @generated
 	 */
-	EAttribute getSemaphore_InitalValue();
+	EAttribute getSemaphore_InitialValue();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Semaphore#getMaxValue <em>Max Value</em>}'.

@@ -75,7 +75,7 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean ORDERED_EDEFAULT = false;
+	protected static final boolean ORDERED_EDEFAULT = true;
 
 	/**
 	 * The cached value of the '{@link #isOrdered() <em>Ordered</em>}' attribute.
