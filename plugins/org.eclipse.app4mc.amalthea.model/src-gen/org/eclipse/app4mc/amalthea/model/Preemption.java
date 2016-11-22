@@ -20,150 +20,124 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Preemptability</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Preemption</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * Preemption type for scheduling
  * <!-- end-model-doc -->
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPreemptability()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPreemption()
  * @model
  * @generated
  */
-public enum Preemptability implements Enumerator {
+public enum Preemption implements Enumerator {
 	/**
-	 * The '<em><b>UNDEFINED </b></em>' literal object.
+	 * The '<em><b>undefined </b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED__VALUE
 	 * @generated
 	 * @ordered
 	 */
-	_UNDEFINED_(0, "_UNDEFINED_", "_UNDEFINED_"),
+	_UNDEFINED_(0, "_undefined_", "_undefined_"),
 
 	/**
-	 * The '<em><b>NON</b></em>' literal object.
+	 * The '<em><b>Cooperative</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NON_VALUE
+	 * @see #COOPERATIVE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NON(0, "NON", "NON"),
+	COOPERATIVE(0, "cooperative", "cooperative"),
 
 	/**
-	 * The '<em><b>FULL</b></em>' literal object.
+	 * The '<em><b>Preemptive</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #FULL_VALUE
+	 * @see #PREEMPTIVE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	FULL(0, "FULL", "FULL"),
+	PREEMPTIVE(0, "preemptive", "preemptive");
 
 	/**
-	 * The '<em><b>UNKNOWN</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #UNKNOWN_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	UNKNOWN(0, "UNKNOWN", "UNKNOWN");
-
-	/**
-	 * The '<em><b>UNDEFINED </b></em>' literal value.
+	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>UNDEFINED </b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
-	 * @model
+	 * @model name="_undefined_"
 	 * @generated
 	 * @ordered
 	 */
 	public static final int _UNDEFINED__VALUE = 0;
 
 	/**
-	 * The '<em><b>NON</b></em>' literal value.
+	 * The '<em><b>Cooperative</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>NON</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Cooperative</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #NON
-	 * @model
+	 * @see #COOPERATIVE
+	 * @model name="cooperative"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NON_VALUE = 0;
+	public static final int COOPERATIVE_VALUE = 0;
 
 	/**
-	 * The '<em><b>FULL</b></em>' literal value.
+	 * The '<em><b>Preemptive</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>FULL</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Preemptive</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #FULL
-	 * @model
+	 * @see #PREEMPTIVE
+	 * @model name="preemptive"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int FULL_VALUE = 0;
+	public static final int PREEMPTIVE_VALUE = 0;
 
 	/**
-	 * The '<em><b>UNKNOWN</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>UNKNOWN</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #UNKNOWN
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int UNKNOWN_VALUE = 0;
-
-	/**
-	 * An array of all the '<em><b>Preemptability</b></em>' enumerators.
+	 * An array of all the '<em><b>Preemption</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final Preemptability[] VALUES_ARRAY =
-		new Preemptability[] {
+	private static final Preemption[] VALUES_ARRAY =
+		new Preemption[] {
 			_UNDEFINED_,
-			NON,
-			FULL,
-			UNKNOWN,
+			COOPERATIVE,
+			PREEMPTIVE,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Preemptability</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Preemption</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<Preemptability> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<Preemption> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Preemptability</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Preemption</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static Preemptability get(String literal) {
+	public static Preemption get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			Preemptability result = VALUES_ARRAY[i];
+			Preemption result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -172,16 +146,16 @@ public enum Preemptability implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Preemptability</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Preemption</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static Preemptability getByName(String name) {
+	public static Preemption getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			Preemptability result = VALUES_ARRAY[i];
+			Preemption result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -190,14 +164,14 @@ public enum Preemptability implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Preemptability</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Preemption</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static Preemptability get(int value) {
+	public static Preemption get(int value) {
 		switch (value) {
 			case _UNDEFINED__VALUE: return _UNDEFINED_;
 		}
@@ -231,7 +205,7 @@ public enum Preemptability implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Preemptability(int value, String name, String literal) {
+	private Preemption(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -275,4 +249,4 @@ public enum Preemptability implements Enumerator {
 		return literal;
 	}
 	
-} //Preemptability
+} //Preemption

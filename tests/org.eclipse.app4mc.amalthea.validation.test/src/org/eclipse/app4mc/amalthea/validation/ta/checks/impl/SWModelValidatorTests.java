@@ -26,6 +26,7 @@ import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EventMask;
+import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
@@ -737,7 +738,7 @@ public class SWModelValidatorTests {
 		final Task task = AmaltheaFactory.eINSTANCE.createTask();
 		final CallGraph callGraph = AmaltheaFactory.eINSTANCE.createCallGraph();
 		final ModeSwitch modeSwitch = AmaltheaFactory.eINSTANCE.createModeSwitch();
-		final ModeSwitchEntry modeSwitchEntry = AmaltheaFactory.eINSTANCE.createModeSwitchEntry();
+		final ModeSwitchEntry<GraphEntryBase> modeSwitchEntry = AmaltheaFactory.eINSTANCE.createModeSwitchEntry();
 		final ModeLiteral modeLiteral = AmaltheaFactory.eINSTANCE.createModeLiteral();
 		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
 
@@ -771,8 +772,8 @@ public class SWModelValidatorTests {
 		final Task task = AmaltheaFactory.eINSTANCE.createTask();
 		final CallGraph callGraph = AmaltheaFactory.eINSTANCE.createCallGraph();
 		final ModeSwitch modeSwitch = AmaltheaFactory.eINSTANCE.createModeSwitch();
-		final ModeSwitchEntry modeSwitchEntry1 = AmaltheaFactory.eINSTANCE.createModeSwitchEntry();
-		final ModeSwitchEntry modeSwitchEntry2 = AmaltheaFactory.eINSTANCE.createModeSwitchEntry();
+		final ModeSwitchEntry<GraphEntryBase> modeSwitchEntry1 = AmaltheaFactory.eINSTANCE.createModeSwitchEntry();
+		final ModeSwitchEntry<GraphEntryBase> modeSwitchEntry2 = AmaltheaFactory.eINSTANCE.createModeSwitchEntry();
 		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
 		final ModeLiteral modeLiteral = AmaltheaFactory.eINSTANCE.createModeLiteral();
 
@@ -813,7 +814,7 @@ public class SWModelValidatorTests {
 		final Task task = AmaltheaFactory.eINSTANCE.createTask();
 		final CallGraph callGraph = AmaltheaFactory.eINSTANCE.createCallGraph();
 		final ModeSwitch modeSwitch = AmaltheaFactory.eINSTANCE.createModeSwitch();
-		final ModeSwitchEntry modeSwitchEntry = AmaltheaFactory.eINSTANCE.createModeSwitchEntry();
+		final ModeSwitchEntry<GraphEntryBase> modeSwitchEntry = AmaltheaFactory.eINSTANCE.createModeSwitchEntry();
 
 		modeSwitch.getEntries().add(modeSwitchEntry);
 		callGraph.getGraphEntries().add(modeSwitch);
@@ -844,7 +845,7 @@ public class SWModelValidatorTests {
 		final Task task = AmaltheaFactory.eINSTANCE.createTask();
 		final CallGraph callGraph = AmaltheaFactory.eINSTANCE.createCallGraph();
 		final ModeSwitch modeSwitch = AmaltheaFactory.eINSTANCE.createModeSwitch();
-		final ModeSwitchEntry modeSwitchEntry = AmaltheaFactory.eINSTANCE.createModeSwitchEntry();
+		final ModeSwitchEntry<GraphEntryBase> modeSwitchEntry = AmaltheaFactory.eINSTANCE.createModeSwitchEntry();
 		final ModeLiteral modeLiteral = AmaltheaFactory.eINSTANCE.createModeLiteral();
 		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
 		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();

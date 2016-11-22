@@ -451,15 +451,14 @@ exclusive: gets access to requested semaphore only when there is no other user a
       <xsd:enumeration value="release"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="Preemptability">
+  <xsd:simpleType name="Preemption">
     <xsd:annotation>
       <xsd:documentation>Preemption type for scheduling</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
-      <xsd:enumeration value="_UNDEFINED_"/>
-      <xsd:enumeration value="NON"/>
-      <xsd:enumeration value="FULL"/>
-      <xsd:enumeration value="UNKNOWN"/>
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="cooperative"/>
+      <xsd:enumeration value="preemptive"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="ConcurrencyType">
@@ -4682,7 +4681,7 @@ and includes the direct representation of all abstractions.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:Process">
         <xsd:attribute name="osekTaskGroup" type="xsd:int"/>
-        <xsd:attribute name="preemption" type="am:Preemptability"/>
+        <xsd:attribute name="preemption" type="am:Preemption"/>
         <xsd:attribute name="multipleTaskActivationLimit" type="xsd:int"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -4731,7 +4730,7 @@ The final state can be several Tasks, which can be computed using provided infor
           <xsd:element name="activation" type="am:Activation"/>
           <xsd:element name="runnableCalls" type="am:TaskRunnableCall"/>
         </xsd:choice>
-        <xsd:attribute name="preemption" type="am:Preemptability"/>
+        <xsd:attribute name="preemption" type="am:Preemption"/>
         <xsd:attribute name="firstRunnable" type="xsd:string"/>
         <xsd:attribute name="lastRunnable" type="xsd:string"/>
         <xsd:attribute name="activation" type="xsd:string"/>

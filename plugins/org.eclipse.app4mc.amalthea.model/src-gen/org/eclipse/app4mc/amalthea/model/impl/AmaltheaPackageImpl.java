@@ -235,7 +235,7 @@ import org.eclipse.app4mc.amalthea.model.Pin;
 import org.eclipse.app4mc.amalthea.model.PinType;
 import org.eclipse.app4mc.amalthea.model.Pointer;
 import org.eclipse.app4mc.amalthea.model.Port;
-import org.eclipse.app4mc.amalthea.model.Preemptability;
+import org.eclipse.app4mc.amalthea.model.Preemption;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
@@ -2829,7 +2829,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum preemptabilityEEnum = null;
+	private EEnum preemptionEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -11122,8 +11122,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getPreemptability() {
-		return preemptabilityEEnum;
+	public EEnum getPreemption() {
+		return preemptionEEnum;
 	}
 
 	/**
@@ -12395,7 +12395,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		labelAccessBufferingEEnum = createEEnum(LABEL_ACCESS_BUFFERING);
 		labelAccessEnumEEnum = createEEnum(LABEL_ACCESS_ENUM);
 		semaphoreAccessEnumEEnum = createEEnum(SEMAPHORE_ACCESS_ENUM);
-		preemptabilityEEnum = createEEnum(PREEMPTABILITY);
+		preemptionEEnum = createEEnum(PREEMPTION);
 		concurrencyTypeEEnum = createEEnum(CONCURRENCY_TYPE);
 		asilTypeEEnum = createEEnum(ASIL_TYPE);
 	}
@@ -13851,13 +13851,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTask_OsekTaskGroup(), theEcorePackage.getEInt(), "osekTaskGroup", "0", 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTask_Preemption(), this.getPreemptability(), "preemption", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTask_Preemption(), this.getPreemption(), "preemption", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_MultipleTaskActivationLimit(), theEcorePackage.getEInt(), "multipleTaskActivationLimit", "0", 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(isrEClass, org.eclipse.app4mc.amalthea.model.ISR.class, "ISR", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(processPrototypeEClass, ProcessPrototype.class, "ProcessPrototype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProcessPrototype_Preemption(), this.getPreemptability(), "preemption", null, 0, 1, ProcessPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessPrototype_Preemption(), this.getPreemption(), "preemption", null, 0, 1, ProcessPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessPrototype_FirstRunnable(), this.getRunnable(), null, "firstRunnable", null, 0, 1, ProcessPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessPrototype_LastRunnable(), this.getRunnable(), null, "lastRunnable", null, 0, 1, ProcessPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessPrototype_AccessPrecedenceSpec(), this.getAccessPrecedenceSpec(), null, "accessPrecedenceSpec", null, 0, -1, ProcessPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14348,11 +14348,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(semaphoreAccessEnumEEnum, SemaphoreAccessEnum.EXCLUSIVE);
 		addEEnumLiteral(semaphoreAccessEnumEEnum, SemaphoreAccessEnum.RELEASE);
 
-		initEEnum(preemptabilityEEnum, Preemptability.class, "Preemptability");
-		addEEnumLiteral(preemptabilityEEnum, Preemptability._UNDEFINED_);
-		addEEnumLiteral(preemptabilityEEnum, Preemptability.NON);
-		addEEnumLiteral(preemptabilityEEnum, Preemptability.FULL);
-		addEEnumLiteral(preemptabilityEEnum, Preemptability.UNKNOWN);
+		initEEnum(preemptionEEnum, Preemption.class, "Preemption");
+		addEEnumLiteral(preemptionEEnum, Preemption._UNDEFINED_);
+		addEEnumLiteral(preemptionEEnum, Preemption.COOPERATIVE);
+		addEEnumLiteral(preemptionEEnum, Preemption.PREEMPTIVE);
 
 		initEEnum(concurrencyTypeEEnum, ConcurrencyType.class, "ConcurrencyType");
 		addEEnumLiteral(concurrencyTypeEEnum, ConcurrencyType._UNDEFINED_);

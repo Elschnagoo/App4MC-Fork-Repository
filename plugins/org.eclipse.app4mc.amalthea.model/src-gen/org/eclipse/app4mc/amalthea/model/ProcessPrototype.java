@@ -46,7 +46,7 @@ import org.eclipse.emf.common.util.EList;
 public interface ProcessPrototype extends AbstractProcess {
 	/**
 	 * Returns the value of the '<em><b>Preemption</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.Preemptability}.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.Preemption}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Preemption</em>' attribute isn't clear,
@@ -54,24 +54,24 @@ public interface ProcessPrototype extends AbstractProcess {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Preemption</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.Preemptability
-	 * @see #setPreemption(Preemptability)
+	 * @see org.eclipse.app4mc.amalthea.model.Preemption
+	 * @see #setPreemption(Preemption)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessPrototype_Preemption()
 	 * @model unique="false"
 	 * @generated
 	 */
-	Preemptability getPreemption();
+	Preemption getPreemption();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ProcessPrototype#getPreemption <em>Preemption</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Preemption</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.Preemptability
+	 * @see org.eclipse.app4mc.amalthea.model.Preemption
 	 * @see #getPreemption()
 	 * @generated
 	 */
-	void setPreemption(Preemptability value);
+	void setPreemption(Preemption value);
 
 	/**
 	 * Returns the value of the '<em><b>First Runnable</b></em>' reference.

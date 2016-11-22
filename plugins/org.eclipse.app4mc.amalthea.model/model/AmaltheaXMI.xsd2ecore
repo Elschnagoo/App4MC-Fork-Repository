@@ -311,11 +311,10 @@
       <nested inputs="amalthea.xcore#/EPackage/SemaphoreAccessEnum/exclusive" outputs="AmaltheaXMI.xsd#//SemaphoreAccessEnum;XSDSimpleTypeDefinition=38/XSDEnumerationFacet=2"/>
       <nested inputs="amalthea.xcore#/EPackage/SemaphoreAccessEnum/release" outputs="AmaltheaXMI.xsd#//SemaphoreAccessEnum;XSDSimpleTypeDefinition=38/XSDEnumerationFacet=3"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/Preemptability" outputs="AmaltheaXMI.xsd#//Preemptability;XSDSimpleTypeDefinition=39">
-      <nested inputs="amalthea.xcore#/EPackage/Preemptability/_UNDEFINED_" outputs="AmaltheaXMI.xsd#//Preemptability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet"/>
-      <nested inputs="amalthea.xcore#/EPackage/Preemptability/NON" outputs="AmaltheaXMI.xsd#//Preemptability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/Preemptability/FULL" outputs="AmaltheaXMI.xsd#//Preemptability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=2"/>
-      <nested inputs="amalthea.xcore#/EPackage/Preemptability/UNKNOWN" outputs="AmaltheaXMI.xsd#//Preemptability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=3"/>
+    <nested inputs="amalthea.xcore#/EPackage/Preemption" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=39">
+      <nested inputs="amalthea.xcore#/EPackage/Preemption/_undefined_" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=39/XSDEnumerationFacet"/>
+      <nested inputs="amalthea.xcore#/EPackage/Preemption/cooperative" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/Preemption/preemptive" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=2"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/ConcurrencyType" outputs="AmaltheaXMI.xsd#//ConcurrencyType;XSDSimpleTypeDefinition=40">
       <nested inputs="amalthea.xcore#/EPackage/ConcurrencyType/_undefined_" outputs="AmaltheaXMI.xsd#//ConcurrencyType;XSDSimpleTypeDefinition=40/XSDEnumerationFacet"/>
