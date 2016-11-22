@@ -193,7 +193,7 @@ import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
 import org.eclipse.app4mc.amalthea.model.Pin;
 import org.eclipse.app4mc.amalthea.model.PinType;
 import org.eclipse.app4mc.amalthea.model.Pointer;
-import org.eclipse.app4mc.amalthea.model.Preemption;
+import org.eclipse.app4mc.amalthea.model.Preemptability;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
@@ -683,8 +683,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createLabelAccessEnumFromString(eDataType, initialValue);
 			case AmaltheaPackage.SEMAPHORE_ACCESS_ENUM:
 				return createSemaphoreAccessEnumFromString(eDataType, initialValue);
-			case AmaltheaPackage.PREEMPTION:
-				return createPreemptionFromString(eDataType, initialValue);
+			case AmaltheaPackage.PREEMPTABILITY:
+				return createPreemptabilityFromString(eDataType, initialValue);
 			case AmaltheaPackage.CONCURRENCY_TYPE:
 				return createConcurrencyTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.ASIL_TYPE:
@@ -780,8 +780,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertLabelAccessEnumToString(eDataType, instanceValue);
 			case AmaltheaPackage.SEMAPHORE_ACCESS_ENUM:
 				return convertSemaphoreAccessEnumToString(eDataType, instanceValue);
-			case AmaltheaPackage.PREEMPTION:
-				return convertPreemptionToString(eDataType, instanceValue);
+			case AmaltheaPackage.PREEMPTABILITY:
+				return convertPreemptabilityToString(eDataType, instanceValue);
 			case AmaltheaPackage.CONCURRENCY_TYPE:
 				return convertConcurrencyTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.ASIL_TYPE:
@@ -3986,8 +3986,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Preemption createPreemptionFromString(EDataType eDataType, String initialValue) {
-		Preemption result = Preemption.get(initialValue);
+	public Preemptability createPreemptabilityFromString(EDataType eDataType, String initialValue) {
+		Preemptability result = Preemptability.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -3997,7 +3997,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertPreemptionToString(EDataType eDataType, Object instanceValue) {
+	public String convertPreemptabilityToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

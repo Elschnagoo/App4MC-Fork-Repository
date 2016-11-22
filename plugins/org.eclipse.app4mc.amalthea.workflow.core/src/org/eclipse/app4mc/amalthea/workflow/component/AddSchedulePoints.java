@@ -21,7 +21,7 @@ import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
-import org.eclipse.app4mc.amalthea.model.Preemption;
+import org.eclipse.app4mc.amalthea.model.Preemptability;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
@@ -31,7 +31,7 @@ import org.eclipse.app4mc.amalthea.workflow.core.exception.WorkflowException;
 
 /**
  * This component adds so called {@link SchedulePoint}s to a {@link CallGraph} of a {@link Task}.
- * The {@link Task} must be configured as {@link Preemption#COOPERATIVE}.
+ * The {@link Task} must be configured as {@link Preemptability#NON}.
  *
  */
 public class AddSchedulePoints extends WorkflowComponent {
@@ -60,7 +60,7 @@ public class AddSchedulePoints extends WorkflowComponent {
 	
 	public void addSchedulePointsToTasks(List<Task> tasks) {
 		for (final Task task : tasks) {
-			if (null != task.getCallGraph() && task.getPreemption().equals(Preemption.COOPERATIVE)) {
+			if (null != task.getCallGraph() && task.getPreemption().equals(Preemptability.NON)) {
 				this.log.info("Adding schedule points to cooperative Task [" + task.getName() + "]");
 				for (final GraphEntryBase graphEntry : task.getCallGraph().getGraphEntries()) {
 					// TODO: Check needs to be extended to rest of items

@@ -19,7 +19,7 @@ import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
-import org.eclipse.app4mc.amalthea.model.Preemption;
+import org.eclipse.app4mc.amalthea.model.Preemptability;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 
@@ -65,7 +65,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Preemption PREEMPTION_EDEFAULT = Preemption._UNDEFINED_;
+	protected static final Preemptability PREEMPTION_EDEFAULT = Preemptability._UNDEFINED_;
 
 	/**
 	 * The cached value of the '{@link #getPreemption() <em>Preemption</em>}' attribute.
@@ -75,7 +75,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * @generated
 	 * @ordered
 	 */
-	protected Preemption preemption = PREEMPTION_EDEFAULT;
+	protected Preemptability preemption = PREEMPTION_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getFirstRunnable() <em>First Runnable</em>}' reference.
@@ -171,7 +171,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Preemption getPreemption() {
+	public Preemptability getPreemption() {
 		return preemption;
 	}
 
@@ -180,8 +180,8 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPreemption(Preemption newPreemption) {
-		Preemption oldPreemption = preemption;
+	public void setPreemption(Preemptability newPreemption) {
+		Preemptability oldPreemption = preemption;
 		preemption = newPreemption == null ? PREEMPTION_EDEFAULT : newPreemption;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PROCESS_PROTOTYPE__PREEMPTION, oldPreemption, preemption));
@@ -410,7 +410,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.PROCESS_PROTOTYPE__PREEMPTION:
-				setPreemption((Preemption)newValue);
+				setPreemption((Preemptability)newValue);
 				return;
 			case AmaltheaPackage.PROCESS_PROTOTYPE__FIRST_RUNNABLE:
 				setFirstRunnable((org.eclipse.app4mc.amalthea.model.Runnable)newValue);

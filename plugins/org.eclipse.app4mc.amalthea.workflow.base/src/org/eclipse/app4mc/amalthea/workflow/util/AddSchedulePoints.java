@@ -21,7 +21,7 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
-import org.eclipse.app4mc.amalthea.model.Preemption;
+import org.eclipse.app4mc.amalthea.model.Preemptability;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.workflow.base.AmaltheaWorkflow;
@@ -57,7 +57,7 @@ public class AddSchedulePoints extends AmaltheaWorkflow {
 		}
 		this.log.info("Starting...");
 		for (final Task task : getAmaltheaModel(ctx).getSwModel().getTasks()) {
-			if (null != task.getCallGraph() && task.getPreemption().equals(Preemption.COOPERATIVE)) {
+			if (null != task.getCallGraph() && task.getPreemption().equals(Preemptability.NON)) {
 				this.log.info("Adding schedule points to cooperative Task [" + task.getName() + "]");
 				for (final GraphEntryBase graphEntry : task.getCallGraph().getGraphEntries()) {
 					// TODO: Check needs to be extended to rest of items

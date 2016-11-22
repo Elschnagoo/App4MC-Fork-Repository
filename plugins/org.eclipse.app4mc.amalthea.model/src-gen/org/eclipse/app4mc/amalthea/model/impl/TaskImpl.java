@@ -13,7 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Preemption;
+import org.eclipse.app4mc.amalthea.model.Preemptability;
 import org.eclipse.app4mc.amalthea.model.Task;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -66,7 +66,7 @@ public class TaskImpl extends ProcessImpl implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Preemption PREEMPTION_EDEFAULT = Preemption._UNDEFINED_;
+	protected static final Preemptability PREEMPTION_EDEFAULT = Preemptability._UNDEFINED_;
 
 	/**
 	 * The cached value of the '{@link #getPreemption() <em>Preemption</em>}' attribute.
@@ -76,7 +76,7 @@ public class TaskImpl extends ProcessImpl implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected Preemption preemption = PREEMPTION_EDEFAULT;
+	protected Preemptability preemption = PREEMPTION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMultipleTaskActivationLimit() <em>Multiple Task Activation Limit</em>}' attribute.
@@ -143,7 +143,7 @@ public class TaskImpl extends ProcessImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Preemption getPreemption() {
+	public Preemptability getPreemption() {
 		return preemption;
 	}
 
@@ -152,8 +152,8 @@ public class TaskImpl extends ProcessImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPreemption(Preemption newPreemption) {
-		Preemption oldPreemption = preemption;
+	public void setPreemption(Preemptability newPreemption) {
+		Preemptability oldPreemption = preemption;
 		preemption = newPreemption == null ? PREEMPTION_EDEFAULT : newPreemption;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TASK__PREEMPTION, oldPreemption, preemption));
@@ -210,7 +210,7 @@ public class TaskImpl extends ProcessImpl implements Task {
 				setOsekTaskGroup((Integer)newValue);
 				return;
 			case AmaltheaPackage.TASK__PREEMPTION:
-				setPreemption((Preemption)newValue);
+				setPreemption((Preemptability)newValue);
 				return;
 			case AmaltheaPackage.TASK__MULTIPLE_TASK_ACTIVATION_LIMIT:
 				setMultipleTaskActivationLimit((Integer)newValue);

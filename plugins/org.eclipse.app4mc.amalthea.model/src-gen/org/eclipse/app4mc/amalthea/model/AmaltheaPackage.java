@@ -22893,14 +22893,14 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE_ACCESS_ENUM = 348;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Preemption <em>Preemption</em>}' enum.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Preemptability <em>Preemptability</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.Preemption
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPreemption()
+	 * @see org.eclipse.app4mc.amalthea.model.Preemptability
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPreemptability()
 	 * @generated
 	 */
-	int PREEMPTION = 349;
+	int PREEMPTABILITY = 349;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ConcurrencyType <em>Concurrency Type</em>}' enum.
@@ -32555,14 +32555,14 @@ public interface AmaltheaPackage extends EPackage {
 	EEnum getSemaphoreAccessEnum();
 
 	/**
-	 * Returns the meta object for enum '{@link org.eclipse.app4mc.amalthea.model.Preemption <em>Preemption</em>}'.
+	 * Returns the meta object for enum '{@link org.eclipse.app4mc.amalthea.model.Preemptability <em>Preemptability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Preemption</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Preemption
+	 * @return the meta object for enum '<em>Preemptability</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Preemptability
 	 * @generated
 	 */
-	EEnum getPreemption();
+	EEnum getPreemptability();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.app4mc.amalthea.model.ConcurrencyType <em>Concurrency Type</em>}'.

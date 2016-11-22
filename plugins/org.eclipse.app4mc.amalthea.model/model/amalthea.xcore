@@ -2736,7 +2736,7 @@ class TerminateProcess extends CallSequenceItem
 class Task extends Process
 {
 	int osekTaskGroup="0"
-	Preemption preemption
+	Preemptability preemption
 	
 	int multipleTaskActivationLimit = "0"
 }
@@ -2755,7 +2755,7 @@ class ISR extends Process
  */
 class ProcessPrototype extends AbstractProcess
 {
-	Preemption preemption
+	Preemptability preemption
 	refers Runnable firstRunnable
 	refers Runnable lastRunnable
 	/*
@@ -3153,12 +3153,12 @@ class InstructionsConstant extends Instructions
 /*
  * Preemption type for scheduling
  */
-enum Preemption
+enum Preemptability
 {
-	_undefined_ // Display: "<preemption>"
-	cooperative
-	preemptive
-	unknown
+	_UNDEFINED_ // Display: "<preemptability>"
+	NON
+	FULL
+	UNKNOWN
 }
 
 /*
