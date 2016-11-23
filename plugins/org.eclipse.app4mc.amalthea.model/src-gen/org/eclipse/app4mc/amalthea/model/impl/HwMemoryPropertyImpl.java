@@ -18,7 +18,6 @@ import org.eclipse.app4mc.amalthea.model.HwMemoryProperty;
 import org.eclipse.app4mc.amalthea.model.Memory;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -41,7 +40,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class HwMemoryPropertyImpl extends HwMemoryConstraintImpl implements HwMemoryProperty {
 	/**
-	 * The cached value of the '{@link #getMemory() <em>Memory</em>}' containment reference.
+	 * The cached value of the '{@link #getMemory() <em>Memory</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMemory()
@@ -99,12 +98,6 @@ public class HwMemoryPropertyImpl extends HwMemoryConstraintImpl implements HwMe
 			InternalEObject oldMemory = (InternalEObject)memory;
 			memory = (Memory)eResolveProxy(oldMemory);
 			if (memory != oldMemory) {
-				InternalEObject newMemory = (InternalEObject)memory;
-				NotificationChain msgs = oldMemory.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_MEMORY_PROPERTY__MEMORY, null, null);
-				if (newMemory.eInternalContainer() == null) {
-					msgs = newMemory.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_MEMORY_PROPERTY__MEMORY, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.HW_MEMORY_PROPERTY__MEMORY, oldMemory, memory));
 			}
@@ -126,33 +119,11 @@ public class HwMemoryPropertyImpl extends HwMemoryConstraintImpl implements HwMe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetMemory(Memory newMemory, NotificationChain msgs) {
+	public void setMemory(Memory newMemory) {
 		Memory oldMemory = memory;
 		memory = newMemory;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_MEMORY_PROPERTY__MEMORY, oldMemory, newMemory);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMemory(Memory newMemory) {
-		if (newMemory != memory) {
-			NotificationChain msgs = null;
-			if (memory != null)
-				msgs = ((InternalEObject)memory).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_MEMORY_PROPERTY__MEMORY, null, msgs);
-			if (newMemory != null)
-				msgs = ((InternalEObject)newMemory).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_MEMORY_PROPERTY__MEMORY, null, msgs);
-			msgs = basicSetMemory(newMemory, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_MEMORY_PROPERTY__MEMORY, newMemory, newMemory));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_MEMORY_PROPERTY__MEMORY, oldMemory, memory));
 	}
 
 	/**
@@ -174,20 +145,6 @@ public class HwMemoryPropertyImpl extends HwMemoryConstraintImpl implements HwMe
 		comparator = newComparator == null ? COMPARATOR_EDEFAULT : newComparator;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_MEMORY_PROPERTY__COMPARATOR, oldComparator, comparator));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.HW_MEMORY_PROPERTY__MEMORY:
-				return basicSetMemory(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

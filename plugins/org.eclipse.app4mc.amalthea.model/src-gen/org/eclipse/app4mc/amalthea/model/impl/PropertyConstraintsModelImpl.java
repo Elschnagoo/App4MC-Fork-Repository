@@ -16,9 +16,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.MappingConstraint;
-import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -41,8 +39,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PropertyConstraintsModelImpl#getAllocationConstraints <em>Allocation Constraints</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PropertyConstraintsModelImpl#getMappingConstraints <em>Mapping Constraints</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PropertyConstraintsModelImpl#getCoreTypeDefinitions <em>Core Type Definitions</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PropertyConstraintsModelImpl#getMemoryTypeDefinitions <em>Memory Type Definitions</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,26 +63,6 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 	 * @ordered
 	 */
 	protected EList<MappingConstraint> mappingConstraints;
-
-	/**
-	 * The cached value of the '{@link #getCoreTypeDefinitions() <em>Core Type Definitions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCoreTypeDefinitions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<CoreType> coreTypeDefinitions;
-
-	/**
-	 * The cached value of the '{@link #getMemoryTypeDefinitions() <em>Memory Type Definitions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMemoryTypeDefinitions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<MemoryType> memoryTypeDefinitions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,30 +112,6 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CoreType> getCoreTypeDefinitions() {
-		if (coreTypeDefinitions == null) {
-			coreTypeDefinitions = new EObjectContainmentEList.Resolving<CoreType>(CoreType.class, this, AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__CORE_TYPE_DEFINITIONS);
-		}
-		return coreTypeDefinitions;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<MemoryType> getMemoryTypeDefinitions() {
-		if (memoryTypeDefinitions == null) {
-			memoryTypeDefinitions = new EObjectContainmentEList.Resolving<MemoryType>(MemoryType.class, this, AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MEMORY_TYPE_DEFINITIONS);
-		}
-		return memoryTypeDefinitions;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -167,10 +119,6 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 				return ((InternalEList<?>)getAllocationConstraints()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MAPPING_CONSTRAINTS:
 				return ((InternalEList<?>)getMappingConstraints()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__CORE_TYPE_DEFINITIONS:
-				return ((InternalEList<?>)getCoreTypeDefinitions()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MEMORY_TYPE_DEFINITIONS:
-				return ((InternalEList<?>)getMemoryTypeDefinitions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -187,10 +135,6 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 				return getAllocationConstraints();
 			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MAPPING_CONSTRAINTS:
 				return getMappingConstraints();
-			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__CORE_TYPE_DEFINITIONS:
-				return getCoreTypeDefinitions();
-			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MEMORY_TYPE_DEFINITIONS:
-				return getMemoryTypeDefinitions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -212,14 +156,6 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 				getMappingConstraints().clear();
 				getMappingConstraints().addAll((Collection<? extends MappingConstraint>)newValue);
 				return;
-			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__CORE_TYPE_DEFINITIONS:
-				getCoreTypeDefinitions().clear();
-				getCoreTypeDefinitions().addAll((Collection<? extends CoreType>)newValue);
-				return;
-			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MEMORY_TYPE_DEFINITIONS:
-				getMemoryTypeDefinitions().clear();
-				getMemoryTypeDefinitions().addAll((Collection<? extends MemoryType>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -238,12 +174,6 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MAPPING_CONSTRAINTS:
 				getMappingConstraints().clear();
 				return;
-			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__CORE_TYPE_DEFINITIONS:
-				getCoreTypeDefinitions().clear();
-				return;
-			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MEMORY_TYPE_DEFINITIONS:
-				getMemoryTypeDefinitions().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -260,10 +190,6 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 				return allocationConstraints != null && !allocationConstraints.isEmpty();
 			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MAPPING_CONSTRAINTS:
 				return mappingConstraints != null && !mappingConstraints.isEmpty();
-			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__CORE_TYPE_DEFINITIONS:
-				return coreTypeDefinitions != null && !coreTypeDefinitions.isEmpty();
-			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MEMORY_TYPE_DEFINITIONS:
-				return memoryTypeDefinitions != null && !memoryTypeDefinitions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

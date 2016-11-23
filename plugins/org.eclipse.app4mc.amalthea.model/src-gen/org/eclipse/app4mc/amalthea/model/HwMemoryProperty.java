@@ -37,26 +37,26 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface HwMemoryProperty extends HwMemoryConstraint {
 	/**
-	 * Returns the value of the '<em><b>Memory</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Memory</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Memory</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Memory</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Memory</em>' containment reference.
+	 * @return the value of the '<em>Memory</em>' reference.
 	 * @see #setMemory(Memory)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwMemoryProperty_Memory()
-	 * @model containment="true" resolveProxies="true"
+	 * @model
 	 * @generated
 	 */
 	Memory getMemory();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwMemoryProperty#getMemory <em>Memory</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwMemoryProperty#getMemory <em>Memory</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Memory</em>' containment reference.
+	 * @param value the new value of the '<em>Memory</em>' reference.
 	 * @see #getMemory()
 	 * @generated
 	 */

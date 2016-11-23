@@ -74,8 +74,6 @@ public class PropertyConstraintsModelItemProvider extends BaseObjectItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPropertyConstraintsModel_AllocationConstraints());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPropertyConstraintsModel_MappingConstraints());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPropertyConstraintsModel_CoreTypeDefinitions());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPropertyConstraintsModel_MemoryTypeDefinitions());
 		}
 		return childrenFeatures;
 	}
@@ -140,8 +138,6 @@ public class PropertyConstraintsModelItemProvider extends BaseObjectItemProvider
 		switch (notification.getFeatureID(PropertyConstraintsModel.class)) {
 			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__ALLOCATION_CONSTRAINTS:
 			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MAPPING_CONSTRAINTS:
-			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__CORE_TYPE_DEFINITIONS:
-			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MEMORY_TYPE_DEFINITIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -178,16 +174,6 @@ public class PropertyConstraintsModelItemProvider extends BaseObjectItemProvider
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getPropertyConstraintsModel_MappingConstraints(),
 				 AmaltheaFactory.eINSTANCE.createAbstractElementMappingConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getPropertyConstraintsModel_CoreTypeDefinitions(),
-				 AmaltheaFactory.eINSTANCE.createCoreType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getPropertyConstraintsModel_MemoryTypeDefinitions(),
-				 AmaltheaFactory.eINSTANCE.createMemoryType()));
 	}
 
 }

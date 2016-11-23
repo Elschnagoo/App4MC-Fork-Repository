@@ -14794,31 +14794,13 @@ public interface AmaltheaPackage extends EPackage {
 	int PROPERTY_CONSTRAINTS_MODEL__MAPPING_CONSTRAINTS = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Core Type Definitions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY_CONSTRAINTS_MODEL__CORE_TYPE_DEFINITIONS = BASE_OBJECT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Memory Type Definitions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY_CONSTRAINTS_MODEL__MEMORY_TYPE_DEFINITIONS = BASE_OBJECT_FEATURE_COUNT + 3;
-
-	/**
 	 * The number of structural features of the '<em>Property Constraints Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_CONSTRAINTS_MODEL_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 4;
+	int PROPERTY_CONSTRAINTS_MODEL_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Property Constraints Model</em>' class.
@@ -15235,7 +15217,7 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_CORE_PROPERTY__CUSTOM_PROPERTIES = HW_CORE_CONSTRAINT__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Core</b></em>' containment reference.
+	 * The feature id for the '<em><b>Core</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -15354,7 +15336,7 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_MEMORY_PROPERTY__CUSTOM_PROPERTIES = HW_MEMORY_CONSTRAINT__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Memory</b></em>' containment reference.
+	 * The feature id for the '<em><b>Memory</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -29065,28 +29047,6 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getPropertyConstraintsModel_MappingConstraints();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel#getCoreTypeDefinitions <em>Core Type Definitions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Core Type Definitions</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel#getCoreTypeDefinitions()
-	 * @see #getPropertyConstraintsModel()
-	 * @generated
-	 */
-	EReference getPropertyConstraintsModel_CoreTypeDefinitions();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel#getMemoryTypeDefinitions <em>Memory Type Definitions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Memory Type Definitions</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel#getMemoryTypeDefinitions()
-	 * @see #getPropertyConstraintsModel()
-	 * @generated
-	 */
-	EReference getPropertyConstraintsModel_MemoryTypeDefinitions();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.AllocationConstraint <em>Allocation Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -29243,10 +29203,10 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getHwCoreProperty();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwCoreProperty#getCore <em>Core</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.HwCoreProperty#getCore <em>Core</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Core</em>'.
+	 * @return the meta object for the reference '<em>Core</em>'.
 	 * @see org.eclipse.app4mc.amalthea.model.HwCoreProperty#getCore()
 	 * @see #getHwCoreProperty()
 	 * @generated
@@ -29318,10 +29278,10 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getHwMemoryProperty();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwMemoryProperty#getMemory <em>Memory</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.HwMemoryProperty#getMemory <em>Memory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Memory</em>'.
+	 * @return the meta object for the reference '<em>Memory</em>'.
 	 * @see org.eclipse.app4mc.amalthea.model.HwMemoryProperty#getMemory()
 	 * @see #getHwMemoryProperty()
 	 * @generated

@@ -3658,8 +3658,6 @@ It describes an ISR that performs scheduling.</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="allocationConstraints" type="am:AllocationConstraint"/>
           <xsd:element name="mappingConstraints" type="am:MappingConstraint"/>
-          <xsd:element name="coreTypeDefinitions" type="am:CoreType"/>
-          <xsd:element name="memoryTypeDefinitions" type="am:MemoryType"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -3828,6 +3826,7 @@ executables.</xsd:documentation>
           <xsd:element name="core" type="am:Core"/>
         </xsd:choice>
         <xsd:attribute name="comparator" type="am:ComparatorType"/>
+        <xsd:attribute name="core" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -3860,6 +3859,7 @@ data.</xsd:documentation>
           <xsd:element name="memory" type="am:Memory"/>
         </xsd:choice>
         <xsd:attribute name="comparator" type="am:ComparatorType"/>
+        <xsd:attribute name="memory" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

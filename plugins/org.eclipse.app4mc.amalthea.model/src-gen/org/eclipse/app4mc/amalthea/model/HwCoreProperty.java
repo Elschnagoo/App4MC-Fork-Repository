@@ -37,26 +37,26 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface HwCoreProperty extends HwCoreConstraint {
 	/**
-	 * Returns the value of the '<em><b>Core</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Core</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Core</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Core</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Core</em>' containment reference.
+	 * @return the value of the '<em>Core</em>' reference.
 	 * @see #setCore(Core)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwCoreProperty_Core()
-	 * @model containment="true" resolveProxies="true"
+	 * @model
 	 * @generated
 	 */
 	Core getCore();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwCoreProperty#getCore <em>Core</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwCoreProperty#getCore <em>Core</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Core</em>' containment reference.
+	 * @param value the new value of the '<em>Core</em>' reference.
 	 * @see #getCore()
 	 * @generated
 	 */

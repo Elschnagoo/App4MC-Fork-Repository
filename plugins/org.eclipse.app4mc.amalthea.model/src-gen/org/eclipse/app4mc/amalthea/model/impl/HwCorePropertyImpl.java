@@ -18,7 +18,6 @@ import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.HwCoreProperty;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -41,7 +40,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCoreProperty {
 	/**
-	 * The cached value of the '{@link #getCore() <em>Core</em>}' containment reference.
+	 * The cached value of the '{@link #getCore() <em>Core</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCore()
@@ -99,12 +98,6 @@ public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCorePr
 			InternalEObject oldCore = (InternalEObject)core;
 			core = (Core)eResolveProxy(oldCore);
 			if (core != oldCore) {
-				InternalEObject newCore = (InternalEObject)core;
-				NotificationChain msgs = oldCore.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CORE_PROPERTY__CORE, null, null);
-				if (newCore.eInternalContainer() == null) {
-					msgs = newCore.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CORE_PROPERTY__CORE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.HW_CORE_PROPERTY__CORE, oldCore, core));
 			}
@@ -126,33 +119,11 @@ public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCorePr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCore(Core newCore, NotificationChain msgs) {
+	public void setCore(Core newCore) {
 		Core oldCore = core;
 		core = newCore;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CORE_PROPERTY__CORE, oldCore, newCore);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCore(Core newCore) {
-		if (newCore != core) {
-			NotificationChain msgs = null;
-			if (core != null)
-				msgs = ((InternalEObject)core).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CORE_PROPERTY__CORE, null, msgs);
-			if (newCore != null)
-				msgs = ((InternalEObject)newCore).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CORE_PROPERTY__CORE, null, msgs);
-			msgs = basicSetCore(newCore, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CORE_PROPERTY__CORE, newCore, newCore));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CORE_PROPERTY__CORE, oldCore, core));
 	}
 
 	/**
@@ -174,20 +145,6 @@ public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCorePr
 		comparator = newComparator == null ? COMPARATOR_EDEFAULT : newComparator;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CORE_PROPERTY__COMPARATOR, oldComparator, comparator));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.HW_CORE_PROPERTY__CORE:
-				return basicSetCore(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

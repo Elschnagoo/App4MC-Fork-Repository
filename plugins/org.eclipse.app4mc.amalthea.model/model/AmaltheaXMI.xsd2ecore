@@ -1440,10 +1440,6 @@
           outputs="AmaltheaXMI.xsd#//PropertyConstraintsModel;XSDComplexTypeDefinition=205/XSDParticle/XSDModelGroup/XSDParticle"/>
       <nested inputs="amalthea.xcore#/EPackage/PropertyConstraintsModel/mappingConstraints"
           outputs="AmaltheaXMI.xsd#//PropertyConstraintsModel;XSDComplexTypeDefinition=205/XSDParticle/XSDModelGroup/XSDParticle=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/PropertyConstraintsModel/coreTypeDefinitions"
-          outputs="AmaltheaXMI.xsd#//PropertyConstraintsModel;XSDComplexTypeDefinition=205/XSDParticle/XSDModelGroup/XSDParticle=2"/>
-      <nested inputs="amalthea.xcore#/EPackage/PropertyConstraintsModel/memoryTypeDefinitions"
-          outputs="AmaltheaXMI.xsd#//PropertyConstraintsModel;XSDComplexTypeDefinition=205/XSDParticle/XSDModelGroup/XSDParticle=3"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/PropertyConstraintsModel" outputs="AmaltheaXMI.xsd#//PropertyConstraintsModel;XSDElementDeclaration=205"/>
     <nested inputs="amalthea.xcore#/EPackage/AllocationConstraint" outputs="AmaltheaXMI.xsd#//AllocationConstraint;XSDComplexTypeDefinition=206">
@@ -1491,6 +1487,7 @@
     <nested inputs="amalthea.xcore#/EPackage/HwMemoryConstraint" outputs="AmaltheaXMI.xsd#//HwMemoryConstraint;XSDElementDeclaration=213"/>
     <nested inputs="amalthea.xcore#/EPackage/HwCoreProperty" outputs="AmaltheaXMI.xsd#//HwCoreProperty;XSDComplexTypeDefinition=214">
       <nested inputs="amalthea.xcore#/EPackage/HwCoreProperty/comparator" outputs="AmaltheaXMI.xsd#//HwCoreProperty;XSDComplexTypeDefinition=214/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/HwCoreProperty/core" outputs="AmaltheaXMI.xsd#//HwCoreProperty;XSDComplexTypeDefinition=214/XSDAttributeUse=1"/>
       <nested inputs="amalthea.xcore#/EPackage/HwCoreProperty/core" outputs="AmaltheaXMI.xsd#//HwCoreProperty;XSDComplexTypeDefinition=214/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/HwCoreProperty" outputs="AmaltheaXMI.xsd#//HwCoreProperty;XSDElementDeclaration=214"/>
@@ -1504,6 +1501,7 @@
     <nested inputs="amalthea.xcore#/EPackage/HwCoreConjunction" outputs="AmaltheaXMI.xsd#//HwCoreConjunction;XSDElementDeclaration=215"/>
     <nested inputs="amalthea.xcore#/EPackage/HwMemoryProperty" outputs="AmaltheaXMI.xsd#//HwMemoryProperty;XSDComplexTypeDefinition=216">
       <nested inputs="amalthea.xcore#/EPackage/HwMemoryProperty/comparator" outputs="AmaltheaXMI.xsd#//HwMemoryProperty;XSDComplexTypeDefinition=216/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/HwMemoryProperty/memory" outputs="AmaltheaXMI.xsd#//HwMemoryProperty;XSDComplexTypeDefinition=216/XSDAttributeUse=1"/>
       <nested inputs="amalthea.xcore#/EPackage/HwMemoryProperty/memory" outputs="AmaltheaXMI.xsd#//HwMemoryProperty;XSDComplexTypeDefinition=216/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/HwMemoryProperty" outputs="AmaltheaXMI.xsd#//HwMemoryProperty;XSDElementDeclaration=216"/>

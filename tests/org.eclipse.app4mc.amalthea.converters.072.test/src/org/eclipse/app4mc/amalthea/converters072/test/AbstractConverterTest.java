@@ -33,6 +33,7 @@ import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_070;
 import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_071;
 import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_072;
 import org.eclipse.app4mc.amalthea.converters072.utils.HelperUtils_071_072;
+import org.eclipse.app4mc.amalthea.converters072.utils.HwElementsCacheBuilder;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -179,6 +180,12 @@ public abstract class AbstractConverterTest {
 
 	protected List<ICache> buildCaches() {
 		final List<ICache> caches = new ArrayList<ICache>();
+
+		final HwElementsCacheBuilder cacheBuilder = new HwElementsCacheBuilder();
+
+		cacheBuilder.buildCache(this.fileName_documentsMap);
+
+		caches.add(cacheBuilder);
 
 
 		return caches;

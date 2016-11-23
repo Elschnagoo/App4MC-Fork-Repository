@@ -2177,8 +2177,6 @@ class PropertyConstraintsModel extends BaseObject
 {
 	contains resolving AllocationConstraint[] allocationConstraints
 	contains resolving MappingConstraint[] mappingConstraints
-	contains resolving CoreType[] coreTypeDefinitions
-	contains resolving MemoryType[] memoryTypeDefinitions
 }
 
 enum ComparatorType
@@ -2275,7 +2273,7 @@ abstract class HwMemoryConstraint extends BaseObject
  */
 class HwCoreProperty extends HwCoreConstraint
 {
-	contains resolving Core core
+	refers  Core core
 	ComparatorType comparator
 }
 
@@ -2292,7 +2290,7 @@ class HwCoreConjunction extends HwCoreConstraint
  */
 class HwMemoryProperty extends HwMemoryConstraint
 {
-	contains resolving Memory memory
+	refers Memory memory
 	ComparatorType comparator
 }
 

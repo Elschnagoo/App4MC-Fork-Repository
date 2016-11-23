@@ -22,6 +22,27 @@
             name="Root Element Converter"
             output-model-version="0.7.2">
       </converter>
+      <converter
+            converter-class="org.eclipse.app4mc.amalthea.converters072.impl.PropertyConstraintsConverter"
+            enabled="true"
+            id="converters.072.propertyconstraints"
+            input-model-version="0.7.1"
+            name="PropertyConstraints Converter"
+            output-model-version="0.7.2">
+         <dependent-on-converter
+               id="converters.072.rootelement">
+         </dependent-on-converter>
+      </converter>
+   </extension>
+   <extension
+         point="org.eclipse.app4mc.amalthea.model.converters.cachebuilders">
+      <CacheBuilder
+            ID="org.eclipse.app4mc.amalthea.converters.072.HwElementsCacheBuilder"
+            class="org.eclipse.app4mc.amalthea.converters072.utils.HwElementsCacheBuilder"
+            enabled="true"
+            input-model-version="0.7.1"
+            name="HwElementsCacheBuilder">
+      </CacheBuilder>
    </extension>
 
 </plugin>

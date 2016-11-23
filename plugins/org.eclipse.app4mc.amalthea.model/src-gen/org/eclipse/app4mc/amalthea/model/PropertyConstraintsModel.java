@@ -36,8 +36,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel#getAllocationConstraints <em>Allocation Constraints</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel#getMappingConstraints <em>Mapping Constraints</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel#getCoreTypeDefinitions <em>Core Type Definitions</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel#getMemoryTypeDefinitions <em>Memory Type Definitions</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPropertyConstraintsModel()
@@ -76,37 +74,5 @@ public interface PropertyConstraintsModel extends BaseObject {
 	 * @generated
 	 */
 	EList<MappingConstraint> getMappingConstraints();
-
-	/**
-	 * Returns the value of the '<em><b>Core Type Definitions</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.CoreType}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Core Type Definitions</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Core Type Definitions</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPropertyConstraintsModel_CoreTypeDefinitions()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	EList<CoreType> getCoreTypeDefinitions();
-
-	/**
-	 * Returns the value of the '<em><b>Memory Type Definitions</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.MemoryType}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Memory Type Definitions</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Memory Type Definitions</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPropertyConstraintsModel_MemoryTypeDefinitions()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	EList<MemoryType> getMemoryTypeDefinitions();
 
 } // PropertyConstraintsModel
