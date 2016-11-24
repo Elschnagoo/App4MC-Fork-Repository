@@ -14328,8 +14328,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEEnum(preemptionEEnum, Preemption.class, "Preemption");
 		addEEnumLiteral(preemptionEEnum, Preemption._UNDEFINED_);
-		addEEnumLiteral(preemptionEEnum, Preemption.COOPERATIVE);
 		addEEnumLiteral(preemptionEEnum, Preemption.PREEMPTIVE);
+		addEEnumLiteral(preemptionEEnum, Preemption.COOPERATIVE);
+		addEEnumLiteral(preemptionEEnum, Preemption.NON_PREEMPTIVE);
 
 		initEEnum(concurrencyTypeEEnum, ConcurrencyType.class, "ConcurrencyType");
 		addEEnumLiteral(concurrencyTypeEEnum, ConcurrencyType._UNDEFINED_);

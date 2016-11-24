@@ -42,6 +42,16 @@ public enum Preemption implements Enumerator {
 	_UNDEFINED_(0, "_undefined_", "_undefined_"),
 
 	/**
+	 * The '<em><b>Preemptive</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PREEMPTIVE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PREEMPTIVE(0, "preemptive", "preemptive"),
+
+	/**
 	 * The '<em><b>Cooperative</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -52,14 +62,14 @@ public enum Preemption implements Enumerator {
 	COOPERATIVE(0, "cooperative", "cooperative"),
 
 	/**
-	 * The '<em><b>Preemptive</b></em>' literal object.
+	 * The '<em><b>Non preemptive</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PREEMPTIVE_VALUE
+	 * @see #NON_PREEMPTIVE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PREEMPTIVE(0, "preemptive", "preemptive");
+	NON_PREEMPTIVE(0, "non_preemptive", "non_preemptive");
 
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
@@ -77,21 +87,6 @@ public enum Preemption implements Enumerator {
 	public static final int _UNDEFINED__VALUE = 0;
 
 	/**
-	 * The '<em><b>Cooperative</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Cooperative</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #COOPERATIVE
-	 * @model name="cooperative"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int COOPERATIVE_VALUE = 0;
-
-	/**
 	 * The '<em><b>Preemptive</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -107,6 +102,36 @@ public enum Preemption implements Enumerator {
 	public static final int PREEMPTIVE_VALUE = 0;
 
 	/**
+	 * The '<em><b>Cooperative</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Cooperative</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #COOPERATIVE
+	 * @model name="cooperative"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int COOPERATIVE_VALUE = 0;
+
+	/**
+	 * The '<em><b>Non preemptive</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Non preemptive</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NON_PREEMPTIVE
+	 * @model name="non_preemptive"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NON_PREEMPTIVE_VALUE = 0;
+
+	/**
 	 * An array of all the '<em><b>Preemption</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -115,8 +140,9 @@ public enum Preemption implements Enumerator {
 	private static final Preemption[] VALUES_ARRAY =
 		new Preemption[] {
 			_UNDEFINED_,
-			COOPERATIVE,
 			PREEMPTIVE,
+			COOPERATIVE,
+			NON_PREEMPTIVE,
 		};
 
 	/**

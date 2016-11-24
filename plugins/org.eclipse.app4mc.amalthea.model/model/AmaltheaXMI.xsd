@@ -457,8 +457,9 @@ exclusive: gets access to requested semaphore only when there is no other user a
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="cooperative"/>
       <xsd:enumeration value="preemptive"/>
+      <xsd:enumeration value="cooperative"/>
+      <xsd:enumeration value="non_preemptive"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="ConcurrencyType">

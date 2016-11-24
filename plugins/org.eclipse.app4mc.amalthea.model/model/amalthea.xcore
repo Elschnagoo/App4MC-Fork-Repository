@@ -246,11 +246,13 @@ class DataSize {
 	 * Convenience methods to retrieve the size in Bits and Bytes
 	 */
 	op long getNumberBits() {
-		return AmaltheaServices.convertToBit(this).longValue
+		val bits = AmaltheaServices.convertToBit(this)
+		if (bits == null) -1L else bits.longValue
 	}
 	
 	op long getNumberBytes() {
-		return Math::ceil(getNumberBits() / 8).longValue
+		val bits = AmaltheaServices.convertToBit(this)
+		if (bits == null) -1L else Math::ceil(bits.longValue / 8).longValue
 	}
 }
 
@@ -3156,8 +3158,9 @@ class InstructionsConstant extends Instructions
 enum Preemption
 {
 	_undefined_ // Display: "<preemption>"
-	cooperative // aka non-preemptive
 	preemptive
+	cooperative // aka limited-preemptive
+	non_preemptive
 }
 
 /*

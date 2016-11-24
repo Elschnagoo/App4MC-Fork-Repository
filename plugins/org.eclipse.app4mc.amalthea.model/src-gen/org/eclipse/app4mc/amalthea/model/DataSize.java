@@ -106,7 +106,7 @@ public interface DataSize extends EObject {
 	 * Convenience methods to retrieve the size in Bits and Bytes
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%java.math.BigInteger%> _convertToBit = <%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.convertToBit(this);\nreturn _convertToBit.longValue();'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='long _xblockexpression = (long) 0;\n{\n\tfinal <%java.math.BigInteger%> bits = <%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.convertToBit(this);\n\tlong _xifexpression = (long) 0;\n\tboolean _equals = <%com.google.common.base.Objects%>.equal(bits, null);\n\tif (_equals)\n\t{\n\t\t_xifexpression = (-1L);\n\t}\n\telse\n\t{\n\t\t_xifexpression = bits.longValue();\n\t}\n\t_xblockexpression = _xifexpression;\n}\nreturn _xblockexpression;'"
 	 * @generated
 	 */
 	long getNumberBits();
@@ -115,7 +115,7 @@ public interface DataSize extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='long _numberBits = this.getNumberBits();\nlong _divide = (_numberBits / 8);\ndouble _ceil = <%java.lang.Math%>.ceil(_divide);\nreturn <%java.lang.Double%>.valueOf(_ceil).longValue();'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='long _xblockexpression = (long) 0;\n{\n\tfinal <%java.math.BigInteger%> bits = <%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.convertToBit(this);\n\tlong _xifexpression = (long) 0;\n\tboolean _equals = <%com.google.common.base.Objects%>.equal(bits, null);\n\tif (_equals)\n\t{\n\t\t_xifexpression = (-1L);\n\t}\n\telse\n\t{\n\t\tlong _longValue = bits.longValue();\n\t\tlong _divide = (_longValue / 8);\n\t\tdouble _ceil = <%java.lang.Math%>.ceil(_divide);\n\t\t_xifexpression = <%java.lang.Double%>.valueOf(_ceil).longValue();\n\t}\n\t_xblockexpression = _xifexpression;\n}\nreturn _xblockexpression;'"
 	 * @generated
 	 */
 	long getNumberBytes();
