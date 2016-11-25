@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <constraintsModel>
+    <affinityConstraints xsi:type="am:RunnablePairingConstraint">
+      <runnables xsi:type="am:RunnableEntityGroup"/>
+    </affinityConstraints>
+    <affinityConstraints xsi:type="am:ProcessPairingConstraint">
+      <processes xsi:type="am:ProcessEntityGroup"/>
+    </affinityConstraints>
+    <affinityConstraints xsi:type="am:DataPairingConstraint">
+      <labels/>
+    </affinityConstraints>
+    <affinityConstraints xsi:type="am:RunnablePairingConstraint">
+      <runnables xsi:type="am:TagGroup"/>
+    </affinityConstraints>
+    <affinityConstraints xsi:type="am:ProcessPairingConstraint">
+      <processes xsi:type="am:TagGroup"/>
+    </affinityConstraints>
+  </constraintsModel>
+</am:Amalthea>

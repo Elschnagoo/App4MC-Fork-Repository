@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <tasks name="T1" priority="0" osekTaskGroup="0" preemption="unknown" multipleTaskActivationLimit="0"/>
+    <runnables callback="false" service="false">
+      <runnableItems xsi:type="am:Group" ordered="false">
+        <items>
+          <runnableItem xsi:type="am:LabelAccess"/>
+        </items>
+      </runnableItems>
+    </runnables>
+    <processPrototypes name="PP1" priority="0" preemption="unknown"/>
+    <processPrototypes name="PP2" priority="0"/>
+  </swModel>
+</am:Amalthea>

@@ -47,39 +47,53 @@
       </callGraph>
     </tasks>
     <runnables name="Runnable_1_1">
-      <runnableItems xsi:type="am:InstructionsConstant" value="1000000" />
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsConstant" value="1000000" />
+      </runnableItems>
     </runnables>
     <runnables name="Runnable_1_2">
-      <runnableItems xsi:type="am:InstructionsConstant" value="2000000" />
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsConstant" value="2000000" />
+      </runnableItems>
     </runnables>
     <runnables name="Runnable_3_1">
-      <runnableItems xsi:type="am:InstructionsDeviation">
-        <deviation>
-          <upperBound xsi:type="am:LongObject" value="5000000" />
-          <distribution xsi:type="am:GaussDistribution">
-            <sd xsi:type="am:LongObject" value="50000" />
-            <mean xsi:type="am:LongObject" value="1000000" />
-          </distribution>
-        </deviation>
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <upperBound xsi:type="am:LongObject" value="5000000" />
+            <distribution xsi:type="am:GaussDistribution">
+              <sd xsi:type="am:LongObject" value="50000" />
+              <mean xsi:type="am:LongObject" value="1000000" />
+            </distribution>
+          </deviation>
+        </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4_1">
-      <runnableItems xsi:type="am:InstructionsConstant" value="1000000" />
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsConstant" value="1000000" />
+      </runnableItems>
     </runnables>
     <runnables name="Runnable_1_3">
-      <runnableItems xsi:type="am:InstructionsConstant" value="3000000" />
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsConstant" value="3000000" />
+      </runnableItems>
     </runnables>
     <runnables name="Runnable_2_1">
-      <runnableItems xsi:type="am:InstructionsDeviation">
-        <deviation>
-          <lowerBound xsi:type="am:LongObject" value="1000000" />
-          <upperBound xsi:type="am:LongObject" value="5000000" />
-          <distribution xsi:type="am:UniformDistribution" />
-        </deviation>
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="1000000" />
+            <upperBound xsi:type="am:LongObject" value="5000000" />
+            <distribution xsi:type="am:UniformDistribution" />
+          </deviation>
+        </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1_4">
-      <runnableItems xsi:type="am:InstructionsConstant" value="4000000" />
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsConstant" value="4000000" />
+      </runnableItems>
     </runnables>
   </swModel>
   <hwModel>

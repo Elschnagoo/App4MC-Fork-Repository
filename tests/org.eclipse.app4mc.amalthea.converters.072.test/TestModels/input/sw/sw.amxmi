@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <isrs name="i1" priority="0">
+      <callGraph>
+        <graphEntries xsi:type="am:ProbabiltitySwitch">
+          <entries probability="0.0"/>
+        </graphEntries>
+        <graphEntries xsi:type="am:CallSequence">
+          <calls xsi:type="am:ClearEvent">
+            <counter offset="0" prescaler="0"/>
+          </calls>
+          <calls xsi:type="am:EnforcedMigration">
+            <counter offset="0" prescaler="0"/>
+          </calls>
+          <calls xsi:type="am:InterProcessActivation">
+            <counter offset="0" prescaler="0"/>
+          </calls>
+          <calls xsi:type="am:SchedulePoint">
+            <counter offset="0" prescaler="0"/>
+          </calls>
+          <calls xsi:type="am:SetEvent">
+            <counter offset="0" prescaler="0"/>
+          </calls>
+          <calls xsi:type="am:TaskRunnableCall">
+            <counter offset="0" prescaler="0"/>
+          </calls>
+          <calls xsi:type="am:TerminateProcess">
+            <counter offset="0" prescaler="0"/>
+          </calls>
+          <calls xsi:type="am:WaitEvent">
+            <counter offset="0" prescaler="0"/>
+          </calls>
+        </graphEntries>
+      </callGraph>
+    </isrs>
+    <tasks name="t1" priority="0" osekTaskGroup="0" multipleTaskActivationLimit="0">
+      <callGraph>
+        <graphEntries xsi:type="am:ProbabiltitySwitch">
+          <entries probability="0.0">
+            <items xsi:type="am:ModeSwitch">
+              <entries>
+                <items xsi:type="am:ProbabiltitySwitch">
+                  <entries probability="0.0">
+                    <items xsi:type="am:CallSequence">
+                      <calls xsi:type="am:EnforcedMigration">
+                        <counter offset="0" prescaler="0"/>
+                      </calls>
+                    </items>
+                  </entries>
+                </items>
+              </entries>
+            </items>
+            <items xsi:type="am:CallSequence">
+              <calls xsi:type="am:EnforcedMigration">
+                <counter offset="0" prescaler="0"/>
+              </calls>
+            </items>
+            <items xsi:type="am:ProbabiltitySwitch">
+              <entries probability="0.0">
+                <items xsi:type="am:CallSequence">
+                  <calls xsi:type="am:TaskRunnableCall">
+                    <counter offset="0" prescaler="0"/>
+                  </calls>
+                </items>
+              </entries>
+            </items>
+          </entries>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <runnables name="R1" callback="false" service="false">
+      <runnableItems xsi:type="am:ProbabilityGroup">
+        <items probability="11">
+          <runnableItem xsi:type="am:LabelAccess"/>
+        </items>
+        <items probability="0">
+          <runnableItem xsi:type="am:LabelAccess"/>
+        </items>
+        <items probability="0">
+          <runnableItem xsi:type="am:LabelAccess"/>
+        </items>
+        <items probability="0">
+          <runnableItem xsi:type="am:LabelAccess"/>
+        </items>
+        <items probability="0">
+          <runnableItem xsi:type="am:ProbabilityGroup">
+            <items probability="2">
+              <runnableItem xsi:type="am:ProbabilityGroup">
+                <items probability="0">
+                  <runnableItem xsi:type="am:ProbabilityGroup">
+                    <items probability="0">
+                      <runnableItem xsi:type="am:LabelAccess"/>
+                    </items>
+                  </runnableItem>
+                </items>
+              </runnableItem>
+            </items>
+          </runnableItem>
+        </items>
+      </runnableItems>
+      <runnableItems xsi:type="am:Group" ordered="false">
+        <items>
+          <runnableItem xsi:type="am:ProbabilityGroup">
+            <items probability="0">
+              <runnableItem xsi:type="am:Group" ordered="false">
+                <items>
+                  <runnableItem xsi:type="am:LabelAccess"/>
+                  <deviation>
+                    <distribution xsi:type="am:Boundaries"/>
+                  </deviation>
+                </items>
+                <items>
+                  <runnableItem xsi:type="am:Group" ordered="false">
+                    <items>
+                      <runnableItem xsi:type="am:ModeLabelAccess"/>
+                    </items>
+                  </runnableItem>
+                </items>
+                <items>
+                  <runnableItem xsi:type="am:ProbabilityGroup">
+                    <items probability="0">
+                      <runnableItem xsi:type="am:ModeLabelAccess"/>
+                    </items>
+                  </runnableItem>
+                </items>
+              </runnableItem>
+            </items>
+            <items probability="0">
+              <runnableItem xsi:type="am:Group" ordered="false">
+                <items>
+                  <runnableItem xsi:type="am:Group" ordered="false">
+                    <items>
+                      <runnableItem xsi:type="am:LabelAccess"/>
+                    </items>
+                  </runnableItem>
+                </items>
+              </runnableItem>
+            </items>
+          </runnableItem>
+        </items>
+        <items>
+          <runnableItem xsi:type="am:Group" ordered="false"/>
+        </items>
+      </runnableItems>
+      <runnableItems xsi:type="am:Group" name="TestGroup" ordered="false">
+        <items/>
+        <items/>
+        <items/>
+      </runnableItems>
+    </runnables>
+    <processPrototypes name="PP" priority="0">
+      <runnableCalls>
+        <counter offset="0" prescaler="0"/>
+      </runnableCalls>
+    </processPrototypes>
+  </swModel>
+</am:Amalthea>

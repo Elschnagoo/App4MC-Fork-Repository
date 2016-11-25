@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <runnables name="R3" callback="false" service="false">
+      <runnableItems xsi:type="am:InstructionsConstant" value="10"/>
+      <runnableItems xsi:type="am:InstructionsDeviation">
+        <fetchStatistic/>
+        <deviation samplingType="BestCase"/>
+      </runnableItems>
+    </runnables>
+  </swModel>
+</am:Amalthea>
