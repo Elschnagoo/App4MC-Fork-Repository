@@ -36,6 +36,7 @@ import org.eclipse.app4mc.amalthea.model.Composite;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreAllocation;
+import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
@@ -66,6 +67,7 @@ import org.eclipse.app4mc.amalthea.model.HwAccessPathRef;
 import org.eclipse.app4mc.amalthea.model.HwElementRef;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
+import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
@@ -114,6 +116,7 @@ import org.eclipse.app4mc.amalthea.model.RWType;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
+import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
@@ -153,6 +156,7 @@ import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl;
+import org.eclipse.app4mc.amalthea.model.impl.RunnableInstructionsEntryImpl;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -277,6 +281,22 @@ public class CustomItemProviderService {
     String _replace = name.replace("Distribution", "");
     String _replace_1 = _replace.replace("Estimators", "");
     return _replace_1.replace("Parameters", "");
+  }
+  
+  private static String getInstructionsText(final Instructions instr) {
+    String _switchResult = null;
+    boolean _matched = false;
+    if (instr instanceof InstructionsConstant) {
+      _matched=true;
+      _switchResult = CustomItemProviderService.getInstructionsConstantItemProviderText(instr, null);
+    }
+    if (!_matched) {
+      if (instr instanceof InstructionsDeviation) {
+        _matched=true;
+        _switchResult = CustomItemProviderService.getInstructionsDeviationItemProviderText(instr, null);
+      }
+    }
+    return _switchResult;
   }
   
   /**
@@ -701,6 +721,86 @@ public class CustomItemProviderService {
     } else {
       return defaultText;
     }
+  }
+  
+  /**
+   * InstructionsConstantItemProvider
+   */
+  public static String getInstructionsConstantItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof InstructionsConstant)) {
+      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, "value");
+      if (_equals) {
+        _xifexpression = "";
+      } else {
+        _xifexpression = (feature + " -- ");
+      }
+      final String s1 = _xifexpression;
+      long _value = ((InstructionsConstant)object).getValue();
+      final String s2 = Long.toString(_value);
+      return ((s1 + "instructions (constant): ") + s2);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  /**
+   * InstructionsDeviationItemProvider
+   */
+  public static String getInstructionsDeviationItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof InstructionsDeviation)) {
+      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, "value");
+      if (_equals) {
+        _xifexpression = "";
+      } else {
+        _xifexpression = (feature + " -- ");
+      }
+      final String s1 = _xifexpression;
+      Deviation<LongObject> _deviation = null;
+      if (((InstructionsDeviation)object)!=null) {
+        _deviation=((InstructionsDeviation)object).getDeviation();
+      }
+      Distribution<LongObject> _distribution = null;
+      if (_deviation!=null) {
+        _distribution=_deviation.getDistribution();
+      }
+      EClass _eClass = null;
+      if (_distribution!=null) {
+        _eClass=_distribution.eClass();
+      }
+      String _name = null;
+      if (_eClass!=null) {
+        _name=_eClass.getName();
+      }
+      final String distName = _name;
+      String _xifexpression_1 = null;
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(distName);
+      if (_isNullOrEmpty) {
+        _xifexpression_1 = "<distribution>";
+      } else {
+        _xifexpression_1 = CustomItemProviderService.trimDistName(distName);
+      }
+      final String s2 = _xifexpression_1;
+      return ((s1 + "instructions (deviation): ") + s2);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getInstructionsDeviationItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(InstructionsDeviation.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.INSTRUCTIONS_DEVIATION__DEVIATION)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
+      list.add(_viewerNotification);
+    }
+    return list;
   }
   
   /**
@@ -3461,15 +3561,9 @@ public class CustomItemProviderService {
       }
     }
     if (!_matched) {
-      if (item instanceof InstructionsConstant) {
+      if (item instanceof RunnableInstructions) {
         _matched=true;
-        _switchResult = CustomItemProviderService.getInstructionsConstantItemProviderText(item, null);
-      }
-    }
-    if (!_matched) {
-      if (item instanceof InstructionsDeviation) {
-        _matched=true;
-        _switchResult = CustomItemProviderService.getInstructionsDeviationItemProviderText(item, null);
+        _switchResult = "Runnable Instructions";
       }
     }
     if (!_matched) {
@@ -3969,86 +4063,6 @@ public class CustomItemProviderService {
       return ("Group_" + _xifexpression_1);
     }
     return null;
-  }
-  
-  /**
-   * InstructionsConstantItemProvider
-   */
-  public static String getInstructionsConstantItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof InstructionsConstant)) {
-      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
-      String _xifexpression = null;
-      boolean _equals = Objects.equal(feature, "runnableItems");
-      if (_equals) {
-        _xifexpression = "";
-      } else {
-        _xifexpression = (feature + " -- ");
-      }
-      final String s1 = _xifexpression;
-      long _value = ((InstructionsConstant)object).getValue();
-      final String s2 = Long.toString(_value);
-      return ((s1 + "instructions (constant): ") + s2);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  /**
-   * InstructionsDeviationItemProvider
-   */
-  public static String getInstructionsDeviationItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof InstructionsDeviation)) {
-      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
-      String _xifexpression = null;
-      boolean _equals = Objects.equal(feature, "runnableItems");
-      if (_equals) {
-        _xifexpression = "";
-      } else {
-        _xifexpression = (feature + " -- ");
-      }
-      final String s1 = _xifexpression;
-      Deviation<LongObject> _deviation = null;
-      if (((InstructionsDeviation)object)!=null) {
-        _deviation=((InstructionsDeviation)object).getDeviation();
-      }
-      Distribution<LongObject> _distribution = null;
-      if (_deviation!=null) {
-        _distribution=_deviation.getDistribution();
-      }
-      EClass _eClass = null;
-      if (_distribution!=null) {
-        _eClass=_distribution.eClass();
-      }
-      String _name = null;
-      if (_eClass!=null) {
-        _name=_eClass.getName();
-      }
-      final String distName = _name;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(distName);
-      if (_isNullOrEmpty) {
-        _xifexpression_1 = "<distribution>";
-      } else {
-        _xifexpression_1 = CustomItemProviderService.trimDistName(distName);
-      }
-      final String s2 = _xifexpression_1;
-      return ((s1 + "instructions (deviation): ") + s2);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static List<ViewerNotification> getInstructionsDeviationItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(InstructionsDeviation.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.INSTRUCTIONS_DEVIATION__DEVIATION)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
-      list.add(_viewerNotification);
-    }
-    return list;
   }
   
   /**
@@ -4592,6 +4606,68 @@ public class CustomItemProviderService {
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
+    }
+    return list;
+  }
+  
+  /**
+   * RunnableInstructionsEntryItemProvider
+   */
+  public static String getRunnableInstructionsEntryItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof RunnableInstructionsEntryImpl)) {
+      CoreType _key = null;
+      if (((RunnableInstructionsEntryImpl)object)!=null) {
+        _key=((RunnableInstructionsEntryImpl)object).getKey();
+      }
+      String _name = null;
+      if (_key!=null) {
+        _name=_key.getName();
+      }
+      final String typeName = _name;
+      Instructions _value = null;
+      if (((RunnableInstructionsEntryImpl)object)!=null) {
+        _value=((RunnableInstructionsEntryImpl)object).getValue();
+      }
+      final Instructions instr = _value;
+      String _xifexpression = null;
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(typeName);
+      if (_isNullOrEmpty) {
+        _xifexpression = "<core type>";
+      } else {
+        _xifexpression = ("Core Type " + typeName);
+      }
+      final String s1 = _xifexpression;
+      String _xifexpression_1 = null;
+      boolean _equals = Objects.equal(instr, null);
+      if (_equals) {
+        _xifexpression_1 = "<instructions>";
+      } else {
+        _xifexpression_1 = CustomItemProviderService.getInstructionsText(instr);
+      }
+      final String s2 = _xifexpression_1;
+      return ((s1 + " -- ") + s2);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getRunnableInstructionsEntryItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(Map.Entry.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY__KEY)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY__VALUE)) {
+        _matched=true;
+        Object _notifier_1 = notification.getNotifier();
+        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
+        list.add(_viewerNotification_1);
+      }
     }
     return list;
   }

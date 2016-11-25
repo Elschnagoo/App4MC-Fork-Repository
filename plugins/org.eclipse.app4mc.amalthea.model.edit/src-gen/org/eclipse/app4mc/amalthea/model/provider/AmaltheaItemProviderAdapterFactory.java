@@ -4981,6 +4981,52 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.RunnableInstructions} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RunnableInstructionsItemProvider runnableInstructionsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.RunnableInstructions}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRunnableInstructionsAdapter() {
+		if (runnableInstructionsItemProvider == null) {
+			runnableInstructionsItemProvider = new RunnableInstructionsItemProvider(this);
+		}
+
+		return runnableInstructionsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RunnableInstructionsEntryItemProvider runnableInstructionsEntryItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRunnableInstructionsEntryAdapter() {
+		if (runnableInstructionsEntryItemProvider == null) {
+			runnableInstructionsEntryItemProvider = new RunnableInstructionsEntryItemProvider(this);
+		}
+
+		return runnableInstructionsEntryItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5725,6 +5771,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	public void dispose() {
 		if (amaltheaItemProvider != null) amaltheaItemProvider.dispose();
 		if (tagItemProvider != null) tagItemProvider.dispose();
+		if (instructionsDeviationItemProvider != null) instructionsDeviationItemProvider.dispose();
+		if (instructionsConstantItemProvider != null) instructionsConstantItemProvider.dispose();
 		if (timeItemProvider != null) timeItemProvider.dispose();
 		if (signedTimeItemProvider != null) signedTimeItemProvider.dispose();
 		if (frequencyItemProvider != null) frequencyItemProvider.dispose();
@@ -5936,6 +5984,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (labelItemProvider != null) labelItemProvider.dispose();
 		if (modeLabelItemProvider != null) modeLabelItemProvider.dispose();
 		if (sectionItemProvider != null) sectionItemProvider.dispose();
+		if (runnableInstructionsItemProvider != null) runnableInstructionsItemProvider.dispose();
+		if (runnableInstructionsEntryItemProvider != null) runnableInstructionsEntryItemProvider.dispose();
 		if (modeLabelAccessItemProvider != null) modeLabelAccessItemProvider.dispose();
 		if (runnableModeSwitchItemProvider != null) runnableModeSwitchItemProvider.dispose();
 		if (labelAccessItemProvider != null) labelAccessItemProvider.dispose();
@@ -5947,8 +5997,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (runnableProbabilitySwitchItemProvider != null) runnableProbabilitySwitchItemProvider.dispose();
 		if (groupItemProvider != null) groupItemProvider.dispose();
 		if (runnableCallItemProvider != null) runnableCallItemProvider.dispose();
-		if (instructionsDeviationItemProvider != null) instructionsDeviationItemProvider.dispose();
-		if (instructionsConstantItemProvider != null) instructionsConstantItemProvider.dispose();
 		if (structItemProvider != null) structItemProvider.dispose();
 		if (structEntryItemProvider != null) structEntryItemProvider.dispose();
 		if (arrayItemProvider != null) arrayItemProvider.dispose();

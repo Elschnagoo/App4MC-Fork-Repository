@@ -126,6 +126,7 @@ import org.eclipse.app4mc.amalthea.model.HwSystem;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.InstructionFetch;
+import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
@@ -228,6 +229,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableEventType;
+import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
@@ -353,6 +355,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 		switch (eClass.getClassifierID()) {
 			case AmaltheaPackage.AMALTHEA: return createAmalthea();
 			case AmaltheaPackage.TAG: return createTag();
+			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: return createInstructionsDeviation();
+			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: return createInstructionsConstant();
 			case AmaltheaPackage.TIME: return createTime();
 			case AmaltheaPackage.SIGNED_TIME: return createSignedTime();
 			case AmaltheaPackage.FREQUENCY: return createFrequency();
@@ -564,6 +568,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.LABEL: return createLabel();
 			case AmaltheaPackage.MODE_LABEL: return createModeLabel();
 			case AmaltheaPackage.SECTION: return createSection();
+			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS: return createRunnableInstructions();
+			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY: return (EObject)createRunnableInstructionsEntry();
 			case AmaltheaPackage.MODE_LABEL_ACCESS: return createModeLabelAccess();
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH: return createRunnableModeSwitch();
 			case AmaltheaPackage.LABEL_ACCESS: return createLabelAccess();
@@ -575,8 +581,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH: return createRunnableProbabilitySwitch();
 			case AmaltheaPackage.GROUP: return createGroup();
 			case AmaltheaPackage.RUNNABLE_CALL: return createRunnableCall();
-			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: return createInstructionsDeviation();
-			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: return createInstructionsConstant();
 			case AmaltheaPackage.STRUCT: return createStruct();
 			case AmaltheaPackage.STRUCT_ENTRY: return createStructEntry();
 			case AmaltheaPackage.ARRAY: return createArray();
@@ -809,6 +813,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public Tag createTag() {
 		TagImpl tag = new TagImpl();
 		return tag;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InstructionsDeviation createInstructionsDeviation() {
+		InstructionsDeviationImpl instructionsDeviation = new InstructionsDeviationImpl();
+		return instructionsDeviation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InstructionsConstant createInstructionsConstant() {
+		InstructionsConstantImpl instructionsConstant = new InstructionsConstantImpl();
+		return instructionsConstant;
 	}
 
 	/**
@@ -2926,6 +2950,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public RunnableInstructions createRunnableInstructions() {
+		RunnableInstructionsImpl runnableInstructions = new RunnableInstructionsImpl();
+		return runnableInstructions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<CoreType, Instructions> createRunnableInstructionsEntry() {
+		RunnableInstructionsEntryImpl runnableInstructionsEntry = new RunnableInstructionsEntryImpl();
+		return runnableInstructionsEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ModeLabelAccess createModeLabelAccess() {
 		ModeLabelAccessImpl modeLabelAccess = new ModeLabelAccessImpl();
 		return modeLabelAccess;
@@ -3029,26 +3073,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public RunnableCall createRunnableCall() {
 		RunnableCallImpl runnableCall = new RunnableCallImpl();
 		return runnableCall;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InstructionsDeviation createInstructionsDeviation() {
-		InstructionsDeviationImpl instructionsDeviation = new InstructionsDeviationImpl();
-		return instructionsDeviation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InstructionsConstant createInstructionsConstant() {
-		InstructionsConstantImpl instructionsConstant = new InstructionsConstantImpl();
-		return instructionsConstant;
 	}
 
 	/**

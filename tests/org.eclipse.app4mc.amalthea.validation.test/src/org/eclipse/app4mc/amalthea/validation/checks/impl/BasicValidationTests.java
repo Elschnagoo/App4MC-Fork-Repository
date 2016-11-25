@@ -26,6 +26,7 @@ import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;
@@ -176,6 +177,7 @@ public class BasicValidationTests {
 		final Amalthea amalthea = factory.createAmalthea();
 		final SWModel swModel = factory.createSWModel();
 		final Runnable runnable = factory.createRunnable();
+		final RunnableInstructions runInst = factory.createRunnableInstructions();
 		final InstructionsDeviation instDev = factory.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = factory.createDeviation();
 
@@ -188,7 +190,8 @@ public class BasicValidationTests {
 		// Stick/Put AMALTHEA elements together
 		amalthea.setSwModel(swModel);
 		swModel.getRunnables().add(runnable);
-		runnable.getRunnableItems().add(instDev);
+		runnable.getRunnableItems().add(runInst);
+		runInst.setDefault(instDev);
 		instDev.setDeviation(deviation);
 		deviation.setLowerBound(lower);
 		deviation.setUpperBound(upper);
@@ -209,9 +212,9 @@ public class BasicValidationTests {
 		EasyMock.verify(this.issueCreator);
 
 
-		final Deviation<LongObject> dev = ((InstructionsDeviation) amalthea.getSwModel().getRunnables().get(0)
-				.getRunnableItems().get(0)).getDeviation();
-
+		final Runnable run = amalthea.getSwModel().getRunnables().get(0);
+		final RunnableInstructions instr = (RunnableInstructions) run.getRunnableItems().get(0);
+		final Deviation<LongObject> dev = ((InstructionsDeviation) instr.getDefault()).getDeviation();
 		final long meanValue = ((WeibullEstimators<LongObject>) dev.getDistribution()).getMean().getValue();
 
 		Assert.assertEquals(dev.getLowerBound().getValue(), 72000);
@@ -232,6 +235,7 @@ public class BasicValidationTests {
 		final Amalthea amalthea = factory.createAmalthea();
 		final SWModel swModel = factory.createSWModel();
 		final Runnable runnable = factory.createRunnable();
+		final RunnableInstructions runInst = factory.createRunnableInstructions();
 		final InstructionsDeviation instDev = factory.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = factory.createDeviation();
 
@@ -244,7 +248,8 @@ public class BasicValidationTests {
 		// Stick/Put AMALTHEA elements together
 		amalthea.setSwModel(swModel);
 		swModel.getRunnables().add(runnable);
-		runnable.getRunnableItems().add(instDev);
+		runnable.getRunnableItems().add(runInst);
+		runInst.setDefault(instDev);
 		instDev.setDeviation(deviation);
 		deviation.setLowerBound(lower);
 		deviation.setUpperBound(upper);
@@ -266,8 +271,10 @@ public class BasicValidationTests {
 
 		EasyMock.verify(this.issueCreator);
 
-		final Deviation<LongObject> dev = ((InstructionsDeviation) amalthea.getSwModel().getRunnables().get(0)
-				.getRunnableItems().get(0)).getDeviation();
+		
+		final Runnable run = amalthea.getSwModel().getRunnables().get(0);
+		final RunnableInstructions instr = (RunnableInstructions) run.getRunnableItems().get(0);
+		final Deviation<LongObject> dev = ((InstructionsDeviation) instr.getDefault()).getDeviation();
 		final long meanValue = ((WeibullEstimators<LongObject>) dev.getDistribution()).getMean().getValue();
 
 		Assert.assertEquals(dev.getLowerBound().getValue(), 88000);

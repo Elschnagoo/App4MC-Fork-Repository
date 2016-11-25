@@ -124,11 +124,14 @@ import org.eclipse.app4mc.amalthea.model.TypeRef
 import org.eclipse.app4mc.amalthea.model.WaitEvent
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl
+import org.eclipse.app4mc.amalthea.model.impl.RunnableInstructionsEntryImpl
 import org.eclipse.emf.common.notify.AdapterFactory
 import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
+import org.eclipse.app4mc.amalthea.model.Instructions
+import org.eclipse.app4mc.amalthea.model.RunnableInstructions
 
 class CustomItemProviderService {
 
@@ -185,6 +188,14 @@ class CustomItemProviderService {
 		if (name == null) return ""
 		
 		return name.replace("Distribution", "").replace("Estimators", "").replace("Parameters", "")
+	}
+
+
+	private def static getInstructionsText(Instructions instr){
+		switch instr {
+			InstructionsConstant: getInstructionsConstantItemProviderText(instr, null)
+			InstructionsDeviation: getInstructionsDeviationItemProviderText(instr, null)
+		}
 	}
 
 
@@ -457,6 +468,45 @@ class CustomItemProviderService {
 		} else {
 			return defaultText
 		}
+	}
+
+
+	/*****************************************************************************
+	 * 						InstructionsConstantItemProvider
+	 *****************************************************************************/
+	def static String getInstructionsConstantItemProviderText(Object object, String defaultText) {
+		if (object instanceof InstructionsConstant) {
+			val feature = getContainingFeatureName(object, "", "")
+			val s1 = if(feature == "value") "" else feature + " -- "
+			val s2 = Long.toString(object.value)
+			return s1 + "instructions (constant): " + s2
+		} else {
+			return defaultText
+		}
+	}
+
+	/*****************************************************************************
+	 * 						InstructionsDeviationItemProvider
+	 *****************************************************************************/
+	def static String getInstructionsDeviationItemProviderText(Object object, String defaultText) {
+		if (object instanceof InstructionsDeviation) {
+			val feature = getContainingFeatureName(object, "", "")
+			val s1 = if(feature == "value") "" else feature + " -- "
+			val distName = object?.deviation?.distribution?.eClass?.name
+			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
+			return s1 + "instructions (deviation): " + s2
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getInstructionsDeviationItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(InstructionsDeviation)) {
+			case AmaltheaPackage::INSTRUCTIONS_DEVIATION__DEVIATION:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+		}
+		return list
 	}
 
 
@@ -1807,8 +1857,7 @@ class CustomItemProviderService {
 		switch item {
 			LabelAccess: getLabelAccessItemProviderText(item, null)
 			RunnableCall: getRunnableCallItemProviderText(item, null)
-			InstructionsConstant: getInstructionsConstantItemProviderText(item, null)
-			InstructionsDeviation: getInstructionsDeviationItemProviderText(item, null)
+			RunnableInstructions: "Runnable Instructions"
 			Group: getGroupItemProviderText(item, null)
 			RunnableModeSwitch: getRunnableModeSwitchItemProviderText(item, null)
 			RunnableProbabilitySwitch: "Probability Switch"
@@ -1979,45 +2028,6 @@ class CustomItemProviderService {
 			val ordered = if(object == null) false else object.isOrdered
 			return "Group_" + if(ordered) "ordered" else "unordered"
 		}
-	}
-
-
-	/*****************************************************************************
-	 * 						InstructionsConstantItemProvider
-	 *****************************************************************************/
-	def static String getInstructionsConstantItemProviderText(Object object, String defaultText) {
-		if (object instanceof InstructionsConstant) {
-			val feature = getContainingFeatureName(object, "", "")
-			val s1 = if(feature == "runnableItems") "" else feature + " -- "
-			val s2 = Long.toString(object.value)
-			return s1 + "instructions (constant): " + s2
-		} else {
-			return defaultText
-		}
-	}
-
-	/*****************************************************************************
-	 * 						InstructionsDeviationItemProvider
-	 *****************************************************************************/
-	def static String getInstructionsDeviationItemProviderText(Object object, String defaultText) {
-		if (object instanceof InstructionsDeviation) {
-			val feature = getContainingFeatureName(object, "", "")
-			val s1 = if(feature == "runnableItems") "" else feature + " -- "
-			val distName = object?.deviation?.distribution?.eClass?.name
-			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
-			return s1 + "instructions (deviation): " + s2
-		} else {
-			return defaultText
-		}
-	}
-
-	def static List<ViewerNotification> getInstructionsDeviationItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(InstructionsDeviation)) {
-			case AmaltheaPackage::INSTRUCTIONS_DEVIATION__DEVIATION:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
-		}
-		return list
 	}
 
 
@@ -2276,6 +2286,36 @@ class CustomItemProviderService {
 		}
 		return list
 	}
+
+
+	/*****************************************************************************
+	 * 						RunnableInstructionsEntryItemProvider
+	 *****************************************************************************/
+	def static String getRunnableInstructionsEntryItemProviderText(Object object, String defaultText) {
+		if (object instanceof RunnableInstructionsEntryImpl) {
+			val typeName = object?.getKey()?.name
+			val instr = object?.getValue()
+
+			val s1 = if(typeName.isNullOrEmpty) "<core type>" else "Core Type " + typeName
+			val s2 = if(instr == null) "<instructions>" else getInstructionsText(instr)
+			return s1 + " -- " + s2;
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getRunnableInstructionsEntryItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(Map.Entry)) {
+			case AmaltheaPackage::RUNNABLE_INSTRUCTIONS_ENTRY__KEY:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+			case AmaltheaPackage::RUNNABLE_INSTRUCTIONS_ENTRY__VALUE:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+		}
+		return list
+	}
+
 
 	/*****************************************************************************
 	 * 						RunnableCallItemProvider

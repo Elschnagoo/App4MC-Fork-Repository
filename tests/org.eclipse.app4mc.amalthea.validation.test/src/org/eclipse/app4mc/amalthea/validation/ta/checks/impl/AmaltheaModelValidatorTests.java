@@ -24,6 +24,7 @@ import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SignedTime;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
@@ -62,10 +63,11 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkUniqueName_nullNames() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Task taskA = AmaltheaFactory.eINSTANCE.createTask();
-		final Task taskB = AmaltheaFactory.eINSTANCE.createTask();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Task taskA = fac.createTask();
+		final Task taskB = fac.createTask();
 
 		swModel.getTasks().add(taskA);
 		swModel.getTasks().add(taskB);
@@ -90,10 +92,11 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkUniqueName_nullNamesDifferentType() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Task task = AmaltheaFactory.eINSTANCE.createTask();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Task task = fac.createTask();
+		final Runnable runnable = fac.createRunnable();
 
 		swModel.getTasks().add(task);
 		swModel.getRunnables().add(runnable);
@@ -114,10 +117,11 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkUniqueName_ambiguousNames() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Task taskA = AmaltheaFactory.eINSTANCE.createTask();
-		final Task taskB = AmaltheaFactory.eINSTANCE.createTask();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Task taskA = fac.createTask();
+		final Task taskB = fac.createTask();
 
 		taskA.setName("Task");
 		taskB.setName("Task");
@@ -144,10 +148,11 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkUniqueName_uniqueNames() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Task taskA = AmaltheaFactory.eINSTANCE.createTask();
-		final Task taskB = AmaltheaFactory.eINSTANCE.createTask();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Task taskA = fac.createTask();
+		final Task taskB = fac.createTask();
 
 		taskA.setName("TaskA");
 		taskB.setName("TaskB");
@@ -170,14 +175,17 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkDeviation_InstructionsNull() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
 
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -199,14 +207,16 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkDeviation_InstructionsInvalidBounds() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<LongObject> distribution = AmaltheaFactory.eINSTANCE.createUniformDistribution();
-		final LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
+		final AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final Distribution<LongObject> distribution = fac.createUniformDistribution();
+		final LongObject lowerBound = fac.createLongObject();
+		final LongObject upperBound = fac.createLongObject();
 
 		lowerBound.setValue(2);
 		upperBound.setValue(1);
@@ -214,7 +224,8 @@ public class AmaltheaModelValidatorTests {
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -236,16 +247,19 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkDeviation_InstructionsMissingBounds() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<LongObject> distribution = AmaltheaFactory.eINSTANCE.createUniformDistribution();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final Distribution<LongObject> distribution = fac.createUniformDistribution();
 
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -264,19 +278,22 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkDeviation_InstructionsMissingLowerBound() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<LongObject> distribution = AmaltheaFactory.eINSTANCE.createUniformDistribution();
-		final LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final Distribution<LongObject> distribution = fac.createUniformDistribution();
+		final LongObject upperBound = fac.createLongObject();
 
 		upperBound.setValue(1);
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -298,19 +315,22 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkDeviation_InstructionsMissingUpperBound() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<LongObject> distribution = AmaltheaFactory.eINSTANCE.createUniformDistribution();
-		final LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final Distribution<LongObject> distribution = fac.createUniformDistribution();
+		final LongObject lowerBound = fac.createLongObject();
 
 		lowerBound.setValue(1);
 		deviation.setLowerBound(lowerBound);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -332,14 +352,16 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkDeviation_InstructionsValidBounds() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<LongObject> distribution = AmaltheaFactory.eINSTANCE.createUniformDistribution();
-		final LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final Distribution<LongObject> distribution = fac.createUniformDistribution();
+		final LongObject lowerBound = fac.createLongObject();
+		final LongObject upperBound = fac.createLongObject();
 
 		lowerBound.setValue(1);
 		upperBound.setValue(2);
@@ -347,7 +369,8 @@ public class AmaltheaModelValidatorTests {
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -366,10 +389,11 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkDeviation_StimulusNull() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
 
 		periodic.setStimulusDeviation(deviation);
 		stimuliModel.getStimuli().add(periodic);
@@ -393,13 +417,14 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkDeviation_StimulusInvalidBounds() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createUniformDistribution();
-		final SignedTime lowerBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime upperBound = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final Distribution<SignedTime> distribution = fac.createUniformDistribution();
+		final SignedTime lowerBound = fac.createSignedTime();
+		final SignedTime upperBound = fac.createSignedTime();
 
 		lowerBound.setValue(2);
 		lowerBound.setUnit(TimeUnit.S);
@@ -430,11 +455,12 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkDeviation_StimulusMissingBounds() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createUniformDistribution();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final Distribution<SignedTime> distribution = fac.createUniformDistribution();
 
 		deviation.setDistribution(distribution);
 		periodic.setStimulusDeviation(deviation);
@@ -456,12 +482,13 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkDeviation_StimulusMissingLowerBound() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createUniformDistribution();
-		final SignedTime upperBound = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final Distribution<SignedTime> distribution = fac.createUniformDistribution();
+		final SignedTime upperBound = fac.createSignedTime();
 
 		upperBound.setValue(1);
 		upperBound.setUnit(TimeUnit.S);
@@ -489,12 +516,13 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkDeviation_StimulusMissingUpperBound() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createUniformDistribution();
-		final SignedTime lowerBound = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final Distribution<SignedTime> distribution = fac.createUniformDistribution();
+		final SignedTime lowerBound = fac.createSignedTime();
 
 		lowerBound.setValue(2);
 		lowerBound.setUnit(TimeUnit.S);
@@ -522,13 +550,14 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkDeviation_StimulusValidBounds() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createUniformDistribution();
-		final SignedTime lowerBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime upperBound = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final Distribution<SignedTime> distribution = fac.createUniformDistribution();
+		final SignedTime lowerBound = fac.createSignedTime();
+		final SignedTime upperBound = fac.createSignedTime();
 
 		lowerBound.setValue(1);
 		lowerBound.setUnit(TimeUnit.S);
@@ -556,11 +585,12 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkBetaDistribution_Invalid() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final BetaDistribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createBetaDistribution();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final BetaDistribution<SignedTime> distribution = fac.createBetaDistribution();
 		final double alpha = -1;
 		final double beta = -1;
 
@@ -590,11 +620,12 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkBetaDistribution_AlphaUnset() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final BetaDistribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createBetaDistribution();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final BetaDistribution<SignedTime> distribution = fac.createBetaDistribution();
 		final double beta = 1;
 
 		distribution.setBeta(beta);
@@ -621,11 +652,12 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkBetaDistribution_BetaUnset() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final BetaDistribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createBetaDistribution();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final BetaDistribution<SignedTime> distribution = fac.createBetaDistribution();
 		final double alpha = 1;
 
 		distribution.setAlpha(alpha);
@@ -652,11 +684,12 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkBetaDistribution_Valid() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final BetaDistribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createBetaDistribution();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final BetaDistribution<SignedTime> distribution = fac.createBetaDistribution();
 		final double alpha = 1;
 		final double beta = 1;
 
@@ -682,11 +715,12 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkUniformDistribution_Invalid() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createUniformDistribution();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final Distribution<SignedTime> distribution = fac.createUniformDistribution();
 
 		deviation.setDistribution(distribution);
 		periodic.setStimulusDeviation(deviation);
@@ -712,13 +746,14 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkUniformDistribution_Valid() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createUniformDistribution();
-		final SignedTime lowerBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime upperBound = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final Distribution<SignedTime> distribution = fac.createUniformDistribution();
+		final SignedTime lowerBound = fac.createSignedTime();
+		final SignedTime upperBound = fac.createSignedTime();
 
 		lowerBound.setValue(1);
 		lowerBound.setUnit(TimeUnit.S);
@@ -746,14 +781,16 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkGaussDistribution_InstructionsNull() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<LongObject> distribution = AmaltheaFactory.eINSTANCE.createGaussDistribution();
-		final LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final Distribution<LongObject> distribution = fac.createGaussDistribution();
+		final LongObject lowerBound = fac.createLongObject();
+		final LongObject upperBound = fac.createLongObject();
 
 		lowerBound.setValue(1);
 		upperBound.setValue(2);
@@ -761,7 +798,8 @@ public class AmaltheaModelValidatorTests {
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -784,16 +822,18 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkGaussDistribution_InstructionsMeanInvalidLower() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final GaussDistribution<LongObject> distribution = AmaltheaFactory.eINSTANCE.createGaussDistribution();
-		final LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject sd = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject mean = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final GaussDistribution<LongObject> distribution = fac.createGaussDistribution();
+		final LongObject lowerBound = fac.createLongObject();
+		final LongObject upperBound = fac.createLongObject();
+		final LongObject sd = fac.createLongObject();
+		final LongObject mean = fac.createLongObject();
 
 		lowerBound.setValue(1);
 		upperBound.setValue(2);
@@ -805,7 +845,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -827,16 +868,18 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkGaussDistribution_InstructionsMeanInvalidUpper() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final GaussDistribution<LongObject> distribution = AmaltheaFactory.eINSTANCE.createGaussDistribution();
-		final LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject sd = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject mean = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final GaussDistribution<LongObject> distribution = fac.createGaussDistribution();
+		final LongObject lowerBound = fac.createLongObject();
+		final LongObject upperBound = fac.createLongObject();
+		final LongObject sd = fac.createLongObject();
+		final LongObject mean = fac.createLongObject();
 
 		lowerBound.setValue(1);
 		upperBound.setValue(2);
@@ -848,7 +891,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -870,16 +914,18 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkGaussDistribution_InstructionsValidMean() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final GaussDistribution<LongObject> distribution = AmaltheaFactory.eINSTANCE.createGaussDistribution();
-		final LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject sd = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject mean = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final GaussDistribution<LongObject> distribution = fac.createGaussDistribution();
+		final LongObject lowerBound = fac.createLongObject();
+		final LongObject upperBound = fac.createLongObject();
+		final LongObject sd = fac.createLongObject();
+		final LongObject mean = fac.createLongObject();
 
 		lowerBound.setValue(1);
 		upperBound.setValue(3);
@@ -891,7 +937,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -910,13 +957,14 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkGaussDistribution_StimulusNull() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createGaussDistribution();
-		final SignedTime lowerBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime upperBound = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final Distribution<SignedTime> distribution = fac.createGaussDistribution();
+		final SignedTime lowerBound = fac.createSignedTime();
+		final SignedTime upperBound = fac.createSignedTime();
 
 		lowerBound.setValue(1);
 		lowerBound.setUnit(TimeUnit.S);
@@ -948,15 +996,16 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkGaussDistribution_StimulusMeanInvalidLower() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final GaussDistribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createGaussDistribution();
-		final SignedTime lowerBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime upperBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime mean = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime sd = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final GaussDistribution<SignedTime> distribution = fac.createGaussDistribution();
+		final SignedTime lowerBound = fac.createSignedTime();
+		final SignedTime upperBound = fac.createSignedTime();
+		final SignedTime mean = fac.createSignedTime();
+		final SignedTime sd = fac.createSignedTime();
 
 		lowerBound.setValue(1);
 		lowerBound.setUnit(TimeUnit.S);
@@ -993,15 +1042,16 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkGaussDistribution_StimulusMeanInvalidUpper() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final GaussDistribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createGaussDistribution();
-		final SignedTime lowerBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime upperBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime mean = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime sd = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final GaussDistribution<SignedTime> distribution = fac.createGaussDistribution();
+		final SignedTime lowerBound = fac.createSignedTime();
+		final SignedTime upperBound = fac.createSignedTime();
+		final SignedTime mean = fac.createSignedTime();
+		final SignedTime sd = fac.createSignedTime();
 
 		lowerBound.setValue(1);
 		lowerBound.setUnit(TimeUnit.S);
@@ -1038,15 +1088,16 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkGaussDistribution_StimulusValidMean() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final GaussDistribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createGaussDistribution();
-		final SignedTime lowerBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime upperBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime mean = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime sd = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final GaussDistribution<SignedTime> distribution = fac.createGaussDistribution();
+		final SignedTime lowerBound = fac.createSignedTime();
+		final SignedTime upperBound = fac.createSignedTime();
+		final SignedTime mean = fac.createSignedTime();
+		final SignedTime sd = fac.createSignedTime();
 
 		lowerBound.setValue(1);
 		lowerBound.setUnit(TimeUnit.S);
@@ -1080,16 +1131,19 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullParameters_Null() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final WeibullParameters<LongObject> distribution = AmaltheaFactory.eINSTANCE.createWeibullParameters();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final WeibullParameters<LongObject> distribution = fac.createWeibullParameters();
 
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1108,12 +1162,14 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullParameters_Invalid() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final WeibullParameters<LongObject> distribution = AmaltheaFactory.eINSTANCE.createWeibullParameters();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final WeibullParameters<LongObject> distribution = fac.createWeibullParameters();
 		final double kappa = -1;
 		final double lambda = -1;
 
@@ -1121,7 +1177,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setLambda(lambda);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1144,12 +1201,14 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullParameters_Valid() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final WeibullParameters<LongObject> distribution = AmaltheaFactory.eINSTANCE.createWeibullParameters();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final WeibullParameters<LongObject> distribution = fac.createWeibullParameters();
 		final double kappa = 1;
 		final double lambda = 1;
 
@@ -1157,7 +1216,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setLambda(lambda);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1176,14 +1236,16 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullEstimators_InstructionsNull() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<LongObject> distribution = AmaltheaFactory.eINSTANCE.createWeibullEstimators();
-		final LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final Distribution<LongObject> distribution = fac.createWeibullEstimators();
+		final LongObject lowerBound = fac.createLongObject();
+		final LongObject upperBound = fac.createLongObject();
 
 		lowerBound.setValue(1);
 		upperBound.setValue(2);
@@ -1191,7 +1253,8 @@ public class AmaltheaModelValidatorTests {
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1213,15 +1276,17 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullEstimators_InstructionsMeanInvalidLower() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final WeibullEstimators<LongObject> distribution = AmaltheaFactory.eINSTANCE.createWeibullEstimators();
-		final LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject mean = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final WeibullEstimators<LongObject> distribution = fac.createWeibullEstimators();
+		final LongObject lowerBound = fac.createLongObject();
+		final LongObject upperBound = fac.createLongObject();
+		final LongObject mean = fac.createLongObject();
 
 		lowerBound.setValue(1);
 		upperBound.setValue(2);
@@ -1231,7 +1296,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1253,15 +1319,17 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullEstimators_InstructionsMeanInvalidUpper() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final WeibullEstimators<LongObject> distribution = AmaltheaFactory.eINSTANCE.createWeibullEstimators();
-		final LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject mean = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final WeibullEstimators<LongObject> distribution = fac.createWeibullEstimators();
+		final LongObject lowerBound = fac.createLongObject();
+		final LongObject upperBound = fac.createLongObject();
+		final LongObject mean = fac.createLongObject();
 
 		lowerBound.setValue(1);
 		upperBound.setValue(2);
@@ -1271,7 +1339,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1293,15 +1362,17 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullEstimators_InstructionsValidMean() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final WeibullEstimators<LongObject> distribution = AmaltheaFactory.eINSTANCE.createWeibullEstimators();
-		final LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject mean = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final WeibullEstimators<LongObject> distribution = fac.createWeibullEstimators();
+		final LongObject lowerBound = fac.createLongObject();
+		final LongObject upperBound = fac.createLongObject();
+		final LongObject mean = fac.createLongObject();
 
 		lowerBound.setValue(1);
 		upperBound.setValue(3);
@@ -1311,7 +1382,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1330,19 +1402,22 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullEstimators_InstructionsMissingBounds() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final WeibullEstimators<LongObject> distribution = AmaltheaFactory.eINSTANCE.createWeibullEstimators();
-		final LongObject mean = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final WeibullEstimators<LongObject> distribution = fac.createWeibullEstimators();
+		final LongObject mean = fac.createLongObject();
 
 		mean.setValue(2);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1361,13 +1436,14 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullEstimators_StimulusNull() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final Distribution<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createWeibullEstimators();
-		final SignedTime lowerBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime upperBound = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final Distribution<SignedTime> distribution = fac.createWeibullEstimators();
+		final SignedTime lowerBound = fac.createSignedTime();
+		final SignedTime upperBound = fac.createSignedTime();
 
 		lowerBound.setValue(1);
 		lowerBound.setUnit(TimeUnit.S);
@@ -1398,14 +1474,15 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullEstimators_StimulusMeanInvalidLower() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final WeibullEstimators<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createWeibullEstimators();
-		final SignedTime lowerBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime upperBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime mean = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final WeibullEstimators<SignedTime> distribution = fac.createWeibullEstimators();
+		final SignedTime lowerBound = fac.createSignedTime();
+		final SignedTime upperBound = fac.createSignedTime();
+		final SignedTime mean = fac.createSignedTime();
 
 		lowerBound.setValue(1);
 		lowerBound.setUnit(TimeUnit.S);
@@ -1439,14 +1516,15 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullEstimators_StimulusMeanInvalidUpper() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final WeibullEstimators<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createWeibullEstimators();
-		final SignedTime lowerBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime upperBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime mean = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final WeibullEstimators<SignedTime> distribution = fac.createWeibullEstimators();
+		final SignedTime lowerBound = fac.createSignedTime();
+		final SignedTime upperBound = fac.createSignedTime();
+		final SignedTime mean = fac.createSignedTime();
 
 		lowerBound.setValue(1);
 		lowerBound.setUnit(TimeUnit.S);
@@ -1480,14 +1558,15 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullEstimators_StimulusValidMean() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final WeibullEstimators<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createWeibullEstimators();
-		final SignedTime lowerBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime upperBound = AmaltheaFactory.eINSTANCE.createSignedTime();
-		final SignedTime mean = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final WeibullEstimators<SignedTime> distribution = fac.createWeibullEstimators();
+		final SignedTime lowerBound = fac.createSignedTime();
+		final SignedTime upperBound = fac.createSignedTime();
+		final SignedTime mean = fac.createSignedTime();
 
 		lowerBound.setValue(1);
 		lowerBound.setUnit(TimeUnit.S);
@@ -1518,12 +1597,13 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullEstimators_StimulusMissingBounds() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
-		final Deviation<SignedTime> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final WeibullEstimators<SignedTime> distribution = AmaltheaFactory.eINSTANCE.createWeibullEstimators();
-		final SignedTime mean = AmaltheaFactory.eINSTANCE.createSignedTime();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final StimuliModel stimuliModel = fac.createStimuliModel();
+		final Periodic periodic = fac.createPeriodic();
+		final Deviation<SignedTime> deviation = fac.createDeviation();
+		final WeibullEstimators<SignedTime> distribution = fac.createWeibullEstimators();
+		final SignedTime mean = fac.createSignedTime();
 
 		mean.setValue(2);
 		mean.setUnit(TimeUnit.S);
@@ -1548,15 +1628,17 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullEstimators_InvalidPRemainPromille() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final WeibullEstimators<LongObject> distribution = AmaltheaFactory.eINSTANCE.createWeibullEstimators();
-		final LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject mean = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final WeibullEstimators<LongObject> distribution = fac.createWeibullEstimators();
+		final LongObject lowerBound = fac.createLongObject();
+		final LongObject upperBound = fac.createLongObject();
+		final LongObject mean = fac.createLongObject();
 		final double pRemainPromille = -1;
 
 		lowerBound.setValue(1);
@@ -1568,7 +1650,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setPRemainPromille(pRemainPromille);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1590,15 +1673,17 @@ public class AmaltheaModelValidatorTests {
 	@Test
 	public void test_checkWeibullEstimators_ValidPRemainPromille() {
 		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		final InstructionsDeviation instructions = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		final Deviation<LongObject> deviation = AmaltheaFactory.eINSTANCE.createDeviation();
-		final WeibullEstimators<LongObject> distribution = AmaltheaFactory.eINSTANCE.createWeibullEstimators();
-		final LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
-		final LongObject mean = AmaltheaFactory.eINSTANCE.createLongObject();
+		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+		final Amalthea amalthea = fac.createAmalthea();
+		final SWModel swModel = fac.createSWModel();
+		final Runnable runnable = fac.createRunnable();
+		final RunnableInstructions runInstr = fac.createRunnableInstructions();
+		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
+		final Deviation<LongObject> deviation = fac.createDeviation();
+		final WeibullEstimators<LongObject> distribution = fac.createWeibullEstimators();
+		final LongObject lowerBound = fac.createLongObject();
+		final LongObject upperBound = fac.createLongObject();
+		final LongObject mean = fac.createLongObject();
 		final double pRemainPromille = 1;
 
 		lowerBound.setValue(1);
@@ -1610,7 +1695,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setPRemainPromille(pRemainPromille);
 		deviation.setDistribution(distribution);
 		instructions.setDeviation(deviation);
-		runnable.getRunnableItems().add(instructions);
+		runInstr.setDefault(instructions);
+		runnable.getRunnableItems().add(runInstr);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 

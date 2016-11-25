@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +20,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Represents a abstract description for a set of execution cycles in a runnable
+ * Abstract description for a set of execution cycles
  * <!-- end-model-doc -->
  *
  * <p>
@@ -33,7 +34,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model abstract="true"
  * @generated
  */
-public interface Instructions extends RunnableItem {
+public interface Instructions extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Fetch Statistic</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -58,5 +59,14 @@ public interface Instructions extends RunnableItem {
 	 * @generated
 	 */
 	void setFetchStatistic(InstructionFetch value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return true;'"
+	 * @generated
+	 */
+	boolean containerNotificationRequired();
 
 } // Instructions

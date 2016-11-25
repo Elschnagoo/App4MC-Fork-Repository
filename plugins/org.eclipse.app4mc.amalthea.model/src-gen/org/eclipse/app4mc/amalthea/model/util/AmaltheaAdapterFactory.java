@@ -251,6 +251,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableConstraintTarget;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
+import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
@@ -420,6 +421,18 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTag(Tag object) {
 				return createTagAdapter();
+			}
+			@Override
+			public Adapter caseInstructions(Instructions object) {
+				return createInstructionsAdapter();
+			}
+			@Override
+			public Adapter caseInstructionsDeviation(InstructionsDeviation object) {
+				return createInstructionsDeviationAdapter();
+			}
+			@Override
+			public Adapter caseInstructionsConstant(InstructionsConstant object) {
+				return createInstructionsConstantAdapter();
 			}
 			@Override
 			public Adapter caseAbstractTime(AbstractTime object) {
@@ -1486,6 +1499,14 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createRunnableItemAdapter();
 			}
 			@Override
+			public Adapter caseRunnableInstructions(RunnableInstructions object) {
+				return createRunnableInstructionsAdapter();
+			}
+			@Override
+			public Adapter caseRunnableInstructionsEntry(Map.Entry<CoreType, Instructions> object) {
+				return createRunnableInstructionsEntryAdapter();
+			}
+			@Override
 			public Adapter caseModeLabelAccess(ModeLabelAccess object) {
 				return createModeLabelAccessAdapter();
 			}
@@ -1536,18 +1557,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseRunnableCall(RunnableCall object) {
 				return createRunnableCallAdapter();
-			}
-			@Override
-			public Adapter caseInstructions(Instructions object) {
-				return createInstructionsAdapter();
-			}
-			@Override
-			public Adapter caseInstructionsDeviation(InstructionsDeviation object) {
-				return createInstructionsDeviationAdapter();
-			}
-			@Override
-			public Adapter caseInstructionsConstant(InstructionsConstant object) {
-				return createInstructionsConstantAdapter();
 			}
 			@Override
 			public Adapter caseDataType(DataType object) {
@@ -1768,6 +1777,48 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTagAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Instructions <em>Instructions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.Instructions
+	 * @generated
+	 */
+	public Adapter createInstructionsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InstructionsDeviation <em>Instructions Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.InstructionsDeviation
+	 * @generated
+	 */
+	public Adapter createInstructionsDeviationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InstructionsConstant <em>Instructions Constant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.InstructionsConstant
+	 * @generated
+	 */
+	public Adapter createInstructionsConstantAdapter() {
 		return null;
 	}
 
@@ -5496,6 +5547,34 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.RunnableInstructions <em>Runnable Instructions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.RunnableInstructions
+	 * @generated
+	 */
+	public Adapter createRunnableInstructionsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Runnable Instructions Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createRunnableInstructionsEntryAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess <em>Mode Label Access</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -5674,48 +5753,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRunnableCallAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Instructions <em>Instructions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Instructions
-	 * @generated
-	 */
-	public Adapter createInstructionsAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InstructionsDeviation <em>Instructions Deviation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.InstructionsDeviation
-	 * @generated
-	 */
-	public Adapter createInstructionsDeviationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InstructionsConstant <em>Instructions Constant</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.InstructionsConstant
-	 * @generated
-	 */
-	public Adapter createInstructionsConstantAdapter() {
 		return null;
 	}
 

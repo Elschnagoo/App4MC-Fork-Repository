@@ -12,12 +12,18 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.InstructionFetch;
 import org.eclipse.app4mc.amalthea.model.Instructions;
 
+import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -37,7 +43,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public abstract class InstructionsImpl extends RunnableItemImpl implements Instructions {
+public abstract class InstructionsImpl extends AmaltheaExtendedEObjectImpl implements Instructions {
 	/**
 	 * The cached value of the '{@link #getFetchStatistic() <em>Fetch Statistic</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -138,6 +144,15 @@ public abstract class InstructionsImpl extends RunnableItemImpl implements Instr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean containerNotificationRequired() {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -204,6 +219,20 @@ public abstract class InstructionsImpl extends RunnableItemImpl implements Instr
 				return fetchStatistic != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.INSTRUCTIONS___CONTAINER_NOTIFICATION_REQUIRED:
+				return containerNotificationRequired();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //InstructionsImpl

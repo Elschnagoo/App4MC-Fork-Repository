@@ -19,7 +19,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Represents a deviated set of execution cycles
+ * Deviated set of execution cycles
  * <!-- end-model-doc -->
  *
  * <p>

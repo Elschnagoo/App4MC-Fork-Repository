@@ -23,6 +23,7 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
+import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
@@ -241,7 +242,9 @@ public class PrePartitioning {
 					}
 					final InstructionsConstant ic = af.createInstructionsConstant();
 					ic.setValue(instrCum);
-					r.getRunnableItems().add(ic);
+					RunnableInstructions runInst = af.createRunnableInstructions();
+					runInst.setDefault(ic);
+					r.getRunnableItems().add(runInst);
 					modelCopy.getSwModel().getRunnables().add(r);
 
 					// also remove taskrunnablecall refs from tasks

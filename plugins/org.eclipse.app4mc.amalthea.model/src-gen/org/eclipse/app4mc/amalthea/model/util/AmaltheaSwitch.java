@@ -251,6 +251,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableConstraintTarget;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
+import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
@@ -444,6 +445,26 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(tag);
 				if (result == null) result = caseIAnnotatable(tag);
 				if (result == null) result = caseIReferable(tag);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.INSTRUCTIONS: {
+				Instructions instructions = (Instructions)theEObject;
+				T1 result = caseInstructions(instructions);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: {
+				InstructionsDeviation instructionsDeviation = (InstructionsDeviation)theEObject;
+				T1 result = caseInstructionsDeviation(instructionsDeviation);
+				if (result == null) result = caseInstructions(instructionsDeviation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: {
+				InstructionsConstant instructionsConstant = (InstructionsConstant)theEObject;
+				T1 result = caseInstructionsConstant(instructionsConstant);
+				if (result == null) result = caseInstructions(instructionsConstant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2791,6 +2812,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS: {
+				RunnableInstructions runnableInstructions = (RunnableInstructions)theEObject;
+				T1 result = caseRunnableInstructions(runnableInstructions);
+				if (result == null) result = caseRunnableItem(runnableInstructions);
+				if (result == null) result = caseBaseObject(runnableInstructions);
+				if (result == null) result = caseIAnnotatable(runnableInstructions);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<CoreType, Instructions> runnableInstructionsEntry = (Map.Entry<CoreType, Instructions>)theEObject;
+				T1 result = caseRunnableInstructionsEntry(runnableInstructionsEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.MODE_LABEL_ACCESS: {
 				ModeLabelAccess modeLabelAccess = (ModeLabelAccess)theEObject;
 				T1 result = caseModeLabelAccess(modeLabelAccess);
@@ -2909,35 +2945,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseRunnableItem(runnableCall);
 				if (result == null) result = caseBaseObject(runnableCall);
 				if (result == null) result = caseIAnnotatable(runnableCall);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.INSTRUCTIONS: {
-				Instructions instructions = (Instructions)theEObject;
-				T1 result = caseInstructions(instructions);
-				if (result == null) result = caseRunnableItem(instructions);
-				if (result == null) result = caseBaseObject(instructions);
-				if (result == null) result = caseIAnnotatable(instructions);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: {
-				InstructionsDeviation instructionsDeviation = (InstructionsDeviation)theEObject;
-				T1 result = caseInstructionsDeviation(instructionsDeviation);
-				if (result == null) result = caseInstructions(instructionsDeviation);
-				if (result == null) result = caseRunnableItem(instructionsDeviation);
-				if (result == null) result = caseBaseObject(instructionsDeviation);
-				if (result == null) result = caseIAnnotatable(instructionsDeviation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: {
-				InstructionsConstant instructionsConstant = (InstructionsConstant)theEObject;
-				T1 result = caseInstructionsConstant(instructionsConstant);
-				if (result == null) result = caseInstructions(instructionsConstant);
-				if (result == null) result = caseRunnableItem(instructionsConstant);
-				if (result == null) result = caseBaseObject(instructionsConstant);
-				if (result == null) result = caseIAnnotatable(instructionsConstant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3247,6 +3254,51 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseTag(Tag object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Instructions</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Instructions</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseInstructions(Instructions object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Instructions Deviation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Instructions Deviation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseInstructionsDeviation(InstructionsDeviation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Instructions Constant</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Instructions Constant</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseInstructionsConstant(InstructionsConstant object) {
 		return null;
 	}
 
@@ -7241,6 +7293,36 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Runnable Instructions</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Runnable Instructions</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseRunnableInstructions(RunnableInstructions object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Runnable Instructions Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Runnable Instructions Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseRunnableInstructionsEntry(Map.Entry<CoreType, Instructions> object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Mode Label Access</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -7432,51 +7514,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseRunnableCall(RunnableCall object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Instructions</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Instructions</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseInstructions(Instructions object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Instructions Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Instructions Deviation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseInstructionsDeviation(InstructionsDeviation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Instructions Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Instructions Constant</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseInstructionsConstant(InstructionsConstant object) {
 		return null;
 	}
 

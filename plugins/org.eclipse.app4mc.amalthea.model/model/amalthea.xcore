@@ -86,6 +86,7 @@ abstract class ReferableBaseObject extends IAnnotatable, IReferable
 {
 }
 
+
 /*
  * IAnnotatable: Possibility to store custom properties on elements
  */
@@ -94,6 +95,7 @@ interface IAnnotatable
 	contains resolving CustomProperty[] customProperties
 }
 
+
 /*
  * ITaggable: Possibility to add tags to an elements
  */
@@ -101,6 +103,7 @@ interface ITaggable
 {
 	refers Tag[] tags
 }
+
 
 /*
  * IReferable: Name attribute and computed ID for name based references
@@ -127,6 +130,8 @@ interface IDisplayName
 {
 	String displayName
 }
+
+
 /*
  * A tag for processes, runnables, events and labels
  */
@@ -135,6 +140,39 @@ class Tag extends ReferableBaseObject
 	// String tagName -> replaced by attribute "name"
 	String tagType
 }
+
+
+/*
+ * Abstract description for a set of execution cycles
+ */
+abstract class Instructions
+{
+	/*
+	 * optional parameter for fetch statistic
+	 */
+	contains resolving InstructionFetch fetchStatistic
+	
+	op boolean containerNotificationRequired() {
+		return true
+	}
+}
+
+/*
+ * Deviated set of execution cycles
+ */
+class InstructionsDeviation extends Instructions
+{
+	contains resolving Deviation<LongObject> deviation
+}
+
+/*
+ * Constant set of execution cycles 
+ */
+class InstructionsConstant extends Instructions
+{
+	long value="0"
+}
+
 
 /*
  * Time unit enumeration for available units.
@@ -2957,6 +2995,19 @@ abstract class RunnableItem extends BaseObject
 }
 
 /*
+ * Representation of the execution cost of a Runnable (default and core-specific)
+ */
+class RunnableInstructions extends RunnableItem {
+	contains Instructions[1] ^default
+	contains RunnableInstructionsEntry[] extended
+}
+
+class RunnableInstructionsEntry wraps java.util.Map$Entry {
+	refers CoreType[1] key
+	contains Instructions[1] value
+}
+
+/*
  * Representation of a mode label access of a run entity.
  */
 class ModeLabelAccess extends RunnableItem
@@ -3123,33 +3174,6 @@ class RunnableCall extends RunnableItem
 	// hidden link (internal)
 	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
 	refers transient Runnable[1] runnableLinkInt opposite runnableCalls
-}
-
-/*
- * Represents a abstract description for a set of execution cycles in a runnable
- */
-abstract class Instructions extends RunnableItem
-{
-	/*
-	 * optional parameter for fetch statistic
-	 */
-	contains resolving InstructionFetch fetchStatistic
-}
-
-/*
- * Represents a deviated set of execution cycles
- */
-class InstructionsDeviation extends Instructions
-{
-	contains resolving Deviation<LongObject> deviation
-}
-
-/*
- * Represents a constant set of execution cycles 
- */
-class InstructionsConstant extends Instructions
-{
-	long value="0"
 }
 
 /*

@@ -70,8 +70,7 @@ public class RunnableItemsIP extends TransientItemProvider {
 	protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createGroup()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createInstructionsConstant()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createInstructionsDeviation()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableInstructions()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createLabelAccess()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableCall()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createSemaphoreAccess()));

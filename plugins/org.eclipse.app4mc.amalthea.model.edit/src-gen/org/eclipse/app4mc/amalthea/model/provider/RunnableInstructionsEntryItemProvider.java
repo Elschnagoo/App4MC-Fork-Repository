@@ -15,18 +15,21 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Instructions;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -36,19 +39,26 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Instructions} object.
+ * This is the item provider adapter for a {@link java.util.Map.Entry} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class InstructionsItemProvider extends AmaltheaExtendedItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class RunnableInstructionsEntryItemProvider 
+	extends AmaltheaExtendedItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InstructionsItemProvider(AdapterFactory adapterFactory) {
+	public RunnableInstructionsEntryItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -63,8 +73,31 @@ public class InstructionsItemProvider extends AmaltheaExtendedItemProviderAdapte
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addKeyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Key feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addKeyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_RunnableInstructionsEntry_key_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_RunnableInstructionsEntry_key_feature", "_UI_RunnableInstructionsEntry_type"),
+				 AmaltheaPackage.eINSTANCE.getRunnableInstructionsEntry_Key(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -79,7 +112,7 @@ public class InstructionsItemProvider extends AmaltheaExtendedItemProviderAdapte
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getInstructions_FetchStatistic());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnableInstructionsEntry_Value());
 		}
 		return childrenFeatures;
 	}
@@ -98,6 +131,17 @@ public class InstructionsItemProvider extends AmaltheaExtendedItemProviderAdapte
 	}
 
 	/**
+	 * This returns RunnableInstructionsEntry.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object getImage(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/RunnableInstructionsEntry"));
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -113,11 +157,20 @@ public class InstructionsItemProvider extends AmaltheaExtendedItemProviderAdapte
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
-		return getString("_UI_Instructions_type");
+	public String getTextGen(Object object) {
+		Map.Entry<?, ?> runnableInstructionsEntry = (Map.Entry<?, ?>)object;
+		return "" + runnableInstructionsEntry.getKey() + " -> " + runnableInstructionsEntry.getValue();
 	}
 	
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomItemProviderService.getRunnableInstructionsEntryItemProviderText(object, getTextGen(object));
+	}
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -126,17 +179,34 @@ public class InstructionsItemProvider extends AmaltheaExtendedItemProviderAdapte
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Instructions.class)) {
-			case AmaltheaPackage.INSTRUCTIONS__FETCH_STATISTIC:
+		switch (notification.getFeatureID(Map.Entry.class)) {
+			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final List<ViewerNotification> notifications = CustomItemProviderService
+				.getRunnableInstructionsEntryItemProviderNotifications(notification);
+		for (final ViewerNotification vn : notifications) {
+			fireNotifyChanged(vn);
+		}
+
+		super.notifyChanged(notification);
+	}
+	
 
 	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
@@ -151,8 +221,13 @@ public class InstructionsItemProvider extends AmaltheaExtendedItemProviderAdapte
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getInstructions_FetchStatistic(),
-				 AmaltheaFactory.eINSTANCE.createInstructionFetch()));
+				(AmaltheaPackage.eINSTANCE.getRunnableInstructionsEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRunnableInstructionsEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 	}
 
 	/**

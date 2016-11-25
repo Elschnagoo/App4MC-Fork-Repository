@@ -154,8 +154,7 @@ public class EcoreGenericsHelper {
 		
 		// see RunnableItemProvider
 		childObjects.add(factory.createGroup());
-		childObjects.add(factory.createInstructionsConstant());
-		childObjects.add(factory.createInstructionsDeviation());
+		childObjects.add(factory.createRunnableInstructions());
 		childObjects.add(factory.createLabelAccess());
 		childObjects.add(factory.createModeLabelAccess());
 		childObjects.add(factory.createRunnableCall());

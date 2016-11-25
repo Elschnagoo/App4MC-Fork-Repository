@@ -645,6 +645,58 @@ exclusive: gets access to requested semaphore only when there is no other user a
       <xsd:documentation>A tag for processes, runnables, events and labels</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="Instructions">
+    <xsd:annotation>
+      <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="fetchStatistic" type="am:InstructionFetch">
+        <xsd:annotation>
+          <xsd:documentation>optional parameter for fetch statistic</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="Instructions" type="am:Instructions">
+    <xsd:annotation>
+      <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="InstructionsDeviation">
+    <xsd:annotation>
+      <xsd:documentation>Deviated set of execution cycles</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Instructions">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="deviation" type="am:Deviation"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="InstructionsDeviation" type="am:InstructionsDeviation">
+    <xsd:annotation>
+      <xsd:documentation>Deviated set of execution cycles</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="InstructionsConstant">
+    <xsd:annotation>
+      <xsd:documentation>Constant set of execution cycles</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Instructions">
+        <xsd:attribute name="value" type="xsd:long"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="InstructionsConstant" type="am:InstructionsConstant">
+    <xsd:annotation>
+      <xsd:documentation>Constant set of execution cycles</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType abstract="true" name="AbstractTime">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -4919,6 +4971,35 @@ which are belonging together.</xsd:documentation>
       <xsd:documentation>Representation of a object that can be executed by a Runnable</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="RunnableInstructions">
+    <xsd:annotation>
+      <xsd:documentation>Representation of the execution cost of a Runnable (default and core-specific)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:RunnableItem">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="default" type="am:Instructions"/>
+          <xsd:element name="extended" type="am:RunnableInstructionsEntry"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="RunnableInstructions" type="am:RunnableInstructions">
+    <xsd:annotation>
+      <xsd:documentation>Representation of the execution cost of a Runnable (default and core-specific)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="RunnableInstructionsEntry">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="key" type="am:CoreType"/>
+      <xsd:element name="value" type="am:Instructions"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="key" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="RunnableInstructionsEntry" type="am:RunnableInstructionsEntry"/>
   <xsd:complexType name="ModeLabelAccess">
     <xsd:annotation>
       <xsd:documentation>Representation of a mode label access of a run entity.</xsd:documentation>
@@ -5173,59 +5254,6 @@ It can be also a group of runnable items without deviation, because the deviatio
   <xsd:element name="RunnableCall" type="am:RunnableCall">
     <xsd:annotation>
       <xsd:documentation>Representation of a runnable call of a run entity.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType abstract="true" name="Instructions">
-    <xsd:annotation>
-      <xsd:documentation>Represents a abstract description for a set of execution cycles in a runnable</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="fetchStatistic" type="am:InstructionFetch">
-            <xsd:annotation>
-              <xsd:documentation>optional parameter for fetch statistic</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="Instructions" type="am:Instructions">
-    <xsd:annotation>
-      <xsd:documentation>Represents a abstract description for a set of execution cycles in a runnable</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="InstructionsDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Represents a deviated set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Instructions">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="deviation" type="am:Deviation"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="InstructionsDeviation" type="am:InstructionsDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Represents a deviated set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="InstructionsConstant">
-    <xsd:annotation>
-      <xsd:documentation>Represents a constant set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Instructions">
-        <xsd:attribute name="value" type="xsd:long"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="InstructionsConstant" type="am:InstructionsConstant">
-    <xsd:annotation>
-      <xsd:documentation>Represents a constant set of execution cycles</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="DataType">

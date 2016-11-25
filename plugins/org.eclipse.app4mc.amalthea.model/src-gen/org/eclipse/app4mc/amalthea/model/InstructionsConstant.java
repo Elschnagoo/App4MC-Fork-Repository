@@ -19,7 +19,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Represents a constant set of execution cycles
+ * Constant set of execution cycles
  * <!-- end-model-doc -->
  *
  * <p>

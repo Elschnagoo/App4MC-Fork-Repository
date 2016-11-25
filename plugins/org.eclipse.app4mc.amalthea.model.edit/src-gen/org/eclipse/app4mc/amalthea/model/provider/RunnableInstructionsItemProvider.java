@@ -18,37 +18,30 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Instructions;
+import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Instructions} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.RunnableInstructions} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class InstructionsItemProvider extends AmaltheaExtendedItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class RunnableInstructionsItemProvider extends RunnableItemItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InstructionsItemProvider(AdapterFactory adapterFactory) {
+	public RunnableInstructionsItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -79,7 +72,8 @@ public class InstructionsItemProvider extends AmaltheaExtendedItemProviderAdapte
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getInstructions_FetchStatistic());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnableInstructions_Default());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnableInstructions_Extended());
 		}
 		return childrenFeatures;
 	}
@@ -95,6 +89,17 @@ public class InstructionsItemProvider extends AmaltheaExtendedItemProviderAdapte
 		// adding (see {@link AddCommand}) it as a child.
 
 		return super.getChildFeature(object, child);
+	}
+
+	/**
+	 * This returns RunnableInstructions.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object getImage(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/RunnableInstructions"));
 	}
 
 	/**
@@ -115,7 +120,7 @@ public class InstructionsItemProvider extends AmaltheaExtendedItemProviderAdapte
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Instructions_type");
+		return getString("_UI_RunnableInstructions_type");
 	}
 	
 
@@ -130,8 +135,9 @@ public class InstructionsItemProvider extends AmaltheaExtendedItemProviderAdapte
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Instructions.class)) {
-			case AmaltheaPackage.INSTRUCTIONS__FETCH_STATISTIC:
+		switch (notification.getFeatureID(RunnableInstructions.class)) {
+			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS__DEFAULT:
+			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS__EXTENDED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -151,19 +157,18 @@ public class InstructionsItemProvider extends AmaltheaExtendedItemProviderAdapte
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getInstructions_FetchStatistic(),
-				 AmaltheaFactory.eINSTANCE.createInstructionFetch()));
-	}
+				(AmaltheaPackage.eINSTANCE.getRunnableInstructions_Default(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
 
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return AmaltheaEditPlugin.INSTANCE;
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRunnableInstructions_Default(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRunnableInstructions_Extended(),
+				 AmaltheaFactory.eINSTANCE.create(AmaltheaPackage.eINSTANCE.getRunnableInstructionsEntry())));
 	}
 
 }

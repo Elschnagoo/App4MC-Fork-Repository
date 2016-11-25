@@ -50,6 +50,24 @@ public interface AmaltheaFactory extends EFactory {
 	Tag createTag();
 
 	/**
+	 * Returns a new object of class '<em>Instructions Deviation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Instructions Deviation</em>'.
+	 * @generated
+	 */
+	InstructionsDeviation createInstructionsDeviation();
+
+	/**
+	 * Returns a new object of class '<em>Instructions Constant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Instructions Constant</em>'.
+	 * @generated
+	 */
+	InstructionsConstant createInstructionsConstant();
+
+	/**
 	 * Returns a new object of class '<em>Time</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1940,6 +1958,15 @@ public interface AmaltheaFactory extends EFactory {
 	Section createSection();
 
 	/**
+	 * Returns a new object of class '<em>Runnable Instructions</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Runnable Instructions</em>'.
+	 * @generated
+	 */
+	RunnableInstructions createRunnableInstructions();
+
+	/**
 	 * Returns a new object of class '<em>Mode Label Access</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2037,24 +2064,6 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	RunnableCall createRunnableCall();
-
-	/**
-	 * Returns a new object of class '<em>Instructions Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instructions Deviation</em>'.
-	 * @generated
-	 */
-	InstructionsDeviation createInstructionsDeviation();
-
-	/**
-	 * Returns a new object of class '<em>Instructions Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instructions Constant</em>'.
-	 * @generated
-	 */
-	InstructionsConstant createInstructionsConstant();
 
 	/**
 	 * Returns a new object of class '<em>Struct</em>'.
