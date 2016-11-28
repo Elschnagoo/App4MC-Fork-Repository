@@ -3,6 +3,17 @@ h1. Common Model
 
 The AMALTHEA common model is not a model by itself, but provides standard elements used by other models as containments.
 
+
+h2(#CP). Custom Properties
+
+The __CustomProperty__ element is used to define own, in AMALTHEA not available properties. If there is the need to extend an element or to store tool information related to processing steps, __CustomProperties__ can be used to store this type of information.
+The elements are stored in a __HashMap__. The values can be of different types as shown in the structure picture, like String, Integer, Boolean...
+In addition a __ReferenceObject__ is available to store own references to other __EObject__ elements.
+The __ListObject__ can be used to store multi-valued custom properties.
+
+!(scale)../pictures/model_common_custom_property_value.png!
+
+
 h2. Time (and Time Unit)
 
 The AMALTHEA data model includes two common elements to describe time ranges in an easy way, the __Time__ and __SignedTime__ element. The __SignedTime__ is like the general __Time__ class but explicit allows defining negative time values.
@@ -62,24 +73,6 @@ h2. Data Rate (and Data Rate Unit)
 !(scale)../pictures/model_common_data_rate.png! 
 
 
-h2. Interfaces and base objects
-
-Several interfaces and abstract classes are defined in the common model.
-They provide basic common functionality for all objects, which are extending it, like the possibility to add __CustomAttributes__ or __Tags__. Tags are available at different elements with the purpose to group them together or to annotate them.
-
-!(scale)../pictures/model_common_interfaces_base_objects.png!
-
-
-h2(#CP). Custom Properties
-
-The __CustomProperty__ element is used to define own, in AMALTHEA not available properties. If there is the need to extend an element or to store tool information related to processing steps, __CustomProperties__ can be used to store this type of information.
-The elements are stored in a __HashMap__. The values can be of different types as shown in the structure picture, like String, Integer, Boolean...
-In addition a __ReferenceObject__ is available to store own references to other __EObject__ elements.
-The __ListObject__ can be used to store multi-valued custom properties.
-
-!(scale)../pictures/model_common_custom_property_value.png!
-
-
 h2. Deviation
 
 The __Deviation__ class is used to model statistical distributions within AMALTHEA.
@@ -121,3 +114,18 @@ The other possibility is to set a single value using the __SingleValueStatistic_
 The values itself are set as a normal __int__ value or in case of the single value as __float__.
 
 !../pictures/model_common_statistic.png!
+
+
+
+h2. Instructions
+
+TODO
+
+In the next picture a more detailed overview is given about the __Instructions__.
+
+!../pictures/model_sw_instructions.png!
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __Instructions__| As a runnable contains several instructions to perform, this is represented using different algorithms or a constant value to consume the same amount of time/ticks per cycle.|
+

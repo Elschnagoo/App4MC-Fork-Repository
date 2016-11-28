@@ -34,7 +34,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMapping()
  * @model abstract="true"
  *        features="memoryLinkInt" 
- *        memoryLinkIntType="org.eclipse.app4mc.amalthea.model.Memory" memoryLinkIntOpposite="mapping" memoryLinkIntTransient="true" memoryLinkIntSuppressedGetVisibility="true" memoryLinkIntSuppressedSetVisibility="true"
+ *        memoryLinkIntType="org.eclipse.app4mc.amalthea.model.Memory" memoryLinkIntOpposite="mappings" memoryLinkIntTransient="true" memoryLinkIntSuppressedGetVisibility="true" memoryLinkIntSuppressedSetVisibility="true"
  *        memoryLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
  * @generated
  */

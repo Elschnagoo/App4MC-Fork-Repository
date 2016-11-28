@@ -58,6 +58,7 @@ public class AbstractElementMemoryInformationItemProvider extends ReferableBaseO
 			super.getPropertyDescriptors(object);
 
 			addTagsPropertyDescriptor(object);
+			addMappingsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -82,6 +83,30 @@ public class AbstractElementMemoryInformationItemProvider extends ReferableBaseO
 				 null,
 				 null,
 				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Mappings feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMappingsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AbstractElementMemoryInformation_mappings_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractElementMemoryInformation_mappings_feature", "_UI_AbstractElementMemoryInformation_type"),
+				 AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Mappings(),
+				 false,
+				 false,
+				 true,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**

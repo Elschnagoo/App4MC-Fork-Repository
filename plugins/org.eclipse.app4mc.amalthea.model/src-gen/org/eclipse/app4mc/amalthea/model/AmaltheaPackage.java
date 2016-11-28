@@ -9923,13 +9923,13 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY__TYPE = COMPLEX_NODE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Mapping</b></em>' reference.
+	 * The feature id for the '<em><b>Mappings</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEMORY__MAPPING = COMPLEX_NODE_FEATURE_COUNT + 1;
+	int MEMORY__MAPPINGS = COMPLEX_NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Memory</em>' class.
@@ -12946,13 +12946,22 @@ public interface AmaltheaPackage extends EPackage {
 	int ABSTRACT_ELEMENT_MAPPING__ABSTRACT_ELEMENT = MAPPING_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Abstract Element Link Int</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ELEMENT_MAPPING__ABSTRACT_ELEMENT_LINK_INT = MAPPING_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Element Mapping</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_MAPPING_FEATURE_COUNT = MAPPING_FEATURE_COUNT + 1;
+	int ABSTRACT_ELEMENT_MAPPING_FEATURE_COUNT = MAPPING_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Abstract Element Mapping</em>' class.
@@ -17557,13 +17566,22 @@ public interface AmaltheaPackage extends EPackage {
 	int ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Mappings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Element Memory Information</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_MEMORY_INFORMATION_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+	int ABSTRACT_ELEMENT_MEMORY_INFORMATION_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -17646,6 +17664,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_PROCESS__SIZE = ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE;
+
+	/**
+	 * The feature id for the '<em><b>Mappings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PROCESS__MAPPINGS = ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS;
 
 	/**
 	 * The feature id for the '<em><b>Priority</b></em>' attribute.
@@ -17746,6 +17773,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CUSTOM_ENTITY__SIZE = ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE;
+
+	/**
+	 * The feature id for the '<em><b>Mappings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_ENTITY__MAPPINGS = ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS;
 
 	/**
 	 * The feature id for the '<em><b>Type Name</b></em>' attribute.
@@ -17928,6 +17964,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS__SIZE = ABSTRACT_PROCESS__SIZE;
+
+	/**
+	 * The feature id for the '<em><b>Mappings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS__MAPPINGS = ABSTRACT_PROCESS__MAPPINGS;
 
 	/**
 	 * The feature id for the '<em><b>Priority</b></em>' attribute.
@@ -19157,6 +19202,15 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK__SIZE = PROCESS__SIZE;
 
 	/**
+	 * The feature id for the '<em><b>Mappings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__MAPPINGS = PROCESS__MAPPINGS;
+
+	/**
 	 * The feature id for the '<em><b>Priority</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19302,6 +19356,15 @@ public interface AmaltheaPackage extends EPackage {
 	int ISR__SIZE = PROCESS__SIZE;
 
 	/**
+	 * The feature id for the '<em><b>Mappings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISR__MAPPINGS = PROCESS__MAPPINGS;
+
+	/**
 	 * The feature id for the '<em><b>Priority</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19418,6 +19481,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_PROTOTYPE__SIZE = ABSTRACT_PROCESS__SIZE;
+
+	/**
+	 * The feature id for the '<em><b>Mappings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_PROTOTYPE__MAPPINGS = ABSTRACT_PROCESS__MAPPINGS;
 
 	/**
 	 * The feature id for the '<em><b>Priority</b></em>' attribute.
@@ -19848,6 +19920,15 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE__SIZE = ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE;
 
 	/**
+	 * The feature id for the '<em><b>Mappings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE__MAPPINGS = ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS;
+
+	/**
 	 * The feature id for the '<em><b>Runnable Items</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20020,6 +20101,15 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL__SIZE = ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE;
 
 	/**
+	 * The feature id for the '<em><b>Mappings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__MAPPINGS = ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS;
+
+	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20181,6 +20271,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODE_LABEL__SIZE = ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE;
+
+	/**
+	 * The feature id for the '<em><b>Mappings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_LABEL__MAPPINGS = ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS;
 
 	/**
 	 * The feature id for the '<em><b>Mode</b></em>' reference.
@@ -27182,15 +27281,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getMemory_Type();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.Memory#getMapping <em>Mapping</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Memory#getMappings <em>Mappings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Mapping</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Memory#getMapping()
+	 * @return the meta object for the reference list '<em>Mappings</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Memory#getMappings()
 	 * @see #getMemory()
 	 * @generated
 	 */
-	EReference getMemory_Mapping();
+	EReference getMemory_Mappings();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Network <em>Network</em>}'.
@@ -28222,6 +28321,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAbstractElementMapping_AbstractElement();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.AbstractElementMapping <em>Abstract Element Link Int</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Abstract Element Link Int</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.AbstractElementMapping
+	 * @see #getAbstractElementMapping()
+	 * @generated
+	 */
+	EReference getAbstractElementMapping_AbstractElementLinkInt();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TaskAllocation <em>Task Allocation</em>}'.
@@ -30224,6 +30334,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAbstractElementMemoryInformation_Size();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation#getMappings <em>Mappings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Mappings</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation#getMappings()
+	 * @see #getAbstractElementMemoryInformation()
+	 * @generated
+	 */
+	EReference getAbstractElementMemoryInformation_Mappings();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.AbstractProcess <em>Abstract Process</em>}'.

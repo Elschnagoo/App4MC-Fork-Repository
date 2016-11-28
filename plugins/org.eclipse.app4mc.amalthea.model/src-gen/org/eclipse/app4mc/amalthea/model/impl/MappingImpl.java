@@ -210,9 +210,9 @@ public abstract class MappingImpl extends BaseObjectImpl implements Mapping {
 		if (newMemoryLinkInt != memoryLinkInt) {
 			NotificationChain msgs = null;
 			if (memoryLinkInt != null)
-				msgs = ((InternalEObject)memoryLinkInt).eInverseRemove(this, AmaltheaPackage.MEMORY__MAPPING, Memory.class, msgs);
+				msgs = ((InternalEObject)memoryLinkInt).eInverseRemove(this, AmaltheaPackage.MEMORY__MAPPINGS, Memory.class, msgs);
 			if (newMemoryLinkInt != null)
-				msgs = ((InternalEObject)newMemoryLinkInt).eInverseAdd(this, AmaltheaPackage.MEMORY__MAPPING, Memory.class, msgs);
+				msgs = ((InternalEObject)newMemoryLinkInt).eInverseAdd(this, AmaltheaPackage.MEMORY__MAPPINGS, Memory.class, msgs);
 			msgs = basicSetMemoryLinkInt(newMemoryLinkInt, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -230,7 +230,7 @@ public abstract class MappingImpl extends BaseObjectImpl implements Mapping {
 		switch (featureID) {
 			case AmaltheaPackage.MAPPING__MEMORY_LINK_INT:
 				if (memoryLinkInt != null)
-					msgs = ((InternalEObject)memoryLinkInt).eInverseRemove(this, AmaltheaPackage.MEMORY__MAPPING, Memory.class, msgs);
+					msgs = ((InternalEObject)memoryLinkInt).eInverseRemove(this, AmaltheaPackage.MEMORY__MAPPINGS, Memory.class, msgs);
 				return basicSetMemoryLinkInt((Memory)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);

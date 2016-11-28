@@ -54,7 +54,7 @@ public class MemoryItemProvider extends ComplexNodeItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addTypePropertyDescriptor(object);
-			addMappingPropertyDescriptor(object);
+			addMappingsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -82,19 +82,19 @@ public class MemoryItemProvider extends ComplexNodeItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Mapping feature.
+	 * This adds a property descriptor for the Mappings feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addMappingPropertyDescriptor(Object object) {
+	protected void addMappingsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Memory_mapping_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Memory_mapping_feature", "_UI_Memory_type"),
-				 AmaltheaPackage.eINSTANCE.getMemory_Mapping(),
+				 getString("_UI_Memory_mappings_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Memory_mappings_feature", "_UI_Memory_type"),
+				 AmaltheaPackage.eINSTANCE.getMemory_Mappings(),
 				 false,
 				 false,
 				 true,

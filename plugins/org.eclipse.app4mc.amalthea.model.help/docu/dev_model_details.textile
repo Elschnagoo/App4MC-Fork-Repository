@@ -18,18 +18,42 @@ bc.
 <calls xsi:type="am:TaskRunnableCall" runnable="foo?type=Runnable" />
 
 
+h2. Interfaces and base objects
+
+Several interfaces and abstract classes are defined in the common model.
+They provide basic common functionality for all objects, which are extending it, like the possibility to add __CustomAttributes__ or __Tags__. Tags are available at different elements with the purpose to group them together or to annotate them.
+
+!(scale)../pictures/model_common_interfaces_base_objects.png!
+
+
 h2. Transient back pointers
 
 AMALTHEA maintains a (small) number of back pointers in the model. A transient reference of an object 'points back' to the object referring to it. This allows easier navigation, at the expense of greater memory use.
 
 h4. Current back pointers
 
+TODO Some text to explain the intermediate objects LabelAccess and RunnableCall.
+They are contained objects
+
 | | Back pointer (read only) |>. Reference | |
 | @LabelAccess@ |{color:green}. &#8592; *labelAccesses* |>. *data* &#8594; | @Label@ |
 | @TaskRunnableCall@ |{color:green}. &#8592; *taskRunnableCalls* |>. *runnable* &#8594; | @Runnable@ |
 | @RunnableCall@ |{color:green}. &#8592; *runnableCalls* |>. *runnable* &#8594; | @Runnable@ |
+
+TODO Unclear if this link will be kept in future
+
+| | Back pointer (read only) |>. Reference | |
 | @CoreAllocation@ |{color:green}. &#8592; *coreAllocation* |>. *scheduler* &#8594; | @Scheduler@ |
-| @Mapping@ |{color:green}. &#8592; *mapping* |>. *memory* &#8594; | @Memory@ |
+
+TODO Some text to explain mapping.
+
+| | Back pointer (read only) |>. Reference | |
+| @Mapping@ |{color:green}. &#8592; *mappings* |>. *memory* &#8594; | @Memory@ |
+| @AbstractElementMapping@ |{color:green}. &#8592; *mappings* |>. *abstractElement* &#8594; | @AbstractElementMemoryInformation@ |
+
+TODO Some text to explain sections.
+
+| | Back pointer (read only) |>. Reference | |
 | @Label@ |{color:green}. &#8592; *labels* |>. *section* &#8594; | @Section@ |
 | @Runnable@ |{color:green}. &#8592; *runnables* |>. *section* &#8594; | @Section@ |
 

@@ -1565,7 +1565,7 @@ class Memory extends ComplexNode
 	// back pointer (readonly)
 	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient Mapping mapping opposite memoryLinkInt
+	refers transient Mapping[] mappings opposite memoryLinkInt
 }
 
 class Network extends ComplexNode
@@ -1877,7 +1877,7 @@ abstract class Mapping extends BaseObject
 	
 	// hidden link (internal)
 	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient Memory memoryLinkInt opposite mapping
+	refers transient Memory memoryLinkInt opposite mappings
 }
 
 /*
@@ -1911,6 +1911,11 @@ enum MemoryAddressMappingType
 class AbstractElementMapping extends Mapping
 {
 	refers AbstractElementMemoryInformation[1] abstractElement
+	
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
+	refers transient AbstractElementMemoryInformation abstractElementLinkInt opposite mappings
+	
 }
 
 //////////////// Specializations of Allocations
@@ -2546,6 +2551,11 @@ abstract class AbstractElementMemoryInformation extends ReferableBaseObject, ITa
 	 * Specifying the size of the element corresponding to the needed memory allocation
 	 */
 	contains resolving DataSize size
+	
+	// back pointer (readonly)
+	@GenModel(property="Readonly", suppressedSetVisibility="true")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient AbstractElementMapping[] mappings opposite abstractElementLinkInt
 }
 
 abstract class AbstractProcess extends AbstractElementMemoryInformation

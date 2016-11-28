@@ -178,9 +178,11 @@ Each entry (path) of a __Runnable Probability Switch__ has a probability-value. 
 !../pictures/model_sw_runnableprobabilityswitch.png!
 
 
-h3. Instructions
+h3. Runnable Instructions
 
-In the next picture a more detailed overview is given about the __Instructions__.
+In the next picture a more detailed overview is given about the __Runnable Instructions__.
+
+TODO
 
 !../pictures/model_sw_instructions.png!
 

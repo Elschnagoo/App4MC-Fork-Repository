@@ -31,7 +31,9 @@ package org.eclipse.app4mc.amalthea.model;
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractElementMapping()
- * @model
+ * @model features="abstractElementLinkInt" 
+ *        abstractElementLinkIntType="org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation" abstractElementLinkIntOpposite="mappings" abstractElementLinkIntTransient="true" abstractElementLinkIntSuppressedGetVisibility="true" abstractElementLinkIntSuppressedSetVisibility="true"
+ *        abstractElementLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
  * @generated
  */
 public interface AbstractElementMapping extends Mapping {

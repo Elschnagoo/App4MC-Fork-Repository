@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +24,7 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation#getSize <em>Size</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation#getMappings <em>Mappings</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractElementMemoryInformation()
@@ -54,5 +56,22 @@ public interface AbstractElementMemoryInformation extends ReferableBaseObject, I
 	 * @generated
 	 */
 	void setSize(DataSize value);
+
+	/**
+	 * Returns the value of the '<em><b>Mappings</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.AbstractElementMapping}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Mappings</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mappings</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractElementMemoryInformation_Mappings()
+	 * @model opposite="abstractElementLinkInt" transient="true" suppressedSetVisibility="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @generated
+	 */
+	EList<AbstractElementMapping> getMappings();
 
 } // AbstractElementMemoryInformation

@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +24,7 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Memory#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Memory#getMapping <em>Mapping</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Memory#getMappings <em>Mappings</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemory()
@@ -58,19 +59,20 @@ public interface Memory extends ComplexNode {
 	void setType(MemoryType value);
 
 	/**
-	 * Returns the value of the '<em><b>Mapping</b></em>' reference.
+	 * Returns the value of the '<em><b>Mappings</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Mapping}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Mapping</em>' reference isn't clear,
+	 * If the meaning of the '<em>Mappings</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Mapping</em>' reference.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemory_Mapping()
+	 * @return the value of the '<em>Mappings</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemory_Mappings()
 	 * @model opposite="memoryLinkInt" transient="true" suppressedSetVisibility="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
-	Mapping getMapping();
+	EList<Mapping> getMappings();
 
 } // Memory
