@@ -1475,9 +1475,15 @@ public class WeibullEstimatorsItemProvider extends WeibullDistributionItemProvid
 	 */
 	@Override
 	protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
-		// call generated method
-		collectNewChildDescriptorsGen(newChildDescriptors, object);
-		// postprocessing
+		// ***** Solution 1: call generated method (as a generic solution)
+		//collectNewChildDescriptorsGen(newChildDescriptors, object);
+		
+		// ***** Solution 2: customized collector
+		super.collectNewChildDescriptors(newChildDescriptors, object);
+		EcoreGenericsHelper.collectNewChildDescriptorsForDistribution(
+				AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(), newChildDescriptors);
+
+		// postprocessing (context sensitive)
 		EcoreGenericsHelper.correctChildDescriptorListForGenericTypes(object, newChildDescriptors);
 	}
 }

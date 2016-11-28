@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EGenericType;
@@ -176,5 +177,49 @@ public class EcoreGenericsHelper {
 		}
 	}
 
+	/**
+	 * Collects the superset of child descriptors for the following features:
+	 * - Deviation: distribution
+	 * 
+	 * @param feature
+	 * @param newChildDescriptors
+	 */
+	public static void collectNewChildDescriptorsForDeviation(Object feature, Collection<Object> newChildDescriptors) {
+		ArrayList<EObject> childObjects = new ArrayList<EObject>();
+		AmaltheaFactory factory = AmaltheaFactory.eINSTANCE;
+		
+		childObjects.add(factory.createBoundaries());
+		childObjects.add(factory.createUniformDistribution());
+		childObjects.add(factory.createGaussDistribution());
+		childObjects.add(factory.createWeibullParameters());
+		childObjects.add(factory.createWeibullEstimators());
+		childObjects.add(factory.createBetaDistribution());
 
+		for (EObject child : childObjects) {
+			newChildDescriptors.add(new CommandParameter(null, feature, child));			
+		}
+	}
+	
+	/**
+	 * Collects the superset of child descriptors for the following features:
+	 * - Deviation: upperBound, lowerBound
+	 * - WeibullEstimators: mean
+	 * - GaussDistribution: mean, sd
+	 * 
+	 * @param feature
+	 * @param newChildDescriptors
+	 */
+	public static void collectNewChildDescriptorsForDistribution(Object feature, Collection<Object> newChildDescriptors) {
+		ArrayList<EObject> childObjects = new ArrayList<EObject>();
+		AmaltheaFactory factory = AmaltheaFactory.eINSTANCE;
+		
+		
+		childObjects.add(factory.createLongObject());
+		childObjects.add(factory.createSignedTime());
+		
+		for (EObject child : childObjects) {
+			newChildDescriptors.add(new CommandParameter(null, feature, child));			
+		}
+	}
+	
 }
