@@ -32,9 +32,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCoreAllocation()
- * @model features="schedulerLinkInt" 
- *        schedulerLinkIntType="org.eclipse.app4mc.amalthea.model.Scheduler" schedulerLinkIntOpposite="coreAllocation" schedulerLinkIntTransient="true" schedulerLinkIntSuppressedGetVisibility="true" schedulerLinkIntSuppressedSetVisibility="true"
- *        schedulerLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
+ * @model
  * @generated
  */
 public interface CoreAllocation extends BaseObject {

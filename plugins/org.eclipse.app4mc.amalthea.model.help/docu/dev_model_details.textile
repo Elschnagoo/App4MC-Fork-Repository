@@ -40,11 +40,6 @@ They are contained objects
 | @TaskRunnableCall@ |{color:green}. &#8592; *taskRunnableCalls* |>. *runnable* &#8594; | @Runnable@ |
 | @RunnableCall@ |{color:green}. &#8592; *runnableCalls* |>. *runnable* &#8594; | @Runnable@ |
 
-TODO Unclear if this link will be kept in future
-
-| | Back pointer (read only) |>. Reference | |
-| @CoreAllocation@ |{color:green}. &#8592; *coreAllocation* |>. *scheduler* &#8594; | @Scheduler@ |
-
 TODO Some text to explain mapping.
 
 | | Back pointer (read only) |>. Reference | |

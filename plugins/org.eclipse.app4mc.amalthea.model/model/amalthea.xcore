@@ -1825,15 +1825,6 @@ class CoreAllocation extends BaseObject
 {
 	refers Scheduler[1] scheduler
 	refers Core[+] core
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient Scheduler schedulerLinkInt opposite coreAllocation
-
-// *** Handling of lists ???
-//	@GenModel(suppressedGetVisibility="true",suppressedSetVisibility="true")
-//	@GenModel(property="None")
-//	refers transient Core[] coreLinkInt opposite coreAllocation
 }
 
 
@@ -1996,11 +1987,6 @@ abstract class Scheduler extends ReferableBaseObject
 {
 	contains resolving SchedulingUnit schedulingUnit
 	int scheduleUnitPriority="0"
-	
-	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
-	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient CoreAllocation coreAllocation opposite schedulerLinkInt
 }
 
 /*

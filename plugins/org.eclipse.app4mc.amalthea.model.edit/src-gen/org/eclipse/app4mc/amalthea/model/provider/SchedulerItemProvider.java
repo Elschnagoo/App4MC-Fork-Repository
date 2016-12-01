@@ -59,7 +59,6 @@ public class SchedulerItemProvider extends ReferableBaseObjectItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addScheduleUnitPriorityPropertyDescriptor(object);
-			addCoreAllocationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -84,30 +83,6 @@ public class SchedulerItemProvider extends ReferableBaseObjectItemProvider {
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Core Allocation feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCoreAllocationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Scheduler_coreAllocation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Scheduler_coreAllocation_feature", "_UI_Scheduler_type"),
-				 AmaltheaPackage.eINSTANCE.getScheduler_CoreAllocation(),
-				 false,
-				 false,
-				 true,
-				 null,
-				 getString("_UI_ReadonlyPropertyCategory"),
-				 new String[] {
-					"org.eclipse.ui.views.properties.expert"
-				 }));
 	}
 
 	/**

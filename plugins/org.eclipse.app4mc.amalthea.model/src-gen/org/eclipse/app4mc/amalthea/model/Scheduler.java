@@ -29,7 +29,6 @@ package org.eclipse.app4mc.amalthea.model;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Scheduler#getSchedulingUnit <em>Scheduling Unit</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Scheduler#getScheduleUnitPriority <em>Schedule Unit Priority</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Scheduler#getCoreAllocation <em>Core Allocation</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScheduler()
@@ -89,21 +88,5 @@ public interface Scheduler extends ReferableBaseObject {
 	 * @generated
 	 */
 	void setScheduleUnitPriority(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Core Allocation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Core Allocation</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Core Allocation</em>' reference.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScheduler_CoreAllocation()
-	 * @model opposite="schedulerLinkInt" transient="true" suppressedSetVisibility="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
-	 * @generated
-	 */
-	CoreAllocation getCoreAllocation();
 
 } // Scheduler

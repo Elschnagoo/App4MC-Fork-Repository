@@ -20,7 +20,6 @@ import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -41,7 +40,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CoreAllocationImpl#getScheduler <em>Scheduler</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CoreAllocationImpl#getCore <em>Core</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CoreAllocationImpl#getSchedulerLinkInt <em>Scheduler Link Int</em>}</li>
  * </ul>
  *
  * @generated
@@ -66,16 +64,6 @@ public class CoreAllocationImpl extends BaseObjectImpl implements CoreAllocation
 	 * @ordered
 	 */
 	protected EList<Core> core;
-
-	/**
-	 * The cached value of the '{@link #getSchedulerLinkInt() <em>Scheduler Link Int</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSchedulerLinkInt()
-	 * @generated
-	 * @ordered
-	 */
-	protected Scheduler schedulerLinkInt;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,8 +120,6 @@ public class CoreAllocationImpl extends BaseObjectImpl implements CoreAllocation
 		scheduler = newScheduler;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CORE_ALLOCATION__SCHEDULER, oldScheduler, scheduler));
- 		//Additional setting transient value for transient bi-directional reference
- 		setSchedulerLinkInt(newScheduler);
 	}
 
 	/**
@@ -153,96 +139,6 @@ public class CoreAllocationImpl extends BaseObjectImpl implements CoreAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Scheduler getSchedulerLinkInt() {
-		if (schedulerLinkInt != null && schedulerLinkInt.eIsProxy()) {
-			InternalEObject oldSchedulerLinkInt = (InternalEObject)schedulerLinkInt;
-			schedulerLinkInt = (Scheduler)eResolveProxy(oldSchedulerLinkInt);
-			if (schedulerLinkInt != oldSchedulerLinkInt) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.CORE_ALLOCATION__SCHEDULER_LINK_INT, oldSchedulerLinkInt, schedulerLinkInt));
-			}
-		}
-		return schedulerLinkInt;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Scheduler basicGetSchedulerLinkInt() {
-		return schedulerLinkInt;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSchedulerLinkInt(Scheduler newSchedulerLinkInt, NotificationChain msgs) {
-		Scheduler oldSchedulerLinkInt = schedulerLinkInt;
-		schedulerLinkInt = newSchedulerLinkInt;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CORE_ALLOCATION__SCHEDULER_LINK_INT, oldSchedulerLinkInt, newSchedulerLinkInt);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSchedulerLinkInt(Scheduler newSchedulerLinkInt) {
-		if (newSchedulerLinkInt != schedulerLinkInt) {
-			NotificationChain msgs = null;
-			if (schedulerLinkInt != null)
-				msgs = ((InternalEObject)schedulerLinkInt).eInverseRemove(this, AmaltheaPackage.SCHEDULER__CORE_ALLOCATION, Scheduler.class, msgs);
-			if (newSchedulerLinkInt != null)
-				msgs = ((InternalEObject)newSchedulerLinkInt).eInverseAdd(this, AmaltheaPackage.SCHEDULER__CORE_ALLOCATION, Scheduler.class, msgs);
-			msgs = basicSetSchedulerLinkInt(newSchedulerLinkInt, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CORE_ALLOCATION__SCHEDULER_LINK_INT, newSchedulerLinkInt, newSchedulerLinkInt));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.CORE_ALLOCATION__SCHEDULER_LINK_INT:
-				if (schedulerLinkInt != null)
-					msgs = ((InternalEObject)schedulerLinkInt).eInverseRemove(this, AmaltheaPackage.SCHEDULER__CORE_ALLOCATION, Scheduler.class, msgs);
-				return basicSetSchedulerLinkInt((Scheduler)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.CORE_ALLOCATION__SCHEDULER_LINK_INT:
-				return basicSetSchedulerLinkInt(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -251,9 +147,6 @@ public class CoreAllocationImpl extends BaseObjectImpl implements CoreAllocation
 				return basicGetScheduler();
 			case AmaltheaPackage.CORE_ALLOCATION__CORE:
 				return getCore();
-			case AmaltheaPackage.CORE_ALLOCATION__SCHEDULER_LINK_INT:
-				if (resolve) return getSchedulerLinkInt();
-				return basicGetSchedulerLinkInt();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -274,9 +167,6 @@ public class CoreAllocationImpl extends BaseObjectImpl implements CoreAllocation
 				getCore().clear();
 				getCore().addAll((Collection<? extends Core>)newValue);
 				return;
-			case AmaltheaPackage.CORE_ALLOCATION__SCHEDULER_LINK_INT:
-				setSchedulerLinkInt((Scheduler)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -295,9 +185,6 @@ public class CoreAllocationImpl extends BaseObjectImpl implements CoreAllocation
 			case AmaltheaPackage.CORE_ALLOCATION__CORE:
 				getCore().clear();
 				return;
-			case AmaltheaPackage.CORE_ALLOCATION__SCHEDULER_LINK_INT:
-				setSchedulerLinkInt((Scheduler)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -314,8 +201,6 @@ public class CoreAllocationImpl extends BaseObjectImpl implements CoreAllocation
 				return scheduler != null;
 			case AmaltheaPackage.CORE_ALLOCATION__CORE:
 				return core != null && !core.isEmpty();
-			case AmaltheaPackage.CORE_ALLOCATION__SCHEDULER_LINK_INT:
-				return schedulerLinkInt != null;
 		}
 		return super.eIsSet(featureID);
 	}

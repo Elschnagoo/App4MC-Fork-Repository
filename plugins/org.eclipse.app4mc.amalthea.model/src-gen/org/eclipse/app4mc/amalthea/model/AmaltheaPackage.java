@@ -12673,22 +12673,13 @@ public interface AmaltheaPackage extends EPackage {
 	int CORE_ALLOCATION__CORE = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Scheduler Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CORE_ALLOCATION__SCHEDULER_LINK_INT = BASE_OBJECT_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Core Allocation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CORE_ALLOCATION_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 3;
+	int CORE_ALLOCATION_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Core Allocation</em>' class.
@@ -13457,22 +13448,13 @@ public interface AmaltheaPackage extends EPackage {
 	int SCHEDULER__SCHEDULE_UNIT_PRIORITY = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Core Allocation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCHEDULER__CORE_ALLOCATION = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Scheduler</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULER_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
+	int SCHEDULER_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -14477,15 +14459,6 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK_SCHEDULER__SCHEDULE_UNIT_PRIORITY = SCHEDULER__SCHEDULE_UNIT_PRIORITY;
 
 	/**
-	 * The feature id for the '<em><b>Core Allocation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SCHEDULER__CORE_ALLOCATION = SCHEDULER__CORE_ALLOCATION;
-
-	/**
 	 * The feature id for the '<em><b>Scheduling Algorithm</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14584,15 +14557,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERRUPT_CONTROLLER__SCHEDULE_UNIT_PRIORITY = SCHEDULER__SCHEDULE_UNIT_PRIORITY;
-
-	/**
-	 * The feature id for the '<em><b>Core Allocation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERRUPT_CONTROLLER__CORE_ALLOCATION = SCHEDULER__CORE_ALLOCATION;
 
 	/**
 	 * The feature id for the '<em><b>Scheduling Algorithm</b></em>' containment reference.
@@ -28172,17 +28136,6 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getCoreAllocation_Core();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.CoreAllocation <em>Scheduler Link Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Scheduler Link Int</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.CoreAllocation
-	 * @see #getCoreAllocation()
-	 * @generated
-	 */
-	EReference getCoreAllocation_SchedulerLinkInt();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping <em>Physical Section Mapping</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28633,17 +28586,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getScheduler_ScheduleUnitPriority();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.Scheduler#getCoreAllocation <em>Core Allocation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Core Allocation</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Scheduler#getCoreAllocation()
-	 * @see #getScheduler()
-	 * @generated
-	 */
-	EReference getScheduler_CoreAllocation();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm <em>Interrupt Scheduling Algorithm</em>}'.

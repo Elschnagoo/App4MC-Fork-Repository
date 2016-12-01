@@ -7240,15 +7240,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCoreAllocation_SchedulerLinkInt() {
-		return (EReference)coreAllocationEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPhysicalSectionMapping() {
 		return physicalSectionMappingEClass;
 	}
@@ -7620,15 +7611,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EAttribute getScheduler_ScheduleUnitPriority() {
 		return (EAttribute)schedulerEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getScheduler_CoreAllocation() {
-		return (EReference)schedulerEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -11901,7 +11883,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		coreAllocationEClass = createEClass(CORE_ALLOCATION);
 		createEReference(coreAllocationEClass, CORE_ALLOCATION__SCHEDULER);
 		createEReference(coreAllocationEClass, CORE_ALLOCATION__CORE);
-		createEReference(coreAllocationEClass, CORE_ALLOCATION__SCHEDULER_LINK_INT);
 
 		physicalSectionMappingEClass = createEClass(PHYSICAL_SECTION_MAPPING);
 		createEReference(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__ORIGIN);
@@ -11954,7 +11935,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		schedulerEClass = createEClass(SCHEDULER);
 		createEReference(schedulerEClass, SCHEDULER__SCHEDULING_UNIT);
 		createEAttribute(schedulerEClass, SCHEDULER__SCHEDULE_UNIT_PRIORITY);
-		createEReference(schedulerEClass, SCHEDULER__CORE_ALLOCATION);
 
 		interruptSchedulingAlgorithmEClass = createEClass(INTERRUPT_SCHEDULING_ALGORITHM);
 
@@ -13580,7 +13560,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(coreAllocationEClass, CoreAllocation.class, "CoreAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCoreAllocation_Scheduler(), this.getScheduler(), null, "scheduler", null, 1, 1, CoreAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCoreAllocation_Core(), this.getCore(), null, "core", null, 1, -1, CoreAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCoreAllocation_SchedulerLinkInt(), this.getScheduler(), this.getScheduler_CoreAllocation(), "schedulerLinkInt", null, 0, 1, CoreAllocation.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(physicalSectionMappingEClass, PhysicalSectionMapping.class, "PhysicalSectionMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPhysicalSectionMapping_Origin(), this.getSection(), null, "origin", null, 1, -1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -13633,7 +13612,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(schedulerEClass, Scheduler.class, "Scheduler", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getScheduler_SchedulingUnit(), this.getSchedulingUnit(), null, "schedulingUnit", null, 0, 1, Scheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScheduler_ScheduleUnitPriority(), theEcorePackage.getEInt(), "scheduleUnitPriority", "0", 0, 1, Scheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getScheduler_CoreAllocation(), this.getCoreAllocation(), this.getCoreAllocation_SchedulerLinkInt(), "coreAllocation", null, 0, 1, Scheduler.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(interruptSchedulingAlgorithmEClass, InterruptSchedulingAlgorithm.class, "InterruptSchedulingAlgorithm", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
