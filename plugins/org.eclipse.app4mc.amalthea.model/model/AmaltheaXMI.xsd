@@ -956,7 +956,6 @@ exclusive: gets access to requested semaphore only when there is no other user a
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="samplingType" type="am:SamplingType"/>
   </xsd:complexType>
   <xsd:element name="Deviation" type="am:Deviation"/>
   <xsd:complexType abstract="true" name="Distribution">
@@ -1045,7 +1044,9 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
       <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:Distribution"/>
+      <xsd:extension base="am:Distribution">
+        <xsd:attribute name="samplingType" type="am:SamplingType"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Boundaries" type="am:Boundaries">

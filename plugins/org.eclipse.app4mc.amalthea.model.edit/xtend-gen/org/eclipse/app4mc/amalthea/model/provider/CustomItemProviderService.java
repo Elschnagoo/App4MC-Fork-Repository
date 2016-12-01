@@ -23,7 +23,6 @@ import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.CoherencyDirection;
@@ -122,7 +121,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
-import org.eclipse.app4mc.amalthea.model.SamplingType;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.Section;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
@@ -140,7 +138,6 @@ import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
-import org.eclipse.app4mc.amalthea.model.TargetCallSequence;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
@@ -591,11 +588,6 @@ public class CustomItemProviderService {
         _upperBound=((Deviation<?>)object).getUpperBound();
       }
       final Object upper = _upperBound;
-      SamplingType _samplingType = null;
-      if (((Deviation<?>)object)!=null) {
-        _samplingType=((Deviation<?>)object).getSamplingType();
-      }
-      final SamplingType sampling = _samplingType;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(distName);
       if (_isNullOrEmpty) {
@@ -621,16 +613,7 @@ public class CustomItemProviderService {
         _xifexpression_2 = (" upperBound: " + upper);
       }
       final String s3 = _xifexpression_2;
-      String _xifexpression_3 = null;
-      if ((Objects.equal(sampling, null) || Objects.equal(sampling, SamplingType.DEFAULT))) {
-        _xifexpression_3 = "";
-      } else {
-        String _literal = sampling.getLiteral();
-        String _plus = (" -- " + _literal);
-        _xifexpression_3 = (_plus + " sampling");
-      }
-      final String s4 = _xifexpression_3;
-      return (((s1 + s2) + s3) + s4);
+      return ((s1 + s2) + s3);
     }
     return null;
   }
@@ -644,11 +627,6 @@ public class CustomItemProviderService {
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION__UPPER_BOUND)) {
-        _matched=true;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION__SAMPLING_TYPE)) {
         _matched=true;
       }
     }
@@ -2158,40 +2136,6 @@ public class CustomItemProviderService {
       list.add(_viewerNotification);
     }
     return list;
-  }
-  
-  /**
-   * TargetCallSequenceItemProvider
-   */
-  public static String getTargetCallSequenceItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof TargetCallSequence)) {
-      EList<CallSequence> _callSequences = null;
-      if (((TargetCallSequence)object)!=null) {
-        _callSequences=((TargetCallSequence)object).getCallSequences();
-      }
-      final EList<CallSequence> seq = _callSequences;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = IterableExtensions.isNullOrEmpty(seq);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<call sequence>";
-      } else {
-        final Function1<CallSequence, String> _function = (CallSequence it) -> {
-          return it.getName();
-        };
-        List<String> _map = ListExtensions.<CallSequence, String>map(seq, _function);
-        final Function1<String, Boolean> _function_1 = (String it) -> {
-          return Boolean.valueOf(StringExtensions.isNullOrEmpty(it));
-        };
-        Iterable<String> _filter = IterableExtensions.<String>filter(_map, _function_1);
-        String _join = IterableExtensions.join(_filter, ", ");
-        String _plus = (" [" + _join);
-        _xifexpression = (_plus + "]");
-      }
-      final String s1 = _xifexpression;
-      return s1;
-    } else {
-      return defaultText;
-    }
   }
   
   /**

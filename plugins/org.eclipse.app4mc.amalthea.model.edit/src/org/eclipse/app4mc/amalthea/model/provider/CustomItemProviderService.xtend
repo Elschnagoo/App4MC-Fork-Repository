@@ -52,6 +52,7 @@ import org.eclipse.app4mc.amalthea.model.HwAccessPath
 import org.eclipse.app4mc.amalthea.model.HwAccessPathRef
 import org.eclipse.app4mc.amalthea.model.HwElementRef
 import org.eclipse.app4mc.amalthea.model.ISRAllocation
+import org.eclipse.app4mc.amalthea.model.Instructions
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation
 import org.eclipse.app4mc.amalthea.model.IntegerObject
@@ -92,12 +93,12 @@ import org.eclipse.app4mc.amalthea.model.RWType
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint
 import org.eclipse.app4mc.amalthea.model.RunnableCall
+import org.eclipse.app4mc.amalthea.model.RunnableInstructions
 import org.eclipse.app4mc.amalthea.model.RunnableItem
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement
 import org.eclipse.app4mc.amalthea.model.RunnableScope
-import org.eclipse.app4mc.amalthea.model.SamplingType
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum
 import org.eclipse.app4mc.amalthea.model.SenderReceiverRead
@@ -111,7 +112,6 @@ import org.eclipse.app4mc.amalthea.model.SubEventChain
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall
 import org.eclipse.app4mc.amalthea.model.System
 import org.eclipse.app4mc.amalthea.model.TagGroup
-import org.eclipse.app4mc.amalthea.model.TargetCallSequence
 import org.eclipse.app4mc.amalthea.model.TaskAllocation
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall
 import org.eclipse.app4mc.amalthea.model.Time
@@ -130,8 +130,6 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
-import org.eclipse.app4mc.amalthea.model.Instructions
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions
 
 class CustomItemProviderService {
 
@@ -403,13 +401,11 @@ class CustomItemProviderService {
 			val distName = object?.distribution?.eClass?.name
 			val lower = object?.lowerBound
 			val upper = object?.upperBound
-			val sampling = object?.samplingType			
 			val s1 = if(distName.isNullOrEmpty) "Dist: ???" else "Dist: " + trimDistName(distName)
 			val s2 = if(lower == null) "" else " lowerBound: " + lower
 			val s3 = if(upper == null) "" else " upperBound: " + upper
-			val s4 = if(sampling == null || sampling == SamplingType::DEFAULT) "" else " -- " + sampling.literal + " sampling"
 			
-	 		return s1 + s2 + s3 + s4
+	 		return s1 + s2 + s3
 		}
 	}
 
@@ -418,7 +414,6 @@ class CustomItemProviderService {
 		switch notification.getFeatureID(typeof(Deviation)) {
 			case AmaltheaPackage::DEVIATION__LOWER_BOUND,
 			case AmaltheaPackage::DEVIATION__UPPER_BOUND,
-			case AmaltheaPackage::DEVIATION__SAMPLING_TYPE,
 			case AmaltheaPackage::DEVIATION__DISTRIBUTION:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 		}
@@ -1147,39 +1142,6 @@ class CustomItemProviderService {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 		}
 		return list
-	}
-
-
-	/*****************************************************************************
-	 * 						TargetCallSequenceItemProvider
-	 *****************************************************************************/
-	def static String getTargetCallSequenceItemProviderText(Object object, String defaultText) {
-		if (object instanceof TargetCallSequence) {
-			val seq = object?.callSequences
-			val s1 = if(seq.isNullOrEmpty) "<call sequence>" else " [" + seq.map[name].filter[isNullOrEmpty].join(", ") + "]"
-			return s1
-		} else {
-			return defaultText
-		}
-
-// TODO: Check if implementation is correct
-
-//		if (null == tcs.getCallSequences() || tcs.getCallSequences().isEmpty()) {
-//			return getString("_UI_TargetCallSequence_type");
-//		}
-//		final StringBuffer result = new StringBuffer();
-//		result.append(getString("_UI_TargetCallSequence_type")).append(" [");
-//		boolean first = true;
-//		for (final CallSequence cs : tcs.getCallSequences()) {
-//			if (!first) {
-//				result.append(",");
-//			}
-//			if (StringUtils.isNotEmpty(cs.getName())) {
-//				result.append(cs.getName());
-//			}
-//			first = false;
-//		}
-//		return result.append("]").toString();
 	}
 
 

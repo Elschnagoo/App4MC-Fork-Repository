@@ -459,7 +459,6 @@
     <nested inputs="amalthea.xcore#/EPackage/SignedTimeObject" outputs="AmaltheaXMI.xsd#//SignedTimeObject;XSDComplexTypeDefinition=30"/>
     <nested inputs="amalthea.xcore#/EPackage/SignedTimeObject" outputs="AmaltheaXMI.xsd#//SignedTimeObject;XSDElementDeclaration=30"/>
     <nested inputs="amalthea.xcore#/EPackage/Deviation" outputs="AmaltheaXMI.xsd#//Deviation;XSDComplexTypeDefinition=31">
-      <nested inputs="amalthea.xcore#/EPackage/Deviation/samplingType" outputs="AmaltheaXMI.xsd#//Deviation;XSDComplexTypeDefinition=31/XSDAttributeUse=1"/>
       <nested inputs="amalthea.xcore#/EPackage/Deviation/lowerBound" outputs="AmaltheaXMI.xsd#//Deviation;XSDComplexTypeDefinition=31/XSDParticle/XSDModelGroup/XSDParticle"/>
       <nested inputs="amalthea.xcore#/EPackage/Deviation/upperBound" outputs="AmaltheaXMI.xsd#//Deviation;XSDComplexTypeDefinition=31/XSDParticle/XSDModelGroup/XSDParticle=1"/>
       <nested inputs="amalthea.xcore#/EPackage/Deviation/distribution" outputs="AmaltheaXMI.xsd#//Deviation;XSDComplexTypeDefinition=31/XSDParticle/XSDModelGroup/XSDParticle=2"/>
@@ -482,7 +481,9 @@
     <nested inputs="amalthea.xcore#/EPackage/WeibullEstimators" outputs="AmaltheaXMI.xsd#//WeibullEstimators;XSDElementDeclaration=35"/>
     <nested inputs="amalthea.xcore#/EPackage/UniformDistribution" outputs="AmaltheaXMI.xsd#//UniformDistribution;XSDComplexTypeDefinition=36"/>
     <nested inputs="amalthea.xcore#/EPackage/UniformDistribution" outputs="AmaltheaXMI.xsd#//UniformDistribution;XSDElementDeclaration=36"/>
-    <nested inputs="amalthea.xcore#/EPackage/Boundaries" outputs="AmaltheaXMI.xsd#//Boundaries;XSDComplexTypeDefinition=37"/>
+    <nested inputs="amalthea.xcore#/EPackage/Boundaries" outputs="AmaltheaXMI.xsd#//Boundaries;XSDComplexTypeDefinition=37">
+      <nested inputs="amalthea.xcore#/EPackage/Boundaries/samplingType" outputs="AmaltheaXMI.xsd#//Boundaries;XSDComplexTypeDefinition=37/XSDAttributeUse"/>
+    </nested>
     <nested inputs="amalthea.xcore#/EPackage/Boundaries" outputs="AmaltheaXMI.xsd#//Boundaries;XSDElementDeclaration=37"/>
     <nested inputs="amalthea.xcore#/EPackage/GaussDistribution" outputs="AmaltheaXMI.xsd#//GaussDistribution;XSDComplexTypeDefinition=38">
       <nested inputs="amalthea.xcore#/EPackage/GaussDistribution/sd" outputs="AmaltheaXMI.xsd#//GaussDistribution;XSDComplexTypeDefinition=38/XSDParticle/XSDModelGroup/XSDParticle"/>

@@ -460,25 +460,11 @@ class SignedTimeObject extends AbstractTime, Value {
 	}
 }
 
-/*
- *
- * The types of sampling
- */
-enum SamplingType
-{
-	^default // Display: "<sampling>"
-	BestCase
-	WorstCase
-	AverageCase
-	CornerCase
-	Uniform
-}
 
 class Deviation<T>{
 	contains resolving T lowerBound
 	contains resolving T upperBound
 	contains resolving Distribution<T> distribution
-	SamplingType samplingType
 	
 	op boolean containerNotificationRequired() {
 		return true
@@ -528,10 +514,25 @@ class UniformDistribution<T> extends Distribution<T>
 }
 
 /*
+ *
+ * The types of sampling
+ */
+enum SamplingType
+{
+	^default // Display: "<sampling>"
+	BestCase
+	WorstCase
+	AverageCase
+	CornerCase
+	Uniform
+}
+
+/*
  * Defines the upper and lower bounds of a value interval without defining the distribution
  */
 class Boundaries<T> extends Distribution<T>
 {
+	SamplingType samplingType
 }
 
 /*

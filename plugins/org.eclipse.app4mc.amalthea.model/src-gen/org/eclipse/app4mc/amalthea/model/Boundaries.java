@@ -22,10 +22,45 @@ package org.eclipse.app4mc.amalthea.model;
  * Defines the upper and lower bounds of a value interval without defining the distribution
  * <!-- end-model-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Boundaries#getSamplingType <em>Sampling Type</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBoundaries()
  * @model
  * @generated
  */
 public interface Boundaries<T> extends Distribution<T> {
+	/**
+	 * Returns the value of the '<em><b>Sampling Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.SamplingType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sampling Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sampling Type</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.SamplingType
+	 * @see #setSamplingType(SamplingType)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBoundaries_SamplingType()
+	 * @model unique="false"
+	 * @generated
+	 */
+	SamplingType getSamplingType();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Boundaries#getSamplingType <em>Sampling Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sampling Type</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.SamplingType
+	 * @see #getSamplingType()
+	 * @generated
+	 */
+	void setSamplingType(SamplingType value);
+
 } // Boundaries

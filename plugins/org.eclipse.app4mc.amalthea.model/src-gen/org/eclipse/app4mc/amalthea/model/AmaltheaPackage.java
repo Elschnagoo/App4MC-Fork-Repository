@@ -1912,22 +1912,13 @@ public interface AmaltheaPackage extends EPackage {
 	int DEVIATION__DISTRIBUTION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Sampling Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVIATION__SAMPLING_TYPE = 3;
-
-	/**
 	 * The number of structural features of the '<em>Deviation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEVIATION_FEATURE_COUNT = 4;
+	int DEVIATION_FEATURE_COUNT = 3;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -2134,13 +2125,22 @@ public interface AmaltheaPackage extends EPackage {
 	int BOUNDARIES = 37;
 
 	/**
+	 * The feature id for the '<em><b>Sampling Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDARIES__SAMPLING_TYPE = DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Boundaries</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDARIES_FEATURE_COUNT = DISTRIBUTION_FEATURE_COUNT + 0;
+	int BOUNDARIES_FEATURE_COUNT = DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Boundaries</em>' class.
@@ -23991,17 +23991,6 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getDeviation_Distribution();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Deviation#getSamplingType <em>Sampling Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Sampling Type</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Deviation#getSamplingType()
-	 * @see #getDeviation()
-	 * @generated
-	 */
-	EAttribute getDeviation_SamplingType();
-
-	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Deviation#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24114,6 +24103,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getBoundaries();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Boundaries#getSamplingType <em>Sampling Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sampling Type</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Boundaries#getSamplingType()
+	 * @see #getBoundaries()
+	 * @generated
+	 */
+	EAttribute getBoundaries_SamplingType();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.GaussDistribution <em>Gauss Distribution</em>}'.

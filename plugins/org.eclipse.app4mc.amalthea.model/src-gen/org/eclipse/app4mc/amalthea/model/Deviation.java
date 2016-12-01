@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Deviation#getLowerBound <em>Lower Bound</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Deviation#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Deviation#getDistribution <em>Distribution</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Deviation#getSamplingType <em>Sampling Type</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDeviation()
@@ -111,35 +110,6 @@ public interface Deviation<T> extends EObject {
 	 * @generated
 	 */
 	void setDistribution(Distribution<T> value);
-
-	/**
-	 * Returns the value of the '<em><b>Sampling Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.SamplingType}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sampling Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sampling Type</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.SamplingType
-	 * @see #setSamplingType(SamplingType)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDeviation_SamplingType()
-	 * @model unique="false"
-	 * @generated
-	 */
-	SamplingType getSamplingType();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Deviation#getSamplingType <em>Sampling Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sampling Type</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.SamplingType
-	 * @see #getSamplingType()
-	 * @generated
-	 */
-	void setSamplingType(SamplingType value);
 
 	/**
 	 * <!-- begin-user-doc -->
