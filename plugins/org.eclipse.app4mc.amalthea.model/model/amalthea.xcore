@@ -917,26 +917,6 @@ class TargetScheduler extends RunnableConstraintTarget, ProcessConstraintTarget,
 }
 
 /*
- * A process target description
- * A process can be a target only for runnable-constraints
- * processes: the reference zero or more Processes. If this list is empty, the target stands for all processes! 
- */
-class TargetProcess extends RunnableConstraintTarget, BaseObject
-{
-	refers Process[] processes
-}
-
-/*
- * A call-sequence target description
- * A call-sequence can be a target only for runnable-constraints
- * callSequences: the reference to zero or more call-sequences. If this list is empty, the target stands for all call-sequences!
- */
-class TargetCallSequence extends RunnableConstraintTarget, BaseObject
-{
-	refers CallSequence[] callSequences
-}
-
-/*
  * A abstract description for a group of runnables that can be paired or separated by a runnable-constraint
  */
 abstract class RunnableGroup

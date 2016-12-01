@@ -1767,52 +1767,6 @@ A scheduler can be a target for runnable-constraints and process-constraints
 schedulers: the reference to zero or more Schedulers. If this list is empty, the target stands for all schedulers!</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="TargetProcess">
-    <xsd:annotation>
-      <xsd:documentation>A process target description
-A process can be a target only for runnable-constraints
-processes: the reference zero or more Processes. If this list is empty, the target stands for all processes!</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:RunnableConstraintTarget">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
-          <xsd:element name="processes" type="am:Process"/>
-        </xsd:choice>
-        <xsd:attribute name="processes" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TargetProcess" type="am:TargetProcess">
-    <xsd:annotation>
-      <xsd:documentation>A process target description
-A process can be a target only for runnable-constraints
-processes: the reference zero or more Processes. If this list is empty, the target stands for all processes!</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="TargetCallSequence">
-    <xsd:annotation>
-      <xsd:documentation>A call-sequence target description
-A call-sequence can be a target only for runnable-constraints
-callSequences: the reference to zero or more call-sequences. If this list is empty, the target stands for all call-sequences!</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:RunnableConstraintTarget">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
-          <xsd:element name="callSequences" type="am:CallSequence"/>
-        </xsd:choice>
-        <xsd:attribute name="callSequences" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TargetCallSequence" type="am:TargetCallSequence">
-    <xsd:annotation>
-      <xsd:documentation>A call-sequence target description
-A call-sequence can be a target only for runnable-constraints
-callSequences: the reference to zero or more call-sequences. If this list is empty, the target stands for all call-sequences!</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType abstract="true" name="RunnableGroup">
     <xsd:annotation>
       <xsd:documentation>A abstract description for a group of runnables that can be paired or separated by a runnable-constraint</xsd:documentation>

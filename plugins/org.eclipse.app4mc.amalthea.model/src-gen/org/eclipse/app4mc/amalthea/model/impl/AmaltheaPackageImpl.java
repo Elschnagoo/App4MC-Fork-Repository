@@ -332,10 +332,8 @@ import org.eclipse.app4mc.amalthea.model.Synthetic;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
-import org.eclipse.app4mc.amalthea.model.TargetCallSequence;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
 import org.eclipse.app4mc.amalthea.model.TargetMemory;
-import org.eclipse.app4mc.amalthea.model.TargetProcess;
 import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
@@ -955,20 +953,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass targetSchedulerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass targetProcessEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass targetCallSequenceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4875,42 +4859,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getTargetScheduler_Schedulers() {
 		return (EReference)targetSchedulerEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTargetProcess() {
-		return targetProcessEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTargetProcess_Processes() {
-		return (EReference)targetProcessEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTargetCallSequence() {
-		return targetCallSequenceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTargetCallSequence_CallSequences() {
-		return (EReference)targetCallSequenceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11531,12 +11479,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		targetSchedulerEClass = createEClass(TARGET_SCHEDULER);
 		createEReference(targetSchedulerEClass, TARGET_SCHEDULER__SCHEDULERS);
 
-		targetProcessEClass = createEClass(TARGET_PROCESS);
-		createEReference(targetProcessEClass, TARGET_PROCESS__PROCESSES);
-
-		targetCallSequenceEClass = createEClass(TARGET_CALL_SEQUENCE);
-		createEReference(targetCallSequenceEClass, TARGET_CALL_SEQUENCE__CALL_SEQUENCES);
-
 		runnableGroupEClass = createEClass(RUNNABLE_GROUP);
 
 		processGroupEClass = createEClass(PROCESS_GROUP);
@@ -12620,10 +12562,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		targetSchedulerEClass.getESuperTypes().add(this.getRunnableConstraintTarget());
 		targetSchedulerEClass.getESuperTypes().add(this.getProcessConstraintTarget());
 		targetSchedulerEClass.getESuperTypes().add(this.getBaseObject());
-		targetProcessEClass.getESuperTypes().add(this.getRunnableConstraintTarget());
-		targetProcessEClass.getESuperTypes().add(this.getBaseObject());
-		targetCallSequenceEClass.getESuperTypes().add(this.getRunnableConstraintTarget());
-		targetCallSequenceEClass.getESuperTypes().add(this.getBaseObject());
 		labelEntityGroupEClass.getESuperTypes().add(this.getBaseObject());
 		runnableEntityGroupEClass.getESuperTypes().add(this.getRunnableGroup());
 		runnableEntityGroupEClass.getESuperTypes().add(this.getBaseObject());
@@ -13200,12 +13138,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(targetSchedulerEClass, TargetScheduler.class, "TargetScheduler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTargetScheduler_Schedulers(), this.getScheduler(), null, "schedulers", null, 0, -1, TargetScheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(targetProcessEClass, TargetProcess.class, "TargetProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTargetProcess_Processes(), this.getProcess(), null, "processes", null, 0, -1, TargetProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(targetCallSequenceEClass, TargetCallSequence.class, "TargetCallSequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTargetCallSequence_CallSequences(), this.getCallSequence(), null, "callSequences", null, 0, -1, TargetCallSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableGroupEClass, RunnableGroup.class, "RunnableGroup", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

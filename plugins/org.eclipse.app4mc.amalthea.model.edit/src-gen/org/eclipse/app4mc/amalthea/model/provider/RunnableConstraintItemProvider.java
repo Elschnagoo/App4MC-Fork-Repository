@@ -167,16 +167,6 @@ public class RunnableConstraintItemProvider
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getRunnableConstraint_Target(),
 				 AmaltheaFactory.eINSTANCE.createTargetScheduler()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableConstraint_Target(),
-				 AmaltheaFactory.eINSTANCE.createTargetProcess()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableConstraint_Target(),
-				 AmaltheaFactory.eINSTANCE.createTargetCallSequence()));
 	}
 
 	/**

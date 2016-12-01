@@ -296,10 +296,8 @@ import org.eclipse.app4mc.amalthea.model.Synthetic;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
-import org.eclipse.app4mc.amalthea.model.TargetCallSequence;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
 import org.eclipse.app4mc.amalthea.model.TargetMemory;
-import org.eclipse.app4mc.amalthea.model.TargetProcess;
 import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
@@ -1036,24 +1034,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseProcessConstraintTarget(targetScheduler);
 				if (result == null) result = caseBaseObject(targetScheduler);
 				if (result == null) result = caseIAnnotatable(targetScheduler);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.TARGET_PROCESS: {
-				TargetProcess targetProcess = (TargetProcess)theEObject;
-				T1 result = caseTargetProcess(targetProcess);
-				if (result == null) result = caseRunnableConstraintTarget(targetProcess);
-				if (result == null) result = caseBaseObject(targetProcess);
-				if (result == null) result = caseIAnnotatable(targetProcess);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.TARGET_CALL_SEQUENCE: {
-				TargetCallSequence targetCallSequence = (TargetCallSequence)theEObject;
-				T1 result = caseTargetCallSequence(targetCallSequence);
-				if (result == null) result = caseRunnableConstraintTarget(targetCallSequence);
-				if (result == null) result = caseBaseObject(targetCallSequence);
-				if (result == null) result = caseIAnnotatable(targetCallSequence);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -4349,36 +4329,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseTargetScheduler(TargetScheduler object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Target Process</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Target Process</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseTargetProcess(TargetProcess object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Target Call Sequence</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Target Call Sequence</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseTargetCallSequence(TargetCallSequence object) {
 		return null;
 	}
 

@@ -170,16 +170,6 @@ public class RunnablePairingConstraintItemProvider extends PairingConstraintItem
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableConstraint_Target(),
-				 AmaltheaFactory.eINSTANCE.createTargetProcess()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableConstraint_Target(),
-				 AmaltheaFactory.eINSTANCE.createTargetCallSequence()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getRunnablePairingConstraint_Group(),
 				 AmaltheaFactory.eINSTANCE.createRunnableEntityGroup()));
 

@@ -518,24 +518,6 @@ public interface AmaltheaFactory extends EFactory {
 	TargetScheduler createTargetScheduler();
 
 	/**
-	 * Returns a new object of class '<em>Target Process</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Target Process</em>'.
-	 * @generated
-	 */
-	TargetProcess createTargetProcess();
-
-	/**
-	 * Returns a new object of class '<em>Target Call Sequence</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Target Call Sequence</em>'.
-	 * @generated
-	 */
-	TargetCallSequence createTargetCallSequence();
-
-	/**
 	 * Returns a new object of class '<em>Label Entity Group</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

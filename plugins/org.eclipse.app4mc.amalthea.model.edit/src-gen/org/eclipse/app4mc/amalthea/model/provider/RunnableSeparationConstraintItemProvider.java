@@ -170,16 +170,6 @@ public class RunnableSeparationConstraintItemProvider extends SeparationConstrai
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableConstraint_Target(),
-				 AmaltheaFactory.eINSTANCE.createTargetProcess()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnableConstraint_Target(),
-				 AmaltheaFactory.eINSTANCE.createTargetCallSequence()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getRunnableSeparationConstraint_Groups(),
 				 AmaltheaFactory.eINSTANCE.createRunnableEntityGroup()));
 

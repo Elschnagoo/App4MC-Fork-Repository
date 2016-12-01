@@ -1301,52 +1301,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TargetProcess} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TargetProcessItemProvider targetProcessItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TargetProcess}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTargetProcessAdapter() {
-		if (targetProcessItemProvider == null) {
-			targetProcessItemProvider = new TargetProcessItemProvider(this);
-		}
-
-		return targetProcessItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TargetCallSequence} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TargetCallSequenceItemProvider targetCallSequenceItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TargetCallSequence}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTargetCallSequenceAdapter() {
-		if (targetCallSequenceItemProvider == null) {
-			targetCallSequenceItemProvider = new TargetCallSequenceItemProvider(this);
-		}
-
-		return targetCallSequenceItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.LabelEntityGroup} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5824,8 +5778,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (targetMemoryItemProvider != null) targetMemoryItemProvider.dispose();
 		if (targetCoreItemProvider != null) targetCoreItemProvider.dispose();
 		if (targetSchedulerItemProvider != null) targetSchedulerItemProvider.dispose();
-		if (targetProcessItemProvider != null) targetProcessItemProvider.dispose();
-		if (targetCallSequenceItemProvider != null) targetCallSequenceItemProvider.dispose();
 		if (labelEntityGroupItemProvider != null) labelEntityGroupItemProvider.dispose();
 		if (runnableEntityGroupItemProvider != null) runnableEntityGroupItemProvider.dispose();
 		if (processEntityGroupItemProvider != null) processEntityGroupItemProvider.dispose();

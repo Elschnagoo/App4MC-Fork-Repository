@@ -296,10 +296,8 @@ import org.eclipse.app4mc.amalthea.model.Synthetic;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
-import org.eclipse.app4mc.amalthea.model.TargetCallSequence;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
 import org.eclipse.app4mc.amalthea.model.TargetMemory;
-import org.eclipse.app4mc.amalthea.model.TargetProcess;
 import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
@@ -713,14 +711,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTargetScheduler(TargetScheduler object) {
 				return createTargetSchedulerAdapter();
-			}
-			@Override
-			public Adapter caseTargetProcess(TargetProcess object) {
-				return createTargetProcessAdapter();
-			}
-			@Override
-			public Adapter caseTargetCallSequence(TargetCallSequence object) {
-				return createTargetCallSequenceAdapter();
 			}
 			@Override
 			public Adapter caseRunnableGroup(RunnableGroup object) {
@@ -2799,34 +2789,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTargetSchedulerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TargetProcess <em>Target Process</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.TargetProcess
-	 * @generated
-	 */
-	public Adapter createTargetProcessAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TargetCallSequence <em>Target Call Sequence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.TargetCallSequence
-	 * @generated
-	 */
-	public Adapter createTargetCallSequenceAdapter() {
 		return null;
 	}
 

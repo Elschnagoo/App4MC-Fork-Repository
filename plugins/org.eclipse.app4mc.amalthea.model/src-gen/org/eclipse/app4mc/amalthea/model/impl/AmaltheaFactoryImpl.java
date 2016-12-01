@@ -273,10 +273,8 @@ import org.eclipse.app4mc.amalthea.model.Synthetic;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
-import org.eclipse.app4mc.amalthea.model.TargetCallSequence;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
 import org.eclipse.app4mc.amalthea.model.TargetMemory;
-import org.eclipse.app4mc.amalthea.model.TargetProcess;
 import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
@@ -408,8 +406,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.TARGET_MEMORY: return createTargetMemory();
 			case AmaltheaPackage.TARGET_CORE: return createTargetCore();
 			case AmaltheaPackage.TARGET_SCHEDULER: return createTargetScheduler();
-			case AmaltheaPackage.TARGET_PROCESS: return createTargetProcess();
-			case AmaltheaPackage.TARGET_CALL_SEQUENCE: return createTargetCallSequence();
 			case AmaltheaPackage.LABEL_ENTITY_GROUP: return createLabelEntityGroup();
 			case AmaltheaPackage.RUNNABLE_ENTITY_GROUP: return createRunnableEntityGroup();
 			case AmaltheaPackage.PROCESS_ENTITY_GROUP: return createProcessEntityGroup();
@@ -1343,26 +1339,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public TargetScheduler createTargetScheduler() {
 		TargetSchedulerImpl targetScheduler = new TargetSchedulerImpl();
 		return targetScheduler;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TargetProcess createTargetProcess() {
-		TargetProcessImpl targetProcess = new TargetProcessImpl();
-		return targetProcess;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TargetCallSequence createTargetCallSequence() {
-		TargetCallSequenceImpl targetCallSequence = new TargetCallSequenceImpl();
-		return targetCallSequence;
 	}
 
 	/**
