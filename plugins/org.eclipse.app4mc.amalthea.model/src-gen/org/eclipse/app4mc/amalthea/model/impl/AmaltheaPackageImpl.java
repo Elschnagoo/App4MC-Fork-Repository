@@ -8662,6 +8662,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getInterProcess_Counter() {
+		return (EReference)interProcessEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSporadic() {
 		return sporadicEClass;
 	}
@@ -8682,6 +8691,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getEventStimulus_Trigger() {
 		return (EReference)eventStimulusEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEventStimulus_Counter() {
+		return (EReference)eventStimulusEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -12090,11 +12108,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(singleEClass, SINGLE__ACTIVATION);
 
 		interProcessEClass = createEClass(INTER_PROCESS);
+		createEReference(interProcessEClass, INTER_PROCESS__COUNTER);
 
 		sporadicEClass = createEClass(SPORADIC);
 
 		eventStimulusEClass = createEClass(EVENT_STIMULUS);
 		createEReference(eventStimulusEClass, EVENT_STIMULUS__TRIGGER);
+		createEReference(eventStimulusEClass, EVENT_STIMULUS__COUNTER);
 
 		arrivalCurveEClass = createEClass(ARRIVAL_CURVE);
 		createEReference(arrivalCurveEClass, ARRIVAL_CURVE__ARRIVAL_CURVE_ENTRIES);
@@ -13767,11 +13787,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getSingle_Activation(), this.getTime(), null, "activation", null, 0, 1, Single.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(interProcessEClass, InterProcess.class, "InterProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInterProcess_Counter(), this.getCounter(), null, "counter", null, 0, 1, InterProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sporadicEClass, Sporadic.class, "Sporadic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(eventStimulusEClass, EventStimulus.class, "EventStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEventStimulus_Trigger(), this.getTriggerEvent(), null, "trigger", null, 1, 1, EventStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEventStimulus_Counter(), this.getCounter(), null, "counter", null, 0, 1, EventStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(arrivalCurveEClass, ArrivalCurve.class, "ArrivalCurve", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getArrivalCurve_ArrivalCurveEntries(), this.getArrivalCurveEntry(), null, "arrivalCurveEntries", null, 0, -1, ArrivalCurve.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

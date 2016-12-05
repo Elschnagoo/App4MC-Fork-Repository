@@ -16547,13 +16547,22 @@ public interface AmaltheaPackage extends EPackage {
 	int INTER_PROCESS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
 
 	/**
+	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_PROCESS__COUNTER = STIMULUS_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Inter Process</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTER_PROCESS_FEATURE_COUNT = STIMULUS_FEATURE_COUNT + 0;
+	int INTER_PROCESS_FEATURE_COUNT = STIMULUS_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -16774,13 +16783,22 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_STIMULUS__TRIGGER = STIMULUS_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_STIMULUS__COUNTER = STIMULUS_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Event Stimulus</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_STIMULUS_FEATURE_COUNT = STIMULUS_FEATURE_COUNT + 1;
+	int EVENT_STIMULUS_FEATURE_COUNT = STIMULUS_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -29924,6 +29942,17 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getInterProcess();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.InterProcess#getCounter <em>Counter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Counter</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.InterProcess#getCounter()
+	 * @see #getInterProcess()
+	 * @generated
+	 */
+	EReference getInterProcess_Counter();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Sporadic <em>Sporadic</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -29953,6 +29982,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEventStimulus_Trigger();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.EventStimulus#getCounter <em>Counter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Counter</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.EventStimulus#getCounter()
+	 * @see #getEventStimulus()
+	 * @generated
+	 */
+	EReference getEventStimulus_Counter();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ArrivalCurve <em>Arrival Curve</em>}'.

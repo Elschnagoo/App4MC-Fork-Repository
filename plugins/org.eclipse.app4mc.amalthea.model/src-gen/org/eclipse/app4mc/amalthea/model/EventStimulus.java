@@ -27,6 +27,7 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.EventStimulus#getTrigger <em>Trigger</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.EventStimulus#getCounter <em>Counter</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventStimulus()
@@ -59,5 +60,31 @@ public interface EventStimulus extends Stimulus {
 	 * @generated
 	 */
 	void setTrigger(TriggerEvent value);
+
+	/**
+	 * Returns the value of the '<em><b>Counter</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Counter</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Counter</em>' containment reference.
+	 * @see #setCounter(Counter)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventStimulus_Counter()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	Counter getCounter();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.EventStimulus#getCounter <em>Counter</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Counter</em>' containment reference.
+	 * @see #getCounter()
+	 * @generated
+	 */
+	void setCounter(Counter value);
 
 } // EventStimulus

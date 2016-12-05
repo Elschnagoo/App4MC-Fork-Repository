@@ -2420,6 +2420,7 @@ class Single extends Stimulus
  */
 class InterProcess extends Stimulus
 {
+	contains resolving Counter counter
 }
 
 /*
@@ -2435,6 +2436,7 @@ class Sporadic extends Stimulus
 class EventStimulus extends Stimulus
 {
 	refers TriggerEvent[1] trigger
+	contains resolving Counter counter
 }
 
 /*
