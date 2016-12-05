@@ -103,6 +103,7 @@ import org.eclipse.app4mc.amalthea.model.EventConfigLink;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
+import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
@@ -527,6 +528,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.SINGLE: return createSingle();
 			case AmaltheaPackage.INTER_PROCESS: return createInterProcess();
 			case AmaltheaPackage.SPORADIC: return createSporadic();
+			case AmaltheaPackage.EVENT_STIMULUS: return createEventStimulus();
 			case AmaltheaPackage.ARRIVAL_CURVE: return createArrivalCurve();
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY: return createArrivalCurveEntry();
 			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION: return createClockTriangleFunction();
@@ -2549,6 +2551,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public Sporadic createSporadic() {
 		SporadicImpl sporadic = new SporadicImpl();
 		return sporadic;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EventStimulus createEventStimulus() {
+		EventStimulusImpl eventStimulus = new EventStimulusImpl();
+		return eventStimulus;
 	}
 
 	/**

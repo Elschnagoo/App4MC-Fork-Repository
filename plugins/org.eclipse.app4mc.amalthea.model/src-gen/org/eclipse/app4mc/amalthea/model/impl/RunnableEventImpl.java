@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class RunnableEventImpl extends EntityEventImpl implements RunnableEvent {
+public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent {
 	/**
 	 * The default value of the '{@link #getEventType() <em>Event Type</em>}' attribute.
 	 * <!-- begin-user-doc -->

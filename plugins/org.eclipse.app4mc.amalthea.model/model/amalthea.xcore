@@ -1324,6 +1324,13 @@ abstract class Event extends ReferableBaseObject
 }
 
 /*
+ * Defines Events to be used in Stimuli as trigger.
+ */
+abstract class TriggerEvent extends Event
+{
+}
+
+/*
  * A set of entity-events
  */
 class EventSet extends Event
@@ -1385,7 +1392,7 @@ class ProcessChainEvent extends EntityEvent
  * process: The process that executes the runnable (optional)
  * core: The core that processes the runnable (processes the process that executes the runnable) (optional) 
  */
-class RunnableEvent extends EntityEvent
+class RunnableEvent extends TriggerEvent
 {
 	RunnableEventType[1] eventType
 	refers Runnable entity
@@ -1400,7 +1407,7 @@ class RunnableEvent extends EntityEvent
  * runnable: The runnable that accesses the label (optional)
  * process: The process that accesses the label (optional)
  */
-class LabelEvent extends EntityEvent
+class LabelEvent extends TriggerEvent
 {
 	LabelEventType[1] eventType
 	refers Label entity
@@ -2420,6 +2427,14 @@ class InterProcess extends Stimulus
  */
 class Sporadic extends Stimulus
 {
+}
+
+/*
+ * Stimulus which is activated by an event.
+ */
+class EventStimulus extends Stimulus
+{
+	refers TriggerEvent[1] trigger
 }
 
 /*

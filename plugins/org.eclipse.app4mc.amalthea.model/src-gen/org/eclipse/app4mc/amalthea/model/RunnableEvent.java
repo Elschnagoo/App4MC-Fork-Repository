@@ -40,7 +40,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface RunnableEvent extends EntityEvent {
+public interface RunnableEvent extends TriggerEvent {
 	/**
 	 * Returns the value of the '<em><b>Event Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.RunnableEventType}.

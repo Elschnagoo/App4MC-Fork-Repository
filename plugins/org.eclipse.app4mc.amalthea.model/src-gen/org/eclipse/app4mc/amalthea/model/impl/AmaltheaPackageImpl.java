@@ -125,6 +125,7 @@ import org.eclipse.app4mc.amalthea.model.EventConfigLink;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
+import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
@@ -348,6 +349,7 @@ import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TimestampList;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
+import org.eclipse.app4mc.amalthea.model.TriggerEvent;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
@@ -1246,6 +1248,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass triggerEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass eventSetEClass = null;
 
 	/**
@@ -1996,6 +2005,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass sporadicEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eventStimulusEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -5874,6 +5890,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTriggerEvent() {
+		return triggerEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEventSet() {
 		return eventSetEClass;
 	}
@@ -8639,6 +8664,24 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EClass getSporadic() {
 		return sporadicEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEventStimulus() {
+		return eventStimulusEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEventStimulus_Trigger() {
+		return (EReference)eventStimulusEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11632,6 +11675,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		eventEClass = createEClass(EVENT);
 		createEAttribute(eventEClass, EVENT__DESCRIPTION);
 
+		triggerEventEClass = createEClass(TRIGGER_EVENT);
+
 		eventSetEClass = createEClass(EVENT_SET);
 		createEReference(eventSetEClass, EVENT_SET__EVENTS);
 
@@ -12047,6 +12092,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		interProcessEClass = createEClass(INTER_PROCESS);
 
 		sporadicEClass = createEClass(SPORADIC);
+
+		eventStimulusEClass = createEClass(EVENT_STIMULUS);
+		createEReference(eventStimulusEClass, EVENT_STIMULUS__TRIGGER);
 
 		arrivalCurveEClass = createEClass(ARRIVAL_CURVE);
 		createEReference(arrivalCurveEClass, ARRIVAL_CURVE__ARRIVAL_CURVE_ENTRIES);
@@ -12604,14 +12652,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		componentScopeEClass.getESuperTypes().add(this.getDataGroupScope());
 		eventModelEClass.getESuperTypes().add(this.getBaseObject());
 		eventEClass.getESuperTypes().add(this.getReferableBaseObject());
+		triggerEventEClass.getESuperTypes().add(this.getEvent());
 		eventSetEClass.getESuperTypes().add(this.getEvent());
 		entityEventEClass.getESuperTypes().add(this.getEvent());
 		customEventEClass.getESuperTypes().add(this.getEntityEvent());
 		stimulusEventEClass.getESuperTypes().add(this.getEntityEvent());
 		processEventEClass.getESuperTypes().add(this.getEntityEvent());
 		processChainEventEClass.getESuperTypes().add(this.getEntityEvent());
-		runnableEventEClass.getESuperTypes().add(this.getEntityEvent());
-		labelEventEClass.getESuperTypes().add(this.getEntityEvent());
+		runnableEventEClass.getESuperTypes().add(this.getTriggerEvent());
+		labelEventEClass.getESuperTypes().add(this.getTriggerEvent());
 		semaphoreEventEClass.getESuperTypes().add(this.getEntityEvent());
 		hwModelEClass.getESuperTypes().add(this.getBaseObject());
 		complexNodeEClass.getESuperTypes().add(this.getReferableBaseObject());
@@ -12712,6 +12761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		singleEClass.getESuperTypes().add(this.getStimulus());
 		interProcessEClass.getESuperTypes().add(this.getStimulus());
 		sporadicEClass.getESuperTypes().add(this.getStimulus());
+		eventStimulusEClass.getESuperTypes().add(this.getStimulus());
 		arrivalCurveEClass.getESuperTypes().add(this.getStimulus());
 		arrivalCurveEntryEClass.getESuperTypes().add(this.getBaseObject());
 		clockEClass.getESuperTypes().add(this.getReferableBaseObject());
@@ -13295,6 +13345,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(eventEClass, Event.class, "Event", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEvent_Description(), theEcorePackage.getEString(), "description", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(triggerEventEClass, TriggerEvent.class, "TriggerEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(eventSetEClass, EventSet.class, "EventSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEventSet_Events(), this.getEntityEvent(), null, "events", null, 0, -1, EventSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -13717,6 +13769,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(interProcessEClass, InterProcess.class, "InterProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(sporadicEClass, Sporadic.class, "Sporadic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(eventStimulusEClass, EventStimulus.class, "EventStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEventStimulus_Trigger(), this.getTriggerEvent(), null, "trigger", null, 1, 1, EventStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(arrivalCurveEClass, ArrivalCurve.class, "ArrivalCurve", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getArrivalCurve_ArrivalCurveEntries(), this.getArrivalCurveEntry(), null, "arrivalCurveEntries", null, 0, -1, ArrivalCurve.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

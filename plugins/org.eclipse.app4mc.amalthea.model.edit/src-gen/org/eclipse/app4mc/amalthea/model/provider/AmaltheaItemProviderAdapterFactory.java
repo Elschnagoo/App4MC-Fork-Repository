@@ -4084,6 +4084,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EventStimulus} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EventStimulusItemProvider eventStimulusItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EventStimulus}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEventStimulusAdapter() {
+		if (eventStimulusItemProvider == null) {
+			eventStimulusItemProvider = new EventStimulusItemProvider(this);
+		}
+
+		return eventStimulusItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ArrivalCurve} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5899,6 +5922,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (singleItemProvider != null) singleItemProvider.dispose();
 		if (interProcessItemProvider != null) interProcessItemProvider.dispose();
 		if (sporadicItemProvider != null) sporadicItemProvider.dispose();
+		if (eventStimulusItemProvider != null) eventStimulusItemProvider.dispose();
 		if (arrivalCurveItemProvider != null) arrivalCurveItemProvider.dispose();
 		if (arrivalCurveEntryItemProvider != null) arrivalCurveEntryItemProvider.dispose();
 		if (clockTriangleFunctionItemProvider != null) clockTriangleFunctionItemProvider.dispose();

@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class LabelEventImpl extends EntityEventImpl implements LabelEvent {
+public class LabelEventImpl extends TriggerEventImpl implements LabelEvent {
 	/**
 	 * The default value of the '{@link #getEventType() <em>Event Type</em>}' attribute.
 	 * <!-- begin-user-doc -->

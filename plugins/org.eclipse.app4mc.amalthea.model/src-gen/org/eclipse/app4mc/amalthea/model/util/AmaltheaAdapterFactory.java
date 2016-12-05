@@ -114,6 +114,7 @@ import org.eclipse.app4mc.amalthea.model.EventConfigLink;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
+import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
@@ -310,6 +311,7 @@ import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimestampList;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
+import org.eclipse.app4mc.amalthea.model.TriggerEvent;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
@@ -877,6 +879,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createEventAdapter();
 			}
 			@Override
+			public Adapter caseTriggerEvent(TriggerEvent object) {
+				return createTriggerEventAdapter();
+			}
+			@Override
 			public Adapter caseEventSet(EventSet object) {
 				return createEventSetAdapter();
 			}
@@ -1307,6 +1313,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseSporadic(Sporadic object) {
 				return createSporadicAdapter();
+			}
+			@Override
+			public Adapter caseEventStimulus(EventStimulus object) {
+				return createEventStimulusAdapter();
 			}
 			@Override
 			public Adapter caseArrivalCurve(ArrivalCurve object) {
@@ -3367,6 +3377,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TriggerEvent <em>Trigger Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.TriggerEvent
+	 * @generated
+	 */
+	public Adapter createTriggerEventAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EventSet <em>Event Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -4875,6 +4899,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSporadicAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EventStimulus <em>Event Stimulus</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.EventStimulus
+	 * @generated
+	 */
+	public Adapter createEventStimulusAdapter() {
 		return null;
 	}
 

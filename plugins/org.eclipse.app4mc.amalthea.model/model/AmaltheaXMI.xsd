@@ -91,7 +91,7 @@
   </xsd:simpleType>
   <xsd:simpleType name="SamplingType">
     <xsd:annotation>
-      <xsd:documentation>The types of sampling</xsd:documentation>
+      <xsd:documentation> * The types of sampling</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="default"/>
@@ -2376,6 +2376,19 @@ maximum: Maximum allowed latency</xsd:documentation>
       <xsd:documentation>An abstract event</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="TriggerEvent">
+    <xsd:annotation>
+      <xsd:documentation>Defines Events to be used in Stimuli as trigger.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Event"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TriggerEvent" type="am:TriggerEvent">
+    <xsd:annotation>
+      <xsd:documentation>Defines Events to be used in Stimuli as trigger.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="EventSet">
     <xsd:annotation>
       <xsd:documentation>A set of entity-events</xsd:documentation>
@@ -2498,7 +2511,7 @@ process: The process that executes the runnable (optional)
 core: The core that processes the runnable (processes the process that executes the runnable) (optional)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:EntityEvent">
+      <xsd:extension base="am:TriggerEvent">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:Runnable"/>
           <xsd:element name="process" type="am:Process"/>
@@ -2529,7 +2542,7 @@ runnable: The runnable that accesses the label (optional)
 process: The process that accesses the label (optional)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:EntityEvent">
+      <xsd:extension base="am:TriggerEvent">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:Label"/>
           <xsd:element name="runnable" type="am:Runnable"/>
@@ -4096,6 +4109,24 @@ triggerTimes: the list of all trigger times</xsd:documentation>
   <xsd:element name="Sporadic" type="am:Sporadic">
     <xsd:annotation>
       <xsd:documentation>Stimulus for sporadic activation of task</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="EventStimulus">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus which is activated by an event.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Stimulus">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="trigger" type="am:TriggerEvent"/>
+        </xsd:choice>
+        <xsd:attribute name="trigger" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="EventStimulus" type="am:EventStimulus">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus which is activated by an event.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ArrivalCurve">

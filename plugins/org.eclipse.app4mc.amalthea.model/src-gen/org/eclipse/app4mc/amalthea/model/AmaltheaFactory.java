@@ -1607,6 +1607,15 @@ public interface AmaltheaFactory extends EFactory {
 	Sporadic createSporadic();
 
 	/**
+	 * Returns a new object of class '<em>Event Stimulus</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Event Stimulus</em>'.
+	 * @generated
+	 */
+	EventStimulus createEventStimulus();
+
+	/**
 	 * Returns a new object of class '<em>Arrival Curve</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
