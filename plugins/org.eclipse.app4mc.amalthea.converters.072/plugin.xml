@@ -65,16 +65,8 @@
          <dependent-on-converter
                id="converters.072.rootelement">
          </dependent-on-converter>
-      </converter>
-      <converter
-            converter-class="org.eclipse.app4mc.amalthea.converters072.impl.OSConverter"
-            enabled="true"
-            id="converters.072.OS"
-            input-model-version="0.7.1"
-            name="OS Converter"
-            output-model-version="0.7.2">
          <dependent-on-converter
-               id="converters.072.rootelement">
+               id="converters.072.Os">
          </dependent-on-converter>
       </converter>
    </extension>

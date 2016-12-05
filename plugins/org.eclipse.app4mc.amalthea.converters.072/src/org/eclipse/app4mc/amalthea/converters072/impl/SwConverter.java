@@ -34,7 +34,11 @@ public class SwConverter extends AbstractConverter {
 		}
 		final Element rootElement = root.getRootElement();
 
+		update_SamplingType(rootElement);
+
 		update_InstructionsConstant(rootElement);
+
+		update_InstructionsDeviation(rootElement);
 
 		update_ProbabilityGroup(rootElement);
 
@@ -42,11 +46,69 @@ public class SwConverter extends AbstractConverter {
 
 		update_Preemption(rootElement);
 
-		update_InstructionsConstant(rootElement);
-
-		update_InstructionsDeviation(rootElement);
-
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
+	}
+
+	/**
+	 *
+	 * SamplingType Enum is part of Deviation object till 0.7.1
+	 *
+	 * Based on bugzilla : 508523, SamplingType is shifted from Deviation element to Boundaries element (sub-class of
+	 * Distribution)
+	 *
+	 * -- As a part of migration, SamplingType content part of Deviation is associted to Boundaries. In case
+	 * Distribution of type Distribution is not present inside Deviation, SamplingType content is not associated and
+	 * lost (as expected)
+	 *
+	 * Note: Deviation element is used inside Stimulus model, HW model, OS model, SW model
+	 *
+	 * @param rootElement
+	 */
+
+	private void update_SamplingType(final Element rootElement) {
+
+		final StringBuffer xpathBuffer = new StringBuffer();
+
+		xpathBuffer.append("./stimuliModel/stimuli/stimulusDeviation");
+		xpathBuffer.append("|");
+		xpathBuffer.append("./hwModel/accessPaths/latencies[@xsi:type=\"am:LatencyDeviation\"]/deviation");
+		xpathBuffer.append("|");
+		xpathBuffer.append("./osModel/operatingSystems/taskSchedulers/schedulingUnit/instructions/deviation");
+		xpathBuffer.append("|");
+
+		xpathBuffer.append("./osModel/operatingSystems/interruptControllers/schedulingUnit/instructions/deviation");
+		xpathBuffer.append("|");
+
+		xpathBuffer.append("./osModel/osOverheads//deviation");
+		xpathBuffer.append("|");
+
+		xpathBuffer.append("./swModel/runnables//deviation");
+
+
+		final List<Element> elements = this.helper.getXpathResult(rootElement, xpathBuffer.toString(), Element.class,
+				this.helper.getGenericNS("xsi"));
+
+		for (final Element deviation : elements) {
+			/*- updating the type of the Element as per change introduced in 0.7.2*/
+			final Attribute samplingTypeAttribute = deviation.getAttribute("samplingType");
+
+			if (samplingTypeAttribute != null) {
+				final String value = samplingTypeAttribute.getValue();
+
+				final Element distribution = deviation.getChild("distribution");
+
+				if (distribution != null) {
+
+					distribution.setAttribute("samplingType", value);
+				}
+
+				deviation.removeAttribute(samplingTypeAttribute);
+
+			}
+
+		}
+
+
 	}
 
 	private void update_InstructionsConstant(final Element rootElement) {
