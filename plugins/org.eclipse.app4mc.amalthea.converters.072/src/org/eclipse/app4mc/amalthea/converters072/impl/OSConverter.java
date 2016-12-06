@@ -10,6 +10,7 @@ import org.eclipse.app4mc.amalthea.converters072.utils.HelperUtils_071_072;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
+import org.jdom2.Parent;
 
 public class OSConverter extends AbstractConverter {
 
@@ -37,10 +38,90 @@ public class OSConverter extends AbstractConverter {
 
 		update_OsExecutionInstructions(rootElement);
 
+		update_OsBuffering(rootElement);
 
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
 	}
 
+
+	private void update_OsBuffering(final Element rootElement) {
+
+		final StringBuffer xpathBuffer = new StringBuffer();
+
+		xpathBuffer.append("./osModel/osBuffering");
+
+
+		final List<Element> osBufferingElements = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
+				Element.class, this.helper.getGenericNS("xsi"));
+
+		if (osBufferingElements.size() > 0) {
+
+			for (final Element osBufferingElement : osBufferingElements) {
+
+				final String runnableLevel = osBufferingElement.getAttributeValue("runnableLevel");
+				final String processLevel = osBufferingElement.getAttributeValue("processLevel");
+				final String scheduleSectionLevel = osBufferingElement.getAttributeValue("scheduleSectionLevel");
+				final String bufferingAlgorithm = osBufferingElement.getAttributeValue("bufferingAlgorithm");
+
+				if (Boolean.valueOf(runnableLevel) || Boolean.valueOf(processLevel)
+						|| Boolean.valueOf(scheduleSectionLevel)) {
+
+					final Parent osModelElement = osBufferingElement.getParent();
+					osModelElement.removeContent(osBufferingElement);
+
+					final Element osDataConsistencyElement = new Element("osDataConsistency");
+					osDataConsistencyElement.setAttribute("mode", "automaticProtection");
+
+					final Element dataStabilityElement = new Element("dataStability");
+					osDataConsistencyElement.addContent(dataStabilityElement);
+
+					dataStabilityElement.setAttribute("enabled", "true");
+					dataStabilityElement.setAttribute("algorithm",
+							bufferingAlgorithm != null ? bufferingAlgorithm : "");
+					dataStabilityElement.setAttribute("accessMultiplicity", "multipleAccesses");
+
+					if (Boolean.valueOf(processLevel)) {
+						dataStabilityElement.setAttribute("level", "process");
+					}
+					else if (Boolean.valueOf(runnableLevel)) {
+						dataStabilityElement.setAttribute("level", "runnable");
+					}
+					else if (Boolean.valueOf(scheduleSectionLevel)) {
+						dataStabilityElement.setAttribute("level", "scheduleSection");
+					}
+
+					osModelElement.addContent(osDataConsistencyElement);
+
+				}
+				else {
+					// this is the case where all the booleans are resulting false
+
+					final Parent osModelElement = osBufferingElement.getParent();
+					osModelElement.removeContent(osBufferingElement);
+					final Element osDataConsistencyElement = new Element("osDataConsistency");
+					osDataConsistencyElement.setAttribute("mode", "noProtection");
+
+					osModelElement.addContent(osDataConsistencyElement);
+
+				}
+
+			}
+
+		}
+		else {
+			// this is the case where OSBuffering is not present
+
+			final Element osModelElement = rootElement.getChild("osModel");
+
+			if (osModelElement != null) {
+				final Element osDataConsistencyElement = new Element("osDataConsistency");
+				osModelElement.addContent(osDataConsistencyElement);
+
+			}
+
+		}
+
+	}
 
 	private void update_OsExecutionInstructions(final Element rootElement) {
 

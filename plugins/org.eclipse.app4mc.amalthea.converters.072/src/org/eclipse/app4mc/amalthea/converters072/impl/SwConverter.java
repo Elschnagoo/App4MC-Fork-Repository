@@ -34,6 +34,8 @@ public class SwConverter extends AbstractConverter {
 		}
 		final Element rootElement = root.getRootElement();
 
+		update_Buffering(rootElement);
+
 		update_SamplingType(rootElement);
 
 		update_InstructionsConstant(rootElement);
@@ -47,6 +49,74 @@ public class SwConverter extends AbstractConverter {
 		update_Preemption(rootElement);
 
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
+	}
+
+
+	private void update_Buffering(final Element rootElement) {
+
+		final StringBuffer labelXpathBuffer = new StringBuffer();
+
+		labelXpathBuffer.append("./swModel/labels");
+
+		final List<Element> elements = this.helper.getXpathResult(rootElement, labelXpathBuffer.toString(),
+				Element.class, this.helper.getGenericNS("xsi"));
+
+		for (final Element labelElement : elements) {
+
+			final Attribute bufferedAttribute = labelElement.getAttribute("buffered");
+
+			if (bufferedAttribute != null) {
+
+				bufferedAttribute.setName("dataStability");
+
+				final String bufferedValue = bufferedAttribute.getValue();
+
+				if (bufferedValue.equals("buffered")) {
+					bufferedAttribute.setValue("customProtection");
+
+				}
+				else if (bufferedValue.equals("notBuffered")) {
+					bufferedAttribute.setValue("noProtection");
+				}
+
+			}
+
+		}
+
+		final StringBuffer labelAccessXpathBuffer = new StringBuffer();
+
+		labelAccessXpathBuffer.append("./swModel/runnables//runnableItems[@xsi:type=\"am:LabelAccess\"]");
+		labelAccessXpathBuffer.append("|");
+		labelAccessXpathBuffer.append("./swModel/runnables//runnableItem[@xsi:type=\"am:LabelAccess\"]");
+
+		final List<Element> labelAccesselements = this.helper.getXpathResult(rootElement,
+				labelAccessXpathBuffer.toString(), Element.class, this.helper.getGenericNS("xsi"));
+
+		for (final Element labelAccessElement : labelAccesselements) {
+
+			final Attribute bufferedAttribute = labelAccessElement.getAttribute("buffered");
+
+			if (bufferedAttribute != null) {
+
+				bufferedAttribute.setName("dataStability");
+
+				final String bufferedValue = bufferedAttribute.getValue();
+
+				if (bufferedValue.equals("inherited")) {
+					bufferedAttribute.setValue("inherited");
+
+				}
+				else if (bufferedValue.equals("buffered")) {
+					bufferedAttribute.setValue("customProtection");
+				}
+				else if (bufferedValue.equals("notBuffered")) {
+					bufferedAttribute.setValue("noProtection");
+				}
+			}
+
+		}
+
+
 	}
 
 	/**
