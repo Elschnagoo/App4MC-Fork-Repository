@@ -35,6 +35,7 @@ import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping
 import org.eclipse.app4mc.amalthea.model.DataSize
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit
+import org.eclipse.app4mc.amalthea.model.DataStability
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition
 import org.eclipse.app4mc.amalthea.model.Deviation
 import org.eclipse.app4mc.amalthea.model.DoubleObject
@@ -73,9 +74,12 @@ import org.eclipse.app4mc.amalthea.model.ModeSwitch
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry
 import org.eclipse.app4mc.amalthea.model.ModeValueList
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry
+import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec
 import org.eclipse.app4mc.amalthea.model.OrderType
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions
+import org.eclipse.app4mc.amalthea.model.OsDataConsistency
+import org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions
 import org.eclipse.app4mc.amalthea.model.OsInstructions
 import org.eclipse.app4mc.amalthea.model.PercentageMetric
@@ -129,8 +133,6 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
-import org.eclipse.app4mc.amalthea.model.OsDataConsistency
-import org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode
 
 class CustomItemProviderService {
 
@@ -1605,6 +1607,28 @@ class CustomItemProviderService {
 			val s1 = "OS Data Consistency - "
 			val s2 = if(mode == null || mode == OsDataConsistencyMode::_UNDEFINED_) "?" else mode.literal
 			return s1 + s2
+		} else {
+			return defaultText
+		}
+	}
+
+	/*****************************************************************************
+	 * 						DataStabilityItemProvider
+	 *****************************************************************************/
+	def static String getDataStabilityItemProviderText(Object object, String defaultText) {
+		if (object instanceof DataStability) {
+			return "OS Data Stability - enabled: " + object.enabled.toString
+		} else {
+			return defaultText
+		}
+	}
+
+	/*****************************************************************************
+	 * 						NonAtomicDataCoherencyItemProvider
+	 *****************************************************************************/
+	def static String getNonAtomicDataCoherencyItemProviderText(Object object, String defaultText) {
+		if (object instanceof NonAtomicDataCoherency) {
+			return "OS Data Coherency - enabled: " + object.enabled.toString
 		} else {
 			return defaultText
 		}

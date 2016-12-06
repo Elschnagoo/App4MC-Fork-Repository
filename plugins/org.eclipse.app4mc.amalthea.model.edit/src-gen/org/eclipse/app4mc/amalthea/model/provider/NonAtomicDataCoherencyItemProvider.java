@@ -171,12 +171,19 @@ public class NonAtomicDataCoherencyItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		NonAtomicDataCoherency nonAtomicDataCoherency = (NonAtomicDataCoherency)object;
 		return getString("_UI_NonAtomicDataCoherency_type") + " " + nonAtomicDataCoherency.isEnabled();
 	}
-	
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomItemProviderService.getNonAtomicDataCoherencyItemProviderText(object, getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

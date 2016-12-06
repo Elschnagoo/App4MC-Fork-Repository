@@ -45,6 +45,7 @@ import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
+import org.eclipse.app4mc.amalthea.model.DataStability;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
@@ -92,6 +93,7 @@ import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
+import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
@@ -3117,6 +3119,32 @@ public class CustomItemProviderService {
       }
       final String s2 = _xifexpression;
       return (s1 + s2);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  /**
+   * DataStabilityItemProvider
+   */
+  public static String getDataStabilityItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof DataStability)) {
+      boolean _isEnabled = ((DataStability)object).isEnabled();
+      String _string = Boolean.valueOf(_isEnabled).toString();
+      return ("OS Data Stability - enabled: " + _string);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  /**
+   * NonAtomicDataCoherencyItemProvider
+   */
+  public static String getNonAtomicDataCoherencyItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof NonAtomicDataCoherency)) {
+      boolean _isEnabled = ((NonAtomicDataCoherency)object).isEnabled();
+      String _string = Boolean.valueOf(_isEnabled).toString();
+      return ("OS Data Coherency - enabled: " + _string);
     } else {
       return defaultText;
     }
