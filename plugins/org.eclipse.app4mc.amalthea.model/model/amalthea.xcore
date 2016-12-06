@@ -1934,23 +1934,51 @@ class RunnableAllocation extends BaseObject
 
 class OSModel extends BaseObject
 {
-	contains resolving OsBuffering osBuffering
+	contains resolving OsDataConsistency osDataConsistency
 	contains resolving Semaphore[] semaphores
 	contains resolving OperatingSystem[] operatingSystems
 	contains resolving OsInstructions[] osOverheads
 }
 
-/*
- * buffering for intercore communication (process on core 1 communicates witch process on core 2)
- * runnable-, process-, and scheduleSectionLevel defines the section where buffering occurs
- * at selected layer, data is read at beginning of section and written back at the end of the section
- */
-class OsBuffering extends BaseObject
+class OsDataConsistency extends BaseObject
 {
-	boolean runnableLevel ="false"
-	boolean processLevel ="false"
-	boolean scheduleSectionLevel ="false"
-	String bufferingAlgorithm
+	OsDataConsistencyMode mode
+	contains DataStability dataStability
+	contains NonAtomicDataCoherency nonAtomicDataCoherency
+}
+
+class DataStability {
+	boolean enabled ="false"
+	String algorithm
+	AccessMultiplicity accessMultiplicity
+	DataStabilityLevel level
+}
+
+class NonAtomicDataCoherency {
+	boolean enabled ="false"
+	String algorithm
+	AccessMultiplicity accessMultiplicity
+}
+
+enum OsDataConsistencyMode {
+	_undefined_ // Display: "<data consistency mode>"
+	noProtection
+	automaticProtection
+	customProtection
+	handledByModelElements
+}
+
+enum AccessMultiplicity {
+	_undefined_ // Display: "<access multiplicity>"
+	singleAccess
+	multipleAccesses
+}
+
+enum DataStabilityLevel {
+	_undefined_ // Display: "<data stability level>"
+	process
+	runnable
+	scheduleSection
 }
 
 /*
@@ -2926,9 +2954,9 @@ class Label extends AbstractElementMemoryInformation, IDisplayName
 	boolean bVolatile ="false"
 	
 	/*
-	 * Defines if the label is buffered or not
+	 * Defines the data stability needs of the label
 	 */
-	LabelBuffering buffered
+	LabelDataStability dataStability
 	
 	// back pointer (readonly)
 	@GenModel(property="Readonly", suppressedSetVisibility="true")
@@ -2940,17 +2968,18 @@ class Label extends AbstractElementMemoryInformation, IDisplayName
 	// hidden link (internal)
 	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
 	refers transient Section sectionLinkInt opposite labels
-	
 }
 
 class ModeLabel extends AbstractElementMemoryInformation, ModeValueProvider, IDisplayName
 {
 }
 
-enum LabelBuffering {
-	_undefined_ // Display: "<buffering>"
-	buffered
-	notBuffered
+enum LabelDataStability {
+	_undefined_ // Display: "<data stability>"
+	noProtection
+	automaticProtection
+	customProtection
+	handledByModelElements
 }
 
 /*
@@ -2975,7 +3004,6 @@ class Section extends ReferableBaseObject
 	 * for specifying the ASIL level for the "virtual memory sections"
 	 */
  	ASILType asilLevel
- 
 }
 
 /*
@@ -3036,9 +3064,9 @@ class LabelAccess extends RunnableItem
 	contains resolving LabelAccessStatistic statistic
 	
 	/*
-	 * Defines if the access to the label is buffered
+	 * Defines the data stability needs of the label access
 	 */
-	LabelAccessBuffering buffered
+	LabelAccessDataStability dataStability
 
 	// hidden link (internal)
 	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
@@ -3047,15 +3075,16 @@ class LabelAccess extends RunnableItem
 
 
 /*
- * Defines the buffering of a label access.
- * It can be buffered, not-buffered and inherited
- * Inherited means that the buffered-setting of the Label is used
+ * Defines the data stability needs of a label access.
+ * Inherited means that the setting of the Label is used
  */
-enum LabelAccessBuffering {
-	_undefined_ // Display: "<buffering>"
+enum LabelAccessDataStability {
+	_undefined_ // Display: "<data stability>"
 	inherited
-	buffered
-	notBuffered
+	noProtection
+	automaticProtection
+	customProtection
+	handledByModelElements
 }
 
 enum LabelAccessEnum

@@ -34,7 +34,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OSModel#getOsBuffering <em>Os Buffering</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OSModel#getOsDataConsistency <em>Os Data Consistency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.OSModel#getSemaphores <em>Semaphores</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.OSModel#getOperatingSystems <em>Operating Systems</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.OSModel#getOsOverheads <em>Os Overheads</em>}</li>
@@ -46,30 +46,30 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface OSModel extends BaseObject {
 	/**
-	 * Returns the value of the '<em><b>Os Buffering</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Os Data Consistency</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Os Buffering</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Os Data Consistency</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Os Buffering</em>' containment reference.
-	 * @see #setOsBuffering(OsBuffering)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOSModel_OsBuffering()
+	 * @return the value of the '<em>Os Data Consistency</em>' containment reference.
+	 * @see #setOsDataConsistency(OsDataConsistency)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOSModel_OsDataConsistency()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	OsBuffering getOsBuffering();
+	OsDataConsistency getOsDataConsistency();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OSModel#getOsBuffering <em>Os Buffering</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OSModel#getOsDataConsistency <em>Os Data Consistency</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Os Buffering</em>' containment reference.
-	 * @see #getOsBuffering()
+	 * @param value the new value of the '<em>Os Data Consistency</em>' containment reference.
+	 * @see #getOsDataConsistency()
 	 * @generated
 	 */
-	void setOsBuffering(OsBuffering value);
+	void setOsDataConsistency(OsDataConsistency value);
 
 	/**
 	 * Returns the value of the '<em><b>Semaphores</b></em>' containment reference list.

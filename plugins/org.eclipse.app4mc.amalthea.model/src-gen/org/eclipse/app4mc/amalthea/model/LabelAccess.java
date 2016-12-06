@@ -29,7 +29,7 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getData <em>Data</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getAccess <em>Access</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getStatistic <em>Statistic</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getBuffered <em>Buffered</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getDataStability <em>Data Stability</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccess()
@@ -120,31 +120,31 @@ public interface LabelAccess extends RunnableItem {
 	void setStatistic(LabelAccessStatistic value);
 
 	/**
-	 * Returns the value of the '<em><b>Buffered</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.LabelAccessBuffering}.
+	 * Returns the value of the '<em><b>Data Stability</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.LabelAccessDataStability}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Defines if the access to the label is buffered
+	 * Defines the data stability needs of the label access
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Buffered</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.LabelAccessBuffering
-	 * @see #setBuffered(LabelAccessBuffering)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccess_Buffered()
+	 * @return the value of the '<em>Data Stability</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.LabelAccessDataStability
+	 * @see #setDataStability(LabelAccessDataStability)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccess_DataStability()
 	 * @model unique="false"
 	 * @generated
 	 */
-	LabelAccessBuffering getBuffered();
+	LabelAccessDataStability getDataStability();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getBuffered <em>Buffered</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getDataStability <em>Data Stability</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Buffered</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.LabelAccessBuffering
-	 * @see #getBuffered()
+	 * @param value the new value of the '<em>Data Stability</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.LabelAccessDataStability
+	 * @see #getDataStability()
 	 * @generated
 	 */
-	void setBuffered(LabelAccessBuffering value);
+	void setDataStability(LabelAccessDataStability value);
 
 } // LabelAccess

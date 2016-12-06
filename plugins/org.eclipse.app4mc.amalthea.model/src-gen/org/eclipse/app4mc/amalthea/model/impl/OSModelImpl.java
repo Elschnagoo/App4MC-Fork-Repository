@@ -17,7 +17,7 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
-import org.eclipse.app4mc.amalthea.model.OsBuffering;
+import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 
@@ -42,7 +42,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OSModelImpl#getOsBuffering <em>Os Buffering</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OSModelImpl#getOsDataConsistency <em>Os Data Consistency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OSModelImpl#getSemaphores <em>Semaphores</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OSModelImpl#getOperatingSystems <em>Operating Systems</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OSModelImpl#getOsOverheads <em>Os Overheads</em>}</li>
@@ -52,14 +52,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	/**
-	 * The cached value of the '{@link #getOsBuffering() <em>Os Buffering</em>}' containment reference.
+	 * The cached value of the '{@link #getOsDataConsistency() <em>Os Data Consistency</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOsBuffering()
+	 * @see #getOsDataConsistency()
 	 * @generated
 	 * @ordered
 	 */
-	protected OsBuffering osBuffering;
+	protected OsDataConsistency osDataConsistency;
 
 	/**
 	 * The cached value of the '{@link #getSemaphores() <em>Semaphores</em>}' containment reference list.
@@ -115,22 +115,22 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsBuffering getOsBuffering() {
-		if (osBuffering != null && osBuffering.eIsProxy()) {
-			InternalEObject oldOsBuffering = (InternalEObject)osBuffering;
-			osBuffering = (OsBuffering)eResolveProxy(oldOsBuffering);
-			if (osBuffering != oldOsBuffering) {
-				InternalEObject newOsBuffering = (InternalEObject)osBuffering;
-				NotificationChain msgs = oldOsBuffering.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_MODEL__OS_BUFFERING, null, null);
-				if (newOsBuffering.eInternalContainer() == null) {
-					msgs = newOsBuffering.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_MODEL__OS_BUFFERING, null, msgs);
+	public OsDataConsistency getOsDataConsistency() {
+		if (osDataConsistency != null && osDataConsistency.eIsProxy()) {
+			InternalEObject oldOsDataConsistency = (InternalEObject)osDataConsistency;
+			osDataConsistency = (OsDataConsistency)eResolveProxy(oldOsDataConsistency);
+			if (osDataConsistency != oldOsDataConsistency) {
+				InternalEObject newOsDataConsistency = (InternalEObject)osDataConsistency;
+				NotificationChain msgs = oldOsDataConsistency.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, null, null);
+				if (newOsDataConsistency.eInternalContainer() == null) {
+					msgs = newOsDataConsistency.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, null, msgs);
 				}
 				if (msgs != null) msgs.dispatch();
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_MODEL__OS_BUFFERING, oldOsBuffering, osBuffering));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, oldOsDataConsistency, osDataConsistency));
 			}
 		}
-		return osBuffering;
+		return osDataConsistency;
 	}
 
 	/**
@@ -138,8 +138,8 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsBuffering basicGetOsBuffering() {
-		return osBuffering;
+	public OsDataConsistency basicGetOsDataConsistency() {
+		return osDataConsistency;
 	}
 
 	/**
@@ -147,11 +147,11 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOsBuffering(OsBuffering newOsBuffering, NotificationChain msgs) {
-		OsBuffering oldOsBuffering = osBuffering;
-		osBuffering = newOsBuffering;
+	public NotificationChain basicSetOsDataConsistency(OsDataConsistency newOsDataConsistency, NotificationChain msgs) {
+		OsDataConsistency oldOsDataConsistency = osDataConsistency;
+		osDataConsistency = newOsDataConsistency;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_MODEL__OS_BUFFERING, oldOsBuffering, newOsBuffering);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, oldOsDataConsistency, newOsDataConsistency);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -162,18 +162,18 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOsBuffering(OsBuffering newOsBuffering) {
-		if (newOsBuffering != osBuffering) {
+	public void setOsDataConsistency(OsDataConsistency newOsDataConsistency) {
+		if (newOsDataConsistency != osDataConsistency) {
 			NotificationChain msgs = null;
-			if (osBuffering != null)
-				msgs = ((InternalEObject)osBuffering).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_MODEL__OS_BUFFERING, null, msgs);
-			if (newOsBuffering != null)
-				msgs = ((InternalEObject)newOsBuffering).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_MODEL__OS_BUFFERING, null, msgs);
-			msgs = basicSetOsBuffering(newOsBuffering, msgs);
+			if (osDataConsistency != null)
+				msgs = ((InternalEObject)osDataConsistency).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, null, msgs);
+			if (newOsDataConsistency != null)
+				msgs = ((InternalEObject)newOsDataConsistency).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, null, msgs);
+			msgs = basicSetOsDataConsistency(newOsDataConsistency, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_MODEL__OS_BUFFERING, newOsBuffering, newOsBuffering));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, newOsDataConsistency, newOsDataConsistency));
 	}
 
 	/**
@@ -220,8 +220,8 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.OS_MODEL__OS_BUFFERING:
-				return basicSetOsBuffering(null, msgs);
+			case AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY:
+				return basicSetOsDataConsistency(null, msgs);
 			case AmaltheaPackage.OS_MODEL__SEMAPHORES:
 				return ((InternalEList<?>)getSemaphores()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.OS_MODEL__OPERATING_SYSTEMS:
@@ -240,9 +240,9 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.OS_MODEL__OS_BUFFERING:
-				if (resolve) return getOsBuffering();
-				return basicGetOsBuffering();
+			case AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY:
+				if (resolve) return getOsDataConsistency();
+				return basicGetOsDataConsistency();
 			case AmaltheaPackage.OS_MODEL__SEMAPHORES:
 				return getSemaphores();
 			case AmaltheaPackage.OS_MODEL__OPERATING_SYSTEMS:
@@ -262,8 +262,8 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.OS_MODEL__OS_BUFFERING:
-				setOsBuffering((OsBuffering)newValue);
+			case AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY:
+				setOsDataConsistency((OsDataConsistency)newValue);
 				return;
 			case AmaltheaPackage.OS_MODEL__SEMAPHORES:
 				getSemaphores().clear();
@@ -289,8 +289,8 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.OS_MODEL__OS_BUFFERING:
-				setOsBuffering((OsBuffering)null);
+			case AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY:
+				setOsDataConsistency((OsDataConsistency)null);
 				return;
 			case AmaltheaPackage.OS_MODEL__SEMAPHORES:
 				getSemaphores().clear();
@@ -313,8 +313,8 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.OS_MODEL__OS_BUFFERING:
-				return osBuffering != null;
+			case AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY:
+				return osDataConsistency != null;
 			case AmaltheaPackage.OS_MODEL__SEMAPHORES:
 				return semaphores != null && !semaphores.isEmpty();
 			case AmaltheaPackage.OS_MODEL__OPERATING_SYSTEMS:

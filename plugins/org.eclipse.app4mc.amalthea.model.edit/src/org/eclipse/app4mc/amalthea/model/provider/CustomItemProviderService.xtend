@@ -76,7 +76,6 @@ import org.eclipse.app4mc.amalthea.model.ModeValueListEntry
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec
 import org.eclipse.app4mc.amalthea.model.OrderType
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions
-import org.eclipse.app4mc.amalthea.model.OsBuffering
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions
 import org.eclipse.app4mc.amalthea.model.OsInstructions
 import org.eclipse.app4mc.amalthea.model.PercentageMetric
@@ -130,6 +129,8 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
+import org.eclipse.app4mc.amalthea.model.OsDataConsistency
+import org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode
 
 class CustomItemProviderService {
 
@@ -1368,7 +1369,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getLatencyDeviationItemProviderText(Object object, String defaultText) {
 		if (object instanceof LatencyDeviation) {
-			val type = object?.accessType
+			val type = object.accessType
 			val distName = object?.deviation?.distribution?.eClass?.name
 			val s1 = if(type == null || type == RWType::_UNDEFINED_) "?" else type.literal
 			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
@@ -1595,24 +1596,15 @@ class CustomItemProviderService {
 
 
 	/*****************************************************************************
-	 * 						OsAPIInstructionsItemProvider
+	 * 						OsDataConsistencyItemProvider
 	 *****************************************************************************/
-	def static String getOsAPIInstructionsItemProviderText(Object object, String defaultText) {
-		if (object instanceof OsAPIInstructions) {
-			return getContainingFeatureName(object, "API Instructions", "")
-		} else {
-			return defaultText
-		}
-	}
-
-	/*****************************************************************************
-	 * 						OsBufferingItemProvider
-	 *****************************************************************************/
-	def static String getOsBufferingItemProviderText(Object object, String defaultText) {
-		if (object instanceof OsBuffering) {
-			val algo = object?.bufferingAlgorithm
-			val s1 = if(algo.isNullOrEmpty) "<algorithm>" else algo
-			return "OS Buffering " + s1
+	def static String getOsDataConsistencyItemProviderText(Object object, String defaultText) {
+		if (object instanceof OsDataConsistency) {
+			val mode = object.mode
+			
+			val s1 = "OS Data Consistency - "
+			val s2 = if(mode == null || mode == OsDataConsistencyMode::_UNDEFINED_) "?" else mode.literal
+			return s1 + s2
 		} else {
 			return defaultText
 		}
@@ -1623,9 +1615,20 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getOsInstructionsItemProviderText(Object object, String defaultText) {
 		if (object instanceof OsInstructions) {
-			val name = object?.name
+			val name = object.name
 			val s1 = if(name.isNullOrEmpty) "OS Instructions" else name
 			return s1
+		} else {
+			return defaultText
+		}
+	}
+
+	/*****************************************************************************
+	 * 						OsAPIInstructionsItemProvider
+	 *****************************************************************************/
+	def static String getOsAPIInstructionsItemProviderText(Object object, String defaultText) {
+		if (object instanceof OsAPIInstructions) {
+			return getContainingFeatureName(object, "API Instructions", "")
 		} else {
 			return defaultText
 		}

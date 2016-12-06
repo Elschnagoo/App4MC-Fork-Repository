@@ -88,6 +88,7 @@ import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
+import org.eclipse.app4mc.amalthea.model.DataStability;
 import org.eclipse.app4mc.amalthea.model.DataStabilityGroup;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
@@ -189,13 +190,14 @@ import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
 import org.eclipse.app4mc.amalthea.model.Network;
 import org.eclipse.app4mc.amalthea.model.NetworkType;
+import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
-import org.eclipse.app4mc.amalthea.model.OsBuffering;
+import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
@@ -1103,8 +1105,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createOSModelAdapter();
 			}
 			@Override
-			public Adapter caseOsBuffering(OsBuffering object) {
-				return createOsBufferingAdapter();
+			public Adapter caseOsDataConsistency(OsDataConsistency object) {
+				return createOsDataConsistencyAdapter();
+			}
+			@Override
+			public Adapter caseDataStability(DataStability object) {
+				return createDataStabilityAdapter();
+			}
+			@Override
+			public Adapter caseNonAtomicDataCoherency(NonAtomicDataCoherency object) {
+				return createNonAtomicDataCoherencyAdapter();
 			}
 			@Override
 			public Adapter caseSemaphore(Semaphore object) {
@@ -4161,16 +4171,44 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsBuffering <em>Os Buffering</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsDataConsistency <em>Os Data Consistency</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.OsBuffering
+	 * @see org.eclipse.app4mc.amalthea.model.OsDataConsistency
 	 * @generated
 	 */
-	public Adapter createOsBufferingAdapter() {
+	public Adapter createOsDataConsistencyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DataStability <em>Data Stability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.DataStability
+	 * @generated
+	 */
+	public Adapter createDataStabilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency <em>Non Atomic Data Coherency</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency
+	 * @generated
+	 */
+	public Adapter createNonAtomicDataCoherencyAdapter() {
 		return null;
 	}
 

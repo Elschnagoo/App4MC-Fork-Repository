@@ -95,7 +95,8 @@ import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
-import org.eclipse.app4mc.amalthea.model.OsBuffering;
+import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
+import org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode;
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
 import org.eclipse.app4mc.amalthea.model.PercentageMetric;
@@ -2580,11 +2581,7 @@ public class CustomItemProviderService {
    */
   public static String getLatencyDeviationItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof LatencyDeviation)) {
-      RWType _accessType = null;
-      if (((LatencyDeviation)object)!=null) {
-        _accessType=((LatencyDeviation)object).getAccessType();
-      }
-      final RWType type = _accessType;
+      final RWType type = ((LatencyDeviation)object).getAccessType();
       Deviation<LongObject> _deviation = null;
       if (((LatencyDeviation)object)!=null) {
         _deviation=((LatencyDeviation)object).getDeviation();
@@ -3106,35 +3103,20 @@ public class CustomItemProviderService {
   }
   
   /**
-   * OsAPIInstructionsItemProvider
+   * OsDataConsistencyItemProvider
    */
-  public static String getOsAPIInstructionsItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof OsAPIInstructions)) {
-      return CustomItemProviderService.getContainingFeatureName(((EObject)object), "API Instructions", "");
-    } else {
-      return defaultText;
-    }
-  }
-  
-  /**
-   * OsBufferingItemProvider
-   */
-  public static String getOsBufferingItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof OsBuffering)) {
-      String _bufferingAlgorithm = null;
-      if (((OsBuffering)object)!=null) {
-        _bufferingAlgorithm=((OsBuffering)object).getBufferingAlgorithm();
-      }
-      final String algo = _bufferingAlgorithm;
+  public static String getOsDataConsistencyItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof OsDataConsistency)) {
+      final OsDataConsistencyMode mode = ((OsDataConsistency)object).getMode();
+      final String s1 = "OS Data Consistency - ";
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(algo);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<algorithm>";
+      if ((Objects.equal(mode, null) || Objects.equal(mode, OsDataConsistencyMode._UNDEFINED_))) {
+        _xifexpression = "?";
       } else {
-        _xifexpression = algo;
+        _xifexpression = mode.getLiteral();
       }
-      final String s1 = _xifexpression;
-      return ("OS Buffering " + s1);
+      final String s2 = _xifexpression;
+      return (s1 + s2);
     } else {
       return defaultText;
     }
@@ -3145,11 +3127,7 @@ public class CustomItemProviderService {
    */
   public static String getOsInstructionsItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof OsInstructions)) {
-      String _name = null;
-      if (((OsInstructions)object)!=null) {
-        _name=((OsInstructions)object).getName();
-      }
-      final String name = _name;
+      final String name = ((OsInstructions)object).getName();
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
       if (_isNullOrEmpty) {
@@ -3159,6 +3137,17 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       return s1;
+    } else {
+      return defaultText;
+    }
+  }
+  
+  /**
+   * OsAPIInstructionsItemProvider
+   */
+  public static String getOsAPIInstructionsItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof OsAPIInstructions)) {
+      return CustomItemProviderService.getContainingFeatureName(((EObject)object), "API Instructions", "");
     } else {
       return defaultText;
     }

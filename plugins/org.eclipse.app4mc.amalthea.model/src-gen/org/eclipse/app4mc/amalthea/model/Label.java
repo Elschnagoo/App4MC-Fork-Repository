@@ -30,7 +30,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getDataType <em>Data Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#isConstant <em>Constant</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#isBVolatile <em>BVolatile</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getBuffered <em>Buffered</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getDataStability <em>Data Stability</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getLabelAccesses <em>Label Accesses</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getSection <em>Section</em>}</li>
  * </ul>
@@ -121,32 +121,32 @@ public interface Label extends AbstractElementMemoryInformation, IDisplayName {
 	void setBVolatile(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Buffered</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.LabelBuffering}.
+	 * Returns the value of the '<em><b>Data Stability</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.LabelDataStability}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Defines if the label is buffered or not
+	 * Defines the data stability needs of the label
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Buffered</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.LabelBuffering
-	 * @see #setBuffered(LabelBuffering)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_Buffered()
+	 * @return the value of the '<em>Data Stability</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.LabelDataStability
+	 * @see #setDataStability(LabelDataStability)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_DataStability()
 	 * @model unique="false"
 	 * @generated
 	 */
-	LabelBuffering getBuffered();
+	LabelDataStability getDataStability();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Label#getBuffered <em>Buffered</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Label#getDataStability <em>Data Stability</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Buffered</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.LabelBuffering
-	 * @see #getBuffered()
+	 * @param value the new value of the '<em>Data Stability</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.LabelDataStability
+	 * @see #getDataStability()
 	 * @generated
 	 */
-	void setBuffered(LabelBuffering value);
+	void setDataStability(LabelDataStability value);
 
 	/**
 	 * Returns the value of the '<em><b>Label Accesses</b></em>' reference list.

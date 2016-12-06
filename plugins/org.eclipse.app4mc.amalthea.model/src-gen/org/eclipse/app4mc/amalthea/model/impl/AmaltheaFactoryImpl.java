@@ -17,6 +17,7 @@ import java.util.Map;
 import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMapping;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
+import org.eclipse.app4mc.amalthea.model.AccessMultiplicity;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
@@ -83,7 +84,9 @@ import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
+import org.eclipse.app4mc.amalthea.model.DataStability;
 import org.eclipse.app4mc.amalthea.model.DataStabilityGroup;
+import org.eclipse.app4mc.amalthea.model.DataStabilityLevel;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
@@ -137,10 +140,10 @@ import org.eclipse.app4mc.amalthea.model.InterfaceKind;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
-import org.eclipse.app4mc.amalthea.model.LabelAccessBuffering;
+import org.eclipse.app4mc.amalthea.model.LabelAccessDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
-import org.eclipse.app4mc.amalthea.model.LabelBuffering;
+import org.eclipse.app4mc.amalthea.model.LabelDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelEventType;
@@ -172,13 +175,15 @@ import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.Network;
 import org.eclipse.app4mc.amalthea.model.NetworkType;
+import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
-import org.eclipse.app4mc.amalthea.model.OsBuffering;
+import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
+import org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
@@ -484,7 +489,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.ISR_ALLOCATION: return createISRAllocation();
 			case AmaltheaPackage.RUNNABLE_ALLOCATION: return createRunnableAllocation();
 			case AmaltheaPackage.OS_MODEL: return createOSModel();
-			case AmaltheaPackage.OS_BUFFERING: return createOsBuffering();
+			case AmaltheaPackage.OS_DATA_CONSISTENCY: return createOsDataConsistency();
+			case AmaltheaPackage.DATA_STABILITY: return createDataStability();
+			case AmaltheaPackage.NON_ATOMIC_DATA_COHERENCY: return createNonAtomicDataCoherency();
 			case AmaltheaPackage.SEMAPHORE: return createSemaphore();
 			case AmaltheaPackage.OSEK: return createOSEK();
 			case AmaltheaPackage.PARTLY_PFAIR_PD2: return createPartlyPFairPD2();
@@ -665,6 +672,12 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createPinTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.MEMORY_ADDRESS_MAPPING_TYPE:
 				return createMemoryAddressMappingTypeFromString(eDataType, initialValue);
+			case AmaltheaPackage.OS_DATA_CONSISTENCY_MODE:
+				return createOsDataConsistencyModeFromString(eDataType, initialValue);
+			case AmaltheaPackage.ACCESS_MULTIPLICITY:
+				return createAccessMultiplicityFromString(eDataType, initialValue);
+			case AmaltheaPackage.DATA_STABILITY_LEVEL:
+				return createDataStabilityLevelFromString(eDataType, initialValue);
 			case AmaltheaPackage.COMPARATOR_TYPE:
 				return createComparatorTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.CONJUNCTION_TYPE:
@@ -677,10 +690,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createAccessPrecedenceTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.ORDER_TYPE:
 				return createOrderTypeFromString(eDataType, initialValue);
-			case AmaltheaPackage.LABEL_BUFFERING:
-				return createLabelBufferingFromString(eDataType, initialValue);
-			case AmaltheaPackage.LABEL_ACCESS_BUFFERING:
-				return createLabelAccessBufferingFromString(eDataType, initialValue);
+			case AmaltheaPackage.LABEL_DATA_STABILITY:
+				return createLabelDataStabilityFromString(eDataType, initialValue);
+			case AmaltheaPackage.LABEL_ACCESS_DATA_STABILITY:
+				return createLabelAccessDataStabilityFromString(eDataType, initialValue);
 			case AmaltheaPackage.LABEL_ACCESS_ENUM:
 				return createLabelAccessEnumFromString(eDataType, initialValue);
 			case AmaltheaPackage.SEMAPHORE_ACCESS_ENUM:
@@ -762,6 +775,12 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertPinTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.MEMORY_ADDRESS_MAPPING_TYPE:
 				return convertMemoryAddressMappingTypeToString(eDataType, instanceValue);
+			case AmaltheaPackage.OS_DATA_CONSISTENCY_MODE:
+				return convertOsDataConsistencyModeToString(eDataType, instanceValue);
+			case AmaltheaPackage.ACCESS_MULTIPLICITY:
+				return convertAccessMultiplicityToString(eDataType, instanceValue);
+			case AmaltheaPackage.DATA_STABILITY_LEVEL:
+				return convertDataStabilityLevelToString(eDataType, instanceValue);
 			case AmaltheaPackage.COMPARATOR_TYPE:
 				return convertComparatorTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.CONJUNCTION_TYPE:
@@ -774,10 +793,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertAccessPrecedenceTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.ORDER_TYPE:
 				return convertOrderTypeToString(eDataType, instanceValue);
-			case AmaltheaPackage.LABEL_BUFFERING:
-				return convertLabelBufferingToString(eDataType, instanceValue);
-			case AmaltheaPackage.LABEL_ACCESS_BUFFERING:
-				return convertLabelAccessBufferingToString(eDataType, instanceValue);
+			case AmaltheaPackage.LABEL_DATA_STABILITY:
+				return convertLabelDataStabilityToString(eDataType, instanceValue);
+			case AmaltheaPackage.LABEL_ACCESS_DATA_STABILITY:
+				return convertLabelAccessDataStabilityToString(eDataType, instanceValue);
 			case AmaltheaPackage.LABEL_ACCESS_ENUM:
 				return convertLabelAccessEnumToString(eDataType, instanceValue);
 			case AmaltheaPackage.SEMAPHORE_ACCESS_ENUM:
@@ -2118,9 +2137,29 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsBuffering createOsBuffering() {
-		OsBufferingImpl osBuffering = new OsBufferingImpl();
-		return osBuffering;
+	public OsDataConsistency createOsDataConsistency() {
+		OsDataConsistencyImpl osDataConsistency = new OsDataConsistencyImpl();
+		return osDataConsistency;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataStability createDataStability() {
+		DataStabilityImpl dataStability = new DataStabilityImpl();
+		return dataStability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NonAtomicDataCoherency createNonAtomicDataCoherency() {
+		NonAtomicDataCoherencyImpl nonAtomicDataCoherency = new NonAtomicDataCoherencyImpl();
+		return nonAtomicDataCoherency;
 	}
 
 	/**
@@ -3798,6 +3837,66 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public OsDataConsistencyMode createOsDataConsistencyModeFromString(EDataType eDataType, String initialValue) {
+		OsDataConsistencyMode result = OsDataConsistencyMode.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOsDataConsistencyModeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AccessMultiplicity createAccessMultiplicityFromString(EDataType eDataType, String initialValue) {
+		AccessMultiplicity result = AccessMultiplicity.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAccessMultiplicityToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataStabilityLevel createDataStabilityLevelFromString(EDataType eDataType, String initialValue) {
+		DataStabilityLevel result = DataStabilityLevel.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDataStabilityLevelToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ComparatorType createComparatorTypeFromString(EDataType eDataType, String initialValue) {
 		ComparatorType result = ComparatorType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -3918,8 +4017,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LabelBuffering createLabelBufferingFromString(EDataType eDataType, String initialValue) {
-		LabelBuffering result = LabelBuffering.get(initialValue);
+	public LabelDataStability createLabelDataStabilityFromString(EDataType eDataType, String initialValue) {
+		LabelDataStability result = LabelDataStability.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -3929,7 +4028,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertLabelBufferingToString(EDataType eDataType, Object instanceValue) {
+	public String convertLabelDataStabilityToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -3938,8 +4037,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LabelAccessBuffering createLabelAccessBufferingFromString(EDataType eDataType, String initialValue) {
-		LabelAccessBuffering result = LabelAccessBuffering.get(initialValue);
+	public LabelAccessDataStability createLabelAccessDataStabilityFromString(EDataType eDataType, String initialValue) {
+		LabelAccessDataStability result = LabelAccessDataStability.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -3949,7 +4048,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertLabelAccessBufferingToString(EDataType eDataType, Object instanceValue) {
+	public String convertLabelAccessDataStabilityToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

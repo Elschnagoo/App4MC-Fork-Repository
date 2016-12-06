@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
-import org.eclipse.app4mc.amalthea.model.LabelAccessBuffering;
+import org.eclipse.app4mc.amalthea.model.LabelAccessDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getData <em>Data</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getAccess <em>Access</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getStatistic <em>Statistic</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getBuffered <em>Buffered</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getDataStability <em>Data Stability</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getDataLinkInt <em>Data Link Int</em>}</li>
  * </ul>
  *
@@ -86,24 +86,24 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 	protected LabelAccessStatistic statistic;
 
 	/**
-	 * The default value of the '{@link #getBuffered() <em>Buffered</em>}' attribute.
+	 * The default value of the '{@link #getDataStability() <em>Data Stability</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBuffered()
+	 * @see #getDataStability()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final LabelAccessBuffering BUFFERED_EDEFAULT = LabelAccessBuffering._UNDEFINED_;
+	protected static final LabelAccessDataStability DATA_STABILITY_EDEFAULT = LabelAccessDataStability._UNDEFINED_;
 
 	/**
-	 * The cached value of the '{@link #getBuffered() <em>Buffered</em>}' attribute.
+	 * The cached value of the '{@link #getDataStability() <em>Data Stability</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBuffered()
+	 * @see #getDataStability()
 	 * @generated
 	 * @ordered
 	 */
-	protected LabelAccessBuffering buffered = BUFFERED_EDEFAULT;
+	protected LabelAccessDataStability dataStability = DATA_STABILITY_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getDataLinkInt() <em>Data Link Int</em>}' reference.
@@ -266,8 +266,8 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LabelAccessBuffering getBuffered() {
-		return buffered;
+	public LabelAccessDataStability getDataStability() {
+		return dataStability;
 	}
 
 	/**
@@ -275,11 +275,11 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBuffered(LabelAccessBuffering newBuffered) {
-		LabelAccessBuffering oldBuffered = buffered;
-		buffered = newBuffered == null ? BUFFERED_EDEFAULT : newBuffered;
+	public void setDataStability(LabelAccessDataStability newDataStability) {
+		LabelAccessDataStability oldDataStability = dataStability;
+		dataStability = newDataStability == null ? DATA_STABILITY_EDEFAULT : newDataStability;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL_ACCESS__BUFFERED, oldBuffered, buffered));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY, oldDataStability, dataStability));
 	}
 
 	/**
@@ -390,8 +390,8 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 			case AmaltheaPackage.LABEL_ACCESS__STATISTIC:
 				if (resolve) return getStatistic();
 				return basicGetStatistic();
-			case AmaltheaPackage.LABEL_ACCESS__BUFFERED:
-				return getBuffered();
+			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
+				return getDataStability();
 			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
 				if (resolve) return getDataLinkInt();
 				return basicGetDataLinkInt();
@@ -416,8 +416,8 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 			case AmaltheaPackage.LABEL_ACCESS__STATISTIC:
 				setStatistic((LabelAccessStatistic)newValue);
 				return;
-			case AmaltheaPackage.LABEL_ACCESS__BUFFERED:
-				setBuffered((LabelAccessBuffering)newValue);
+			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
+				setDataStability((LabelAccessDataStability)newValue);
 				return;
 			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
 				setDataLinkInt((Label)newValue);
@@ -443,8 +443,8 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 			case AmaltheaPackage.LABEL_ACCESS__STATISTIC:
 				setStatistic((LabelAccessStatistic)null);
 				return;
-			case AmaltheaPackage.LABEL_ACCESS__BUFFERED:
-				setBuffered(BUFFERED_EDEFAULT);
+			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
+				setDataStability(DATA_STABILITY_EDEFAULT);
 				return;
 			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
 				setDataLinkInt((Label)null);
@@ -467,8 +467,8 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 				return access != ACCESS_EDEFAULT;
 			case AmaltheaPackage.LABEL_ACCESS__STATISTIC:
 				return statistic != null;
-			case AmaltheaPackage.LABEL_ACCESS__BUFFERED:
-				return buffered != BUFFERED_EDEFAULT;
+			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
+				return dataStability != DATA_STABILITY_EDEFAULT;
 			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
 				return dataLinkInt != null;
 		}
@@ -487,8 +487,8 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (access: ");
 		result.append(access);
-		result.append(", buffered: ");
-		result.append(buffered);
+		result.append(", dataStability: ");
+		result.append(dataStability);
 		result.append(')');
 		return result.toString();
 	}

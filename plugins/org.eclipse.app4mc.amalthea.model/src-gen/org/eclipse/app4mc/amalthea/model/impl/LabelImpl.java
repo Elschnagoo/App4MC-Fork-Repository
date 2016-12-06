@@ -19,7 +19,7 @@ import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
-import org.eclipse.app4mc.amalthea.model.LabelBuffering;
+import org.eclipse.app4mc.amalthea.model.LabelDataStability;
 import org.eclipse.app4mc.amalthea.model.Section;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -47,7 +47,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getDataType <em>Data Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#isConstant <em>Constant</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#isBVolatile <em>BVolatile</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getBuffered <em>Buffered</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getDataStability <em>Data Stability</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getLabelAccesses <em>Label Accesses</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getSection <em>Section</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getSectionLinkInt <em>Section Link Int</em>}</li>
@@ -127,24 +127,24 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 	protected boolean bVolatile = BVOLATILE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getBuffered() <em>Buffered</em>}' attribute.
+	 * The default value of the '{@link #getDataStability() <em>Data Stability</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBuffered()
+	 * @see #getDataStability()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final LabelBuffering BUFFERED_EDEFAULT = LabelBuffering._UNDEFINED_;
+	protected static final LabelDataStability DATA_STABILITY_EDEFAULT = LabelDataStability._UNDEFINED_;
 
 	/**
-	 * The cached value of the '{@link #getBuffered() <em>Buffered</em>}' attribute.
+	 * The cached value of the '{@link #getDataStability() <em>Data Stability</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBuffered()
+	 * @see #getDataStability()
 	 * @generated
 	 * @ordered
 	 */
-	protected LabelBuffering buffered = BUFFERED_EDEFAULT;
+	protected LabelDataStability dataStability = DATA_STABILITY_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getLabelAccesses() <em>Label Accesses</em>}' reference list.
@@ -306,8 +306,8 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LabelBuffering getBuffered() {
-		return buffered;
+	public LabelDataStability getDataStability() {
+		return dataStability;
 	}
 
 	/**
@@ -315,11 +315,11 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBuffered(LabelBuffering newBuffered) {
-		LabelBuffering oldBuffered = buffered;
-		buffered = newBuffered == null ? BUFFERED_EDEFAULT : newBuffered;
+	public void setDataStability(LabelDataStability newDataStability) {
+		LabelDataStability oldDataStability = dataStability;
+		dataStability = newDataStability == null ? DATA_STABILITY_EDEFAULT : newDataStability;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL__BUFFERED, oldBuffered, buffered));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL__DATA_STABILITY, oldDataStability, dataStability));
 	}
 
 	/**
@@ -487,8 +487,8 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 				return isConstant();
 			case AmaltheaPackage.LABEL__BVOLATILE:
 				return isBVolatile();
-			case AmaltheaPackage.LABEL__BUFFERED:
-				return getBuffered();
+			case AmaltheaPackage.LABEL__DATA_STABILITY:
+				return getDataStability();
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				return getLabelAccesses();
 			case AmaltheaPackage.LABEL__SECTION:
@@ -522,8 +522,8 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 			case AmaltheaPackage.LABEL__BVOLATILE:
 				setBVolatile((Boolean)newValue);
 				return;
-			case AmaltheaPackage.LABEL__BUFFERED:
-				setBuffered((LabelBuffering)newValue);
+			case AmaltheaPackage.LABEL__DATA_STABILITY:
+				setDataStability((LabelDataStability)newValue);
 				return;
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				getLabelAccesses().clear();
@@ -559,8 +559,8 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 			case AmaltheaPackage.LABEL__BVOLATILE:
 				setBVolatile(BVOLATILE_EDEFAULT);
 				return;
-			case AmaltheaPackage.LABEL__BUFFERED:
-				setBuffered(BUFFERED_EDEFAULT);
+			case AmaltheaPackage.LABEL__DATA_STABILITY:
+				setDataStability(DATA_STABILITY_EDEFAULT);
 				return;
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				getLabelAccesses().clear();
@@ -591,8 +591,8 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 				return constant != CONSTANT_EDEFAULT;
 			case AmaltheaPackage.LABEL__BVOLATILE:
 				return bVolatile != BVOLATILE_EDEFAULT;
-			case AmaltheaPackage.LABEL__BUFFERED:
-				return buffered != BUFFERED_EDEFAULT;
+			case AmaltheaPackage.LABEL__DATA_STABILITY:
+				return dataStability != DATA_STABILITY_EDEFAULT;
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				return labelAccesses != null && !labelAccesses.isEmpty();
 			case AmaltheaPackage.LABEL__SECTION:
@@ -651,8 +651,8 @@ public class LabelImpl extends AbstractElementMemoryInformationImpl implements L
 		result.append(constant);
 		result.append(", bVolatile: ");
 		result.append(bVolatile);
-		result.append(", buffered: ");
-		result.append(buffered);
+		result.append(", dataStability: ");
+		result.append(dataStability);
 		result.append(')');
 		return result.toString();
 	}

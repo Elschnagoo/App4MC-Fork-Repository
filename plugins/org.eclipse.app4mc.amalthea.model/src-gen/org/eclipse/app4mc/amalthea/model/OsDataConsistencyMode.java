@@ -20,19 +20,14 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Label Access Buffering</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Os Data Consistency Mode</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * <!-- begin-model-doc -->
- * Defines the buffering of a label access.
- * It can be buffered, not-buffered and inherited
- * Inherited means that the buffered-setting of the Label is used
- * <!-- end-model-doc -->
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccessBuffering()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsDataConsistencyMode()
  * @model
  * @generated
  */
-public enum LabelAccessBuffering implements Enumerator {
+public enum OsDataConsistencyMode implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -44,34 +39,44 @@ public enum LabelAccessBuffering implements Enumerator {
 	_UNDEFINED_(0, "_undefined_", "_undefined_"),
 
 	/**
-	 * The '<em><b>Inherited</b></em>' literal object.
+	 * The '<em><b>No Protection</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #INHERITED_VALUE
+	 * @see #NO_PROTECTION_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	INHERITED(0, "inherited", "inherited"),
+	NO_PROTECTION(0, "noProtection", "noProtection"),
 
 	/**
-	 * The '<em><b>Buffered</b></em>' literal object.
+	 * The '<em><b>Automatic Protection</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #BUFFERED_VALUE
+	 * @see #AUTOMATIC_PROTECTION_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	BUFFERED(0, "buffered", "buffered"),
+	AUTOMATIC_PROTECTION(0, "automaticProtection", "automaticProtection"),
 
 	/**
-	 * The '<em><b>Not Buffered</b></em>' literal object.
+	 * The '<em><b>Custom Protection</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NOT_BUFFERED_VALUE
+	 * @see #CUSTOM_PROTECTION_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NOT_BUFFERED(0, "notBuffered", "notBuffered");
+	CUSTOM_PROTECTION(0, "customProtection", "customProtection"),
+
+	/**
+	 * The '<em><b>Handled By Model Elements</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #HANDLED_BY_MODEL_ELEMENTS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	HANDLED_BY_MODEL_ELEMENTS(0, "handledByModelElements", "handledByModelElements");
 
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
@@ -89,83 +94,99 @@ public enum LabelAccessBuffering implements Enumerator {
 	public static final int _UNDEFINED__VALUE = 0;
 
 	/**
-	 * The '<em><b>Inherited</b></em>' literal value.
+	 * The '<em><b>No Protection</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Inherited</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>No Protection</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #INHERITED
-	 * @model name="inherited"
+	 * @see #NO_PROTECTION
+	 * @model name="noProtection"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int INHERITED_VALUE = 0;
+	public static final int NO_PROTECTION_VALUE = 0;
 
 	/**
-	 * The '<em><b>Buffered</b></em>' literal value.
+	 * The '<em><b>Automatic Protection</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Buffered</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Automatic Protection</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #BUFFERED
-	 * @model name="buffered"
+	 * @see #AUTOMATIC_PROTECTION
+	 * @model name="automaticProtection"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BUFFERED_VALUE = 0;
+	public static final int AUTOMATIC_PROTECTION_VALUE = 0;
 
 	/**
-	 * The '<em><b>Not Buffered</b></em>' literal value.
+	 * The '<em><b>Custom Protection</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Not Buffered</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Custom Protection</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #NOT_BUFFERED
-	 * @model name="notBuffered"
+	 * @see #CUSTOM_PROTECTION
+	 * @model name="customProtection"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NOT_BUFFERED_VALUE = 0;
+	public static final int CUSTOM_PROTECTION_VALUE = 0;
 
 	/**
-	 * An array of all the '<em><b>Label Access Buffering</b></em>' enumerators.
+	 * The '<em><b>Handled By Model Elements</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Handled By Model Elements</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #HANDLED_BY_MODEL_ELEMENTS
+	 * @model name="handledByModelElements"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HANDLED_BY_MODEL_ELEMENTS_VALUE = 0;
+
+	/**
+	 * An array of all the '<em><b>Os Data Consistency Mode</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final LabelAccessBuffering[] VALUES_ARRAY =
-		new LabelAccessBuffering[] {
+	private static final OsDataConsistencyMode[] VALUES_ARRAY =
+		new OsDataConsistencyMode[] {
 			_UNDEFINED_,
-			INHERITED,
-			BUFFERED,
-			NOT_BUFFERED,
+			NO_PROTECTION,
+			AUTOMATIC_PROTECTION,
+			CUSTOM_PROTECTION,
+			HANDLED_BY_MODEL_ELEMENTS,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Label Access Buffering</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Os Data Consistency Mode</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<LabelAccessBuffering> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<OsDataConsistencyMode> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Label Access Buffering</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Os Data Consistency Mode</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static LabelAccessBuffering get(String literal) {
+	public static OsDataConsistencyMode get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			LabelAccessBuffering result = VALUES_ARRAY[i];
+			OsDataConsistencyMode result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -174,16 +195,16 @@ public enum LabelAccessBuffering implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Label Access Buffering</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Os Data Consistency Mode</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static LabelAccessBuffering getByName(String name) {
+	public static OsDataConsistencyMode getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			LabelAccessBuffering result = VALUES_ARRAY[i];
+			OsDataConsistencyMode result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -192,14 +213,14 @@ public enum LabelAccessBuffering implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Label Access Buffering</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Os Data Consistency Mode</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static LabelAccessBuffering get(int value) {
+	public static OsDataConsistencyMode get(int value) {
 		switch (value) {
 			case _UNDEFINED__VALUE: return _UNDEFINED_;
 		}
@@ -233,7 +254,7 @@ public enum LabelAccessBuffering implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private LabelAccessBuffering(int value, String name, String literal) {
+	private OsDataConsistencyMode(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -277,4 +298,4 @@ public enum LabelAccessBuffering implements Enumerator {
 		return literal;
 	}
 	
-} //LabelAccessBuffering
+} //OsDataConsistencyMode

@@ -61,7 +61,7 @@ public class LabelItemProvider extends AbstractElementMemoryInformationItemProvi
 			addDisplayNamePropertyDescriptor(object);
 			addConstantPropertyDescriptor(object);
 			addBVolatilePropertyDescriptor(object);
-			addBufferedPropertyDescriptor(object);
+			addDataStabilityPropertyDescriptor(object);
 			addLabelAccessesPropertyDescriptor(object);
 			addSectionPropertyDescriptor(object);
 		}
@@ -135,19 +135,19 @@ public class LabelItemProvider extends AbstractElementMemoryInformationItemProvi
 	}
 
 	/**
-	 * This adds a property descriptor for the Buffered feature.
+	 * This adds a property descriptor for the Data Stability feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBufferedPropertyDescriptor(Object object) {
+	protected void addDataStabilityPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Label_buffered_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Label_buffered_feature", "_UI_Label_type"),
-				 AmaltheaPackage.eINSTANCE.getLabel_Buffered(),
+				 getString("_UI_Label_dataStability_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Label_dataStability_feature", "_UI_Label_type"),
+				 AmaltheaPackage.eINSTANCE.getLabel_DataStability(),
 				 true,
 				 false,
 				 false,
@@ -283,7 +283,7 @@ public class LabelItemProvider extends AbstractElementMemoryInformationItemProvi
 			case AmaltheaPackage.LABEL__DISPLAY_NAME:
 			case AmaltheaPackage.LABEL__CONSTANT:
 			case AmaltheaPackage.LABEL__BVOLATILE:
-			case AmaltheaPackage.LABEL__BUFFERED:
+			case AmaltheaPackage.LABEL__DATA_STABILITY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AmaltheaPackage.LABEL__DATA_TYPE:

@@ -20,14 +20,14 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Label Buffering</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Access Multiplicity</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelBuffering()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAccessMultiplicity()
  * @model
  * @generated
  */
-public enum LabelBuffering implements Enumerator {
+public enum AccessMultiplicity implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -39,24 +39,24 @@ public enum LabelBuffering implements Enumerator {
 	_UNDEFINED_(0, "_undefined_", "_undefined_"),
 
 	/**
-	 * The '<em><b>Buffered</b></em>' literal object.
+	 * The '<em><b>Single Access</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #BUFFERED_VALUE
+	 * @see #SINGLE_ACCESS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	BUFFERED(0, "buffered", "buffered"),
+	SINGLE_ACCESS(0, "singleAccess", "singleAccess"),
 
 	/**
-	 * The '<em><b>Not Buffered</b></em>' literal object.
+	 * The '<em><b>Multiple Accesses</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NOT_BUFFERED_VALUE
+	 * @see #MULTIPLE_ACCESSES_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NOT_BUFFERED(0, "notBuffered", "notBuffered");
+	MULTIPLE_ACCESSES(0, "multipleAccesses", "multipleAccesses");
 
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
@@ -74,67 +74,67 @@ public enum LabelBuffering implements Enumerator {
 	public static final int _UNDEFINED__VALUE = 0;
 
 	/**
-	 * The '<em><b>Buffered</b></em>' literal value.
+	 * The '<em><b>Single Access</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Buffered</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Single Access</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #BUFFERED
-	 * @model name="buffered"
+	 * @see #SINGLE_ACCESS
+	 * @model name="singleAccess"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BUFFERED_VALUE = 0;
+	public static final int SINGLE_ACCESS_VALUE = 0;
 
 	/**
-	 * The '<em><b>Not Buffered</b></em>' literal value.
+	 * The '<em><b>Multiple Accesses</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Not Buffered</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Multiple Accesses</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #NOT_BUFFERED
-	 * @model name="notBuffered"
+	 * @see #MULTIPLE_ACCESSES
+	 * @model name="multipleAccesses"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NOT_BUFFERED_VALUE = 0;
+	public static final int MULTIPLE_ACCESSES_VALUE = 0;
 
 	/**
-	 * An array of all the '<em><b>Label Buffering</b></em>' enumerators.
+	 * An array of all the '<em><b>Access Multiplicity</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final LabelBuffering[] VALUES_ARRAY =
-		new LabelBuffering[] {
+	private static final AccessMultiplicity[] VALUES_ARRAY =
+		new AccessMultiplicity[] {
 			_UNDEFINED_,
-			BUFFERED,
-			NOT_BUFFERED,
+			SINGLE_ACCESS,
+			MULTIPLE_ACCESSES,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Label Buffering</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Access Multiplicity</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<LabelBuffering> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<AccessMultiplicity> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Label Buffering</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Access Multiplicity</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static LabelBuffering get(String literal) {
+	public static AccessMultiplicity get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			LabelBuffering result = VALUES_ARRAY[i];
+			AccessMultiplicity result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -143,16 +143,16 @@ public enum LabelBuffering implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Label Buffering</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Access Multiplicity</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static LabelBuffering getByName(String name) {
+	public static AccessMultiplicity getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			LabelBuffering result = VALUES_ARRAY[i];
+			AccessMultiplicity result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -161,14 +161,14 @@ public enum LabelBuffering implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Label Buffering</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Access Multiplicity</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static LabelBuffering get(int value) {
+	public static AccessMultiplicity get(int value) {
 		switch (value) {
 			case _UNDEFINED__VALUE: return _UNDEFINED_;
 		}
@@ -202,7 +202,7 @@ public enum LabelBuffering implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private LabelBuffering(int value, String name, String literal) {
+	private AccessMultiplicity(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -246,4 +246,4 @@ public enum LabelBuffering implements Enumerator {
 		return literal;
 	}
 	
-} //LabelBuffering
+} //AccessMultiplicity

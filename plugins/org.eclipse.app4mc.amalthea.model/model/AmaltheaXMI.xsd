@@ -91,7 +91,7 @@
   </xsd:simpleType>
   <xsd:simpleType name="SamplingType">
     <xsd:annotation>
-      <xsd:documentation> * The types of sampling</xsd:documentation>
+      <xsd:documentation>The types of sampling</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="default"/>
@@ -341,6 +341,30 @@
       <xsd:enumeration value="offset"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="OsDataConsistencyMode">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="noProtection"/>
+      <xsd:enumeration value="automaticProtection"/>
+      <xsd:enumeration value="customProtection"/>
+      <xsd:enumeration value="handledByModelElements"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="AccessMultiplicity">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="singleAccess"/>
+      <xsd:enumeration value="multipleAccesses"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DataStabilityLevel">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="process"/>
+      <xsd:enumeration value="runnable"/>
+      <xsd:enumeration value="scheduleSection"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="ComparatorType">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -411,24 +435,27 @@
       <xsd:enumeration value="endSequence"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="LabelBuffering">
+  <xsd:simpleType name="LabelDataStability">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="buffered"/>
-      <xsd:enumeration value="notBuffered"/>
+      <xsd:enumeration value="noProtection"/>
+      <xsd:enumeration value="automaticProtection"/>
+      <xsd:enumeration value="customProtection"/>
+      <xsd:enumeration value="handledByModelElements"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="LabelAccessBuffering">
+  <xsd:simpleType name="LabelAccessDataStability">
     <xsd:annotation>
-      <xsd:documentation>Defines the buffering of a label access.
-It can be buffered, not-buffered and inherited
-Inherited means that the buffered-setting of the Label is used</xsd:documentation>
+      <xsd:documentation>Defines the data stability needs of a label access.
+Inherited means that the setting of the Label is used</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
       <xsd:enumeration value="inherited"/>
-      <xsd:enumeration value="buffered"/>
-      <xsd:enumeration value="notBuffered"/>
+      <xsd:enumeration value="noProtection"/>
+      <xsd:enumeration value="automaticProtection"/>
+      <xsd:enumeration value="customProtection"/>
+      <xsd:enumeration value="handledByModelElements"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="LabelAccessEnum">
@@ -3201,7 +3228,7 @@ Sections refer to Labels and/or Runnables.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="osBuffering" type="am:OsBuffering"/>
+          <xsd:element name="osDataConsistency" type="am:OsDataConsistency"/>
           <xsd:element name="semaphores" type="am:Semaphore"/>
           <xsd:element name="operatingSystems" type="am:OperatingSystem"/>
           <xsd:element name="osOverheads" type="am:OsInstructions"/>
@@ -3221,28 +3248,41 @@ Sections refer to Labels and/or Runnables.</xsd:documentation>
 ===============================================================================</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="OsBuffering">
-    <xsd:annotation>
-      <xsd:documentation>buffering for intercore communication (process on core 1 communicates witch process on core 2)
-runnable-, process-, and scheduleSectionLevel defines the section where buffering occurs
-at selected layer, data is read at beginning of section and written back at the end of the section</xsd:documentation>
-    </xsd:annotation>
+  <xsd:complexType name="OsDataConsistency">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
-        <xsd:attribute name="runnableLevel" type="xsd:boolean"/>
-        <xsd:attribute name="processLevel" type="xsd:boolean"/>
-        <xsd:attribute name="scheduleSectionLevel" type="xsd:boolean"/>
-        <xsd:attribute name="bufferingAlgorithm" type="xsd:string"/>
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="dataStability" type="am:DataStability"/>
+          <xsd:element name="nonAtomicDataCoherency" type="am:NonAtomicDataCoherency"/>
+        </xsd:choice>
+        <xsd:attribute name="mode" type="am:OsDataConsistencyMode"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="OsBuffering" type="am:OsBuffering">
-    <xsd:annotation>
-      <xsd:documentation>buffering for intercore communication (process on core 1 communicates witch process on core 2)
-runnable-, process-, and scheduleSectionLevel defines the section where buffering occurs
-at selected layer, data is read at beginning of section and written back at the end of the section</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="OsDataConsistency" type="am:OsDataConsistency"/>
+  <xsd:complexType name="DataStability">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="enabled" type="xsd:boolean"/>
+    <xsd:attribute name="algorithm" type="xsd:string"/>
+    <xsd:attribute name="accessMultiplicity" type="am:AccessMultiplicity"/>
+    <xsd:attribute name="level" type="am:DataStabilityLevel"/>
+  </xsd:complexType>
+  <xsd:element name="DataStability" type="am:DataStability"/>
+  <xsd:complexType name="NonAtomicDataCoherency">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="enabled" type="xsd:boolean"/>
+    <xsd:attribute name="algorithm" type="xsd:string"/>
+    <xsd:attribute name="accessMultiplicity" type="am:AccessMultiplicity"/>
+  </xsd:complexType>
+  <xsd:element name="NonAtomicDataCoherency" type="am:NonAtomicDataCoherency"/>
   <xsd:complexType name="Semaphore">
     <xsd:annotation>
       <xsd:documentation>name: Name of semaphore
@@ -4898,9 +4938,9 @@ The final state can be several Tasks, which can be computed using provided infor
             <xsd:documentation>Defines if the label value is volatile or persistent to survive shutdown and start of system</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="buffered" type="am:LabelBuffering">
+        <xsd:attribute name="dataStability" type="am:LabelDataStability">
           <xsd:annotation>
-            <xsd:documentation>Defines if the label is buffered or not</xsd:documentation>
+            <xsd:documentation>Defines the data stability needs of the label</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="section" type="xsd:string"/>
@@ -5050,9 +5090,9 @@ It can be used to define which mode value is written to the label.</xsd:document
           </xsd:element>
         </xsd:choice>
         <xsd:attribute name="access" type="am:LabelAccessEnum"/>
-        <xsd:attribute name="buffered" type="am:LabelAccessBuffering">
+        <xsd:attribute name="dataStability" type="am:LabelAccessDataStability">
           <xsd:annotation>
-            <xsd:documentation>Defines if the access to the label is buffered</xsd:documentation>
+            <xsd:documentation>Defines the data stability needs of the label access</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="data" type="xsd:string"/>

@@ -56,7 +56,7 @@ public class LabelAccessItemProvider extends RunnableItemItemProvider {
 
 			addDataPropertyDescriptor(object);
 			addAccessPropertyDescriptor(object);
-			addBufferedPropertyDescriptor(object);
+			addDataStabilityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -104,18 +104,19 @@ public class LabelAccessItemProvider extends RunnableItemItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Buffered feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Data Stability feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBufferedPropertyDescriptor(Object object) {
+	protected void addDataStabilityPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LabelAccess_buffered_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LabelAccess_buffered_feature", "_UI_LabelAccess_type"),
-				 AmaltheaPackage.eINSTANCE.getLabelAccess_Buffered(),
+				 getString("_UI_LabelAccess_dataStability_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LabelAccess_dataStability_feature", "_UI_LabelAccess_type"),
+				 AmaltheaPackage.eINSTANCE.getLabelAccess_DataStability(),
 				 true,
 				 false,
 				 false,
@@ -206,7 +207,7 @@ public class LabelAccessItemProvider extends RunnableItemItemProvider {
 
 		switch (notification.getFeatureID(LabelAccess.class)) {
 			case AmaltheaPackage.LABEL_ACCESS__ACCESS:
-			case AmaltheaPackage.LABEL_ACCESS__BUFFERED:
+			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AmaltheaPackage.LABEL_ACCESS__STATISTIC:

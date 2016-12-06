@@ -3072,26 +3072,72 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OsBuffering} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OsDataConsistency} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OsBufferingItemProvider osBufferingItemProvider;
+	protected OsDataConsistencyItemProvider osDataConsistencyItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.OsBuffering}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.OsDataConsistency}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createOsBufferingAdapter() {
-		if (osBufferingItemProvider == null) {
-			osBufferingItemProvider = new OsBufferingItemProvider(this);
+	public Adapter createOsDataConsistencyAdapter() {
+		if (osDataConsistencyItemProvider == null) {
+			osDataConsistencyItemProvider = new OsDataConsistencyItemProvider(this);
 		}
 
-		return osBufferingItemProvider;
+		return osDataConsistencyItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DataStability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DataStabilityItemProvider dataStabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DataStability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDataStabilityAdapter() {
+		if (dataStabilityItemProvider == null) {
+			dataStabilityItemProvider = new DataStabilityItemProvider(this);
+		}
+
+		return dataStabilityItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NonAtomicDataCoherencyItemProvider nonAtomicDataCoherencyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNonAtomicDataCoherencyAdapter() {
+		if (nonAtomicDataCoherencyItemProvider == null) {
+			nonAtomicDataCoherencyItemProvider = new NonAtomicDataCoherencyItemProvider(this);
+		}
+
+		return nonAtomicDataCoherencyItemProvider;
 	}
 
 	/**
@@ -5878,7 +5924,9 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (isrAllocationItemProvider != null) isrAllocationItemProvider.dispose();
 		if (runnableAllocationItemProvider != null) runnableAllocationItemProvider.dispose();
 		if (osModelItemProvider != null) osModelItemProvider.dispose();
-		if (osBufferingItemProvider != null) osBufferingItemProvider.dispose();
+		if (osDataConsistencyItemProvider != null) osDataConsistencyItemProvider.dispose();
+		if (dataStabilityItemProvider != null) dataStabilityItemProvider.dispose();
+		if (nonAtomicDataCoherencyItemProvider != null) nonAtomicDataCoherencyItemProvider.dispose();
 		if (semaphoreItemProvider != null) semaphoreItemProvider.dispose();
 		if (osekItemProvider != null) osekItemProvider.dispose();
 		if (partlyPFairPD2ItemProvider != null) partlyPFairPD2ItemProvider.dispose();

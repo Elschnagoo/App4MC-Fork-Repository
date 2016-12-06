@@ -1211,13 +1211,31 @@ public interface AmaltheaFactory extends EFactory {
 	OSModel createOSModel();
 
 	/**
-	 * Returns a new object of class '<em>Os Buffering</em>'.
+	 * Returns a new object of class '<em>Os Data Consistency</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Os Buffering</em>'.
+	 * @return a new object of class '<em>Os Data Consistency</em>'.
 	 * @generated
 	 */
-	OsBuffering createOsBuffering();
+	OsDataConsistency createOsDataConsistency();
+
+	/**
+	 * Returns a new object of class '<em>Data Stability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Stability</em>'.
+	 * @generated
+	 */
+	DataStability createDataStability();
+
+	/**
+	 * Returns a new object of class '<em>Non Atomic Data Coherency</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Non Atomic Data Coherency</em>'.
+	 * @generated
+	 */
+	NonAtomicDataCoherency createNonAtomicDataCoherency();
 
 	/**
 	 * Returns a new object of class '<em>Semaphore</em>'.

@@ -21,6 +21,7 @@ import org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AbstractionType;
+import org.eclipse.app4mc.amalthea.model.AccessMultiplicity;
 import org.eclipse.app4mc.amalthea.model.AccessPath;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
@@ -100,7 +101,9 @@ import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
+import org.eclipse.app4mc.amalthea.model.DataStability;
 import org.eclipse.app4mc.amalthea.model.DataStabilityGroup;
+import org.eclipse.app4mc.amalthea.model.DataStabilityLevel;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
@@ -171,10 +174,10 @@ import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
-import org.eclipse.app4mc.amalthea.model.LabelAccessBuffering;
+import org.eclipse.app4mc.amalthea.model.LabelAccessDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
-import org.eclipse.app4mc.amalthea.model.LabelBuffering;
+import org.eclipse.app4mc.amalthea.model.LabelDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelEventType;
@@ -211,13 +214,15 @@ import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
 import org.eclipse.app4mc.amalthea.model.Network;
 import org.eclipse.app4mc.amalthea.model.NetworkType;
+import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
-import org.eclipse.app4mc.amalthea.model.OsBuffering;
+import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
+import org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
@@ -1640,7 +1645,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass osBufferingEClass = null;
+	private EClass osDataConsistencyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataStabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass nonAtomicDataCoherencyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2774,6 +2793,27 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum osDataConsistencyModeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum accessMultiplicityEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum dataStabilityLevelEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum comparatorTypeEEnum = null;
 
 	/**
@@ -2816,14 +2856,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum labelBufferingEEnum = null;
+	private EEnum labelDataStabilityEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum labelAccessBufferingEEnum = null;
+	private EEnum labelAccessDataStabilityEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -7447,7 +7487,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOSModel_OsBuffering() {
+	public EReference getOSModel_OsDataConsistency() {
 		return (EReference)osModelEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -7483,8 +7523,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOsBuffering() {
-		return osBufferingEClass;
+	public EClass getOsDataConsistency() {
+		return osDataConsistencyEClass;
 	}
 
 	/**
@@ -7492,8 +7532,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOsBuffering_RunnableLevel() {
-		return (EAttribute)osBufferingEClass.getEStructuralFeatures().get(0);
+	public EAttribute getOsDataConsistency_Mode() {
+		return (EAttribute)osDataConsistencyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7501,8 +7541,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOsBuffering_ProcessLevel() {
-		return (EAttribute)osBufferingEClass.getEStructuralFeatures().get(1);
+	public EReference getOsDataConsistency_DataStability() {
+		return (EReference)osDataConsistencyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -7510,8 +7550,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOsBuffering_ScheduleSectionLevel() {
-		return (EAttribute)osBufferingEClass.getEStructuralFeatures().get(2);
+	public EReference getOsDataConsistency_NonAtomicDataCoherency() {
+		return (EReference)osDataConsistencyEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -7519,8 +7559,80 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOsBuffering_BufferingAlgorithm() {
-		return (EAttribute)osBufferingEClass.getEStructuralFeatures().get(3);
+	public EClass getDataStability() {
+		return dataStabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataStability_Enabled() {
+		return (EAttribute)dataStabilityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataStability_Algorithm() {
+		return (EAttribute)dataStabilityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataStability_AccessMultiplicity() {
+		return (EAttribute)dataStabilityEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataStability_Level() {
+		return (EAttribute)dataStabilityEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNonAtomicDataCoherency() {
+		return nonAtomicDataCoherencyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNonAtomicDataCoherency_Enabled() {
+		return (EAttribute)nonAtomicDataCoherencyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNonAtomicDataCoherency_Algorithm() {
+		return (EAttribute)nonAtomicDataCoherencyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNonAtomicDataCoherency_AccessMultiplicity() {
+		return (EAttribute)nonAtomicDataCoherencyEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -9940,7 +10052,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLabel_Buffered() {
+	public EAttribute getLabel_DataStability() {
 		return (EAttribute)labelEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -10201,7 +10313,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLabelAccess_Buffered() {
+	public EAttribute getLabelAccess_DataStability() {
 		return (EAttribute)labelAccessEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -11101,6 +11213,33 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getOsDataConsistencyMode() {
+		return osDataConsistencyModeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getAccessMultiplicity() {
+		return accessMultiplicityEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getDataStabilityLevel() {
+		return dataStabilityLevelEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getComparatorType() {
 		return comparatorTypeEEnum;
 	}
@@ -11155,8 +11294,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getLabelBuffering() {
-		return labelBufferingEEnum;
+	public EEnum getLabelDataStability() {
+		return labelDataStabilityEEnum;
 	}
 
 	/**
@@ -11164,8 +11303,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getLabelAccessBuffering() {
-		return labelAccessBufferingEEnum;
+	public EEnum getLabelAccessDataStability() {
+		return labelAccessDataStabilityEEnum;
 	}
 
 	/**
@@ -11921,16 +12060,26 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(runnableAllocationEClass, RUNNABLE_ALLOCATION__ENTITY);
 
 		osModelEClass = createEClass(OS_MODEL);
-		createEReference(osModelEClass, OS_MODEL__OS_BUFFERING);
+		createEReference(osModelEClass, OS_MODEL__OS_DATA_CONSISTENCY);
 		createEReference(osModelEClass, OS_MODEL__SEMAPHORES);
 		createEReference(osModelEClass, OS_MODEL__OPERATING_SYSTEMS);
 		createEReference(osModelEClass, OS_MODEL__OS_OVERHEADS);
 
-		osBufferingEClass = createEClass(OS_BUFFERING);
-		createEAttribute(osBufferingEClass, OS_BUFFERING__RUNNABLE_LEVEL);
-		createEAttribute(osBufferingEClass, OS_BUFFERING__PROCESS_LEVEL);
-		createEAttribute(osBufferingEClass, OS_BUFFERING__SCHEDULE_SECTION_LEVEL);
-		createEAttribute(osBufferingEClass, OS_BUFFERING__BUFFERING_ALGORITHM);
+		osDataConsistencyEClass = createEClass(OS_DATA_CONSISTENCY);
+		createEAttribute(osDataConsistencyEClass, OS_DATA_CONSISTENCY__MODE);
+		createEReference(osDataConsistencyEClass, OS_DATA_CONSISTENCY__DATA_STABILITY);
+		createEReference(osDataConsistencyEClass, OS_DATA_CONSISTENCY__NON_ATOMIC_DATA_COHERENCY);
+
+		dataStabilityEClass = createEClass(DATA_STABILITY);
+		createEAttribute(dataStabilityEClass, DATA_STABILITY__ENABLED);
+		createEAttribute(dataStabilityEClass, DATA_STABILITY__ALGORITHM);
+		createEAttribute(dataStabilityEClass, DATA_STABILITY__ACCESS_MULTIPLICITY);
+		createEAttribute(dataStabilityEClass, DATA_STABILITY__LEVEL);
+
+		nonAtomicDataCoherencyEClass = createEClass(NON_ATOMIC_DATA_COHERENCY);
+		createEAttribute(nonAtomicDataCoherencyEClass, NON_ATOMIC_DATA_COHERENCY__ENABLED);
+		createEAttribute(nonAtomicDataCoherencyEClass, NON_ATOMIC_DATA_COHERENCY__ALGORITHM);
+		createEAttribute(nonAtomicDataCoherencyEClass, NON_ATOMIC_DATA_COHERENCY__ACCESS_MULTIPLICITY);
 
 		semaphoreEClass = createEClass(SEMAPHORE);
 		createEAttribute(semaphoreEClass, SEMAPHORE__INITIAL_VALUE);
@@ -12294,7 +12443,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(labelEClass, LABEL__DATA_TYPE);
 		createEAttribute(labelEClass, LABEL__CONSTANT);
 		createEAttribute(labelEClass, LABEL__BVOLATILE);
-		createEAttribute(labelEClass, LABEL__BUFFERED);
+		createEAttribute(labelEClass, LABEL__DATA_STABILITY);
 		createEReference(labelEClass, LABEL__LABEL_ACCESSES);
 		createEReference(labelEClass, LABEL__SECTION);
 		createEReference(labelEClass, LABEL__SECTION_LINK_INT);
@@ -12331,7 +12480,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(labelAccessEClass, LABEL_ACCESS__DATA);
 		createEAttribute(labelAccessEClass, LABEL_ACCESS__ACCESS);
 		createEReference(labelAccessEClass, LABEL_ACCESS__STATISTIC);
-		createEAttribute(labelAccessEClass, LABEL_ACCESS__BUFFERED);
+		createEAttribute(labelAccessEClass, LABEL_ACCESS__DATA_STABILITY);
 		createEReference(labelAccessEClass, LABEL_ACCESS__DATA_LINK_INT);
 
 		semaphoreAccessEClass = createEClass(SEMAPHORE_ACCESS);
@@ -12462,14 +12611,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		schedTypeEEnum = createEEnum(SCHED_TYPE);
 		pinTypeEEnum = createEEnum(PIN_TYPE);
 		memoryAddressMappingTypeEEnum = createEEnum(MEMORY_ADDRESS_MAPPING_TYPE);
+		osDataConsistencyModeEEnum = createEEnum(OS_DATA_CONSISTENCY_MODE);
+		accessMultiplicityEEnum = createEEnum(ACCESS_MULTIPLICITY);
+		dataStabilityLevelEEnum = createEEnum(DATA_STABILITY_LEVEL);
 		comparatorTypeEEnum = createEEnum(COMPARATOR_TYPE);
 		conjunctionTypeEEnum = createEEnum(CONJUNCTION_TYPE);
 		waitEventTypeEEnum = createEEnum(WAIT_EVENT_TYPE);
 		waitingBehaviourEEnum = createEEnum(WAITING_BEHAVIOUR);
 		accessPrecedenceTypeEEnum = createEEnum(ACCESS_PRECEDENCE_TYPE);
 		orderTypeEEnum = createEEnum(ORDER_TYPE);
-		labelBufferingEEnum = createEEnum(LABEL_BUFFERING);
-		labelAccessBufferingEEnum = createEEnum(LABEL_ACCESS_BUFFERING);
+		labelDataStabilityEEnum = createEEnum(LABEL_DATA_STABILITY);
+		labelAccessDataStabilityEEnum = createEEnum(LABEL_ACCESS_DATA_STABILITY);
 		labelAccessEnumEEnum = createEEnum(LABEL_ACCESS_ENUM);
 		semaphoreAccessEnumEEnum = createEEnum(SEMAPHORE_ACCESS_ENUM);
 		preemptionEEnum = createEEnum(PREEMPTION);
@@ -12727,7 +12879,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		isrAllocationEClass.getESuperTypes().add(this.getBaseObject());
 		runnableAllocationEClass.getESuperTypes().add(this.getBaseObject());
 		osModelEClass.getESuperTypes().add(this.getBaseObject());
-		osBufferingEClass.getESuperTypes().add(this.getBaseObject());
+		osDataConsistencyEClass.getESuperTypes().add(this.getBaseObject());
 		semaphoreEClass.getESuperTypes().add(this.getReferableBaseObject());
 		schedulerEClass.getESuperTypes().add(this.getReferableBaseObject());
 		interruptSchedulingAlgorithmEClass.getESuperTypes().add(this.getBaseObject());
@@ -13597,16 +13749,26 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getRunnableAllocation_Entity(), this.getRunnable(), null, "entity", null, 1, 1, RunnableAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(osModelEClass, OSModel.class, "OSModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOSModel_OsBuffering(), this.getOsBuffering(), null, "osBuffering", null, 0, 1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOSModel_OsDataConsistency(), this.getOsDataConsistency(), null, "osDataConsistency", null, 0, 1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOSModel_Semaphores(), this.getSemaphore(), null, "semaphores", null, 0, -1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOSModel_OperatingSystems(), this.getOperatingSystem(), null, "operatingSystems", null, 0, -1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOSModel_OsOverheads(), this.getOsInstructions(), null, "osOverheads", null, 0, -1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(osBufferingEClass, OsBuffering.class, "OsBuffering", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOsBuffering_RunnableLevel(), theEcorePackage.getEBoolean(), "runnableLevel", "false", 0, 1, OsBuffering.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOsBuffering_ProcessLevel(), theEcorePackage.getEBoolean(), "processLevel", "false", 0, 1, OsBuffering.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOsBuffering_ScheduleSectionLevel(), theEcorePackage.getEBoolean(), "scheduleSectionLevel", "false", 0, 1, OsBuffering.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOsBuffering_BufferingAlgorithm(), theEcorePackage.getEString(), "bufferingAlgorithm", null, 0, 1, OsBuffering.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(osDataConsistencyEClass, OsDataConsistency.class, "OsDataConsistency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOsDataConsistency_Mode(), this.getOsDataConsistencyMode(), "mode", null, 0, 1, OsDataConsistency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsDataConsistency_DataStability(), this.getDataStability(), null, "dataStability", null, 0, 1, OsDataConsistency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsDataConsistency_NonAtomicDataCoherency(), this.getNonAtomicDataCoherency(), null, "nonAtomicDataCoherency", null, 0, 1, OsDataConsistency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dataStabilityEClass, DataStability.class, "DataStability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataStability_Enabled(), theEcorePackage.getEBoolean(), "enabled", "false", 0, 1, DataStability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataStability_Algorithm(), theEcorePackage.getEString(), "algorithm", null, 0, 1, DataStability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataStability_AccessMultiplicity(), this.getAccessMultiplicity(), "accessMultiplicity", null, 0, 1, DataStability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataStability_Level(), this.getDataStabilityLevel(), "level", null, 0, 1, DataStability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(nonAtomicDataCoherencyEClass, NonAtomicDataCoherency.class, "NonAtomicDataCoherency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNonAtomicDataCoherency_Enabled(), theEcorePackage.getEBoolean(), "enabled", "false", 0, 1, NonAtomicDataCoherency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNonAtomicDataCoherency_Algorithm(), theEcorePackage.getEString(), "algorithm", null, 0, 1, NonAtomicDataCoherency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNonAtomicDataCoherency_AccessMultiplicity(), this.getAccessMultiplicity(), "accessMultiplicity", null, 0, 1, NonAtomicDataCoherency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(semaphoreEClass, Semaphore.class, "Semaphore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSemaphore_InitialValue(), theEcorePackage.getEInt(), "initialValue", "0", 0, 1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -13985,7 +14147,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getLabel_DataType(), this.getDataType(), null, "dataType", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLabel_Constant(), theEcorePackage.getEBoolean(), "constant", "false", 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLabel_BVolatile(), theEcorePackage.getEBoolean(), "bVolatile", "false", 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLabel_Buffered(), this.getLabelBuffering(), "buffered", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLabel_DataStability(), this.getLabelDataStability(), "dataStability", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabel_LabelAccesses(), this.getLabelAccess(), this.getLabelAccess_DataLinkInt(), "labelAccesses", null, 0, -1, Label.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabel_Section(), this.getSection(), null, "section", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabel_SectionLinkInt(), this.getSection(), this.getSection_Labels(), "sectionLinkInt", null, 0, 1, Label.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14029,7 +14191,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getLabelAccess_Data(), this.getLabel(), null, "data", null, 1, 1, LabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLabelAccess_Access(), this.getLabelAccessEnum(), "access", null, 0, 1, LabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabelAccess_Statistic(), this.getLabelAccessStatistic(), null, "statistic", null, 0, 1, LabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLabelAccess_Buffered(), this.getLabelAccessBuffering(), "buffered", null, 0, 1, LabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLabelAccess_DataStability(), this.getLabelAccessDataStability(), "dataStability", null, 0, 1, LabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabelAccess_DataLinkInt(), this.getLabel(), this.getLabel_LabelAccesses(), "dataLinkInt", null, 1, 1, LabelAccess.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(semaphoreAccessEClass, SemaphoreAccess.class, "SemaphoreAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -14375,6 +14537,24 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(memoryAddressMappingTypeEEnum, MemoryAddressMappingType.ADDRESS);
 		addEEnumLiteral(memoryAddressMappingTypeEEnum, MemoryAddressMappingType.OFFSET);
 
+		initEEnum(osDataConsistencyModeEEnum, OsDataConsistencyMode.class, "OsDataConsistencyMode");
+		addEEnumLiteral(osDataConsistencyModeEEnum, OsDataConsistencyMode._UNDEFINED_);
+		addEEnumLiteral(osDataConsistencyModeEEnum, OsDataConsistencyMode.NO_PROTECTION);
+		addEEnumLiteral(osDataConsistencyModeEEnum, OsDataConsistencyMode.AUTOMATIC_PROTECTION);
+		addEEnumLiteral(osDataConsistencyModeEEnum, OsDataConsistencyMode.CUSTOM_PROTECTION);
+		addEEnumLiteral(osDataConsistencyModeEEnum, OsDataConsistencyMode.HANDLED_BY_MODEL_ELEMENTS);
+
+		initEEnum(accessMultiplicityEEnum, AccessMultiplicity.class, "AccessMultiplicity");
+		addEEnumLiteral(accessMultiplicityEEnum, AccessMultiplicity._UNDEFINED_);
+		addEEnumLiteral(accessMultiplicityEEnum, AccessMultiplicity.SINGLE_ACCESS);
+		addEEnumLiteral(accessMultiplicityEEnum, AccessMultiplicity.MULTIPLE_ACCESSES);
+
+		initEEnum(dataStabilityLevelEEnum, DataStabilityLevel.class, "DataStabilityLevel");
+		addEEnumLiteral(dataStabilityLevelEEnum, DataStabilityLevel._UNDEFINED_);
+		addEEnumLiteral(dataStabilityLevelEEnum, DataStabilityLevel.PROCESS);
+		addEEnumLiteral(dataStabilityLevelEEnum, DataStabilityLevel.RUNNABLE);
+		addEEnumLiteral(dataStabilityLevelEEnum, DataStabilityLevel.SCHEDULE_SECTION);
+
 		initEEnum(comparatorTypeEEnum, ComparatorType.class, "ComparatorType");
 		addEEnumLiteral(comparatorTypeEEnum, ComparatorType._UNDEFINED_);
 		addEEnumLiteral(comparatorTypeEEnum, ComparatorType.EQUAL);
@@ -14410,16 +14590,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(orderTypeEEnum, OrderType.START_SEQUENCE);
 		addEEnumLiteral(orderTypeEEnum, OrderType.END_SEQUENCE);
 
-		initEEnum(labelBufferingEEnum, LabelBuffering.class, "LabelBuffering");
-		addEEnumLiteral(labelBufferingEEnum, LabelBuffering._UNDEFINED_);
-		addEEnumLiteral(labelBufferingEEnum, LabelBuffering.BUFFERED);
-		addEEnumLiteral(labelBufferingEEnum, LabelBuffering.NOT_BUFFERED);
+		initEEnum(labelDataStabilityEEnum, LabelDataStability.class, "LabelDataStability");
+		addEEnumLiteral(labelDataStabilityEEnum, LabelDataStability._UNDEFINED_);
+		addEEnumLiteral(labelDataStabilityEEnum, LabelDataStability.NO_PROTECTION);
+		addEEnumLiteral(labelDataStabilityEEnum, LabelDataStability.AUTOMATIC_PROTECTION);
+		addEEnumLiteral(labelDataStabilityEEnum, LabelDataStability.CUSTOM_PROTECTION);
+		addEEnumLiteral(labelDataStabilityEEnum, LabelDataStability.HANDLED_BY_MODEL_ELEMENTS);
 
-		initEEnum(labelAccessBufferingEEnum, LabelAccessBuffering.class, "LabelAccessBuffering");
-		addEEnumLiteral(labelAccessBufferingEEnum, LabelAccessBuffering._UNDEFINED_);
-		addEEnumLiteral(labelAccessBufferingEEnum, LabelAccessBuffering.INHERITED);
-		addEEnumLiteral(labelAccessBufferingEEnum, LabelAccessBuffering.BUFFERED);
-		addEEnumLiteral(labelAccessBufferingEEnum, LabelAccessBuffering.NOT_BUFFERED);
+		initEEnum(labelAccessDataStabilityEEnum, LabelAccessDataStability.class, "LabelAccessDataStability");
+		addEEnumLiteral(labelAccessDataStabilityEEnum, LabelAccessDataStability._UNDEFINED_);
+		addEEnumLiteral(labelAccessDataStabilityEEnum, LabelAccessDataStability.INHERITED);
+		addEEnumLiteral(labelAccessDataStabilityEEnum, LabelAccessDataStability.NO_PROTECTION);
+		addEEnumLiteral(labelAccessDataStabilityEEnum, LabelAccessDataStability.AUTOMATIC_PROTECTION);
+		addEEnumLiteral(labelAccessDataStabilityEEnum, LabelAccessDataStability.CUSTOM_PROTECTION);
+		addEEnumLiteral(labelAccessDataStabilityEEnum, LabelAccessDataStability.HANDLED_BY_MODEL_ELEMENTS);
 
 		initEEnum(labelAccessEnumEEnum, LabelAccessEnum.class, "LabelAccessEnum");
 		addEEnumLiteral(labelAccessEnumEEnum, LabelAccessEnum._UNDEFINED_);

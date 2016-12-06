@@ -88,6 +88,7 @@ import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
+import org.eclipse.app4mc.amalthea.model.DataStability;
 import org.eclipse.app4mc.amalthea.model.DataStabilityGroup;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
@@ -189,13 +190,14 @@ import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
 import org.eclipse.app4mc.amalthea.model.Network;
 import org.eclipse.app4mc.amalthea.model.NetworkType;
+import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
-import org.eclipse.app4mc.amalthea.model.OsBuffering;
+import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
 import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
@@ -1914,11 +1916,23 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.OS_BUFFERING: {
-				OsBuffering osBuffering = (OsBuffering)theEObject;
-				T1 result = caseOsBuffering(osBuffering);
-				if (result == null) result = caseBaseObject(osBuffering);
-				if (result == null) result = caseIAnnotatable(osBuffering);
+			case AmaltheaPackage.OS_DATA_CONSISTENCY: {
+				OsDataConsistency osDataConsistency = (OsDataConsistency)theEObject;
+				T1 result = caseOsDataConsistency(osDataConsistency);
+				if (result == null) result = caseBaseObject(osDataConsistency);
+				if (result == null) result = caseIAnnotatable(osDataConsistency);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.DATA_STABILITY: {
+				DataStability dataStability = (DataStability)theEObject;
+				T1 result = caseDataStability(dataStability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.NON_ATOMIC_DATA_COHERENCY: {
+				NonAtomicDataCoherency nonAtomicDataCoherency = (NonAtomicDataCoherency)theEObject;
+				T1 result = caseNonAtomicDataCoherency(nonAtomicDataCoherency);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -5810,17 +5824,47 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Os Buffering</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Os Data Consistency</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Os Buffering</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Os Data Consistency</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOsBuffering(OsBuffering object) {
+	public T1 caseOsDataConsistency(OsDataConsistency object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Stability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Stability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseDataStability(DataStability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Non Atomic Data Coherency</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Non Atomic Data Coherency</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseNonAtomicDataCoherency(NonAtomicDataCoherency object) {
 		return null;
 	}
 
