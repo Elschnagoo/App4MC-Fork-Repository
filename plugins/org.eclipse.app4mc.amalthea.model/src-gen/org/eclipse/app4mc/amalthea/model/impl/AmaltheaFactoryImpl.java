@@ -129,6 +129,7 @@ import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwSystem;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
+import org.eclipse.app4mc.amalthea.model.ISRCategory;
 import org.eclipse.app4mc.amalthea.model.InstructionFetch;
 import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
@@ -686,6 +687,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createWaitEventTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.WAITING_BEHAVIOUR:
 				return createWaitingBehaviourFromString(eDataType, initialValue);
+			case AmaltheaPackage.ISR_CATEGORY:
+				return createISRCategoryFromString(eDataType, initialValue);
 			case AmaltheaPackage.ACCESS_PRECEDENCE_TYPE:
 				return createAccessPrecedenceTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.ORDER_TYPE:
@@ -789,6 +792,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertWaitEventTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.WAITING_BEHAVIOUR:
 				return convertWaitingBehaviourToString(eDataType, instanceValue);
+			case AmaltheaPackage.ISR_CATEGORY:
+				return convertISRCategoryToString(eDataType, instanceValue);
 			case AmaltheaPackage.ACCESS_PRECEDENCE_TYPE:
 				return convertAccessPrecedenceTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.ORDER_TYPE:
@@ -3969,6 +3974,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertWaitingBehaviourToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ISRCategory createISRCategoryFromString(EDataType eDataType, String initialValue) {
+		ISRCategory result = ISRCategory.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertISRCategoryToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

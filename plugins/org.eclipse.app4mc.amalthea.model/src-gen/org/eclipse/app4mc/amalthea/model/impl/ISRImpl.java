@@ -14,17 +14,48 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ISR;
+import org.eclipse.app4mc.amalthea.model.ISRCategory;
+
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>ISR</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ISRImpl#getCategory <em>Category</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class ISRImpl extends ProcessImpl implements ISR {
+	/**
+	 * The default value of the '{@link #getCategory() <em>Category</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCategory()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ISRCategory CATEGORY_EDEFAULT = ISRCategory._UNDEFINED_;
+
+	/**
+	 * The cached value of the '{@link #getCategory() <em>Category</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCategory()
+	 * @generated
+	 * @ordered
+	 */
+	protected ISRCategory category = CATEGORY_EDEFAULT;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -42,6 +73,101 @@ public class ISRImpl extends ProcessImpl implements ISR {
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getISR();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ISRCategory getCategory() {
+		return category;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCategory(ISRCategory newCategory) {
+		ISRCategory oldCategory = category;
+		category = newCategory == null ? CATEGORY_EDEFAULT : newCategory;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ISR__CATEGORY, oldCategory, category));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case AmaltheaPackage.ISR__CATEGORY:
+				return getCategory();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case AmaltheaPackage.ISR__CATEGORY:
+				setCategory((ISRCategory)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case AmaltheaPackage.ISR__CATEGORY:
+				setCategory(CATEGORY_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case AmaltheaPackage.ISR__CATEGORY:
+				return category != CATEGORY_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (category: ");
+		result.append(category);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ISRImpl

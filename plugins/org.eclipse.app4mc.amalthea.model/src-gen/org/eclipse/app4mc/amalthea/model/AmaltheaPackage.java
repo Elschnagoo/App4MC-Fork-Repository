@@ -19592,13 +19592,22 @@ public interface AmaltheaPackage extends EPackage {
 	int ISR__STIMULI = PROCESS__STIMULI;
 
 	/**
+	 * The feature id for the '<em><b>Category</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISR__CATEGORY = PROCESS_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>ISR</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISR_FEATURE_COUNT = PROCESS_FEATURE_COUNT + 0;
+	int ISR_FEATURE_COUNT = PROCESS_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -23245,6 +23254,16 @@ public interface AmaltheaPackage extends EPackage {
 	int WAITING_BEHAVIOUR = 349;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ISRCategory <em>ISR Category</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.ISRCategory
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getISRCategory()
+	 * @generated
+	 */
+	int ISR_CATEGORY = 350;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.AccessPrecedenceType <em>Access Precedence Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -23252,7 +23271,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAccessPrecedenceType()
 	 * @generated
 	 */
-	int ACCESS_PRECEDENCE_TYPE = 350;
+	int ACCESS_PRECEDENCE_TYPE = 351;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.OrderType <em>Order Type</em>}' enum.
@@ -23262,7 +23281,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOrderType()
 	 * @generated
 	 */
-	int ORDER_TYPE = 351;
+	int ORDER_TYPE = 352;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelDataStability <em>Label Data Stability</em>}' enum.
@@ -23272,7 +23291,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelDataStability()
 	 * @generated
 	 */
-	int LABEL_DATA_STABILITY = 352;
+	int LABEL_DATA_STABILITY = 353;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelAccessDataStability <em>Label Access Data Stability</em>}' enum.
@@ -23282,7 +23301,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessDataStability()
 	 * @generated
 	 */
-	int LABEL_ACCESS_DATA_STABILITY = 353;
+	int LABEL_ACCESS_DATA_STABILITY = 354;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelAccessEnum <em>Label Access Enum</em>}' enum.
@@ -23292,7 +23311,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessEnum()
 	 * @generated
 	 */
-	int LABEL_ACCESS_ENUM = 354;
+	int LABEL_ACCESS_ENUM = 355;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum <em>Semaphore Access Enum</em>}' enum.
@@ -23302,7 +23321,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreAccessEnum()
 	 * @generated
 	 */
-	int SEMAPHORE_ACCESS_ENUM = 355;
+	int SEMAPHORE_ACCESS_ENUM = 356;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Preemption <em>Preemption</em>}' enum.
@@ -23312,7 +23331,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPreemption()
 	 * @generated
 	 */
-	int PREEMPTION = 356;
+	int PREEMPTION = 357;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ConcurrencyType <em>Concurrency Type</em>}' enum.
@@ -23322,7 +23341,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConcurrencyType()
 	 * @generated
 	 */
-	int CONCURRENCY_TYPE = 357;
+	int CONCURRENCY_TYPE = 358;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ASILType <em>ASIL Type</em>}' enum.
@@ -23332,7 +23351,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getASILType()
 	 * @generated
 	 */
-	int ASIL_TYPE = 358;
+	int ASIL_TYPE = 359;
 
 
 	/**
@@ -31308,6 +31327,17 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getISR();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ISR#getCategory <em>Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Category</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ISR#getCategory()
+	 * @see #getISR()
+	 * @generated
+	 */
+	EAttribute getISR_Category();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ProcessPrototype <em>Process Prototype</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -33108,6 +33138,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getWaitingBehaviour();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.app4mc.amalthea.model.ISRCategory <em>ISR Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>ISR Category</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ISRCategory
+	 * @generated
+	 */
+	EEnum getISRCategory();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.app4mc.amalthea.model.AccessPrecedenceType <em>Access Precedence Type</em>}'.

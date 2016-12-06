@@ -301,74 +301,79 @@
       <nested inputs="amalthea.xcore#/EPackage/WaitingBehaviour/active" outputs="AmaltheaXMI.xsd#//WaitingBehaviour;XSDSimpleTypeDefinition=35/XSDEnumerationFacet=1"/>
       <nested inputs="amalthea.xcore#/EPackage/WaitingBehaviour/passive" outputs="AmaltheaXMI.xsd#//WaitingBehaviour;XSDSimpleTypeDefinition=35/XSDEnumerationFacet=2"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/AccessPrecedenceType" outputs="AmaltheaXMI.xsd#//AccessPrecedenceType;XSDSimpleTypeDefinition=36">
-      <nested inputs="amalthea.xcore#/EPackage/AccessPrecedenceType/_undefined_" outputs="AmaltheaXMI.xsd#//AccessPrecedenceType;XSDSimpleTypeDefinition=36/XSDEnumerationFacet"/>
-      <nested inputs="amalthea.xcore#/EPackage/AccessPrecedenceType/defaultWR" outputs="AmaltheaXMI.xsd#//AccessPrecedenceType;XSDSimpleTypeDefinition=36/XSDEnumerationFacet=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/AccessPrecedenceType/ignoreWR" outputs="AmaltheaXMI.xsd#//AccessPrecedenceType;XSDSimpleTypeDefinition=36/XSDEnumerationFacet=2"/>
-      <nested inputs="amalthea.xcore#/EPackage/AccessPrecedenceType/enforceRW" outputs="AmaltheaXMI.xsd#//AccessPrecedenceType;XSDSimpleTypeDefinition=36/XSDEnumerationFacet=3"/>
+    <nested inputs="amalthea.xcore#/EPackage/ISRCategory" outputs="AmaltheaXMI.xsd#//ISRCategory;XSDSimpleTypeDefinition=36">
+      <nested inputs="amalthea.xcore#/EPackage/ISRCategory/_undefined_" outputs="AmaltheaXMI.xsd#//ISRCategory;XSDSimpleTypeDefinition=36/XSDEnumerationFacet"/>
+      <nested inputs="amalthea.xcore#/EPackage/ISRCategory/CATEGORY_1" outputs="AmaltheaXMI.xsd#//ISRCategory;XSDSimpleTypeDefinition=36/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/ISRCategory/CATEGORY_2" outputs="AmaltheaXMI.xsd#//ISRCategory;XSDSimpleTypeDefinition=36/XSDEnumerationFacet=2"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/OrderType" outputs="AmaltheaXMI.xsd#//OrderType;XSDSimpleTypeDefinition=37">
-      <nested inputs="amalthea.xcore#/EPackage/OrderType/_undefined_" outputs="AmaltheaXMI.xsd#//OrderType;XSDSimpleTypeDefinition=37/XSDEnumerationFacet"/>
-      <nested inputs="amalthea.xcore#/EPackage/OrderType/order" outputs="AmaltheaXMI.xsd#//OrderType;XSDSimpleTypeDefinition=37/XSDEnumerationFacet=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/OrderType/directOrder" outputs="AmaltheaXMI.xsd#//OrderType;XSDSimpleTypeDefinition=37/XSDEnumerationFacet=2"/>
-      <nested inputs="amalthea.xcore#/EPackage/OrderType/startSequence" outputs="AmaltheaXMI.xsd#//OrderType;XSDSimpleTypeDefinition=37/XSDEnumerationFacet=3"/>
-      <nested inputs="amalthea.xcore#/EPackage/OrderType/endSequence" outputs="AmaltheaXMI.xsd#//OrderType;XSDSimpleTypeDefinition=37/XSDEnumerationFacet=4"/>
+    <nested inputs="amalthea.xcore#/EPackage/AccessPrecedenceType" outputs="AmaltheaXMI.xsd#//AccessPrecedenceType;XSDSimpleTypeDefinition=37">
+      <nested inputs="amalthea.xcore#/EPackage/AccessPrecedenceType/_undefined_" outputs="AmaltheaXMI.xsd#//AccessPrecedenceType;XSDSimpleTypeDefinition=37/XSDEnumerationFacet"/>
+      <nested inputs="amalthea.xcore#/EPackage/AccessPrecedenceType/defaultWR" outputs="AmaltheaXMI.xsd#//AccessPrecedenceType;XSDSimpleTypeDefinition=37/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/AccessPrecedenceType/ignoreWR" outputs="AmaltheaXMI.xsd#//AccessPrecedenceType;XSDSimpleTypeDefinition=37/XSDEnumerationFacet=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/AccessPrecedenceType/enforceRW" outputs="AmaltheaXMI.xsd#//AccessPrecedenceType;XSDSimpleTypeDefinition=37/XSDEnumerationFacet=3"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/LabelDataStability" outputs="AmaltheaXMI.xsd#//LabelDataStability;XSDSimpleTypeDefinition=38">
-      <nested inputs="amalthea.xcore#/EPackage/LabelDataStability/_undefined_" outputs="AmaltheaXMI.xsd#//LabelDataStability;XSDSimpleTypeDefinition=38/XSDEnumerationFacet"/>
-      <nested inputs="amalthea.xcore#/EPackage/LabelDataStability/noProtection" outputs="AmaltheaXMI.xsd#//LabelDataStability;XSDSimpleTypeDefinition=38/XSDEnumerationFacet=1"/>
+    <nested inputs="amalthea.xcore#/EPackage/OrderType" outputs="AmaltheaXMI.xsd#//OrderType;XSDSimpleTypeDefinition=38">
+      <nested inputs="amalthea.xcore#/EPackage/OrderType/_undefined_" outputs="AmaltheaXMI.xsd#//OrderType;XSDSimpleTypeDefinition=38/XSDEnumerationFacet"/>
+      <nested inputs="amalthea.xcore#/EPackage/OrderType/order" outputs="AmaltheaXMI.xsd#//OrderType;XSDSimpleTypeDefinition=38/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/OrderType/directOrder" outputs="AmaltheaXMI.xsd#//OrderType;XSDSimpleTypeDefinition=38/XSDEnumerationFacet=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/OrderType/startSequence" outputs="AmaltheaXMI.xsd#//OrderType;XSDSimpleTypeDefinition=38/XSDEnumerationFacet=3"/>
+      <nested inputs="amalthea.xcore#/EPackage/OrderType/endSequence" outputs="AmaltheaXMI.xsd#//OrderType;XSDSimpleTypeDefinition=38/XSDEnumerationFacet=4"/>
+    </nested>
+    <nested inputs="amalthea.xcore#/EPackage/LabelDataStability" outputs="AmaltheaXMI.xsd#//LabelDataStability;XSDSimpleTypeDefinition=39">
+      <nested inputs="amalthea.xcore#/EPackage/LabelDataStability/_undefined_" outputs="AmaltheaXMI.xsd#//LabelDataStability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet"/>
+      <nested inputs="amalthea.xcore#/EPackage/LabelDataStability/noProtection" outputs="AmaltheaXMI.xsd#//LabelDataStability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=1"/>
       <nested inputs="amalthea.xcore#/EPackage/LabelDataStability/automaticProtection"
-          outputs="AmaltheaXMI.xsd#//LabelDataStability;XSDSimpleTypeDefinition=38/XSDEnumerationFacet=2"/>
+          outputs="AmaltheaXMI.xsd#//LabelDataStability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=2"/>
       <nested inputs="amalthea.xcore#/EPackage/LabelDataStability/customProtection"
-          outputs="AmaltheaXMI.xsd#//LabelDataStability;XSDSimpleTypeDefinition=38/XSDEnumerationFacet=3"/>
+          outputs="AmaltheaXMI.xsd#//LabelDataStability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=3"/>
       <nested inputs="amalthea.xcore#/EPackage/LabelDataStability/handledByModelElements"
-          outputs="AmaltheaXMI.xsd#//LabelDataStability;XSDSimpleTypeDefinition=38/XSDEnumerationFacet=4"/>
+          outputs="AmaltheaXMI.xsd#//LabelDataStability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=4"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/LabelAccessDataStability" outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=39">
+    <nested inputs="amalthea.xcore#/EPackage/LabelAccessDataStability" outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=40">
       <nested inputs="amalthea.xcore#/EPackage/LabelAccessDataStability/_undefined_"
-          outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet"/>
+          outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=40/XSDEnumerationFacet"/>
       <nested inputs="amalthea.xcore#/EPackage/LabelAccessDataStability/inherited"
-          outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=1"/>
+          outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=40/XSDEnumerationFacet=1"/>
       <nested inputs="amalthea.xcore#/EPackage/LabelAccessDataStability/noProtection"
-          outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=2"/>
+          outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=40/XSDEnumerationFacet=2"/>
       <nested inputs="amalthea.xcore#/EPackage/LabelAccessDataStability/automaticProtection"
-          outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=3"/>
+          outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=40/XSDEnumerationFacet=3"/>
       <nested inputs="amalthea.xcore#/EPackage/LabelAccessDataStability/customProtection"
-          outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=4"/>
+          outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=40/XSDEnumerationFacet=4"/>
       <nested inputs="amalthea.xcore#/EPackage/LabelAccessDataStability/handledByModelElements"
-          outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=39/XSDEnumerationFacet=5"/>
+          outputs="AmaltheaXMI.xsd#//LabelAccessDataStability;XSDSimpleTypeDefinition=40/XSDEnumerationFacet=5"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/LabelAccessEnum" outputs="AmaltheaXMI.xsd#//LabelAccessEnum;XSDSimpleTypeDefinition=40">
-      <nested inputs="amalthea.xcore#/EPackage/LabelAccessEnum/_undefined_" outputs="AmaltheaXMI.xsd#//LabelAccessEnum;XSDSimpleTypeDefinition=40/XSDEnumerationFacet"/>
-      <nested inputs="amalthea.xcore#/EPackage/LabelAccessEnum/read" outputs="AmaltheaXMI.xsd#//LabelAccessEnum;XSDSimpleTypeDefinition=40/XSDEnumerationFacet=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/LabelAccessEnum/write" outputs="AmaltheaXMI.xsd#//LabelAccessEnum;XSDSimpleTypeDefinition=40/XSDEnumerationFacet=2"/>
+    <nested inputs="amalthea.xcore#/EPackage/LabelAccessEnum" outputs="AmaltheaXMI.xsd#//LabelAccessEnum;XSDSimpleTypeDefinition=41">
+      <nested inputs="amalthea.xcore#/EPackage/LabelAccessEnum/_undefined_" outputs="AmaltheaXMI.xsd#//LabelAccessEnum;XSDSimpleTypeDefinition=41/XSDEnumerationFacet"/>
+      <nested inputs="amalthea.xcore#/EPackage/LabelAccessEnum/read" outputs="AmaltheaXMI.xsd#//LabelAccessEnum;XSDSimpleTypeDefinition=41/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/LabelAccessEnum/write" outputs="AmaltheaXMI.xsd#//LabelAccessEnum;XSDSimpleTypeDefinition=41/XSDEnumerationFacet=2"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/SemaphoreAccessEnum" outputs="AmaltheaXMI.xsd#//SemaphoreAccessEnum;XSDSimpleTypeDefinition=41">
-      <nested inputs="amalthea.xcore#/EPackage/SemaphoreAccessEnum/_undefined_" outputs="AmaltheaXMI.xsd#//SemaphoreAccessEnum;XSDSimpleTypeDefinition=41/XSDEnumerationFacet"/>
-      <nested inputs="amalthea.xcore#/EPackage/SemaphoreAccessEnum/request" outputs="AmaltheaXMI.xsd#//SemaphoreAccessEnum;XSDSimpleTypeDefinition=41/XSDEnumerationFacet=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/SemaphoreAccessEnum/exclusive" outputs="AmaltheaXMI.xsd#//SemaphoreAccessEnum;XSDSimpleTypeDefinition=41/XSDEnumerationFacet=2"/>
-      <nested inputs="amalthea.xcore#/EPackage/SemaphoreAccessEnum/release" outputs="AmaltheaXMI.xsd#//SemaphoreAccessEnum;XSDSimpleTypeDefinition=41/XSDEnumerationFacet=3"/>
+    <nested inputs="amalthea.xcore#/EPackage/SemaphoreAccessEnum" outputs="AmaltheaXMI.xsd#//SemaphoreAccessEnum;XSDSimpleTypeDefinition=42">
+      <nested inputs="amalthea.xcore#/EPackage/SemaphoreAccessEnum/_undefined_" outputs="AmaltheaXMI.xsd#//SemaphoreAccessEnum;XSDSimpleTypeDefinition=42/XSDEnumerationFacet"/>
+      <nested inputs="amalthea.xcore#/EPackage/SemaphoreAccessEnum/request" outputs="AmaltheaXMI.xsd#//SemaphoreAccessEnum;XSDSimpleTypeDefinition=42/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/SemaphoreAccessEnum/exclusive" outputs="AmaltheaXMI.xsd#//SemaphoreAccessEnum;XSDSimpleTypeDefinition=42/XSDEnumerationFacet=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/SemaphoreAccessEnum/release" outputs="AmaltheaXMI.xsd#//SemaphoreAccessEnum;XSDSimpleTypeDefinition=42/XSDEnumerationFacet=3"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/Preemption" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=42">
-      <nested inputs="amalthea.xcore#/EPackage/Preemption/_undefined_" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=42/XSDEnumerationFacet"/>
-      <nested inputs="amalthea.xcore#/EPackage/Preemption/preemptive" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=42/XSDEnumerationFacet=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/Preemption/cooperative" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=42/XSDEnumerationFacet=2"/>
-      <nested inputs="amalthea.xcore#/EPackage/Preemption/non_preemptive" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=42/XSDEnumerationFacet=3"/>
+    <nested inputs="amalthea.xcore#/EPackage/Preemption" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=43">
+      <nested inputs="amalthea.xcore#/EPackage/Preemption/_undefined_" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=43/XSDEnumerationFacet"/>
+      <nested inputs="amalthea.xcore#/EPackage/Preemption/preemptive" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=43/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/Preemption/cooperative" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=43/XSDEnumerationFacet=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/Preemption/non_preemptive" outputs="AmaltheaXMI.xsd#//Preemption;XSDSimpleTypeDefinition=43/XSDEnumerationFacet=3"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/ConcurrencyType" outputs="AmaltheaXMI.xsd#//ConcurrencyType;XSDSimpleTypeDefinition=43">
-      <nested inputs="amalthea.xcore#/EPackage/ConcurrencyType/_undefined_" outputs="AmaltheaXMI.xsd#//ConcurrencyType;XSDSimpleTypeDefinition=43/XSDEnumerationFacet"/>
-      <nested inputs="amalthea.xcore#/EPackage/ConcurrencyType/SingleCoreSafe" outputs="AmaltheaXMI.xsd#//ConcurrencyType;XSDSimpleTypeDefinition=43/XSDEnumerationFacet=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/ConcurrencyType/MultiCoreSafe" outputs="AmaltheaXMI.xsd#//ConcurrencyType;XSDSimpleTypeDefinition=43/XSDEnumerationFacet=2"/>
+    <nested inputs="amalthea.xcore#/EPackage/ConcurrencyType" outputs="AmaltheaXMI.xsd#//ConcurrencyType;XSDSimpleTypeDefinition=44">
+      <nested inputs="amalthea.xcore#/EPackage/ConcurrencyType/_undefined_" outputs="AmaltheaXMI.xsd#//ConcurrencyType;XSDSimpleTypeDefinition=44/XSDEnumerationFacet"/>
+      <nested inputs="amalthea.xcore#/EPackage/ConcurrencyType/SingleCoreSafe" outputs="AmaltheaXMI.xsd#//ConcurrencyType;XSDSimpleTypeDefinition=44/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/ConcurrencyType/MultiCoreSafe" outputs="AmaltheaXMI.xsd#//ConcurrencyType;XSDSimpleTypeDefinition=44/XSDEnumerationFacet=2"/>
       <nested inputs="amalthea.xcore#/EPackage/ConcurrencyType/SingleCorePrioSafe"
-          outputs="AmaltheaXMI.xsd#//ConcurrencyType;XSDSimpleTypeDefinition=43/XSDEnumerationFacet=3"/>
+          outputs="AmaltheaXMI.xsd#//ConcurrencyType;XSDSimpleTypeDefinition=44/XSDEnumerationFacet=3"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/ASILType" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=44">
-      <nested inputs="amalthea.xcore#/EPackage/ASILType/_undefined_" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=44/XSDEnumerationFacet"/>
-      <nested inputs="amalthea.xcore#/EPackage/ASILType/D" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=44/XSDEnumerationFacet=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/ASILType/C" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=44/XSDEnumerationFacet=2"/>
-      <nested inputs="amalthea.xcore#/EPackage/ASILType/B" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=44/XSDEnumerationFacet=3"/>
-      <nested inputs="amalthea.xcore#/EPackage/ASILType/A" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=44/XSDEnumerationFacet=4"/>
-      <nested inputs="amalthea.xcore#/EPackage/ASILType/QM" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=44/XSDEnumerationFacet=5"/>
+    <nested inputs="amalthea.xcore#/EPackage/ASILType" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=45">
+      <nested inputs="amalthea.xcore#/EPackage/ASILType/_undefined_" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=45/XSDEnumerationFacet"/>
+      <nested inputs="amalthea.xcore#/EPackage/ASILType/D" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=45/XSDEnumerationFacet=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/ASILType/C" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=45/XSDEnumerationFacet=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/ASILType/B" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=45/XSDEnumerationFacet=3"/>
+      <nested inputs="amalthea.xcore#/EPackage/ASILType/A" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=45/XSDEnumerationFacet=4"/>
+      <nested inputs="amalthea.xcore#/EPackage/ASILType/QM" outputs="AmaltheaXMI.xsd#//ASILType;XSDSimpleTypeDefinition=45/XSDEnumerationFacet=5"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/Amalthea" outputs="AmaltheaXMI.xsd#//Amalthea;XSDComplexTypeDefinition">
       <nested inputs="amalthea.xcore#/EPackage/Amalthea/swModel" outputs="AmaltheaXMI.xsd#//Amalthea;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"/>
@@ -1811,7 +1816,9 @@
       <nested inputs="amalthea.xcore#/EPackage/Task/multipleTaskActivationLimit" outputs="AmaltheaXMI.xsd#//Task;XSDComplexTypeDefinition=268/XSDAttributeUse=2"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/Task" outputs="AmaltheaXMI.xsd#//Task;XSDElementDeclaration=268"/>
-    <nested inputs="amalthea.xcore#/EPackage/ISR" outputs="AmaltheaXMI.xsd#//ISR;XSDComplexTypeDefinition=269"/>
+    <nested inputs="amalthea.xcore#/EPackage/ISR" outputs="AmaltheaXMI.xsd#//ISR;XSDComplexTypeDefinition=269">
+      <nested inputs="amalthea.xcore#/EPackage/ISR/category" outputs="AmaltheaXMI.xsd#//ISR;XSDComplexTypeDefinition=269/XSDAttributeUse"/>
+    </nested>
     <nested inputs="amalthea.xcore#/EPackage/ISR" outputs="AmaltheaXMI.xsd#//ISR;XSDElementDeclaration=269"/>
     <nested inputs="amalthea.xcore#/EPackage/ProcessPrototype" outputs="AmaltheaXMI.xsd#//ProcessPrototype;XSDComplexTypeDefinition=270">
       <nested inputs="amalthea.xcore#/EPackage/ProcessPrototype/preemption" outputs="AmaltheaXMI.xsd#//ProcessPrototype;XSDComplexTypeDefinition=270/XSDAttributeUse"/>

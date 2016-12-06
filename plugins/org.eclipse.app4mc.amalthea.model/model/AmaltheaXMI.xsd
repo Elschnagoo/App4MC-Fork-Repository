@@ -395,6 +395,13 @@
       <xsd:enumeration value="passive"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="ISRCategory">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="CATEGORY_1"/>
+      <xsd:enumeration value="CATEGORY_2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="AccessPrecedenceType">
     <xsd:annotation>
       <xsd:documentation>Defines the access precedence at the time of one task period.</xsd:documentation>
@@ -4781,7 +4788,9 @@ and includes the direct representation of all abstractions.</xsd:documentation>
       <xsd:documentation>Interrupt service routine</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:Process"/>
+      <xsd:extension base="am:Process">
+        <xsd:attribute name="category" type="am:ISRCategory"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ISR" type="am:ISR">

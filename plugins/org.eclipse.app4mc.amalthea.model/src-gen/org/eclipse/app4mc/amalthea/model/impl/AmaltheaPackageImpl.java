@@ -160,6 +160,7 @@ import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.INamedElement;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
+import org.eclipse.app4mc.amalthea.model.ISRCategory;
 import org.eclipse.app4mc.amalthea.model.ISystem;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.InstructionFetch;
@@ -2836,6 +2837,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EEnum waitingBehaviourEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum isrCategoryEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -9737,6 +9745,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getISR_Category() {
+		return (EAttribute)isrEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProcessPrototype() {
 		return processPrototypeEClass;
 	}
@@ -11276,6 +11293,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getISRCategory() {
+		return isrCategoryEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getAccessPrecedenceType() {
 		return accessPrecedenceTypeEEnum;
 	}
@@ -12401,6 +12427,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(taskEClass, TASK__MULTIPLE_TASK_ACTIVATION_LIMIT);
 
 		isrEClass = createEClass(ISR);
+		createEAttribute(isrEClass, ISR__CATEGORY);
 
 		processPrototypeEClass = createEClass(PROCESS_PROTOTYPE);
 		createEAttribute(processPrototypeEClass, PROCESS_PROTOTYPE__PREEMPTION);
@@ -12618,6 +12645,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		conjunctionTypeEEnum = createEEnum(CONJUNCTION_TYPE);
 		waitEventTypeEEnum = createEEnum(WAIT_EVENT_TYPE);
 		waitingBehaviourEEnum = createEEnum(WAITING_BEHAVIOUR);
+		isrCategoryEEnum = createEEnum(ISR_CATEGORY);
 		accessPrecedenceTypeEEnum = createEEnum(ACCESS_PRECEDENCE_TYPE);
 		orderTypeEEnum = createEEnum(ORDER_TYPE);
 		labelDataStabilityEEnum = createEEnum(LABEL_DATA_STABILITY);
@@ -14105,6 +14133,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getTask_MultipleTaskActivationLimit(), theEcorePackage.getEInt(), "multipleTaskActivationLimit", "0", 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(isrEClass, org.eclipse.app4mc.amalthea.model.ISR.class, "ISR", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getISR_Category(), this.getISRCategory(), "category", null, 0, 1, org.eclipse.app4mc.amalthea.model.ISR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processPrototypeEClass, ProcessPrototype.class, "ProcessPrototype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProcessPrototype_Preemption(), this.getPreemption(), "preemption", null, 0, 1, ProcessPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14576,6 +14605,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(waitingBehaviourEEnum, WaitingBehaviour._UNDEFINED_);
 		addEEnumLiteral(waitingBehaviourEEnum, WaitingBehaviour.ACTIVE);
 		addEEnumLiteral(waitingBehaviourEEnum, WaitingBehaviour.PASSIVE);
+
+		initEEnum(isrCategoryEEnum, ISRCategory.class, "ISRCategory");
+		addEEnumLiteral(isrCategoryEEnum, ISRCategory._UNDEFINED_);
+		addEEnumLiteral(isrCategoryEEnum, ISRCategory.CATEGORY_1);
+		addEEnumLiteral(isrCategoryEEnum, ISRCategory.CATEGORY_2);
 
 		initEEnum(accessPrecedenceTypeEEnum, AccessPrecedenceType.class, "AccessPrecedenceType");
 		addEEnumLiteral(accessPrecedenceTypeEEnum, AccessPrecedenceType._UNDEFINED_);

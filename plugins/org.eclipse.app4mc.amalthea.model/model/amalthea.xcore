@@ -2808,6 +2808,13 @@ class Task extends Process
  */
 class ISR extends Process
 {
+	ISRCategory category
+}
+
+enum ISRCategory {
+		_undefined_ // Display: "<isr category>"
+		CATEGORY_1
+		CATEGORY_2
 }
 
 /*
