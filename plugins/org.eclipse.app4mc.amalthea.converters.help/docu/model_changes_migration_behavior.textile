@@ -267,3 +267,75 @@ table(classic){margin-left:40px}.
 |SectionMapping|Mapping Model|Content is removed from the model. As per 0.7.1, there is a possibility to specify PhysicalSectionMapping element i.e. defining mapping of various Section elements to Memory|
 |SectionMappingConstraint|Property Constraints Model|Content is removed from the model.As per 0.7.1, there is a possibility to specify PhysicalSectionConstraint element i.e. defining possibility of Section allocation across various Memories |
 |DataUnit|Sw model| Content is migrated as DataSize. Attribute "unit" is set as DataSizeUnit of type "bit"| 
+
+h2. Version App4MC 0.7.1 to App4MC 0.7.2
+
+*Change in the namespace:* 
+
+table(classic){margin-left:40px}. 
+| *_AMALTHEA Namespace (version App4MC 0.7.1)_* | *_AMALTHEA Namespace  (version App4MC 0.7.2)_* |
+|http://app4mc.eclipse.org/amalthea/0.7.1 |http://app4mc.eclipse.org/amalthea/0.7.2 |
+
+
+*Below are the changes in the reference names:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name (version APP4MC 0.7.1)_* | *_Changed Variable Name (version APP4MC 0.7.2)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+|runnables|group|RunnablePairingConstraint|Constraints Model |xml tag "runnables" present inside "RunnablePairingConstraint" object is changed to "group" in amxmi file|
+|processes|group|ProcessPairingConstraint|Constraints Model |xml tag "processes" present inside "ProcessPairingConstraint" object is changed to "group" in amxmi file|
+|labels|group|DataPairingConstraint|Constraints Model |xml tag "labels" present inside "DataPairingConstraint" object is changed to "group" in amxmi file|
+|initalValue|initialValue|Semaphore|OS Model |xml attribute "initalValue" present inside "Semaphore" object is changed to "initialValue" in amxmi file|
+
+*Below are the changes in the reference Types:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name_* | *_Variable Type (version APP4MC 0.7.1)_* | *_Variable Type (version APP4MC 0.7.2)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+|instructions|OsExecutionInstructions|Instructions|SchedulingSWUnit|OS Model |type of the instructions tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
+|apiSendMessage|OsExecutionInstructions|Instructions|OsAPIInstructions|OS Model |type of the apiSendMessage tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
+|apiTerminateTask|OsExecutionInstructions|Instructions|OsAPIInstructions|OS Model |type of the apiTerminateTask tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
+|apiSchedule|OsExecutionInstructions|Instructions|OsAPIInstructions|OS Model |type of the apiSchedule tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
+|apiRequestResource|OsExecutionInstructions|Instructions|OsAPIInstructions|OS Model |type of the apiRequestResource tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
+|apiReleaseResource|OsExecutionInstructions|Instructions|OsAPIInstructions|OS Model |type of the apiReleaseResource tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
+|apiSetEvent|OsExecutionInstructions|Instructions|OsAPIInstructions|OS Model |type of the apiSetEvent tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
+|apiWaitEvent|OsExecutionInstructions|Instructions|OsAPIInstructions|OS Model |type of the apiWaitEvent tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
+|apiClearEvent|OsExecutionInstructions|Instructions|OsAPIInstructions|OS Model |type of the apiClearEvent tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
+|apiActivateTask|OsExecutionInstructions|Instructions|OsAPIInstructions|OS Model |type of the apiActivateTask tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
+|apiEnforcedMigration|OsExecutionInstructions|Instructions|OsAPIInstructions|OS Model |type of the apiEnforcedMigration tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
+
+
+*Below are the changes in the relation of elements:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name_* | *_Variable Type_* | *_Variable Relation (version APP4MC 0.7.1)_* | *_Variable Relation (version APP4MC 0.7.2)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+|memory|Memory|containment|association|HwMemoryProperty|PropertyConstraints model|memory objects containment is changed as association relation. As a result definition of Memory object should not be present inside HwMemoryProperty, rather only reference of memory should be present inside HwMemoryProperty.  Model migration is performed in the following way for this change : Memory elements definition from HwMemoryProperty tag are moved to HW Model (Note: addition of Memory (from PropertyConstraints model) to HW model happens only if Memory with this name is not existing in the model scope)|
+|core|Core|containment|association|HwCoreProperty|PropertyConstraints model|core objects containment is changed as association relation. As a result definition of Core object should not be present inside HWCoreProperty, rather only reference of core should be present inside HWCoreProperty.  Model migration is performed in the following way for this change : Core elements definition from HwCoreProperty tag are moved to HW Model (Note: addition of Memory (from PropertyConstraints model) to HW model happens only if Memory with this name is not existing in the model scope)|
+
+*Below are the changes in Enum elements:*
+
+table(classic){margin-left:40px}. 
+| *Enum Name_* | *_Enum Literal (version APP4MC 0.7.1)_* | *_Enum Literal (version APP4MC 0.7.2)_* | *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+|Preemption|unknown|-|SW Model|unknown literal is removed from Preemption. Model Migration will replace "unknown" literal with the default literal|
+
+
+
+*Below references are removed:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name (version APP4MC 0.7.1)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+|samplingType|SamplingType|Deviation|Hardware Model  Stimuli MOdel  OS Model  Software Model|In 0.7.2, samplingType attribute is shifted from Deviation to Boundaries element.As a part of Model migration -> samplingType content is removed from Deviation and associated to the corresponding Distribution of type Boundaries. If Boundaries element is not present inside Deviation as a distribution, corresponding samplingType data is skipped during model migration|
+|coreTypeDefinitions|CoreType|PropertyConstraintsModel|Property Constraints Model|coreTypeDefinitions objects are removed from the PropertyConstraintsModel tag and are associated to HW Model (Note: addition of CoreType to HW model happens only if CoreType with this name is not existing in the model scope)|
+|memoryTypeDefinitions|MemoryType|PropertyConstraintsModel|Property Constraints Model|memoryTypeDefinitions objects are removed from the PropertyConstraintsModel tag and are associated to HW Model (Note: addition of MemoryType to HW model happens only if MemoryType with this name is not existing in the model scope)|
+
+*Below Classes are removed:*
+
+table(classic){margin-left:40px}. 
+| *_Class Name (version APP4MC 0.7.1)_* | *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+|TargetProcess|Constraints Model|Content is removed from the model. There is no equivalent of this model element in APP4MC 0.7.2|
+|TargetCallSequence|Constraints Model|Content is removed from the model. There is no equivalent of this model element in APP4MC 0.7.2|
+|OsExecutionInstructions, OsExecutionInstructionsDeviation, OsExecutionInstructionsConstant |OS Model|Replacement elements are : Instructions,InstructionsDeviation,InstructionsConstant. As there is no change in the content of these elements(when compared to previous elements) -> during model migration corresponding old type names are replaced with the new model elements  |
+|ProbabilityGroup|SW Model|RunnableProbabilitySwitch is replaced with ProbabilityGroup|
+|ProbabilityRunnableItem|SW Model|ProbabilityRunnableItem is replaced wtih ProbabilitySwitchEntry|
+|DeviationRunnableItem|SW Model|Content of DeviationRunnableItem i.e RunnableItem is moved directly inside the Group as a part of "items" list| 
+ 
+ 
+
