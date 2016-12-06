@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <osModel>
-    <osBuffering />
     <operatingSystems name="OperatingSystem">
       <taskSchedulers name="Task_Scheduler_Core_1">
         <schedulingUnit xsi:type="am:SchedulingHWUnit">
@@ -16,5 +15,6 @@
         <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
     </operatingSystems>
+    <osDataConsistency mode="noProtection" />
   </osModel>
 </am:Amalthea>

@@ -81,12 +81,12 @@
       </callGraph>
     </tasks>
     <runnables name="ABSCalculation" tags="SwcABSCalculation?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="VotedDecelerationRate?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="VotedVehicleSpeed?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="VotedWheelSpeed?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="ArbitratedBrakeForce?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="ABSActivation?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="ABSMode?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VotedDecelerationRate?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VotedVehicleSpeed?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VotedWheelSpeed?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ArbitratedBrakeForce?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ABSActivation?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ABSMode?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -100,10 +100,10 @@
       </runnableItems>
     </runnables>
     <runnables name="APedSensor" tags="SwcEngineSensors?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="APedSensor1Voltage?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="APedSensor2Voltage?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="APedPosition1?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="APedPosition2?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="APedSensor1Voltage?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="APedSensor2Voltage?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="APedPosition1?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="APedPosition2?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -117,9 +117,9 @@
       </runnableItems>
     </runnables>
     <runnables name="APedVoter" tags="SwcEngineController?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="APedPosition1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="APedPosition2?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="VotedAPedPosition?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="APedPosition1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="APedPosition2?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VotedAPedPosition?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -133,9 +133,9 @@
       </runnableItems>
     </runnables>
     <runnables name="BaseFuelMass" tags="SwcEngineController?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="MassAirFlow?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BaseFuelMassPerStroke?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="MAFRate?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="MassAirFlow?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BaseFuelMassPerStroke?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="MAFRate?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -149,8 +149,8 @@
       </runnableItems>
     </runnables>
     <runnables name="BrakeActuator" tags="SwcABSCalculation?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="CaliperPosition?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceVoltage?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="CaliperPosition?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceVoltage?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -164,8 +164,8 @@
       </runnableItems>
     </runnables>
     <runnables name="BrakeActuatorMonitor" tags="SwcBrakeForceCalculation?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeForce?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceFeedback?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeForce?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceFeedback?type=Label" access="read" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -179,10 +179,10 @@
       </runnableItems>
     </runnables>
     <runnables name="BrakeForceActuation" tags="SwcABSCalculation?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="ABSActivation?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="ABSMode?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeForce?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceCurrent?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ABSActivation?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ABSMode?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeForce?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceCurrent?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -196,9 +196,9 @@
       </runnableItems>
     </runnables>
     <runnables name="BrakeForceArbiter" tags="SwcBrakeForceArbiter?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="CalculatedBrakeForce?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeSafetyState?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="ArbitratedBrakeForce?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="CalculatedBrakeForce?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeSafetyState?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ArbitratedBrakeForce?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -212,13 +212,13 @@
       </runnableItems>
     </runnables>
     <runnables name="BrakeForceCalculation" tags="SwcBrakeForceCalculation?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceFeedback?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="ArbitratedDiagnosisRequest?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="MonitoredVehicleState?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeSafetyLevel?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="CalculatedBrakeForce?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeMonitorLevel?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceFeedback?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ArbitratedDiagnosisRequest?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="MonitoredVehicleState?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeSafetyLevel?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="CalculatedBrakeForce?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeMonitorLevel?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -232,8 +232,8 @@
       </runnableItems>
     </runnables>
     <runnables name="BrakePedalSensorDiagnosis" tags="SwcSensorPostprocessing?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage2?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage2?type=Label" access="read" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -247,10 +247,10 @@
       </runnableItems>
     </runnables>
     <runnables name="BrakePedalSensorTranslation" tags="SwcSensorPostprocessing?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage2?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition1?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition2?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage2?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition1?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition2?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -264,9 +264,9 @@
       </runnableItems>
     </runnables>
     <runnables name="BrakePedalSensorVoter" tags="SwcSensorPostprocessing?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition2?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="VotedBrakePedalPosition?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition2?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VotedBrakePedalPosition?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -280,13 +280,13 @@
       </runnableItems>
     </runnables>
     <runnables name="BrakeSafetyMonitor" tags="SwcBrakeForceCalculation?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceFeedback?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="ArbitratedDiagnosisRequest?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="MonitoredVehicleState?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeMonitorLevel?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeSafetyLevel?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeSafetyState?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceFeedback?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ArbitratedDiagnosisRequest?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="MonitoredVehicleState?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeMonitorLevel?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeSafetyLevel?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeSafetyState?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -300,9 +300,9 @@
       </runnableItems>
     </runnables>
     <runnables name="CaliperPositionCalculation" tags="SwcABSCalculation?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="CaliperPosition?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceCurrent?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="CaliperPosition?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="CaliperPosition?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceCurrent?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="CaliperPosition?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -316,8 +316,8 @@
       </runnableItems>
     </runnables>
     <runnables name="CheckPlausability" tags="SwcBrakeForceCalculation?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="VotedBrakePedalPosition?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VotedBrakePedalPosition?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -331,8 +331,8 @@
       </runnableItems>
     </runnables>
     <runnables name="CylNumObserver" tags="SwcCylNumObserver?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="CylinderNumber?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="TriggeredCylinderNumber?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="CylinderNumber?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="TriggeredCylinderNumber?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -346,8 +346,8 @@
       </runnableItems>
     </runnables>
     <runnables name="DecelerationSensorDiagnosis" tags="SwcSensorPostprocessing?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage2?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage2?type=Label" access="read" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -361,10 +361,10 @@
       </runnableItems>
     </runnables>
     <runnables name="DecelerationSensorTranslation" tags="SwcSensorPostprocessing?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage2?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="DecelerationRate1?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="DecelerationRate2?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage2?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DecelerationRate1?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DecelerationRate2?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -378,9 +378,9 @@
       </runnableItems>
     </runnables>
     <runnables name="DecelerationSensorVoter" tags="SwcSensorPostprocessing?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="DecelerationRate1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="DecelerationRate2?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="VotedDecelerationRate?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DecelerationRate1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DecelerationRate2?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VotedDecelerationRate?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -394,7 +394,7 @@
       </runnableItems>
     </runnables>
     <runnables name="DiagnosisArbiter" tags="SwcBrakeForceCalculation?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="ArbitratedDiagnosisRequest?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ArbitratedDiagnosisRequest?type=Label" access="read" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -408,7 +408,7 @@
       </runnableItems>
     </runnables>
     <runnables name="EcuBrakeActuator" tags="SwcActuators?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceVoltage?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeForceVoltage?type=Label" access="read" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -422,8 +422,8 @@
       </runnableItems>
     </runnables>
     <runnables name="EcuBrakePedalSensor" tags="SwcSensors?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage1?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage2?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage1?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage2?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -437,8 +437,8 @@
       </runnableItems>
     </runnables>
     <runnables name="EcuDecelerationSensor" tags="SwcSensors?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage1?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage2?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage1?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage2?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -452,7 +452,7 @@
       </runnableItems>
     </runnables>
     <runnables name="EcuStopLightActuator" tags="SwcActuators?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeApplication?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeApplication?type=Label" access="read" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -466,8 +466,8 @@
       </runnableItems>
     </runnables>
     <runnables name="EcuVehicleSpeedSensor" tags="SwcSensors?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage1?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage2?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage1?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage2?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -481,8 +481,8 @@
       </runnableItems>
     </runnables>
     <runnables name="EcuWheelSpeedSensor" tags="SwcSensors?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage1?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage2?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage1?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage2?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -496,16 +496,16 @@
       </runnableItems>
     </runnables>
     <runnables name="IgnitionTimeActuation" tags="SwcInjIgnActuation?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="TriggeredCylinderNumber?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime2?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime3?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime4?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime5?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime6?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime7?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime8?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="TriggeredCylinderNumber?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime2?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime3?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime4?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime5?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime6?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime7?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime8?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -519,8 +519,8 @@
       </runnableItems>
     </runnables>
     <runnables name="IgnitionTiming" tags="SwcEngineController?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="MAFRate?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="MAFRate?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -534,16 +534,16 @@
       </runnableItems>
     </runnables>
     <runnables name="InjectionTimeActuation" tags="SwcInjIgnActuation?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="TriggeredCylinderNumber?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="TotalFuelMassPerStroke?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime2?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime3?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime4?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime5?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime6?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime7?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime8?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="TriggeredCylinderNumber?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="TotalFuelMassPerStroke?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime2?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime3?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime4?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime5?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime6?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime7?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="InjectionTime8?type=Label" access="read" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -557,8 +557,8 @@
       </runnableItems>
     </runnables>
     <runnables name="MassAirFlowSensor" tags="SwcEngineSensors?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="MAFSensorVoltage?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="MassAirFlow?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="MAFSensorVoltage?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="MassAirFlow?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -572,8 +572,8 @@
       </runnableItems>
     </runnables>
     <runnables name="StopLightActuator" tags="SwcABSCalculation?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="ArbitratedBrakeForce?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="BrakeApplication?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ArbitratedBrakeForce?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BrakeApplication?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -587,8 +587,8 @@
       </runnableItems>
     </runnables>
     <runnables name="ThrottleActuator" tags="SwcEngineController?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="DesiredThrottlePosition?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="DesiredThrottlePositionVoltage?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DesiredThrottlePosition?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DesiredThrottlePositionVoltage?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -602,9 +602,9 @@
       </runnableItems>
     </runnables>
     <runnables name="ThrottleController" tags="SwcEngineController?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="VotedAPedPosition?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="ThrottlePosition?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="DesiredThrottlePosition?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VotedAPedPosition?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ThrottlePosition?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="DesiredThrottlePosition?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -618,9 +618,9 @@
       </runnableItems>
     </runnables>
     <runnables name="ThrottleSensor" tags="SwcEngineSensors?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="ThrottleSensor1Voltage?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="ThrottleSensor2Voltage?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="ThrottlePosition?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ThrottleSensor1Voltage?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ThrottleSensor2Voltage?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="ThrottlePosition?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -634,8 +634,8 @@
       </runnableItems>
     </runnables>
     <runnables name="TotalFuelMass" tags="SwcEngineController?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="TransientFuelMassPerStroke?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="TotalFuelMassPerStroke?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="TransientFuelMassPerStroke?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="TotalFuelMassPerStroke?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -649,8 +649,8 @@
       </runnableItems>
     </runnables>
     <runnables name="TransientFuelMass" tags="SwcEngineController?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="BaseFuelMassPerStroke?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="TransientFuelMassPerStroke?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="BaseFuelMassPerStroke?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="TransientFuelMassPerStroke?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -664,8 +664,8 @@
       </runnableItems>
     </runnables>
     <runnables name="VehicleSpeedSensorDiagnosis" tags="SwcSensorPostprocessing?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage2?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage2?type=Label" access="read" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -679,10 +679,10 @@
       </runnableItems>
     </runnables>
     <runnables name="VehicleSpeedSensorTranslation" tags="SwcSensorPostprocessing?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage2?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeed1?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeed2?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage2?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeed1?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeed2?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -696,9 +696,9 @@
       </runnableItems>
     </runnables>
     <runnables name="VehicleSpeedSensorVoter" tags="SwcSensorPostprocessing?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeed1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeed2?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="VotedVehicleSpeed?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeed1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeed2?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VotedVehicleSpeed?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -712,7 +712,7 @@
       </runnableItems>
     </runnables>
     <runnables name="VehicleStateMonitor" tags="SwcBrakeForceCalculation?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="MonitoredVehicleState?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="MonitoredVehicleState?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -726,8 +726,8 @@
       </runnableItems>
     </runnables>
     <runnables name="WheelSpeedSensorDiagnosis" tags="SwcSensorPostprocessing?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage2?type=Label" access="read" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage2?type=Label" access="read" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -741,10 +741,10 @@
       </runnableItems>
     </runnables>
     <runnables name="WheelSpeedSensorTranslation" tags="SwcSensorPostprocessing?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage2?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeed1?type=Label" access="write" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeed2?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage2?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeed1?type=Label" access="write" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeed2?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -758,9 +758,9 @@
       </runnableItems>
     </runnables>
     <runnables name="WheelSpeedSensorVoter" tags="SwcSensorPostprocessing?type=Tag">
-      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeed1?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeed2?type=Label" access="read" buffered="inherited" />
-      <runnableItems xsi:type="am:LabelAccess" data="VotedWheelSpeed?type=Label" access="write" buffered="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeed1?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="WheelSpeed2?type=Label" access="read" dataStability="inherited" />
+      <runnableItems xsi:type="am:LabelAccess" data="VotedWheelSpeed?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsDeviation">
           <deviation>
@@ -773,217 +773,217 @@
         </default>
       </runnableItems>
     </runnables>
-    <labels name="ABSActivation" buffered="notBuffered">
+    <labels name="ABSActivation" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="ABSMode" buffered="notBuffered">
+    <labels name="ABSMode" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="APedPosition1" buffered="notBuffered">
+    <labels name="APedPosition1" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="APedPosition2" buffered="notBuffered">
+    <labels name="APedPosition2" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="APedSensor1Voltage" buffered="notBuffered">
+    <labels name="APedSensor1Voltage" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="APedSensor2Voltage" buffered="notBuffered">
+    <labels name="APedSensor2Voltage" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="ArbitratedBrakeForce" buffered="notBuffered">
+    <labels name="ArbitratedBrakeForce" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="ArbitratedDiagnosisRequest" buffered="notBuffered">
+    <labels name="ArbitratedDiagnosisRequest" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="BaseFuelMassPerStroke" buffered="notBuffered">
+    <labels name="BaseFuelMassPerStroke" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="BrakeApplication" buffered="notBuffered">
+    <labels name="BrakeApplication" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="BrakeForce" buffered="notBuffered">
+    <labels name="BrakeForce" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="BrakeForceCurrent" buffered="notBuffered">
+    <labels name="BrakeForceCurrent" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="BrakeForceFeedback" buffered="notBuffered">
+    <labels name="BrakeForceFeedback" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="BrakeForceVoltage" buffered="notBuffered">
+    <labels name="BrakeForceVoltage" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="BrakeMonitorLevel" buffered="notBuffered">
+    <labels name="BrakeMonitorLevel" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="BrakePedalPosition" buffered="notBuffered">
+    <labels name="BrakePedalPosition" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="BrakePedalPosition1" buffered="notBuffered">
+    <labels name="BrakePedalPosition1" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="BrakePedalPosition2" buffered="notBuffered">
+    <labels name="BrakePedalPosition2" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="BrakePedalPositionVoltage1" buffered="notBuffered">
+    <labels name="BrakePedalPositionVoltage1" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="BrakePedalPositionVoltage2" buffered="notBuffered">
+    <labels name="BrakePedalPositionVoltage2" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="BrakeSafetyLevel" buffered="notBuffered">
+    <labels name="BrakeSafetyLevel" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="BrakeSafetyState" buffered="notBuffered">
+    <labels name="BrakeSafetyState" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="CalculatedBrakeForce" buffered="notBuffered">
+    <labels name="CalculatedBrakeForce" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="CaliperPosition" buffered="notBuffered">
+    <labels name="CaliperPosition" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="CylinderNumber" buffered="notBuffered">
+    <labels name="CylinderNumber" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="DecelerationRate1" buffered="notBuffered">
+    <labels name="DecelerationRate1" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="DecelerationRate2" buffered="notBuffered">
+    <labels name="DecelerationRate2" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="DecelerationVoltage1" buffered="notBuffered">
+    <labels name="DecelerationVoltage1" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="DecelerationVoltage2" buffered="notBuffered">
+    <labels name="DecelerationVoltage2" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="DesiredThrottlePosition" buffered="notBuffered">
+    <labels name="DesiredThrottlePosition" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="DesiredThrottlePositionVoltage" buffered="notBuffered">
+    <labels name="DesiredThrottlePositionVoltage" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="IgnitionTime" buffered="notBuffered">
+    <labels name="IgnitionTime" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="IgnitionTime1" buffered="notBuffered">
+    <labels name="IgnitionTime1" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="IgnitionTime2" buffered="notBuffered">
+    <labels name="IgnitionTime2" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="IgnitionTime3" buffered="notBuffered">
+    <labels name="IgnitionTime3" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="IgnitionTime4" buffered="notBuffered">
+    <labels name="IgnitionTime4" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="IgnitionTime5" buffered="notBuffered">
+    <labels name="IgnitionTime5" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="IgnitionTime6" buffered="notBuffered">
+    <labels name="IgnitionTime6" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="IgnitionTime7" buffered="notBuffered">
+    <labels name="IgnitionTime7" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="IgnitionTime8" buffered="notBuffered">
+    <labels name="IgnitionTime8" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="InjectionTime1" buffered="notBuffered">
+    <labels name="InjectionTime1" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="InjectionTime2" buffered="notBuffered">
+    <labels name="InjectionTime2" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="InjectionTime3" buffered="notBuffered">
+    <labels name="InjectionTime3" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="InjectionTime4" buffered="notBuffered">
+    <labels name="InjectionTime4" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="InjectionTime5" buffered="notBuffered">
+    <labels name="InjectionTime5" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="InjectionTime6" buffered="notBuffered">
+    <labels name="InjectionTime6" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="InjectionTime7" buffered="notBuffered">
+    <labels name="InjectionTime7" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="InjectionTime8" buffered="notBuffered">
+    <labels name="InjectionTime8" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="MAFRate" buffered="notBuffered">
+    <labels name="MAFRate" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="MAFSensorVoltage" buffered="notBuffered">
+    <labels name="MAFSensorVoltage" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="MassAirFlow" buffered="notBuffered">
+    <labels name="MassAirFlow" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="MonitoredVehicleState" buffered="notBuffered">
+    <labels name="MonitoredVehicleState" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="ThrottlePosition" buffered="notBuffered">
+    <labels name="ThrottlePosition" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="ThrottleSensor1Voltage" buffered="notBuffered">
+    <labels name="ThrottleSensor1Voltage" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="ThrottleSensor2Voltage" buffered="notBuffered">
+    <labels name="ThrottleSensor2Voltage" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="TotalFuelMassPerStroke" buffered="notBuffered">
+    <labels name="TotalFuelMassPerStroke" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="TransientFuelMassPerStroke" buffered="notBuffered">
+    <labels name="TransientFuelMassPerStroke" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="TriggeredCylinderNumber" buffered="notBuffered">
+    <labels name="TriggeredCylinderNumber" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="VehicleSpeed1" buffered="notBuffered">
+    <labels name="VehicleSpeed1" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="VehicleSpeed2" buffered="notBuffered">
+    <labels name="VehicleSpeed2" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="VehicleSpeedVoltage1" buffered="notBuffered">
+    <labels name="VehicleSpeedVoltage1" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="VehicleSpeedVoltage2" buffered="notBuffered">
+    <labels name="VehicleSpeedVoltage2" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="VotedAPedPosition" buffered="notBuffered">
+    <labels name="VotedAPedPosition" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="VotedBrakePedalPosition" buffered="notBuffered">
+    <labels name="VotedBrakePedalPosition" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="VotedDecelerationRate" buffered="notBuffered">
+    <labels name="VotedDecelerationRate" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="VotedVehicleSpeed" buffered="notBuffered">
+    <labels name="VotedVehicleSpeed" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="VotedWheelSpeed" buffered="notBuffered">
+    <labels name="VotedWheelSpeed" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="WheelSpeed1" buffered="notBuffered">
+    <labels name="WheelSpeed1" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="WheelSpeed2" buffered="notBuffered">
+    <labels name="WheelSpeed2" dataStability="noProtection">
       <size value="8" unit="bit" />
     </labels>
-    <labels name="WheelSpeedVoltage1" buffered="notBuffered">
+    <labels name="WheelSpeedVoltage1" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <labels name="WheelSpeedVoltage2" buffered="notBuffered">
+    <labels name="WheelSpeedVoltage2" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
     <processPrototypes name="PP0" preemption="cooperative" firstRunnable="BrakePedalSensorTranslation?type=Runnable" lastRunnable="BrakeActuatorMonitor?type=Runnable" activation="Timer_10MS?type=PeriodicActivation" />

@@ -115,7 +115,6 @@
     </system>
   </hwModel>
   <osModel>
-    <osBuffering />
     <operatingSystems name="OperatingSystem">
       <taskSchedulers name="Scheduler_1">
         <schedulingUnit xsi:type="am:SchedulingHWUnit">
@@ -124,6 +123,7 @@
         <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
     </operatingSystems>
+    <osDataConsistency mode="noProtection" />
   </osModel>
   <stimuliModel>
     <stimuli xsi:type="am:InterProcess" name="Stimulus_Task_2" />
