@@ -69,6 +69,23 @@ public class ConstraintsConverter extends AbstractConverter {
 				if (childElement != null) {
 					childElement.setName("group");
 				}
+
+				// in 0.7.2, TargetProcess, TargetCallSequence elements are removed.
+				final Element targetElement = affinityConstraintElement.getChild("target");
+
+				if (targetElement != null) {
+
+					final String targetType = targetElement.getAttributeValue("type", this.helper.getGenericNS("xsi"));
+
+					if (targetType != null
+							&& (targetType.equals("am:TargetCallSequence") || targetType.equals("am:TargetProcess"))) {
+
+						affinityConstraintElement.removeContent(targetElement);
+
+					}
+
+				}
+
 			}
 		}
 	}

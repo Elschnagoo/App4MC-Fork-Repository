@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <constraintsModel>
+    <affinityConstraints xsi:type="am:RunnablePairingConstraint"/>
+    <affinityConstraints xsi:type="am:RunnableSeparationConstraint">
+      <target xsi:type="am:TargetCallSequence"/>
+    </affinityConstraints>
+    <affinityConstraints xsi:type="am:RunnablePairingConstraint">
+      <target xsi:type="am:TargetProcess"/>
+    </affinityConstraints>
+  </constraintsModel>
+</am:Amalthea>
