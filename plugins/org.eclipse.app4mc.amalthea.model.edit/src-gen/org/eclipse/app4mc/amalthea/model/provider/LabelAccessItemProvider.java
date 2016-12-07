@@ -138,6 +138,7 @@ public class LabelAccessItemProvider extends RunnableItemItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getLabelAccess_Statistic());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getLabelAccess_TransmissionPolicy());
 		}
 		return childrenFeatures;
 	}
@@ -211,6 +212,7 @@ public class LabelAccessItemProvider extends RunnableItemItemProvider {
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AmaltheaPackage.LABEL_ACCESS__STATISTIC:
+			case AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -248,6 +250,11 @@ public class LabelAccessItemProvider extends RunnableItemItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getLabelAccess_Statistic(),
 				 AmaltheaFactory.eINSTANCE.createLabelAccessStatistic()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getLabelAccess_TransmissionPolicy(),
+				 AmaltheaFactory.eINSTANCE.createTransmissionPolicy()));
 	}
 
 }

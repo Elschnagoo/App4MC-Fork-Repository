@@ -158,6 +158,15 @@ abstract class Instructions
 }
 
 /*
+ * Data transmission details for communication (e.g. LabelAccesses)
+ */
+class TransmissionPolicy {
+	int chunkSize = "0"
+	int chunkProcessingInstructions = "0"
+	double transmitRatio = "1.0"
+}
+
+/*
  * Deviated set of execution cycles
  */
 class InstructionsDeviation extends Instructions
@@ -3069,6 +3078,11 @@ class LabelAccess extends RunnableItem
 	 * Optional parameter for statistic values
 	 */
 	contains resolving LabelAccessStatistic statistic
+	
+	/*
+	 * Optional parameter for transmission policy of larger data
+	 */
+	contains resolving TransmissionPolicy transmissionPolicy
 	
 	/*
 	 * Defines the data stability needs of the label access

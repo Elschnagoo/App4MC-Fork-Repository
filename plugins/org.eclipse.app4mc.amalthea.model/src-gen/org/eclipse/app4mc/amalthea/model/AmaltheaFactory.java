@@ -50,6 +50,15 @@ public interface AmaltheaFactory extends EFactory {
 	Tag createTag();
 
 	/**
+	 * Returns a new object of class '<em>Transmission Policy</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Transmission Policy</em>'.
+	 * @generated
+	 */
+	TransmissionPolicy createTransmissionPolicy();
+
+	/**
 	 * Returns a new object of class '<em>Instructions Deviation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

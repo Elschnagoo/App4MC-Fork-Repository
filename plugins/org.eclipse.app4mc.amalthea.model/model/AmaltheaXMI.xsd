@@ -699,6 +699,24 @@ exclusive: gets access to requested semaphore only when there is no other user a
       <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="TransmissionPolicy">
+    <xsd:annotation>
+      <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="chunkSize" type="xsd:int"/>
+    <xsd:attribute name="chunkProcessingInstructions" type="xsd:int"/>
+    <xsd:attribute name="transmitRatio" type="xsd:double"/>
+  </xsd:complexType>
+  <xsd:element name="TransmissionPolicy" type="am:TransmissionPolicy">
+    <xsd:annotation>
+      <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="InstructionsDeviation">
     <xsd:annotation>
       <xsd:documentation>Deviated set of execution cycles</xsd:documentation>
@@ -5095,6 +5113,11 @@ It can be used to define which mode value is written to the label.</xsd:document
           <xsd:element name="statistic" type="am:LabelAccessStatistic">
             <xsd:annotation>
               <xsd:documentation>Optional parameter for statistic values</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="transmissionPolicy" type="am:TransmissionPolicy">
+            <xsd:annotation>
+              <xsd:documentation>Optional parameter for transmission policy of larger data</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
         </xsd:choice>

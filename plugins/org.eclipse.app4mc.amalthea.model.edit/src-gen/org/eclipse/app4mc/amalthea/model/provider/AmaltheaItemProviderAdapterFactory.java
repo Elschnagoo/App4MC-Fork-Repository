@@ -128,6 +128,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TransmissionPolicy} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TransmissionPolicyItemProvider transmissionPolicyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TransmissionPolicy}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTransmissionPolicyAdapter() {
+		if (transmissionPolicyItemProvider == null) {
+			transmissionPolicyItemProvider = new TransmissionPolicyItemProvider(this);
+		}
+
+		return transmissionPolicyItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Time} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5794,6 +5817,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	public void dispose() {
 		if (amaltheaItemProvider != null) amaltheaItemProvider.dispose();
 		if (tagItemProvider != null) tagItemProvider.dispose();
+		if (transmissionPolicyItemProvider != null) transmissionPolicyItemProvider.dispose();
 		if (instructionsDeviationItemProvider != null) instructionsDeviationItemProvider.dispose();
 		if (instructionsConstantItemProvider != null) instructionsConstantItemProvider.dispose();
 		if (timeItemProvider != null) timeItemProvider.dispose();

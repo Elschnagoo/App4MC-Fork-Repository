@@ -18,6 +18,7 @@ import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
+import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -38,6 +39,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getData <em>Data</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getAccess <em>Access</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getStatistic <em>Statistic</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getTransmissionPolicy <em>Transmission Policy</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getDataStability <em>Data Stability</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getDataLinkInt <em>Data Link Int</em>}</li>
  * </ul>
@@ -84,6 +86,16 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 	 * @ordered
 	 */
 	protected LabelAccessStatistic statistic;
+
+	/**
+	 * The cached value of the '{@link #getTransmissionPolicy() <em>Transmission Policy</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransmissionPolicy()
+	 * @generated
+	 * @ordered
+	 */
+	protected TransmissionPolicy transmissionPolicy;
 
 	/**
 	 * The default value of the '{@link #getDataStability() <em>Data Stability</em>}' attribute.
@@ -266,6 +278,72 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TransmissionPolicy getTransmissionPolicy() {
+		if (transmissionPolicy != null && transmissionPolicy.eIsProxy()) {
+			InternalEObject oldTransmissionPolicy = (InternalEObject)transmissionPolicy;
+			transmissionPolicy = (TransmissionPolicy)eResolveProxy(oldTransmissionPolicy);
+			if (transmissionPolicy != oldTransmissionPolicy) {
+				InternalEObject newTransmissionPolicy = (InternalEObject)transmissionPolicy;
+				NotificationChain msgs = oldTransmissionPolicy.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY, null, null);
+				if (newTransmissionPolicy.eInternalContainer() == null) {
+					msgs = newTransmissionPolicy.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY, oldTransmissionPolicy, transmissionPolicy));
+			}
+		}
+		return transmissionPolicy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TransmissionPolicy basicGetTransmissionPolicy() {
+		return transmissionPolicy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTransmissionPolicy(TransmissionPolicy newTransmissionPolicy, NotificationChain msgs) {
+		TransmissionPolicy oldTransmissionPolicy = transmissionPolicy;
+		transmissionPolicy = newTransmissionPolicy;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY, oldTransmissionPolicy, newTransmissionPolicy);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransmissionPolicy(TransmissionPolicy newTransmissionPolicy) {
+		if (newTransmissionPolicy != transmissionPolicy) {
+			NotificationChain msgs = null;
+			if (transmissionPolicy != null)
+				msgs = ((InternalEObject)transmissionPolicy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY, null, msgs);
+			if (newTransmissionPolicy != null)
+				msgs = ((InternalEObject)newTransmissionPolicy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY, null, msgs);
+			msgs = basicSetTransmissionPolicy(newTransmissionPolicy, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY, newTransmissionPolicy, newTransmissionPolicy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LabelAccessDataStability getDataStability() {
 		return dataStability;
 	}
@@ -368,6 +446,8 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 		switch (featureID) {
 			case AmaltheaPackage.LABEL_ACCESS__STATISTIC:
 				return basicSetStatistic(null, msgs);
+			case AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY:
+				return basicSetTransmissionPolicy(null, msgs);
 			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
 				return basicSetDataLinkInt(null, msgs);
 		}
@@ -390,6 +470,9 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 			case AmaltheaPackage.LABEL_ACCESS__STATISTIC:
 				if (resolve) return getStatistic();
 				return basicGetStatistic();
+			case AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY:
+				if (resolve) return getTransmissionPolicy();
+				return basicGetTransmissionPolicy();
 			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
 				return getDataStability();
 			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
@@ -415,6 +498,9 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 				return;
 			case AmaltheaPackage.LABEL_ACCESS__STATISTIC:
 				setStatistic((LabelAccessStatistic)newValue);
+				return;
+			case AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY:
+				setTransmissionPolicy((TransmissionPolicy)newValue);
 				return;
 			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
 				setDataStability((LabelAccessDataStability)newValue);
@@ -443,6 +529,9 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 			case AmaltheaPackage.LABEL_ACCESS__STATISTIC:
 				setStatistic((LabelAccessStatistic)null);
 				return;
+			case AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY:
+				setTransmissionPolicy((TransmissionPolicy)null);
+				return;
 			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
 				setDataStability(DATA_STABILITY_EDEFAULT);
 				return;
@@ -467,6 +556,8 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 				return access != ACCESS_EDEFAULT;
 			case AmaltheaPackage.LABEL_ACCESS__STATISTIC:
 				return statistic != null;
+			case AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY:
+				return transmissionPolicy != null;
 			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
 				return dataStability != DATA_STABILITY_EDEFAULT;
 			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:

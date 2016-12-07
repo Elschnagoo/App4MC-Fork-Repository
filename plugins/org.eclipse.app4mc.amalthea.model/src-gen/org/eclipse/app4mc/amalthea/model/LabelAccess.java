@@ -29,6 +29,7 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getData <em>Data</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getAccess <em>Access</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getStatistic <em>Statistic</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getTransmissionPolicy <em>Transmission Policy</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getDataStability <em>Data Stability</em>}</li>
  * </ul>
  *
@@ -118,6 +119,31 @@ public interface LabelAccess extends RunnableItem {
 	 * @generated
 	 */
 	void setStatistic(LabelAccessStatistic value);
+
+	/**
+	 * Returns the value of the '<em><b>Transmission Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Optional parameter for transmission policy of larger data
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Transmission Policy</em>' containment reference.
+	 * @see #setTransmissionPolicy(TransmissionPolicy)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccess_TransmissionPolicy()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	TransmissionPolicy getTransmissionPolicy();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getTransmissionPolicy <em>Transmission Policy</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transmission Policy</em>' containment reference.
+	 * @see #getTransmissionPolicy()
+	 * @generated
+	 */
+	void setTransmissionPolicy(TransmissionPolicy value);
 
 	/**
 	 * Returns the value of the '<em><b>Data Stability</b></em>' attribute.

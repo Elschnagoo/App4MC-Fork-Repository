@@ -294,6 +294,7 @@ import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TimestampList;
+import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
@@ -360,6 +361,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 		switch (eClass.getClassifierID()) {
 			case AmaltheaPackage.AMALTHEA: return createAmalthea();
 			case AmaltheaPackage.TAG: return createTag();
+			case AmaltheaPackage.TRANSMISSION_POLICY: return createTransmissionPolicy();
 			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: return createInstructionsDeviation();
 			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: return createInstructionsConstant();
 			case AmaltheaPackage.TIME: return createTime();
@@ -835,6 +837,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public Tag createTag() {
 		TagImpl tag = new TagImpl();
 		return tag;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TransmissionPolicy createTransmissionPolicy() {
+		TransmissionPolicyImpl transmissionPolicy = new TransmissionPolicyImpl();
+		return transmissionPolicy;
 	}
 
 	/**

@@ -313,6 +313,7 @@ import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimestampList;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
+import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TriggerEvent;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
@@ -453,6 +454,12 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.INSTRUCTIONS: {
 				Instructions instructions = (Instructions)theEObject;
 				T1 result = caseInstructions(instructions);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TRANSMISSION_POLICY: {
+				TransmissionPolicy transmissionPolicy = (TransmissionPolicy)theEObject;
+				T1 result = caseTransmissionPolicy(transmissionPolicy);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3285,6 +3292,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseInstructions(Instructions object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Transmission Policy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Transmission Policy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseTransmissionPolicy(TransmissionPolicy object) {
 		return null;
 	}
 
