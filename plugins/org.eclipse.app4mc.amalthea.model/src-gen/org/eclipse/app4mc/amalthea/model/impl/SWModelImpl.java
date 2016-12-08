@@ -16,6 +16,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.CustomEntity;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -52,6 +53,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getTasks <em>Tasks</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getRunnables <em>Runnables</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getLabels <em>Labels</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getChannels <em>Channels</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getProcessPrototypes <em>Process Prototypes</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getSections <em>Sections</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getActivations <em>Activations</em>}</li>
@@ -106,6 +108,16 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * @ordered
 	 */
 	protected EList<Label> labels;
+
+	/**
+	 * The cached value of the '{@link #getChannels() <em>Channels</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getChannels()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Channel> channels;
 
 	/**
 	 * The cached value of the '{@link #getProcessPrototypes() <em>Process Prototypes</em>}' containment reference list.
@@ -279,6 +291,18 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Channel> getChannels() {
+		if (channels == null) {
+			channels = new EObjectContainmentEList.Resolving<Channel>(Channel.class, this, AmaltheaPackage.SW_MODEL__CHANNELS);
+		}
+		return channels;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<ProcessPrototype> getProcessPrototypes() {
 		if (processPrototypes == null) {
 			processPrototypes = new EObjectContainmentEList.Resolving<ProcessPrototype>(ProcessPrototype.class, this, AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES);
@@ -410,6 +434,8 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 				return ((InternalEList<?>)getRunnables()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.SW_MODEL__LABELS:
 				return ((InternalEList<?>)getLabels()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.SW_MODEL__CHANNELS:
+				return ((InternalEList<?>)getChannels()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES:
 				return ((InternalEList<?>)getProcessPrototypes()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.SW_MODEL__SECTIONS:
@@ -450,6 +476,8 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 				return getRunnables();
 			case AmaltheaPackage.SW_MODEL__LABELS:
 				return getLabels();
+			case AmaltheaPackage.SW_MODEL__CHANNELS:
+				return getChannels();
 			case AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES:
 				return getProcessPrototypes();
 			case AmaltheaPackage.SW_MODEL__SECTIONS:
@@ -498,6 +526,10 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 			case AmaltheaPackage.SW_MODEL__LABELS:
 				getLabels().clear();
 				getLabels().addAll((Collection<? extends Label>)newValue);
+				return;
+			case AmaltheaPackage.SW_MODEL__CHANNELS:
+				getChannels().clear();
+				getChannels().addAll((Collection<? extends Channel>)newValue);
 				return;
 			case AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES:
 				getProcessPrototypes().clear();
@@ -563,6 +595,9 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 			case AmaltheaPackage.SW_MODEL__LABELS:
 				getLabels().clear();
 				return;
+			case AmaltheaPackage.SW_MODEL__CHANNELS:
+				getChannels().clear();
+				return;
 			case AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES:
 				getProcessPrototypes().clear();
 				return;
@@ -613,6 +648,8 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 				return runnables != null && !runnables.isEmpty();
 			case AmaltheaPackage.SW_MODEL__LABELS:
 				return labels != null && !labels.isEmpty();
+			case AmaltheaPackage.SW_MODEL__CHANNELS:
+				return channels != null && !channels.isEmpty();
 			case AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES:
 				return processPrototypes != null && !processPrototypes.isEmpty();
 			case AmaltheaPackage.SW_MODEL__SECTIONS:

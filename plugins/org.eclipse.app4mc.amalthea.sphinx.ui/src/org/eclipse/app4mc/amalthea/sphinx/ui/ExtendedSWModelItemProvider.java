@@ -23,6 +23,7 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.provider.SWModelItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ActivationsIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ChannelsIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.CustomEntitiesIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.EventsIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ISRsIP;
@@ -59,8 +60,9 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 	protected ProcessPrototypesIP prototypesIP;
 	protected ISRsIP isrsIP;
 	protected ActivationsIP activationsIP;
-	protected CustomEntitiesIP entitiesIP;
 	protected TypeDefinitionsIP typesIP;
+	protected ChannelsIP channelsIP;
+	protected CustomEntitiesIP entitiesIP;
 
 	public ExtendedSWModelItemProvider(final AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -149,14 +151,7 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 		}
 		return this.activationsIP;
 	}
-
-	public Object getEntities(final SWModel swModel) {
-		if (this.entitiesIP == null) {
-			this.entitiesIP = new CustomEntitiesIP(this.adapterFactory, swModel);
-		}
-		return this.entitiesIP;
-	}
-
+	
 	public Object getTypes(final SWModel swModel) {
 		if (this.typesIP == null) {
 			this.typesIP = new TypeDefinitionsIP(this.adapterFactory, swModel);
@@ -164,6 +159,19 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 		return this.typesIP;
 	}
 
+	public Object getChannels(final SWModel swModel) {
+		if (this.channelsIP == null) {
+			this.channelsIP = new ChannelsIP(this.adapterFactory, swModel);
+		}
+		return this.channelsIP;
+	}
+
+	public Object getEntities(final SWModel swModel) {
+		if (this.entitiesIP == null) {
+			this.entitiesIP = new CustomEntitiesIP(this.adapterFactory, swModel);
+		}
+		return this.entitiesIP;
+	}
 
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
@@ -177,10 +185,11 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_ProcessPrototypes()); // SW_MODEL__PROCESS_PROTOTYPES
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_Activations()); // SW_MODEL__ACTIVATIONS
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_Sections()); // SW_MODEL__SECTIONS
-		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_TypeDefinitions()); // SW_MODEL__TYPE_DEFINITIONS
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_Tags()); // SW_MODEL__TAGS
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_Modes()); // SW_MODEL__MODES
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_ModeLabels()); // SW_MODEL__MODE_LABELS
+		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_TypeDefinitions()); // SW_MODEL__TYPE_DEFINITIONS
+		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_Channels()); // SW_MODEL__CHANNELS
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_CustomEntities()); // SW_MODEL__CUSTOM_ENTITIES
 		return this.childrenFeatures;
 	}
@@ -198,10 +207,11 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 		children.add(getPrototypes(swModel));
 		children.add(getActivations(swModel));
 		children.add(getSections(swModel));
-		children.add(getTypes(swModel));
 		children.add(getTags(swModel));
 		children.add(getModes(swModel));
 		children.add(getModeLabels(swModel));
+		children.add(getTypes(swModel));
+		children.add(getChannels(swModel));
 		children.add(getEntities(swModel));
 		return children;
 	}
@@ -232,8 +242,9 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__PROCESS_CHAINS
 				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__ISRS
 				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__ACTIVATIONS
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__CUSTOM_ENTITIES
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS) {
+				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS
+				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__CHANNELS
+				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__CUSTOM_ENTITIES) {
 			return new CommandWrapper(command) {
 				@Override
 				public Collection<?> getAffectedObjects() {
@@ -275,11 +286,14 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__ACTIVATIONS) {
 							affected = Collections.singleton(getActivations((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__CUSTOM_ENTITIES) {
-							affected = Collections.singleton(getEntities((SWModel) owner));
-						}
 						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS) {
 							affected = Collections.singleton(getTypes((SWModel) owner));
+						}
+						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__CHANNELS) {
+							affected = Collections.singleton(getChannels((SWModel) owner));
+						}
+						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__CUSTOM_ENTITIES) {
+							affected = Collections.singleton(getEntities((SWModel) owner));
 						}
 					}
 					return affected;
@@ -327,11 +341,14 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 		if (this.activationsIP != null) {
 			this.activationsIP.dispose();
 		}
-		if (this.entitiesIP != null) {
-			this.entitiesIP.dispose();
-		}
 		if (this.typesIP != null) {
 			this.typesIP.dispose();
+		}
+		if (this.channelsIP != null) {
+			this.channelsIP.dispose();
+		}
+		if (this.entitiesIP != null) {
+			this.entitiesIP.dispose();
 		}
 		super.dispose();
 	}
@@ -355,6 +372,7 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 		case AmaltheaPackage.SW_MODEL__TAGS:
 		case AmaltheaPackage.SW_MODEL__EVENTS:
 		case AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS:
+		case AmaltheaPackage.SW_MODEL__CHANNELS:
 		case AmaltheaPackage.SW_MODEL__CUSTOM_ENTITIES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, true));
 			return;

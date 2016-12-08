@@ -38,31 +38,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface TransmissionPolicy extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Chunk Size</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
+	 * Returns the value of the '<em><b>Chunk Size</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Chunk Size</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Chunk Size</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Chunk Size</em>' attribute.
-	 * @see #setChunkSize(int)
+	 * @return the value of the '<em>Chunk Size</em>' containment reference.
+	 * @see #setChunkSize(DataSize)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTransmissionPolicy_ChunkSize()
-	 * @model default="0" unique="false"
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	int getChunkSize();
+	DataSize getChunkSize();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.TransmissionPolicy#getChunkSize <em>Chunk Size</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.TransmissionPolicy#getChunkSize <em>Chunk Size</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Chunk Size</em>' attribute.
+	 * @param value the new value of the '<em>Chunk Size</em>' containment reference.
 	 * @see #getChunkSize()
 	 * @generated
 	 */
-	void setChunkSize(int value);
+	void setChunkSize(DataSize value);
 
 	/**
 	 * Returns the value of the '<em><b>Chunk Processing Instructions</b></em>' attribute.

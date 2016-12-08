@@ -43,6 +43,10 @@ import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
+import org.eclipse.app4mc.amalthea.model.Channel;
+import org.eclipse.app4mc.amalthea.model.ChannelEvent;
+import org.eclipse.app4mc.amalthea.model.ChannelReceive;
+import org.eclipse.app4mc.amalthea.model.ChannelSend;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
@@ -227,6 +231,7 @@ import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.RWType;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
+import org.eclipse.app4mc.amalthea.model.ReceiveOperation;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
 import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
 import org.eclipse.app4mc.amalthea.model.RunEntityCallStatistic;
@@ -453,6 +458,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.PROCESS_CHAIN_EVENT: return createProcessChainEvent();
 			case AmaltheaPackage.RUNNABLE_EVENT: return createRunnableEvent();
 			case AmaltheaPackage.LABEL_EVENT: return createLabelEvent();
+			case AmaltheaPackage.CHANNEL_EVENT: return createChannelEvent();
 			case AmaltheaPackage.SEMAPHORE_EVENT: return createSemaphoreEvent();
 			case AmaltheaPackage.HW_MODEL: return createHWModel();
 			case AmaltheaPackage.HW_SYSTEM: return createHwSystem();
@@ -574,6 +580,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.ORDER_PRECEDENCE_SPEC: return createOrderPrecedenceSpec();
 			case AmaltheaPackage.RUNNABLE: return createRunnable();
 			case AmaltheaPackage.LABEL: return createLabel();
+			case AmaltheaPackage.CHANNEL: return createChannel();
 			case AmaltheaPackage.MODE_LABEL: return createModeLabel();
 			case AmaltheaPackage.SECTION: return createSection();
 			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS: return createRunnableInstructions();
@@ -581,6 +588,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.MODE_LABEL_ACCESS: return createModeLabelAccess();
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH: return createRunnableModeSwitch();
 			case AmaltheaPackage.LABEL_ACCESS: return createLabelAccess();
+			case AmaltheaPackage.CHANNEL_SEND: return createChannelSend();
+			case AmaltheaPackage.CHANNEL_RECEIVE: return createChannelReceive();
 			case AmaltheaPackage.SEMAPHORE_ACCESS: return createSemaphoreAccess();
 			case AmaltheaPackage.SENDER_RECEIVER_READ: return createSenderReceiverRead();
 			case AmaltheaPackage.SENDER_RECEIVER_WRITE: return createSenderReceiverWrite();
@@ -697,6 +706,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createOrderTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.LABEL_DATA_STABILITY:
 				return createLabelDataStabilityFromString(eDataType, initialValue);
+			case AmaltheaPackage.RECEIVE_OPERATION:
+				return createReceiveOperationFromString(eDataType, initialValue);
 			case AmaltheaPackage.LABEL_ACCESS_DATA_STABILITY:
 				return createLabelAccessDataStabilityFromString(eDataType, initialValue);
 			case AmaltheaPackage.LABEL_ACCESS_ENUM:
@@ -802,6 +813,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertOrderTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.LABEL_DATA_STABILITY:
 				return convertLabelDataStabilityToString(eDataType, instanceValue);
+			case AmaltheaPackage.RECEIVE_OPERATION:
+				return convertReceiveOperationToString(eDataType, instanceValue);
 			case AmaltheaPackage.LABEL_ACCESS_DATA_STABILITY:
 				return convertLabelAccessDataStabilityToString(eDataType, instanceValue);
 			case AmaltheaPackage.LABEL_ACCESS_ENUM:
@@ -1757,6 +1770,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public LabelEvent createLabelEvent() {
 		LabelEventImpl labelEvent = new LabelEventImpl();
 		return labelEvent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ChannelEvent createChannelEvent() {
+		ChannelEventImpl channelEvent = new ChannelEventImpl();
+		return channelEvent;
 	}
 
 	/**
@@ -2974,6 +2997,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Channel createChannel() {
+		ChannelImpl channel = new ChannelImpl();
+		return channel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ModeLabel createModeLabel() {
 		ModeLabelImpl modeLabel = new ModeLabelImpl();
 		return modeLabel;
@@ -3037,6 +3070,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public LabelAccess createLabelAccess() {
 		LabelAccessImpl labelAccess = new LabelAccessImpl();
 		return labelAccess;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ChannelSend createChannelSend() {
+		ChannelSendImpl channelSend = new ChannelSendImpl();
+		return channelSend;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ChannelReceive createChannelReceive() {
+		ChannelReceiveImpl channelReceive = new ChannelReceiveImpl();
+		return channelReceive;
 	}
 
 	/**
@@ -4066,6 +4119,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertLabelDataStabilityToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReceiveOperation createReceiveOperationFromString(EDataType eDataType, String initialValue) {
+		ReceiveOperation result = ReceiveOperation.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertReceiveOperationToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

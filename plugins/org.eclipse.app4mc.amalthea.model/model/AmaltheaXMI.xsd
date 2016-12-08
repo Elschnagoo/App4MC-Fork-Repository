@@ -451,6 +451,15 @@
       <xsd:enumeration value="handledByModelElements"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="ReceiveOperation">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="FIFO_Read"/>
+      <xsd:enumeration value="FIFO_Take"/>
+      <xsd:enumeration value="LIFO_Read"/>
+      <xsd:enumeration value="LIFO_Take"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="LabelAccessDataStability">
     <xsd:annotation>
       <xsd:documentation>Defines the data stability needs of a label access.
@@ -704,11 +713,11 @@ exclusive: gets access to requested semaphore only when there is no other user a
       <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="chunkSize" type="am:DataSize"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="chunkSize" type="xsd:int"/>
     <xsd:attribute name="chunkProcessingInstructions" type="xsd:int"/>
     <xsd:attribute name="transmitRatio" type="xsd:double"/>
   </xsd:complexType>
@@ -2616,6 +2625,36 @@ runnable: The runnable that accesses the label (optional)
 process: The process that accesses the label (optional)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="ChannelEvent">
+    <xsd:annotation>
+      <xsd:documentation>Describes the event of a channel access
+eventType: The type of event
+entity: The accessed channel that fires the event
+runnable: The runnable that accesses the label (optional)
+process: The process that accesses the label (optional)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:TriggerEvent">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entity" type="am:Channel"/>
+          <xsd:element name="runnable" type="am:Runnable"/>
+          <xsd:element name="process" type="am:Process"/>
+        </xsd:choice>
+        <xsd:attribute name="entity" type="xsd:string"/>
+        <xsd:attribute name="runnable" type="xsd:string"/>
+        <xsd:attribute name="process" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ChannelEvent" type="am:ChannelEvent">
+    <xsd:annotation>
+      <xsd:documentation>Describes the event of a channel access
+eventType: The type of event
+entity: The accessed channel that fires the event
+runnable: The runnable that accesses the label (optional)
+process: The process that accesses the label (optional)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="SemaphoreEvent">
     <xsd:annotation>
       <xsd:documentation>Describes the event of a semaphore access
@@ -4326,6 +4365,7 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
           <xsd:element name="tasks" type="am:Task"/>
           <xsd:element name="runnables" type="am:Runnable"/>
           <xsd:element name="labels" type="am:Label"/>
+          <xsd:element name="channels" type="am:Channel"/>
           <xsd:element name="processPrototypes" type="am:ProcessPrototype"/>
           <xsd:element name="sections" type="am:Section"/>
           <xsd:element name="activations" type="am:Activation"/>
@@ -4979,6 +5019,18 @@ The final state can be several Tasks, which can be computed using provided infor
       <xsd:documentation>Data representation, which can be accessed by run entities.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="Channel">
+    <xsd:complexContent>
+      <xsd:extension base="am:AbstractElementMemoryInformation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="dataType" type="am:DataType"/>
+        </xsd:choice>
+        <xsd:attribute name="displayName" type="xsd:string"/>
+        <xsd:attribute name="defaultElements" type="xsd:int"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Channel" type="am:Channel"/>
   <xsd:complexType name="ModeLabel">
     <xsd:complexContent>
       <xsd:extension base="am:AbstractElementMemoryInformation">
@@ -5136,6 +5188,36 @@ It can be used to define which mode value is written to the label.</xsd:document
       <xsd:documentation>Representation of a label access of a run entity.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="ChannelAccess">
+    <xsd:complexContent>
+      <xsd:extension base="am:RunnableItem">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="data" type="am:Channel"/>
+          <xsd:element name="transmissionPolicy" type="am:TransmissionPolicy"/>
+        </xsd:choice>
+        <xsd:attribute name="elements" type="xsd:int"/>
+        <xsd:attribute name="data" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ChannelAccess" type="am:ChannelAccess"/>
+  <xsd:complexType name="ChannelSend">
+    <xsd:complexContent>
+      <xsd:extension base="am:ChannelAccess"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ChannelSend" type="am:ChannelSend"/>
+  <xsd:complexType name="ChannelReceive">
+    <xsd:complexContent>
+      <xsd:extension base="am:ChannelAccess">
+        <xsd:attribute name="receiveOperation" type="am:ReceiveOperation"/>
+        <xsd:attribute name="dataMustBeNew" type="xsd:boolean"/>
+        <xsd:attribute name="elementIndex" type="xsd:int"/>
+        <xsd:attribute name="lowerBound" type="xsd:int"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ChannelReceive" type="am:ChannelReceive"/>
   <xsd:complexType name="SemaphoreAccess">
     <xsd:annotation>
       <xsd:documentation>Describes an semaphore access</xsd:documentation>

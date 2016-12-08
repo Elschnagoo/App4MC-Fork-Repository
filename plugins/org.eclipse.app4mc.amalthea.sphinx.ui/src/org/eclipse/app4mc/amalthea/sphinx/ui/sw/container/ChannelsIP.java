@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2015 Robert Bosch GmbH and others.
+ *  Copyright (c) 2016 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.provider.AmaltheaEditPlugin;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -27,15 +27,15 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sphinx.emf.edit.TransientItemProvider;
 
-public class RunnableItemsIP extends TransientItemProvider {
+public class ChannelsIP extends TransientItemProvider {
 
-	public RunnableItemsIP(final AdapterFactory adapterFactory, final Runnable parent) {
+	public ChannelsIP(final AdapterFactory adapterFactory, final SWModel parent) {
 		super(adapterFactory);
 		parent.eAdapters().add(this);
 	}
 
 	private EStructuralFeature myFeature() {
-		return AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems();
+		return AmaltheaPackage.eINSTANCE.getSWModel_Channels();
 	}
 
 	private AmaltheaFactory myFactory() {
@@ -47,14 +47,19 @@ public class RunnableItemsIP extends TransientItemProvider {
 	 */
 	@Override
 	public String getText(final Object object) {
-		return getString("_UI_Runnable_runnableItems_feature"); //$NON-NLS-1$
+		assert object instanceof SWModel;
+		final StringBuffer buffer = new StringBuffer();
+		buffer.append("Channels ("); //$NON-NLS-1$
+		buffer.append(((SWModel) getTarget()).getChannels().size());
+		buffer.append(")"); //$NON-NLS-1$
+		return buffer.toString();
 	}
 
 	/**
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getChildrenFeatures(java.lang.Object)
 	 */
 	@Override
-	protected Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
 		if (this.childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			this.childrenFeatures.add(myFeature());
@@ -69,20 +74,7 @@ public class RunnableItemsIP extends TransientItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createGroup()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableInstructions()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createLabelAccess()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableCall()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createSemaphoreAccess()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createModeLabelAccess()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableModeSwitch()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableProbabilitySwitch()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createSenderReceiverRead()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createSenderReceiverWrite()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createSynchronousServerCall()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createAsynchronousServerCall()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createChannelReceive()));
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createChannelSend()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createChannel()));
 	}
 
 	/**
@@ -92,8 +84,7 @@ public class RunnableItemsIP extends TransientItemProvider {
 	@Override
 	protected Command createDragAndDropCommand(final EditingDomain domain, final Object owner, final float location,
 			final int operations, final int operation, final Collection<?> collection) {
-		if (!(owner instanceof TransientItemProvider)
-				&& new AddCommand(domain, (EObject) owner, myFeature(), collection).canExecute()) {
+		if (new AddCommand(domain, (EObject) owner, myFeature(), collection).canExecute()) {
 			return super.createDragAndDropCommand(domain, owner, location, operations, operation, collection);
 		}
 		return UnexecutableCommand.INSTANCE;

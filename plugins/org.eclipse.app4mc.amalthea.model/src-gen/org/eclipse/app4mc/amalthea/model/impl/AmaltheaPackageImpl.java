@@ -53,6 +53,11 @@ import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
+import org.eclipse.app4mc.amalthea.model.Channel;
+import org.eclipse.app4mc.amalthea.model.ChannelAccess;
+import org.eclipse.app4mc.amalthea.model.ChannelEvent;
+import org.eclipse.app4mc.amalthea.model.ChannelReceive;
+import org.eclipse.app4mc.amalthea.model.ChannelSend;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.Clock;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
@@ -271,6 +276,7 @@ import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.RWType;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
+import org.eclipse.app4mc.amalthea.model.ReceiveOperation;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 import org.eclipse.app4mc.amalthea.model.ReferableObject;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
@@ -1325,6 +1331,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass channelEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass semaphoreEventEClass = null;
 
 	/**
@@ -2340,6 +2353,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass channelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass modeLabelEClass = null;
 
 	/**
@@ -2390,6 +2410,27 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass labelAccessEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass channelAccessEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass channelSendEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass channelReceiveEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2879,6 +2920,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum receiveOperationEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum labelAccessDataStabilityEEnum = null;
 
 	/**
@@ -3264,8 +3312,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTransmissionPolicy_ChunkSize() {
-		return (EAttribute)transmissionPolicyEClass.getEStructuralFeatures().get(0);
+	public EReference getTransmissionPolicy_ChunkSize() {
+		return (EReference)transmissionPolicyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3480,7 +3528,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDataSize__GetNumberBits() {
+	public EOperation getDataSize__ContainerNotificationRequired() {
 		return dataSizeEClass.getEOperations().get(1);
 	}
 
@@ -3489,8 +3537,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDataSize__GetNumberBytes() {
+	public EOperation getDataSize__GetNumberBits() {
 		return dataSizeEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSize__GetNumberBytes() {
+		return dataSizeEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -6209,6 +6266,42 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getLabelEvent_Process() {
 		return (EReference)labelEventEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getChannelEvent() {
+		return channelEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getChannelEvent_Entity() {
+		return (EReference)channelEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getChannelEvent_Runnable() {
+		return (EReference)channelEventEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getChannelEvent_Process() {
+		return (EReference)channelEventEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -9114,7 +9207,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSWModel_ProcessPrototypes() {
+	public EReference getSWModel_Channels() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -9123,7 +9216,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSWModel_Sections() {
+	public EReference getSWModel_ProcessPrototypes() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -9132,7 +9225,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSWModel_Activations() {
+	public EReference getSWModel_Sections() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -9141,7 +9234,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSWModel_Tags() {
+	public EReference getSWModel_Activations() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -9150,7 +9243,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSWModel_Events() {
+	public EReference getSWModel_Tags() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -9159,7 +9252,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSWModel_TypeDefinitions() {
+	public EReference getSWModel_Events() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -9168,7 +9261,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSWModel_CustomEntities() {
+	public EReference getSWModel_TypeDefinitions() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -9177,7 +9270,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSWModel_ProcessChains() {
+	public EReference getSWModel_CustomEntities() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -9186,7 +9279,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSWModel_Modes() {
+	public EReference getSWModel_ProcessChains() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -9195,8 +9288,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSWModel_ModeLabels() {
+	public EReference getSWModel_Modes() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSWModel_ModeLabels() {
+		return (EReference)swModelEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -10149,6 +10251,42 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getChannel() {
+		return channelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getChannel_DataType() {
+		return (EReference)channelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getChannel_DefaultElements() {
+		return (EAttribute)channelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getChannel_ChannelAccesses() {
+		return (EReference)channelEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModeLabel() {
 		return modeLabelEClass;
 	}
@@ -10394,6 +10532,105 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getLabelAccess_DataLinkInt() {
 		return (EReference)labelAccessEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getChannelAccess() {
+		return channelAccessEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getChannelAccess_Data() {
+		return (EReference)channelAccessEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getChannelAccess_Elements() {
+		return (EAttribute)channelAccessEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getChannelAccess_TransmissionPolicy() {
+		return (EReference)channelAccessEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getChannelAccess_DataLinkInt() {
+		return (EReference)channelAccessEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getChannelSend() {
+		return channelSendEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getChannelReceive() {
+		return channelReceiveEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getChannelReceive_ReceiveOperation() {
+		return (EAttribute)channelReceiveEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getChannelReceive_DataMustBeNew() {
+		return (EAttribute)channelReceiveEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getChannelReceive_ElementIndex() {
+		return (EAttribute)channelReceiveEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getChannelReceive_LowerBound() {
+		return (EAttribute)channelReceiveEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -11382,6 +11619,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getReceiveOperation() {
+		return receiveOperationEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getLabelAccessDataStability() {
 		return labelAccessDataStabilityEEnum;
 	}
@@ -11500,7 +11746,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEOperation(instructionsEClass, INSTRUCTIONS___CONTAINER_NOTIFICATION_REQUIRED);
 
 		transmissionPolicyEClass = createEClass(TRANSMISSION_POLICY);
-		createEAttribute(transmissionPolicyEClass, TRANSMISSION_POLICY__CHUNK_SIZE);
+		createEReference(transmissionPolicyEClass, TRANSMISSION_POLICY__CHUNK_SIZE);
 		createEAttribute(transmissionPolicyEClass, TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS);
 		createEAttribute(transmissionPolicyEClass, TRANSMISSION_POLICY__TRANSMIT_RATIO);
 
@@ -11531,6 +11777,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(dataSizeEClass, DATA_SIZE__VALUE);
 		createEAttribute(dataSizeEClass, DATA_SIZE__UNIT);
 		createEOperation(dataSizeEClass, DATA_SIZE___TO_STRING);
+		createEOperation(dataSizeEClass, DATA_SIZE___CONTAINER_NOTIFICATION_REQUIRED);
 		createEOperation(dataSizeEClass, DATA_SIZE___GET_NUMBER_BITS);
 		createEOperation(dataSizeEClass, DATA_SIZE___GET_NUMBER_BYTES);
 
@@ -11950,6 +12197,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(labelEventEClass, LABEL_EVENT__ENTITY);
 		createEReference(labelEventEClass, LABEL_EVENT__RUNNABLE);
 		createEReference(labelEventEClass, LABEL_EVENT__PROCESS);
+
+		channelEventEClass = createEClass(CHANNEL_EVENT);
+		createEReference(channelEventEClass, CHANNEL_EVENT__ENTITY);
+		createEReference(channelEventEClass, CHANNEL_EVENT__RUNNABLE);
+		createEReference(channelEventEClass, CHANNEL_EVENT__PROCESS);
 
 		semaphoreEventEClass = createEClass(SEMAPHORE_EVENT);
 		createEAttribute(semaphoreEventEClass, SEMAPHORE_EVENT__EVENT_TYPE);
@@ -12383,6 +12635,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(swModelEClass, SW_MODEL__TASKS);
 		createEReference(swModelEClass, SW_MODEL__RUNNABLES);
 		createEReference(swModelEClass, SW_MODEL__LABELS);
+		createEReference(swModelEClass, SW_MODEL__CHANNELS);
 		createEReference(swModelEClass, SW_MODEL__PROCESS_PROTOTYPES);
 		createEReference(swModelEClass, SW_MODEL__SECTIONS);
 		createEReference(swModelEClass, SW_MODEL__ACTIVATIONS);
@@ -12533,6 +12786,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(labelEClass, LABEL__SECTION);
 		createEReference(labelEClass, LABEL__SECTION_LINK_INT);
 
+		channelEClass = createEClass(CHANNEL);
+		createEReference(channelEClass, CHANNEL__DATA_TYPE);
+		createEAttribute(channelEClass, CHANNEL__DEFAULT_ELEMENTS);
+		createEReference(channelEClass, CHANNEL__CHANNEL_ACCESSES);
+
 		modeLabelEClass = createEClass(MODE_LABEL);
 
 		sectionEClass = createEClass(SECTION);
@@ -12568,6 +12826,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(labelAccessEClass, LABEL_ACCESS__TRANSMISSION_POLICY);
 		createEAttribute(labelAccessEClass, LABEL_ACCESS__DATA_STABILITY);
 		createEReference(labelAccessEClass, LABEL_ACCESS__DATA_LINK_INT);
+
+		channelAccessEClass = createEClass(CHANNEL_ACCESS);
+		createEReference(channelAccessEClass, CHANNEL_ACCESS__DATA);
+		createEAttribute(channelAccessEClass, CHANNEL_ACCESS__ELEMENTS);
+		createEReference(channelAccessEClass, CHANNEL_ACCESS__TRANSMISSION_POLICY);
+		createEReference(channelAccessEClass, CHANNEL_ACCESS__DATA_LINK_INT);
+
+		channelSendEClass = createEClass(CHANNEL_SEND);
+
+		channelReceiveEClass = createEClass(CHANNEL_RECEIVE);
+		createEAttribute(channelReceiveEClass, CHANNEL_RECEIVE__RECEIVE_OPERATION);
+		createEAttribute(channelReceiveEClass, CHANNEL_RECEIVE__DATA_MUST_BE_NEW);
+		createEAttribute(channelReceiveEClass, CHANNEL_RECEIVE__ELEMENT_INDEX);
+		createEAttribute(channelReceiveEClass, CHANNEL_RECEIVE__LOWER_BOUND);
 
 		semaphoreAccessEClass = createEClass(SEMAPHORE_ACCESS);
 		createEReference(semaphoreAccessEClass, SEMAPHORE_ACCESS__SEMAPHORE);
@@ -12708,6 +12980,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		accessPrecedenceTypeEEnum = createEEnum(ACCESS_PRECEDENCE_TYPE);
 		orderTypeEEnum = createEEnum(ORDER_TYPE);
 		labelDataStabilityEEnum = createEEnum(LABEL_DATA_STABILITY);
+		receiveOperationEEnum = createEEnum(RECEIVE_OPERATION);
 		labelAccessDataStabilityEEnum = createEEnum(LABEL_ACCESS_DATA_STABILITY);
 		labelAccessEnumEEnum = createEEnum(LABEL_ACCESS_ENUM);
 		semaphoreAccessEnumEEnum = createEEnum(SEMAPHORE_ACCESS_ENUM);
@@ -12920,6 +13193,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		processChainEventEClass.getESuperTypes().add(this.getEntityEvent());
 		runnableEventEClass.getESuperTypes().add(this.getTriggerEvent());
 		labelEventEClass.getESuperTypes().add(this.getTriggerEvent());
+		channelEventEClass.getESuperTypes().add(this.getTriggerEvent());
 		semaphoreEventEClass.getESuperTypes().add(this.getEntityEvent());
 		hwModelEClass.getESuperTypes().add(this.getBaseObject());
 		complexNodeEClass.getESuperTypes().add(this.getReferableBaseObject());
@@ -13066,6 +13340,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runnableEClass.getESuperTypes().add(this.getAbstractElementMemoryInformation());
 		labelEClass.getESuperTypes().add(this.getAbstractElementMemoryInformation());
 		labelEClass.getESuperTypes().add(this.getIDisplayName());
+		channelEClass.getESuperTypes().add(this.getAbstractElementMemoryInformation());
+		channelEClass.getESuperTypes().add(this.getIDisplayName());
 		modeLabelEClass.getESuperTypes().add(this.getAbstractElementMemoryInformation());
 		modeLabelEClass.getESuperTypes().add(this.getModeValueProvider());
 		modeLabelEClass.getESuperTypes().add(this.getIDisplayName());
@@ -13075,6 +13351,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		modeLabelAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableModeSwitchEClass.getESuperTypes().add(this.getRunnableItem());
 		labelAccessEClass.getESuperTypes().add(this.getRunnableItem());
+		channelAccessEClass.getESuperTypes().add(this.getRunnableItem());
+		channelSendEClass.getESuperTypes().add(this.getChannelAccess());
+		channelReceiveEClass.getESuperTypes().add(this.getChannelAccess());
 		semaphoreAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		senderReceiverCommunicationEClass.getESuperTypes().add(this.getRunnableItem());
 		senderReceiverReadEClass.getESuperTypes().add(this.getSenderReceiverCommunication());
@@ -13154,7 +13433,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEOperation(getInstructions__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(transmissionPolicyEClass, TransmissionPolicy.class, "TransmissionPolicy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTransmissionPolicy_ChunkSize(), theEcorePackage.getEInt(), "chunkSize", "0", 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransmissionPolicy_ChunkSize(), this.getDataSize(), null, "chunkSize", null, 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransmissionPolicy_ChunkProcessingInstructions(), theEcorePackage.getEInt(), "chunkProcessingInstructions", "0", 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransmissionPolicy_TransmitRatio(), theEcorePackage.getEDouble(), "transmitRatio", "1.0", 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -13194,6 +13473,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getDataSize_Unit(), this.getDataSizeUnit(), "unit", null, 0, 1, DataSize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getDataSize__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getDataSize__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getDataSize__GetNumberBits(), theEcorePackage.getELong(), "getNumberBits", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -13644,6 +13925,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getLabelEvent_Runnable(), this.getRunnable(), null, "runnable", null, 0, 1, LabelEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabelEvent_Process(), this.getProcess(), null, "process", null, 0, 1, LabelEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(channelEventEClass, ChannelEvent.class, "ChannelEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getChannelEvent_Entity(), this.getChannel(), null, "entity", null, 0, 1, ChannelEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChannelEvent_Runnable(), this.getRunnable(), null, "runnable", null, 0, 1, ChannelEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChannelEvent_Process(), this.getProcess(), null, "process", null, 0, 1, ChannelEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(semaphoreEventEClass, SemaphoreEvent.class, "SemaphoreEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSemaphoreEvent_EventType(), this.getSemaphoreEventType(), "eventType", null, 1, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSemaphoreEvent_Entity(), this.getSemaphore(), null, "entity", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14083,6 +14369,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getSWModel_Tasks(), this.getTask(), null, "tasks", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSWModel_Runnables(), this.getRunnable(), null, "runnables", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSWModel_Labels(), this.getLabel(), null, "labels", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSWModel_Channels(), this.getChannel(), null, "channels", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSWModel_ProcessPrototypes(), this.getProcessPrototype(), null, "processPrototypes", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSWModel_Sections(), this.getSection(), null, "sections", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSWModel_Activations(), this.getActivation(), null, "activations", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14245,6 +14532,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getLabel_Section(), this.getSection(), null, "section", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabel_SectionLinkInt(), this.getSection(), this.getSection_Labels(), "sectionLinkInt", null, 0, 1, Label.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(channelEClass, Channel.class, "Channel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getChannel_DataType(), this.getDataType(), null, "dataType", null, 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChannel_DefaultElements(), theEcorePackage.getEInt(), "defaultElements", "0", 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChannel_ChannelAccesses(), this.getChannelAccess(), this.getChannelAccess_DataLinkInt(), "channelAccesses", null, 0, -1, Channel.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(modeLabelEClass, ModeLabel.class, "ModeLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(sectionEClass, Section.class, "Section", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -14287,6 +14579,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getLabelAccess_TransmissionPolicy(), this.getTransmissionPolicy(), null, "transmissionPolicy", null, 0, 1, LabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLabelAccess_DataStability(), this.getLabelAccessDataStability(), "dataStability", null, 0, 1, LabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabelAccess_DataLinkInt(), this.getLabel(), this.getLabel_LabelAccesses(), "dataLinkInt", null, 1, 1, LabelAccess.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(channelAccessEClass, ChannelAccess.class, "ChannelAccess", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getChannelAccess_Data(), this.getChannel(), null, "data", null, 1, 1, ChannelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChannelAccess_Elements(), theEcorePackage.getEInt(), "elements", "0", 0, 1, ChannelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChannelAccess_TransmissionPolicy(), this.getTransmissionPolicy(), null, "transmissionPolicy", null, 0, 1, ChannelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChannelAccess_DataLinkInt(), this.getChannel(), this.getChannel_ChannelAccesses(), "dataLinkInt", null, 1, 1, ChannelAccess.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(channelSendEClass, ChannelSend.class, "ChannelSend", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(channelReceiveEClass, ChannelReceive.class, "ChannelReceive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getChannelReceive_ReceiveOperation(), this.getReceiveOperation(), "receiveOperation", null, 0, 1, ChannelReceive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChannelReceive_DataMustBeNew(), theEcorePackage.getEBoolean(), "dataMustBeNew", "false", 0, 1, ChannelReceive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChannelReceive_ElementIndex(), theEcorePackage.getEInt(), "elementIndex", "0", 0, 1, ChannelReceive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChannelReceive_LowerBound(), theEcorePackage.getEInt(), "lowerBound", "0", 0, 1, ChannelReceive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(semaphoreAccessEClass, SemaphoreAccess.class, "SemaphoreAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSemaphoreAccess_Semaphore(), this.getSemaphore(), null, "semaphore", null, 1, 1, SemaphoreAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14695,6 +15001,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(labelDataStabilityEEnum, LabelDataStability.AUTOMATIC_PROTECTION);
 		addEEnumLiteral(labelDataStabilityEEnum, LabelDataStability.CUSTOM_PROTECTION);
 		addEEnumLiteral(labelDataStabilityEEnum, LabelDataStability.HANDLED_BY_MODEL_ELEMENTS);
+
+		initEEnum(receiveOperationEEnum, ReceiveOperation.class, "ReceiveOperation");
+		addEEnumLiteral(receiveOperationEEnum, ReceiveOperation._UNDEFINED_);
+		addEEnumLiteral(receiveOperationEEnum, ReceiveOperation.FIFO_READ);
+		addEEnumLiteral(receiveOperationEEnum, ReceiveOperation.FIFO_TAKE);
+		addEEnumLiteral(receiveOperationEEnum, ReceiveOperation.LIFO_READ);
+		addEEnumLiteral(receiveOperationEEnum, ReceiveOperation.LIFO_TAKE);
 
 		initEEnum(labelAccessDataStabilityEEnum, LabelAccessDataStability.class, "LabelAccessDataStability");
 		addEEnumLiteral(labelAccessDataStabilityEEnum, LabelAccessDataStability._UNDEFINED_);

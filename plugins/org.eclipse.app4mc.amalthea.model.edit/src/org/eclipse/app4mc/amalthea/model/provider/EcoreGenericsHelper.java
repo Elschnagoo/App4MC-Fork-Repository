@@ -166,6 +166,8 @@ public class EcoreGenericsHelper {
 		childObjects.add(factory.createSenderReceiverWrite());
 		childObjects.add(factory.createAsynchronousServerCall());
 		childObjects.add(factory.createSynchronousServerCall());
+		childObjects.add(factory.createChannelReceive());
+		childObjects.add(factory.createChannelSend());
 
 		// see CallGraphItemProvider
 		childObjects.add(factory.createCallSequence());

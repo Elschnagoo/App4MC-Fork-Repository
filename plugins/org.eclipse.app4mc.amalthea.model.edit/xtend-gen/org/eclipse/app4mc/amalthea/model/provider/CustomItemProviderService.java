@@ -24,6 +24,10 @@ import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
+import org.eclipse.app4mc.amalthea.model.Channel;
+import org.eclipse.app4mc.amalthea.model.ChannelAccess;
+import org.eclipse.app4mc.amalthea.model.ChannelReceive;
+import org.eclipse.app4mc.amalthea.model.ChannelSend;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.CoherencyDirection;
 import org.eclipse.app4mc.amalthea.model.ComplexNode;
@@ -150,6 +154,7 @@ import org.eclipse.app4mc.amalthea.model.TimeMetric;
 import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
+import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.Value;
@@ -780,6 +785,64 @@ public class CustomItemProviderService {
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
       list.add(_viewerNotification);
+    }
+    return list;
+  }
+  
+  /**
+   * TransmissionPolicyItemProvider
+   */
+  public static String getTransmissionPolicyItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof TransmissionPolicy)) {
+      final DataSize size = ((TransmissionPolicy)object).getChunkSize();
+      final int instr = ((TransmissionPolicy)object).getChunkProcessingInstructions();
+      final double ratio = ((TransmissionPolicy)object).getTransmitRatio();
+      String _dataSizeText = CustomItemProviderService.getDataSizeText(size);
+      String _plus = ("transmission (chunk size: " + _dataSizeText);
+      String _plus_1 = (_plus + " instructions: ");
+      String _plus_2 = (_plus_1 + Integer.valueOf(instr));
+      String _plus_3 = (_plus_2 + " ratio: ");
+      String _plus_4 = (_plus_3 + Double.valueOf(ratio));
+      return (_plus_4 + ")");
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getTransmissionPolicyItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(TransmissionPolicy.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.TRANSMISSION_POLICY__TRANSMIT_RATIO)) {
+        _matched=true;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.DATA_SIZE__VALUE)) {
+        _matched=true;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.DATA_SIZE__UNIT)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE)) {
+        _matched=true;
+        Object _notifier_1 = notification.getNotifier();
+        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
+        list.add(_viewerNotification_1);
+      }
     }
     return list;
   }
@@ -4449,6 +4512,86 @@ public class CustomItemProviderService {
       }
     }
     return list;
+  }
+  
+  /**
+   * ChannelAccessItemProvider
+   */
+  public static List<ViewerNotification> getChannelAccessItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(ChannelAccess.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.CHANNEL_ACCESS__DATA)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.CHANNEL_ACCESS__TRANSMISSION_POLICY)) {
+        _matched=true;
+        Object _notifier_1 = notification.getNotifier();
+        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);
+        list.add(_viewerNotification_1);
+      }
+    }
+    return list;
+  }
+  
+  /**
+   * ChannelReceiveItemProvider
+   */
+  public static String getChannelReceiveItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ChannelReceive)) {
+      Channel _data = null;
+      if (((ChannelReceive)object)!=null) {
+        _data=((ChannelReceive)object).getData();
+      }
+      String _name = null;
+      if (_data!=null) {
+        _name=_data.getName();
+      }
+      final String data = _name;
+      String _xifexpression = null;
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(data);
+      if (_isNullOrEmpty) {
+        _xifexpression = "<channel>";
+      } else {
+        _xifexpression = data;
+      }
+      final String s1 = _xifexpression;
+      return ("receive from " + s1);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  /**
+   * ChannelSendItemProvider
+   */
+  public static String getChannelSendItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ChannelSend)) {
+      Channel _data = null;
+      if (((ChannelSend)object)!=null) {
+        _data=((ChannelSend)object).getData();
+      }
+      String _name = null;
+      if (_data!=null) {
+        _name=_data.getName();
+      }
+      final String data = _name;
+      String _xifexpression = null;
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(data);
+      if (_isNullOrEmpty) {
+        _xifexpression = "<channel>";
+      } else {
+        _xifexpression = data;
+      }
+      final String s1 = _xifexpression;
+      return ("send to " + s1);
+    } else {
+      return defaultText;
+    }
   }
   
   /**

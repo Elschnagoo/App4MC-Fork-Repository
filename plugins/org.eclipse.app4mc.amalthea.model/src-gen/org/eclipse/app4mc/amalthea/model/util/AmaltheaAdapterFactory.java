@@ -47,6 +47,11 @@ import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
+import org.eclipse.app4mc.amalthea.model.Channel;
+import org.eclipse.app4mc.amalthea.model.ChannelAccess;
+import org.eclipse.app4mc.amalthea.model.ChannelEvent;
+import org.eclipse.app4mc.amalthea.model.ChannelReceive;
+import org.eclipse.app4mc.amalthea.model.ChannelSend;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.Clock;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
@@ -922,6 +927,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createLabelEventAdapter();
 			}
 			@Override
+			public Adapter caseChannelEvent(ChannelEvent object) {
+				return createChannelEventAdapter();
+			}
+			@Override
 			public Adapter caseSemaphoreEvent(SemaphoreEvent object) {
 				return createSemaphoreEventAdapter();
 			}
@@ -1502,6 +1511,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createLabelAdapter();
 			}
 			@Override
+			public Adapter caseChannel(Channel object) {
+				return createChannelAdapter();
+			}
+			@Override
 			public Adapter caseModeLabel(ModeLabel object) {
 				return createModeLabelAdapter();
 			}
@@ -1532,6 +1545,18 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseLabelAccess(LabelAccess object) {
 				return createLabelAccessAdapter();
+			}
+			@Override
+			public Adapter caseChannelAccess(ChannelAccess object) {
+				return createChannelAccessAdapter();
+			}
+			@Override
+			public Adapter caseChannelSend(ChannelSend object) {
+				return createChannelSendAdapter();
+			}
+			@Override
+			public Adapter caseChannelReceive(ChannelReceive object) {
+				return createChannelReceiveAdapter();
 			}
 			@Override
 			public Adapter caseSemaphoreAccess(SemaphoreAccess object) {
@@ -3528,6 +3553,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLabelEventAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ChannelEvent <em>Channel Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ChannelEvent
+	 * @generated
+	 */
+	public Adapter createChannelEventAdapter() {
 		return null;
 	}
 
@@ -5562,6 +5601,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Channel <em>Channel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.Channel
+	 * @generated
+	 */
+	public Adapter createChannelAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeLabel <em>Mode Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -5670,6 +5723,48 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLabelAccessAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ChannelAccess <em>Channel Access</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ChannelAccess
+	 * @generated
+	 */
+	public Adapter createChannelAccessAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ChannelSend <em>Channel Send</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ChannelSend
+	 * @generated
+	 */
+	public Adapter createChannelSendAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ChannelReceive <em>Channel Receive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ChannelReceive
+	 * @generated
+	 */
+	public Adapter createChannelReceiveAdapter() {
 		return null;
 	}
 

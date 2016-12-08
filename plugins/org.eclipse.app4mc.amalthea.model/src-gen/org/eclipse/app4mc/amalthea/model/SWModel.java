@@ -38,6 +38,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getTasks <em>Tasks</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getRunnables <em>Runnables</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getLabels <em>Labels</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getChannels <em>Channels</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getProcessPrototypes <em>Process Prototypes</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getSections <em>Sections</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getActivations <em>Activations</em>}</li>
@@ -118,6 +119,22 @@ public interface SWModel extends BaseObject {
 	 * @generated
 	 */
 	EList<Label> getLabels();
+
+	/**
+	 * Returns the value of the '<em><b>Channels</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Channel}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Channels</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Channels</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_Channels()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	EList<Channel> getChannels();
 
 	/**
 	 * Returns the value of the '<em><b>Process Prototypes</b></em>' containment reference list.

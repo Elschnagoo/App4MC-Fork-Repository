@@ -191,6 +191,11 @@ public class EventModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getEventModel_Events(),
+				 AmaltheaFactory.eINSTANCE.createChannelEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getEventModel_Events(),
 				 AmaltheaFactory.eINSTANCE.createSemaphoreEvent()));
 	}
 

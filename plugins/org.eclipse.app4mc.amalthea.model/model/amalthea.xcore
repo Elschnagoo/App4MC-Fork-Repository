@@ -161,7 +161,7 @@ abstract class Instructions
  * Data transmission details for communication (e.g. LabelAccesses)
  */
 class TransmissionPolicy {
-	int chunkSize = "0"
+	contains resolving DataSize chunkSize
 	int chunkProcessingInstructions = "0"
 	double transmitRatio = "1.0"
 }
@@ -287,6 +287,10 @@ class DataSize {
 	
 	op String toString() {
 		return value + " " +  if (unit == DataSizeUnit::_UNDEFINED_ ) "<unit>" else unit.literal
+	}
+	
+	op boolean containerNotificationRequired() {
+		return true
 	}
 	
 	/*
@@ -1425,6 +1429,21 @@ class LabelEvent extends TriggerEvent
 }
 
 /*
+ * Describes the event of a channel access
+ * eventType: The type of event
+ * entity: The accessed channel that fires the event
+ * runnable: The runnable that accesses the label (optional)
+ * process: The process that accesses the label (optional)
+ */
+class ChannelEvent extends TriggerEvent
+{
+//	LabelEventType[1] eventType
+	refers Channel entity
+	refers Runnable runnable
+	refers Process process
+}
+
+/*
  * Describes the event of a semaphore access
  * eventType: The type of event
  * entity: The accessed semaphore that fires the event
@@ -2554,6 +2573,7 @@ class SWModel extends BaseObject
 	contains resolving Task[] tasks
 	contains resolving Runnable[] runnables
 	contains resolving Label[] labels
+	contains resolving Channel[] channels
 	contains resolving ProcessPrototype[] processPrototypes
 	contains resolving Section[] sections
 	contains resolving Activation[] activations
@@ -2986,6 +3006,19 @@ class Label extends AbstractElementMemoryInformation, IDisplayName
 	refers transient Section sectionLinkInt opposite labels
 }
 
+class Channel extends AbstractElementMemoryInformation, IDisplayName
+{
+	contains DataType dataType
+
+	int defaultElements = "0"
+	
+	// back pointer (readonly)
+	@GenModel(property="Readonly", suppressedSetVisibility="true")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient ChannelAccess[] channelAccesses opposite dataLinkInt
+}
+
+
 class ModeLabel extends AbstractElementMemoryInformation, ModeValueProvider, IDisplayName
 {
 }
@@ -3092,6 +3125,42 @@ class LabelAccess extends RunnableItem
 	// hidden link (internal)
 	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
 	refers transient Label[1] dataLinkInt opposite labelAccesses
+}
+
+abstract class ChannelAccess extends RunnableItem
+{
+	refers Channel[1] data
+
+	int elements = "0"
+	
+	contains resolving TransmissionPolicy transmissionPolicy
+	
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
+	refers transient Channel[1] dataLinkInt opposite channelAccesses
+}
+
+class ChannelSend extends ChannelAccess
+{
+}
+
+class ChannelReceive extends ChannelAccess
+{
+	ReceiveOperation receiveOperation
+	
+	boolean dataMustBeNew = "false"
+	
+	int elementIndex = "0"
+	int lowerBound = "0"
+//	int elementsHold	-> use custom property
+}
+
+enum ReceiveOperation {
+	_undefined_ // Display: "<receive operation>"
+	FIFO_Read
+	FIFO_Take
+	LIFO_Read
+	LIFO_Take
 }
 
 

@@ -47,6 +47,11 @@ import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
+import org.eclipse.app4mc.amalthea.model.Channel;
+import org.eclipse.app4mc.amalthea.model.ChannelAccess;
+import org.eclipse.app4mc.amalthea.model.ChannelEvent;
+import org.eclipse.app4mc.amalthea.model.ChannelReceive;
+import org.eclipse.app4mc.amalthea.model.ChannelSend;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.Clock;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
@@ -1482,6 +1487,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.CHANNEL_EVENT: {
+				ChannelEvent channelEvent = (ChannelEvent)theEObject;
+				T1 result = caseChannelEvent(channelEvent);
+				if (result == null) result = caseTriggerEvent(channelEvent);
+				if (result == null) result = caseEvent(channelEvent);
+				if (result == null) result = caseReferableBaseObject(channelEvent);
+				if (result == null) result = caseIAnnotatable(channelEvent);
+				if (result == null) result = caseIReferable(channelEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.SEMAPHORE_EVENT: {
 				SemaphoreEvent semaphoreEvent = (SemaphoreEvent)theEObject;
 				T1 result = caseSemaphoreEvent(semaphoreEvent);
@@ -2805,6 +2821,18 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.CHANNEL: {
+				Channel channel = (Channel)theEObject;
+				T1 result = caseChannel(channel);
+				if (result == null) result = caseAbstractElementMemoryInformation(channel);
+				if (result == null) result = caseIDisplayName(channel);
+				if (result == null) result = caseReferableBaseObject(channel);
+				if (result == null) result = caseITaggable(channel);
+				if (result == null) result = caseIAnnotatable(channel);
+				if (result == null) result = caseIReferable(channel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.MODE_LABEL: {
 				ModeLabel modeLabel = (ModeLabel)theEObject;
 				T1 result = caseModeLabel(modeLabel);
@@ -2874,6 +2902,35 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseRunnableItem(labelAccess);
 				if (result == null) result = caseBaseObject(labelAccess);
 				if (result == null) result = caseIAnnotatable(labelAccess);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CHANNEL_ACCESS: {
+				ChannelAccess channelAccess = (ChannelAccess)theEObject;
+				T1 result = caseChannelAccess(channelAccess);
+				if (result == null) result = caseRunnableItem(channelAccess);
+				if (result == null) result = caseBaseObject(channelAccess);
+				if (result == null) result = caseIAnnotatable(channelAccess);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CHANNEL_SEND: {
+				ChannelSend channelSend = (ChannelSend)theEObject;
+				T1 result = caseChannelSend(channelSend);
+				if (result == null) result = caseChannelAccess(channelSend);
+				if (result == null) result = caseRunnableItem(channelSend);
+				if (result == null) result = caseBaseObject(channelSend);
+				if (result == null) result = caseIAnnotatable(channelSend);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CHANNEL_RECEIVE: {
+				ChannelReceive channelReceive = (ChannelReceive)theEObject;
+				T1 result = caseChannelReceive(channelReceive);
+				if (result == null) result = caseChannelAccess(channelReceive);
+				if (result == null) result = caseRunnableItem(channelReceive);
+				if (result == null) result = caseBaseObject(channelReceive);
+				if (result == null) result = caseIAnnotatable(channelReceive);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -5141,6 +5198,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Channel Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Channel Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseChannelEvent(ChannelEvent object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Semaphore Event</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -7316,6 +7388,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Channel</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Channel</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseChannel(Channel object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Mode Label</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -7432,6 +7519,51 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseLabelAccess(LabelAccess object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Channel Access</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Channel Access</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseChannelAccess(ChannelAccess object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Channel Send</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Channel Send</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseChannelSend(ChannelSend object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Channel Receive</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Channel Receive</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseChannelReceive(ChannelReceive object) {
 		return null;
 	}
 

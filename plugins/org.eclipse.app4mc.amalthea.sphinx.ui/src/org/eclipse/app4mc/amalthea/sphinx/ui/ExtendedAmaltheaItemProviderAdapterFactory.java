@@ -17,6 +17,7 @@ package org.eclipse.app4mc.amalthea.sphinx.ui;
 import org.eclipse.app4mc.amalthea.model.provider.AmaltheaItemProviderAdapterFactory;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedAsynchronousServerCallItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedBaseTypeDefinitionItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomActivationItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEntityItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedDataTypeDefinitionItemProvider;
@@ -57,6 +58,11 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	@Override
 	public Adapter createBaseTypeDefinitionAdapter() {
 		return new ExtendedBaseTypeDefinitionItemProvider(this);
+	}
+
+	@Override
+	public Adapter createChannelAdapter() {
+		return new ExtendedChannelItemProvider(this);
 	}
 
 	@Override

@@ -236,6 +236,16 @@ public class GroupItemProvider extends RunnableItemItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createChannelSend()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createChannelReceive()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
 				 AmaltheaFactory.eINSTANCE.createSemaphoreAccess()));
 
 		newChildDescriptors.add

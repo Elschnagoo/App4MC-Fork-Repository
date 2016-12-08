@@ -76,6 +76,7 @@ public class SWModelItemProvider extends BaseObjectItemProvider {
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_Tasks());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_Runnables());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_Labels());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_Channels());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_ProcessPrototypes());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_Sections());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_Activations());
@@ -152,6 +153,7 @@ public class SWModelItemProvider extends BaseObjectItemProvider {
 			case AmaltheaPackage.SW_MODEL__TASKS:
 			case AmaltheaPackage.SW_MODEL__RUNNABLES:
 			case AmaltheaPackage.SW_MODEL__LABELS:
+			case AmaltheaPackage.SW_MODEL__CHANNELS:
 			case AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES:
 			case AmaltheaPackage.SW_MODEL__SECTIONS:
 			case AmaltheaPackage.SW_MODEL__ACTIVATIONS:
@@ -198,6 +200,11 @@ public class SWModelItemProvider extends BaseObjectItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSWModel_Labels(),
 				 AmaltheaFactory.eINSTANCE.createLabel()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSWModel_Channels(),
+				 AmaltheaFactory.eINSTANCE.createChannel()));
 
 		newChildDescriptors.add
 			(createChildParameter

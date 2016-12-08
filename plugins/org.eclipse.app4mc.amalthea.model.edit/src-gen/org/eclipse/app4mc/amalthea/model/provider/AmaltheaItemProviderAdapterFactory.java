@@ -2198,6 +2198,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ChannelEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChannelEventItemProvider channelEventItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ChannelEvent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createChannelEventAdapter() {
+		if (channelEventItemProvider == null) {
+			channelEventItemProvider = new ChannelEventItemProvider(this);
+		}
+
+		return channelEventItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SemaphoreEvent} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4981,6 +5004,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Channel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChannelItemProvider channelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Channel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createChannelAdapter() {
+		if (channelItemProvider == null) {
+			channelItemProvider = new ChannelItemProvider(this);
+		}
+
+		return channelItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeLabel} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5139,6 +5185,52 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return labelAccessItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ChannelSend} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChannelSendItemProvider channelSendItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ChannelSend}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createChannelSendAdapter() {
+		if (channelSendItemProvider == null) {
+			channelSendItemProvider = new ChannelSendItemProvider(this);
+		}
+
+		return channelSendItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ChannelReceive} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChannelReceiveItemProvider channelReceiveItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ChannelReceive}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createChannelReceiveAdapter() {
+		if (channelReceiveItemProvider == null) {
+			channelReceiveItemProvider = new ChannelReceiveItemProvider(this);
+		}
+
+		return channelReceiveItemProvider;
 	}
 
 	/**
@@ -5909,6 +6001,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (processChainEventItemProvider != null) processChainEventItemProvider.dispose();
 		if (runnableEventItemProvider != null) runnableEventItemProvider.dispose();
 		if (labelEventItemProvider != null) labelEventItemProvider.dispose();
+		if (channelEventItemProvider != null) channelEventItemProvider.dispose();
 		if (semaphoreEventItemProvider != null) semaphoreEventItemProvider.dispose();
 		if (hwModelItemProvider != null) hwModelItemProvider.dispose();
 		if (hwSystemItemProvider != null) hwSystemItemProvider.dispose();
@@ -6030,6 +6123,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (orderPrecedenceSpecItemProvider != null) orderPrecedenceSpecItemProvider.dispose();
 		if (runnableItemProvider != null) runnableItemProvider.dispose();
 		if (labelItemProvider != null) labelItemProvider.dispose();
+		if (channelItemProvider != null) channelItemProvider.dispose();
 		if (modeLabelItemProvider != null) modeLabelItemProvider.dispose();
 		if (sectionItemProvider != null) sectionItemProvider.dispose();
 		if (runnableInstructionsItemProvider != null) runnableInstructionsItemProvider.dispose();
@@ -6037,6 +6131,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (modeLabelAccessItemProvider != null) modeLabelAccessItemProvider.dispose();
 		if (runnableModeSwitchItemProvider != null) runnableModeSwitchItemProvider.dispose();
 		if (labelAccessItemProvider != null) labelAccessItemProvider.dispose();
+		if (channelSendItemProvider != null) channelSendItemProvider.dispose();
+		if (channelReceiveItemProvider != null) channelReceiveItemProvider.dispose();
 		if (semaphoreAccessItemProvider != null) semaphoreAccessItemProvider.dispose();
 		if (senderReceiverReadItemProvider != null) senderReceiverReadItemProvider.dispose();
 		if (senderReceiverWriteItemProvider != null) senderReceiverWriteItemProvider.dispose();

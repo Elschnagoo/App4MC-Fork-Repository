@@ -19,6 +19,9 @@ import org.eclipse.app4mc.amalthea.model.BooleanObject
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype
+import org.eclipse.app4mc.amalthea.model.ChannelAccess
+import org.eclipse.app4mc.amalthea.model.ChannelReceive
+import org.eclipse.app4mc.amalthea.model.ChannelSend
 import org.eclipse.app4mc.amalthea.model.ClearEvent
 import org.eclipse.app4mc.amalthea.model.CoherencyDirection
 import org.eclipse.app4mc.amalthea.model.Component
@@ -122,6 +125,7 @@ import org.eclipse.app4mc.amalthea.model.TimeMetric
 import org.eclipse.app4mc.amalthea.model.TimeObject
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit
 import org.eclipse.app4mc.amalthea.model.TimeUnit
+import org.eclipse.app4mc.amalthea.model.TransmissionPolicy
 import org.eclipse.app4mc.amalthea.model.TypeDefinition
 import org.eclipse.app4mc.amalthea.model.TypeRef
 import org.eclipse.app4mc.amalthea.model.WaitEvent
@@ -504,6 +508,39 @@ class CustomItemProviderService {
 			case AmaltheaPackage::INSTRUCTIONS_DEVIATION__DEVIATION:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 		}
+		return list
+	}
+
+
+	/*****************************************************************************
+	 * 						TransmissionPolicyItemProvider
+	 *****************************************************************************/
+	def static String getTransmissionPolicyItemProviderText(Object object, String defaultText) {
+		if (object instanceof TransmissionPolicy) {
+			val size = object.chunkSize
+			val instr = object.chunkProcessingInstructions
+			val ratio = object.transmitRatio
+			
+			return "transmission (chunk size: " + getDataSizeText(size) + " instructions: " + instr + " ratio: " + ratio + ")";
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getTransmissionPolicyItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(TransmissionPolicy)) {
+			case AmaltheaPackage::TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS,
+			case AmaltheaPackage::TRANSMISSION_POLICY__TRANSMIT_RATIO,
+			case AmaltheaPackage::DATA_SIZE__VALUE,
+			case AmaltheaPackage::DATA_SIZE__UNIT:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+			case AmaltheaPackage::TRANSMISSION_POLICY__CHUNK_SIZE:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+		}
+		
+		
 		return list
 	}
 
@@ -2197,6 +2234,7 @@ class CustomItemProviderService {
 		return list
 	}
 
+
 	/*****************************************************************************
 	 * 						LabelAccessItemProvider
 	 *****************************************************************************/
@@ -2222,6 +2260,50 @@ class CustomItemProviderService {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
 		}
 		return list
+	}
+
+
+	/*****************************************************************************
+	 * 						ChannelAccessItemProvider
+	 *****************************************************************************/
+	def static List<ViewerNotification> getChannelAccessItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(ChannelAccess)) {
+			case AmaltheaPackage::CHANNEL_ACCESS__DATA:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+			case AmaltheaPackage::CHANNEL_ACCESS__TRANSMISSION_POLICY:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+		}
+		return list
+	}
+
+	/*****************************************************************************
+	 * 						ChannelReceiveItemProvider
+	 *****************************************************************************/
+	def static String getChannelReceiveItemProviderText(Object object, String defaultText) {
+		if (object instanceof ChannelReceive) {
+			val data = object?.data?.name
+
+			val s1 = if(data.isNullOrEmpty) "<channel>" else data
+			return "receive from " + s1
+		} else {
+			return defaultText
+		}
+	}
+
+	/*****************************************************************************
+	 * 						ChannelSendItemProvider
+	 *****************************************************************************/
+	def static String getChannelSendItemProviderText(Object object, String defaultText) {
+		if (object instanceof ChannelSend) {
+			val data = object?.data?.name
+
+			val s1 = if(data.isNullOrEmpty) "<channel>" else  data
+			return "send to " + s1
+		} else {
+			return defaultText
+		}
 	}
 
 	/*****************************************************************************

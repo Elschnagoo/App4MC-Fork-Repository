@@ -869,6 +869,15 @@ public interface AmaltheaFactory extends EFactory {
 	LabelEvent createLabelEvent();
 
 	/**
+	 * Returns a new object of class '<em>Channel Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Channel Event</em>'.
+	 * @generated
+	 */
+	ChannelEvent createChannelEvent();
+
+	/**
 	 * Returns a new object of class '<em>Semaphore Event</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1958,6 +1967,15 @@ public interface AmaltheaFactory extends EFactory {
 	Label createLabel();
 
 	/**
+	 * Returns a new object of class '<em>Channel</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Channel</em>'.
+	 * @generated
+	 */
+	Channel createChannel();
+
+	/**
 	 * Returns a new object of class '<em>Mode Label</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2010,6 +2028,24 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	LabelAccess createLabelAccess();
+
+	/**
+	 * Returns a new object of class '<em>Channel Send</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Channel Send</em>'.
+	 * @generated
+	 */
+	ChannelSend createChannelSend();
+
+	/**
+	 * Returns a new object of class '<em>Channel Receive</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Channel Receive</em>'.
+	 * @generated
+	 */
+	ChannelReceive createChannelReceive();
 
 	/**
 	 * Returns a new object of class '<em>Semaphore Access</em>'.

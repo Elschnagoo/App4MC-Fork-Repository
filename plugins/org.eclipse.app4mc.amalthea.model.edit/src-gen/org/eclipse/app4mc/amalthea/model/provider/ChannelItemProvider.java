@@ -18,47 +18,32 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
-
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
+import org.eclipse.app4mc.amalthea.model.Channel;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.TransmissionPolicy} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Channel} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TransmissionPolicyItemProvider 
-	extends AmaltheaExtendedItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class ChannelItemProvider extends AbstractElementMemoryInformationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TransmissionPolicyItemProvider(AdapterFactory adapterFactory) {
+	public ChannelItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -73,26 +58,49 @@ public class TransmissionPolicyItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addChunkProcessingInstructionsPropertyDescriptor(object);
-			addTransmitRatioPropertyDescriptor(object);
+			addDisplayNamePropertyDescriptor(object);
+			addDefaultElementsPropertyDescriptor(object);
+			addChannelAccessesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Chunk Processing Instructions feature.
+	 * This adds a property descriptor for the Display Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addChunkProcessingInstructionsPropertyDescriptor(Object object) {
+	protected void addDisplayNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TransmissionPolicy_chunkProcessingInstructions_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TransmissionPolicy_chunkProcessingInstructions_feature", "_UI_TransmissionPolicy_type"),
-				 AmaltheaPackage.eINSTANCE.getTransmissionPolicy_ChunkProcessingInstructions(),
+				 getString("_UI_IDisplayName_displayName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IDisplayName_displayName_feature", "_UI_IDisplayName_type"),
+				 AmaltheaPackage.eINSTANCE.getIDisplayName_DisplayName(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Default Elements feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDefaultElementsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Channel_defaultElements_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Channel_defaultElements_feature", "_UI_Channel_type"),
+				 AmaltheaPackage.eINSTANCE.getChannel_DefaultElements(),
 				 true,
 				 false,
 				 false,
@@ -102,25 +110,27 @@ public class TransmissionPolicyItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Transmit Ratio feature.
+	 * This adds a property descriptor for the Channel Accesses feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTransmitRatioPropertyDescriptor(Object object) {
+	protected void addChannelAccessesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TransmissionPolicy_transmitRatio_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TransmissionPolicy_transmitRatio_feature", "_UI_TransmissionPolicy_type"),
-				 AmaltheaPackage.eINSTANCE.getTransmissionPolicy_TransmitRatio(),
+				 getString("_UI_Channel_channelAccesses_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Channel_channelAccesses_feature", "_UI_Channel_type"),
+				 AmaltheaPackage.eINSTANCE.getChannel_ChannelAccesses(),
+				 false,
+				 false,
 				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
-				 null));
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**
@@ -135,7 +145,7 @@ public class TransmissionPolicyItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getTransmissionPolicy_ChunkSize());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getChannel_DataType());
 		}
 		return childrenFeatures;
 	}
@@ -154,14 +164,14 @@ public class TransmissionPolicyItemProvider
 	}
 
 	/**
-	 * This returns TransmissionPolicy.gif.
+	 * This returns Channel.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TransmissionPolicy"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Channel"));
 	}
 
 	/**
@@ -180,19 +190,14 @@ public class TransmissionPolicyItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTextGen(Object object) {
-		TransmissionPolicy transmissionPolicy = (TransmissionPolicy)object;
-		return getString("_UI_TransmissionPolicy_type") + " " + transmissionPolicy.getChunkProcessingInstructions();
-	}
-
-	/**
-	 * @generated NOT
-	 */
 	@Override
-	public String getText(final Object object) {
-		// delegate to custom item provider
-		return CustomItemProviderService.getTransmissionPolicyItemProviderText(object, getTextGen(object));
+	public String getText(Object object) {
+		String label = ((Channel)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Channel_type") :
+			getString("_UI_Channel_type") + " " + label;
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -201,35 +206,19 @@ public class TransmissionPolicyItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChangedGen(Notification notification) {
+	@Override
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TransmissionPolicy.class)) {
-			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS:
-			case AmaltheaPackage.TRANSMISSION_POLICY__TRANSMIT_RATIO:
+		switch (notification.getFeatureID(Channel.class)) {
+			case AmaltheaPackage.CHANNEL__DISPLAY_NAME:
+			case AmaltheaPackage.CHANNEL__DEFAULT_ELEMENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE:
+			case AmaltheaPackage.CHANNEL__DATA_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
-		super.notifyChanged(notification);
-	}
-
-	/**
-	 * @generated NOT
-	 */
-	@Override
-	public void notifyChanged(final Notification notification) {
-		updateChildren(notification);
-
-		// delegate to custom item provider and execute locally
-		final List<ViewerNotification> notifications = CustomItemProviderService
-				.getTransmissionPolicyItemProviderNotifications(notification);
-		for (final ViewerNotification vn : notifications) {
-			fireNotifyChanged(vn);
-		}
-
 		super.notifyChanged(notification);
 	}
 
@@ -246,19 +235,23 @@ public class TransmissionPolicyItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTransmissionPolicy_ChunkSize(),
-				 AmaltheaFactory.eINSTANCE.createDataSize()));
-	}
+				(AmaltheaPackage.eINSTANCE.getChannel_DataType(),
+				 AmaltheaFactory.eINSTANCE.createStruct()));
 
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return AmaltheaEditPlugin.INSTANCE;
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getChannel_DataType(),
+				 AmaltheaFactory.eINSTANCE.createArray()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getChannel_DataType(),
+				 AmaltheaFactory.eINSTANCE.createPointer()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getChannel_DataType(),
+				 AmaltheaFactory.eINSTANCE.createTypeRef()));
 	}
 
 }

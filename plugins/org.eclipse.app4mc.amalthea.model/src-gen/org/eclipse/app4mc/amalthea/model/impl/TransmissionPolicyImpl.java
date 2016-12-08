@@ -13,13 +13,16 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -40,24 +43,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implements TransmissionPolicy {
 	/**
-	 * The default value of the '{@link #getChunkSize() <em>Chunk Size</em>}' attribute.
+	 * The cached value of the '{@link #getChunkSize() <em>Chunk Size</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getChunkSize()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int CHUNK_SIZE_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getChunkSize() <em>Chunk Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getChunkSize()
-	 * @generated
-	 * @ordered
-	 */
-	protected int chunkSize = CHUNK_SIZE_EDEFAULT;
+	protected DataSize chunkSize;
 
 	/**
 	 * The default value of the '{@link #getChunkProcessingInstructions() <em>Chunk Processing Instructions</em>}' attribute.
@@ -123,7 +116,21 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getChunkSize() {
+	public DataSize getChunkSize() {
+		if (chunkSize != null && chunkSize.eIsProxy()) {
+			InternalEObject oldChunkSize = (InternalEObject)chunkSize;
+			chunkSize = (DataSize)eResolveProxy(oldChunkSize);
+			if (chunkSize != oldChunkSize) {
+				InternalEObject newChunkSize = (InternalEObject)chunkSize;
+				NotificationChain msgs = oldChunkSize.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE, null, null);
+				if (newChunkSize.eInternalContainer() == null) {
+					msgs = newChunkSize.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE, oldChunkSize, chunkSize));
+			}
+		}
 		return chunkSize;
 	}
 
@@ -132,11 +139,42 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setChunkSize(int newChunkSize) {
-		int oldChunkSize = chunkSize;
+	public DataSize basicGetChunkSize() {
+		return chunkSize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetChunkSize(DataSize newChunkSize, NotificationChain msgs) {
+		DataSize oldChunkSize = chunkSize;
 		chunkSize = newChunkSize;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE, oldChunkSize, chunkSize));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE, oldChunkSize, newChunkSize);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setChunkSize(DataSize newChunkSize) {
+		if (newChunkSize != chunkSize) {
+			NotificationChain msgs = null;
+			if (chunkSize != null)
+				msgs = ((InternalEObject)chunkSize).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE, null, msgs);
+			if (newChunkSize != null)
+				msgs = ((InternalEObject)newChunkSize).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE, null, msgs);
+			msgs = basicSetChunkSize(newChunkSize, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE, newChunkSize, newChunkSize));
 	}
 
 	/**
@@ -187,10 +225,25 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE:
+				return basicSetChunkSize(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE:
-				return getChunkSize();
+				if (resolve) return getChunkSize();
+				return basicGetChunkSize();
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS:
 				return getChunkProcessingInstructions();
 			case AmaltheaPackage.TRANSMISSION_POLICY__TRANSMIT_RATIO:
@@ -208,7 +261,7 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE:
-				setChunkSize((Integer)newValue);
+				setChunkSize((DataSize)newValue);
 				return;
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS:
 				setChunkProcessingInstructions((Integer)newValue);
@@ -229,7 +282,7 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE:
-				setChunkSize(CHUNK_SIZE_EDEFAULT);
+				setChunkSize((DataSize)null);
 				return;
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS:
 				setChunkProcessingInstructions(CHUNK_PROCESSING_INSTRUCTIONS_EDEFAULT);
@@ -250,7 +303,7 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE:
-				return chunkSize != CHUNK_SIZE_EDEFAULT;
+				return chunkSize != null;
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS:
 				return chunkProcessingInstructions != CHUNK_PROCESSING_INSTRUCTIONS_EDEFAULT;
 			case AmaltheaPackage.TRANSMISSION_POLICY__TRANSMIT_RATIO:
@@ -269,9 +322,7 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (chunkSize: ");
-		result.append(chunkSize);
-		result.append(", chunkProcessingInstructions: ");
+		result.append(" (chunkProcessingInstructions: ");
 		result.append(chunkProcessingInstructions);
 		result.append(", transmitRatio: ");
 		result.append(transmitRatio);
