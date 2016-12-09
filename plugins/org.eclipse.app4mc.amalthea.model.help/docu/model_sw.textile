@@ -26,8 +26,24 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 | __displayName__ | In addition to the name attribute, which must be unique, a label can also be described by an additional and optional display name. The displayName attribute must not be unique. It can be used for example to represent specification data, which can be different from the unique name (like a symbol) of an available software build. |
 | __dataType__ | Reference to the data type definition |
 | __constant__ | Boolean value to represent, if label is representing a constant value |
-| __isBuffered__ | Enumeration value to represent, if label has to be buffered or not |
 | __bVolatile__ | Boolean value to mark a label as volatile |
+| __dataStability__ | Enumeration value to represent the data stability needs of the label |
+
+
+h2. Channels
+
+The channel element represents a data element. TODO
+
+!../pictures/model_sw_channel.png!
+
+The following attributes are describing a label:
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name  |_. Description |
+| __name__ | The name represented as String value (derived from __AbstractElementMemoryInformation__) |
+| __displayName__ | In addition to the name attribute, which must be unique, a label can also be described by an additional and optional display name. The displayName attribute must not be unique. It can be used for example to represent specification data, which can be different from the unique name (like a symbol) of an available software build. |
+| __dataType__ | Reference to the data type definition |
+| __defaultElements__ | TODO |
 
 
 h2. Data Types
@@ -132,16 +148,50 @@ h3. Groups
 A __Group__ is used to structure the __RunnableItems__. The __boolean__ attribute __isOrdered__ indicates if the execution order of the contained elements is fixed or random. 
 
 
-h3. Calls and Label Access
+h3. Calls and AUTOSAR communication
 
-!(scale)../pictures/model_sw_runnable_items_2_calls_accesses.png!
+!(scale)../pictures/model_sw_runnable_items__calls.png!
 
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
 | __RunnableCall__ | The activation of another __Runnable__. |
 | __ServerCall__ | An abstract description for client/server communication. It refers to a required runnable that describes the called server operation |
 | __SenderReceiverCommunication__ | An abstract description for sender-receiver-communication (it can be read or write). If the access has to be buffered is represented using the values of __LabelAccessBuffering__. |
-| __LabelAccess__ | Describes the access to an existent __Label__ (set as reference). Type of access is represented using the values of __LabelAccessEnum__. If the access has to be buffered is represented using the values of __LabelAccessBuffering__. |
+
+
+h3. Label Access
+
+!(scale)../pictures/model_sw_runnable_items__label_access.png!
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __access__ | The type of access is represented using the values of __LabelAccessEnum__. |
+| __data__ | Describes the access to an existent __Label__ (set as reference). |
+| __dataStability__ | Describes the data stability needs. It can overwrite or inherit the label setting. |
+| __statistic__ | TODO |
+| __transmissionPolicy__ | The following attributes reflect computing demand (time) depending on data: <ul><li> *ChunkSize*: Size of a part of an element, maximum is the element size. </li><li> *ChunkProcessingInstructions*: Number of instructions that will be executed to receive one chunk. </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *ReceiveRatio*: Specify the ratio of each element that is actually received by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
+
+
+h3. Channel Access
+
+!../pictures/model_sw_runnable_items__channel_access.png!
+
+Common attributes:
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __data__ | Describes the access (__ChannelSend__ or __ChannelReceive__) to an existent __Channel__ (set as reference). |
+| __elements__ | Maximum number of elements that are transmitted. |
+| __transmissionPolicy__ | The following attributes reflect computing demand (time) depending on data: <ul><li> *chunkSize*: Size of a part of an element, maximum is the element size. </li><li> *chunkProcessingInstructions*: Number of instructions that will be executed to receive one chunk. </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *transmitRatio*: Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
+
+Receive attributes:
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __receiveOperation__ | The type of an operation is defined by LIFO or FIFO, Read or Take: <ul><li> *LIFO*: last-in, first-out </li><li> *FIFO*: first-in, first-out </li><li> *Read*: reads elements (without modifying the channel content) </li><li> *Take*: removes the received elements </li></ul> |
+| __elementIndex__ | Position (index) in channel at which the operation is effective. Zero is the default and denotes the oldest (FIFO) or newest element (LIFO) in the channel. |
+| __lowerBound__ | Minimum number of elements returned by the operation. The value must be in the range [0,n], with n is the maximum number of elements that are received. Default value is n. |
+| __dataMustBeNew__ | Specify if the operation must only return elements that are not previously read by the runnable. Default value is false. |
 
 
 h3. Semaphore Access
@@ -180,15 +230,9 @@ Each entry (path) of a __Runnable Probability Switch__ has a probability-value. 
 
 h3. Runnable Instructions
 
-In the next picture a more detailed overview is given about the __Runnable Instructions__.
+__Runnable Instructions__ allow to specify the default instructions and (optional) the instructions for specific core types (e.g. FPGA). These extended instructions are implemented as a map with the core type as the key.
 
-TODO
-
-!../pictures/model_sw_instructions.png!
-
-table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
-|_. Name |_. Description |
-| __Instructions__| As a runnable contains several instructions to perform, this is represented using different algorithms or a constant value to consume the same amount of time/ticks per cycle.|
+!../pictures/model_sw_runnableinstructions.png!
 
 
 h3. Statistical Values

@@ -123,7 +123,7 @@ TODO
 
 In the next picture a more detailed overview is given about the __Instructions__.
 
-!../pictures/model_sw_instructions.png!
+!../pictures/model_common_instructions.png!
 
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
