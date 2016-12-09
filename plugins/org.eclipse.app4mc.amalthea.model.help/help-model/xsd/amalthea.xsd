@@ -341,6 +341,30 @@
       <xsd:enumeration value="offset"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="OsDataConsistencyMode">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="noProtection"/>
+      <xsd:enumeration value="automaticProtection"/>
+      <xsd:enumeration value="customProtection"/>
+      <xsd:enumeration value="handledByModelElements"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="AccessMultiplicity">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="singleAccess"/>
+      <xsd:enumeration value="multipleAccesses"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DataStabilityLevel">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="process"/>
+      <xsd:enumeration value="runnable"/>
+      <xsd:enumeration value="scheduleSection"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="ComparatorType">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -369,6 +393,13 @@
       <xsd:enumeration value="_undefined_"/>
       <xsd:enumeration value="active"/>
       <xsd:enumeration value="passive"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ISRCategory">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="CATEGORY_1"/>
+      <xsd:enumeration value="CATEGORY_2"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="AccessPrecedenceType">
@@ -411,24 +442,36 @@
       <xsd:enumeration value="endSequence"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="LabelBuffering">
+  <xsd:simpleType name="LabelDataStability">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="buffered"/>
-      <xsd:enumeration value="notBuffered"/>
+      <xsd:enumeration value="noProtection"/>
+      <xsd:enumeration value="automaticProtection"/>
+      <xsd:enumeration value="customProtection"/>
+      <xsd:enumeration value="handledByModelElements"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="LabelAccessBuffering">
+  <xsd:simpleType name="ReceiveOperation">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="FIFO_Read"/>
+      <xsd:enumeration value="FIFO_Take"/>
+      <xsd:enumeration value="LIFO_Read"/>
+      <xsd:enumeration value="LIFO_Take"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="LabelAccessDataStability">
     <xsd:annotation>
-      <xsd:documentation>Defines the buffering of a label access.
-It can be buffered, not-buffered and inherited
-Inherited means that the buffered-setting of the Label is used</xsd:documentation>
+      <xsd:documentation>Defines the data stability needs of a label access.
+Inherited means that the setting of the Label is used</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
       <xsd:enumeration value="inherited"/>
-      <xsd:enumeration value="buffered"/>
-      <xsd:enumeration value="notBuffered"/>
+      <xsd:enumeration value="noProtection"/>
+      <xsd:enumeration value="automaticProtection"/>
+      <xsd:enumeration value="customProtection"/>
+      <xsd:enumeration value="handledByModelElements"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="LabelAccessEnum">
@@ -457,8 +500,9 @@ exclusive: gets access to requested semaphore only when there is no other user a
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="cooperative"/>
       <xsd:enumeration value="preemptive"/>
+      <xsd:enumeration value="cooperative"/>
+      <xsd:enumeration value="non_preemptive"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="ConcurrencyType">
@@ -642,6 +686,76 @@ exclusive: gets access to requested semaphore only when there is no other user a
   <xsd:element name="Tag" type="am:Tag">
     <xsd:annotation>
       <xsd:documentation>A tag for processes, runnables, events and labels</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="Instructions">
+    <xsd:annotation>
+      <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="fetchStatistic" type="am:InstructionFetch">
+        <xsd:annotation>
+          <xsd:documentation>optional parameter for fetch statistic</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="Instructions" type="am:Instructions">
+    <xsd:annotation>
+      <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TransmissionPolicy">
+    <xsd:annotation>
+      <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="chunkSize" type="am:DataSize"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="chunkProcessingInstructions" type="xsd:int"/>
+    <xsd:attribute name="transmitRatio" type="xsd:double"/>
+  </xsd:complexType>
+  <xsd:element name="TransmissionPolicy" type="am:TransmissionPolicy">
+    <xsd:annotation>
+      <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="InstructionsDeviation">
+    <xsd:annotation>
+      <xsd:documentation>Deviated set of execution cycles</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Instructions">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="deviation" type="am:Deviation"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="InstructionsDeviation" type="am:InstructionsDeviation">
+    <xsd:annotation>
+      <xsd:documentation>Deviated set of execution cycles</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="InstructionsConstant">
+    <xsd:annotation>
+      <xsd:documentation>Constant set of execution cycles</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Instructions">
+        <xsd:attribute name="value" type="xsd:long"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="InstructionsConstant" type="am:InstructionsConstant">
+    <xsd:annotation>
+      <xsd:documentation>Constant set of execution cycles</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="AbstractTime">
@@ -903,7 +1017,6 @@ exclusive: gets access to requested semaphore only when there is no other user a
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="samplingType" type="am:SamplingType"/>
   </xsd:complexType>
   <xsd:element name="Deviation" type="am:Deviation"/>
   <xsd:complexType abstract="true" name="Distribution">
@@ -992,7 +1105,9 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
       <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:Distribution"/>
+      <xsd:extension base="am:Distribution">
+        <xsd:attribute name="samplingType" type="am:SamplingType"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Boundaries" type="am:Boundaries">
@@ -1714,52 +1829,6 @@ A scheduler can be a target for runnable-constraints and process-constraints
 schedulers: the reference to zero or more Schedulers. If this list is empty, the target stands for all schedulers!</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="TargetProcess">
-    <xsd:annotation>
-      <xsd:documentation>A process target description
-A process can be a target only for runnable-constraints
-processes: the reference zero or more Processes. If this list is empty, the target stands for all processes!</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:RunnableConstraintTarget">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
-          <xsd:element name="processes" type="am:Process"/>
-        </xsd:choice>
-        <xsd:attribute name="processes" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TargetProcess" type="am:TargetProcess">
-    <xsd:annotation>
-      <xsd:documentation>A process target description
-A process can be a target only for runnable-constraints
-processes: the reference zero or more Processes. If this list is empty, the target stands for all processes!</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="TargetCallSequence">
-    <xsd:annotation>
-      <xsd:documentation>A call-sequence target description
-A call-sequence can be a target only for runnable-constraints
-callSequences: the reference to zero or more call-sequences. If this list is empty, the target stands for all call-sequences!</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:RunnableConstraintTarget">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
-          <xsd:element name="callSequences" type="am:CallSequence"/>
-        </xsd:choice>
-        <xsd:attribute name="callSequences" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TargetCallSequence" type="am:TargetCallSequence">
-    <xsd:annotation>
-      <xsd:documentation>A call-sequence target description
-A call-sequence can be a target only for runnable-constraints
-callSequences: the reference to zero or more call-sequences. If this list is empty, the target stands for all call-sequences!</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType abstract="true" name="RunnableGroup">
     <xsd:annotation>
       <xsd:documentation>A abstract description for a group of runnables that can be paired or separated by a runnable-constraint</xsd:documentation>
@@ -2368,6 +2437,19 @@ maximum: Maximum allowed latency</xsd:documentation>
       <xsd:documentation>An abstract event</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="TriggerEvent">
+    <xsd:annotation>
+      <xsd:documentation>Defines Events to be used in Stimuli as trigger.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Event"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TriggerEvent" type="am:TriggerEvent">
+    <xsd:annotation>
+      <xsd:documentation>Defines Events to be used in Stimuli as trigger.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="EventSet">
     <xsd:annotation>
       <xsd:documentation>A set of entity-events</xsd:documentation>
@@ -2490,7 +2572,7 @@ process: The process that executes the runnable (optional)
 core: The core that processes the runnable (processes the process that executes the runnable) (optional)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:EntityEvent">
+      <xsd:extension base="am:TriggerEvent">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:Runnable"/>
           <xsd:element name="process" type="am:Process"/>
@@ -2521,7 +2603,7 @@ runnable: The runnable that accesses the label (optional)
 process: The process that accesses the label (optional)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:EntityEvent">
+      <xsd:extension base="am:TriggerEvent">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:Label"/>
           <xsd:element name="runnable" type="am:Runnable"/>
@@ -2539,6 +2621,36 @@ process: The process that accesses the label (optional)</xsd:documentation>
       <xsd:documentation>Describes the event of a label access
 eventType: The type of event
 entity: The accessed label that fires the event
+runnable: The runnable that accesses the label (optional)
+process: The process that accesses the label (optional)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ChannelEvent">
+    <xsd:annotation>
+      <xsd:documentation>Describes the event of a channel access
+eventType: The type of event
+entity: The accessed channel that fires the event
+runnable: The runnable that accesses the label (optional)
+process: The process that accesses the label (optional)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:TriggerEvent">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entity" type="am:Channel"/>
+          <xsd:element name="runnable" type="am:Runnable"/>
+          <xsd:element name="process" type="am:Process"/>
+        </xsd:choice>
+        <xsd:attribute name="entity" type="xsd:string"/>
+        <xsd:attribute name="runnable" type="xsd:string"/>
+        <xsd:attribute name="process" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ChannelEvent" type="am:ChannelEvent">
+    <xsd:annotation>
+      <xsd:documentation>Describes the event of a channel access
+eventType: The type of event
+entity: The accessed channel that fires the event
 runnable: The runnable that accesses the label (optional)
 process: The process that accesses the label (optional)</xsd:documentation>
     </xsd:annotation>
@@ -3180,7 +3292,7 @@ Sections refer to Labels and/or Runnables.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="osBuffering" type="am:OsBuffering"/>
+          <xsd:element name="osDataConsistency" type="am:OsDataConsistency"/>
           <xsd:element name="semaphores" type="am:Semaphore"/>
           <xsd:element name="operatingSystems" type="am:OperatingSystem"/>
           <xsd:element name="osOverheads" type="am:OsInstructions"/>
@@ -3200,28 +3312,41 @@ Sections refer to Labels and/or Runnables.</xsd:documentation>
 ===============================================================================</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="OsBuffering">
-    <xsd:annotation>
-      <xsd:documentation>buffering for intercore communication (process on core 1 communicates witch process on core 2)
-runnable-, process-, and scheduleSectionLevel defines the section where buffering occurs
-at selected layer, data is read at beginning of section and written back at the end of the section</xsd:documentation>
-    </xsd:annotation>
+  <xsd:complexType name="OsDataConsistency">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
-        <xsd:attribute name="runnableLevel" type="xsd:boolean"/>
-        <xsd:attribute name="processLevel" type="xsd:boolean"/>
-        <xsd:attribute name="scheduleSectionLevel" type="xsd:boolean"/>
-        <xsd:attribute name="bufferingAlgorithm" type="xsd:string"/>
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="dataStability" type="am:DataStability"/>
+          <xsd:element name="nonAtomicDataCoherency" type="am:NonAtomicDataCoherency"/>
+        </xsd:choice>
+        <xsd:attribute name="mode" type="am:OsDataConsistencyMode"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="OsBuffering" type="am:OsBuffering">
-    <xsd:annotation>
-      <xsd:documentation>buffering for intercore communication (process on core 1 communicates witch process on core 2)
-runnable-, process-, and scheduleSectionLevel defines the section where buffering occurs
-at selected layer, data is read at beginning of section and written back at the end of the section</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="OsDataConsistency" type="am:OsDataConsistency"/>
+  <xsd:complexType name="DataStability">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="enabled" type="xsd:boolean"/>
+    <xsd:attribute name="algorithm" type="xsd:string"/>
+    <xsd:attribute name="accessMultiplicity" type="am:AccessMultiplicity"/>
+    <xsd:attribute name="level" type="am:DataStabilityLevel"/>
+  </xsd:complexType>
+  <xsd:element name="DataStability" type="am:DataStability"/>
+  <xsd:complexType name="NonAtomicDataCoherency">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="enabled" type="xsd:boolean"/>
+    <xsd:attribute name="algorithm" type="xsd:string"/>
+    <xsd:attribute name="accessMultiplicity" type="am:AccessMultiplicity"/>
+  </xsd:complexType>
+  <xsd:element name="NonAtomicDataCoherency" type="am:NonAtomicDataCoherency"/>
   <xsd:complexType name="Semaphore">
     <xsd:annotation>
       <xsd:documentation>name: Name of semaphore
@@ -3658,8 +3783,6 @@ It describes an ISR that performs scheduling.</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="allocationConstraints" type="am:AllocationConstraint"/>
           <xsd:element name="mappingConstraints" type="am:MappingConstraint"/>
-          <xsd:element name="coreTypeDefinitions" type="am:CoreType"/>
-          <xsd:element name="memoryTypeDefinitions" type="am:MemoryType"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -3828,6 +3951,7 @@ executables.</xsd:documentation>
           <xsd:element name="core" type="am:Core"/>
         </xsd:choice>
         <xsd:attribute name="comparator" type="am:ComparatorType"/>
+        <xsd:attribute name="core" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -3860,6 +3984,7 @@ data.</xsd:documentation>
           <xsd:element name="memory" type="am:Memory"/>
         </xsd:choice>
         <xsd:attribute name="comparator" type="am:ComparatorType"/>
+        <xsd:attribute name="memory" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -4069,7 +4194,11 @@ triggerTimes: the list of all trigger times</xsd:documentation>
       <xsd:documentation>Defines activation based on a explicit inter process activation.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:Stimulus"/>
+      <xsd:extension base="am:Stimulus">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="counter" type="am:Counter"/>
+        </xsd:choice>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="InterProcess" type="am:InterProcess">
@@ -4088,6 +4217,25 @@ triggerTimes: the list of all trigger times</xsd:documentation>
   <xsd:element name="Sporadic" type="am:Sporadic">
     <xsd:annotation>
       <xsd:documentation>Stimulus for sporadic activation of task</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="EventStimulus">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus which is activated by an event.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Stimulus">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="trigger" type="am:TriggerEvent"/>
+          <xsd:element name="counter" type="am:Counter"/>
+        </xsd:choice>
+        <xsd:attribute name="trigger" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="EventStimulus" type="am:EventStimulus">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus which is activated by an event.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ArrivalCurve">
@@ -4217,6 +4365,7 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
           <xsd:element name="tasks" type="am:Task"/>
           <xsd:element name="runnables" type="am:Runnable"/>
           <xsd:element name="labels" type="am:Label"/>
+          <xsd:element name="channels" type="am:Channel"/>
           <xsd:element name="processPrototypes" type="am:ProcessPrototype"/>
           <xsd:element name="sections" type="am:Section"/>
           <xsd:element name="activations" type="am:Activation"/>
@@ -4697,7 +4846,9 @@ and includes the direct representation of all abstractions.</xsd:documentation>
       <xsd:documentation>Interrupt service routine</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:Process"/>
+      <xsd:extension base="am:Process">
+        <xsd:attribute name="category" type="am:ISRCategory"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ISR" type="am:ISR">
@@ -4854,9 +5005,9 @@ The final state can be several Tasks, which can be computed using provided infor
             <xsd:documentation>Defines if the label value is volatile or persistent to survive shutdown and start of system</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="buffered" type="am:LabelBuffering">
+        <xsd:attribute name="dataStability" type="am:LabelDataStability">
           <xsd:annotation>
-            <xsd:documentation>Defines if the label is buffered or not</xsd:documentation>
+            <xsd:documentation>Defines the data stability needs of the label</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="section" type="xsd:string"/>
@@ -4868,6 +5019,18 @@ The final state can be several Tasks, which can be computed using provided infor
       <xsd:documentation>Data representation, which can be accessed by run entities.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="Channel">
+    <xsd:complexContent>
+      <xsd:extension base="am:AbstractElementMemoryInformation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="dataType" type="am:DataType"/>
+        </xsd:choice>
+        <xsd:attribute name="displayName" type="xsd:string"/>
+        <xsd:attribute name="defaultElements" type="xsd:int"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Channel" type="am:Channel"/>
   <xsd:complexType name="ModeLabel">
     <xsd:complexContent>
       <xsd:extension base="am:AbstractElementMemoryInformation">
@@ -4918,6 +5081,35 @@ which are belonging together.</xsd:documentation>
       <xsd:documentation>Representation of a object that can be executed by a Runnable</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="RunnableInstructions">
+    <xsd:annotation>
+      <xsd:documentation>Representation of the execution cost of a Runnable (default and core-specific)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:RunnableItem">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="default" type="am:Instructions"/>
+          <xsd:element name="extended" type="am:RunnableInstructionsEntry"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="RunnableInstructions" type="am:RunnableInstructions">
+    <xsd:annotation>
+      <xsd:documentation>Representation of the execution cost of a Runnable (default and core-specific)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="RunnableInstructionsEntry">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="key" type="am:CoreType"/>
+      <xsd:element name="value" type="am:Instructions"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="key" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="RunnableInstructionsEntry" type="am:RunnableInstructionsEntry"/>
   <xsd:complexType name="ModeLabelAccess">
     <xsd:annotation>
       <xsd:documentation>Representation of a mode label access of a run entity.</xsd:documentation>
@@ -4975,11 +5167,16 @@ It can be used to define which mode value is written to the label.</xsd:document
               <xsd:documentation>Optional parameter for statistic values</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
+          <xsd:element name="transmissionPolicy" type="am:TransmissionPolicy">
+            <xsd:annotation>
+              <xsd:documentation>Optional parameter for transmission policy of larger data</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
         </xsd:choice>
         <xsd:attribute name="access" type="am:LabelAccessEnum"/>
-        <xsd:attribute name="buffered" type="am:LabelAccessBuffering">
+        <xsd:attribute name="dataStability" type="am:LabelAccessDataStability">
           <xsd:annotation>
-            <xsd:documentation>Defines if the access to the label is buffered</xsd:documentation>
+            <xsd:documentation>Defines the data stability needs of the label access</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="data" type="xsd:string"/>
@@ -4991,6 +5188,36 @@ It can be used to define which mode value is written to the label.</xsd:document
       <xsd:documentation>Representation of a label access of a run entity.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="ChannelAccess">
+    <xsd:complexContent>
+      <xsd:extension base="am:RunnableItem">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="data" type="am:Channel"/>
+          <xsd:element name="transmissionPolicy" type="am:TransmissionPolicy"/>
+        </xsd:choice>
+        <xsd:attribute name="elements" type="xsd:int"/>
+        <xsd:attribute name="data" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ChannelAccess" type="am:ChannelAccess"/>
+  <xsd:complexType name="ChannelSend">
+    <xsd:complexContent>
+      <xsd:extension base="am:ChannelAccess"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ChannelSend" type="am:ChannelSend"/>
+  <xsd:complexType name="ChannelReceive">
+    <xsd:complexContent>
+      <xsd:extension base="am:ChannelAccess">
+        <xsd:attribute name="receiveOperation" type="am:ReceiveOperation"/>
+        <xsd:attribute name="dataMustBeNew" type="xsd:boolean"/>
+        <xsd:attribute name="elementIndex" type="xsd:int"/>
+        <xsd:attribute name="lowerBound" type="xsd:int"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ChannelReceive" type="am:ChannelReceive"/>
   <xsd:complexType name="SemaphoreAccess">
     <xsd:annotation>
       <xsd:documentation>Describes an semaphore access</xsd:documentation>
@@ -5172,59 +5399,6 @@ It can be also a group of runnable items without deviation, because the deviatio
   <xsd:element name="RunnableCall" type="am:RunnableCall">
     <xsd:annotation>
       <xsd:documentation>Representation of a runnable call of a run entity.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType abstract="true" name="Instructions">
-    <xsd:annotation>
-      <xsd:documentation>Represents a abstract description for a set of execution cycles in a runnable</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="fetchStatistic" type="am:InstructionFetch">
-            <xsd:annotation>
-              <xsd:documentation>optional parameter for fetch statistic</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="Instructions" type="am:Instructions">
-    <xsd:annotation>
-      <xsd:documentation>Represents a abstract description for a set of execution cycles in a runnable</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="InstructionsDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Represents a deviated set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Instructions">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="deviation" type="am:Deviation"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="InstructionsDeviation" type="am:InstructionsDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Represents a deviated set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="InstructionsConstant">
-    <xsd:annotation>
-      <xsd:documentation>Represents a constant set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Instructions">
-        <xsd:attribute name="value" type="xsd:long"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="InstructionsConstant" type="am:InstructionsConstant">
-    <xsd:annotation>
-      <xsd:documentation>Represents a constant set of execution cycles</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="DataType">

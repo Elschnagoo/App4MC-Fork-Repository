@@ -821,16 +821,6 @@ public class CustomItemProviderService {
         _matched=true;
       }
     }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DATA_SIZE__VALUE)) {
-        _matched=true;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DATA_SIZE__UNIT)) {
-        _matched=true;
-      }
-    }
     if (_matched) {
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);

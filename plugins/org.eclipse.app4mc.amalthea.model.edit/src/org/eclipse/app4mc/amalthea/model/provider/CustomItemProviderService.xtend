@@ -532,15 +532,11 @@ class CustomItemProviderService {
 
 		switch notification.getFeatureID(typeof(TransmissionPolicy)) {
 			case AmaltheaPackage::TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS,
-			case AmaltheaPackage::TRANSMISSION_POLICY__TRANSMIT_RATIO,
-			case AmaltheaPackage::DATA_SIZE__VALUE,
-			case AmaltheaPackage::DATA_SIZE__UNIT:
+			case AmaltheaPackage::TRANSMISSION_POLICY__TRANSMIT_RATIO:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 			case AmaltheaPackage::TRANSMISSION_POLICY__CHUNK_SIZE:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 		}
-		
-		
 		return list
 	}
 
