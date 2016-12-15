@@ -56,8 +56,8 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.072</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.071</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.070</module>
-		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.110</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.111</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.110</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.common</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.ui</module>
 		<module>../../plugins/org.jdom2</module>
