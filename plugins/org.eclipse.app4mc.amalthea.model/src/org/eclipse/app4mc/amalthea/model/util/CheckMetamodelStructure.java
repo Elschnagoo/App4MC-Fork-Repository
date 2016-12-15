@@ -14,7 +14,10 @@
 
 package org.eclipse.app4mc.amalthea.model.util;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
@@ -26,9 +29,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 public final class CheckMetamodelStructure {
 
 	public static void main(String[] args) {
-
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
 		AmaltheaPackage amPackage = AmaltheaPackage.eINSTANCE;
 
+		System.out.println("++++ Metamodel check startet at " + dateFormat.format(new Date()));
+		
 		// Get all classes
 
 		List<EClass> classList = new ArrayList<EClass>();
@@ -53,9 +58,9 @@ public final class CheckMetamodelStructure {
 
 						if (eRef.isTransient()) {
 							if (eRef.isDerived()) {
-								//print("Derived reference", eClass, eRef, refClass);
+								print("Derived reference", eClass, eRef, refClass);
 							} else {
-								//print("Transient reference", eClass, eRef, refClass);
+								print("Transient reference", eClass, eRef, refClass);
 							}
 							continue;
 						}
@@ -72,6 +77,8 @@ public final class CheckMetamodelStructure {
 				}
 			}
 		}
+		
+		System.out.println("++++ Metamodel check finished at " + dateFormat.format(new Date()));
 
 	} // main
 
