@@ -1,13 +1,13 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Contexts: _DGqOIKPrEeWDWL6qw48qbg,_cQbr8FPUEeaS0O6Kqo42Fw
-Element-Name: modelmigration-itea_110-0_7_1
+Element-Name: ModelMigration_itea-110_app4mc-0.7.1
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _xUFfYFPpEeayW6ylYvxLSQ
 Runtime-Version: 2.1.0.201605312320
-Save-Time: 11/4/16 11:09 PM
+Save-Time: 12/15/16 8:33 PM
 Testcase-Type: ecl
 Verifications: _OCzUMKM-EeW6_Mq9rZ9GtQ
 
@@ -17,7 +17,10 @@ Entry-Name: .content
 
 get-view "Model Explorer" | get-tree | select "ModelMigration-itea.110/hw.amxmi" 
     | get-menu "AMALTHEA Model Migration" | click
-get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+with [get-window "AMALTHEA Model Migration"] {
+    get-group "Migration details" | get-combo -after [get-label "Model Version"] | select "0.7.1"
+    get-button "Migrate Models" | click
+}
 get-window "AMALTHEA Model Migration" | get-button OK | click
 
 

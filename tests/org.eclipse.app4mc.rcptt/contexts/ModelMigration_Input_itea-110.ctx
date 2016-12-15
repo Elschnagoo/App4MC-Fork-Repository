@@ -1,24 +1,25 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Context-Type: org.eclipse.rcptt.ctx.workspace
-Element-Name: ModelMigration-Input-itea.110
+Element-Name: ModelMigration_Input_itea-110
 Element-Type: context
 Element-Version: 2.0
 Id: _cQbr8FPUEeaS0O6Kqo42Fw
 Runtime-Version: 2.1.0.201605312320
-Save-Time: 8/19/16 3:29 PM
+Save-Time: 12/15/16 6:55 PM
 
 ------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf
 Content-Type: q7/binary
 Entry-Name: .q7.content
 
 UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAACVkdFLwzAQxt8F/4eQ
-9ybrEBmldQ/iYEhREdE3ydJbF22TmF5N/3xvc60vQ/Etd/y+77675MuhbdgnhM44W/BUzDgDq11lbF3w
-HrfJgi+vzs9yF2oBujG+AxG0RxQaBxFdeO+80pA9j69rZxEGZENrssl3vvelSbbLqF/wHaLPpIwxCtfW
-gszlS7kekT9mTfKR2csPnCROThxnVrVEl66CpjR1UEhhkrX1PSYGQYk0pVimKvirftiExer+6QbU4+zu
-8vbDXcxXkdPmjOV6v5LFQ0GlD+4NNHan7SfjI06CrWlgpMVRTWceQPeoNg11MfTA5WnFLgrV0tV+UeRy
-zPQdWP4kzuV/f45EX1BLBwhXM4XHCgEAABYCAABQSwECFAAUAAgICAAAACEAVzOFxwoBAAAWAgAACAAJ
-AAAAAAAAAAAAAAAAAAAALmNvbnRlbnRVVAUAAQAAAABQSwUGAAAAAAEAAQA/AAAASQEAAAAA
+9ybrEBmldQ/iYEhREdG3kqW3LtomMb3a/vle57q9DMW33PH7vvvuki6HpmZfEFrjbMZjMeMMrHalsVXG
+O9xGC768ubxIXagE6Nr4FkTQHlFoHETvwkfrlYbkdXrdOoswIBsakxx956MvTbJtQv2M7xB9ImXf98I1
+lSBz+ZavJ+SPWUf5xIzyPSeJk0eOM6saonNXQp2bKiikMMXa+g4Lg6CiOKZYpsx4oZ82YbF6fLkD9Tx7
+uL7/dFfzVc9pc8ZSPa5kcV9Q6YN7B43tWftoNBaj8QEnwdbUMNHioKYzD6A7VJuauhg64PK8YtcL1dDV
+flGkcsr0E1ieEqfyvz9Hom9QSwcIG0yW5w4BAAAWAgAAUEsBAhQAFAAICAgAAAAhABtMlucOAQAAFgIA
+AAgACQAAAAAAAAAAAAAAAAAAAC5jb250ZW50VVQFAAEAAAAAUEsFBgAAAAABAAEAPwAAAE0BAAAAAA==
+
 ------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf--
 ------=_contents/ModelMigration-itea.110/.project-fbe0a8c3-20a1-340e-9073-5a0dd35ae19c
 Content-Type: q7/binary

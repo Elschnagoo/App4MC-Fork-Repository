@@ -4,23 +4,24 @@ Element-Name: ModelMigration
 Element-Type: testsuite
 Element-Version: 2.0
 Id: _Tiz1sFPuEeayW6ylYvxLSQ
+Manually-Ordered: true
 Runtime-Version: 2.1.0.201605312320
-Save-Time: 8/22/16 1:38 PM
+Save-Time: 12/15/16 7:31 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
 Entry-Name: testcase-items
 
-_a1j8gFPsEeayW6ylYvxLSQ	// kind: 'test' name: 'modelmigration-0.7.0-0_7_1' path: 'modelmigration/0.7.1/modelmigration-0.7.0-0_7_1.test'
-_zDTaQFPpEeayW6ylYvxLSQ	// kind: 'test' name: 'modelmigration-itea_111-0_7_0' path: 'modelmigration/0.7.0/ModelMigration-itea_111-0_7_0.test'
-_L7PnsGYTEeavsN870ZZg2w	// kind: 'test' name: 'ModelMigration-itea_103-0_7_1' path: 'modelmigration/0.7.1/ModelMigration-itea_103-0_7_1.test'
-_yCvGsGYUEeavsN870ZZg2w	// kind: 'test' name: 'modelmigration-itea_110-itea_111' path: 'modelmigration/itea_111/modelmigration-itea_110-itea_111.test'
-_n3dJ0GhWEeae078dVmHT3A	// kind: 'test' name: 'modelmigration-itea_103-itea_110' path: 'modelmigration/itea_110/modelmigration-itea_103-itea_110.test'
-_xUFfYFPpEeayW6ylYvxLSQ	// kind: 'test' name: 'modelmigration-itea_110-0_7_1' path: 'modelmigration/0.7.1/modelmigration-itea_110-0_7_1.test'
 _UJFoAFPtEeayW6ylYvxLSQ	// kind: 'test' name: 'OldModelOpening' path: 'modelmigration/OpeningOldModel.test'
-_yvW6oFPVEeaS0O6Kqo42Fw	// kind: 'test' name: 'modelmigration-itea.103-0.7.0' path: 'modelmigration/0.7.0/ModelMigration-itea_103-0_7_0.test'
-_Nx-DUGYUEeavsN870ZZg2w	// kind: 'test' name: 'modelmigration-itea_110-0_7_0' path: 'modelmigration/0.7.0/modelmigration-itea_110-0_7_0.test'
-_Lbh-IGYZEeavsN870ZZg2w	// kind: 'test' name: 'modelmigration-itea_111-0_7_1' path: 'modelmigration/0.7.1/modelmigration-itea_111-0_7_1.test'
-_Gfe4gGhWEeae078dVmHT3A	// kind: 'test' name: 'modelmigration-itea_103-itea_111' path: 'modelmigration/itea_111/modelmigration-itea_103-itea_111.test'
+_n3dJ0GhWEeae078dVmHT3A	// kind: 'test' name: 'ModelMigration_itea-103_itea-110' path: 'modelmigration/itea_110/ModelMigration_itea-103_itea-110.test'
+_Gfe4gGhWEeae078dVmHT3A	// kind: 'test' name: 'ModelMigration_itea-103_itea-111' path: 'modelmigration/itea_111/ModelMigration_itea-103_itea-111.test'
+_yvW6oFPVEeaS0O6Kqo42Fw	// kind: 'test' name: 'ModelMigration_itea-103_app4mc-0.7.0' path: 'modelmigration/0.7.0/ModelMigration_itea-103_app4mc-0.7.0.test'
+_L7PnsGYTEeavsN870ZZg2w	// kind: 'test' name: 'ModelMigration_itea-103_app4mc-0.7.1' path: 'modelmigration/0.7.1/ModelMigration_itea-103_app4mc-0.7.1.test'
+_yCvGsGYUEeavsN870ZZg2w	// kind: 'test' name: 'ModelMigration_itea-110_itea-111' path: 'modelmigration/itea_111/ModelMigration_itea-110_itea-111.test'
+_Nx-DUGYUEeavsN870ZZg2w	// kind: 'test' name: 'ModelMigration_itea-110_app4mc-0.7.0' path: 'modelmigration/0.7.0/ModelMigration_itea-110_app4mc-0.7.0.test'
+_xUFfYFPpEeayW6ylYvxLSQ	// kind: 'test' name: 'ModelMigration_itea-110_app4mc-0.7.1' path: 'modelmigration/0.7.1/ModelMigration_itea-110_app4mc-0.7.1.test'
+_zDTaQFPpEeayW6ylYvxLSQ	// kind: 'test' name: 'ModelMigration_itea-111_app4mc-0.7.0' path: 'modelmigration/0.7.0/ModelMigration_itea-111_app4mc-0.7.0.test'
+_Lbh-IGYZEeavsN870ZZg2w	// kind: 'test' name: 'ModelMigration_itea-111_app4mc-0.7.1' path: 'modelmigration/0.7.1/ModelMigration_itea-111_app4mc-0.7.1.test'
+_a1j8gFPsEeayW6ylYvxLSQ	// kind: 'test' name: 'ModelMigration_app4mc-0.7.0_app4mc-0.7.1' path: 'modelmigration/0.7.1/ModelMigration_app4mc-0.7.0_app4mc-0.7.1.test'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

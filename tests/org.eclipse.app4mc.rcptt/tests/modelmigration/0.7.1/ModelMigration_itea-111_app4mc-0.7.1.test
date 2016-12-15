@@ -1,13 +1,13 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Contexts: _DGqOIKPrEeWDWL6qw48qbg,_iIPM0FPUEeaS0O6Kqo42Fw
-Element-Name: modelmigration-itea_111-0_7_1
+Element-Name: ModelMigration_itea-111_app4mc-0.7.1
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _Lbh-IGYZEeavsN870ZZg2w
 Runtime-Version: 2.1.0.201605312320
-Save-Time: 11/4/16 11:11 PM
+Save-Time: 12/15/16 6:59 PM
 Testcase-Type: ecl
 Verifications: _ZAc7gGhlEeae078dVmHT3A
 
