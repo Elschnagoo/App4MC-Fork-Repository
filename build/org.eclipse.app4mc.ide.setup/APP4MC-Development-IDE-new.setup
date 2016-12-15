@@ -1044,6 +1044,18 @@
       </predicate>
     </workingSet>
     <workingSet
+        name="UI Tests">
+      <predicate
+          xsi:type="predicates:AndPredicate">
+        <operand
+            xsi:type="predicates:NamePredicate"
+            pattern="org\.eclipse\.app4mc\.rcptt.*"/>
+        <operand
+            xsi:type="predicates:NaturePredicate"
+            nature="org.eclipse.rcptt.core.rcpttnature"/>
+      </predicate>
+    </workingSet>
+    <workingSet
         name="Features">
       <predicate
           xsi:type="predicates:AndPredicate">
