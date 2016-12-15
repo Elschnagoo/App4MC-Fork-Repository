@@ -11,6 +11,9 @@
 package org.eclipse.app4mc.amalthea.converters071.impl;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -321,7 +324,7 @@ public class SwConverter implements IConverter {
 			if (sections != null && sections.size() > 0) {
 
 				final Element sectionRef = new Element("section");
-				sectionRef.setAttribute("href", "amlt:/#" + sections.get(0) + "?type=Section");
+				sectionRef.setAttribute("href", "amlt:/#" + encodeSectionName(sections.get(0)) + "?type=Section");
 
 				memoryElement.addContent(sectionRef);
 
@@ -437,7 +440,6 @@ public class SwConverter implements IConverter {
 	 */
 	private void update_DataSize(final Element rootElement) {
 
-
 		final StringBuffer xpathBuffer = new StringBuffer();
 
 		/*-
@@ -447,10 +449,8 @@ public class SwConverter implements IConverter {
 		 * xpathBuffer.append("|");
 		 */
 
-
 		xpathBuffer.append("./swModel/typeDefinitions/size");
 		xpathBuffer.append("|");
-
 		xpathBuffer.append("./swModel/tasks/size");
 		xpathBuffer.append("|");
 		xpathBuffer.append("./swModel/isrs/size");
@@ -469,7 +469,6 @@ public class SwConverter implements IConverter {
 		final List<Element> dataSizes = this.helper.getXpathResult(rootElement, xpathBuffer.toString(), Element.class,
 				this.helper.getNS_071("am"));
 
-
 		for (final Element dataSizeElement : dataSizes) {
 
 			final Attribute numberBits = dataSizeElement.getAttribute("numberBits");
@@ -481,12 +480,21 @@ public class SwConverter implements IConverter {
 				final Attribute unit = new Attribute("unit", "bit");
 
 				dataSizeElement.setAttribute(unit);
-
-
 			}
 		}
-
 	}
+	
+	private String encodeSectionName(String name) {
+		if (name == null || name.length() == 0)
+			return "no-name";
 
+		String result;
+		try {
+			result = URLEncoder.encode(name, StandardCharsets.UTF_8.toString());
+		} catch (UnsupportedEncodingException e) {
+			result = name; // keep old name - we have no better option
+		}
+		return result;
+	}
 
 }
