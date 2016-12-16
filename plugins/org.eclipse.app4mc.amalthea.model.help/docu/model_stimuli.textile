@@ -5,6 +5,8 @@ The Stimuli Model contains stimulus and clock objects.
 
 !(scale)../pictures/model_stimuli.png!
 
+h2. Stimuli
+
 A stimulus is responsible to activate processes. The following different types are available:
 * *ArrivalCurve*: A list of time-borders in which a specified number of events are expected
 * *CustomStimulus*: To describe own custom types of activations, including properties
@@ -22,7 +24,11 @@ The following figure shows a stimulus example. First there is a periodic stimulu
 
 !../pictures/model_stimuli_periodic.png!
 
-Beside of the deviation, a periodic stimulus can have a clock. A clock is a time base which describes the progress of time for one or more periodic stimuli in relation to global time. If two equal stimuli have a different time base, the time of task activation can be different. There are different kind of clock functions, the clock sinus function, the clock triangle function and the clock multiplier list. The clock multiplier list is a list of timestamp-multiplier value pairs. Is a specified timestamp arrived, the clock changes to the corresponding multiplier value.
+Beside of the deviation, a periodic stimulus can have a clock.
+
+h2. Clocks
+
+A clock is a time base which describes the progress of time for one or more periodic stimuli in relation to global time. If two equal stimuli have a different time base, the time of task activation can be different. There are different kind of clock functions, the clock sinus function, the clock triangle function and the clock multiplier list. The clock multiplier list is a list of timestamp-multiplier value pairs. Is a specified timestamp arrived, the clock changes to the corresponding multiplier value.
 
 !(scale)../pictures/model_stimuli_clocks.png!
 

@@ -78,7 +78,7 @@ h2. Franca IDL
 
 Franca is a common interface definition  language (IDL). The initial version has been developed by the GENIVI consortium as part of the standardization of an In-Vehicle Infotainment (IVI) platform. The first public version of Franca was released in 2012 under the Eclipse Public License. The future development of Franca will take place in an official Eclipse project under the Eclipse Modeling Top-level Project.
 
-The Franca IDL files (*.fidl) are valid model resources in AMALTHEA projects. They can be edited in a textual editor that is provided by Franca. 
+The Franca IDL files can be edited in a textual editor that is provided by Franca. 
 
 !../pictures/model_franca_editor_screenshot.png!
 

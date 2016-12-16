@@ -82,6 +82,10 @@ Therefore, AMALTHEA currently supports the following three statistical distribut
 
 !(scale)../pictures/model_common_deviation.png!
 
+h3. Boundaries
+
+TODO
+
 h3. Uniform Distribution
 
 The uniform distribution is a statistical distribution where the values between the stated lower and upper bound are equally likely to be observed.
@@ -94,17 +98,17 @@ The Gaussian/normal distribution is a statistical distribution where the values 
 
 !../pictures/model_common_deviation_normal.png!
 
-h3. Weibull Distribution
-
-The Weibull distribution is a statistical distribution whose shape is defined by kappa > 0 and the scale of the distribution by lambda > 0. That way, the Weibull distribution can also be used to model other distributions like for example the exponential or normal distribution. Since the curves can approach zero or infinity on either side, an additional upper and lower bound can be added to constraint the values. Alternatively, the Weibull distribution can also be parameterized using the mean value and a parameter that constraints the distribution regarding the per mill of remaining values.
-
-!../pictures/model_common_deviation_weibull.png!
-
 h3. Beta Distribution
 
 The Beta distribution is a statistical distribution whose shape is defined by alpha > 0 and beta > 0. That way, the Beta distribution can also be used to model other distributions like for example uniform, normal, or Bernoulli distribution. Since the curves can approach zero or infinity on either side, an additional upper and lower bound can be added to constraint the values.
 
 !../pictures/model_common_deviation_beta.png!
+
+h3. Weibull Distribution
+
+The Weibull distribution is a statistical distribution whose shape is defined by kappa > 0 and the scale of the distribution by lambda > 0. That way, the Weibull distribution can also be used to model other distributions like for example the exponential or normal distribution. Since the curves can approach zero or infinity on either side, an additional upper and lower bound can be added to constraint the values. Alternatively, the Weibull distribution can also be parameterized using the mean value and a parameter that constraints the distribution regarding the per mill of remaining values.
+
+!../pictures/model_common_deviation_weibull.png!
 
 h2. Statistic Elements
 
