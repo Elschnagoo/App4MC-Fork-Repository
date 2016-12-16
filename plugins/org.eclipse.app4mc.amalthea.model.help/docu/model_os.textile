@@ -51,27 +51,6 @@ table(classic).
 | UserSpecificSchedulingAlgorithm | This class contains a list of algorithm parameter. Each parameter has a key and a value (both Strings). A user can store all information for its own specific scheduling algorithm here |
 
 
-h2. OS Buffering
-
-The OS buffering object specifies the sections where the buffering for inter-core communication occurs. The buffering can be done at runnable, process, and schedule section level. When buffering is enabled for a level, the required data for a section of this level (e.g. runnable) is read before its execution starts. After the execution of the section, the data is copied back.
-
-!../pictures/model_os_buffering.png!
-
-
-h2. Semaphore
-
-With this object, a semaphore can be described which limits the access of several processes to one resource at the same time.
-
-!../pictures/model_os_semaphore.png!
-
-table(classic). 
-|_. Attribute  |_. Description |
-| __name__ | Name of semaphore (inherited from ReferableBaseObject) |
-| __maxValue__ | Maximum number of processes that can concurrently access the semaphore |
-| __initialValue__ | Initial number of processes that access the semaphore |
-| __priorityCeilingPrototcol__ | Defines if the priority ceiling protocol is activated. If it is activated, a process that accesses the semaphore gets a higher priority as the processes that can also access the same semaphore |
-
-
 h2. Os Overhead
 
 It is possible to define the the overhead that is produced by an operating system. The defined overhead can be assigned to an operating system definition. Each overhead information is defined as a set of instructions that has to be executed when the corresponding OS function is used. The instructions can be either a constant set or a deviation of instructions. It is possible to define the overhead for the ISR category one and two and for a number of operating system API functions.
@@ -95,3 +74,24 @@ There exists also an overhead for API calls. The following API calls are conside
 * API Clear Event: Runtime overhead for clearing an OS event (inside a task or ISR)
 * API Send Message: Runtime overhead for activating another process on another core or setting a event for a process on another core (inside a task or ISR) 
 * API Enforced Migration: Runtime overhead for migrating from one scheduler to another scheduler (inside a task or ISR)
+
+
+h2. OS Data Consistency
+
+TODO
+
+!../pictures/model_os_data_consistency.png!
+
+
+h2. Semaphore
+
+With this object, a semaphore can be described which limits the access of several processes to one resource at the same time.
+
+!../pictures/model_os_semaphore.png!
+
+table(classic). 
+|_. Attribute  |_. Description |
+| __name__ | Name of semaphore (inherited from ReferableBaseObject) |
+| __maxValue__ | Maximum number of processes that can concurrently access the semaphore |
+| __initialValue__ | Initial number of processes that access the semaphore |
+| __priorityCeilingPrototcol__ | Defines if the priority ceiling protocol is activated. If it is activated, a process that accesses the semaphore gets a higher priority as the processes that can also access the same semaphore |
