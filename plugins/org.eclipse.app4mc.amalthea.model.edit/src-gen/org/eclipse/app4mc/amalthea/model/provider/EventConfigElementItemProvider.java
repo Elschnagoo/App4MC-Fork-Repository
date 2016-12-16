@@ -193,6 +193,21 @@ public class EventConfigElementItemProvider extends EventConfigItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getEventConfigElement_Event(),
+				 AmaltheaFactory.eINSTANCE.createRunnableEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getEventConfigElement_Event(),
+				 AmaltheaFactory.eINSTANCE.createLabelEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getEventConfigElement_Event(),
+				 AmaltheaFactory.eINSTANCE.createChannelEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getEventConfigElement_Event(),
 				 AmaltheaFactory.eINSTANCE.createSemaphoreEvent()));
 	}
 

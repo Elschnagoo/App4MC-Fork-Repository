@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public abstract class TriggerEventImpl extends EventImpl implements TriggerEvent {
+public abstract class TriggerEventImpl extends EntityEventImpl implements TriggerEvent {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

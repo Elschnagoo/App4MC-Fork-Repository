@@ -891,16 +891,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createEventAdapter();
 			}
 			@Override
-			public Adapter caseTriggerEvent(TriggerEvent object) {
-				return createTriggerEventAdapter();
-			}
-			@Override
 			public Adapter caseEventSet(EventSet object) {
 				return createEventSetAdapter();
 			}
 			@Override
 			public Adapter caseEntityEvent(EntityEvent object) {
 				return createEntityEventAdapter();
+			}
+			@Override
+			public Adapter caseTriggerEvent(TriggerEvent object) {
+				return createTriggerEventAdapter();
 			}
 			@Override
 			public Adapter caseCustomEvent(CustomEvent object) {
@@ -3431,20 +3431,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TriggerEvent <em>Trigger Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.TriggerEvent
-	 * @generated
-	 */
-	public Adapter createTriggerEventAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EventSet <em>Event Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -3469,6 +3455,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEntityEventAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TriggerEvent <em>Trigger Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.TriggerEvent
+	 * @generated
+	 */
+	public Adapter createTriggerEventAdapter() {
 		return null;
 	}
 

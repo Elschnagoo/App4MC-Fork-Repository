@@ -2437,19 +2437,6 @@ maximum: Maximum allowed latency</xsd:documentation>
       <xsd:documentation>An abstract event</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="TriggerEvent">
-    <xsd:annotation>
-      <xsd:documentation>Defines Events to be used in Stimuli as trigger.</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Event"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TriggerEvent" type="am:TriggerEvent">
-    <xsd:annotation>
-      <xsd:documentation>Defines Events to be used in Stimuli as trigger.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType name="EventSet">
     <xsd:annotation>
       <xsd:documentation>A set of entity-events</xsd:documentation>
@@ -2479,6 +2466,19 @@ maximum: Maximum allowed latency</xsd:documentation>
   <xsd:element name="EntityEvent" type="am:EntityEvent">
     <xsd:annotation>
       <xsd:documentation>An abstract event that describes the notification of a changed state of an entity</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="TriggerEvent">
+    <xsd:annotation>
+      <xsd:documentation>Defines Events to be used in Stimuli as trigger.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:EntityEvent"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TriggerEvent" type="am:TriggerEvent">
+    <xsd:annotation>
+      <xsd:documentation>Defines Events to be used in Stimuli as trigger.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="CustomEvent">

@@ -1391,16 +1391,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.TRIGGER_EVENT: {
-				TriggerEvent triggerEvent = (TriggerEvent)theEObject;
-				T1 result = caseTriggerEvent(triggerEvent);
-				if (result == null) result = caseEvent(triggerEvent);
-				if (result == null) result = caseReferableBaseObject(triggerEvent);
-				if (result == null) result = caseIAnnotatable(triggerEvent);
-				if (result == null) result = caseIReferable(triggerEvent);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.EVENT_SET: {
 				EventSet eventSet = (EventSet)theEObject;
 				T1 result = caseEventSet(eventSet);
@@ -1418,6 +1408,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(entityEvent);
 				if (result == null) result = caseIAnnotatable(entityEvent);
 				if (result == null) result = caseIReferable(entityEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TRIGGER_EVENT: {
+				TriggerEvent triggerEvent = (TriggerEvent)theEObject;
+				T1 result = caseTriggerEvent(triggerEvent);
+				if (result == null) result = caseEntityEvent(triggerEvent);
+				if (result == null) result = caseEvent(triggerEvent);
+				if (result == null) result = caseReferableBaseObject(triggerEvent);
+				if (result == null) result = caseIAnnotatable(triggerEvent);
+				if (result == null) result = caseIReferable(triggerEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1469,6 +1470,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				RunnableEvent runnableEvent = (RunnableEvent)theEObject;
 				T1 result = caseRunnableEvent(runnableEvent);
 				if (result == null) result = caseTriggerEvent(runnableEvent);
+				if (result == null) result = caseEntityEvent(runnableEvent);
 				if (result == null) result = caseEvent(runnableEvent);
 				if (result == null) result = caseReferableBaseObject(runnableEvent);
 				if (result == null) result = caseIAnnotatable(runnableEvent);
@@ -1480,6 +1482,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				LabelEvent labelEvent = (LabelEvent)theEObject;
 				T1 result = caseLabelEvent(labelEvent);
 				if (result == null) result = caseTriggerEvent(labelEvent);
+				if (result == null) result = caseEntityEvent(labelEvent);
 				if (result == null) result = caseEvent(labelEvent);
 				if (result == null) result = caseReferableBaseObject(labelEvent);
 				if (result == null) result = caseIAnnotatable(labelEvent);
@@ -1491,6 +1494,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				ChannelEvent channelEvent = (ChannelEvent)theEObject;
 				T1 result = caseChannelEvent(channelEvent);
 				if (result == null) result = caseTriggerEvent(channelEvent);
+				if (result == null) result = caseEntityEvent(channelEvent);
 				if (result == null) result = caseEvent(channelEvent);
 				if (result == null) result = caseReferableBaseObject(channelEvent);
 				if (result == null) result = caseIAnnotatable(channelEvent);
@@ -5063,21 +5067,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Trigger Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Trigger Event</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseTriggerEvent(TriggerEvent object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Event Set</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -5104,6 +5093,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseEntityEvent(EntityEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Trigger Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Trigger Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseTriggerEvent(TriggerEvent object) {
 		return null;
 	}
 

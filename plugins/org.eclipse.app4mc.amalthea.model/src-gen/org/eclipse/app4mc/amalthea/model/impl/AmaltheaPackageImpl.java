@@ -1268,13 +1268,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass triggerEventEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass eventSetEClass = null;
 
 	/**
@@ -1283,6 +1276,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass entityEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass triggerEventEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -6039,15 +6039,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTriggerEvent() {
-		return triggerEventEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getEventSet() {
 		return eventSetEClass;
 	}
@@ -6068,6 +6059,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EClass getEntityEvent() {
 		return entityEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTriggerEvent() {
+		return triggerEventEClass;
 	}
 
 	/**
@@ -12163,12 +12163,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		eventEClass = createEClass(EVENT);
 		createEAttribute(eventEClass, EVENT__DESCRIPTION);
 
-		triggerEventEClass = createEClass(TRIGGER_EVENT);
-
 		eventSetEClass = createEClass(EVENT_SET);
 		createEReference(eventSetEClass, EVENT_SET__EVENTS);
 
 		entityEventEClass = createEClass(ENTITY_EVENT);
+
+		triggerEventEClass = createEClass(TRIGGER_EVENT);
 
 		customEventEClass = createEClass(CUSTOM_EVENT);
 		createEAttribute(customEventEClass, CUSTOM_EVENT__EVENT_TYPE);
@@ -13184,9 +13184,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		componentScopeEClass.getESuperTypes().add(this.getDataGroupScope());
 		eventModelEClass.getESuperTypes().add(this.getBaseObject());
 		eventEClass.getESuperTypes().add(this.getReferableBaseObject());
-		triggerEventEClass.getESuperTypes().add(this.getEvent());
 		eventSetEClass.getESuperTypes().add(this.getEvent());
 		entityEventEClass.getESuperTypes().add(this.getEvent());
+		triggerEventEClass.getESuperTypes().add(this.getEntityEvent());
 		customEventEClass.getESuperTypes().add(this.getEntityEvent());
 		stimulusEventEClass.getESuperTypes().add(this.getEntityEvent());
 		processEventEClass.getESuperTypes().add(this.getEntityEvent());
@@ -13890,12 +13890,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(eventEClass, Event.class, "Event", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEvent_Description(), theEcorePackage.getEString(), "description", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(triggerEventEClass, TriggerEvent.class, "TriggerEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(eventSetEClass, EventSet.class, "EventSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEventSet_Events(), this.getEntityEvent(), null, "events", null, 0, -1, EventSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(entityEventEClass, EntityEvent.class, "EntityEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(triggerEventEClass, TriggerEvent.class, "TriggerEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(customEventEClass, CustomEvent.class, "CustomEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomEvent_EventType(), theEcorePackage.getEString(), "eventType", null, 0, 1, CustomEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

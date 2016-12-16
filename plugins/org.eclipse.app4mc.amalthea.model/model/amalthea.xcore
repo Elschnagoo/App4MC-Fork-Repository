@@ -1337,13 +1337,6 @@ abstract class Event extends ReferableBaseObject
 }
 
 /*
- * Defines Events to be used in Stimuli as trigger.
- */
-abstract class TriggerEvent extends Event
-{
-}
-
-/*
  * A set of entity-events
  */
 class EventSet extends Event
@@ -1355,6 +1348,14 @@ class EventSet extends Event
  * An abstract event that describes the notification of a changed state of an entity
  */
 abstract class EntityEvent extends Event
+{
+}
+
+/*
+ * Defines Events to be used in Stimuli as trigger.
+ */
+ 
+abstract class TriggerEvent extends EntityEvent
 {
 }
 

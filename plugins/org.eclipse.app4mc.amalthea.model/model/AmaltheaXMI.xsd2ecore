@@ -1024,15 +1024,15 @@
       <nested inputs="amalthea.xcore#/EPackage/Event/description" outputs="AmaltheaXMI.xsd#//Event;XSDComplexTypeDefinition=123/XSDAttributeUse"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/Event" outputs="AmaltheaXMI.xsd#//Event;XSDElementDeclaration=123"/>
-    <nested inputs="amalthea.xcore#/EPackage/TriggerEvent" outputs="AmaltheaXMI.xsd#//TriggerEvent;XSDComplexTypeDefinition=124"/>
-    <nested inputs="amalthea.xcore#/EPackage/TriggerEvent" outputs="AmaltheaXMI.xsd#//TriggerEvent;XSDElementDeclaration=124"/>
-    <nested inputs="amalthea.xcore#/EPackage/EventSet" outputs="AmaltheaXMI.xsd#//EventSet;XSDComplexTypeDefinition=125">
-      <nested inputs="amalthea.xcore#/EPackage/EventSet/events" outputs="AmaltheaXMI.xsd#//EventSet;XSDComplexTypeDefinition=125/XSDAttributeUse"/>
-      <nested inputs="amalthea.xcore#/EPackage/EventSet/events" outputs="AmaltheaXMI.xsd#//EventSet;XSDComplexTypeDefinition=125/XSDParticle/XSDModelGroup/XSDParticle"/>
+    <nested inputs="amalthea.xcore#/EPackage/EventSet" outputs="AmaltheaXMI.xsd#//EventSet;XSDComplexTypeDefinition=124">
+      <nested inputs="amalthea.xcore#/EPackage/EventSet/events" outputs="AmaltheaXMI.xsd#//EventSet;XSDComplexTypeDefinition=124/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/EventSet/events" outputs="AmaltheaXMI.xsd#//EventSet;XSDComplexTypeDefinition=124/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/EventSet" outputs="AmaltheaXMI.xsd#//EventSet;XSDElementDeclaration=125"/>
-    <nested inputs="amalthea.xcore#/EPackage/EntityEvent" outputs="AmaltheaXMI.xsd#//EntityEvent;XSDComplexTypeDefinition=126"/>
-    <nested inputs="amalthea.xcore#/EPackage/EntityEvent" outputs="AmaltheaXMI.xsd#//EntityEvent;XSDElementDeclaration=126"/>
+    <nested inputs="amalthea.xcore#/EPackage/EventSet" outputs="AmaltheaXMI.xsd#//EventSet;XSDElementDeclaration=124"/>
+    <nested inputs="amalthea.xcore#/EPackage/EntityEvent" outputs="AmaltheaXMI.xsd#//EntityEvent;XSDComplexTypeDefinition=125"/>
+    <nested inputs="amalthea.xcore#/EPackage/EntityEvent" outputs="AmaltheaXMI.xsd#//EntityEvent;XSDElementDeclaration=125"/>
+    <nested inputs="amalthea.xcore#/EPackage/TriggerEvent" outputs="AmaltheaXMI.xsd#//TriggerEvent;XSDComplexTypeDefinition=126"/>
+    <nested inputs="amalthea.xcore#/EPackage/TriggerEvent" outputs="AmaltheaXMI.xsd#//TriggerEvent;XSDElementDeclaration=126"/>
     <nested inputs="amalthea.xcore#/EPackage/CustomEvent" outputs="AmaltheaXMI.xsd#//CustomEvent;XSDComplexTypeDefinition=127">
       <nested inputs="amalthea.xcore#/EPackage/CustomEvent/eventType" outputs="AmaltheaXMI.xsd#//CustomEvent;XSDComplexTypeDefinition=127/XSDAttributeUse"/>
     </nested>

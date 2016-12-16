@@ -27,5 +27,5 @@ package org.eclipse.app4mc.amalthea.model;
  * @model abstract="true"
  * @generated
  */
-public interface TriggerEvent extends Event {
+public interface TriggerEvent extends EntityEvent {
 } // TriggerEvent
