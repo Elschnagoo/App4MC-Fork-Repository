@@ -7,6 +7,8 @@ The Stimuli Model contains stimulus and clock objects.
 
 h2. Stimuli
 
+!(scale)../pictures/model_stimuli_stimuli.png!
+
 A stimulus is responsible to activate processes. The following different types are available:
 * *ArrivalCurve*: A list of time-borders in which a specified number of events are expected
 * *CustomStimulus*: To describe own custom types of activations, including properties
