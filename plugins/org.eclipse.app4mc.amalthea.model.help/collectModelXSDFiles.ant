@@ -1,9 +1,16 @@
 <?xml version="1.0"?>
-<project basedir=".">
+<project default="default">
 	<property name="model.dir" location="help-model" />
 	<property name="xsd.dir" value="${model.dir}/xsd" />
 	<property name="xsd.archive" value="${model.dir}/xml-schema-definitions.zip" />
 
+	<target name="default">
+		<antcall target="deleteModelDir" />
+		<antcall target="createModelDir" />
+		<antcall target="copyModelXsd" />
+		<antcall target="zip" />
+	</target>
+	
 	<target name="deleteModelDir">
 		<delete dir="${model.dir}"/>
 	</target>
@@ -18,7 +25,6 @@
 		<copy todir="${xsd.dir}" flatten="true">
 			<fileset dir = "../../" includes="plugins/org.eclipse.app4mc.amalthea.model/model/*.xsd"/>
 		</copy>
-		
 		
 		<!--Step 2:  Rename the files
 		This renames the files to lower-case and removes the "XMI" from the name.

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+                                              
+     Build Eclipse Help of all APP4MC plugins.
+     Start Ant file of central APP4MC help plugin for all parts.
+     
+     Has to be invoced manually (only used during development)
+     
+     ====================================================================== -->
+
+
+<project name="Build Eclipse Help of all plugins." default="default">
+    <description>
+   	    Run central ant file multiple times to generate Eclipse Help of all APP4MC plugins.
+    </description>
+	
+    <target name="default">
+    	<!-- Help structure, examples, release notes, faq, roadmap, ... -->
+		<ant dir="../org.eclipse.app4mc.help/" antfile="build.xml" />
+    	
+		<ant dir="../org.eclipse.app4mc.amalthea.model.help/" antfile="build-help.ant" />
+		<ant dir="../org.eclipse.app4mc.amalthea.model.help/" antfile="collectModelXSDFiles.ant" />
+    	
+		<ant dir="../org.eclipse.app4mc.amalthea.edit.help/" antfile="build-help.ant" />
+		<ant dir="../org.eclipse.app4mc.amalthea.editors.help/" antfile="build-help.ant" />
+    	
+		<ant dir="../org.eclipse.app4mc.amalthea.converters.help/" antfile="build-help.ant" />
+    	
+		<ant dir="../org.eclipse.app4mc.amalthea.workflow.help/" antfile="build-help.ant" />
+		<ant dir="../org.eclipse.app4mc.amalthea.import.help/" antfile="build-help.ant" />
+    	
+		<ant dir="../org.eclipse.app4mc.multicore.help/" antfile="build-help.ant" />
+		<ant dir="../org.eclipse.app4mc.validation.help/" antfile="build-help.ant" />
+    </target>
+
+</project>

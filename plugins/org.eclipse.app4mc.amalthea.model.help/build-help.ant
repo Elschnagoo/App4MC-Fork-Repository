@@ -9,7 +9,7 @@
 
 <project name="Build Eclipse Help of current plugin." default="default">
     <description>
-   	    Run ant files of all help plugins.
+   	    Run central ant file to generate Eclipse Help of current plugin.
     </description>
 
 	
