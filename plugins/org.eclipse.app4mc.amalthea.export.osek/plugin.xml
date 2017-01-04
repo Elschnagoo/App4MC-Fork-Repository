@@ -15,20 +15,15 @@
                   checkEnabled="false">
                <with
                      variable="activeMenuSelection">
-                  <iterate>
+                  <iterate
+                        ifEmpty="false">
                      <instanceof
                            value="org.eclipse.core.resources.IResource">
                      </instanceof>
-                     <or>
-                        <test
-                              property="org.eclipse.core.resources.extension"
-                              value="amxmi">
-                        </test>
-                        <test
-                              property="org.eclipse.core.resources.extension"
-                              value="amxmi-sw">
-                        </test>
-                     </or>
+                     <test
+                           property="org.eclipse.core.resources.extension"
+                           value="amxmi">
+                     </test>
                   </iterate>
                </with>
             </visibleWhen>
@@ -39,7 +34,7 @@
          point="org.eclipse.ui.commands">
       <command
             id="org.eclipse.app4mc.amalthea.export.osek.commands.osekgenerationhandler"
-            name="OsekGenerationHandler">
+            name="Generate OSEK Files">
       </command>
    </extension>
    <extension

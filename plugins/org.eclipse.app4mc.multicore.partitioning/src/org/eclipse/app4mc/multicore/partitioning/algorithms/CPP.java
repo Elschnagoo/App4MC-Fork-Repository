@@ -284,7 +284,7 @@ public class CPP {
 		final Amalthea amodels = AmaltheaFactory.eINSTANCE.createAmalthea();
 		amodels.setConstraintsModel(this.cm);
 		amodels.setSwModel(this.swm);
-		this.cm = new Helper().updateRSCs(amodels);
+		this.cm = new Helper().updateRSCs(amodels.getConstraintsModel(), amodels.getSwModel());
 		for (final Runnable r : this.swm.getRunnables()) {
 			if (null != r.getActivation() && !this.swm.getActivations().contains(r.getActivation())) {
 				this.swm.getActivations().add(r.getActivation());

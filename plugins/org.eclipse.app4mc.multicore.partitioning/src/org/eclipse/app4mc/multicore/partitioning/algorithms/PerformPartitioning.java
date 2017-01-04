@@ -70,7 +70,7 @@ public class PerformPartitioning {
 		assert uh.getSwModel() != null;
 		amodels = new Helper().setAllModels(amodels, uh);
 		if (amodels.getSwModel().getProcessPrototypes().size() == 0) {
-			PartLog.getInstance().log("No PPs", null);
+			PartLog.getInstance().log("!!No ProcessPrototypes present. Creating one containing all RunnableCalls.");
 			amodels.setSwModel(createPPs(amodels.getSwModel()));
 		}
 
@@ -221,7 +221,7 @@ public class PerformPartitioning {
 		// update first / last / activation ref for ProcessPrototypes
 		amodels.setSwModel(new Helper().updatePPsFirstLastActParams(amodels.getSwModel()));
 		// check if rscs all reference a processprototype
-		amodels.setConstraintsModel(new Helper().updateRSCs(amodels));
+		amodels.setConstraintsModel(new Helper().updateRSCs(amodels.getConstraintsModel(), amodels.getSwModel()));
 		return amodels;
 	}
 

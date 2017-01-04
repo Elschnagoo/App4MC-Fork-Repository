@@ -25,6 +25,7 @@ import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
@@ -52,14 +53,17 @@ public class Helper {
 	 */
 	public long getInstructions(final Runnable r) {
 		long rt = 0;
-		rt = 0;
 		for (final RunnableItem ra : r.getRunnableItems()) {
-			if (ra instanceof InstructionsDeviation) {
-				rt = (((InstructionsDeviation) ra).getDeviation().getUpperBound().getValue()
-						+ ((InstructionsDeviation) ra).getDeviation().getLowerBound().getValue()) / 2;
-			}
-			else if (ra instanceof InstructionsConstant) {
-				rt = ((InstructionsConstant) ra).getValue();
+			if (ra instanceof RunnableInstructions) {
+				final RunnableInstructions ri = (RunnableInstructions) ra;
+				if (ri.getDefault() instanceof InstructionsConstant) {
+					rt = ((InstructionsConstant) ri.getDefault()).getValue();
+				}
+				else if (ri.getDefault() instanceof InstructionsDeviation) {
+					final InstructionsDeviation id = (InstructionsDeviation) ri.getDefault();
+					rt = (id.getDeviation().getLowerBound().getValue() + id.getDeviation().getUpperBound().getValue())
+							/ 2;
+				}
 			}
 		}
 		if (rt == 0) {
@@ -253,12 +257,11 @@ public class Helper {
 	 * @param amodels
 	 * @return
 	 */
-	public ConstraintsModel updateRSCs(final Amalthea amodels) {
-		for (final RunnableSequencingConstraint rsc : amodels.getConstraintsModel()
-				.getRunnableSequencingConstraints()) {
+	public ConstraintsModel updateRSCs(final ConstraintsModel cm, final SWModel swm) {
+		for (final RunnableSequencingConstraint rsc : cm.getRunnableSequencingConstraints()) {
 			final Runnable source = rsc.getRunnableGroups().get(0).getRunnables().get(0);
 			final Runnable target = rsc.getRunnableGroups().get(1).getRunnables().get(0);
-			for (final ProcessPrototype pp : amodels.getSwModel().getProcessPrototypes()) {
+			for (final ProcessPrototype pp : swm.getProcessPrototypes()) {
 				for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
 					if (trc.getRunnable().equals(source)) {
 						rsc.getProcessScope().clear();
@@ -271,7 +274,7 @@ public class Helper {
 				}
 			}
 		}
-		return amodels.getConstraintsModel();
+		return cm;
 	}
 
 	/**
@@ -295,6 +298,10 @@ public class Helper {
 			}
 			if (pp.getActivation() == null && pp.getRunnableCalls().get(0).getRunnable().getActivation() != null) {
 				pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getActivation());
+			}
+			else if (pp.getRunnableCalls().get(0).getRunnable().getActivation() == null) {
+				PartLog.getInstance().log("Runnable " + pp.getRunnableCalls().get(0).getRunnable().getName()
+						+ " has no activation, this might be a problem for the mapping process.");
 			}
 		}
 		return swm;

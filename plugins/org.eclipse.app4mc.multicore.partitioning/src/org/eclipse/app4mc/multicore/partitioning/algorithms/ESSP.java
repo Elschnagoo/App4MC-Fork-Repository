@@ -46,7 +46,6 @@ public class ESSP {
 	public ConstraintsModel cm;
 	private final EList<ProcessPrototype> tasks = new BasicEList<ProcessPrototype>();
 	private final EList<Runnable> assignedNodes = new BasicEList<Runnable>();
-
 	final Map<Runnable, Long> cache = new HashMap<Runnable, Long>();
 	final private Map<ProcessPrototype, Long> TargetRT = new HashMap<ProcessPrototype, Long>();
 	private Stack<Runnable> runs = new Stack<Runnable>();
@@ -68,9 +67,9 @@ public class ESSP {
 		}
 		if (tasks < this.swm.getProcessPrototypes().size()) {
 			PartLog.getInstance()
-					.log("ESSP can't create less partitions than already present. Please deactivate either GGP or AA. ProcessPrototypes in file:"
+					.log("ESSP can't create less partitions than already present from independent graph groups (GGP) or activation groups (AA). ProcessPrototypes in file:"
 							+ this.swm.getProcessPrototypes().size() + ", configured partitions: " + tasks
-							+ ". ProcessPrototypes are resetted.", null);
+							+ ". ProcessPrototypes are resetted (AA/GGP is ignored).", null);
 
 			this.swm.getProcessPrototypes().clear();
 			final ProcessPrototype pp = swf.createProcessPrototype();
@@ -99,11 +98,9 @@ public class ESSP {
 		aps.addAll(this.swm.getProcessPrototypes().get(0).getAccessPrecedenceSpec());
 
 		if (this.swm.getProcessPrototypes().size() > 1) {
-			if (this.tasks.size() < this.swm.getProcessPrototypes().size()) {
-				PartLog.getInstance().log("More ProcessPrototypes than configured tasks available", null);
-				return null;
-			}
-			return new ESSPe(this.swm, this.cm, this.tasks.size()).build();
+			// If PPs are present from AA / GGP --> perform ESS partitioning via
+			// ESSPe class
+			return new ESSPe(this.swm, this.cm, this.tasks.size()).build(monitor);
 		}
 		this.runs = createRunnableStack();
 
@@ -133,6 +130,7 @@ public class ESSP {
 			this.TargetRT.put(this.tasks.get(taskIndex),
 					this.TargetRT.get(this.tasks.get(taskIndex)).longValue() + new Helper().getInstructions(r));
 		}
+		monitor.done();
 
 		this.swm.getProcessPrototypes().clear();
 		// user may have specified more partitions than ess created: delete
@@ -143,45 +141,15 @@ public class ESSP {
 			}
 		}
 		this.swm.getProcessPrototypes().addAll(this.tasks);
-		// correct rsc processScopes
-		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
-			final Runnable source = rsc.getRunnableGroups().get(0).getRunnables().get(0);
-			final Runnable target = rsc.getRunnableGroups().get(1).getRunnables().get(0);
-			for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
-				for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-					if (trc.getRunnable().equals(source)) {
-						rsc.getProcessScope().clear();
-						rsc.getProcessScope().add(pp);
-					}
-					else if (trc.getRunnable().equals(target)) {
-						rsc.getProcessScope().clear();
-						rsc.getProcessScope().add(pp);
-					}
-				}
-			}
-		}
+
+		// -----------------------------------------------------------
 		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
-			final StringBuffer sb = new StringBuffer();
 			pp.setName("ESSP" + this.swm.getProcessPrototypes().indexOf(pp));
-			sb.append("ProcessPrototype " + pp.getName() + "(" + getPPInstructions(pp) + ") : ");
-			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-				sb.append(trc.getRunnable().getName() + " ");
-			}
-			if (pp.getActivation() == null) {
-				if (pp.getRunnableCalls().get(0).getRunnable().getActivation() != null) {
-					pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getActivation());
-				}
-				else {
-					PartLog.getInstance().log("Runnable " + pp.getRunnableCalls().get(0).getRunnable().getName()
-							+ " has no activation, this might be a problem for mapping ", null);
-				}
-			}
-			PartLog.getInstance().log(sb.toString());
 		}
-
-		// Retain AccessPrecedences
+		new Helper().updateRSCs(this.cm, this.swm);
+		new Helper().updatePPsFirstLastActParams(this.swm);
 		new Helper().assignAPs(aps);
-
+		PartLog.getInstance().log(new Helper().writePPs(this.swm.getProcessPrototypes()));
 		return this.swm.getProcessPrototypes();
 	}
 
@@ -204,17 +172,6 @@ public class ESSP {
 			rs.push(r);
 		}
 		return rs;
-	}
-
-	/**
-	 * @return the sum of all Runnable's instructions in @param pp
-	 */
-	private long getPPInstructions(final ProcessPrototype pp) {
-		long instrSum = 0;
-		for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-			instrSum += new Helper().getInstructions(trc.getRunnable());
-		}
-		return instrSum;
 	}
 
 	private int getIndexOfLatestTask(final EList<Integer> td) {
@@ -274,6 +231,10 @@ public class ESSP {
 		return ltr;
 	}
 
+	/**
+	 * @return the index of the ProcessPrototype that features lowest
+	 *         instructions defined by all containing runnables
+	 */
 	private int getIndexOfEarliestTask() {
 		int index = 0;
 		long min = Long.MAX_VALUE;

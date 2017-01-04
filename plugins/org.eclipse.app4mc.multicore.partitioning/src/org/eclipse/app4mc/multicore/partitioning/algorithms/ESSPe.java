@@ -27,6 +27,7 @@ import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.jgrapht.experimental.dag.DirectedAcyclicGraph;
@@ -68,13 +69,15 @@ public class ESSPe {
 	 * starts the ESSP mechanism. Requires runnables, dependencies
 	 * (RunnableSequencingConstraints) and Instructions for each runnable
 	 */
-	public EList<ProcessPrototype> build() {
+	public EList<ProcessPrototype> build(final IProgressMonitor monitor) {
 		final Set<AccessPrecedenceSpec> aps = new HashSet<AccessPrecedenceSpec>();
 		aps.addAll(this.swm.getProcessPrototypes().get(0).getAccessPrecedenceSpec());
 
 		int addTasks = this.tasknumber - this.swm.getProcessPrototypes().size();
 		int taskCunter = 0;
+		monitor.beginTask("ESSP...", addTasks);
 		while (addTasks-- > 0) {
+			monitor.worked(1);
 			final AmaltheaFactory swf = AmaltheaFactory.eINSTANCE;
 			final ProcessPrototype ppNew1 = swf.createProcessPrototype();
 			final ProcessPrototype ppNew2 = swf.createProcessPrototype();
@@ -110,28 +113,24 @@ public class ESSPe {
 				break;
 			}
 		}
+		monitor.done();
 
+		// -----------------------------------------------------------
 		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
 			pp.setName("ESSP" + this.swm.getProcessPrototypes().indexOf(pp));
-			if (pp.getActivation() == null) {
-				if (pp.getRunnableCalls().get(0).getRunnable().getActivation() != null) {
-					pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getActivation());
-				}
-				else {
-					PartLog.getInstance().log("Runnable " + pp.getRunnableCalls().get(0).getRunnable().getName()
-							+ " has no activation, this might be a problem for mapping ", null);
-				}
-			}
 		}
-		PartLog.getInstance().log(new Helper().writePPs(this.swm.getProcessPrototypes()));
-		PartLog.getInstance().log("ESS finished");
-
-		// Retain AccessPrecedences
+		new Helper().updateRSCs(this.cm, this.swm);
+		new Helper().updatePPsFirstLastActParams(this.swm);
 		new Helper().assignAPs(aps);
-
+		PartLog.getInstance().log(new Helper().writePPs(this.swm.getProcessPrototypes()));
 		return this.swm.getProcessPrototypes();
 	}
 
+
+	/**
+	 * @return boolean true if @param ProcessPrototypeList contains empty PP;
+	 *         false otherwise
+	 */
 	private boolean pplContainsEmptyEntry(final List<ProcessPrototype> ppl) {
 		for (final ProcessPrototype pp : ppl) {
 			if (pp.getRunnableCalls().size() < 1) {
@@ -140,7 +139,6 @@ public class ESSPe {
 		}
 		return false;
 	}
-
 
 	/**
 	 * Checks, if @param runnable has an incomingEdge of the last Runnable in
@@ -183,8 +181,8 @@ public class ESSPe {
 	}
 
 	/**
-	 * @return the index of an entry in @param ppl, that features lowest
-	 *         instructions defined by all containing runnables
+	 * @return the index of the ProcessProtoype in @param ppl, that features
+	 *         lowest instructions defined by all containing runnables
 	 */
 	private int getIndexOfEarliestTask(final List<ProcessPrototype> ppl) {
 		int index = 0;
@@ -233,7 +231,7 @@ public class ESSPe {
 	private final List<ProcessPrototype> exceptPPs = new BasicEList<ProcessPrototype>();
 
 	private ProcessPrototype getLongestPP() {
-		ProcessPrototype pps = null;// this.swm.getProcessPrototypes().get(0);
+		ProcessPrototype pps = null;
 		long max = 0;
 		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
 			final long temp = new Helper().getPPInstructions(pp);
@@ -254,7 +252,7 @@ public class ESSPe {
 			PartLog.getInstance().log("No longest Runnable found", null);
 			return null;
 		}
-		if (pps.getRunnableCalls().size() < 2 || containsSequence(pps)) {
+		if (pps.getRunnableCalls().size() < 2 || isSequence(pps)) {
 			this.exceptPPs.add(pps);
 			return getLongestPP();
 		}
@@ -266,7 +264,7 @@ public class ESSPe {
 	 * exactly one incoming edge and one outgoing edge except the first runnable
 	 * (only one outgoing edge) and the last runnable (only one incoming edge)
 	 */
-	private boolean containsSequence(final ProcessPrototype pps) {
+	private boolean isSequence(final ProcessPrototype pps) {
 		for (final TaskRunnableCall trc : pps.getRunnableCalls()) {
 			final Runnable r = trc.getRunnable();
 			if (this.graph.incomingEdgesOf(r).size() > 1) {
@@ -285,7 +283,7 @@ public class ESSPe {
 				int counter = 0;
 				for (final RunnableSequencingConstraint rsc : this.graph.outgoingEdgesOf(r)) {
 					final Runnable target = this.graph.getEdgeTarget(rsc);
-					if (getPPfromR(r).equals(getPPfromR(target))) {
+					if (new Helper().getPPfromR(r, this.swm).equals(new Helper().getPPfromR(target, this.swm))) {
 						counter++;
 					}
 					if (counter > 1) {
@@ -295,17 +293,5 @@ public class ESSPe {
 			}
 		}
 		return true;
-	}
-
-	public ProcessPrototype getPPfromR(final Runnable runnable) {
-		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
-			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-				if (trc.getRunnable().equals(runnable)) {
-					return pp;
-				}
-			}
-		}
-		PartLog.getInstance().log("getPPFromR did not find PP for Runnable" + runnable.getName(), null);
-		return null;
 	}
 }
