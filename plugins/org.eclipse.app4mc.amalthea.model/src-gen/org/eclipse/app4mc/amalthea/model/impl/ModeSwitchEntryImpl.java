@@ -103,7 +103,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 */
 	public EList<T> getItems() {
 		if (items == null) {
-			items = new EObjectContainmentEList.Resolving<T>(EObject.class, this, AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS);
+			items = new EObjectContainmentEList<T>(EObject.class, this, AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS);
 		}
 		return items;
 	}

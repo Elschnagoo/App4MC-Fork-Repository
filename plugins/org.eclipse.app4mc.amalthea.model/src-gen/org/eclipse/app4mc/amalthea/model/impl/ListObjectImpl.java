@@ -80,7 +80,7 @@ public class ListObjectImpl extends ValueImpl implements ListObject {
 	 */
 	public EList<Value> getValues() {
 		if (values == null) {
-			values = new EObjectContainmentEList.Resolving<Value>(Value.class, this, AmaltheaPackage.LIST_OBJECT__VALUES);
+			values = new EObjectContainmentEList<Value>(Value.class, this, AmaltheaPackage.LIST_OBJECT__VALUES);
 		}
 		return values;
 	}

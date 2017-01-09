@@ -163,7 +163,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 */
 	public EList<TaskAllocation> getTaskAllocation() {
 		if (taskAllocation == null) {
-			taskAllocation = new EObjectContainmentEList.Resolving<TaskAllocation>(TaskAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__TASK_ALLOCATION);
+			taskAllocation = new EObjectContainmentEList<TaskAllocation>(TaskAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__TASK_ALLOCATION);
 		}
 		return taskAllocation;
 	}
@@ -175,7 +175,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 */
 	public EList<ISRAllocation> getIsrAllocation() {
 		if (isrAllocation == null) {
-			isrAllocation = new EObjectContainmentEList.Resolving<ISRAllocation>(ISRAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__ISR_ALLOCATION);
+			isrAllocation = new EObjectContainmentEList<ISRAllocation>(ISRAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__ISR_ALLOCATION);
 		}
 		return isrAllocation;
 	}
@@ -187,7 +187,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 */
 	public EList<RunnableAllocation> getRunnableAllocation() {
 		if (runnableAllocation == null) {
-			runnableAllocation = new EObjectContainmentEList.Resolving<RunnableAllocation>(RunnableAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__RUNNABLE_ALLOCATION);
+			runnableAllocation = new EObjectContainmentEList<RunnableAllocation>(RunnableAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__RUNNABLE_ALLOCATION);
 		}
 		return runnableAllocation;
 	}
@@ -199,7 +199,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 */
 	public EList<CoreAllocation> getCoreAllocation() {
 		if (coreAllocation == null) {
-			coreAllocation = new EObjectContainmentEList.Resolving<CoreAllocation>(CoreAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__CORE_ALLOCATION);
+			coreAllocation = new EObjectContainmentEList<CoreAllocation>(CoreAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__CORE_ALLOCATION);
 		}
 		return coreAllocation;
 	}
@@ -211,7 +211,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 */
 	public EList<Mapping> getMapping() {
 		if (mapping == null) {
-			mapping = new EObjectContainmentEList.Resolving<Mapping>(Mapping.class, this, AmaltheaPackage.MAPPING_MODEL__MAPPING);
+			mapping = new EObjectContainmentEList<Mapping>(Mapping.class, this, AmaltheaPackage.MAPPING_MODEL__MAPPING);
 		}
 		return mapping;
 	}
@@ -223,7 +223,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 */
 	public EList<PhysicalSectionMapping> getPhysicalSectionMapping() {
 		if (physicalSectionMapping == null) {
-			physicalSectionMapping = new EObjectContainmentEList.Resolving<PhysicalSectionMapping>(PhysicalSectionMapping.class, this, AmaltheaPackage.MAPPING_MODEL__PHYSICAL_SECTION_MAPPING);
+			physicalSectionMapping = new EObjectContainmentEList<PhysicalSectionMapping>(PhysicalSectionMapping.class, this, AmaltheaPackage.MAPPING_MODEL__PHYSICAL_SECTION_MAPPING);
 		}
 		return physicalSectionMapping;
 	}

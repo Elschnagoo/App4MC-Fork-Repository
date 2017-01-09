@@ -193,29 +193,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @generated
 	 */
 	public CommonElements getCommonElements() {
-		if (commonElements != null && commonElements.eIsProxy()) {
-			InternalEObject oldCommonElements = (InternalEObject)commonElements;
-			commonElements = (CommonElements)eResolveProxy(oldCommonElements);
-			if (commonElements != oldCommonElements) {
-				InternalEObject newCommonElements = (InternalEObject)commonElements;
-				NotificationChain msgs = oldCommonElements.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS, null, null);
-				if (newCommonElements.eInternalContainer() == null) {
-					msgs = newCommonElements.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS, oldCommonElements, commonElements));
-			}
-		}
-		return commonElements;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CommonElements basicGetCommonElements() {
 		return commonElements;
 	}
 
@@ -259,29 +236,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @generated
 	 */
 	public SWModel getSwModel() {
-		if (swModel != null && swModel.eIsProxy()) {
-			InternalEObject oldSwModel = (InternalEObject)swModel;
-			swModel = (SWModel)eResolveProxy(oldSwModel);
-			if (swModel != oldSwModel) {
-				InternalEObject newSwModel = (InternalEObject)swModel;
-				NotificationChain msgs = oldSwModel.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__SW_MODEL, null, null);
-				if (newSwModel.eInternalContainer() == null) {
-					msgs = newSwModel.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__SW_MODEL, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.AMALTHEA__SW_MODEL, oldSwModel, swModel));
-			}
-		}
-		return swModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SWModel basicGetSwModel() {
 		return swModel;
 	}
 
@@ -325,29 +279,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @generated
 	 */
 	public HWModel getHwModel() {
-		if (hwModel != null && hwModel.eIsProxy()) {
-			InternalEObject oldHwModel = (InternalEObject)hwModel;
-			hwModel = (HWModel)eResolveProxy(oldHwModel);
-			if (hwModel != oldHwModel) {
-				InternalEObject newHwModel = (InternalEObject)hwModel;
-				NotificationChain msgs = oldHwModel.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__HW_MODEL, null, null);
-				if (newHwModel.eInternalContainer() == null) {
-					msgs = newHwModel.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__HW_MODEL, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.AMALTHEA__HW_MODEL, oldHwModel, hwModel));
-			}
-		}
-		return hwModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HWModel basicGetHwModel() {
 		return hwModel;
 	}
 
@@ -391,29 +322,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @generated
 	 */
 	public OSModel getOsModel() {
-		if (osModel != null && osModel.eIsProxy()) {
-			InternalEObject oldOsModel = (InternalEObject)osModel;
-			osModel = (OSModel)eResolveProxy(oldOsModel);
-			if (osModel != oldOsModel) {
-				InternalEObject newOsModel = (InternalEObject)osModel;
-				NotificationChain msgs = oldOsModel.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__OS_MODEL, null, null);
-				if (newOsModel.eInternalContainer() == null) {
-					msgs = newOsModel.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__OS_MODEL, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.AMALTHEA__OS_MODEL, oldOsModel, osModel));
-			}
-		}
-		return osModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OSModel basicGetOsModel() {
 		return osModel;
 	}
 
@@ -457,29 +365,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @generated
 	 */
 	public StimuliModel getStimuliModel() {
-		if (stimuliModel != null && stimuliModel.eIsProxy()) {
-			InternalEObject oldStimuliModel = (InternalEObject)stimuliModel;
-			stimuliModel = (StimuliModel)eResolveProxy(oldStimuliModel);
-			if (stimuliModel != oldStimuliModel) {
-				InternalEObject newStimuliModel = (InternalEObject)stimuliModel;
-				NotificationChain msgs = oldStimuliModel.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__STIMULI_MODEL, null, null);
-				if (newStimuliModel.eInternalContainer() == null) {
-					msgs = newStimuliModel.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__STIMULI_MODEL, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.AMALTHEA__STIMULI_MODEL, oldStimuliModel, stimuliModel));
-			}
-		}
-		return stimuliModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public StimuliModel basicGetStimuliModel() {
 		return stimuliModel;
 	}
 
@@ -523,29 +408,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @generated
 	 */
 	public ConstraintsModel getConstraintsModel() {
-		if (constraintsModel != null && constraintsModel.eIsProxy()) {
-			InternalEObject oldConstraintsModel = (InternalEObject)constraintsModel;
-			constraintsModel = (ConstraintsModel)eResolveProxy(oldConstraintsModel);
-			if (constraintsModel != oldConstraintsModel) {
-				InternalEObject newConstraintsModel = (InternalEObject)constraintsModel;
-				NotificationChain msgs = oldConstraintsModel.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL, null, null);
-				if (newConstraintsModel.eInternalContainer() == null) {
-					msgs = newConstraintsModel.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL, oldConstraintsModel, constraintsModel));
-			}
-		}
-		return constraintsModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ConstraintsModel basicGetConstraintsModel() {
 		return constraintsModel;
 	}
 
@@ -589,29 +451,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @generated
 	 */
 	public EventModel getEventModel() {
-		if (eventModel != null && eventModel.eIsProxy()) {
-			InternalEObject oldEventModel = (InternalEObject)eventModel;
-			eventModel = (EventModel)eResolveProxy(oldEventModel);
-			if (eventModel != oldEventModel) {
-				InternalEObject newEventModel = (InternalEObject)eventModel;
-				NotificationChain msgs = oldEventModel.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__EVENT_MODEL, null, null);
-				if (newEventModel.eInternalContainer() == null) {
-					msgs = newEventModel.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__EVENT_MODEL, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.AMALTHEA__EVENT_MODEL, oldEventModel, eventModel));
-			}
-		}
-		return eventModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EventModel basicGetEventModel() {
 		return eventModel;
 	}
 
@@ -655,29 +494,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @generated
 	 */
 	public PropertyConstraintsModel getPropertyConstraintsModel() {
-		if (propertyConstraintsModel != null && propertyConstraintsModel.eIsProxy()) {
-			InternalEObject oldPropertyConstraintsModel = (InternalEObject)propertyConstraintsModel;
-			propertyConstraintsModel = (PropertyConstraintsModel)eResolveProxy(oldPropertyConstraintsModel);
-			if (propertyConstraintsModel != oldPropertyConstraintsModel) {
-				InternalEObject newPropertyConstraintsModel = (InternalEObject)propertyConstraintsModel;
-				NotificationChain msgs = oldPropertyConstraintsModel.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__PROPERTY_CONSTRAINTS_MODEL, null, null);
-				if (newPropertyConstraintsModel.eInternalContainer() == null) {
-					msgs = newPropertyConstraintsModel.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__PROPERTY_CONSTRAINTS_MODEL, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.AMALTHEA__PROPERTY_CONSTRAINTS_MODEL, oldPropertyConstraintsModel, propertyConstraintsModel));
-			}
-		}
-		return propertyConstraintsModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PropertyConstraintsModel basicGetPropertyConstraintsModel() {
 		return propertyConstraintsModel;
 	}
 
@@ -721,29 +537,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @generated
 	 */
 	public MappingModel getMappingModel() {
-		if (mappingModel != null && mappingModel.eIsProxy()) {
-			InternalEObject oldMappingModel = (InternalEObject)mappingModel;
-			mappingModel = (MappingModel)eResolveProxy(oldMappingModel);
-			if (mappingModel != oldMappingModel) {
-				InternalEObject newMappingModel = (InternalEObject)mappingModel;
-				NotificationChain msgs = oldMappingModel.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__MAPPING_MODEL, null, null);
-				if (newMappingModel.eInternalContainer() == null) {
-					msgs = newMappingModel.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__MAPPING_MODEL, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.AMALTHEA__MAPPING_MODEL, oldMappingModel, mappingModel));
-			}
-		}
-		return mappingModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public MappingModel basicGetMappingModel() {
 		return mappingModel;
 	}
 
@@ -787,29 +580,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @generated
 	 */
 	public ConfigModel getConfigModel() {
-		if (configModel != null && configModel.eIsProxy()) {
-			InternalEObject oldConfigModel = (InternalEObject)configModel;
-			configModel = (ConfigModel)eResolveProxy(oldConfigModel);
-			if (configModel != oldConfigModel) {
-				InternalEObject newConfigModel = (InternalEObject)configModel;
-				NotificationChain msgs = oldConfigModel.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__CONFIG_MODEL, null, null);
-				if (newConfigModel.eInternalContainer() == null) {
-					msgs = newConfigModel.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__CONFIG_MODEL, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.AMALTHEA__CONFIG_MODEL, oldConfigModel, configModel));
-			}
-		}
-		return configModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ConfigModel basicGetConfigModel() {
 		return configModel;
 	}
 
@@ -853,29 +623,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @generated
 	 */
 	public ComponentsModel getComponentsModel() {
-		if (componentsModel != null && componentsModel.eIsProxy()) {
-			InternalEObject oldComponentsModel = (InternalEObject)componentsModel;
-			componentsModel = (ComponentsModel)eResolveProxy(oldComponentsModel);
-			if (componentsModel != oldComponentsModel) {
-				InternalEObject newComponentsModel = (InternalEObject)componentsModel;
-				NotificationChain msgs = oldComponentsModel.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__COMPONENTS_MODEL, null, null);
-				if (newComponentsModel.eInternalContainer() == null) {
-					msgs = newComponentsModel.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__COMPONENTS_MODEL, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.AMALTHEA__COMPONENTS_MODEL, oldComponentsModel, componentsModel));
-			}
-		}
-		return componentsModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ComponentsModel basicGetComponentsModel() {
 		return componentsModel;
 	}
 
@@ -956,38 +703,27 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS:
-				if (resolve) return getCommonElements();
-				return basicGetCommonElements();
+				return getCommonElements();
 			case AmaltheaPackage.AMALTHEA__SW_MODEL:
-				if (resolve) return getSwModel();
-				return basicGetSwModel();
+				return getSwModel();
 			case AmaltheaPackage.AMALTHEA__HW_MODEL:
-				if (resolve) return getHwModel();
-				return basicGetHwModel();
+				return getHwModel();
 			case AmaltheaPackage.AMALTHEA__OS_MODEL:
-				if (resolve) return getOsModel();
-				return basicGetOsModel();
+				return getOsModel();
 			case AmaltheaPackage.AMALTHEA__STIMULI_MODEL:
-				if (resolve) return getStimuliModel();
-				return basicGetStimuliModel();
+				return getStimuliModel();
 			case AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL:
-				if (resolve) return getConstraintsModel();
-				return basicGetConstraintsModel();
+				return getConstraintsModel();
 			case AmaltheaPackage.AMALTHEA__EVENT_MODEL:
-				if (resolve) return getEventModel();
-				return basicGetEventModel();
+				return getEventModel();
 			case AmaltheaPackage.AMALTHEA__PROPERTY_CONSTRAINTS_MODEL:
-				if (resolve) return getPropertyConstraintsModel();
-				return basicGetPropertyConstraintsModel();
+				return getPropertyConstraintsModel();
 			case AmaltheaPackage.AMALTHEA__MAPPING_MODEL:
-				if (resolve) return getMappingModel();
-				return basicGetMappingModel();
+				return getMappingModel();
 			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
-				if (resolve) return getConfigModel();
-				return basicGetConfigModel();
+				return getConfigModel();
 			case AmaltheaPackage.AMALTHEA__COMPONENTS_MODEL:
-				if (resolve) return getComponentsModel();
-				return basicGetComponentsModel();
+				return getComponentsModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

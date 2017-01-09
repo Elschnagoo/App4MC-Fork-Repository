@@ -46,7 +46,7 @@ public interface RunnablePairingConstraint extends PairingConstraint, RunnableCo
 	 * @return the value of the '<em>Group</em>' containment reference.
 	 * @see #setGroup(RunnableGroup)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnablePairingConstraint_Group()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	RunnableGroup getGroup();

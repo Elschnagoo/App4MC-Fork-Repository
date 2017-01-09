@@ -92,29 +92,6 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	 * @generated
 	 */
 	public DataSize getSize() {
-		if (size != null && size.eIsProxy()) {
-			InternalEObject oldSize = (InternalEObject)size;
-			size = (DataSize)eResolveProxy(oldSize);
-			if (size != oldSize) {
-				InternalEObject newSize = (InternalEObject)size;
-				NotificationChain msgs = oldSize.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.BASE_TYPE_DEFINITION__SIZE, null, null);
-				if (newSize.eInternalContainer() == null) {
-					msgs = newSize.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.BASE_TYPE_DEFINITION__SIZE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.BASE_TYPE_DEFINITION__SIZE, oldSize, size));
-			}
-		}
-		return size;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DataSize basicGetSize() {
 		return size;
 	}
 
@@ -159,7 +136,7 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	 */
 	public EList<DataPlatformMapping> getDataMapping() {
 		if (dataMapping == null) {
-			dataMapping = new EObjectContainmentEList.Resolving<DataPlatformMapping>(DataPlatformMapping.class, this, AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING);
+			dataMapping = new EObjectContainmentEList<DataPlatformMapping>(DataPlatformMapping.class, this, AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING);
 		}
 		return dataMapping;
 	}
@@ -189,8 +166,7 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.BASE_TYPE_DEFINITION__SIZE:
-				if (resolve) return getSize();
-				return basicGetSize();
+				return getSize();
 			case AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING:
 				return getDataMapping();
 		}

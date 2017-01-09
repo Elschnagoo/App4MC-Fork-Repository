@@ -94,29 +94,6 @@ public class ProcessSeparationConstraintImpl extends SeparationConstraintImpl im
 	 * @generated
 	 */
 	public ProcessConstraintTarget getTarget() {
-		if (target != null && target.eIsProxy()) {
-			InternalEObject oldTarget = (InternalEObject)target;
-			target = (ProcessConstraintTarget)eResolveProxy(oldTarget);
-			if (target != oldTarget) {
-				InternalEObject newTarget = (InternalEObject)target;
-				NotificationChain msgs = oldTarget.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESS_SEPARATION_CONSTRAINT__TARGET, null, null);
-				if (newTarget.eInternalContainer() == null) {
-					msgs = newTarget.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESS_SEPARATION_CONSTRAINT__TARGET, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.PROCESS_SEPARATION_CONSTRAINT__TARGET, oldTarget, target));
-			}
-		}
-		return target;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ProcessConstraintTarget basicGetTarget() {
 		return target;
 	}
 
@@ -161,7 +138,7 @@ public class ProcessSeparationConstraintImpl extends SeparationConstraintImpl im
 	 */
 	public EList<ProcessGroup> getGroups() {
 		if (groups == null) {
-			groups = new EObjectContainmentEList.Resolving<ProcessGroup>(ProcessGroup.class, this, AmaltheaPackage.PROCESS_SEPARATION_CONSTRAINT__GROUPS);
+			groups = new EObjectContainmentEList<ProcessGroup>(ProcessGroup.class, this, AmaltheaPackage.PROCESS_SEPARATION_CONSTRAINT__GROUPS);
 		}
 		return groups;
 	}
@@ -191,8 +168,7 @@ public class ProcessSeparationConstraintImpl extends SeparationConstraintImpl im
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.PROCESS_SEPARATION_CONSTRAINT__TARGET:
-				if (resolve) return getTarget();
-				return basicGetTarget();
+				return getTarget();
 			case AmaltheaPackage.PROCESS_SEPARATION_CONSTRAINT__GROUPS:
 				return getGroups();
 		}

@@ -70,7 +70,7 @@ public interface RunnableModeSwitch extends RunnableItem {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableModeSwitch_Entries()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ModeSwitchEntry<RunnableItem>> getEntries();
@@ -86,7 +86,7 @@ public interface RunnableModeSwitch extends RunnableItem {
 	 * @return the value of the '<em>Default Entry</em>' containment reference.
 	 * @see #setDefaultEntry(ModeSwitchDefault)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableModeSwitch_DefaultEntry()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ModeSwitchDefault<RunnableItem> getDefaultEntry();

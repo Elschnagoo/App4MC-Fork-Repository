@@ -44,7 +44,7 @@ public interface Deviation<T> extends EObject {
 	 * @return the value of the '<em>Lower Bound</em>' containment reference.
 	 * @see #setLowerBound(Object)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDeviation_LowerBound()
-	 * @model kind="reference" containment="true" resolveProxies="true"
+	 * @model kind="reference" containment="true"
 	 * @generated
 	 */
 	T getLowerBound();
@@ -70,7 +70,7 @@ public interface Deviation<T> extends EObject {
 	 * @return the value of the '<em>Upper Bound</em>' containment reference.
 	 * @see #setUpperBound(Object)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDeviation_UpperBound()
-	 * @model kind="reference" containment="true" resolveProxies="true"
+	 * @model kind="reference" containment="true"
 	 * @generated
 	 */
 	T getUpperBound();
@@ -96,7 +96,7 @@ public interface Deviation<T> extends EObject {
 	 * @return the value of the '<em>Distribution</em>' containment reference.
 	 * @see #setDistribution(Distribution)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDeviation_Distribution()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Distribution<T> getDistribution();

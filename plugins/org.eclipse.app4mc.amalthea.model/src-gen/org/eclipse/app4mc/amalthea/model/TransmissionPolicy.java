@@ -48,7 +48,7 @@ public interface TransmissionPolicy extends EObject {
 	 * @return the value of the '<em>Chunk Size</em>' containment reference.
 	 * @see #setChunkSize(DataSize)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTransmissionPolicy_ChunkSize()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	DataSize getChunkSize();

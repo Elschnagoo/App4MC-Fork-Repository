@@ -213,29 +213,6 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 	 * @generated
 	 */
 	public LabelAccessStatistic getStatistic() {
-		if (statistic != null && statistic.eIsProxy()) {
-			InternalEObject oldStatistic = (InternalEObject)statistic;
-			statistic = (LabelAccessStatistic)eResolveProxy(oldStatistic);
-			if (statistic != oldStatistic) {
-				InternalEObject newStatistic = (InternalEObject)statistic;
-				NotificationChain msgs = oldStatistic.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS__STATISTIC, null, null);
-				if (newStatistic.eInternalContainer() == null) {
-					msgs = newStatistic.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS__STATISTIC, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.LABEL_ACCESS__STATISTIC, oldStatistic, statistic));
-			}
-		}
-		return statistic;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public LabelAccessStatistic basicGetStatistic() {
 		return statistic;
 	}
 
@@ -279,29 +256,6 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 	 * @generated
 	 */
 	public TransmissionPolicy getTransmissionPolicy() {
-		if (transmissionPolicy != null && transmissionPolicy.eIsProxy()) {
-			InternalEObject oldTransmissionPolicy = (InternalEObject)transmissionPolicy;
-			transmissionPolicy = (TransmissionPolicy)eResolveProxy(oldTransmissionPolicy);
-			if (transmissionPolicy != oldTransmissionPolicy) {
-				InternalEObject newTransmissionPolicy = (InternalEObject)transmissionPolicy;
-				NotificationChain msgs = oldTransmissionPolicy.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY, null, null);
-				if (newTransmissionPolicy.eInternalContainer() == null) {
-					msgs = newTransmissionPolicy.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY, oldTransmissionPolicy, transmissionPolicy));
-			}
-		}
-		return transmissionPolicy;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TransmissionPolicy basicGetTransmissionPolicy() {
 		return transmissionPolicy;
 	}
 
@@ -468,11 +422,9 @@ public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
 			case AmaltheaPackage.LABEL_ACCESS__ACCESS:
 				return getAccess();
 			case AmaltheaPackage.LABEL_ACCESS__STATISTIC:
-				if (resolve) return getStatistic();
-				return basicGetStatistic();
+				return getStatistic();
 			case AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY:
-				if (resolve) return getTransmissionPolicy();
-				return basicGetTransmissionPolicy();
+				return getTransmissionPolicy();
 			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
 				return getDataStability();
 			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:

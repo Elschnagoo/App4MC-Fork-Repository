@@ -120,29 +120,6 @@ public class CustomPropertyImpl extends AmaltheaExtendedEObjectImpl implements B
 	 * @generated
 	 */
 	public Value getTypedValue() {
-		if (value != null && value.eIsProxy()) {
-			InternalEObject oldValue = (InternalEObject)value;
-			value = (Value)eResolveProxy(oldValue);
-			if (value != oldValue) {
-				InternalEObject newValue = (InternalEObject)value;
-				NotificationChain msgs = oldValue.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CUSTOM_PROPERTY__VALUE, null, null);
-				if (newValue.eInternalContainer() == null) {
-					msgs = newValue.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CUSTOM_PROPERTY__VALUE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.CUSTOM_PROPERTY__VALUE, oldValue, value));
-			}
-		}
-		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Value basicGetTypedValue() {
 		return value;
 	}
 
@@ -205,8 +182,7 @@ public class CustomPropertyImpl extends AmaltheaExtendedEObjectImpl implements B
 			case AmaltheaPackage.CUSTOM_PROPERTY__KEY:
 				return getTypedKey();
 			case AmaltheaPackage.CUSTOM_PROPERTY__VALUE:
-				if (resolve) return getTypedValue();
-				return basicGetTypedValue();
+				return getTypedValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

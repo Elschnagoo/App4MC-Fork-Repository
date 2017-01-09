@@ -74,7 +74,7 @@ public interface ModeSwitch extends GraphEntryBase {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeSwitch_Entries()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ModeSwitchEntry<GraphEntryBase>> getEntries();
@@ -90,7 +90,7 @@ public interface ModeSwitch extends GraphEntryBase {
 	 * @return the value of the '<em>Default Entry</em>' containment reference.
 	 * @see #setDefaultEntry(ModeSwitchDefault)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeSwitch_DefaultEntry()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ModeSwitchDefault<GraphEntryBase> getDefaultEntry();

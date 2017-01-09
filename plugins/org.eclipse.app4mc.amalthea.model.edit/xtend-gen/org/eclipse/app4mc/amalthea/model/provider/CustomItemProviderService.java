@@ -660,8 +660,8 @@ public class CustomItemProviderService {
       int _min = ((MinAvgMaxStatistic)object).getMin();
       String _plus = (s1 + Integer.valueOf(_min));
       String _plus_1 = (_plus + " : ");
-      int _avg = ((MinAvgMaxStatistic)object).getAvg();
-      String _plus_2 = (_plus_1 + Integer.valueOf(_avg));
+      float _avg = ((MinAvgMaxStatistic)object).getAvg();
+      String _plus_2 = (_plus_1 + Float.valueOf(_avg));
       String _plus_3 = (_plus_2 + " : ");
       int _max = ((MinAvgMaxStatistic)object).getMax();
       return (_plus_3 + Integer.valueOf(_max));

@@ -47,7 +47,7 @@ public interface DataConstraint extends EObject {
 	 * @return the value of the '<em>Target</em>' containment reference.
 	 * @see #setTarget(DataConstraintTarget)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataConstraint_Target()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	DataConstraintTarget getTarget();

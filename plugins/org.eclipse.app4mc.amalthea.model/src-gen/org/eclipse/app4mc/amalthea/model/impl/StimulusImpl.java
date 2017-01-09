@@ -107,31 +107,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	public Deviation<SignedTime> getStimulusDeviation() {
-		if (stimulusDeviation != null && stimulusDeviation.eIsProxy()) {
-			InternalEObject oldStimulusDeviation = (InternalEObject)stimulusDeviation;
-			stimulusDeviation = (Deviation<SignedTime>)eResolveProxy(oldStimulusDeviation);
-			if (stimulusDeviation != oldStimulusDeviation) {
-				InternalEObject newStimulusDeviation = (InternalEObject)stimulusDeviation;
-				NotificationChain msgs = oldStimulusDeviation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION, null, null);
-				if (newStimulusDeviation.eInternalContainer() == null) {
-					msgs = newStimulusDeviation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION, oldStimulusDeviation, stimulusDeviation));
-			}
-		}
-		return stimulusDeviation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Deviation<SignedTime> basicGetStimulusDeviation() {
 		return stimulusDeviation;
 	}
 
@@ -175,29 +151,6 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 */
 	public ModeValueList getSetModeValueList() {
-		if (setModeValueList != null && setModeValueList.eIsProxy()) {
-			InternalEObject oldSetModeValueList = (InternalEObject)setModeValueList;
-			setModeValueList = (ModeValueList)eResolveProxy(oldSetModeValueList);
-			if (setModeValueList != oldSetModeValueList) {
-				InternalEObject newSetModeValueList = (InternalEObject)setModeValueList;
-				NotificationChain msgs = oldSetModeValueList.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST, null, null);
-				if (newSetModeValueList.eInternalContainer() == null) {
-					msgs = newSetModeValueList.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST, oldSetModeValueList, setModeValueList));
-			}
-		}
-		return setModeValueList;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ModeValueList basicGetSetModeValueList() {
 		return setModeValueList;
 	}
 
@@ -241,29 +194,6 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 */
 	public ModeValueList getEnablingModeValueList() {
-		if (enablingModeValueList != null && enablingModeValueList.eIsProxy()) {
-			InternalEObject oldEnablingModeValueList = (InternalEObject)enablingModeValueList;
-			enablingModeValueList = (ModeValueList)eResolveProxy(oldEnablingModeValueList);
-			if (enablingModeValueList != oldEnablingModeValueList) {
-				InternalEObject newEnablingModeValueList = (InternalEObject)enablingModeValueList;
-				NotificationChain msgs = oldEnablingModeValueList.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST, null, null);
-				if (newEnablingModeValueList.eInternalContainer() == null) {
-					msgs = newEnablingModeValueList.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST, oldEnablingModeValueList, enablingModeValueList));
-			}
-		}
-		return enablingModeValueList;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ModeValueList basicGetEnablingModeValueList() {
 		return enablingModeValueList;
 	}
 
@@ -307,29 +237,6 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 */
 	public ModeValueList getDisablingModeValueList() {
-		if (disablingModeValueList != null && disablingModeValueList.eIsProxy()) {
-			InternalEObject oldDisablingModeValueList = (InternalEObject)disablingModeValueList;
-			disablingModeValueList = (ModeValueList)eResolveProxy(oldDisablingModeValueList);
-			if (disablingModeValueList != oldDisablingModeValueList) {
-				InternalEObject newDisablingModeValueList = (InternalEObject)disablingModeValueList;
-				NotificationChain msgs = oldDisablingModeValueList.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST, null, null);
-				if (newDisablingModeValueList.eInternalContainer() == null) {
-					msgs = newDisablingModeValueList.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST, oldDisablingModeValueList, disablingModeValueList));
-			}
-		}
-		return disablingModeValueList;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ModeValueList basicGetDisablingModeValueList() {
 		return disablingModeValueList;
 	}
 
@@ -396,17 +303,13 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION:
-				if (resolve) return getStimulusDeviation();
-				return basicGetStimulusDeviation();
+				return getStimulusDeviation();
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
-				if (resolve) return getSetModeValueList();
-				return basicGetSetModeValueList();
+				return getSetModeValueList();
 			case AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST:
-				if (resolve) return getEnablingModeValueList();
-				return basicGetEnablingModeValueList();
+				return getEnablingModeValueList();
 			case AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST:
-				if (resolve) return getDisablingModeValueList();
-				return basicGetDisablingModeValueList();
+				return getDisablingModeValueList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

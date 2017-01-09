@@ -78,7 +78,7 @@ public class TimestampListImpl extends BaseObjectImpl implements TimestampList {
 	 */
 	public EList<Time> getTimestamps() {
 		if (timestamps == null) {
-			timestamps = new EObjectContainmentEList.Resolving<Time>(Time.class, this, AmaltheaPackage.TIMESTAMP_LIST__TIMESTAMPS);
+			timestamps = new EObjectContainmentEList<Time>(Time.class, this, AmaltheaPackage.TIMESTAMP_LIST__TIMESTAMPS);
 		}
 		return timestamps;
 	}

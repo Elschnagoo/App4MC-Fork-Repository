@@ -74,7 +74,7 @@ public interface SchedulingSWUnit extends SchedulingUnit, BaseObject {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Instructions</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulingSWUnit_Instructions()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Instructions> getInstructions();

@@ -116,29 +116,6 @@ public class FrequencyRequirementLimitImpl extends RequirementLimitImpl implemen
 	 * @generated
 	 */
 	public Frequency getLimitValue() {
-		if (limitValue != null && limitValue.eIsProxy()) {
-			InternalEObject oldLimitValue = (InternalEObject)limitValue;
-			limitValue = (Frequency)eResolveProxy(oldLimitValue);
-			if (limitValue != oldLimitValue) {
-				InternalEObject newLimitValue = (InternalEObject)limitValue;
-				NotificationChain msgs = oldLimitValue.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.FREQUENCY_REQUIREMENT_LIMIT__LIMIT_VALUE, null, null);
-				if (newLimitValue.eInternalContainer() == null) {
-					msgs = newLimitValue.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.FREQUENCY_REQUIREMENT_LIMIT__LIMIT_VALUE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.FREQUENCY_REQUIREMENT_LIMIT__LIMIT_VALUE, oldLimitValue, limitValue));
-			}
-		}
-		return limitValue;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Frequency basicGetLimitValue() {
 		return limitValue;
 	}
 
@@ -201,8 +178,7 @@ public class FrequencyRequirementLimitImpl extends RequirementLimitImpl implemen
 			case AmaltheaPackage.FREQUENCY_REQUIREMENT_LIMIT__METRIC:
 				return getMetric();
 			case AmaltheaPackage.FREQUENCY_REQUIREMENT_LIMIT__LIMIT_VALUE:
-				if (resolve) return getLimitValue();
-				return basicGetLimitValue();
+				return getLimitValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

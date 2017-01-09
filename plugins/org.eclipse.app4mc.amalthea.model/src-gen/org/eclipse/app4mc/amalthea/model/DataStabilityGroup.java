@@ -59,7 +59,7 @@ public interface DataStabilityGroup extends ReferableBaseObject {
 	 * @return the value of the '<em>Scope</em>' containment reference.
 	 * @see #setScope(DataGroupScope)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataStabilityGroup_Scope()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	DataGroupScope getScope();

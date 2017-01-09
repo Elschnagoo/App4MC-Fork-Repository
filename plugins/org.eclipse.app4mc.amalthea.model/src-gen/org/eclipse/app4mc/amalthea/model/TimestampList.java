@@ -42,7 +42,7 @@ public interface TimestampList extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Timestamps</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimestampList_Timestamps()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Time> getTimestamps();

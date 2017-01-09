@@ -105,7 +105,7 @@ public interface LabelAccess extends RunnableItem {
 	 * @return the value of the '<em>Statistic</em>' containment reference.
 	 * @see #setStatistic(LabelAccessStatistic)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccess_Statistic()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	LabelAccessStatistic getStatistic();
@@ -130,7 +130,7 @@ public interface LabelAccess extends RunnableItem {
 	 * @return the value of the '<em>Transmission Policy</em>' containment reference.
 	 * @see #setTransmissionPolicy(TransmissionPolicy)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccess_TransmissionPolicy()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	TransmissionPolicy getTransmissionPolicy();

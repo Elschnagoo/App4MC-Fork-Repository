@@ -130,7 +130,7 @@ public interface DelayConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Upper</em>' containment reference.
 	 * @see #setUpper(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDelayConstraint_Upper()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getUpper();
@@ -156,7 +156,7 @@ public interface DelayConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Lower</em>' containment reference.
 	 * @see #setLower(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDelayConstraint_Lower()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getLower();

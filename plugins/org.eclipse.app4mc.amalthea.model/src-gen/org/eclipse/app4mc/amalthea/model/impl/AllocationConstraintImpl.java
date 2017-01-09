@@ -73,29 +73,6 @@ public abstract class AllocationConstraintImpl extends BaseObjectImpl implements
 	 * @generated
 	 */
 	public HwCoreConstraint getHwConstraint() {
-		if (hwConstraint != null && hwConstraint.eIsProxy()) {
-			InternalEObject oldHwConstraint = (InternalEObject)hwConstraint;
-			hwConstraint = (HwCoreConstraint)eResolveProxy(oldHwConstraint);
-			if (hwConstraint != oldHwConstraint) {
-				InternalEObject newHwConstraint = (InternalEObject)hwConstraint;
-				NotificationChain msgs = oldHwConstraint.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ALLOCATION_CONSTRAINT__HW_CONSTRAINT, null, null);
-				if (newHwConstraint.eInternalContainer() == null) {
-					msgs = newHwConstraint.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ALLOCATION_CONSTRAINT__HW_CONSTRAINT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.ALLOCATION_CONSTRAINT__HW_CONSTRAINT, oldHwConstraint, hwConstraint));
-			}
-		}
-		return hwConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HwCoreConstraint basicGetHwConstraint() {
 		return hwConstraint;
 	}
 
@@ -156,8 +133,7 @@ public abstract class AllocationConstraintImpl extends BaseObjectImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.ALLOCATION_CONSTRAINT__HW_CONSTRAINT:
-				if (resolve) return getHwConstraint();
-				return basicGetHwConstraint();
+				return getHwConstraint();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

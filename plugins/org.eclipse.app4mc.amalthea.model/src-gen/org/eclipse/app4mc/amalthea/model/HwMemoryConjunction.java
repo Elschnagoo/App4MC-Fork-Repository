@@ -72,7 +72,7 @@ public interface HwMemoryConjunction extends HwMemoryConstraint {
 	 * @return the value of the '<em>First Constraint</em>' containment reference.
 	 * @see #setFirstConstraint(HwMemoryConstraint)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwMemoryConjunction_FirstConstraint()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	HwMemoryConstraint getFirstConstraint();
@@ -98,7 +98,7 @@ public interface HwMemoryConjunction extends HwMemoryConstraint {
 	 * @return the value of the '<em>Second Constraint</em>' containment reference.
 	 * @see #setSecondConstraint(HwMemoryConstraint)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwMemoryConjunction_SecondConstraint()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	HwMemoryConstraint getSecondConstraint();

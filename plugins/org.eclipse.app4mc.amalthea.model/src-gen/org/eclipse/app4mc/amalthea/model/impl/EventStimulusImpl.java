@@ -123,29 +123,6 @@ public class EventStimulusImpl extends StimulusImpl implements EventStimulus {
 	 * @generated
 	 */
 	public Counter getCounter() {
-		if (counter != null && counter.eIsProxy()) {
-			InternalEObject oldCounter = (InternalEObject)counter;
-			counter = (Counter)eResolveProxy(oldCounter);
-			if (counter != oldCounter) {
-				InternalEObject newCounter = (InternalEObject)counter;
-				NotificationChain msgs = oldCounter.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.EVENT_STIMULUS__COUNTER, null, null);
-				if (newCounter.eInternalContainer() == null) {
-					msgs = newCounter.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.EVENT_STIMULUS__COUNTER, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.EVENT_STIMULUS__COUNTER, oldCounter, counter));
-			}
-		}
-		return counter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Counter basicGetCounter() {
 		return counter;
 	}
 
@@ -209,8 +186,7 @@ public class EventStimulusImpl extends StimulusImpl implements EventStimulus {
 				if (resolve) return getTrigger();
 				return basicGetTrigger();
 			case AmaltheaPackage.EVENT_STIMULUS__COUNTER:
-				if (resolve) return getCounter();
-				return basicGetCounter();
+				return getCounter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

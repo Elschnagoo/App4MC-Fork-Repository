@@ -135,7 +135,7 @@ public interface ProcessPrototype extends AbstractProcess {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Access Precedence Spec</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessPrototype_AccessPrecedenceSpec()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<AccessPrecedenceSpec> getAccessPrecedenceSpec();
@@ -150,7 +150,7 @@ public interface ProcessPrototype extends AbstractProcess {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Order Precedence Spec</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessPrototype_OrderPrecedenceSpec()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<OrderPrecedenceSpec> getOrderPrecedenceSpec();
@@ -166,7 +166,7 @@ public interface ProcessPrototype extends AbstractProcess {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Chained Prototypes</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessPrototype_ChainedPrototypes()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ChainedProcessPrototype> getChainedPrototypes();
@@ -208,7 +208,7 @@ public interface ProcessPrototype extends AbstractProcess {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable Calls</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessPrototype_RunnableCalls()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<TaskRunnableCall> getRunnableCalls();

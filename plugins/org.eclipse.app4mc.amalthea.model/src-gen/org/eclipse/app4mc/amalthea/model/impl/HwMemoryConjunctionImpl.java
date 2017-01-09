@@ -127,29 +127,6 @@ public class HwMemoryConjunctionImpl extends HwMemoryConstraintImpl implements H
 	 * @generated
 	 */
 	public HwMemoryConstraint getFirstConstraint() {
-		if (firstConstraint != null && firstConstraint.eIsProxy()) {
-			InternalEObject oldFirstConstraint = (InternalEObject)firstConstraint;
-			firstConstraint = (HwMemoryConstraint)eResolveProxy(oldFirstConstraint);
-			if (firstConstraint != oldFirstConstraint) {
-				InternalEObject newFirstConstraint = (InternalEObject)firstConstraint;
-				NotificationChain msgs = oldFirstConstraint.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_MEMORY_CONJUNCTION__FIRST_CONSTRAINT, null, null);
-				if (newFirstConstraint.eInternalContainer() == null) {
-					msgs = newFirstConstraint.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_MEMORY_CONJUNCTION__FIRST_CONSTRAINT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.HW_MEMORY_CONJUNCTION__FIRST_CONSTRAINT, oldFirstConstraint, firstConstraint));
-			}
-		}
-		return firstConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HwMemoryConstraint basicGetFirstConstraint() {
 		return firstConstraint;
 	}
 
@@ -193,29 +170,6 @@ public class HwMemoryConjunctionImpl extends HwMemoryConstraintImpl implements H
 	 * @generated
 	 */
 	public HwMemoryConstraint getSecondConstraint() {
-		if (secondConstraint != null && secondConstraint.eIsProxy()) {
-			InternalEObject oldSecondConstraint = (InternalEObject)secondConstraint;
-			secondConstraint = (HwMemoryConstraint)eResolveProxy(oldSecondConstraint);
-			if (secondConstraint != oldSecondConstraint) {
-				InternalEObject newSecondConstraint = (InternalEObject)secondConstraint;
-				NotificationChain msgs = oldSecondConstraint.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_MEMORY_CONJUNCTION__SECOND_CONSTRAINT, null, null);
-				if (newSecondConstraint.eInternalContainer() == null) {
-					msgs = newSecondConstraint.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_MEMORY_CONJUNCTION__SECOND_CONSTRAINT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.HW_MEMORY_CONJUNCTION__SECOND_CONSTRAINT, oldSecondConstraint, secondConstraint));
-			}
-		}
-		return secondConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HwMemoryConstraint basicGetSecondConstraint() {
 		return secondConstraint;
 	}
 
@@ -280,11 +234,9 @@ public class HwMemoryConjunctionImpl extends HwMemoryConstraintImpl implements H
 			case AmaltheaPackage.HW_MEMORY_CONJUNCTION__CONJUNCTION:
 				return getConjunction();
 			case AmaltheaPackage.HW_MEMORY_CONJUNCTION__FIRST_CONSTRAINT:
-				if (resolve) return getFirstConstraint();
-				return basicGetFirstConstraint();
+				return getFirstConstraint();
 			case AmaltheaPackage.HW_MEMORY_CONJUNCTION__SECOND_CONSTRAINT:
-				if (resolve) return getSecondConstraint();
-				return basicGetSecondConstraint();
+				return getSecondConstraint();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

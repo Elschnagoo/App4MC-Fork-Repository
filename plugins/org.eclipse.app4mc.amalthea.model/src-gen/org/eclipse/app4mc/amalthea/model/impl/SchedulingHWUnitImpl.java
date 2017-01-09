@@ -105,29 +105,6 @@ public class SchedulingHWUnitImpl extends SchedulingUnitImpl implements Scheduli
 	 * @generated
 	 */
 	public Time getDelay() {
-		if (delay != null && delay.eIsProxy()) {
-			InternalEObject oldDelay = (InternalEObject)delay;
-			delay = (Time)eResolveProxy(oldDelay);
-			if (delay != oldDelay) {
-				InternalEObject newDelay = (InternalEObject)delay;
-				NotificationChain msgs = oldDelay.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SCHEDULING_HW_UNIT__DELAY, null, null);
-				if (newDelay.eInternalContainer() == null) {
-					msgs = newDelay.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SCHEDULING_HW_UNIT__DELAY, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.SCHEDULING_HW_UNIT__DELAY, oldDelay, delay));
-			}
-		}
-		return delay;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetDelay() {
 		return delay;
 	}
 
@@ -193,8 +170,7 @@ public class SchedulingHWUnitImpl extends SchedulingUnitImpl implements Scheduli
 				if (coreType) return getCustomProperties();
 				else return getCustomProperties().map();
 			case AmaltheaPackage.SCHEDULING_HW_UNIT__DELAY:
-				if (resolve) return getDelay();
-				return basicGetDelay();
+				return getDelay();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

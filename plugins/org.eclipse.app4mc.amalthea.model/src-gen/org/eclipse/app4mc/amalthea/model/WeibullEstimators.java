@@ -47,7 +47,7 @@ public interface WeibullEstimators<T> extends WeibullDistribution<T> {
 	 * @return the value of the '<em>Mean</em>' containment reference.
 	 * @see #setMean(Object)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getWeibullEstimators_Mean()
-	 * @model kind="reference" containment="true" resolveProxies="true"
+	 * @model kind="reference" containment="true"
 	 * @generated
 	 */
 	T getMean();

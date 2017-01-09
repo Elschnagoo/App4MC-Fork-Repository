@@ -45,7 +45,7 @@ public interface InterProcess extends Stimulus {
 	 * @return the value of the '<em>Counter</em>' containment reference.
 	 * @see #setCounter(Counter)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcess_Counter()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Counter getCounter();

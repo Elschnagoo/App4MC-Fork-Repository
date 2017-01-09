@@ -126,29 +126,6 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	 * @generated
 	 */
 	public Time getLowerTimeBorder() {
-		if (lowerTimeBorder != null && lowerTimeBorder.eIsProxy()) {
-			InternalEObject oldLowerTimeBorder = (InternalEObject)lowerTimeBorder;
-			lowerTimeBorder = (Time)eResolveProxy(oldLowerTimeBorder);
-			if (lowerTimeBorder != oldLowerTimeBorder) {
-				InternalEObject newLowerTimeBorder = (InternalEObject)lowerTimeBorder;
-				NotificationChain msgs = oldLowerTimeBorder.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ARRIVAL_CURVE_ENTRY__LOWER_TIME_BORDER, null, null);
-				if (newLowerTimeBorder.eInternalContainer() == null) {
-					msgs = newLowerTimeBorder.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ARRIVAL_CURVE_ENTRY__LOWER_TIME_BORDER, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.ARRIVAL_CURVE_ENTRY__LOWER_TIME_BORDER, oldLowerTimeBorder, lowerTimeBorder));
-			}
-		}
-		return lowerTimeBorder;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetLowerTimeBorder() {
 		return lowerTimeBorder;
 	}
 
@@ -192,29 +169,6 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	 * @generated
 	 */
 	public Time getUpperTimeBorder() {
-		if (upperTimeBorder != null && upperTimeBorder.eIsProxy()) {
-			InternalEObject oldUpperTimeBorder = (InternalEObject)upperTimeBorder;
-			upperTimeBorder = (Time)eResolveProxy(oldUpperTimeBorder);
-			if (upperTimeBorder != oldUpperTimeBorder) {
-				InternalEObject newUpperTimeBorder = (InternalEObject)upperTimeBorder;
-				NotificationChain msgs = oldUpperTimeBorder.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ARRIVAL_CURVE_ENTRY__UPPER_TIME_BORDER, null, null);
-				if (newUpperTimeBorder.eInternalContainer() == null) {
-					msgs = newUpperTimeBorder.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ARRIVAL_CURVE_ENTRY__UPPER_TIME_BORDER, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.ARRIVAL_CURVE_ENTRY__UPPER_TIME_BORDER, oldUpperTimeBorder, upperTimeBorder));
-			}
-		}
-		return upperTimeBorder;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetUpperTimeBorder() {
 		return upperTimeBorder;
 	}
 
@@ -279,11 +233,9 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_EVENTS:
 				return getNumberOfEvents();
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__LOWER_TIME_BORDER:
-				if (resolve) return getLowerTimeBorder();
-				return basicGetLowerTimeBorder();
+				return getLowerTimeBorder();
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__UPPER_TIME_BORDER:
-				if (resolve) return getUpperTimeBorder();
-				return basicGetUpperTimeBorder();
+				return getUpperTimeBorder();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

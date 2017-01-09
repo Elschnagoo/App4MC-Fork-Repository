@@ -17221,13 +17221,13 @@ public interface AmaltheaPackage extends EPackage {
 	int ARRIVAL_CURVE__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
 
 	/**
-	 * The feature id for the '<em><b>Arrival Curve Entries</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ARRIVAL_CURVE__ARRIVAL_CURVE_ENTRIES = STIMULUS_FEATURE_COUNT + 0;
+	int ARRIVAL_CURVE__ENTRIES = STIMULUS_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Arrival Curve</em>' class.
@@ -24690,7 +24690,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @return the meta object for class '<em>Custom Property</em>'.
 	 * @see java.util.Map.Entry
 	 * @model keyUnique="false" keyDataType="org.eclipse.emf.ecore.EString" keyRequired="true"
-	 *        valueType="org.eclipse.app4mc.amalthea.model.Value" valueContainment="true" valueResolveProxies="true" valueRequired="true"
+	 *        valueType="org.eclipse.app4mc.amalthea.model.Value" valueContainment="true" valueRequired="true"
 	 * @generated
 	 */
 	EClass getCustomProperty();
@@ -31003,15 +31003,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getArrivalCurve();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ArrivalCurve#getArrivalCurveEntries <em>Arrival Curve Entries</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ArrivalCurve#getEntries <em>Entries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Arrival Curve Entries</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ArrivalCurve#getArrivalCurveEntries()
+	 * @return the meta object for the containment reference list '<em>Entries</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ArrivalCurve#getEntries()
 	 * @see #getArrivalCurve()
 	 * @generated
 	 */
-	EReference getArrivalCurve_ArrivalCurveEntries();
+	EReference getArrivalCurve_Entries();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry <em>Arrival Curve Entry</em>}'.

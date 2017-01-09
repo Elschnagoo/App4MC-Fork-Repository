@@ -95,29 +95,6 @@ public class InstructionFetchImpl extends BaseObjectImpl implements InstructionF
 	 * @generated
 	 */
 	public NumericStatistic getCount() {
-		if (count != null && count.eIsProxy()) {
-			InternalEObject oldCount = (InternalEObject)count;
-			count = (NumericStatistic)eResolveProxy(oldCount);
-			if (count != oldCount) {
-				InternalEObject newCount = (InternalEObject)count;
-				NotificationChain msgs = oldCount.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INSTRUCTION_FETCH__COUNT, null, null);
-				if (newCount.eInternalContainer() == null) {
-					msgs = newCount.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INSTRUCTION_FETCH__COUNT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.INSTRUCTION_FETCH__COUNT, oldCount, count));
-			}
-		}
-		return count;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NumericStatistic basicGetCount() {
 		return count;
 	}
 
@@ -161,29 +138,6 @@ public class InstructionFetchImpl extends BaseObjectImpl implements InstructionF
 	 * @generated
 	 */
 	public NumericStatistic getMisses() {
-		if (misses != null && misses.eIsProxy()) {
-			InternalEObject oldMisses = (InternalEObject)misses;
-			misses = (NumericStatistic)eResolveProxy(oldMisses);
-			if (misses != oldMisses) {
-				InternalEObject newMisses = (InternalEObject)misses;
-				NotificationChain msgs = oldMisses.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INSTRUCTION_FETCH__MISSES, null, null);
-				if (newMisses.eInternalContainer() == null) {
-					msgs = newMisses.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INSTRUCTION_FETCH__MISSES, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.INSTRUCTION_FETCH__MISSES, oldMisses, misses));
-			}
-		}
-		return misses;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NumericStatistic basicGetMisses() {
 		return misses;
 	}
 
@@ -227,29 +181,6 @@ public class InstructionFetchImpl extends BaseObjectImpl implements InstructionF
 	 * @generated
 	 */
 	public NumericStatistic getCyclesPerFetch() {
-		if (cyclesPerFetch != null && cyclesPerFetch.eIsProxy()) {
-			InternalEObject oldCyclesPerFetch = (InternalEObject)cyclesPerFetch;
-			cyclesPerFetch = (NumericStatistic)eResolveProxy(oldCyclesPerFetch);
-			if (cyclesPerFetch != oldCyclesPerFetch) {
-				InternalEObject newCyclesPerFetch = (InternalEObject)cyclesPerFetch;
-				NotificationChain msgs = oldCyclesPerFetch.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INSTRUCTION_FETCH__CYCLES_PER_FETCH, null, null);
-				if (newCyclesPerFetch.eInternalContainer() == null) {
-					msgs = newCyclesPerFetch.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INSTRUCTION_FETCH__CYCLES_PER_FETCH, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.INSTRUCTION_FETCH__CYCLES_PER_FETCH, oldCyclesPerFetch, cyclesPerFetch));
-			}
-		}
-		return cyclesPerFetch;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NumericStatistic basicGetCyclesPerFetch() {
 		return cyclesPerFetch;
 	}
 
@@ -314,14 +245,11 @@ public class InstructionFetchImpl extends BaseObjectImpl implements InstructionF
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.INSTRUCTION_FETCH__COUNT:
-				if (resolve) return getCount();
-				return basicGetCount();
+				return getCount();
 			case AmaltheaPackage.INSTRUCTION_FETCH__MISSES:
-				if (resolve) return getMisses();
-				return basicGetMisses();
+				return getMisses();
 			case AmaltheaPackage.INSTRUCTION_FETCH__CYCLES_PER_FETCH:
-				if (resolve) return getCyclesPerFetch();
-				return basicGetCyclesPerFetch();
+				return getCyclesPerFetch();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

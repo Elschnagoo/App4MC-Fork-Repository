@@ -97,7 +97,7 @@ public interface OperatingSystem extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Task Schedulers</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOperatingSystem_TaskSchedulers()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<TaskScheduler> getTaskSchedulers();
@@ -113,7 +113,7 @@ public interface OperatingSystem extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Interrupt Controllers</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOperatingSystem_InterruptControllers()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<InterruptController> getInterruptControllers();

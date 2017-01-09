@@ -84,29 +84,6 @@ public class DataAgeTimeImpl extends DataAgeImpl implements DataAgeTime {
 	 * @generated
 	 */
 	public Time getMinimumTime() {
-		if (minimumTime != null && minimumTime.eIsProxy()) {
-			InternalEObject oldMinimumTime = (InternalEObject)minimumTime;
-			minimumTime = (Time)eResolveProxy(oldMinimumTime);
-			if (minimumTime != oldMinimumTime) {
-				InternalEObject newMinimumTime = (InternalEObject)minimumTime;
-				NotificationChain msgs = oldMinimumTime.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_AGE_TIME__MINIMUM_TIME, null, null);
-				if (newMinimumTime.eInternalContainer() == null) {
-					msgs = newMinimumTime.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_AGE_TIME__MINIMUM_TIME, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.DATA_AGE_TIME__MINIMUM_TIME, oldMinimumTime, minimumTime));
-			}
-		}
-		return minimumTime;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetMinimumTime() {
 		return minimumTime;
 	}
 
@@ -150,29 +127,6 @@ public class DataAgeTimeImpl extends DataAgeImpl implements DataAgeTime {
 	 * @generated
 	 */
 	public Time getMaximumTime() {
-		if (maximumTime != null && maximumTime.eIsProxy()) {
-			InternalEObject oldMaximumTime = (InternalEObject)maximumTime;
-			maximumTime = (Time)eResolveProxy(oldMaximumTime);
-			if (maximumTime != oldMaximumTime) {
-				InternalEObject newMaximumTime = (InternalEObject)maximumTime;
-				NotificationChain msgs = oldMaximumTime.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_AGE_TIME__MAXIMUM_TIME, null, null);
-				if (newMaximumTime.eInternalContainer() == null) {
-					msgs = newMaximumTime.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_AGE_TIME__MAXIMUM_TIME, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.DATA_AGE_TIME__MAXIMUM_TIME, oldMaximumTime, maximumTime));
-			}
-		}
-		return maximumTime;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetMaximumTime() {
 		return maximumTime;
 	}
 
@@ -235,11 +189,9 @@ public class DataAgeTimeImpl extends DataAgeImpl implements DataAgeTime {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.DATA_AGE_TIME__MINIMUM_TIME:
-				if (resolve) return getMinimumTime();
-				return basicGetMinimumTime();
+				return getMinimumTime();
 			case AmaltheaPackage.DATA_AGE_TIME__MAXIMUM_TIME:
-				if (resolve) return getMaximumTime();
-				return basicGetMaximumTime();
+				return getMaximumTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

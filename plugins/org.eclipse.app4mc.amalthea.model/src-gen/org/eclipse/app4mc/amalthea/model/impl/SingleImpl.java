@@ -73,29 +73,6 @@ public class SingleImpl extends StimulusImpl implements Single {
 	 * @generated
 	 */
 	public Time getActivation() {
-		if (activation != null && activation.eIsProxy()) {
-			InternalEObject oldActivation = (InternalEObject)activation;
-			activation = (Time)eResolveProxy(oldActivation);
-			if (activation != oldActivation) {
-				InternalEObject newActivation = (InternalEObject)activation;
-				NotificationChain msgs = oldActivation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SINGLE__ACTIVATION, null, null);
-				if (newActivation.eInternalContainer() == null) {
-					msgs = newActivation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SINGLE__ACTIVATION, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.SINGLE__ACTIVATION, oldActivation, activation));
-			}
-		}
-		return activation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetActivation() {
 		return activation;
 	}
 
@@ -156,8 +133,7 @@ public class SingleImpl extends StimulusImpl implements Single {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.SINGLE__ACTIVATION:
-				if (resolve) return getActivation();
-				return basicGetActivation();
+				return getActivation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

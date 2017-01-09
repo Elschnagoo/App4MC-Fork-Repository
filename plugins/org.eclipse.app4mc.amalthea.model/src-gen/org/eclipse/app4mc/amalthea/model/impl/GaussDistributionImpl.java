@@ -19,7 +19,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -83,31 +82,7 @@ public class GaussDistributionImpl<T> extends DistributionImpl<T> implements Gau
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	public T getSd() {
-		if (sd != null && ((EObject)sd).eIsProxy()) {
-			InternalEObject oldSd = (InternalEObject)sd;
-			sd = (T)eResolveProxy(oldSd);
-			if (sd != oldSd) {
-				InternalEObject newSd = (InternalEObject)sd;
-				NotificationChain msgs = oldSd.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.GAUSS_DISTRIBUTION__SD, null, null);
-				if (newSd.eInternalContainer() == null) {
-					msgs = newSd.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.GAUSS_DISTRIBUTION__SD, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.GAUSS_DISTRIBUTION__SD, oldSd, sd));
-			}
-		}
-		return sd;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public T basicGetSd() {
 		return sd;
 	}
 
@@ -150,31 +125,7 @@ public class GaussDistributionImpl<T> extends DistributionImpl<T> implements Gau
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	public T getMean() {
-		if (mean != null && ((EObject)mean).eIsProxy()) {
-			InternalEObject oldMean = (InternalEObject)mean;
-			mean = (T)eResolveProxy(oldMean);
-			if (mean != oldMean) {
-				InternalEObject newMean = (InternalEObject)mean;
-				NotificationChain msgs = oldMean.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.GAUSS_DISTRIBUTION__MEAN, null, null);
-				if (newMean.eInternalContainer() == null) {
-					msgs = newMean.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.GAUSS_DISTRIBUTION__MEAN, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.GAUSS_DISTRIBUTION__MEAN, oldMean, mean));
-			}
-		}
-		return mean;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public T basicGetMean() {
 		return mean;
 	}
 
@@ -237,11 +188,9 @@ public class GaussDistributionImpl<T> extends DistributionImpl<T> implements Gau
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.GAUSS_DISTRIBUTION__SD:
-				if (resolve) return getSd();
-				return basicGetSd();
+				return getSd();
 			case AmaltheaPackage.GAUSS_DISTRIBUTION__MEAN:
-				if (resolve) return getMean();
-				return basicGetMean();
+				return getMean();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

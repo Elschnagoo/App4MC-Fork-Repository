@@ -84,29 +84,6 @@ public class SetEventImpl extends CallSequenceItemImpl implements SetEvent {
 	 * @generated
 	 */
 	public EventMask getEventMask() {
-		if (eventMask != null && eventMask.eIsProxy()) {
-			InternalEObject oldEventMask = (InternalEObject)eventMask;
-			eventMask = (EventMask)eResolveProxy(oldEventMask);
-			if (eventMask != oldEventMask) {
-				InternalEObject newEventMask = (InternalEObject)eventMask;
-				NotificationChain msgs = oldEventMask.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SET_EVENT__EVENT_MASK, null, null);
-				if (newEventMask.eInternalContainer() == null) {
-					msgs = newEventMask.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SET_EVENT__EVENT_MASK, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.SET_EVENT__EVENT_MASK, oldEventMask, eventMask));
-			}
-		}
-		return eventMask;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EventMask basicGetEventMask() {
 		return eventMask;
 	}
 
@@ -205,8 +182,7 @@ public class SetEventImpl extends CallSequenceItemImpl implements SetEvent {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.SET_EVENT__EVENT_MASK:
-				if (resolve) return getEventMask();
-				return basicGetEventMask();
+				return getEventMask();
 			case AmaltheaPackage.SET_EVENT__PROCESS:
 				if (resolve) return getProcess();
 				return basicGetProcess();

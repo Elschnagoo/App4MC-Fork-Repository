@@ -45,7 +45,7 @@ public interface Instructions extends EObject {
 	 * @return the value of the '<em>Fetch Statistic</em>' containment reference.
 	 * @see #setFetchStatistic(InstructionFetch)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInstructions_FetchStatistic()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	InstructionFetch getFetchStatistic();

@@ -198,29 +198,6 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * @generated
 	 */
 	public Time getLower() {
-		if (lower != null && lower.eIsProxy()) {
-			InternalEObject oldLower = (InternalEObject)lower;
-			lower = (Time)eResolveProxy(oldLower);
-			if (lower != oldLower) {
-				InternalEObject newLower = (InternalEObject)lower;
-				NotificationChain msgs = oldLower.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REPETITION_CONSTRAINT__LOWER, null, null);
-				if (newLower.eInternalContainer() == null) {
-					msgs = newLower.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REPETITION_CONSTRAINT__LOWER, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.REPETITION_CONSTRAINT__LOWER, oldLower, lower));
-			}
-		}
-		return lower;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetLower() {
 		return lower;
 	}
 
@@ -264,29 +241,6 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * @generated
 	 */
 	public Time getUpper() {
-		if (upper != null && upper.eIsProxy()) {
-			InternalEObject oldUpper = (InternalEObject)upper;
-			upper = (Time)eResolveProxy(oldUpper);
-			if (upper != oldUpper) {
-				InternalEObject newUpper = (InternalEObject)upper;
-				NotificationChain msgs = oldUpper.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REPETITION_CONSTRAINT__UPPER, null, null);
-				if (newUpper.eInternalContainer() == null) {
-					msgs = newUpper.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REPETITION_CONSTRAINT__UPPER, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.REPETITION_CONSTRAINT__UPPER, oldUpper, upper));
-			}
-		}
-		return upper;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetUpper() {
 		return upper;
 	}
 
@@ -330,29 +284,6 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * @generated
 	 */
 	public Time getJitter() {
-		if (jitter != null && jitter.eIsProxy()) {
-			InternalEObject oldJitter = (InternalEObject)jitter;
-			jitter = (Time)eResolveProxy(oldJitter);
-			if (jitter != oldJitter) {
-				InternalEObject newJitter = (InternalEObject)jitter;
-				NotificationChain msgs = oldJitter.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REPETITION_CONSTRAINT__JITTER, null, null);
-				if (newJitter.eInternalContainer() == null) {
-					msgs = newJitter.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REPETITION_CONSTRAINT__JITTER, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.REPETITION_CONSTRAINT__JITTER, oldJitter, jitter));
-			}
-		}
-		return jitter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetJitter() {
 		return jitter;
 	}
 
@@ -396,29 +327,6 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * @generated
 	 */
 	public Time getPeriod() {
-		if (period != null && period.eIsProxy()) {
-			InternalEObject oldPeriod = (InternalEObject)period;
-			period = (Time)eResolveProxy(oldPeriod);
-			if (period != oldPeriod) {
-				InternalEObject newPeriod = (InternalEObject)period;
-				NotificationChain msgs = oldPeriod.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD, null, null);
-				if (newPeriod.eInternalContainer() == null) {
-					msgs = newPeriod.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD, oldPeriod, period));
-			}
-		}
-		return period;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetPeriod() {
 		return period;
 	}
 
@@ -490,17 +398,13 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 			case AmaltheaPackage.REPETITION_CONSTRAINT__SPAN:
 				return getSpan();
 			case AmaltheaPackage.REPETITION_CONSTRAINT__LOWER:
-				if (resolve) return getLower();
-				return basicGetLower();
+				return getLower();
 			case AmaltheaPackage.REPETITION_CONSTRAINT__UPPER:
-				if (resolve) return getUpper();
-				return basicGetUpper();
+				return getUpper();
 			case AmaltheaPackage.REPETITION_CONSTRAINT__JITTER:
-				if (resolve) return getJitter();
-				return basicGetJitter();
+				return getJitter();
 			case AmaltheaPackage.REPETITION_CONSTRAINT__PERIOD:
-				if (resolve) return getPeriod();
-				return basicGetPeriod();
+				return getPeriod();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

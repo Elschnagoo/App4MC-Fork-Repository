@@ -194,7 +194,7 @@ public class RunnableImpl extends AbstractElementMemoryInformationImpl implement
 	 */
 	public EList<RunnableItem> getRunnableItems() {
 		if (runnableItems == null) {
-			runnableItems = new EObjectContainmentEList.Resolving<RunnableItem>(RunnableItem.class, this, AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS);
+			runnableItems = new EObjectContainmentEList<RunnableItem>(RunnableItem.class, this, AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS);
 		}
 		return runnableItems;
 	}

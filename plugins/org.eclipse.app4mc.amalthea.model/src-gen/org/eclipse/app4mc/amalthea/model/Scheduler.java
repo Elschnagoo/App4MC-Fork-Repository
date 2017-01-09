@@ -47,7 +47,7 @@ public interface Scheduler extends ReferableBaseObject {
 	 * @return the value of the '<em>Scheduling Unit</em>' containment reference.
 	 * @see #setSchedulingUnit(SchedulingUnit)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScheduler_SchedulingUnit()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	SchedulingUnit getSchedulingUnit();

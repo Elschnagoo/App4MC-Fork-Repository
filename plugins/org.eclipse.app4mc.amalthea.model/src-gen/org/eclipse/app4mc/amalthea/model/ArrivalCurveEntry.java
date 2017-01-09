@@ -70,7 +70,7 @@ public interface ArrivalCurveEntry extends BaseObject {
 	 * @return the value of the '<em>Lower Time Border</em>' containment reference.
 	 * @see #setLowerTimeBorder(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getArrivalCurveEntry_LowerTimeBorder()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getLowerTimeBorder();
@@ -96,7 +96,7 @@ public interface ArrivalCurveEntry extends BaseObject {
 	 * @return the value of the '<em>Upper Time Border</em>' containment reference.
 	 * @see #setUpperTimeBorder(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getArrivalCurveEntry_UpperTimeBorder()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getUpperTimeBorder();

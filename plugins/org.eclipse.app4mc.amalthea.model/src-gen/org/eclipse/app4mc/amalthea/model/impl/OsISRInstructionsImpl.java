@@ -84,29 +84,6 @@ public class OsISRInstructionsImpl extends BaseObjectImpl implements OsISRInstru
 	 * @generated
 	 */
 	public Instructions getPreExecutionOverhead() {
-		if (preExecutionOverhead != null && preExecutionOverhead.eIsProxy()) {
-			InternalEObject oldPreExecutionOverhead = (InternalEObject)preExecutionOverhead;
-			preExecutionOverhead = (Instructions)eResolveProxy(oldPreExecutionOverhead);
-			if (preExecutionOverhead != oldPreExecutionOverhead) {
-				InternalEObject newPreExecutionOverhead = (InternalEObject)preExecutionOverhead;
-				NotificationChain msgs = oldPreExecutionOverhead.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_ISR_INSTRUCTIONS__PRE_EXECUTION_OVERHEAD, null, null);
-				if (newPreExecutionOverhead.eInternalContainer() == null) {
-					msgs = newPreExecutionOverhead.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_ISR_INSTRUCTIONS__PRE_EXECUTION_OVERHEAD, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_ISR_INSTRUCTIONS__PRE_EXECUTION_OVERHEAD, oldPreExecutionOverhead, preExecutionOverhead));
-			}
-		}
-		return preExecutionOverhead;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instructions basicGetPreExecutionOverhead() {
 		return preExecutionOverhead;
 	}
 
@@ -150,29 +127,6 @@ public class OsISRInstructionsImpl extends BaseObjectImpl implements OsISRInstru
 	 * @generated
 	 */
 	public Instructions getPostExecutionOverhead() {
-		if (postExecutionOverhead != null && postExecutionOverhead.eIsProxy()) {
-			InternalEObject oldPostExecutionOverhead = (InternalEObject)postExecutionOverhead;
-			postExecutionOverhead = (Instructions)eResolveProxy(oldPostExecutionOverhead);
-			if (postExecutionOverhead != oldPostExecutionOverhead) {
-				InternalEObject newPostExecutionOverhead = (InternalEObject)postExecutionOverhead;
-				NotificationChain msgs = oldPostExecutionOverhead.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_ISR_INSTRUCTIONS__POST_EXECUTION_OVERHEAD, null, null);
-				if (newPostExecutionOverhead.eInternalContainer() == null) {
-					msgs = newPostExecutionOverhead.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_ISR_INSTRUCTIONS__POST_EXECUTION_OVERHEAD, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_ISR_INSTRUCTIONS__POST_EXECUTION_OVERHEAD, oldPostExecutionOverhead, postExecutionOverhead));
-			}
-		}
-		return postExecutionOverhead;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instructions basicGetPostExecutionOverhead() {
 		return postExecutionOverhead;
 	}
 
@@ -235,11 +189,9 @@ public class OsISRInstructionsImpl extends BaseObjectImpl implements OsISRInstru
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.OS_ISR_INSTRUCTIONS__PRE_EXECUTION_OVERHEAD:
-				if (resolve) return getPreExecutionOverhead();
-				return basicGetPreExecutionOverhead();
+				return getPreExecutionOverhead();
 			case AmaltheaPackage.OS_ISR_INSTRUCTIONS__POST_EXECUTION_OVERHEAD:
-				if (resolve) return getPostExecutionOverhead();
-				return basicGetPostExecutionOverhead();
+				return getPostExecutionOverhead();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

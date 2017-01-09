@@ -73,31 +73,7 @@ public class InstructionsDeviationImpl extends InstructionsImpl implements Instr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	public Deviation<LongObject> getDeviation() {
-		if (deviation != null && deviation.eIsProxy()) {
-			InternalEObject oldDeviation = (InternalEObject)deviation;
-			deviation = (Deviation<LongObject>)eResolveProxy(oldDeviation);
-			if (deviation != oldDeviation) {
-				InternalEObject newDeviation = (InternalEObject)deviation;
-				NotificationChain msgs = oldDeviation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INSTRUCTIONS_DEVIATION__DEVIATION, null, null);
-				if (newDeviation.eInternalContainer() == null) {
-					msgs = newDeviation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INSTRUCTIONS_DEVIATION__DEVIATION, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.INSTRUCTIONS_DEVIATION__DEVIATION, oldDeviation, deviation));
-			}
-		}
-		return deviation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Deviation<LongObject> basicGetDeviation() {
 		return deviation;
 	}
 
@@ -158,8 +134,7 @@ public class InstructionsDeviationImpl extends InstructionsImpl implements Instr
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.INSTRUCTIONS_DEVIATION__DEVIATION:
-				if (resolve) return getDeviation();
-				return basicGetDeviation();
+				return getDeviation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

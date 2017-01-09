@@ -62,7 +62,7 @@ public interface Amalthea extends BaseObject {
 	 * @return the value of the '<em>Common Elements</em>' containment reference.
 	 * @see #setCommonElements(CommonElements)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_CommonElements()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	CommonElements getCommonElements();
@@ -88,7 +88,7 @@ public interface Amalthea extends BaseObject {
 	 * @return the value of the '<em>Sw Model</em>' containment reference.
 	 * @see #setSwModel(SWModel)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_SwModel()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	SWModel getSwModel();
@@ -114,7 +114,7 @@ public interface Amalthea extends BaseObject {
 	 * @return the value of the '<em>Hw Model</em>' containment reference.
 	 * @see #setHwModel(HWModel)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_HwModel()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	HWModel getHwModel();
@@ -140,7 +140,7 @@ public interface Amalthea extends BaseObject {
 	 * @return the value of the '<em>Os Model</em>' containment reference.
 	 * @see #setOsModel(OSModel)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_OsModel()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	OSModel getOsModel();
@@ -166,7 +166,7 @@ public interface Amalthea extends BaseObject {
 	 * @return the value of the '<em>Stimuli Model</em>' containment reference.
 	 * @see #setStimuliModel(StimuliModel)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_StimuliModel()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	StimuliModel getStimuliModel();
@@ -192,7 +192,7 @@ public interface Amalthea extends BaseObject {
 	 * @return the value of the '<em>Constraints Model</em>' containment reference.
 	 * @see #setConstraintsModel(ConstraintsModel)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_ConstraintsModel()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ConstraintsModel getConstraintsModel();
@@ -218,7 +218,7 @@ public interface Amalthea extends BaseObject {
 	 * @return the value of the '<em>Event Model</em>' containment reference.
 	 * @see #setEventModel(EventModel)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_EventModel()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EventModel getEventModel();
@@ -244,7 +244,7 @@ public interface Amalthea extends BaseObject {
 	 * @return the value of the '<em>Property Constraints Model</em>' containment reference.
 	 * @see #setPropertyConstraintsModel(PropertyConstraintsModel)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_PropertyConstraintsModel()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	PropertyConstraintsModel getPropertyConstraintsModel();
@@ -270,7 +270,7 @@ public interface Amalthea extends BaseObject {
 	 * @return the value of the '<em>Mapping Model</em>' containment reference.
 	 * @see #setMappingModel(MappingModel)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_MappingModel()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	MappingModel getMappingModel();
@@ -296,7 +296,7 @@ public interface Amalthea extends BaseObject {
 	 * @return the value of the '<em>Config Model</em>' containment reference.
 	 * @see #setConfigModel(ConfigModel)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_ConfigModel()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ConfigModel getConfigModel();
@@ -322,7 +322,7 @@ public interface Amalthea extends BaseObject {
 	 * @return the value of the '<em>Components Model</em>' containment reference.
 	 * @see #setComponentsModel(ComponentsModel)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_ComponentsModel()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ComponentsModel getComponentsModel();

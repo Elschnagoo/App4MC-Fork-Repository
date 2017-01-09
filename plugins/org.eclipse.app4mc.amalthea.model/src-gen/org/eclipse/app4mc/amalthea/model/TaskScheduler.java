@@ -41,7 +41,7 @@ public interface TaskScheduler extends Scheduler {
 	 * @return the value of the '<em>Scheduling Algorithm</em>' containment reference.
 	 * @see #setSchedulingAlgorithm(TaskSchedulingAlgorithm)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskScheduler_SchedulingAlgorithm()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	TaskSchedulingAlgorithm getSchedulingAlgorithm();

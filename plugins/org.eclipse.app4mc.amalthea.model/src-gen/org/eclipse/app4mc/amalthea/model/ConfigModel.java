@@ -53,7 +53,7 @@ public interface ConfigModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Events To Trace</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConfigModel_EventsToTrace()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<EventConfig> getEventsToTrace();

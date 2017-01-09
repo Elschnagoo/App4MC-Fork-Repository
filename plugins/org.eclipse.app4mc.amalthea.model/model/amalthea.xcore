@@ -46,17 +46,17 @@ import java.nio.charset.StandardCharsets
  */
 
  class Amalthea extends BaseObject {
- 	contains resolving CommonElements commonElements
-	contains resolving SWModel swModel
-	contains resolving HWModel hwModel
-	contains resolving OSModel osModel
-	contains resolving StimuliModel stimuliModel
-	contains resolving ConstraintsModel constraintsModel
-	contains resolving EventModel eventModel
-	contains resolving PropertyConstraintsModel propertyConstraintsModel	
-	contains resolving MappingModel mappingModel
-	contains resolving ConfigModel configModel
-	contains resolving ComponentsModel componentsModel
+ 	contains CommonElements commonElements
+	contains SWModel swModel
+	contains HWModel hwModel
+	contains OSModel osModel
+	contains StimuliModel stimuliModel
+	contains ConstraintsModel constraintsModel
+	contains EventModel eventModel
+	contains PropertyConstraintsModel propertyConstraintsModel	
+	contains MappingModel mappingModel
+	contains ConfigModel configModel
+	contains ComponentsModel componentsModel
 }
 
 
@@ -71,7 +71,7 @@ import java.nio.charset.StandardCharsets
  */
 
 class CommonElements extends BaseObject {
-	contains resolving Tag[] tags
+	contains Tag[] tags
  }
 
 /*
@@ -96,7 +96,7 @@ abstract class ReferableBaseObject extends IAnnotatable, IReferable
  */
 interface IAnnotatable
 {
-	contains resolving CustomProperty[] customProperties
+	contains CustomProperty[] customProperties
 }
 
 
@@ -154,7 +154,7 @@ abstract class Instructions
 	/*
 	 * optional parameter for fetch statistic
 	 */
-	contains resolving InstructionFetch fetchStatistic
+	contains InstructionFetch fetchStatistic
 	
 	op boolean containerNotificationRequired() {
 		return true
@@ -165,7 +165,7 @@ abstract class Instructions
  * Data transmission details for communication (e.g. LabelAccesses)
  */
 class TransmissionPolicy {
-	contains resolving DataSize chunkSize
+	contains DataSize chunkSize
 	int chunkProcessingInstructions = "0"
 	double transmitRatio = "1.0"
 }
@@ -175,7 +175,7 @@ class TransmissionPolicy {
  */
 class InstructionsDeviation extends Instructions
 {
-	contains resolving Deviation<LongObject> deviation
+	contains Deviation<LongObject> deviation
 }
 
 /*
@@ -355,7 +355,7 @@ class DataRate {
 class CustomProperty wraps java.util.Map$Entry
 {
 	String[1] key
-	contains resolving Value[1] value
+	contains Value[1] value
 }
 
 /*
@@ -369,7 +369,7 @@ abstract class Value
 }
 
 class ListObject extends Value {
-	contains resolving Value[] values
+	contains Value[] values
 	op String toString() {
 		return "(List)"
 	}
@@ -479,9 +479,9 @@ class SignedTimeObject extends AbstractTime, Value {
 
 
 class Deviation<T>{
-	contains resolving T lowerBound
-	contains resolving T upperBound
-	contains resolving Distribution<T> distribution
+	contains T lowerBound
+	contains T upperBound
+	contains Distribution<T> distribution
 	
 	op boolean containerNotificationRequired() {
 		return true
@@ -519,7 +519,7 @@ class WeibullParameters<T> extends WeibullDistribution<T>
  */
 class WeibullEstimators<T> extends WeibullDistribution<T>
 {
-	contains resolving T mean
+	contains T mean
 	double pRemainPromille="0.0"
 }
 
@@ -556,8 +556,8 @@ class Boundaries<T> extends Distribution<T>
  * Gauss distribution
  */
 class GaussDistribution<T> extends Distribution<T>{
-	contains resolving T sd
-	contains resolving T mean
+	contains T sd
+	contains T mean
 }
 
 /*
@@ -578,7 +578,7 @@ interface NumericStatistic
 class MinAvgMaxStatistic extends NumericStatistic
 {
 	int min="0"
-	int avg="0"
+	float avg="0f"
 	int max="0"
 }
 
@@ -592,7 +592,7 @@ class SingleValueStatistic extends NumericStatistic
  */
 class Mode extends ReferableBaseObject 
 {
-	contains resolving ModeLiteral [] literals	
+	contains ModeLiteral [] literals	
 }
 
 class ModeLiteral extends ReferableBaseObject 
@@ -707,7 +707,7 @@ enum InterfaceKind {
 
 class ConfigModel extends BaseObject
 {
-	contains resolving EventConfig[] eventsToTrace
+	contains EventConfig[] eventsToTrace
 }
 
 abstract class EventConfig extends BaseObject
@@ -740,21 +740,21 @@ class EventConfigElement extends EventConfig
 class ConstraintsModel extends BaseObject
 {
 	///Event chains:
-	contains resolving EventChain[] eventChains
+	contains EventChain[] eventChains
 	//Timing constraints
-	contains resolving TimingConstraint[] timingConstraints
+	contains TimingConstraint[] timingConstraints
 	//Affinity constraints
-	contains resolving AffinityConstraint[] affinityConstraints
+	contains AffinityConstraint[] affinityConstraints
 	//Runnable sequencing constraints
-	contains resolving RunnableSequencingConstraint[] runnableSequencingConstraints
-	contains resolving DataAgeConstraint[] dataAgeConstraints
+	contains RunnableSequencingConstraint[] runnableSequencingConstraints
+	contains DataAgeConstraint[] dataAgeConstraints
 	
-	contains resolving Requirement [] requirements
+	contains Requirement [] requirements
 	
-	contains resolving DataCoherencyGroup [] dataCoherencyGroups
-	contains resolving DataStabilityGroup [] dataStabilityGroups
+	contains DataCoherencyGroup [] dataCoherencyGroups
+	contains DataStabilityGroup [] dataStabilityGroups
 	
-	contains resolving PhysicalSectionConstraint[] physicalSectionConstraints
+	contains PhysicalSectionConstraint[] physicalSectionConstraints
 }
 
 //////////////////////////Runnable Sequencing constraints (proposal)
@@ -769,7 +769,7 @@ enum RunnableOrderType{
 class RunnableSequencingConstraint extends ReferableBaseObject
 {
 	RunnableOrderType orderType
-	contains resolving ProcessRunnableGroup[2..*] runnableGroups
+	contains ProcessRunnableGroup[2..*] runnableGroups
 	refers AbstractProcess[] processScope
 }
 
@@ -803,7 +803,7 @@ abstract class PairingConstraint extends AffinityConstraint
  */
 abstract class ProcessConstraint
 {
-	contains resolving ProcessConstraintTarget target
+	contains ProcessConstraintTarget target
 }
 
 /*
@@ -812,7 +812,7 @@ abstract class ProcessConstraint
  */
 abstract class RunnableConstraint
 {
-	contains resolving RunnableConstraintTarget target
+	contains RunnableConstraintTarget target
 }
 
 /*
@@ -821,7 +821,7 @@ abstract class RunnableConstraint
  */
 abstract class DataConstraint
 {
-	contains resolving DataConstraintTarget target
+	contains DataConstraintTarget target
 }
 
 /*
@@ -831,7 +831,7 @@ abstract class DataConstraint
  */
 class RunnableSeparationConstraint extends SeparationConstraint, RunnableConstraint, BaseObject
 {
-	contains resolving RunnableGroup[1..2] groups
+	contains RunnableGroup[1..2] groups
 }
 
 /*
@@ -841,7 +841,7 @@ class RunnableSeparationConstraint extends SeparationConstraint, RunnableConstra
  */
 class ProcessSeparationConstraint extends SeparationConstraint, ProcessConstraint, BaseObject
 {
-	contains resolving ProcessGroup[1..2] groups
+	contains ProcessGroup[1..2] groups
 }
 
 /*
@@ -851,7 +851,7 @@ class ProcessSeparationConstraint extends SeparationConstraint, ProcessConstrain
  */
 class DataSeparationConstraint extends SeparationConstraint, DataConstraint, BaseObject
 {
-	contains resolving LabelEntityGroup[1..2] groups
+	contains LabelEntityGroup[1..2] groups
 }
 
 /*
@@ -860,7 +860,7 @@ class DataSeparationConstraint extends SeparationConstraint, DataConstraint, Bas
  */
 class RunnablePairingConstraint extends PairingConstraint, RunnableConstraint, BaseObject
 {
-	contains resolving RunnableGroup group
+	contains RunnableGroup group
 }
 
 /*
@@ -869,7 +869,7 @@ class RunnablePairingConstraint extends PairingConstraint, RunnableConstraint, B
  */
 class ProcessPairingConstraint extends PairingConstraint, ProcessConstraint, BaseObject
 {
-	contains resolving ProcessGroup group
+	contains ProcessGroup group
 }
 
 /*
@@ -878,7 +878,7 @@ class ProcessPairingConstraint extends PairingConstraint, ProcessConstraint, Bas
  */
 class DataPairingConstraint extends PairingConstraint, DataConstraint, BaseObject
 {
-	contains resolving LabelEntityGroup group
+	contains LabelEntityGroup group
 }
 
 /*
@@ -994,8 +994,8 @@ class EventChain extends ReferableBaseObject
 {
 	refers Event stimulus
 	refers Event response
-	contains resolving EventChainItem[] segments
-	contains resolving EventChainItem[] strands
+	contains EventChainItem[] segments
+	contains EventChainItem[] strands
 	op boolean containerNotificationRequired() {
 		return true
 	}
@@ -1012,7 +1012,7 @@ class EventChainReference extends EventChainItem, BaseObject
 
 class SubEventChain extends EventChainItem, BaseObject
 {
-	contains resolving EventChain[1] eventChain
+	contains EventChain[1] eventChain
 }
 
 abstract class TimingConstraint extends ReferableBaseObject
@@ -1037,7 +1037,7 @@ class PhysicalSectionConstraint extends ReferableBaseObject, BaseObject
 abstract class SynchronizationConstraint extends TimingConstraint
 {
 	boolean multipleOccurrencesAllowed ="false"
-	contains resolving Time tolerance
+	contains Time tolerance
 }
 
 /*
@@ -1080,8 +1080,8 @@ class DelayConstraint extends TimingConstraint
 	MappingType mappingType
 	refers EntityEvent source
 	refers EntityEvent target
-	contains resolving Time upper
-	contains resolving Time lower
+	contains Time upper
+	contains Time lower
 }
 
 enum LatencyType {
@@ -1101,8 +1101,8 @@ class EventChainLatencyConstraint extends TimingConstraint
 {
 	refers EventChain scope
 	LatencyType ^type
-	contains resolving Time minimum
-	contains resolving Time maximum
+	contains Time minimum
+	contains Time maximum
 }
 
 /*
@@ -1112,10 +1112,10 @@ class RepetitionConstraint extends TimingConstraint
 {
 	refers EntityEvent event
 	int span="0"
-	contains resolving Time lower
-	contains resolving Time upper
-	contains resolving Time jitter
-	contains resolving Time period
+	contains Time lower
+	contains Time upper
+	contains Time jitter
+	contains Time period
 }
 
 //////////////////////////Data Age Constraint
@@ -1123,7 +1123,7 @@ class DataAgeConstraint extends ReferableBaseObject
 {
 	refers Runnable[1] runnable
 	refers Label[1] label
-	contains resolving DataAge[1] dataAge
+	contains DataAge[1] dataAge
 }
 
 abstract class DataAge
@@ -1138,8 +1138,8 @@ class DataAgeCycle extends DataAge
 
 class DataAgeTime extends DataAge
 {
-	contains resolving Time minimumTime
-	contains resolving Time maximumTime
+	contains Time minimumTime
+	contains Time maximumTime
 }
 
 ////////////////////////// Requirements
@@ -1148,7 +1148,7 @@ abstract class Requirement extends BaseObject
 {
 	String name
 	Severity severity
-	contains resolving RequirementLimit limit 
+	contains RequirementLimit limit 
 }
 
 class ProcessRequirement extends Requirement {
@@ -1184,7 +1184,7 @@ class CPUPercentageRequirementLimit extends RequirementLimit {
 
 class FrequencyRequirementLimit extends RequirementLimit {
 	FrequencyMetric metric
-	contains resolving Frequency limitValue
+	contains Frequency limitValue
 }
 
 class PercentageRequirementLimit extends RequirementLimit {
@@ -1200,7 +1200,7 @@ class CountRequirementLimit extends RequirementLimit {
 class TimeRequirementLimit extends RequirementLimit {
 	TimeMetric metric
 	// signed time is allowed because the requirement to lateness can be negative
-	contains resolving SignedTime limitValue
+	contains SignedTime limitValue
 }
 
 enum Severity {
@@ -1281,7 +1281,7 @@ enum FrequencyMetric {
 
 class DataCoherencyGroup extends ReferableBaseObject {
 	refers Label [] labels
-	contains resolving DataGroupScope scope
+	contains DataGroupScope scope
 	CoherencyDirection direction
 }
 
@@ -1293,7 +1293,7 @@ enum CoherencyDirection {
 
 class DataStabilityGroup extends ReferableBaseObject {
 	refers Label [] labels
-	contains resolving DataGroupScope scope
+	contains DataGroupScope scope
 }
 
 abstract class DataGroupScope {
@@ -1328,7 +1328,7 @@ class ComponentScope  extends DataGroupScope {
 
 class EventModel extends BaseObject
 {
-	contains resolving Event[] events
+	contains Event[] events
 }
 
 /*
@@ -1794,7 +1794,7 @@ class LatencyConstant extends Latency
 
 class LatencyDeviation extends Latency
 {
-	contains resolving Deviation<LongObject> deviation
+	contains Deviation<LongObject> deviation
 }
 
 interface HwAccessPathElement
@@ -1825,12 +1825,12 @@ class HwElementRef extends HwAccessPathElement
 
 class MappingModel extends BaseObject
 {
-	contains resolving TaskAllocation[] taskAllocation
-	contains resolving ISRAllocation[] isrAllocation
-	contains resolving RunnableAllocation[] runnableAllocation
-	contains resolving CoreAllocation[] coreAllocation
-	contains resolving Mapping[] mapping
-	contains resolving PhysicalSectionMapping[] physicalSectionMapping
+	contains TaskAllocation[] taskAllocation
+	contains ISRAllocation[] isrAllocation
+	contains RunnableAllocation[] runnableAllocation
+	contains CoreAllocation[] coreAllocation
+	contains Mapping[] mapping
+	contains PhysicalSectionMapping[] physicalSectionMapping
 	
 	MemoryAddressMappingType addressMappingType
 }
@@ -1965,10 +1965,10 @@ class RunnableAllocation extends BaseObject
 
 class OSModel extends BaseObject
 {
-	contains resolving OsDataConsistency osDataConsistency
-	contains resolving Semaphore[] semaphores
-	contains resolving OperatingSystem[] operatingSystems
-	contains resolving OsInstructions[] osOverheads
+	contains OsDataConsistency osDataConsistency
+	contains Semaphore[] semaphores
+	contains OperatingSystem[] operatingSystems
+	contains OsInstructions[] osOverheads
 }
 
 class OsDataConsistency extends BaseObject
@@ -2032,7 +2032,7 @@ class Semaphore extends ReferableBaseObject
  */
 abstract class Scheduler extends ReferableBaseObject
 {
-	contains resolving SchedulingUnit schedulingUnit
+	contains SchedulingUnit schedulingUnit
 	int scheduleUnitPriority="0"
 }
 
@@ -2131,7 +2131,7 @@ class PriorityBasedRoundRobin extends TaskSchedulingAlgorithm
  */
 class UserSpecificSchedulingAlgorithm extends TaskSchedulingAlgorithm, InterruptSchedulingAlgorithm
 {
-	contains resolving AlgorithmParameter[] parameter
+	contains AlgorithmParameter[] parameter
 }
 
 /*
@@ -2165,7 +2165,7 @@ abstract class SchedulingUnit
  */
 class SchedulingHWUnit extends SchedulingUnit, BaseObject
 {
-	contains resolving Time delay
+	contains Time delay
 }
 
 /*
@@ -2181,7 +2181,7 @@ class SchedulingSWUnit extends SchedulingUnit, BaseObject
 	/*
 	 * The instructions of the scheduling ISR
 	 */
-	contains resolving Instructions [] instructions
+	contains Instructions [] instructions
 	/*
 	 * The Interrupt Controller that manages the scheduling ISR 
 	 */
@@ -2192,8 +2192,8 @@ class OperatingSystem extends BaseObject
 {
 	String name
 	refers OsInstructions overhead
-	contains resolving TaskScheduler[] taskSchedulers
-	contains resolving InterruptController[] interruptControllers
+	contains TaskScheduler[] taskSchedulers
+	contains InterruptController[] interruptControllers
 }
 
 class VendorOperatingSystem extends OperatingSystem
@@ -2205,39 +2205,39 @@ class VendorOperatingSystem extends OperatingSystem
 
 class TaskScheduler extends Scheduler
 {
-	contains resolving TaskSchedulingAlgorithm schedulingAlgorithm
+	contains TaskSchedulingAlgorithm schedulingAlgorithm
 }
 
 class InterruptController extends Scheduler
 {
-	contains resolving InterruptSchedulingAlgorithm schedulingAlgorithm
+	contains InterruptSchedulingAlgorithm schedulingAlgorithm
 }
 
 class OsInstructions extends ReferableBaseObject
 {
-	contains resolving OsAPIInstructions apiOverhead
-	contains resolving OsISRInstructions isrCategory1Overhead
-	contains resolving OsISRInstructions isrCategory2Overhead
+	contains OsAPIInstructions apiOverhead
+	contains OsISRInstructions isrCategory1Overhead
+	contains OsISRInstructions isrCategory2Overhead
 }
 
 class OsAPIInstructions extends BaseObject
 {
-	contains resolving Instructions apiSendMessage
-	contains resolving Instructions apiTerminateTask
-	contains resolving Instructions apiSchedule
-	contains resolving Instructions apiRequestResource
-	contains resolving Instructions apiReleaseResource
-	contains resolving Instructions apiSetEvent
-	contains resolving Instructions apiWaitEvent
-	contains resolving Instructions apiClearEvent
-	contains resolving Instructions apiActivateTask
-	contains resolving Instructions apiEnforcedMigration
+	contains Instructions apiSendMessage
+	contains Instructions apiTerminateTask
+	contains Instructions apiSchedule
+	contains Instructions apiRequestResource
+	contains Instructions apiReleaseResource
+	contains Instructions apiSetEvent
+	contains Instructions apiWaitEvent
+	contains Instructions apiClearEvent
+	contains Instructions apiActivateTask
+	contains Instructions apiEnforcedMigration
 }
 
 class OsISRInstructions extends BaseObject
 {
-	contains resolving Instructions preExecutionOverhead
-	contains resolving Instructions postExecutionOverhead
+	contains Instructions preExecutionOverhead
+	contains Instructions postExecutionOverhead
 }
 
 
@@ -2253,8 +2253,8 @@ class OsISRInstructions extends BaseObject
 
 class PropertyConstraintsModel extends BaseObject
 {
-	contains resolving AllocationConstraint[] allocationConstraints
-	contains resolving MappingConstraint[] mappingConstraints
+	contains AllocationConstraint[] allocationConstraints
+	contains MappingConstraint[] mappingConstraints
 }
 
 enum ComparatorType
@@ -2284,7 +2284,7 @@ enum ConjunctionType
  */
 abstract class AllocationConstraint extends BaseObject
 {
-	contains resolving HwCoreConstraint hwConstraint
+	contains HwCoreConstraint hwConstraint
 }
 
 /*
@@ -2293,7 +2293,7 @@ abstract class AllocationConstraint extends BaseObject
  */
 abstract class MappingConstraint extends BaseObject
 {
-	contains resolving HwMemoryConstraint hwConstraint
+	contains HwMemoryConstraint hwConstraint
 }
 
 /*
@@ -2358,8 +2358,8 @@ class HwCoreProperty extends HwCoreConstraint
 class HwCoreConjunction extends HwCoreConstraint
 {
 	ConjunctionType conjunction
-	contains resolving HwCoreConstraint firstConstraint
-	contains resolving HwCoreConstraint secondConstraint
+	contains HwCoreConstraint firstConstraint
+	contains HwCoreConstraint secondConstraint
 }
 
 /*
@@ -2375,8 +2375,8 @@ class HwMemoryProperty extends HwMemoryConstraint
 class HwMemoryConjunction extends HwMemoryConstraint
 {
 	ConjunctionType conjunction
-	contains resolving HwMemoryConstraint firstConstraint
-	contains resolving HwMemoryConstraint secondConstraint
+	contains HwMemoryConstraint firstConstraint
+	contains HwMemoryConstraint secondConstraint
 }
 
 
@@ -2393,8 +2393,8 @@ class HwMemoryConjunction extends HwMemoryConstraint
 
 class StimuliModel extends BaseObject
 {
-	contains resolving Stimulus[] stimuli
-	contains resolving Clock[] clocks
+	contains Stimulus[] stimuli
+	contains Clock[] clocks
 }
 
 /*
@@ -2404,15 +2404,15 @@ class StimuliModel extends BaseObject
  */
 abstract class Stimulus extends ReferableBaseObject
 {
-	contains resolving Deviation<SignedTime> stimulusDeviation
-	contains resolving ModeValueList setModeValueList
-	contains resolving ModeValueList enablingModeValueList
-	contains resolving ModeValueList disablingModeValueList
+	contains Deviation<SignedTime> stimulusDeviation
+	contains ModeValueList setModeValueList
+	contains ModeValueList enablingModeValueList
+	contains ModeValueList disablingModeValueList
 }
 
 class ModeValueList extends BaseObject
 {
-	contains resolving ModeValueListEntry[] entries
+	contains ModeValueListEntry[] entries
 }
 
 class ModeValueListEntry extends BaseObject
@@ -2429,8 +2429,8 @@ class ModeValueListEntry extends BaseObject
  */
 class Periodic extends Stimulus
 {
-	contains resolving Time offset
-	contains resolving Time recurrence
+	contains Time offset
+	contains Time recurrence
 	refers Clock clock
 }
 
@@ -2449,14 +2449,14 @@ class PeriodicEvent extends Stimulus
  */
 class Synthetic extends Stimulus
 {
-	contains resolving Time offset
-	contains resolving Time period
-	contains resolving TimestampList triggerTimes
+	contains Time offset
+	contains Time period
+	contains TimestampList triggerTimes
 }
 
 class TimestampList extends BaseObject
 {
-	contains resolving Time[] timestamps
+	contains Time[] timestamps
 }
 
 /*
@@ -2471,7 +2471,7 @@ class CustomStimulus extends Stimulus
  */
 class Single extends Stimulus
 {
-	contains resolving Time activation
+	contains Time activation
 }
 
 /*
@@ -2479,7 +2479,7 @@ class Single extends Stimulus
  */
 class InterProcess extends Stimulus
 {
-	contains resolving Counter counter
+	contains Counter counter
 }
 
 /*
@@ -2495,7 +2495,7 @@ class Sporadic extends Stimulus
 class EventStimulus extends Stimulus
 {
 	refers TriggerEvent[1] trigger
-	contains resolving Counter counter
+	contains Counter counter
 }
 
 /*
@@ -2503,14 +2503,14 @@ class EventStimulus extends Stimulus
  */
 class ArrivalCurve extends Stimulus
 {
-	contains resolving ArrivalCurveEntry[] arrivalCurveEntries
+	contains ArrivalCurveEntry[] entries
 }
 
 class ArrivalCurveEntry extends BaseObject
 {
 	int numberOfEvents="0"
-	contains resolving Time lowerTimeBorder
-	contains resolving Time upperTimeBorder
+	contains Time lowerTimeBorder
+	contains Time upperTimeBorder
 }
 
 /*
@@ -2524,16 +2524,16 @@ abstract class Clock extends ReferableBaseObject
 
 class ClockTriangleFunction extends Clock
 {
-	contains resolving SignedTime shift
-	contains resolving Time period
+	contains SignedTime shift
+	contains Time period
 	double max="0.0"
 	double min="0.0"
 }
 
 class ClockSinusFunction extends Clock
 {
-	contains resolving SignedTime shift
-	contains resolving Time period
+	contains SignedTime shift
+	contains Time period
 	double amplitude="0.0"
 	double yOffset="0.0"
 }
@@ -2544,7 +2544,7 @@ class ClockSinusFunction extends Clock
  */
 class ClockMultiplierList extends Clock
 {
-	contains resolving ClockMultiplierListEntry[] entries
+	contains ClockMultiplierListEntry[] entries
 }
 
 /*
@@ -2553,7 +2553,7 @@ class ClockMultiplierList extends Clock
 class ClockMultiplierListEntry extends BaseObject
 {
 	double multiplier="0.0"
-	contains resolving Time time
+	contains Time time
 }
 
 
@@ -2572,20 +2572,20 @@ class ClockMultiplierListEntry extends BaseObject
  */
 class SWModel extends BaseObject
 {
-	contains resolving ISR[] isrs
-	contains resolving Task[] tasks
-	contains resolving Runnable[] runnables
-	contains resolving Label[] labels
-	contains resolving Channel[] channels
-	contains resolving ProcessPrototype[] processPrototypes
-	contains resolving Section[] sections
-	contains resolving Activation[] activations
-	contains resolving OsEvent[] events
-	contains resolving TypeDefinition[] typeDefinitions
-	contains resolving CustomEntity[] customEntities
-	contains resolving ProcessChain[] processChains
-	contains resolving Mode[] modes
-	contains resolving ModeLabel[] modeLabels
+	contains ISR[] isrs
+	contains Task[] tasks
+	contains Runnable[] runnables
+	contains Label[] labels
+	contains Channel[] channels
+	contains ProcessPrototype[] processPrototypes
+	contains Section[] sections
+	contains Activation[] activations
+	contains OsEvent[] events
+	contains TypeDefinition[] typeDefinitions
+	contains CustomEntity[] customEntities
+	contains ProcessChain[] processChains
+	contains Mode[] modes
+	contains ModeLabel[] modeLabels
 }
 
 abstract class AbstractElementMemoryInformation extends ReferableBaseObject, ITaggable
@@ -2593,7 +2593,7 @@ abstract class AbstractElementMemoryInformation extends ReferableBaseObject, ITa
 	/*
 	 * Specifying the size of the element corresponding to the needed memory allocation
 	 */
-	contains resolving DataSize size
+	contains DataSize size
 	
 	// back pointer (readonly)
 	@GenModel(property="Readonly", suppressedSetVisibility="true")
@@ -2631,7 +2631,7 @@ class ProcessChain extends ReferableBaseObject
  */
 abstract class Process extends AbstractProcess
 {
-	contains resolving CallGraph callGraph
+	contains CallGraph callGraph
 	refers Stimulus[] stimuli
 }
 
@@ -2640,7 +2640,7 @@ abstract class Process extends AbstractProcess
  */
 class CallGraph extends BaseObject
 {
-	contains resolving GraphEntryBase[] graphEntries
+	contains GraphEntryBase[] graphEntries
 }
 
 /*
@@ -2656,7 +2656,7 @@ abstract class GraphEntryBase extends BaseObject
 class CallSequence extends GraphEntryBase
 {
 	String name
-	contains resolving CallSequenceItem[] calls
+	contains CallSequenceItem[] calls
 }
 
 /*
@@ -2665,8 +2665,8 @@ class CallSequence extends GraphEntryBase
 class ModeSwitch extends GraphEntryBase
 {
 	refers ModeValueProvider valueProvider
-	contains resolving ModeSwitchEntry<GraphEntryBase>[] entries
-	contains resolving ModeSwitchDefault<GraphEntryBase> defaultEntry	
+	contains ModeSwitchEntry<GraphEntryBase>[] entries
+	contains ModeSwitchDefault<GraphEntryBase> defaultEntry	
 }
 
 /*
@@ -2676,12 +2676,12 @@ class ModeSwitch extends GraphEntryBase
 class ModeSwitchEntry<T> extends BaseObject
 {
 	refers ModeLiteral[+] values
-	contains resolving T[] items
+	contains T[] items
 }
 
 class ModeSwitchDefault<T> extends BaseObject
 {
-	contains resolving T[] items
+	contains T[] items
 }
 
 /*
@@ -2689,7 +2689,7 @@ class ModeSwitchDefault<T> extends BaseObject
  */
 class ProbabiltitySwitch extends GraphEntryBase
 {
-	contains resolving ProbabilitySwitchEntry<GraphEntryBase>[] entries
+	contains ProbabilitySwitchEntry<GraphEntryBase>[] entries
 }
 
 /*
@@ -2699,7 +2699,7 @@ class ProbabiltitySwitch extends GraphEntryBase
 class ProbabilitySwitchEntry<T> extends BaseObject
 {
 	double probability="0.0"
-	contains resolving T[] items
+	contains T[] items
 }
 
 /*
@@ -2716,7 +2716,7 @@ class Counter extends BaseObject
  */
 abstract class CallSequenceItem extends BaseObject
 {
-	contains resolving Counter counter
+	contains Counter counter
 }
 
 /*
@@ -2725,7 +2725,7 @@ abstract class CallSequenceItem extends BaseObject
  */
 class WaitEvent extends CallSequenceItem
 {
-	contains resolving EventMask eventMask
+	contains EventMask eventMask
 	WaitEventType maskType
 	WaitingBehaviour waitingBehaviour
 }
@@ -2751,7 +2751,7 @@ enum WaitingBehaviour
  */
 class SetEvent extends CallSequenceItem
 {
-	contains resolving EventMask eventMask
+	contains EventMask eventMask
 	refers Process process
 }
 
@@ -2760,7 +2760,7 @@ class SetEvent extends CallSequenceItem
  */
 class ClearEvent extends CallSequenceItem
 {
-	contains resolving EventMask eventMask
+	contains EventMask eventMask
 }
 
 /*
@@ -2801,7 +2801,7 @@ class EnforcedMigration extends CallSequenceItem
 class TaskRunnableCall extends CallSequenceItem
 {
 	refers Runnable[1] runnable
-	contains resolving RunEntityCallStatistic statistic
+	contains RunEntityCallStatistic statistic
 	
 	// hidden link (internal)
 	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
@@ -2861,14 +2861,14 @@ class ProcessPrototype extends AbstractProcess
 	/*
 	 * Defines the general label accesses
 	 */
-	contains resolving AccessPrecedenceSpec[] accessPrecedenceSpec
+	contains AccessPrecedenceSpec[] accessPrecedenceSpec
 	/*
 	 * Defines the general order of runnables
 	 */
-	contains resolving OrderPrecedenceSpec[] orderPrecedenceSpec
-	contains resolving ChainedProcessPrototype[] chainedPrototypes
+	contains OrderPrecedenceSpec[] orderPrecedenceSpec
+	contains ChainedProcessPrototype[] chainedPrototypes
 	refers Activation activation
-	contains resolving TaskRunnableCall[] runnableCalls
+	contains TaskRunnableCall[] runnableCalls
 }
 
 class ChainedProcessPrototype extends BaseObject
@@ -2944,7 +2944,7 @@ enum OrderType
  */
 class Runnable extends AbstractElementMemoryInformation
 {
-	contains resolving RunnableItem[] runnableItems
+	contains RunnableItem[] runnableItems
 	refers Activation activation
 	/*
 	 * Optional parameter for allocation to task or time slice.
@@ -3098,8 +3098,8 @@ class ModeLabelAccess extends RunnableItem
 class RunnableModeSwitch extends RunnableItem
 {
 	refers ModeValueProvider valueProvider
-	contains resolving ModeSwitchEntry<RunnableItem>[] entries
-	contains resolving ModeSwitchDefault<RunnableItem> defaultEntry
+	contains ModeSwitchEntry<RunnableItem>[] entries
+	contains ModeSwitchDefault<RunnableItem> defaultEntry
 }
 
 /*
@@ -3112,12 +3112,12 @@ class LabelAccess extends RunnableItem
 	/*
 	 * Optional parameter for statistic values
 	 */
-	contains resolving LabelAccessStatistic statistic
+	contains LabelAccessStatistic statistic
 	
 	/*
 	 * Optional parameter for transmission policy of larger data
 	 */
-	contains resolving TransmissionPolicy transmissionPolicy
+	contains TransmissionPolicy transmissionPolicy
 	
 	/*
 	 * Defines the data stability needs of the label access
@@ -3135,7 +3135,7 @@ abstract class ChannelAccess extends RunnableItem
 
 	int elements = "0"
 	
-	contains resolving TransmissionPolicy transmissionPolicy
+	contains TransmissionPolicy transmissionPolicy
 	
 	// hidden link (internal)
 	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
@@ -3264,7 +3264,7 @@ class AsynchronousServerCall extends ServerCall
  */
 class RunnableProbabilitySwitch extends RunnableItem
 {
-	contains resolving ProbabilitySwitchEntry<RunnableItem>[] entries
+	contains ProbabilitySwitchEntry<RunnableItem>[] entries
 }
 
 /*
@@ -3275,7 +3275,7 @@ class Group extends RunnableItem
 {
 	String name
 	boolean ordered ="true"
-	contains resolving RunnableItem[] items
+	contains RunnableItem[] items
 }
 
 /*
@@ -3284,7 +3284,7 @@ class Group extends RunnableItem
 class RunnableCall extends RunnableItem
 {
 	refers Runnable[1] runnable
-	contains resolving RunEntityCallStatistic statistic
+	contains RunEntityCallStatistic statistic
 	
 	// hidden link (internal)
 	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
@@ -3404,11 +3404,11 @@ class BaseTypeDefinition extends TypeDefinition
 	/*
 	 * Size of the data type
 	 */
-	contains resolving DataSize size
+	contains DataSize size
 	/*
 	 * Data mappings of target platforms
 	 */
-	contains resolving DataPlatformMapping[] dataMapping
+	contains DataPlatformMapping[] dataMapping
 }
 
 /*
@@ -3453,8 +3453,8 @@ class CustomActivation extends Activation
  */
 class LabelAccessStatistic extends BaseObject
 {
-	contains resolving NumericStatistic value
-	contains resolving NumericStatistic cacheMisses
+	contains NumericStatistic value
+	contains NumericStatistic cacheMisses
 }
 
 /*
@@ -3462,14 +3462,14 @@ class LabelAccessStatistic extends BaseObject
  */
 class InstructionFetch extends BaseObject
 {
-	contains resolving NumericStatistic count
-	contains resolving NumericStatistic misses
-	contains resolving NumericStatistic cyclesPerFetch
+	contains NumericStatistic count
+	contains NumericStatistic misses
+	contains NumericStatistic cyclesPerFetch
 }
 
 class RunEntityCallStatistic extends BaseObject
 {
-	contains resolving NumericStatistic statistic
+	contains NumericStatistic statistic
 }
 
 enum ASILType

@@ -50,7 +50,7 @@ public interface Periodic extends Stimulus {
 	 * @return the value of the '<em>Offset</em>' containment reference.
 	 * @see #setOffset(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodic_Offset()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getOffset();
@@ -76,7 +76,7 @@ public interface Periodic extends Stimulus {
 	 * @return the value of the '<em>Recurrence</em>' containment reference.
 	 * @see #setRecurrence(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodic_Recurrence()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getRecurrence();

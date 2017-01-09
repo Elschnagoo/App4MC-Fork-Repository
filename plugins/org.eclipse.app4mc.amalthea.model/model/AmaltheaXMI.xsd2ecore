@@ -1661,7 +1661,7 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/EventStimulus" outputs="AmaltheaXMI.xsd#//EventStimulus;XSDElementDeclaration=237"/>
     <nested inputs="amalthea.xcore#/EPackage/ArrivalCurve" outputs="AmaltheaXMI.xsd#//ArrivalCurve;XSDComplexTypeDefinition=238">
-      <nested inputs="amalthea.xcore#/EPackage/ArrivalCurve/arrivalCurveEntries" outputs="AmaltheaXMI.xsd#//ArrivalCurve;XSDComplexTypeDefinition=238/XSDParticle/XSDModelGroup/XSDParticle"/>
+      <nested inputs="amalthea.xcore#/EPackage/ArrivalCurve/entries" outputs="AmaltheaXMI.xsd#//ArrivalCurve;XSDComplexTypeDefinition=238/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/ArrivalCurve" outputs="AmaltheaXMI.xsd#//ArrivalCurve;XSDElementDeclaration=238"/>
     <nested inputs="amalthea.xcore#/EPackage/ArrivalCurveEntry" outputs="AmaltheaXMI.xsd#//ArrivalCurveEntry;XSDComplexTypeDefinition=239">

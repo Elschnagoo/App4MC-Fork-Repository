@@ -48,7 +48,7 @@ public interface ProcessSeparationConstraint extends SeparationConstraint, Proce
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Groups</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessSeparationConstraint_Groups()
-	 * @model containment="true" resolveProxies="true" required="true" upper="2"
+	 * @model containment="true" required="true" upper="2"
 	 * @generated
 	 */
 	EList<ProcessGroup> getGroups();

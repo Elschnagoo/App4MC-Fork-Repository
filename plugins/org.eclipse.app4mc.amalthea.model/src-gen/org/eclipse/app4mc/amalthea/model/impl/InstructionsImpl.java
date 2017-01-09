@@ -79,29 +79,6 @@ public abstract class InstructionsImpl extends AmaltheaExtendedEObjectImpl imple
 	 * @generated
 	 */
 	public InstructionFetch getFetchStatistic() {
-		if (fetchStatistic != null && fetchStatistic.eIsProxy()) {
-			InternalEObject oldFetchStatistic = (InternalEObject)fetchStatistic;
-			fetchStatistic = (InstructionFetch)eResolveProxy(oldFetchStatistic);
-			if (fetchStatistic != oldFetchStatistic) {
-				InternalEObject newFetchStatistic = (InternalEObject)fetchStatistic;
-				NotificationChain msgs = oldFetchStatistic.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INSTRUCTIONS__FETCH_STATISTIC, null, null);
-				if (newFetchStatistic.eInternalContainer() == null) {
-					msgs = newFetchStatistic.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INSTRUCTIONS__FETCH_STATISTIC, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.INSTRUCTIONS__FETCH_STATISTIC, oldFetchStatistic, fetchStatistic));
-			}
-		}
-		return fetchStatistic;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InstructionFetch basicGetFetchStatistic() {
 		return fetchStatistic;
 	}
 
@@ -171,8 +148,7 @@ public abstract class InstructionsImpl extends AmaltheaExtendedEObjectImpl imple
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.INSTRUCTIONS__FETCH_STATISTIC:
-				if (resolve) return getFetchStatistic();
-				return basicGetFetchStatistic();
+				return getFetchStatistic();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

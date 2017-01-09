@@ -73,7 +73,7 @@ public interface RunnableSequencingConstraint extends ReferableBaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable Groups</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableSequencingConstraint_RunnableGroups()
-	 * @model containment="true" resolveProxies="true" lower="2"
+	 * @model containment="true" lower="2"
 	 * @generated
 	 */
 	EList<ProcessRunnableGroup> getRunnableGroups();

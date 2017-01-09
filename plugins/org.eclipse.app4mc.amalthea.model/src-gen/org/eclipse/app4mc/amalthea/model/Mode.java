@@ -46,7 +46,7 @@ public interface Mode extends ReferableBaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Literals</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMode_Literals()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ModeLiteral> getLiterals();

@@ -103,7 +103,7 @@ public interface RepetitionConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Lower</em>' containment reference.
 	 * @see #setLower(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRepetitionConstraint_Lower()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getLower();
@@ -129,7 +129,7 @@ public interface RepetitionConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Upper</em>' containment reference.
 	 * @see #setUpper(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRepetitionConstraint_Upper()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getUpper();
@@ -155,7 +155,7 @@ public interface RepetitionConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Jitter</em>' containment reference.
 	 * @see #setJitter(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRepetitionConstraint_Jitter()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getJitter();
@@ -181,7 +181,7 @@ public interface RepetitionConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Period</em>' containment reference.
 	 * @see #setPeriod(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRepetitionConstraint_Period()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getPeriod();

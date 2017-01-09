@@ -54,7 +54,7 @@ public interface StimuliModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Stimuli</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimuliModel_Stimuli()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Stimulus> getStimuli();
@@ -70,7 +70,7 @@ public interface StimuliModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Clocks</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimuliModel_Clocks()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Clock> getClocks();

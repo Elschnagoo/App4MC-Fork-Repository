@@ -48,7 +48,7 @@ public interface RunnableSeparationConstraint extends SeparationConstraint, Runn
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Groups</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableSeparationConstraint_Groups()
-	 * @model containment="true" resolveProxies="true" required="true" upper="2"
+	 * @model containment="true" required="true" upper="2"
 	 * @generated
 	 */
 	EList<RunnableGroup> getGroups();

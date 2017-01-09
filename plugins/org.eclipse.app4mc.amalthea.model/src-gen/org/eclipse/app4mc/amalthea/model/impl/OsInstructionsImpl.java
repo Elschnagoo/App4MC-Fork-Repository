@@ -96,29 +96,6 @@ public class OsInstructionsImpl extends ReferableBaseObjectImpl implements OsIns
 	 * @generated
 	 */
 	public OsAPIInstructions getApiOverhead() {
-		if (apiOverhead != null && apiOverhead.eIsProxy()) {
-			InternalEObject oldApiOverhead = (InternalEObject)apiOverhead;
-			apiOverhead = (OsAPIInstructions)eResolveProxy(oldApiOverhead);
-			if (apiOverhead != oldApiOverhead) {
-				InternalEObject newApiOverhead = (InternalEObject)apiOverhead;
-				NotificationChain msgs = oldApiOverhead.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_INSTRUCTIONS__API_OVERHEAD, null, null);
-				if (newApiOverhead.eInternalContainer() == null) {
-					msgs = newApiOverhead.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_INSTRUCTIONS__API_OVERHEAD, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_INSTRUCTIONS__API_OVERHEAD, oldApiOverhead, apiOverhead));
-			}
-		}
-		return apiOverhead;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OsAPIInstructions basicGetApiOverhead() {
 		return apiOverhead;
 	}
 
@@ -162,29 +139,6 @@ public class OsInstructionsImpl extends ReferableBaseObjectImpl implements OsIns
 	 * @generated
 	 */
 	public OsISRInstructions getIsrCategory1Overhead() {
-		if (isrCategory1Overhead != null && isrCategory1Overhead.eIsProxy()) {
-			InternalEObject oldIsrCategory1Overhead = (InternalEObject)isrCategory1Overhead;
-			isrCategory1Overhead = (OsISRInstructions)eResolveProxy(oldIsrCategory1Overhead);
-			if (isrCategory1Overhead != oldIsrCategory1Overhead) {
-				InternalEObject newIsrCategory1Overhead = (InternalEObject)isrCategory1Overhead;
-				NotificationChain msgs = oldIsrCategory1Overhead.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_INSTRUCTIONS__ISR_CATEGORY1_OVERHEAD, null, null);
-				if (newIsrCategory1Overhead.eInternalContainer() == null) {
-					msgs = newIsrCategory1Overhead.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_INSTRUCTIONS__ISR_CATEGORY1_OVERHEAD, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_INSTRUCTIONS__ISR_CATEGORY1_OVERHEAD, oldIsrCategory1Overhead, isrCategory1Overhead));
-			}
-		}
-		return isrCategory1Overhead;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OsISRInstructions basicGetIsrCategory1Overhead() {
 		return isrCategory1Overhead;
 	}
 
@@ -228,29 +182,6 @@ public class OsInstructionsImpl extends ReferableBaseObjectImpl implements OsIns
 	 * @generated
 	 */
 	public OsISRInstructions getIsrCategory2Overhead() {
-		if (isrCategory2Overhead != null && isrCategory2Overhead.eIsProxy()) {
-			InternalEObject oldIsrCategory2Overhead = (InternalEObject)isrCategory2Overhead;
-			isrCategory2Overhead = (OsISRInstructions)eResolveProxy(oldIsrCategory2Overhead);
-			if (isrCategory2Overhead != oldIsrCategory2Overhead) {
-				InternalEObject newIsrCategory2Overhead = (InternalEObject)isrCategory2Overhead;
-				NotificationChain msgs = oldIsrCategory2Overhead.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_INSTRUCTIONS__ISR_CATEGORY2_OVERHEAD, null, null);
-				if (newIsrCategory2Overhead.eInternalContainer() == null) {
-					msgs = newIsrCategory2Overhead.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_INSTRUCTIONS__ISR_CATEGORY2_OVERHEAD, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_INSTRUCTIONS__ISR_CATEGORY2_OVERHEAD, oldIsrCategory2Overhead, isrCategory2Overhead));
-			}
-		}
-		return isrCategory2Overhead;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OsISRInstructions basicGetIsrCategory2Overhead() {
 		return isrCategory2Overhead;
 	}
 
@@ -315,14 +246,11 @@ public class OsInstructionsImpl extends ReferableBaseObjectImpl implements OsIns
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.OS_INSTRUCTIONS__API_OVERHEAD:
-				if (resolve) return getApiOverhead();
-				return basicGetApiOverhead();
+				return getApiOverhead();
 			case AmaltheaPackage.OS_INSTRUCTIONS__ISR_CATEGORY1_OVERHEAD:
-				if (resolve) return getIsrCategory1Overhead();
-				return basicGetIsrCategory1Overhead();
+				return getIsrCategory1Overhead();
 			case AmaltheaPackage.OS_INSTRUCTIONS__ISR_CATEGORY2_OVERHEAD:
-				if (resolve) return getIsrCategory2Overhead();
-				return basicGetIsrCategory2Overhead();
+				return getIsrCategory2Overhead();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

@@ -72,7 +72,7 @@ public class ArrivalCurveItemProvider extends StimulusItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getArrivalCurve_ArrivalCurveEntries());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getArrivalCurve_Entries());
 		}
 		return childrenFeatures;
 	}
@@ -138,7 +138,7 @@ public class ArrivalCurveItemProvider extends StimulusItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ArrivalCurve.class)) {
-			case AmaltheaPackage.ARRIVAL_CURVE__ARRIVAL_CURVE_ENTRIES:
+			case AmaltheaPackage.ARRIVAL_CURVE__ENTRIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -158,7 +158,7 @@ public class ArrivalCurveItemProvider extends StimulusItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getArrivalCurve_ArrivalCurveEntries(),
+				(AmaltheaPackage.eINSTANCE.getArrivalCurve_Entries(),
 				 AmaltheaFactory.eINSTANCE.createArrivalCurveEntry()));
 	}
 

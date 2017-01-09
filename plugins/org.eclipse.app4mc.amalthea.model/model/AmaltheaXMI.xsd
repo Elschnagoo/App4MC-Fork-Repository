@@ -1184,7 +1184,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     <xsd:complexContent>
       <xsd:extension base="am:NumericStatistic">
         <xsd:attribute name="min" type="xsd:int"/>
-        <xsd:attribute name="avg" type="xsd:int"/>
+        <xsd:attribute name="avg" type="xsd:float"/>
         <xsd:attribute name="max" type="xsd:int"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -4263,7 +4263,7 @@ triggerTimes: the list of all trigger times</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="arrivalCurveEntries" type="am:ArrivalCurveEntry"/>
+          <xsd:element name="entries" type="am:ArrivalCurveEntry"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>

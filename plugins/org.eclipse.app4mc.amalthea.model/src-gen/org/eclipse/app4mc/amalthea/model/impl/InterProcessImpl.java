@@ -73,29 +73,6 @@ public class InterProcessImpl extends StimulusImpl implements InterProcess {
 	 * @generated
 	 */
 	public Counter getCounter() {
-		if (counter != null && counter.eIsProxy()) {
-			InternalEObject oldCounter = (InternalEObject)counter;
-			counter = (Counter)eResolveProxy(oldCounter);
-			if (counter != oldCounter) {
-				InternalEObject newCounter = (InternalEObject)counter;
-				NotificationChain msgs = oldCounter.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INTER_PROCESS__COUNTER, null, null);
-				if (newCounter.eInternalContainer() == null) {
-					msgs = newCounter.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INTER_PROCESS__COUNTER, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.INTER_PROCESS__COUNTER, oldCounter, counter));
-			}
-		}
-		return counter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Counter basicGetCounter() {
 		return counter;
 	}
 
@@ -156,8 +133,7 @@ public class InterProcessImpl extends StimulusImpl implements InterProcess {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.INTER_PROCESS__COUNTER:
-				if (resolve) return getCounter();
-				return basicGetCounter();
+				return getCounter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

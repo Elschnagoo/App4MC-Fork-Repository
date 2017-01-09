@@ -46,7 +46,7 @@ public interface LabelAccessStatistic extends BaseObject {
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(NumericStatistic)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccessStatistic_Value()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	NumericStatistic getValue();
@@ -72,7 +72,7 @@ public interface LabelAccessStatistic extends BaseObject {
 	 * @return the value of the '<em>Cache Misses</em>' containment reference.
 	 * @see #setCacheMisses(NumericStatistic)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccessStatistic_CacheMisses()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	NumericStatistic getCacheMisses();

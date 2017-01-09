@@ -73,29 +73,6 @@ public class RunEntityCallStatisticImpl extends BaseObjectImpl implements RunEnt
 	 * @generated
 	 */
 	public NumericStatistic getStatistic() {
-		if (statistic != null && statistic.eIsProxy()) {
-			InternalEObject oldStatistic = (InternalEObject)statistic;
-			statistic = (NumericStatistic)eResolveProxy(oldStatistic);
-			if (statistic != oldStatistic) {
-				InternalEObject newStatistic = (InternalEObject)statistic;
-				NotificationChain msgs = oldStatistic.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUN_ENTITY_CALL_STATISTIC__STATISTIC, null, null);
-				if (newStatistic.eInternalContainer() == null) {
-					msgs = newStatistic.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUN_ENTITY_CALL_STATISTIC__STATISTIC, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUN_ENTITY_CALL_STATISTIC__STATISTIC, oldStatistic, statistic));
-			}
-		}
-		return statistic;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NumericStatistic basicGetStatistic() {
 		return statistic;
 	}
 
@@ -156,8 +133,7 @@ public class RunEntityCallStatisticImpl extends BaseObjectImpl implements RunEnt
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.RUN_ENTITY_CALL_STATISTIC__STATISTIC:
-				if (resolve) return getStatistic();
-				return basicGetStatistic();
+				return getStatistic();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

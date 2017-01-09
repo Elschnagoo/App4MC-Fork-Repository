@@ -42,7 +42,7 @@ public interface OsISRInstructions extends BaseObject {
 	 * @return the value of the '<em>Pre Execution Overhead</em>' containment reference.
 	 * @see #setPreExecutionOverhead(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsISRInstructions_PreExecutionOverhead()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Instructions getPreExecutionOverhead();
@@ -68,7 +68,7 @@ public interface OsISRInstructions extends BaseObject {
 	 * @return the value of the '<em>Post Execution Overhead</em>' containment reference.
 	 * @see #setPostExecutionOverhead(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsISRInstructions_PostExecutionOverhead()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Instructions getPostExecutionOverhead();

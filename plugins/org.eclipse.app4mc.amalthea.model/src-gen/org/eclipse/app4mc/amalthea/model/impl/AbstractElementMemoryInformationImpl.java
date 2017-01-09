@@ -118,29 +118,6 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	 * @generated
 	 */
 	public DataSize getSize() {
-		if (size != null && size.eIsProxy()) {
-			InternalEObject oldSize = (InternalEObject)size;
-			size = (DataSize)eResolveProxy(oldSize);
-			if (size != oldSize) {
-				InternalEObject newSize = (InternalEObject)size;
-				NotificationChain msgs = oldSize.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE, null, null);
-				if (newSize.eInternalContainer() == null) {
-					msgs = newSize.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE, oldSize, size));
-			}
-		}
-		return size;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DataSize basicGetSize() {
 		return size;
 	}
 
@@ -232,8 +209,7 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__TAGS:
 				return getTags();
 			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE:
-				if (resolve) return getSize();
-				return basicGetSize();
+				return getSize();
 			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS:
 				return getMappings();
 		}

@@ -61,7 +61,7 @@ public interface ConstraintsModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Event Chains</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConstraintsModel_EventChains()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<EventChain> getEventChains();
@@ -77,7 +77,7 @@ public interface ConstraintsModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Timing Constraints</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConstraintsModel_TimingConstraints()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<TimingConstraint> getTimingConstraints();
@@ -93,7 +93,7 @@ public interface ConstraintsModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Affinity Constraints</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConstraintsModel_AffinityConstraints()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<AffinityConstraint> getAffinityConstraints();
@@ -109,7 +109,7 @@ public interface ConstraintsModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable Sequencing Constraints</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConstraintsModel_RunnableSequencingConstraints()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<RunnableSequencingConstraint> getRunnableSequencingConstraints();
@@ -125,7 +125,7 @@ public interface ConstraintsModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Age Constraints</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConstraintsModel_DataAgeConstraints()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<DataAgeConstraint> getDataAgeConstraints();
@@ -141,7 +141,7 @@ public interface ConstraintsModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Requirements</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConstraintsModel_Requirements()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Requirement> getRequirements();
@@ -157,7 +157,7 @@ public interface ConstraintsModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Coherency Groups</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConstraintsModel_DataCoherencyGroups()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<DataCoherencyGroup> getDataCoherencyGroups();
@@ -173,7 +173,7 @@ public interface ConstraintsModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Stability Groups</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConstraintsModel_DataStabilityGroups()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<DataStabilityGroup> getDataStabilityGroups();
@@ -189,7 +189,7 @@ public interface ConstraintsModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Physical Section Constraints</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConstraintsModel_PhysicalSectionConstraints()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<PhysicalSectionConstraint> getPhysicalSectionConstraints();

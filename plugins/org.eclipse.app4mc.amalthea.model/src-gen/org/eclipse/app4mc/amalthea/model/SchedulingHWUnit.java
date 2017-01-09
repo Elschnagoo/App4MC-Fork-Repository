@@ -46,7 +46,7 @@ public interface SchedulingHWUnit extends SchedulingUnit, BaseObject {
 	 * @return the value of the '<em>Delay</em>' containment reference.
 	 * @see #setDelay(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulingHWUnit_Delay()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getDelay();

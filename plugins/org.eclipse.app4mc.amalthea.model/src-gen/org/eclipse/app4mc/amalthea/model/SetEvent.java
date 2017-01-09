@@ -48,7 +48,7 @@ public interface SetEvent extends CallSequenceItem {
 	 * @return the value of the '<em>Event Mask</em>' containment reference.
 	 * @see #setEventMask(EventMask)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSetEvent_EventMask()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EventMask getEventMask();

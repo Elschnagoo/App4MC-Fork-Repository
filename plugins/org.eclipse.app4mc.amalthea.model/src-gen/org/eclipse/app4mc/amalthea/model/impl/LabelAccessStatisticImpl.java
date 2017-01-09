@@ -84,29 +84,6 @@ public class LabelAccessStatisticImpl extends BaseObjectImpl implements LabelAcc
 	 * @generated
 	 */
 	public NumericStatistic getValue() {
-		if (value != null && value.eIsProxy()) {
-			InternalEObject oldValue = (InternalEObject)value;
-			value = (NumericStatistic)eResolveProxy(oldValue);
-			if (value != oldValue) {
-				InternalEObject newValue = (InternalEObject)value;
-				NotificationChain msgs = oldValue.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS_STATISTIC__VALUE, null, null);
-				if (newValue.eInternalContainer() == null) {
-					msgs = newValue.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS_STATISTIC__VALUE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.LABEL_ACCESS_STATISTIC__VALUE, oldValue, value));
-			}
-		}
-		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NumericStatistic basicGetValue() {
 		return value;
 	}
 
@@ -150,29 +127,6 @@ public class LabelAccessStatisticImpl extends BaseObjectImpl implements LabelAcc
 	 * @generated
 	 */
 	public NumericStatistic getCacheMisses() {
-		if (cacheMisses != null && cacheMisses.eIsProxy()) {
-			InternalEObject oldCacheMisses = (InternalEObject)cacheMisses;
-			cacheMisses = (NumericStatistic)eResolveProxy(oldCacheMisses);
-			if (cacheMisses != oldCacheMisses) {
-				InternalEObject newCacheMisses = (InternalEObject)cacheMisses;
-				NotificationChain msgs = oldCacheMisses.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS_STATISTIC__CACHE_MISSES, null, null);
-				if (newCacheMisses.eInternalContainer() == null) {
-					msgs = newCacheMisses.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS_STATISTIC__CACHE_MISSES, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.LABEL_ACCESS_STATISTIC__CACHE_MISSES, oldCacheMisses, cacheMisses));
-			}
-		}
-		return cacheMisses;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NumericStatistic basicGetCacheMisses() {
 		return cacheMisses;
 	}
 
@@ -235,11 +189,9 @@ public class LabelAccessStatisticImpl extends BaseObjectImpl implements LabelAcc
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.LABEL_ACCESS_STATISTIC__VALUE:
-				if (resolve) return getValue();
-				return basicGetValue();
+				return getValue();
 			case AmaltheaPackage.LABEL_ACCESS_STATISTIC__CACHE_MISSES:
-				if (resolve) return getCacheMisses();
-				return basicGetCacheMisses();
+				return getCacheMisses();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

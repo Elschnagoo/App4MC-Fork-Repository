@@ -172,29 +172,6 @@ public class DataAgeConstraintImpl extends ReferableBaseObjectImpl implements Da
 	 * @generated
 	 */
 	public DataAge getDataAge() {
-		if (dataAge != null && dataAge.eIsProxy()) {
-			InternalEObject oldDataAge = (InternalEObject)dataAge;
-			dataAge = (DataAge)eResolveProxy(oldDataAge);
-			if (dataAge != oldDataAge) {
-				InternalEObject newDataAge = (InternalEObject)dataAge;
-				NotificationChain msgs = oldDataAge.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_AGE_CONSTRAINT__DATA_AGE, null, null);
-				if (newDataAge.eInternalContainer() == null) {
-					msgs = newDataAge.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_AGE_CONSTRAINT__DATA_AGE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.DATA_AGE_CONSTRAINT__DATA_AGE, oldDataAge, dataAge));
-			}
-		}
-		return dataAge;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DataAge basicGetDataAge() {
 		return dataAge;
 	}
 
@@ -261,8 +238,7 @@ public class DataAgeConstraintImpl extends ReferableBaseObjectImpl implements Da
 				if (resolve) return getLabel();
 				return basicGetLabel();
 			case AmaltheaPackage.DATA_AGE_CONSTRAINT__DATA_AGE:
-				if (resolve) return getDataAge();
-				return basicGetDataAge();
+				return getDataAge();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

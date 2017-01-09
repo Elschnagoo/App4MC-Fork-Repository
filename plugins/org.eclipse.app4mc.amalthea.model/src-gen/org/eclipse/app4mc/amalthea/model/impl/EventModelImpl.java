@@ -78,7 +78,7 @@ public class EventModelImpl extends BaseObjectImpl implements EventModel {
 	 */
 	public EList<Event> getEvents() {
 		if (events == null) {
-			events = new EObjectContainmentEList.Resolving<Event>(Event.class, this, AmaltheaPackage.EVENT_MODEL__EVENTS);
+			events = new EObjectContainmentEList<Event>(Event.class, this, AmaltheaPackage.EVENT_MODEL__EVENTS);
 		}
 		return events;
 	}

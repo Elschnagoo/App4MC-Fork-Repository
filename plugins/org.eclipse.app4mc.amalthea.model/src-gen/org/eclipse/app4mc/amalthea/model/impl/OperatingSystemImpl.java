@@ -185,7 +185,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 */
 	public EList<TaskScheduler> getTaskSchedulers() {
 		if (taskSchedulers == null) {
-			taskSchedulers = new EObjectContainmentEList.Resolving<TaskScheduler>(TaskScheduler.class, this, AmaltheaPackage.OPERATING_SYSTEM__TASK_SCHEDULERS);
+			taskSchedulers = new EObjectContainmentEList<TaskScheduler>(TaskScheduler.class, this, AmaltheaPackage.OPERATING_SYSTEM__TASK_SCHEDULERS);
 		}
 		return taskSchedulers;
 	}
@@ -197,7 +197,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 */
 	public EList<InterruptController> getInterruptControllers() {
 		if (interruptControllers == null) {
-			interruptControllers = new EObjectContainmentEList.Resolving<InterruptController>(InterruptController.class, this, AmaltheaPackage.OPERATING_SYSTEM__INTERRUPT_CONTROLLERS);
+			interruptControllers = new EObjectContainmentEList<InterruptController>(InterruptController.class, this, AmaltheaPackage.OPERATING_SYSTEM__INTERRUPT_CONTROLLERS);
 		}
 		return interruptControllers;
 	}

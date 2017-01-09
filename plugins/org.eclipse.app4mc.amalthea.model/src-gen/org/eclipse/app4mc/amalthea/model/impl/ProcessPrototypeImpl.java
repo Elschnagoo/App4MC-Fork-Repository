@@ -270,7 +270,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 */
 	public EList<AccessPrecedenceSpec> getAccessPrecedenceSpec() {
 		if (accessPrecedenceSpec == null) {
-			accessPrecedenceSpec = new EObjectContainmentEList.Resolving<AccessPrecedenceSpec>(AccessPrecedenceSpec.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__ACCESS_PRECEDENCE_SPEC);
+			accessPrecedenceSpec = new EObjectContainmentEList<AccessPrecedenceSpec>(AccessPrecedenceSpec.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__ACCESS_PRECEDENCE_SPEC);
 		}
 		return accessPrecedenceSpec;
 	}
@@ -282,7 +282,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 */
 	public EList<OrderPrecedenceSpec> getOrderPrecedenceSpec() {
 		if (orderPrecedenceSpec == null) {
-			orderPrecedenceSpec = new EObjectContainmentEList.Resolving<OrderPrecedenceSpec>(OrderPrecedenceSpec.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__ORDER_PRECEDENCE_SPEC);
+			orderPrecedenceSpec = new EObjectContainmentEList<OrderPrecedenceSpec>(OrderPrecedenceSpec.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__ORDER_PRECEDENCE_SPEC);
 		}
 		return orderPrecedenceSpec;
 	}
@@ -294,7 +294,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 */
 	public EList<ChainedProcessPrototype> getChainedPrototypes() {
 		if (chainedPrototypes == null) {
-			chainedPrototypes = new EObjectContainmentEList.Resolving<ChainedProcessPrototype>(ChainedProcessPrototype.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__CHAINED_PROTOTYPES);
+			chainedPrototypes = new EObjectContainmentEList<ChainedProcessPrototype>(ChainedProcessPrototype.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__CHAINED_PROTOTYPES);
 		}
 		return chainedPrototypes;
 	}
@@ -344,7 +344,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 */
 	public EList<TaskRunnableCall> getRunnableCalls() {
 		if (runnableCalls == null) {
-			runnableCalls = new EObjectContainmentEList.Resolving<TaskRunnableCall>(TaskRunnableCall.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__RUNNABLE_CALLS);
+			runnableCalls = new EObjectContainmentEList<TaskRunnableCall>(TaskRunnableCall.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__RUNNABLE_CALLS);
 		}
 		return runnableCalls;
 	}

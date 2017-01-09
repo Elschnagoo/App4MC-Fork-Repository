@@ -78,7 +78,7 @@ public class ModeSwitchDefaultImpl<T> extends BaseObjectImpl implements ModeSwit
 	 */
 	public EList<T> getItems() {
 		if (items == null) {
-			items = new EObjectContainmentEList.Resolving<T>(EObject.class, this, AmaltheaPackage.MODE_SWITCH_DEFAULT__ITEMS);
+			items = new EObjectContainmentEList<T>(EObject.class, this, AmaltheaPackage.MODE_SWITCH_DEFAULT__ITEMS);
 		}
 		return items;
 	}

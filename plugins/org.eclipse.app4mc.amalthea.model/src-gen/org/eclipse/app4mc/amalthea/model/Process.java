@@ -48,7 +48,7 @@ public interface Process extends AbstractProcess {
 	 * @return the value of the '<em>Call Graph</em>' containment reference.
 	 * @see #setCallGraph(CallGraph)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcess_CallGraph()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	CallGraph getCallGraph();

@@ -137,7 +137,7 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 	 */
 	public EList<ProcessRunnableGroup> getRunnableGroups() {
 		if (runnableGroups == null) {
-			runnableGroups = new EObjectContainmentEList.Resolving<ProcessRunnableGroup>(ProcessRunnableGroup.class, this, AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__RUNNABLE_GROUPS);
+			runnableGroups = new EObjectContainmentEList<ProcessRunnableGroup>(ProcessRunnableGroup.class, this, AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__RUNNABLE_GROUPS);
 		}
 		return runnableGroups;
 	}

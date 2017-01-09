@@ -50,7 +50,7 @@ public interface OsAPIInstructions extends BaseObject {
 	 * @return the value of the '<em>Api Send Message</em>' containment reference.
 	 * @see #setApiSendMessage(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSendMessage()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Instructions getApiSendMessage();
@@ -76,7 +76,7 @@ public interface OsAPIInstructions extends BaseObject {
 	 * @return the value of the '<em>Api Terminate Task</em>' containment reference.
 	 * @see #setApiTerminateTask(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiTerminateTask()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Instructions getApiTerminateTask();
@@ -102,7 +102,7 @@ public interface OsAPIInstructions extends BaseObject {
 	 * @return the value of the '<em>Api Schedule</em>' containment reference.
 	 * @see #setApiSchedule(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSchedule()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Instructions getApiSchedule();
@@ -128,7 +128,7 @@ public interface OsAPIInstructions extends BaseObject {
 	 * @return the value of the '<em>Api Request Resource</em>' containment reference.
 	 * @see #setApiRequestResource(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiRequestResource()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Instructions getApiRequestResource();
@@ -154,7 +154,7 @@ public interface OsAPIInstructions extends BaseObject {
 	 * @return the value of the '<em>Api Release Resource</em>' containment reference.
 	 * @see #setApiReleaseResource(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiReleaseResource()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Instructions getApiReleaseResource();
@@ -180,7 +180,7 @@ public interface OsAPIInstructions extends BaseObject {
 	 * @return the value of the '<em>Api Set Event</em>' containment reference.
 	 * @see #setApiSetEvent(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSetEvent()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Instructions getApiSetEvent();
@@ -206,7 +206,7 @@ public interface OsAPIInstructions extends BaseObject {
 	 * @return the value of the '<em>Api Wait Event</em>' containment reference.
 	 * @see #setApiWaitEvent(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiWaitEvent()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Instructions getApiWaitEvent();
@@ -232,7 +232,7 @@ public interface OsAPIInstructions extends BaseObject {
 	 * @return the value of the '<em>Api Clear Event</em>' containment reference.
 	 * @see #setApiClearEvent(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiClearEvent()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Instructions getApiClearEvent();
@@ -258,7 +258,7 @@ public interface OsAPIInstructions extends BaseObject {
 	 * @return the value of the '<em>Api Activate Task</em>' containment reference.
 	 * @see #setApiActivateTask(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiActivateTask()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Instructions getApiActivateTask();
@@ -284,7 +284,7 @@ public interface OsAPIInstructions extends BaseObject {
 	 * @return the value of the '<em>Api Enforced Migration</em>' containment reference.
 	 * @see #setApiEnforcedMigration(Instructions)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiEnforcedMigration()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Instructions getApiEnforcedMigration();

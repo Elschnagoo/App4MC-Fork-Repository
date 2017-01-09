@@ -135,29 +135,6 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 	 * @generated
 	 */
 	public RunEntityCallStatistic getStatistic() {
-		if (statistic != null && statistic.eIsProxy()) {
-			InternalEObject oldStatistic = (InternalEObject)statistic;
-			statistic = (RunEntityCallStatistic)eResolveProxy(oldStatistic);
-			if (statistic != oldStatistic) {
-				InternalEObject newStatistic = (InternalEObject)statistic;
-				NotificationChain msgs = oldStatistic.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_CALL__STATISTIC, null, null);
-				if (newStatistic.eInternalContainer() == null) {
-					msgs = newStatistic.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_CALL__STATISTIC, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE_CALL__STATISTIC, oldStatistic, statistic));
-			}
-		}
-		return statistic;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RunEntityCallStatistic basicGetStatistic() {
 		return statistic;
 	}
 
@@ -299,8 +276,7 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 				if (resolve) return getRunnable();
 				return basicGetRunnable();
 			case AmaltheaPackage.RUNNABLE_CALL__STATISTIC:
-				if (resolve) return getStatistic();
-				return basicGetStatistic();
+				return getStatistic();
 			case AmaltheaPackage.RUNNABLE_CALL__RUNNABLE_LINK_INT:
 				if (resolve) return getRunnableLinkInt();
 				return basicGetRunnableLinkInt();

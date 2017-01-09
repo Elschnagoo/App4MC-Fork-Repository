@@ -54,7 +54,7 @@ public interface PropertyConstraintsModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Allocation Constraints</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPropertyConstraintsModel_AllocationConstraints()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<AllocationConstraint> getAllocationConstraints();
@@ -70,7 +70,7 @@ public interface PropertyConstraintsModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mapping Constraints</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPropertyConstraintsModel_MappingConstraints()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<MappingConstraint> getMappingConstraints();

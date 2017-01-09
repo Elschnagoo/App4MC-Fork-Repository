@@ -78,7 +78,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	 */
 	public EList<ModeValueListEntry> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList.Resolving<ModeValueListEntry>(ModeValueListEntry.class, this, AmaltheaPackage.MODE_VALUE_LIST__ENTRIES);
+			entries = new EObjectContainmentEList<ModeValueListEntry>(ModeValueListEntry.class, this, AmaltheaPackage.MODE_VALUE_LIST__ENTRIES);
 		}
 		return entries;
 	}

@@ -127,29 +127,6 @@ public class ClockSinusFunctionImpl extends ClockImpl implements ClockSinusFunct
 	 * @generated
 	 */
 	public SignedTime getShift() {
-		if (shift != null && shift.eIsProxy()) {
-			InternalEObject oldShift = (InternalEObject)shift;
-			shift = (SignedTime)eResolveProxy(oldShift);
-			if (shift != oldShift) {
-				InternalEObject newShift = (InternalEObject)shift;
-				NotificationChain msgs = oldShift.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLOCK_SINUS_FUNCTION__SHIFT, null, null);
-				if (newShift.eInternalContainer() == null) {
-					msgs = newShift.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLOCK_SINUS_FUNCTION__SHIFT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.CLOCK_SINUS_FUNCTION__SHIFT, oldShift, shift));
-			}
-		}
-		return shift;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SignedTime basicGetShift() {
 		return shift;
 	}
 
@@ -193,29 +170,6 @@ public class ClockSinusFunctionImpl extends ClockImpl implements ClockSinusFunct
 	 * @generated
 	 */
 	public Time getPeriod() {
-		if (period != null && period.eIsProxy()) {
-			InternalEObject oldPeriod = (InternalEObject)period;
-			period = (Time)eResolveProxy(oldPeriod);
-			if (period != oldPeriod) {
-				InternalEObject newPeriod = (InternalEObject)period;
-				NotificationChain msgs = oldPeriod.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLOCK_SINUS_FUNCTION__PERIOD, null, null);
-				if (newPeriod.eInternalContainer() == null) {
-					msgs = newPeriod.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLOCK_SINUS_FUNCTION__PERIOD, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.CLOCK_SINUS_FUNCTION__PERIOD, oldPeriod, period));
-			}
-		}
-		return period;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetPeriod() {
 		return period;
 	}
 
@@ -320,11 +274,9 @@ public class ClockSinusFunctionImpl extends ClockImpl implements ClockSinusFunct
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.CLOCK_SINUS_FUNCTION__SHIFT:
-				if (resolve) return getShift();
-				return basicGetShift();
+				return getShift();
 			case AmaltheaPackage.CLOCK_SINUS_FUNCTION__PERIOD:
-				if (resolve) return getPeriod();
-				return basicGetPeriod();
+				return getPeriod();
 			case AmaltheaPackage.CLOCK_SINUS_FUNCTION__AMPLITUDE:
 				return getAmplitude();
 			case AmaltheaPackage.CLOCK_SINUS_FUNCTION__YOFFSET:

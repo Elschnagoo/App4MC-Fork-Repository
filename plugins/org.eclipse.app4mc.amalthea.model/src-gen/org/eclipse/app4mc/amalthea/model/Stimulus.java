@@ -50,7 +50,7 @@ public interface Stimulus extends ReferableBaseObject {
 	 * @return the value of the '<em>Stimulus Deviation</em>' containment reference.
 	 * @see #setStimulusDeviation(Deviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimulus_StimulusDeviation()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Deviation<SignedTime> getStimulusDeviation();
@@ -76,7 +76,7 @@ public interface Stimulus extends ReferableBaseObject {
 	 * @return the value of the '<em>Set Mode Value List</em>' containment reference.
 	 * @see #setSetModeValueList(ModeValueList)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimulus_SetModeValueList()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ModeValueList getSetModeValueList();
@@ -102,7 +102,7 @@ public interface Stimulus extends ReferableBaseObject {
 	 * @return the value of the '<em>Enabling Mode Value List</em>' containment reference.
 	 * @see #setEnablingModeValueList(ModeValueList)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimulus_EnablingModeValueList()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ModeValueList getEnablingModeValueList();
@@ -128,7 +128,7 @@ public interface Stimulus extends ReferableBaseObject {
 	 * @return the value of the '<em>Disabling Mode Value List</em>' containment reference.
 	 * @see #setDisablingModeValueList(ModeValueList)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimulus_DisablingModeValueList()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ModeValueList getDisablingModeValueList();

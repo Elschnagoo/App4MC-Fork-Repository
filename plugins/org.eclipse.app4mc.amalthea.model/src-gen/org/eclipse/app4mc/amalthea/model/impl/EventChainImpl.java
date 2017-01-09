@@ -193,7 +193,7 @@ public class EventChainImpl extends ReferableBaseObjectImpl implements EventChai
 	 */
 	public EList<EventChainItem> getSegments() {
 		if (segments == null) {
-			segments = new EObjectContainmentEList.Resolving<EventChainItem>(EventChainItem.class, this, AmaltheaPackage.EVENT_CHAIN__SEGMENTS);
+			segments = new EObjectContainmentEList<EventChainItem>(EventChainItem.class, this, AmaltheaPackage.EVENT_CHAIN__SEGMENTS);
 		}
 		return segments;
 	}
@@ -205,7 +205,7 @@ public class EventChainImpl extends ReferableBaseObjectImpl implements EventChai
 	 */
 	public EList<EventChainItem> getStrands() {
 		if (strands == null) {
-			strands = new EObjectContainmentEList.Resolving<EventChainItem>(EventChainItem.class, this, AmaltheaPackage.EVENT_CHAIN__STRANDS);
+			strands = new EObjectContainmentEList<EventChainItem>(EventChainItem.class, this, AmaltheaPackage.EVENT_CHAIN__STRANDS);
 		}
 		return strands;
 	}

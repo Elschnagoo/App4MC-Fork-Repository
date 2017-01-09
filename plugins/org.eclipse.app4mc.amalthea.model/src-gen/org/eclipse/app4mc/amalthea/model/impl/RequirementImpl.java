@@ -158,29 +158,6 @@ public abstract class RequirementImpl extends BaseObjectImpl implements Requirem
 	 * @generated
 	 */
 	public RequirementLimit getLimit() {
-		if (limit != null && limit.eIsProxy()) {
-			InternalEObject oldLimit = (InternalEObject)limit;
-			limit = (RequirementLimit)eResolveProxy(oldLimit);
-			if (limit != oldLimit) {
-				InternalEObject newLimit = (InternalEObject)limit;
-				NotificationChain msgs = oldLimit.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REQUIREMENT__LIMIT, null, null);
-				if (newLimit.eInternalContainer() == null) {
-					msgs = newLimit.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.REQUIREMENT__LIMIT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.REQUIREMENT__LIMIT, oldLimit, limit));
-			}
-		}
-		return limit;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RequirementLimit basicGetLimit() {
 		return limit;
 	}
 
@@ -245,8 +222,7 @@ public abstract class RequirementImpl extends BaseObjectImpl implements Requirem
 			case AmaltheaPackage.REQUIREMENT__SEVERITY:
 				return getSeverity();
 			case AmaltheaPackage.REQUIREMENT__LIMIT:
-				if (resolve) return getLimit();
-				return basicGetLimit();
+				return getLimit();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

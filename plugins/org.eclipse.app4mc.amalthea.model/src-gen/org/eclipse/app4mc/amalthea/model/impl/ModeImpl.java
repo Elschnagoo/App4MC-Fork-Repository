@@ -78,7 +78,7 @@ public class ModeImpl extends ReferableBaseObjectImpl implements Mode {
 	 */
 	public EList<ModeLiteral> getLiterals() {
 		if (literals == null) {
-			literals = new EObjectContainmentEList.Resolving<ModeLiteral>(ModeLiteral.class, this, AmaltheaPackage.MODE__LITERALS);
+			literals = new EObjectContainmentEList<ModeLiteral>(ModeLiteral.class, this, AmaltheaPackage.MODE__LITERALS);
 		}
 		return literals;
 	}

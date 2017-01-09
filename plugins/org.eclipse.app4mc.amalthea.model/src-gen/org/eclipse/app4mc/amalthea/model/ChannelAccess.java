@@ -99,7 +99,7 @@ public interface ChannelAccess extends RunnableItem {
 	 * @return the value of the '<em>Transmission Policy</em>' containment reference.
 	 * @see #setTransmissionPolicy(TransmissionPolicy)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getChannelAccess_TransmissionPolicy()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	TransmissionPolicy getTransmissionPolicy();

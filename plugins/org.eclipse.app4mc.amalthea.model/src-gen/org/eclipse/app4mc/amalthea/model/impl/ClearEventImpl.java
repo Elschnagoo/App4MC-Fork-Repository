@@ -73,29 +73,6 @@ public class ClearEventImpl extends CallSequenceItemImpl implements ClearEvent {
 	 * @generated
 	 */
 	public EventMask getEventMask() {
-		if (eventMask != null && eventMask.eIsProxy()) {
-			InternalEObject oldEventMask = (InternalEObject)eventMask;
-			eventMask = (EventMask)eResolveProxy(oldEventMask);
-			if (eventMask != oldEventMask) {
-				InternalEObject newEventMask = (InternalEObject)eventMask;
-				NotificationChain msgs = oldEventMask.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLEAR_EVENT__EVENT_MASK, null, null);
-				if (newEventMask.eInternalContainer() == null) {
-					msgs = newEventMask.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLEAR_EVENT__EVENT_MASK, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.CLEAR_EVENT__EVENT_MASK, oldEventMask, eventMask));
-			}
-		}
-		return eventMask;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EventMask basicGetEventMask() {
 		return eventMask;
 	}
 
@@ -156,8 +133,7 @@ public class ClearEventImpl extends CallSequenceItemImpl implements ClearEvent {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.CLEAR_EVENT__EVENT_MASK:
-				if (resolve) return getEventMask();
-				return basicGetEventMask();
+				return getEventMask();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

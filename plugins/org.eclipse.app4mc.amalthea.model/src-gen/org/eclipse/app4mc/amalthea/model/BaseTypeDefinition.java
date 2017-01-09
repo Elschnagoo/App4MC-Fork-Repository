@@ -46,7 +46,7 @@ public interface BaseTypeDefinition extends TypeDefinition {
 	 * @return the value of the '<em>Size</em>' containment reference.
 	 * @see #setSize(DataSize)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBaseTypeDefinition_Size()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	DataSize getSize();
@@ -71,7 +71,7 @@ public interface BaseTypeDefinition extends TypeDefinition {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Data Mapping</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBaseTypeDefinition_DataMapping()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<DataPlatformMapping> getDataMapping();

@@ -87,29 +87,6 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 	 * @generated
 	 */
 	public RunnableConstraintTarget getTarget() {
-		if (target != null && target.eIsProxy()) {
-			InternalEObject oldTarget = (InternalEObject)target;
-			target = (RunnableConstraintTarget)eResolveProxy(oldTarget);
-			if (target != oldTarget) {
-				InternalEObject newTarget = (InternalEObject)target;
-				NotificationChain msgs = oldTarget.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__TARGET, null, null);
-				if (newTarget.eInternalContainer() == null) {
-					msgs = newTarget.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__TARGET, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__TARGET, oldTarget, target));
-			}
-		}
-		return target;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RunnableConstraintTarget basicGetTarget() {
 		return target;
 	}
 
@@ -153,29 +130,6 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 	 * @generated
 	 */
 	public RunnableGroup getGroup() {
-		if (group != null && group.eIsProxy()) {
-			InternalEObject oldGroup = (InternalEObject)group;
-			group = (RunnableGroup)eResolveProxy(oldGroup);
-			if (group != oldGroup) {
-				InternalEObject newGroup = (InternalEObject)group;
-				NotificationChain msgs = oldGroup.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP, null, null);
-				if (newGroup.eInternalContainer() == null) {
-					msgs = newGroup.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP, oldGroup, group));
-			}
-		}
-		return group;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RunnableGroup basicGetGroup() {
 		return group;
 	}
 
@@ -238,11 +192,9 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__TARGET:
-				if (resolve) return getTarget();
-				return basicGetTarget();
+				return getTarget();
 			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT__GROUP:
-				if (resolve) return getGroup();
-				return basicGetGroup();
+				return getGroup();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

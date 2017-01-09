@@ -46,7 +46,7 @@ public interface UserSpecificSchedulingAlgorithm extends TaskSchedulingAlgorithm
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameter</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getUserSpecificSchedulingAlgorithm_Parameter()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<AlgorithmParameter> getParameter();

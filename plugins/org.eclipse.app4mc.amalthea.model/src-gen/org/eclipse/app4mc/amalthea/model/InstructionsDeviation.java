@@ -45,7 +45,7 @@ public interface InstructionsDeviation extends Instructions {
 	 * @return the value of the '<em>Deviation</em>' containment reference.
 	 * @see #setDeviation(Deviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInstructionsDeviation_Deviation()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Deviation<LongObject> getDeviation();

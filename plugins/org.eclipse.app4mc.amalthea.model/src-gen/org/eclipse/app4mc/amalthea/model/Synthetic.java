@@ -50,7 +50,7 @@ public interface Synthetic extends Stimulus {
 	 * @return the value of the '<em>Offset</em>' containment reference.
 	 * @see #setOffset(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSynthetic_Offset()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getOffset();
@@ -76,7 +76,7 @@ public interface Synthetic extends Stimulus {
 	 * @return the value of the '<em>Period</em>' containment reference.
 	 * @see #setPeriod(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSynthetic_Period()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getPeriod();
@@ -102,7 +102,7 @@ public interface Synthetic extends Stimulus {
 	 * @return the value of the '<em>Trigger Times</em>' containment reference.
 	 * @see #setTriggerTimes(TimestampList)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSynthetic_TriggerTimes()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	TimestampList getTriggerTimes();

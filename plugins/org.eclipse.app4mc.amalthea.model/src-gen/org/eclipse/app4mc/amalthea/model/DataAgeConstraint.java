@@ -95,7 +95,7 @@ public interface DataAgeConstraint extends ReferableBaseObject {
 	 * @return the value of the '<em>Data Age</em>' containment reference.
 	 * @see #setDataAge(DataAge)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataAgeConstraint_DataAge()
-	 * @model containment="true" resolveProxies="true" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	DataAge getDataAge();

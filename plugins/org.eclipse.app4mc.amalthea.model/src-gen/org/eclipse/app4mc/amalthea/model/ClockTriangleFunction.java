@@ -44,7 +44,7 @@ public interface ClockTriangleFunction extends Clock {
 	 * @return the value of the '<em>Shift</em>' containment reference.
 	 * @see #setShift(SignedTime)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getClockTriangleFunction_Shift()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	SignedTime getShift();
@@ -70,7 +70,7 @@ public interface ClockTriangleFunction extends Clock {
 	 * @return the value of the '<em>Period</em>' containment reference.
 	 * @see #setPeriod(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getClockTriangleFunction_Period()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getPeriod();

@@ -96,29 +96,6 @@ public class PeriodicImpl extends StimulusImpl implements Periodic {
 	 * @generated
 	 */
 	public Time getOffset() {
-		if (offset != null && offset.eIsProxy()) {
-			InternalEObject oldOffset = (InternalEObject)offset;
-			offset = (Time)eResolveProxy(oldOffset);
-			if (offset != oldOffset) {
-				InternalEObject newOffset = (InternalEObject)offset;
-				NotificationChain msgs = oldOffset.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC__OFFSET, null, null);
-				if (newOffset.eInternalContainer() == null) {
-					msgs = newOffset.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC__OFFSET, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.PERIODIC__OFFSET, oldOffset, offset));
-			}
-		}
-		return offset;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetOffset() {
 		return offset;
 	}
 
@@ -162,29 +139,6 @@ public class PeriodicImpl extends StimulusImpl implements Periodic {
 	 * @generated
 	 */
 	public Time getRecurrence() {
-		if (recurrence != null && recurrence.eIsProxy()) {
-			InternalEObject oldRecurrence = (InternalEObject)recurrence;
-			recurrence = (Time)eResolveProxy(oldRecurrence);
-			if (recurrence != oldRecurrence) {
-				InternalEObject newRecurrence = (InternalEObject)recurrence;
-				NotificationChain msgs = oldRecurrence.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC__RECURRENCE, null, null);
-				if (newRecurrence.eInternalContainer() == null) {
-					msgs = newRecurrence.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC__RECURRENCE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.PERIODIC__RECURRENCE, oldRecurrence, recurrence));
-			}
-		}
-		return recurrence;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetRecurrence() {
 		return recurrence;
 	}
 
@@ -285,11 +239,9 @@ public class PeriodicImpl extends StimulusImpl implements Periodic {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.PERIODIC__OFFSET:
-				if (resolve) return getOffset();
-				return basicGetOffset();
+				return getOffset();
 			case AmaltheaPackage.PERIODIC__RECURRENCE:
-				if (resolve) return getRecurrence();
-				return basicGetRecurrence();
+				return getRecurrence();
 			case AmaltheaPackage.PERIODIC__CLOCK:
 				if (resolve) return getClock();
 				return basicGetClock();

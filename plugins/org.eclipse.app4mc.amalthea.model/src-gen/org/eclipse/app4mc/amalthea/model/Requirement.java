@@ -98,7 +98,7 @@ public interface Requirement extends BaseObject {
 	 * @return the value of the '<em>Limit</em>' containment reference.
 	 * @see #setLimit(RequirementLimit)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRequirement_Limit()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	RequirementLimit getLimit();

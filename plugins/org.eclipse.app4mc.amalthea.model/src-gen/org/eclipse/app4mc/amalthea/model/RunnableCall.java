@@ -74,7 +74,7 @@ public interface RunnableCall extends RunnableItem {
 	 * @return the value of the '<em>Statistic</em>' containment reference.
 	 * @see #setStatistic(RunEntityCallStatistic)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableCall_Statistic()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	RunEntityCallStatistic getStatistic();

@@ -226,29 +226,6 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	 * @generated
 	 */
 	public Time getUpper() {
-		if (upper != null && upper.eIsProxy()) {
-			InternalEObject oldUpper = (InternalEObject)upper;
-			upper = (Time)eResolveProxy(oldUpper);
-			if (upper != oldUpper) {
-				InternalEObject newUpper = (InternalEObject)upper;
-				NotificationChain msgs = oldUpper.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DELAY_CONSTRAINT__UPPER, null, null);
-				if (newUpper.eInternalContainer() == null) {
-					msgs = newUpper.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DELAY_CONSTRAINT__UPPER, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.DELAY_CONSTRAINT__UPPER, oldUpper, upper));
-			}
-		}
-		return upper;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetUpper() {
 		return upper;
 	}
 
@@ -292,29 +269,6 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	 * @generated
 	 */
 	public Time getLower() {
-		if (lower != null && lower.eIsProxy()) {
-			InternalEObject oldLower = (InternalEObject)lower;
-			lower = (Time)eResolveProxy(oldLower);
-			if (lower != oldLower) {
-				InternalEObject newLower = (InternalEObject)lower;
-				NotificationChain msgs = oldLower.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DELAY_CONSTRAINT__LOWER, null, null);
-				if (newLower.eInternalContainer() == null) {
-					msgs = newLower.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DELAY_CONSTRAINT__LOWER, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.DELAY_CONSTRAINT__LOWER, oldLower, lower));
-			}
-		}
-		return lower;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetLower() {
 		return lower;
 	}
 
@@ -385,11 +339,9 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 				if (resolve) return getTarget();
 				return basicGetTarget();
 			case AmaltheaPackage.DELAY_CONSTRAINT__UPPER:
-				if (resolve) return getUpper();
-				return basicGetUpper();
+				return getUpper();
 			case AmaltheaPackage.DELAY_CONSTRAINT__LOWER:
-				if (resolve) return getLower();
-				return basicGetLower();
+				return getLower();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

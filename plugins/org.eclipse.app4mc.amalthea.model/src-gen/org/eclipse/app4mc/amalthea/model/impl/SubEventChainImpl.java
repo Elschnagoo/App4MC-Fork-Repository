@@ -105,29 +105,6 @@ public class SubEventChainImpl extends EventChainItemImpl implements SubEventCha
 	 * @generated
 	 */
 	public EventChain getEventChain() {
-		if (eventChain != null && eventChain.eIsProxy()) {
-			InternalEObject oldEventChain = (InternalEObject)eventChain;
-			eventChain = (EventChain)eResolveProxy(oldEventChain);
-			if (eventChain != oldEventChain) {
-				InternalEObject newEventChain = (InternalEObject)eventChain;
-				NotificationChain msgs = oldEventChain.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN, null, null);
-				if (newEventChain.eInternalContainer() == null) {
-					msgs = newEventChain.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN, oldEventChain, eventChain));
-			}
-		}
-		return eventChain;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EventChain basicGetEventChain() {
 		return eventChain;
 	}
 
@@ -193,8 +170,7 @@ public class SubEventChainImpl extends EventChainItemImpl implements SubEventCha
 				if (coreType) return getCustomProperties();
 				else return getCustomProperties().map();
 			case AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN:
-				if (resolve) return getEventChain();
-				return basicGetEventChain();
+				return getEventChain();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

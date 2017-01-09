@@ -78,7 +78,7 @@ public class CommonElementsImpl extends BaseObjectImpl implements CommonElements
 	 */
 	public EList<Tag> getTags() {
 		if (tags == null) {
-			tags = new EObjectContainmentEList.Resolving<Tag>(Tag.class, this, AmaltheaPackage.COMMON_ELEMENTS__TAGS);
+			tags = new EObjectContainmentEList<Tag>(Tag.class, this, AmaltheaPackage.COMMON_ELEMENTS__TAGS);
 		}
 		return tags;
 	}

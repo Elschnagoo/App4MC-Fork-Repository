@@ -107,7 +107,7 @@ public interface EventChainLatencyConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Minimum</em>' containment reference.
 	 * @see #setMinimum(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventChainLatencyConstraint_Minimum()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getMinimum();
@@ -133,7 +133,7 @@ public interface EventChainLatencyConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Maximum</em>' containment reference.
 	 * @see #setMaximum(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventChainLatencyConstraint_Maximum()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getMaximum();

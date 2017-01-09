@@ -46,7 +46,7 @@ public interface CallGraph extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Graph Entries</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallGraph_GraphEntries()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<GraphEntryBase> getGraphEntries();

@@ -123,7 +123,7 @@ public class ProbabilitySwitchEntryImpl<T> extends BaseObjectImpl implements Pro
 	 */
 	public EList<T> getItems() {
 		if (items == null) {
-			items = new EObjectContainmentEList.Resolving<T>(EObject.class, this, AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS);
+			items = new EObjectContainmentEList<T>(EObject.class, this, AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS);
 		}
 		return items;
 	}

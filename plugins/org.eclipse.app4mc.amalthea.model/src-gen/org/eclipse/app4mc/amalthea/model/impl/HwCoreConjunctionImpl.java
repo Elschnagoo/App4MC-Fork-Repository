@@ -127,29 +127,6 @@ public class HwCoreConjunctionImpl extends HwCoreConstraintImpl implements HwCor
 	 * @generated
 	 */
 	public HwCoreConstraint getFirstConstraint() {
-		if (firstConstraint != null && firstConstraint.eIsProxy()) {
-			InternalEObject oldFirstConstraint = (InternalEObject)firstConstraint;
-			firstConstraint = (HwCoreConstraint)eResolveProxy(oldFirstConstraint);
-			if (firstConstraint != oldFirstConstraint) {
-				InternalEObject newFirstConstraint = (InternalEObject)firstConstraint;
-				NotificationChain msgs = oldFirstConstraint.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CORE_CONJUNCTION__FIRST_CONSTRAINT, null, null);
-				if (newFirstConstraint.eInternalContainer() == null) {
-					msgs = newFirstConstraint.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CORE_CONJUNCTION__FIRST_CONSTRAINT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.HW_CORE_CONJUNCTION__FIRST_CONSTRAINT, oldFirstConstraint, firstConstraint));
-			}
-		}
-		return firstConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HwCoreConstraint basicGetFirstConstraint() {
 		return firstConstraint;
 	}
 
@@ -193,29 +170,6 @@ public class HwCoreConjunctionImpl extends HwCoreConstraintImpl implements HwCor
 	 * @generated
 	 */
 	public HwCoreConstraint getSecondConstraint() {
-		if (secondConstraint != null && secondConstraint.eIsProxy()) {
-			InternalEObject oldSecondConstraint = (InternalEObject)secondConstraint;
-			secondConstraint = (HwCoreConstraint)eResolveProxy(oldSecondConstraint);
-			if (secondConstraint != oldSecondConstraint) {
-				InternalEObject newSecondConstraint = (InternalEObject)secondConstraint;
-				NotificationChain msgs = oldSecondConstraint.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CORE_CONJUNCTION__SECOND_CONSTRAINT, null, null);
-				if (newSecondConstraint.eInternalContainer() == null) {
-					msgs = newSecondConstraint.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CORE_CONJUNCTION__SECOND_CONSTRAINT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.HW_CORE_CONJUNCTION__SECOND_CONSTRAINT, oldSecondConstraint, secondConstraint));
-			}
-		}
-		return secondConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HwCoreConstraint basicGetSecondConstraint() {
 		return secondConstraint;
 	}
 
@@ -280,11 +234,9 @@ public class HwCoreConjunctionImpl extends HwCoreConstraintImpl implements HwCor
 			case AmaltheaPackage.HW_CORE_CONJUNCTION__CONJUNCTION:
 				return getConjunction();
 			case AmaltheaPackage.HW_CORE_CONJUNCTION__FIRST_CONSTRAINT:
-				if (resolve) return getFirstConstraint();
-				return basicGetFirstConstraint();
+				return getFirstConstraint();
 			case AmaltheaPackage.HW_CORE_CONJUNCTION__SECOND_CONSTRAINT:
-				if (resolve) return getSecondConstraint();
-				return basicGetSecondConstraint();
+				return getSecondConstraint();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

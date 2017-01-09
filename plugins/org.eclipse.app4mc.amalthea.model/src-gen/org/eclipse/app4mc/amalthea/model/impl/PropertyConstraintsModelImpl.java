@@ -90,7 +90,7 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 	 */
 	public EList<AllocationConstraint> getAllocationConstraints() {
 		if (allocationConstraints == null) {
-			allocationConstraints = new EObjectContainmentEList.Resolving<AllocationConstraint>(AllocationConstraint.class, this, AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__ALLOCATION_CONSTRAINTS);
+			allocationConstraints = new EObjectContainmentEList<AllocationConstraint>(AllocationConstraint.class, this, AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__ALLOCATION_CONSTRAINTS);
 		}
 		return allocationConstraints;
 	}
@@ -102,7 +102,7 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 	 */
 	public EList<MappingConstraint> getMappingConstraints() {
 		if (mappingConstraints == null) {
-			mappingConstraints = new EObjectContainmentEList.Resolving<MappingConstraint>(MappingConstraint.class, this, AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MAPPING_CONSTRAINTS);
+			mappingConstraints = new EObjectContainmentEList<MappingConstraint>(MappingConstraint.class, this, AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MAPPING_CONSTRAINTS);
 		}
 		return mappingConstraints;
 	}

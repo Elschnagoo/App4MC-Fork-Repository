@@ -66,7 +66,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Isrs</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_Isrs()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ISR> getIsrs();
@@ -82,7 +82,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tasks</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_Tasks()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Task> getTasks();
@@ -98,7 +98,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnables</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_Runnables()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables();
@@ -114,7 +114,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Labels</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_Labels()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Label> getLabels();
@@ -130,7 +130,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Channels</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_Channels()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Channel> getChannels();
@@ -146,7 +146,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Process Prototypes</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_ProcessPrototypes()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ProcessPrototype> getProcessPrototypes();
@@ -162,7 +162,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sections</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_Sections()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Section> getSections();
@@ -178,7 +178,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Activations</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_Activations()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Activation> getActivations();
@@ -194,7 +194,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Events</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_Events()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<OsEvent> getEvents();
@@ -210,7 +210,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type Definitions</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_TypeDefinitions()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<TypeDefinition> getTypeDefinitions();
@@ -226,7 +226,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Custom Entities</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_CustomEntities()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<CustomEntity> getCustomEntities();
@@ -242,7 +242,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Process Chains</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_ProcessChains()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ProcessChain> getProcessChains();
@@ -258,7 +258,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Modes</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_Modes()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Mode> getModes();
@@ -274,7 +274,7 @@ public interface SWModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mode Labels</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_ModeLabels()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ModeLabel> getModeLabels();

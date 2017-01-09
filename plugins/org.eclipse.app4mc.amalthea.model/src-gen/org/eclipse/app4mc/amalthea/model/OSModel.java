@@ -56,7 +56,7 @@ public interface OSModel extends BaseObject {
 	 * @return the value of the '<em>Os Data Consistency</em>' containment reference.
 	 * @see #setOsDataConsistency(OsDataConsistency)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOSModel_OsDataConsistency()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	OsDataConsistency getOsDataConsistency();
@@ -82,7 +82,7 @@ public interface OSModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Semaphores</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOSModel_Semaphores()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Semaphore> getSemaphores();
@@ -98,7 +98,7 @@ public interface OSModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Operating Systems</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOSModel_OperatingSystems()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<OperatingSystem> getOperatingSystems();
@@ -114,7 +114,7 @@ public interface OSModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Os Overheads</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOSModel_OsOverheads()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<OsInstructions> getOsOverheads();

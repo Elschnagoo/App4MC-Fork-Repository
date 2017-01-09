@@ -115,29 +115,6 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	 * @generated
 	 */
 	public Time getTime() {
-		if (time != null && time.eIsProxy()) {
-			InternalEObject oldTime = (InternalEObject)time;
-			time = (Time)eResolveProxy(oldTime);
-			if (time != oldTime) {
-				InternalEObject newTime = (InternalEObject)time;
-				NotificationChain msgs = oldTime.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME, null, null);
-				if (newTime.eInternalContainer() == null) {
-					msgs = newTime.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME, oldTime, time));
-			}
-		}
-		return time;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetTime() {
 		return time;
 	}
 
@@ -200,8 +177,7 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__MULTIPLIER:
 				return getMultiplier();
 			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME:
-				if (resolve) return getTime();
-				return basicGetTime();
+				return getTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

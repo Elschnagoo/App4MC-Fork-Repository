@@ -55,7 +55,7 @@ public interface Runnable extends AbstractElementMemoryInformation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable Items</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_RunnableItems()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<RunnableItem> getRunnableItems();

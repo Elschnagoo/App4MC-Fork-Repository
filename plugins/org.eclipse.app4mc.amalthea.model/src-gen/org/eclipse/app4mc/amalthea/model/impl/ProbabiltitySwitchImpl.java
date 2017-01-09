@@ -79,7 +79,7 @@ public class ProbabiltitySwitchImpl extends GraphEntryBaseImpl implements Probab
 	 */
 	public EList<ProbabilitySwitchEntry<GraphEntryBase>> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList.Resolving<ProbabilitySwitchEntry<GraphEntryBase>>(ProbabilitySwitchEntry.class, this, AmaltheaPackage.PROBABILTITY_SWITCH__ENTRIES);
+			entries = new EObjectContainmentEList<ProbabilitySwitchEntry<GraphEntryBase>>(ProbabilitySwitchEntry.class, this, AmaltheaPackage.PROBABILTITY_SWITCH__ENTRIES);
 		}
 		return entries;
 	}

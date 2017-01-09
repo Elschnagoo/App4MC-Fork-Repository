@@ -115,29 +115,6 @@ public abstract class SynchronizationConstraintImpl extends TimingConstraintImpl
 	 * @generated
 	 */
 	public Time getTolerance() {
-		if (tolerance != null && tolerance.eIsProxy()) {
-			InternalEObject oldTolerance = (InternalEObject)tolerance;
-			tolerance = (Time)eResolveProxy(oldTolerance);
-			if (tolerance != oldTolerance) {
-				InternalEObject newTolerance = (InternalEObject)tolerance;
-				NotificationChain msgs = oldTolerance.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNCHRONIZATION_CONSTRAINT__TOLERANCE, null, null);
-				if (newTolerance.eInternalContainer() == null) {
-					msgs = newTolerance.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNCHRONIZATION_CONSTRAINT__TOLERANCE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.SYNCHRONIZATION_CONSTRAINT__TOLERANCE, oldTolerance, tolerance));
-			}
-		}
-		return tolerance;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetTolerance() {
 		return tolerance;
 	}
 
@@ -200,8 +177,7 @@ public abstract class SynchronizationConstraintImpl extends TimingConstraintImpl
 			case AmaltheaPackage.SYNCHRONIZATION_CONSTRAINT__MULTIPLE_OCCURRENCES_ALLOWED:
 				return isMultipleOccurrencesAllowed();
 			case AmaltheaPackage.SYNCHRONIZATION_CONSTRAINT__TOLERANCE:
-				if (resolve) return getTolerance();
-				return basicGetTolerance();
+				return getTolerance();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

@@ -210,31 +210,7 @@ public class LatencyDeviationImpl extends AmaltheaExtendedEObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	public Deviation<LongObject> getDeviation() {
-		if (deviation != null && deviation.eIsProxy()) {
-			InternalEObject oldDeviation = (InternalEObject)deviation;
-			deviation = (Deviation<LongObject>)eResolveProxy(oldDeviation);
-			if (deviation != oldDeviation) {
-				InternalEObject newDeviation = (InternalEObject)deviation;
-				NotificationChain msgs = oldDeviation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LATENCY_DEVIATION__DEVIATION, null, null);
-				if (newDeviation.eInternalContainer() == null) {
-					msgs = newDeviation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LATENCY_DEVIATION__DEVIATION, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.LATENCY_DEVIATION__DEVIATION, oldDeviation, deviation));
-			}
-		}
-		return deviation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Deviation<LongObject> basicGetDeviation() {
 		return deviation;
 	}
 
@@ -302,8 +278,7 @@ public class LatencyDeviationImpl extends AmaltheaExtendedEObjectImpl implements
 				if (resolve) return getQuartz();
 				return basicGetQuartz();
 			case AmaltheaPackage.LATENCY_DEVIATION__DEVIATION:
-				if (resolve) return getDeviation();
-				return basicGetDeviation();
+				return getDeviation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

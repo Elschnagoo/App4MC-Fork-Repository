@@ -90,29 +90,6 @@ public abstract class ProcessImpl extends AbstractProcessImpl implements org.ecl
 	 * @generated
 	 */
 	public CallGraph getCallGraph() {
-		if (callGraph != null && callGraph.eIsProxy()) {
-			InternalEObject oldCallGraph = (InternalEObject)callGraph;
-			callGraph = (CallGraph)eResolveProxy(oldCallGraph);
-			if (callGraph != oldCallGraph) {
-				InternalEObject newCallGraph = (InternalEObject)callGraph;
-				NotificationChain msgs = oldCallGraph.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESS__CALL_GRAPH, null, null);
-				if (newCallGraph.eInternalContainer() == null) {
-					msgs = newCallGraph.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESS__CALL_GRAPH, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.PROCESS__CALL_GRAPH, oldCallGraph, callGraph));
-			}
-		}
-		return callGraph;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CallGraph basicGetCallGraph() {
 		return callGraph;
 	}
 
@@ -185,8 +162,7 @@ public abstract class ProcessImpl extends AbstractProcessImpl implements org.ecl
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.PROCESS__CALL_GRAPH:
-				if (resolve) return getCallGraph();
-				return basicGetCallGraph();
+				return getCallGraph();
 			case AmaltheaPackage.PROCESS__STIMULI:
 				return getStimuli();
 		}

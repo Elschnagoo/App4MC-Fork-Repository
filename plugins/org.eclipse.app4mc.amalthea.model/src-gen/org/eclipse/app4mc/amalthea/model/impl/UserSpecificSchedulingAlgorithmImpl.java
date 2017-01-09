@@ -78,7 +78,7 @@ public class UserSpecificSchedulingAlgorithmImpl extends TaskSchedulingAlgorithm
 	 */
 	public EList<AlgorithmParameter> getParameter() {
 		if (parameter == null) {
-			parameter = new EObjectContainmentEList.Resolving<AlgorithmParameter>(AlgorithmParameter.class, this, AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__PARAMETER);
+			parameter = new EObjectContainmentEList<AlgorithmParameter>(AlgorithmParameter.class, this, AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__PARAMETER);
 		}
 		return parameter;
 	}

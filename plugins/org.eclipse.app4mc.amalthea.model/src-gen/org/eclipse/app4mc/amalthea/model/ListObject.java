@@ -42,7 +42,7 @@ public interface ListObject extends Value {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Values</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getListObject_Values()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Value> getValues();

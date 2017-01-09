@@ -103,29 +103,6 @@ public class DataStabilityGroupImpl extends ReferableBaseObjectImpl implements D
 	 * @generated
 	 */
 	public DataGroupScope getScope() {
-		if (scope != null && scope.eIsProxy()) {
-			InternalEObject oldScope = (InternalEObject)scope;
-			scope = (DataGroupScope)eResolveProxy(oldScope);
-			if (scope != oldScope) {
-				InternalEObject newScope = (InternalEObject)scope;
-				NotificationChain msgs = oldScope.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_STABILITY_GROUP__SCOPE, null, null);
-				if (newScope.eInternalContainer() == null) {
-					msgs = newScope.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DATA_STABILITY_GROUP__SCOPE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.DATA_STABILITY_GROUP__SCOPE, oldScope, scope));
-			}
-		}
-		return scope;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DataGroupScope basicGetScope() {
 		return scope;
 	}
 
@@ -188,8 +165,7 @@ public class DataStabilityGroupImpl extends ReferableBaseObjectImpl implements D
 			case AmaltheaPackage.DATA_STABILITY_GROUP__LABELS:
 				return getLabels();
 			case AmaltheaPackage.DATA_STABILITY_GROUP__SCOPE:
-				if (resolve) return getScope();
-				return basicGetScope();
+				return getScope();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

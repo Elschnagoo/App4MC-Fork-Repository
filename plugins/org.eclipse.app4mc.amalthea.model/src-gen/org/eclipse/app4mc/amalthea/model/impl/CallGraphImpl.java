@@ -78,7 +78,7 @@ public class CallGraphImpl extends BaseObjectImpl implements CallGraph {
 	 */
 	public EList<GraphEntryBase> getGraphEntries() {
 		if (graphEntries == null) {
-			graphEntries = new EObjectContainmentEList.Resolving<GraphEntryBase>(GraphEntryBase.class, this, AmaltheaPackage.CALL_GRAPH__GRAPH_ENTRIES);
+			graphEntries = new EObjectContainmentEList<GraphEntryBase>(GraphEntryBase.class, this, AmaltheaPackage.CALL_GRAPH__GRAPH_ENTRIES);
 		}
 		return graphEntries;
 	}

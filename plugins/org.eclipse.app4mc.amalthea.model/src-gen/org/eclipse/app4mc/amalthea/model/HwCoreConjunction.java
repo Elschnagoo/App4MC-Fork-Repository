@@ -72,7 +72,7 @@ public interface HwCoreConjunction extends HwCoreConstraint {
 	 * @return the value of the '<em>First Constraint</em>' containment reference.
 	 * @see #setFirstConstraint(HwCoreConstraint)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwCoreConjunction_FirstConstraint()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	HwCoreConstraint getFirstConstraint();
@@ -98,7 +98,7 @@ public interface HwCoreConjunction extends HwCoreConstraint {
 	 * @return the value of the '<em>Second Constraint</em>' containment reference.
 	 * @see #setSecondConstraint(HwCoreConstraint)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwCoreConjunction_SecondConstraint()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	HwCoreConstraint getSecondConstraint();

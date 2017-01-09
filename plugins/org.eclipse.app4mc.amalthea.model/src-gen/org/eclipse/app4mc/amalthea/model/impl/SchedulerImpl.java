@@ -94,29 +94,6 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * @generated
 	 */
 	public SchedulingUnit getSchedulingUnit() {
-		if (schedulingUnit != null && schedulingUnit.eIsProxy()) {
-			InternalEObject oldSchedulingUnit = (InternalEObject)schedulingUnit;
-			schedulingUnit = (SchedulingUnit)eResolveProxy(oldSchedulingUnit);
-			if (schedulingUnit != oldSchedulingUnit) {
-				InternalEObject newSchedulingUnit = (InternalEObject)schedulingUnit;
-				NotificationChain msgs = oldSchedulingUnit.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SCHEDULER__SCHEDULING_UNIT, null, null);
-				if (newSchedulingUnit.eInternalContainer() == null) {
-					msgs = newSchedulingUnit.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SCHEDULER__SCHEDULING_UNIT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.SCHEDULER__SCHEDULING_UNIT, oldSchedulingUnit, schedulingUnit));
-			}
-		}
-		return schedulingUnit;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SchedulingUnit basicGetSchedulingUnit() {
 		return schedulingUnit;
 	}
 
@@ -198,8 +175,7 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.SCHEDULER__SCHEDULING_UNIT:
-				if (resolve) return getSchedulingUnit();
-				return basicGetSchedulingUnit();
+				return getSchedulingUnit();
 			case AmaltheaPackage.SCHEDULER__SCHEDULE_UNIT_PRIORITY:
 				return getScheduleUnitPriority();
 		}

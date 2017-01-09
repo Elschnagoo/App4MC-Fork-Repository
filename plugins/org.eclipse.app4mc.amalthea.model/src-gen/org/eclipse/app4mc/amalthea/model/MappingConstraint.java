@@ -46,7 +46,7 @@ public interface MappingConstraint extends BaseObject {
 	 * @return the value of the '<em>Hw Constraint</em>' containment reference.
 	 * @see #setHwConstraint(HwMemoryConstraint)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingConstraint_HwConstraint()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	HwMemoryConstraint getHwConstraint();

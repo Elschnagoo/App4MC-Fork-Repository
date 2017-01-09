@@ -73,29 +73,6 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * @generated
 	 */
 	public TaskSchedulingAlgorithm getSchedulingAlgorithm() {
-		if (schedulingAlgorithm != null && schedulingAlgorithm.eIsProxy()) {
-			InternalEObject oldSchedulingAlgorithm = (InternalEObject)schedulingAlgorithm;
-			schedulingAlgorithm = (TaskSchedulingAlgorithm)eResolveProxy(oldSchedulingAlgorithm);
-			if (schedulingAlgorithm != oldSchedulingAlgorithm) {
-				InternalEObject newSchedulingAlgorithm = (InternalEObject)schedulingAlgorithm;
-				NotificationChain msgs = oldSchedulingAlgorithm.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TASK_SCHEDULER__SCHEDULING_ALGORITHM, null, null);
-				if (newSchedulingAlgorithm.eInternalContainer() == null) {
-					msgs = newSchedulingAlgorithm.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TASK_SCHEDULER__SCHEDULING_ALGORITHM, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.TASK_SCHEDULER__SCHEDULING_ALGORITHM, oldSchedulingAlgorithm, schedulingAlgorithm));
-			}
-		}
-		return schedulingAlgorithm;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TaskSchedulingAlgorithm basicGetSchedulingAlgorithm() {
 		return schedulingAlgorithm;
 	}
 
@@ -156,8 +133,7 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.TASK_SCHEDULER__SCHEDULING_ALGORITHM:
-				if (resolve) return getSchedulingAlgorithm();
-				return basicGetSchedulingAlgorithm();
+				return getSchedulingAlgorithm();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

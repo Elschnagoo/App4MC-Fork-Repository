@@ -78,7 +78,7 @@ public class ConfigModelImpl extends BaseObjectImpl implements ConfigModel {
 	 */
 	public EList<EventConfig> getEventsToTrace() {
 		if (eventsToTrace == null) {
-			eventsToTrace = new EObjectContainmentEList.Resolving<EventConfig>(EventConfig.class, this, AmaltheaPackage.CONFIG_MODEL__EVENTS_TO_TRACE);
+			eventsToTrace = new EObjectContainmentEList<EventConfig>(EventConfig.class, this, AmaltheaPackage.CONFIG_MODEL__EVENTS_TO_TRACE);
 		}
 		return eventsToTrace;
 	}

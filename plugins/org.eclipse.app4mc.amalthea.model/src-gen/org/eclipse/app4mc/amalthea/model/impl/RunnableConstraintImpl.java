@@ -75,29 +75,6 @@ public abstract class RunnableConstraintImpl extends AmaltheaExtendedEObjectImpl
 	 * @generated
 	 */
 	public RunnableConstraintTarget getTarget() {
-		if (target != null && target.eIsProxy()) {
-			InternalEObject oldTarget = (InternalEObject)target;
-			target = (RunnableConstraintTarget)eResolveProxy(oldTarget);
-			if (target != oldTarget) {
-				InternalEObject newTarget = (InternalEObject)target;
-				NotificationChain msgs = oldTarget.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_CONSTRAINT__TARGET, null, null);
-				if (newTarget.eInternalContainer() == null) {
-					msgs = newTarget.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_CONSTRAINT__TARGET, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE_CONSTRAINT__TARGET, oldTarget, target));
-			}
-		}
-		return target;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RunnableConstraintTarget basicGetTarget() {
 		return target;
 	}
 
@@ -158,8 +135,7 @@ public abstract class RunnableConstraintImpl extends AmaltheaExtendedEObjectImpl
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.RUNNABLE_CONSTRAINT__TARGET:
-				if (resolve) return getTarget();
-				return basicGetTarget();
+				return getTarget();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

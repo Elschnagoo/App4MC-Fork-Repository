@@ -41,7 +41,7 @@ public interface InterruptController extends Scheduler {
 	 * @return the value of the '<em>Scheduling Algorithm</em>' containment reference.
 	 * @see #setSchedulingAlgorithm(InterruptSchedulingAlgorithm)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterruptController_SchedulingAlgorithm()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	InterruptSchedulingAlgorithm getSchedulingAlgorithm();

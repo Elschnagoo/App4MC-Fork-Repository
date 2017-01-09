@@ -144,7 +144,7 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	 */
 	public EList<ModeSwitchEntry<RunnableItem>> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList.Resolving<ModeSwitchEntry<RunnableItem>>(ModeSwitchEntry.class, this, AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES);
+			entries = new EObjectContainmentEList<ModeSwitchEntry<RunnableItem>>(ModeSwitchEntry.class, this, AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES);
 		}
 		return entries;
 	}
@@ -154,31 +154,7 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	public ModeSwitchDefault<RunnableItem> getDefaultEntry() {
-		if (defaultEntry != null && defaultEntry.eIsProxy()) {
-			InternalEObject oldDefaultEntry = (InternalEObject)defaultEntry;
-			defaultEntry = (ModeSwitchDefault<RunnableItem>)eResolveProxy(oldDefaultEntry);
-			if (defaultEntry != oldDefaultEntry) {
-				InternalEObject newDefaultEntry = (InternalEObject)defaultEntry;
-				NotificationChain msgs = oldDefaultEntry.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY, null, null);
-				if (newDefaultEntry.eInternalContainer() == null) {
-					msgs = newDefaultEntry.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY, oldDefaultEntry, defaultEntry));
-			}
-		}
-		return defaultEntry;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ModeSwitchDefault<RunnableItem> basicGetDefaultEntry() {
 		return defaultEntry;
 	}
 
@@ -246,8 +222,7 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES:
 				return getEntries();
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY:
-				if (resolve) return getDefaultEntry();
-				return basicGetDefaultEntry();
+				return getDefaultEntry();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

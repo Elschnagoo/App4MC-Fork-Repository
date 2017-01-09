@@ -41,7 +41,7 @@ public interface LatencyDeviation extends Latency {
 	 * @return the value of the '<em>Deviation</em>' containment reference.
 	 * @see #setDeviation(Deviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLatencyDeviation_Deviation()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Deviation<LongObject> getDeviation();

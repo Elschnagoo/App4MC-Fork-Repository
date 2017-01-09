@@ -45,7 +45,7 @@ public interface Single extends Stimulus {
 	 * @return the value of the '<em>Activation</em>' containment reference.
 	 * @see #setActivation(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSingle_Activation()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getActivation();

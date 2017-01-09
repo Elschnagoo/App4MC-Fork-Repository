@@ -41,7 +41,7 @@ public interface SubEventChain extends EventChainItem, BaseObject {
 	 * @return the value of the '<em>Event Chain</em>' containment reference.
 	 * @see #setEventChain(EventChain)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSubEventChain_EventChain()
-	 * @model containment="true" resolveProxies="true" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EventChain getEventChain();

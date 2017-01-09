@@ -117,29 +117,6 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * @generated
 	 */
 	public DataSize getChunkSize() {
-		if (chunkSize != null && chunkSize.eIsProxy()) {
-			InternalEObject oldChunkSize = (InternalEObject)chunkSize;
-			chunkSize = (DataSize)eResolveProxy(oldChunkSize);
-			if (chunkSize != oldChunkSize) {
-				InternalEObject newChunkSize = (InternalEObject)chunkSize;
-				NotificationChain msgs = oldChunkSize.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE, null, null);
-				if (newChunkSize.eInternalContainer() == null) {
-					msgs = newChunkSize.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE, oldChunkSize, chunkSize));
-			}
-		}
-		return chunkSize;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DataSize basicGetChunkSize() {
 		return chunkSize;
 	}
 
@@ -242,8 +219,7 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE:
-				if (resolve) return getChunkSize();
-				return basicGetChunkSize();
+				return getChunkSize();
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS:
 				return getChunkProcessingInstructions();
 			case AmaltheaPackage.TRANSMISSION_POLICY__TRANSMIT_RATIO:

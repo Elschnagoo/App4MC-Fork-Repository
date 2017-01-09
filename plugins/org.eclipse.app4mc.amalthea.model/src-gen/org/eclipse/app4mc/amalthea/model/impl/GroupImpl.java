@@ -165,7 +165,7 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	 */
 	public EList<RunnableItem> getItems() {
 		if (items == null) {
-			items = new EObjectContainmentEList.Resolving<RunnableItem>(RunnableItem.class, this, AmaltheaPackage.GROUP__ITEMS);
+			items = new EObjectContainmentEList<RunnableItem>(RunnableItem.class, this, AmaltheaPackage.GROUP__ITEMS);
 		}
 		return items;
 	}

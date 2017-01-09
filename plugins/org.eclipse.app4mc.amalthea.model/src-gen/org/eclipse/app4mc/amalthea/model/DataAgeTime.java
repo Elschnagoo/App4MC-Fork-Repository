@@ -42,7 +42,7 @@ public interface DataAgeTime extends DataAge {
 	 * @return the value of the '<em>Minimum Time</em>' containment reference.
 	 * @see #setMinimumTime(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataAgeTime_MinimumTime()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getMinimumTime();
@@ -68,7 +68,7 @@ public interface DataAgeTime extends DataAge {
 	 * @return the value of the '<em>Maximum Time</em>' containment reference.
 	 * @see #setMaximumTime(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataAgeTime_MaximumTime()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getMaximumTime();

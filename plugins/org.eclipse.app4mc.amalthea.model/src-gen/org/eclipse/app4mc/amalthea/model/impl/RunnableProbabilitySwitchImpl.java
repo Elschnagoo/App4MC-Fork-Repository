@@ -79,7 +79,7 @@ public class RunnableProbabilitySwitchImpl extends RunnableItemImpl implements R
 	 */
 	public EList<ProbabilitySwitchEntry<RunnableItem>> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList.Resolving<ProbabilitySwitchEntry<RunnableItem>>(ProbabilitySwitchEntry.class, this, AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH__ENTRIES);
+			entries = new EObjectContainmentEList<ProbabilitySwitchEntry<RunnableItem>>(ProbabilitySwitchEntry.class, this, AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH__ENTRIES);
 		}
 		return entries;
 	}

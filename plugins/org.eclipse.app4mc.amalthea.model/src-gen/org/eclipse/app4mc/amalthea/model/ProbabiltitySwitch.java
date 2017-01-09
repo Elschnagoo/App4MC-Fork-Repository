@@ -46,7 +46,7 @@ public interface ProbabiltitySwitch extends GraphEntryBase {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabiltitySwitch_Entries()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ProbabilitySwitchEntry<GraphEntryBase>> getEntries();

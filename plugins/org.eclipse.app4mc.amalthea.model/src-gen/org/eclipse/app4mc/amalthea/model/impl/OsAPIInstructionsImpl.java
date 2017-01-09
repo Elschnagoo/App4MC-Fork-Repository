@@ -172,29 +172,6 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 */
 	public Instructions getApiSendMessage() {
-		if (apiSendMessage != null && apiSendMessage.eIsProxy()) {
-			InternalEObject oldApiSendMessage = (InternalEObject)apiSendMessage;
-			apiSendMessage = (Instructions)eResolveProxy(oldApiSendMessage);
-			if (apiSendMessage != oldApiSendMessage) {
-				InternalEObject newApiSendMessage = (InternalEObject)apiSendMessage;
-				NotificationChain msgs = oldApiSendMessage.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SEND_MESSAGE, null, null);
-				if (newApiSendMessage.eInternalContainer() == null) {
-					msgs = newApiSendMessage.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SEND_MESSAGE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SEND_MESSAGE, oldApiSendMessage, apiSendMessage));
-			}
-		}
-		return apiSendMessage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instructions basicGetApiSendMessage() {
 		return apiSendMessage;
 	}
 
@@ -238,29 +215,6 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 */
 	public Instructions getApiTerminateTask() {
-		if (apiTerminateTask != null && apiTerminateTask.eIsProxy()) {
-			InternalEObject oldApiTerminateTask = (InternalEObject)apiTerminateTask;
-			apiTerminateTask = (Instructions)eResolveProxy(oldApiTerminateTask);
-			if (apiTerminateTask != oldApiTerminateTask) {
-				InternalEObject newApiTerminateTask = (InternalEObject)apiTerminateTask;
-				NotificationChain msgs = oldApiTerminateTask.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_TERMINATE_TASK, null, null);
-				if (newApiTerminateTask.eInternalContainer() == null) {
-					msgs = newApiTerminateTask.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_TERMINATE_TASK, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_API_INSTRUCTIONS__API_TERMINATE_TASK, oldApiTerminateTask, apiTerminateTask));
-			}
-		}
-		return apiTerminateTask;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instructions basicGetApiTerminateTask() {
 		return apiTerminateTask;
 	}
 
@@ -304,29 +258,6 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 */
 	public Instructions getApiSchedule() {
-		if (apiSchedule != null && apiSchedule.eIsProxy()) {
-			InternalEObject oldApiSchedule = (InternalEObject)apiSchedule;
-			apiSchedule = (Instructions)eResolveProxy(oldApiSchedule);
-			if (apiSchedule != oldApiSchedule) {
-				InternalEObject newApiSchedule = (InternalEObject)apiSchedule;
-				NotificationChain msgs = oldApiSchedule.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SCHEDULE, null, null);
-				if (newApiSchedule.eInternalContainer() == null) {
-					msgs = newApiSchedule.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SCHEDULE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SCHEDULE, oldApiSchedule, apiSchedule));
-			}
-		}
-		return apiSchedule;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instructions basicGetApiSchedule() {
 		return apiSchedule;
 	}
 
@@ -370,29 +301,6 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 */
 	public Instructions getApiRequestResource() {
-		if (apiRequestResource != null && apiRequestResource.eIsProxy()) {
-			InternalEObject oldApiRequestResource = (InternalEObject)apiRequestResource;
-			apiRequestResource = (Instructions)eResolveProxy(oldApiRequestResource);
-			if (apiRequestResource != oldApiRequestResource) {
-				InternalEObject newApiRequestResource = (InternalEObject)apiRequestResource;
-				NotificationChain msgs = oldApiRequestResource.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_RESOURCE, null, null);
-				if (newApiRequestResource.eInternalContainer() == null) {
-					msgs = newApiRequestResource.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_RESOURCE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_RESOURCE, oldApiRequestResource, apiRequestResource));
-			}
-		}
-		return apiRequestResource;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instructions basicGetApiRequestResource() {
 		return apiRequestResource;
 	}
 
@@ -436,29 +344,6 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 */
 	public Instructions getApiReleaseResource() {
-		if (apiReleaseResource != null && apiReleaseResource.eIsProxy()) {
-			InternalEObject oldApiReleaseResource = (InternalEObject)apiReleaseResource;
-			apiReleaseResource = (Instructions)eResolveProxy(oldApiReleaseResource);
-			if (apiReleaseResource != oldApiReleaseResource) {
-				InternalEObject newApiReleaseResource = (InternalEObject)apiReleaseResource;
-				NotificationChain msgs = oldApiReleaseResource.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_RESOURCE, null, null);
-				if (newApiReleaseResource.eInternalContainer() == null) {
-					msgs = newApiReleaseResource.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_RESOURCE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_RESOURCE, oldApiReleaseResource, apiReleaseResource));
-			}
-		}
-		return apiReleaseResource;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instructions basicGetApiReleaseResource() {
 		return apiReleaseResource;
 	}
 
@@ -502,29 +387,6 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 */
 	public Instructions getApiSetEvent() {
-		if (apiSetEvent != null && apiSetEvent.eIsProxy()) {
-			InternalEObject oldApiSetEvent = (InternalEObject)apiSetEvent;
-			apiSetEvent = (Instructions)eResolveProxy(oldApiSetEvent);
-			if (apiSetEvent != oldApiSetEvent) {
-				InternalEObject newApiSetEvent = (InternalEObject)apiSetEvent;
-				NotificationChain msgs = oldApiSetEvent.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SET_EVENT, null, null);
-				if (newApiSetEvent.eInternalContainer() == null) {
-					msgs = newApiSetEvent.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SET_EVENT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SET_EVENT, oldApiSetEvent, apiSetEvent));
-			}
-		}
-		return apiSetEvent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instructions basicGetApiSetEvent() {
 		return apiSetEvent;
 	}
 
@@ -568,29 +430,6 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 */
 	public Instructions getApiWaitEvent() {
-		if (apiWaitEvent != null && apiWaitEvent.eIsProxy()) {
-			InternalEObject oldApiWaitEvent = (InternalEObject)apiWaitEvent;
-			apiWaitEvent = (Instructions)eResolveProxy(oldApiWaitEvent);
-			if (apiWaitEvent != oldApiWaitEvent) {
-				InternalEObject newApiWaitEvent = (InternalEObject)apiWaitEvent;
-				NotificationChain msgs = oldApiWaitEvent.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_WAIT_EVENT, null, null);
-				if (newApiWaitEvent.eInternalContainer() == null) {
-					msgs = newApiWaitEvent.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_WAIT_EVENT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_API_INSTRUCTIONS__API_WAIT_EVENT, oldApiWaitEvent, apiWaitEvent));
-			}
-		}
-		return apiWaitEvent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instructions basicGetApiWaitEvent() {
 		return apiWaitEvent;
 	}
 
@@ -634,29 +473,6 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 */
 	public Instructions getApiClearEvent() {
-		if (apiClearEvent != null && apiClearEvent.eIsProxy()) {
-			InternalEObject oldApiClearEvent = (InternalEObject)apiClearEvent;
-			apiClearEvent = (Instructions)eResolveProxy(oldApiClearEvent);
-			if (apiClearEvent != oldApiClearEvent) {
-				InternalEObject newApiClearEvent = (InternalEObject)apiClearEvent;
-				NotificationChain msgs = oldApiClearEvent.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_CLEAR_EVENT, null, null);
-				if (newApiClearEvent.eInternalContainer() == null) {
-					msgs = newApiClearEvent.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_CLEAR_EVENT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_API_INSTRUCTIONS__API_CLEAR_EVENT, oldApiClearEvent, apiClearEvent));
-			}
-		}
-		return apiClearEvent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instructions basicGetApiClearEvent() {
 		return apiClearEvent;
 	}
 
@@ -700,29 +516,6 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 */
 	public Instructions getApiActivateTask() {
-		if (apiActivateTask != null && apiActivateTask.eIsProxy()) {
-			InternalEObject oldApiActivateTask = (InternalEObject)apiActivateTask;
-			apiActivateTask = (Instructions)eResolveProxy(oldApiActivateTask);
-			if (apiActivateTask != oldApiActivateTask) {
-				InternalEObject newApiActivateTask = (InternalEObject)apiActivateTask;
-				NotificationChain msgs = oldApiActivateTask.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_ACTIVATE_TASK, null, null);
-				if (newApiActivateTask.eInternalContainer() == null) {
-					msgs = newApiActivateTask.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_ACTIVATE_TASK, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_API_INSTRUCTIONS__API_ACTIVATE_TASK, oldApiActivateTask, apiActivateTask));
-			}
-		}
-		return apiActivateTask;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instructions basicGetApiActivateTask() {
 		return apiActivateTask;
 	}
 
@@ -766,29 +559,6 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @generated
 	 */
 	public Instructions getApiEnforcedMigration() {
-		if (apiEnforcedMigration != null && apiEnforcedMigration.eIsProxy()) {
-			InternalEObject oldApiEnforcedMigration = (InternalEObject)apiEnforcedMigration;
-			apiEnforcedMigration = (Instructions)eResolveProxy(oldApiEnforcedMigration);
-			if (apiEnforcedMigration != oldApiEnforcedMigration) {
-				InternalEObject newApiEnforcedMigration = (InternalEObject)apiEnforcedMigration;
-				NotificationChain msgs = oldApiEnforcedMigration.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION, null, null);
-				if (newApiEnforcedMigration.eInternalContainer() == null) {
-					msgs = newApiEnforcedMigration.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION, oldApiEnforcedMigration, apiEnforcedMigration));
-			}
-		}
-		return apiEnforcedMigration;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instructions basicGetApiEnforcedMigration() {
 		return apiEnforcedMigration;
 	}
 
@@ -867,35 +637,25 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SEND_MESSAGE:
-				if (resolve) return getApiSendMessage();
-				return basicGetApiSendMessage();
+				return getApiSendMessage();
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_TERMINATE_TASK:
-				if (resolve) return getApiTerminateTask();
-				return basicGetApiTerminateTask();
+				return getApiTerminateTask();
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SCHEDULE:
-				if (resolve) return getApiSchedule();
-				return basicGetApiSchedule();
+				return getApiSchedule();
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_RESOURCE:
-				if (resolve) return getApiRequestResource();
-				return basicGetApiRequestResource();
+				return getApiRequestResource();
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_RESOURCE:
-				if (resolve) return getApiReleaseResource();
-				return basicGetApiReleaseResource();
+				return getApiReleaseResource();
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SET_EVENT:
-				if (resolve) return getApiSetEvent();
-				return basicGetApiSetEvent();
+				return getApiSetEvent();
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_WAIT_EVENT:
-				if (resolve) return getApiWaitEvent();
-				return basicGetApiWaitEvent();
+				return getApiWaitEvent();
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_CLEAR_EVENT:
-				if (resolve) return getApiClearEvent();
-				return basicGetApiClearEvent();
+				return getApiClearEvent();
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_ACTIVATE_TASK:
-				if (resolve) return getApiActivateTask();
-				return basicGetApiActivateTask();
+				return getApiActivateTask();
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION:
-				if (resolve) return getApiEnforcedMigration();
-				return basicGetApiEnforcedMigration();
+				return getApiEnforcedMigration();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

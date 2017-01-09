@@ -123,7 +123,7 @@ public class CallSequenceImpl extends GraphEntryBaseImpl implements CallSequence
 	 */
 	public EList<CallSequenceItem> getCalls() {
 		if (calls == null) {
-			calls = new EObjectContainmentEList.Resolving<CallSequenceItem>(CallSequenceItem.class, this, AmaltheaPackage.CALL_SEQUENCE__CALLS);
+			calls = new EObjectContainmentEList<CallSequenceItem>(CallSequenceItem.class, this, AmaltheaPackage.CALL_SEQUENCE__CALLS);
 		}
 		return calls;
 	}

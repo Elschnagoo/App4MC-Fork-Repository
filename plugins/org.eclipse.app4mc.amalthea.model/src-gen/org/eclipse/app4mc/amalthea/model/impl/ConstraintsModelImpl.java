@@ -174,7 +174,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 */
 	public EList<EventChain> getEventChains() {
 		if (eventChains == null) {
-			eventChains = new EObjectContainmentEList.Resolving<EventChain>(EventChain.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__EVENT_CHAINS);
+			eventChains = new EObjectContainmentEList<EventChain>(EventChain.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__EVENT_CHAINS);
 		}
 		return eventChains;
 	}
@@ -186,7 +186,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 */
 	public EList<TimingConstraint> getTimingConstraints() {
 		if (timingConstraints == null) {
-			timingConstraints = new EObjectContainmentEList.Resolving<TimingConstraint>(TimingConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__TIMING_CONSTRAINTS);
+			timingConstraints = new EObjectContainmentEList<TimingConstraint>(TimingConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__TIMING_CONSTRAINTS);
 		}
 		return timingConstraints;
 	}
@@ -198,7 +198,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 */
 	public EList<AffinityConstraint> getAffinityConstraints() {
 		if (affinityConstraints == null) {
-			affinityConstraints = new EObjectContainmentEList.Resolving<AffinityConstraint>(AffinityConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__AFFINITY_CONSTRAINTS);
+			affinityConstraints = new EObjectContainmentEList<AffinityConstraint>(AffinityConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__AFFINITY_CONSTRAINTS);
 		}
 		return affinityConstraints;
 	}
@@ -210,7 +210,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 */
 	public EList<RunnableSequencingConstraint> getRunnableSequencingConstraints() {
 		if (runnableSequencingConstraints == null) {
-			runnableSequencingConstraints = new EObjectContainmentEList.Resolving<RunnableSequencingConstraint>(RunnableSequencingConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__RUNNABLE_SEQUENCING_CONSTRAINTS);
+			runnableSequencingConstraints = new EObjectContainmentEList<RunnableSequencingConstraint>(RunnableSequencingConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__RUNNABLE_SEQUENCING_CONSTRAINTS);
 		}
 		return runnableSequencingConstraints;
 	}
@@ -222,7 +222,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 */
 	public EList<DataAgeConstraint> getDataAgeConstraints() {
 		if (dataAgeConstraints == null) {
-			dataAgeConstraints = new EObjectContainmentEList.Resolving<DataAgeConstraint>(DataAgeConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__DATA_AGE_CONSTRAINTS);
+			dataAgeConstraints = new EObjectContainmentEList<DataAgeConstraint>(DataAgeConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__DATA_AGE_CONSTRAINTS);
 		}
 		return dataAgeConstraints;
 	}
@@ -234,7 +234,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 */
 	public EList<Requirement> getRequirements() {
 		if (requirements == null) {
-			requirements = new EObjectContainmentEList.Resolving<Requirement>(Requirement.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__REQUIREMENTS);
+			requirements = new EObjectContainmentEList<Requirement>(Requirement.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__REQUIREMENTS);
 		}
 		return requirements;
 	}
@@ -246,7 +246,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 */
 	public EList<DataCoherencyGroup> getDataCoherencyGroups() {
 		if (dataCoherencyGroups == null) {
-			dataCoherencyGroups = new EObjectContainmentEList.Resolving<DataCoherencyGroup>(DataCoherencyGroup.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__DATA_COHERENCY_GROUPS);
+			dataCoherencyGroups = new EObjectContainmentEList<DataCoherencyGroup>(DataCoherencyGroup.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__DATA_COHERENCY_GROUPS);
 		}
 		return dataCoherencyGroups;
 	}
@@ -258,7 +258,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 */
 	public EList<DataStabilityGroup> getDataStabilityGroups() {
 		if (dataStabilityGroups == null) {
-			dataStabilityGroups = new EObjectContainmentEList.Resolving<DataStabilityGroup>(DataStabilityGroup.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__DATA_STABILITY_GROUPS);
+			dataStabilityGroups = new EObjectContainmentEList<DataStabilityGroup>(DataStabilityGroup.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__DATA_STABILITY_GROUPS);
 		}
 		return dataStabilityGroups;
 	}
@@ -270,7 +270,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 */
 	public EList<PhysicalSectionConstraint> getPhysicalSectionConstraints() {
 		if (physicalSectionConstraints == null) {
-			physicalSectionConstraints = new EObjectContainmentEList.Resolving<PhysicalSectionConstraint>(PhysicalSectionConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__PHYSICAL_SECTION_CONSTRAINTS);
+			physicalSectionConstraints = new EObjectContainmentEList<PhysicalSectionConstraint>(PhysicalSectionConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__PHYSICAL_SECTION_CONSTRAINTS);
 		}
 		return physicalSectionConstraints;
 	}

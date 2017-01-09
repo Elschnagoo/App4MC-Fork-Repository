@@ -48,7 +48,7 @@ public interface AllocationConstraint extends BaseObject {
 	 * @return the value of the '<em>Hw Constraint</em>' containment reference.
 	 * @see #setHwConstraint(HwCoreConstraint)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAllocationConstraint_HwConstraint()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	HwCoreConstraint getHwConstraint();

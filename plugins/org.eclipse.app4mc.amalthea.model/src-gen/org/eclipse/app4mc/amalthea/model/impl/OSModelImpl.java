@@ -116,29 +116,6 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 * @generated
 	 */
 	public OsDataConsistency getOsDataConsistency() {
-		if (osDataConsistency != null && osDataConsistency.eIsProxy()) {
-			InternalEObject oldOsDataConsistency = (InternalEObject)osDataConsistency;
-			osDataConsistency = (OsDataConsistency)eResolveProxy(oldOsDataConsistency);
-			if (osDataConsistency != oldOsDataConsistency) {
-				InternalEObject newOsDataConsistency = (InternalEObject)osDataConsistency;
-				NotificationChain msgs = oldOsDataConsistency.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, null, null);
-				if (newOsDataConsistency.eInternalContainer() == null) {
-					msgs = newOsDataConsistency.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, oldOsDataConsistency, osDataConsistency));
-			}
-		}
-		return osDataConsistency;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OsDataConsistency basicGetOsDataConsistency() {
 		return osDataConsistency;
 	}
 
@@ -183,7 +160,7 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 */
 	public EList<Semaphore> getSemaphores() {
 		if (semaphores == null) {
-			semaphores = new EObjectContainmentEList.Resolving<Semaphore>(Semaphore.class, this, AmaltheaPackage.OS_MODEL__SEMAPHORES);
+			semaphores = new EObjectContainmentEList<Semaphore>(Semaphore.class, this, AmaltheaPackage.OS_MODEL__SEMAPHORES);
 		}
 		return semaphores;
 	}
@@ -195,7 +172,7 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 */
 	public EList<OperatingSystem> getOperatingSystems() {
 		if (operatingSystems == null) {
-			operatingSystems = new EObjectContainmentEList.Resolving<OperatingSystem>(OperatingSystem.class, this, AmaltheaPackage.OS_MODEL__OPERATING_SYSTEMS);
+			operatingSystems = new EObjectContainmentEList<OperatingSystem>(OperatingSystem.class, this, AmaltheaPackage.OS_MODEL__OPERATING_SYSTEMS);
 		}
 		return operatingSystems;
 	}
@@ -207,7 +184,7 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 */
 	public EList<OsInstructions> getOsOverheads() {
 		if (osOverheads == null) {
-			osOverheads = new EObjectContainmentEList.Resolving<OsInstructions>(OsInstructions.class, this, AmaltheaPackage.OS_MODEL__OS_OVERHEADS);
+			osOverheads = new EObjectContainmentEList<OsInstructions>(OsInstructions.class, this, AmaltheaPackage.OS_MODEL__OS_OVERHEADS);
 		}
 		return osOverheads;
 	}
@@ -241,8 +218,7 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY:
-				if (resolve) return getOsDataConsistency();
-				return basicGetOsDataConsistency();
+				return getOsDataConsistency();
 			case AmaltheaPackage.OS_MODEL__SEMAPHORES:
 				return getSemaphores();
 			case AmaltheaPackage.OS_MODEL__OPERATING_SYSTEMS:

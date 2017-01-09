@@ -73,7 +73,7 @@ public interface ClockMultiplierListEntry extends BaseObject {
 	 * @return the value of the '<em>Time</em>' containment reference.
 	 * @see #setTime(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getClockMultiplierListEntry_Time()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Time getTime();

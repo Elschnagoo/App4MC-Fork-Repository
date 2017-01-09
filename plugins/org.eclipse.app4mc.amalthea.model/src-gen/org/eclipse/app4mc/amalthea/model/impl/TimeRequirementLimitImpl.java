@@ -116,29 +116,6 @@ public class TimeRequirementLimitImpl extends RequirementLimitImpl implements Ti
 	 * @generated
 	 */
 	public SignedTime getLimitValue() {
-		if (limitValue != null && limitValue.eIsProxy()) {
-			InternalEObject oldLimitValue = (InternalEObject)limitValue;
-			limitValue = (SignedTime)eResolveProxy(oldLimitValue);
-			if (limitValue != oldLimitValue) {
-				InternalEObject newLimitValue = (InternalEObject)limitValue;
-				NotificationChain msgs = oldLimitValue.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TIME_REQUIREMENT_LIMIT__LIMIT_VALUE, null, null);
-				if (newLimitValue.eInternalContainer() == null) {
-					msgs = newLimitValue.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TIME_REQUIREMENT_LIMIT__LIMIT_VALUE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.TIME_REQUIREMENT_LIMIT__LIMIT_VALUE, oldLimitValue, limitValue));
-			}
-		}
-		return limitValue;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SignedTime basicGetLimitValue() {
 		return limitValue;
 	}
 
@@ -201,8 +178,7 @@ public class TimeRequirementLimitImpl extends RequirementLimitImpl implements Ti
 			case AmaltheaPackage.TIME_REQUIREMENT_LIMIT__METRIC:
 				return getMetric();
 			case AmaltheaPackage.TIME_REQUIREMENT_LIMIT__LIMIT_VALUE:
-				if (resolve) return getLimitValue();
-				return basicGetLimitValue();
+				return getLimitValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

@@ -47,7 +47,7 @@ public interface ProcessConstraint extends EObject {
 	 * @return the value of the '<em>Target</em>' containment reference.
 	 * @see #setTarget(ProcessConstraintTarget)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessConstraint_Target()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ProcessConstraintTarget getTarget();

@@ -164,7 +164,7 @@ public class SchedulingSWUnitImpl extends SchedulingUnitImpl implements Scheduli
 	 */
 	public EList<Instructions> getInstructions() {
 		if (instructions == null) {
-			instructions = new EObjectContainmentEList.Resolving<Instructions>(Instructions.class, this, AmaltheaPackage.SCHEDULING_SW_UNIT__INSTRUCTIONS);
+			instructions = new EObjectContainmentEList<Instructions>(Instructions.class, this, AmaltheaPackage.SCHEDULING_SW_UNIT__INSTRUCTIONS);
 		}
 		return instructions;
 	}

@@ -78,7 +78,7 @@ public class ClockMultiplierListImpl extends ClockImpl implements ClockMultiplie
 	 */
 	public EList<ClockMultiplierListEntry> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList.Resolving<ClockMultiplierListEntry>(ClockMultiplierListEntry.class, this, AmaltheaPackage.CLOCK_MULTIPLIER_LIST__ENTRIES);
+			entries = new EObjectContainmentEList<ClockMultiplierListEntry>(ClockMultiplierListEntry.class, this, AmaltheaPackage.CLOCK_MULTIPLIER_LIST__ENTRIES);
 		}
 		return entries;
 	}

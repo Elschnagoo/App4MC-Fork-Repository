@@ -90,7 +90,7 @@ public class StimuliModelImpl extends BaseObjectImpl implements StimuliModel {
 	 */
 	public EList<Stimulus> getStimuli() {
 		if (stimuli == null) {
-			stimuli = new EObjectContainmentEList.Resolving<Stimulus>(Stimulus.class, this, AmaltheaPackage.STIMULI_MODEL__STIMULI);
+			stimuli = new EObjectContainmentEList<Stimulus>(Stimulus.class, this, AmaltheaPackage.STIMULI_MODEL__STIMULI);
 		}
 		return stimuli;
 	}
@@ -102,7 +102,7 @@ public class StimuliModelImpl extends BaseObjectImpl implements StimuliModel {
 	 */
 	public EList<Clock> getClocks() {
 		if (clocks == null) {
-			clocks = new EObjectContainmentEList.Resolving<Clock>(Clock.class, this, AmaltheaPackage.STIMULI_MODEL__CLOCKS);
+			clocks = new EObjectContainmentEList<Clock>(Clock.class, this, AmaltheaPackage.STIMULI_MODEL__CLOCKS);
 		}
 		return clocks;
 	}

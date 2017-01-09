@@ -59,7 +59,7 @@ public interface MappingModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Task Allocation</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_TaskAllocation()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<TaskAllocation> getTaskAllocation();
@@ -75,7 +75,7 @@ public interface MappingModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Isr Allocation</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_IsrAllocation()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ISRAllocation> getIsrAllocation();
@@ -91,7 +91,7 @@ public interface MappingModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable Allocation</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_RunnableAllocation()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<RunnableAllocation> getRunnableAllocation();
@@ -107,7 +107,7 @@ public interface MappingModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Core Allocation</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_CoreAllocation()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<CoreAllocation> getCoreAllocation();
@@ -123,7 +123,7 @@ public interface MappingModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mapping</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_Mapping()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Mapping> getMapping();
@@ -139,7 +139,7 @@ public interface MappingModel extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Physical Section Mapping</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_PhysicalSectionMapping()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<PhysicalSectionMapping> getPhysicalSectionMapping();

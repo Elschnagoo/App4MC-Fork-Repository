@@ -67,7 +67,7 @@ public class MinAvgMaxStatisticImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int AVG_EDEFAULT = 0;
+	protected static final float AVG_EDEFAULT = 0.0F;
 
 	/**
 	 * The cached value of the '{@link #getAvg() <em>Avg</em>}' attribute.
@@ -77,7 +77,7 @@ public class MinAvgMaxStatisticImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected int avg = AVG_EDEFAULT;
+	protected float avg = AVG_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMax() <em>Max</em>}' attribute.
@@ -144,7 +144,7 @@ public class MinAvgMaxStatisticImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getAvg() {
+	public float getAvg() {
 		return avg;
 	}
 
@@ -153,8 +153,8 @@ public class MinAvgMaxStatisticImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAvg(int newAvg) {
-		int oldAvg = avg;
+	public void setAvg(float newAvg) {
+		float oldAvg = avg;
 		avg = newAvg;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MIN_AVG_MAX_STATISTIC__AVG, oldAvg, avg));
@@ -211,7 +211,7 @@ public class MinAvgMaxStatisticImpl extends AmaltheaExtendedEObjectImpl implemen
 				setMin((Integer)newValue);
 				return;
 			case AmaltheaPackage.MIN_AVG_MAX_STATISTIC__AVG:
-				setAvg((Integer)newValue);
+				setAvg((Float)newValue);
 				return;
 			case AmaltheaPackage.MIN_AVG_MAX_STATISTIC__MAX:
 				setMax((Integer)newValue);

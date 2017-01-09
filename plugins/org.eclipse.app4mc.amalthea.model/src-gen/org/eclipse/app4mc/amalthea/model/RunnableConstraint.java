@@ -47,7 +47,7 @@ public interface RunnableConstraint extends EObject {
 	 * @return the value of the '<em>Target</em>' containment reference.
 	 * @see #setTarget(RunnableConstraintTarget)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableConstraint_Target()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	RunnableConstraintTarget getTarget();

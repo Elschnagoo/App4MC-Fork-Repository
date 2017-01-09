@@ -43,7 +43,7 @@ public interface InstructionFetch extends BaseObject {
 	 * @return the value of the '<em>Count</em>' containment reference.
 	 * @see #setCount(NumericStatistic)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInstructionFetch_Count()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	NumericStatistic getCount();
@@ -69,7 +69,7 @@ public interface InstructionFetch extends BaseObject {
 	 * @return the value of the '<em>Misses</em>' containment reference.
 	 * @see #setMisses(NumericStatistic)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInstructionFetch_Misses()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	NumericStatistic getMisses();
@@ -95,7 +95,7 @@ public interface InstructionFetch extends BaseObject {
 	 * @return the value of the '<em>Cycles Per Fetch</em>' containment reference.
 	 * @see #setCyclesPerFetch(NumericStatistic)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInstructionFetch_CyclesPerFetch()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	NumericStatistic getCyclesPerFetch();

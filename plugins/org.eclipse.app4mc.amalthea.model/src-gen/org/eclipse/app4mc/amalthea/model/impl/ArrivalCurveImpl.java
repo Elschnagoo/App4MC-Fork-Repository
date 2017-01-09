@@ -36,21 +36,21 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ArrivalCurveImpl#getArrivalCurveEntries <em>Arrival Curve Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ArrivalCurveImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	/**
-	 * The cached value of the '{@link #getArrivalCurveEntries() <em>Arrival Curve Entries</em>}' containment reference list.
+	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getArrivalCurveEntries()
+	 * @see #getEntries()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ArrivalCurveEntry> arrivalCurveEntries;
+	protected EList<ArrivalCurveEntry> entries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,11 +76,11 @@ public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ArrivalCurveEntry> getArrivalCurveEntries() {
-		if (arrivalCurveEntries == null) {
-			arrivalCurveEntries = new EObjectContainmentEList.Resolving<ArrivalCurveEntry>(ArrivalCurveEntry.class, this, AmaltheaPackage.ARRIVAL_CURVE__ARRIVAL_CURVE_ENTRIES);
+	public EList<ArrivalCurveEntry> getEntries() {
+		if (entries == null) {
+			entries = new EObjectContainmentEList<ArrivalCurveEntry>(ArrivalCurveEntry.class, this, AmaltheaPackage.ARRIVAL_CURVE__ENTRIES);
 		}
-		return arrivalCurveEntries;
+		return entries;
 	}
 
 	/**
@@ -91,8 +91,8 @@ public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE__ARRIVAL_CURVE_ENTRIES:
-				return ((InternalEList<?>)getArrivalCurveEntries()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.ARRIVAL_CURVE__ENTRIES:
+				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -105,8 +105,8 @@ public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE__ARRIVAL_CURVE_ENTRIES:
-				return getArrivalCurveEntries();
+			case AmaltheaPackage.ARRIVAL_CURVE__ENTRIES:
+				return getEntries();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,9 +120,9 @@ public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE__ARRIVAL_CURVE_ENTRIES:
-				getArrivalCurveEntries().clear();
-				getArrivalCurveEntries().addAll((Collection<? extends ArrivalCurveEntry>)newValue);
+			case AmaltheaPackage.ARRIVAL_CURVE__ENTRIES:
+				getEntries().clear();
+				getEntries().addAll((Collection<? extends ArrivalCurveEntry>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -136,8 +136,8 @@ public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE__ARRIVAL_CURVE_ENTRIES:
-				getArrivalCurveEntries().clear();
+			case AmaltheaPackage.ARRIVAL_CURVE__ENTRIES:
+				getEntries().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -151,8 +151,8 @@ public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE__ARRIVAL_CURVE_ENTRIES:
-				return arrivalCurveEntries != null && !arrivalCurveEntries.isEmpty();
+			case AmaltheaPackage.ARRIVAL_CURVE__ENTRIES:
+				return entries != null && !entries.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

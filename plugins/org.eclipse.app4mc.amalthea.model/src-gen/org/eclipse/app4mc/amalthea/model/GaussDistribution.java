@@ -46,7 +46,7 @@ public interface GaussDistribution<T> extends Distribution<T> {
 	 * @return the value of the '<em>Sd</em>' containment reference.
 	 * @see #setSd(Object)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getGaussDistribution_Sd()
-	 * @model kind="reference" containment="true" resolveProxies="true"
+	 * @model kind="reference" containment="true"
 	 * @generated
 	 */
 	T getSd();
@@ -72,7 +72,7 @@ public interface GaussDistribution<T> extends Distribution<T> {
 	 * @return the value of the '<em>Mean</em>' containment reference.
 	 * @see #setMean(Object)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getGaussDistribution_Mean()
-	 * @model kind="reference" containment="true" resolveProxies="true"
+	 * @model kind="reference" containment="true"
 	 * @generated
 	 */
 	T getMean();

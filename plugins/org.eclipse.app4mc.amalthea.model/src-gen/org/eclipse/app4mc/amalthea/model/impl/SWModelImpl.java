@@ -233,7 +233,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<ISR> getIsrs() {
 		if (isrs == null) {
-			isrs = new EObjectContainmentEList.Resolving<ISR>(ISR.class, this, AmaltheaPackage.SW_MODEL__ISRS);
+			isrs = new EObjectContainmentEList<ISR>(ISR.class, this, AmaltheaPackage.SW_MODEL__ISRS);
 		}
 		return isrs;
 	}
@@ -245,7 +245,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<Task> getTasks() {
 		if (tasks == null) {
-			tasks = new EObjectContainmentEList.Resolving<Task>(Task.class, this, AmaltheaPackage.SW_MODEL__TASKS);
+			tasks = new EObjectContainmentEList<Task>(Task.class, this, AmaltheaPackage.SW_MODEL__TASKS);
 		}
 		return tasks;
 	}
@@ -257,7 +257,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables() {
 		if (runnables == null) {
-			runnables = new EObjectContainmentEList.Resolving<org.eclipse.app4mc.amalthea.model.Runnable>(org.eclipse.app4mc.amalthea.model.Runnable.class, this, AmaltheaPackage.SW_MODEL__RUNNABLES);
+			runnables = new EObjectContainmentEList<org.eclipse.app4mc.amalthea.model.Runnable>(org.eclipse.app4mc.amalthea.model.Runnable.class, this, AmaltheaPackage.SW_MODEL__RUNNABLES);
 		}
 		return runnables;
 	}
@@ -269,7 +269,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<Label> getLabels() {
 		if (labels == null) {
-			labels = new EObjectContainmentEList.Resolving<Label>(Label.class, this, AmaltheaPackage.SW_MODEL__LABELS);
+			labels = new EObjectContainmentEList<Label>(Label.class, this, AmaltheaPackage.SW_MODEL__LABELS);
 		}
 		return labels;
 	}
@@ -281,7 +281,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<Channel> getChannels() {
 		if (channels == null) {
-			channels = new EObjectContainmentEList.Resolving<Channel>(Channel.class, this, AmaltheaPackage.SW_MODEL__CHANNELS);
+			channels = new EObjectContainmentEList<Channel>(Channel.class, this, AmaltheaPackage.SW_MODEL__CHANNELS);
 		}
 		return channels;
 	}
@@ -293,7 +293,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<ProcessPrototype> getProcessPrototypes() {
 		if (processPrototypes == null) {
-			processPrototypes = new EObjectContainmentEList.Resolving<ProcessPrototype>(ProcessPrototype.class, this, AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES);
+			processPrototypes = new EObjectContainmentEList<ProcessPrototype>(ProcessPrototype.class, this, AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES);
 		}
 		return processPrototypes;
 	}
@@ -305,7 +305,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<Section> getSections() {
 		if (sections == null) {
-			sections = new EObjectContainmentEList.Resolving<Section>(Section.class, this, AmaltheaPackage.SW_MODEL__SECTIONS);
+			sections = new EObjectContainmentEList<Section>(Section.class, this, AmaltheaPackage.SW_MODEL__SECTIONS);
 		}
 		return sections;
 	}
@@ -317,7 +317,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<Activation> getActivations() {
 		if (activations == null) {
-			activations = new EObjectContainmentEList.Resolving<Activation>(Activation.class, this, AmaltheaPackage.SW_MODEL__ACTIVATIONS);
+			activations = new EObjectContainmentEList<Activation>(Activation.class, this, AmaltheaPackage.SW_MODEL__ACTIVATIONS);
 		}
 		return activations;
 	}
@@ -329,7 +329,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<OsEvent> getEvents() {
 		if (events == null) {
-			events = new EObjectContainmentEList.Resolving<OsEvent>(OsEvent.class, this, AmaltheaPackage.SW_MODEL__EVENTS);
+			events = new EObjectContainmentEList<OsEvent>(OsEvent.class, this, AmaltheaPackage.SW_MODEL__EVENTS);
 		}
 		return events;
 	}
@@ -341,7 +341,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<TypeDefinition> getTypeDefinitions() {
 		if (typeDefinitions == null) {
-			typeDefinitions = new EObjectContainmentEList.Resolving<TypeDefinition>(TypeDefinition.class, this, AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS);
+			typeDefinitions = new EObjectContainmentEList<TypeDefinition>(TypeDefinition.class, this, AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS);
 		}
 		return typeDefinitions;
 	}
@@ -353,7 +353,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<CustomEntity> getCustomEntities() {
 		if (customEntities == null) {
-			customEntities = new EObjectContainmentEList.Resolving<CustomEntity>(CustomEntity.class, this, AmaltheaPackage.SW_MODEL__CUSTOM_ENTITIES);
+			customEntities = new EObjectContainmentEList<CustomEntity>(CustomEntity.class, this, AmaltheaPackage.SW_MODEL__CUSTOM_ENTITIES);
 		}
 		return customEntities;
 	}
@@ -365,7 +365,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<ProcessChain> getProcessChains() {
 		if (processChains == null) {
-			processChains = new EObjectContainmentEList.Resolving<ProcessChain>(ProcessChain.class, this, AmaltheaPackage.SW_MODEL__PROCESS_CHAINS);
+			processChains = new EObjectContainmentEList<ProcessChain>(ProcessChain.class, this, AmaltheaPackage.SW_MODEL__PROCESS_CHAINS);
 		}
 		return processChains;
 	}
@@ -377,7 +377,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<Mode> getModes() {
 		if (modes == null) {
-			modes = new EObjectContainmentEList.Resolving<Mode>(Mode.class, this, AmaltheaPackage.SW_MODEL__MODES);
+			modes = new EObjectContainmentEList<Mode>(Mode.class, this, AmaltheaPackage.SW_MODEL__MODES);
 		}
 		return modes;
 	}
@@ -389,7 +389,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 */
 	public EList<ModeLabel> getModeLabels() {
 		if (modeLabels == null) {
-			modeLabels = new EObjectContainmentEList.Resolving<ModeLabel>(ModeLabel.class, this, AmaltheaPackage.SW_MODEL__MODE_LABELS);
+			modeLabels = new EObjectContainmentEList<ModeLabel>(ModeLabel.class, this, AmaltheaPackage.SW_MODEL__MODE_LABELS);
 		}
 		return modeLabels;
 	}

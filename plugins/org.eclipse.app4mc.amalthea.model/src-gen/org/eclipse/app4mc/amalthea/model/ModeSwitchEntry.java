@@ -63,7 +63,7 @@ public interface ModeSwitchEntry<T> extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Items</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeSwitchEntry_Items()
-	 * @model kind="reference" containment="true" resolveProxies="true"
+	 * @model kind="reference" containment="true"
 	 * @generated
 	 */
 	EList<T> getItems();

@@ -177,29 +177,6 @@ public class EventChainLatencyConstraintImpl extends TimingConstraintImpl implem
 	 * @generated
 	 */
 	public Time getMinimum() {
-		if (minimum != null && minimum.eIsProxy()) {
-			InternalEObject oldMinimum = (InternalEObject)minimum;
-			minimum = (Time)eResolveProxy(oldMinimum);
-			if (minimum != oldMinimum) {
-				InternalEObject newMinimum = (InternalEObject)minimum;
-				NotificationChain msgs = oldMinimum.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.EVENT_CHAIN_LATENCY_CONSTRAINT__MINIMUM, null, null);
-				if (newMinimum.eInternalContainer() == null) {
-					msgs = newMinimum.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.EVENT_CHAIN_LATENCY_CONSTRAINT__MINIMUM, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.EVENT_CHAIN_LATENCY_CONSTRAINT__MINIMUM, oldMinimum, minimum));
-			}
-		}
-		return minimum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetMinimum() {
 		return minimum;
 	}
 
@@ -243,29 +220,6 @@ public class EventChainLatencyConstraintImpl extends TimingConstraintImpl implem
 	 * @generated
 	 */
 	public Time getMaximum() {
-		if (maximum != null && maximum.eIsProxy()) {
-			InternalEObject oldMaximum = (InternalEObject)maximum;
-			maximum = (Time)eResolveProxy(oldMaximum);
-			if (maximum != oldMaximum) {
-				InternalEObject newMaximum = (InternalEObject)maximum;
-				NotificationChain msgs = oldMaximum.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.EVENT_CHAIN_LATENCY_CONSTRAINT__MAXIMUM, null, null);
-				if (newMaximum.eInternalContainer() == null) {
-					msgs = newMaximum.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.EVENT_CHAIN_LATENCY_CONSTRAINT__MAXIMUM, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.EVENT_CHAIN_LATENCY_CONSTRAINT__MAXIMUM, oldMaximum, maximum));
-			}
-		}
-		return maximum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Time basicGetMaximum() {
 		return maximum;
 	}
 
@@ -333,11 +287,9 @@ public class EventChainLatencyConstraintImpl extends TimingConstraintImpl implem
 			case AmaltheaPackage.EVENT_CHAIN_LATENCY_CONSTRAINT__TYPE:
 				return getType();
 			case AmaltheaPackage.EVENT_CHAIN_LATENCY_CONSTRAINT__MINIMUM:
-				if (resolve) return getMinimum();
-				return basicGetMinimum();
+				return getMinimum();
 			case AmaltheaPackage.EVENT_CHAIN_LATENCY_CONSTRAINT__MAXIMUM:
-				if (resolve) return getMaximum();
-				return basicGetMaximum();
+				return getMaximum();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

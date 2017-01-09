@@ -178,29 +178,6 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 	 * @generated
 	 */
 	public TransmissionPolicy getTransmissionPolicy() {
-		if (transmissionPolicy != null && transmissionPolicy.eIsProxy()) {
-			InternalEObject oldTransmissionPolicy = (InternalEObject)transmissionPolicy;
-			transmissionPolicy = (TransmissionPolicy)eResolveProxy(oldTransmissionPolicy);
-			if (transmissionPolicy != oldTransmissionPolicy) {
-				InternalEObject newTransmissionPolicy = (InternalEObject)transmissionPolicy;
-				NotificationChain msgs = oldTransmissionPolicy.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CHANNEL_ACCESS__TRANSMISSION_POLICY, null, null);
-				if (newTransmissionPolicy.eInternalContainer() == null) {
-					msgs = newTransmissionPolicy.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CHANNEL_ACCESS__TRANSMISSION_POLICY, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.CHANNEL_ACCESS__TRANSMISSION_POLICY, oldTransmissionPolicy, transmissionPolicy));
-			}
-		}
-		return transmissionPolicy;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TransmissionPolicy basicGetTransmissionPolicy() {
 		return transmissionPolicy;
 	}
 
@@ -344,8 +321,7 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 			case AmaltheaPackage.CHANNEL_ACCESS__ELEMENTS:
 				return getElements();
 			case AmaltheaPackage.CHANNEL_ACCESS__TRANSMISSION_POLICY:
-				if (resolve) return getTransmissionPolicy();
-				return basicGetTransmissionPolicy();
+				return getTransmissionPolicy();
 			case AmaltheaPackage.CHANNEL_ACCESS__DATA_LINK_INT:
 				if (resolve) return getDataLinkInt();
 				return basicGetDataLinkInt();
