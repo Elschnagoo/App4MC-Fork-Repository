@@ -53,6 +53,7 @@ import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
 import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.CoherencyDirection;
+import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ComparatorType;
 import org.eclipse.app4mc.amalthea.model.ComplexPin;
 import org.eclipse.app4mc.amalthea.model.ComplexPort;
@@ -365,6 +366,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case AmaltheaPackage.AMALTHEA: return createAmalthea();
+			case AmaltheaPackage.COMMON_ELEMENTS: return createCommonElements();
 			case AmaltheaPackage.TAG: return createTag();
 			case AmaltheaPackage.TRANSMISSION_POLICY: return createTransmissionPolicy();
 			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: return createInstructionsDeviation();
@@ -840,6 +842,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public Amalthea createAmalthea() {
 		AmaltheaImpl amalthea = new AmaltheaImpl();
 		return amalthea;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CommonElements createCommonElements() {
+		CommonElementsImpl commonElements = new CommonElementsImpl();
+		return commonElements;
 	}
 
 	/**

@@ -41,6 +41,15 @@ public interface AmaltheaFactory extends EFactory {
 	Amalthea createAmalthea();
 
 	/**
+	 * Returns a new object of class '<em>Common Elements</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Common Elements</em>'.
+	 * @generated
+	 */
+	CommonElements createCommonElements();
+
+	/**
 	 * Returns a new object of class '<em>Tag</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

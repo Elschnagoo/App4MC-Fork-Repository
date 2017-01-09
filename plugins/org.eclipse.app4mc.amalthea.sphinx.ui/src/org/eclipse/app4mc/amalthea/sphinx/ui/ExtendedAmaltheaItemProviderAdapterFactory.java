@@ -15,6 +15,7 @@
 package org.eclipse.app4mc.amalthea.sphinx.ui;
 
 import org.eclipse.app4mc.amalthea.model.provider.AmaltheaItemProviderAdapterFactory;
+import org.eclipse.app4mc.amalthea.sphinx.ui.common.extended.ExtendedTagItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedAsynchronousServerCallItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedBaseTypeDefinitionItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelItemProvider;
@@ -44,7 +45,6 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSenderReceiverW
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSingleActivationItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSporadicActivationItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSynchronousServerCallItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedTagItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedTaskItemProvider;
 import org.eclipse.emf.common.notify.Adapter;
 
@@ -63,6 +63,11 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	@Override
 	public Adapter createChannelAdapter() {
 		return new ExtendedChannelItemProvider(this);
+	}
+
+	@Override
+	public Adapter createCommonElementsAdapter() {
+		return new ExtendedCommonElementsItemProvider(this);
 	}
 
 	@Override

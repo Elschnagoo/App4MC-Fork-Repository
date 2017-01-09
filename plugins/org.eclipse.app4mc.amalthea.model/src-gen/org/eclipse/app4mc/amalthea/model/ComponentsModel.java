@@ -34,7 +34,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ComponentsModel#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ComponentsModel#getComponents <em>Components</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ComponentsModel#getSystems <em>Systems</em>}</li>
  * </ul>
@@ -44,22 +43,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface ComponentsModel extends BaseObject {
-	/**
-	 * Returns the value of the '<em><b>Tags</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Tag}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Tags</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Tags</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComponentsModel_Tags()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	EList<Tag> getTags();
-
 	/**
 	 * Returns the value of the '<em><b>Components</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Component}.

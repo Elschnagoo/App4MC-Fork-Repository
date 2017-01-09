@@ -19,14 +19,8 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * *
- * ===============================================================================
- * ===============================================================================
- * 
- * 								Common Model
- * 
- * ===============================================================================
- * ===============================================================================
+ * Base classes to be used to provide common functionality for all objects.
+ * Needs to be extended by other classes.
  * <!-- end-model-doc -->
  *
  *

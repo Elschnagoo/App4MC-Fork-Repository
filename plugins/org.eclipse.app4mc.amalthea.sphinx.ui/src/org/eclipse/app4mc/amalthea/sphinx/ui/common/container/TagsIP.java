@@ -9,12 +9,13 @@
  * *******************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.sphinx.ui.sw.container;
+package org.eclipse.app4mc.amalthea.sphinx.ui.common.container;
 
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.provider.AmaltheaEditPlugin;
 import org.eclipse.emf.common.command.Command;
@@ -29,13 +30,13 @@ import org.eclipse.sphinx.emf.edit.TransientItemProvider;
 
 public class TagsIP extends TransientItemProvider {
 
-	public TagsIP(final AdapterFactory adapterFactory, final SWModel parent) {
+	public TagsIP(final AdapterFactory adapterFactory, final CommonElements parent) {
 		super(adapterFactory);
 		parent.eAdapters().add(this);
 	}
 
 	private EStructuralFeature myFeature() {
-		return AmaltheaPackage.eINSTANCE.getSWModel_Tags();
+		return AmaltheaPackage.eINSTANCE.getCommonElements_Tags();
 	}
 
 	private AmaltheaFactory myFactory() {
@@ -50,7 +51,7 @@ public class TagsIP extends TransientItemProvider {
 		assert object instanceof SWModel;
 		final StringBuffer buffer = new StringBuffer();
 		buffer.append("Tags ("); //$NON-NLS-1$
-		buffer.append(((SWModel) getTarget()).getTags().size());
+		buffer.append(((CommonElements) getTarget()).getTags().size());
 		buffer.append(")"); //$NON-NLS-1$
 		return buffer.toString();
 	}

@@ -548,6 +548,7 @@ exclusive: gets access to requested semaphore only when there is no other user a
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="commonElements" type="am:CommonElements"/>
           <xsd:element name="swModel" type="am:SWModel"/>
           <xsd:element name="hwModel" type="am:HWModel"/>
           <xsd:element name="osModel" type="am:OSModel"/>
@@ -574,7 +575,7 @@ exclusive: gets access to requested semaphore only when there is no other user a
 ===============================================================================</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="BaseObject">
+  <xsd:complexType name="CommonElements">
     <xsd:annotation>
       <xsd:documentation>*
 ===============================================================================
@@ -586,10 +587,14 @@ exclusive: gets access to requested semaphore only when there is no other user a
 ===============================================================================</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:IAnnotatable"/>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="tags" type="am:Tag"/>
+        </xsd:choice>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="BaseObject" type="am:BaseObject">
+  <xsd:element name="CommonElements" type="am:CommonElements">
     <xsd:annotation>
       <xsd:documentation>*
 ===============================================================================
@@ -599,6 +604,21 @@ exclusive: gets access to requested semaphore only when there is no other user a
 
 ===============================================================================
 ===============================================================================</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="BaseObject">
+    <xsd:annotation>
+      <xsd:documentation>Base classes to be used to provide common functionality for all objects.
+Needs to be extended by other classes.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:IAnnotatable"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="BaseObject" type="am:BaseObject">
+    <xsd:annotation>
+      <xsd:documentation>Base classes to be used to provide common functionality for all objects.
+Needs to be extended by other classes.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="ReferableObject">
@@ -1233,7 +1253,6 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="components" type="am:Component"/>
           <xsd:element name="systems" type="am:System"/>
         </xsd:choice>
@@ -2704,7 +2723,6 @@ core: The core that processes the process/runnable that accesses the semaphore (
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="systemTypes" type="am:SystemType"/>
           <xsd:element name="ecuTypes" type="am:ECUType"/>
           <xsd:element name="mcTypes" type="am:MicrocontrollerType"/>
@@ -4369,7 +4387,6 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
           <xsd:element name="processPrototypes" type="am:ProcessPrototype"/>
           <xsd:element name="sections" type="am:Section"/>
           <xsd:element name="activations" type="am:Activation"/>
-          <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="events" type="am:OsEvent"/>
           <xsd:element name="typeDefinitions" type="am:TypeDefinition"/>
           <xsd:element name="customEntities" type="am:CustomEntity"/>

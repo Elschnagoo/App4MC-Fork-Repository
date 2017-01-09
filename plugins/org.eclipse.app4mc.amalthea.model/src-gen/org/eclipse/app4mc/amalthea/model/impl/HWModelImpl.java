@@ -24,7 +24,6 @@ import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.MicrocontrollerType;
 import org.eclipse.app4mc.amalthea.model.NetworkType;
 import org.eclipse.app4mc.amalthea.model.SystemType;
-import org.eclipse.app4mc.amalthea.model.Tag;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -47,7 +46,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getSystemTypes <em>System Types</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getEcuTypes <em>Ecu Types</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getMcTypes <em>Mc Types</em>}</li>
@@ -61,16 +59,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class HWModelImpl extends BaseObjectImpl implements HWModel {
-	/**
-	 * The cached value of the '{@link #getTags() <em>Tags</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTags()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Tag> tags;
-
 	/**
 	 * The cached value of the '{@link #getSystemTypes() <em>System Types</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -168,18 +156,6 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getHWModel();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Tag> getTags() {
-		if (tags == null) {
-			tags = new EObjectContainmentEList<Tag>(Tag.class, this, AmaltheaPackage.HW_MODEL__TAGS);
-		}
-		return tags;
 	}
 
 	/**
@@ -317,8 +293,6 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_MODEL__TAGS:
-				return ((InternalEList<?>)getTags()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.HW_MODEL__SYSTEM_TYPES:
 				return ((InternalEList<?>)getSystemTypes()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.HW_MODEL__ECU_TYPES:
@@ -347,8 +321,6 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_MODEL__TAGS:
-				return getTags();
 			case AmaltheaPackage.HW_MODEL__SYSTEM_TYPES:
 				return getSystemTypes();
 			case AmaltheaPackage.HW_MODEL__ECU_TYPES:
@@ -378,10 +350,6 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_MODEL__TAGS:
-				getTags().clear();
-				getTags().addAll((Collection<? extends Tag>)newValue);
-				return;
 			case AmaltheaPackage.HW_MODEL__SYSTEM_TYPES:
 				getSystemTypes().clear();
 				getSystemTypes().addAll((Collection<? extends SystemType>)newValue);
@@ -425,9 +393,6 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_MODEL__TAGS:
-				getTags().clear();
-				return;
 			case AmaltheaPackage.HW_MODEL__SYSTEM_TYPES:
 				getSystemTypes().clear();
 				return;
@@ -464,8 +429,6 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_MODEL__TAGS:
-				return tags != null && !tags.isEmpty();
 			case AmaltheaPackage.HW_MODEL__SYSTEM_TYPES:
 				return systemTypes != null && !systemTypes.isEmpty();
 			case AmaltheaPackage.HW_MODEL__ECU_TYPES:

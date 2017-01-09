@@ -72,7 +72,6 @@ public class ComponentsModelItemProvider extends BaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getComponentsModel_Tags());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getComponentsModel_Components());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getComponentsModel_Systems());
 		}
@@ -137,7 +136,6 @@ public class ComponentsModelItemProvider extends BaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ComponentsModel.class)) {
-			case AmaltheaPackage.COMPONENTS_MODEL__TAGS:
 			case AmaltheaPackage.COMPONENTS_MODEL__COMPONENTS:
 			case AmaltheaPackage.COMPONENTS_MODEL__SYSTEMS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -156,11 +154,6 @@ public class ComponentsModelItemProvider extends BaseObjectItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getComponentsModel_Tags(),
-				 AmaltheaFactory.eINSTANCE.createTag()));
 
 		newChildDescriptors.add
 			(createChildParameter

@@ -33,6 +33,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getCommonElements <em>Common Elements</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getSwModel <em>Sw Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getHwModel <em>Hw Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getOsModel <em>Os Model</em>}</li>
@@ -50,6 +51,32 @@ package org.eclipse.app4mc.amalthea.model;
  * @generated
  */
 public interface Amalthea extends BaseObject {
+	/**
+	 * Returns the value of the '<em><b>Common Elements</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Common Elements</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Common Elements</em>' containment reference.
+	 * @see #setCommonElements(CommonElements)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_CommonElements()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	CommonElements getCommonElements();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getCommonElements <em>Common Elements</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Common Elements</em>' containment reference.
+	 * @see #getCommonElements()
+	 * @generated
+	 */
+	void setCommonElements(CommonElements value);
+
 	/**
 	 * Returns the value of the '<em><b>Sw Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

@@ -58,6 +58,7 @@ import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
 import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
+import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ComplexNode;
 import org.eclipse.app4mc.amalthea.model.ComplexPin;
 import org.eclipse.app4mc.amalthea.model.ComplexPort;
@@ -398,6 +399,14 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseAmalthea(amalthea);
 				if (result == null) result = caseBaseObject(amalthea);
 				if (result == null) result = caseIAnnotatable(amalthea);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.COMMON_ELEMENTS: {
+				CommonElements commonElements = (CommonElements)theEObject;
+				T1 result = caseCommonElements(commonElements);
+				if (result == null) result = caseBaseObject(commonElements);
+				if (result == null) result = caseIAnnotatable(commonElements);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3218,6 +3227,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseAmalthea(Amalthea object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Common Elements</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Common Elements</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseCommonElements(CommonElements object) {
 		return null;
 	}
 

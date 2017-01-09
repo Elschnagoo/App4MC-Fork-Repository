@@ -72,6 +72,7 @@ public class AmaltheaItemProvider extends BaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_CommonElements());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_SwModel());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_HwModel());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_OsModel());
@@ -144,6 +145,7 @@ public class AmaltheaItemProvider extends BaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Amalthea.class)) {
+			case AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS:
 			case AmaltheaPackage.AMALTHEA__SW_MODEL:
 			case AmaltheaPackage.AMALTHEA__HW_MODEL:
 			case AmaltheaPackage.AMALTHEA__OS_MODEL:
@@ -170,6 +172,11 @@ public class AmaltheaItemProvider extends BaseObjectItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getAmalthea_CommonElements(),
+				 AmaltheaFactory.eINSTANCE.createCommonElements()));
 
 		newChildDescriptors.add
 			(createChildParameter

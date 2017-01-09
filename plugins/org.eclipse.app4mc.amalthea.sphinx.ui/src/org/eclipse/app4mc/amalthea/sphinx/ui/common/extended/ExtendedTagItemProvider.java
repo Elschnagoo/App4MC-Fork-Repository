@@ -9,12 +9,12 @@
  * *******************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended;
+package org.eclipse.app4mc.amalthea.sphinx.ui.common.extended;
 
 
-import org.eclipse.app4mc.amalthea.model.SWModel;
+import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.provider.TagItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.ExtendedSWModelItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.ExtendedCommonElementsItemProvider;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
@@ -30,10 +30,10 @@ public class ExtendedTagItemProvider extends TagItemProvider {
 	 */
 	@Override
 	public Object getParent(final Object object) {
-		final Object swModel = super.getParent(object);
-		final ExtendedSWModelItemProvider swModelItemProvider = (ExtendedSWModelItemProvider) this.adapterFactory
-				.adapt(swModel, ITreeItemContentProvider.class);
-		return swModelItemProvider != null ? swModelItemProvider.getTags((SWModel) swModel) : null;
+		final Object commonElements = super.getParent(object);
+		final ExtendedCommonElementsItemProvider commonElementsItemProvider = (ExtendedCommonElementsItemProvider) this.adapterFactory
+				.adapt(commonElements, ITreeItemContentProvider.class);
+		return commonElementsItemProvider != null ? commonElementsItemProvider.getTags((CommonElements) commonElements) : null;
 	}
 
 }

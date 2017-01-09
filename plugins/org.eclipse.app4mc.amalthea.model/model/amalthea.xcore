@@ -46,6 +46,7 @@ import java.nio.charset.StandardCharsets
  */
 
  class Amalthea extends BaseObject {
+ 	contains resolving CommonElements commonElements
 	contains resolving SWModel swModel
 	contains resolving HWModel hwModel
 	contains resolving OSModel osModel
@@ -69,6 +70,9 @@ import java.nio.charset.StandardCharsets
  * ===============================================================================
  */
 
+class CommonElements extends BaseObject {
+	contains resolving Tag[] tags
+ }
 
 /*
  * Base classes to be used to provide common functionality for all objects.
@@ -623,7 +627,6 @@ interface ModeValueProvider extends IAnnotatable, IReferable
 
 
 class ComponentsModel extends BaseObject {
-	contains resolving Tag[] tags
 	contains Component[] components
 	contains System[] systems
 }
@@ -1527,7 +1530,6 @@ enum SemaphoreEventType
 
 
 class HWModel extends BaseObject {
-	contains Tag[] tags
 	// containments of all hardware type descriptions, i.e. Core(s), Memory(s), Network(s), ...
 	contains SystemType[] systemTypes
 	contains ECUType[] ecuTypes
@@ -2578,7 +2580,6 @@ class SWModel extends BaseObject
 	contains resolving ProcessPrototype[] processPrototypes
 	contains resolving Section[] sections
 	contains resolving Activation[] activations
-	contains resolving Tag[] tags
 	contains resolving OsEvent[] events
 	contains resolving TypeDefinition[] typeDefinitions
 	contains resolving CustomEntity[] customEntities

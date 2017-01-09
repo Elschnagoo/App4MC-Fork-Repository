@@ -58,6 +58,7 @@ import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
 import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
+import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ComplexNode;
 import org.eclipse.app4mc.amalthea.model.ComplexPin;
 import org.eclipse.app4mc.amalthea.model.ComplexPort;
@@ -397,6 +398,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAmalthea(Amalthea object) {
 				return createAmaltheaAdapter();
+			}
+			@Override
+			public Adapter caseCommonElements(CommonElements object) {
+				return createCommonElementsAdapter();
 			}
 			@Override
 			public Adapter caseBaseObject(BaseObject object) {
@@ -1705,6 +1710,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAmaltheaAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CommonElements <em>Common Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.CommonElements
+	 * @generated
+	 */
+	public Adapter createCommonElementsAdapter() {
 		return null;
 	}
 

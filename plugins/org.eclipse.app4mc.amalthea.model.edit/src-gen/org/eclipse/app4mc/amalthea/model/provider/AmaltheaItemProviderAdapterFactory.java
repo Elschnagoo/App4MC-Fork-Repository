@@ -105,6 +105,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CommonElements} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CommonElementsItemProvider commonElementsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.CommonElements}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCommonElementsAdapter() {
+		if (commonElementsItemProvider == null) {
+			commonElementsItemProvider = new CommonElementsItemProvider(this);
+		}
+
+		return commonElementsItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Tag} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5908,6 +5931,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	 */
 	public void dispose() {
 		if (amaltheaItemProvider != null) amaltheaItemProvider.dispose();
+		if (commonElementsItemProvider != null) commonElementsItemProvider.dispose();
 		if (tagItemProvider != null) tagItemProvider.dispose();
 		if (transmissionPolicyItemProvider != null) transmissionPolicyItemProvider.dispose();
 		if (instructionsDeviationItemProvider != null) instructionsDeviationItemProvider.dispose();

@@ -34,7 +34,6 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ProcessChainsIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ProcessPrototypesIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.RunnablesIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.SectionsIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.TagsIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.TasksIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.TypeDefinitionsIP;
 import org.eclipse.emf.common.command.Command;
@@ -53,7 +52,6 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 	protected ModesIP modesIP;
 	protected ModeLabelsIP modeLabelsIP;
 	protected TasksIP tasksIP;
-	protected TagsIP tagsIP;
 	protected EventsIP eventsIP;
 	protected SectionsIP sectionsIP;
 	protected ProcessChainsIP processChainsIP;
@@ -101,13 +99,6 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 			this.tasksIP = new TasksIP(this.adapterFactory, swModel);
 		}
 		return this.tasksIP;
-	}
-
-	public Object getTags(final SWModel swModel) {
-		if (this.tagsIP == null) {
-			this.tagsIP = new TagsIP(this.adapterFactory, swModel);
-		}
-		return this.tagsIP;
 	}
 
 	public Object getEvents(final SWModel swModel) {
@@ -185,7 +176,6 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_ProcessPrototypes()); // SW_MODEL__PROCESS_PROTOTYPES
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_Activations()); // SW_MODEL__ACTIVATIONS
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_Sections()); // SW_MODEL__SECTIONS
-		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_Tags()); // SW_MODEL__TAGS
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_Modes()); // SW_MODEL__MODES
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_ModeLabels()); // SW_MODEL__MODE_LABELS
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getSWModel_TypeDefinitions()); // SW_MODEL__TYPE_DEFINITIONS
@@ -207,7 +197,6 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 		children.add(getPrototypes(swModel));
 		children.add(getActivations(swModel));
 		children.add(getSections(swModel));
-		children.add(getTags(swModel));
 		children.add(getModes(swModel));
 		children.add(getModeLabels(swModel));
 		children.add(getTypes(swModel));
@@ -235,7 +224,6 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__MODES
 				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__MODE_LABELS
 				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__TASKS
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__TAGS
 				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__EVENTS
 				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__SECTIONS
 				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES
@@ -264,9 +252,6 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 						}
 						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__TASKS) {
 							affected = Collections.singleton(getTasks((SWModel) owner));
-						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__TAGS) {
-							affected = Collections.singleton(getTags((SWModel) owner));
 						}
 						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__EVENTS) {
 							affected = Collections.singleton(getEvents((SWModel) owner));
@@ -320,9 +305,6 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 		if (this.tasksIP != null) {
 			this.tasksIP.dispose();
 		}
-		if (this.tagsIP != null) {
-			this.tagsIP.dispose();
-		}
 		if (this.eventsIP != null) {
 			this.eventsIP.dispose();
 		}
@@ -369,7 +351,6 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 		case AmaltheaPackage.SW_MODEL__PROCESS_CHAINS:
 		case AmaltheaPackage.SW_MODEL__SECTIONS:
 		case AmaltheaPackage.SW_MODEL__ACTIVATIONS:
-		case AmaltheaPackage.SW_MODEL__TAGS:
 		case AmaltheaPackage.SW_MODEL__EVENTS:
 		case AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS:
 		case AmaltheaPackage.SW_MODEL__CHANNELS:

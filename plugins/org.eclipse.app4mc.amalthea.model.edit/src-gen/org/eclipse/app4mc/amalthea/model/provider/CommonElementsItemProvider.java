@@ -18,7 +18,7 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.HWModel;
+import org.eclipse.app4mc.amalthea.model.CommonElements;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -29,19 +29,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.HWModel} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.CommonElements} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class HWModelItemProvider extends BaseObjectItemProvider {
+public class CommonElementsItemProvider extends BaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HWModelItemProvider(AdapterFactory adapterFactory) {
+	public CommonElementsItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -72,14 +72,7 @@ public class HWModelItemProvider extends BaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_SystemTypes());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_EcuTypes());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_McTypes());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_CoreTypes());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_MemoryTypes());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_NetworkTypes());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_AccessPaths());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_System());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getCommonElements_Tags());
 		}
 		return childrenFeatures;
 	}
@@ -98,14 +91,14 @@ public class HWModelItemProvider extends BaseObjectItemProvider {
 	}
 
 	/**
-	 * This returns HWModel.gif.
+	 * This returns CommonElements.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/HWModel"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/CommonElements"));
 	}
 
 	/**
@@ -126,7 +119,7 @@ public class HWModelItemProvider extends BaseObjectItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_HWModel_type");
+		return getString("_UI_CommonElements_type");
 	}
 	
 
@@ -141,15 +134,8 @@ public class HWModelItemProvider extends BaseObjectItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(HWModel.class)) {
-			case AmaltheaPackage.HW_MODEL__SYSTEM_TYPES:
-			case AmaltheaPackage.HW_MODEL__ECU_TYPES:
-			case AmaltheaPackage.HW_MODEL__MC_TYPES:
-			case AmaltheaPackage.HW_MODEL__CORE_TYPES:
-			case AmaltheaPackage.HW_MODEL__MEMORY_TYPES:
-			case AmaltheaPackage.HW_MODEL__NETWORK_TYPES:
-			case AmaltheaPackage.HW_MODEL__ACCESS_PATHS:
-			case AmaltheaPackage.HW_MODEL__SYSTEM:
+		switch (notification.getFeatureID(CommonElements.class)) {
+			case AmaltheaPackage.COMMON_ELEMENTS__TAGS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -169,63 +155,8 @@ public class HWModelItemProvider extends BaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_SystemTypes(),
-				 AmaltheaFactory.eINSTANCE.createSystemType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_EcuTypes(),
-				 AmaltheaFactory.eINSTANCE.createECUType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_McTypes(),
-				 AmaltheaFactory.eINSTANCE.createMicrocontrollerType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_CoreTypes(),
-				 AmaltheaFactory.eINSTANCE.createCoreType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_MemoryTypes(),
-				 AmaltheaFactory.eINSTANCE.createMemoryType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_NetworkTypes(),
-				 AmaltheaFactory.eINSTANCE.createNetworkType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_NetworkTypes(),
-				 AmaltheaFactory.eINSTANCE.createCrossbarSwitch()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_NetworkTypes(),
-				 AmaltheaFactory.eINSTANCE.createBus()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_NetworkTypes(),
-				 AmaltheaFactory.eINSTANCE.createBridge()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_AccessPaths(),
-				 AmaltheaFactory.eINSTANCE.createLatencyAccessPath()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_AccessPaths(),
-				 AmaltheaFactory.eINSTANCE.createHwAccessPath()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_System(),
-				 AmaltheaFactory.eINSTANCE.createHwSystem()));
+				(AmaltheaPackage.eINSTANCE.getCommonElements_Tags(),
+				 AmaltheaFactory.eINSTANCE.createTag()));
 	}
 
 }

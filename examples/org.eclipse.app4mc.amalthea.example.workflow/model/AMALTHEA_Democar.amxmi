@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <commonElements>
+    <tags name="SwcEngineController" tagType="SOFTWARE_COMPONENT" />
+    <tags name="SwcActuators" tagType="SOFTWARE_COMPONENT" />
+    <tags name="SwcBrakeForceArbiter" tagType="SOFTWARE_COMPONENT" />
+    <tags name="SwcABSCalculation" tagType="SOFTWARE_COMPONENT" />
+    <tags name="SwcSensors" tagType="SOFTWARE_COMPONENT" />
+    <tags name="SwcSensorPostprocessing" tagType="SOFTWARE_COMPONENT" />
+    <tags name="SwcCylNumObserver" tagType="SOFTWARE_COMPONENT" />
+    <tags name="SwcBrakeForceCalculation" tagType="SOFTWARE_COMPONENT" />
+    <tags name="SwcEngineSensors" tagType="SOFTWARE_COMPONENT" />
+    <tags name="SwcInjIgnActuation" tagType="SOFTWARE_COMPONENT" />
+  </commonElements>
   <swModel>
     <tasks name="Task_10MS" priority="10" stimuli="Timer_10MS?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="10">
       <callGraph>
@@ -968,16 +980,6 @@
     <labels name="WheelSpeedVoltage2" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <tags name="SwcEngineController" tagType="SOFTWARE_COMPONENT" />
-    <tags name="SwcActuators" tagType="SOFTWARE_COMPONENT" />
-    <tags name="SwcBrakeForceArbiter" tagType="SOFTWARE_COMPONENT" />
-    <tags name="SwcABSCalculation" tagType="SOFTWARE_COMPONENT" />
-    <tags name="SwcSensors" tagType="SOFTWARE_COMPONENT" />
-    <tags name="SwcSensorPostprocessing" tagType="SOFTWARE_COMPONENT" />
-    <tags name="SwcCylNumObserver" tagType="SOFTWARE_COMPONENT" />
-    <tags name="SwcBrakeForceCalculation" tagType="SOFTWARE_COMPONENT" />
-    <tags name="SwcEngineSensors" tagType="SOFTWARE_COMPONENT" />
-    <tags name="SwcInjIgnActuation" tagType="SOFTWARE_COMPONENT" />
   </swModel>
   <hwModel>
     <coreTypes name="Default" instructionsPerCycle="1" />

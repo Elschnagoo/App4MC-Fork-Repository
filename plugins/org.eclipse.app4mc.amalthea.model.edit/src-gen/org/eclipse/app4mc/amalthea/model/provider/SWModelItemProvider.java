@@ -80,7 +80,6 @@ public class SWModelItemProvider extends BaseObjectItemProvider {
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_ProcessPrototypes());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_Sections());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_Activations());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_Tags());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_Events());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_TypeDefinitions());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSWModel_CustomEntities());
@@ -157,7 +156,6 @@ public class SWModelItemProvider extends BaseObjectItemProvider {
 			case AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES:
 			case AmaltheaPackage.SW_MODEL__SECTIONS:
 			case AmaltheaPackage.SW_MODEL__ACTIVATIONS:
-			case AmaltheaPackage.SW_MODEL__TAGS:
 			case AmaltheaPackage.SW_MODEL__EVENTS:
 			case AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS:
 			case AmaltheaPackage.SW_MODEL__CUSTOM_ENTITIES:
@@ -235,11 +233,6 @@ public class SWModelItemProvider extends BaseObjectItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSWModel_Activations(),
 				 AmaltheaFactory.eINSTANCE.createCustomActivation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSWModel_Tags(),
-				 AmaltheaFactory.eINSTANCE.createTag()));
 
 		newChildDescriptors.add
 			(createChildParameter

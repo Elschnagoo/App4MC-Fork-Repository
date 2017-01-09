@@ -34,7 +34,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.HWModel#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HWModel#getSystemTypes <em>System Types</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HWModel#getEcuTypes <em>Ecu Types</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HWModel#getMcTypes <em>Mc Types</em>}</li>
@@ -50,22 +49,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface HWModel extends BaseObject {
-	/**
-	 * Returns the value of the '<em><b>Tags</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Tag}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Tags</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Tags</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHWModel_Tags()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Tag> getTags();
-
 	/**
 	 * Returns the value of the '<em><b>System Types</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.SystemType}.

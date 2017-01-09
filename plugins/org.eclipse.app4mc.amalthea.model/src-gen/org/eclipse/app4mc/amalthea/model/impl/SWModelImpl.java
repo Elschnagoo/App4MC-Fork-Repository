@@ -27,7 +27,6 @@ import org.eclipse.app4mc.amalthea.model.ProcessChain;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Section;
-import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 
@@ -57,7 +56,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getProcessPrototypes <em>Process Prototypes</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getSections <em>Sections</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getActivations <em>Activations</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getEvents <em>Events</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getTypeDefinitions <em>Type Definitions</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SWModelImpl#getCustomEntities <em>Custom Entities</em>}</li>
@@ -148,16 +146,6 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * @ordered
 	 */
 	protected EList<Activation> activations;
-
-	/**
-	 * The cached value of the '{@link #getTags() <em>Tags</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTags()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Tag> tags;
 
 	/**
 	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
@@ -339,18 +327,6 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Tag> getTags() {
-		if (tags == null) {
-			tags = new EObjectContainmentEList.Resolving<Tag>(Tag.class, this, AmaltheaPackage.SW_MODEL__TAGS);
-		}
-		return tags;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<OsEvent> getEvents() {
 		if (events == null) {
 			events = new EObjectContainmentEList.Resolving<OsEvent>(OsEvent.class, this, AmaltheaPackage.SW_MODEL__EVENTS);
@@ -442,8 +418,6 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 				return ((InternalEList<?>)getSections()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.SW_MODEL__ACTIVATIONS:
 				return ((InternalEList<?>)getActivations()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.SW_MODEL__TAGS:
-				return ((InternalEList<?>)getTags()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.SW_MODEL__EVENTS:
 				return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS:
@@ -484,8 +458,6 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 				return getSections();
 			case AmaltheaPackage.SW_MODEL__ACTIVATIONS:
 				return getActivations();
-			case AmaltheaPackage.SW_MODEL__TAGS:
-				return getTags();
 			case AmaltheaPackage.SW_MODEL__EVENTS:
 				return getEvents();
 			case AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS:
@@ -542,10 +514,6 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 			case AmaltheaPackage.SW_MODEL__ACTIVATIONS:
 				getActivations().clear();
 				getActivations().addAll((Collection<? extends Activation>)newValue);
-				return;
-			case AmaltheaPackage.SW_MODEL__TAGS:
-				getTags().clear();
-				getTags().addAll((Collection<? extends Tag>)newValue);
 				return;
 			case AmaltheaPackage.SW_MODEL__EVENTS:
 				getEvents().clear();
@@ -607,9 +575,6 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 			case AmaltheaPackage.SW_MODEL__ACTIVATIONS:
 				getActivations().clear();
 				return;
-			case AmaltheaPackage.SW_MODEL__TAGS:
-				getTags().clear();
-				return;
 			case AmaltheaPackage.SW_MODEL__EVENTS:
 				getEvents().clear();
 				return;
@@ -656,8 +621,6 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 				return sections != null && !sections.isEmpty();
 			case AmaltheaPackage.SW_MODEL__ACTIVATIONS:
 				return activations != null && !activations.isEmpty();
-			case AmaltheaPackage.SW_MODEL__TAGS:
-				return tags != null && !tags.isEmpty();
 			case AmaltheaPackage.SW_MODEL__EVENTS:
 				return events != null && !events.isEmpty();
 			case AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS:

@@ -17,7 +17,6 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ComponentsModel;
-import org.eclipse.app4mc.amalthea.model.Tag;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -37,7 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ComponentsModelImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ComponentsModelImpl#getComponents <em>Components</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ComponentsModelImpl#getSystems <em>Systems</em>}</li>
  * </ul>
@@ -45,16 +43,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class ComponentsModelImpl extends BaseObjectImpl implements ComponentsModel {
-	/**
-	 * The cached value of the '{@link #getTags() <em>Tags</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTags()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Tag> tags;
-
 	/**
 	 * The cached value of the '{@link #getComponents() <em>Components</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -99,18 +87,6 @@ public class ComponentsModelImpl extends BaseObjectImpl implements ComponentsMod
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Tag> getTags() {
-		if (tags == null) {
-			tags = new EObjectContainmentEList.Resolving<Tag>(Tag.class, this, AmaltheaPackage.COMPONENTS_MODEL__TAGS);
-		}
-		return tags;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Component> getComponents() {
 		if (components == null) {
 			components = new EObjectContainmentEList<Component>(Component.class, this, AmaltheaPackage.COMPONENTS_MODEL__COMPONENTS);
@@ -138,8 +114,6 @@ public class ComponentsModelImpl extends BaseObjectImpl implements ComponentsMod
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.COMPONENTS_MODEL__TAGS:
-				return ((InternalEList<?>)getTags()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.COMPONENTS_MODEL__COMPONENTS:
 				return ((InternalEList<?>)getComponents()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.COMPONENTS_MODEL__SYSTEMS:
@@ -156,8 +130,6 @@ public class ComponentsModelImpl extends BaseObjectImpl implements ComponentsMod
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.COMPONENTS_MODEL__TAGS:
-				return getTags();
 			case AmaltheaPackage.COMPONENTS_MODEL__COMPONENTS:
 				return getComponents();
 			case AmaltheaPackage.COMPONENTS_MODEL__SYSTEMS:
@@ -175,10 +147,6 @@ public class ComponentsModelImpl extends BaseObjectImpl implements ComponentsMod
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.COMPONENTS_MODEL__TAGS:
-				getTags().clear();
-				getTags().addAll((Collection<? extends Tag>)newValue);
-				return;
 			case AmaltheaPackage.COMPONENTS_MODEL__COMPONENTS:
 				getComponents().clear();
 				getComponents().addAll((Collection<? extends Component>)newValue);
@@ -199,9 +167,6 @@ public class ComponentsModelImpl extends BaseObjectImpl implements ComponentsMod
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.COMPONENTS_MODEL__TAGS:
-				getTags().clear();
-				return;
 			case AmaltheaPackage.COMPONENTS_MODEL__COMPONENTS:
 				getComponents().clear();
 				return;
@@ -220,8 +185,6 @@ public class ComponentsModelImpl extends BaseObjectImpl implements ComponentsMod
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.COMPONENTS_MODEL__TAGS:
-				return tags != null && !tags.isEmpty();
 			case AmaltheaPackage.COMPONENTS_MODEL__COMPONENTS:
 				return components != null && !components.isEmpty();
 			case AmaltheaPackage.COMPONENTS_MODEL__SYSTEMS:

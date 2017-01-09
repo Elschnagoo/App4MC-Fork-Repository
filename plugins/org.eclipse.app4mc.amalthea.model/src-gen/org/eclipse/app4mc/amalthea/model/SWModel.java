@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getProcessPrototypes <em>Process Prototypes</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getSections <em>Sections</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getActivations <em>Activations</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getEvents <em>Events</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getTypeDefinitions <em>Type Definitions</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SWModel#getCustomEntities <em>Custom Entities</em>}</li>
@@ -183,22 +182,6 @@ public interface SWModel extends BaseObject {
 	 * @generated
 	 */
 	EList<Activation> getActivations();
-
-	/**
-	 * Returns the value of the '<em><b>Tags</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Tag}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Tags</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Tags</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSWModel_Tags()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	EList<Tag> getTags();
 
 	/**
 	 * Returns the value of the '<em><b>Events</b></em>' containment reference list.

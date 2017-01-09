@@ -14,6 +14,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ComponentsModel;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
@@ -41,6 +42,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getCommonElements <em>Common Elements</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getSwModel <em>Sw Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getHwModel <em>Hw Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getOsModel <em>Os Model</em>}</li>
@@ -56,6 +58,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
+	/**
+	 * The cached value of the '{@link #getCommonElements() <em>Common Elements</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCommonElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected CommonElements commonElements;
+
 	/**
 	 * The cached value of the '{@link #getSwModel() <em>Sw Model</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -173,6 +185,72 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getAmalthea();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CommonElements getCommonElements() {
+		if (commonElements != null && commonElements.eIsProxy()) {
+			InternalEObject oldCommonElements = (InternalEObject)commonElements;
+			commonElements = (CommonElements)eResolveProxy(oldCommonElements);
+			if (commonElements != oldCommonElements) {
+				InternalEObject newCommonElements = (InternalEObject)commonElements;
+				NotificationChain msgs = oldCommonElements.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS, null, null);
+				if (newCommonElements.eInternalContainer() == null) {
+					msgs = newCommonElements.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS, oldCommonElements, commonElements));
+			}
+		}
+		return commonElements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CommonElements basicGetCommonElements() {
+		return commonElements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCommonElements(CommonElements newCommonElements, NotificationChain msgs) {
+		CommonElements oldCommonElements = commonElements;
+		commonElements = newCommonElements;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS, oldCommonElements, newCommonElements);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCommonElements(CommonElements newCommonElements) {
+		if (newCommonElements != commonElements) {
+			NotificationChain msgs = null;
+			if (commonElements != null)
+				msgs = ((InternalEObject)commonElements).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS, null, msgs);
+			if (newCommonElements != null)
+				msgs = ((InternalEObject)newCommonElements).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS, null, msgs);
+			msgs = basicSetCommonElements(newCommonElements, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS, newCommonElements, newCommonElements));
 	}
 
 	/**
@@ -843,6 +921,8 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS:
+				return basicSetCommonElements(null, msgs);
 			case AmaltheaPackage.AMALTHEA__SW_MODEL:
 				return basicSetSwModel(null, msgs);
 			case AmaltheaPackage.AMALTHEA__HW_MODEL:
@@ -875,6 +955,9 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS:
+				if (resolve) return getCommonElements();
+				return basicGetCommonElements();
 			case AmaltheaPackage.AMALTHEA__SW_MODEL:
 				if (resolve) return getSwModel();
 				return basicGetSwModel();
@@ -917,6 +1000,9 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS:
+				setCommonElements((CommonElements)newValue);
+				return;
 			case AmaltheaPackage.AMALTHEA__SW_MODEL:
 				setSwModel((SWModel)newValue);
 				return;
@@ -959,6 +1045,9 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS:
+				setCommonElements((CommonElements)null);
+				return;
 			case AmaltheaPackage.AMALTHEA__SW_MODEL:
 				setSwModel((SWModel)null);
 				return;
@@ -1001,6 +1090,8 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS:
+				return commonElements != null;
 			case AmaltheaPackage.AMALTHEA__SW_MODEL:
 				return swModel != null;
 			case AmaltheaPackage.AMALTHEA__HW_MODEL:
