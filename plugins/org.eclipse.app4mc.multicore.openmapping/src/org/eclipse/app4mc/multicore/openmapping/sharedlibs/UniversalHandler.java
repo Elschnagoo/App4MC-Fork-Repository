@@ -22,6 +22,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ComponentsModel;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
@@ -57,6 +58,7 @@ public class UniversalHandler {
 	private String pluginId = "ERR_PLUGINID_UNSET";
 	private ILog iLog;
 	private Logger aLog;
+	private CommonElements commonElements;
 	private SWModel swModel;
 	private HWModel hwModel;
 	private ConstraintsModel conModel;
@@ -176,7 +178,10 @@ public class UniversalHandler {
 		final Amalthea containerModel = AmaltheaFactory.eINSTANCE.createAmalthea();
 		// Fill the AMALTHEA Central model with the resp. sub-models
 		for (final EObject model : models) {
-			if (model instanceof SWModel) {
+			if (model instanceof CommonElements) {
+				containerModel.setCommonElements((CommonElements) model);
+			}
+			else if (model instanceof SWModel) {
 				containerModel.setSwModel((SWModel) model);
 			}
 			else if (model instanceof HWModel) {
@@ -433,7 +438,10 @@ public class UniversalHandler {
 		}
 
 		for (final EObject model : content) {
-			if (model instanceof SWModel) {
+			if (model instanceof CommonElements) {
+				this.commonElements = (CommonElements) model;
+			}
+			else if (model instanceof SWModel) {
 				this.swModel = (SWModel) model;
 			}
 			else if (model instanceof HWModel) {
@@ -467,6 +475,10 @@ public class UniversalHandler {
 				setModel(((Amalthea) model).eContents());
 			}
 		}
+	}
+
+	public CommonElements getCommonElements() {
+		return this.commonElements;
 	}
 
 	public SWModel getSwModel() {

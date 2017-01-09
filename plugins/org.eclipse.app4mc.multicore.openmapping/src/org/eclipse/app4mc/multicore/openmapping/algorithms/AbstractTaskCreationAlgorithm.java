@@ -13,6 +13,7 @@ package org.eclipse.app4mc.multicore.openmapping.algorithms;
 
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
@@ -24,6 +25,7 @@ import org.eclipse.app4mc.amalthea.model.StimuliModel;
 
 public abstract class AbstractTaskCreationAlgorithm {
 	// models
+	private CommonElements commonElements;
 	private SWModel swModel;
 	private HWModel hwModel;
 	private OSModel osModel;
@@ -49,6 +51,10 @@ public abstract class AbstractTaskCreationAlgorithm {
 	}
 
 	// getter and setter methods for models
+	public CommonElements getCommonElements() {
+		return commonElements;
+	}
+	
 	public SWModel getSwModel() {
 		return this.swModel;
 	}
@@ -57,7 +63,7 @@ public abstract class AbstractTaskCreationAlgorithm {
 		return this.hwModel;
 	}
 
-	public ConstraintsModel getConnstraintsModel() {
+	public ConstraintsModel getConstraintsModel() {
 		return this.conModel;
 	}
 
@@ -75,6 +81,10 @@ public abstract class AbstractTaskCreationAlgorithm {
 
 	public StimuliModel getStimuliModel() {
 		return this.stiModel;
+	}
+
+	public void setCommonElements(CommonElements commonElements) {
+		this.commonElements = commonElements;
 	}
 
 	public void setSwModel(final SWModel swModel) {

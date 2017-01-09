@@ -14,6 +14,7 @@ package org.eclipse.app4mc.multicore.openmapping.handlers;
 import java.io.File;
 import java.util.ArrayList;
 
+import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.SWModel;
@@ -48,6 +49,7 @@ public class CreateTasks extends AbstractHandler {
 		final int radioOutputDirectory = store.getInt(IOpenMappingConstants.PRE_RADIO_OUTDIR);
 		final String sOutputDirectory = store.getString(IOpenMappingConstants.PRE_STRING_OUTDIR);
 
+		CommonElements commonElements;
 		SWModel sourceSwModel;
 		SWModel targetSwModel;
 		StimuliModel stimuliModel;
@@ -76,6 +78,8 @@ public class CreateTasks extends AbstractHandler {
 		// return null;
 		//
 
+		commonElements = UniversalHandler.getInstance().getCommonElements();
+
 		sourceSwModel = UniversalHandler.getInstance().getSwModel();
 		if (sourceSwModel == null) {
 			UniversalHandler.getInstance()
@@ -95,6 +99,8 @@ public class CreateTasks extends AbstractHandler {
 		pcModel = UniversalHandler.getInstance().getPropertyConstraintsModel();
 
 		final PragmaticTaskGenerator createTaskAlgorithm = new PragmaticTaskGenerator();
+		
+		createTaskAlgorithm.setCommonElements(commonElements);
 		createTaskAlgorithm.setSwModel(sourceSwModel);
 		createTaskAlgorithm.setConstraintsModel(conModel);
 		createTaskAlgorithm.createTasks();
@@ -113,6 +119,7 @@ public class CreateTasks extends AbstractHandler {
 			return null;
 		}
 
+		outModels.add(commonElements);
 		outModels.add(targetSwModel);
 		outModels.add(stimuliModel);
 		outModels.add(conModel);

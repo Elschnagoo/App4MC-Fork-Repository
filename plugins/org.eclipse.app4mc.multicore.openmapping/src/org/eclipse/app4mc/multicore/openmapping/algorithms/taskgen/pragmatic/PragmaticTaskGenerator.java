@@ -179,17 +179,17 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 	private boolean createRunnableDependencyGraph() {
 		// Check if there are any activation runnable sequencing constraints
 		// specified
-		if (null == getConnstraintsModel() || null == getConnstraintsModel().getRunnableSequencingConstraints()
-				|| getConnstraintsModel().getRunnableSequencingConstraints().size() <= 0) {
+		if (null == getConstraintsModel() || null == getConstraintsModel().getRunnableSequencingConstraints()
+				|| getConstraintsModel().getRunnableSequencingConstraints().size() <= 0) {
 			UniversalHandler.getInstance().log(
 					"Invalid ConstraintsModel.\nThere are no RunnableSequencingConstraints in this model.\nLeaving Algorithm...",
 					null);
 			return false;
 		}
 		UniversalHandler.getInstance().logCon("Found "
-				+ getConnstraintsModel().getRunnableSequencingConstraints().size() + " Sequencing Constraint(s)");
+				+ getConstraintsModel().getRunnableSequencingConstraints().size() + " Sequencing Constraint(s)");
 
-		final Iterator<RunnableSequencingConstraint> lRsc = getConnstraintsModel().getRunnableSequencingConstraints()
+		final Iterator<RunnableSequencingConstraint> lRsc = getConstraintsModel().getRunnableSequencingConstraints()
 				.iterator();
 		while (lRsc.hasNext()) {
 			final RunnableSequencingConstraint rsc = lRsc.next();
