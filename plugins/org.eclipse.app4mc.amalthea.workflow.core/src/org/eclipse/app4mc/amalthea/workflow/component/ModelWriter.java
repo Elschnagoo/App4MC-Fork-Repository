@@ -80,7 +80,12 @@ public class ModelWriter extends WorkflowComponent {
 			else {
 				final List<EObject> tmp = new ArrayList<EObject>();
 				final Amalthea model = getAmaltheaModelCopy(ctx);
+				if (null != model.getCommonElements()) {
+					tmp.add(model.getCommonElements());
+					saveModelFile("-common", tmp); //$NON-NLS-1$
+				}
 				if (null != model.getHwModel()) {
+					tmp.clear();
 					tmp.add(model.getHwModel());
 					saveModelFile("-hw", tmp); //$NON-NLS-1$
 				}

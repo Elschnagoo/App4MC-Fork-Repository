@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ComponentsModel;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
@@ -89,6 +90,9 @@ public class ModelReader extends WorkflowComponent {
 				/*- Merging of CustomPropeties at the root level (central:Amalthea) from various models can lead to overwriting the contents (if same key's are defined)*/
 				getAmaltheaModel(ctx).getCustomProperties().addAll(tmpContent.getCustomProperties());
 			}
+			if (tmpContent.getCommonElements() != null) {
+				getAmaltheaModel(ctx).setCommonElements(tmpContent.getCommonElements());
+			}
 			if (tmpContent.getComponentsModel() != null) {
 				getAmaltheaModel(ctx).setComponentsModel(tmpContent.getComponentsModel());
 			}
@@ -119,6 +123,9 @@ public class ModelReader extends WorkflowComponent {
 			if (tmpContent.getSwModel() != null) {
 				getAmaltheaModel(ctx).setSwModel(tmpContent.getSwModel());
 			}
+		}
+		else if (content instanceof CommonElements) {
+			getAmaltheaModel(ctx).setCommonElements((CommonElements) content);
 		}
 		else if (content instanceof ComponentsModel) {
 			getAmaltheaModel(ctx).setComponentsModel((ComponentsModel) content);
