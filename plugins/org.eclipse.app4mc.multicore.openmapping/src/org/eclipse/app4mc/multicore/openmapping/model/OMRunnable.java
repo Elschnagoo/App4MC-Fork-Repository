@@ -14,10 +14,12 @@ package org.eclipse.app4mc.multicore.openmapping.model;
 import java.util.Iterator;
 
 import org.eclipse.app4mc.amalthea.model.Deviation;
+import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
 import org.eclipse.emf.common.util.EList;
@@ -62,16 +64,21 @@ public class OMRunnable {
 		while (itRunnableItems.hasNext()) {
 			final RunnableItem runnableItem = itRunnableItems.next();
 
-			// Constant number of Instructions
-			if (runnableItem instanceof InstructionsConstant) {
-				return processInstructionsConstant((InstructionsConstant) runnableItem);
-			}
-			else if (runnableItem instanceof InstructionsDeviation) {
-				return processInstructionsDeviation((InstructionsDeviation) runnableItem);
-			}
-			else {
-				// Report the other/unsupported elements (Debug info)
-				UniversalHandler.getInstance().logCon("Debug Info: Skipping " + runnableItem.getClass().toString());
+			if (runnableItem instanceof RunnableInstructions) {
+				final RunnableInstructions runnableInstructions = (RunnableInstructions) runnableItem;
+				final Instructions abstractInstructions = runnableInstructions.getDefault();
+				if (abstractInstructions == null) {
+					UniversalHandler.getInstance().log(" Unexpected SWModel.\nInstructions are not set!\nSkipping...",
+							null);
+					return 0;
+				} else if (abstractInstructions instanceof InstructionsConstant) {
+					return processInstructionsConstant((InstructionsConstant) abstractInstructions);
+				} else if (abstractInstructions instanceof InstructionsDeviation) {
+					return processInstructionsDeviation((InstructionsDeviation) abstractInstructions);
+				} else {
+					// Report the others (Debug info), as we do not handle them
+					UniversalHandler.getInstance().logCon("Debug Info: Skipping " + runnableItem.getClass().toString());
+				}
 			}
 		}
 

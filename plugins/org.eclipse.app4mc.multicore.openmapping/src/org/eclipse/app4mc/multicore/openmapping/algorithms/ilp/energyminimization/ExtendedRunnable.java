@@ -14,11 +14,12 @@ package org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimizati
 import java.util.Iterator;
 
 import org.eclipse.app4mc.amalthea.model.Deviation;
+import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
-import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
 
@@ -50,44 +51,46 @@ public class ExtendedRunnable {
 		while (itRunnableItems.hasNext()) {
 			final RunnableItem runnableItem = itRunnableItems.next();
 
-			if (runnableItem instanceof InstructionsConstant) {
-				// Constant execution cycles value
-				final InstructionsConstant execCycles = (InstructionsConstant) runnableItem;
-				if (execCycles.getValue() <= 0) {
-					UniversalHandler.getInstance()
-							.log(" Unexpected SWModel.\nExecution cycles not set or negative.\nSkipping...", null);
-					return 0;
-				}
-				return execCycles.getValue();
-			}
-			else if (runnableItem instanceof InstructionsDeviation) {
-				// Not constant execution cycles value
-				final InstructionsDeviation instructions = (InstructionsDeviation) runnableItem;
-				final Deviation<LongObject> deviation;
-				if ((deviation = instructions.getDeviation()) == null) {
-					UniversalHandler.getInstance()
-							.log(" Unexpected SWModel.\nDeviation in InstructionsDeviation unset.\nSkipping...", null);
-					return 0;
-				}
-
-				final Long lowerBound = deviation.getLowerBound().getValue();
-				final Long upperBound = deviation.getUpperBound().getValue();
-
-				// Check if lower and upper bound are set correct
-				// Quick solution, might need to be rewritten in the future
-				if (lowerBound <= 0 || upperBound <= 0) {
-					UniversalHandler.getInstance().log("Unexpected SWModel.\nDeviation not set properly.\nSkipping...",
+			if (runnableItem instanceof RunnableInstructions) {
+				final RunnableInstructions runnableInstructions = (RunnableInstructions) runnableItem;
+				final Instructions abstractInstructions = runnableInstructions.getDefault();
+				if (abstractInstructions == null) {
+					UniversalHandler.getInstance().log(" Unexpected SWModel.\nInstructions are not set!\nSkipping...",
 							null);
 					return 0;
+				} else if (abstractInstructions instanceof InstructionsConstant) {
+					// Constant execution cycles value
+					final InstructionsConstant execCycles = (InstructionsConstant) abstractInstructions;
+					if (execCycles.getValue() <= 0) {
+						UniversalHandler.getInstance()
+								.log(" Unexpected SWModel.\nExecution cycles not set or negative.\nSkipping...", null);
+						return 0;
+					}
+					return execCycles.getValue();
+				} else if (abstractInstructions instanceof InstructionsDeviation) {
+					// Not constant execution cycles value
+					final InstructionsDeviation instructions = (InstructionsDeviation) abstractInstructions;
+					final Deviation<LongObject> deviation;
+					if ((deviation = instructions.getDeviation()) == null) {
+						UniversalHandler.getInstance().log(
+								" Unexpected SWModel.\nDeviation in InstructionsDeviation unset.\nSkipping...", null);
+						return 0;
+					}
+
+					final Long lowerBound = deviation.getLowerBound().getValue();
+					final Long upperBound = deviation.getUpperBound().getValue();
+
+					// Check if lower and upper bound are set correct
+					// Quick solution, might need to be rewritten in the future
+					if (lowerBound <= 0 || upperBound <= 0) {
+						UniversalHandler.getInstance()
+								.log("Unexpected SWModel.\nDeviation not set properly.\nSkipping...", null);
+						return 0;
+					}
+					return ((lowerBound + upperBound) / 2);
 				}
-				return ((lowerBound + upperBound) / 2);
-			}
-			else if (runnableItem instanceof LabelAccess) {
-				// These are the ones we will skip without any further handling
-			}
-			else {
+			} else {
 				// Report the others (Debug info), as we do not handle them
-				// (yet)
 				UniversalHandler.getInstance().logCon("Debug Info: Skipping " + runnableItem.getClass().toString());
 			}
 		}
