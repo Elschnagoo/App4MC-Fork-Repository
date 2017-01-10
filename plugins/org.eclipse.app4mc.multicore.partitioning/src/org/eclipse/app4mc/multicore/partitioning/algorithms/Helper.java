@@ -222,6 +222,7 @@ public class Helper {
 	 * Amalthea model
 	 */
 	public Amalthea setAllModels(final Amalthea amodels, final UniversalHandler uh) {
+		amodels.setCommonElements(uh.getCommonElements());
 		amodels.setConstraintsModel(uh.getConstraintsModel());
 		amodels.setHwModel(uh.getHwModel());
 		amodels.setMappingModel(uh.getMappingModel());
