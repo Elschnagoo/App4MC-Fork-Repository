@@ -1023,7 +1023,7 @@ abstract class TimingConstraint extends ReferableBaseObject
 /*
  * This contraints is used to limit a section in  Memories
  */
-class PhysicalSectionConstraint extends ReferableBaseObject, BaseObject
+class PhysicalSectionConstraint extends ReferableBaseObject
 {
 	refers Section section
 	refers Memory[+] memories

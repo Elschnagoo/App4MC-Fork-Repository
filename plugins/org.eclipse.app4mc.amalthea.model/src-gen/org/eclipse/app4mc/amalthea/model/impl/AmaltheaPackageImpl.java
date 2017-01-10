@@ -13167,7 +13167,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		subEventChainEClass.getESuperTypes().add(this.getBaseObject());
 		timingConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
 		physicalSectionConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
-		physicalSectionConstraintEClass.getESuperTypes().add(this.getBaseObject());
 		synchronizationConstraintEClass.getESuperTypes().add(this.getTimingConstraint());
 		eventSynchronizationConstraintEClass.getESuperTypes().add(this.getSynchronizationConstraint());
 		eventChainSynchronizationConstraintEClass.getESuperTypes().add(this.getSynchronizationConstraint());

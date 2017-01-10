@@ -1156,7 +1156,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				PhysicalSectionConstraint physicalSectionConstraint = (PhysicalSectionConstraint)theEObject;
 				T1 result = casePhysicalSectionConstraint(physicalSectionConstraint);
 				if (result == null) result = caseReferableBaseObject(physicalSectionConstraint);
-				if (result == null) result = caseBaseObject(physicalSectionConstraint);
 				if (result == null) result = caseIAnnotatable(physicalSectionConstraint);
 				if (result == null) result = caseIReferable(physicalSectionConstraint);
 				if (result == null) result = defaultCase(theEObject);

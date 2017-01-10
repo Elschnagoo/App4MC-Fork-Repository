@@ -35,7 +35,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface PhysicalSectionConstraint extends ReferableBaseObject, BaseObject {
+public interface PhysicalSectionConstraint extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Section</b></em>' reference.
 	 * <!-- begin-user-doc -->
