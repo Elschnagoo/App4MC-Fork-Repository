@@ -1,3 +1,17 @@
+/**
+ * *******************************************************************************
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Robert Bosch GmbH - initial API and implementation
+ *
+ * *******************************************************************************
+ */
+
 package org.eclipse.app4mc.amalthea.model;
 
 import java.util.ArrayList;
@@ -8,20 +22,27 @@ import java.util.Map.Entry;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 
+// TODO add reporting, e.g. list skipped elements
+
 public class AmaltheaMerger {
 
 	/**
 	 * Add the contained elements of the input models to the main model.
+	 * Only major elements of the model (with their containments) are added.
+	 * In case of name conflicts the affected elements will be omitted.
 	 * 
-	 * 
-	 * @param main
+	 * @param mainModel
 	 * @param inputs
 	 */
 	public static void addElements(Amalthea mainModel, Collection<Amalthea> inputs) {
+		if (mainModel == null) return;
+		if (inputs == null || inputs.size() == 0) return;
+		
 		final Copier copier = new Copier(true, true);
 		
 		for (Amalthea model : inputs) {
 			final Amalthea tmpModel = (Amalthea) copier.copy(model);
+			if (tmpModel == null) continue;
 			
 			addPropertiesIfAbsent(mainModel, tmpModel);
 			
@@ -43,6 +64,8 @@ public class AmaltheaMerger {
 	private static void addCommonElements(Amalthea mainModel, Amalthea tmpModel) {
 		final CommonElements main = mainModel.getCommonElements();
 		final CommonElements tmp = tmpModel.getCommonElements();
+		if (tmp == null) return;
+		
 		if (main == null) {
 			mainModel.setCommonElements(tmp);
 		} else {
@@ -53,6 +76,8 @@ public class AmaltheaMerger {
 	private static void addSwModel(Amalthea mainModel, Amalthea tmpModel) {
 		final SWModel main = mainModel.getSwModel();
 		final SWModel tmp = tmpModel.getSwModel();
+		if (tmp == null) return;
+		
 		if (main == null) {
 			mainModel.setSwModel(tmp);
 		} else {
@@ -76,6 +101,8 @@ public class AmaltheaMerger {
 	private static void addHwModel(Amalthea mainModel, Amalthea tmpModel) {
 		final HWModel main = mainModel.getHwModel();
 		final HWModel tmp = tmpModel.getHwModel();
+		if (tmp == null) return;
+		
 		if (main == null) {
 			mainModel.setHwModel(tmp);
 		} else {
@@ -95,21 +122,25 @@ public class AmaltheaMerger {
 	private static void addOsModel(Amalthea mainModel, Amalthea tmpModel) {
 		final OSModel main = mainModel.getOsModel();
 		final OSModel tmp = tmpModel.getOsModel();
+		if (tmp == null) return;
+		
 		if (main == null) {
 			mainModel.setOsModel(tmp);
 		} else {
 			if (main.getOsDataConsistency() == null) {
 				main.setOsDataConsistency(tmp.getOsDataConsistency());
 			}
+			addAll(main.getOperatingSystems(), tmp.getOperatingSystems());
 			addIfAbsent(main.getSemaphores(), tmp.getSemaphores());
 			addIfAbsent(main.getOsOverheads(), tmp.getOsOverheads());
-			main.getOperatingSystems().addAll(tmp.getOperatingSystems());
 		}	
 	}
 
 	private static void addStimuliModel(Amalthea mainModel, Amalthea tmpModel) {
 		final StimuliModel main = mainModel.getStimuliModel();
 		final StimuliModel tmp = tmpModel.getStimuliModel();
+		if (tmp == null) return;
+		
 		if (main == null) {
 			mainModel.setStimuliModel(tmp);
 		} else {
@@ -121,9 +152,12 @@ public class AmaltheaMerger {
 	private static void addConstraintsModel(Amalthea mainModel, Amalthea tmpModel) {
 		final ConstraintsModel main = mainModel.getConstraintsModel();
 		final ConstraintsModel tmp = tmpModel.getConstraintsModel();
+		if (tmp == null) return;
+		
 		if (main == null) {
 			mainModel.setConstraintsModel(tmp);
 		} else {
+			addAll(main.getRequirements(), tmp.getRequirements());
 			addIfAbsent(main.getEventChains(), tmp.getEventChains());
 			addIfAbsent(main.getTimingConstraints(), tmp.getTimingConstraints());
 			addIfAbsent(main.getAffinityConstraints(), tmp.getAffinityConstraints());
@@ -132,13 +166,14 @@ public class AmaltheaMerger {
 			addIfAbsent(main.getDataCoherencyGroups(), tmp.getDataCoherencyGroups());
 			addIfAbsent(main.getDataStabilityGroups(), tmp.getDataStabilityGroups());
 			addIfAbsent(main.getPhysicalSectionConstraints(), tmp.getPhysicalSectionConstraints());
-			main.getRequirements().addAll(tmp.getRequirements());
 		}	
 	}
 
 	private static void addEventModel(Amalthea mainModel, Amalthea tmpModel) {
 		final EventModel main = mainModel.getEventModel();
 		final EventModel tmp = tmpModel.getEventModel();
+		if (tmp == null) return;
+		
 		if (main == null) {
 			mainModel.setEventModel(tmp);
 		} else {
@@ -147,31 +182,43 @@ public class AmaltheaMerger {
 	}
 
 	private static void addPropertyConstraintsModel(Amalthea mainModel, Amalthea tmpModel) {
-		// TODO Auto-generated method stub
+		final PropertyConstraintsModel main = mainModel.getPropertyConstraintsModel();
+		final PropertyConstraintsModel tmp = tmpModel.getPropertyConstraintsModel();
+		if (tmp == null) return;
 		
+		if (main == null) {
+			mainModel.setPropertyConstraintsModel(tmp);
+		} else {
+			addAll(main.getAllocationConstraints(), tmp.getAllocationConstraints());
+			addAll(main.getMappingConstraints(), tmp.getMappingConstraints());
+		}	
 	}
 
 	private static void addMappingModel(Amalthea mainModel, Amalthea tmpModel) {
 		final MappingModel main = mainModel.getMappingModel();
 		final MappingModel tmp = tmpModel.getMappingModel();
+		if (tmp == null) return;
+		
 		if (main == null) {
 			mainModel.setMappingModel(tmp);
 		} else {
 			if (main.getAddressMappingType() == MemoryAddressMappingType._UNDEFINED_) {
 				main.setAddressMappingType(tmp.getAddressMappingType());
 			}
-			main.getTaskAllocation().addAll(tmp.getTaskAllocation());
-			main.getIsrAllocation().addAll(tmp.getIsrAllocation());
-			main.getRunnableAllocation().addAll(tmp.getRunnableAllocation());
-			main.getCoreAllocation().addAll(tmp.getCoreAllocation());
-			main.getMapping().addAll(tmp.getMapping());
-			main.getPhysicalSectionMapping().addAll(tmp.getPhysicalSectionMapping());
+			addAll(main.getTaskAllocation(), tmp.getTaskAllocation());
+			addAll(main.getIsrAllocation(), tmp.getIsrAllocation());
+			addAll(main.getRunnableAllocation(), tmp.getRunnableAllocation());
+			addAll(main.getCoreAllocation(), tmp.getCoreAllocation());
+			addAll(main.getMapping(), tmp.getMapping());
+			addIfAbsent(main.getPhysicalSectionMapping(), tmp.getPhysicalSectionMapping());
 		}	
 	}
 
 	private static void addComponentsModel(Amalthea mainModel, Amalthea tmpModel) {
 		final ComponentsModel main = mainModel.getComponentsModel();
 		final ComponentsModel tmp = tmpModel.getComponentsModel();
+		if (tmp == null) return;
+		
 		if (main == null) {
 			mainModel.setComponentsModel(tmp);
 		} else {
@@ -183,23 +230,18 @@ public class AmaltheaMerger {
 	private static void addConfigModel(Amalthea mainModel, Amalthea tmpModel) {
 		final ConfigModel main = mainModel.getConfigModel();
 		final ConfigModel tmp = tmpModel.getConfigModel();
+		if (tmp == null) return;
+		
 		if (main == null) {
 			mainModel.setConfigModel(tmp);
 		} else {
-			main.getEventsToTrace().addAll(tmp.getEventsToTrace());
+			addAll(main.getEventsToTrace(), tmp.getEventsToTrace());
 		}	
 	}
 
 	
-	private static void addPropertiesIfAbsent(IAnnotatable main, final IAnnotatable input) {
-		for (Entry<String, Value> property : input.getCustomProperties()) {
-			if (main.getCustomProperties().containsKey(property.getKey())) {
-				// skip entry
-			} else {
-				// add entry
-				main.getCustomProperties().add(property);
-			}
-		}
+	private static <T extends BaseObject> void addAll(EList<T> main, EList<T> input) {
+		main.addAll(input);
 	}
 
 	private static <T extends IReferable> void addIfAbsent(EList<T> main, EList<T> input) {
@@ -221,6 +263,18 @@ public class AmaltheaMerger {
 		// this part changes the containment of the objects
 		main.addAll(objectsToMove);
 	}
-	
-	
+
+	private static void addPropertiesIfAbsent(IAnnotatable main, final IAnnotatable input) {
+		if (main == null || input == null) return;
+		
+		for (Entry<String, Value> property : input.getCustomProperties()) {
+			if (main.getCustomProperties().containsKey(property.getKey())) {
+				// skip entry
+			} else {
+				// add entry
+				main.getCustomProperties().add(property);
+			}
+		}
+	}
+
 }
