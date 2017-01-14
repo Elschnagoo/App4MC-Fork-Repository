@@ -57,8 +57,7 @@ import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
-import org.eclipse.app4mc.amalthea.model.EventConfigElement;
-import org.eclipse.app4mc.amalthea.model.EventConfigLink;
+import org.eclipse.app4mc.amalthea.model.EventConfig;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
@@ -1131,102 +1130,59 @@ public class CustomItemProviderService {
   }
   
   /**
-   * EventConfigElementItemProvider
+   * EventConfigItemProvider
    */
-  public static String getEventConfigElementItemProviderText(final Object object, final String defaultText, final AdapterFactory rootAF) {
-    if ((object instanceof EventConfigElement)) {
+  public static String getEventConfigItemProviderText(final Object object, final String defaultText, final AdapterFactory rootAF) {
+    if ((object instanceof EventConfig)) {
       String _name = null;
-      if (((EventConfigElement)object)!=null) {
-        _name=((EventConfigElement)object).getName();
+      if (((EventConfig)object)!=null) {
+        _name=((EventConfig)object).getName();
       }
       final String name = _name;
       EntityEvent _event = null;
-      if (((EventConfigElement)object)!=null) {
-        _event=((EventConfigElement)object).getEvent();
+      if (((EventConfig)object)!=null) {
+        _event=((EventConfig)object).getEvent();
       }
       final EntityEvent event = _event;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
       if (_isNullOrEmpty) {
-        _xifexpression = "";
+        _xifexpression = "???";
       } else {
-        _xifexpression = (name + " ");
+        _xifexpression = name;
       }
       final String s1 = _xifexpression;
-      String s2 = CustomItemProviderService.getLabelProviderText(event, rootAF);
-      return (((("Config " + s1) + "{") + s2) + "}");
+      String _xifexpression_1 = null;
+      boolean _equals = Objects.equal(event, null);
+      if (_equals) {
+        _xifexpression_1 = "<event>";
+      } else {
+        _xifexpression_1 = CustomItemProviderService.getLabelProviderText(event, rootAF);
+      }
+      String s2 = _xifexpression_1;
+      return ((("Config " + s1) + " -> trace ") + s2);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getEventConfigElementItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getEventConfigItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(EventConfigElement.class);
+    int _featureID = notification.getFeatureID(EventConfig.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CONFIG_ELEMENT__NAME)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CONFIG__NAME)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CONFIG_ELEMENT__EVENT)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CONFIG__EVENT)) {
         _matched=true;
         Object _notifier_1 = notification.getNotifier();
         ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
         list.add(_viewerNotification_1);
       }
-    }
-    return list;
-  }
-  
-  /**
-   * EventConfigLinkItemProvider
-   */
-  public static String getEventConfigLinkItemProviderText(final Object object, final String defaultText, final AdapterFactory rootAF) {
-    if ((object instanceof EventConfigLink)) {
-      String _name = null;
-      if (((EventConfigLink)object)!=null) {
-        _name=((EventConfigLink)object).getName();
-      }
-      final String name = _name;
-      EntityEvent _event = null;
-      if (((EventConfigLink)object)!=null) {
-        _event=((EventConfigLink)object).getEvent();
-      }
-      final EntityEvent event = _event;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "";
-      } else {
-        _xifexpression = (name + " ");
-      }
-      final String s1 = _xifexpression;
-      String s2 = CustomItemProviderService.getLabelProviderText(event, rootAF);
-      return (((("Config Link " + s1) + "{") + s2) + "}");
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static List<ViewerNotification> getEventConfigLinkItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(EventConfigLink.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CONFIG_LINK__NAME)) {
-      _matched=true;
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CONFIG_LINK__EVENT)) {
-        _matched=true;
-      }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
     }
     return list;
   }

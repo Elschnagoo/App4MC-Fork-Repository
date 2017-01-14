@@ -19,7 +19,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A abstract superclass for all pairing constraints
+ * An abstract superclass for all pairing constraints
  * <!-- end-model-doc -->
  *
  *

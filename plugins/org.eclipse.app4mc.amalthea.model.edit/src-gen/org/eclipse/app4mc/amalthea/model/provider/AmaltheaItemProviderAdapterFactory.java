@@ -1025,49 +1025,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EventConfigLink} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EventConfig} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EventConfigLinkItemProvider eventConfigLinkItemProvider;
+	protected EventConfigItemProvider eventConfigItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EventConfigLink}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EventConfig}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createEventConfigLinkAdapter() {
-		if (eventConfigLinkItemProvider == null) {
-			eventConfigLinkItemProvider = new EventConfigLinkItemProvider(this);
+	public Adapter createEventConfigAdapter() {
+		if (eventConfigItemProvider == null) {
+			eventConfigItemProvider = new EventConfigItemProvider(this);
 		}
 
-		return eventConfigLinkItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EventConfigElement} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EventConfigElementItemProvider eventConfigElementItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EventConfigElement}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createEventConfigElementAdapter() {
-		if (eventConfigElementItemProvider == null) {
-			eventConfigElementItemProvider = new EventConfigElementItemProvider(this);
-		}
-
-		return eventConfigElementItemProvider;
+		return eventConfigItemProvider;
 	}
 
 	/**
@@ -5973,8 +5950,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (qualifiedPortItemProvider != null) qualifiedPortItemProvider.dispose();
 		if (fInterfacePortItemProvider != null) fInterfacePortItemProvider.dispose();
 		if (configModelItemProvider != null) configModelItemProvider.dispose();
-		if (eventConfigLinkItemProvider != null) eventConfigLinkItemProvider.dispose();
-		if (eventConfigElementItemProvider != null) eventConfigElementItemProvider.dispose();
+		if (eventConfigItemProvider != null) eventConfigItemProvider.dispose();
 		if (constraintsModelItemProvider != null) constraintsModelItemProvider.dispose();
 		if (runnableSequencingConstraintItemProvider != null) runnableSequencingConstraintItemProvider.dispose();
 		if (processRunnableGroupItemProvider != null) processRunnableGroupItemProvider.dispose();

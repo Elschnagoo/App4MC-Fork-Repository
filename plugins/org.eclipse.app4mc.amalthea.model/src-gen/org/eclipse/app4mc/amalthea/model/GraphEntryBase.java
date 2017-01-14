@@ -19,7 +19,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A abstract entry for a call graph
+ * An abstract entry for a call graph
  * <!-- end-model-doc -->
  *
  *

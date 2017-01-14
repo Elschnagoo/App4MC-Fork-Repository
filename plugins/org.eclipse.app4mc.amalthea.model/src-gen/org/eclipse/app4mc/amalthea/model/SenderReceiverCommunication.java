@@ -19,7 +19,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A abstract description for sender-receiver-communication (it can be read or write)
+ * An abstract description for sender-receiver-communication (it can be read or write)
  * <!-- end-model-doc -->
  *
  * <p>

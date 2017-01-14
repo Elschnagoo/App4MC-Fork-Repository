@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A abstract superclass for all process related constraint
+ * An abstract superclass for all process related constraint
  * The target describes the entity on which the processes can be mapped
  * <!-- end-model-doc -->
  *

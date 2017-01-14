@@ -23,10 +23,11 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.EventConfig#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.EventConfig#getEvent <em>Event</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventConfig()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface EventConfig extends BaseObject {
@@ -55,5 +56,31 @@ public interface EventConfig extends BaseObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Event</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Event</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Event</em>' reference.
+	 * @see #setEvent(EntityEvent)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventConfig_Event()
+	 * @model required="true"
+	 * @generated
+	 */
+	EntityEvent getEvent();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.EventConfig#getEvent <em>Event</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Event</em>' reference.
+	 * @see #getEvent()
+	 * @generated
+	 */
+	void setEvent(EntityEvent value);
 
 } // EventConfig

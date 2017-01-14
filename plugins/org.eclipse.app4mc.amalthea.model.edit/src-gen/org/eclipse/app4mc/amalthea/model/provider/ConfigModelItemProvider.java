@@ -15,7 +15,6 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
@@ -156,12 +155,7 @@ public class ConfigModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConfigModel_EventsToTrace(),
-				 AmaltheaFactory.eINSTANCE.createEventConfigLink()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getConfigModel_EventsToTrace(),
-				 AmaltheaFactory.eINSTANCE.createEventConfigElement()));
+				 AmaltheaFactory.eINSTANCE.createEventConfig()));
 	}
 
 }

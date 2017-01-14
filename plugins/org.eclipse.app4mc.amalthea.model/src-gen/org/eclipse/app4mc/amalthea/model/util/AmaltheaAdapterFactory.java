@@ -116,8 +116,6 @@ import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
-import org.eclipse.app4mc.amalthea.model.EventConfigElement;
-import org.eclipse.app4mc.amalthea.model.EventConfigLink;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
@@ -638,14 +636,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEventConfig(EventConfig object) {
 				return createEventConfigAdapter();
-			}
-			@Override
-			public Adapter caseEventConfigLink(EventConfigLink object) {
-				return createEventConfigLinkAdapter();
-			}
-			@Override
-			public Adapter caseEventConfigElement(EventConfigElement object) {
-				return createEventConfigElementAdapter();
 			}
 			@Override
 			public Adapter caseConstraintsModel(ConstraintsModel object) {
@@ -2550,34 +2540,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEventConfigAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EventConfigLink <em>Event Config Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.EventConfigLink
-	 * @generated
-	 */
-	public Adapter createEventConfigLinkAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EventConfigElement <em>Event Config Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.EventConfigElement
-	 * @generated
-	 */
-	public Adapter createEventConfigElementAdapter() {
 		return null;
 	}
 

@@ -43,8 +43,7 @@ import org.eclipse.app4mc.amalthea.model.DataTypeDefinition
 import org.eclipse.app4mc.amalthea.model.Deviation
 import org.eclipse.app4mc.amalthea.model.DoubleObject
 import org.eclipse.app4mc.amalthea.model.EventChainReference
-import org.eclipse.app4mc.amalthea.model.EventConfigElement
-import org.eclipse.app4mc.amalthea.model.EventConfigLink
+import org.eclipse.app4mc.amalthea.model.EventConfig
 import org.eclipse.app4mc.amalthea.model.FInterfacePort
 import org.eclipse.app4mc.amalthea.model.FloatObject
 import org.eclipse.app4mc.amalthea.model.Frequency
@@ -683,55 +682,28 @@ class CustomItemProviderService {
 
 
 	/*****************************************************************************
-	 * 						EventConfigElementItemProvider
+	 * 						EventConfigItemProvider
 	 *****************************************************************************/
-	def static String getEventConfigElementItemProviderText(Object object, String defaultText, AdapterFactory rootAF) {
-		if (object instanceof EventConfigElement) {
+	def static String getEventConfigItemProviderText(Object object, String defaultText, AdapterFactory rootAF) {
+		if (object instanceof EventConfig) {
 			val name = object?.name
 			val event = object?.event
-			val s1 = if(name.isNullOrEmpty) "" else name + " "
-			var s2 = getLabelProviderText(event, rootAF)
+			val s1 = if(name.isNullOrEmpty) "???" else name
+			var s2 = if(event == null) "<event>" else getLabelProviderText(event, rootAF)
 			
-			return "Config " + s1 + "{" + s2 + "}"
+			return "Config " + s1 + " -> trace " + s2
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getEventConfigElementItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getEventConfigItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(EventConfigElement)) {			
-			case AmaltheaPackage::EVENT_CONFIG_ELEMENT__NAME:
+		switch notification.getFeatureID(typeof(EventConfig)) {			
+			case AmaltheaPackage::EVENT_CONFIG__NAME:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-			case AmaltheaPackage::EVENT_CONFIG_ELEMENT__EVENT:
+			case AmaltheaPackage::EVENT_CONFIG__EVENT:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
-		}
-		return list
-	}
-
-
-	/*****************************************************************************
-	 * 						EventConfigLinkItemProvider
-	 *****************************************************************************/
-	def static String getEventConfigLinkItemProviderText(Object object, String defaultText, AdapterFactory rootAF) {
-		if (object instanceof EventConfigLink) {
-			val name = object?.name
-			val event = object?.event
-			val s1 = if(name.isNullOrEmpty) "" else name + " "
-			var s2 = getLabelProviderText(event, rootAF)
-			
-			return "Config Link " + s1 + "{" + s2 + "}"
-		} else {
-			return defaultText
-		}
-	}
-
-	def static List<ViewerNotification> getEventConfigLinkItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(EventConfigLink)) {
-			case AmaltheaPackage::EVENT_CONFIG_LINK__NAME,
-			case AmaltheaPackage::EVENT_CONFIG_LINK__EVENT:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 		}
 		return list
 	}

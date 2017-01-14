@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A abstract description for a group of runnables that can be paired or separated by a runnable-constraint
+ * An abstract description for a group of runnables that can be paired or separated by a runnable-constraint
  * <!-- end-model-doc -->
  *
  *

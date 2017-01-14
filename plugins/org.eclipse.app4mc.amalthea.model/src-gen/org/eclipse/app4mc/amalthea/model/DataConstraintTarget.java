@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A abstract superclass for all possible targets for data-constraints
+ * An abstract superclass for all possible targets for data-constraints
  * <!-- end-model-doc -->
  *
  *

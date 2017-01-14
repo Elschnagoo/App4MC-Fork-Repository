@@ -3,7 +3,7 @@
   <xsd:annotation>
     <xsd:documentation>*
 *******************************************************************************
- Copyright (c) 2016 Robert Bosch GmbH and others.
+ Copyright (c) 2017 Robert Bosch GmbH and others.
  All rights reserved. This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0
  which accompanies this distribution, and is available at
@@ -535,19 +535,10 @@ exclusive: gets access to requested semaphore only when there is no other user a
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:complexType name="Amalthea">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Central Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="commonElements" type="am:CommonElements"/>
           <xsd:element name="swModel" type="am:SWModel"/>
           <xsd:element name="hwModel" type="am:HWModel"/>
           <xsd:element name="osModel" type="am:OSModel"/>
@@ -562,28 +553,21 @@ exclusive: gets access to requested semaphore only when there is no other user a
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Amalthea" type="am:Amalthea">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Central Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="Amalthea" type="am:Amalthea"/>
+  <xsd:complexType name="CommonElements">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="tags" type="am:Tag"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CommonElements" type="am:CommonElements"/>
   <xsd:complexType abstract="true" name="BaseObject">
     <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Common Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
+      <xsd:documentation>Base classes to be used to provide common functionality for all objects.
+Needs to be extended by other classes.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:IAnnotatable"/>
@@ -591,14 +575,8 @@ exclusive: gets access to requested semaphore only when there is no other user a
   </xsd:complexType>
   <xsd:element name="BaseObject" type="am:BaseObject">
     <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Common Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
+      <xsd:documentation>Base classes to be used to provide common functionality for all objects.
+Needs to be extended by other classes.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="ReferableObject">
@@ -1164,7 +1142,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     <xsd:complexContent>
       <xsd:extension base="am:NumericStatistic">
         <xsd:attribute name="min" type="xsd:int"/>
-        <xsd:attribute name="avg" type="xsd:int"/>
+        <xsd:attribute name="avg" type="xsd:float"/>
         <xsd:attribute name="max" type="xsd:int"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -1220,38 +1198,16 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
   </xsd:complexType>
   <xsd:element name="ModeValueProvider" type="am:ModeValueProvider"/>
   <xsd:complexType name="ComponentsModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Components Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="components" type="am:Component"/>
           <xsd:element name="systems" type="am:System"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ComponentsModel" type="am:ComponentsModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Components Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="ComponentsModel" type="am:ComponentsModel"/>
   <xsd:complexType abstract="true" name="INamedElement">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -1381,16 +1337,6 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
   </xsd:complexType>
   <xsd:element name="FInterfacePort" type="am:FInterfacePort"/>
   <xsd:complexType name="ConfigModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Config Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -1399,58 +1345,20 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ConfigModel" type="am:ConfigModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Config Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType abstract="true" name="EventConfig">
+  <xsd:element name="ConfigModel" type="am:ConfigModel"/>
+  <xsd:complexType name="EventConfig">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
-        <xsd:attribute name="name" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="EventConfig" type="am:EventConfig"/>
-  <xsd:complexType name="EventConfigLink">
-    <xsd:complexContent>
-      <xsd:extension base="am:EventConfig">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="event" type="am:EntityEvent"/>
         </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="event" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="EventConfigLink" type="am:EventConfigLink"/>
-  <xsd:complexType name="EventConfigElement">
-    <xsd:complexContent>
-      <xsd:extension base="am:EventConfig">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="event" type="am:EntityEvent"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="EventConfigElement" type="am:EventConfigElement"/>
+  <xsd:element name="EventConfig" type="am:EventConfig"/>
   <xsd:complexType name="ConstraintsModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Constraints Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -1467,18 +1375,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ConstraintsModel" type="am:ConstraintsModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Constraints Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="ConstraintsModel" type="am:ConstraintsModel"/>
   <xsd:complexType name="RunnableSequencingConstraint">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
@@ -1511,7 +1408,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
   <xsd:element name="AffinityConstraint" type="am:AffinityConstraint"/>
   <xsd:complexType abstract="true" name="SeparationConstraint">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all separation constraints</xsd:documentation>
+      <xsd:documentation>An abstract superclass for all separation constraints</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:AffinityConstraint"/>
@@ -1519,12 +1416,12 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
   </xsd:complexType>
   <xsd:element name="SeparationConstraint" type="am:SeparationConstraint">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all separation constraints</xsd:documentation>
+      <xsd:documentation>An abstract superclass for all separation constraints</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="PairingConstraint">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all pairing constraints</xsd:documentation>
+      <xsd:documentation>An abstract superclass for all pairing constraints</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:AffinityConstraint"/>
@@ -1532,12 +1429,12 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
   </xsd:complexType>
   <xsd:element name="PairingConstraint" type="am:PairingConstraint">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all pairing constraints</xsd:documentation>
+      <xsd:documentation>An abstract superclass for all pairing constraints</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="ProcessConstraint">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all process related constraint
+      <xsd:documentation>An abstract superclass for all process related constraint
 The target describes the entity on which the processes can be mapped</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -1549,13 +1446,13 @@ The target describes the entity on which the processes can be mapped</xsd:docume
   </xsd:complexType>
   <xsd:element name="ProcessConstraint" type="am:ProcessConstraint">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all process related constraint
+      <xsd:documentation>An abstract superclass for all process related constraint
 The target describes the entity on which the processes can be mapped</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="RunnableConstraint">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all runnable related constraint
+      <xsd:documentation>An abstract superclass for all runnable related constraint
 The target describes the entity on which the runnables can be mapped</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -1567,13 +1464,13 @@ The target describes the entity on which the runnables can be mapped</xsd:docume
   </xsd:complexType>
   <xsd:element name="RunnableConstraint" type="am:RunnableConstraint">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all runnable related constraint
+      <xsd:documentation>An abstract superclass for all runnable related constraint
 The target describes the entity on which the runnables can be mapped</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="DataConstraint">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all data related constraint
+      <xsd:documentation>An abstract superclass for all data related constraint
 The target describes the entity on which the data can be mapped</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -1585,7 +1482,7 @@ The target describes the entity on which the data can be mapped</xsd:documentati
   </xsd:complexType>
   <xsd:element name="DataConstraint" type="am:DataConstraint">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all data related constraint
+      <xsd:documentation>An abstract superclass for all data related constraint
 The target describes the entity on which the data can be mapped</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
@@ -1717,7 +1614,7 @@ labels describes the group of labels that should be paired on the target</xsd:do
   </xsd:element>
   <xsd:complexType abstract="true" name="RunnableConstraintTarget">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all possible targets for runnable-constraints</xsd:documentation>
+      <xsd:documentation>An abstract superclass for all possible targets for runnable-constraints</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -1727,12 +1624,12 @@ labels describes the group of labels that should be paired on the target</xsd:do
   </xsd:complexType>
   <xsd:element name="RunnableConstraintTarget" type="am:RunnableConstraintTarget">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all possible targets for runnable-constraints</xsd:documentation>
+      <xsd:documentation>An abstract superclass for all possible targets for runnable-constraints</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="ProcessConstraintTarget">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all possible targets for process-constraints</xsd:documentation>
+      <xsd:documentation>An abstract superclass for all possible targets for process-constraints</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -1742,12 +1639,12 @@ labels describes the group of labels that should be paired on the target</xsd:do
   </xsd:complexType>
   <xsd:element name="ProcessConstraintTarget" type="am:ProcessConstraintTarget">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all possible targets for process-constraints</xsd:documentation>
+      <xsd:documentation>An abstract superclass for all possible targets for process-constraints</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="DataConstraintTarget">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all possible targets for data-constraints</xsd:documentation>
+      <xsd:documentation>An abstract superclass for all possible targets for data-constraints</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -1757,7 +1654,7 @@ labels describes the group of labels that should be paired on the target</xsd:do
   </xsd:complexType>
   <xsd:element name="DataConstraintTarget" type="am:DataConstraintTarget">
     <xsd:annotation>
-      <xsd:documentation>A abstract superclass for all possible targets for data-constraints</xsd:documentation>
+      <xsd:documentation>An abstract superclass for all possible targets for data-constraints</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="TargetMemory">
@@ -1831,7 +1728,7 @@ schedulers: the reference to zero or more Schedulers. If this list is empty, the
   </xsd:element>
   <xsd:complexType abstract="true" name="RunnableGroup">
     <xsd:annotation>
-      <xsd:documentation>A abstract description for a group of runnables that can be paired or separated by a runnable-constraint</xsd:documentation>
+      <xsd:documentation>An abstract description for a group of runnables that can be paired or separated by a runnable-constraint</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -1841,12 +1738,12 @@ schedulers: the reference to zero or more Schedulers. If this list is empty, the
   </xsd:complexType>
   <xsd:element name="RunnableGroup" type="am:RunnableGroup">
     <xsd:annotation>
-      <xsd:documentation>A abstract description for a group of runnables that can be paired or separated by a runnable-constraint</xsd:documentation>
+      <xsd:documentation>An abstract description for a group of runnables that can be paired or separated by a runnable-constraint</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="ProcessGroup">
     <xsd:annotation>
-      <xsd:documentation>A abstract description for a group of processes that can be paired or separated by a process-constraint</xsd:documentation>
+      <xsd:documentation>An abstract description for a group of processes that can be paired or separated by a process-constraint</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -1856,7 +1753,7 @@ schedulers: the reference to zero or more Schedulers. If this list is empty, the
   </xsd:complexType>
   <xsd:element name="ProcessGroup" type="am:ProcessGroup">
     <xsd:annotation>
-      <xsd:documentation>A abstract description for a group of processes that can be paired or separated by a process-constraint</xsd:documentation>
+      <xsd:documentation>An abstract description for a group of processes that can be paired or separated by a process-constraint</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="LabelEntityGroup">
@@ -2392,16 +2289,6 @@ maximum: Maximum allowed latency</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="ComponentScope" type="am:ComponentScope"/>
   <xsd:complexType name="EventModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Events Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -2410,18 +2297,7 @@ maximum: Maximum allowed latency</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="EventModel" type="am:EventModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Events Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="EventModel" type="am:EventModel"/>
   <xsd:complexType abstract="true" name="Event">
     <xsd:annotation>
       <xsd:documentation>An abstract event</xsd:documentation>
@@ -2691,20 +2567,9 @@ core: The core that processes the process/runnable that accesses the semaphore (
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="HWModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								HW Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="systemTypes" type="am:SystemType"/>
           <xsd:element name="ecuTypes" type="am:ECUType"/>
           <xsd:element name="mcTypes" type="am:MicrocontrollerType"/>
@@ -2717,18 +2582,7 @@ core: The core that processes the process/runnable that accesses the semaphore (
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="HWModel" type="am:HWModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								HW Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="HWModel" type="am:HWModel"/>
   <xsd:complexType abstract="true" name="ComplexNode">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
@@ -3109,16 +2963,6 @@ core: The core that processes the process/runnable that accesses the semaphore (
   </xsd:complexType>
   <xsd:element name="HwElementRef" type="am:HwElementRef"/>
   <xsd:complexType name="MappingModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Mapping Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -3133,18 +2977,7 @@ core: The core that processes the process/runnable that accesses the semaphore (
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="MappingModel" type="am:MappingModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Mapping Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="MappingModel" type="am:MappingModel"/>
   <xsd:complexType name="CoreAllocation">
     <xsd:annotation>
       <xsd:documentation>Allocation of Cores to schedulers</xsd:documentation>
@@ -3279,16 +3112,6 @@ Sections refer to Labels and/or Runnables.</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="RunnableAllocation" type="am:RunnableAllocation"/>
   <xsd:complexType name="OSModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								OS Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -3300,18 +3123,7 @@ Sections refer to Labels and/or Runnables.</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="OSModel" type="am:OSModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								OS Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="OSModel" type="am:OSModel"/>
   <xsd:complexType name="OsDataConsistency">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
@@ -3768,16 +3580,6 @@ It describes an ISR that performs scheduling.</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="OsISRInstructions" type="am:OsISRInstructions"/>
   <xsd:complexType name="PropertyConstraintsModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Property Constraints Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -3787,18 +3589,7 @@ It describes an ISR that performs scheduling.</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="PropertyConstraintsModel" type="am:PropertyConstraintsModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Property Constraints Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="PropertyConstraintsModel" type="am:PropertyConstraintsModel"/>
   <xsd:complexType abstract="true" name="AllocationConstraint">
     <xsd:annotation>
       <xsd:documentation>abstract class Constraint {
@@ -4007,16 +3798,6 @@ data.</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="HwMemoryConjunction" type="am:HwMemoryConjunction"/>
   <xsd:complexType name="StimuliModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Stimuli Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -4026,18 +3807,7 @@ data.</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="StimuliModel" type="am:StimuliModel">
-    <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								Stimuli Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="StimuliModel" type="am:StimuliModel"/>
   <xsd:complexType abstract="true" name="Stimulus">
     <xsd:annotation>
       <xsd:documentation>Every process/task can have one or more stimuli
@@ -4245,7 +4015,7 @@ triggerTimes: the list of all trigger times</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="arrivalCurveEntries" type="am:ArrivalCurveEntry"/>
+          <xsd:element name="entries" type="am:ArrivalCurveEntry"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -4349,14 +4119,7 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
   </xsd:element>
   <xsd:complexType name="SWModel">
     <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								SW Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
+      <xsd:documentation>Central instance to provide central access.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
@@ -4369,7 +4132,6 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
           <xsd:element name="processPrototypes" type="am:ProcessPrototype"/>
           <xsd:element name="sections" type="am:Section"/>
           <xsd:element name="activations" type="am:Activation"/>
-          <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="events" type="am:OsEvent"/>
           <xsd:element name="typeDefinitions" type="am:TypeDefinition"/>
           <xsd:element name="customEntities" type="am:CustomEntity"/>
@@ -4382,14 +4144,7 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
   </xsd:complexType>
   <xsd:element name="SWModel" type="am:SWModel">
     <xsd:annotation>
-      <xsd:documentation>*
-===============================================================================
-===============================================================================
-
-								SW Model
-
-===============================================================================
-===============================================================================</xsd:documentation>
+      <xsd:documentation>Central instance to provide central access.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="AbstractElementMemoryInformation">
@@ -4493,7 +4248,7 @@ Generalizes interrupt service routines and tasks</xsd:documentation>
   </xsd:element>
   <xsd:complexType abstract="true" name="GraphEntryBase">
     <xsd:annotation>
-      <xsd:documentation>A abstract entry for a call graph</xsd:documentation>
+      <xsd:documentation>An abstract entry for a call graph</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject"/>
@@ -4501,7 +4256,7 @@ Generalizes interrupt service routines and tasks</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="GraphEntryBase" type="am:GraphEntryBase">
     <xsd:annotation>
-      <xsd:documentation>A abstract entry for a call graph</xsd:documentation>
+      <xsd:documentation>An abstract entry for a call graph</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="CallSequence">
@@ -5239,7 +4994,7 @@ It can be used to define which mode value is written to the label.</xsd:document
   </xsd:element>
   <xsd:complexType abstract="true" name="SenderReceiverCommunication">
     <xsd:annotation>
-      <xsd:documentation>A abstract description for sender-receiver-communication (it can be read or write)</xsd:documentation>
+      <xsd:documentation>An abstract description for sender-receiver-communication (it can be read or write)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:RunnableItem">
@@ -5253,7 +5008,7 @@ It can be used to define which mode value is written to the label.</xsd:document
   </xsd:complexType>
   <xsd:element name="SenderReceiverCommunication" type="am:SenderReceiverCommunication">
     <xsd:annotation>
-      <xsd:documentation>A abstract description for sender-receiver-communication (it can be read or write)</xsd:documentation>
+      <xsd:documentation>An abstract description for sender-receiver-communication (it can be read or write)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="SenderReceiverRead">
@@ -5291,7 +5046,7 @@ It contains the runnables that have the corresponding SenderReceiverRead</xsd:do
   </xsd:element>
   <xsd:complexType abstract="true" name="ServerCall">
     <xsd:annotation>
-      <xsd:documentation>A abstract description for client/server communication
+      <xsd:documentation>An abstract description for client/server communication
 It refers to a required runnable that describes the called server operation</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -5305,7 +5060,7 @@ It refers to a required runnable that describes the called server operation</xsd
   </xsd:complexType>
   <xsd:element name="ServerCall" type="am:ServerCall">
     <xsd:annotation>
-      <xsd:documentation>A abstract description for client/server communication
+      <xsd:documentation>An abstract description for client/server communication
 It refers to a required runnable that describes the called server operation</xsd:documentation>
     </xsd:annotation>
   </xsd:element>

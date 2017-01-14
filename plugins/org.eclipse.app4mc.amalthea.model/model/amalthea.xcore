@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -35,15 +35,13 @@ import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
 
- /**
- * ===============================================================================
- * ===============================================================================
- * 
- * 								Central Model
- * 
- * ===============================================================================
- * ===============================================================================
- */
+// ===============================================================================
+// ===============================================================================
+// 
+// 									Central Model
+// 
+// ===============================================================================
+// ===============================================================================
 
  class Amalthea extends BaseObject {
  	contains CommonElements commonElements
@@ -60,15 +58,14 @@ import java.nio.charset.StandardCharsets
 }
 
 
-/**
- * ===============================================================================
- * ===============================================================================
- * 
- * 								Common Model
- * 
- * ===============================================================================
- * ===============================================================================
- */
+// ===============================================================================
+// ===============================================================================
+// 
+// 									Common Model
+// 
+// ===============================================================================
+// ===============================================================================
+
 
 class CommonElements extends BaseObject {
 	contains Tag[] tags
@@ -615,15 +612,13 @@ interface ModeValueProvider extends IAnnotatable, IReferable
 }
 
 
-/**
- * ===============================================================================
- * ===============================================================================
- * 
- * 								Components Model
- * 
- * ===============================================================================
- * ===============================================================================
- */
+// ===============================================================================
+// ===============================================================================
+// 
+// 								Components Model
+// 
+// ===============================================================================
+// ===============================================================================
 
 
 class ComponentsModel extends BaseObject {
@@ -695,46 +690,34 @@ enum InterfaceKind {
 }
 
 
-/**
- * ===============================================================================
- * ===============================================================================
- * 
- * 								Config Model
- * 
- * ===============================================================================
- * ===============================================================================
- */
+// ===============================================================================
+// ===============================================================================
+// 
+// 								Config Model
+// 
+// ===============================================================================
+// ===============================================================================
+
 
 class ConfigModel extends BaseObject
 {
 	contains EventConfig[] eventsToTrace
 }
 
-abstract class EventConfig extends BaseObject
+class EventConfig extends BaseObject
 {
 	String name
-}
-
-class EventConfigLink extends EventConfig
-{
 	refers EntityEvent[1] event
 }
 
-class EventConfigElement extends EventConfig
-{
-	contains EntityEvent[1] event
-}
 
-
-/**
- * ===============================================================================
- * ===============================================================================
- * 
- * 								Constraints Model
- * 
- * ===============================================================================
- * ===============================================================================
- */
+// ===============================================================================
+// ===============================================================================
+// 
+// 								Constraints Model
+// 
+// ===============================================================================
+// ===============================================================================
 
 
 class ConstraintsModel extends BaseObject
@@ -784,21 +767,21 @@ abstract class AffinityConstraint extends ReferableBaseObject
 }
 
 /*
- * A abstract superclass for all separation constraints
+ * An abstract superclass for all separation constraints
  */
 abstract class SeparationConstraint extends AffinityConstraint
 {
 }
 
 /*
- * A abstract superclass for all pairing constraints
+ * An abstract superclass for all pairing constraints
  */
 abstract class PairingConstraint extends AffinityConstraint
 {
 }
 
 /*
- * A abstract superclass for all process related constraint
+ * An abstract superclass for all process related constraint
  * The target describes the entity on which the processes can be mapped
  */
 abstract class ProcessConstraint
@@ -807,7 +790,7 @@ abstract class ProcessConstraint
 }
 
 /*
- * A abstract superclass for all runnable related constraint
+ * An abstract superclass for all runnable related constraint
  * The target describes the entity on which the runnables can be mapped
  */
 abstract class RunnableConstraint
@@ -816,7 +799,7 @@ abstract class RunnableConstraint
 }
 
 /*
- * A abstract superclass for all data related constraint
+ * An abstract superclass for all data related constraint
  * The target describes the entity on which the data can be mapped
  */
 abstract class DataConstraint
@@ -882,21 +865,21 @@ class DataPairingConstraint extends PairingConstraint, DataConstraint, BaseObjec
 }
 
 /*
- * A abstract superclass for all possible targets for runnable-constraints
+ * An abstract superclass for all possible targets for runnable-constraints
  */
 abstract class RunnableConstraintTarget
 {
 }
 
 /*
- * A abstract superclass for all possible targets for process-constraints
+ * An abstract superclass for all possible targets for process-constraints
  */
 abstract class ProcessConstraintTarget
 {
 }
 
 /*
- * A abstract superclass for all possible targets for data-constraints
+ * An abstract superclass for all possible targets for data-constraints
  */
 abstract class DataConstraintTarget
 {
@@ -934,14 +917,14 @@ class TargetScheduler extends RunnableConstraintTarget, ProcessConstraintTarget,
 }
 
 /*
- * A abstract description for a group of runnables that can be paired or separated by a runnable-constraint
+ * An abstract description for a group of runnables that can be paired or separated by a runnable-constraint
  */
 abstract class RunnableGroup
 {
 }
 
 /*
- * A abstract description for a group of processes that can be paired or separated by a process-constraint
+ * An abstract description for a group of processes that can be paired or separated by a process-constraint
  */
 abstract class ProcessGroup
 {
@@ -1315,15 +1298,13 @@ class ComponentScope  extends DataGroupScope {
 }
 
 
-/**
- * ===============================================================================
- * ===============================================================================
- * 
- * 								Events Model
- * 
- * ===============================================================================
- * ===============================================================================
- */
+// ===============================================================================
+// ===============================================================================
+// 
+// 									Events Model
+// 
+// ===============================================================================
+// ===============================================================================
 
 
 class EventModel extends BaseObject
@@ -1518,15 +1499,13 @@ enum SemaphoreEventType
 }
 
 
-/**
- * ===============================================================================
- * ===============================================================================
- * 
- * 								HW Model
- * 
- * ===============================================================================
- * ===============================================================================
- */
+// ===============================================================================
+// ===============================================================================
+// 
+// 									HW Model
+// 
+// ===============================================================================
+// ===============================================================================
 
 
 class HWModel extends BaseObject {
@@ -1812,15 +1791,13 @@ class HwElementRef extends HwAccessPathElement
 }
 
 
-/**
- * ===============================================================================
- * ===============================================================================
- * 
- * 								Mapping Model
- * 
- * ===============================================================================
- * ===============================================================================
- */
+// ===============================================================================
+// ===============================================================================
+// 
+// 									Mapping Model
+// 
+// ===============================================================================
+// ===============================================================================
 
 
 class MappingModel extends BaseObject
@@ -1952,15 +1929,13 @@ class RunnableAllocation extends BaseObject
 }
 
 
-/**
- * ===============================================================================
- * ===============================================================================
- * 
- * 								OS Model
- * 
- * ===============================================================================
- * ===============================================================================
- */
+// ===============================================================================
+// ===============================================================================
+// 
+// 									OS Model
+// 
+// ===============================================================================
+// ===============================================================================
 
 
 class OSModel extends BaseObject
@@ -2241,15 +2216,14 @@ class OsISRInstructions extends BaseObject
 }
 
 
-/**
- * ===============================================================================
- * ===============================================================================
- * 
- * 								Property Constraints Model
- * 
- * ===============================================================================
- * ===============================================================================
- */
+// ===============================================================================
+// ===============================================================================
+// 
+// 								Property Constraints Model
+// 
+// ===============================================================================
+// ===============================================================================
+
 
 class PropertyConstraintsModel extends BaseObject
 {
@@ -2380,15 +2354,13 @@ class HwMemoryConjunction extends HwMemoryConstraint
 }
 
 
-/**
- * ===============================================================================
- * ===============================================================================
- * 
- * 								Stimuli Model
- * 
- * ===============================================================================
- * ===============================================================================
- */
+// ===============================================================================
+// ===============================================================================
+// 
+// 									Stimuli Model
+// 
+// ===============================================================================
+// ===============================================================================
 
 
 class StimuliModel extends BaseObject
@@ -2557,15 +2529,13 @@ class ClockMultiplierListEntry extends BaseObject
 }
 
 
-/**
- * ===============================================================================
- * ===============================================================================
- * 
- * 								SW Model
- * 
- * ===============================================================================
- * ===============================================================================
- */
+// ===============================================================================
+// ===============================================================================
+// 
+// 									SW Model
+// 
+// ===============================================================================
+// ===============================================================================
 
 /*
  * Central instance to provide central access. 
@@ -2644,7 +2614,7 @@ class CallGraph extends BaseObject
 }
 
 /*
- * A abstract entry for a call graph
+ * An abstract entry for a call graph
  */
 abstract class GraphEntryBase extends BaseObject
 {
@@ -3209,7 +3179,7 @@ enum SemaphoreAccessEnum
 }
 
 /*
- * A abstract description for sender-receiver-communication (it can be read or write)
+ * An abstract description for sender-receiver-communication (it can be read or write)
  */
 abstract class SenderReceiverCommunication extends RunnableItem
 {
@@ -3234,7 +3204,7 @@ class SenderReceiverWrite extends SenderReceiverCommunication
 }
 
 /*
- * A abstract description for client/server communication
+ * An abstract description for client/server communication
  * It refers to a required runnable that describes the called server operation
  */
 abstract class ServerCall extends RunnableItem

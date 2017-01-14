@@ -129,8 +129,6 @@ import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
-import org.eclipse.app4mc.amalthea.model.EventConfigElement;
-import org.eclipse.app4mc.amalthea.model.EventConfigLink;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
@@ -822,20 +820,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass eventConfigEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass eventConfigLinkEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass eventConfigElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4607,35 +4591,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getEventConfigLink() {
-		return eventConfigLinkEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getEventConfigLink_Event() {
-		return (EReference)eventConfigLinkEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getEventConfigElement() {
-		return eventConfigElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getEventConfigElement_Event() {
-		return (EReference)eventConfigElementEClass.getEStructuralFeatures().get(0);
+	public EReference getEventConfig_Event() {
+		return (EReference)eventConfigEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -11947,12 +11904,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		eventConfigEClass = createEClass(EVENT_CONFIG);
 		createEAttribute(eventConfigEClass, EVENT_CONFIG__NAME);
-
-		eventConfigLinkEClass = createEClass(EVENT_CONFIG_LINK);
-		createEReference(eventConfigLinkEClass, EVENT_CONFIG_LINK__EVENT);
-
-		eventConfigElementEClass = createEClass(EVENT_CONFIG_ELEMENT);
-		createEReference(eventConfigElementEClass, EVENT_CONFIG_ELEMENT__EVENT);
+		createEReference(eventConfigEClass, EVENT_CONFIG__EVENT);
 
 		constraintsModelEClass = createEClass(CONSTRAINTS_MODEL);
 		createEReference(constraintsModelEClass, CONSTRAINTS_MODEL__EVENT_CHAINS);
@@ -13118,8 +13070,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		fInterfacePortEClass.getESuperTypes().add(this.getPort());
 		configModelEClass.getESuperTypes().add(this.getBaseObject());
 		eventConfigEClass.getESuperTypes().add(this.getBaseObject());
-		eventConfigLinkEClass.getESuperTypes().add(this.getEventConfig());
-		eventConfigElementEClass.getESuperTypes().add(this.getEventConfig());
 		constraintsModelEClass.getESuperTypes().add(this.getBaseObject());
 		runnableSequencingConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
 		processRunnableGroupEClass.getESuperTypes().add(this.getBaseObject());
@@ -13670,14 +13620,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(configModelEClass, ConfigModel.class, "ConfigModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConfigModel_EventsToTrace(), this.getEventConfig(), null, "eventsToTrace", null, 0, -1, ConfigModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(eventConfigEClass, EventConfig.class, "EventConfig", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(eventConfigEClass, EventConfig.class, "EventConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEventConfig_Name(), theEcorePackage.getEString(), "name", null, 0, 1, EventConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(eventConfigLinkEClass, EventConfigLink.class, "EventConfigLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEventConfigLink_Event(), this.getEntityEvent(), null, "event", null, 1, 1, EventConfigLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(eventConfigElementEClass, EventConfigElement.class, "EventConfigElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEventConfigElement_Event(), this.getEntityEvent(), null, "event", null, 1, 1, EventConfigElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEventConfig_Event(), this.getEntityEvent(), null, "event", null, 1, 1, EventConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(constraintsModelEClass, ConstraintsModel.class, "ConstraintsModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConstraintsModel_EventChains(), this.getEventChain(), null, "eventChains", null, 0, -1, ConstraintsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

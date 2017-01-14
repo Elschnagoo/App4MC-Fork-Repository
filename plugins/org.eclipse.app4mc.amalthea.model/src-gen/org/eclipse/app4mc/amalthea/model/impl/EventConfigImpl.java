@@ -13,11 +13,13 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -30,11 +32,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.EventConfigImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.EventConfigImpl#getEvent <em>Event</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class EventConfigImpl extends BaseObjectImpl implements EventConfig {
+public class EventConfigImpl extends BaseObjectImpl implements EventConfig {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -54,6 +57,16 @@ public abstract class EventConfigImpl extends BaseObjectImpl implements EventCon
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEvent()
+	 * @generated
+	 * @ordered
+	 */
+	protected EntityEvent event;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,11 +113,52 @@ public abstract class EventConfigImpl extends BaseObjectImpl implements EventCon
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EntityEvent getEvent() {
+		if (event != null && event.eIsProxy()) {
+			InternalEObject oldEvent = (InternalEObject)event;
+			event = (EntityEvent)eResolveProxy(oldEvent);
+			if (event != oldEvent) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.EVENT_CONFIG__EVENT, oldEvent, event));
+			}
+		}
+		return event;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EntityEvent basicGetEvent() {
+		return event;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEvent(EntityEvent newEvent) {
+		EntityEvent oldEvent = event;
+		event = newEvent;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.EVENT_CONFIG__EVENT, oldEvent, event));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.EVENT_CONFIG__NAME:
 				return getName();
+			case AmaltheaPackage.EVENT_CONFIG__EVENT:
+				if (resolve) return getEvent();
+				return basicGetEvent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -119,6 +173,9 @@ public abstract class EventConfigImpl extends BaseObjectImpl implements EventCon
 		switch (featureID) {
 			case AmaltheaPackage.EVENT_CONFIG__NAME:
 				setName((String)newValue);
+				return;
+			case AmaltheaPackage.EVENT_CONFIG__EVENT:
+				setEvent((EntityEvent)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -135,6 +192,9 @@ public abstract class EventConfigImpl extends BaseObjectImpl implements EventCon
 			case AmaltheaPackage.EVENT_CONFIG__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case AmaltheaPackage.EVENT_CONFIG__EVENT:
+				setEvent((EntityEvent)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -149,6 +209,8 @@ public abstract class EventConfigImpl extends BaseObjectImpl implements EventCon
 		switch (featureID) {
 			case AmaltheaPackage.EVENT_CONFIG__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case AmaltheaPackage.EVENT_CONFIG__EVENT:
+				return event != null;
 		}
 		return super.eIsSet(featureID);
 	}

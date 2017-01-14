@@ -106,8 +106,7 @@ import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint;
-import org.eclipse.app4mc.amalthea.model.EventConfigElement;
-import org.eclipse.app4mc.amalthea.model.EventConfigLink;
+import org.eclipse.app4mc.amalthea.model.EventConfig;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
@@ -408,8 +407,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.QUALIFIED_PORT: return createQualifiedPort();
 			case AmaltheaPackage.FINTERFACE_PORT: return createFInterfacePort();
 			case AmaltheaPackage.CONFIG_MODEL: return createConfigModel();
-			case AmaltheaPackage.EVENT_CONFIG_LINK: return createEventConfigLink();
-			case AmaltheaPackage.EVENT_CONFIG_ELEMENT: return createEventConfigElement();
+			case AmaltheaPackage.EVENT_CONFIG: return createEventConfig();
 			case AmaltheaPackage.CONSTRAINTS_MODEL: return createConstraintsModel();
 			case AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT: return createRunnableSequencingConstraint();
 			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP: return createProcessRunnableGroup();
@@ -1269,19 +1267,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EventConfigLink createEventConfigLink() {
-		EventConfigLinkImpl eventConfigLink = new EventConfigLinkImpl();
-		return eventConfigLink;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EventConfigElement createEventConfigElement() {
-		EventConfigElementImpl eventConfigElement = new EventConfigElementImpl();
-		return eventConfigElement;
+	public EventConfig createEventConfig() {
+		EventConfigImpl eventConfig = new EventConfigImpl();
+		return eventConfig;
 	}
 
 	/**

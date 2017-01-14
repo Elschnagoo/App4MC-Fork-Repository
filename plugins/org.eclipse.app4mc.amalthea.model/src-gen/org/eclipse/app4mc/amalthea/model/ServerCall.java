@@ -19,7 +19,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A abstract description for client/server communication
+ * An abstract description for client/server communication
  * It refers to a required runnable that describes the called server operation
  * <!-- end-model-doc -->
  *

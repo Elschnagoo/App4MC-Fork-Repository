@@ -410,22 +410,13 @@ public interface AmaltheaFactory extends EFactory {
 	ConfigModel createConfigModel();
 
 	/**
-	 * Returns a new object of class '<em>Event Config Link</em>'.
+	 * Returns a new object of class '<em>Event Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Event Config Link</em>'.
+	 * @return a new object of class '<em>Event Config</em>'.
 	 * @generated
 	 */
-	EventConfigLink createEventConfigLink();
-
-	/**
-	 * Returns a new object of class '<em>Event Config Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Event Config Element</em>'.
-	 * @generated
-	 */
-	EventConfigElement createEventConfigElement();
+	EventConfig createEventConfig();
 
 	/**
 	 * Returns a new object of class '<em>Constraints Model</em>'.

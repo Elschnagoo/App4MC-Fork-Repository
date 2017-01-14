@@ -116,8 +116,6 @@ import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
-import org.eclipse.app4mc.amalthea.model.EventConfigElement;
-import org.eclipse.app4mc.amalthea.model.EventConfigLink;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
@@ -844,24 +842,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseEventConfig(eventConfig);
 				if (result == null) result = caseBaseObject(eventConfig);
 				if (result == null) result = caseIAnnotatable(eventConfig);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.EVENT_CONFIG_LINK: {
-				EventConfigLink eventConfigLink = (EventConfigLink)theEObject;
-				T1 result = caseEventConfigLink(eventConfigLink);
-				if (result == null) result = caseEventConfig(eventConfigLink);
-				if (result == null) result = caseBaseObject(eventConfigLink);
-				if (result == null) result = caseIAnnotatable(eventConfigLink);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.EVENT_CONFIG_ELEMENT: {
-				EventConfigElement eventConfigElement = (EventConfigElement)theEObject;
-				T1 result = caseEventConfigElement(eventConfigElement);
-				if (result == null) result = caseEventConfig(eventConfigElement);
-				if (result == null) result = caseBaseObject(eventConfigElement);
-				if (result == null) result = caseIAnnotatable(eventConfigElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -4126,36 +4106,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseEventConfig(EventConfig object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event Config Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event Config Link</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseEventConfigLink(EventConfigLink object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event Config Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event Config Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseEventConfigElement(EventConfigElement object) {
 		return null;
 	}
 
