@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <runnables name="Runnable1" callback="false" service="false"/>
+    <labels name="label1" constant="false" bVolatile="false"/>
+  </swModel>
+  <eventModel/>
+  <configModel>
+    <eventsToTrace xsi:type="am:EventConfigElement" name="ec1">
+      <event xsi:type="am:LabelEvent" name="labelEvent1" eventType="write"/>
+    </eventsToTrace>
+    <eventsToTrace xsi:type="am:EventConfigLink" name="ecLink1" event="labelEvent1?type=LabelEvent"/>
+    <eventsToTrace xsi:type="am:EventConfigElement" name="ec2">
+      <event xsi:type="am:LabelEvent" name="labelEvent2" eventType="write"/>
+    </eventsToTrace>
+    <eventsToTrace xsi:type="am:EventConfigElement" name="ec3">
+      <event xsi:type="am:LabelEvent" name="labelEvent3" eventType="write"/>
+    </eventsToTrace>
+    <eventsToTrace xsi:type="am:EventConfigLink" name="ecLink2" event="labelEvent1?type=LabelEvent"/>
+  </configModel>
+</am:Amalthea>
