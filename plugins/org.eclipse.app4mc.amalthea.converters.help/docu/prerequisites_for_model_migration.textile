@@ -1,7 +1,7 @@
 
 h1. Pre-requisites for AMALTHEA model migration
 
-h2. VM arguments
+h2(#migration-vm-args). VM arguments
 
 Default max heap memory (Xmx) used by the APP4MC distribution is 2 GB. In case of migrating huge models, it is recommended to increase this memory to 4 GB before invocation of "AMALTHEA Model Migration" feature
 
@@ -11,7 +11,7 @@ Follow the below steps to increase the heap memory setting of APP4MC :
  
  !(gray_scale)../pictures/ui/vm_arguments_configuration.png!
 
-h2. Usage of UUID's instead of URI fragments inside AMALTHEA models
+h2(#migration-uuid). Usage of UUID's instead of URI fragments inside AMALTHEA models
 
 It is recommended that AMALTHEA models (1.0.3 and 1.1.0 versions) have UUID's instead of Xpath like URI fragments for identifiying the elements.
 

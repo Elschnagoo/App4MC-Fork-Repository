@@ -1,5 +1,5 @@
 
-h1. Software (runtime)
+h1(#user-sw-runtime). Software (runtime)
 
 During runtime, the dynamic behavior of the software can be observed. The following Gantt chart shows an excerpt of such a dynamic behavior.
 

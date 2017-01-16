@@ -2,6 +2,6 @@ h1. Additional details
 
 For details regarding the below topics, refer to the corresponding links:
 
-# "How model elements are migrated across various versions (itea 1.0.3, 1.1.0,1.1.1, APP4MC 0.7.0, APP4MC 0.7.1) ?":./model_changes_migration_behavior.html
-# "How to update models to contain UUID ?":./prerequisites_for_model_migration.html#UsageofUUIDsinsteadofURIfragmentsinsideAMALTHEAmodels
-# "How to update max heap memory used by the application ?":./prerequisites_for_model_migration.html#VMarguments
+# "How model elements are migrated across various versions ?":./model_changes_migration_behavior.html#metamodel-changes
+# "How to update models to contain UUID ?":./prerequisites_for_model_migration.html#migration-uuid
+# "How to update max heap memory used by the application ?":./prerequisites_for_model_migration.html#migration-vm-args

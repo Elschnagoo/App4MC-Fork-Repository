@@ -52,7 +52,7 @@ The following diagram is showing this flow in more detail:
 
 !../pictures/uml_workflow_overview_sequence.png!
 
-h2(#AC). Available Basic Components
+h2(#workflow-basic-components). Available Basic Components
 
 The APP4MC AMALTHEA platform ships with some available workflow steps, which can be used out of the box.
 
@@ -106,7 +106,7 @@ h2. Other Components
 
 h3. Create Tasks
 
-The component @org.eclipse.app4mc.multicore.openmapping.workflow.CreateTasks@ from the plugin __org.eclipse.app4mc.multicore.openmapping__ is the corresponding workflow element for the "Task creation example":./examples.html#tce. It takes a copy of a given model (defaults to @AMALTHEA_SLOT@) and performs the action @org.eclipse.app4mc.multicore.openmapping.algorithms.taskgen.pragmatic.PragmaticTaskCreator@. The result of this action is stored as default in the model slot __createtasks__.
+The component @org.eclipse.app4mc.multicore.openmapping.workflow.CreateTasks@ from the plugin __org.eclipse.app4mc.multicore.openmapping__ is the corresponding workflow element for the "Task creation example":./examples.html#example-task-creation. It takes a copy of a given model (defaults to @AMALTHEA_SLOT@) and performs the action @org.eclipse.app4mc.multicore.openmapping.algorithms.taskgen.pragmatic.PragmaticTaskCreator@. The result of this action is stored as default in the model slot __createtasks__.
 
 !../pictures/uml_create_tasks.png!
 
@@ -119,7 +119,7 @@ p.
 
 h3. Generate Mapping
 
-The component @org.eclipse.app4mc.multicore.openmapping.workflow.GenerateMapping@ from the plugin __org.eclipse.app4mc.multicore.openmapping__ is the corresponding workflow element for the "Mapping example":./examples.html#me. It takes a copy of a given model (defaults to @AMALTHEA_SLOT@) and performs one of the actions @org.eclipse.app4mc.multicore.openmapping.algorithms.heuristic.lb.LoadBalancingDFG@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.lb.ILPBasedLoadBalancing@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimization.EnergyMinimization@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ga.lb.GABasedLoadBalancing@ depending on the parameter @mappingAlg@. The result of this action is stored as default in the model slot __mapping__.
+The component @org.eclipse.app4mc.multicore.openmapping.workflow.GenerateMapping@ from the plugin __org.eclipse.app4mc.multicore.openmapping__ is the corresponding workflow element for the "Mapping example":./examples.html#example-mapping-1. It takes a copy of a given model (defaults to @AMALTHEA_SLOT@) and performs one of the actions @org.eclipse.app4mc.multicore.openmapping.algorithms.heuristic.lb.LoadBalancingDFG@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.lb.ILPBasedLoadBalancing@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimization.EnergyMinimization@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ga.lb.GABasedLoadBalancing@ depending on the parameter @mappingAlg@. The result of this action is stored as default in the model slot __mapping__.
 Parameter:
 
 * @String@ @mappingAlg@ with the value of either __dfg__ or __ilp_lb__ or __ilp_energy__ or __ga_lb__
@@ -249,7 +249,7 @@ var labelsCreationComponent = createInstance("workspace://com.ease.example/src/o
 
 h2. Overall Sample
 
-A sample workflow is available in the AMALTHEA example projects inside of @org.eclipse.app4mc.amalthea.example.democar.mapping/workflow/sample_workflow.js@. In general this workflow contains all steps as shown in the AMALTHEA examples tutorial "Task creation":./examples.html#tce and "Mapping example":./examples.html#me, but it can be executed in one script. Execute it by doing a right click and then __Run As -> EASE Script__.
+A sample workflow is available in the AMALTHEA example projects inside of @org.eclipse.app4mc.amalthea.example.democar.mapping/workflow/sample_workflow.js@. In general this workflow contains all steps as shown in the AMALTHEA examples tutorial "Task creation":./examples.html#example-task-creation and "Mapping example":./examples.html#example-mapping-1, but it can be executed in one script. Execute it by doing a right click and then __Run As -> EASE Script__.
 The following steps are performed in the sample configuration:
 
 # Read the files __AMALTHEA_Democar_MappingExample.amxmi__ and __AMALTHEA_Democar_MappingExample-hw.amxmi__ inside if the model folder. Result model is saved in the default @AMALTHEA_SLOT@.

@@ -3,10 +3,21 @@ h1. Common Model
 
 The AMALTHEA common model is not a model by itself, but provides standard elements used by other models as containments.
 
+h2. Common Elements
 
-h2(#CP). Custom Properties
+!../pictures/model_common_elements.png!
+
+h2(#common-tags). Tags
+
+!../pictures/model_common_tag.png!
+
+
+h2(#common-custom-props). Custom Properties
 
 The __CustomProperty__ element is used to define own, in AMALTHEA not available properties. If there is the need to extend an element or to store tool information related to processing steps, __CustomProperties__ can be used to store this type of information.
+
+!../pictures/model_common_custom_property.png!
+
 The elements are stored in a __HashMap__. The values can be of different types as shown in the structure picture, like String, Integer, Boolean...
 In addition a __ReferenceObject__ is available to store own references to other __EObject__ elements.
 The __ListObject__ can be used to store multi-valued custom properties.

@@ -3,7 +3,7 @@ h1. General Concepts
 
 h2. Grouping of elements (Tags, Tag groups)
 
-It is possible to use "Tags":./model_common.html#Tags for grouping elements of the model. Currently the following AMALTHEA sub models are supporting Tags:
+It is possible to use "Tags":./model_common.html#common-tags for grouping elements of the model. Currently the following AMALTHEA sub models are supporting Tags:
 
 # Components
 # Software (SW)
@@ -17,7 +17,7 @@ The reason for doing this is that Tags used in the sub models mostly have a diff
 
 h2. Custom Properties
 
-The AMALTHEA model provides "Custom Properties":./model_common.html#CP to enhance the model in a generic way. These can be used for different kind of purpose:
+The AMALTHEA model provides "Custom Properties":./model_common.html#common-custom-props to enhance the model in a generic way. These can be used for different kind of purpose:
 
 * Store attributes, which are relevant for your model, but not yet available at the elements
 * Processing information of algorithms can be stored in that way, e.g. to mark an element as already processed

@@ -1,6 +1,6 @@
 
 
-h2(#meef). Mapping example 2
+h2(#example-mapping-2). Mapping example 2
 
 The following section will describe how to calculate a mapping with the AMALTHEA Tool Platform using the experimental energy minimization algorithm.
 

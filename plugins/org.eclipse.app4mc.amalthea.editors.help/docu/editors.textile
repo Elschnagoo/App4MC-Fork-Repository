@@ -16,6 +16,6 @@ This is a simple viewer that shows how to access the AMALTHEA trace database.
 
 
 
-h2. ...
+h2. Other editors
 
 __Further (graphical) editors / viewers are under development__

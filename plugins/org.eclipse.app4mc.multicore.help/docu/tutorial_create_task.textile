@@ -1,6 +1,6 @@
 
 
-h2(#tce). Task creation example
+h2(#example-task-creation). Task creation example
 
 The following section will describe how to generate tasks out of software models with __sequencing constraints__.
 

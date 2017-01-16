@@ -1,5 +1,5 @@
 
-h1. AMALTHEA metamodel changes (detailed transformation description)
+h1(#metamodel-changes). AMALTHEA metamodel changes (detailed transformation description)
 
 Based on the changes in AMALTHEA metamodel across various releases, below description contains the differences in detail which are considered for model migration:
 
