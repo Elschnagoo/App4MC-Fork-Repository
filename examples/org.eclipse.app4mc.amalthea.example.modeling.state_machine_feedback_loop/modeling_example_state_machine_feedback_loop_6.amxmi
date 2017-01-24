@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <tasks name="Task_1" priority="2" stimuli="Stimulus_Task_1?type=Periodic" osekTaskGroup="2" preemption="preemptive" multipleTaskActivationLimit="1">
+      <callGraph>
+        <graphEntries xsi:type="am:ModeSwitch" valueProvider="messageToT1?type=ModeLabel">
+          <entries values="MessageToT1/MessageToT1_1?type=ModeLiteral">
+            <items xsi:type="am:ModeSwitch" valueProvider="stateT1?type=ModeLabel">
+              <entries values="StateT1/StateT1_0?type=ModeLiteral">
+                <items xsi:type="am:CallSequence" name="CallSequence_State0">
+                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_State1?type=Runnable"/>
+                </items>
+              </entries>
+              <entries values="StateT1/StateT1_1?type=ModeLiteral">
+                <items xsi:type="am:CallSequence" name="CallSequence_State1">
+                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_State0?type=Runnable"/>
+                </items>
+              </entries>
+            </items>
+          </entries>
+          <defaultEntry>
+            <items xsi:type="am:CallSequence" name="CallSequence_Nothing"/>
+          </defaultEntry>
+        </graphEntries>
+        <graphEntries xsi:type="am:ModeSwitch" valueProvider="stateT1?type=ModeLabel">
+          <entries values="StateT1/StateT1_0?type=ModeLiteral">
+            <items xsi:type="am:CallSequence" name="CallSequence_1_0">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_0?type=Runnable"/>
+            </items>
+          </entries>
+          <entries values="StateT1/StateT1_1?type=ModeLiteral">
+            <items xsi:type="am:CallSequence" name="CallSequence_1_1">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_1?type=Runnable"/>
+            </items>
+          </entries>
+        </graphEntries>
+        <graphEntries xsi:type="am:CallSequence" name="CallSequence_1">
+          <calls xsi:type="am:InterProcessActivation" stimulus="IPA_Task_2?type=InterProcess"/>
+          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1?type=Runnable"/>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <tasks name="Task_2" priority="1" stimuli="IPA_Task_2?type=InterProcess" osekTaskGroup="1" preemption="preemptive" multipleTaskActivationLimit="1">
+      <callGraph>
+        <graphEntries xsi:type="am:ModeSwitch" valueProvider="stateT2?type=ModeLabel">
+          <entries values="StateT2/StateT2_1?type=ModeLiteral">
+            <items xsi:type="am:CallSequence" name="CallSequence_State_1">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_State_1?type=Runnable"/>
+            </items>
+            <items xsi:type="am:ModeSwitch" valueProvider="messageToT2?type=ModeLabel">
+              <entries values="MessageToT2/MessageToT2_0?type=ModeLiteral">
+                <items xsi:type="am:CallSequence" name="CallSequence_2_1_0">
+                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_Transition_0?type=Runnable"/>
+                </items>
+              </entries>
+              <entries values="MessageToT2/MessageToT2_1?type=ModeLiteral">
+                <items xsi:type="am:CallSequence" name="CallSequence_2_1_2">
+                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_Transition_1?type=Runnable"/>
+                </items>
+              </entries>
+            </items>
+          </entries>
+          <entries values="StateT2/StateT2_0?type=ModeLiteral">
+            <items xsi:type="am:CallSequence" name="CallSequence_State_0">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_State_0?type=Runnable"/>
+            </items>
+            <items xsi:type="am:ModeSwitch" valueProvider="messageToT2?type=ModeLabel">
+              <entries values="MessageToT2/MessageToT2_0?type=ModeLiteral">
+                <items xsi:type="am:CallSequence" name="CallSequence_2_0_0">
+                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_Overflow?type=Runnable"/>
+                </items>
+              </entries>
+              <entries values="MessageToT2/MessageToT2_1?type=ModeLiteral">
+                <items xsi:type="am:CallSequence" name="CallSequence_2_0_1">
+                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_Transition_2?type=Runnable"/>
+                </items>
+              </entries>
+            </items>
+          </entries>
+          <entries values="StateT2/StateT2_2?type=ModeLiteral">
+            <items xsi:type="am:CallSequence" name="CallSequence_State_2">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_State_2?type=Runnable"/>
+            </items>
+            <items xsi:type="am:ModeSwitch" valueProvider="messageToT2?type=ModeLabel">
+              <entries values="MessageToT2/MessageToT2_0?type=ModeLiteral">
+                <items xsi:type="am:CallSequence" name="CallSequence_2_2_1">
+                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_Transition_1?type=Runnable"/>
+                </items>
+              </entries>
+              <entries values="MessageToT2/MessageToT2_1?type=ModeLiteral">
+                <items xsi:type="am:CallSequence" name="CallSequence_2_2_2">
+                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_Overflow?type=Runnable"/>
+                </items>
+              </entries>
+            </items>
+          </entries>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <tasks name="Task_3" priority="4" stimuli="Stimulus_Task_3?type=Periodic" osekTaskGroup="4" preemption="preemptive" multipleTaskActivationLimit="1">
+      <callGraph>
+        <graphEntries xsi:type="am:ProbabiltitySwitch">
+          <entries probability="20.0">
+            <items xsi:type="am:CallSequence" name="CallSequence_3_3">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_3?type=Runnable"/>
+            </items>
+          </entries>
+          <entries probability="30.0">
+            <items xsi:type="am:CallSequence" name="CallSequence_3_2">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_2?type=Runnable"/>
+            </items>
+          </entries>
+          <entries probability="15.0">
+            <items xsi:type="am:CallSequence" name="CallSequence_3_4">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_4?type=Runnable"/>
+            </items>
+          </entries>
+          <entries probability="20.0">
+            <items xsi:type="am:CallSequence" name="CallSequence_3_1">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_1?type=Runnable"/>
+            </items>
+          </entries>
+          <entries probability="15.0">
+            <items xsi:type="am:CallSequence" name="CallSequence_3_0">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_0?type=Runnable"/>
+            </items>
+          </entries>
+        </graphEntries>
+        <graphEntries xsi:type="am:CallSequence" name="CallSequence_3">
+          <calls xsi:type="am:InterProcessActivation" stimulus="IPA_Task_4?type=InterProcess"/>
+          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3?type=Runnable"/>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <tasks name="Task_4" priority="3" stimuli="IPA_Task_4?type=InterProcess" osekTaskGroup="3" preemption="preemptive" multipleTaskActivationLimit="1">
+      <callGraph>
+        <graphEntries xsi:type="am:ModeSwitch" valueProvider="message?type=ModeLabel">
+          <entries values="Message/Message_2?type=ModeLiteral">
+            <items xsi:type="am:CallSequence" name="CallSequence_4_2">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_2?type=Runnable"/>
+            </items>
+          </entries>
+          <entries values="Message/Message_3?type=ModeLiteral">
+            <items xsi:type="am:CallSequence" name="CallSequence_4_3">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_3?type=Runnable"/>
+            </items>
+          </entries>
+          <entries values="Message/Message_1?type=ModeLiteral">
+            <items xsi:type="am:CallSequence" name="CallSequence_4_1">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_1?type=Runnable"/>
+            </items>
+          </entries>
+          <entries values="Message/Message_4?type=ModeLiteral">
+            <items xsi:type="am:CallSequence" name="CallSequence_4_4">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_4?type=Runnable"/>
+            </items>
+          </entries>
+          <defaultEntry>
+            <items xsi:type="am:CallSequence" name="CallSequence_4_x">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_x?type=Runnable"/>
+            </items>
+          </defaultEntry>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <tasks name="Task_5" priority="0" stimuli="Stimulus_Task_5?type=Periodic" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="1">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence" name="CS_Task_5">
+          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_5_1?type=Runnable"/>
+          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_5_2?type=Runnable"/>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <runnables name="Runnable_1_1" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT2?type=ModeLabel" access="write" modeValue="MessageToT2/MessageToT2_1?type=ModeLiteral"/>
+    </runnables>
+    <runnables name="Runnable_State_0" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="58"/>
+            <upperBound xsi:type="am:LongObject" value="60"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_State_1" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="59400"/>
+            <upperBound xsi:type="am:LongObject" value="60600"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_State_2" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="29700000"/>
+            <upperBound xsi:type="am:LongObject" value="30300000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_1" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="5940000"/>
+            <upperBound xsi:type="am:LongObject" value="6060000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_1_0" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT2?type=ModeLabel" access="write" modeValue="MessageToT2/MessageToT2_0?type=ModeLiteral"/>
+    </runnables>
+    <runnables name="Runnable_Transition_0" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="write" modeValue="StateT2/StateT2_0?type=ModeLiteral"/>
+    </runnables>
+    <runnables name="Runnable_Transition_1" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="write" modeValue="StateT2/StateT2_1?type=ModeLiteral"/>
+    </runnables>
+    <runnables name="Runnable_Transition_2" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="write" modeValue="StateT2/StateT2_2?type=ModeLiteral"/>
+    </runnables>
+    <runnables name="Runnable_1_State0" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT1?type=ModeLabel" access="write" modeValue="StateT1/StateT1_0?type=ModeLiteral"/>
+      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="write" modeValue="MessageToT1/MessageToT1_0?type=ModeLiteral"/>
+    </runnables>
+    <runnables name="Runnable_1_State1" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT1?type=ModeLabel" access="write" modeValue="StateT1/StateT1_1?type=ModeLiteral"/>
+      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="write" modeValue="MessageToT1/MessageToT1_0?type=ModeLiteral"/>
+    </runnables>
+    <runnables name="Runnable_2_Overflow" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="write" modeValue="MessageToT1/MessageToT1_1?type=ModeLiteral"/>
+    </runnables>
+    <runnables name="Runnable_3_1" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="Message/Message_1?type=ModeLiteral"/>
+    </runnables>
+    <runnables name="Runnable_4_1" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="594"/>
+            <upperBound xsi:type="am:LongObject" value="606"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_4_2" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="29700"/>
+            <upperBound xsi:type="am:LongObject" value="30300"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_4_3" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="594000"/>
+            <upperBound xsi:type="am:LongObject" value="606000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_4_4" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="23760000"/>
+            <upperBound xsi:type="am:LongObject" value="24240000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_4_x" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="58"/>
+            <upperBound xsi:type="am:LongObject" value="60"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_3_2" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="Message/Message_2?type=ModeLiteral"/>
+    </runnables>
+    <runnables name="Runnable_3_3" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="Message/Message_3?type=ModeLiteral"/>
+    </runnables>
+    <runnables name="Runnable_3_4" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="Message/Message_4?type=ModeLiteral"/>
+    </runnables>
+    <runnables name="Runnable_3_0" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="Message/Message_0?type=ModeLiteral"/>
+    </runnables>
+    <runnables name="Runnable_3" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="5940000"/>
+            <upperBound xsi:type="am:LongObject" value="6060000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_5_1" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="35640000"/>
+            <upperBound xsi:type="am:LongObject" value="36360000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_5_2" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="11880000"/>
+            <upperBound xsi:type="am:LongObject" value="12120000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <modes name="Message">
+      <literals name="Message_0">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="0"/>
+        </customProperties>
+      </literals>
+      <literals name="Message_1">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="1"/>
+        </customProperties>
+      </literals>
+      <literals name="Message_2">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="2"/>
+        </customProperties>
+      </literals>
+      <literals name="Message_3">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="3"/>
+        </customProperties>
+      </literals>
+      <literals name="Message_4">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="4"/>
+        </customProperties>
+      </literals>
+    </modes>
+    <modes name="MessageToT1">
+      <literals name="MessageToT1_0">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="0"/>
+        </customProperties>
+      </literals>
+      <literals name="MessageToT1_1">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="1"/>
+        </customProperties>
+      </literals>
+    </modes>
+    <modes name="MessageToT2">
+      <literals name="MessageToT2_0">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="0"/>
+        </customProperties>
+      </literals>
+      <literals name="MessageToT2_1">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="1"/>
+        </customProperties>
+      </literals>
+    </modes>
+    <modes name="StateT1">
+      <literals name="StateT1_0">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="0"/>
+        </customProperties>
+      </literals>
+      <literals name="StateT1_1">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="1"/>
+        </customProperties>
+      </literals>
+    </modes>
+    <modes name="StateT2">
+      <literals name="StateT2_0">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="0"/>
+        </customProperties>
+      </literals>
+      <literals name="StateT2_1">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="1"/>
+        </customProperties>
+      </literals>
+      <literals name="StateT2_2">
+        <customProperties key="enumValue">
+          <value xsi:type="am:LongObject" value="2"/>
+        </customProperties>
+      </literals>
+    </modes>
+    <modeLabels name="message" mode="Message?type=Mode" initialValue="Message/Message_0?type=ModeLiteral">
+      <size value="8" unit="bit"/>
+    </modeLabels>
+    <modeLabels name="messageToT1" mode="MessageToT1?type=Mode" initialValue="MessageToT1/MessageToT1_0?type=ModeLiteral">
+      <size value="1" unit="bit"/>
+    </modeLabels>
+    <modeLabels name="messageToT2" mode="MessageToT2?type=Mode" initialValue="MessageToT2/MessageToT2_0?type=ModeLiteral">
+      <size value="1" unit="bit"/>
+    </modeLabels>
+    <modeLabels name="stateT1" mode="StateT1?type=Mode" initialValue="StateT1/StateT1_1?type=ModeLiteral">
+      <size value="1" unit="bit"/>
+    </modeLabels>
+    <modeLabels name="stateT2" mode="StateT2?type=Mode" initialValue="StateT2/StateT2_0?type=ModeLiteral">
+      <size value="8" unit="bit"/>
+    </modeLabels>
+  </swModel>
+  <hwModel>
+    <mcTypes name="GENERIC"/>
+    <coreTypes name="Core_1_type" bitWidth="0" instructionsPerCycle="1"/>
+    <system>
+      <ecus name="Ecu_1">
+        <quartzes name="Quartz_1" type="STATIC">
+          <frequency value="6.0E8"/>
+        </quartzes>
+        <microcontrollers name="Processor_1" microcontrollerType="GENERIC?type=MicrocontrollerType">
+          <memories name="Memory_1">
+            <customProperties key="attribute#MemoryType">
+              <value xsi:type="am:StringObject" value="AbstractMemory"/>
+            </customProperties>
+            <ports xsi:type="am:ComplexPort" name="Memory_1_port" master="false" bitWidth="16" baseAddress="0" addressRange="0" writeCycles="12" readCycles="12" schedValue="0"/>
+          </memories>
+          <cores name="Core_1" coreType="Core_1_type?type=CoreType" lockstepGroup="0">
+            <customProperties key="attribute#memoryArbiterPriority">
+              <value xsi:type="am:LongObject" value="0"/>
+            </customProperties>
+            <prescaler name="Core_1_prescaler" clockRatio="0.0" quartz="Quartz_1?type=Quartz"/>
+          </cores>
+        </microcontrollers>
+      </ecus>
+    </system>
+  </hwModel>
+  <osModel>
+    <osDataConsistency mode="noProtection"/>
+    <operatingSystems name="Generic_OS">
+      <taskSchedulers name="Scheduler_1" scheduleUnitPriority="0">
+        <schedulingUnit xsi:type="am:SchedulingHWUnit">
+          <delay value="0" unit="ns"/>
+        </schedulingUnit>
+        <schedulingAlgorithm xsi:type="am:OSEK"/>
+      </taskSchedulers>
+    </operatingSystems>
+  </osModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_1">
+      <offset value="0" unit="ms"/>
+      <recurrence value="220" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:InterProcess" name="IPA_Task_2"/>
+    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_3">
+      <offset value="0" unit="ms"/>
+      <recurrence value="50" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:InterProcess" name="IPA_Task_4"/>
+    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_5">
+      <offset value="0" unit="ms"/>
+      <recurrence value="500" unit="ms"/>
+    </stimuli>
+  </stimuliModel>
+  <constraintsModel/>
+  <eventModel>
+    <events xsi:type="am:ProcessEvent" name="Event_Task_1" entity="Task_1?type=Task"/>
+    <events xsi:type="am:ProcessEvent" name="Event_Task_2" entity="Task_2?type=Task"/>
+    <events xsi:type="am:ProcessEvent" name="Event_Task_3" entity="Task_3?type=Task"/>
+    <events xsi:type="am:ProcessEvent" name="Event_Task_4" entity="Task_4?type=Task"/>
+    <events xsi:type="am:ProcessEvent" name="Event_Task_5" entity="Task_5?type=Task"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_1" entity="Runnable_1?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_1_0" entity="Runnable_1_0?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_1_1" entity="Runnable_1_1?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_1_State0" entity="Runnable_1_State0?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_1_State1" entity="Runnable_1_State1?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_2_Overflow" entity="Runnable_2_Overflow?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_3" entity="Runnable_3?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_3_0" entity="Runnable_3_0?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_3_1" entity="Runnable_3_1?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_3_2" entity="Runnable_3_2?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_3_3" entity="Runnable_3_3?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_3_4" entity="Runnable_3_4?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_4_1" entity="Runnable_4_1?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_4_2" entity="Runnable_4_2?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_4_3" entity="Runnable_4_3?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_4_4" entity="Runnable_4_4?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_4_x" entity="Runnable_4_x?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_5_1" entity="Runnable_5_1?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_5_2" entity="Runnable_5_2?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_State_0" entity="Runnable_State_0?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_State_1" entity="Runnable_State_1?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_State_2" entity="Runnable_State_2?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_Transition_0" entity="Runnable_Transition_0?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_Transition_1" entity="Runnable_Transition_1?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" name="Event_Runnable_Transition_2" entity="Runnable_Transition_2?type=Runnable"/>
+    <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_1" entity="Stimulus_Task_1?type=Periodic"/>
+    <events xsi:type="am:StimulusEvent" name="Event_IPA_Task_2" entity="IPA_Task_2?type=InterProcess"/>
+    <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_3" entity="Stimulus_Task_3?type=Periodic"/>
+    <events xsi:type="am:StimulusEvent" name="Event_IPA_Task_4" entity="IPA_Task_4?type=InterProcess"/>
+    <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_5" entity="Stimulus_Task_5?type=Periodic"/>
+  </eventModel>
+  <mappingModel addressMappingType="offset">
+    <taskAllocation task="Task_1?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
+    <taskAllocation task="Task_2?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
+    <taskAllocation task="Task_3?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
+    <taskAllocation task="Task_4?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
+    <taskAllocation task="Task_5?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
+    <coreAllocation scheduler="Scheduler_1?type=TaskScheduler" core="Core_1?type=Core"/>
+    <mapping xsi:type="am:AbstractElementMapping" memory="Memory_1?type=Memory" memoryPositionAddress="11" abstractElement="stateT2?type=ModeLabel"/>
+    <mapping xsi:type="am:AbstractElementMapping" memory="Memory_1?type=Memory" memoryPositionAddress="10" abstractElement="stateT1?type=ModeLabel"/>
+    <mapping xsi:type="am:AbstractElementMapping" memory="Memory_1?type=Memory" memoryPositionAddress="8" abstractElement="messageToT1?type=ModeLabel"/>
+    <mapping xsi:type="am:AbstractElementMapping" memory="Memory_1?type=Memory" memoryPositionAddress="0" abstractElement="message?type=ModeLabel"/>
+    <mapping xsi:type="am:AbstractElementMapping" memory="Memory_1?type=Memory" memoryPositionAddress="9" abstractElement="messageToT2?type=ModeLabel"/>
+  </mappingModel>
+  <componentsModel/>
+</am:Amalthea>

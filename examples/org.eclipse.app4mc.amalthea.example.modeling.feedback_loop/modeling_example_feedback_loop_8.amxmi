@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <tasks name="Task_5" priority="5" stimuli="Stimulus_Task_5?type=Periodic" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence" name="CallSequence_5">
+          <calls xsi:type="am:InterProcessActivation" stimulus="IPA_Task_6?type=InterProcess"/>
+          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_5?type=Runnable"/>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <tasks name="Task_6" priority="4" stimuli="IPA_Task_6?type=InterProcess" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
+      <callGraph>
+        <graphEntries xsi:type="am:ProbabiltitySwitch">
+          <entries probability="30.0">
+            <items xsi:type="am:CallSequence" name="CallSequence_6_2">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_2?type=Runnable"/>
+            </items>
+          </entries>
+          <entries probability="20.0">
+            <items xsi:type="am:CallSequence" name="CallSequence_6_3">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_3?type=Runnable"/>
+            </items>
+          </entries>
+          <entries probability="15.0">
+            <items xsi:type="am:CallSequence" name="CallSequence_6_x">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_x?type=Runnable"/>
+            </items>
+          </entries>
+          <entries probability="20.0">
+            <items xsi:type="am:CallSequence" name="CallSequence_6_1">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_1?type=Runnable"/>
+            </items>
+          </entries>
+          <entries probability="15.0">
+            <items xsi:type="am:CallSequence" name="CallSequence_6_4">
+              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_4?type=Runnable"/>
+            </items>
+          </entries>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <tasks name="Task_7" priority="0" stimuli="Stimulus_Task_7?type=Periodic" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence" name="CS_Task_7">
+          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_7_1?type=Runnable"/>
+          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_7_2?type=Runnable"/>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <tasks name="Task_1" priority="3" stimuli="Stimulus_Task_1?type=Periodic" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence" name="CS_R1">
+          <calls xsi:type="am:InterProcessActivation" stimulus="IPA_Task_2?type=InterProcess"/>
+          <calls xsi:type="am:TaskRunnableCall" runnable="R1?type=Runnable"/>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <tasks name="Task_2" priority="2" stimuli="IPA_Task_2?type=InterProcess" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence" name="CS_IPA_T3">
+          <calls xsi:type="am:InterProcessActivation" stimulus="IPA_Task_3?type=InterProcess"/>
+        </graphEntries>
+        <graphEntries xsi:type="am:ProbabiltitySwitch">
+          <entries probability="0.3">
+            <items xsi:type="am:CallSequence" name="CS_Trigger_Task_4">
+              <calls xsi:type="am:InterProcessActivation" stimulus="IPA_Task_4?type=InterProcess"/>
+            </items>
+          </entries>
+          <entries probability="0.7">
+            <items xsi:type="am:CallSequence" name="CS_w_notrigger"/>
+          </entries>
+        </graphEntries>
+        <graphEntries xsi:type="am:CallSequence" name="CS_R2">
+          <calls xsi:type="am:TaskRunnableCall" runnable="R2?type=Runnable"/>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <tasks name="Task_3" priority="1" stimuli="IPA_Task_3?type=InterProcess" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
+      <callGraph>
+        <graphEntries xsi:type="am:ProbabiltitySwitch">
+          <entries probability="50.0">
+            <items xsi:type="am:CallSequence" name="CS_y_0">
+              <calls xsi:type="am:TaskRunnableCall" runnable="R_3_0?type=Runnable"/>
+            </items>
+          </entries>
+          <entries probability="30.0">
+            <items xsi:type="am:CallSequence" name="CS_y_1">
+              <calls xsi:type="am:TaskRunnableCall" runnable="R_3_1?type=Runnable"/>
+            </items>
+          </entries>
+          <entries probability="20.0">
+            <items xsi:type="am:CallSequence" name="CS_y_2">
+              <calls xsi:type="am:TaskRunnableCall" runnable="R_3_2?type=Runnable"/>
+            </items>
+          </entries>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <tasks name="Task_4" priority="1" stimuli="IPA_Task_4?type=InterProcess" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence" name="CS_Task_4_Post">
+          <calls xsi:type="am:TaskRunnableCall" runnable="R_4?type=Runnable"/>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <runnables name="Runnable_6_1" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="5940000"/>
+            <upperBound xsi:type="am:LongObject" value="6060000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_6_2" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="594"/>
+            <upperBound xsi:type="am:LongObject" value="606"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_6_3" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="29700"/>
+            <upperBound xsi:type="am:LongObject" value="30300"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_6_4" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="594000"/>
+            <upperBound xsi:type="am:LongObject" value="606000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_6_x" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="29700000"/>
+            <upperBound xsi:type="am:LongObject" value="30300000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_5" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="5940000"/>
+            <upperBound xsi:type="am:LongObject" value="6060000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="R_3_0" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="594000"/>
+            <upperBound xsi:type="am:LongObject" value="606000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="R_3_2" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="59400000"/>
+            <upperBound xsi:type="am:LongObject" value="60600000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="R_3_1" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="5940000"/>
+            <upperBound xsi:type="am:LongObject" value="6060000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_7_1" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="35640000"/>
+            <upperBound xsi:type="am:LongObject" value="36360000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="R1" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="5940000"/>
+            <upperBound xsi:type="am:LongObject" value="6060000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="R2" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="594000"/>
+            <upperBound xsi:type="am:LongObject" value="606000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="Runnable_7_2" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="11880000"/>
+            <upperBound xsi:type="am:LongObject" value="12120000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+    <runnables name="R_4" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="5940000"/>
+            <upperBound xsi:type="am:LongObject" value="6060000"/>
+            <distribution xsi:type="am:UniformDistribution"/>
+          </deviation>
+        </default>
+      </runnableItems>
+    </runnables>
+  </swModel>
+  <hwModel>
+    <mcTypes name="GENERIC"/>
+    <coreTypes name="Core_1_type" bitWidth="0" instructionsPerCycle="1"/>
+    <system>
+      <ecus name="Ecu_1">
+        <quartzes name="Quartz_1" type="STATIC">
+          <frequency value="6.0E8"/>
+        </quartzes>
+        <microcontrollers name="Processor_1" microcontrollerType="GENERIC?type=MicrocontrollerType">
+          <memories name="Memory_1">
+            <customProperties key="attribute#MemoryType">
+              <value xsi:type="am:StringObject" value="AbstractMemory"/>
+            </customProperties>
+            <ports xsi:type="am:ComplexPort" name="Memory_1_port" master="false" bitWidth="16" baseAddress="0" addressRange="0" writeCycles="12" readCycles="12" schedValue="0"/>
+          </memories>
+          <cores name="Core_1" coreType="Core_1_type?type=CoreType" lockstepGroup="0">
+            <customProperties key="attribute#memoryArbiterPriority">
+              <value xsi:type="am:LongObject" value="0"/>
+            </customProperties>
+            <prescaler name="Core_1_prescaler" clockRatio="0.0" quartz="Quartz_1?type=Quartz"/>
+          </cores>
+        </microcontrollers>
+      </ecus>
+    </system>
+  </hwModel>
+  <osModel>
+    <osDataConsistency mode="noProtection"/>
+    <operatingSystems name="Generic_OS">
+      <taskSchedulers name="Scheduler_1" scheduleUnitPriority="0">
+        <schedulingUnit xsi:type="am:SchedulingHWUnit">
+          <delay value="0" unit="ns"/>
+        </schedulingUnit>
+        <schedulingAlgorithm xsi:type="am:OSEK"/>
+      </taskSchedulers>
+    </operatingSystems>
+  </osModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_1">
+      <offset value="0" unit="ms"/>
+      <recurrence value="450" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_5">
+      <offset value="0" unit="ms"/>
+      <recurrence value="60" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:InterProcess" name="IPA_Task_6"/>
+    <stimuli xsi:type="am:InterProcess" name="IPA_Task_4"/>
+    <stimuli xsi:type="am:InterProcess" name="IPA_Task_3"/>
+    <stimuli xsi:type="am:InterProcess" name="IPA_Task_2"/>
+    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_7">
+      <offset value="0" unit="ms"/>
+      <recurrence value="575" unit="ms"/>
+    </stimuli>
+  </stimuliModel>
+  <constraintsModel/>
+  <eventModel/>
+  <mappingModel addressMappingType="offset">
+    <taskAllocation task="Task_5?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
+    <taskAllocation task="Task_6?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
+    <taskAllocation task="Task_7?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
+    <taskAllocation task="Task_1?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
+    <taskAllocation task="Task_2?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
+    <taskAllocation task="Task_3?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
+    <taskAllocation task="Task_4?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
+    <coreAllocation scheduler="Scheduler_1?type=TaskScheduler" core="Core_1?type=Core"/>
+  </mappingModel>
+  <componentsModel/>
+</am:Amalthea>

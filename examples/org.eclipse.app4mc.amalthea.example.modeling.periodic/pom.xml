@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<relativePath>../../build/org.eclipse.app4mc.build/pom.xml</relativePath>
+		<groupId>org.eclipse.app4mc.build</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.7.2-SNAPSHOT</version>
+	</parent>
+	
+	<properties>
+	<plugin-id>org.eclipse.app4mc.amalthea.example.modeling.periodic</plugin-id>
+	<examples-installer-location>../../plugins/org.eclipse.app4mc.amalthea.examples.installer</examples-installer-location>
+	</properties> 
+	
+
+	<artifactId>org.eclipse.app4mc.amalthea.example.modeling.periodic</artifactId>
+	<packaging>jar</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+
+				<executions>
+					<execution>
+						<id>replace-build-token</id>
+						<phase>generate-sources</phase>
+
+						<configuration>
+							<target>
+								 <copy todir="${examples-installer-location}/examples/${plugin-id}">
+									<fileset dir="./">
+									<exclude name=".externalToolBuilders/" />
+									<exclude name="database/" />
+									<exclude name="bin/" />
+									<exclude name="target/" />
+									<exclude name=".settings/org.eclipse.mylyn*" />
+									<exclude name=".settings/org.eclipse.pde.api.tools.prefs" />
+									<exclude name="**/.gitignore" />
+									<exclude name="**/pom.xml" />
+									<exclude name="**/release.*" />
+									<include name="**" />
+									</fileset>
+								 </copy> 
+								 
+								 		 <replaceregexp file="${examples-installer-location}/examples/${plugin-id}/.project"
+			               byline="false"
+			               flags="sg"
+			               match="\s*&lt;buildCommand>\s+&lt;name>org.eclipse.ui.externaltools.ExternalToolBuilder.*?&lt;/buildCommand>"
+			               replace="" />
+
+			<replaceregexp file="${examples-installer-location}/examples/${plugin-id}/.project"
+			               byline="false"
+			               flags="s"
+			               match="\s*&lt;buildCommand>\s+&lt;name>org.eclipse.pde.api.tools.apiAnalysisBuilder.*?&lt;/buildCommand>"
+			               replace="" />
+
+			<replaceregexp file="${examples-installer-location}/examples/${plugin-id}/.project"
+			               byline="false"
+			               flags="s"
+			               match="\s*&lt;buildCommand>\s+&lt;name>org.eclipse.emf.cdo.releng.version.VersionBuilder.*?&lt;/buildCommand>"
+			               replace="" />
+
+			<replaceregexp file="${examples-installer-location}/examples/${plugin-id}/.project"
+			               byline="false"
+			               flags="s"
+			               match="\s*&lt;nature>org.eclipse.pde.api.tools.apiAnalysisNature&lt;/nature>"
+			               replace="" />
+
+			<replaceregexp file="${examples-installer-location}/examples/${plugin-id}/.project"
+			               byline="false"
+			               flags="s"
+			               match="\s*&lt;nature>org.eclipse.emf.cdo.releng.version.VersionNature&lt;/nature>"
+			               replace="" />
+							</target>
+						</configuration>
+
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					
+						<execution>
+						<id>auto-clean</id>
+						<phase>clean</phase>
+
+						<configuration>
+							<target>
+								 <delete  dir="${examples-installer-location}/examples/${plugin-id}"/>
+						   </target>
+						</configuration>
+
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					
+				</executions>
+
+			</plugin>
+		</plugins>
+	</build>
+</project>
