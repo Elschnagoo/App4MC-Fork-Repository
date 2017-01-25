@@ -11,11 +11,11 @@
 
 package org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended;
 
+import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.provider.TaskItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.ExtendedSWModelItemProvider;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.app4mc.amalthea.model.SWModel;
 
 public class ExtendedTaskItemProvider extends TaskItemProvider {
 
