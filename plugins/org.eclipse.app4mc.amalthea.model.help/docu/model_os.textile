@@ -76,11 +76,24 @@ There exists also an overhead for API calls. The following API calls are conside
 * API Enforced Migration: Runtime overhead for migrating from one scheduler to another scheduler (inside a task or ISR)
 
 
-h2. OS Data Consistency
+h2(#OsDataConsistency). OS Data Consistency
 
-TODO
+The __OsDataConsistency__ class provides a way to globally configure an automatic data consistency mechanism. It is used to cover the following two use cases:
+* Provide a configuration for external tools that perform a data consistency calculation based on the stated information.
+* Provide the results of a performed data consistency calculation which then have to be considered by external tools (e.g. by timing simulation).
 
 !../pictures/model_os_data_consistency.png!
+
+To distinguish the different use cases and to consequently also indicate the workflow progress for achieving data consistency, __OsDataConsistencyMode__ allows to define the general configuration of the data consistency. The following modes are available:
+
+# noProtection: data stability and coherency is NOT automatically ensured.
+# automaticProtection: data stability and coherency HAS TO BE ensured according configuration either via custom protection or via model elements.
+## customProtection: data stability and coherency IS ensured according configuration but not via model elements.
+## handeldByModelElements: data stability and coherency IS ensured via model elements.
+
+The __DataStability__ class defines for which sequence of runnables data has to be kept stable. This can either be stability within a process meaning over all its runnables, within each runnable or within each schedule section. Furthermore, it can be stated whether all data is considered for stability or just those accessed multiple times.
+
+The __NonAtomicDataCoherency__ class defines for which sequence of runnables data has to be kept coherent. Like for data stability it can be stated whether all data is considered for coherency or just those accessed multiple times.
 
 
 h2. Semaphore
