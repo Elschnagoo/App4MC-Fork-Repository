@@ -3,18 +3,18 @@ h1. AMALTHEA Model Migration
 
 h2. Why model migration is required ?
 
-EMF based models are the instances of ECORE metamodel (which is updated for each release). 
+EMF based models are the instances of ECORE meta model (which is updated for each release). 
 
-As there is a tight dependency between model instance and the corresponding metamodel, old EMF models can not be loaded with the newer release of metamodel.
+As there is a tight dependency between model instance and the corresponding meta model, old EMF models can not be loaded with the newer release of meta model.
 
 bq. Example : Due to the change in the namespace of the metamodel, loading of model files from prior versions would fail with the latest version
 
-This problem can be solved by explicitly migrating the model files from the prior versions to be compatible to the latest metamodel version
+This problem can be solved by explicitly migrating the model files from the prior versions to be compatible to the latest meta model version
 
 
 h2. AMALTHEA model migration
 
-As described above, same scenario is also applicable for AMALTHEA models as they are instances of EMF based AMALTHEA ECORE metamodel.
+As described above, same scenario is also applicable for AMALTHEA models as they are instances of EMF based AMALTHEA ECORE meta model.
 
 For each release of AMALTHEA there will be changes in the meta model contents, due to this it is not possible to load models built from previous releases of AMALTHEA into latest tool distribution.
 

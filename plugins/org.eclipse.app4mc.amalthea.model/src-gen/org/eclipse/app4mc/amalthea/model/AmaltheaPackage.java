@@ -218,22 +218,22 @@ public interface AmaltheaPackage extends EPackage {
 	int AMALTHEA__STIMULI_MODEL = BASE_OBJECT_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Constraints Model</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AMALTHEA__CONSTRAINTS_MODEL = BASE_OBJECT_FEATURE_COUNT + 5;
-
-	/**
 	 * The feature id for the '<em><b>Event Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA__EVENT_MODEL = BASE_OBJECT_FEATURE_COUNT + 6;
+	int AMALTHEA__EVENT_MODEL = BASE_OBJECT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Constraints Model</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AMALTHEA__CONSTRAINTS_MODEL = BASE_OBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Property Constraints Model</b></em>' containment reference.
@@ -254,22 +254,22 @@ public interface AmaltheaPackage extends EPackage {
 	int AMALTHEA__MAPPING_MODEL = BASE_OBJECT_FEATURE_COUNT + 8;
 
 	/**
-	 * The feature id for the '<em><b>Config Model</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AMALTHEA__CONFIG_MODEL = BASE_OBJECT_FEATURE_COUNT + 9;
-
-	/**
 	 * The feature id for the '<em><b>Components Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA__COMPONENTS_MODEL = BASE_OBJECT_FEATURE_COUNT + 10;
+	int AMALTHEA__COMPONENTS_MODEL = BASE_OBJECT_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Config Model</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AMALTHEA__CONFIG_MODEL = BASE_OBJECT_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Amalthea</em>' class.
@@ -23966,17 +23966,6 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getAmalthea_StimuliModel();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getConstraintsModel <em>Constraints Model</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Constraints Model</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Amalthea#getConstraintsModel()
-	 * @see #getAmalthea()
-	 * @generated
-	 */
-	EReference getAmalthea_ConstraintsModel();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getEventModel <em>Event Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -23986,6 +23975,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAmalthea_EventModel();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getConstraintsModel <em>Constraints Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Constraints Model</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Amalthea#getConstraintsModel()
+	 * @see #getAmalthea()
+	 * @generated
+	 */
+	EReference getAmalthea_ConstraintsModel();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getPropertyConstraintsModel <em>Property Constraints Model</em>}'.
@@ -24010,17 +24010,6 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getAmalthea_MappingModel();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getConfigModel <em>Config Model</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Config Model</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Amalthea#getConfigModel()
-	 * @see #getAmalthea()
-	 * @generated
-	 */
-	EReference getAmalthea_ConfigModel();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getComponentsModel <em>Components Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24030,6 +24019,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAmalthea_ComponentsModel();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getConfigModel <em>Config Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Config Model</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Amalthea#getConfigModel()
+	 * @see #getAmalthea()
+	 * @generated
+	 */
+	EReference getAmalthea_ConfigModel();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.CommonElements <em>Common Elements</em>}'.

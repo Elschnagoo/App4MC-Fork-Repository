@@ -47,12 +47,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getHwModel <em>Hw Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getOsModel <em>Os Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getStimuliModel <em>Stimuli Model</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getConstraintsModel <em>Constraints Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getEventModel <em>Event Model</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getConstraintsModel <em>Constraints Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getPropertyConstraintsModel <em>Property Constraints Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getMappingModel <em>Mapping Model</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getConfigModel <em>Config Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getComponentsModel <em>Components Model</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getConfigModel <em>Config Model</em>}</li>
  * </ul>
  *
  * @generated
@@ -109,16 +109,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	protected StimuliModel stimuliModel;
 
 	/**
-	 * The cached value of the '{@link #getConstraintsModel() <em>Constraints Model</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConstraintsModel()
-	 * @generated
-	 * @ordered
-	 */
-	protected ConstraintsModel constraintsModel;
-
-	/**
 	 * The cached value of the '{@link #getEventModel() <em>Event Model</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -127,6 +117,16 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @ordered
 	 */
 	protected EventModel eventModel;
+
+	/**
+	 * The cached value of the '{@link #getConstraintsModel() <em>Constraints Model</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraintsModel()
+	 * @generated
+	 * @ordered
+	 */
+	protected ConstraintsModel constraintsModel;
 
 	/**
 	 * The cached value of the '{@link #getPropertyConstraintsModel() <em>Property Constraints Model</em>}' containment reference.
@@ -149,16 +149,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	protected MappingModel mappingModel;
 
 	/**
-	 * The cached value of the '{@link #getConfigModel() <em>Config Model</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConfigModel()
-	 * @generated
-	 * @ordered
-	 */
-	protected ConfigModel configModel;
-
-	/**
 	 * The cached value of the '{@link #getComponentsModel() <em>Components Model</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -167,6 +157,16 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @ordered
 	 */
 	protected ComponentsModel componentsModel;
+
+	/**
+	 * The cached value of the '{@link #getConfigModel() <em>Config Model</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConfigModel()
+	 * @generated
+	 * @ordered
+	 */
+	protected ConfigModel configModel;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -407,49 +407,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConstraintsModel getConstraintsModel() {
-		return constraintsModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetConstraintsModel(ConstraintsModel newConstraintsModel, NotificationChain msgs) {
-		ConstraintsModel oldConstraintsModel = constraintsModel;
-		constraintsModel = newConstraintsModel;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL, oldConstraintsModel, newConstraintsModel);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setConstraintsModel(ConstraintsModel newConstraintsModel) {
-		if (newConstraintsModel != constraintsModel) {
-			NotificationChain msgs = null;
-			if (constraintsModel != null)
-				msgs = ((InternalEObject)constraintsModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL, null, msgs);
-			if (newConstraintsModel != null)
-				msgs = ((InternalEObject)newConstraintsModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL, null, msgs);
-			msgs = basicSetConstraintsModel(newConstraintsModel, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL, newConstraintsModel, newConstraintsModel));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EventModel getEventModel() {
 		return eventModel;
 	}
@@ -486,6 +443,49 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.AMALTHEA__EVENT_MODEL, newEventModel, newEventModel));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConstraintsModel getConstraintsModel() {
+		return constraintsModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetConstraintsModel(ConstraintsModel newConstraintsModel, NotificationChain msgs) {
+		ConstraintsModel oldConstraintsModel = constraintsModel;
+		constraintsModel = newConstraintsModel;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL, oldConstraintsModel, newConstraintsModel);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConstraintsModel(ConstraintsModel newConstraintsModel) {
+		if (newConstraintsModel != constraintsModel) {
+			NotificationChain msgs = null;
+			if (constraintsModel != null)
+				msgs = ((InternalEObject)constraintsModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL, null, msgs);
+			if (newConstraintsModel != null)
+				msgs = ((InternalEObject)newConstraintsModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL, null, msgs);
+			msgs = basicSetConstraintsModel(newConstraintsModel, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL, newConstraintsModel, newConstraintsModel));
 	}
 
 	/**
@@ -579,49 +579,6 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConfigModel getConfigModel() {
-		return configModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetConfigModel(ConfigModel newConfigModel, NotificationChain msgs) {
-		ConfigModel oldConfigModel = configModel;
-		configModel = newConfigModel;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.AMALTHEA__CONFIG_MODEL, oldConfigModel, newConfigModel);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setConfigModel(ConfigModel newConfigModel) {
-		if (newConfigModel != configModel) {
-			NotificationChain msgs = null;
-			if (configModel != null)
-				msgs = ((InternalEObject)configModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__CONFIG_MODEL, null, msgs);
-			if (newConfigModel != null)
-				msgs = ((InternalEObject)newConfigModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__CONFIG_MODEL, null, msgs);
-			msgs = basicSetConfigModel(newConfigModel, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.AMALTHEA__CONFIG_MODEL, newConfigModel, newConfigModel));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ComponentsModel getComponentsModel() {
 		return componentsModel;
 	}
@@ -665,6 +622,49 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ConfigModel getConfigModel() {
+		return configModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetConfigModel(ConfigModel newConfigModel, NotificationChain msgs) {
+		ConfigModel oldConfigModel = configModel;
+		configModel = newConfigModel;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.AMALTHEA__CONFIG_MODEL, oldConfigModel, newConfigModel);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConfigModel(ConfigModel newConfigModel) {
+		if (newConfigModel != configModel) {
+			NotificationChain msgs = null;
+			if (configModel != null)
+				msgs = ((InternalEObject)configModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__CONFIG_MODEL, null, msgs);
+			if (newConfigModel != null)
+				msgs = ((InternalEObject)newConfigModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__CONFIG_MODEL, null, msgs);
+			msgs = basicSetConfigModel(newConfigModel, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.AMALTHEA__CONFIG_MODEL, newConfigModel, newConfigModel));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -678,18 +678,18 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 				return basicSetOsModel(null, msgs);
 			case AmaltheaPackage.AMALTHEA__STIMULI_MODEL:
 				return basicSetStimuliModel(null, msgs);
-			case AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL:
-				return basicSetConstraintsModel(null, msgs);
 			case AmaltheaPackage.AMALTHEA__EVENT_MODEL:
 				return basicSetEventModel(null, msgs);
+			case AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL:
+				return basicSetConstraintsModel(null, msgs);
 			case AmaltheaPackage.AMALTHEA__PROPERTY_CONSTRAINTS_MODEL:
 				return basicSetPropertyConstraintsModel(null, msgs);
 			case AmaltheaPackage.AMALTHEA__MAPPING_MODEL:
 				return basicSetMappingModel(null, msgs);
-			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
-				return basicSetConfigModel(null, msgs);
 			case AmaltheaPackage.AMALTHEA__COMPONENTS_MODEL:
 				return basicSetComponentsModel(null, msgs);
+			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
+				return basicSetConfigModel(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -712,18 +712,18 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 				return getOsModel();
 			case AmaltheaPackage.AMALTHEA__STIMULI_MODEL:
 				return getStimuliModel();
-			case AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL:
-				return getConstraintsModel();
 			case AmaltheaPackage.AMALTHEA__EVENT_MODEL:
 				return getEventModel();
+			case AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL:
+				return getConstraintsModel();
 			case AmaltheaPackage.AMALTHEA__PROPERTY_CONSTRAINTS_MODEL:
 				return getPropertyConstraintsModel();
 			case AmaltheaPackage.AMALTHEA__MAPPING_MODEL:
 				return getMappingModel();
-			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
-				return getConfigModel();
 			case AmaltheaPackage.AMALTHEA__COMPONENTS_MODEL:
 				return getComponentsModel();
+			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
+				return getConfigModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -751,11 +751,11 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 			case AmaltheaPackage.AMALTHEA__STIMULI_MODEL:
 				setStimuliModel((StimuliModel)newValue);
 				return;
-			case AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL:
-				setConstraintsModel((ConstraintsModel)newValue);
-				return;
 			case AmaltheaPackage.AMALTHEA__EVENT_MODEL:
 				setEventModel((EventModel)newValue);
+				return;
+			case AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL:
+				setConstraintsModel((ConstraintsModel)newValue);
 				return;
 			case AmaltheaPackage.AMALTHEA__PROPERTY_CONSTRAINTS_MODEL:
 				setPropertyConstraintsModel((PropertyConstraintsModel)newValue);
@@ -763,11 +763,11 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 			case AmaltheaPackage.AMALTHEA__MAPPING_MODEL:
 				setMappingModel((MappingModel)newValue);
 				return;
-			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
-				setConfigModel((ConfigModel)newValue);
-				return;
 			case AmaltheaPackage.AMALTHEA__COMPONENTS_MODEL:
 				setComponentsModel((ComponentsModel)newValue);
+				return;
+			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
+				setConfigModel((ConfigModel)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -796,11 +796,11 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 			case AmaltheaPackage.AMALTHEA__STIMULI_MODEL:
 				setStimuliModel((StimuliModel)null);
 				return;
-			case AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL:
-				setConstraintsModel((ConstraintsModel)null);
-				return;
 			case AmaltheaPackage.AMALTHEA__EVENT_MODEL:
 				setEventModel((EventModel)null);
+				return;
+			case AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL:
+				setConstraintsModel((ConstraintsModel)null);
 				return;
 			case AmaltheaPackage.AMALTHEA__PROPERTY_CONSTRAINTS_MODEL:
 				setPropertyConstraintsModel((PropertyConstraintsModel)null);
@@ -808,11 +808,11 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 			case AmaltheaPackage.AMALTHEA__MAPPING_MODEL:
 				setMappingModel((MappingModel)null);
 				return;
-			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
-				setConfigModel((ConfigModel)null);
-				return;
 			case AmaltheaPackage.AMALTHEA__COMPONENTS_MODEL:
 				setComponentsModel((ComponentsModel)null);
+				return;
+			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
+				setConfigModel((ConfigModel)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -836,18 +836,18 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 				return osModel != null;
 			case AmaltheaPackage.AMALTHEA__STIMULI_MODEL:
 				return stimuliModel != null;
-			case AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL:
-				return constraintsModel != null;
 			case AmaltheaPackage.AMALTHEA__EVENT_MODEL:
 				return eventModel != null;
+			case AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL:
+				return constraintsModel != null;
 			case AmaltheaPackage.AMALTHEA__PROPERTY_CONSTRAINTS_MODEL:
 				return propertyConstraintsModel != null;
 			case AmaltheaPackage.AMALTHEA__MAPPING_MODEL:
 				return mappingModel != null;
-			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
-				return configModel != null;
 			case AmaltheaPackage.AMALTHEA__COMPONENTS_MODEL:
 				return componentsModel != null;
+			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
+				return configModel != null;
 		}
 		return super.eIsSet(featureID);
 	}

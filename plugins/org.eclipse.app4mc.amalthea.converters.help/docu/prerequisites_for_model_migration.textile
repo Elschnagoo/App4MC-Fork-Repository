@@ -13,7 +13,7 @@ Follow the below steps to increase the heap memory setting of APP4MC :
 
 h2(#migration-uuid). Usage of UUID's instead of URI fragments inside AMALTHEA models
 
-It is recommended that AMALTHEA models (1.0.3 and 1.1.0 versions) have UUID's instead of Xpath like URI fragments for identifiying the elements.
+It is recommended that AMALTHEA models (1.0.3 and 1.1.0 versions) have UUID's instead of Xpath like URI fragments for identifying the elements.
 
 *_Note:_* Default referencing mechanism within an EMF model or across models is to have Xpath like URI fragments (example : "//@stimuliModel/@stimuli.9") but this is not recommended when the model elements are modified through external mechanism (_instead of standard EMF editors_) as it is quite challenging to update index order and references accordingly.
 
@@ -34,13 +34,13 @@ Open AMALTHEA model files in text editor
 
 * search if xmi:id attribute is present for the tags
 
-If Model elements consists of xmi:id attributes for their identification and for referencing, model content looks like below:  
+If model elements consists of xmi:id attributes for their identification and for referencing, model content looks like below:  
 
 @<calls xsi:type="sw:TaskRunnableCall" xmi:id="_FddJyEJsEeW3445fEkSwWQ" runnable="_FeWjyUJsEeW3445fEkSwWQ"/>@
 
 h3. Update AMALTHEA models to use UUID's instead of Xpath like URI fragments
 
-Once it is identified that modles contain Xpath like URI fragments, it is recommended to update them to have UUID's before invoking model migration.
+Once it is identified that models contain Xpath like URI fragments, it is recommended to update them to have UUID's before invoking model migration.
  
 For update of models to have UUID's,  use one of the below plugin (depending on the model version) and execute it in the corresponding AMALTHEA distribution to which model is belonging to
 
@@ -54,14 +54,14 @@ Follow the below steps to convert URI Fragments to UUID's:
 # Import the dowloaded utility plugin into corresponding AMALTHEA distribution <br/><br/> !(gray_scale)../pictures/utility/import.png! <br/><br/>
 ** Select the option "Existing Projects into Workspace" <br/><br/> !(gray_scale)../pictures/utility/import_existing_projects.png! <br/><br/>
 ** Select the location of zip file (downloaded utility plugin) <br/><br/> !(gray_scale)../pictures/utility/select_project_to_import.png! <br/><br/>
-# Open the models folder in the project - &gt; remove the existing models and copy the models which should be updated for UUID's  (_It is imporatant to have all the models and the dependent models copied with the same folder structure_) <br/><br/> !(gray_scale)../pictures/utility/copy_models.png! <br/><br/>
+# Open the models folder in the project - &gt; remove the existing models and copy the models which should be updated for UUID's  (_It is important to have all the models and the dependent models copied with the same folder structure_) <br/><br/> !(gray_scale)../pictures/utility/copy_models.png! <br/><br/>
 # Configuring the copied models to be considered for UUID's updation : <br/><br/> !(gray_scale)../pictures/utility/configuring_models_mwe2.png! <br/><br/>
 # Executing workflow to update the Amalthea models : <br/><br/> !(gray_scale)../pictures/utility/execute_workflow.png! <br/><br/>
 # Updated model files (with UUID's) will overwrite the input models. *These model files should be used for model migration*
 
-*Special behaviour*
+*Special behavior*
 
-During the UUID update process following behaviour is performed:
+During the UUID update process following behavior is performed:
 * If AMALTHEA model elements are referring to Franca Interfaces, references are removed but the content of the reference is copied as CustomProperty for FInterfacePort element <br/><br/> !(gray_scale)../pictures/utility/franca_interface_handling.png! <br/><br/>
 
 
