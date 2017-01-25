@@ -86,16 +86,24 @@ h2. Data Rate (and Data Rate Unit)
 
 h2. Deviation
 
-The __Deviation__ class is used to model statistical distributions within AMALTHEA.
-There is a wide variety of possible use cases, where such a distribution is needed.
-With such a deviation for example, the variation in run times of functions or respectively their instructions can be imitated.  
-Therefore, AMALTHEA currently supports the following three statistical distributions:
+The __Deviation__ class is used to model statistical distributions within AMALTHEA. There is a wide variety of possible use cases, where such a distribution is needed. With such a deviation for example, the variation in run times of functions or respectively their instructions can be imitated. Therefore, AMALTHEA currently supports the following three statistical distributions:
 
 !(scale)../pictures/model_common_deviation.png!
 
 h3. Boundaries
 
-TODO
+With the __Boundaries__ class it is possible to define the deviation of instructions in such a way that a specific scenario is covered. The scenario is on the one hand specified by the minimum and maximum value between which the instructions vary. On the other hand, the __Sampling Type__ specifies the specific scenario that is covered. The following sampling types are available which are visualised in the figures below:
+
+- BestCase := Defines the scenario in which most instances should have runtimes close to the set minimum runtime, but still should consider some more time-consuming outliers up to the set maximum.
+- WorstCase := Defines the scenario in which most instances should have runtimes close to the set maximum runtime, but still should consider some less time-consuming outliers down to the set minimum.
+- AverageCase := Defines the scenario in which most instances should have runtimes close to the middle between the set minimum and maximum, but still should consider some less and more time-consuming outliers down to the set minimum or up to the set maximum respectively. 
+- CorenerCase := Defines the scenario in which most instances should have runtimes close to the set minimum and maximum runtime, but still should consider some other  time-consuming outliers between those two.
+- Uniform := Defines the scenario in which all instances should have runtimes that are uniformly distributed between the set minimum and maximum.
+
+!../pictures/model_common_deviation_boundaries_1.png!
+
+!../pictures/model_common_deviation_boundaries_2.png!
+
 
 h3. Uniform Distribution
 
