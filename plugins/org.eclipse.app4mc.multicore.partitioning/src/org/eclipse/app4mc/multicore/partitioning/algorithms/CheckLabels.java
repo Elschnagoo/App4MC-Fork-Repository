@@ -98,32 +98,34 @@ public class CheckLabels {
 							if (ri1 instanceof LabelAccess && ri2 instanceof LabelAccess) {
 								final LabelAccess la1 = (LabelAccess) ri1;
 								final LabelAccess la2 = (LabelAccess) ri2;
-								if (la1.getData().getName().equals(la2.getData().getName())) {
-									if (((la1.getAccess().equals(LabelAccessEnum.READ)
-											&& la2.getAccess().equals(LabelAccessEnum.WRITE))
-											|| (la1.getAccess().equals(LabelAccessEnum.WRITE)
-													&& la2.getAccess().equals(LabelAccessEnum.READ)))) {
-										final RunnableSequencingConstraint RSC = factory
-												.createRunnableSequencingConstraint();
-										RSC.setOrderType(RunnableOrderType.SUCCESSOR);
-										final ProcessRunnableGroup prg1 = factory.createProcessRunnableGroup();
-										final ProcessRunnableGroup prg2 = factory.createProcessRunnableGroup();
-										prg1.getRunnables().add(r1);
-										prg2.getRunnables().add(r2);
-										if (la1.getAccess().equals(LabelAccessEnum.WRITE)
-												&& la2.getAccess().equals(LabelAccessEnum.READ)) {
-											RSC.getRunnableGroups().add(prg1);
-											RSC.getRunnableGroups().add(prg2);
-											RSC.setName(r1.getName() + "-->" + r2.getName());
-										}
-										else if (la1.getAccess().equals(LabelAccessEnum.READ)
-												&& la2.getAccess().equals(LabelAccessEnum.WRITE)) {
-											RSC.getRunnableGroups().add(prg2);
-											RSC.getRunnableGroups().add(prg1);
-											RSC.setName(r2.getName() + "-->" + r1.getName());
-										}
-										if (!RSCLReveals(RSC)) {
-											this.CM.getRunnableSequencingConstraints().add(RSC);
+								if (la1.getData()!=null && la2.getData()!=null){
+									if (la1.getData().getName().equals(la2.getData().getName())) {
+										if (((la1.getAccess().equals(LabelAccessEnum.READ)
+												&& la2.getAccess().equals(LabelAccessEnum.WRITE))
+												|| (la1.getAccess().equals(LabelAccessEnum.WRITE)
+														&& la2.getAccess().equals(LabelAccessEnum.READ)))) {
+											final RunnableSequencingConstraint RSC = factory
+													.createRunnableSequencingConstraint();
+											RSC.setOrderType(RunnableOrderType.SUCCESSOR);
+											final ProcessRunnableGroup prg1 = factory.createProcessRunnableGroup();
+											final ProcessRunnableGroup prg2 = factory.createProcessRunnableGroup();
+											prg1.getRunnables().add(r1);
+											prg2.getRunnables().add(r2);
+											if (la1.getAccess().equals(LabelAccessEnum.WRITE)
+													&& la2.getAccess().equals(LabelAccessEnum.READ)) {
+												RSC.getRunnableGroups().add(prg1);
+												RSC.getRunnableGroups().add(prg2);
+												RSC.setName(r1.getName() + "-->" + r2.getName());
+											}
+											else if (la1.getAccess().equals(LabelAccessEnum.READ)
+													&& la2.getAccess().equals(LabelAccessEnum.WRITE)) {
+												RSC.getRunnableGroups().add(prg2);
+												RSC.getRunnableGroups().add(prg1);
+												RSC.setName(r2.getName() + "-->" + r1.getName());
+											}
+											if (!RSCLReveals(RSC)) {
+												this.CM.getRunnableSequencingConstraints().add(RSC);
+											}
 										}
 									}
 								}
