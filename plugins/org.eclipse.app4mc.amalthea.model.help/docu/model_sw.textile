@@ -27,8 +27,7 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 | __dataType__ | Reference to the data type definition |
 | __constant__ | Boolean value to represent, if label is representing a constant value |
 | __bVolatile__ | Boolean value to mark a label as volatile |
-| __dataStability__ | Enumeration value to represent the data stability needs of the label |
-
+| __dataStability__ | Enumeration value to represent the data stability needs of the label. If set, it overwrites the global settings stated by the __OsDataDependency__, otherwise it inherits them (see <notextile><a href="./model_os.html#OsDataConsistency">OS Data Consistency</a></notextile>). |
 
 h2. Channels
 
@@ -167,7 +166,7 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 |_. Name |_. Description |
 | __access__ | The type of access is represented using the values of __LabelAccessEnum__. |
 | __data__ | Describes the access to an existent __Label__ (set as reference). |
-| __dataStability__ | Describes the data stability needs. It can overwrite or inherit the label setting. |
+| __dataStability__ | Describes the data stability needs. If set, it overwrites the label settings, otherwise it inherits them (see <notextile><a href="./model_os.html#OsDataConsistency">OS Data Consistency</a></notextile>). |
 | __statistic__ | TODO |
 | __transmissionPolicy__ | The following attributes reflect computing demand (time) depending on data: <ul><li> *ChunkSize*: Size of a part of an element, maximum is the element size. </li><li> *ChunkProcessingInstructions*: Number of instructions that will be executed to receive one chunk. </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *ReceiveRatio*: Specify the ratio of each element that is actually received by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
 
