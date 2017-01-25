@@ -543,12 +543,12 @@ exclusive: gets access to requested semaphore only when there is no other user a
           <xsd:element name="hwModel" type="am:HWModel"/>
           <xsd:element name="osModel" type="am:OSModel"/>
           <xsd:element name="stimuliModel" type="am:StimuliModel"/>
-          <xsd:element name="constraintsModel" type="am:ConstraintsModel"/>
           <xsd:element name="eventModel" type="am:EventModel"/>
+          <xsd:element name="constraintsModel" type="am:ConstraintsModel"/>
           <xsd:element name="propertyConstraintsModel" type="am:PropertyConstraintsModel"/>
           <xsd:element name="mappingModel" type="am:MappingModel"/>
-          <xsd:element name="configModel" type="am:ConfigModel"/>
           <xsd:element name="componentsModel" type="am:ComponentsModel"/>
+          <xsd:element name="configModel" type="am:ConfigModel"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>

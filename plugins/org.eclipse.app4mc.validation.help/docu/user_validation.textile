@@ -18,7 +18,7 @@ If an error is found, it is shown in the Problems view of Eclipse. A simple doub
 
 h2. Available Validations
 
-The plugin __org.eclipse.app4mc.amalthea.model.all.sphinx.validation__ contains several validators and constraints (i.e. checks) for varous model types of AMALTHEA.
+The plugin __org.eclipse.app4mc.amalthea.model.all.sphinx.validation__ contains several validators and constraints (i.e. checks) for various model types of AMALTHEA.
 
 h3. A. Basic Check Validator
 
