@@ -77,12 +77,12 @@ public class AmaltheaItemProvider extends BaseObjectItemProvider {
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_HwModel());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_OsModel());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_StimuliModel());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_ConstraintsModel());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_EventModel());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_ConstraintsModel());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_PropertyConstraintsModel());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_MappingModel());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_ConfigModel());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_ComponentsModel());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_ConfigModel());
 		}
 		return childrenFeatures;
 	}
@@ -150,12 +150,12 @@ public class AmaltheaItemProvider extends BaseObjectItemProvider {
 			case AmaltheaPackage.AMALTHEA__HW_MODEL:
 			case AmaltheaPackage.AMALTHEA__OS_MODEL:
 			case AmaltheaPackage.AMALTHEA__STIMULI_MODEL:
-			case AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL:
 			case AmaltheaPackage.AMALTHEA__EVENT_MODEL:
+			case AmaltheaPackage.AMALTHEA__CONSTRAINTS_MODEL:
 			case AmaltheaPackage.AMALTHEA__PROPERTY_CONSTRAINTS_MODEL:
 			case AmaltheaPackage.AMALTHEA__MAPPING_MODEL:
-			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
 			case AmaltheaPackage.AMALTHEA__COMPONENTS_MODEL:
+			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -200,13 +200,13 @@ public class AmaltheaItemProvider extends BaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getAmalthea_ConstraintsModel(),
-				 AmaltheaFactory.eINSTANCE.createConstraintsModel()));
+				(AmaltheaPackage.eINSTANCE.getAmalthea_EventModel(),
+				 AmaltheaFactory.eINSTANCE.createEventModel()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getAmalthea_EventModel(),
-				 AmaltheaFactory.eINSTANCE.createEventModel()));
+				(AmaltheaPackage.eINSTANCE.getAmalthea_ConstraintsModel(),
+				 AmaltheaFactory.eINSTANCE.createConstraintsModel()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -220,13 +220,13 @@ public class AmaltheaItemProvider extends BaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getAmalthea_ConfigModel(),
-				 AmaltheaFactory.eINSTANCE.createConfigModel()));
+				(AmaltheaPackage.eINSTANCE.getAmalthea_ComponentsModel(),
+				 AmaltheaFactory.eINSTANCE.createComponentsModel()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getAmalthea_ComponentsModel(),
-				 AmaltheaFactory.eINSTANCE.createComponentsModel()));
+				(AmaltheaPackage.eINSTANCE.getAmalthea_ConfigModel(),
+				 AmaltheaFactory.eINSTANCE.createConfigModel()));
 	}
 
 }

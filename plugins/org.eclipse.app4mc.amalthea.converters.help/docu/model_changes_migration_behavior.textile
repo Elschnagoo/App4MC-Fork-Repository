@@ -128,7 +128,7 @@ table(classic){margin-left:40px}.
 
   </div>
 
-* *Model migration behaviour*:
+* *Model migration behavior*:
 ** *_LabelSwitch_* : <div><ul><li>From the referred "Label" element inside "LabelSwitch", "ModeLabel" element is created with the same name -> and associated to the same Software Model where "Label" element is defined</li><li>"LabelSwitch" element is replaced with "ModeSwitch" element, and it refers to the "ModelLabel" (created in the above step)</li></ul></div>
 ** *_LabelSwitchEntry_* : <div><ul><li>For all the LabelSwitchEntry objects inside a specific AMALTHEA model file, a single "Mode" element is created ( with the following naming convention :  "mode_sw_&lt;counter&gt;_migration_generated" )</li><li>Based on the unique values of LabelSwitchEntry elements, ModeLiteral objects are created</li><li> LabelSwitchEntry is replaced by ModeSwitchEntry, based on the earlier "value" specified for LabelSwitchEntry -&gt; corresponding ModeLiteral element is referred </li></ul></div>
 *** For details refer to the below figure: <br/><br/> !(gray_scale)../pictures/labelswitch_migration.png! <br/><br/>
@@ -226,7 +226,7 @@ bc.  <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0" xmlns:xmi=
 *Below are the changes in the reference names:*
 
 table(classic){margin-left:40px}. 
-| *_Variable Name (version APP4MC 0.7.0)_* | *_Changed Variable Name (version APP4MC 0.7.1)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+| *_Variable Name (version APP4MC 0.7.0)_* | *_Changed Variable Name (version APP4MC 0.7.1)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 | graphEntries | items | ModeSwitchEntry | SW Model | xml tag "graphEntries" present inside "ModeSwitchEntry" object is changed to "items" in amxmi file|
 | value | values | ModeSwitchEntry | SW Model | xml tag "value" present inside "ModeSwitchEntry" object is changed to "values" in amxmi file |
  
@@ -235,7 +235,7 @@ table(classic){margin-left:40px}.
 *Below are the changes in the reference Types:*
 
 table(classic){margin-left:40px}. 
-| *_Variable Name_* | *_Variable Type (version APP4MC 0.7.0)_* | *_Variable Type (version APP4MC 0.7.1)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+| *_Variable Name_* | *_Variable Type (version APP4MC 0.7.0)_* | *_Variable Type (version APP4MC 0.7.1)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 | size | Long | DataSize |MemoryType |HW Model, PropertyConstraintsModel |Attribute "size" is migrated as "DataSize" object. Long value of "size" is migrated to "value" of DataSize. As the DataSizeUnit info is not available, "unit" value is not set |
 | size | DataUnit | DataSize | AbstractElementMemoryInformation  | SW Model|"size" of type "DataUnit" is migrated as "DataSize" object. Int value of "numberBits" attribute is migrated to "value" of DataSize, "unit" attribute is set as "bit" of type DataSizeUnit|
 | size | DataUnit | DataSize | BaseTypeDefinition  | SW Model|"size" of type "DataUnit" is migrated as "DataSize" object. Int value of "numberBit" attribute is migrated to "value" of DataSize, "unit" attribute is set as "bit" of type DataSizeUnit|
@@ -245,7 +245,7 @@ table(classic){margin-left:40px}.
 *Below references are removed:*
 
 table(classic){margin-left:40px}. 
-| *_Variable Name_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+| *_Variable Name_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 | size | DataUnit | Section  |SW Model |Content is removed from the model as size can't be specified for "Section" (considered as virtual memory section) |
 | labels | [0-*] Label | Section  |SW Model |Content is removed from the model. As per APP4MC 0.7.1 semantics, Label object has the association to the Section inside which it can be allocated|
 | runEntities | [0-*] Runnable | Section  |SW Model |Content is removed from the model. As per APP4MC 0.7.1 semantics, Runnable object has the association to the Section inside which it can be allocated|
@@ -256,7 +256,7 @@ table(classic){margin-left:40px}.
 *Below Classes are removed:*
 
 table(classic){margin-left:40px}. 
-| *_Class Name_* | *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+| *_Class Name_* | *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |SchedulerPairingConstraint|Constraints Model|Content is removed from the model. There is no equivalent of this model element in APP4MC 0.7.1|
 |SchedulerSeparationConstraint|Constraints Model|Content is removed from the model. There is no equivalent  of this model element in APP4MC 0.7.1|
 |ProcessRunnableGroupEntry|Constraints Model|This element is removed from the model, but the Runnables associated to it are associated to ProcessRunnableGroup object|
@@ -280,7 +280,7 @@ table(classic){margin-left:40px}.
 *Below are the changes in the reference names:*
 
 table(classic){margin-left:40px}. 
-| *_Variable Name (version APP4MC 0.7.1)_* | *_Changed Variable Name (version APP4MC 0.7.2)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+| *_Variable Name (version APP4MC 0.7.1)_* | *_Changed Variable Name (version APP4MC 0.7.2)_* | *_Class containing Variable_* | *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |runnables|group|RunnablePairingConstraint|Constraints Model |xml tag "runnables" present inside "RunnablePairingConstraint" object is changed to "group" in amxmi file|
 |processes|group|ProcessPairingConstraint|Constraints Model |xml tag "processes" present inside "ProcessPairingConstraint" object is changed to "group" in amxmi file|
 |labels|group|DataPairingConstraint|Constraints Model |xml tag "labels" present inside "DataPairingConstraint" object is changed to "group" in amxmi file|
@@ -289,7 +289,7 @@ table(classic){margin-left:40px}.
 *Below are the changes in the reference Types:*
 
 table(classic){margin-left:40px}. 
-| *_Variable Name_* | *_Variable Type (version APP4MC 0.7.1)_* | *_Variable Type (version APP4MC 0.7.2)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+| *_Variable Name_* | *_Variable Type (version APP4MC 0.7.1)_* | *_Variable Type (version APP4MC 0.7.2)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |instructions|OsExecutionInstructions|Instructions|SchedulingSWUnit|OS Model |type of the instructions tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
 |apiSendMessage|OsExecutionInstructions|Instructions|OsAPIInstructions|OS Model |type of the apiSendMessage tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
 |apiTerminateTask|OsExecutionInstructions|Instructions|OsAPIInstructions|OS Model |type of the apiTerminateTask tag in amxmi is updated either to InstructionsConstant or InstructionsDeviation based on if the type in input is : OsExecutionInstructionsConstant or OsExecutionInstructionsDeviation|
@@ -306,14 +306,14 @@ table(classic){margin-left:40px}.
 *Below are the changes in the relation of elements:*
 
 table(classic){margin-left:40px}. 
-| *_Variable Name_* | *_Variable Type_* | *_Variable Relation (version APP4MC 0.7.1)_* | *_Variable Relation (version APP4MC 0.7.2)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+| *_Variable Name_* | *_Variable Type_* | *_Variable Relation (version APP4MC 0.7.1)_* | *_Variable Relation (version APP4MC 0.7.2)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |memory|Memory|containment|association|HwMemoryProperty|PropertyConstraints model|memory objects containment is changed as association relation. As a result definition of Memory object should not be present inside HwMemoryProperty, rather only reference of memory should be present inside HwMemoryProperty.  Model migration is performed in the following way for this change : Memory elements definition from HwMemoryProperty tag are moved to HW Model (Note: addition of Memory (from PropertyConstraints model) to HW model happens only if Memory with this name is not existing in the model scope)|
 |core|Core|containment|association|HwCoreProperty|PropertyConstraints model|core objects containment is changed as association relation. As a result definition of Core object should not be present inside HWCoreProperty, rather only reference of core should be present inside HWCoreProperty.  Model migration is performed in the following way for this change : Core elements definition from HwCoreProperty tag are moved to HW Model (Note: addition of Memory (from PropertyConstraints model) to HW model happens only if Memory with this name is not existing in the model scope)|
 
 *Below are the changes in Enum elements:*
 
 table(classic){margin-left:40px}. 
-| *Enum Name_* | *_Enum Literal (version APP4MC 0.7.1)_* | *_Enum Literal (version APP4MC 0.7.2)_* | *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+| *Enum Name_* | *_Enum Literal (version APP4MC 0.7.1)_* | *_Enum Literal (version APP4MC 0.7.2)_* | *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |Preemption|unknown|-|SW Model|unknown literal is removed from Preemption. Model Migration will replace "unknown" literal with the default literal|
 
 
@@ -321,7 +321,7 @@ table(classic){margin-left:40px}.
 *Below references are removed:*
 
 table(classic){margin-left:40px}. 
-| *_Variable Name (version APP4MC 0.7.1)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+| *_Variable Name (version APP4MC 0.7.1)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |samplingType|SamplingType|Deviation|Hardware Model  Stimuli MOdel  OS Model  Software Model|In 0.7.2, samplingType attribute is shifted from Deviation to Boundaries element.As a part of Model migration -> samplingType content is removed from Deviation and associated to the corresponding Distribution of type Boundaries. If Boundaries element is not present inside Deviation as a distribution, corresponding samplingType data is skipped during model migration|
 |coreTypeDefinitions|CoreType|PropertyConstraintsModel|Property Constraints Model|coreTypeDefinitions objects are removed from the PropertyConstraintsModel tag and are associated to HW Model (Note: addition of CoreType to HW model happens only if CoreType with this name is not existing in the model scope)|
 |memoryTypeDefinitions|MemoryType|PropertyConstraintsModel|Property Constraints Model|memoryTypeDefinitions objects are removed from the PropertyConstraintsModel tag and are associated to HW Model (Note: addition of MemoryType to HW model happens only if MemoryType with this name is not existing in the model scope)|
@@ -329,7 +329,7 @@ table(classic){margin-left:40px}.
 *Below Classes are removed:*
 
 table(classic){margin-left:40px}. 
-| *_Class Name (version APP4MC 0.7.1)_* | *_AMALTHEA sub model_* | *_Model Migration behaviour_* |
+| *_Class Name (version APP4MC 0.7.1)_* | *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |TargetProcess|Constraints Model|Content is removed from the model. There is no equivalent of this model element in APP4MC 0.7.2|
 |TargetCallSequence|Constraints Model|Content is removed from the model. There is no equivalent of this model element in APP4MC 0.7.2|
 |OsExecutionInstructions, OsExecutionInstructionsDeviation, OsExecutionInstructionsConstant |OS Model|Replacement elements are : Instructions,InstructionsDeviation,InstructionsConstant. As there is no change in the content of these elements(when compared to previous elements) -> during model migration corresponding old type names are replaced with the new model elements  |

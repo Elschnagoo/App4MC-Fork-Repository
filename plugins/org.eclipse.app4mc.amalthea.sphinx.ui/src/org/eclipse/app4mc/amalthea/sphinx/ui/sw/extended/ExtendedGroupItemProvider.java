@@ -11,10 +11,10 @@
 
 package org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended;
 
+import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.provider.GroupItemProvider;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.app4mc.amalthea.model.Runnable;
 
 public class ExtendedGroupItemProvider extends GroupItemProvider {
 

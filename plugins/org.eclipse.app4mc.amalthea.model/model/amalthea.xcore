@@ -49,12 +49,12 @@ import java.nio.charset.StandardCharsets
 	contains HWModel hwModel
 	contains OSModel osModel
 	contains StimuliModel stimuliModel
-	contains ConstraintsModel constraintsModel
 	contains EventModel eventModel
+	contains ConstraintsModel constraintsModel
 	contains PropertyConstraintsModel propertyConstraintsModel	
 	contains MappingModel mappingModel
-	contains ConfigModel configModel
 	contains ComponentsModel componentsModel
+	contains ConfigModel configModel
 }
 
 

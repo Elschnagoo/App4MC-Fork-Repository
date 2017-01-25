@@ -3079,7 +3079,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_ConstraintsModel() {
+	public EReference getAmalthea_EventModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -3088,7 +3088,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_EventModel() {
+	public EReference getAmalthea_ConstraintsModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -3115,7 +3115,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_ConfigModel() {
+	public EReference getAmalthea_ComponentsModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -3124,7 +3124,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_ComponentsModel() {
+	public EReference getAmalthea_ConfigModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -11676,12 +11676,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(amaltheaEClass, AMALTHEA__HW_MODEL);
 		createEReference(amaltheaEClass, AMALTHEA__OS_MODEL);
 		createEReference(amaltheaEClass, AMALTHEA__STIMULI_MODEL);
-		createEReference(amaltheaEClass, AMALTHEA__CONSTRAINTS_MODEL);
 		createEReference(amaltheaEClass, AMALTHEA__EVENT_MODEL);
+		createEReference(amaltheaEClass, AMALTHEA__CONSTRAINTS_MODEL);
 		createEReference(amaltheaEClass, AMALTHEA__PROPERTY_CONSTRAINTS_MODEL);
 		createEReference(amaltheaEClass, AMALTHEA__MAPPING_MODEL);
-		createEReference(amaltheaEClass, AMALTHEA__CONFIG_MODEL);
 		createEReference(amaltheaEClass, AMALTHEA__COMPONENTS_MODEL);
+		createEReference(amaltheaEClass, AMALTHEA__CONFIG_MODEL);
 
 		commonElementsEClass = createEClass(COMMON_ELEMENTS);
 		createEReference(commonElementsEClass, COMMON_ELEMENTS__TAGS);
@@ -13353,12 +13353,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getAmalthea_HwModel(), this.getHWModel(), null, "hwModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAmalthea_OsModel(), this.getOSModel(), null, "osModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAmalthea_StimuliModel(), this.getStimuliModel(), null, "stimuliModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAmalthea_ConstraintsModel(), this.getConstraintsModel(), null, "constraintsModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAmalthea_EventModel(), this.getEventModel(), null, "eventModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAmalthea_ConstraintsModel(), this.getConstraintsModel(), null, "constraintsModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAmalthea_PropertyConstraintsModel(), this.getPropertyConstraintsModel(), null, "propertyConstraintsModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAmalthea_MappingModel(), this.getMappingModel(), null, "mappingModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAmalthea_ConfigModel(), this.getConfigModel(), null, "configModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAmalthea_ComponentsModel(), this.getComponentsModel(), null, "componentsModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAmalthea_ConfigModel(), this.getConfigModel(), null, "configModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commonElementsEClass, CommonElements.class, "CommonElements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCommonElements_Tags(), this.getTag(), null, "tags", null, 0, -1, CommonElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

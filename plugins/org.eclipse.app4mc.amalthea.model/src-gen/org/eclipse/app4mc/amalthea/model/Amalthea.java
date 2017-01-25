@@ -27,12 +27,12 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getHwModel <em>Hw Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getOsModel <em>Os Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getStimuliModel <em>Stimuli Model</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getConstraintsModel <em>Constraints Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getEventModel <em>Event Model</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getConstraintsModel <em>Constraints Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getPropertyConstraintsModel <em>Property Constraints Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getMappingModel <em>Mapping Model</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getConfigModel <em>Config Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getComponentsModel <em>Components Model</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getConfigModel <em>Config Model</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea()
@@ -171,32 +171,6 @@ public interface Amalthea extends BaseObject {
 	void setStimuliModel(StimuliModel value);
 
 	/**
-	 * Returns the value of the '<em><b>Constraints Model</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Constraints Model</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Constraints Model</em>' containment reference.
-	 * @see #setConstraintsModel(ConstraintsModel)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_ConstraintsModel()
-	 * @model containment="true"
-	 * @generated
-	 */
-	ConstraintsModel getConstraintsModel();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getConstraintsModel <em>Constraints Model</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Constraints Model</em>' containment reference.
-	 * @see #getConstraintsModel()
-	 * @generated
-	 */
-	void setConstraintsModel(ConstraintsModel value);
-
-	/**
 	 * Returns the value of the '<em><b>Event Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -221,6 +195,32 @@ public interface Amalthea extends BaseObject {
 	 * @generated
 	 */
 	void setEventModel(EventModel value);
+
+	/**
+	 * Returns the value of the '<em><b>Constraints Model</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Constraints Model</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Constraints Model</em>' containment reference.
+	 * @see #setConstraintsModel(ConstraintsModel)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_ConstraintsModel()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ConstraintsModel getConstraintsModel();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getConstraintsModel <em>Constraints Model</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Constraints Model</em>' containment reference.
+	 * @see #getConstraintsModel()
+	 * @generated
+	 */
+	void setConstraintsModel(ConstraintsModel value);
 
 	/**
 	 * Returns the value of the '<em><b>Property Constraints Model</b></em>' containment reference.
@@ -275,32 +275,6 @@ public interface Amalthea extends BaseObject {
 	void setMappingModel(MappingModel value);
 
 	/**
-	 * Returns the value of the '<em><b>Config Model</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Config Model</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Config Model</em>' containment reference.
-	 * @see #setConfigModel(ConfigModel)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_ConfigModel()
-	 * @model containment="true"
-	 * @generated
-	 */
-	ConfigModel getConfigModel();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getConfigModel <em>Config Model</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Config Model</em>' containment reference.
-	 * @see #getConfigModel()
-	 * @generated
-	 */
-	void setConfigModel(ConfigModel value);
-
-	/**
 	 * Returns the value of the '<em><b>Components Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -325,5 +299,31 @@ public interface Amalthea extends BaseObject {
 	 * @generated
 	 */
 	void setComponentsModel(ComponentsModel value);
+
+	/**
+	 * Returns the value of the '<em><b>Config Model</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Config Model</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Config Model</em>' containment reference.
+	 * @see #setConfigModel(ConfigModel)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_ConfigModel()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ConfigModel getConfigModel();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getConfigModel <em>Config Model</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Config Model</em>' containment reference.
+	 * @see #getConfigModel()
+	 * @generated
+	 */
+	void setConfigModel(ConfigModel value);
 
 } // Amalthea
