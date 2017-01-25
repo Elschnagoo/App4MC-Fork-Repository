@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>client_server_1</name>
+	<name>org.eclipse.app4mc.amalthea.example.modeling.client_server</name>
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
+			<triggers>auto,full,incremental,</triggers>
+			<arguments>
+				<dictionary>
+					<key>LaunchConfigHandle</key>
+					<value>&lt;project&gt;/.externalToolBuilders/org.eclipse.app4mc.amalthea.example.modeling.client_server.launch</value>
+				</dictionary>
+				<dictionary>
+					<key>incclean</key>
+					<value>true</value>
+				</dictionary>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
 </projectDescription>
