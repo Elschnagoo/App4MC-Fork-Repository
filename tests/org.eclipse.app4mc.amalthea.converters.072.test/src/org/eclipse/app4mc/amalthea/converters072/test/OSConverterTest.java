@@ -15,6 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.converters072.impl.NamespaceConverter;
 import org.eclipse.app4mc.amalthea.converters072.impl.OSConverter;
+import org.eclipse.app4mc.amalthea.converters072.impl.SwConverter;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,7 +40,7 @@ public class OSConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConversion() {
-		super.testConversion(NamespaceConverter.class, OSConverter.class);
+		super.testConversion(NamespaceConverter.class, SwConverter.class, OSConverter.class);
 	}
 
 

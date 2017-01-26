@@ -179,7 +179,13 @@ public class SwConverter extends AbstractConverter {
 
 				if (distribution != null) {
 
-					distribution.setAttribute("samplingType", value);
+					final String distributionType = distribution.getAttributeValue("type",
+							this.helper.getGenericNS("xsi"));
+
+					/*- Setting "samplingType" to "distribution" --> only if the distribution element is of type  "am:Boundaries"  */
+					if (distributionType != null && distributionType.equals("am:Boundaries")) {
+						distribution.setAttribute("samplingType", value);
+					}
 				}
 
 				deviation.removeAttribute(samplingTypeAttribute);

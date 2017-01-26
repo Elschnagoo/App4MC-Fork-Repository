@@ -44,6 +44,8 @@ public class SwConverter implements IConverter {
 
 	private Map<File, Document> fileName_documentsMap;
 
+	private File targetFile;
+
 	public SwConverter() {
 		this.helper = HelperUtils_070_071.getInstance();
 		this.logger = LogManager.getLogger(this.getClass());
@@ -59,7 +61,9 @@ public class SwConverter implements IConverter {
 
 		this.fileName_documentsMap = fileName_documentsMap;
 
-		final Document root = fileName_documentsMap.get(targetFile);
+		this.targetFile = targetFile;
+
+		final Document root = fileName_documentsMap.get(this.targetFile);
 
 		if (root == null) {
 			return;
@@ -275,7 +279,6 @@ public class SwConverter implements IConverter {
 	 *            Xml Element of amalthea model file
 	 */
 
-	@SuppressWarnings("null")
 	private void update_MemoryElements_With_Section_Info(final Element rootElement) {
 
 
@@ -321,12 +324,21 @@ public class SwConverter implements IConverter {
 
 			/*- Associating section to a memoryelement */
 
-			if (sections != null && sections.size() > 0) {
+			if (sections.size() > 0) {
 
-				final Element sectionRef = new Element("section");
-				sectionRef.setAttribute("href", "amlt:/#" + encodeSectionName(sections.get(0)) + "?type=Section");
+				final String sectionName = sections.get(0); // name without encoding
 
-				memoryElement.addContent(sectionRef);
+				if (isSectionDefinedInFile(sectionName, this.targetFile)) {
+
+					memoryElement
+							.setAttribute(new Attribute("section", encodeSectionName(sectionName) + "?type=Section"));
+
+				}
+				else {
+					final Element sectionRef = new Element("section");
+					sectionRef.setAttribute("href", "amlt:/#" + encodeSectionName(sectionName) + "?type=Section");
+					memoryElement.addContent(sectionRef);
+				}
 
 				if (sections.size() > 1) {
 					this.logger.warn("MemoryElement :" + memoryElementName + " is associated to multiple sections: "
@@ -399,6 +411,45 @@ public class SwConverter implements IConverter {
 
 
 		return new ArrayList<String>();
+	}
+
+	/**
+	 * This method is used to verify if the Section definition is present in the supplied input file
+	 *
+	 * @param sectionName
+	 *            Name of the input Section (without encoding)
+	 * @param inputFile
+	 *            Input File which is being migrated to version 0.7.1
+	 * @return boolean true if the Section definition is found in the supplied input model file
+	 */
+	@SuppressWarnings("unchecked")
+	private boolean isSectionDefinedInFile(final String sectionName, final File inputFile) {
+
+		final SectionRunnableLabelCacheBuilder iCache = getSectionRunnableLabelCacheBuilder();
+
+		if (iCache == null) {
+
+			throw new RuntimeException(
+					"SectionRunnableLabelCache is not buit and Object of it is not available in Converters");
+		}
+
+		final Map<File, Map<String, Object>> cacheMap = iCache.getCacheMap();
+
+		final Map<String, Object> map = cacheMap.get(inputFile);
+
+		if (map != null) {
+
+			final Object object = map.get(SectionRunnableLabelCacheEnum.Section_Names.name());
+
+			if (object instanceof List) {
+				if (((List<String>) object).contains(sectionName)) {
+					return true;
+				}
+
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -483,15 +534,17 @@ public class SwConverter implements IConverter {
 			}
 		}
 	}
-	
-	private String encodeSectionName(String name) {
-		if (name == null || name.length() == 0)
+
+	private String encodeSectionName(final String name) {
+		if (name == null || name.length() == 0) {
 			return "no-name";
+		}
 
 		String result;
 		try {
 			result = URLEncoder.encode(name, StandardCharsets.UTF_8.toString());
-		} catch (UnsupportedEncodingException e) {
+		}
+		catch (final UnsupportedEncodingException e) {
 			result = name; // keep old name - we have no better option
 		}
 		return result;

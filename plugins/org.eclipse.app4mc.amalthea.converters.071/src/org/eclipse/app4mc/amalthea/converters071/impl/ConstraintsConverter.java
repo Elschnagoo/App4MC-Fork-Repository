@@ -11,7 +11,8 @@
 package org.eclipse.app4mc.amalthea.converters071.impl;
 
 import java.io.File;
-import java.util.HashSet;
+import java.util.AbstractMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -200,17 +201,83 @@ public class ConstraintsConverter extends AbstractConverter {
 
 			/*- Adding runnable Elements references  -> by fetching the data from ProcessRunnableGroupEntry objects   */
 
-			final Set<String> runnableRefs = getRunnableRefs_from_ProcessRunnableGroupEntries(
+
+			final Map.Entry<Boolean, Set<String>> resultEntry = getRunnableRefs_from_ProcessRunnableGroupEntries(
 					processRunnableGroupEntries);
 
-			for (final String runnableRef : runnableRefs) {
+			final Boolean isExternalAmaltheaModelElementReferred = resultEntry.getKey();
 
-				final Element runnableRefElement = new Element("runnables");
+			final Set<String> runnableRefs = resultEntry.getValue();
 
-				runnableRefElement.setAttribute("href", runnableRef);
+			if (isExternalAmaltheaModelElementReferred) {
 
-				runnableGroup.addContent(runnableRefElement);
+				/*-
+				 * Below is the standard behaviour from EMF/Sphinx (also the same is depicted when Amalthea editor is used)
+				 *
+				 * If atleast one Runnable element from other model is referred then all the references should be generated as seperate "runnables" tag containing "href" attribute
+				 *
+				 *  <runnableGroups  xmi:id="_bKVRUOL0EeaRdL88dwrE6Q">
+						<runnables href="#_c2jikOL0EeaRdL88dwrE6Q"/>
+						<runnables href="#_tyEzEOL1EeaRdL88dwrE6Q"/>
+						<runnables href="ref.amxmi#_ksC4IOL0EeaRdL88dwrE6Q"/>
+					</runnableGroups>
+				 */
 
+				for (String runnableRef : runnableRefs) {
+
+					final Element runnableRefElement = new Element("runnables");
+
+					if (runnableRef.contains("?")) {
+
+						/*-
+						 * This is the case attribute value can exists in one of the below format:
+						 *
+						 * Case 1: "r1?type=Runnable"
+						 * Case 2: "amlt:/#r2?type=Runnable"
+						 */
+						if (!runnableRef.contains("amlt:/#")) {
+							runnableRef = ("amlt:/#" + runnableRef);
+						}
+
+					}
+					else {
+						/*-
+						 * This is the case value is existing in one of the below format:
+						 *
+						 * Case 1: elements.amxmi#_USTB0JXtEeaygMeuHaNR-Q
+						 *
+						 * Case 2: _USTB0JXtEeaygMeuHaNR-Q
+						 *
+						 * Case 3: #_USTB0JXtEeaygMeuHaNR-Q
+						 *
+						 *In all the cases valid conversion is : amlt:/#_USTB0JXtEeaygMeuHaNR-Q
+						 */
+
+						final int indexOf = runnableRef.indexOf("#");
+						if (indexOf != -1) {
+							runnableRef = runnableRef.substring(indexOf + 1);
+						}
+						runnableRef = "amlt:/#" + runnableRef;
+
+					}
+
+					runnableRefElement.setAttribute("href", runnableRef);
+
+					runnableGroup.addContent(runnableRefElement);
+
+				}
+			}
+			else {
+
+				// This is the case where no runnable elements from other models are imported
+				final StringBuffer runnablesBuffer = new StringBuffer();
+
+				for (final String runnable : runnableRefs) {
+					runnablesBuffer.append(runnable);
+					runnablesBuffer.append(" ");
+				}
+
+				runnableGroup.setAttribute(new Attribute("runnables", runnablesBuffer.toString().trim()));
 			}
 
 			/*- Removing Element : entries, as ProcessRunnableGroupEntry is removed  */
@@ -225,12 +292,16 @@ public class ConstraintsConverter extends AbstractConverter {
 	 *
 	 * @param processRunnableGroupEntries
 	 *            List<Element> List of ProcessRunnableGroupEntry objects
-	 * @return List<String> list of runnableRefs in valid AMALTHEA HREF format
+	 * @return Map.Entry<Boolean, Set<String>> <br>
+	 *         key is the boolean value (used to identify if there exists any runnable elements from other models) <br>
+	 *         value is the Set of runnableRefs
 	 */
-	private Set<String> getRunnableRefs_from_ProcessRunnableGroupEntries(
+	private Map.Entry<Boolean, Set<String>> getRunnableRefs_from_ProcessRunnableGroupEntries(
 			final List<Element> processRunnableGroupEntries) {
 
-		final Set<String> runnableRefs = new HashSet<String>();
+		boolean isElementFromOtherFilePresent = false;
+
+		final Set<String> runnableRefs = new LinkedHashSet<String>();
 
 		for (final Element entry : processRunnableGroupEntries) {
 			String attributeValue = entry.getAttributeValue("runnable");
@@ -240,51 +311,23 @@ public class ConstraintsConverter extends AbstractConverter {
 
 				if (runnableElement != null) {
 					attributeValue = runnableElement.getAttributeValue("href");
+
+					/*- Note: presence of external element will influence the content generation in amxmi file.
+					 * Due to this reason below check is performed and the result is stored in the boolean value*/
+
+					if (attributeValue != null) {
+						isElementFromOtherFilePresent = true;
+					}
 				}
 
 			}
 
 			if (attributeValue != null) {
-
-				/*-
-				 * In case of element references, following scenarios can exists:
-				 *
-				 *  1. Element ID is present as attribute value
-				 *  2. Element reference as per AMALTHEA referencing mechanism
-				 */
-				if (attributeValue.contains("?")) {
-
-					/*-
-					 * This is the case attribute value can exists in one of the below format:
-					 *
-					 * Case 1: "r1?type=Runnable"
-					 * Case 2: "amlt:/#r2?type=Runnable"
-					 */
-					if (!attributeValue.contains("amlt:/#")) {
-						attributeValue = ("amlt:/#" + attributeValue);
-					}
-					runnableRefs.add(attributeValue);
-				}
-				else {
-					/*-
-					 * This is the case value is existing in one of the below format:
-					 *
-					 * Case 1: elements.amxmi#_USTB0JXtEeaygMeuHaNR-Q
-					 *
-					 * Case 2: _USTB0JXtEeaygMeuHaNR-Q
-					 *
-					 *In both the case valid conversion is : amlt:/#_USTB0JXtEeaygMeuHaNR-Q
-					 */
-
-					final int indexOf = attributeValue.indexOf("#");
-					if (indexOf != -1) {
-						attributeValue = attributeValue.substring(indexOf + 1);
-					}
-					runnableRefs.add("amlt:/#" + attributeValue);
-				}
+				// Attribute value (or) href value is directly stored in the Set (so as to obtain the unique values)
+				runnableRefs.add(attributeValue);
 			}
 		}
-		return runnableRefs;
+		return new AbstractMap.SimpleEntry<>(isElementFromOtherFilePresent, runnableRefs);
 	}
 
 

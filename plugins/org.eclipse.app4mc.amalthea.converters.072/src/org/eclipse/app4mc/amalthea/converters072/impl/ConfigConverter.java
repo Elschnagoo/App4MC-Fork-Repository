@@ -20,10 +20,10 @@ import org.eclipse.app4mc.amalthea.converters072.utils.HelperUtils_071_072;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-public class ConfigConvertor extends AbstractConverter {
+public class ConfigConverter extends AbstractConverter {
 
 
-	public ConfigConvertor() {
+	public ConfigConverter() {
 		this.helper = HelperUtils_071_072.getInstance();
 		this.logger = LogManager.getLogger(this.getClass());
 	}

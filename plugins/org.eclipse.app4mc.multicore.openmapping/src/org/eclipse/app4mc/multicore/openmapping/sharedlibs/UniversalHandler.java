@@ -522,6 +522,7 @@ public class UniversalHandler {
 	}
 
 	public void dropCache() {
+		this.commonElements =null;
 		this.swModel = null;
 		this.hwModel = null;
 		this.conModel = null;

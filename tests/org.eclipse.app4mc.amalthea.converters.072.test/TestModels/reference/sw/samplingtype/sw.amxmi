@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <swModel>
+    <runnables name="r1" callback="false" service="false">
+      <runnableItems xsi:type="am:Group" ordered="false">
+        <items xsi:type="am:Group" ordered="false">
+          <items xsi:type="am:Group" ordered="false">
+            <items xsi:type="am:RunnableInstructions">
+              <default xsi:type="am:InstructionsDeviation">
+                <deviation />
+              </default>
+            </items>
+          </items>
+        </items>
+        <items xsi:type="am:Group" ordered="false" />
+      </runnableItems>
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <default xsi:type="am:InstructionsDeviation">
+          <deviation />
+        </default>
+      </runnableItems>
+      <runnableItems xsi:type="am:RunnableProbabilitySwitch">
+        <entries probability="0">
+          <items xsi:type="am:RunnableInstructions">
+            <default xsi:type="am:InstructionsDeviation">
+              <deviation />
+            </default>
+          </items>
+        </entries>
+      </runnableItems>
+    </runnables>
+  </swModel>
+  <hwModel>
+    <accessPaths xsi:type="am:LatencyAccessPath">
+      <latencies xsi:type="am:LatencyDeviation" accessType="W" transferSize="0">
+        <deviation />
+      </latencies>
+    </accessPaths>
+  </hwModel>
+  <osModel>
+    <operatingSystems>
+      <taskSchedulers scheduleUnitPriority="0">
+        <schedulingUnit xsi:type="am:SchedulingHWUnit" />
+      </taskSchedulers>
+      <interruptControllers scheduleUnitPriority="0">
+        <schedulingUnit xsi:type="am:SchedulingSWUnit" priority="0">
+          <instructions xsi:type="am:InstructionsDeviation">
+            <deviation />
+          </instructions>
+        </schedulingUnit>
+      </interruptControllers>
+    </operatingSystems>
+    <osOverheads>
+      <apiOverhead>
+        <apiReleaseResource xsi:type="am:InstructionsDeviation">
+          <deviation />
+        </apiReleaseResource>
+        <apiClearEvent xsi:type="am:InstructionsDeviation">
+          <deviation />
+        </apiClearEvent>
+        <apiActivateTask xsi:type="am:InstructionsDeviation">
+          <deviation />
+        </apiActivateTask>
+      </apiOverhead>
+    </osOverheads>
+    <osOverheads>
+      <apiOverhead>
+        <apiActivateTask xsi:type="am:InstructionsDeviation">
+          <deviation />
+        </apiActivateTask>
+      </apiOverhead>
+      <isrCategory1Overhead>
+        <postExecutionOverhead xsi:type="am:InstructionsDeviation">
+          <deviation />
+        </postExecutionOverhead>
+      </isrCategory1Overhead>
+      <isrCategory2Overhead>
+        <preExecutionOverhead xsi:type="am:InstructionsDeviation">
+          <deviation />
+        </preExecutionOverhead>
+      </isrCategory2Overhead>
+    </osOverheads>
+    <osDataConsistency />
+  </osModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:InterProcess">
+      <stimulusDeviation>
+        <distribution xsi:type="am:Boundaries" samplingType="WorstCase" />
+      </stimulusDeviation>
+    </stimuli>
+  </stimuliModel>
+</am:Amalthea>
