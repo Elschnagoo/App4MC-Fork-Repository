@@ -1,12 +1,12 @@
 
-h1. Constraints Model
+h2. Constraints Model
 
 The constraints model contains different kind of constraints. There are the runnable-sequencing-constraints that can be used to define a required order for the runnables of the Software Model, the affinity constraints for defining the constraints for the mapping of runnables, processes and schedulers, and the timing constraints for restricting the time span between events or the duration of event chains. Regarding to that, it is also possible to define event chains in this model. 
 
 !../pictures/model_constraints.png!
 
 
-h2. Requirements
+h3. Requirements
 
 The Requirements are used to specify quality requirements for the dynamic architecture. 
 Requirements are divided into the following types depending on the entity type for which the requirement is specified:
@@ -29,7 +29,7 @@ Depending on the metric unit, the following Limits can be specified
 An example for a requirement is the Deadline for a task. The Deadline is specified by an upper limit for the response time of the respective task.
 
 
-h2. Runnable Sequencing Constraints
+h3. Runnable Sequencing Constraints
 
 These constraints can be used to define execution orders of runnables, or in other words, the dependencies between runnables. These dependencies can result from data exchange or any functional dependency, which is not necessarily visible by other model parameter.
 
@@ -82,21 +82,21 @@ The mode "start sequence" means that the first runnable has to be at the beginni
 The mode "end sequence" is like "start sequence" but here the last runnable must be executed at the end of the last process of the runnable sequence.
 
 
-h2. Data Age Constraints
+h3. Data Age Constraints
 
 Data Age constraints are used to define when the information in a label becomes valid or invalid after its last update. Therefore a runnable and a label has to be set. The information update occurs when the runnable performs a write access on the label. It is possible to define the minimum time after the information of a label update becomes valid. This means that the information shall not be used for further calculations before this time is over. The maximum time on the other hand defines the time after the label update when the information becomes invalid. Beside of time it is possible to define a minimum and maximum cycle. The cycle is related to the activation of the process that executes the runnable. 
 
 !../pictures/model_constraints_data_age.png!
 
 
-h2. Data Coherency Groups
+h3. Data Coherency Groups
 
 A __DataCoherencyGroup__ is used to define data coherency requirements for a group of labels.
 The Direction hereby is used to specify if the labels have to be read or written coherently. Moreover, the scope attribute defines the context of the coherent read or write requirement. Possible scopes are components, processes, and runnables.
 
 !../pictures/model_constraints_data_coherency.png!
 
-h2. Data Stability Groups
+h3. Data Stability Groups
 
 A __DataStabilityGroup__ is used to define that the values of labels have to be kept stable within a given execution context.
 Currently, the following execution contexts are covered by the scope:
@@ -107,7 +107,7 @@ This means, that it has to be guaranteed that the values of labels are identical
 
 !../pictures/model_constraints_data_stability.png!
 
-h2. Event Chains
+h3. Event Chains
 
 The concept for event chains is based on the Timing Augmented Description Language. 
 The Timing Augmented Description Language (TADL) is coming from the "TIMMO-2-USE ":https://itea3.org/project/timmo-2-use.html project.  
@@ -141,9 +141,9 @@ If a set of events is used, then all events of this group must occur fulfill the
 !../pictures/model_constraints_eventchain_eventgroups.png!
 
 
-h2. Timing Constraints
+h3. Timing Constraints
 
-h3. Synchronization Constraints
+h4. Synchronization Constraints
 
 An __EventSynchronizationConstraint__ describes how tightly the occurrences of a group of events follow each other.
 There must exist a sequence of time windows of width tolerance, such that every occurrence of every event in events belongs to at least one window, and every window is populated by at least one occurrence of every event.
@@ -155,14 +155,14 @@ The parameter __multipleOccurrencesAllowed__ defines, whether for the constraint
 
 !../pictures/model_constraints_timing_sync.png!
 
-h3. Repetition Constraint
+h4. Repetition Constraint
 
 A __RepetitionConstraint__ describes the distribution of the occurrences of a single event, including jitter.
 Every sequence of span occurrences of event must have a length of at least lower and at most upper time units.
 
 !../pictures/model_constraints_timing_repetition.png!
 
-h3. Delay Constraint
+h4. Delay Constraint
 
 A Delay Constraint imposes limits between the occurrences of an event called source and an event called target.
 Every instance of source must be matched by an instance of target, within a time window starting at lower and ending at upper time units relative to the source occurrence.
@@ -170,7 +170,7 @@ In addition, a __MappingType__ defines whether there is a strong ( __OneToOne__ 
 
 !../pictures/model_constraints_timing_delay.png!
 
-h3. Event Chain Latency Constraint
+h4. Event Chain Latency Constraint
 
 An __EventChainLatencyConstraint__ defines how long before before each response a corresponding stimulus must have occurred ( __Age__ ), or how long after a stimulus a corresponding response must occur ( __Reaction__ ).
 It always refers to an EventChain.
@@ -178,7 +178,7 @@ It always refers to an EventChain.
 !../pictures/model_constraints_timing_latency.png!
 
 
-h2. Affinity Constraints
+h3. Affinity Constraints
 
 Affinity constraints are used to define the mapping of executable objects to each other.
 The objects that can be mapped are:
@@ -192,26 +192,26 @@ An affinity constraint can either be a pairing or a separation constraint. A pai
 
 Each affinity constraint has one or more targets. The type of the target depends on the type that should be mapped.
 
-h3. Data Affinity Constraints
+h4. Data Affinity Constraints
 
 A __DataConstraint__ is used to define the mapping of label objects to memory units.
 
 !../pictures/model_constraints_affinity_data.png!
 
-h3. Process Affinity Constraints
+h4. Process Affinity Constraints
 
 A __ProcessConstraint__ is used to define the mapping of process (Task or ISR) objects to processing cores or scheduling units.
 
 !../pictures/model_constraints_affinity_process.png!
 
-h3. Runnable Affinity Constraints
+h4. Runnable Affinity Constraints
 
 A __RunnableConstraint__ is used to define the mapping of runnable objects to processing cores or scheduling units.
 
 !../pictures/model_constraints_affinity_runnable.png!
 
 
-h2. Physical Section Constraints
+h3. Physical Section Constraints
 
 A __PhysicalSectionConstraint__ is used to to define the mapping of Section objects to Memories. This mapping of Section object to Memory objects specifies that corresponding *PhysicalSectionMapping* associated to this *Section* element can be allocated only in the mapped Memories.
 

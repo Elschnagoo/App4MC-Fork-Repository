@@ -1,5 +1,5 @@
 
-h1. How to invoke AMALTHEA model migration
+h3. How to invoke AMALTHEA model migration
 
 AMALTHEA model migration utility is developed as a eclipse plugin and it is part of APP4MC distribution (_from release 0.7.0_)
 

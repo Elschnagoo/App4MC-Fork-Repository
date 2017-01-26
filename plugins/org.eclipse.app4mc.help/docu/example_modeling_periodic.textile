@@ -1,8 +1,8 @@
-h2. Modeling Example "Purely Periodic without Communication"
+h3. Modeling Example "Purely Periodic without Communication"
 
 This system architecture pattern consists of a task set, where each task is activated periodically and no data accesses are performed. The execution time for each task is determined by the called runnable entities as specified in the table below. All tasks contain just one runnable except of T ~7~, which calls at first R ~7,1~ and after that R ~7,2~.
 
-The table below gives a detailed specification of the tasks and their parameters. The tasks are scheduled according fixed-priority, preemptive scheduling and if not indicated otherwise, all events are active in order to get a detailed insight into the system’s behaviour.
+The table below gives a detailed specification of the tasks and their parameters. The tasks are scheduled according fixed-priority, preemptive scheduling and if not indicated otherwise, all events are active in order to get a detailed insight into the systemï¿½s behaviour.
 
 table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_. Task |_. Priority |_. Preemption |_. Multiple Task Activation Limit |_. Activation |\2_. Execution Time |
@@ -45,7 +45,7 @@ In order to show the impact of changes to the model, the following consecutive v
 - **4) Increase of Task Set Size III** := As from this variation on, all tasks (T ~1~ - T ~7~) are active. That way the utilisation of the system is increased.
 !../pictures/ExampleModeling/modeling_example_periodic_4.png!
 
-- **5) Accuracy in Logging** := For this variation, just task events are active. That way, only a limited insight into the system’s runtime behaviour is available.
+- **5) Accuracy in Logging** := For this variation, just task events are active. That way, only a limited insight into the systemï¿½s runtime behaviour is available.
 !../pictures/ExampleModeling/modeling_example_periodic_5.png!
 
 - **6) Schedule** := As from this variation on, T ~7~ is set to non-preemptive. That way, the timing behaviour is changed, which results in extinct activations (see red mark in the figure below).

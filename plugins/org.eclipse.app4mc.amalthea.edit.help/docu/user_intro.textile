@@ -1,5 +1,5 @@
 
-h1. Introduction
+h2. Introduction
 
 APP4MC comes with a predefined perspective available in the Eclipse menu under Window -> Open Perspective -> Other -> APP4MC. This perspective consists of the following elements:
 
@@ -12,7 +12,7 @@ The following screenshot is showing this perspective and its contained elements.
 !../pictures/user_guide_editor_structure.png!
 
 
-h2. Steps to create a new AMALTHEA model
+h3. Steps to create a new AMALTHEA model
 
 APP4MC provides a standard wizard to create a new AMALTHEA model from scratch.
 
@@ -40,7 +40,7 @@ bq..  In the context menu (right mouse button) an entry for a new AMALTHEA model
       In the dialog you can select the parent folder and the file name.
 
 
-h2. AMALTHEA Editor
+h3. AMALTHEA Editor
 
 The AMALTHEA Editor shows either the entire model that contains sub models or one of the sub models.
 The next screenshot shows the "New Child" menu with all its possibilities.  
@@ -51,13 +51,13 @@ In addition the AMALTHEA Editor has two commands available at the top right of t
 
 !(gray)../pictures/user_guide_editor_commands.png!
 
-h3. Show types of model elements
+h4. Show types of model elements
 
 The Show types of elements button triggers the editor to show the direct type of the element in the tree editor using [element_type]. The following screenshot shows the toggle and the types marked with an underline.
 
 !(gray)../pictures/user_guide_editor_showtypes.png!
 
-h3. Search for model elements
+h4. Search for model elements
 
 The editor provides the possibility to filter model elements by using the available name attribute. This can be used for example to filter all elements in the model which has abs in their name. The search and result view is using the Eclipse search as result view.
 
@@ -72,7 +72,7 @@ An additional option is to toggle the search results to group them by type as sh
 !(gray)../pictures/user_guide_editor_search_result2.png!
 
 
-h2. AMALTHEA Examples
+h3. AMALTHEA Examples
 
 The AMALTHEA tool platform comes with several examples. This section will describe how a new project based on these examples can be created. 
 

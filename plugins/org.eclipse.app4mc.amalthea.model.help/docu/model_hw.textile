@@ -1,5 +1,5 @@
 
-h1. Hardware model
+h2. Hardware model
 
 The AMALTHEA hardware model is used to described hardware systems which usually consists of ECUs, microcontrollers, cores, memories, additional peripherals etc. It is central accessible through the __HWModel__ element and contains following elements:
 
@@ -12,7 +12,7 @@ The AMALTHEA hardware model is used to described hardware systems which usually 
 * HwSystem
 * AccessPath
 
-h2. Structure
+h3. Structure
 
 A reduced overview of the Meta Model specifying the Hardware Model is shown below. The overall hierarchy within this model is represented by blue classes (HwSystem, ECU, Microcontroller and Core). Red classes indicate type descriptions which contain the parameters of their referencing elements, e.g. it is possible to specify a type of a core with all relevant attributes which will be referenced by core instances. This supports quick modeling of homogeneous architectures and increases the reutilization of already described hardware. Green classes represent additional hardware peripherials which can be described on each of the hardware hierarchies (HwSystem, ECU, Microcontroller and Core). 
 
@@ -22,7 +22,7 @@ The structure of descriptions regarding the network is shown in the following fi
 
 !../pictures/model_hw_network.png!
 
-h3. ComplexNode
+h4. ComplexNode
 
 The __ComplexNode__ is the generalization of all hardware components. It holds the described components name and contains its nested hardware elements, e.g. memories, networks, ports etc.
 
@@ -35,7 +35,7 @@ table(classic).
 | components | Containment | * | __HwComponent__ | Containment for __HwComponent__ (i.e. all other entities of hardware) objects located on the specialization of this element. |
 | ports | Containment | * | __HwPort__ | Containment for __HwPort__ (i.e. interfaces with multiple pins) objects located on the specialization of this element. |
 
-h3. HwSystem
+h4. HwSystem
 
 The __HwSystem__ is a specialization of the __ComplexNode__ and represents a cluster of one or more __ECU__ elements which in sum implement a specific system. 
 
@@ -44,7 +44,7 @@ table(classic).
 | systemType | Reference | 1 | __SystemType__ | Refers to a __SystemType__ containing the configuration for this system. |
 | ecus | Containment | + | __ECU__ | Containment for Electronic Control Units (__ECU__) that are part of this system. |
 
-h3. ECU
+h4. ECU
 
 The __ECU__ (Electronic Control Unit) is a specialization of the __ComplexNode__ and represents any physical electronic hardware on an embedded system level abstraction level.
 
@@ -53,7 +53,7 @@ table(classic).
 | ecuType | Reference | 1 | __ECUType__ | Refers to a __ECUType__ containing the configuration for this ECU. |
 | microcontrollers | Containment | + | __Microcontroller__ | Containment for __Microcontrollers__ that are part of this ECU. |
 
-h3. Microcontroller
+h4. Microcontroller
 
 The __Microcontroller__ is a specialization of the __ComplexNode__ and represents any physical hardware on System on Chip abstraction level, e.g. processors with one or more special or generic purpose cores.
 
@@ -62,7 +62,7 @@ table(classic).
 | microcontrollerType | Reference | 1 | __MicrocontrollerType__ | Refers to a __MicrocontrollerType__ containing the configuration for this microcontroller. |
 | cores | Containment | + | __Core__ | Containment for processing cores (__Core__) that are part of this microcontroller. |
 
-h3. Core
+h4. Core
 
 The __Core__ is a specialization of the __ComplexNode__ and represents the respective processing units on any type of single- or multi core processor.
 
@@ -71,7 +71,7 @@ table(classic).
 | coreType | Reference | 1 | __CoreType__ | Refers to a __CoreType__ containing the configuration for this core. |
 | lockstepGroup | Integer | ? | 0 - 255 | If set, this value defines the lockstep group of the core. All cores with the same lockstep group are operating in lockstep mode together. |
 
-h3. Memory
+h4. Memory
 
 The __Memory__ is a specialization of the __ComplexNode__ and represents memories. It is used to describe any type of memory module, e.g. Flash, RAM, etc.
 Please note that to specify a memory with the type __CACHE__ (e.g. lv1 cache as part of a core) it is sufficient to specify it within a core. It is not necessary to specify additional networks or ports.
@@ -81,7 +81,7 @@ table(classic).
 | type | Reference | 1 | __MemoryType__ | Refers to a __MemoryType__ containing the configuration for this memory. |
 
 
-h3. Network
+h4. Network
 
 The __Network__ is a specialization of the __ComplexNode__ and represents networks of interconnected __ComplexPort__ elements. 
 
@@ -89,7 +89,7 @@ table(classic).
 |_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
 | type | Reference | 1 | __NetworkType__ | Refers to a __NetworkType__ containing the configuration for this network. | 
 
-h3. Quartz
+h4. Quartz
 
 The __Quartz__ is a specialization of the __ComplexNode__ and represents a frequency generator which may be located on any __ComplexNode__ or its specializations. It may be referenced by any number of __Prescalers__.
 
@@ -98,7 +98,7 @@ table(classic).
 | type | __QType__ | 1 | STATIC / DYNAMIC | Specifies if the __Quartz__ operates at either a static or dynamic frequency. |
 | frequency | Integer | ? | 0 - 255 | Frequency on which this __Quartz__ is operating. |
 
-h3. Component
+h4. Component
 
 The __Component__ (or __HwComponent__) is a specialization of the __ComplexNode__ and represent hardware elements which are not further specified. They may contain any number of nested __Components__.
 
@@ -106,27 +106,27 @@ table(classic).
 |_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
 | nestedComponents | Containment | 1 | __HwComponent__ | Containment for __HwComponent__ (i.e. all other entities of hardware) objects located below this component. |
 
-h3. HardwareTypeDescription
+h4. HardwareTypeDescription
 
 The abstract class __HardwareTypeDescription__ is the generalization of all type description for memories, cores, ECUs, networks etc. It allows its specializations to stor information about their features.
 
-h3. AbstractionTypeDescription
+h4. AbstractionTypeDescription
 
 The abstract class __AbstractionTypeDescription__ is a specialization of the __HardwareTypeDescription__ and generalization for hardware types which describe hardware abstraction, i.e. the __HwSystem__, __ECU__, __Microcontroller__ and __Core__.
 
-h3. SystemType
+h4. SystemType
 
 The __SystemType__ is a specialization of the __AbstractionTypeDescription__ and used to define a specific type of a system. If multiple systems with the same characteristics exist, it is sufficient to define only one type and reference it by all systems sharing the same type.
 
-h3. ECUType
+h4. ECUType
 
 The __ECUType__ is a specialization of the __AbstractionTypeDescription__ and used to define a type of an ECU.
 
-h3. MicrocontrollerType
+h4. MicrocontrollerType
 
 The __MicrocontrollerType__ is a specialization of the __AbstractionTypeDescription__ and used to define a type of a Microcontroller.
 
-h3. CoreType
+h4. CoreType
 
 The __CoreType__ is a specialization of the __AbstractionTypeDescription__ and used to define a type of a Core, i.e. its bit width and ticks per cycle.
 
@@ -135,7 +135,7 @@ table(classic).
 | bitWidth | Integer | 1 | 0-255 | The cores architectures bit width (e.g. 32 or 64 bit) |
 | instructionsPerCycle | Integer | 1 | 0-255 | Number of processed (computed) instructions per cycle. |
 
-h3. MemoryType
+h4. MemoryType
 
 The __MemoryType__ is a specialization of the __HardwareTypeDescription__ and used to define a type of a memory, i.e. its size, access pattern and type.
 
@@ -145,7 +145,7 @@ table(classic).
 | type | __MemoryType__ | 1 | RAM/CACHE/FLASH_INT/FLASH_EXT | Specifies the type of this Memory. |
 | size | Long | 1 | >0 | Size of this memory. |
 
-h3. NetworkType
+h4. NetworkType
 
 The __NetworkType__ is a specialization of the __HardwareTypeDescription__ and used to define a type of a Network, i.e. max supported bit width and scheduling policy.
 
@@ -154,7 +154,7 @@ table(classic).
 | schedPolicy | __SchedType__ | 1 | RROBIN/PRIORITY | Specifies the scheduling policy which is used on this Network. |
 | bitWidth | Integer | 1 | 0 - 255 | Specifies the max bit width that may be transferred on this network per cycle. |
 
-h3. CrossbarSwitch
+h4. CrossbarSwitch
 
 The __CrossbarSwitch__ is a specialization of a __NetworkType__ and represents switches, which allow simultaneous/concurrent connections between all types of components
 
@@ -162,7 +162,7 @@ table(classic).
 |_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
 | conConnections | Integer | 1 | 0 - 255 | Maximum number of concurrent 1:n connections |
 
-h3. Bus
+h4. Bus
 
 The __Bus__ is a specialization of the __NetworkType__ and represents any kind of bus network, e.g. CAN, LIN etc.
 
@@ -170,15 +170,15 @@ table(classic).
 |_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
 | type | __BusType__ | 1 | CAN/TTCAN/LIN/FLEXRAY/ETHERNET/SPI/NA | Specifies the type of the bus network. |
 
-h3. Bridge
+h4. Bridge
 
 The __Bridge__ is a specialization of a __NetworkType__ and represents bridges or gateways. It is used to transfer data from one network to another and performs a one-way translation, e.g. a __ComplexNode__ containing a __Bridge__ is accessed by its __ComplexPort__ and routes the data to its containing __Bridge__. If a __ComplexNode__ contains more than one __Bridge__, the respective target network is determined by the address range of its connected __ComplexPort__ elements. 
 
-h3. Pin
+h4. Pin
 
 The __Pin__ represents a single pin and serves as abstract representation for pure informative use, e.g. by a developer describing a port.
 
-h3. ComplexPin
+h4. ComplexPin
 
 The __ComplexPin__ is a specialization of the __Pin__ and contains detailed information, i.e. the type of the pin, its address and its direction (read/write). 
 
@@ -188,11 +188,11 @@ table(classic).
 | baseAddress | Long | 1 | >= 0 | Specifies the address of this pin, i.e. the address this pin is accessed by. |
 | direction | __RWType__ | 1 | R/W/RW | Specifies the direction the data may travel through this pin, e.g. (R)ead only, (W)rite only or both (RW). |
 
-h3. Port
+h4. Port
 
 The __Port__ represents groups of pins and may be used to describe simple interfaces, e.g. 8-bit ports etc. Its main purpose is to describe ports which only serve informative use.
 
-h3. ComplexPort
+h4. ComplexPort
 
 The __ComplexPort__ is a specialization of the __Port__ and represents interfaces on any type of __ComplexNode__ which are connected to a __Network__.
 
@@ -208,11 +208,11 @@ table(classic).
 | writeCycles | Integer | 1 | >0 | Specifies the number of cycles until a write is performed. |
 | schedValue | Integer | 1 | >0 | Optional parameter for the usage in network scheduling policies. The meaning of this attribute depends on the used schedulingPolicy of the referenced Network, e.g. it may be the priority in a priority scheduled network or the order in a round robin scheduled network. |
 
-h3. AbstractType
+h4. AbstractType
 
 The __AbstractType__ is an abstract class, allowing attributes to describe data without specifying their data type. It contains the field name to specify the name of the value while the specializations __BoolValue__, __CharValue__, __IntValue__, __LongValue__, __DoubleValue__ and __StringValue__ contain the resp. value types.
 
-h2. AccessPaths
+h3. AccessPaths
 
 The __AccessPath__ element describes in general the needed time in cycles for a hardware element (__ComplexNode__) A to access a hardware element B.
 It can be configured in two different ways:
@@ -226,7 +226,7 @@ The following picture shows the structure of these two approaches:
 
 !(scale)../pictures/model_hw_access_path.png!
 
-h3. Latency Overview
+h4. Latency Overview
 
 To describe a latency for a given core a memory, only these elements are needed inside of the Hardware model.
 The next picture shows a simple overview of a core, which is able to access two memories with different latencies.
@@ -237,7 +237,7 @@ Using the provided AMALTHEA model editor this small sample would look like the f
 
 !../pictures/model_hw_access_path_latency_sample_editor.png!
 
-h3. Hardware Access Path
+h4. Hardware Access Path
 
 Using the __HwAccessPath__ element to describe an access path, the included elements must be available with the proper __ComplexPorts__. The access path consists with a list of elements, which are referencing existing ports.
 

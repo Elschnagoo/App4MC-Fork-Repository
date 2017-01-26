@@ -1,9 +1,10 @@
 
-h1(#metamodel-changes). AMALTHEA metamodel changes (detailed transformation description)
+h2(#metamodel-changes). AMALTHEA meta model changes
 
-Based on the changes in AMALTHEA metamodel across various releases, below description contains the differences in detail which are considered for model migration:
 
-h2. Version ITEA 1.0.3 to ITEA 1.1.0
+Based on the changes in AMALTHEA meta model across various releases, below description contains the differences in detail which are considered for model migration:
+
+h3. Version ITEA 1.0.3 to ITEA 1.1.0
 
 Below are the changes in the metamodel from ITEA 1.1.0 version to ITEA 1.1.1
 
@@ -44,7 +45,7 @@ table(classic){margin-left:40px}.
 | readCacheMisses | cacheMisses | LabelAccessStatistic | Software model | "readCacheMisses" is changed to "cacheMisses" in all the places where LabelAccessStatistic definition is present |
 | executableAllocation | processAllocation, runnableAllocation | MappingModel | Mapping model | <div>Based on the content of the "executableAllocation", accordingly either "processAllocation" or "runnableAllocation" elements are created and the corresponding data of "exeuctableAllocation" is mapped. <br/> Below are the criterions  : <ul> <li>If "executableAllocation" consists of Task element and Scheduler mapping then - &gt; "ProcessAllocation" of type "mapping:TaskAllocation" is created</li><li>If "executableAllocation" consists of ISR element and Scheduler mapping then - &gt; "ProcessAllocation" of type "mapping:ISRAllocation" is created, and to it corresponding ISR element and "InterruptController" element are associated (_<b>Note:</b>If there is a mapping to "ISR" and "Scheduler" in "executableAllocation", InterruptController element is created and referred in the "executableAllocation". In this case previous mapping to the Scheduler element is lost_) </li><li>If "executableAllocation" consists of Runnable element and Scheduler mapping then - &gt; "RunnableAllocation" of type "mapping:RunnableAllocation" is created</li></ul></div> |
 
-h2. Version ITEA 1.1.0 to ITEA 1.1.1
+h3. Version ITEA 1.1.0 to ITEA 1.1.1
 
 Below are the changes in the metamodel from ITEA 1.1.0 version to ITEA 1.1.1
 
@@ -136,7 +137,7 @@ table(classic){margin-left:40px}.
 *** For details refer to the below figure: <br/><br/> !(gray_scale)../pictures/labelvalueentry_stimuli_migration.png! <br/><br/>
 
 
-h2. Version ITEA 1.1.1 to App4MC 0.7.0
+h3. Version ITEA 1.1.1 to App4MC 0.7.0
 
 Below are the changes in the metamodel from ITEA 1.1.1 version to APP4MC 0.7.0
 
@@ -191,9 +192,9 @@ table(classic){margin-left:40px}.
 | isBuffered | buffered | SenderReceiverCommunication | Software model |
 | isOrdered | ordered | Group | Software model |
 
-h2. Version App4MC 0.7.0 to App4MC 0.7.1
+h3. Version APP4MC 0.7.0 to App4MC 0.7.1
 
-Below are the changes in the metamodel from App4MC 0.7.0 to App4MC 0.7.1
+Below are the changes in the meta model from APP4MC 0.7.0 to APP4MC 0.7.1
 
 *Change in the namespace:* 
 
@@ -268,7 +269,7 @@ table(classic){margin-left:40px}.
 |SectionMappingConstraint|Property Constraints Model|Content is removed from the model.As per 0.7.1, there is a possibility to specify PhysicalSectionConstraint element i.e. defining possibility of Section allocation across various Memories |
 |DataUnit|Sw model| Content is migrated as DataSize. Attribute "unit" is set as DataSizeUnit of type "bit"| 
 
-h2. Version App4MC 0.7.1 to App4MC 0.7.2
+h3. Version APP4MC 0.7.1 to APP4MC 0.7.2
 
 *Change in the namespace:* 
 

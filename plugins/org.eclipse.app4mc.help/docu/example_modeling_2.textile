@@ -1,15 +1,15 @@
 
 
-h2. Modeling Example 2
+h3. Modeling Example 2
 
-h3. General information
+h4. General information
 
 Modeling Example 2 describes a simple system consisting of 4 Tasks, which is running on a single core processor.
 The following figure shows the execution footprint in a Gantt chart:
 !../pictures/ExampleModeling/modeling_2_gantt.png!
 In the following sections, the individual parts of the AMALTHEA model for Modeling Example 2 are presented followed by a short description of its elements.
 
-h3. Hardware Model
+h4. Hardware Model
 
 !../pictures/ExampleModeling/modeling_2_hw.png!
 
@@ -17,7 +17,7 @@ The hardware model of Modeling Example 2 consists as already mentioned of a sing
 The following gives a structural overview on the modeled elements.
 There, the core, 'Core_1' , has a static processing frequency of 600 MHz each, which is specified by the corresponding quartz oscillator 'Quartz_1'.
 
-h3. Operating System Model
+h4. Operating System Model
 
 !../pictures/ExampleModeling/modeling_2_scheduler.png!
 
@@ -30,7 +30,7 @@ table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Scheduler |_.Type|_.Algorithm|_.Delay|
 | *Scheduler_1* | SchedulingHwUnit | OSEK | 100 ns |
 
-h3. Mapping Model
+h4. Mapping Model
 
 !../pictures/ExampleModeling/modeling_2_mapping.png!
 
@@ -41,7 +41,7 @@ On the other hand the allocation of cores to a scheduler is set.
 As a consequence, the scheduler manages the only available processing core.
 A comprehension of the modeled properties can be found in the following tables:
 
-h4. Executable Allocation
+h5. Executable Allocation
 
 table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Scheduler|_.Process|
@@ -50,15 +50,15 @@ table(classic){text-align:center; background:#f8f8f8}.
 | Scheduler_1 | Task_3 |
 | Scheduler_1 | Task_4 |
 
-h4. Core Allocation
+h5. Core Allocation
 
 table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_.Scheduler|_.Core|
 | Scheduler_1 | Core_1 |
 
-h3. Software Model
+h4. Software Model
 
-h4. Tasks
+h5. Tasks
 
 !../pictures/ExampleModeling/modeling_2_tasks.png!
 
@@ -86,7 +86,7 @@ table(classic){text-align:center; background:#f8f8f8}.
 
 *MTA = Multiple Task Activation Limit
 
-h4. Runnables
+h5. Runnables
 
 !../pictures/ExampleModeling/modeling_2_runnables.png!
 
@@ -110,7 +110,7 @@ table(classic){text-align:center; background:#f8f8f8}.
 |<.upper: 5000000|
 |*Runnable_4_1*|Constant|4000000|
 
-h3. Stimulation Model
+h4. Stimulation Model
 
 !../pictures/ExampleModeling/modeling_2_stimuli.png!
 

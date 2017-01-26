@@ -1,6 +1,6 @@
 
 
-h2. AMALTHEA Trace Database (ATDB) Import Example
+h3. AMALTHEA Trace Database (ATDB) Import Example
 
 The following section describes how to use the information contained within an AMALTHEA Trace Database (ATDB) to create a model.
 

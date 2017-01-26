@@ -1,10 +1,10 @@
-h2. Modeling Example "State Machine Feedback Loop"
+h3. Modeling Example "State Machine Feedback Loop"
 
 The task set of the modeling example "State Machine" is expanded further in this architecture pattern by combining the ideas behind the modeling example "State Machine" and "Feedback Loop". This means that messages are exchanged in a loop and each sender/receiver is also a state machine. To achieve this, task T ~1~ has two different internal states 0 and 1, and task T ~2~ manages three consecutive states 0, 1, and 2. The state task T ~1~ is currently in is sent via a message to task T ~2~ before runnable R ~1~ is called. If the content of the message sent from task T ~1~ is 1, task T ~2~ increases its internal state, e.g. from state 0 to 1, and if it is 0, task T ~2~ decreases its internal state accordingly. Then, depending on the state task T ~2~ is currently in, the according runnable (R ~2,0~ for state 0, etc.) is executed. If the maximum or minimum state of task T ~2~ is reached but the received message from task T ~1~ tells task T ~2~ to further increase or respectively decrease its internal state, task T ~2~ sends a message to task T ~1~. This message then causes task T ~1~ to toggle its internal state which consequently results in a switch from increasing to decreasing or vice versa. In addition to this state machine feedback loop, other system architecture patterns are added to be executed concurrently in order to increase the complexity. The tasks T ~3~ and T ~4~ represent a client-server without reply and are equal to the tasks T ~1~ and T ~2~ respectively as described above in the modeling example "Client-Server without Reply". T ~5~ is a periodically activated task without any communication and identical to task T ~7~ in the modeling example "Purely Periodic without Communication".
 
 !../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop.png!
 
-The table below gives a detailed specification of the tasks and their parameters. The tasks are scheduled according fixed-priority, preemptive scheduling and if not indicated otherwise, all events are active in order to get a detailed insight into the system’s behaviour.
+The table below gives a detailed specification of the tasks and their parameters. The tasks are scheduled according fixed-priority, preemptive scheduling and if not indicated otherwise, all events are active in order to get a detailed insight into the systemï¿½s behaviour.
 
 table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_. Task |_. Priority |_. Preemption |_. Multiple Task Activation Limit |_. Activation |\2_. Execution Time |
@@ -68,8 +68,8 @@ In order to show the impact of changes to the model, the following consecutive v
 - **7) Activation** := As from this variation on, the maximum number of queued activation requests for both tasks is set to 2. That way, the problem with extinct activations resulting from the previous variation is solved.
 !../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop_7.png!
 
-- **8) Accuracy in Logging of Data State I** := For this variation, the data accesses in all tasks are omitted. Instead, all runnablea representing a state are executed equally random, meaning the runnables R ~2,0~, R ~2,1~, and R ~2,2~ are each executed with a probability of 33 %, and the runnables R ~4,x~, R ~4,1~, R ~4,2~, R ~4,3~, and R ~4,4~ each with a probability of 20 %. That way, only a limited insight into the system’s runtime behaviour is available.
+- **8) Accuracy in Logging of Data State I** := For this variation, the data accesses in all tasks are omitted. Instead, all runnablea representing a state are executed equally random, meaning the runnables R ~2,0~, R ~2,1~, and R ~2,2~ are each executed with a probability of 33 %, and the runnables R ~4,x~, R ~4,1~, R ~4,2~, R ~4,3~, and R ~4,4~ each with a probability of 20 %. That way, only a limited insight into the systemï¿½s runtime behaviour is available.
 !../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop_8.png!
 
-- **9) Accuracy in Logging of Data State II** := For this variation, just task events are active. That way, only a limited insight into the system’s runtime behaviour is available.
+- **9) Accuracy in Logging of Data State II** := For this variation, just task events are active. That way, only a limited insight into the systemï¿½s runtime behaviour is available.
 !../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop_9.png!

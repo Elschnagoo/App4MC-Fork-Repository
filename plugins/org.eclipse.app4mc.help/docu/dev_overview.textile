@@ -1,6 +1,6 @@
-h1. Overview of Features and Plug-ins
+h2. Overview of Features and Plug-ins
 
-h2. Features
+h3. Features
 
 There are two top-level features of the AMALTHEA Tool Platform, the AMALTHEA Tool Platform and the AMALTHEA Tool Platform SDK features. The non-SDK feature contains everything you need to run the AMALTHEA tools and models. If you like to develop new tools on top of the models or extend the models you may need the SDK. It contains beside the runtime all sources.
 
@@ -33,6 +33,6 @@ The top-level feature itself contains basic platform plug-ins and tools as well 
 
 For all features there also exists an SDK containing the sources. If you install the AMALTHEA Tool Platform SDK, it contains all features as SDKs.
 
-h2. Plug-ins
+h3. Plug-ins
 
 The plug-ins are organized in various namespaces. The id's of most plug-ins containing models are within the namespace @org.eclipse.app4mc.amalthea.model@, whereas examples can be found in plug-ins named @org.eclipse.app4mc.amalthea.example@.

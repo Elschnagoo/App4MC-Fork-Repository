@@ -1,10 +1,10 @@
 
-h1. Model Validation
+h2. Model Validation
 
 AMALTHEA uses for custom model validations the "Sphinx validation project":https://projects.eclipse.org/projects/modeling.mdt.sphinx which is based on "EMF validation ":http://www.eclipse.org/modeling/emf/?project=validation.
 
 
-h2. Understanding Check Catalogs
+h3. Understanding Check Catalogs
 
 A Sphinx validator optionally makes use of a Catalog. When a catalog is used, each @Check annotations should have a __constraint name__ (which can be seen as unique id) to match a constraint in the catalog. So there is a logical mapping from methods to constraints. For a constraint to be applicable within the scope of a validator, the set of categories specified in its @Check annotation should be a subset of the set of categories referenced by the constraint in the check catalog. In other words, categories are used to restrict applicability to check methods.
 
@@ -16,7 +16,7 @@ Except for constraint __check 5__ each other constraint is assigned to at least 
 
 Hint: The assignment from constraint to one or more categories could also be done in the @Check annotation itself.
 
-h2. Adding own Validations
+h3. Adding own Validations
 
 Adding an own validation to the AMALTHEA framework can be done by the following steps:
 
@@ -38,7 +38,7 @@ org.eclipse.app4mc.amalthea.model.propertyconstraints,
 org.eclipse.app4mc.amalthea.model.stimuli,
 org.eclipse.app4mc.amalthea.model.sw
 
-h3. Implementation
+h4. Implementation
 
 Create a class which is extending @org.eclipse.sphinx.emf.check.AbstractCheckValidator@ and implement a method of arbitrary name and tag it with the @check@ annotation. At this point, it is important to know, that at least one parameter is needed for the check method. For instance, if you want to perform a check related to the whole AMALTHEA model you should consider @org.eclipse.app4mc.amalthea.model.central.AMALTHEA@ as parameter type. An empty parameter list will never activate the check for your AMALTHEA model. This raises the capability of an so called out-of-the-box scoping which means that the validation checks only appears on the relevant model elements 
 (e.g. validations related to the AMALTHEA software model may only appear when right-clicking on an appropriate model element of type Software)
@@ -81,7 +81,7 @@ p.
 Create your own class and insert at least one method extended by the @check@ Sphinx annotation. The method should contain exactly one parameter of at least the type of the most generic model element of the AMALTHEA model (i.e. @org.eclipse.app4mc.amalthea.model.central.AMALTHEA@).
 Implement the validate method by adding your own custom validation.
 
-h3. Plugin configuration
+h4. Plugin configuration
 
 Add an __extension point__ called @org.eclipse.sphinx.emf.check.checkvalidators@ and for each implemented constraint a child entry for your class to the plugin.xml to register it in the Sphinx Validation framework. For each child entry you must specify your constraint class (including @Check annotated methods) and optionally a catalog which contains more detailed information about the composition and relationship between constraints.
 

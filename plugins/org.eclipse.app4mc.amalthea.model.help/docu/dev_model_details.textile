@@ -1,7 +1,7 @@
 
-h1. Model Details
+h2. Model Details
 
-h2. Unique ID generation
+h3. Unique ID generation
 
 AMALTHEA uses a named based schema to reference other elements inside of a model.
 A custom implementation is used instead of the standard EMF mechanism, which uses an index based implementation.
@@ -18,7 +18,7 @@ bc.
 <calls xsi:type="am:TaskRunnableCall" runnable="foo?type=Runnable" />
 
 
-h2. Interfaces and base objects
+h3. Interfaces and base objects
 
 Several interfaces and abstract classes are defined in the common model.
 They provide basic common functionality for all objects, which are extending it, like the possibility to add __CustomAttributes__ or __Tags__. Tags are available at different elements with the purpose to group them together or to annotate them.
@@ -26,7 +26,7 @@ They provide basic common functionality for all objects, which are extending it,
 !(scale)../pictures/model_common_interfaces_base_objects.png!
 
 
-h2. Transient back pointers
+h3. Transient back pointers
 
 AMALTHEA maintains a (small) number of back pointers in the model. A transient reference of an object 'points back' to the object referring to it. This allows easier navigation, at the expense of greater memory use.
 

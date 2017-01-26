@@ -1,10 +1,10 @@
 
-h1. Software (development)
+h3. Software (development)
 
 The AMALTHEA System Model can also be used in early phases of the development process when only limited information about the resulting software is available.
 
 
-h2. Runnables
+h4. Runnables
 
 The __Runnable__ element is the basic software unit that defines the behavior of the software in terms of runtime and communication. It can be described on different levels of abstraction: 
 
@@ -15,7 +15,7 @@ The __Runnable__ element is the basic software unit that defines the behavior of
 To allow a more detailed simulation a description can also include statistical values like deviations or probabilities. This requires additional information that is typically derived from an already implemented function. The modeling of observed behavior is described in more detail in chapter "Software (runtime)":user_sw_runtime.html#user-sw-runtime.
 
 
-h2. Process Prototypes
+h4. Process Prototypes
 
 Process Prototypes are used to define the basic data of a task. This is another possibility to describe that a set of Runnables has a similar characteristic (e.g. they have the same periodic activation).
 A prototype can then be processed and checked by different algorithms. Finally a partitioning algorithm generates (one or more) tasks that are the runtime equivalents of the prototype.
@@ -28,13 +28,13 @@ This processing can be guided by specifications that are provided by the functio
 * An *Access Specification* defines exceptions from the standard write-before-read semantics.
 
 
-h2. Constraints
+h4. Constraints
 
 In addition the partitioning and mapping can be restricted by __Affinity Constraints__ that enforce the pairing or separation of software elements and by __Property Constraints__ that connect hardware capabilities and the corresponding software requirements.
 The __Timing Constraints__ will typically be used to check if the resulting system fulfills all the requirements.
 
 
-h2. Activations
+h4. Activations
 
 Activations are used to specify the intended activation behavior of __Runnables__ and __ProcessPrototypes__. Typically they are defined before the creation of tasks (and the runnable to task mappings). So this is a way to cluster runnables and to document when the runnables should be executed.
 

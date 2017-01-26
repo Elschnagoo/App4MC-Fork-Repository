@@ -1,10 +1,10 @@
 
 
-h2. Democar Example
+h3. Democar Example
 
 The so called Democar model presented in the AMALTHEA example files describe a simple engine management system.
 
-h3. Origin
+h4. Origin
 
 The Democar example is loosely based on the publicly available information taken from
 
@@ -15,7 +15,7 @@ bq.
 
 A version of the dissertation can be downloaded from University of Ulm: "pdf":http://vts.uni-ulm.de/docs/2011/7505/vts_7505_10701.pdf.
 
-h3. Files
+h4. Files
 
 *AMALTHEA_Democar.amxmi*
 contains the complete model, consisting of a hardware model, a model of the operating system, a stimulation model and a model that describes the software system.
