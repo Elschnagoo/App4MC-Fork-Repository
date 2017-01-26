@@ -9,6 +9,11 @@
       <topic label="Examples">
          <link toc="toc/example_modeling_1-toc.xml"/>
          <link toc="toc/example_modeling_2-toc.xml"/>
+         <link toc="toc/example_modeling_periodic-toc.xml"/>
+         <link toc="toc/example_modeling_client_server-toc.xml"/>
+         <link toc="toc/example_modeling_state_machine-toc.xml"/>
+         <link toc="toc/example_modeling_feedback_loop-toc.xml"/>
+         <link toc="toc/example_modeling_state_machine_feedback_loop-toc.xml"/>
          <link toc="toc/example_democar-toc.xml"/>
          <link toc="toc/example_hardware-toc.xml"/>
          <anchor id="app4mc.docu.examples"/>

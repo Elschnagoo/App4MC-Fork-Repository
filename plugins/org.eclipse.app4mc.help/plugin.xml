@@ -13,6 +13,11 @@
       
       <toc	file="toc/example_modeling_1-toc.xml"	primary="false"> </toc>
       <toc	file="toc/example_modeling_2-toc.xml"	primary="false"> </toc>
+      <toc  file="toc/example_modeling_periodic-toc.xml"	primary="false"> </toc>
+	  <toc  file="toc/example_modeling_client_server-toc.xml"	primary="false"> </toc>
+      <toc	file="toc/example_modeling_state_machine-toc.xml"	primary="false"> </toc>
+      <toc	file="toc/example_modeling_feedback_loop-toc.xml"	primary="false"> </toc>
+      <toc	file="toc/example_modeling_state_machine_feedback_loop-toc.xml"	primary="false"> </toc>
       <toc	file="toc/example_democar-toc.xml"		primary="false"> </toc>
       <toc	file="toc/example_hardware-toc.xml"		primary="false"> </toc>
             
@@ -23,6 +28,7 @@
             file="toc/release_notes-toc.xml"
             primary="false">
       </toc>
+
    </extension>
 
 </plugin>

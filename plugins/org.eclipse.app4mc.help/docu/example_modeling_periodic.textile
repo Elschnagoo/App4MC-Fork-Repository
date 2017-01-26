@@ -1,0 +1,61 @@
+h2. Modeling Example "Purely Periodic without Communication"
+
+This system architecture pattern consists of a task set, where each task is activated periodically and no data accesses are performed. The execution time for each task is determined by the called runnable entities as specified in the table below. All tasks contain just one runnable except of T ~7~, which calls at first R ~7,1~ and after that R ~7,2~.
+
+The table below gives a detailed specification of the tasks and their parameters. The tasks are scheduled according fixed-priority, preemptive scheduling and if not indicated otherwise, all events are active in order to get a detailed insight into the system’s behaviour.
+
+table(classic){text-align:center; background:#f8f8f8}.
+{background:#eee}.|_. Task |_. Priority |_. Preemption |_. Multiple Task Activation Limit |_. Activation |\2_. Execution Time |
+|/3. T ~1~ |/3. 7 |/3. FULL |/3. 1 | Periodic |/3. R ~1~ | Uniform | 
+|<. Offset = 0 |<.Min = 9.95 |
+|<. Recurrence = 80 |<. Max = 10 |
+|/3. T ~2~ |/3. 6 |/3. FULL |/3. 1 | Periodic |/3. R ~2~ | Uniform | 
+|<. Offset = 0 |<.Min = 29.95 |
+|<. Recurrence = 120 |<. Max = 30 |
+|/3. T ~3~ |/3. 5 |/3. FULL |/3. 1 | Periodic |/3. R ~3~ | Uniform | 
+|<. Offset = 0 |<.Min = 19.95 |
+|<. Recurrence = 160 |<. Max = 20 |
+|/3. T ~4~ |/3. 4 |/3. FULL |/3. 1 | Periodic |/3. R ~4~ | Uniform | 
+|<. Offset = 0 |<.Min = 14.95 |
+|<. Recurrence = 180 |<. Max = 15 |
+|/3. T ~5~ |/3. 3 |/3. FULL |/3. 1 | Periodic |/3. R ~5~ | Uniform | 
+|<. Offset = 0 |<.Min = 29.95 |
+|<. Recurrence = 200 |<. Max = 30 |
+|/3. T ~6~ |/3. 2 |/3. FULL |/3. 1 | Periodic |/3. R ~6~ | Uniform | 
+|<. Offset = 0 |<.Min = 39.95 |
+|<. Recurrence = 300 |<. Max = 40 |
+|/6. T ~7~ |/6. 1 |/6. FULL |/6. 1 |/2. |/3. R ~7,1~ | Uniform | 
+|<.Min = 59.95 |
+|Periodic |<. Max = 60 |
+|<. Offset = 0 |/3. R ~7,2~ | Uniform | 
+|<. Recurrence = 1000 |<.Min = 19.95 |
+| |<. Max = 20 |
+
+In order to show the impact of changes to the model, the following consecutive variations are made to the model: 
+
+- **1) Initial Task Set** := For this variation, the Tasks T ~4~, T ~5~, T ~6~, and T ~7~ of the table above are active.
+!../pictures/ExampleModeling/modeling_example_periodic_1.png!
+
+- **2) Increase of Task Set Size I** := For this variation, the Tasks T ~3~, T ~4~, T ~5~, T  ~6~, and T ~7~ are active. That way the utilisation of the system is increased.
+!../pictures/ExampleModeling/modeling_example_periodic_2.png!
+
+- **3) Increase of Task Set Size II** := For this variation, the Tasks T ~1~, T ~3~, T ~4~, T ~5~, T ~6~, and T ~7~ are active. That way the utilisation of the system is increased.
+!../pictures/ExampleModeling/modeling_example_periodic_3.png!
+
+- **4) Increase of Task Set Size III** := As from this variation on, all tasks (T ~1~ - T ~7~) are active. That way the utilisation of the system is increased.
+!../pictures/ExampleModeling/modeling_example_periodic_4.png!
+
+- **5) Accuracy in Logging** := For this variation, just task events are active. That way, only a limited insight into the system’s runtime behaviour is available.
+!../pictures/ExampleModeling/modeling_example_periodic_5.png!
+
+- **6) Schedule** := As from this variation on, T ~7~ is set to non-preemptive. That way, the timing behaviour is changed, which results in extinct activations (see red mark in the figure below).
+!../pictures/ExampleModeling/modeling_example_periodic_6.png!
+
+- **7) Activation** := As from this variation on, the maximum number of queued activation requests for all tasks is set to 2. That way, the problem with extinct activations resulting from the previous variation is solved.
+!../pictures/ExampleModeling/modeling_example_periodic_7.png!
+
+- **8) Schedule Point** := For this variation, a schedule point is added to T ~7~ between the calls of R ~7,1~ and R ~7,2~. That way, the timing behaviour is changed in particular.
+!../pictures/ExampleModeling/modeling_example_periodic_8.png!
+
+- **9) Scheduling Algorithm** := For this variation, the scheduling algorithm is set to Earliest Deadline First. That way, the timing behaviour is changed completely.
+!../pictures/ExampleModeling/modeling_example_periodic_9.png!

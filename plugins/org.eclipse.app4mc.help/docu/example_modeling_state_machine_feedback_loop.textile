@@ -1,0 +1,75 @@
+h2. Modeling Example "State Machine Feedback Loop"
+
+The task set of the modeling example "State Machine" is expanded further in this architecture pattern by combining the ideas behind the modeling example "State Machine" and "Feedback Loop". This means that messages are exchanged in a loop and each sender/receiver is also a state machine. To achieve this, task T ~1~ has two different internal states 0 and 1, and task T ~2~ manages three consecutive states 0, 1, and 2. The state task T ~1~ is currently in is sent via a message to task T ~2~ before runnable R ~1~ is called. If the content of the message sent from task T ~1~ is 1, task T ~2~ increases its internal state, e.g. from state 0 to 1, and if it is 0, task T ~2~ decreases its internal state accordingly. Then, depending on the state task T ~2~ is currently in, the according runnable (R ~2,0~ for state 0, etc.) is executed. If the maximum or minimum state of task T ~2~ is reached but the received message from task T ~1~ tells task T ~2~ to further increase or respectively decrease its internal state, task T ~2~ sends a message to task T ~1~. This message then causes task T ~1~ to toggle its internal state which consequently results in a switch from increasing to decreasing or vice versa. In addition to this state machine feedback loop, other system architecture patterns are added to be executed concurrently in order to increase the complexity. The tasks T ~3~ and T ~4~ represent a client-server without reply and are equal to the tasks T ~1~ and T ~2~ respectively as described above in the modeling example "Client-Server without Reply". T ~5~ is a periodically activated task without any communication and identical to task T ~7~ in the modeling example "Purely Periodic without Communication".
+
+!../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop.png!
+
+The table below gives a detailed specification of the tasks and their parameters. The tasks are scheduled according fixed-priority, preemptive scheduling and if not indicated otherwise, all events are active in order to get a detailed insight into the system’s behaviour.
+
+table(classic){text-align:center; background:#f8f8f8}.
+{background:#eee}.|_. Task |_. Priority |_. Preemption |_. Multiple Task Activation Limit |_. Activation |\2_. Execution Time |
+|/3. T ~1~ |/3. 2 |/3. FULL |/3. 1 | Periodic |/3. R ~1~ | Uniform | 
+|<. Offset = 0 |<.Min = 9.9 * 10 ^6^ |
+|<. Recurrence = 300 * 10 ^6^ |<. Max = 10 * 10 ^6^ |
+|/9. T ~2~ |/9. 1 |/9. FULL |/9. 1 |/3. |/3. R ~2,0~ | Uniform |
+|<.Min = 99 |
+|<. Max = 100 |
+| Periodic |/3. R ~2,1~ | Uniform |
+|<. Offset = 15 * 10 ^6^ |<.Min = 99 * 10 ^3^ |
+|<. Recurrence = 250 * 10 ^6^ |<. Max = 100 * 10 ^3^ |
+|/3. |/3. R ~2,2~ | Uniform |
+|<.Min = 49.5 * 10 ^6^ |
+|<. Max = 50 * 10 ^6^ |
+|/3. T ~3~ |/3. 4 |/3. FULL |/3. 1 | Periodic |/3. R ~3~ | Uniform |
+|<. Offset = 0 |<.Min = 99 * 10 ^5^ |
+|<. Recurrence = 100 * 10 ^6^ |<. Max = 100 * 10 ^5^ |
+|/15. T ~4~ |/15. 3 |/15. FULL |/15. 1 |/6. |/3. R ~4,x~ | Uniform |
+|<.Min = 99 |
+|<.Max = 100 |
+|/3. R ~4,1~ | Uniform |
+|<.Min = 990 |
+|<.Max = 1 * 10 ^3^ |
+| Periodic |/3. R ~4,2~ | Uniform |
+|<. Offset = 15 * 10 ^6^ |<.Min = 49.5 * 10 ^3^ |
+|<. Recurrence = 60 * 10 ^6^ |<.Max = 50 * 10 ^3^ |
+|/6. |/3. R ~4,3~ | Uniform |
+|<.Min = 990 * 10 ^3^ |
+|<.Max = 1 * 10 ^6^ |
+|/3. R ~4,4~ | Uniform |
+|<.Min = 49.5 * 10 ^6^ |
+|<.Max = 50 * 10 ^6^ |
+|/6. T ~5~ |/6. 0 |/6. FULL |/6. 1 |/2. |/3. R ~5,1~ | Uniform | 
+|<.Min = 59.4 * 10 ^6^ |
+|Periodic |<. Max = 60 * 10 ^6^ |
+|<. Offset = 0 |/3. R ~5,2~ | Uniform | 
+|<. Recurrence = 1000 |<.Min = 19.8 * 10 ^6^|
+| |<. Max = 20 * 10 ^6^ |
+
+In order to show the impact of changes to the model, the following consecutive variations are made to the model:
+
+- **1) Initial Task Set** := For this variation, the tasks T ~1~, and T ~2~ of the table above are active.
+!../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop_1.png!
+
+- **2) Increase of Task Set Size I** := For this variation, the tasks T ~1~, T ~2~, T ~3~, and T ~4~ are active. That way the utilisation of the system is increased.
+!../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop_2.png!
+
+- **3) Increase of Task Set Size II** := As from this variation on, all tasks are active. That way the utilisation of the system is increased.
+!../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop_3.png!
+
+- **4) Inter-process Activation** := As from this variation on, task T ~2~ gets activated by an inter-process activation from task T ~1~, and task T ~4~ by an inter-process activation from task T ~3~ instead of being activated periodically. The inter-process activation in task T ~1~ is performed right after the message to task T ~2~ is written and consequently before the runnable R ~1~ is called, and in task T ~3~ task T ~4~ is called right before runnable R ~3~. That way, a direct connection between these tasks is established.
+!../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop_4.png!
+
+- **5) Event Frequency Increase** := As from this variation on, the periodicity of the tasks T ~1~, T ~3~, and T ~5~ are shortened. For task T ~1~, the value for the period is set to 220 * 10 ^6^, the task T ~3~ to 50 * 10 ^6^, and for task T ~5~ to 500 * 10 ^6^. That way, the information density is increased.
+!../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop_5.png!
+
+- **6) Execution Time Fluctuation** := As from this variation on, the execution time distribution is widened for both tasks. Therefore, the maximum of the uniform distribution is increased by 1 percent so that the uniform distribution varies now by 2 percent. That way, the utilisation of the system is increased, which results in extinct activations.
+!../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop_6.png!
+
+- **7) Activation** := As from this variation on, the maximum number of queued activation requests for both tasks is set to 2. That way, the problem with extinct activations resulting from the previous variation is solved.
+!../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop_7.png!
+
+- **8) Accuracy in Logging of Data State I** := For this variation, the data accesses in all tasks are omitted. Instead, all runnablea representing a state are executed equally random, meaning the runnables R ~2,0~, R ~2,1~, and R ~2,2~ are each executed with a probability of 33 %, and the runnables R ~4,x~, R ~4,1~, R ~4,2~, R ~4,3~, and R ~4,4~ each with a probability of 20 %. That way, only a limited insight into the system’s runtime behaviour is available.
+!../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop_8.png!
+
+- **9) Accuracy in Logging of Data State II** := For this variation, just task events are active. That way, only a limited insight into the system’s runtime behaviour is available.
+!../pictures/ExampleModeling/modeling_example_state_machine_feedback_loop_9.png!
