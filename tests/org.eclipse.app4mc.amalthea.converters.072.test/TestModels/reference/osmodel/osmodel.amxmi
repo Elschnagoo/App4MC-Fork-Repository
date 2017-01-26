@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <osModel>
+    <semaphores initialValue="20" maxValue="0" priorityCeilingProtocol="false" />
+    <operatingSystems>
+      <taskSchedulers scheduleUnitPriority="0">
+        <schedulingUnit xsi:type="am:SchedulingSWUnit" priority="0">
+          <instructions xsi:type="am:InstructionsConstant" value="20" />
+          <instructions xsi:type="am:InstructionsDeviation">
+            <deviation>
+              <distribution xsi:type="am:BetaDistribution" alpha="5.0" beta="20.0" />
+            </deviation>
+          </instructions>
+        </schedulingUnit>
+      </taskSchedulers>
+      <interruptControllers scheduleUnitPriority="0">
+        <schedulingUnit xsi:type="am:SchedulingSWUnit" priority="0">
+          <instructions xsi:type="am:InstructionsConstant" value="23" />
+          <instructions xsi:type="am:InstructionsDeviation">
+            <deviation>
+              <distribution xsi:type="am:BetaDistribution" alpha="23.0" beta="0.0" />
+            </deviation>
+          </instructions>
+        </schedulingUnit>
+      </interruptControllers>
+    </operatingSystems>
+    <osOverheads>
+      <apiOverhead>
+        <apiSendMessage xsi:type="am:InstructionsConstant" value="33" />
+        <apiTerminateTask xsi:type="am:InstructionsConstant" value="23" />
+        <apiSchedule xsi:type="am:InstructionsDeviation">
+          <deviation />
+        </apiSchedule>
+        <apiRequestResource xsi:type="am:InstructionsConstant" value="34" />
+        <apiReleaseResource xsi:type="am:InstructionsConstant" value="3434" />
+        <apiSetEvent xsi:type="am:InstructionsConstant" value="34" />
+        <apiWaitEvent xsi:type="am:InstructionsConstant" value="34" />
+        <apiClearEvent xsi:type="am:InstructionsConstant" value="34" />
+        <apiActivateTask xsi:type="am:InstructionsConstant" value="34" />
+        <apiEnforcedMigration xsi:type="am:InstructionsConstant" value="3434" />
+      </apiOverhead>
+      <isrCategory1Overhead>
+        <preExecutionOverhead xsi:type="am:InstructionsConstant" value="5" />
+        <postExecutionOverhead xsi:type="am:InstructionsConstant" value="5" />
+      </isrCategory1Overhead>
+      <isrCategory2Overhead>
+        <preExecutionOverhead xsi:type="am:InstructionsConstant" value="55555" />
+        <postExecutionOverhead xsi:type="am:InstructionsConstant" value="555555" />
+      </isrCategory2Overhead>
+    </osOverheads>
+    <osOverheads>
+      <apiOverhead>
+        <apiRequestResource xsi:type="am:InstructionsConstant" value="0" />
+        <apiReleaseResource xsi:type="am:InstructionsDeviation" />
+        <apiWaitEvent xsi:type="am:InstructionsDeviation" />
+        <apiClearEvent xsi:type="am:InstructionsDeviation" />
+        <apiActivateTask xsi:type="am:InstructionsConstant" value="0" />
+        <apiEnforcedMigration xsi:type="am:InstructionsConstant" value="0" />
+      </apiOverhead>
+    </osOverheads>
+    <osDataConsistency />
+  </osModel>
+</am:Amalthea>
