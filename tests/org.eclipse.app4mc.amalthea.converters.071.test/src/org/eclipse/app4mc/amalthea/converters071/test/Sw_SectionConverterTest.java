@@ -199,16 +199,38 @@ public class Sw_SectionConverterTest extends AbstractConverterTest {
 					checkData = true;
 					final Element element = xpathResult.get(0);
 
-					final Element child = element.getChild("section");
 
-					if (!(child != null && child.getAttributeValue("href")
-							.equals("amlt:/#" + label_ExpectedSectionMap.get(memoryelementName) + "?type=Section"))) {
+					if (!((memoryelementName.equals("label6")) || (memoryelementName.equals("label1"))
+							|| (memoryelementName.equals("label2")))) {
+
+						final Element child = element.getChild("section");
+
+						if (!(child != null && child.getAttributeValue("href").equals(
+								"amlt:/#" + label_ExpectedSectionMap.get(memoryelementName) + "?type=Section"))) {
+							org.junit.Assert.assertTrue("Migration is not valid for Label : " + memoryelementName
+									+ ", as the correponding Section : "
+									+ label_ExpectedSectionMap.get(memoryelementName) + " is not associated to it",
+									false);
+						}
+					}
+					else {
+						/*-
+						 * This is a case where label and section are defined in the same file
+						 *  e.g: label6 is a special case -> as both Section6 and label6 are defined in the same file
+						 */
+
+						final String attributeValue = element.getAttributeValue("section");
+
 						org.junit.Assert.assertTrue(
 								"Migration is not valid for Label : " + memoryelementName
 										+ ", as the correponding Section : "
 										+ label_ExpectedSectionMap.get(memoryelementName) + " is not associated to it",
-								false);
+								attributeValue
+										.equals(label_ExpectedSectionMap.get(memoryelementName) + "?type=Section"));
+
 					}
+
+
 				}
 			}
 
