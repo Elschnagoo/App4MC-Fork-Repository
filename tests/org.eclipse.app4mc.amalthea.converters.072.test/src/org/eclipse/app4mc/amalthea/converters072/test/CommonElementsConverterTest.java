@@ -14,10 +14,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.converters072.impl.CommonElementsConvertor;
+import org.eclipse.app4mc.amalthea.converters072.impl.CommonElementsConverter;
 import org.eclipse.app4mc.amalthea.converters072.impl.NamespaceConverter;
 import org.eclipse.app4mc.amalthea.converters072.impl.OSConverter;
-import org.eclipse.app4mc.amalthea.converters072.impl.StimuliConvertor;
+import org.eclipse.app4mc.amalthea.converters072.impl.StimuliConverter;
 import org.eclipse.app4mc.amalthea.converters072.impl.SwConverter;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -46,8 +46,8 @@ public class CommonElementsConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConversion() {
-		super.testConversion(NamespaceConverter.class, OSConverter.class, SwConverter.class, StimuliConvertor.class,
-				CommonElementsConvertor.class);
+		super.testConversion(NamespaceConverter.class, OSConverter.class, SwConverter.class, StimuliConverter.class,
+				CommonElementsConverter.class);
 
 		verify_Tag_Elements();
 	}

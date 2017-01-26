@@ -13,7 +13,7 @@ package org.eclipse.app4mc.amalthea.converters072.test;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.eclipse.app4mc.amalthea.converters072.impl.ConfigConvertor;
+import org.eclipse.app4mc.amalthea.converters072.impl.ConfigConverter;
 import org.eclipse.app4mc.amalthea.converters072.impl.NamespaceConverter;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -39,7 +39,7 @@ public class ConfigConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConversion() {
-		super.testConversion(NamespaceConverter.class, ConfigConvertor.class);
+		super.testConversion(NamespaceConverter.class, ConfigConverter.class);
 	}
 
 

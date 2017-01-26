@@ -20,10 +20,10 @@ import org.eclipse.app4mc.amalthea.converters072.utils.HelperUtils_071_072;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-public class CommonElementsConvertor extends AbstractConverter {
+public class CommonElementsConverter extends AbstractConverter {
 
 
-	public CommonElementsConvertor() {
+	public CommonElementsConverter() {
 		this.helper = HelperUtils_071_072.getInstance();
 		this.logger = LogManager.getLogger(this.getClass());
 	}

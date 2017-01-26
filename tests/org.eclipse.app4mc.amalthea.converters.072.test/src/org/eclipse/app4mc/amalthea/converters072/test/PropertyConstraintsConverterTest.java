@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.converters072.impl.CommonElementsConvertor;
+import org.eclipse.app4mc.amalthea.converters072.impl.CommonElementsConverter;
 import org.eclipse.app4mc.amalthea.converters072.impl.NamespaceConverter;
 import org.eclipse.app4mc.amalthea.converters072.impl.PropertyConstraintsConverter;
 import org.eclipse.app4mc.amalthea.converters072.impl.SwConverter;
@@ -47,7 +47,7 @@ public class PropertyConstraintsConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConversion() {
-		super.testConversion(NamespaceConverter.class, SwConverter.class, CommonElementsConvertor.class,
+		super.testConversion(NamespaceConverter.class, SwConverter.class, CommonElementsConverter.class,
 				PropertyConstraintsConverter.class);
 	}
 
