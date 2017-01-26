@@ -13,7 +13,9 @@ package org.eclipse.app4mc.amalthea.converters072.test;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.eclipse.app4mc.amalthea.converters072.impl.CommonElementsConvertor;
 import org.eclipse.app4mc.amalthea.converters072.impl.NamespaceConverter;
+import org.eclipse.app4mc.amalthea.converters072.impl.SwConverter;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,7 +40,7 @@ public class NamespaceConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConversion() {
-		super.testConversion(NamespaceConverter.class);
+		super.testConversion(NamespaceConverter.class, CommonElementsConvertor.class, SwConverter.class);
 	}
 
 

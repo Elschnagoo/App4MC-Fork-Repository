@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.converters072.impl.CommonElementsConvertor;
 import org.eclipse.app4mc.amalthea.converters072.impl.NamespaceConverter;
 import org.eclipse.app4mc.amalthea.converters072.impl.OSConverter;
 import org.eclipse.app4mc.amalthea.converters072.impl.StimuliConvertor;
@@ -45,7 +46,8 @@ public class StimuliConverterTest extends AbstractConverterTest {
 
 	@Test
 	public void testConversion() {
-		super.testConversion(NamespaceConverter.class, OSConverter.class, SwConverter.class, StimuliConvertor.class);
+		super.testConversion(NamespaceConverter.class, OSConverter.class, SwConverter.class,
+				CommonElementsConvertor.class, StimuliConvertor.class);
 
 		verify_ArrivalCurveEntries();
 	}

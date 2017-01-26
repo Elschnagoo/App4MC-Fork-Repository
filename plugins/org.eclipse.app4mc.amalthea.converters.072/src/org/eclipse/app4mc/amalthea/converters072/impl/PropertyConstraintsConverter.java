@@ -11,6 +11,9 @@
 package org.eclipse.app4mc.amalthea.converters072.impl;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.AbstractMap;
 import java.util.Iterator;
 import java.util.List;
@@ -24,14 +27,15 @@ import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters072.utils.HelperUtils_071_072;
 import org.eclipse.app4mc.amalthea.converters072.utils.HwElementsCacheBuilder;
 import org.eclipse.app4mc.amalthea.converters072.utils.HwElementsCacheEnum;
+import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
-import org.jdom2.Parent;
 
 public class PropertyConstraintsConverter extends AbstractConverter {
 
 	private List<ICache> caches;
 	private Map<File, Document> fileName_documentsMap;
+	private File targetFile;
 
 	public PropertyConstraintsConverter() {
 		this.helper = HelperUtils_071_072.getInstance();
@@ -47,6 +51,8 @@ public class PropertyConstraintsConverter extends AbstractConverter {
 		this.caches = caches;
 
 		this.fileName_documentsMap = fileName_documentsMap;
+
+		this.targetFile = targetFile;
 
 		final Document root = fileName_documentsMap.get(targetFile);
 
@@ -230,18 +236,13 @@ public class PropertyConstraintsConverter extends AbstractConverter {
 			final String memoryName = memoryElement.getAttributeValue("name");
 
 
-			final Parent parent = memoryElement.getParent();
+			final Element parent = memoryElement.getParentElement();
 
 
 			/*- removing the Memory object from PropertyConstraints model */
 			parent.removeContent(memoryElement);
 
 			if (memoryName != null) {
-
-				final Element refMemoryElement = new Element("memory");
-				refMemoryElement.setAttribute("href", "amlt:/#" + memoryName + "?type=Memory");
-				/*- adding reference to Memory object (which is defined in the HW Model) */
-				parent.addContent(refMemoryElement);
 
 				/*- Below code is used to check if the referred Memory element definition is available in the HW Model. If not create the required structure and define Memory objects*/
 
@@ -271,6 +272,18 @@ public class PropertyConstraintsConverter extends AbstractConverter {
 
 					memoryNames.add(memoryName);
 
+				}
+
+				/*- Adding refernce to Memory */
+				if (isElementDefinedInFile(memoryName, HwElementsCacheEnum.MEMORY_NAMES, this.targetFile)) {
+					parent.setAttribute(new Attribute("memory", encodeName(memoryName) + "?type=Memory"));
+
+				}
+				else {
+					final Element refMemoryElement = new Element("memory");
+					refMemoryElement.setAttribute("href", "amlt:/#" + encodeName(memoryName) + "?type=Memory");
+					/*- adding reference to Memory object (which is defined in the HW Model) */
+					parent.addContent(refMemoryElement);
 				}
 
 			}
@@ -316,15 +329,11 @@ public class PropertyConstraintsConverter extends AbstractConverter {
 			final String coreName = coreElement.getAttributeValue("name");
 
 
-			final Parent parent = coreElement.getParent();
+			final Element parent = coreElement.getParentElement();
 
 			parent.removeContent(coreElement);
 
 			if (coreName != null) {
-
-				final Element refCoreElement = new Element("core");
-				refCoreElement.setAttribute("href", "amlt:/#" + coreName + "?type=Core");
-				parent.addContent(refCoreElement);
 
 				/*- Below code is used to check if the referred Core element definition is available in the HW Model. If not create the required structure and define Core objects*/
 
@@ -392,6 +401,19 @@ public class PropertyConstraintsConverter extends AbstractConverter {
 
 					coreNames.add(coreName);
 
+				}
+
+				/*- Adding reference to Core object*/
+
+				if (isElementDefinedInFile(coreName, HwElementsCacheEnum.CORE_NAMES, this.targetFile)) {
+					parent.setAttribute(new Attribute("core", encodeName(coreName) + "?type=Core"));
+
+				}
+				else {
+					final Element refCoreElement = new Element("core");
+					refCoreElement.setAttribute("href", "amlt:/#" + encodeName(coreName) + "?type=Core");
+					/*- adding reference to Core object (which is defined in the HW Model) */
+					parent.addContent(refCoreElement);
 				}
 			}
 		}
@@ -540,4 +562,52 @@ public class PropertyConstraintsConverter extends AbstractConverter {
 		return this.hwElementsCacheBuilder;
 	}
 
+	private String encodeName(final String name) {
+		if (name == null || name.length() == 0) {
+			return "no-name";
+		}
+
+		String result;
+		try {
+			result = URLEncoder.encode(name, StandardCharsets.UTF_8.toString());
+		}
+		catch (final UnsupportedEncodingException e) {
+			result = name; // keep old name - we have no better option
+		}
+		return result;
+	}
+
+	/**
+	 * This method is used to verify if the HW Elements definition is present in the supplied input file
+	 * 
+	 * @param elementName
+	 *            Name of the HW element (e.g: Core name or Memory name)
+	 * @param inputFile
+	 *            Input File which is being migrated to version 0.7.1
+	 * @return boolean true if the Element definition is found in the supplied input model file
+	 */
+	@SuppressWarnings("unchecked")
+	private boolean isElementDefinedInFile(final String elementName, final HwElementsCacheEnum elementsType,
+			final File inputFile) {
+
+		final HwElementsCacheBuilder iCache = getHwElementsCacheBuilder();
+
+		final Map<File, Map<String, Object>> cacheMap = iCache.getCacheMap();
+
+		final Map<String, Object> map = cacheMap.get(inputFile);
+
+		if (map != null) {
+
+			final Object object = map.get(elementsType.name());
+
+			if (object instanceof List) {
+				if (((List<String>) object).contains(elementName)) {
+					return true;
+				}
+
+			}
+		}
+
+		return false;
+	}
 }
