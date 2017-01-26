@@ -25,7 +25,22 @@
 
 	<!-- Common plugins and features contained in the open source distribution -->
 	<modules>
+	
 		<!-- Plugins -->
+
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.mapping</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.split</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.hwmodel</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling2</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.client_server</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.feedback_loop</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.periodic</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.state_machine</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.workflow</module>
+		
 		<module>../../plugins/org.eclipse.app4mc.amalthea.emf.util</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.examples.installer</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.export.osek</module>
@@ -63,19 +78,6 @@
 		<module>../../plugins/org.jdom2</module>
 		<module>../../plugins/org.jaxen</module>
 
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.mapping</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.split</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.hwmodel</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling2</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.client_server</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.feedback_loop</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.periodic</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.state_machine</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.workflow</module>
-
 		<module>../../plugins/org.eclipse.app4mc.help</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.help</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.model.help</module>
@@ -87,6 +89,7 @@
 		<module>../../plugins/org.eclipse.app4mc.validation.help</module>
 
 		<!-- Features -->
+
 		<module>../../features/org.eclipse.app4mc.amalthea.converters</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.converters.sdk</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.edit</module>
@@ -120,12 +123,14 @@
 		<module>../../features/org.eclipse.app4mc.validation.sdk</module>
 
 		<!-- Other -->
+
 		<module>../org.eclipse.app4mc.converters.p2repo</module>
 		<module>../org.eclipse.app4mc.p2repo</module>
 		<module>../org.eclipse.app4mc.platform.product</module>
 		<module>../org.eclipse.app4mc.target</module>
 
 		<!-- Tests -->
+
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.110.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.111.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.070.test</module>

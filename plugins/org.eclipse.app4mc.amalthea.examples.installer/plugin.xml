@@ -41,41 +41,35 @@
             id="org.eclipse.app4mc.amalthea.examples.Examples"
             wizardID="org.eclipse.app4mc.amalthea.examples.ModelingExamplesWizard"
             pageImage="icons/full/wizban/NewEMFExample.gif">
-                        <projectDescriptor
-               name="org.eclipse.app4mc.amalthea.example.modeling"
-               contentURI="examples/org.eclipse.app4mc.amalthea.example.modeling/"
-               description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
                <projectDescriptor
-               name="org.eclipse.app4mc.amalthea.example.modeling2"
-               contentURI="examples/org.eclipse.app4mc.amalthea.example.modeling2/"
-               description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
+                     name="org.eclipse.app4mc.amalthea.example.modeling"
+                     contentURI="examples/org.eclipse.app4mc.amalthea.example.modeling/"
+                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
                <projectDescriptor
+                     name="org.eclipse.app4mc.amalthea.example.modeling2"
+                     contentURI="examples/org.eclipse.app4mc.amalthea.example.modeling2/"
+                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
+               <projectDescriptor
+                     name="org.eclipse.app4mc.amalthea.example.modeling.periodic"
                      contentURI="examples/org.eclipse.app4mc.amalthea.example.modeling.periodic/"
-                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"
-                     name="org.eclipse.app4mc.amalthea.example.modeling.periodic">
-               </projectDescriptor>
+                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
                <projectDescriptor
+                     name="org.eclipse.app4mc.amalthea.example.modeling.client_server"
                      contentURI="examples/org.eclipse.app4mc.amalthea.example.modeling.client_server/"
-                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"
-                     name="org.eclipse.app4mc.amalthea.example.modeling.client_server">
-               </projectDescriptor>
+                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
                <projectDescriptor
+                     name="org.eclipse.app4mc.amalthea.example.modeling.state_machine"
                      contentURI="examples/org.eclipse.app4mc.amalthea.example.modeling.state_machine/"
-                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"
-                     name="org.eclipse.app4mc.amalthea.example.modeling.state_machine">
-               </projectDescriptor>
+                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
                <projectDescriptor
+                     name="org.eclipse.app4mc.amalthea.example.modeling.feedback_loop"
                      contentURI="examples/org.eclipse.app4mc.amalthea.example.modeling.feedback_loop/"
-                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"
-                     name="org.eclipse.app4mc.amalthea.example.modeling.feedback_loop">
-               </projectDescriptor>
+                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
                <projectDescriptor
+                     name="org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop"
                      contentURI="examples/org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop/"
-                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"
-                     name="org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop">
-               </projectDescriptor>
+                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
       </example>
-      
-      
     </extension>
+    
 </plugin>
