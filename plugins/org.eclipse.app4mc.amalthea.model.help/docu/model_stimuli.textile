@@ -1,11 +1,11 @@
 
-h1. Stimuli Model
+h2. Stimuli Model
 
 The Stimuli Model contains stimulus and clock objects.
 
 !(scale)../pictures/model_stimuli.png!
 
-h2. Stimuli
+h3. Stimuli
 
 !(scale)../pictures/model_stimuli_stimuli.png!
 
@@ -28,7 +28,7 @@ The following figure shows a stimulus example. First there is a periodic stimulu
 
 Beside of the deviation, a periodic stimulus can have a clock.
 
-h2. Clocks
+h3. Clocks
 
 A clock is a time base which describes the progress of time for one or more periodic stimuli in relation to global time. If two equal stimuli have a different time base, the time of task activation can be different. There are different kind of clock functions, the clock sinus function, the clock triangle function and the clock multiplier list. The clock multiplier list is a list of timestamp-multiplier value pairs. Is a specified timestamp arrived, the clock changes to the corresponding multiplier value.
 
@@ -43,7 +43,7 @@ The enabling-mode-label-list and the disabling-mode-label-list can be used to en
 !(scale)../pictures/model_stimuli_modevaluelist.png!
 
 
-h2. Arrival Curves
+h3. Arrival Curves
 
 An arrival curve is described as a list of time-borders in which a specified number of events are expected. The picture below shows an example for this. In the first picture there is a number of events on a timeline.
 

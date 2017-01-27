@@ -1,6 +1,6 @@
 
 
-h2(#example-mapping-1). Mapping example 1
+h3(#example-mapping-1). Mapping example 1
 
 The following section will describe how to calculate a mapping with the AMALTHEA tool platform using the DFG and ILP based load balancing algorithms.
 

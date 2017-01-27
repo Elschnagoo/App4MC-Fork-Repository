@@ -1,6 +1,6 @@
 
 
-h2. Hwmodel Example
+h3. Hwmodel Example
 
 This example contains several hardware model examples. These are:
 

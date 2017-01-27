@@ -1,4 +1,4 @@
-h1. Additional details
+h3. Additional details
 
 For details regarding the below topics, refer to the corresponding links:
 

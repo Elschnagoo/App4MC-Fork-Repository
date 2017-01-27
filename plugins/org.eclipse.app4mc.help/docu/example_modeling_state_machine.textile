@@ -1,10 +1,10 @@
-h2. Modeling Example "State Machine"
+h3. Modeling Example "State Machine"
 
 In this system architecture pattern the modeling example "Client Server without Reply" is extended in such a way that now the task that receives messages (T ~2~) not only varies its dynamic behaviour and consequently also its execution time according the transmitted content but also depending on its internal state, meaning the prior transmitted contents. To achieve, this task T ~1~ sends a message to task T ~2~ with either 0 or 1 before runnable R ~1~ is called. The value 0 is used in 75 % of the cases and 1 in the other cases as content of the message. Starting in state 0, T ~2~ decreases or increases the state its currently in depending on the content of the message, 0 or 1 respectively. The runnable R ~2,1~, R ~2,2~, and R ~2,3~ represent then the three different states that the system can be in.
 
 !../pictures/ExampleModeling/modeling_example_state_machine.png!
 
-The table below gives a detailed specification of the tasks and their parameters. The tasks are scheduled according fixed-priority, preemptive scheduling and if not indicated otherwise, all events are active in order to get a detailed insight into the system’s behaviour.
+The table below gives a detailed specification of the tasks and their parameters. The tasks are scheduled according fixed-priority, preemptive scheduling and if not indicated otherwise, all events are active in order to get a detailed insight into the systemï¿½s behaviour.
 
 table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_. Task |_. Priority |_. Preemption |_. Multiple Task Activation Limit |_. Activation |\2_. Execution Time |
@@ -44,8 +44,8 @@ In order to show the impact of changes to the model, the following consecutive v
 - **7) Execution Time Fluctuation** := As from this variation on, the execution time distribution is widened for both tasks. Therefore, the maximum of the uniform distribution is increased by 1 percent so that the uniform distribution varies now by 2 percent. That way, the utilisation of the system is further increased.
 !../pictures/ExampleModeling/modeling_example_state_machine_7.png!
 
-- **8) Accuracy in Logging of Data State I** := For this variation, the data write accesses in task T ~1~ and task T ~2~ are omitted. Instead, the runnables R ~2,1~, R ~2,2~, and R ~2,3~, each representing the execution of a specific state, are executed with a probability of 60 %, 30 %, and 10 % respectively. That way, only a limited insight into the system’s runtime behaviour is available.
+- **8) Accuracy in Logging of Data State I** := For this variation, the data write accesses in task T ~1~ and task T ~2~ are omitted. Instead, the runnables R ~2,1~, R ~2,2~, and R ~2,3~, each representing the execution of a specific state, are executed with a probability of 60 %, 30 %, and 10 % respectively. That way, only a limited insight into the systemï¿½s runtime behaviour is available.
 !../pictures/ExampleModeling/modeling_example_state_machine_8.png!
 
-- **9) Accuracy in Logging of Data State II** := For this variation, just task events are active. That way, only a limited insight into the system’s runtime behaviour is available.
+- **9) Accuracy in Logging of Data State II** := For this variation, just task events are active. That way, only a limited insight into the systemï¿½s runtime behaviour is available.
 !../pictures/ExampleModeling/modeling_example_state_machine_9.png!

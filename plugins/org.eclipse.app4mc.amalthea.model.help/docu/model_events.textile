@@ -1,5 +1,5 @@
 
-h1. Event Model
+h2. Event Model
 
 The event model provides the classes to describe the BTF-Events that can be used for the tracing configuration, for the modeling of event chains and for some timing constraints. 
 

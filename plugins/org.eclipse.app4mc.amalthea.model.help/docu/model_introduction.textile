@@ -1,5 +1,5 @@
 
-h1. Data Model Overview
+h2. Data Model Overview
 
 
 The AMALTHEA data models are related to the activities in a typical design flow. The focus is on design, implementation and optimization of software for multicore systems. The data exchange between the activities is supported by the two main models of AMALTHEA, the System-Model and the Trace-Model.
@@ -35,7 +35,7 @@ The open AMALTHEA models allow custom tooling, interoperability of tools and the
 
 
 
-h2. AMALTHEA System Model
+h3. AMALTHEA System Model
 
 !{width: 400px}../pictures/amalthea_system_model.png!
 
@@ -57,12 +57,12 @@ The different cores of a typical embedded multicore ECU have different features.
 All information about the assignment of software units (e.g. tasks or runnables) to the cores and about the mapping of data and instructions to memory sections.
 
 
-h2. AMALTHEA Trace Model
+h3. AMALTHEA Trace Model
 
 There is no specific EMF data model to describe event traces. The relevant events and their states are represented in the Event Model. In addition special trace formats for multicore have been specified in the AMALTHEA project and a Trace Database has been implemented. This database stores traces in a way that allows fast retrieval of the information (see the Developer Guide for a detailed description of the database structure).
 
 
-h2. Structure of the model
+h3. Structure of the model
 
 The definition of the AMALTHEA data model follows some basic principles:
 * The model is defined in one package to simplify the handling (e.g. allow opposite references).

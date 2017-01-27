@@ -1,5 +1,5 @@
 
-h1. Supported versions for model Migration
+h3. Supported versions for model Migration
 
 Model migration functionality provides a possibility to migrate the models (_created from previous releases of AMALTHEA_ ) to the latest versions
 

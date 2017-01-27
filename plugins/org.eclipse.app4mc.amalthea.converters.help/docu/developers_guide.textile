@@ -1,5 +1,5 @@
 
-h2. Technologies used
+h3. Technologies used
 
 For migration of AMALTHEA models, plane java approach has been used (_non EMF_) along with the following 3rd party libraries :
 
@@ -9,7 +9,7 @@ For migration of AMALTHEA models, plane java approach has been used (_non EMF_) 
 * XERCES
 
 
-h2. Framework for model migration
+h3. Framework for model migration
 
 Using the above specified technologies, eclipse plugin based framework for model migration is developed.
 
@@ -104,13 +104,13 @@ bq. In this case post-processor is invoked after migration step itea.110 to itea
 
 Flexibility of post-processor's is, they are defined in a generalized way to specify in the direction which they should be invoked as a part of model migration.
 
-h3. Model migration sequence
+h4. Model migration sequence
 
 Sequence in which various components are invoked during model migration
 
 !(gray_scale)../sequence_diagram/model_migration_sequence_diagram.png!
 
-h2. How to add custom Model Migration components
+h3. How to add custom Model Migration components
 
 As described above, Model Migration framework is part of  _*org.eclipse.app4mc.amalthea.converters.common*_ plugin. This plugin should be added as a dependency to the custom plugin which shall contain Model Migraiton components.
 

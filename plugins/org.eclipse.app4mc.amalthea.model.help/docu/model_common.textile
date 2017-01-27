@@ -1,18 +1,18 @@
 
-h1. Common Model
+h2. Common Model
 
 The AMALTHEA common model is not a model by itself, but provides standard elements used by other models as containments.
 
-h2. Common Elements
+h3. Common Elements
 
 !../pictures/model_common_elements.png!
 
-h2(#common-tags). Tags
+h3(#common-tags). Tags
 
 !../pictures/model_common_tag.png!
 
 
-h2(#common-custom-props). Custom Properties
+h3(#common-custom-props). Custom Properties
 
 The __CustomProperty__ element is used to define own, in AMALTHEA not available properties. If there is the need to extend an element or to store tool information related to processing steps, __CustomProperties__ can be used to store this type of information.
 
@@ -25,7 +25,7 @@ The __ListObject__ can be used to store multi-valued custom properties.
 !(scale)../pictures/model_common_custom_property_value.png!
 
 
-h2. Time (and Time Unit)
+h3. Time (and Time Unit)
 
 The AMALTHEA data model includes two common elements to describe time ranges in an easy way, the __Time__ and __SignedTime__ element. The __SignedTime__ is like the general __Time__ class but explicit allows defining negative time values.
 These elements can be referenced by any other element for specifying attributes to store time information.
@@ -35,12 +35,12 @@ To support different time ranges, especially different time units, AMALTHEA pred
 !(scale)../pictures/model_common_time.png!
 
 
-h2. Frequency (and Frequency Unit)
+h3. Frequency (and Frequency Unit)
 
 !(scale)../pictures/model_common_frequency.png!
 
 
-h2. Data Size (and Data Size Unit)
+h3. Data Size (and Data Size Unit)
 
 The  __DataSize__ (and  __DataRate__) definition contains units and prefixes
 * according to the SI Standard
@@ -79,18 +79,18 @@ It is internally converted and can be retrieved in both ways.
 !(scale)../pictures/model_common_data_size.png! 
 
 
-h2. Data Rate (and Data Rate Unit)
+h3. Data Rate (and Data Rate Unit)
 
 !(scale)../pictures/model_common_data_rate.png! 
 
 
-h2. Deviation
+h3. Deviation
 
 The __Deviation__ class is used to model statistical distributions within AMALTHEA. There is a wide variety of possible use cases, where such a distribution is needed. With such a deviation for example, the variation in run times of functions or respectively their instructions can be imitated. Therefore, AMALTHEA currently supports the following three statistical distributions:
 
 !(scale)../pictures/model_common_deviation.png!
 
-h3. Boundaries
+h4. Boundaries
 
 With the __Boundaries__ class it is possible to define the deviation of instructions in such a way that a specific scenario is covered. The scenario is on the one hand specified by the minimum and maximum value between which the instructions vary. On the other hand, the __Sampling Type__ specifies the specific scenario that is covered. The following sampling types are available which are visualised in the figures below:
 
@@ -105,31 +105,31 @@ With the __Boundaries__ class it is possible to define the deviation of instruct
 !../pictures/model_common_deviation_boundaries_2.png!
 
 
-h3. Uniform Distribution
+h4. Uniform Distribution
 
 The uniform distribution is a statistical distribution where the values between the stated lower and upper bound are equally likely to be observed.
 
 !../pictures/model_common_deviation_uniform.png!
 
-h3. Gaussian/Normal Distribution
+h4. Gaussian/Normal Distribution
 
 The Gaussian/normal distribution is a statistical distribution where the values decrease symmetrically. The maximum value and thus its location is thereby stated by the mean and the rate of decrease is defined by its standard deviation. Since the curves approach zero on either side, an additional upper and lower bound can be added to constraint the values.
 
 !../pictures/model_common_deviation_normal.png!
 
-h3. Beta Distribution
+h4. Beta Distribution
 
 The Beta distribution is a statistical distribution whose shape is defined by alpha > 0 and beta > 0. That way, the Beta distribution can also be used to model other distributions like for example uniform, normal, or Bernoulli distribution. Since the curves can approach zero or infinity on either side, an additional upper and lower bound can be added to constraint the values.
 
 !../pictures/model_common_deviation_beta.png!
 
-h3. Weibull Distribution
+h4. Weibull Distribution
 
 The Weibull distribution is a statistical distribution whose shape is defined by kappa > 0 and the scale of the distribution by lambda > 0. That way, the Weibull distribution can also be used to model other distributions like for example the exponential or normal distribution. Since the curves can approach zero or infinity on either side, an additional upper and lower bound can be added to constraint the values. Alternatively, the Weibull distribution can also be parameterized using the mean value and a parameter that constraints the distribution regarding the per mill of remaining values.
 
 !../pictures/model_common_deviation_weibull.png!
 
-h2. Statistic Elements
+h3. Statistic Elements
 
 The contained elements are representing statistical values.
 The values can be set either with a min, avg and max representation using the __MinAvgMaxStatistic__ element.
@@ -140,7 +140,7 @@ The values itself are set as a normal __int__ value or in case of the single val
 
 
 
-h2. Instructions
+h3. Instructions
 
 TODO
 

@@ -1,5 +1,5 @@
 
-h2. Hardware
+h3. Hardware
 
 The AMALTHEA hardware model is used to describe hardware systems. The overall structure of this model is as followed:
 
