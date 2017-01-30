@@ -54,6 +54,30 @@ public class OSConverter extends AbstractConverter {
 	}
 
 
+	/**
+	 * This method is used to migrate the OsBuffering element as per the changes in 0.7.2.
+	 *
+	 * Below are the steps which are followed
+	 *
+	 * <pre>
+	 *  * OsBuffering element is replaced with element OsDataConsistency
+	 *  		Case 1: If (OsBuffering::runnableLevel || OsBuffering::processLevel || OsBuffering::scheduleSectionLevel) =="true" then
+	 *  					- OsDataConsistency object is created and the mode is set as "automaticProtection"
+	 *  						- DataStability object is created inside OsDataConsistency and below properties are set
+	 *  								- enabled=true
+	 *  								- algorithm = OsBuffering::bufferingAlgorithm
+	 *  								- accessMultiplicity = multipleAccesses
+	 *  								- level = <respective OsBuffering flag>
+	 *         Case 2: If (OsBuffering::runnableLevel || OsBuffering::processLevel || OsBuffering::scheduleSectionLevel) =="false" then
+	 *         				- OsDataConsistency object is created and the mode is set as "noProtection"
+	 *
+	 *         Case 3: If OsBuffering element is not present then
+	 *         				- OsDataConsistency object is created and the mode is set as "_undefined_" (i.e. default)
+	 *
+	 * </pre>
+	 *
+	 * @param rootElement
+	 */
 	private void update_OsBuffering(final Element rootElement) {
 
 		final StringBuffer xpathBuffer = new StringBuffer();

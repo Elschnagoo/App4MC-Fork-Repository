@@ -62,6 +62,34 @@ public class SwConverter extends AbstractConverter {
 	}
 
 
+	/**
+	 * This method is used to migrate the "buffered" attribute of Label and LabelAccess
+	 *
+	 * For migration of buffered attribute inside Label, below are the steps which are followed:
+	 *
+	 * <pre>
+	 *
+	 * *. LabelBufferring is replaced with DataStability element
+	 * 		-  If LabelBuffering value is "buffered" then the corresponding value of "dataStability" is set as "CustomProtection"
+	 * 		-  If LabelBuffering value is "notBuffered" then the corresponding value of "dataStability" is set as "noProtection"
+	 * 		-  If LabelBuffering value is "_undefined_" (default) then the corresponding value of "dataStability" is set as "_undefined_" (default)
+	 *
+	 * </pre>
+	 *
+	 * *For migration of buffered attribute inside LabelAccess, below are the steps which are followed:
+	 *
+	 * <pre>
+	 *
+	 * *. LabelAccessBufferring is replaced with DataStability element
+	 * 		-  If LabelAccessBufferring value is "inherited" then the corresponding value of "dataStability" is set as "inherited"
+	 * 		-  If LabelAccessBufferring value is "buffered" then the corresponding value of "dataStability" is set as "customProtection"
+	 * 		-  If LabelAccessBufferring value is "notBuffered" then the corresponding value of "dataStability" is set as "noProtection"
+	 * 		-  If LabelAccessBufferring value is "_undefined_" (default) then the corresponding value of "dataStability" is set as "_undefined_" (default)
+	 *
+	 * </pre>
+	 *
+	 * @param rootElement
+	 */
 	private void update_Buffering(final Element rootElement) {
 
 		final StringBuffer labelXpathBuffer = new StringBuffer();
@@ -374,6 +402,35 @@ public class SwConverter extends AbstractConverter {
 
 	}
 
+	/**
+	 * Migration of ProbabilityGroup:
+	 *
+	 * Based on changes introduced in 0.7.2, ProbabilityGroup is removed and its equivalent is
+	 * "RunnableProbabilityGroup" (associated to Runnable elements)
+	 *
+	 * From 0.7.1 - ProbabilityGroup structure is as shown below:
+	 *
+	 * <pre>
+	 *	ProbabilityGroup
+	 *		- ProbabilityRunnableItem items[0-*]
+	 *				- EInt probability[0-1]
+	 *				- RunnableItem runnableItem[0-1]
+	 * </pre>
+	 *
+	 * From 0.7.2 - RunnableProbabilitySwitch structure is as shown below
+	 *
+	 * <pre>
+	 *	RunnableProbabilitySwitch
+	 *		- ProbabilitySwitchEntry entries[0-*]
+	 *				- EDouble probability[0-1]
+	 *				- RunnableItem items[0-*]
+	 * </pre>
+	 *
+	 * *
+	 *
+	 * @param rootElement
+	 */
+
 	private void update_ProbabilityGroup(final Element rootElement) {
 
 
@@ -390,17 +447,19 @@ public class SwConverter extends AbstractConverter {
 
 			final Attribute typeAttribute = runnableItemElement.getAttribute("type", this.helper.getGenericNS("xsi"));
 
-			typeAttribute.setValue("am:RunnableProbabilitySwitch");
+			typeAttribute.setValue(
+					"am:RunnableProbabilitySwitch"); /*-changing the type from ProbabilityGroup to RunnableProbabilitySwitch*/
 
 			final List<Element> itemsElements = runnableItemElement.getChildren("items");
 
 			for (final Element itemsElement : itemsElements) {
-				itemsElement.setName("entries");
+				itemsElement.setName("entries"); /*-changing the identifier name from items to entries*/
 
 				final Element childRunnableItemElement = itemsElement.getChild("runnableItem");
 
 				if (childRunnableItemElement != null) {
-					childRunnableItemElement.setName("items");
+					childRunnableItemElement
+							.setName("items"); /*-changing the identifier name from runnableItem to items*/
 				}
 			}
 

@@ -286,6 +286,7 @@ table(classic){margin-left:40px}.
 |processes|group|ProcessPairingConstraint|Constraints Model |xml tag "processes" present inside "ProcessPairingConstraint" object is changed to "group" in amxmi file|
 |labels|group|DataPairingConstraint|Constraints Model |xml tag "labels" present inside "DataPairingConstraint" object is changed to "group" in amxmi file|
 |initalValue|initialValue|Semaphore|OS Model |xml attribute "initalValue" present inside "Semaphore" object is changed to "initialValue" in amxmi file|
+|arrivalCurveEntries|entries|ArrivalCurve|Stimuli Model |xml tag "arrivalCurveEntries" present inside "ArrivalCurve" object is changed to "entries" in amxmi file|
 
 *Below are the changes in the reference Types:*
 
@@ -314,7 +315,7 @@ table(classic){margin-left:40px}.
 *Below are the changes in Enum elements:*
 
 table(classic){margin-left:40px}. 
-| *Enum Name_* | *_Enum Literal (version APP4MC 0.7.1)_* | *_Enum Literal (version APP4MC 0.7.2)_* | *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+| *_Enum Name_* | *_Enum Literal (version APP4MC 0.7.1)_* | *_Enum Literal (version APP4MC 0.7.2)_* | *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |Preemption|unknown|-|SW Model|unknown literal is removed from Preemption. Model Migration will replace "unknown" literal with the default literal|
 
 
@@ -324,8 +325,9 @@ table(classic){margin-left:40px}.
 table(classic){margin-left:40px}. 
 | *_Variable Name (version APP4MC 0.7.1)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |samplingType|SamplingType|Deviation|Hardware Model  Stimuli MOdel  OS Model  Software Model|In 0.7.2, samplingType attribute is shifted from Deviation to Boundaries element.As a part of Model migration -> samplingType content is removed from Deviation and associated to the corresponding Distribution of type Boundaries. If Boundaries element is not present inside Deviation as a distribution, corresponding samplingType data is skipped during model migration|
-|coreTypeDefinitions|CoreType|PropertyConstraintsModel|Property Constraints Model|coreTypeDefinitions objects are removed from the PropertyConstraintsModel tag and are associated to HW Model (Note: addition of CoreType to HW model happens only if CoreType with this name is not existing in the model scope)|
-|memoryTypeDefinitions|MemoryType|PropertyConstraintsModel|Property Constraints Model|memoryTypeDefinitions objects are removed from the PropertyConstraintsModel tag and are associated to HW Model (Note: addition of MemoryType to HW model happens only if MemoryType with this name is not existing in the model scope)|
+|coreTypeDefinitions|CoreType|PropertyConstraintsModel|Property Constraints Model|coreTypeDefinitions objects are removed from the PropertyConstraintsModel tag and are associated to HW Model (Note: addition of CoreType to HW model happens only if CoreType with this name is not existing in the model scope. If there exists CoreType element with the same name in "PropertyConstraintsModel" and in "HW Model" --> the one from PropertyConstraintsModel will be removed and the one from HW Model will be referred accordingly inside Core element etc.,)|
+|memoryTypeDefinitions|MemoryType|PropertyConstraintsModel|Property Constraints Model|memoryTypeDefinitions objects are removed from the PropertyConstraintsModel tag and are associated to HW Model (Note: addition of MemoryType to HW model happens only if MemoryType with this name is not existing in the model scope . If there exists MemoryType element with the same name in "PropertyConstraintsModel" and in "HW Model" --> the one from PropertyConstraintsModel will be removed and the one from HW Model will be referred accordingly inside MemoryElement element etc.,)|
+|tags|Tag|ComponentsModel, HWModel, SWModel|Components Model, Hardware Model, Software Model|Tag objects are removed from the ComponentsModel,HWModel,SWModel tags and their content is shifted to CommonElements Model (Note: CommonElements model is contained inside Amalthea root node)|
 
 *Below Classes are removed:*
 
@@ -334,9 +336,12 @@ table(classic){margin-left:40px}.
 |TargetProcess|Constraints Model|Content is removed from the model. There is no equivalent of this model element in APP4MC 0.7.2|
 |TargetCallSequence|Constraints Model|Content is removed from the model. There is no equivalent of this model element in APP4MC 0.7.2|
 |OsExecutionInstructions, OsExecutionInstructionsDeviation, OsExecutionInstructionsConstant |OS Model|Replacement elements are : Instructions,InstructionsDeviation,InstructionsConstant. As there is no change in the content of these elements(when compared to previous elements) -> during model migration corresponding old type names are replaced with the new model elements  |
-|ProbabilityGroup|SW Model|RunnableProbabilitySwitch is replaced with ProbabilityGroup|
+|ProbabilityGroup|SW Model|ProbabilityGroup is replaced with RunnableProbabilitySwitch|
 |ProbabilityRunnableItem|SW Model|ProbabilityRunnableItem is replaced wtih ProbabilitySwitchEntry|
 |DeviationRunnableItem|SW Model|Content of DeviationRunnableItem i.e RunnableItem is moved directly inside the Group as a part of "items" list| 
- 
- 
+|EventConfigElement, EventConfigLink|Config Model|Both EventConfigElement and EventConfigLink objects are converted as EventConfig objects (As EventConfigElement & EventConfigLink classes are removed from the MetaModel - as per the semantics equivalent class for both of them is EventConfig). In case of migrating EventConfigElement - If definition of EntityEvent element is present as a sub-element -> it is moved to Events Model and the corresponding reference to EntityEvent is established inside EventConfig using attribute "event"|  
+|OsBuffering|OS Model|OsBuffering elements are migrated as OsDataConsistency elements. Below steps describe the criteria considered for migration of data : !(gray_scale)../pictures/OSBuffering_migration_071_072.png!|
+|LabelBufferring|SW Model|LabelBufferring elements are migrated as DataStability elements. Below steps describe the criteria considered for migration of data :<br>  -  If LabelBuffering value is "buffered" then the corresponding value of "dataStability" is set as "CustomProtection"<br>	-  If LabelBuffering value is "notBuffered" then the corresponding value of "dataStability" is set as "noProtection" <br>-  If LabelBuffering value is "_undefined_" (default) then the corresponding value of "dataStability" is set as "_undefined_" (default)
+|LabelAccessBufferring|SW Model|LabelAccessBufferring elements are migrated as DataStability elements. Below steps describe the criteria considered for migration of data :<br>  -  If LabelAccessBufferring value is "inherited" then the corresponding value of "dataStability" is set as "inherited"<br>	-  If LabelAccessBufferring value is "buffered" then the corresponding value of "dataStability" is set as "customProtection" <br>	-  If LabelAccessBufferring value is "notBuffered" then the corresponding value of "dataStability" is set as "noProtection" <br>-  If LabelAccessBufferring value is "_undefined_" (default) then the corresponding value of "dataStability" is set as "_undefined_" (default)
+|
 
