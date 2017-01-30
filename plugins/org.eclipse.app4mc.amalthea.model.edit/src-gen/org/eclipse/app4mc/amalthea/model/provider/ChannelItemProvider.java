@@ -60,6 +60,7 @@ public class ChannelItemProvider extends AbstractElementMemoryInformationItemPro
 
 			addDisplayNamePropertyDescriptor(object);
 			addDefaultElementsPropertyDescriptor(object);
+			addMaxElementsPropertyDescriptor(object);
 			addChannelAccessesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -110,6 +111,28 @@ public class ChannelItemProvider extends AbstractElementMemoryInformationItemPro
 	}
 
 	/**
+	 * This adds a property descriptor for the Max Elements feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMaxElementsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Channel_maxElements_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Channel_maxElements_feature", "_UI_Channel_type"),
+				 AmaltheaPackage.eINSTANCE.getChannel_MaxElements(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Channel Accesses feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -145,7 +168,7 @@ public class ChannelItemProvider extends AbstractElementMemoryInformationItemPro
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getChannel_DataType());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getChannel_ElementType());
 		}
 		return childrenFeatures;
 	}
@@ -213,9 +236,10 @@ public class ChannelItemProvider extends AbstractElementMemoryInformationItemPro
 		switch (notification.getFeatureID(Channel.class)) {
 			case AmaltheaPackage.CHANNEL__DISPLAY_NAME:
 			case AmaltheaPackage.CHANNEL__DEFAULT_ELEMENTS:
+			case AmaltheaPackage.CHANNEL__MAX_ELEMENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case AmaltheaPackage.CHANNEL__DATA_TYPE:
+			case AmaltheaPackage.CHANNEL__ELEMENT_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -235,22 +259,22 @@ public class ChannelItemProvider extends AbstractElementMemoryInformationItemPro
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getChannel_DataType(),
+				(AmaltheaPackage.eINSTANCE.getChannel_ElementType(),
 				 AmaltheaFactory.eINSTANCE.createStruct()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getChannel_DataType(),
+				(AmaltheaPackage.eINSTANCE.getChannel_ElementType(),
 				 AmaltheaFactory.eINSTANCE.createArray()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getChannel_DataType(),
+				(AmaltheaPackage.eINSTANCE.getChannel_ElementType(),
 				 AmaltheaFactory.eINSTANCE.createPointer()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getChannel_DataType(),
+				(AmaltheaPackage.eINSTANCE.getChannel_ElementType(),
 				 AmaltheaFactory.eINSTANCE.createTypeRef()));
 	}
 

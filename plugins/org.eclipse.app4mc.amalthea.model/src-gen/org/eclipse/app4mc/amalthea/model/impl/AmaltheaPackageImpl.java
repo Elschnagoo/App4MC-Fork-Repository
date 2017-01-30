@@ -10225,7 +10225,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getChannel_DataType() {
+	public EReference getChannel_ElementType() {
 		return (EReference)channelEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -10243,8 +10243,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getChannel_MaxElements() {
+		return (EAttribute)channelEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getChannel_ChannelAccesses() {
-		return (EReference)channelEClass.getEStructuralFeatures().get(2);
+		return (EReference)channelEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -12748,8 +12757,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(labelEClass, LABEL__SECTION_LINK_INT);
 
 		channelEClass = createEClass(CHANNEL);
-		createEReference(channelEClass, CHANNEL__DATA_TYPE);
+		createEReference(channelEClass, CHANNEL__ELEMENT_TYPE);
 		createEAttribute(channelEClass, CHANNEL__DEFAULT_ELEMENTS);
+		createEAttribute(channelEClass, CHANNEL__MAX_ELEMENTS);
 		createEReference(channelEClass, CHANNEL__CHANNEL_ACCESSES);
 
 		modeLabelEClass = createEClass(MODE_LABEL);
@@ -14488,8 +14498,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getLabel_SectionLinkInt(), this.getSection(), this.getSection_Labels(), "sectionLinkInt", null, 0, 1, Label.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(channelEClass, Channel.class, "Channel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChannel_DataType(), this.getDataType(), null, "dataType", null, 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChannel_ElementType(), this.getDataType(), null, "elementType", null, 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getChannel_DefaultElements(), theEcorePackage.getEInt(), "defaultElements", "0", 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChannel_MaxElements(), theEcorePackage.getEInt(), "maxElements", "0", 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChannel_ChannelAccesses(), this.getChannelAccess(), this.getChannelAccess_DataLinkInt(), "channelAccesses", null, 0, -1, Channel.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeLabelEClass, ModeLabel.class, "ModeLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

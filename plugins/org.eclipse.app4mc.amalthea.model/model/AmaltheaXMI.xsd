@@ -4778,10 +4778,11 @@ The final state can be several Tasks, which can be computed using provided infor
     <xsd:complexContent>
       <xsd:extension base="am:AbstractElementMemoryInformation">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="dataType" type="am:DataType"/>
+          <xsd:element name="elementType" type="am:DataType"/>
         </xsd:choice>
         <xsd:attribute name="displayName" type="xsd:string"/>
         <xsd:attribute name="defaultElements" type="xsd:int"/>
+        <xsd:attribute name="maxElements" type="xsd:int"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

@@ -23,8 +23,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Channel#getDataType <em>Data Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Channel#getElementType <em>Element Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Channel#getDefaultElements <em>Default Elements</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Channel#getMaxElements <em>Max Elements</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Channel#getChannelAccesses <em>Channel Accesses</em>}</li>
  * </ul>
  *
@@ -34,30 +35,30 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Channel extends AbstractElementMemoryInformation, IDisplayName {
 	/**
-	 * Returns the value of the '<em><b>Data Type</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Element Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Data Type</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Element Type</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Data Type</em>' containment reference.
-	 * @see #setDataType(DataType)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getChannel_DataType()
+	 * @return the value of the '<em>Element Type</em>' containment reference.
+	 * @see #setElementType(DataType)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getChannel_ElementType()
 	 * @model containment="true"
 	 * @generated
 	 */
-	DataType getDataType();
+	DataType getElementType();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Channel#getDataType <em>Data Type</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Channel#getElementType <em>Element Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Data Type</em>' containment reference.
-	 * @see #getDataType()
+	 * @param value the new value of the '<em>Element Type</em>' containment reference.
+	 * @see #getElementType()
 	 * @generated
 	 */
-	void setDataType(DataType value);
+	void setElementType(DataType value);
 
 	/**
 	 * Returns the value of the '<em><b>Default Elements</b></em>' attribute.
@@ -85,6 +86,33 @@ public interface Channel extends AbstractElementMemoryInformation, IDisplayName 
 	 * @generated
 	 */
 	void setDefaultElements(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Max Elements</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Max Elements</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Max Elements</em>' attribute.
+	 * @see #setMaxElements(int)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getChannel_MaxElements()
+	 * @model default="0" unique="false"
+	 * @generated
+	 */
+	int getMaxElements();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Channel#getMaxElements <em>Max Elements</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Max Elements</em>' attribute.
+	 * @see #getMaxElements()
+	 * @generated
+	 */
+	void setMaxElements(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Channel Accesses</b></em>' reference list.

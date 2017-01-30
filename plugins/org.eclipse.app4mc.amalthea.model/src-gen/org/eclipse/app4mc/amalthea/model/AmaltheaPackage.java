@@ -20609,13 +20609,13 @@ public interface AmaltheaPackage extends EPackage {
 	int CHANNEL__DISPLAY_NAME = ABSTRACT_ELEMENT_MEMORY_INFORMATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Data Type</b></em>' containment reference.
+	 * The feature id for the '<em><b>Element Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL__DATA_TYPE = ABSTRACT_ELEMENT_MEMORY_INFORMATION_FEATURE_COUNT + 1;
+	int CHANNEL__ELEMENT_TYPE = ABSTRACT_ELEMENT_MEMORY_INFORMATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Default Elements</b></em>' attribute.
@@ -20627,13 +20627,22 @@ public interface AmaltheaPackage extends EPackage {
 	int CHANNEL__DEFAULT_ELEMENTS = ABSTRACT_ELEMENT_MEMORY_INFORMATION_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Max Elements</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL__MAX_ELEMENTS = ABSTRACT_ELEMENT_MEMORY_INFORMATION_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Channel Accesses</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL__CHANNEL_ACCESSES = ABSTRACT_ELEMENT_MEMORY_INFORMATION_FEATURE_COUNT + 3;
+	int CHANNEL__CHANNEL_ACCESSES = ABSTRACT_ELEMENT_MEMORY_INFORMATION_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Channel</em>' class.
@@ -20642,7 +20651,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_FEATURE_COUNT = ABSTRACT_ELEMENT_MEMORY_INFORMATION_FEATURE_COUNT + 4;
+	int CHANNEL_FEATURE_COUNT = ABSTRACT_ELEMENT_MEMORY_INFORMATION_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -32391,15 +32400,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getChannel();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Channel#getDataType <em>Data Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Channel#getElementType <em>Element Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Data Type</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Channel#getDataType()
+	 * @return the meta object for the containment reference '<em>Element Type</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Channel#getElementType()
 	 * @see #getChannel()
 	 * @generated
 	 */
-	EReference getChannel_DataType();
+	EReference getChannel_ElementType();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Channel#getDefaultElements <em>Default Elements</em>}'.
@@ -32411,6 +32420,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getChannel_DefaultElements();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Channel#getMaxElements <em>Max Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Elements</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Channel#getMaxElements()
+	 * @see #getChannel()
+	 * @generated
+	 */
+	EAttribute getChannel_MaxElements();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Channel#getChannelAccesses <em>Channel Accesses</em>}'.

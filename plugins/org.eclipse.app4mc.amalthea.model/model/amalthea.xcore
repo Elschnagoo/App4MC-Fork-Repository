@@ -2980,9 +2980,10 @@ class Label extends AbstractElementMemoryInformation, IDisplayName
 
 class Channel extends AbstractElementMemoryInformation, IDisplayName
 {
-	contains DataType dataType
+	contains DataType elementType
 
 	int defaultElements = "0"
+	int maxElements = "0"
 	
 	// back pointer (readonly)
 	@GenModel(property="Readonly", suppressedSetVisibility="true")

@@ -42,8 +42,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelImpl#getDisplayName <em>Display Name</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelImpl#getDataType <em>Data Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelImpl#getElementType <em>Element Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelImpl#getDefaultElements <em>Default Elements</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelImpl#getMaxElements <em>Max Elements</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelImpl#getChannelAccesses <em>Channel Accesses</em>}</li>
  * </ul>
  *
@@ -71,14 +72,14 @@ public class ChannelImpl extends AbstractElementMemoryInformationImpl implements
 	protected String displayName = DISPLAY_NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getDataType() <em>Data Type</em>}' containment reference.
+	 * The cached value of the '{@link #getElementType() <em>Element Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDataType()
+	 * @see #getElementType()
 	 * @generated
 	 * @ordered
 	 */
-	protected DataType dataType;
+	protected DataType elementType;
 
 	/**
 	 * The default value of the '{@link #getDefaultElements() <em>Default Elements</em>}' attribute.
@@ -99,6 +100,26 @@ public class ChannelImpl extends AbstractElementMemoryInformationImpl implements
 	 * @ordered
 	 */
 	protected int defaultElements = DEFAULT_ELEMENTS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMaxElements() <em>Max Elements</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MAX_ELEMENTS_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getMaxElements() <em>Max Elements</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected int maxElements = MAX_ELEMENTS_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getChannelAccesses() <em>Channel Accesses</em>}' reference list.
@@ -155,8 +176,8 @@ public class ChannelImpl extends AbstractElementMemoryInformationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataType getDataType() {
-		return dataType;
+	public DataType getElementType() {
+		return elementType;
 	}
 
 	/**
@@ -164,11 +185,11 @@ public class ChannelImpl extends AbstractElementMemoryInformationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDataType(DataType newDataType, NotificationChain msgs) {
-		DataType oldDataType = dataType;
-		dataType = newDataType;
+	public NotificationChain basicSetElementType(DataType newElementType, NotificationChain msgs) {
+		DataType oldElementType = elementType;
+		elementType = newElementType;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CHANNEL__DATA_TYPE, oldDataType, newDataType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CHANNEL__ELEMENT_TYPE, oldElementType, newElementType);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -179,18 +200,18 @@ public class ChannelImpl extends AbstractElementMemoryInformationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDataType(DataType newDataType) {
-		if (newDataType != dataType) {
+	public void setElementType(DataType newElementType) {
+		if (newElementType != elementType) {
 			NotificationChain msgs = null;
-			if (dataType != null)
-				msgs = ((InternalEObject)dataType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CHANNEL__DATA_TYPE, null, msgs);
-			if (newDataType != null)
-				msgs = ((InternalEObject)newDataType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CHANNEL__DATA_TYPE, null, msgs);
-			msgs = basicSetDataType(newDataType, msgs);
+			if (elementType != null)
+				msgs = ((InternalEObject)elementType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CHANNEL__ELEMENT_TYPE, null, msgs);
+			if (newElementType != null)
+				msgs = ((InternalEObject)newElementType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CHANNEL__ELEMENT_TYPE, null, msgs);
+			msgs = basicSetElementType(newElementType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CHANNEL__DATA_TYPE, newDataType, newDataType));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CHANNEL__ELEMENT_TYPE, newElementType, newElementType));
 	}
 
 	/**
@@ -212,6 +233,27 @@ public class ChannelImpl extends AbstractElementMemoryInformationImpl implements
 		defaultElements = newDefaultElements;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CHANNEL__DEFAULT_ELEMENTS, oldDefaultElements, defaultElements));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getMaxElements() {
+		return maxElements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMaxElements(int newMaxElements) {
+		int oldMaxElements = maxElements;
+		maxElements = newMaxElements;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CHANNEL__MAX_ELEMENTS, oldMaxElements, maxElements));
 	}
 
 	/**
@@ -249,8 +291,8 @@ public class ChannelImpl extends AbstractElementMemoryInformationImpl implements
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.CHANNEL__DATA_TYPE:
-				return basicSetDataType(null, msgs);
+			case AmaltheaPackage.CHANNEL__ELEMENT_TYPE:
+				return basicSetElementType(null, msgs);
 			case AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES:
 				return ((InternalEList<?>)getChannelAccesses()).basicRemove(otherEnd, msgs);
 		}
@@ -267,10 +309,12 @@ public class ChannelImpl extends AbstractElementMemoryInformationImpl implements
 		switch (featureID) {
 			case AmaltheaPackage.CHANNEL__DISPLAY_NAME:
 				return getDisplayName();
-			case AmaltheaPackage.CHANNEL__DATA_TYPE:
-				return getDataType();
+			case AmaltheaPackage.CHANNEL__ELEMENT_TYPE:
+				return getElementType();
 			case AmaltheaPackage.CHANNEL__DEFAULT_ELEMENTS:
 				return getDefaultElements();
+			case AmaltheaPackage.CHANNEL__MAX_ELEMENTS:
+				return getMaxElements();
 			case AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES:
 				return getChannelAccesses();
 		}
@@ -289,11 +333,14 @@ public class ChannelImpl extends AbstractElementMemoryInformationImpl implements
 			case AmaltheaPackage.CHANNEL__DISPLAY_NAME:
 				setDisplayName((String)newValue);
 				return;
-			case AmaltheaPackage.CHANNEL__DATA_TYPE:
-				setDataType((DataType)newValue);
+			case AmaltheaPackage.CHANNEL__ELEMENT_TYPE:
+				setElementType((DataType)newValue);
 				return;
 			case AmaltheaPackage.CHANNEL__DEFAULT_ELEMENTS:
 				setDefaultElements((Integer)newValue);
+				return;
+			case AmaltheaPackage.CHANNEL__MAX_ELEMENTS:
+				setMaxElements((Integer)newValue);
 				return;
 			case AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES:
 				getChannelAccesses().clear();
@@ -314,11 +361,14 @@ public class ChannelImpl extends AbstractElementMemoryInformationImpl implements
 			case AmaltheaPackage.CHANNEL__DISPLAY_NAME:
 				setDisplayName(DISPLAY_NAME_EDEFAULT);
 				return;
-			case AmaltheaPackage.CHANNEL__DATA_TYPE:
-				setDataType((DataType)null);
+			case AmaltheaPackage.CHANNEL__ELEMENT_TYPE:
+				setElementType((DataType)null);
 				return;
 			case AmaltheaPackage.CHANNEL__DEFAULT_ELEMENTS:
 				setDefaultElements(DEFAULT_ELEMENTS_EDEFAULT);
+				return;
+			case AmaltheaPackage.CHANNEL__MAX_ELEMENTS:
+				setMaxElements(MAX_ELEMENTS_EDEFAULT);
 				return;
 			case AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES:
 				getChannelAccesses().clear();
@@ -337,10 +387,12 @@ public class ChannelImpl extends AbstractElementMemoryInformationImpl implements
 		switch (featureID) {
 			case AmaltheaPackage.CHANNEL__DISPLAY_NAME:
 				return DISPLAY_NAME_EDEFAULT == null ? displayName != null : !DISPLAY_NAME_EDEFAULT.equals(displayName);
-			case AmaltheaPackage.CHANNEL__DATA_TYPE:
-				return dataType != null;
+			case AmaltheaPackage.CHANNEL__ELEMENT_TYPE:
+				return elementType != null;
 			case AmaltheaPackage.CHANNEL__DEFAULT_ELEMENTS:
 				return defaultElements != DEFAULT_ELEMENTS_EDEFAULT;
+			case AmaltheaPackage.CHANNEL__MAX_ELEMENTS:
+				return maxElements != MAX_ELEMENTS_EDEFAULT;
 			case AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES:
 				return channelAccesses != null && !channelAccesses.isEmpty();
 		}
@@ -393,6 +445,8 @@ public class ChannelImpl extends AbstractElementMemoryInformationImpl implements
 		result.append(displayName);
 		result.append(", defaultElements: ");
 		result.append(defaultElements);
+		result.append(", maxElements: ");
+		result.append(maxElements);
 		result.append(')');
 		return result.toString();
 	}

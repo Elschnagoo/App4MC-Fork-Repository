@@ -31,7 +31,7 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 
 h3. Channels
 
-The channel element represents a data element. TODO
+The channel element has two different characteristics: it represents a data element in memory and also a way how runnables transmit larger amounts of data. A typical applications is the streaming of video data where a continuous sequence of images is sent in smaller chunks.
 
 !../pictures/model_sw_channel.png!
 
@@ -41,8 +41,9 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 |_. Name  |_. Description |
 | __name__ | The name represented as String value (derived from __AbstractElementMemoryInformation__) |
 | __displayName__ | In addition to the name attribute, which must be unique, a label can also be described by an additional and optional display name. The displayName attribute must not be unique. It can be used for example to represent specification data, which can be different from the unique name (like a symbol) of an available software build. |
-| __dataType__ | Reference to the data type definition |
-| __defaultElements__ | TODO |
+| __elementType__ | Reference to the data type definition of a single element |
+| __defaultElements__ | Number of elements initially in the channel (at start-up) |
+| __maxElements__ | Depth of channel (maximum number of elements that may be stored) |
 
 
 h3. Data Types
@@ -146,7 +147,7 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 | __data__ | Describes the access to an existent __Label__ (set as reference). |
 | __dataStability__ | Describes the data stability needs. If set, it overwrites the label settings, otherwise it inherits them (see <notextile><a href="./model_os.html#os-data-consistency">OS Data Consistency</a></notextile>). |
 | __statistic__ | TODO |
-| __transmissionPolicy__ | The following attributes reflect computing demand (time) depending on data: <ul><li> *ChunkSize*: Size of a part of an element, maximum is the element size. </li><li> *ChunkProcessingInstructions*: Number of instructions that will be executed to receive one chunk. </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *ReceiveRatio*: Specify the ratio of each element that is actually received by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
+| __transmissionPolicy__ | The following attributes reflect the computing demand (time) depending on data: <ul><li> *chunkSize*: Size of a part of an element, maximum is the element size. </li><li> *chunkProcessingInstructions*: Number of instructions that will be executed to transmit one chunk. </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *transmitRatio*: Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
 
 
 h4. Channel Access
@@ -159,7 +160,7 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 |_. Name |_. Description |
 | __data__ | Describes the access (__ChannelSend__ or __ChannelReceive__) to an existent __Channel__ (set as reference). |
 | __elements__ | Maximum number of elements that are transmitted. |
-| __transmissionPolicy__ | The following attributes reflect computing demand (time) depending on data: <ul><li> *chunkSize*: Size of a part of an element, maximum is the element size. </li><li> *chunkProcessingInstructions*: Number of instructions that will be executed to receive one chunk. </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *transmitRatio*: Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
+| __transmissionPolicy__ | The following attributes reflect computing demand (time) depending on data: <ul><li> *chunkSize*: Size of a part of an element, maximum is the element size. </li><li> *chunkProcessingInstructions*: Number of instructions that will be executed to send / receive one chunk. </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *transmitRatio*: Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
 
 Receive attributes:
 

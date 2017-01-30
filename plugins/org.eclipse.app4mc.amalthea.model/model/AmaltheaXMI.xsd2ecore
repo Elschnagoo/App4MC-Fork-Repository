@@ -1905,7 +1905,8 @@
     <nested inputs="amalthea.xcore#/EPackage/Label" outputs="AmaltheaXMI.xsd#//Label;XSDElementDeclaration=277"/>
     <nested inputs="amalthea.xcore#/EPackage/Channel" outputs="AmaltheaXMI.xsd#//Channel;XSDComplexTypeDefinition=278">
       <nested inputs="amalthea.xcore#/EPackage/Channel/defaultElements" outputs="AmaltheaXMI.xsd#//Channel;XSDComplexTypeDefinition=278/XSDAttributeUse=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/Channel/dataType" outputs="AmaltheaXMI.xsd#//Channel;XSDComplexTypeDefinition=278/XSDParticle/XSDModelGroup/XSDParticle"/>
+      <nested inputs="amalthea.xcore#/EPackage/Channel/maxElements" outputs="AmaltheaXMI.xsd#//Channel;XSDComplexTypeDefinition=278/XSDAttributeUse=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/Channel/elementType" outputs="AmaltheaXMI.xsd#//Channel;XSDComplexTypeDefinition=278/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/IDisplayName/displayName" outputs="AmaltheaXMI.xsd#//Channel;XSDComplexTypeDefinition=278/XSDAttributeUse"/>
     <nested inputs="amalthea.xcore#/EPackage/Channel" outputs="AmaltheaXMI.xsd#//Channel;XSDElementDeclaration=278"/>
