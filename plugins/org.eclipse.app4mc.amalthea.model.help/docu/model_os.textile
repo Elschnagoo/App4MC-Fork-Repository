@@ -76,7 +76,7 @@ There exists also an overhead for API calls. The following API calls are conside
 * API Enforced Migration: Runtime overhead for migrating from one scheduler to another scheduler (inside a task or ISR)
 
 
-h3(#OsDataConsistency). OS Data Consistency
+h3(#os-data-consistency). OS Data Consistency
 
 The __OsDataConsistency__ class provides a way to globally configure an automatic data consistency mechanism. It is used to cover the following two use cases:
 * Provide a configuration for external tools that perform a data consistency calculation based on the stated information.

@@ -32,21 +32,21 @@ AMALTHEA maintains a (small) number of back pointers in the model. A transient r
 
 h4. Current back pointers
 
-TODO Some text to explain the intermediate objects LabelAccess and RunnableCall.
-They are contained objects
+The data model has some intermediate objects to express the call of a runnable or the access to a label.
+These objects are containments of __Task__ or __Runnable__ and can have additional attributes. The back pointers support an easy way to answer queries like "Which tasks call runnable x ?" or "Which functions read label y ?".
 
 | | Back pointer (read only) |>. Reference | |
 | @LabelAccess@ |{color:green}. &#8592; *labelAccesses* |>. *data* &#8594; | @Label@ |
 | @TaskRunnableCall@ |{color:green}. &#8592; *taskRunnableCalls* |>. *runnable* &#8594; | @Runnable@ |
 | @RunnableCall@ |{color:green}. &#8592; *runnableCalls* |>. *runnable* &#8594; | @Runnable@ |
 
-TODO Some text to explain mapping.
+All elements with memory representation (e.g. labels, runnables) can be mapped to exactly one memory. The back pointer provides a list of all elements that are assigned to a specific memory.
 
 | | Back pointer (read only) |>. Reference | |
 | @Mapping@ |{color:green}. &#8592; *mappings* |>. *memory* &#8594; | @Memory@ |
 | @AbstractElementMapping@ |{color:green}. &#8592; *mappings* |>. *abstractElement* &#8594; | @AbstractElementMemoryInformation@ |
 
-TODO Some text to explain sections.
+Labels and runnables can be located in exactly one section. The back pointer provides a list of all elements that are assigned to a specific section.
 
 | | Back pointer (read only) |>. Reference | |
 | @Label@ |{color:green}. &#8592; *labels* |>. *section* &#8594; | @Section@ |

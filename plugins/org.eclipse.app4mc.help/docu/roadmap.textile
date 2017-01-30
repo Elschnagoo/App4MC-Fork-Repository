@@ -3,16 +3,13 @@ h1. Roadmap
 Current topics:
 
 * Enhanced model handling to exchange different model parts
-* Better mode support for modeling, like startup/shutdown phase
 * Simplified hardware model
 * Interactive help (visualization of model and meta model structure)
-* Smaller product definition
-** Remove optional parts from product downloads (can be installed via update sites)
 
-All new releases are provided by the Eclipse project "APP4MC":https://projects.eclipse.org/projects/technology.app4mc.
+All new releases are provided by "Eclipse APP4MC":https://projects.eclipse.org/projects/technology.app4mc.
 
 
 For details see:
 
-* "Bugzilla entries for version 0.7.2":https://bugs.eclipse.org/bugs/buglist.cgi?product=App4mc&target_milestone=0.7.2
+* "Bugzilla entries for version 0.8.0":https://bugs.eclipse.org/bugs/buglist.cgi?product=App4mc&target_milestone=0.8.0
 

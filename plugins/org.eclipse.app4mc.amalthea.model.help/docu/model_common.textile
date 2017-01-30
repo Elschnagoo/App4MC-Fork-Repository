@@ -142,7 +142,7 @@ The values itself are set as a normal __int__ value or in case of the single val
 
 h3. Instructions
 
-TODO
+Instructions are used to express execution times in a more abstract way. The number of instructions characterizes the amount of computation that is necessary to execute e.g. a __Runnable__. Depending on the capabilities of a __Core__ (the frequency and the instructions per cycle) the time to execute such an element will differ.
 
 In the next picture a more detailed overview is given about the __Instructions__.
 
@@ -151,4 +151,32 @@ In the next picture a more detailed overview is given about the __Instructions__
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
 | __Instructions__| As a runnable contains several instructions to perform, this is represented using different algorithms or a constant value to consume the same amount of time/ticks per cycle.|
+
+
+h3. Counters
+
+The __Counter__ element describes an activation of a target element that happens only every n<sup>th</sup> time.
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __prescaler__ | Gives the number n for the activation,<br/>e.g. if set to 2, the target element is executed every second time. |
+| __offset__ | Initial shift for the first execution of the target. |
+
+If for example __prescaler__ is 5 and __offset__ is 2 it is executed on the 2<sup>nd</sup>, 7<sup>th</sup>, 12<sup>th</sup>, … time.
+
+Counters are available at the following elements:
+
+* Call sequence items:
+** __ClearEvent__
+** __EnforcedMigration__
+** __InterProcessActivation__
+** __SchedulePoint__
+** __SetEvent__
+** __TaskRunnableCall__
+** __TerminateProcess__
+** __WaitEvent__
+* Stimuli:
+** __InterProcess__
+** __EventStimulus__
+
 
