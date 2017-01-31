@@ -141,11 +141,12 @@ public class PerformMappingJob extends Job {
 		}
 
 		final Amalthea cen = AmaltheaFactory.eINSTANCE.createAmalthea();
+		cen.setCommonElements(UniversalHandler.getInstance().getCommonElements());
 		cen.setSwModel(UniversalHandler.getInstance().getSwModel());
 		cen.setHwModel(UniversalHandler.getInstance().getHwModel());
 		cen.setConstraintsModel(UniversalHandler.getInstance().getConstraintsModel());
 		cen.setStimuliModel(UniversalHandler.getInstance().getStimuliModel());
-
+		
 		cen.setMappingModel(this.mmModel);
 		cen.setOsModel(this.osModel);
 
