@@ -3,7 +3,8 @@ h3. Memory Sections
 
 **Purpose**
 
-...
+Memory Section's are used for the division of the Memory (RAM/ROM) into different blocks and allocate the "Software" memory elements (_e.g: Labels_) , Code accordingly inside them.
+Each Memory Section has certain specific properties (_e.g: faster access of the elements, storing constant values_) . By default compiler vendors provide certain Memory Section's (_e.g: .data, .text_) and additional Memory Section's can be created based on the project need by enhancing the linker configuration.
 
 **Definition**
 
