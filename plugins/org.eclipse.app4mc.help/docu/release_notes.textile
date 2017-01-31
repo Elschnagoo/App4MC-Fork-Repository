@@ -12,7 +12,7 @@ Model handling
 
 Model changes
 * New core-specific runtimes (instructions) for runnables
-* New model elements for streaming communication (Channels)
+* New model elements for streaming communication (Channels)*
 * New Transmission Policy for communication (e.g. label accesses) 
 * New Event-based Stimulus
 * New Data Consistency needs
@@ -27,6 +27,8 @@ Bug fixes / Improvements
 Documentation
 * New model elements: Physical memory sections, Channels
 * New examples
+
+ * =  __Experimental feature (first modeling attempt that may change in future versions)__.
 
 _For details see "Release 0.7.2 issues":https://projects.eclipse.org/projects/technology.app4mc/releases/0.7.2/bugs_
 
