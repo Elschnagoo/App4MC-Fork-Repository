@@ -30,6 +30,8 @@
       <toc	file="toc/user_sw_develop-toc.xml"				primary="false"> </toc>
       <toc	file="toc/user_sw_runtime-toc.xml"				primary="false"> </toc>
       <toc	file="toc/user_concepts-toc.xml"				primary="false"> </toc>
+      <toc	file="toc/user_channel-toc.xml"					primary="false"> </toc>
+      <toc	file="toc/user_memorysection-toc.xml"			primary="false"> </toc>
 
       <toc
             file="root-dev_misc-toc.xml"
@@ -37,7 +39,7 @@
       </toc>
 
       <toc	file="toc/dev_model_xsd-toc.xml"				primary="false"> </toc>
-      <toc	file="toc/dev_model_details-toc.xml"				primary="false"> </toc>
+      <toc	file="toc/dev_model_details-toc.xml"			primary="false"> </toc>
 
    </extension>
 

@@ -152,6 +152,7 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 
 h4. Channel Access
 
+
 !../pictures/model_sw_runnable_items__channel_access.png!
 
 Common attributes:
