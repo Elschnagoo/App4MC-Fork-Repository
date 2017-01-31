@@ -146,7 +146,7 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 | __access__ | The type of access is represented using the values of __LabelAccessEnum__. |
 | __data__ | Describes the access to an existent __Label__ (set as reference). |
 | __dataStability__ | Describes the data stability needs. If set, it overwrites the label settings, otherwise it inherits them (see <notextile><a href="./model_os.html#os-data-consistency">OS Data Consistency</a></notextile>). |
-| __statistic__ | TODO |
+| __statistic__ | Defines the frequency of the label access.  |
 | __transmissionPolicy__ | The following attributes reflect the computing demand (time) depending on data: <ul><li> *chunkSize*: Size of a part of an element, maximum is the element size. </li><li> *chunkProcessingInstructions*: Number of instructions that will be executed to transmit one chunk. </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *transmitRatio*: Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
 
 
