@@ -5,7 +5,7 @@
 <toc label="Converters dev Guide Root" link_to="../org.eclipse.app4mc.help/mainToc.xml#app4mc.docu.dev.converters">
    <topic label="Model Migration">
       <link toc="toc/developers_guide-toc.xml"/>
-      <link toc="toc/model_changes_migration_behavior-toc.xml"/>
+      <link toc="toc/meta_model_changes-toc.xml"/>
    </topic>
  
    
