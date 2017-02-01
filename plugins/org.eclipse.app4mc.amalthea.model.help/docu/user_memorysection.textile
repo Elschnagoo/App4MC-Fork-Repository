@@ -52,7 +52,7 @@ Each "Physical Memory Section" has following properties:
 
 +_Example:_+  There can exist mem.sec1.py inside Ram1 and also in Ram2. But these are physically two different elements as they are associated to different memories (Ram1 and Ram2) and also they have different "start and end address". 
 
-Below diagram represents the information w.r.t. virtual memory sections _(defined in data specification and associated to memory elements)_ and physical memory sections _(generated after linker run)_.
+Below diagram represents the information w.r.t. virtual memory sections _(defined in data specification and associated to memory elements)_ and physical memory sections __(generated after linker run)__.
 
 !(scale)../pictures/user_section_virtual_to_physical.png!
 

@@ -347,7 +347,7 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 
 h4. Mode Changes
 
-The value of the mode label can be changed from it's initial value using the set-mode-labels-list of a __Stimulus__.
+The value of the mode label can be changed from its initial value using the set-mode-labels-list of a __Stimulus__.
 
 Another possibility is a write access within a Runnable via __Mode Label Access__.
 
@@ -388,7 +388,7 @@ The __CustomEntity__ element defines a way to add not yet available elements of 
 
 h3. Section
 
-Section (Vitual Memory Section) is used to group the memory elements (Labels, Runnables). This is acheived by associating the *Section* element to *Label* & *Runnable* elements
+Section (Virtual Memory Section) is used to group the memory elements (Labels, Runnables). This is achieved by associating the *Section* element to *Label* & *Runnable* elements
  
 Below are properties of Section element:
 

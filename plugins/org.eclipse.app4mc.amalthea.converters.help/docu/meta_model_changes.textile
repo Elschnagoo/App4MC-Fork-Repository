@@ -1,12 +1,12 @@
 
-h2(#metamodel-changes). AMALTHEA meta model changes
+h2(#meta model-changes). AMALTHEA meta model changes
 
 
 Based on the changes in AMALTHEA meta model across various releases, below description contains the differences in detail which are considered for model migration:
 
 h3. Version ITEA 1.0.3 to ITEA 1.1.0
 
-Below are the changes in the metamodel from ITEA 1.1.0 version to ITEA 1.1.1
+Below are the changes in the meta model from ITEA 1.1.0 version to ITEA 1.1.1
 
 * *Changes in the namespaces:* 
 
@@ -47,7 +47,7 @@ table(classic){margin-left:40px}.
 
 h3. Version ITEA 1.1.0 to ITEA 1.1.1
 
-Below are the changes in the metamodel from ITEA 1.1.0 version to ITEA 1.1.1
+Below are the changes in the meta model from ITEA 1.1.0 version to ITEA 1.1.1
 
 * *Changes in the namespaces:* 
 
@@ -139,11 +139,11 @@ table(classic){margin-left:40px}.
 
 h3. Version ITEA 1.1.1 to App4MC 0.7.0
 
-Below are the changes in the metamodel from ITEA 1.1.1 version to APP4MC 0.7.0
+Below are the changes in the meta model from ITEA 1.1.1 version to APP4MC 0.7.0
 
-* Instead of multiple namespaces (e.g: sw,hw,constraints,components etc.,) a single namespace "am" is introduced
+* Instead of multiple namespaces (e.g. sw, hw, constraints, components, etc.) a single namespace "am" is introduced
 ** *Impact on 0.7.0 model file due to this change:* 
-*** xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0 is included in the xmi file, instead of other namespaces (e.g: xmlns:hw, xmlns:sw etc.,)
+*** xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0 is included in the xmi file, instead of other namespaces (e.g. xmlns:hw, xmlns:sw etc.,)
 *** xsi:type attributes will consists of namespace prefix as "am" in the value. Example: <br/> @<ports xsi:type="am:ComplexPort" name="Mem_1_port" bitWidth="16" direction="R" writeCycles="10" readCycles="10"/>@
 *** Root tag will have "am" as the prefix. Example: <br/> @<am:HWModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0"/>@
 * Reference pattern is changed. <br/> As there is single model namespace in 0.7.0, namespace prefix is removed before the class name (eg: "ABSMode?type=Label").
@@ -204,7 +204,7 @@ table(classic){margin-left:40px}.
 
 *Root Tag in AMALTHEA model amxmi file*: It is recommended to have "Amalthea" as a root tag in amxmi file.
 
-Based on the above statement, if the AMALTHEA model file is having sub-model tag as root element (e.g: SWModel or HWModel etc.,), as a part of model migration -> root element is changed as "Amalthea" tag and the content of sub-model is copied inside it. 
+Based on the above statement, if the AMALTHEA model file is having sub-model tag as root element (e.g. SWModel or HWModel etc.,), as a part of model migration -> root element is changed as "Amalthea" tag and the content of sub-model is copied inside it. 
 
  Input model (containing SWModel as the root tag):
  
@@ -262,8 +262,8 @@ table(classic){margin-left:40px}.
 |SchedulerSeparationConstraint|Constraints Model|Content is removed from the model. There is no equivalent  of this model element in APP4MC 0.7.1|
 |ProcessRunnableGroupEntry|Constraints Model|This element is removed from the model, but the Runnables associated to it are associated to ProcessRunnableGroup object|
 |OrderConstraint|Constraints Model|Content is removed from the model. There is no equivalent of this model element in APP4MC 0.7.1|
-|AgeConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as �Age� |
-|ReactionConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as �Reaction�|
+|AgeConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as "Age" |
+|ReactionConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as "Reaction" |
 |SynchronisationConstraint|Constraints model|Content is migrated as EventSynchronizationConstraint element|
 |SectionMapping|Mapping Model|Content is removed from the model. As per 0.7.1, there is a possibility to specify PhysicalSectionMapping element i.e. defining mapping of various Section elements to Memory|
 |SectionMappingConstraint|Property Constraints Model|Content is removed from the model.As per 0.7.1, there is a possibility to specify PhysicalSectionConstraint element i.e. defining possibility of Section allocation across various Memories |

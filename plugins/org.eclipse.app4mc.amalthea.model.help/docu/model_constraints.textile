@@ -103,7 +103,7 @@ Currently, the following execution contexts are covered by the scope:
 * Component
 * Process
 * Runnable
-This means, that it has to be guaranteed that the values of labels are identical either within the runnable, the process, or the component in which the denoted labels are accessed.
+This means that it has to be guaranteed that the values of labels are identical either within the runnable, the process, or the component in which the denoted labels are accessed.
 
 !../pictures/model_constraints_data_stability.png!
 
@@ -172,7 +172,7 @@ In addition, a __MappingType__ defines whether there is a strong ( __OneToOne__ 
 
 h4. Event Chain Latency Constraint
 
-An __EventChainLatencyConstraint__ defines how long before before each response a corresponding stimulus must have occurred ( __Age__ ), or how long after a stimulus a corresponding response must occur ( __Reaction__ ).
+An __EventChainLatencyConstraint__ defines how long before each response a corresponding stimulus must have occurred ( __Age__ ), or how long after a stimulus a corresponding response must occur ( __Reaction__ ).
 It always refers to an EventChain.
 
 !../pictures/model_constraints_timing_latency.png!

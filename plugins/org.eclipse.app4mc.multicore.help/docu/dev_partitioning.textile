@@ -12,7 +12,7 @@ The following configuration window shows the different features, which are avail
 
 Each process is described in the following sections.
 
-In order to start the partitioning, the user is intended can rightclick on an __.amxmi__ file and select the __Perform Partitioning__ command as shown in the following figure. 
+In order to start the partitioning, the user is intended can right click on an __.amxmi__ file and select the __Perform Partitioning__ command as shown in the following figure. 
 !../pictures/Partitioning/click_small.png!
 
 Alternatively, a workflow can be written (using the MWE2 eclipse workflow engine) to start the partitioning process and further define various workflows for different inputs and outputs (see example at this partitioning help's end).
@@ -22,9 +22,9 @@ With regard to the partitioning configuration, the partitioning process will per
 !(scale)../pictures/Partitioning/psteps_small.png!
 
 
-h3. Prepartitioning
+h3. Pre-Partitioning
 
-In order to perform the actual partitioning based on __DAWG__s (directed acyclic weighted graphs), various processing needs to be performed on the given input i.e. a set of runnables with label accesses, execution cycles and activations. Required processing are creating a constraints model with @RunnableSequencingConstraints@ and cycle elimination that creates @AccessPrecedences@ for each dependency that needs to be decomposed from a @RunnableSequencingConstraint@ to eliminate one or more cycles. Further adaptations can create @ProcessPrototypes@ in order to group runnables based on activation references or based on independent graphs.
+In order to perform the actual partitioning based on <i>DAWG</i>s (directed acyclic weighted graphs), various processing needs to be performed on the given input i.e. a set of runnables with label accesses, execution cycles and activations. Required processing are creating a constraints model with @RunnableSequencingConstraints@ and cycle elimination that creates @AccessPrecedences@ for each dependency that needs to be decomposed from a @RunnableSequencingConstraint@ to eliminate one or more cycles. Further adaptations can create @ProcessPrototypes@ in order to group runnables based on activation references or based on independent graphs.
 
 h4. Activation Analysis
 
@@ -38,14 +38,14 @@ The label analysis comprises the comparison of read and write accesses of all ru
 
 h4. Cycle Elimination
 
-The cycle elimination is a mandatory step for all subsequent methods and features. Topological and graph theoretical calculations require __DAWG__s, such that a cycle elimination has to be performed in advance. A cycle may occur in case two runnables share the same resource (label) in both directions, i.e. both runnables read and write the same label, or in case runnable __A__ reads label __BA__ and writes label __AB__ and runnable __B__ reads label __AB__ and writes label __BA__. Furthermore, a cycle may be formed across multiple runnables. For the purpose of finding such cycles, the external __JgraphT__ library has been added to the project, that supports finding all of these cycles. After all cycles have been identified, a specific mechanism (configurable through 'Minimal dependency decompositions for cycle elimination' in the preference page) detects edges (dependencies), which occur in multiple cycles. This mechanism iterates over edges within multiple cycles in descending order, i.e. it starts with an edge, that occurs in most cycles for ensuring minimal edge elimination. In order to retain a dependency that has been selected for elimination, such selected edges are transformed from a @RunnableSequencingConstraint@ to an @AccessPrecedence@. After edge sharing cycles have been decomposed, all cycles that do not share any edges have to be decomposed as well. For each of these cycles an edge can be identified that provides an optimal retaining graph (configurable through 'Increase parallelization potential for cycle elimination result' in the preference page). The following figure shows 7 cycle elimination possibilities with an example graph.
+The cycle elimination is a mandatory step for all subsequent methods and features. Topological and graph theoretical calculations require <i>DAWG</i>s, such that a cycle elimination has to be performed in advance. A cycle may occur in case two runnables share the same resource (label) in both directions, i.e. both runnables read and write the same label, or in case runnable __A__ reads label __BA__ and writes label __AB__ and runnable __B__ reads label __AB__ and writes label __BA__. Furthermore, a cycle may be formed across multiple runnables. For the purpose of finding such cycles, the external __JgraphT__ library has been added to the project, that supports finding all of these cycles. After all cycles have been identified, a specific mechanism (configurable through 'Minimal dependency decompositions for cycle elimination' in the preference page) detects edges (dependencies), which occur in multiple cycles. This mechanism iterates over edges within multiple cycles in descending order, i.e. it starts with an edge, that occurs in most cycles for ensuring minimal edge elimination. In order to retain a dependency that has been selected for elimination, such selected edges are transformed from a @RunnableSequencingConstraint@ to an @AccessPrecedence@. After edge sharing cycles have been decomposed, all cycles that do not share any edges have to be decomposed as well. For each of these cycles an edge can be identified that provides an optimal retaining graph (configurable through 'Increase parallelization potential for cycle elimination result' in the preference page). The following figure shows 7 cycle elimination possibilities with an example graph.
 !(scale)../pictures/Partitioning/cycle_small.png!
 Red transitions indicate edges, that are decomposed into @AccessPrecedences@ for the corresponding solution. Rretaining graphs are shown on the right side of each solution indicated by a dashed rectangle. For illustration purposes, we assume equal execution time for each runnable (letter). Solution 1 and 5 (green dashed rectangles) feature the minimal runtime for two tasks. This assessment is made with respect to topological graph structure respectively the __span__ of a graph (critical path) compared with its __parallelism__.
 
 
 h3. Partitioning Algorithms
 
-Each of the algorithms decribed in the following creates ProcessPrototypes i.e. task precursor.
+Each of the algorithms described in the following creates ProcessPrototypes i.e. task precursor.
 
 h4. Independent Graph Partitioning (GGP)
 
@@ -55,17 +55,17 @@ The independent graph identification process, or also denoted as global graph pa
 
 h4. Critical Path Partitioning (CPP)
 
-The __CPP__ approach considers node weights (i.e. arbitrary computation / execution cycles / instructions of @runnables@) and partitions __DAWG__s, whereas @runnables@ are equally distributed among an automatically determined number of partitions. The partitioning's objective is to reduce overall execution time and inter task communication. The subsequent mapping methodology further considers resource constraints (availability of hardware and software resources namely program and data memory). The system's critical path is assigned to the first partition and branches of the graph are subsequently assigned to additional partitions. The approach has been chosen, because the critical path features mandatory sequential ordering, that cannot be computed in parallel. Thus, the weight of a critical path provides a lower bound on the total time to perform all the jobs. A CPP example is shown in the following figure (left = input graph; right = partitioning result):
+The __CPP__ approach considers node weights (i.e. arbitrary computation / execution cycles / instructions of @runnables@) and partitions <i>DAWG</i>s, whereas @runnables@ are equally distributed among an automatically determined number of partitions. The partitioning's objective is to reduce overall execution time and inter-task communication. The subsequent mapping methodology further considers resource constraints (availability of hardware and software resources namely program and data memory). The system's critical path is assigned to the first partition and branches of the graph are subsequently assigned to additional partitions. The approach has been chosen, because the critical path features mandatory sequential ordering, that cannot be computed in parallel. Thus, the weight of a critical path provides a lower bound on the total time to perform all the jobs. A CPP example is shown in the following figure (left = input graph; right = partitioning result):
 
 !(scale)../pictures/Partitioning/LGP_small.png!
 
 h4. Earliest Start Schedule Partitioning (ESSP)
 
-The __ESSP__ partitioning is developed for allowing the user to restrict the number of partitiong. This may be important and useful in very large systems in order to keep the task creation and task inter communication costs low. The __ESSP__ partitioning balances runnables across partitions with respect to their causal orders. For this purpose, only runnable�s @eit@ (earliest initial time) -values are calculated, that define the sum of the longest preceding path�s instructions. The methodology picks the partition with the lowest schedule length, calculates a set of assignable @runnables@, which predecessors are already scheduled, and assignes a runnable to the current partition, that minimizes the shedule length.
+The __ESSP__ partitioning is developed for allowing the user to restrict the number of partitioning. This may be important and useful in very large systems in order to keep the task creation and task inter-communication costs low. The __ESSP__ partitioning balances runnables across partitions with respect to their causal orders. For this purpose, only runnable's @eit@ (earliest initial time) -values are calculated that define the sum of the longest preceding path's instructions. The methodology picks the partition with the lowest schedule length, calculates a set of assignable @runnables@, which predecessors are already scheduled, and assigns a runnable to the current partition that minimizes the schedule length.
 
-h4. Partitioning Exmaple
+h4. Partitioning Example
 
-The following figure illustrates the resulting partitions of the previously described algorithms based on an example graph shown on the left. On the right, the partitioning results are shown for (top) - CPP, (middle) - ESSP configurated with 2 partitions and (bottom) - ESSP for 3 partitions.
+The following figure illustrates the resulting partitions of the previously described algorithms based on an example graph shown on the left. On the right, the partitioning results are shown for (top) - CPP, (middle) - ESSP configured with 2 partitions and (bottom) - ESSP for 3 partitions.
 
 !(scale)../pictures/Partitioning/partexample.png!
 
@@ -76,13 +76,13 @@ Two further features provide graph visualizations and a different graph represen
 
 h4. Applet Generation
 
-The applet generation can be triggered with a different command in the context menu via rightclicking on an __.amxmi__ file. In case the file contains a software model with __runnables__ and a constraints model with __RunnableSequencingConstraints__, a java file will be generated, that can be executed as an applet with the help of the __JgraphT__ library. Such an applet visualizes a graph and can be adapted in an applet viewer. The following figure shows such an applet.
+The applet generation can be triggered with a different command in the context menu via right-clicking on an __.amxmi__ file. In case the file contains a software model with __runnables__ and a constraints model with __RunnableSequencingConstraints__, a java file will be generated that can be executed as an applet with the help of the __JgraphT__ library. Such an applet visualizes a graph and can be adapted in an applet viewer. The following figure shows such an applet.
 
 !(scale)../pictures/Partitioning/applet_small.png!
 
 h4. Dependency Alternative
 
-Thisfile generation feature focuses on a constraints model approach that features a different dependency representation compared with the result from the label access analysis that always features two __RunnableGroups__ with each one __RunnableGroupEntry__ entity within a __RunnableSequencingConstraint__. The approach can be adapted to feature more __RunnableGroups__ and more __RunnableGroupEntries__ and a less amount of __RunnableSequencingConstraints__, derived from the same graph. An example is expressed in the following figure.
+This file generation feature focuses on a constraints model approach that features a different dependency representation compared with the result from the label access analysis that always features two __RunnableGroups__ with each one __RunnableGroupEntry__ entity within a __RunnableSequencingConstraint__. The approach can be adapted to feature more __RunnableGroups__ and more __RunnableGroupEntries__ and a less amount of __RunnableSequencingConstraints__, derived from the same graph. An example is expressed in the following figure.
 
 !../pictures/Partitioning/TA_small.png!
 

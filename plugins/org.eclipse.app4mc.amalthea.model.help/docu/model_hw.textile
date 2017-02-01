@@ -1,7 +1,7 @@
 
 h2. Hardware model
 
-The AMALTHEA hardware model is used to described hardware systems which usually consists of ECUs, microcontrollers, cores, memories, additional peripherals etc. It is central accessible through the __HWModel__ element and contains following elements:
+The AMALTHEA hardware model is used to describe hardware systems which usually consists of ECUs, microcontrollers, cores, memories, additional peripherals etc. It is central accessible through the __HWModel__ element and contains following elements:
 
 * SystemType
 * ECUType
@@ -14,7 +14,7 @@ The AMALTHEA hardware model is used to described hardware systems which usually 
 
 h3. Structure
 
-A reduced overview of the Meta Model specifying the Hardware Model is shown below. The overall hierarchy within this model is represented by blue classes (HwSystem, ECU, Microcontroller and Core). Red classes indicate type descriptions which contain the parameters of their referencing elements, e.g. it is possible to specify a type of a core with all relevant attributes which will be referenced by core instances. This supports quick modeling of homogeneous architectures and increases the reutilization of already described hardware. Green classes represent additional hardware peripherials which can be described on each of the hardware hierarchies (HwSystem, ECU, Microcontroller and Core). 
+A reduced overview of the Meta Model specifying the Hardware Model is shown below. The overall hierarchy within this model is represented by blue classes (HwSystem, ECU, Microcontroller and Core). Red classes indicate type descriptions which contain the parameters of their referencing elements, e.g. it is possible to specify a type of a core with all relevant attributes which will be referenced by core instances. This supports quick modeling of homogeneous architectures and increases the reutilization of already described hardware. Green classes represent additional hardware peripherals which can be described on each of the hardware hierarchies (HwSystem, ECU, Microcontroller and Core). 
 
 !(scale)../pictures/model_hw_overview.png!
 

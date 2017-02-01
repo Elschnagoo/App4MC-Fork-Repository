@@ -17,7 +17,7 @@ On click of AMALTHEA Model Migration action, selected files are parsed and the f
 # Referred AMALTHEA models inside the selected model (_i.e. case of cross document references_) 
 ** AMALTHEA model version to which these models are belonging to
 
-Once the above information is sucessfully retreived, following Model Migration dialog is opened:
+Once the above information is successfully retrieved, following Model Migration dialog is opened:
 
 !(gray_scale)../pictures/ui/migration_dialog.png!
 

@@ -7,7 +7,7 @@ EMF based models are the instances of ECORE meta model (which is updated for eac
 
 As there is a tight dependency between model instance and the corresponding meta model, old EMF models can not be loaded with the newer release of meta model.
 
-bq. Example : Due to the change in the namespace of the metamodel, loading of model files from prior versions would fail with the latest version
+bq. Example : Due to the change in the namespace of the meta model, loading of model files from prior versions would fail with the latest version
 
 This problem can be solved by explicitly migrating the model files from the prior versions to be compatible to the latest meta model version
 
@@ -18,7 +18,7 @@ As described above, same scenario is also applicable for AMALTHEA models as they
 
 For each release of AMALTHEA there will be changes in the meta model contents, due to this it is not possible to load models built from previous releases of AMALTHEA into latest tool distribution.
 
-*Model Migration functionality* is part of this distribution, using this feature it is possible to convert models from previous releases (e.g: itea.1.0.3, itea.1.1.0, itea.1.1.1, 0.7.0 ,0.7.1) to the ones which are compatible to the next versions of AMALTHEA meta model.
+*Model Migration functionality* is part of this distribution, using this feature it is possible to convert models from previous releases (e.g. itea.1.0.3, itea.1.1.0, itea.1.1.1, 0.7.0, 0.7.1) to the ones which are compatible to the next versions of AMALTHEA meta model.
 
 _Only forward migration of models is supported by Model Migration functionality of AMALTHEA_
 

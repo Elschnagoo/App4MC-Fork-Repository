@@ -10,9 +10,9 @@ The top-level feature itself contains basic platform plug-ins and tools as well 
 * APP4MC Docu - Basic Help (is extended by loading other features).
 * APP4MC Examples - Examples that can be added by the example wizard.
 
-* APP4MC Multicore - Algorithms for multicore develepment like partitioning and mapping.
+* APP4MC Multicore - Algorithms for multicore development like partitioning and mapping.
 * APP4MC Tracing - Record, analyze and transform runtime traces of the embedded system.
-* APP4MC Validation - Model validations (an be selected and executed on demand).
+* APP4MC Validation - Model validations (can be selected and executed on demand).
 
 * AMALTHEA Models - AMALTHEA models (EMF).
 * AMALTHEA Edit - AMALTHEA model edit support.
@@ -35,4 +35,4 @@ For all features there also exists an SDK containing the sources. If you install
 
 h3. Plug-ins
 
-The plug-ins are organized in various namespaces. The id's of most plug-ins containing models are within the namespace @org.eclipse.app4mc.amalthea.model@, whereas examples can be found in plug-ins named @org.eclipse.app4mc.amalthea.example@.
+The plug-ins are organized in various namespaces. The ids of most plug-ins containing models are within the namespace @org.eclipse.app4mc.amalthea.model@, whereas examples can be found in plug-ins named @org.eclipse.app4mc.amalthea.example@.

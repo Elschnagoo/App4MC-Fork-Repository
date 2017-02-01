@@ -1,57 +1,57 @@
 h3. Modeling Example "Client-Server without Reply"
 
-This system architecture pattern extends the modeling example "Purely Periodic without Communication" by adding an one-way communication between tasks. It consists of two tasks T ~1~, and T ~2~. Task T ~1~ sends a message to Task T ~2~ before runnable R~1~ is called. In 20% of the cases Message 1, in 30% of the cases Message 2, in 20% of the cases Message 3, in 15% of the cases Message 4, and in 15% of the cases any other message than the previously mentioned ones is sent. Task T ~2~ reacts on the contents of the message by calling different runnables. In case of Message 1 runnable R ~2,1~, in case of Message 2 runnable R ~2,2~, in case of Message 3 runnable R ~2,3~, in case of Message 4 runnable R ~2,4~, and in case of any other message than the previous mentioned ones runnable R ~2,x~ is called as default.
+This system architecture pattern extends the modeling example "Purely Periodic without Communication" by adding an one-way communication between tasks. It consists of two tasks T<sub>1</sub>, and T<sub>2</sub>. Task T<sub>1</sub> sends a message to Task T<sub>2</sub> before runnable R<sub>1</sub> is called. In 20% of the cases Message 1, in 30% of the cases Message 2, in 20% of the cases Message 3, in 15% of the cases Message 4, and in 15% of the cases any other message than the previously mentioned ones is sent. Task T<sub>2</sub> reacts on the contents of the message by calling different runnables. In case of Message 1 runnable R<sub>2,1</sub>, in case of Message 2 runnable R<sub>2,2</sub>, in case of Message 3 runnable R<sub>2,3</sub>, in case of Message 4 runnable R<sub>2,4</sub>, and in case of any other message than the previous mentioned ones runnable R<sub>2,x</sub> is called as default.
 
 !../pictures/ExampleModeling/modeling_example_client_server.png!
 
-The table below gives a detailed specification of the tasks and their parameters. The tasks are scheduled according fixed-priority, preemptive scheduling and if not indicated otherwise, all events are active in order to get a detailed insight into the system�s behaviour.
+The table below gives a detailed specification of the tasks and their parameters. The tasks are scheduled according fixed-priority, preemptive scheduling and if not indicated otherwise, all events are active in order to get a detailed insight into the system's behavior.
 
 table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_. Task |_. Priority |_. Preemption |_. Multiple Task Activation Limit |_. Activation |\2_. Execution Time |
-|/3. T ~1~ |/3. 2 |/3. FULL |/3. 1 | Periodic |/3. R ~1~ | Uniform | 
-|<. Offset = 0 |<.Min = 9.9 * 10 ^6^ |
-|<. Recurrence = 100 * 10 ^6^ |<. Max = 10 * 10 ^6^ |
-|/15. T ~2~ |/15. 1 |/15. FULL |/15. 1 |/6. |/3. R ~2,x~ | Uniform |
+|/3. T<sub>1</sub> |/3. 2 |/3. FULL |/3. 1 | Periodic |/3. R<sub>1</sub> | Uniform | 
+|<. Offset = 0 |<.Min = 9.9 * 10<sup>6</sup> |
+|<. Recurrence = 100 * 10<sup>6</sup> |<. Max = 10 * 10<sup>6</sup> |
+|/15. T<sub>2</sub> |/15. 1 |/15. FULL |/15. 1 |/6. |/3. R<sub>2,x</sub> | Uniform |
 |<.Min = 99 |
 |<.Max = 100 |
-|/3. R ~2,1~ | Uniform |
+|/3. R<sub>2,1</sub> | Uniform |
 |<.Min = 990 |
-|<.Max = 1 * 10 ^3^ |
-| Periodic |/3. R ~2,2~ | Uniform |
-|<. Offset = 15 * 10 ^6^ |<.Min = 49.5 * 10 ^3^ |
-|<. Recurrence = 60 * 10 ^6^ |<.Max = 50 * 10 ^3^ |
-|/6. |/3. R ~2,3~ | Uniform |
-|<.Min = 990 * 10 ^3^ |
-|<.Max = 1 * 10 ^6^ |
-|/3. R ~2,4~ | Uniform |
-|<.Min = 39.6 * 10 ^6^ |
-|<.Max = 40 * 10 ^6^ |
+|<.Max = 1 * 10<sup>3</sup> |
+| Periodic |/3. R<sub>2,2</sub> | Uniform |
+|<. Offset = 15 * 10<sup>6</sup> |<.Min = 49.5 * 10<sup>3</sup> |
+|<. Recurrence = 60 * 10<sup>6</sup> |<.Max = 50 * 10<sup>3</sup> |
+|/6. |/3. R<sub>2,3</sub> | Uniform |
+|<.Min = 990 * 10<sup>3</sup> |
+|<.Max = 1 * 10<sup>6</sup> |
+|/3. R<sub>2,4</sub> | Uniform |
+|<.Min = 39.6 * 10<sup>6</sup> |
+|<.Max = 40 * 10<sup>6</sup> |
 
 In order to show the impact of changes to the model, the following consecutive variations are made to the model:
 
 - **1) Initial Task Set** := As defined by the table above.
 !../pictures/ExampleModeling/modeling_example_client_server_1.png!
 
-- **2) Exclusive Area** := For this variation, all data accesses are protected by an exclusive area. Therefore, the data accesses in T ~1~ as well as all runnables in T ~2~ (R ~2,x~, R ~2,1~, R ~2,2~, R ~2,3~, and R ~2,4~) are protected during their complete time of execution via a mutex and priority ceiling protocol. That way, blocking situations appear.
+- **2) Exclusive Area** := For this variation, all data accesses are protected by an exclusive area. Therefore, the data accesses in T<sub>1</sub> as well as all runnables in T<sub>2</sub> (R<sub>2,x</sub>, R<sub>2,1</sub>, R<sub>2,2</sub>, R<sub>2,3</sub>, and R<sub>2,4</sub>) are protected during their complete time of execution via a mutex and priority ceiling protocol. That way, blocking situations appear.
 !../pictures/ExampleModeling/modeling_example_client_server_2.png!
 
-- **3) Inter-process Activation** := As from this variation on, task T ~2~ gets activated by an inter-process activation from task T ~1~ instead of being activated periodically. The interprocess activation is performed right after the message _message_ is written in T ~2~ and consequently before the runnable R ~1~ is called. That way, a direct connection between T ~1~ and T ~2~ is established.
+- **3) Inter-process Activation** := As from this variation on, task T<sub>2</sub> gets activated by an inter-process activation from task T<sub>1</sub> instead of being activated periodically. The interprocess activation is performed right after the message _message_ is written in T<sub>2</sub> and consequently before the runnable R<sub>1</sub> is called. That way, a direct connection between T<sub>1</sub> and T<sub>2</sub> is established.
 !../pictures/ExampleModeling/modeling_example_client_server_3.png!
 
-- **4) Priority Ordering** := As from this variation on, the priority relation between task T ~1~ and T ~2~ is reversed. As a consequence, the priority of task T ~1~ is set to 1 and the priority of task T ~2~ is set to 2. That way, a switch from asynchronous to synchronous communication is considered.
+- **4) Priority Ordering** := As from this variation on, the priority relation between task T<sub>1</sub> and T<sub>2</sub> is reversed. As a consequence, the priority of task T<sub>1</sub> is set to 1 and the priority of task T<sub>2</sub> is set to 2. That way, a switch from asynchronous to synchronous communication is considered.
 !../pictures/ExampleModeling/modeling_example_client_server_4.png!
 
-- **5) Event Frequency Increase** := As from this variation on, the periodicity of T ~1~ is shortened. For this, the value for the period of task T ~1~ is cut in half to 50 * 10 ^6^ time units. That way, the utilisation of the system is increased.
+- **5) Event Frequency Increase** := As from this variation on, the periodicity of T<sub>1</sub> is shortened. For this, the value for the period of task T<sub>1</sub> is cut in half to 50 * 10<sup>6</sup> time units. That way, the utilization  of the system is increased.
 !../pictures/ExampleModeling/modeling_example_client_server_5.png!
 
-- **6) Execution Time Fluctuation** := As from this variation on, the execution time distribution is widened for both tasks. Therefore, the maximum of every uniform distribution is increased by 1 percent so that they vary now by 2 percent. That way, the utilisation of the system is increased, which results in extinct activations.
+- **6) Execution Time Fluctuation** := As from this variation on, the execution time distribution is widened for both tasks. Therefore, the maximum of every uniform distribution is increased by 1 percent so that they vary now by 2 percent. That way, the utilization  of the system is increased, which results in extinct activations.
 !../pictures/ExampleModeling/modeling_example_client_server_6.png!
 
 - **7) Activation** := As from this variation on, the maximum number of queued activation requests for both tasks is set to 2. That way, the problem with extinct activations resulting from the previous variation is solved.
 !../pictures/ExampleModeling/modeling_example_client_server_7.png!
 
-- **8) Accuracy in Logging of Data State I** := For this variation, the data accesses in task T ~1~ and task T ~2~ are omitted. Instead, the runnable entities R ~2,x~, R ~2,1~, R ~2,2~, R ~2,3~, and R ~2,4~, each representing the receipt of a specific message, are executed equally random, meaning each with a probability of 20%. That way, only a limited insight into the system�s runtime behaviour is available.
+- **8) Accuracy in Logging of Data State I** := For this variation, the data accesses in task T<sub>1</sub> and task T<sub>2</sub> are omitted. Instead, the runnable entities R<sub>2,x</sub>, R<sub>2,1</sub>, R<sub>2,2</sub>, R<sub>2,3</sub>, and R<sub>2,4</sub>, each representing the receipt of a specific message, are executed equally random, meaning each with a probability of 20%. That way, only a limited insight into the system's runtime behavior is available.
 !../pictures/ExampleModeling/modeling_example_client_server_8.png!
 
-- **9) Accuracy in Logging of Data State II** := For this variation, just task events are active. That way, only a limited insight into the system�s runtime behaviour is available.
+- **9) Accuracy in Logging of Data State II** := For this variation, just task events are active. That way, only a limited insight into the system's runtime behavior is available.
 !../pictures/ExampleModeling/modeling_example_client_server_9.png!
