@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Amalthea EMF Util
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.emf.util
-Bundle-Version: 0.7.2.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.eclipse.app4mc.amalthea.emf.util.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore,

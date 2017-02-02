@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.app4mc.amalthea.edit.sdk"
       label="APP4MC AMALTHEA Edit Support SDK"
-      version="0.7.2.qualifier"
+      version="0.8.0.qualifier"
       provider-name="Eclipse.org"
       license-feature="org.eclipse.license"
       license-feature-version="1.0.1.qualifier">
