@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -43,7 +43,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-model-doc -->
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelName='Amalthea' prefix='Amalthea' editDirectory='/org.eclipse.app4mc.amalthea.model.edit/src-gen' rootExtendsClass='org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl' providerRootExtendsClass='org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter' creationIcons='false' forceOverwrite='true' creationSubmenus='true' generateSchema='true' loadInitialization='false' dynamicTemplates='true' templateDirectory='org.eclipse.app4mc.amalthea.model/templates' copyrightText='*******************************************************************************\r\n Copyright (c) 2016 Robert Bosch GmbH and others.\r\n All rights reserved. This program and the accompanying materials\r\n are made available under the terms of the Eclipse Public License v1.0\r\n which accompanies this distribution, and is available at\r\n http://www.eclipse.org/legal/epl-v10.html\r\n\r\n    Generated using Eclipse EMF\r\n\r\n*******************************************************************************' basePackage='org.eclipse.app4mc.amalthea'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelName='Amalthea' prefix='Amalthea' editDirectory='/org.eclipse.app4mc.amalthea.model.edit/src-gen' rootExtendsClass='org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl' providerRootExtendsClass='org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter' creationIcons='false' forceOverwrite='true' creationSubmenus='true' generateSchema='true' loadInitialization='false' dynamicTemplates='true' templateDirectory='org.eclipse.app4mc.amalthea.model/templates' copyrightText='*******************************************************************************\r\n Copyright (c) 2017 Robert Bosch GmbH and others.\r\n All rights reserved. This program and the accompanying materials\r\n are made available under the terms of the Eclipse Public License v1.0\r\n which accompanies this distribution, and is available at\r\n http://www.eclipse.org/legal/epl-v10.html\r\n\r\n    Generated using Eclipse EMF\r\n\r\n*******************************************************************************' basePackage='org.eclipse.app4mc.amalthea'"
  * @generated
  */
 public interface AmaltheaPackage extends EPackage {
@@ -61,7 +61,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://app4mc.eclipse.org/amalthea/0.7.2";
+	String eNS_URI = "http://app4mc.eclipse.org/amalthea/0.8.0";
 
 	/**
 	 * The package namespace name.
