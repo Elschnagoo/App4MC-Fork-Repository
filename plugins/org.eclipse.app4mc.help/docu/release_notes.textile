@@ -1,5 +1,10 @@
 h1. Release Notes
 
+h2. Eclipse APP4MC 0.8.0 (Apr 2017)
+
+__{color:red}under development__
+
+
 h2. Eclipse APP4MC 0.7.2 (Jan 2017)
 
 General

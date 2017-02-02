@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2015 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ public class AmaltheaMetaModelDescriptor extends AbstractMetaModelDescriptor {
 
 	private static final String NAME = "AMALTHEA Model";//$NON-NLS-1$
 
-	private static final String BASE_NAMESPACE = "http://app4mc.eclipse.org/amalthea/0.7.2";
+	private static final String BASE_NAMESPACE = "http://app4mc.eclipse.org/amalthea/0.8.0";
 
 	// Old definition with subpackages -> no longer required
 	// private static final String POSTFIX_PATTERN =
