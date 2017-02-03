@@ -210,6 +210,7 @@ public class ModelMigrationJob extends Job {
 		versions.add("0.7.0");
 		versions.add("0.7.1");
 		versions.add("0.7.2");
+		versions.add("0.8.0");
 
 		final int inputModelVersionIndex = versions.indexOf(inputModelVersion);
 		final int outputModelVersionIndex = versions.indexOf(outputModelVersion);
