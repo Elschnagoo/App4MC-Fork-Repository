@@ -13,12 +13,14 @@ package org.eclipse.app4mc.multicore.openmapping.handlers;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.SWModel;
+import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractMappingAlgorithm;
 import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -35,7 +37,9 @@ public class PerformMappingJob extends Job {
 	// final private URI pathOsModel;
 	// final private URI pathMmModel;
 	final private URI path;
+	private CommonElements commonElementsModel;
 	private SWModel swModel;
+	private StimuliModel stimuliModel;
 	private PropertyConstraintsModel pcModel;
 	private HWModel hwModel;
 	private OSModel osModel;
@@ -102,12 +106,21 @@ public class PerformMappingJob extends Job {
 					.logCon("There seems to be no software model in the specified file.\nExiting...");
 			return false;
 		}
-		// Check for the PC model after the Sw model, note that this check is
-		// against NOT null!
+		if ((this.stimuliModel = UniversalHandler.getInstance().getStimuliModel()) == null) {
+			UniversalHandler.getInstance()
+					.logCon("There seems to be no Stimulation model in the specified file.\nExiting...");
+			return false;
+		}
+		// Non-mandatory Models, note that this check is against NOT null!
+		if((this.commonElementsModel = UniversalHandler.getInstance().getCommonElements()) != null) {
+			this.mappingAlgorithm.setCommonElements(this.commonElementsModel);
+			UniversalHandler.getInstance().logCon("CommonElements Model set.");
+		}
 		if ((this.pcModel = UniversalHandler.getInstance().getPropertyConstraintsModel()) != null) {
 			this.mappingAlgorithm.setPropertyConstraintsModel(this.pcModel);
 			UniversalHandler.getInstance().logCon("PropertyConstraints Model set.");
 		}
+		
 		UniversalHandler.getInstance().readModels(this.pathHwModel, true);
 		if ((this.hwModel = UniversalHandler.getInstance().getHwModel()) == null) {
 			UniversalHandler.getInstance()
@@ -141,11 +154,11 @@ public class PerformMappingJob extends Job {
 		}
 
 		final Amalthea cen = AmaltheaFactory.eINSTANCE.createAmalthea();
-		cen.setCommonElements(UniversalHandler.getInstance().getCommonElements());
-		cen.setSwModel(UniversalHandler.getInstance().getSwModel());
-		cen.setHwModel(UniversalHandler.getInstance().getHwModel());
-		cen.setConstraintsModel(UniversalHandler.getInstance().getConstraintsModel());
-		cen.setStimuliModel(UniversalHandler.getInstance().getStimuliModel());
+		cen.setCommonElements(this.commonElementsModel);
+		cen.setSwModel(this.swModel);
+		cen.setHwModel(this.hwModel);
+		cen.setConstraintsModel(this.conModel);
+		cen.setStimuliModel(this.stimuliModel);
 		
 		cen.setMappingModel(this.mmModel);
 		cen.setOsModel(this.osModel);

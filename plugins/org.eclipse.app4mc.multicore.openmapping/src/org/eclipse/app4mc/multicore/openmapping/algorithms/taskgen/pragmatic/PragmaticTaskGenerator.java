@@ -27,6 +27,8 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
+import org.eclipse.app4mc.amalthea.model.Sporadic;
+import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
@@ -83,37 +85,53 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 			final Activation activation = activations.next();
 
 			if (activation instanceof PeriodicActivation) {
-				// Periodic activation element
-				final PeriodicActivation entry = (PeriodicActivation) activation;
-				final String name = entry.getName();
-				UniversalHandler.getInstance().logCon("Connverting Periodic Activation Element '" + name);
-
-				final Periodic stimuliPeriodic = getStimuliInstance().createPeriodic();
-				stimuliPeriodic.setName(name);
-
-				if (entry.getOffset() != null) {
-					stimuliPeriodic.setOffset(EcoreUtil.copy(entry.getOffset()));
-				}
-				if (entry.getMax() != null) {
-					stimuliPeriodic.setRecurrence(EcoreUtil.copy(entry.getMax()));
-				}
-				if (entry.getMin() != null) {
-					stimuliPeriodic.setRecurrence(EcoreUtil.copy(entry.getMin()));
-				}
-				if (entry.getDeadline() != null) {
-					stimuliPeriodic.setRecurrence(EcoreUtil.copy(entry.getDeadline()));
-				}
-				
-				// TODO More attributes may need to be converted/generated
-
+				final Periodic stimuliPeriodic = convertPeriodicActivation((PeriodicActivation) activation);
 				getStimuliModel().getStimuli().add(stimuliPeriodic);
-				this.mActivationStimuli.put(entry, stimuliPeriodic);
-			}
-			else {
+				this.mActivationStimuli.put(activation, stimuliPeriodic);
+			} else if (activation instanceof SporadicActivation) {
+				final Sporadic stimuliSporadic = convertSporadicActivation((SporadicActivation) activation);
+				getStimuliModel().getStimuli().add(stimuliSporadic);
+				this.mActivationStimuli.put(activation, stimuliSporadic);
+			} else {
 				UniversalHandler.getInstance().log("Unhandled Activation element.\nSkipping...", null);
 			}
 		}
 		return true;
+	}
+
+	private Periodic convertPeriodicActivation(final PeriodicActivation activation) {
+		// Periodic activation element
+		final String name = activation.getName();
+		UniversalHandler.getInstance().logCon("Connverting Periodic Activation Element '" + name);
+
+		final Periodic stimuliPeriodic = getStimuliInstance().createPeriodic();
+		stimuliPeriodic.setName(name);
+
+		if (activation.getOffset() != null) {
+			stimuliPeriodic.setOffset(EcoreUtil.copy(activation.getOffset()));
+		}
+		if (activation.getMax() != null) {
+			stimuliPeriodic.setRecurrence(EcoreUtil.copy(activation.getMax()));
+		}
+		if (activation.getMin() != null) {
+			stimuliPeriodic.setRecurrence(EcoreUtil.copy(activation.getMin()));
+		}
+		if (activation.getDeadline() != null) {
+			stimuliPeriodic.setRecurrence(EcoreUtil.copy(activation.getDeadline()));
+		}
+
+		return stimuliPeriodic;
+	}
+
+	private Sporadic convertSporadicActivation(final SporadicActivation activation) {
+		final String name = activation.getName();
+		UniversalHandler.getInstance().logCon("Connverting Sporiadic Activation Element '" + name);
+
+		final Sporadic stimuliSporadic = getStimuliInstance().createSporadic();
+		stimuliSporadic.setName(name);
+		
+		return stimuliSporadic;
+
 	}
 
 	private void processRunnableSequencingConstraint(final RunnableSequencingConstraint rsc) {
@@ -138,7 +156,7 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 					null);
 			return;
 		}
-		
+
 		// Has each entry a process scope?
 		if (1 != rsc.getProcessScope().size()) {
 			UniversalHandler.getInstance().log(
@@ -149,9 +167,9 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 
 		final Runnable originRunnable = originGroup.getRunnables().get(0);
 		final Runnable targetRunnable = targetGroup.getRunnables().get(0);
-		
+
 		final AbstractProcess abstractProcess = rsc.getProcessScope().get(0);
-		
+
 		// Is this reference to ProcessPrototypes?
 		if (false == (abstractProcess instanceof ProcessPrototype)) {
 			UniversalHandler.getInstance().log(
@@ -161,7 +179,7 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 		}
 
 		final ProcessPrototype processPrototype = (ProcessPrototype) abstractProcess;
-		
+
 		// Now, check if both Entries have the Runnable reference set
 		if (originRunnable == null || targetRunnable == null) {
 			UniversalHandler.getInstance().log(
@@ -186,8 +204,8 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 					null);
 			return false;
 		}
-		UniversalHandler.getInstance().logCon("Found "
-				+ getConstraintsModel().getRunnableSequencingConstraints().size() + " Sequencing Constraint(s)");
+		UniversalHandler.getInstance().logCon("Found " + getConstraintsModel().getRunnableSequencingConstraints().size()
+				+ " Sequencing Constraint(s)");
 
 		final Iterator<RunnableSequencingConstraint> lRsc = getConstraintsModel().getRunnableSequencingConstraints()
 				.iterator();
