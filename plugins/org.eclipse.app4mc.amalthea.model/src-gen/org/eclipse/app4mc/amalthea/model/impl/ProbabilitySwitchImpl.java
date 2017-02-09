@@ -16,8 +16,8 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
+import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -31,18 +31,18 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Probabiltity Switch</b></em>'.
+ * An implementation of the model object '<em><b>Probability Switch</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProbabiltitySwitchImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProbabilitySwitchImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ProbabiltitySwitchImpl extends GraphEntryBaseImpl implements ProbabiltitySwitch {
+public class ProbabilitySwitchImpl extends GraphEntryBaseImpl implements ProbabilitySwitch {
 	/**
 	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -58,7 +58,7 @@ public class ProbabiltitySwitchImpl extends GraphEntryBaseImpl implements Probab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProbabiltitySwitchImpl() {
+	protected ProbabilitySwitchImpl() {
 		super();
 	}
 
@@ -69,7 +69,7 @@ public class ProbabiltitySwitchImpl extends GraphEntryBaseImpl implements Probab
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getProbabiltitySwitch();
+		return AmaltheaPackage.eINSTANCE.getProbabilitySwitch();
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class ProbabiltitySwitchImpl extends GraphEntryBaseImpl implements Probab
 	 */
 	public EList<ProbabilitySwitchEntry<GraphEntryBase>> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList<ProbabilitySwitchEntry<GraphEntryBase>>(ProbabilitySwitchEntry.class, this, AmaltheaPackage.PROBABILTITY_SWITCH__ENTRIES);
+			entries = new EObjectContainmentEList<ProbabilitySwitchEntry<GraphEntryBase>>(ProbabilitySwitchEntry.class, this, AmaltheaPackage.PROBABILITY_SWITCH__ENTRIES);
 		}
 		return entries;
 	}
@@ -92,7 +92,7 @@ public class ProbabiltitySwitchImpl extends GraphEntryBaseImpl implements Probab
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILTITY_SWITCH__ENTRIES:
+			case AmaltheaPackage.PROBABILITY_SWITCH__ENTRIES:
 				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -106,7 +106,7 @@ public class ProbabiltitySwitchImpl extends GraphEntryBaseImpl implements Probab
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILTITY_SWITCH__ENTRIES:
+			case AmaltheaPackage.PROBABILITY_SWITCH__ENTRIES:
 				return getEntries();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -121,7 +121,7 @@ public class ProbabiltitySwitchImpl extends GraphEntryBaseImpl implements Probab
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILTITY_SWITCH__ENTRIES:
+			case AmaltheaPackage.PROBABILITY_SWITCH__ENTRIES:
 				getEntries().clear();
 				getEntries().addAll((Collection<? extends ProbabilitySwitchEntry<GraphEntryBase>>)newValue);
 				return;
@@ -137,7 +137,7 @@ public class ProbabiltitySwitchImpl extends GraphEntryBaseImpl implements Probab
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILTITY_SWITCH__ENTRIES:
+			case AmaltheaPackage.PROBABILITY_SWITCH__ENTRIES:
 				getEntries().clear();
 				return;
 		}
@@ -152,10 +152,10 @@ public class ProbabiltitySwitchImpl extends GraphEntryBaseImpl implements Probab
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILTITY_SWITCH__ENTRIES:
+			case AmaltheaPackage.PROBABILITY_SWITCH__ENTRIES:
 				return entries != null && !entries.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ProbabiltitySwitchImpl
+} //ProbabilitySwitchImpl

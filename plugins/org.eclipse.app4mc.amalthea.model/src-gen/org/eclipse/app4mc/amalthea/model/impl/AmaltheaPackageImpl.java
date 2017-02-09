@@ -250,8 +250,8 @@ import org.eclipse.app4mc.amalthea.model.Preemption;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
+import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessChain;
 import org.eclipse.app4mc.amalthea.model.ProcessChainEvent;
@@ -2184,7 +2184,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass probabiltitySwitchEClass = null;
+	private EClass probabilitySwitchEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -9514,8 +9514,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getProbabiltitySwitch() {
-		return probabiltitySwitchEClass;
+	public EClass getProbabilitySwitch() {
+		return probabilitySwitchEClass;
 	}
 
 	/**
@@ -9523,8 +9523,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProbabiltitySwitch_Entries() {
-		return (EReference)probabiltitySwitchEClass.getEStructuralFeatures().get(0);
+	public EReference getProbabilitySwitch_Entries() {
+		return (EReference)probabilitySwitchEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -12655,8 +12655,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		modeSwitchDefaultEClass = createEClass(MODE_SWITCH_DEFAULT);
 		createEReference(modeSwitchDefaultEClass, MODE_SWITCH_DEFAULT__ITEMS);
 
-		probabiltitySwitchEClass = createEClass(PROBABILTITY_SWITCH);
-		createEReference(probabiltitySwitchEClass, PROBABILTITY_SWITCH__ENTRIES);
+		probabilitySwitchEClass = createEClass(PROBABILITY_SWITCH);
+		createEReference(probabilitySwitchEClass, PROBABILITY_SWITCH__ENTRIES);
 
 		probabilitySwitchEntryEClass = createEClass(PROBABILITY_SWITCH_ENTRY);
 		createEAttribute(probabilitySwitchEntryEClass, PROBABILITY_SWITCH_ENTRY__PROBABILITY);
@@ -13284,7 +13284,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		modeSwitchEClass.getESuperTypes().add(this.getGraphEntryBase());
 		modeSwitchEntryEClass.getESuperTypes().add(this.getBaseObject());
 		modeSwitchDefaultEClass.getESuperTypes().add(this.getBaseObject());
-		probabiltitySwitchEClass.getESuperTypes().add(this.getGraphEntryBase());
+		probabilitySwitchEClass.getESuperTypes().add(this.getGraphEntryBase());
 		probabilitySwitchEntryEClass.getESuperTypes().add(this.getBaseObject());
 		counterEClass.getESuperTypes().add(this.getBaseObject());
 		callSequenceItemEClass.getESuperTypes().add(this.getBaseObject());
@@ -14392,11 +14392,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		g1 = createEGenericType(modeSwitchDefaultEClass_T);
 		initEReference(getModeSwitchDefault_Items(), g1, null, "items", null, 0, -1, ModeSwitchDefault.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(probabiltitySwitchEClass, ProbabiltitySwitch.class, "ProbabiltitySwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(probabilitySwitchEClass, ProbabilitySwitch.class, "ProbabilitySwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getProbabilitySwitchEntry());
 		g2 = createEGenericType(this.getGraphEntryBase());
 		g1.getETypeArguments().add(g2);
-		initEReference(getProbabiltitySwitch_Entries(), g1, null, "entries", null, 0, -1, ProbabiltitySwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProbabilitySwitch_Entries(), g1, null, "entries", null, 0, -1, ProbabilitySwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(probabilitySwitchEntryEClass, ProbabilitySwitchEntry.class, "ProbabilitySwitchEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProbabilitySwitchEntry_Probability(), theEcorePackage.getEDouble(), "probability", "0.0", 0, 1, ProbabilitySwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

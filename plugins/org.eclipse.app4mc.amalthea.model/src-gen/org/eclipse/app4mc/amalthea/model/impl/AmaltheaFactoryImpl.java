@@ -209,8 +209,8 @@ import org.eclipse.app4mc.amalthea.model.Preemption;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
+import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessChain;
 import org.eclipse.app4mc.amalthea.model.ProcessChainEvent;
@@ -559,7 +559,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.MODE_SWITCH: return createModeSwitch();
 			case AmaltheaPackage.MODE_SWITCH_ENTRY: return createModeSwitchEntry();
 			case AmaltheaPackage.MODE_SWITCH_DEFAULT: return createModeSwitchDefault();
-			case AmaltheaPackage.PROBABILTITY_SWITCH: return createProbabiltitySwitch();
+			case AmaltheaPackage.PROBABILITY_SWITCH: return createProbabilitySwitch();
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY: return createProbabilitySwitchEntry();
 			case AmaltheaPackage.COUNTER: return createCounter();
 			case AmaltheaPackage.WAIT_EVENT: return createWaitEvent();
@@ -2787,9 +2787,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProbabiltitySwitch createProbabiltitySwitch() {
-		ProbabiltitySwitchImpl probabiltitySwitch = new ProbabiltitySwitchImpl();
-		return probabiltitySwitch;
+	public ProbabilitySwitch createProbabilitySwitch() {
+		ProbabilitySwitchImpl probabilitySwitch = new ProbabilitySwitchImpl();
+		return probabilitySwitch;
 	}
 
 	/**

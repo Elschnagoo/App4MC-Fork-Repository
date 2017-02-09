@@ -4521,26 +4521,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitch} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProbabiltitySwitchItemProvider probabiltitySwitchItemProvider;
+	protected ProbabilitySwitchItemProvider probabilitySwitchItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitch}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createProbabiltitySwitchAdapter() {
-		if (probabiltitySwitchItemProvider == null) {
-			probabiltitySwitchItemProvider = new ProbabiltitySwitchItemProvider(this);
+	public Adapter createProbabilitySwitchAdapter() {
+		if (probabilitySwitchItemProvider == null) {
+			probabilitySwitchItemProvider = new ProbabilitySwitchItemProvider(this);
 		}
 
-		return probabiltitySwitchItemProvider;
+		return probabilitySwitchItemProvider;
 	}
 
 	/**
@@ -6102,7 +6102,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (modeSwitchItemProvider != null) modeSwitchItemProvider.dispose();
 		if (modeSwitchEntryItemProvider != null) modeSwitchEntryItemProvider.dispose();
 		if (modeSwitchDefaultItemProvider != null) modeSwitchDefaultItemProvider.dispose();
-		if (probabiltitySwitchItemProvider != null) probabiltitySwitchItemProvider.dispose();
+		if (probabilitySwitchItemProvider != null) probabilitySwitchItemProvider.dispose();
 		if (probabilitySwitchEntryItemProvider != null) probabilitySwitchEntryItemProvider.dispose();
 		if (counterItemProvider != null) counterItemProvider.dispose();
 		if (waitEventItemProvider != null) waitEventItemProvider.dispose();

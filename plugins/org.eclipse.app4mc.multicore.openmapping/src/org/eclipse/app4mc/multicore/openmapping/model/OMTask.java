@@ -20,7 +20,7 @@ import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.Periodic;
-import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
+import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -119,7 +119,7 @@ public class OMTask {
 			}
 
 			// ProbabilitySwitch
-			else if (graphEntry instanceof ProbabiltitySwitch) {
+			else if (graphEntry instanceof ProbabilitySwitch) {
 				UniversalHandler.getInstance().log(
 						"GraphEntry specialisation ProbabiltitySwitch is not supported. Skipping...", null,
 						IStatus.WARNING);

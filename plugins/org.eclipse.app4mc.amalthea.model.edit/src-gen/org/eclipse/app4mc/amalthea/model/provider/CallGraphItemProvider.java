@@ -166,7 +166,7 @@ public class CallGraphItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getCallGraph_GraphEntries(),
-				 AmaltheaFactory.eINSTANCE.createProbabiltitySwitch()));
+				 AmaltheaFactory.eINSTANCE.createProbabilitySwitch()));
 	}
 
 }

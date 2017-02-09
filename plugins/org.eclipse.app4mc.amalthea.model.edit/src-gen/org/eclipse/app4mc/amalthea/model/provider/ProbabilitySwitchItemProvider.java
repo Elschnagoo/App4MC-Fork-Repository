@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
+import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -29,19 +29,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitch} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ProbabiltitySwitchItemProvider extends GraphEntryBaseItemProvider {
+public class ProbabilitySwitchItemProvider extends GraphEntryBaseItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProbabiltitySwitchItemProvider(AdapterFactory adapterFactory) {
+	public ProbabilitySwitchItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -72,7 +72,7 @@ public class ProbabiltitySwitchItemProvider extends GraphEntryBaseItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getProbabiltitySwitch_Entries());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getProbabilitySwitch_Entries());
 		}
 		return childrenFeatures;
 	}
@@ -91,14 +91,14 @@ public class ProbabiltitySwitchItemProvider extends GraphEntryBaseItemProvider {
 	}
 
 	/**
-	 * This returns ProbabiltitySwitch.gif.
+	 * This returns ProbabilitySwitch.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProbabiltitySwitch"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProbabilitySwitch"));
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class ProbabiltitySwitchItemProvider extends GraphEntryBaseItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ProbabiltitySwitch_type");
+		return getString("_UI_ProbabilitySwitch_type");
 	}
 	
 
@@ -134,8 +134,8 @@ public class ProbabiltitySwitchItemProvider extends GraphEntryBaseItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ProbabiltitySwitch.class)) {
-			case AmaltheaPackage.PROBABILTITY_SWITCH__ENTRIES:
+		switch (notification.getFeatureID(ProbabilitySwitch.class)) {
+			case AmaltheaPackage.PROBABILITY_SWITCH__ENTRIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -155,7 +155,7 @@ public class ProbabiltitySwitchItemProvider extends GraphEntryBaseItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getProbabiltitySwitch_Entries(),
+				(AmaltheaPackage.eINSTANCE.getProbabilitySwitch_Entries(),
 				 AmaltheaFactory.eINSTANCE.createProbabilitySwitchEntry()));
 	}
 

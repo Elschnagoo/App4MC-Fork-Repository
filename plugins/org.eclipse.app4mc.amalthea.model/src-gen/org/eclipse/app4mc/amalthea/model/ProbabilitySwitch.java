@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Probabiltity Switch</b></em>'.
+ * A representation of the model object '<em><b>Probability Switch</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -27,14 +27,14 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitch#getEntries <em>Entries</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabiltitySwitch()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabilitySwitch()
  * @model
  * @generated
  */
-public interface ProbabiltitySwitch extends GraphEntryBase {
+public interface ProbabilitySwitch extends GraphEntryBase {
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry}&lt;org.eclipse.app4mc.amalthea.model.GraphEntryBase>.
@@ -45,10 +45,10 @@ public interface ProbabiltitySwitch extends GraphEntryBase {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabiltitySwitch_Entries()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabilitySwitch_Entries()
 	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ProbabilitySwitchEntry<GraphEntryBase>> getEntries();
 
-} // ProbabiltitySwitch
+} // ProbabilitySwitch

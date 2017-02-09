@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EGenericType;
@@ -172,7 +171,7 @@ public class EcoreGenericsHelper {
 		// see CallGraphItemProvider
 		childObjects.add(factory.createCallSequence());
 		childObjects.add(factory.createModeSwitch());
-		childObjects.add(factory.createProbabiltitySwitch());
+		childObjects.add(factory.createProbabilitySwitch());
 	
 		for (EObject child : childObjects) {
 			newChildDescriptors.add(new CommandParameter(null, feature, child));			

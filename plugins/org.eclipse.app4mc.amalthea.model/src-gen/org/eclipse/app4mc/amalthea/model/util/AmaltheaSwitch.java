@@ -221,8 +221,8 @@ import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
+import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessChain;
 import org.eclipse.app4mc.amalthea.model.ProcessChainEvent;
@@ -2595,12 +2595,12 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.PROBABILTITY_SWITCH: {
-				ProbabiltitySwitch probabiltitySwitch = (ProbabiltitySwitch)theEObject;
-				T1 result = caseProbabiltitySwitch(probabiltitySwitch);
-				if (result == null) result = caseGraphEntryBase(probabiltitySwitch);
-				if (result == null) result = caseBaseObject(probabiltitySwitch);
-				if (result == null) result = caseIAnnotatable(probabiltitySwitch);
+			case AmaltheaPackage.PROBABILITY_SWITCH: {
+				ProbabilitySwitch probabilitySwitch = (ProbabilitySwitch)theEObject;
+				T1 result = caseProbabilitySwitch(probabilitySwitch);
+				if (result == null) result = caseGraphEntryBase(probabilitySwitch);
+				if (result == null) result = caseBaseObject(probabilitySwitch);
+				if (result == null) result = caseIAnnotatable(probabilitySwitch);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -7020,17 +7020,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Probabiltity Switch</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Probability Switch</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Probabiltity Switch</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Probability Switch</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProbabiltitySwitch(ProbabiltitySwitch object) {
+	public T1 caseProbabilitySwitch(ProbabilitySwitch object) {
 		return null;
 	}
 

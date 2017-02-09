@@ -1778,13 +1778,13 @@ public interface AmaltheaFactory extends EFactory {
 	<T> ModeSwitchDefault<T> createModeSwitchDefault();
 
 	/**
-	 * Returns a new object of class '<em>Probabiltity Switch</em>'.
+	 * Returns a new object of class '<em>Probability Switch</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Probabiltity Switch</em>'.
+	 * @return a new object of class '<em>Probability Switch</em>'.
 	 * @generated
 	 */
-	ProbabiltitySwitch createProbabiltitySwitch();
+	ProbabilitySwitch createProbabilitySwitch();
 
 	/**
 	 * Returns a new object of class '<em>Probability Switch Entry</em>'.

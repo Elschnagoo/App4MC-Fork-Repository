@@ -4328,7 +4328,7 @@ It describes a path of the switch and the required mode values to use this path<
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeSwitchDefault" type="am:ModeSwitchDefault"/>
-  <xsd:complexType name="ProbabiltitySwitch">
+  <xsd:complexType name="ProbabilitySwitch">
     <xsd:annotation>
       <xsd:documentation>A switch in the call graph, each path has a probability</xsd:documentation>
     </xsd:annotation>
@@ -4340,7 +4340,7 @@ It describes a path of the switch and the required mode values to use this path<
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ProbabiltitySwitch" type="am:ProbabiltitySwitch">
+  <xsd:element name="ProbabilitySwitch" type="am:ProbabilitySwitch">
     <xsd:annotation>
       <xsd:documentation>A switch in the call graph, each path has a probability</xsd:documentation>
     </xsd:annotation>

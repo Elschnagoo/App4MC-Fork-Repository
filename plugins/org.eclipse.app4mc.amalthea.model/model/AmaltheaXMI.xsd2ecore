@@ -1762,10 +1762,10 @@
       <nested inputs="amalthea.xcore#/EPackage/ModeSwitchDefault/items" outputs="AmaltheaXMI.xsd#//ModeSwitchDefault;XSDComplexTypeDefinition=254/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/ModeSwitchDefault" outputs="AmaltheaXMI.xsd#//ModeSwitchDefault;XSDElementDeclaration=254"/>
-    <nested inputs="amalthea.xcore#/EPackage/ProbabiltitySwitch" outputs="AmaltheaXMI.xsd#//ProbabiltitySwitch;XSDComplexTypeDefinition=255">
-      <nested inputs="amalthea.xcore#/EPackage/ProbabiltitySwitch/entries" outputs="AmaltheaXMI.xsd#//ProbabiltitySwitch;XSDComplexTypeDefinition=255/XSDParticle/XSDModelGroup/XSDParticle"/>
+    <nested inputs="amalthea.xcore#/EPackage/ProbabilitySwitch" outputs="AmaltheaXMI.xsd#//ProbabilitySwitch;XSDComplexTypeDefinition=255">
+      <nested inputs="amalthea.xcore#/EPackage/ProbabilitySwitch/entries" outputs="AmaltheaXMI.xsd#//ProbabilitySwitch;XSDComplexTypeDefinition=255/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/ProbabiltitySwitch" outputs="AmaltheaXMI.xsd#//ProbabiltitySwitch;XSDElementDeclaration=255"/>
+    <nested inputs="amalthea.xcore#/EPackage/ProbabilitySwitch" outputs="AmaltheaXMI.xsd#//ProbabilitySwitch;XSDElementDeclaration=255"/>
     <nested inputs="amalthea.xcore#/EPackage/ProbabilitySwitchEntry" outputs="AmaltheaXMI.xsd#//ProbabilitySwitchEntry;XSDComplexTypeDefinition=256">
       <nested inputs="amalthea.xcore#/EPackage/ProbabilitySwitchEntry/probability"
           outputs="AmaltheaXMI.xsd#//ProbabilitySwitchEntry;XSDComplexTypeDefinition=256/XSDAttributeUse"/>

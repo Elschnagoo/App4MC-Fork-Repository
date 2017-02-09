@@ -2657,7 +2657,7 @@ class ModeSwitchDefault<T> extends BaseObject
 /*
  * A switch in the call graph, each path has a probability
  */
-class ProbabiltitySwitch extends GraphEntryBase
+class ProbabilitySwitch extends GraphEntryBase
 {
 	contains ProbabilitySwitchEntry<GraphEntryBase>[] entries
 }

@@ -221,8 +221,8 @@ import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
+import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessChain;
 import org.eclipse.app4mc.amalthea.model.ProcessChainEvent;
@@ -1414,8 +1414,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createModeSwitchDefaultAdapter();
 			}
 			@Override
-			public Adapter caseProbabiltitySwitch(ProbabiltitySwitch object) {
-				return createProbabiltitySwitchAdapter();
+			public Adapter caseProbabilitySwitch(ProbabilitySwitch object) {
+				return createProbabilitySwitchAdapter();
 			}
 			@Override
 			public <T> Adapter caseProbabilitySwitchEntry(ProbabilitySwitchEntry<T> object) {
@@ -5260,16 +5260,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch <em>Probabiltity Switch</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitch <em>Probability Switch</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch
+	 * @see org.eclipse.app4mc.amalthea.model.ProbabilitySwitch
 	 * @generated
 	 */
-	public Adapter createProbabiltitySwitchAdapter() {
+	public Adapter createProbabilitySwitchAdapter() {
 		return null;
 	}
 

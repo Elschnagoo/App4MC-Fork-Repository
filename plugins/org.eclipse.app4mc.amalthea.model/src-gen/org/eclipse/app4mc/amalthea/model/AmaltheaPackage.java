@@ -18650,14 +18650,14 @@ public interface AmaltheaPackage extends EPackage {
 	int MODE_SWITCH_DEFAULT_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ProbabiltitySwitchImpl <em>Probabiltity Switch</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ProbabilitySwitchImpl <em>Probability Switch</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ProbabiltitySwitchImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProbabiltitySwitch()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ProbabilitySwitchImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProbabilitySwitch()
 	 * @generated
 	 */
-	int PROBABILTITY_SWITCH = 255;
+	int PROBABILITY_SWITCH = 255;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18666,7 +18666,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROBABILTITY_SWITCH__CUSTOM_PROPERTIES = GRAPH_ENTRY_BASE__CUSTOM_PROPERTIES;
+	int PROBABILITY_SWITCH__CUSTOM_PROPERTIES = GRAPH_ENTRY_BASE__CUSTOM_PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
@@ -18675,25 +18675,25 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROBABILTITY_SWITCH__ENTRIES = GRAPH_ENTRY_BASE_FEATURE_COUNT + 0;
+	int PROBABILITY_SWITCH__ENTRIES = GRAPH_ENTRY_BASE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Probabiltity Switch</em>' class.
+	 * The number of structural features of the '<em>Probability Switch</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROBABILTITY_SWITCH_FEATURE_COUNT = GRAPH_ENTRY_BASE_FEATURE_COUNT + 1;
+	int PROBABILITY_SWITCH_FEATURE_COUNT = GRAPH_ENTRY_BASE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Probabiltity Switch</em>' class.
+	 * The number of operations of the '<em>Probability Switch</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROBABILTITY_SWITCH_OPERATION_COUNT = GRAPH_ENTRY_BASE_OPERATION_COUNT + 0;
+	int PROBABILITY_SWITCH_OPERATION_COUNT = GRAPH_ENTRY_BASE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ProbabilitySwitchEntryImpl <em>Probability Switch Entry</em>}' class.
@@ -31555,25 +31555,25 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getModeSwitchDefault_Items();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch <em>Probabiltity Switch</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitch <em>Probability Switch</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Probabiltity Switch</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch
+	 * @return the meta object for class '<em>Probability Switch</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ProbabilitySwitch
 	 * @generated
 	 */
-	EClass getProbabiltitySwitch();
+	EClass getProbabilitySwitch();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch#getEntries <em>Entries</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitch#getEntries <em>Entries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Entries</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch#getEntries()
-	 * @see #getProbabiltitySwitch()
+	 * @see org.eclipse.app4mc.amalthea.model.ProbabilitySwitch#getEntries()
+	 * @see #getProbabilitySwitch()
 	 * @generated
 	 */
-	EReference getProbabiltitySwitch_Entries();
+	EReference getProbabilitySwitch_Entries();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry <em>Probability Switch Entry</em>}'.
