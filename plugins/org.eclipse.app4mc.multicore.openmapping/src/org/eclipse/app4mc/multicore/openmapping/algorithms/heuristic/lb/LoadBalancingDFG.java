@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractMappingAlgorithm;
-import org.eclipse.app4mc.multicore.openmapping.algorithms.SimpleListBuilder;
+import org.eclipse.app4mc.multicore.openmapping.algorithms.helper.ListBuilder;
 import org.eclipse.app4mc.multicore.openmapping.model.AmaltheaModelBuilder;
 import org.eclipse.app4mc.multicore.openmapping.model.OMAllocation;
 import org.eclipse.app4mc.multicore.openmapping.model.OMCore;
@@ -45,12 +45,16 @@ public class LoadBalancingDFG extends AbstractMappingAlgorithm {
 		final long timeStart, timeStep1, timeStep2, timeStep3, timeStep4;
 
 		this.con.appendln("Performing heuristic DFG Mapping");
+		if (!this.initModels()) {
+			this.con.appendln("Error during Model initialization, exiting.");
+			return;
+		}
 		// Create lists of Cores and Tasks
 
 		// Get list of tasks and calculate their execution time
 		timeStart = java.lang.System.nanoTime();
 		this.con.appendln("Step 1: Building Task-List...");
-		if (null == (this.taskList = SimpleListBuilder.taskList(getSwModel()))) {
+		if (null == (this.taskList = ListBuilder.getTaskList(this.getMergedModel().getSwModel()))) {
 			this.con.append("Error during Task generation, exiting.");
 			return;
 		}
@@ -59,7 +63,7 @@ public class LoadBalancingDFG extends AbstractMappingAlgorithm {
 
 		// Get list of cores and calculate their performance
 		this.con.appendln("Step 2: Building Core-List...");
-		if (null == (this.coreList = SimpleListBuilder.coreList(getHwModel()))) {
+		if (null == (this.coreList = ListBuilder.getCoreList(this.getMergedModel().getHwModel()))) {
 			this.con.appendln("Error during Core generation, exiting.");
 			return;
 		}
@@ -120,11 +124,11 @@ public class LoadBalancingDFG extends AbstractMappingAlgorithm {
 				hMapping.addAllocation(allocation);
 			}
 		}
-
+		
 		final AmaltheaModelBuilder builder = new AmaltheaModelBuilder(hMapping);
-
-		setOsModel(builder.getAmaltheaModel().getOsModel());
-		setMappingModel(builder.getAmaltheaModel().getMappingModel());
+		this.getMergedModel().setOsModel(builder.getAmaltheaModel().getOsModel());
+		this.getMergedModel().setMappingModel(builder.getAmaltheaModel().getMappingModel());
+		this.setAmaltheaOutputModel(this.getMergedModel());
 
 		final OMVisualizer vis = new OMVisualizer(hMapping);
 		this.con.appendln("\n" + vis.getASCIIChart());

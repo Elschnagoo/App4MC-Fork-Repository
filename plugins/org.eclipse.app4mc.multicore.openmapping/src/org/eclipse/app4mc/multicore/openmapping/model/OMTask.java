@@ -11,8 +11,10 @@
  ******************************************************************************/
 package org.eclipse.app4mc.multicore.openmapping.model;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
@@ -21,55 +23,68 @@ import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
+import org.eclipse.app4mc.amalthea.model.ReferenceObject;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
+import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
+import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
 import org.eclipse.core.runtime.IStatus;
 
 public class OMTask {
+	private final String sTokenInclude = "[ConstraintInclude]";
+	private final String sTokenExclude = "[ConstraintExclude]";
+	
 	private final Task taskRef;
 	private OMTask predecessor = null;
 	private long iInstructionCount = -1;
 	private long iRunnableCount = -1;
+	
+	private ArrayList<OMTag> validTags = new ArrayList<OMTag>();
+	private ArrayList<OMTag> invalidTags = new ArrayList<OMTag>();
 
 	public OMTask(final Task taskRef) {
 		this.taskRef = taskRef;
+		addTags();
 	}
 
 	public OMTask(final Task taskRef, final OMTask predecessor) {
-		this.taskRef = taskRef;
+		this(taskRef);
 		this.predecessor = predecessor;
 	}
-
-	public Task getTaskRef() {
-		return this.taskRef;
-	}
-
-	public OMTask getPredecessor() {
-		return this.predecessor;
-	}
-
-	/**
-	 *
-	 * @return
-	 */
-	public long getInstructionCount() {
-		if (0 > this.iInstructionCount) {
-			fetchRunnableAndInstructionCount();
+	
+	private void addTags() {
+		final Map<String, Value> itPropertyConstraints;
+		// Check custom Properties
+		if(this.getTaskRef().getCustomProperties().size() > 0) {
+			itPropertyConstraints = this.getTaskRef().getCustomProperties().map();
+			itPropertyConstraints.forEach((k,v) -> parsePropertyConstraint(k,v));
 		}
-		return this.iInstructionCount;
 	}
 
-	public long getRunnableCount() {
-		if (0 > this.iRunnableCount) {
-			fetchRunnableAndInstructionCount();
+	private void parsePropertyConstraint(String k, Value v) {
+		UniversalHandler.getInstance().logCon("T: " + taskRef.getName() + " - Parsing (K: " + k + " V: " + v + ")");
+		// Check if we have a valid Property Constraint
+		if(v instanceof ReferenceObject) {
+			ReferenceObject ref = (ReferenceObject) v;
+			if(ref.getValue() instanceof Tag) {
+				OMTag ot = new OMTag((Tag) ref.getValue());
+				if(k.contains(sTokenInclude)) {
+					this.validTags.add(ot);
+				} else if(k.contains(sTokenExclude)) {
+					this.invalidTags.add(ot);
+				} else {
+					// Skipping
+				}
+			}
 		}
-		return this.iRunnableCount;
 	}
+
+
 
 	private void fetchRunnableAndInstructionCount() {
 		// Check if a call graph is present in the task and if it is valid
@@ -264,5 +279,35 @@ public class OMTask {
 			return faktor;
 		}
 		return faktor;
+	}
+	
+	public Task getTaskRef() {
+		return this.taskRef;
+	}
+
+	public OMTask getPredecessor() {
+		return this.predecessor;
+	}
+
+	public long getInstructionCount() {
+		if (0 > this.iInstructionCount) {
+			fetchRunnableAndInstructionCount();
+		}
+		return this.iInstructionCount;
+	}
+
+	public long getRunnableCount() {
+		if (0 > this.iRunnableCount) {
+			fetchRunnableAndInstructionCount();
+		}
+		return this.iRunnableCount;
+	}
+	
+	public ArrayList<OMTag> getValidTags() {
+		return this.validTags;
+	}
+	
+	public ArrayList<OMTag> getInvalidTags() {
+		return this.invalidTags;
 	}
 }

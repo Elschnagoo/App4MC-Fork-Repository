@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Dortmund University of Applied Sciences and Arts and others.
+ * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  *
  ******************************************************************************/
-package org.eclipse.app4mc.multicore.openmapping.algorithms;
+package org.eclipse.app4mc.multicore.openmapping.algorithms.helper;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,8 +25,9 @@ import org.eclipse.app4mc.multicore.openmapping.model.OMCore;
 import org.eclipse.app4mc.multicore.openmapping.model.OMTask;
 import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
 
-public class SimpleListBuilder {
-	public static ArrayList<OMCore> coreList(final HWModel hw) {
+public class ListBuilder {
+	public static ArrayList<OMCore> getCoreList(final HWModel hw) {
+		UniversalHandler.getInstance().logCon("Building CoreList");
 		final ArrayList<OMCore> coreList = new ArrayList<OMCore>();
 
 		final HwSystem system;
@@ -79,7 +80,8 @@ public class SimpleListBuilder {
 		return coreList;
 	}
 
-	public static ArrayList<OMTask> taskList(final SWModel sw) {
+	public static ArrayList<OMTask> getTaskList(final SWModel sw) {
+		UniversalHandler.getInstance().logCon("Building TaskList");
 		final ArrayList<OMTask> taskList = new ArrayList<OMTask>();
 
 		// Check for Tasks in SWModel

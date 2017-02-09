@@ -58,17 +58,18 @@ public class UniversalHandler {
 	private String pluginId = "ERR_PLUGINID_UNSET";
 	private ILog iLog;
 	private Logger aLog;
-	private CommonElements commonElements;
-	private SWModel swModel;
-	private HWModel hwModel;
-	private ConstraintsModel conModel;
-	private OSModel osModel;
-	private StimuliModel stiModel;
-	private MappingModel mmModel;
-	private PropertyConstraintsModel pcModel;
-	private EventModel evModel;
-	private ConfigModel confModel;
-	private ComponentsModel comModel;
+	private Amalthea centralModel;
+//	private CommonElements commonElements;
+//	private SWModel swModel;
+//	private HWModel hwModel;
+//	private ConstraintsModel conModel;
+//	private OSModel osModel;
+//	private StimuliModel stiModel;
+//	private MappingModel mmModel;
+//	private PropertyConstraintsModel pcModel;
+//	private EventModel evModel;
+//	private ConfigModel confModel;
+//	private ComponentsModel comModel;
 
 	private final Map<String, EObject> cache = new HashMap<String, EObject>();
 	private final Map<URI, Resource> cache2 = new HashMap<URI, Resource>();
@@ -438,100 +439,118 @@ public class UniversalHandler {
 		}
 
 		for (final EObject model : content) {
-			if (model instanceof CommonElements) {
-				this.commonElements = (CommonElements) model;
-			}
-			else if (model instanceof SWModel) {
-				this.swModel = (SWModel) model;
-			}
-			else if (model instanceof HWModel) {
-				this.hwModel = (HWModel) model;
-			}
-			else if (model instanceof ConstraintsModel) {
-				this.conModel = (ConstraintsModel) model;
-			}
-			else if (model instanceof MappingModel) {
-				this.mmModel = (MappingModel) model;
-			}
-			else if (model instanceof StimuliModel) {
-				this.stiModel = (StimuliModel) model;
-			}
-			else if (model instanceof OSModel) {
-				this.osModel = (OSModel) model;
-			}
-			else if (model instanceof PropertyConstraintsModel) {
-				this.pcModel = (PropertyConstraintsModel) model;
-			}
-			else if (model instanceof EventModel) {
-				this.evModel = (EventModel) model;
-			}
-			else if (model instanceof ConfigModel) {
-				this.confModel = (ConfigModel) model;
-			}
-			else if (model instanceof ComponentsModel) {
-				this.comModel = (ComponentsModel) model;
-			}
-			else if (model instanceof Amalthea) {
-				setModel(((Amalthea) model).eContents());
+//			if (model instanceof CommonElements) {
+//				this.commonElements = (CommonElements) model;
+//			}
+//			else if (model instanceof SWModel) {
+//				this.swModel = (SWModel) model;
+//			}
+//			else if (model instanceof HWModel) {
+//				this.hwModel = (HWModel) model;
+//			}
+//			else if (model instanceof ConstraintsModel) {
+//				this.conModel = (ConstraintsModel) model;
+//			}
+//			else if (model instanceof MappingModel) {
+//				this.mmModel = (MappingModel) model;
+//			}
+//			else if (model instanceof StimuliModel) {
+//				this.stiModel = (StimuliModel) model;
+//			}
+//			else if (model instanceof OSModel) {
+//				this.osModel = (OSModel) model;
+//			}
+//			else if (model instanceof PropertyConstraintsModel) {
+//				this.pcModel = (PropertyConstraintsModel) model;
+//			}
+//			else if (model instanceof EventModel) {
+//				this.evModel = (EventModel) model;
+//			}
+//			else if (model instanceof ConfigModel) {
+//				this.confModel = (ConfigModel) model;
+//			}
+//			else if (model instanceof ComponentsModel) {
+//				this.comModel = (ComponentsModel) model;
+//			}
+//			else 
+			if (model instanceof Amalthea) {
+				//setModel(((Amalthea) model).eContents());
+				this.centralModel = (Amalthea) model;
 			}
 		}
 	}
 
 	public CommonElements getCommonElements() {
-		return this.commonElements;
+		return this.centralModel.getCommonElements();
+//		return this.commonElements;
 	}
 
 	public SWModel getSwModel() {
-		return this.swModel;
+		return this.centralModel.getSwModel();
+//		return this.swModel;
 	}
 
 	public HWModel getHwModel() {
-		return this.hwModel;
+		return this.centralModel.getHwModel();
+//		return this.hwModel;
 	}
 
 	public ConstraintsModel getConstraintsModel() {
-		return this.conModel;
+		return this.centralModel.getConstraintsModel();
+//		return this.conModel;
 	}
 
 	public OSModel getOsModel() {
-		return this.osModel;
+		return this.centralModel.getOsModel();
+//		return this.osModel;
 	}
 
 	public StimuliModel getStimuliModel() {
-		return this.stiModel;
+		return this.centralModel.getStimuliModel();
+//		return this.stiModel;
 	}
 
 	public MappingModel getMappingModel() {
-		return this.mmModel;
+		return this.centralModel.getMappingModel();
+//		return this.mmModel;
 	}
 
 	public PropertyConstraintsModel getPropertyConstraintsModel() {
-		return this.pcModel;
+		return this.centralModel.getPropertyConstraintsModel();
+//		return this.pcModel;
 	}
 
 	public EventModel getEvModel() {
-		return this.evModel;
+		return this.centralModel.getEventModel();
+//		return this.evModel;
 	}
 
 	public ConfigModel getConfModel() {
-		return this.confModel;
+		return this.centralModel.getConfigModel();
+//		return this.confModel;
 	}
 
 	public ComponentsModel getComModel() {
-		return this.comModel;
+		return this.getComModel();
+//		return this.comModel;
+	}
+	
+	public Amalthea getCentralModel() {
+		return this.centralModel;
 	}
 
 	public void dropCache() {
-		this.commonElements =null;
-		this.swModel = null;
-		this.hwModel = null;
-		this.conModel = null;
-		this.osModel = null;
-		this.stiModel = null;
-		this.mmModel = null;
-		this.pcModel = null;
-		this.evModel = null;
-		this.comModel = null;
-		this.confModel = null;
+		this.centralModel = null;
+//		this.commonElements =null;
+//		this.swModel = null;
+//		this.hwModel = null;
+//		this.conModel = null;
+//		this.osModel = null;
+//		this.stiModel = null;
+//		this.mmModel = null;
+//		this.pcModel = null;
+//		this.evModel = null;
+//		this.comModel = null;
+//		this.confModel = null;
 	}
 }

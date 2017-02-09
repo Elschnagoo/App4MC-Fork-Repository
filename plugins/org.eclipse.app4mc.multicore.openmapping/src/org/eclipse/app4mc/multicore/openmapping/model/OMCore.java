@@ -12,6 +12,7 @@
 package org.eclipse.app4mc.multicore.openmapping.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.Core;
@@ -23,13 +24,27 @@ import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
 public class OMCore {
 	private final Core coreRef;
 	private long instructionsPerSecond = -1;
+	private ArrayList<OMTag> tags = new ArrayList<OMTag>();
 
 	public OMCore(final Core coreRef) {
 		this.coreRef = coreRef;
+		// Prepare element, copy attributes from CoreType
+		this.tags = addTags();
 	}
-
-	public Core getCoreRef() {
-		return this.coreRef;
+	
+	private ArrayList<OMTag> addTags() {
+		ArrayList<OMTag> out = new ArrayList<OMTag>();
+		// Add all Tags from the coreRef, which we assume is set
+		if(this.coreRef.getTags().size() > 0) {
+			this.coreRef.getTags().stream().forEach(tag -> out.add(new OMTag(tag)));
+		}
+		// Add all Tags from the CoreType
+		if(null != coreRef.getCoreType()) {
+			if(this.coreRef.getCoreType().getTags().size() > 0) {
+				this.coreRef.getCoreType().getTags().stream().forEach(tag -> out.add(new OMTag(tag)));
+			}
+		}
+		return out;
 	}
 
 	/**
@@ -96,6 +111,14 @@ public class OMCore {
 
 		// Calculate the instructions per second as the product of frequency, clockRatio and instructionsPerCycle
 		return (this.instructionsPerSecond = (long) (frequency * clockRatio * instructionsPerCycle));
+	}
+	
+	public Core getCoreRef() {
+		return this.coreRef;
+	}
+	
+	public ArrayList<OMTag> getTags() {
+		return this.tags;
 	}
 
 	@Override

@@ -38,6 +38,7 @@ import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractILPBasedMappingAlgorithm;
+import org.eclipse.app4mc.multicore.openmapping.model.AmaltheaModelBuilder;
 import org.eclipse.app4mc.multicore.openmapping.sharedlibs.ConsoleOutputHandler;
 import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
 import org.jgrapht.DirectedGraph;
@@ -79,11 +80,13 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 		this.con.appendln("Performing ILP Mapping");
 		this.con.appendln(sVersion);
 
+		this.initModels();
+		
 		// Prepare Model and handlers for model interactions
-		setOsModel(this.osInstance.createOSModel());
 		final OperatingSystem operatingSystem = this.osInstance.createOperatingSystem();
 		operatingSystem.setName("OS");
-		getOsModel().getOperatingSystems().add(operatingSystem);
+		this.getMergedModel().setOsModel(this.osInstance.createOSModel());
+		this.getMergedModel().getOsModel().getOperatingSystems().add(operatingSystem);
 
 		// Fetch the max. amount of time for a single iteration
 		timeStart = Util.nanoTime();
@@ -139,14 +142,14 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 	 * @return true on success, false otherwise
 	 */
 	private boolean prepareMaxExecutionTime() {
-		if (getSwModel().getActivations().size() == 0) {
+		if (this.getMergedModel().getSwModel().getActivations().size() == 0) {
 			UniversalHandler.getInstance()
 					.log("Error: Invalid SWModel.\nThere are no activation elements present in this model.", null);
 			return false;
 		}
 
 		long minOffset = Long.MAX_VALUE;
-		final Iterator<Activation> itAct = getSwModel().getActivations().iterator();
+		final Iterator<Activation> itAct = this.getMergedModel().getSwModel().getActivations().iterator();
 		while (itAct.hasNext()) {
 			final Activation a = itAct.next();
 			if (a instanceof PeriodicActivation) {
@@ -184,7 +187,7 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 	 */
 	private Boolean createAdvancedCores() {
 		final HwSystem system;
-		if ((system = getHwModel().getSystem()) == null) {
+		if ((system = this.getMergedModel().getHwModel().getSystem()) == null) {
 			UniversalHandler.getInstance().log("Invalid HWModel.\nThere is no System element in this model.", null);
 			return false;
 		}
@@ -244,7 +247,7 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 						final TaskScheduler s = this.osInstance.createTaskScheduler();
 						s.setName(sn);
 						ac.setScheduler(s);
-						getOsModel().getOperatingSystems().get(0).getTaskSchedulers().add(s);
+						this.getMergedModel().getOsModel().getOperatingSystems().get(0).getTaskSchedulers().add(s);
 						this.mappingHandle.addCoreToSchedulder(ac, s);
 
 						this.con.appendln(" Core " + ac.getCore().getName() + ": " + ac.getPsPerInstruction());
@@ -351,14 +354,14 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 	 */
 	private boolean createAdvancedRunnables() {
 		// Check for Runnables in SWModel
-		if (getSwModel().getRunnables().size() <= 0) {
+		if (this.getMergedModel().getSwModel().getRunnables().size() <= 0) {
 			UniversalHandler.getInstance().log("Error: Invalid SWModel.\nThere are no runnables in this model.", null);
 			return false;
 		}
 
 		// Fetch Runnables, create AdvancedRunnables with additional information
-		UniversalHandler.getInstance().logCon("Found " + getSwModel().getRunnables().size() + " Runnable(s).");
-		final Iterator<Runnable> itRunnables = getSwModel().getRunnables().iterator();
+		UniversalHandler.getInstance().logCon("Found " + this.getMergedModel().getSwModel().getRunnables().size() + " Runnable(s).");
+		final Iterator<Runnable> itRunnables = this.getMergedModel().getSwModel().getRunnables().iterator();
 		while (itRunnables.hasNext()) {
 			final Runnable r = itRunnables.next();
 			final AdvancedRunnable ar = new AdvancedRunnable(r);
@@ -413,14 +416,14 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 		 */
 
 		// Step1: Process RunnableSequencingConstraints and create DAG
-		if (getConstraintsModel().getRunnableSequencingConstraints().size() <= 0) {
+		if (this.getMergedModel().getConstraintsModel().getRunnableSequencingConstraints().size() <= 0) {
 			UniversalHandler.getInstance().log(
 					"Invalid SWModel.\nThere are no RunnableSequencingConstraints in this model.\nLeaving Algorithm...",
 					null);
 			return false;
 		}
 		UniversalHandler.getInstance().logCon("Runnable dependencies (Source->Target)");
-		final Iterator<RunnableSequencingConstraint> itRsc = getConstraintsModel().getRunnableSequencingConstraints()
+		final Iterator<RunnableSequencingConstraint> itRsc = this.getMergedModel().getConstraintsModel().getRunnableSequencingConstraints()
 				.iterator();
 		while (itRsc.hasNext()) {
 			final RunnableSequencingConstraint rsc = itRsc.next();
@@ -893,7 +896,7 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 		}
 
 		this.mappingHandle.generateMapping();
-		setMappingModel(this.mappingHandle.getMappingModel());
+		this.getMergedModel().setMappingModel(this.mappingHandle.getMappingModel());
 
 		// Print Allocation table to output console and focus view
 		this.con.appendln("Allocations:");

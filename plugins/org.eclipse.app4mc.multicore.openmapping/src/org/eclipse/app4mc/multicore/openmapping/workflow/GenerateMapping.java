@@ -69,17 +69,19 @@ public class GenerateMapping extends WorkflowComponent {
 			mappingAlg = new GABasedLoadBalancing();
 		}
 		final Amalthea modelCopy = getAmaltheaModelCopy(ctx);
-		if (null != modelCopy.getConstraintsModel()) {
-			mappingAlg.setConnstraintsModel(modelCopy.getConstraintsModel());
-		}
-		mappingAlg.setHwModel(modelCopy.getHwModel());
-		mappingAlg.setSwModel(modelCopy.getSwModel());
+//		if (null != modelCopy.getConstraintsModel()) {
+//			mappingAlg.setConnstraintsModel(modelCopy.getConstraintsModel());
+//		}
+//		mappingAlg.setHwModel(modelCopy.getHwModel());
+//		mappingAlg.setSwModel(modelCopy.getSwModel());
+		
+		mappingAlg.setAmaltheaMergedModel(modelCopy);
 		mappingAlg.calculateMapping();
-		assert null != mappingAlg.getOsModel() && null != mappingAlg.getMappingModel();
-		modelCopy.setOsModel(mappingAlg.getOsModel());
-		modelCopy.setMappingModel(mappingAlg.getMappingModel());
+		assert null != mappingAlg.getAmaltheaOutputModel().getOsModel() && null != mappingAlg.getAmaltheaOutputModel().getMappingModel();
+//		modelCopy.setOsModel(mappingAlg.getOsModel());
+//		modelCopy.setMappingModel(mappingAlg.getMappingModel());
 		this.log.info("Setting result model in slot: " + getResultSlot());
-		ctx.set(getResultSlot(), modelCopy);
+		ctx.set(getResultSlot(), mappingAlg.getAmaltheaOutputModel());
 	}
 
 	/**

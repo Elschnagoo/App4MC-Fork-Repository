@@ -17,8 +17,12 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.impl.AmaltheaFactoryImpl;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractGABasedMappingAlgorithm;
-import org.eclipse.app4mc.multicore.openmapping.algorithms.SimpleListBuilder;
+import org.eclipse.app4mc.multicore.openmapping.algorithms.helper.ListBuilder;
+import org.eclipse.app4mc.multicore.openmapping.algorithms.helper.ProblemGraph;
 import org.eclipse.app4mc.multicore.openmapping.model.AmaltheaModelBuilder;
 import org.eclipse.app4mc.multicore.openmapping.model.OMAllocation;
 import org.eclipse.app4mc.multicore.openmapping.model.OMCore;
@@ -44,51 +48,37 @@ public class GABasedLoadBalancing extends AbstractGABasedMappingAlgorithm {
 	private static long[][] utilMatrix;
 	private final ConsoleOutputHandler con = new ConsoleOutputHandler("OpenMapping Console");
 
-	private Boolean parseConstraints() {
-		// Work in progress
-		return true;
-	}
-
 	@Override
 	public void calculateMapping() {
-		final long timeStart, timeStep1, timeStep2, timeStep3, timeStep4;
+		final long timeStart, timeStep, timeFinish;
+		
+		
 
 		this.con.appendln("Performing GA based Load Balancing");
 		// Create lists of Cores and Tasks
-
+		// TODO Workaround
+//		final Amalthea cen = AmaltheaFactory.eINSTANCE.createAmalthea();
+//		cen.setSwModel(this.getSwModel());
+//		cen.setHwModel(this.getHwModel());
+		this.con.appendln("Preparing Models...");
+		if (!this.initModels()) {
+			this.con.appendln("Error during Model initialization, exiting.");
+			return;
+		}
+		
 		// Get list of tasks and calculate their execution time
 		timeStart = java.lang.System.nanoTime();
-		this.con.appendln("Step 1: Building Task-List...");
-		if (null == (GABasedLoadBalancing.taskList = SimpleListBuilder.taskList(getSwModel()))) {
-			this.con.append("Error during Task generation, exiting.");
+		this.con.appendln("Generating ProblemGraph...");
+		ProblemGraph pg = new ProblemGraph(this.getMergedModel());
+		if (!pg.initialize()) {
+			this.con.appendln("Error during ProblemGraph initialization, exiting.");
 			return;
 		}
-		timeStep1 = java.lang.System.nanoTime();
-		this.con.appendln(" Success! (" + (timeStep1 - timeStart) / 1000000 + "ms)");
-
-		// Get list of cores and calculate their performance
-		this.con.appendln("Step 2: Building Core-List...");
-		if (null == (GABasedLoadBalancing.coreList = SimpleListBuilder.coreList(getHwModel()))) {
-			this.con.appendln("Error during Core generation, exiting.");
-			return;
-		}
-		timeStep2 = java.lang.System.nanoTime();
-		this.con.appendln(" Success! (" + (timeStep2 - timeStep1) / 1000000 + "ms)");
-
-		this.con.appendln("Step 3: Determining Constraints and narrowing down the solution space... ");
-		// Any Constraints set?
-		if (!hasConstraints()) {
-			this.con.appendln(" There are no propertyConstraints set, skipping this step.");
-			timeStep3 = java.lang.System.nanoTime();
-		}
-		else {
-			if (!parseConstraints()) {
-				this.con.appendln("Error during constrain analysis, exiting.");
-				return;
-			}
-			timeStep3 = java.lang.System.nanoTime();
-			this.con.appendln(" Success! (" + (timeStep3 - timeStep2) / 1000000 + "ms)");
-		}
+		GABasedLoadBalancing.taskList = pg.getTaskList();
+		GABasedLoadBalancing.coreList = pg.getCoreList();
+			
+		timeStep = java.lang.System.nanoTime();
+		this.con.appendln(" Success! (" + (timeStep - timeStart) / 1000000 + "ms)");
 
 		// Perform the actual Mapping
 		this.con.appendln("Step 4: Creating Mapping...");
@@ -96,11 +86,10 @@ public class GABasedLoadBalancing extends AbstractGABasedMappingAlgorithm {
 			this.con.appendln("Error during performMappingAlgorithm, exiting.");
 			return;
 		}
-		timeStep4 = java.lang.System.nanoTime();
-		this.con.appendln("Success after " + (timeStep4 - timeStep3) / 1000000 + "ms.");
+		timeFinish = java.lang.System.nanoTime();
+		this.con.appendln("Success after " + (timeFinish - timeStep) / 1000000 + "ms.");
 		this.con.appendln("Leaving mapping algorithm.");
 	}
-
 
 	private boolean performMappingAlgorithm() {
 		final int noCores = GABasedLoadBalancing.coreList.size();
@@ -120,10 +109,12 @@ public class GABasedLoadBalancing extends AbstractGABasedMappingAlgorithm {
 		}
 
 		// The actual GA based Load Balancing Approach
-		// The Chromosome contains count(noTasks) integer Values ranging from 0 till count(noCores)-1
+		// The Chromosome contains count(noTasks) integer Values ranging from 0
+		// till count(noCores)-1
 		final Factory<Genotype<IntegerGene>> gtf = Genotype.of(IntegerChromosome.of(0, noCores - 1, noTasks));
 
-		// It appears the typecast is required on some Eclipse versions, which may throw an "java.lang.Error: Unresolved
+		// It appears the typecast is required on some Eclipse versions, which
+		// may throw an "java.lang.Error: Unresolved
 		// compilation problems" otherwise.
 		final Engine<IntegerGene, Long> engine = Engine
 				.builder((Function<Genotype<IntegerGene>, Long>) GABasedLoadBalancing::evaluate, gtf)
@@ -139,8 +130,9 @@ public class GABasedLoadBalancing extends AbstractGABasedMappingAlgorithm {
 
 		final OMMapping mapping = generateOMMapping(result);
 		final AmaltheaModelBuilder builder = new AmaltheaModelBuilder(mapping);
-		setOsModel(builder.getAmaltheaModel().getOsModel());
-		setMappingModel(builder.getAmaltheaModel().getMappingModel());
+		this.getMergedModel().setOsModel(builder.getAmaltheaModel().getOsModel());
+		this.getMergedModel().setMappingModel(builder.getAmaltheaModel().getMappingModel());
+		this.setAmaltheaOutputModel(this.getMergedModel());
 
 		final OMVisualizer vis = new OMVisualizer(mapping);
 		this.con.appendln("\n" + vis.getASCIIChart());

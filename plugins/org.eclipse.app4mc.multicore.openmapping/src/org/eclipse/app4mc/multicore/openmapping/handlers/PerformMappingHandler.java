@@ -111,18 +111,18 @@ public class PerformMappingHandler extends AbstractHandler {
 
 		if (radioOutputDirectory == 0 || sOutputDirectory == null || sOutputDirectory.isEmpty()) {
 			final String outputLocation = file.getProject().getFullPath().toString() + "/output/";
-			path = URI.createPlatformResourceURI(outputLocation + projectName + "_out.amxmi", true);
+			path = URI.createPlatformResourceURI(outputLocation + projectName + "_mapping.amxmi", true);
 			// pathOsModel = URI.createPlatformResourceURI(outputLocation + projectName + ".amxmi-os", true);
 			// pathMmModel = URI.createPlatformResourceURI(outputLocation + projectName + ".amxmi-mapping", true);
 		}
 		else if (radioOutputDirectory == 1) {
 			final String outputLocation = file.getProject().getFullPath().toString() + "/" + sOutputDirectory;
-			path = URI.createPlatformResourceURI(outputLocation + "/" + projectName + "_out.amxmi", true);
+			path = URI.createPlatformResourceURI(outputLocation + "/" + projectName + "_mapping.amxmi", true);
 			// pathOsModel = URI.createPlatformResourceURI(outputLocation + "/" + projectName + ".amxmi-os", true);
 			// pathMmModel = URI.createPlatformResourceURI(outputLocation + "/" + projectName + ".amxmi-mapping", true);
 		}
 		else {
-			path = URI.createPlatformResourceURI(sOutputDirectory + "/" + projectName + "_out.amxmi", true);
+			path = URI.createPlatformResourceURI(sOutputDirectory + "/" + projectName + "_mapping.amxmi", true);
 			// pathOsModel = URI.createFileURI(sOutputDirectory + "/" + projectName + ".amxmi-os");
 			// pathMmModel = URI.createFileURI(sOutputDirectory + "/" + projectName + ".amxmi-mapping");
 		}
