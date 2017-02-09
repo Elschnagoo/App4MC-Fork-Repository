@@ -11,7 +11,7 @@
     </tasks>
     <tasks name="Task_6" priority="4" stimuli="IPA_Task_6?type=InterProcess" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:ProbabiltitySwitch">
+        <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="30.0">
             <items xsi:type="am:CallSequence" name="CallSequence_6_2">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_2?type=Runnable"/>
@@ -61,7 +61,7 @@
         <graphEntries xsi:type="am:CallSequence" name="CS_IPA_T3">
           <calls xsi:type="am:InterProcessActivation" stimulus="IPA_Task_3?type=InterProcess"/>
         </graphEntries>
-        <graphEntries xsi:type="am:ProbabiltitySwitch">
+        <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="0.3">
             <items xsi:type="am:CallSequence" name="CS_Trigger_Task_4">
               <calls xsi:type="am:InterProcessActivation" stimulus="IPA_Task_4?type=InterProcess"/>
@@ -78,7 +78,7 @@
     </tasks>
     <tasks name="Task_3" priority="1" stimuli="IPA_Task_3?type=InterProcess" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:ProbabiltitySwitch">
+        <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="50.0">
             <items xsi:type="am:CallSequence" name="CS_y_0">
               <calls xsi:type="am:TaskRunnableCall" runnable="R_3_0?type=Runnable"/>

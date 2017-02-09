@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A switch entry for a ProbabiltitySwitch
+ * A switch entry for a ProbabilitySwitch
  * It describes a path of the switch and it's probability
  * <!-- end-model-doc -->
  *

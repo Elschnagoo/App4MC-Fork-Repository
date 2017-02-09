@@ -121,7 +121,7 @@ public class OMTask {
 			// ProbabilitySwitch
 			else if (graphEntry instanceof ProbabilitySwitch) {
 				UniversalHandler.getInstance().log(
-						"GraphEntry specialisation ProbabiltitySwitch is not supported. Skipping...", null,
+						"GraphEntry specialisation ProbabilitySwitch is not supported. Skipping...", null,
 						IStatus.WARNING);
 			}
 

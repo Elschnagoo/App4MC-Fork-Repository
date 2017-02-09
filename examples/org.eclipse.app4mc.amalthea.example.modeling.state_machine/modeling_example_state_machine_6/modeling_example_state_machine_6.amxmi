@@ -3,7 +3,7 @@
   <swModel>
     <tasks name="Task_1" priority="1" stimuli="Stimulus_Task_1?type=Periodic" osekTaskGroup="1" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
-        <graphEntries xsi:type="am:ProbabiltitySwitch">
+        <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="75.0">
             <items xsi:type="am:CallSequence" name="CallSequence_1_0">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_0?type=Runnable"/>

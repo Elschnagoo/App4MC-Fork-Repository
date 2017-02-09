@@ -11,7 +11,7 @@
     </tasks>
     <tasks name="Task_2" priority="2" stimuli="Stimulus_2?type=InterProcess" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:ProbabiltitySwitch">
+        <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="20.0">
             <items xsi:type="am:CallSequence" name="CallSequence_2_2">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_2?type=Runnable"/>

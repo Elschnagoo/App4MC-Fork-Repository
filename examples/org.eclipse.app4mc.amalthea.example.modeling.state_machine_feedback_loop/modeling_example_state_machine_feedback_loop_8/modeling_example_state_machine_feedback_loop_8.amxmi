@@ -11,7 +11,7 @@
     </tasks>
     <tasks name="Task_2" priority="1" stimuli="IPA_Task_2?type=InterProcess" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:ProbabiltitySwitch">
+        <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="33.0">
             <items xsi:type="am:CallSequence" name="CallSequence_State_1">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_State_1?type=Runnable"/>
@@ -40,7 +40,7 @@
     </tasks>
     <tasks name="Task_4" priority="3" stimuli="IPA_Task_4?type=InterProcess" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:ProbabiltitySwitch">
+        <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="20.0">
             <items xsi:type="am:CallSequence" name="CallSequence_4_2">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_2?type=Runnable"/>
