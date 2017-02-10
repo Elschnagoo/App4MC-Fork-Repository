@@ -43,7 +43,6 @@
 		
 		<module>../../plugins/org.eclipse.app4mc.amalthea.emf.util</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.examples.installer</module>
-		<module>../../plugins/org.eclipse.app4mc.amalthea.export.osek</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.import.atdb</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.model</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.model.edit</module>
