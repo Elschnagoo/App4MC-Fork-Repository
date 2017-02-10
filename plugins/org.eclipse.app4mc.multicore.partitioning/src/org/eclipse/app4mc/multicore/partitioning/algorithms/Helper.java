@@ -67,7 +67,11 @@ public class Helper {
 			}
 		}
 		if (rt == 0) {
-			PartLog.getInstance().log("No instructions constant / deviation found at Runnable " + r.getName(), null);
+			PartLog.getInstance().log("No instructions constant / deviation found at Runnable " + r.getName() + ". Assuming 1.");
+			InstructionsConstant ic = AmaltheaFactory.eINSTANCE.createInstructionsConstant();
+			ic.setValue(1);
+			r.getRunnableItems().add((RunnableItem) ic);
+			rt=1;
 		}
 		return rt;
 	}
@@ -96,7 +100,7 @@ public class Helper {
 
 	/**
 	 * calculates the longest runtime of a runnable according to all succeeding
-	 * (dependent) runnables recusivly. Function is able to handle cyclic
+	 * (dependent) runnables recursively. Function is able to handle cyclic
 	 * graphs.
 	 *
 	 * @param cm
