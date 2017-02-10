@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.multicore.openmapping.model.OMCore;
 import org.eclipse.app4mc.multicore.openmapping.model.OMTag;
 import org.eclipse.app4mc.multicore.openmapping.model.OMTask;
@@ -14,7 +12,7 @@ import com.google.common.collect.HashMultimap;
 
 public class ConstraintBuilder {
 	private HashMultimap<OMTag, OMCore> mTagToCore = HashMultimap.create();
-	private HashMultimap<OMTask, OMCore> mTaskToCore = HashMultimap.create();
+	//private HashMultimap<OMTask, OMCore> mTaskToCore = HashMultimap.create();
 	
 	public boolean fetchAllocationConstraints(List<OMTask> taskList, List<OMCore> coreList) {
 		for(OMCore c : coreList) {

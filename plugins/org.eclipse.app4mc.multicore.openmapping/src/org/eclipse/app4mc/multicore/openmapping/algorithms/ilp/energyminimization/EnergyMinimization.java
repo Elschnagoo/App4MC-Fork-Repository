@@ -38,7 +38,6 @@ import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractILPBasedMappingAlgorithm;
-import org.eclipse.app4mc.multicore.openmapping.model.AmaltheaModelBuilder;
 import org.eclipse.app4mc.multicore.openmapping.sharedlibs.ConsoleOutputHandler;
 import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
 import org.jgrapht.DirectedGraph;

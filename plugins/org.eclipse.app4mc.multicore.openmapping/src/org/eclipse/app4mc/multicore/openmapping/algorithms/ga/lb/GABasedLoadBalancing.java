@@ -17,11 +17,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.impl.AmaltheaFactoryImpl;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractGABasedMappingAlgorithm;
-import org.eclipse.app4mc.multicore.openmapping.algorithms.helper.ListBuilder;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.helper.ProblemGraph;
 import org.eclipse.app4mc.multicore.openmapping.model.AmaltheaModelBuilder;
 import org.eclipse.app4mc.multicore.openmapping.model.OMAllocation;
