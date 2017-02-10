@@ -34,11 +34,5 @@ All rights reserved.
       <import plugin="org.eclipse.app4mc.multicore.openmapping"/>
    </requires>
 
-   <plugin
-         id="org.eclipse.app4mc.amalthea.export.osek"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
 </feature>
