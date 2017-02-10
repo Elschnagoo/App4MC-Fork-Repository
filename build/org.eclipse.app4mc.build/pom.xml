@@ -97,10 +97,8 @@
 		<module>../../features/org.eclipse.app4mc.amalthea.edit.sdk</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.editors</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.editors.sdk</module>
-		
-<!--	<module>../../features/org.eclipse.app4mc.amalthea.export</module>
-		<module>../../features/org.eclipse.app4mc.amalthea.export.sdk</module>	 -->
-		
+		<module>../../features/org.eclipse.app4mc.amalthea.export</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.export.sdk</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.import</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.import.sdk</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.models</module>
