@@ -184,8 +184,10 @@ public class ILPBasedLoadBalancing extends AbstractILPBasedMappingAlgorithm {
 		this.con.appendln(sVersion);
 		// Create lists of Cores and Tasks
 		
+		this.con.appendln("Preparing Models...");
 		if (!this.initModels()) {
 			this.con.appendln("Error during Model initialization, exiting.");
+			return;
 		}
 
 		// Get list of tasks and calculate their execution time

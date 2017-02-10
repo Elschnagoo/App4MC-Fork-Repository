@@ -59,17 +59,6 @@ public class UniversalHandler {
 	private ILog iLog;
 	private Logger aLog;
 	private Amalthea centralModel;
-//	private CommonElements commonElements;
-//	private SWModel swModel;
-//	private HWModel hwModel;
-//	private ConstraintsModel conModel;
-//	private OSModel osModel;
-//	private StimuliModel stiModel;
-//	private MappingModel mmModel;
-//	private PropertyConstraintsModel pcModel;
-//	private EventModel evModel;
-//	private ConfigModel confModel;
-//	private ComponentsModel comModel;
 
 	private final Map<String, EObject> cache = new HashMap<String, EObject>();
 	private final Map<URI, Resource> cache2 = new HashMap<URI, Resource>();
@@ -439,98 +428,74 @@ public class UniversalHandler {
 		}
 
 		for (final EObject model : content) {
-//			if (model instanceof CommonElements) {
-//				this.commonElements = (CommonElements) model;
-//			}
-//			else if (model instanceof SWModel) {
-//				this.swModel = (SWModel) model;
-//			}
-//			else if (model instanceof HWModel) {
-//				this.hwModel = (HWModel) model;
-//			}
-//			else if (model instanceof ConstraintsModel) {
-//				this.conModel = (ConstraintsModel) model;
-//			}
-//			else if (model instanceof MappingModel) {
-//				this.mmModel = (MappingModel) model;
-//			}
-//			else if (model instanceof StimuliModel) {
-//				this.stiModel = (StimuliModel) model;
-//			}
-//			else if (model instanceof OSModel) {
-//				this.osModel = (OSModel) model;
-//			}
-//			else if (model instanceof PropertyConstraintsModel) {
-//				this.pcModel = (PropertyConstraintsModel) model;
-//			}
-//			else if (model instanceof EventModel) {
-//				this.evModel = (EventModel) model;
-//			}
-//			else if (model instanceof ConfigModel) {
-//				this.confModel = (ConfigModel) model;
-//			}
-//			else if (model instanceof ComponentsModel) {
-//				this.comModel = (ComponentsModel) model;
-//			}
-//			else 
 			if (model instanceof Amalthea) {
-				//setModel(((Amalthea) model).eContents());
 				this.centralModel = (Amalthea) model;
 			}
 		}
 	}
 
 	public CommonElements getCommonElements() {
+		if(null == this.centralModel) return null;
 		return this.centralModel.getCommonElements();
 //		return this.commonElements;
 	}
 
 	public SWModel getSwModel() {
+		if(null == this.centralModel) return null;
 		return this.centralModel.getSwModel();
 //		return this.swModel;
 	}
 
 	public HWModel getHwModel() {
+		if(null == this.centralModel) return null;
 		return this.centralModel.getHwModel();
 //		return this.hwModel;
 	}
 
 	public ConstraintsModel getConstraintsModel() {
+		if(null == this.centralModel) return null;
 		return this.centralModel.getConstraintsModel();
 //		return this.conModel;
 	}
 
 	public OSModel getOsModel() {
+		if(null == this.centralModel) return null;
 		return this.centralModel.getOsModel();
 //		return this.osModel;
 	}
 
 	public StimuliModel getStimuliModel() {
+		if(null == this.centralModel) return null;
 		return this.centralModel.getStimuliModel();
 //		return this.stiModel;
 	}
 
 	public MappingModel getMappingModel() {
+		if(null == this.centralModel) return null;
 		return this.centralModel.getMappingModel();
 //		return this.mmModel;
 	}
 
 	public PropertyConstraintsModel getPropertyConstraintsModel() {
+		if(null == this.centralModel) return null;
 		return this.centralModel.getPropertyConstraintsModel();
 //		return this.pcModel;
 	}
 
 	public EventModel getEvModel() {
+		if(null == this.centralModel) return null;
 		return this.centralModel.getEventModel();
 //		return this.evModel;
 	}
 
 	public ConfigModel getConfModel() {
+		if(null == this.centralModel) return null;
 		return this.centralModel.getConfigModel();
 //		return this.confModel;
 	}
 
 	public ComponentsModel getComModel() {
+		if(null == this.centralModel) return null;
 		return this.getComModel();
 //		return this.comModel;
 	}
@@ -541,16 +506,5 @@ public class UniversalHandler {
 
 	public void dropCache() {
 		this.centralModel = null;
-//		this.commonElements =null;
-//		this.swModel = null;
-//		this.hwModel = null;
-//		this.conModel = null;
-//		this.osModel = null;
-//		this.stiModel = null;
-//		this.mmModel = null;
-//		this.pcModel = null;
-//		this.evModel = null;
-//		this.comModel = null;
-//		this.confModel = null;
 	}
 }
