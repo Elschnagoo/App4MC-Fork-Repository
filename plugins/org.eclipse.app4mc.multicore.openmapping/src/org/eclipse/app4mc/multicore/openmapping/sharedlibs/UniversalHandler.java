@@ -496,7 +496,7 @@ public class UniversalHandler {
 
 	public ComponentsModel getComModel() {
 		if(null == this.centralModel) return null;
-		return this.getComModel();
+		return this.centralModel.getComponentsModel();
 //		return this.comModel;
 	}
 	

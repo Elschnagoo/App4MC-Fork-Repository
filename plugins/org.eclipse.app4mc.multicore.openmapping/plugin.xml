@@ -8,7 +8,7 @@
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <menu
                id="org.eclipse.app4mc.multicore.menu"
-               label="AMALTHEA MC features">
+               label="AMALTHEA Multicore Features">
             <command
                   commandId="org.eclipse.app4mc.multicore.openmapping.commands.generateTasks"
                   id="org.eclipse.app4mc.multicore.openmapping.popups.createTasks"
