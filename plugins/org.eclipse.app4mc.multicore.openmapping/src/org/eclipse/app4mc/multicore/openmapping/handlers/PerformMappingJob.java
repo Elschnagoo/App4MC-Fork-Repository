@@ -40,7 +40,7 @@ public class PerformMappingJob extends Job {
 	// final URI pathPcModel, final URI pathHwModel, final URI pathOsModel, final URI pathMmModel) {
 	public PerformMappingJob(final AbstractMappingAlgorithm mappingAlgorithm, final URI pathSwModel,
 			final URI pathPcModel, final URI pathHwModel, final URI path) {
-		super("ILP Job");
+		super("Mapping Job");
 		this.mappingAlgorithm = mappingAlgorithm;
 		this.pathSwModel = pathSwModel;
 		this.pathHwModel = pathHwModel;

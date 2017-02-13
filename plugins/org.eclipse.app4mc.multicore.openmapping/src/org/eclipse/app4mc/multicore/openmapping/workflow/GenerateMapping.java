@@ -19,6 +19,7 @@ import org.eclipse.app4mc.amalthea.workflow.core.Context;
 import org.eclipse.app4mc.amalthea.workflow.core.WorkflowComponent;
 import org.eclipse.app4mc.amalthea.workflow.core.exception.ConfigurationException;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractMappingAlgorithm;
+import org.eclipse.app4mc.multicore.openmapping.algorithms.ga.constraints.GABasedConstraints;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.ga.lb.GABasedLoadBalancing;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.heuristic.lb.LoadBalancingDFG;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimization.EnergyMinimization;
@@ -34,6 +35,7 @@ public class GenerateMapping extends WorkflowComponent {
 	private static final String MAPPING_ILP_LB = "ilp_lb";
 	private static final String MAPPING_ILP_ENERGY = "ilp_energy";
 	private static final String MAPPING_GA_LB = "ga_lb";
+	private static final String MAPPING_GA_CONSTRAINTS = "ga_constraints";
 
 	private String resultSlot = "mapping";
 
@@ -68,13 +70,16 @@ public class GenerateMapping extends WorkflowComponent {
 			this.log.info("Using GA Load Balancing Algorithm...");
 			mappingAlg = new GABasedLoadBalancing();
 		}
+		else if (getMappingAlg().equals(MAPPING_GA_CONSTRAINTS)) {
+			this.log.info("Using GA Constraints Algorithm...");
+			mappingAlg = new GABasedConstraints();
+		}
 		final Amalthea modelCopy = getAmaltheaModelCopy(ctx);
 //		if (null != modelCopy.getConstraintsModel()) {
 //			mappingAlg.setConnstraintsModel(modelCopy.getConstraintsModel());
 //		}
 //		mappingAlg.setHwModel(modelCopy.getHwModel());
 //		mappingAlg.setSwModel(modelCopy.getSwModel());
-		
 		mappingAlg.setAmaltheaMergedModel(modelCopy);
 		mappingAlg.calculateMapping();
 		assert null != mappingAlg.getAmaltheaOutputModel().getOsModel() && null != mappingAlg.getAmaltheaOutputModel().getMappingModel();
@@ -91,7 +96,7 @@ public class GenerateMapping extends WorkflowComponent {
 	protected void checkInternal() throws ConfigurationException {
 		if (null == getMappingAlg() || getMappingAlg().isEmpty()
 				|| ((!getMappingAlg().equals(MAPPING_DFG) && !getMappingAlg().equals(MAPPING_ILP_LB)
-						&& !getMappingAlg().equals(MAPPING_ILP_ENERGY) && !getMappingAlg().equals(MAPPING_GA_LB)))) {
+						&& !getMappingAlg().equals(MAPPING_ILP_ENERGY) && !getMappingAlg().equals(MAPPING_GA_LB) && !getMappingAlg().equals(MAPPING_GA_CONSTRAINTS)))) {
 			throw new ConfigurationException(
 					"No proper mapping algorithm defined! Please define one of the following values: dfg,ilp_lb,ilp_energy,ga_lb");
 		}

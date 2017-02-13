@@ -20,12 +20,15 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DirectoryDialog;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
@@ -34,52 +37,142 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
 public class OpenMappingPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
+	/**
+	 * Enable logging console
+	 */
 	private Button checkEnableLogCon;
-	private Button radioOutputDefault; // ./output/ in current project
-	private Button radioOutputRel; // relative path (project root)
-	private Button radioOutputAbs; // absolute path
-	private Button btnSelectOutput; // Open directory dialog to specify output
-	// path
-	private Text txtOutputLocation; // Textfield for custom output location
-	// string
-	private Label lOptionalOutputs; // Opt. Outputs
-	private Button checkGenerateMPS; // Generate MPS output file
-	private Label lMaxGap; // Max. Gap
-	private Label lMaxItAbort; // Max. Iterations for Abort
-	private Label lMaxItSuffice; // Max. Iterations for Abort after an feasible
-	// solution has been found
-	private Label lMaxTimeAbort; // Max Time for Abort
-	private Label lMaxTimeSuffice; // Max Time for Abort after an feasible
-	// solution has been found
-	private Text txtMaxGap; // Max. Gap
+	/**
+	 * Use default output radio button
+	 */
+	private Button radioOutputDefault; // 
+	/**
+	 * Relative path (project root) radio button
+	 */
+	private Button radioOutputRel;
+	/**
+	 * Absolute path radio button 
+	 */
+	private Button radioOutputAbs;
+	/**
+	 * Open directory dialog to specify output
+	 */
+	private Button btnSelectOutput;
+	/**
+	 * Text input for custom output location
+	 */
+	private Text txtOutputLocation;
+	/**
+	 * Optional outputs 
+	 */
+	private Label lOptionalOutputs;
+	/**
+	 * Generate MPS output file
+	 */
+	private Button checkGenerateMPS;
+	/**
+	 * Max. Gap label
+	 */
+	private Label lMaxGap;
+	/**
+	 * Max. Iterations for Abort label
+	 */
+	private Label lMaxItAbort;
+	/**
+	 * Max. Iterations for Abort after an feasible label
+	 */
+	private Label lMaxItSuffice;
+	/**
+	 * Max Time for Abort label
+	 */
+	private Label lMaxTimeAbort;
+	/**
+	 * Max Time for Abort after an feasible label
+	 */
+	private Label lMaxTimeSuffice; 
+	/**
+	 * Max. Gap input
+	 */
+	private Text txtMaxGap;
+	/**
+	 * Max. Iterations for Abort input
+	 */
 	private Text txtMaxItAbort;
+	/**
+	 * Max. Iterations for Abort after an feasible input
+	 */
 	private Text txtMaxItSuffice;
+	/**
+	 * Max Time for Abort input
+	 */
 	private Text txtMaxTimeAbort;
+	/**
+	 * Max Time for Abort after an feasible input
+	 */
 	private Text txtMaxTimeSuffice;
+	/**
+	 * Gap Hing label
+	 */
 	private Label lGapHint;
+	/**
+	 * Solver Hint label
+	 */
 	private Label lSolverHint;
-	private Button radioAlgorithm1; // DFG Load Balancing
-	private Button radioAlgorithm2; // ILP Load Balancing
-	private Button radioAlgorithm3; // Energy efficient mapping
-	private Button radioAlgorithm4; // GA Load Balancing
+	/**
+	 * Select Mapping algorithm dropdown
+	 */
+	private Combo dropDownAlgorithm; 
 
+	/**
+	 * Constructor
+	 */
 	public OpenMappingPreferencePage() {
 		super();
 	}
 
+	/**
+	 * Constructor
+	 * @param title title of the preference page
+	 */
 	public OpenMappingPreferencePage(final String title) {
 		super(title);
 	}
 
+	/**
+	 * Constructor
+	 * @param title title of the preference page
+	 * @param image image of the preference page
+	 */
 	public OpenMappingPreferencePage(final String title, final ImageDescriptor image) {
 		super(title, image);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.IWorkbenchPreferencePage#init(org.eclipse.ui.IWorkbench)
+	 */
 	@Override
 	public void init(final IWorkbench workbench) {
 		setPreferenceStore(OpenMappingPlugin.getDefault().getPreferenceStore());
 	}
 
+	/**
+	 * Verify if solver settings should be visible or not
+	 * @param mapAlg index of the selected mapping algorithm
+	 * @return true if the solver settings should be visible and false otherwise
+	 */
+	private boolean checkSolverSettingsVisibility(int mapAlg) {
+		
+		switch (mapAlg) {
+			case 1: // "ILP based load balancing"
+			case 2: // "Energy efficient mapping (Experimental!)"
+				return true;	
+			default:
+				return false;
+		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.preference.PreferencePage#createContents(org.eclipse.swt.widgets.Composite)
+	 */
 	@Override
 	protected Control createContents(final Composite parent) {
 		final GridLayout layout = new GridLayout(1, false);
@@ -158,25 +251,24 @@ public class OpenMappingPreferencePage extends PreferencePage implements IWorkbe
 		groupAlgorithm.setText("Select mapping algorithm");
 		groupAlgorithm.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		groupAlgorithm.setLayout(layout);
-
-		// Load balancing for DFG based software models
-		this.radioAlgorithm1 = new Button(groupAlgorithm, SWT.RADIO);
-		this.radioAlgorithm1.setText("Load balancing for DFG");
-		// ILP based load balancing
-		this.radioAlgorithm2 = new Button(groupAlgorithm, SWT.RADIO);
-		this.radioAlgorithm2.setText("ILP based load balancing");
-		// Energy efficient mapping
-		this.radioAlgorithm3 = new Button(groupAlgorithm, SWT.RADIO);
-		this.radioAlgorithm3.setText("Energy efficient mapping (Experimental!)");
-		// Energy efficient mapping
-		this.radioAlgorithm4 = new Button(groupAlgorithm, SWT.RADIO);
-		this.radioAlgorithm4.setText("GA based load balancing");
-
+		
+		
+		// Mapping Algorithms dropdown
+		this.dropDownAlgorithm =  new Combo(groupAlgorithm, SWT.DROP_DOWN | SWT.BORDER);
+		final String[] options = {"Load balancing for DFG", 
+								  "ILP based load balancing",
+								  "Energy efficient mapping (Experimental!)",
+								  "GA based load balancing",
+								  "GA based load balancing with constraints optimization"};
+		
+		this.dropDownAlgorithm.setItems(options);
+		
 		// fourth group, solver settings
 		final Group groupSolverSettings = new Group(parent, SWT.SHADOW_ETCHED_IN);
 		groupSolverSettings.setText("Solver Settings");
 		groupSolverSettings.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		groupSolverSettings.setLayout(layout2row);
+		groupSolverSettings.setVisible(false);
 
 		this.lOptionalOutputs = new Label(groupSolverSettings, SWT.NULL);
 		this.lOptionalOutputs.setText("Optional outputs");
@@ -209,22 +301,47 @@ public class OpenMappingPreferencePage extends PreferencePage implements IWorkbe
 		this.lSolverHint = new Label(groupSolverSettings, SWT.NONE);
 		this.lSolverHint.setText("Hint: Entering 0 will disable the constraint (i.e. set the value to INT_MAX).");
 
+		
+		this.dropDownAlgorithm.addSelectionListener(new SelectionListener()
+	    {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				groupSolverSettings.setVisible(checkSolverSettingsVisibility(dropDownAlgorithm.getSelectionIndex()));
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				groupSolverSettings.setVisible(checkSolverSettingsVisibility(dropDownAlgorithm.getSelectionIndex()));
+			}
+	    });
+		
 		initValues();
 
 		return parent;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.preference.PreferencePage#performDefaults()
+	 */
 	@Override
 	protected void performDefaults() {
 		super.performDefaults();
 		initDefaults();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.preference.PreferencePage#performOk()
+	 */
 	@Override
 	public boolean performOk() {
 		return storePreferences();
 	}
 
+	/**
+	 * Store preferences into registry
+	 * @return true if stored correctly false otherwise
+	 */
 	private boolean storePreferences() {
 		boolean success = true;
 		final IPreferenceStore store = getPreferenceStore();
@@ -246,22 +363,7 @@ public class OpenMappingPreferencePage extends PreferencePage implements IWorkbe
 		store.setValue(IOpenMappingConstants.PRE_RADIO_OUTDIR, d);
 		store.setValue(IOpenMappingConstants.PRE_STRING_OUTDIR, this.txtOutputLocation.getText());
 
-		// Mapping algorithms
-		int c = 0;
-		if (this.radioAlgorithm1.getSelection()) {
-			c = 0;
-		}
-		else if (this.radioAlgorithm2.getSelection()) {
-			c = 1;
-		}
-		else if (this.radioAlgorithm3.getSelection()) {
-			c = 2;
-		}
-		else if (this.radioAlgorithm4.getSelection()) {
-			c = 3;
-		}
-
-		store.setValue(IOpenMappingConstants.PRE_RADIO_ALG, c);
+		store.setValue(IOpenMappingConstants.PRE_RADIO_ALG, this.dropDownAlgorithm.getSelectionIndex());
 
 		// Solver Settings
 		store.setValue(IOpenMappingConstants.PRE_CHECK_GENERATE_MPS, this.checkGenerateMPS.getSelection());
@@ -294,6 +396,9 @@ public class OpenMappingPreferencePage extends PreferencePage implements IWorkbe
 		return success;
 	}
 
+	/**
+	 * Initialize default values
+	 */
 	private void initDefaults() {
 		final IPreferenceStore store = getPreferenceStore();
 		// Checkbox for Logging
@@ -326,27 +431,9 @@ public class OpenMappingPreferencePage extends PreferencePage implements IWorkbe
 		this.txtOutputLocation.setText(store.getDefaultString(IOpenMappingConstants.PRE_STRING_OUTDIR));
 
 		// Mapping algorithms
-		this.radioAlgorithm1.setSelection(false);
-		this.radioAlgorithm2.setSelection(false);
-		this.radioAlgorithm3.setSelection(false);
-		this.radioAlgorithm4.setSelection(false);
-		final int radioAlgorithmChoice = store.getDefaultInt(IOpenMappingConstants.PRE_RADIO_ALG);
-		switch (radioAlgorithmChoice) {
-		case 0:
-			this.radioAlgorithm1.setSelection(true);
-			break;
-		case 1:
-			this.radioAlgorithm2.setSelection(true);
-			break;
-		case 2:
-			this.radioAlgorithm3.setSelection(true);
-			break;
-		case 3:
-			this.radioAlgorithm4.setSelection(true);
-			break;
-		default:
-			break;
-		}
+		final int mappingAlgorithmChoice = store.getDefaultInt(IOpenMappingConstants.PRE_RADIO_ALG);		
+		this.dropDownAlgorithm.select(mappingAlgorithmChoice);
+		this.dropDownAlgorithm.notifyListeners(SWT.Selection, new Event());
 
 		// Solver Settings
 		this.checkGenerateMPS.setSelection(store.getDefaultBoolean(IOpenMappingConstants.PRE_CHECK_GENERATE_MPS));
@@ -357,6 +444,9 @@ public class OpenMappingPreferencePage extends PreferencePage implements IWorkbe
 		this.txtMaxTimeSuffice.setText("" + store.getDefaultInt(IOpenMappingConstants.PRE_MAX_TIME_SUFFICE));
 	}
 
+	/**
+	 * Load preferences from registry
+	 */
 	private void initValues() {
 		final IPreferenceStore store = getPreferenceStore();
 		// checkboxes
@@ -389,23 +479,10 @@ public class OpenMappingPreferencePage extends PreferencePage implements IWorkbe
 		this.txtOutputLocation.setText(store.getString(IOpenMappingConstants.PRE_STRING_OUTDIR));
 
 		// radio buttons
-		final int radioAlgorithmChoice = store.getInt(IOpenMappingConstants.PRE_RADIO_ALG);
-		switch (radioAlgorithmChoice) {
-		case 0:
-			this.radioAlgorithm1.setSelection(true);
-			break;
-		case 1:
-			this.radioAlgorithm2.setSelection(true);
-			break;
-		case 2:
-			this.radioAlgorithm3.setSelection(true);
-			break;
-		case 3:
-			this.radioAlgorithm4.setSelection(true);
-			break;
-		default:
-			break;
-		}
+		final int mappingAlgorithmChoice = store.getInt(IOpenMappingConstants.PRE_RADIO_ALG);
+		this.dropDownAlgorithm.select(mappingAlgorithmChoice);
+		this.dropDownAlgorithm.notifyListeners(SWT.Selection, new Event());
+
 		// Solver Settings
 		this.checkGenerateMPS.setSelection(store.getBoolean(IOpenMappingConstants.PRE_CHECK_GENERATE_MPS));
 		this.txtMaxGap.setText("" + store.getDouble(IOpenMappingConstants.PRE_MAX_GAP));
@@ -415,10 +492,18 @@ public class OpenMappingPreferencePage extends PreferencePage implements IWorkbe
 		this.txtMaxTimeSuffice.setText("" + store.getInt(IOpenMappingConstants.PRE_MAX_TIME_SUFFICE));
 	}
 
+	/**
+	 * Obtain the output location as Text
+	 * @return output location
+	 */
 	public Text getTextOutputLocation() {
 		return this.txtOutputLocation;
 	}
 
+	/**
+	 * Obtain the output location button
+	 * @return output location button
+	 */
 	public Button getBtnOutputLocation() {
 		return this.btnSelectOutput;
 	}

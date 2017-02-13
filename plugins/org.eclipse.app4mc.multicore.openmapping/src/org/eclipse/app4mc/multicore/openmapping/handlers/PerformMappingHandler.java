@@ -15,6 +15,7 @@ import org.eclipse.app4mc.multicore.openmapping.IOpenMappingConstants;
 import org.eclipse.app4mc.multicore.openmapping.OpenMappingPlugin;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractILPBasedMappingAlgorithm;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractMappingAlgorithm;
+import org.eclipse.app4mc.multicore.openmapping.algorithms.ga.constraints.GABasedConstraints;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.ga.lb.GABasedLoadBalancing;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.heuristic.lb.LoadBalancingDFG;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimization.EnergyMinimization;
@@ -61,9 +62,9 @@ public class PerformMappingHandler extends AbstractHandler {
 		final String sOutputDirectory = store.getString(IOpenMappingConstants.PRE_STRING_OUTDIR);
 
 		// Preference: Mapping Algorithm
-		final int radioAlgorithmChoice = store.getInt(IOpenMappingConstants.PRE_RADIO_ALG);
+		final int mappingAlgorithmChoice = store.getInt(IOpenMappingConstants.PRE_RADIO_ALG);
 		final AbstractMappingAlgorithm mappingAlgorithm;
-		switch (radioAlgorithmChoice) {
+		switch (mappingAlgorithmChoice) {
 		case 0: // Load Balancing DFG
 			mappingAlgorithm = new LoadBalancingDFG();
 			break;
@@ -75,6 +76,9 @@ public class PerformMappingHandler extends AbstractHandler {
 			break;
 		case 3: // GA Load Balancing
 			mappingAlgorithm = new GABasedLoadBalancing();
+			break;
+		case 4: // GA constraints
+			mappingAlgorithm = new GABasedConstraints();
 			break;
 		default:
 			return null;
