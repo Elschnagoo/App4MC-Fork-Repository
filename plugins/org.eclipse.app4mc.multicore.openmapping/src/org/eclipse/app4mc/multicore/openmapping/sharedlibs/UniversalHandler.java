@@ -11,6 +11,7 @@
  ******************************************************************************/
 package org.eclipse.app4mc.multicore.openmapping.sharedlibs;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,7 +39,9 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
@@ -84,10 +87,30 @@ public class UniversalHandler {
 	UniversalHandler() {
 		try {
 			AmaltheaPackage.eINSTANCE.eClass();
-		}
-		catch (final Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public boolean writeFile(final IPath path, final StringBuilder string) {
+		final IFile outFile = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
+		final File parentFolder = new File(outFile.getParent().getFullPath().toOSString());
+		parentFolder.mkdirs();
+
+		try {
+			ByteArrayInputStream stream = new ByteArrayInputStream(string.toString().getBytes("UTF-8"));
+			if (outFile.exists()) {
+				outFile.setContents(stream, true, true, null);
+			} else {
+				outFile.create(stream, true, null);
+			}
+			stream.close();
+		} catch (CoreException | IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -107,14 +130,12 @@ public class UniversalHandler {
 			res.load(null);
 			if (copyModel) {
 				content = copier.copyAll(res.getContents());
-			}
-			else {
+			} else {
 				content = res.getContents();
 			}
 
 			setModel(content);
-		}
-		catch (final WrappedException | IOException e) {
+		} catch (final WrappedException | IOException e) {
 			e.printStackTrace();
 		}
 		if (copyModel) {
@@ -149,8 +170,7 @@ public class UniversalHandler {
 		try {
 			resource.getContents().add(model);
 			resource.save(null);
-		}
-		catch (final IOException e) {
+		} catch (final IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -170,35 +190,25 @@ public class UniversalHandler {
 		for (final EObject model : models) {
 			if (model instanceof CommonElements) {
 				containerModel.setCommonElements((CommonElements) model);
-			}
-			else if (model instanceof SWModel) {
+			} else if (model instanceof SWModel) {
 				containerModel.setSwModel((SWModel) model);
-			}
-			else if (model instanceof HWModel) {
+			} else if (model instanceof HWModel) {
 				containerModel.setHwModel((HWModel) model);
-			}
-			else if (model instanceof ConstraintsModel) {
+			} else if (model instanceof ConstraintsModel) {
 				containerModel.setConstraintsModel((ConstraintsModel) model);
-			}
-			else if (model instanceof MappingModel) {
+			} else if (model instanceof MappingModel) {
 				containerModel.setMappingModel((MappingModel) model);
-			}
-			else if (model instanceof StimuliModel) {
+			} else if (model instanceof StimuliModel) {
 				containerModel.setStimuliModel((StimuliModel) model);
-			}
-			else if (model instanceof OSModel) {
+			} else if (model instanceof OSModel) {
 				containerModel.setOsModel((OSModel) model);
-			}
-			else if (model instanceof PropertyConstraintsModel) {
+			} else if (model instanceof PropertyConstraintsModel) {
 				containerModel.setPropertyConstraintsModel((PropertyConstraintsModel) model);
-			}
-			else if (model instanceof EventModel) {
+			} else if (model instanceof EventModel) {
 				containerModel.setEventModel((EventModel) model);
-			}
-			else if (model instanceof ComponentsModel) {
+			} else if (model instanceof ComponentsModel) {
 				containerModel.setComponentsModel((ComponentsModel) model);
-			}
-			else if (model instanceof ConfigModel) {
+			} else if (model instanceof ConfigModel) {
 				containerModel.setConfigModel((ConfigModel) model);
 			}
 		}
@@ -287,21 +297,20 @@ public class UniversalHandler {
 				this.aLog = Logger.getLogger(this.pluginId);
 			}
 			switch (severity) {
-				case IStatus.OK:
-				case IStatus.INFO:
-				case IStatus.WARNING:
-					this.aLog.info(message);
-					break;
-				case IStatus.ERROR:
-				case IStatus.CANCEL:
-					this.aLog.error(message);
-					break;
+			case IStatus.OK:
+			case IStatus.INFO:
+			case IStatus.WARNING:
+				this.aLog.info(message);
+				break;
+			case IStatus.ERROR:
+			case IStatus.CANCEL:
+				this.aLog.error(message);
+				break;
 			}
 			if (null != e) {
 				this.aLog.error("Exception: " + e);
 			}
-		}
-		else {
+		} else {
 			getLog().log(new Status(severity, getPluginId(), IStatus.OK, message, e));
 		}
 	}
@@ -435,71 +444,71 @@ public class UniversalHandler {
 	}
 
 	public CommonElements getCommonElements() {
-		if(null == this.centralModel) return null;
+		if (null == this.centralModel)
+			return null;
 		return this.centralModel.getCommonElements();
-//		return this.commonElements;
 	}
 
 	public SWModel getSwModel() {
-		if(null == this.centralModel) return null;
+		if (null == this.centralModel)
+			return null;
 		return this.centralModel.getSwModel();
-//		return this.swModel;
 	}
 
 	public HWModel getHwModel() {
-		if(null == this.centralModel) return null;
+		if (null == this.centralModel)
+			return null;
 		return this.centralModel.getHwModel();
-//		return this.hwModel;
 	}
 
 	public ConstraintsModel getConstraintsModel() {
-		if(null == this.centralModel) return null;
+		if (null == this.centralModel)
+			return null;
 		return this.centralModel.getConstraintsModel();
-//		return this.conModel;
 	}
 
 	public OSModel getOsModel() {
-		if(null == this.centralModel) return null;
+		if (null == this.centralModel)
+			return null;
 		return this.centralModel.getOsModel();
-//		return this.osModel;
 	}
 
 	public StimuliModel getStimuliModel() {
-		if(null == this.centralModel) return null;
+		if (null == this.centralModel)
+			return null;
 		return this.centralModel.getStimuliModel();
-//		return this.stiModel;
 	}
 
 	public MappingModel getMappingModel() {
-		if(null == this.centralModel) return null;
+		if (null == this.centralModel)
+			return null;
 		return this.centralModel.getMappingModel();
-//		return this.mmModel;
 	}
 
 	public PropertyConstraintsModel getPropertyConstraintsModel() {
-		if(null == this.centralModel) return null;
+		if (null == this.centralModel)
+			return null;
 		return this.centralModel.getPropertyConstraintsModel();
-//		return this.pcModel;
 	}
 
 	public EventModel getEvModel() {
-		if(null == this.centralModel) return null;
+		if (null == this.centralModel)
+			return null;
 		return this.centralModel.getEventModel();
-//		return this.evModel;
 	}
 
 	public ConfigModel getConfModel() {
-		if(null == this.centralModel) return null;
+		if (null == this.centralModel)
+			return null;
 		return this.centralModel.getConfigModel();
-//		return this.confModel;
 	}
 
 	public ComponentsModel getComModel() {
-		if(null == this.centralModel) return null;
+		if (null == this.centralModel)
+			return null;
 		return this.centralModel.getComponentsModel();
-//		return this.comModel;
 	}
-	
+
 	public Amalthea getCentralModel() {
 		return this.centralModel;
 	}
