@@ -5,8 +5,7 @@ Bundle-SymbolicName: org.eclipse.app4mc.tracing.converter.ot1;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: Eclipse.org
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8,
- JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.app4mc.tracing.converter.ot1.OT1,
  org.eclipse.app4mc.tracing.converter.ot1.OT1.impl,
  org.eclipse.app4mc.tracing.converter.ot1.OT1.util
