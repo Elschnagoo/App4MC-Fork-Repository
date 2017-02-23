@@ -49,29 +49,6 @@ public class AmaltheaLoader {
 		return null;
 	}
 
-	public static void mergeFiles(Amalthea model, List<URI> files) {
-		final ResourceSet resSet = initializeResourceSet();
-		
-		final Collection<Amalthea> modelList = new ArrayList<Amalthea>();
-		for (final URI uri : files) {
-			java.lang.System.out.println("Reading file: " + uri.toString());
-
-			final Resource res = resSet.createResource(uri);
-			try {
-				res.load(null);
-			} catch (IOException e) {
-				// ignore
-			}
-			for (final EObject content : res.getContents()) {
-				if (content instanceof Amalthea) {
-					modelList.add((Amalthea) content);
-				}
-			}
-		}
-
-		AmaltheaMerger.addElements(model, modelList);
-	}
-
 	private static ResourceSet initializeResourceSet() {
 		final ExtendedResourceSet resSet = new ExtendedResourceSetImpl();
 		resSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("amxmi", new AmaltheaResourceFactory());
