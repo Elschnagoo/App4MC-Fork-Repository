@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.eclipse.app4mc.multicore.dialogs.openmapping.preference.OMPreferencePage"
+            id="org.eclipse.app4mc.multicore.openmapping.preference.mapping"
+            name="AMALTHEA Mapping">
+      </page>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.eclipse.app4mc.multicore.dialogs.partitioning.preference.ParPreferencePage"
+            id="org.eclipse.app4mc.multicore.dialogs.partitioning.preference.ParPreferencePage"
+            name="AMALTHEA Partitioning">
+      </page>
+   </extension>  
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               id="org.eclipse.app4mc.multicore.menu"
+               label="AMALTHEA Multicore Features">
+            <command
+                  commandId="org.eclipse.app4mc.multicore.dialogs.commands.MulticoreWizard"
+                  id="org.eclipse.app4mc.multicore.dialogs.popup.MulticoreWizard"
+                  label="Run Wizard"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeMenuSelection">
+                     <iterate
+                           ifEmpty="false">
+                        <instanceof
+                              value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <or>
+                           <test
+                                 property="org.eclipse.core.resources.extension"
+                                 value="amxmi">
+                           </test>
+                           <test
+                                 property="org.eclipse.core.resources.extension"
+                                 value="amxmi-sw">
+                           </test>
+                        </or>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.app4mc.multicore.dialogs.commands.generateTasks"
+                  id="org.eclipse.app4mc.multicore.openmapping.popups.createTasks"
+                  label="Generate Tasks"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeMenuSelection">
+                     <iterate
+                           ifEmpty="false">
+                        <instanceof
+                              value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <or>
+                           <test
+                                 property="org.eclipse.core.resources.extension"
+                                 value="amxmi">
+                           </test>
+                           <test
+                                 property="org.eclipse.core.resources.extension"
+                                 value="amxmi-sw">
+                           </test>
+                        </or>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.app4mc.multicore.dialogs.commands.PerformMappingWizard"
+                  id="org.eclipse.app4mc.multicore.openmapping.popups.performMapping"
+                  label="Perform Mapping"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeMenuSelection">
+                     <iterate
+                           ifEmpty="false">
+                        <instanceof
+                              value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <or>
+                           <test
+                                 property="org.eclipse.core.resources.extension"
+                                 value="amxmi">
+                           </test>
+                           <test
+                                 property="org.eclipse.core.resources.extension"
+                                 value="amxmi-sw">
+                           </test>
+                        </or>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.eclipse.app4mc.multicore.dialogs.wizards.handlers.MulticoreWizardHandler"
+            commandId="org.eclipse.app4mc.multicore.dialogs.commands.MulticoreWizard">
+      </handler>
+      <handler
+            class="org.eclipse.app4mc.multicore.dialogs.openmapping.handlers.CreateTasks"
+            commandId="org.eclipse.app4mc.multicore.dialogs.commands.generateTasks">
+      </handler>
+      <handler
+            class="org.eclipse.app4mc.multicore.dialogs.wizards.handlers.PerformMappingWizardHandler"
+            commandId="org.eclipse.app4mc.multicore.dialogs.commands.PerformMappingWizard">
+      </handler>
+   </extension>
+   
+    <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipse.app4mc.multicore.dialogs.DialogsPreferenceInitializer">
+      </initializer>
+   </extension>
+   
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipse.app4mc.multicore.dialogs.openmapping.preference.OMPreferenceInitializer">
+      </initializer>
+   </extension>  
+   
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipse.app4mc.multicore.dialogs.partitioning.preference.ParPreferenceInitializer">
+      </initializer>
+   </extension>  
+
+</plugin>

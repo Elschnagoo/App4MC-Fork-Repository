@@ -18,30 +18,33 @@ import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.workflow.core.Context;
 import org.eclipse.app4mc.amalthea.workflow.core.WorkflowComponent;
 import org.eclipse.app4mc.amalthea.workflow.core.exception.ConfigurationException;
+import org.eclipse.app4mc.multicore.openmapping.IOMConstants;
+import org.eclipse.app4mc.multicore.openmapping.OMPreferenceInitializer;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractMappingAlgorithm;
-import org.eclipse.app4mc.multicore.openmapping.algorithms.ga.constraints.GABasedConstraints;
-import org.eclipse.app4mc.multicore.openmapping.algorithms.ga.lb.GABasedLoadBalancing;
-import org.eclipse.app4mc.multicore.openmapping.algorithms.heuristic.lb.LoadBalancingDFG;
-import org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimization.EnergyMinimization;
-import org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.lb.ILPBasedLoadBalancing;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
+import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.preference.PreferenceStore;
 
 /**
  *
  *
  */
 public class GenerateMapping extends WorkflowComponent {
-	private static final String MAPPING_DFG = "dfg";
-	private static final String MAPPING_ILP_LB = "ilp_lb";
-	private static final String MAPPING_ILP_ENERGY = "ilp_energy";
-	private static final String MAPPING_GA_LB = "ga_lb";
-	private static final String MAPPING_GA_CONSTRAINTS = "ga_constraints";
+	public static final String MAPPING_DFG = "dfg";
+	public static final String MAPPING_ILP_LB = "ilp_lb";
+	public static final String MAPPING_ILP_ENERGY = "ilp_energy";
+	public static final String MAPPING_GA_LB = "ga_lb";
+	public static final String MAPPING_GA_CONSTRAINTS = "ga_constraints";
 
 	private String resultSlot = "mapping";
 
-	private String mappingAlg;
-
-	private boolean enableLog = false;
+	private IPreferenceStore store = new PreferenceStore();
+	
+	public GenerateMapping() {
+		// Init store with default values of OMPlugin
+		OMPreferenceInitializer init = new OMPreferenceInitializer(store);
+		init.initializeDefaultPreferences();
+	}
 
 	/**
 	 * @see org.eclipse.emf.mwe.core.lib.AbstractWorkflowComponent#invokeInternal(org.eclipse.emf.mwe.core.WorkflowContext,
@@ -53,27 +56,10 @@ public class GenerateMapping extends WorkflowComponent {
 		if (isEnableLog()) {
 			UniversalHandler.getInstance().enableVerboseOutput();
 		}
-		AbstractMappingAlgorithm mappingAlg = null;
-		if (getMappingAlg().equals(MAPPING_DFG)) {
-			this.log.info("Using DFG Algorithm...");
-			mappingAlg = new LoadBalancingDFG();
-		}
-		else if (getMappingAlg().equals(MAPPING_ILP_LB)) {
-			this.log.info("Using ILP Load Balancing Algorithm...");
-			mappingAlg = new ILPBasedLoadBalancing();
-		}
-		else if (getMappingAlg().equals(MAPPING_ILP_ENERGY)) {
-			this.log.info("Using ILP Energy Minimization Algorithm...");
-			mappingAlg = new EnergyMinimization();
-		}
-		else if (getMappingAlg().equals(MAPPING_GA_LB)) {
-			this.log.info("Using GA Load Balancing Algorithm...");
-			mappingAlg = new GABasedLoadBalancing();
-		}
-		else if (getMappingAlg().equals(MAPPING_GA_CONSTRAINTS)) {
-			this.log.info("Using GA Constraints Algorithm...");
-			mappingAlg = new GABasedConstraints();
-		}
+		
+		// Using default values for Solver Settings
+		AbstractMappingAlgorithm mappingAlg = AbstractMappingAlgorithm.of(store);
+		
 		final Amalthea modelCopy = getAmaltheaModelCopy(ctx);
 //		if (null != modelCopy.getConstraintsModel()) {
 //			mappingAlg.setConnstraintsModel(modelCopy.getConstraintsModel());
@@ -121,7 +107,9 @@ public class GenerateMapping extends WorkflowComponent {
 	 * @return the mappingAlg
 	 */
 	public String getMappingAlg() {
-		return this.mappingAlg;
+		String mapAlg = store.getString(IOMConstants.PRE_MAPPING_ALG);
+		
+		return mapAlgPreferenceToWorkflow(mapAlg);
 	}
 
 	/**
@@ -129,14 +117,15 @@ public class GenerateMapping extends WorkflowComponent {
 	 *            the mappingAlg to set
 	 */
 	public void setMappingAlg(final String mappingAlg) {
-		this.mappingAlg = mappingAlg;
+		store.setValue(IOMConstants.PRE_MAPPING_ALG, mapAlgWorkflowToPreference(mappingAlg));
+		
 	}
 
 	/**
 	 * @return the enableLog
 	 */
 	public boolean isEnableLog() {
-		return this.enableLog;
+		return store.getBoolean(IOMConstants.PRE_CHECK_LOGCON);
 	}
 
 	/**
@@ -144,7 +133,67 @@ public class GenerateMapping extends WorkflowComponent {
 	 *            the enableLog to set
 	 */
 	public void setEnableLog(final boolean enableLog) {
-		this.enableLog = enableLog;
+		store.setValue(IOMConstants.PRE_CHECK_LOGCON, enableLog);
+	}
+	
+	public void setStore(IPreferenceStore store) {
+		this.store = store;
+		
+	}
+
+	public static String mapAlgWorkflowToPreference(String workFlowMean) {
+		String mapAlg = "";
+		
+		switch (workFlowMean) {
+		case MAPPING_DFG:
+			mapAlg = AbstractMappingAlgorithm.LOAD_BALANCE_DFG;
+			break;
+		case MAPPING_ILP_LB:
+			mapAlg = AbstractMappingAlgorithm.LOAD_BALANCE_ILP;
+			break;
+		case MAPPING_ILP_ENERGY:
+			mapAlg = AbstractMappingAlgorithm.ENERGY_MIN_ILP;
+			break;
+		case MAPPING_GA_LB:
+			mapAlg = AbstractMappingAlgorithm.LOAD_BALANCE_GA;
+			break;
+		case MAPPING_GA_CONSTRAINTS:
+			mapAlg = AbstractMappingAlgorithm.LOAD_BALANCE_CONSTRAINTS_GA;
+			break;
+		default:
+			mapAlg = AbstractMappingAlgorithm.LOAD_BALANCE_ILP;
+			break;
+		}
+		
+		return mapAlg;
+		
+	}
+	
+	public static String mapAlgPreferenceToWorkflow(String preferenceMean) {
+		String mapAlg = "";
+
+		switch (preferenceMean) {
+		case AbstractMappingAlgorithm.ENERGY_MIN_ILP:
+			mapAlg = GenerateMapping.MAPPING_ILP_ENERGY;
+			break;
+		case AbstractMappingAlgorithm.LOAD_BALANCE_CONSTRAINTS_GA:
+			mapAlg = GenerateMapping.MAPPING_GA_CONSTRAINTS;
+			break;
+		case AbstractMappingAlgorithm.LOAD_BALANCE_DFG:
+			mapAlg = GenerateMapping.MAPPING_DFG;
+			break;
+		case AbstractMappingAlgorithm.LOAD_BALANCE_GA:
+			mapAlg = GenerateMapping.MAPPING_GA_LB;
+			break;
+		case AbstractMappingAlgorithm.LOAD_BALANCE_ILP:
+			mapAlg = GenerateMapping.MAPPING_ILP_LB;
+			break;
+		default:
+			mapAlg = GenerateMapping.MAPPING_ILP_LB;
+			break;
+		}
+
+		return mapAlg;
 	}
 
 }

@@ -11,7 +11,11 @@
  ******************************************************************************/
 package org.eclipse.app4mc.multicore.openmapping.algorithms;
 
+import org.eclipse.app4mc.multicore.openmapping.model.OMMapping;
+import org.jenetics.Genotype;
+import org.jenetics.IntegerGene;
+
 public abstract class AbstractGABasedMappingAlgorithm extends AbstractMappingAlgorithm {
-	// final String sVersion = ;
-	/* Dummy, this class will be extendend w.r.t. GA based approaches */
+
+	protected abstract OMMapping generateOMMapping(final Genotype<IntegerGene> mappingResult);
 }

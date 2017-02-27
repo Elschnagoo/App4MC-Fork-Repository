@@ -29,6 +29,7 @@ import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.multicore.partitioning.IParConstants;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -43,10 +44,10 @@ public class PrePartitioning {
 	private boolean minimalEdgeDis = false;
 
 	public PrePartitioning(final IPreferenceStore store) {
-		setActivationGroups(store.getBoolean("boolActivation"));
-		setEfficientEdgeInCycle(store.getBoolean("boolEffEdge"));
-		setGgp(store.getBoolean("boolGGP"));
-		setMinimalEdgeDis(store.getBoolean("boolMinEdges"));
+		setActivationGroups(store.getBoolean(IParConstants.PRE_ACTIVATION));
+		setEfficientEdgeInCycle(store.getBoolean(IParConstants.PRE_EFF_EDGE));
+		setGgp(store.getBoolean(IParConstants.PRE_GGP));
+		setMinimalEdgeDis(store.getBoolean(IParConstants.PRE_MIN_EDGES));
 	}
 
 	public PrePartitioning(final boolean ag, final boolean ggp, final boolean effEdges, final boolean minimalEdges) {
@@ -242,7 +243,7 @@ public class PrePartitioning {
 					}
 					final InstructionsConstant ic = af.createInstructionsConstant();
 					ic.setValue(instrCum);
-					RunnableInstructions runInst = af.createRunnableInstructions();
+					final RunnableInstructions runInst = af.createRunnableInstructions();
 					runInst.setDefault(ic);
 					r.getRunnableItems().add(runInst);
 					modelCopy.getSwModel().getRunnables().add(r);

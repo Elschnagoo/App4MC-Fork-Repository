@@ -23,7 +23,7 @@ import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.multicore.openmapping.model.OMCore;
 import org.eclipse.app4mc.multicore.openmapping.model.OMTask;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
+import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 
 public class ListBuilder {
 	public static ArrayList<OMCore> getCoreList(final HWModel hw) {

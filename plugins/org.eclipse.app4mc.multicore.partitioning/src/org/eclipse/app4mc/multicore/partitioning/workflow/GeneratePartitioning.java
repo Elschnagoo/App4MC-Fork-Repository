@@ -19,11 +19,11 @@ import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.workflow.core.Context;
 import org.eclipse.app4mc.amalthea.workflow.core.WorkflowComponent;
 import org.eclipse.app4mc.amalthea.workflow.core.exception.ConfigurationException;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.CPP;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.ESSP;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.PartLog;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.PerformPartitioning;
+import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -31,8 +31,8 @@ import org.eclipse.core.runtime.Path;
 
 public class GeneratePartitioning extends WorkflowComponent {
 
-	private static final String PARTITIONING_CPP = "cpp";
-	private static final String PARTITIONING_ESSP = "essp";
+	public static final String PARTITIONING_CPP = "cpp";
+	public static final String PARTITIONING_ESSP = "essp";
 	private final String resultSlot = "partitioning";
 	private String partitioningAlg;
 	private String numberOfPartitions;

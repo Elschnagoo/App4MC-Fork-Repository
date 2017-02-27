@@ -6,7 +6,7 @@ import java.util.Set;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.multicore.openmapping.model.OMCore;
 import org.eclipse.app4mc.multicore.openmapping.model.OMTask;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.ConsoleOutputHandler;
+import org.eclipse.app4mc.multicore.sharelibs.ConsoleOutputHandler;
 
 import com.google.common.collect.HashMultimap;
 

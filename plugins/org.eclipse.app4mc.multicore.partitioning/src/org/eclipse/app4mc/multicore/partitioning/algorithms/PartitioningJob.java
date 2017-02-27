@@ -1,6 +1,8 @@
 package org.eclipse.app4mc.multicore.partitioning.algorithms;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.multicore.partitioning.IParConstants;
+import org.eclipse.app4mc.multicore.sharelibs.OutputPathParser;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -24,7 +26,7 @@ public class PartitioningJob extends Job {
 
 	@Override
 	protected IStatus run(final IProgressMonitor monitor) {
-
+		
 		final PrePartitioning prepart = new PrePartitioning(this.store);
 		assert this.models != null;
 		monitor.beginTask("Partitioning", 2);
@@ -36,12 +38,15 @@ public class PartitioningJob extends Job {
 			return null;
 		}
 		if (!this.file.getName().endsWith("_PrePartitioned.amxmi")) {
-			new Helper().writeModelFile(this.file, "_PrePartitioned", this.models);
+			OutputPathParser parser = new OutputPathParser(IParConstants.PRE_LOC_RADIO,
+					IParConstants.PRE_LOC_STRING,
+					store);
+			Helper.writeModelFile(this.file, parser.parseOutputFileURI(file, "_PrePartitioned"), this.models);
 		}
 
 		monitor.subTask("Graph Partitioning...");
-		if (this.store.getBoolean("boolCPP") == true || Integer.parseInt(this.store.getString("intThreads")) > 1) {
-			new PerformPartitioning().execute(this.file, monitor);
+		if (this.store.getString(IParConstants.PRE_PARTITIONING_ALG).equals(PerformPartitioning.PART_CPP) || Integer.parseInt(this.store.getString(IParConstants.PRE_INT)) > 1) {
+			new PerformPartitioning().execute(this.file, monitor, store);
 		}
 		monitor.worked(1);
 

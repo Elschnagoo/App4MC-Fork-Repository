@@ -29,9 +29,11 @@ import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
+import org.eclipse.app4mc.multicore.partitioning.IParConstants;
 import org.eclipse.app4mc.multicore.partitioning.PartitioningPlugin;
 import org.eclipse.app4mc.multicore.partitioning.handlers.WriteAppletHandler;
+import org.eclipse.app4mc.multicore.sharelibs.OutputPathParser;
+import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.BasicEList;
@@ -40,28 +42,36 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.preference.IPreferenceStore;
 
 public class PerformPartitioning {
+	/**
+	 * Partitioning using ESSP algorithm
+	 */
+	public final static String PART_ESSP = "0";
+	/**
+	 * Partitioning using CPP algorithm
+	 */
+	public final static String PART_CPP = "1";
 
 	/**
 	 * determines which operation shall be performed: activation analysis, label
 	 * analysis, graph or independent graph partitioning and calls the
 	 * corresponding classes
 	 */
-	public Object execute(final IFile file, final IProgressMonitor monitor) {
+	public Object execute(final IFile file, final IProgressMonitor monitor, IPreferenceStore store) {
 		final UniversalHandler uh = UniversalHandler.getInstance();
 		PartLog.getInstance().setLogName("PartitioningHandler");
 		PartLog.getInstance().log("Starting Partitioning");
-		final IPreferenceStore store = PartitioningPlugin.getDefault().getPreferenceStore();
-		String CurrentPathFile = file.getProject().getFullPath().toString() + "/" + store.getString("loc") + "/";
+		OutputPathParser outputParser = new OutputPathParser(IParConstants.PRE_LOC_RADIO,
+				IParConstants.PRE_LOC_STRING,
+				store);
+		String append = "";
 		if (!file.getName().endsWith("_PrePartitioned.amxmi")) {
-			CurrentPathFile += file.getName().substring(0, file.getName().lastIndexOf(".")) + "_PrePartitioned.amxmi";
+			append = "_PrePartitioned";
 		}
-		else {
-			CurrentPathFile += file.getName();
-		}
+		
 		uh.dropCache();
-		uh.readModels(URI.createPlatformResourceURI(CurrentPathFile, true), true);
+		uh.readModels(outputParser.parseOutputFileURI(file, append), true);
 		if (uh.getSwModel() == null) {
-			PartLog.getInstance().log("No SWModel found at " + CurrentPathFile, null);
+			PartLog.getInstance().log("No SWModel found at " + outputParser.parseOutputFileURI(file, append).toString(), null);
 			return null;
 		}
 
@@ -73,48 +83,54 @@ public class PerformPartitioning {
 			PartLog.getInstance().log("!!No ProcessPrototypes present. Creating one containing all RunnableCalls.");
 			amodels.setSwModel(createPPs(amodels.getSwModel()));
 		}
-
-		if (store.getBoolean("boolCPP") == true) {
-			PartLog.getInstance().log("--Starting critical path partitioning--");
-			final CPP cpp = new CPP(amodels.getSwModel(), amodels.getConstraintsModel());
-			cpp.bglobalCP = store.getBoolean("boolGCP");
-			cpp.build(monitor);
-			amodels.setConstraintsModel(cpp.cm);
-			amodels.setSwModel(cpp.swm);
-			amodels = retainAffntyCnstrnts(file, uh, amodels, monitor);
-			new Helper().writeModelFile(file, "_CPP", amodels);
-			PartLog.getInstance().log("--Critical path partitioning finished--");
-			PartLog.getInstance().logSimple("CPP finished.");
-		}
-		if (Integer.parseInt(store.getString("intThreads")) > 1 && store.getBoolean("boolESSP") == true) {
+		
+		switch (store.getString(IParConstants.PRE_PARTITIONING_ALG)) {
+		case PART_ESSP:
 			PartLog.getInstance().log("--Starting earliest start schedule partitioning--");
 			final ESSP essp = new ESSP(amodels.getSwModel(), amodels.getConstraintsModel(),
-					Integer.parseInt(store.getString("intThreads")));
+					Integer.parseInt(store.getString(IParConstants.PRE_INT)));
 			essp.build(monitor);
-			if (essp.swm.getProcessPrototypes().size() < Integer.parseInt(store.getString("intThreads"))) {
+			if (essp.swm.getProcessPrototypes().size() < Integer.parseInt(store.getString(IParConstants.PRE_INT))) {
 				PartLog.getInstance()
-						.log("ESSP could not generate " + Integer.parseInt(store.getString("intThreads"))
+						.log("ESSP could not generate " + Integer.parseInt(store.getString(IParConstants.PRE_INT))
 								+ " partitions since the softwaremodel's graph does not feature enough parallel runnables. "
 								+ essp.swm.getProcessPrototypes().size() + " partitions could be generated.");
 			}
 			amodels.setConstraintsModel(essp.cm);
 			amodels.setSwModel(essp.swm);
 			amodels = retainAffntyCnstrnts(file, uh, amodels, monitor);
-			new Helper().writeModelFile(file, "_ESSP", amodels);
+			
+			Helper.writeModelFile(file, outputParser.parseOutputFileURI(file,  "_ESSP"), amodels);
 			PartLog.getInstance().log("--Earliest start schedule partitioning finished--");
 			PartLog.getInstance().logSimple("ESSP finished.");
+			break;
+		case PART_CPP:
+			PartLog.getInstance().log("--Starting critical path partitioning--");
+			final CPP cpp = new CPP(amodels.getSwModel(), amodels.getConstraintsModel());
+			cpp.bglobalCP = store.getBoolean(IParConstants.PRE_GCP);
+			cpp.build(monitor);
+			amodels.setConstraintsModel(cpp.cm);
+			amodels.setSwModel(cpp.swm);
+			amodels = retainAffntyCnstrnts(file, uh, amodels, monitor);
+			Helper.writeModelFile(file, outputParser.parseOutputFileURI(file,  "_CPP"), amodels);
+			PartLog.getInstance().log("--Critical path partitioning finished--");
+			PartLog.getInstance().logSimple("CPP finished.");
+			break;
+		default:
+			break;
 		}
-		if (store.getBoolean("boolTA")) {
+		
+		if (store.getBoolean(IParConstants.PRE_TA)) {
 			PartLog.getInstance().log("--Starting generating a runnable sequencing constraints alternative--");
 			final CreateTAInput ctai = new CreateTAInput();
 			ctai.setCm(amodels.getConstraintsModel());
 			ctai.combineSimilarRSCs();
 			amodels.setConstraintsModel(ctai.getCm());
-			new Helper().writeModelFile(file, "_TAInput", amodels);
+			Helper.writeModelFile(file, outputParser.parseOutputFileURI(file,  "_TAInput"), amodels);
 			PartLog.getInstance().log("--Generating a runnable sequencing constraints alternative finished--");
 			PartLog.getInstance().logSimple("RSC alternative generation finished.");
 		}
-		if (store.getBoolean("boolVis")) {
+		if (store.getBoolean(IParConstants.PRE_VIS)) {
 			PartLog.getInstance().setLogName("Applet visualization");
 			PartLog.getInstance().log("--Generating Applet--");
 			final WriteAppletHandler wa = new WriteAppletHandler();
@@ -437,4 +453,6 @@ public class PerformPartitioning {
 		swm.getProcessPrototypes().add(pp);
 		return swm;
 	}
+	
+	
 }

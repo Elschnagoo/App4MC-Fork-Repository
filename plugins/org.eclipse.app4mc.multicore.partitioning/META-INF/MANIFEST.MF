@@ -15,13 +15,13 @@ Require-Bundle: org.apache.log4j,
  org.jgrapht,
  org.eclipse.app4mc.amalthea.workflow.core,
  org.eclipse.app4mc.amalthea.model,
- org.eclipse.app4mc.multicore.openmapping
+ org.eclipse.app4mc.multicore.sharelibs
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: Eclipse.org
-Export-Package: org.eclipse.app4mc.multicore.partitioning;uses:="org.eclipse.ui.plugin,org.osgi.framework",
+Export-Package: org.eclipse.app4mc.multicore.partitioning,
  org.eclipse.app4mc.multicore.partitioning.algorithms;
-  uses:="org.eclipse.app4mc.multicore.openmapping.sharedlibs,
+  uses:="org.eclipse.app4mc.multicore.sharedlibs,
    org.eclipse.app4mc.amalthea.model.stimuli,
    org.eclipse.emf.common.util,
    org.jgrapht,
@@ -33,7 +33,7 @@ Export-Package: org.eclipse.app4mc.multicore.partitioning;uses:="org.eclipse.ui.
    org.eclipse.emf.common.util,
    org.eclipse.core.commands,
    org.eclipse.app4mc.amalthea.model.constraints,
-   org.eclipse.app4mc.amalthea.model.sw",
- org.eclipse.app4mc.multicore.partitioning.preferences;uses:="org.eclipse.jface.preference,org.eclipse.ui,org.eclipse.core.runtime.preferences",
+   org.eclipse.app4mc.amalthea.model.sw,
+   org.eclipse.app4mc.multicore.dialogs",
  org.eclipse.app4mc.multicore.partitioning.workflow
 Bundle-ClassPath: .

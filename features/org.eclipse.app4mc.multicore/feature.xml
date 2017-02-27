@@ -12,7 +12,7 @@
    </description>
 
    <copyright url="https://projects.eclipse.org/projects/technology.app4mc">
-      (c) Copyright Eclipse APP4MC contributors and others. 2016. 
+      (c) Copyright Eclipse APP4MC contributors and others. 2017. 
 All rights reserved.
    </copyright>
 
@@ -43,7 +43,7 @@ All rights reserved.
       <import plugin="org.eclipse.help"/>
       <import plugin="org.eclipse.emf.common.ui"/>
    </requires>
-
+   
    <plugin
          id="org.eclipse.app4mc.multicore.openmapping"
          download-size="0"
@@ -58,6 +58,20 @@ All rights reserved.
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="org.eclipse.app4mc.multicore.sharelibs"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.dialogs"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
    <plugin
          id="org.jgrapht"
          download-size="0"

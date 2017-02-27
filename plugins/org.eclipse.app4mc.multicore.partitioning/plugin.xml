@@ -78,18 +78,11 @@
             name="Generate Applet">
       </command>
    </extension>
-   <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            class="org.eclipse.app4mc.multicore.partitioning.preferences.PartitioningPreferences"
-            id="org.eclipse.app4mc.multicore.partitioning.preferences.PartitioningPreferences"
-            name="AMALTHEA Partitioning">
-      </page>
-   </extension>
+   
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer
-            class="org.eclipse.app4mc.multicore.partitioning.preferences.PreferenceInitializer">
+            class="org.eclipse.app4mc.multicore.partitioning.ParPreferenceInitializer">
       </initializer>
    </extension>
 

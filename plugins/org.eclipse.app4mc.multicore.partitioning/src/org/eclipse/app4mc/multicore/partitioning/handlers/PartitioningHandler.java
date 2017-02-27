@@ -12,11 +12,12 @@ package org.eclipse.app4mc.multicore.partitioning.handlers;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
+import org.eclipse.app4mc.multicore.partitioning.IParConstants;
 import org.eclipse.app4mc.multicore.partitioning.PartitioningPlugin;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.Helper;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.PartLog;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.PartitioningJob;
+import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
@@ -29,14 +30,27 @@ import org.eclipse.jface.preference.IPreferenceStore;
  *
  */
 public class PartitioningHandler extends org.eclipse.core.commands.AbstractHandler {
+	
+	private IPreferenceStore store = PartitioningPlugin.getDefault().getPreferenceStore();
+	
+	public PartitioningHandler() {
+		store = PartitioningPlugin.getDefault().getPreferenceStore();
+	}
+	
+	public PartitioningHandler(IPreferenceStore store) {
+		this.store = store;
+	}
+	
+	public IPreferenceStore getPreferenceStore() {
+		return store;
+	}
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 		final UniversalHandler uh = UniversalHandler.getInstance();
 		PartLog.getInstance().setLogName("PrePartitioning");
 
-		final IPreferenceStore store = PartitioningPlugin.getDefault().getPreferenceStore();
-		PartLog.getInstance().setEnableTargetConsoleLog(store.getBoolean("debug"));
+		PartLog.getInstance().setEnableTargetConsoleLog(store.getBoolean(IParConstants.PRE_DEBUG));
 
 		final IFile file = UniversalHandler.getInstance().getSelectedFile(event);
 		uh.dropCache();

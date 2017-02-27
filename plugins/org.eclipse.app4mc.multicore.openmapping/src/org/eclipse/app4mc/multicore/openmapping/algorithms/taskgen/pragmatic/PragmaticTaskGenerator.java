@@ -32,8 +32,8 @@ import org.eclipse.app4mc.multicore.openmapping.OpenMappingPlugin;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractTaskCreationAlgorithm;
 import org.eclipse.app4mc.multicore.openmapping.model.OMProcessPrototype;
 import org.eclipse.app4mc.multicore.openmapping.model.OMRunnable;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.ConsoleOutputHandler;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
+import org.eclipse.app4mc.multicore.sharelibs.ConsoleOutputHandler;
+import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
