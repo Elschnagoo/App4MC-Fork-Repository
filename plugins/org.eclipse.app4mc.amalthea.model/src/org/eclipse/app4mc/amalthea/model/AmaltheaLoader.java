@@ -15,9 +15,6 @@
 package org.eclipse.app4mc.amalthea.model;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaResourceFactory;
 import org.eclipse.emf.common.util.URI;

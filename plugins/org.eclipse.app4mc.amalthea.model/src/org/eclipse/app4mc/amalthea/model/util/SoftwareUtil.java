@@ -27,22 +27,22 @@ import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
+import org.eclipse.app4mc.amalthea.model.Process;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
-import org.eclipse.app4mc.amalthea.model.Task;
 
 public class SoftwareUtil {
 
-	public static List<CallSequenceItem> collectCalls(final Task task) {
-		return collectCalls(task, null);
+	public static List<CallSequenceItem> collectCalls(final Process process) {
+		return collectCalls(process, null);
 	}
 
-	public static List<CallSequenceItem> collectCalls(final Task task, final List<ModeLiteral> modes) {
+	public static List<CallSequenceItem> collectCalls(final Process process, final List<ModeLiteral> modes) {
 		List<CallSequenceItem> itemList = new ArrayList<CallSequenceItem>();
-		if (task.getCallGraph() != null) {
-			collectCallSequenceItems(task.getCallGraph().getGraphEntries(), modes, itemList);
+		if (process.getCallGraph() != null) {
+			collectCallSequenceItems(process.getCallGraph().getGraphEntries(), modes, itemList);
 		}
 		return itemList;
 	}
