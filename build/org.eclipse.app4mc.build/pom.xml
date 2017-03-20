@@ -55,7 +55,9 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.core</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.ease</module>
 		<module>../../plugins/org.eclipse.app4mc.atdb.metrics</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.sharelibs</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.examples.installer</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.dialogs</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.openmapping</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.partitioning</module>
 		<module>../../plugins/org.eclipse.app4mc.platform.ide</module>

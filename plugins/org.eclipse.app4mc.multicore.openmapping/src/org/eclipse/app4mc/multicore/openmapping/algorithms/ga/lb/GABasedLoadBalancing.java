@@ -19,13 +19,10 @@ import java.util.stream.Stream;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractGABasedMappingAlgorithm;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.helper.ProblemGraph;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.helper.TimeStep;
-import org.eclipse.app4mc.multicore.openmapping.model.AmaltheaModelBuilder;
 import org.eclipse.app4mc.multicore.openmapping.model.OMAllocation;
 import org.eclipse.app4mc.multicore.openmapping.model.OMCore;
 import org.eclipse.app4mc.multicore.openmapping.model.OMMapping;
 import org.eclipse.app4mc.multicore.openmapping.model.OMTask;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.ConsoleOutputHandler;
-import org.eclipse.app4mc.multicore.openmapping.visualizer.OMVisualizer;
 import org.jenetics.Chromosome;
 import org.jenetics.Genotype;
 import org.jenetics.IntegerChromosome;
@@ -51,13 +48,12 @@ public class GABasedLoadBalancing extends AbstractGABasedMappingAlgorithm {
 	 * Execution Costs Matrix
 	 */
 	private static long[][] utilMatrix;
-	/**
-	 * Console Output
-	 */
-	private final ConsoleOutputHandler con = new ConsoleOutputHandler("OpenMapping Console");
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractMappingAlgorithm#calculateMapping()
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see org.eclipse.app4mc.multicore.openmapping.algorithms.
+	 * AbstractMappingAlgorithm#calculateMapping()
 	 */
 	@Override
 	public void calculateMapping() {
@@ -66,26 +62,26 @@ public class GABasedLoadBalancing extends AbstractGABasedMappingAlgorithm {
 		this.con.appendln("Performing GA based Load Balancing");
 		// Create lists of Cores and Tasks
 		// TODO Workaround
-//		final Amalthea cen = AmaltheaFactory.eINSTANCE.createAmalthea();
-//		cen.setSwModel(this.getSwModel());
-//		cen.setHwModel(this.getHwModel());
+		// final Amalthea cen = AmaltheaFactory.eINSTANCE.createAmalthea();
+		// cen.setSwModel(this.getSwModel());
+		// cen.setHwModel(this.getHwModel());
 		this.con.appendln("Preparing Models...");
-		if (!this.initModels()) {
+		if (!initModels()) {
 			this.con.appendln("Error during Model initialization, exiting.");
 			return;
 		}
-		
+
 		// Get list of tasks and calculate their execution time
 		timeStep.update();
 		this.con.appendln("Generating ProblemGraph...");
-		ProblemGraph pg = new ProblemGraph(this.getMergedModel());
+		final ProblemGraph pg = new ProblemGraph(getMergedModel());
 		if (!pg.initialize()) {
 			this.con.appendln("Error during ProblemGraph initialization, exiting.");
 			return;
 		}
 		GABasedLoadBalancing.taskList = pg.getTaskList();
 		GABasedLoadBalancing.coreList = pg.getCoreList();
-			
+
 		this.con.appendln(" Success! (" + (timeStep.getTimeStep()) / 1000000 + "ms)");
 
 		// Perform the actual Mapping
@@ -100,11 +96,20 @@ public class GABasedLoadBalancing extends AbstractGABasedMappingAlgorithm {
 
 	/**
 	 * Perform the Mapping algorithm
+	 *
 	 * @return true if no errors occur
 	 */
 	private boolean performMappingAlgorithm() {
 		final int noCores = GABasedLoadBalancing.coreList.size();
 		final int noTasks = GABasedLoadBalancing.taskList.size();
+
+
+		// If just one core is available theres no need to run the evolution
+		// stream
+		if (noCores == 1) {
+			return mapToFirstCore();
+		}
+
 		utilMatrix = new long[noCores][noTasks];
 
 		// Estimate execution time of each task on each core
@@ -119,6 +124,7 @@ public class GABasedLoadBalancing extends AbstractGABasedMappingAlgorithm {
 			}
 		}
 
+
 		// The actual GA based Load Balancing Approach
 		// The Chromosome contains count(noTasks) integer Values ranging from 0
 		// till count(noCores)-1
@@ -130,36 +136,36 @@ public class GABasedLoadBalancing extends AbstractGABasedMappingAlgorithm {
 		final Engine<IntegerGene, Long> engine = Engine
 				.builder((Function<Genotype<IntegerGene>, Long>) GABasedLoadBalancing::evaluate, gtf)
 				.optimize(Optimize.MINIMUM).populationSize(noTasks).build();
-		final EvolutionStream<IntegerGene, Long> stream = engine.stream();
-		final EvolutionStatistics<Long, DoubleMomentStatistics> statistics = EvolutionStatistics.ofNumber();
-		final Stream<EvolutionResult<IntegerGene, Long>> stream2 = stream.limit(1000).peek(statistics);
-		final Genotype<IntegerGene> result = stream2.collect(EvolutionResult.toBestGenotype());
-		// 4.) Start the execution (evolution) and
-		// collect the result.
-		this.con.appendln(statistics.toString());
-		this.con.appendln(result.toString());
 
-		final OMMapping mapping = generateOMMapping(result);
-		final AmaltheaModelBuilder builder = new AmaltheaModelBuilder(mapping);
-		this.getMergedModel().setOsModel(builder.getAmaltheaModel().getOsModel());
-		this.getMergedModel().setMappingModel(builder.getAmaltheaModel().getMappingModel());
-		this.setAmaltheaOutputModel(this.getMergedModel());
+		try (final EvolutionStream<IntegerGene, Long> stream = engine.stream()) {
+			final EvolutionStatistics<Long, DoubleMomentStatistics> statistics = EvolutionStatistics.ofNumber();
+			final Stream<EvolutionResult<IntegerGene, Long>> stream2 = stream.limit(1000).peek(statistics);
+			final Genotype<IntegerGene> result = stream2.collect(EvolutionResult.toBestGenotype());
+			// 4.) Start the execution (evolution) and
+			// collect the result.
+			this.con.appendln(statistics.toString());
+			this.con.appendln(result.toString());
 
-		final OMVisualizer vis = new OMVisualizer(mapping);
-		this.con.appendln("\n" + vis.getASCIIChart());
+			final OMMapping mapping = generateOMMapping(result);
+			updateModel(mapping);
+
+		}
 
 		return true;
 	}
 
 	/**
 	 * Generate Mapping Model result out of result genotype
-	 * @param mappingResult  result genotype
+	 *
+	 * @param mappingResult
+	 *            result genotype
 	 * @return Mapping Model
 	 */
-	private OMMapping generateOMMapping(final Genotype<IntegerGene> mappingResult) {
+	@Override
+	protected OMMapping generateOMMapping(final Genotype<IntegerGene> mappingResult) {
 		final OMMapping mapping = new OMMapping();
 		// Since our encoding has only one Chromosome
-		Chromosome<IntegerGene> chromosome = mappingResult.getChromosome(0);
+		final Chromosome<IntegerGene> chromosome = mappingResult.getChromosome(0);
 
 		// After the algorithm passes, we should have only one solution.
 		if (mappingResult.length() != 1) {
@@ -170,8 +176,8 @@ public class GABasedLoadBalancing extends AbstractGABasedMappingAlgorithm {
 
 		// Parse the integer Genes. Each gene represents one core allocation.
 		int taskIndex = 0;
-		
-		for (IntegerGene gene: chromosome) {
+
+		for (final IntegerGene gene : chromosome) {
 			final int coreIndex = gene.getAllele();
 			// Fetch task and core
 			final OMCore core = coreList.get(coreIndex);
@@ -181,23 +187,26 @@ public class GABasedLoadBalancing extends AbstractGABasedMappingAlgorithm {
 			mapping.addAllocation(alloc);
 			++taskIndex;
 		}
-		
+
 		return mapping;
 	}
 
 	/**
 	 * Fitness function that adds all violations together
-	 * @param gt a given genotype
-	 * @return sum of all violations with different penalty for different constraints types
+	 *
+	 * @param gt
+	 *            a given genotype
+	 * @return sum of all violations with different penalty for different
+	 *         constraints types
 	 */
 	public static Long evaluate(final Genotype<IntegerGene> gt) {
 		long max = 0;
 		final long[] tmpCoreLoad = new long[GABasedLoadBalancing.coreList.size()];
 		int taskIndex = 0;
 		// Since our encoding has only one Chromosome
-		Chromosome<IntegerGene> chromosome = gt.getChromosome(0);
+		final Chromosome<IntegerGene> chromosome = gt.getChromosome(0);
 
-		for (IntegerGene gene: chromosome) {
+		for (final IntegerGene gene : chromosome) {
 			final int coreIndex = gene.getAllele();
 			tmpCoreLoad[gene.getAllele()] = tmpCoreLoad[gene.getAllele()] + utilMatrix[coreIndex][taskIndex];
 			taskIndex++;

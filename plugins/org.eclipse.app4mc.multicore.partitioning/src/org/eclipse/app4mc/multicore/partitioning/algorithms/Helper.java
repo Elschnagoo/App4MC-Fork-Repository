@@ -30,19 +30,19 @@ import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
-import org.eclipse.app4mc.multicore.partitioning.PartitioningPlugin;
+import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.preference.IPreferenceStore;
 
 /**
  * Provides several calculations / generally needed methods
  */
 public class Helper {
+	
+	
 	/**
 	 * Calculation of a runnable's instructions (arithmetic average in case of
 	 * deviations)
@@ -191,20 +191,14 @@ public class Helper {
 	 * @param event
 	 *            ExecutionEvent for File information
 	 */
-	public void writeModelFile(final IFile file, final String name, final ArrayList<EObject> models) {
-		final IPreferenceStore store = PartitioningPlugin.getDefault().getPreferenceStore();
-		String path = file.getProject().getFullPath().toString() + "/" + store.getString("loc") + "/";
-		path += file.getName().replace(".amxmi", name + ".amxmi");
-		PartLog.getInstance().log("Writing " + path + "\n");
-		UniversalHandler.getInstance().writeModel(URI.createPlatformResourceURI(path, true), models);
+	public static void writeModelFile(final IFile file, URI path, final ArrayList<EObject> models) {
+		PartLog.getInstance().log("Writing " + path.toString() + "\n");
+		UniversalHandler.getInstance().writeModel(path, models);
 	}
 
-	public void writeModelFile(final IFile file, final String name, final Amalthea models) {
-		final IPreferenceStore store = PartitioningPlugin.getDefault().getPreferenceStore();
-		String path = file.getProject().getFullPath().toString() + "/" + store.getString("loc") + "/";
-		path += file.getName().replace(".amxmi", name + ".amxmi");
-		PartLog.getInstance().log("Writing " + path + "\n");
-		UniversalHandler.getInstance().writeModel(URI.createPlatformResourceURI(path, true), models);
+	public static void writeModelFile(final IFile file, URI path, final Amalthea models) {
+		PartLog.getInstance().log("Writing " + path.toString() + "\n");
+		UniversalHandler.getInstance().writeModel(path, models);
 	}
 
 	/**
@@ -341,4 +335,5 @@ public class Helper {
 		}
 		return instrSum;
 	}
+	
 }

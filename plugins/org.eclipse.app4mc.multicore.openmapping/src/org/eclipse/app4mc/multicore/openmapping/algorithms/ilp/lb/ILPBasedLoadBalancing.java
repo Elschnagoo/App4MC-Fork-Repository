@@ -18,14 +18,12 @@ import java.util.List;
 
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractILPBasedMappingAlgorithm;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.helper.ListBuilder;
-import org.eclipse.app4mc.multicore.openmapping.model.AmaltheaModelBuilder;
 import org.eclipse.app4mc.multicore.openmapping.model.OMAllocation;
 import org.eclipse.app4mc.multicore.openmapping.model.OMCore;
 import org.eclipse.app4mc.multicore.openmapping.model.OMMapping;
 import org.eclipse.app4mc.multicore.openmapping.model.OMTask;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.ConsoleOutputHandler;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
-import org.eclipse.app4mc.multicore.openmapping.visualizer.OMVisualizer;
+import org.eclipse.app4mc.multicore.sharelibs.ConsoleOutputHandler;
+import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.ojalgo.OjAlgoUtils;
 import org.ojalgo.optimisation.Expression;
 import org.ojalgo.optimisation.Optimisation;
@@ -47,6 +45,12 @@ public class ILPBasedLoadBalancing extends AbstractILPBasedMappingAlgorithm {
 
 		final int noCores = this.coreList.size();
 		final int noTasks = this.taskList.size();
+
+		// If just one core is available theres no need to run the algorithm
+		if (noCores == 1) {
+			return mapToFirstCore();
+		}
+
 		// Task-Core Assignment: Vars[Task][Core]
 		final Variable vars[][] = new Variable[noTasks][noCores];
 
@@ -61,13 +65,15 @@ public class ILPBasedLoadBalancing extends AbstractILPBasedMappingAlgorithm {
 				" " + obj.getName() + " - " + obj.getLinearFactor(z) + " x " + z.getName() + " = " + z.getValue());
 
 		/*
-		 * Allocation Map The allocation of each task to a core will be stored the Array() vars. For each allocation to
-		 * a core, an Expression with the respective execution time on the actual core for each task will be specified
+		 * Allocation Map The allocation of each task to a core will be stored
+		 * the Array() vars. For each allocation to a core, an Expression with
+		 * the respective execution time on the actual core for each task will
+		 * be specified
 		 */
 
 		// Process cores
-		UniversalHandler.getInstance().logCon(
-				"Setting constraints (hint: Z and the upper bound won't be listed here)...");
+		UniversalHandler.getInstance()
+				.logCon("Setting constraints (hint: Z and the upper bound won't be listed here)...");
 		// for (final ExtendedCore c : ILPBasedLoadBalancing.coreList) {
 		for (final OMCore c : this.coreList) {
 			final int coreIndex = this.coreList.indexOf(c);
@@ -85,9 +91,8 @@ public class ILPBasedLoadBalancing extends AbstractILPBasedMappingAlgorithm {
 				getEbm().addVariable(tmp);
 				coreExp.setLinearFactor(tmp, exCore);
 				vars[taskIndex][coreIndex] = tmp;
-				UniversalHandler.getInstance().logCon(
-						coreExp.getName() + " - " + coreExp.getLinearFactor(tmp) + " x " + tmp.getName() + " = "
-								+ tmp.getValue());
+				UniversalHandler.getInstance().logCon(coreExp.getName() + " - " + coreExp.getLinearFactor(tmp) + " x "
+						+ tmp.getName() + " = " + tmp.getValue());
 			}
 			coreExp.setLinearFactor(z, -1);
 			coreExp.upper(new BigDecimal("0", MathContext.DECIMAL128));
@@ -95,8 +100,8 @@ public class ILPBasedLoadBalancing extends AbstractILPBasedMappingAlgorithm {
 
 		// Set the limit of assignments for each task to 1 (e.g.
 		// Task1@Core1+Task1@Core2+... = 1)
-		UniversalHandler.getInstance().logCon(
-				"Setting one-task-per-core constraints (hint: bounds wont be listed here)...");
+		UniversalHandler.getInstance()
+				.logCon("Setting one-task-per-core constraints (hint: bounds wont be listed here)...");
 		for (final OMTask tmp : this.taskList) {
 			final int taskIndex = this.taskList.indexOf(tmp);
 			final Expression assignLimit = getEbm().addExpression(" AssignLimit_Task" + taskIndex);
@@ -104,9 +109,10 @@ public class ILPBasedLoadBalancing extends AbstractILPBasedMappingAlgorithm {
 			for (final OMCore cTmp : this.coreList) {
 				final int coreIndex = this.coreList.indexOf(cTmp);
 				assignLimit.setLinearFactor(vars[taskIndex][coreIndex], 1);
-				UniversalHandler.getInstance().logCon(
-						assignLimit.getName() + " - " + assignLimit.getLinearFactor(vars[taskIndex][coreIndex]) + " x "
-								+ vars[taskIndex][coreIndex].getName() + " = " + vars[taskIndex][coreIndex].getValue());
+				UniversalHandler.getInstance()
+						.logCon(assignLimit.getName() + " - " + assignLimit.getLinearFactor(vars[taskIndex][coreIndex])
+								+ " x " + vars[taskIndex][coreIndex].getName() + " = "
+								+ vars[taskIndex][coreIndex].getValue());
 			}
 			assignLimit.level(BigDecimal.valueOf(1));
 		}
@@ -135,13 +141,9 @@ public class ILPBasedLoadBalancing extends AbstractILPBasedMappingAlgorithm {
 		this.con.appendln("");
 
 		final OMMapping mapping = generateOMMapping(vars);
-		final AmaltheaModelBuilder builder = new AmaltheaModelBuilder(mapping);
-		this.getMergedModel().setOsModel(builder.getAmaltheaModel().getOsModel());
-		this.getMergedModel().setMappingModel(builder.getAmaltheaModel().getMappingModel());
-		this.setAmaltheaOutputModel(this.getMergedModel());
 
-		final OMVisualizer vis = new OMVisualizer(mapping);
-		this.con.appendln("\n" + vis.getASCIIChart());
+		updateModel(mapping);
+
 		this.con.focus();
 
 		return true;
@@ -183,9 +185,9 @@ public class ILPBasedLoadBalancing extends AbstractILPBasedMappingAlgorithm {
 		this.con.appendln("Performing ILP based Load Balancing");
 		this.con.appendln(sVersion);
 		// Create lists of Cores and Tasks
-		
+
 		this.con.appendln("Preparing Models...");
-		if (!this.initModels()) {
+		if (!initModels()) {
 			this.con.appendln("Error during Model initialization, exiting.");
 			return;
 		}
@@ -193,7 +195,7 @@ public class ILPBasedLoadBalancing extends AbstractILPBasedMappingAlgorithm {
 		// Get list of tasks and calculate their execution time
 		timeStart = java.lang.System.nanoTime();
 		this.con.appendln("Step 1: Building Task-List...");
-		if (null == (this.taskList = ListBuilder.getTaskList(this.getMergedModel().getSwModel()))) {
+		if (null == (this.taskList = ListBuilder.getTaskList(getMergedModel().getSwModel()))) {
 			this.con.append("Error during Task generation, exiting.");
 			return;
 		}
@@ -202,10 +204,11 @@ public class ILPBasedLoadBalancing extends AbstractILPBasedMappingAlgorithm {
 
 		// Get list of cores and calculate their performance
 		this.con.appendln("Step 2: Building Core-List...");
-		if (null == (this.coreList = ListBuilder.getCoreList(this.getMergedModel().getHwModel()))) {
+		if (null == (this.coreList = ListBuilder.getCoreList(getMergedModel().getHwModel()))) {
 			this.con.appendln("Error during Core generation, exiting.");
 			return;
 		}
+
 		timeStep2 = java.lang.System.nanoTime();
 		this.con.appendln(" Success! (" + (timeStep2 - timeStep1) / 1000000 + "ms)");
 

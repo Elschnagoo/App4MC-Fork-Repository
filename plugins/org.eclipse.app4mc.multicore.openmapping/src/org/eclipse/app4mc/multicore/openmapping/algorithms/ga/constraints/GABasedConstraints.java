@@ -17,13 +17,10 @@ import java.util.stream.Stream;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractGABasedMappingAlgorithm;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.helper.ProblemGraph;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.helper.TimeStep;
-import org.eclipse.app4mc.multicore.openmapping.model.AmaltheaModelBuilder;
 import org.eclipse.app4mc.multicore.openmapping.model.OMAllocation;
 import org.eclipse.app4mc.multicore.openmapping.model.OMCore;
 import org.eclipse.app4mc.multicore.openmapping.model.OMMapping;
 import org.eclipse.app4mc.multicore.openmapping.model.OMTask;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.ConsoleOutputHandler;
-import org.eclipse.app4mc.multicore.openmapping.visualizer.OMVisualizer;
 import org.jenetics.Chromosome;
 import org.jenetics.Genotype;
 import org.jenetics.IntegerChromosome;
@@ -37,10 +34,6 @@ import org.jenetics.stat.DoubleMomentStatistics;
 import org.jenetics.util.Factory;
 
 public class GABasedConstraints extends AbstractGABasedMappingAlgorithm {
-	/**
-	 * Console Output
-	 */
-	private final ConsoleOutputHandler con = new ConsoleOutputHandler("OpenMapping Console");
 	/**
 	 * Problem Graph
 	 */
@@ -159,6 +152,12 @@ public class GABasedConstraints extends AbstractGABasedMappingAlgorithm {
 		final int noTasks = problemGraph.getTaskList().size();
 		utilMatrix = new long[noCores][noTasks];
 
+		// If just one core is available theres no need to run the evolution
+		// stream
+		if (noCores == 1) {
+			return mapToFirstCore();
+		}
+
 		// Estimate execution time of each task on each core
 		for (int coreIndex = 0; coreIndex < noCores; coreIndex++) {
 			// Process tasks
@@ -181,25 +180,23 @@ public class GABasedConstraints extends AbstractGABasedMappingAlgorithm {
 		final Engine<IntegerGene, Double> engine = Engine
 				.builder((Function<Genotype<IntegerGene>, Double>) GABasedConstraints::evaluate, gtf)
 				.optimize(Optimize.MINIMUM).populationSize(noTasks).build();
-		final EvolutionStream<IntegerGene, Double> stream = engine.stream();
-		final EvolutionStatistics<Double, DoubleMomentStatistics> statistics = EvolutionStatistics.ofNumber();
-		final Stream<EvolutionResult<IntegerGene, Double>> stream2 = stream.limit(1000).peek(statistics);
-		final Genotype<IntegerGene> result = stream2.collect(EvolutionResult.toBestGenotype());
-		// 4.) Start the execution (evolution) and
-		// collect the result.
-		this.con.appendln(statistics.toString());
-		this.con.appendln(result.toString() + " -> " + GABasedConstraints.evaluate(result));
 
-		final OMMapping mapping = generateOMMapping(result);
-		final AmaltheaModelBuilder builder = new AmaltheaModelBuilder(mapping);
-		getMergedModel().setOsModel(builder.getAmaltheaModel().getOsModel());
-		getMergedModel().setMappingModel(builder.getAmaltheaModel().getMappingModel());
-		setAmaltheaOutputModel(getMergedModel());
+		try (final EvolutionStream<IntegerGene, Double> stream = engine.stream()) {
 
-		printWarnings(result);
+			final EvolutionStatistics<Double, DoubleMomentStatistics> statistics = EvolutionStatistics.ofNumber();
+			final Stream<EvolutionResult<IntegerGene, Double>> stream2 = stream.limit(1000).peek(statistics);
+			final Genotype<IntegerGene> result = stream2.collect(EvolutionResult.toBestGenotype());
+			// 4.) Start the execution (evolution) and
+			// collect the result.
+			this.con.appendln(statistics.toString());
+			this.con.appendln(result.toString() + " -> " + GABasedConstraints.evaluate(result));
 
-		final OMVisualizer vis = new OMVisualizer(mapping);
-		this.con.appendln("\n" + vis.getASCIIChart());
+			printWarnings(result);
+
+			final OMMapping mapping = generateOMMapping(result);
+			updateModel(mapping);
+		}
+
 
 		return true;
 	}
@@ -211,7 +208,8 @@ public class GABasedConstraints extends AbstractGABasedMappingAlgorithm {
 	 *            result genotype
 	 * @return Mapping Model
 	 */
-	private OMMapping generateOMMapping(final Genotype<IntegerGene> mappingResult) {
+	@Override
+	protected OMMapping generateOMMapping(final Genotype<IntegerGene> mappingResult) {
 		final OMMapping mapping = new OMMapping();
 		int taskIndex = 0;
 		// Since our encoding has only one Chromosome

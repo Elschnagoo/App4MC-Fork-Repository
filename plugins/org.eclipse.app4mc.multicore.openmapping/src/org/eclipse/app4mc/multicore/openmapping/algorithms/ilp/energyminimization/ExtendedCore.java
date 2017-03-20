@@ -19,7 +19,7 @@ import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
+import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 
 public class ExtendedCore implements Comparable<ExtendedCore> {
 	private Core core;
