@@ -38,6 +38,8 @@ The _PhysicalSectionMapping_ class (can also be called as *Physical Memory Secti
 
 h3. Allocation
 
+!(scale)../pictures/model_mapping_allocation.png!
+
 h4. CoreAllocation
 
 The __CoreAllocation__ describes the allocation of cores to a __Scheduler__. This class consists of references to the respective __Scheduler__, which specified within an existing OS model, and a core, which is specified in a hardware model. Further attributes, which may be used to supply additional information, e.g. for a code generator, may be described by the containment attributeList.
