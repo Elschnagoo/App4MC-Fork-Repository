@@ -135,7 +135,7 @@ public class SWModelValidatorTests {
 		swModel.getLabels().add(label);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -165,7 +165,7 @@ public class SWModelValidatorTests {
 		swModel.getLabels().add(label);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -220,7 +220,7 @@ public class SWModelValidatorTests {
 		swModel.getLabels().add(label);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -250,7 +250,7 @@ public class SWModelValidatorTests {
 		swModel.getLabels().add(label);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);

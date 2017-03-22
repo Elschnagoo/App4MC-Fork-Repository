@@ -72,18 +72,18 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 				if (null != size) {
 					BigInteger value = size.getValue();
 					if(null == value) {
-						this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+						this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
 					} else {
 						if( false == (0 < value.compareTo(BigInteger.ZERO))) {
-							this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+							this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
 						}
 					}
 					DataSizeUnit unit = size.getUnit();
 					if(null == unit) {
-						this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+						this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
 					} else {
 						if(DataSizeUnit._UNDEFINED_ == unit) {
-							this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+							this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
 						}
 					}
 				}
