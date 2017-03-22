@@ -59,7 +59,8 @@ public class ModeSwitchItemProvider extends GraphEntryBaseItemProvider {
 
 	/**
 	 * This adds a property descriptor for the Value Provider feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addValueProviderPropertyDescriptor(Object object) {

@@ -33,7 +33,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Channel extends AbstractElementMemoryInformation, IDisplayName {
+public interface Channel extends AbstractMemoryElement, IDisplayName {
 	/**
 	 * Returns the value of the '<em><b>Element Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

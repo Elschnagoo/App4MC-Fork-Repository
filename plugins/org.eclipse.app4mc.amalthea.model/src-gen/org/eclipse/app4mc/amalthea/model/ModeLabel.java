@@ -23,5 +23,5 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface ModeLabel extends AbstractElementMemoryInformation, ModeValueProvider, IDisplayName {
+public interface ModeLabel extends AbstractMemoryElement, ModeValueProvider, IDisplayName {
 } // ModeLabel

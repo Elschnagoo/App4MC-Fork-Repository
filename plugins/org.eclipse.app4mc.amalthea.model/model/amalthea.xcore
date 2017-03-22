@@ -1563,7 +1563,7 @@ class Memory extends ComplexNode
 	// back pointer (readonly)
 	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient Mapping[] mappings opposite memoryLinkInt
+	refers transient MemoryMapping[] mappings opposite memoryLinkInt
 }
 
 class Network extends ComplexNode
@@ -1802,18 +1802,33 @@ class HwElementRef extends HwAccessPathElement
 
 class MappingModel extends BaseObject
 {
+	contains CoreAllocation[] coreAllocation
+	contains RunnableAllocation[] runnableAllocation
 	contains TaskAllocation[] taskAllocation
 	contains ISRAllocation[] isrAllocation
-	contains RunnableAllocation[] runnableAllocation
-	contains CoreAllocation[] coreAllocation
-	contains Mapping[] mapping
+	contains MemoryMapping[] memoryMapping
 	contains PhysicalSectionMapping[] physicalSectionMapping
 	
 	MemoryAddressMappingType addressMappingType
 }
 
-////////////////Generalizations for the Allocations (assignment to cores) and 
-////////////////Mappings (assignment to memories)
+/*
+ * Defines how to interpret the memory addresses in this mapping model
+ */
+enum MemoryAddressMappingType
+{
+	_undefined_ // Display: "<address type>"
+	//no addresses required
+	none
+	//absolute memory address
+	address
+	//offset from first address of memory
+	offset
+}
+
+
+//////////////// Generalizations for the Allocations (assignment to cores)
+
 /*
  * Allocation of Cores to schedulers
  */
@@ -1823,6 +1838,55 @@ class CoreAllocation extends BaseObject
 	refers Core[+] core
 }
 
+
+//////////////// Specializations of Allocations
+
+class TaskAllocation extends BaseObject
+{
+	refers Task[1] task
+	refers TaskScheduler[1] scheduler
+	int priority="0"	// overwrites attribute "priority" of Task
+}
+
+class ISRAllocation extends BaseObject
+{
+	refers ISR[1] isr
+	refers InterruptController[1] controller
+	int priority="0"	// overwrites attribute "priority" of ISR
+}
+
+class RunnableAllocation extends BaseObject
+{
+	refers Scheduler[1] scheduler
+	refers Runnable[1] entity
+}
+
+
+//////////////// Specializations of Mappings
+
+/*
+ * Mapping of AbstractMemoryElement (Label, Runnable, ISR, Task, ...) 
+ * to a specific memory.
+ */
+class MemoryMapping extends BaseObject
+{
+	refers AbstractMemoryElement[1] memoryElement
+	
+	refers Memory memory
+	
+	/*
+	 * The position of the element in the mapped memory
+	 */
+	long memoryPositionAddress="0"
+	
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
+	refers transient AbstractMemoryElement memoryElementLinkInt opposite mappings
+	
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
+	refers transient Memory memoryLinkInt opposite mappings
+}
 
 class PhysicalSectionMapping extends ReferableBaseObject
 {
@@ -1841,91 +1905,6 @@ class PhysicalSectionMapping extends ReferableBaseObject
 	refers Label[] labels  
 
 	refers Runnable[] runEntities	
- 
-  
-}
-
-
-
-/*
- * Generalization for all Mapping types.
- * Mappings assign Runnables/Signals to memories
- */
-abstract class Mapping extends BaseObject
-{
-	/*
-	 * The memory where the element is mapped to
-	 */
-	refers Memory memory
-	/*
-	 * The position of the element in the mapped memory
-	 */
-	long memoryPositionAddress="0"
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient Memory memoryLinkInt opposite mappings
-}
-
-/*
- * Defines how to interpret the memory addresses in this mapping model
- */
-enum MemoryAddressMappingType
-{
-	_undefined_ // Display: "<address type>"
-	//no addresses required
-	none
-	//absolute memory address
-	address
-	//offset from first address of memory
-	offset
-}
-
-//////////////// Specializations of Mappings
-/*
- * Sections (D4.2, Chapter 3.3.2)
- * Sections refer to Labels and/or Runnables.
- */
- 
-
-/*
- * AbstractElementMemoryInformation (D4.2, Chapter 3.3.2)
- * Generalization of Label, Runnable, AbstractProcess ( ISR & Task) and 
- * TaskPrototype. 
- * This mapping describes the allocation of its specializations to a specific 
- * memory.
- */
-class AbstractElementMapping extends Mapping
-{
-	refers AbstractElementMemoryInformation[1] abstractElement
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient AbstractElementMemoryInformation abstractElementLinkInt opposite mappings
-	
-}
-
-//////////////// Specializations of Allocations
-
-class TaskAllocation extends BaseObject
-{
-	refers Task[1] task
-	refers TaskScheduler[1] scheduler
-	int priority="0"	// overwrites attribute "priority" of Task
-}
-
-class ISRAllocation extends BaseObject
-{
-	refers ISR[1] isr
-	refers InterruptController[1] controller
-	int priority="0"	// overwrites attribute "priority" of ISR
-}
-
-
-class RunnableAllocation extends BaseObject
-{
-	refers Scheduler[1] scheduler
-	refers Runnable[1] entity
 }
 
 
@@ -2300,11 +2279,11 @@ class RunnableAllocationConstraint extends AllocationConstraint
  
 /*
  * AbstractElementMappingConstraints describe the constraints for 
- * AbstractElementMemoryInformation-to-Memory Mapping
+ * AbstractMemoryElement-to-Memory Mapping
  */
 class AbstractElementMappingConstraint extends MappingConstraint
 {
-	refers AbstractElementMemoryInformation abstractElement
+	refers AbstractMemoryElement abstractElement
 }
 
 /*
@@ -2558,7 +2537,7 @@ class SWModel extends BaseObject
 	contains ModeLabel[] modeLabels
 }
 
-abstract class AbstractElementMemoryInformation extends ReferableBaseObject, ITaggable
+abstract class AbstractMemoryElement extends ReferableBaseObject, ITaggable
 {
 	/*
 	 * Specifying the size of the element corresponding to the needed memory allocation
@@ -2568,10 +2547,10 @@ abstract class AbstractElementMemoryInformation extends ReferableBaseObject, ITa
 	// back pointer (readonly)
 	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient AbstractElementMapping[] mappings opposite abstractElementLinkInt
+	refers transient MemoryMapping[] mappings opposite memoryElementLinkInt
 }
 
-abstract class AbstractProcess extends AbstractElementMemoryInformation
+abstract class AbstractProcess extends AbstractMemoryElement
 {
 	int priority="0"
 }
@@ -2579,7 +2558,7 @@ abstract class AbstractProcess extends AbstractElementMemoryInformation
 /*
  * Possibility to define general custom elements
  */
-class CustomEntity extends AbstractElementMemoryInformation
+class CustomEntity extends AbstractMemoryElement
 {
 	String typeName
 }
@@ -2912,7 +2891,7 @@ enum OrderType
 /*
  * Smallest allocatable unit, which provides additional (optional) attributes for allocation algorithms.
  */
-class Runnable extends AbstractElementMemoryInformation
+class Runnable extends AbstractMemoryElement
 {
 	contains RunnableItem[] runnableItems
 	refers Activation activation
@@ -2949,7 +2928,7 @@ class Runnable extends AbstractElementMemoryInformation
 /*
  * Data representation, which can be accessed by run entities.
  */
-class Label extends AbstractElementMemoryInformation, IDisplayName
+class Label extends AbstractMemoryElement, IDisplayName
 {
 	contains DataType dataType
 	/*
@@ -2978,7 +2957,7 @@ class Label extends AbstractElementMemoryInformation, IDisplayName
 	refers transient Section sectionLinkInt opposite labels
 }
 
-class Channel extends AbstractElementMemoryInformation, IDisplayName
+class Channel extends AbstractMemoryElement, IDisplayName
 {
 	contains DataType elementType
 
@@ -2992,7 +2971,7 @@ class Channel extends AbstractElementMemoryInformation, IDisplayName
 }
 
 
-class ModeLabel extends AbstractElementMemoryInformation, ModeValueProvider, IDisplayName
+class ModeLabel extends AbstractMemoryElement, ModeValueProvider, IDisplayName
 {
 }
 

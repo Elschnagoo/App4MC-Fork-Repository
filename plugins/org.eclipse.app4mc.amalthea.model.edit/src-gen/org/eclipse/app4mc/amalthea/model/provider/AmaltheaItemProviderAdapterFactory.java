@@ -3003,29 +3003,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.AbstractElementMapping} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AbstractElementMappingItemProvider abstractElementMappingItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.AbstractElementMapping}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAbstractElementMappingAdapter() {
-		if (abstractElementMappingItemProvider == null) {
-			abstractElementMappingItemProvider = new AbstractElementMappingItemProvider(this);
-		}
-
-		return abstractElementMappingItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TaskAllocation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3092,6 +3069,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return runnableAllocationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.MemoryMapping} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MemoryMappingItemProvider memoryMappingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.MemoryMapping}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMemoryMappingAdapter() {
+		if (memoryMappingItemProvider == null) {
+			memoryMappingItemProvider = new MemoryMappingItemProvider(this);
+		}
+
+		return memoryMappingItemProvider;
 	}
 
 	/**
@@ -6035,11 +6035,11 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (hwElementRefItemProvider != null) hwElementRefItemProvider.dispose();
 		if (mappingModelItemProvider != null) mappingModelItemProvider.dispose();
 		if (coreAllocationItemProvider != null) coreAllocationItemProvider.dispose();
-		if (physicalSectionMappingItemProvider != null) physicalSectionMappingItemProvider.dispose();
-		if (abstractElementMappingItemProvider != null) abstractElementMappingItemProvider.dispose();
 		if (taskAllocationItemProvider != null) taskAllocationItemProvider.dispose();
 		if (isrAllocationItemProvider != null) isrAllocationItemProvider.dispose();
 		if (runnableAllocationItemProvider != null) runnableAllocationItemProvider.dispose();
+		if (memoryMappingItemProvider != null) memoryMappingItemProvider.dispose();
+		if (physicalSectionMappingItemProvider != null) physicalSectionMappingItemProvider.dispose();
 		if (osModelItemProvider != null) osModelItemProvider.dispose();
 		if (osDataConsistencyItemProvider != null) osDataConsistencyItemProvider.dispose();
 		if (dataStabilityItemProvider != null) dataStabilityItemProvider.dispose();

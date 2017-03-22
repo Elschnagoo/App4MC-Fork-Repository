@@ -15,9 +15,8 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.ASILType;
-import org.eclipse.app4mc.amalthea.model.AbstractElementMapping;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
-import org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation;
+import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AbstractionType;
@@ -196,12 +195,12 @@ import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.LimitType;
 import org.eclipse.app4mc.amalthea.model.ListObject;
 import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.Mapping;
 import org.eclipse.app4mc.amalthea.model.MappingConstraint;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.MappingType;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType;
+import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.MemoryTypeEnum;
 import org.eclipse.app4mc.amalthea.model.Microcontroller;
@@ -1610,27 +1609,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass physicalSectionMappingEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass mappingEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass abstractElementMappingEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass taskAllocationEClass = null;
 
 	/**
@@ -1646,6 +1624,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass runnableAllocationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass memoryMappingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass physicalSectionMappingEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2107,7 +2099,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass abstractElementMemoryInformationEClass = null;
+	private EClass abstractMemoryElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -7282,7 +7274,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMappingModel_TaskAllocation() {
+	public EReference getMappingModel_CoreAllocation() {
 		return (EReference)mappingModelEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -7291,7 +7283,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMappingModel_IsrAllocation() {
+	public EReference getMappingModel_RunnableAllocation() {
 		return (EReference)mappingModelEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -7300,7 +7292,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMappingModel_RunnableAllocation() {
+	public EReference getMappingModel_TaskAllocation() {
 		return (EReference)mappingModelEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -7309,7 +7301,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMappingModel_CoreAllocation() {
+	public EReference getMappingModel_IsrAllocation() {
 		return (EReference)mappingModelEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -7318,7 +7310,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMappingModel_Mapping() {
+	public EReference getMappingModel_MemoryMapping() {
 		return (EReference)mappingModelEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -7365,132 +7357,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getCoreAllocation_Core() {
 		return (EReference)coreAllocationEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getPhysicalSectionMapping() {
-		return physicalSectionMappingEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPhysicalSectionMapping_Origin() {
-		return (EReference)physicalSectionMappingEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPhysicalSectionMapping_Memory() {
-		return (EReference)physicalSectionMappingEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPhysicalSectionMapping_StartAddress() {
-		return (EAttribute)physicalSectionMappingEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPhysicalSectionMapping_EndAddress() {
-		return (EAttribute)physicalSectionMappingEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPhysicalSectionMapping_Labels() {
-		return (EReference)physicalSectionMappingEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPhysicalSectionMapping_RunEntities() {
-		return (EReference)physicalSectionMappingEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getMapping() {
-		return mappingEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getMapping_Memory() {
-		return (EReference)mappingEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapping_MemoryPositionAddress() {
-		return (EAttribute)mappingEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getMapping_MemoryLinkInt() {
-		return (EReference)mappingEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAbstractElementMapping() {
-		return abstractElementMappingEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAbstractElementMapping_AbstractElement() {
-		return (EReference)abstractElementMappingEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAbstractElementMapping_AbstractElementLinkInt() {
-		return (EReference)abstractElementMappingEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -7590,6 +7456,123 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getRunnableAllocation_Entity() {
 		return (EReference)runnableAllocationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMemoryMapping() {
+		return memoryMappingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMemoryMapping_MemoryElement() {
+		return (EReference)memoryMappingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMemoryMapping_Memory() {
+		return (EReference)memoryMappingEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMemoryMapping_MemoryPositionAddress() {
+		return (EAttribute)memoryMappingEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMemoryMapping_MemoryElementLinkInt() {
+		return (EReference)memoryMappingEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMemoryMapping_MemoryLinkInt() {
+		return (EReference)memoryMappingEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPhysicalSectionMapping() {
+		return physicalSectionMappingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPhysicalSectionMapping_Origin() {
+		return (EReference)physicalSectionMappingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPhysicalSectionMapping_Memory() {
+		return (EReference)physicalSectionMappingEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPhysicalSectionMapping_StartAddress() {
+		return (EAttribute)physicalSectionMappingEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPhysicalSectionMapping_EndAddress() {
+		return (EAttribute)physicalSectionMappingEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPhysicalSectionMapping_Labels() {
+		return (EReference)physicalSectionMappingEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPhysicalSectionMapping_RunEntities() {
+		return (EReference)physicalSectionMappingEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -9271,8 +9254,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getAbstractElementMemoryInformation() {
-		return abstractElementMemoryInformationEClass;
+	public EClass getAbstractMemoryElement() {
+		return abstractMemoryElementEClass;
 	}
 
 	/**
@@ -9280,8 +9263,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAbstractElementMemoryInformation_Size() {
-		return (EReference)abstractElementMemoryInformationEClass.getEStructuralFeatures().get(0);
+	public EReference getAbstractMemoryElement_Size() {
+		return (EReference)abstractMemoryElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -9289,8 +9272,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAbstractElementMemoryInformation_Mappings() {
-		return (EReference)abstractElementMemoryInformationEClass.getEStructuralFeatures().get(1);
+	public EReference getAbstractMemoryElement_Mappings() {
+		return (EReference)abstractMemoryElementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -12323,34 +12306,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(hwElementRefEClass, HW_ELEMENT_REF__PORT);
 
 		mappingModelEClass = createEClass(MAPPING_MODEL);
+		createEReference(mappingModelEClass, MAPPING_MODEL__CORE_ALLOCATION);
+		createEReference(mappingModelEClass, MAPPING_MODEL__RUNNABLE_ALLOCATION);
 		createEReference(mappingModelEClass, MAPPING_MODEL__TASK_ALLOCATION);
 		createEReference(mappingModelEClass, MAPPING_MODEL__ISR_ALLOCATION);
-		createEReference(mappingModelEClass, MAPPING_MODEL__RUNNABLE_ALLOCATION);
-		createEReference(mappingModelEClass, MAPPING_MODEL__CORE_ALLOCATION);
-		createEReference(mappingModelEClass, MAPPING_MODEL__MAPPING);
+		createEReference(mappingModelEClass, MAPPING_MODEL__MEMORY_MAPPING);
 		createEReference(mappingModelEClass, MAPPING_MODEL__PHYSICAL_SECTION_MAPPING);
 		createEAttribute(mappingModelEClass, MAPPING_MODEL__ADDRESS_MAPPING_TYPE);
 
 		coreAllocationEClass = createEClass(CORE_ALLOCATION);
 		createEReference(coreAllocationEClass, CORE_ALLOCATION__SCHEDULER);
 		createEReference(coreAllocationEClass, CORE_ALLOCATION__CORE);
-
-		physicalSectionMappingEClass = createEClass(PHYSICAL_SECTION_MAPPING);
-		createEReference(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__ORIGIN);
-		createEReference(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__MEMORY);
-		createEAttribute(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__START_ADDRESS);
-		createEAttribute(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__END_ADDRESS);
-		createEReference(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__LABELS);
-		createEReference(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__RUN_ENTITIES);
-
-		mappingEClass = createEClass(MAPPING);
-		createEReference(mappingEClass, MAPPING__MEMORY);
-		createEAttribute(mappingEClass, MAPPING__MEMORY_POSITION_ADDRESS);
-		createEReference(mappingEClass, MAPPING__MEMORY_LINK_INT);
-
-		abstractElementMappingEClass = createEClass(ABSTRACT_ELEMENT_MAPPING);
-		createEReference(abstractElementMappingEClass, ABSTRACT_ELEMENT_MAPPING__ABSTRACT_ELEMENT);
-		createEReference(abstractElementMappingEClass, ABSTRACT_ELEMENT_MAPPING__ABSTRACT_ELEMENT_LINK_INT);
 
 		taskAllocationEClass = createEClass(TASK_ALLOCATION);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__TASK);
@@ -12365,6 +12331,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runnableAllocationEClass = createEClass(RUNNABLE_ALLOCATION);
 		createEReference(runnableAllocationEClass, RUNNABLE_ALLOCATION__SCHEDULER);
 		createEReference(runnableAllocationEClass, RUNNABLE_ALLOCATION__ENTITY);
+
+		memoryMappingEClass = createEClass(MEMORY_MAPPING);
+		createEReference(memoryMappingEClass, MEMORY_MAPPING__MEMORY_ELEMENT);
+		createEReference(memoryMappingEClass, MEMORY_MAPPING__MEMORY);
+		createEAttribute(memoryMappingEClass, MEMORY_MAPPING__MEMORY_POSITION_ADDRESS);
+		createEReference(memoryMappingEClass, MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT);
+		createEReference(memoryMappingEClass, MEMORY_MAPPING__MEMORY_LINK_INT);
+
+		physicalSectionMappingEClass = createEClass(PHYSICAL_SECTION_MAPPING);
+		createEReference(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__ORIGIN);
+		createEReference(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__MEMORY);
+		createEAttribute(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__START_ADDRESS);
+		createEAttribute(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__END_ADDRESS);
+		createEReference(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__LABELS);
+		createEReference(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__RUN_ENTITIES);
 
 		osModelEClass = createEClass(OS_MODEL);
 		createEReference(osModelEClass, OS_MODEL__OS_DATA_CONSISTENCY);
@@ -12617,9 +12598,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(swModelEClass, SW_MODEL__MODES);
 		createEReference(swModelEClass, SW_MODEL__MODE_LABELS);
 
-		abstractElementMemoryInformationEClass = createEClass(ABSTRACT_ELEMENT_MEMORY_INFORMATION);
-		createEReference(abstractElementMemoryInformationEClass, ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE);
-		createEReference(abstractElementMemoryInformationEClass, ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS);
+		abstractMemoryElementEClass = createEClass(ABSTRACT_MEMORY_ELEMENT);
+		createEReference(abstractMemoryElementEClass, ABSTRACT_MEMORY_ELEMENT__SIZE);
+		createEReference(abstractMemoryElementEClass, ABSTRACT_MEMORY_ELEMENT__MAPPINGS);
 
 		abstractProcessEClass = createEClass(ABSTRACT_PROCESS);
 		createEAttribute(abstractProcessEClass, ABSTRACT_PROCESS__PRIORITY);
@@ -13202,12 +13183,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		hwElementRefEClass.getESuperTypes().add(this.getHwAccessPathElement());
 		mappingModelEClass.getESuperTypes().add(this.getBaseObject());
 		coreAllocationEClass.getESuperTypes().add(this.getBaseObject());
-		physicalSectionMappingEClass.getESuperTypes().add(this.getReferableBaseObject());
-		mappingEClass.getESuperTypes().add(this.getBaseObject());
-		abstractElementMappingEClass.getESuperTypes().add(this.getMapping());
 		taskAllocationEClass.getESuperTypes().add(this.getBaseObject());
 		isrAllocationEClass.getESuperTypes().add(this.getBaseObject());
 		runnableAllocationEClass.getESuperTypes().add(this.getBaseObject());
+		memoryMappingEClass.getESuperTypes().add(this.getBaseObject());
+		physicalSectionMappingEClass.getESuperTypes().add(this.getReferableBaseObject());
 		osModelEClass.getESuperTypes().add(this.getBaseObject());
 		osDataConsistencyEClass.getESuperTypes().add(this.getBaseObject());
 		semaphoreEClass.getESuperTypes().add(this.getReferableBaseObject());
@@ -13272,10 +13252,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		clockMultiplierListEClass.getESuperTypes().add(this.getClock());
 		clockMultiplierListEntryEClass.getESuperTypes().add(this.getBaseObject());
 		swModelEClass.getESuperTypes().add(this.getBaseObject());
-		abstractElementMemoryInformationEClass.getESuperTypes().add(this.getReferableBaseObject());
-		abstractElementMemoryInformationEClass.getESuperTypes().add(this.getITaggable());
-		abstractProcessEClass.getESuperTypes().add(this.getAbstractElementMemoryInformation());
-		customEntityEClass.getESuperTypes().add(this.getAbstractElementMemoryInformation());
+		abstractMemoryElementEClass.getESuperTypes().add(this.getReferableBaseObject());
+		abstractMemoryElementEClass.getESuperTypes().add(this.getITaggable());
+		abstractProcessEClass.getESuperTypes().add(this.getAbstractMemoryElement());
+		customEntityEClass.getESuperTypes().add(this.getAbstractMemoryElement());
 		processChainEClass.getESuperTypes().add(this.getReferableBaseObject());
 		processEClass.getESuperTypes().add(this.getAbstractProcess());
 		callGraphEClass.getESuperTypes().add(this.getBaseObject());
@@ -13306,12 +13286,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		generalPrecedenceEClass.getESuperTypes().add(this.getBaseObject());
 		accessPrecedenceSpecEClass.getESuperTypes().add(this.getGeneralPrecedence());
 		orderPrecedenceSpecEClass.getESuperTypes().add(this.getGeneralPrecedence());
-		runnableEClass.getESuperTypes().add(this.getAbstractElementMemoryInformation());
-		labelEClass.getESuperTypes().add(this.getAbstractElementMemoryInformation());
+		runnableEClass.getESuperTypes().add(this.getAbstractMemoryElement());
+		labelEClass.getESuperTypes().add(this.getAbstractMemoryElement());
 		labelEClass.getESuperTypes().add(this.getIDisplayName());
-		channelEClass.getESuperTypes().add(this.getAbstractElementMemoryInformation());
+		channelEClass.getESuperTypes().add(this.getAbstractMemoryElement());
 		channelEClass.getESuperTypes().add(this.getIDisplayName());
-		modeLabelEClass.getESuperTypes().add(this.getAbstractElementMemoryInformation());
+		modeLabelEClass.getESuperTypes().add(this.getAbstractMemoryElement());
 		modeLabelEClass.getESuperTypes().add(this.getModeValueProvider());
 		modeLabelEClass.getESuperTypes().add(this.getIDisplayName());
 		sectionEClass.getESuperTypes().add(this.getReferableBaseObject());
@@ -13940,7 +13920,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(memoryEClass, Memory.class, "Memory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMemory_Type(), this.getMemoryType(), null, "type", null, 0, 1, Memory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMemory_Mappings(), this.getMapping(), this.getMapping_MemoryLinkInt(), "mappings", null, 0, -1, Memory.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemory_Mappings(), this.getMemoryMapping(), this.getMemoryMapping_MemoryLinkInt(), "mappings", null, 0, -1, Memory.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNetwork_Type(), this.getNetworkType(), null, "type", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14049,34 +14029,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getHwElementRef_Port(), this.getComplexPort(), null, "port", null, 0, 1, HwElementRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mappingModelEClass, MappingModel.class, "MappingModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMappingModel_CoreAllocation(), this.getCoreAllocation(), null, "coreAllocation", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMappingModel_RunnableAllocation(), this.getRunnableAllocation(), null, "runnableAllocation", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMappingModel_TaskAllocation(), this.getTaskAllocation(), null, "taskAllocation", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMappingModel_IsrAllocation(), this.getISRAllocation(), null, "isrAllocation", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMappingModel_RunnableAllocation(), this.getRunnableAllocation(), null, "runnableAllocation", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMappingModel_CoreAllocation(), this.getCoreAllocation(), null, "coreAllocation", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMappingModel_Mapping(), this.getMapping(), null, "mapping", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMappingModel_MemoryMapping(), this.getMemoryMapping(), null, "memoryMapping", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMappingModel_PhysicalSectionMapping(), this.getPhysicalSectionMapping(), null, "physicalSectionMapping", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMappingModel_AddressMappingType(), this.getMemoryAddressMappingType(), "addressMappingType", null, 0, 1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(coreAllocationEClass, CoreAllocation.class, "CoreAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCoreAllocation_Scheduler(), this.getScheduler(), null, "scheduler", null, 1, 1, CoreAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCoreAllocation_Core(), this.getCore(), null, "core", null, 1, -1, CoreAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(physicalSectionMappingEClass, PhysicalSectionMapping.class, "PhysicalSectionMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPhysicalSectionMapping_Origin(), this.getSection(), null, "origin", null, 1, -1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPhysicalSectionMapping_Memory(), this.getMemory(), null, "memory", null, 1, 1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPhysicalSectionMapping_StartAddress(), theEcorePackage.getELong(), "startAddress", "0", 0, 1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPhysicalSectionMapping_EndAddress(), theEcorePackage.getELong(), "endAddress", "0", 0, 1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPhysicalSectionMapping_Labels(), this.getLabel(), null, "labels", null, 0, -1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPhysicalSectionMapping_RunEntities(), this.getRunnable(), null, "runEntities", null, 0, -1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(mappingEClass, Mapping.class, "Mapping", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMapping_Memory(), this.getMemory(), null, "memory", null, 0, 1, Mapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapping_MemoryPositionAddress(), theEcorePackage.getELong(), "memoryPositionAddress", "0", 0, 1, Mapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMapping_MemoryLinkInt(), this.getMemory(), this.getMemory_Mappings(), "memoryLinkInt", null, 0, 1, Mapping.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(abstractElementMappingEClass, AbstractElementMapping.class, "AbstractElementMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAbstractElementMapping_AbstractElement(), this.getAbstractElementMemoryInformation(), null, "abstractElement", null, 1, 1, AbstractElementMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractElementMapping_AbstractElementLinkInt(), this.getAbstractElementMemoryInformation(), this.getAbstractElementMemoryInformation_Mappings(), "abstractElementLinkInt", null, 0, 1, AbstractElementMapping.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskAllocationEClass, TaskAllocation.class, "TaskAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTaskAllocation_Task(), this.getTask(), null, "task", null, 1, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14091,6 +14054,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(runnableAllocationEClass, RunnableAllocation.class, "RunnableAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnableAllocation_Scheduler(), this.getScheduler(), null, "scheduler", null, 1, 1, RunnableAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnableAllocation_Entity(), this.getRunnable(), null, "entity", null, 1, 1, RunnableAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(memoryMappingEClass, MemoryMapping.class, "MemoryMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMemoryMapping_MemoryElement(), this.getAbstractMemoryElement(), null, "memoryElement", null, 1, 1, MemoryMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemoryMapping_Memory(), this.getMemory(), null, "memory", null, 0, 1, MemoryMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMemoryMapping_MemoryPositionAddress(), theEcorePackage.getELong(), "memoryPositionAddress", "0", 0, 1, MemoryMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemoryMapping_MemoryElementLinkInt(), this.getAbstractMemoryElement(), this.getAbstractMemoryElement_Mappings(), "memoryElementLinkInt", null, 0, 1, MemoryMapping.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemoryMapping_MemoryLinkInt(), this.getMemory(), this.getMemory_Mappings(), "memoryLinkInt", null, 0, 1, MemoryMapping.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(physicalSectionMappingEClass, PhysicalSectionMapping.class, "PhysicalSectionMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPhysicalSectionMapping_Origin(), this.getSection(), null, "origin", null, 1, -1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPhysicalSectionMapping_Memory(), this.getMemory(), null, "memory", null, 1, 1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPhysicalSectionMapping_StartAddress(), theEcorePackage.getELong(), "startAddress", "0", 0, 1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPhysicalSectionMapping_EndAddress(), theEcorePackage.getELong(), "endAddress", "0", 0, 1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPhysicalSectionMapping_Labels(), this.getLabel(), null, "labels", null, 0, -1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPhysicalSectionMapping_RunEntities(), this.getRunnable(), null, "runEntities", null, 0, -1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(osModelEClass, OSModel.class, "OSModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOSModel_OsDataConsistency(), this.getOsDataConsistency(), null, "osDataConsistency", null, 0, 1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14228,7 +14206,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getRunnableAllocationConstraint_Runnable(), this.getRunnable(), null, "runnable", null, 0, 1, RunnableAllocationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractElementMappingConstraintEClass, AbstractElementMappingConstraint.class, "AbstractElementMappingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAbstractElementMappingConstraint_AbstractElement(), this.getAbstractElementMemoryInformation(), null, "abstractElement", null, 0, 1, AbstractElementMappingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractElementMappingConstraint_AbstractElement(), this.getAbstractMemoryElement(), null, "abstractElement", null, 0, 1, AbstractElementMappingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwCoreConstraintEClass, HwCoreConstraint.class, "HwCoreConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -14346,9 +14324,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getSWModel_Modes(), this.getMode(), null, "modes", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSWModel_ModeLabels(), this.getModeLabel(), null, "modeLabels", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(abstractElementMemoryInformationEClass, AbstractElementMemoryInformation.class, "AbstractElementMemoryInformation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAbstractElementMemoryInformation_Size(), this.getDataSize(), null, "size", null, 0, 1, AbstractElementMemoryInformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractElementMemoryInformation_Mappings(), this.getAbstractElementMapping(), this.getAbstractElementMapping_AbstractElementLinkInt(), "mappings", null, 0, -1, AbstractElementMemoryInformation.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(abstractMemoryElementEClass, AbstractMemoryElement.class, "AbstractMemoryElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAbstractMemoryElement_Size(), this.getDataSize(), null, "size", null, 0, 1, AbstractMemoryElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractMemoryElement_Mappings(), this.getMemoryMapping(), this.getMemoryMapping_MemoryElementLinkInt(), "mappings", null, 0, -1, AbstractMemoryElement.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractProcessEClass, AbstractProcess.class, "AbstractProcess", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractProcess_Priority(), theEcorePackage.getEInt(), "priority", "0", 0, 1, AbstractProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

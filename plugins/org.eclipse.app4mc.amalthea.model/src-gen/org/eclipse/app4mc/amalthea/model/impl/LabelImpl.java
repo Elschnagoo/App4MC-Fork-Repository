@@ -55,7 +55,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class LabelImpl extends AbstractElementMemoryInformationImpl implements Label {
+public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	/**
 	 * The default value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

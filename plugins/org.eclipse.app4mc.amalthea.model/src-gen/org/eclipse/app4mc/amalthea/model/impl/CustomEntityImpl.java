@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class CustomEntityImpl extends AbstractElementMemoryInformationImpl implements CustomEntity {
+public class CustomEntityImpl extends AbstractMemoryElementImpl implements CustomEntity {
 	/**
 	 * The default value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

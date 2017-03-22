@@ -15,7 +15,6 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.ASILType;
-import org.eclipse.app4mc.amalthea.model.AbstractElementMapping;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AccessMultiplicity;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
@@ -164,6 +163,7 @@ import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.MappingType;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType;
+import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.MemoryTypeEnum;
 import org.eclipse.app4mc.amalthea.model.Microcontroller;
@@ -492,11 +492,11 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.HW_ELEMENT_REF: return createHwElementRef();
 			case AmaltheaPackage.MAPPING_MODEL: return createMappingModel();
 			case AmaltheaPackage.CORE_ALLOCATION: return createCoreAllocation();
-			case AmaltheaPackage.PHYSICAL_SECTION_MAPPING: return createPhysicalSectionMapping();
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING: return createAbstractElementMapping();
 			case AmaltheaPackage.TASK_ALLOCATION: return createTaskAllocation();
 			case AmaltheaPackage.ISR_ALLOCATION: return createISRAllocation();
 			case AmaltheaPackage.RUNNABLE_ALLOCATION: return createRunnableAllocation();
+			case AmaltheaPackage.MEMORY_MAPPING: return createMemoryMapping();
+			case AmaltheaPackage.PHYSICAL_SECTION_MAPPING: return createPhysicalSectionMapping();
 			case AmaltheaPackage.OS_MODEL: return createOSModel();
 			case AmaltheaPackage.OS_DATA_CONSISTENCY: return createOsDataConsistency();
 			case AmaltheaPackage.DATA_STABILITY: return createDataStability();
@@ -2117,26 +2117,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PhysicalSectionMapping createPhysicalSectionMapping() {
-		PhysicalSectionMappingImpl physicalSectionMapping = new PhysicalSectionMappingImpl();
-		return physicalSectionMapping;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AbstractElementMapping createAbstractElementMapping() {
-		AbstractElementMappingImpl abstractElementMapping = new AbstractElementMappingImpl();
-		return abstractElementMapping;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public TaskAllocation createTaskAllocation() {
 		TaskAllocationImpl taskAllocation = new TaskAllocationImpl();
 		return taskAllocation;
@@ -2160,6 +2140,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public RunnableAllocation createRunnableAllocation() {
 		RunnableAllocationImpl runnableAllocation = new RunnableAllocationImpl();
 		return runnableAllocation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MemoryMapping createMemoryMapping() {
+		MemoryMappingImpl memoryMapping = new MemoryMappingImpl();
+		return memoryMapping;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PhysicalSectionMapping createPhysicalSectionMapping() {
+		PhysicalSectionMappingImpl physicalSectionMapping = new PhysicalSectionMappingImpl();
+		return physicalSectionMapping;
 	}
 
 	/**

@@ -43,7 +43,7 @@ import org.eclipse.emf.common.util.EList;
  *        sectionLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
  * @generated
  */
-public interface Runnable extends AbstractElementMemoryInformation {
+public interface Runnable extends AbstractMemoryElement {
 	/**
 	 * Returns the value of the '<em><b>Runnable Items</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableItem}.

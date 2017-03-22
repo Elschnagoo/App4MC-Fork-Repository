@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implements ModeLabel {
+public class ModeLabelImpl extends AbstractMemoryElementImpl implements ModeLabel {
 	/**
 	 * The cached value of the '{@link #getMode() <em>Mode</em>}' reference.
 	 * <!-- begin-user-doc -->

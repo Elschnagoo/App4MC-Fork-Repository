@@ -60,7 +60,7 @@ public interface Memory extends ComplexNode {
 
 	/**
 	 * Returns the value of the '<em><b>Mappings</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Mapping}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.MemoryMapping}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Mappings</em>' reference list isn't clear,
@@ -73,6 +73,6 @@ public interface Memory extends ComplexNode {
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
-	EList<Mapping> getMappings();
+	EList<MemoryMapping> getMappings();
 
 } // Memory

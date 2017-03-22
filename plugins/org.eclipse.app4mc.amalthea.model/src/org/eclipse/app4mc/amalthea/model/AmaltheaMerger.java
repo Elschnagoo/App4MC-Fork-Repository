@@ -209,7 +209,7 @@ public class AmaltheaMerger {
 			addAll(main.getIsrAllocation(), tmp.getIsrAllocation());
 			addAll(main.getRunnableAllocation(), tmp.getRunnableAllocation());
 			addAll(main.getCoreAllocation(), tmp.getCoreAllocation());
-			addAll(main.getMapping(), tmp.getMapping());
+			addAll(main.getMemoryMapping(), tmp.getMemoryMapping());
 			addIfAbsent(main.getPhysicalSectionMapping(), tmp.getPhysicalSectionMapping());
 		}	
 	}

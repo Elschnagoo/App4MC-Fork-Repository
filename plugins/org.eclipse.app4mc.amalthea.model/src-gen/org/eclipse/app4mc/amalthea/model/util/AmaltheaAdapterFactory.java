@@ -14,9 +14,8 @@ package org.eclipse.app4mc.amalthea.model.util;
 
 import java.util.Map;
 
-import org.eclipse.app4mc.amalthea.model.AbstractElementMapping;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
-import org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation;
+import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AbstractionType;
@@ -174,10 +173,10 @@ import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.ListObject;
 import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.Mapping;
 import org.eclipse.app4mc.amalthea.model.MappingConstraint;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.Memory;
+import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.Microcontroller;
 import org.eclipse.app4mc.amalthea.model.MicrocontrollerType;
@@ -1086,18 +1085,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createCoreAllocationAdapter();
 			}
 			@Override
-			public Adapter casePhysicalSectionMapping(PhysicalSectionMapping object) {
-				return createPhysicalSectionMappingAdapter();
-			}
-			@Override
-			public Adapter caseMapping(Mapping object) {
-				return createMappingAdapter();
-			}
-			@Override
-			public Adapter caseAbstractElementMapping(AbstractElementMapping object) {
-				return createAbstractElementMappingAdapter();
-			}
-			@Override
 			public Adapter caseTaskAllocation(TaskAllocation object) {
 				return createTaskAllocationAdapter();
 			}
@@ -1108,6 +1095,14 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseRunnableAllocation(RunnableAllocation object) {
 				return createRunnableAllocationAdapter();
+			}
+			@Override
+			public Adapter caseMemoryMapping(MemoryMapping object) {
+				return createMemoryMappingAdapter();
+			}
+			@Override
+			public Adapter casePhysicalSectionMapping(PhysicalSectionMapping object) {
+				return createPhysicalSectionMappingAdapter();
 			}
 			@Override
 			public Adapter caseOSModel(OSModel object) {
@@ -1370,8 +1365,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createSWModelAdapter();
 			}
 			@Override
-			public Adapter caseAbstractElementMemoryInformation(AbstractElementMemoryInformation object) {
-				return createAbstractElementMemoryInformationAdapter();
+			public Adapter caseAbstractMemoryElement(AbstractMemoryElement object) {
+				return createAbstractMemoryElementAdapter();
 			}
 			@Override
 			public Adapter caseAbstractProcess(AbstractProcess object) {
@@ -4112,48 +4107,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping <em>Physical Section Mapping</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping
-	 * @generated
-	 */
-	public Adapter createPhysicalSectionMappingAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Mapping <em>Mapping</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Mapping
-	 * @generated
-	 */
-	public Adapter createMappingAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AbstractElementMapping <em>Abstract Element Mapping</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractElementMapping
-	 * @generated
-	 */
-	public Adapter createAbstractElementMappingAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TaskAllocation <em>Task Allocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -4192,6 +4145,34 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRunnableAllocationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.MemoryMapping <em>Memory Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.MemoryMapping
+	 * @generated
+	 */
+	public Adapter createMemoryMappingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping <em>Physical Section Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping
+	 * @generated
+	 */
+	public Adapter createPhysicalSectionMappingAdapter() {
 		return null;
 	}
 
@@ -5106,16 +5087,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation <em>Abstract Element Memory Information</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AbstractMemoryElement <em>Abstract Memory Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation
+	 * @see org.eclipse.app4mc.amalthea.model.AbstractMemoryElement
 	 * @generated
 	 */
-	public Adapter createAbstractElementMemoryInformationAdapter() {
+	public Adapter createAbstractMemoryElementAdapter() {
 		return null;
 	}
 

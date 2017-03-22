@@ -57,7 +57,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class RunnableImpl extends AbstractElementMemoryInformationImpl implements org.eclipse.app4mc.amalthea.model.Runnable {
+public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclipse.app4mc.amalthea.model.Runnable {
 	/**
 	 * The cached value of the '{@link #getRunnableItems() <em>Runnable Items</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

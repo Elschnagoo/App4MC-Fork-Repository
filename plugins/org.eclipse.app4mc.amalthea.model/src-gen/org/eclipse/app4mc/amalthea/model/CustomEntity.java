@@ -33,7 +33,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface CustomEntity extends AbstractElementMemoryInformation {
+public interface CustomEntity extends AbstractMemoryElement {
 	/**
 	 * Returns the value of the '<em><b>Type Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

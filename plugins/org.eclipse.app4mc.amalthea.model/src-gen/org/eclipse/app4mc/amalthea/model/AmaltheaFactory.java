@@ -1175,24 +1175,6 @@ public interface AmaltheaFactory extends EFactory {
 	CoreAllocation createCoreAllocation();
 
 	/**
-	 * Returns a new object of class '<em>Physical Section Mapping</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Physical Section Mapping</em>'.
-	 * @generated
-	 */
-	PhysicalSectionMapping createPhysicalSectionMapping();
-
-	/**
-	 * Returns a new object of class '<em>Abstract Element Mapping</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Abstract Element Mapping</em>'.
-	 * @generated
-	 */
-	AbstractElementMapping createAbstractElementMapping();
-
-	/**
 	 * Returns a new object of class '<em>Task Allocation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1218,6 +1200,24 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	RunnableAllocation createRunnableAllocation();
+
+	/**
+	 * Returns a new object of class '<em>Memory Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Memory Mapping</em>'.
+	 * @generated
+	 */
+	MemoryMapping createMemoryMapping();
+
+	/**
+	 * Returns a new object of class '<em>Physical Section Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Physical Section Mapping</em>'.
+	 * @generated
+	 */
+	PhysicalSectionMapping createPhysicalSectionMapping();
 
 	/**
 	 * Returns a new object of class '<em>OS Model</em>'.

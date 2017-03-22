@@ -6,9 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import org.eclipse.app4mc.amalthea.model.AbstractElementMapping;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
-import org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation;
+import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
@@ -86,6 +85,7 @@ import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LimitType;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Memory;
+import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
@@ -2929,24 +2929,24 @@ public class CustomItemProviderService {
   }
   
   /**
-   * AbstractElementMappingItemProvider
+   * MemoryMappingItemProvider
    */
-  public static String getAbstractElementMappingItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof AbstractElementMapping)) {
+  public static String getMemoryMappingItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof MemoryMapping)) {
       Memory _memory = null;
-      if (((AbstractElementMapping)object)!=null) {
-        _memory=((AbstractElementMapping)object).getMemory();
+      if (((MemoryMapping)object)!=null) {
+        _memory=((MemoryMapping)object).getMemory();
       }
       String _name = null;
       if (_memory!=null) {
         _name=_memory.getName();
       }
       final String memName = _name;
-      AbstractElementMemoryInformation _abstractElement = null;
-      if (((AbstractElementMapping)object)!=null) {
-        _abstractElement=((AbstractElementMapping)object).getAbstractElement();
+      AbstractMemoryElement _memoryElement = null;
+      if (((MemoryMapping)object)!=null) {
+        _memoryElement=((MemoryMapping)object).getMemoryElement();
       }
-      final AbstractElementMemoryInformation elem = _abstractElement;
+      final AbstractMemoryElement elem = _memoryElement;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(memName);
       if (_isNullOrEmpty) {
@@ -2977,15 +2977,15 @@ public class CustomItemProviderService {
     }
   }
   
-  public static List<ViewerNotification> getAbstractElementMappingItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getMemoryMappingItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(AbstractElementMapping.class);
+    int _featureID = notification.getFeatureID(MemoryMapping.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING__MEMORY)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.MEMORY_MAPPING__MEMORY)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING__ABSTRACT_ELEMENT)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MEMORY_MAPPING__MEMORY_ELEMENT)) {
         _matched=true;
       }
     }
@@ -3346,11 +3346,11 @@ public class CustomItemProviderService {
    */
   public static String getAbstractElementMappingConstraintItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof AbstractElementMappingConstraint)) {
-      AbstractElementMemoryInformation _abstractElement = null;
+      AbstractMemoryElement _abstractElement = null;
       if (((AbstractElementMappingConstraint)object)!=null) {
         _abstractElement=((AbstractElementMappingConstraint)object).getAbstractElement();
       }
-      final AbstractElementMemoryInformation elem = _abstractElement;
+      final AbstractMemoryElement elem = _abstractElement;
       String _xifexpression = null;
       String _name = null;
       if (elem!=null) {

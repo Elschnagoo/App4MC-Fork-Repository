@@ -20,7 +20,7 @@ package org.eclipse.app4mc.amalthea.model;
  *
  * <!-- begin-model-doc -->
  * AbstractElementMappingConstraints describe the constraints for
- * AbstractElementMemoryInformation-to-Memory Mapping
+ * AbstractMemoryElement-to-Memory Mapping
  * <!-- end-model-doc -->
  *
  * <p>
@@ -44,12 +44,12 @@ public interface AbstractElementMappingConstraint extends MappingConstraint {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Abstract Element</em>' reference.
-	 * @see #setAbstractElement(AbstractElementMemoryInformation)
+	 * @see #setAbstractElement(AbstractMemoryElement)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractElementMappingConstraint_AbstractElement()
 	 * @model
 	 * @generated
 	 */
-	AbstractElementMemoryInformation getAbstractElement();
+	AbstractMemoryElement getAbstractElement();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint#getAbstractElement <em>Abstract Element</em>}' reference.
@@ -59,6 +59,6 @@ public interface AbstractElementMappingConstraint extends MappingConstraint {
 	 * @see #getAbstractElement()
 	 * @generated
 	 */
-	void setAbstractElement(AbstractElementMemoryInformation value);
+	void setAbstractElement(AbstractMemoryElement value);
 
 } // AbstractElementMappingConstraint

@@ -98,11 +98,11 @@ public class MappingModelItemProvider extends BaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_CoreAllocation());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_RunnableAllocation());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_TaskAllocation());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_IsrAllocation());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_RunnableAllocation());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_CoreAllocation());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_Mapping());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_MemoryMapping());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_PhysicalSectionMapping());
 		}
 		return childrenFeatures;
@@ -180,11 +180,11 @@ public class MappingModelItemProvider extends BaseObjectItemProvider {
 			case AmaltheaPackage.MAPPING_MODEL__ADDRESS_MAPPING_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
+			case AmaltheaPackage.MAPPING_MODEL__CORE_ALLOCATION:
+			case AmaltheaPackage.MAPPING_MODEL__RUNNABLE_ALLOCATION:
 			case AmaltheaPackage.MAPPING_MODEL__TASK_ALLOCATION:
 			case AmaltheaPackage.MAPPING_MODEL__ISR_ALLOCATION:
-			case AmaltheaPackage.MAPPING_MODEL__RUNNABLE_ALLOCATION:
-			case AmaltheaPackage.MAPPING_MODEL__CORE_ALLOCATION:
-			case AmaltheaPackage.MAPPING_MODEL__MAPPING:
+			case AmaltheaPackage.MAPPING_MODEL__MEMORY_MAPPING:
 			case AmaltheaPackage.MAPPING_MODEL__PHYSICAL_SECTION_MAPPING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -205,6 +205,16 @@ public class MappingModelItemProvider extends BaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getMappingModel_CoreAllocation(),
+				 AmaltheaFactory.eINSTANCE.createCoreAllocation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getMappingModel_RunnableAllocation(),
+				 AmaltheaFactory.eINSTANCE.createRunnableAllocation()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getMappingModel_TaskAllocation(),
 				 AmaltheaFactory.eINSTANCE.createTaskAllocation()));
 
@@ -215,18 +225,8 @@ public class MappingModelItemProvider extends BaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getMappingModel_RunnableAllocation(),
-				 AmaltheaFactory.eINSTANCE.createRunnableAllocation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getMappingModel_CoreAllocation(),
-				 AmaltheaFactory.eINSTANCE.createCoreAllocation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getMappingModel_Mapping(),
-				 AmaltheaFactory.eINSTANCE.createAbstractElementMapping()));
+				(AmaltheaPackage.eINSTANCE.getMappingModel_MemoryMapping(),
+				 AmaltheaFactory.eINSTANCE.createMemoryMapping()));
 
 		newChildDescriptors.add
 			(createChildParameter

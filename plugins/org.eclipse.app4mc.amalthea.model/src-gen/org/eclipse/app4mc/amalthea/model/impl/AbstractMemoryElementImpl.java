@@ -14,11 +14,11 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.util.Collection;
 
-import org.eclipse.app4mc.amalthea.model.AbstractElementMapping;
-import org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation;
+import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
+import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.Tag;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -37,20 +37,20 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Abstract Element Memory Information</b></em>'.
+ * An implementation of the model object '<em><b>Abstract Memory Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AbstractElementMemoryInformationImpl#getTags <em>Tags</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AbstractElementMemoryInformationImpl#getSize <em>Size</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AbstractElementMemoryInformationImpl#getMappings <em>Mappings</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AbstractMemoryElementImpl#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AbstractMemoryElementImpl#getSize <em>Size</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AbstractMemoryElementImpl#getMappings <em>Mappings</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class AbstractElementMemoryInformationImpl extends ReferableBaseObjectImpl implements AbstractElementMemoryInformation {
+public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl implements AbstractMemoryElement {
 	/**
 	 * The cached value of the '{@link #getTags() <em>Tags</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -79,14 +79,14 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<AbstractElementMapping> mappings;
+	protected EList<MemoryMapping> mappings;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AbstractElementMemoryInformationImpl() {
+	protected AbstractMemoryElementImpl() {
 		super();
 	}
 
@@ -97,7 +97,7 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation();
+		return AmaltheaPackage.eINSTANCE.getAbstractMemoryElement();
 	}
 
 	/**
@@ -107,7 +107,7 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	 */
 	public EList<Tag> getTags() {
 		if (tags == null) {
-			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__TAGS);
+			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__TAGS);
 		}
 		return tags;
 	}
@@ -130,7 +130,7 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 		DataSize oldSize = size;
 		size = newSize;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE, oldSize, newSize);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__SIZE, oldSize, newSize);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -145,14 +145,14 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 		if (newSize != size) {
 			NotificationChain msgs = null;
 			if (size != null)
-				msgs = ((InternalEObject)size).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE, null, msgs);
+				msgs = ((InternalEObject)size).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__SIZE, null, msgs);
 			if (newSize != null)
-				msgs = ((InternalEObject)newSize).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE, null, msgs);
+				msgs = ((InternalEObject)newSize).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__SIZE, null, msgs);
 			msgs = basicSetSize(newSize, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE, newSize, newSize));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__SIZE, newSize, newSize));
 	}
 
 	/**
@@ -160,9 +160,9 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<AbstractElementMapping> getMappings() {
+	public EList<MemoryMapping> getMappings() {
 		if (mappings == null) {
-			mappings = new EObjectWithInverseResolvingEList<AbstractElementMapping>(AbstractElementMapping.class, this, AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING__ABSTRACT_ELEMENT_LINK_INT);
+			mappings = new EObjectWithInverseResolvingEList<MemoryMapping>(MemoryMapping.class, this, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS, AmaltheaPackage.MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT);
 		}
 		return mappings;
 	}
@@ -176,7 +176,7 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMappings()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -190,9 +190,9 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__SIZE:
 				return basicSetSize(null, msgs);
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS:
 				return ((InternalEList<?>)getMappings()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -206,11 +206,11 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__TAGS:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__TAGS:
 				return getTags();
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__SIZE:
 				return getSize();
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS:
 				return getMappings();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -225,16 +225,16 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__TAGS:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__TAGS:
 				getTags().clear();
 				getTags().addAll((Collection<? extends Tag>)newValue);
 				return;
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__SIZE:
 				setSize((DataSize)newValue);
 				return;
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS:
 				getMappings().clear();
-				getMappings().addAll((Collection<? extends AbstractElementMapping>)newValue);
+				getMappings().addAll((Collection<? extends MemoryMapping>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -248,13 +248,13 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__TAGS:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__TAGS:
 				getTags().clear();
 				return;
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__SIZE:
 				setSize((DataSize)null);
 				return;
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS:
 				getMappings().clear();
 				return;
 		}
@@ -269,11 +269,11 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__TAGS:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__TAGS:
 				return tags != null && !tags.isEmpty();
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__SIZE:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__SIZE:
 				return size != null;
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__MAPPINGS:
+			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS:
 				return mappings != null && !mappings.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -288,7 +288,7 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == ITaggable.class) {
 			switch (derivedFeatureID) {
-				case AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__TAGS: return AmaltheaPackage.ITAGGABLE__TAGS;
+				case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__TAGS: return AmaltheaPackage.ITAGGABLE__TAGS;
 				default: return -1;
 			}
 		}
@@ -304,11 +304,11 @@ public abstract class AbstractElementMemoryInformationImpl extends ReferableBase
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == ITaggable.class) {
 			switch (baseFeatureID) {
-				case AmaltheaPackage.ITAGGABLE__TAGS: return AmaltheaPackage.ABSTRACT_ELEMENT_MEMORY_INFORMATION__TAGS;
+				case AmaltheaPackage.ITAGGABLE__TAGS: return AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__TAGS;
 				default: return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-} //AbstractElementMemoryInformationImpl
+} //AbstractMemoryElementImpl

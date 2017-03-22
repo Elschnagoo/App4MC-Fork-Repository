@@ -50,7 +50,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ChannelImpl extends AbstractElementMemoryInformationImpl implements Channel {
+public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	/**
 	 * The default value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public abstract class AbstractProcessImpl extends AbstractElementMemoryInformationImpl implements AbstractProcess {
+public abstract class AbstractProcessImpl extends AbstractMemoryElementImpl implements AbstractProcess {
 	/**
 	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -23,11 +23,11 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getCoreAllocation <em>Core Allocation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getRunnableAllocation <em>Runnable Allocation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getTaskAllocation <em>Task Allocation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getIsrAllocation <em>Isr Allocation</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getRunnableAllocation <em>Runnable Allocation</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getCoreAllocation <em>Core Allocation</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getMapping <em>Mapping</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getMemoryMapping <em>Memory Mapping</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getPhysicalSectionMapping <em>Physical Section Mapping</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getAddressMappingType <em>Address Mapping Type</em>}</li>
  * </ul>
@@ -37,6 +37,38 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface MappingModel extends BaseObject {
+	/**
+	 * Returns the value of the '<em><b>Core Allocation</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.CoreAllocation}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Core Allocation</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Core Allocation</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_CoreAllocation()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<CoreAllocation> getCoreAllocation();
+
+	/**
+	 * Returns the value of the '<em><b>Runnable Allocation</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableAllocation}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Runnable Allocation</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Runnable Allocation</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_RunnableAllocation()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<RunnableAllocation> getRunnableAllocation();
+
 	/**
 	 * Returns the value of the '<em><b>Task Allocation</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TaskAllocation}.
@@ -70,52 +102,20 @@ public interface MappingModel extends BaseObject {
 	EList<ISRAllocation> getIsrAllocation();
 
 	/**
-	 * Returns the value of the '<em><b>Runnable Allocation</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableAllocation}.
+	 * Returns the value of the '<em><b>Memory Mapping</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.MemoryMapping}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Runnable Allocation</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Memory Mapping</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Runnable Allocation</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_RunnableAllocation()
+	 * @return the value of the '<em>Memory Mapping</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_MemoryMapping()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<RunnableAllocation> getRunnableAllocation();
-
-	/**
-	 * Returns the value of the '<em><b>Core Allocation</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.CoreAllocation}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Core Allocation</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Core Allocation</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_CoreAllocation()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<CoreAllocation> getCoreAllocation();
-
-	/**
-	 * Returns the value of the '<em><b>Mapping</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Mapping}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Mapping</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Mapping</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_Mapping()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Mapping> getMapping();
+	EList<MemoryMapping> getMemoryMapping();
 
 	/**
 	 * Returns the value of the '<em><b>Physical Section Mapping</b></em>' containment reference list.

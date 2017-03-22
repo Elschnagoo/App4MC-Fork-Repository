@@ -3,7 +3,6 @@ package org.eclipse.app4mc.amalthea.model.provider
 import java.util.ArrayList
 import java.util.List
 import java.util.Map
-import org.eclipse.app4mc.amalthea.model.AbstractElementMapping
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint
 import org.eclipse.app4mc.amalthea.model.AbstractTime
 import org.eclipse.app4mc.amalthea.model.AccessPathRef
@@ -68,6 +67,7 @@ import org.eclipse.app4mc.amalthea.model.LatencyConstant
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation
 import org.eclipse.app4mc.amalthea.model.LimitType
 import org.eclipse.app4mc.amalthea.model.LongObject
+import org.eclipse.app4mc.amalthea.model.MemoryMapping
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic
 import org.eclipse.app4mc.amalthea.model.ModeLabel
 import org.eclipse.app4mc.amalthea.model.ModeLabelAccess
@@ -1519,12 +1519,12 @@ class CustomItemProviderService {
 
 
 	/*****************************************************************************
-	 * 						AbstractElementMappingItemProvider
+	 * 						MemoryMappingItemProvider
 	 *****************************************************************************/
-	def static String getAbstractElementMappingItemProviderText(Object object, String defaultText) {
-		if (object instanceof AbstractElementMapping) {
+	def static String getMemoryMappingItemProviderText(Object object, String defaultText) {
+		if (object instanceof MemoryMapping) {
 			val memName = object?.memory?.name
-			val elem = object?.abstractElement
+			val elem = object?.memoryElement
 			val s1 = if(memName.isNullOrEmpty) "<memory>" else "Memory " + memName
 			val s2 = if(elem?.name.isNullOrEmpty) "<element>" else elem.eClass.name + " " + elem.name
 			return "Mapping: " + s1 + " -- " + s2;
@@ -1533,11 +1533,11 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getAbstractElementMappingItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getMemoryMappingItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(AbstractElementMapping)) {
-			case AmaltheaPackage::ABSTRACT_ELEMENT_MAPPING__MEMORY,
-			case AmaltheaPackage::ABSTRACT_ELEMENT_MAPPING__ABSTRACT_ELEMENT:
+		switch notification.getFeatureID(typeof(MemoryMapping)) {
+			case AmaltheaPackage::MEMORY_MAPPING__MEMORY,
+			case AmaltheaPackage::MEMORY_MAPPING__MEMORY_ELEMENT:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 		}
 		return list

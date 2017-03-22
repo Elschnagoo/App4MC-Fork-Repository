@@ -41,7 +41,7 @@ import org.eclipse.emf.common.util.EList;
  *        sectionLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
  * @generated
  */
-public interface Label extends AbstractElementMemoryInformation, IDisplayName {
+public interface Label extends AbstractMemoryElement, IDisplayName {
 	/**
 	 * Returns the value of the '<em><b>Data Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
