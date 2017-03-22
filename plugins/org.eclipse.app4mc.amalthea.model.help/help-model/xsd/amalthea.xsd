@@ -48,11 +48,11 @@
       <xsd:enumeration value="Mbit"/>
       <xsd:enumeration value="Gbit"/>
       <xsd:enumeration value="Tbit"/>
-      <xsd:enumeration value="kibit"/>
+      <xsd:enumeration value="Kibit"/>
       <xsd:enumeration value="Mibit"/>
       <xsd:enumeration value="Gibit"/>
       <xsd:enumeration value="Tibit"/>
-      <xsd:enumeration value="byte"/>
+      <xsd:enumeration value="B"/>
       <xsd:enumeration value="kB"/>
       <xsd:enumeration value="MB"/>
       <xsd:enumeration value="GB"/>
@@ -74,11 +74,11 @@
       <xsd:enumeration value="MbitPerSecond"/>
       <xsd:enumeration value="GbitPerSecond"/>
       <xsd:enumeration value="TbitPerSecond"/>
-      <xsd:enumeration value="kibitPerSecond"/>
+      <xsd:enumeration value="KibitPerSecond"/>
       <xsd:enumeration value="MibitPerSecond"/>
       <xsd:enumeration value="GibitPerSecond"/>
       <xsd:enumeration value="TibitPerSecond"/>
-      <xsd:enumeration value="bytePerSecond"/>
+      <xsd:enumeration value="BPerSecond"/>
       <xsd:enumeration value="kBPerSecond"/>
       <xsd:enumeration value="MBPerSecond"/>
       <xsd:enumeration value="GBPerSecond"/>
@@ -2966,11 +2966,11 @@ core: The core that processes the process/runnable that accesses the semaphore (
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="coreAllocation" type="am:CoreAllocation"/>
+          <xsd:element name="runnableAllocation" type="am:RunnableAllocation"/>
           <xsd:element name="taskAllocation" type="am:TaskAllocation"/>
           <xsd:element name="isrAllocation" type="am:ISRAllocation"/>
-          <xsd:element name="runnableAllocation" type="am:RunnableAllocation"/>
-          <xsd:element name="coreAllocation" type="am:CoreAllocation"/>
-          <xsd:element name="mapping" type="am:Mapping"/>
+          <xsd:element name="memoryMapping" type="am:MemoryMapping"/>
           <xsd:element name="physicalSectionMapping" type="am:PhysicalSectionMapping"/>
         </xsd:choice>
         <xsd:attribute name="addressMappingType" type="am:MemoryAddressMappingType"/>
@@ -2996,78 +2996,6 @@ core: The core that processes the process/runnable that accesses the semaphore (
   <xsd:element name="CoreAllocation" type="am:CoreAllocation">
     <xsd:annotation>
       <xsd:documentation>Allocation of Cores to schedulers</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="PhysicalSectionMapping">
-    <xsd:complexContent>
-      <xsd:extension base="am:ReferableBaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="origin" type="am:Section"/>
-          <xsd:element name="memory" type="am:Memory"/>
-          <xsd:element name="labels" type="am:Label"/>
-          <xsd:element name="runEntities" type="am:Runnable"/>
-        </xsd:choice>
-        <xsd:attribute name="startAddress" type="xsd:long"/>
-        <xsd:attribute name="endAddress" type="xsd:long"/>
-        <xsd:attribute name="origin" type="xsd:string"/>
-        <xsd:attribute name="memory" type="xsd:string"/>
-        <xsd:attribute name="labels" type="xsd:string"/>
-        <xsd:attribute name="runEntities" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="PhysicalSectionMapping" type="am:PhysicalSectionMapping"/>
-  <xsd:complexType abstract="true" name="Mapping">
-    <xsd:annotation>
-      <xsd:documentation>Generalization for all Mapping types.
-Mappings assign Runnables/Signals to memories</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="memory" type="am:Memory">
-            <xsd:annotation>
-              <xsd:documentation>The memory where the element is mapped to</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
-        </xsd:choice>
-        <xsd:attribute name="memoryPositionAddress" type="xsd:long">
-          <xsd:annotation>
-            <xsd:documentation>The position of the element in the mapped memory</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="memory" type="xsd:string">
-          <xsd:annotation>
-            <xsd:documentation>The memory where the element is mapped to</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="Mapping" type="am:Mapping">
-    <xsd:annotation>
-      <xsd:documentation>Generalization for all Mapping types.
-Mappings assign Runnables/Signals to memories</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="AbstractElementMapping">
-    <xsd:annotation>
-      <xsd:documentation>Sections (D4.2, Chapter 3.3.2)
-Sections refer to Labels and/or Runnables.</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Mapping">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="abstractElement" type="am:AbstractElementMemoryInformation"/>
-        </xsd:choice>
-        <xsd:attribute name="abstractElement" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="AbstractElementMapping" type="am:AbstractElementMapping">
-    <xsd:annotation>
-      <xsd:documentation>Sections (D4.2, Chapter 3.3.2)
-Sections refer to Labels and/or Runnables.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="TaskAllocation">
@@ -3111,6 +3039,52 @@ Sections refer to Labels and/or Runnables.</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="RunnableAllocation" type="am:RunnableAllocation"/>
+  <xsd:complexType name="MemoryMapping">
+    <xsd:annotation>
+      <xsd:documentation>Mapping of AbstractMemoryElement (Label, Runnable, ISR, Task, ...)
+to a specific memory.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="abstractElement" type="am:AbstractMemoryElement"/>
+          <xsd:element name="memory" type="am:Memory"/>
+        </xsd:choice>
+        <xsd:attribute name="memoryPositionAddress" type="xsd:long">
+          <xsd:annotation>
+            <xsd:documentation>The position of the element in the mapped memory</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="abstractElement" type="xsd:string"/>
+        <xsd:attribute name="memory" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="MemoryMapping" type="am:MemoryMapping">
+    <xsd:annotation>
+      <xsd:documentation>Mapping of AbstractMemoryElement (Label, Runnable, ISR, Task, ...)
+to a specific memory.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="PhysicalSectionMapping">
+    <xsd:complexContent>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="origin" type="am:Section"/>
+          <xsd:element name="memory" type="am:Memory"/>
+          <xsd:element name="labels" type="am:Label"/>
+          <xsd:element name="runEntities" type="am:Runnable"/>
+        </xsd:choice>
+        <xsd:attribute name="startAddress" type="xsd:long"/>
+        <xsd:attribute name="endAddress" type="xsd:long"/>
+        <xsd:attribute name="origin" type="xsd:string"/>
+        <xsd:attribute name="memory" type="xsd:string"/>
+        <xsd:attribute name="labels" type="xsd:string"/>
+        <xsd:attribute name="runEntities" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PhysicalSectionMapping" type="am:PhysicalSectionMapping"/>
   <xsd:complexType name="OSModel">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
@@ -3695,12 +3669,12 @@ Runnable-to-Core allocations</xsd:documentation>
   <xsd:complexType name="AbstractElementMappingConstraint">
     <xsd:annotation>
       <xsd:documentation>AbstractElementMappingConstraints describe the constraints for
-AbstractElementMemoryInformation-to-Memory Mapping</xsd:documentation>
+AbstractMemoryElement-to-Memory Mapping</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:MappingConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="abstractElement" type="am:AbstractElementMemoryInformation"/>
+          <xsd:element name="abstractElement" type="am:AbstractMemoryElement"/>
         </xsd:choice>
         <xsd:attribute name="abstractElement" type="xsd:string"/>
       </xsd:extension>
@@ -3709,7 +3683,7 @@ AbstractElementMemoryInformation-to-Memory Mapping</xsd:documentation>
   <xsd:element name="AbstractElementMappingConstraint" type="am:AbstractElementMappingConstraint">
     <xsd:annotation>
       <xsd:documentation>AbstractElementMappingConstraints describe the constraints for
-AbstractElementMemoryInformation-to-Memory Mapping</xsd:documentation>
+AbstractMemoryElement-to-Memory Mapping</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="HwCoreConstraint">
@@ -4147,7 +4121,7 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
       <xsd:documentation>Central instance to provide central access.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="AbstractElementMemoryInformation">
+  <xsd:complexType abstract="true" name="AbstractMemoryElement">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -4162,10 +4136,10 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="AbstractElementMemoryInformation" type="am:AbstractElementMemoryInformation"/>
+  <xsd:element name="AbstractMemoryElement" type="am:AbstractMemoryElement"/>
   <xsd:complexType abstract="true" name="AbstractProcess">
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractElementMemoryInformation">
+      <xsd:extension base="am:AbstractMemoryElement">
         <xsd:attribute name="priority" type="xsd:int"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -4176,7 +4150,7 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
       <xsd:documentation>Possibility to define general custom elements</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractElementMemoryInformation">
+      <xsd:extension base="am:AbstractMemoryElement">
         <xsd:attribute name="typeName" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -4708,7 +4682,7 @@ The final state can be several Tasks, which can be computed using provided infor
       <xsd:documentation>Smallest allocatable unit, which provides additional (optional) attributes for allocation algorithms.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractElementMemoryInformation">
+      <xsd:extension base="am:AbstractMemoryElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="runnableItems" type="am:RunnableItem"/>
           <xsd:element name="activation" type="am:Activation"/>
@@ -4744,7 +4718,7 @@ The final state can be several Tasks, which can be computed using provided infor
       <xsd:documentation>Data representation, which can be accessed by run entities.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractElementMemoryInformation">
+      <xsd:extension base="am:AbstractMemoryElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="dataType" type="am:DataType"/>
           <xsd:element name="section" type="am:Section"/>
@@ -4776,7 +4750,7 @@ The final state can be several Tasks, which can be computed using provided infor
   </xsd:element>
   <xsd:complexType name="Channel">
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractElementMemoryInformation">
+      <xsd:extension base="am:AbstractMemoryElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="elementType" type="am:DataType"/>
         </xsd:choice>
@@ -4789,7 +4763,7 @@ The final state can be several Tasks, which can be computed using provided infor
   <xsd:element name="Channel" type="am:Channel"/>
   <xsd:complexType name="ModeLabel">
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractElementMemoryInformation">
+      <xsd:extension base="am:AbstractMemoryElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="mode" type="am:Mode"/>
           <xsd:element name="initialValue" type="am:ModeLiteral"/>

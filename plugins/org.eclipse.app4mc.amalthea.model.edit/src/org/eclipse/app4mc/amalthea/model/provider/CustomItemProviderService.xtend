@@ -1524,7 +1524,7 @@ class CustomItemProviderService {
 	def static String getMemoryMappingItemProviderText(Object object, String defaultText) {
 		if (object instanceof MemoryMapping) {
 			val memName = object?.memory?.name
-			val elem = object?.memoryElement
+			val elem = object?.abstractElement
 			val s1 = if(memName.isNullOrEmpty) "<memory>" else "Memory " + memName
 			val s2 = if(elem?.name.isNullOrEmpty) "<element>" else elem.eClass.name + " " + elem.name
 			return "Mapping: " + s1 + " -- " + s2;
@@ -1537,7 +1537,7 @@ class CustomItemProviderService {
 		val list = newArrayList
 		switch notification.getFeatureID(typeof(MemoryMapping)) {
 			case AmaltheaPackage::MEMORY_MAPPING__MEMORY,
-			case AmaltheaPackage::MEMORY_MAPPING__MEMORY_ELEMENT:
+			case AmaltheaPackage::MEMORY_MAPPING__ABSTRACT_ELEMENT:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 		}
 		return list

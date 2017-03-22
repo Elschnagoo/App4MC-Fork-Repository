@@ -1870,7 +1870,7 @@ class RunnableAllocation extends BaseObject
  */
 class MemoryMapping extends BaseObject
 {
-	refers AbstractMemoryElement[1] memoryElement
+	refers AbstractMemoryElement[1] abstractElement
 	
 	refers Memory memory
 	

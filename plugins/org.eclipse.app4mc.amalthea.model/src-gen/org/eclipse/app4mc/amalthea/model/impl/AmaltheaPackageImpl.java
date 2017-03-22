@@ -7472,7 +7472,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMemoryMapping_MemoryElement() {
+	public EReference getMemoryMapping_AbstractElement() {
 		return (EReference)memoryMappingEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -12333,7 +12333,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(runnableAllocationEClass, RUNNABLE_ALLOCATION__ENTITY);
 
 		memoryMappingEClass = createEClass(MEMORY_MAPPING);
-		createEReference(memoryMappingEClass, MEMORY_MAPPING__MEMORY_ELEMENT);
+		createEReference(memoryMappingEClass, MEMORY_MAPPING__ABSTRACT_ELEMENT);
 		createEReference(memoryMappingEClass, MEMORY_MAPPING__MEMORY);
 		createEAttribute(memoryMappingEClass, MEMORY_MAPPING__MEMORY_POSITION_ADDRESS);
 		createEReference(memoryMappingEClass, MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT);
@@ -14056,7 +14056,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getRunnableAllocation_Entity(), this.getRunnable(), null, "entity", null, 1, 1, RunnableAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(memoryMappingEClass, MemoryMapping.class, "MemoryMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMemoryMapping_MemoryElement(), this.getAbstractMemoryElement(), null, "memoryElement", null, 1, 1, MemoryMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemoryMapping_AbstractElement(), this.getAbstractMemoryElement(), null, "abstractElement", null, 1, 1, MemoryMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryMapping_Memory(), this.getMemory(), null, "memory", null, 0, 1, MemoryMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMemoryMapping_MemoryPositionAddress(), theEcorePackage.getELong(), "memoryPositionAddress", "0", 0, 1, MemoryMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryMapping_MemoryElementLinkInt(), this.getAbstractMemoryElement(), this.getAbstractMemoryElement_Mappings(), "memoryElementLinkInt", null, 0, 1, MemoryMapping.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

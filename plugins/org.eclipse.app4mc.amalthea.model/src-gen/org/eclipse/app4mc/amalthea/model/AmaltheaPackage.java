@@ -12992,13 +12992,13 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY_MAPPING__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Memory Element</b></em>' reference.
+	 * The feature id for the '<em><b>Abstract Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEMORY_MAPPING__MEMORY_ELEMENT = BASE_OBJECT_FEATURE_COUNT + 0;
+	int MEMORY_MAPPING__ABSTRACT_ELEMENT = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Memory</b></em>' reference.
@@ -29083,15 +29083,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getMemoryMapping();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.MemoryMapping#getMemoryElement <em>Memory Element</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.MemoryMapping#getAbstractElement <em>Abstract Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Memory Element</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.MemoryMapping#getMemoryElement()
+	 * @return the meta object for the reference '<em>Abstract Element</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.MemoryMapping#getAbstractElement()
 	 * @see #getMemoryMapping()
 	 * @generated
 	 */
-	EReference getMemoryMapping_MemoryElement();
+	EReference getMemoryMapping_AbstractElement();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.MemoryMapping#getMemory <em>Memory</em>}'.

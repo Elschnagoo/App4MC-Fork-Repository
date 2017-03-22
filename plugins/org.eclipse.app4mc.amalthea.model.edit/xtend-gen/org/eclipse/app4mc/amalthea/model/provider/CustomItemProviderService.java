@@ -2942,11 +2942,11 @@ public class CustomItemProviderService {
         _name=_memory.getName();
       }
       final String memName = _name;
-      AbstractMemoryElement _memoryElement = null;
+      AbstractMemoryElement _abstractElement = null;
       if (((MemoryMapping)object)!=null) {
-        _memoryElement=((MemoryMapping)object).getMemoryElement();
+        _abstractElement=((MemoryMapping)object).getAbstractElement();
       }
-      final AbstractMemoryElement elem = _memoryElement;
+      final AbstractMemoryElement elem = _abstractElement;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(memName);
       if (_isNullOrEmpty) {
@@ -2985,7 +2985,7 @@ public class CustomItemProviderService {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.MEMORY_MAPPING__MEMORY_ELEMENT)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT)) {
         _matched=true;
       }
     }
