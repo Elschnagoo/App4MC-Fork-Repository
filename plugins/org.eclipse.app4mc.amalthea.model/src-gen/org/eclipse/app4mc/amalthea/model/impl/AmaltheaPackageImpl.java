@@ -14666,7 +14666,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.MIBIT);
 		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.GIBIT);
 		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.TIBIT);
-		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.BYTE);
+		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.B);
 		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.KB);
 		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.MB);
 		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit.GB);
@@ -14687,7 +14687,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.MIBIT_PER_SECOND);
 		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.GIBIT_PER_SECOND);
 		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.TIBIT_PER_SECOND);
-		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.BYTE_PER_SECOND);
+		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.BPER_SECOND);
 		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.KB_PER_SECOND);
 		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.MB_PER_SECOND);
 		addEEnumLiteral(dataRateUnitEEnum, DataRateUnit.GB_PER_SECOND);

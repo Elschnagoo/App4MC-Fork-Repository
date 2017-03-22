@@ -53,7 +53,7 @@ public class AmaltheaServices {
 		case TIBIT:
 			return bitBase.multiply(BigInteger.valueOf(2).pow(40));
 
-		case BYTE:
+		case B:
 			return byteBase;
 		case KB:
 			return byteBase.multiply(BigInteger.TEN.pow(3));

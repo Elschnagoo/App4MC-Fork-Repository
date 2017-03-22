@@ -265,12 +265,12 @@ enum DataSizeUnit {
 	Gbit
 	Tbit
 	
-	kibit
+	Kibit
 	Mibit
 	Gibit
 	Tibit
 	
-	byte
+	B
 	kB
 	MB
 	GB
@@ -319,12 +319,12 @@ enum DataRateUnit {
 	GbitPerSecond
 	TbitPerSecond
 	
-	kibitPerSecond
+	KibitPerSecond
 	MibitPerSecond
 	GibitPerSecond
 	TibitPerSecond
 	
-	bytePerSecond
+	BPerSecond
 	kBPerSecond
 	MBPerSecond
 	GBPerSecond

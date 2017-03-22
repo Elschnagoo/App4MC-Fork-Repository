@@ -99,7 +99,7 @@ public enum DataSizeUnit implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	KIBIT(0, "kibit", "kibit"),
+	KIBIT(0, "Kibit", "Kibit"),
 
 	/**
 	 * The '<em><b>Mibit</b></em>' literal object.
@@ -132,14 +132,14 @@ public enum DataSizeUnit implements Enumerator {
 	TIBIT(0, "Tibit", "Tibit"),
 
 	/**
-	 * The '<em><b>Byte</b></em>' literal object.
+	 * The '<em><b>B</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #BYTE_VALUE
+	 * @see #B_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	BYTE(0, "byte", "byte"),
+	B(0, "B", "B"),
 
 	/**
 	 * The '<em><b>KB</b></em>' literal object.
@@ -320,7 +320,7 @@ public enum DataSizeUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KIBIT
-	 * @model name="kibit"
+	 * @model name="Kibit"
 	 * @generated
 	 * @ordered
 	 */
@@ -372,19 +372,19 @@ public enum DataSizeUnit implements Enumerator {
 	public static final int TIBIT_VALUE = 0;
 
 	/**
-	 * The '<em><b>Byte</b></em>' literal value.
+	 * The '<em><b>B</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Byte</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>B</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #BYTE
-	 * @model name="byte"
+	 * @see #B
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BYTE_VALUE = 0;
+	public static final int B_VALUE = 0;
 
 	/**
 	 * The '<em><b>KB</b></em>' literal value.
@@ -524,7 +524,7 @@ public enum DataSizeUnit implements Enumerator {
 			MIBIT,
 			GIBIT,
 			TIBIT,
-			BYTE,
+			B,
 			KB,
 			MB,
 			GB,
