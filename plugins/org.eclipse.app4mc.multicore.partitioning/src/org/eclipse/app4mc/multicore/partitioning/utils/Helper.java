@@ -8,7 +8,7 @@
  * Contributors:
  *    Dortmund University of Applied Sciences and Arts - initial API and implementation
  *******************************************************************************/
-package org.eclipse.app4mc.multicore.partitioning.algorithms;
+package org.eclipse.app4mc.multicore.partitioning.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +41,8 @@ import org.eclipse.emf.ecore.EObject;
  * Provides several calculations / generally needed methods
  */
 public class Helper {
-	
-	
+
+
 	/**
 	 * Calculation of a runnable's instructions (arithmetic average in case of
 	 * deviations)
@@ -56,22 +56,21 @@ public class Helper {
 		for (final RunnableItem ra : r.getRunnableItems()) {
 			if (ra instanceof RunnableInstructions) {
 				final RunnableInstructions ri = (RunnableInstructions) ra;
-				if (ri.getDefault() instanceof InstructionsConstant) {
-					rt = ((InstructionsConstant) ri.getDefault()).getValue();
-				}
-				else if (ri.getDefault() instanceof InstructionsDeviation) {
-					final InstructionsDeviation id = (InstructionsDeviation) ri.getDefault();
-					rt = (id.getDeviation().getLowerBound().getValue() + id.getDeviation().getUpperBound().getValue())
-							/ 2;
-				}
+				rt = ri.getDefault() instanceof InstructionsConstant
+						? ((InstructionsConstant) ri.getDefault()).getValue()
+						: ri.getDefault() instanceof InstructionsDeviation ? (((InstructionsDeviation) ri.getDefault())
+								.getDeviation().getLowerBound().getValue()
+								+ ((InstructionsDeviation) ri.getDefault()).getDeviation().getUpperBound().getValue())
+								/ 2 : 0;
 			}
 		}
 		if (rt == 0) {
-			PartLog.getInstance().log("No instructions constant / deviation found at Runnable " + r.getName() + ". Assuming 1.");
-			InstructionsConstant ic = AmaltheaFactory.eINSTANCE.createInstructionsConstant();
+			PartLog.getInstance()
+					.log("No instructions constant / deviation found at Runnable " + r.getName() + ". Assuming 1.");
+			final InstructionsConstant ic = AmaltheaFactory.eINSTANCE.createInstructionsConstant();
 			ic.setValue(1);
 			r.getRunnableItems().add((RunnableItem) ic);
-			rt=1;
+			rt = 1;
 		}
 		return rt;
 	}
@@ -191,12 +190,12 @@ public class Helper {
 	 * @param event
 	 *            ExecutionEvent for File information
 	 */
-	public static void writeModelFile(final IFile file, URI path, final ArrayList<EObject> models) {
+	public static void writeModelFile(final IFile file, final URI path, final ArrayList<EObject> models) {
 		PartLog.getInstance().log("Writing " + path.toString() + "\n");
 		UniversalHandler.getInstance().writeModel(path, models);
 	}
 
-	public static void writeModelFile(final IFile file, URI path, final Amalthea models) {
+	public static void writeModelFile(final IFile file, final URI path, final Amalthea models) {
 		PartLog.getInstance().log("Writing " + path.toString() + "\n");
 		UniversalHandler.getInstance().writeModel(path, models);
 	}
@@ -335,5 +334,5 @@ public class Helper {
 		}
 		return instrSum;
 	}
-	
+
 }

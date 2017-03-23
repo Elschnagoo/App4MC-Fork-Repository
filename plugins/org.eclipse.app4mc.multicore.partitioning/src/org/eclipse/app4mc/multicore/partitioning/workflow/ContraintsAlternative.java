@@ -12,9 +12,9 @@ package org.eclipse.app4mc.multicore.partitioning.workflow;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.workflow.core.Context;
-import org.eclipse.app4mc.multicore.partitioning.algorithms.CreateTAInput;
 import org.eclipse.app4mc.amalthea.workflow.core.WorkflowComponent;
-import org.eclipse.app4mc.multicore.partitioning.algorithms.PartLog;
+import org.eclipse.app4mc.multicore.partitioning.utils.CreateTAInput;
+import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
 
 public class ContraintsAlternative extends WorkflowComponent  {
 

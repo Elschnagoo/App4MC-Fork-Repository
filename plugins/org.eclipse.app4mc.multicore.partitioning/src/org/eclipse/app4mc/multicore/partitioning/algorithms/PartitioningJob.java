@@ -2,6 +2,8 @@ package org.eclipse.app4mc.multicore.partitioning.algorithms;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.multicore.partitioning.IParConstants;
+import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
+import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
 import org.eclipse.app4mc.multicore.sharelibs.OutputPathParser;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;

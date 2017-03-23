@@ -19,7 +19,6 @@ import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
-import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
@@ -30,6 +29,13 @@ import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.partitioning.IParConstants;
+import org.eclipse.app4mc.multicore.partitioning.utils.CheckActivations;
+import org.eclipse.app4mc.multicore.partitioning.utils.CheckLabels;
+import org.eclipse.app4mc.multicore.partitioning.utils.CycleElimination;
+import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
+import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
+import org.eclipse.app4mc.multicore.partitioning.utils.RunnableCorePairingToPP;
+import org.eclipse.app4mc.multicore.partitioning.utils.TagToPP;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -42,6 +48,9 @@ public class PrePartitioning {
 	private boolean ggp = false;
 	private boolean efficientEdgeInCycle = false;
 	private boolean minimalEdgeDis = false;
+
+	private static boolean TAGGROUPS = false;
+	private static boolean COREGROUPS = false;
 
 	public PrePartitioning(final IPreferenceStore store) {
 		setActivationGroups(store.getBoolean(IParConstants.PRE_ACTIVATION));
@@ -135,6 +144,21 @@ public class PrePartitioning {
 			}
 		}
 
+		// grouping runnables into ProcessPrototypes via tag references
+		if (TAGGROUPS) {
+			final TagToPP tpp = new TagToPP(modelCopy.getSwModel(), modelCopy.getCommonElements());
+			tpp.createPPsFromTags();
+			modelCopy.getSwModel().getProcessPrototypes().clear();
+			modelCopy.getSwModel().getProcessPrototypes().addAll(tpp.getSwm().getProcessPrototypes());
+		}
+		// grouping runnables into ProcessPrototypes via tag references
+		if (COREGROUPS) {
+			modelCopy.getSwModel().getProcessPrototypes()
+					.addAll(new RunnableCorePairingToPP(modelCopy.getSwModel(), modelCopy.getConstraintsModel())
+							.getPPsFromCorePairings());
+		}
+
+
 		// generating constraints model representing a graph
 		if (modelCopy.getConstraintsModel() == null
 				|| modelCopy.getConstraintsModel().getRunnableSequencingConstraints().size() == 0) {
@@ -153,7 +177,8 @@ public class PrePartitioning {
 						null);
 				return null;
 			}
-			modelCopy.setConstraintsModel(cl.getCMModel());
+			modelCopy.getConstraintsModel().getRunnableSequencingConstraints()
+					.addAll(cl.getCMModel().getRunnableSequencingConstraints());
 			PartLog.getInstance().log("Graph creation (constraint model) finished.");
 		}
 		else {
@@ -197,13 +222,7 @@ public class PrePartitioning {
 		}
 
 		// print prepartitioning result
-		for (final ProcessPrototype pp : modelCopy.getSwModel().getProcessPrototypes()) {
-			final StringBuffer sb = new StringBuffer();
-			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-				sb.append(trc.getRunnable().getName() + ", ");
-			}
-			PartLog.getInstance().log(pp.getName() + ": " + sb.toString());
-		}
+		new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes());
 		PartLog.getInstance().logSimple("PrePartitioning finished.");
 
 		return modelCopy;
@@ -220,9 +239,11 @@ public class PrePartitioning {
 			final AmaltheaFactory af = AmaltheaFactory.eINSTANCE;
 			final EList<AffinityConstraint> acs = modelCopy.getConstraintsModel().getAffinityConstraints();
 			for (final AffinityConstraint ac : acs) {
-				if (ac instanceof RunnablePairingConstraint) {
+				// null check since runnables shall only be cumulated if they
+				// dont pair with a target (e.g. core)
+				if (ac instanceof RunnablePairingConstraint && ((RunnablePairingConstraint) ac).getTarget() == null) {
 					final RunnablePairingConstraint rpc = (RunnablePairingConstraint) ac;
-					final org.eclipse.app4mc.amalthea.model.Runnable r = af.createRunnable();
+					final Runnable r = af.createRunnable();
 					r.setName(
 							"CumulatedRunnable" + modelCopy.getConstraintsModel().getAffinityConstraints().indexOf(ac));
 					final RunnableGroup rg = rpc.getGroup();
@@ -240,6 +261,7 @@ public class PrePartitioning {
 						}
 						r.getRunnableItems().addAll(ril);
 						r.setActivation(run.getActivation());
+						r.getTags().addAll(run.getTags());
 					}
 					final InstructionsConstant ic = af.createInstructionsConstant();
 					ic.setValue(instrCum);

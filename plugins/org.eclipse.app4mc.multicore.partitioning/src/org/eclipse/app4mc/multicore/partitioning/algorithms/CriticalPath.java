@@ -26,6 +26,8 @@ import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
+import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
 import org.eclipse.emf.common.util.EList;
 import org.jgrapht.alg.CycleDetector;
 import org.jgrapht.alg.cycle.SzwarcfiterLauerSimpleCycles;

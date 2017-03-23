@@ -8,7 +8,7 @@
  * Contributors:
  *    Dortmund University of Applied Sciences and Arts - initial API and implementation
  *******************************************************************************/
-package org.eclipse.app4mc.multicore.partitioning.algorithms;
+package org.eclipse.app4mc.multicore.partitioning.utils;
 
 import java.util.LinkedList;
 

@@ -8,7 +8,7 @@
  * Contributors:
  *     FH-Dortmund - initial API and implementation
  *******************************************************************************/
-package org.eclipse.app4mc.multicore.partitioning.algorithms;
+package org.eclipse.app4mc.multicore.partitioning.utils;
 
 import org.apache.log4j.Logger;
 import org.eclipse.ui.console.ConsolePlugin;
