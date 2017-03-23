@@ -15,9 +15,9 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 
@@ -58,7 +58,7 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	 * @generated
 	 * @ordered
 	 */
-	protected ModeValueProvider valueProvider;
+	protected ModeLabel valueProvider;
 
 	/**
 	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
@@ -104,10 +104,10 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModeValueProvider getValueProvider() {
+	public ModeLabel getValueProvider() {
 		if (valueProvider != null && valueProvider.eIsProxy()) {
 			InternalEObject oldValueProvider = (InternalEObject)valueProvider;
-			valueProvider = (ModeValueProvider)eResolveProxy(oldValueProvider);
+			valueProvider = (ModeLabel)eResolveProxy(oldValueProvider);
 			if (valueProvider != oldValueProvider) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER, oldValueProvider, valueProvider));
@@ -121,7 +121,7 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModeValueProvider basicGetValueProvider() {
+	public ModeLabel basicGetValueProvider() {
 		return valueProvider;
 	}
 
@@ -130,8 +130,8 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValueProvider(ModeValueProvider newValueProvider) {
-		ModeValueProvider oldValueProvider = valueProvider;
+	public void setValueProvider(ModeLabel newValueProvider) {
+		ModeLabel oldValueProvider = valueProvider;
 		valueProvider = newValueProvider;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER, oldValueProvider, valueProvider));
@@ -237,7 +237,7 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER:
-				setValueProvider((ModeValueProvider)newValue);
+				setValueProvider((ModeLabel)newValue);
 				return;
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES:
 				getEntries().clear();
@@ -259,7 +259,7 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER:
-				setValueProvider((ModeValueProvider)null);
+				setValueProvider((ModeLabel)null);
 				return;
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES:
 				getEntries().clear();

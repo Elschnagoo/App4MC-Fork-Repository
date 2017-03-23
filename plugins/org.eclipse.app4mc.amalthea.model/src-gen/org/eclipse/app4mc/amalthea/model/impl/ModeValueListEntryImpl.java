@@ -13,9 +13,9 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
-import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -47,7 +47,7 @@ public class ModeValueListEntryImpl extends BaseObjectImpl implements ModeValueL
 	 * @generated
 	 * @ordered
 	 */
-	protected ModeValueProvider valueProvider;
+	protected ModeLabel valueProvider;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
@@ -83,10 +83,10 @@ public class ModeValueListEntryImpl extends BaseObjectImpl implements ModeValueL
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModeValueProvider getValueProvider() {
+	public ModeLabel getValueProvider() {
 		if (valueProvider != null && valueProvider.eIsProxy()) {
 			InternalEObject oldValueProvider = (InternalEObject)valueProvider;
-			valueProvider = (ModeValueProvider)eResolveProxy(oldValueProvider);
+			valueProvider = (ModeLabel)eResolveProxy(oldValueProvider);
 			if (valueProvider != oldValueProvider) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.MODE_VALUE_LIST_ENTRY__VALUE_PROVIDER, oldValueProvider, valueProvider));
@@ -100,7 +100,7 @@ public class ModeValueListEntryImpl extends BaseObjectImpl implements ModeValueL
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModeValueProvider basicGetValueProvider() {
+	public ModeLabel basicGetValueProvider() {
 		return valueProvider;
 	}
 
@@ -109,8 +109,8 @@ public class ModeValueListEntryImpl extends BaseObjectImpl implements ModeValueL
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValueProvider(ModeValueProvider newValueProvider) {
-		ModeValueProvider oldValueProvider = valueProvider;
+	public void setValueProvider(ModeLabel newValueProvider) {
+		ModeLabel oldValueProvider = valueProvider;
 		valueProvider = newValueProvider;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_VALUE_LIST_ENTRY__VALUE_PROVIDER, oldValueProvider, valueProvider));
@@ -181,7 +181,7 @@ public class ModeValueListEntryImpl extends BaseObjectImpl implements ModeValueL
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.MODE_VALUE_LIST_ENTRY__VALUE_PROVIDER:
-				setValueProvider((ModeValueProvider)newValue);
+				setValueProvider((ModeLabel)newValue);
 				return;
 			case AmaltheaPackage.MODE_VALUE_LIST_ENTRY__VALUE:
 				setValue((ModeLiteral)newValue);
@@ -199,7 +199,7 @@ public class ModeValueListEntryImpl extends BaseObjectImpl implements ModeValueL
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.MODE_VALUE_LIST_ENTRY__VALUE_PROVIDER:
-				setValueProvider((ModeValueProvider)null);
+				setValueProvider((ModeLabel)null);
 				return;
 			case AmaltheaPackage.MODE_VALUE_LIST_ENTRY__VALUE:
 				setValue((ModeLiteral)null);

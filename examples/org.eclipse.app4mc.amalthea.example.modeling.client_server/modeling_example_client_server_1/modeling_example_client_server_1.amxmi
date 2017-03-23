@@ -174,7 +174,7 @@
         </customProperties>
       </literals>
     </modes>
-    <modeLabels name="message" mode="MessageMode?type=Mode" initialValue="MessageMode/MessageContent_0?type=ModeLiteral">
+    <modeLabels name="message" initialValue="MessageMode/MessageContent_0?type=ModeLiteral">
       <size value="8" unit="bit"/>
     </modeLabels>
   </swModel>

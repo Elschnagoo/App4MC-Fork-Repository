@@ -188,39 +188,39 @@
     message="The OsEvent {0} of the EventMask is never set!"
     categories="TAConstraint"/>
  <constraints
-    id="ModeValueProviderConstraint"
+    id="ModeSwitchValueProviderConstraint"
     label="ModeSwitch ValueProvider"
     description="Checks if reference to ModeLabel of ModeSwitch is valid"
     severity="Error"
     message="The ValueProvider reference of ModeSwitch is invalid!"
     categories="TAConstraint"/>
  <constraints
-    id="ModeSwitchEntryValueConstraint"
-    label="ModeSwitchEntry Value"
+    id="ModeSwitchEntryValueConstraint1"
+    label="ModeSwitchEntry Value (used once)"
+    description="Checks if the parameter Value of ModeSwitchEntry is valid"
+    severity="Error"
+    message="The parameter Value of ModeSwitchEntry is used multiple times!"
+    categories="TAConstraint"/>
+ <constraints
+    id="ModeSwitchEntryValueConstraint2"
+    label="ModeSwitchEntry Value (valid reference)"
     description="Checks if the parameter Value of ModeSwitchEntry is valid"
     severity="Error"
     message="The parameter Value of ModeSwitchEntry is invalid!"
-    categories="TAConstraint"/>
- <constraints
-    id="ModeValueProviderValueConstraint"
-    label="ModeValueProvider Value"
-    description="Checks if the parameter Value of ModeValueProvider is valid"
-    severity="Error"
-    message="The parameter Value of ModeValueProvider is invalid!"
     categories="TAConstraint"/>   
  <constraints
-    id="ModeValueProviderModeConstraint"
-    label="ModeValueProvider Mode"
-    description="Checks if the reference to Mode of ModeValueProvider is valid"
+    id="ModeLabelModeConstraint"
+    label="ModeLabel Mode"
+    description="Checks if the reference to Mode of ModeLabel is valid"
     severity="Error"
-    message="The Mode reference of ModeValueProvider is invalid!"
+    message="The Mode reference of ModeLabel is invalid!"
     categories="TAConstraint"/>     
  <constraints
-    id="ModeValueProviderInitialValueConstraint"
-    label="ModeValueProvider InitialValue"
-    description="Checks if the parameter InitialValue of ModeValueProvider is valid"
+    id="ModeLabelInitialValueConstraint"
+    label="ModeLabel InitialValue"
+    description="Checks if the parameter InitialValue of ModeLabel is valid"
     severity="Error"
-    message="The parameter InitialValue of ModeValueProvider is invalid!"
+    message="The parameter InitialValue of ModeLabel is invalid!"
     categories="TAConstraint"/>
 <constraints
     id="ServerCallServerRunnableConstraint"

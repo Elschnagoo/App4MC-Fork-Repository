@@ -42,12 +42,12 @@ public interface RunnableModeSwitch extends RunnableItem {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value Provider</em>' reference.
-	 * @see #setValueProvider(ModeValueProvider)
+	 * @see #setValueProvider(ModeLabel)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableModeSwitch_ValueProvider()
 	 * @model
 	 * @generated
 	 */
-	ModeValueProvider getValueProvider();
+	ModeLabel getValueProvider();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getValueProvider <em>Value Provider</em>}' reference.
@@ -57,7 +57,7 @@ public interface RunnableModeSwitch extends RunnableItem {
 	 * @see #getValueProvider()
 	 * @generated
 	 */
-	void setValueProvider(ModeValueProvider value);
+	void setValueProvider(ModeLabel value);
 
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.

@@ -605,12 +605,6 @@ class ModeLiteral extends ReferableBaseObject
 	}
 }
 
-interface ModeValueProvider extends IAnnotatable, IReferable
-{
-	refers Mode mode
-	refers ModeLiteral initialValue
-}
-
 
 // ===============================================================================
 // ===============================================================================
@@ -2368,7 +2362,7 @@ class ModeValueList extends BaseObject
 
 class ModeValueListEntry extends BaseObject
 {
-	refers ModeValueProvider[1] valueProvider
+	refers ModeLabel[1] valueProvider
 	refers ModeLiteral [1] value
 }
 
@@ -2613,7 +2607,7 @@ class CallSequence extends GraphEntryBase
  */
 class ModeSwitch extends GraphEntryBase
 {
-	refers ModeValueProvider valueProvider
+	refers ModeLabel valueProvider
 	contains ModeSwitchEntry<GraphEntryBase>[] entries
 	contains ModeSwitchDefault<GraphEntryBase> defaultEntry	
 }
@@ -2971,8 +2965,14 @@ class Channel extends AbstractMemoryElement, IDisplayName
 }
 
 
-class ModeLabel extends AbstractMemoryElement, ModeValueProvider, IDisplayName
+class ModeLabel extends AbstractMemoryElement, IAnnotatable, IReferable, IDisplayName
 {
+	
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers derived readonly Mode mode get {
+		return initialValue?.eContainer as Mode
+	}
+	refers ModeLiteral[1] initialValue
 }
 
 enum LabelDataStability {
@@ -3047,7 +3047,7 @@ class ModeLabelAccess extends RunnableItem
 
 class RunnableModeSwitch extends RunnableItem
 {
-	refers ModeValueProvider valueProvider
+	refers ModeLabel valueProvider
 	contains ModeSwitchEntry<RunnableItem>[] entries
 	contains ModeSwitchDefault<RunnableItem> defaultEntry
 }

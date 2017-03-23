@@ -95,7 +95,6 @@ import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
-import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
@@ -3403,11 +3402,11 @@ public class CustomItemProviderService {
    */
   public static String getModeValueListEntryItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ModeValueListEntry)) {
-      ModeValueProvider _valueProvider = null;
+      ModeLabel _valueProvider = null;
       if (((ModeValueListEntry)object)!=null) {
         _valueProvider=((ModeValueListEntry)object).getValueProvider();
       }
-      final ModeValueProvider prov = _valueProvider;
+      final ModeLabel prov = _valueProvider;
       ModeLiteral _value = null;
       if (((ModeValueListEntry)object)!=null) {
         _value=((ModeValueListEntry)object).getValue();
@@ -4146,13 +4145,13 @@ public class CustomItemProviderService {
    */
   public static String getModeSwitchItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ModeSwitch)) {
-      ModeValueProvider _valueProvider = ((ModeSwitch)object).getValueProvider();
+      ModeLabel _valueProvider = ((ModeSwitch)object).getValueProvider();
       String _name = null;
       if (_valueProvider!=null) {
         _name=_valueProvider.getName();
       }
       final String valueName = _name;
-      ModeValueProvider _valueProvider_1 = ((ModeSwitch)object).getValueProvider();
+      ModeLabel _valueProvider_1 = ((ModeSwitch)object).getValueProvider();
       Mode _mode = null;
       if (_valueProvider_1!=null) {
         _mode=_valueProvider_1.getMode();
@@ -4217,13 +4216,13 @@ public class CustomItemProviderService {
    */
   public static String getRunnableModeSwitchItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof RunnableModeSwitch)) {
-      ModeValueProvider _valueProvider = ((RunnableModeSwitch)object).getValueProvider();
+      ModeLabel _valueProvider = ((RunnableModeSwitch)object).getValueProvider();
       String _name = null;
       if (_valueProvider!=null) {
         _name=_valueProvider.getName();
       }
       final String valueName = _name;
-      ModeValueProvider _valueProvider_1 = ((RunnableModeSwitch)object).getValueProvider();
+      ModeLabel _valueProvider_1 = ((RunnableModeSwitch)object).getValueProvider();
       Mode _mode = null;
       if (_valueProvider_1!=null) {
         _mode=_valueProvider_1.getMode();

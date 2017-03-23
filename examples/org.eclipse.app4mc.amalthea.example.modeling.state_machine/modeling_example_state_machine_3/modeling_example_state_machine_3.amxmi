@@ -132,10 +132,10 @@
         </customProperties>
       </literals>
     </modes>
-    <modeLabels name="state" mode="State?type=Mode" initialValue="State/State_0?type=ModeLiteral">
+    <modeLabels name="state" initialValue="State/State_0?type=ModeLiteral">
       <size value="8" unit="bit"/>
     </modeLabels>
-    <modeLabels name="message" mode="Message?type=Mode" initialValue="Message/MessageContent_0?type=ModeLiteral">
+    <modeLabels name="message" initialValue="Message/MessageContent_0?type=ModeLiteral">
       <size value="1" unit="bit"/>
     </modeLabels>
   </swModel>

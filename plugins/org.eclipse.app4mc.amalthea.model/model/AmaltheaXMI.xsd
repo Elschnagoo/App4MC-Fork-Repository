@@ -1183,20 +1183,6 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeLiteral" type="am:ModeLiteral"/>
-  <xsd:complexType abstract="true" name="ModeValueProvider">
-    <xsd:complexContent>
-      <xsd:extension base="am:IAnnotatable">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="mode" type="am:Mode"/>
-          <xsd:element name="initialValue" type="am:ModeLiteral"/>
-        </xsd:choice>
-        <xsd:attribute name="name" type="xsd:string"/>
-        <xsd:attribute name="mode" type="xsd:string"/>
-        <xsd:attribute name="initialValue" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ModeValueProvider" type="am:ModeValueProvider"/>
   <xsd:complexType name="ComponentsModel">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
@@ -3820,7 +3806,7 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="valueProvider" type="am:ModeValueProvider"/>
+          <xsd:element name="valueProvider" type="am:ModeLabel"/>
           <xsd:element name="value" type="am:ModeLiteral"/>
         </xsd:choice>
         <xsd:attribute name="valueProvider" type="xsd:string"/>
@@ -4258,7 +4244,7 @@ Generalizes interrupt service routines and tasks</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:GraphEntryBase">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="valueProvider" type="am:ModeValueProvider"/>
+          <xsd:element name="valueProvider" type="am:ModeLabel"/>
           <xsd:element name="entries" type="am:ModeSwitchEntry"/>
           <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
         </xsd:choice>
@@ -4765,12 +4751,10 @@ The final state can be several Tasks, which can be computed using provided infor
     <xsd:complexContent>
       <xsd:extension base="am:AbstractMemoryElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="mode" type="am:Mode"/>
           <xsd:element name="initialValue" type="am:ModeLiteral"/>
         </xsd:choice>
-        <xsd:attribute name="mode" type="xsd:string"/>
-        <xsd:attribute name="initialValue" type="xsd:string"/>
         <xsd:attribute name="displayName" type="xsd:string"/>
+        <xsd:attribute name="initialValue" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -4875,7 +4859,7 @@ It can be used to define which mode value is written to the label.</xsd:document
     <xsd:complexContent>
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="valueProvider" type="am:ModeValueProvider"/>
+          <xsd:element name="valueProvider" type="am:ModeLabel"/>
           <xsd:element name="entries" type="am:ModeSwitchEntry"/>
           <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
         </xsd:choice>

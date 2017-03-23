@@ -345,19 +345,19 @@
         </customProperties>
       </literals>
     </modes>
-    <modeLabels name="e" mode="E?type=Mode" initialValue="E/E_0?type=ModeLiteral">
+    <modeLabels name="e" initialValue="E/E_0?type=ModeLiteral">
       <size value="1" unit="bit"/>
     </modeLabels>
-    <modeLabels name="y" mode="Y?type=Mode" initialValue="Y/Y_0?type=ModeLiteral">
+    <modeLabels name="y" initialValue="Y/Y_0?type=ModeLiteral">
       <size value="8" unit="bit"/>
     </modeLabels>
-    <modeLabels name="w" mode="W?type=Mode" initialValue="W/W_0?type=ModeLiteral">
+    <modeLabels name="w" initialValue="W/W_0?type=ModeLiteral">
       <size value="8" unit="bit"/>
     </modeLabels>
-    <modeLabels name="u" mode="U?type=Mode" initialValue="U/U_0?type=ModeLiteral">
+    <modeLabels name="u" initialValue="U/U_0?type=ModeLiteral">
       <size value="1" unit="bit"/>
     </modeLabels>
-    <modeLabels name="state" mode="State?type=Mode" initialValue="State/State_0?type=ModeLiteral">
+    <modeLabels name="state" initialValue="State/State_0?type=ModeLiteral">
       <size value="8" unit="bit"/>
     </modeLabels>
   </swModel>

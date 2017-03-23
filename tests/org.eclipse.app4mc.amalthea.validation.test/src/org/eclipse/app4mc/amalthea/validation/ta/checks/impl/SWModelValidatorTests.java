@@ -639,10 +639,10 @@ public class SWModelValidatorTests {
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProvider(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchValueProvider(AMALTHEA)}
 	 */
 	@Test
-	public void test_checkModeValueProvider_null() {
+	public void test_checkModeSwitchValueProvider_null() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
@@ -661,17 +661,17 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProvider(amalthea);
+		this.classUnderTest.checkModeSwitchValueProvider(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProvider(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchValueProvider(AMALTHEA)}
 	 */
 	@Test
-	public void test_checkModeValueProvider_notExisting() {
+	public void test_checkModeSwitchValueProvider_notExisting() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
@@ -692,17 +692,17 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProvider(amalthea);
+		this.classUnderTest.checkModeSwitchValueProvider(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProvider(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchValueProvider(AMALTHEA)}
 	 */
 	@Test
-	public void test_checkModeValueProvider_existing() {
+	public void test_checkModeSwitchValueProvider_existing() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
@@ -721,14 +721,14 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProvider(amalthea);
+		this.classUnderTest.checkModeSwitchValueProvider(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeSwitchEntryValue(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchEntryValue1(AMALTHEA)}
 	 */
 	@Test
 	public void test_checkModeSwitchEntryValue_once() {
@@ -755,14 +755,14 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeSwitchEntryValue(amalthea);
+		this.classUnderTest.checkModeSwitchEntryValue1(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeSwitchEntryValue(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchEntryValue1(AMALTHEA)}
 	 */
 	@Test
 	public void test_checkModeSwitchEntryValue_twice() {
@@ -797,14 +797,14 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeSwitchEntryValue(amalthea);
+		this.classUnderTest.checkModeSwitchEntryValue1(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderValue(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchEntryValue2(AMALTHEA)}
 	 */
 	@Test
 	public void test_checkModeValueProviderValue_null() {
@@ -828,16 +828,16 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderValue(amalthea);
+		this.classUnderTest.checkModeSwitchEntryValue2(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderValue(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchEntryValue2(AMALTHEA)}
 	 */
-	@Test
+	// @Test is no longer necessary: mode is always correct if initial value is set
 	public void test_checkModeValueProviderValue_notExisting() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
@@ -847,10 +847,10 @@ public class SWModelValidatorTests {
 		final ModeSwitch modeSwitch = AmaltheaFactory.eINSTANCE.createModeSwitch();
 		final ModeSwitchEntry<GraphEntryBase> modeSwitchEntry = AmaltheaFactory.eINSTANCE.createModeSwitchEntry();
 		final ModeLiteral modeLiteral = AmaltheaFactory.eINSTANCE.createModeLiteral();
-		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
 		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
+		//final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
 
-		modeLabel.setMode(mode);
+		//modeLabel.setMode(mode);
 		EList<ModeLiteral> valueList = modeSwitchEntry.getValues(); 
 		valueList.add(modeLiteral);
 		modeSwitch.setValueProvider(modeLabel);
@@ -866,14 +866,14 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderValue(amalthea);
+		this.classUnderTest.checkModeSwitchEntryValue2(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderMode(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeLabelMode(AMALTHEA)}
 	 */
 	@Test
 	public void test_checkModeValueProviderMode_null() {
@@ -891,20 +891,20 @@ public class SWModelValidatorTests {
 		swModel.getTasks().add(task);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeValueProvider_Mode());
+		this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_Mode());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderMode(amalthea);
+		this.classUnderTest.checkModeLabelMode(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderMode(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeLabelMode(AMALTHEA)}
 	 */
 	@Test
 	public void test_checkModeValueProviderMode_notExisting() {
@@ -915,32 +915,32 @@ public class SWModelValidatorTests {
 		final CallGraph callGraph = AmaltheaFactory.eINSTANCE.createCallGraph();
 		final ModeSwitch modeSwitch = AmaltheaFactory.eINSTANCE.createModeSwitch();
 		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
-		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
+		//final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
 
-		modeLabel.setMode(mode);
+		//modeLabel.setMode(mode);
 		modeSwitch.setValueProvider(modeLabel);
 		callGraph.getGraphEntries().add(modeSwitch);
 		task.setCallGraph(callGraph);
 		swModel.getTasks().add(task);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeValueProvider_Mode());
+		this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_Mode());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderMode(amalthea);
+		this.classUnderTest.checkModeLabelMode(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderMode(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeLabelMode(AMALTHEA)}
 	 */
-	@Test
-	public void test_checkModeValueProviderMode_existing() {
+	// @Test is no longer necessary: mode is always correct if initial value is set
+	public void test_checkModeLabelMode_existing() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
@@ -950,7 +950,7 @@ public class SWModelValidatorTests {
 		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
 		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
 
-		modeLabel.setMode(mode);
+		//modeLabel.setMode(mode);
 		modeSwitch.setValueProvider(modeLabel);
 		callGraph.getGraphEntries().add(modeSwitch);
 		task.setCallGraph(callGraph);
@@ -961,17 +961,17 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderMode(amalthea);
+		this.classUnderTest.checkModeLabelMode(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderInitialValue(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeLabelInitialValue(AMALTHEA)}
 	 */
-	@Test
-	public void test_checkModeValueProviderInitialValue_invalid() {
+	// @Test is no longer necessary: mode is always correct if initial value is set
+	public void test_checkModeLabelInitialValue_invalid() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
@@ -983,7 +983,7 @@ public class SWModelValidatorTests {
 		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
 
 		modeLabel.setInitialValue(modeLiteral);
-		modeLabel.setMode(mode);
+		//modeLabel.setMode(mode);
 		modeSwitch.setValueProvider(modeLabel);
 		callGraph.getGraphEntries().add(modeSwitch);
 		task.setCallGraph(callGraph);
@@ -991,23 +991,23 @@ public class SWModelValidatorTests {
 		swModel.getModes().add(mode);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeValueProvider_InitialValue());
+		this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_InitialValue());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderInitialValue(amalthea);
+		this.classUnderTest.checkModeLabelInitialValue(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderInitialValue(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeLabelInitialValue(AMALTHEA)}
 	 */
 	@Test
-	public void test_checkModeValueProviderInitialValue_valid() {
+	public void test_checkModeLabelInitialValue_valid() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
@@ -1020,7 +1020,7 @@ public class SWModelValidatorTests {
 
 		modeLabel.setInitialValue(modeLiteral);
 		mode.getLiterals().add(modeLiteral);
-		modeLabel.setMode(mode);
+		// modeLabel.setMode(mode);
 		modeSwitch.setValueProvider(modeLabel);
 		callGraph.getGraphEntries().add(modeSwitch);
 		task.setCallGraph(callGraph);
@@ -1031,7 +1031,7 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderInitialValue(amalthea);
+		this.classUnderTest.checkModeLabelInitialValue(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);

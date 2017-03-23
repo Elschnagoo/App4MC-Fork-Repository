@@ -26,7 +26,6 @@ import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
 import org.eclipse.app4mc.amalthea.model.Runnable;
@@ -257,20 +256,20 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 	}
 
 	/*
-	 * Checks the reference ValueProvider of {@link ModeSwitch}. The reference must be set and reference an existing ModeLabel.
+	 * Checks the reference "valueProvider" of {@link ModeSwitch}. The reference must be set and reference an existing ModeLabel.
 	 * If this is not the case, it will be handled as an error.
 	 */
-	public void checkModeValueProvider(final Amalthea amalthea) {
+	public void checkModeSwitchValueProvider(final Amalthea amalthea) {
 
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<ModeSwitch> modeSwitches = new HashSet<>();
-		final Set<ModeLabel> modeLabels = new HashSet<>();
+		final Set<ModeSwitch> modeSwitchSet = new HashSet<>();
+		final Set<ModeLabel> modeLabelSet = new HashSet<>();
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
 			if (elem instanceof ModeSwitch) {
 				final ModeSwitch modeSwitch = (ModeSwitch) elem;
-				modeSwitches.add(modeSwitch);
+				modeSwitchSet.add(modeSwitch);
 			} else if (elem instanceof SWModel) {
 				final SWModel swModel = (SWModel) elem;
 
@@ -278,17 +277,17 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 				if (null != labelList) {
 					for (final ModeLabel modeLabel : labelList) {
 						if (null != modeLabel) {
-							modeLabels.add(modeLabel);
+							modeLabelSet.add(modeLabel);
 						}
 					}
 				}
 			}
 		}
 
-		for (final ModeSwitch modeSwitch : modeSwitches) {
+		for (final ModeSwitch modeSwitch : modeSwitchSet) {
 			if (null != modeSwitch) {
-				final ModeValueProvider modeValueProvider = modeSwitch.getValueProvider();
-				if ((null == modeValueProvider) || (false == modeLabels.contains(modeValueProvider))) {
+				final ModeLabel modeLabel = modeSwitch.getValueProvider();
+				if ((null == modeLabel) || (false == modeLabelSet.contains(modeLabel))) {
 					this.issueCreator.issue(modeSwitch, AmaltheaPackage.eINSTANCE.getModeSwitch_ValueProvider());
 				}
 			}
@@ -296,19 +295,20 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 	}
 
 	/*
-	 * Checks the parameter Value of {@link ModeSwitchEntry}. The same parameter value must not be used multiple times.
+	 * Checks the parameter "value" of {@link ModeSwitchEntry}. The same parameter value must not be used multiple times.
 	 * If this is not the case, it will be handled as an error.
 	 */
-	public void checkModeSwitchEntryValue(final Amalthea amalthea) {
+	public void checkModeSwitchEntryValue1(final Amalthea amalthea) {
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<ModeSwitch> modeSwitches = new HashSet<>();
-		final Set<ModeLabel> modeLabels = new HashSet<>();
+		final Set<ModeSwitch> modeSwitchSet = new HashSet<>();
+		final Set<ModeLabel> modeLabelSet = new HashSet<>();
 
 		while (amaIter.hasNext()) {
+			
 			final EObject elem = amaIter.next();
 			if (elem instanceof ModeSwitch) {
 				final ModeSwitch modeSwitch = (ModeSwitch) elem;
-				modeSwitches.add(modeSwitch);
+				modeSwitchSet.add(modeSwitch);
 			} else if (elem instanceof SWModel) {
 				final SWModel swModel = (SWModel) elem;
 
@@ -316,7 +316,7 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 				if (null != labelList) {
 					for (final ModeLabel modeLabel : labelList) {
 						if (null != modeLabel) {
-							modeLabels.add(modeLabel);
+							modeLabelSet.add(modeLabel);
 						}
 					}
 				}
@@ -324,7 +324,7 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 		}
 
 		final Set<ModeSwitchEntry<?>> erroneous = new HashSet<>();
-		for (final ModeSwitch modeSwitch : modeSwitches) {
+		for (final ModeSwitch modeSwitch : modeSwitchSet) {
 			if (null != modeSwitch) {
 				final Map<ModeLiteral, ModeSwitchEntry<?>> values = new HashMap<>();
 				for (final ModeSwitchEntry<?> modeSwitchEntry : modeSwitch.getEntries()) {
@@ -351,19 +351,19 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 	}
 
 	/*
-	 * Checks the parameter Value of {@link ModeSwitchEntry}. The parameter must be set and be conform to the referenced mode.
+	 * Checks the parameter "value" of {@link ModeSwitchEntry}. The parameter must be set and be conform to the referenced mode.
 	 * If this is not the case, it will be handled as an error.
 	 */
-	public void checkModeValueProviderValue(final Amalthea amalthea) {
+	public void checkModeSwitchEntryValue2(final Amalthea amalthea) {
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<ModeSwitch> modeSwitches = new HashSet<>();
-		final Set<ModeLabel> modeLabels = new HashSet<>();
+		final Set<ModeSwitch> modeSwitchSet = new HashSet<>();
+		final Set<ModeLabel> modeLabelSet = new HashSet<>();
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
 			if (elem instanceof ModeSwitch) {
 				final ModeSwitch modeSwitch = (ModeSwitch) elem;
-				modeSwitches.add(modeSwitch);
+				modeSwitchSet.add(modeSwitch);
 			} else if (elem instanceof SWModel) {
 				final SWModel swModel = (SWModel) elem;
 
@@ -371,14 +371,14 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 				if (null != labelList) {
 					for (final ModeLabel modeLabel : labelList) {
 						if (null != modeLabel) {
-							modeLabels.add(modeLabel);
+							modeLabelSet.add(modeLabel);
 						}
 					}
 				}
 			}
 		}
 
-		for (final ModeSwitch modeSwitch : modeSwitches) {
+		for (final ModeSwitch modeSwitch : modeSwitchSet) {
 			if (null != modeSwitch) {
 				for (final ModeSwitchEntry<?> modeSwitchEntry : modeSwitch.getEntries()) {
 					EList<ModeLiteral> valueList = modeSwitchEntry.getValues();
@@ -387,9 +387,9 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 							if (null == value) {
 								this.issueCreator.issue(modeSwitchEntry, AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Values());
 							} else {
-								final ModeValueProvider modeValueProvider = modeSwitch.getValueProvider();
-								if (null != modeValueProvider) {
-									final Mode mode = modeValueProvider.getMode();
+								final ModeLabel modeLabel = modeSwitch.getValueProvider();
+								if (null != modeLabel) {
+									final Mode mode = modeLabel.getMode();
 									if (null != mode) {
 										if (false == mode.getLiterals().contains(value)) {
 											this.issueCreator.issue(modeSwitchEntry, AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Values());
@@ -407,67 +407,67 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 	}
 
 	/*
-	 * Checks the reference Mode of {@link ModeValueProvider}. The reference must be set and reference an existing Mode.
+	 * Checks the reference "mode" of {@link ModeLabel}. The reference must be set and reference an existing Mode.
 	 * If this is not the case, it will be handled as an error.
 	 */
-	public void checkModeValueProviderMode(final Amalthea amalthea) {
+	public void checkModeLabelMode(final Amalthea amalthea) {
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<ModeValueProvider> modeValueProviders = new HashSet<>();
-		final Set<Mode> modes = new HashSet<>();
+		final Set<ModeLabel> modeLabelSet = new HashSet<>();
+		final Set<Mode> modeSet = new HashSet<>();
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
 			if (elem instanceof ModeSwitch) {
 				final ModeSwitch modeSwitch = (ModeSwitch) elem;
-				final ModeValueProvider modeValueProvider = modeSwitch.getValueProvider();
-				modeValueProviders.add(modeValueProvider);
+				final ModeLabel modeLabel = modeSwitch.getValueProvider();
+				modeLabelSet.add(modeLabel);
 			} else if (elem instanceof SWModel) {
 				final SWModel swModel = (SWModel) elem;
 				final Collection<Mode> modeList = swModel.getModes();
 				if (null != modeList) {
 					for (final Mode mode : modeList) {
 						if (null != mode) {
-							modes.add(mode);
+							modeSet.add(mode);
 						}
 					}
 				}
 			}
 		}
 
-		for (final ModeValueProvider modeValueProvider : modeValueProviders) {
-			if (null != modeValueProvider) {
-				final Mode mode = modeValueProvider.getMode();
-				if ((null == mode) || (false == modes.contains(mode))) {
-					this.issueCreator.issue(modeValueProvider, AmaltheaPackage.eINSTANCE.getModeValueProvider_Mode());
+		for (final ModeLabel modeLabel : modeLabelSet) {
+			if (null != modeLabel) {
+				final Mode mode = modeLabel.getMode();
+				if ((null == mode) || (false == modeSet.contains(mode))) {
+					this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_Mode());
 				}
 			}
 		}
 	}
 
 	/*
-	 * Checks the parameter InitialValue of {@link ModeValueProvider}. The parameter must be conform to the referenced mode.
+	 * Checks the parameter "initialValue" of {@link ModeLabel}. The parameter must be conform to the referenced mode.
 	 * If this is not the case, it will be handled as an error.
 	 */
-	public void checkModeValueProviderInitialValue(final Amalthea amalthea) {
+	public void checkModeLabelInitialValue(final Amalthea amalthea) {
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<ModeValueProvider> modeValueProviders = new HashSet<>();
+		final Set<ModeLabel> modeLabelSet = new HashSet<>();
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
 			if (elem instanceof ModeSwitch) {
 				final ModeSwitch modeSwitch = (ModeSwitch) elem;
-				final ModeValueProvider modeValueProvider = modeSwitch.getValueProvider();
-				modeValueProviders.add(modeValueProvider);
+				final ModeLabel modeValueProvider = modeSwitch.getValueProvider();
+				modeLabelSet.add(modeValueProvider);
 			}
 		}
 
-		for (final ModeValueProvider modeValueProvider : modeValueProviders) {
-			if (null != modeValueProvider) {
-				final ModeLiteral initialValue = modeValueProvider.getInitialValue();
-				final Mode mode = modeValueProvider.getMode();
+		for (final ModeLabel modeLabel : modeLabelSet) {
+			if (null != modeLabel) {
+				final ModeLiteral initialValue = modeLabel.getInitialValue();
+				final Mode mode = modeLabel.getMode();
 				if ((null != mode) && (null != initialValue)) {
 					if (false == mode.getLiterals().contains(initialValue)) {
-						this.issueCreator.issue(modeValueProvider, AmaltheaPackage.eINSTANCE.getModeValueProvider_InitialValue());
+						this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_InitialValue());
 					}
 				}
 			}

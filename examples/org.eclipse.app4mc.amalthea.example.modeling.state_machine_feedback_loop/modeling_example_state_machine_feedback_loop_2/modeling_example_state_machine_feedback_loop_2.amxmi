@@ -392,19 +392,19 @@
         </customProperties>
       </literals>
     </modes>
-    <modeLabels name="message" mode="Message?type=Mode" initialValue="Message/Message_0?type=ModeLiteral">
+    <modeLabels name="message" initialValue="Message/Message_0?type=ModeLiteral">
       <size value="8" unit="bit"/>
     </modeLabels>
-    <modeLabels name="messageToT1" mode="MessageToT1?type=Mode" initialValue="MessageToT1/MessageToT1_0?type=ModeLiteral">
+    <modeLabels name="messageToT1" initialValue="MessageToT1/MessageToT1_0?type=ModeLiteral">
       <size value="1" unit="bit"/>
     </modeLabels>
-    <modeLabels name="messageToT2" mode="MessageToT2?type=Mode" initialValue="MessageToT2/MessageToT2_0?type=ModeLiteral">
+    <modeLabels name="messageToT2" initialValue="MessageToT2/MessageToT2_0?type=ModeLiteral">
       <size value="1" unit="bit"/>
     </modeLabels>
-    <modeLabels name="stateT1" mode="StateT1?type=Mode" initialValue="StateT1/StateT1_1?type=ModeLiteral">
+    <modeLabels name="stateT1" initialValue="StateT1/StateT1_1?type=ModeLiteral">
       <size value="1" unit="bit"/>
     </modeLabels>
-    <modeLabels name="stateT2" mode="StateT2?type=Mode" initialValue="StateT2/StateT2_0?type=ModeLiteral">
+    <modeLabels name="stateT2" initialValue="StateT2/StateT2_0?type=ModeLiteral">
       <size value="8" unit="bit"/>
     </modeLabels>
   </swModel>
