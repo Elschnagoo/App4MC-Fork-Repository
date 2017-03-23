@@ -71,9 +71,49 @@
 <constraints
     id="DeadlineValueConstraint"
     label="Deadline Value"
-    description="Checks if deadline is not less or equal to zero "
+    description="Checks if deadline is not less or equal to zero"
     severity="Error"
     message="The deadline contains an invalid value: {0} {1}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="SynchronizationConstraintToleranceUnsigned"
+    label="Tolerance Unsigned"
+    description="Checks if tolerance is not less than zero"
+    severity="Error"
+    message="The property &quot; tolerance &quot; contains a negative value: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="DelayConstraintUpperUnsigned"
+    label="Upper Unsigned"
+    description="Checks if upper is not less than zero"
+    severity="Error"
+    message="The property &quot; upper &quot; contains a negative value: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="DelayConstraintLowerUnsigned"
+    label="Lower Unsigned"
+    description="Checks if lower is not less than zero"
+    severity="Error"
+    message="The property &quot; lower &quot; contains a negative value: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="EventChainLatencyConstraintMinimumUnsigned"
+    label="Minimum Unsigned"
+    description="Checks if minimum is not less than zero"
+    severity="Error"
+    message="The property &quot; minimum &quot; contains a negative value: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="EventChainLatencyConstraintMaximumUnsigned"
+    label="Maximum Unsigned"
+    description="Checks if maximum is not less than zero"
+    severity="Error"
+    message="The property &quot; maximum &quot; contains a negative value: {0}!"
     categories="TAConstraint"/>
 <!--end CONSTRAINTS Model -->
 
