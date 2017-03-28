@@ -53,7 +53,7 @@ public interface Stimulus extends ReferableBaseObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	Deviation<SignedTime> getStimulusDeviation();
+	Deviation<Time> getStimulusDeviation();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Stimulus#getStimulusDeviation <em>Stimulus Deviation</em>}' containment reference.
@@ -63,7 +63,7 @@ public interface Stimulus extends ReferableBaseObject {
 	 * @see #getStimulusDeviation()
 	 * @generated
 	 */
-	void setStimulusDeviation(Deviation<SignedTime> value);
+	void setStimulusDeviation(Deviation<Time> value);
 
 	/**
 	 * Returns the value of the '<em><b>Set Mode Value List</b></em>' containment reference.

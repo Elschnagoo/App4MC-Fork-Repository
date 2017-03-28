@@ -13,7 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
+import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeMetric;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 
@@ -68,7 +68,7 @@ public class TimeRequirementLimitImpl extends RequirementLimitImpl implements Ti
 	 * @generated
 	 * @ordered
 	 */
-	protected SignedTime limitValue;
+	protected Time limitValue;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,7 +115,7 @@ public class TimeRequirementLimitImpl extends RequirementLimitImpl implements Ti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SignedTime getLimitValue() {
+	public Time getLimitValue() {
 		return limitValue;
 	}
 
@@ -124,8 +124,8 @@ public class TimeRequirementLimitImpl extends RequirementLimitImpl implements Ti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetLimitValue(SignedTime newLimitValue, NotificationChain msgs) {
-		SignedTime oldLimitValue = limitValue;
+	public NotificationChain basicSetLimitValue(Time newLimitValue, NotificationChain msgs) {
+		Time oldLimitValue = limitValue;
 		limitValue = newLimitValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TIME_REQUIREMENT_LIMIT__LIMIT_VALUE, oldLimitValue, newLimitValue);
@@ -139,7 +139,7 @@ public class TimeRequirementLimitImpl extends RequirementLimitImpl implements Ti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLimitValue(SignedTime newLimitValue) {
+	public void setLimitValue(Time newLimitValue) {
 		if (newLimitValue != limitValue) {
 			NotificationChain msgs = null;
 			if (limitValue != null)
@@ -195,7 +195,7 @@ public class TimeRequirementLimitImpl extends RequirementLimitImpl implements Ti
 				setMetric((TimeMetric)newValue);
 				return;
 			case AmaltheaPackage.TIME_REQUIREMENT_LIMIT__LIMIT_VALUE:
-				setLimitValue((SignedTime)newValue);
+				setLimitValue((Time)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -213,7 +213,7 @@ public class TimeRequirementLimitImpl extends RequirementLimitImpl implements Ti
 				setMetric(METRIC_EDEFAULT);
 				return;
 			case AmaltheaPackage.TIME_REQUIREMENT_LIMIT__LIMIT_VALUE:
-				setLimitValue((SignedTime)null);
+				setLimitValue((Time)null);
 				return;
 		}
 		super.eUnset(featureID);

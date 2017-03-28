@@ -167,8 +167,18 @@ public class SyntheticItemProvider extends StimulusItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSynthetic_Offset(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSynthetic_Period(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSynthetic_Period(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 
 		newChildDescriptors.add
 			(createChildParameter

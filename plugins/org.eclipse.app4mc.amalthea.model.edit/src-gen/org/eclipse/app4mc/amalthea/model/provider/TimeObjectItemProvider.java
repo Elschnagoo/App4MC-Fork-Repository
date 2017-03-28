@@ -26,7 +26,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  *
  * @generated
  */
-public class TimeObjectItemProvider extends AbstractTimeItemProvider {
+public class TimeObjectItemProvider extends TimeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

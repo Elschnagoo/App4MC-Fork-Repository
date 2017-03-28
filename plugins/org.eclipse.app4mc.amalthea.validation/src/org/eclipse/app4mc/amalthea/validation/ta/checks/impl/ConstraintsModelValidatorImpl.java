@@ -24,7 +24,6 @@ import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.LimitType;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.RequirementLimit;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
@@ -109,7 +108,7 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				TimeRequirementLimit timeRequirementLimit = (TimeRequirementLimit) elem;
 				TimeMetric metric = timeRequirementLimit.getMetric();
 				if(TimeMetric.RESPONSE_TIME == metric) {
-					SignedTime time = timeRequirementLimit.getLimitValue();
+					Time time = timeRequirementLimit.getLimitValue();
 					if(null != time) {
 						int value = time.getValue();
 						TimeUnit unit = time.getUnit();

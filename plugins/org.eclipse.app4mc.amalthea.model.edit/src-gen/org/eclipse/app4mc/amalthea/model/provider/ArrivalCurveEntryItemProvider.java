@@ -203,8 +203,18 @@ public class ArrivalCurveEntryItemProvider extends BaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getArrivalCurveEntry_LowerTimeBorder(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getArrivalCurveEntry_UpperTimeBorder(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getArrivalCurveEntry_UpperTimeBorder(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 	/**

@@ -17,7 +17,6 @@ import java.util.Map;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AbstractionType;
 import org.eclipse.app4mc.amalthea.model.AccessPath;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
@@ -281,8 +280,6 @@ import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
 import org.eclipse.app4mc.amalthea.model.SeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
-import org.eclipse.app4mc.amalthea.model.SignedTimeObject;
 import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
@@ -448,16 +445,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createInstructionsConstantAdapter();
 			}
 			@Override
-			public Adapter caseAbstractTime(AbstractTime object) {
-				return createAbstractTimeAdapter();
-			}
-			@Override
 			public Adapter caseTime(Time object) {
 				return createTimeAdapter();
-			}
-			@Override
-			public Adapter caseSignedTime(SignedTime object) {
-				return createSignedTimeAdapter();
 			}
 			@Override
 			public Adapter caseFrequency(Frequency object) {
@@ -518,10 +507,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTimeObject(TimeObject object) {
 				return createTimeObjectAdapter();
-			}
-			@Override
-			public Adapter caseSignedTimeObject(SignedTimeObject object) {
-				return createSignedTimeObjectAdapter();
 			}
 			@Override
 			public <T> Adapter caseDeviation(Deviation<T> object) {
@@ -1876,20 +1861,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AbstractTime <em>Abstract Time</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractTime
-	 * @generated
-	 */
-	public Adapter createAbstractTimeAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Time <em>Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1900,20 +1871,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTimeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SignedTime <em>Signed Time</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SignedTime
-	 * @generated
-	 */
-	public Adapter createSignedTimeAdapter() {
 		return null;
 	}
 
@@ -2124,20 +2081,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTimeObjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SignedTimeObject <em>Signed Time Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SignedTimeObject
-	 * @generated
-	 */
-	public Adapter createSignedTimeObjectAdapter() {
 		return null;
 	}
 

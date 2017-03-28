@@ -164,6 +164,11 @@ public class SchedulingHWUnitItemProvider extends SchedulingUnitItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSchedulingHWUnit_Delay(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSchedulingHWUnit_Delay(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 }

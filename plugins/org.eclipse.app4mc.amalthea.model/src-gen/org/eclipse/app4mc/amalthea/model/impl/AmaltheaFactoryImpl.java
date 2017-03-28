@@ -266,8 +266,6 @@ import org.eclipse.app4mc.amalthea.model.SenderReceiverRead;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.Severity;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
-import org.eclipse.app4mc.amalthea.model.SignedTimeObject;
 import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
@@ -371,7 +369,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: return createInstructionsDeviation();
 			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: return createInstructionsConstant();
 			case AmaltheaPackage.TIME: return createTime();
-			case AmaltheaPackage.SIGNED_TIME: return createSignedTime();
 			case AmaltheaPackage.FREQUENCY: return createFrequency();
 			case AmaltheaPackage.DATA_SIZE: return createDataSize();
 			case AmaltheaPackage.DATA_RATE: return createDataRate();
@@ -386,7 +383,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.DOUBLE_OBJECT: return createDoubleObject();
 			case AmaltheaPackage.BOOLEAN_OBJECT: return createBooleanObject();
 			case AmaltheaPackage.TIME_OBJECT: return createTimeObject();
-			case AmaltheaPackage.SIGNED_TIME_OBJECT: return createSignedTimeObject();
 			case AmaltheaPackage.DEVIATION: return createDeviation();
 			case AmaltheaPackage.WEIBULL_PARAMETERS: return createWeibullParameters();
 			case AmaltheaPackage.WEIBULL_ESTIMATORS: return createWeibullEstimators();
@@ -907,16 +903,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SignedTime createSignedTime() {
-		SignedTimeImpl signedTime = new SignedTimeImpl();
-		return signedTime;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Frequency createFrequency() {
 		FrequencyImpl frequency = new FrequencyImpl();
 		return frequency;
@@ -1050,16 +1036,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public TimeObject createTimeObject() {
 		TimeObjectImpl timeObject = new TimeObjectImpl();
 		return timeObject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SignedTimeObject createSignedTimeObject() {
-		SignedTimeObjectImpl signedTimeObject = new SignedTimeObjectImpl();
-		return signedTimeObject;
 	}
 
 	/**

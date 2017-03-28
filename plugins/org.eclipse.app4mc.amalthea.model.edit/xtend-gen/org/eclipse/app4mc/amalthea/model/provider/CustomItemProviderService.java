@@ -9,7 +9,6 @@ import java.util.function.Consumer;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
@@ -134,8 +133,6 @@ import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverRead;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
-import org.eclipse.app4mc.amalthea.model.SignedTimeObject;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.StringObject;
@@ -228,7 +225,7 @@ public class CustomItemProviderService {
     return ((value + " ") + unit);
   }
   
-  private static String getTimeText(final AbstractTime time) {
+  private static String getTimeText(final Time time) {
     boolean _equals = Objects.equal(time, null);
     if (_equals) {
       return "<time>";
@@ -421,25 +418,12 @@ public class CustomItemProviderService {
   }
   
   /**
-   * SignedTimeObjectItemProvider
-   */
-  public static String getSignedTimeObjectItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof SignedTimeObject)) {
-      String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeText = CustomItemProviderService.getTimeText(((AbstractTime)object));
-      return (_containingFeatureName + _timeText);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  /**
    * TimeObjectItemProvider
    */
   public static String getTimeObjectItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof TimeObject)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeText = CustomItemProviderService.getTimeText(((AbstractTime)object));
+      String _timeText = CustomItemProviderService.getTimeText(((Time)object));
       return (_containingFeatureName + _timeText);
     } else {
       return defaultText;
@@ -682,25 +666,12 @@ public class CustomItemProviderService {
   }
   
   /**
-   * SignedTimeItemProvider
-   */
-  public static String getSignedTimeItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof SignedTime)) {
-      String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeText = CustomItemProviderService.getTimeText(((AbstractTime)object));
-      return (_containingFeatureName + _timeText);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  /**
    * TimeItemProvider
    */
   public static String getTimeItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof Time)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeText = CustomItemProviderService.getTimeText(((AbstractTime)object));
+      String _timeText = CustomItemProviderService.getTimeText(((Time)object));
       return (_containingFeatureName + _timeText);
     } else {
       return defaultText;
@@ -1599,11 +1570,11 @@ public class CustomItemProviderService {
         _limitType=((TimeRequirementLimit)object).getLimitType();
       }
       final LimitType limitType = _limitType;
-      SignedTime _limitValue = null;
+      Time _limitValue = null;
       if (((TimeRequirementLimit)object)!=null) {
         _limitValue=((TimeRequirementLimit)object).getLimitValue();
       }
-      final SignedTime limitValue = _limitValue;
+      final Time limitValue = _limitValue;
       String _xifexpression = null;
       if ((Objects.equal(metric, null) || Objects.equal(metric, TimeMetric._UNDEFINED_))) {
         _xifexpression = "<time metric>";

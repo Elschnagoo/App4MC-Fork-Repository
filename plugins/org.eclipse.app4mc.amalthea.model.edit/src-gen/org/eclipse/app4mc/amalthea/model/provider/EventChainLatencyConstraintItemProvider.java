@@ -216,8 +216,18 @@ public class EventChainLatencyConstraintItemProvider extends TimingConstraintIte
 
 		newChildDescriptors.add
 			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getEventChainLatencyConstraint_Minimum(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getEventChainLatencyConstraint_Maximum(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getEventChainLatencyConstraint_Maximum(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 	/**

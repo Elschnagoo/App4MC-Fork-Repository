@@ -69,12 +69,12 @@ public interface TimeRequirementLimit extends RequirementLimit {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Limit Value</em>' containment reference.
-	 * @see #setLimitValue(SignedTime)
+	 * @see #setLimitValue(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimeRequirementLimit_LimitValue()
 	 * @model containment="true"
 	 * @generated
 	 */
-	SignedTime getLimitValue();
+	Time getLimitValue();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.TimeRequirementLimit#getLimitValue <em>Limit Value</em>}' containment reference.
@@ -84,6 +84,6 @@ public interface TimeRequirementLimit extends RequirementLimit {
 	 * @see #getLimitValue()
 	 * @generated
 	 */
-	void setLimitValue(SignedTime value);
+	void setLimitValue(Time value);
 
 } // TimeRequirementLimit

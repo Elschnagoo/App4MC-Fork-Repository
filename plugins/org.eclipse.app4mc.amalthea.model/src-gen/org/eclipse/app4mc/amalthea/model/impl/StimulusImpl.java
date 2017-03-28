@@ -15,8 +15,8 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
+import org.eclipse.app4mc.amalthea.model.Time;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -51,7 +51,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 * @ordered
 	 */
-	protected Deviation<SignedTime> stimulusDeviation;
+	protected Deviation<Time> stimulusDeviation;
 
 	/**
 	 * The cached value of the '{@link #getSetModeValueList() <em>Set Mode Value List</em>}' containment reference.
@@ -107,7 +107,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Deviation<SignedTime> getStimulusDeviation() {
+	public Deviation<Time> getStimulusDeviation() {
 		return stimulusDeviation;
 	}
 
@@ -116,8 +116,8 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetStimulusDeviation(Deviation<SignedTime> newStimulusDeviation, NotificationChain msgs) {
-		Deviation<SignedTime> oldStimulusDeviation = stimulusDeviation;
+	public NotificationChain basicSetStimulusDeviation(Deviation<Time> newStimulusDeviation, NotificationChain msgs) {
+		Deviation<Time> oldStimulusDeviation = stimulusDeviation;
 		stimulusDeviation = newStimulusDeviation;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION, oldStimulusDeviation, newStimulusDeviation);
@@ -131,7 +131,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStimulusDeviation(Deviation<SignedTime> newStimulusDeviation) {
+	public void setStimulusDeviation(Deviation<Time> newStimulusDeviation) {
 		if (newStimulusDeviation != stimulusDeviation) {
 			NotificationChain msgs = null;
 			if (stimulusDeviation != null)
@@ -324,7 +324,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION:
-				setStimulusDeviation((Deviation<SignedTime>)newValue);
+				setStimulusDeviation((Deviation<Time>)newValue);
 				return;
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
 				setSetModeValueList((ModeValueList)newValue);
@@ -348,7 +348,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION:
-				setStimulusDeviation((Deviation<SignedTime>)null);
+				setStimulusDeviation((Deviation<Time>)null);
 				return;
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
 				setSetModeValueList((ModeValueList)null);

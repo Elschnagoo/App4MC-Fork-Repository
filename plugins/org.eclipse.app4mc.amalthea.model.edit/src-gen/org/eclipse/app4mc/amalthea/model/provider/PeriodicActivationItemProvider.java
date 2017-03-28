@@ -169,8 +169,18 @@ public class PeriodicActivationItemProvider extends ActivationItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Min(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Max(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Max(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -179,8 +189,18 @@ public class PeriodicActivationItemProvider extends ActivationItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Offset(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Deadline(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Deadline(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 	/**

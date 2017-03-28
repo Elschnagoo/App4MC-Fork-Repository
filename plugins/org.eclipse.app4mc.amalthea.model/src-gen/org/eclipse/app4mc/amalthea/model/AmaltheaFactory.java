@@ -95,15 +95,6 @@ public interface AmaltheaFactory extends EFactory {
 	Time createTime();
 
 	/**
-	 * Returns a new object of class '<em>Signed Time</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Signed Time</em>'.
-	 * @generated
-	 */
-	SignedTime createSignedTime();
-
-	/**
 	 * Returns a new object of class '<em>Frequency</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -219,15 +210,6 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	TimeObject createTimeObject();
-
-	/**
-	 * Returns a new object of class '<em>Signed Time Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Signed Time Object</em>'.
-	 * @generated
-	 */
-	SignedTimeObject createSignedTimeObject();
 
 	/**
 	 * Returns a new object of class '<em>Deviation</em>'.

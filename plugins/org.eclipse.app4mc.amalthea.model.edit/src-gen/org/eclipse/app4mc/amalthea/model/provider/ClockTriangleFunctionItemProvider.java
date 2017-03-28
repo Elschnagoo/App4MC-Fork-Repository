@@ -213,12 +213,45 @@ public class ClockTriangleFunctionItemProvider extends ClockItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Shift(),
-				 AmaltheaFactory.eINSTANCE.createSignedTime()));
+				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Shift(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Period(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Period(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Shift() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Period();
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

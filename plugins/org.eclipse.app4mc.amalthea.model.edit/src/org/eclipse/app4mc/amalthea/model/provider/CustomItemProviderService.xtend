@@ -109,8 +109,6 @@ import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum
 import org.eclipse.app4mc.amalthea.model.SenderReceiverRead
 import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite
 import org.eclipse.app4mc.amalthea.model.SetEvent
-import org.eclipse.app4mc.amalthea.model.SignedTime
-import org.eclipse.app4mc.amalthea.model.SignedTimeObject
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic
 import org.eclipse.app4mc.amalthea.model.StringObject
 import org.eclipse.app4mc.amalthea.model.SubEventChain
@@ -172,7 +170,7 @@ class CustomItemProviderService {
 		return value + " " + unit
 	}
 
-	private def static getTimeText(AbstractTime time) {
+	private def static getTimeText(Time time) {
 		if (time == null) return "<time>"
 		
 		val value = Integer.toString(time.value)
@@ -279,17 +277,6 @@ class CustomItemProviderService {
 	def static String getLongObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof LongObject) {
 			return getContainingFeatureName(object) + object
-		} else {
-			return defaultText
-		}
-	}
-
-	/*****************************************************************************
-	 * 						SignedTimeObjectItemProvider
-	 *****************************************************************************/
-	def static String getSignedTimeObjectItemProviderText(Object object, String defaultText) {
-		if (object instanceof SignedTimeObject) {
-			return getContainingFeatureName(object) + getTimeText(object)
 		} else {
 			return defaultText
 		}
@@ -450,17 +437,6 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						SignedTimeItemProvider
-	 *****************************************************************************/
-	def static String getSignedTimeItemProviderText(Object object, String defaultText) {
-		if (object instanceof SignedTime) {
-			return getContainingFeatureName(object) + getTimeText(object)
-		} else {
-			return defaultText
-		}
-	}
-
-	/*****************************************************************************
 	 * 						TimeItemProvider
 	 *****************************************************************************/
 	def static String getTimeItemProviderText(Object object, String defaultText) {
@@ -470,7 +446,6 @@ class CustomItemProviderService {
 			return defaultText
 		}
 	}
-
 
 	/*****************************************************************************
 	 * 						InstructionsConstantItemProvider

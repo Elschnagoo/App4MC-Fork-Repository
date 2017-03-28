@@ -197,34 +197,23 @@ enum TimeUnit
 	ps
 }
 
-abstract class AbstractTime {
+
+/*
+ * Time class including value and time unit (also allows to define negative time values).
+ */
+class Time {
 	int value="0"
 	TimeUnit unit
 	
 	op String toString() {
 		return value + " " + if (unit == TimeUnit::_UNDEFINED_ ) "<unit>" else unit.literal
 	}
-}
-
-/*
- * General time class to use including value and given time unit.
- */
-class Time extends AbstractTime
-{
+	
 	op boolean containerNotificationRequired() {
 		return true
 	}
 }
 
-/*
- * Like the general time class but it is explicit allows to define negative time values
- */
-class SignedTime extends AbstractTime
-{
-	op boolean containerNotificationRequired() {
-		return true
-	}
-}
 
 /*
  * Frequency unit enumeration for available units
@@ -462,15 +451,9 @@ class BooleanObject extends Value{
 	}
 }
 
-class TimeObject extends AbstractTime, Value {
+class TimeObject extends Time, Value {
 	op String toString() {
 		return "(Time) " + super.toString
-	}
-}
-
-class SignedTimeObject extends AbstractTime, Value {
-	op String toString() {
-		return "(SignedTime) " + super.toString
 	}
 }
 
@@ -1177,7 +1160,7 @@ class CountRequirementLimit extends RequirementLimit {
 class TimeRequirementLimit extends RequirementLimit {
 	TimeMetric metric
 	// signed time is allowed because the requirement to lateness can be negative
-	contains SignedTime limitValue
+	contains Time limitValue
 }
 
 enum Severity {
@@ -2349,7 +2332,7 @@ class StimuliModel extends BaseObject
  */
 abstract class Stimulus extends ReferableBaseObject
 {
-	contains Deviation<SignedTime> stimulusDeviation
+	contains Deviation<Time> stimulusDeviation
 	contains ModeValueList setModeValueList
 	contains ModeValueList enablingModeValueList
 	contains ModeValueList disablingModeValueList
@@ -2469,7 +2452,7 @@ abstract class Clock extends ReferableBaseObject
 
 class ClockTriangleFunction extends Clock
 {
-	contains SignedTime shift
+	contains Time shift
 	contains Time period
 	double max="0.0"
 	double min="0.0"
@@ -2477,7 +2460,7 @@ class ClockTriangleFunction extends Clock
 
 class ClockSinusFunction extends Clock
 {
-	contains SignedTime shift
+	contains Time shift
 	contains Time period
 	double amplitude="0.0"
 	double yOffset="0.0"

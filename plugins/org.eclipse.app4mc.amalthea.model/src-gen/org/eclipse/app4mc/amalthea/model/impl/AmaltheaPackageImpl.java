@@ -18,7 +18,6 @@ import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AbstractionType;
 import org.eclipse.app4mc.amalthea.model.AccessMultiplicity;
 import org.eclipse.app4mc.amalthea.model.AccessPath;
@@ -321,8 +320,6 @@ import org.eclipse.app4mc.amalthea.model.SeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.Severity;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
-import org.eclipse.app4mc.amalthea.model.SignedTimeObject;
 import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
@@ -495,21 +492,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass abstractTimeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass timeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass signedTimeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -615,13 +598,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass timeObjectEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass signedTimeObjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3378,42 +3354,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getAbstractTime() {
-		return abstractTimeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAbstractTime_Value() {
-		return (EAttribute)abstractTimeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAbstractTime_Unit() {
-		return (EAttribute)abstractTimeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getAbstractTime__ToString() {
-		return abstractTimeEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTime() {
 		return timeEClass;
 	}
@@ -3423,7 +3363,25 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTime__ContainerNotificationRequired() {
+	public EAttribute getTime_Value() {
+		return (EAttribute)timeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTime_Unit() {
+		return (EAttribute)timeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTime__ToString() {
 		return timeEClass.getEOperations().get(0);
 	}
 
@@ -3432,17 +3390,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSignedTime() {
-		return signedTimeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getSignedTime__ContainerNotificationRequired() {
-		return signedTimeEClass.getEOperations().get(0);
+	public EOperation getTime__ContainerNotificationRequired() {
+		return timeEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -3893,24 +3842,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EOperation getTimeObject__ToString() {
 		return timeObjectEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getSignedTimeObject() {
-		return signedTimeObjectEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getSignedTimeObject__ToString() {
-		return signedTimeObjectEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -11700,16 +11631,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		instructionsConstantEClass = createEClass(INSTRUCTIONS_CONSTANT);
 		createEAttribute(instructionsConstantEClass, INSTRUCTIONS_CONSTANT__VALUE);
 
-		abstractTimeEClass = createEClass(ABSTRACT_TIME);
-		createEAttribute(abstractTimeEClass, ABSTRACT_TIME__VALUE);
-		createEAttribute(abstractTimeEClass, ABSTRACT_TIME__UNIT);
-		createEOperation(abstractTimeEClass, ABSTRACT_TIME___TO_STRING);
-
 		timeEClass = createEClass(TIME);
+		createEAttribute(timeEClass, TIME__VALUE);
+		createEAttribute(timeEClass, TIME__UNIT);
+		createEOperation(timeEClass, TIME___TO_STRING);
 		createEOperation(timeEClass, TIME___CONTAINER_NOTIFICATION_REQUIRED);
-
-		signedTimeEClass = createEClass(SIGNED_TIME);
-		createEOperation(signedTimeEClass, SIGNED_TIME___CONTAINER_NOTIFICATION_REQUIRED);
 
 		frequencyEClass = createEClass(FREQUENCY);
 		createEAttribute(frequencyEClass, FREQUENCY__UNIT);
@@ -11775,9 +11701,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		timeObjectEClass = createEClass(TIME_OBJECT);
 		createEOperation(timeObjectEClass, TIME_OBJECT___TO_STRING);
-
-		signedTimeObjectEClass = createEClass(SIGNED_TIME_OBJECT);
-		createEOperation(signedTimeObjectEClass, SIGNED_TIME_OBJECT___TO_STRING);
 
 		deviationEClass = createEClass(DEVIATION);
 		createEReference(deviationEClass, DEVIATION__LOWER_BOUND);
@@ -12974,8 +12897,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		tagEClass.getESuperTypes().add(this.getReferableBaseObject());
 		instructionsDeviationEClass.getESuperTypes().add(this.getInstructions());
 		instructionsConstantEClass.getESuperTypes().add(this.getInstructions());
-		timeEClass.getESuperTypes().add(this.getAbstractTime());
-		signedTimeEClass.getESuperTypes().add(this.getAbstractTime());
 		listObjectEClass.getESuperTypes().add(this.getValue());
 		stringObjectEClass.getESuperTypes().add(this.getValue());
 		bigIntegerObjectEClass.getESuperTypes().add(this.getValue());
@@ -12985,10 +12906,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		floatObjectEClass.getESuperTypes().add(this.getValue());
 		doubleObjectEClass.getESuperTypes().add(this.getValue());
 		booleanObjectEClass.getESuperTypes().add(this.getValue());
-		timeObjectEClass.getESuperTypes().add(this.getAbstractTime());
+		timeObjectEClass.getESuperTypes().add(this.getTime());
 		timeObjectEClass.getESuperTypes().add(this.getValue());
-		signedTimeObjectEClass.getESuperTypes().add(this.getAbstractTime());
-		signedTimeObjectEClass.getESuperTypes().add(this.getValue());
 		EGenericType g1 = createEGenericType(this.getDistribution());
 		EGenericType g2 = createEGenericType(weibullDistributionEClass_T);
 		g1.getETypeArguments().add(g2);
@@ -13379,19 +13298,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(instructionsConstantEClass, InstructionsConstant.class, "InstructionsConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInstructionsConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, InstructionsConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(abstractTimeEClass, AbstractTime.class, "AbstractTime", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractTime_Value(), theEcorePackage.getEInt(), "value", "0", 0, 1, AbstractTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAbstractTime_Unit(), this.getTimeUnit(), "unit", null, 0, 1, AbstractTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getAbstractTime__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(timeEClass, Time.class, "Time", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTime_Value(), theEcorePackage.getEInt(), "value", "0", 0, 1, Time.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTime_Unit(), this.getTimeUnit(), "unit", null, 0, 1, Time.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getTime__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getTime__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(signedTimeEClass, SignedTime.class, "SignedTime", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getSignedTime__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(frequencyEClass, Frequency.class, "Frequency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFrequency_Unit(), this.getFrequencyUnit(), "unit", null, 0, 1, Frequency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -13475,10 +13388,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(timeObjectEClass, TimeObject.class, "TimeObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEOperation(getTimeObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(signedTimeObjectEClass, SignedTimeObject.class, "SignedTimeObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getSignedTimeObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(deviationEClass, Deviation.class, "Deviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(deviationEClass_T);
@@ -13783,7 +13692,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(timeRequirementLimitEClass, TimeRequirementLimit.class, "TimeRequirementLimit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTimeRequirementLimit_Metric(), this.getTimeMetric(), "metric", null, 0, 1, TimeRequirementLimit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimeRequirementLimit_LimitValue(), this.getSignedTime(), null, "limitValue", null, 0, 1, TimeRequirementLimit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTimeRequirementLimit_LimitValue(), this.getTime(), null, "limitValue", null, 0, 1, TimeRequirementLimit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataCoherencyGroupEClass, DataCoherencyGroup.class, "DataCoherencyGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataCoherencyGroup_Labels(), this.getLabel(), null, "labels", null, 0, -1, DataCoherencyGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14212,7 +14121,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(stimulusEClass, Stimulus.class, "Stimulus", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getDeviation());
-		g2 = createEGenericType(this.getSignedTime());
+		g2 = createEGenericType(this.getTime());
 		g1.getETypeArguments().add(g2);
 		initEReference(getStimulus_StimulusDeviation(), g1, null, "stimulusDeviation", null, 0, 1, Stimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStimulus_SetModeValueList(), this.getModeValueList(), null, "setModeValueList", null, 0, 1, Stimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14266,13 +14175,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(clockEClass, Clock.class, "Clock", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(clockTriangleFunctionEClass, ClockTriangleFunction.class, "ClockTriangleFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getClockTriangleFunction_Shift(), this.getSignedTime(), null, "shift", null, 0, 1, ClockTriangleFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClockTriangleFunction_Shift(), this.getTime(), null, "shift", null, 0, 1, ClockTriangleFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClockTriangleFunction_Period(), this.getTime(), null, "period", null, 0, 1, ClockTriangleFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClockTriangleFunction_Max(), theEcorePackage.getEDouble(), "max", "0.0", 0, 1, ClockTriangleFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClockTriangleFunction_Min(), theEcorePackage.getEDouble(), "min", "0.0", 0, 1, ClockTriangleFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(clockSinusFunctionEClass, ClockSinusFunction.class, "ClockSinusFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getClockSinusFunction_Shift(), this.getSignedTime(), null, "shift", null, 0, 1, ClockSinusFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClockSinusFunction_Shift(), this.getTime(), null, "shift", null, 0, 1, ClockSinusFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClockSinusFunction_Period(), this.getTime(), null, "period", null, 0, 1, ClockSinusFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClockSinusFunction_Amplitude(), theEcorePackage.getEDouble(), "amplitude", "0.0", 0, 1, ClockSinusFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClockSinusFunction_YOffset(), theEcorePackage.getEDouble(), "yOffset", "0.0", 0, 1, ClockSinusFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

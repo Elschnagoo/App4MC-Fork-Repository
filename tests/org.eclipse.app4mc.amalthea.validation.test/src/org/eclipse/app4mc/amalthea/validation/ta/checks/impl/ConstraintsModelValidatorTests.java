@@ -26,7 +26,6 @@ import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
@@ -36,6 +35,7 @@ import org.eclipse.app4mc.amalthea.model.TimeMetric;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
+import org.eclipse.app4mc.amalthea.validation.ta.checks.ConstraintsModelValidator;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -126,7 +126,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final ProcessRequirement processRequirement = AmaltheaFactory.eINSTANCE.createProcessRequirement();
 		final TimeRequirementLimit limit = AmaltheaFactory.eINSTANCE.createTimeRequirementLimit();
-		final SignedTime time = AmaltheaFactory.eINSTANCE.createSignedTime();
+		final Time time = AmaltheaFactory.eINSTANCE.createTime();
 		final LimitType limitType = LimitType.UPPER_LIMIT;
 		final TimeMetric metric = TimeMetric.RESPONSE_TIME;
 		final int value = 10;
@@ -175,7 +175,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final ProcessRequirement processRequirement = AmaltheaFactory.eINSTANCE.createProcessRequirement();
 		final TimeRequirementLimit limit = AmaltheaFactory.eINSTANCE.createTimeRequirementLimit();
-		final SignedTime time = AmaltheaFactory.eINSTANCE.createSignedTime();
+		final Time time = AmaltheaFactory.eINSTANCE.createTime();
 		final LimitType limitType = LimitType.UPPER_LIMIT;
 		final TimeMetric metric = TimeMetric.RESPONSE_TIME;
 		final int value = -10;
@@ -212,7 +212,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final ProcessRequirement processRequirement = AmaltheaFactory.eINSTANCE.createProcessRequirement();
 		final TimeRequirementLimit limit = AmaltheaFactory.eINSTANCE.createTimeRequirementLimit();
-		final SignedTime time = AmaltheaFactory.eINSTANCE.createSignedTime();
+		final Time time = AmaltheaFactory.eINSTANCE.createTime();
 		final LimitType limitType = LimitType.UPPER_LIMIT;
 		final TimeMetric metric = TimeMetric.RESPONSE_TIME;
 		final int value = 0;
@@ -249,7 +249,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final ProcessRequirement processRequirement = AmaltheaFactory.eINSTANCE.createProcessRequirement();
 		final TimeRequirementLimit limit = AmaltheaFactory.eINSTANCE.createTimeRequirementLimit();
-		final SignedTime time = AmaltheaFactory.eINSTANCE.createSignedTime();
+		final Time time = AmaltheaFactory.eINSTANCE.createTime();
 		final LimitType limitType = LimitType.UPPER_LIMIT;
 		final TimeMetric metric = TimeMetric.RESPONSE_TIME;
 		final int value = 10;

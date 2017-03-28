@@ -160,6 +160,11 @@ public class SingleItemProvider extends StimulusItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSingle_Activation(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSingle_Activation(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 	/**

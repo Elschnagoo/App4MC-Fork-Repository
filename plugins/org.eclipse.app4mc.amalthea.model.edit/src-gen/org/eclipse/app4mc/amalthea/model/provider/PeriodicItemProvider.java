@@ -189,8 +189,18 @@ public class PeriodicItemProvider extends StimulusItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodic_Offset(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getPeriodic_Recurrence(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodic_Recurrence(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 	/**

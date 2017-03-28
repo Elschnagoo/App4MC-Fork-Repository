@@ -177,6 +177,11 @@ public class SynchronizationConstraintItemProvider extends TimingConstraintItemP
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSynchronizationConstraint_Tolerance(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSynchronizationConstraint_Tolerance(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 }

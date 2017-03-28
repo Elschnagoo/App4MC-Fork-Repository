@@ -17,7 +17,6 @@ import java.util.Map;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AbstractionType;
 import org.eclipse.app4mc.amalthea.model.AccessPath;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
@@ -281,8 +280,6 @@ import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
 import org.eclipse.app4mc.amalthea.model.SeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
-import org.eclipse.app4mc.amalthea.model.SignedTimeObject;
 import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
@@ -487,23 +484,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.ABSTRACT_TIME: {
-				AbstractTime abstractTime = (AbstractTime)theEObject;
-				T1 result = caseAbstractTime(abstractTime);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.TIME: {
 				Time time = (Time)theEObject;
 				T1 result = caseTime(time);
-				if (result == null) result = caseAbstractTime(time);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.SIGNED_TIME: {
-				SignedTime signedTime = (SignedTime)theEObject;
-				T1 result = caseSignedTime(signedTime);
-				if (result == null) result = caseAbstractTime(signedTime);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -603,16 +586,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.TIME_OBJECT: {
 				TimeObject timeObject = (TimeObject)theEObject;
 				T1 result = caseTimeObject(timeObject);
-				if (result == null) result = caseAbstractTime(timeObject);
+				if (result == null) result = caseTime(timeObject);
 				if (result == null) result = caseValue(timeObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.SIGNED_TIME_OBJECT: {
-				SignedTimeObject signedTimeObject = (SignedTimeObject)theEObject;
-				T1 result = caseSignedTimeObject(signedTimeObject);
-				if (result == null) result = caseAbstractTime(signedTimeObject);
-				if (result == null) result = caseValue(signedTimeObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3385,21 +3360,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Time</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Time</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseAbstractTime(AbstractTime object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Time</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -3411,21 +3371,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseTime(Time object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Signed Time</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Signed Time</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseSignedTime(SignedTime object) {
 		return null;
 	}
 
@@ -3651,21 +3596,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseTimeObject(TimeObject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Signed Time Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Signed Time Object</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseSignedTimeObject(SignedTimeObject object) {
 		return null;
 	}
 

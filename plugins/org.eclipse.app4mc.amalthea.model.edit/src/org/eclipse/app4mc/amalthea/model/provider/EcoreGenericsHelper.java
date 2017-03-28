@@ -216,7 +216,7 @@ public class EcoreGenericsHelper {
 		
 		
 		childObjects.add(factory.createLongObject());
-		childObjects.add(factory.createSignedTime());
+		childObjects.add(factory.createTime());
 		
 		for (EObject child : childObjects) {
 			newChildDescriptors.add(new CommandParameter(null, feature, child));			

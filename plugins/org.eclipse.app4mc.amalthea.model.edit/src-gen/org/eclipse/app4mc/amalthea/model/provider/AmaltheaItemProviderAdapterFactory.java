@@ -197,29 +197,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SignedTime} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SignedTimeItemProvider signedTimeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SignedTime}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSignedTimeAdapter() {
-		if (signedTimeItemProvider == null) {
-			signedTimeItemProvider = new SignedTimeItemProvider(this);
-		}
-
-		return signedTimeItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Frequency} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -539,29 +516,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return timeObjectItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SignedTimeObject} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SignedTimeObjectItemProvider signedTimeObjectItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SignedTimeObject}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSignedTimeObjectAdapter() {
-		if (signedTimeObjectItemProvider == null) {
-			signedTimeObjectItemProvider = new SignedTimeObjectItemProvider(this);
-		}
-
-		return signedTimeObjectItemProvider;
 	}
 
 	/**
@@ -5914,7 +5868,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (instructionsDeviationItemProvider != null) instructionsDeviationItemProvider.dispose();
 		if (instructionsConstantItemProvider != null) instructionsConstantItemProvider.dispose();
 		if (timeItemProvider != null) timeItemProvider.dispose();
-		if (signedTimeItemProvider != null) signedTimeItemProvider.dispose();
 		if (frequencyItemProvider != null) frequencyItemProvider.dispose();
 		if (dataSizeItemProvider != null) dataSizeItemProvider.dispose();
 		if (dataRateItemProvider != null) dataRateItemProvider.dispose();
@@ -5929,7 +5882,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (doubleObjectItemProvider != null) doubleObjectItemProvider.dispose();
 		if (booleanObjectItemProvider != null) booleanObjectItemProvider.dispose();
 		if (timeObjectItemProvider != null) timeObjectItemProvider.dispose();
-		if (signedTimeObjectItemProvider != null) signedTimeObjectItemProvider.dispose();
 		if (deviationItemProvider != null) deviationItemProvider.dispose();
 		if (weibullParametersItemProvider != null) weibullParametersItemProvider.dispose();
 		if (weibullEstimatorsItemProvider != null) weibullEstimatorsItemProvider.dispose();

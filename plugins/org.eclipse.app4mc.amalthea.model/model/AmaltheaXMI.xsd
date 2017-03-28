@@ -736,7 +736,10 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Constant set of execution cycles</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="AbstractTime">
+  <xsd:complexType name="Time">
+    <xsd:annotation>
+      <xsd:documentation>Time class including value and time unit (also allows to define negative time values).</xsd:documentation>
+    </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
@@ -745,31 +748,9 @@ Needs to be extended by other classes.</xsd:documentation>
     <xsd:attribute name="value" type="xsd:int"/>
     <xsd:attribute name="unit" type="am:TimeUnit"/>
   </xsd:complexType>
-  <xsd:element name="AbstractTime" type="am:AbstractTime"/>
-  <xsd:complexType name="Time">
-    <xsd:annotation>
-      <xsd:documentation>General time class to use including value and given time unit.</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:AbstractTime"/>
-    </xsd:complexContent>
-  </xsd:complexType>
   <xsd:element name="Time" type="am:Time">
     <xsd:annotation>
-      <xsd:documentation>General time class to use including value and given time unit.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="SignedTime">
-    <xsd:annotation>
-      <xsd:documentation>Like the general time class but it is explicit allows to define negative time values</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:AbstractTime"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="SignedTime" type="am:SignedTime">
-    <xsd:annotation>
-      <xsd:documentation>Like the general time class but it is explicit allows to define negative time values</xsd:documentation>
+      <xsd:documentation>Time class including value and time unit (also allows to define negative time values).</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="Frequency">
@@ -976,16 +957,10 @@ Needs to be extended by other classes.</xsd:documentation>
   </xsd:element>
   <xsd:complexType name="TimeObject">
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractTime"/>
+      <xsd:extension base="am:Time"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="TimeObject" type="am:TimeObject"/>
-  <xsd:complexType name="SignedTimeObject">
-    <xsd:complexContent>
-      <xsd:extension base="am:AbstractTime"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="SignedTimeObject" type="am:SignedTimeObject"/>
   <xsd:complexType name="Deviation">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="lowerBound" type="ecore:EObject"/>
@@ -2201,7 +2176,7 @@ maximum: Maximum allowed latency</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:RequirementLimit">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="limitValue" type="am:SignedTime"/>
+          <xsd:element name="limitValue" type="am:Time"/>
         </xsd:choice>
         <xsd:attribute name="metric" type="am:TimeMetric"/>
       </xsd:extension>
@@ -4018,7 +3993,7 @@ The faster the clock, the faster stimuli</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:Clock">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="shift" type="am:SignedTime"/>
+          <xsd:element name="shift" type="am:Time"/>
           <xsd:element name="period" type="am:Time"/>
         </xsd:choice>
         <xsd:attribute name="max" type="xsd:double"/>
@@ -4031,7 +4006,7 @@ The faster the clock, the faster stimuli</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:Clock">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="shift" type="am:SignedTime"/>
+          <xsd:element name="shift" type="am:Time"/>
           <xsd:element name="period" type="am:Time"/>
         </xsd:choice>
         <xsd:attribute name="amplitude" type="xsd:double"/>

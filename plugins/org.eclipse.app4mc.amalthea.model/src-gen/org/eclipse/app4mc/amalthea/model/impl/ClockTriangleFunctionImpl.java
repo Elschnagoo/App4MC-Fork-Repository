@@ -14,7 +14,6 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
 import org.eclipse.app4mc.amalthea.model.Time;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -50,7 +49,7 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	 * @generated
 	 * @ordered
 	 */
-	protected SignedTime shift;
+	protected Time shift;
 
 	/**
 	 * The cached value of the '{@link #getPeriod() <em>Period</em>}' containment reference.
@@ -126,7 +125,7 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SignedTime getShift() {
+	public Time getShift() {
 		return shift;
 	}
 
@@ -135,8 +134,8 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetShift(SignedTime newShift, NotificationChain msgs) {
-		SignedTime oldShift = shift;
+	public NotificationChain basicSetShift(Time newShift, NotificationChain msgs) {
+		Time oldShift = shift;
 		shift = newShift;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION__SHIFT, oldShift, newShift);
@@ -150,7 +149,7 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setShift(SignedTime newShift) {
+	public void setShift(Time newShift) {
 		if (newShift != shift) {
 			NotificationChain msgs = null;
 			if (shift != null)
@@ -294,7 +293,7 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION__SHIFT:
-				setShift((SignedTime)newValue);
+				setShift((Time)newValue);
 				return;
 			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION__PERIOD:
 				setPeriod((Time)newValue);
@@ -318,7 +317,7 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION__SHIFT:
-				setShift((SignedTime)null);
+				setShift((Time)null);
 				return;
 			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION__PERIOD:
 				setPeriod((Time)null);

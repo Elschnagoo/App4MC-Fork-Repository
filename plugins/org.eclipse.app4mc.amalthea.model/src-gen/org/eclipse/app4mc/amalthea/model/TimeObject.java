@@ -23,7 +23,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface TimeObject extends AbstractTime, Value {
+public interface TimeObject extends Time, Value {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
