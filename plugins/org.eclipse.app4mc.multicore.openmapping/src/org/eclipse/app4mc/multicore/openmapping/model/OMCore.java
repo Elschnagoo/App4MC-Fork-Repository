@@ -102,7 +102,7 @@ public class OMCore {
 			return -1;
 		}
 
-		final int instructionsPerCycle = type.getInstructionsPerCycle();
+		final float instructionsPerCycle = type.getInstructionsPerCycle();
 		if (instructionsPerCycle <= 0) {
 			UniversalHandler.getInstance().log("Invalid Hardware Model, the referred CoreType of Core '"
 					+ this.coreRef.getName() + "' contains an invalid value in attribute instructionsPerCycle.", null);

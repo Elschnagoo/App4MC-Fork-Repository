@@ -1583,7 +1583,7 @@ class MicrocontrollerType extends AbstractionType
 class CoreType extends AbstractionType
 {
 	int bitWidth="0"
-	int instructionsPerCycle="0"
+	float instructionsPerCycle="0.0"
 }
 
 class MemoryType extends HardwareTypeDescription

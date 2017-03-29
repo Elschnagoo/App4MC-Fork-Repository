@@ -60,7 +60,7 @@ public interface CoreType extends AbstractionType {
 
 	/**
 	 * Returns the value of the '<em><b>Instructions Per Cycle</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Instructions Per Cycle</em>' attribute isn't clear,
@@ -68,12 +68,12 @@ public interface CoreType extends AbstractionType {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Instructions Per Cycle</em>' attribute.
-	 * @see #setInstructionsPerCycle(int)
+	 * @see #setInstructionsPerCycle(float)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCoreType_InstructionsPerCycle()
-	 * @model default="0" unique="false"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
-	int getInstructionsPerCycle();
+	float getInstructionsPerCycle();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.CoreType#getInstructionsPerCycle <em>Instructions Per Cycle</em>}' attribute.
@@ -83,6 +83,6 @@ public interface CoreType extends AbstractionType {
 	 * @see #getInstructionsPerCycle()
 	 * @generated
 	 */
-	void setInstructionsPerCycle(int value);
+	void setInstructionsPerCycle(float value);
 
 } // CoreType

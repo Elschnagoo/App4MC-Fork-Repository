@@ -64,7 +64,7 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int INSTRUCTIONS_PER_CYCLE_EDEFAULT = 0;
+	protected static final float INSTRUCTIONS_PER_CYCLE_EDEFAULT = 0.0F;
 
 	/**
 	 * The cached value of the '{@link #getInstructionsPerCycle() <em>Instructions Per Cycle</em>}' attribute.
@@ -74,7 +74,7 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 	 * @generated
 	 * @ordered
 	 */
-	protected int instructionsPerCycle = INSTRUCTIONS_PER_CYCLE_EDEFAULT;
+	protected float instructionsPerCycle = INSTRUCTIONS_PER_CYCLE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,7 +121,7 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getInstructionsPerCycle() {
+	public float getInstructionsPerCycle() {
 		return instructionsPerCycle;
 	}
 
@@ -130,8 +130,8 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInstructionsPerCycle(int newInstructionsPerCycle) {
-		int oldInstructionsPerCycle = instructionsPerCycle;
+	public void setInstructionsPerCycle(float newInstructionsPerCycle) {
+		float oldInstructionsPerCycle = instructionsPerCycle;
 		instructionsPerCycle = newInstructionsPerCycle;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CORE_TYPE__INSTRUCTIONS_PER_CYCLE, oldInstructionsPerCycle, instructionsPerCycle));
@@ -165,7 +165,7 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 				setBitWidth((Integer)newValue);
 				return;
 			case AmaltheaPackage.CORE_TYPE__INSTRUCTIONS_PER_CYCLE:
-				setInstructionsPerCycle((Integer)newValue);
+				setInstructionsPerCycle((Float)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

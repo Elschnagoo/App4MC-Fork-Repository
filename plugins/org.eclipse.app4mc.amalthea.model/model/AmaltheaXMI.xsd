@@ -2691,7 +2691,7 @@ core: The core that processes the process/runnable that accesses the semaphore (
     <xsd:complexContent>
       <xsd:extension base="am:AbstractionType">
         <xsd:attribute name="bitWidth" type="xsd:int"/>
-        <xsd:attribute name="instructionsPerCycle" type="xsd:int"/>
+        <xsd:attribute name="instructionsPerCycle" type="xsd:float"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
