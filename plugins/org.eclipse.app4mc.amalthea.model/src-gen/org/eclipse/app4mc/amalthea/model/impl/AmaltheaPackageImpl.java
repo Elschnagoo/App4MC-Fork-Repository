@@ -8214,6 +8214,87 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getOsAPIInstructions_ApiSuspendOsInterrupts() {
+		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOsAPIInstructions_ApiResumeOsInterrupts() {
+		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOsAPIInstructions_ApiRequestSpinlock() {
+		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOsAPIInstructions_ApiReleaseSpinlock() {
+		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOsAPIInstructions_ApiSenderReceiverRead() {
+		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOsAPIInstructions_ApiSenderReceiverWrite() {
+		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOsAPIInstructions_ApiSynchronousServerCallPoint() {
+		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOsAPIInstructions_ApiIocRead() {
+		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOsAPIInstructions_ApiIocWrite() {
+		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOsISRInstructions() {
 		return osISRInstructionsEClass;
 	}
@@ -12360,6 +12441,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_CLEAR_EVENT);
 		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_ACTIVATE_TASK);
 		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION);
+		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_SUSPEND_OS_INTERRUPTS);
+		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_RESUME_OS_INTERRUPTS);
+		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_REQUEST_SPINLOCK);
+		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_RELEASE_SPINLOCK);
+		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_READ);
+		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_WRITE);
+		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_SYNCHRONOUS_SERVER_CALL_POINT);
+		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_IOC_READ);
+		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_IOC_WRITE);
 
 		osISRInstructionsEClass = createEClass(OS_ISR_INSTRUCTIONS);
 		createEReference(osISRInstructionsEClass, OS_ISR_INSTRUCTIONS__PRE_EXECUTION_OVERHEAD);
@@ -14066,6 +14156,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getOsAPIInstructions_ApiClearEvent(), this.getInstructions(), null, "apiClearEvent", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOsAPIInstructions_ApiActivateTask(), this.getInstructions(), null, "apiActivateTask", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOsAPIInstructions_ApiEnforcedMigration(), this.getInstructions(), null, "apiEnforcedMigration", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiSuspendOsInterrupts(), this.getInstructions(), null, "apiSuspendOsInterrupts", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiResumeOsInterrupts(), this.getInstructions(), null, "apiResumeOsInterrupts", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiRequestSpinlock(), this.getInstructions(), null, "apiRequestSpinlock", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiReleaseSpinlock(), this.getInstructions(), null, "apiReleaseSpinlock", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiSenderReceiverRead(), this.getInstructions(), null, "apiSenderReceiverRead", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiSenderReceiverWrite(), this.getInstructions(), null, "apiSenderReceiverWrite", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiSynchronousServerCallPoint(), this.getInstructions(), null, "apiSynchronousServerCallPoint", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiIocRead(), this.getInstructions(), null, "apiIocRead", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIInstructions_ApiIocWrite(), this.getInstructions(), null, "apiIocWrite", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(osISRInstructionsEClass, OsISRInstructions.class, "OsISRInstructions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOsISRInstructions_PreExecutionOverhead(), this.getInstructions(), null, "preExecutionOverhead", null, 0, 1, OsISRInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

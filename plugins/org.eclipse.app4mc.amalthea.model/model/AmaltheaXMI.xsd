@@ -3498,6 +3498,15 @@ It describes an ISR that performs scheduling.</xsd:documentation>
           <xsd:element name="apiClearEvent" type="am:Instructions"/>
           <xsd:element name="apiActivateTask" type="am:Instructions"/>
           <xsd:element name="apiEnforcedMigration" type="am:Instructions"/>
+          <xsd:element name="apiSuspendOsInterrupts" type="am:Instructions"/>
+          <xsd:element name="apiResumeOsInterrupts" type="am:Instructions"/>
+          <xsd:element name="apiRequestSpinlock" type="am:Instructions"/>
+          <xsd:element name="apiReleaseSpinlock" type="am:Instructions"/>
+          <xsd:element name="apiSenderReceiverRead" type="am:Instructions"/>
+          <xsd:element name="apiSenderReceiverWrite" type="am:Instructions"/>
+          <xsd:element name="apiSynchronousServerCallPoint" type="am:Instructions"/>
+          <xsd:element name="apiIocRead" type="am:Instructions"/>
+          <xsd:element name="apiIocWrite" type="am:Instructions"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>

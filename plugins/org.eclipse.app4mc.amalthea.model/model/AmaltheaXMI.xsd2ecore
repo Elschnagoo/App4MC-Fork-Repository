@@ -1488,6 +1488,22 @@
           outputs="AmaltheaXMI.xsd#//OsAPIInstructions;XSDComplexTypeDefinition=203/XSDParticle/XSDModelGroup/XSDParticle=8"/>
       <nested inputs="amalthea.xcore#/EPackage/OsAPIInstructions/apiEnforcedMigration"
           outputs="AmaltheaXMI.xsd#//OsAPIInstructions;XSDComplexTypeDefinition=203/XSDParticle/XSDModelGroup/XSDParticle=9"/>
+      <nested inputs="amalthea.xcore#/EPackage/OsAPIInstructions/apiSuspendOsInterrupts"
+          outputs="AmaltheaXMI.xsd#//OsAPIInstructions;XSDComplexTypeDefinition=203/XSDParticle/XSDModelGroup/XSDParticle=10"/>
+      <nested inputs="amalthea.xcore#/EPackage/OsAPIInstructions/apiResumeOsInterrupts"
+          outputs="AmaltheaXMI.xsd#//OsAPIInstructions;XSDComplexTypeDefinition=203/XSDParticle/XSDModelGroup/XSDParticle=11"/>
+      <nested inputs="amalthea.xcore#/EPackage/OsAPIInstructions/apiRequestSpinlock"
+          outputs="AmaltheaXMI.xsd#//OsAPIInstructions;XSDComplexTypeDefinition=203/XSDParticle/XSDModelGroup/XSDParticle=12"/>
+      <nested inputs="amalthea.xcore#/EPackage/OsAPIInstructions/apiReleaseSpinlock"
+          outputs="AmaltheaXMI.xsd#//OsAPIInstructions;XSDComplexTypeDefinition=203/XSDParticle/XSDModelGroup/XSDParticle=13"/>
+      <nested inputs="amalthea.xcore#/EPackage/OsAPIInstructions/apiSenderReceiverRead"
+          outputs="AmaltheaXMI.xsd#//OsAPIInstructions;XSDComplexTypeDefinition=203/XSDParticle/XSDModelGroup/XSDParticle=14"/>
+      <nested inputs="amalthea.xcore#/EPackage/OsAPIInstructions/apiSenderReceiverWrite"
+          outputs="AmaltheaXMI.xsd#//OsAPIInstructions;XSDComplexTypeDefinition=203/XSDParticle/XSDModelGroup/XSDParticle=15"/>
+      <nested inputs="amalthea.xcore#/EPackage/OsAPIInstructions/apiSynchronousServerCallPoint"
+          outputs="AmaltheaXMI.xsd#//OsAPIInstructions;XSDComplexTypeDefinition=203/XSDParticle/XSDModelGroup/XSDParticle=16"/>
+      <nested inputs="amalthea.xcore#/EPackage/OsAPIInstructions/apiIocRead" outputs="AmaltheaXMI.xsd#//OsAPIInstructions;XSDComplexTypeDefinition=203/XSDParticle/XSDModelGroup/XSDParticle=17"/>
+      <nested inputs="amalthea.xcore#/EPackage/OsAPIInstructions/apiIocWrite" outputs="AmaltheaXMI.xsd#//OsAPIInstructions;XSDComplexTypeDefinition=203/XSDParticle/XSDModelGroup/XSDParticle=18"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/OsAPIInstructions" outputs="AmaltheaXMI.xsd#//OsAPIInstructions;XSDElementDeclaration=203"/>
     <nested inputs="amalthea.xcore#/EPackage/OsISRInstructions" outputs="AmaltheaXMI.xsd#//OsISRInstructions;XSDComplexTypeDefinition=204">

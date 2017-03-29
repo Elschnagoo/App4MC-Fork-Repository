@@ -14684,13 +14684,94 @@ public interface AmaltheaPackage extends EPackage {
 	int OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION = BASE_OBJECT_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Api Suspend Os Interrupts</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_API_INSTRUCTIONS__API_SUSPEND_OS_INTERRUPTS = BASE_OBJECT_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Api Resume Os Interrupts</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_API_INSTRUCTIONS__API_RESUME_OS_INTERRUPTS = BASE_OBJECT_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Api Request Spinlock</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_API_INSTRUCTIONS__API_REQUEST_SPINLOCK = BASE_OBJECT_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Api Release Spinlock</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_API_INSTRUCTIONS__API_RELEASE_SPINLOCK = BASE_OBJECT_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Api Sender Receiver Read</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_READ = BASE_OBJECT_FEATURE_COUNT + 14;
+
+	/**
+	 * The feature id for the '<em><b>Api Sender Receiver Write</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_WRITE = BASE_OBJECT_FEATURE_COUNT + 15;
+
+	/**
+	 * The feature id for the '<em><b>Api Synchronous Server Call Point</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_API_INSTRUCTIONS__API_SYNCHRONOUS_SERVER_CALL_POINT = BASE_OBJECT_FEATURE_COUNT + 16;
+
+	/**
+	 * The feature id for the '<em><b>Api Ioc Read</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_API_INSTRUCTIONS__API_IOC_READ = BASE_OBJECT_FEATURE_COUNT + 17;
+
+	/**
+	 * The feature id for the '<em><b>Api Ioc Write</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_API_INSTRUCTIONS__API_IOC_WRITE = BASE_OBJECT_FEATURE_COUNT + 18;
+
+	/**
 	 * The number of structural features of the '<em>Os API Instructions</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OS_API_INSTRUCTIONS_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 10;
+	int OS_API_INSTRUCTIONS_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 19;
 
 	/**
 	 * The number of operations of the '<em>Os API Instructions</em>' class.
@@ -29728,6 +29809,105 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getOsAPIInstructions_ApiEnforcedMigration();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSuspendOsInterrupts <em>Api Suspend Os Interrupts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Api Suspend Os Interrupts</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSuspendOsInterrupts()
+	 * @see #getOsAPIInstructions()
+	 * @generated
+	 */
+	EReference getOsAPIInstructions_ApiSuspendOsInterrupts();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiResumeOsInterrupts <em>Api Resume Os Interrupts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Api Resume Os Interrupts</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiResumeOsInterrupts()
+	 * @see #getOsAPIInstructions()
+	 * @generated
+	 */
+	EReference getOsAPIInstructions_ApiResumeOsInterrupts();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiRequestSpinlock <em>Api Request Spinlock</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Api Request Spinlock</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiRequestSpinlock()
+	 * @see #getOsAPIInstructions()
+	 * @generated
+	 */
+	EReference getOsAPIInstructions_ApiRequestSpinlock();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiReleaseSpinlock <em>Api Release Spinlock</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Api Release Spinlock</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiReleaseSpinlock()
+	 * @see #getOsAPIInstructions()
+	 * @generated
+	 */
+	EReference getOsAPIInstructions_ApiReleaseSpinlock();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSenderReceiverRead <em>Api Sender Receiver Read</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Api Sender Receiver Read</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSenderReceiverRead()
+	 * @see #getOsAPIInstructions()
+	 * @generated
+	 */
+	EReference getOsAPIInstructions_ApiSenderReceiverRead();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSenderReceiverWrite <em>Api Sender Receiver Write</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Api Sender Receiver Write</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSenderReceiverWrite()
+	 * @see #getOsAPIInstructions()
+	 * @generated
+	 */
+	EReference getOsAPIInstructions_ApiSenderReceiverWrite();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSynchronousServerCallPoint <em>Api Synchronous Server Call Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Api Synchronous Server Call Point</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSynchronousServerCallPoint()
+	 * @see #getOsAPIInstructions()
+	 * @generated
+	 */
+	EReference getOsAPIInstructions_ApiSynchronousServerCallPoint();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiIocRead <em>Api Ioc Read</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Api Ioc Read</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiIocRead()
+	 * @see #getOsAPIInstructions()
+	 * @generated
+	 */
+	EReference getOsAPIInstructions_ApiIocRead();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiIocWrite <em>Api Ioc Write</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Api Ioc Write</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiIocWrite()
+	 * @see #getOsAPIInstructions()
+	 * @generated
+	 */
+	EReference getOsAPIInstructions_ApiIocWrite();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.OsISRInstructions <em>Os ISR Instructions</em>}'.

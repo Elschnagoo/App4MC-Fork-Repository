@@ -2163,6 +2163,15 @@ class OsAPIInstructions extends BaseObject
 	contains Instructions apiClearEvent
 	contains Instructions apiActivateTask
 	contains Instructions apiEnforcedMigration
+	contains Instructions apiSuspendOsInterrupts
+	contains Instructions apiResumeOsInterrupts
+	contains Instructions apiRequestSpinlock
+	contains Instructions apiReleaseSpinlock
+	contains Instructions apiSenderReceiverRead
+	contains Instructions apiSenderReceiverWrite
+	contains Instructions apiSynchronousServerCallPoint
+	contains Instructions apiIocRead
+	contains Instructions apiIocWrite
 }
 
 class OsISRInstructions extends BaseObject
