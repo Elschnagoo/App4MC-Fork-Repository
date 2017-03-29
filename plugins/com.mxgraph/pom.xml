@@ -13,6 +13,6 @@
 
 	<artifactId>com.mxgraph</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<version>39.0.0-SNAPSHOT</version>
+	<version>3.0.0.7</version>
 
 </project>

@@ -1003,13 +1003,16 @@
               pattern="org\.eclipse\.app4mc\.multicore.*"/>
           <operand
               xsi:type="predicates:NamePredicate"
-              pattern="org\.ojalgo.*"/>
+              pattern="org\.ojalgo"/>
           <operand
               xsi:type="predicates:NamePredicate"
-              pattern="org\.jgrapht.*"/>
+              pattern="org\.jgrapht"/>
           <operand
               xsi:type="predicates:NamePredicate"
               pattern="org\.jenetics"/>
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="com\.mxgraph"/>
         </operand>
         <operand
             xsi:type="predicates:NaturePredicate"
