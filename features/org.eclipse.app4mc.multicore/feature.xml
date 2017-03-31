@@ -91,6 +91,12 @@ All rights reserved.
          version="0.0.0"/>
 
    <plugin
+         id="com.mxgraph"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
          id="org.eclipse.app4mc.multicore.help"
          download-size="0"
          install-size="0"

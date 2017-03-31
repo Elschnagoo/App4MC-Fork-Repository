@@ -65,6 +65,7 @@
 <unit id="org.apache.commons.io" version="2.2.0.v201405211200"/>
 <unit id="org.apache.commons.lang" version="2.6.0.v201404270220"/>
 <unit id="org.apache.commons.logging" version="1.1.1.v201101211721"/>
+<unit id="org.apache.commons.math" version="2.1.0.v201105210652"/>
 <unit id="org.apache.httpcomponents.httpclient" version="4.3.6.v201411290715B"/>
 <unit id="org.apache.httpcomponents.httpcore" version="4.3.3.v201411290715"/>
 <unit id="org.apache.xalan" version="2.7.1.v201005080400"/>
@@ -139,6 +140,20 @@
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.license.feature.group" version="1.0.1.v20140414-1359"/>
 <repository location="http://download.eclipse.org/cbi/updates/license/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.fx.ide.l10n.feature.feature.group" version="2.4.0.201605112122"/>
+<unit id="org.eclipse.fx.ide.rrobot.feature.feature.group" version="2.4.0.201605112122"/>
+<unit id="org.eclipse.fx.ide.feature.feature.group" version="2.4.0.201605112122"/>
+<unit id="org.eclipse.fx.ide.fxml.feature.feature.group" version="2.4.0.201605112122"/>
+<unit id="org.eclipse.fx.ide.basic.feature.feature.group" version="2.4.0.201605112122"/>
+<unit id="org.eclipse.fx.ide.converter.feature.feature.group" version="2.4.0.201605112122"/>
+<unit id="org.eclipse.fx.ide.fxgraph.feature.feature.group" version="2.4.0.201605112122"/>
+<unit id="org.eclipse.fx.ide.ldef.feature.feature.group" version="2.4.0.201605112122"/>
+<unit id="org.eclipse.fx.ide.gmod.feature.feature.group" version="2.4.0.201605112122"/>
+<unit id="org.eclipse.fx.ide.css.feature.feature.group" version="2.4.0.201605112122"/>
+<unit id="org.eclipse.fx.ide.pde.feature.feature.group" version="2.4.0.201605112122"/>
+<repository location="http://download.eclipse.org/efxclipse/updates-released/2.4.0/site"/>
 </location>
 </locations>
 </target>
