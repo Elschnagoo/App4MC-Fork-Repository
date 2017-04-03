@@ -10,6 +10,28 @@
             input-model-version="0.7.2"
             name="namespace"
             output-model-version="0.8.0">
+         <dependent-on-converter
+               id="converters.080.rootElement">
+         </dependent-on-converter>
+      </converter>
+      <converter
+            converter-class="org.eclipse.app4mc.amalthea.converters080.impl.RootElementConverter"
+            enabled="true"
+            id="converters.080.rootElement"
+            input-model-version="0.7.2"
+            name="rootElement"
+            output-model-version="0.8.0">
+      </converter>
+      <converter
+            converter-class="org.eclipse.app4mc.amalthea.converters080.impl.SwConverter"
+            enabled="true"
+            id="converters.080.sw"
+            input-model-version="0.7.2"
+            name="sw"
+            output-model-version="0.8.0">
+         <dependent-on-converter
+               id="converters.080.rootElement">
+         </dependent-on-converter>
       </converter>
    </extension>
 
