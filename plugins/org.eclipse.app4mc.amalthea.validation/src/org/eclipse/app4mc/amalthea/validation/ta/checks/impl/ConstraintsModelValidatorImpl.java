@@ -364,26 +364,4 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 			}
 		}
 	}
-
-	/*
-	 * Checks the value of property limit. The parameter must not be set lower than zero.
-	 * If this is the case, it will be handled as an error.
-	 */
-	public void checkTimeRequirementLimitLimitUnsigned(Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof TimeRequirementLimit) {
-				TimeRequirementLimit timeRequirementLimit = (TimeRequirementLimit) elem;
-				Time limit = timeRequirementLimit.getLimitValue();
-				if(null != limit) {
-					int value = limit.getValue();
-					if(0 > value) {
-						this.issueCreator.issue(limit, AmaltheaPackage.eINSTANCE.getTimeRequirementLimit_LimitValue(), value);
-					}
-				}
-			}
-		}
-	}
 }

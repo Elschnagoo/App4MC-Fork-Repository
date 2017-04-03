@@ -28,7 +28,6 @@ import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
-import org.eclipse.app4mc.amalthea.model.Requirement;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -1509,125 +1508,6 @@ public class ConstraintsModelValidatorTests {
 
 		// test
 		this.classUnderTest.checkDataAgeTimeMaximumUnsigned(amalthea);
-		
-		// evaluate
-		EasyMock.verify(this.issueCreator);
-	}
-	
-	/**
-	 * Test for validation method {@link ConstraintsModelValidator#checkTimeRequirementLimitLimitUnsigned(AMALTHEA)}
-	 */
-	@Test
-	public void test_checkTimeRequirementLimitLimitUnsigned_null() {
-		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
-		final Requirement requirement = AmaltheaFactory.eINSTANCE.createProcessRequirement();
-		final TimeRequirementLimit timeRequirementLimit = AmaltheaFactory.eINSTANCE.createTimeRequirementLimit();
-		final Time limit = null;
-		
-		amalthea.setConstraintsModel(constraintsModel);
-		constraintsModel.getRequirements().add(requirement);
-		requirement.setLimit(timeRequirementLimit);
-		timeRequirementLimit.setLimitValue(limit);
-		
-		EasyMock.replay(this.issueCreator);
-
-		// test
-		this.classUnderTest.checkTimeRequirementLimitLimitUnsigned(amalthea);
-		
-		// evaluate
-		EasyMock.verify(this.issueCreator);
-	}
-	
-	/**
-	 * Test for validation method {@link ConstraintsModelValidator#checkTimeRequirementLimitLimitUnsigned(AMALTHEA)}
-	 */
-	@Test
-	public void test_checkTimeRequirementLimitLimitUnsigned_negative() {
-		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
-		final Requirement requirement = AmaltheaFactory.eINSTANCE.createProcessRequirement();
-		final TimeRequirementLimit timeRequirementLimit = AmaltheaFactory.eINSTANCE.createTimeRequirementLimit();
-		final Time limit = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
-		final TimeUnit unit = TimeUnit.MS;
-		
-		amalthea.setConstraintsModel(constraintsModel);
-		constraintsModel.getRequirements().add(requirement);
-		requirement.setLimit(timeRequirementLimit);
-		timeRequirementLimit.setLimitValue(limit);
-		limit.setValue(value);
-		limit.setUnit(unit);
-		
-		this.issueCreator.issue(limit, AmaltheaPackage.eINSTANCE.getTimeRequirementLimit_LimitValue(), value);
-		
-		EasyMock.expectLastCall().times(1);
-		EasyMock.replay(this.issueCreator);
-
-		// test
-		this.classUnderTest.checkTimeRequirementLimitLimitUnsigned(amalthea);
-		
-		// evaluate
-		EasyMock.verify(this.issueCreator);
-	}
-	
-	/**
-	 * Test for validation method {@link ConstraintsModelValidator#checkTimeRequirementLimitLimitUnsigned(AMALTHEA)}
-	 */
-	@Test
-	public void test_checkTimeRequirementLimitLimitUnsigned_zero() {
-		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
-		final Requirement requirement = AmaltheaFactory.eINSTANCE.createProcessRequirement();
-		final TimeRequirementLimit timeRequirementLimit = AmaltheaFactory.eINSTANCE.createTimeRequirementLimit();
-		final Time limit = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
-		final TimeUnit unit = TimeUnit.MS;
-		
-		amalthea.setConstraintsModel(constraintsModel);
-		constraintsModel.getRequirements().add(requirement);
-		requirement.setLimit(timeRequirementLimit);
-		timeRequirementLimit.setLimitValue(limit);
-		limit.setValue(value);
-		limit.setUnit(unit);
-		
-		EasyMock.replay(this.issueCreator);
-
-		// test
-		this.classUnderTest.checkTimeRequirementLimitLimitUnsigned(amalthea);
-		
-		// evaluate
-		EasyMock.verify(this.issueCreator);
-	}
-	
-	/**
-	 * Test for validation method {@link ConstraintsModelValidator#checkTimeRequirementLimitLimitUnsigned(AMALTHEA)}
-	 */
-	@Test
-	public void test_checkTimeRequirementLimitLimitUnsigned_positive() {
-		// prepare
-		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
-		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
-		final Requirement requirement = AmaltheaFactory.eINSTANCE.createProcessRequirement();
-		final TimeRequirementLimit timeRequirementLimit = AmaltheaFactory.eINSTANCE.createTimeRequirementLimit();
-		final Time limit = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
-		final TimeUnit unit = TimeUnit.MS;
-		
-		amalthea.setConstraintsModel(constraintsModel);
-		constraintsModel.getRequirements().add(requirement);
-		requirement.setLimit(timeRequirementLimit);
-		timeRequirementLimit.setLimitValue(limit);
-		limit.setValue(value);
-		limit.setUnit(unit);
-		
-		EasyMock.replay(this.issueCreator);
-
-		// test
-		this.classUnderTest.checkTimeRequirementLimitLimitUnsigned(amalthea);
 		
 		// evaluate
 		EasyMock.verify(this.issueCreator);
