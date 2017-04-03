@@ -18,18 +18,13 @@ import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
 import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
-import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.Distribution;
-import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
-import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Synthetic;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TimestampList;
-import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.AbstractValidatorImpl;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
@@ -174,63 +169,6 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 					final double value = entry.getMultiplier();
 					if (value < 0) {
 						this.issueCreator.issue(clock, AmaltheaPackage.eINSTANCE.getClockMultiplierListEntry_Multiplier());
-					}
-				}
-			}
-		}
-	}
-
-	/*
-	 * Checks the values of property deviation. The parameters must not be set lower than zero.
-	 * If this is the case, it will be handled as an error.
-	 */
-	public void checkStimulusDeviationUnsigned(Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof Stimulus) {
-				Stimulus stimulus = (Stimulus) elem;
-				Deviation<Time> deviation = stimulus.getStimulusDeviation();
-				Time lowerBound = deviation.getLowerBound();
-				if(null != lowerBound) {
-					int value = lowerBound.getValue();
-					if(0 > value) {
-						this.issueCreator.issue(lowerBound, AmaltheaPackage.eINSTANCE.getDeviation_LowerBound(), value);
-					}
-				}
-				Time upperBound = deviation.getUpperBound();
-				if(null != upperBound) {
-					int value = upperBound.getValue();
-					if(0 > value) {
-						this.issueCreator.issue(upperBound, AmaltheaPackage.eINSTANCE.getDeviation_UpperBound(), value);
-					}
-				}
-				Distribution<Time> distribution = deviation.getDistribution();
-				if(distribution instanceof WeibullEstimators) {
-					WeibullEstimators<Time> weibull = (WeibullEstimators<Time>) distribution;
-					Time mean = weibull.getMean();
-					if(null != mean) {
-						int value = mean.getValue();
-						if(0 > value) {
-							this.issueCreator.issue(mean, AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean(), value);
-						}
-					}
-				} else if(distribution instanceof GaussDistribution) {
-					GaussDistribution<Time> gauss = (GaussDistribution<Time>) distribution;
-					Time mean = gauss.getMean();
-					if(null != mean) {
-						int value = mean.getValue();
-						if(0 > value) {
-							this.issueCreator.issue(mean, AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean(), value);
-						}
-					}
-					Time sd = gauss.getSd();
-					if(null != sd) {
-						int value = sd.getValue();
-						if(0 > value) {
-							this.issueCreator.issue(sd, AmaltheaPackage.eINSTANCE.getGaussDistribution_Sd(), value);
-						}
 					}
 				}
 			}
@@ -415,28 +353,6 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 	}
 
 	/*
-	 * Checks the value of property shift. The parameter must not be set lower than zero.
-	 * If this is the case, it will be handled as an error.
-	 */
-	public void checkClockTriangleFunctionShiftUnsigned(Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof ClockTriangleFunction) {
-				ClockTriangleFunction clockTriangleFunction = (ClockTriangleFunction) elem;
-				Time shift = clockTriangleFunction.getShift();
-				if(null != shift) {
-					int value = shift.getValue();
-					if(0 > value) {
-						this.issueCreator.issue(shift, AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Shift(), value);
-					}
-				}
-			}
-		}
-	}
-
-	/*
 	 * Checks the value of property period. The parameter must not be set lower than zero.
 	 * If this is the case, it will be handled as an error.
 	 */
@@ -452,28 +368,6 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 					int value = period.getValue();
 					if(0 > value) {
 						this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Period(), value);
-					}
-				}
-			}
-		}
-	}
-
-	/*
-	 * Checks the value of property shift. The parameter must not be set lower than zero.
-	 * If this is the case, it will be handled as an error.
-	 */
-	public void checkClockSinusFunctionShiftUnsigned(Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof ClockSinusFunction) {
-				ClockSinusFunction clockSinusFunction = (ClockSinusFunction) elem;
-				Time shift = clockSinusFunction.getShift();
-				if(null != shift) {
-					int value = shift.getValue();
-					if(0 > value) {
-						this.issueCreator.issue(shift, AmaltheaPackage.eINSTANCE.getClockSinusFunction_Shift(), value);
 					}
 				}
 			}

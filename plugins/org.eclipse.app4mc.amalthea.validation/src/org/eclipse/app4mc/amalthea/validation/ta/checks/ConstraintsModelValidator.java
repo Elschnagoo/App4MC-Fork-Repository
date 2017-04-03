@@ -105,9 +105,4 @@ public class ConstraintsModelValidator extends AbstractCheckValidator implements
 	public void checkDataAgeTimeMaximumUnsigned(final Amalthea amalthea) {
 		this.constraintsModelValidatorImpl.checkDataAgeTimeMaximumUnsigned(amalthea);
 	}
-	
-	@Check(constraint = "TimeRequirementLimitLimitUnsigned", categories = { "TAConstraint" })
-	public void checkTimeRequirementLimitLimitUnsigned(final Amalthea amalthea) {
-		this.constraintsModelValidatorImpl.checkTimeRequirementLimitLimitUnsigned(amalthea);
-	}
 }

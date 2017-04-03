@@ -157,14 +157,6 @@
     severity="Error"
     message="Value must not be negative but was: {0}!"
     categories="TAConstraint"/>
-    
-<constraints
-    id="TimeRequirementLimitLimitUnsigned"
-    label="Limit Unsigned"
-    description="Checks if the value of property &quot;limit&quot; is not less than zero"
-    severity="Error"
-    message="Value must not be negative but was: {0}!"
-    categories="TAConstraint"/>
 <!--end CONSTRAINTS Model -->
 
 <!--start HW Model -->
@@ -247,14 +239,6 @@
     severity="Error"
     message="The parameter of ClockSinusFunction is invalid!"
     categories="TAConstraint"/>
-
-<constraints
-    id="StimulusDeviationUnsigned"
-    label="Stimulus Deviation Unsigned"
-    description="Checks if the values of property &quot;deviation&quot; are not less than zero"
-    severity="Error"
-    message="Value must not be negative but was: {0}!"
-    categories="TAConstraint"/>
     
 <constraints
     id="PeriodicOffsetUnsigned"
@@ -318,13 +302,6 @@
     categories="TAConstraint"/>
     
 <constraints
-    id="ClockTriangleFunctionShiftUnsigned"
-    label="ClockTriangleFunction Shift Unsigned"
-    description="Checks if the value of property &quot;shift&quot; is not less than zero"
-    severity="Error"
-    message="Value must not be negative but was: {0}!"
-    categories="TAConstraint"/>
-<constraints
     id="ClockTriangleFunctionPeriodUnsigned"
     label="ClockTriangleFunction Period Unsigned"
     description="Checks if the value of property &quot;period&quot; is not less than zero"
@@ -332,13 +309,6 @@
     message="Value must not be negative but was: {0}!"
     categories="TAConstraint"/>
     
-<constraints
-    id="ClockSinusFunctionShiftUnsigned"
-    label="ClockSinusFunction Shift Unsigned"
-    description="Checks if the value of property &quot;shift&quot; is not less than zero"
-    severity="Error"
-    message="Value must not be negative but was: {0}!"
-    categories="TAConstraint"/>
 <constraints
     id="ClockSinusFunctionPeriodUnsigned"
     label="ClockSinusFunction Period Unsigned"

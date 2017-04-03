@@ -60,11 +60,6 @@ public class StimuliModelValidator extends AbstractCheckValidator implements Iss
 		this.stimuliModelValidator.checkClockMultiplierList(amalthea);
 	}
 	
-	@Check(constraint = "StimulusDeviationUnsigned", categories = { "TAConstraint" })
-	public void checkStimulusDeviationUnsigned(final Amalthea amalthea) {
-		this.stimuliModelValidator.checkStimulusDeviationUnsigned(amalthea);
-	}
-	
 	@Check(constraint = "PeriodicOffsetUnsigned", categories = { "TAConstraint" })
 	public void checkPeriodicOffsetUnsigned(final Amalthea amalthea) {
 		this.stimuliModelValidator.checkPeriodicOffsetUnsigned(amalthea);
@@ -105,19 +100,9 @@ public class StimuliModelValidator extends AbstractCheckValidator implements Iss
 		this.stimuliModelValidator.checkArrivalCurveEntryUpperUnsigned(amalthea);
 	}
 	
-	@Check(constraint = "ClockTriangleFunctionShiftUnsigned", categories = { "TAConstraint" })
-	public void checkClockTriangleFunctionShiftUnsigned(final Amalthea amalthea) {
-		this.stimuliModelValidator.checkClockTriangleFunctionShiftUnsigned(amalthea);
-	}
-	
 	@Check(constraint = "ClockTriangleFunctionPeriodUnsigned", categories = { "TAConstraint" })
 	public void checkClockTriangleFunctionPeriodUnsigned(final Amalthea amalthea) {
 		this.stimuliModelValidator.checkClockTriangleFunctionPeriodUnsigned(amalthea);
-	}
-	
-	@Check(constraint = "ClockSinusFunctionShiftUnsigned", categories = { "TAConstraint" })
-	public void checkClockSinusFunctionShiftUnsigned(final Amalthea amalthea) {
-		this.stimuliModelValidator.checkClockSinusFunctionShiftUnsigned(amalthea);
 	}
 	
 	@Check(constraint = "ClockSinusFunctionPeriodUnsigned", categories = { "TAConstraint" })
