@@ -17,6 +17,8 @@ import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
+import org.eclipse.app4mc.amalthea.model.DataAgeConstraint;
+import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
@@ -25,6 +27,8 @@ import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
+import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
+import org.eclipse.app4mc.amalthea.model.Requirement;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -316,7 +320,7 @@ public class ConstraintsModelValidatorTests {
 		tolerance.setValue(value);
 		tolerance.setUnit(unit);
 		
-		this.issueCreator.issue(synchronizationConstraint, AmaltheaPackage.eINSTANCE.getSynchronizationConstraint_Tolerance(), value);
+		this.issueCreator.issue(tolerance, AmaltheaPackage.eINSTANCE.getSynchronizationConstraint_Tolerance(), value);
 		
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -427,7 +431,7 @@ public class ConstraintsModelValidatorTests {
 		upper.setValue(value);
 		upper.setUnit(unit);
 		
-		this.issueCreator.issue(delayConstraint, AmaltheaPackage.eINSTANCE.getDelayConstraint_Upper(), value);
+		this.issueCreator.issue(upper, AmaltheaPackage.eINSTANCE.getDelayConstraint_Upper(), value);
 		
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -538,7 +542,7 @@ public class ConstraintsModelValidatorTests {
 		lower.setValue(value);
 		lower.setUnit(unit);
 		
-		this.issueCreator.issue(delayConstraint, AmaltheaPackage.eINSTANCE.getDelayConstraint_Lower(), value);
+		this.issueCreator.issue(lower, AmaltheaPackage.eINSTANCE.getDelayConstraint_Lower(), value);
 		
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -649,7 +653,7 @@ public class ConstraintsModelValidatorTests {
 		minimum.setValue(value);
 		minimum.setUnit(unit);
 		
-		this.issueCreator.issue(eventChainLatencyConstraint, AmaltheaPackage.eINSTANCE.getEventChainLatencyConstraint_Minimum(), value);
+		this.issueCreator.issue(minimum, AmaltheaPackage.eINSTANCE.getEventChainLatencyConstraint_Minimum(), value);
 		
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -760,7 +764,7 @@ public class ConstraintsModelValidatorTests {
 		maximum.setValue(value);
 		maximum.setUnit(unit);
 		
-		this.issueCreator.issue(eventChainLatencyConstraint, AmaltheaPackage.eINSTANCE.getEventChainLatencyConstraint_Maximum(), value);
+		this.issueCreator.issue(maximum, AmaltheaPackage.eINSTANCE.getEventChainLatencyConstraint_Maximum(), value);
 		
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -823,6 +827,807 @@ public class ConstraintsModelValidatorTests {
 
 		// test
 		this.classUnderTest.checkEventChainLatencyConstraintMaximumUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintLowerUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintLowerUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time lower = null;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setLower(lower);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintLowerUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintLowerUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintLowerUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setLower(lower);
+		lower.setValue(value);
+		lower.setUnit(unit);
+		
+		this.issueCreator.issue(lower, AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Lower(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintLowerUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintLowerUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintLowerUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setLower(lower);
+		lower.setValue(value);
+		lower.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintLowerUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintLowerUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintLowerUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setLower(lower);
+		lower.setValue(value);
+		lower.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintLowerUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintUpperUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintUpperUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time upper = null;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setUpper(upper);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintUpperUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintUpperUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintUpperUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setUpper(upper);
+		upper.setValue(value);
+		upper.setUnit(unit);
+		
+		this.issueCreator.issue(upper, AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Upper(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintUpperUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintUpperUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintUpperUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setUpper(upper);
+		upper.setValue(value);
+		upper.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintUpperUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintUpperUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintUpperUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setUpper(upper);
+		upper.setValue(value);
+		upper.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintUpperUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintJitterUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintJitterUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time jitter = null;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setJitter(jitter);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintJitterUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintJitterUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintJitterUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time jitter = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setJitter(jitter);
+		jitter.setValue(value);
+		jitter.setUnit(unit);
+		
+		this.issueCreator.issue(jitter, AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Jitter(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintJitterUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintJitterUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintJitterUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time jitter = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setJitter(jitter);
+		jitter.setValue(value);
+		jitter.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintJitterUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintJitterUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintJitterUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time jitter = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setJitter(jitter);
+		jitter.setValue(value);
+		jitter.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintJitterUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintPeriodUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time period = null;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setPeriod(period);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintPeriodUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time period = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setPeriod(period);
+		period.setValue(value);
+		period.setUnit(unit);
+		
+		this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Period(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintPeriodUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time period = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setPeriod(period);
+		period.setValue(value);
+		period.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkRepetitionConstraintPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRepetitionConstraintPeriodUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+		final Time period = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getTimingConstraints().add(repetitionConstraint);
+		repetitionConstraint.setPeriod(period);
+		period.setValue(value);
+		period.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRepetitionConstraintPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkDataAgeTimeMinimumUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkDataAgeTimeMinimumUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
+		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
+		final Time minimum = null;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getDataAgeConstraints().add(dataAgeConstraint);
+		dataAgeConstraint.setDataAge(dataAgeTime);
+		dataAgeTime.setMinimumTime(minimum);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkDataAgeTimeMinimumUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkDataAgeTimeMinimumUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkDataAgeTimeMinimumUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
+		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
+		final Time minimum = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getDataAgeConstraints().add(dataAgeConstraint);
+		dataAgeConstraint.setDataAge(dataAgeTime);
+		dataAgeTime.setMinimumTime(minimum);
+		minimum.setValue(value);
+		minimum.setUnit(unit);
+		
+		this.issueCreator.issue(minimum, AmaltheaPackage.eINSTANCE.getDataAgeTime_MinimumTime(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkDataAgeTimeMinimumUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkDataAgeTimeMinimumUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkDataAgeTimeMinimumUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
+		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
+		final Time minimum = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getDataAgeConstraints().add(dataAgeConstraint);
+		dataAgeConstraint.setDataAge(dataAgeTime);
+		dataAgeTime.setMinimumTime(minimum);
+		minimum.setValue(value);
+		minimum.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkDataAgeTimeMinimumUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkDataAgeTimeMinimumUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkDataAgeTimeMinimumUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
+		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
+		final Time minimum = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getDataAgeConstraints().add(dataAgeConstraint);
+		dataAgeConstraint.setDataAge(dataAgeTime);
+		dataAgeTime.setMinimumTime(minimum);
+		minimum.setValue(value);
+		minimum.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkDataAgeTimeMinimumUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkDataAgeTimeMaximumUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkDataAgeTimeMaximumUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
+		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
+		final Time maximum = null;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getDataAgeConstraints().add(dataAgeConstraint);
+		dataAgeConstraint.setDataAge(dataAgeTime);
+		dataAgeTime.setMaximumTime(maximum);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkDataAgeTimeMaximumUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkDataAgeTimeMaximumUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkDataAgeTimeMaximumUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
+		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
+		final Time maximum = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getDataAgeConstraints().add(dataAgeConstraint);
+		dataAgeConstraint.setDataAge(dataAgeTime);
+		dataAgeTime.setMaximumTime(maximum);
+		maximum.setValue(value);
+		maximum.setUnit(unit);
+		
+		this.issueCreator.issue(maximum, AmaltheaPackage.eINSTANCE.getDataAgeTime_MaximumTime(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkDataAgeTimeMaximumUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkDataAgeTimeMaximumUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkDataAgeTimeMaximumUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
+		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
+		final Time maximum = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getDataAgeConstraints().add(dataAgeConstraint);
+		dataAgeConstraint.setDataAge(dataAgeTime);
+		dataAgeTime.setMaximumTime(maximum);
+		maximum.setValue(value);
+		maximum.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkDataAgeTimeMaximumUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkDataAgeTimeMaximumUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkDataAgeTimeMaximumUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
+		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
+		final Time maximum = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getDataAgeConstraints().add(dataAgeConstraint);
+		dataAgeConstraint.setDataAge(dataAgeTime);
+		dataAgeTime.setMaximumTime(maximum);
+		maximum.setValue(value);
+		maximum.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkDataAgeTimeMaximumUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkTimeRequirementLimitLimitUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkTimeRequirementLimitLimitUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final Requirement requirement = AmaltheaFactory.eINSTANCE.createProcessRequirement();
+		final TimeRequirementLimit timeRequirementLimit = AmaltheaFactory.eINSTANCE.createTimeRequirementLimit();
+		final Time limit = null;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getRequirements().add(requirement);
+		requirement.setLimit(timeRequirementLimit);
+		timeRequirementLimit.setLimitValue(limit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkTimeRequirementLimitLimitUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkTimeRequirementLimitLimitUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkTimeRequirementLimitLimitUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final Requirement requirement = AmaltheaFactory.eINSTANCE.createProcessRequirement();
+		final TimeRequirementLimit timeRequirementLimit = AmaltheaFactory.eINSTANCE.createTimeRequirementLimit();
+		final Time limit = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getRequirements().add(requirement);
+		requirement.setLimit(timeRequirementLimit);
+		timeRequirementLimit.setLimitValue(limit);
+		limit.setValue(value);
+		limit.setUnit(unit);
+		
+		this.issueCreator.issue(limit, AmaltheaPackage.eINSTANCE.getTimeRequirementLimit_LimitValue(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkTimeRequirementLimitLimitUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkTimeRequirementLimitLimitUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkTimeRequirementLimitLimitUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final Requirement requirement = AmaltheaFactory.eINSTANCE.createProcessRequirement();
+		final TimeRequirementLimit timeRequirementLimit = AmaltheaFactory.eINSTANCE.createTimeRequirementLimit();
+		final Time limit = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getRequirements().add(requirement);
+		requirement.setLimit(timeRequirementLimit);
+		timeRequirementLimit.setLimitValue(limit);
+		limit.setValue(value);
+		limit.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkTimeRequirementLimitLimitUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link ConstraintsModelValidator#checkTimeRequirementLimitLimitUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkTimeRequirementLimitLimitUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
+		final Requirement requirement = AmaltheaFactory.eINSTANCE.createProcessRequirement();
+		final TimeRequirementLimit timeRequirementLimit = AmaltheaFactory.eINSTANCE.createTimeRequirementLimit();
+		final Time limit = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setConstraintsModel(constraintsModel);
+		constraintsModel.getRequirements().add(requirement);
+		requirement.setLimit(timeRequirementLimit);
+		timeRequirementLimit.setLimitValue(limit);
+		limit.setValue(value);
+		limit.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkTimeRequirementLimitLimitUnsigned(amalthea);
 		
 		// evaluate
 		EasyMock.verify(this.issueCreator);

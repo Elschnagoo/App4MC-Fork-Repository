@@ -99,5 +99,39 @@ public class SWModelValidator extends AbstractCheckValidator implements IssueCre
 	public void checkEnforcedMigrationResourceOwner(final Amalthea amalthea) {
 		this.softwareModelValidatorImpl.checkEnforcedMigrationResourceOwner(amalthea);
 	}
+	
+	@Check(constraint = "RunnableDeadlineUnsigned", categories = { "TAConstraint" })
+	public void checkRunnableDeadlineUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkRunnableDeadlineUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "PeriodicActivationMinUnsigned", categories = { "TAConstraint" })
+	public void checkPeriodicActivationMinUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkPeriodicActivationMinUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "PeriodicActivationMaxUnsigned", categories = { "TAConstraint" })
+	public void checkPeriodicActivationMaxUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkPeriodicActivationMaxUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "PeriodicActivationOffsetUnsigned", categories = { "TAConstraint" })
+	public void checkPeriodicActivationOffsetUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkPeriodicActivationOffsetUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "PeriodicActivationDeadlineUnsigned", categories = { "TAConstraint" })
+	public void checkPeriodicActivationDeadlineUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkPeriodicActivationDeadlineUnsigned(amalthea);
+	}
 
+	@Check(constraint = "SingleActivationMinUnsigned", categories = { "TAConstraint" })
+	public void checkSingleActivationMinUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkSingleActivationMinUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "SingleActivationMaxUnsigned", categories = { "TAConstraint" })
+	public void checkSingleActivationMaxUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkSingleActivationMaxUnsigned(amalthea);
+	}
 }

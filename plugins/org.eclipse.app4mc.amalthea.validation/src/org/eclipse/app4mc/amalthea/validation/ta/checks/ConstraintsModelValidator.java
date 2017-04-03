@@ -75,4 +75,39 @@ public class ConstraintsModelValidator extends AbstractCheckValidator implements
 	public void checkEventChainLatencyConstraintMaximumUnsigned(final Amalthea amalthea) {
 		this.constraintsModelValidatorImpl.checkEventChainLatencyConstraintMaximumUnsigned(amalthea);
 	}
+	
+	@Check(constraint = "RepetitionConstraintLowerUnsigned", categories = { "TAConstraint" })
+	public void checkRepetitionConstraintLowerUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkRepetitionConstraintLowerUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "RepetitionConstraintUpperUnsigned", categories = { "TAConstraint" })
+	public void checkRepetitionConstraintUpperUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkRepetitionConstraintUpperUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "RepetitionConstraintJitterUnsigned", categories = { "TAConstraint" })
+	public void checkRepetitionConstraintJitterUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkRepetitionConstraintJitterUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "RepetitionConstraintPeriodUnsigned", categories = { "TAConstraint" })
+	public void checkRepetitionConstraintPeriodUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkRepetitionConstraintPeriodUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "DataAgeTimeMinimumUnsigned", categories = { "TAConstraint" })
+	public void checkDataAgeTimeMinimumUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkDataAgeTimeMinimumUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "DataAgeTimeMaximumUnsigned", categories = { "TAConstraint" })
+	public void checkDataAgeTimeMaximumUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkDataAgeTimeMaximumUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "TimeRequirementLimitLimitUnsigned", categories = { "TAConstraint" })
+	public void checkTimeRequirementLimitLimitUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkTimeRequirementLimitLimitUnsigned(amalthea);
+	}
 }

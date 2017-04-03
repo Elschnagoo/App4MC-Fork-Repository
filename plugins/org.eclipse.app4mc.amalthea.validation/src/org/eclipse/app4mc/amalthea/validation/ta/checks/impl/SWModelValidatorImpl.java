@@ -28,6 +28,7 @@ import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
+import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
@@ -35,8 +36,10 @@ import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
+import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
+import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.AbstractValidatorImpl;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;
@@ -566,4 +569,157 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 		}
 	}
 
+	/*
+	 * Checks the value of property deadline. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkRunnableDeadlineUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof Runnable) {
+				Runnable runnable = (Runnable) elem;
+				Time deadline = runnable.getDeadline();
+				if(null != deadline) {
+					int value = deadline.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(deadline, AmaltheaPackage.eINSTANCE.getRunnable_Deadline(), value);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the value of property min. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkPeriodicActivationMinUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof PeriodicActivation) {
+				PeriodicActivation periodicActivation = (PeriodicActivation) elem;
+				Time min = periodicActivation.getMin();
+				if(null != min) {
+					int value = min.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(min, AmaltheaPackage.eINSTANCE.getPeriodicActivation_Min(), value);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the value of property max. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkPeriodicActivationMaxUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof PeriodicActivation) {
+				PeriodicActivation periodicActivation = (PeriodicActivation) elem;
+				Time max = periodicActivation.getMax();
+				if(null != max) {
+					int value = max.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(max, AmaltheaPackage.eINSTANCE.getPeriodicActivation_Max(), value);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the value of property offset. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkPeriodicActivationOffsetUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof PeriodicActivation) {
+				PeriodicActivation periodicActivation = (PeriodicActivation) elem;
+				Time offset = periodicActivation.getOffset();
+				if(null != offset) {
+					int value = offset.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getPeriodicActivation_Offset(), value);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the value of property deadline. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkPeriodicActivationDeadlineUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof PeriodicActivation) {
+				PeriodicActivation periodicActivation = (PeriodicActivation) elem;
+				Time deadline = periodicActivation.getDeadline();
+				if(null != deadline) {
+					int value = deadline.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(deadline, AmaltheaPackage.eINSTANCE.getPeriodicActivation_Deadline(), value);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the value of property min. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkSingleActivationMinUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof SingleActivation) {
+				SingleActivation singleActivation = (SingleActivation) elem;
+				Time min = singleActivation.getMin();
+				if(null != min) {
+					int value = min.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(min, AmaltheaPackage.eINSTANCE.getSingleActivation_Min(), value);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the value of property max. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkSingleActivationMaxUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof SingleActivation) {
+				SingleActivation singleActivation = (SingleActivation) elem;
+				Time max = singleActivation.getMax();
+				if(null != max) {
+					int value = max.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(max, AmaltheaPackage.eINSTANCE.getSingleActivation_Max(), value);
+					}
+				}
+			}
+		}
+	}
 }

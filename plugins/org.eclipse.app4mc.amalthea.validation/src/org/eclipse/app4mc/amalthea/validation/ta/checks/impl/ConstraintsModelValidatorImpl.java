@@ -18,11 +18,13 @@ import java.util.Set;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.LimitType;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
+import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
 import org.eclipse.app4mc.amalthea.model.RequirementLimit;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -136,7 +138,7 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				if(null != tolerance) {
 					int value = tolerance.getValue();
 					if(0 > value) {
-						this.issueCreator.issue(synchronizationConstraint, AmaltheaPackage.eINSTANCE.getSynchronizationConstraint_Tolerance(), value);
+						this.issueCreator.issue(tolerance, AmaltheaPackage.eINSTANCE.getSynchronizationConstraint_Tolerance(), value);
 					}
 				}
 			}
@@ -158,7 +160,7 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				if(null != upper) {
 					int value = upper.getValue();
 					if(0 > value) {
-						this.issueCreator.issue(delayConstraint, AmaltheaPackage.eINSTANCE.getDelayConstraint_Upper(), value);
+						this.issueCreator.issue(upper, AmaltheaPackage.eINSTANCE.getDelayConstraint_Upper(), value);
 					}
 				}
 			}
@@ -180,7 +182,7 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				if(null != lower) {
 					int value = lower.getValue();
 					if(0 > value) {
-						this.issueCreator.issue(delayConstraint, AmaltheaPackage.eINSTANCE.getDelayConstraint_Lower(), value);
+						this.issueCreator.issue(lower, AmaltheaPackage.eINSTANCE.getDelayConstraint_Lower(), value);
 					}
 				}
 			}
@@ -202,7 +204,7 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				if(null != minimum) {
 					int value = minimum.getValue();
 					if(0 > value) {
-						this.issueCreator.issue(eventChainLatencyConstraint, AmaltheaPackage.eINSTANCE.getEventChainLatencyConstraint_Minimum(), value);
+						this.issueCreator.issue(minimum, AmaltheaPackage.eINSTANCE.getEventChainLatencyConstraint_Minimum(), value);
 					}
 				}
 			}
@@ -224,7 +226,161 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				if(null != maximum) {
 					int value = maximum.getValue();
 					if(0 > value) {
-						this.issueCreator.issue(eventChainLatencyConstraint, AmaltheaPackage.eINSTANCE.getEventChainLatencyConstraint_Maximum(), value);
+						this.issueCreator.issue(maximum, AmaltheaPackage.eINSTANCE.getEventChainLatencyConstraint_Maximum(), value);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the value of property lower. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkRepetitionConstraintLowerUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof RepetitionConstraint) {
+				RepetitionConstraint repetitionConstraint = (RepetitionConstraint) elem;
+				Time lower = repetitionConstraint.getLower();
+				if(null != lower) {
+					int value = lower.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(lower, AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Lower(), value);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the value of property upper. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkRepetitionConstraintUpperUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof RepetitionConstraint) {
+				RepetitionConstraint repetitionConstraint = (RepetitionConstraint) elem;
+				Time upper = repetitionConstraint.getUpper();
+				if(null != upper) {
+					int value = upper.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(upper, AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Upper(), value);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the value of property jitter. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkRepetitionConstraintJitterUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof RepetitionConstraint) {
+				RepetitionConstraint repetitionConstraint = (RepetitionConstraint) elem;
+				Time jitter = repetitionConstraint.getJitter();
+				if(null != jitter) {
+					int value = jitter.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(jitter, AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Jitter(), value);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the value of property period. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkRepetitionConstraintPeriodUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof RepetitionConstraint) {
+				RepetitionConstraint repetitionConstraint = (RepetitionConstraint) elem;
+				Time period = repetitionConstraint.getPeriod();
+				if(null != period) {
+					int value = period.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Period(), value);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the value of property minimum. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkDataAgeTimeMinimumUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof DataAgeTime) {
+				DataAgeTime dataAgeTime = (DataAgeTime) elem;
+				Time minimum = dataAgeTime.getMinimumTime();
+				if(null != minimum) {
+					int value = minimum.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(minimum, AmaltheaPackage.eINSTANCE.getDataAgeTime_MinimumTime(), value);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the value of property maximum. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkDataAgeTimeMaximumUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof DataAgeTime) {
+				DataAgeTime dataAgeTime = (DataAgeTime) elem;
+				Time maximum = dataAgeTime.getMaximumTime();
+				if(null != maximum) {
+					int value = maximum.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(maximum, AmaltheaPackage.eINSTANCE.getDataAgeTime_MaximumTime(), value);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the value of property limit. The parameter must not be set lower than zero.
+	 * If this is the case, it will be handled as an error.
+	 */
+	public void checkTimeRequirementLimitLimitUnsigned(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof TimeRequirementLimit) {
+				TimeRequirementLimit timeRequirementLimit = (TimeRequirementLimit) elem;
+				Time limit = timeRequirementLimit.getLimitValue();
+				if(null != limit) {
+					int value = limit.getValue();
+					if(0 > value) {
+						this.issueCreator.issue(limit, AmaltheaPackage.eINSTANCE.getTimeRequirementLimit_LimitValue(), value);
 					}
 				}
 			}
