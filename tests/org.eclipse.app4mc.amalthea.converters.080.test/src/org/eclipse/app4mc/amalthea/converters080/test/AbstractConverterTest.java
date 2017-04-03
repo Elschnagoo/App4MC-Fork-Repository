@@ -422,9 +422,15 @@ public abstract class AbstractConverterTest {
 			/*- verifying the namespace */
 			namespaceVerification(document);
 
+			modelFileVerificationHook(document);
+
 		}
 
 	}
 
+
+	protected void modelFileVerificationHook(final Document document) {
+
+	}
 
 }
