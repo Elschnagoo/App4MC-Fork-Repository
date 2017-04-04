@@ -16,6 +16,8 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
+import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.SWModel;
@@ -23,6 +25,7 @@ import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.core.runtime.IProgressMonitor;
 
 /**
@@ -53,10 +56,29 @@ public class CheckActivations {
 		// the activations; correspondingly, activations must be created and
 		// referenced by runnables
 		PartLog.getInstance().setLogName("Activation Analysis");
-		final AmaltheaFactory instance2 = AmaltheaFactory.eINSTANCE;
 		for (final Stimulus stim : Stim.getStimuli()) {
-			final Activation act = instance2.createPeriodicActivation();
+			final PeriodicActivation act = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 			act.setName(stim.getName());
+			if (stim instanceof Periodic) {
+				final Periodic per = (Periodic) stim;
+				if (null != per.getRecurrence()) {
+					final Time t = AmaltheaFactory.eINSTANCE.createTime();
+					t.setUnit(per.getRecurrence().getUnit());
+					t.setValue(per.getRecurrence().getValue());
+					act.setMax(t);
+					final Time t2 = AmaltheaFactory.eINSTANCE.createTime();
+					t2.setUnit(per.getRecurrence().getUnit());
+					t2.setValue(per.getRecurrence().getValue());
+					act.setMin(t2);
+				}
+				if (null != per.getOffset()) {
+					final Time t3 = AmaltheaFactory.eINSTANCE.createTime();
+					t3.setUnit(per.getOffset().getUnit());
+					t3.setValue(per.getOffset().getValue());
+					act.setOffset(t3);
+				}
+
+			}
 			swm.getActivations().add(act);
 		}
 		for (final Task t : swm.getTasks()) {
