@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <tasks name="Task1" priority="0" osekTaskGroup="0" multipleTaskActivationLimit="0">
+      <callGraph>
+        <graphEntries xsi:type="am:ProbabiltitySwitch">
+          <entries probability="0.0">
+            <items xsi:type="am:CallSequence"/>
+            <items xsi:type="am:ProbabiltitySwitch">
+              <entries probability="0.0">
+                <items xsi:type="am:ModeSwitch"/>
+              </entries>
+            </items>
+          </entries>
+          <entries probability="0.0"/>
+        </graphEntries>
+        <graphEntries xsi:type="am:ModeSwitch">
+          <entries>
+            <items xsi:type="am:ProbabiltitySwitch"/>
+            <items xsi:type="am:ModeSwitch">
+              <entries>
+                <items xsi:type="am:ProbabiltitySwitch"/>
+              </entries>
+              <defaultEntry>
+                <items xsi:type="am:ProbabiltitySwitch"/>
+              </defaultEntry>
+            </items>
+          </entries>
+          <defaultEntry>
+            <items xsi:type="am:ProbabiltitySwitch"/>
+          </defaultEntry>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+  </swModel>
+</am:Amalthea>

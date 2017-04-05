@@ -47,9 +47,43 @@ public class SwConverter extends AbstractConverter {
 
 		update_DataSize(rootElement);
 
+		update_ProbabiltitySwitch(rootElement);
+
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
 	}
 
+
+	/**
+	 * Below migration is for the metamodel change : ProbabiltitySwitch class changed to ProbabilitySwitch (typo fixed)
+	 *
+	 * @param rootElement
+	 */
+	private void update_ProbabiltitySwitch(final Element rootElement) {
+
+		final StringBuffer xpathBuffer = new StringBuffer();
+
+		xpathBuffer.append("./swModel/tasks//*[@xsi:type=\"am:ProbabiltitySwitch\"]");
+		xpathBuffer.append("|");
+		xpathBuffer.append("./swModel/isrs//*[@xsi:type=\"am:ProbabilitySwitch\"]");
+
+
+		final List<Element> elements = this.helper.getXpathResult(rootElement, xpathBuffer.toString(), Element.class,
+				this.helper.getGenericNS("xsi"));
+
+		for (final Element probabilitySwitchElement : elements) {
+
+			final Attribute attribute = probabilitySwitchElement.getAttribute("type", this.helper.getGenericNS("xsi"));
+
+			if (attribute != null) {
+				attribute.setValue("am:ProbabilitySwitch");
+
+			}
+
+
+		}
+
+
+	}
 
 	/**
 	 * Below migration is for the metamodel change : Bug 513969 (Inconsistent unit names for data size)
