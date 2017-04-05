@@ -919,36 +919,34 @@
     <labels name="WheelSpeedVoltage2" constant="false" bVolatile="false" dataStability="noProtection">
       <size value="16" unit="bit"/>
     </labels>
-    <processPrototypes name="ESSP0" priority="0" firstRunnable="VehicleStateMonitor?type=Runnable" lastRunnable="EcuBrakeActuator?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
-      <runnableCalls runnable="VehicleStateMonitor?type=Runnable"/>
-      <runnableCalls runnable="CylNumObserver?type=Runnable"/>
-      <runnableCalls runnable="EcuDecelerationSensor?type=Runnable"/>
-      <runnableCalls runnable="DecelerationSensorTranslation?type=Runnable"/>
-      <runnableCalls runnable="DecelerationSensorVoter?type=Runnable"/>
-      <runnableCalls runnable="ABSCalculation?type=Runnable"/>
-      <runnableCalls runnable="BrakeForceActuation?type=Runnable"/>
-      <runnableCalls runnable="CaliperPositionCalculation?type=Runnable"/>
-      <runnableCalls runnable="BrakeActuator?type=Runnable"/>
-      <runnableCalls runnable="EcuBrakeActuator?type=Runnable"/>
+    <processPrototypes name="ESSP0" priority="0" firstRunnable="EcuVehicleSpeedSensor?type=Runnable" lastRunnable="VehicleSpeedSensorVoter?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
+      <runnableCalls runnable="EcuVehicleSpeedSensor?type=Runnable"/>
+      <runnableCalls runnable="VehicleSpeedSensorTranslation?type=Runnable"/>
+      <runnableCalls runnable="VehicleSpeedSensorVoter?type=Runnable"/>
     </processPrototypes>
-    <processPrototypes name="ESSP1" priority="0" firstRunnable="EcuWheelSpeedSensor?type=Runnable" lastRunnable="InjectionTimeActuation?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
-      <runnableCalls runnable="EcuWheelSpeedSensor?type=Runnable"/>
-      <runnableCalls runnable="WheelSpeedSensorTranslation?type=Runnable"/>
-      <runnableCalls runnable="APedVoter?type=Runnable"/>
-      <runnableCalls runnable="ThrottleController?type=Runnable"/>
+    <processPrototypes name="ESSP1" priority="0" firstRunnable="CylNumObserver?type=Runnable" lastRunnable="DecelerationSensorDiagnosis?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
+      <runnableCalls runnable="CylNumObserver?type=Runnable"/>
+      <runnableCalls runnable="DecelerationSensorDiagnosis?type=Runnable"/>
+    </processPrototypes>
+    <processPrototypes name="ESSP2" priority="0" firstRunnable="WheelSpeedSensorDiagnosis?type=Runnable" lastRunnable="BrakePedalSensorDiagnosis?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
+      <runnableCalls runnable="WheelSpeedSensorDiagnosis?type=Runnable"/>
+      <runnableCalls runnable="BrakePedalSensorDiagnosis?type=Runnable"/>
+    </processPrototypes>
+    <processPrototypes name="ESSP3" priority="0" firstRunnable="MassAirFlowSensor?type=Runnable" lastRunnable="InjectionTimeActuation?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
+      <runnableCalls runnable="MassAirFlowSensor?type=Runnable"/>
+      <runnableCalls runnable="BaseFuelMass?type=Runnable"/>
+      <runnableCalls runnable="TransientFuelMass?type=Runnable"/>
       <runnableCalls runnable="TotalFuelMass?type=Runnable"/>
       <runnableCalls runnable="InjectionTimeActuation?type=Runnable"/>
     </processPrototypes>
-    <processPrototypes name="ESSP2" priority="0" firstRunnable="EcuVehicleSpeedSensor?type=Runnable" lastRunnable="ThrottleActuator?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
-      <runnableCalls runnable="EcuVehicleSpeedSensor?type=Runnable"/>
-      <runnableCalls runnable="VehicleSpeedSensorTranslation?type=Runnable"/>
-      <runnableCalls runnable="WheelSpeedSensorVoter?type=Runnable"/>
-      <runnableCalls runnable="IgnitionTiming?type=Runnable"/>
+    <processPrototypes name="ESSP4" priority="0" firstRunnable="APedSensor?type=Runnable" lastRunnable="ThrottleActuator?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
+      <runnableCalls runnable="APedSensor?type=Runnable"/>
+      <runnableCalls runnable="APedVoter?type=Runnable"/>
+      <runnableCalls runnable="ThrottleController?type=Runnable"/>
       <runnableCalls runnable="ThrottleActuator?type=Runnable"/>
     </processPrototypes>
-    <processPrototypes name="ESSP3" priority="0" firstRunnable="ThrottleSensor?type=Runnable" lastRunnable="EcuStopLightActuator?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
+    <processPrototypes name="ESSP5" priority="0" firstRunnable="ThrottleSensor?type=Runnable" lastRunnable="EcuStopLightActuator?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
       <runnableCalls runnable="ThrottleSensor?type=Runnable"/>
-      <runnableCalls runnable="APedSensor?type=Runnable"/>
       <runnableCalls runnable="EcuBrakePedalSensor?type=Runnable"/>
       <runnableCalls runnable="BrakePedalSensorTranslation?type=Runnable"/>
       <runnableCalls runnable="BrakePedalSensorVoter?type=Runnable"/>
@@ -959,255 +957,219 @@
       <runnableCalls runnable="StopLightActuator?type=Runnable"/>
       <runnableCalls runnable="EcuStopLightActuator?type=Runnable"/>
     </processPrototypes>
-    <processPrototypes name="ESSP4" priority="0" firstRunnable="MassAirFlowSensor?type=Runnable" lastRunnable="BrakeActuatorMonitor?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
-      <runnableCalls runnable="MassAirFlowSensor?type=Runnable"/>
-      <runnableCalls runnable="WheelSpeedSensorDiagnosis?type=Runnable"/>
-      <runnableCalls runnable="BaseFuelMass?type=Runnable"/>
-      <runnableCalls runnable="TransientFuelMass?type=Runnable"/>
-      <runnableCalls runnable="BrakePedalSensorDiagnosis?type=Runnable"/>
+    <processPrototypes name="ESSP6" priority="0" firstRunnable="VehicleStateMonitor?type=Runnable" lastRunnable="EcuBrakeActuator?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
+      <runnableCalls runnable="VehicleStateMonitor?type=Runnable"/>
+      <runnableCalls runnable="EcuDecelerationSensor?type=Runnable"/>
+      <runnableCalls runnable="DecelerationSensorTranslation?type=Runnable"/>
+      <runnableCalls runnable="DecelerationSensorVoter?type=Runnable"/>
+      <runnableCalls runnable="ABSCalculation?type=Runnable"/>
+      <runnableCalls runnable="BrakeForceActuation?type=Runnable"/>
+      <runnableCalls runnable="CaliperPositionCalculation?type=Runnable"/>
+      <runnableCalls runnable="BrakeActuator?type=Runnable"/>
+      <runnableCalls runnable="EcuBrakeActuator?type=Runnable"/>
+    </processPrototypes>
+    <processPrototypes name="ESSP7" priority="0" firstRunnable="VehicleSpeedSensorDiagnosis?type=Runnable" lastRunnable="BrakeActuatorMonitor?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
+      <runnableCalls runnable="VehicleSpeedSensorDiagnosis?type=Runnable"/>
       <runnableCalls runnable="BrakeActuatorMonitor?type=Runnable"/>
     </processPrototypes>
-    <processPrototypes name="ESSP5" priority="0" firstRunnable="DiagnosisArbiter?type=Runnable" lastRunnable="IgnitionTimeActuation?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
+    <processPrototypes name="ESSP8" priority="0" firstRunnable="DiagnosisArbiter?type=Runnable" lastRunnable="IgnitionTimeActuation?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
       <runnableCalls runnable="DiagnosisArbiter?type=Runnable"/>
-      <runnableCalls runnable="VehicleSpeedSensorDiagnosis?type=Runnable"/>
-      <runnableCalls runnable="VehicleSpeedSensorVoter?type=Runnable"/>
-      <runnableCalls runnable="DecelerationSensorDiagnosis?type=Runnable"/>
+      <runnableCalls runnable="IgnitionTiming?type=Runnable"/>
       <runnableCalls runnable="IgnitionTimeActuation?type=Runnable"/>
     </processPrototypes>
-    <activations xsi:type="am:PeriodicActivation" name="Timer_10MS"/>
-    <activations xsi:type="am:PeriodicActivation" name="Timer_20MS"/>
-    <activations xsi:type="am:PeriodicActivation" name="Timer_5MS"/>
+    <processPrototypes name="ESSP9" priority="0" firstRunnable="EcuWheelSpeedSensor?type=Runnable" lastRunnable="WheelSpeedSensorVoter?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
+      <runnableCalls runnable="EcuWheelSpeedSensor?type=Runnable"/>
+      <runnableCalls runnable="WheelSpeedSensorTranslation?type=Runnable"/>
+      <runnableCalls runnable="WheelSpeedSensorVoter?type=Runnable"/>
+    </processPrototypes>
+    <activations xsi:type="am:PeriodicActivation" name="Timer_10MS">
+      <min value="10" unit="ms"/>
+      <max value="10" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </activations>
+    <activations xsi:type="am:PeriodicActivation" name="Timer_20MS">
+      <min value="20" unit="ms"/>
+      <max value="20" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </activations>
+    <activations xsi:type="am:PeriodicActivation" name="Timer_5MS">
+      <min value="5" unit="ms"/>
+      <max value="5" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </activations>
   </swModel>
-  <hwModel>
-    <coreTypes name="Default" bitWidth="0" instructionsPerCycle="1"/>
-    <system name="Democar">
-      <ecus name="ECU_1">
-        <quartzes name="QuartzOscillator_1" type="STATIC">
-          <frequency unit="MHz" value="200.0"/>
-        </quartzes>
-        <microcontrollers name="Processor_1">
-          <memories name="Mem_1">
-            <ports xsi:type="am:ComplexPort" name="Mem_1_port" master="false" bitWidth="16" baseAddress="0" addressRange="0" direction="R" writeCycles="10" readCycles="10" schedValue="0"/>
-          </memories>
-          <cores name="Core_1" coreType="Default?type=CoreType" lockstepGroup="0">
-            <prescaler name="Core_1_prescaler" clockRatio="0.0" quartz="QuartzOscillator_1?type=Quartz"/>
-          </cores>
-        </microcontrollers>
-      </ecus>
-    </system>
-  </hwModel>
-  <osModel>
-    <osDataConsistency/>
-    <operatingSystems name="OperatingSystem">
-      <taskSchedulers name="Task_Scheduler_Core_1" scheduleUnitPriority="0">
-        <schedulingUnit xsi:type="am:SchedulingHWUnit">
-          <delay value="1" unit="ns"/>
-        </schedulingUnit>
-        <schedulingAlgorithm xsi:type="am:OSEK"/>
-      </taskSchedulers>
-    </operatingSystems>
-  </osModel>
-  <stimuliModel>
-    <stimuli xsi:type="am:Periodic" name="Timer_10MS">
-      <offset value="0" unit="ms"/>
-      <recurrence value="10" unit="ms"/>
-    </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Timer_20MS">
-      <offset value="0" unit="ms"/>
-      <recurrence value="20" unit="ms"/>
-    </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Timer_5MS">
-      <offset value="0" unit="ms"/>
-      <recurrence value="5" unit="ms"/>
-    </stimuli>
-  </stimuliModel>
   <constraintsModel>
-    <runnableSequencingConstraints name="ABSCalculation-->BrakeForceActuation" orderType="successor" processScope="ESSP0?type=ProcessPrototype">
+    <runnableSequencingConstraints name="ABSCalculation-->BrakeForceActuation" orderType="successor" processScope="ESSP6?type=ProcessPrototype">
       <runnableGroups runnables="ABSCalculation?type=Runnable"/>
       <runnableGroups runnables="BrakeForceActuation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="BrakeForceArbiter-->ABSCalculation" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="BrakeForceArbiter-->ABSCalculation" orderType="successor" processScope="ESSP6?type=ProcessPrototype">
       <runnableGroups runnables="BrakeForceArbiter?type=Runnable"/>
       <runnableGroups runnables="ABSCalculation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="DecelerationSensorVoter-->ABSCalculation" orderType="successor" processScope="ESSP0?type=ProcessPrototype">
+    <runnableSequencingConstraints name="DecelerationSensorVoter-->ABSCalculation" orderType="successor" processScope="ESSP6?type=ProcessPrototype">
       <runnableGroups runnables="DecelerationSensorVoter?type=Runnable"/>
       <runnableGroups runnables="ABSCalculation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="VehicleSpeedSensorVoter-->ABSCalculation" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
+    <runnableSequencingConstraints name="VehicleSpeedSensorVoter-->ABSCalculation" orderType="successor" processScope="ESSP6?type=ProcessPrototype">
       <runnableGroups runnables="VehicleSpeedSensorVoter?type=Runnable"/>
       <runnableGroups runnables="ABSCalculation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="WheelSpeedSensorVoter-->ABSCalculation" orderType="successor" processScope="ESSP2?type=ProcessPrototype">
+    <runnableSequencingConstraints name="WheelSpeedSensorVoter-->ABSCalculation" orderType="successor" processScope="ESSP9?type=ProcessPrototype">
       <runnableGroups runnables="WheelSpeedSensorVoter?type=Runnable"/>
       <runnableGroups runnables="ABSCalculation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="APedSensor-->APedVoter" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="APedSensor-->APedVoter" orderType="successor" processScope="ESSP4?type=ProcessPrototype">
       <runnableGroups runnables="APedSensor?type=Runnable"/>
       <runnableGroups runnables="APedVoter?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="APedVoter-->ThrottleController" orderType="successor" processScope="ESSP1?type=ProcessPrototype">
+    <runnableSequencingConstraints name="APedVoter-->ThrottleController" orderType="successor" processScope="ESSP4?type=ProcessPrototype">
       <runnableGroups runnables="APedVoter?type=Runnable"/>
       <runnableGroups runnables="ThrottleController?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="BaseFuelMass-->IgnitionTiming" orderType="successor" processScope="ESSP4?type=ProcessPrototype">
+    <runnableSequencingConstraints name="BaseFuelMass-->IgnitionTiming" orderType="successor" processScope="ESSP8?type=ProcessPrototype">
       <runnableGroups runnables="BaseFuelMass?type=Runnable"/>
       <runnableGroups runnables="IgnitionTiming?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="MassAirFlowSensor-->BaseFuelMass" orderType="successor" processScope="ESSP4?type=ProcessPrototype">
+    <runnableSequencingConstraints name="MassAirFlowSensor-->BaseFuelMass" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
       <runnableGroups runnables="MassAirFlowSensor?type=Runnable"/>
       <runnableGroups runnables="BaseFuelMass?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="BaseFuelMass-->TransientFuelMass" orderType="successor" processScope="ESSP4?type=ProcessPrototype">
+    <runnableSequencingConstraints name="BaseFuelMass-->TransientFuelMass" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
       <runnableGroups runnables="BaseFuelMass?type=Runnable"/>
       <runnableGroups runnables="TransientFuelMass?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="CaliperPositionCalculation-->BrakeActuator" orderType="successor" processScope="ESSP0?type=ProcessPrototype">
+    <runnableSequencingConstraints name="CaliperPositionCalculation-->BrakeActuator" orderType="successor" processScope="ESSP6?type=ProcessPrototype">
       <runnableGroups runnables="CaliperPositionCalculation?type=Runnable"/>
       <runnableGroups runnables="BrakeActuator?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="BrakeActuator-->EcuBrakeActuator" orderType="successor" processScope="ESSP0?type=ProcessPrototype">
+    <runnableSequencingConstraints name="BrakeActuator-->EcuBrakeActuator" orderType="successor" processScope="ESSP6?type=ProcessPrototype">
       <runnableGroups runnables="BrakeActuator?type=Runnable"/>
       <runnableGroups runnables="EcuBrakeActuator?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="BrakeForceActuation-->BrakeActuatorMonitor" orderType="successor" processScope="ESSP4?type=ProcessPrototype">
+    <runnableSequencingConstraints name="BrakeForceActuation-->BrakeActuatorMonitor" orderType="successor" processScope="ESSP7?type=ProcessPrototype">
       <runnableGroups runnables="BrakeForceActuation?type=Runnable"/>
       <runnableGroups runnables="BrakeActuatorMonitor?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="BrakeForceActuation-->CaliperPositionCalculation" orderType="successor" processScope="ESSP0?type=ProcessPrototype">
+    <runnableSequencingConstraints name="BrakeForceActuation-->CaliperPositionCalculation" orderType="successor" processScope="ESSP6?type=ProcessPrototype">
       <runnableGroups runnables="BrakeForceActuation?type=Runnable"/>
       <runnableGroups runnables="CaliperPositionCalculation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="BrakeForceCalculation-->BrakeForceArbiter" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="BrakeForceCalculation-->BrakeForceArbiter" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
       <runnableGroups runnables="BrakeForceCalculation?type=Runnable"/>
       <runnableGroups runnables="BrakeForceArbiter?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="BrakeSafetyMonitor-->BrakeForceArbiter" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="BrakeSafetyMonitor-->BrakeForceArbiter" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
       <runnableGroups runnables="BrakeSafetyMonitor?type=Runnable"/>
       <runnableGroups runnables="BrakeForceArbiter?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="BrakeForceArbiter-->StopLightActuator" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="BrakeForceArbiter-->StopLightActuator" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
       <runnableGroups runnables="BrakeForceArbiter?type=Runnable"/>
       <runnableGroups runnables="StopLightActuator?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="BrakeSafetyMonitor-->BrakeForceCalculation" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="BrakeSafetyMonitor-->BrakeForceCalculation" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
       <runnableGroups runnables="BrakeSafetyMonitor?type=Runnable"/>
       <runnableGroups runnables="BrakeForceCalculation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="CheckPlausability-->BrakeForceCalculation" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="CheckPlausability-->BrakeForceCalculation" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
       <runnableGroups runnables="CheckPlausability?type=Runnable"/>
       <runnableGroups runnables="BrakeForceCalculation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="VehicleStateMonitor-->BrakeForceCalculation" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="VehicleStateMonitor-->BrakeForceCalculation" orderType="successor" processScope="ESSP6?type=ProcessPrototype">
       <runnableGroups runnables="VehicleStateMonitor?type=Runnable"/>
       <runnableGroups runnables="BrakeForceCalculation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="EcuBrakePedalSensor-->BrakePedalSensorDiagnosis" orderType="successor" processScope="ESSP4?type=ProcessPrototype">
+    <runnableSequencingConstraints name="EcuBrakePedalSensor-->BrakePedalSensorDiagnosis" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
       <runnableGroups runnables="EcuBrakePedalSensor?type=Runnable"/>
       <runnableGroups runnables="BrakePedalSensorDiagnosis?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="BrakePedalSensorTranslation-->BrakePedalSensorVoter" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="BrakePedalSensorTranslation-->BrakePedalSensorVoter" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
       <runnableGroups runnables="BrakePedalSensorTranslation?type=Runnable"/>
       <runnableGroups runnables="BrakePedalSensorVoter?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="EcuBrakePedalSensor-->BrakePedalSensorTranslation" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="EcuBrakePedalSensor-->BrakePedalSensorTranslation" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
       <runnableGroups runnables="EcuBrakePedalSensor?type=Runnable"/>
       <runnableGroups runnables="BrakePedalSensorTranslation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="BrakePedalSensorVoter-->CheckPlausability" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="BrakePedalSensorVoter-->CheckPlausability" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
       <runnableGroups runnables="BrakePedalSensorVoter?type=Runnable"/>
       <runnableGroups runnables="CheckPlausability?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="CheckPlausability-->BrakeSafetyMonitor" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="CheckPlausability-->BrakeSafetyMonitor" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
       <runnableGroups runnables="CheckPlausability?type=Runnable"/>
       <runnableGroups runnables="BrakeSafetyMonitor?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="VehicleStateMonitor-->BrakeSafetyMonitor" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="VehicleStateMonitor-->BrakeSafetyMonitor" orderType="successor" processScope="ESSP6?type=ProcessPrototype">
       <runnableGroups runnables="VehicleStateMonitor?type=Runnable"/>
       <runnableGroups runnables="BrakeSafetyMonitor?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="CylNumObserver-->IgnitionTimeActuation" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
+    <runnableSequencingConstraints name="CylNumObserver-->IgnitionTimeActuation" orderType="successor" processScope="ESSP8?type=ProcessPrototype">
       <runnableGroups runnables="CylNumObserver?type=Runnable"/>
       <runnableGroups runnables="IgnitionTimeActuation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="CylNumObserver-->InjectionTimeActuation" orderType="successor" processScope="ESSP1?type=ProcessPrototype">
+    <runnableSequencingConstraints name="CylNumObserver-->InjectionTimeActuation" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
       <runnableGroups runnables="CylNumObserver?type=Runnable"/>
       <runnableGroups runnables="InjectionTimeActuation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="EcuDecelerationSensor-->DecelerationSensorDiagnosis" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
+    <runnableSequencingConstraints name="EcuDecelerationSensor-->DecelerationSensorDiagnosis" orderType="successor" processScope="ESSP6?type=ProcessPrototype">
       <runnableGroups runnables="EcuDecelerationSensor?type=Runnable"/>
       <runnableGroups runnables="DecelerationSensorDiagnosis?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="DecelerationSensorTranslation-->DecelerationSensorVoter" orderType="successor" processScope="ESSP0?type=ProcessPrototype">
+    <runnableSequencingConstraints name="DecelerationSensorTranslation-->DecelerationSensorVoter" orderType="successor" processScope="ESSP6?type=ProcessPrototype">
       <runnableGroups runnables="DecelerationSensorTranslation?type=Runnable"/>
       <runnableGroups runnables="DecelerationSensorVoter?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="EcuDecelerationSensor-->DecelerationSensorTranslation" orderType="successor" processScope="ESSP0?type=ProcessPrototype">
+    <runnableSequencingConstraints name="EcuDecelerationSensor-->DecelerationSensorTranslation" orderType="successor" processScope="ESSP6?type=ProcessPrototype">
       <runnableGroups runnables="EcuDecelerationSensor?type=Runnable"/>
       <runnableGroups runnables="DecelerationSensorTranslation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="StopLightActuator-->EcuStopLightActuator" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="StopLightActuator-->EcuStopLightActuator" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
       <runnableGroups runnables="StopLightActuator?type=Runnable"/>
       <runnableGroups runnables="EcuStopLightActuator?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="EcuVehicleSpeedSensor-->VehicleSpeedSensorDiagnosis" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
+    <runnableSequencingConstraints name="EcuVehicleSpeedSensor-->VehicleSpeedSensorDiagnosis" orderType="successor" processScope="ESSP7?type=ProcessPrototype">
       <runnableGroups runnables="EcuVehicleSpeedSensor?type=Runnable"/>
       <runnableGroups runnables="VehicleSpeedSensorDiagnosis?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="EcuVehicleSpeedSensor-->VehicleSpeedSensorTranslation" orderType="successor" processScope="ESSP2?type=ProcessPrototype">
+    <runnableSequencingConstraints name="EcuVehicleSpeedSensor-->VehicleSpeedSensorTranslation" orderType="successor" processScope="ESSP0?type=ProcessPrototype">
       <runnableGroups runnables="EcuVehicleSpeedSensor?type=Runnable"/>
       <runnableGroups runnables="VehicleSpeedSensorTranslation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="EcuWheelSpeedSensor-->WheelSpeedSensorDiagnosis" orderType="successor" processScope="ESSP4?type=ProcessPrototype">
+    <runnableSequencingConstraints name="EcuWheelSpeedSensor-->WheelSpeedSensorDiagnosis" orderType="successor" processScope="ESSP9?type=ProcessPrototype">
       <runnableGroups runnables="EcuWheelSpeedSensor?type=Runnable"/>
       <runnableGroups runnables="WheelSpeedSensorDiagnosis?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="EcuWheelSpeedSensor-->WheelSpeedSensorTranslation" orderType="successor" processScope="ESSP1?type=ProcessPrototype">
+    <runnableSequencingConstraints name="EcuWheelSpeedSensor-->WheelSpeedSensorTranslation" orderType="successor" processScope="ESSP9?type=ProcessPrototype">
       <runnableGroups runnables="EcuWheelSpeedSensor?type=Runnable"/>
       <runnableGroups runnables="WheelSpeedSensorTranslation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="IgnitionTiming-->IgnitionTimeActuation" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
+    <runnableSequencingConstraints name="IgnitionTiming-->IgnitionTimeActuation" orderType="successor" processScope="ESSP8?type=ProcessPrototype">
       <runnableGroups runnables="IgnitionTiming?type=Runnable"/>
       <runnableGroups runnables="IgnitionTimeActuation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="TotalFuelMass-->InjectionTimeActuation" orderType="successor" processScope="ESSP1?type=ProcessPrototype">
+    <runnableSequencingConstraints name="TotalFuelMass-->InjectionTimeActuation" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
       <runnableGroups runnables="TotalFuelMass?type=Runnable"/>
       <runnableGroups runnables="InjectionTimeActuation?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="ThrottleController-->ThrottleActuator" orderType="successor" processScope="ESSP2?type=ProcessPrototype">
+    <runnableSequencingConstraints name="ThrottleController-->ThrottleActuator" orderType="successor" processScope="ESSP4?type=ProcessPrototype">
       <runnableGroups runnables="ThrottleController?type=Runnable"/>
       <runnableGroups runnables="ThrottleActuator?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="ThrottleSensor-->ThrottleController" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
+    <runnableSequencingConstraints name="ThrottleSensor-->ThrottleController" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
       <runnableGroups runnables="ThrottleSensor?type=Runnable"/>
       <runnableGroups runnables="ThrottleController?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="TransientFuelMass-->TotalFuelMass" orderType="successor" processScope="ESSP4?type=ProcessPrototype">
+    <runnableSequencingConstraints name="TransientFuelMass-->TotalFuelMass" orderType="successor" processScope="ESSP3?type=ProcessPrototype">
       <runnableGroups runnables="TransientFuelMass?type=Runnable"/>
       <runnableGroups runnables="TotalFuelMass?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="VehicleSpeedSensorTranslation-->VehicleSpeedSensorVoter" orderType="successor" processScope="ESSP5?type=ProcessPrototype">
+    <runnableSequencingConstraints name="VehicleSpeedSensorTranslation-->VehicleSpeedSensorVoter" orderType="successor" processScope="ESSP0?type=ProcessPrototype">
       <runnableGroups runnables="VehicleSpeedSensorTranslation?type=Runnable"/>
       <runnableGroups runnables="VehicleSpeedSensorVoter?type=Runnable"/>
     </runnableSequencingConstraints>
-    <runnableSequencingConstraints name="WheelSpeedSensorTranslation-->WheelSpeedSensorVoter" orderType="successor" processScope="ESSP2?type=ProcessPrototype">
+    <runnableSequencingConstraints name="WheelSpeedSensorTranslation-->WheelSpeedSensorVoter" orderType="successor" processScope="ESSP9?type=ProcessPrototype">
       <runnableGroups runnables="WheelSpeedSensorTranslation?type=Runnable"/>
       <runnableGroups runnables="WheelSpeedSensorVoter?type=Runnable"/>
     </runnableSequencingConstraints>
-    <requirements xsi:type="am:ProcessRequirement" name="Deadline_05" severity="Critical">
-      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
-        <limitValue value="5" unit="ms"/>
-      </limit>
-    </requirements>
-    <requirements xsi:type="am:ProcessRequirement" name="Deadline_10" severity="Critical">
-      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
-        <limitValue value="10" unit="ms"/>
-      </limit>
-    </requirements>
-    <requirements xsi:type="am:ProcessRequirement" name="Deadline_20" severity="Critical">
-      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
-        <limitValue value="20" unit="ms"/>
-      </limit>
-    </requirements>
   </constraintsModel>
 </am:Amalthea>
