@@ -28,7 +28,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
-public class RunnableAllocationConstraintItemProvider extends AllocationConstraintItemProvider {
+public class RunnableAllocationConstraintItemProvider extends CoreAllocationConstraintItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

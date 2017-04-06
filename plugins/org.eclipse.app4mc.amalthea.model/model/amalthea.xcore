@@ -69,6 +69,8 @@ import java.nio.charset.StandardCharsets
 
 class CommonElements extends BaseObject {
 	contains Tag[] tags
+	contains CoreClassifier[] coreClassifiers
+	contains MemoryClassifier[] memoryClassifiers
  }
 
 /*
@@ -142,6 +144,21 @@ class Tag extends ReferableBaseObject
 	String tagType
 }
 
+/*
+ * Classifiers for hardware properties
+ */
+abstract class Classifier extends ReferableBaseObject
+{
+	String description
+}
+
+class CoreClassifier extends Classifier
+{
+}
+
+class MemoryClassifier extends Classifier
+{
+}
 
 /*
  * Abstract description for a set of execution cycles
@@ -1584,6 +1601,7 @@ class CoreType extends AbstractionType
 {
 	int bitWidth="0"
 	float instructionsPerCycle="0.0"
+	refers CoreClassifier[] classifiers
 }
 
 class MemoryType extends HardwareTypeDescription
@@ -1591,6 +1609,7 @@ class MemoryType extends HardwareTypeDescription
 	String xAccessPattern
 	MemoryTypeEnum ^type
 	contains DataSize size
+	refers MemoryClassifier[] classifiers
 }
 
 class NetworkType extends HardwareTypeDescription
@@ -2192,54 +2211,33 @@ class OsISRInstructions extends BaseObject
 
 class PropertyConstraintsModel extends BaseObject
 {
-	contains AllocationConstraint[] allocationConstraints
-	contains MappingConstraint[] mappingConstraints
+	contains CoreAllocationConstraint[] allocationConstraints
+	contains MemoryMappingConstraint[] mappingConstraints
 }
 
-enum ComparatorType
-{
-	_undefined_ // Display: "<comparator>"
-	equal
-	unequal
-	greater
-	lower
-}
-
-enum ConjunctionType
-{
-	_undefined_ // Display: "<conjunction>"
-	and
-	or
-}
-
-//////////////// Constraints
-/*abstract class Constraint {
-	// reference: Software Component
-	// containment: List of HW Features or Components we need
-}*/
 /*
  * Abstract Class, used to describe Constraints for Allocations
  * (these usually target Cores and their features/attributes)
  */
-abstract class AllocationConstraint extends BaseObject
+abstract class CoreAllocationConstraint extends BaseObject
 {
-	contains HwCoreConstraint hwConstraint
+	contains CoreClassification coreClassification
 }
 
 /*
  * Abstract Class, used to describe Constraints for Mapping
  * (these usually target Memories and their features/attributes)
  */
-abstract class MappingConstraint extends BaseObject
+abstract class MemoryMappingConstraint extends BaseObject
 {
-	contains HwMemoryConstraint hwConstraint
+	contains MemoryClassification memoryClassification
 }
 
 /*
  * ProcessAllocationConstraints describe the constraints for
  * Process-to-Core allocations
  */
-class ProcessAllocationConstraint extends AllocationConstraint
+class ProcessAllocationConstraint extends CoreAllocationConstraint
 {
 	refers Process process
 }
@@ -2248,7 +2246,7 @@ class ProcessAllocationConstraint extends AllocationConstraint
  * ProcessPrototypeAllocationConstraints describe the constraints for
  * ProcessPrototype-to-Core allocations
  */
-class ProcessPrototypeAllocationConstraint extends AllocationConstraint
+class ProcessPrototypeAllocationConstraint extends CoreAllocationConstraint
 {
 	refers ProcessPrototype processPrototype
 }
@@ -2257,7 +2255,7 @@ class ProcessPrototypeAllocationConstraint extends AllocationConstraint
  * RunnableAllocationConstraints describe the constraints for
  * Runnable-to-Core allocations
  */
-class RunnableAllocationConstraint extends AllocationConstraint
+class RunnableAllocationConstraint extends CoreAllocationConstraint
 {
 	refers Runnable runnable
 }
@@ -2267,7 +2265,7 @@ class RunnableAllocationConstraint extends AllocationConstraint
  * AbstractElementMappingConstraints describe the constraints for 
  * AbstractMemoryElement-to-Memory Mapping
  */
-class AbstractElementMappingConstraint extends MappingConstraint
+class AbstractElementMappingConstraint extends MemoryMappingConstraint
 {
 	refers AbstractMemoryElement abstractElement
 }
@@ -2275,47 +2273,34 @@ class AbstractElementMappingConstraint extends MappingConstraint
 /*
  * Generalization for all Hardware related constraints
  */
- 
-abstract class HwCoreConstraint extends BaseObject
+
+abstract class Classification extends BaseObject
 {
+	Condition condition
+	GroupingType grouping
 }
 
-abstract class HwMemoryConstraint extends BaseObject
+enum Condition
 {
+	_undefined_ // Display: "<condition>"
+	requires
+	excludes
 }
 
-/*
- * Core-Constraints for describing the least amount of properties which are required by
- * executables.
- */
-class HwCoreProperty extends HwCoreConstraint
-{
-	refers  Core core
-	ComparatorType comparator
+enum GroupingType{
+	_undefined_ // Display: "<grouping>"
+	allOfThem
+	atLeastOneOfThem
 }
 
-class HwCoreConjunction extends HwCoreConstraint
+class CoreClassification extends Classification
 {
-	ConjunctionType conjunction
-	contains HwCoreConstraint firstConstraint
-	contains HwCoreConstraint secondConstraint
+	refers CoreClassifier[] classifiers
 }
 
-/*
- * Memory-Constraints for describing the least amount of properties which are required by
- * data.
- */
-class HwMemoryProperty extends HwMemoryConstraint
+class MemoryClassification extends Classification
 {
-	refers Memory memory
-	ComparatorType comparator
-}
-
-class HwMemoryConjunction extends HwMemoryConstraint
-{
-	ConjunctionType conjunction
-	contains HwMemoryConstraint firstConstraint
-	contains HwMemoryConstraint secondConstraint
+	refers MemoryClassifier[] classifiers
 }
 
 

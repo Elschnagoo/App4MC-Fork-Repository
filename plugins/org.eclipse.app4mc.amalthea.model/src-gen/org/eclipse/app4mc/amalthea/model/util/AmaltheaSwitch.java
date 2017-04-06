@@ -24,7 +24,6 @@ import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
 import org.eclipse.app4mc.amalthea.model.AlgorithmParameter;
-import org.eclipse.app4mc.amalthea.model.AllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
@@ -50,6 +49,8 @@ import org.eclipse.app4mc.amalthea.model.ChannelAccess;
 import org.eclipse.app4mc.amalthea.model.ChannelEvent;
 import org.eclipse.app4mc.amalthea.model.ChannelReceive;
 import org.eclipse.app4mc.amalthea.model.ChannelSend;
+import org.eclipse.app4mc.amalthea.model.Classification;
+import org.eclipse.app4mc.amalthea.model.Classifier;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.Clock;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
@@ -71,6 +72,9 @@ import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreAllocation;
+import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
+import org.eclipse.app4mc.amalthea.model.CoreClassification;
+import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
@@ -133,13 +137,7 @@ import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwAccessPathElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPathRef;
 import org.eclipse.app4mc.amalthea.model.HwComponent;
-import org.eclipse.app4mc.amalthea.model.HwCoreConjunction;
-import org.eclipse.app4mc.amalthea.model.HwCoreConstraint;
-import org.eclipse.app4mc.amalthea.model.HwCoreProperty;
 import org.eclipse.app4mc.amalthea.model.HwElementRef;
-import org.eclipse.app4mc.amalthea.model.HwMemoryConjunction;
-import org.eclipse.app4mc.amalthea.model.HwMemoryConstraint;
-import org.eclipse.app4mc.amalthea.model.HwMemoryProperty;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwSystem;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
@@ -172,10 +170,12 @@ import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.ListObject;
 import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.MappingConstraint;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.Memory;
+import org.eclipse.app4mc.amalthea.model.MemoryClassification;
+import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
+import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.Microcontroller;
 import org.eclipse.app4mc.amalthea.model.MicrocontrollerType;
@@ -455,6 +455,35 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(tag);
 				if (result == null) result = caseIAnnotatable(tag);
 				if (result == null) result = caseIReferable(tag);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CLASSIFIER: {
+				Classifier classifier = (Classifier)theEObject;
+				T1 result = caseClassifier(classifier);
+				if (result == null) result = caseReferableBaseObject(classifier);
+				if (result == null) result = caseIAnnotatable(classifier);
+				if (result == null) result = caseIReferable(classifier);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CORE_CLASSIFIER: {
+				CoreClassifier coreClassifier = (CoreClassifier)theEObject;
+				T1 result = caseCoreClassifier(coreClassifier);
+				if (result == null) result = caseClassifier(coreClassifier);
+				if (result == null) result = caseReferableBaseObject(coreClassifier);
+				if (result == null) result = caseIAnnotatable(coreClassifier);
+				if (result == null) result = caseIReferable(coreClassifier);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.MEMORY_CLASSIFIER: {
+				MemoryClassifier memoryClassifier = (MemoryClassifier)theEObject;
+				T1 result = caseMemoryClassifier(memoryClassifier);
+				if (result == null) result = caseClassifier(memoryClassifier);
+				if (result == null) result = caseReferableBaseObject(memoryClassifier);
+				if (result == null) result = caseIAnnotatable(memoryClassifier);
+				if (result == null) result = caseIReferable(memoryClassifier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2150,26 +2179,26 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.ALLOCATION_CONSTRAINT: {
-				AllocationConstraint allocationConstraint = (AllocationConstraint)theEObject;
-				T1 result = caseAllocationConstraint(allocationConstraint);
-				if (result == null) result = caseBaseObject(allocationConstraint);
-				if (result == null) result = caseIAnnotatable(allocationConstraint);
+			case AmaltheaPackage.CORE_ALLOCATION_CONSTRAINT: {
+				CoreAllocationConstraint coreAllocationConstraint = (CoreAllocationConstraint)theEObject;
+				T1 result = caseCoreAllocationConstraint(coreAllocationConstraint);
+				if (result == null) result = caseBaseObject(coreAllocationConstraint);
+				if (result == null) result = caseIAnnotatable(coreAllocationConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.MAPPING_CONSTRAINT: {
-				MappingConstraint mappingConstraint = (MappingConstraint)theEObject;
-				T1 result = caseMappingConstraint(mappingConstraint);
-				if (result == null) result = caseBaseObject(mappingConstraint);
-				if (result == null) result = caseIAnnotatable(mappingConstraint);
+			case AmaltheaPackage.MEMORY_MAPPING_CONSTRAINT: {
+				MemoryMappingConstraint memoryMappingConstraint = (MemoryMappingConstraint)theEObject;
+				T1 result = caseMemoryMappingConstraint(memoryMappingConstraint);
+				if (result == null) result = caseBaseObject(memoryMappingConstraint);
+				if (result == null) result = caseIAnnotatable(memoryMappingConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.PROCESS_ALLOCATION_CONSTRAINT: {
 				ProcessAllocationConstraint processAllocationConstraint = (ProcessAllocationConstraint)theEObject;
 				T1 result = caseProcessAllocationConstraint(processAllocationConstraint);
-				if (result == null) result = caseAllocationConstraint(processAllocationConstraint);
+				if (result == null) result = caseCoreAllocationConstraint(processAllocationConstraint);
 				if (result == null) result = caseBaseObject(processAllocationConstraint);
 				if (result == null) result = caseIAnnotatable(processAllocationConstraint);
 				if (result == null) result = defaultCase(theEObject);
@@ -2178,7 +2207,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.PROCESS_PROTOTYPE_ALLOCATION_CONSTRAINT: {
 				ProcessPrototypeAllocationConstraint processPrototypeAllocationConstraint = (ProcessPrototypeAllocationConstraint)theEObject;
 				T1 result = caseProcessPrototypeAllocationConstraint(processPrototypeAllocationConstraint);
-				if (result == null) result = caseAllocationConstraint(processPrototypeAllocationConstraint);
+				if (result == null) result = caseCoreAllocationConstraint(processPrototypeAllocationConstraint);
 				if (result == null) result = caseBaseObject(processPrototypeAllocationConstraint);
 				if (result == null) result = caseIAnnotatable(processPrototypeAllocationConstraint);
 				if (result == null) result = defaultCase(theEObject);
@@ -2187,7 +2216,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.RUNNABLE_ALLOCATION_CONSTRAINT: {
 				RunnableAllocationConstraint runnableAllocationConstraint = (RunnableAllocationConstraint)theEObject;
 				T1 result = caseRunnableAllocationConstraint(runnableAllocationConstraint);
-				if (result == null) result = caseAllocationConstraint(runnableAllocationConstraint);
+				if (result == null) result = caseCoreAllocationConstraint(runnableAllocationConstraint);
 				if (result == null) result = caseBaseObject(runnableAllocationConstraint);
 				if (result == null) result = caseIAnnotatable(runnableAllocationConstraint);
 				if (result == null) result = defaultCase(theEObject);
@@ -2196,61 +2225,35 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING_CONSTRAINT: {
 				AbstractElementMappingConstraint abstractElementMappingConstraint = (AbstractElementMappingConstraint)theEObject;
 				T1 result = caseAbstractElementMappingConstraint(abstractElementMappingConstraint);
-				if (result == null) result = caseMappingConstraint(abstractElementMappingConstraint);
+				if (result == null) result = caseMemoryMappingConstraint(abstractElementMappingConstraint);
 				if (result == null) result = caseBaseObject(abstractElementMappingConstraint);
 				if (result == null) result = caseIAnnotatable(abstractElementMappingConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.HW_CORE_CONSTRAINT: {
-				HwCoreConstraint hwCoreConstraint = (HwCoreConstraint)theEObject;
-				T1 result = caseHwCoreConstraint(hwCoreConstraint);
-				if (result == null) result = caseBaseObject(hwCoreConstraint);
-				if (result == null) result = caseIAnnotatable(hwCoreConstraint);
+			case AmaltheaPackage.CLASSIFICATION: {
+				Classification classification = (Classification)theEObject;
+				T1 result = caseClassification(classification);
+				if (result == null) result = caseBaseObject(classification);
+				if (result == null) result = caseIAnnotatable(classification);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.HW_MEMORY_CONSTRAINT: {
-				HwMemoryConstraint hwMemoryConstraint = (HwMemoryConstraint)theEObject;
-				T1 result = caseHwMemoryConstraint(hwMemoryConstraint);
-				if (result == null) result = caseBaseObject(hwMemoryConstraint);
-				if (result == null) result = caseIAnnotatable(hwMemoryConstraint);
+			case AmaltheaPackage.CORE_CLASSIFICATION: {
+				CoreClassification coreClassification = (CoreClassification)theEObject;
+				T1 result = caseCoreClassification(coreClassification);
+				if (result == null) result = caseClassification(coreClassification);
+				if (result == null) result = caseBaseObject(coreClassification);
+				if (result == null) result = caseIAnnotatable(coreClassification);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.HW_CORE_PROPERTY: {
-				HwCoreProperty hwCoreProperty = (HwCoreProperty)theEObject;
-				T1 result = caseHwCoreProperty(hwCoreProperty);
-				if (result == null) result = caseHwCoreConstraint(hwCoreProperty);
-				if (result == null) result = caseBaseObject(hwCoreProperty);
-				if (result == null) result = caseIAnnotatable(hwCoreProperty);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.HW_CORE_CONJUNCTION: {
-				HwCoreConjunction hwCoreConjunction = (HwCoreConjunction)theEObject;
-				T1 result = caseHwCoreConjunction(hwCoreConjunction);
-				if (result == null) result = caseHwCoreConstraint(hwCoreConjunction);
-				if (result == null) result = caseBaseObject(hwCoreConjunction);
-				if (result == null) result = caseIAnnotatable(hwCoreConjunction);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.HW_MEMORY_PROPERTY: {
-				HwMemoryProperty hwMemoryProperty = (HwMemoryProperty)theEObject;
-				T1 result = caseHwMemoryProperty(hwMemoryProperty);
-				if (result == null) result = caseHwMemoryConstraint(hwMemoryProperty);
-				if (result == null) result = caseBaseObject(hwMemoryProperty);
-				if (result == null) result = caseIAnnotatable(hwMemoryProperty);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.HW_MEMORY_CONJUNCTION: {
-				HwMemoryConjunction hwMemoryConjunction = (HwMemoryConjunction)theEObject;
-				T1 result = caseHwMemoryConjunction(hwMemoryConjunction);
-				if (result == null) result = caseHwMemoryConstraint(hwMemoryConjunction);
-				if (result == null) result = caseBaseObject(hwMemoryConjunction);
-				if (result == null) result = caseIAnnotatable(hwMemoryConjunction);
+			case AmaltheaPackage.MEMORY_CLASSIFICATION: {
+				MemoryClassification memoryClassification = (MemoryClassification)theEObject;
+				T1 result = caseMemoryClassification(memoryClassification);
+				if (result == null) result = caseClassification(memoryClassification);
+				if (result == null) result = caseBaseObject(memoryClassification);
+				if (result == null) result = caseIAnnotatable(memoryClassification);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3296,6 +3299,51 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseTag(Tag object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Classifier</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Classifier</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseClassifier(Classifier object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Core Classifier</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Core Classifier</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseCoreClassifier(CoreClassifier object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Memory Classifier</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Memory Classifier</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseMemoryClassifier(MemoryClassifier object) {
 		return null;
 	}
 
@@ -6240,32 +6288,32 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Allocation Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Core Allocation Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Allocation Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Core Allocation Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAllocationConstraint(AllocationConstraint object) {
+	public T1 caseCoreAllocationConstraint(CoreAllocationConstraint object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Mapping Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Memory Mapping Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Mapping Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Memory Mapping Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMappingConstraint(MappingConstraint object) {
+	public T1 caseMemoryMappingConstraint(MemoryMappingConstraint object) {
 		return null;
 	}
 
@@ -6330,92 +6378,47 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Core Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Classification</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Core Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Classification</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwCoreConstraint(HwCoreConstraint object) {
+	public T1 caseClassification(Classification object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Memory Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Core Classification</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Memory Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Core Classification</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwMemoryConstraint(HwMemoryConstraint object) {
+	public T1 caseCoreClassification(CoreClassification object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Core Property</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Memory Classification</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Core Property</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Memory Classification</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwCoreProperty(HwCoreProperty object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Core Conjunction</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Core Conjunction</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseHwCoreConjunction(HwCoreConjunction object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Memory Property</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Memory Property</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseHwMemoryProperty(HwMemoryProperty object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Memory Conjunction</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Memory Conjunction</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseHwMemoryConjunction(HwMemoryConjunction object) {
+	public T1 caseMemoryClassification(MemoryClassification object) {
 		return null;
 	}
 

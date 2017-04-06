@@ -34,7 +34,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface AbstractElementMappingConstraint extends MappingConstraint {
+public interface AbstractElementMappingConstraint extends MemoryMappingConstraint {
 	/**
 	 * Returns the value of the '<em><b>Abstract Element</b></em>' reference.
 	 * <!-- begin-user-doc -->

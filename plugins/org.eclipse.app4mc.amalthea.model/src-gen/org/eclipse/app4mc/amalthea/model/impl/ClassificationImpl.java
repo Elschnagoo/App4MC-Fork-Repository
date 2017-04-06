@@ -13,68 +13,77 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ComparatorType;
-import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.HwCoreProperty;
+import org.eclipse.app4mc.amalthea.model.Classification;
+import org.eclipse.app4mc.amalthea.model.Condition;
+import org.eclipse.app4mc.amalthea.model.GroupingType;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Hw Core Property</b></em>'.
+ * An implementation of the model object '<em><b>Classification</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwCorePropertyImpl#getCore <em>Core</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwCorePropertyImpl#getComparator <em>Comparator</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ClassificationImpl#getCondition <em>Condition</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ClassificationImpl#getGrouping <em>Grouping</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCoreProperty {
+public abstract class ClassificationImpl extends BaseObjectImpl implements Classification {
 	/**
-	 * The cached value of the '{@link #getCore() <em>Core</em>}' reference.
+	 * The default value of the '{@link #getCondition() <em>Condition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCore()
+	 * @see #getCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected Core core;
+	protected static final Condition CONDITION_EDEFAULT = Condition._UNDEFINED_;
 
 	/**
-	 * The default value of the '{@link #getComparator() <em>Comparator</em>}' attribute.
+	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getComparator()
+	 * @see #getCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ComparatorType COMPARATOR_EDEFAULT = ComparatorType._UNDEFINED_;
+	protected Condition condition = CONDITION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getComparator() <em>Comparator</em>}' attribute.
+	 * The default value of the '{@link #getGrouping() <em>Grouping</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getComparator()
+	 * @see #getGrouping()
 	 * @generated
 	 * @ordered
 	 */
-	protected ComparatorType comparator = COMPARATOR_EDEFAULT;
+	protected static final GroupingType GROUPING_EDEFAULT = GroupingType._UNDEFINED_;
+
+	/**
+	 * The cached value of the '{@link #getGrouping() <em>Grouping</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGrouping()
+	 * @generated
+	 * @ordered
+	 */
+	protected GroupingType grouping = GROUPING_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected HwCorePropertyImpl() {
+	protected ClassificationImpl() {
 		super();
 	}
 
@@ -85,7 +94,7 @@ public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCorePr
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getHwCoreProperty();
+		return AmaltheaPackage.eINSTANCE.getClassification();
 	}
 
 	/**
@@ -93,16 +102,8 @@ public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCorePr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Core getCore() {
-		if (core != null && core.eIsProxy()) {
-			InternalEObject oldCore = (InternalEObject)core;
-			core = (Core)eResolveProxy(oldCore);
-			if (core != oldCore) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.HW_CORE_PROPERTY__CORE, oldCore, core));
-			}
-		}
-		return core;
+	public Condition getCondition() {
+		return condition;
 	}
 
 	/**
@@ -110,20 +111,11 @@ public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCorePr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Core basicGetCore() {
-		return core;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCore(Core newCore) {
-		Core oldCore = core;
-		core = newCore;
+	public void setCondition(Condition newCondition) {
+		Condition oldCondition = condition;
+		condition = newCondition == null ? CONDITION_EDEFAULT : newCondition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CORE_PROPERTY__CORE, oldCore, core));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CLASSIFICATION__CONDITION, oldCondition, condition));
 	}
 
 	/**
@@ -131,8 +123,8 @@ public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCorePr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComparatorType getComparator() {
-		return comparator;
+	public GroupingType getGrouping() {
+		return grouping;
 	}
 
 	/**
@@ -140,11 +132,11 @@ public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCorePr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setComparator(ComparatorType newComparator) {
-		ComparatorType oldComparator = comparator;
-		comparator = newComparator == null ? COMPARATOR_EDEFAULT : newComparator;
+	public void setGrouping(GroupingType newGrouping) {
+		GroupingType oldGrouping = grouping;
+		grouping = newGrouping == null ? GROUPING_EDEFAULT : newGrouping;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CORE_PROPERTY__COMPARATOR, oldComparator, comparator));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CLASSIFICATION__GROUPING, oldGrouping, grouping));
 	}
 
 	/**
@@ -155,11 +147,10 @@ public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCorePr
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_CORE_PROPERTY__CORE:
-				if (resolve) return getCore();
-				return basicGetCore();
-			case AmaltheaPackage.HW_CORE_PROPERTY__COMPARATOR:
-				return getComparator();
+			case AmaltheaPackage.CLASSIFICATION__CONDITION:
+				return getCondition();
+			case AmaltheaPackage.CLASSIFICATION__GROUPING:
+				return getGrouping();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -172,11 +163,11 @@ public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCorePr
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_CORE_PROPERTY__CORE:
-				setCore((Core)newValue);
+			case AmaltheaPackage.CLASSIFICATION__CONDITION:
+				setCondition((Condition)newValue);
 				return;
-			case AmaltheaPackage.HW_CORE_PROPERTY__COMPARATOR:
-				setComparator((ComparatorType)newValue);
+			case AmaltheaPackage.CLASSIFICATION__GROUPING:
+				setGrouping((GroupingType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -190,11 +181,11 @@ public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCorePr
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_CORE_PROPERTY__CORE:
-				setCore((Core)null);
+			case AmaltheaPackage.CLASSIFICATION__CONDITION:
+				setCondition(CONDITION_EDEFAULT);
 				return;
-			case AmaltheaPackage.HW_CORE_PROPERTY__COMPARATOR:
-				setComparator(COMPARATOR_EDEFAULT);
+			case AmaltheaPackage.CLASSIFICATION__GROUPING:
+				setGrouping(GROUPING_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -208,10 +199,10 @@ public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCorePr
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_CORE_PROPERTY__CORE:
-				return core != null;
-			case AmaltheaPackage.HW_CORE_PROPERTY__COMPARATOR:
-				return comparator != COMPARATOR_EDEFAULT;
+			case AmaltheaPackage.CLASSIFICATION__CONDITION:
+				return condition != CONDITION_EDEFAULT;
+			case AmaltheaPackage.CLASSIFICATION__GROUPING:
+				return grouping != GROUPING_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -226,10 +217,12 @@ public class HwCorePropertyImpl extends HwCoreConstraintImpl implements HwCorePr
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (comparator: ");
-		result.append(comparator);
+		result.append(" (condition: ");
+		result.append(condition);
+		result.append(", grouping: ");
+		result.append(grouping);
 		result.append(')');
 		return result.toString();
 	}
 
-} //HwCorePropertyImpl
+} //ClassificationImpl

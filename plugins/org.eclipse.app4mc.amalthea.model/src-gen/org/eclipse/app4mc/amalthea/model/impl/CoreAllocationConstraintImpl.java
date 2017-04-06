@@ -12,9 +12,9 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import org.eclipse.app4mc.amalthea.model.AllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.HwCoreConstraint;
+import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
+import org.eclipse.app4mc.amalthea.model.CoreClassification;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -26,34 +26,34 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Allocation Constraint</b></em>'.
+ * An implementation of the model object '<em><b>Core Allocation Constraint</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AllocationConstraintImpl#getHwConstraint <em>Hw Constraint</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CoreAllocationConstraintImpl#getCoreClassification <em>Core Classification</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class AllocationConstraintImpl extends BaseObjectImpl implements AllocationConstraint {
+public abstract class CoreAllocationConstraintImpl extends BaseObjectImpl implements CoreAllocationConstraint {
 	/**
-	 * The cached value of the '{@link #getHwConstraint() <em>Hw Constraint</em>}' containment reference.
+	 * The cached value of the '{@link #getCoreClassification() <em>Core Classification</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getHwConstraint()
+	 * @see #getCoreClassification()
 	 * @generated
 	 * @ordered
 	 */
-	protected HwCoreConstraint hwConstraint;
+	protected CoreClassification coreClassification;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AllocationConstraintImpl() {
+	protected CoreAllocationConstraintImpl() {
 		super();
 	}
 
@@ -64,7 +64,7 @@ public abstract class AllocationConstraintImpl extends BaseObjectImpl implements
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getAllocationConstraint();
+		return AmaltheaPackage.eINSTANCE.getCoreAllocationConstraint();
 	}
 
 	/**
@@ -72,8 +72,8 @@ public abstract class AllocationConstraintImpl extends BaseObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwCoreConstraint getHwConstraint() {
-		return hwConstraint;
+	public CoreClassification getCoreClassification() {
+		return coreClassification;
 	}
 
 	/**
@@ -81,11 +81,11 @@ public abstract class AllocationConstraintImpl extends BaseObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetHwConstraint(HwCoreConstraint newHwConstraint, NotificationChain msgs) {
-		HwCoreConstraint oldHwConstraint = hwConstraint;
-		hwConstraint = newHwConstraint;
+	public NotificationChain basicSetCoreClassification(CoreClassification newCoreClassification, NotificationChain msgs) {
+		CoreClassification oldCoreClassification = coreClassification;
+		coreClassification = newCoreClassification;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ALLOCATION_CONSTRAINT__HW_CONSTRAINT, oldHwConstraint, newHwConstraint);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CORE_ALLOCATION_CONSTRAINT__CORE_CLASSIFICATION, oldCoreClassification, newCoreClassification);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -96,18 +96,18 @@ public abstract class AllocationConstraintImpl extends BaseObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHwConstraint(HwCoreConstraint newHwConstraint) {
-		if (newHwConstraint != hwConstraint) {
+	public void setCoreClassification(CoreClassification newCoreClassification) {
+		if (newCoreClassification != coreClassification) {
 			NotificationChain msgs = null;
-			if (hwConstraint != null)
-				msgs = ((InternalEObject)hwConstraint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ALLOCATION_CONSTRAINT__HW_CONSTRAINT, null, msgs);
-			if (newHwConstraint != null)
-				msgs = ((InternalEObject)newHwConstraint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.ALLOCATION_CONSTRAINT__HW_CONSTRAINT, null, msgs);
-			msgs = basicSetHwConstraint(newHwConstraint, msgs);
+			if (coreClassification != null)
+				msgs = ((InternalEObject)coreClassification).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CORE_ALLOCATION_CONSTRAINT__CORE_CLASSIFICATION, null, msgs);
+			if (newCoreClassification != null)
+				msgs = ((InternalEObject)newCoreClassification).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CORE_ALLOCATION_CONSTRAINT__CORE_CLASSIFICATION, null, msgs);
+			msgs = basicSetCoreClassification(newCoreClassification, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ALLOCATION_CONSTRAINT__HW_CONSTRAINT, newHwConstraint, newHwConstraint));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CORE_ALLOCATION_CONSTRAINT__CORE_CLASSIFICATION, newCoreClassification, newCoreClassification));
 	}
 
 	/**
@@ -118,8 +118,8 @@ public abstract class AllocationConstraintImpl extends BaseObjectImpl implements
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.ALLOCATION_CONSTRAINT__HW_CONSTRAINT:
-				return basicSetHwConstraint(null, msgs);
+			case AmaltheaPackage.CORE_ALLOCATION_CONSTRAINT__CORE_CLASSIFICATION:
+				return basicSetCoreClassification(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -132,8 +132,8 @@ public abstract class AllocationConstraintImpl extends BaseObjectImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.ALLOCATION_CONSTRAINT__HW_CONSTRAINT:
-				return getHwConstraint();
+			case AmaltheaPackage.CORE_ALLOCATION_CONSTRAINT__CORE_CLASSIFICATION:
+				return getCoreClassification();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -146,8 +146,8 @@ public abstract class AllocationConstraintImpl extends BaseObjectImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.ALLOCATION_CONSTRAINT__HW_CONSTRAINT:
-				setHwConstraint((HwCoreConstraint)newValue);
+			case AmaltheaPackage.CORE_ALLOCATION_CONSTRAINT__CORE_CLASSIFICATION:
+				setCoreClassification((CoreClassification)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -161,8 +161,8 @@ public abstract class AllocationConstraintImpl extends BaseObjectImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.ALLOCATION_CONSTRAINT__HW_CONSTRAINT:
-				setHwConstraint((HwCoreConstraint)null);
+			case AmaltheaPackage.CORE_ALLOCATION_CONSTRAINT__CORE_CLASSIFICATION:
+				setCoreClassification((CoreClassification)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -176,10 +176,10 @@ public abstract class AllocationConstraintImpl extends BaseObjectImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.ALLOCATION_CONSTRAINT__HW_CONSTRAINT:
-				return hwConstraint != null;
+			case AmaltheaPackage.CORE_ALLOCATION_CONSTRAINT__CORE_CLASSIFICATION:
+				return coreClassification != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //AllocationConstraintImpl
+} //CoreAllocationConstraintImpl

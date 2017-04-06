@@ -59,6 +59,24 @@ public interface AmaltheaFactory extends EFactory {
 	Tag createTag();
 
 	/**
+	 * Returns a new object of class '<em>Core Classifier</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Core Classifier</em>'.
+	 * @generated
+	 */
+	CoreClassifier createCoreClassifier();
+
+	/**
+	 * Returns a new object of class '<em>Memory Classifier</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Memory Classifier</em>'.
+	 * @generated
+	 */
+	MemoryClassifier createMemoryClassifier();
+
+	/**
 	 * Returns a new object of class '<em>Transmission Policy</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1490,40 +1508,22 @@ public interface AmaltheaFactory extends EFactory {
 	AbstractElementMappingConstraint createAbstractElementMappingConstraint();
 
 	/**
-	 * Returns a new object of class '<em>Hw Core Property</em>'.
+	 * Returns a new object of class '<em>Core Classification</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw Core Property</em>'.
+	 * @return a new object of class '<em>Core Classification</em>'.
 	 * @generated
 	 */
-	HwCoreProperty createHwCoreProperty();
+	CoreClassification createCoreClassification();
 
 	/**
-	 * Returns a new object of class '<em>Hw Core Conjunction</em>'.
+	 * Returns a new object of class '<em>Memory Classification</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw Core Conjunction</em>'.
+	 * @return a new object of class '<em>Memory Classification</em>'.
 	 * @generated
 	 */
-	HwCoreConjunction createHwCoreConjunction();
-
-	/**
-	 * Returns a new object of class '<em>Hw Memory Property</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw Memory Property</em>'.
-	 * @generated
-	 */
-	HwMemoryProperty createHwMemoryProperty();
-
-	/**
-	 * Returns a new object of class '<em>Hw Memory Conjunction</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw Memory Conjunction</em>'.
-	 * @generated
-	 */
-	HwMemoryConjunction createHwMemoryConjunction();
+	MemoryClassification createMemoryClassification();
 
 	/**
 	 * Returns a new object of class '<em>Stimuli Model</em>'.

@@ -34,7 +34,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface RunnableAllocationConstraint extends AllocationConstraint {
+public interface RunnableAllocationConstraint extends CoreAllocationConstraint {
 	/**
 	 * Returns the value of the '<em><b>Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->

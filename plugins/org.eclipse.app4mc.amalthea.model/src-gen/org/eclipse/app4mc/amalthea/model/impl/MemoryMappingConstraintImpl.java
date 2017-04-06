@@ -13,8 +13,8 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.HwMemoryConstraint;
-import org.eclipse.app4mc.amalthea.model.MappingConstraint;
+import org.eclipse.app4mc.amalthea.model.MemoryClassification;
+import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -26,34 +26,34 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Mapping Constraint</b></em>'.
+ * An implementation of the model object '<em><b>Memory Mapping Constraint</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MappingConstraintImpl#getHwConstraint <em>Hw Constraint</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryMappingConstraintImpl#getMemoryClassification <em>Memory Classification</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class MappingConstraintImpl extends BaseObjectImpl implements MappingConstraint {
+public abstract class MemoryMappingConstraintImpl extends BaseObjectImpl implements MemoryMappingConstraint {
 	/**
-	 * The cached value of the '{@link #getHwConstraint() <em>Hw Constraint</em>}' containment reference.
+	 * The cached value of the '{@link #getMemoryClassification() <em>Memory Classification</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getHwConstraint()
+	 * @see #getMemoryClassification()
 	 * @generated
 	 * @ordered
 	 */
-	protected HwMemoryConstraint hwConstraint;
+	protected MemoryClassification memoryClassification;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MappingConstraintImpl() {
+	protected MemoryMappingConstraintImpl() {
 		super();
 	}
 
@@ -64,7 +64,7 @@ public abstract class MappingConstraintImpl extends BaseObjectImpl implements Ma
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getMappingConstraint();
+		return AmaltheaPackage.eINSTANCE.getMemoryMappingConstraint();
 	}
 
 	/**
@@ -72,8 +72,8 @@ public abstract class MappingConstraintImpl extends BaseObjectImpl implements Ma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwMemoryConstraint getHwConstraint() {
-		return hwConstraint;
+	public MemoryClassification getMemoryClassification() {
+		return memoryClassification;
 	}
 
 	/**
@@ -81,11 +81,11 @@ public abstract class MappingConstraintImpl extends BaseObjectImpl implements Ma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetHwConstraint(HwMemoryConstraint newHwConstraint, NotificationChain msgs) {
-		HwMemoryConstraint oldHwConstraint = hwConstraint;
-		hwConstraint = newHwConstraint;
+	public NotificationChain basicSetMemoryClassification(MemoryClassification newMemoryClassification, NotificationChain msgs) {
+		MemoryClassification oldMemoryClassification = memoryClassification;
+		memoryClassification = newMemoryClassification;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MAPPING_CONSTRAINT__HW_CONSTRAINT, oldHwConstraint, newHwConstraint);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_MAPPING_CONSTRAINT__MEMORY_CLASSIFICATION, oldMemoryClassification, newMemoryClassification);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -96,18 +96,18 @@ public abstract class MappingConstraintImpl extends BaseObjectImpl implements Ma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHwConstraint(HwMemoryConstraint newHwConstraint) {
-		if (newHwConstraint != hwConstraint) {
+	public void setMemoryClassification(MemoryClassification newMemoryClassification) {
+		if (newMemoryClassification != memoryClassification) {
 			NotificationChain msgs = null;
-			if (hwConstraint != null)
-				msgs = ((InternalEObject)hwConstraint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MAPPING_CONSTRAINT__HW_CONSTRAINT, null, msgs);
-			if (newHwConstraint != null)
-				msgs = ((InternalEObject)newHwConstraint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MAPPING_CONSTRAINT__HW_CONSTRAINT, null, msgs);
-			msgs = basicSetHwConstraint(newHwConstraint, msgs);
+			if (memoryClassification != null)
+				msgs = ((InternalEObject)memoryClassification).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MEMORY_MAPPING_CONSTRAINT__MEMORY_CLASSIFICATION, null, msgs);
+			if (newMemoryClassification != null)
+				msgs = ((InternalEObject)newMemoryClassification).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MEMORY_MAPPING_CONSTRAINT__MEMORY_CLASSIFICATION, null, msgs);
+			msgs = basicSetMemoryClassification(newMemoryClassification, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MAPPING_CONSTRAINT__HW_CONSTRAINT, newHwConstraint, newHwConstraint));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_MAPPING_CONSTRAINT__MEMORY_CLASSIFICATION, newMemoryClassification, newMemoryClassification));
 	}
 
 	/**
@@ -118,8 +118,8 @@ public abstract class MappingConstraintImpl extends BaseObjectImpl implements Ma
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.MAPPING_CONSTRAINT__HW_CONSTRAINT:
-				return basicSetHwConstraint(null, msgs);
+			case AmaltheaPackage.MEMORY_MAPPING_CONSTRAINT__MEMORY_CLASSIFICATION:
+				return basicSetMemoryClassification(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -132,8 +132,8 @@ public abstract class MappingConstraintImpl extends BaseObjectImpl implements Ma
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.MAPPING_CONSTRAINT__HW_CONSTRAINT:
-				return getHwConstraint();
+			case AmaltheaPackage.MEMORY_MAPPING_CONSTRAINT__MEMORY_CLASSIFICATION:
+				return getMemoryClassification();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -146,8 +146,8 @@ public abstract class MappingConstraintImpl extends BaseObjectImpl implements Ma
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.MAPPING_CONSTRAINT__HW_CONSTRAINT:
-				setHwConstraint((HwMemoryConstraint)newValue);
+			case AmaltheaPackage.MEMORY_MAPPING_CONSTRAINT__MEMORY_CLASSIFICATION:
+				setMemoryClassification((MemoryClassification)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -161,8 +161,8 @@ public abstract class MappingConstraintImpl extends BaseObjectImpl implements Ma
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MAPPING_CONSTRAINT__HW_CONSTRAINT:
-				setHwConstraint((HwMemoryConstraint)null);
+			case AmaltheaPackage.MEMORY_MAPPING_CONSTRAINT__MEMORY_CLASSIFICATION:
+				setMemoryClassification((MemoryClassification)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -176,10 +176,10 @@ public abstract class MappingConstraintImpl extends BaseObjectImpl implements Ma
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MAPPING_CONSTRAINT__HW_CONSTRAINT:
-				return hwConstraint != null;
+			case AmaltheaPackage.MEMORY_MAPPING_CONSTRAINT__MEMORY_CLASSIFICATION:
+				return memoryClassification != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //MappingConstraintImpl
+} //MemoryMappingConstraintImpl

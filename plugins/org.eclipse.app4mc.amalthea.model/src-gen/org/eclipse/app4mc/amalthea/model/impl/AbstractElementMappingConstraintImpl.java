@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class AbstractElementMappingConstraintImpl extends MappingConstraintImpl implements AbstractElementMappingConstraint {
+public class AbstractElementMappingConstraintImpl extends MemoryMappingConstraintImpl implements AbstractElementMappingConstraint {
 	/**
 	 * The cached value of the '{@link #getAbstractElement() <em>Abstract Element</em>}' reference.
 	 * <!-- begin-user-doc -->

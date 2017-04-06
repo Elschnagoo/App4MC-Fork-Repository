@@ -34,7 +34,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface ProcessAllocationConstraint extends AllocationConstraint {
+public interface ProcessAllocationConstraint extends CoreAllocationConstraint {
 	/**
 	 * Returns the value of the '<em><b>Process</b></em>' reference.
 	 * <!-- begin-user-doc -->

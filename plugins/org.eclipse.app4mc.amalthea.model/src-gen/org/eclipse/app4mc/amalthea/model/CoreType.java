@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +25,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.CoreType#getBitWidth <em>Bit Width</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.CoreType#getInstructionsPerCycle <em>Instructions Per Cycle</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.CoreType#getClassifiers <em>Classifiers</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCoreType()
@@ -84,5 +86,21 @@ public interface CoreType extends AbstractionType {
 	 * @generated
 	 */
 	void setInstructionsPerCycle(float value);
+
+	/**
+	 * Returns the value of the '<em><b>Classifiers</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.CoreClassifier}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Classifiers</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Classifiers</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCoreType_Classifiers()
+	 * @model
+	 * @generated
+	 */
+	EList<CoreClassifier> getClassifiers();
 
 } // CoreType

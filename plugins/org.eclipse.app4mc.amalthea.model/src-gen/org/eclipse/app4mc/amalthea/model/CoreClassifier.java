@@ -15,13 +15,13 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Hw Memory Constraint</b></em>'.
+ * A representation of the model object '<em><b>Core Classifier</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwMemoryConstraint()
- * @model abstract="true"
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCoreClassifier()
+ * @model
  * @generated
  */
-public interface HwMemoryConstraint extends BaseObject {
-} // HwMemoryConstraint
+public interface CoreClassifier extends Classifier {
+} // CoreClassifier

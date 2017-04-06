@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -16,25 +16,27 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.CoreClassifier;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.HwMemoryConstraint} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.CoreClassifier} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class HwMemoryConstraintItemProvider extends BaseObjectItemProvider {
+public class CoreClassifierItemProvider extends ClassifierItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwMemoryConstraintItemProvider(AdapterFactory adapterFactory) {
+	public CoreClassifierItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -51,6 +53,17 @@ public class HwMemoryConstraintItemProvider extends BaseObjectItemProvider {
 
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This returns CoreClassifier.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object getImage(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/CoreClassifier"));
 	}
 
 	/**
@@ -71,7 +84,10 @@ public class HwMemoryConstraintItemProvider extends BaseObjectItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_HwMemoryConstraint_type");
+		String label = ((CoreClassifier)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_CoreClassifier_type") :
+			getString("_UI_CoreClassifier_type") + " " + label;
 	}
 	
 

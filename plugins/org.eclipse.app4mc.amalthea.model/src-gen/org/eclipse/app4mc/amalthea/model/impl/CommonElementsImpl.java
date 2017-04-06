@@ -16,6 +16,8 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
+import org.eclipse.app4mc.amalthea.model.CoreClassifier;
+import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
 import org.eclipse.app4mc.amalthea.model.Tag;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -37,6 +39,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CommonElementsImpl#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CommonElementsImpl#getCoreClassifiers <em>Core Classifiers</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CommonElementsImpl#getMemoryClassifiers <em>Memory Classifiers</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,6 +55,26 @@ public class CommonElementsImpl extends BaseObjectImpl implements CommonElements
 	 * @ordered
 	 */
 	protected EList<Tag> tags;
+
+	/**
+	 * The cached value of the '{@link #getCoreClassifiers() <em>Core Classifiers</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCoreClassifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CoreClassifier> coreClassifiers;
+
+	/**
+	 * The cached value of the '{@link #getMemoryClassifiers() <em>Memory Classifiers</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemoryClassifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MemoryClassifier> memoryClassifiers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,11 +112,39 @@ public class CommonElementsImpl extends BaseObjectImpl implements CommonElements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<CoreClassifier> getCoreClassifiers() {
+		if (coreClassifiers == null) {
+			coreClassifiers = new EObjectContainmentEList<CoreClassifier>(CoreClassifier.class, this, AmaltheaPackage.COMMON_ELEMENTS__CORE_CLASSIFIERS);
+		}
+		return coreClassifiers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<MemoryClassifier> getMemoryClassifiers() {
+		if (memoryClassifiers == null) {
+			memoryClassifiers = new EObjectContainmentEList<MemoryClassifier>(MemoryClassifier.class, this, AmaltheaPackage.COMMON_ELEMENTS__MEMORY_CLASSIFIERS);
+		}
+		return memoryClassifiers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.COMMON_ELEMENTS__TAGS:
 				return ((InternalEList<?>)getTags()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.COMMON_ELEMENTS__CORE_CLASSIFIERS:
+				return ((InternalEList<?>)getCoreClassifiers()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.COMMON_ELEMENTS__MEMORY_CLASSIFIERS:
+				return ((InternalEList<?>)getMemoryClassifiers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -107,6 +159,10 @@ public class CommonElementsImpl extends BaseObjectImpl implements CommonElements
 		switch (featureID) {
 			case AmaltheaPackage.COMMON_ELEMENTS__TAGS:
 				return getTags();
+			case AmaltheaPackage.COMMON_ELEMENTS__CORE_CLASSIFIERS:
+				return getCoreClassifiers();
+			case AmaltheaPackage.COMMON_ELEMENTS__MEMORY_CLASSIFIERS:
+				return getMemoryClassifiers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -124,6 +180,14 @@ public class CommonElementsImpl extends BaseObjectImpl implements CommonElements
 				getTags().clear();
 				getTags().addAll((Collection<? extends Tag>)newValue);
 				return;
+			case AmaltheaPackage.COMMON_ELEMENTS__CORE_CLASSIFIERS:
+				getCoreClassifiers().clear();
+				getCoreClassifiers().addAll((Collection<? extends CoreClassifier>)newValue);
+				return;
+			case AmaltheaPackage.COMMON_ELEMENTS__MEMORY_CLASSIFIERS:
+				getMemoryClassifiers().clear();
+				getMemoryClassifiers().addAll((Collection<? extends MemoryClassifier>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -139,6 +203,12 @@ public class CommonElementsImpl extends BaseObjectImpl implements CommonElements
 			case AmaltheaPackage.COMMON_ELEMENTS__TAGS:
 				getTags().clear();
 				return;
+			case AmaltheaPackage.COMMON_ELEMENTS__CORE_CLASSIFIERS:
+				getCoreClassifiers().clear();
+				return;
+			case AmaltheaPackage.COMMON_ELEMENTS__MEMORY_CLASSIFIERS:
+				getMemoryClassifiers().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -153,6 +223,10 @@ public class CommonElementsImpl extends BaseObjectImpl implements CommonElements
 		switch (featureID) {
 			case AmaltheaPackage.COMMON_ELEMENTS__TAGS:
 				return tags != null && !tags.isEmpty();
+			case AmaltheaPackage.COMMON_ELEMENTS__CORE_CLASSIFIERS:
+				return coreClassifiers != null && !coreClassifiers.isEmpty();
+			case AmaltheaPackage.COMMON_ELEMENTS__MEMORY_CLASSIFIERS:
+				return memoryClassifiers != null && !memoryClassifiers.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

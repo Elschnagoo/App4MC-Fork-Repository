@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ProcessPrototypeAllocationConstraintImpl extends AllocationConstraintImpl implements ProcessPrototypeAllocationConstraint {
+public class ProcessPrototypeAllocationConstraintImpl extends CoreAllocationConstraintImpl implements ProcessPrototypeAllocationConstraint {
 	/**
 	 * The cached value of the '{@link #getProcessPrototype() <em>Process Prototype</em>}' reference.
 	 * <!-- begin-user-doc -->

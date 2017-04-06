@@ -13,24 +13,24 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.HwCoreConstraint;
+import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Hw Core Constraint</b></em>'.
+ * An implementation of the model object '<em><b>Memory Classifier</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public abstract class HwCoreConstraintImpl extends BaseObjectImpl implements HwCoreConstraint {
+public class MemoryClassifierImpl extends ClassifierImpl implements MemoryClassifier {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected HwCoreConstraintImpl() {
+	protected MemoryClassifierImpl() {
 		super();
 	}
 
@@ -41,7 +41,7 @@ public abstract class HwCoreConstraintImpl extends BaseObjectImpl implements HwC
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getHwCoreConstraint();
+		return AmaltheaPackage.eINSTANCE.getMemoryClassifier();
 	}
 
-} //HwCoreConstraintImpl
+} //MemoryClassifierImpl

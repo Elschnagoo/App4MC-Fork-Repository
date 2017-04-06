@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class RunnableAllocationConstraintImpl extends AllocationConstraintImpl implements RunnableAllocationConstraint {
+public class RunnableAllocationConstraintImpl extends CoreAllocationConstraintImpl implements RunnableAllocationConstraint {
 	/**
 	 * The cached value of the '{@link #getRunnable() <em>Runnable</em>}' reference.
 	 * <!-- begin-user-doc -->
