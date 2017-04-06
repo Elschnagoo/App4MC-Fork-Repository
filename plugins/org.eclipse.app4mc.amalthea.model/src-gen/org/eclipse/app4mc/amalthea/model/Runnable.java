@@ -32,6 +32,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getDeadline <em>Deadline</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#isCallback <em>Callback</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#isService <em>Service</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getAsilLevel <em>Asil Level</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getRunnableCalls <em>Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getTaskRunnableCalls <em>Task Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getSection <em>Section</em>}</li>
@@ -162,6 +163,34 @@ public interface Runnable extends AbstractMemoryElement {
 	 * @generated
 	 */
 	void setService(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Asil Level</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.ASILType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * ASIL level for the runnable entity
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Asil Level</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.ASILType
+	 * @see #setAsilLevel(ASILType)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_AsilLevel()
+	 * @model unique="false"
+	 * @generated
+	 */
+	ASILType getAsilLevel();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Runnable#getAsilLevel <em>Asil Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Asil Level</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.ASILType
+	 * @see #getAsilLevel()
+	 * @generated
+	 */
+	void setAsilLevel(ASILType value);
 
 	/**
 	 * Returns the value of the '<em><b>Runnable Calls</b></em>' reference list.

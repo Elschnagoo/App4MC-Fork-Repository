@@ -4655,6 +4655,11 @@ The final state can be several Tasks, which can be computed using provided infor
             <xsd:documentation>Marker if runnable is used as a service.</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="asilLevel" type="am:ASILType">
+          <xsd:annotation>
+            <xsd:documentation>ASIL level for the runnable entity</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
         <xsd:attribute name="activation" type="xsd:string"/>
         <xsd:attribute name="section" type="xsd:string"/>
       </xsd:extension>

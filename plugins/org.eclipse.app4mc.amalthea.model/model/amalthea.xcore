@@ -2878,6 +2878,10 @@ class Runnable extends AbstractMemoryElement
 	 * Marker if runnable is used as a service.
 	 */
 	boolean service = "false"
+	/*
+	 * ASIL level for the runnable entity
+	 */
+	ASILType asilLevel
 	
 	// back pointer (readonly)
 	@GenModel(property="Readonly", suppressedSetVisibility="true")

@@ -1878,11 +1878,12 @@
     <nested inputs="amalthea.xcore#/EPackage/Runnable" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=271">
       <nested inputs="amalthea.xcore#/EPackage/Runnable/callback" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=271/XSDAttributeUse"/>
       <nested inputs="amalthea.xcore#/EPackage/Runnable/service" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=271/XSDAttributeUse=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/Runnable/asilLevel" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=271/XSDAttributeUse=2"/>
       <nested inputs="amalthea.xcore#/EPackage/Runnable/runnableItems" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=271/XSDParticle/XSDModelGroup/XSDParticle"/>
-      <nested inputs="amalthea.xcore#/EPackage/Runnable/activation" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=271/XSDAttributeUse=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/Runnable/activation" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=271/XSDAttributeUse=3"/>
       <nested inputs="amalthea.xcore#/EPackage/Runnable/activation" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=271/XSDParticle/XSDModelGroup/XSDParticle=1"/>
       <nested inputs="amalthea.xcore#/EPackage/Runnable/deadline" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=271/XSDParticle/XSDModelGroup/XSDParticle=2"/>
-      <nested inputs="amalthea.xcore#/EPackage/Runnable/section" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=271/XSDAttributeUse=3"/>
+      <nested inputs="amalthea.xcore#/EPackage/Runnable/section" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=271/XSDAttributeUse=4"/>
       <nested inputs="amalthea.xcore#/EPackage/Runnable/section" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=271/XSDParticle/XSDModelGroup/XSDParticle=3"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/Runnable" outputs="AmaltheaXMI.xsd#//Runnable;XSDElementDeclaration=271"/>

@@ -14,6 +14,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.util.Collection;
 
+import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
@@ -49,6 +50,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getDeadline <em>Deadline</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#isCallback <em>Callback</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#isService <em>Service</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getAsilLevel <em>Asil Level</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getRunnableCalls <em>Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getTaskRunnableCalls <em>Task Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getSection <em>Section</em>}</li>
@@ -127,6 +129,26 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @ordered
 	 */
 	protected boolean service = SERVICE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getAsilLevel() <em>Asil Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAsilLevel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ASILType ASIL_LEVEL_EDEFAULT = ASILType._UNDEFINED_;
+
+	/**
+	 * The cached value of the '{@link #getAsilLevel() <em>Asil Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAsilLevel()
+	 * @generated
+	 * @ordered
+	 */
+	protected ASILType asilLevel = ASIL_LEVEL_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getRunnableCalls() <em>Runnable Calls</em>}' reference list.
@@ -327,6 +349,27 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ASILType getAsilLevel() {
+		return asilLevel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAsilLevel(ASILType newAsilLevel) {
+		ASILType oldAsilLevel = asilLevel;
+		asilLevel = newAsilLevel == null ? ASIL_LEVEL_EDEFAULT : newAsilLevel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__ASIL_LEVEL, oldAsilLevel, asilLevel));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<RunnableCall> getRunnableCalls() {
 		if (runnableCalls == null) {
 			runnableCalls = new EObjectWithInverseResolvingEList<RunnableCall>(RunnableCall.class, this, AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS, AmaltheaPackage.RUNNABLE_CALL__RUNNABLE_LINK_INT);
@@ -508,6 +551,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return isCallback();
 			case AmaltheaPackage.RUNNABLE__SERVICE:
 				return isService();
+			case AmaltheaPackage.RUNNABLE__ASIL_LEVEL:
+				return getAsilLevel();
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
 				return getRunnableCalls();
 			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
@@ -546,6 +591,9 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return;
 			case AmaltheaPackage.RUNNABLE__SERVICE:
 				setService((Boolean)newValue);
+				return;
+			case AmaltheaPackage.RUNNABLE__ASIL_LEVEL:
+				setAsilLevel((ASILType)newValue);
 				return;
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
 				getRunnableCalls().clear();
@@ -588,6 +636,9 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 			case AmaltheaPackage.RUNNABLE__SERVICE:
 				setService(SERVICE_EDEFAULT);
 				return;
+			case AmaltheaPackage.RUNNABLE__ASIL_LEVEL:
+				setAsilLevel(ASIL_LEVEL_EDEFAULT);
+				return;
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
 				getRunnableCalls().clear();
 				return;
@@ -622,6 +673,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return callback != CALLBACK_EDEFAULT;
 			case AmaltheaPackage.RUNNABLE__SERVICE:
 				return service != SERVICE_EDEFAULT;
+			case AmaltheaPackage.RUNNABLE__ASIL_LEVEL:
+				return asilLevel != ASIL_LEVEL_EDEFAULT;
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
 				return runnableCalls != null && !runnableCalls.isEmpty();
 			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
@@ -648,6 +701,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 		result.append(callback);
 		result.append(", service: ");
 		result.append(service);
+		result.append(", asilLevel: ");
+		result.append(asilLevel);
 		result.append(')');
 		return result.toString();
 	}

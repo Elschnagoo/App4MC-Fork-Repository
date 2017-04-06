@@ -20188,13 +20188,22 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE__SERVICE = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Asil Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE__ASIL_LEVEL = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Runnable Calls</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__RUNNABLE_CALLS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 5;
+	int RUNNABLE__RUNNABLE_CALLS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Task Runnable Calls</b></em>' reference list.
@@ -20203,7 +20212,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__TASK_RUNNABLE_CALLS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 6;
+	int RUNNABLE__TASK_RUNNABLE_CALLS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Section</b></em>' reference.
@@ -20212,7 +20221,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__SECTION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 7;
+	int RUNNABLE__SECTION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Section Link Int</b></em>' reference.
@@ -20221,7 +20230,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__SECTION_LINK_INT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
+	int RUNNABLE__SECTION_LINK_INT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Runnable</em>' class.
@@ -20230,7 +20239,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 9;
+	int RUNNABLE_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -32149,6 +32158,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getRunnable_Service();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Runnable#getAsilLevel <em>Asil Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Asil Level</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Runnable#getAsilLevel()
+	 * @see #getRunnable()
+	 * @generated
+	 */
+	EAttribute getRunnable_AsilLevel();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Runnable#getRunnableCalls <em>Runnable Calls</em>}'.

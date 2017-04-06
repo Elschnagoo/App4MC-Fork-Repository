@@ -60,6 +60,7 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 			addActivationPropertyDescriptor(object);
 			addCallbackPropertyDescriptor(object);
 			addServicePropertyDescriptor(object);
+			addAsilLevelPropertyDescriptor(object);
 			addRunnableCallsPropertyDescriptor(object);
 			addTaskRunnableCallsPropertyDescriptor(object);
 			addSectionPropertyDescriptor(object);
@@ -129,6 +130,28 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Asil Level feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAsilLevelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Runnable_asilLevel_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Runnable_asilLevel_feature", "_UI_Runnable_type"),
+				 AmaltheaPackage.eINSTANCE.getRunnable_AsilLevel(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -284,6 +307,7 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 		switch (notification.getFeatureID(org.eclipse.app4mc.amalthea.model.Runnable.class)) {
 			case AmaltheaPackage.RUNNABLE__CALLBACK:
 			case AmaltheaPackage.RUNNABLE__SERVICE:
+			case AmaltheaPackage.RUNNABLE__ASIL_LEVEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:

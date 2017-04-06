@@ -10059,8 +10059,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRunnable_RunnableCalls() {
-		return (EReference)runnableEClass.getEStructuralFeatures().get(5);
+	public EAttribute getRunnable_AsilLevel() {
+		return (EAttribute)runnableEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -10068,7 +10068,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRunnable_TaskRunnableCalls() {
+	public EReference getRunnable_RunnableCalls() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -10077,7 +10077,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRunnable_Section() {
+	public EReference getRunnable_TaskRunnableCalls() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -10086,8 +10086,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRunnable_SectionLinkInt() {
+	public EReference getRunnable_Section() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRunnable_SectionLinkInt() {
+		return (EReference)runnableEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -12705,6 +12714,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(runnableEClass, RUNNABLE__DEADLINE);
 		createEAttribute(runnableEClass, RUNNABLE__CALLBACK);
 		createEAttribute(runnableEClass, RUNNABLE__SERVICE);
+		createEAttribute(runnableEClass, RUNNABLE__ASIL_LEVEL);
 		createEReference(runnableEClass, RUNNABLE__RUNNABLE_CALLS);
 		createEReference(runnableEClass, RUNNABLE__TASK_RUNNABLE_CALLS);
 		createEReference(runnableEClass, RUNNABLE__SECTION);
@@ -14434,6 +14444,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getRunnable_Deadline(), this.getTime(), null, "deadline", null, 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRunnable_Callback(), theEcorePackage.getEBoolean(), "callback", "false", 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRunnable_Service(), theEcorePackage.getEBoolean(), "service", "false", 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRunnable_AsilLevel(), this.getASILType(), "asilLevel", null, 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_RunnableCalls(), this.getRunnableCall(), this.getRunnableCall_RunnableLinkInt(), "runnableCalls", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_TaskRunnableCalls(), this.getTaskRunnableCall(), this.getTaskRunnableCall_RunnableLinkInt(), "taskRunnableCalls", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_Section(), this.getSection(), null, "section", null, 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
