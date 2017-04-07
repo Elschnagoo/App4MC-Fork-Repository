@@ -19,7 +19,9 @@ Version 0.8.0
    </configIni>
 
    <launcherArgs>
-      <vmArgs>-Xmx2g
+      <programArgsLin>--launcher.GTK_version 2
+      </programArgsLin>
+      <vmArgs>-Xmx2g -Dosgi.framework.extensions=org.eclipse.fx.osgi
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
@@ -238,6 +240,19 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <feature id="org.eclipse.xtext.xbase"/>
       <feature id="org.eclipse.xtext.xbase.lib"/>
       <feature id="org.eclipse.xtext.xtext.ui"/>
+      <feature id="org.eclipse.fx.ide.basic.feature"/>
+      <feature id="org.eclipse.fx.ide.converter.feature"/>
+      <feature id="org.eclipse.fx.ide.css.feature"/>
+      <feature id="org.eclipse.fx.ide.feature"/>
+      <feature id="org.eclipse.fx.ide.fxgraph.feature"/>
+      <feature id="org.eclipse.fx.ide.fxml.feature"/>
+      <feature id="org.eclipse.fx.ide.gmod.feature"/>
+      <feature id="org.eclipse.fx.ide.l10n.feature"/>
+      <feature id="org.eclipse.fx.ide.ldef.feature"/>
+      <feature id="org.eclipse.fx.ide.mobile.feature"/>
+      <feature id="org.eclipse.fx.ide.pde.feature"/>
+      <feature id="org.eclipse.fx.ide.rrobot.feature"/>
+      <feature id="org.eclipse.fx.runtime.min.feature"/>
    </features>
 
    <configurations>

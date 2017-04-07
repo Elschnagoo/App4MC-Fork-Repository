@@ -73,6 +73,12 @@ All rights reserved.
          unpack="false"/>
          
    <plugin
+         id="org.apache.commons.math"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+         
+   <plugin
          id="org.jgrapht"
          download-size="0"
          install-size="0"
@@ -86,6 +92,12 @@ All rights reserved.
 
    <plugin
          id="org.jenetics"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.mxgraph"
          download-size="0"
          install-size="0"
          version="0.0.0"/>

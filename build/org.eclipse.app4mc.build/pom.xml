@@ -68,6 +68,7 @@
 		<module>../../plugins/org.jenetics</module>
 		<module>../../plugins/org.jgrapht</module>
 		<module>../../plugins/org.ojalgo</module>
+		<module>../../plugins/com.mxgraph</module>
 		<module>../../plugins/org.sqlite.jdbc</module>
 
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.080</module>
@@ -178,6 +179,24 @@
 								<url>https://git.eclipse.org/r/app4mc/org.eclipse.app4mc</url>
 							</repository>
 						</baselineRepositories>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho.version}</version>
+					
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<extraClasspathElements>
+							<extraClasspathElement>
+								<groupId>com.oracle</groupId>
+								<artifactId>javafx</artifactId>
+								<version>8.0.0-SNAPSHOT</version>
+								<systemPath>${java.home}/lib/jfxswt.jar</systemPath>
+								<scope>system</scope>
+							</extraClasspathElement>
+						</extraClasspathElements>
 					</configuration>
 				</plugin>
 			</plugins>
