@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Multicore TraceViewer
+Bundle-SymbolicName: org.eclipse.app4mc.multicore.execution.ui.traceview;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Activator: org.eclipse.app4mc.multicore.execution.ui.traceview.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.app4mc.multicore.execution.ui.widget
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Export-Package: org.eclipse.app4mc.multicore.execution.ui.traceview;
+  uses:="org.osgi.framework,
+   org.eclipse.ui,
+   org.eclipse.app4mc.multicore.execution.ui.widget.tracewidget,
+   org.eclipse.jface.resource,
+   org.eclipse.app4mc.multicore.execution.ui.widget.emtracewidget,
+   org.eclipse.ui.plugin"
+Bundle-Vendor: Eclipse.org

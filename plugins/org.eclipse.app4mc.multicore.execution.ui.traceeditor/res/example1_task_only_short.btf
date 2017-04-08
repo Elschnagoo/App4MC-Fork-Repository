@@ -1,0 +1,38 @@
+#version 1.0
+#creator TA-Toolsuite 12.06.1
+# Simulation of dualcore processor 120MHz, 16Kbyte RAM
+#creationDate 2012-08-31T15:53:00
+#inputFile c:\TAsc\doc\examples\ems.tap
+#timeScale ns
+#entityType
+#-0 T
+#-1 R
+#-2 C
+#entityTable
+#-0 Task_A
+#-1 Task_B
+#-2 Core_1
+#-3 Core_2
+#entityTypeTable
+#-T Task_A
+#-T Task_B
+#-T Task_C
+#-T Task_D
+#-C Core_1
+#-C Core_2
+0,Task_A,0,T,Task_A,0,activate
+100,Core_1,0,T,Task_A,0,start
+110,Task_C,0,T,Task_C,0,activate
+120,Core_2,0,T,Task_C,0,start
+150,Core_1,0,T,Task_A,0,preempt
+170,Core_2,0,T,Task_C,0,preempt
+180,Task_B,0,T,Task_B,0,activate
+200,Core_1,0,T,Task_B,0,start
+210,Task_D,0,T,Task_D,0,activate
+220,Core_2,0,T,Task_D,0,start
+220,Core_1,0,T,Task_B,0,preempt
+230,Core_1,0,T,Task_A,0,resume
+240,Core_2,0,T,Task_D,0,preempt
+250,Core_2,0,T,Task_C,0,resume
+270,Core_1,0,T,Task_A,0,preempt
+290,Core_2,0,T,Task_C,0,preempt
