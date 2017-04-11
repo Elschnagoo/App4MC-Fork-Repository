@@ -22,6 +22,12 @@ import org.eclipse.app4mc.amalthea.converters080.utils.HelperUtils_072_080;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+/**
+ * This class is responsible for converting the namespace of AMALTHEA model from 0.7.2 to 0.8.0
+ *
+ * @author mez2rng
+ *
+ */
 public class NamespaceConverter implements IConverter {
 
 	private final HelperUtils_072_080 helper;

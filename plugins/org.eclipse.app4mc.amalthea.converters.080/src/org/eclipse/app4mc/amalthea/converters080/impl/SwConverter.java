@@ -21,6 +21,12 @@ import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+/**
+ * This class is responsible for converting the SW Model elements from 0.7.2 to 0.8.0 version format of AMALTHEA model
+ *
+ * @author mez2rng
+ *
+ */
 public class SwConverter extends AbstractConverter {
 
 
@@ -143,7 +149,11 @@ public class SwConverter extends AbstractConverter {
 	}
 
 	/**
-	 * Below migration is for the metamodel change : Bug 513976 (Simplify Modes Handling)
+	 * Below migration is for the metamodel change : Bug 513976 (Simplify Modes Handling).
+	 *
+	 * Migration is required : As mode reference is not serialized in the model (as it is set as transient in the
+	 * metamodel definition).
+	 *
 	 *
 	 * @param rootElement
 	 */

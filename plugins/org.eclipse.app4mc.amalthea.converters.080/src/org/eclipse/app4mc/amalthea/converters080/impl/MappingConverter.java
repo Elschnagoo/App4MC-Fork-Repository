@@ -20,6 +20,13 @@ import org.eclipse.app4mc.amalthea.converters080.utils.HelperUtils_072_080;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+/**
+ * This class is responsible for converting the Mapping Model elements from 0.7.2 to 0.8.0 version format of AMALTHEA
+ * model
+ * 
+ * @author mez2rng
+ *
+ */
 public class MappingConverter extends AbstractConverter {
 
 
@@ -42,20 +49,20 @@ public class MappingConverter extends AbstractConverter {
 		}
 		final Element rootElement = root.getRootElement();
 
-		update_DataSize(rootElement);
+		update_Mapping(rootElement);
 
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
 	}
 
 
 	/**
-	 * Below migration is for the metamodel change : Bug 513969 (Inconsistent unit names for data size)
+	 * Below migration is for the metamodel change : Bug 513977 (Restructure MappingModel)
 	 *
-	 * In DataSizeUnit enum following values are changed: kibit, byte to : Kibit, B
+	 * Mapping(Abstract) class and AbstractElementMapping class contents are merged into a class : MemoryMapping
 	 *
 	 * @param rootElement
 	 */
-	private void update_DataSize(final Element rootElement) {
+	private void update_Mapping(final Element rootElement) {
 
 		final StringBuffer xpathBuffer = new StringBuffer();
 
