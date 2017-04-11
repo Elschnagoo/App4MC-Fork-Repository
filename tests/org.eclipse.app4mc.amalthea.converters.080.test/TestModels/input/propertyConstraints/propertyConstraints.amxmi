@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <isrs name="isr1" priority="0"/>
+    <tasks name="t1" priority="0" osekTaskGroup="0" multipleTaskActivationLimit="0"/>
+    <runnables name="r1" callback="false" service="false"/>
+    <processPrototypes name="processPrototype1" priority="0"/>
+  </swModel>
+  <hwModel/>
+  <propertyConstraintsModel>
+    <allocationConstraints xsi:type="am:ProcessAllocationConstraint" process="t1?type=Task">
+      <hwConstraint xsi:type="am:HwCoreConjunction">
+        <firstConstraint xsi:type="am:HwCoreConjunction">
+          <firstConstraint xsi:type="am:HwCoreConjunction">
+            <secondConstraint xsi:type="am:HwCoreConjunction"/>
+          </firstConstraint>
+          <secondConstraint xsi:type="am:HwCoreConjunction">
+            <secondConstraint xsi:type="am:HwCoreProperty">
+              <customProperties/>
+            </secondConstraint>
+          </secondConstraint>
+        </firstConstraint>
+      </hwConstraint>
+    </allocationConstraints>
+    <allocationConstraints xsi:type="am:ProcessPrototypeAllocationConstraint" processPrototype="processPrototype1?type=ProcessPrototype">
+      <hwConstraint xsi:type="am:HwCoreConjunction">
+        <firstConstraint xsi:type="am:HwCoreConjunction">
+          <firstConstraint xsi:type="am:HwCoreConjunction">
+            <secondConstraint xsi:type="am:HwCoreConjunction"/>
+          </firstConstraint>
+          <secondConstraint xsi:type="am:HwCoreConjunction">
+            <secondConstraint xsi:type="am:HwCoreProperty">
+              <customProperties/>
+            </secondConstraint>
+          </secondConstraint>
+        </firstConstraint>
+      </hwConstraint>
+    </allocationConstraints>
+    <allocationConstraints xsi:type="am:RunnableAllocationConstraint" runnable="r1?type=Runnable">
+      <hwConstraint xsi:type="am:HwCoreConjunction">
+        <firstConstraint xsi:type="am:HwCoreConjunction">
+          <firstConstraint xsi:type="am:HwCoreConjunction">
+            <secondConstraint xsi:type="am:HwCoreConjunction"/>
+          </firstConstraint>
+          <secondConstraint xsi:type="am:HwCoreConjunction">
+            <secondConstraint xsi:type="am:HwCoreProperty">
+              <customProperties/>
+            </secondConstraint>
+          </secondConstraint>
+        </firstConstraint>
+      </hwConstraint>
+    </allocationConstraints>
+    <mappingConstraints xsi:type="am:AbstractElementMappingConstraint" abstractElement="isr1?type=ISR">
+      <hwConstraint xsi:type="am:HwMemoryConjunction"/>
+    </mappingConstraints>
+    <mappingConstraints xsi:type="am:AbstractElementMappingConstraint" abstractElement="processPrototype1?type=ProcessPrototype">
+      <hwConstraint xsi:type="am:HwMemoryConjunction">
+        <firstConstraint xsi:type="am:HwMemoryProperty">
+          <customProperties/>
+        </firstConstraint>
+      </hwConstraint>
+    </mappingConstraints>
+  </propertyConstraintsModel>
+</am:Amalthea>
