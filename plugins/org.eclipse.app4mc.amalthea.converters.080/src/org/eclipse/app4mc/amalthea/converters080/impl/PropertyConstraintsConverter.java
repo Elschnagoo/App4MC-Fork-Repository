@@ -57,7 +57,8 @@ public class PropertyConstraintsConverter extends AbstractConverter {
 
 
 	/**
-	 * Below migration is for the metamodel change w.r.t. PropertyConstraints model.
+	 * Below migration is for the metamodel change w.r.t. PropertyConstraints model (For further details, check : Bug
+	 * 514779 )
 	 *
 	 * HwCoreConstraint and HwMemoryConstraint classes are removed and there is no direct equivalent of these classes as
 	 * per 0.8.0.

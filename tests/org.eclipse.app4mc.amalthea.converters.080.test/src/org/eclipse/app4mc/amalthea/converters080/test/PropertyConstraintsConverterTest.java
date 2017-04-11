@@ -66,6 +66,9 @@ public class PropertyConstraintsConverterTest extends AbstractConverterTest {
 	protected void modelFileVerificationHook(final Document document) {
 		super.modelFileVerificationHook(document);
 
+		/*-
+		 * (For further details, check : Bug 514779)
+		 */
 
 		final StringBuffer xpathBuffer = new StringBuffer();
 
