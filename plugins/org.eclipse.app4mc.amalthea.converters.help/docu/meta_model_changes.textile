@@ -377,7 +377,10 @@ table(classic){margin-left:40px}.
 |AbstractElementMapping|Mapping Model|MemoryMapping is equivalent of this model element in APP4MC 0.8.0. As a part of model migration type attribute is removed from the tag which is defining MemoryMapping.|
 |AbstractElementMemoryInformation|HW Model|AbstractMemoryElement is the equivalent of this model element in APP4MC 0.8.0. There is no change in the storage format.|
 |ProbabiltitySwitch|HW Model|ProbabiltitySwitch class is changed to ProbabilitySwitch (typo corrected in the class name). ProbabilitySwitch is the equivalent of this model element in APP4MC 0.8.0|
-
+|AllocationConstraint|PropertyConstraints Model|AllocationConstraint class is changed to CoreAllocationConstraint. In CoreAllocationConstraint -> reference to HwCoreConstraint element is removed, based on this change -> during model migration CustomProperty is created with key as "hwConstraint (element removed during Migration of Model to 0.8.0 version)" and value as the XML content of "hwConstraint" element.|
+|MappingConstraint|PropertyConstraints Model|MappingConstraint class is changed to MemoryMappingConstraint. In MemoryMappingConstraint -> reference to HwMemmoryConstraint element is removed, based on this change -> during model migration CustomProperty is created with key as "hwConstraint (element removed during Migration of Model to 0.8.0 version)" and value as the XML content of "hwConstraint" element.|
+|HwCoreConstraint, HwCoreConjunction, HwCoreProperty|PropertyConstraints Model|These elements are removed from the model. As a reference XML content is stored as a CustomProperty inside CoreAllocationConstraint|
+|HwMemoryConstraint, HwMemoryConjunction, HwMemoryProperty|PropertyConstraints Model|These elements are removed from the model. As a reference XML content is stored as a CustomProperty inside MemoryMappingConstraint|
 
 *Below are the changes in the datatype of elements:*
 
