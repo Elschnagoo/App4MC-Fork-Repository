@@ -345,3 +345,43 @@ table(classic){margin-left:40px}.
 |LabelAccessBufferring|SW Model|LabelAccessBufferring elements are migrated as DataStability elements. Below steps describe the criteria considered for migration of data :<br/>  -  If LabelAccessBufferring value is "inherited" then the corresponding value of "dataStability" is set as "inherited"<br/>	-  If LabelAccessBufferring value is "buffered" then the corresponding value of "dataStability" is set as "customProtection" <br/>	-  If LabelAccessBufferring value is "notBuffered" then the corresponding value of "dataStability" is set as "noProtection" <br/>-  If LabelAccessBufferring value is "_undefined_" (default) then the corresponding value of "dataStability" is set as "_undefined_" (default)
 |
 
+h3. Version APP4MC 0.7.2 to APP4MC 0.8.0
+
+*Change in the namespace:* 
+
+table(classic){margin-left:40px}. 
+| *_AMALTHEA Namespace (version App4MC 0.7.2)_* | *_AMALTHEA Namespace  (version App4MC 0.8.0)_* |
+|http://app4mc.eclipse.org/amalthea/0.7.2 |http://app4mc.eclipse.org/amalthea/0.8.0 |
+
+*Below references are removed from storage format (amxmi):*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name (version APP4MC 0.7.2)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|mode|Mode|ModeValueProvider|SW Model|mode is made as a derived variable and transient property is set to it, as a result it will not be serialized into the model file. Based on the selection of ModeLiteral (in ModeValueProvider element) mode element will be considered accordingly.|
+
+*Below references names are changed :*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name (version APP4MC 0.7.2)_* || *_Variable Name (version APP4MC 0.8.0)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+| mapping | memoryMapping | Mapping (in 0.7.2) -> MemoryMapping (in 0.8.0)| MappingModel| Mapping model |As there is a change in the reference name (from mapping to memoryMapping) in metamodel -->  corresponding XML tag names in amxmi are changed from mapping to memoryMapping, type attribute is removed from memoryMapping XML tag as MemoryMapping is a concrete class|
+
+*Below Classes/Interfaces are removed:*
+
+table(classic){margin-left:40px}. 
+| *_Class Name (version APP4MC 0.7.2)_* | *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|ModeValueProvider (Interface)|SW Model|Content present inside ModeValueProvider class is moved to ModeLabel. Reference to Mode element is made as derived variable, and it automatically populated based on the selection of ModeLiteral.|
+|SignedTimeObject|SW Model|Equivalent of this element is TimeObject (which extends Time) in APP4MC 0.8.0. There is no change in the storage format.|
+|SignedTime|SW Model|Equivalent of this element is Time in APP4MC 0.8.0. There is no change in the storage format.|
+|AbstractTime|SW Model|Time class is equivalent of this model element in APP4MC 0.8.0. There is no change in the storage format.|
+|Mapping|Mapping Model|This interface is removed from the model. MemoryMapping is equivalent of this model element in APP4MC 0.8.0. As a part of model migration type attribute is removed from the tag which is defining MemoryMapping.|
+|AbstractElementMapping|Mapping Model|MemoryMapping is equivalent of this model element in APP4MC 0.8.0. As a part of model migration type attribute is removed from the tag which is defining MemoryMapping.|
+|AbstractElementMemoryInformation|HW Model|AbstractMemoryElement is the equivalent of this model element in APP4MC 0.8.0. There is no change in the storage format.|
+|ProbabiltitySwitch|HW Model|ProbabiltitySwitch class is changed to ProbabilitySwitch (typo corrected in the class name). ProbabilitySwitch is the equivalent of this model element in APP4MC 0.8.0|
+
+
+*Below are the changes in the datatype of elements:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name_* | *_Variable datatype (version APP4MC 0.7.2)_* | *_Variable datatype (version APP4MC 0.8.0)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|instructionsPerCycle|int|float|CoreType|HW model|int is converted to float|
+
