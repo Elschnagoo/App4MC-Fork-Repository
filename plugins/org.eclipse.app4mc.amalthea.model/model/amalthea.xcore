@@ -1915,7 +1915,6 @@ class PhysicalSectionMapping extends ReferableBaseObject
 
 class OSModel extends BaseObject
 {
-	contains OsDataConsistency osDataConsistency
 	contains Semaphore[] semaphores
 	contains OperatingSystem[] operatingSystems
 	contains OsInstructions[] osOverheads
@@ -2144,6 +2143,7 @@ class OperatingSystem extends BaseObject
 	refers OsInstructions overhead
 	contains TaskScheduler[] taskSchedulers
 	contains InterruptController[] interruptControllers
+	contains OsDataConsistency osDataConsistency
 }
 
 class VendorOperatingSystem extends OperatingSystem

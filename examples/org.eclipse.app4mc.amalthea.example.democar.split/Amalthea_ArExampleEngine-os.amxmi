@@ -14,7 +14,7 @@
         </schedulingUnit>
         <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
+      <osDataConsistency mode="noProtection" />
     </operatingSystems>
-    <osDataConsistency mode="noProtection" />
   </osModel>
 </am:Amalthea>

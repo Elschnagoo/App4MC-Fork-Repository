@@ -13209,22 +13209,13 @@ public interface AmaltheaPackage extends EPackage {
 	int OS_MODEL__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Os Data Consistency</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OS_MODEL__OS_DATA_CONSISTENCY = BASE_OBJECT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Semaphores</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OS_MODEL__SEMAPHORES = BASE_OBJECT_FEATURE_COUNT + 1;
+	int OS_MODEL__SEMAPHORES = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Operating Systems</b></em>' containment reference list.
@@ -13233,7 +13224,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OS_MODEL__OPERATING_SYSTEMS = BASE_OBJECT_FEATURE_COUNT + 2;
+	int OS_MODEL__OPERATING_SYSTEMS = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Os Overheads</b></em>' containment reference list.
@@ -13242,7 +13233,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OS_MODEL__OS_OVERHEADS = BASE_OBJECT_FEATURE_COUNT + 3;
+	int OS_MODEL__OS_OVERHEADS = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>OS Model</em>' class.
@@ -13251,7 +13242,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OS_MODEL_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 4;
+	int OS_MODEL_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>OS Model</em>' class.
@@ -14439,13 +14430,22 @@ public interface AmaltheaPackage extends EPackage {
 	int OPERATING_SYSTEM__INTERRUPT_CONTROLLERS = BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Os Data Consistency</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATING_SYSTEM__OS_DATA_CONSISTENCY = BASE_OBJECT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Operating System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATING_SYSTEM_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 4;
+	int OPERATING_SYSTEM_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Operating System</em>' class.
@@ -14510,6 +14510,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int VENDOR_OPERATING_SYSTEM__INTERRUPT_CONTROLLERS = OPERATING_SYSTEM__INTERRUPT_CONTROLLERS;
+
+	/**
+	 * The feature id for the '<em><b>Os Data Consistency</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VENDOR_OPERATING_SYSTEM__OS_DATA_CONSISTENCY = OPERATING_SYSTEM__OS_DATA_CONSISTENCY;
 
 	/**
 	 * The feature id for the '<em><b>Os Name</b></em>' attribute.
@@ -29196,17 +29205,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getOSModel();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.OSModel#getOsDataConsistency <em>Os Data Consistency</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Os Data Consistency</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.OSModel#getOsDataConsistency()
-	 * @see #getOSModel()
-	 * @generated
-	 */
-	EReference getOSModel_OsDataConsistency();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.OSModel#getSemaphores <em>Semaphores</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -29808,6 +29806,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getOperatingSystem_InterruptControllers();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.OperatingSystem#getOsDataConsistency <em>Os Data Consistency</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Os Data Consistency</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.OperatingSystem#getOsDataConsistency()
+	 * @see #getOperatingSystem()
+	 * @generated
+	 */
+	EReference getOperatingSystem_OsDataConsistency();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.VendorOperatingSystem <em>Vendor Operating System</em>}'.

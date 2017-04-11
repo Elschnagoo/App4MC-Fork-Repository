@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.OperatingSystem#getOverhead <em>Overhead</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.OperatingSystem#getTaskSchedulers <em>Task Schedulers</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.OperatingSystem#getInterruptControllers <em>Interrupt Controllers</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OperatingSystem#getOsDataConsistency <em>Os Data Consistency</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOperatingSystem()
@@ -117,5 +118,31 @@ public interface OperatingSystem extends BaseObject {
 	 * @generated
 	 */
 	EList<InterruptController> getInterruptControllers();
+
+	/**
+	 * Returns the value of the '<em><b>Os Data Consistency</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Os Data Consistency</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Os Data Consistency</em>' containment reference.
+	 * @see #setOsDataConsistency(OsDataConsistency)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOperatingSystem_OsDataConsistency()
+	 * @model containment="true"
+	 * @generated
+	 */
+	OsDataConsistency getOsDataConsistency();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OperatingSystem#getOsDataConsistency <em>Os Data Consistency</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Os Data Consistency</em>' containment reference.
+	 * @see #getOsDataConsistency()
+	 * @generated
+	 */
+	void setOsDataConsistency(OsDataConsistency value);
 
 } // OperatingSystem

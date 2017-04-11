@@ -17,19 +17,15 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
-import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -42,7 +38,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OSModelImpl#getOsDataConsistency <em>Os Data Consistency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OSModelImpl#getSemaphores <em>Semaphores</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OSModelImpl#getOperatingSystems <em>Operating Systems</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OSModelImpl#getOsOverheads <em>Os Overheads</em>}</li>
@@ -51,16 +46,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class OSModelImpl extends BaseObjectImpl implements OSModel {
-	/**
-	 * The cached value of the '{@link #getOsDataConsistency() <em>Os Data Consistency</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOsDataConsistency()
-	 * @generated
-	 * @ordered
-	 */
-	protected OsDataConsistency osDataConsistency;
-
 	/**
 	 * The cached value of the '{@link #getSemaphores() <em>Semaphores</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -115,49 +100,6 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsDataConsistency getOsDataConsistency() {
-		return osDataConsistency;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOsDataConsistency(OsDataConsistency newOsDataConsistency, NotificationChain msgs) {
-		OsDataConsistency oldOsDataConsistency = osDataConsistency;
-		osDataConsistency = newOsDataConsistency;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, oldOsDataConsistency, newOsDataConsistency);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOsDataConsistency(OsDataConsistency newOsDataConsistency) {
-		if (newOsDataConsistency != osDataConsistency) {
-			NotificationChain msgs = null;
-			if (osDataConsistency != null)
-				msgs = ((InternalEObject)osDataConsistency).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, null, msgs);
-			if (newOsDataConsistency != null)
-				msgs = ((InternalEObject)newOsDataConsistency).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, null, msgs);
-			msgs = basicSetOsDataConsistency(newOsDataConsistency, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY, newOsDataConsistency, newOsDataConsistency));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Semaphore> getSemaphores() {
 		if (semaphores == null) {
 			semaphores = new EObjectContainmentEList<Semaphore>(Semaphore.class, this, AmaltheaPackage.OS_MODEL__SEMAPHORES);
@@ -197,8 +139,6 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY:
-				return basicSetOsDataConsistency(null, msgs);
 			case AmaltheaPackage.OS_MODEL__SEMAPHORES:
 				return ((InternalEList<?>)getSemaphores()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.OS_MODEL__OPERATING_SYSTEMS:
@@ -217,8 +157,6 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY:
-				return getOsDataConsistency();
 			case AmaltheaPackage.OS_MODEL__SEMAPHORES:
 				return getSemaphores();
 			case AmaltheaPackage.OS_MODEL__OPERATING_SYSTEMS:
@@ -238,9 +176,6 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY:
-				setOsDataConsistency((OsDataConsistency)newValue);
-				return;
 			case AmaltheaPackage.OS_MODEL__SEMAPHORES:
 				getSemaphores().clear();
 				getSemaphores().addAll((Collection<? extends Semaphore>)newValue);
@@ -265,9 +200,6 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY:
-				setOsDataConsistency((OsDataConsistency)null);
-				return;
 			case AmaltheaPackage.OS_MODEL__SEMAPHORES:
 				getSemaphores().clear();
 				return;
@@ -289,8 +221,6 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY:
-				return osDataConsistency != null;
 			case AmaltheaPackage.OS_MODEL__SEMAPHORES:
 				return semaphores != null && !semaphores.isEmpty();
 			case AmaltheaPackage.OS_MODEL__OPERATING_SYSTEMS:

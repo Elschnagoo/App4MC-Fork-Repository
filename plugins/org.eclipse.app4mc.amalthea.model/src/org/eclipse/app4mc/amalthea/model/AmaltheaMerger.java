@@ -127,9 +127,6 @@ public class AmaltheaMerger {
 		if (main == null) {
 			mainModel.setOsModel(tmp);
 		} else {
-			if (main.getOsDataConsistency() == null) {
-				main.setOsDataConsistency(tmp.getOsDataConsistency());
-			}
 			addAll(main.getOperatingSystems(), tmp.getOperatingSystems());
 			addIfAbsent(main.getSemaphores(), tmp.getSemaphores());
 			addIfAbsent(main.getOsOverheads(), tmp.getOsOverheads());

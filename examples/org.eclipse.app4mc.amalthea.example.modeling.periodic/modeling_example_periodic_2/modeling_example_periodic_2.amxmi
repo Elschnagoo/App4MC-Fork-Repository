@@ -130,7 +130,6 @@
     </system>
   </hwModel>
   <osModel>
-    <osDataConsistency mode="noProtection"/>
     <operatingSystems name="Generic_OS">
       <taskSchedulers name="Scheduler_1" scheduleUnitPriority="0">
         <schedulingUnit xsi:type="am:SchedulingHWUnit">
@@ -138,6 +137,7 @@
         </schedulingUnit>
         <schedulingAlgorithm xsi:type="am:OSEK"/>
       </taskSchedulers>
+      <osDataConsistency mode="noProtection"/>
     </operatingSystems>
   </osModel>
   <stimuliModel>

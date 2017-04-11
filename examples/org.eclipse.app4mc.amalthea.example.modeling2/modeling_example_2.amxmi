@@ -122,8 +122,8 @@
         </schedulingUnit>
         <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
+      <osDataConsistency mode="noProtection" />
     </operatingSystems>
-    <osDataConsistency mode="noProtection" />
   </osModel>
   <stimuliModel>
     <stimuli xsi:type="am:InterProcess" name="Stimulus_Task_2" />

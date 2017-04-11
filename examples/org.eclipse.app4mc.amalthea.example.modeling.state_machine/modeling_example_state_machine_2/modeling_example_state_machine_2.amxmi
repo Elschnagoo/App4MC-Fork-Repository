@@ -175,7 +175,6 @@
     </system>
   </hwModel>
   <osModel>
-    <osDataConsistency mode="noProtection"/>
     <semaphores name="Semaphore" initialValue="0" maxValue="1" priorityCeilingProtocol="true"/>
     <operatingSystems name="Generic_OS">
       <taskSchedulers name="Scheduler_1" scheduleUnitPriority="0">
@@ -184,6 +183,7 @@
         </schedulingUnit>
         <schedulingAlgorithm xsi:type="am:OSEK"/>
       </taskSchedulers>
+      <osDataConsistency mode="noProtection"/>
     </operatingSystems>
   </osModel>
   <stimuliModel>

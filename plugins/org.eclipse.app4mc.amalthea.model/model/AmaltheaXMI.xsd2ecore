@@ -1348,10 +1348,9 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/PhysicalSectionMapping" outputs="AmaltheaXMI.xsd#//PhysicalSectionMapping;XSDElementDeclaration=176"/>
     <nested inputs="amalthea.xcore#/EPackage/OSModel" outputs="AmaltheaXMI.xsd#//OSModel;XSDComplexTypeDefinition=177">
-      <nested inputs="amalthea.xcore#/EPackage/OSModel/osDataConsistency" outputs="AmaltheaXMI.xsd#//OSModel;XSDComplexTypeDefinition=177/XSDParticle/XSDModelGroup/XSDParticle"/>
-      <nested inputs="amalthea.xcore#/EPackage/OSModel/semaphores" outputs="AmaltheaXMI.xsd#//OSModel;XSDComplexTypeDefinition=177/XSDParticle/XSDModelGroup/XSDParticle=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/OSModel/operatingSystems" outputs="AmaltheaXMI.xsd#//OSModel;XSDComplexTypeDefinition=177/XSDParticle/XSDModelGroup/XSDParticle=2"/>
-      <nested inputs="amalthea.xcore#/EPackage/OSModel/osOverheads" outputs="AmaltheaXMI.xsd#//OSModel;XSDComplexTypeDefinition=177/XSDParticle/XSDModelGroup/XSDParticle=3"/>
+      <nested inputs="amalthea.xcore#/EPackage/OSModel/semaphores" outputs="AmaltheaXMI.xsd#//OSModel;XSDComplexTypeDefinition=177/XSDParticle/XSDModelGroup/XSDParticle"/>
+      <nested inputs="amalthea.xcore#/EPackage/OSModel/operatingSystems" outputs="AmaltheaXMI.xsd#//OSModel;XSDComplexTypeDefinition=177/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/OSModel/osOverheads" outputs="AmaltheaXMI.xsd#//OSModel;XSDComplexTypeDefinition=177/XSDParticle/XSDModelGroup/XSDParticle=2"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/OSModel" outputs="AmaltheaXMI.xsd#//OSModel;XSDElementDeclaration=177"/>
     <nested inputs="amalthea.xcore#/EPackage/OsDataConsistency" outputs="AmaltheaXMI.xsd#//OsDataConsistency;XSDComplexTypeDefinition=178">
@@ -1458,6 +1457,8 @@
       <nested inputs="amalthea.xcore#/EPackage/OperatingSystem/taskSchedulers" outputs="AmaltheaXMI.xsd#//OperatingSystem;XSDComplexTypeDefinition=201/XSDParticle/XSDModelGroup/XSDParticle=1"/>
       <nested inputs="amalthea.xcore#/EPackage/OperatingSystem/interruptControllers"
           outputs="AmaltheaXMI.xsd#//OperatingSystem;XSDComplexTypeDefinition=201/XSDParticle/XSDModelGroup/XSDParticle=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/OperatingSystem/osDataConsistency"
+          outputs="AmaltheaXMI.xsd#//OperatingSystem;XSDComplexTypeDefinition=201/XSDParticle/XSDModelGroup/XSDParticle=3"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/OperatingSystem" outputs="AmaltheaXMI.xsd#//OperatingSystem;XSDElementDeclaration=201"/>
     <nested inputs="amalthea.xcore#/EPackage/VendorOperatingSystem" outputs="AmaltheaXMI.xsd#//VendorOperatingSystem;XSDComplexTypeDefinition=202">

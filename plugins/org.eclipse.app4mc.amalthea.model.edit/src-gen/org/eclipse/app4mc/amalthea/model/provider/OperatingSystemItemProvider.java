@@ -122,6 +122,7 @@ public class OperatingSystemItemProvider extends BaseObjectItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOperatingSystem_TaskSchedulers());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOperatingSystem_InterruptControllers());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOperatingSystem_OsDataConsistency());
 		}
 		return childrenFeatures;
 	}
@@ -192,6 +193,7 @@ public class OperatingSystemItemProvider extends BaseObjectItemProvider {
 				return;
 			case AmaltheaPackage.OPERATING_SYSTEM__TASK_SCHEDULERS:
 			case AmaltheaPackage.OPERATING_SYSTEM__INTERRUPT_CONTROLLERS:
+			case AmaltheaPackage.OPERATING_SYSTEM__OS_DATA_CONSISTENCY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -218,6 +220,11 @@ public class OperatingSystemItemProvider extends BaseObjectItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOperatingSystem_InterruptControllers(),
 				 AmaltheaFactory.eINSTANCE.createInterruptController()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOperatingSystem_OsDataConsistency(),
+				 AmaltheaFactory.eINSTANCE.createOsDataConsistency()));
 	}
 
 }

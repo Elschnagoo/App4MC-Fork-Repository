@@ -7557,7 +7557,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOSModel_OsDataConsistency() {
+	public EReference getOSModel_Semaphores() {
 		return (EReference)osModelEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -7566,7 +7566,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOSModel_Semaphores() {
+	public EReference getOSModel_OperatingSystems() {
 		return (EReference)osModelEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -7575,17 +7575,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOSModel_OperatingSystems() {
-		return (EReference)osModelEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getOSModel_OsOverheads() {
-		return (EReference)osModelEClass.getEStructuralFeatures().get(3);
+		return (EReference)osModelEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -8072,6 +8063,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getOperatingSystem_InterruptControllers() {
 		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperatingSystem_OsDataConsistency() {
+		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -12342,7 +12342,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(physicalSectionMappingEClass, PHYSICAL_SECTION_MAPPING__RUN_ENTITIES);
 
 		osModelEClass = createEClass(OS_MODEL);
-		createEReference(osModelEClass, OS_MODEL__OS_DATA_CONSISTENCY);
 		createEReference(osModelEClass, OS_MODEL__SEMAPHORES);
 		createEReference(osModelEClass, OS_MODEL__OPERATING_SYSTEMS);
 		createEReference(osModelEClass, OS_MODEL__OS_OVERHEADS);
@@ -12424,6 +12423,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(operatingSystemEClass, OPERATING_SYSTEM__OVERHEAD);
 		createEReference(operatingSystemEClass, OPERATING_SYSTEM__TASK_SCHEDULERS);
 		createEReference(operatingSystemEClass, OPERATING_SYSTEM__INTERRUPT_CONTROLLERS);
+		createEReference(operatingSystemEClass, OPERATING_SYSTEM__OS_DATA_CONSISTENCY);
 
 		vendorOperatingSystemEClass = createEClass(VENDOR_OPERATING_SYSTEM);
 		createEAttribute(vendorOperatingSystemEClass, VENDOR_OPERATING_SYSTEM__OS_NAME);
@@ -14057,7 +14057,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getPhysicalSectionMapping_RunEntities(), this.getRunnable(), null, "runEntities", null, 0, -1, PhysicalSectionMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(osModelEClass, OSModel.class, "OSModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOSModel_OsDataConsistency(), this.getOsDataConsistency(), null, "osDataConsistency", null, 0, 1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOSModel_Semaphores(), this.getSemaphore(), null, "semaphores", null, 0, -1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOSModel_OperatingSystems(), this.getOperatingSystem(), null, "operatingSystems", null, 0, -1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOSModel_OsOverheads(), this.getOsInstructions(), null, "osOverheads", null, 0, -1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14139,6 +14138,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getOperatingSystem_Overhead(), this.getOsInstructions(), null, "overhead", null, 0, 1, OperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperatingSystem_TaskSchedulers(), this.getTaskScheduler(), null, "taskSchedulers", null, 0, -1, OperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperatingSystem_InterruptControllers(), this.getInterruptController(), null, "interruptControllers", null, 0, -1, OperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperatingSystem_OsDataConsistency(), this.getOsDataConsistency(), null, "osDataConsistency", null, 0, 1, OperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(vendorOperatingSystemEClass, VendorOperatingSystem.class, "VendorOperatingSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVendorOperatingSystem_OsName(), theEcorePackage.getEString(), "osName", null, 0, 1, VendorOperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

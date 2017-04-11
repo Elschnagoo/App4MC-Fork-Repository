@@ -3083,7 +3083,6 @@ to a specific memory.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="osDataConsistency" type="am:OsDataConsistency"/>
           <xsd:element name="semaphores" type="am:Semaphore"/>
           <xsd:element name="operatingSystems" type="am:OperatingSystem"/>
           <xsd:element name="osOverheads" type="am:OsInstructions"/>
@@ -3468,6 +3467,7 @@ It describes an ISR that performs scheduling.</xsd:documentation>
           <xsd:element name="overhead" type="am:OsInstructions"/>
           <xsd:element name="taskSchedulers" type="am:TaskScheduler"/>
           <xsd:element name="interruptControllers" type="am:InterruptController"/>
+          <xsd:element name="osDataConsistency" type="am:OsDataConsistency"/>
         </xsd:choice>
         <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="overhead" type="xsd:string"/>

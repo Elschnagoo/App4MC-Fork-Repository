@@ -1007,8 +1007,8 @@
         </schedulingUnit>
         <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
+      <osDataConsistency />
     </operatingSystems>
-    <osDataConsistency />
   </osModel>
   <stimuliModel>
     <stimuli xsi:type="am:Periodic" name="Timer_10MS">
