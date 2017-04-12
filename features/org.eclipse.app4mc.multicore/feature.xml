@@ -71,6 +71,48 @@ All rights reserved.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.execution.logic"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.execution.logic.btf"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.execution.ui.simmenu"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.execution.ui.widget"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.app4mc.multicore.execution.ui.traceeditor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.execution.ui.traceview"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
          
    <plugin
          id="org.apache.commons.math"

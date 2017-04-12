@@ -60,6 +60,12 @@
 		<module>../../plugins/org.eclipse.app4mc.multicore.dialogs</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.openmapping</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.partitioning</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.execution.logic</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.execution.logic.btf</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.execution.ui.simmenu</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.execution.ui.traceeditor</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.execution.ui.traceview</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.execution.ui.widget</module>
 		<module>../../plugins/org.eclipse.app4mc.platform.ide</module>
 		<module>../../plugins/org.eclipse.app4mc.tracing.converter</module>
 		<module>../../plugins/org.eclipse.app4mc.tracing.converter.atdb</module>
