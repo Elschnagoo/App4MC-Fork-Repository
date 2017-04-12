@@ -358,6 +358,7 @@ table(classic){margin-left:40px}.
 table(classic){margin-left:40px}. 
 | *_Variable Name (version APP4MC 0.7.2)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |mode|Mode|ModeValueProvider|SW Model|mode is made as a derived variable and transient property is set to it, as a result it will not be serialized into the model file. Based on the selection of ModeLiteral (in ModeValueProvider element) mode element will be considered accordingly.|
+|osDataConsistency|OsDataConsistency|OSModel|OS Model|OsDataConsistency element is shifted from OSModel to OperatingSystem element. As a part of migration, osDataConsistency element content is copied inside each OperatingSystem element|
 
 *Below references names are changed :*
 
