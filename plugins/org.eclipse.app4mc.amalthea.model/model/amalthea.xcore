@@ -1416,7 +1416,7 @@ class LabelEvent extends TriggerEvent
  */
 class ChannelEvent extends TriggerEvent
 {
-//	LabelEventType[1] eventType
+	ChannelEventType[1] eventType
 	refers Channel entity
 	refers Runnable runnable
 	refers Process process
@@ -1480,6 +1480,16 @@ enum LabelEventType
 	_all_
 	read
 	write
+}
+
+/*
+ * The types of a label event
+ */
+enum ChannelEventType
+{
+	_all_
+	send
+	receive
 }
 
 /*
