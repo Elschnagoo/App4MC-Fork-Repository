@@ -157,11 +157,6 @@ public class TimestampListItemProvider extends BaseObjectItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTimestampList_Timestamps(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTimestampList_Timestamps(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 }

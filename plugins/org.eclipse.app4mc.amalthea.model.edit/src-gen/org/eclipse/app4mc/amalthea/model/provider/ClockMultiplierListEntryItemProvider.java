@@ -186,11 +186,6 @@ public class ClockMultiplierListEntryItemProvider extends BaseObjectItemProvider
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getClockMultiplierListEntry_Time(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getClockMultiplierListEntry_Time(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 }

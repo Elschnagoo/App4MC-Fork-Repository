@@ -20,17 +20,17 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Semaphore Event Type</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Channel Event Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * The types of a semaphore event
+ * The types of a label event
  * <!-- end-model-doc -->
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphoreEventType()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getChannelEventType()
  * @model
  * @generated
  */
-public enum SemaphoreEventType implements Enumerator {
+public enum ChannelEventType implements Enumerator {
 	/**
 	 * The '<em><b>all </b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -42,24 +42,24 @@ public enum SemaphoreEventType implements Enumerator {
 	_ALL_(0, "_all_", "_all_"),
 
 	/**
-	 * The '<em><b>Lock</b></em>' literal object.
+	 * The '<em><b>Send</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #LOCK_VALUE
+	 * @see #SEND_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	LOCK(0, "lock", "lock"),
+	SEND(0, "send", "send"),
 
 	/**
-	 * The '<em><b>Unlock</b></em>' literal object.
+	 * The '<em><b>Receive</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #UNLOCK_VALUE
+	 * @see #RECEIVE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	UNLOCK(0, "unlock", "unlock");
+	RECEIVE(0, "receive", "receive");
 
 	/**
 	 * The '<em><b>all </b></em>' literal value.
@@ -77,67 +77,67 @@ public enum SemaphoreEventType implements Enumerator {
 	public static final int _ALL__VALUE = 0;
 
 	/**
-	 * The '<em><b>Lock</b></em>' literal value.
+	 * The '<em><b>Send</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Lock</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Send</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #LOCK
-	 * @model name="lock"
+	 * @see #SEND
+	 * @model name="send"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int LOCK_VALUE = 0;
+	public static final int SEND_VALUE = 0;
 
 	/**
-	 * The '<em><b>Unlock</b></em>' literal value.
+	 * The '<em><b>Receive</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Unlock</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Receive</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #UNLOCK
-	 * @model name="unlock"
+	 * @see #RECEIVE
+	 * @model name="receive"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int UNLOCK_VALUE = 0;
+	public static final int RECEIVE_VALUE = 0;
 
 	/**
-	 * An array of all the '<em><b>Semaphore Event Type</b></em>' enumerators.
+	 * An array of all the '<em><b>Channel Event Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final SemaphoreEventType[] VALUES_ARRAY =
-		new SemaphoreEventType[] {
+	private static final ChannelEventType[] VALUES_ARRAY =
+		new ChannelEventType[] {
 			_ALL_,
-			LOCK,
-			UNLOCK,
+			SEND,
+			RECEIVE,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Semaphore Event Type</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Channel Event Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<SemaphoreEventType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ChannelEventType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Semaphore Event Type</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Channel Event Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static SemaphoreEventType get(String literal) {
+	public static ChannelEventType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			SemaphoreEventType result = VALUES_ARRAY[i];
+			ChannelEventType result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -146,16 +146,16 @@ public enum SemaphoreEventType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Semaphore Event Type</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Channel Event Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static SemaphoreEventType getByName(String name) {
+	public static ChannelEventType getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			SemaphoreEventType result = VALUES_ARRAY[i];
+			ChannelEventType result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -164,14 +164,14 @@ public enum SemaphoreEventType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Semaphore Event Type</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Channel Event Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static SemaphoreEventType get(int value) {
+	public static ChannelEventType get(int value) {
 		switch (value) {
 			case _ALL__VALUE: return _ALL_;
 		}
@@ -205,7 +205,7 @@ public enum SemaphoreEventType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private SemaphoreEventType(int value, String name, String literal) {
+	private ChannelEventType(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -249,4 +249,4 @@ public enum SemaphoreEventType implements Enumerator {
 		return literal;
 	}
 	
-} //SemaphoreEventType
+} //ChannelEventType

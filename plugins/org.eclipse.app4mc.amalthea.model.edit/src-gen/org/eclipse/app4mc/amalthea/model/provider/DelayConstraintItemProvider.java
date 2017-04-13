@@ -239,18 +239,8 @@ public class DelayConstraintItemProvider extends TimingConstraintItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDelayConstraint_Upper(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getDelayConstraint_Lower(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDelayConstraint_Lower(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 	/**

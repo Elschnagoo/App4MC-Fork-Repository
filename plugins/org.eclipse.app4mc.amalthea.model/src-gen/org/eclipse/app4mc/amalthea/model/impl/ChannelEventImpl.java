@@ -15,6 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ChannelEvent;
+import org.eclipse.app4mc.amalthea.model.ChannelEventType;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelEventImpl#getEventType <em>Event Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelEventImpl#getEntity <em>Entity</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelEventImpl#getRunnable <em>Runnable</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelEventImpl#getProcess <em>Process</em>}</li>
@@ -39,6 +41,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class ChannelEventImpl extends TriggerEventImpl implements ChannelEvent {
+	/**
+	 * The default value of the '{@link #getEventType() <em>Event Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEventType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ChannelEventType EVENT_TYPE_EDEFAULT = ChannelEventType._ALL_;
+
+	/**
+	 * The cached value of the '{@link #getEventType() <em>Event Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEventType()
+	 * @generated
+	 * @ordered
+	 */
+	protected ChannelEventType eventType = EVENT_TYPE_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getEntity() <em>Entity</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -86,6 +108,27 @@ public class ChannelEventImpl extends TriggerEventImpl implements ChannelEvent {
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getChannelEvent();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ChannelEventType getEventType() {
+		return eventType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEventType(ChannelEventType newEventType) {
+		ChannelEventType oldEventType = eventType;
+		eventType = newEventType == null ? EVENT_TYPE_EDEFAULT : newEventType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CHANNEL_EVENT__EVENT_TYPE, oldEventType, eventType));
 	}
 
 	/**
@@ -210,6 +253,8 @@ public class ChannelEventImpl extends TriggerEventImpl implements ChannelEvent {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.CHANNEL_EVENT__EVENT_TYPE:
+				return getEventType();
 			case AmaltheaPackage.CHANNEL_EVENT__ENTITY:
 				if (resolve) return getEntity();
 				return basicGetEntity();
@@ -231,6 +276,9 @@ public class ChannelEventImpl extends TriggerEventImpl implements ChannelEvent {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AmaltheaPackage.CHANNEL_EVENT__EVENT_TYPE:
+				setEventType((ChannelEventType)newValue);
+				return;
 			case AmaltheaPackage.CHANNEL_EVENT__ENTITY:
 				setEntity((Channel)newValue);
 				return;
@@ -252,6 +300,9 @@ public class ChannelEventImpl extends TriggerEventImpl implements ChannelEvent {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.CHANNEL_EVENT__EVENT_TYPE:
+				setEventType(EVENT_TYPE_EDEFAULT);
+				return;
 			case AmaltheaPackage.CHANNEL_EVENT__ENTITY:
 				setEntity((Channel)null);
 				return;
@@ -273,6 +324,8 @@ public class ChannelEventImpl extends TriggerEventImpl implements ChannelEvent {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.CHANNEL_EVENT__EVENT_TYPE:
+				return eventType != EVENT_TYPE_EDEFAULT;
 			case AmaltheaPackage.CHANNEL_EVENT__ENTITY:
 				return entity != null;
 			case AmaltheaPackage.CHANNEL_EVENT__RUNNABLE:
@@ -281,6 +334,22 @@ public class ChannelEventImpl extends TriggerEventImpl implements ChannelEvent {
 				return process != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (eventType: ");
+		result.append(eventType);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ChannelEventImpl

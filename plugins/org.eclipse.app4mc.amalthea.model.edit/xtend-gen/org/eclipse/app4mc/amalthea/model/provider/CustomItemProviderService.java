@@ -10,6 +10,7 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
+import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
@@ -252,7 +253,7 @@ public class CustomItemProviderService {
     return ((value + " ") + unit);
   }
   
-  private static String getTimeText(final Time time) {
+  private static String getTimeText(final AbstractTime time) {
     boolean _equals = Objects.equal(time, null);
     if (_equals) {
       return "<time>";
@@ -450,7 +451,7 @@ public class CustomItemProviderService {
   public static String getTimeObjectItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof TimeObject)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeText = CustomItemProviderService.getTimeText(((Time)object));
+      String _timeText = CustomItemProviderService.getTimeText(((AbstractTime)object));
       return (_containingFeatureName + _timeText);
     } else {
       return defaultText;
@@ -698,7 +699,7 @@ public class CustomItemProviderService {
   public static String getTimeItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof Time)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeText = CustomItemProviderService.getTimeText(((Time)object));
+      String _timeText = CustomItemProviderService.getTimeText(((AbstractTime)object));
       return (_containingFeatureName + _timeText);
     } else {
       return defaultText;

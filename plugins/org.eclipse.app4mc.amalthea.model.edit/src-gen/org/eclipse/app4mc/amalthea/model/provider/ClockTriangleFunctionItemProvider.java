@@ -217,18 +217,8 @@ public class ClockTriangleFunctionItemProvider extends ClockItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Shift(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Period(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Period(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 	/**

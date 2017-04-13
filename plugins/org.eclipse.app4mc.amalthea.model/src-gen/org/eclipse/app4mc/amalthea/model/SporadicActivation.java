@@ -18,10 +18,42 @@ package org.eclipse.app4mc.amalthea.model;
  * A representation of the model object '<em><b>Sporadic Activation</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.SporadicActivation#getDescription <em>Description</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSporadicActivation()
  * @model
  * @generated
  */
 public interface SporadicActivation extends Activation {
+	/**
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSporadicActivation_Description()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SporadicActivation#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
+
 } // SporadicActivation

@@ -165,18 +165,8 @@ public class SingleActivationItemProvider extends ActivationItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSingleActivation_Min(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSingleActivation_Max(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSingleActivation_Max(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 	/**

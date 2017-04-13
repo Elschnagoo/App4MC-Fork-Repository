@@ -14,8 +14,8 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.Value;
 
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class TimeObjectImpl extends TimeImpl implements TimeObject {
+public class TimeObjectImpl extends AbstractTimeImpl implements TimeObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -76,10 +76,9 @@ public class TimeObjectImpl extends TimeImpl implements TimeObject {
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Time.class) {
+		if (baseClass == AbstractTime.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.TIME___TO_STRING: return AmaltheaPackage.TIME_OBJECT___TO_STRING;
-				case AmaltheaPackage.TIME___CONTAINER_NOTIFICATION_REQUIRED: return AmaltheaPackage.TIME_OBJECT___CONTAINER_NOTIFICATION_REQUIRED;
+				case AmaltheaPackage.ABSTRACT_TIME___TO_STRING: return AmaltheaPackage.TIME_OBJECT___TO_STRING;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}

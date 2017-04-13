@@ -5671,6 +5671,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EventActivation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EventActivationItemProvider eventActivationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EventActivation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEventActivationAdapter() {
+		if (eventActivationItemProvider == null) {
+			eventActivationItemProvider = new EventActivationItemProvider(this);
+		}
+
+		return eventActivationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CustomActivation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6104,6 +6127,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (periodicActivationItemProvider != null) periodicActivationItemProvider.dispose();
 		if (sporadicActivationItemProvider != null) sporadicActivationItemProvider.dispose();
 		if (singleActivationItemProvider != null) singleActivationItemProvider.dispose();
+		if (eventActivationItemProvider != null) eventActivationItemProvider.dispose();
 		if (customActivationItemProvider != null) customActivationItemProvider.dispose();
 		if (labelAccessStatisticItemProvider != null) labelAccessStatisticItemProvider.dispose();
 		if (instructionFetchItemProvider != null) instructionFetchItemProvider.dispose();

@@ -175,18 +175,8 @@ public class DataAgeTimeItemProvider extends DataAgeItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDataAgeTime_MinimumTime(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getDataAgeTime_MaximumTime(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getDataAgeTime_MaximumTime(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 	/**

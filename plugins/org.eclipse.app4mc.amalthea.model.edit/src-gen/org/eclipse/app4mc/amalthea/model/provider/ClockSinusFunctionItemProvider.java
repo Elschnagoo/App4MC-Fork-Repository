@@ -217,18 +217,8 @@ public class ClockSinusFunctionItemProvider extends ClockItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getClockSinusFunction_Shift(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getClockSinusFunction_Period(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getClockSinusFunction_Period(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 	/**

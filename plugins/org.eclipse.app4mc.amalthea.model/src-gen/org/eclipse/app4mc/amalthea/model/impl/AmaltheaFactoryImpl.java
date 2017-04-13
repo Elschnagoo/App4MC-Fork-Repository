@@ -44,6 +44,7 @@ import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ChannelEvent;
+import org.eclipse.app4mc.amalthea.model.ChannelEventType;
 import org.eclipse.app4mc.amalthea.model.ChannelReceive;
 import org.eclipse.app4mc.amalthea.model.ChannelSend;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
@@ -102,6 +103,7 @@ import org.eclipse.app4mc.amalthea.model.ECUType;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
+import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
@@ -605,6 +607,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.PERIODIC_ACTIVATION: return createPeriodicActivation();
 			case AmaltheaPackage.SPORADIC_ACTIVATION: return createSporadicActivation();
 			case AmaltheaPackage.SINGLE_ACTIVATION: return createSingleActivation();
+			case AmaltheaPackage.EVENT_ACTIVATION: return createEventActivation();
 			case AmaltheaPackage.CUSTOM_ACTIVATION: return createCustomActivation();
 			case AmaltheaPackage.LABEL_ACCESS_STATISTIC: return createLabelAccessStatistic();
 			case AmaltheaPackage.INSTRUCTION_FETCH: return createInstructionFetch();
@@ -664,6 +667,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createRunnableEventTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.LABEL_EVENT_TYPE:
 				return createLabelEventTypeFromString(eDataType, initialValue);
+			case AmaltheaPackage.CHANNEL_EVENT_TYPE:
+				return createChannelEventTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.SEMAPHORE_EVENT_TYPE:
 				return createSemaphoreEventTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.QTYPE:
@@ -771,6 +776,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertRunnableEventTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.LABEL_EVENT_TYPE:
 				return convertLabelEventTypeToString(eDataType, instanceValue);
+			case AmaltheaPackage.CHANNEL_EVENT_TYPE:
+				return convertChannelEventTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.SEMAPHORE_EVENT_TYPE:
 				return convertSemaphoreEventTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.QTYPE:
@@ -3263,6 +3270,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EventActivation createEventActivation() {
+		EventActivationImpl eventActivation = new EventActivationImpl();
+		return eventActivation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CustomActivation createCustomActivation() {
 		CustomActivationImpl customActivation = new CustomActivationImpl();
 		return customActivation;
@@ -3715,6 +3732,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertLabelEventTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ChannelEventType createChannelEventTypeFromString(EDataType eDataType, String initialValue) {
+		ChannelEventType result = ChannelEventType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertChannelEventTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

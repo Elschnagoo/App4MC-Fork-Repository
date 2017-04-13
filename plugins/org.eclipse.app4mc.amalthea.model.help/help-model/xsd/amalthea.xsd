@@ -270,9 +270,19 @@
       <xsd:enumeration value="write"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="ChannelEventType">
+    <xsd:annotation>
+      <xsd:documentation>The types of a label event</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_all_"/>
+      <xsd:enumeration value="send"/>
+      <xsd:enumeration value="receive"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="SemaphoreEventType">
     <xsd:annotation>
-      <xsd:documentation>the types of a semaphore event</xsd:documentation>
+      <xsd:documentation>The types of a semaphore event</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_all_"/>
@@ -763,10 +773,7 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Constant set of execution cycles</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="Time">
-    <xsd:annotation>
-      <xsd:documentation>Time class including value and time unit (also allows to define negative time values).</xsd:documentation>
-    </xsd:annotation>
+  <xsd:complexType abstract="true" name="AbstractTime">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
@@ -775,9 +782,18 @@ Needs to be extended by other classes.</xsd:documentation>
     <xsd:attribute name="value" type="xsd:int"/>
     <xsd:attribute name="unit" type="am:TimeUnit"/>
   </xsd:complexType>
+  <xsd:element name="AbstractTime" type="am:AbstractTime"/>
+  <xsd:complexType name="Time">
+    <xsd:annotation>
+      <xsd:documentation>General time class to use including value and given time unit.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:AbstractTime"/>
+    </xsd:complexContent>
+  </xsd:complexType>
   <xsd:element name="Time" type="am:Time">
     <xsd:annotation>
-      <xsd:documentation>Time class including value and time unit (also allows to define negative time values).</xsd:documentation>
+      <xsd:documentation>General time class to use including value and given time unit.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="Frequency">
@@ -984,7 +1000,7 @@ Needs to be extended by other classes.</xsd:documentation>
   </xsd:element>
   <xsd:complexType name="TimeObject">
     <xsd:complexContent>
-      <xsd:extension base="am:Time"/>
+      <xsd:extension base="am:AbstractTime"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="TimeObject" type="am:TimeObject"/>
@@ -2504,6 +2520,7 @@ process: The process that accesses the label (optional)</xsd:documentation>
           <xsd:element name="runnable" type="am:Runnable"/>
           <xsd:element name="process" type="am:Process"/>
         </xsd:choice>
+        <xsd:attribute name="eventType" type="am:ChannelEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
         <xsd:attribute name="runnable" type="xsd:string"/>
         <xsd:attribute name="process" type="xsd:string"/>
@@ -3860,7 +3877,9 @@ triggerTimes: the list of all trigger times</xsd:documentation>
       <xsd:documentation>Stimulus to describe own custom types of activations, including properties</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:Stimulus"/>
+      <xsd:extension base="am:Stimulus">
+        <xsd:attribute name="description" type="xsd:string"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="CustomStimulus" type="am:CustomStimulus">
@@ -5289,6 +5308,7 @@ Used for first definition of an activation rate, which is later refined by stimu
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="min" type="am:Time"/>
           <xsd:element name="max" type="am:Time"/>
+          <xsd:element name="recurrence" type="am:Time"/>
           <xsd:element name="offset" type="am:Time"/>
           <xsd:element name="deadline" type="am:Time"/>
         </xsd:choice>
@@ -5302,7 +5322,9 @@ Used for first definition of an activation rate, which is later refined by stimu
   </xsd:element>
   <xsd:complexType name="SporadicActivation">
     <xsd:complexContent>
-      <xsd:extension base="am:Activation"/>
+      <xsd:extension base="am:Activation">
+        <xsd:attribute name="description" type="xsd:string"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="SporadicActivation" type="am:SporadicActivation"/>
@@ -5322,6 +5344,25 @@ Used for first definition of an activation rate, which is later refined by stimu
   <xsd:element name="SingleActivation" type="am:SingleActivation">
     <xsd:annotation>
       <xsd:documentation>A single activation between time min and max</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="EventActivation">
+    <xsd:annotation>
+      <xsd:documentation>Activation which is triggered by an event.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Activation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="trigger" type="am:TriggerEvent"/>
+          <xsd:element name="counter" type="am:Counter"/>
+        </xsd:choice>
+        <xsd:attribute name="trigger" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="EventActivation" type="am:EventActivation">
+    <xsd:annotation>
+      <xsd:documentation>Activation which is triggered by an event.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="CustomActivation">

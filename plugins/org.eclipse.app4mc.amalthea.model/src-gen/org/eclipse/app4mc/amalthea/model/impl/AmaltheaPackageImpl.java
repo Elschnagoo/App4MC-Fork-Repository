@@ -18,6 +18,7 @@ import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
+import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AbstractionType;
 import org.eclipse.app4mc.amalthea.model.AccessMultiplicity;
 import org.eclipse.app4mc.amalthea.model.AccessPath;
@@ -53,6 +54,7 @@ import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ChannelAccess;
 import org.eclipse.app4mc.amalthea.model.ChannelEvent;
+import org.eclipse.app4mc.amalthea.model.ChannelEventType;
 import org.eclipse.app4mc.amalthea.model.ChannelReceive;
 import org.eclipse.app4mc.amalthea.model.ChannelSend;
 import org.eclipse.app4mc.amalthea.model.Classification;
@@ -124,6 +126,7 @@ import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.Event;
+import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
@@ -507,6 +510,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass instructionsConstantEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass abstractTimeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2564,6 +2574,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass eventActivationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass customActivationEClass = null;
 
 	/**
@@ -2733,6 +2750,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EEnum labelEventTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum channelEventTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3408,6 +3432,42 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAbstractTime() {
+		return abstractTimeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbstractTime_Value() {
+		return (EAttribute)abstractTimeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbstractTime_Unit() {
+		return (EAttribute)abstractTimeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAbstractTime__ToString() {
+		return abstractTimeEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTime() {
 		return timeEClass;
 	}
@@ -3417,35 +3477,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTime_Value() {
-		return (EAttribute)timeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTime_Unit() {
-		return (EAttribute)timeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getTime__ToString() {
-		return timeEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EOperation getTime__ContainerNotificationRequired() {
-		return timeEClass.getEOperations().get(1);
+		return timeEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -6207,8 +6240,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getChannelEvent_Entity() {
-		return (EReference)channelEventEClass.getEStructuralFeatures().get(0);
+	public EAttribute getChannelEvent_EventType() {
+		return (EAttribute)channelEventEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -6216,7 +6249,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getChannelEvent_Runnable() {
+	public EReference getChannelEvent_Entity() {
 		return (EReference)channelEventEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -6225,8 +6258,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getChannelEvent_Process() {
+	public EReference getChannelEvent_Runnable() {
 		return (EReference)channelEventEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getChannelEvent_Process() {
+		return (EReference)channelEventEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -8817,6 +8859,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCustomStimulus_Description() {
+		return (EAttribute)customStimulusEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSingle() {
 		return singleEClass;
 	}
@@ -11058,7 +11109,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPeriodicActivation_Offset() {
+	public EReference getPeriodicActivation_Recurrence() {
 		return (EReference)periodicActivationEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -11067,8 +11118,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPeriodicActivation_Deadline() {
+	public EReference getPeriodicActivation_Offset() {
 		return (EReference)periodicActivationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPeriodicActivation_Deadline() {
+		return (EReference)periodicActivationEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -11078,6 +11138,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EClass getSporadicActivation() {
 		return sporadicActivationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSporadicActivation_Description() {
+		return (EAttribute)sporadicActivationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11105,6 +11174,33 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getSingleActivation_Max() {
 		return (EReference)singleActivationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEventActivation() {
+		return eventActivationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEventActivation_Trigger() {
+		return (EReference)eventActivationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEventActivation_Counter() {
+		return (EReference)eventActivationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -11393,6 +11489,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EEnum getLabelEventType() {
 		return labelEventTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getChannelEventType() {
+		return channelEventTypeEEnum;
 	}
 
 	/**
@@ -11721,10 +11826,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		instructionsConstantEClass = createEClass(INSTRUCTIONS_CONSTANT);
 		createEAttribute(instructionsConstantEClass, INSTRUCTIONS_CONSTANT__VALUE);
 
+		abstractTimeEClass = createEClass(ABSTRACT_TIME);
+		createEAttribute(abstractTimeEClass, ABSTRACT_TIME__VALUE);
+		createEAttribute(abstractTimeEClass, ABSTRACT_TIME__UNIT);
+		createEOperation(abstractTimeEClass, ABSTRACT_TIME___TO_STRING);
+
 		timeEClass = createEClass(TIME);
-		createEAttribute(timeEClass, TIME__VALUE);
-		createEAttribute(timeEClass, TIME__UNIT);
-		createEOperation(timeEClass, TIME___TO_STRING);
 		createEOperation(timeEClass, TIME___CONTAINER_NOTIFICATION_REQUIRED);
 
 		frequencyEClass = createEClass(FREQUENCY);
@@ -12146,6 +12253,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(labelEventEClass, LABEL_EVENT__PROCESS);
 
 		channelEventEClass = createEClass(CHANNEL_EVENT);
+		createEAttribute(channelEventEClass, CHANNEL_EVENT__EVENT_TYPE);
 		createEReference(channelEventEClass, CHANNEL_EVENT__ENTITY);
 		createEReference(channelEventEClass, CHANNEL_EVENT__RUNNABLE);
 		createEReference(channelEventEClass, CHANNEL_EVENT__PROCESS);
@@ -12531,6 +12639,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(timestampListEClass, TIMESTAMP_LIST__TIMESTAMPS);
 
 		customStimulusEClass = createEClass(CUSTOM_STIMULUS);
+		createEAttribute(customStimulusEClass, CUSTOM_STIMULUS__DESCRIPTION);
 
 		singleEClass = createEClass(SINGLE);
 		createEReference(singleEClass, SINGLE__ACTIVATION);
@@ -12861,14 +12970,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		periodicActivationEClass = createEClass(PERIODIC_ACTIVATION);
 		createEReference(periodicActivationEClass, PERIODIC_ACTIVATION__MIN);
 		createEReference(periodicActivationEClass, PERIODIC_ACTIVATION__MAX);
+		createEReference(periodicActivationEClass, PERIODIC_ACTIVATION__RECURRENCE);
 		createEReference(periodicActivationEClass, PERIODIC_ACTIVATION__OFFSET);
 		createEReference(periodicActivationEClass, PERIODIC_ACTIVATION__DEADLINE);
 
 		sporadicActivationEClass = createEClass(SPORADIC_ACTIVATION);
+		createEAttribute(sporadicActivationEClass, SPORADIC_ACTIVATION__DESCRIPTION);
 
 		singleActivationEClass = createEClass(SINGLE_ACTIVATION);
 		createEReference(singleActivationEClass, SINGLE_ACTIVATION__MIN);
 		createEReference(singleActivationEClass, SINGLE_ACTIVATION__MAX);
+
+		eventActivationEClass = createEClass(EVENT_ACTIVATION);
+		createEReference(eventActivationEClass, EVENT_ACTIVATION__TRIGGER);
+		createEReference(eventActivationEClass, EVENT_ACTIVATION__COUNTER);
 
 		customActivationEClass = createEClass(CUSTOM_ACTIVATION);
 		createEAttribute(customActivationEClass, CUSTOM_ACTIVATION__DESCRIPTION);
@@ -12907,6 +13022,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		processEventTypeEEnum = createEEnum(PROCESS_EVENT_TYPE);
 		runnableEventTypeEEnum = createEEnum(RUNNABLE_EVENT_TYPE);
 		labelEventTypeEEnum = createEEnum(LABEL_EVENT_TYPE);
+		channelEventTypeEEnum = createEEnum(CHANNEL_EVENT_TYPE);
 		semaphoreEventTypeEEnum = createEEnum(SEMAPHORE_EVENT_TYPE);
 		qTypeEEnum = createEEnum(QTYPE);
 		memoryTypeEnumEEnum = createEEnum(MEMORY_TYPE_ENUM);
@@ -12990,6 +13106,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		memoryClassifierEClass.getESuperTypes().add(this.getClassifier());
 		instructionsDeviationEClass.getESuperTypes().add(this.getInstructions());
 		instructionsConstantEClass.getESuperTypes().add(this.getInstructions());
+		timeEClass.getESuperTypes().add(this.getAbstractTime());
 		listObjectEClass.getESuperTypes().add(this.getValue());
 		stringObjectEClass.getESuperTypes().add(this.getValue());
 		bigIntegerObjectEClass.getESuperTypes().add(this.getValue());
@@ -12999,7 +13116,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		floatObjectEClass.getESuperTypes().add(this.getValue());
 		doubleObjectEClass.getESuperTypes().add(this.getValue());
 		booleanObjectEClass.getESuperTypes().add(this.getValue());
-		timeObjectEClass.getESuperTypes().add(this.getTime());
+		timeObjectEClass.getESuperTypes().add(this.getAbstractTime());
 		timeObjectEClass.getESuperTypes().add(this.getValue());
 		EGenericType g1 = createEGenericType(this.getDistribution());
 		EGenericType g2 = createEGenericType(weibullDistributionEClass_T);
@@ -13320,6 +13437,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		periodicActivationEClass.getESuperTypes().add(this.getActivation());
 		sporadicActivationEClass.getESuperTypes().add(this.getActivation());
 		singleActivationEClass.getESuperTypes().add(this.getActivation());
+		eventActivationEClass.getESuperTypes().add(this.getActivation());
 		customActivationEClass.getESuperTypes().add(this.getActivation());
 		labelAccessStatisticEClass.getESuperTypes().add(this.getBaseObject());
 		instructionFetchEClass.getESuperTypes().add(this.getBaseObject());
@@ -13397,11 +13515,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(instructionsConstantEClass, InstructionsConstant.class, "InstructionsConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInstructionsConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, InstructionsConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(timeEClass, Time.class, "Time", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTime_Value(), theEcorePackage.getEInt(), "value", "0", 0, 1, Time.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTime_Unit(), this.getTimeUnit(), "unit", null, 0, 1, Time.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(abstractTimeEClass, AbstractTime.class, "AbstractTime", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAbstractTime_Value(), theEcorePackage.getEInt(), "value", "0", 0, 1, AbstractTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractTime_Unit(), this.getTimeUnit(), "unit", null, 0, 1, AbstractTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getTime__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getAbstractTime__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(timeEClass, Time.class, "Time", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEOperation(getTime__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -13857,6 +13977,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getLabelEvent_Process(), this.getProcess(), null, "process", null, 0, 1, LabelEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(channelEventEClass, ChannelEvent.class, "ChannelEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getChannelEvent_EventType(), this.getChannelEventType(), "eventType", null, 1, 1, ChannelEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChannelEvent_Entity(), this.getChannel(), null, "entity", null, 0, 1, ChannelEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChannelEvent_Runnable(), this.getRunnable(), null, "runnable", null, 0, 1, ChannelEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChannelEvent_Process(), this.getProcess(), null, "process", null, 0, 1, ChannelEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14249,6 +14370,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getTimestampList_Timestamps(), this.getTime(), null, "timestamps", null, 0, -1, TimestampList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customStimulusEClass, CustomStimulus.class, "CustomStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCustomStimulus_Description(), theEcorePackage.getEString(), "description", null, 0, 1, CustomStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(singleEClass, Single.class, "Single", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSingle_Activation(), this.getTime(), null, "activation", null, 0, 1, Single.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14601,14 +14723,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(periodicActivationEClass, PeriodicActivation.class, "PeriodicActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPeriodicActivation_Min(), this.getTime(), null, "min", null, 0, 1, PeriodicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPeriodicActivation_Max(), this.getTime(), null, "max", null, 0, 1, PeriodicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPeriodicActivation_Recurrence(), this.getTime(), null, "recurrence", null, 0, 1, PeriodicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPeriodicActivation_Offset(), this.getTime(), null, "offset", null, 0, 1, PeriodicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPeriodicActivation_Deadline(), this.getTime(), null, "deadline", null, 0, 1, PeriodicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sporadicActivationEClass, SporadicActivation.class, "SporadicActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSporadicActivation_Description(), theEcorePackage.getEString(), "description", null, 0, 1, SporadicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(singleActivationEClass, SingleActivation.class, "SingleActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSingleActivation_Min(), this.getTime(), null, "min", null, 0, 1, SingleActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSingleActivation_Max(), this.getTime(), null, "max", null, 0, 1, SingleActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eventActivationEClass, EventActivation.class, "EventActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEventActivation_Trigger(), this.getTriggerEvent(), null, "trigger", null, 1, 1, EventActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEventActivation_Counter(), this.getCounter(), null, "counter", null, 0, 1, EventActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customActivationEClass, CustomActivation.class, "CustomActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomActivation_Description(), theEcorePackage.getEString(), "description", null, 0, 1, CustomActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14817,6 +14945,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(labelEventTypeEEnum, LabelEventType._ALL_);
 		addEEnumLiteral(labelEventTypeEEnum, LabelEventType.READ);
 		addEEnumLiteral(labelEventTypeEEnum, LabelEventType.WRITE);
+
+		initEEnum(channelEventTypeEEnum, ChannelEventType.class, "ChannelEventType");
+		addEEnumLiteral(channelEventTypeEEnum, ChannelEventType._ALL_);
+		addEEnumLiteral(channelEventTypeEEnum, ChannelEventType.SEND);
+		addEEnumLiteral(channelEventTypeEEnum, ChannelEventType.RECEIVE);
 
 		initEEnum(semaphoreEventTypeEEnum, SemaphoreEventType.class, "SemaphoreEventType");
 		addEEnumLiteral(semaphoreEventTypeEEnum, SemaphoreEventType._ALL_);

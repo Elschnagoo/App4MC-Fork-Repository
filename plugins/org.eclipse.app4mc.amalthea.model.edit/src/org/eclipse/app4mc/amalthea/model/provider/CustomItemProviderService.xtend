@@ -5,6 +5,7 @@ import java.util.List
 import java.util.Map
 import org.apache.commons.lang.StringUtils
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint
+import org.eclipse.app4mc.amalthea.model.AbstractTime
 import org.eclipse.app4mc.amalthea.model.AccessPathRef
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType
@@ -189,7 +190,7 @@ class CustomItemProviderService {
 		return value + " " + unit
 	}
 
-	private def static getTimeText(Time time) {
+	private def static getTimeText(AbstractTime time) {
 		if (time == null) return "<time>"
 		
 		val value = Integer.toString(time.value)

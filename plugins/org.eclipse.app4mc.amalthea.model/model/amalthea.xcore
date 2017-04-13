@@ -214,18 +214,20 @@ enum TimeUnit
 	ps
 }
 
-
-/*
- * Time class including value and time unit (also allows to define negative time values).
- */
-class Time {
+abstract class AbstractTime {
 	int value="0"
 	TimeUnit unit
 	
 	op String toString() {
 		return value + " " + if (unit == TimeUnit::_UNDEFINED_ ) "<unit>" else unit.literal
 	}
-	
+}
+
+/*
+ * General time class to use including value and given time unit.
+ */
+class Time extends AbstractTime
+{
 	op boolean containerNotificationRequired() {
 		return true
 	}
@@ -468,7 +470,7 @@ class BooleanObject extends Value{
 	}
 }
 
-class TimeObject extends Time, Value {
+class TimeObject extends AbstractTime, Value {
 	op String toString() {
 		return "(Time) " + super.toString
 	}
@@ -1493,7 +1495,7 @@ enum ChannelEventType
 }
 
 /*
- * the types of a semaphore event
+ * The types of a semaphore event
  */
 enum SemaphoreEventType
 {
@@ -2396,6 +2398,7 @@ class TimestampList extends BaseObject
  */
 class CustomStimulus extends Stimulus
 {
+	String description
 }
 
 /*
@@ -3367,12 +3370,14 @@ class PeriodicActivation extends Activation
 {
 	contains Time min
 	contains Time max
+	contains Time recurrence
 	contains Time offset
 	contains Time deadline
 }
 
 class SporadicActivation extends Activation
 {
+	String description
 }
 
 /*
@@ -3382,6 +3387,15 @@ class SingleActivation extends Activation
 {
 	contains Time min
 	contains Time max
+}
+
+/*
+ * Activation which is triggered by an event.
+ */
+class EventActivation extends Activation
+{
+	refers TriggerEvent[1] trigger
+	contains Counter counter
 }
 
 class CustomActivation extends Activation

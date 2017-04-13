@@ -220,18 +220,8 @@ public class RepetitionConstraintItemProvider extends TimingConstraintItemProvid
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Lower(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Upper(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Upper(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -240,18 +230,8 @@ public class RepetitionConstraintItemProvider extends TimingConstraintItemProvid
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Jitter(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Period(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Period(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 	/**

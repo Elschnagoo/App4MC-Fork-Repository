@@ -2201,6 +2201,15 @@ public interface AmaltheaFactory extends EFactory {
 	SingleActivation createSingleActivation();
 
 	/**
+	 * Returns a new object of class '<em>Event Activation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Event Activation</em>'.
+	 * @generated
+	 */
+	EventActivation createEventActivation();
+
+	/**
 	 * Returns a new object of class '<em>Custom Activation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

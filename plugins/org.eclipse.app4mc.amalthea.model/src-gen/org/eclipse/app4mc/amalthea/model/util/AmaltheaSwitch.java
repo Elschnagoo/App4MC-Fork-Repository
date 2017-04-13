@@ -17,6 +17,7 @@ import java.util.Map;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
+import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AbstractionType;
 import org.eclipse.app4mc.amalthea.model.AccessPath;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
@@ -112,6 +113,7 @@ import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.Event;
+import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
@@ -513,9 +515,16 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.ABSTRACT_TIME: {
+				AbstractTime abstractTime = (AbstractTime)theEObject;
+				T1 result = caseAbstractTime(abstractTime);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.TIME: {
 				Time time = (Time)theEObject;
 				T1 result = caseTime(time);
+				if (result == null) result = caseAbstractTime(time);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -615,7 +624,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.TIME_OBJECT: {
 				TimeObject timeObject = (TimeObject)theEObject;
 				T1 result = caseTimeObject(timeObject);
-				if (result == null) result = caseTime(timeObject);
+				if (result == null) result = caseAbstractTime(timeObject);
 				if (result == null) result = caseValue(timeObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -3114,6 +3123,16 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.EVENT_ACTIVATION: {
+				EventActivation eventActivation = (EventActivation)theEObject;
+				T1 result = caseEventActivation(eventActivation);
+				if (result == null) result = caseActivation(eventActivation);
+				if (result == null) result = caseReferableBaseObject(eventActivation);
+				if (result == null) result = caseIAnnotatable(eventActivation);
+				if (result == null) result = caseIReferable(eventActivation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.CUSTOM_ACTIVATION: {
 				CustomActivation customActivation = (CustomActivation)theEObject;
 				T1 result = caseCustomActivation(customActivation);
@@ -3404,6 +3423,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseInstructionsConstant(InstructionsConstant object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Time</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Time</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseAbstractTime(AbstractTime object) {
 		return null;
 	}
 
@@ -7799,6 +7833,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseSingleActivation(SingleActivation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Event Activation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Event Activation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseEventActivation(EventActivation object) {
 		return null;
 	}
 

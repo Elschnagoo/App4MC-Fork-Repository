@@ -202,11 +202,6 @@ public class TimeRequirementLimitItemProvider extends RequirementLimitItemProvid
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTimeRequirementLimit_LimitValue(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTimeRequirementLimit_LimitValue(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 }

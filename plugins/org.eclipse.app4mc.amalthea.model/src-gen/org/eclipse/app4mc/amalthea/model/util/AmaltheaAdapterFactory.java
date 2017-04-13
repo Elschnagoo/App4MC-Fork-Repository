@@ -17,6 +17,7 @@ import java.util.Map;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
+import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AbstractionType;
 import org.eclipse.app4mc.amalthea.model.AccessPath;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
@@ -112,6 +113,7 @@ import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.Event;
+import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
@@ -455,6 +457,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseInstructionsConstant(InstructionsConstant object) {
 				return createInstructionsConstantAdapter();
+			}
+			@Override
+			public Adapter caseAbstractTime(AbstractTime object) {
+				return createAbstractTimeAdapter();
 			}
 			@Override
 			public Adapter caseTime(Time object) {
@@ -1629,6 +1635,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createSingleActivationAdapter();
 			}
 			@Override
+			public Adapter caseEventActivation(EventActivation object) {
+				return createEventActivationAdapter();
+			}
+			@Override
 			public Adapter caseCustomActivation(CustomActivation object) {
 				return createCustomActivationAdapter();
 			}
@@ -1899,6 +1909,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInstructionsConstantAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AbstractTime <em>Abstract Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.AbstractTime
+	 * @generated
+	 */
+	public Adapter createAbstractTimeAdapter() {
 		return null;
 	}
 
@@ -6001,6 +6025,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSingleActivationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EventActivation <em>Event Activation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.EventActivation
+	 * @generated
+	 */
+	public Adapter createEventActivationAdapter() {
 		return null;
 	}
 
