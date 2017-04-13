@@ -125,3 +125,15 @@ img.dotted {
 	border-color: gray;
 	border-style: dotted;
 }
+
+.validation-rule {
+    background-color: red;
+    margin-left: 1.5cm;
+	margin-right: 1.5cm;
+}
+
+.validation-rule:before {
+	font-weight: bold;
+	margin-left: -0.75cm;
+    content: "\26A0  VALIDATION RULES";
+}

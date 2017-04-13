@@ -26,6 +26,8 @@ is the delay attribute. It represents the amount of time that is required to exe
 
 !../pictures/model_os_hwunit.png!
 
+*(validation-rule) _SchedulingHWUnit_: The _Time_ object in the role of _delay_ must not contain a negative value!
+
 h4. Scheduling SW Unit
 
 This class is used when scheduling is done by software unit.

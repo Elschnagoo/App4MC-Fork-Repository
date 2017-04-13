@@ -88,6 +88,9 @@ Data Age constraints are used to define when the information in a label becomes 
 
 !../pictures/model_constraints_data_age.png!
 
+*(validation-rule) DataAgeTime: The _Time_ object in the role of _minimumTime_ must not contain a negative value!
+*(validation-rule) DataAgeTime: The _Time_ object in the role of _maximumTime_ must not contain a negative value!
+
 
 h3. Data Coherency Groups
 
@@ -155,12 +158,19 @@ The parameter __multipleOccurrencesAllowed__ defines, whether for the constraint
 
 !../pictures/model_constraints_timing_sync.png!
 
+*(validation-rule) _SynchronizationConstraint_: The _Time_ object in the role of _tolerance_ must not contain a negative value!
+
 h4. Repetition Constraint
 
 A __RepetitionConstraint__ describes the distribution of the occurrences of a single event, including jitter.
 Every sequence of span occurrences of event must have a length of at least lower and at most upper time units.
 
 !../pictures/model_constraints_timing_repetition.png!
+
+*(validation-rule) _RepetitionConstraint_: The _Time_ object in the role of _lower_ must not contain a negative value!
+*(validation-rule) _RepetitionConstraint_: The _Time_ object in the role of _upper_ must not contain a negative value!
+*(validation-rule) _RepetitionConstraint_: The _Time_ object in the role of _period_ must not contain a negative value!
+*(validation-rule) _RepetitionConstraint_: The _Time_ object in the role of _jitter_ must not contain a negative value!
 
 h4. Delay Constraint
 
@@ -170,6 +180,9 @@ In addition, a __MappingType__ defines whether there is a strong ( __OneToOne__ 
 
 !../pictures/model_constraints_timing_delay.png!
 
+*(validation-rule) _DelayConstraint_: The _Time_ object in the role of _lower_ must not contain a negative value!
+*(validation-rule) _DelayConstraint_: The _Time_ object in the role of _upper_ must not contain a negative value!
+
 h4. Event Chain Latency Constraint
 
 An __EventChainLatencyConstraint__ defines how long before each response a corresponding stimulus must have occurred ( __Age__ ), or how long after a stimulus a corresponding response must occur ( __Reaction__ ).
@@ -177,6 +190,8 @@ It always refers to an EventChain.
 
 !../pictures/model_constraints_timing_latency.png!
 
+*(validation-rule) _EventChainLatencyConstraint_: The _Time_ object in the role of _minimum_ must not contain a negative value!
+*(validation-rule) _EventChainLatencyConstraint_: The _Time_ object in the role of _maximum_ must not contain a negative value!
 
 h3. Affinity Constraints
 
