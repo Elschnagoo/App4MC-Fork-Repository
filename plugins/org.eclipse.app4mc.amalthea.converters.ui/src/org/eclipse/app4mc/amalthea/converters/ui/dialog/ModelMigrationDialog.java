@@ -10,10 +10,19 @@
  *******************************************************************************/
 package org.eclipse.app4mc.amalthea.converters.ui.dialog;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
+import java.util.Date;
 
+import org.apache.log4j.FileAppender;
+import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
+import org.apache.log4j.spi.Filter;
+import org.apache.log4j.spi.LoggingEvent;
 import org.eclipse.app4mc.amalthea.converters.ui.jobs.IMigrationJobConstants;
 import org.eclipse.app4mc.amalthea.converters.ui.jobs.ModelMigrationJob;
 import org.eclipse.app4mc.amalthea.converters.ui.providers.MigrationInputDataProvider;
@@ -79,9 +88,11 @@ public class ModelMigrationDialog extends Dialog {
 
 	final Logger logger;
 
+	private FileAppender fileAppender;
+
 	public ModelMigrationDialog(final Shell parentShell, final MigrationSettings migrationSettings) {
 		super(parentShell);
-		this.logger = LogManager.getLogger(this.getClass());
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 
 		setMigrationSettings(migrationSettings);
 
@@ -367,6 +378,41 @@ public class ModelMigrationDialog extends Dialog {
 			@Override
 			public void widgetSelected(final SelectionEvent e) {
 
+				/* ====== Adding log file appender for logging model migration events====== */
+
+
+				final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss");
+				final String dateToStr = format.format(new Date());
+
+				final File modelMigrationLogFile = new File(
+						ModelMigrationDialog.this.getMigrationSettings().getOutputDirectoryLocation(),
+						"ModelMigration__" + dateToStr + ".log");
+				try {
+					setFileAppender(new FileAppender(new PatternLayout("%d{yyyy-MM-dd_HH_mm_ss} - %-5p:  %m%n"),
+							modelMigrationLogFile.getAbsolutePath(), false));
+
+					getFileAppender().addFilter(new Filter() {
+
+						@Override
+						public int decide(final LoggingEvent event) {
+
+							if (event.getLevel() == Level.TRACE) {
+								/*-For developers: By changing the return value to Filter.ACCEPT -> TRACE log entries  will also be generated into the Log file*/
+
+								return Filter.DENY;
+							}
+							return Filter.ACCEPT;
+						}
+					});
+					ModelMigrationDialog.this.logger.addAppender(getFileAppender());
+					// ModelMigrationDialog.this.logger.setLevel(Level.ALL);
+
+				}
+				catch (final IOException e1) {
+					ModelMigrationDialog.this.logger.error("Unable to add FileAppender for model migration logger"
+							+ modelMigrationLogFile.getAbsolutePath(), e1);
+				}
+
 				final ModelMigrationJob job = new ModelMigrationJob("AMALTHEA Model Migration",
 						ModelMigrationDialog.this.getMigrationSettings());
 
@@ -434,6 +480,12 @@ public class ModelMigrationDialog extends Dialog {
 							});
 
 						}
+
+						if (getFileAppender() != null) {
+							getFileAppender().close();
+							ModelMigrationDialog.this.logger.removeAppender(getFileAppender());
+						}
+
 
 					}
 
@@ -537,5 +589,13 @@ public class ModelMigrationDialog extends Dialog {
 
 	public void setCancelMigrationButton(final Button cancelMigrationButton) {
 		this.cancelMigrationButton = cancelMigrationButton;
+	}
+
+	public FileAppender getFileAppender() {
+		return this.fileAppender;
+	}
+
+	public void setFileAppender(final FileAppender fileAppender) {
+		this.fileAppender = fileAppender;
 	}
 }
