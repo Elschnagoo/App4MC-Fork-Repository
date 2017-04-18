@@ -52,7 +52,7 @@ public class ModelMigrationJob extends Job {
 
 	protected AbstractHelper helper;
 
-	private final Logger logger = LogManager.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 
 	public ModelMigrationJob(final String name, final MigrationSettings migrationSettings) {
 		super(name);
@@ -89,6 +89,28 @@ public class ModelMigrationJob extends Job {
 
 			final Map<File, Document> fileName_documentsMap = this.migrationSettings.getMigModelFilesMap();
 
+			final StringBuffer buffer = new StringBuffer();
+
+			buffer.append(System.getProperty("line.separator")
+					+ "***************************************************************************************************************************************"
+					+ System.getProperty("line.separator"));
+			buffer.append("\t\t Starting model migration for the following AMALTHEA models: "
+					+ System.getProperty("line.separator"));
+
+			for (final File modelFile : fileName_documentsMap.keySet()) {
+				buffer.append("\t\t -- " + modelFile.getAbsolutePath() + System.getProperty("line.separator"));
+			}
+
+			buffer.append(System.getProperty("line.separator")
+					+ "***************************************************************************************************************************************"
+					+ System.getProperty("line.separator"));
+
+			this.logger.info(buffer.toString());
+
+			// clearing the stringbuffer
+			buffer.delete(0, buffer.length());
+
+
 			subMonitor.setTaskName("invoking pre processors ");
 
 			final List<IPreProcessor> preProcessors = getAllPreProcessorObjectsFromExtensions(inputModelVersion);
@@ -109,6 +131,9 @@ public class ModelMigrationJob extends Job {
 				subMonitor
 						.setTaskName("Migrating AMALTHEA models from : " + entry.getKey() + " to " + entry.getValue());
 
+				this.logger.info("=========== START: Migrating AMALTHEA models from : " + entry.getKey() + " to "
+						+ entry.getValue() + " ========== ");
+
 				final Collection<ConverterElement> converterObjects = executeConversion(fileName_documentsMap,
 						entry.getKey(), entry.getValue());
 
@@ -118,6 +143,9 @@ public class ModelMigrationJob extends Job {
 
 				executePostProcessors(entry, migStepEntries, allPostProcessorObjectsFromExtensions,
 						fileName_documentsMap);
+
+				this.logger.info("=========== END: Migrating AMALTHEA models from : " + entry.getKey() + " to "
+						+ entry.getValue() + "  =========== " + System.getProperty("line.separator"));
 			}
 
 			subMonitor.setTaskName("invoking post processors ");
@@ -132,7 +160,8 @@ public class ModelMigrationJob extends Job {
 				boolean updateFileNames = false;
 				if (inputModelVersion.equals("itea.103") || inputModelVersion.equals("itea.110")) {
 					if (outputModelVersion.equals("itea.111") || outputModelVersion.equals("0.7.0")
-							|| outputModelVersion.equals("0.7.1") || outputModelVersion.equals("0.7.2")) {
+							|| outputModelVersion.equals("0.7.1") || outputModelVersion.equals("0.7.2")
+							|| outputModelVersion.equals("0.8.0")) {
 						updateFileNames = true;
 					}
 				}
@@ -286,7 +315,7 @@ public class ModelMigrationJob extends Job {
 				outputFiles.add(outputFile);
 			}
 
-			this.logger.info("File saved : " + outputFile.getAbsolutePath());
+			this.logger.info("Migrated model file saved @ : " + outputFile.getAbsolutePath());
 		}
 
 		subMonitor.worked(1);
@@ -738,7 +767,7 @@ public class ModelMigrationJob extends Job {
 
 		final List<ICache> caches = getAllCacheObjectsFromExtensions(inputModelVersion);
 
-		this.logger.info("start to build cache for models : " + inputModelVersion);
+		this.logger.trace("Start : Building cache for AMALTHEA models present in : " + inputModelVersion);
 
 		st = System.currentTimeMillis();
 
@@ -747,9 +776,10 @@ public class ModelMigrationJob extends Job {
 		end = System.currentTimeMillis();
 
 
-		this.logger.info("end of building cache for models " + inputModelVersion);
+		this.logger.trace("End : Building cache for AMALTHEA models present in : " + inputModelVersion);
 
-		this.logger.info("total time taken to build cache for " + inputModelVersion + " models:  " + (end - st));
+		this.logger.trace("Total time taken to build cache for " + inputModelVersion + " models:  " + (end - st)
+				+ "milli seconds");
 
 
 		allConverterExtensions = getAllConverterExtensions();

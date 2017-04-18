@@ -31,14 +31,15 @@ public class OSConverter extends AbstractConverter {
 
 	public OSConverter() {
 		this.helper = HelperUtils_072_080.getInstance();
-		this.logger = LogManager.getLogger(this.getClass());
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
-		this.logger.info("Migration from 0.7.2 to 0.8.0 : Starting OS converter");
+		this.logger.info(
+				"Migration from 0.7.2 to 0.8.0 : Executing OS converter for model file : " + targetFile.getName());
 
 
 		final Document root = fileName_documentsMap.get(targetFile);
@@ -86,7 +87,11 @@ public class OSConverter extends AbstractConverter {
 
 				operatingSystemElement.addContent(clone_osDataConsistencyElement);
 
+
 			}
+
+			this.logger.warn(
+					"OsDataConsistency element is removed from OsModel, and is added (cloned content) to each OperatingSystem element (which is part of corresponding OsModel).");
 
 			/*-As per change in 0.8.0 : OsDataConsistency element is removed from OsModel */
 			osDataConsistencyElement.getParentElement().removeContent(osDataConsistencyElement);

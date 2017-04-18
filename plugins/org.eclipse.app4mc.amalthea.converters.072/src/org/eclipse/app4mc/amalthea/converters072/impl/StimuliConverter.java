@@ -25,7 +25,7 @@ public class StimuliConverter extends AbstractConverter {
 
 	public StimuliConverter() {
 		this.helper = HelperUtils_071_072.getInstance();
-		this.logger = LogManager.getLogger(this.getClass());
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 
@@ -33,7 +33,8 @@ public class StimuliConverter extends AbstractConverter {
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
-		this.logger.info("Migration from 0.7.1 to 0.7.2 : Starting Stimuli converter");
+		this.logger.info(
+				"Migration from 0.7.1 to 0.7.2 : Executing Stimuli converter for model file : " + targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);
 

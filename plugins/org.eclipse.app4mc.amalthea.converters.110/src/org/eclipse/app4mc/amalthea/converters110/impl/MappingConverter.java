@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters.common.utils.HrefElement;
@@ -58,17 +60,23 @@ public class MappingConverter implements IConverter {
 
 	private List<ICache> caches;
 
+	private final Logger logger;
+
 	private final Map<Element, Element> os_defaultInterruptControllerMap = new HashMap<Element, Element>();
 
 	public MappingConverter() {
 
 		this.helper = HelperUtils_103_110.getInstance();
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
+
+		this.logger.info("Migration from itea.103 to itea.110 : Starting Mapping converter for model file : "
+				+ targetFile.getName());
 
 		this.caches = caches;
 
@@ -568,7 +576,7 @@ public class MappingConverter implements IConverter {
 			 *  To establish the link between old & new URIFragments, use the BiMap available in cache (SchedulerCacheEnum.URI_FRAGMENT_NEW_OLD)
 			 *
 			 * BiMap holds the key as new URIFragments and value as old URIFragments
-			
+
 			 **/
 
 			cacheLoop: for (final ICache cache : getFilteredCaches(this.caches, SchedulerCacheBuilder.class)) {

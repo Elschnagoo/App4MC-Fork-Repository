@@ -14,6 +14,8 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters111.utils.HelperUtils_110_111;
@@ -23,14 +25,19 @@ import org.jdom2.Element;
 public class HwConverter implements IConverter {
 
 	private final HelperUtils_110_111 helper;
+	private final Logger logger;
 
 	public HwConverter() {
 		this.helper = HelperUtils_110_111.getInstance();
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
+
+		this.logger.info(
+				"Migration from itea.110 to itea.111 : Starting HW converter for model file : " + targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);
 
@@ -140,11 +147,9 @@ public class HwConverter implements IConverter {
 		 * Migraiton step to 111 from 110: Grep the references of "ports" , "pins"  , "hw:ComplexPort" and "hw:ComplexPin" tag which do not contain "direction" attribute
 		 */
 
-		final List<Element> quartzElements = this.helper
-				.getXpathResult(
-						rootElement,
-						".//ports[(@xsi:type=\"hw:ComplexPort\") and not(@direction)]|.//pins[(@xsi:type=\"hw:ComplexPin\") and not(@direction)]|/hw:ComplexPort[not(@direction)]|/hw:ComplexPin[not(@direction)]",
-						Element.class, this.helper.getNS_111("hw"), this.helper.getGenericNS("xsi"));
+		final List<Element> quartzElements = this.helper.getXpathResult(rootElement,
+				".//ports[(@xsi:type=\"hw:ComplexPort\") and not(@direction)]|.//pins[(@xsi:type=\"hw:ComplexPin\") and not(@direction)]|/hw:ComplexPort[not(@direction)]|/hw:ComplexPin[not(@direction)]",
+				Element.class, this.helper.getNS_111("hw"), this.helper.getGenericNS("xsi"));
 
 
 		for (final Element quartzElement : quartzElements) {

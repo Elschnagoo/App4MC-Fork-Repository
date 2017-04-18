@@ -43,12 +43,15 @@ public class StimuliConverter implements IConverter {
 
 	public StimuliConverter() {
 		this.helper = HelperUtils_110_111.getInstance();
-		this.logger = LogManager.getLogger(this.getClass());
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
+
+		this.logger.info("Migration from itea.110 to itea.111 : Starting Stimuli converter for model file : "
+				+ targetFile.getName());
 
 		this.caches = caches;
 
@@ -234,7 +237,7 @@ public class StimuliConverter implements IConverter {
 					contains resolving LabelValueList disablingLabelsList
 				}
 		 *
-		
+
 		 *
 		 * But in 1.1.1,
 		 *
@@ -245,7 +248,7 @@ public class StimuliConverter implements IConverter {
 					contains resolving ModeValueList enablingModeValueList
 					contains resolving ModeValueList disablingModeValueList
 				}
-		
+
 		 *Following variable references are changed to :
 		 *
 		 *setLabelsList ->setModeValueList

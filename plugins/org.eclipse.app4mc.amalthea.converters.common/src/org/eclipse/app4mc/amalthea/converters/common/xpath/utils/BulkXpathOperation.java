@@ -24,7 +24,7 @@ import org.jdom2.Element;
 
 public class BulkXpathOperation {
 
-	private final Logger logger = LogManager.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 
 	/**
 	 * This method takes Xml Document object and the list of Xpath Strings as input-> and returns a Map with key as

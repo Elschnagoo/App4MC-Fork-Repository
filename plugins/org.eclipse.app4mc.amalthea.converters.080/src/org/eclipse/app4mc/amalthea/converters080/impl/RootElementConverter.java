@@ -31,7 +31,7 @@ public class RootElementConverter extends AbstractConverter {
 
 	public RootElementConverter() {
 		this.helper = HelperUtils_072_080.getInstance();
-		this.logger = LogManager.getLogger(this.getClass());
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
@@ -57,7 +57,8 @@ public class RootElementConverter extends AbstractConverter {
 		 */
 
 
-		this.logger.info("Migration from 0.7.2 to 0.8.0 : Starting \"Root Element Converter\"");
+		this.logger.info("Migration from 0.7.2 to 0.8.0 : Executing \"Root Element Converter\" for model file : "
+				+ targetFile.getName());
 
 		final Document document = fileName_documentsMap.get(targetFile);
 

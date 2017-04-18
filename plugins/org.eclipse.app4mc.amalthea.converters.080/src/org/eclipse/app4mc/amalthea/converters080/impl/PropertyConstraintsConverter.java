@@ -33,14 +33,15 @@ public class PropertyConstraintsConverter extends AbstractConverter {
 
 	public PropertyConstraintsConverter() {
 		this.helper = HelperUtils_072_080.getInstance();
-		this.logger = LogManager.getLogger(this.getClass());
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
-		this.logger.info("Migration from 0.7.2 to 0.8.0 : Starting Mapping converter");
+		this.logger.info(
+				"Migration from 0.7.2 to 0.8.0 : Executing Mapping converter for model file : " + targetFile.getName());
 
 
 		final Document root = fileName_documentsMap.get(targetFile);
@@ -102,6 +103,9 @@ public class PropertyConstraintsConverter extends AbstractConverter {
 			customPropertyElement.addContent(valueElement);
 
 			parentElement.addContent(customPropertyElement);
+
+			this.logger.warn("hwConstraint tag is removed from " + parentElement.getName()
+					+ " . Below is the content of hwConstraint object: \n" + xmlString);
 
 			/*- removing HWConstraint model element -> as there is no equivalent of it in AMALTHEA 0.8.0 version */
 			parentElement.removeContent(hwConstraintElement);

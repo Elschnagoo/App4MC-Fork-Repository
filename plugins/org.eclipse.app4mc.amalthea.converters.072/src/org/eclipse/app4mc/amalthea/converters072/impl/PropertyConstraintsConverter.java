@@ -39,14 +39,15 @@ public class PropertyConstraintsConverter extends AbstractConverter {
 
 	public PropertyConstraintsConverter() {
 		this.helper = HelperUtils_071_072.getInstance();
-		this.logger = LogManager.getLogger(this.getClass());
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
-		this.logger.info("Migration from 0.7.1 to 0.7.2 : Starting PropertyConstraints converter");
+		this.logger.info("Migration from 0.7.1 to 0.7.2 : Executing PropertyConstraints converter for model file : "
+				+ targetFile.getName());
 
 		this.caches = caches;
 
@@ -579,7 +580,7 @@ public class PropertyConstraintsConverter extends AbstractConverter {
 
 	/**
 	 * This method is used to verify if the HW Elements definition is present in the supplied input file
-	 * 
+	 *
 	 * @param elementName
 	 *            Name of the HW element (e.g: Core name or Memory name)
 	 * @param inputFile

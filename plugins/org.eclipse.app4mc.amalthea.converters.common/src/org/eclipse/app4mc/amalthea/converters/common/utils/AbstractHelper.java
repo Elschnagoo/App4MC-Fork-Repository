@@ -42,7 +42,7 @@ import com.google.common.io.Files;
 @SuppressWarnings("unchecked")
 public abstract class AbstractHelper {
 
-	public final Logger logger = LogManager.getLogger(this.getClass());
+	public final Logger logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 
 	public void addAdditionalNameSpace(final Element rootElement, final Namespace... namespaces) {
 

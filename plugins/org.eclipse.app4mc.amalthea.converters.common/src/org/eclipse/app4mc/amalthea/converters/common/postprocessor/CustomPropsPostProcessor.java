@@ -46,7 +46,7 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 	public CustomPropsPostProcessor() {
 	}
 
-	private final Logger logger = LogManager.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 
 	private AbstractHelper helper;
 

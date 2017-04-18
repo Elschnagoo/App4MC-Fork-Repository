@@ -14,6 +14,8 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters111.utils.HelperUtils_110_111;
@@ -24,14 +26,19 @@ import org.jdom2.Element;
 public class ConstraintsConverter implements IConverter {
 
 	private final HelperUtils_110_111 helper;
+	private final Logger logger;
 
 	public ConstraintsConverter() {
 		this.helper = HelperUtils_110_111.getInstance();
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
+
+		this.logger.info("Migration from itea.110 to itea.111 : Starting Constraints converter for model file : "
+				+ targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);
 
@@ -86,8 +93,8 @@ public class ConstraintsConverter implements IConverter {
 		xpathBuffer.append("(./constraints:ConstraintsModel/runnableSequencingConstraints[not(@orderType)])");
 
 
-		final List<Element> constraints = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
-				Element.class, this.helper.getNS_111("constraints"), this.helper.getGenericNS("xsi"));
+		final List<Element> constraints = this.helper.getXpathResult(rootElement, xpathBuffer.toString(), Element.class,
+				this.helper.getNS_111("constraints"), this.helper.getGenericNS("xsi"));
 
 
 		for (final Element constraint : constraints) {
@@ -107,12 +114,12 @@ public class ConstraintsConverter implements IConverter {
 
 		xpathBuffer.append("|");
 
-		xpathBuffer
-		.append("(./constraints:ConstraintsModel/runnableSequencingConstraints/runnableGroups[not(@groupingType)])");
+		xpathBuffer.append(
+				"(./constraints:ConstraintsModel/runnableSequencingConstraints/runnableGroups[not(@groupingType)])");
 
 
-		final List<Element> constraints = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
-				Element.class, this.helper.getNS_111("constraints"), this.helper.getGenericNS("xsi"));
+		final List<Element> constraints = this.helper.getXpathResult(rootElement, xpathBuffer.toString(), Element.class,
+				this.helper.getNS_111("constraints"), this.helper.getGenericNS("xsi"));
 
 
 		for (final Element constraint : constraints) {

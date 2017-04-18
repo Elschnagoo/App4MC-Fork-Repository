@@ -23,7 +23,7 @@ import org.jdom2.Element;
 /**
  * This class is responsible for converting the Mapping Model elements from 0.7.2 to 0.8.0 version format of AMALTHEA
  * model
- * 
+ *
  * @author mez2rng
  *
  */
@@ -32,14 +32,15 @@ public class MappingConverter extends AbstractConverter {
 
 	public MappingConverter() {
 		this.helper = HelperUtils_072_080.getInstance();
-		this.logger = LogManager.getLogger(this.getClass());
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
-		this.logger.info("Migration from 0.7.2 to 0.8.0 : Starting Mapping converter");
+		this.logger.info(
+				"Migration from 0.7.2 to 0.8.0 : Executing Mapping converter for model file : " + targetFile.getName());
 
 
 		final Document root = fileName_documentsMap.get(targetFile);
