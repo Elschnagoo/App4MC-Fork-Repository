@@ -68,8 +68,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -317,6 +319,22 @@ public class ModelMigrationDialog extends Dialog {
 		 * createButton(buttonsComposite, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
 		 * createButton(buttonsComposite, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
 		 */
+
+		/*- Added SWT.Modify listener to Checkbox (for selection of output model version) - this is work around for JFace databinding issue reported on MAC */
+		this.mig_model_version_combo.addListener(SWT.Modify, new Listener() {
+
+			@Override
+			public void handleEvent(final Event event) {
+
+				final String selection_outputModelVersion = ModelMigrationDialog.this.getMig_model_version_combo().getText();
+
+				if (selection_outputModelVersion != null && selection_outputModelVersion.length() > 0) {
+					getMigrationSettings().setMigrationModelVersion(selection_outputModelVersion);
+
+				}
+
+			}
+		});
 
 		this.mig_model_version_combo.addSelectionListener(new SelectionAdapter() {
 			@Override
