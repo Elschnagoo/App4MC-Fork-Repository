@@ -21,8 +21,11 @@ import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * The Prepartitioning performs activation aggregation, independent graph
@@ -30,19 +33,19 @@ import org.eclipse.jface.preference.IPreferenceStore;
  *
  */
 public class PartitioningHandler extends org.eclipse.core.commands.AbstractHandler {
-	
+
 	private IPreferenceStore store = PartitioningPlugin.getDefault().getPreferenceStore();
-	
+
 	public PartitioningHandler() {
-		store = PartitioningPlugin.getDefault().getPreferenceStore();
+		this.store = PartitioningPlugin.getDefault().getPreferenceStore();
 	}
-	
-	public PartitioningHandler(IPreferenceStore store) {
+
+	public PartitioningHandler(final IPreferenceStore store) {
 		this.store = store;
 	}
-	
+
 	public IPreferenceStore getPreferenceStore() {
-		return store;
+		return this.store;
 	}
 
 	@Override
@@ -50,7 +53,7 @@ public class PartitioningHandler extends org.eclipse.core.commands.AbstractHandl
 		final UniversalHandler uh = UniversalHandler.getInstance();
 		PartLog.getInstance().setLogName("PrePartitioning");
 
-		PartLog.getInstance().setEnableTargetConsoleLog(store.getBoolean(IParConstants.PRE_DEBUG));
+		PartLog.getInstance().setEnableTargetConsoleLog(this.store.getBoolean(IParConstants.PRE_DEBUG));
 
 		final IFile file = UniversalHandler.getInstance().getSelectedFile(event);
 		uh.dropCache();
@@ -58,8 +61,18 @@ public class PartitioningHandler extends org.eclipse.core.commands.AbstractHandl
 		Amalthea amodels = AmaltheaFactory.eINSTANCE.createAmalthea();
 		amodels = new Helper().setAllModels(amodels, uh);
 
-		final PartitioningJob part = new PartitioningJob("Partitioning", amodels, store, file);
+		final PartitioningJob part = new PartitioningJob("Partitioning", amodels, this.store, file);
 		part.schedule();
+
+		try {
+			part.join();
+		}
+		catch (final InterruptedException e) {
+			e.printStackTrace();
+		}
+		MessageDialog.openInformation(Display.getDefault().getActiveShell(), "Partitioning",
+				part.getResult().equals(Status.OK_STATUS) ? "Partitioning successful"
+						: "Partitioning failed. Please see console / error log for details.");
 
 		return null;
 	}
