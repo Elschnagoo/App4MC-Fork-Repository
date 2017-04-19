@@ -7509,7 +7509,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMemoryMapping_MemoryElementLinkInt() {
+	public EReference getMemoryMapping_AbstractElementLinkInt() {
 		return (EReference)memoryMappingEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -12438,7 +12438,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(memoryMappingEClass, MEMORY_MAPPING__ABSTRACT_ELEMENT);
 		createEReference(memoryMappingEClass, MEMORY_MAPPING__MEMORY);
 		createEAttribute(memoryMappingEClass, MEMORY_MAPPING__MEMORY_POSITION_ADDRESS);
-		createEReference(memoryMappingEClass, MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT);
+		createEReference(memoryMappingEClass, MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT);
 		createEReference(memoryMappingEClass, MEMORY_MAPPING__MEMORY_LINK_INT);
 
 		physicalSectionMappingEClass = createEClass(PHYSICAL_SECTION_MAPPING);
@@ -14166,7 +14166,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getMemoryMapping_AbstractElement(), this.getAbstractMemoryElement(), null, "abstractElement", null, 1, 1, MemoryMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryMapping_Memory(), this.getMemory(), null, "memory", null, 0, 1, MemoryMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMemoryMapping_MemoryPositionAddress(), theEcorePackage.getELong(), "memoryPositionAddress", "0", 0, 1, MemoryMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMemoryMapping_MemoryElementLinkInt(), this.getAbstractMemoryElement(), this.getAbstractMemoryElement_Mappings(), "memoryElementLinkInt", null, 0, 1, MemoryMapping.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemoryMapping_AbstractElementLinkInt(), this.getAbstractMemoryElement(), this.getAbstractMemoryElement_Mappings(), "abstractElementLinkInt", null, 0, 1, MemoryMapping.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryMapping_MemoryLinkInt(), this.getMemory(), this.getMemory_Mappings(), "memoryLinkInt", null, 0, 1, MemoryMapping.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(physicalSectionMappingEClass, PhysicalSectionMapping.class, "PhysicalSectionMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -14431,7 +14431,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(abstractMemoryElementEClass, AbstractMemoryElement.class, "AbstractMemoryElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAbstractMemoryElement_Size(), this.getDataSize(), null, "size", null, 0, 1, AbstractMemoryElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractMemoryElement_Mappings(), this.getMemoryMapping(), this.getMemoryMapping_MemoryElementLinkInt(), "mappings", null, 0, -1, AbstractMemoryElement.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractMemoryElement_Mappings(), this.getMemoryMapping(), this.getMemoryMapping_AbstractElementLinkInt(), "mappings", null, 0, -1, AbstractMemoryElement.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractProcessEClass, AbstractProcess.class, "AbstractProcess", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractProcess_Priority(), theEcorePackage.getEInt(), "priority", "0", 0, 1, AbstractProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

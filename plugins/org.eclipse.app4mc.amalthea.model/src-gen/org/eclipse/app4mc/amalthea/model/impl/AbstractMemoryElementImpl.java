@@ -162,7 +162,7 @@ public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl 
 	 */
 	public EList<MemoryMapping> getMappings() {
 		if (mappings == null) {
-			mappings = new EObjectWithInverseResolvingEList<MemoryMapping>(MemoryMapping.class, this, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS, AmaltheaPackage.MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT);
+			mappings = new EObjectWithInverseResolvingEList<MemoryMapping>(MemoryMapping.class, this, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS, AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT);
 		}
 		return mappings;
 	}

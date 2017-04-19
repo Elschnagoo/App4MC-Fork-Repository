@@ -68,7 +68,7 @@ public interface AbstractMemoryElement extends ReferableBaseObject, ITaggable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mappings</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractMemoryElement_Mappings()
-	 * @model opposite="memoryElementLinkInt" transient="true" suppressedSetVisibility="true"
+	 * @model opposite="abstractElementLinkInt" transient="true" suppressedSetVisibility="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */

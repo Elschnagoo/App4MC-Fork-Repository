@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryMappingImpl#getAbstractElement <em>Abstract Element</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryMappingImpl#getMemory <em>Memory</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryMappingImpl#getMemoryPositionAddress <em>Memory Position Address</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryMappingImpl#getMemoryElementLinkInt <em>Memory Element Link Int</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryMappingImpl#getAbstractElementLinkInt <em>Abstract Element Link Int</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryMappingImpl#getMemoryLinkInt <em>Memory Link Int</em>}</li>
  * </ul>
  *
@@ -84,14 +84,14 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 	protected long memoryPositionAddress = MEMORY_POSITION_ADDRESS_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getMemoryElementLinkInt() <em>Memory Element Link Int</em>}' reference.
+	 * The cached value of the '{@link #getAbstractElementLinkInt() <em>Abstract Element Link Int</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMemoryElementLinkInt()
+	 * @see #getAbstractElementLinkInt()
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractMemoryElement memoryElementLinkInt;
+	protected AbstractMemoryElement abstractElementLinkInt;
 
 	/**
 	 * The cached value of the '{@link #getMemoryLinkInt() <em>Memory Link Int</em>}' reference.
@@ -158,6 +158,8 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 		abstractElement = newAbstractElement;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT, oldAbstractElement, abstractElement));
+ 		//Additional setting transient value for transient bi-directional reference
+ 		setAbstractElementLinkInt(newAbstractElement);
 	}
 
 	/**
@@ -226,16 +228,16 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractMemoryElement getMemoryElementLinkInt() {
-		if (memoryElementLinkInt != null && memoryElementLinkInt.eIsProxy()) {
-			InternalEObject oldMemoryElementLinkInt = (InternalEObject)memoryElementLinkInt;
-			memoryElementLinkInt = (AbstractMemoryElement)eResolveProxy(oldMemoryElementLinkInt);
-			if (memoryElementLinkInt != oldMemoryElementLinkInt) {
+	public AbstractMemoryElement getAbstractElementLinkInt() {
+		if (abstractElementLinkInt != null && abstractElementLinkInt.eIsProxy()) {
+			InternalEObject oldAbstractElementLinkInt = (InternalEObject)abstractElementLinkInt;
+			abstractElementLinkInt = (AbstractMemoryElement)eResolveProxy(oldAbstractElementLinkInt);
+			if (abstractElementLinkInt != oldAbstractElementLinkInt) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT, oldMemoryElementLinkInt, memoryElementLinkInt));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT, oldAbstractElementLinkInt, abstractElementLinkInt));
 			}
 		}
-		return memoryElementLinkInt;
+		return abstractElementLinkInt;
 	}
 
 	/**
@@ -243,8 +245,8 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractMemoryElement basicGetMemoryElementLinkInt() {
-		return memoryElementLinkInt;
+	public AbstractMemoryElement basicGetAbstractElementLinkInt() {
+		return abstractElementLinkInt;
 	}
 
 	/**
@@ -252,11 +254,11 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetMemoryElementLinkInt(AbstractMemoryElement newMemoryElementLinkInt, NotificationChain msgs) {
-		AbstractMemoryElement oldMemoryElementLinkInt = memoryElementLinkInt;
-		memoryElementLinkInt = newMemoryElementLinkInt;
+	public NotificationChain basicSetAbstractElementLinkInt(AbstractMemoryElement newAbstractElementLinkInt, NotificationChain msgs) {
+		AbstractMemoryElement oldAbstractElementLinkInt = abstractElementLinkInt;
+		abstractElementLinkInt = newAbstractElementLinkInt;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT, oldMemoryElementLinkInt, newMemoryElementLinkInt);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT, oldAbstractElementLinkInt, newAbstractElementLinkInt);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -267,18 +269,18 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMemoryElementLinkInt(AbstractMemoryElement newMemoryElementLinkInt) {
-		if (newMemoryElementLinkInt != memoryElementLinkInt) {
+	public void setAbstractElementLinkInt(AbstractMemoryElement newAbstractElementLinkInt) {
+		if (newAbstractElementLinkInt != abstractElementLinkInt) {
 			NotificationChain msgs = null;
-			if (memoryElementLinkInt != null)
-				msgs = ((InternalEObject)memoryElementLinkInt).eInverseRemove(this, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS, AbstractMemoryElement.class, msgs);
-			if (newMemoryElementLinkInt != null)
-				msgs = ((InternalEObject)newMemoryElementLinkInt).eInverseAdd(this, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS, AbstractMemoryElement.class, msgs);
-			msgs = basicSetMemoryElementLinkInt(newMemoryElementLinkInt, msgs);
+			if (abstractElementLinkInt != null)
+				msgs = ((InternalEObject)abstractElementLinkInt).eInverseRemove(this, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS, AbstractMemoryElement.class, msgs);
+			if (newAbstractElementLinkInt != null)
+				msgs = ((InternalEObject)newAbstractElementLinkInt).eInverseAdd(this, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS, AbstractMemoryElement.class, msgs);
+			msgs = basicSetAbstractElementLinkInt(newAbstractElementLinkInt, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT, newMemoryElementLinkInt, newMemoryElementLinkInt));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT, newAbstractElementLinkInt, newAbstractElementLinkInt));
 	}
 
 	/**
@@ -349,10 +351,10 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT:
-				if (memoryElementLinkInt != null)
-					msgs = ((InternalEObject)memoryElementLinkInt).eInverseRemove(this, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS, AbstractMemoryElement.class, msgs);
-				return basicSetMemoryElementLinkInt((AbstractMemoryElement)otherEnd, msgs);
+			case AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT:
+				if (abstractElementLinkInt != null)
+					msgs = ((InternalEObject)abstractElementLinkInt).eInverseRemove(this, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS, AbstractMemoryElement.class, msgs);
+				return basicSetAbstractElementLinkInt((AbstractMemoryElement)otherEnd, msgs);
 			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_LINK_INT:
 				if (memoryLinkInt != null)
 					msgs = ((InternalEObject)memoryLinkInt).eInverseRemove(this, AmaltheaPackage.MEMORY__MAPPINGS, Memory.class, msgs);
@@ -369,8 +371,8 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT:
-				return basicSetMemoryElementLinkInt(null, msgs);
+			case AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT:
+				return basicSetAbstractElementLinkInt(null, msgs);
 			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_LINK_INT:
 				return basicSetMemoryLinkInt(null, msgs);
 		}
@@ -393,9 +395,9 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 				return basicGetMemory();
 			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_POSITION_ADDRESS:
 				return getMemoryPositionAddress();
-			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT:
-				if (resolve) return getMemoryElementLinkInt();
-				return basicGetMemoryElementLinkInt();
+			case AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT:
+				if (resolve) return getAbstractElementLinkInt();
+				return basicGetAbstractElementLinkInt();
 			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_LINK_INT:
 				if (resolve) return getMemoryLinkInt();
 				return basicGetMemoryLinkInt();
@@ -420,8 +422,8 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_POSITION_ADDRESS:
 				setMemoryPositionAddress((Long)newValue);
 				return;
-			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT:
-				setMemoryElementLinkInt((AbstractMemoryElement)newValue);
+			case AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT:
+				setAbstractElementLinkInt((AbstractMemoryElement)newValue);
 				return;
 			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_LINK_INT:
 				setMemoryLinkInt((Memory)newValue);
@@ -447,8 +449,8 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_POSITION_ADDRESS:
 				setMemoryPositionAddress(MEMORY_POSITION_ADDRESS_EDEFAULT);
 				return;
-			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT:
-				setMemoryElementLinkInt((AbstractMemoryElement)null);
+			case AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT:
+				setAbstractElementLinkInt((AbstractMemoryElement)null);
 				return;
 			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_LINK_INT:
 				setMemoryLinkInt((Memory)null);
@@ -471,8 +473,8 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 				return memory != null;
 			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_POSITION_ADDRESS:
 				return memoryPositionAddress != MEMORY_POSITION_ADDRESS_EDEFAULT;
-			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT:
-				return memoryElementLinkInt != null;
+			case AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT:
+				return abstractElementLinkInt != null;
 			case AmaltheaPackage.MEMORY_MAPPING__MEMORY_LINK_INT:
 				return memoryLinkInt != null;
 		}

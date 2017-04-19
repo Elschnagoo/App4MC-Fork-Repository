@@ -13091,13 +13091,13 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY_MAPPING__MEMORY_POSITION_ADDRESS = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Memory Element Link Int</b></em>' reference.
+	 * The feature id for the '<em><b>Abstract Element Link Int</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEMORY_MAPPING__MEMORY_ELEMENT_LINK_INT = BASE_OBJECT_FEATURE_COUNT + 3;
+	int MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT = BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Memory Link Int</b></em>' reference.
@@ -29310,15 +29310,15 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getMemoryMapping_MemoryPositionAddress();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.MemoryMapping <em>Memory Element Link Int</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.MemoryMapping <em>Abstract Element Link Int</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Memory Element Link Int</em>'.
+	 * @return the meta object for the reference '<em>Abstract Element Link Int</em>'.
 	 * @see org.eclipse.app4mc.amalthea.model.MemoryMapping
 	 * @see #getMemoryMapping()
 	 * @generated
 	 */
-	EReference getMemoryMapping_MemoryElementLinkInt();
+	EReference getMemoryMapping_AbstractElementLinkInt();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.MemoryMapping <em>Memory Link Int</em>}'.
