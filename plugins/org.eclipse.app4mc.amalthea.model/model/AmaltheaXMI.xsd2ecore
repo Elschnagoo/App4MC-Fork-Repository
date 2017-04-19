@@ -1650,7 +1650,9 @@
       <nested inputs="amalthea.xcore#/EPackage/InterProcess/counter" outputs="AmaltheaXMI.xsd#//InterProcess;XSDComplexTypeDefinition=229/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/InterProcess" outputs="AmaltheaXMI.xsd#//InterProcess;XSDElementDeclaration=229"/>
-    <nested inputs="amalthea.xcore#/EPackage/Sporadic" outputs="AmaltheaXMI.xsd#//Sporadic;XSDComplexTypeDefinition=230"/>
+    <nested inputs="amalthea.xcore#/EPackage/Sporadic" outputs="AmaltheaXMI.xsd#//Sporadic;XSDComplexTypeDefinition=230">
+      <nested inputs="amalthea.xcore#/EPackage/Sporadic/description" outputs="AmaltheaXMI.xsd#//Sporadic;XSDComplexTypeDefinition=230/XSDAttributeUse"/>
+    </nested>
     <nested inputs="amalthea.xcore#/EPackage/Sporadic" outputs="AmaltheaXMI.xsd#//Sporadic;XSDElementDeclaration=230"/>
     <nested inputs="amalthea.xcore#/EPackage/EventStimulus" outputs="AmaltheaXMI.xsd#//EventStimulus;XSDComplexTypeDefinition=231">
       <nested inputs="amalthea.xcore#/EPackage/EventStimulus/trigger" outputs="AmaltheaXMI.xsd#//EventStimulus;XSDComplexTypeDefinition=231/XSDAttributeUse"/>
@@ -2095,6 +2097,8 @@
     <nested inputs="amalthea.xcore#/EPackage/PeriodicActivation" outputs="AmaltheaXMI.xsd#//PeriodicActivation;XSDElementDeclaration=308"/>
     <nested inputs="amalthea.xcore#/EPackage/SporadicActivation" outputs="AmaltheaXMI.xsd#//SporadicActivation;XSDComplexTypeDefinition=309">
       <nested inputs="amalthea.xcore#/EPackage/SporadicActivation/description" outputs="AmaltheaXMI.xsd#//SporadicActivation;XSDComplexTypeDefinition=309/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/SporadicActivation/activationDeviation"
+          outputs="AmaltheaXMI.xsd#//SporadicActivation;XSDComplexTypeDefinition=309/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/SporadicActivation" outputs="AmaltheaXMI.xsd#//SporadicActivation;XSDElementDeclaration=309"/>
     <nested inputs="amalthea.xcore#/EPackage/SingleActivation" outputs="AmaltheaXMI.xsd#//SingleActivation;XSDComplexTypeDefinition=310">

@@ -16862,13 +16862,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SPORADIC__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPORADIC__DESCRIPTION = STIMULUS_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Sporadic</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPORADIC_FEATURE_COUNT = STIMULUS_FEATURE_COUNT + 0;
+	int SPORADIC_FEATURE_COUNT = STIMULUS_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -23070,13 +23079,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SPORADIC_ACTIVATION__DESCRIPTION = ACTIVATION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Activation Deviation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPORADIC_ACTIVATION__ACTIVATION_DEVIATION = ACTIVATION_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Sporadic Activation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPORADIC_ACTIVATION_FEATURE_COUNT = ACTIVATION_FEATURE_COUNT + 1;
+	int SPORADIC_ACTIVATION_FEATURE_COUNT = ACTIVATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -30972,6 +30990,17 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getSporadic();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Sporadic#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Sporadic#getDescription()
+	 * @see #getSporadic()
+	 * @generated
+	 */
+	EAttribute getSporadic_Description();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.EventStimulus <em>Event Stimulus</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -33631,6 +33660,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSporadicActivation_Description();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.SporadicActivation#getActivationDeviation <em>Activation Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Activation Deviation</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.SporadicActivation#getActivationDeviation()
+	 * @see #getSporadicActivation()
+	 * @generated
+	 */
+	EReference getSporadicActivation_ActivationDeviation();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SingleActivation <em>Single Activation</em>}'.

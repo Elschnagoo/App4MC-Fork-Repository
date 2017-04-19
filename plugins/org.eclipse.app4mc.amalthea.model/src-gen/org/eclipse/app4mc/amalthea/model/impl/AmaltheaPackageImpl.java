@@ -8913,6 +8913,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSporadic_Description() {
+		return (EAttribute)sporadicEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEventStimulus() {
 		return eventStimulusEClass;
 	}
@@ -11154,6 +11163,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSporadicActivation_ActivationDeviation() {
+		return (EReference)sporadicActivationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSingleActivation() {
 		return singleActivationEClass;
 	}
@@ -12648,6 +12666,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(interProcessEClass, INTER_PROCESS__COUNTER);
 
 		sporadicEClass = createEClass(SPORADIC);
+		createEAttribute(sporadicEClass, SPORADIC__DESCRIPTION);
 
 		eventStimulusEClass = createEClass(EVENT_STIMULUS);
 		createEReference(eventStimulusEClass, EVENT_STIMULUS__TRIGGER);
@@ -12976,6 +12995,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		sporadicActivationEClass = createEClass(SPORADIC_ACTIVATION);
 		createEAttribute(sporadicActivationEClass, SPORADIC_ACTIVATION__DESCRIPTION);
+		createEReference(sporadicActivationEClass, SPORADIC_ACTIVATION__ACTIVATION_DEVIATION);
 
 		singleActivationEClass = createEClass(SINGLE_ACTIVATION);
 		createEReference(singleActivationEClass, SINGLE_ACTIVATION__MIN);
@@ -14379,6 +14399,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getInterProcess_Counter(), this.getCounter(), null, "counter", null, 0, 1, InterProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sporadicEClass, Sporadic.class, "Sporadic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSporadic_Description(), theEcorePackage.getEString(), "description", null, 0, 1, Sporadic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventStimulusEClass, EventStimulus.class, "EventStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEventStimulus_Trigger(), this.getTriggerEvent(), null, "trigger", null, 1, 1, EventStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14729,6 +14750,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(sporadicActivationEClass, SporadicActivation.class, "SporadicActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSporadicActivation_Description(), theEcorePackage.getEString(), "description", null, 0, 1, SporadicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(this.getDeviation());
+		g2 = createEGenericType(this.getTime());
+		g1.getETypeArguments().add(g2);
+		initEReference(getSporadicActivation_ActivationDeviation(), g1, null, "activationDeviation", null, 0, 1, SporadicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(singleActivationEClass, SingleActivation.class, "SingleActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSingleActivation_Min(), this.getTime(), null, "min", null, 0, 1, SingleActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

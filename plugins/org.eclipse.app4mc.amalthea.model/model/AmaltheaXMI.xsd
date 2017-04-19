@@ -3926,7 +3926,9 @@ triggerTimes: the list of all trigger times</xsd:documentation>
       <xsd:documentation>Stimulus for sporadic activation of task</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:Stimulus"/>
+      <xsd:extension base="am:Stimulus">
+        <xsd:attribute name="description" type="xsd:string"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Sporadic" type="am:Sporadic">
@@ -5323,6 +5325,9 @@ Used for first definition of an activation rate, which is later refined by stimu
   <xsd:complexType name="SporadicActivation">
     <xsd:complexContent>
       <xsd:extension base="am:Activation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="activationDeviation" type="am:Deviation"/>
+        </xsd:choice>
         <xsd:attribute name="description" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>

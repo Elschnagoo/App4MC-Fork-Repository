@@ -2422,6 +2422,7 @@ class InterProcess extends Stimulus
  */
 class Sporadic extends Stimulus
 {
+	String description
 }
 
 /*
@@ -3378,6 +3379,7 @@ class PeriodicActivation extends Activation
 class SporadicActivation extends Activation
 {
 	String description
+	contains Deviation<Time> activationDeviation
 }
 
 /*
