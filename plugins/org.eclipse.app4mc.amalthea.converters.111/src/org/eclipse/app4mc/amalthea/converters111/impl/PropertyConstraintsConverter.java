@@ -37,7 +37,7 @@ public class PropertyConstraintsConverter implements IConverter {
 			final List<ICache> caches) throws Exception {
 
 		this.logger
-				.info("Migration from itea.110 to itea.111 : Starting PropertyConstraints converter for model file : "
+				.info("Migration from itea.110 to itea.111 : Executing PropertyConstraints converter for model file : "
 						+ targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);

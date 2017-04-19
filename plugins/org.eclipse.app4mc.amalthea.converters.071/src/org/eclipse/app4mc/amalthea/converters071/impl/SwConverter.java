@@ -55,8 +55,8 @@ public class SwConverter implements IConverter {
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
-		this.logger
-				.info("Migration from 0.7.0 to 0.7.1 : Starting Sw converter for model file : " + targetFile.getName());
+		this.logger.info(
+				"Migration from 0.7.0 to 0.7.1 : Executing Sw converter for model file : " + targetFile.getName());
 
 		this.caches = caches;
 

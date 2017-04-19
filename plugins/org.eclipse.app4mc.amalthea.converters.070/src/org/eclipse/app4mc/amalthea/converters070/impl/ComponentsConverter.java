@@ -39,7 +39,7 @@ public class ComponentsConverter implements IConverter {
 			final List<ICache> caches) throws Exception {
 
 
-		this.logger.info("Migration from itea.111 to 0.7.0 : Starting Components converter for model file : "
+		this.logger.info("Migration from itea.111 to 0.7.0 : Executing Components converter for model file : "
 				+ targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);

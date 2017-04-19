@@ -50,7 +50,7 @@ public class StimuliConverter implements IConverter {
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
-		this.logger.info("Migration from itea.110 to itea.111 : Starting Stimuli converter for model file : "
+		this.logger.info("Migration from itea.110 to itea.111 : Executing Stimuli converter for model file : "
 				+ targetFile.getName());
 
 		this.caches = caches;
@@ -237,7 +237,7 @@ public class StimuliConverter implements IConverter {
 					contains resolving LabelValueList disablingLabelsList
 				}
 		 *
-
+		
 		 *
 		 * But in 1.1.1,
 		 *
@@ -248,7 +248,7 @@ public class StimuliConverter implements IConverter {
 					contains resolving ModeValueList enablingModeValueList
 					contains resolving ModeValueList disablingModeValueList
 				}
-
+		
 		 *Following variable references are changed to :
 		 *
 		 *setLabelsList ->setModeValueList

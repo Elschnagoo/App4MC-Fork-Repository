@@ -54,6 +54,7 @@ public class CommonElementsConverter extends AbstractConverter {
 	 */
 	private void updateCommonElements(final Element rootElement) {
 
+
 		final StringBuffer xpathBuffer = new StringBuffer();
 
 		xpathBuffer.append("./componentsModel/tags");
@@ -66,6 +67,9 @@ public class CommonElementsConverter extends AbstractConverter {
 				this.helper.getGenericNS("xsi"));
 
 		if (tagElements.size() > 0) {
+
+			this.logger.warn(
+					"Tag element's from Components Model, HW Model, SW Model are shifted to CommonElements model");
 
 			Element commonElements = rootElement.getChild("commonElements");
 

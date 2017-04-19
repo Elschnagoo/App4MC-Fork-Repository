@@ -36,7 +36,7 @@ public class CentralConverter implements IConverter {
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
-		this.logger.info("Migration from itea.103 to itea.110 : Starting Central converter for model file : "
+		this.logger.info("Migration from itea.103 to itea.110 : Executing Central converter for model file : "
 				+ targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);

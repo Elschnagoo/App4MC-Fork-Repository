@@ -54,8 +54,8 @@ public class SwConverter implements IConverter {
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
-		this.logger.info(
-				"Migration from itea.110 to itea.111 : Starting SW converter for model file : " + targetFile.getName());
+		this.logger.info("Migration from itea.110 to itea.111 : Executing SW converter for model file : "
+				+ targetFile.getName());
 
 		this.targetFile = targetFile;
 

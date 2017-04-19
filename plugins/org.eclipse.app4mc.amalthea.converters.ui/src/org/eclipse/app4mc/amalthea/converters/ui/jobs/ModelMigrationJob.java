@@ -62,7 +62,7 @@ public class ModelMigrationJob extends Job {
 	@Override
 	protected IStatus run(final IProgressMonitor monitor) {
 
-		final SubMonitor subMonitor = SubMonitor.convert(monitor, 5);
+		final SubMonitor subMonitor = SubMonitor.convert(monitor, 8);
 
 		subMonitor.setTaskName("Collecting information for intermediate migration steps");
 

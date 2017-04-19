@@ -153,7 +153,7 @@ public class BulkXpathOperation {
 
 			for (final String string : keySet) {
 
-				this.logger.info("Xpath Fragment : " + string + "associated Xpath chunk :  "
+				this.logger.trace("Xpath Fragment : " + string + "associated Xpath chunk :  "
 						+ fragmentsMap.get(string).getValue());
 
 			}
@@ -178,7 +178,7 @@ public class BulkXpathOperation {
 
 						resultsMap.put(xpath, xmlElements);
 
-						this.logger.info("xpath : " + xpath + " elements : " + xmlElements.size());
+						this.logger.trace("xpath : " + xpath + " elements : " + xmlElements.size());
 					}
 				}
 			}

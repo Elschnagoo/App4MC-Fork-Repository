@@ -64,7 +64,7 @@ public class RootElementConverter implements IConverter {
 		 */
 
 
-		this.logger.info("Migration from 0.7.0 to 0.7.1 : Starting \"Root Element Converter\" for model file : "
+		this.logger.info("Migration from 0.7.0 to 0.7.1 : Executing \"Root Element Converter\" for model file : "
 				+ targetFile.getName());
 
 		final Document document = fileName_documentsMap.get(targetFile);

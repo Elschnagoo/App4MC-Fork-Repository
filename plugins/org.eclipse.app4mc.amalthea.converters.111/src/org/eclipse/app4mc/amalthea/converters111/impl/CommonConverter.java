@@ -36,7 +36,7 @@ public class CommonConverter implements IConverter {
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
-		this.logger.info("Migration from itea.110 to itea.111 : Starting Common converter for model file : "
+		this.logger.info("Migration from itea.110 to itea.111 : Executing Common converter for model file : "
 				+ targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);
@@ -124,7 +124,7 @@ public class CommonConverter implements IConverter {
 		 * DataAgeTime->maximumTime                                     ClockTriangleFunction -> period
 		 * AbstractProcess -> deadline (removeed in 1.1.1)              ClockSinusFunction -> period
 		 * Runnable -> deadline                                         ClockMultiplierListEntry -> time
-
+		
 		 */
 
 

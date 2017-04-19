@@ -37,7 +37,7 @@ public class ConstraintsConverter implements IConverter {
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
-		this.logger.info("Migration from itea.110 to itea.111 : Starting Constraints converter for model file : "
+		this.logger.info("Migration from itea.110 to itea.111 : Executing Constraints converter for model file : "
 				+ targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);

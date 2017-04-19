@@ -405,7 +405,7 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 			if (key != null) {
 
 				// TODO: log info/warning message using logger
-				this.logger.info("Value of CustomProperty  : " + key
+				this.logger.warn("Value of CustomProperty  : " + key
 						+ " is removed (as it is not inheriting RefereableBaseObject)");
 			}
 

@@ -50,7 +50,7 @@ public class SchedulerRefsConverter implements IConverter {
 			final List<ICache> caches) throws Exception {
 
 		this.logger
-				.info("Migration from itea.103 to itea.110 : Starting OS model (SchedulerRefs) converter for model file : "
+				.info("Migration from itea.103 to itea.110 : Executing OS model (SchedulerRefs) converter for model file : "
 						+ targetFile.getName());
 
 		for (final ICache cache : this.getFilteredCaches(caches, SchedulerCacheBuilder.class)) {
@@ -85,7 +85,7 @@ public class SchedulerRefsConverter implements IConverter {
 
 					final String updated_uriFragment = this.helper.getURIFragment(element, ModelVersion._110);
 
-					this.logger.info(uriFragment + " : : " + element + " : : " + updated_uriFragment);
+					this.logger.trace(uriFragment + " : : " + element + " : : " + updated_uriFragment);
 
 					final List<Attribute> list = uriFragment_attribs_map.get(uriFragment);
 
