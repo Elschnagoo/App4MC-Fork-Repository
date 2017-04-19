@@ -54,12 +54,43 @@ public class StimuliConverter extends AbstractConverter {
 
 		update_SignedTime(rootElement);
 
+		update_SignedTimeObject(rootElement);
+
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
 	}
 
 
 	/**
+	 * Below migration is for the metamodel change : SignedTimeObject class is removed -> instead of it TimeObject class
+	 * is used
+	 *
+	 * For details w.r.t. metamodel change, see : Bug 514334
+	 *
+	 * @param rootElement
+	 */
+	private void update_SignedTimeObject(final Element rootElement) {
+
+
+		final StringBuffer xpathBuffer = new StringBuffer();
+
+		xpathBuffer.append(".//customProperties//@xsi:type[.=\"am:SignedTimeObject\"]");
+
+
+		final List<Attribute> types = this.helper.getXpathResult(rootElement, xpathBuffer.toString(), Attribute.class,
+				this.helper.getGenericNS("xsi"));
+
+
+		for (final Attribute signedTimeObjectAttribute : types) {
+			signedTimeObjectAttribute.setValue("am:TimeObject");
+		}
+
+
+	}
+
+	/**
 	 * Below migration is for the metamodel change : SignedTime class is removed -> instead of it Time class is used
+	 *
+	 * For details w.r.t. metamodel change, see : Bug 514334
 	 *
 	 * @param rootElement
 	 */
