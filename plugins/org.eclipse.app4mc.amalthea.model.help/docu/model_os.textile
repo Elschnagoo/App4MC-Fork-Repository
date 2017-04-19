@@ -66,17 +66,35 @@ h4. ISR Overhead
 h4. API Overhead
 
 There exists also an overhead for API calls. The following API calls are considered:
+
 * API Activate Task: Runtime overhead for the activation of a task or ISR by another task or ISR (inside the activating process)
 * API Terminate Task: Runtime for explicit task termination call (inside a task)
+
 * API Schedule: Runtime for task scheduling (on scheduling request)
+
 * API Request Resource: Runtime overhead for requesting a semaphore (inside a runnable)
 * API Release Resource: Runtime overhead for releasing a semaphore (inside a runnable)
+
 * API Set Event: Runtime overhead for requesting an OS event (inside a task or ISR)
 * API Wait Event: Runtime overhead for waiting for an OS event (inside a task or ISR)
 * API Clear Event: Runtime overhead for clearing an OS event (inside a task or ISR)
-* API Send Message: Runtime overhead for activating another process on another core or setting a event for a process on another core (inside a task or ISR) 
-* API Enforced Migration: Runtime overhead for migrating from one scheduler to another scheduler (inside a task or ISR)
 
+* API Send Message: Runtime overhead for cross-core process activation or event (inside a task or ISR) 
+* API Enforced Migration: Runtime overhead for migrating from one scheduler to another scheduler (inside a task or ISR)
+           
+* API Suspend OsInterrupts
+* API Resume OsInterrupts
+
+* API Request Spinlock
+* API Release Spinlock
+
+* API SenderReceiver Read
+* API SenderReceiver Write
+
+* API SynchronousServerCallPoint
+
+* API IOC Read
+* API IOC Write
 
 h3(#os-data-consistency). OS Data Consistency
 

@@ -3,13 +3,20 @@ h2. Common Model
 
 The AMALTHEA common model is not a model by itself, but provides standard elements used by other models as containments.
 
+
 h3. Common Elements
 
 !../pictures/model_common_elements.png!
 
+
 h3(#common-tags). Tags
 
 !../pictures/model_common_tag.png!
+
+
+h3(#common-classifiers). Classifiers
+
+!../pictures/model_common_classifier.png!
 
 
 h3(#common-custom-props). Custom Properties
@@ -27,8 +34,8 @@ The __ListObject__ can be used to store multi-valued custom properties.
 
 h3. Time (and Time Unit)
 
-The AMALTHEA data model includes two common elements to describe time ranges in an easy way, the __Time__ and __SignedTime__ element. The __SignedTime__ is like the general __Time__ class but explicit allows defining negative time values.
-These elements can be referenced by any other element for specifying attributes to store time information.
+The AMALTHEA data model includes a common element to describe time ranges in an easy way, the __Time__ element. The __Time__ class in general allows to define negative time values. If only positive values are expected the AMALTHEA validation will show a warning.
+The __Time__ element can be referred by any other element for specifying attributes to store time information.
 Time units are needed to describe different timing behavior and requirements, like deadlines or offsets of components.
 To support different time ranges, especially different time units, AMALTHEA predefines these types like seconds, milli-seconds, micro-seconds,  nano-seconds or pico-seconds.
 
