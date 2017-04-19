@@ -62,11 +62,9 @@ public class ModelMigrationJob extends Job {
 	@Override
 	protected IStatus run(final IProgressMonitor monitor) {
 
-		final SubMonitor subMonitor = SubMonitor.convert(monitor, 8);
 
-		subMonitor.setTaskName("Collecting information for intermediate migration steps");
+		monitor.setTaskName("Collecting information for intermediate migration steps");
 
-		subMonitor.worked(1);
 
 		final String inputModelVersion = this.migrationSettings.getInputModelVersion();
 
@@ -76,6 +74,10 @@ public class ModelMigrationJob extends Job {
 
 		final List<Entry<String, String>> migStepEntries = generateMigrationSteps(inputModelVersion,
 				outputModelVersion);
+
+		final SubMonitor subMonitor = SubMonitor.convert(monitor, migStepEntries.size() + 3);
+
+		subMonitor.worked(1);
 
 		if (migStepEntries.size() == 0) {
 			return new Status(IStatus.CANCEL, " org.eclipse.app4mc.amalthea.converters.ui",
