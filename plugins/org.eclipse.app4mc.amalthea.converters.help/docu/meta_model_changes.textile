@@ -371,9 +371,8 @@ table(classic){margin-left:40px}.
 table(classic){margin-left:40px}. 
 | *_Class Name (version APP4MC 0.7.2)_* | *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |ModeValueProvider (Interface)|SW Model|Content present inside ModeValueProvider class is moved to ModeLabel. Reference to Mode element is made as derived variable, and it automatically populated based on the selection of ModeLiteral.|
-|SignedTimeObject|SW Model|Equivalent of this element is TimeObject (which extends Time) in APP4MC 0.8.0. There is no change in the storage format.|
+|SignedTimeObject|SW Model|Equivalent of this element is TimeObject in APP4MC 0.8.0. There is no change in the storage format.|
 |SignedTime|SW Model|Equivalent of this element is Time in APP4MC 0.8.0. There is no change in the storage format.|
-|AbstractTime|SW Model|Time class is equivalent of this model element in APP4MC 0.8.0. There is no change in the storage format.|
 |Mapping|Mapping Model|This interface is removed from the model. MemoryMapping is equivalent of this model element in APP4MC 0.8.0. As a part of model migration type attribute is removed from the tag which is defining MemoryMapping.|
 |AbstractElementMapping|Mapping Model|MemoryMapping is equivalent of this model element in APP4MC 0.8.0. As a part of model migration type attribute is removed from the tag which is defining MemoryMapping.|
 |AbstractElementMemoryInformation|HW Model|AbstractMemoryElement is the equivalent of this model element in APP4MC 0.8.0. There is no change in the storage format.|
