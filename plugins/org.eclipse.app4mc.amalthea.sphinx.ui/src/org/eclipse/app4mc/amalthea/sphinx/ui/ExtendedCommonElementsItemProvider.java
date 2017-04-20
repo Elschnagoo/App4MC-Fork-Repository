@@ -23,6 +23,8 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.provider.CommonElementsItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.common.container.CoreClassifiersIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.common.container.MemoryClassifiersIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.common.container.TagsIP;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandWrapper;
@@ -35,10 +37,26 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 public class ExtendedCommonElementsItemProvider extends CommonElementsItemProvider {
 
+	protected CoreClassifiersIP coreClassifiersIP;
+	protected MemoryClassifiersIP memoryClassifiersIP;
 	protected TagsIP tagsIP;
-
+	
 	public ExtendedCommonElementsItemProvider(final AdapterFactory adapterFactory) {
 		super(adapterFactory);
+	}
+
+	public Object getCoreClassifiers(final CommonElements owner) {
+		if (this.coreClassifiersIP == null) {
+			this.coreClassifiersIP = new CoreClassifiersIP(this.adapterFactory, owner);
+		}
+		return this.coreClassifiersIP;
+	}
+
+	public Object getMemoryClassifiers(final CommonElements owner) {
+		if (this.memoryClassifiersIP == null) {
+			this.memoryClassifiersIP = new MemoryClassifiersIP(this.adapterFactory, owner);
+		}
+		return this.memoryClassifiersIP;
 	}
 
 	public Object getTags(final CommonElements owner) {
@@ -51,7 +69,9 @@ public class ExtendedCommonElementsItemProvider extends CommonElementsItemProvid
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
 		super.getChildrenFeatures(object);
-		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getCommonElements_Tags()); // SW_MODEL__TAGS
+		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getCommonElements_CoreClassifiers());
+		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getCommonElements_MemoryClassifiers());
+		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getCommonElements_Tags());
 		return this.childrenFeatures;
 	}
 
@@ -59,6 +79,8 @@ public class ExtendedCommonElementsItemProvider extends CommonElementsItemProvid
 	public Collection<?> getChildren(final Object object) {
 		final List<Object> children = new ArrayList<Object>(super.getChildren(object));
 		final CommonElements commonElements = (CommonElements) object;
+		children.add(getCoreClassifiers(commonElements));
+		children.add(getMemoryClassifiers(commonElements));
 		children.add(getTags(commonElements));
 		return children;
 	}
@@ -77,13 +99,21 @@ public class ExtendedCommonElementsItemProvider extends CommonElementsItemProvid
 
 	protected Command createWrappedCommand(final Command command, final EObject owner,
 			final EStructuralFeature feature) {
-		if (feature.getFeatureID() == AmaltheaPackage.COMMON_ELEMENTS__TAGS) {
+		if (feature.getFeatureID() == AmaltheaPackage.COMMON_ELEMENTS__CORE_CLASSIFIERS
+				|| feature.getFeatureID() == AmaltheaPackage.COMMON_ELEMENTS__MEMORY_CLASSIFIERS
+				|| feature.getFeatureID() == AmaltheaPackage.COMMON_ELEMENTS__TAGS) {
 			return new CommandWrapper(command) {
 				@Override
 				public Collection<?> getAffectedObjects() {
 					Collection<?> affected = super.getAffectedObjects();
 					if (affected.contains(owner)) {
-						if (feature.getFeatureID() == AmaltheaPackage.COMMON_ELEMENTS__TAGS) {
+						if (feature.getFeatureID() == AmaltheaPackage.COMMON_ELEMENTS__CORE_CLASSIFIERS) {
+							affected = Collections.singleton(getCoreClassifiers((CommonElements) owner));
+						}
+						else if (feature.getFeatureID() == AmaltheaPackage.COMMON_ELEMENTS__MEMORY_CLASSIFIERS) {
+							affected = Collections.singleton(getMemoryClassifiers((CommonElements) owner));
+						}
+						else if (feature.getFeatureID() == AmaltheaPackage.COMMON_ELEMENTS__TAGS) {
 							affected = Collections.singleton(getTags((CommonElements) owner));
 						}
 					}
@@ -96,6 +126,12 @@ public class ExtendedCommonElementsItemProvider extends CommonElementsItemProvid
 
 	@Override
 	public void dispose() {
+		if (this.coreClassifiersIP != null) {
+			this.coreClassifiersIP.dispose();
+		}
+		if (this.memoryClassifiersIP != null) {
+			this.memoryClassifiersIP.dispose();
+		}
 		if (this.tagsIP != null) {
 			this.tagsIP.dispose();
 		}
@@ -108,6 +144,8 @@ public class ExtendedCommonElementsItemProvider extends CommonElementsItemProvid
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SWModel.class)) {
+		case AmaltheaPackage.COMMON_ELEMENTS__CORE_CLASSIFIERS:
+		case AmaltheaPackage.COMMON_ELEMENTS__MEMORY_CLASSIFIERS:
 		case AmaltheaPackage.COMMON_ELEMENTS__TAGS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, true));
 			return;

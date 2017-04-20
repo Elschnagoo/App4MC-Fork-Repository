@@ -27,15 +27,15 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sphinx.emf.edit.TransientItemProvider;
 
-public class TagsIP extends TransientItemProvider {
+public class CoreClassifiersIP extends TransientItemProvider {
 
-	public TagsIP(final AdapterFactory adapterFactory, final CommonElements parent) {
+	public CoreClassifiersIP(final AdapterFactory adapterFactory, final CommonElements parent) {
 		super(adapterFactory);
 		parent.eAdapters().add(this);
 	}
 
 	private EStructuralFeature myFeature() {
-		return AmaltheaPackage.eINSTANCE.getCommonElements_Tags();
+		return AmaltheaPackage.eINSTANCE.getCommonElements_CoreClassifiers();
 	}
 
 	private AmaltheaFactory myFactory() {
@@ -49,8 +49,8 @@ public class TagsIP extends TransientItemProvider {
 	public String getText(final Object object) {
 		assert object instanceof CommonElements;
 		final StringBuffer buffer = new StringBuffer();
-		buffer.append("Tags ("); //$NON-NLS-1$
-		buffer.append(((CommonElements) getTarget()).getTags().size());
+		buffer.append("Core Classifiers ("); //$NON-NLS-1$
+		buffer.append(((CommonElements) getTarget()).getCoreClassifiers().size());
 		buffer.append(")"); //$NON-NLS-1$
 		return buffer.toString();
 	}
@@ -74,7 +74,7 @@ public class TagsIP extends TransientItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createTag()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createCoreClassifier()));
 	}
 
 	/**

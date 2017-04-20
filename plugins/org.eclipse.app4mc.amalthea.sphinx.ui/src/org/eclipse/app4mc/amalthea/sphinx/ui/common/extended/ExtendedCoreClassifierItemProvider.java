@@ -13,15 +13,15 @@ package org.eclipse.app4mc.amalthea.sphinx.ui.common.extended;
 
 
 import org.eclipse.app4mc.amalthea.model.CommonElements;
-import org.eclipse.app4mc.amalthea.model.provider.TagItemProvider;
+import org.eclipse.app4mc.amalthea.model.provider.CoreClassifierItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.ExtendedCommonElementsItemProvider;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 
-public class ExtendedTagItemProvider extends TagItemProvider {
+public class ExtendedCoreClassifierItemProvider extends CoreClassifierItemProvider {
 
-	public ExtendedTagItemProvider(final AdapterFactory adapterFactory) {
+	public ExtendedCoreClassifierItemProvider(final AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -33,7 +33,7 @@ public class ExtendedTagItemProvider extends TagItemProvider {
 		final Object commonElements = super.getParent(object);
 		final ExtendedCommonElementsItemProvider commonElementsItemProvider = (ExtendedCommonElementsItemProvider) this.adapterFactory
 				.adapt(commonElements, ITreeItemContentProvider.class);
-		return commonElementsItemProvider != null ? commonElementsItemProvider.getTags((CommonElements) commonElements) : null;
+		return commonElementsItemProvider != null ? commonElementsItemProvider.getCoreClassifiers((CommonElements) commonElements) : null;
 	}
 
 }
