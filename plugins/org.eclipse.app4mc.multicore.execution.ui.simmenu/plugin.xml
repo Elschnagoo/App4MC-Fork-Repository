@@ -36,7 +36,7 @@
          point="org.eclipse.ui.menus">      
       <menuContribution
       		allPopups="false"
-            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            locationURI="popup:org.eclipse.app4mc.multicore.menu?after=org.eclipse.app4mc.multicore.openmapping.popups.performMapping">
       		<command
                   commandId="org.eclipse.app4mc.multicore.executuion.simview.commands.configureSimCommand"
                   label="Visualize Task Execution"
@@ -52,16 +52,10 @@
 		                     <instanceof
 		                           value="org.eclipse.core.resources.IResource">
 		                     </instanceof>
-		                     <or>
-		                        <test
-		                              property="org.eclipse.core.resources.extension"
-		                              value="amxmi">
-		                        </test>
-		                        <test
-		                              property="org.eclipse.core.resources.extension"
-		                              value="amxmi-sw">
-		                        </test>
-		                     </or>
+                       <test
+                             property="org.eclipse.core.resources.extension"
+                             value="amxmi">
+                       </test>
 		                  </iterate>
 		               </with>
 		            </visibleWhen>
