@@ -127,7 +127,7 @@ img.dotted {
 }
 
 .validation-rule {
-    background-color: red;
+    border-style: solid;
     margin-left: 1.5cm;
 	margin-right: 1.5cm;
 }

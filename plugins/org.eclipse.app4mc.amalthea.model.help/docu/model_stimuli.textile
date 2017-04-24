@@ -9,43 +9,27 @@ h3. Stimuli
 
 !(scale)../pictures/model_stimuli_stimuli.png!
 
-*(validation-rule) _Periodic_: The _Time_ object in the role of _offset_ must not contain a negative value!
-*(validation-rule) _Periodic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
-*(validation-rule) _Synthetic_: The _Time_ object in the role of _offset_ must not contain a negative value!
-*(validation-rule) _Synthetic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
-*(validation-rule) _TimestampList_: The _Time_ objects in the role of _timestamps_ must not contain a negative value!
-*(validation-rule) _Single_: The _Time_ object in the role of _activation_ must not contain a negative value!
-*(validation-rule) _ArrivalCurveEntry_: The _Time_ object in the role of _lowerTimeBorder_ must not contain a negative value!
-*(validation-rule) _ArrivalCurveEntry_: The _Time_ object in the role of _upperTimeBorder_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _Periodic_: The _Time_ object in the role of _offset_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _Periodic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _Synthetic_: The _Time_ object in the role of _offset_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _Synthetic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _TimestampList_: The _Time_ objects in the role of _timestamps_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _Single_: The _Time_ object in the role of _activation_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _ArrivalCurveEntry_: The _Time_ object in the role of _lowerTimeBorder_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _ArrivalCurveEntry_: The _Time_ object in the role of _upperTimeBorder_ must not contain a negative value!
 
 A stimulus is responsible to activate processes. The following different types are available:
 * *ArrivalCurve*: A list of time-borders in which a specified number of events are expected
 * *CustomStimulus*: To describe own custom types of activations, including properties
+* *EventStimulus*: Activation triggered by an event, defined in the event model. Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
 * *InterProcess*: Activations based on an explicit inter-process activation. Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
 * *Periodic*: Periodic activations based on an offset and a recurrence.
+* *PeriodicEvent*: Periodic activations based on other events, like rotation speed dependency
 * *Single*: Activates the process only once
 * *Sporadic*: Sporadic activations of processes
 * *Synthetic*:  Activations periodically triggered depending on a defined list of trigger times.
-* *PeriodicEvent*: Periodic activations based on other events, like rotation speed dependency
-* *EventStimulus*: Activation triggered by an event, defined in the event model. Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
 
 It is possible to define a deviation of time for every type of stimulus. For this, a stimulus can have an object of type Deviation, which refers to the deviation in the common model. This reference uses the class SignedTime as parameter for the generic values of the deviation. So the deviation is about time. The values (negative or positive) represents a shift of the activation to left or right on the time line. In this way it is possible to increase or decrease the activation time.
-
-The following figure shows a stimulus example. First there is a periodic stimulus with a fix offset and recurrence time. The first activation occurs after offset, every following activation occurs after recurrence. In the second diagram is the same stimulus with a Gaussian stimulation deviation. The activation time however varies now according the values of the distribution.
-
-!../pictures/model_stimuli_periodic.png!
-
-Beside of the deviation, a periodic stimulus can have a clock.
-
-h3. Clocks
-
-A clock is a time base which describes the progress of time for one or more periodic stimuli in relation to global time. If two equal stimuli have a different time base, the time of task activation can be different. There are different kind of clock functions, the clock sinus function, the clock triangle function and the clock multiplier list. The clock multiplier list is a list of timestamp-multiplier value pairs. Is a specified timestamp arrived, the clock changes to the corresponding multiplier value.
-
-!(scale)../pictures/model_stimuli_clocks.png!
-
-*(validation-rule) _ClockTriangleFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
-*(validation-rule) _ClockSinusFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
-*(validation-rule) _ClockMultiplierListEntry_: The _Time_ object in the role of _time_ must not contain a negative value!
 
 It is possible to define lists of mode label values for a stimulus. An entry in this list is always a pair of a mode label and a mode literal. One of this lists is the set-mode-labels-list. Each time the stimulus is triggered all mode labels in this list are set to the corresponding value. 
 The enabling-mode-label-list and the disabling-mode-label-list can be used to enable or disable a stimulus by setting the mode label to a specific value (e.g. by a write access with a runnable).
@@ -54,9 +38,41 @@ The enabling-mode-label-list and the disabling-mode-label-list can be used to en
 * If there are entries in both lists, the stimulus is disabled when at least one label of the disabling-mode-label-list has the defined value or if all labels in the enabling-mode-label-list are different to their defined value. If no one of the disabling-mode-label-list fits its value but at least one of the enabling-mode-label-list, then the stimulus is enabled. 
 
 !(scale)../pictures/model_stimuli_modevaluelist.png!
+ 
+*(validation-rule)  **%{color:red}[Error]%** _ModeValueListEntry_: The _Mode_ objects referenced via _valueProvider_ and _value_ must be equal!
 
 
-h3. Arrival Curves
+h4. Single
+
+_Single_ allows to specify an activation at a single relative point in time. The first activation occurs after the time units specified by _activation_.
+
+!../pictures/model_stimuli_single.png!
+
+
+h4. Periodic
+
+_Periodic_ allows to specify periodic activations based on an offset and a recurrence. The first activation occurs after the time units specified by _offset_, and then every following activation occurs after the time units specified by _recurrence_. This means, in general, an activation of instance i is triggered at time t = _offset_ + i * _recurrence_.
+
+The following figure shows a _Periodic_ stimulus example with a fix offset and recurrence time. 
+
+!../pictures/model_stimuli_periodic.png!
+
+In addition, the same _Periodic_ stimulus can be extended by a Gaussian deviation. The activation time varies then according the values of the distribution, as depicted in the following figure.
+
+!../pictures/model_stimuli_periodic_deviation.png!
+
+Besides the deviation, a _Periodic_ stimulus can also have a clock.
+
+
+h4. Synthetic
+
+_Synthetic_ allows to specify a periodic activation of trigger times. It is defined by a list of timestamps _triggerTimes_ of size m, a period _recurrence_, and an offset _offset_. Each timestamp in _triggerTimes_ specifies a single activation at a relative point in time. The moment in time these timestamps are relative to is defined the following way: an activation of instance i is triggered at time t = _offset_ + floor(i / m) * _recurrence_ + _triggerTimes_[i modulo m].
+
+The following figure shows a _Synthetic_ stimulus example with two periodic activations after the time units T1 and T2.
+
+!../pictures/model_stimuli_synthetic.png!
+
+h4. Arrival Curves
 
 An arrival curve is described as a list of time-borders in which a specified number of events are expected. The picture below shows an example for this. In the first picture there is a number of events on a timeline.
 
@@ -77,3 +93,13 @@ And for four events:
 The picture below shows the table as arrival curve graph. The red line is the upper-time-border that shows the latest time where the event will occur. The green line shows the earliest possible time where the event can occur. 
 
 !{width:600px}../pictures/model_stimuli_arrival_curve_5.png!
+
+h3. Clocks
+
+A clock is a time base which describes the progress of time for one or more periodic stimuli in relation to global time. If two equal stimuli have a different time base, the time of task activation can be different. There are different kind of clock functions, the clock sinus function, the clock triangle function and the clock multiplier list. The clock multiplier list is a list of timestamp-multiplier value pairs. Is a specified timestamp arrived, the clock changes to the corresponding multiplier value.
+
+!(scale)../pictures/model_stimuli_clocks.png!
+
+*(validation-rule) **%{color:red}[Error]%** _ClockTriangleFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _ClockSinusFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _ClockMultiplierListEntry_: The _Time_ object in the role of _time_ must not contain a negative value!

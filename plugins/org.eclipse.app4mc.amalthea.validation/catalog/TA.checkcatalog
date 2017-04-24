@@ -463,6 +463,22 @@
     severity="Error"
     message="Value must not be negative but was: {0}!"
     categories="TAConstraint"/>
+    
+<constraints
+    id="ModeLabelAccessModeEqual"
+    label="ModeLabelAccess Mode Equal"
+    description="Checks if the modes referenced by &quot;modeValue&quot; and &quot;data&quot; of ModeLabelAccess are equal"
+    severity="Error"
+    message="Referenced modes must be equal but were: {0} != {1}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="ModeLiteralMode"
+    label="ModeLiteral Mode"
+    description="Checks if a ModeLiteral is part of a Mode"
+    severity="Error"
+    message="ModeLiteral must be part of a Mode!"
+    categories="TAConstraint"/>
 <!--end SW Model --> 
 
 <!--start MAPPING Model -->

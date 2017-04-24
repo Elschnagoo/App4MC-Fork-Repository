@@ -134,4 +134,14 @@ public class SWModelValidator extends AbstractCheckValidator implements IssueCre
 	public void checkSingleActivationMaxUnsigned(final Amalthea amalthea) {
 		this.softwareModelValidatorImpl.checkSingleActivationMaxUnsigned(amalthea);
 	}
+	
+	@Check(constraint = "ModeLabelAccessModeEqual", categories = { "TAConstraint" })
+	public void checkModeLabelAccessModeEqual(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkModeLabelAccessModeEqual(amalthea);
+	}
+	
+	@Check(constraint = "ModeLiteralMode", categories = { "TAConstraint" })
+	public void checkModeLiteralMode(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkModeLiteralMode(amalthea);
+	}
 }

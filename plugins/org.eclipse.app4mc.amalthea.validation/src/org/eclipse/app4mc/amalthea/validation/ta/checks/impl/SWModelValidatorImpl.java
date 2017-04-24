@@ -23,6 +23,7 @@ import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
+import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
@@ -718,6 +719,71 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 					if(0 > value) {
 						this.issueCreator.issue(max, AmaltheaPackage.eINSTANCE.getSingleActivation_Max(), value);
 					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks the Mode referenced by {@link ModeLabelAccess}. The references ModeLabel and ModeLiteral of ModeLabelAccess must reference the same Mode.
+	 * If this is not the case, it will be handled as an error.
+	 */
+	public void checkModeLabelAccessModeEqual(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof ModeLabelAccess) {
+				ModeLabelAccess modeLabelAccess = (ModeLabelAccess) elem;
+				ModeLiteral modeLiteral = modeLabelAccess.getModeValue();
+				ModeLabel modeLabel = modeLabelAccess.getData();
+				if((null != modeLiteral) && (null != modeLabel)) {
+					Mode mode1 = modeLabel.getMode();
+					Mode mode2 = (Mode) modeLiteral.eContainer();
+					if(mode1 != mode2) {
+						this.issueCreator.issue(modeLabelAccess, AmaltheaPackage.eINSTANCE.getModeLabelAccess_Data(), mode1, mode2);
+						this.issueCreator.issue(modeLabelAccess, AmaltheaPackage.eINSTANCE.getModeLabelAccess_ModeValue(), mode1, mode2);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks if {@link ModeLiteral} is referenced by a Mode.
+	 * If this is not the case, it will be handled as an error.
+	 */
+	public void checkModeLiteralMode(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		Set<ModeLiteral> modeListerals = new HashSet<ModeLiteral>();
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof ModeLabel) {
+				ModeLabel modeLabel = (ModeLabel) elem;
+				ModeLiteral modeLiteral = modeLabel.getInitialValue(); 
+				if(null != modeLiteral) {
+					modeListerals.add(modeLiteral);
+				}
+			} else if (elem instanceof ModeLabelAccess) {
+				ModeLabelAccess modeLabelAccess = (ModeLabelAccess) elem;
+				ModeLiteral modeLiteral = modeLabelAccess.getModeValue(); 
+				if(null != modeLiteral) {
+					modeListerals.add(modeLiteral);
+				}
+			} else if (elem instanceof ModeSwitchEntry<?>) {
+				ModeSwitchEntry<?> modeSwitchEntry = (ModeSwitchEntry<?>) elem;
+				for(ModeLiteral modeLiteral : modeSwitchEntry.getValues()) {
+					modeListerals.add(modeLiteral);
+				}
+			}
+		}
+		
+		for(ModeLiteral modeLiteral : modeListerals) {
+			if(null != modeLiteral) {
+				Object object = modeLiteral.eContainer();
+				if((null == object) || (false == (object instanceof Mode))) {
+					this.issueCreator.issue(modeLiteral, AmaltheaPackage.eINSTANCE.getMode_Literals());
 				}
 			}
 		}

@@ -86,12 +86,12 @@ Activations are independent of other top level elements in the AMALTHEA model. S
 
 !../pictures/model_sw_activation.png!
 
-*(validation-rule) _PeriodicActivation_: The _Time_ object in the role of _mim_ must not contain a negative value!
-*(validation-rule) _PeriodicActivation_: The _Time_ object in the role of _max_ must not contain a negative value!
-*(validation-rule) _PeriodicActivation_: The _Time_ object in the role of _offset_ must not contain a negative value!
-*(validation-rule) _PeriodicActivation_: The _Time_ object in the role of _deadline_ must not contain a negative value!
-*(validation-rule) _SingleActivation_: The _Time_ object in the role of _min_ must not contain a negative value!
-*(validation-rule) _SingleActivation_: The _Time_ object in the role of _max_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _PeriodicActivation_: The _Time_ object in the role of _mim_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _PeriodicActivation_: The _Time_ object in the role of _max_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _PeriodicActivation_: The _Time_ object in the role of _offset_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _PeriodicActivation_: The _Time_ object in the role of _deadline_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _SingleActivation_: The _Time_ object in the role of _min_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _SingleActivation_: The _Time_ object in the role of _max_ must not contain a negative value!
 
 
 h3. Runnables and Services
@@ -112,7 +112,7 @@ The next picture shows the general structure of the __Runnable__ element.
 
 !../pictures/model_sw_runnable_overview.png!
 
-*(validation-rule) _Runnable_: The _Time_ object in the role of _deadline_ must not contain a negative value!
+*(validation-rule) **%{color:red}[Error]%** _Runnable_: The _Time_ object in the role of _deadline_ must not contain a negative value!
 
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
@@ -194,6 +194,8 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 h4. Mode Label Access
 
 !../pictures/model_sw_runnable_items_4_modes.png!
+
+*(validation-rule)  **%{color:red}[Error]%** _ModeLabelAccess_: The _Mode_ objects referenced via _modeValue_ and _data_ must be equal!
 
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
