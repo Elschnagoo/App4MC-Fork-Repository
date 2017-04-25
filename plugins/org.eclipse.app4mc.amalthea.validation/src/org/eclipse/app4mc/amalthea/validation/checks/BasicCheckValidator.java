@@ -51,12 +51,21 @@ public class BasicCheckValidator extends AbstractCheckValidator implements Issue
 	public void checkDuplicateUniqueNames(final Amalthea model) {
 		this.basicCheckImpl.checkDuplicateUniqueNames(model);
 	}
+	
+	@Check(constraint = "MissingReferableName", categories = { "Basic" })
+	public void checkReferableNames(final Amalthea model) {
+		this.basicCheckImpl.checkReferableNames(model);
+	}
 
 	@Check(constraint = "CustomPropertyDuplicateKey", categories = { "Basic" })
 	public void checkForCustomPropertyDuplicateKey(final Amalthea model) {
 		this.basicCheckImpl.checkForCustomPropertyDuplicateKey(model);
 	}
 
+	@Check(constraint = "UndefinedUnit", categories = { "Basic" })
+	public void checkUnits(final Amalthea model) {
+		this.basicCheckImpl.checkUnits(model);
+	}
 
 	@Check(constraint = "WeibullParametersConstraint", categories = { "WeibullParametersConstraint" })
 	public void checkWeibullParameters(final Amalthea model) {

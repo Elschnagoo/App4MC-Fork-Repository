@@ -24,6 +24,7 @@ import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.LongObject;
+import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.AbstractValidatorImpl;
@@ -68,6 +69,21 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 
 
 	/*
+	 * Checks the name of all objects that are instances of {@link IReferable}. The name is used to refer
+	 * to objects in the AMALTHEA model, therefore missing names are handled as an error.
+	 */
+	
+	public void checkReferableNames(final Amalthea model) {
+		
+		for (final IReferable element : getObjectHelper().getAllInstancesAndInheritedOf(model, IReferable.class)) {
+			if (element.getName() == null || element.getName().isEmpty()) {
+				this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getIReferable_Name(), element.eClass().getName());
+			}
+		}
+	}
+	
+
+	/*
 	 * Checks all objects that are instances of {@link IAnnotatable}. If custom properties are defined, all keys will be
 	 * checked if there is a duplicate key entry, which will be handled as an error.
 	 */
@@ -93,6 +109,17 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 					visitedKeys.put(key, true);
 				}
 			}
+		}
+	}
+
+
+	/*
+	 * Checks all units: {@link TimeUnit}, {@link FrequencyUnit}, {@link DataSizeUnit}, {@link DataRateUnit}.
+	 * If the unit is undefined, it will be handled as an error.
+	 */
+	public void checkUnits(final Amalthea model) {
+		for (final TimeUnit unit : getObjectHelper().getAllInstancesOf(model, TimeUnit.class)) {
+			// TODO
 		}
 	}
 

@@ -39,7 +39,7 @@ public class ConstraintsModelCheckValidatorImpl extends AbstractValidatorImpl {
 	}
 
 	/*
-	 * Checks for the AMALTHEA Constraints model if the EventChain�s are consistent (complete and correct sub event
+	 * Checks for the AMALTHEA Constraints model if the EventChains are consistent (complete and correct sub event
 	 * chains). Therefore, stimulus/response pairs are checked if there are existent and linked properly. A missing or
 	 * wrong information in the event chain will be handled as an error.
 	 */
@@ -80,7 +80,7 @@ public class ConstraintsModelCheckValidatorImpl extends AbstractValidatorImpl {
 			if (subEventChainItem instanceof EventChainReference) {
 				subEventChain = ((EventChainReference) subEventChainItem).getEventChain();
 				if (subEventChain == null) {
-					// TODO: Create Error ... Missing Reference to (Sub)EventChain ... not specifie by user
+					// TODO: Create Error ... Missing Reference to (Sub)EventChain ... not specified by user
 				}
 			}
 

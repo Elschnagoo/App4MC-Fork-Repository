@@ -17,7 +17,7 @@
 
   <categories
     id="EventModelConstraint"
-    label="EventModel Mapping"/>
+    label="Event Model Checks"/>
 
   <categories
     id="ConstraintsModelConstraint"
@@ -37,10 +37,26 @@
     categories="Basic"/>
 
   <constraints
+    id="MissingReferableName"
+    label="Missing Referable Name"
+    description="Checks for missing names of IReferable objects"
+    severity="Error"
+    message="{0}: missing name"
+    categories="Basic"/>
+
+  <constraints
     id="CustomPropertyDuplicateKey"
     label="Custom Property Duplicate Key"
     description="Checks for duplicate property keys"
     message="{0} - Duplicate property found: {1}"
+    categories="Basic"/>
+
+  <constraints
+    id="UndefinedUnit"
+    label="Undefined Unit"
+    description="Checks for undefined units"
+    severity="Error"
+    message="{0}: undefined unit"
     categories="Basic"/>
 
   <constraints
@@ -59,43 +75,43 @@
     message="{0}"/>
 
   <constraints
-    id="LabelEventMappingConstraint"
+    id="LabelEventConstraint"
     label="LabelEvent Constraint"
-    description="Checks on LabelEvent for complete mapping information"
+    description="Checks on LabelEvent for complete information"
     severity="Error"
-    message="LabelEvent &quot;{0}&quot;: Missing mapping information for property &quot;{1}&quot;"
+    message="LabelEvent: {0}"
     categories="EventModelConstraint"/>
 
   <constraints
-    id="ProcessEventMappingConstraint"
+    id="ProcessEventConstraint"
     label="ProcessEvent Constraint"
-    description="Checks on ProcessEvent for complete mapping information"
+    description="Checks on ProcessEvent for complete information"
     severity="Error"
-    message="ProcessEvent &quot;{0}&quot;: Missing mapping information for property &quot;{1}&quot;"
+    message="ProcessEvent: {0}"
     categories="EventModelConstraint"/>
 
   <constraints
-    id="RunnableEventMappingConstraint"
+    id="RunnableEventConstraint"
     label="RunnableEvent Constraint"
-    description="Checks on RunnableEvent for complete mapping information"
+    description="Checks on RunnableEvent for complete information"
     severity="Error"
-    message="RunnableEvent &quot;{0}&quot;: Missing mapping information for property &quot;{1}&quot;"
+    message="RunnableEvent: {0}"
     categories="EventModelConstraint"/>
 
   <constraints
-    id="SemaphoreEventMappingConstraint"
+    id="SemaphoreEventConstraint"
     label="SemaphoreEvent Constraint"
-    description="Checks on SemaphoreEvent for complete mapping information"
+    description="Checks on SemaphoreEvent for complete information"
     severity="Error"
-    message="SemaphoreEvent &quot;{0}&quot;: Missing mapping information for property &quot;{1}&quot;"
+    message="SemaphoreEvent: {0}"
     categories="EventModelConstraint"/>
 
   <constraints
-    id="StimulusEventMappingConstraint"
+    id="StimulusEventConstraint"
     label="StimulusEvent Constraint"
-    description="Checks on StimulusEvent for complete mapping information"
+    description="Checks on StimulusEvent for complete information"
     severity="Error"
-    message="StimulusEvent &quot;{0}&quot;: Missing mapping information for property &quot;{1}&quot;"
+    message="StimulusEvent: {0}"
     categories="EventModelConstraint"/>
 
   <constraints
