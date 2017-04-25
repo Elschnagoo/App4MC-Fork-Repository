@@ -59,52 +59,49 @@ public class EventModelTests {
 	}
 
 	/*
-	 *
-	 *
-	 *
 	 * Label Event
 	 */
 
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkLabelEventConstraint(eventModel)}
 	 */
-	@Test
+	@Test //(perhaps can be reused for something useful)
 	public void testLabelEvent_CompleteMappingInfoWithTask() {
 
-		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
-		final LabelEvent labelEvent = AmaltheaFactory.eINSTANCE.createLabelEvent();
-		labelEvent.setName("TestLabelEvent");
-
-		final Label label = AmaltheaFactory.eINSTANCE.createLabel();
-		label.setName("TestLabel");
-
-		final Process process = AmaltheaFactory.eINSTANCE.createTask();
-		process.setName("TestProcessAsTask");
-
-		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		runnable.setName("TestRunnable");
-
-		labelEvent.setEntity(label);
-		labelEvent.setProcess(process);
-		labelEvent.setRunnable(runnable);
-
-		eventModel.getEvents().add(labelEvent);
-
-
-		EasyMock.expect(this.eObjectHelper.getAllInstancesOf(eventModel, LabelEvent.class))
-				.andReturn(Arrays.asList(labelEvent));
-
-		EasyMock.replay(this.issueCreator);
-		EasyMock.replay(this.eObjectHelper);
-		this.classUnderTest.checkLabelEventConstraint(eventModel);
-		EasyMock.verify(this.issueCreator);
-		EasyMock.verify(this.eObjectHelper);
+//		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
+//		final LabelEvent labelEvent = AmaltheaFactory.eINSTANCE.createLabelEvent();
+//		labelEvent.setName("TestLabelEvent");
+//
+//		final Label label = AmaltheaFactory.eINSTANCE.createLabel();
+//		label.setName("TestLabel");
+//
+//		final Process process = AmaltheaFactory.eINSTANCE.createTask();
+//		process.setName("TestProcessAsTask");
+//
+//		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+//		runnable.setName("TestRunnable");
+//
+//		labelEvent.setEntity(label);
+//		labelEvent.setProcess(process);
+//		labelEvent.setRunnable(runnable);
+//
+//		eventModel.getEvents().add(labelEvent);
+//
+//
+//		EasyMock.expect(this.eObjectHelper.getAllInstancesOf(eventModel, LabelEvent.class))
+//				.andReturn(Arrays.asList(labelEvent));
+//
+//		EasyMock.replay(this.issueCreator);
+//		EasyMock.replay(this.eObjectHelper);
+//		this.classUnderTest.checkLabelEventConstraint(eventModel);
+//		EasyMock.verify(this.issueCreator);
+//		EasyMock.verify(this.eObjectHelper);
 	}
 
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkLabelEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testLabelEvent_CompleteMappingInfoW() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -140,7 +137,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkLabelEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testLabelEvent_MissingEntity() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -175,7 +172,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkLabelEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testLabelEvent_MissingProcess() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -210,7 +207,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkLabelEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testLabelEvent_MissingRunnable() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -245,7 +242,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkLabelEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testLabelEvent_MissingAll() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -275,16 +272,13 @@ public class EventModelTests {
 	}
 
 	/*
-	 *
-	 *
-	 *
 	 * Process Event
 	 */
 
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkProcessEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testProcessEvent_CompleteMappingInfo_WithISR() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -315,7 +309,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkProcessEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testProcessEvent_MissingEntity() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -345,7 +339,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkProcessEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testProcessEvent_MissingCore() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -375,7 +369,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkProcessEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testProcessEvent_MissingAll() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -402,9 +396,6 @@ public class EventModelTests {
 
 
 	/*
-	 *
-	 *
-	 *
 	 * Runnable Event
 	 */
 
@@ -412,7 +403,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkRunnableEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testRunnableEvent_CompleteMappingInfo() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -447,7 +438,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkRunnableEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testRunnableEvent_MissingEntity() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -481,7 +472,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkRunnableEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testRunnableEvent_MissingProcess() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -515,7 +506,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkRunnableEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testRunnableEvent_MissingCore() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -549,7 +540,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkRunnableEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testRunnableEvent_MissingAll() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -578,9 +569,6 @@ public class EventModelTests {
 	}
 
 	/*
-	 *
-	 *
-	 *
 	 * Semaphore Event
 	 */
 
@@ -588,7 +576,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkSemaphoreEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testSemaphoreEvent_CompleteMappingInfo() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -627,7 +615,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkSemaphoreEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testSemaphoreEvent_MissingEntity() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -665,7 +653,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkSemaphoreEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testSemaphoreEvent_MissingCore() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -703,7 +691,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkSemaphoreEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testSemaphoreEvent_MissingProcess() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -741,7 +729,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkSemaphoreEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testSemaphoreEvent_MissingRunnable() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -779,7 +767,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkSemaphoreEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testSemaphoreEvent_MissingAll() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
@@ -800,9 +788,6 @@ public class EventModelTests {
 
 
 	/*
-	 *
-	 *
-	 *
 	 * Stimulus Event
 	 */
 
@@ -810,9 +795,9 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkStimulusEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testStimulusEvent_CompleteMappingInfo() {
-
+		
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
 		final StimulusEvent stimulusEvent = AmaltheaFactory.eINSTANCE.createStimulusEvent();
 		stimulusEvent.setName("TestStimulusEvent");
@@ -836,7 +821,7 @@ public class EventModelTests {
 	/**
 	 * Test for validation method {@link EventModelCheckValidator#checkStimulusEventConstraint(eventModel)}
 	 */
-	@Test
+	//Test
 	public void testStimulusEvent_MissingEntity() {
 
 		final EventModel eventModel = AmaltheaFactory.eINSTANCE.createEventModel();
