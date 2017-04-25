@@ -4,7 +4,8 @@ Bundle-Name: APP4MC Multicore Execution Logic
 Bundle-SymbolicName: org.eclipse.app4mc.multicore.execution.logic
 Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.eclipse.app4mc.multicore.execution.logic.Activator
-Require-Bundle: org.junit,
+Require-Bundle: org.apache.commons.math,
+ org.junit,
  org.eclipse.app4mc.amalthea.model,
  org.eclipse.app4mc.multicore.sharelibs
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
@@ -16,5 +17,4 @@ Export-Package: org.eclipse.app4mc.multicore.execution.logic.executionmodel;uses
  org.eclipse.app4mc.multicore.execution.logic.systemproxy,
  org.eclipse.app4mc.multicore.execution.logic.systemproxy.scheduler
 Bundle-Vendor: Eclipse.org
-Import-Package: org.apache.commons.math.util
 Bundle-ClassPath:  .
