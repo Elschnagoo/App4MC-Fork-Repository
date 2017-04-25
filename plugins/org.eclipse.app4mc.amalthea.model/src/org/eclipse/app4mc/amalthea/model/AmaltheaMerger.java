@@ -70,6 +70,8 @@ public class AmaltheaMerger {
 			mainModel.setCommonElements(tmp);
 		} else {
 			addIfAbsent(main.getTags(), tmp.getTags());
+			addIfAbsent(main.getCoreClassifiers(), tmp.getCoreClassifiers());
+			addIfAbsent(main.getMemoryClassifiers(), tmp.getMemoryClassifiers());
 		}	
 	}
 
