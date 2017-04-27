@@ -46,32 +46,9 @@ public class EventModelCheckValidator extends AbstractCheckValidator implements 
 	}
 
 
-	@Check(constraint = "LabelEventConstraint", categories = { "EventModelConstraint" })
+	@Check(constraint = "LabelEvent", categories = { "EventModel" })
 	public void checkLabelEventConstraint(final EventModel eventModel) {
 		this.eventsModelImpl.checkLabelEventConstraint(eventModel);
 	}
 
-
-	@Check(constraint = "ProcessEventConstraint", categories = { "EventModelConstraint" })
-	public void checkProcessEventConstraint(final EventModel model) {
-		this.eventsModelImpl.checkProcessEventConstraint(model);
-	}
-
-
-	@Check(constraint = "RunnableEventConstraint", categories = { "EventModelConstraint" })
-	public void checkRunnableEventConstraint(final EventModel eventModel) {
-		this.eventsModelImpl.checkRunnableEventConstraint(eventModel);
-	}
-
-
-	@Check(constraint = "SemaphoreEventConstraint", categories = { "EventModelConstraint" })
-	public void checkSemaphoreEventConstraint(final EventModel eventModel) {
-		this.eventsModelImpl.checkSemaphoreEventConstraint(eventModel);
-	}
-
-
-	@Check(constraint = "StimulusEventConstraint", categories = { "EventModelConstraint" })
-	public void checkStimulusEventConstraint(final EventModel eventModel) {
-		this.eventsModelImpl.checkStimulusEventConstraint(eventModel);
-	}
 }

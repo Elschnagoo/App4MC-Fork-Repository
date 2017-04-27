@@ -25,22 +25,11 @@ h3. Plugin dependencies
 org.eclipse.core.runtime,
 org.eclipse.sphinx.emf,
 org.eclipse.sphinx.emf.check,
-org.eclipse.app4mc.amalthea.model.common,
-org.eclipse.app4mc.amalthea.model.central,
-org.eclipse.app4mc.amalthea.model.central.sphinx.ui,
-org.eclipse.app4mc.amalthea.model.config,
-org.eclipse.app4mc.amalthea.model.constraints,
-org.eclipse.app4mc.amalthea.model.events,
-org.eclipse.app4mc.amalthea.model.hw,
-org.eclipse.app4mc.amalthea.model.mapping,
-org.eclipse.app4mc.amalthea.model.os,
-org.eclipse.app4mc.amalthea.model.propertyconstraints,
-org.eclipse.app4mc.amalthea.model.stimuli,
-org.eclipse.app4mc.amalthea.model.sw
+org.eclipse.app4mc.amalthea.model
 
 h4. Implementation
 
-Create a class which is extending @org.eclipse.sphinx.emf.check.AbstractCheckValidator@ and implement a method of arbitrary name and tag it with the @check@ annotation. At this point it is important to know that at least one parameter is needed for the check method. For instance, if you want to perform a check related to the whole AMALTHEA model you should consider @org.eclipse.app4mc.amalthea.model.central.AMALTHEA@ as parameter type. An empty parameter list will never activate the check for your AMALTHEA model. This raises the capability of an so called out-of-the-box scoping which means that the validation checks only appears on the relevant model elements 
+Create a class which is extending @org.eclipse.sphinx.emf.check.AbstractCheckValidator@ and implement a method of arbitrary name and tag it with the @check@ annotation. At this point it is important to know that at least one parameter is needed for the check method. For instance, if you want to perform a check related to the whole AMALTHEA model you should consider @org.eclipse.app4mc.amalthea.model.Amalthea@ as parameter type. An empty parameter list will never activate the check for your AMALTHEA model. This raises the capability of an so called out-of-the-box scoping which means that the validation checks only appears on the relevant model elements 
 (e.g. validations related to the AMALTHEA software model may only appear when right-clicking on an appropriate model element of type Software)
 
 

@@ -8,32 +8,28 @@
     label="Basic Model Checks"/>
 
   <categories
-    id="WeibullParametersConstraint"
-    label="Weibull Parameter Bound"/>
+    id="MappingModel"
+    label="Mapping Model Checks"/>
 
   <categories
-    id="MappingModelConstraint"
-    label="MappingModel Constraint(Process->Scheduler->Core)"/>
-
-  <categories
-    id="EventModelConstraint"
+    id="EventModel"
     label="Event Model Checks"/>
 
   <categories
-    id="ConstraintsModelConstraint"
-    label="EventChain Consistency"/>
+    id="ConstraintsModel"
+    label="Constraints Model Checks"/>
 
   <categories
-    id="HardwareModelConstraint"
-    label="Custom Attribute/Feature Duplicate Key"/>
-
+    id="HardwareModel"
+    label="Hardware Model Checks"/>
+   
 
   <constraints
     id="DuplicateUniqueName"
     label="Duplicate Unique Name"
     description="Checks for duplicate unique names of IReferable objects"
     severity="Error"
-    message="{0}: duplicate name '' {1} ''"
+    message="{0}: duplicate name &quot;{1}&quot;"
     categories="Basic"/>
 
   <constraints
@@ -49,7 +45,7 @@
     label="Custom Property Duplicate Key"
     description="Checks for duplicate property keys"
     severity="Warning"
-    message="CustomProperty: duplicate key '' {2} ''"
+    message="CustomProperty: duplicate key &quot;{2}&quot;"
     categories="Basic"/>
 
   <constraints
@@ -57,78 +53,47 @@
     label="Undefined Unit"
     description="Checks for undefined units"
     severity="Error"
-    message="{0}: undefined unit ( in '' {1} '' )"
+    message="{0}: undefined unit ( in &quot;{1}&quot; )"
     categories="Basic"/>
 
   <constraints
-    id="WeibullParametersConstraint"
-    label="Weibull Parameter Constraint"
-    description="Checks if the values of a component's parameters are valid"
+    id="WeibullParameters"
+    label="Weibull Parameters"
+    description="Checks if the parameters of the Weibul distributions are valid"
     severity="Warning"
-    message="Deviation Dist contains invalid Weibull parameters: lowerBound: (long) {0} upperBound: (long) {1}"
-    categories="WeibullParametersConstraint"/>
+    message="Distribution contains invalid Weibull parameters: lowerBound: (long) {0} upperBound: (long) {1}"
+    categories="Basic"/>
+
 
   <constraints
-    id="Process2Scheduler2CoreMappingConstraint"
+    id="Process2Scheduler2CoreMapping"
     label=""
     severity="Error"
-    categories="MappingModelConstraint"
-    message="{0}"/>
+    message="{0}"
+    categories="MappingModel"/>
 
   <constraints
-    id="LabelEventConstraint"
-    label="LabelEvent Constraint"
+    id="LabelEvent"
+    label="Label Event Checks"
     description="Checks on LabelEvent for complete information"
     severity="Error"
     message="LabelEvent: {0}"
-    categories="EventModelConstraint"/>
+    categories="EventModel"/>
 
   <constraints
-    id="ProcessEventConstraint"
-    label="ProcessEvent Constraint"
-    description="Checks on ProcessEvent for complete information"
-    severity="Error"
-    message="ProcessEvent: {0}"
-    categories="EventModelConstraint"/>
-
-  <constraints
-    id="RunnableEventConstraint"
-    label="RunnableEvent Constraint"
-    description="Checks on RunnableEvent for complete information"
-    severity="Error"
-    message="RunnableEvent: {0}"
-    categories="EventModelConstraint"/>
-
-  <constraints
-    id="SemaphoreEventConstraint"
-    label="SemaphoreEvent Constraint"
-    description="Checks on SemaphoreEvent for complete information"
-    severity="Error"
-    message="SemaphoreEvent: {0}"
-    categories="EventModelConstraint"/>
-
-  <constraints
-    id="StimulusEventConstraint"
-    label="StimulusEvent Constraint"
-    description="Checks on StimulusEvent for complete information"
-    severity="Error"
-    message="StimulusEvent: {0}"
-    categories="EventModelConstraint"/>
-
-  <constraints
-    id="EventChainsConstraint"
-    label="EventChains Constraint"
+    id="EventChain"
+    label="Event Chains Checks"
     description="Checks on EventChains for correctly chained response/stimulus pairs"
     severity="Error"
     message="&quot;{0}&quot;"
-    categories="ConstraintsModelConstraint"/>
+    categories="ConstraintsModel"/>
 
   <constraints
-    id="HwModelAbstractTypeDuplicateNameConstriant"
-    label="HwModel AbstractType Duplicate Name Constraint"
-    description="Checks on HwModel for duplicate attribute/feature name (key) in Abstract Types like CoreType, ECUType, System"
+    id="SystemStructure"
+    label="System Structure Checks"
+    description="Checks on HwModel for ..."
     severity="Error"
     message="&quot;{0}&quot;"
-    categories="HardwareModelConstraint"/>
+    categories="HardwareModel"/>
 
 </cc:Catalog>

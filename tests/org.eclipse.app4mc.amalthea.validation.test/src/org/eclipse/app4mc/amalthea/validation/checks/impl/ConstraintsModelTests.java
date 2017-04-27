@@ -89,7 +89,7 @@ public class ConstraintsModelTests {
 		subEC2.setEventChain(ec2);
 
 		EasyMock.replay(this.issueCreator);
-		this.classUnderTest.eventChainConstraint(constraintsModel);
+		this.classUnderTest.checkEventChains(constraintsModel);
 		EasyMock.verify(this.issueCreator);
 	}
 
@@ -140,7 +140,7 @@ public class ConstraintsModelTests {
 		EasyMock.replay(this.issueCreator);
 
 		// Invoke method to be tested
-		this.classUnderTest.eventChainConstraint(constraintsModel);
+		this.classUnderTest.checkEventChains(constraintsModel);
 
 		EasyMock.verify(this.issueCreator);
 	}
@@ -190,7 +190,7 @@ public class ConstraintsModelTests {
 
 		EasyMock.replay(this.issueCreator);
 		// Invoke method to be tested
-		this.classUnderTest.eventChainConstraint(constraintsModel);
+		this.classUnderTest.checkEventChains(constraintsModel);
 		EasyMock.verify(this.issueCreator);
 	}
 
@@ -239,7 +239,7 @@ public class ConstraintsModelTests {
 
 		EasyMock.replay(this.issueCreator);
 		// Invoke method to be tested
-		this.classUnderTest.eventChainConstraint(constraintsModel);
+		this.classUnderTest.checkEventChains(constraintsModel);
 		EasyMock.verify(this.issueCreator);
 	}
 
@@ -288,7 +288,7 @@ public class ConstraintsModelTests {
 
 		EasyMock.replay(this.issueCreator);
 		// Invoke method to be tested
-		this.classUnderTest.eventChainConstraint(constraintsModel);
+		this.classUnderTest.checkEventChains(constraintsModel);
 		EasyMock.verify(this.issueCreator);
 	}
 
@@ -335,7 +335,7 @@ public class ConstraintsModelTests {
 
 		EasyMock.replay(this.issueCreator);
 		// Invoke method to be tested
-		this.classUnderTest.eventChainConstraint(constraintsModel);
+		this.classUnderTest.checkEventChains(constraintsModel);
 		EasyMock.verify(this.issueCreator);
 	}
 
@@ -385,7 +385,7 @@ public class ConstraintsModelTests {
 
 		EasyMock.replay(this.issueCreator);
 		// Invoke method to be tested
-		this.classUnderTest.eventChainConstraint(constraintsModel);
+		this.classUnderTest.checkEventChains(constraintsModel);
 		EasyMock.verify(this.issueCreator);
 	}
 }

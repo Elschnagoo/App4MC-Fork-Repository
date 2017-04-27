@@ -67,7 +67,7 @@ public class BasicCheckValidator extends AbstractCheckValidator implements Issue
 		this.basicCheckImpl.checkUnits(model);
 	}
 
-	@Check(constraint = "WeibullParametersConstraint", categories = { "WeibullParametersConstraint" })
+	@Check(constraint = "WeibullParameters", categories = { "Basic" })
 	public void checkWeibullParameters(final Amalthea model) {
 		this.basicCheckImpl.checkWeibullParameters(model);
 	}

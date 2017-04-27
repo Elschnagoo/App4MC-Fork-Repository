@@ -43,7 +43,7 @@ public class ConstraintsModelCheckValidatorImpl extends AbstractValidatorImpl {
 	 * chains). Therefore, stimulus/response pairs are checked if there are existent and linked properly. A missing or
 	 * wrong information in the event chain will be handled as an error.
 	 */
-	public void eventChainConstraint(final ConstraintsModel constraintsModel) {
+	public void checkEventChains(final ConstraintsModel constraintsModel) {
 		// Traverse collection of independent event chains
 		if (constraintsModel != null) {
 			for (final EventChain eventChain : constraintsModel.getEventChains()) {

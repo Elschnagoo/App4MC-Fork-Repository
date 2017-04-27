@@ -46,8 +46,8 @@ public class HardwareModelCheckValidator extends AbstractCheckValidator implemen
 	}
 
 
-	@Check(constraint = "HwModelAbstractTypeDuplicateNameConstriant", categories = { "HardwareModelConstraint" })
-	public void checkTaskToSchedulerToCoreMapping(final HWModel model) {
-		this.hardwareModelImpl.checkForHwAbstractTypeDuplicateName(model);
+	@Check(constraint = "SystemStructure", categories = { "HardwareModel" })
+	public void checkSystemStructure(final HWModel model) {
+		this.hardwareModelImpl.checkSystemStructure(model);
 	}
 }

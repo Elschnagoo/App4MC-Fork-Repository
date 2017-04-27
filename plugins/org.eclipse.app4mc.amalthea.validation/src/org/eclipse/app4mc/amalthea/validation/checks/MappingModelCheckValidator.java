@@ -47,7 +47,7 @@ public class MappingModelCheckValidator extends AbstractCheckValidator implement
 	}
 
 
-	@Check(constraint = "Process2Scheduler2CoreMappingConstraint", categories = { "MappingModelConstraint" })
+	@Check(constraint = "Process2Scheduler2CoreMapping", categories = { "MappingModel" })
 	public void checkTaskToSchedulerToCoreMapping(final MappingModel model) {
 		this.mappingModelImpl.checkProcessToSchedulerToCoreMapping(model);
 	}

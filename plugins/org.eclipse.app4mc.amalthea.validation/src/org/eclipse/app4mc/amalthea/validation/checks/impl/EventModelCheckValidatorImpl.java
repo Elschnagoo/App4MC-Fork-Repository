@@ -38,36 +38,5 @@ public class EventModelCheckValidatorImpl extends AbstractValidatorImpl {
 		// all references are optional !
 	}
 
-	/*
-	 * Checks for the AMALTHEA {@link EventsModel} in AMALTHEA if the mapping information for all {@link ProcessEvent}
-	 * are complete and correct.
-	 */
-	public void checkProcessEventConstraint(final EventModel eventModel) {
-		// all references are optional !
-	}
 
-	/*
-	 * Checks for the AMALTHEA {@link EventsModel} in AMALTHEA if the mapping information for all {@link RunnableEvent}
-	 * are complete and correct.
-	 */
-	public void checkRunnableEventConstraint(final EventModel eventModel) {
-		// all references are optional !
-	}
-
-	/*
-	 * Checks for the AMALTHEA {@link EventsModel} in AMALTHEA if the mapping information for all {@link SemaphoreEvent}
-	 * are complete and correct.
-	 */
-	public void checkSemaphoreEventConstraint(final EventModel eventModel) {
-		// all references are optional !
-	}
-
-	/*
-	 * Checks for the AMALTHEA {@link EventsModel} in AMALTHEA if the mapping information for all {@link StimulusEvent}
-	 * are complete and correct.
-	 */
-	public void checkStimulusEventConstraint(final EventModel eventModel) {
-
-		// all references are optional !
-	}
 }
