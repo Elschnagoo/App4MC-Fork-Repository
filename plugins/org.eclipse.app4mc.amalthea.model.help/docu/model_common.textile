@@ -6,22 +6,28 @@ The AMALTHEA common model is not a model by itself, but provides standard elemen
 
 h3. Common Elements
 
+The only exception is the __CommonElements__ class that provides a central container for tags and classifiers. These elements are used in many sub models where references to tags or classifiers provide a mechanism to annotate the objects.
+
 !../pictures/model_common_elements.png!
 
 
 h3(#common-tags). Tags
+
+Tags are a generic possibility to annotate objects in the AMALTHEA model.
 
 !../pictures/model_common_tag.png!
 
 
 h3(#common-classifiers). Classifiers
 
+Classifiers are used to define specific features or abilities of a core or a memory. They are used in the __PropertyConstraintsModel__ to restrict the allocation to cores or the memory mapping.
+
 !../pictures/model_common_classifier.png!
 
 
 h3(#common-custom-props). Custom Properties
 
-The __CustomProperty__ element is used to define own, in AMALTHEA not available properties. If there is the need to extend an element or to store tool information related to processing steps, __CustomProperties__ can be used to store this type of information.
+The __CustomProperty__ element is used to define own properties that are not (yet) available in AMALTHEA. If there is the need to extend an element or to store tool information related to processing steps, __CustomProperties__ can be used to store this type of information. It also provides the possibility to work with prototypical approaches that later (if established and more stable) can be integrated in the standard model.
 
 !../pictures/model_common_custom_property.png!
 
@@ -141,7 +147,7 @@ h3. Statistic Elements
 The contained elements are representing statistical values.
 The values can be set either with a min, avg and max representation using the __MinAvgMaxStatistic__ element.
 The other possibility is to set a single value using the __SingleValueStatistic__ element.
-The values itself are set as a normal __int__ value or in case of the single value as __float__.
+The minimum and maximum values are set as a normal __int__ value,  the average the single value as __float__.
 
 !../pictures/model_common_statistic.png!
 

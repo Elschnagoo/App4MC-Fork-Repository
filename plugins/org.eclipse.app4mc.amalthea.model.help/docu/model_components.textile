@@ -7,7 +7,6 @@ It holds the following types:
 
 * *Component* / *Composite* ('components' containment reference)
 * *System* ('systems' containment reference)
-* *Tag* ('tags' containment reference)
 
 !(scale)../pictures/model_components.png!
 

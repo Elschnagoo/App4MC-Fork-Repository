@@ -4,8 +4,9 @@ h2. PropertyConstraints Model
 The scope of the Property Constraints model is to limit the design space by providing information about the specific hardware properties that parts of the software rely on, i.e. what properties or features have to be supplied by the respective hardware in order to be a valid mapping or allocation target.
 
 This information comprises
-* Allocation constraints, which describe the constraints on cores.
-* Mapping constraints, which describe the constraints on memories.
+* Core allocation constraints, which describe the constraints on cores.
+* Memory mapping constraints, which describe the constraints on memories.
+
 
 h3. Structure
 
@@ -13,50 +14,43 @@ The figure below shows the Property Constraints model. In order to provide a bet
 
 !../pictures/model_propertyconstraints_overview.png!
 
-h4. PropertyConstraintsModel
 
-The __PropertyConstraintsModel__ serves as container for constraints, i.e. __AllocationConstraints__ and __MappingConstraints__.
+h3. CoreAllocationConstraint
 
-h4. AllocationConstraint
+The __CoreAllocationConstraint__ is an abstract class for describing constraints which affect the selection of a suitable __Core__.
 
-The __AllocationConstraint__ is an abstract class for describing constraints which affect the selection of a suitable __Core__. The actual constraint on the core is described by the __HwCoreConstraint__.
-
-h4. ProcessAllocationConstraint
-
-The __ProcessAllocationConstraint__ is a specialization of the __AllocationConstraint__. It is used to specify constraints on __Core__ elements which are used in the allocation of Process's specializations (i.e. __Task__ and __ISR__), to __Cores__.
 
 h4. RunnableAllocationConstraint
 
-The __RunnableAllocationConstraint__ is a specialization of the __AllocationConstraint__. It is used to specify constraints on __Core__ elements which are used in __Runnable__ to __Core__ allocations.
+The __RunnableAllocationConstraint__ is a specialization of the __CoreAllocationConstraint__. It is used to specify constraints on __Core__ elements which are used in __Runnable__ to __Core__ allocations.
 
-h4. HwCoreConstraint
 
-The __HwCoreConstraint__ is an abstract class and used to describe constraints on Core elements, i.e. the criteria they have to provide in order to be a valid allocation target.
+h4. ProcessAllocationConstraint
 
-h4. HwCoreConjunction
+The __ProcessAllocationConstraint__ is a specialization of the __CoreAllocationConstraint__. It is used to specify constraints on __Core__ elements which are used in the allocation of Process's specializations (i.e. __Task__ and __ISR__), to __Cores__.
 
-The __HwCoreConjunction__ is a specialization of the __HwCoreConstraint__ and used to link two __HwCoreConstraints__ with each other. The conjunction between the constraints may either be AND (both constraints must be true) or OR (at least one of both constraints must be true).
 
-h4. HwCoreProperty
+h4. ProcessPrototypeAllocationConstraint
 
-The __HwCoreProperty__ is a specialization of the __HwCoreConstraint__ and used to describe the features and attributes a __Core__ needs to provide in order to be a valid target. This is done by the Core revealing a "prototype" of the Core the software expects. Core elements of hardware models are compared with this prototype w.r.t. the comparator, e.g. "greater" means, the __Core__ from the hardware model needs to have higher attributes compared to the contained prototype-__Core__.
+Tha same as ProcessAllocationConstraint but for process prototypes in an earlier phase of the development.
 
-h4. MappingConstraint
 
-The __MappingConstraint__ is an abstract class for describing constraints which affect the selection of a suitable __Memory__. The actual constraint on the core is described by the __HwMemoryConstraint__.
+h3. MemoryMappingConstraint
+
+The __MemoryMappingConstraint__ is an abstract class for describing constraints which affect the selection of a suitable __Memory__. The actual constraint on the core is described by the __HwMemoryConstraint__.
+
 
 h4. AbstractElementMappingConstraint
 
-The __AbstractElementMappingConstaint__ is a specialization of the __MappingConstraint__. It is used to specify constraints on __Memory__ elements which are used in the mapping of __AbstractElementMemoryInformations__ specializations (i.e. __Label__, __Runnable__, __TaskPrototype__ or __Process__) to __Memories__.
+The __AbstractElementMappingConstaint__ is a specialization of the __MappingConstraint__. It is used to specify constraints on __Memory__ elements which are used in the mapping of __AbstractMemoryElement__ specializations (i.e. __Label__, __Runnable__, __TaskPrototype__ or __Process__) to __Memories__.
 
-h4. HwMemoryConstraint
 
-The __HwMemoryConstraint__ is an abstract class and used to describe constraints on __Memory__ elements, i.e. the criteria they have to provide in order to be a valid mapping target.
+h3. Classifications
 
-h4. HwMemoryConjunction
+The specializations __CoreClassification__ and __MemoryClassification__ are used to describe the features that a hardware element (__Core__ or __Memory__) needs to provide in order to be a valid target. This is done by references to Classifiers, conditions (requires vs. excludes) and the kind of grouping (all of them vs. at least one of them).
 
-The __HwMemoryConjunction__ is a specialization of the __HwMemoryConstraint__ and used to link two __HwMemoryConstraints__ with each other. The conjunction between the constraints may either be AND (both constraints must be true) or OR (at least one of both constraints must be true).
 
-h4. HwMemoryProperty
+h3. Example
 
-The __HwMemoryProperty__ is a specialization of the __HwMemoryConstraint__ and used to describe the features and attributes a __Memory__ needs to provide in order to be a valid target. This is done by the __Memory__ revealing a 'prototype' of the __Memory__ the software expects. __Memory__ elements of hardware models are compared with this prototype w.r.t. the comparator, e.g. 'greater' means, the Memory of the hardware model needs to have higher attributes compared to the prototype core.
+!../pictures/model_propertyconstraints_example.png!
+

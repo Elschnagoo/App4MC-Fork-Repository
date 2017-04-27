@@ -98,7 +98,7 @@ There exists also an overhead for API calls. The following API calls are conside
 
 h3(#os-data-consistency). OS Data Consistency
 
-The __OsDataConsistency__ class provides a way to globally configure an automatic data consistency mechanism. It is used to cover the following two use cases:
+The __OsDataConsistency__ class provides a way to configure an automatic data consistency mechanism of an operating system. It is used to cover the following two use cases:
 * Provide a configuration for external tools that perform a data consistency calculation based on the stated information.
 * Provide the results of a performed data consistency calculation which then have to be considered by external tools (e.g. by timing simulation).
 
