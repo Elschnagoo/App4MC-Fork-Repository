@@ -56,27 +56,27 @@ public class HardwareModelTests {
 	/**
 	 * Test for validation method {@link HardwareModelCheckValidatorImpl#checkForHwAttributesDuplicateName(hwModel)}
 	 */
-	@Test
+	@Test //(perhaps can be reused for something useful)
 	public void testECUType_Attributes_NoDuplicatesSameType() {
 
-		final HWModel hwModel = AmaltheaFactory.eINSTANCE.createHWModel();
-		final ECUType ecuType = AmaltheaFactory.eINSTANCE.createECUType();
-		ecuType.setName("test_ECUType_name");
-
-		final StringObject strVal1 = AmaltheaFactory.eINSTANCE.createStringObject();
-		final StringObject strVal2 = AmaltheaFactory.eINSTANCE.createStringObject();
-
-		hwModel.getEcuTypes().add(ecuType);
-		ecuType.getCustomProperties().put("test_StrValue1_name", strVal1);
-		ecuType.getCustomProperties().put("test_StrValue2_name", strVal2);
-
-		EasyMock.replay(this.issueCreator);
-		EasyMock.replay(this.eObjectHelper);
-
-		this.classUnderTest.checkForHwAbstractTypeDuplicateName(hwModel);
-
-		EasyMock.verify(this.issueCreator);
-		EasyMock.verify(this.eObjectHelper);
+//		final HWModel hwModel = AmaltheaFactory.eINSTANCE.createHWModel();
+//		final ECUType ecuType = AmaltheaFactory.eINSTANCE.createECUType();
+//		ecuType.setName("test_ECUType_name");
+//
+//		final StringObject strVal1 = AmaltheaFactory.eINSTANCE.createStringObject();
+//		final StringObject strVal2 = AmaltheaFactory.eINSTANCE.createStringObject();
+//
+//		hwModel.getEcuTypes().add(ecuType);
+//		ecuType.getCustomProperties().put("test_StrValue1_name", strVal1);
+//		ecuType.getCustomProperties().put("test_StrValue2_name", strVal2);
+//
+//		EasyMock.replay(this.issueCreator);
+//		EasyMock.replay(this.eObjectHelper);
+//
+//		this.classUnderTest.checkForHwAbstractTypeDuplicateName(hwModel);
+//
+//		EasyMock.verify(this.issueCreator);
+//		EasyMock.verify(this.eObjectHelper);
 	}
 
 	/**

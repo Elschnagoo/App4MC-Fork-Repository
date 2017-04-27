@@ -33,7 +33,7 @@
     label="Duplicate Unique Name"
     description="Checks for duplicate unique names of IReferable objects"
     severity="Error"
-    message="Duplicate name found: {0}"
+    message="{0}: duplicate name '' {1} ''"
     categories="Basic"/>
 
   <constraints
@@ -48,7 +48,8 @@
     id="CustomPropertyDuplicateKey"
     label="Custom Property Duplicate Key"
     description="Checks for duplicate property keys"
-    message="{0} - Duplicate property found: {1}"
+    severity="Warning"
+    message="CustomProperty: duplicate key '' {2} ''"
     categories="Basic"/>
 
   <constraints
@@ -56,7 +57,7 @@
     label="Undefined Unit"
     description="Checks for undefined units"
     severity="Error"
-    message="{0}: undefined unit"
+    message="{0}: undefined unit ( in '' {1} '' )"
     categories="Basic"/>
 
   <constraints

@@ -24,6 +24,8 @@ public interface IEObjectHelper {
 	<T> List<T> getAllInstancesAndInheritedOf(final EObject contextObject, final Class<T> type);
 
 	Object getName(final EObject element);
+	
+	Object getClassName(final EObject element);
 
 	Object getAttributeValueOf(final EObject item, final String attribName);
 
