@@ -20,7 +20,7 @@ h5. Runnables
 
 !{width: 1000px}../pictures/user_sw_runtime_gantt_runnable.png!
 
-Runnables are basic software units. In general it can be said, that a Runnable is comparable to a function. It runs within the context of a process and is described by a sequence of instructions. Those instructions can again represent different actions that define the dynamic behavior of the software. Following, such possible actions are listed:
+Runnables are basic software units. In general it can be said that a Runnable is comparable to a function. It runs within the context of a process and is described by a sequence of instructions. Those instructions can again represent different actions that define the dynamic behavior of the software. Following, such possible actions are listed:
 * Semaphore Access: request/release of a semaphore
 * Label Access: reading/writing a data signal
 * Instructions: number of unspecified instructions to be executed
@@ -44,9 +44,11 @@ The main functionality of a semaphore is to control simultaneous use of a single
 
 h4. Stimulation
 
-Before, we described the dynamic behavior of a specific process instance. In general however, a process is not only activated once but many times. The action of activating a process is called stimulation. The following three stimulation patterns can thereby be distinguished:
+Before, we described the dynamic behavior of a specific process instance. In general however, a process is not only activated once but many times. The action of activating a process is called stimulation. The following stimulation patterns can thereby be distinguished:
 * Single: single activation of a process
 * Periodic: periodic activation of a process with a specific frequency
 * Sporadic: recurring activation of a process without following a specific pattern  
+* Event: activation triggered by a __TriggerEvent__
+* Custom: custom activation (free textual description)
 
 !../pictures/model__stimuli.png!

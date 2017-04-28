@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <isrs name="isr1" priority="0">
+      <size value="22" unit="byte"/>
+    </isrs>
+    <tasks name="task1" priority="0" osekTaskGroup="0" multipleTaskActivationLimit="0">
+      <size value="22" unit="byte"/>
+    </tasks>
+    <runnables name="r1" callback="false" service="false">
+      <size value="20" unit="byte"/>
+      <runnableItems xsi:type="am:Group" ordered="true">
+        <items xsi:type="am:LabelAccess">
+          <transmissionPolicy chunkProcessingInstructions="0" transmitRatio="1.0">
+            <chunkSize value="20" unit="byte"/>
+          </transmissionPolicy>
+        </items>
+        <items xsi:type="am:ChannelReceive" data="no-name?type=Channel" elements="0" dataMustBeNew="false" elementIndex="0" lowerBound="0">
+          <transmissionPolicy chunkProcessingInstructions="0" transmitRatio="1.0">
+            <chunkSize value="0" unit="byte"/>
+          </transmissionPolicy>
+        </items>
+        <items xsi:type="am:ChannelSend" data="no-name?type=Channel" elements="0">
+          <transmissionPolicy chunkProcessingInstructions="0" transmitRatio="1.0">
+            <chunkSize value="0" unit="kibit"/>
+          </transmissionPolicy>
+        </items>
+      </runnableItems>
+      <runnableItems xsi:type="am:LabelAccess">
+        <transmissionPolicy chunkProcessingInstructions="0" transmitRatio="1.0">
+          <chunkSize value="222"/>
+        </transmissionPolicy>
+      </runnableItems>
+      <runnableItems xsi:type="am:ChannelReceive" data="no-name?type=Channel" elements="0" dataMustBeNew="false" elementIndex="0" lowerBound="0">
+        <transmissionPolicy chunkProcessingInstructions="0" transmitRatio="1.0">
+          <chunkSize value="11" unit="byte"/>
+        </transmissionPolicy>
+      </runnableItems>
+      <runnableItems xsi:type="am:ChannelSend" data="no-name?type=Channel" elements="0">
+        <transmissionPolicy chunkProcessingInstructions="0" transmitRatio="1.0">
+          <chunkSize value="30" unit="kibit"/>
+        </transmissionPolicy>
+      </runnableItems>
+    </runnables>
+    <labels name="label1" constant="false" bVolatile="false">
+      <size value="333" unit="byte"/>
+    </labels>
+    <channels displayName="" defaultElements="0" maxElements="0">
+      <size value="22" unit="byte"/>
+    </channels>
+    <processPrototypes name="processprototype1" priority="0">
+      <size value="40" unit="byte"/>
+    </processPrototypes>
+    <typeDefinitions xsi:type="am:BaseTypeDefinition" name="btd1">
+      <size value="20" unit="kibit"/>
+    </typeDefinitions>
+    <typeDefinitions xsi:type="am:BaseTypeDefinition" name="btd2">
+      <size value="22" unit="byte"/>
+    </typeDefinitions>
+    <customEntities name="custentities">
+      <size value="55" unit="byte"/>
+    </customEntities>
+    <modeLabels name="modelabel1">
+      <size value="44" unit="byte"/>
+    </modeLabels>
+  </swModel>
+  <hwModel>
+    <memoryTypes name="mt1">
+      <size value="30" unit="byte"/>
+    </memoryTypes>
+  </hwModel>
+</am:Amalthea>

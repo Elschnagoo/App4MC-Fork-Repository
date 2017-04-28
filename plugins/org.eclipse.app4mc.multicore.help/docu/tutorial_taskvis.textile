@@ -1,0 +1,68 @@
+
+
+h3(#example-taskvis). Task Visualizer Example
+
+The following section describes how to visualize the execution of tasks along with their states on cores using the task visualizer plugin.
+
+*Preparation*
+
+In order to execute the task visualizer, it is necessary to describe the overall system in terms of an AMALTHEA Model file. The minimal amount of information consists of
+
+* Tasks (Software Model) which contain Runnables (Software Model) and refer to Periodic Activations (Stimuli Model)
+* Cores (Hardware Model)
+* Allocations of Tasks to Cores (Mapping Model) 
+
+Creating such a Model can either be done manually or by following the Tutorial on "Mapping example 1" 
+
+*Step 1*
+
+!../pictures/TaskVisualizer/01-taskvis.png!
+
+Right-click the file containing the System you would like to visualize and select "Visualize Task Execution" from the "AMALTHEA Multicore Features" context menu to open the Task Visualization Overview.
+
+*Step 2*
+
+!../pictures/TaskVisualizer/02-taskvis-overview.png!
+
+The Task Visualization Overview provides basic information about the software as well as the hardware of the system. The upper part summarizes the allocations of Tasks to Cores, along with the number of total instructions per Task, the period between a tasks activation, the core these tasks are allocated to, as well as the Worst Case Execution Time (WCET) in terms of ps and percentages of the cores total utilization. THe lower part summaraizes the available cores along with the number of computatable instructions per second (IPS) and their utilization (with 1.0 being 100%). Continue by clicking next to advance to the the Task Dependencie Overview. 
+
+*Step 3*
+
+!../pictures/TaskVisualizer/03-taskvis-dependencies.png!
+
+The Task Dependencies Overview visualizes the task graph with its inter-task dependencies as well as the communication delay. For simplicity, several restrictions are applied to the considered dependencies as illustrated in the box "Relations Filter".    
+
+If the check box "Consider task precedence" is deactivated, the tasks will be handled as batch tasks without any dependencies among each other.
+
+For this tutorial, we activate the task precedence consideration and advance to the scheduling selection by clicking next.
+
+*Step 4*
+
+!../pictures/TaskVisualizer/04-taskvis-scheduling.png!
+
+The Scheduling Selection screen allows to fine-tune the execution visualization and to specify a scheduling algorithm. Until now, the following scheduling approaches are implemented:
+
+* Preemptive Rate Monotonic Scheduling
+* Cooperative Earliest Deadline First
+* Preemptive Earliest Deadline First
+
+The scale allows configuring the "step" or "increment size" during the execution calculation, e.g. by setting this value to ms, each internal "tick" will increment the the execution model by one millisecond. If a task's total execution time is lower then the increment size, it will be round up to one millisecond. Consequently, the value should be set to a similar scale as the average execution time of the tasks.
+
+Finally, the Simulation-Time allows specifying the time frame which should be visualized, e.g. with a task period of 15 ms, a value of 30.000.000.000 ps (30 ms) will visualize 2 periods. 
+
+To continue with this tutorial, set all values as shown in the figure and click "Finish" to plot the Execution Visualization.
+
+*Step 5*
+
+!../pictures/TaskVisualizer/05-taskvis-traceview.png!
+
+Finally, a Gantt-Chart illustrating the execution of each core is shown. By double-clicking the tab "TraceView", you can maximize the window to full-screen.
+
+The top element of each chart illustrates the core's utilization, followed by the states of each task, which are defined as followed:
+
+* Green: Running
+* Yellow: Ready
+* Red: Suspended
+* Orange: Waiting
+
+The description of the actual state as well as their start/end times can also been seen by hovering the cursor over a state.

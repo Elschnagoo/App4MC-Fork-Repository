@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import org.eclipse.app4mc.amalthea.model.AbstractElementMapping;
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
-import org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation;
+import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
@@ -36,9 +36,12 @@ import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ComponentInstance;
 import org.eclipse.app4mc.amalthea.model.ComponentScope;
 import org.eclipse.app4mc.amalthea.model.Composite;
+import org.eclipse.app4mc.amalthea.model.Condition;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreAllocation;
+import org.eclipse.app4mc.amalthea.model.CoreClassification;
+import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
@@ -65,6 +68,7 @@ import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.GroupingType;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwAccessPathRef;
 import org.eclipse.app4mc.amalthea.model.HwElementRef;
@@ -86,6 +90,9 @@ import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LimitType;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Memory;
+import org.eclipse.app4mc.amalthea.model.MemoryClassification;
+import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
+import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
@@ -95,7 +102,6 @@ import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
-import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
@@ -135,8 +141,6 @@ import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverRead;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
-import org.eclipse.app4mc.amalthea.model.SignedTimeObject;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.StringObject;
@@ -207,6 +211,26 @@ public class CustomItemProviderService {
       }
     }
     return "";
+  }
+  
+  /**
+   * Pretty print methods
+   */
+  private static String ppCamelCase(final String s) {
+    String[] _splitByCharacterTypeCamelCase = StringUtils.splitByCharacterTypeCamelCase(s);
+    return StringUtils.join(_splitByCharacterTypeCamelCase, " ");
+  }
+  
+  private static String ppName(final String name) {
+    return CustomItemProviderService.ppName(name, "???");
+  }
+  
+  private static String ppName(final String name, final String surrogate) {
+    boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
+    if (_isNullOrEmpty) {
+      return surrogate;
+    }
+    return name;
   }
   
   private static String getFrequencyText(final Frequency frequency) {
@@ -416,19 +440,6 @@ public class CustomItemProviderService {
     if ((object instanceof LongObject)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
       return (_containingFeatureName + object);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  /**
-   * SignedTimeObjectItemProvider
-   */
-  public static String getSignedTimeObjectItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof SignedTimeObject)) {
-      String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeText = CustomItemProviderService.getTimeText(((AbstractTime)object));
-      return (_containingFeatureName + _timeText);
     } else {
       return defaultText;
     }
@@ -683,19 +694,6 @@ public class CustomItemProviderService {
   }
   
   /**
-   * SignedTimeItemProvider
-   */
-  public static String getSignedTimeItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof SignedTime)) {
-      String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeText = CustomItemProviderService.getTimeText(((AbstractTime)object));
-      return (_containingFeatureName + _timeText);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  /**
    * TimeItemProvider
    */
   public static String getTimeItemProviderText(final Object object, final String defaultText) {
@@ -846,14 +844,7 @@ public class CustomItemProviderService {
         _name=((Component)object).getName();
       }
       final String name = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<component>";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
+      final String s1 = CustomItemProviderService.ppName(name, "<component>");
       return s1;
     } else {
       return defaultText;
@@ -879,22 +870,8 @@ public class CustomItemProviderService {
         _name_1=_type.getName();
       }
       final String typeName = _name_1;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<component instance>";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(typeName);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "???";
-      } else {
-        _xifexpression_1 = typeName;
-      }
-      final String s2 = _xifexpression_1;
+      final String s1 = CustomItemProviderService.ppName(name, "<component instance>");
+      final String s2 = CustomItemProviderService.ppName(typeName);
       return (((s1 + " (type: ") + s2) + ")");
     } else {
       return defaultText;
@@ -939,14 +916,7 @@ public class CustomItemProviderService {
         _name=((Composite)object).getName();
       }
       final String name = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<composite>";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
+      final String s1 = CustomItemProviderService.ppName(name, "<composite>");
       return s1;
     } else {
       return defaultText;
@@ -963,14 +933,7 @@ public class CustomItemProviderService {
         _name=((Connector)object).getName();
       }
       final String name = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<connector>";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
+      final String s1 = CustomItemProviderService.ppName(name, "<connector>");
       return s1;
     } else {
       return defaultText;
@@ -997,29 +960,15 @@ public class CustomItemProviderService {
         _name=((FInterfacePort)object).getName();
       }
       final String name = _name;
+      final String s1 = CustomItemProviderService.ppName(cName, "<component>");
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(cName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<component>";
-      } else {
-        _xifexpression = cName;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
       if ((Objects.equal(kind, null) || Objects.equal(kind, InterfaceKind._UNDEFINED_))) {
-        _xifexpression_1 = "<kind>";
+        _xifexpression = "<kind>";
       } else {
-        _xifexpression_1 = kind.getLiteral();
+        _xifexpression = kind.getLiteral();
       }
-      final String s2 = _xifexpression_1;
-      String _xifexpression_2 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_2 = "<port>";
-      } else {
-        _xifexpression_2 = name;
-      }
-      final String s3 = _xifexpression_2;
+      final String s2 = _xifexpression;
+      final String s3 = CustomItemProviderService.ppName(name, "<port>");
       return ((((s1 + " ") + s2) + " ") + s3);
     } else {
       return defaultText;
@@ -1115,14 +1064,7 @@ public class CustomItemProviderService {
         _name=((org.eclipse.app4mc.amalthea.model.System)object).getName();
       }
       final String name = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<system>";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
+      final String s1 = CustomItemProviderService.ppName(name, "<system>");
       return s1;
     } else {
       return defaultText;
@@ -1144,22 +1086,15 @@ public class CustomItemProviderService {
         _event=((EventConfig)object).getEvent();
       }
       final EntityEvent event = _event;
+      final String s1 = CustomItemProviderService.ppName(name);
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "???";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
       boolean _equals = Objects.equal(event, null);
       if (_equals) {
-        _xifexpression_1 = "<event>";
+        _xifexpression = "<event>";
       } else {
-        _xifexpression_1 = CustomItemProviderService.getLabelProviderText(event, rootAF);
+        _xifexpression = CustomItemProviderService.getLabelProviderText(event, rootAF);
       }
-      String s2 = _xifexpression_1;
+      String s2 = _xifexpression;
       return ((("Config " + s1) + " -> trace ") + s2);
     } else {
       return defaultText;
@@ -1353,22 +1288,15 @@ public class CustomItemProviderService {
         _name_1=_component.getName();
       }
       final String compName = _name_1;
+      final String s1 = CustomItemProviderService.ppName(reqName);
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(reqName);
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(compName);
       if (_isNullOrEmpty) {
-        _xifexpression = "???";
+        _xifexpression = "<component>";
       } else {
-        _xifexpression = reqName;
+        _xifexpression = ("Component " + compName);
       }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(compName);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<component>";
-      } else {
-        _xifexpression_1 = ("Component " + compName);
-      }
-      final String s2 = _xifexpression_1;
+      final String s2 = _xifexpression;
       return ((("Req " + s1) + " -- ") + s2);
     } else {
       return defaultText;
@@ -1600,11 +1528,11 @@ public class CustomItemProviderService {
         _limitType=((TimeRequirementLimit)object).getLimitType();
       }
       final LimitType limitType = _limitType;
-      SignedTime _limitValue = null;
+      Time _limitValue = null;
       if (((TimeRequirementLimit)object)!=null) {
         _limitValue=((TimeRequirementLimit)object).getLimitValue();
       }
-      final SignedTime limitValue = _limitValue;
+      final Time limitValue = _limitValue;
       String _xifexpression = null;
       if ((Objects.equal(metric, null) || Objects.equal(metric, TimeMetric._UNDEFINED_))) {
         _xifexpression = "<time metric>";
@@ -1656,30 +1584,23 @@ public class CustomItemProviderService {
         _process=((ProcessRequirement)object).getProcess();
       }
       final AbstractProcess proc = _process;
+      final String s1 = CustomItemProviderService.ppName(reqName);
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(reqName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "???";
-      } else {
-        _xifexpression = reqName;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
       String _name_1 = null;
       if (proc!=null) {
         _name_1=proc.getName();
       }
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(_name_1);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<process>";
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name_1);
+      if (_isNullOrEmpty) {
+        _xifexpression = "<process>";
       } else {
         EClass _eClass = proc.eClass();
         String _name_2 = _eClass.getName();
         String _plus = (_name_2 + " ");
         String _name_3 = proc.getName();
-        _xifexpression_1 = (_plus + _name_3);
+        _xifexpression = (_plus + _name_3);
       }
-      final String s2 = _xifexpression_1;
+      final String s2 = _xifexpression;
       return ((("Req " + s1) + " -- ") + s2);
     } else {
       return defaultText;
@@ -1725,22 +1646,15 @@ public class CustomItemProviderService {
         _name_1=_runnable.getName();
       }
       final String runName = _name_1;
+      final String s1 = CustomItemProviderService.ppName(reqName);
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(reqName);
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(runName);
       if (_isNullOrEmpty) {
-        _xifexpression = "???";
+        _xifexpression = "<runnable>";
       } else {
-        _xifexpression = reqName;
+        _xifexpression = ("Runnable " + runName);
       }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(runName);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<runnable>";
-      } else {
-        _xifexpression_1 = ("Runnable " + runName);
-      }
-      final String s2 = _xifexpression_1;
+      final String s2 = _xifexpression;
       return ((("Req " + s1) + " -- ") + s2);
     } else {
       return defaultText;
@@ -1786,22 +1700,15 @@ public class CustomItemProviderService {
         _name_1=_processChain.getName();
       }
       final String pcName = _name_1;
+      final String s1 = CustomItemProviderService.ppName(reqName);
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(reqName);
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(pcName);
       if (_isNullOrEmpty) {
-        _xifexpression = "???";
+        _xifexpression = "<process chain>";
       } else {
-        _xifexpression = reqName;
+        _xifexpression = ("Process Chain " + pcName);
       }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(pcName);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<process chain>";
-      } else {
-        _xifexpression_1 = ("Process Chain " + pcName);
-      }
-      final String s2 = _xifexpression_1;
+      final String s2 = _xifexpression;
       return ((("Req " + s1) + " -- ") + s2);
     } else {
       return defaultText;
@@ -1908,53 +1815,46 @@ public class CustomItemProviderService {
         _scope=((DataCoherencyGroup)object).getScope();
       }
       final DataGroupScope scope = _scope;
+      final String s1 = CustomItemProviderService.ppName(name, "<group>");
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<group>";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
       if ((Objects.equal(direction, null) || Objects.equal(direction, CoherencyDirection._UNDEFINED_))) {
-        _xifexpression_1 = "<direction>";
+        _xifexpression = "<direction>";
       } else {
-        _xifexpression_1 = direction.getLiteral();
+        _xifexpression = direction.getLiteral();
       }
-      final String s2 = _xifexpression_1;
+      final String s2 = _xifexpression;
       String _switchResult = null;
       boolean _matched = false;
       if (scope instanceof RunnableScope) {
         _matched=true;
-        String _xifexpression_2 = null;
+        String _xifexpression_1 = null;
         org.eclipse.app4mc.amalthea.model.Runnable _runnable = ((RunnableScope)scope).getRunnable();
         String _name_1 = null;
         if (_runnable!=null) {
           _name_1=_runnable.getName();
         }
-        boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(_name_1);
-        if (_isNullOrEmpty_1) {
-          _xifexpression_2 = "<runnable>";
+        boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name_1);
+        if (_isNullOrEmpty) {
+          _xifexpression_1 = "<runnable>";
         } else {
           org.eclipse.app4mc.amalthea.model.Runnable _runnable_1 = ((RunnableScope)scope).getRunnable();
           String _name_2 = _runnable_1.getName();
-          _xifexpression_2 = ("Runnable " + _name_2);
+          _xifexpression_1 = ("Runnable " + _name_2);
         }
-        _switchResult = _xifexpression_2;
+        _switchResult = _xifexpression_1;
       }
       if (!_matched) {
         if (scope instanceof ProcessScope) {
           _matched=true;
-          String _xifexpression_2 = null;
+          String _xifexpression_1 = null;
           AbstractProcess _process = ((ProcessScope)scope).getProcess();
           String _name_1 = null;
           if (_process!=null) {
             _name_1=_process.getName();
           }
-          boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(_name_1);
-          if (_isNullOrEmpty_1) {
-            _xifexpression_2 = "<process>";
+          boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name_1);
+          if (_isNullOrEmpty) {
+            _xifexpression_1 = "<process>";
           } else {
             AbstractProcess _process_1 = ((ProcessScope)scope).getProcess();
             EClass _eClass = _process_1.eClass();
@@ -1962,29 +1862,29 @@ public class CustomItemProviderService {
             String _plus = (_name_2 + " ");
             AbstractProcess _process_2 = ((ProcessScope)scope).getProcess();
             String _name_3 = _process_2.getName();
-            _xifexpression_2 = (_plus + _name_3);
+            _xifexpression_1 = (_plus + _name_3);
           }
-          _switchResult = _xifexpression_2;
+          _switchResult = _xifexpression_1;
         }
       }
       if (!_matched) {
         if (scope instanceof ComponentScope) {
           _matched=true;
-          String _xifexpression_2 = null;
+          String _xifexpression_1 = null;
           Component _component = ((ComponentScope)scope).getComponent();
           String _name_1 = null;
           if (_component!=null) {
             _name_1=_component.getName();
           }
-          boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(_name_1);
-          if (_isNullOrEmpty_1) {
-            _xifexpression_2 = "<component>";
+          boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name_1);
+          if (_isNullOrEmpty) {
+            _xifexpression_1 = "<component>";
           } else {
             Component _component_1 = ((ComponentScope)scope).getComponent();
             String _name_2 = _component_1.getName();
-            _xifexpression_2 = ("Component " + _name_2);
+            _xifexpression_1 = ("Component " + _name_2);
           }
-          _switchResult = _xifexpression_2;
+          _switchResult = _xifexpression_1;
         }
       }
       if (!_matched) {
@@ -2040,14 +1940,7 @@ public class CustomItemProviderService {
       }
       final String chainName = _name;
       final String s1 = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(chainName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<chain>";
-      } else {
-        _xifexpression = chainName;
-      }
-      final String s2 = _xifexpression;
+      final String s2 = CustomItemProviderService.ppName(chainName, "<chain>");
       return (("Chain Ref " + s1) + s2);
     } else {
       return defaultText;
@@ -2294,30 +2187,9 @@ public class CustomItemProviderService {
         _name_2=_target.getName();
       }
       final String targetName = _name_2;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<path>";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(sourceName);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<source>";
-      } else {
-        _xifexpression_1 = sourceName;
-      }
-      final String s2 = _xifexpression_1;
-      String _xifexpression_2 = null;
-      boolean _isNullOrEmpty_2 = StringExtensions.isNullOrEmpty(targetName);
-      if (_isNullOrEmpty_2) {
-        _xifexpression_2 = "<target>";
-      } else {
-        _xifexpression_2 = targetName;
-      }
-      final String s3 = _xifexpression_2;
+      final String s1 = CustomItemProviderService.ppName(name, "<path>");
+      final String s2 = CustomItemProviderService.ppName(sourceName, "<source>");
+      final String s3 = CustomItemProviderService.ppName(targetName, "<target>");
       return ((((("AccessPath (Hardware) " + s1) + " : ") + s2) + " --> ") + s3);
     } else {
       return defaultText;
@@ -2394,14 +2266,17 @@ public class CustomItemProviderService {
       if (((HwAccessPathRef)object)!=null) {
         _ref=((HwAccessPathRef)object).getRef();
       }
-      final HwAccessPath ref = _ref;
+      String _name = null;
+      if (_ref!=null) {
+        _name=_ref.getName();
+      }
+      final String refName = _name;
       String _xifexpression = null;
-      boolean _equals = Objects.equal(ref, null);
-      if (_equals) {
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(refName);
+      if (_isNullOrEmpty) {
         _xifexpression = "<path ref>";
       } else {
-        String _name = ref.getName();
-        _xifexpression = ("Path " + _name);
+        _xifexpression = ("Path " + refName);
       }
       final String s1 = _xifexpression;
       return ("Ref -> " + s1);
@@ -2492,30 +2367,9 @@ public class CustomItemProviderService {
         _name_2=_target.getName();
       }
       final String targetName = _name_2;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<path>";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(sourceName);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<source>";
-      } else {
-        _xifexpression_1 = sourceName;
-      }
-      final String s2 = _xifexpression_1;
-      String _xifexpression_2 = null;
-      boolean _isNullOrEmpty_2 = StringExtensions.isNullOrEmpty(targetName);
-      if (_isNullOrEmpty_2) {
-        _xifexpression_2 = "<target>";
-      } else {
-        _xifexpression_2 = targetName;
-      }
-      final String s3 = _xifexpression_2;
+      final String s1 = CustomItemProviderService.ppName(name, "<path>");
+      final String s2 = CustomItemProviderService.ppName(sourceName, "<source>");
+      final String s3 = CustomItemProviderService.ppName(targetName, "<target>");
       return ((((("AccessPath (Latency) " + s1) + " : ") + s2) + " --> ") + s3);
     } else {
       return defaultText;
@@ -2686,16 +2540,12 @@ public class CustomItemProviderService {
         _xifexpression = ("Scheduler " + schedName);
       }
       final String s1 = _xifexpression;
-      final Function1<Core, String> _function = (Core it) -> {
-        String _xifexpression_1 = null;
-        String _name_1 = it.getName();
-        boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(_name_1);
-        if (_isNullOrEmpty_1) {
-          _xifexpression_1 = "???";
-        } else {
-          _xifexpression_1 = it.getName();
+      final Function1<Core, String> _function = (Core e) -> {
+        String _name_1 = null;
+        if (e!=null) {
+          _name_1=e.getName();
         }
-        return _xifexpression_1;
+        return CustomItemProviderService.ppName(_name_1);
       };
       List<String> _map = ListExtensions.<Core, String>map(cores, _function);
       final String s2 = IterableExtensions.join(_map, ", ");
@@ -2929,24 +2779,24 @@ public class CustomItemProviderService {
   }
   
   /**
-   * AbstractElementMappingItemProvider
+   * MemoryMappingItemProvider
    */
-  public static String getAbstractElementMappingItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof AbstractElementMapping)) {
+  public static String getMemoryMappingItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof MemoryMapping)) {
       Memory _memory = null;
-      if (((AbstractElementMapping)object)!=null) {
-        _memory=((AbstractElementMapping)object).getMemory();
+      if (((MemoryMapping)object)!=null) {
+        _memory=((MemoryMapping)object).getMemory();
       }
       String _name = null;
       if (_memory!=null) {
         _name=_memory.getName();
       }
       final String memName = _name;
-      AbstractElementMemoryInformation _abstractElement = null;
-      if (((AbstractElementMapping)object)!=null) {
-        _abstractElement=((AbstractElementMapping)object).getAbstractElement();
+      AbstractMemoryElement _abstractElement = null;
+      if (((MemoryMapping)object)!=null) {
+        _abstractElement=((MemoryMapping)object).getAbstractElement();
       }
-      final AbstractElementMemoryInformation elem = _abstractElement;
+      final AbstractMemoryElement elem = _abstractElement;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(memName);
       if (_isNullOrEmpty) {
@@ -2977,15 +2827,15 @@ public class CustomItemProviderService {
     }
   }
   
-  public static List<ViewerNotification> getAbstractElementMappingItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getMemoryMappingItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(AbstractElementMapping.class);
+    int _featureID = notification.getFeatureID(MemoryMapping.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING__MEMORY)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.MEMORY_MAPPING__MEMORY)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING__ABSTRACT_ELEMENT)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT)) {
         _matched=true;
       }
     }
@@ -3066,18 +2916,11 @@ public class CustomItemProviderService {
         _xifexpression_1 = _xifexpression_2;
       }
       final String sectionsString = _xifexpression_1;
-      String _xifexpression_3 = null;
       String _name_2 = null;
       if (((PhysicalSectionMapping)object)!=null) {
         _name_2=((PhysicalSectionMapping)object).getName();
       }
-      boolean _isNullOrEmpty_3 = StringExtensions.isNullOrEmpty(_name_2);
-      if (_isNullOrEmpty_3) {
-        _xifexpression_3 = "<name>";
-      } else {
-        _xifexpression_3 = ((PhysicalSectionMapping)object).getName();
-      }
-      final String s0 = _xifexpression_3;
+      final String s0 = CustomItemProviderService.ppName(_name_2, "<name>");
       return ((((((s0 + " : (") + sectionsString) + ")") + " --> (") + memoryString) + ")");
     } else {
       return defaultText;
@@ -3342,15 +3185,98 @@ public class CustomItemProviderService {
   }
   
   /**
+   * CoreClassificationItemProvider
+   */
+  public static String getCoreClassificationItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof CoreClassification)) {
+      Condition _condition = null;
+      if (((CoreClassification)object)!=null) {
+        _condition=((CoreClassification)object).getCondition();
+      }
+      final Condition con = _condition;
+      GroupingType _grouping = null;
+      if (((CoreClassification)object)!=null) {
+        _grouping=((CoreClassification)object).getGrouping();
+      }
+      final GroupingType grp = _grouping;
+      EList<CoreClassifier> _classifiers = null;
+      if (((CoreClassification)object)!=null) {
+        _classifiers=((CoreClassification)object).getClassifiers();
+      }
+      final EList<CoreClassifier> cla = _classifiers;
+      String _xifexpression = null;
+      if ((Objects.equal(con, null) || Objects.equal(con, Condition._UNDEFINED_))) {
+        _xifexpression = "<condition>";
+      } else {
+        _xifexpression = con.getLiteral();
+      }
+      final String s1 = _xifexpression;
+      String _xifexpression_1 = null;
+      if ((Objects.equal(grp, null) || Objects.equal(grp, GroupingType._UNDEFINED_))) {
+        _xifexpression_1 = "<grouping>";
+      } else {
+        String _literal = grp.getLiteral();
+        String _ppCamelCase = CustomItemProviderService.ppCamelCase(_literal);
+        _xifexpression_1 = _ppCamelCase.toLowerCase();
+      }
+      final String s2 = _xifexpression_1;
+      String _xifexpression_2 = null;
+      boolean _isNullOrEmpty = IterableExtensions.isNullOrEmpty(cla);
+      if (_isNullOrEmpty) {
+        _xifexpression_2 = "<classifiers>";
+      } else {
+        final Function1<CoreClassifier, String> _function = (CoreClassifier e) -> {
+          String _name = null;
+          if (e!=null) {
+            _name=e.getName();
+          }
+          return CustomItemProviderService.ppName(_name);
+        };
+        List<String> _map = ListExtensions.<CoreClassifier, String>map(cla, _function);
+        _xifexpression_2 = IterableExtensions.join(_map, ", ");
+      }
+      final String s3 = _xifexpression_2;
+      return ((((s1 + " (") + s2) + "): ") + s3);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getCoreClassificationItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(CoreClassification.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.CORE_CLASSIFICATION__CONDITION)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.CORE_CLASSIFICATION__GROUPING)) {
+        _matched=true;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.CORE_CLASSIFICATION__CLASSIFIERS)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+    }
+    return list;
+  }
+  
+  /**
    * AbstractElementMappingConstraintItemProvider
    */
   public static String getAbstractElementMappingConstraintItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof AbstractElementMappingConstraint)) {
-      AbstractElementMemoryInformation _abstractElement = null;
+      AbstractMemoryElement _abstractElement = null;
       if (((AbstractElementMappingConstraint)object)!=null) {
         _abstractElement=((AbstractElementMappingConstraint)object).getAbstractElement();
       }
-      final AbstractElementMemoryInformation elem = _abstractElement;
+      final AbstractMemoryElement elem = _abstractElement;
       String _xifexpression = null;
       String _name = null;
       if (elem!=null) {
@@ -3387,6 +3313,89 @@ public class CustomItemProviderService {
   }
   
   /**
+   * MemoryClassificationItemProvider
+   */
+  public static String getMemoryClassificationItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof MemoryClassification)) {
+      Condition _condition = null;
+      if (((MemoryClassification)object)!=null) {
+        _condition=((MemoryClassification)object).getCondition();
+      }
+      final Condition con = _condition;
+      GroupingType _grouping = null;
+      if (((MemoryClassification)object)!=null) {
+        _grouping=((MemoryClassification)object).getGrouping();
+      }
+      final GroupingType grp = _grouping;
+      EList<MemoryClassifier> _classifiers = null;
+      if (((MemoryClassification)object)!=null) {
+        _classifiers=((MemoryClassification)object).getClassifiers();
+      }
+      final EList<MemoryClassifier> cla = _classifiers;
+      String _xifexpression = null;
+      if ((Objects.equal(con, null) || Objects.equal(con, Condition._UNDEFINED_))) {
+        _xifexpression = "<condition>";
+      } else {
+        _xifexpression = con.getLiteral();
+      }
+      final String s1 = _xifexpression;
+      String _xifexpression_1 = null;
+      if ((Objects.equal(grp, null) || Objects.equal(grp, GroupingType._UNDEFINED_))) {
+        _xifexpression_1 = "<grouping>";
+      } else {
+        String _literal = grp.getLiteral();
+        String _ppCamelCase = CustomItemProviderService.ppCamelCase(_literal);
+        _xifexpression_1 = _ppCamelCase.toLowerCase();
+      }
+      final String s2 = _xifexpression_1;
+      String _xifexpression_2 = null;
+      boolean _isNullOrEmpty = IterableExtensions.isNullOrEmpty(cla);
+      if (_isNullOrEmpty) {
+        _xifexpression_2 = "<classifiers>";
+      } else {
+        final Function1<MemoryClassifier, String> _function = (MemoryClassifier e) -> {
+          String _name = null;
+          if (e!=null) {
+            _name=e.getName();
+          }
+          return CustomItemProviderService.ppName(_name);
+        };
+        List<String> _map = ListExtensions.<MemoryClassifier, String>map(cla, _function);
+        _xifexpression_2 = IterableExtensions.join(_map, ", ");
+      }
+      final String s3 = _xifexpression_2;
+      return ((((s1 + " (") + s2) + "): ") + s3);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getMemoryClassificationItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(MemoryClassification.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.MEMORY_CLASSIFICATION__CONDITION)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MEMORY_CLASSIFICATION__GROUPING)) {
+        _matched=true;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MEMORY_CLASSIFICATION__CLASSIFIERS)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+    }
+    return list;
+  }
+  
+  /**
    * ModeValueListItemProvider
    */
   public static String getModeValueListItemProviderText(final Object object, final String defaultText) {
@@ -3403,11 +3412,11 @@ public class CustomItemProviderService {
    */
   public static String getModeValueListEntryItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ModeValueListEntry)) {
-      ModeValueProvider _valueProvider = null;
+      ModeLabel _valueProvider = null;
       if (((ModeValueListEntry)object)!=null) {
         _valueProvider=((ModeValueListEntry)object).getValueProvider();
       }
-      final ModeValueProvider prov = _valueProvider;
+      final ModeLabel prov = _valueProvider;
       ModeLiteral _value = null;
       if (((ModeValueListEntry)object)!=null) {
         _value=((ModeValueListEntry)object).getValue();
@@ -3630,37 +3639,16 @@ public class CustomItemProviderService {
         _orderType=((AccessPrecedenceSpec)object).getOrderType();
       }
       final AccessPrecedenceType accessType = _orderType;
+      final String s1 = CustomItemProviderService.ppName(originName, "<runnable>");
+      final String s2 = CustomItemProviderService.ppName(targetName, "<runnable>");
+      final String s3 = CustomItemProviderService.ppName(labelName, "<label>");
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(originName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<runnable>";
-      } else {
-        _xifexpression = originName;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(targetName);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<runnable>";
-      } else {
-        _xifexpression_1 = targetName;
-      }
-      final String s2 = _xifexpression_1;
-      String _xifexpression_2 = null;
-      boolean _isNullOrEmpty_2 = StringExtensions.isNullOrEmpty(labelName);
-      if (_isNullOrEmpty_2) {
-        _xifexpression_2 = "<label>";
-      } else {
-        _xifexpression_2 = labelName;
-      }
-      final String s3 = _xifexpression_2;
-      String _xifexpression_3 = null;
       if ((Objects.equal(accessType, null) || Objects.equal(accessType, AccessPrecedenceType._UNDEFINED_))) {
-        _xifexpression_3 = "<access>";
+        _xifexpression = "<access>";
       } else {
-        _xifexpression_3 = accessType.getLiteral();
+        _xifexpression = accessType.getLiteral();
       }
-      final String s4 = _xifexpression_3;
+      final String s4 = _xifexpression;
       return (((((((("Spec: " + s1) + " --> ") + s2) + " (") + s3) + " : ") + s4) + ")");
     } else {
       return defaultText;
@@ -3725,29 +3713,15 @@ public class CustomItemProviderService {
         _orderType=((OrderPrecedenceSpec)object).getOrderType();
       }
       final OrderType order = _orderType;
+      final String s1 = CustomItemProviderService.ppName(originName, "<runnable>");
+      final String s2 = CustomItemProviderService.ppName(targetName, "<runnable>");
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(originName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<Runnable>";
-      } else {
-        _xifexpression = originName;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(targetName);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<Runnable>";
-      } else {
-        _xifexpression_1 = targetName;
-      }
-      final String s2 = _xifexpression_1;
-      String _xifexpression_2 = null;
       if ((Objects.equal(order, null) || Objects.equal(order, OrderType._UNDEFINED_))) {
-        _xifexpression_2 = "<order>";
+        _xifexpression = "<order>";
       } else {
-        _xifexpression_2 = order.getLiteral();
+        _xifexpression = order.getLiteral();
       }
-      final String s3 = _xifexpression_2;
+      final String s3 = _xifexpression;
       return (((((("Spec: " + s1) + " --> ") + s2) + " (") + s3) + ")");
     } else {
       return defaultText;
@@ -3802,22 +3776,8 @@ public class CustomItemProviderService {
         _name_1=_resultRunnable.getName();
       }
       final String resultRun = _name_1;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(serverRun);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<runnable>";
-      } else {
-        _xifexpression = serverRun;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(resultRun);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<runnable>";
-      } else {
-        _xifexpression_1 = resultRun;
-      }
-      final String s2 = _xifexpression_1;
+      final String s1 = CustomItemProviderService.ppName(serverRun, "<runnable>");
+      final String s2 = CustomItemProviderService.ppName(resultRun, "<runnable>");
       return (((("call server: " + s1) + " (async - result: ") + s2) + ")");
     } else {
       return defaultText;
@@ -3863,21 +3823,14 @@ public class CustomItemProviderService {
         _waitingBehaviour=((SynchronousServerCall)object).getWaitingBehaviour();
       }
       final WaitingBehaviour waiting = _waitingBehaviour;
+      final String s1 = CustomItemProviderService.ppName(serverRun, "<runnable>");
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(serverRun);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<runnable>";
-      } else {
-        _xifexpression = serverRun;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
       if ((Objects.equal(waiting, null) || Objects.equal(waiting, WaitingBehaviour._UNDEFINED_))) {
-        _xifexpression_1 = "undefined";
+        _xifexpression = "undefined";
       } else {
-        _xifexpression_1 = waiting.getLiteral();
+        _xifexpression = waiting.getLiteral();
       }
-      final String s2 = _xifexpression_1;
+      final String s2 = _xifexpression;
       return (((("call server: " + s1) + " (sync - ") + s2) + " waiting)");
     } else {
       return defaultText;
@@ -3934,14 +3887,7 @@ public class CustomItemProviderService {
         _xifexpression_1 = ((ChainedProcessPrototype)object).getOffset();
       }
       final int offset = _xifexpression_1;
-      String _xifexpression_2 = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(proto);
-      if (_isNullOrEmpty) {
-        _xifexpression_2 = "<process prototype>";
-      } else {
-        _xifexpression_2 = proto;
-      }
-      final String s1 = _xifexpression_2;
+      final String s1 = CustomItemProviderService.ppName(proto, "<process prototype>");
       return (((((("Chained Prototype " + s1) + "(apply: ") + Integer.valueOf(apply)) + " offset: ") + Integer.valueOf(offset)) + ")");
     } else {
       return defaultText;
@@ -4048,15 +3994,8 @@ public class CustomItemProviderService {
       if (_stimulus!=null) {
         _name=_stimulus.getName();
       }
-      final String sitmulusName = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(sitmulusName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<stimulus>";
-      } else {
-        _xifexpression = sitmulusName;
-      }
-      final String s1 = _xifexpression;
+      final String stimulusName = _name;
+      final String s1 = CustomItemProviderService.ppName(stimulusName, "<stimulus>");
       return ("activate " + s1);
     } else {
       return defaultText;
@@ -4099,22 +4038,8 @@ public class CustomItemProviderService {
         _name=_mode.getName();
       }
       final String modeName = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<mode label>";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(modeName);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<mode>";
-      } else {
-        _xifexpression_1 = modeName;
-      }
-      final String s2 = _xifexpression_1;
+      final String s1 = CustomItemProviderService.ppName(name, "<mode label>");
+      final String s2 = CustomItemProviderService.ppName(modeName, "<mode>");
       return (((s1 + " (") + s2) + ")");
     } else {
       return defaultText;
@@ -4146,13 +4071,13 @@ public class CustomItemProviderService {
    */
   public static String getModeSwitchItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ModeSwitch)) {
-      ModeValueProvider _valueProvider = ((ModeSwitch)object).getValueProvider();
+      ModeLabel _valueProvider = ((ModeSwitch)object).getValueProvider();
       String _name = null;
       if (_valueProvider!=null) {
         _name=_valueProvider.getName();
       }
       final String valueName = _name;
-      ModeValueProvider _valueProvider_1 = ((ModeSwitch)object).getValueProvider();
+      ModeLabel _valueProvider_1 = ((ModeSwitch)object).getValueProvider();
       Mode _mode = null;
       if (_valueProvider_1!=null) {
         _mode=_valueProvider_1.getMode();
@@ -4162,22 +4087,8 @@ public class CustomItemProviderService {
         _name_1=_mode.getName();
       }
       final String modeName = _name_1;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(valueName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<mode label>";
-      } else {
-        _xifexpression = valueName;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(modeName);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<mode>";
-      } else {
-        _xifexpression_1 = modeName;
-      }
-      final String s2 = _xifexpression_1;
+      final String s1 = CustomItemProviderService.ppName(valueName, "<mode label>");
+      final String s2 = CustomItemProviderService.ppName(modeName, "<mode>");
       return (((("Switch " + s1) + " (") + s2) + ")");
     } else {
       return defaultText;
@@ -4217,13 +4128,13 @@ public class CustomItemProviderService {
    */
   public static String getRunnableModeSwitchItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof RunnableModeSwitch)) {
-      ModeValueProvider _valueProvider = ((RunnableModeSwitch)object).getValueProvider();
+      ModeLabel _valueProvider = ((RunnableModeSwitch)object).getValueProvider();
       String _name = null;
       if (_valueProvider!=null) {
         _name=_valueProvider.getName();
       }
       final String valueName = _name;
-      ModeValueProvider _valueProvider_1 = ((RunnableModeSwitch)object).getValueProvider();
+      ModeLabel _valueProvider_1 = ((RunnableModeSwitch)object).getValueProvider();
       Mode _mode = null;
       if (_valueProvider_1!=null) {
         _mode=_valueProvider_1.getMode();
@@ -4233,22 +4144,8 @@ public class CustomItemProviderService {
         _name_1=_mode.getName();
       }
       final String modeName = _name_1;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(valueName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<mode label>";
-      } else {
-        _xifexpression = valueName;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(modeName);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<mode>";
-      } else {
-        _xifexpression_1 = modeName;
-      }
-      final String s2 = _xifexpression_1;
+      final String s1 = CustomItemProviderService.ppName(valueName, "<mode label>");
+      final String s2 = CustomItemProviderService.ppName(modeName, "<mode>");
       return (((("Switch " + s1) + " (") + s2) + ")");
     } else {
       return defaultText;
@@ -4357,14 +4254,7 @@ public class CustomItemProviderService {
         _name=_runnable.getName();
       }
       final String runName = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(runName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<runnable>";
-      } else {
-        _xifexpression = runName;
-      }
-      final String s1 = _xifexpression;
+      final String s1 = CustomItemProviderService.ppName(runName, "<runnable>");
       return ("call " + s1);
     } else {
       return defaultText;
@@ -4418,14 +4308,7 @@ public class CustomItemProviderService {
         _xifexpression = access.getLiteral();
       }
       final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(labelName);
-      if (_isNullOrEmpty) {
-        _xifexpression_1 = "<label>";
-      } else {
-        _xifexpression_1 = labelName;
-      }
-      final String s2 = _xifexpression_1;
+      final String s2 = CustomItemProviderService.ppName(labelName, "<label>");
       return ((s1 + " ") + s2);
     } else {
       return defaultText;
@@ -4498,14 +4381,7 @@ public class CustomItemProviderService {
         _name=_data.getName();
       }
       final String data = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(data);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<channel>";
-      } else {
-        _xifexpression = data;
-      }
-      final String s1 = _xifexpression;
+      final String s1 = CustomItemProviderService.ppName(data, "<channel>");
       return ("receive from " + s1);
     } else {
       return defaultText;
@@ -4526,14 +4402,7 @@ public class CustomItemProviderService {
         _name=_data.getName();
       }
       final String data = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(data);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<channel>";
-      } else {
-        _xifexpression = data;
-      }
-      final String s1 = _xifexpression;
+      final String s1 = CustomItemProviderService.ppName(data, "<channel>");
       return ("send to " + s1);
     } else {
       return defaultText;
@@ -4566,14 +4435,7 @@ public class CustomItemProviderService {
         _xifexpression = access.getLiteral();
       }
       final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(semName);
-      if (_isNullOrEmpty) {
-        _xifexpression_1 = "<semaphore>";
-      } else {
-        _xifexpression_1 = semName;
-      }
-      final String s2 = _xifexpression_1;
+      final String s2 = CustomItemProviderService.ppName(semName, "<semaphore>");
       return ((s1 + " ") + s2);
     } else {
       return defaultText;
@@ -4626,14 +4488,7 @@ public class CustomItemProviderService {
         _xifexpression = access.getLiteral();
       }
       final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(label);
-      if (_isNullOrEmpty) {
-        _xifexpression_1 = "<mode label>";
-      } else {
-        _xifexpression_1 = label;
-      }
-      final String s2 = _xifexpression_1;
+      final String s2 = CustomItemProviderService.ppName(label, "<mode label>");
       return ((s1 + " ") + s2);
     } else {
       return defaultText;
@@ -4736,14 +4591,7 @@ public class CustomItemProviderService {
         _name=_runnable.getName();
       }
       final String runName = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(runName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<runnable>";
-      } else {
-        _xifexpression = runName;
-      }
-      final String s1 = _xifexpression;
+      final String s1 = CustomItemProviderService.ppName(runName, "<runnable>");
       return ("call " + s1);
     } else {
       return defaultText;
@@ -4942,14 +4790,7 @@ public class CustomItemProviderService {
         _name=((BaseTypeDefinition)object).getName();
       }
       final String name = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<type definition>";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
+      final String s1 = CustomItemProviderService.ppName(name, "<type definition>");
       return ("BaseType " + s1);
     } else {
       return defaultText;
@@ -4966,14 +4807,7 @@ public class CustomItemProviderService {
         _name=((TypeDefinition)object).getName();
       }
       final String name = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<type definition>";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
+      final String s1 = CustomItemProviderService.ppName(name, "<type definition>");
       return ("Type " + s1);
     } else {
       return defaultText;
@@ -4994,14 +4828,7 @@ public class CustomItemProviderService {
         _name=_typeDef.getName();
       }
       final String typeName = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(typeName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<type definition>";
-      } else {
-        _xifexpression = typeName;
-      }
-      final String s1 = _xifexpression;
+      final String s1 = CustomItemProviderService.ppName(typeName, "<type definition>");
       return ("TypeRef " + s1);
     } else {
       return defaultText;
@@ -5036,22 +4863,8 @@ public class CustomItemProviderService {
         _platformType=((DataPlatformMapping)object).getPlatformType();
       }
       final String typeName = _platformType;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<platform>";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(typeName);
-      if (_isNullOrEmpty_1) {
-        _xifexpression_1 = "<type>";
-      } else {
-        _xifexpression_1 = typeName;
-      }
-      final String s2 = _xifexpression_1;
+      final String s1 = CustomItemProviderService.ppName(name, "<platform>");
+      final String s2 = CustomItemProviderService.ppName(typeName, "<type>");
       return ((("Platform Mapping: " + s1) + " --> ") + s2);
     } else {
       return defaultText;
@@ -5068,14 +4881,7 @@ public class CustomItemProviderService {
         _name=((DataTypeDefinition)object).getName();
       }
       final String name = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
-      if (_isNullOrEmpty) {
-        _xifexpression = "???";
-      } else {
-        _xifexpression = name;
-      }
-      final String s1 = _xifexpression;
+      final String s1 = CustomItemProviderService.ppName(name);
       return ("DataType " + s1);
     } else {
       return defaultText;

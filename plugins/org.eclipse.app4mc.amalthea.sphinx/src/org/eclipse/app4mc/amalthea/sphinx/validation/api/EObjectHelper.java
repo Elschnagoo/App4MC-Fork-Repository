@@ -25,50 +25,62 @@ import org.eclipse.sphinx.emf.util.EObjectUtil;
 public class EObjectHelper implements IEObjectHelper {
 
 	@Override
-	public Object getName(final EObject element) {
-		return getAttributeValueOf(element, "name"); //$NON-NLS-1$
+	public Object getName(final EObject obj) {
+		if (obj == null) return "???";
+		
+		return getAttributeValueOf(obj, "name"); //$NON-NLS-1$
 	}
 
 	@Override
-	public Object getAttributeValueOf(final EObject item, final String attribName) {
-		for (final EAttribute attr : item.eClass().getEAllAttributes()) {
+	public Object getClassName(EObject obj) {
+		if (obj == null) return "???";
+
+		return obj.eClass().getName();
+	}
+
+	@Override
+	public Object getAttributeValueOf(final EObject obj, final String attribName) {
+		if (obj == null) return "???";
+
+		for (final EAttribute attr : obj.eClass().getEAllAttributes()) {
 			if (attr.getName().equalsIgnoreCase(attribName)) {
-				return item.eGet(attr);
+				Object value = obj.eGet(attr);
+				if (value != null) return value;
 			}
 		}
 
-		return item.eClass().getName();
+		return obj.eClass().getName();
 	}
 
 
 	@Override
-	public void printAllAttributesOf(final EObject item, final boolean... verbose) {
+	public void printAllAttributesOf(final EObject obj, final boolean... verbose) {
 		System.out.println("A*********************************************************A");
-		System.out.println("Name (=InstanceClass): " + item.eClass().getName());
+		System.out.println("Name (=InstanceClass): " + obj.eClass().getName());
 
 		/**
 		 * Checks whether to output more attribute relevant information or not
 		 */
 		if (verbose.length > 0 ? verbose[0] : false) {
-			System.out.println("InstanceClassName: " + item.eClass().getInstanceClassName());
-			System.out.println("InstanceTypeName: " + item.eClass().getInstanceTypeName());
-			System.out.println("Operation Cnt: " + item.eClass().getOperationCount());
-			System.out.println("eOperations Cnt: " + item.eClass().getEOperations().size());
-			System.out.println("eAttributes Cnt: " + item.eClass().getEAttributes().size());
-			System.out.println("eReferences Cnt: " + item.eClass().getEReferences().size());
+			System.out.println("InstanceClassName: " + obj.eClass().getInstanceClassName());
+			System.out.println("InstanceTypeName: " + obj.eClass().getInstanceTypeName());
+			System.out.println("Operation Cnt: " + obj.eClass().getOperationCount());
+			System.out.println("eOperations Cnt: " + obj.eClass().getEOperations().size());
+			System.out.println("eAttributes Cnt: " + obj.eClass().getEAttributes().size());
+			System.out.println("eReferences Cnt: " + obj.eClass().getEReferences().size());
 		}
 
-		for (final EAttribute attr : item.eClass().getEAttributes()) {
+		for (final EAttribute attr : obj.eClass().getEAttributes()) {
 			System.out.println("  - Attribute pair: {name -> value}: \"" + attr.getName() + "\" -> \""
-					+ item.eGet(attr) + "\"");
+					+ obj.eGet(attr) + "\"");
 		}
 
-		for (final EReference ref : item.eClass().getEReferences()) {
-			System.out.println("  + Reference pair: {name -> value}: \"" + ref.getName() + "\" -> \"" + item.eGet(ref)
+		for (final EReference ref : obj.eClass().getEReferences()) {
+			System.out.println("  + Reference pair: {name -> value}: \"" + ref.getName() + "\" -> \"" + obj.eGet(ref)
 					+ "\"");
 		}
 
-		for (final EOperation op : item.eClass().getEOperations()) {
+		for (final EOperation op : obj.eClass().getEOperations()) {
 			System.out.println("  * Operation name: \"" + op.getName() + "\"");
 		}
 

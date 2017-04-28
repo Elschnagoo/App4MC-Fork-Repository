@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -42,6 +42,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsAPIInstructionsImpl#getApiClearEvent <em>Api Clear Event</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsAPIInstructionsImpl#getApiActivateTask <em>Api Activate Task</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsAPIInstructionsImpl#getApiEnforcedMigration <em>Api Enforced Migration</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsAPIInstructionsImpl#getApiSuspendOsInterrupts <em>Api Suspend Os Interrupts</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsAPIInstructionsImpl#getApiResumeOsInterrupts <em>Api Resume Os Interrupts</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsAPIInstructionsImpl#getApiRequestSpinlock <em>Api Request Spinlock</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsAPIInstructionsImpl#getApiReleaseSpinlock <em>Api Release Spinlock</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsAPIInstructionsImpl#getApiSenderReceiverRead <em>Api Sender Receiver Read</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsAPIInstructionsImpl#getApiSenderReceiverWrite <em>Api Sender Receiver Write</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsAPIInstructionsImpl#getApiSynchronousServerCallPoint <em>Api Synchronous Server Call Point</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsAPIInstructionsImpl#getApiIocRead <em>Api Ioc Read</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsAPIInstructionsImpl#getApiIocWrite <em>Api Ioc Write</em>}</li>
  * </ul>
  *
  * @generated
@@ -146,6 +155,96 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * @ordered
 	 */
 	protected Instructions apiEnforcedMigration;
+
+	/**
+	 * The cached value of the '{@link #getApiSuspendOsInterrupts() <em>Api Suspend Os Interrupts</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApiSuspendOsInterrupts()
+	 * @generated
+	 * @ordered
+	 */
+	protected Instructions apiSuspendOsInterrupts;
+
+	/**
+	 * The cached value of the '{@link #getApiResumeOsInterrupts() <em>Api Resume Os Interrupts</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApiResumeOsInterrupts()
+	 * @generated
+	 * @ordered
+	 */
+	protected Instructions apiResumeOsInterrupts;
+
+	/**
+	 * The cached value of the '{@link #getApiRequestSpinlock() <em>Api Request Spinlock</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApiRequestSpinlock()
+	 * @generated
+	 * @ordered
+	 */
+	protected Instructions apiRequestSpinlock;
+
+	/**
+	 * The cached value of the '{@link #getApiReleaseSpinlock() <em>Api Release Spinlock</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApiReleaseSpinlock()
+	 * @generated
+	 * @ordered
+	 */
+	protected Instructions apiReleaseSpinlock;
+
+	/**
+	 * The cached value of the '{@link #getApiSenderReceiverRead() <em>Api Sender Receiver Read</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApiSenderReceiverRead()
+	 * @generated
+	 * @ordered
+	 */
+	protected Instructions apiSenderReceiverRead;
+
+	/**
+	 * The cached value of the '{@link #getApiSenderReceiverWrite() <em>Api Sender Receiver Write</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApiSenderReceiverWrite()
+	 * @generated
+	 * @ordered
+	 */
+	protected Instructions apiSenderReceiverWrite;
+
+	/**
+	 * The cached value of the '{@link #getApiSynchronousServerCallPoint() <em>Api Synchronous Server Call Point</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApiSynchronousServerCallPoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected Instructions apiSynchronousServerCallPoint;
+
+	/**
+	 * The cached value of the '{@link #getApiIocRead() <em>Api Ioc Read</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApiIocRead()
+	 * @generated
+	 * @ordered
+	 */
+	protected Instructions apiIocRead;
+
+	/**
+	 * The cached value of the '{@link #getApiIocWrite() <em>Api Ioc Write</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApiIocWrite()
+	 * @generated
+	 * @ordered
+	 */
+	protected Instructions apiIocWrite;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -601,6 +700,393 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Instructions getApiSuspendOsInterrupts() {
+		return apiSuspendOsInterrupts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetApiSuspendOsInterrupts(Instructions newApiSuspendOsInterrupts, NotificationChain msgs) {
+		Instructions oldApiSuspendOsInterrupts = apiSuspendOsInterrupts;
+		apiSuspendOsInterrupts = newApiSuspendOsInterrupts;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SUSPEND_OS_INTERRUPTS, oldApiSuspendOsInterrupts, newApiSuspendOsInterrupts);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApiSuspendOsInterrupts(Instructions newApiSuspendOsInterrupts) {
+		if (newApiSuspendOsInterrupts != apiSuspendOsInterrupts) {
+			NotificationChain msgs = null;
+			if (apiSuspendOsInterrupts != null)
+				msgs = ((InternalEObject)apiSuspendOsInterrupts).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SUSPEND_OS_INTERRUPTS, null, msgs);
+			if (newApiSuspendOsInterrupts != null)
+				msgs = ((InternalEObject)newApiSuspendOsInterrupts).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SUSPEND_OS_INTERRUPTS, null, msgs);
+			msgs = basicSetApiSuspendOsInterrupts(newApiSuspendOsInterrupts, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SUSPEND_OS_INTERRUPTS, newApiSuspendOsInterrupts, newApiSuspendOsInterrupts));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Instructions getApiResumeOsInterrupts() {
+		return apiResumeOsInterrupts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetApiResumeOsInterrupts(Instructions newApiResumeOsInterrupts, NotificationChain msgs) {
+		Instructions oldApiResumeOsInterrupts = apiResumeOsInterrupts;
+		apiResumeOsInterrupts = newApiResumeOsInterrupts;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_RESUME_OS_INTERRUPTS, oldApiResumeOsInterrupts, newApiResumeOsInterrupts);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApiResumeOsInterrupts(Instructions newApiResumeOsInterrupts) {
+		if (newApiResumeOsInterrupts != apiResumeOsInterrupts) {
+			NotificationChain msgs = null;
+			if (apiResumeOsInterrupts != null)
+				msgs = ((InternalEObject)apiResumeOsInterrupts).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_RESUME_OS_INTERRUPTS, null, msgs);
+			if (newApiResumeOsInterrupts != null)
+				msgs = ((InternalEObject)newApiResumeOsInterrupts).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_RESUME_OS_INTERRUPTS, null, msgs);
+			msgs = basicSetApiResumeOsInterrupts(newApiResumeOsInterrupts, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_RESUME_OS_INTERRUPTS, newApiResumeOsInterrupts, newApiResumeOsInterrupts));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Instructions getApiRequestSpinlock() {
+		return apiRequestSpinlock;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetApiRequestSpinlock(Instructions newApiRequestSpinlock, NotificationChain msgs) {
+		Instructions oldApiRequestSpinlock = apiRequestSpinlock;
+		apiRequestSpinlock = newApiRequestSpinlock;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_SPINLOCK, oldApiRequestSpinlock, newApiRequestSpinlock);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApiRequestSpinlock(Instructions newApiRequestSpinlock) {
+		if (newApiRequestSpinlock != apiRequestSpinlock) {
+			NotificationChain msgs = null;
+			if (apiRequestSpinlock != null)
+				msgs = ((InternalEObject)apiRequestSpinlock).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_SPINLOCK, null, msgs);
+			if (newApiRequestSpinlock != null)
+				msgs = ((InternalEObject)newApiRequestSpinlock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_SPINLOCK, null, msgs);
+			msgs = basicSetApiRequestSpinlock(newApiRequestSpinlock, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_SPINLOCK, newApiRequestSpinlock, newApiRequestSpinlock));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Instructions getApiReleaseSpinlock() {
+		return apiReleaseSpinlock;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetApiReleaseSpinlock(Instructions newApiReleaseSpinlock, NotificationChain msgs) {
+		Instructions oldApiReleaseSpinlock = apiReleaseSpinlock;
+		apiReleaseSpinlock = newApiReleaseSpinlock;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_SPINLOCK, oldApiReleaseSpinlock, newApiReleaseSpinlock);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApiReleaseSpinlock(Instructions newApiReleaseSpinlock) {
+		if (newApiReleaseSpinlock != apiReleaseSpinlock) {
+			NotificationChain msgs = null;
+			if (apiReleaseSpinlock != null)
+				msgs = ((InternalEObject)apiReleaseSpinlock).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_SPINLOCK, null, msgs);
+			if (newApiReleaseSpinlock != null)
+				msgs = ((InternalEObject)newApiReleaseSpinlock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_SPINLOCK, null, msgs);
+			msgs = basicSetApiReleaseSpinlock(newApiReleaseSpinlock, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_SPINLOCK, newApiReleaseSpinlock, newApiReleaseSpinlock));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Instructions getApiSenderReceiverRead() {
+		return apiSenderReceiverRead;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetApiSenderReceiverRead(Instructions newApiSenderReceiverRead, NotificationChain msgs) {
+		Instructions oldApiSenderReceiverRead = apiSenderReceiverRead;
+		apiSenderReceiverRead = newApiSenderReceiverRead;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_READ, oldApiSenderReceiverRead, newApiSenderReceiverRead);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApiSenderReceiverRead(Instructions newApiSenderReceiverRead) {
+		if (newApiSenderReceiverRead != apiSenderReceiverRead) {
+			NotificationChain msgs = null;
+			if (apiSenderReceiverRead != null)
+				msgs = ((InternalEObject)apiSenderReceiverRead).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_READ, null, msgs);
+			if (newApiSenderReceiverRead != null)
+				msgs = ((InternalEObject)newApiSenderReceiverRead).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_READ, null, msgs);
+			msgs = basicSetApiSenderReceiverRead(newApiSenderReceiverRead, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_READ, newApiSenderReceiverRead, newApiSenderReceiverRead));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Instructions getApiSenderReceiverWrite() {
+		return apiSenderReceiverWrite;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetApiSenderReceiverWrite(Instructions newApiSenderReceiverWrite, NotificationChain msgs) {
+		Instructions oldApiSenderReceiverWrite = apiSenderReceiverWrite;
+		apiSenderReceiverWrite = newApiSenderReceiverWrite;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_WRITE, oldApiSenderReceiverWrite, newApiSenderReceiverWrite);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApiSenderReceiverWrite(Instructions newApiSenderReceiverWrite) {
+		if (newApiSenderReceiverWrite != apiSenderReceiverWrite) {
+			NotificationChain msgs = null;
+			if (apiSenderReceiverWrite != null)
+				msgs = ((InternalEObject)apiSenderReceiverWrite).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_WRITE, null, msgs);
+			if (newApiSenderReceiverWrite != null)
+				msgs = ((InternalEObject)newApiSenderReceiverWrite).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_WRITE, null, msgs);
+			msgs = basicSetApiSenderReceiverWrite(newApiSenderReceiverWrite, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_WRITE, newApiSenderReceiverWrite, newApiSenderReceiverWrite));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Instructions getApiSynchronousServerCallPoint() {
+		return apiSynchronousServerCallPoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetApiSynchronousServerCallPoint(Instructions newApiSynchronousServerCallPoint, NotificationChain msgs) {
+		Instructions oldApiSynchronousServerCallPoint = apiSynchronousServerCallPoint;
+		apiSynchronousServerCallPoint = newApiSynchronousServerCallPoint;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SYNCHRONOUS_SERVER_CALL_POINT, oldApiSynchronousServerCallPoint, newApiSynchronousServerCallPoint);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApiSynchronousServerCallPoint(Instructions newApiSynchronousServerCallPoint) {
+		if (newApiSynchronousServerCallPoint != apiSynchronousServerCallPoint) {
+			NotificationChain msgs = null;
+			if (apiSynchronousServerCallPoint != null)
+				msgs = ((InternalEObject)apiSynchronousServerCallPoint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SYNCHRONOUS_SERVER_CALL_POINT, null, msgs);
+			if (newApiSynchronousServerCallPoint != null)
+				msgs = ((InternalEObject)newApiSynchronousServerCallPoint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_SYNCHRONOUS_SERVER_CALL_POINT, null, msgs);
+			msgs = basicSetApiSynchronousServerCallPoint(newApiSynchronousServerCallPoint, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_SYNCHRONOUS_SERVER_CALL_POINT, newApiSynchronousServerCallPoint, newApiSynchronousServerCallPoint));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Instructions getApiIocRead() {
+		return apiIocRead;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetApiIocRead(Instructions newApiIocRead, NotificationChain msgs) {
+		Instructions oldApiIocRead = apiIocRead;
+		apiIocRead = newApiIocRead;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_READ, oldApiIocRead, newApiIocRead);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApiIocRead(Instructions newApiIocRead) {
+		if (newApiIocRead != apiIocRead) {
+			NotificationChain msgs = null;
+			if (apiIocRead != null)
+				msgs = ((InternalEObject)apiIocRead).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_READ, null, msgs);
+			if (newApiIocRead != null)
+				msgs = ((InternalEObject)newApiIocRead).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_READ, null, msgs);
+			msgs = basicSetApiIocRead(newApiIocRead, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_READ, newApiIocRead, newApiIocRead));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Instructions getApiIocWrite() {
+		return apiIocWrite;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetApiIocWrite(Instructions newApiIocWrite, NotificationChain msgs) {
+		Instructions oldApiIocWrite = apiIocWrite;
+		apiIocWrite = newApiIocWrite;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_WRITE, oldApiIocWrite, newApiIocWrite);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApiIocWrite(Instructions newApiIocWrite) {
+		if (newApiIocWrite != apiIocWrite) {
+			NotificationChain msgs = null;
+			if (apiIocWrite != null)
+				msgs = ((InternalEObject)apiIocWrite).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_WRITE, null, msgs);
+			if (newApiIocWrite != null)
+				msgs = ((InternalEObject)newApiIocWrite).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_WRITE, null, msgs);
+			msgs = basicSetApiIocWrite(newApiIocWrite, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_WRITE, newApiIocWrite, newApiIocWrite));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -624,6 +1110,24 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 				return basicSetApiActivateTask(null, msgs);
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION:
 				return basicSetApiEnforcedMigration(null, msgs);
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SUSPEND_OS_INTERRUPTS:
+				return basicSetApiSuspendOsInterrupts(null, msgs);
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RESUME_OS_INTERRUPTS:
+				return basicSetApiResumeOsInterrupts(null, msgs);
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_SPINLOCK:
+				return basicSetApiRequestSpinlock(null, msgs);
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_SPINLOCK:
+				return basicSetApiReleaseSpinlock(null, msgs);
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_READ:
+				return basicSetApiSenderReceiverRead(null, msgs);
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_WRITE:
+				return basicSetApiSenderReceiverWrite(null, msgs);
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SYNCHRONOUS_SERVER_CALL_POINT:
+				return basicSetApiSynchronousServerCallPoint(null, msgs);
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_READ:
+				return basicSetApiIocRead(null, msgs);
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_WRITE:
+				return basicSetApiIocWrite(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -656,6 +1160,24 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 				return getApiActivateTask();
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION:
 				return getApiEnforcedMigration();
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SUSPEND_OS_INTERRUPTS:
+				return getApiSuspendOsInterrupts();
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RESUME_OS_INTERRUPTS:
+				return getApiResumeOsInterrupts();
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_SPINLOCK:
+				return getApiRequestSpinlock();
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_SPINLOCK:
+				return getApiReleaseSpinlock();
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_READ:
+				return getApiSenderReceiverRead();
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_WRITE:
+				return getApiSenderReceiverWrite();
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SYNCHRONOUS_SERVER_CALL_POINT:
+				return getApiSynchronousServerCallPoint();
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_READ:
+				return getApiIocRead();
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_WRITE:
+				return getApiIocWrite();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -697,6 +1219,33 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 				return;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION:
 				setApiEnforcedMigration((Instructions)newValue);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SUSPEND_OS_INTERRUPTS:
+				setApiSuspendOsInterrupts((Instructions)newValue);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RESUME_OS_INTERRUPTS:
+				setApiResumeOsInterrupts((Instructions)newValue);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_SPINLOCK:
+				setApiRequestSpinlock((Instructions)newValue);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_SPINLOCK:
+				setApiReleaseSpinlock((Instructions)newValue);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_READ:
+				setApiSenderReceiverRead((Instructions)newValue);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_WRITE:
+				setApiSenderReceiverWrite((Instructions)newValue);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SYNCHRONOUS_SERVER_CALL_POINT:
+				setApiSynchronousServerCallPoint((Instructions)newValue);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_READ:
+				setApiIocRead((Instructions)newValue);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_WRITE:
+				setApiIocWrite((Instructions)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -740,6 +1289,33 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION:
 				setApiEnforcedMigration((Instructions)null);
 				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SUSPEND_OS_INTERRUPTS:
+				setApiSuspendOsInterrupts((Instructions)null);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RESUME_OS_INTERRUPTS:
+				setApiResumeOsInterrupts((Instructions)null);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_SPINLOCK:
+				setApiRequestSpinlock((Instructions)null);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_SPINLOCK:
+				setApiReleaseSpinlock((Instructions)null);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_READ:
+				setApiSenderReceiverRead((Instructions)null);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_WRITE:
+				setApiSenderReceiverWrite((Instructions)null);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SYNCHRONOUS_SERVER_CALL_POINT:
+				setApiSynchronousServerCallPoint((Instructions)null);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_READ:
+				setApiIocRead((Instructions)null);
+				return;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_WRITE:
+				setApiIocWrite((Instructions)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -772,6 +1348,24 @@ public class OsAPIInstructionsImpl extends BaseObjectImpl implements OsAPIInstru
 				return apiActivateTask != null;
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION:
 				return apiEnforcedMigration != null;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SUSPEND_OS_INTERRUPTS:
+				return apiSuspendOsInterrupts != null;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RESUME_OS_INTERRUPTS:
+				return apiResumeOsInterrupts != null;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_SPINLOCK:
+				return apiRequestSpinlock != null;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_SPINLOCK:
+				return apiReleaseSpinlock != null;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_READ:
+				return apiSenderReceiverRead != null;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_WRITE:
+				return apiSenderReceiverWrite != null;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SYNCHRONOUS_SERVER_CALL_POINT:
+				return apiSynchronousServerCallPoint != null;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_READ:
+				return apiIocRead != null;
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_WRITE:
+				return apiIocWrite != null;
 		}
 		return super.eIsSet(featureID);
 	}

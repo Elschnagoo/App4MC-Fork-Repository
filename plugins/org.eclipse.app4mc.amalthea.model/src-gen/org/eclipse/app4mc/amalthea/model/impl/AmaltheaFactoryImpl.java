@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.ASILType;
-import org.eclipse.app4mc.amalthea.model.AbstractElementMapping;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AccessMultiplicity;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
@@ -45,6 +44,7 @@ import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ChannelEvent;
+import org.eclipse.app4mc.amalthea.model.ChannelEventType;
 import org.eclipse.app4mc.amalthea.model.ChannelReceive;
 import org.eclipse.app4mc.amalthea.model.ChannelSend;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
@@ -54,7 +54,6 @@ import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.CoherencyDirection;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
-import org.eclipse.app4mc.amalthea.model.ComparatorType;
 import org.eclipse.app4mc.amalthea.model.ComplexPin;
 import org.eclipse.app4mc.amalthea.model.ComplexPort;
 import org.eclipse.app4mc.amalthea.model.Component;
@@ -63,12 +62,14 @@ import org.eclipse.app4mc.amalthea.model.ComponentScope;
 import org.eclipse.app4mc.amalthea.model.ComponentsModel;
 import org.eclipse.app4mc.amalthea.model.Composite;
 import org.eclipse.app4mc.amalthea.model.ConcurrencyType;
+import org.eclipse.app4mc.amalthea.model.Condition;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
-import org.eclipse.app4mc.amalthea.model.ConjunctionType;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreAllocation;
+import org.eclipse.app4mc.amalthea.model.CoreClassification;
+import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
@@ -102,6 +103,7 @@ import org.eclipse.app4mc.amalthea.model.ECUType;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
+import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
@@ -120,15 +122,12 @@ import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.GroupingType;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwAccessPathRef;
 import org.eclipse.app4mc.amalthea.model.HwComponent;
-import org.eclipse.app4mc.amalthea.model.HwCoreConjunction;
-import org.eclipse.app4mc.amalthea.model.HwCoreProperty;
 import org.eclipse.app4mc.amalthea.model.HwElementRef;
-import org.eclipse.app4mc.amalthea.model.HwMemoryConjunction;
-import org.eclipse.app4mc.amalthea.model.HwMemoryProperty;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwSystem;
 import org.eclipse.app4mc.amalthea.model.ISR;
@@ -164,6 +163,9 @@ import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.MappingType;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType;
+import org.eclipse.app4mc.amalthea.model.MemoryClassification;
+import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
+import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.MemoryTypeEnum;
 import org.eclipse.app4mc.amalthea.model.Microcontroller;
@@ -209,8 +211,8 @@ import org.eclipse.app4mc.amalthea.model.Preemption;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
+import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessChain;
 import org.eclipse.app4mc.amalthea.model.ProcessChainEvent;
@@ -266,8 +268,6 @@ import org.eclipse.app4mc.amalthea.model.SenderReceiverRead;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.Severity;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
-import org.eclipse.app4mc.amalthea.model.SignedTimeObject;
 import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
@@ -367,11 +367,12 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.AMALTHEA: return createAmalthea();
 			case AmaltheaPackage.COMMON_ELEMENTS: return createCommonElements();
 			case AmaltheaPackage.TAG: return createTag();
+			case AmaltheaPackage.CORE_CLASSIFIER: return createCoreClassifier();
+			case AmaltheaPackage.MEMORY_CLASSIFIER: return createMemoryClassifier();
 			case AmaltheaPackage.TRANSMISSION_POLICY: return createTransmissionPolicy();
 			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: return createInstructionsDeviation();
 			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: return createInstructionsConstant();
 			case AmaltheaPackage.TIME: return createTime();
-			case AmaltheaPackage.SIGNED_TIME: return createSignedTime();
 			case AmaltheaPackage.FREQUENCY: return createFrequency();
 			case AmaltheaPackage.DATA_SIZE: return createDataSize();
 			case AmaltheaPackage.DATA_RATE: return createDataRate();
@@ -386,7 +387,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.DOUBLE_OBJECT: return createDoubleObject();
 			case AmaltheaPackage.BOOLEAN_OBJECT: return createBooleanObject();
 			case AmaltheaPackage.TIME_OBJECT: return createTimeObject();
-			case AmaltheaPackage.SIGNED_TIME_OBJECT: return createSignedTimeObject();
 			case AmaltheaPackage.DEVIATION: return createDeviation();
 			case AmaltheaPackage.WEIBULL_PARAMETERS: return createWeibullParameters();
 			case AmaltheaPackage.WEIBULL_ESTIMATORS: return createWeibullEstimators();
@@ -492,11 +492,11 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.HW_ELEMENT_REF: return createHwElementRef();
 			case AmaltheaPackage.MAPPING_MODEL: return createMappingModel();
 			case AmaltheaPackage.CORE_ALLOCATION: return createCoreAllocation();
-			case AmaltheaPackage.PHYSICAL_SECTION_MAPPING: return createPhysicalSectionMapping();
-			case AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING: return createAbstractElementMapping();
 			case AmaltheaPackage.TASK_ALLOCATION: return createTaskAllocation();
 			case AmaltheaPackage.ISR_ALLOCATION: return createISRAllocation();
 			case AmaltheaPackage.RUNNABLE_ALLOCATION: return createRunnableAllocation();
+			case AmaltheaPackage.MEMORY_MAPPING: return createMemoryMapping();
+			case AmaltheaPackage.PHYSICAL_SECTION_MAPPING: return createPhysicalSectionMapping();
 			case AmaltheaPackage.OS_MODEL: return createOSModel();
 			case AmaltheaPackage.OS_DATA_CONSISTENCY: return createOsDataConsistency();
 			case AmaltheaPackage.DATA_STABILITY: return createDataStability();
@@ -529,10 +529,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.PROCESS_PROTOTYPE_ALLOCATION_CONSTRAINT: return createProcessPrototypeAllocationConstraint();
 			case AmaltheaPackage.RUNNABLE_ALLOCATION_CONSTRAINT: return createRunnableAllocationConstraint();
 			case AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING_CONSTRAINT: return createAbstractElementMappingConstraint();
-			case AmaltheaPackage.HW_CORE_PROPERTY: return createHwCoreProperty();
-			case AmaltheaPackage.HW_CORE_CONJUNCTION: return createHwCoreConjunction();
-			case AmaltheaPackage.HW_MEMORY_PROPERTY: return createHwMemoryProperty();
-			case AmaltheaPackage.HW_MEMORY_CONJUNCTION: return createHwMemoryConjunction();
+			case AmaltheaPackage.CORE_CLASSIFICATION: return createCoreClassification();
+			case AmaltheaPackage.MEMORY_CLASSIFICATION: return createMemoryClassification();
 			case AmaltheaPackage.STIMULI_MODEL: return createStimuliModel();
 			case AmaltheaPackage.MODE_VALUE_LIST: return createModeValueList();
 			case AmaltheaPackage.MODE_VALUE_LIST_ENTRY: return createModeValueListEntry();
@@ -559,7 +557,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.MODE_SWITCH: return createModeSwitch();
 			case AmaltheaPackage.MODE_SWITCH_ENTRY: return createModeSwitchEntry();
 			case AmaltheaPackage.MODE_SWITCH_DEFAULT: return createModeSwitchDefault();
-			case AmaltheaPackage.PROBABILTITY_SWITCH: return createProbabiltitySwitch();
+			case AmaltheaPackage.PROBABILITY_SWITCH: return createProbabilitySwitch();
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY: return createProbabilitySwitchEntry();
 			case AmaltheaPackage.COUNTER: return createCounter();
 			case AmaltheaPackage.WAIT_EVENT: return createWaitEvent();
@@ -609,6 +607,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.PERIODIC_ACTIVATION: return createPeriodicActivation();
 			case AmaltheaPackage.SPORADIC_ACTIVATION: return createSporadicActivation();
 			case AmaltheaPackage.SINGLE_ACTIVATION: return createSingleActivation();
+			case AmaltheaPackage.EVENT_ACTIVATION: return createEventActivation();
 			case AmaltheaPackage.CUSTOM_ACTIVATION: return createCustomActivation();
 			case AmaltheaPackage.LABEL_ACCESS_STATISTIC: return createLabelAccessStatistic();
 			case AmaltheaPackage.INSTRUCTION_FETCH: return createInstructionFetch();
@@ -668,6 +667,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createRunnableEventTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.LABEL_EVENT_TYPE:
 				return createLabelEventTypeFromString(eDataType, initialValue);
+			case AmaltheaPackage.CHANNEL_EVENT_TYPE:
+				return createChannelEventTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.SEMAPHORE_EVENT_TYPE:
 				return createSemaphoreEventTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.QTYPE:
@@ -690,10 +691,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createAccessMultiplicityFromString(eDataType, initialValue);
 			case AmaltheaPackage.DATA_STABILITY_LEVEL:
 				return createDataStabilityLevelFromString(eDataType, initialValue);
-			case AmaltheaPackage.COMPARATOR_TYPE:
-				return createComparatorTypeFromString(eDataType, initialValue);
-			case AmaltheaPackage.CONJUNCTION_TYPE:
-				return createConjunctionTypeFromString(eDataType, initialValue);
+			case AmaltheaPackage.CONDITION:
+				return createConditionFromString(eDataType, initialValue);
+			case AmaltheaPackage.GROUPING_TYPE:
+				return createGroupingTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.WAIT_EVENT_TYPE:
 				return createWaitEventTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.WAITING_BEHAVIOUR:
@@ -775,6 +776,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertRunnableEventTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.LABEL_EVENT_TYPE:
 				return convertLabelEventTypeToString(eDataType, instanceValue);
+			case AmaltheaPackage.CHANNEL_EVENT_TYPE:
+				return convertChannelEventTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.SEMAPHORE_EVENT_TYPE:
 				return convertSemaphoreEventTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.QTYPE:
@@ -797,10 +800,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertAccessMultiplicityToString(eDataType, instanceValue);
 			case AmaltheaPackage.DATA_STABILITY_LEVEL:
 				return convertDataStabilityLevelToString(eDataType, instanceValue);
-			case AmaltheaPackage.COMPARATOR_TYPE:
-				return convertComparatorTypeToString(eDataType, instanceValue);
-			case AmaltheaPackage.CONJUNCTION_TYPE:
-				return convertConjunctionTypeToString(eDataType, instanceValue);
+			case AmaltheaPackage.CONDITION:
+				return convertConditionToString(eDataType, instanceValue);
+			case AmaltheaPackage.GROUPING_TYPE:
+				return convertGroupingTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.WAIT_EVENT_TYPE:
 				return convertWaitEventTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.WAITING_BEHAVIOUR:
@@ -867,6 +870,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public CoreClassifier createCoreClassifier() {
+		CoreClassifierImpl coreClassifier = new CoreClassifierImpl();
+		return coreClassifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MemoryClassifier createMemoryClassifier() {
+		MemoryClassifierImpl memoryClassifier = new MemoryClassifierImpl();
+		return memoryClassifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TransmissionPolicy createTransmissionPolicy() {
 		TransmissionPolicyImpl transmissionPolicy = new TransmissionPolicyImpl();
 		return transmissionPolicy;
@@ -900,16 +923,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public Time createTime() {
 		TimeImpl time = new TimeImpl();
 		return time;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SignedTime createSignedTime() {
-		SignedTimeImpl signedTime = new SignedTimeImpl();
-		return signedTime;
 	}
 
 	/**
@@ -1050,16 +1063,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public TimeObject createTimeObject() {
 		TimeObjectImpl timeObject = new TimeObjectImpl();
 		return timeObject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SignedTimeObject createSignedTimeObject() {
-		SignedTimeObjectImpl signedTimeObject = new SignedTimeObjectImpl();
-		return signedTimeObject;
 	}
 
 	/**
@@ -2117,26 +2120,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PhysicalSectionMapping createPhysicalSectionMapping() {
-		PhysicalSectionMappingImpl physicalSectionMapping = new PhysicalSectionMappingImpl();
-		return physicalSectionMapping;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AbstractElementMapping createAbstractElementMapping() {
-		AbstractElementMappingImpl abstractElementMapping = new AbstractElementMappingImpl();
-		return abstractElementMapping;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public TaskAllocation createTaskAllocation() {
 		TaskAllocationImpl taskAllocation = new TaskAllocationImpl();
 		return taskAllocation;
@@ -2160,6 +2143,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public RunnableAllocation createRunnableAllocation() {
 		RunnableAllocationImpl runnableAllocation = new RunnableAllocationImpl();
 		return runnableAllocation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MemoryMapping createMemoryMapping() {
+		MemoryMappingImpl memoryMapping = new MemoryMappingImpl();
+		return memoryMapping;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PhysicalSectionMapping createPhysicalSectionMapping() {
+		PhysicalSectionMappingImpl physicalSectionMapping = new PhysicalSectionMappingImpl();
+		return physicalSectionMapping;
 	}
 
 	/**
@@ -2487,9 +2490,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwCoreProperty createHwCoreProperty() {
-		HwCorePropertyImpl hwCoreProperty = new HwCorePropertyImpl();
-		return hwCoreProperty;
+	public CoreClassification createCoreClassification() {
+		CoreClassificationImpl coreClassification = new CoreClassificationImpl();
+		return coreClassification;
 	}
 
 	/**
@@ -2497,29 +2500,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwCoreConjunction createHwCoreConjunction() {
-		HwCoreConjunctionImpl hwCoreConjunction = new HwCoreConjunctionImpl();
-		return hwCoreConjunction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HwMemoryProperty createHwMemoryProperty() {
-		HwMemoryPropertyImpl hwMemoryProperty = new HwMemoryPropertyImpl();
-		return hwMemoryProperty;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HwMemoryConjunction createHwMemoryConjunction() {
-		HwMemoryConjunctionImpl hwMemoryConjunction = new HwMemoryConjunctionImpl();
-		return hwMemoryConjunction;
+	public MemoryClassification createMemoryClassification() {
+		MemoryClassificationImpl memoryClassification = new MemoryClassificationImpl();
+		return memoryClassification;
 	}
 
 	/**
@@ -2787,9 +2770,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProbabiltitySwitch createProbabiltitySwitch() {
-		ProbabiltitySwitchImpl probabiltitySwitch = new ProbabiltitySwitchImpl();
-		return probabiltitySwitch;
+	public ProbabilitySwitch createProbabilitySwitch() {
+		ProbabilitySwitchImpl probabilitySwitch = new ProbabilitySwitchImpl();
+		return probabilitySwitch;
 	}
 
 	/**
@@ -3287,6 +3270,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EventActivation createEventActivation() {
+		EventActivationImpl eventActivation = new EventActivationImpl();
+		return eventActivation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CustomActivation createCustomActivation() {
 		CustomActivationImpl customActivation = new CustomActivationImpl();
 		return customActivation;
@@ -3747,6 +3740,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ChannelEventType createChannelEventTypeFromString(EDataType eDataType, String initialValue) {
+		ChannelEventType result = ChannelEventType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertChannelEventTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SemaphoreEventType createSemaphoreEventTypeFromString(EDataType eDataType, String initialValue) {
 		SemaphoreEventType result = SemaphoreEventType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -3967,8 +3980,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComparatorType createComparatorTypeFromString(EDataType eDataType, String initialValue) {
-		ComparatorType result = ComparatorType.get(initialValue);
+	public Condition createConditionFromString(EDataType eDataType, String initialValue) {
+		Condition result = Condition.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -3978,7 +3991,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertComparatorTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertConditionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -3987,8 +4000,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConjunctionType createConjunctionTypeFromString(EDataType eDataType, String initialValue) {
-		ConjunctionType result = ConjunctionType.get(initialValue);
+	public GroupingType createGroupingTypeFromString(EDataType eDataType, String initialValue) {
+		GroupingType result = GroupingType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -3998,7 +4011,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertConjunctionTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertGroupingTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

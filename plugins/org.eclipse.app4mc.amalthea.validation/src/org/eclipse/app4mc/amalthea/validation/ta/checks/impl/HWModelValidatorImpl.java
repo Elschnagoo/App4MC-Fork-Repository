@@ -83,7 +83,7 @@ public class HWModelValidatorImpl extends AbstractValidatorImpl {
 			final EObject elem = amaIter.next();
 			if (elem instanceof CoreType) {
 				CoreType coreType = (CoreType) elem;
-				int instructionsPerCycle = coreType.getInstructionsPerCycle(); 
+				float instructionsPerCycle = coreType.getInstructionsPerCycle(); 
 				if(0 >= instructionsPerCycle) {
 					this.issueCreator.issue(coreType, AmaltheaPackage.eINSTANCE.getCoreType_InstructionsPerCycle(), instructionsPerCycle);
 				}

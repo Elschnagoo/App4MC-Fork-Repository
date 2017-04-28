@@ -11,10 +11,36 @@
  ******************************************************************************/
 package org.eclipse.app4mc.multicore.openmapping.algorithms;
 
+import org.eclipse.app4mc.multicore.openmapping.IOMConstants;
 import org.ojalgo.optimisation.ExpressionsBasedModel;
 
 public abstract class AbstractILPBasedMappingAlgorithm extends AbstractMappingAlgorithm {
 	private final ExpressionsBasedModel ebm = new ExpressionsBasedModel();
+		
+	public AbstractILPBasedMappingAlgorithm() {
+		int iMaxItAbort, iMaxItSuffice, iMaxTimeAbort, iMaxTimeSuffice;
+		final double fMaxGap;
+
+		if ((iMaxItAbort = store.getInt(IOMConstants.PRE_MAX_IT_ABORT)) == 0) {
+			iMaxItAbort = Integer.MAX_VALUE;
+		}
+		if ((iMaxTimeAbort = store.getInt(IOMConstants.PRE_MAX_TIME_ABORT)) == 0) {
+			iMaxTimeAbort = Integer.MAX_VALUE;
+		}
+		if ((iMaxItSuffice = store.getInt(IOMConstants.PRE_MAX_IT_SUFFICE)) == 0) {
+			iMaxItSuffice = Integer.MAX_VALUE;
+		}
+		if ((iMaxTimeSuffice = store.getInt(IOMConstants.PRE_MAX_TIME_SUFFICE)) == 0) {
+			iMaxTimeSuffice = Integer.MAX_VALUE;
+		}
+		fMaxGap = store.getDouble(IOMConstants.PRE_MAX_GAP);
+
+		setMaxGap(fMaxGap);
+		setMaxIterationsAbort(iMaxItAbort);
+		setMaxTimeAbort(iMaxTimeAbort);
+		setMaxIterationsSuffice(iMaxItSuffice);
+		setMaxTimeSuffice(iMaxTimeSuffice);
+	}
 
 	/**
 	 * Sets the max gap in relation to the LP relaxation, before the solve quits.

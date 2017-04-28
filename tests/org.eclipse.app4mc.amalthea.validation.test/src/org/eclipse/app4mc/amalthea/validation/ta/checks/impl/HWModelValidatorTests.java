@@ -263,7 +263,7 @@ public class HWModelValidatorTests {
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final HWModel hwModel = AmaltheaFactory.eINSTANCE.createHWModel();
 		final CoreType coreType = AmaltheaFactory.eINSTANCE.createCoreType();
-		final int instructionsPerCycle = -2;
+		final float instructionsPerCycle = -2f;
 
 		amalthea.setHwModel(hwModel);
 		hwModel.getCoreTypes().add(coreType);
@@ -290,7 +290,7 @@ public class HWModelValidatorTests {
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final HWModel hwModel = AmaltheaFactory.eINSTANCE.createHWModel();
 		final CoreType coreType = AmaltheaFactory.eINSTANCE.createCoreType();
-		final int instructionsPerCycle = 0;
+		final float instructionsPerCycle = 0f;
 
 		amalthea.setHwModel(hwModel);
 		hwModel.getCoreTypes().add(coreType);
@@ -317,7 +317,7 @@ public class HWModelValidatorTests {
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final HWModel hwModel = AmaltheaFactory.eINSTANCE.createHWModel();
 		final CoreType coreType = AmaltheaFactory.eINSTANCE.createCoreType();
-		final int instructionsPerCycle = 2;
+		final float instructionsPerCycle = 2f;
 
 		amalthea.setHwModel(hwModel);
 		hwModel.getCoreTypes().add(coreType);

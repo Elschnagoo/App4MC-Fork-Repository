@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <activations xsi:type="am:PeriodicActivation">
+      <max value="2000"/>
+      <deadline value="20" unit="s"/>
+    </activations>
+  </swModel>
+  <constraintsModel>
+    <requirements xsi:type="am:ProcessRequirement">
+      <limit xsi:type="am:TimeRequirementLimit">
+        <limitValue value="20" unit="ms"/>
+      </limit>
+    </requirements>
+  </constraintsModel>
+</am:Amalthea>

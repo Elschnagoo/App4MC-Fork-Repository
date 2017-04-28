@@ -22,6 +22,7 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelItemProv
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomActivationItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEntityItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedDataTypeDefinitionItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedEventActivationItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGroupItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedISRItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedLabelAccessItemProvider;
@@ -83,6 +84,11 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	@Override
 	public Adapter createDataTypeDefinitionAdapter() {
 		return new ExtendedDataTypeDefinitionItemProvider(this);
+	}
+
+	@Override
+	public Adapter createEventActivationAdapter() {
+		return new ExtendedEventActivationItemProvider(this);
 	}
 
 	@Override

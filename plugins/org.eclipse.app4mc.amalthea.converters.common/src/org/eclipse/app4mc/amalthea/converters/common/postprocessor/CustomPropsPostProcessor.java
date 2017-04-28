@@ -46,7 +46,7 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 	public CustomPropsPostProcessor() {
 	}
 
-	private final Logger logger = LogManager.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 
 	private AbstractHelper helper;
 
@@ -405,7 +405,7 @@ public class CustomPropsPostProcessor implements IPostProcessor {
 			if (key != null) {
 
 				// TODO: log info/warning message using logger
-				this.logger.info("Value of CustomProperty  : " + key
+				this.logger.warn("Value of CustomProperty  : " + key
 						+ " is removed (as it is not inheriting RefereableBaseObject)");
 			}
 

@@ -1,51 +1,51 @@
 h3. Modeling Example "State Machine"
 
-In this system architecture pattern the modeling example "Client Server without Reply" is extended in such a way that now the task that receives messages (T ~2~) not only varies its dynamic behaviour and consequently also its execution time according the transmitted content but also depending on its internal state, meaning the prior transmitted contents. To achieve, this task T ~1~ sends a message to task T ~2~ with either 0 or 1 before runnable R ~1~ is called. The value 0 is used in 75 % of the cases and 1 in the other cases as content of the message. Starting in state 0, T ~2~ decreases or increases the state its currently in depending on the content of the message, 0 or 1 respectively. The runnable R ~2,1~, R ~2,2~, and R ~2,3~ represent then the three different states that the system can be in.
+In this system architecture pattern the modeling example "Client Server without Reply" is extended in such a way that now the task that receives messages (T<sub>2</sub>) not only varies its dynamic behavior and consequently also its execution time according the transmitted content but also depending on its internal state, meaning the prior transmitted contents. To achieve, this task T<sub>1</sub> sends a message to task T<sub>2</sub> with either 0 or 1 before runnable R<sub>1</sub> is called. The value 0 is used in 75 % of the cases and 1 in the other cases as content of the message. Starting in state 0, T<sub>2</sub> decreases or increases the state its currently in depending on the content of the message, 0 or 1 respectively. The runnable R ~2,1~, R ~2,2~, and R ~2,3~ represent then the three different states that the system can be in.
 
 !../pictures/ExampleModeling/modeling_example_state_machine.png!
 
-The table below gives a detailed specification of the tasks and their parameters. The tasks are scheduled according fixed-priority, preemptive scheduling and if not indicated otherwise, all events are active in order to get a detailed insight into the system�s behaviour.
+The table below gives a detailed specification of the tasks and their parameters. The tasks are scheduled according fixed-priority, preemptive scheduling and if not indicated otherwise, all events are active in order to get a detailed insight into the system's behavior.
 
 table(classic){text-align:center; background:#f8f8f8}.
 {background:#eee}.|_. Task |_. Priority |_. Preemption |_. Multiple Task Activation Limit |_. Activation |\2_. Execution Time |
-|/3. T ~1~ |/3. 2 |/3. FULL |/3. 1 | Periodic |/3. R ~1~ | Uniform | 
-|<. Offset = 0 |<.Min = 9.9 * 10 ^6^ |
-|<. Recurrence = 100 * 10 ^6^ |<. Max = 10 * 10 ^6^ |
-|/9. T ~2~ |/9. 1 |/9. FULL |/9. 1 |/3. |/3. R ~2,1~ | Uniform |
+|/3. T<sub>1</sub> |/3. 2 |/3. FULL |/3. 1 | Periodic |/3. R<sub>1</sub> | Uniform | 
+|<. Offset = 0 |<.Min = 9.9 * 10<sup>6</sup> |
+|<. Recurrence = 100 * 10<sup>6</sup> |<. Max = 10 * 10<sup>6</sup> |
+|/9. T<sub>2</sub> |/9. 1 |/9. FULL |/9. 1 |/3. |/3. R ~2,1~ | Uniform |
 |<.Min = 99 |
 |<. Max = 100 |
 | Periodic |/3. R ~2,2~ | Uniform |
-|<. Offset = 15 * 10 ^6^ |<.Min = 99 * 10 ^3^ |
-|<. Recurrence = 60 * 10 ^6^ |<. Max = 100 * 10 ^3^ |
-|/3. |/3. R ~2,3~ | Uniform |
-|<.Min = 49.5 * 10 ^6^ |
-|<. Max = 50 * 10 ^6^ |
+|<. Offset = 15 * 10<sup>6</sup> |<.Min = 99 * 10<sup>3</sup> |
+|<. Recurrence = 60 * 10<sup>6</sup> |<. Max = 100 * 10<sup>3</sup> |
+|/3. |/3. R<sub>2,3</sub> | Uniform |
+|<.Min = 49.5 * 10<sup>6</sup> |
+|<. Max = 50 * 10<sup>6</sup> |
 
 In order to show the impact of changes to the model, the following consecutive variations are made to the model:
 
 - **1) Initial Task Set** := As defined by the table above.
 !../pictures/ExampleModeling/modeling_example_state_machine_1.png!
 
-- **2) Exclusive Area** := For this variation, all data accesses are protected by an exclusive area. Therefore, the data accesses in T ~1~ as well as all runnables in T ~2~ (R ~2,1~, R ~2,2~, and R ~2,3~) are protected during their complete time of execution via a mutex and priority ceiling protocol. That way, blocking situations appear.
+- **2) Exclusive Area** := For this variation, all data accesses are protected by an exclusive area. Therefore, the data accesses in T<sub>1</sub> as well as all runnables in T<sub>2</sub> (R<sub>2,1</sub>, R<sub>2,2</sub>, and R<sub>2,3</sub>) are protected during their complete time of execution via a mutex and priority ceiling protocol. That way, blocking situations appear.
 !../pictures/ExampleModeling/modeling_example_state_machine_2.png!
 
-- **3) Priority Ordering** := As from this variation on, the priority relation between task T ~1~ and T ~2~ is reversed. As a consequence, the priority of task T ~1~ is set to 1 and the priority of task T ~2~ is set to 2. That way, the timing behaviour is changed fully.
+- **3) Priority Ordering** := As from this variation on, the priority relation between task T<sub>1</sub> and T<sub>2</sub> is reversed. As a consequence, the priority of task T<sub>1</sub> is set to 1 and the priority of task T<sub>2</sub> is set to 2. That way, the timing behavior is changed fully.
 !../pictures/ExampleModeling/modeling_example_state_machine_3.png!
 
-- **4) Inter-process Activation** := As from this variation on, task T ~2~ gets activated by an inter-process activation from task T ~1~ instead of being activated periodically. The interprocess activation is performed right after the message _message_ is written in T ~1~ and consequently before the runnable R ~1~ is called. That way, a direct connection between T ~1~ and T ~2~ is established.
+- **4) Inter-process Activation** := As from this variation on, task T<sub>2</sub> gets activated by an inter-process activation from task T<sub>1</sub> instead of being activated periodically. The interprocess activation is performed right after the message _message_ is written in T<sub>1</sub> and consequently before the runnable R<sub>1</sub> is called. That way, a direct connection between T<sub>1</sub> and T<sub>2</sub> is established.
 !../pictures/ExampleModeling/modeling_example_state_machine_4.png!
 
-- **5) Event Frequency Increase** := As from this variation on, the periodicity of T ~1~ is shortened. For this, the value for the period of task T ~1~ is halved to 50 * 10 ^6^. That way, the utilisation of the system is increased, which results in extinct activations.
+- **5) Event Frequency Increase** := As from this variation on, the periodicity of T<sub>1</sub> is shortened. For this, the value for the period of task T<sub>1</sub> is halved to 50 * 10<sup>6</sup>. That way, the utilization  of the system is increased, which results in extinct activations.
 !../pictures/ExampleModeling/modeling_example_state_machine_5.png!
 
 - **6) Activation** := As from this variation on, the maximum number of queued activation requests for both tasks is set to 2. That way, the problem with extinct activations resulting from the previous variation is solved.
 !../pictures/ExampleModeling/modeling_example_state_machine_6.png!
 
-- **7) Execution Time Fluctuation** := As from this variation on, the execution time distribution is widened for both tasks. Therefore, the maximum of the uniform distribution is increased by 1 percent so that the uniform distribution varies now by 2 percent. That way, the utilisation of the system is further increased.
+- **7) Execution Time Fluctuation** := As from this variation on, the execution time distribution is widened for both tasks. Therefore, the maximum of the uniform distribution is increased by 1 percent so that the uniform distribution varies now by 2 percent. That way, the utilization  of the system is further increased.
 !../pictures/ExampleModeling/modeling_example_state_machine_7.png!
 
-- **8) Accuracy in Logging of Data State I** := For this variation, the data write accesses in task T ~1~ and task T ~2~ are omitted. Instead, the runnables R ~2,1~, R ~2,2~, and R ~2,3~, each representing the execution of a specific state, are executed with a probability of 60 %, 30 %, and 10 % respectively. That way, only a limited insight into the system�s runtime behaviour is available.
+- **8) Accuracy in Logging of Data State I** := For this variation, the data write accesses in task T<sub>1</sub> and task T<sub>2</sub> are omitted. Instead, the runnables R<sub>2,1</sub>, R<sub>2,2</sub>, and R<sub>2,3</sub>, each representing the execution of a specific state, are executed with a probability of 60 %, 30 %, and 10 % respectively. That way, only a limited insight into the system's runtime behavior is available.
 !../pictures/ExampleModeling/modeling_example_state_machine_8.png!
 
-- **9) Accuracy in Logging of Data State II** := For this variation, just task events are active. That way, only a limited insight into the system�s runtime behaviour is available.
+- **9) Accuracy in Logging of Data State II** := For this variation, just task events are active. That way, only a limited insight into the system's runtime behavior is available.
 !../pictures/ExampleModeling/modeling_example_state_machine_9.png!

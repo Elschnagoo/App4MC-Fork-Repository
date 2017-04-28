@@ -16,15 +16,20 @@ import org.easymock.EasyMock;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ArrivalCurve;
+import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.Clock;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
 import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
+import org.eclipse.app4mc.amalthea.model.Synthetic;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
+import org.eclipse.app4mc.amalthea.model.TimestampList;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
 import org.eclipse.app4mc.amalthea.validation.ta.checks.StimuliModelValidator;
 import org.junit.Before;
@@ -690,6 +695,1257 @@ public class StimuliModelValidatorTests {
 		// test
 		this.classUnderTest.checkClockMultiplierList(amalthea);
 
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkPeriodicOffsetUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicOffsetUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final Time offset = null;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(periodic);
+		periodic.setOffset(offset);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicOffsetUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkPeriodicOffsetUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicOffsetUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(periodic);
+		periodic.setOffset(offset);
+		offset.setValue(value);
+		offset.setUnit(unit);
+		
+		this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getPeriodic_Offset(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicOffsetUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkPeriodicOffsetUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicOffsetUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(periodic);
+		periodic.setOffset(offset);
+		offset.setValue(value);
+		offset.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicOffsetUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkPeriodicOffsetUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicOffsetUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(periodic);
+		periodic.setOffset(offset);
+		offset.setValue(value);
+		offset.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicOffsetUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkPeriodicRecurrenceUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicRecurrenceUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final Time recurrence = null;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(periodic);
+		periodic.setRecurrence(recurrence);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicRecurrenceUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkPeriodicRecurrenceUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicRecurrenceUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(periodic);
+		periodic.setRecurrence(recurrence);
+		recurrence.setValue(value);
+		recurrence.setUnit(unit);
+		
+		this.issueCreator.issue(recurrence, AmaltheaPackage.eINSTANCE.getPeriodic_Recurrence(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicRecurrenceUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkPeriodicRecurrenceUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicRecurrenceUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(periodic);
+		periodic.setRecurrence(recurrence);
+		recurrence.setValue(value);
+		recurrence.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicRecurrenceUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkPeriodicRecurrenceUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicRecurrenceUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(periodic);
+		periodic.setRecurrence(recurrence);
+		recurrence.setValue(value);
+		recurrence.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicRecurrenceUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkSyntheticOffsetUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSyntheticOffsetUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final Time offset = null;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(synthetic);
+		synthetic.setOffset(offset);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSyntheticOffsetUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkSyntheticOffsetUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSyntheticOffsetUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(synthetic);
+		synthetic.setOffset(offset);
+		offset.setValue(value);
+		offset.setUnit(unit);
+		
+		this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getSynthetic_Offset(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSyntheticOffsetUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkSyntheticOffsetUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSyntheticOffsetUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(synthetic);
+		synthetic.setOffset(offset);
+		offset.setValue(value);
+		offset.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSyntheticOffsetUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkSyntheticOffsetUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSyntheticOffsetUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(synthetic);
+		synthetic.setOffset(offset);
+		offset.setValue(value);
+		offset.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSyntheticOffsetUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkSyntheticPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSyntheticPeriodUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final Time period = null;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(synthetic);
+		synthetic.setPeriod(period);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSyntheticPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkSyntheticPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSyntheticPeriodUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final Time period = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(synthetic);
+		synthetic.setPeriod(period);
+		period.setValue(value);
+		period.setUnit(unit);
+		
+		this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getSynthetic_Period(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSyntheticPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkSyntheticPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSyntheticPeriodUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final Time period = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(synthetic);
+		synthetic.setPeriod(period);
+		period.setValue(value);
+		period.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSyntheticPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkSyntheticPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSyntheticPeriodUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final Time period = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(synthetic);
+		synthetic.setPeriod(period);
+		period.setValue(value);
+		period.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSyntheticPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkTimestampListTimestampsUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkTimestampListTimestampsUnsigned_empty() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		TimestampList timestampList = AmaltheaFactory.eINSTANCE.createTimestampList();
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(synthetic);
+		synthetic.setTriggerTimes(timestampList);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkTimestampListTimestampsUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkTimestampListTimestampsUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkTimestampListTimestampsUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final TimestampList timestampList = AmaltheaFactory.eINSTANCE.createTimestampList();
+		final Time timestamp = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(synthetic);
+		synthetic.setTriggerTimes(timestampList);
+		timestampList.getTimestamps().add(timestamp);
+		timestamp.setValue(value);
+		timestamp.setUnit(unit);
+		
+		this.issueCreator.issue(timestamp, AmaltheaPackage.eINSTANCE.getTimestampList_Timestamps(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkTimestampListTimestampsUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkTimestampListTimestampsUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkTimestampListTimestampsUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final TimestampList timestampList = AmaltheaFactory.eINSTANCE.createTimestampList();
+		final Time timestamp = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(synthetic);
+		synthetic.setTriggerTimes(timestampList);
+		timestampList.getTimestamps().add(timestamp);
+		timestamp.setValue(value);
+		timestamp.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkTimestampListTimestampsUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkTimestampListTimestampsUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkTimestampListTimestampsUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final TimestampList timestampList = AmaltheaFactory.eINSTANCE.createTimestampList();
+		final Time timestamp = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(synthetic);
+		synthetic.setTriggerTimes(timestampList);
+		timestampList.getTimestamps().add(timestamp);
+		timestamp.setValue(value);
+		timestamp.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkTimestampListTimestampsUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkSingleActivationUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSingleActivationUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final Time activation = null;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(single);
+		single.setActivation(activation);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSingleActivationUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkSingleActivationUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSingleActivationUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final Time activation = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(single);
+		single.setActivation(activation);
+		activation.setValue(value);
+		activation.setUnit(unit);
+		
+		this.issueCreator.issue(activation, AmaltheaPackage.eINSTANCE.getSingle_Activation(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSingleActivationUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkSingleActivationUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSingleActivationUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final Time activation = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(single);
+		single.setActivation(activation);
+		activation.setValue(value);
+		activation.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSingleActivationUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkSingleActivationUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSingleActivationUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final Time activation = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(single);
+		single.setActivation(activation);
+		activation.setValue(value);
+		activation.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSingleActivationUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkArrivalCurveEntryLowerUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkArrivalCurveEntryLowerUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
+		final Time lower = null;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(arrivalCurve);
+		arrivalCurve.getEntries().add(entry);
+		entry.setLowerTimeBorder(lower);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkArrivalCurveEntryLowerUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkArrivalCurveEntryLowerUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkArrivalCurveEntryLowerUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
+		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(arrivalCurve);
+		arrivalCurve.getEntries().add(entry);
+		entry.setLowerTimeBorder(lower);
+		lower.setValue(value);
+		lower.setUnit(unit);
+		
+		this.issueCreator.issue(lower, AmaltheaPackage.eINSTANCE.getArrivalCurveEntry_LowerTimeBorder(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkArrivalCurveEntryLowerUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkArrivalCurveEntryLowerUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkArrivalCurveEntryLowerUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
+		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(arrivalCurve);
+		arrivalCurve.getEntries().add(entry);
+		entry.setLowerTimeBorder(lower);
+		lower.setValue(value);
+		lower.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkArrivalCurveEntryLowerUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkArrivalCurveEntryLowerUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkArrivalCurveEntryLowerUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
+		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(arrivalCurve);
+		arrivalCurve.getEntries().add(entry);
+		entry.setLowerTimeBorder(lower);
+		lower.setValue(value);
+		lower.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkArrivalCurveEntryLowerUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkArrivalCurveEntryUpperUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkArrivalCurveEntryUpperUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
+		final Time upper = null;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(arrivalCurve);
+		arrivalCurve.getEntries().add(entry);
+		entry.setUpperTimeBorder(upper);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkArrivalCurveEntryUpperUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkArrivalCurveEntryUpperUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkArrivalCurveEntryUpperUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
+		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(arrivalCurve);
+		arrivalCurve.getEntries().add(entry);
+		entry.setUpperTimeBorder(upper);
+		upper.setValue(value);
+		upper.setUnit(unit);
+		
+		this.issueCreator.issue(upper, AmaltheaPackage.eINSTANCE.getArrivalCurveEntry_UpperTimeBorder(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkArrivalCurveEntryUpperUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkArrivalCurveEntryUpperUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkArrivalCurveEntryUpperUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
+		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(arrivalCurve);
+		arrivalCurve.getEntries().add(entry);
+		entry.setUpperTimeBorder(upper);
+		upper.setValue(value);
+		upper.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkArrivalCurveEntryUpperUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkArrivalCurveEntryUpperUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkArrivalCurveEntryUpperUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
+		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(arrivalCurve);
+		arrivalCurve.getEntries().add(entry);
+		entry.setUpperTimeBorder(upper);
+		upper.setValue(value);
+		upper.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkArrivalCurveEntryUpperUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkClockTriangleFunctionPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkClockTriangleFunctionPeriodUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		ClockTriangleFunction clockTriangleFunction = AmaltheaFactory.eINSTANCE.createClockTriangleFunction();
+		final Time period = null;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getClocks().add(clockTriangleFunction);
+		clockTriangleFunction.setPeriod(period);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkClockTriangleFunctionPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkClockTriangleFunctionPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkClockTriangleFunctionPeriodUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		ClockTriangleFunction clockTriangleFunction = AmaltheaFactory.eINSTANCE.createClockTriangleFunction();
+		final Time period = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getClocks().add(clockTriangleFunction);
+		clockTriangleFunction.setPeriod(period);
+		period.setValue(value);
+		period.setUnit(unit);
+		
+		this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Period(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkClockTriangleFunctionPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkClockTriangleFunctionPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkClockTriangleFunctionPeriodUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		ClockTriangleFunction clockTriangleFunction = AmaltheaFactory.eINSTANCE.createClockTriangleFunction();
+		final Time period = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getClocks().add(clockTriangleFunction);
+		clockTriangleFunction.setPeriod(period);
+		period.setValue(value);
+		period.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkClockTriangleFunctionPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkClockTriangleFunctionPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkClockTriangleFunctionPeriodUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		ClockTriangleFunction clockTriangleFunction = AmaltheaFactory.eINSTANCE.createClockTriangleFunction();
+		final Time period = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getClocks().add(clockTriangleFunction);
+		clockTriangleFunction.setPeriod(period);
+		period.setValue(value);
+		period.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkClockTriangleFunctionPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkClockSinusFunctionPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkClockSinusFunctionPeriodUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		ClockSinusFunction clockSinusFunction = AmaltheaFactory.eINSTANCE.createClockSinusFunction();
+		final Time period = null;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getClocks().add(clockSinusFunction);
+		clockSinusFunction.setPeriod(period);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkClockSinusFunctionPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkClockSinusFunctionPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkClockSinusFunctionPeriodUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		ClockSinusFunction clockSinusFunction = AmaltheaFactory.eINSTANCE.createClockSinusFunction();
+		final Time period = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getClocks().add(clockSinusFunction);
+		clockSinusFunction.setPeriod(period);
+		period.setValue(value);
+		period.setUnit(unit);
+		
+		this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getClockSinusFunction_Period(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkClockSinusFunctionPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkClockSinusFunctionPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkClockSinusFunctionPeriodUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		ClockSinusFunction clockSinusFunction = AmaltheaFactory.eINSTANCE.createClockSinusFunction();
+		final Time period = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getClocks().add(clockSinusFunction);
+		clockSinusFunction.setPeriod(period);
+		period.setValue(value);
+		period.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkClockSinusFunctionPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkClockSinusFunctionPeriodUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkClockSinusFunctionPeriodUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		ClockSinusFunction clockSinusFunction = AmaltheaFactory.eINSTANCE.createClockSinusFunction();
+		final Time period = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getClocks().add(clockSinusFunction);
+		clockSinusFunction.setPeriod(period);
+		period.setValue(value);
+		period.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkClockSinusFunctionPeriodUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkClockMultiplierListEntryTimeUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkClockMultiplierListEntryTimeUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		ClockMultiplierList clockMultiplierList = AmaltheaFactory.eINSTANCE.createClockMultiplierList();
+		ClockMultiplierListEntry clockMultiplierListEntry = AmaltheaFactory.eINSTANCE.createClockMultiplierListEntry();
+		final Time time = null;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getClocks().add(clockMultiplierList);
+		clockMultiplierList.getEntries().add(clockMultiplierListEntry);
+		clockMultiplierListEntry.setTime(time);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkClockMultiplierListEntryTimeUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkClockMultiplierListEntryTimeUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkClockMultiplierListEntryTimeUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		ClockMultiplierList clockMultiplierList = AmaltheaFactory.eINSTANCE.createClockMultiplierList();
+		ClockMultiplierListEntry clockMultiplierListEntry = AmaltheaFactory.eINSTANCE.createClockMultiplierListEntry();
+		final Time time = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getClocks().add(clockMultiplierList);
+		clockMultiplierList.getEntries().add(clockMultiplierListEntry);
+		clockMultiplierListEntry.setTime(time);
+		time.setValue(value);
+		time.setUnit(unit);
+		
+		this.issueCreator.issue(time, AmaltheaPackage.eINSTANCE.getClockMultiplierListEntry_Time(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkClockMultiplierListEntryTimeUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkClockMultiplierListEntryTimeUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkClockMultiplierListEntryTimeUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		ClockMultiplierList clockMultiplierList = AmaltheaFactory.eINSTANCE.createClockMultiplierList();
+		ClockMultiplierListEntry clockMultiplierListEntry = AmaltheaFactory.eINSTANCE.createClockMultiplierListEntry();
+		final Time time = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getClocks().add(clockMultiplierList);
+		clockMultiplierList.getEntries().add(clockMultiplierListEntry);
+		clockMultiplierListEntry.setTime(time);
+		time.setValue(value);
+		time.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkClockMultiplierListEntryTimeUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkClockMultiplierListEntryTimeUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkClockMultiplierListEntryTimeUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		ClockMultiplierList clockMultiplierList = AmaltheaFactory.eINSTANCE.createClockMultiplierList();
+		ClockMultiplierListEntry clockMultiplierListEntry = AmaltheaFactory.eINSTANCE.createClockMultiplierListEntry();
+		final Time time = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getClocks().add(clockMultiplierList);
+		clockMultiplierList.getEntries().add(clockMultiplierListEntry);
+		clockMultiplierListEntry.setTime(time);
+		time.setValue(value);
+		time.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkClockMultiplierListEntryTimeUnsigned(amalthea);
+		
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}

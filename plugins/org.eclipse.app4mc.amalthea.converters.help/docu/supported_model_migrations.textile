@@ -5,18 +5,19 @@ Model migration functionality provides a possibility to migrate the models (_cre
 
 _Only forward migration is supported_
 
-**AMALTHEA metamodel versions information**
+**AMALTHEA meta model versions information**
 
-Below were the releases of AMALTHEA metamodel during its phase of being as a ITEA2 funded project ( For details refer : "www.amalthea-project.org":http://www.amalthea-project.org/index.php/roadmap )
+Below were the releases of AMALTHEA meta model during its phase of being as a ITEA2 funded project ( For details refer : "www.amalthea-project.org":http://www.amalthea-project.org/index.php/roadmap )
 
 * 1.0.3
 * 1.1.0
 * 1.1.1
 
-From below version, AMALTHEA metamodel is a part of the official  project Eclipse APP4MC ( See: "www.eclipse.org/app4mc":https://www.eclipse.org/app4mc )
+From below version, AMALTHEA meta model is a part of the official  project Eclipse APP4MC ( See: "www.eclipse.org/app4mc":https://www.eclipse.org/app4mc )
 
 * 0.7.0
 * 0.7.1
+* 0.7.2
 
 **Model migration**
 

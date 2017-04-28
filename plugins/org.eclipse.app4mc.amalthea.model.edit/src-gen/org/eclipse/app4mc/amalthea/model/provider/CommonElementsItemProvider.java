@@ -73,6 +73,8 @@ public class CommonElementsItemProvider extends BaseObjectItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getCommonElements_Tags());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getCommonElements_CoreClassifiers());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getCommonElements_MemoryClassifiers());
 		}
 		return childrenFeatures;
 	}
@@ -136,6 +138,8 @@ public class CommonElementsItemProvider extends BaseObjectItemProvider {
 
 		switch (notification.getFeatureID(CommonElements.class)) {
 			case AmaltheaPackage.COMMON_ELEMENTS__TAGS:
+			case AmaltheaPackage.COMMON_ELEMENTS__CORE_CLASSIFIERS:
+			case AmaltheaPackage.COMMON_ELEMENTS__MEMORY_CLASSIFIERS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -157,6 +161,16 @@ public class CommonElementsItemProvider extends BaseObjectItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getCommonElements_Tags(),
 				 AmaltheaFactory.eINSTANCE.createTag()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getCommonElements_CoreClassifiers(),
+				 AmaltheaFactory.eINSTANCE.createCoreClassifier()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getCommonElements_MemoryClassifiers(),
+				 AmaltheaFactory.eINSTANCE.createMemoryClassifier()));
 	}
 
 }

@@ -151,6 +151,52 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CoreClassifier} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CoreClassifierItemProvider coreClassifierItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.CoreClassifier}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCoreClassifierAdapter() {
+		if (coreClassifierItemProvider == null) {
+			coreClassifierItemProvider = new CoreClassifierItemProvider(this);
+		}
+
+		return coreClassifierItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.MemoryClassifier} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MemoryClassifierItemProvider memoryClassifierItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.MemoryClassifier}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMemoryClassifierAdapter() {
+		if (memoryClassifierItemProvider == null) {
+			memoryClassifierItemProvider = new MemoryClassifierItemProvider(this);
+		}
+
+		return memoryClassifierItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TransmissionPolicy} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -194,29 +240,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return timeItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SignedTime} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SignedTimeItemProvider signedTimeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SignedTime}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSignedTimeAdapter() {
-		if (signedTimeItemProvider == null) {
-			signedTimeItemProvider = new SignedTimeItemProvider(this);
-		}
-
-		return signedTimeItemProvider;
 	}
 
 	/**
@@ -539,29 +562,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return timeObjectItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SignedTimeObject} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SignedTimeObjectItemProvider signedTimeObjectItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SignedTimeObject}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSignedTimeObjectAdapter() {
-		if (signedTimeObjectItemProvider == null) {
-			signedTimeObjectItemProvider = new SignedTimeObjectItemProvider(this);
-		}
-
-		return signedTimeObjectItemProvider;
 	}
 
 	/**
@@ -3003,29 +3003,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.AbstractElementMapping} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AbstractElementMappingItemProvider abstractElementMappingItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.AbstractElementMapping}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAbstractElementMappingAdapter() {
-		if (abstractElementMappingItemProvider == null) {
-			abstractElementMappingItemProvider = new AbstractElementMappingItemProvider(this);
-		}
-
-		return abstractElementMappingItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TaskAllocation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3092,6 +3069,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return runnableAllocationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.MemoryMapping} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MemoryMappingItemProvider memoryMappingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.MemoryMapping}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMemoryMappingAdapter() {
+		if (memoryMappingItemProvider == null) {
+			memoryMappingItemProvider = new MemoryMappingItemProvider(this);
+		}
+
+		return memoryMappingItemProvider;
 	}
 
 	/**
@@ -3831,95 +3831,49 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwCoreProperty} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CoreClassification} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected HwCorePropertyItemProvider hwCorePropertyItemProvider;
+	protected CoreClassificationItemProvider coreClassificationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwCoreProperty}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.CoreClassification}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createHwCorePropertyAdapter() {
-		if (hwCorePropertyItemProvider == null) {
-			hwCorePropertyItemProvider = new HwCorePropertyItemProvider(this);
+	public Adapter createCoreClassificationAdapter() {
+		if (coreClassificationItemProvider == null) {
+			coreClassificationItemProvider = new CoreClassificationItemProvider(this);
 		}
 
-		return hwCorePropertyItemProvider;
+		return coreClassificationItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwCoreConjunction} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.MemoryClassification} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected HwCoreConjunctionItemProvider hwCoreConjunctionItemProvider;
+	protected MemoryClassificationItemProvider memoryClassificationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwCoreConjunction}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.MemoryClassification}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createHwCoreConjunctionAdapter() {
-		if (hwCoreConjunctionItemProvider == null) {
-			hwCoreConjunctionItemProvider = new HwCoreConjunctionItemProvider(this);
+	public Adapter createMemoryClassificationAdapter() {
+		if (memoryClassificationItemProvider == null) {
+			memoryClassificationItemProvider = new MemoryClassificationItemProvider(this);
 		}
 
-		return hwCoreConjunctionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwMemoryProperty} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HwMemoryPropertyItemProvider hwMemoryPropertyItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwMemoryProperty}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createHwMemoryPropertyAdapter() {
-		if (hwMemoryPropertyItemProvider == null) {
-			hwMemoryPropertyItemProvider = new HwMemoryPropertyItemProvider(this);
-		}
-
-		return hwMemoryPropertyItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwMemoryConjunction} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HwMemoryConjunctionItemProvider hwMemoryConjunctionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwMemoryConjunction}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createHwMemoryConjunctionAdapter() {
-		if (hwMemoryConjunctionItemProvider == null) {
-			hwMemoryConjunctionItemProvider = new HwMemoryConjunctionItemProvider(this);
-		}
-
-		return hwMemoryConjunctionItemProvider;
+		return memoryClassificationItemProvider;
 	}
 
 	/**
@@ -4521,26 +4475,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitch} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProbabiltitySwitchItemProvider probabiltitySwitchItemProvider;
+	protected ProbabilitySwitchItemProvider probabilitySwitchItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitch}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createProbabiltitySwitchAdapter() {
-		if (probabiltitySwitchItemProvider == null) {
-			probabiltitySwitchItemProvider = new ProbabiltitySwitchItemProvider(this);
+	public Adapter createProbabilitySwitchAdapter() {
+		if (probabilitySwitchItemProvider == null) {
+			probabilitySwitchItemProvider = new ProbabilitySwitchItemProvider(this);
 		}
 
-		return probabiltitySwitchItemProvider;
+		return probabilitySwitchItemProvider;
 	}
 
 	/**
@@ -5717,6 +5671,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EventActivation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EventActivationItemProvider eventActivationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EventActivation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEventActivationAdapter() {
+		if (eventActivationItemProvider == null) {
+			eventActivationItemProvider = new EventActivationItemProvider(this);
+		}
+
+		return eventActivationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CustomActivation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5910,11 +5887,12 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (amaltheaItemProvider != null) amaltheaItemProvider.dispose();
 		if (commonElementsItemProvider != null) commonElementsItemProvider.dispose();
 		if (tagItemProvider != null) tagItemProvider.dispose();
+		if (coreClassifierItemProvider != null) coreClassifierItemProvider.dispose();
+		if (memoryClassifierItemProvider != null) memoryClassifierItemProvider.dispose();
 		if (transmissionPolicyItemProvider != null) transmissionPolicyItemProvider.dispose();
 		if (instructionsDeviationItemProvider != null) instructionsDeviationItemProvider.dispose();
 		if (instructionsConstantItemProvider != null) instructionsConstantItemProvider.dispose();
 		if (timeItemProvider != null) timeItemProvider.dispose();
-		if (signedTimeItemProvider != null) signedTimeItemProvider.dispose();
 		if (frequencyItemProvider != null) frequencyItemProvider.dispose();
 		if (dataSizeItemProvider != null) dataSizeItemProvider.dispose();
 		if (dataRateItemProvider != null) dataRateItemProvider.dispose();
@@ -5929,7 +5907,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (doubleObjectItemProvider != null) doubleObjectItemProvider.dispose();
 		if (booleanObjectItemProvider != null) booleanObjectItemProvider.dispose();
 		if (timeObjectItemProvider != null) timeObjectItemProvider.dispose();
-		if (signedTimeObjectItemProvider != null) signedTimeObjectItemProvider.dispose();
 		if (deviationItemProvider != null) deviationItemProvider.dispose();
 		if (weibullParametersItemProvider != null) weibullParametersItemProvider.dispose();
 		if (weibullEstimatorsItemProvider != null) weibullEstimatorsItemProvider.dispose();
@@ -6035,11 +6012,11 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (hwElementRefItemProvider != null) hwElementRefItemProvider.dispose();
 		if (mappingModelItemProvider != null) mappingModelItemProvider.dispose();
 		if (coreAllocationItemProvider != null) coreAllocationItemProvider.dispose();
-		if (physicalSectionMappingItemProvider != null) physicalSectionMappingItemProvider.dispose();
-		if (abstractElementMappingItemProvider != null) abstractElementMappingItemProvider.dispose();
 		if (taskAllocationItemProvider != null) taskAllocationItemProvider.dispose();
 		if (isrAllocationItemProvider != null) isrAllocationItemProvider.dispose();
 		if (runnableAllocationItemProvider != null) runnableAllocationItemProvider.dispose();
+		if (memoryMappingItemProvider != null) memoryMappingItemProvider.dispose();
+		if (physicalSectionMappingItemProvider != null) physicalSectionMappingItemProvider.dispose();
 		if (osModelItemProvider != null) osModelItemProvider.dispose();
 		if (osDataConsistencyItemProvider != null) osDataConsistencyItemProvider.dispose();
 		if (dataStabilityItemProvider != null) dataStabilityItemProvider.dispose();
@@ -6072,10 +6049,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (processPrototypeAllocationConstraintItemProvider != null) processPrototypeAllocationConstraintItemProvider.dispose();
 		if (runnableAllocationConstraintItemProvider != null) runnableAllocationConstraintItemProvider.dispose();
 		if (abstractElementMappingConstraintItemProvider != null) abstractElementMappingConstraintItemProvider.dispose();
-		if (hwCorePropertyItemProvider != null) hwCorePropertyItemProvider.dispose();
-		if (hwCoreConjunctionItemProvider != null) hwCoreConjunctionItemProvider.dispose();
-		if (hwMemoryPropertyItemProvider != null) hwMemoryPropertyItemProvider.dispose();
-		if (hwMemoryConjunctionItemProvider != null) hwMemoryConjunctionItemProvider.dispose();
+		if (coreClassificationItemProvider != null) coreClassificationItemProvider.dispose();
+		if (memoryClassificationItemProvider != null) memoryClassificationItemProvider.dispose();
 		if (stimuliModelItemProvider != null) stimuliModelItemProvider.dispose();
 		if (modeValueListItemProvider != null) modeValueListItemProvider.dispose();
 		if (modeValueListEntryItemProvider != null) modeValueListEntryItemProvider.dispose();
@@ -6102,7 +6077,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (modeSwitchItemProvider != null) modeSwitchItemProvider.dispose();
 		if (modeSwitchEntryItemProvider != null) modeSwitchEntryItemProvider.dispose();
 		if (modeSwitchDefaultItemProvider != null) modeSwitchDefaultItemProvider.dispose();
-		if (probabiltitySwitchItemProvider != null) probabiltitySwitchItemProvider.dispose();
+		if (probabilitySwitchItemProvider != null) probabilitySwitchItemProvider.dispose();
 		if (probabilitySwitchEntryItemProvider != null) probabilitySwitchEntryItemProvider.dispose();
 		if (counterItemProvider != null) counterItemProvider.dispose();
 		if (waitEventItemProvider != null) waitEventItemProvider.dispose();
@@ -6152,6 +6127,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (periodicActivationItemProvider != null) periodicActivationItemProvider.dispose();
 		if (sporadicActivationItemProvider != null) sporadicActivationItemProvider.dispose();
 		if (singleActivationItemProvider != null) singleActivationItemProvider.dispose();
+		if (eventActivationItemProvider != null) eventActivationItemProvider.dispose();
 		if (customActivationItemProvider != null) customActivationItemProvider.dispose();
 		if (labelAccessStatisticItemProvider != null) labelAccessStatisticItemProvider.dispose();
 		if (instructionFetchItemProvider != null) instructionFetchItemProvider.dispose();

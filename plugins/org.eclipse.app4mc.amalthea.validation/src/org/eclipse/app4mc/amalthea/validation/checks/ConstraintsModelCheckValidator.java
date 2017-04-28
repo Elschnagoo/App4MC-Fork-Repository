@@ -46,8 +46,8 @@ public class ConstraintsModelCheckValidator extends AbstractCheckValidator imple
 	}
 
 
-	@Check(constraint = "EventChainsConstraint", categories = { "ConstraintsModelConstraint" })
-	public void eventChainConstraint(final ConstraintsModel model) {
-		this.constraintsModelImpl.eventChainConstraint(model);
+	@Check(constraint = "EventChain", categories = { "ConstraintsModel" })
+	public void checkEventChains(final ConstraintsModel model) {
+		this.constraintsModelImpl.checkEventChains(model);
 	}
 }

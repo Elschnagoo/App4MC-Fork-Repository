@@ -1,10 +1,7 @@
 package org.eclipse.app4mc.amalthea.converters.ui.log.utils;
 
-import org.apache.log4j.Appender;
-import org.apache.log4j.Layout;
+import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.Level;
-import org.apache.log4j.spi.ErrorHandler;
-import org.apache.log4j.spi.Filter;
 import org.apache.log4j.spi.LoggingEvent;
 import org.apache.log4j.spi.ThrowableInformation;
 import org.eclipse.app4mc.amalthea.converters.ui.Activator;
@@ -12,30 +9,33 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.swt.widgets.Display;
 
-public class CustomEclipseLogAppender implements Appender {
+public class CustomEclipseLogAppender extends AppenderSkeleton {
 
-	@Override
-	public void addFilter(final Filter newFilter) {
-		//
+
+	private int getStatus(final LoggingEvent event) {
+		final Level level = event.getLevel();
+
+		int status = IStatus.INFO;
+
+		if (level == Level.ERROR) {
+			status = IStatus.ERROR;
+		}
+		else if (level == Level.INFO) {
+			status = IStatus.INFO;
+		}
+		else if (level == Level.WARN) {
+			status = IStatus.WARNING;
+		}
+		else if (level == Level.FATAL) {
+			status = IStatus.ERROR;
+		}
+		return status;
 	}
 
-	@Override
-	public Filter getFilter() {
-		return null;
-	}
 
 	@Override
-	public void clearFilters() {
-		//
-	}
+	protected void append(final LoggingEvent event) {
 
-	@Override
-	public void close() {
-		//
-	}
-
-	@Override
-	public void doAppend(final LoggingEvent event) {
 
 		final Object messageObject = event.getMessage();
 
@@ -61,60 +61,20 @@ public class CustomEclipseLogAppender implements Appender {
 			}
 		});
 
+
 	}
 
-	private int getStatus(final LoggingEvent event) {
-		final Level level = event.getLevel();
-
-		int status = IStatus.INFO;
-
-		if (level == Level.ERROR) {
-			status = IStatus.ERROR;
-		}
-		else if (level == Level.INFO) {
-			status = IStatus.INFO;
-		}
-		else if (level == Level.WARN) {
-			status = IStatus.WARNING;
-		}
-		else if (level == Level.FATAL) {
-			status = IStatus.ERROR;
-		}
-		return status;
-	}
 
 	@Override
-	public String getName() {
-		return "Model-Migration-Eclipse-Log-Appender";
+	public void close() {
+		// TODO mez2rng Auto-generated method stub
+
 	}
 
-	@Override
-	public void setErrorHandler(final ErrorHandler errorHandler) {
-		//
-	}
-
-	@Override
-	public ErrorHandler getErrorHandler() {
-		return null;
-	}
-
-	@Override
-	public void setLayout(final Layout layout) {
-		//
-	}
-
-	@Override
-	public Layout getLayout() {
-		return null;
-	}
-
-	@Override
-	public void setName(final String name) {
-		//
-	}
 
 	@Override
 	public boolean requiresLayout() {
+		// TODO mez2rng Auto-generated method stub
 		return false;
 	}
 

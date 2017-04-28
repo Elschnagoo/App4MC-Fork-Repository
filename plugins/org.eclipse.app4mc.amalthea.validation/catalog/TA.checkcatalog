@@ -75,6 +75,88 @@
     severity="Error"
     message="The deadline contains an invalid value: {0} {1}!"
     categories="TAConstraint"/>
+    
+<constraints
+    id="SynchronizationConstraintToleranceUnsigned"
+    label="Tolerance Unsigned"
+    description="Checks if the value of property &quot;tolerance&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="DelayConstraintUpperUnsigned"
+    label="Upper Unsigned"
+    description="Checks if the value of property &quot;upper&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+<constraints
+    id="DelayConstraintLowerUnsigned"
+    label="Lower Unsigned"
+    description="Checks if the value of property &quot;lower&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="EventChainLatencyConstraintMinimumUnsigned"
+    label="Minimum Unsigned"
+    description="Checks if the value of property &quot;minimum&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>    
+<constraints
+    id="EventChainLatencyConstraintMaximumUnsigned"
+    label="Maximum Unsigned"
+    description="Checks if the value of property &quot;maximum&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="RepetitionConstraintLowerUnsigned"
+    label="Lower Unsigned"
+    description="Checks if the value of property &quot;lower&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+<constraints
+    id="RepetitionConstraintUpperUnsigned"
+    label="Upper Unsigned"
+    description="Checks if the value of property &quot; upper &quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+<constraints
+    id="RepetitionConstraintJitterUnsigned"
+    label="Jitter Unsigned"
+    description="Checks if the value of property &quot;jitter&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+<constraints
+    id="RepetitionConstraintPeriodUnsigned"
+    label="Period Unsigned"
+    description="Checks if the value of property &quot;period&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="DataAgeTimeMinimumUnsigned"
+    label="Minimum Unsigned"
+    description="Checks if the value of property &quot;minimum&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+<constraints
+    id="DataAgeTimeMaximumUnsigned"
+    label="Maximum Unsigned"
+    description="Checks if the value of property &quot;maximum&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
 <!--end CONSTRAINTS Model -->
 
 <!--start HW Model -->
@@ -118,6 +200,14 @@
     severity="Error"
     message="A reference to a Semaphore object is invalid!"
     categories="TAConstraint"/>
+    
+ <constraints
+    id="SchedulingHWUnitDelayUnsigned"
+    label="Delay Unsigned"
+    description="Checks if the value of property &quot;delay&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
 <!--end OS Model -->
 
 <!--start STIMULI Model -->
@@ -148,6 +238,91 @@
     description="Checks if the parameters of ClockSinusFunction are valid"
     severity="Error"
     message="The parameter of ClockSinusFunction is invalid!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="PeriodicOffsetUnsigned"
+    label="Periodic Offset Unsigned"
+    description="Checks if the value of property &quot;offset&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+<constraints
+    id="PeriodicRecurrenceUnsigned"
+    label="Periodic Recurrence Unsigned"
+    description="Checks if the value of property &quot;recurrence&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="SyntheticOffsetUnsigned"
+    label="Synthetic Offset Unsigned"
+    description="Checks if the value of property &quot;offset&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+<constraints
+    id="SyntheticPeriodUnsigned"
+    label="Synthetic Period Unsigned"
+    description="Checks if the value of property &quot;period&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="TimestampListTimestampsUnsigned"
+    label="TimestampList Timestamps Unsigned"
+    description="Checks if the values of property &quot;timestamps&quot; are not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="SingleActivationUnsigned"
+    label="Single Activation Unsigned"
+    description="Checks if the value of property &quot;activation&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="ArrivalCurveEntryLowerUnsigned"
+    label="ArrivalCurveEntry Lower Unsigned"
+    description="Checks if the value of property &quot;lowerTimeBorder&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+<constraints
+    id="ArrivalCurveEntryUpperUnsigned"
+    label="ArrivalCurveEntry Upper Unsigned"
+    description="Checks if the value of property &quot;upperTimeBorder&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="ClockTriangleFunctionPeriodUnsigned"
+    label="ClockTriangleFunction Period Unsigned"
+    description="Checks if the value of property &quot;period&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="ClockSinusFunctionPeriodUnsigned"
+    label="ClockSinusFunction Period Unsigned"
+    description="Checks if the value of property &quot;period&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="ClockMultiplierListEntryTimeUnsigned"
+    label="ClockMultiplierListEntry Time Unsigned"
+    description="Checks if the value of property &quot;time&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
     categories="TAConstraint"/>
 <!--end STIMULI Model -->
 
@@ -188,39 +363,39 @@
     message="The OsEvent {0} of the EventMask is never set!"
     categories="TAConstraint"/>
  <constraints
-    id="ModeValueProviderConstraint"
+    id="ModeSwitchValueProviderConstraint"
     label="ModeSwitch ValueProvider"
     description="Checks if reference to ModeLabel of ModeSwitch is valid"
     severity="Error"
     message="The ValueProvider reference of ModeSwitch is invalid!"
     categories="TAConstraint"/>
  <constraints
-    id="ModeSwitchEntryValueConstraint"
-    label="ModeSwitchEntry Value"
+    id="ModeSwitchEntryValueConstraint1"
+    label="ModeSwitchEntry Value (used once)"
+    description="Checks if the parameter Value of ModeSwitchEntry is valid"
+    severity="Error"
+    message="The parameter Value of ModeSwitchEntry is used multiple times!"
+    categories="TAConstraint"/>
+ <constraints
+    id="ModeSwitchEntryValueConstraint2"
+    label="ModeSwitchEntry Value (valid reference)"
     description="Checks if the parameter Value of ModeSwitchEntry is valid"
     severity="Error"
     message="The parameter Value of ModeSwitchEntry is invalid!"
-    categories="TAConstraint"/>
- <constraints
-    id="ModeValueProviderValueConstraint"
-    label="ModeValueProvider Value"
-    description="Checks if the parameter Value of ModeValueProvider is valid"
-    severity="Error"
-    message="The parameter Value of ModeValueProvider is invalid!"
     categories="TAConstraint"/>   
  <constraints
-    id="ModeValueProviderModeConstraint"
-    label="ModeValueProvider Mode"
-    description="Checks if the reference to Mode of ModeValueProvider is valid"
+    id="ModeLabelModeConstraint"
+    label="ModeLabel Mode"
+    description="Checks if the reference to Mode of ModeLabel is valid"
     severity="Error"
-    message="The Mode reference of ModeValueProvider is invalid!"
+    message="The Mode reference of ModeLabel is invalid!"
     categories="TAConstraint"/>     
  <constraints
-    id="ModeValueProviderInitialValueConstraint"
-    label="ModeValueProvider InitialValue"
-    description="Checks if the parameter InitialValue of ModeValueProvider is valid"
+    id="ModeLabelInitialValueConstraint"
+    label="ModeLabel InitialValue"
+    description="Checks if the parameter InitialValue of ModeLabel is valid"
     severity="Error"
-    message="The parameter InitialValue of ModeValueProvider is invalid!"
+    message="The parameter InitialValue of ModeLabel is invalid!"
     categories="TAConstraint"/>
 <constraints
     id="ServerCallServerRunnableConstraint"
@@ -235,6 +410,74 @@
     description="Checks if the ResourceOwner reference of EnforcedMigration is valid"
     severity="Error"
     message="The ResourceOwner reference of EnforcedMigration is invalid!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="RunnableDeadlineUnsigned"
+    label="Runnable Deadline Unsigned"
+    description="Checks if the value of property &quot;deadline&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="PeriodicActivationMinUnsigned"
+    label="PeriodicActivation Min Unsigned"
+    description="Checks if the value of property &quot;min&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+<constraints
+    id="PeriodicActivationMaxUnsigned"
+    label="PeriodicActivation Max Unsigned"
+    description="Checks if the value of property &quot;max&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+<constraints
+    id="PeriodicActivationOffsetUnsigned"
+    label="PeriodicActivation Offset Unsigned"
+    description="Checks if the value of property &quot;offset&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+<constraints
+    id="PeriodicActivationDeadlineUnsigned"
+    label="PeriodicActivation Deadline Unsigned"
+    description="Checks if the value of property &quot;deadline&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>    
+
+<constraints
+    id="SingleActivationMinUnsigned"
+    label="SingleActivation Min Unsigned"
+    description="Checks if the value of property &quot;min&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+<constraints
+    id="SingleActivationMaxUnsigned"
+    label="SingleActivation Max Unsigned"
+    description="Checks if the value of property &quot;max&quot; is not less than zero"
+    severity="Error"
+    message="Value must not be negative but was: {0}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="ModeLabelAccessModeEqual"
+    label="ModeLabelAccess Mode Equal"
+    description="Checks if the modes referenced by &quot;modeValue&quot; and &quot;data&quot; of ModeLabelAccess are equal"
+    severity="Error"
+    message="Referenced modes must be equal but were: {0} != {1}!"
+    categories="TAConstraint"/>
+    
+<constraints
+    id="ModeLiteralMode"
+    label="ModeLiteral Mode"
+    description="Checks if a ModeLiteral is part of a Mode"
+    severity="Error"
+    message="ModeLiteral must be part of a Mode!"
     categories="TAConstraint"/>
 <!--end SW Model --> 
 

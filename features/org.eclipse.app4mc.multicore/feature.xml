@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.app4mc.amalthea.multicore"
       label="APP4MC AMALTHEA Multicore Support"
-      version="0.7.2.qualifier"
+      version="0.8.0.qualifier"
       provider-name="Eclipse.org"
       license-feature="org.eclipse.license"
       license-feature-version="1.0.1.qualifier">
@@ -12,7 +12,7 @@
    </description>
 
    <copyright url="https://projects.eclipse.org/projects/technology.app4mc">
-      (c) Copyright Eclipse APP4MC contributors and others. 2016. 
+      (c) Copyright Eclipse APP4MC contributors and others. 2017. 
 All rights reserved.
    </copyright>
 
@@ -39,11 +39,11 @@ All rights reserved.
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.sphinx.emf"/>
       <import plugin="org.slf4j.jcl"/>
-      <import plugin="org.eclipse.app4mc.multicore.openmapping" version="0.7.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.app4mc.multicore.openmapping" version="0.8.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.help"/>
       <import plugin="org.eclipse.emf.common.ui"/>
    </requires>
-
+   
    <plugin
          id="org.eclipse.app4mc.multicore.openmapping"
          download-size="0"
@@ -59,6 +59,68 @@ All rights reserved.
          unpack="false"/>
 
    <plugin
+         id="org.eclipse.app4mc.multicore.sharelibs"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.dialogs"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.execution.logic"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.execution.logic.btf"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.execution.ui.simmenu"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.execution.ui.widget"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.app4mc.multicore.execution.ui.traceeditor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.multicore.execution.ui.traceview"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.apache.commons.math"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+         
+   <plugin
          id="org.jgrapht"
          download-size="0"
          install-size="0"
@@ -72,6 +134,12 @@ All rights reserved.
 
    <plugin
          id="org.jenetics"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.mxgraph"
          download-size="0"
          install-size="0"
          version="0.0.0"/>

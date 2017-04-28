@@ -50,4 +50,59 @@ public class ConstraintsModelValidator extends AbstractCheckValidator implements
 	public void checkDeadlineValue(final Amalthea amalthea) {
 		this.constraintsModelValidatorImpl.checkDeadlineValue(amalthea);
 	}
+	
+	@Check(constraint = "SynchronizationConstraintToleranceUnsigned", categories = { "TAConstraint" })
+	public void checkSynchronizationConstraintToleranceUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkSynchronizationConstraintToleranceUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "DelayConstraintUpperUnsigned", categories = { "TAConstraint" })
+	public void checkDelayConstraintUpperUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkDelayConstraintUpperUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "DelayConstraintLowerUnsigned", categories = { "TAConstraint" })
+	public void checkDelayConstraintLowerUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkDelayConstraintLowerUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "EventChainLatencyConstraintMinimumUnsigned", categories = { "TAConstraint" })
+	public void checkEventChainLatencyConstraintMinimumUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkEventChainLatencyConstraintMinimumUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "EventChainLatencyConstraintMaximumUnsigned", categories = { "TAConstraint" })
+	public void checkEventChainLatencyConstraintMaximumUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkEventChainLatencyConstraintMaximumUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "RepetitionConstraintLowerUnsigned", categories = { "TAConstraint" })
+	public void checkRepetitionConstraintLowerUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkRepetitionConstraintLowerUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "RepetitionConstraintUpperUnsigned", categories = { "TAConstraint" })
+	public void checkRepetitionConstraintUpperUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkRepetitionConstraintUpperUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "RepetitionConstraintJitterUnsigned", categories = { "TAConstraint" })
+	public void checkRepetitionConstraintJitterUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkRepetitionConstraintJitterUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "RepetitionConstraintPeriodUnsigned", categories = { "TAConstraint" })
+	public void checkRepetitionConstraintPeriodUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkRepetitionConstraintPeriodUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "DataAgeTimeMinimumUnsigned", categories = { "TAConstraint" })
+	public void checkDataAgeTimeMinimumUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkDataAgeTimeMinimumUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "DataAgeTimeMaximumUnsigned", categories = { "TAConstraint" })
+	public void checkDataAgeTimeMaximumUnsigned(final Amalthea amalthea) {
+		this.constraintsModelValidatorImpl.checkDataAgeTimeMaximumUnsigned(amalthea);
+	}
 }

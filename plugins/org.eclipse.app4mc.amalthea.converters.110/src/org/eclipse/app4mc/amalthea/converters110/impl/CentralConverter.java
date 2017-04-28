@@ -14,6 +14,8 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters110.utils.HelperUtils_103_110;
@@ -23,15 +25,19 @@ import org.jdom2.Element;
 public class CentralConverter implements IConverter {
 
 	private final HelperUtils_103_110 helper;
+	private final Logger logger;
 
-	
 	public CentralConverter() {
 		this.helper = HelperUtils_103_110.getInstance();
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
+
+		this.logger.info("Migration from itea.103 to itea.110 : Executing Central converter for model file : "
+				+ targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);
 

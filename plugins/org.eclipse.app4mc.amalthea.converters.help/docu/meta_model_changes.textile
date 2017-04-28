@@ -1,12 +1,12 @@
 
-h2(#metamodel-changes). AMALTHEA meta model changes
+h2(#meta model-changes). AMALTHEA meta model changes
 
 
 Based on the changes in AMALTHEA meta model across various releases, below description contains the differences in detail which are considered for model migration:
 
 h3. Version ITEA 1.0.3 to ITEA 1.1.0
 
-Below are the changes in the metamodel from ITEA 1.1.0 version to ITEA 1.1.1
+Below are the changes in the meta model from ITEA 1.1.0 version to ITEA 1.1.1
 
 * *Changes in the namespaces:* 
 
@@ -47,7 +47,7 @@ table(classic){margin-left:40px}.
 
 h3. Version ITEA 1.1.0 to ITEA 1.1.1
 
-Below are the changes in the metamodel from ITEA 1.1.0 version to ITEA 1.1.1
+Below are the changes in the meta model from ITEA 1.1.0 version to ITEA 1.1.1
 
 * *Changes in the namespaces:* 
 
@@ -139,11 +139,11 @@ table(classic){margin-left:40px}.
 
 h3. Version ITEA 1.1.1 to App4MC 0.7.0
 
-Below are the changes in the metamodel from ITEA 1.1.1 version to APP4MC 0.7.0
+Below are the changes in the meta model from ITEA 1.1.1 version to APP4MC 0.7.0
 
-* Instead of multiple namespaces (e.g: sw,hw,constraints,components etc.,) a single namespace "am" is introduced
+* Instead of multiple namespaces (e.g. sw, hw, constraints, components, etc.) a single namespace "am" is introduced
 ** *Impact on 0.7.0 model file due to this change:* 
-*** xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0 is included in the xmi file, instead of other namespaces (e.g: xmlns:hw, xmlns:sw etc.,)
+*** xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0 is included in the xmi file, instead of other namespaces (e.g. xmlns:hw, xmlns:sw etc.,)
 *** xsi:type attributes will consists of namespace prefix as "am" in the value. Example: <br/> @<ports xsi:type="am:ComplexPort" name="Mem_1_port" bitWidth="16" direction="R" writeCycles="10" readCycles="10"/>@
 *** Root tag will have "am" as the prefix. Example: <br/> @<am:HWModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.0"/>@
 * Reference pattern is changed. <br/> As there is single model namespace in 0.7.0, namespace prefix is removed before the class name (eg: "ABSMode?type=Label").
@@ -204,7 +204,7 @@ table(classic){margin-left:40px}.
 
 *Root Tag in AMALTHEA model amxmi file*: It is recommended to have "Amalthea" as a root tag in amxmi file.
 
-Based on the above statement, if the AMALTHEA model file is having sub-model tag as root element (e.g: SWModel or HWModel etc.,), as a part of model migration -> root element is changed as "Amalthea" tag and the content of sub-model is copied inside it. 
+Based on the above statement, if the AMALTHEA model file is having sub-model tag as root element (e.g. SWModel or HWModel etc.,), as a part of model migration -> root element is changed as "Amalthea" tag and the content of sub-model is copied inside it. 
 
  Input model (containing SWModel as the root tag):
  
@@ -262,8 +262,8 @@ table(classic){margin-left:40px}.
 |SchedulerSeparationConstraint|Constraints Model|Content is removed from the model. There is no equivalent  of this model element in APP4MC 0.7.1|
 |ProcessRunnableGroupEntry|Constraints Model|This element is removed from the model, but the Runnables associated to it are associated to ProcessRunnableGroup object|
 |OrderConstraint|Constraints Model|Content is removed from the model. There is no equivalent of this model element in APP4MC 0.7.1|
-|AgeConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as �Age� |
-|ReactionConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as �Reaction�|
+|AgeConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as "Age" |
+|ReactionConstraint|Constraints model|Content is migrated as EventChainLatencyConstraint element with LatencyType as "Reaction" |
 |SynchronisationConstraint|Constraints model|Content is migrated as EventSynchronizationConstraint element|
 |SectionMapping|Mapping Model|Content is removed from the model. As per 0.7.1, there is a possibility to specify PhysicalSectionMapping element i.e. defining mapping of various Section elements to Memory|
 |SectionMappingConstraint|Property Constraints Model|Content is removed from the model.As per 0.7.1, there is a possibility to specify PhysicalSectionConstraint element i.e. defining possibility of Section allocation across various Memories |
@@ -344,4 +344,47 @@ table(classic){margin-left:40px}.
 |LabelBufferring|SW Model|LabelBufferring elements are migrated as DataStability elements. Below steps describe the criteria considered for migration of data :<br/>  -  If LabelBuffering value is "buffered" then the corresponding value of "dataStability" is set as "CustomProtection"<br/>	-  If LabelBuffering value is "notBuffered" then the corresponding value of "dataStability" is set as "noProtection" <br/>-  If LabelBuffering value is "_undefined_" (default) then the corresponding value of "dataStability" is set as "_undefined_" (default)
 |LabelAccessBufferring|SW Model|LabelAccessBufferring elements are migrated as DataStability elements. Below steps describe the criteria considered for migration of data :<br/>  -  If LabelAccessBufferring value is "inherited" then the corresponding value of "dataStability" is set as "inherited"<br/>	-  If LabelAccessBufferring value is "buffered" then the corresponding value of "dataStability" is set as "customProtection" <br/>	-  If LabelAccessBufferring value is "notBuffered" then the corresponding value of "dataStability" is set as "noProtection" <br/>-  If LabelAccessBufferring value is "_undefined_" (default) then the corresponding value of "dataStability" is set as "_undefined_" (default)
 |
+
+h3. Version APP4MC 0.7.2 to APP4MC 0.8.0
+
+*Change in the namespace:* 
+
+table(classic){margin-left:40px}. 
+| *_AMALTHEA Namespace (version App4MC 0.7.2)_* | *_AMALTHEA Namespace  (version App4MC 0.8.0)_* |
+|http://app4mc.eclipse.org/amalthea/0.7.2 |http://app4mc.eclipse.org/amalthea/0.8.0 |
+
+*Below references are removed from storage format (amxmi):*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name (version APP4MC 0.7.2)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|mode|Mode|ModeValueProvider|SW Model|mode is made as a derived variable and transient property is set to it, as a result it will not be serialized into the model file. Based on the selection of ModeLiteral (in ModeValueProvider element) mode element will be considered accordingly.|
+|osDataConsistency|OsDataConsistency|OSModel|OS Model|OsDataConsistency element is shifted from OSModel to OperatingSystem element. As a part of migration, osDataConsistency element content is copied inside each OperatingSystem element|
+
+*Below references names are changed :*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name (version APP4MC 0.7.2)_* || *_Variable Name (version APP4MC 0.8.0)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+| mapping | memoryMapping | Mapping (in 0.7.2) -> MemoryMapping (in 0.8.0)| MappingModel| Mapping model |As there is a change in the reference name (from mapping to memoryMapping) in metamodel -->  corresponding XML tag names in amxmi are changed from mapping to memoryMapping, type attribute is removed from memoryMapping XML tag as MemoryMapping is a concrete class|
+
+*Below Classes/Interfaces are removed:*
+
+table(classic){margin-left:40px}. 
+| *_Class Name (version APP4MC 0.7.2)_* | *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|ModeValueProvider (Interface)|SW Model|Content present inside ModeValueProvider class is moved to ModeLabel. Reference to Mode element is made as derived variable, and it automatically populated based on the selection of ModeLiteral.|
+|SignedTimeObject|SW Model|Equivalent of this element is TimeObject in APP4MC 0.8.0. There is no change in the storage format.|
+|SignedTime|SW Model|Equivalent of this element is Time in APP4MC 0.8.0. There is no change in the storage format.|
+|Mapping|Mapping Model|This interface is removed from the model. MemoryMapping is equivalent of this model element in APP4MC 0.8.0. As a part of model migration type attribute is removed from the tag which is defining MemoryMapping.|
+|AbstractElementMapping|Mapping Model|MemoryMapping is equivalent of this model element in APP4MC 0.8.0. As a part of model migration type attribute is removed from the tag which is defining MemoryMapping.|
+|AbstractElementMemoryInformation|HW Model|AbstractMemoryElement is the equivalent of this model element in APP4MC 0.8.0. There is no change in the storage format.|
+|ProbabiltitySwitch|HW Model|ProbabiltitySwitch class is changed to ProbabilitySwitch (typo corrected in the class name). ProbabilitySwitch is the equivalent of this model element in APP4MC 0.8.0|
+|AllocationConstraint|PropertyConstraints Model|AllocationConstraint class is changed to CoreAllocationConstraint. In CoreAllocationConstraint -> reference to HwCoreConstraint element is removed, based on this change -> during model migration CustomProperty is created with key as "hwConstraint (element removed during Migration of Model to 0.8.0 version)" and value as the XML content of "hwConstraint" element.|
+|MappingConstraint|PropertyConstraints Model|MappingConstraint class is changed to MemoryMappingConstraint. In MemoryMappingConstraint -> reference to HwMemmoryConstraint element is removed, based on this change -> during model migration CustomProperty is created with key as "hwConstraint (element removed during Migration of Model to 0.8.0 version)" and value as the XML content of "hwConstraint" element.|
+|HwCoreConstraint, HwCoreConjunction, HwCoreProperty|PropertyConstraints Model|These elements are removed from the model. As a reference XML content is stored as a CustomProperty inside CoreAllocationConstraint|
+|HwMemoryConstraint, HwMemoryConjunction, HwMemoryProperty|PropertyConstraints Model|These elements are removed from the model. As a reference XML content is stored as a CustomProperty inside MemoryMappingConstraint|
+
+*Below are the changes in the datatype of elements:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name_* | *_Variable datatype (version APP4MC 0.7.2)_* | *_Variable datatype (version APP4MC 0.8.0)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|instructionsPerCycle|int|float|CoreType|HW model|int is converted to float|
 

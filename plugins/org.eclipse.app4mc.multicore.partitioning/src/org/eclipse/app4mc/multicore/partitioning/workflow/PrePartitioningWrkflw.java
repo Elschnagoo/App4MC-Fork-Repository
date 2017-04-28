@@ -1,12 +1,10 @@
 package org.eclipse.app4mc.multicore.partitioning.workflow;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.workflow.core.Context;
 import org.eclipse.app4mc.amalthea.workflow.core.WorkflowComponent;
-import org.eclipse.app4mc.multicore.partitioning.algorithms.PartLog;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.PrePartitioning;
+import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
 import org.eclipse.core.runtime.NullProgressMonitor;
 
 public class PrePartitioningWrkflw extends WorkflowComponent {
@@ -30,19 +28,11 @@ public class PrePartitioningWrkflw extends WorkflowComponent {
 			PartLog.getInstance().log("Prepartitioning failed", null);
 			return;
 		}
-		if (amodels.getSwModel().getProcessPrototypes().size() > 0) {
-			for (final ProcessPrototype pp : amodels.getSwModel().getProcessPrototypes()) {
-				final StringBuffer sb = new StringBuffer();
-				for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-					sb.append(trc.getRunnable().getName() + ", ");
-				}
-			}
-		}
 		PartLog.getInstance().log("Setting result model in slot: " + getResultSlot());
 		ctx.set(getResultSlot(), amodels);
 	}
 
-	private String getResultSlot() {
+	public String getResultSlot() {
 		return this.resultSlot;
 	}
 

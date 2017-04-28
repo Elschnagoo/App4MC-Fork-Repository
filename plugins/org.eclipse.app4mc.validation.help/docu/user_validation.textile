@@ -20,70 +20,53 @@ h3. Available Validations
 
 The plugin __org.eclipse.app4mc.amalthea.model.all.sphinx.validation__ contains several validators and constraints (i.e. checks) for various model types of AMALTHEA.
 
-h4. A. Basic Check Validator
+h4. Basic Check Validator
 
-Basic checks which cannot be assigned to a specific AMALTHEA model are summarized. Responsible implementation for this validation is the class @org.eclipse.app4mc.amalthea.model.all.sphinx.validation.checks.BasicCheckValidator@.
+Basic checks which cannot be assigned to a specific AMALTHEA model are summarized. Responsible implementation for this validation is the class @org.eclipse.app4mc.amalthea.validation.checks.BasicCheckValidator@.
 
-h5. CustomPropertyDuplicateKeyConstraint
+**Missing Referable Name**
+Checks the name of all objects that are instances of @IReferable@. The name is used to refer to objects in the AMALTHEA model, therefore missing names are handled as an **__error__**.
 
-A custom validation to check all set custom attributes of one element. If it contains duplicate key entries, it is treated as an error of this element.
+**Duplicate Unique Name**
+Checks the unique name of all objects that are instances of @IReferable@. The unique name is used to refer to objects in the AMALTHEA model, therefore duplicates are handled as an **__error__**.
+	 
+**Undefined Unit**
+Checks all units: @TimeUnit@, @FrequencyUnit@, @DataSizeUnit@, @DataRateUnit@.
+If the unit is undefined, it will be handled as an **__error__**.
 
-h5. WeibullParametersConstraint
+**Custom Property Duplicate Key**
+A validation to check all custom attributes of one element. If it contains duplicate key entries, it is treated as a **__warning__**.
 
-Checks the parameters in the __Distribution__ of type __WeibullEstimators__. The parameters must not be equal to each other, if this is the case, it will be handled as an **__error__**.
+**Weibull Parameters**
+Checks the parameters in the __Distribution__ of type __WeibullEstimators__. The parameters must not be equal to each other, if this is the case, it will be handled as an **__warning__**.
 
-h4. B. ConstraintsModel Check Validator
 
-Responsible implementation for this validation is the class @org.eclipse.app4mc.amalthea.model.all.sphinx.validation.checks.ConstraintsModelCheckValidator@.
+h4. ConstraintsModel Check Validator
 
-h5. EventChainsConstraint
+Responsible implementation for this validation is the class @org.eclipse.app4mc.amalthea.validation.checks.ConstraintsModelCheckValidator@.
 
+**EventChainsConstraint**
 Checks for the AMALTHEA constraints model if the __EventChains__ are consistent regarding completeness (fully build chain) and correctness. Therefore each EventChain's stimulus/response pair is checked if events are existent and linked properly to a complete chain. An event chain of type __SubEventChain__ is checked for its "border" events fit to the stimulus and response event of the parent event chain. Cascades of sub events are processed recursively. A missing or wrong information in the event chain will be handled as an **__error__**. 
 
 
-h4. C. EventModel Check Validator
+h4. MappingModel Check Validator
 
-Responsible implementation for this validation is the class @org.eclipse.app4mc.amalthea.model.all.sphinx.validation.checks.EventModelCheckValidator@.
+Responsible implementation for this validation is the class @org.eclipse.app4mc.amalthea.validation.checks.MappingModelCheckValidator@.
 
-h5. LabelEventMappingConstraint
-
-Checks for the AMALTHEA event model in AMALTHEA if the mapping information for all __LabelEvent__ are complete and correct. If there is a missing mapping information (i.e. no __Entity__, __Process__ or __Runnable__) it will be handled as an **__error__**.
-
-h5. ProcessEventMappingConstraint
-
-Checks for the AMALTHEA event model in AMALTHEA if the mapping information for all __ProcessEvent__ are complete and correct. If there is a missing mapping information (i.e. no __Entity__ or __Core__) it will be handled as an **__error__**.
-	 
-
-h5. RunnableEventMappingConstraint
-
-Checks for the AMALTHEA event model in AMALTHEA if the mapping information for all __RunnableEvent__ are complete and correct. If there is a missing mapping information (i.e. no __Entity__, __Core__ or __Process__) it will be handled as an **__error__**.
-
-
-h5. SemaphoreEventMappingConstraint
-
-Checks for the AMALTHEA event model in AMALTHEA if the mapping information for all __SemaphoreEvent__ are complete and correct. If there is a missing mapping information (i.e. no __Entity__, __Core__, __Process__ or __Runnable__) it will be handled as an **__error__**.
-
-h5. StimulusEventMappingConstraint
-
-Checks for the AMALTHEA event model in AMALTHEA if the mapping information for all __StimulusEvent__ are complete and correct. If there is a missing mapping information (i.e. no __Entity__) it will be handled as an **__error__**.
-  
-
-
-h4. D. HardwareModel Check Validator
-
-Responsible implementation for this validation is the class @org.eclipse.app4mc.amalthea.model.all.sphinx.validation.checks.HardwareModelCheckValidator@.
-
-h5. HwModelAbstractTypeDuplicateNameConstriant
-
-Checks for the entire AMALTHEA hardware model instance if elements of Type __org.eclipse.app4mc.amalthea.model.hw.AbstractionTypeDescription__ (e.g. ECUType, CoreType or System) contain AMALTHEA elements of __org.eclipse.app4mc.amalthea.model.hw.AbstractType__ (e.g. StrValue, BoolValue) with the identical name. A found duplicate will be handled as an **__error__**.
-
-
-
-h4. E. MappingModel Check Validator
-
-Responsible implementation for this validation is the class @org.eclipse.app4mc.amalthea.model.all.sphinx.validation.checks.MappingModelCheckValidator@.
-
-h5. Process2Scheduler2CoreMappingConstraint
-
+**Process2Scheduler2CoreMappingConstraint**
 Checks for the entire AMALTHEA model instance if the mapping information are complete and correct between __Software__(SW) <-> __Operating System__(OS) <-> __Software__(SW) model. I.e. mapping relationship {Process(SW) to Scheduler(OS) to Core(HW)}. A missing mapping information (i.e. no Entity) or unmapped Processes will be handled as an **__error__**.
+
+
+h4. EventModel Check Validator
+
+Responsible implementation for this validation is the class @org.eclipse.app4mc.amalthea.validation.checks.EventModelCheckValidator@.
+
+__to be extended__
+
+
+h4. HardwareModel Check Validator
+
+Responsible implementation for this validation is the class @org.eclipse.app4mc.amalthea.validation.checks.HardwareModelCheckValidator@.
+
+__to be extended__
 

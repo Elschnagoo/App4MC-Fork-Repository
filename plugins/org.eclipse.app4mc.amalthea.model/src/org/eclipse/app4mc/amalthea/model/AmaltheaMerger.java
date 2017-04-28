@@ -70,6 +70,8 @@ public class AmaltheaMerger {
 			mainModel.setCommonElements(tmp);
 		} else {
 			addIfAbsent(main.getTags(), tmp.getTags());
+			addIfAbsent(main.getCoreClassifiers(), tmp.getCoreClassifiers());
+			addIfAbsent(main.getMemoryClassifiers(), tmp.getMemoryClassifiers());
 		}	
 	}
 
@@ -127,9 +129,6 @@ public class AmaltheaMerger {
 		if (main == null) {
 			mainModel.setOsModel(tmp);
 		} else {
-			if (main.getOsDataConsistency() == null) {
-				main.setOsDataConsistency(tmp.getOsDataConsistency());
-			}
 			addAll(main.getOperatingSystems(), tmp.getOperatingSystems());
 			addIfAbsent(main.getSemaphores(), tmp.getSemaphores());
 			addIfAbsent(main.getOsOverheads(), tmp.getOsOverheads());
@@ -209,7 +208,7 @@ public class AmaltheaMerger {
 			addAll(main.getIsrAllocation(), tmp.getIsrAllocation());
 			addAll(main.getRunnableAllocation(), tmp.getRunnableAllocation());
 			addAll(main.getCoreAllocation(), tmp.getCoreAllocation());
-			addAll(main.getMapping(), tmp.getMapping());
+			addAll(main.getMemoryMapping(), tmp.getMemoryMapping());
 			addIfAbsent(main.getPhysicalSectionMapping(), tmp.getPhysicalSectionMapping());
 		}	
 	}

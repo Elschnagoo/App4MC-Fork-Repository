@@ -59,4 +59,59 @@ public class StimuliModelValidator extends AbstractCheckValidator implements Iss
 	public void checkClockMultiplierList(final Amalthea amalthea) {
 		this.stimuliModelValidator.checkClockMultiplierList(amalthea);
 	}
+	
+	@Check(constraint = "PeriodicOffsetUnsigned", categories = { "TAConstraint" })
+	public void checkPeriodicOffsetUnsigned(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkPeriodicOffsetUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "PeriodicRecurrenceUnsigned", categories = { "TAConstraint" })
+	public void checkPeriodicRecurrenceUnsigned(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkPeriodicRecurrenceUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "SyntheticOffsetUnsigned", categories = { "TAConstraint" })
+	public void checkSyntheticOffsetUnsigned(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkSyntheticOffsetUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "SyntheticPeriodUnsigned", categories = { "TAConstraint" })
+	public void checkSyntheticPeriodUnsigned(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkSyntheticPeriodUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "TimestampListTimestampsUnsigned", categories = { "TAConstraint" })
+	public void checkTimestampListTimestampsUnsigned(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkTimestampListTimestampsUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "SingleActivationUnsigned", categories = { "TAConstraint" })
+	public void checkSingleActivationUnsigned(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkSingleActivationUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "ArrivalCurveEntryLowerUnsigned", categories = { "TAConstraint" })
+	public void checkArrivalCurveEntryLowerUnsigned(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkArrivalCurveEntryLowerUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "ArrivalCurveEntryUpperUnsigned", categories = { "TAConstraint" })
+	public void checkArrivalCurveEntryUpperUnsigned(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkArrivalCurveEntryUpperUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "ClockTriangleFunctionPeriodUnsigned", categories = { "TAConstraint" })
+	public void checkClockTriangleFunctionPeriodUnsigned(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkClockTriangleFunctionPeriodUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "ClockSinusFunctionPeriodUnsigned", categories = { "TAConstraint" })
+	public void checkClockSinusFunctionPeriodUnsigned(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkClockSinusFunctionPeriodUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "ClockMultiplierListEntryTimeUnsigned", categories = { "TAConstraint" })
+	public void checkClockMultiplierListEntryTimeUnsigned(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkClockMultiplierListEntryTimeUnsigned(amalthea);
+	}
 }

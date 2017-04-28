@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<xsd:schema xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://app4mc.eclipse.org/amalthea/0.7.2">
+<xsd:schema xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://app4mc.eclipse.org/amalthea/0.8.0">
   <xsd:annotation>
     <xsd:documentation>*
 *******************************************************************************
@@ -48,11 +48,11 @@
       <xsd:enumeration value="Mbit"/>
       <xsd:enumeration value="Gbit"/>
       <xsd:enumeration value="Tbit"/>
-      <xsd:enumeration value="kibit"/>
+      <xsd:enumeration value="Kibit"/>
       <xsd:enumeration value="Mibit"/>
       <xsd:enumeration value="Gibit"/>
       <xsd:enumeration value="Tibit"/>
-      <xsd:enumeration value="byte"/>
+      <xsd:enumeration value="B"/>
       <xsd:enumeration value="kB"/>
       <xsd:enumeration value="MB"/>
       <xsd:enumeration value="GB"/>
@@ -74,11 +74,11 @@
       <xsd:enumeration value="MbitPerSecond"/>
       <xsd:enumeration value="GbitPerSecond"/>
       <xsd:enumeration value="TbitPerSecond"/>
-      <xsd:enumeration value="kibitPerSecond"/>
+      <xsd:enumeration value="KibitPerSecond"/>
       <xsd:enumeration value="MibitPerSecond"/>
       <xsd:enumeration value="GibitPerSecond"/>
       <xsd:enumeration value="TibitPerSecond"/>
-      <xsd:enumeration value="bytePerSecond"/>
+      <xsd:enumeration value="BPerSecond"/>
       <xsd:enumeration value="kBPerSecond"/>
       <xsd:enumeration value="MBPerSecond"/>
       <xsd:enumeration value="GBPerSecond"/>
@@ -270,9 +270,19 @@
       <xsd:enumeration value="write"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="ChannelEventType">
+    <xsd:annotation>
+      <xsd:documentation>The types of a label event</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_all_"/>
+      <xsd:enumeration value="send"/>
+      <xsd:enumeration value="receive"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="SemaphoreEventType">
     <xsd:annotation>
-      <xsd:documentation>the types of a semaphore event</xsd:documentation>
+      <xsd:documentation>The types of a semaphore event</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_all_"/>
@@ -365,20 +375,18 @@
       <xsd:enumeration value="scheduleSection"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="ComparatorType">
+  <xsd:simpleType name="Condition">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="equal"/>
-      <xsd:enumeration value="unequal"/>
-      <xsd:enumeration value="greater"/>
-      <xsd:enumeration value="lower"/>
+      <xsd:enumeration value="requires"/>
+      <xsd:enumeration value="excludes"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="ConjunctionType">
+  <xsd:simpleType name="GroupingType">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="and"/>
-      <xsd:enumeration value="or"/>
+      <xsd:enumeration value="allOfThem"/>
+      <xsd:enumeration value="atLeastOneOfThem"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="WaitEventType">
@@ -559,6 +567,8 @@ exclusive: gets access to requested semaphore only when there is no other user a
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
+          <xsd:element name="coreClassifiers" type="am:CoreClassifier"/>
+          <xsd:element name="memoryClassifiers" type="am:MemoryClassifier"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -666,6 +676,33 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>A tag for processes, runnables, events and labels</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="Classifier">
+    <xsd:annotation>
+      <xsd:documentation>Classifiers for hardware properties</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:attribute name="description" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Classifier" type="am:Classifier">
+    <xsd:annotation>
+      <xsd:documentation>Classifiers for hardware properties</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CoreClassifier">
+    <xsd:complexContent>
+      <xsd:extension base="am:Classifier"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CoreClassifier" type="am:CoreClassifier"/>
+  <xsd:complexType name="MemoryClassifier">
+    <xsd:complexContent>
+      <xsd:extension base="am:Classifier"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="MemoryClassifier" type="am:MemoryClassifier"/>
   <xsd:complexType abstract="true" name="Instructions">
     <xsd:annotation>
       <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
@@ -757,19 +794,6 @@ Needs to be extended by other classes.</xsd:documentation>
   <xsd:element name="Time" type="am:Time">
     <xsd:annotation>
       <xsd:documentation>General time class to use including value and given time unit.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="SignedTime">
-    <xsd:annotation>
-      <xsd:documentation>Like the general time class but it is explicit allows to define negative time values</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:AbstractTime"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="SignedTime" type="am:SignedTime">
-    <xsd:annotation>
-      <xsd:documentation>Like the general time class but it is explicit allows to define negative time values</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="Frequency">
@@ -980,12 +1004,6 @@ Needs to be extended by other classes.</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="TimeObject" type="am:TimeObject"/>
-  <xsd:complexType name="SignedTimeObject">
-    <xsd:complexContent>
-      <xsd:extension base="am:AbstractTime"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="SignedTimeObject" type="am:SignedTimeObject"/>
   <xsd:complexType name="Deviation">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="lowerBound" type="ecore:EObject"/>
@@ -1183,20 +1201,6 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeLiteral" type="am:ModeLiteral"/>
-  <xsd:complexType abstract="true" name="ModeValueProvider">
-    <xsd:complexContent>
-      <xsd:extension base="am:IAnnotatable">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="mode" type="am:Mode"/>
-          <xsd:element name="initialValue" type="am:ModeLiteral"/>
-        </xsd:choice>
-        <xsd:attribute name="name" type="xsd:string"/>
-        <xsd:attribute name="mode" type="xsd:string"/>
-        <xsd:attribute name="initialValue" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ModeValueProvider" type="am:ModeValueProvider"/>
   <xsd:complexType name="ComponentsModel">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
@@ -2215,7 +2219,7 @@ maximum: Maximum allowed latency</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:RequirementLimit">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="limitValue" type="am:SignedTime"/>
+          <xsd:element name="limitValue" type="am:Time"/>
         </xsd:choice>
         <xsd:attribute name="metric" type="am:TimeMetric"/>
       </xsd:extension>
@@ -2516,6 +2520,7 @@ process: The process that accesses the label (optional)</xsd:documentation>
           <xsd:element name="runnable" type="am:Runnable"/>
           <xsd:element name="process" type="am:Process"/>
         </xsd:choice>
+        <xsd:attribute name="eventType" type="am:ChannelEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
         <xsd:attribute name="runnable" type="xsd:string"/>
         <xsd:attribute name="process" type="xsd:string"/>
@@ -2729,8 +2734,12 @@ core: The core that processes the process/runnable that accesses the semaphore (
   <xsd:complexType name="CoreType">
     <xsd:complexContent>
       <xsd:extension base="am:AbstractionType">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="classifiers" type="am:CoreClassifier"/>
+        </xsd:choice>
         <xsd:attribute name="bitWidth" type="xsd:int"/>
-        <xsd:attribute name="instructionsPerCycle" type="xsd:int"/>
+        <xsd:attribute name="instructionsPerCycle" type="xsd:float"/>
+        <xsd:attribute name="classifiers" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -2740,9 +2749,11 @@ core: The core that processes the process/runnable that accesses the semaphore (
       <xsd:extension base="am:HardwareTypeDescription">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="size" type="am:DataSize"/>
+          <xsd:element name="classifiers" type="am:MemoryClassifier"/>
         </xsd:choice>
         <xsd:attribute name="xAccessPattern" type="xsd:string"/>
         <xsd:attribute name="type" type="am:MemoryTypeEnum"/>
+        <xsd:attribute name="classifiers" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -2966,11 +2977,11 @@ core: The core that processes the process/runnable that accesses the semaphore (
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="coreAllocation" type="am:CoreAllocation"/>
+          <xsd:element name="runnableAllocation" type="am:RunnableAllocation"/>
           <xsd:element name="taskAllocation" type="am:TaskAllocation"/>
           <xsd:element name="isrAllocation" type="am:ISRAllocation"/>
-          <xsd:element name="runnableAllocation" type="am:RunnableAllocation"/>
-          <xsd:element name="coreAllocation" type="am:CoreAllocation"/>
-          <xsd:element name="mapping" type="am:Mapping"/>
+          <xsd:element name="memoryMapping" type="am:MemoryMapping"/>
           <xsd:element name="physicalSectionMapping" type="am:PhysicalSectionMapping"/>
         </xsd:choice>
         <xsd:attribute name="addressMappingType" type="am:MemoryAddressMappingType"/>
@@ -2996,78 +3007,6 @@ core: The core that processes the process/runnable that accesses the semaphore (
   <xsd:element name="CoreAllocation" type="am:CoreAllocation">
     <xsd:annotation>
       <xsd:documentation>Allocation of Cores to schedulers</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="PhysicalSectionMapping">
-    <xsd:complexContent>
-      <xsd:extension base="am:ReferableBaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="origin" type="am:Section"/>
-          <xsd:element name="memory" type="am:Memory"/>
-          <xsd:element name="labels" type="am:Label"/>
-          <xsd:element name="runEntities" type="am:Runnable"/>
-        </xsd:choice>
-        <xsd:attribute name="startAddress" type="xsd:long"/>
-        <xsd:attribute name="endAddress" type="xsd:long"/>
-        <xsd:attribute name="origin" type="xsd:string"/>
-        <xsd:attribute name="memory" type="xsd:string"/>
-        <xsd:attribute name="labels" type="xsd:string"/>
-        <xsd:attribute name="runEntities" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="PhysicalSectionMapping" type="am:PhysicalSectionMapping"/>
-  <xsd:complexType abstract="true" name="Mapping">
-    <xsd:annotation>
-      <xsd:documentation>Generalization for all Mapping types.
-Mappings assign Runnables/Signals to memories</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="memory" type="am:Memory">
-            <xsd:annotation>
-              <xsd:documentation>The memory where the element is mapped to</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
-        </xsd:choice>
-        <xsd:attribute name="memoryPositionAddress" type="xsd:long">
-          <xsd:annotation>
-            <xsd:documentation>The position of the element in the mapped memory</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="memory" type="xsd:string">
-          <xsd:annotation>
-            <xsd:documentation>The memory where the element is mapped to</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="Mapping" type="am:Mapping">
-    <xsd:annotation>
-      <xsd:documentation>Generalization for all Mapping types.
-Mappings assign Runnables/Signals to memories</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="AbstractElementMapping">
-    <xsd:annotation>
-      <xsd:documentation>Sections (D4.2, Chapter 3.3.2)
-Sections refer to Labels and/or Runnables.</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Mapping">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="abstractElement" type="am:AbstractElementMemoryInformation"/>
-        </xsd:choice>
-        <xsd:attribute name="abstractElement" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="AbstractElementMapping" type="am:AbstractElementMapping">
-    <xsd:annotation>
-      <xsd:documentation>Sections (D4.2, Chapter 3.3.2)
-Sections refer to Labels and/or Runnables.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="TaskAllocation">
@@ -3111,11 +3050,56 @@ Sections refer to Labels and/or Runnables.</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="RunnableAllocation" type="am:RunnableAllocation"/>
+  <xsd:complexType name="MemoryMapping">
+    <xsd:annotation>
+      <xsd:documentation>Mapping of AbstractMemoryElement (Label, Runnable, ISR, Task, ...)
+to a specific memory.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="abstractElement" type="am:AbstractMemoryElement"/>
+          <xsd:element name="memory" type="am:Memory"/>
+        </xsd:choice>
+        <xsd:attribute name="memoryPositionAddress" type="xsd:long">
+          <xsd:annotation>
+            <xsd:documentation>The position of the element in the mapped memory</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="abstractElement" type="xsd:string"/>
+        <xsd:attribute name="memory" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="MemoryMapping" type="am:MemoryMapping">
+    <xsd:annotation>
+      <xsd:documentation>Mapping of AbstractMemoryElement (Label, Runnable, ISR, Task, ...)
+to a specific memory.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="PhysicalSectionMapping">
+    <xsd:complexContent>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="origin" type="am:Section"/>
+          <xsd:element name="memory" type="am:Memory"/>
+          <xsd:element name="labels" type="am:Label"/>
+          <xsd:element name="runEntities" type="am:Runnable"/>
+        </xsd:choice>
+        <xsd:attribute name="startAddress" type="xsd:long"/>
+        <xsd:attribute name="endAddress" type="xsd:long"/>
+        <xsd:attribute name="origin" type="xsd:string"/>
+        <xsd:attribute name="memory" type="xsd:string"/>
+        <xsd:attribute name="labels" type="xsd:string"/>
+        <xsd:attribute name="runEntities" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PhysicalSectionMapping" type="am:PhysicalSectionMapping"/>
   <xsd:complexType name="OSModel">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="osDataConsistency" type="am:OsDataConsistency"/>
           <xsd:element name="semaphores" type="am:Semaphore"/>
           <xsd:element name="operatingSystems" type="am:OperatingSystem"/>
           <xsd:element name="osOverheads" type="am:OsInstructions"/>
@@ -3500,6 +3484,7 @@ It describes an ISR that performs scheduling.</xsd:documentation>
           <xsd:element name="overhead" type="am:OsInstructions"/>
           <xsd:element name="taskSchedulers" type="am:TaskScheduler"/>
           <xsd:element name="interruptControllers" type="am:InterruptController"/>
+          <xsd:element name="osDataConsistency" type="am:OsDataConsistency"/>
         </xsd:choice>
         <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="overhead" type="xsd:string"/>
@@ -3563,6 +3548,15 @@ It describes an ISR that performs scheduling.</xsd:documentation>
           <xsd:element name="apiClearEvent" type="am:Instructions"/>
           <xsd:element name="apiActivateTask" type="am:Instructions"/>
           <xsd:element name="apiEnforcedMigration" type="am:Instructions"/>
+          <xsd:element name="apiSuspendOsInterrupts" type="am:Instructions"/>
+          <xsd:element name="apiResumeOsInterrupts" type="am:Instructions"/>
+          <xsd:element name="apiRequestSpinlock" type="am:Instructions"/>
+          <xsd:element name="apiReleaseSpinlock" type="am:Instructions"/>
+          <xsd:element name="apiSenderReceiverRead" type="am:Instructions"/>
+          <xsd:element name="apiSenderReceiverWrite" type="am:Instructions"/>
+          <xsd:element name="apiSynchronousServerCallPoint" type="am:Instructions"/>
+          <xsd:element name="apiIocRead" type="am:Instructions"/>
+          <xsd:element name="apiIocWrite" type="am:Instructions"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -3583,37 +3577,33 @@ It describes an ISR that performs scheduling.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="allocationConstraints" type="am:AllocationConstraint"/>
-          <xsd:element name="mappingConstraints" type="am:MappingConstraint"/>
+          <xsd:element name="allocationConstraints" type="am:CoreAllocationConstraint"/>
+          <xsd:element name="mappingConstraints" type="am:MemoryMappingConstraint"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="PropertyConstraintsModel" type="am:PropertyConstraintsModel"/>
-  <xsd:complexType abstract="true" name="AllocationConstraint">
+  <xsd:complexType abstract="true" name="CoreAllocationConstraint">
     <xsd:annotation>
-      <xsd:documentation>abstract class Constraint {
-	// reference: Software Component
-	// containment: List of HW Features or Components we need
-}</xsd:documentation>
+      <xsd:documentation>Abstract Class, used to describe Constraints for Allocations
+(these usually target Cores and their features/attributes)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="hwConstraint" type="am:HwCoreConstraint"/>
+          <xsd:element name="coreClassification" type="am:CoreClassification"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="AllocationConstraint" type="am:AllocationConstraint">
+  <xsd:element name="CoreAllocationConstraint" type="am:CoreAllocationConstraint">
     <xsd:annotation>
-      <xsd:documentation>abstract class Constraint {
-	// reference: Software Component
-	// containment: List of HW Features or Components we need
-}</xsd:documentation>
+      <xsd:documentation>Abstract Class, used to describe Constraints for Allocations
+(these usually target Cores and their features/attributes)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="MappingConstraint">
+  <xsd:complexType abstract="true" name="MemoryMappingConstraint">
     <xsd:annotation>
       <xsd:documentation>Abstract Class, used to describe Constraints for Mapping
 (these usually target Memories and their features/attributes)</xsd:documentation>
@@ -3621,12 +3611,12 @@ It describes an ISR that performs scheduling.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="hwConstraint" type="am:HwMemoryConstraint"/>
+          <xsd:element name="memoryClassification" type="am:MemoryClassification"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="MappingConstraint" type="am:MappingConstraint">
+  <xsd:element name="MemoryMappingConstraint" type="am:MemoryMappingConstraint">
     <xsd:annotation>
       <xsd:documentation>Abstract Class, used to describe Constraints for Mapping
 (these usually target Memories and their features/attributes)</xsd:documentation>
@@ -3638,7 +3628,7 @@ It describes an ISR that performs scheduling.</xsd:documentation>
 Process-to-Core allocations</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:AllocationConstraint">
+      <xsd:extension base="am:CoreAllocationConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="process" type="am:Process"/>
         </xsd:choice>
@@ -3658,7 +3648,7 @@ Process-to-Core allocations</xsd:documentation>
 ProcessPrototype-to-Core allocations</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:AllocationConstraint">
+      <xsd:extension base="am:CoreAllocationConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="processPrototype" type="am:ProcessPrototype"/>
         </xsd:choice>
@@ -3678,7 +3668,7 @@ ProcessPrototype-to-Core allocations</xsd:documentation>
 Runnable-to-Core allocations</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:AllocationConstraint">
+      <xsd:extension base="am:CoreAllocationConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="runnable" type="am:Runnable"/>
         </xsd:choice>
@@ -3695,12 +3685,12 @@ Runnable-to-Core allocations</xsd:documentation>
   <xsd:complexType name="AbstractElementMappingConstraint">
     <xsd:annotation>
       <xsd:documentation>AbstractElementMappingConstraints describe the constraints for
-AbstractElementMemoryInformation-to-Memory Mapping</xsd:documentation>
+AbstractMemoryElement-to-Memory Mapping</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:MappingConstraint">
+      <xsd:extension base="am:MemoryMappingConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="abstractElement" type="am:AbstractElementMemoryInformation"/>
+          <xsd:element name="abstractElement" type="am:AbstractMemoryElement"/>
         </xsd:choice>
         <xsd:attribute name="abstractElement" type="xsd:string"/>
       </xsd:extension>
@@ -3709,94 +3699,47 @@ AbstractElementMemoryInformation-to-Memory Mapping</xsd:documentation>
   <xsd:element name="AbstractElementMappingConstraint" type="am:AbstractElementMappingConstraint">
     <xsd:annotation>
       <xsd:documentation>AbstractElementMappingConstraints describe the constraints for
-AbstractElementMemoryInformation-to-Memory Mapping</xsd:documentation>
+AbstractMemoryElement-to-Memory Mapping</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="HwCoreConstraint">
+  <xsd:complexType abstract="true" name="Classification">
     <xsd:annotation>
       <xsd:documentation>Generalization for all Hardware related constraints</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:BaseObject"/>
+      <xsd:extension base="am:BaseObject">
+        <xsd:attribute name="condition" type="am:Condition"/>
+        <xsd:attribute name="grouping" type="am:GroupingType"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="HwCoreConstraint" type="am:HwCoreConstraint">
+  <xsd:element name="Classification" type="am:Classification">
     <xsd:annotation>
       <xsd:documentation>Generalization for all Hardware related constraints</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="HwMemoryConstraint">
+  <xsd:complexType name="CoreClassification">
     <xsd:complexContent>
-      <xsd:extension base="am:BaseObject"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="HwMemoryConstraint" type="am:HwMemoryConstraint"/>
-  <xsd:complexType name="HwCoreProperty">
-    <xsd:annotation>
-      <xsd:documentation>Core-Constraints for describing the least amount of properties which are required by
-executables.</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:HwCoreConstraint">
+      <xsd:extension base="am:Classification">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="core" type="am:Core"/>
+          <xsd:element name="classifiers" type="am:CoreClassifier"/>
         </xsd:choice>
-        <xsd:attribute name="comparator" type="am:ComparatorType"/>
-        <xsd:attribute name="core" type="xsd:string"/>
+        <xsd:attribute name="classifiers" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="HwCoreProperty" type="am:HwCoreProperty">
-    <xsd:annotation>
-      <xsd:documentation>Core-Constraints for describing the least amount of properties which are required by
-executables.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="HwCoreConjunction">
+  <xsd:element name="CoreClassification" type="am:CoreClassification"/>
+  <xsd:complexType name="MemoryClassification">
     <xsd:complexContent>
-      <xsd:extension base="am:HwCoreConstraint">
+      <xsd:extension base="am:Classification">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="firstConstraint" type="am:HwCoreConstraint"/>
-          <xsd:element name="secondConstraint" type="am:HwCoreConstraint"/>
+          <xsd:element name="classifiers" type="am:MemoryClassifier"/>
         </xsd:choice>
-        <xsd:attribute name="conjunction" type="am:ConjunctionType"/>
+        <xsd:attribute name="classifiers" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="HwCoreConjunction" type="am:HwCoreConjunction"/>
-  <xsd:complexType name="HwMemoryProperty">
-    <xsd:annotation>
-      <xsd:documentation>Memory-Constraints for describing the least amount of properties which are required by
-data.</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:HwMemoryConstraint">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="memory" type="am:Memory"/>
-        </xsd:choice>
-        <xsd:attribute name="comparator" type="am:ComparatorType"/>
-        <xsd:attribute name="memory" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="HwMemoryProperty" type="am:HwMemoryProperty">
-    <xsd:annotation>
-      <xsd:documentation>Memory-Constraints for describing the least amount of properties which are required by
-data.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="HwMemoryConjunction">
-    <xsd:complexContent>
-      <xsd:extension base="am:HwMemoryConstraint">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="firstConstraint" type="am:HwMemoryConstraint"/>
-          <xsd:element name="secondConstraint" type="am:HwMemoryConstraint"/>
-        </xsd:choice>
-        <xsd:attribute name="conjunction" type="am:ConjunctionType"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="HwMemoryConjunction" type="am:HwMemoryConjunction"/>
+  <xsd:element name="MemoryClassification" type="am:MemoryClassification"/>
   <xsd:complexType name="StimuliModel">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
@@ -3846,7 +3789,7 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="valueProvider" type="am:ModeValueProvider"/>
+          <xsd:element name="valueProvider" type="am:ModeLabel"/>
           <xsd:element name="value" type="am:ModeLiteral"/>
         </xsd:choice>
         <xsd:attribute name="valueProvider" type="xsd:string"/>
@@ -3934,7 +3877,9 @@ triggerTimes: the list of all trigger times</xsd:documentation>
       <xsd:documentation>Stimulus to describe own custom types of activations, including properties</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:Stimulus"/>
+      <xsd:extension base="am:Stimulus">
+        <xsd:attribute name="description" type="xsd:string"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="CustomStimulus" type="am:CustomStimulus">
@@ -3981,7 +3926,9 @@ triggerTimes: the list of all trigger times</xsd:documentation>
       <xsd:documentation>Stimulus for sporadic activation of task</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:Stimulus"/>
+      <xsd:extension base="am:Stimulus">
+        <xsd:attribute name="description" type="xsd:string"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Sporadic" type="am:Sporadic">
@@ -4058,7 +4005,7 @@ The faster the clock, the faster stimuli</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:Clock">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="shift" type="am:SignedTime"/>
+          <xsd:element name="shift" type="am:Time"/>
           <xsd:element name="period" type="am:Time"/>
         </xsd:choice>
         <xsd:attribute name="max" type="xsd:double"/>
@@ -4071,7 +4018,7 @@ The faster the clock, the faster stimuli</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:Clock">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="shift" type="am:SignedTime"/>
+          <xsd:element name="shift" type="am:Time"/>
           <xsd:element name="period" type="am:Time"/>
         </xsd:choice>
         <xsd:attribute name="amplitude" type="xsd:double"/>
@@ -4147,7 +4094,7 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
       <xsd:documentation>Central instance to provide central access.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="AbstractElementMemoryInformation">
+  <xsd:complexType abstract="true" name="AbstractMemoryElement">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -4162,10 +4109,10 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="AbstractElementMemoryInformation" type="am:AbstractElementMemoryInformation"/>
+  <xsd:element name="AbstractMemoryElement" type="am:AbstractMemoryElement"/>
   <xsd:complexType abstract="true" name="AbstractProcess">
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractElementMemoryInformation">
+      <xsd:extension base="am:AbstractMemoryElement">
         <xsd:attribute name="priority" type="xsd:int"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -4176,7 +4123,7 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
       <xsd:documentation>Possibility to define general custom elements</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractElementMemoryInformation">
+      <xsd:extension base="am:AbstractMemoryElement">
         <xsd:attribute name="typeName" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -4284,7 +4231,7 @@ Generalizes interrupt service routines and tasks</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:GraphEntryBase">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="valueProvider" type="am:ModeValueProvider"/>
+          <xsd:element name="valueProvider" type="am:ModeLabel"/>
           <xsd:element name="entries" type="am:ModeSwitchEntry"/>
           <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
         </xsd:choice>
@@ -4328,7 +4275,7 @@ It describes a path of the switch and the required mode values to use this path<
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeSwitchDefault" type="am:ModeSwitchDefault"/>
-  <xsd:complexType name="ProbabiltitySwitch">
+  <xsd:complexType name="ProbabilitySwitch">
     <xsd:annotation>
       <xsd:documentation>A switch in the call graph, each path has a probability</xsd:documentation>
     </xsd:annotation>
@@ -4340,14 +4287,14 @@ It describes a path of the switch and the required mode values to use this path<
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ProbabiltitySwitch" type="am:ProbabiltitySwitch">
+  <xsd:element name="ProbabilitySwitch" type="am:ProbabilitySwitch">
     <xsd:annotation>
       <xsd:documentation>A switch in the call graph, each path has a probability</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ProbabilitySwitchEntry">
     <xsd:annotation>
-      <xsd:documentation>A switch entry for a ProbabiltitySwitch
+      <xsd:documentation>A switch entry for a ProbabilitySwitch
 It describes a path of the switch and it's probability</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -4361,7 +4308,7 @@ It describes a path of the switch and it's probability</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="ProbabilitySwitchEntry" type="am:ProbabilitySwitchEntry">
     <xsd:annotation>
-      <xsd:documentation>A switch entry for a ProbabiltitySwitch
+      <xsd:documentation>A switch entry for a ProbabilitySwitch
 It describes a path of the switch and it's probability</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
@@ -4708,7 +4655,7 @@ The final state can be several Tasks, which can be computed using provided infor
       <xsd:documentation>Smallest allocatable unit, which provides additional (optional) attributes for allocation algorithms.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractElementMemoryInformation">
+      <xsd:extension base="am:AbstractMemoryElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="runnableItems" type="am:RunnableItem"/>
           <xsd:element name="activation" type="am:Activation"/>
@@ -4729,6 +4676,11 @@ The final state can be several Tasks, which can be computed using provided infor
             <xsd:documentation>Marker if runnable is used as a service.</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="asilLevel" type="am:ASILType">
+          <xsd:annotation>
+            <xsd:documentation>ASIL level for the runnable entity</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
         <xsd:attribute name="activation" type="xsd:string"/>
         <xsd:attribute name="section" type="xsd:string"/>
       </xsd:extension>
@@ -4744,7 +4696,7 @@ The final state can be several Tasks, which can be computed using provided infor
       <xsd:documentation>Data representation, which can be accessed by run entities.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractElementMemoryInformation">
+      <xsd:extension base="am:AbstractMemoryElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="dataType" type="am:DataType"/>
           <xsd:element name="section" type="am:Section"/>
@@ -4776,7 +4728,7 @@ The final state can be several Tasks, which can be computed using provided infor
   </xsd:element>
   <xsd:complexType name="Channel">
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractElementMemoryInformation">
+      <xsd:extension base="am:AbstractMemoryElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="elementType" type="am:DataType"/>
         </xsd:choice>
@@ -4789,14 +4741,12 @@ The final state can be several Tasks, which can be computed using provided infor
   <xsd:element name="Channel" type="am:Channel"/>
   <xsd:complexType name="ModeLabel">
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractElementMemoryInformation">
+      <xsd:extension base="am:AbstractMemoryElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="mode" type="am:Mode"/>
           <xsd:element name="initialValue" type="am:ModeLiteral"/>
         </xsd:choice>
-        <xsd:attribute name="mode" type="xsd:string"/>
-        <xsd:attribute name="initialValue" type="xsd:string"/>
         <xsd:attribute name="displayName" type="xsd:string"/>
+        <xsd:attribute name="initialValue" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -4901,7 +4851,7 @@ It can be used to define which mode value is written to the label.</xsd:document
     <xsd:complexContent>
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="valueProvider" type="am:ModeValueProvider"/>
+          <xsd:element name="valueProvider" type="am:ModeLabel"/>
           <xsd:element name="entries" type="am:ModeSwitchEntry"/>
           <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
         </xsd:choice>
@@ -5360,6 +5310,7 @@ Used for first definition of an activation rate, which is later refined by stimu
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="min" type="am:Time"/>
           <xsd:element name="max" type="am:Time"/>
+          <xsd:element name="recurrence" type="am:Time"/>
           <xsd:element name="offset" type="am:Time"/>
           <xsd:element name="deadline" type="am:Time"/>
         </xsd:choice>
@@ -5373,7 +5324,12 @@ Used for first definition of an activation rate, which is later refined by stimu
   </xsd:element>
   <xsd:complexType name="SporadicActivation">
     <xsd:complexContent>
-      <xsd:extension base="am:Activation"/>
+      <xsd:extension base="am:Activation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="activationDeviation" type="am:Deviation"/>
+        </xsd:choice>
+        <xsd:attribute name="description" type="xsd:string"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="SporadicActivation" type="am:SporadicActivation"/>
@@ -5393,6 +5349,25 @@ Used for first definition of an activation rate, which is later refined by stimu
   <xsd:element name="SingleActivation" type="am:SingleActivation">
     <xsd:annotation>
       <xsd:documentation>A single activation between time min and max</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="EventActivation">
+    <xsd:annotation>
+      <xsd:documentation>Activation which is triggered by an event.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Activation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="trigger" type="am:TriggerEvent"/>
+          <xsd:element name="counter" type="am:Counter"/>
+        </xsd:choice>
+        <xsd:attribute name="trigger" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="EventActivation" type="am:EventActivation">
+    <xsd:annotation>
+      <xsd:documentation>Activation which is triggered by an event.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="CustomActivation">

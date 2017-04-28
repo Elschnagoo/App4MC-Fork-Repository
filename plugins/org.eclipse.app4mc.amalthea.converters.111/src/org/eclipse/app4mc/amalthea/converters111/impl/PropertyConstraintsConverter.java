@@ -14,6 +14,8 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters111.utils.HelperUtils_110_111;
@@ -23,14 +25,20 @@ import org.jdom2.Element;
 public class PropertyConstraintsConverter implements IConverter {
 
 	private final HelperUtils_110_111 helper;
+	private final Logger logger;
 
 	public PropertyConstraintsConverter() {
 		this.helper = HelperUtils_110_111.getInstance();
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
+
+		this.logger
+				.info("Migration from itea.110 to itea.111 : Executing PropertyConstraints converter for model file : "
+						+ targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);
 
@@ -90,39 +98,39 @@ public class PropertyConstraintsConverter implements IConverter {
 
 		final StringBuffer xpathBuffer = new StringBuffer();
 
-		xpathBuffer
-		.append("(.//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreProperty\")  and not(@comparator)])");
+		xpathBuffer.append(
+				"(.//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreProperty\")  and not(@comparator)])");
 
 		xpathBuffer.append("|");
 
-		xpathBuffer
-		.append("(.//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]//firstConstraint[(@xsi:type=\"propertyconstraints:HwCoreProperty\") and not(@comparator)])");
-
-
-		xpathBuffer.append("|");
-
-		xpathBuffer
-				.append("(.//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]//secondConstraint[(@xsi:type=\"propertyconstraints:HwCoreProperty\")  and not(@comparator)])");
-
-		xpathBuffer.append("|");
-
-		xpathBuffer
-				.append("(.//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryProperty\")  and not(@comparator)])");
-
-		xpathBuffer.append("|");
-
-		xpathBuffer
-				.append("(.//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]//firstConstraint[(@xsi:type=\"propertyconstraints:HwMemoryProperty\")  and not(@comparator)])");
+		xpathBuffer.append(
+				"(.//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]//firstConstraint[(@xsi:type=\"propertyconstraints:HwCoreProperty\") and not(@comparator)])");
 
 
 		xpathBuffer.append("|");
 
-		xpathBuffer
-				.append("(.//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]//secondConstraint[(@xsi:type=\"propertyconstraints:HwMemoryProperty\")  and not(@comparator)])");
+		xpathBuffer.append(
+				"(.//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]//secondConstraint[(@xsi:type=\"propertyconstraints:HwCoreProperty\")  and not(@comparator)])");
+
+		xpathBuffer.append("|");
+
+		xpathBuffer.append(
+				"(.//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryProperty\")  and not(@comparator)])");
+
+		xpathBuffer.append("|");
+
+		xpathBuffer.append(
+				"(.//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]//firstConstraint[(@xsi:type=\"propertyconstraints:HwMemoryProperty\")  and not(@comparator)])");
 
 
-		final List<Element> constraints = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
-				Element.class, this.helper.getNS_111("propertyconstraints"), this.helper.getGenericNS("xsi"));
+		xpathBuffer.append("|");
+
+		xpathBuffer.append(
+				"(.//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]//secondConstraint[(@xsi:type=\"propertyconstraints:HwMemoryProperty\")  and not(@comparator)])");
+
+
+		final List<Element> constraints = this.helper.getXpathResult(rootElement, xpathBuffer.toString(), Element.class,
+				this.helper.getNS_111("propertyconstraints"), this.helper.getGenericNS("xsi"));
 
 
 		for (final Element constraint : constraints) {
@@ -137,39 +145,39 @@ public class PropertyConstraintsConverter implements IConverter {
 
 		final StringBuffer xpathBuffer = new StringBuffer();
 
-		xpathBuffer
-		.append(".//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")  and not(@conjunction)]");
+		xpathBuffer.append(
+				".//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")  and not(@conjunction)]");
 
 		xpathBuffer.append("|");
 
-		xpathBuffer
-				.append(".//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]// firstConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")  and not(@conjunction)]");
-
-
-		xpathBuffer.append("|");
-
-		xpathBuffer
-				.append(".//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]// secondConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")  and not(@conjunction)] ");
-
-		xpathBuffer.append("|");
-
-		xpathBuffer
-		.append(".//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")  and not(@conjunction)]");
-
-		xpathBuffer.append("|");
-
-		xpathBuffer
-				.append(".//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]// firstConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")  and not(@conjunction)] ");
+		xpathBuffer.append(
+				".//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]// firstConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")  and not(@conjunction)]");
 
 
 		xpathBuffer.append("|");
 
-		xpathBuffer
-				.append(".//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]// secondConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")  and not(@conjunction)] ");
+		xpathBuffer.append(
+				".//allocationConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")]// secondConstraint[(@xsi:type=\"propertyconstraints:HwCoreConjunction\")  and not(@conjunction)] ");
+
+		xpathBuffer.append("|");
+
+		xpathBuffer.append(
+				".//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")  and not(@conjunction)]");
+
+		xpathBuffer.append("|");
+
+		xpathBuffer.append(
+				".//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]// firstConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")  and not(@conjunction)] ");
 
 
-		final List<Element> constraints = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
-				Element.class, this.helper.getNS_111("propertyconstraints"), this.helper.getGenericNS("xsi"));
+		xpathBuffer.append("|");
+
+		xpathBuffer.append(
+				".//mappingConstraints/hwConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")]// secondConstraint[(@xsi:type=\"propertyconstraints:HwMemoryConjunction\")  and not(@conjunction)] ");
+
+
+		final List<Element> constraints = this.helper.getXpathResult(rootElement, xpathBuffer.toString(), Element.class,
+				this.helper.getNS_111("propertyconstraints"), this.helper.getGenericNS("xsi"));
 
 
 		for (final Element constraint : constraints) {

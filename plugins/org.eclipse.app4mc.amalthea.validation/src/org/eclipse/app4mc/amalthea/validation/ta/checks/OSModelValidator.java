@@ -38,4 +38,9 @@ public class OSModelValidator extends AbstractCheckValidator implements IssueCre
 	public void checkSemaphoreReferences(final Amalthea amalthea) {
 		this.osModelValidatorImpl.checkSemaphoreReferences(amalthea);
 	}
+	
+	@Check(constraint = "SchedulingHWUnitDelayUnsigned", categories = { "TAConstraint" })
+	public void checkSchedulingHWUnitDelayUnsigned(final Amalthea amalthea) {
+		this.osModelValidatorImpl.checkSchedulingHWUnitDelayUnsigned(amalthea);
+	}
 }

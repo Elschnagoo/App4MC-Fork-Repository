@@ -32,7 +32,7 @@ import org.eclipse.swt.widgets.Display;
 public class MigrationInputDataProvider extends DelegatingStyledCellLabelProvider
 		implements IStructuredContentProvider {
 
-	private final Logger logger = LogManager.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 
 	public MigrationInputDataProvider(final IStyledLabelProvider labelProvider) {
 		super(labelProvider);

@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -12,18 +12,25 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.util.Collection;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DataSize;
+import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.MemoryTypeEnum;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,6 +43,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryTypeImpl#getXAccessPattern <em>XAccess Pattern</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryTypeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryTypeImpl#getSize <em>Size</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryTypeImpl#getClassifiers <em>Classifiers</em>}</li>
  * </ul>
  *
  * @generated
@@ -90,6 +98,16 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 	 * @ordered
 	 */
 	protected DataSize size;
+
+	/**
+	 * The cached value of the '{@link #getClassifiers() <em>Classifiers</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClassifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MemoryClassifier> classifiers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -200,6 +218,18 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<MemoryClassifier> getClassifiers() {
+		if (classifiers == null) {
+			classifiers = new EObjectResolvingEList<MemoryClassifier>(MemoryClassifier.class, this, AmaltheaPackage.MEMORY_TYPE__CLASSIFIERS);
+		}
+		return classifiers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -223,6 +253,8 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 				return getType();
 			case AmaltheaPackage.MEMORY_TYPE__SIZE:
 				return getSize();
+			case AmaltheaPackage.MEMORY_TYPE__CLASSIFIERS:
+				return getClassifiers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -232,6 +264,7 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -243,6 +276,10 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 				return;
 			case AmaltheaPackage.MEMORY_TYPE__SIZE:
 				setSize((DataSize)newValue);
+				return;
+			case AmaltheaPackage.MEMORY_TYPE__CLASSIFIERS:
+				getClassifiers().clear();
+				getClassifiers().addAll((Collection<? extends MemoryClassifier>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -265,6 +302,9 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 			case AmaltheaPackage.MEMORY_TYPE__SIZE:
 				setSize((DataSize)null);
 				return;
+			case AmaltheaPackage.MEMORY_TYPE__CLASSIFIERS:
+				getClassifiers().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -283,6 +323,8 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 				return type != TYPE_EDEFAULT;
 			case AmaltheaPackage.MEMORY_TYPE__SIZE:
 				return size != null;
+			case AmaltheaPackage.MEMORY_TYPE__CLASSIFIERS:
+				return classifiers != null && !classifiers.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

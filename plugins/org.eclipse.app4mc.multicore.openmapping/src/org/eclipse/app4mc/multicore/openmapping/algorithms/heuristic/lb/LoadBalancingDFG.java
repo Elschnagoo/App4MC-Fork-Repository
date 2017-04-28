@@ -19,15 +19,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractMappingAlgorithm;
-import org.eclipse.app4mc.multicore.openmapping.algorithms.SimpleListBuilder;
-import org.eclipse.app4mc.multicore.openmapping.model.AmaltheaModelBuilder;
+import org.eclipse.app4mc.multicore.openmapping.algorithms.helper.ListBuilder;
 import org.eclipse.app4mc.multicore.openmapping.model.OMAllocation;
 import org.eclipse.app4mc.multicore.openmapping.model.OMCore;
 import org.eclipse.app4mc.multicore.openmapping.model.OMMapping;
 import org.eclipse.app4mc.multicore.openmapping.model.OMTask;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.ConsoleOutputHandler;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
-import org.eclipse.app4mc.multicore.openmapping.visualizer.OMVisualizer;
+import org.eclipse.app4mc.multicore.sharelibs.ConsoleOutputHandler;
+import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 
 
 public class LoadBalancingDFG extends AbstractMappingAlgorithm {
@@ -45,12 +43,16 @@ public class LoadBalancingDFG extends AbstractMappingAlgorithm {
 		final long timeStart, timeStep1, timeStep2, timeStep3, timeStep4;
 
 		this.con.appendln("Performing heuristic DFG Mapping");
+		if (!initModels()) {
+			this.con.appendln("Error during Model initialization, exiting.");
+			return;
+		}
 		// Create lists of Cores and Tasks
 
 		// Get list of tasks and calculate their execution time
 		timeStart = java.lang.System.nanoTime();
 		this.con.appendln("Step 1: Building Task-List...");
-		if (null == (this.taskList = SimpleListBuilder.taskList(getSwModel()))) {
+		if (null == (this.taskList = ListBuilder.getTaskList(getMergedModel().getSwModel()))) {
 			this.con.append("Error during Task generation, exiting.");
 			return;
 		}
@@ -59,7 +61,7 @@ public class LoadBalancingDFG extends AbstractMappingAlgorithm {
 
 		// Get list of cores and calculate their performance
 		this.con.appendln("Step 2: Building Core-List...");
-		if (null == (this.coreList = SimpleListBuilder.coreList(getHwModel()))) {
+		if (null == (this.coreList = ListBuilder.getCoreList(getMergedModel().getHwModel()))) {
 			this.con.appendln("Error during Core generation, exiting.");
 			return;
 		}
@@ -96,6 +98,11 @@ public class LoadBalancingDFG extends AbstractMappingAlgorithm {
 		final Map<OMCore, Long> coreLoad = new HashMap<OMCore, Long>();
 		final OMMapping hMapping = new OMMapping();
 
+		// If just one core is available theres no need to run the algorithm
+		if (this.coreList.size() == 1) {
+			return mapToFirstCore();
+		}
+
 		// Sort tasks and cores according to their complexity/performance
 		UniversalHandler.getInstance().logCon("Sorting...");
 		Collections.sort(this.taskList, new SortTasks());
@@ -121,13 +128,7 @@ public class LoadBalancingDFG extends AbstractMappingAlgorithm {
 			}
 		}
 
-		final AmaltheaModelBuilder builder = new AmaltheaModelBuilder(hMapping);
-
-		setOsModel(builder.getAmaltheaModel().getOsModel());
-		setMappingModel(builder.getAmaltheaModel().getMappingModel());
-
-		final OMVisualizer vis = new OMVisualizer(hMapping);
-		this.con.appendln("\n" + vis.getASCIIChart());
+		updateModel(hMapping);
 
 		return true;
 	}

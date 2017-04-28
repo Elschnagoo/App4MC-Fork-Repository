@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <swModel>
     <tasks name="Task_1" priority="2" stimuli="Stimulus_1?type=Periodic" osekTaskGroup="2" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
-        <graphEntries xsi:type="am:ProbabiltitySwitch">
+        <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="20.0">
             <items xsi:type="am:CallSequence" name="CallSequence_1_3">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_3?type=Runnable"/>
@@ -175,7 +175,7 @@
         </customProperties>
       </literals>
     </modes>
-    <modeLabels name="message" mode="MessageMode?type=Mode" initialValue="MessageMode/MessageContent_0?type=ModeLiteral">
+    <modeLabels name="message" initialValue="MessageMode/MessageContent_0?type=ModeLiteral">
       <size value="8" unit="bit"/>
     </modeLabels>
   </swModel>
@@ -205,7 +205,6 @@
     </system>
   </hwModel>
   <osModel>
-    <osDataConsistency mode="noProtection"/>
     <operatingSystems name="Generic_OS">
       <taskSchedulers name="Scheduler_1" scheduleUnitPriority="0">
         <schedulingUnit xsi:type="am:SchedulingHWUnit">
@@ -213,6 +212,7 @@
         </schedulingUnit>
         <schedulingAlgorithm xsi:type="am:OSEK"/>
       </taskSchedulers>
+      <osDataConsistency mode="noProtection"/>
     </operatingSystems>
   </osModel>
   <stimuliModel>
@@ -244,7 +244,7 @@
     <taskAllocation task="Task_1?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
     <taskAllocation task="Task_2?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
     <coreAllocation scheduler="Scheduler_1?type=TaskScheduler" core="Core_1?type=Core"/>
-    <mapping xsi:type="am:AbstractElementMapping" memory="Memory_1?type=Memory" memoryPositionAddress="0" abstractElement="message?type=ModeLabel"/>
+    <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="0" abstractElement="message?type=ModeLabel"/>
   </mappingModel>
   <componentsModel/>
 </am:Amalthea>

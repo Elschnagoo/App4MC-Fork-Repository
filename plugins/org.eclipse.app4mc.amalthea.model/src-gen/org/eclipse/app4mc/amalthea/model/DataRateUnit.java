@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -99,7 +99,7 @@ public enum DataRateUnit implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	KIBIT_PER_SECOND(0, "kibitPerSecond", "kibitPerSecond"),
+	KIBIT_PER_SECOND(0, "KibitPerSecond", "KibitPerSecond"),
 
 	/**
 	 * The '<em><b>Mibit Per Second</b></em>' literal object.
@@ -132,14 +132,14 @@ public enum DataRateUnit implements Enumerator {
 	TIBIT_PER_SECOND(0, "TibitPerSecond", "TibitPerSecond"),
 
 	/**
-	 * The '<em><b>Byte Per Second</b></em>' literal object.
+	 * The '<em><b>BPer Second</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #BYTE_PER_SECOND_VALUE
+	 * @see #BPER_SECOND_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	BYTE_PER_SECOND(0, "bytePerSecond", "bytePerSecond"),
+	BPER_SECOND(0, "BPerSecond", "BPerSecond"),
 
 	/**
 	 * The '<em><b>KB Per Second</b></em>' literal object.
@@ -320,7 +320,7 @@ public enum DataRateUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KIBIT_PER_SECOND
-	 * @model name="kibitPerSecond"
+	 * @model name="KibitPerSecond"
 	 * @generated
 	 * @ordered
 	 */
@@ -372,19 +372,19 @@ public enum DataRateUnit implements Enumerator {
 	public static final int TIBIT_PER_SECOND_VALUE = 0;
 
 	/**
-	 * The '<em><b>Byte Per Second</b></em>' literal value.
+	 * The '<em><b>BPer Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Byte Per Second</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>BPer Second</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #BYTE_PER_SECOND
-	 * @model name="bytePerSecond"
+	 * @see #BPER_SECOND
+	 * @model name="BPerSecond"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BYTE_PER_SECOND_VALUE = 0;
+	public static final int BPER_SECOND_VALUE = 0;
 
 	/**
 	 * The '<em><b>KB Per Second</b></em>' literal value.
@@ -524,7 +524,7 @@ public enum DataRateUnit implements Enumerator {
 			MIBIT_PER_SECOND,
 			GIBIT_PER_SECOND,
 			TIBIT_PER_SECOND,
-			BYTE_PER_SECOND,
+			BPER_SECOND,
 			KB_PER_SECOND,
 			MB_PER_SECOND,
 			GB_PER_SECOND,

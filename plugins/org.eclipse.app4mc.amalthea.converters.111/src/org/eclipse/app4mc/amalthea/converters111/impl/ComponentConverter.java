@@ -14,6 +14,8 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters111.utils.HelperUtils_110_111;
@@ -23,14 +25,19 @@ import org.jdom2.Element;
 public class ComponentConverter implements IConverter {
 
 	private final HelperUtils_110_111 helper;
+	private final Logger logger;
 
 	public ComponentConverter() {
 		this.helper = HelperUtils_110_111.getInstance();
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
+
+		this.logger.info("Migration from itea.110 to itea.111 : Executing Component converter for model file : "
+				+ targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);
 
@@ -82,8 +89,8 @@ public class ComponentConverter implements IConverter {
 
 
 		final List<Element> connectors = this.helper.getXpathResult(rootElement,
-				".//elements[(@xsi:type=\"components:Connector\")]", Element.class,
-				this.helper.getNS_111("components"), this.helper.getGenericNS("xsi"));
+				".//elements[(@xsi:type=\"components:Connector\")]", Element.class, this.helper.getNS_111("components"),
+				this.helper.getGenericNS("xsi"));
 
 		for (final Element element : connectors) {
 
@@ -109,8 +116,8 @@ public class ComponentConverter implements IConverter {
 		 */
 
 		final List<Element> components = this.helper.getXpathResult(rootElement,
-				".//elements[(@xsi:type=\"components:Component\")]", Element.class,
-				this.helper.getNS_111("components"), this.helper.getGenericNS("xsi"));
+				".//elements[(@xsi:type=\"components:Component\")]", Element.class, this.helper.getNS_111("components"),
+				this.helper.getGenericNS("xsi"));
 
 		for (final Element element : components) {
 
@@ -121,8 +128,8 @@ public class ComponentConverter implements IConverter {
 
 
 		final List<Element> composites = this.helper.getXpathResult(rootElement,
-				".//elements[(@xsi:type=\"components:Composite\")]", Element.class,
-				this.helper.getNS_111("components"), this.helper.getGenericNS("xsi"));
+				".//elements[(@xsi:type=\"components:Composite\")]", Element.class, this.helper.getNS_111("components"),
+				this.helper.getGenericNS("xsi"));
 
 		for (final Element element : composites) {
 

@@ -36,7 +36,4 @@ public abstract class AbstractValidatorImpl {
 		return this.eObjectHelper;
 	}
 
-	// public void setObjectHelper(final IObjectHelper objectHelper) {
-	// this.eObjectHelper = objectHelper;
-	// }
 }

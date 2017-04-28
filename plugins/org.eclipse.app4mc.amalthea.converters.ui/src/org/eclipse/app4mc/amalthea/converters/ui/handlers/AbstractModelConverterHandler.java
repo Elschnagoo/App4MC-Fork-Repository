@@ -287,7 +287,7 @@ public abstract class AbstractModelConverterHandler extends AbstractHandler {
 
 		final List<ICache> caches = getAllCacheObjectsFromExtensions(inputModelVersion);
 
-		this.logger.info("start to build cache for models : " + inputModelVersion);
+		this.logger.trace("Start : Building cache for AMALTHEA models present in : " + inputModelVersion);
 
 		st = System.currentTimeMillis();
 
@@ -296,9 +296,10 @@ public abstract class AbstractModelConverterHandler extends AbstractHandler {
 		end = System.currentTimeMillis();
 
 
-		this.logger.info("end of building cache for models " + inputModelVersion);
+		this.logger.trace("End : Building cache for AMALTHEA models present in : " + inputModelVersion);
 
-		this.logger.info("total time taken to build cache for " + inputModelVersion + " models:  " + (end - st));
+		this.logger.trace("Total time taken to build cache for " + inputModelVersion + " models:  " + (end - st)
+				+ "milli seconds");
 
 
 		allConverterExtensions = getAllConverterExtensions();

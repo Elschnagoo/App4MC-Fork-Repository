@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <swModel>
     <tasks name="Task_5" priority="5" stimuli="Stimulus_Task_5?type=Periodic" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
@@ -11,7 +11,7 @@
     </tasks>
     <tasks name="Task_6" priority="4" stimuli="IPA_Task_6?type=InterProcess" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:ProbabiltitySwitch">
+        <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="30.0">
             <items xsi:type="am:CallSequence" name="CallSequence_6_2">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_2?type=Runnable"/>
@@ -61,7 +61,7 @@
         <graphEntries xsi:type="am:CallSequence" name="CS_IPA_T3">
           <calls xsi:type="am:InterProcessActivation" stimulus="IPA_Task_3?type=InterProcess"/>
         </graphEntries>
-        <graphEntries xsi:type="am:ProbabiltitySwitch">
+        <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="0.3">
             <items xsi:type="am:CallSequence" name="CS_Trigger_Task_4">
               <calls xsi:type="am:InterProcessActivation" stimulus="IPA_Task_4?type=InterProcess"/>
@@ -78,7 +78,7 @@
     </tasks>
     <tasks name="Task_3" priority="1" stimuli="IPA_Task_3?type=InterProcess" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:ProbabiltitySwitch">
+        <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="50.0">
             <items xsi:type="am:CallSequence" name="CS_y_0">
               <calls xsi:type="am:TaskRunnableCall" runnable="R_3_0?type=Runnable"/>
@@ -285,7 +285,6 @@
     </system>
   </hwModel>
   <osModel>
-    <osDataConsistency mode="noProtection"/>
     <operatingSystems name="Generic_OS">
       <taskSchedulers name="Scheduler_1" scheduleUnitPriority="0">
         <schedulingUnit xsi:type="am:SchedulingHWUnit">
@@ -293,6 +292,7 @@
         </schedulingUnit>
         <schedulingAlgorithm xsi:type="am:OSEK"/>
       </taskSchedulers>
+      <osDataConsistency mode="noProtection"/>
     </operatingSystems>
   </osModel>
   <stimuliModel>

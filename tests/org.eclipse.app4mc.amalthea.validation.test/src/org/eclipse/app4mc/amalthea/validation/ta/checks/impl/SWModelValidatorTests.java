@@ -28,22 +28,28 @@ import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Label;
+import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
+import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
+import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
+import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
+import org.eclipse.app4mc.amalthea.model.Time;
+import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
 import org.eclipse.app4mc.amalthea.validation.ta.checks.SWModelValidator;
@@ -135,7 +141,7 @@ public class SWModelValidatorTests {
 		swModel.getLabels().add(label);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -165,7 +171,7 @@ public class SWModelValidatorTests {
 		swModel.getLabels().add(label);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -220,7 +226,7 @@ public class SWModelValidatorTests {
 		swModel.getLabels().add(label);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -250,7 +256,7 @@ public class SWModelValidatorTests {
 		swModel.getLabels().add(label);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractElementMemoryInformation_Size());
+		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -639,10 +645,10 @@ public class SWModelValidatorTests {
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProvider(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchValueProvider(AMALTHEA)}
 	 */
 	@Test
-	public void test_checkModeValueProvider_null() {
+	public void test_checkModeSwitchValueProvider_null() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
@@ -661,17 +667,17 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProvider(amalthea);
+		this.classUnderTest.checkModeSwitchValueProvider(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProvider(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchValueProvider(AMALTHEA)}
 	 */
 	@Test
-	public void test_checkModeValueProvider_notExisting() {
+	public void test_checkModeSwitchValueProvider_notExisting() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
@@ -692,17 +698,17 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProvider(amalthea);
+		this.classUnderTest.checkModeSwitchValueProvider(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProvider(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchValueProvider(AMALTHEA)}
 	 */
 	@Test
-	public void test_checkModeValueProvider_existing() {
+	public void test_checkModeSwitchValueProvider_existing() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
@@ -721,14 +727,14 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProvider(amalthea);
+		this.classUnderTest.checkModeSwitchValueProvider(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeSwitchEntryValue(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchEntryValue1(AMALTHEA)}
 	 */
 	@Test
 	public void test_checkModeSwitchEntryValue_once() {
@@ -755,14 +761,14 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeSwitchEntryValue(amalthea);
+		this.classUnderTest.checkModeSwitchEntryValue1(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeSwitchEntryValue(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchEntryValue1(AMALTHEA)}
 	 */
 	@Test
 	public void test_checkModeSwitchEntryValue_twice() {
@@ -797,14 +803,14 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeSwitchEntryValue(amalthea);
+		this.classUnderTest.checkModeSwitchEntryValue1(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderValue(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchEntryValue2(AMALTHEA)}
 	 */
 	@Test
 	public void test_checkModeValueProviderValue_null() {
@@ -828,16 +834,16 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderValue(amalthea);
+		this.classUnderTest.checkModeSwitchEntryValue2(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderValue(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeSwitchEntryValue2(AMALTHEA)}
 	 */
-	@Test
+	// @Test is no longer necessary: mode is always correct if initial value is set
 	public void test_checkModeValueProviderValue_notExisting() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
@@ -847,10 +853,10 @@ public class SWModelValidatorTests {
 		final ModeSwitch modeSwitch = AmaltheaFactory.eINSTANCE.createModeSwitch();
 		final ModeSwitchEntry<GraphEntryBase> modeSwitchEntry = AmaltheaFactory.eINSTANCE.createModeSwitchEntry();
 		final ModeLiteral modeLiteral = AmaltheaFactory.eINSTANCE.createModeLiteral();
-		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
 		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
+		//final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
 
-		modeLabel.setMode(mode);
+		//modeLabel.setMode(mode);
 		EList<ModeLiteral> valueList = modeSwitchEntry.getValues(); 
 		valueList.add(modeLiteral);
 		modeSwitch.setValueProvider(modeLabel);
@@ -866,14 +872,14 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderValue(amalthea);
+		this.classUnderTest.checkModeSwitchEntryValue2(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderMode(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeLabelMode(AMALTHEA)}
 	 */
 	@Test
 	public void test_checkModeValueProviderMode_null() {
@@ -891,20 +897,20 @@ public class SWModelValidatorTests {
 		swModel.getTasks().add(task);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeValueProvider_Mode());
+		this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_Mode());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderMode(amalthea);
+		this.classUnderTest.checkModeLabelMode(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderMode(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeLabelMode(AMALTHEA)}
 	 */
 	@Test
 	public void test_checkModeValueProviderMode_notExisting() {
@@ -915,32 +921,32 @@ public class SWModelValidatorTests {
 		final CallGraph callGraph = AmaltheaFactory.eINSTANCE.createCallGraph();
 		final ModeSwitch modeSwitch = AmaltheaFactory.eINSTANCE.createModeSwitch();
 		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
-		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
+		//final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
 
-		modeLabel.setMode(mode);
+		//modeLabel.setMode(mode);
 		modeSwitch.setValueProvider(modeLabel);
 		callGraph.getGraphEntries().add(modeSwitch);
 		task.setCallGraph(callGraph);
 		swModel.getTasks().add(task);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeValueProvider_Mode());
+		this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_Mode());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderMode(amalthea);
+		this.classUnderTest.checkModeLabelMode(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderMode(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeLabelMode(AMALTHEA)}
 	 */
-	@Test
-	public void test_checkModeValueProviderMode_existing() {
+	// @Test is no longer necessary: mode is always correct if initial value is set
+	public void test_checkModeLabelMode_existing() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
@@ -950,7 +956,7 @@ public class SWModelValidatorTests {
 		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
 		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
 
-		modeLabel.setMode(mode);
+		//modeLabel.setMode(mode);
 		modeSwitch.setValueProvider(modeLabel);
 		callGraph.getGraphEntries().add(modeSwitch);
 		task.setCallGraph(callGraph);
@@ -961,17 +967,17 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderMode(amalthea);
+		this.classUnderTest.checkModeLabelMode(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderInitialValue(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeLabelInitialValue(AMALTHEA)}
 	 */
-	@Test
-	public void test_checkModeValueProviderInitialValue_invalid() {
+	// @Test is no longer necessary: mode is always correct if initial value is set
+	public void test_checkModeLabelInitialValue_invalid() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
@@ -983,7 +989,7 @@ public class SWModelValidatorTests {
 		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
 
 		modeLabel.setInitialValue(modeLiteral);
-		modeLabel.setMode(mode);
+		//modeLabel.setMode(mode);
 		modeSwitch.setValueProvider(modeLabel);
 		callGraph.getGraphEntries().add(modeSwitch);
 		task.setCallGraph(callGraph);
@@ -991,23 +997,23 @@ public class SWModelValidatorTests {
 		swModel.getModes().add(mode);
 		amalthea.setSwModel(swModel);
 
-		this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeValueProvider_InitialValue());
+		this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_InitialValue());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderInitialValue(amalthea);
+		this.classUnderTest.checkModeLabelInitialValue(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 
 	/**
-	 * Test for validation method {@link SWModelValidator#checkModeValueProviderInitialValue(AMALTHEA)}
+	 * Test for validation method {@link SWModelValidator#checkModeLabelInitialValue(AMALTHEA)}
 	 */
 	@Test
-	public void test_checkModeValueProviderInitialValue_valid() {
+	public void test_checkModeLabelInitialValue_valid() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
@@ -1020,7 +1026,7 @@ public class SWModelValidatorTests {
 
 		modeLabel.setInitialValue(modeLiteral);
 		mode.getLiterals().add(modeLiteral);
-		modeLabel.setMode(mode);
+		// modeLabel.setMode(mode);
 		modeSwitch.setValueProvider(modeLabel);
 		callGraph.getGraphEntries().add(modeSwitch);
 		task.setCallGraph(callGraph);
@@ -1031,7 +1037,7 @@ public class SWModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 
 		// test
-		this.classUnderTest.checkModeValueProviderInitialValue(amalthea);
+		this.classUnderTest.checkModeLabelInitialValue(amalthea);
 
 		// evaluate
 		EasyMock.verify(this.issueCreator);
@@ -1411,6 +1417,1046 @@ public class SWModelValidatorTests {
 		// test
 		this.classUnderTest.checkEnforcedMigrationResourceOwner(amalthea);
 
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkRunnableDeadlineUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRunnableDeadlineUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		final Time deadline = null;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getRunnables().add(runnable);
+		runnable.setDeadline(deadline);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRunnableDeadlineUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkRunnableDeadlineUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRunnableDeadlineUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		final Time deadline = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getRunnables().add(runnable);
+		runnable.setDeadline(deadline);
+		deadline.setValue(value);
+		deadline.setUnit(unit);
+		
+		this.issueCreator.issue(deadline, AmaltheaPackage.eINSTANCE.getRunnable_Deadline(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRunnableDeadlineUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkRunnableDeadlineUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRunnableDeadlineUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		final Time deadline = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getRunnables().add(runnable);
+		runnable.setDeadline(deadline);
+		deadline.setValue(value);
+		deadline.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRunnableDeadlineUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkRunnableDeadlineUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkRunnableDeadlineUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		final Time deadline = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getRunnables().add(runnable);
+		runnable.setDeadline(deadline);
+		deadline.setValue(value);
+		deadline.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRunnableDeadlineUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationMinUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationMinUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time min = null;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setMin(min);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationMinUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationMinUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationMinUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time min = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setMin(min);
+		min.setValue(value);
+		min.setUnit(unit);
+		
+		this.issueCreator.issue(min, AmaltheaPackage.eINSTANCE.getPeriodicActivation_Min(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationMinUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationMinUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationMinUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time min = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setMin(min);
+		min.setValue(value);
+		min.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkRunnableDeadlineUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationMinUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationMinUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time min = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setMin(min);
+		min.setValue(value);
+		min.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationMinUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationMaxUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationMaxUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time max = null;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setMax(max);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationMaxUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationMaxUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationMaxUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time max = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setMax(max);
+		max.setValue(value);
+		max.setUnit(unit);
+		
+		this.issueCreator.issue(max, AmaltheaPackage.eINSTANCE.getPeriodicActivation_Max(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationMaxUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationMaxUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationMaxUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time max = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setMax(max);
+		max.setValue(value);
+		max.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationMaxUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationMaxUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationMaxUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time max = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setMax(max);
+		max.setValue(value);
+		max.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationMaxUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationOffsetUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationOffsetUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time offset = null;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setOffset(offset);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationOffsetUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationOffsetUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationOffsetUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setOffset(offset);
+		offset.setValue(value);
+		offset.setUnit(unit);
+		
+		this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getPeriodicActivation_Offset(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationOffsetUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationOffsetUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationOffsetUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setOffset(offset);
+		offset.setValue(value);
+		offset.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationOffsetUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationOffsetUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationOffsetUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setOffset(offset);
+		offset.setValue(value);
+		offset.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationOffsetUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationDeadlineUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationDeadlineUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time deadline = null;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setDeadline(deadline);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationDeadlineUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationDeadlineUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationDeadlineUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time deadline = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setDeadline(deadline);
+		deadline.setValue(value);
+		deadline.setUnit(unit);
+		
+		this.issueCreator.issue(deadline, AmaltheaPackage.eINSTANCE.getPeriodicActivation_Deadline(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationDeadlineUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationDeadlineUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationDeadlineUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time deadline = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setDeadline(deadline);
+		deadline.setValue(value);
+		deadline.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationDeadlineUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkPeriodicActivationDeadlineUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkPeriodicActivationDeadlineUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+		final Time deadline = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(periodicActivation);
+		periodicActivation.setDeadline(deadline);
+		deadline.setValue(value);
+		deadline.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkPeriodicActivationDeadlineUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkSingleActivationMinUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSingleActivationMinUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
+		final Time min = null;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(singleActivation);
+		singleActivation.setMin(min);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSingleActivationMinUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkSingleActivationMinUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSingleActivationMinUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
+		final Time min = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(singleActivation);
+		singleActivation.setMin(min);
+		min.setValue(value);
+		min.setUnit(unit);
+		
+		this.issueCreator.issue(min, AmaltheaPackage.eINSTANCE.getSingleActivation_Min(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSingleActivationMinUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkSingleActivationMinUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSingleActivationMinUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
+		final Time min = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(singleActivation);
+		singleActivation.setMin(min);
+		min.setValue(value);
+		min.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSingleActivationMinUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkSingleActivationMinUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSingleActivationMinUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
+		final Time min = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(singleActivation);
+		singleActivation.setMin(min);
+		min.setValue(value);
+		min.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSingleActivationMinUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkSingleActivationMaxUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSingleActivationMaxUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
+		final Time max = null;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(singleActivation);
+		singleActivation.setMax(max);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSingleActivationMaxUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkSingleActivationMaxUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSingleActivationMaxUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
+		final Time max = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(singleActivation);
+		singleActivation.setMax(max);
+		max.setValue(value);
+		max.setUnit(unit);
+		
+		this.issueCreator.issue(max, AmaltheaPackage.eINSTANCE.getSingleActivation_Max(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSingleActivationMaxUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkSingleActivationMaxUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSingleActivationMaxUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
+		final Time max = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(singleActivation);
+		singleActivation.setMax(max);
+		max.setValue(value);
+		max.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSingleActivationMaxUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkSingleActivationMaxUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSingleActivationMaxUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
+		final Time max = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setSwModel(swModel);
+		swModel.getActivations().add(singleActivation);
+		singleActivation.setMax(max);
+		max.setValue(value);
+		max.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSingleActivationMaxUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkModeLabelAccessModeEqual(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkModeLabelAccessModeEqual_ValueNull() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		final ModeLabelAccess modeLabelAccess = AmaltheaFactory.eINSTANCE.createModeLabelAccess();
+		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
+		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
+		final ModeLiteral modeLiteral = AmaltheaFactory.eINSTANCE.createModeLiteral();
+		
+		amalthea.setSwModel(swModel);
+		swModel.getRunnables().add(runnable);
+		runnable.getRunnableItems().add(modeLabelAccess);
+		modeLabelAccess.setData(modeLabel);
+		modeLabelAccess.setModeValue(null);
+		modeLabel.setInitialValue(modeLiteral);
+		mode.getLiterals().add(modeLiteral);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkModeLabelAccessModeEqual(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkModeLabelAccessModeEqual(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkModeLabelAccessModeEqual_DataNull() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		final ModeLabelAccess modeLabelAccess = AmaltheaFactory.eINSTANCE.createModeLabelAccess();
+		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
+		final ModeLiteral modeLiteral = AmaltheaFactory.eINSTANCE.createModeLiteral();
+		
+		amalthea.setSwModel(swModel);
+		swModel.getRunnables().add(runnable);
+		runnable.getRunnableItems().add(modeLabelAccess);
+		modeLabelAccess.setData(null);
+		mode.getLiterals().add(modeLiteral);
+		modeLabelAccess.setModeValue(modeLiteral);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkModeLabelAccessModeEqual(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkModeLabelAccessModeEqual(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkModeLabelAccessModeEqual_DataModeNull() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		final ModeLabelAccess modeLabelAccess = AmaltheaFactory.eINSTANCE.createModeLabelAccess();
+		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
+		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
+		final ModeLiteral modeLiteral = AmaltheaFactory.eINSTANCE.createModeLiteral();
+		
+		amalthea.setSwModel(swModel);
+		swModel.getRunnables().add(runnable);
+		runnable.getRunnableItems().add(modeLabelAccess);
+		modeLabelAccess.setAccess(LabelAccessEnum.READ);
+		modeLabelAccess.setData(modeLabel);
+		mode.getLiterals().add(modeLiteral);
+		modeLabelAccess.setModeValue(modeLiteral);
+		
+		this.issueCreator.issue(modeLabelAccess, AmaltheaPackage.eINSTANCE.getModeLabelAccess_Data(), null, mode);
+		this.issueCreator.issue(modeLabelAccess, AmaltheaPackage.eINSTANCE.getModeLabelAccess_ModeValue(), null, mode);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkModeLabelAccessModeEqual(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkModeLabelAccessModeEqual(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkModeLabelAccessModeEqual_ValueModeNull() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		final ModeLabelAccess modeLabelAccess = AmaltheaFactory.eINSTANCE.createModeLabelAccess();
+		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
+		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
+		final ModeLiteral modeLiteral1 = AmaltheaFactory.eINSTANCE.createModeLiteral();
+		final ModeLiteral modeLiteral2 = AmaltheaFactory.eINSTANCE.createModeLiteral();
+		
+		amalthea.setSwModel(swModel);
+		swModel.getRunnables().add(runnable);
+		runnable.getRunnableItems().add(modeLabelAccess);
+		modeLabelAccess.setAccess(LabelAccessEnum.READ);
+		modeLabelAccess.setData(modeLabel);
+		modeLabel.setInitialValue(modeLiteral1);
+		mode.getLiterals().add(modeLiteral1);
+		modeLabelAccess.setModeValue(modeLiteral2);
+		
+		this.issueCreator.issue(modeLabelAccess, AmaltheaPackage.eINSTANCE.getModeLabelAccess_Data(), mode, null);
+		this.issueCreator.issue(modeLabelAccess, AmaltheaPackage.eINSTANCE.getModeLabelAccess_ModeValue(), mode, null);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkModeLabelAccessModeEqual(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkModeLabelAccessModeEqual(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkModeLabelAccessModeEqual_ModeUnequal() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		final ModeLabelAccess modeLabelAccess = AmaltheaFactory.eINSTANCE.createModeLabelAccess();
+		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
+		final Mode mode1 = AmaltheaFactory.eINSTANCE.createMode();
+		final ModeLiteral modeLiteral1 = AmaltheaFactory.eINSTANCE.createModeLiteral();
+		final Mode mode2 = AmaltheaFactory.eINSTANCE.createMode();
+		final ModeLiteral modeLiteral2 = AmaltheaFactory.eINSTANCE.createModeLiteral();
+		
+		amalthea.setSwModel(swModel);
+		swModel.getRunnables().add(runnable);
+		runnable.getRunnableItems().add(modeLabelAccess);
+		modeLabelAccess.setAccess(LabelAccessEnum.READ);
+		modeLabelAccess.setData(modeLabel);
+		mode1.getLiterals().add(modeLiteral1);
+		modeLabel.setInitialValue(modeLiteral1);
+		mode2.getLiterals().add(modeLiteral2);
+		modeLabelAccess.setModeValue(modeLiteral2);
+		
+		this.issueCreator.issue(modeLabelAccess, AmaltheaPackage.eINSTANCE.getModeLabelAccess_Data(), mode1, mode2);
+		this.issueCreator.issue(modeLabelAccess, AmaltheaPackage.eINSTANCE.getModeLabelAccess_ModeValue(), mode1, mode2);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkModeLabelAccessModeEqual(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkModeLabelAccessModeEqual(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkModeLabelAccessModeEqual_ModeEqual() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		final ModeLabelAccess modeLabelAccess = AmaltheaFactory.eINSTANCE.createModeLabelAccess();
+		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
+		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
+		final ModeLiteral modeLiteral1 = AmaltheaFactory.eINSTANCE.createModeLiteral();
+		final ModeLiteral modeLiteral2 = AmaltheaFactory.eINSTANCE.createModeLiteral();
+		
+		amalthea.setSwModel(swModel);
+		swModel.getRunnables().add(runnable);
+		runnable.getRunnableItems().add(modeLabelAccess);
+		modeLabelAccess.setAccess(LabelAccessEnum.READ);
+		modeLabelAccess.setData(modeLabel);
+		mode.getLiterals().add(modeLiteral1);
+		modeLabel.setInitialValue(modeLiteral1);
+		mode.getLiterals().add(modeLiteral2);
+		modeLabelAccess.setModeValue(modeLiteral2);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkModeLabelAccessModeEqual(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkModeLiteralMode(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkModeLiteralMode_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		final ModeLabelAccess modeLabelAccess = AmaltheaFactory.eINSTANCE.createModeLabelAccess();
+		final ModeLiteral modeLiteral = AmaltheaFactory.eINSTANCE.createModeLiteral();
+		
+		amalthea.setSwModel(swModel);
+		swModel.getRunnables().add(runnable);
+		runnable.getRunnableItems().add(modeLabelAccess);
+		modeLabelAccess.setModeValue(modeLiteral);
+		
+		this.issueCreator.issue(modeLiteral, AmaltheaPackage.eINSTANCE.getMode_Literals());
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkModeLiteralMode(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link SWModelValidator#checkModeLiteralMode(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkModeLiteralMode_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		final ModeLabelAccess modeLabelAccess = AmaltheaFactory.eINSTANCE.createModeLabelAccess();
+		final Mode mode = AmaltheaFactory.eINSTANCE.createMode();
+		final ModeLiteral modeLiteral = AmaltheaFactory.eINSTANCE.createModeLiteral();
+		
+		amalthea.setSwModel(swModel);
+		swModel.getRunnables().add(runnable);
+		runnable.getRunnableItems().add(modeLabelAccess);
+		modeLabelAccess.setAccess(LabelAccessEnum.READ);
+		modeLabelAccess.setModeValue(modeLiteral);
+		mode.getLiterals().add(modeLiteral);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkModeLiteralMode(amalthea);
+		
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}

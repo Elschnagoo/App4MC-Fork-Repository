@@ -72,7 +72,6 @@ public class OSModelItemProvider extends BaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOSModel_OsDataConsistency());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOSModel_Semaphores());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOSModel_OperatingSystems());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOSModel_OsOverheads());
@@ -138,7 +137,6 @@ public class OSModelItemProvider extends BaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(OSModel.class)) {
-			case AmaltheaPackage.OS_MODEL__OS_DATA_CONSISTENCY:
 			case AmaltheaPackage.OS_MODEL__SEMAPHORES:
 			case AmaltheaPackage.OS_MODEL__OPERATING_SYSTEMS:
 			case AmaltheaPackage.OS_MODEL__OS_OVERHEADS:
@@ -158,11 +156,6 @@ public class OSModelItemProvider extends BaseObjectItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getOSModel_OsDataConsistency(),
-				 AmaltheaFactory.eINSTANCE.createOsDataConsistency()));
 
 		newChildDescriptors.add
 			(createChildParameter

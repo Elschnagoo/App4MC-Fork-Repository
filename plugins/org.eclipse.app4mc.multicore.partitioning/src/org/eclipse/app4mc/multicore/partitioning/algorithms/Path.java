@@ -13,6 +13,7 @@ package org.eclipse.app4mc.multicore.partitioning.algorithms;
 import java.util.HashSet;
 
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 

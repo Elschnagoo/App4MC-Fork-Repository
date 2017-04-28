@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -13,7 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
-import org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation;
+import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class AbstractElementMappingConstraintImpl extends MappingConstraintImpl implements AbstractElementMappingConstraint {
+public class AbstractElementMappingConstraintImpl extends MemoryMappingConstraintImpl implements AbstractElementMappingConstraint {
 	/**
 	 * The cached value of the '{@link #getAbstractElement() <em>Abstract Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -45,7 +45,7 @@ public class AbstractElementMappingConstraintImpl extends MappingConstraintImpl 
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractElementMemoryInformation abstractElement;
+	protected AbstractMemoryElement abstractElement;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -71,10 +71,10 @@ public class AbstractElementMappingConstraintImpl extends MappingConstraintImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractElementMemoryInformation getAbstractElement() {
+	public AbstractMemoryElement getAbstractElement() {
 		if (abstractElement != null && abstractElement.eIsProxy()) {
 			InternalEObject oldAbstractElement = (InternalEObject)abstractElement;
-			abstractElement = (AbstractElementMemoryInformation)eResolveProxy(oldAbstractElement);
+			abstractElement = (AbstractMemoryElement)eResolveProxy(oldAbstractElement);
 			if (abstractElement != oldAbstractElement) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING_CONSTRAINT__ABSTRACT_ELEMENT, oldAbstractElement, abstractElement));
@@ -88,7 +88,7 @@ public class AbstractElementMappingConstraintImpl extends MappingConstraintImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractElementMemoryInformation basicGetAbstractElement() {
+	public AbstractMemoryElement basicGetAbstractElement() {
 		return abstractElement;
 	}
 
@@ -97,8 +97,8 @@ public class AbstractElementMappingConstraintImpl extends MappingConstraintImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAbstractElement(AbstractElementMemoryInformation newAbstractElement) {
-		AbstractElementMemoryInformation oldAbstractElement = abstractElement;
+	public void setAbstractElement(AbstractMemoryElement newAbstractElement) {
+		AbstractMemoryElement oldAbstractElement = abstractElement;
 		abstractElement = newAbstractElement;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING_CONSTRAINT__ABSTRACT_ELEMENT, oldAbstractElement, abstractElement));
@@ -128,7 +128,7 @@ public class AbstractElementMappingConstraintImpl extends MappingConstraintImpl 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING_CONSTRAINT__ABSTRACT_ELEMENT:
-				setAbstractElement((AbstractElementMemoryInformation)newValue);
+				setAbstractElement((AbstractMemoryElement)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -143,7 +143,7 @@ public class AbstractElementMappingConstraintImpl extends MappingConstraintImpl 
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING_CONSTRAINT__ABSTRACT_ELEMENT:
-				setAbstractElement((AbstractElementMemoryInformation)null);
+				setAbstractElement((AbstractMemoryElement)null);
 				return;
 		}
 		super.eUnset(featureID);

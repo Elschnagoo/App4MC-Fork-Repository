@@ -20,11 +20,16 @@ import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ComponentsModel;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.OSModel;
+import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.SWModel;
+import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
 import org.eclipse.app4mc.amalthea.model.SemaphoreEvent;
+import org.eclipse.app4mc.amalthea.model.TaskScheduler;
+import org.eclipse.app4mc.amalthea.model.Time;
+import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
 import org.eclipse.app4mc.amalthea.validation.ta.checks.OSModelValidator;
 import org.junit.Before;
@@ -555,6 +560,133 @@ public class OSModelValidatorTests {
 		// test
 		this.classUnderTest.checkSemaphoreReferences(amalthea);
 
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link OSModelValidator#checkSchedulingHWUnitDelayUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSchedulingHWUnitDelayUnsigned_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final OSModel osModel = AmaltheaFactory.eINSTANCE.createOSModel();
+		final OperatingSystem operatingSystem = AmaltheaFactory.eINSTANCE.createOperatingSystem();
+		final TaskScheduler scheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
+		final SchedulingHWUnit schedulingHWUnit = AmaltheaFactory.eINSTANCE.createSchedulingHWUnit();
+		final Time delay = null;
+		
+		amalthea.setOsModel(osModel);
+		osModel.getOperatingSystems().add(operatingSystem);
+		operatingSystem.getTaskSchedulers().add(scheduler);
+		scheduler.setSchedulingUnit(schedulingHWUnit);
+		schedulingHWUnit.setDelay(delay);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSchedulingHWUnitDelayUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link OSModelValidator#checkSchedulingHWUnitDelayUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSchedulingHWUnitDelayUnsigned_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final OSModel osModel = AmaltheaFactory.eINSTANCE.createOSModel();
+		final OperatingSystem operatingSystem = AmaltheaFactory.eINSTANCE.createOperatingSystem();
+		final TaskScheduler scheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
+		final SchedulingHWUnit schedulingHWUnit = AmaltheaFactory.eINSTANCE.createSchedulingHWUnit();
+		final Time delay = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = -10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setOsModel(osModel);
+		osModel.getOperatingSystems().add(operatingSystem);
+		operatingSystem.getTaskSchedulers().add(scheduler);
+		scheduler.setSchedulingUnit(schedulingHWUnit);
+		schedulingHWUnit.setDelay(delay);
+		delay.setValue(value);
+		delay.setUnit(unit);
+		
+		this.issueCreator.issue(delay, AmaltheaPackage.eINSTANCE.getSchedulingHWUnit_Delay(), value);
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSchedulingHWUnitDelayUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link OSModelValidator#checkSchedulingHWUnitDelayUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSchedulingHWUnitDelayUnsigned_zero() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final OSModel osModel = AmaltheaFactory.eINSTANCE.createOSModel();
+		final OperatingSystem operatingSystem = AmaltheaFactory.eINSTANCE.createOperatingSystem();
+		final TaskScheduler scheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
+		final SchedulingHWUnit schedulingHWUnit = AmaltheaFactory.eINSTANCE.createSchedulingHWUnit();
+		final Time delay = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 0;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setOsModel(osModel);
+		osModel.getOperatingSystems().add(operatingSystem);
+		operatingSystem.getTaskSchedulers().add(scheduler);
+		scheduler.setSchedulingUnit(schedulingHWUnit);
+		schedulingHWUnit.setDelay(delay);
+		delay.setValue(value);
+		delay.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSchedulingHWUnitDelayUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link OSModelValidator#checkSchedulingHWUnitDelayUnsigned(AMALTHEA)}
+	 */
+	@Test
+	public void test_checkSchedulingHWUnitDelayUnsigned_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final OSModel osModel = AmaltheaFactory.eINSTANCE.createOSModel();
+		final OperatingSystem operatingSystem = AmaltheaFactory.eINSTANCE.createOperatingSystem();
+		final TaskScheduler scheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
+		final SchedulingHWUnit schedulingHWUnit = AmaltheaFactory.eINSTANCE.createSchedulingHWUnit();
+		final Time delay = AmaltheaFactory.eINSTANCE.createTime();
+		final Integer value = 10;
+		final TimeUnit unit = TimeUnit.MS;
+		
+		amalthea.setOsModel(osModel);
+		osModel.getOperatingSystems().add(operatingSystem);
+		operatingSystem.getTaskSchedulers().add(scheduler);
+		scheduler.setSchedulingUnit(schedulingHWUnit);
+		schedulingHWUnit.setDelay(delay);
+		delay.setValue(value);
+		delay.setUnit(unit);
+		
+		EasyMock.replay(this.issueCreator);
+
+		// test
+		this.classUnderTest.checkSchedulingHWUnitDelayUnsigned(amalthea);
+		
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}

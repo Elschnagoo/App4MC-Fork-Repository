@@ -29,7 +29,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * end-user-doc -->
  * @generated
  */
-public class ProcessPrototypeAllocationConstraintItemProvider extends AllocationConstraintItemProvider {
+public class ProcessPrototypeAllocationConstraintItemProvider extends CoreAllocationConstraintItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

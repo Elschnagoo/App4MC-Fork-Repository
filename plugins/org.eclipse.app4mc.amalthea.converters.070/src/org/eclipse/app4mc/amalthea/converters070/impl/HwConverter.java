@@ -31,12 +31,15 @@ public class HwConverter implements IConverter {
 
 	public HwConverter() {
 		this.helper = HelperUtils_111_070.getInstance();
-		this.logger = LogManager.getLogger(this.getClass());
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
+
+		this.logger.info(
+				"Migration from itea.111 to 0.7.0 : Executing HW converter for model file : " + targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);
 

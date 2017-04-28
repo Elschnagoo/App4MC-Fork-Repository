@@ -37,7 +37,7 @@ public class RootElementConverter implements IConverter {
 
 	public RootElementConverter() {
 		this.helper = HelperUtils_071_072.getInstance();
-		this.logger = LogManager.getLogger(this.getClass());
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 
@@ -64,7 +64,8 @@ public class RootElementConverter implements IConverter {
 		 */
 
 
-		this.logger.info("Migration from 0.7.1 to 0.7.2 : Starting \"Root Element Converter\"");
+		this.logger.info("Migration from 0.7.1 to 0.7.2 : Executing \"Root Element Converter\" for model file : "
+				+ targetFile.getName());
 
 		final Document document = fileName_documentsMap.get(targetFile);
 

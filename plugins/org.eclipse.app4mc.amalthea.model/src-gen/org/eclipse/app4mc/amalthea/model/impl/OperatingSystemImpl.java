@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
+import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
 import org.eclipse.app4mc.amalthea.model.OsInstructions;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 
@@ -45,6 +46,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OperatingSystemImpl#getOverhead <em>Overhead</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OperatingSystemImpl#getTaskSchedulers <em>Task Schedulers</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OperatingSystemImpl#getInterruptControllers <em>Interrupt Controllers</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OperatingSystemImpl#getOsDataConsistency <em>Os Data Consistency</em>}</li>
  * </ul>
  *
  * @generated
@@ -99,6 +101,16 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * @ordered
 	 */
 	protected EList<InterruptController> interruptControllers;
+
+	/**
+	 * The cached value of the '{@link #getOsDataConsistency() <em>Os Data Consistency</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOsDataConsistency()
+	 * @generated
+	 * @ordered
+	 */
+	protected OsDataConsistency osDataConsistency;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -207,6 +219,49 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public OsDataConsistency getOsDataConsistency() {
+		return osDataConsistency;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOsDataConsistency(OsDataConsistency newOsDataConsistency, NotificationChain msgs) {
+		OsDataConsistency oldOsDataConsistency = osDataConsistency;
+		osDataConsistency = newOsDataConsistency;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OPERATING_SYSTEM__OS_DATA_CONSISTENCY, oldOsDataConsistency, newOsDataConsistency);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOsDataConsistency(OsDataConsistency newOsDataConsistency) {
+		if (newOsDataConsistency != osDataConsistency) {
+			NotificationChain msgs = null;
+			if (osDataConsistency != null)
+				msgs = ((InternalEObject)osDataConsistency).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OPERATING_SYSTEM__OS_DATA_CONSISTENCY, null, msgs);
+			if (newOsDataConsistency != null)
+				msgs = ((InternalEObject)newOsDataConsistency).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.OPERATING_SYSTEM__OS_DATA_CONSISTENCY, null, msgs);
+			msgs = basicSetOsDataConsistency(newOsDataConsistency, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OPERATING_SYSTEM__OS_DATA_CONSISTENCY, newOsDataConsistency, newOsDataConsistency));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -214,6 +269,8 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 				return ((InternalEList<?>)getTaskSchedulers()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.OPERATING_SYSTEM__INTERRUPT_CONTROLLERS:
 				return ((InternalEList<?>)getInterruptControllers()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.OPERATING_SYSTEM__OS_DATA_CONSISTENCY:
+				return basicSetOsDataConsistency(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -235,6 +292,8 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 				return getTaskSchedulers();
 			case AmaltheaPackage.OPERATING_SYSTEM__INTERRUPT_CONTROLLERS:
 				return getInterruptControllers();
+			case AmaltheaPackage.OPERATING_SYSTEM__OS_DATA_CONSISTENCY:
+				return getOsDataConsistency();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -262,6 +321,9 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 				getInterruptControllers().clear();
 				getInterruptControllers().addAll((Collection<? extends InterruptController>)newValue);
 				return;
+			case AmaltheaPackage.OPERATING_SYSTEM__OS_DATA_CONSISTENCY:
+				setOsDataConsistency((OsDataConsistency)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -286,6 +348,9 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 			case AmaltheaPackage.OPERATING_SYSTEM__INTERRUPT_CONTROLLERS:
 				getInterruptControllers().clear();
 				return;
+			case AmaltheaPackage.OPERATING_SYSTEM__OS_DATA_CONSISTENCY:
+				setOsDataConsistency((OsDataConsistency)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -306,6 +371,8 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 				return taskSchedulers != null && !taskSchedulers.isEmpty();
 			case AmaltheaPackage.OPERATING_SYSTEM__INTERRUPT_CONTROLLERS:
 				return interruptControllers != null && !interruptControllers.isEmpty();
+			case AmaltheaPackage.OPERATING_SYSTEM__OS_DATA_CONSISTENCY:
+				return osDataConsistency != null;
 		}
 		return super.eIsSet(featureID);
 	}

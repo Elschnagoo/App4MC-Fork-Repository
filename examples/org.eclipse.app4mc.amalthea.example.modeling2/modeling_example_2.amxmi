@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <swModel>
     <tasks name="Task_4" priority="10" stimuli="Stimulus_Task_4?type=Sporadic" preemption="preemptive" multipleTaskActivationLimit="3">
       <callGraph>
@@ -27,7 +27,7 @@
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_1_1">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_1?type=Runnable" />
         </graphEntries>
-        <graphEntries xsi:type="am:ProbabiltitySwitch">
+        <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="70.0">
             <items xsi:type="am:CallSequence" name="CallSequence_1_2a">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_2?type=Runnable" />
@@ -122,8 +122,8 @@
         </schedulingUnit>
         <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
+      <osDataConsistency mode="noProtection" />
     </operatingSystems>
-    <osDataConsistency mode="noProtection" />
   </osModel>
   <stimuliModel>
     <stimuli xsi:type="am:InterProcess" name="Stimulus_Task_2" />

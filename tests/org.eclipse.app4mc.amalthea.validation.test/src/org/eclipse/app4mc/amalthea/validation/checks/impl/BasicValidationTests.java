@@ -152,11 +152,12 @@ public class BasicValidationTests {
 
 
 		EasyMock.expect(this.eObjectHelper.getName(label)).andReturn("TestLabel");
+		EasyMock.expect(this.eObjectHelper.getClassName(label)).andReturn("Label");
 
 		EasyMock.expect(this.eObjectHelper.getAllInstancesAndInheritedOf(amalthea, IAnnotatable.class))
 				.andReturn(Arrays.asList(amalthea, swModel, label));
 
-		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getCustomProperty_Key(), "TestLabel", "custom");
+		this.issueCreator.issue(label, AmaltheaPackage.eINSTANCE.getCustomProperty_Key(), "Label", "TestLabel", "custom");
 
 		EasyMock.replay(this.issueCreator);
 		EasyMock.replay(this.eObjectHelper);

@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicActivation#getMin <em>Min</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicActivation#getMax <em>Max</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicActivation#getRecurrence <em>Recurrence</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicActivation#getOffset <em>Offset</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicActivation#getDeadline <em>Deadline</em>}</li>
  * </ul>
@@ -88,6 +89,32 @@ public interface PeriodicActivation extends Activation {
 	 * @generated
 	 */
 	void setMax(Time value);
+
+	/**
+	 * Returns the value of the '<em><b>Recurrence</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Recurrence</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Recurrence</em>' containment reference.
+	 * @see #setRecurrence(Time)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicActivation_Recurrence()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Time getRecurrence();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.PeriodicActivation#getRecurrence <em>Recurrence</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Recurrence</em>' containment reference.
+	 * @see #getRecurrence()
+	 * @generated
+	 */
+	void setRecurrence(Time value);
 
 	/**
 	 * Returns the value of the '<em><b>Offset</b></em>' containment reference.

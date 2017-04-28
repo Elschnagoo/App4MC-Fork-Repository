@@ -6,7 +6,7 @@
 
 	<groupId>org.eclipse.app4mc.build</groupId>
 	<artifactId>parent</artifactId>
-	<version>0.7.2-SNAPSHOT</version>
+	<version>0.8.0-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
 
@@ -28,6 +28,7 @@
 	
 		<!-- Plugins -->
 
+		<!-- Examples first ! (will be used by installers) -->
 		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar</module>
 		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.mapping</module>
 		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.split</module>
@@ -43,7 +44,6 @@
 		
 		<module>../../plugins/org.eclipse.app4mc.amalthea.emf.util</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.examples.installer</module>
-		<module>../../plugins/org.eclipse.app4mc.amalthea.export.osek</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.import.atdb</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.model</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.model.edit</module>
@@ -55,9 +55,17 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.core</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.ease</module>
 		<module>../../plugins/org.eclipse.app4mc.atdb.metrics</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.sharelibs</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.examples.installer</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.dialogs</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.openmapping</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.partitioning</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.execution.logic</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.execution.logic.btf</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.execution.ui.simmenu</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.execution.ui.traceeditor</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.execution.ui.traceview</module>
+		<module>../../plugins/org.eclipse.app4mc.multicore.execution.ui.widget</module>
 		<module>../../plugins/org.eclipse.app4mc.platform.ide</module>
 		<module>../../plugins/org.eclipse.app4mc.tracing.converter</module>
 		<module>../../plugins/org.eclipse.app4mc.tracing.converter.atdb</module>
@@ -66,8 +74,10 @@
 		<module>../../plugins/org.jenetics</module>
 		<module>../../plugins/org.jgrapht</module>
 		<module>../../plugins/org.ojalgo</module>
+		<module>../../plugins/com.mxgraph</module>
 		<module>../../plugins/org.sqlite.jdbc</module>
 
+		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.080</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.072</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.071</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.070</module>
@@ -136,6 +146,7 @@
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.070.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.071.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.072.test</module>
+		<module>../../tests/org.eclipse.app4mc.amalthea.converters.080.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.validation.test</module>
 		<module>../../tests/org.eclipse.app4mc.rcptt</module>
 	</modules>
@@ -176,6 +187,24 @@
 						</baselineRepositories>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho.version}</version>
+					
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<extraClasspathElements>
+							<extraClasspathElement>
+								<groupId>com.oracle</groupId>
+								<artifactId>javafx</artifactId>
+								<version>8.0.0-SNAPSHOT</version>
+								<systemPath>${java.home}/lib/jfxswt.jar</systemPath>
+								<scope>system</scope>
+							</extraClasspathElement>
+						</extraClasspathElements>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 
@@ -213,7 +242,7 @@
 						<artifact>
 							<groupId>org.eclipse.app4mc.build</groupId>
 							<artifactId>org.eclipse.app4mc.target</artifactId>
-							<version>0.7.2-SNAPSHOT</version>
+							<version>0.8.0-SNAPSHOT</version>
 							<classifier>Mars-4.5.2</classifier>
 						</artifact>
 					</target>

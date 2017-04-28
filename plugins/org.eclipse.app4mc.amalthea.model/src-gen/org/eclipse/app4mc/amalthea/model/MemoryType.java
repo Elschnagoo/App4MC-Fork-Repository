@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +26,7 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryType#getXAccessPattern <em>XAccess Pattern</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryType#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryType#getSize <em>Size</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryType#getClassifiers <em>Classifiers</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemoryType()
@@ -112,5 +114,21 @@ public interface MemoryType extends HardwareTypeDescription {
 	 * @generated
 	 */
 	void setSize(DataSize value);
+
+	/**
+	 * Returns the value of the '<em><b>Classifiers</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.MemoryClassifier}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Classifiers</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Classifiers</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemoryType_Classifiers()
+	 * @model
+	 * @generated
+	 */
+	EList<MemoryClassifier> getClassifiers();
 
 } // MemoryType

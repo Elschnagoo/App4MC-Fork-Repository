@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -59,6 +59,24 @@ public interface AmaltheaFactory extends EFactory {
 	Tag createTag();
 
 	/**
+	 * Returns a new object of class '<em>Core Classifier</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Core Classifier</em>'.
+	 * @generated
+	 */
+	CoreClassifier createCoreClassifier();
+
+	/**
+	 * Returns a new object of class '<em>Memory Classifier</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Memory Classifier</em>'.
+	 * @generated
+	 */
+	MemoryClassifier createMemoryClassifier();
+
+	/**
 	 * Returns a new object of class '<em>Transmission Policy</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -93,15 +111,6 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	Time createTime();
-
-	/**
-	 * Returns a new object of class '<em>Signed Time</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Signed Time</em>'.
-	 * @generated
-	 */
-	SignedTime createSignedTime();
 
 	/**
 	 * Returns a new object of class '<em>Frequency</em>'.
@@ -219,15 +228,6 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	TimeObject createTimeObject();
-
-	/**
-	 * Returns a new object of class '<em>Signed Time Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Signed Time Object</em>'.
-	 * @generated
-	 */
-	SignedTimeObject createSignedTimeObject();
 
 	/**
 	 * Returns a new object of class '<em>Deviation</em>'.
@@ -1175,24 +1175,6 @@ public interface AmaltheaFactory extends EFactory {
 	CoreAllocation createCoreAllocation();
 
 	/**
-	 * Returns a new object of class '<em>Physical Section Mapping</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Physical Section Mapping</em>'.
-	 * @generated
-	 */
-	PhysicalSectionMapping createPhysicalSectionMapping();
-
-	/**
-	 * Returns a new object of class '<em>Abstract Element Mapping</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Abstract Element Mapping</em>'.
-	 * @generated
-	 */
-	AbstractElementMapping createAbstractElementMapping();
-
-	/**
 	 * Returns a new object of class '<em>Task Allocation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1218,6 +1200,24 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	RunnableAllocation createRunnableAllocation();
+
+	/**
+	 * Returns a new object of class '<em>Memory Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Memory Mapping</em>'.
+	 * @generated
+	 */
+	MemoryMapping createMemoryMapping();
+
+	/**
+	 * Returns a new object of class '<em>Physical Section Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Physical Section Mapping</em>'.
+	 * @generated
+	 */
+	PhysicalSectionMapping createPhysicalSectionMapping();
 
 	/**
 	 * Returns a new object of class '<em>OS Model</em>'.
@@ -1508,40 +1508,22 @@ public interface AmaltheaFactory extends EFactory {
 	AbstractElementMappingConstraint createAbstractElementMappingConstraint();
 
 	/**
-	 * Returns a new object of class '<em>Hw Core Property</em>'.
+	 * Returns a new object of class '<em>Core Classification</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw Core Property</em>'.
+	 * @return a new object of class '<em>Core Classification</em>'.
 	 * @generated
 	 */
-	HwCoreProperty createHwCoreProperty();
+	CoreClassification createCoreClassification();
 
 	/**
-	 * Returns a new object of class '<em>Hw Core Conjunction</em>'.
+	 * Returns a new object of class '<em>Memory Classification</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw Core Conjunction</em>'.
+	 * @return a new object of class '<em>Memory Classification</em>'.
 	 * @generated
 	 */
-	HwCoreConjunction createHwCoreConjunction();
-
-	/**
-	 * Returns a new object of class '<em>Hw Memory Property</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw Memory Property</em>'.
-	 * @generated
-	 */
-	HwMemoryProperty createHwMemoryProperty();
-
-	/**
-	 * Returns a new object of class '<em>Hw Memory Conjunction</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw Memory Conjunction</em>'.
-	 * @generated
-	 */
-	HwMemoryConjunction createHwMemoryConjunction();
+	MemoryClassification createMemoryClassification();
 
 	/**
 	 * Returns a new object of class '<em>Stimuli Model</em>'.
@@ -1778,13 +1760,13 @@ public interface AmaltheaFactory extends EFactory {
 	<T> ModeSwitchDefault<T> createModeSwitchDefault();
 
 	/**
-	 * Returns a new object of class '<em>Probabiltity Switch</em>'.
+	 * Returns a new object of class '<em>Probability Switch</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Probabiltity Switch</em>'.
+	 * @return a new object of class '<em>Probability Switch</em>'.
 	 * @generated
 	 */
-	ProbabiltitySwitch createProbabiltitySwitch();
+	ProbabilitySwitch createProbabilitySwitch();
 
 	/**
 	 * Returns a new object of class '<em>Probability Switch Entry</em>'.
@@ -2217,6 +2199,15 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	SingleActivation createSingleActivation();
+
+	/**
+	 * Returns a new object of class '<em>Event Activation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Event Activation</em>'.
+	 * @generated
+	 */
+	EventActivation createEventActivation();
 
 	/**
 	 * Returns a new object of class '<em>Custom Activation</em>'.

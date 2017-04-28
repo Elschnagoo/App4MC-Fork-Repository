@@ -74,6 +74,7 @@ public class PeriodicActivationItemProvider extends ActivationItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Min());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Max());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Recurrence());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Offset());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Deadline());
 		}
@@ -143,6 +144,7 @@ public class PeriodicActivationItemProvider extends ActivationItemProvider {
 		switch (notification.getFeatureID(PeriodicActivation.class)) {
 			case AmaltheaPackage.PERIODIC_ACTIVATION__MIN:
 			case AmaltheaPackage.PERIODIC_ACTIVATION__MAX:
+			case AmaltheaPackage.PERIODIC_ACTIVATION__RECURRENCE:
 			case AmaltheaPackage.PERIODIC_ACTIVATION__OFFSET:
 			case AmaltheaPackage.PERIODIC_ACTIVATION__DEADLINE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -174,6 +176,11 @@ public class PeriodicActivationItemProvider extends ActivationItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Recurrence(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Offset(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
 
@@ -197,6 +204,7 @@ public class PeriodicActivationItemProvider extends ActivationItemProvider {
 		boolean qualify =
 			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicActivation_Min() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicActivation_Max() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicActivation_Recurrence() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicActivation_Offset() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicActivation_Deadline();
 

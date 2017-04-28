@@ -1,7 +1,7 @@
 
 h1. AMALTHEA Trace Database
 
-The AMALTHEA Trace Database stores traces in a way, that - especially for graphical user interfaces - information can be extracted efficiently.
+The AMALTHEA Trace Database stores traces in a way that - especially for graphical user interfaces - information can be extracted efficiently.
 
 h2. General information
 

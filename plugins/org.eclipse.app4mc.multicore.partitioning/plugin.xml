@@ -16,11 +16,11 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="false"
-            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            locationURI="popup:org.eclipse.app4mc.multicore.menu?after=org.eclipse.app4mc.multicore.openmapping.popups.performMapping">
          <command
-               commandId="org.eclipse.app4mc.multicore.partitioning.perform"
-               id="org.eclipse.app4mc.multicore.partitioning.popups.perform"
-               label="Perform Partitioning"
+               commandId="org.eclipse.app4mc.multicore.partitioning.visualize"
+               id="org.eclipse.app4mc.multicore.partitioning.popups.visualize"
+               label="Create Applet"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -39,10 +39,14 @@
                </with>
             </visibleWhen>
          </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.app4mc.multicore.menu?before=org.eclipse.app4mc.multicore.openmapping.popups.createTasks">
          <command
-               commandId="org.eclipse.app4mc.multicore.partitioning.visualize"
-               id="org.eclipse.app4mc.multicore.partitioning.popups.visualize"
-               label="Create Applet"
+               commandId="org.eclipse.app4mc.multicore.partitioning.perform"
+               id="org.eclipse.app4mc.multicore.partitioning.popups.perform"
+               label="Perform Partitioning"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -74,18 +78,11 @@
             name="Generate Applet">
       </command>
    </extension>
-   <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            class="org.eclipse.app4mc.multicore.partitioning.preferences.PartitioningPreferences"
-            id="org.eclipse.app4mc.multicore.partitioning.preferences.PartitioningPreferences"
-            name="AMALTHEA Partitioning">
-      </page>
-   </extension>
+   
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer
-            class="org.eclipse.app4mc.multicore.partitioning.preferences.PreferenceInitializer">
+            class="org.eclipse.app4mc.multicore.partitioning.ParPreferenceInitializer">
       </initializer>
    </extension>
 

@@ -34,7 +34,7 @@ public class SchedulerRefsConverter implements IConverter {
 
 	private final HelperUtils_103_110 helper;
 
-	private final Logger logger = LogManager.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 
 	public SchedulerRefsConverter() {
 		this.helper = HelperUtils_103_110.getInstance();
@@ -48,6 +48,10 @@ public class SchedulerRefsConverter implements IConverter {
 	@SuppressWarnings("unchecked")
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
+
+		this.logger
+				.info("Migration from itea.103 to itea.110 : Executing OS model (SchedulerRefs) converter for model file : "
+						+ targetFile.getName());
 
 		for (final ICache cache : this.getFilteredCaches(caches, SchedulerCacheBuilder.class)) {
 
@@ -81,7 +85,7 @@ public class SchedulerRefsConverter implements IConverter {
 
 					final String updated_uriFragment = this.helper.getURIFragment(element, ModelVersion._110);
 
-					this.logger.info(uriFragment + " : : " + element + " : : " + updated_uriFragment);
+					this.logger.trace(uriFragment + " : : " + element + " : : " + updated_uriFragment);
 
 					final List<Attribute> list = uriFragment_attribs_map.get(uriFragment);
 

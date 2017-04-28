@@ -17,7 +17,7 @@ import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.workflow.core.Context;
 import org.eclipse.app4mc.amalthea.workflow.core.WorkflowComponent;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.taskgen.pragmatic.PragmaticTaskGenerator;
-import org.eclipse.app4mc.multicore.openmapping.sharedlibs.UniversalHandler;
+import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 
 /**
  *
@@ -46,8 +46,12 @@ public class CreateTasks extends WorkflowComponent {
 		createTasksAlg.setConstraintsModel(model.getConstraintsModel());
 		// createTasksAlg.setStimuliModel(model.getStimuliModel());
 		createTasksAlg.createTasks();
+		
+		// Check StimuliModel and SWModel are set
 		assert null != createTasksAlg.getStimuliModel() && null != createTasksAlg.getSwModel();
+		
 		model.setSwModel(createTasksAlg.getSwModel());
+		
 		// Adding generated stimuli to current stimuli model
 		if (null != model.getStimuliModel()) {
 			model.getStimuliModel().getStimuli().addAll(createTasksAlg.getStimuliModel().getStimuli());

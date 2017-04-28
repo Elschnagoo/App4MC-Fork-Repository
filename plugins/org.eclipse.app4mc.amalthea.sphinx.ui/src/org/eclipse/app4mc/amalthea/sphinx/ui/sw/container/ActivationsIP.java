@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2015 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -77,6 +77,7 @@ public class ActivationsIP extends TransientItemProvider {
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createSingleActivation()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createSporadicActivation()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createPeriodicActivation()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createEventActivation()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createCustomActivation()));
 	}
 

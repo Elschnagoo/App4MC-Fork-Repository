@@ -33,7 +33,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModeLabelItemProvider extends AbstractElementMemoryInformationItemProvider {
+public class ModeLabelItemProvider extends AbstractMemoryElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -55,9 +55,9 @@ public class ModeLabelItemProvider extends AbstractElementMemoryInformationItemP
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addDisplayNamePropertyDescriptor(object);
 			addModePropertyDescriptor(object);
 			addInitialValuePropertyDescriptor(object);
-			addDisplayNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -73,15 +73,17 @@ public class ModeLabelItemProvider extends AbstractElementMemoryInformationItemP
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ModeValueProvider_mode_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ModeValueProvider_mode_feature", "_UI_ModeValueProvider_type"),
-				 AmaltheaPackage.eINSTANCE.getModeValueProvider_Mode(),
-				 true,
+				 getString("_UI_ModeLabel_mode_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ModeLabel_mode_feature", "_UI_ModeLabel_type"),
+				 AmaltheaPackage.eINSTANCE.getModeLabel_Mode(),
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
-				 null,
-				 null));
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**
@@ -95,9 +97,9 @@ public class ModeLabelItemProvider extends AbstractElementMemoryInformationItemP
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ModeValueProvider_initialValue_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ModeValueProvider_initialValue_feature", "_UI_ModeValueProvider_type"),
-				 AmaltheaPackage.eINSTANCE.getModeValueProvider_InitialValue(),
+				 getString("_UI_ModeLabel_initialValue_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ModeLabel_initialValue_feature", "_UI_ModeLabel_type"),
+				 AmaltheaPackage.eINSTANCE.getModeLabel_InitialValue(),
 				 true,
 				 false,
 				 true,

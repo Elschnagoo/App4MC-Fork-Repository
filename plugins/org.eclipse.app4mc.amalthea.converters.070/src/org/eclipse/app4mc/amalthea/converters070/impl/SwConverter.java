@@ -14,6 +14,8 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters070.utils.HelperUtils_111_070;
@@ -24,14 +26,19 @@ import org.jdom2.Element;
 public class SwConverter implements IConverter {
 
 	private final HelperUtils_111_070 helper;
+	private final Logger logger;
 
 	public SwConverter() {
 		this.helper = HelperUtils_111_070.getInstance();
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
+
+		this.logger.info(
+				"Migration from itea.111 to 0.7.0 : Executing SW converter for model file : " + targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);
 

@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class RunnableAllocationConstraintImpl extends AllocationConstraintImpl implements RunnableAllocationConstraint {
+public class RunnableAllocationConstraintImpl extends CoreAllocationConstraintImpl implements RunnableAllocationConstraint {
 	/**
 	 * The cached value of the '{@link #getRunnable() <em>Runnable</em>}' reference.
 	 * <!-- begin-user-doc -->

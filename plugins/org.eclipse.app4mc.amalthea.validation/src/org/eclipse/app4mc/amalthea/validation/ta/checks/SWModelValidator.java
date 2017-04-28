@@ -59,30 +59,30 @@ public class SWModelValidator extends AbstractCheckValidator implements IssueCre
 	public void checkEventMaskEvents(final Amalthea amalthea) {
 		this.softwareModelValidatorImpl.checkEventMaskEvents(amalthea);
 	}
-
-	@Check(constraint = "ModeValueProviderConstraint", categories = { "TAConstraint" })
-	public void checkModeValueProvider(final Amalthea amalthea) {
-		this.softwareModelValidatorImpl.checkModeValueProvider(amalthea);
+	
+	@Check(constraint = "ModeSwitchValueProviderConstraint", categories = { "TAConstraint" })
+	public void checkModeSwitchValueProvider(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkModeSwitchValueProvider(amalthea);
 	}
 
-	@Check(constraint = "ModeSwitchEntryValueConstraint", categories = { "TAConstraint" })
-	public void checkModeSwitchEntryValue(final Amalthea amalthea) {
-		this.softwareModelValidatorImpl.checkModeSwitchEntryValue(amalthea);
+	@Check(constraint = "ModeSwitchEntryValueConstraint1", categories = { "TAConstraint" })
+	public void checkModeSwitchEntryValue1(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkModeSwitchEntryValue1(amalthea);
+	}
+	
+	@Check(constraint = "ModeSwitchEntryValueConstraint2", categories = { "TAConstraint" })
+	public void checkModeSwitchEntryValue2(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkModeSwitchEntryValue2(amalthea);
 	}
 
-	@Check(constraint = "ModeValueProviderValueConstraint", categories = { "TAConstraint" })
-	public void checkModeValueProviderValue(final Amalthea amalthea) {
-		this.softwareModelValidatorImpl.checkModeValueProviderValue(amalthea);
-	}
-
-	@Check(constraint = "ModeValueProviderModeConstraint", categories = { "TAConstraint" })
+	@Check(constraint = "ModeLabelModeConstraint", categories = { "TAConstraint" })
 	public void checkModeLabelMode(final Amalthea amalthea) {
-		this.softwareModelValidatorImpl.checkModeValueProviderMode(amalthea);
+		this.softwareModelValidatorImpl.checkModeLabelMode(amalthea);
 	}
 
-	@Check(constraint = "ModeValueProviderInitialValueConstraint", categories = { "TAConstraint" })
+	@Check(constraint = "ModeLabelInitialValueConstraint", categories = { "TAConstraint" })
 	public void checkModeLabelInitialValue(final Amalthea amalthea) {
-		this.softwareModelValidatorImpl.checkModeValueProviderInitialValue(amalthea);
+		this.softwareModelValidatorImpl.checkModeLabelInitialValue(amalthea);
 	}
 
 	@Check(constraint = "CounterOffsetConstraint", categories = { "TAConstraint" })
@@ -99,5 +99,49 @@ public class SWModelValidator extends AbstractCheckValidator implements IssueCre
 	public void checkEnforcedMigrationResourceOwner(final Amalthea amalthea) {
 		this.softwareModelValidatorImpl.checkEnforcedMigrationResourceOwner(amalthea);
 	}
+	
+	@Check(constraint = "RunnableDeadlineUnsigned", categories = { "TAConstraint" })
+	public void checkRunnableDeadlineUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkRunnableDeadlineUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "PeriodicActivationMinUnsigned", categories = { "TAConstraint" })
+	public void checkPeriodicActivationMinUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkPeriodicActivationMinUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "PeriodicActivationMaxUnsigned", categories = { "TAConstraint" })
+	public void checkPeriodicActivationMaxUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkPeriodicActivationMaxUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "PeriodicActivationOffsetUnsigned", categories = { "TAConstraint" })
+	public void checkPeriodicActivationOffsetUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkPeriodicActivationOffsetUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "PeriodicActivationDeadlineUnsigned", categories = { "TAConstraint" })
+	public void checkPeriodicActivationDeadlineUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkPeriodicActivationDeadlineUnsigned(amalthea);
+	}
 
+	@Check(constraint = "SingleActivationMinUnsigned", categories = { "TAConstraint" })
+	public void checkSingleActivationMinUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkSingleActivationMinUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "SingleActivationMaxUnsigned", categories = { "TAConstraint" })
+	public void checkSingleActivationMaxUnsigned(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkSingleActivationMaxUnsigned(amalthea);
+	}
+	
+	@Check(constraint = "ModeLabelAccessModeEqual", categories = { "TAConstraint" })
+	public void checkModeLabelAccessModeEqual(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkModeLabelAccessModeEqual(amalthea);
+	}
+	
+	@Check(constraint = "ModeLiteralMode", categories = { "TAConstraint" })
+	public void checkModeLiteralMode(final Amalthea amalthea) {
+		this.softwareModelValidatorImpl.checkModeLiteralMode(amalthea);
+	}
 }

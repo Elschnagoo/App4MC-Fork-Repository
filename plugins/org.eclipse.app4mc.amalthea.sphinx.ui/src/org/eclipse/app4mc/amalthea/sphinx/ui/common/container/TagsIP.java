@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2015 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
-import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.provider.AmaltheaEditPlugin;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -48,7 +47,7 @@ public class TagsIP extends TransientItemProvider {
 	 */
 	@Override
 	public String getText(final Object object) {
-		assert object instanceof SWModel;
+		assert object instanceof CommonElements;
 		final StringBuffer buffer = new StringBuffer();
 		buffer.append("Tags ("); //$NON-NLS-1$
 		buffer.append(((CommonElements) getTarget()).getTags().size());

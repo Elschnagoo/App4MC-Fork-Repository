@@ -14,7 +14,7 @@ import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
+import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
@@ -36,7 +36,7 @@ public class AmaltheaModelValidatorImpl extends AbstractValidatorImpl {
 		super(issueCreator, objectHelper);
 	}
 
-	private double getSecondsFromTimeUnit(final SignedTime time) {
+	private double getSecondsFromTimeUnit(final Time time) {
 		double value = 0;
 		if (null != time) {
 			value = time.getValue();
@@ -126,9 +126,9 @@ public class AmaltheaModelValidatorImpl extends AbstractValidatorImpl {
 							if (lowerBound.getValue() > upperBound.getValue()) {
 								this.issueCreator.issue(deviation, AmaltheaPackage.eINSTANCE.getDeviation_UpperBound());
 							}
-						} else if (object1 instanceof SignedTime) {
-							final SignedTime lowerBound = (SignedTime) object1;
-							final SignedTime upperBound = (SignedTime) object2;
+						} else if (object1 instanceof Time) {
+							final Time lowerBound = (Time) object1;
+							final Time upperBound = (Time) object2;
 							final double lowerValue = getSecondsFromTimeUnit(lowerBound);
 							final double upperValue = getSecondsFromTimeUnit(upperBound);
 							if (lowerValue > upperValue) {
@@ -229,22 +229,22 @@ public class AmaltheaModelValidatorImpl extends AbstractValidatorImpl {
 						}
 						final Object lowerBound = deviation.getLowerBound();
 						final Object upperBound = deviation.getUpperBound();
-						if (mean instanceof SignedTime) {
-							final SignedTime meanTime = (SignedTime) mean;
+						if (mean instanceof Time) {
+							final Time meanTime = (Time) mean;
 							final double meanValue = getSecondsFromTimeUnit(meanTime);
-							if (false == (lowerBound instanceof SignedTime)) {
+							if (false == (lowerBound instanceof Time)) {
 								this.issueCreator.issue(distribution, AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean());
 							} else {
-								final SignedTime lowerTime = (SignedTime) lowerBound;
+								final Time lowerTime = (Time) lowerBound;
 								final double lowerValue = getSecondsFromTimeUnit(lowerTime);
 								if (meanValue < lowerValue) {
 									this.issueCreator.issue(distribution, AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean());
 								}
 							}
-							if (false == (upperBound instanceof SignedTime)) {
+							if (false == (upperBound instanceof Time)) {
 								this.issueCreator.issue(distribution, AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean());
 							} else {
-								final SignedTime upperTime = (SignedTime) upperBound;
+								final Time upperTime = (Time) upperBound;
 								final double upperValue = getSecondsFromTimeUnit(upperTime);
 								if (meanValue > upperValue) {
 									this.issueCreator.issue(distribution, AmaltheaPackage.eINSTANCE.getGaussDistribution_Mean());
@@ -337,22 +337,22 @@ public class AmaltheaModelValidatorImpl extends AbstractValidatorImpl {
 						final Object lowerBound = deviation.getLowerBound();
 						final Object upperBound = deviation.getUpperBound();
 						if ((null != lowerBound) && (null != upperBound)) {
-							if (mean instanceof SignedTime) {
-								final SignedTime meanTime = (SignedTime) mean;
+							if (mean instanceof Time) {
+								final Time meanTime = (Time) mean;
 								final double meanValue = getSecondsFromTimeUnit(meanTime);
-								if (false == (lowerBound instanceof SignedTime)) {
+								if (false == (lowerBound instanceof Time)) {
 									this.issueCreator.issue(distribution, AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean());
 								} else {
-									final SignedTime lowerTime = (SignedTime) lowerBound;
+									final Time lowerTime = (Time) lowerBound;
 									final double lowerValue = getSecondsFromTimeUnit(lowerTime);
 									if (meanValue < lowerValue) {
 										this.issueCreator.issue(distribution, AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean());
 									}
 								}
-								if (false == (upperBound instanceof SignedTime)) {
+								if (false == (upperBound instanceof Time)) {
 									this.issueCreator.issue(distribution, AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean());
 								} else {
-									final SignedTime upperTime = (SignedTime) upperBound;
+									final Time upperTime = (Time) upperBound;
 									final double upperValue = getSecondsFromTimeUnit(upperTime);
 									if (meanValue > upperValue) {
 										this.issueCreator.issue(distribution, AmaltheaPackage.eINSTANCE.getWeibullEstimators_Mean());

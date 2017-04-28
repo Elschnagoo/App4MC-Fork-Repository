@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -14,9 +14,8 @@ package org.eclipse.app4mc.amalthea.model.util;
 
 import java.util.Map;
 
-import org.eclipse.app4mc.amalthea.model.AbstractElementMapping;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
-import org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation;
+import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AbstractionType;
@@ -26,7 +25,6 @@ import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
 import org.eclipse.app4mc.amalthea.model.AlgorithmParameter;
-import org.eclipse.app4mc.amalthea.model.AllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
@@ -52,6 +50,8 @@ import org.eclipse.app4mc.amalthea.model.ChannelAccess;
 import org.eclipse.app4mc.amalthea.model.ChannelEvent;
 import org.eclipse.app4mc.amalthea.model.ChannelReceive;
 import org.eclipse.app4mc.amalthea.model.ChannelSend;
+import org.eclipse.app4mc.amalthea.model.Classification;
+import org.eclipse.app4mc.amalthea.model.Classifier;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.Clock;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
@@ -73,6 +73,9 @@ import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreAllocation;
+import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
+import org.eclipse.app4mc.amalthea.model.CoreClassification;
+import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
@@ -110,6 +113,7 @@ import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.Event;
+import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
@@ -135,13 +139,7 @@ import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwAccessPathElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPathRef;
 import org.eclipse.app4mc.amalthea.model.HwComponent;
-import org.eclipse.app4mc.amalthea.model.HwCoreConjunction;
-import org.eclipse.app4mc.amalthea.model.HwCoreConstraint;
-import org.eclipse.app4mc.amalthea.model.HwCoreProperty;
 import org.eclipse.app4mc.amalthea.model.HwElementRef;
-import org.eclipse.app4mc.amalthea.model.HwMemoryConjunction;
-import org.eclipse.app4mc.amalthea.model.HwMemoryConstraint;
-import org.eclipse.app4mc.amalthea.model.HwMemoryProperty;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwSystem;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
@@ -174,10 +172,12 @@ import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.ListObject;
 import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.Mapping;
-import org.eclipse.app4mc.amalthea.model.MappingConstraint;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.Memory;
+import org.eclipse.app4mc.amalthea.model.MemoryClassification;
+import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
+import org.eclipse.app4mc.amalthea.model.MemoryMapping;
+import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.Microcontroller;
 import org.eclipse.app4mc.amalthea.model.MicrocontrollerType;
@@ -191,7 +191,6 @@ import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
-import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
 import org.eclipse.app4mc.amalthea.model.Network;
 import org.eclipse.app4mc.amalthea.model.NetworkType;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
@@ -221,8 +220,8 @@ import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
+import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProcessAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessChain;
 import org.eclipse.app4mc.amalthea.model.ProcessChainEvent;
@@ -283,8 +282,6 @@ import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
 import org.eclipse.app4mc.amalthea.model.SeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
-import org.eclipse.app4mc.amalthea.model.SignedTime;
-import org.eclipse.app4mc.amalthea.model.SignedTimeObject;
 import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
@@ -434,6 +431,18 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createTagAdapter();
 			}
 			@Override
+			public Adapter caseClassifier(Classifier object) {
+				return createClassifierAdapter();
+			}
+			@Override
+			public Adapter caseCoreClassifier(CoreClassifier object) {
+				return createCoreClassifierAdapter();
+			}
+			@Override
+			public Adapter caseMemoryClassifier(MemoryClassifier object) {
+				return createMemoryClassifierAdapter();
+			}
+			@Override
 			public Adapter caseInstructions(Instructions object) {
 				return createInstructionsAdapter();
 			}
@@ -456,10 +465,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTime(Time object) {
 				return createTimeAdapter();
-			}
-			@Override
-			public Adapter caseSignedTime(SignedTime object) {
-				return createSignedTimeAdapter();
 			}
 			@Override
 			public Adapter caseFrequency(Frequency object) {
@@ -522,10 +527,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createTimeObjectAdapter();
 			}
 			@Override
-			public Adapter caseSignedTimeObject(SignedTimeObject object) {
-				return createSignedTimeObjectAdapter();
-			}
-			@Override
 			public <T> Adapter caseDeviation(Deviation<T> object) {
 				return createDeviationAdapter();
 			}
@@ -580,10 +581,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseModeLiteral(ModeLiteral object) {
 				return createModeLiteralAdapter();
-			}
-			@Override
-			public Adapter caseModeValueProvider(ModeValueProvider object) {
-				return createModeValueProviderAdapter();
 			}
 			@Override
 			public Adapter caseComponentsModel(ComponentsModel object) {
@@ -1086,18 +1083,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createCoreAllocationAdapter();
 			}
 			@Override
-			public Adapter casePhysicalSectionMapping(PhysicalSectionMapping object) {
-				return createPhysicalSectionMappingAdapter();
-			}
-			@Override
-			public Adapter caseMapping(Mapping object) {
-				return createMappingAdapter();
-			}
-			@Override
-			public Adapter caseAbstractElementMapping(AbstractElementMapping object) {
-				return createAbstractElementMappingAdapter();
-			}
-			@Override
 			public Adapter caseTaskAllocation(TaskAllocation object) {
 				return createTaskAllocationAdapter();
 			}
@@ -1108,6 +1093,14 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseRunnableAllocation(RunnableAllocation object) {
 				return createRunnableAllocationAdapter();
+			}
+			@Override
+			public Adapter caseMemoryMapping(MemoryMapping object) {
+				return createMemoryMappingAdapter();
+			}
+			@Override
+			public Adapter casePhysicalSectionMapping(PhysicalSectionMapping object) {
+				return createPhysicalSectionMappingAdapter();
 			}
 			@Override
 			public Adapter caseOSModel(OSModel object) {
@@ -1238,12 +1231,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createPropertyConstraintsModelAdapter();
 			}
 			@Override
-			public Adapter caseAllocationConstraint(AllocationConstraint object) {
-				return createAllocationConstraintAdapter();
+			public Adapter caseCoreAllocationConstraint(CoreAllocationConstraint object) {
+				return createCoreAllocationConstraintAdapter();
 			}
 			@Override
-			public Adapter caseMappingConstraint(MappingConstraint object) {
-				return createMappingConstraintAdapter();
+			public Adapter caseMemoryMappingConstraint(MemoryMappingConstraint object) {
+				return createMemoryMappingConstraintAdapter();
 			}
 			@Override
 			public Adapter caseProcessAllocationConstraint(ProcessAllocationConstraint object) {
@@ -1262,28 +1255,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createAbstractElementMappingConstraintAdapter();
 			}
 			@Override
-			public Adapter caseHwCoreConstraint(HwCoreConstraint object) {
-				return createHwCoreConstraintAdapter();
+			public Adapter caseClassification(Classification object) {
+				return createClassificationAdapter();
 			}
 			@Override
-			public Adapter caseHwMemoryConstraint(HwMemoryConstraint object) {
-				return createHwMemoryConstraintAdapter();
+			public Adapter caseCoreClassification(CoreClassification object) {
+				return createCoreClassificationAdapter();
 			}
 			@Override
-			public Adapter caseHwCoreProperty(HwCoreProperty object) {
-				return createHwCorePropertyAdapter();
-			}
-			@Override
-			public Adapter caseHwCoreConjunction(HwCoreConjunction object) {
-				return createHwCoreConjunctionAdapter();
-			}
-			@Override
-			public Adapter caseHwMemoryProperty(HwMemoryProperty object) {
-				return createHwMemoryPropertyAdapter();
-			}
-			@Override
-			public Adapter caseHwMemoryConjunction(HwMemoryConjunction object) {
-				return createHwMemoryConjunctionAdapter();
+			public Adapter caseMemoryClassification(MemoryClassification object) {
+				return createMemoryClassificationAdapter();
 			}
 			@Override
 			public Adapter caseStimuliModel(StimuliModel object) {
@@ -1370,8 +1351,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createSWModelAdapter();
 			}
 			@Override
-			public Adapter caseAbstractElementMemoryInformation(AbstractElementMemoryInformation object) {
-				return createAbstractElementMemoryInformationAdapter();
+			public Adapter caseAbstractMemoryElement(AbstractMemoryElement object) {
+				return createAbstractMemoryElementAdapter();
 			}
 			@Override
 			public Adapter caseAbstractProcess(AbstractProcess object) {
@@ -1414,8 +1395,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createModeSwitchDefaultAdapter();
 			}
 			@Override
-			public Adapter caseProbabiltitySwitch(ProbabiltitySwitch object) {
-				return createProbabiltitySwitchAdapter();
+			public Adapter caseProbabilitySwitch(ProbabilitySwitch object) {
+				return createProbabilitySwitchAdapter();
 			}
 			@Override
 			public <T> Adapter caseProbabilitySwitchEntry(ProbabilitySwitchEntry<T> object) {
@@ -1654,6 +1635,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createSingleActivationAdapter();
 			}
 			@Override
+			public Adapter caseEventActivation(EventActivation object) {
+				return createEventActivationAdapter();
+			}
+			@Override
 			public Adapter caseCustomActivation(CustomActivation object) {
 				return createCustomActivationAdapter();
 			}
@@ -1830,6 +1815,48 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Classifier <em>Classifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.Classifier
+	 * @generated
+	 */
+	public Adapter createClassifierAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CoreClassifier <em>Core Classifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.CoreClassifier
+	 * @generated
+	 */
+	public Adapter createCoreClassifierAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.MemoryClassifier <em>Memory Classifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.MemoryClassifier
+	 * @generated
+	 */
+	public Adapter createMemoryClassifierAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Instructions <em>Instructions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1910,20 +1937,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTimeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SignedTime <em>Signed Time</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SignedTime
-	 * @generated
-	 */
-	public Adapter createSignedTimeAdapter() {
 		return null;
 	}
 
@@ -2138,20 +2151,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SignedTimeObject <em>Signed Time Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SignedTimeObject
-	 * @generated
-	 */
-	public Adapter createSignedTimeObjectAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Deviation <em>Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -2344,20 +2343,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModeLiteralAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeValueProvider <em>Mode Value Provider</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ModeValueProvider
-	 * @generated
-	 */
-	public Adapter createModeValueProviderAdapter() {
 		return null;
 	}
 
@@ -4112,48 +4097,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping <em>Physical Section Mapping</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping
-	 * @generated
-	 */
-	public Adapter createPhysicalSectionMappingAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Mapping <em>Mapping</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Mapping
-	 * @generated
-	 */
-	public Adapter createMappingAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AbstractElementMapping <em>Abstract Element Mapping</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractElementMapping
-	 * @generated
-	 */
-	public Adapter createAbstractElementMappingAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TaskAllocation <em>Task Allocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -4192,6 +4135,34 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRunnableAllocationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.MemoryMapping <em>Memory Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.MemoryMapping
+	 * @generated
+	 */
+	public Adapter createMemoryMappingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping <em>Physical Section Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping
+	 * @generated
+	 */
+	public Adapter createPhysicalSectionMappingAdapter() {
 		return null;
 	}
 
@@ -4644,30 +4615,30 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AllocationConstraint <em>Allocation Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint <em>Core Allocation Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.AllocationConstraint
+	 * @see org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint
 	 * @generated
 	 */
-	public Adapter createAllocationConstraintAdapter() {
+	public Adapter createCoreAllocationConstraintAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.MappingConstraint <em>Mapping Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint <em>Memory Mapping Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.MappingConstraint
+	 * @see org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint
 	 * @generated
 	 */
-	public Adapter createMappingConstraintAdapter() {
+	public Adapter createMemoryMappingConstraintAdapter() {
 		return null;
 	}
 
@@ -4728,86 +4699,44 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwCoreConstraint <em>Hw Core Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Classification <em>Classification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwCoreConstraint
+	 * @see org.eclipse.app4mc.amalthea.model.Classification
 	 * @generated
 	 */
-	public Adapter createHwCoreConstraintAdapter() {
+	public Adapter createClassificationAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwMemoryConstraint <em>Hw Memory Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CoreClassification <em>Core Classification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwMemoryConstraint
+	 * @see org.eclipse.app4mc.amalthea.model.CoreClassification
 	 * @generated
 	 */
-	public Adapter createHwMemoryConstraintAdapter() {
+	public Adapter createCoreClassificationAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwCoreProperty <em>Hw Core Property</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.MemoryClassification <em>Memory Classification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwCoreProperty
+	 * @see org.eclipse.app4mc.amalthea.model.MemoryClassification
 	 * @generated
 	 */
-	public Adapter createHwCorePropertyAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwCoreConjunction <em>Hw Core Conjunction</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwCoreConjunction
-	 * @generated
-	 */
-	public Adapter createHwCoreConjunctionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwMemoryProperty <em>Hw Memory Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwMemoryProperty
-	 * @generated
-	 */
-	public Adapter createHwMemoryPropertyAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwMemoryConjunction <em>Hw Memory Conjunction</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwMemoryConjunction
-	 * @generated
-	 */
-	public Adapter createHwMemoryConjunctionAdapter() {
+	public Adapter createMemoryClassificationAdapter() {
 		return null;
 	}
 
@@ -5106,16 +5035,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation <em>Abstract Element Memory Information</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AbstractMemoryElement <em>Abstract Memory Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractElementMemoryInformation
+	 * @see org.eclipse.app4mc.amalthea.model.AbstractMemoryElement
 	 * @generated
 	 */
-	public Adapter createAbstractElementMemoryInformationAdapter() {
+	public Adapter createAbstractMemoryElementAdapter() {
 		return null;
 	}
 
@@ -5260,16 +5189,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch <em>Probabiltity Switch</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitch <em>Probability Switch</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ProbabiltitySwitch
+	 * @see org.eclipse.app4mc.amalthea.model.ProbabilitySwitch
 	 * @generated
 	 */
-	public Adapter createProbabiltitySwitchAdapter() {
+	public Adapter createProbabilitySwitchAdapter() {
 		return null;
 	}
 
@@ -6096,6 +6025,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSingleActivationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EventActivation <em>Event Activation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.EventActivation
+	 * @generated
+	 */
+	public Adapter createEventActivationAdapter() {
 		return null;
 	}
 

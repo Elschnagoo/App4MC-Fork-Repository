@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ProcessPrototypeAllocationConstraintImpl extends AllocationConstraintImpl implements ProcessPrototypeAllocationConstraint {
+public class ProcessPrototypeAllocationConstraintImpl extends CoreAllocationConstraintImpl implements ProcessPrototypeAllocationConstraint {
 	/**
 	 * The cached value of the '{@link #getProcessPrototype() <em>Process Prototype</em>}' reference.
 	 * <!-- begin-user-doc -->

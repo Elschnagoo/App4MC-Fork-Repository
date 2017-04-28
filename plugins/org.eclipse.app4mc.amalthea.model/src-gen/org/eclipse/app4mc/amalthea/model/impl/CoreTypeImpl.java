@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -12,14 +12,21 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.util.Collection;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CoreType;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,6 +38,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CoreTypeImpl#getBitWidth <em>Bit Width</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CoreTypeImpl#getInstructionsPerCycle <em>Instructions Per Cycle</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CoreTypeImpl#getClassifiers <em>Classifiers</em>}</li>
  * </ul>
  *
  * @generated
@@ -64,7 +72,7 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int INSTRUCTIONS_PER_CYCLE_EDEFAULT = 0;
+	protected static final float INSTRUCTIONS_PER_CYCLE_EDEFAULT = 0.0F;
 
 	/**
 	 * The cached value of the '{@link #getInstructionsPerCycle() <em>Instructions Per Cycle</em>}' attribute.
@@ -74,7 +82,17 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 	 * @generated
 	 * @ordered
 	 */
-	protected int instructionsPerCycle = INSTRUCTIONS_PER_CYCLE_EDEFAULT;
+	protected float instructionsPerCycle = INSTRUCTIONS_PER_CYCLE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getClassifiers() <em>Classifiers</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClassifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CoreClassifier> classifiers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,7 +139,7 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getInstructionsPerCycle() {
+	public float getInstructionsPerCycle() {
 		return instructionsPerCycle;
 	}
 
@@ -130,11 +148,23 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInstructionsPerCycle(int newInstructionsPerCycle) {
-		int oldInstructionsPerCycle = instructionsPerCycle;
+	public void setInstructionsPerCycle(float newInstructionsPerCycle) {
+		float oldInstructionsPerCycle = instructionsPerCycle;
 		instructionsPerCycle = newInstructionsPerCycle;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CORE_TYPE__INSTRUCTIONS_PER_CYCLE, oldInstructionsPerCycle, instructionsPerCycle));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<CoreClassifier> getClassifiers() {
+		if (classifiers == null) {
+			classifiers = new EObjectResolvingEList<CoreClassifier>(CoreClassifier.class, this, AmaltheaPackage.CORE_TYPE__CLASSIFIERS);
+		}
+		return classifiers;
 	}
 
 	/**
@@ -149,6 +179,8 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 				return getBitWidth();
 			case AmaltheaPackage.CORE_TYPE__INSTRUCTIONS_PER_CYCLE:
 				return getInstructionsPerCycle();
+			case AmaltheaPackage.CORE_TYPE__CLASSIFIERS:
+				return getClassifiers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -158,6 +190,7 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -165,7 +198,11 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 				setBitWidth((Integer)newValue);
 				return;
 			case AmaltheaPackage.CORE_TYPE__INSTRUCTIONS_PER_CYCLE:
-				setInstructionsPerCycle((Integer)newValue);
+				setInstructionsPerCycle((Float)newValue);
+				return;
+			case AmaltheaPackage.CORE_TYPE__CLASSIFIERS:
+				getClassifiers().clear();
+				getClassifiers().addAll((Collection<? extends CoreClassifier>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -185,6 +222,9 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 			case AmaltheaPackage.CORE_TYPE__INSTRUCTIONS_PER_CYCLE:
 				setInstructionsPerCycle(INSTRUCTIONS_PER_CYCLE_EDEFAULT);
 				return;
+			case AmaltheaPackage.CORE_TYPE__CLASSIFIERS:
+				getClassifiers().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -201,6 +241,8 @@ public class CoreTypeImpl extends AbstractionTypeImpl implements CoreType {
 				return bitWidth != BIT_WIDTH_EDEFAULT;
 			case AmaltheaPackage.CORE_TYPE__INSTRUCTIONS_PER_CYCLE:
 				return instructionsPerCycle != INSTRUCTIONS_PER_CYCLE_EDEFAULT;
+			case AmaltheaPackage.CORE_TYPE__CLASSIFIERS:
+				return classifiers != null && !classifiers.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

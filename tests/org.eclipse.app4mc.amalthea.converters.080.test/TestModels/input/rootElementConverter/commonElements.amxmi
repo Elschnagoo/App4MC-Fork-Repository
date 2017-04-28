@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:CommonElements xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2">
+    <tags name="Tag11" tagType="test"/>
+    <tags name="Tag21" tagType="test-1"/>
+    <tags name="Tag31"/>
+</am:CommonElements>

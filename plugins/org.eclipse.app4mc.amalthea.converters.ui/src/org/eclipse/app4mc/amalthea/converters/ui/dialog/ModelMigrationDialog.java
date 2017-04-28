@@ -10,10 +10,19 @@
  *******************************************************************************/
 package org.eclipse.app4mc.amalthea.converters.ui.dialog;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
+import java.util.Date;
 
+import org.apache.log4j.FileAppender;
+import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
+import org.apache.log4j.spi.Filter;
+import org.apache.log4j.spi.LoggingEvent;
 import org.eclipse.app4mc.amalthea.converters.ui.jobs.IMigrationJobConstants;
 import org.eclipse.app4mc.amalthea.converters.ui.jobs.ModelMigrationJob;
 import org.eclipse.app4mc.amalthea.converters.ui.providers.MigrationInputDataProvider;
@@ -59,8 +68,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -79,9 +90,11 @@ public class ModelMigrationDialog extends Dialog {
 
 	final Logger logger;
 
+	private FileAppender fileAppender;
+
 	public ModelMigrationDialog(final Shell parentShell, final MigrationSettings migrationSettings) {
 		super(parentShell);
-		this.logger = LogManager.getLogger(this.getClass());
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 
 		setMigrationSettings(migrationSettings);
 
@@ -181,27 +194,32 @@ public class ModelMigrationDialog extends Dialog {
 				if (version != null) {
 					if (version.equals("itea.103")) {
 						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.7.2", "0.7.1", "0.7.0", "itea.111", "itea.110" });
+								.setItems(new String[] { "0.8.0", "0.7.2", "0.7.1", "0.7.0", "itea.111", "itea.110" });
 
 					}
 					else if (version.equals("itea.110")) {
 						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.7.2", "0.7.1", "0.7.0", "itea.111" });
+								.setItems(new String[] { "0.8.0", "0.7.2", "0.7.1", "0.7.0", "itea.111" });
 					}
 					else if (version.equals("itea.111")) {
 						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.7.2", "0.7.1", "0.7.0" });
+								.setItems(new String[] { "0.8.0", "0.7.2", "0.7.1", "0.7.0" });
 					}
 					else if (version.equals("0.7.0")) {
 						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.7.2", "0.7.1" });
+								.setItems(new String[] { "0.8.0", "0.7.2", "0.7.1" });
 
 					}
 					else if (version.equals("0.7.1")) {
-						ModelMigrationDialog.this.getMig_model_version_combo().setItems(new String[] { "0.7.2" });
+						ModelMigrationDialog.this.getMig_model_version_combo()
+								.setItems(new String[] { "0.8.0", "0.7.2" });
 
 					}
 					else if (version.equals("0.7.2")) {
+						ModelMigrationDialog.this.getMig_model_version_combo().setItems(new String[] { "0.8.0" });
+
+					}
+					else if (version.equals("0.8.0")) {
 						ModelMigrationDialog.this.getMig_model_version_combo().setItems(new String[] { "" });
 
 						ModelMigrationDialog.this.getMig_model_version_combo().setEnabled(false);
@@ -302,6 +320,22 @@ public class ModelMigrationDialog extends Dialog {
 		 * createButton(buttonsComposite, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
 		 */
 
+		/*- Added SWT.Modify listener to Checkbox (for selection of output model version) - this is work around for JFace databinding issue reported on MAC */
+		this.mig_model_version_combo.addListener(SWT.Modify, new Listener() {
+
+			@Override
+			public void handleEvent(final Event event) {
+
+				final String selection_outputModelVersion = ModelMigrationDialog.this.getMig_model_version_combo().getText();
+
+				if (selection_outputModelVersion != null && selection_outputModelVersion.length() > 0) {
+					getMigrationSettings().setMigrationModelVersion(selection_outputModelVersion);
+
+				}
+
+			}
+		});
+
 		this.mig_model_version_combo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(final SelectionEvent e) {
@@ -361,6 +395,41 @@ public class ModelMigrationDialog extends Dialog {
 		this.migrateModelsButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(final SelectionEvent e) {
+
+				/* ====== Adding log file appender for logging model migration events====== */
+
+
+				final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss");
+				final String dateToStr = format.format(new Date());
+
+				final File modelMigrationLogFile = new File(
+						ModelMigrationDialog.this.getMigrationSettings().getOutputDirectoryLocation(),
+						"ModelMigration__" + dateToStr + ".log");
+				try {
+					setFileAppender(new FileAppender(new PatternLayout("%d{yyyy-MM-dd_HH_mm_ss} - %-5p:  %m%n"),
+							modelMigrationLogFile.getAbsolutePath(), false));
+
+					getFileAppender().addFilter(new Filter() {
+
+						@Override
+						public int decide(final LoggingEvent event) {
+
+							if (event.getLevel() == Level.TRACE) {
+								/*-For developers: By changing the return value to Filter.ACCEPT -> TRACE log entries  will also be generated into the Log file*/
+
+								return Filter.DENY;
+							}
+							return Filter.ACCEPT;
+						}
+					});
+					ModelMigrationDialog.this.logger.addAppender(getFileAppender());
+					// ModelMigrationDialog.this.logger.setLevel(Level.ALL);
+
+				}
+				catch (final IOException e1) {
+					ModelMigrationDialog.this.logger.error("Unable to add FileAppender for model migration logger"
+							+ modelMigrationLogFile.getAbsolutePath(), e1);
+				}
 
 				final ModelMigrationJob job = new ModelMigrationJob("AMALTHEA Model Migration",
 						ModelMigrationDialog.this.getMigrationSettings());
@@ -429,6 +498,12 @@ public class ModelMigrationDialog extends Dialog {
 							});
 
 						}
+
+						if (getFileAppender() != null) {
+							getFileAppender().close();
+							ModelMigrationDialog.this.logger.removeAppender(getFileAppender());
+						}
+
 
 					}
 
@@ -532,5 +607,13 @@ public class ModelMigrationDialog extends Dialog {
 
 	public void setCancelMigrationButton(final Button cancelMigrationButton) {
 		this.cancelMigrationButton = cancelMigrationButton;
+	}
+
+	public FileAppender getFileAppender() {
+		return this.fileAppender;
+	}
+
+	public void setFileAppender(final FileAppender fileAppender) {
+		this.fileAppender = fileAppender;
 	}
 }

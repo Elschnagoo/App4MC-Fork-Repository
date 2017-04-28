@@ -24,7 +24,7 @@ import org.jdom2.Element;
 
 public class BulkXpathOperation {
 
-	private final Logger logger = LogManager.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 
 	/**
 	 * This method takes Xml Document object and the list of Xpath Strings as input-> and returns a Map with key as
@@ -153,7 +153,7 @@ public class BulkXpathOperation {
 
 			for (final String string : keySet) {
 
-				this.logger.info("Xpath Fragment : " + string + "associated Xpath chunk :  "
+				this.logger.trace("Xpath Fragment : " + string + "associated Xpath chunk :  "
 						+ fragmentsMap.get(string).getValue());
 
 			}
@@ -178,7 +178,7 @@ public class BulkXpathOperation {
 
 						resultsMap.put(xpath, xmlElements);
 
-						this.logger.info("xpath : " + xpath + " elements : " + xmlElements.size());
+						this.logger.trace("xpath : " + xpath + " elements : " + xmlElements.size());
 					}
 				}
 			}

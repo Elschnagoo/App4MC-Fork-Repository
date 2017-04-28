@@ -51,10 +51,10 @@ public class OMVisualizer {
 			final String utilization = drawUtilizationBar(e.getValue().getComputationTime(),
 					lMaxComputationTime.getAsLong());
 			final String cycles = String.format("%-,15d", e.getValue().getScheduledInstructionCount());
-			final String percentage = String.format("(%3d%%)", (int) (100.0 / lMaxComputationTime.getAsLong() * e
-					.getValue().getComputationTime()));
-			final String compurationTime = String.format("%,19.5f �s", e.getValue().getComputationTime()
-					/ (1000.0 * 1000.0));
+			final String percentage = String.format("(%3d%%)",
+					(int) (100.0 / lMaxComputationTime.getAsLong() * e.getValue().getComputationTime()));
+			final String compurationTime = String.format("%,19.5f �s",
+					e.getValue().getComputationTime() / (1000.0 * 1000.0));
 			output += String.format("| %s (%s/%s) | %s %s | %s | %s |\n", name, tasks, runnables, utilization,
 					percentage, cycles, compurationTime);
 		}
@@ -122,13 +122,16 @@ public class OMVisualizer {
 
 		public long getScheduledInstructionCount() {
 			if (0 > this.iScheduledInstructionCount) {
-				// this.iScheduledInstructionCount = this.tasks.parallelStream().mapToLong(OMTask::getInstructionCount)
+				// this.iScheduledInstructionCount =
+				// this.tasks.parallelStream().mapToLong(OMTask::getInstructionCount)
 				// .sum();
 				this.iScheduledInstructionCount = (long) Math.ceil(this.tasks.parallelStream()
 						.mapToDouble((t) -> t.getInstructionCount() / t.calcRecursionFactor()).sum());
-				// this.iScheduledInstructionCount = (long) Math.ceil(this.tasks.parallelStream()
+				// this.iScheduledInstructionCount = (long)
+				// Math.ceil(this.tasks.parallelStream()
 				// .mapToDouble(OMTask::getRelativeCycles).sum());
-				// this.iScheduledInstructionCount = this.tasks.parallelStream().mapToLong((k) ->
+				// this.iScheduledInstructionCount =
+				// this.tasks.parallelStream().mapToLong((k) ->
 				// OMAllocation(k,this).calculateProcessingTime).;
 			}
 			return this.iScheduledInstructionCount;
@@ -156,7 +159,8 @@ public class OMVisualizer {
 				final BigInteger psps = BigInteger.valueOf(1000L * 1000L * 1000L * 1000L);
 				final BigInteger computationTime = psps.multiply(ins).divide(ips);
 
-				// TODO Not sure if we will ever reach a number so high, so lets better be prepared.
+				// TODO Not sure if we will ever reach a number so high, so lets
+				// better be prepared.
 				this.iComputationTime = computationTime.longValueExact();
 			}
 			return this.iComputationTime;

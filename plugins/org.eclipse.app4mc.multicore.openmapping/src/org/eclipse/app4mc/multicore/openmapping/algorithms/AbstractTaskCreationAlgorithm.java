@@ -24,6 +24,12 @@ import org.eclipse.app4mc.amalthea.model.StimuliModel;
 
 
 public abstract class AbstractTaskCreationAlgorithm {
+	
+	/**
+	 * Pragmatic Task Creation
+	 */
+	public final static String PRAGMATIC_TASK_CREATION = "0";
+	
 	// models
 	private CommonElements commonElements;
 	private SWModel swModel;

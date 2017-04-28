@@ -77,6 +77,15 @@ public class OsAPIInstructionsItemProvider extends BaseObjectItemProvider {
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiClearEvent());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiActivateTask());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiEnforcedMigration());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSuspendOsInterrupts());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiResumeOsInterrupts());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiRequestSpinlock());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiReleaseSpinlock());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSenderReceiverRead());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSenderReceiverWrite());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSynchronousServerCallPoint());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiIocRead());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiIocWrite());
 		}
 		return childrenFeatures;
 	}
@@ -152,6 +161,15 @@ public class OsAPIInstructionsItemProvider extends BaseObjectItemProvider {
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_CLEAR_EVENT:
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_ACTIVATE_TASK:
 			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION:
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SUSPEND_OS_INTERRUPTS:
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RESUME_OS_INTERRUPTS:
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_REQUEST_SPINLOCK:
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_RELEASE_SPINLOCK:
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_READ:
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_WRITE:
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_SYNCHRONOUS_SERVER_CALL_POINT:
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_READ:
+			case AmaltheaPackage.OS_API_INSTRUCTIONS__API_IOC_WRITE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -267,6 +285,96 @@ public class OsAPIInstructionsItemProvider extends BaseObjectItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiEnforcedMigration(),
 				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSuspendOsInterrupts(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSuspendOsInterrupts(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiResumeOsInterrupts(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiResumeOsInterrupts(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiRequestSpinlock(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiRequestSpinlock(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiReleaseSpinlock(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiReleaseSpinlock(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSenderReceiverRead(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSenderReceiverRead(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSenderReceiverWrite(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSenderReceiverWrite(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSynchronousServerCallPoint(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSynchronousServerCallPoint(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiIocRead(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiIocRead(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiIocWrite(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiIocWrite(),
+				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
 	}
 
 	/**
@@ -290,7 +398,16 @@ public class OsAPIInstructionsItemProvider extends BaseObjectItemProvider {
 			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiWaitEvent() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiClearEvent() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiActivateTask() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiEnforcedMigration();
+			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiEnforcedMigration() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSuspendOsInterrupts() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiResumeOsInterrupts() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiRequestSpinlock() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiReleaseSpinlock() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSenderReceiverRead() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSenderReceiverWrite() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiSynchronousServerCallPoint() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiIocRead() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getOsAPIInstructions_ApiIocWrite();
 
 		if (qualify) {
 			return getString

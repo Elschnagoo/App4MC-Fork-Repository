@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.7.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <swModel>
     <tasks name="Task_1" priority="2" stimuli="Stimulus_Task_1?type=Periodic" osekTaskGroup="2" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
@@ -98,7 +98,7 @@
     </tasks>
     <tasks name="Task_3" priority="4" stimuli="Stimulus_Task_3?type=Periodic" osekTaskGroup="4" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
-        <graphEntries xsi:type="am:ProbabiltitySwitch">
+        <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="20.0">
             <items xsi:type="am:CallSequence" name="CallSequence_3_3">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_3?type=Runnable"/>
@@ -422,19 +422,19 @@
         </customProperties>
       </literals>
     </modes>
-    <modeLabels name="message" mode="Message?type=Mode" initialValue="Message/Message_0?type=ModeLiteral">
+    <modeLabels name="message" initialValue="Message/Message_0?type=ModeLiteral">
       <size value="8" unit="bit"/>
     </modeLabels>
-    <modeLabels name="messageToT1" mode="MessageToT1?type=Mode" initialValue="MessageToT1/MessageToT1_0?type=ModeLiteral">
+    <modeLabels name="messageToT1" initialValue="MessageToT1/MessageToT1_0?type=ModeLiteral">
       <size value="1" unit="bit"/>
     </modeLabels>
-    <modeLabels name="messageToT2" mode="MessageToT2?type=Mode" initialValue="MessageToT2/MessageToT2_0?type=ModeLiteral">
+    <modeLabels name="messageToT2" initialValue="MessageToT2/MessageToT2_0?type=ModeLiteral">
       <size value="1" unit="bit"/>
     </modeLabels>
-    <modeLabels name="stateT1" mode="StateT1?type=Mode" initialValue="StateT1/StateT1_1?type=ModeLiteral">
+    <modeLabels name="stateT1" initialValue="StateT1/StateT1_1?type=ModeLiteral">
       <size value="1" unit="bit"/>
     </modeLabels>
-    <modeLabels name="stateT2" mode="StateT2?type=Mode" initialValue="StateT2/StateT2_0?type=ModeLiteral">
+    <modeLabels name="stateT2" initialValue="StateT2/StateT2_0?type=ModeLiteral">
       <size value="8" unit="bit"/>
     </modeLabels>
   </swModel>
@@ -464,7 +464,6 @@
     </system>
   </hwModel>
   <osModel>
-    <osDataConsistency mode="noProtection"/>
     <operatingSystems name="Generic_OS">
       <taskSchedulers name="Scheduler_1" scheduleUnitPriority="0">
         <schedulingUnit xsi:type="am:SchedulingHWUnit">
@@ -472,6 +471,7 @@
         </schedulingUnit>
         <schedulingAlgorithm xsi:type="am:OSEK"/>
       </taskSchedulers>
+      <osDataConsistency mode="noProtection"/>
     </operatingSystems>
   </osModel>
   <stimuliModel>
@@ -541,11 +541,11 @@
     <taskAllocation task="Task_4?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
     <taskAllocation task="Task_5?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0"/>
     <coreAllocation scheduler="Scheduler_1?type=TaskScheduler" core="Core_1?type=Core"/>
-    <mapping xsi:type="am:AbstractElementMapping" memory="Memory_1?type=Memory" memoryPositionAddress="11" abstractElement="stateT2?type=ModeLabel"/>
-    <mapping xsi:type="am:AbstractElementMapping" memory="Memory_1?type=Memory" memoryPositionAddress="10" abstractElement="stateT1?type=ModeLabel"/>
-    <mapping xsi:type="am:AbstractElementMapping" memory="Memory_1?type=Memory" memoryPositionAddress="8" abstractElement="messageToT1?type=ModeLabel"/>
-    <mapping xsi:type="am:AbstractElementMapping" memory="Memory_1?type=Memory" memoryPositionAddress="0" abstractElement="message?type=ModeLabel"/>
-    <mapping xsi:type="am:AbstractElementMapping" memory="Memory_1?type=Memory" memoryPositionAddress="9" abstractElement="messageToT2?type=ModeLabel"/>
+    <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="11" abstractElement="stateT2?type=ModeLabel"/>
+    <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="10" abstractElement="stateT1?type=ModeLabel"/>
+    <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="8" abstractElement="messageToT1?type=ModeLabel"/>
+    <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="0" abstractElement="message?type=ModeLabel"/>
+    <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="9" abstractElement="messageToT2?type=ModeLabel"/>
   </mappingModel>
   <componentsModel/>
 </am:Amalthea>

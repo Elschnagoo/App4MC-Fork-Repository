@@ -29,6 +29,8 @@ import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.CriticalPath.tf;
+import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
+import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -448,37 +450,39 @@ public class CPP {
 		for (final RunnableItem ri : r.getRunnableItems()) {
 			if (ri instanceof LabelAccess) {
 				final LabelAccess laSource = (LabelAccess) ri;
-				final EList<LabelAccess> las = laSource.getData().getLabelAccesses();
-				// check the other runnables that access same label
-				for (final LabelAccess laOther : las) {
-					if (!laOther.equals(laSource)) {
-						if (laOther.eContainer() instanceof Runnable) {
-							final Runnable or = (Runnable) laOther.eContainer();
-							if (!r.equals(or)) {
-								final TaskRunnableCall trc2 = or.getTaskRunnableCalls().get(0);
-								if (trc2.eContainer() instanceof ProcessPrototype) {
-									final ProcessPrototype opp = (ProcessPrototype) trc2.eContainer();
-									// only add databits if shared ressource is
-									// shared with another processprototype
-									if (!opp.equals(pp) && opp.getName() != ("allRunnables")) {
-										if (laSource.getData().getSize() != null) {
-											co += laSource.getData().getSize().getNumberBits();
-										}
-										else {
-											// no label data available --> add 1
-											co += 1;
+				if (laSource.getData()!=null){
+					final EList<LabelAccess> las = laSource.getData().getLabelAccesses();
+					// check the other runnables that access same label
+					for (final LabelAccess laOther : las) {
+						if (!laOther.equals(laSource)) {
+							if (laOther.eContainer() instanceof Runnable) {
+								final Runnable or = (Runnable) laOther.eContainer();
+								if (!r.equals(or)) {
+									final TaskRunnableCall trc2 = or.getTaskRunnableCalls().get(0);
+									if (trc2.eContainer() instanceof ProcessPrototype) {
+										final ProcessPrototype opp = (ProcessPrototype) trc2.eContainer();
+										// only add databits if shared ressource is
+										// shared with another processprototype
+										if (!opp.equals(pp) && opp.getName() != ("allRunnables")) {
+											if (laSource.getData().getSize() != null) {
+												co += laSource.getData().getSize().getNumberBits();
+											}
+											else {
+												// no label data available --> add 1
+												co += 1;
+											}
 										}
 									}
-								}
-								else if (trc2.eContainer() instanceof CallSequence) {
-									final Task ot = (Task) trc2.eContainer().eContainer().eContainer();
-									if (!ot.equals(t)) {
-										if (laSource.getData().getSize() != null) {
-											co += laSource.getData().getSize().getNumberBits();
-										}
-										else {
-											// no label data available --> add 1
-											co += 1;
+									else if (trc2.eContainer() instanceof CallSequence) {
+										final Task ot = (Task) trc2.eContainer().eContainer().eContainer();
+										if (!ot.equals(t)) {
+											if (laSource.getData().getSize() != null) {
+												co += laSource.getData().getSize().getNumberBits();
+											}
+											else {
+												// no label data available --> add 1
+												co += 1;
+											}
 										}
 									}
 								}

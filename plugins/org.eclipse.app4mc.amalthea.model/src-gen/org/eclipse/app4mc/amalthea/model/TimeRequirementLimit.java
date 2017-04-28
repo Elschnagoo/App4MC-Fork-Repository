@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -69,12 +69,12 @@ public interface TimeRequirementLimit extends RequirementLimit {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Limit Value</em>' containment reference.
-	 * @see #setLimitValue(SignedTime)
+	 * @see #setLimitValue(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimeRequirementLimit_LimitValue()
 	 * @model containment="true"
 	 * @generated
 	 */
-	SignedTime getLimitValue();
+	Time getLimitValue();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.TimeRequirementLimit#getLimitValue <em>Limit Value</em>}' containment reference.
@@ -84,6 +84,6 @@ public interface TimeRequirementLimit extends RequirementLimit {
 	 * @see #getLimitValue()
 	 * @generated
 	 */
-	void setLimitValue(SignedTime value);
+	void setLimitValue(Time value);
 
 } // TimeRequirementLimit

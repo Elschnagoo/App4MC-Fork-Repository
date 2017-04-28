@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.app4mc.amalthea.export.sdk"
       label="APP4MC AMALTHEA Export SDK"
-      version="0.7.2.qualifier"
+      version="0.8.0.qualifier"
       provider-name="Eclipse.org"
       license-feature="org.eclipse.license"
       license-feature-version="1.0.1.qualifier">
@@ -28,11 +28,5 @@ All rights reserved.
          id="org.eclipse.app4mc.amalthea.models.sdk"
          version="0.0.0"/>
 
-   <plugin
-         id="org.eclipse.app4mc.amalthea.export.osek.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
 </feature>

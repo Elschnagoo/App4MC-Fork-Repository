@@ -15,7 +15,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
+import org.apache.log4j.spi.Filter;
+import org.apache.log4j.spi.LoggingEvent;
 import org.eclipse.app4mc.amalthea.converters.common.utils.BaseHelperUtils;
 import org.eclipse.app4mc.amalthea.converters.ui.dialog.MigrationErrorDialog;
 import org.eclipse.app4mc.amalthea.converters.ui.dialog.ModelMigrationDialog;
@@ -44,18 +47,36 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 
 	private MigrationSettings migrationSettings;
 
-	private final String LATEST_MODEL_VERSION = "0.7.2";
+	private final String LATEST_MODEL_VERSION = "0.8.0";
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 
-		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea");
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 
 		this.logger.removeAllAppenders();
 
-		this.logger.addAppender(new CustomEclipseLogAppender());
+		final CustomEclipseLogAppender customEclipseLogAppender = new CustomEclipseLogAppender();
+
+		customEclipseLogAppender.addFilter(new Filter() {
+
+			@Override
+			public int decide(final LoggingEvent event) {
+
+				final Level level = event.getLevel();
+
+				if (level == Level.INFO || level == Level.TRACE) {
+					return Filter.DENY;
+				}
+				return Filter.ACCEPT;
+			}
+		});
+
+		this.logger.addAppender(customEclipseLogAppender);
 
 		this.logger.setAdditivity(false);
+
+		this.logger.setLevel(Level.ALL);
 
 		this.migrationSettings = new MigrationSettings();
 
@@ -264,8 +285,8 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 									if (!((inputModelVersion != null) && (inputModelVersion.equals("itea.103")
 											|| inputModelVersion.equals("itea.110")
 											|| inputModelVersion.equals("itea.111") || inputModelVersion.equals("0.7.0")
-											|| inputModelVersion.equals("0.7.1")
-											|| inputModelVersion.equals("0.7.2")))) {
+											|| inputModelVersion.equals("0.7.1") || inputModelVersion.equals("0.7.2")
+											|| inputModelVersion.equals("0.8.0")))) {
 
 										list.add(migModelFile);
 									}

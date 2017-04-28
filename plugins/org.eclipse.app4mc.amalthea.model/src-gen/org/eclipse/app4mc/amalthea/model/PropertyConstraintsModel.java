@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ import org.eclipse.emf.common.util.EList;
 public interface PropertyConstraintsModel extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Allocation Constraints</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.AllocationConstraint}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocation Constraints</em>' containment reference list isn't clear,
@@ -46,11 +46,11 @@ public interface PropertyConstraintsModel extends BaseObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<AllocationConstraint> getAllocationConstraints();
+	EList<CoreAllocationConstraint> getAllocationConstraints();
 
 	/**
 	 * Returns the value of the '<em><b>Mapping Constraints</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.MappingConstraint}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Mapping Constraints</em>' containment reference list isn't clear,
@@ -62,6 +62,6 @@ public interface PropertyConstraintsModel extends BaseObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<MappingConstraint> getMappingConstraints();
+	EList<MemoryMappingConstraint> getMappingConstraints();
 
 } // PropertyConstraintsModel

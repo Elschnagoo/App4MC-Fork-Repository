@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -17,11 +17,11 @@ import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
-import org.eclipse.app4mc.amalthea.model.ModeValueProvider;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -34,34 +34,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeLabelImpl#getDisplayName <em>Display Name</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeLabelImpl#getMode <em>Mode</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeLabelImpl#getInitialValue <em>Initial Value</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeLabelImpl#getDisplayName <em>Display Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implements ModeLabel {
-	/**
-	 * The cached value of the '{@link #getMode() <em>Mode</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMode()
-	 * @generated
-	 * @ordered
-	 */
-	protected Mode mode;
-
-	/**
-	 * The cached value of the '{@link #getInitialValue() <em>Initial Value</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInitialValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected ModeLiteral initialValue;
-
+public class ModeLabelImpl extends AbstractMemoryElementImpl implements ModeLabel {
 	/**
 	 * The default value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -81,6 +61,16 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 	 * @ordered
 	 */
 	protected String displayName = DISPLAY_NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getInitialValue() <em>Initial Value</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInitialValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ModeLiteral initialValue;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,16 +96,30 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDisplayName(String newDisplayName) {
+		String oldDisplayName = displayName;
+		displayName = newDisplayName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_LABEL__DISPLAY_NAME, oldDisplayName, displayName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Mode getMode() {
-		if (mode != null && mode.eIsProxy()) {
-			InternalEObject oldMode = (InternalEObject)mode;
-			mode = (Mode)eResolveProxy(oldMode);
-			if (mode != oldMode) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.MODE_LABEL__MODE, oldMode, mode));
-			}
-		}
-		return mode;
+		Mode mode = basicGetMode();
+		return mode != null && mode.eIsProxy() ? (Mode)eResolveProxy((InternalEObject)mode) : mode;
 	}
 
 	/**
@@ -124,19 +128,12 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 	 * @generated
 	 */
 	public Mode basicGetMode() {
-		return mode;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMode(Mode newMode) {
-		Mode oldMode = mode;
-		mode = newMode;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_LABEL__MODE, oldMode, mode));
+		ModeLiteral _initialValue = this.getInitialValue();
+		EObject _eContainer = null;
+		if (_initialValue!=null) {
+			_eContainer=_initialValue.eContainer();
+		}
+		return ((Mode) _eContainer);
 	}
 
 	/**
@@ -182,38 +179,17 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getDisplayName() {
-		return displayName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDisplayName(String newDisplayName) {
-		String oldDisplayName = displayName;
-		displayName = newDisplayName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_LABEL__DISPLAY_NAME, oldDisplayName, displayName));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME:
+				return getDisplayName();
 			case AmaltheaPackage.MODE_LABEL__MODE:
 				if (resolve) return getMode();
 				return basicGetMode();
 			case AmaltheaPackage.MODE_LABEL__INITIAL_VALUE:
 				if (resolve) return getInitialValue();
 				return basicGetInitialValue();
-			case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME:
-				return getDisplayName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -226,14 +202,11 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_LABEL__MODE:
-				setMode((Mode)newValue);
+			case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME:
+				setDisplayName((String)newValue);
 				return;
 			case AmaltheaPackage.MODE_LABEL__INITIAL_VALUE:
 				setInitialValue((ModeLiteral)newValue);
-				return;
-			case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME:
-				setDisplayName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -247,14 +220,11 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_LABEL__MODE:
-				setMode((Mode)null);
+			case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME:
+				setDisplayName(DISPLAY_NAME_EDEFAULT);
 				return;
 			case AmaltheaPackage.MODE_LABEL__INITIAL_VALUE:
 				setInitialValue((ModeLiteral)null);
-				return;
-			case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME:
-				setDisplayName(DISPLAY_NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -268,12 +238,12 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_LABEL__MODE:
-				return mode != null;
-			case AmaltheaPackage.MODE_LABEL__INITIAL_VALUE:
-				return initialValue != null;
 			case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME:
 				return DISPLAY_NAME_EDEFAULT == null ? displayName != null : !DISPLAY_NAME_EDEFAULT.equals(displayName);
+			case AmaltheaPackage.MODE_LABEL__MODE:
+				return basicGetMode() != null;
+			case AmaltheaPackage.MODE_LABEL__INITIAL_VALUE:
+				return initialValue != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -285,13 +255,6 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == ModeValueProvider.class) {
-			switch (derivedFeatureID) {
-				case AmaltheaPackage.MODE_LABEL__MODE: return AmaltheaPackage.MODE_VALUE_PROVIDER__MODE;
-				case AmaltheaPackage.MODE_LABEL__INITIAL_VALUE: return AmaltheaPackage.MODE_VALUE_PROVIDER__INITIAL_VALUE;
-				default: return -1;
-			}
-		}
 		if (baseClass == IDisplayName.class) {
 			switch (derivedFeatureID) {
 				case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME: return AmaltheaPackage.IDISPLAY_NAME__DISPLAY_NAME;
@@ -308,13 +271,6 @@ public class ModeLabelImpl extends AbstractElementMemoryInformationImpl implemen
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == ModeValueProvider.class) {
-			switch (baseFeatureID) {
-				case AmaltheaPackage.MODE_VALUE_PROVIDER__MODE: return AmaltheaPackage.MODE_LABEL__MODE;
-				case AmaltheaPackage.MODE_VALUE_PROVIDER__INITIAL_VALUE: return AmaltheaPackage.MODE_LABEL__INITIAL_VALUE;
-				default: return -1;
-			}
-		}
 		if (baseClass == IDisplayName.class) {
 			switch (baseFeatureID) {
 				case AmaltheaPackage.IDISPLAY_NAME__DISPLAY_NAME: return AmaltheaPackage.MODE_LABEL__DISPLAY_NAME;

@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -32,6 +32,15 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiClearEvent <em>Api Clear Event</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiActivateTask <em>Api Activate Task</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiEnforcedMigration <em>Api Enforced Migration</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSuspendOsInterrupts <em>Api Suspend Os Interrupts</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiResumeOsInterrupts <em>Api Resume Os Interrupts</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiRequestSpinlock <em>Api Request Spinlock</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiReleaseSpinlock <em>Api Release Spinlock</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSenderReceiverRead <em>Api Sender Receiver Read</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSenderReceiverWrite <em>Api Sender Receiver Write</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSynchronousServerCallPoint <em>Api Synchronous Server Call Point</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiIocRead <em>Api Ioc Read</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiIocWrite <em>Api Ioc Write</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions()
@@ -298,5 +307,239 @@ public interface OsAPIInstructions extends BaseObject {
 	 * @generated
 	 */
 	void setApiEnforcedMigration(Instructions value);
+
+	/**
+	 * Returns the value of the '<em><b>Api Suspend Os Interrupts</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Api Suspend Os Interrupts</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Api Suspend Os Interrupts</em>' containment reference.
+	 * @see #setApiSuspendOsInterrupts(Instructions)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSuspendOsInterrupts()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Instructions getApiSuspendOsInterrupts();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSuspendOsInterrupts <em>Api Suspend Os Interrupts</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Api Suspend Os Interrupts</em>' containment reference.
+	 * @see #getApiSuspendOsInterrupts()
+	 * @generated
+	 */
+	void setApiSuspendOsInterrupts(Instructions value);
+
+	/**
+	 * Returns the value of the '<em><b>Api Resume Os Interrupts</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Api Resume Os Interrupts</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Api Resume Os Interrupts</em>' containment reference.
+	 * @see #setApiResumeOsInterrupts(Instructions)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiResumeOsInterrupts()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Instructions getApiResumeOsInterrupts();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiResumeOsInterrupts <em>Api Resume Os Interrupts</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Api Resume Os Interrupts</em>' containment reference.
+	 * @see #getApiResumeOsInterrupts()
+	 * @generated
+	 */
+	void setApiResumeOsInterrupts(Instructions value);
+
+	/**
+	 * Returns the value of the '<em><b>Api Request Spinlock</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Api Request Spinlock</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Api Request Spinlock</em>' containment reference.
+	 * @see #setApiRequestSpinlock(Instructions)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiRequestSpinlock()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Instructions getApiRequestSpinlock();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiRequestSpinlock <em>Api Request Spinlock</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Api Request Spinlock</em>' containment reference.
+	 * @see #getApiRequestSpinlock()
+	 * @generated
+	 */
+	void setApiRequestSpinlock(Instructions value);
+
+	/**
+	 * Returns the value of the '<em><b>Api Release Spinlock</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Api Release Spinlock</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Api Release Spinlock</em>' containment reference.
+	 * @see #setApiReleaseSpinlock(Instructions)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiReleaseSpinlock()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Instructions getApiReleaseSpinlock();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiReleaseSpinlock <em>Api Release Spinlock</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Api Release Spinlock</em>' containment reference.
+	 * @see #getApiReleaseSpinlock()
+	 * @generated
+	 */
+	void setApiReleaseSpinlock(Instructions value);
+
+	/**
+	 * Returns the value of the '<em><b>Api Sender Receiver Read</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Api Sender Receiver Read</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Api Sender Receiver Read</em>' containment reference.
+	 * @see #setApiSenderReceiverRead(Instructions)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSenderReceiverRead()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Instructions getApiSenderReceiverRead();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSenderReceiverRead <em>Api Sender Receiver Read</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Api Sender Receiver Read</em>' containment reference.
+	 * @see #getApiSenderReceiverRead()
+	 * @generated
+	 */
+	void setApiSenderReceiverRead(Instructions value);
+
+	/**
+	 * Returns the value of the '<em><b>Api Sender Receiver Write</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Api Sender Receiver Write</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Api Sender Receiver Write</em>' containment reference.
+	 * @see #setApiSenderReceiverWrite(Instructions)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSenderReceiverWrite()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Instructions getApiSenderReceiverWrite();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSenderReceiverWrite <em>Api Sender Receiver Write</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Api Sender Receiver Write</em>' containment reference.
+	 * @see #getApiSenderReceiverWrite()
+	 * @generated
+	 */
+	void setApiSenderReceiverWrite(Instructions value);
+
+	/**
+	 * Returns the value of the '<em><b>Api Synchronous Server Call Point</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Api Synchronous Server Call Point</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Api Synchronous Server Call Point</em>' containment reference.
+	 * @see #setApiSynchronousServerCallPoint(Instructions)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSynchronousServerCallPoint()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Instructions getApiSynchronousServerCallPoint();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSynchronousServerCallPoint <em>Api Synchronous Server Call Point</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Api Synchronous Server Call Point</em>' containment reference.
+	 * @see #getApiSynchronousServerCallPoint()
+	 * @generated
+	 */
+	void setApiSynchronousServerCallPoint(Instructions value);
+
+	/**
+	 * Returns the value of the '<em><b>Api Ioc Read</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Api Ioc Read</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Api Ioc Read</em>' containment reference.
+	 * @see #setApiIocRead(Instructions)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiIocRead()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Instructions getApiIocRead();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiIocRead <em>Api Ioc Read</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Api Ioc Read</em>' containment reference.
+	 * @see #getApiIocRead()
+	 * @generated
+	 */
+	void setApiIocRead(Instructions value);
+
+	/**
+	 * Returns the value of the '<em><b>Api Ioc Write</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Api Ioc Write</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Api Ioc Write</em>' containment reference.
+	 * @see #setApiIocWrite(Instructions)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiIocWrite()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Instructions getApiIocWrite();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiIocWrite <em>Api Ioc Write</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Api Ioc Write</em>' containment reference.
+	 * @see #getApiIocWrite()
+	 * @generated
+	 */
+	void setApiIocWrite(Instructions value);
 
 } // OsAPIInstructions

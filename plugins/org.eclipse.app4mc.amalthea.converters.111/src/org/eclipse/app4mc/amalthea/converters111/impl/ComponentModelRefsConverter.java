@@ -34,7 +34,7 @@ public class ComponentModelRefsConverter implements IConverter {
 
 	private final HelperUtils_110_111 helper;
 
-	private final Logger logger = LogManager.getLogger(this.getClass());
+	private final Logger logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 
 	public ComponentModelRefsConverter() {
 		this.helper = HelperUtils_110_111.getInstance();
@@ -48,6 +48,10 @@ public class ComponentModelRefsConverter implements IConverter {
 	@SuppressWarnings("unchecked")
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
+
+		this.logger
+				.info("Migration from itea.110 to itea.111 : Executing ComponentModelRefs converter for model file : "
+						+ targetFile.getName());
 
 		for (final ICache cache : getFilteredCaches(caches, ComponentModelRefsCacheBuilder.class)) {
 

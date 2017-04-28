@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -15,8 +15,8 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Mapping;
 import org.eclipse.app4mc.amalthea.model.Memory;
+import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -65,7 +65,7 @@ public class MemoryImpl extends ComplexNodeImpl implements Memory {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Mapping> mappings;
+	protected EList<MemoryMapping> mappings;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -129,9 +129,9 @@ public class MemoryImpl extends ComplexNodeImpl implements Memory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Mapping> getMappings() {
+	public EList<MemoryMapping> getMappings() {
 		if (mappings == null) {
-			mappings = new EObjectWithInverseResolvingEList<Mapping>(Mapping.class, this, AmaltheaPackage.MEMORY__MAPPINGS, AmaltheaPackage.MAPPING__MEMORY_LINK_INT);
+			mappings = new EObjectWithInverseResolvingEList<MemoryMapping>(MemoryMapping.class, this, AmaltheaPackage.MEMORY__MAPPINGS, AmaltheaPackage.MEMORY_MAPPING__MEMORY_LINK_INT);
 		}
 		return mappings;
 	}
@@ -196,7 +196,7 @@ public class MemoryImpl extends ComplexNodeImpl implements Memory {
 				return;
 			case AmaltheaPackage.MEMORY__MAPPINGS:
 				getMappings().clear();
-				getMappings().addAll((Collection<? extends Mapping>)newValue);
+				getMappings().addAll((Collection<? extends MemoryMapping>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

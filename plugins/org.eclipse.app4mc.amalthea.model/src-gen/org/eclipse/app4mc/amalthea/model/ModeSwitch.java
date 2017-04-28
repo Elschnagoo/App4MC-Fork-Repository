@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -46,12 +46,12 @@ public interface ModeSwitch extends GraphEntryBase {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value Provider</em>' reference.
-	 * @see #setValueProvider(ModeValueProvider)
+	 * @see #setValueProvider(ModeLabel)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeSwitch_ValueProvider()
 	 * @model
 	 * @generated
 	 */
-	ModeValueProvider getValueProvider();
+	ModeLabel getValueProvider();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeSwitch#getValueProvider <em>Value Provider</em>}' reference.
@@ -61,7 +61,7 @@ public interface ModeSwitch extends GraphEntryBase {
 	 * @see #getValueProvider()
 	 * @generated
 	 */
-	void setValueProvider(ModeValueProvider value);
+	void setValueProvider(ModeLabel value);
 
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.

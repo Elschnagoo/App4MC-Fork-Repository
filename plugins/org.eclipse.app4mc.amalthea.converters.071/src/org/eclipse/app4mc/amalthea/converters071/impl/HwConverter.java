@@ -25,14 +25,15 @@ public class HwConverter extends AbstractConverter {
 
 	public HwConverter() {
 		this.helper = HelperUtils_070_071.getInstance();
-		this.logger = LogManager.getLogger(this.getClass());
+		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
 	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
 			final List<ICache> caches) throws Exception {
 
-		this.logger.info("Migration from 0.7.0 to 0.7.1 : Starting PropertyConstraints converter");
+		this.logger.info("Migration from 0.7.0 to 0.7.1 : Executing PropertyConstraints converter for model file : "
+				+ targetFile.getName());
 
 		final Document root = fileName_documentsMap.get(targetFile);
 

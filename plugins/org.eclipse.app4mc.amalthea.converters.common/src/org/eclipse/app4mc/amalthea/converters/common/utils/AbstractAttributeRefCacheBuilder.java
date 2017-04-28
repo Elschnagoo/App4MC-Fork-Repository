@@ -35,7 +35,7 @@ public abstract class AbstractAttributeRefCacheBuilder implements ICache {
 
 	protected AbstractHelper helper;
 
-	protected final Logger logger = LogManager.getLogger(this.getClass());
+	protected final Logger logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 
 	@Override
 	public Map<File, Map<String, Object>> getCacheMap() {

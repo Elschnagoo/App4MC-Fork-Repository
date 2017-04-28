@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -14,9 +14,9 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.util.Collection;
 
-import org.eclipse.app4mc.amalthea.model.AllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.MappingConstraint;
+import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
+import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -52,7 +52,7 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<AllocationConstraint> allocationConstraints;
+	protected EList<CoreAllocationConstraint> allocationConstraints;
 
 	/**
 	 * The cached value of the '{@link #getMappingConstraints() <em>Mapping Constraints</em>}' containment reference list.
@@ -62,7 +62,7 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<MappingConstraint> mappingConstraints;
+	protected EList<MemoryMappingConstraint> mappingConstraints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,9 +88,9 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<AllocationConstraint> getAllocationConstraints() {
+	public EList<CoreAllocationConstraint> getAllocationConstraints() {
 		if (allocationConstraints == null) {
-			allocationConstraints = new EObjectContainmentEList<AllocationConstraint>(AllocationConstraint.class, this, AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__ALLOCATION_CONSTRAINTS);
+			allocationConstraints = new EObjectContainmentEList<CoreAllocationConstraint>(CoreAllocationConstraint.class, this, AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__ALLOCATION_CONSTRAINTS);
 		}
 		return allocationConstraints;
 	}
@@ -100,9 +100,9 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<MappingConstraint> getMappingConstraints() {
+	public EList<MemoryMappingConstraint> getMappingConstraints() {
 		if (mappingConstraints == null) {
-			mappingConstraints = new EObjectContainmentEList<MappingConstraint>(MappingConstraint.class, this, AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MAPPING_CONSTRAINTS);
+			mappingConstraints = new EObjectContainmentEList<MemoryMappingConstraint>(MemoryMappingConstraint.class, this, AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MAPPING_CONSTRAINTS);
 		}
 		return mappingConstraints;
 	}
@@ -150,11 +150,11 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 		switch (featureID) {
 			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__ALLOCATION_CONSTRAINTS:
 				getAllocationConstraints().clear();
-				getAllocationConstraints().addAll((Collection<? extends AllocationConstraint>)newValue);
+				getAllocationConstraints().addAll((Collection<? extends CoreAllocationConstraint>)newValue);
 				return;
 			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MAPPING_CONSTRAINTS:
 				getMappingConstraints().clear();
-				getMappingConstraints().addAll((Collection<? extends MappingConstraint>)newValue);
+				getMappingConstraints().addAll((Collection<? extends MemoryMappingConstraint>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

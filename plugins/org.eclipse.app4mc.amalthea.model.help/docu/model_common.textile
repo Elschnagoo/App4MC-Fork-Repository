@@ -3,18 +3,31 @@ h2. Common Model
 
 The AMALTHEA common model is not a model by itself, but provides standard elements used by other models as containments.
 
+
 h3. Common Elements
+
+The only exception is the __CommonElements__ class that provides a central container for tags and classifiers. These elements are used in many sub models where references to tags or classifiers provide a mechanism to annotate the objects.
 
 !../pictures/model_common_elements.png!
 
+
 h3(#common-tags). Tags
+
+Tags are a generic possibility to annotate objects in the AMALTHEA model.
 
 !../pictures/model_common_tag.png!
 
 
+h3(#common-classifiers). Classifiers
+
+Classifiers are used to define specific features or abilities of a core or a memory. They are used in the __PropertyConstraintsModel__ to restrict the allocation to cores or the memory mapping.
+
+!../pictures/model_common_classifier.png!
+
+
 h3(#common-custom-props). Custom Properties
 
-The __CustomProperty__ element is used to define own, in AMALTHEA not available properties. If there is the need to extend an element or to store tool information related to processing steps, __CustomProperties__ can be used to store this type of information.
+The __CustomProperty__ element is used to define own properties that are not (yet) available in AMALTHEA. If there is the need to extend an element or to store tool information related to processing steps, __CustomProperties__ can be used to store this type of information. It also provides the possibility to work with prototypical approaches that later (if established and more stable) can be integrated in the standard model.
 
 !../pictures/model_common_custom_property.png!
 
@@ -27,8 +40,8 @@ The __ListObject__ can be used to store multi-valued custom properties.
 
 h3. Time (and Time Unit)
 
-The AMALTHEA data model includes two common elements to describe time ranges in an easy way, the __Time__ and __SignedTime__ element. The __SignedTime__ is like the general __Time__ class but explicit allows defining negative time values.
-These elements can be referenced by any other element for specifying attributes to store time information.
+The AMALTHEA data model includes a common element to describe time ranges in an easy way, the __Time__ element. The __Time__ class in general allows to define negative time values. If only positive values are expected the AMALTHEA validation will show a warning.
+The __Time__ element can be referred by any other element for specifying attributes to store time information.
 Time units are needed to describe different timing behavior and requirements, like deadlines or offsets of components.
 To support different time ranges, especially different time units, AMALTHEA predefines these types like seconds, milli-seconds, micro-seconds,  nano-seconds or pico-seconds.
 
@@ -97,7 +110,7 @@ With the __Boundaries__ class it is possible to define the deviation of instruct
 - BestCase := Defines the scenario in which most instances should have runtimes close to the set minimum runtime, but still should consider some more time-consuming outliers up to the set maximum.
 - WorstCase := Defines the scenario in which most instances should have runtimes close to the set maximum runtime, but still should consider some less time-consuming outliers down to the set minimum.
 - AverageCase := Defines the scenario in which most instances should have runtimes close to the middle between the set minimum and maximum, but still should consider some less and more time-consuming outliers down to the set minimum or up to the set maximum respectively. 
-- CorenerCase := Defines the scenario in which most instances should have runtimes close to the set minimum and maximum runtime, but still should consider some other  time-consuming outliers between those two.
+- CornerCase := Defines the scenario in which most instances should have runtimes close to the set minimum and maximum runtime, but still should consider some other time-consuming outliers between those two.
 - Uniform := Defines the scenario in which all instances should have runtimes that are uniformly distributed between the set minimum and maximum.
 
 !../pictures/model_common_deviation_boundaries_1.png!
@@ -134,7 +147,7 @@ h3. Statistic Elements
 The contained elements are representing statistical values.
 The values can be set either with a min, avg and max representation using the __MinAvgMaxStatistic__ element.
 The other possibility is to set a single value using the __SingleValueStatistic__ element.
-The values itself are set as a normal __int__ value or in case of the single value as __float__.
+The minimum and maximum values are set as a normal __int__ value,  the average the single value as __float__.
 
 !../pictures/model_common_statistic.png!
 
