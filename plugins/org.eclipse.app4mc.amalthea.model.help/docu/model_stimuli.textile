@@ -5,19 +5,10 @@ The Stimuli Model contains stimulus and clock objects.
 
 !(scale)../pictures/model_stimuli.png!
 
+
 h3. Stimuli
 
 !(scale)../pictures/model_stimuli_stimuli.png!
-
-
-*(validation-rule) _Periodic_: The _Time_ object in the role of _offset_ must not contain a negative value!
-*(validation-rule) _Periodic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
-*(validation-rule) _Synthetic_: The _Time_ object in the role of _offset_ must not contain a negative value!
-*(validation-rule) _Synthetic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
-*(validation-rule) _TimestampList_: The _Time_ objects in the role of _timestamps_ must not contain a negative value!
-*(validation-rule) _Single_: The _Time_ object in the role of _activation_ must not contain a negative value!
-*(validation-rule) _ArrivalCurveEntry_: The _Time_ object in the role of _lowerTimeBorder_ must not contain a negative value!
-*(validation-rule) _ArrivalCurveEntry_: The _Time_ object in the role of _upperTimeBorder_ must not contain a negative value!
 
 A stimulus is responsible to activate processes. The following different types are available:
 * *ArrivalCurve*: A list of time-borders in which a specified number of events are expected
@@ -29,6 +20,15 @@ A stimulus is responsible to activate processes. The following different types a
 * *Single*: Activates the process only once
 * *Sporadic*: Sporadic activations of processes
 * *Synthetic*:  Activations periodically triggered depending on a defined list of trigger times.
+
+*(validation-rule) _Periodic_: The _Time_ object in the role of _offset_ must not contain a negative value!
+*(validation-rule) _Periodic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
+*(validation-rule) _Synthetic_: The _Time_ object in the role of _offset_ must not contain a negative value!
+*(validation-rule) _Synthetic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
+*(validation-rule) _TimestampList_: The _Time_ objects in the role of _timestamps_ must not contain a negative value!
+*(validation-rule) _Single_: The _Time_ object in the role of _activation_ must not contain a negative value!
+*(validation-rule) _ArrivalCurveEntry_: The _Time_ object in the role of _lowerTimeBorder_ must not contain a negative value!
+*(validation-rule) _ArrivalCurveEntry_: The _Time_ object in the role of _upperTimeBorder_ must not contain a negative value!
 
 It is possible to define a deviation of time for every type of stimulus. For this, a stimulus can have an object of type Deviation, which refers to the deviation in the common model. This reference uses the class SignedTime as parameter for the generic values of the deviation. So the deviation is about time. The values (negative or positive) represents a shift of the activation to left or right on the time line. In this way it is possible to increase or decrease the activation time.
 

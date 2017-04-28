@@ -106,13 +106,12 @@ The next picture is showing the call graph of task, runnable and services.
 
 !../pictures/model_sw_call_graph.png!
 
+
 h3. Runnables
 
 The next picture shows the general structure of the __Runnable__ element.
 
 !../pictures/model_sw_runnable_overview.png!
-
-*(validation-rule) _Runnable_: The _Time_ object in the role of _deadline_ must not contain a negative value!
 
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
@@ -123,6 +122,8 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 | __tags__ | Can be used to annotate or group special kind of __Runnables__ |
 | __activation__ | Although runnables in the simulation can be only activated by tasks, it is possible to specify an activation pattern for a runnable. |
 | __asilLevel__ | Possibility to specify the ASIL level ("automotive safety integrity level"). |
+
+*(validation-rule) _Runnable_: The _Time_ object in the role of _deadline_ must not contain a negative value!
 
 
 h3. Runnable Items
@@ -197,11 +198,11 @@ h4. Mode Label Access
 
 !../pictures/model_sw_runnable_items_4_modes.png!
 
-*(validation-rule)  _ModeLabelAccess_: The _Mode_ objects referenced via _modeValue_ and _data_ must be equal!
-
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
 | __ModeLabelAccess__ | Describes the access to an existing __ModeLabel__ (set as reference). The type of access is represented using the values of __LabelAccessEnum__: @write@ represents the change of a mode label. The defined __ModeLiteral__ is set. @read@ indicates that the behavior of the runnable is influenced by the current value of the __ModeLabel__. |
+
+*(validation-rule)  _ModeLabelAccess_: The _Mode_ objects referenced via _modeValue_ and _data_ must be equal!
 
 
 h4. Runnable Mode Switch
