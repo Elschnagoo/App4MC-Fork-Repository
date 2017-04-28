@@ -6,7 +6,7 @@ The AMALTHEA software model is central accessible through the __SWModel__ elemen
 
 h3. Memory Information
 
-Analyzing and mapping the software structure to available memories needs additional information of the included elements. This type of information targets the consumed size of memory of an element, represented by the __size__ attribute of type __DataUnit__. The element __AbstractElementMemoryInformation__ is a generalized element that provides this data. The following image shows the structure and also the elements of the software model that are extending __AbstractElementMemoryInformation__ (the overview picture is only showing the hierarchy and not possible relationships between the elements):
+Analyzing and mapping the software structure to available memories needs additional information of the included elements. This type of information targets the consumed size of memory of an element, represented by the __size__ attribute of type __DataUnit__. The element __AbstractMemoryElement__ is a generalized element that provides this data. The following image shows the structure and also the elements of the software model that are extending __AbstractMemoryElement__ (the overview picture is only showing the hierarchy and not possible relationships between the elements):
 
 !(scale)../pictures/model_sw_memory_inf.png!
 
@@ -82,16 +82,16 @@ Note: The picture shows the activated element types for better understanding!
 h3. Activations
 
 Activations are used to specify the intended activation behavior of __Runnables__ and __ProcessPrototypes__. Typically they are defined before the creation of tasks (and the runnable to task mappings). So if there are no tasks defined, or if the mapping of runnables to tasks is not done, this is a way to document when the runnables should be executed.  
-Activations are independent of other top level elements in the AMALTHEA model. Single, periodic, sporadic or custom (free textual description) activation pattern can be defined. This information can be used in the following development steps to create tasks, stimuli and the mappings to dedicated hardware.
+Activations are independent of other top level elements in the AMALTHEA model. Single, periodic, sporadic, event or custom (free textual description) activation pattern can be defined. This information can be used in the following development steps to create tasks, stimuli and the mappings to dedicated hardware.
 
 !../pictures/model_sw_activation.png!
 
-*(validation-rule) **%{color:red}[Error]%** _PeriodicActivation_: The _Time_ object in the role of _mim_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _PeriodicActivation_: The _Time_ object in the role of _max_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _PeriodicActivation_: The _Time_ object in the role of _offset_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _PeriodicActivation_: The _Time_ object in the role of _deadline_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _SingleActivation_: The _Time_ object in the role of _min_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _SingleActivation_: The _Time_ object in the role of _max_ must not contain a negative value!
+*(validation-rule) _PeriodicActivation_: The _Time_ object in the role of _mim_ must not contain a negative value!
+*(validation-rule) _PeriodicActivation_: The _Time_ object in the role of _max_ must not contain a negative value!
+*(validation-rule) _PeriodicActivation_: The _Time_ object in the role of _offset_ must not contain a negative value!
+*(validation-rule) _PeriodicActivation_: The _Time_ object in the role of _deadline_ must not contain a negative value!
+*(validation-rule) _SingleActivation_: The _Time_ object in the role of _min_ must not contain a negative value!
+*(validation-rule) _SingleActivation_: The _Time_ object in the role of _max_ must not contain a negative value!
 
 
 h3. Runnables and Services
@@ -112,7 +112,7 @@ The next picture shows the general structure of the __Runnable__ element.
 
 !../pictures/model_sw_runnable_overview.png!
 
-*(validation-rule) **%{color:red}[Error]%** _Runnable_: The _Time_ object in the role of _deadline_ must not contain a negative value!
+*(validation-rule) _Runnable_: The _Time_ object in the role of _deadline_ must not contain a negative value!
 
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
@@ -122,6 +122,8 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 | __runnableItems__ | List containing __RunnableItem__ objects, representing instructions, label accesses, other __Runnable__ accesses. The possibilities are described below. |
 | __tags__ | Can be used to annotate or group special kind of __Runnables__ |
 | __activation__ | Although runnables in the simulation can be only activated by tasks, it is possible to specify an activation pattern for a runnable. |
+| __asilLevel__ | Possibility to specify the ASIL level ("automotive safety integrity level"). |
+
 
 h3. Runnable Items
 
@@ -195,7 +197,7 @@ h4. Mode Label Access
 
 !../pictures/model_sw_runnable_items_4_modes.png!
 
-*(validation-rule)  **%{color:red}[Error]%** _ModeLabelAccess_: The _Mode_ objects referenced via _modeValue_ and _data_ must be equal!
+*(validation-rule)  _ModeLabelAccess_: The _Mode_ objects referenced via _modeValue_ and _data_ must be equal!
 
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |

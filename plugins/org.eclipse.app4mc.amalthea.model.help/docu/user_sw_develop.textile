@@ -40,9 +40,11 @@ Activations are used to specify the intended activation behavior of __Runnables_
 
 !../pictures/model__activations.png!
 
-The following three activation patterns can be distinguished:
+The following activation patterns can be distinguished:
 * Single: single activation
 * Periodic: periodic activation with a specific frequency
-* Sporadic: recurring activation without following a specific pattern  
+* Sporadic: recurring activation without following a specific pattern
+* Event: activation triggered by a __TriggerEvent__
+* Custom: custom activation (free textual description)
 
 To describe a specific (observed) behavior at runtime there are __Stimuli__ in the AMALTHEA model. They can be created based on the information of the specified activations.

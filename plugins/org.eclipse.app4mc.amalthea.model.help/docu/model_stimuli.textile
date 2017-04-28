@@ -9,14 +9,15 @@ h3. Stimuli
 
 !(scale)../pictures/model_stimuli_stimuli.png!
 
-*(validation-rule) **%{color:red}[Error]%** _Periodic_: The _Time_ object in the role of _offset_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _Periodic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _Synthetic_: The _Time_ object in the role of _offset_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _Synthetic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _TimestampList_: The _Time_ objects in the role of _timestamps_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _Single_: The _Time_ object in the role of _activation_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _ArrivalCurveEntry_: The _Time_ object in the role of _lowerTimeBorder_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _ArrivalCurveEntry_: The _Time_ object in the role of _upperTimeBorder_ must not contain a negative value!
+
+*(validation-rule) _Periodic_: The _Time_ object in the role of _offset_ must not contain a negative value!
+*(validation-rule) _Periodic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
+*(validation-rule) _Synthetic_: The _Time_ object in the role of _offset_ must not contain a negative value!
+*(validation-rule) _Synthetic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
+*(validation-rule) _TimestampList_: The _Time_ objects in the role of _timestamps_ must not contain a negative value!
+*(validation-rule) _Single_: The _Time_ object in the role of _activation_ must not contain a negative value!
+*(validation-rule) _ArrivalCurveEntry_: The _Time_ object in the role of _lowerTimeBorder_ must not contain a negative value!
+*(validation-rule) _ArrivalCurveEntry_: The _Time_ object in the role of _upperTimeBorder_ must not contain a negative value!
 
 A stimulus is responsible to activate processes. The following different types are available:
 * *ArrivalCurve*: A list of time-borders in which a specified number of events are expected
@@ -39,7 +40,7 @@ The enabling-mode-label-list and the disabling-mode-label-list can be used to en
 
 !(scale)../pictures/model_stimuli_modevaluelist.png!
  
-*(validation-rule)  **%{color:red}[Error]%** _ModeValueListEntry_: The _Mode_ objects referenced via _valueProvider_ and _value_ must be equal!
+*(validation-rule)  _ModeValueListEntry_: The _Mode_ objects referenced via _valueProvider_ and _value_ must be equal!
 
 
 h4. Single
@@ -100,6 +101,6 @@ A clock is a time base which describes the progress of time for one or more peri
 
 !(scale)../pictures/model_stimuli_clocks.png!
 
-*(validation-rule) **%{color:red}[Error]%** _ClockTriangleFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _ClockSinusFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
-*(validation-rule) **%{color:red}[Error]%** _ClockMultiplierListEntry_: The _Time_ object in the role of _time_ must not contain a negative value!
+*(validation-rule) _ClockTriangleFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
+*(validation-rule) _ClockSinusFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
+*(validation-rule) _ClockMultiplierListEntry_: The _Time_ object in the role of _time_ must not contain a negative value!
