@@ -2,8 +2,8 @@ h1. Roadmap
 
 Current topics:
 
-* Enhanced model handling to exchange different model parts
-* Simplified hardware model
+* Model changes (e.g. for heterogeneous hardware)
+* Model utilities
 * Interactive help (visualization of model and meta model structure)
 
 All new releases are provided by "Eclipse APP4MC":https://projects.eclipse.org/projects/technology.app4mc.
@@ -11,5 +11,5 @@ All new releases are provided by "Eclipse APP4MC":https://projects.eclipse.org/p
 
 For details see:
 
-* "Bugzilla entries for version 0.8.0":https://bugs.eclipse.org/bugs/buglist.cgi?product=App4mc&target_milestone=0.8.0
+* "Bugzilla entries for version 0.8.1":https://bugs.eclipse.org/bugs/buglist.cgi?product=App4mc&target_milestone=0.8.1
 
