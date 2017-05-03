@@ -109,11 +109,11 @@
   </swModel>
   <hwModel>
     <mcTypes name="GENERIC"/>
-    <coreTypes name="Core_1_type" bitWidth="0" instructionsPerCycle="1"/>
-    <system>
+    <coreTypes name="Core_1_type" bitWidth="0" instructionsPerCycle="1.0"/>
+    <system name="System">
       <ecus name="Ecu_1">
         <quartzes name="Quartz_1" type="STATIC">
-          <frequency value="6.0E8"/>
+          <frequency unit="Hz" value="6.0E8"/>
         </quartzes>
         <microcontrollers name="Processor_1" microcontrollerType="GENERIC?type=MicrocontrollerType">
           <memories name="Memory_1">

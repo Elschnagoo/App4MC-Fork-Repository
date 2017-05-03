@@ -98,7 +98,7 @@
   </swModel>
   <hwModel>
     <coreTypes name="Core_1_type" instructionsPerCycle="1" />
-    <system>
+    <system name="System">
       <ecus name="Ecu_1">
         <quartzes name="Quartz_1" type="STATIC">
           <frequency unit="MHz" value="600.0" />
