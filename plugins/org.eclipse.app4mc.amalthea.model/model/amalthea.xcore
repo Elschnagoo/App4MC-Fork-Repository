@@ -26,7 +26,7 @@
 
 @Ecore(
 	nsPrefix="am",
-	nsURI="http://app4mc.eclipse.org/amalthea/0.8.0"
+	nsURI="http://app4mc.eclipse.org/amalthea/0.8.1"
 )
 
 package org.eclipse.app4mc.amalthea.model
