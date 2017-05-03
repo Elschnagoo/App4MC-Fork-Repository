@@ -36,7 +36,7 @@ Create a class which is extending @org.eclipse.sphinx.emf.check.AbstractCheckVal
 bc.. 
 import org.eclipse.sphinx.emf.check.AbstractCheckValidator;
 import org.eclipse.sphinx.emf.check.Check;
-import org.eclipse.app4mc.amalthea.model.central.AMALTHEA;
+import org.eclipse.app4mc.amalthea.model.Amalthea;
 
 
 public class BasicExampleConstraint extends AbstractCheckValidator {
@@ -51,7 +51,7 @@ public class BasicExampleConstraint extends AbstractCheckValidator {
 	 *
 	 */
 	@Check(constraint = "BasicExampleConstraint", categories = { "BasicCategory", ...and many more ... })
-	void checkVeryImportantConstraint(final AMALTHEA ama)
+	void checkVeryImportantConstraint(final Amalthea ama)
 	{
 
 		/**
@@ -67,13 +67,13 @@ public class BasicExampleConstraint extends AbstractCheckValidator {
 }
 p. 
 
-Create your own class and insert at least one method extended by the @check@ Sphinx annotation. The method should contain exactly one parameter of at least the type of the most generic model element of the AMALTHEA model (i.e. @org.eclipse.app4mc.amalthea.model.central.AMALTHEA@).
+Create your own class and insert at least one method extended by the @check@ Sphinx annotation. The method should contain exactly one parameter of at least the type of the most generic model element of the AMALTHEA model (i.e. @org.eclipse.app4mc.amalthea.model.Amalthea@).
 Implement the validate method by adding your own custom validation.
 
 h4. Plugin configuration
 
 Add an __extension point__ called @org.eclipse.sphinx.emf.check.checkvalidators@ and for each implemented constraint a child entry for your class to the plugin.xml to register it in the Sphinx Validation framework. For each child entry you must specify your constraint class (including @Check annotated methods) and optionally a catalog which contains more detailed information about the composition and relationship between constraints.
 
-The current configuration of the AMALTHEA model validations can be found in the plugin __org.eclipse.app4mc.amalthea.model.common.validation.sphinx__ in the __plugin.xml__.
+The current configuration of the AMALTHEA model validations can be found in the plugin __org.eclipse.app4mc.amalthea.validation__ in the __plugin.xml__.
 
 There the constraints section includes the list of available validations and their corresponding implementation class.
