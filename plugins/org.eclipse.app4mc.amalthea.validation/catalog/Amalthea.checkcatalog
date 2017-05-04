@@ -55,6 +55,14 @@
     severity="Error"
     message="{0}: undefined unit ( in &quot;{1}&quot; )"
     categories="Basic"/>
+    
+  <constraints
+    id="TimeRangeExceeded"
+    label="Time Range Exceeded"
+    description="Checks for Time values that are negative or zero"
+    severity="Error"
+    message="{0}: {2} value must be {3} ( in &quot;{1}&quot; )"
+    categories="Basic"/>
 
   <constraints
     id="WeibullParameters"

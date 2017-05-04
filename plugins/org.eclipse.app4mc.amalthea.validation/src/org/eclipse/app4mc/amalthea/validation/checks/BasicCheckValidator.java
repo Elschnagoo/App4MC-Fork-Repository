@@ -66,7 +66,12 @@ public class BasicCheckValidator extends AbstractCheckValidator implements Issue
 	public void checkUnits(final Amalthea model) {
 		this.basicCheckImpl.checkUnits(model);
 	}
-
+	
+	@Check(constraint = "TimeRangeExceeded", categories = { "Basic" })
+	public void checkTimeRanges(final Amalthea model) {
+		this.basicCheckImpl.checkTimeRanges(model);
+	}
+	
 	@Check(constraint = "WeibullParameters", categories = { "Basic" })
 	public void checkWeibullParameters(final Amalthea model) {
 		this.basicCheckImpl.checkWeibullParameters(model);
