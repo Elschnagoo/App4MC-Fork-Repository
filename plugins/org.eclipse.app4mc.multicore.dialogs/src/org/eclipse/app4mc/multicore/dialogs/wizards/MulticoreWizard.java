@@ -106,7 +106,7 @@ public class MulticoreWizard extends AbstractWizard implements INewWizard {
 
 			// Run prepartitioning
 			prePartWF.run(ctx);
-			ctx.set(AMALTHEA_SLOT, prePartWF.getResultSlot());
+			ctx.set(AMALTHEA_SLOT, ctx.get(prePartWF.getResultSlot()));
 
 			// Configure the partitioning
 			PartWF.setModelLoc(this.selectedFile.getFullPath().toString());
