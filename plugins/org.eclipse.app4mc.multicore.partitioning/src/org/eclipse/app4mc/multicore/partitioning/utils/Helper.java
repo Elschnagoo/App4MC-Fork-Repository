@@ -65,8 +65,8 @@ public class Helper {
 			}
 		}
 		if (rt == 0) {
-			PartLog.getInstance()
-					.log("No instructions constant / deviation found at Runnable " + r.getName() + ". Assuming 1.");
+			PartLog.getInstance().log(
+					"No instructions constant / deviation found at Runnable " + r.getName() + ". Assuming 1.", null);
 			final InstructionsConstant ic = AmaltheaFactory.eINSTANCE.createInstructionsConstant();
 			ic.setValue(1);
 			r.getRunnableItems().add((RunnableItem) ic);

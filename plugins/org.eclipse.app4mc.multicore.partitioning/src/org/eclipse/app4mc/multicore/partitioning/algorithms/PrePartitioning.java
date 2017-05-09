@@ -18,14 +18,12 @@ import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
-import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
-import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.partitioning.IParConstants;
@@ -111,15 +109,6 @@ public class PrePartitioning {
 			PartLog.getInstance().log("Starting Activations Analysis");
 			assert null != modelCopy.getSwModel() && null != modelCopy.getStimuliModel();
 
-			// creating activations in swmodel derived from stimulation model
-			if (modelCopy.getStimuliModel() != null && modelCopy.getSwModel().getActivations() == null) {
-				for (final Stimulus s : modelCopy.getStimuliModel().getStimuli()) {
-					final AmaltheaFactory swf = AmaltheaFactory.eINSTANCE;
-					final PeriodicActivation pa = swf.createPeriodicActivation();
-					pa.setName(s.getName());
-					modelCopy.getSwModel().getActivations().add(pa);
-				}
-			}
 			final CheckActivations ca = new CheckActivations();
 			if (modelCopy.getStimuliModel() != null) {
 				ca.createPPs(modelCopy.getSwModel(), modelCopy.getStimuliModel(), monitor);

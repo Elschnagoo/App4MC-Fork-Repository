@@ -70,10 +70,14 @@ public class PartitioningHandler extends org.eclipse.core.commands.AbstractHandl
 		catch (final InterruptedException e) {
 			e.printStackTrace();
 		}
-		MessageDialog.openInformation(Display.getDefault().getActiveShell(), "Partitioning",
-				part.getResult().equals(Status.OK_STATUS) ? "Partitioning successful"
-						: "Partitioning failed. Please see console / error log for details.");
-
+		if (part.getResult().equals(Status.OK_STATUS)) {
+			MessageDialog.openInformation(Display.getDefault().getActiveShell(), "Partitioning",
+					"Partitioning successful");
+		}
+		else {
+			MessageDialog.openError(Display.getDefault().getActiveShell(), "Partitioning",
+					"Partitioning failed. Please see console / error log for details.");
+		}
 		return null;
 	}
 }
