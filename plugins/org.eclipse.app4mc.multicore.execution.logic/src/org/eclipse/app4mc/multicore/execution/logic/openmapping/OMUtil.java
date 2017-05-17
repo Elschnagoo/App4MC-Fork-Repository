@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.DoubleAdder;
 import java.util.stream.Collectors;
-import org.apache.commons.math.util.MathUtils;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreAllocation;
@@ -189,9 +188,6 @@ public class OMUtil {
 		long[] longArr = new long[values.size()];
 		int i=0;
 		for(Long v:values){
-			System.out.println("+ Val: " + v);
-			System.out.println("+ Res: " + result);
-//			result = MathUtils.lcm(result, v);
 			longArr[i] = v;
 			i++;
 		}
@@ -218,7 +214,7 @@ public class OMUtil {
 	    while (b > 0)
 	    {
 	        long temp = b;
-	        b = a % b; // % is remainder
+	        b = a % b;
 	        a = temp;
 	    }
 	    return a;
