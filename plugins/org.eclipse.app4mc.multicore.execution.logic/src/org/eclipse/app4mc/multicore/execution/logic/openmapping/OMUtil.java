@@ -186,11 +186,42 @@ public class OMUtil {
 		assert 1 >= values.size();
 		long result = values.get(0);
 		
+		long[] longArr = new long[values.size()];
+		int i=0;
 		for(Long v:values){
-			result = MathUtils.lcm(result, v);
+			System.out.println("+ Val: " + v);
+			System.out.println("+ Res: " + result);
+//			result = MathUtils.lcm(result, v);
+			longArr[i] = v;
+			i++;
 		}
 		
+		lcm(longArr);
+		
 		return result;
+	}
+	
+	private static long lcm(long a, long b)
+	{
+	    return a * (b / gcd(a, b));
+	}
+
+	private static long lcm(long[] input)
+	{
+	    long result = input[0];
+	    for(int i = 1; i < input.length; i++) result = lcm(result, input[i]);
+	    return result;
+	}
+	
+	private static long gcd(long a, long b)
+	{
+	    while (b > 0)
+	    {
+	        long temp = b;
+	        b = a % b; // % is remainder
+	        a = temp;
+	    }
+	    return a;
 	}
 	
 
