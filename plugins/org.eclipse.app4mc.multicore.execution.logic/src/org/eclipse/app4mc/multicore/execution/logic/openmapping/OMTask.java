@@ -18,9 +18,11 @@ import java.util.stream.Collectors;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
+import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.Sporadic;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
@@ -295,6 +297,44 @@ public class OMTask {
 					period = val;
 					return period;
 				}
+				// Support fot FMTV
+				if(s instanceof Sporadic) {
+					Sporadic spst = (Sporadic) s;
+					Deviation<Time> dev = spst.getStimulusDeviation();
+					Time x = dev.getLowerBound();
+					if (x == null) {
+						period = 0;
+						return period;
+					}
+					long val = x.getValue();
+					if (val == 0 || x.getUnit() == null) {
+						period = 0;
+						return period;
+					}
+					switch (x.getUnit()) {
+					case PS:
+						val *= 1; //
+						break;
+					case NS:
+						val *= 1000; //
+						break;
+					case US:
+						val *= 1000000L; //
+						break;
+					case MS:
+						val *= 1000000000L; //
+						break;
+					case S:
+						val *= 1000000000000L; //
+						break;
+					default:
+						period = 0;
+						return period;
+					}
+					period = val;
+					return period;
+				}
+				
 			}
 			period = 0;// not periodic
 		}
