@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Dortmund University of Applied Sciences and Arts and others.
+ * Copyright (c) 2015, 2017 Dortmund University of Applied Sciences and Arts and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,7 +48,8 @@ public class OMAllocation {
 		return this.scheduler;
 	}
 
-	// TODO Pragmatic solution, this should be improved according to a design schema
+	// TODO Pragmatic solution, this should be improved according to a design
+	// schema
 	public void addAttribute(final String key, final Object value) {
 		this.attributeList.put(key, value);
 	}
@@ -58,7 +59,8 @@ public class OMAllocation {
 	}
 
 	/**
-	 * Calculates the processing time in pico-seconds (ps) of a Task task on Core core.
+	 * Calculates the processing time in pico-seconds (ps) of a Task task on
+	 * Core core.
 	 *
 	 * @param task
 	 *            Task to be executed
@@ -68,14 +70,11 @@ public class OMAllocation {
 	 */
 	public long calculateProcessingTime() {
 		final BigDecimal ips = BigDecimal.valueOf(this.core.getInstructionsPerSecond());
-		// final BigInteger ins = BigInteger.valueOf(task.getInstructionCount());
 		final BigDecimal ins = BigDecimal.valueOf(this.task.getInstructionCount());
 		// Piko-Seconds per Second
 		final BigDecimal psps = BigDecimal.valueOf(1000L * 1000L * 1000L * 1000L);
-		// final BigDecimal computationTime = psps.multiply(ins).divide(ips);
 		final BigDecimal computationTime = psps.multiply(ins).divide(ips, 5, RoundingMode.CEILING)
-				.divide(BigDecimal.valueOf(this.task.calcRecursionFactor()), MathContext.DECIMAL128);
-		// return (long) Math.ceil(instructions * 1000000000000d / ips);
+				.multiply(BigDecimal.valueOf(this.task.getRecursionFactor()), MathContext.DECIMAL128);
 		return computationTime.longValue();
 	}
 }
