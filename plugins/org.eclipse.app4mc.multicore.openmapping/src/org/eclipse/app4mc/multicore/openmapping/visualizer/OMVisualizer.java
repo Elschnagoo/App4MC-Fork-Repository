@@ -11,7 +11,6 @@
  ******************************************************************************/
 package org.eclipse.app4mc.multicore.openmapping.visualizer;
 
-import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,7 +21,6 @@ import java.util.OptionalLong;
 import org.eclipse.app4mc.multicore.openmapping.model.OMAllocation;
 import org.eclipse.app4mc.multicore.openmapping.model.OMCore;
 import org.eclipse.app4mc.multicore.openmapping.model.OMMapping;
-import org.eclipse.app4mc.multicore.openmapping.model.OMTask;
 
 public class OMVisualizer {
 	private final OMMapping mapping;
@@ -46,14 +44,14 @@ public class OMVisualizer {
 		output += "+---------------------------------------+-------------------------------------------------+-----------------+------------------------+\n";
 		for (final Map.Entry<OMCore, CoreElement> e : this.allCores.entrySet()) {
 			final String name = String.format("%-26s", e.getKey().getCoreRef().getUniqueName());
-			final String tasks = String.format("%3d", e.getValue().getTaskList().size());
+			final String tasks = String.format("%3d", e.getValue().getTasksSize());
 			final String runnables = String.format("%4d", e.getValue().getScheduledRunnableCount());
 			final String utilization = drawUtilizationBar(e.getValue().getComputationTime(),
 					lMaxComputationTime.getAsLong());
 			final String cycles = String.format("%-,15d", e.getValue().getScheduledInstructionCount());
 			final String percentage = String.format("(%3d%%)",
 					(int) (100.0 / lMaxComputationTime.getAsLong() * e.getValue().getComputationTime()));
-			final String compurationTime = String.format("%,19.5f ï¿½s",
+			final String compurationTime = String.format("%,19.5f µs",
 					e.getValue().getComputationTime() / (1000.0 * 1000.0));
 			output += String.format("| %s (%s/%s) | %s %s | %s | %s |\n", name, tasks, runnables, utilization,
 					percentage, cycles, compurationTime);
@@ -86,60 +84,48 @@ public class OMVisualizer {
 		while (itAllocations.hasNext()) {
 			final OMAllocation allocation = itAllocations.next();
 			final OMCore core = allocation.getCore();
-			final OMTask task = allocation.getTask();
 			// Check if core has been processed before
 			if (!this.allCores.containsKey(core)) {
 				final CoreElement c = new CoreElement(allocation.getCore());
-				c.addTask(task);
+				c.addAllocation(allocation);
 				this.allCores.put(core, c);
 			}
 			else {
 				final CoreElement c = this.allCores.get(core);
-				c.addTask(task);
+				c.addAllocation(allocation);
 			}
 		}
 	}
 
 	private class CoreElement {
-		final OMCore coreRef;
-		List<OMTask> tasks = new LinkedList<OMTask>();
+		List<OMAllocation> allocations = new LinkedList<OMAllocation>();
 		long iScheduledInstructionCount = -1;
 		long iScheduledRunnableCount = -1;
 		// Computation time is in milliseconds (ms)
 		long iComputationTime = -1;
 
 		CoreElement(final OMCore core) {
-			this.coreRef = core;
 		}
 
-		public void addTask(final OMTask task) {
-			this.tasks.add(task);
+		public void addAllocation(final OMAllocation allocation) {
+			this.allocations.add(allocation);
 		}
 
-		public List<OMTask> getTaskList() {
-			return this.tasks;
+		public int getTasksSize() {
+			return this.allocations.size();
 		}
 
 		public long getScheduledInstructionCount() {
 			if (0 > this.iScheduledInstructionCount) {
-				// this.iScheduledInstructionCount =
-				// this.tasks.parallelStream().mapToLong(OMTask::getInstructionCount)
-				// .sum();
-				this.iScheduledInstructionCount = (long) Math.ceil(this.tasks.parallelStream()
-						.mapToDouble((t) -> t.getInstructionCount() / t.calcRecursionFactor()).sum());
-				// this.iScheduledInstructionCount = (long)
-				// Math.ceil(this.tasks.parallelStream()
-				// .mapToDouble(OMTask::getRelativeCycles).sum());
-				// this.iScheduledInstructionCount =
-				// this.tasks.parallelStream().mapToLong((k) ->
-				// OMAllocation(k,this).calculateProcessingTime).;
+				this.iScheduledInstructionCount = (long) Math.ceil(this.allocations.parallelStream()
+						.mapToDouble((a) -> (double) a.getTask().getInstructionCount() / (double) a.getTask().getRecursionFactor()).sum());
 			}
 			return this.iScheduledInstructionCount;
 		}
 
 		public long getScheduledRunnableCount() {
 			if (0 > this.iScheduledRunnableCount) {
-				this.iScheduledRunnableCount = this.tasks.parallelStream().mapToLong(OMTask::getRunnableCount).sum();
+				this.iScheduledRunnableCount = this.allocations.parallelStream().mapToLong((a) -> a.getTask().getRunnableCount()).sum();
 			}
 			return this.iScheduledRunnableCount;
 		}
@@ -151,23 +137,9 @@ public class OMVisualizer {
 		 */
 		public long getComputationTime() {
 			if (0 > this.iComputationTime) {
-				// Instructions per Second
-				final BigInteger ips = BigInteger.valueOf(getCoreRef().getInstructionsPerSecond());
-				// Number of Instructions
-				final BigInteger ins = BigInteger.valueOf(getScheduledInstructionCount());
-				// Piko-Seconds per Second
-				final BigInteger psps = BigInteger.valueOf(1000L * 1000L * 1000L * 1000L);
-				final BigInteger computationTime = psps.multiply(ins).divide(ips);
-
-				// TODO Not sure if we will ever reach a number so high, so lets
-				// better be prepared.
-				this.iComputationTime = computationTime.longValueExact();
+				this.iComputationTime = this.allocations.parallelStream().mapToLong((a) -> a.calculateProcessingTime()).sum();
 			}
 			return this.iComputationTime;
-		}
-
-		public OMCore getCoreRef() {
-			return this.coreRef;
 		}
 	}
 }
