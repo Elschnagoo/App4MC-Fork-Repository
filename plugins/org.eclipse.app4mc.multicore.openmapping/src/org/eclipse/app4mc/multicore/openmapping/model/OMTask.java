@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Dortmund University of Applied Sciences and Arts and others.
+ * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,18 +19,19 @@ import java.util.Map;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
+import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.Sporadic;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.core.runtime.IStatus;
@@ -38,12 +39,17 @@ import org.eclipse.core.runtime.IStatus;
 public class OMTask {
 	private final String sTokenInclude = "[ConstraintInclude]";
 	private final String sTokenExclude = "[ConstraintExclude]";
-	
+
 	private final Task taskRef;
 	private OMTask predecessor = null;
 	private long iInstructionCount = -1;
 	private long iRunnableCount = -1;
-	
+	private long iPeriod = -1;
+	/**
+	 * Max period among all tasks, used for recursion factor calculation
+	 */
+	private static long iMaxPeriod = -1;
+
 	private ArrayList<OMTag> validTags = new ArrayList<OMTag>();
 	private ArrayList<OMTag> invalidTags = new ArrayList<OMTag>();
 
@@ -56,26 +62,26 @@ public class OMTask {
 		this(taskRef);
 		this.predecessor = predecessor;
 	}
-	
+
 	private void addTags() {
 		final Map<String, Value> itPropertyConstraints;
 		// Check custom Properties
-		if(this.getTaskRef().getCustomProperties().size() > 0) {
+		if (this.getTaskRef().getCustomProperties().size() > 0) {
 			itPropertyConstraints = this.getTaskRef().getCustomProperties().map();
-			itPropertyConstraints.forEach((k,v) -> parsePropertyConstraint(k,v));
+			itPropertyConstraints.forEach((k, v) -> parsePropertyConstraint(k, v));
 		}
 	}
 
 	private void parsePropertyConstraint(String k, Value v) {
 		UniversalHandler.getInstance().logCon("T: " + taskRef.getName() + " - Parsing (K: " + k + " V: " + v + ")");
 		// Check if we have a valid Property Constraint
-		if(v instanceof ReferenceObject) {
+		if (v instanceof ReferenceObject) {
 			ReferenceObject ref = (ReferenceObject) v;
-			if(ref.getValue() instanceof Tag) {
+			if (ref.getValue() instanceof Tag) {
 				OMTag ot = new OMTag((Tag) ref.getValue());
-				if(k.contains(sTokenInclude)) {
+				if (k.contains(sTokenInclude)) {
 					this.validTags.add(ot);
-				} else if(k.contains(sTokenExclude)) {
+				} else if (k.contains(sTokenExclude)) {
 					this.invalidTags.add(ot);
 				} else {
 					// Skipping
@@ -83,8 +89,6 @@ public class OMTask {
 			}
 		}
 	}
-
-
 
 	private void fetchRunnableAndInstructionCount() {
 		// Check if a call graph is present in the task and if it is valid
@@ -101,7 +105,8 @@ public class OMTask {
 			return;
 		}
 
-		// Runnable counter is increased by the child methods. Since we init it with -1, we have to increase it one time
+		// Runnable counter is increased by the child methods. Since we init it
+		// with -1, we have to increase it one time
 		// manually.
 		++this.iRunnableCount;
 
@@ -149,8 +154,9 @@ public class OMTask {
 	}
 
 	/**
-	 * Processes the <code>CallSequence</code> and fetches the number of Instructions for each of its
-	 * <code>TaskRunnableCalls</code>. Further handled elements may be added in the future.
+	 * Processes the <code>CallSequence</code> and fetches the number of
+	 * Instructions for each of its <code>TaskRunnableCalls</code>. Further
+	 * handled elements may be added in the future.
 	 *
 	 * @param callSeq
 	 *            The CallSequence to process
@@ -173,8 +179,7 @@ public class OMTask {
 			final CallSequenceItem callSeqEntry = itCallSeqItems.next();
 			if (callSeqEntry instanceof TaskRunnableCall) {
 				tmpInstr += processTaskRunnableCall((TaskRunnableCall) callSeqEntry);
-			}
-			else {
+			} else {
 				UniversalHandler.getInstance().logWarn("Unkown CallSequenceItem specialisation. Skipping...");
 			}
 		}
@@ -182,8 +187,8 @@ public class OMTask {
 	}
 
 	/**
-	 * Processes the <code>TaskRunnableCall</code> and fetches the number of Instructions for each of its
-	 * <code>Runnable</code>s.
+	 * Processes the <code>TaskRunnableCall</code> and fetches the number of
+	 * Instructions for each of its <code>Runnable</code>s.
 	 *
 	 * @param taskRunnableCall
 	 *            The TaskRunnableCall to process
@@ -200,7 +205,8 @@ public class OMTask {
 
 		++this.iRunnableCount;
 		final OMRunnable r = new OMRunnable(runnable);
-		// TODO The Runnables should be stored in some way, maybe even the Graph might be build at this point
+		// TODO The Runnables should be stored in some way, maybe even the Graph
+		// might be build at this point
 		return r.getInstructionCount();
 	}
 
@@ -210,77 +216,113 @@ public class OMTask {
 	}
 
 	/**
-	 * Fetches the referenced stimuli and sets the recursion factor, i.e. how often this task is being executed
-	 * DEPRECATED: This method is deprecated. The overall concept of using a recursion factor should be replaced by a more
-	 * accurate and/or efficient approach.
-	 *
-	 * @return
+	 * Get the period period of the task activation.
+	 * 
+	 * @param t
+	 * @return Period of the task in pico seconds or 0 if the task has no period
 	 */
-	//@Deprecated
-	@SuppressWarnings("fallthrough")
-	public double calcRecursionFactor() {
-		final Stimulus st;
+	public long getPeriod() {
 		final List<Stimulus> lSt;
-		double faktor = 1.0;
 		// Only check for the first stimulus
 		if ((lSt = getTaskRef().getStimuli()) == null || lSt.size() <= 0) {
-			UniversalHandler.getInstance().log(
-					"Stimuli not set.\nSkipping Reccurence factor calculation for Task " + this.taskRef.getName(),
-					null);
-			return faktor;
+			UniversalHandler.getInstance().log("Stimuli not set.\nSkipping Task " + this.taskRef.getName(), null);
+			return iPeriod;
 		}
-		if ((st = lSt.get(0)) == null) {
-			UniversalHandler.getInstance().log(
-					"Stimuli not set.\nSkipping Reccurence factor calculation for Task " + this.taskRef.getName(),
-					null);
-			return faktor;
-		}
+		if (iPeriod < 0) {
+			for (Stimulus s : lSt) {
+				if (s instanceof Periodic) {
+					Periodic ps = (Periodic) s;
+					Time x = ps.getRecurrence();
+					if (x == null) {
+						iPeriod = 0;
+						return iPeriod;
+					}
+					long val = x.getValue();
+					if (val == 0 || x.getUnit() == null) {
+						iPeriod = 0;
+						return iPeriod;
+					}
+					switch (x.getUnit()) {
+					case PS:
+						val *= 1; //
+						break;
+					case NS:
+						val *= 1000; //
+						break;
+					case US:
+						val *= 1000000L; //
+						break;
+					case MS:
+						val *= 1000000000L; //
+						break;
+					case S:
+						val *= 1000000000000L; //
+						break;
+					default:
+						iPeriod = 0;
+						return iPeriod;
+					}
+					iPeriod = val;
+					if (iPeriod > iMaxPeriod) {
+						iMaxPeriod = iPeriod;
+					}
 
-		if (st instanceof Periodic) {
-			final Periodic pSt = (Periodic) st;
-			final int value;
-			final Time rec;
-			final TimeUnit u;
-			// Check if the Recurrence is set
-			if ((rec = pSt.getRecurrence()) == null) {
-				UniversalHandler.getInstance()
-						.log("Unexpected Periodic Stimulus: The recurrence value is unset.\nSkipping Recurence factor calculation for Task "
-								+ this.taskRef.getName(), null);
-				return faktor;
+					return iPeriod;
+				}
+				// Support fot FMTV
+				if (s instanceof Sporadic) {
+					Sporadic spst = (Sporadic) s;
+					Deviation<Time> dev = spst.getStimulusDeviation();
+					Time x = dev.getLowerBound();
+					if (x == null) {
+						iPeriod = 0;
+						return iPeriod;
+					}
+					long val = x.getValue();
+					if (val == 0 || x.getUnit() == null) {
+						iPeriod = 0;
+						return iPeriod;
+					}
+					switch (x.getUnit()) {
+					case PS:
+						val *= 1; //
+						break;
+					case NS:
+						val *= 1000; //
+						break;
+					case US:
+						val *= 1000000L; //
+						break;
+					case MS:
+						val *= 1000000000L; //
+						break;
+					case S:
+						val *= 1000000000000L; //
+						break;
+					default:
+						iPeriod = 0;
+						return iPeriod;
+					}
+					iPeriod = val;
+					if (iPeriod > iMaxPeriod) {
+						iMaxPeriod = iPeriod;
+					}
+					return iPeriod;
+				}
+
 			}
-			// Check if the Recurrence Value is set
-			if ((value = rec.getValue()) == 0) {
-				UniversalHandler.getInstance()
-						.log("Unexpected Periodic Stimulus: The recurrence value is 0.\nSkipping Recurence factor calculation for Task "
-								+ this.taskRef.getName(), null);
-				return faktor;
-			}
-			// Check if the Recurrence Values Time Unit is set
-			if ((u = rec.getUnit()) == null) {
-				UniversalHandler.getInstance()
-						.log("Unexpected Periodic Stimulus: The TimeUnit is unset.\nSkipping Recurence factor calculation for Task "
-								+ this.taskRef.getName(), null);
-				return faktor;
-			}
-			switch (u.getLiteral()) {
-			case "ps":// 1.0E-12
-				faktor = faktor / 1000;
-			case "ns":// 1.0E-9
-				faktor = faktor / 1000;
-			case "us":// 1.0E-6
-				faktor = faktor / 1000;
-			case "ms":// 1.0E-3
-				faktor = faktor / 1000;
-			case "s": // 1.0
-			default:
-				break;
-			}
-			faktor = faktor * value;
-			return faktor;
+			iPeriod = 0;// not periodic
 		}
-		return faktor;
+		return iPeriod;
 	}
-	
+
+	public double getRecursionFactor() {
+		if (iPeriod < 0) {
+			getPeriod();
+		}
+		return iMaxPeriod / (double) iPeriod;
+	}
+
 	public Task getTaskRef() {
 		return this.taskRef;
 	}
@@ -302,12 +344,20 @@ public class OMTask {
 		}
 		return this.iRunnableCount;
 	}
-	
+
 	public ArrayList<OMTag> getValidTags() {
 		return this.validTags;
 	}
-	
+
 	public ArrayList<OMTag> getInvalidTags() {
 		return this.invalidTags;
+	}
+
+	public static void init() {
+		iMaxPeriod = -1;
+	}
+	
+	public static long getMaxPeriod() {
+		return iMaxPeriod;
 	}
 }
