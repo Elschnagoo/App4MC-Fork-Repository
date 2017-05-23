@@ -23,6 +23,7 @@ public class ProblemGraph {
 	
 	public boolean initialize() {
 		// Fetch tasks
+		OMTask.init();
 		if (null == (this.taskList = ListBuilder.getTaskList(model.getSwModel()))) {
 			this.con.append("Error during TaskList generation, exiting.");
 			return false;
