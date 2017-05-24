@@ -77,6 +77,7 @@
 		<module>../../plugins/com.mxgraph</module>
 		<module>../../plugins/org.sqlite.jdbc</module>
 
+		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.081</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.080</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.072</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.071</module>

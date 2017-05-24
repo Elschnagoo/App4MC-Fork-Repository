@@ -80,6 +80,10 @@ public class ModelMigrationJob extends Job {
 		subMonitor.worked(1);
 
 		if (migStepEntries.size() == 0) {
+
+			this.logger.error("Migration not supported for the selected model versions. \nInput Model version : \""
+					+ inputModelVersion + "\" Output Model Version : \"" + outputModelVersion + "\"");
+
 			return new Status(IStatus.CANCEL, " org.eclipse.app4mc.amalthea.converters.ui",
 					IMigrationStatus.UNSUPPORTED_MODEL_VERSIONS,
 					"Migration not supported for the selected model versions. \nInput Model version : \""
@@ -242,6 +246,7 @@ public class ModelMigrationJob extends Job {
 		versions.add("0.7.1");
 		versions.add("0.7.2");
 		versions.add("0.8.0");
+		versions.add("0.8.1");
 
 		final int inputModelVersionIndex = versions.indexOf(inputModelVersion);
 		final int outputModelVersionIndex = versions.indexOf(outputModelVersion);
