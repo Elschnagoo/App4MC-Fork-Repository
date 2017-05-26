@@ -101,8 +101,15 @@ public class CycleElimination {
 		for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
 			if (rsc.getRunnableGroups().get(0).getRunnables().get(0) != null
 					&& rsc.getRunnableGroups().get(1).getRunnables().get(0) != null) {
-				test.addEdge(rsc.getRunnableGroups().get(0).getRunnables().get(0),
-						rsc.getRunnableGroups().get(1).getRunnables().get(0), rsc);
+				if (!test.vertexSet().contains(rsc.getRunnableGroups().get(0).getRunnables().get(0))
+						|| !test.vertexSet().contains(rsc.getRunnableGroups().get(1).getRunnables().get(0))) {
+					PartLog.getInstance().log("Runnables of RSC " + rsc.getName() + " are not contained in JGraph",
+							null);
+				}
+				else {
+					test.addEdge(rsc.getRunnableGroups().get(0).getRunnables().get(0),
+							rsc.getRunnableGroups().get(1).getRunnables().get(0), rsc);
+				}
 			}
 		}
 		return test;
