@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.algorithms;
 
+import java.util.Iterator;
+
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
@@ -18,6 +20,7 @@ import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
+import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
@@ -96,6 +99,7 @@ public class PrePartitioning {
 		if (isEnableLog()) {
 			PartLog.getInstance().setLogName("PrePartitioning");
 		}
+		PartLog.getInstance().logSimple("**Starting PrePartitioning**");
 		if (modelCopy.getSwModel() == null) {
 			PartLog.getInstance().log("No SW Model found. Stopping Prepartitioning", null);
 			return null;
@@ -212,7 +216,7 @@ public class PrePartitioning {
 
 		// print prepartitioning result
 		new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes());
-		PartLog.getInstance().logSimple("PrePartitioning finished.");
+		PartLog.getInstance().logSimple("**PrePartitioning finished**");
 
 		return modelCopy;
 	}
@@ -277,6 +281,27 @@ public class PrePartitioning {
 							}
 						}
 					}
+
+					// replace refs to cumulated runnables within
+					// processPrototypes
+					for (final ProcessPrototype pp : modelCopy.getSwModel().getProcessPrototypes()) {
+						final Iterator<TaskRunnableCall> trcIt = pp.getRunnableCalls().iterator();
+						final EList<TaskRunnableCall> trcsadd = new BasicEList<>();
+						while (trcIt.hasNext()) {
+							final TaskRunnableCall trc = trcIt.next();
+							if (reg.getRunnables().contains(trc.getRunnable())) {
+								trcIt.remove();
+								if (!trcsadd.contains(r)) {
+									final TaskRunnableCall trcnew = af.createTaskRunnableCall();
+									trcnew.setRunnable(r);
+									trcsadd.add(trcnew);
+								}
+							}
+						}
+						pp.getRunnableCalls().addAll(trcsadd);
+					}
+					new Helper().updatePPsFirstLastActParams(modelCopy.getSwModel());
+
 					// remove runnable pairing runnables (cumulated runnable
 					// replaces these temporarily)
 					modelCopy.getSwModel().getRunnables().removeAll(reg.getRunnables());
