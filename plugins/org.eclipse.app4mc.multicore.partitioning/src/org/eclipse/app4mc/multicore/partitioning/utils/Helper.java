@@ -56,7 +56,7 @@ public class Helper {
 		for (final RunnableItem ra : r.getRunnableItems()) {
 			if (ra instanceof RunnableInstructions) {
 				final RunnableInstructions ri = (RunnableInstructions) ra;
-				rt = ri.getDefault() instanceof InstructionsConstant
+				rt += ri.getDefault() instanceof InstructionsConstant
 						? ((InstructionsConstant) ri.getDefault()).getValue()
 						: ri.getDefault() instanceof InstructionsDeviation ? (((InstructionsDeviation) ri.getDefault())
 								.getDeviation().getLowerBound().getValue()
@@ -69,7 +69,9 @@ public class Helper {
 					"No instructions constant / deviation found at Runnable " + r.getName() + ". Assuming 1.", null);
 			final InstructionsConstant ic = AmaltheaFactory.eINSTANCE.createInstructionsConstant();
 			ic.setValue(1);
-			r.getRunnableItems().add((RunnableItem) ic);
+			final RunnableInstructions ri = AmaltheaFactory.eINSTANCE.createRunnableInstructions();
+			ri.setDefault(ic);
+			r.getRunnableItems().add(ri);
 			rt = 1;
 		}
 		return rt;
@@ -312,13 +314,24 @@ public class Helper {
 	 */
 	public String writePPs(final EList<ProcessPrototype> processPrototypes) {
 		final StringBuffer sb = new StringBuffer();
+		short i = 0;
+		sb.append("******************************************************\n");
+		sb.append(String.format("%2S%10S%16S%6S", " #", "PP", "Instructionssum", "#TRCs") + " TRCs\n");
+		sb.append("******************************************************\n");
 		for (final ProcessPrototype pp : processPrototypes) {
-			sb.append("ProcessPrototype " + pp.getName() + "(" + getPPInstructions(pp) + ") : ");
+			sb.append(String.format("%2s%10s%16s%6s", i++, pp.getName(), getPPInstructions(pp),
+					pp.getRunnableCalls().size()) + " ");
+			// sb.append("ProcessPrototype " + pp.getName() + "(" +
+			// getPPInstructions(pp) + ") : ");
 			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-				sb.append(trc.getRunnable().getName() + " ");
+				sb.append(String.format("%30s",
+						trc.getRunnable().getName().substring(0,
+								trc.getRunnable().getName().length() > 29 ? 29 : trc.getRunnable().getName().length())
+								+ " "));
 			}
 			sb.append("\n");
 		}
+		sb.append("******************************************************");
 		return sb.toString();
 	}
 
@@ -330,7 +343,7 @@ public class Helper {
 	public long getPPInstructions(final ProcessPrototype pp) {
 		long instrSum = 0;
 		for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-			instrSum += new Helper().getInstructions(trc.getRunnable());
+			instrSum += getInstructions(trc.getRunnable());
 		}
 		return instrSum;
 	}
