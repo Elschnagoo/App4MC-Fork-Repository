@@ -64,7 +64,6 @@ public class PerformPartitioning {
 	public void execute(final IFile file, final IProgressMonitor monitor, final IPreferenceStore store) {
 		final UniversalHandler uh = UniversalHandler.getInstance();
 		PartLog.getInstance().setLogName("PartitioningHandler");
-		PartLog.getInstance().log("Starting Partitioning");
 		final OutputPathParser outputParser = new OutputPathParser(IParConstants.PRE_LOC_RADIO,
 				IParConstants.PRE_LOC_STRING, store);
 		String append = "";
@@ -91,52 +90,53 @@ public class PerformPartitioning {
 
 		switch (store.getString(IParConstants.PRE_PARTITIONING_ALG)) {
 			case PART_ESSP:
-				PartLog.getInstance().logSimple("--Starting earliest start schedule partitioning--");
+				PartLog.getInstance().logSimple("**Starting earliest start schedule partitioning**");
 				final ESSP essp = new ESSP(amodels.getSwModel(), amodels.getConstraintsModel(),
 						Integer.parseInt(store.getString(IParConstants.PRE_INT)));
 				essp.build(monitor);
 				if (essp.swm.getProcessPrototypes().size() < Integer.parseInt(store.getString(IParConstants.PRE_INT))) {
 					PartLog.getInstance()
 							.log("ESSP could not generate " + Integer.parseInt(store.getString(IParConstants.PRE_INT))
-									+ " partitions since the softwaremodel's graph does not feature enough parallel runnables. "
+									+ " partitions since the softwaremodel's graph does not feature enough parallel runnables (though possibly sequences). "
 									+ essp.swm.getProcessPrototypes().size() + " partitions could be generated.");
 				}
 				amodels.setConstraintsModel(essp.cm);
 				amodels.setSwModel(essp.swm);
 				amodels = retainAffntyCnstrnts(file, amodels, monitor);
-
+				PartLog.getInstance().log(new Helper().writePPs(amodels.getSwModel().getProcessPrototypes()));
+				PartLog.getInstance().logSimple("**Earliest start schedule partitioning finished**");
 				Helper.writeModelFile(file, outputParser.parseOutputFileURI(file, "_ESSP"), amodels);
-				PartLog.getInstance().logSimple("--Earliest start schedule partitioning finished--");
 				break;
 			case PART_CPP:
-				PartLog.getInstance().logSimple("--Starting critical path partitioning--");
+				PartLog.getInstance().logSimple("**Starting critical path partitioning**");
 				final CPP cpp = new CPP(amodels.getSwModel(), amodels.getConstraintsModel());
 				cpp.bglobalCP = store.getBoolean(IParConstants.PRE_GCP);
 				cpp.build(monitor);
 				amodels.setConstraintsModel(cpp.cm);
 				amodels.setSwModel(cpp.swm);
 				amodels = retainAffntyCnstrnts(file, amodels, monitor);
+				PartLog.getInstance().log(new Helper().writePPs(amodels.getSwModel().getProcessPrototypes()));
+				PartLog.getInstance().logSimple("**Critical path partitioning finished**");
 				Helper.writeModelFile(file, outputParser.parseOutputFileURI(file, "_CPP"), amodels);
-				PartLog.getInstance().logSimple("--Critical path partitioning finished--");
 				break;
 			default:
 				break;
 		}
 
 		if (store.getBoolean(IParConstants.PRE_TA)) {
-			PartLog.getInstance().logSimple("--Starting generating a runnable sequencing constraints alternative--");
+			PartLog.getInstance().logSimple("**Starting generating a runnable sequencing constraints alternative**");
 			final CreateTAInput ctai = new CreateTAInput();
 			ctai.setCm(amodels.getConstraintsModel());
 			ctai.combineSimilarRSCs();
 			amodels.setConstraintsModel(ctai.getCm());
 			Helper.writeModelFile(file, outputParser.parseOutputFileURI(file, "_TAInput"), amodels);
-			PartLog.getInstance().logSimple("--Generating a runnable sequencing constraints alternative finished--");
+			PartLog.getInstance().logSimple("**Generating a runnable sequencing constraints alternative finished**");
 		}
 		if (store.getBoolean(IParConstants.PRE_VIS)) {
-			PartLog.getInstance().logSimple("--Generating Applet--");
+			PartLog.getInstance().logSimple("**Generating Applet**");
 			final WriteAppletHandler wa = new WriteAppletHandler();
 			wa.write(amodels.getSwModel(), amodels.getConstraintsModel(), file.getLocation().toString());
-			PartLog.getInstance().logSimple("--Applet generation finished--");
+			PartLog.getInstance().logSimple("**Applet generation finished**");
 		}
 
 

@@ -37,14 +37,12 @@ import org.eclipse.emf.common.util.EList;
 import org.jgrapht.DirectedGraph;
 
 /**
- * The critical path partitioning approach assigns runnables to
- * ProcessPrototypes with respect to their execution cycles and dependencies.
- * The first ProcessPrototype will contain the critical path and other
- * ProcessPrototypes will contain graph branches next to the critical path. The
- * mechanism is thereby able to provide maximal parallelism and minimal runtime.
- * The boolean globalCPForAll defines whether a critical path is created (for a
- * separate ProcessPrototype) for each existing ProcessPrototype (e.g. created
- * by the previous independent graph partitioning)
+ * The critical path partitioning approach assigns runnables to ProcessPrototypes with respect to their
+ * execution cycles and dependencies. The first ProcessPrototype will contain the critical path and other
+ * ProcessPrototypes will contain graph branches next to the critical path. The mechanism is thereby able to
+ * provide maximal parallelism and minimal runtime. The boolean globalCPForAll defines whether a critical path
+ * is created (for a separate ProcessPrototype) for each existing ProcessPrototype (e.g. created by the
+ * previous independent graph partitioning)
  */
 public class CPP {
 	public SWModel swm;
@@ -64,8 +62,7 @@ public class CPP {
 
 
 	/**
-	 * INPUT: SWModel and ConstraintsModel featuring runnables and dependencies
-	 * (graph structure, constructor)
+	 * INPUT: SWModel and ConstraintsModel featuring runnables and dependencies (graph structure, constructor)
 	 *
 	 * @return OUTPUT: Set of ProcessPrototypes with taskRunnableCalls
 	 */
@@ -128,8 +125,7 @@ public class CPP {
 		final SWModel swm2 = swf.createSWModel();
 		final ConstraintsModel cm2 = cf.createConstraintsModel();
 		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
-			// create subset models for each previous PP (independent graph /
-			// activation graph)
+			// create subset models for each previous PP (independent graph / activation graph)
 			if (cm2.getRunnableSequencingConstraints().size() > 0) {
 				final EList<RunnableSequencingConstraint> rscl = new BasicEList<RunnableSequencingConstraint>();
 				for (final RunnableSequencingConstraint rsc : cm2.getRunnableSequencingConstraints()) {
@@ -150,8 +146,7 @@ public class CPP {
 				}
 			}
 
-			// List has to be created in order to avoid
-			// concurrent modification exception
+			// List has to be created in order to avoid concurrent modification exception
 			final EList<RunnableSequencingConstraint> rscl = new BasicEList<RunnableSequencingConstraint>();
 			for (final RunnableSequencingConstraint rsc : this.cm.getRunnableSequencingConstraints()) {
 				rscl.add(rsc);
@@ -262,15 +257,15 @@ public class CPP {
 		// Write result into console
 		PartLog.getInstance()
 				.log("Critical Path Partitioning finished. Created ProcessPrototypes: " + this.result.size());
-		for (final ProcessPrototype pp : this.result) {
-			final StringBuffer sb = new StringBuffer();
-			sb.append("ProcessPrototype " + pp.getName() + ": ");
-			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
-				sb.append(trc.getRunnable().getName() + " (" + this.cache.get(trc.getRunnable()).eit + ","
-						+ this.cache.get(trc.getRunnable()).lit + ") ");
-			}
-			PartLog.getInstance().log(sb.toString());
-		}
+
+		// The following outout can be used to also illustrate each runnable's eit / lit values
+		/*
+		 * for (final ProcessPrototype pp : this.result) { final StringBuffer sb = new StringBuffer();
+		 * sb.append( "ProcessPrototype " + pp.getName() + ": "); for (final TaskRunnableCall trc :
+		 * pp.getRunnableCalls()) { sb.append(trc.getRunnable().getName() + " (" +
+		 * this.cache.get(trc.getRunnable()).eit + "," + this.cache.get(trc.getRunnable()).lit + ") "); }
+		 * PartLog.getInstance().log(sb.toString()); }
+		 */
 
 		// Retain AccessPrecedences
 		new Helper().assignAPs(aps);
@@ -295,16 +290,13 @@ public class CPP {
 	}
 
 	/**
-	 * any assignment influences eit & lit values of unassigned nodes, this
-	 * method corrects them
+	 * any assignment influences eit & lit values of unassigned nodes, this method corrects them
 	 *
 	 * @param r
-	 *            the assigned runnable in order to determine suceeding and
-	 *            preceeding unassigned runnables
+	 *            the assigned runnable in order to determine suceeding and preceeding unassigned runnables
 	 * @param ttime
-	 *            the assigned time of assigend @param r, to determine a
-	 *            distance, that has to be added to eit or subtracted from lit
-	 *            values
+	 *            the assigned time of assigend @param r, to determine a distance, that has to be added to eit
+	 *            or subtracted from lit values
 	 * @throws Exception
 	 */
 	private void updateTFs(final Runnable r, final long ttime) {
@@ -382,15 +374,13 @@ public class CPP {
 	}
 
 	/**
-	 * 1st half: determines earliest assignable node; 2nd half: determines a
-	 * node within the given set of nodes @param an, that features the most
-	 * restricted time frame and lowest communication overhead
+	 * 1st half: determines earliest assignable node; 2nd half: determines a node within the given set of
+	 * nodes @param an, that features the most restricted time frame and lowest communication overhead
 	 *
 	 * @return most effective node
 	 */
 	private Runnable getMostEffectiveNode(final EList<Runnable> an) {
-		// from all assignable runnables, check preceding unassigned runnable
-		// instruction sums
+		// from all assignable runnables, check preceding unassigned runnable instruction sums
 		final HashMap<Runnable, Long> hm = new HashMap<Runnable, Long>();
 		final long cpl = this.globalCP.getPathLength();
 		for (final Runnable r : an) {
@@ -416,12 +406,10 @@ public class CPP {
 	}
 
 	/**
-	 * computes the runnable's @param r communication overhead that is defined
-	 * by the sum of accessed label size(s) in bits, shared with runnables of
-	 * other processprototypes
+	 * computes the runnable's @param r communication overhead that is defined by the sum of accessed label
+	 * size(s) in bits, shared with runnables of other processprototypes
 	 *
-	 * @return communication overhead = size of shared labels in bits (with
-	 *         other processprototypes)
+	 * @return communication overhead = size of shared labels in bits (with other processprototypes)
 	 */
 	private long getCommunicationOverhead(final Runnable r) {
 		int co = 0;
@@ -450,7 +438,7 @@ public class CPP {
 		for (final RunnableItem ri : r.getRunnableItems()) {
 			if (ri instanceof LabelAccess) {
 				final LabelAccess laSource = (LabelAccess) ri;
-				if (laSource.getData()!=null){
+				if (laSource.getData() != null) {
 					final EList<LabelAccess> las = laSource.getData().getLabelAccesses();
 					// check the other runnables that access same label
 					for (final LabelAccess laOther : las) {
@@ -461,14 +449,14 @@ public class CPP {
 									final TaskRunnableCall trc2 = or.getTaskRunnableCalls().get(0);
 									if (trc2.eContainer() instanceof ProcessPrototype) {
 										final ProcessPrototype opp = (ProcessPrototype) trc2.eContainer();
-										// only add databits if shared ressource is
-										// shared with another processprototype
+										// only add databits if shared ressource is shared with another
+										// processprototype
 										if (!opp.equals(pp) && opp.getName() != ("allRunnables")) {
 											if (laSource.getData().getSize() != null) {
 												co += laSource.getData().getSize().getNumberBits();
 											}
 											else {
-												// no label data available --> add 1
+												// no label data available--> add 1
 												co += 1;
 											}
 										}
@@ -496,8 +484,8 @@ public class CPP {
 	}
 
 	/**
-	 * computes all assignable nodes according to a specific starttime and no
-	 * order constraint violation with any assigned runnable
+	 * computes all assignable nodes according to a specific starttime and no order constraint violation with
+	 * any assigned runnable
 	 *
 	 * @param tt
 	 *            tasktime

@@ -88,7 +88,6 @@ public class ESSPe {
 			final List<ProcessPrototype> ppl = new BasicEList<ProcessPrototype>();
 			ppl.add(ppNew1);
 			ppl.add(ppNew2);
-			this.exceptPPs.clear();
 			final ProcessPrototype ppEdit = getLongestPP();
 			if (null != ppEdit) {
 				final Stack<Runnable> rs = createRunnableStack(ppEdit);
@@ -124,7 +123,6 @@ public class ESSPe {
 		new Helper().updateRSCs(this.cm, this.swm);
 		new Helper().updatePPsFirstLastActParams(this.swm);
 		new Helper().assignAPs(aps);
-		PartLog.getInstance().log(new Helper().writePPs(this.swm.getProcessPrototypes()));
 		return this.swm.getProcessPrototypes();
 	}
 
@@ -222,41 +220,23 @@ public class ESSPe {
 		return rs;
 	}
 
-	/**
-	 * ensures to select a PP that can be parallelized: at least 2 entries and
-	 * not containing a sequence
-	 *
-	 * @param exceptPP
-	 *            (can be null initially)
-	 * @return a PP that can be parallelized
-	 */
-	private final List<ProcessPrototype> exceptPPs = new BasicEList<ProcessPrototype>();
 
+	/**
+	 * find PP with > 1 TRCs, return the one with most cumulated instructions
+	 *
+	 * @return
+	 */
 	private ProcessPrototype getLongestPP() {
 		ProcessPrototype pps = null;
 		long max = 0;
 		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
-			final long temp = new Helper().getPPInstructions(pp);
-			if (!this.exceptPPs.isEmpty()) {
-				if (temp > max && !this.exceptPPs.contains(pp)) {
-					max = temp;
-					pps = pp;
-				}
-			}
-			else {
+			if (pp.getRunnableCalls().size() > 1 && !isSequence(pp)) {
+				final long temp = new Helper().getPPInstructions(pp);
 				if (temp > max) {
 					max = temp;
 					pps = pp;
 				}
 			}
-		}
-		if (null == pps) {
-			PartLog.getInstance().log("No longest Runnable found", null);
-			return null;
-		}
-		if (pps.getRunnableCalls().size() < 2 || isSequence(pps)) {
-			this.exceptPPs.add(pps);
-			return getLongestPP();
 		}
 		return pps;
 	}

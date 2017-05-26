@@ -151,7 +151,6 @@ public class ESSP {
 		new Helper().updateRSCs(this.cm, this.swm);
 		new Helper().updatePPsFirstLastActParams(this.swm);
 		new Helper().assignAPs(aps);
-		PartLog.getInstance().log(new Helper().writePPs(this.swm.getProcessPrototypes()));
 		return this.swm.getProcessPrototypes();
 	}
 
