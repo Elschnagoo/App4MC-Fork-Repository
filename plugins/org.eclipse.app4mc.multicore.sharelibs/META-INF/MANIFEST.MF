@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Sharelibs Plugin
-Bundle-SymbolicName: org.eclipse.app4mc.multicore.sharelibs
+Bundle-SymbolicName: org.eclipse.app4mc.multicore.sharelibs;singleton:=true
 Bundle-Version: 0.8.1.qualifier
 Bundle-Activator: org.eclipse.app4mc.multicore.sharelibs.ShareLibsPlugin
 Require-Bundle: org.eclipse.ui,
@@ -11,7 +11,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  org.eclipse.emf,
  org.eclipse.app4mc.amalthea.model,
- org.eclipse.app4mc.amalthea.workflow.core
+ org.eclipse.app4mc.amalthea.workflow.core,
+ com.google.guava
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: org.eclipse.app4mc.multicore.sharelibs
+Export-Package: org.eclipse.app4mc.multicore.sharelibs,
+ org.eclipse.app4mc.multicore.sharelibs.modelchecker,
+ org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger,
+ org.eclipse.app4mc.multicore.sharelibs.modelchecker.specs
