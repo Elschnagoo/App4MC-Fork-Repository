@@ -23,6 +23,15 @@
             file="toc/tutorial_taskvis-toc.xml"
             primary="false">
       </toc>
+      <toc
+            file="toc/modelChecker-toc.xml"
+            primary="false">
+      </toc>
+      
+      <toc
+            file="root-dev_modelchecker-toc.xml"
+            primary="false">
+      </toc>
       
       <toc
             file="root-dev_partitioning-toc.xml"

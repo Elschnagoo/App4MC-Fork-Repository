@@ -1,0 +1,47 @@
+
+h2. Model Checker
+
+Model Checker is a feature integrated with the APP4MC platform. Its task is to verify that the model fulfills a Model Description in form of a set of Model Specifications. Model Checker has been integrated with the main plugins of the APP4MC platform, like mapping and partitioning plugins. In order to provide better feedback to the developer about what is missing with its model at a specific process step, Model Checker provides a list of issues in form of a Pop-up window or in its own view. So, for example; if you what to run the partitioning feature on your model and you are missing @Runnables@. A Pop-up window will display as shown in the following image:
+
+!../pictures/ModelChecker/modelchecker-popup.png!
+
+If you close the Pop-up window don't worry, the Model Checker View keeps the latest issues list. 
+
+!../pictures/ModelChecker/modelchecker-view.png! 
+
+You can open this view by typing _Model Checker_  at *Window >> Show View >> Other View*; as shown in the picture below.
+
+!../pictures/ModelChecker/modelchecker-view-enable.png!
+
+h3. Model Description
+
+A model description comprises a list of ordered specifications. Model Checker takes this list and verifies that a specific model fulfills all this specifications. If a specification is not fulfilled, it will provide feedback to the user as shown in previous section.
+
+h4. Model Specifications
+
+A model specification is a particullar characteristic that has to be check in the model. There are two predefined types of model specifications;  
+
+* *Has a model type:* Checks that the model contains a specific type of model type, for example @Software Model@. 
+* *Amount of type:* Checks that the model contains a specific element type, for example @Runnables@. 
+
+Model Checker also supports a custom and more complex specifications. 
+
+
+h4. Specifications Severity
+
+When the Model Specifications are defined a severity is also added. Model Checker has different severities for its specifications;
+
+* *Ok*: Successfull and don't do anything if @Model Specifications@ isn't fullfilled.
+* *Info*: Successfull and display some information if @Model Specifications@ isn't fullfilled.
+* *Warning*: Process can run, a non-fatal issue was found in the model and a warning will be displayed if @Model Specifications@ isn't fullfilled.
+* *Error*: Process can't run, a fatal issue was found and an error will be displayed if @Model Specifications@ isn't fullfilled.
+
+
+h3. Solving Model Checker issues
+
+In order to solve model checker issues it's always a good idea to start with the first item of the list. Let's say we want to map our model's @tasks@ to the different @cores@ of a platform model. If our model doesn't have a @Software Model@, a message as the one shown in the following image will display.
+
+!../pictures/ModelChecker/modelchecker-popup.png!
+
+Other issues are shown that derive from the missing @Software Model@. By adding a complete @Software Model@ you'll fix all the issues listed.  
+
