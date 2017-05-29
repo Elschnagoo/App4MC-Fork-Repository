@@ -64,6 +64,7 @@ public class PerformMappingJob extends Job {
 	 */
 	@Override
 	protected IStatus run(final IProgressMonitor monitor) {
+		// Clear model checker view
 		monitor.beginTask("Performing mapping...", 3);
 		monitor.subTask("Reading models");
 		if (!readModels()) {

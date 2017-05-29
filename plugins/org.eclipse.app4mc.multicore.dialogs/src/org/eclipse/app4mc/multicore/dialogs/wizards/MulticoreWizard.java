@@ -21,14 +21,19 @@ import org.eclipse.app4mc.multicore.dialogs.wizards.page.PartitioningPage;
 import org.eclipse.app4mc.multicore.dialogs.wizards.page.SummaryPage;
 import org.eclipse.app4mc.multicore.dialogs.wizards.page.TaskCreationPage;
 import org.eclipse.app4mc.multicore.openmapping.IOMConstants;
+import org.eclipse.app4mc.multicore.openmapping.model.description.OMModelDescriptionBuilder;
 import org.eclipse.app4mc.multicore.openmapping.workflow.CreateTasks;
 import org.eclipse.app4mc.multicore.openmapping.workflow.GenerateMapping;
 import org.eclipse.app4mc.multicore.partitioning.IParConstants;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.PerformPartitioning;
+import org.eclipse.app4mc.multicore.partitioning.specs.PartitioningModelDescriptionBuilder;
 import org.eclipse.app4mc.multicore.partitioning.workflow.GeneratePartitioning;
 import org.eclipse.app4mc.multicore.partitioning.workflow.PrePartitioningWrkflw;
+import org.eclipse.app4mc.multicore.sharelibs.DebugUtil;
 import org.eclipse.app4mc.multicore.sharelibs.OutputPathParser;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
+import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelDescription;
+import org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger.ModelSpecLogger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -85,15 +90,33 @@ public class MulticoreWizard extends AbstractWizard implements INewWizard {
 
 		final DefaultContext ctx = new DefaultContext();
 		boolean success = true;
+		final ModelSpecLogger logger = ModelSpecLogger.of();
+
+		// Clean the view
+		UniversalHandler.getInstance().clearModelCheckerView();
 
 		success &= store();
 
 		UniversalHandler.getInstance()
 				.readModels(URI.createPlatformResourceURI(this.selectedFile.getFullPath().toString(), true), true);
 
+
 		ctx.set(AMALTHEA_SLOT, UniversalHandler.getInstance().getCentralModel());
 
 		if (this.store.getBoolean(IDialogsConstants.PRE_CHECK_PARTITIONING)) {
+
+			// Create the input model checker
+			final ModelDescription inputModelChecker = PartitioningModelDescriptionBuilder
+					.ofInput(UniversalHandler.getInstance().getCentralModel()).setLogger(logger);
+
+			// Check the input model
+			final boolean modelOk = inputModelChecker.checkModel(this.selectedFile.getFullPath().toString(),
+					UniversalHandler.getInstance().getCentralModel());
+
+			if (!modelOk) {
+				showModelCheckerLog(logger);
+				return false;
+			}
 
 			final PrePartitioningWrkflw prePartWF = new PrePartitioningWrkflw();
 			final GeneratePartitioning PartWF = new GeneratePartitioning();
@@ -107,6 +130,8 @@ public class MulticoreWizard extends AbstractWizard implements INewWizard {
 			// Run prepartitioning
 			prePartWF.run(ctx);
 			ctx.set(AMALTHEA_SLOT, ctx.get(prePartWF.getResultSlot()));
+
+			DebugUtil.print("Finished prepartitioning");
 
 			// Configure the partitioning
 			PartWF.setModelLoc(this.selectedFile.getFullPath().toString());
@@ -126,12 +151,28 @@ public class MulticoreWizard extends AbstractWizard implements INewWizard {
 			// Run Partitioning
 			PartWF.run(ctx);
 
+			DebugUtil.print("Finished partitioning");
+
 			// Update context with newer model
 			ctx.set(AMALTHEA_SLOT, ctx.get(PartWF.getResultSlot()));
 		}
 
 		if (this.store.getBoolean(IDialogsConstants.PRE_CHECK_CREATE_TASKS)) {
 			final CreateTasks createTask = new CreateTasks();
+
+			// Create the input model checker
+			final ModelDescription inputModelChecker = OMModelDescriptionBuilder.ofTaskCreationInput(null)
+					.setLogger(logger);
+
+			// Check the input model
+			boolean modelOk = inputModelChecker.checkModel(this.selectedFile.getFullPath().toString(),
+					(Amalthea) ctx.get(AMALTHEA_SLOT));
+
+
+			if (!modelOk) {
+				showModelCheckerLog(logger);
+				return false;
+			}
 
 			createTask.setEnableLog(this.store.getBoolean(IOMConstants.PRE_CHECK_LOGCON));
 
@@ -140,14 +181,48 @@ public class MulticoreWizard extends AbstractWizard implements INewWizard {
 			// Update context with newer model
 			ctx.set(AMALTHEA_SLOT, ctx.get(createTask.getResultSlot()));
 
+			// Create the output model checker
+			final ModelDescription outputModelChecker = OMModelDescriptionBuilder
+					.ofTaskCreationOutput((Amalthea) ctx.get(AMALTHEA_SLOT)).setLogger(logger);
+
+			// Check the output model
+			modelOk = outputModelChecker.checkModel("<Internal> Task Creation Output Model",
+					(Amalthea) ctx.get(AMALTHEA_SLOT));
+
+
+			if (!modelOk) {
+				showModelCheckerLog(logger);
+				return false;
+			}
+
 		}
 
 		if (this.store.getBoolean(IDialogsConstants.PRE_CHECK_MAPPING)) {
 			final Amalthea model = (Amalthea) ctx.get(AMALTHEA_SLOT);
 			final GenerateMapping mapping = new GenerateMapping();
 			final String hwModelPath = this.store.getString(IDialogsConstants.PRE_HW_MODEL_LOCATION);
+			final URI uriHwModel = URI.createFileURI(hwModelPath);
 
-			UniversalHandler.getInstance().readModels(URI.createFileURI(hwModelPath), true);
+			UniversalHandler.getInstance().readModels(uriHwModel, true);
+
+			// Check the SW Input model
+			ModelDescription modelChecker = OMModelDescriptionBuilder.ofMappingSWInput(null).setLogger(logger);
+			boolean modelOk = modelChecker.checkModel(this.selectedFile.getFullPath().toString(),
+					(Amalthea) ctx.get(AMALTHEA_SLOT));
+
+			if (!modelOk) {
+				showModelCheckerLog(logger);
+				return false;
+			}
+
+			// Check the HW Input model
+			modelChecker = OMModelDescriptionBuilder.ofMappingHWInput(null).setLogger(logger);
+			modelOk = modelChecker.checkModel(hwModelPath, UniversalHandler.getInstance().getCentralModel());
+
+			if (!modelOk) {
+				showModelCheckerLog(logger);
+				return false;
+			}
 
 			// Set HW Model
 			model.setHwModel(UniversalHandler.getInstance().getHwModel());
@@ -183,7 +258,16 @@ public class MulticoreWizard extends AbstractWizard implements INewWizard {
 			e.printStackTrace();
 		}
 
+		showModelCheckerLog(logger);
+
 		return success;
+	}
+
+	private void showModelCheckerLog(final ModelSpecLogger logger) {
+		// Log to the view
+		logger.logToView();
+
+		logger.openMessageBox();
 	}
 
 	/**

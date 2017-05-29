@@ -41,7 +41,9 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 	private final Map<Activation, Stimulus> mActivationStimuli = new HashMap<Activation, Stimulus>();
 	// Will be used in various List operations (i.e. add Runnables, manage
 	// internal runnable dependency graphs, ...)
-//	private final Map<ProcessPrototype, ExtendedProcessPrototype> lProcessPrototypes = new HashMap<ProcessPrototype, ExtendedProcessPrototype>();
+	// private final Map<ProcessPrototype, ExtendedProcessPrototype>
+	// lProcessPrototypes = new HashMap<ProcessPrototype,
+	// ExtendedProcessPrototype>();
 	private final ArrayList<OMProcessPrototype> lProcessPrototypes = new ArrayList<OMProcessPrototype>();
 	private final ConsoleOutputHandler con = new ConsoleOutputHandler("OpenMapping Console");
 
@@ -85,11 +87,13 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 				final Periodic stimuliPeriodic = convertPeriodicActivation((PeriodicActivation) activation);
 				getStimuliModel().getStimuli().add(stimuliPeriodic);
 				this.mActivationStimuli.put(activation, stimuliPeriodic);
-			} else if (activation instanceof SporadicActivation) {
+			}
+			else if (activation instanceof SporadicActivation) {
 				final Sporadic stimuliSporadic = convertSporadicActivation((SporadicActivation) activation);
 				getStimuliModel().getStimuli().add(stimuliSporadic);
 				this.mActivationStimuli.put(activation, stimuliSporadic);
-			} else {
+			}
+			else {
 				UniversalHandler.getInstance().log("Unhandled Activation element.\nSkipping...", null);
 			}
 		}
@@ -131,88 +135,102 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 
 	}
 
-//	private void processRunnableSequencingConstraint(final RunnableSequencingConstraint rsc) {
-//		// Check if there are any runnable groups in the runnable sequencing
-//		// constraint
-//		// In our case this algorithm will only support the partitioning plugin
-//		// hence there must be 2 entries (origin/target)
-//		if (rsc.getRunnableGroups().size() != 2) {
-//			UniversalHandler.getInstance().log(
-//					"Invalid RunnableSequencingConstraint.\nRunnableSequencingConstraints must contain 2 RunnableGroups.\nSkipping...",
-//					null);
-//			return;
-//		}
-//
-//		final ProcessRunnableGroup originGroup = rsc.getRunnableGroups().get(0);
-//		final ProcessRunnableGroup targetGroup = rsc.getRunnableGroups().get(1);
-//
-//		// Is there one ProcessRunnableGroupEntry per group?
-//		if (originGroup.getRunnables().size() != 1 || targetGroup.getRunnables().size() != 1) {
-//			UniversalHandler.getInstance().log(
-//					"Invalid ProcessRunnableGroup.\nProcessRunnableGroup must contain one ProcessRunnableGroupEntry.\nSkipping...",
-//					null);
-//			return;
-//		}
-//
-//		// Has each entry a process scope?
-//		if (1 != rsc.getProcessScope().size()) {
-//			UniversalHandler.getInstance().log(
-//					"Invalid ProcessRunnableGroupEntry.\nProcessRunnableGroupEntry must reference one AbstractProcess.\nSkipping...",
-//					null);
-//			return;
-//		}
-//
-//		final Runnable originRunnable = originGroup.getRunnables().get(0);
-//		final Runnable targetRunnable = targetGroup.getRunnables().get(0);
-//
-//		final AbstractProcess abstractProcess = rsc.getProcessScope().get(0);
-//
-//		// Is this reference to ProcessPrototypes?
-//		if (false == (abstractProcess instanceof ProcessPrototype)) {
-//			UniversalHandler.getInstance().log(
-//					"Invalid ProcessScope reference.\nThe ProcessScope must reference a ProcessPrototype.\nSkipping...",
-//					null);
-//			return;
-//		}
-//
-//		final ProcessPrototype processPrototype = (ProcessPrototype) abstractProcess;
-//
-//		// Now, check if both Entries have the Runnable reference set
-//		if (originRunnable == null || targetRunnable == null) {
-//			UniversalHandler.getInstance().log(
-//					"Invalid ProcessRunnableGroupEntry.\nProcessRunnableGroupEntry must reference one Runnable.\nSkipping...",
-//					null);
-//			return;
-//		}
-//
-//		// From here on: Check which process prototypes are influenced by this
-//		// Constraint
-//		final OMProcessPrototype ompp = this.lProcessPrototypes.(processPrototype);
-//		epp.addEdge(originRunnable, targetRunnable);
-//	}
+	// private void processRunnableSequencingConstraint(final
+	// RunnableSequencingConstraint rsc) {
+	// // Check if there are any runnable groups in the runnable sequencing
+	// // constraint
+	// // In our case this algorithm will only support the partitioning plugin
+	// // hence there must be 2 entries (origin/target)
+	// if (rsc.getRunnableGroups().size() != 2) {
+	// UniversalHandler.getInstance().log(
+	// "Invalid RunnableSequencingConstraint.\nRunnableSequencingConstraints
+	// must contain 2 RunnableGroups.\nSkipping...",
+	// null);
+	// return;
+	// }
+	//
+	// final ProcessRunnableGroup originGroup = rsc.getRunnableGroups().get(0);
+	// final ProcessRunnableGroup targetGroup = rsc.getRunnableGroups().get(1);
+	//
+	// // Is there one ProcessRunnableGroupEntry per group?
+	// if (originGroup.getRunnables().size() != 1 ||
+	// targetGroup.getRunnables().size() != 1) {
+	// UniversalHandler.getInstance().log(
+	// "Invalid ProcessRunnableGroup.\nProcessRunnableGroup must contain one
+	// ProcessRunnableGroupEntry.\nSkipping...",
+	// null);
+	// return;
+	// }
+	//
+	// // Has each entry a process scope?
+	// if (1 != rsc.getProcessScope().size()) {
+	// UniversalHandler.getInstance().log(
+	// "Invalid ProcessRunnableGroupEntry.\nProcessRunnableGroupEntry must
+	// reference one AbstractProcess.\nSkipping...",
+	// null);
+	// return;
+	// }
+	//
+	// final Runnable originRunnable = originGroup.getRunnables().get(0);
+	// final Runnable targetRunnable = targetGroup.getRunnables().get(0);
+	//
+	// final AbstractProcess abstractProcess = rsc.getProcessScope().get(0);
+	//
+	// // Is this reference to ProcessPrototypes?
+	// if (false == (abstractProcess instanceof ProcessPrototype)) {
+	// UniversalHandler.getInstance().log(
+	// "Invalid ProcessScope reference.\nThe ProcessScope must reference a
+	// ProcessPrototype.\nSkipping...",
+	// null);
+	// return;
+	// }
+	//
+	// final ProcessPrototype processPrototype = (ProcessPrototype)
+	// abstractProcess;
+	//
+	// // Now, check if both Entries have the Runnable reference set
+	// if (originRunnable == null || targetRunnable == null) {
+	// UniversalHandler.getInstance().log(
+	// "Invalid ProcessRunnableGroupEntry.\nProcessRunnableGroupEntry must
+	// reference one Runnable.\nSkipping...",
+	// null);
+	// return;
+	// }
+	//
+	// // From here on: Check which process prototypes are influenced by this
+	// // Constraint
+	// final OMProcessPrototype ompp =
+	// this.lProcessPrototypes.(processPrototype);
+	// epp.addEdge(originRunnable, targetRunnable);
+	// }
 
-//	private boolean createRunnableDependencyGraph() {
-//		// Check if there are any activation runnable sequencing constraints
-//		// specified
-//		if (null == getConstraintsModel() || null == getConstraintsModel().getRunnableSequencingConstraints()
-//				|| getConstraintsModel().getRunnableSequencingConstraints().size() <= 0) {
-//			UniversalHandler.getInstance().log(
-//					"Invalid ConstraintsModel.\nThere are no RunnableSequencingConstraints in this model.\nLeaving Algorithm...",
-//					null);
-//			return false;
-//		}
-//		UniversalHandler.getInstance().logCon("Found " + getConstraintsModel().getRunnableSequencingConstraints().size()
-//				+ " Sequencing Constraint(s)");
-//
-//		final Iterator<RunnableSequencingConstraint> lRsc = getConstraintsModel().getRunnableSequencingConstraints()
-//				.iterator();
-//		while (lRsc.hasNext()) {
-//			final RunnableSequencingConstraint rsc = lRsc.next();
-//			processRunnableSequencingConstraint(rsc);
-//		}
-//
-//		return true;
-//	}
+	// private boolean createRunnableDependencyGraph() {
+	// // Check if there are any activation runnable sequencing constraints
+	// // specified
+	// if (null == getConstraintsModel() || null ==
+	// getConstraintsModel().getRunnableSequencingConstraints()
+	// || getConstraintsModel().getRunnableSequencingConstraints().size() <= 0)
+	// {
+	// UniversalHandler.getInstance().log(
+	// "Invalid ConstraintsModel.\nThere are no RunnableSequencingConstraints in
+	// this model.\nLeaving Algorithm...",
+	// null);
+	// return false;
+	// }
+	// UniversalHandler.getInstance().logCon("Found " +
+	// getConstraintsModel().getRunnableSequencingConstraints().size()
+	// + " Sequencing Constraint(s)");
+	//
+	// final Iterator<RunnableSequencingConstraint> lRsc =
+	// getConstraintsModel().getRunnableSequencingConstraints()
+	// .iterator();
+	// while (lRsc.hasNext()) {
+	// final RunnableSequencingConstraint rsc = lRsc.next();
+	// processRunnableSequencingConstraint(rsc);
+	// }
+	//
+	// return true;
+	// }
 
 	@Override
 	public void createTasks() {
@@ -236,26 +254,30 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 		// Convert Activation elements to Stimuli
 		if (!convertActivations()) {
 			UniversalHandler.getInstance().logWarn("Warning: No Activation Elements found. Skipping conversion.");
-		} else {
+		}
+		else {
 			UniversalHandler.getInstance().logCon("Activation elements successfully converted.");
 		}
 
-//		// Fetch and insert the Runnable dependencies for each new Task
-//		if (!createRunnableDependencyGraph()) {
-//			UniversalHandler.getInstance().log("Error during dependency graph generation.\nLeaving Algorithm...", null);
-//			return;
-//		}
+		// // Fetch and insert the Runnable dependencies for each new Task
+		// if (!createRunnableDependencyGraph()) {
+		// UniversalHandler.getInstance().log("Error during dependency graph
+		// generation.\nLeaving Algorithm...", null);
+		// return;
+		// }
 		UniversalHandler.getInstance().log("Runnable Dependency Graph has been successfully created.", null);
 
 		// Now we can start with the actual Task generation
 		int iTotalRunnables = 0;
-//		final Iterator<Entry<ProcessPrototype, ExtendedProcessPrototype>> mPP = this.lProcessPrototypes.entrySet()
-//				.iterator();
-//		while (mPP.hasNext()) {
-//			final Entry<ProcessPrototype, ExtendedProcessPrototype> e = mPP.next();
-//			final ProcessPrototype pp = e.getKey();
-//			final ExtendedProcessPrototype epp = e.getValue();
-		for(OMProcessPrototype epp : lProcessPrototypes) {
+		// final Iterator<Entry<ProcessPrototype, ExtendedProcessPrototype>> mPP
+		// = this.lProcessPrototypes.entrySet()
+		// .iterator();
+		// while (mPP.hasNext()) {
+		// final Entry<ProcessPrototype, ExtendedProcessPrototype> e =
+		// mPP.next();
+		// final ProcessPrototype pp = e.getKey();
+		// final ExtendedProcessPrototype epp = e.getValue();
+		for (final OMProcessPrototype epp : this.lProcessPrototypes) {
 			final String name = epp.getName();
 
 			// Prepare the (sorted) Runnable list
@@ -285,7 +307,7 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 			}
 			getSwModel().getTasks().add(task);
 			iTotalRunnables += lRunnables.size();
-			String msg = "Added Task: '" + task.getName() + "', Runnables: " + lRunnables.size();
+			final String msg = "Added Task: '" + task.getName() + "', Runnables: " + lRunnables.size();
 			System.out.println("-----------------------------------------------------------------");
 			System.out.println(epp.toString());
 			System.out.println(lRunnables);

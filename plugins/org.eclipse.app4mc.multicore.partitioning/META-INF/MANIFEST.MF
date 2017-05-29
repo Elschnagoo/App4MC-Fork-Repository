@@ -35,5 +35,6 @@ Export-Package: org.eclipse.app4mc.multicore.partitioning,
    org.eclipse.app4mc.amalthea.model.constraints,
    org.eclipse.app4mc.amalthea.model.sw,
    org.eclipse.app4mc.multicore.dialogs",
+ org.eclipse.app4mc.multicore.partitioning.specs,
  org.eclipse.app4mc.multicore.partitioning.workflow
 Bundle-ClassPath: .

@@ -11,25 +11,28 @@
  ******************************************************************************/
 package org.eclipse.app4mc.multicore.dialogs.openmapping.handlers;
 
-import java.util.ArrayList;
-
+import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.multicore.openmapping.IOMConstants;
 import org.eclipse.app4mc.multicore.openmapping.OpenMappingPlugin;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.taskgen.pragmatic.PragmaticTaskGenerator;
+import org.eclipse.app4mc.multicore.openmapping.model.description.OMModelDescriptionBuilder;
 import org.eclipse.app4mc.multicore.sharelibs.OutputPathParser;
+import org.eclipse.app4mc.multicore.sharelibs.SelectionUtil;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
+import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelDescription;
+import org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger.ModelSpecLogger;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.viewers.IStructuredSelection;
 
 public class CreateTasks extends AbstractHandler {
 
@@ -41,6 +44,13 @@ public class CreateTasks extends AbstractHandler {
 		UniversalHandler.getInstance().setPluginId(OpenMappingPlugin.getPluginId());
 		UniversalHandler.getInstance().setLog(OpenMappingPlugin.getDefault().getLog());
 
+		final ModelSpecLogger logger = ModelSpecLogger.of();
+
+		// Clear model checker view
+		UniversalHandler.getInstance().clearModelCheckerView();
+
+		final IStructuredSelection selection = SelectionUtil.getSelection(event);
+
 		// Get preference store and apply settings
 		final IPreferenceStore store = OpenMappingPlugin.getDefault().getPreferenceStore();
 
@@ -49,39 +59,46 @@ public class CreateTasks extends AbstractHandler {
 			UniversalHandler.getInstance().enableVerboseOutput();
 		}
 
-		// Preference: Output directory (radio)
-		CommonElements commonElements;
+		final CommonElements commonElements;
 		SWModel sourceSwModel;
-		SWModel targetSwModel;
-		StimuliModel stimuliModel;
 		ConstraintsModel conModel;
 		PropertyConstraintsModel pcModel;
-		final ArrayList<EObject> outModels = new ArrayList<EObject>();
 
-		final IFile swModelFile = UniversalHandler.getInstance().getSelectedFile(event);
+		// final IFile swModelFile =
+		// UniversalHandler.getInstance().getSelectedFile(event);
 
+
+		if (!(selection.getFirstElement() instanceof IFile)) {
+			return null;
+		}
+
+		final IFile swModelFile = (IFile) selection.getFirstElement();
+
+		final URI uri = URI.createPlatformResourceURI(swModelFile.getFullPath().toOSString(), true);
+
+		// Create the input model checker
+		final ModelDescription inputModelChecker = OMModelDescriptionBuilder.ofTaskCreationInput(null)
+				.setLogger(logger);
+
+		// Check the input model
+		boolean modelOk = inputModelChecker.checkModel(uri);
+
+
+		if (!modelOk) {
+			// Log to the view
+			logger.logToView();
+
+			logger.openMessageBox();
+			return null;
+		}
+
+		// Read the model
 		UniversalHandler.getInstance().dropCache();
-		UniversalHandler.getInstance()
-				.readModels(URI.createPlatformResourceURI(swModelFile.getFullPath().toOSString(), true), true);
+		UniversalHandler.getInstance().readModels(uri, true);
 
 		commonElements = UniversalHandler.getInstance().getCommonElements();
-
 		sourceSwModel = UniversalHandler.getInstance().getSwModel();
-		if (sourceSwModel == null) {
-			UniversalHandler.getInstance()
-					.logCon("There seems to be no software model in the selected file.\nExiting...");
-			return null;
-		}
-
 		conModel = UniversalHandler.getInstance().getConstraintsModel();
-		if (conModel == null) {
-			UniversalHandler.getInstance()
-					.logCon("There seems to be no constraints model in the selected file.\nExiting...");
-			return null;
-		}
-
-		// Not an error if the following is empty, we just want to pass the
-		// sub-model to the next file
 		pcModel = UniversalHandler.getInstance().getPropertyConstraintsModel();
 
 		final PragmaticTaskGenerator createTaskAlgorithm = new PragmaticTaskGenerator();
@@ -91,33 +108,41 @@ public class CreateTasks extends AbstractHandler {
 		createTaskAlgorithm.setConstraintsModel(conModel);
 		createTaskAlgorithm.createTasks();
 
-		if ((targetSwModel = createTaskAlgorithm.getSwModel()) == null) {
-			System.out.println("An error occured during the task creation process");
-			System.out.println("Check the error logs for further details");
-			System.out.println("No changes will be made to the software model until this issue is fixed");
-			return null;
-		}
+		final Amalthea outModel = AmaltheaFactory.eINSTANCE.createAmalthea();
 
-		if ((stimuliModel = createTaskAlgorithm.getStimuliModel()) == null) {
-			System.out.println("An error occured during the task creation process");
-			System.out.println("Check the error logs for further details");
-			System.out.println("No changes will be made to the software model until this issue is fixed");
-			return null;
-		}
-
-		outModels.add(commonElements);
-		outModels.add(targetSwModel);
-		outModels.add(stimuliModel);
-		outModels.add(conModel);
+		// Create the output model
+		outModel.setCommonElements(commonElements);
+		outModel.setSwModel(createTaskAlgorithm.getSwModel());
+		outModel.setStimuliModel(createTaskAlgorithm.getStimuliModel());
+		outModel.setConstraintsModel(conModel);
 		if (pcModel != null) {
-			outModels.add(pcModel);
+			outModel.setPropertyConstraintsModel(pcModel);
+		}
+
+		// Create the output model checker
+		final ModelDescription outputModelChecker = OMModelDescriptionBuilder.ofTaskCreationOutput(outModel)
+				.setLogger(logger);
+
+		// Check the output model
+		modelOk = outputModelChecker.checkModel("<Internal> Task Creation Output Model", outModel);
+
+
+		if (!modelOk) {
+			// Log to the view
+			logger.logToView();
+			logger.openMessageBox();
+			return null;
 		}
 
 		final OutputPathParser outputParser = new OutputPathParser(IOMConstants.PRE_RADIO_OUTDIR,
 				IOMConstants.PRE_STRING_OUTDIR, store);
 
-		UniversalHandler.getInstance().writeModel(outputParser.parseOutputFileURI(swModelFile, "_withTasks"),
-				outModels);
+		UniversalHandler.getInstance().writeModel(outputParser.parseOutputFileURI(swModelFile, "_withTasks"), outModel);
+
+
+		// Log to the view
+		logger.logToView();
+		logger.openMessageBox();
 
 		return null;
 	}

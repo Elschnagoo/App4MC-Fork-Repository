@@ -14,6 +14,7 @@ package org.eclipse.app4mc.multicore.dialogs.wizards.handlers;
 import org.eclipse.app4mc.multicore.dialogs.DialogsPlugin;
 import org.eclipse.app4mc.multicore.dialogs.wizards.AbstractWizardPage;
 import org.eclipse.app4mc.multicore.dialogs.wizards.MulticoreWizard;
+import org.eclipse.app4mc.multicore.sharelibs.SelectionUtil;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -99,7 +100,7 @@ public class MulticoreWizardHandler extends AbstractHandler {
 		try {
 			// Fetch workbench window context
 			final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-			final IStructuredSelection selection = UniversalHandler.getInstance().getSelection(event);
+			final IStructuredSelection selection = SelectionUtil.getSelection(event);
 
 			this.wizard = new MulticoreWizard();
 			// Name the project after the SW model file (proposition)
@@ -123,9 +124,15 @@ public class MulticoreWizardHandler extends AbstractHandler {
 		}
 		catch (final ExecutionException e) {
 			e.printStackTrace();
+
+			// Remove the listener
+			store.removePropertyChangeListener(this.firstPageSelection);
+
 			return null;
 		}
 
+		// Remove the listener
+		store.removePropertyChangeListener(this.firstPageSelection);
 		return null;
 	}
 

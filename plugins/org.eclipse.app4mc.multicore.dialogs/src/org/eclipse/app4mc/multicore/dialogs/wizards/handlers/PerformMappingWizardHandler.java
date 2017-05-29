@@ -13,6 +13,7 @@ package org.eclipse.app4mc.multicore.dialogs.wizards.handlers;
 
 import org.eclipse.app4mc.multicore.dialogs.DialogsPlugin;
 import org.eclipse.app4mc.multicore.dialogs.wizards.PerformMappingWizard;
+import org.eclipse.app4mc.multicore.sharelibs.SelectionUtil;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -58,7 +59,10 @@ public class PerformMappingWizardHandler extends AbstractHandler {
 		try {
 			// Fetch workbench window context
 			final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-			final IStructuredSelection selection = UniversalHandler.getInstance().getSelection(event);
+			final IStructuredSelection selection = SelectionUtil.getSelection(event);
+
+			// Clear the Model Checker view
+			UniversalHandler.getInstance().clearModelCheckerView();
 
 			// Initialize dialog
 			final PerformMappingWizard wizard = new PerformMappingWizard(event);

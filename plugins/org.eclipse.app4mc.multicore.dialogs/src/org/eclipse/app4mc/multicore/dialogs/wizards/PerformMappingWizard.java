@@ -16,6 +16,7 @@ import org.eclipse.app4mc.multicore.dialogs.IDialogsConstants;
 import org.eclipse.app4mc.multicore.dialogs.openmapping.handlers.PerformMappingJobHandler;
 import org.eclipse.app4mc.multicore.dialogs.wizards.page.PerformMappingPage;
 import org.eclipse.app4mc.multicore.openmapping.OpenMappingPlugin;
+import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -71,6 +72,9 @@ public class PerformMappingWizard extends Wizard implements INewWizard {
 	@Override
 	public boolean performFinish() {
 		PerformMappingJobHandler jobLauncher;
+
+		// Clean the view
+		UniversalHandler.getInstance().clearModelCheckerView();
 
 		// Use OpenMapping preferences
 		jobLauncher = new PerformMappingJobHandler(OpenMappingPlugin.getDefault().getPreferenceStore());

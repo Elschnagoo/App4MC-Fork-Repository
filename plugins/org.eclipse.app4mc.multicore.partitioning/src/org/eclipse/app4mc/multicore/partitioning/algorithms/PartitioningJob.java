@@ -28,7 +28,7 @@ public class PartitioningJob extends Job {
 
 	@Override
 	protected IStatus run(final IProgressMonitor monitor) {
-
+		
 		final PrePartitioning prepart = new PrePartitioning(this.store);
 		assert this.models != null;
 		monitor.beginTask("Partitioning", 2);
@@ -37,18 +37,18 @@ public class PartitioningJob extends Job {
 		monitor.worked(1);
 		if (this.models == null) {
 			PartLog.getInstance().log("Prepartitioning aborted", null);
-			return Status.CANCEL_STATUS;
+			return null;
 		}
 		if (!this.file.getName().endsWith("_PrePartitioned.amxmi")) {
-			final OutputPathParser parser = new OutputPathParser(IParConstants.PRE_LOC_RADIO,
-					IParConstants.PRE_LOC_STRING, this.store);
-			Helper.writeModelFile(this.file, parser.parseOutputFileURI(this.file, "_PrePartitioned"), this.models);
+			OutputPathParser parser = new OutputPathParser(IParConstants.PRE_LOC_RADIO,
+					IParConstants.PRE_LOC_STRING,
+					store);
+			Helper.writeModelFile(this.file, parser.parseOutputFileURI(file, "_PrePartitioned"), this.models);
 		}
 
 		monitor.subTask("Graph Partitioning...");
-		if (this.store.getString(IParConstants.PRE_PARTITIONING_ALG).equals(PerformPartitioning.PART_CPP)
-				|| Integer.parseInt(this.store.getString(IParConstants.PRE_INT)) > 1) {
-			new PerformPartitioning().execute(this.file, monitor, this.store);
+		if (this.store.getString(IParConstants.PRE_PARTITIONING_ALG).equals(PerformPartitioning.PART_CPP) || Integer.parseInt(this.store.getString(IParConstants.PRE_INT)) > 1) {
+			new PerformPartitioning().execute(this.file, monitor, store);
 		}
 		monitor.worked(1);
 

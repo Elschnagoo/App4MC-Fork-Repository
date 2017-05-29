@@ -16,14 +16,6 @@
             id="org.eclipse.app4mc.multicore.openmapping.commands.category"
             name="Category">
       </category>
-      <command
-            id="org.eclipse.app4mc.multicore.openmapping.commands.generateTasks"
-            name="Generate Tasks">
-      </command>
-      <command
-            id="org.eclipse.app4mc.multicore.openmapping.commands.performMapping"
-            name="Perform Mapping">
-      </command>
    </extension>
    
    <extension

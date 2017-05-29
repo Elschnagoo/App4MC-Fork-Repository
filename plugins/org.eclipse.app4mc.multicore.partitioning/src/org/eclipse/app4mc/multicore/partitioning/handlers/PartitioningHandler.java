@@ -15,17 +15,17 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.multicore.partitioning.IParConstants;
 import org.eclipse.app4mc.multicore.partitioning.PartitioningPlugin;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.PartitioningJob;
+import org.eclipse.app4mc.multicore.partitioning.specs.PartitioningModelDescriptionBuilder;
 import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
 import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
+import org.eclipse.app4mc.multicore.sharelibs.SelectionUtil;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
+import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelDescription;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.swt.widgets.Display;
 
 /**
  * The Prepartitioning performs activation aggregation, independent graph
@@ -53,13 +53,28 @@ public class PartitioningHandler extends org.eclipse.core.commands.AbstractHandl
 		final UniversalHandler uh = UniversalHandler.getInstance();
 		PartLog.getInstance().setLogName("PrePartitioning");
 
+		// Clear the Model Checker view
+		uh.clearModelCheckerView();
+
 		PartLog.getInstance().setEnableTargetConsoleLog(this.store.getBoolean(IParConstants.PRE_DEBUG));
 
-		final IFile file = UniversalHandler.getInstance().getSelectedFile(event);
+		final IFile file = SelectionUtil.getSelectedFile(event);
 		uh.dropCache();
-		uh.readModels(URI.createPlatformResourceURI(file.getFullPath().toString(), true), true);
+
+		final URI uriSwModel = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+
+		uh.readModels(uriSwModel, true);
 		Amalthea amodels = AmaltheaFactory.eINSTANCE.createAmalthea();
 		amodels = new Helper().setAllModels(amodels, uh);
+
+		final ModelDescription modelChecker = PartitioningModelDescriptionBuilder.ofInput(null);
+		final boolean modelOk = modelChecker.checkModel(uriSwModel);
+
+		if (!modelOk) {
+			modelChecker.logToView();
+			modelChecker.openMessageBox();
+			return null;
+		}
 
 		final PartitioningJob part = new PartitioningJob("Partitioning", amodels, this.store, file);
 		part.schedule();
@@ -70,14 +85,9 @@ public class PartitioningHandler extends org.eclipse.core.commands.AbstractHandl
 		catch (final InterruptedException e) {
 			e.printStackTrace();
 		}
-		if (part.getResult().equals(Status.OK_STATUS)) {
-			MessageDialog.openInformation(Display.getDefault().getActiveShell(), "Partitioning",
-					"Partitioning successful");
-		}
-		else {
-			MessageDialog.openError(Display.getDefault().getActiveShell(), "Partitioning",
-					"Partitioning failed. Please see console / error log for details.");
-		}
+
+		modelChecker.logToView();
+		modelChecker.openMessageBox();
 		return null;
 	}
 }
