@@ -83,7 +83,7 @@ public class FlowGroup extends AbstractGroup {
 
 		// Extensions allowed
 		final String[] extensions = new String[1];
-		extensions[0] = IDialogsConstants.EXTENSION;
+		extensions[0] = "*." + IDialogsConstants.EXTENSION;
 
 		this.hwModel.setFileExtensions(extensions);
 
