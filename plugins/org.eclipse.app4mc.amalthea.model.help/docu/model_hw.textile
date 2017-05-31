@@ -1,5 +1,5 @@
 
-h2. Hardware model
+h2. Hardware Model
 
 The AMALTHEA hardware model is used to describe hardware systems which usually consists of ECUs, microcontrollers, cores, memories, additional peripherals etc. It is central accessible through the __HWModel__ element and contains following elements:
 
