@@ -164,6 +164,7 @@ import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
+import org.eclipse.app4mc.amalthea.model.LabelGroup;
 import org.eclipse.app4mc.amalthea.model.Latency;
 import org.eclipse.app4mc.amalthea.model.LatencyAccessPath;
 import org.eclipse.app4mc.amalthea.model.LatencyAccessPathElement;
@@ -235,7 +236,6 @@ import org.eclipse.app4mc.amalthea.model.ProcessPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
 import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
@@ -865,14 +865,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.PROCESS_RUNNABLE_GROUP: {
-				ProcessRunnableGroup processRunnableGroup = (ProcessRunnableGroup)theEObject;
-				T1 result = caseProcessRunnableGroup(processRunnableGroup);
-				if (result == null) result = caseBaseObject(processRunnableGroup);
-				if (result == null) result = caseIAnnotatable(processRunnableGroup);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.AFFINITY_CONSTRAINT: {
 				AffinityConstraint affinityConstraint = (AffinityConstraint)theEObject;
 				T1 result = caseAffinityConstraint(affinityConstraint);
@@ -1045,6 +1037,12 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.LABEL_GROUP: {
+				LabelGroup labelGroup = (LabelGroup)theEObject;
+				T1 result = caseLabelGroup(labelGroup);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.RUNNABLE_GROUP: {
 				RunnableGroup runnableGroup = (RunnableGroup)theEObject;
 				T1 result = caseRunnableGroup(runnableGroup);
@@ -1060,6 +1058,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.LABEL_ENTITY_GROUP: {
 				LabelEntityGroup labelEntityGroup = (LabelEntityGroup)theEObject;
 				T1 result = caseLabelEntityGroup(labelEntityGroup);
+				if (result == null) result = caseLabelGroup(labelEntityGroup);
 				if (result == null) result = caseBaseObject(labelEntityGroup);
 				if (result == null) result = caseIAnnotatable(labelEntityGroup);
 				if (result == null) result = defaultCase(theEObject);
@@ -4117,21 +4116,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Process Runnable Group</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Process Runnable Group</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseProcessRunnableGroup(ProcessRunnableGroup object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Affinity Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -4398,6 +4382,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseTargetScheduler(TargetScheduler object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Label Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Label Group</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseLabelGroup(LabelGroup object) {
 		return null;
 	}
 

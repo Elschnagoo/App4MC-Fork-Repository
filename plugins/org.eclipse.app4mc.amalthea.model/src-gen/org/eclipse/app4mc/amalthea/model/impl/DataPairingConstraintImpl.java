@@ -17,7 +17,7 @@ import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.DataConstraint;
 import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
 import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
-import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
+import org.eclipse.app4mc.amalthea.model.LabelGroup;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -60,7 +60,7 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected LabelEntityGroup group;
+	protected LabelGroup group;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -129,7 +129,7 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LabelEntityGroup getGroup() {
+	public LabelGroup getGroup() {
 		return group;
 	}
 
@@ -138,8 +138,8 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetGroup(LabelEntityGroup newGroup, NotificationChain msgs) {
-		LabelEntityGroup oldGroup = group;
+	public NotificationChain basicSetGroup(LabelGroup newGroup, NotificationChain msgs) {
+		LabelGroup oldGroup = group;
 		group = newGroup;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP, oldGroup, newGroup);
@@ -153,7 +153,7 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setGroup(LabelEntityGroup newGroup) {
+	public void setGroup(LabelGroup newGroup) {
 		if (newGroup != group) {
 			NotificationChain msgs = null;
 			if (group != null)
@@ -211,7 +211,7 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 				setTarget((DataConstraintTarget)newValue);
 				return;
 			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP:
-				setGroup((LabelEntityGroup)newValue);
+				setGroup((LabelGroup)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -229,7 +229,7 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 				setTarget((DataConstraintTarget)null);
 				return;
 			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT__GROUP:
-				setGroup((LabelEntityGroup)null);
+				setGroup((LabelGroup)null);
 				return;
 		}
 		super.eUnset(featureID);

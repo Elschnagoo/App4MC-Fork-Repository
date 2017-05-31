@@ -210,7 +210,7 @@ public class RunnableSequencingConstraintItemProvider extends ReferableBaseObjec
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getRunnableSequencingConstraint_RunnableGroups(),
-				 AmaltheaFactory.eINSTANCE.createProcessRunnableGroup()));
+				 AmaltheaFactory.eINSTANCE.createRunnableEntityGroup()));
 	}
 
 }

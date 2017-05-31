@@ -30,8 +30,8 @@ import org.eclipse.app4mc.amalthea.model.HwSystem;
 import org.eclipse.app4mc.amalthea.model.Microcontroller;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.Time;
@@ -592,8 +592,8 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 			return;
 		}
 
-		final ProcessRunnableGroup originGroup = rsc.getRunnableGroups().get(0);
-		final ProcessRunnableGroup targetGroup = rsc.getRunnableGroups().get(1);
+		final RunnableEntityGroup originGroup = rsc.getRunnableGroups().get(0);
+		final RunnableEntityGroup targetGroup = rsc.getRunnableGroups().get(1);
 
 		// Is there one ProcessRunnableGroupEntry per group?
 		if (originGroup.getRunnables().size() != 1 || targetGroup.getRunnables().size() != 1) {

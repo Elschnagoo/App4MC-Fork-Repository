@@ -164,6 +164,7 @@ import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
+import org.eclipse.app4mc.amalthea.model.LabelGroup;
 import org.eclipse.app4mc.amalthea.model.Latency;
 import org.eclipse.app4mc.amalthea.model.LatencyAccessPath;
 import org.eclipse.app4mc.amalthea.model.LatencyAccessPathElement;
@@ -235,7 +236,6 @@ import org.eclipse.app4mc.amalthea.model.ProcessPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
 import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
@@ -643,10 +643,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createRunnableSequencingConstraintAdapter();
 			}
 			@Override
-			public Adapter caseProcessRunnableGroup(ProcessRunnableGroup object) {
-				return createProcessRunnableGroupAdapter();
-			}
-			@Override
 			public Adapter caseAffinityConstraint(AffinityConstraint object) {
 				return createAffinityConstraintAdapter();
 			}
@@ -717,6 +713,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTargetScheduler(TargetScheduler object) {
 				return createTargetSchedulerAdapter();
+			}
+			@Override
+			public Adapter caseLabelGroup(LabelGroup object) {
+				return createLabelGroupAdapter();
 			}
 			@Override
 			public Adapter caseRunnableGroup(RunnableGroup object) {
@@ -2557,20 +2557,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup <em>Process Runnable Group</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup
-	 * @generated
-	 */
-	public Adapter createProcessRunnableGroupAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AffinityConstraint <em>Affinity Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -2819,6 +2805,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTargetSchedulerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.LabelGroup <em>Label Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.LabelGroup
+	 * @generated
+	 */
+	public Adapter createLabelGroupAdapter() {
 		return null;
 	}
 

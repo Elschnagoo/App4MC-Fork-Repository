@@ -16,7 +16,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
+import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 
@@ -78,7 +78,7 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProcessRunnableGroup> runnableGroups;
+	protected EList<RunnableEntityGroup> runnableGroups;
 
 	/**
 	 * The cached value of the '{@link #getProcessScope() <em>Process Scope</em>}' reference list.
@@ -135,9 +135,9 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ProcessRunnableGroup> getRunnableGroups() {
+	public EList<RunnableEntityGroup> getRunnableGroups() {
 		if (runnableGroups == null) {
-			runnableGroups = new EObjectContainmentEList<ProcessRunnableGroup>(ProcessRunnableGroup.class, this, AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__RUNNABLE_GROUPS);
+			runnableGroups = new EObjectContainmentEList<RunnableEntityGroup>(RunnableEntityGroup.class, this, AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__RUNNABLE_GROUPS);
 		}
 		return runnableGroups;
 	}
@@ -200,7 +200,7 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 				return;
 			case AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__RUNNABLE_GROUPS:
 				getRunnableGroups().clear();
-				getRunnableGroups().addAll((Collection<? extends ProcessRunnableGroup>)newValue);
+				getRunnableGroups().addAll((Collection<? extends RunnableEntityGroup>)newValue);
 				return;
 			case AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__PROCESS_SCOPE:
 				getProcessScope().clear();

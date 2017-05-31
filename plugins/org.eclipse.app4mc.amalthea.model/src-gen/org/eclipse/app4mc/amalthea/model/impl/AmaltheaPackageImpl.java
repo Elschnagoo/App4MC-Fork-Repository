@@ -185,6 +185,7 @@ import org.eclipse.app4mc.amalthea.model.LabelDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelEventType;
+import org.eclipse.app4mc.amalthea.model.LabelGroup;
 import org.eclipse.app4mc.amalthea.model.Latency;
 import org.eclipse.app4mc.amalthea.model.LatencyAccessPath;
 import org.eclipse.app4mc.amalthea.model.LatencyAccessPathElement;
@@ -266,7 +267,6 @@ import org.eclipse.app4mc.amalthea.model.ProcessPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
 import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
@@ -838,13 +838,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass processRunnableGroupEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass affinityConstraintEClass = null;
 
 	/**
@@ -965,6 +958,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass targetSchedulerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass labelGroupEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4701,24 +4701,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getProcessRunnableGroup() {
-		return processRunnableGroupEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getProcessRunnableGroup_Runnables() {
-		return (EReference)processRunnableGroupEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getAffinityConstraint() {
 		return affinityConstraintEClass;
 	}
@@ -4982,6 +4964,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getTargetScheduler_Schedulers() {
 		return (EReference)targetSchedulerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLabelGroup() {
+		return labelGroupEClass;
 	}
 
 	/**
@@ -12031,9 +12022,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(runnableSequencingConstraintEClass, RUNNABLE_SEQUENCING_CONSTRAINT__RUNNABLE_GROUPS);
 		createEReference(runnableSequencingConstraintEClass, RUNNABLE_SEQUENCING_CONSTRAINT__PROCESS_SCOPE);
 
-		processRunnableGroupEClass = createEClass(PROCESS_RUNNABLE_GROUP);
-		createEReference(processRunnableGroupEClass, PROCESS_RUNNABLE_GROUP__RUNNABLES);
-
 		affinityConstraintEClass = createEClass(AFFINITY_CONSTRAINT);
 
 		separationConstraintEClass = createEClass(SEPARATION_CONSTRAINT);
@@ -12081,6 +12069,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		targetSchedulerEClass = createEClass(TARGET_SCHEDULER);
 		createEReference(targetSchedulerEClass, TARGET_SCHEDULER__SCHEDULERS);
+
+		labelGroupEClass = createEClass(LABEL_GROUP);
 
 		runnableGroupEClass = createEClass(RUNNABLE_GROUP);
 
@@ -13191,7 +13181,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		eventConfigEClass.getESuperTypes().add(this.getBaseObject());
 		constraintsModelEClass.getESuperTypes().add(this.getBaseObject());
 		runnableSequencingConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
-		processRunnableGroupEClass.getESuperTypes().add(this.getBaseObject());
 		affinityConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
 		separationConstraintEClass.getESuperTypes().add(this.getAffinityConstraint());
 		pairingConstraintEClass.getESuperTypes().add(this.getAffinityConstraint());
@@ -13221,6 +13210,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		targetSchedulerEClass.getESuperTypes().add(this.getRunnableConstraintTarget());
 		targetSchedulerEClass.getESuperTypes().add(this.getProcessConstraintTarget());
 		targetSchedulerEClass.getESuperTypes().add(this.getBaseObject());
+		labelEntityGroupEClass.getESuperTypes().add(this.getLabelGroup());
 		labelEntityGroupEClass.getESuperTypes().add(this.getBaseObject());
 		runnableEntityGroupEClass.getESuperTypes().add(this.getRunnableGroup());
 		runnableEntityGroupEClass.getESuperTypes().add(this.getBaseObject());
@@ -13751,11 +13741,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(runnableSequencingConstraintEClass, RunnableSequencingConstraint.class, "RunnableSequencingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRunnableSequencingConstraint_OrderType(), this.getRunnableOrderType(), "orderType", null, 0, 1, RunnableSequencingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRunnableSequencingConstraint_RunnableGroups(), this.getProcessRunnableGroup(), null, "runnableGroups", null, 2, -1, RunnableSequencingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunnableSequencingConstraint_RunnableGroups(), this.getRunnableEntityGroup(), null, "runnableGroups", null, 2, -1, RunnableSequencingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnableSequencingConstraint_ProcessScope(), this.getAbstractProcess(), null, "processScope", null, 0, -1, RunnableSequencingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(processRunnableGroupEClass, ProcessRunnableGroup.class, "ProcessRunnableGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProcessRunnableGroup_Runnables(), this.getRunnable(), null, "runnables", null, 1, -1, ProcessRunnableGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(affinityConstraintEClass, AffinityConstraint.class, "AffinityConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -13788,7 +13775,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getProcessPairingConstraint_Group(), this.getProcessGroup(), null, "group", null, 0, 1, ProcessPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataPairingConstraintEClass, DataPairingConstraint.class, "DataPairingConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataPairingConstraint_Group(), this.getLabelEntityGroup(), null, "group", null, 0, 1, DataPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataPairingConstraint_Group(), this.getLabelGroup(), null, "group", null, 0, 1, DataPairingConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableConstraintTargetEClass, RunnableConstraintTarget.class, "RunnableConstraintTarget", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -13805,21 +13792,23 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(targetSchedulerEClass, TargetScheduler.class, "TargetScheduler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTargetScheduler_Schedulers(), this.getScheduler(), null, "schedulers", null, 0, -1, TargetScheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(labelGroupEClass, LabelGroup.class, "LabelGroup", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(runnableGroupEClass, RunnableGroup.class, "RunnableGroup", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(processGroupEClass, ProcessGroup.class, "ProcessGroup", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(labelEntityGroupEClass, LabelEntityGroup.class, "LabelEntityGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLabelEntityGroup_Labels(), this.getLabel(), null, "labels", null, 0, -1, LabelEntityGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLabelEntityGroup_Labels(), this.getLabel(), null, "labels", null, 1, -1, LabelEntityGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableEntityGroupEClass, RunnableEntityGroup.class, "RunnableEntityGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRunnableEntityGroup_Runnables(), this.getRunnable(), null, "runnables", null, 0, -1, RunnableEntityGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunnableEntityGroup_Runnables(), this.getRunnable(), null, "runnables", null, 1, -1, RunnableEntityGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processEntityGroupEClass, ProcessEntityGroup.class, "ProcessEntityGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProcessEntityGroup_Processes(), this.getProcess(), null, "processes", null, 0, -1, ProcessEntityGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessEntityGroup_Processes(), this.getProcess(), null, "processes", null, 1, -1, ProcessEntityGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tagGroupEClass, TagGroup.class, "TagGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTagGroup_Tag(), this.getTag(), null, "tag", null, 0, 1, TagGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTagGroup_Tag(), this.getTag(), null, "tag", null, 1, 1, TagGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventChainEClass, EventChain.class, "EventChain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEventChain_Stimulus(), this.getEvent(), null, "stimulus", null, 0, 1, EventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

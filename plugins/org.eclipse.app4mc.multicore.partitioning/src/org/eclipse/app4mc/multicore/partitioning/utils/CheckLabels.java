@@ -16,6 +16,7 @@ import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
@@ -107,8 +108,8 @@ public class CheckLabels {
 											final RunnableSequencingConstraint RSC = factory
 													.createRunnableSequencingConstraint();
 											RSC.setOrderType(RunnableOrderType.SUCCESSOR);
-											final ProcessRunnableGroup prg1 = factory.createProcessRunnableGroup();
-											final ProcessRunnableGroup prg2 = factory.createProcessRunnableGroup();
+											final RunnableEntityGroup prg1 = factory.createRunnableEntityGroup();
+											final RunnableEntityGroup prg2 = factory.createRunnableEntityGroup();
 											prg1.getRunnables().add(r1);
 											prg2.getRunnables().add(r2);
 											if (la1.getAccess().equals(LabelAccessEnum.WRITE)

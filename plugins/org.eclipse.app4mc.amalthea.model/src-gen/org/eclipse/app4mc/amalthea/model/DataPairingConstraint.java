@@ -44,12 +44,12 @@ public interface DataPairingConstraint extends PairingConstraint, DataConstraint
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Group</em>' containment reference.
-	 * @see #setGroup(LabelEntityGroup)
+	 * @see #setGroup(LabelGroup)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataPairingConstraint_Group()
 	 * @model containment="true"
 	 * @generated
 	 */
-	LabelEntityGroup getGroup();
+	LabelGroup getGroup();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.DataPairingConstraint#getGroup <em>Group</em>}' containment reference.
@@ -59,6 +59,6 @@ public interface DataPairingConstraint extends PairingConstraint, DataConstraint
 	 * @see #getGroup()
 	 * @generated
 	 */
-	void setGroup(LabelEntityGroup value);
+	void setGroup(LabelGroup value);
 
 } // DataPairingConstraint

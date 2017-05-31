@@ -46,7 +46,7 @@ public interface RunnableEntityGroup extends RunnableGroup, BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnables</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableEntityGroup_Runnables()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables();

@@ -21,7 +21,6 @@ import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
@@ -408,8 +407,8 @@ public class PerformPartitioning {
 		final AmaltheaFactory factory = AmaltheaFactory.eINSTANCE;
 		final RunnableSequencingConstraint rsc = factory.createRunnableSequencingConstraint();
 		rsc.setName(source.getName() + "-->" + target.getName());
-		final ProcessRunnableGroup prg1 = factory.createProcessRunnableGroup();
-		final ProcessRunnableGroup prg2 = factory.createProcessRunnableGroup();
+		final RunnableEntityGroup prg1 = factory.createRunnableEntityGroup();
+		final RunnableEntityGroup prg2 = factory.createRunnableEntityGroup();
 
 		final ProcessPrototype sourcePP = new Helper().getPPfromR(source, swm);
 		rsc.getProcessScope().add(sourcePP);

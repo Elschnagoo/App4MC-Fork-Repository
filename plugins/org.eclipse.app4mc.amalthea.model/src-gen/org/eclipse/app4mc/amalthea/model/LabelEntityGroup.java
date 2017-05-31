@@ -34,7 +34,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface LabelEntityGroup extends BaseObject {
+public interface LabelEntityGroup extends LabelGroup, BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Labels</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Label}.
@@ -46,7 +46,7 @@ public interface LabelEntityGroup extends BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Labels</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelEntityGroup_Labels()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<Label> getLabels();

@@ -1384,7 +1384,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="runnableGroups" type="am:ProcessRunnableGroup"/>
+          <xsd:element name="runnableGroups" type="am:RunnableEntityGroup"/>
           <xsd:element name="processScope" type="am:AbstractProcess"/>
         </xsd:choice>
         <xsd:attribute name="orderType" type="am:RunnableOrderType"/>
@@ -1393,17 +1393,6 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="RunnableSequencingConstraint" type="am:RunnableSequencingConstraint"/>
-  <xsd:complexType name="ProcessRunnableGroup">
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="runnables" type="am:Runnable"/>
-        </xsd:choice>
-        <xsd:attribute name="runnables" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ProcessRunnableGroup" type="am:ProcessRunnableGroup"/>
   <xsd:complexType abstract="true" name="AffinityConstraint">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject"/>
@@ -1605,7 +1594,7 @@ labels describes the group of labels that should be paired on the target</xsd:do
       <xsd:extension base="am:PairingConstraint">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="target" type="am:DataConstraintTarget"/>
-          <xsd:element name="group" type="am:LabelEntityGroup"/>
+          <xsd:element name="group" type="am:LabelGroup"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -1730,6 +1719,21 @@ A scheduler can be a target for runnable-constraints and process-constraints
 schedulers: the reference to zero or more Schedulers. If this list is empty, the target stands for all schedulers!</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="LabelGroup">
+    <xsd:annotation>
+      <xsd:documentation>An abstract description for a group of labels that can be paired or separated by a runnable-constraint</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="LabelGroup" type="am:LabelGroup">
+    <xsd:annotation>
+      <xsd:documentation>An abstract description for a group of labels that can be paired or separated by a runnable-constraint</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType abstract="true" name="RunnableGroup">
     <xsd:annotation>
       <xsd:documentation>An abstract description for a group of runnables that can be paired or separated by a runnable-constraint</xsd:documentation>
@@ -1765,8 +1769,9 @@ schedulers: the reference to zero or more Schedulers. If this list is empty, the
       <xsd:documentation>A group of labels that can be paired or separated by a data-constraint</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
+      <xsd:extension base="am:LabelGroup">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="customProperties" type="am:CustomProperty"/>
           <xsd:element name="labels" type="am:Label"/>
         </xsd:choice>
         <xsd:attribute name="labels" type="xsd:string"/>

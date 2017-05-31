@@ -437,15 +437,6 @@ public interface AmaltheaFactory extends EFactory {
 	RunnableSequencingConstraint createRunnableSequencingConstraint();
 
 	/**
-	 * Returns a new object of class '<em>Process Runnable Group</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Process Runnable Group</em>'.
-	 * @generated
-	 */
-	ProcessRunnableGroup createProcessRunnableGroup();
-
-	/**
 	 * Returns a new object of class '<em>Runnable Separation Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

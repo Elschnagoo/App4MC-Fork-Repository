@@ -46,7 +46,7 @@ public interface ProcessEntityGroup extends ProcessGroup, BaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Processes</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessEntityGroup_Processes()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<org.eclipse.app4mc.amalthea.model.Process> getProcesses();

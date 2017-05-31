@@ -46,7 +46,7 @@ public interface TagGroup extends RunnableGroup, ProcessGroup, BaseObject {
 	 * @return the value of the '<em>Tag</em>' reference.
 	 * @see #setTag(Tag)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTagGroup_Tag()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	Tag getTag();

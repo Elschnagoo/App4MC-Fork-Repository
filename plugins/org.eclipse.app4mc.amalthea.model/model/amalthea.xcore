@@ -748,14 +748,10 @@ enum RunnableOrderType{
 class RunnableSequencingConstraint extends ReferableBaseObject
 {
 	RunnableOrderType orderType
-	contains ProcessRunnableGroup[2..*] runnableGroups
+	contains RunnableEntityGroup[2..*] runnableGroups
 	refers AbstractProcess[] processScope
 }
 
-class ProcessRunnableGroup extends BaseObject
-{
-	refers Runnable[1..*] runnables
-}
 
 ///////////////////////////Affinity constraints:
 abstract class AffinityConstraint extends ReferableBaseObject
@@ -857,7 +853,7 @@ class ProcessPairingConstraint extends PairingConstraint, ProcessConstraint, Bas
  */
 class DataPairingConstraint extends PairingConstraint, DataConstraint, BaseObject
 {
-	contains LabelEntityGroup group
+	contains LabelGroup group
 }
 
 /*
@@ -913,6 +909,13 @@ class TargetScheduler extends RunnableConstraintTarget, ProcessConstraintTarget,
 }
 
 /*
+ * An abstract description for a group of labels that can be paired or separated by a runnable-constraint
+ */
+abstract class LabelGroup
+{
+}
+
+/*
  * An abstract description for a group of runnables that can be paired or separated by a runnable-constraint
  */
 abstract class RunnableGroup
@@ -929,9 +932,9 @@ abstract class ProcessGroup
 /*
  * A group of labels that can be paired or separated by a data-constraint
  */
-class LabelEntityGroup extends BaseObject
+class LabelEntityGroup extends LabelGroup, BaseObject
 {
-	refers Label[] labels
+	refers Label[1..*] labels
 }
 
 /*
@@ -939,7 +942,7 @@ class LabelEntityGroup extends BaseObject
  */
 class RunnableEntityGroup extends RunnableGroup, BaseObject
 {
-	refers Runnable[] runnables
+	refers Runnable[1..*] runnables
 }
 
 /*
@@ -947,7 +950,7 @@ class RunnableEntityGroup extends RunnableGroup, BaseObject
  */
 class ProcessEntityGroup extends ProcessGroup, BaseObject
 {
-	refers Process[] processes
+	refers Process[1..*] processes
 }
 
 /*
@@ -956,7 +959,7 @@ class ProcessEntityGroup extends ProcessGroup, BaseObject
  */
 class TagGroup extends RunnableGroup, ProcessGroup, BaseObject
 {
-	refers Tag tag
+	refers Tag[1] tag
 }
 
 //////////////////////////Event chains & Timing constraints:
