@@ -19,6 +19,7 @@ import java.util.Map;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
+import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
@@ -50,12 +51,12 @@ public class OMTask {
 	 */
 	private static long iMaxPeriod = -1;
 
-	private ArrayList<OMTag> validTags = new ArrayList<OMTag>();
-	private ArrayList<OMTag> invalidTags = new ArrayList<OMTag>();
+	private ArrayList<OMAnnotationElement> validTags = new ArrayList<OMAnnotationElement>();
+	private ArrayList<OMAnnotationElement> invalidTags = new ArrayList<OMAnnotationElement>();
 
 	public OMTask(final Task taskRef) {
 		this.taskRef = taskRef;
-		addTags();
+		addAnnotationElements();
 	}
 
 	public OMTask(final Task taskRef, final OMTask predecessor) {
@@ -63,7 +64,7 @@ public class OMTask {
 		this.predecessor = predecessor;
 	}
 
-	private void addTags() {
+	private void addAnnotationElements() {
 		final Map<String, Value> itPropertyConstraints;
 		// Check custom Properties
 		if (this.getTaskRef().getCustomProperties().size() > 0) {
@@ -71,7 +72,8 @@ public class OMTask {
 			itPropertyConstraints.forEach((k, v) -> parsePropertyConstraint(k, v));
 		}
 	}
-
+	
+	//TODO This should be handled more compact
 	private void parsePropertyConstraint(String k, Value v) {
 		UniversalHandler.getInstance().logCon("T: " + taskRef.getName() + " - Parsing (K: " + k + " V: " + v + ")");
 		// Check if we have a valid Property Constraint
@@ -79,6 +81,17 @@ public class OMTask {
 			ReferenceObject ref = (ReferenceObject) v;
 			if (ref.getValue() instanceof Tag) {
 				OMTag ot = new OMTag((Tag) ref.getValue());
+				if (k.contains(sTokenInclude)) {
+					this.validTags.add(ot);
+				} else if (k.contains(sTokenExclude)) {
+					this.invalidTags.add(ot);
+				} else {
+					// Skipping
+				}
+			}
+			
+			if (ref.getValue() instanceof CoreClassifier) {
+				OMCoreClassifier ot = new OMCoreClassifier((CoreClassifier) ref.getValue());
 				if (k.contains(sTokenInclude)) {
 					this.validTags.add(ot);
 				} else if (k.contains(sTokenExclude)) {
@@ -345,11 +358,11 @@ public class OMTask {
 		return this.iRunnableCount;
 	}
 
-	public ArrayList<OMTag> getValidTags() {
+	public ArrayList<OMAnnotationElement> getValidAnnotationElements() {
 		return this.validTags;
 	}
 
-	public ArrayList<OMTag> getInvalidTags() {
+	public ArrayList<OMAnnotationElement> getInvalidAnnotationElements() {
 		return this.invalidTags;
 	}
 

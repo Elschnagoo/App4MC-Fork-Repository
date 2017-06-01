@@ -2,7 +2,7 @@ package org.eclipse.app4mc.multicore.openmapping.model;
 
 import org.eclipse.app4mc.amalthea.model.Tag;
 
-public class OMTag {
+public class OMTag extends OMAnnotationElement {
 	private Tag refTag;
 
 	public OMTag(final Tag t) {

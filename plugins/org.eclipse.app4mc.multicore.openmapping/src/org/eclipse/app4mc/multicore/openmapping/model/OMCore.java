@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Dortmund University of Applied Sciences and Arts and others.
+ * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,26 +24,32 @@ import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 public class OMCore {
 	private final Core coreRef;
 	private long instructionsPerSecond = -1;
-	private ArrayList<OMTag> tags = new ArrayList<OMTag>();
+	private ArrayList<OMAnnotationElement> referrableAnnotationElements = new ArrayList<OMAnnotationElement>();
 
 	public OMCore(final Core coreRef) {
 		this.coreRef = coreRef;
 		// Prepare element, copy attributes from CoreType
-		this.tags = addTags();
+		this.referrableAnnotationElements = addAnnotatableElements();
 	}
 	
-	private ArrayList<OMTag> addTags() {
-		ArrayList<OMTag> out = new ArrayList<OMTag>();
+	private ArrayList<OMAnnotationElement> addAnnotatableElements() {
+		ArrayList<OMAnnotationElement> out = new ArrayList<OMAnnotationElement>();
 		// Add all Tags from the coreRef, which we assume is set
 		if(this.coreRef.getTags().size() > 0) {
 			this.coreRef.getTags().stream().forEach(tag -> out.add(new OMTag(tag)));
 		}
-		// Add all Tags from the CoreType
+		
 		if(null != coreRef.getCoreType()) {
+			// Add all Tags from the CoreType
 			if(this.coreRef.getCoreType().getTags().size() > 0) {
 				this.coreRef.getCoreType().getTags().stream().forEach(tag -> out.add(new OMTag(tag)));
 			}
-		}
+			// Add all Core Classifiers from the CoreType
+			if(this.coreRef.getCoreType().getClassifiers().size() > 0) {
+				this.coreRef.getCoreType().getClassifiers().stream().forEach(coreClassifier -> out.add(new OMCoreClassifier(coreClassifier)));
+			}
+		}	
+		
 		return out;
 	}
 
@@ -117,8 +123,8 @@ public class OMCore {
 		return this.coreRef;
 	}
 	
-	public ArrayList<OMTag> getTags() {
-		return this.tags;
+	public ArrayList<OMAnnotationElement> getAnnotationElement() {
+		return this.referrableAnnotationElements;
 	}
 
 	@Override
