@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Dortmund University of Applied Sciences and Arts and others.
+ * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ public class PrePartitioning {
 	private boolean efficientEdgeInCycle = false;
 	private boolean minimalEdgeDis = false;
 
-	private static boolean TAGGROUPS = false;
+	private static boolean TAGGROUPS = true;
 	private static boolean COREGROUPS = false;
 
 	public PrePartitioning(final IPreferenceStore store) {
@@ -85,12 +85,10 @@ public class PrePartitioning {
 
 
 	/**
-	 * PrePartitioning performs -affinityConstraint Runnable cumulation-,
-	 * -activation grouping-, -global graph grouping- and -cycle elimination-
-	 * based on the class' parameters; the prepartitioned model will be saved
-	 * along a separate file without affinitycontraints (these are replaced by
-	 * cumulated runnables, but later on resolved into the original runnables
-	 * after partitioning)
+	 * PrePartitioning performs -affinityConstraint Runnable cumulation-, -activation grouping-, -global graph
+	 * grouping- and -cycle elimination- based on the class' parameters; the prepartitioned model will be
+	 * saved along a separate file without affinitycontraints (these are replaced by cumulated runnables, but
+	 * later on resolved into the original runnables after partitioning)
 	 *
 	 * @param modelCopy
 	 * @param monitor
@@ -141,8 +139,6 @@ public class PrePartitioning {
 		if (TAGGROUPS) {
 			final TagToPP tpp = new TagToPP(modelCopy.getSwModel(), modelCopy.getCommonElements());
 			tpp.createPPsFromTags();
-			modelCopy.getSwModel().getProcessPrototypes().clear();
-			modelCopy.getSwModel().getProcessPrototypes().addAll(tpp.getSwm().getProcessPrototypes());
 		}
 		// grouping runnables into ProcessPrototypes via tag references
 		if (COREGROUPS) {
@@ -222,8 +218,7 @@ public class PrePartitioning {
 	}
 
 	/**
-	 * combining runnables via affinity constraints @param, @return
-	 * AmaltheaModel
+	 * combining runnables via affinity constraints @param, @return AmaltheaModel
 	 */
 	private Amalthea mergeRunnablesFromAffntyCnstrnts(final Amalthea modelCopy) {
 		if (modelCopy.getConstraintsModel() != null && modelCopy.getConstraintsModel().getAffinityConstraints() != null
