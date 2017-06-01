@@ -16,9 +16,12 @@ package org.eclipse.app4mc.amalthea.workflow.component;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.AmaltheaMerger;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ComponentsModel;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
@@ -43,10 +46,12 @@ import org.eclipse.sphinx.emf.resource.ExtendedResourceSet;
 import org.eclipse.sphinx.emf.resource.ExtendedResourceSetImpl;
 
 /**
- * Basic workflow component to read a model file and set it to a given context. The model can also be split to several files,
- * each file containing one submodel of the central {@link Amalthea} model. Several file locations can be added using
- * the {@link #addFileName(String)} method. The given files are read, the content is copied and at the end resolved.
- * At the end the loaded model is available in the configured model slot.
+ * Basic workflow component to read a model file and set it to a given context.
+ * The model can also be split to several files, each file containing one
+ * submodel of the central {@link Amalthea} model. Several file locations can be
+ * added using the {@link #addFileName(String)} method. The given files are
+ * read, the content is copied and at the end resolved. At the end the loaded
+ * model is available in the configured model slot.
  */
 public class ModelReader extends WorkflowComponent {
 
@@ -57,7 +62,7 @@ public class ModelReader extends WorkflowComponent {
 	}
 
 	/**
-	 * 
+	 *
 	 * @see org.eclipse.app4mc.amalthea.workflow.core.WorkflowComponent#runInternal(org.eclipse.app4mc.amalthea.workflow.core.Context)
 	 */
 	@Override
@@ -82,7 +87,7 @@ public class ModelReader extends WorkflowComponent {
 		copier.copyReferences();
 	}
 
-	private void addModelContent(EObject content, final Context ctx) {
+	private void addModelContent(final EObject content, final Context ctx) {
 		if (content instanceof Amalthea) {
 			final Amalthea tmpContent = (Amalthea) content;
 
@@ -90,8 +95,11 @@ public class ModelReader extends WorkflowComponent {
 				/*- Merging of CustomPropeties at the root level (central:Amalthea) from various models can lead to overwriting the contents (if same key's are defined)*/
 				getAmaltheaModel(ctx).getCustomProperties().addAll(tmpContent.getCustomProperties());
 			}
+
 			if (tmpContent.getCommonElements() != null) {
-				getAmaltheaModel(ctx).setCommonElements(tmpContent.getCommonElements());
+				final Amalthea tmpModel = AmaltheaFactory.eINSTANCE.createAmalthea();
+				tmpModel.setCommonElements(tmpContent.getCommonElements());
+				AmaltheaMerger.addElements(getAmaltheaModel(ctx), Collections.singletonList(tmpModel));
 			}
 			if (tmpContent.getComponentsModel() != null) {
 				getAmaltheaModel(ctx).setComponentsModel(tmpContent.getComponentsModel());
@@ -123,6 +131,7 @@ public class ModelReader extends WorkflowComponent {
 			if (tmpContent.getSwModel() != null) {
 				getAmaltheaModel(ctx).setSwModel(tmpContent.getSwModel());
 			}
+
 		}
 		else if (content instanceof CommonElements) {
 			getAmaltheaModel(ctx).setCommonElements((CommonElements) content);
@@ -161,7 +170,7 @@ public class ModelReader extends WorkflowComponent {
 
 	/**
 	 * Checks for given file locations to load.
-	 * 
+	 *
 	 * @throws ConfigurationException
 	 *             in case no file location is configured.
 	 */
@@ -180,9 +189,10 @@ public class ModelReader extends WorkflowComponent {
 	}
 
 	/**
-	 * Adds a file location holding an {@link Amalthea} model. Eclipse URIs like <code> platform:/resource/... </code> can
-	 * be used to specify the location if running inside of an Eclipse environment.
-	 * 
+	 * Adds a file location holding an {@link Amalthea} model. Eclipse URIs like
+	 * <code> platform:/resource/... </code> can be used to specify the location
+	 * if running inside of an Eclipse environment.
+	 *
 	 * @param fileName
 	 *            the fileName to set
 	 */
