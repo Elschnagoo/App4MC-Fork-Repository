@@ -115,6 +115,8 @@ public abstract class AbstractMappingAlgorithm {
 			tmp1.setCommonElements(this.amaltheaSwModel.getCommonElements());
 			final Amalthea tmp2 = AmaltheaFactory.eINSTANCE.createAmalthea();
 			tmp2.setCommonElements(this.amaltheaHwModel.getCommonElements());
+			models.add(tmp1);
+			models.add(tmp2);
 			AmaltheaMerger.addElements(this.mergedModel, models);
 		}
 		else if (null != this.amaltheaSwModel.getCommonElements()) {
