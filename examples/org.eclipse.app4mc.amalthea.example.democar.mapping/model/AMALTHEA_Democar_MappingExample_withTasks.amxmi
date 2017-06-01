@@ -11,9 +11,13 @@
     <tags name="SwcBrakeForceCalculation" tagType="SOFTWARE_COMPONENT"/>
     <tags name="SwcEngineSensors" tagType="SOFTWARE_COMPONENT"/>
     <tags name="SwcInjIgnActuation" tagType="SOFTWARE_COMPONENT"/>
+    <coreClassifiers name="FPU"/>
   </commonElements>
   <swModel>
     <tasks name="Task_ESSP0" priority="0" stimuli="Timer_5MS?type=Periodic" osekTaskGroup="0" multipleTaskActivationLimit="0">
+      <customProperties key="[ConstraintExclude] Exclude Targets with FPU">
+        <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier"/>
+      </customProperties>
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="EcuVehicleSpeedSensor?type=Runnable"/>
@@ -23,6 +27,9 @@
       </callGraph>
     </tasks>
     <tasks name="Task_ESSP1" priority="0" stimuli="Timer_10MS?type=Periodic" osekTaskGroup="0" multipleTaskActivationLimit="0">
+      <customProperties key="[ConstraintExclude] Exclude Targets with FPU">
+        <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier"/>
+      </customProperties>
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="CylNumObserver?type=Runnable"/>
@@ -31,6 +38,9 @@
       </callGraph>
     </tasks>
     <tasks name="Task_ESSP2" priority="0" stimuli="Timer_10MS?type=Periodic" osekTaskGroup="0" multipleTaskActivationLimit="0">
+      <customProperties key="[ConstraintExclude] Exclude Targets with FPU">
+        <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier"/>
+      </customProperties>
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="WheelSpeedSensorDiagnosis?type=Runnable"/>
@@ -39,6 +49,9 @@
       </callGraph>
     </tasks>
     <tasks name="Task_ESSP3" priority="0" stimuli="Timer_5MS?type=Periodic" osekTaskGroup="0" multipleTaskActivationLimit="0">
+      <customProperties key="[ConstraintExclude] Exclude Targets with FPU">
+        <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier"/>
+      </customProperties>
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="MassAirFlowSensor?type=Runnable"/>
@@ -50,6 +63,9 @@
       </callGraph>
     </tasks>
     <tasks name="Task_ESSP4" priority="0" stimuli="Timer_5MS?type=Periodic" osekTaskGroup="0" multipleTaskActivationLimit="0">
+      <customProperties key="[ConstraintExclude] Exclude Targets with FPU">
+        <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier"/>
+      </customProperties>
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="APedSensor?type=Runnable"/>
@@ -60,6 +76,9 @@
       </callGraph>
     </tasks>
     <tasks name="Task_ESSP5" priority="0" stimuli="Timer_5MS?type=Periodic" osekTaskGroup="0" multipleTaskActivationLimit="0">
+      <customProperties key="[ConstraintInclude] Requires Targets with FPU">
+        <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier"/>
+      </customProperties>
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="ThrottleSensor?type=Runnable"/>
@@ -76,6 +95,9 @@
       </callGraph>
     </tasks>
     <tasks name="Task_ESSP6" priority="0" stimuli="Timer_10MS?type=Periodic" osekTaskGroup="0" multipleTaskActivationLimit="0">
+      <customProperties key="[ConstraintInclude] Requires Targets with FPU">
+        <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier"/>
+      </customProperties>
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="VehicleStateMonitor?type=Runnable"/>
