@@ -247,6 +247,10 @@ public class ESSPe {
 	 * (only one outgoing edge) and the last runnable (only one incoming edge)
 	 */
 	private boolean isSequence(final ProcessPrototype pps) {
+		if (pps.getRunnableCalls().size() == 1) {
+			return true;
+		}
+		int topology = 1;
 		for (final TaskRunnableCall trc : pps.getRunnableCalls()) {
 			final Runnable r = trc.getRunnable();
 			if (this.graph.incomingEdgesOf(r).size() > 1) {
@@ -255,6 +259,7 @@ public class ESSPe {
 					final Runnable source = this.graph.getEdgeSource(rsc);
 					if (new Helper().getPPfromR(r, this.swm).equals(new Helper().getPPfromR(source, this.swm))) {
 						counter++;
+						topology++;
 					}
 					if (counter > 1) {
 						return false;
@@ -273,7 +278,15 @@ public class ESSPe {
 					}
 				}
 			}
+			else if (this.graph.outgoingEdgesOf(r).size() == 0 && this.graph.incomingEdgesOf(r).size() == 0
+					&& pps.getRunnableCalls().size() > 1) {
+				return false;
+			}
 		}
+		if (topology < pps.getRunnableCalls().size()) {
+			return false;
+		}
+		PartLog.getInstance().log(pps.getName() + " is seuqnece");
 		return true;
 	}
 }

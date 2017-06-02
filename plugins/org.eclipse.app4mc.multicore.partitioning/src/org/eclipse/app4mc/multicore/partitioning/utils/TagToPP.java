@@ -55,7 +55,7 @@ public class TagToPP {
 		}
 
 		// if there are no PPs, create one with all runnables calls
-		if (this.swm.getProcessPrototypes().size() < 1) {
+		if (this.swm.getProcessPrototypes().size() < 1 || null == swm.getProcessPrototypes()) {
 			final ProcessPrototype pp = AmaltheaFactory.eINSTANCE.createProcessPrototype();
 			pp.setName("allRunnables");
 			for (final Runnable r : this.swm.getRunnables()) {
@@ -63,6 +63,7 @@ public class TagToPP {
 				trc.setRunnable(r);
 				pp.getRunnableCalls().add(trc);
 			}
+			swm.getProcessPrototypes().add(pp);
 		}
 
 
