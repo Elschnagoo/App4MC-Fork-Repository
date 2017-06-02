@@ -35,6 +35,7 @@ import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaResourceFactory;
+import org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger.LogView;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -54,6 +55,8 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 public class UniversalHandler {
@@ -86,6 +89,8 @@ public class UniversalHandler {
 	 */
 	private final Map<URI, Resource> cache2 = new HashMap<URI, Resource>();
 
+	private LogView modelCheckerView;
+
 	/**
 	 * Initialization-on-demand holder implementation. Returns the instance of
 	 * this class.
@@ -109,6 +114,19 @@ public class UniversalHandler {
 			AmaltheaPackage.eINSTANCE.eClass();
 		}
 		catch (final Exception e) {
+			e.printStackTrace();
+		}
+
+		final String viewId = "org.eclipse.app4mc.multicore.sharelibs.modelchecker.views.ModelCheckerView";
+
+		try {
+			this.modelCheckerView = (LogView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+					.findView(viewId);
+
+			this.modelCheckerView.setFocus();
+		}
+		catch (final Exception e) {
+			System.out.println("Warning! Not possible to show model checker view");
 			e.printStackTrace();
 		}
 	}
@@ -352,80 +370,21 @@ public class UniversalHandler {
 	}
 
 	/**
-	 * Returns the selection when while calling the plugin
-	 *
-	 * @param event
-	 *            ExecutionEvent
-	 * @return IStructuredSelection selection
+	 * Clear all entries of model checker view
 	 */
-	public IStructuredSelection getSelection(final ExecutionEvent event) {
-
-		// Fetch current selection
-		final IStructuredSelection ssel = (IStructuredSelection) HandlerUtil.getActiveSite(event).getSelectionProvider()
-				.getSelection();
-
-		// Check if function was called properly
-		if (ssel == null) {
-			return null;
+	public void clearModelCheckerView() {
+		if (this.modelCheckerView == null) {
+			return;
 		}
 
-		// return first element of selection
-		return ssel;
+		this.modelCheckerView.flush();
 	}
 
 	/**
-	 * Returns the object which has been selecting while calling the plugin
-	 *
-	 * @param event
-	 *            ExecutionEvent
-	 * @return Object storing the first element of the selection
+	 * Show the view
 	 */
-	private Object getFirstSelection(final ExecutionEvent event) {
-
-		// return first element of selection
-		return getSelection(event).getFirstElement();
-	}
-
-	/**
-	 * Returns the IFile of the file where a popup command was executed
-	 *
-	 * @param event
-	 *            ExecutionEvent
-	 * @return IFile of the chosen file on success, otherwise null
-	 */
-	public IFile getSelectedFile(final ExecutionEvent event) {
-		final Object selection = getFirstSelection(event);
-
-		// Check if selected item is a file
-		if (selection instanceof IFile) {
-			final IFile file = (IFile) selection;
-			logCon("Selected file: " + file.getFullPath());
-			return file;
-		}
-		return null;
-	}
-
-	/**
-	 * Returns the URI of the project where a popup command was executed
-	 *
-	 * @param event
-	 *            ExecutionEvent
-	 * @return URI of the project containing the selected file on success,
-	 *         otherwise null
-	 */
-	public URI getProjectDir(final ExecutionEvent event) {
-		final Object selection = getFirstSelection(event);
-
-		// Check if selected item is an IResource
-		if (!(selection instanceof IResource)) {
-			return null;
-		}
-
-		final IResource file = (IResource) selection;
-		final String projectDir = file.getProject().getLocationURI().toString();
-		logCon("Project Directory: " + projectDir);
-		return URI.createURI(projectDir);
-
+	public void showModelCheckerView() {
+		this.modelCheckerView.setFocus();
 	}
 
 	/**
@@ -470,6 +429,95 @@ public class UniversalHandler {
 	 */
 	private String getPluginId() {
 		return this.pluginId;
+	}
+
+	/**
+	 * Get the active shell
+	 */
+	public Shell getShell() {
+		return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+	}
+
+	/**
+	 * Returns the selection when while calling the plugin
+	 *
+	 * @param event
+	 *            ExecutionEvent
+	 * @return IStructuredSelection selection
+	 * @deprecated replaced by {@link #SelectionUtil.getSelection()}
+	 */
+	@Deprecated
+	public static IStructuredSelection getSelection(final ExecutionEvent event) {
+
+		// Fetch current selection
+		final IStructuredSelection ssel = (IStructuredSelection) HandlerUtil.getActiveSite(event).getSelectionProvider()
+				.getSelection();
+
+		// Check if function was called properly
+		if (ssel == null) {
+			return null;
+		}
+
+		// return first element of selection
+		return ssel;
+	}
+
+	/**
+	 * Returns the object which has been selecting while calling the plugin
+	 *
+	 * @param event
+	 *            ExecutionEvent
+	 * @return Object storing the first element of the selection
+	 * @deprecated replaced by {@link #SelectionUtil.getFirstSelection()}
+	 */
+	@Deprecated
+	private static Object getFirstSelection(final ExecutionEvent event) {
+
+		// return first element of selection
+		return getSelection(event).getFirstElement();
+	}
+
+	/**
+	 * Returns the IFile of the file where a popup command was executed
+	 *
+	 * @param event
+	 *            ExecutionEvent
+	 * @return IFile of the chosen file on success, otherwise null
+	 * @deprecated replaced by {@link #SelectionUtil.getSelectedFile()}
+	 */
+	@Deprecated
+	public static IFile getSelectedFile(final ExecutionEvent event) {
+		final Object selection = getFirstSelection(event);
+
+		// Check if selected item is a file
+		if (selection instanceof IFile) {
+			final IFile file = (IFile) selection;
+			return file;
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the URI of the project where a popup command was executed
+	 *
+	 * @param event
+	 *            ExecutionEvent
+	 * @return URI of the project containing the selected file on success,
+	 * @deprecated replaced by {@link #SelectionUtil.getProjectDir()}
+	 */
+	@Deprecated
+	public static URI getProjectDir(final ExecutionEvent event) {
+		final Object selection = getFirstSelection(event);
+
+		// Check if selected item is an IResource
+		if (!(selection instanceof IResource)) {
+			return null;
+		}
+
+		final IResource file = (IResource) selection;
+		final String projectDir = file.getProject().getLocationURI().toString();
+		return URI.createURI(projectDir);
+
 	}
 
 	/**
