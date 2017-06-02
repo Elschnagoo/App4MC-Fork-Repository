@@ -1,0 +1,88 @@
+
+h2. Multicore Wizard
+
+The APP4MC Multicore Wizard allows you to easily configure and run the entire @Workflow@;
+
+* *PrePartitioning*
+* *Partitioning*
+* *Task Creation*
+* *Mapping*
+
+In the following subsection the different pages of the wizard will be explained in detail.
+
+To launch the APP4MC Multicore Wizard you only need to right-click on the model file containing the *Software Model*. Then click on *_AMALTHEA Multicore Features > Run Wizard_*.
+
+h3. Flow Configuration
+
+The APP4MC Multicore Wizard's first page looks like in the following image;
+
+!../pictures/Wizard/flow_configuration.png!
+
+In the *Flow* settings group you can select which steps of the @Workflow@ you want to configure and run. Here a short description about the configuration options;
+
+* *Perform Partitioning:* Adds the running of the *Partitioning* step to the @Workflow@. If selected the *Partitioning Configuration* page is enabled.
+* *Perform Task Creation:* Adds the running of the *Task Creation* step to the @Workflow@. No wizard page is enabled by selecting this option.
+* *Perform Mapping:* Adds the running of the *Mapping* step to the @Workflow@. If selected the *Hardware Model* filed and *Mapping Configuration* page are enabled.
+* *Hardware Model:* Allows you to select the *Hardware Model* to be used to for the @Workflow@ run. If the model selected when the wizard was launched has a *Hardware Model* this field will be auto-completed. This field is mandatory if  *Perform Mapping* is enabled.
+
+The *Logging* settings group offers the possibility to set the *Enable Verbose Logging to console*. If checked every underlying APP4MC plugin instantiated during the @Workflow@ run will verbosely log to the *Console* view.
+
+Finally, the *Output* settings group allows the user to select the location of the output model. Below the description for the available options;
+
+* *Default location:* The output model will be located at *ProjectRoot/wizard*.
+* *Relative location:* Selecting this option enables the *Path* text box. The output model will be located at the relative path from *ProjectRoot*. The relative path has to be specified in the *Path* text box.
+* *Absolute location:* Selecting this option enables the *Path* text box and the *Browse...* button. By clicking *Browse...* you can specify the absolute path to locate you output model.
+
+h3. Partitioning Configuration
+
+The *Partitioning Configuration* view allows you to configure the *PrePartitioning* and *Partitioning* steps of the @Workflow@.
+
+!../pictures/Wizard/partitioning_configuration_cpp.png!
+
+First, the *PreParitioning Algorithm* settings group allows you to configure what options to take into account for the *PrePartitioning* @Workflow@ step.
+
+Finally, the *Partitioning Algorithm* settings allows you to select the *Partitioning* algorithm to be used. Below a short explanation about the algorithms options;
+
+* *ESSP:* Selecting this algorithm enables the *Number of ESSP partitions* text box
+* *CPP:* Selecting this algorithm enables the *Define one global critical path ...* checkbox
+
+For more information regarding *PrePartitioning* or *Partitioning* review the *Partitioning* help entry.
+
+h3. Mapping Configuration
+
+The APP4MC Multicore Wizard's *Mapping Configuration* page looks like in the following image;
+
+!../pictures/Wizard/mapping_configuration_ga.png!
+
+In the first settings group, *Select mapping algorithm* the user can select what mapping algorithm can be used. There are two categories of mapping algorithm available in _APP4MC_;
+
+* Genetic Algorithm based algorithms
+* Integer Linear Programming based algorithms
+
+For the first type no further configuration is needed. For the second some parameters still have to be set by the user (or use the defaults).
+
+h4. ILP-based mapping
+
+If an *ILP-based* approach is selected the *Solver Settings* group is enabled as shown in the following image;
+
+!../pictures/Wizard/mapping_configuration_ilp.png!
+
+The *Generate MPS file of ILP problem* check box allows the user to have the *MPS* file also as an output of the *Mapping* step. The other fields allow you to fine-tune the *ILP* running.
+
+h3. Summary
+
+The *Summary* view is the last view of the wizard. It displays in a tree-structured way the summary of the configured @Workflow@. The image below shows a configured @Workflows@ that includes *all* the @Workflow@ steps, if some step isn't configured it won't be shown in the summary.
+
+!../pictures/Wizard/summary.png!
+
+h3. Finish
+
+The @Workflow@ configuration in the wizard is automatically stored for you. This allows you to click the *Finish* button at any time, using the last known configuration. When running every @Workflow@ configuration the @Model Checker@ is triggered to verify that the model can in fact run the @Workflow@. If issues are found a pop-up message with show up, an example of the pop-up message box is shown below.
+
+!../pictures/Wizard/flow_failed.png!
+
+If the model checker finds any *Error* the @Workflow@ won't run. This means you need to rework you model accordingly. If only *Warning* issues are found the @Workflow@ will run after clicking *OK*.
+
+If your model fulfills all the requirements to successfully run the entire @Workflow@ a pop-up like the one in the image below will show up.
+
+!../pictures/Wizard/flow_success.png!
