@@ -6,8 +6,12 @@
 
 package org.eclipse.app4mc.amalthea.validation.ta.checks.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
@@ -18,7 +22,10 @@ import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
 import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
+import org.eclipse.app4mc.amalthea.model.ModeLabel;
+import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Synthetic;
@@ -416,5 +423,42 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				}
 			}
 		}
+	}
+
+	
+	/*
+	 * Checks if property valueProvider of {@link ModeValueListEntry} references an existing {@link ModeLiteral}.
+	 * If this is not the case, it will be handled as an error.
+	 */
+	public void checkModeValueListEntryModeLabelConstraint(Amalthea amalthea) {
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+
+		final List<ModeLabel> modeLabels = new ArrayList<>();
+		final Map<ModeLabel, ModeValueListEntry> valueProviders = new HashMap<>();
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof SWModel) {
+				SWModel swModel = (SWModel) elem;
+				modeLabels.addAll(swModel.getModeLabels());
+			}
+			if (elem instanceof ModeValueListEntry) {
+				ModeValueListEntry entry = (ModeValueListEntry) elem;
+				ModeLabel valueProvider = entry.getValueProvider();
+				if(null == valueProvider) {
+					this.issueCreator.issue(entry, AmaltheaPackage.eINSTANCE.getModeValueListEntry_ValueProvider());
+				} else {
+					valueProviders.put(valueProvider, entry);
+				}
+			}
+		}
+		
+		// check
+		for(ModeLabel modeLabel : valueProviders.keySet()) {
+			if(false == modeLabels.contains(modeLabel)) {
+				ModeValueListEntry modeValueListEntry = valueProviders.get(modeLabel);
+				this.issueCreator.issue(modeValueListEntry, AmaltheaPackage.eINSTANCE.getModeValueListEntry_ValueProvider());
+			}
+		}
+		
 	}
 }

@@ -23,7 +23,11 @@ import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
 import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
+import org.eclipse.app4mc.amalthea.model.ModeLabel;
+import org.eclipse.app4mc.amalthea.model.ModeValueList;
+import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Synthetic;
@@ -1945,6 +1949,99 @@ public class StimuliModelValidatorTests {
 
 		// test
 		this.classUnderTest.checkClockMultiplierListEntryTimeUnsigned(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkModeValueListEntryModeLabelConstraint(AMALTHEA)}
+	 */
+	@Test
+	public void test_ModeValueListEntryModeLabelConstraint_null() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final ModeValueList modeValueList = AmaltheaFactory.eINSTANCE.createModeValueList();
+		final ModeValueListEntry modeValueListEntry = AmaltheaFactory.eINSTANCE.createModeValueListEntry();
+		
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(single);
+		single.setSetModeValueList(modeValueList);
+		modeValueList.getEntries().add(modeValueListEntry);
+
+		this.issueCreator.issue(modeValueListEntry, AmaltheaPackage.eINSTANCE.getModeValueListEntry_ValueProvider());
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+		
+		// test
+		this.classUnderTest.checkModeValueListEntryModeLabelConstraint(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkModeValueListEntryModeLabelConstraint(AMALTHEA)}
+	 */
+	@Test
+	public void test_ModeValueListEntryModeLabelConstraint_positive() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
+		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final ModeValueList modeValueList = AmaltheaFactory.eINSTANCE.createModeValueList();
+		final ModeValueListEntry modeValueListEntry = AmaltheaFactory.eINSTANCE.createModeValueListEntry();
+		
+		amalthea.setSwModel(swModel);
+		swModel.getModeLabels().add(modeLabel);
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(single);
+		single.setSetModeValueList(modeValueList);
+		modeValueList.getEntries().add(modeValueListEntry);
+		modeValueListEntry.setValueProvider(modeLabel);
+
+		EasyMock.replay(this.issueCreator);
+		
+		// test
+		this.classUnderTest.checkModeValueListEntryModeLabelConstraint(amalthea);
+		
+		// evaluate
+		EasyMock.verify(this.issueCreator);
+	}
+	
+	/**
+	 * Test for validation method {@link StimuliModelValidator#checkModeValueListEntryModeLabelConstraint(AMALTHEA)}
+	 */
+	@Test
+	public void test_ModeValueListEntryModeLabelConstraint_negative() {
+		// prepare
+		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
+		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
+		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
+		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
+		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final ModeValueList modeValueList = AmaltheaFactory.eINSTANCE.createModeValueList();
+		final ModeValueListEntry modeValueListEntry = AmaltheaFactory.eINSTANCE.createModeValueListEntry();
+		
+		amalthea.setSwModel(swModel);
+		amalthea.setStimuliModel(stimuliModel);
+		stimuliModel.getStimuli().add(single);
+		single.setSetModeValueList(modeValueList);
+		modeValueList.getEntries().add(modeValueListEntry);
+		modeValueListEntry.setValueProvider(modeLabel);
+
+		this.issueCreator.issue(modeValueListEntry, AmaltheaPackage.eINSTANCE.getModeValueListEntry_ValueProvider());
+		
+		EasyMock.expectLastCall().times(1);
+		EasyMock.replay(this.issueCreator);
+		
+		// test
+		this.classUnderTest.checkModeValueListEntryModeLabelConstraint(amalthea);
 		
 		// evaluate
 		EasyMock.verify(this.issueCreator);

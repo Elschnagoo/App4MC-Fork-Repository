@@ -324,6 +324,14 @@
     severity="Error"
     message="Value must not be negative but was: {0}!"
     categories="TAConstraint"/>
+    
+<constraints
+    id="ModeValueListEntryModeLabelConstraint"
+    label="ModeValueListEntry ModeLabel"
+    description="Checks if property &quot;valueProvider&quot; of &quot;ModeValueListEntry&quot; references an existing &quot;ModeLiteral&quot;"
+    severity="Error"
+    message="Value must be an existing ModeLiteral!"
+    categories="TAConstraint"/>
 <!--end STIMULI Model -->
 
 <!--start SW Model -->
