@@ -13,25 +13,14 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.BaseObject;
-import org.eclipse.app4mc.amalthea.model.EventChain;
-import org.eclipse.app4mc.amalthea.model.IAnnotatable;
+import org.eclipse.app4mc.amalthea.model.INamedElement;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
-import org.eclipse.app4mc.amalthea.model.Value;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EcoreEMap;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,32 +30,31 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SubEventChainImpl#getCustomProperties <em>Custom Properties</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SubEventChainImpl#getEventChain <em>Event Chain</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SubEventChainImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class SubEventChainImpl extends EventChainItemImpl implements SubEventChain {
+public class SubEventChainImpl extends AbstractEventChainImpl implements SubEventChain {
 	/**
-	 * The cached value of the '{@link #getCustomProperties() <em>Custom Properties</em>}' map.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCustomProperties()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Value> customProperties;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getEventChain() <em>Event Chain</em>}' containment reference.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEventChain()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected EventChain eventChain;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -92,11 +80,8 @@ public class SubEventChainImpl extends EventChainItemImpl implements SubEventCha
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<String, Value> getCustomProperties() {
-		if (customProperties == null) {
-			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.SUB_EVENT_CHAIN__CUSTOM_PROPERTIES);
-		}
-		return customProperties;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -104,58 +89,11 @@ public class SubEventChainImpl extends EventChainItemImpl implements SubEventCha
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EventChain getEventChain() {
-		return eventChain;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetEventChain(EventChain newEventChain, NotificationChain msgs) {
-		EventChain oldEventChain = eventChain;
-		eventChain = newEventChain;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN, oldEventChain, newEventChain);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEventChain(EventChain newEventChain) {
-		if (newEventChain != eventChain) {
-			NotificationChain msgs = null;
-			if (eventChain != null)
-				msgs = ((InternalEObject)eventChain).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN, null, msgs);
-			if (newEventChain != null)
-				msgs = ((InternalEObject)newEventChain).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN, null, msgs);
-			msgs = basicSetEventChain(newEventChain, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN, newEventChain, newEventChain));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.SUB_EVENT_CHAIN__CUSTOM_PROPERTIES:
-				return ((InternalEList<?>)getCustomProperties()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN:
-				return basicSetEventChain(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SUB_EVENT_CHAIN__NAME, oldName, name));
 	}
 
 	/**
@@ -166,11 +104,8 @@ public class SubEventChainImpl extends EventChainItemImpl implements SubEventCha
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.SUB_EVENT_CHAIN__CUSTOM_PROPERTIES:
-				if (coreType) return getCustomProperties();
-				else return getCustomProperties().map();
-			case AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN:
-				return getEventChain();
+			case AmaltheaPackage.SUB_EVENT_CHAIN__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -183,11 +118,8 @@ public class SubEventChainImpl extends EventChainItemImpl implements SubEventCha
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.SUB_EVENT_CHAIN__CUSTOM_PROPERTIES:
-				((EStructuralFeature.Setting)getCustomProperties()).set(newValue);
-				return;
-			case AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN:
-				setEventChain((EventChain)newValue);
+			case AmaltheaPackage.SUB_EVENT_CHAIN__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -201,11 +133,8 @@ public class SubEventChainImpl extends EventChainItemImpl implements SubEventCha
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SUB_EVENT_CHAIN__CUSTOM_PROPERTIES:
-				getCustomProperties().clear();
-				return;
-			case AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN:
-				setEventChain((EventChain)null);
+			case AmaltheaPackage.SUB_EVENT_CHAIN__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -219,10 +148,8 @@ public class SubEventChainImpl extends EventChainItemImpl implements SubEventCha
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SUB_EVENT_CHAIN__CUSTOM_PROPERTIES:
-				return customProperties != null && !customProperties.isEmpty();
-			case AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN:
-				return eventChain != null;
+			case AmaltheaPackage.SUB_EVENT_CHAIN__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -234,14 +161,9 @@ public class SubEventChainImpl extends EventChainItemImpl implements SubEventCha
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == IAnnotatable.class) {
+		if (baseClass == INamedElement.class) {
 			switch (derivedFeatureID) {
-				case AmaltheaPackage.SUB_EVENT_CHAIN__CUSTOM_PROPERTIES: return AmaltheaPackage.IANNOTATABLE__CUSTOM_PROPERTIES;
-				default: return -1;
-			}
-		}
-		if (baseClass == BaseObject.class) {
-			switch (derivedFeatureID) {
+				case AmaltheaPackage.SUB_EVENT_CHAIN__NAME: return AmaltheaPackage.INAMED_ELEMENT__NAME;
 				default: return -1;
 			}
 		}
@@ -255,18 +177,29 @@ public class SubEventChainImpl extends EventChainItemImpl implements SubEventCha
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == IAnnotatable.class) {
+		if (baseClass == INamedElement.class) {
 			switch (baseFeatureID) {
-				case AmaltheaPackage.IANNOTATABLE__CUSTOM_PROPERTIES: return AmaltheaPackage.SUB_EVENT_CHAIN__CUSTOM_PROPERTIES;
-				default: return -1;
-			}
-		}
-		if (baseClass == BaseObject.class) {
-			switch (baseFeatureID) {
+				case AmaltheaPackage.INAMED_ELEMENT__NAME: return AmaltheaPackage.SUB_EVENT_CHAIN__NAME;
 				default: return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //SubEventChainImpl

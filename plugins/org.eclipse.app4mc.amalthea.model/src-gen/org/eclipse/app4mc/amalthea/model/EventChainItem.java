@@ -12,7 +12,6 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,5 +23,14 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface EventChainItem extends EObject {
+public interface EventChainItem extends BaseObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return null;'"
+	 * @generated
+	 */
+	AbstractEventChain getEventChain();
+
 } // EventChainItem

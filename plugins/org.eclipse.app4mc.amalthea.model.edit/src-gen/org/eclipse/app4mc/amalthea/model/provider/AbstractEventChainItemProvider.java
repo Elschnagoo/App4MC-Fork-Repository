@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -15,30 +15,34 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
+
+import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.EventChain;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.EventChain} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.AbstractEventChain} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class EventChainItemProvider extends AbstractEventChainItemProvider {
+public class AbstractEventChainItemProvider extends BaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EventChainItemProvider(AdapterFactory adapterFactory) {
+	public AbstractEventChainItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -53,67 +57,85 @@ public class EventChainItemProvider extends AbstractEventChainItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
-			addUniqueNamePropertyDescriptor(object);
+			addStimulusPropertyDescriptor(object);
+			addResponsePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Stimulus feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addStimulusPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IReferable_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IReferable_name_feature", "_UI_IReferable_type"),
-				 AmaltheaPackage.eINSTANCE.getIReferable_Name(),
+				 getString("_UI_AbstractEventChain_stimulus_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractEventChain_stimulus_feature", "_UI_AbstractEventChain_type"),
+				 AmaltheaPackage.eINSTANCE.getAbstractEventChain_Stimulus(),
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 getString("_UI_MainPropertyCategory"),
+				 true,
+				 null,
+				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Unique Name feature.
+	 * This adds a property descriptor for the Response feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addUniqueNamePropertyDescriptor(Object object) {
+	protected void addResponsePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IReferable_uniqueName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IReferable_uniqueName_feature", "_UI_IReferable_type"),
-				 AmaltheaPackage.eINSTANCE.getIReferable_UniqueName(),
+				 getString("_UI_AbstractEventChain_response_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractEventChain_response_feature", "_UI_AbstractEventChain_type"),
+				 AmaltheaPackage.eINSTANCE.getAbstractEventChain_Response(),
+				 true,
 				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 getString("_UI_ReadonlyPropertyCategory"),
-				 new String[] {
-					"org.eclipse.ui.views.properties.expert"
-				 }));
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
-	 * This returns EventChain.gif.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/EventChain"));
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAbstractEventChain_Segments());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAbstractEventChain_Strands());
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -134,10 +156,7 @@ public class EventChainItemProvider extends AbstractEventChainItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((EventChain)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_EventChain_type") :
-			getString("_UI_EventChain_type") + " " + label;
+		return getString("_UI_AbstractEventChain_type");
 	}
 	
 
@@ -152,10 +171,10 @@ public class EventChainItemProvider extends AbstractEventChainItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(EventChain.class)) {
-			case AmaltheaPackage.EVENT_CHAIN__NAME:
-			case AmaltheaPackage.EVENT_CHAIN__UNIQUE_NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+		switch (notification.getFeatureID(AbstractEventChain.class)) {
+			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__SEGMENTS:
+			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__STRANDS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -171,6 +190,26 @@ public class EventChainItemProvider extends AbstractEventChainItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getAbstractEventChain_Segments(),
+				 AmaltheaFactory.eINSTANCE.createEventChainReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getAbstractEventChain_Segments(),
+				 AmaltheaFactory.eINSTANCE.createEventChainContainer()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getAbstractEventChain_Strands(),
+				 AmaltheaFactory.eINSTANCE.createEventChainReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getAbstractEventChain_Strands(),
+				 AmaltheaFactory.eINSTANCE.createEventChainContainer()));
 	}
 
 	/**

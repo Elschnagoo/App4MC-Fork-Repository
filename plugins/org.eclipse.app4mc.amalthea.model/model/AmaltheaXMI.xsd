@@ -1842,7 +1842,7 @@ This can be runnables or processes</xsd:documentation>
 This can be runnables or processes</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="EventChain">
+  <xsd:complexType abstract="true" name="AbstractEventChain">
     <xsd:annotation>
       <xsd:documentation>Describes an event chain which must have a minimum of two events (stimulus and response)
 If there are more events the event chain have to be divided into segments. Each segment is another event chain.
@@ -1853,7 +1853,7 @@ segments: Sub event chains
 strands: alternative event paths</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:ReferableBaseObject">
+      <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="stimulus" type="am:Event"/>
           <xsd:element name="response" type="am:Event"/>
@@ -1865,7 +1865,7 @@ strands: alternative event paths</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="EventChain" type="am:EventChain">
+  <xsd:element name="AbstractEventChain" type="am:AbstractEventChain">
     <xsd:annotation>
       <xsd:documentation>Describes an event chain which must have a minimum of two events (stimulus and response)
 If there are more events the event chain have to be divided into segments. Each segment is another event chain.
@@ -1876,19 +1876,32 @@ segments: Sub event chains
 strands: alternative event paths</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="EventChain">
+    <xsd:complexContent>
+      <xsd:extension base="am:AbstractEventChain">
+        <xsd:attribute name="name" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="EventChain" type="am:EventChain"/>
+  <xsd:complexType name="SubEventChain">
+    <xsd:complexContent>
+      <xsd:extension base="am:AbstractEventChain">
+        <xsd:attribute name="name" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SubEventChain" type="am:SubEventChain"/>
   <xsd:complexType abstract="true" name="EventChainItem">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject"/>
+    </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="EventChainItem" type="am:EventChainItem"/>
   <xsd:complexType name="EventChainReference">
     <xsd:complexContent>
       <xsd:extension base="am:EventChainItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
           <xsd:element name="eventChain" type="am:EventChain"/>
         </xsd:choice>
         <xsd:attribute name="eventChain" type="xsd:string"/>
@@ -1896,17 +1909,16 @@ strands: alternative event paths</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="EventChainReference" type="am:EventChainReference"/>
-  <xsd:complexType name="SubEventChain">
+  <xsd:complexType name="EventChainContainer">
     <xsd:complexContent>
       <xsd:extension base="am:EventChainItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
-          <xsd:element name="eventChain" type="am:EventChain"/>
+          <xsd:element name="eventChain" type="am:SubEventChain"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="SubEventChain" type="am:SubEventChain"/>
+  <xsd:element name="EventChainContainer" type="am:EventChainContainer"/>
   <xsd:complexType abstract="true" name="TimingConstraint">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject"/>

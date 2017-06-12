@@ -59,6 +59,7 @@ import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.EventChain;
+import org.eclipse.app4mc.amalthea.model.EventChainContainer;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
@@ -1940,8 +1941,15 @@ public class CustomItemProviderService {
       }
       final String chainName = _name;
       final String s1 = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      final String s2 = CustomItemProviderService.ppName(chainName, "<chain>");
-      return (("Chain Ref " + s1) + s2);
+      String _xifexpression = null;
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(chainName);
+      if (_isNullOrEmpty) {
+        _xifexpression = "<chain ref>";
+      } else {
+        _xifexpression = ("(Chain Ref) " + chainName);
+      }
+      final String s2 = _xifexpression;
+      return (s1 + s2);
     } else {
       return defaultText;
     }
@@ -1961,26 +1969,31 @@ public class CustomItemProviderService {
   }
   
   /**
-   * SubEventChainItemProvider
+   * EventChainContainerItemProvider
    */
-  public static String getSubEventChainItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof SubEventChain)) {
-      EventChain _eventChain = null;
-      if (((SubEventChain)object)!=null) {
-        _eventChain=((SubEventChain)object).getEventChain();
+  public static String getEventChainContainerItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof EventChainContainer)) {
+      SubEventChain _eventChain = null;
+      if (((EventChainContainer)object)!=null) {
+        _eventChain=((EventChainContainer)object).getEventChain();
       }
-      String _name = null;
-      if (_eventChain!=null) {
-        _name=_eventChain.getName();
-      }
-      final String chainName = _name;
+      final SubEventChain chain = _eventChain;
       final String s1 = CustomItemProviderService.getContainingFeatureName(((EObject)object));
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(chainName);
-      if (_isNullOrEmpty) {
+      boolean _equals = Objects.equal(chain, null);
+      if (_equals) {
         _xifexpression = "<sub chain>";
       } else {
-        _xifexpression = ("Sub Chain " + chainName);
+        String _xifexpression_1 = null;
+        String _name = chain.getName();
+        boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name);
+        if (_isNullOrEmpty) {
+          _xifexpression_1 = "Sub Chain";
+        } else {
+          String _name_1 = chain.getName();
+          _xifexpression_1 = ("(Sub Chain) " + _name_1);
+        }
+        _xifexpression = _xifexpression_1;
       }
       final String s2 = _xifexpression;
       return (s1 + s2);
@@ -1989,11 +2002,11 @@ public class CustomItemProviderService {
     }
   }
   
-  public static List<ViewerNotification> getSubEventChainItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getEventChainContainerItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(SubEventChain.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.SUB_EVENT_CHAIN__EVENT_CHAIN)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CHAIN_CONTAINER__EVENT_CHAIN)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);

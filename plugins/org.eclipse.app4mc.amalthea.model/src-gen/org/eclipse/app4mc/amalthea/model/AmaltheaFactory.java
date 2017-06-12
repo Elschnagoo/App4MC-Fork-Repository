@@ -563,6 +563,15 @@ public interface AmaltheaFactory extends EFactory {
 	EventChain createEventChain();
 
 	/**
+	 * Returns a new object of class '<em>Sub Event Chain</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sub Event Chain</em>'.
+	 * @generated
+	 */
+	SubEventChain createSubEventChain();
+
+	/**
 	 * Returns a new object of class '<em>Event Chain Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -572,13 +581,13 @@ public interface AmaltheaFactory extends EFactory {
 	EventChainReference createEventChainReference();
 
 	/**
-	 * Returns a new object of class '<em>Sub Event Chain</em>'.
+	 * Returns a new object of class '<em>Event Chain Container</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Sub Event Chain</em>'.
+	 * @return a new object of class '<em>Event Chain Container</em>'.
 	 * @generated
 	 */
-	SubEventChain createSubEventChain();
+	EventChainContainer createEventChainContainer();
 
 	/**
 	 * Returns a new object of class '<em>Physical Section Constraint</em>'.

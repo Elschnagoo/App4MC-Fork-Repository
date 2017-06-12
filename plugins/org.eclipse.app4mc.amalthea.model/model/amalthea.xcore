@@ -972,30 +972,47 @@ class TagGroup extends RunnableGroup, ProcessGroup, BaseObject
  * segments: Sub event chains
  * strands: alternative event paths
  */
-class EventChain extends ReferableBaseObject
+abstract class AbstractEventChain extends BaseObject
 {
 	refers Event stimulus
 	refers Event response
 	contains EventChainItem[] segments
 	contains EventChainItem[] strands
+	
+	op String getName() {
+		null
+	}
+	
 	op boolean containerNotificationRequired() {
 		return true
 	}
 }
 
-abstract class EventChainItem
-{
+class EventChain extends AbstractEventChain, IReferable
+{	
 }
 
-class EventChainReference extends EventChainItem, BaseObject
+class SubEventChain extends AbstractEventChain, INamedElement
+{	
+}
+
+abstract class EventChainItem extends BaseObject
+{
+	op AbstractEventChain getEventChain() {
+		null
+	}
+}
+
+class EventChainReference extends EventChainItem
 {
 	refers EventChain[1] eventChain
 }
 
-class SubEventChain extends EventChainItem, BaseObject
+class EventChainContainer extends EventChainItem
 {
-	contains EventChain[1] eventChain
+	contains SubEventChain[1] eventChain
 }
+
 
 abstract class TimingConstraint extends ReferableBaseObject
 {

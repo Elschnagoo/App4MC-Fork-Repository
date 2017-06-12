@@ -105,6 +105,7 @@ import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
+import org.eclipse.app4mc.amalthea.model.EventChainContainer;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint;
@@ -423,8 +424,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.PROCESS_ENTITY_GROUP: return createProcessEntityGroup();
 			case AmaltheaPackage.TAG_GROUP: return createTagGroup();
 			case AmaltheaPackage.EVENT_CHAIN: return createEventChain();
-			case AmaltheaPackage.EVENT_CHAIN_REFERENCE: return createEventChainReference();
 			case AmaltheaPackage.SUB_EVENT_CHAIN: return createSubEventChain();
+			case AmaltheaPackage.EVENT_CHAIN_REFERENCE: return createEventChainReference();
+			case AmaltheaPackage.EVENT_CHAIN_CONTAINER: return createEventChainContainer();
 			case AmaltheaPackage.PHYSICAL_SECTION_CONSTRAINT: return createPhysicalSectionConstraint();
 			case AmaltheaPackage.EVENT_SYNCHRONIZATION_CONSTRAINT: return createEventSynchronizationConstraint();
 			case AmaltheaPackage.EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT: return createEventChainSynchronizationConstraint();
@@ -1438,6 +1440,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SubEventChain createSubEventChain() {
+		SubEventChainImpl subEventChain = new SubEventChainImpl();
+		return subEventChain;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EventChainReference createEventChainReference() {
 		EventChainReferenceImpl eventChainReference = new EventChainReferenceImpl();
 		return eventChainReference;
@@ -1448,9 +1460,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SubEventChain createSubEventChain() {
-		SubEventChainImpl subEventChain = new SubEventChainImpl();
-		return subEventChain;
+	public EventChainContainer createEventChainContainer() {
+		EventChainContainerImpl eventChainContainer = new EventChainContainerImpl();
+		return eventChainContainer;
 	}
 
 	/**

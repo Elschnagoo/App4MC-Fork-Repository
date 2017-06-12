@@ -15,6 +15,7 @@ package org.eclipse.app4mc.amalthea.model.util;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
+import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
@@ -115,6 +116,7 @@ import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.Event;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
+import org.eclipse.app4mc.amalthea.model.EventChainContainer;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
@@ -1092,18 +1094,39 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN: {
+				AbstractEventChain abstractEventChain = (AbstractEventChain)theEObject;
+				T1 result = caseAbstractEventChain(abstractEventChain);
+				if (result == null) result = caseBaseObject(abstractEventChain);
+				if (result == null) result = caseIAnnotatable(abstractEventChain);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.EVENT_CHAIN: {
 				EventChain eventChain = (EventChain)theEObject;
 				T1 result = caseEventChain(eventChain);
-				if (result == null) result = caseReferableBaseObject(eventChain);
-				if (result == null) result = caseIAnnotatable(eventChain);
+				if (result == null) result = caseAbstractEventChain(eventChain);
 				if (result == null) result = caseIReferable(eventChain);
+				if (result == null) result = caseBaseObject(eventChain);
+				if (result == null) result = caseIAnnotatable(eventChain);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.SUB_EVENT_CHAIN: {
+				SubEventChain subEventChain = (SubEventChain)theEObject;
+				T1 result = caseSubEventChain(subEventChain);
+				if (result == null) result = caseAbstractEventChain(subEventChain);
+				if (result == null) result = caseINamedElement(subEventChain);
+				if (result == null) result = caseBaseObject(subEventChain);
+				if (result == null) result = caseIAnnotatable(subEventChain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.EVENT_CHAIN_ITEM: {
 				EventChainItem eventChainItem = (EventChainItem)theEObject;
 				T1 result = caseEventChainItem(eventChainItem);
+				if (result == null) result = caseBaseObject(eventChainItem);
+				if (result == null) result = caseIAnnotatable(eventChainItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1116,12 +1139,12 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.SUB_EVENT_CHAIN: {
-				SubEventChain subEventChain = (SubEventChain)theEObject;
-				T1 result = caseSubEventChain(subEventChain);
-				if (result == null) result = caseEventChainItem(subEventChain);
-				if (result == null) result = caseBaseObject(subEventChain);
-				if (result == null) result = caseIAnnotatable(subEventChain);
+			case AmaltheaPackage.EVENT_CHAIN_CONTAINER: {
+				EventChainContainer eventChainContainer = (EventChainContainer)theEObject;
+				T1 result = caseEventChainContainer(eventChainContainer);
+				if (result == null) result = caseEventChainItem(eventChainContainer);
+				if (result == null) result = caseBaseObject(eventChainContainer);
+				if (result == null) result = caseIAnnotatable(eventChainContainer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -4491,6 +4514,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Event Chain</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Event Chain</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseAbstractEventChain(AbstractEventChain object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Event Chain</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -4502,6 +4540,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseEventChain(EventChain object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sub Event Chain</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sub Event Chain</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseSubEventChain(SubEventChain object) {
 		return null;
 	}
 
@@ -4536,17 +4589,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Sub Event Chain</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Event Chain Container</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Sub Event Chain</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Event Chain Container</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSubEventChain(SubEventChain object) {
+	public T1 caseEventChainContainer(EventChainContainer object) {
 		return null;
 	}
 

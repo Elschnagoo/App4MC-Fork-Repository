@@ -16,6 +16,7 @@ import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
+import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
@@ -128,6 +129,7 @@ import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.Event;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
+import org.eclipse.app4mc.amalthea.model.EventChainContainer;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
@@ -1013,7 +1015,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass abstractEventChainEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass eventChainEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass subEventChainEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1034,7 +1050,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass subEventChainEClass = null;
+	private EClass eventChainContainerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -5070,6 +5086,69 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAbstractEventChain() {
+		return abstractEventChainEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractEventChain_Stimulus() {
+		return (EReference)abstractEventChainEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractEventChain_Response() {
+		return (EReference)abstractEventChainEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractEventChain_Segments() {
+		return (EReference)abstractEventChainEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractEventChain_Strands() {
+		return (EReference)abstractEventChainEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAbstractEventChain__GetName() {
+		return abstractEventChainEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAbstractEventChain__ContainerNotificationRequired() {
+		return abstractEventChainEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEventChain() {
 		return eventChainEClass;
 	}
@@ -5079,44 +5158,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEventChain_Stimulus() {
-		return (EReference)eventChainEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getEventChain_Response() {
-		return (EReference)eventChainEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getEventChain_Segments() {
-		return (EReference)eventChainEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getEventChain_Strands() {
-		return (EReference)eventChainEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getEventChain__ContainerNotificationRequired() {
-		return eventChainEClass.getEOperations().get(0);
+	public EClass getSubEventChain() {
+		return subEventChainEClass;
 	}
 
 	/**
@@ -5126,6 +5169,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EClass getEventChainItem() {
 		return eventChainItemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEventChainItem__GetEventChain() {
+		return eventChainItemEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5151,8 +5203,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSubEventChain() {
-		return subEventChainEClass;
+	public EClass getEventChainContainer() {
+		return eventChainContainerEClass;
 	}
 
 	/**
@@ -5160,8 +5212,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSubEventChain_EventChain() {
-		return (EReference)subEventChainEClass.getEStructuralFeatures().get(0);
+	public EReference getEventChainContainer_EventChain() {
+		return (EReference)eventChainContainerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -12088,20 +12140,26 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		tagGroupEClass = createEClass(TAG_GROUP);
 		createEReference(tagGroupEClass, TAG_GROUP__TAG);
 
+		abstractEventChainEClass = createEClass(ABSTRACT_EVENT_CHAIN);
+		createEReference(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN__STIMULUS);
+		createEReference(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN__RESPONSE);
+		createEReference(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN__SEGMENTS);
+		createEReference(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN__STRANDS);
+		createEOperation(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN___GET_NAME);
+		createEOperation(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN___CONTAINER_NOTIFICATION_REQUIRED);
+
 		eventChainEClass = createEClass(EVENT_CHAIN);
-		createEReference(eventChainEClass, EVENT_CHAIN__STIMULUS);
-		createEReference(eventChainEClass, EVENT_CHAIN__RESPONSE);
-		createEReference(eventChainEClass, EVENT_CHAIN__SEGMENTS);
-		createEReference(eventChainEClass, EVENT_CHAIN__STRANDS);
-		createEOperation(eventChainEClass, EVENT_CHAIN___CONTAINER_NOTIFICATION_REQUIRED);
+
+		subEventChainEClass = createEClass(SUB_EVENT_CHAIN);
 
 		eventChainItemEClass = createEClass(EVENT_CHAIN_ITEM);
+		createEOperation(eventChainItemEClass, EVENT_CHAIN_ITEM___GET_EVENT_CHAIN);
 
 		eventChainReferenceEClass = createEClass(EVENT_CHAIN_REFERENCE);
 		createEReference(eventChainReferenceEClass, EVENT_CHAIN_REFERENCE__EVENT_CHAIN);
 
-		subEventChainEClass = createEClass(SUB_EVENT_CHAIN);
-		createEReference(subEventChainEClass, SUB_EVENT_CHAIN__EVENT_CHAIN);
+		eventChainContainerEClass = createEClass(EVENT_CHAIN_CONTAINER);
+		createEReference(eventChainContainerEClass, EVENT_CHAIN_CONTAINER__EVENT_CHAIN);
 
 		timingConstraintEClass = createEClass(TIMING_CONSTRAINT);
 
@@ -13219,11 +13277,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		tagGroupEClass.getESuperTypes().add(this.getRunnableGroup());
 		tagGroupEClass.getESuperTypes().add(this.getProcessGroup());
 		tagGroupEClass.getESuperTypes().add(this.getBaseObject());
-		eventChainEClass.getESuperTypes().add(this.getReferableBaseObject());
+		abstractEventChainEClass.getESuperTypes().add(this.getBaseObject());
+		eventChainEClass.getESuperTypes().add(this.getAbstractEventChain());
+		eventChainEClass.getESuperTypes().add(this.getIReferable());
+		subEventChainEClass.getESuperTypes().add(this.getAbstractEventChain());
+		subEventChainEClass.getESuperTypes().add(this.getINamedElement());
+		eventChainItemEClass.getESuperTypes().add(this.getBaseObject());
 		eventChainReferenceEClass.getESuperTypes().add(this.getEventChainItem());
-		eventChainReferenceEClass.getESuperTypes().add(this.getBaseObject());
-		subEventChainEClass.getESuperTypes().add(this.getEventChainItem());
-		subEventChainEClass.getESuperTypes().add(this.getBaseObject());
+		eventChainContainerEClass.getESuperTypes().add(this.getEventChainItem());
 		timingConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
 		physicalSectionConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
 		synchronizationConstraintEClass.getESuperTypes().add(this.getTimingConstraint());
@@ -13810,21 +13871,29 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(tagGroupEClass, TagGroup.class, "TagGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTagGroup_Tag(), this.getTag(), null, "tag", null, 1, 1, TagGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(eventChainEClass, EventChain.class, "EventChain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEventChain_Stimulus(), this.getEvent(), null, "stimulus", null, 0, 1, EventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEventChain_Response(), this.getEvent(), null, "response", null, 0, 1, EventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEventChain_Segments(), this.getEventChainItem(), null, "segments", null, 0, -1, EventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEventChain_Strands(), this.getEventChainItem(), null, "strands", null, 0, -1, EventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(abstractEventChainEClass, AbstractEventChain.class, "AbstractEventChain", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAbstractEventChain_Stimulus(), this.getEvent(), null, "stimulus", null, 0, 1, AbstractEventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractEventChain_Response(), this.getEvent(), null, "response", null, 0, 1, AbstractEventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractEventChain_Segments(), this.getEventChainItem(), null, "segments", null, 0, -1, AbstractEventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractEventChain_Strands(), this.getEventChainItem(), null, "strands", null, 0, -1, AbstractEventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getEventChain__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getAbstractEventChain__GetName(), theEcorePackage.getEString(), "getName", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getAbstractEventChain__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(eventChainEClass, EventChain.class, "EventChain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(subEventChainEClass, SubEventChain.class, "SubEventChain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(eventChainItemEClass, EventChainItem.class, "EventChainItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getEventChainItem__GetEventChain(), this.getAbstractEventChain(), "getEventChain", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(eventChainReferenceEClass, EventChainReference.class, "EventChainReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEventChainReference_EventChain(), this.getEventChain(), null, "eventChain", null, 1, 1, EventChainReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(subEventChainEClass, SubEventChain.class, "SubEventChain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSubEventChain_EventChain(), this.getEventChain(), null, "eventChain", null, 1, 1, SubEventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(eventChainContainerEClass, EventChainContainer.class, "EventChainContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEventChainContainer_EventChain(), this.getSubEventChain(), null, "eventChain", null, 1, 1, EventChainContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(timingConstraintEClass, TimingConstraint.class, "TimingConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

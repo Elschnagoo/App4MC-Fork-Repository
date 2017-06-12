@@ -139,6 +139,7 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
+import org.eclipse.app4mc.amalthea.model.EventChainContainer
 
 class CustomItemProviderService {
 
@@ -1084,8 +1085,8 @@ class CustomItemProviderService {
 		if (object instanceof EventChainReference) {
 			val chainName = object?.eventChain?.name
 			val s1 = getContainingFeatureName(object)
-			val s2 = ppName(chainName, "<chain>")
-			return "Chain Ref " + s1 + s2
+			val s2 = if(chainName.isNullOrEmpty) "<chain ref>" else "(Chain Ref) " + chainName
+			return s1 + s2
 		} else {
 			return defaultText
 		}
@@ -1102,23 +1103,23 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						SubEventChainItemProvider
+	 * 						EventChainContainerItemProvider
 	 *****************************************************************************/
-	def static String getSubEventChainItemProviderText(Object object, String defaultText) {
-		if (object instanceof SubEventChain) {
-			val chainName = object?.eventChain?.name
+	def static String getEventChainContainerItemProviderText(Object object, String defaultText) {
+		if (object instanceof EventChainContainer) {
+			val chain = object?.eventChain
 			val s1 = getContainingFeatureName(object)
-			val s2 = if(chainName.isNullOrEmpty) "<sub chain>" else "Sub Chain " + chainName
+			val s2 = if(chain == null) "<sub chain>" else if (chain.name.isNullOrEmpty) "Sub Chain" else "(Sub Chain) " + chain.name
 			return s1 + s2
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getSubEventChainItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getEventChainContainerItemProviderNotifications(Notification notification) {
 		val list = newArrayList
 		switch notification.getFeatureID(typeof(SubEventChain)) {
-			case AmaltheaPackage::SUB_EVENT_CHAIN__EVENT_CHAIN:
+			case AmaltheaPackage::EVENT_CHAIN_CONTAINER__EVENT_CHAIN:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 		}
 		return list

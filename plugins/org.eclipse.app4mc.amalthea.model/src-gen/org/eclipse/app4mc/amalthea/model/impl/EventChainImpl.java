@@ -14,25 +14,23 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
-import java.util.Collection;
+import java.net.URLEncoder;
+
+import java.nio.charset.StandardCharsets;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Event;
 import org.eclipse.app4mc.amalthea.model.EventChain;
-import org.eclipse.app4mc.amalthea.model.EventChainItem;
+import org.eclipse.app4mc.amalthea.model.IReferable;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,54 +40,42 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.EventChainImpl#getStimulus <em>Stimulus</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.EventChainImpl#getResponse <em>Response</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.EventChainImpl#getSegments <em>Segments</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.EventChainImpl#getStrands <em>Strands</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.EventChainImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.EventChainImpl#getUniqueName <em>Unique Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class EventChainImpl extends ReferableBaseObjectImpl implements EventChain {
+public class EventChainImpl extends AbstractEventChainImpl implements EventChain {
 	/**
-	 * The cached value of the '{@link #getStimulus() <em>Stimulus</em>}' reference.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStimulus()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected Event stimulus;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getResponse() <em>Response</em>}' reference.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getResponse()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected Event response;
+	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSegments() <em>Segments</em>}' containment reference list.
+	 * The default value of the '{@link #getUniqueName() <em>Unique Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSegments()
+	 * @see #getUniqueName()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EventChainItem> segments;
-
-	/**
-	 * The cached value of the '{@link #getStrands() <em>Strands</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStrands()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<EventChainItem> strands;
+	protected static final String UNIQUE_NAME_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,16 +101,8 @@ public class EventChainImpl extends ReferableBaseObjectImpl implements EventChai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Event getStimulus() {
-		if (stimulus != null && stimulus.eIsProxy()) {
-			InternalEObject oldStimulus = (InternalEObject)stimulus;
-			stimulus = (Event)eResolveProxy(oldStimulus);
-			if (stimulus != oldStimulus) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.EVENT_CHAIN__STIMULUS, oldStimulus, stimulus));
-			}
-		}
-		return stimulus;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -132,20 +110,11 @@ public class EventChainImpl extends ReferableBaseObjectImpl implements EventChai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Event basicGetStimulus() {
-		return stimulus;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStimulus(Event newStimulus) {
-		Event oldStimulus = stimulus;
-		stimulus = newStimulus;
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.EVENT_CHAIN__STIMULUS, oldStimulus, stimulus));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.EVENT_CHAIN__NAME, oldName, name));
 	}
 
 	/**
@@ -153,86 +122,45 @@ public class EventChainImpl extends ReferableBaseObjectImpl implements EventChai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Event getResponse() {
-		if (response != null && response.eIsProxy()) {
-			InternalEObject oldResponse = (InternalEObject)response;
-			response = (Event)eResolveProxy(oldResponse);
-			if (response != oldResponse) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.EVENT_CHAIN__RESPONSE, oldResponse, response));
+	public String getUniqueName() {
+		return this.computeUniqueName();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String computeUniqueName() {
+		String _name = this.getName();
+		String _encode = this.encode(_name);
+		String _plus = (_encode + "?type=");
+		EClass _eClass = this.eClass();
+		String _name_1 = _eClass.getName();
+		return (_plus + _name_1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String encode(final String str) {
+		try {
+			String _xifexpression = null;
+			boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(str);
+			if (_isNullOrEmpty) {
+				_xifexpression = "no-name";
 			}
+			else {
+				String _string = StandardCharsets.UTF_8.toString();
+				_xifexpression = URLEncoder.encode(str, _string);
+			}
+			return _xifexpression;
 		}
-		return response;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Event basicGetResponse() {
-		return response;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setResponse(Event newResponse) {
-		Event oldResponse = response;
-		response = newResponse;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.EVENT_CHAIN__RESPONSE, oldResponse, response));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<EventChainItem> getSegments() {
-		if (segments == null) {
-			segments = new EObjectContainmentEList<EventChainItem>(EventChainItem.class, this, AmaltheaPackage.EVENT_CHAIN__SEGMENTS);
+		catch (Throwable _e) {
+			throw org.eclipse.xtext.xbase.lib.Exceptions.sneakyThrow(_e);
 		}
-		return segments;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<EventChainItem> getStrands() {
-		if (strands == null) {
-			strands = new EObjectContainmentEList<EventChainItem>(EventChainItem.class, this, AmaltheaPackage.EVENT_CHAIN__STRANDS);
-		}
-		return strands;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean containerNotificationRequired() {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.EVENT_CHAIN__SEGMENTS:
-				return ((InternalEList<?>)getSegments()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.EVENT_CHAIN__STRANDS:
-				return ((InternalEList<?>)getStrands()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -243,16 +171,10 @@ public class EventChainImpl extends ReferableBaseObjectImpl implements EventChai
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.EVENT_CHAIN__STIMULUS:
-				if (resolve) return getStimulus();
-				return basicGetStimulus();
-			case AmaltheaPackage.EVENT_CHAIN__RESPONSE:
-				if (resolve) return getResponse();
-				return basicGetResponse();
-			case AmaltheaPackage.EVENT_CHAIN__SEGMENTS:
-				return getSegments();
-			case AmaltheaPackage.EVENT_CHAIN__STRANDS:
-				return getStrands();
+			case AmaltheaPackage.EVENT_CHAIN__NAME:
+				return getName();
+			case AmaltheaPackage.EVENT_CHAIN__UNIQUE_NAME:
+				return getUniqueName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -262,23 +184,11 @@ public class EventChainImpl extends ReferableBaseObjectImpl implements EventChai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.EVENT_CHAIN__STIMULUS:
-				setStimulus((Event)newValue);
-				return;
-			case AmaltheaPackage.EVENT_CHAIN__RESPONSE:
-				setResponse((Event)newValue);
-				return;
-			case AmaltheaPackage.EVENT_CHAIN__SEGMENTS:
-				getSegments().clear();
-				getSegments().addAll((Collection<? extends EventChainItem>)newValue);
-				return;
-			case AmaltheaPackage.EVENT_CHAIN__STRANDS:
-				getStrands().clear();
-				getStrands().addAll((Collection<? extends EventChainItem>)newValue);
+			case AmaltheaPackage.EVENT_CHAIN__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -292,17 +202,8 @@ public class EventChainImpl extends ReferableBaseObjectImpl implements EventChai
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.EVENT_CHAIN__STIMULUS:
-				setStimulus((Event)null);
-				return;
-			case AmaltheaPackage.EVENT_CHAIN__RESPONSE:
-				setResponse((Event)null);
-				return;
-			case AmaltheaPackage.EVENT_CHAIN__SEGMENTS:
-				getSegments().clear();
-				return;
-			case AmaltheaPackage.EVENT_CHAIN__STRANDS:
-				getStrands().clear();
+			case AmaltheaPackage.EVENT_CHAIN__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -316,14 +217,10 @@ public class EventChainImpl extends ReferableBaseObjectImpl implements EventChai
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.EVENT_CHAIN__STIMULUS:
-				return stimulus != null;
-			case AmaltheaPackage.EVENT_CHAIN__RESPONSE:
-				return response != null;
-			case AmaltheaPackage.EVENT_CHAIN__SEGMENTS:
-				return segments != null && !segments.isEmpty();
-			case AmaltheaPackage.EVENT_CHAIN__STRANDS:
-				return strands != null && !strands.isEmpty();
+			case AmaltheaPackage.EVENT_CHAIN__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case AmaltheaPackage.EVENT_CHAIN__UNIQUE_NAME:
+				return UNIQUE_NAME_EDEFAULT == null ? getUniqueName() != null : !UNIQUE_NAME_EDEFAULT.equals(getUniqueName());
 		}
 		return super.eIsSet(featureID);
 	}
@@ -334,12 +231,81 @@ public class EventChainImpl extends ReferableBaseObjectImpl implements EventChai
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == IReferable.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.EVENT_CHAIN__NAME: return AmaltheaPackage.IREFERABLE__NAME;
+				case AmaltheaPackage.EVENT_CHAIN__UNIQUE_NAME: return AmaltheaPackage.IREFERABLE__UNIQUE_NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == IReferable.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.IREFERABLE__NAME: return AmaltheaPackage.EVENT_CHAIN__NAME;
+				case AmaltheaPackage.IREFERABLE__UNIQUE_NAME: return AmaltheaPackage.EVENT_CHAIN__UNIQUE_NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == IReferable.class) {
+			switch (baseOperationID) {
+				case AmaltheaPackage.IREFERABLE___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.EVENT_CHAIN___COMPUTE_UNIQUE_NAME;
+				case AmaltheaPackage.IREFERABLE___ENCODE__STRING: return AmaltheaPackage.EVENT_CHAIN___ENCODE__STRING;
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.EVENT_CHAIN___CONTAINER_NOTIFICATION_REQUIRED:
-				return containerNotificationRequired();
+			case AmaltheaPackage.EVENT_CHAIN___COMPUTE_UNIQUE_NAME:
+				return computeUniqueName();
+			case AmaltheaPackage.EVENT_CHAIN___ENCODE__STRING:
+				return encode((String)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //EventChainImpl

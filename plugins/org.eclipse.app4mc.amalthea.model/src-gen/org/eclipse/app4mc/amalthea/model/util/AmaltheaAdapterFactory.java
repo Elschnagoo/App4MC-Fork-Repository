@@ -15,6 +15,7 @@ package org.eclipse.app4mc.amalthea.model.util;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
+import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
@@ -115,6 +116,7 @@ import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.Event;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
+import org.eclipse.app4mc.amalthea.model.EventChainContainer;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
@@ -743,8 +745,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createTagGroupAdapter();
 			}
 			@Override
+			public Adapter caseAbstractEventChain(AbstractEventChain object) {
+				return createAbstractEventChainAdapter();
+			}
+			@Override
 			public Adapter caseEventChain(EventChain object) {
 				return createEventChainAdapter();
+			}
+			@Override
+			public Adapter caseSubEventChain(SubEventChain object) {
+				return createSubEventChainAdapter();
 			}
 			@Override
 			public Adapter caseEventChainItem(EventChainItem object) {
@@ -755,8 +765,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createEventChainReferenceAdapter();
 			}
 			@Override
-			public Adapter caseSubEventChain(SubEventChain object) {
-				return createSubEventChainAdapter();
+			public Adapter caseEventChainContainer(EventChainContainer object) {
+				return createEventChainContainerAdapter();
 			}
 			@Override
 			public Adapter caseTimingConstraint(TimingConstraint object) {
@@ -2907,6 +2917,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AbstractEventChain <em>Abstract Event Chain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.AbstractEventChain
+	 * @generated
+	 */
+	public Adapter createAbstractEventChainAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EventChain <em>Event Chain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -2917,6 +2941,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEventChainAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SubEventChain <em>Sub Event Chain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.SubEventChain
+	 * @generated
+	 */
+	public Adapter createSubEventChainAdapter() {
 		return null;
 	}
 
@@ -2949,16 +2987,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SubEventChain <em>Sub Event Chain</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EventChainContainer <em>Event Chain Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SubEventChain
+	 * @see org.eclipse.app4mc.amalthea.model.EventChainContainer
 	 * @generated
 	 */
-	public Adapter createSubEventChainAdapter() {
+	public Adapter createEventChainContainerAdapter() {
 		return null;
 	}
 

@@ -17,11 +17,11 @@ package org.eclipse.app4mc.amalthea.validation.checks.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
-import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.AbstractValidatorImpl;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;
@@ -54,7 +54,7 @@ public class ConstraintsModelCheckValidatorImpl extends AbstractValidatorImpl {
 	}
 
 
-	private void checkChainConsistency(final EventChain eventChain) {
+	private void checkChainConsistency(final AbstractEventChain eventChain) {
 
 		if (eventChain == null) {
 			return;
@@ -64,34 +64,23 @@ public class ConstraintsModelCheckValidatorImpl extends AbstractValidatorImpl {
 		checkChainConsistency(eventChain, eventChain.getStrands());
 	}
 
-	private void checkChainConsistency(final EventChain pEventChain, final EList<EventChainItem> pSubEventChains) {
+	private void checkChainConsistency(final AbstractEventChain pEventChain, final EList<EventChainItem> pSubEventChains) {
 		/**
-		 * All SubEventChains can be described directly (SubEventChain) or per reference
-		 * (EventChainReference.getEventChain()). Because of this we have to distinguish between this cases
+		 * All SubEventChains can be described directly (EventChainContainer) or per reference
+		 * (EventChainReference). Because of this we have to distinguish between this cases.
 		 */
 
 		// Collect all SubEventChains to a list of EventChains
-		final List<EventChain> subEventChains = new ArrayList<EventChain>();
+		final List<AbstractEventChain> subEventChains = new ArrayList<AbstractEventChain>();
 		for (final EventChainItem subEventChainItem : pSubEventChains) {
-			EventChain subEventChain = null;
-			if (subEventChainItem instanceof SubEventChain) {
-				subEventChain = ((SubEventChain) subEventChainItem).getEventChain();
-			}
-			if (subEventChainItem instanceof EventChainReference) {
-				subEventChain = ((EventChainReference) subEventChainItem).getEventChain();
-				if (subEventChain == null) {
-					// TODO: Create Error ... Missing Reference to (Sub)EventChain ... not specified by user
-				}
-			}
+			AbstractEventChain subChain = subEventChainItem.getEventChain();
 
-			if (subEventChain != null) {
-				subEventChains.add(subEventChain);
+			if (subChain != null) {
+				subEventChains.add(subChain);
 
-				// Do the same for further inner SubEventChains recursively
-				checkChainConsistency(subEventChain);
-				// checkChainConsistency(subEventChain);
+				// Do the same for INNER SubEventChains recursively
+				if (subChain instanceof SubEventChain) checkChainConsistency(subChain);
 			}
-
 		}
 
 		if (subEventChains.isEmpty()) {
@@ -111,11 +100,11 @@ public class ConstraintsModelCheckValidatorImpl extends AbstractValidatorImpl {
 
 
 		int chainnedEventsCnt = -1;
-		for (final EventChain subEventChain : subEventChains) {
+		for (final AbstractEventChain subEventChain : subEventChains) {
 			if (subEventChain.getStimulus() == pEventChain.getStimulus()) {
 				// Found the beginning of subEventChain
 				chainnedEventsCnt = 0;
-				EventChain chainingEvent = subEventChain;
+				AbstractEventChain chainingEvent = subEventChain;
 				final StringBuilder completeChainBuilder = new StringBuilder();
 				completeChainBuilder.append("EventChain: [ --> {" + getStimulusEvent(pEventChain) + "}"
 						+ pEventChain.getName() + "{" + getResponseEvent(pEventChain) + "} --> ]\n");
@@ -126,7 +115,7 @@ public class ConstraintsModelCheckValidatorImpl extends AbstractValidatorImpl {
 					boolean hasChained = false;
 
 					// Try to chain next EventChain
-					for (final EventChain subEvent : subEventChains) {
+					for (final AbstractEventChain subEvent : subEventChains) {
 						if (chainingEvent.getResponse() == subEvent.getStimulus()) {
 
 							completeChainBuilder.append(" --> " + "{" + getStimulusEvent(chainingEvent) + "}"
@@ -141,7 +130,7 @@ public class ConstraintsModelCheckValidatorImpl extends AbstractValidatorImpl {
 					// (chainingEvent.getResponse() != eventChain.getResponse()) => End not reached
 					if (!hasChained && chainingEvent.getResponse() != pEventChain.getResponse()) {
 						this.issueCreator.issue(chainingEvent,
-								AmaltheaPackage.eINSTANCE.getEventChainReference_EventChain(),
+								AmaltheaPackage.eINSTANCE.getEventChainContainer_EventChain(),
 								"No successor found for EventChain '" + chainingEvent.getName() + "'");
 						break;
 					}
@@ -155,14 +144,14 @@ public class ConstraintsModelCheckValidatorImpl extends AbstractValidatorImpl {
 					if (chainnedEventsCnt < subEventChains.size() - 1) {
 						// Leftover detected(chain is consistent, but there are still unconnected SubEventChains)
 						this.issueCreator.issue(pEventChain,
-								AmaltheaPackage.eINSTANCE.getEventChainReference_EventChain(),
+								AmaltheaPackage.eINSTANCE.getEventChainContainer_EventChain(),
 								"SubChain complete BUT unconnected SubEventChains left for EventChain "
 										+ pEventChain.getName());
 					}
 					// Cycles detected
 					if (chainnedEventsCnt > subEventChains.size()) {
 						this.issueCreator.issue(pEventChain,
-								AmaltheaPackage.eINSTANCE.getEventChainReference_EventChain(),
+								AmaltheaPackage.eINSTANCE.getEventChainContainer_EventChain(),
 								"Cycle found for EventChain " + pEventChain.getName());
 					}
 				}
@@ -170,28 +159,29 @@ public class ConstraintsModelCheckValidatorImpl extends AbstractValidatorImpl {
 		}
 		// Beginning SubEventChain not found (stimulus event does not match)
 		if (chainnedEventsCnt == -1) {
-			this.issueCreator.issue(pEventChain, AmaltheaPackage.eINSTANCE.getEventChainReference_EventChain(),
-					"Beginning SubEventChain not found; EventChain's stimulus does not match with any SubEventChain's stimulus "
+			this.issueCreator.issue(pEventChain, AmaltheaPackage.eINSTANCE.getEventChainContainer_EventChain(),
+					"Beginning SubEventChain not found; EventChain's stimulus does not match with SubEventChain's stimulus "
 							+ pEventChain.getName());
 		}
 	}
 
-	// private void printOutEventChain(final EventChain ec, final String prefix) {
+	// private void printOutEventChain(final AbstractEventChain ec, final String prefix) {
 	// System.out.println(prefix + "EventChain [Stimulus -> Response]: " + ec.getName() + " ["
 	// + ec.getStimulus().getName() + " -> " + ec.getResponse().getName() + "]");
 	// }
 
-	private String getResponseEvent(final EventChain chainingEvent) {
-		if (chainingEvent == null || chainingEvent.getResponse() == null) {
+	private String getResponseEvent(final AbstractEventChain eventChain) {
+		if (eventChain == null || eventChain.getResponse() == null) {
 			return "MISSING";
 		}
-		return chainingEvent.getResponse().getName();
+		return eventChain.getResponse().getName();
 	}
 
-	private String getStimulusEvent(final EventChain chainingEvent) {
-		if (chainingEvent == null || chainingEvent.getStimulus() == null) {
+	private String getStimulusEvent(final AbstractEventChain eventChain) {
+		if (eventChain == null || eventChain.getStimulus() == null) {
 			return "MISSING";
 		}
-		return chainingEvent.getStimulus().getName();
+		return eventChain.getStimulus().getName();
 	}
+	
 }

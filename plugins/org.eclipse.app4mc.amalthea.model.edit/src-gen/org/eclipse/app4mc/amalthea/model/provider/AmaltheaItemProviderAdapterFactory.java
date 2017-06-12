@@ -1439,6 +1439,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EventChainContainer} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EventChainContainerItemProvider eventChainContainerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EventChainContainer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEventChainContainerAdapter() {
+		if (eventChainContainerItemProvider == null) {
+			eventChainContainerItemProvider = new EventChainContainerItemProvider(this);
+		}
+
+		return eventChainContainerItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SubEventChain} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5921,8 +5944,9 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (processEntityGroupItemProvider != null) processEntityGroupItemProvider.dispose();
 		if (tagGroupItemProvider != null) tagGroupItemProvider.dispose();
 		if (eventChainItemProvider != null) eventChainItemProvider.dispose();
-		if (eventChainReferenceItemProvider != null) eventChainReferenceItemProvider.dispose();
 		if (subEventChainItemProvider != null) subEventChainItemProvider.dispose();
+		if (eventChainReferenceItemProvider != null) eventChainReferenceItemProvider.dispose();
+		if (eventChainContainerItemProvider != null) eventChainContainerItemProvider.dispose();
 		if (physicalSectionConstraintItemProvider != null) physicalSectionConstraintItemProvider.dispose();
 		if (eventSynchronizationConstraintItemProvider != null) eventSynchronizationConstraintItemProvider.dispose();
 		if (eventChainSynchronizationConstraintItemProvider != null) eventChainSynchronizationConstraintItemProvider.dispose();
