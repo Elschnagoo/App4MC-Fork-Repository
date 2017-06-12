@@ -6805,7 +6805,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMemoryType_XAccessPattern() {
+	public EAttribute getMemoryType_Type() {
 		return (EAttribute)memoryTypeEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -6814,17 +6814,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMemoryType_Type() {
-		return (EAttribute)memoryTypeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getMemoryType_Size() {
-		return (EReference)memoryTypeEClass.getEStructuralFeatures().get(2);
+		return (EReference)memoryTypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -6833,7 +6824,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	public EReference getMemoryType_Classifiers() {
-		return (EReference)memoryTypeEClass.getEStructuralFeatures().get(3);
+		return (EReference)memoryTypeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -12395,7 +12386,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(coreTypeEClass, CORE_TYPE__CLASSIFIERS);
 
 		memoryTypeEClass = createEClass(MEMORY_TYPE);
-		createEAttribute(memoryTypeEClass, MEMORY_TYPE__XACCESS_PATTERN);
 		createEAttribute(memoryTypeEClass, MEMORY_TYPE__TYPE);
 		createEReference(memoryTypeEClass, MEMORY_TYPE__SIZE);
 		createEReference(memoryTypeEClass, MEMORY_TYPE__CLASSIFIERS);
@@ -14131,7 +14121,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getCoreType_Classifiers(), this.getCoreClassifier(), null, "classifiers", null, 0, -1, CoreType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(memoryTypeEClass, MemoryType.class, "MemoryType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMemoryType_XAccessPattern(), theEcorePackage.getEString(), "xAccessPattern", null, 0, 1, MemoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMemoryType_Type(), this.getMemoryTypeEnum(), "type", null, 0, 1, MemoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryType_Size(), this.getDataSize(), null, "size", null, 0, 1, MemoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryType_Classifiers(), this.getMemoryClassifier(), null, "classifiers", null, 0, -1, MemoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

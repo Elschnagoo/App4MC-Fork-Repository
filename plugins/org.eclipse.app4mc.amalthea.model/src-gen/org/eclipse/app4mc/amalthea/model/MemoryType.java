@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryType#getXAccessPattern <em>XAccess Pattern</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryType#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryType#getSize <em>Size</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryType#getClassifiers <em>Classifiers</em>}</li>
@@ -34,32 +33,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface MemoryType extends HardwareTypeDescription {
-	/**
-	 * Returns the value of the '<em><b>XAccess Pattern</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>XAccess Pattern</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>XAccess Pattern</em>' attribute.
-	 * @see #setXAccessPattern(String)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemoryType_XAccessPattern()
-	 * @model unique="false"
-	 * @generated
-	 */
-	String getXAccessPattern();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.MemoryType#getXAccessPattern <em>XAccess Pattern</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>XAccess Pattern</em>' attribute.
-	 * @see #getXAccessPattern()
-	 * @generated
-	 */
-	void setXAccessPattern(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.MemoryTypeEnum}.

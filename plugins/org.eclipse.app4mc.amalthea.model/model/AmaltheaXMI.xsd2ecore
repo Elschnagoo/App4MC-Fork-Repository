@@ -1187,10 +1187,9 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/CoreType" outputs="AmaltheaXMI.xsd#//CoreType;XSDElementDeclaration=151"/>
     <nested inputs="amalthea.xcore#/EPackage/MemoryType" outputs="AmaltheaXMI.xsd#//MemoryType;XSDComplexTypeDefinition=152">
-      <nested inputs="amalthea.xcore#/EPackage/MemoryType/xAccessPattern" outputs="AmaltheaXMI.xsd#//MemoryType;XSDComplexTypeDefinition=152/XSDAttributeUse"/>
-      <nested inputs="amalthea.xcore#/EPackage/MemoryType/type" outputs="AmaltheaXMI.xsd#//MemoryType;XSDComplexTypeDefinition=152/XSDAttributeUse=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/MemoryType/type" outputs="AmaltheaXMI.xsd#//MemoryType;XSDComplexTypeDefinition=152/XSDAttributeUse"/>
       <nested inputs="amalthea.xcore#/EPackage/MemoryType/size" outputs="AmaltheaXMI.xsd#//MemoryType;XSDComplexTypeDefinition=152/XSDParticle/XSDModelGroup/XSDParticle"/>
-      <nested inputs="amalthea.xcore#/EPackage/MemoryType/classifiers" outputs="AmaltheaXMI.xsd#//MemoryType;XSDComplexTypeDefinition=152/XSDAttributeUse=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/MemoryType/classifiers" outputs="AmaltheaXMI.xsd#//MemoryType;XSDComplexTypeDefinition=152/XSDAttributeUse=1"/>
       <nested inputs="amalthea.xcore#/EPackage/MemoryType/classifiers" outputs="AmaltheaXMI.xsd#//MemoryType;XSDComplexTypeDefinition=152/XSDParticle/XSDModelGroup/XSDParticle=1"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/MemoryType" outputs="AmaltheaXMI.xsd#//MemoryType;XSDElementDeclaration=152"/>

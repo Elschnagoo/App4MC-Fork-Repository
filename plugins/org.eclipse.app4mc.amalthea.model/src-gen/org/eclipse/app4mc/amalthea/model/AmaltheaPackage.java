@@ -11348,22 +11348,13 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY_TYPE__TAGS = HARDWARE_TYPE_DESCRIPTION__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>XAccess Pattern</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMORY_TYPE__XACCESS_PATTERN = HARDWARE_TYPE_DESCRIPTION_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEMORY_TYPE__TYPE = HARDWARE_TYPE_DESCRIPTION_FEATURE_COUNT + 1;
+	int MEMORY_TYPE__TYPE = HARDWARE_TYPE_DESCRIPTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' containment reference.
@@ -11372,7 +11363,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEMORY_TYPE__SIZE = HARDWARE_TYPE_DESCRIPTION_FEATURE_COUNT + 2;
+	int MEMORY_TYPE__SIZE = HARDWARE_TYPE_DESCRIPTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Classifiers</b></em>' reference list.
@@ -11381,7 +11372,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEMORY_TYPE__CLASSIFIERS = HARDWARE_TYPE_DESCRIPTION_FEATURE_COUNT + 3;
+	int MEMORY_TYPE__CLASSIFIERS = HARDWARE_TYPE_DESCRIPTION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Memory Type</em>' class.
@@ -11390,7 +11381,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEMORY_TYPE_FEATURE_COUNT = HARDWARE_TYPE_DESCRIPTION_FEATURE_COUNT + 4;
+	int MEMORY_TYPE_FEATURE_COUNT = HARDWARE_TYPE_DESCRIPTION_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -28687,17 +28678,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMemoryType();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.MemoryType#getXAccessPattern <em>XAccess Pattern</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>XAccess Pattern</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.MemoryType#getXAccessPattern()
-	 * @see #getMemoryType()
-	 * @generated
-	 */
-	EAttribute getMemoryType_XAccessPattern();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.MemoryType#getType <em>Type</em>}'.

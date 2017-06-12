@@ -2768,7 +2768,6 @@ core: The core that processes the process/runnable that accesses the semaphore (
           <xsd:element name="size" type="am:DataSize"/>
           <xsd:element name="classifiers" type="am:MemoryClassifier"/>
         </xsd:choice>
-        <xsd:attribute name="xAccessPattern" type="xsd:string"/>
         <xsd:attribute name="type" type="am:MemoryTypeEnum"/>
         <xsd:attribute name="classifiers" type="xsd:string"/>
       </xsd:extension>

@@ -40,7 +40,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryTypeImpl#getXAccessPattern <em>XAccess Pattern</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryTypeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryTypeImpl#getSize <em>Size</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryTypeImpl#getClassifiers <em>Classifiers</em>}</li>
@@ -49,26 +48,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * @generated
  */
 public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements MemoryType {
-	/**
-	 * The default value of the '{@link #getXAccessPattern() <em>XAccess Pattern</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getXAccessPattern()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String XACCESS_PATTERN_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getXAccessPattern() <em>XAccess Pattern</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getXAccessPattern()
-	 * @generated
-	 * @ordered
-	 */
-	protected String xAccessPattern = XACCESS_PATTERN_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -126,27 +105,6 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getMemoryType();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getXAccessPattern() {
-		return xAccessPattern;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setXAccessPattern(String newXAccessPattern) {
-		String oldXAccessPattern = xAccessPattern;
-		xAccessPattern = newXAccessPattern;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_TYPE__XACCESS_PATTERN, oldXAccessPattern, xAccessPattern));
 	}
 
 	/**
@@ -247,8 +205,6 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.MEMORY_TYPE__XACCESS_PATTERN:
-				return getXAccessPattern();
 			case AmaltheaPackage.MEMORY_TYPE__TYPE:
 				return getType();
 			case AmaltheaPackage.MEMORY_TYPE__SIZE:
@@ -268,9 +224,6 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.MEMORY_TYPE__XACCESS_PATTERN:
-				setXAccessPattern((String)newValue);
-				return;
 			case AmaltheaPackage.MEMORY_TYPE__TYPE:
 				setType((MemoryTypeEnum)newValue);
 				return;
@@ -293,9 +246,6 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MEMORY_TYPE__XACCESS_PATTERN:
-				setXAccessPattern(XACCESS_PATTERN_EDEFAULT);
-				return;
 			case AmaltheaPackage.MEMORY_TYPE__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
@@ -317,8 +267,6 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MEMORY_TYPE__XACCESS_PATTERN:
-				return XACCESS_PATTERN_EDEFAULT == null ? xAccessPattern != null : !XACCESS_PATTERN_EDEFAULT.equals(xAccessPattern);
 			case AmaltheaPackage.MEMORY_TYPE__TYPE:
 				return type != TYPE_EDEFAULT;
 			case AmaltheaPackage.MEMORY_TYPE__SIZE:
@@ -339,9 +287,7 @@ public class MemoryTypeImpl extends HardwareTypeDescriptionImpl implements Memor
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (xAccessPattern: ");
-		result.append(xAccessPattern);
-		result.append(", type: ");
+		result.append(" (type: ");
 		result.append(type);
 		result.append(')');
 		return result.toString();

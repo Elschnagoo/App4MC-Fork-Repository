@@ -57,33 +57,10 @@ public class MemoryTypeItemProvider extends HardwareTypeDescriptionItemProvider 
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addXAccessPatternPropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
 			addClassifiersPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the XAccess Pattern feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addXAccessPatternPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MemoryType_xAccessPattern_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MemoryType_xAccessPattern_feature", "_UI_MemoryType_type"),
-				 AmaltheaPackage.eINSTANCE.getMemoryType_XAccessPattern(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -208,7 +185,6 @@ public class MemoryTypeItemProvider extends HardwareTypeDescriptionItemProvider 
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(MemoryType.class)) {
-			case AmaltheaPackage.MEMORY_TYPE__XACCESS_PATTERN:
 			case AmaltheaPackage.MEMORY_TYPE__TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

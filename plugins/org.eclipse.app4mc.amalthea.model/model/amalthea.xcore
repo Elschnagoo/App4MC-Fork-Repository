@@ -1638,7 +1638,6 @@ class CoreType extends AbstractionType
 
 class MemoryType extends HardwareTypeDescription
 {
-	String xAccessPattern
 	MemoryTypeEnum ^type
 	contains DataSize size
 	refers MemoryClassifier[] classifiers
