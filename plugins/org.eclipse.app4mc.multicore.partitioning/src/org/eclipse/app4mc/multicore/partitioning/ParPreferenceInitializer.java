@@ -17,29 +17,29 @@ import org.eclipse.jface.preference.IPreferenceStore;
  * Class used to initialize default preference values.
  */
 public class ParPreferenceInitializer extends AbstractPreferenceInitializer {
-	
+
 	protected IPreferenceStore store;
-	
+
 	public ParPreferenceInitializer() {
-		store = PartitioningPlugin.getDefault().getPreferenceStore();
+		this.store = PartitioningPlugin.getDefault().getPreferenceStore();
 	}
 
 	@Override
 	public void initializeDefaultPreferences() {
-		store.setDefault(IParConstants.PRE_ACTIVATION, false);
-		store.setDefault(IParConstants.PRE_GGP, false);
-		store.setDefault(IParConstants.PRE_MIN_EDGES, false);
-		store.setDefault(IParConstants.PRE_EFF_EDGE, false);
-//		store.setDefault(IParConstants.PRE_CPP, false);
-		store.setDefault(IParConstants.PRE_GCP, false);
-//		store.setDefault(IParConstants.PRE_ESSP, true);
-		store.setDefault(IParConstants.PRE_INT, "2");
-		store.setDefault(IParConstants.PRE_TA, false);
-		store.setDefault(IParConstants.PRE_VIS, false);
-		store.setDefault(IParConstants.PRE_DEBUG, false);
-		store.setDefault(IParConstants.PRE_LOC_STRING, "output");
-		store.setDefault(IParConstants.PRE_LOC_RADIO, "0");
-		store.setDefault(IParConstants.PRE_PARTITIONING_ALG, "0"); // ESSP
+		this.store.setDefault(IParConstants.PRE_ACTIVATION, false);
+		this.store.setDefault(IParConstants.PRE_GGP, false);
+		this.store.setDefault(IParConstants.PRE_MIN_EDGES, false);
+		this.store.setDefault(IParConstants.PRE_EFF_EDGE, false);
+		// store.setDefault(IParConstants.PRE_CPP, false);
+		this.store.setDefault(IParConstants.PRE_GCP, false);
+		// store.setDefault(IParConstants.PRE_ESSP, true);
+		this.store.setDefault(IParConstants.PRE_INT, "2");
+		this.store.setDefault(IParConstants.PRE_TA, false);
+		this.store.setDefault(IParConstants.PRE_VIS, false);
+		this.store.setDefault(IParConstants.PRE_DEBUG, false);
+		this.store.setDefault(IParConstants.PRE_LOC_STRING, "output");
+		this.store.setDefault(IParConstants.PRE_LOC_RADIO, "0");
+		this.store.setDefault(IParConstants.PRE_PARTITIONING_ALG, "essp"); // ESSP
 	}
-	
+
 }

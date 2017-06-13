@@ -14,7 +14,6 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
-import org.eclipse.app4mc.amalthea.model.ProcessRunnableGroup;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
@@ -99,7 +98,7 @@ public class CheckLabels {
 							if (ri1 instanceof LabelAccess && ri2 instanceof LabelAccess) {
 								final LabelAccess la1 = (LabelAccess) ri1;
 								final LabelAccess la2 = (LabelAccess) ri2;
-								if (la1.getData()!=null && la2.getData()!=null){
+								if (la1.getData() != null && la2.getData() != null) {
 									if (la1.getData().getName().equals(la2.getData().getName())) {
 										if (((la1.getAccess().equals(LabelAccessEnum.READ)
 												&& la2.getAccess().equals(LabelAccessEnum.WRITE))
