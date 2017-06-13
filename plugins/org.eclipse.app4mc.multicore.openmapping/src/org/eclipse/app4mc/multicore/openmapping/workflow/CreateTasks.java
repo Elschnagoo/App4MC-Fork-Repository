@@ -41,24 +41,25 @@ public class CreateTasks extends WorkflowComponent {
 		}
 		final PragmaticTaskGenerator createTasksAlg = new PragmaticTaskGenerator();
 		final Amalthea model = getAmaltheaModelCopy(ctx);
-		createTasksAlg.setCommonElements(model.getCommonElements());
-		createTasksAlg.setSwModel(model.getSwModel());
-		createTasksAlg.setConstraintsModel(model.getConstraintsModel());
+		createTasksAlg.setAmaltheaModel(model);
+//		createTasksAlg.setCommonElements(model.getCommonElements());
+//		createTasksAlg.setSwModel(model.getSwModel());
+//		createTasksAlg.setConstraintsModel(model.getConstraintsModel());
 		// createTasksAlg.setStimuliModel(model.getStimuliModel());
 		createTasksAlg.createTasks();
 		
 		// Check StimuliModel and SWModel are set
-		assert null != createTasksAlg.getStimuliModel() && null != createTasksAlg.getSwModel();
+		assert null != createTasksAlg.getAmaltheaOutputModel().getStimuliModel() && null != createTasksAlg.getAmaltheaOutputModel().getSwModel();
 		
-		model.setSwModel(createTasksAlg.getSwModel());
+		model.setSwModel(createTasksAlg.getAmaltheaOutputModel().getSwModel());
 		
 		// Adding generated stimuli to current stimuli model
 		if (null != model.getStimuliModel()) {
-			model.getStimuliModel().getStimuli().addAll(createTasksAlg.getStimuliModel().getStimuli());
-			model.getStimuliModel().getClocks().addAll(createTasksAlg.getStimuliModel().getClocks());
+			model.getStimuliModel().getStimuli().addAll(createTasksAlg.getAmaltheaOutputModel().getStimuliModel().getStimuli());
+			model.getStimuliModel().getClocks().addAll(createTasksAlg.getAmaltheaOutputModel().getStimuliModel().getClocks());
 		}
 		else {
-			model.setStimuliModel(createTasksAlg.getStimuliModel());
+			model.setStimuliModel(createTasksAlg.getAmaltheaOutputModel().getStimuliModel());
 		}
 		this.log.info("result saved in model slot [" + getResultSlot() + "]");
 		ctx.set(getResultSlot(), model);

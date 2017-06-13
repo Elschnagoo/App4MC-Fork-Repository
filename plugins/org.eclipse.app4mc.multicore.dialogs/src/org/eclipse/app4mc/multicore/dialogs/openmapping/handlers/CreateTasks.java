@@ -12,11 +12,6 @@
 package org.eclipse.app4mc.multicore.dialogs.openmapping.handlers;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.CommonElements;
-import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.multicore.openmapping.IOMConstants;
 import org.eclipse.app4mc.multicore.openmapping.OpenMappingPlugin;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.taskgen.pragmatic.PragmaticTaskGenerator;
@@ -59,14 +54,11 @@ public class CreateTasks extends AbstractHandler {
 			UniversalHandler.getInstance().enableVerboseOutput();
 		}
 
-		final CommonElements commonElements;
-		SWModel sourceSwModel;
-		ConstraintsModel conModel;
-		PropertyConstraintsModel pcModel;
+		Amalthea centralModel;
+
 
 		// final IFile swModelFile =
 		// UniversalHandler.getInstance().getSelectedFile(event);
-
 
 		if (!(selection.getFirstElement() instanceof IFile)) {
 			return null;
@@ -83,7 +75,6 @@ public class CreateTasks extends AbstractHandler {
 		// Check the input model
 		boolean modelOk = inputModelChecker.checkModel(uri);
 
-
 		if (!modelOk) {
 			// Log to the view
 			logger.logToView();
@@ -96,28 +87,13 @@ public class CreateTasks extends AbstractHandler {
 		UniversalHandler.getInstance().dropCache();
 		UniversalHandler.getInstance().readModels(uri, true);
 
-		commonElements = UniversalHandler.getInstance().getCommonElements();
-		sourceSwModel = UniversalHandler.getInstance().getSwModel();
-		conModel = UniversalHandler.getInstance().getConstraintsModel();
-		pcModel = UniversalHandler.getInstance().getPropertyConstraintsModel();
+		centralModel = UniversalHandler.getInstance().getCentralModel();
 
 		final PragmaticTaskGenerator createTaskAlgorithm = new PragmaticTaskGenerator();
-
-		createTaskAlgorithm.setCommonElements(commonElements);
-		createTaskAlgorithm.setSwModel(sourceSwModel);
-		createTaskAlgorithm.setConstraintsModel(conModel);
+		createTaskAlgorithm.setAmaltheaModel(centralModel);
 		createTaskAlgorithm.createTasks();
 
-		final Amalthea outModel = AmaltheaFactory.eINSTANCE.createAmalthea();
-
-		// Create the output model
-		outModel.setCommonElements(commonElements);
-		outModel.setSwModel(createTaskAlgorithm.getSwModel());
-		outModel.setStimuliModel(createTaskAlgorithm.getStimuliModel());
-		outModel.setConstraintsModel(conModel);
-		if (pcModel != null) {
-			outModel.setPropertyConstraintsModel(pcModel);
-		}
+		final Amalthea outModel = createTaskAlgorithm.getAmaltheaOutputModel();
 
 		// Create the output model checker
 		final ModelDescription outputModelChecker = OMModelDescriptionBuilder.ofTaskCreationOutput(outModel)
@@ -125,7 +101,6 @@ public class CreateTasks extends AbstractHandler {
 
 		// Check the output model
 		modelOk = outputModelChecker.checkModel("<Internal> Task Creation Output Model", outModel);
-
 
 		if (!modelOk) {
 			// Log to the view
@@ -138,7 +113,6 @@ public class CreateTasks extends AbstractHandler {
 				IOMConstants.PRE_STRING_OUTDIR, store);
 
 		UniversalHandler.getInstance().writeModel(outputParser.parseOutputFileURI(swModelFile, "_withTasks"), outModel);
-
 
 		// Log to the view
 		logger.logToView();

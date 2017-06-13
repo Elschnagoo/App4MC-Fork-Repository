@@ -105,7 +105,7 @@ public class PerformMappingJob extends Job {
 		}
 		if (UniversalHandler.getInstance().getStimuliModel() == null) {
 			UniversalHandler.getInstance()
-					.logCon("There seems to be no Stimulation model in the specified file.\nExiting...");
+					.logCon("There seems to be no stimulation model in the specified file.\nExiting...");
 			return false;
 		}
 		// Non-mandatory Models, note that this check is against NOT null!
