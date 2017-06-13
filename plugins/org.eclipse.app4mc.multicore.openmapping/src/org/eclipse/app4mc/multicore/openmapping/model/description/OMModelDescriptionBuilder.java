@@ -32,7 +32,7 @@ public class OMModelDescriptionBuilder {
 	/**
 	 * Input Model description of task creation
 	 *
-	 * @return input model descrioption of task creation
+	 * @return input model description of task creation
 	 */
 	public static ModelDescription ofTaskCreationInput(final Amalthea model) {
 
@@ -65,7 +65,7 @@ public class OMModelDescriptionBuilder {
 	/**
 	 * Output Model description of task creation
 	 *
-	 * @return output model descrioption of task creation
+	 * @return output model description of task creation
 	 */
 	public static ModelDescription ofTaskCreationOutput(final Amalthea model) {
 
