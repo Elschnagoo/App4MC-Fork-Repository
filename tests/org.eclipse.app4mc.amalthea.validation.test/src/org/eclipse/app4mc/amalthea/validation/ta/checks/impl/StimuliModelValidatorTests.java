@@ -12,6 +12,8 @@
 
 package org.eclipse.app4mc.amalthea.validation.ta.checks.impl;
 
+import java.math.BigInteger;
+
 import org.easymock.EasyMock;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
@@ -69,7 +71,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
 		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
-		final int value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 
 		amalthea.setStimuliModel(stimuliModel);
@@ -100,7 +102,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
 		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
-		final int value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 
 		amalthea.setStimuliModel(stimuliModel);
@@ -131,7 +133,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
 		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
-		final int value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 
 		amalthea.setStimuliModel(stimuliModel);
@@ -737,7 +739,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -768,7 +770,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -796,7 +798,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -848,7 +850,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
 		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -879,7 +881,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
 		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -907,7 +909,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
 		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -959,7 +961,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -990,7 +992,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1018,7 +1020,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1070,7 +1072,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1101,7 +1103,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1129,7 +1131,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1182,7 +1184,7 @@ public class StimuliModelValidatorTests {
 		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
 		final TimestampList timestampList = AmaltheaFactory.eINSTANCE.createTimestampList();
 		final Time timestamp = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1215,7 +1217,7 @@ public class StimuliModelValidatorTests {
 		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
 		final TimestampList timestampList = AmaltheaFactory.eINSTANCE.createTimestampList();
 		final Time timestamp = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1245,7 +1247,7 @@ public class StimuliModelValidatorTests {
 		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
 		final TimestampList timestampList = AmaltheaFactory.eINSTANCE.createTimestampList();
 		final Time timestamp = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1298,7 +1300,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
 		final Time activation = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1329,7 +1331,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
 		final Time activation = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1357,7 +1359,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
 		final Time activation = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1412,7 +1414,7 @@ public class StimuliModelValidatorTests {
 		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1445,7 +1447,7 @@ public class StimuliModelValidatorTests {
 		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1475,7 +1477,7 @@ public class StimuliModelValidatorTests {
 		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1531,7 +1533,7 @@ public class StimuliModelValidatorTests {
 		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1564,7 +1566,7 @@ public class StimuliModelValidatorTests {
 		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1594,7 +1596,7 @@ public class StimuliModelValidatorTests {
 		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1647,7 +1649,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		ClockTriangleFunction clockTriangleFunction = AmaltheaFactory.eINSTANCE.createClockTriangleFunction();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1678,7 +1680,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		ClockTriangleFunction clockTriangleFunction = AmaltheaFactory.eINSTANCE.createClockTriangleFunction();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1706,7 +1708,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		ClockTriangleFunction clockTriangleFunction = AmaltheaFactory.eINSTANCE.createClockTriangleFunction();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1758,7 +1760,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		ClockSinusFunction clockSinusFunction = AmaltheaFactory.eINSTANCE.createClockSinusFunction();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1789,7 +1791,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		ClockSinusFunction clockSinusFunction = AmaltheaFactory.eINSTANCE.createClockSinusFunction();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1817,7 +1819,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		ClockSinusFunction clockSinusFunction = AmaltheaFactory.eINSTANCE.createClockSinusFunction();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1872,7 +1874,7 @@ public class StimuliModelValidatorTests {
 		ClockMultiplierList clockMultiplierList = AmaltheaFactory.eINSTANCE.createClockMultiplierList();
 		ClockMultiplierListEntry clockMultiplierListEntry = AmaltheaFactory.eINSTANCE.createClockMultiplierListEntry();
 		final Time time = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1905,7 +1907,7 @@ public class StimuliModelValidatorTests {
 		ClockMultiplierList clockMultiplierList = AmaltheaFactory.eINSTANCE.createClockMultiplierList();
 		ClockMultiplierListEntry clockMultiplierListEntry = AmaltheaFactory.eINSTANCE.createClockMultiplierListEntry();
 		final Time time = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1935,7 +1937,7 @@ public class StimuliModelValidatorTests {
 		ClockMultiplierList clockMultiplierList = AmaltheaFactory.eINSTANCE.createClockMultiplierList();
 		ClockMultiplierListEntry clockMultiplierListEntry = AmaltheaFactory.eINSTANCE.createClockMultiplierListEntry();
 		final Time time = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setStimuliModel(stimuliModel);

@@ -956,7 +956,7 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 				default:
 					break;
 			}
-			return mul * t.getValue();
+			return mul * t.getValue().longValue();
 		}
 
 		static long nanoTime() {

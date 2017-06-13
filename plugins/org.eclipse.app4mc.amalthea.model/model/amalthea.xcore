@@ -215,7 +215,7 @@ enum TimeUnit
 }
 
 abstract class AbstractTime {
-	int value="0"
+	BigInteger value="0"
 	TimeUnit unit
 	
 	op String toString() {

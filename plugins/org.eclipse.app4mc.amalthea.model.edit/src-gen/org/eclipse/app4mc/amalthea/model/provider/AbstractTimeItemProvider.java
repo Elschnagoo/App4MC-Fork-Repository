@@ -13,6 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.provider;
 
 
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.List;
 
@@ -94,7 +95,7 @@ public class AbstractTimeItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -139,8 +140,11 @@ public class AbstractTimeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		AbstractTime abstractTime = (AbstractTime)object;
-		return getString("_UI_AbstractTime_type") + " " + abstractTime.getValue();
+		BigInteger labelValue = ((AbstractTime)object).getValue();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ?
+			getString("_UI_AbstractTime_type") :
+			getString("_UI_AbstractTime_type") + " " + label;
 	}
 	
 

@@ -39,7 +39,7 @@ public class AmaltheaModelValidatorImpl extends AbstractValidatorImpl {
 	private double getSecondsFromTimeUnit(final Time time) {
 		double value = 0;
 		if (null != time) {
-			value = time.getValue();
+			value = time.getValue().doubleValue();
 			if (time.getUnit().getLiteral().equalsIgnoreCase(TimeUnit.PS.getLiteral())) {
 				value *= Math.pow(10, -12);
 			} else if (time.getUnit().getLiteral().equalsIgnoreCase(TimeUnit.NS.getLiteral())) {

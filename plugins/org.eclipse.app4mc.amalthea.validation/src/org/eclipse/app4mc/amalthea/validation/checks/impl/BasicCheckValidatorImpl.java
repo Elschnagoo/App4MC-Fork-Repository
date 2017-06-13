@@ -179,7 +179,7 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 		boolean found;
 		
 		for (final Time element : getObjectHelper().getAllInstancesOf(model, Time.class)) {
-			if (element.getValue() > 0)
+			if (element.getValue().signum() > 0)
 				continue; // always valid
 
 			final EStructuralFeature eFeature = element.eContainingFeature();
@@ -195,7 +195,7 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 			
 			//*** the value of the following elements should be > 0
 			
-			if (element.getValue() <= 0) {
+			if (element.getValue().signum() <= 0) {
 				found = false;
 				if (!found) found = (classID == PERIODIC && featureID == PERIODIC__RECURRENCE);
 				if (!found) found = (classID == PERIODIC_ACTIVATION && featureID == PERIODIC_ACTIVATION__RECURRENCE);
@@ -212,7 +212,7 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 
 			//*** the value of the following elements should be >= 0
 			
-			if (element.getValue() < 0) {
+			if (element.getValue().signum() < 0) {
 				found = false;
 				if (!found) found = (classID == PERIODIC_ACTIVATION && featureID == PERIODIC_ACTIVATION__OFFSET);
 				if (!found) found = (classID == PERIODIC_ACTIVATION && featureID == PERIODIC_ACTIVATION__MIN);

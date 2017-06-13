@@ -12,6 +12,7 @@
 
 package org.eclipse.app4mc.amalthea.validation.ta.checks.impl;
 
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -112,9 +113,9 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				if(TimeMetric.RESPONSE_TIME == metric) {
 					Time time = timeRequirementLimit.getLimitValue();
 					if(null != time) {
-						int value = time.getValue();
+						BigInteger value = time.getValue();
 						TimeUnit unit = time.getUnit();
-						if((0 >= value) || (TimeUnit._UNDEFINED_ == unit)) {
+						if((0 >= value.signum()) || (TimeUnit._UNDEFINED_ == unit)) {
 							this.issueCreator.issue(timeRequirementLimit, AmaltheaPackage.eINSTANCE.getTimeRequirementLimit_LimitValue(), value, unit);
 						}
 					}
@@ -136,8 +137,8 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				SynchronizationConstraint synchronizationConstraint = (SynchronizationConstraint) elem;
 				Time tolerance = synchronizationConstraint.getTolerance();
 				if(null != tolerance) {
-					int value = tolerance.getValue();
-					if(0 > value) {
+					BigInteger value = tolerance.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(tolerance, AmaltheaPackage.eINSTANCE.getSynchronizationConstraint_Tolerance(), value);
 					}
 				}
@@ -158,8 +159,8 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				DelayConstraint delayConstraint = (DelayConstraint) elem;
 				Time upper = delayConstraint.getUpper();
 				if(null != upper) {
-					int value = upper.getValue();
-					if(0 > value) {
+					BigInteger value = upper.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(upper, AmaltheaPackage.eINSTANCE.getDelayConstraint_Upper(), value);
 					}
 				}
@@ -180,8 +181,8 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				DelayConstraint delayConstraint = (DelayConstraint) elem;
 				Time lower = delayConstraint.getLower();
 				if(null != lower) {
-					int value = lower.getValue();
-					if(0 > value) {
+					BigInteger value = lower.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(lower, AmaltheaPackage.eINSTANCE.getDelayConstraint_Lower(), value);
 					}
 				}
@@ -202,8 +203,8 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				EventChainLatencyConstraint eventChainLatencyConstraint = (EventChainLatencyConstraint) elem;
 				Time minimum = eventChainLatencyConstraint.getMinimum();
 				if(null != minimum) {
-					int value = minimum.getValue();
-					if(0 > value) {
+					BigInteger value = minimum.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(minimum, AmaltheaPackage.eINSTANCE.getEventChainLatencyConstraint_Minimum(), value);
 					}
 				}
@@ -224,8 +225,8 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				EventChainLatencyConstraint eventChainLatencyConstraint = (EventChainLatencyConstraint) elem;
 				Time maximum = eventChainLatencyConstraint.getMaximum();
 				if(null != maximum) {
-					int value = maximum.getValue();
-					if(0 > value) {
+					BigInteger value = maximum.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(maximum, AmaltheaPackage.eINSTANCE.getEventChainLatencyConstraint_Maximum(), value);
 					}
 				}
@@ -246,8 +247,8 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				RepetitionConstraint repetitionConstraint = (RepetitionConstraint) elem;
 				Time lower = repetitionConstraint.getLower();
 				if(null != lower) {
-					int value = lower.getValue();
-					if(0 > value) {
+					BigInteger value = lower.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(lower, AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Lower(), value);
 					}
 				}
@@ -268,8 +269,8 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				RepetitionConstraint repetitionConstraint = (RepetitionConstraint) elem;
 				Time upper = repetitionConstraint.getUpper();
 				if(null != upper) {
-					int value = upper.getValue();
-					if(0 > value) {
+					BigInteger value = upper.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(upper, AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Upper(), value);
 					}
 				}
@@ -290,8 +291,8 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				RepetitionConstraint repetitionConstraint = (RepetitionConstraint) elem;
 				Time jitter = repetitionConstraint.getJitter();
 				if(null != jitter) {
-					int value = jitter.getValue();
-					if(0 > value) {
+					BigInteger value = jitter.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(jitter, AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Jitter(), value);
 					}
 				}
@@ -312,8 +313,8 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				RepetitionConstraint repetitionConstraint = (RepetitionConstraint) elem;
 				Time period = repetitionConstraint.getPeriod();
 				if(null != period) {
-					int value = period.getValue();
-					if(0 > value) {
+					BigInteger value = period.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getRepetitionConstraint_Period(), value);
 					}
 				}
@@ -334,8 +335,8 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				DataAgeTime dataAgeTime = (DataAgeTime) elem;
 				Time minimum = dataAgeTime.getMinimumTime();
 				if(null != minimum) {
-					int value = minimum.getValue();
-					if(0 > value) {
+					BigInteger value = minimum.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(minimum, AmaltheaPackage.eINSTANCE.getDataAgeTime_MinimumTime(), value);
 					}
 				}
@@ -356,8 +357,8 @@ public class ConstraintsModelValidatorImpl extends AbstractValidatorImpl {
 				DataAgeTime dataAgeTime = (DataAgeTime) elem;
 				Time maximum = dataAgeTime.getMaximumTime();
 				if(null != maximum) {
-					int value = maximum.getValue();
-					if(0 > value) {
+					BigInteger value = maximum.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(maximum, AmaltheaPackage.eINSTANCE.getDataAgeTime_MaximumTime(), value);
 					}
 				}

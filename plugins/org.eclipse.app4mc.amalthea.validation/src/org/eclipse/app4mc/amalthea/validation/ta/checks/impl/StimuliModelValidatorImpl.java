@@ -6,6 +6,7 @@
 
 package org.eclipse.app4mc.amalthea.validation.ta.checks.impl;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -60,9 +61,9 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				final Periodic periodic = (Periodic) elem;
 				final Time recurrence = periodic.getRecurrence();
 				if (null != recurrence) {
-					final int value = recurrence.getValue();
+					final BigInteger value = recurrence.getValue();
 					final TimeUnit unit = recurrence.getUnit();
-					if ((0 >= value) || (TimeUnit._UNDEFINED_ == unit)) {
+					if ((0 >= value.signum()) || (TimeUnit._UNDEFINED_ == unit)) {
 						this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodic_Recurrence(), value, unit);
 					}
 				}
@@ -195,8 +196,8 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				Periodic periodic = (Periodic) elem;
 				Time offset = periodic.getOffset();
 				if(null != offset) {
-					int value = offset.getValue();
-					if(0 > value) {
+					BigInteger value = offset.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getPeriodic_Offset(), value);
 					}
 				}
@@ -217,8 +218,8 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				Periodic periodic = (Periodic) elem;
 				Time recurrence = periodic.getRecurrence();
 				if(null != recurrence) {
-					int value = recurrence.getValue();
-					if(0 > value) {
+					BigInteger value = recurrence.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(recurrence, AmaltheaPackage.eINSTANCE.getPeriodic_Recurrence(), value);
 					}
 				}
@@ -239,8 +240,8 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				Synthetic synthetic = (Synthetic) elem;
 				Time offset = synthetic.getOffset();
 				if(null != offset) {
-					int value = offset.getValue();
-					if(0 > value) {
+					BigInteger value = offset.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getSynthetic_Offset(), value);
 					}
 				}
@@ -261,8 +262,8 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				Synthetic synthetic = (Synthetic) elem;
 				Time period = synthetic.getPeriod();
 				if(null != period) {
-					int value = period.getValue();
-					if(0 > value) {
+					BigInteger value = period.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getSynthetic_Period(), value);
 					}
 				}
@@ -283,8 +284,8 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				TimestampList timestampList = (TimestampList) elem;
 				for(Time timestamp : timestampList.getTimestamps()) {
 					if(null != timestamp) {
-						int value = timestamp.getValue();
-						if(0 > value) {
+						BigInteger value = timestamp.getValue();
+						if(0 > value.signum()) {
 							this.issueCreator.issue(timestamp, AmaltheaPackage.eINSTANCE.getTimestampList_Timestamps(), value);
 						}
 					}
@@ -306,8 +307,8 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				Single single = (Single) elem;
 				Time activation = single.getActivation();
 				if(null != activation) {
-					int value = activation.getValue();
-					if(0 > value) {
+					BigInteger value = activation.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(activation, AmaltheaPackage.eINSTANCE.getSingle_Activation(), value);
 					}
 				}
@@ -328,8 +329,8 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				ArrivalCurveEntry arrivalCurveEntry = (ArrivalCurveEntry) elem;
 				Time lowerTimeBorder = arrivalCurveEntry.getLowerTimeBorder();
 				if(null != lowerTimeBorder) {
-					int value = lowerTimeBorder.getValue();
-					if(0 > value) {
+					BigInteger value = lowerTimeBorder.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(lowerTimeBorder, AmaltheaPackage.eINSTANCE.getArrivalCurveEntry_LowerTimeBorder(), value);
 					}
 				}
@@ -350,8 +351,8 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				ArrivalCurveEntry arrivalCurveEntry = (ArrivalCurveEntry) elem;
 				Time upperTimeBorder = arrivalCurveEntry.getUpperTimeBorder();
 				if(null != upperTimeBorder) {
-					int value = upperTimeBorder.getValue();
-					if(0 > value) {
+					BigInteger value = upperTimeBorder.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(upperTimeBorder, AmaltheaPackage.eINSTANCE.getArrivalCurveEntry_UpperTimeBorder(), value);
 					}
 				}
@@ -372,8 +373,8 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				ClockTriangleFunction clockTriangleFunction = (ClockTriangleFunction) elem;
 				Time period = clockTriangleFunction.getPeriod();
 				if(null != period) {
-					int value = period.getValue();
-					if(0 > value) {
+					BigInteger value = period.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Period(), value);
 					}
 				}
@@ -394,8 +395,8 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				ClockSinusFunction clockSinusFunction = (ClockSinusFunction) elem;
 				Time period = clockSinusFunction.getPeriod();
 				if(null != period) {
-					int value = period.getValue();
-					if(0 > value) {
+					BigInteger value = period.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getClockSinusFunction_Period(), value);
 					}
 				}
@@ -416,8 +417,8 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				ClockMultiplierListEntry clockMultiplierListEntry = (ClockMultiplierListEntry) elem;
 				Time time = clockMultiplierListEntry.getTime();
 				if(null != time) {
-					int value = time.getValue();
-					if(0 > value) {
+					BigInteger value = time.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(time, AmaltheaPackage.eINSTANCE.getClockMultiplierListEntry_Time(), value);
 					}
 				}

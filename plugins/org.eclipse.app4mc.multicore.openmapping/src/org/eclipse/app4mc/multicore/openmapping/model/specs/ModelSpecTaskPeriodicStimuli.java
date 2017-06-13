@@ -11,6 +11,8 @@
  ******************************************************************************/
 package org.eclipse.app4mc.multicore.openmapping.model.specs;
 
+import java.math.BigInteger;
+
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
@@ -60,7 +62,7 @@ public class ModelSpecTaskPeriodicStimuli extends ModelSpec {
 					cond &= false;
 				}
 
-				if (per.getRecurrence().getValue() == 0) {
+				if (per.getRecurrence().getValue().equals(BigInteger.ZERO)) {
 					log("Periodic Stimulus " + per.getName() + " has a Recurrence without Value set.");
 					cond &= false;
 				}

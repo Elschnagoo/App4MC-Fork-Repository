@@ -13,6 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.provider;
 
 
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.List;
 import org.eclipse.app4mc.amalthea.model.TimeObject;
@@ -75,8 +76,11 @@ public class TimeObjectItemProvider extends AbstractTimeItemProvider {
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		TimeObject timeObject = (TimeObject)object;
-		return getString("_UI_TimeObject_type") + " " + timeObject.getValue();
+		BigInteger labelValue = ((TimeObject)object).getValue();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ?
+			getString("_UI_TimeObject_type") :
+			getString("_UI_TimeObject_type") + " " + label;
 	}
 
 	/**

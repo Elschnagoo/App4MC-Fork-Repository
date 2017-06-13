@@ -12,6 +12,8 @@
 
 package org.eclipse.app4mc.amalthea.validation.ta.checks.impl;
 
+import java.math.BigInteger;
+
 import org.easymock.EasyMock;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
@@ -39,6 +41,11 @@ import org.junit.Test;
 
 public class AmaltheaModelValidatorTests {
 
+	static final BigInteger ZERO = BigInteger.ZERO;
+	static final BigInteger ONE = BigInteger.ONE;
+	static final BigInteger TWO = BigInteger.valueOf(2);
+	static final BigInteger THREE = BigInteger.valueOf(3);
+	
 	private AmaltheaModelValidatorImpl classUnderTest;
 
 	private IssueCreator issueCreator;
@@ -426,9 +433,9 @@ public class AmaltheaModelValidatorTests {
 		final Time lowerBound = fac.createTime();
 		final Time upperBound = fac.createTime();
 
-		lowerBound.setValue(2);
+		lowerBound.setValue(TWO);
 		lowerBound.setUnit(TimeUnit.S);
-		upperBound.setValue(1);
+		upperBound.setValue(ONE);
 		upperBound.setUnit(TimeUnit.S);
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
@@ -490,7 +497,7 @@ public class AmaltheaModelValidatorTests {
 		final Distribution<Time> distribution = fac.createUniformDistribution();
 		final Time upperBound = fac.createTime();
 
-		upperBound.setValue(1);
+		upperBound.setValue(ONE);
 		upperBound.setUnit(TimeUnit.S);
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
@@ -524,7 +531,7 @@ public class AmaltheaModelValidatorTests {
 		final Distribution<Time> distribution = fac.createUniformDistribution();
 		final Time lowerBound = fac.createTime();
 
-		lowerBound.setValue(2);
+		lowerBound.setValue(TWO);
 		lowerBound.setUnit(TimeUnit.S);
 		deviation.setLowerBound(lowerBound);
 		deviation.setDistribution(distribution);
@@ -559,9 +566,9 @@ public class AmaltheaModelValidatorTests {
 		final Time lowerBound = fac.createTime();
 		final Time upperBound = fac.createTime();
 
-		lowerBound.setValue(1);
+		lowerBound.setValue(ONE);
 		lowerBound.setUnit(TimeUnit.S);
-		upperBound.setValue(2);
+		upperBound.setValue(TWO);
 		upperBound.setUnit(TimeUnit.S);
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
@@ -755,9 +762,9 @@ public class AmaltheaModelValidatorTests {
 		final Time lowerBound = fac.createTime();
 		final Time upperBound = fac.createTime();
 
-		lowerBound.setValue(1);
+		lowerBound.setValue(ONE);
 		lowerBound.setUnit(TimeUnit.S);
-		upperBound.setValue(2);
+		upperBound.setValue(TWO);
 		upperBound.setUnit(TimeUnit.S);
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
@@ -966,9 +973,9 @@ public class AmaltheaModelValidatorTests {
 		final Time lowerBound = fac.createTime();
 		final Time upperBound = fac.createTime();
 
-		lowerBound.setValue(1);
+		lowerBound.setValue(ONE);
 		lowerBound.setUnit(TimeUnit.S);
-		upperBound.setValue(2);
+		upperBound.setValue(TWO);
 		upperBound.setUnit(TimeUnit.S);
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
@@ -1007,15 +1014,15 @@ public class AmaltheaModelValidatorTests {
 		final Time mean = fac.createTime();
 		final Time sd = fac.createTime();
 
-		lowerBound.setValue(1);
+		lowerBound.setValue(ONE);
 		lowerBound.setUnit(TimeUnit.S);
-		upperBound.setValue(2);
+		upperBound.setValue(TWO);
 		upperBound.setUnit(TimeUnit.S);
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
-		sd.setValue(1);
+		sd.setValue(ONE);
 		sd.setUnit(TimeUnit.S);
-		mean.setValue(0);
+		mean.setValue(ZERO);
 		mean.setUnit(TimeUnit.S);
 		distribution.setMean(mean);
 		distribution.setSd(sd);
@@ -1053,15 +1060,15 @@ public class AmaltheaModelValidatorTests {
 		final Time mean = fac.createTime();
 		final Time sd = fac.createTime();
 
-		lowerBound.setValue(1);
+		lowerBound.setValue(ONE);
 		lowerBound.setUnit(TimeUnit.S);
-		upperBound.setValue(2);
+		upperBound.setValue(TWO);
 		upperBound.setUnit(TimeUnit.S);
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
-		sd.setValue(1);
+		sd.setValue(ONE);
 		sd.setUnit(TimeUnit.S);
-		mean.setValue(3);
+		mean.setValue(THREE);
 		mean.setUnit(TimeUnit.S);
 		distribution.setMean(mean);
 		distribution.setSd(sd);
@@ -1099,15 +1106,15 @@ public class AmaltheaModelValidatorTests {
 		final Time mean = fac.createTime();
 		final Time sd = fac.createTime();
 
-		lowerBound.setValue(1);
+		lowerBound.setValue(ONE);
 		lowerBound.setUnit(TimeUnit.S);
-		upperBound.setValue(3);
+		upperBound.setValue(THREE);
 		upperBound.setUnit(TimeUnit.S);
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
-		sd.setValue(1);
+		sd.setValue(ONE);
 		sd.setUnit(TimeUnit.S);
-		mean.setValue(2);
+		mean.setValue(TWO);
 		mean.setUnit(TimeUnit.S);
 		distribution.setMean(mean);
 		distribution.setSd(sd);
@@ -1445,9 +1452,9 @@ public class AmaltheaModelValidatorTests {
 		final Time lowerBound = fac.createTime();
 		final Time upperBound = fac.createTime();
 
-		lowerBound.setValue(1);
+		lowerBound.setValue(ONE);
 		lowerBound.setUnit(TimeUnit.S);
-		upperBound.setValue(2);
+		upperBound.setValue(TWO);
 		upperBound.setUnit(TimeUnit.S);
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
@@ -1484,13 +1491,13 @@ public class AmaltheaModelValidatorTests {
 		final Time upperBound = fac.createTime();
 		final Time mean = fac.createTime();
 
-		lowerBound.setValue(1);
+		lowerBound.setValue(ONE);
 		lowerBound.setUnit(TimeUnit.S);
-		upperBound.setValue(2);
+		upperBound.setValue(TWO);
 		upperBound.setUnit(TimeUnit.S);
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
-		mean.setValue(0);
+		mean.setValue(ZERO);
 		mean.setUnit(TimeUnit.S);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
@@ -1526,13 +1533,13 @@ public class AmaltheaModelValidatorTests {
 		final Time upperBound = fac.createTime();
 		final Time mean = fac.createTime();
 
-		lowerBound.setValue(1);
+		lowerBound.setValue(ONE);
 		lowerBound.setUnit(TimeUnit.S);
-		upperBound.setValue(2);
+		upperBound.setValue(TWO);
 		upperBound.setUnit(TimeUnit.S);
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
-		mean.setValue(3);
+		mean.setValue(THREE);
 		mean.setUnit(TimeUnit.S);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
@@ -1568,13 +1575,13 @@ public class AmaltheaModelValidatorTests {
 		final Time upperBound = fac.createTime();
 		final Time mean = fac.createTime();
 
-		lowerBound.setValue(1);
+		lowerBound.setValue(ONE);
 		lowerBound.setUnit(TimeUnit.S);
-		upperBound.setValue(3);
+		upperBound.setValue(THREE);
 		upperBound.setUnit(TimeUnit.S);
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
-		mean.setValue(2);
+		mean.setValue(TWO);
 		mean.setUnit(TimeUnit.S);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
@@ -1605,7 +1612,7 @@ public class AmaltheaModelValidatorTests {
 		final WeibullEstimators<Time> distribution = fac.createWeibullEstimators();
 		final Time mean = fac.createTime();
 
-		mean.setValue(2);
+		mean.setValue(TWO);
 		mean.setUnit(TimeUnit.S);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);

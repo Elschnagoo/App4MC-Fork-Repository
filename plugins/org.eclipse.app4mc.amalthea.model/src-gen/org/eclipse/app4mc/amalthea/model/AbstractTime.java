@@ -12,6 +12,8 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import java.math.BigInteger;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -42,12 +44,12 @@ public interface AbstractTime extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(int)
+	 * @see #setValue(BigInteger)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractTime_Value()
 	 * @model default="0" unique="false"
 	 * @generated
 	 */
-	int getValue();
+	BigInteger getValue();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.AbstractTime#getValue <em>Value</em>}' attribute.
@@ -57,7 +59,7 @@ public interface AbstractTime extends EObject {
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(int value);
+	void setValue(BigInteger value);
 
 	/**
 	 * Returns the value of the '<em><b>Unit</b></em>' attribute.
@@ -92,7 +94,7 @@ public interface AbstractTime extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='int _value = this.getValue();\n<%java.lang.String%> _plus = (<%java.lang.Integer%>.valueOf(_value) + \" \");\n<%java.lang.String%> _xifexpression = null;\n<%org.eclipse.app4mc.amalthea.model.TimeUnit%> _unit = this.getUnit();\nboolean _equals = <%com.google.common.base.Objects%>.equal(_unit, <%org.eclipse.app4mc.amalthea.model.TimeUnit%>._UNDEFINED_);\nif (_equals)\n{\n\t_xifexpression = \"<unit>\";\n}\nelse\n{\n\t<%org.eclipse.app4mc.amalthea.model.TimeUnit%> _unit_1 = this.getUnit();\n\t_xifexpression = _unit_1.getLiteral();\n}\nreturn (_plus + _xifexpression);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%java.math.BigInteger%> _value = this.getValue();\n<%java.lang.String%> _plus = (_value + \" \");\n<%java.lang.String%> _xifexpression = null;\n<%org.eclipse.app4mc.amalthea.model.TimeUnit%> _unit = this.getUnit();\nboolean _equals = <%com.google.common.base.Objects%>.equal(_unit, <%org.eclipse.app4mc.amalthea.model.TimeUnit%>._UNDEFINED_);\nif (_equals)\n{\n\t_xifexpression = \"<unit>\";\n}\nelse\n{\n\t<%org.eclipse.app4mc.amalthea.model.TimeUnit%> _unit_1 = this.getUnit();\n\t_xifexpression = _unit_1.getLiteral();\n}\nreturn (_plus + _xifexpression);'"
 	 * @generated
 	 */
 	String toString();

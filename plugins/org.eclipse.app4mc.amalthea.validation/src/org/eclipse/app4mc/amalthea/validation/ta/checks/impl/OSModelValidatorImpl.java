@@ -1,5 +1,6 @@
 package org.eclipse.app4mc.amalthea.validation.ta.checks.impl;
 
+import java.math.BigInteger;
 import java.util.HashSet;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
@@ -148,8 +149,8 @@ public class OSModelValidatorImpl extends AbstractValidatorImpl {
 				SchedulingHWUnit schedulingHWUnit = (SchedulingHWUnit) elem;
 				Time delay = schedulingHWUnit.getDelay();
 				if(null != delay) {
-					int value = delay.getValue();
-					if(0 > value) {
+					BigInteger value = delay.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(delay, AmaltheaPackage.eINSTANCE.getSchedulingHWUnit_Delay(), value);
 					}
 				}

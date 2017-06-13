@@ -16,6 +16,8 @@ import com.google.common.base.Objects;
 
 import java.lang.reflect.InvocationTargetException;
 
+import java.math.BigInteger;
+
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
@@ -53,7 +55,7 @@ public abstract class AbstractTimeImpl extends AmaltheaExtendedEObjectImpl imple
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int VALUE_EDEFAULT = 0;
+	protected static final BigInteger VALUE_EDEFAULT = new BigInteger("0");
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -63,7 +65,7 @@ public abstract class AbstractTimeImpl extends AmaltheaExtendedEObjectImpl imple
 	 * @generated
 	 * @ordered
 	 */
-	protected int value = VALUE_EDEFAULT;
+	protected BigInteger value = VALUE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getUnit() <em>Unit</em>}' attribute.
@@ -109,7 +111,7 @@ public abstract class AbstractTimeImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getValue() {
+	public BigInteger getValue() {
 		return value;
 	}
 
@@ -118,8 +120,8 @@ public abstract class AbstractTimeImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(int newValue) {
-		int oldValue = value;
+	public void setValue(BigInteger newValue) {
+		BigInteger oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ABSTRACT_TIME__VALUE, oldValue, value));
@@ -152,8 +154,8 @@ public abstract class AbstractTimeImpl extends AmaltheaExtendedEObjectImpl imple
 	 * @generated
 	 */
 	public String toString() {
-		int _value = this.getValue();
-		String _plus = (Integer.valueOf(_value) + " ");
+		BigInteger _value = this.getValue();
+		String _plus = (_value + " ");
 		String _xifexpression = null;
 		TimeUnit _unit = this.getUnit();
 		boolean _equals = Objects.equal(_unit, TimeUnit._UNDEFINED_);
@@ -192,7 +194,7 @@ public abstract class AbstractTimeImpl extends AmaltheaExtendedEObjectImpl imple
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.ABSTRACT_TIME__VALUE:
-				setValue((Integer)newValue);
+				setValue((BigInteger)newValue);
 				return;
 			case AmaltheaPackage.ABSTRACT_TIME__UNIT:
 				setUnit((TimeUnit)newValue);
@@ -228,7 +230,7 @@ public abstract class AbstractTimeImpl extends AmaltheaExtendedEObjectImpl imple
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.ABSTRACT_TIME__VALUE:
-				return value != VALUE_EDEFAULT;
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 			case AmaltheaPackage.ABSTRACT_TIME__UNIT:
 				return unit != UNIT_EDEFAULT;
 		}

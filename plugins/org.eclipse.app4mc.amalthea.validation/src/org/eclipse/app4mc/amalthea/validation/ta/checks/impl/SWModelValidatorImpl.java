@@ -583,8 +583,8 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 				Runnable runnable = (Runnable) elem;
 				Time deadline = runnable.getDeadline();
 				if(null != deadline) {
-					int value = deadline.getValue();
-					if(0 > value) {
+					BigInteger value = deadline.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(deadline, AmaltheaPackage.eINSTANCE.getRunnable_Deadline(), value);
 					}
 				}
@@ -605,8 +605,8 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 				PeriodicActivation periodicActivation = (PeriodicActivation) elem;
 				Time min = periodicActivation.getMin();
 				if(null != min) {
-					int value = min.getValue();
-					if(0 > value) {
+					BigInteger value = min.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(min, AmaltheaPackage.eINSTANCE.getPeriodicActivation_Min(), value);
 					}
 				}
@@ -627,8 +627,8 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 				PeriodicActivation periodicActivation = (PeriodicActivation) elem;
 				Time max = periodicActivation.getMax();
 				if(null != max) {
-					int value = max.getValue();
-					if(0 > value) {
+					BigInteger value = max.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(max, AmaltheaPackage.eINSTANCE.getPeriodicActivation_Max(), value);
 					}
 				}
@@ -649,8 +649,8 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 				PeriodicActivation periodicActivation = (PeriodicActivation) elem;
 				Time offset = periodicActivation.getOffset();
 				if(null != offset) {
-					int value = offset.getValue();
-					if(0 > value) {
+					BigInteger value = offset.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getPeriodicActivation_Offset(), value);
 					}
 				}
@@ -671,8 +671,8 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 				PeriodicActivation periodicActivation = (PeriodicActivation) elem;
 				Time deadline = periodicActivation.getDeadline();
 				if(null != deadline) {
-					int value = deadline.getValue();
-					if(0 > value) {
+					BigInteger value = deadline.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(deadline, AmaltheaPackage.eINSTANCE.getPeriodicActivation_Deadline(), value);
 					}
 				}
@@ -693,8 +693,8 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 				SingleActivation singleActivation = (SingleActivation) elem;
 				Time min = singleActivation.getMin();
 				if(null != min) {
-					int value = min.getValue();
-					if(0 > value) {
+					BigInteger value = min.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(min, AmaltheaPackage.eINSTANCE.getSingleActivation_Min(), value);
 					}
 				}
@@ -715,8 +715,8 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 				SingleActivation singleActivation = (SingleActivation) elem;
 				Time max = singleActivation.getMax();
 				if(null != max) {
-					int value = max.getValue();
-					if(0 > value) {
+					BigInteger value = max.getValue();
+					if(0 > value.signum()) {
 						this.issueCreator.issue(max, AmaltheaPackage.eINSTANCE.getSingleActivation_Max(), value);
 					}
 				}

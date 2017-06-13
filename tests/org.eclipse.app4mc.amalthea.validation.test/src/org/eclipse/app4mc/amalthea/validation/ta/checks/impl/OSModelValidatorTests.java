@@ -12,6 +12,8 @@
 
 package org.eclipse.app4mc.amalthea.validation.ta.checks.impl;
 
+import java.math.BigInteger;
+
 import org.easymock.EasyMock;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
@@ -604,7 +606,7 @@ public class OSModelValidatorTests {
 		final TaskScheduler scheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		final SchedulingHWUnit schedulingHWUnit = AmaltheaFactory.eINSTANCE.createSchedulingHWUnit();
 		final Time delay = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setOsModel(osModel);
@@ -639,7 +641,7 @@ public class OSModelValidatorTests {
 		final TaskScheduler scheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		final SchedulingHWUnit schedulingHWUnit = AmaltheaFactory.eINSTANCE.createSchedulingHWUnit();
 		final Time delay = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setOsModel(osModel);
@@ -671,7 +673,7 @@ public class OSModelValidatorTests {
 		final TaskScheduler scheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		final SchedulingHWUnit schedulingHWUnit = AmaltheaFactory.eINSTANCE.createSchedulingHWUnit();
 		final Time delay = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setOsModel(osModel);

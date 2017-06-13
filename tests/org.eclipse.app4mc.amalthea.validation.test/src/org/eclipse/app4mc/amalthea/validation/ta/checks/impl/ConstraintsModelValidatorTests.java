@@ -12,6 +12,8 @@
 
 package org.eclipse.app4mc.amalthea.validation.ta.checks.impl;
 
+import java.math.BigInteger;
+
 import org.easymock.EasyMock;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
@@ -132,7 +134,7 @@ public class ConstraintsModelValidatorTests {
 		final Time time = AmaltheaFactory.eINSTANCE.createTime();
 		final LimitType limitType = LimitType.UPPER_LIMIT;
 		final TimeMetric metric = TimeMetric.RESPONSE_TIME;
-		final int value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 
 		amalthea.setOsModel(osModel);
@@ -181,7 +183,7 @@ public class ConstraintsModelValidatorTests {
 		final Time time = AmaltheaFactory.eINSTANCE.createTime();
 		final LimitType limitType = LimitType.UPPER_LIMIT;
 		final TimeMetric metric = TimeMetric.RESPONSE_TIME;
-		final int value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -218,7 +220,7 @@ public class ConstraintsModelValidatorTests {
 		final Time time = AmaltheaFactory.eINSTANCE.createTime();
 		final LimitType limitType = LimitType.UPPER_LIMIT;
 		final TimeMetric metric = TimeMetric.RESPONSE_TIME;
-		final int value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -255,7 +257,7 @@ public class ConstraintsModelValidatorTests {
 		final Time time = AmaltheaFactory.eINSTANCE.createTime();
 		final LimitType limitType = LimitType.UPPER_LIMIT;
 		final TimeMetric metric = TimeMetric.RESPONSE_TIME;
-		final int value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -310,7 +312,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final SynchronizationConstraint synchronizationConstraint = AmaltheaFactory.eINSTANCE.createEventSynchronizationConstraint();
 		final Time tolerance = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -341,7 +343,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final SynchronizationConstraint synchronizationConstraint = AmaltheaFactory.eINSTANCE.createEventSynchronizationConstraint();
 		final Time tolerance = AmaltheaFactory.eINSTANCE.createTime();
-		final int value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -369,7 +371,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final SynchronizationConstraint synchronizationConstraint = AmaltheaFactory.eINSTANCE.createEventSynchronizationConstraint();
 		final Time tolerance = AmaltheaFactory.eINSTANCE.createTime();
-		final int value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -421,7 +423,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final DelayConstraint delayConstraint = AmaltheaFactory.eINSTANCE.createDelayConstraint();
 		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -452,7 +454,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final DelayConstraint delayConstraint = AmaltheaFactory.eINSTANCE.createDelayConstraint();
 		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -480,7 +482,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final DelayConstraint delayConstraint = AmaltheaFactory.eINSTANCE.createDelayConstraint();
 		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -532,7 +534,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final DelayConstraint delayConstraint = AmaltheaFactory.eINSTANCE.createDelayConstraint();
 		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -563,7 +565,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final DelayConstraint delayConstraint = AmaltheaFactory.eINSTANCE.createDelayConstraint();
 		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -591,7 +593,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final DelayConstraint delayConstraint = AmaltheaFactory.eINSTANCE.createDelayConstraint();
 		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -643,7 +645,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final EventChainLatencyConstraint eventChainLatencyConstraint = AmaltheaFactory.eINSTANCE.createEventChainLatencyConstraint();
 		final Time minimum = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -674,7 +676,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final EventChainLatencyConstraint eventChainLatencyConstraint = AmaltheaFactory.eINSTANCE.createEventChainLatencyConstraint();
 		final Time minimum = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -702,7 +704,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final EventChainLatencyConstraint eventChainLatencyConstraint = AmaltheaFactory.eINSTANCE.createEventChainLatencyConstraint();
 		final Time minimum = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -754,7 +756,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final EventChainLatencyConstraint eventChainLatencyConstraint = AmaltheaFactory.eINSTANCE.createEventChainLatencyConstraint();
 		final Time maximum = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -785,7 +787,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final EventChainLatencyConstraint eventChainLatencyConstraint = AmaltheaFactory.eINSTANCE.createEventChainLatencyConstraint();
 		final Time maximum = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -813,7 +815,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final EventChainLatencyConstraint eventChainLatencyConstraint = AmaltheaFactory.eINSTANCE.createEventChainLatencyConstraint();
 		final Time maximum = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -865,7 +867,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
 		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -896,7 +898,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
 		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -924,7 +926,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
 		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -976,7 +978,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
 		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1007,7 +1009,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
 		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1035,7 +1037,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
 		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1087,7 +1089,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
 		final Time jitter = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1118,7 +1120,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
 		final Time jitter = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1146,7 +1148,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
 		final Time jitter = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1198,7 +1200,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1229,7 +1231,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1257,7 +1259,7 @@ public class ConstraintsModelValidatorTests {
 		final ConstraintsModel constraintsModel = AmaltheaFactory.eINSTANCE.createConstraintsModel();
 		final RepetitionConstraint repetitionConstraint = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1312,7 +1314,7 @@ public class ConstraintsModelValidatorTests {
 		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
 		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
 		final Time minimum = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1345,7 +1347,7 @@ public class ConstraintsModelValidatorTests {
 		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
 		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
 		final Time minimum = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1375,7 +1377,7 @@ public class ConstraintsModelValidatorTests {
 		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
 		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
 		final Time minimum = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1431,7 +1433,7 @@ public class ConstraintsModelValidatorTests {
 		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
 		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
 		final Time maximum = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1464,7 +1466,7 @@ public class ConstraintsModelValidatorTests {
 		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
 		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
 		final Time maximum = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);
@@ -1494,7 +1496,7 @@ public class ConstraintsModelValidatorTests {
 		final DataAgeConstraint dataAgeConstraint = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
 		final DataAgeTime dataAgeTime = AmaltheaFactory.eINSTANCE.createDataAgeTime();
 		final Time maximum = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setConstraintsModel(constraintsModel);

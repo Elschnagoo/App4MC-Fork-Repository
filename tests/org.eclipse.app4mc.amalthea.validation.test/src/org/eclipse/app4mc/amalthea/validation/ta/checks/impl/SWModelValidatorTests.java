@@ -1455,7 +1455,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
 		final Time deadline = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1486,7 +1486,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
 		final Time deadline = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1514,7 +1514,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
 		final Time deadline = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1566,7 +1566,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 		final Time min = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1597,7 +1597,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 		final Time min = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1625,7 +1625,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 		final Time min = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1677,7 +1677,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 		final Time max = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1708,7 +1708,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 		final Time max = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1736,7 +1736,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 		final Time max = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1788,7 +1788,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1819,7 +1819,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1847,7 +1847,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1899,7 +1899,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 		final Time deadline = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1930,7 +1930,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 		final Time deadline = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -1958,7 +1958,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final PeriodicActivation periodicActivation = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 		final Time deadline = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -2010,7 +2010,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
 		final Time min = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -2041,7 +2041,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
 		final Time min = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -2069,7 +2069,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
 		final Time min = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -2121,7 +2121,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
 		final Time max = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = -10;
+		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -2152,7 +2152,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
 		final Time max = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 0;
+		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);
@@ -2180,7 +2180,7 @@ public class SWModelValidatorTests {
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final SingleActivation singleActivation = AmaltheaFactory.eINSTANCE.createSingleActivation();
 		final Time max = AmaltheaFactory.eINSTANCE.createTime();
-		final Integer value = 10;
+		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
 		
 		amalthea.setSwModel(swModel);

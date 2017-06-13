@@ -194,7 +194,7 @@ class CustomItemProviderService {
 	private def static getTimeText(AbstractTime time) {
 		if (time == null) return "<time>"
 		
-		val value = Integer.toString(time.value)
+		val value = if (time.value == null) "???" else time.value.toString
 		val unit = if (time.unit == TimeUnit::_UNDEFINED_) "<unit>" else time.unit.literal
 		return value + " " + unit
 	}

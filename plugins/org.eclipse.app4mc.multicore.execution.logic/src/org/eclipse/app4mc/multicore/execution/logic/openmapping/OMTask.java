@@ -269,7 +269,7 @@ public class OMTask {
 						period = 0;
 						return period;
 					}
-					long val = x.getValue();
+					long val = x.getValue().longValue();
 					if (val == 0 || x.getUnit() == null) {
 						period = 0;
 						return period;
@@ -306,7 +306,7 @@ public class OMTask {
 						period = 0;
 						return period;
 					}
-					long val = x.getValue();
+					long val = x.getValue().longValue();
 					if (val == 0 || x.getUnit() == null) {
 						period = 0;
 						return period;

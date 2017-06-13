@@ -779,7 +779,7 @@ Needs to be extended by other classes.</xsd:documentation>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="value" type="xsd:int"/>
+    <xsd:attribute name="value" type="xsd:string"/>
     <xsd:attribute name="unit" type="am:TimeUnit"/>
   </xsd:complexType>
   <xsd:element name="AbstractTime" type="am:AbstractTime"/>

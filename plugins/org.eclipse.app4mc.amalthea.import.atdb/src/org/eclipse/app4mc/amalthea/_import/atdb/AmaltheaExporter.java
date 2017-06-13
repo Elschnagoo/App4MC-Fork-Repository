@@ -8,6 +8,7 @@
 package org.eclipse.app4mc.amalthea._import.atdb;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,7 +109,7 @@ public class AmaltheaExporter {
 			final Single aStimulus = this.factory.createSingle();
 			aStimulus.setName(myStimulus.getName());
 			final Time time = this.factory.createTime();
-			time.setValue((int) myStimulus.getMoment());
+			time.setValue(BigInteger.valueOf(myStimulus.getMoment()));
 			time.setUnit(TimeUnit.get(myStimulus.getTimeBase()));
 			aStimulus.setActivation(time);
 			stimuli.add(aStimulus);

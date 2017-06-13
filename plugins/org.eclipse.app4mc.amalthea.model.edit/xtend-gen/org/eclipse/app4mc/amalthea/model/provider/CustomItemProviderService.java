@@ -259,18 +259,26 @@ public class CustomItemProviderService {
     if (_equals) {
       return "<time>";
     }
-    int _value = time.getValue();
-    final String value = Integer.toString(_value);
     String _xifexpression = null;
-    TimeUnit _unit = time.getUnit();
-    boolean _equals_1 = Objects.equal(_unit, TimeUnit._UNDEFINED_);
+    BigInteger _value = time.getValue();
+    boolean _equals_1 = Objects.equal(_value, null);
     if (_equals_1) {
-      _xifexpression = "<unit>";
+      _xifexpression = "???";
+    } else {
+      BigInteger _value_1 = time.getValue();
+      _xifexpression = _value_1.toString();
+    }
+    final String value = _xifexpression;
+    String _xifexpression_1 = null;
+    TimeUnit _unit = time.getUnit();
+    boolean _equals_2 = Objects.equal(_unit, TimeUnit._UNDEFINED_);
+    if (_equals_2) {
+      _xifexpression_1 = "<unit>";
     } else {
       TimeUnit _unit_1 = time.getUnit();
-      _xifexpression = _unit_1.getLiteral();
+      _xifexpression_1 = _unit_1.getLiteral();
     }
-    final String unit = _xifexpression;
+    final String unit = _xifexpression_1;
     return ((value + " ") + unit);
   }
   
