@@ -8,7 +8,7 @@
   <hwModel>
     <coreTypes name="e200z0" bitWidth="32" instructionsPerCycle="1.0" classifiers="PowerArchitectureInstructionSet?type=CoreClassifier VLE?type=CoreClassifier FPU?type=CoreClassifier"/>
     <coreTypes name="e200z6" bitWidth="32" instructionsPerCycle="1.0"/>
-    <memoryTypes name="CACHE_e200z6" xAccessPattern="" type="CACHE">
+    <memoryTypes name="CACHE_e200z6" type="CACHE">
       <size value="32" unit="kB"/>
     </memoryTypes>
     <memoryTypes name="SRAM_512KB" type="RAM">
