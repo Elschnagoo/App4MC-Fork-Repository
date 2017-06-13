@@ -42,10 +42,6 @@ public class CreateTasks extends WorkflowComponent {
 		final PragmaticTaskGenerator createTasksAlg = new PragmaticTaskGenerator();
 		final Amalthea model = getAmaltheaModelCopy(ctx);
 		createTasksAlg.setAmaltheaModel(model);
-//		createTasksAlg.setCommonElements(model.getCommonElements());
-//		createTasksAlg.setSwModel(model.getSwModel());
-//		createTasksAlg.setConstraintsModel(model.getConstraintsModel());
-		// createTasksAlg.setStimuliModel(model.getStimuliModel());
 		createTasksAlg.createTasks();
 		
 		// Check StimuliModel and SWModel are set
