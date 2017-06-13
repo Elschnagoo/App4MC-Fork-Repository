@@ -26,14 +26,14 @@ public class ParPreferenceInitializer extends AbstractPreferenceInitializer {
 
 	@Override
 	public void initializeDefaultPreferences() {
-		this.store.setDefault(IParConstants.PRE_ACTIVATION, false);
+		this.store.setDefault(IParConstants.PRE_ACTIVATION, true);
 		this.store.setDefault(IParConstants.PRE_GGP, false);
 		this.store.setDefault(IParConstants.PRE_MIN_EDGES, false);
 		this.store.setDefault(IParConstants.PRE_EFF_EDGE, false);
 		// store.setDefault(IParConstants.PRE_CPP, false);
 		this.store.setDefault(IParConstants.PRE_GCP, false);
 		// store.setDefault(IParConstants.PRE_ESSP, true);
-		this.store.setDefault(IParConstants.PRE_INT, "2");
+		this.store.setDefault(IParConstants.PRE_INT, "4");
 		this.store.setDefault(IParConstants.PRE_TA, false);
 		this.store.setDefault(IParConstants.PRE_VIS, false);
 		this.store.setDefault(IParConstants.PRE_DEBUG, false);
