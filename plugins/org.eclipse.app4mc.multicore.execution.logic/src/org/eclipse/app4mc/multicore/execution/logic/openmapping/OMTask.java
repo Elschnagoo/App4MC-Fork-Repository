@@ -27,9 +27,7 @@ import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.Value;
-import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.emf.ecore.EAttribute;
 
 /**
