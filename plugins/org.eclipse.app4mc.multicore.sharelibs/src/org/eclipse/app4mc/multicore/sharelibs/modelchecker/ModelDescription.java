@@ -57,11 +57,7 @@ public class ModelDescription {
 	 * @return created model description
 	 */
 	public static ModelDescription builder(final ModelSpecLogger logger) {
-		final ModelDescription modelDesc = new ModelDescription();
-
-		modelDesc.logger = logger;
-
-		return modelDesc;
+		return builder(logger, null);
 	}
 
 
@@ -73,11 +69,7 @@ public class ModelDescription {
 	 * @return created model description
 	 */
 	public static ModelDescription builder(final String name) {
-		final ModelDescription modelDesc = new ModelDescription();
-
-		modelDesc.name = name;
-
-		return modelDesc;
+		return builder(null, name);
 	}
 
 	/**
@@ -92,8 +84,13 @@ public class ModelDescription {
 	public static ModelDescription builder(final ModelSpecLogger logger, final String name) {
 		final ModelDescription modelDesc = new ModelDescription();
 
-		modelDesc.logger = logger;
-		modelDesc.name = name;
+		if (logger != null) {
+			modelDesc.logger = logger;
+		}
+
+		if (name != null) {
+			modelDesc.name = name;
+		}
 
 		return modelDesc;
 	}
@@ -135,6 +132,13 @@ public class ModelDescription {
 			catch (final Exception e) {
 				spec.log("Unable to check spec \"" + spec.getName() + "\" because a " + e.toString()
 						+ " was encountered.");
+
+				severtiy = EntrySeverity.of(spec.getSeverityLevel());
+
+				// Compare the severity of the spec with the failing
+				checkOk &= severtiy.compareTo(this.failSeverity) < 0;
+
+
 			}
 		}
 

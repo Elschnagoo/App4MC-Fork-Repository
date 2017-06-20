@@ -19,13 +19,7 @@ import org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger.ModelSpecLogge
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.specs.ModelSpecAmount;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.specs.ModelSpecHasModelType;
 
-import com.google.common.collect.HashMultimap;
-
 public abstract class ModelSpec {
-	/**
-	 * Elements to be checked parsed form the model.
-	 */
-	private final HashMultimap<String, Object> elements = HashMultimap.create();
 	/**
 	 * Logging level of the spec.
 	 */
@@ -106,14 +100,6 @@ public abstract class ModelSpec {
 	 * @throws Exception
 	 */
 	protected abstract boolean checkSpec(final Amalthea model) throws Exception;
-
-	/**
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return this.elements.toString();
-	}
 
 	/**
 	 * Get the logger.

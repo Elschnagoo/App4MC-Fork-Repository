@@ -157,4 +157,13 @@ public class ModelSpecLogger {
 		return severity.getSeverityLevel();
 	}
 
+	/**
+	 * Get the amount of entries in the log
+	 *
+	 * @return amount of entries in the log
+	 */
+	public int getLogSize() {
+		return this.log.size();
+	}
+
 }

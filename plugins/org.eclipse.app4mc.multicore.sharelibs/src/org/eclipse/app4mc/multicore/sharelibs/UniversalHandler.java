@@ -36,6 +36,7 @@ import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaResourceFactory;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger.LogView;
+import org.eclipse.app4mc.multicore.sharelibs.utframework.TestUtil;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -119,11 +120,16 @@ public class UniversalHandler {
 
 		final String viewId = "org.eclipse.app4mc.multicore.sharelibs.modelchecker.views.ModelCheckerView";
 
-		try {
-			this.modelCheckerView = (LogView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-					.findView(viewId);
 
-			this.modelCheckerView.setFocus();
+		try {
+			// For testing env we don't need model checker view
+			if (!TestUtil.isTesting()) {
+				this.modelCheckerView = (LogView)
+
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(viewId);
+
+				this.modelCheckerView.setFocus();
+			}
 		}
 		catch (final Exception e) {
 			System.out.println("Warning! Not possible to show model checker view");
