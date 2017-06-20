@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  *
  * Contributors:
  *     Robert Bosch GmbH - initial API and implementation
+ *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  *
  * *******************************************************************************
  */
@@ -57,7 +58,7 @@ var writer = new ModelWriter()
 writer.setModelSlot("createtasks")
 writer.setFileName("createtasks")
 writer.setSingleFile(true)
-writer.setOutputDir(PROJECT + "/workflow-output/create")
+writer.setOutputDir(PROJECT + "/workflow-output/demo/create")
 writer.run(ctx)
 
 //generate mapping based on initial model
@@ -73,7 +74,7 @@ var writerDfg = new ModelWriter()
 writerDfg.setModelSlot("mapping")
 writerDfg.setFileName("mapping_dfg")
 writerDfg.setSingleFile(true)
-writerDfg.setOutputDir(PROJECT + "/workflow-output/dfg")
+writerDfg.setOutputDir(PROJECT + "/workflow-output/demo/dfg")
 writerDfg.run(ctx)
 
 //generate mapping based on initial model with ilp
@@ -90,7 +91,7 @@ var writerIlp = new ModelWriter()
 writerIlp.setModelSlot("mappingilp")
 writerIlp.setFileName("mapping_ilplb")
 writerIlp.setSingleFile(true)
-writerIlp.setOutputDir(PROJECT + "/workflow-output/ilp")
+writerIlp.setOutputDir(PROJECT + "/workflow-output/demo/ilp")
 writerIlp.run(ctx)
 
 //generate mapping based on initial model with GA
@@ -102,13 +103,30 @@ mappingGa.setEnableLog(true)
 mappingGa.setResultSlot("mappingga")
 mappingGa.run(ctx)
 
-//Writer for GA
+//Writer for GA (Load Balancing)
 var writerGa = new ModelWriter()
 writerGa.setModelSlot("mappingga")
 writerGa.setFileName("mapping_galb")
 writerGa.setSingleFile(true)
-writerGa.setOutputDir(PROJECT + "/workflow-output/ga")
+writerGa.setOutputDir(PROJECT + "/workflow-output/demo/ga_lb")
 writerGa.run(ctx)
+
+//generate mapping based on initial model with GA
+//result model is saved in modelslot mappingga
+var mappingGaCon = new GenerateMapping()
+mappingGaCon.setModelSlot("createtasks")
+mappingGaCon.setMappingAlg("ga_constraints")
+mappingGaCon.setEnableLog(true)
+mappingGaCon.setResultSlot("mappinggacon")
+mappingGaCon.run(ctx)
+
+//Writer for GA (Constrained)
+var writerGaCon = new ModelWriter()
+writerGaCon.setModelSlot("mappinggacon")
+writerGaCon.setFileName("mapping_gacon")
+writerGaCon.setSingleFile(true)
+writerGaCon.setOutputDir(PROJECT + "/workflow-output/demo/ga_con")
+writerGaCon.run(ctx)
 
 print("Finished Workflow")
 ctx.clear()
