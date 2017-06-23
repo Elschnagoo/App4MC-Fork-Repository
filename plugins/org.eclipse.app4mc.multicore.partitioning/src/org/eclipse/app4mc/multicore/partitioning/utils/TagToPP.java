@@ -45,7 +45,7 @@ public class TagToPP {
 	 * @return List of ProcessPrototypes
 	 */
 	public void createPPsFromTags() {
-		if (null == this.cem.getTags() || null == this.cem) {
+		if (null == this.cem || null == this.cem.getTags()) {
 			PartLog.getInstance().log("Either no Tags or no CommonElements model existing", null);
 			return;
 		}
