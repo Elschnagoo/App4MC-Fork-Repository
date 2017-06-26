@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Amalthea Converters to 0.8.1 Test
+Bundle-SymbolicName: org.eclipse.app4mc.amalthea.converters.081.test
+Bundle-Version: 0.8.1.qualifier
+Fragment-Host: org.eclipse.app4mc.amalthea.converters.081
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: Eclipse.org
+Require-Bundle: org.junit;bundle-version="4.12.0"

@@ -148,6 +148,7 @@
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.071.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.072.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.080.test</module>
+		<module>../../tests/org.eclipse.app4mc.amalthea.converters.081.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.validation.test</module>
 		<module>../../tests/org.eclipse.app4mc.multicore.sharelibs.test</module>
 		<module>../../tests/org.eclipse.app4mc.rcptt</module>
