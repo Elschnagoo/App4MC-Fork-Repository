@@ -27,7 +27,8 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 /**
- * This class is responsible for converting the OS Model elements from 0.8.0 to 0.8.1 version format of AMALTHEA model
+ * This class is responsible for converting the Constraints Model elements from 0.8.0 to 0.8.1 version format of
+ * AMALTHEA model
  *
  * @author mez2rng
  *
@@ -67,7 +68,7 @@ public class ConstraintsConverter extends AbstractConverter {
 
 
 	/**
-	 * This method is used for the migration is of EventChain definitions and references present inside the Constraints
+	 * This method is used for the migration of EventChain definitions and references present inside the Constraints
 	 * model (For further details, check : Bug 518119 )
 	 *
 	 * @param rootElement

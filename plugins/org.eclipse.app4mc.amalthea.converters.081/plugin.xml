@@ -33,6 +33,17 @@
                id="converters.081.rootElement">
          </dependent-on-converter>
       </converter>
+      <converter
+            converter-class="org.eclipse.app4mc.amalthea.converters081.impl.HwConverter"
+            enabled="true"
+            id="converters.081.hw"
+            input-model-version="0.8.0"
+            name="hw"
+            output-model-version="0.8.1">
+         <dependent-on-converter
+               id="converters.081.rootElement">
+         </dependent-on-converter>
+      </converter>
    </extension>
    <extension
          point="org.eclipse.app4mc.amalthea.model.converters.cachebuilders">

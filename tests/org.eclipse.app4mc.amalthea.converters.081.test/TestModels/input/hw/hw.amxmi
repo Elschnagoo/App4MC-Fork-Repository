@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0">
+  <hwModel>
+    <memoryTypes name="memType1" xAccessPattern="test"/>
+    <memoryTypes name="memType2" xAccessPattern="test"/>
+    <memoryTypes name="memType3" xAccessPattern="test"/>
+    <memoryTypes name="memType4" xAccessPattern="test"/>
+    <memoryTypes name="memType5" xAccessPattern="test"/>
+    <memoryTypes name="memType6" xAccessPattern="test"/>
+    <memoryTypes name="memType7" xAccessPattern="test"/>
+    <memoryTypes name="memType8" xAccessPattern="test"/>
+  </hwModel>
+</am:Amalthea>
