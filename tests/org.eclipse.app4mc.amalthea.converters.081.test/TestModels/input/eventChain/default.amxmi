@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <constraintsModel>
+    <eventChains name="eventChain_from_second_file">
+      <segments xsi:type="am:SubEventChain">
+        <eventChain name="eventChain_from_second_file_sub_element"/>
+      </segments>
+    </eventChains>
+  </constraintsModel>
+</am:Amalthea>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <labels name="label_test" constant="false" bVolatile="false"/>
+  </swModel>
+  <eventModel>
+    <events xsi:type="am:LabelEvent" name="label_event_1" entity="label_test?type=Label"/>
+    <events xsi:type="am:LabelEvent" name="label_event_2" entity="label_test?type=Label"/>
+  </eventModel>
+  <constraintsModel>
+    <eventChains name="eventChain_1" stimulus="label_event_1?type=LabelEvent" response="label_event_2?type=LabelEvent">
+      <segments xsi:type="am:SubEventChain">
+        <eventChain name="subeventChain_2" stimulus="label_event_1?type=LabelEvent" response="label_event_2?type=LabelEvent">
+          <segments xsi:type="am:SubEventChain">
+            <eventChain name="subeventChain_3" stimulus="label_event_1?type=LabelEvent" response="label_event_2?type=LabelEvent">
+              <segments xsi:type="am:SubEventChain">
+                <eventChain name="subeventChain_4" stimulus="label_event_1?type=LabelEvent" response="label_event_2?type=LabelEvent">
+                  <segments xsi:type="am:EventChainReference">
+                    <eventChain href="amlt:/#eventChain_from_second_file?type=EventChain"/>
+                  </segments>
+                </eventChain>
+              </segments>
+            </eventChain>
+          </segments>
+        </eventChain>
+      </segments>
+    </eventChains>
+    <eventChains name="eventChain_2" stimulus="label_event_1?type=LabelEvent" response="label_event_2?type=LabelEvent">
+      <segments xsi:type="am:EventChainReference" eventChain="eventChain_1?type=EventChain"/>
+    </eventChains>
+    <eventChains name="eventChain_3" stimulus="label_event_2?type=LabelEvent" response="label_event_1?type=LabelEvent">
+      <segments xsi:type="am:EventChainReference" eventChain="subeventChain_2?type=EventChain"/>
+    </eventChains>
+    <eventChains name="eventChain_4">
+      <strands xsi:type="am:SubEventChain">
+        <eventChain name="strands_subeventchain_2" stimulus="label_event_2?type=LabelEvent" response="label_event_1?type=LabelEvent">
+          <segments xsi:type="am:SubEventChain">
+            <eventChain name="eventChain_3"/>
+          </segments>
+          <segments xsi:type="am:SubEventChain">
+            <eventChain>
+              <segments xsi:type="am:EventChainReference">
+                <eventChain href="amlt:/#eventChain_from_second_file_sub_element?type=EventChain"/>
+              </segments>
+            </eventChain>
+          </segments>
+          <strands xsi:type="am:EventChainReference" eventChain="eventChain_3?type=EventChain"/>
+        </eventChain>
+      </strands>
+    </eventChains>
+    <timingConstraints xsi:type="am:EventChainSynchronizationConstraint" name="ecc_1" multipleOccurrencesAllowed="false" scope="subeventChain_2?type=EventChain eventChain_1?type=EventChain"/>
+    <timingConstraints xsi:type="am:EventChainSynchronizationConstraint" name="ecc2" multipleOccurrencesAllowed="false" scope="subeventChain_2?type=EventChain subeventChain_3?type=EventChain"/>
+    <timingConstraints xsi:type="am:EventChainSynchronizationConstraint" name="ecc3" multipleOccurrencesAllowed="false">
+      <scope href="amlt:/#eventChain_from_second_file?type=EventChain"/>
+      <scope href="amlt:/#eventChain_3?type=EventChain"/>
+      <scope href="amlt:/#subeventChain_2?type=EventChain"/>
+    </timingConstraints>
+    <timingConstraints xsi:type="am:EventChainLatencyConstraint" name="ecl1" scope="strands_subeventchain_2?type=EventChain"/>
+    <timingConstraints xsi:type="am:EventChainLatencyConstraint" name="ecl2">
+      <scope href="amlt:/#eventChain_from_second_file_sub_element?type=EventChain"/>
+    </timingConstraints>
+  </constraintsModel>
+</am:Amalthea>
