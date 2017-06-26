@@ -388,3 +388,28 @@ table(classic){margin-left:40px}.
 | *_Variable Name_* | *_Variable datatype (version APP4MC 0.7.2)_* | *_Variable datatype (version APP4MC 0.8.0)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |instructionsPerCycle|int|float|CoreType|HW model|int is converted to float|
 
+
+h3. Version APP4MC 0.8.0 to APP4MC 0.8.1
+
+*Change in the namespace:* 
+
+table(classic){margin-left:40px}. 
+| *_AMALTHEA Namespace (version App4MC 0.8.0)_* | *_AMALTHEA Namespace  (version App4MC 0.8.1)_* |
+|http://app4mc.eclipse.org/amalthea/0.8.0 |http://app4mc.eclipse.org/amalthea/0.8.1 |
+
+
+*Below attributes are removed :*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name (version APP4MC 0.8.0)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+| xAccessPattern |  String | MemoryType| HW model |xAccessPattern attribute and its value present in MemoryType element are removed from the amxmi file |
+
+
+*Below Classes/Interfaces behaviour is changed:*
+
+table(classic){margin-left:40px}. 
+| *_Class Name (version APP4MC 0.8.0)_* | *_AMALTHEA sub model_* | *_Changes in behavior_* |*_Model Migration behavior_* |
+|SubEventChain|Constraints Model|SubEventChain class (in 0.8.0) is replaced by EventChainContainer class (in 0.8.1). EventChainContainer class is modelled to contain SubEventChain elements (in 0.8.1) which are non referrable child EventChain elements.|In amxmi file, xsi:type with "am:SubEventChain" is replaced with "am:EventChainContainer". If sub EventChain elements are referred inside EventChainReference or inside TimingConstraints, then corresponding reference is removed and the reference String is stored in a CustomProperty|
+
+
+
