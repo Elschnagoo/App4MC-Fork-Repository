@@ -166,8 +166,13 @@ public class PrePartitioning {
 						null);
 				return null;
 			}
+			if (null == modelCopy.getConstraintsModel()){
+				modelCopy.setConstraintsModel(cl.getCMModel());
+			}
+			else if (0 == modelCopy.getConstraintsModel().getRunnableSequencingConstraints().size()){
 			modelCopy.getConstraintsModel().getRunnableSequencingConstraints()
 					.addAll(cl.getCMModel().getRunnableSequencingConstraints());
+			}
 			PartLog.getInstance().log("Graph creation (constraint model) finished.");
 		}
 		else {
