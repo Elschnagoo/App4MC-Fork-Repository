@@ -22,6 +22,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getVersion <em>Version</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getCommonElements <em>Common Elements</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getSwModel <em>Sw Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getHwModel <em>Hw Model</em>}</li>
@@ -40,6 +41,22 @@ package org.eclipse.app4mc.amalthea.model;
  * @generated
  */
 public interface Amalthea extends BaseObject {
+	/**
+	 * Returns the value of the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Version</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Version</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_Version()
+	 * @model unique="false" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='return \"0.8.1\";'"
+	 * @generated
+	 */
+	String getVersion();
+
 	/**
 	 * Returns the value of the '<em><b>Common Elements</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

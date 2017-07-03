@@ -42,6 +42,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getCommonElements <em>Common Elements</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getSwModel <em>Sw Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getHwModel <em>Hw Model</em>}</li>
@@ -58,6 +59,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
+	/**
+	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VERSION_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getCommonElements() <em>Common Elements</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -185,6 +196,15 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getAmalthea();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getVersion() {
+		return "0.8.1";
 	}
 
 	/**
@@ -702,6 +722,8 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.AMALTHEA__VERSION:
+				return getVersion();
 			case AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS:
 				return getCommonElements();
 			case AmaltheaPackage.AMALTHEA__SW_MODEL:
@@ -826,6 +848,8 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.AMALTHEA__VERSION:
+				return VERSION_EDEFAULT == null ? getVersion() != null : !VERSION_EDEFAULT.equals(getVersion());
 			case AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS:
 				return commonElements != null;
 			case AmaltheaPackage.AMALTHEA__SW_MODEL:

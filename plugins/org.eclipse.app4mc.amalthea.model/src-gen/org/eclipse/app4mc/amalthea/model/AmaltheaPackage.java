@@ -173,13 +173,22 @@ public interface AmaltheaPackage extends EPackage {
 	int AMALTHEA__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AMALTHEA__VERSION = BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Common Elements</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA__COMMON_ELEMENTS = BASE_OBJECT_FEATURE_COUNT + 0;
+	int AMALTHEA__COMMON_ELEMENTS = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Sw Model</b></em>' containment reference.
@@ -188,7 +197,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA__SW_MODEL = BASE_OBJECT_FEATURE_COUNT + 1;
+	int AMALTHEA__SW_MODEL = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Hw Model</b></em>' containment reference.
@@ -197,7 +206,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA__HW_MODEL = BASE_OBJECT_FEATURE_COUNT + 2;
+	int AMALTHEA__HW_MODEL = BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Os Model</b></em>' containment reference.
@@ -206,7 +215,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA__OS_MODEL = BASE_OBJECT_FEATURE_COUNT + 3;
+	int AMALTHEA__OS_MODEL = BASE_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Stimuli Model</b></em>' containment reference.
@@ -215,7 +224,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA__STIMULI_MODEL = BASE_OBJECT_FEATURE_COUNT + 4;
+	int AMALTHEA__STIMULI_MODEL = BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Event Model</b></em>' containment reference.
@@ -224,7 +233,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA__EVENT_MODEL = BASE_OBJECT_FEATURE_COUNT + 5;
+	int AMALTHEA__EVENT_MODEL = BASE_OBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Constraints Model</b></em>' containment reference.
@@ -233,7 +242,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA__CONSTRAINTS_MODEL = BASE_OBJECT_FEATURE_COUNT + 6;
+	int AMALTHEA__CONSTRAINTS_MODEL = BASE_OBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Property Constraints Model</b></em>' containment reference.
@@ -242,7 +251,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA__PROPERTY_CONSTRAINTS_MODEL = BASE_OBJECT_FEATURE_COUNT + 7;
+	int AMALTHEA__PROPERTY_CONSTRAINTS_MODEL = BASE_OBJECT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Mapping Model</b></em>' containment reference.
@@ -251,7 +260,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA__MAPPING_MODEL = BASE_OBJECT_FEATURE_COUNT + 8;
+	int AMALTHEA__MAPPING_MODEL = BASE_OBJECT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Components Model</b></em>' containment reference.
@@ -260,7 +269,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA__COMPONENTS_MODEL = BASE_OBJECT_FEATURE_COUNT + 9;
+	int AMALTHEA__COMPONENTS_MODEL = BASE_OBJECT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Config Model</b></em>' containment reference.
@@ -269,7 +278,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA__CONFIG_MODEL = BASE_OBJECT_FEATURE_COUNT + 10;
+	int AMALTHEA__CONFIG_MODEL = BASE_OBJECT_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Amalthea</em>' class.
@@ -278,7 +287,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AMALTHEA_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 11;
+	int AMALTHEA_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of operations of the '<em>Amalthea</em>' class.
@@ -24251,6 +24260,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAmalthea();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Version</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Amalthea#getVersion()
+	 * @see #getAmalthea()
+	 * @generated
+	 */
+	EAttribute getAmalthea_Version();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getCommonElements <em>Common Elements</em>}'.

@@ -140,6 +140,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
 import org.eclipse.app4mc.amalthea.model.EventChainContainer
+import org.eclipse.app4mc.amalthea.model.Amalthea
 
 class CustomItemProviderService {
 
@@ -176,6 +177,22 @@ class CustomItemProviderService {
 	private def static ppName(String name, String surrogate) {
 		if(name.isNullOrEmpty) return surrogate
 		return name
+	}
+
+
+///// _________________________ Amalthea _________________________
+ 
+
+
+	/*****************************************************************************
+	 * 						AmaltheaItemProvider
+	 *****************************************************************************/
+	def static String getAmaltheaItemProviderText(Object object, String defaultText) {
+		if (object instanceof Amalthea) {
+			return "AMALTHEA model (version " + object.version + ")"
+		} else {
+			return defaultText
+		}
 	}
 
 

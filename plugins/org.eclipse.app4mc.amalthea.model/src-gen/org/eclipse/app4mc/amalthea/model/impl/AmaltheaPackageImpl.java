@@ -3034,8 +3034,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_CommonElements() {
-		return (EReference)amaltheaEClass.getEStructuralFeatures().get(0);
+	public EAttribute getAmalthea_Version() {
+		return (EAttribute)amaltheaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3043,7 +3043,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_SwModel() {
+	public EReference getAmalthea_CommonElements() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -3052,7 +3052,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_HwModel() {
+	public EReference getAmalthea_SwModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -3061,7 +3061,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_OsModel() {
+	public EReference getAmalthea_HwModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -3070,7 +3070,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_StimuliModel() {
+	public EReference getAmalthea_OsModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -3079,7 +3079,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_EventModel() {
+	public EReference getAmalthea_StimuliModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -3088,7 +3088,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_ConstraintsModel() {
+	public EReference getAmalthea_EventModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -3097,7 +3097,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_PropertyConstraintsModel() {
+	public EReference getAmalthea_ConstraintsModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -3106,7 +3106,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_MappingModel() {
+	public EReference getAmalthea_PropertyConstraintsModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -3115,7 +3115,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_ComponentsModel() {
+	public EReference getAmalthea_MappingModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -3124,8 +3124,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAmalthea_ConfigModel() {
+	public EReference getAmalthea_ComponentsModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAmalthea_ConfigModel() {
+		return (EReference)amaltheaEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -11815,6 +11824,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		// Create classes and their features
 		amaltheaEClass = createEClass(AMALTHEA);
+		createEAttribute(amaltheaEClass, AMALTHEA__VERSION);
 		createEReference(amaltheaEClass, AMALTHEA__COMMON_ELEMENTS);
 		createEReference(amaltheaEClass, AMALTHEA__SW_MODEL);
 		createEReference(amaltheaEClass, AMALTHEA__HW_MODEL);
@@ -13506,6 +13516,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(amaltheaEClass, Amalthea.class, "Amalthea", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAmalthea_Version(), theEcorePackage.getEString(), "version", null, 0, 1, Amalthea.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getAmalthea_CommonElements(), this.getCommonElements(), null, "commonElements", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAmalthea_SwModel(), this.getSWModel(), null, "swModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAmalthea_HwModel(), this.getHWModel(), null, "hwModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

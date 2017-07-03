@@ -25,7 +25,9 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -56,8 +58,31 @@ public class AmaltheaItemProvider extends BaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addVersionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Version feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVersionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Amalthea_version_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Amalthea_version_feature", "_UI_Amalthea_type"),
+				 AmaltheaPackage.eINSTANCE.getAmalthea_Version(),
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -127,11 +152,21 @@ public class AmaltheaItemProvider extends BaseObjectItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
-		return getString("_UI_Amalthea_type");
+	public String getTextGen(Object object) {
+		String label = ((Amalthea)object).getVersion();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Amalthea_type") :
+			getString("_UI_Amalthea_type") + " " + label;
 	}
-	
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomItemProviderService.getAmaltheaItemProviderText(object, getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -145,6 +180,9 @@ public class AmaltheaItemProvider extends BaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Amalthea.class)) {
+			case AmaltheaPackage.AMALTHEA__VERSION:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case AmaltheaPackage.AMALTHEA__COMMON_ELEMENTS:
 			case AmaltheaPackage.AMALTHEA__SW_MODEL:
 			case AmaltheaPackage.AMALTHEA__HW_MODEL:

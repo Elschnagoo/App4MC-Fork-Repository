@@ -14,6 +14,7 @@ import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
+import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
@@ -232,6 +233,19 @@ public class CustomItemProviderService {
       return surrogate;
     }
     return name;
+  }
+  
+  /**
+   * AmaltheaItemProvider
+   */
+  public static String getAmaltheaItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof Amalthea)) {
+      String _version = ((Amalthea)object).getVersion();
+      String _plus = ("AMALTHEA model (version " + _version);
+      return (_plus + ")");
+    } else {
+      return defaultText;
+    }
   }
   
   private static String getFrequencyText(final Frequency frequency) {
