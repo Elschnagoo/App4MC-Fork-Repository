@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _0NvUQKP5EeWDWL6qw48qbg
-Runtime-Version: 2.0.1.201508250612
-Save-Time: 7/25/16 2:37 PM
+Runtime-Version: 2.1.0.201605312320
+Save-Time: 7/3/17 5:16 PM
 Testcase-Type: ecl
 Verifications: _DBrfIKP5EeWDWL6qw48qbg
 
@@ -19,33 +19,24 @@ get-view "Model Explorer" | get-tree | select "org.eclipse.app4mc.amalthea.examp
 	| double-click
 
 with [get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.amxmi Contents" | get-tree] {
-    get-item Amalthea | get-property caption | equals Amalthea | verify-true
-    get-item "Amalthea/Software" | get-property caption | equals Software | verify-true
-    get-item "Amalthea/Hardware" | get-property caption | equals Hardware | verify-true
-    get-item "Amalthea/Operating System" | get-property caption | equals "Operating System" | verify-true
-    get-item "Amalthea/Stimuli" | get-property caption | equals Stimuli | verify-true
-    get-item "Amalthea/Constraints" | get-property caption | equals Constraints | verify-true
-    get-item "Amalthea/Events" | get-property caption | equals Events | verify-true
-    get-item "Amalthea/Mapping" | get-property caption | equals "Mapping" | verify-true
+    get-item "AMALTHEA.*/Software.*" | get-property caption | equals "Software" | verify-true
+    get-item "AMALTHEA.*/Hardware.*" | get-property caption | equals "Hardware" | verify-true
+    get-item "AMALTHEA.*/Operating System.*" | get-property caption | equals "Operating System" | verify-true
+    get-item "AMALTHEA.*/Stimuli.*" | get-property caption | equals "Stimuli" | verify-true
+    get-item "AMALTHEA.*/Constraints.*" | get-property caption | equals "Constraints" | verify-true
+    get-item "AMALTHEA.*/Events.*" | get-property caption | equals "Events" | verify-true
+    get-item "AMALTHEA.*/Mapping.*" | get-property caption | equals "Mapping" | verify-true
 }
 get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.amxmi Contents" 
     | get-button "Show types of model elements" | click
 with [get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.amxmi Contents" | get-tree] {
-    get-item "Amalthea \\[Amalthea\\]" | get-property caption | equals "Amalthea [Amalthea]" | verify-true
-    get-item "Amalthea \\[Amalthea\\]/Software \\[SWModel\\]" | get-property caption | equals "Software [SWModel]" 
-        | verify-true
-    get-item "Amalthea \\[Amalthea\\]/Hardware \\[HWModel\\]" | get-property caption | equals "Hardware [HWModel]" 
-        | verify-true
-    get-item "Amalthea \\[Amalthea\\]/Operating System \\[OSModel\\]" | get-property caption 
-        | equals "Operating System [OSModel]" | verify-true
-    get-item "Amalthea \\[Amalthea\\]/Stimuli \\[StimuliModel\\]" | get-property caption 
-        | equals "Stimuli [StimuliModel]" | verify-true
-    get-item "Amalthea \\[Amalthea\\]/Constraints \\[ConstraintsModel\\]" | get-property caption 
-        | equals "Constraints [ConstraintsModel]" | verify-true
-    get-item "Amalthea \\[Amalthea\\]/Events \\[EventModel\\]" | get-property caption | equals "Events [EventModel]" 
-        | verify-true
-    get-item "Amalthea \\[Amalthea\\]/Mapping \\[MappingModel\\]" | get-property caption 
-        | equals "Mapping [MappingModel]" | verify-true
+    get-item "AMALTHEA.*/Software.*" | get-property caption | equals "Software [SWModel]" | verify-true
+    get-item "AMALTHEA.*/Hardware.*" | get-property caption | equals "Hardware [HWModel]" | verify-true
+    get-item "AMALTHEA.*/Operating System.*" | get-property caption | equals "Operating System.*" | verify-true
+    get-item "AMALTHEA.*/Stimuli.*" | get-property caption | equals "Stimuli [StimuliModel]" | verify-true
+    get-item "AMALTHEA.*/Constraints.*" | get-property caption | equals "Constraints [ConstraintsModel]" | verify-true
+    get-item "AMALTHEA.*/Events.*" | get-property caption | equals "Events [EventModel]" | verify-true
+    get-item "AMALTHEA.*/Mapping.*" | get-property caption | equals "Mapping [MappingModel]" | verify-true
 }
 //clearing state of ShowTypes to false/default
 get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.amxmi Contents" 
