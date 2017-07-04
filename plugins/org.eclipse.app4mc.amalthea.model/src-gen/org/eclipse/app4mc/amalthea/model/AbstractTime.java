@@ -30,10 +30,10 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractTime()
- * @model abstract="true"
+ * @model abstract="true" superTypes="org.eclipse.app4mc.amalthea.model.TimeComparable"
  * @generated
  */
-public interface AbstractTime extends EObject {
+public interface AbstractTime extends EObject, Comparable<AbstractTime> {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
@@ -98,5 +98,14 @@ public interface AbstractTime extends EObject {
 	 * @generated
 	 */
 	String toString();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" timeUnique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return <%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.compareTimeElement(this, time);'"
+	 * @generated
+	 */
+	int compareTo(AbstractTime time);
 
 } // AbstractTime

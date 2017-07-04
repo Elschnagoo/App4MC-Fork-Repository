@@ -117,4 +117,74 @@ public class AmaltheaServices {
 			return ECollections.unmodifiableEList(qualifiedPorts);
 		}
 	}
+	
+	/**
+	 * This method is used to compare AbstractTime objects (Time/TimeObject) on
+	 * the basis of their values (obtained in pico seconds after applying the conversion based on
+	 * TimeUnit)
+	 *  
+	 * @param t1 AbstractTime object
+	 * @param t2 AbstractTime object
+	 * @return -1 ,0 or 1 
+	 */
+	public static int compareTimeElement(final AbstractTime t1, final AbstractTime t2) {
+
+		if(t1 == t2){
+			return 0;
+		}
+		//ensure that Null values are not used for comparison
+		if(t1== null || t2==null){
+			throw new NullPointerException();
+		}
+		//ensure that both objects belong to same EClass e.g: either Time or TimeObject
+		if(t1.eClass() !=t2.eClass()){
+			throw new UnsupportedOperationException("Can not compare AbstractTime objects of different types :" + t1.eClass().getName()+" , "+t2.eClass().getName() );
+		}
+		
+		BigInteger value1 = convertToPS(t1);
+		
+		if(value1 ==null){
+			throw new RuntimeException("Unable to convert value of Time/TimeObject to Pico Seconds : "+ t1);
+		}
+
+		BigInteger value2 = convertToPS(t2);
+		
+		if(value2 ==null){
+			throw new RuntimeException("Unable to convert value of Time/TimeObject to Pico Seconds : "+ t2);
+		}
+
+		return value1.compareTo(value2);
+	}
+
+	/**
+	 * This method is used to convert the value of Time/TimeObject element's value to BigInteger in Pico Seconds
+	 * @param abstractTime AbstractTime object 
+	 * @return value BigInteger in Pico Seconds
+	 */
+	public static BigInteger convertToPS(AbstractTime abstractTime){
+
+		BigInteger timeValue = abstractTime.getValue();
+		
+		if(timeValue !=null){
+			
+			switch (abstractTime.getUnit()) {
+			case _UNDEFINED_:
+				return null;
+			case PS:
+				return  timeValue;
+			case NS: 
+				return timeValue.multiply(BigInteger.TEN.pow(3));
+			case US:
+				return timeValue.multiply(BigInteger.TEN.pow(6));
+			case MS:
+				return timeValue.multiply(BigInteger.TEN.pow(9));
+			case S:
+				return timeValue.multiply(BigInteger.TEN.pow(12));
+			}
+			
+		}
+
+		return null;
+	}
+	
 }

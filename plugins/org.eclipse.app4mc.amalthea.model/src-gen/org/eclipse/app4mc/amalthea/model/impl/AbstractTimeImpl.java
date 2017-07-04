@@ -20,6 +20,7 @@ import java.math.BigInteger;
 
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
@@ -174,6 +175,15 @@ public abstract class AbstractTimeImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int compareTo(final AbstractTime time) {
+		return AmaltheaServices.compareTimeElement(this, time);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -247,6 +257,8 @@ public abstract class AbstractTimeImpl extends AmaltheaExtendedEObjectImpl imple
 		switch (operationID) {
 			case AmaltheaPackage.ABSTRACT_TIME___TO_STRING:
 				return toString();
+			case AmaltheaPackage.ABSTRACT_TIME___COMPARE_TO__ABSTRACTTIME:
+				return compareTo((AbstractTime)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

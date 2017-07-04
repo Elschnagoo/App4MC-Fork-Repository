@@ -518,6 +518,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass timeComparableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass abstractTimeEClass = null;
 
 	/**
@@ -3457,6 +3464,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTimeComparable() {
+		return timeComparableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAbstractTime() {
 		return abstractTimeEClass;
 	}
@@ -3486,6 +3502,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EOperation getAbstractTime__ToString() {
 		return abstractTimeEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAbstractTime__CompareTo__AbstractTime() {
+		return abstractTimeEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -11888,10 +11913,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		instructionsConstantEClass = createEClass(INSTRUCTIONS_CONSTANT);
 		createEAttribute(instructionsConstantEClass, INSTRUCTIONS_CONSTANT__VALUE);
 
+		timeComparableEClass = createEClass(TIME_COMPARABLE);
+
 		abstractTimeEClass = createEClass(ABSTRACT_TIME);
 		createEAttribute(abstractTimeEClass, ABSTRACT_TIME__VALUE);
 		createEAttribute(abstractTimeEClass, ABSTRACT_TIME__UNIT);
 		createEOperation(abstractTimeEClass, ABSTRACT_TIME___TO_STRING);
+		createEOperation(abstractTimeEClass, ABSTRACT_TIME___COMPARE_TO__ABSTRACTTIME);
 
 		timeEClass = createEClass(TIME);
 		createEOperation(timeEClass, TIME___CONTAINER_NOTIFICATION_REQUIRED);
@@ -13174,6 +13202,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		memoryClassifierEClass.getESuperTypes().add(this.getClassifier());
 		instructionsDeviationEClass.getESuperTypes().add(this.getInstructions());
 		instructionsConstantEClass.getESuperTypes().add(this.getInstructions());
+		abstractTimeEClass.getESuperTypes().add(this.getTimeComparable());
 		timeEClass.getESuperTypes().add(this.getAbstractTime());
 		listObjectEClass.getESuperTypes().add(this.getValue());
 		stringObjectEClass.getESuperTypes().add(this.getValue());
@@ -13587,11 +13616,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(instructionsConstantEClass, InstructionsConstant.class, "InstructionsConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInstructionsConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, InstructionsConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(timeComparableEClass, Comparable.class, "TimeComparable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime>");
+
 		initEClass(abstractTimeEClass, AbstractTime.class, "AbstractTime", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractTime_Value(), theEcorePackage.getEBigInteger(), "value", "0", 0, 1, AbstractTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractTime_Unit(), this.getTimeUnit(), "unit", null, 0, 1, AbstractTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getAbstractTime__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getAbstractTime__CompareTo__AbstractTime(), theEcorePackage.getEInt(), "compareTo", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAbstractTime(), "time", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(timeEClass, Time.class, "Time", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

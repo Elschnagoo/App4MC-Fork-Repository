@@ -219,13 +219,24 @@ enum TimeUnit
 	ps
 }
 
-abstract class AbstractTime {
+interface TimeComparable wraps java.lang.Comparable<AbstractTime>{
+
+}
+
+abstract class AbstractTime extends TimeComparable{
+	
 	BigInteger value="0"
 	TimeUnit unit
-	
+	 
 	op String toString() {
 		return value + " " + if (unit == TimeUnit::_UNDEFINED_ ) "<unit>" else unit.literal
 	}
+	
+	op int compareTo(AbstractTime time){
+		
+		return AmaltheaServices.compareTimeElement(this,time)
+	}
+	
 }
 
 /*
@@ -236,6 +247,7 @@ class Time extends AbstractTime
 	op boolean containerNotificationRequired() {
 		return true
 	}
+	
 }
 
 

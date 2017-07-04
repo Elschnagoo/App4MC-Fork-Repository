@@ -461,6 +461,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createInstructionsConstantAdapter();
 			}
 			@Override
+			public Adapter caseTimeComparable(Comparable<AbstractTime> object) {
+				return createTimeComparableAdapter();
+			}
+			@Override
 			public Adapter caseAbstractTime(AbstractTime object) {
 				return createAbstractTimeAdapter();
 			}
@@ -1919,6 +1923,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInstructionsConstantAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime> <em>Time Comparable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime>
+	 * @generated
+	 */
+	public Adapter createTimeComparableAdapter() {
 		return null;
 	}
 

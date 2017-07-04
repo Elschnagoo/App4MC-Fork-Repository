@@ -773,14 +773,21 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Constant set of execution cycles</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="AbstractTime">
+  <xsd:complexType abstract="true" name="TimeComparable">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="value" type="xsd:string"/>
-    <xsd:attribute name="unit" type="am:TimeUnit"/>
+  </xsd:complexType>
+  <xsd:element name="TimeComparable" type="am:TimeComparable"/>
+  <xsd:complexType abstract="true" name="AbstractTime">
+    <xsd:complexContent>
+      <xsd:extension base="am:TimeComparable">
+        <xsd:attribute name="value" type="xsd:string"/>
+        <xsd:attribute name="unit" type="am:TimeUnit"/>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="AbstractTime" type="am:AbstractTime"/>
   <xsd:complexType name="Time">
