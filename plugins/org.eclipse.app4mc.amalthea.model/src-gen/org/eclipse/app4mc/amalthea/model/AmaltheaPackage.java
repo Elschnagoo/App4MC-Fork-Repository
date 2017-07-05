@@ -14464,13 +14464,13 @@ public interface AmaltheaPackage extends EPackage {
 	int USER_SPECIFIC_SCHEDULING_ALGORITHM__CUSTOM_PROPERTIES = TASK_SCHEDULING_ALGORITHM__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Algorithm Parameters</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USER_SPECIFIC_SCHEDULING_ALGORITHM__PARAMETER = TASK_SCHEDULING_ALGORITHM_FEATURE_COUNT + 0;
+	int USER_SPECIFIC_SCHEDULING_ALGORITHM__ALGORITHM_PARAMETERS = TASK_SCHEDULING_ALGORITHM_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>User Specific Scheduling Algorithm</em>' class.
@@ -30181,15 +30181,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getUserSpecificSchedulingAlgorithm();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm#getParameter <em>Parameter</em>}'.
+	 * Returns the meta object for the map '{@link org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm#getAlgorithmParameters <em>Algorithm Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parameter</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm#getParameter()
+	 * @return the meta object for the map '<em>Algorithm Parameters</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm#getAlgorithmParameters()
 	 * @see #getUserSpecificSchedulingAlgorithm()
 	 * @generated
 	 */
-	EReference getUserSpecificSchedulingAlgorithm_Parameter();
+	EReference getUserSpecificSchedulingAlgorithm_AlgorithmParameters();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.PriorityBased <em>Priority Based</em>}'.
@@ -30202,32 +30202,34 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getPriorityBased();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.AlgorithmParameter <em>Algorithm Parameter</em>}'.
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Algorithm Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Algorithm Parameter</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.AlgorithmParameter
+	 * @see java.util.Map.Entry
+	 * @model keyUnique="false" keyDataType="org.eclipse.emf.ecore.EString" keyRequired="true"
+	 *        valueUnique="false" valueDataType="org.eclipse.emf.ecore.EString" valueRequired="true"
 	 * @generated
 	 */
 	EClass getAlgorithmParameter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.AlgorithmParameter#getKey <em>Key</em>}'.
+	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Key</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.AlgorithmParameter#getKey()
+	 * @see java.util.Map.Entry
 	 * @see #getAlgorithmParameter()
 	 * @generated
 	 */
 	EAttribute getAlgorithmParameter_Key();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.AlgorithmParameter#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.AlgorithmParameter#getValue()
+	 * @see java.util.Map.Entry
 	 * @see #getAlgorithmParameter()
 	 * @generated
 	 */

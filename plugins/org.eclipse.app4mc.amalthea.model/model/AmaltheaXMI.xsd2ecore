@@ -1433,7 +1433,7 @@
     <nested inputs="amalthea.xcore#/EPackage/PriorityBasedRoundRobin" outputs="AmaltheaXMI.xsd#//PriorityBasedRoundRobin;XSDComplexTypeDefinition=198"/>
     <nested inputs="amalthea.xcore#/EPackage/PriorityBasedRoundRobin" outputs="AmaltheaXMI.xsd#//PriorityBasedRoundRobin;XSDElementDeclaration=198"/>
     <nested inputs="amalthea.xcore#/EPackage/UserSpecificSchedulingAlgorithm" outputs="AmaltheaXMI.xsd#//UserSpecificSchedulingAlgorithm;XSDComplexTypeDefinition=199">
-      <nested inputs="amalthea.xcore#/EPackage/UserSpecificSchedulingAlgorithm/parameter"
+      <nested inputs="amalthea.xcore#/EPackage/UserSpecificSchedulingAlgorithm/algorithmParameters"
           outputs="AmaltheaXMI.xsd#//UserSpecificSchedulingAlgorithm;XSDComplexTypeDefinition=199/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/UserSpecificSchedulingAlgorithm" outputs="AmaltheaXMI.xsd#//UserSpecificSchedulingAlgorithm;XSDElementDeclaration=199"/>

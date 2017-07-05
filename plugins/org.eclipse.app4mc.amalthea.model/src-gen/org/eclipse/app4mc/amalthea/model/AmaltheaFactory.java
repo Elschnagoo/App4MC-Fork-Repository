@@ -1373,15 +1373,6 @@ public interface AmaltheaFactory extends EFactory {
 	PriorityBased createPriorityBased();
 
 	/**
-	 * Returns a new object of class '<em>Algorithm Parameter</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Algorithm Parameter</em>'.
-	 * @generated
-	 */
-	AlgorithmParameter createAlgorithmParameter();
-
-	/**
 	 * Returns a new object of class '<em>Scheduling HW Unit</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -16,7 +16,7 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.AlgorithmParameter;
+import java.util.Map;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
@@ -37,7 +37,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.AlgorithmParameter} object.
+ * This is the item provider adapter for a {@link java.util.Map.Entry} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -150,10 +150,8 @@ public class AlgorithmParameterItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((AlgorithmParameter)object).getKey();
-		return label == null || label.length() == 0 ?
-			getString("_UI_AlgorithmParameter_type") :
-			getString("_UI_AlgorithmParameter_type") + " " + label;
+		Map.Entry<?, ?> algorithmParameter = (Map.Entry<?, ?>)object;
+		return "" + algorithmParameter.getKey() + " -> " + algorithmParameter.getValue();
 	}
 	
 
@@ -168,7 +166,7 @@ public class AlgorithmParameterItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(AlgorithmParameter.class)) {
+		switch (notification.getFeatureID(Map.Entry.class)) {
 			case AmaltheaPackage.ALGORITHM_PARAMETER__KEY:
 			case AmaltheaPackage.ALGORITHM_PARAMETER__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

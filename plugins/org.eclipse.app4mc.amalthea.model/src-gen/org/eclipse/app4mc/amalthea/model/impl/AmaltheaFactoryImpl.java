@@ -20,7 +20,6 @@ import org.eclipse.app4mc.amalthea.model.AccessMultiplicity;
 import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
-import org.eclipse.app4mc.amalthea.model.AlgorithmParameter;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
@@ -514,7 +513,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.PRIORITY_BASED_ROUND_ROBIN: return createPriorityBasedRoundRobin();
 			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM: return createUserSpecificSchedulingAlgorithm();
 			case AmaltheaPackage.PRIORITY_BASED: return createPriorityBased();
-			case AmaltheaPackage.ALGORITHM_PARAMETER: return createAlgorithmParameter();
+			case AmaltheaPackage.ALGORITHM_PARAMETER: return (EObject)createAlgorithmParameter();
 			case AmaltheaPackage.SCHEDULING_HW_UNIT: return createSchedulingHWUnit();
 			case AmaltheaPackage.SCHEDULING_SW_UNIT: return createSchedulingSWUnit();
 			case AmaltheaPackage.OPERATING_SYSTEM: return createOperatingSystem();
@@ -2340,7 +2339,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AlgorithmParameter createAlgorithmParameter() {
+	public Map.Entry<String, String> createAlgorithmParameter() {
 		AlgorithmParameterImpl algorithmParameter = new AlgorithmParameterImpl();
 		return algorithmParameter;
 	}

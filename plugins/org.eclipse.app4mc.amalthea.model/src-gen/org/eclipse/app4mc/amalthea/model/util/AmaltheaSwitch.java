@@ -25,7 +25,6 @@ import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
-import org.eclipse.app4mc.amalthea.model.AlgorithmParameter;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
@@ -2120,7 +2119,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				return result;
 			}
 			case AmaltheaPackage.ALGORITHM_PARAMETER: {
-				AlgorithmParameter algorithmParameter = (AlgorithmParameter)theEObject;
+				@SuppressWarnings("unchecked") Map.Entry<String, String> algorithmParameter = (Map.Entry<String, String>)theEObject;
 				T1 result = caseAlgorithmParameter(algorithmParameter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -6228,7 +6227,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAlgorithmParameter(AlgorithmParameter object) {
+	public T1 caseAlgorithmParameter(Map.Entry<String, String> object) {
 		return null;
 	}
 

@@ -25,7 +25,6 @@ import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
-import org.eclipse.app4mc.amalthea.model.AlgorithmParameter;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
@@ -1197,7 +1196,7 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createPriorityBasedAdapter();
 			}
 			@Override
-			public Adapter caseAlgorithmParameter(AlgorithmParameter object) {
+			public Adapter caseAlgorithmParameter(Map.Entry<String, String> object) {
 				return createAlgorithmParameterAdapter();
 			}
 			@Override
@@ -4503,13 +4502,13 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AlgorithmParameter <em>Algorithm Parameter</em>}'.
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Algorithm Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.AlgorithmParameter
+	 * @see java.util.Map.Entry
 	 * @generated
 	 */
 	public Adapter createAlgorithmParameterAdapter() {

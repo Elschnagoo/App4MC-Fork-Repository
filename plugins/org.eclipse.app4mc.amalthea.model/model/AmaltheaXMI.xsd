@@ -3384,7 +3384,7 @@ these are the different scheduling algorithms</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:TaskSchedulingAlgorithm">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="parameter" type="am:AlgorithmParameter"/>
+          <xsd:element name="algorithmParameters" type="am:AlgorithmParameter"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -3409,19 +3409,19 @@ these are the different scheduling algorithms</xsd:documentation>
   </xsd:element>
   <xsd:complexType name="AlgorithmParameter">
     <xsd:annotation>
-      <xsd:documentation>parameter entry for UserSpecificSchedulingAlgorithm</xsd:documentation>
+      <xsd:documentation>Parameter entry (used for scheduling algorithms)</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="key" type="xsd:string"/>
-    <xsd:attribute name="value" type="xsd:string"/>
+    <xsd:attribute name="key" type="xsd:string" use="required"/>
+    <xsd:attribute name="value" type="xsd:string" use="required"/>
   </xsd:complexType>
   <xsd:element name="AlgorithmParameter" type="am:AlgorithmParameter">
     <xsd:annotation>
-      <xsd:documentation>parameter entry for UserSpecificSchedulingAlgorithm</xsd:documentation>
+      <xsd:documentation>Parameter entry (used for scheduling algorithms)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="SchedulingUnit">

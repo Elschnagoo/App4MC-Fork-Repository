@@ -2128,7 +2128,7 @@ class PriorityBasedRoundRobin extends TaskSchedulingAlgorithm
  */
 class UserSpecificSchedulingAlgorithm extends TaskSchedulingAlgorithm, InterruptSchedulingAlgorithm
 {
-	contains AlgorithmParameter[] parameter
+	contains AlgorithmParameter[] algorithmParameters
 }
 
 /*
@@ -2139,12 +2139,12 @@ class PriorityBased extends InterruptSchedulingAlgorithm
 }
 
 /*
- * parameter entry for UserSpecificSchedulingAlgorithm
+ * Parameter entry (used for scheduling algorithms)
  */
-class AlgorithmParameter
+class AlgorithmParameter wraps java.util.Map$Entry
 {
-	String key
-	String value
+	String[1] key
+	String[1] value
 }
 
 /*
