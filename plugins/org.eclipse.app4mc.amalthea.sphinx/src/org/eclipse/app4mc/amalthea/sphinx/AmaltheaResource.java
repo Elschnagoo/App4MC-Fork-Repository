@@ -14,7 +14,10 @@
 
 package org.eclipse.app4mc.amalthea.sphinx;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.zip.ZipException;
+import java.util.zip.ZipFile;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -28,6 +31,7 @@ import org.eclipse.sphinx.emf.resource.ExtendedResourceAdapter;
 import org.eclipse.sphinx.emf.resource.ExtendedXMIHelperImpl;
 import org.eclipse.sphinx.emf.resource.ExtendedXMILoadImpl;
 import org.eclipse.sphinx.emf.resource.ExtendedXMISaveImpl;
+import org.eclipse.sphinx.emf.util.EcoreResourceUtil;
 
 public class AmaltheaResource extends XMIResourceImpl {
 
@@ -56,10 +60,27 @@ public class AmaltheaResource extends XMIResourceImpl {
 		getDefaultLoadOptions().put(XMLResource.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
 		getDefaultSaveOptions().put(XMLResource.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
 
-
+		// set zip option
+		boolean isZipFile = isZipFile(getURI());
+		getDefaultLoadOptions().put(OPTION_ZIP, isZipFile);
+		getDefaultSaveOptions().put(OPTION_ZIP, isZipFile);
+		
 		setIntrinsicIDToEObjectMap(new HashMap<String, EObject>());
 	}
 
+	private boolean isZipFile(final URI uri) {
+		URI fileURI = EcoreResourceUtil.convertToAbsoluteFileURI(uri);
+		
+		try (ZipFile f = new ZipFile(fileURI.toFileString())) {
+			return true;
+		} catch (ZipException e) {
+			return false;
+		} catch (IOException e1) {
+			//e1.printStackTrace();
+			return false;
+		}
+	}
+	
 	/**
 	 * @see org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl#useUUIDs()
 	 */
