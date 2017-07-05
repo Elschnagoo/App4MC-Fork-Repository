@@ -89,10 +89,10 @@
   <hwModel>
     <coreTypes name="Core_type" instructionsPerCycle="1" />
     <system name="System">
+      <quartzes name="Quartz" type="STATIC">
+        <frequency unit="MHz" value="100.0" />
+      </quartzes>
       <ecus name="Ecu">
-        <quartzes name="Quartz" type="STATIC">
-          <frequency unit="MHz" value="100.0" />
-        </quartzes>
         <microcontrollers name="Processor">
           <memories name="Memory">
             <ports xsi:type="am:ComplexPort" name="Memory_port" bitWidth="16" direction="R" writeCycles="12" readCycles="12" />

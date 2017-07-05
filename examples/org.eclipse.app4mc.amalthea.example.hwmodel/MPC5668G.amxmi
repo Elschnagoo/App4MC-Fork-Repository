@@ -23,11 +23,11 @@
     <networkTypes xsi:type="am:CrossbarSwitch" name="AMBA_Crossbar" schedPolicy="RROBIN" bitWidth="64" conConnections="6"/>
     <networkTypes xsi:type="am:Bridge" name="AIPS_A" schedPolicy="RROBIN" bitWidth="32"/>
     <system name="Example System">
+      <quartzes name="Q116MHZ" type="STATIC">
+        <frequency unit="MHz" value="116.0"/>
+      </quartzes>
       <ecus name="MPC5668G Demo Board">
         <microcontrollers name="MPC5668G">
-          <quartzes name="Q116MHZ" type="STATIC">
-            <frequency unit="MHz" value="116.0"/>
-          </quartzes>
           <memories name="SRAM_512KB" type="SRAM_512KB?type=MemoryType">
             <prescaler name="PS_SRAM512KB" clockRatio="1.0" quartz="Q116MHZ?type=Quartz"/>
             <ports xsi:type="am:ComplexPort" name="CONN_SRAM512KB" network="AMBA+Crossbar+Switch?type=Network" master="false" bitWidth="64" baseAddress="1073741824" addressRange="524288" direction="RW" writeCycles="1" readCycles="1" schedValue="0"/>
