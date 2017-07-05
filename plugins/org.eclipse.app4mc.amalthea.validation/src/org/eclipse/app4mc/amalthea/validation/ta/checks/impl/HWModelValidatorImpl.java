@@ -116,36 +116,6 @@ public class HWModelValidatorImpl extends AbstractValidatorImpl {
 						}
 					}
 				}
-			} else if(elem instanceof ECU) {
-				ECU ecu = (ECU) elem;
-				Collection<Quartz> quartzList = ecu.getQuartzes();
-				if(null != quartzList) {
-					for(Quartz quartz : quartzList) {
-						if(null != quartz) {
-							quartzes.add(quartz);
-						}
-					}
-				}
-			} else if (elem instanceof Microcontroller) {
-				Microcontroller microcontroller = (Microcontroller) elem;
-				Collection<Quartz> quartzList = microcontroller.getQuartzes();
-				if(null != quartzList) {
-					for(Quartz quartz : quartzList) {
-						if(null != quartz) {
-							quartzes.add(quartz);
-						}
-					}
-				}
-			} else if (elem instanceof Core) {
-				Core core = (Core) elem;
-				Collection<Quartz> quartzList = core.getQuartzes();
-				if(null != quartzList) {
-					for(Quartz quartz : quartzList) {
-						if(null != quartz) {
-							quartzes.add(quartz);
-						}
-					}
-				}
 			}
 		}
 		

@@ -6496,7 +6496,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComplexNode_Quartzes() {
+	public EReference getComplexNode_Prescaler() {
 		return (EReference)complexNodeEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -6505,7 +6505,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComplexNode_Prescaler() {
+	public EReference getComplexNode_Memories() {
 		return (EReference)complexNodeEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -6514,7 +6514,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComplexNode_Memories() {
+	public EReference getComplexNode_Networks() {
 		return (EReference)complexNodeEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -6523,7 +6523,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComplexNode_Networks() {
+	public EReference getComplexNode_Components() {
 		return (EReference)complexNodeEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -6532,17 +6532,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComplexNode_Components() {
-		return (EReference)complexNodeEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getComplexNode_Ports() {
-		return (EReference)complexNodeEClass.getEStructuralFeatures().get(5);
+		return (EReference)complexNodeEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -6570,6 +6561,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getHwSystem_Ecus() {
 		return (EReference)hwSystemEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHwSystem_Quartzes() {
+		return (EReference)hwSystemEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -12370,7 +12370,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(hwModelEClass, HW_MODEL__SYSTEM);
 
 		complexNodeEClass = createEClass(COMPLEX_NODE);
-		createEReference(complexNodeEClass, COMPLEX_NODE__QUARTZES);
 		createEReference(complexNodeEClass, COMPLEX_NODE__PRESCALER);
 		createEReference(complexNodeEClass, COMPLEX_NODE__MEMORIES);
 		createEReference(complexNodeEClass, COMPLEX_NODE__NETWORKS);
@@ -12380,6 +12379,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		hwSystemEClass = createEClass(HW_SYSTEM);
 		createEReference(hwSystemEClass, HW_SYSTEM__SYSTEM_TYPE);
 		createEReference(hwSystemEClass, HW_SYSTEM__ECUS);
+		createEReference(hwSystemEClass, HW_SYSTEM__QUARTZES);
 
 		ecuEClass = createEClass(ECU);
 		createEReference(ecuEClass, ECU__ECU_TYPE);
@@ -13361,7 +13361,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		coreEClass.getESuperTypes().add(this.getComplexNode());
 		memoryEClass.getESuperTypes().add(this.getComplexNode());
 		networkEClass.getESuperTypes().add(this.getComplexNode());
-		quartzEClass.getESuperTypes().add(this.getComplexNode());
+		quartzEClass.getESuperTypes().add(this.getReferableBaseObject());
+		quartzEClass.getESuperTypes().add(this.getITaggable());
 		hwComponentEClass.getESuperTypes().add(this.getComplexNode());
 		hardwareTypeDescriptionEClass.getESuperTypes().add(this.getReferableBaseObject());
 		hardwareTypeDescriptionEClass.getESuperTypes().add(this.getITaggable());
@@ -14112,7 +14113,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getHWModel_System(), this.getHwSystem(), null, "system", null, 0, 1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(complexNodeEClass, ComplexNode.class, "ComplexNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getComplexNode_Quartzes(), this.getQuartz(), null, "quartzes", null, 0, -1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComplexNode_Prescaler(), this.getPrescaler(), null, "prescaler", null, 0, 1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComplexNode_Memories(), this.getMemory(), null, "memories", null, 0, -1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComplexNode_Networks(), this.getNetwork(), null, "networks", null, 0, -1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14122,6 +14122,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(hwSystemEClass, HwSystem.class, "HwSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHwSystem_SystemType(), this.getSystemType(), null, "systemType", null, 0, 1, HwSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwSystem_Ecus(), this.getECU(), null, "ecus", null, 1, -1, HwSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwSystem_Quartzes(), this.getQuartz(), null, "quartzes", null, 0, -1, HwSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ecuEClass, org.eclipse.app4mc.amalthea.model.ECU.class, "ECU", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getECU_EcuType(), this.getECUType(), null, "ecuType", null, 0, 1, org.eclipse.app4mc.amalthea.model.ECU.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

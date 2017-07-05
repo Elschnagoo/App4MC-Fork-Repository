@@ -12,18 +12,26 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.util.Collection;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Frequency;
+import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.QType;
 import org.eclipse.app4mc.amalthea.model.Quartz;
+import org.eclipse.app4mc.amalthea.model.Tag;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,13 +41,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.QuartzImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.QuartzImpl#getFrequency <em>Frequency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.QuartzImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class QuartzImpl extends ComplexNodeImpl implements Quartz {
+public class QuartzImpl extends ReferableBaseObjectImpl implements Quartz {
+	/**
+	 * The cached value of the '{@link #getTags() <em>Tags</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTags()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Tag> tags;
+
 	/**
 	 * The cached value of the '{@link #getFrequency() <em>Frequency</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -87,6 +106,18 @@ public class QuartzImpl extends ComplexNodeImpl implements Quartz {
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getQuartz();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Tag> getTags() {
+		if (tags == null) {
+			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.QUARTZ__TAGS);
+		}
+		return tags;
 	}
 
 	/**
@@ -175,6 +206,8 @@ public class QuartzImpl extends ComplexNodeImpl implements Quartz {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.QUARTZ__TAGS:
+				return getTags();
 			case AmaltheaPackage.QUARTZ__FREQUENCY:
 				return getFrequency();
 			case AmaltheaPackage.QUARTZ__TYPE:
@@ -188,9 +221,14 @@ public class QuartzImpl extends ComplexNodeImpl implements Quartz {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AmaltheaPackage.QUARTZ__TAGS:
+				getTags().clear();
+				getTags().addAll((Collection<? extends Tag>)newValue);
+				return;
 			case AmaltheaPackage.QUARTZ__FREQUENCY:
 				setFrequency((Frequency)newValue);
 				return;
@@ -209,6 +247,9 @@ public class QuartzImpl extends ComplexNodeImpl implements Quartz {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.QUARTZ__TAGS:
+				getTags().clear();
+				return;
 			case AmaltheaPackage.QUARTZ__FREQUENCY:
 				setFrequency((Frequency)null);
 				return;
@@ -227,12 +268,46 @@ public class QuartzImpl extends ComplexNodeImpl implements Quartz {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.QUARTZ__TAGS:
+				return tags != null && !tags.isEmpty();
 			case AmaltheaPackage.QUARTZ__FREQUENCY:
 				return frequency != null;
 			case AmaltheaPackage.QUARTZ__TYPE:
 				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ITaggable.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.QUARTZ__TAGS: return AmaltheaPackage.ITAGGABLE__TAGS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ITaggable.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.ITAGGABLE__TAGS: return AmaltheaPackage.QUARTZ__TAGS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

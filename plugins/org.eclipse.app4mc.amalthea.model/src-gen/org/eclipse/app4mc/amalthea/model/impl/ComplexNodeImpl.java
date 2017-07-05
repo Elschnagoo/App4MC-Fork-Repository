@@ -22,7 +22,6 @@ import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.Network;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
-import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.Tag;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -48,7 +47,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ComplexNodeImpl#getTags <em>Tags</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ComplexNodeImpl#getQuartzes <em>Quartzes</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ComplexNodeImpl#getPrescaler <em>Prescaler</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ComplexNodeImpl#getMemories <em>Memories</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ComplexNodeImpl#getNetworks <em>Networks</em>}</li>
@@ -68,16 +66,6 @@ public abstract class ComplexNodeImpl extends ReferableBaseObjectImpl implements
 	 * @ordered
 	 */
 	protected EList<Tag> tags;
-
-	/**
-	 * The cached value of the '{@link #getQuartzes() <em>Quartzes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQuartzes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Quartz> quartzes;
 
 	/**
 	 * The cached value of the '{@link #getPrescaler() <em>Prescaler</em>}' containment reference.
@@ -158,18 +146,6 @@ public abstract class ComplexNodeImpl extends ReferableBaseObjectImpl implements
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.COMPLEX_NODE__TAGS);
 		}
 		return tags;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Quartz> getQuartzes() {
-		if (quartzes == null) {
-			quartzes = new EObjectContainmentEList<Quartz>(Quartz.class, this, AmaltheaPackage.COMPLEX_NODE__QUARTZES);
-		}
-		return quartzes;
 	}
 
 	/**
@@ -271,8 +247,6 @@ public abstract class ComplexNodeImpl extends ReferableBaseObjectImpl implements
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.COMPLEX_NODE__QUARTZES:
-				return ((InternalEList<?>)getQuartzes()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.COMPLEX_NODE__PRESCALER:
 				return basicSetPrescaler(null, msgs);
 			case AmaltheaPackage.COMPLEX_NODE__MEMORIES:
@@ -297,8 +271,6 @@ public abstract class ComplexNodeImpl extends ReferableBaseObjectImpl implements
 		switch (featureID) {
 			case AmaltheaPackage.COMPLEX_NODE__TAGS:
 				return getTags();
-			case AmaltheaPackage.COMPLEX_NODE__QUARTZES:
-				return getQuartzes();
 			case AmaltheaPackage.COMPLEX_NODE__PRESCALER:
 				return getPrescaler();
 			case AmaltheaPackage.COMPLEX_NODE__MEMORIES:
@@ -325,10 +297,6 @@ public abstract class ComplexNodeImpl extends ReferableBaseObjectImpl implements
 			case AmaltheaPackage.COMPLEX_NODE__TAGS:
 				getTags().clear();
 				getTags().addAll((Collection<? extends Tag>)newValue);
-				return;
-			case AmaltheaPackage.COMPLEX_NODE__QUARTZES:
-				getQuartzes().clear();
-				getQuartzes().addAll((Collection<? extends Quartz>)newValue);
 				return;
 			case AmaltheaPackage.COMPLEX_NODE__PRESCALER:
 				setPrescaler((Prescaler)newValue);
@@ -364,9 +332,6 @@ public abstract class ComplexNodeImpl extends ReferableBaseObjectImpl implements
 			case AmaltheaPackage.COMPLEX_NODE__TAGS:
 				getTags().clear();
 				return;
-			case AmaltheaPackage.COMPLEX_NODE__QUARTZES:
-				getQuartzes().clear();
-				return;
 			case AmaltheaPackage.COMPLEX_NODE__PRESCALER:
 				setPrescaler((Prescaler)null);
 				return;
@@ -396,8 +361,6 @@ public abstract class ComplexNodeImpl extends ReferableBaseObjectImpl implements
 		switch (featureID) {
 			case AmaltheaPackage.COMPLEX_NODE__TAGS:
 				return tags != null && !tags.isEmpty();
-			case AmaltheaPackage.COMPLEX_NODE__QUARTZES:
-				return quartzes != null && !quartzes.isEmpty();
 			case AmaltheaPackage.COMPLEX_NODE__PRESCALER:
 				return prescaler != null;
 			case AmaltheaPackage.COMPLEX_NODE__MEMORIES:

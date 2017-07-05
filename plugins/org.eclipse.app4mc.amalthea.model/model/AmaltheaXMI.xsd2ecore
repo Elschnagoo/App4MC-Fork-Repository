@@ -1114,12 +1114,11 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/HWModel" outputs="AmaltheaXMI.xsd#//HWModel;XSDElementDeclaration=137"/>
     <nested inputs="amalthea.xcore#/EPackage/ComplexNode" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138">
-      <nested inputs="amalthea.xcore#/EPackage/ComplexNode/quartzes" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138/XSDParticle/XSDModelGroup/XSDParticle=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/ComplexNode/prescaler" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138/XSDParticle/XSDModelGroup/XSDParticle=2"/>
-      <nested inputs="amalthea.xcore#/EPackage/ComplexNode/memories" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138/XSDParticle/XSDModelGroup/XSDParticle=3"/>
-      <nested inputs="amalthea.xcore#/EPackage/ComplexNode/networks" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138/XSDParticle/XSDModelGroup/XSDParticle=4"/>
-      <nested inputs="amalthea.xcore#/EPackage/ComplexNode/components" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138/XSDParticle/XSDModelGroup/XSDParticle=5"/>
-      <nested inputs="amalthea.xcore#/EPackage/ComplexNode/ports" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138/XSDParticle/XSDModelGroup/XSDParticle=6"/>
+      <nested inputs="amalthea.xcore#/EPackage/ComplexNode/prescaler" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/ComplexNode/memories" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138/XSDParticle/XSDModelGroup/XSDParticle=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/ComplexNode/networks" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138/XSDParticle/XSDModelGroup/XSDParticle=3"/>
+      <nested inputs="amalthea.xcore#/EPackage/ComplexNode/components" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138/XSDParticle/XSDModelGroup/XSDParticle=4"/>
+      <nested inputs="amalthea.xcore#/EPackage/ComplexNode/ports" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138/XSDParticle/XSDModelGroup/XSDParticle=5"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138/XSDAttributeUse"/>
     <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//ComplexNode;XSDComplexTypeDefinition=138/XSDParticle/XSDModelGroup/XSDParticle"/>
@@ -1128,6 +1127,7 @@
       <nested inputs="amalthea.xcore#/EPackage/HwSystem/systemType" outputs="AmaltheaXMI.xsd#//HwSystem;XSDComplexTypeDefinition=139/XSDAttributeUse"/>
       <nested inputs="amalthea.xcore#/EPackage/HwSystem/systemType" outputs="AmaltheaXMI.xsd#//HwSystem;XSDComplexTypeDefinition=139/XSDParticle/XSDModelGroup/XSDParticle"/>
       <nested inputs="amalthea.xcore#/EPackage/HwSystem/ecus" outputs="AmaltheaXMI.xsd#//HwSystem;XSDComplexTypeDefinition=139/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/HwSystem/quartzes" outputs="AmaltheaXMI.xsd#//HwSystem;XSDComplexTypeDefinition=139/XSDParticle/XSDModelGroup/XSDParticle=2"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/HwSystem" outputs="AmaltheaXMI.xsd#//HwSystem;XSDElementDeclaration=139"/>
     <nested inputs="amalthea.xcore#/EPackage/ECU" outputs="AmaltheaXMI.xsd#//ECU;XSDComplexTypeDefinition=140">
@@ -1161,9 +1161,11 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/Network" outputs="AmaltheaXMI.xsd#//Network;XSDElementDeclaration=144"/>
     <nested inputs="amalthea.xcore#/EPackage/Quartz" outputs="AmaltheaXMI.xsd#//Quartz;XSDComplexTypeDefinition=145">
-      <nested inputs="amalthea.xcore#/EPackage/Quartz/type" outputs="AmaltheaXMI.xsd#//Quartz;XSDComplexTypeDefinition=145/XSDAttributeUse"/>
-      <nested inputs="amalthea.xcore#/EPackage/Quartz/frequency" outputs="AmaltheaXMI.xsd#//Quartz;XSDComplexTypeDefinition=145/XSDParticle/XSDModelGroup/XSDParticle"/>
+      <nested inputs="amalthea.xcore#/EPackage/Quartz/type" outputs="AmaltheaXMI.xsd#//Quartz;XSDComplexTypeDefinition=145/XSDAttributeUse=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/Quartz/frequency" outputs="AmaltheaXMI.xsd#//Quartz;XSDComplexTypeDefinition=145/XSDParticle/XSDModelGroup/XSDParticle=1"/>
     </nested>
+    <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//Quartz;XSDComplexTypeDefinition=145/XSDAttributeUse"/>
+    <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//Quartz;XSDComplexTypeDefinition=145/XSDParticle/XSDModelGroup/XSDParticle"/>
     <nested inputs="amalthea.xcore#/EPackage/Quartz" outputs="AmaltheaXMI.xsd#//Quartz;XSDElementDeclaration=145"/>
     <nested inputs="amalthea.xcore#/EPackage/HwComponent" outputs="AmaltheaXMI.xsd#//HwComponent;XSDComplexTypeDefinition=146">
       <nested inputs="amalthea.xcore#/EPackage/HwComponent/nestedComponents" outputs="AmaltheaXMI.xsd#//HwComponent;XSDComplexTypeDefinition=146/XSDParticle/XSDModelGroup/XSDParticle"/>

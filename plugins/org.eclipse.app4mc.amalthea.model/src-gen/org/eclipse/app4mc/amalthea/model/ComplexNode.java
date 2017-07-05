@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ComplexNode#getQuartzes <em>Quartzes</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ComplexNode#getPrescaler <em>Prescaler</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ComplexNode#getMemories <em>Memories</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ComplexNode#getNetworks <em>Networks</em>}</li>
@@ -36,22 +35,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface ComplexNode extends ReferableBaseObject, ITaggable {
-	/**
-	 * Returns the value of the '<em><b>Quartzes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Quartz}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Quartzes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Quartzes</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComplexNode_Quartzes()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Quartz> getQuartzes();
-
 	/**
 	 * Returns the value of the '<em><b>Prescaler</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

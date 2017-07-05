@@ -96,7 +96,6 @@ public class ComplexNodeItemProvider extends ReferableBaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getComplexNode_Quartzes());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getComplexNode_Prescaler());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getComplexNode_Memories());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getComplexNode_Networks());
@@ -156,7 +155,6 @@ public class ComplexNodeItemProvider extends ReferableBaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ComplexNode.class)) {
-			case AmaltheaPackage.COMPLEX_NODE__QUARTZES:
 			case AmaltheaPackage.COMPLEX_NODE__PRESCALER:
 			case AmaltheaPackage.COMPLEX_NODE__MEMORIES:
 			case AmaltheaPackage.COMPLEX_NODE__NETWORKS:
@@ -178,11 +176,6 @@ public class ComplexNodeItemProvider extends ReferableBaseObjectItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getComplexNode_Quartzes(),
-				 AmaltheaFactory.eINSTANCE.createQuartz()));
 
 		newChildDescriptors.add
 			(createChildParameter

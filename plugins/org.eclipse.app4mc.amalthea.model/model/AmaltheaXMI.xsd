@@ -2617,7 +2617,6 @@ core: The core that processes the process/runnable that accesses the semaphore (
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
-          <xsd:element name="quartzes" type="am:Quartz"/>
           <xsd:element name="prescaler" type="am:Prescaler"/>
           <xsd:element name="memories" type="am:Memory"/>
           <xsd:element name="networks" type="am:Network"/>
@@ -2635,6 +2634,7 @@ core: The core that processes the process/runnable that accesses the semaphore (
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="systemType" type="am:SystemType"/>
           <xsd:element name="ecus" type="am:ECU"/>
+          <xsd:element name="quartzes" type="am:Quartz"/>
         </xsd:choice>
         <xsd:attribute name="systemType" type="xsd:string"/>
       </xsd:extension>
@@ -2701,10 +2701,12 @@ core: The core that processes the process/runnable that accesses the semaphore (
   <xsd:element name="Network" type="am:Network"/>
   <xsd:complexType name="Quartz">
     <xsd:complexContent>
-      <xsd:extension base="am:ComplexNode">
+      <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="frequency" type="am:Frequency"/>
         </xsd:choice>
+        <xsd:attribute name="tags" type="xsd:string"/>
         <xsd:attribute name="type" type="am:QType"/>
       </xsd:extension>
     </xsd:complexContent>

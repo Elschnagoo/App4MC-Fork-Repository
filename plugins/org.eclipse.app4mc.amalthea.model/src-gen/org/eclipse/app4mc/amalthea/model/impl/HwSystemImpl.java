@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ECU;
 import org.eclipse.app4mc.amalthea.model.HwSystem;
+import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -42,6 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwSystemImpl#getSystemType <em>System Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwSystemImpl#getEcus <em>Ecus</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwSystemImpl#getQuartzes <em>Quartzes</em>}</li>
  * </ul>
  *
  * @generated
@@ -66,6 +68,16 @@ public class HwSystemImpl extends ComplexNodeImpl implements HwSystem {
 	 * @ordered
 	 */
 	protected EList<ECU> ecus;
+
+	/**
+	 * The cached value of the '{@link #getQuartzes() <em>Quartzes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQuartzes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Quartz> quartzes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -141,11 +153,25 @@ public class HwSystemImpl extends ComplexNodeImpl implements HwSystem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Quartz> getQuartzes() {
+		if (quartzes == null) {
+			quartzes = new EObjectContainmentEList<Quartz>(Quartz.class, this, AmaltheaPackage.HW_SYSTEM__QUARTZES);
+		}
+		return quartzes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.HW_SYSTEM__ECUS:
 				return ((InternalEList<?>)getEcus()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.HW_SYSTEM__QUARTZES:
+				return ((InternalEList<?>)getQuartzes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -163,6 +189,8 @@ public class HwSystemImpl extends ComplexNodeImpl implements HwSystem {
 				return basicGetSystemType();
 			case AmaltheaPackage.HW_SYSTEM__ECUS:
 				return getEcus();
+			case AmaltheaPackage.HW_SYSTEM__QUARTZES:
+				return getQuartzes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -183,6 +211,10 @@ public class HwSystemImpl extends ComplexNodeImpl implements HwSystem {
 				getEcus().clear();
 				getEcus().addAll((Collection<? extends ECU>)newValue);
 				return;
+			case AmaltheaPackage.HW_SYSTEM__QUARTZES:
+				getQuartzes().clear();
+				getQuartzes().addAll((Collection<? extends Quartz>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -201,6 +233,9 @@ public class HwSystemImpl extends ComplexNodeImpl implements HwSystem {
 			case AmaltheaPackage.HW_SYSTEM__ECUS:
 				getEcus().clear();
 				return;
+			case AmaltheaPackage.HW_SYSTEM__QUARTZES:
+				getQuartzes().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -217,6 +252,8 @@ public class HwSystemImpl extends ComplexNodeImpl implements HwSystem {
 				return systemType != null;
 			case AmaltheaPackage.HW_SYSTEM__ECUS:
 				return ecus != null && !ecus.isEmpty();
+			case AmaltheaPackage.HW_SYSTEM__QUARTZES:
+				return quartzes != null && !quartzes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

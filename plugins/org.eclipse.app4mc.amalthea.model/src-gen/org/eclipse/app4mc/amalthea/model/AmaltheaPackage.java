@@ -9543,22 +9543,13 @@ public interface AmaltheaPackage extends EPackage {
 	int COMPLEX_NODE__TAGS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Quartzes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPLEX_NODE__QUARTZES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Prescaler</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPLEX_NODE__PRESCALER = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+	int COMPLEX_NODE__PRESCALER = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Memories</b></em>' containment reference list.
@@ -9567,7 +9558,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPLEX_NODE__MEMORIES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
+	int COMPLEX_NODE__MEMORIES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Networks</b></em>' containment reference list.
@@ -9576,7 +9567,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPLEX_NODE__NETWORKS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
+	int COMPLEX_NODE__NETWORKS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Components</b></em>' containment reference list.
@@ -9585,7 +9576,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPLEX_NODE__COMPONENTS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
+	int COMPLEX_NODE__COMPONENTS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Ports</b></em>' containment reference list.
@@ -9594,7 +9585,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPLEX_NODE__PORTS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 6;
+	int COMPLEX_NODE__PORTS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Complex Node</em>' class.
@@ -9603,7 +9594,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPLEX_NODE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 7;
+	int COMPLEX_NODE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -9679,15 +9670,6 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_SYSTEM__TAGS = COMPLEX_NODE__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Quartzes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_SYSTEM__QUARTZES = COMPLEX_NODE__QUARTZES;
-
-	/**
 	 * The feature id for the '<em><b>Prescaler</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9751,13 +9733,22 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_SYSTEM__ECUS = COMPLEX_NODE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Quartzes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_SYSTEM__QUARTZES = COMPLEX_NODE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Hw System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_SYSTEM_FEATURE_COUNT = COMPLEX_NODE_FEATURE_COUNT + 2;
+	int HW_SYSTEM_FEATURE_COUNT = COMPLEX_NODE_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -9831,15 +9822,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECU__TAGS = COMPLEX_NODE__TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Quartzes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECU__QUARTZES = COMPLEX_NODE__QUARTZES;
 
 	/**
 	 * The feature id for the '<em><b>Prescaler</b></em>' containment reference.
@@ -9987,15 +9969,6 @@ public interface AmaltheaPackage extends EPackage {
 	int MICROCONTROLLER__TAGS = COMPLEX_NODE__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Quartzes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MICROCONTROLLER__QUARTZES = COMPLEX_NODE__QUARTZES;
-
-	/**
 	 * The feature id for the '<em><b>Prescaler</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10139,15 +10112,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CORE__TAGS = COMPLEX_NODE__TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Quartzes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CORE__QUARTZES = COMPLEX_NODE__QUARTZES;
 
 	/**
 	 * The feature id for the '<em><b>Prescaler</b></em>' containment reference.
@@ -10295,15 +10259,6 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY__TAGS = COMPLEX_NODE__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Quartzes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMORY__QUARTZES = COMPLEX_NODE__QUARTZES;
-
-	/**
 	 * The feature id for the '<em><b>Prescaler</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10449,15 +10404,6 @@ public interface AmaltheaPackage extends EPackage {
 	int NETWORK__TAGS = COMPLEX_NODE__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Quartzes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NETWORK__QUARTZES = COMPLEX_NODE__QUARTZES;
-
-	/**
 	 * The feature id for the '<em><b>Prescaler</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10564,7 +10510,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUARTZ__CUSTOM_PROPERTIES = COMPLEX_NODE__CUSTOM_PROPERTIES;
+	int QUARTZ__CUSTOM_PROPERTIES = REFERABLE_BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -10573,7 +10519,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUARTZ__NAME = COMPLEX_NODE__NAME;
+	int QUARTZ__NAME = REFERABLE_BASE_OBJECT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Unique Name</b></em>' attribute.
@@ -10582,7 +10528,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUARTZ__UNIQUE_NAME = COMPLEX_NODE__UNIQUE_NAME;
+	int QUARTZ__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Tags</b></em>' reference list.
@@ -10591,61 +10537,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUARTZ__TAGS = COMPLEX_NODE__TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Quartzes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUARTZ__QUARTZES = COMPLEX_NODE__QUARTZES;
-
-	/**
-	 * The feature id for the '<em><b>Prescaler</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUARTZ__PRESCALER = COMPLEX_NODE__PRESCALER;
-
-	/**
-	 * The feature id for the '<em><b>Memories</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUARTZ__MEMORIES = COMPLEX_NODE__MEMORIES;
-
-	/**
-	 * The feature id for the '<em><b>Networks</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUARTZ__NETWORKS = COMPLEX_NODE__NETWORKS;
-
-	/**
-	 * The feature id for the '<em><b>Components</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUARTZ__COMPONENTS = COMPLEX_NODE__COMPONENTS;
-
-	/**
-	 * The feature id for the '<em><b>Ports</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUARTZ__PORTS = COMPLEX_NODE__PORTS;
+	int QUARTZ__TAGS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Frequency</b></em>' containment reference.
@@ -10654,7 +10546,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUARTZ__FREQUENCY = COMPLEX_NODE_FEATURE_COUNT + 0;
+	int QUARTZ__FREQUENCY = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -10663,7 +10555,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUARTZ__TYPE = COMPLEX_NODE_FEATURE_COUNT + 1;
+	int QUARTZ__TYPE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Quartz</em>' class.
@@ -10672,7 +10564,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUARTZ_FEATURE_COUNT = COMPLEX_NODE_FEATURE_COUNT + 2;
+	int QUARTZ_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -10681,7 +10573,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUARTZ___COMPUTE_UNIQUE_NAME = COMPLEX_NODE___COMPUTE_UNIQUE_NAME;
+	int QUARTZ___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -10690,7 +10582,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUARTZ___ENCODE__STRING = COMPLEX_NODE___ENCODE__STRING;
+	int QUARTZ___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
 	 * The number of operations of the '<em>Quartz</em>' class.
@@ -10699,7 +10591,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUARTZ_OPERATION_COUNT = COMPLEX_NODE_OPERATION_COUNT + 0;
+	int QUARTZ_OPERATION_COUNT = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.HwComponentImpl <em>Hw Component</em>}' class.
@@ -10746,15 +10638,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int HW_COMPONENT__TAGS = COMPLEX_NODE__TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Quartzes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_COMPONENT__QUARTZES = COMPLEX_NODE__QUARTZES;
 
 	/**
 	 * The feature id for the '<em><b>Prescaler</b></em>' containment reference.
@@ -28373,17 +28256,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getComplexNode();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ComplexNode#getQuartzes <em>Quartzes</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Quartzes</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ComplexNode#getQuartzes()
-	 * @see #getComplexNode()
-	 * @generated
-	 */
-	EReference getComplexNode_Quartzes();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.ComplexNode#getPrescaler <em>Prescaler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28469,6 +28341,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getHwSystem_Ecus();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.HwSystem#getQuartzes <em>Quartzes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Quartzes</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwSystem#getQuartzes()
+	 * @see #getHwSystem()
+	 * @generated
+	 */
+	EReference getHwSystem_Quartzes();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ECU <em>ECU</em>}'.

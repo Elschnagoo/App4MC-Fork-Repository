@@ -1621,7 +1621,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.QUARTZ: {
 				Quartz quartz = (Quartz)theEObject;
 				T1 result = caseQuartz(quartz);
-				if (result == null) result = caseComplexNode(quartz);
 				if (result == null) result = caseReferableBaseObject(quartz);
 				if (result == null) result = caseITaggable(quartz);
 				if (result == null) result = caseIAnnotatable(quartz);

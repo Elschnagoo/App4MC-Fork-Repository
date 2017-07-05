@@ -97,6 +97,7 @@ public class HwSystemItemProvider extends ComplexNodeItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwSystem_Ecus());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwSystem_Quartzes());
 		}
 		return childrenFeatures;
 	}
@@ -163,6 +164,7 @@ public class HwSystemItemProvider extends ComplexNodeItemProvider {
 
 		switch (notification.getFeatureID(HwSystem.class)) {
 			case AmaltheaPackage.HW_SYSTEM__ECUS:
+			case AmaltheaPackage.HW_SYSTEM__QUARTZES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -184,6 +186,11 @@ public class HwSystemItemProvider extends ComplexNodeItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getHwSystem_Ecus(),
 				 AmaltheaFactory.eINSTANCE.createECU()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwSystem_Quartzes(),
+				 AmaltheaFactory.eINSTANCE.createQuartz()));
 	}
 
 }

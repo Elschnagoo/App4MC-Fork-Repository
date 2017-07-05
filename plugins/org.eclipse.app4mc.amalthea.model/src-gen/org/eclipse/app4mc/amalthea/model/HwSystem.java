@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwSystem#getSystemType <em>System Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwSystem#getEcus <em>Ecus</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.HwSystem#getQuartzes <em>Quartzes</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwSystem()
@@ -73,5 +74,21 @@ public interface HwSystem extends ComplexNode {
 	 * @generated
 	 */
 	EList<ECU> getEcus();
+
+	/**
+	 * Returns the value of the '<em><b>Quartzes</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Quartz}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Quartzes</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Quartzes</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwSystem_Quartzes()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Quartz> getQuartzes();
 
 } // HwSystem

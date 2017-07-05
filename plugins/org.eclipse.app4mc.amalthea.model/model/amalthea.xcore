@@ -1567,7 +1567,6 @@ class HWModel extends BaseObject {
 // Each instance of an Element may have an unique configuration, i.e. name, Ports, Prescaler and nested hardware elements
 abstract class ComplexNode extends ReferableBaseObject, ITaggable
 {
-	contains Quartz[] quartzes
 	contains Prescaler prescaler
 	contains Memory[] memories
 	contains Network[] networks
@@ -1579,6 +1578,7 @@ class HwSystem extends ComplexNode
 {
 	refers SystemType systemType
 	contains ECU[+] ecus
+	contains Quartz[] quartzes
 }
 
 class ECU extends ComplexNode
@@ -1614,7 +1614,7 @@ class Network extends ComplexNode
 	refers NetworkType ^type
 }
 
-class Quartz extends ComplexNode
+class Quartz extends ReferableBaseObject, ITaggable
 {
 	contains Frequency frequency
 	QType ^type

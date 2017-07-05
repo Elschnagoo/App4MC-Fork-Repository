@@ -30,7 +30,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface Quartz extends ComplexNode {
+public interface Quartz extends ReferableBaseObject, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Frequency</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
