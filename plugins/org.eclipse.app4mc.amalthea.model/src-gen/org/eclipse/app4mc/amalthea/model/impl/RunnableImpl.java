@@ -12,6 +12,8 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.ASILType;
@@ -34,8 +36,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -46,7 +51,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getRunnableItems <em>Runnable Items</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getActivation <em>Activation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getActivations <em>Activations</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getDeadline <em>Deadline</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#isCallback <em>Callback</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#isService <em>Service</em>}</li>
@@ -71,14 +76,14 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	protected EList<RunnableItem> runnableItems;
 
 	/**
-	 * The cached value of the '{@link #getActivation() <em>Activation</em>}' reference.
+	 * The cached value of the '{@link #getActivations() <em>Activations</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getActivation()
+	 * @see #getActivations()
 	 * @generated
 	 * @ordered
 	 */
-	protected Activation activation;
+	protected EList<Activation> activations;
 
 	/**
 	 * The cached value of the '{@link #getDeadline() <em>Deadline</em>}' containment reference.
@@ -226,37 +231,11 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Activation getActivation() {
-		if (activation != null && activation.eIsProxy()) {
-			InternalEObject oldActivation = (InternalEObject)activation;
-			activation = (Activation)eResolveProxy(oldActivation);
-			if (activation != oldActivation) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE__ACTIVATION, oldActivation, activation));
-			}
+	public EList<Activation> getActivations() {
+		if (activations == null) {
+			activations = new EObjectResolvingEList<Activation>(Activation.class, this, AmaltheaPackage.RUNNABLE__ACTIVATIONS);
 		}
-		return activation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Activation basicGetActivation() {
-		return activation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setActivation(Activation newActivation) {
-		Activation oldActivation = activation;
-		activation = newActivation;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__ACTIVATION, oldActivation, activation));
+		return activations;
 	}
 
 	/**
@@ -494,6 +473,16 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Activation getFirstActivation() {
+		EList<Activation> _activations = this.getActivations();
+		return IterableExtensions.<Activation>head(_activations);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -542,9 +531,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 		switch (featureID) {
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
 				return getRunnableItems();
-			case AmaltheaPackage.RUNNABLE__ACTIVATION:
-				if (resolve) return getActivation();
-				return basicGetActivation();
+			case AmaltheaPackage.RUNNABLE__ACTIVATIONS:
+				return getActivations();
 			case AmaltheaPackage.RUNNABLE__DEADLINE:
 				return getDeadline();
 			case AmaltheaPackage.RUNNABLE__CALLBACK:
@@ -580,8 +568,9 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				getRunnableItems().clear();
 				getRunnableItems().addAll((Collection<? extends RunnableItem>)newValue);
 				return;
-			case AmaltheaPackage.RUNNABLE__ACTIVATION:
-				setActivation((Activation)newValue);
+			case AmaltheaPackage.RUNNABLE__ACTIVATIONS:
+				getActivations().clear();
+				getActivations().addAll((Collection<? extends Activation>)newValue);
 				return;
 			case AmaltheaPackage.RUNNABLE__DEADLINE:
 				setDeadline((Time)newValue);
@@ -624,8 +613,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
 				getRunnableItems().clear();
 				return;
-			case AmaltheaPackage.RUNNABLE__ACTIVATION:
-				setActivation((Activation)null);
+			case AmaltheaPackage.RUNNABLE__ACTIVATIONS:
+				getActivations().clear();
 				return;
 			case AmaltheaPackage.RUNNABLE__DEADLINE:
 				setDeadline((Time)null);
@@ -665,8 +654,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 		switch (featureID) {
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
 				return runnableItems != null && !runnableItems.isEmpty();
-			case AmaltheaPackage.RUNNABLE__ACTIVATION:
-				return activation != null;
+			case AmaltheaPackage.RUNNABLE__ACTIVATIONS:
+				return activations != null && !activations.isEmpty();
 			case AmaltheaPackage.RUNNABLE__DEADLINE:
 				return deadline != null;
 			case AmaltheaPackage.RUNNABLE__CALLBACK:
@@ -685,6 +674,20 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return sectionLinkInt != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.RUNNABLE___GET_FIRST_ACTIVATION:
+				return getFirstActivation();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

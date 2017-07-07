@@ -20399,13 +20399,13 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE__RUNNABLE_ITEMS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Activation</b></em>' reference.
+	 * The feature id for the '<em><b>Activations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__ACTIVATION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 1;
+	int RUNNABLE__ACTIVATIONS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Deadline</b></em>' containment reference.
@@ -20507,13 +20507,22 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE___ENCODE__STRING = ABSTRACT_MEMORY_ELEMENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Get First Activation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE___GET_FIRST_ACTIVATION = ABSTRACT_MEMORY_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Runnable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_OPERATION_COUNT = ABSTRACT_MEMORY_ELEMENT_OPERATION_COUNT + 0;
+	int RUNNABLE_OPERATION_COUNT = ABSTRACT_MEMORY_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl <em>Label</em>}' class.
@@ -32586,15 +32595,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getRunnable_RunnableItems();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.Runnable#getActivation <em>Activation</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Runnable#getActivations <em>Activations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Activation</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Runnable#getActivation()
+	 * @return the meta object for the reference list '<em>Activations</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Runnable#getActivations()
 	 * @see #getRunnable()
 	 * @generated
 	 */
-	EReference getRunnable_Activation();
+	EReference getRunnable_Activations();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Runnable#getDeadline <em>Deadline</em>}'.
@@ -32683,6 +32692,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRunnable_SectionLinkInt();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Runnable#getFirstActivation() <em>Get First Activation</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get First Activation</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.Runnable#getFirstActivation()
+	 * @generated
+	 */
+	EOperation getRunnable__GetFirstActivation();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Label <em>Label</em>}'.

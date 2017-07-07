@@ -253,7 +253,7 @@ public class PrePartitioning {
 							}
 						}
 						r.getRunnableItems().addAll(ril);
-						r.setActivation(run.getActivation());
+						r.getActivations().add(run.getFirstActivation());	//TODO: handle multiple activations
 						r.getTags().addAll(run.getTags());
 					}
 					final InstructionsConstant ic = af.createInstructionsConstant();

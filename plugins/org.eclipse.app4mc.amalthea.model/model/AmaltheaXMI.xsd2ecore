@@ -1898,8 +1898,8 @@
       <nested inputs="amalthea.xcore#/EPackage/Runnable/service" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=275/XSDAttributeUse=1"/>
       <nested inputs="amalthea.xcore#/EPackage/Runnable/asilLevel" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=275/XSDAttributeUse=2"/>
       <nested inputs="amalthea.xcore#/EPackage/Runnable/runnableItems" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=275/XSDParticle/XSDModelGroup/XSDParticle"/>
-      <nested inputs="amalthea.xcore#/EPackage/Runnable/activation" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=275/XSDAttributeUse=3"/>
-      <nested inputs="amalthea.xcore#/EPackage/Runnable/activation" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=275/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/Runnable/activations" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=275/XSDAttributeUse=3"/>
+      <nested inputs="amalthea.xcore#/EPackage/Runnable/activations" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=275/XSDParticle/XSDModelGroup/XSDParticle=1"/>
       <nested inputs="amalthea.xcore#/EPackage/Runnable/deadline" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=275/XSDParticle/XSDModelGroup/XSDParticle=2"/>
       <nested inputs="amalthea.xcore#/EPackage/Runnable/section" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=275/XSDAttributeUse=4"/>
       <nested inputs="amalthea.xcore#/EPackage/Runnable/section" outputs="AmaltheaXMI.xsd#//Runnable;XSDComplexTypeDefinition=275/XSDParticle/XSDModelGroup/XSDParticle=3"/>

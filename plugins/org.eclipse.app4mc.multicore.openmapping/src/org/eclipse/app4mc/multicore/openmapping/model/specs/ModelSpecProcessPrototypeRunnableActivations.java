@@ -63,7 +63,7 @@ public class ModelSpecProcessPrototypeRunnableActivations extends ModelSpec {
 		boolean cond = true;
 
 		for (final Runnable run : getAllRunnablesOfProcessPrototypes(model)) {
-			final Activation act = run.getActivation();
+			final Activation act = run.getFirstActivation();		//TODO: handle multiple activations
 
 			// Check for activation
 			if (act == null) {
