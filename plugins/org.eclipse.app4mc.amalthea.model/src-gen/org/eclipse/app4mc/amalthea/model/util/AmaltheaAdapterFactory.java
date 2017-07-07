@@ -213,6 +213,7 @@ import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.PeriodicEvent;
+import org.eclipse.app4mc.amalthea.model.Pfair;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
@@ -1152,20 +1153,24 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createOSEKAdapter();
 			}
 			@Override
-			public Adapter casePartlyPFairPD2(PartlyPFairPD2 object) {
-				return createPartlyPFairPD2Adapter();
+			public Adapter casePfair(Pfair object) {
+				return createPfairAdapter();
 			}
 			@Override
 			public Adapter casePfairPD2(PfairPD2 object) {
 				return createPfairPD2Adapter();
 			}
 			@Override
-			public Adapter casePartlyEarlyReleaseFairPD2(PartlyEarlyReleaseFairPD2 object) {
-				return createPartlyEarlyReleaseFairPD2Adapter();
+			public Adapter casePartlyPFairPD2(PartlyPFairPD2 object) {
+				return createPartlyPFairPD2Adapter();
 			}
 			@Override
 			public Adapter caseEarlyReleaseFairPD2(EarlyReleaseFairPD2 object) {
 				return createEarlyReleaseFairPD2Adapter();
+			}
+			@Override
+			public Adapter casePartlyEarlyReleaseFairPD2(PartlyEarlyReleaseFairPD2 object) {
+				return createPartlyEarlyReleaseFairPD2Adapter();
 			}
 			@Override
 			public Adapter caseLeastLocalRemainingExecutionTimeFirst(LeastLocalRemainingExecutionTimeFirst object) {
@@ -4348,16 +4353,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PartlyPFairPD2 <em>Partly PFair PD2</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Pfair <em>Pfair</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.PartlyPFairPD2
+	 * @see org.eclipse.app4mc.amalthea.model.Pfair
 	 * @generated
 	 */
-	public Adapter createPartlyPFairPD2Adapter() {
+	public Adapter createPfairAdapter() {
 		return null;
 	}
 
@@ -4376,16 +4381,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2 <em>Partly Early Release Fair PD2</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PartlyPFairPD2 <em>Partly PFair PD2</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2
+	 * @see org.eclipse.app4mc.amalthea.model.PartlyPFairPD2
 	 * @generated
 	 */
-	public Adapter createPartlyEarlyReleaseFairPD2Adapter() {
+	public Adapter createPartlyPFairPD2Adapter() {
 		return null;
 	}
 
@@ -4400,6 +4405,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEarlyReleaseFairPD2Adapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2 <em>Partly Early Release Fair PD2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2
+	 * @generated
+	 */
+	public Adapter createPartlyEarlyReleaseFairPD2Adapter() {
 		return null;
 	}
 

@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -15,26 +15,32 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
-import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
+
+import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.Pfair;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Pfair} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class EarlyReleaseFairPD2ItemProvider extends PfairItemProvider {
+public class PfairItemProvider extends TaskSchedulingAlgorithmItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EarlyReleaseFairPD2ItemProvider(AdapterFactory adapterFactory) {
+	public PfairItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -49,19 +55,31 @@ public class EarlyReleaseFairPD2ItemProvider extends PfairItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addQuantSizeNsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This returns EarlyReleaseFairPD2.gif.
+	 * This adds a property descriptor for the Quant Size Ns feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/EarlyReleaseFairPD2"));
+	protected void addQuantSizeNsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Pfair_quantSizeNs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Pfair_quantSizeNs_feature", "_UI_Pfair_type"),
+				 AmaltheaPackage.eINSTANCE.getPfair_QuantSizeNs(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -82,8 +100,8 @@ public class EarlyReleaseFairPD2ItemProvider extends PfairItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		EarlyReleaseFairPD2 earlyReleaseFairPD2 = (EarlyReleaseFairPD2)object;
-		return getString("_UI_EarlyReleaseFairPD2_type") + " " + earlyReleaseFairPD2.getQuantSizeNs();
+		Pfair pfair = (Pfair)object;
+		return getString("_UI_Pfair_type") + " " + pfair.getQuantSizeNs();
 	}
 	
 
@@ -97,6 +115,12 @@ public class EarlyReleaseFairPD2ItemProvider extends PfairItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Pfair.class)) {
+			case AmaltheaPackage.PFAIR__QUANT_SIZE_NS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

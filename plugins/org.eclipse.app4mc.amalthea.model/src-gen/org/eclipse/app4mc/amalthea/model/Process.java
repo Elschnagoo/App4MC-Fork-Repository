@@ -20,7 +20,6 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * TODO: Refine name of element
  * Generalizes interrupt service routines and tasks
  * <!-- end-model-doc -->
  *

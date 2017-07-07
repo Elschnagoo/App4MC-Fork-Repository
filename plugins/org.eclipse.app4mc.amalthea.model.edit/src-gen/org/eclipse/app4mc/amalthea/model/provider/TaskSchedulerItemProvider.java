@@ -164,22 +164,22 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createPartlyPFairPD2()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
 				 AmaltheaFactory.eINSTANCE.createPfairPD2()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createPartlyEarlyReleaseFairPD2()));
+				 AmaltheaFactory.eINSTANCE.createPartlyPFairPD2()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
 				 AmaltheaFactory.eINSTANCE.createEarlyReleaseFairPD2()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
+				 AmaltheaFactory.eINSTANCE.createPartlyEarlyReleaseFairPD2()));
 
 		newChildDescriptors.add
 			(createChildParameter

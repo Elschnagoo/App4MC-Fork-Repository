@@ -241,6 +241,7 @@ import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.PeriodicEvent;
+import org.eclipse.app4mc.amalthea.model.Pfair;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
@@ -1728,7 +1729,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass partlyPFairPD2EClass = null;
+	private EClass pfairEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1742,7 +1743,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass partlyEarlyReleaseFairPD2EClass = null;
+	private EClass partlyPFairPD2EClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1750,6 +1751,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass earlyReleaseFairPD2EClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass partlyEarlyReleaseFairPD2EClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -7900,8 +7908,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPartlyPFairPD2() {
-		return partlyPFairPD2EClass;
+	public EClass getPfair() {
+		return pfairEClass;
 	}
 
 	/**
@@ -7909,8 +7917,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPartlyPFairPD2_QuantSizeNs() {
-		return (EAttribute)partlyPFairPD2EClass.getEStructuralFeatures().get(0);
+	public EAttribute getPfair_QuantSizeNs() {
+		return (EAttribute)pfairEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7927,26 +7935,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPfairPD2_QuantSizeNs() {
-		return (EAttribute)pfairPD2EClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getPartlyEarlyReleaseFairPD2() {
-		return partlyEarlyReleaseFairPD2EClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPartlyEarlyReleaseFairPD2_QuantSizeNs() {
-		return (EAttribute)partlyEarlyReleaseFairPD2EClass.getEStructuralFeatures().get(0);
+	public EClass getPartlyPFairPD2() {
+		return partlyPFairPD2EClass;
 	}
 
 	/**
@@ -7963,8 +7953,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEarlyReleaseFairPD2_QuantSizeNs() {
-		return (EAttribute)earlyReleaseFairPD2EClass.getEStructuralFeatures().get(0);
+	public EClass getPartlyEarlyReleaseFairPD2() {
+		return partlyEarlyReleaseFairPD2EClass;
 	}
 
 	/**
@@ -12587,17 +12577,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		osekEClass = createEClass(OSEK);
 
-		partlyPFairPD2EClass = createEClass(PARTLY_PFAIR_PD2);
-		createEAttribute(partlyPFairPD2EClass, PARTLY_PFAIR_PD2__QUANT_SIZE_NS);
+		pfairEClass = createEClass(PFAIR);
+		createEAttribute(pfairEClass, PFAIR__QUANT_SIZE_NS);
 
 		pfairPD2EClass = createEClass(PFAIR_PD2);
-		createEAttribute(pfairPD2EClass, PFAIR_PD2__QUANT_SIZE_NS);
 
-		partlyEarlyReleaseFairPD2EClass = createEClass(PARTLY_EARLY_RELEASE_FAIR_PD2);
-		createEAttribute(partlyEarlyReleaseFairPD2EClass, PARTLY_EARLY_RELEASE_FAIR_PD2__QUANT_SIZE_NS);
+		partlyPFairPD2EClass = createEClass(PARTLY_PFAIR_PD2);
 
 		earlyReleaseFairPD2EClass = createEClass(EARLY_RELEASE_FAIR_PD2);
-		createEAttribute(earlyReleaseFairPD2EClass, EARLY_RELEASE_FAIR_PD2__QUANT_SIZE_NS);
+
+		partlyEarlyReleaseFairPD2EClass = createEClass(PARTLY_EARLY_RELEASE_FAIR_PD2);
 
 		leastLocalRemainingExecutionTimeFirstEClass = createEClass(LEAST_LOCAL_REMAINING_EXECUTION_TIME_FIRST);
 
@@ -13413,10 +13402,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		interruptSchedulingAlgorithmEClass.getESuperTypes().add(this.getBaseObject());
 		taskSchedulingAlgorithmEClass.getESuperTypes().add(this.getBaseObject());
 		osekEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
-		partlyPFairPD2EClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
-		pfairPD2EClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
-		partlyEarlyReleaseFairPD2EClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
-		earlyReleaseFairPD2EClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
+		pfairEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
+		pfairPD2EClass.getESuperTypes().add(this.getPfair());
+		partlyPFairPD2EClass.getESuperTypes().add(this.getPfair());
+		earlyReleaseFairPD2EClass.getESuperTypes().add(this.getPfair());
+		partlyEarlyReleaseFairPD2EClass.getESuperTypes().add(this.getPfair());
 		leastLocalRemainingExecutionTimeFirstEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
 		earliestDeadlineFirstEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
 		deadlineMonotonicEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
@@ -14335,17 +14325,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(osekEClass, org.eclipse.app4mc.amalthea.model.OSEK.class, "OSEK", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(partlyPFairPD2EClass, PartlyPFairPD2.class, "PartlyPFairPD2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartlyPFairPD2_QuantSizeNs(), theEcorePackage.getEInt(), "quantSizeNs", "0", 0, 1, PartlyPFairPD2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(pfairEClass, Pfair.class, "Pfair", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPfair_QuantSizeNs(), theEcorePackage.getEInt(), "quantSizeNs", "0", 0, 1, Pfair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pfairPD2EClass, PfairPD2.class, "PfairPD2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPfairPD2_QuantSizeNs(), theEcorePackage.getEInt(), "quantSizeNs", "0", 0, 1, PfairPD2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(partlyEarlyReleaseFairPD2EClass, PartlyEarlyReleaseFairPD2.class, "PartlyEarlyReleaseFairPD2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPartlyEarlyReleaseFairPD2_QuantSizeNs(), theEcorePackage.getEInt(), "quantSizeNs", "0", 0, 1, PartlyEarlyReleaseFairPD2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(partlyPFairPD2EClass, PartlyPFairPD2.class, "PartlyPFairPD2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(earlyReleaseFairPD2EClass, EarlyReleaseFairPD2.class, "EarlyReleaseFairPD2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEarlyReleaseFairPD2_QuantSizeNs(), theEcorePackage.getEInt(), "quantSizeNs", "0", 0, 1, EarlyReleaseFairPD2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(partlyEarlyReleaseFairPD2EClass, PartlyEarlyReleaseFairPD2.class, "PartlyEarlyReleaseFairPD2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(leastLocalRemainingExecutionTimeFirstEClass, LeastLocalRemainingExecutionTimeFirst.class, "LeastLocalRemainingExecutionTimeFirst", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

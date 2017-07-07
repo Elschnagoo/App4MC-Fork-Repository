@@ -19,46 +19,14 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * global scheduling algorithm
+ * Partly Early Release Fair PD2 Scheduling
+ * (global scheduling algorithm)
  * <!-- end-model-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2#getQuantSizeNs <em>Quant Size Ns</em>}</li>
- * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPartlyEarlyReleaseFairPD2()
  * @model
  * @generated
  */
-public interface PartlyEarlyReleaseFairPD2 extends TaskSchedulingAlgorithm {
-	/**
-	 * Returns the value of the '<em><b>Quant Size Ns</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Quant Size Ns</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Quant Size Ns</em>' attribute.
-	 * @see #setQuantSizeNs(int)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPartlyEarlyReleaseFairPD2_QuantSizeNs()
-	 * @model default="0" unique="false"
-	 * @generated
-	 */
-	int getQuantSizeNs();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2#getQuantSizeNs <em>Quant Size Ns</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Quant Size Ns</em>' attribute.
-	 * @see #getQuantSizeNs()
-	 * @generated
-	 */
-	void setQuantSizeNs(int value);
-
+public interface PartlyEarlyReleaseFairPD2 extends Pfair {
 } // PartlyEarlyReleaseFairPD2

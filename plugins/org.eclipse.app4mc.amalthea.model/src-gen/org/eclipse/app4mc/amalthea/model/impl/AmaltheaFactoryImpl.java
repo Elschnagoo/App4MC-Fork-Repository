@@ -502,10 +502,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.NON_ATOMIC_DATA_COHERENCY: return createNonAtomicDataCoherency();
 			case AmaltheaPackage.SEMAPHORE: return createSemaphore();
 			case AmaltheaPackage.OSEK: return createOSEK();
-			case AmaltheaPackage.PARTLY_PFAIR_PD2: return createPartlyPFairPD2();
 			case AmaltheaPackage.PFAIR_PD2: return createPfairPD2();
-			case AmaltheaPackage.PARTLY_EARLY_RELEASE_FAIR_PD2: return createPartlyEarlyReleaseFairPD2();
+			case AmaltheaPackage.PARTLY_PFAIR_PD2: return createPartlyPFairPD2();
 			case AmaltheaPackage.EARLY_RELEASE_FAIR_PD2: return createEarlyReleaseFairPD2();
+			case AmaltheaPackage.PARTLY_EARLY_RELEASE_FAIR_PD2: return createPartlyEarlyReleaseFairPD2();
 			case AmaltheaPackage.LEAST_LOCAL_REMAINING_EXECUTION_TIME_FIRST: return createLeastLocalRemainingExecutionTimeFirst();
 			case AmaltheaPackage.EARLIEST_DEADLINE_FIRST: return createEarliestDeadlineFirst();
 			case AmaltheaPackage.DEADLINE_MONOTONIC: return createDeadlineMonotonic();
@@ -2229,16 +2229,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PartlyPFairPD2 createPartlyPFairPD2() {
-		PartlyPFairPD2Impl partlyPFairPD2 = new PartlyPFairPD2Impl();
-		return partlyPFairPD2;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public PfairPD2 createPfairPD2() {
 		PfairPD2Impl pfairPD2 = new PfairPD2Impl();
 		return pfairPD2;
@@ -2249,9 +2239,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PartlyEarlyReleaseFairPD2 createPartlyEarlyReleaseFairPD2() {
-		PartlyEarlyReleaseFairPD2Impl partlyEarlyReleaseFairPD2 = new PartlyEarlyReleaseFairPD2Impl();
-		return partlyEarlyReleaseFairPD2;
+	public PartlyPFairPD2 createPartlyPFairPD2() {
+		PartlyPFairPD2Impl partlyPFairPD2 = new PartlyPFairPD2Impl();
+		return partlyPFairPD2;
 	}
 
 	/**
@@ -2262,6 +2252,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public EarlyReleaseFairPD2 createEarlyReleaseFairPD2() {
 		EarlyReleaseFairPD2Impl earlyReleaseFairPD2 = new EarlyReleaseFairPD2Impl();
 		return earlyReleaseFairPD2;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PartlyEarlyReleaseFairPD2 createPartlyEarlyReleaseFairPD2() {
+		PartlyEarlyReleaseFairPD2Impl partlyEarlyReleaseFairPD2 = new PartlyEarlyReleaseFairPD2Impl();
+		return partlyEarlyReleaseFairPD2;
 	}
 
 	/**

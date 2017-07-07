@@ -3254,9 +3254,10 @@ these are the different scheduling algorithms</xsd:documentation>
       <xsd:documentation>Priority based scheduling algorithm</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="PartlyPFairPD2">
+  <xsd:complexType abstract="true" name="Pfair">
     <xsd:annotation>
-      <xsd:documentation>global scheduling algorithm</xsd:documentation>
+      <xsd:documentation>Proportionate Fair (Pfair) Scheduling
+(global scheduling algorithm)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:TaskSchedulingAlgorithm">
@@ -3264,54 +3265,70 @@ these are the different scheduling algorithms</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="PartlyPFairPD2" type="am:PartlyPFairPD2">
+  <xsd:element name="Pfair" type="am:Pfair">
     <xsd:annotation>
-      <xsd:documentation>global scheduling algorithm</xsd:documentation>
+      <xsd:documentation>Proportionate Fair (Pfair) Scheduling
+(global scheduling algorithm)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="PfairPD2">
     <xsd:annotation>
-      <xsd:documentation>global scheduling algorithm</xsd:documentation>
+      <xsd:documentation>Proportionate Fair PD2 Scheduling
+(global scheduling algorithm)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:TaskSchedulingAlgorithm">
-        <xsd:attribute name="quantSizeNs" type="xsd:int"/>
-      </xsd:extension>
+      <xsd:extension base="am:Pfair"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="PfairPD2" type="am:PfairPD2">
     <xsd:annotation>
-      <xsd:documentation>global scheduling algorithm</xsd:documentation>
+      <xsd:documentation>Proportionate Fair PD2 Scheduling
+(global scheduling algorithm)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="PartlyEarlyReleaseFairPD2">
+  <xsd:complexType name="PartlyPFairPD2">
     <xsd:annotation>
-      <xsd:documentation>global scheduling algorithm</xsd:documentation>
+      <xsd:documentation>Partly Proportionate Fair PD2 Scheduling
+(global scheduling algorithm)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:TaskSchedulingAlgorithm">
-        <xsd:attribute name="quantSizeNs" type="xsd:int"/>
-      </xsd:extension>
+      <xsd:extension base="am:Pfair"/>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="PartlyEarlyReleaseFairPD2" type="am:PartlyEarlyReleaseFairPD2">
+  <xsd:element name="PartlyPFairPD2" type="am:PartlyPFairPD2">
     <xsd:annotation>
-      <xsd:documentation>global scheduling algorithm</xsd:documentation>
+      <xsd:documentation>Partly Proportionate Fair PD2 Scheduling
+(global scheduling algorithm)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="EarlyReleaseFairPD2">
     <xsd:annotation>
-      <xsd:documentation>global scheduling algorithm</xsd:documentation>
+      <xsd:documentation>Early Release Fair PD2 Scheduling
+(global scheduling algorithm)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:TaskSchedulingAlgorithm">
-        <xsd:attribute name="quantSizeNs" type="xsd:int"/>
-      </xsd:extension>
+      <xsd:extension base="am:Pfair"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="EarlyReleaseFairPD2" type="am:EarlyReleaseFairPD2">
     <xsd:annotation>
-      <xsd:documentation>global scheduling algorithm</xsd:documentation>
+      <xsd:documentation>Early Release Fair PD2 Scheduling
+(global scheduling algorithm)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="PartlyEarlyReleaseFairPD2">
+    <xsd:annotation>
+      <xsd:documentation>Partly Early Release Fair PD2 Scheduling
+(global scheduling algorithm)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Pfair"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PartlyEarlyReleaseFairPD2" type="am:PartlyEarlyReleaseFairPD2">
+    <xsd:annotation>
+      <xsd:documentation>Partly Early Release Fair PD2 Scheduling
+(global scheduling algorithm)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="LeastLocalRemainingExecutionTimeFirst">
@@ -4182,8 +4199,7 @@ This just defines that the processes should be chained.</xsd:documentation>
   </xsd:element>
   <xsd:complexType abstract="true" name="Process">
     <xsd:annotation>
-      <xsd:documentation>TODO: Refine name of element
-Generalizes interrupt service routines and tasks</xsd:documentation>
+      <xsd:documentation>Generalizes interrupt service routines and tasks</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:AbstractProcess">
@@ -4197,8 +4213,7 @@ Generalizes interrupt service routines and tasks</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="Process" type="am:Process">
     <xsd:annotation>
-      <xsd:documentation>TODO: Refine name of element
-Generalizes interrupt service routines and tasks</xsd:documentation>
+      <xsd:documentation>Generalizes interrupt service routines and tasks</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="CallGraph">

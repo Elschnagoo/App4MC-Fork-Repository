@@ -1274,15 +1274,6 @@ public interface AmaltheaFactory extends EFactory {
 	OSEK createOSEK();
 
 	/**
-	 * Returns a new object of class '<em>Partly PFair PD2</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Partly PFair PD2</em>'.
-	 * @generated
-	 */
-	PartlyPFairPD2 createPartlyPFairPD2();
-
-	/**
 	 * Returns a new object of class '<em>Pfair PD2</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1292,13 +1283,13 @@ public interface AmaltheaFactory extends EFactory {
 	PfairPD2 createPfairPD2();
 
 	/**
-	 * Returns a new object of class '<em>Partly Early Release Fair PD2</em>'.
+	 * Returns a new object of class '<em>Partly PFair PD2</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Partly Early Release Fair PD2</em>'.
+	 * @return a new object of class '<em>Partly PFair PD2</em>'.
 	 * @generated
 	 */
-	PartlyEarlyReleaseFairPD2 createPartlyEarlyReleaseFairPD2();
+	PartlyPFairPD2 createPartlyPFairPD2();
 
 	/**
 	 * Returns a new object of class '<em>Early Release Fair PD2</em>'.
@@ -1308,6 +1299,15 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	EarlyReleaseFairPD2 createEarlyReleaseFairPD2();
+
+	/**
+	 * Returns a new object of class '<em>Partly Early Release Fair PD2</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Partly Early Release Fair PD2</em>'.
+	 * @generated
+	 */
+	PartlyEarlyReleaseFairPD2 createPartlyEarlyReleaseFairPD2();
 
 	/**
 	 * Returns a new object of class '<em>Least Local Remaining Execution Time First</em>'.

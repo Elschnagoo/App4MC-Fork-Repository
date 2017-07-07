@@ -213,6 +213,7 @@ import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.PeriodicEvent;
+import org.eclipse.app4mc.amalthea.model.Pfair;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
@@ -2017,39 +2018,52 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.PARTLY_PFAIR_PD2: {
-				PartlyPFairPD2 partlyPFairPD2 = (PartlyPFairPD2)theEObject;
-				T1 result = casePartlyPFairPD2(partlyPFairPD2);
-				if (result == null) result = caseTaskSchedulingAlgorithm(partlyPFairPD2);
-				if (result == null) result = caseBaseObject(partlyPFairPD2);
-				if (result == null) result = caseIAnnotatable(partlyPFairPD2);
+			case AmaltheaPackage.PFAIR: {
+				Pfair pfair = (Pfair)theEObject;
+				T1 result = casePfair(pfair);
+				if (result == null) result = caseTaskSchedulingAlgorithm(pfair);
+				if (result == null) result = caseBaseObject(pfair);
+				if (result == null) result = caseIAnnotatable(pfair);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.PFAIR_PD2: {
 				PfairPD2 pfairPD2 = (PfairPD2)theEObject;
 				T1 result = casePfairPD2(pfairPD2);
+				if (result == null) result = casePfair(pfairPD2);
 				if (result == null) result = caseTaskSchedulingAlgorithm(pfairPD2);
 				if (result == null) result = caseBaseObject(pfairPD2);
 				if (result == null) result = caseIAnnotatable(pfairPD2);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.PARTLY_EARLY_RELEASE_FAIR_PD2: {
-				PartlyEarlyReleaseFairPD2 partlyEarlyReleaseFairPD2 = (PartlyEarlyReleaseFairPD2)theEObject;
-				T1 result = casePartlyEarlyReleaseFairPD2(partlyEarlyReleaseFairPD2);
-				if (result == null) result = caseTaskSchedulingAlgorithm(partlyEarlyReleaseFairPD2);
-				if (result == null) result = caseBaseObject(partlyEarlyReleaseFairPD2);
-				if (result == null) result = caseIAnnotatable(partlyEarlyReleaseFairPD2);
+			case AmaltheaPackage.PARTLY_PFAIR_PD2: {
+				PartlyPFairPD2 partlyPFairPD2 = (PartlyPFairPD2)theEObject;
+				T1 result = casePartlyPFairPD2(partlyPFairPD2);
+				if (result == null) result = casePfair(partlyPFairPD2);
+				if (result == null) result = caseTaskSchedulingAlgorithm(partlyPFairPD2);
+				if (result == null) result = caseBaseObject(partlyPFairPD2);
+				if (result == null) result = caseIAnnotatable(partlyPFairPD2);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.EARLY_RELEASE_FAIR_PD2: {
 				EarlyReleaseFairPD2 earlyReleaseFairPD2 = (EarlyReleaseFairPD2)theEObject;
 				T1 result = caseEarlyReleaseFairPD2(earlyReleaseFairPD2);
+				if (result == null) result = casePfair(earlyReleaseFairPD2);
 				if (result == null) result = caseTaskSchedulingAlgorithm(earlyReleaseFairPD2);
 				if (result == null) result = caseBaseObject(earlyReleaseFairPD2);
 				if (result == null) result = caseIAnnotatable(earlyReleaseFairPD2);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.PARTLY_EARLY_RELEASE_FAIR_PD2: {
+				PartlyEarlyReleaseFairPD2 partlyEarlyReleaseFairPD2 = (PartlyEarlyReleaseFairPD2)theEObject;
+				T1 result = casePartlyEarlyReleaseFairPD2(partlyEarlyReleaseFairPD2);
+				if (result == null) result = casePfair(partlyEarlyReleaseFairPD2);
+				if (result == null) result = caseTaskSchedulingAlgorithm(partlyEarlyReleaseFairPD2);
+				if (result == null) result = caseBaseObject(partlyEarlyReleaseFairPD2);
+				if (result == null) result = caseIAnnotatable(partlyEarlyReleaseFairPD2);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -6051,17 +6065,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partly PFair PD2</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Pfair</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partly PFair PD2</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Pfair</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePartlyPFairPD2(PartlyPFairPD2 object) {
+	public T1 casePfair(Pfair object) {
 		return null;
 	}
 
@@ -6081,17 +6095,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partly Early Release Fair PD2</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Partly PFair PD2</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partly Early Release Fair PD2</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Partly PFair PD2</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePartlyEarlyReleaseFairPD2(PartlyEarlyReleaseFairPD2 object) {
+	public T1 casePartlyPFairPD2(PartlyPFairPD2 object) {
 		return null;
 	}
 
@@ -6107,6 +6121,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseEarlyReleaseFairPD2(EarlyReleaseFairPD2 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Partly Early Release Fair PD2</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Partly Early Release Fair PD2</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 casePartlyEarlyReleaseFairPD2(PartlyEarlyReleaseFairPD2 object) {
 		return null;
 	}
 

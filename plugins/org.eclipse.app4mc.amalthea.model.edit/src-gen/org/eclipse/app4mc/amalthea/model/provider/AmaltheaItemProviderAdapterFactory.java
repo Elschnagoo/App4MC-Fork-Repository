@@ -6023,10 +6023,10 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (nonAtomicDataCoherencyItemProvider != null) nonAtomicDataCoherencyItemProvider.dispose();
 		if (semaphoreItemProvider != null) semaphoreItemProvider.dispose();
 		if (osekItemProvider != null) osekItemProvider.dispose();
-		if (partlyPFairPD2ItemProvider != null) partlyPFairPD2ItemProvider.dispose();
 		if (pfairPD2ItemProvider != null) pfairPD2ItemProvider.dispose();
-		if (partlyEarlyReleaseFairPD2ItemProvider != null) partlyEarlyReleaseFairPD2ItemProvider.dispose();
+		if (partlyPFairPD2ItemProvider != null) partlyPFairPD2ItemProvider.dispose();
 		if (earlyReleaseFairPD2ItemProvider != null) earlyReleaseFairPD2ItemProvider.dispose();
+		if (partlyEarlyReleaseFairPD2ItemProvider != null) partlyEarlyReleaseFairPD2ItemProvider.dispose();
 		if (leastLocalRemainingExecutionTimeFirstItemProvider != null) leastLocalRemainingExecutionTimeFirstItemProvider.dispose();
 		if (earliestDeadlineFirstItemProvider != null) earliestDeadlineFirstItemProvider.dispose();
 		if (deadlineMonotonicItemProvider != null) deadlineMonotonicItemProvider.dispose();
