@@ -456,8 +456,8 @@ public class PerformPartitioning {
 	private SWModel createPPs(final SWModel swm) {
 		final AmaltheaFactory af = AmaltheaFactory.eINSTANCE;
 		final ProcessPrototype pp = af.createProcessPrototype();
-		if (swm.getRunnables().get(0).getActivation() != null) {
-			pp.setActivation(swm.getRunnables().get(0).getActivation());
+		if (swm.getRunnables().get(0).getFirstActivation() != null) {
+			pp.setActivation(swm.getRunnables().get(0).getFirstActivation());	//TODO: handle multiple activations
 		}
 		pp.setName("PPTemp");
 		for (final Runnable r : swm.getRunnables()) {

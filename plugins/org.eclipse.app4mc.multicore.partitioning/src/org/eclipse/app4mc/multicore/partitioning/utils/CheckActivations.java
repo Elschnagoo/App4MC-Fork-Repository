@@ -93,7 +93,7 @@ public class CheckActivations {
 					assert null != ref;
 					for (final CallSequenceItem csi : ((CallSequence) geb).getCalls()) {
 						if (csi instanceof TaskRunnableCall) {
-							((TaskRunnableCall) csi).getRunnable().setActivation(ref);
+							((TaskRunnableCall) csi).getRunnable().getActivations().add(ref);	//TODO: handle multiple activations
 						}
 					}
 				}
@@ -126,9 +126,9 @@ public class CheckActivations {
 				pp.setActivation(swm.getActivations().get(act));
 				// for (int r = 0; r < swm.getRunnables().size(); r++) {
 				for (final Runnable r : swm.getRunnables()) {
-					assert null != r.getActivation();
-					if (null != r.getActivation()) {
-						if (r.getActivation().equals(swm.getActivations().get(act))) {
+					assert null != r.getFirstActivation();		//TODO: handle multiple activations
+					if (null != r.getFirstActivation()) {
+						if (r.getFirstActivation().equals(swm.getActivations().get(act))) {
 							final TaskRunnableCall trc = instance.createTaskRunnableCall();
 							trc.setRunnable(r);
 							pp.getRunnableCalls().add(trc);

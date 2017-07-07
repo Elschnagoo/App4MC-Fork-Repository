@@ -296,10 +296,10 @@ public class Helper {
 					pp.setLastRunnable(pp.getRunnableCalls().get(pp.getRunnableCalls().size() - 1).getRunnable());
 				}
 			}
-			if (pp.getActivation() == null && pp.getRunnableCalls().get(0).getRunnable().getActivation() != null) {
-				pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getActivation());
+			if (pp.getActivation() == null && pp.getRunnableCalls().get(0).getRunnable().getFirstActivation() != null) {
+				pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getFirstActivation());		//TODO: handle multiple activations
 			}
-			else if (pp.getRunnableCalls().get(0).getRunnable().getActivation() == null) {
+			else if (pp.getRunnableCalls().get(0).getRunnable().getFirstActivation() == null) {
 				PartLog.getInstance().log("Runnable " + pp.getRunnableCalls().get(0).getRunnable().getName()
 						+ " has no activation, this might be a problem for the mapping process.");
 			}

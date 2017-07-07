@@ -39,7 +39,7 @@ public class ModelSpecRunnablePeriodicActivation extends ModelSpec {
 		boolean cond = true;
 
 		for (final Runnable run : model.getSwModel().getRunnables()) {
-			final Activation activation = run.getActivation();
+			final Activation activation = run.getFirstActivation();		//TODO: handle multiple activations
 
 
 			if (!(activation instanceof PeriodicActivation)) {

@@ -4683,7 +4683,7 @@ The final state can be several Tasks, which can be computed using provided infor
       <xsd:extension base="am:AbstractMemoryElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="runnableItems" type="am:RunnableItem"/>
-          <xsd:element name="activation" type="am:Activation"/>
+          <xsd:element name="activations" type="am:Activation"/>
           <xsd:element name="deadline" type="am:Time">
             <xsd:annotation>
               <xsd:documentation>Optional parameter for allocation to task or time slice.</xsd:documentation>
@@ -4706,7 +4706,7 @@ The final state can be several Tasks, which can be computed using provided infor
             <xsd:documentation>ASIL level for the runnable entity</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="activation" type="xsd:string"/>
+        <xsd:attribute name="activations" type="xsd:string"/>
         <xsd:attribute name="section" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>

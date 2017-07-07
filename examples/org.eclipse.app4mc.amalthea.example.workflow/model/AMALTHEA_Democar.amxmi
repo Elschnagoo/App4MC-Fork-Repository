@@ -984,10 +984,10 @@
   <hwModel>
     <coreTypes name="Default" instructionsPerCycle="1" />
     <system name="Democar">
+      <quartzes name="QuartzOscillator_1" type="STATIC">
+        <frequency unit="MHz" value="200.0" />
+      </quartzes>
       <ecus name="ECU_1">
-        <quartzes name="QuartzOscillator_1" type="STATIC">
-          <frequency unit="MHz" value="200.0" />
-        </quartzes>
         <microcontrollers name="Processor_1">
           <memories name="Mem_1">
             <ports xsi:type="am:ComplexPort" name="Mem_1_port" bitWidth="16" direction="R" writeCycles="10" readCycles="10" />

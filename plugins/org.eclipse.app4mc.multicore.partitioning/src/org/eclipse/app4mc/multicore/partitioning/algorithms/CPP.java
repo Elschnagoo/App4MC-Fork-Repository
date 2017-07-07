@@ -283,8 +283,8 @@ public class CPP {
 		amodels.setSwModel(this.swm);
 		this.cm = new Helper().updateRSCs(amodels.getConstraintsModel(), amodels.getSwModel());
 		for (final Runnable r : this.swm.getRunnables()) {
-			if (null != r.getActivation() && !this.swm.getActivations().contains(r.getActivation())) {
-				this.swm.getActivations().add(r.getActivation());
+			if (null != r.getFirstActivation() && !this.swm.getActivations().contains(r.getFirstActivation())) {
+				this.swm.getActivations().add(r.getFirstActivation()); 		//TODO: handle multiple activations
 			}
 		}
 	}

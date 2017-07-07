@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getRunnableItems <em>Runnable Items</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getActivation <em>Activation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getActivations <em>Activations</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getDeadline <em>Deadline</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#isCallback <em>Callback</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#isService <em>Service</em>}</li>
@@ -62,30 +62,20 @@ public interface Runnable extends AbstractMemoryElement {
 	EList<RunnableItem> getRunnableItems();
 
 	/**
-	 * Returns the value of the '<em><b>Activation</b></em>' reference.
+	 * Returns the value of the '<em><b>Activations</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Activation}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Activation</em>' reference isn't clear,
+	 * If the meaning of the '<em>Activations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Activation</em>' reference.
-	 * @see #setActivation(Activation)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_Activation()
+	 * @return the value of the '<em>Activations</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_Activations()
 	 * @model
 	 * @generated
 	 */
-	Activation getActivation();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Runnable#getActivation <em>Activation</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Activation</em>' reference.
-	 * @see #getActivation()
-	 * @generated
-	 */
-	void setActivation(Activation value);
+	EList<Activation> getActivations();
 
 	/**
 	 * Returns the value of the '<em><b>Deadline</b></em>' containment reference.
@@ -251,5 +241,14 @@ public interface Runnable extends AbstractMemoryElement {
 	 * @generated
 	 */
 	void setSection(Section value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.eclipse.app4mc.amalthea.model.Activation%>> _activations = this.getActivations();\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.eclipse.app4mc.amalthea.model.Activation%>>head(_activations);'"
+	 * @generated
+	 */
+	Activation getFirstActivation();
 
 } // Runnable

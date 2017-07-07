@@ -57,7 +57,7 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addActivationPropertyDescriptor(object);
+			addActivationsPropertyDescriptor(object);
 			addCallbackPropertyDescriptor(object);
 			addServicePropertyDescriptor(object);
 			addAsilLevelPropertyDescriptor(object);
@@ -69,19 +69,19 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Activation feature.
+	 * This adds a property descriptor for the Activations feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addActivationPropertyDescriptor(Object object) {
+	protected void addActivationsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Runnable_activation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Runnable_activation_feature", "_UI_Runnable_type"),
-				 AmaltheaPackage.eINSTANCE.getRunnable_Activation(),
+				 getString("_UI_Runnable_activations_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Runnable_activations_feature", "_UI_Runnable_type"),
+				 AmaltheaPackage.eINSTANCE.getRunnable_Activations(),
 				 true,
 				 false,
 				 true,

@@ -224,7 +224,7 @@ public class GGP {
 				pp.getRunnableCalls().add(trc);
 			}
 			pp.setName("PP" + i++);
-			pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getActivation());
+			pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getFirstActivation());	//TODO: handle multiple activations
 			pp.setFirstRunnable(llr.get(0));
 			pp.setLastRunnable(llr.get(llr.size() - 1));
 			this.swm.getProcessPrototypes().add(pp);

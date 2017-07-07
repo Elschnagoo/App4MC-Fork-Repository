@@ -96,8 +96,8 @@ public class TagToPP {
 					else {
 						final ProcessPrototype pp2 = AmaltheaFactory.eINSTANCE.createProcessPrototype();
 						pp2.setName(pp.getName() + trc.getRunnable().getTags().get(0).getName());
-						if (null != trc.getRunnable().getActivation()) {
-							pp2.setActivation(trc.getRunnable().getActivation());
+						if (null != trc.getRunnable().getFirstActivation()) {		//TODO: handle multiple activations
+							pp2.setActivation(trc.getRunnable().getFirstActivation());
 						}
 						final TaskRunnableCall trc2 = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
 						trc2.setRunnable(trc.getRunnable());

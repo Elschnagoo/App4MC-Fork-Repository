@@ -144,10 +144,10 @@
     <mcTypes name="GENERIC"/>
     <coreTypes name="Core_1_type" bitWidth="0" instructionsPerCycle="1"/>
     <system name="System">
+      <quartzes name="Quartz_1" type="STATIC">
+        <frequency unit="Hz" value="6.0E8"/>
+      </quartzes>
       <ecus name="Ecu_1">
-        <quartzes name="Quartz_1" type="STATIC">
-          <frequency unit="Hz" value="6.0E8"/>
-        </quartzes>
         <microcontrollers name="Processor_1" microcontrollerType="GENERIC?type=MicrocontrollerType">
           <memories name="Memory_1">
             <customProperties key="attribute#MemoryType">

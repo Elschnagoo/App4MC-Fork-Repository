@@ -2915,7 +2915,9 @@ enum OrderType
 class Runnable extends AbstractMemoryElement
 {
 	contains RunnableItem[] runnableItems
-	refers Activation activation
+	refers Activation[] activations
+	op Activation getFirstActivation() { activations.head }
+	
 	/*
 	 * Optional parameter for allocation to task or time slice.
 	 */
