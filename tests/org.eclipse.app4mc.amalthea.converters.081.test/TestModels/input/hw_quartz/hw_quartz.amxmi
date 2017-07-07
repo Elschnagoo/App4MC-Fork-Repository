@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <runnables callback="false" service="false">
+      <deadline value="6666"/>
+    </runnables>
+  </swModel>
+  <hwModel>
+    <accessPaths xsi:type="am:LatencyAccessPath">
+      <latencies xsi:type="am:AccessPathRef"/>
+      <latencies xsi:type="am:LatencyConstant" transferSize="0" quartz="q4.1?type=Quartz" value="0"/>
+    </accessPaths>
+    <system>
+      <memories name="m3">
+        <prescaler clockRatio="0.0" quartz="q5.1?type=Quartz"/>
+        <memories>
+          <quartzes name="q9"/>
+        </memories>
+        <networks/>
+        <networks/>
+        <components/>
+        <ports/>
+      </memories>
+      <memories name="m4"/>
+      <components>
+        <quartzes name="q3"/>
+        <memories name="ml">
+          <quartzes name="q4">
+            <quartzes name="q4.1">
+              <quartzes name="q5.1"/>
+            </quartzes>
+          </quartzes>
+        </memories>
+      </components>
+      <ecus>
+        <quartzes name="q1">
+          <quartzes name="q2"/>
+        </quartzes>
+      </ecus>
+    </system>
+  </hwModel>
+</am:Amalthea>

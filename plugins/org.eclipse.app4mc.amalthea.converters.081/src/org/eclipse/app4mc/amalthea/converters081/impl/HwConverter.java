@@ -19,6 +19,7 @@ import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters081.utils.HelperUtils_080_081;
 import org.jdom2.Document;
 import org.jdom2.Element;
+import org.jdom2.Parent;
 
 /**
  * This class is responsible for converting the HW Model elements from 0.8.0 to 0.8.1 version format of AMALTHEA model
@@ -50,10 +51,69 @@ public class HwConverter extends AbstractConverter {
 
 		removeXAccessPattern(rootElement);
 
+		updateQuartz(rootElement);
 
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
 	}
 
+	/**
+	 * This method is used to move all Quartz elements to a single global list inside Hardware model i.e. directly inside HwSystem element (For further
+	 * details, check : Bug 518069 )
+	 *
+	 *
+	 * @param rootElement
+	 *            Amalthea root element
+	 */
+	private void updateQuartz(Element rootElement) {
+
+		
+		final StringBuffer xpathBuffer = new StringBuffer();
+
+		xpathBuffer.append("./hwModel/system//quartzes");
+		
+		
+		final List<Element> hwSystemElements = this.helper.getXpathResult(rootElement, "./hwModel/system",
+				Element.class, this.helper.getGenericNS("xsi"));
+
+		final List<Element> quartzElements = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
+				Element.class, this.helper.getGenericNS("xsi"));
+	
+		Element hwSystemElement = null;
+
+		if ( hwSystemElements.size() > 0) {
+			hwSystemElement = hwSystemElements.get(0);
+		} 
+		
+
+		for (Element quartzElement : quartzElements) {
+				//removing content of quartz element from existing parent
+				Parent parent = quartzElement.getParent();
+				
+				if(parent !=null){
+					//In case of nested Quartz, elements would have been removed from their parents
+					parent.removeContent(quartzElement);
+				}
+
+				//changing the tag name of Quartz 
+				quartzElement.setName("quartzes");
+				
+				//setting Quartz element to HwSystem
+				hwSystemElement.addContent(quartzElement);
+				//removing sub-elements which are no longer valid as per 0.8.1
+				quartzElement.removeChild("components");
+				quartzElement.removeChild("memories");
+				quartzElement.removeChild("networks");
+				quartzElement.removeChild("ports");
+				quartzElement.removeChild("prescaler");
+				quartzElement.removeChild("quartzes");
+				
+				
+		}
+
+
+		
+		
+	}
 
 	/**
 	 * This method is used for the migration of MemmoryType element present inside the Hardware model (For further

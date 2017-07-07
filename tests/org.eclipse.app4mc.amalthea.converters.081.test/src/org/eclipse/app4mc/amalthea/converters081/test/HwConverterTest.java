@@ -36,9 +36,12 @@ public class HwConverterTest extends AbstractConverterTest {
 
 		final String[] inputFiles = new String[] { "/hw/hw.amxmi" };
 
+		final String[] inputFiles_quartz = new String[] { "/hw_quartz/hw_quartz.amxmi" };
+
 
 		return Arrays.asList(new Object[][] {
-				{ "Models with HW Model", true, inputFiles, "Migration of Amalthea models containing HW Model " } });
+				{ "Models with HW Model", true, inputFiles, "Migration of Amalthea models containing HW Model " } ,
+				{ "Models with HW Model (containing Quartz)", true, inputFiles_quartz, "Migration of Amalthea models containing Quartz in HW Model " } });
 	}
 
 	public HwConverterTest(final String testDataID, final boolean canExecuteTestCase, final String[] xmlFiles,
@@ -80,6 +83,15 @@ public class HwConverterTest extends AbstractConverterTest {
 							+ " is not migrated as xAccessPattern attribute is still existing",
 					memoryTypeElement.getAttribute("xAccessPattern") == null);
 
+		}
+		
+		
+		if(document.getBaseURI().endsWith("hw_quartz.amxmi")){
+			final List<Element> quartzElements = this.helper.getXpathResult(document.getRootElement(),
+					"./hwModel/system//quartzes", Element.class, this.helper.getGenericNS("xsi"));
+			
+		assertTrue("unable to migrate all Quartz elements", quartzElements.size()==7);
+			
 		}
 
 	}
