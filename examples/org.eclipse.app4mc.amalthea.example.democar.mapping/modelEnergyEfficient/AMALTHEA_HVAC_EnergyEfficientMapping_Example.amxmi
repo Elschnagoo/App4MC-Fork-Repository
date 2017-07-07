@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <swModel>
-    <runnables name="hVAC_YSCT__drvTempAdapter__runCycle" activation="20+ms?type=PeriodicActivation">
+    <runnables name="hVAC_YSCT__drvTempAdapter__runCycle" activations="20+ms?type=PeriodicActivation">
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsConstant" value="1531" />
       </runnableItems>
@@ -9,7 +9,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__tmpMode?type=Label" access="read" dataStability="inherited" />
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempAdapter__temp?type=Label" access="write" dataStability="inherited" />
     </runnables>
-    <runnables name="hVAC_YSCT__coordinator__runCycle" activation="20+ms?type=PeriodicActivation">
+    <runnables name="hVAC_YSCT__coordinator__runCycle" activations="20+ms?type=PeriodicActivation">
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsConstant" value="4119" />
       </runnableItems>
@@ -20,7 +20,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__tmpMode?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=Label" access="read" dataStability="inherited" />
     </runnables>
-    <runnables name="hVAC_YSCT__hvacFlaps__setFlaps" activation="20+ms?type=PeriodicActivation">
+    <runnables name="hVAC_YSCT__hvacFlaps__setFlaps" activations="20+ms?type=PeriodicActivation">
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsConstant" value="939313" />
       </runnableItems>
@@ -28,7 +28,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempFlapCtrl__flap?type=Label" access="read" dataStability="inherited" />
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempFlapCtrl__flap?type=Label" access="read" dataStability="inherited" />
     </runnables>
-    <runnables name="hVAC_YSCT__hmi__receiveFromUI" activation="20+ms?type=PeriodicActivation">
+    <runnables name="hVAC_YSCT__hmi__receiveFromUI" activations="20+ms?type=PeriodicActivation">
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsConstant" value="419925" />
       </runnableItems>
@@ -36,7 +36,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__drvTempTicks?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__passTempTicks?type=Label" access="write" dataStability="inherited" />
     </runnables>
-    <runnables name="hVAC_YSCT__passTempAdapter__runCycle" activation="20+ms?type=PeriodicActivation">
+    <runnables name="hVAC_YSCT__passTempAdapter__runCycle" activations="20+ms?type=PeriodicActivation">
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsConstant" value="1488" />
       </runnableItems>
@@ -44,7 +44,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__tmpMode?type=Label" access="read" dataStability="inherited" />
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempAdapter__temp?type=Label" access="write" dataStability="inherited" />
     </runnables>
-    <runnables name="hVAC_YSCT__hmi__sendToUI" activation="20+ms?type=PeriodicActivation">
+    <runnables name="hVAC_YSCT__hmi__sendToUI" activations="20+ms?type=PeriodicActivation">
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsConstant" value="1450" />
       </runnableItems>
@@ -54,7 +54,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=Label" access="read" dataStability="inherited" />
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="read" dataStability="inherited" />
     </runnables>
-    <runnables name="hVAC_YSCT__drvTempFlapCtrl__runCycle" activation="100+ms?type=PeriodicActivation">
+    <runnables name="hVAC_YSCT__drvTempFlapCtrl__runCycle" activations="100+ms?type=PeriodicActivation">
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsConstant" value="1256" />
       </runnableItems>
@@ -62,7 +62,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempFlapCtrl__flap?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="read" dataStability="inherited" />
     </runnables>
-    <runnables name="hVAC_YSCT__blowerCtrl__runCycle" activation="100+ms?type=PeriodicActivation">
+    <runnables name="hVAC_YSCT__blowerCtrl__runCycle" activations="100+ms?type=PeriodicActivation">
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsConstant" value="1275" />
       </runnableItems>
@@ -72,19 +72,19 @@
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=Label" access="write" dataStability="inherited" />
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="read" dataStability="inherited" />
     </runnables>
-    <runnables name="hVAC_YSCT__hvacBlower__setPower" activation="100+ms?type=PeriodicActivation">
+    <runnables name="hVAC_YSCT__hvacBlower__setPower" activations="100+ms?type=PeriodicActivation">
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsConstant" value="825" />
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=Label" access="read" dataStability="inherited" />
     </runnables>
-    <runnables name="hVAC_YSCT__hvacItos__readTemp" activation="100+ms?type=PeriodicActivation">
+    <runnables name="hVAC_YSCT__hvacItos__readTemp" activations="100+ms?type=PeriodicActivation">
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsConstant" value="13575" />
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="write" dataStability="inherited" />
     </runnables>
-    <runnables name="hVAC_YSCT__passTempFlapCtrl__runCycle" activation="100+ms?type=PeriodicActivation">
+    <runnables name="hVAC_YSCT__passTempFlapCtrl__runCycle" activations="100+ms?type=PeriodicActivation">
       <runnableItems xsi:type="am:RunnableInstructions">
         <default xsi:type="am:InstructionsConstant" value="1231" />
       </runnableItems>
