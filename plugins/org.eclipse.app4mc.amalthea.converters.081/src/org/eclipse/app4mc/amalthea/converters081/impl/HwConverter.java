@@ -17,6 +17,7 @@ import java.util.Map;
 import org.apache.log4j.LogManager;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters081.utils.HelperUtils_080_081;
+import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Parent;
@@ -99,15 +100,41 @@ public class HwConverter extends AbstractConverter {
 				
 				//setting Quartz element to HwSystem
 				hwSystemElement.addContent(quartzElement);
+				
+				Attribute nameAttribute = quartzElement.getAttribute("name");
+				
+				String quartzName = nameAttribute!=null? nameAttribute.getValue():"";
+				
+				
+				logger.info("Moved Quartz element"+quartzName+" as a child element of HwSystem");
+				
 				//removing sub-elements which are no longer valid as per 0.8.1
-				quartzElement.removeChild("components");
-				quartzElement.removeChild("memories");
-				quartzElement.removeChild("networks");
-				quartzElement.removeChild("ports");
-				quartzElement.removeChild("prescaler");
-				quartzElement.removeChild("quartzes");
+				boolean removedComponents = quartzElement.removeChild("components");
+				if(removedComponents){
+					this.logger.warn("-- Removed all HwComponent objects defined inside Quartz : "+quartzName);
+				}
+				boolean removedMemories = quartzElement.removeChild("memories");
 				
+				if(removedMemories){
+					this.logger.warn("-- Removed all Memory objects defined inside Quartz : "+quartzName);
+				}
+				boolean removedNetworks = quartzElement.removeChild("networks");
+				if(removedNetworks){
+					this.logger.warn("-- Removed all Network objects defined inside Quartz : "+quartzName);
+				}
+				boolean removedPorts = quartzElement.removeChild("ports");
+				if(removedPorts){
+					this.logger.warn("-- Removed all HwPort objects defined inside Quartz : "+quartzName);
+				}
+				boolean removedPrescalers = quartzElement.removeChild("prescaler");
+				if(removedPrescalers){
+					this.logger.warn("-- Removed all Prescaler objects defined inside Quartz : "+quartzName);
+				}
+				boolean removedQuartzes = quartzElement.removeChild("quartzes");
 				
+				if(removedQuartzes){
+					this.logger.warn("-- Moved all Quartz objects defined inside Quartz : "+quartzName + " as elements inside HwSystem");
+				}
 		}
 
 
