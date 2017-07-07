@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -18,31 +18,47 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.TaskScheduler;
+import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
+
+import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.TaskScheduler} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TaskSchedulerItemProvider extends SchedulerItemProvider {
+public class SchedulerAssociationItemProvider 
+	extends AmaltheaExtendedItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TaskSchedulerItemProvider(AdapterFactory adapterFactory) {
+	public SchedulerAssociationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -57,25 +73,48 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addParentSchedulerPropertyDescriptor(object);
+			addParentPropertyDescriptor(object);
+			addChildPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Parent Scheduler feature.
+	 * This adds a property descriptor for the Parent feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addParentSchedulerPropertyDescriptor(Object object) {
+	protected void addParentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TaskScheduler_parentScheduler_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TaskScheduler_parentScheduler_feature", "_UI_TaskScheduler_type"),
-				 AmaltheaPackage.eINSTANCE.getTaskScheduler_ParentScheduler(),
+				 getString("_UI_SchedulerAssociation_parent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SchedulerAssociation_parent_feature", "_UI_SchedulerAssociation_type"),
+				 AmaltheaPackage.eINSTANCE.getSchedulerAssociation_Parent(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Child feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addChildPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SchedulerAssociation_child_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SchedulerAssociation_child_feature", "_UI_SchedulerAssociation_type"),
+				 AmaltheaPackage.eINSTANCE.getSchedulerAssociation_Child(),
 				 false,
 				 false,
 				 false,
@@ -96,8 +135,8 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getTaskScheduler_ParentAssociation());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSchedulerAssociation_SchedulingParameters());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSchedulerAssociation_ParameterExtensions());
 		}
 		return childrenFeatures;
 	}
@@ -116,14 +155,14 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 	}
 
 	/**
-	 * This returns TaskScheduler.gif.
+	 * This returns SchedulerAssociation.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TaskScheduler"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SchedulerAssociation"));
 	}
 
 	/**
@@ -144,10 +183,7 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TaskScheduler)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_TaskScheduler_type") :
-			getString("_UI_TaskScheduler_type") + " " + label;
+		return getString("_UI_SchedulerAssociation_type");
 	}
 	
 
@@ -162,9 +198,9 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TaskScheduler.class)) {
-			case AmaltheaPackage.TASK_SCHEDULER__SCHEDULING_ALGORITHM:
-			case AmaltheaPackage.TASK_SCHEDULER__PARENT_ASSOCIATION:
+		switch (notification.getFeatureID(SchedulerAssociation.class)) {
+			case AmaltheaPackage.SCHEDULER_ASSOCIATION__SCHEDULING_PARAMETERS:
+			case AmaltheaPackage.SCHEDULER_ASSOCIATION__PARAMETER_EXTENSIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -184,63 +220,24 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createOSEK()));
+				(AmaltheaPackage.eINSTANCE.getSchedulerAssociation_SchedulingParameters(),
+				 AmaltheaFactory.eINSTANCE.createSchedulingParameters()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createPfairPD2()));
+				(AmaltheaPackage.eINSTANCE.getSchedulerAssociation_ParameterExtensions(),
+				 AmaltheaFactory.eINSTANCE.create(AmaltheaPackage.eINSTANCE.getParameterExtension())));
+	}
 
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createPartlyPFairPD2()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createEarlyReleaseFairPD2()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createPartlyEarlyReleaseFairPD2()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createLeastLocalRemainingExecutionTimeFirst()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createEarliestDeadlineFirst()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createDeadlineMonotonic()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createRateMonotonic()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createPriorityBasedRoundRobin()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createUserSpecificSchedulingAlgorithm()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_ParentAssociation(),
-				 AmaltheaFactory.eINSTANCE.createSchedulerAssociation()));
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return AmaltheaEditPlugin.INSTANCE;
 	}
 
 }

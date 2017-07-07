@@ -1265,6 +1265,42 @@ public interface AmaltheaFactory extends EFactory {
 	Semaphore createSemaphore();
 
 	/**
+	 * Returns a new object of class '<em>Task Scheduler</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Task Scheduler</em>'.
+	 * @generated
+	 */
+	TaskScheduler createTaskScheduler();
+
+	/**
+	 * Returns a new object of class '<em>Scheduler Association</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Scheduler Association</em>'.
+	 * @generated
+	 */
+	SchedulerAssociation createSchedulerAssociation();
+
+	/**
+	 * Returns a new object of class '<em>Interrupt Controller</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Interrupt Controller</em>'.
+	 * @generated
+	 */
+	InterruptController createInterruptController();
+
+	/**
+	 * Returns a new object of class '<em>Scheduling Parameters</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Scheduling Parameters</em>'.
+	 * @generated
+	 */
+	SchedulingParameters createSchedulingParameters();
+
+	/**
 	 * Returns a new object of class '<em>OSEK</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1407,24 +1443,6 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	VendorOperatingSystem createVendorOperatingSystem();
-
-	/**
-	 * Returns a new object of class '<em>Task Scheduler</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Task Scheduler</em>'.
-	 * @generated
-	 */
-	TaskScheduler createTaskScheduler();
-
-	/**
-	 * Returns a new object of class '<em>Interrupt Controller</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Interrupt Controller</em>'.
-	 * @generated
-	 */
-	InterruptController createInterruptController();
 
 	/**
 	 * Returns a new object of class '<em>Os Instructions</em>'.

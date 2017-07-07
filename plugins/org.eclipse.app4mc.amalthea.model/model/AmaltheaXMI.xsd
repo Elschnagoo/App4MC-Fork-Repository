@@ -3040,6 +3040,8 @@ core: The core that processes the process/runnable that accesses the semaphore (
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="task" type="am:Task"/>
           <xsd:element name="scheduler" type="am:TaskScheduler"/>
+          <xsd:element name="schedulingParameters" type="am:SchedulingParameters"/>
+          <xsd:element name="parameterExtensions" type="am:ParameterExtension"/>
         </xsd:choice>
         <xsd:attribute name="priority" type="xsd:int"/>
         <xsd:attribute name="task" type="xsd:string"/>
@@ -3209,6 +3211,75 @@ schedulingUnit: The unit that performs the scheduling algorithm, this can be a h
     <xsd:annotation>
       <xsd:documentation>scheduling Algorithm: The used algorithm for scheduling
 schedulingUnit: The unit that performs the scheduling algorithm, this can be a hardware or software unit</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TaskScheduler">
+    <xsd:complexContent>
+      <xsd:extension base="am:Scheduler">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="schedulingAlgorithm" type="am:TaskSchedulingAlgorithm"/>
+          <xsd:element name="parentAssociation" type="am:SchedulerAssociation"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TaskScheduler" type="am:TaskScheduler"/>
+  <xsd:complexType name="SchedulerAssociation">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="parent" type="am:TaskScheduler"/>
+      <xsd:element name="schedulingParameters" type="am:SchedulingParameters"/>
+      <xsd:element name="parameterExtensions" type="am:ParameterExtension"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="parent" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="SchedulerAssociation" type="am:SchedulerAssociation"/>
+  <xsd:complexType name="InterruptController">
+    <xsd:complexContent>
+      <xsd:extension base="am:Scheduler">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="schedulingAlgorithm" type="am:InterruptSchedulingAlgorithm"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="InterruptController" type="am:InterruptController"/>
+  <xsd:complexType name="SchedulingParameters">
+    <xsd:annotation>
+      <xsd:documentation>Common scheduling parameters</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="minBudget" type="am:Time"/>
+      <xsd:element name="maxBudget" type="am:Time"/>
+      <xsd:element name="replenishment" type="am:Time"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="priority" type="xsd:int"/>
+  </xsd:complexType>
+  <xsd:element name="SchedulingParameters" type="am:SchedulingParameters">
+    <xsd:annotation>
+      <xsd:documentation>Common scheduling parameters</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ParameterExtension">
+    <xsd:annotation>
+      <xsd:documentation>Parameter extensions (used for scheduling algorithms)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="key" type="xsd:string" use="required"/>
+    <xsd:attribute name="value" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="ParameterExtension" type="am:ParameterExtension">
+    <xsd:annotation>
+      <xsd:documentation>Parameter extensions (used for scheduling algorithms)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="InterruptSchedulingAlgorithm">
@@ -3403,7 +3474,7 @@ these are the different scheduling algorithms</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:TaskSchedulingAlgorithm">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="algorithmParameters" type="am:AlgorithmParameter"/>
+          <xsd:element name="parameterExtensions" type="am:ParameterExtension"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -3424,23 +3495,6 @@ these are the different scheduling algorithms</xsd:documentation>
   <xsd:element name="PriorityBased" type="am:PriorityBased">
     <xsd:annotation>
       <xsd:documentation>Priority based Scheduling Algorithm for Interrupts</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="AlgorithmParameter">
-    <xsd:annotation>
-      <xsd:documentation>Parameter entry (used for scheduling algorithms)</xsd:documentation>
-    </xsd:annotation>
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="key" type="xsd:string" use="required"/>
-    <xsd:attribute name="value" type="xsd:string" use="required"/>
-  </xsd:complexType>
-  <xsd:element name="AlgorithmParameter" type="am:AlgorithmParameter">
-    <xsd:annotation>
-      <xsd:documentation>Parameter entry (used for scheduling algorithms)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="SchedulingUnit">
@@ -3544,26 +3598,6 @@ It describes an ISR that performs scheduling.</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="VendorOperatingSystem" type="am:VendorOperatingSystem"/>
-  <xsd:complexType name="TaskScheduler">
-    <xsd:complexContent>
-      <xsd:extension base="am:Scheduler">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="schedulingAlgorithm" type="am:TaskSchedulingAlgorithm"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TaskScheduler" type="am:TaskScheduler"/>
-  <xsd:complexType name="InterruptController">
-    <xsd:complexContent>
-      <xsd:extension base="am:Scheduler">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="schedulingAlgorithm" type="am:InterruptSchedulingAlgorithm"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="InterruptController" type="am:InterruptController"/>
   <xsd:complexType name="OsInstructions">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">

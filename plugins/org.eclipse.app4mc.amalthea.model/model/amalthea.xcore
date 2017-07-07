@@ -1889,14 +1889,17 @@ class TaskAllocation extends BaseObject
 {
 	refers Task[1] task
 	refers TaskScheduler[1] scheduler
-	int priority="0"	// overwrites attribute "priority" of Task
+	int priority="0"	// TODO: Remove (moved to schedulingParameters)
+	
+	contains SchedulingParameters schedulingParameters
+	contains ParameterExtension[] parameterExtensions
 }
 
 class ISRAllocation extends BaseObject
 {
 	refers ISR[1] isr
 	refers InterruptController[1] controller
-	int priority = "0"	// overwrites attribute "priority" of ISR
+	int priority = "0"	//TODO: necessary ? (add parameters ?)
 }
 
 class RunnableAllocation extends BaseObject
@@ -2031,8 +2034,60 @@ class Semaphore extends ReferableBaseObject
 abstract class Scheduler extends ReferableBaseObject
 {
 	contains SchedulingUnit schedulingUnit
-	int scheduleUnitPriority="0"
+	int scheduleUnitPriority = "0" //TODO: necessary ?
 }
+
+
+class TaskScheduler extends Scheduler
+{
+	contains TaskSchedulingAlgorithm schedulingAlgorithm
+	
+	contains SchedulerAssociation parentAssociation
+	
+	@GenModel(propertyCategory="Read only")
+	refers derived readonly TaskScheduler parentScheduler get {
+		return parentAssociation?.parent
+	}
+}
+
+class SchedulerAssociation {
+	refers TaskScheduler parent
+	
+	@GenModel(propertyCategory="Read only")
+	refers derived readonly TaskScheduler child get {
+		return eContainer as TaskScheduler
+	}
+	
+	contains SchedulingParameters schedulingParameters
+	contains ParameterExtension[] parameterExtensions
+}
+
+
+class InterruptController extends Scheduler
+{
+	contains InterruptSchedulingAlgorithm schedulingAlgorithm
+}
+
+
+/*
+ * Common scheduling parameters
+ */
+class SchedulingParameters {
+	int priority = "0"
+	contains Time minBudget
+	contains Time maxBudget
+	contains Time replenishment
+}
+
+/*
+ * Parameter extensions (used for scheduling algorithms)
+ */
+class ParameterExtension wraps java.util.Map$Entry
+{
+	String[1] key
+	String[1] value
+}
+
 
 /*
  * Interrupt Scheduling Algorithm
@@ -2138,7 +2193,7 @@ class PriorityBasedRoundRobin extends TaskSchedulingAlgorithm
  */
 class UserSpecificSchedulingAlgorithm extends TaskSchedulingAlgorithm, InterruptSchedulingAlgorithm
 {
-	contains AlgorithmParameter[] algorithmParameters
+	contains ParameterExtension[] parameterExtensions
 }
 
 /*
@@ -2146,15 +2201,6 @@ class UserSpecificSchedulingAlgorithm extends TaskSchedulingAlgorithm, Interrupt
  */
 class PriorityBased extends InterruptSchedulingAlgorithm
 {
-}
-
-/*
- * Parameter entry (used for scheduling algorithms)
- */
-class AlgorithmParameter wraps java.util.Map$Entry
-{
-	String[1] key
-	String[1] value
 }
 
 /*
@@ -2209,16 +2255,6 @@ class VendorOperatingSystem extends OperatingSystem
 	String osName
 	String vendor
 	String version
-}
-
-class TaskScheduler extends Scheduler
-{
-	contains TaskSchedulingAlgorithm schedulingAlgorithm
-}
-
-class InterruptController extends Scheduler
-{
-	contains InterruptSchedulingAlgorithm schedulingAlgorithm
 }
 
 class OsInstructions extends ReferableBaseObject
@@ -2583,7 +2619,7 @@ abstract class AbstractMemoryElement extends ReferableBaseObject, ITaggable
 
 abstract class AbstractProcess extends AbstractMemoryElement
 {
-	int priority = "0"
+	int priority = "0"		// TODO: remove
 }
 
 /*

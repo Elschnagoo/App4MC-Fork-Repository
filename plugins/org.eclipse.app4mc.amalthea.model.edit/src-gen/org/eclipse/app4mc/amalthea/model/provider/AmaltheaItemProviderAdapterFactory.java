@@ -3486,29 +3486,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AlgorithmParameterItemProvider algorithmParameterItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAlgorithmParameterAdapter() {
-		if (algorithmParameterItemProvider == null) {
-			algorithmParameterItemProvider = new AlgorithmParameterItemProvider(this);
-		}
-
-		return algorithmParameterItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SchedulingHWUnit} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3624,6 +3601,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SchedulerAssociationItemProvider schedulerAssociationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSchedulerAssociationAdapter() {
+		if (schedulerAssociationItemProvider == null) {
+			schedulerAssociationItemProvider = new SchedulerAssociationItemProvider(this);
+		}
+
+		return schedulerAssociationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InterruptController} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3644,6 +3644,52 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return interruptControllerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SchedulingParameters} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SchedulingParametersItemProvider schedulingParametersItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulingParameters}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSchedulingParametersAdapter() {
+		if (schedulingParametersItemProvider == null) {
+			schedulingParametersItemProvider = new SchedulingParametersItemProvider(this);
+		}
+
+		return schedulingParametersItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterExtensionItemProvider parameterExtensionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createParameterExtensionAdapter() {
+		if (parameterExtensionItemProvider == null) {
+			parameterExtensionItemProvider = new ParameterExtensionItemProvider(this);
+		}
+
+		return parameterExtensionItemProvider;
 	}
 
 	/**
@@ -6022,6 +6068,11 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (dataStabilityItemProvider != null) dataStabilityItemProvider.dispose();
 		if (nonAtomicDataCoherencyItemProvider != null) nonAtomicDataCoherencyItemProvider.dispose();
 		if (semaphoreItemProvider != null) semaphoreItemProvider.dispose();
+		if (taskSchedulerItemProvider != null) taskSchedulerItemProvider.dispose();
+		if (schedulerAssociationItemProvider != null) schedulerAssociationItemProvider.dispose();
+		if (interruptControllerItemProvider != null) interruptControllerItemProvider.dispose();
+		if (schedulingParametersItemProvider != null) schedulingParametersItemProvider.dispose();
+		if (parameterExtensionItemProvider != null) parameterExtensionItemProvider.dispose();
 		if (osekItemProvider != null) osekItemProvider.dispose();
 		if (pfairPD2ItemProvider != null) pfairPD2ItemProvider.dispose();
 		if (partlyPFairPD2ItemProvider != null) partlyPFairPD2ItemProvider.dispose();
@@ -6034,13 +6085,10 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (priorityBasedRoundRobinItemProvider != null) priorityBasedRoundRobinItemProvider.dispose();
 		if (userSpecificSchedulingAlgorithmItemProvider != null) userSpecificSchedulingAlgorithmItemProvider.dispose();
 		if (priorityBasedItemProvider != null) priorityBasedItemProvider.dispose();
-		if (algorithmParameterItemProvider != null) algorithmParameterItemProvider.dispose();
 		if (schedulingHWUnitItemProvider != null) schedulingHWUnitItemProvider.dispose();
 		if (schedulingSWUnitItemProvider != null) schedulingSWUnitItemProvider.dispose();
 		if (operatingSystemItemProvider != null) operatingSystemItemProvider.dispose();
 		if (vendorOperatingSystemItemProvider != null) vendorOperatingSystemItemProvider.dispose();
-		if (taskSchedulerItemProvider != null) taskSchedulerItemProvider.dispose();
-		if (interruptControllerItemProvider != null) interruptControllerItemProvider.dispose();
 		if (osInstructionsItemProvider != null) osInstructionsItemProvider.dispose();
 		if (osAPIInstructionsItemProvider != null) osAPIInstructionsItemProvider.dispose();
 		if (osISRInstructionsItemProvider != null) osISRInstructionsItemProvider.dispose();

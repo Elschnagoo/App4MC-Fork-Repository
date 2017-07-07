@@ -255,7 +255,9 @@ import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SamplingType;
 import org.eclipse.app4mc.amalthea.model.SchedType;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
+import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
+import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
@@ -501,6 +503,11 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.DATA_STABILITY: return createDataStability();
 			case AmaltheaPackage.NON_ATOMIC_DATA_COHERENCY: return createNonAtomicDataCoherency();
 			case AmaltheaPackage.SEMAPHORE: return createSemaphore();
+			case AmaltheaPackage.TASK_SCHEDULER: return createTaskScheduler();
+			case AmaltheaPackage.SCHEDULER_ASSOCIATION: return createSchedulerAssociation();
+			case AmaltheaPackage.INTERRUPT_CONTROLLER: return createInterruptController();
+			case AmaltheaPackage.SCHEDULING_PARAMETERS: return createSchedulingParameters();
+			case AmaltheaPackage.PARAMETER_EXTENSION: return (EObject)createParameterExtension();
 			case AmaltheaPackage.OSEK: return createOSEK();
 			case AmaltheaPackage.PFAIR_PD2: return createPfairPD2();
 			case AmaltheaPackage.PARTLY_PFAIR_PD2: return createPartlyPFairPD2();
@@ -513,13 +520,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.PRIORITY_BASED_ROUND_ROBIN: return createPriorityBasedRoundRobin();
 			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM: return createUserSpecificSchedulingAlgorithm();
 			case AmaltheaPackage.PRIORITY_BASED: return createPriorityBased();
-			case AmaltheaPackage.ALGORITHM_PARAMETER: return (EObject)createAlgorithmParameter();
 			case AmaltheaPackage.SCHEDULING_HW_UNIT: return createSchedulingHWUnit();
 			case AmaltheaPackage.SCHEDULING_SW_UNIT: return createSchedulingSWUnit();
 			case AmaltheaPackage.OPERATING_SYSTEM: return createOperatingSystem();
 			case AmaltheaPackage.VENDOR_OPERATING_SYSTEM: return createVendorOperatingSystem();
-			case AmaltheaPackage.TASK_SCHEDULER: return createTaskScheduler();
-			case AmaltheaPackage.INTERRUPT_CONTROLLER: return createInterruptController();
 			case AmaltheaPackage.OS_INSTRUCTIONS: return createOsInstructions();
 			case AmaltheaPackage.OS_API_INSTRUCTIONS: return createOsAPIInstructions();
 			case AmaltheaPackage.OS_ISR_INSTRUCTIONS: return createOsISRInstructions();
@@ -2219,6 +2223,56 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TaskScheduler createTaskScheduler() {
+		TaskSchedulerImpl taskScheduler = new TaskSchedulerImpl();
+		return taskScheduler;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SchedulerAssociation createSchedulerAssociation() {
+		SchedulerAssociationImpl schedulerAssociation = new SchedulerAssociationImpl();
+		return schedulerAssociation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InterruptController createInterruptController() {
+		InterruptControllerImpl interruptController = new InterruptControllerImpl();
+		return interruptController;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SchedulingParameters createSchedulingParameters() {
+		SchedulingParametersImpl schedulingParameters = new SchedulingParametersImpl();
+		return schedulingParameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<String, String> createParameterExtension() {
+		ParameterExtensionImpl parameterExtension = new ParameterExtensionImpl();
+		return parameterExtension;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OSEK createOSEK() {
 		OSEKImpl osek = new OSEKImpl();
 		return osek;
@@ -2339,16 +2393,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<String, String> createAlgorithmParameter() {
-		AlgorithmParameterImpl algorithmParameter = new AlgorithmParameterImpl();
-		return algorithmParameter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public SchedulingHWUnit createSchedulingHWUnit() {
 		SchedulingHWUnitImpl schedulingHWUnit = new SchedulingHWUnitImpl();
 		return schedulingHWUnit;
@@ -2382,26 +2426,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public VendorOperatingSystem createVendorOperatingSystem() {
 		VendorOperatingSystemImpl vendorOperatingSystem = new VendorOperatingSystemImpl();
 		return vendorOperatingSystem;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TaskScheduler createTaskScheduler() {
-		TaskSchedulerImpl taskScheduler = new TaskSchedulerImpl();
-		return taskScheduler;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InterruptController createInterruptController() {
-		InterruptControllerImpl interruptController = new InterruptControllerImpl();
-		return interruptController;
 	}
 
 	/**

@@ -271,7 +271,9 @@ import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
+import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
@@ -1993,6 +1995,44 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.TASK_SCHEDULER: {
+				TaskScheduler taskScheduler = (TaskScheduler)theEObject;
+				T1 result = caseTaskScheduler(taskScheduler);
+				if (result == null) result = caseScheduler(taskScheduler);
+				if (result == null) result = caseReferableBaseObject(taskScheduler);
+				if (result == null) result = caseIAnnotatable(taskScheduler);
+				if (result == null) result = caseIReferable(taskScheduler);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.SCHEDULER_ASSOCIATION: {
+				SchedulerAssociation schedulerAssociation = (SchedulerAssociation)theEObject;
+				T1 result = caseSchedulerAssociation(schedulerAssociation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.INTERRUPT_CONTROLLER: {
+				InterruptController interruptController = (InterruptController)theEObject;
+				T1 result = caseInterruptController(interruptController);
+				if (result == null) result = caseScheduler(interruptController);
+				if (result == null) result = caseReferableBaseObject(interruptController);
+				if (result == null) result = caseIAnnotatable(interruptController);
+				if (result == null) result = caseIReferable(interruptController);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.SCHEDULING_PARAMETERS: {
+				SchedulingParameters schedulingParameters = (SchedulingParameters)theEObject;
+				T1 result = caseSchedulingParameters(schedulingParameters);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.PARAMETER_EXTENSION: {
+				@SuppressWarnings("unchecked") Map.Entry<String, String> parameterExtension = (Map.Entry<String, String>)theEObject;
+				T1 result = caseParameterExtension(parameterExtension);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.INTERRUPT_SCHEDULING_ALGORITHM: {
 				InterruptSchedulingAlgorithm interruptSchedulingAlgorithm = (InterruptSchedulingAlgorithm)theEObject;
 				T1 result = caseInterruptSchedulingAlgorithm(interruptSchedulingAlgorithm);
@@ -2131,12 +2171,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.ALGORITHM_PARAMETER: {
-				@SuppressWarnings("unchecked") Map.Entry<String, String> algorithmParameter = (Map.Entry<String, String>)theEObject;
-				T1 result = caseAlgorithmParameter(algorithmParameter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.SCHEDULING_UNIT: {
 				SchedulingUnit schedulingUnit = (SchedulingUnit)theEObject;
 				T1 result = caseSchedulingUnit(schedulingUnit);
@@ -2175,26 +2209,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseOperatingSystem(vendorOperatingSystem);
 				if (result == null) result = caseBaseObject(vendorOperatingSystem);
 				if (result == null) result = caseIAnnotatable(vendorOperatingSystem);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.TASK_SCHEDULER: {
-				TaskScheduler taskScheduler = (TaskScheduler)theEObject;
-				T1 result = caseTaskScheduler(taskScheduler);
-				if (result == null) result = caseScheduler(taskScheduler);
-				if (result == null) result = caseReferableBaseObject(taskScheduler);
-				if (result == null) result = caseIAnnotatable(taskScheduler);
-				if (result == null) result = caseIReferable(taskScheduler);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.INTERRUPT_CONTROLLER: {
-				InterruptController interruptController = (InterruptController)theEObject;
-				T1 result = caseInterruptController(interruptController);
-				if (result == null) result = caseScheduler(interruptController);
-				if (result == null) result = caseReferableBaseObject(interruptController);
-				if (result == null) result = caseIAnnotatable(interruptController);
-				if (result == null) result = caseIReferable(interruptController);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -6020,6 +6034,81 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Task Scheduler</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Task Scheduler</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseTaskScheduler(TaskScheduler object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Scheduler Association</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Scheduler Association</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseSchedulerAssociation(SchedulerAssociation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Interrupt Controller</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Interrupt Controller</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseInterruptController(InterruptController object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Scheduling Parameters</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Scheduling Parameters</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseSchedulingParameters(SchedulingParameters object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter Extension</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter Extension</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseParameterExtension(Map.Entry<String, String> object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Interrupt Scheduling Algorithm</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -6245,21 +6334,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Algorithm Parameter</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Algorithm Parameter</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseAlgorithmParameter(Map.Entry<String, String> object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Scheduling Unit</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -6331,36 +6405,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseVendorOperatingSystem(VendorOperatingSystem object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Task Scheduler</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Task Scheduler</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseTaskScheduler(TaskScheduler object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Interrupt Controller</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Interrupt Controller</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseInterruptController(InterruptController object) {
 		return null;
 	}
 

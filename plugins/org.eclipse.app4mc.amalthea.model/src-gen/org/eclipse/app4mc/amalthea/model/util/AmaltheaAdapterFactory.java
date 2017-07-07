@@ -271,7 +271,9 @@ import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
+import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
@@ -1141,6 +1143,26 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createSchedulerAdapter();
 			}
 			@Override
+			public Adapter caseTaskScheduler(TaskScheduler object) {
+				return createTaskSchedulerAdapter();
+			}
+			@Override
+			public Adapter caseSchedulerAssociation(SchedulerAssociation object) {
+				return createSchedulerAssociationAdapter();
+			}
+			@Override
+			public Adapter caseInterruptController(InterruptController object) {
+				return createInterruptControllerAdapter();
+			}
+			@Override
+			public Adapter caseSchedulingParameters(SchedulingParameters object) {
+				return createSchedulingParametersAdapter();
+			}
+			@Override
+			public Adapter caseParameterExtension(Map.Entry<String, String> object) {
+				return createParameterExtensionAdapter();
+			}
+			@Override
 			public Adapter caseInterruptSchedulingAlgorithm(InterruptSchedulingAlgorithm object) {
 				return createInterruptSchedulingAlgorithmAdapter();
 			}
@@ -1201,10 +1223,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createPriorityBasedAdapter();
 			}
 			@Override
-			public Adapter caseAlgorithmParameter(Map.Entry<String, String> object) {
-				return createAlgorithmParameterAdapter();
-			}
-			@Override
 			public Adapter caseSchedulingUnit(SchedulingUnit object) {
 				return createSchedulingUnitAdapter();
 			}
@@ -1223,14 +1241,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseVendorOperatingSystem(VendorOperatingSystem object) {
 				return createVendorOperatingSystemAdapter();
-			}
-			@Override
-			public Adapter caseTaskScheduler(TaskScheduler object) {
-				return createTaskSchedulerAdapter();
-			}
-			@Override
-			public Adapter caseInterruptController(InterruptController object) {
-				return createInterruptControllerAdapter();
 			}
 			@Override
 			public Adapter caseOsInstructions(OsInstructions object) {
@@ -4311,6 +4321,76 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TaskScheduler <em>Task Scheduler</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.TaskScheduler
+	 * @generated
+	 */
+	public Adapter createTaskSchedulerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation <em>Scheduler Association</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.SchedulerAssociation
+	 * @generated
+	 */
+	public Adapter createSchedulerAssociationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InterruptController <em>Interrupt Controller</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.InterruptController
+	 * @generated
+	 */
+	public Adapter createInterruptControllerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SchedulingParameters <em>Scheduling Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.SchedulingParameters
+	 * @generated
+	 */
+	public Adapter createSchedulingParametersAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Parameter Extension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createParameterExtensionAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm <em>Interrupt Scheduling Algorithm</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -4521,20 +4601,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Algorithm Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.Map.Entry
-	 * @generated
-	 */
-	public Adapter createAlgorithmParameterAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SchedulingUnit <em>Scheduling Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -4601,34 +4667,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVendorOperatingSystemAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TaskScheduler <em>Task Scheduler</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.TaskScheduler
-	 * @generated
-	 */
-	public Adapter createTaskSchedulerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InterruptController <em>Interrupt Controller</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.InterruptController
-	 * @generated
-	 */
-	public Adapter createInterruptControllerAdapter() {
 		return null;
 	}
 

@@ -13,16 +13,24 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,6 +43,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getTask <em>Task</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getScheduler <em>Scheduler</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getPriority <em>Priority</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getSchedulingParameters <em>Scheduling Parameters</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getParameterExtensions <em>Parameter Extensions</em>}</li>
  * </ul>
  *
  * @generated
@@ -79,6 +89,26 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * @ordered
 	 */
 	protected int priority = PRIORITY_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSchedulingParameters() <em>Scheduling Parameters</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSchedulingParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected SchedulingParameters schedulingParameters;
+
+	/**
+	 * The cached value of the '{@link #getParameterExtensions() <em>Parameter Extensions</em>}' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameterExtensions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EMap<String, String> parameterExtensions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -201,6 +231,77 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SchedulingParameters getSchedulingParameters() {
+		return schedulingParameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSchedulingParameters(SchedulingParameters newSchedulingParameters, NotificationChain msgs) {
+		SchedulingParameters oldSchedulingParameters = schedulingParameters;
+		schedulingParameters = newSchedulingParameters;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS, oldSchedulingParameters, newSchedulingParameters);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSchedulingParameters(SchedulingParameters newSchedulingParameters) {
+		if (newSchedulingParameters != schedulingParameters) {
+			NotificationChain msgs = null;
+			if (schedulingParameters != null)
+				msgs = ((InternalEObject)schedulingParameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS, null, msgs);
+			if (newSchedulingParameters != null)
+				msgs = ((InternalEObject)newSchedulingParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS, null, msgs);
+			msgs = basicSetSchedulingParameters(newSchedulingParameters, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS, newSchedulingParameters, newSchedulingParameters));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EMap<String, String> getParameterExtensions() {
+		if (parameterExtensions == null) {
+			parameterExtensions = new EcoreEMap<String,String>(AmaltheaPackage.eINSTANCE.getParameterExtension(), ParameterExtensionImpl.class, this, AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS);
+		}
+		return parameterExtensions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
+				return basicSetSchedulingParameters(null, msgs);
+			case AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS:
+				return ((InternalEList<?>)getParameterExtensions()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -212,6 +313,11 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 				return basicGetScheduler();
 			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
 				return getPriority();
+			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
+				return getSchedulingParameters();
+			case AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS:
+				if (coreType) return getParameterExtensions();
+				else return getParameterExtensions().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -232,6 +338,12 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 				return;
 			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
 				setPriority((Integer)newValue);
+				return;
+			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
+				setSchedulingParameters((SchedulingParameters)newValue);
+				return;
+			case AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS:
+				((EStructuralFeature.Setting)getParameterExtensions()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -254,6 +366,12 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
 				setPriority(PRIORITY_EDEFAULT);
 				return;
+			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
+				setSchedulingParameters((SchedulingParameters)null);
+				return;
+			case AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS:
+				getParameterExtensions().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -272,6 +390,10 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 				return scheduler != null;
 			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
 				return priority != PRIORITY_EDEFAULT;
+			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
+				return schedulingParameters != null;
+			case AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS:
+				return parameterExtensions != null && !parameterExtensions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

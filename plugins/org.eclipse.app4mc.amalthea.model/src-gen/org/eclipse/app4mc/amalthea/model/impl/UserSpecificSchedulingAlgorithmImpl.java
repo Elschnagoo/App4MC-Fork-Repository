@@ -34,21 +34,21 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.UserSpecificSchedulingAlgorithmImpl#getAlgorithmParameters <em>Algorithm Parameters</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.UserSpecificSchedulingAlgorithmImpl#getParameterExtensions <em>Parameter Extensions</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class UserSpecificSchedulingAlgorithmImpl extends TaskSchedulingAlgorithmImpl implements UserSpecificSchedulingAlgorithm {
 	/**
-	 * The cached value of the '{@link #getAlgorithmParameters() <em>Algorithm Parameters</em>}' map.
+	 * The cached value of the '{@link #getParameterExtensions() <em>Parameter Extensions</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAlgorithmParameters()
+	 * @see #getParameterExtensions()
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, String> algorithmParameters;
+	protected EMap<String, String> parameterExtensions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,11 +74,11 @@ public class UserSpecificSchedulingAlgorithmImpl extends TaskSchedulingAlgorithm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<String, String> getAlgorithmParameters() {
-		if (algorithmParameters == null) {
-			algorithmParameters = new EcoreEMap<String,String>(AmaltheaPackage.eINSTANCE.getAlgorithmParameter(), AlgorithmParameterImpl.class, this, AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__ALGORITHM_PARAMETERS);
+	public EMap<String, String> getParameterExtensions() {
+		if (parameterExtensions == null) {
+			parameterExtensions = new EcoreEMap<String,String>(AmaltheaPackage.eINSTANCE.getParameterExtension(), ParameterExtensionImpl.class, this, AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__PARAMETER_EXTENSIONS);
 		}
-		return algorithmParameters;
+		return parameterExtensions;
 	}
 
 	/**
@@ -89,8 +89,8 @@ public class UserSpecificSchedulingAlgorithmImpl extends TaskSchedulingAlgorithm
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__ALGORITHM_PARAMETERS:
-				return ((InternalEList<?>)getAlgorithmParameters()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__PARAMETER_EXTENSIONS:
+				return ((InternalEList<?>)getParameterExtensions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -103,9 +103,9 @@ public class UserSpecificSchedulingAlgorithmImpl extends TaskSchedulingAlgorithm
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__ALGORITHM_PARAMETERS:
-				if (coreType) return getAlgorithmParameters();
-				else return getAlgorithmParameters().map();
+			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__PARAMETER_EXTENSIONS:
+				if (coreType) return getParameterExtensions();
+				else return getParameterExtensions().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -118,8 +118,8 @@ public class UserSpecificSchedulingAlgorithmImpl extends TaskSchedulingAlgorithm
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__ALGORITHM_PARAMETERS:
-				((EStructuralFeature.Setting)getAlgorithmParameters()).set(newValue);
+			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__PARAMETER_EXTENSIONS:
+				((EStructuralFeature.Setting)getParameterExtensions()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -133,8 +133,8 @@ public class UserSpecificSchedulingAlgorithmImpl extends TaskSchedulingAlgorithm
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__ALGORITHM_PARAMETERS:
-				getAlgorithmParameters().clear();
+			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__PARAMETER_EXTENSIONS:
+				getParameterExtensions().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -148,8 +148,8 @@ public class UserSpecificSchedulingAlgorithmImpl extends TaskSchedulingAlgorithm
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__ALGORITHM_PARAMETERS:
-				return algorithmParameters != null && !algorithmParameters.isEmpty();
+			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__PARAMETER_EXTENSIONS:
+				return parameterExtensions != null && !parameterExtensions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -28,19 +28,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Algorithm Parameter</b></em>'.
+ * An implementation of the model object '<em><b>Parameter Extension</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AlgorithmParameterImpl#getTypedKey <em>Key</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AlgorithmParameterImpl#getTypedValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ParameterExtensionImpl#getTypedKey <em>Key</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ParameterExtensionImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AlgorithmParameterImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<String,String> {
+public class ParameterExtensionImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<String,String> {
 	/**
 	 * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -86,7 +86,7 @@ public class AlgorithmParameterImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AlgorithmParameterImpl() {
+	protected ParameterExtensionImpl() {
 		super();
 	}
 
@@ -97,7 +97,7 @@ public class AlgorithmParameterImpl extends AmaltheaExtendedEObjectImpl implemen
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getAlgorithmParameter();
+		return AmaltheaPackage.eINSTANCE.getParameterExtension();
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class AlgorithmParameterImpl extends AmaltheaExtendedEObjectImpl implemen
 		String oldKey = key;
 		key = newKey;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ALGORITHM_PARAMETER__KEY, oldKey, key));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PARAMETER_EXTENSION__KEY, oldKey, key));
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class AlgorithmParameterImpl extends AmaltheaExtendedEObjectImpl implemen
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ALGORITHM_PARAMETER__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PARAMETER_EXTENSION__VALUE, oldValue, value));
 	}
 
 	/**
@@ -150,9 +150,9 @@ public class AlgorithmParameterImpl extends AmaltheaExtendedEObjectImpl implemen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.ALGORITHM_PARAMETER__KEY:
+			case AmaltheaPackage.PARAMETER_EXTENSION__KEY:
 				return getTypedKey();
-			case AmaltheaPackage.ALGORITHM_PARAMETER__VALUE:
+			case AmaltheaPackage.PARAMETER_EXTENSION__VALUE:
 				return getTypedValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -166,10 +166,10 @@ public class AlgorithmParameterImpl extends AmaltheaExtendedEObjectImpl implemen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.ALGORITHM_PARAMETER__KEY:
+			case AmaltheaPackage.PARAMETER_EXTENSION__KEY:
 				setTypedKey((String)newValue);
 				return;
-			case AmaltheaPackage.ALGORITHM_PARAMETER__VALUE:
+			case AmaltheaPackage.PARAMETER_EXTENSION__VALUE:
 				setTypedValue((String)newValue);
 				return;
 		}
@@ -184,10 +184,10 @@ public class AlgorithmParameterImpl extends AmaltheaExtendedEObjectImpl implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.ALGORITHM_PARAMETER__KEY:
+			case AmaltheaPackage.PARAMETER_EXTENSION__KEY:
 				setTypedKey(KEY_EDEFAULT);
 				return;
-			case AmaltheaPackage.ALGORITHM_PARAMETER__VALUE:
+			case AmaltheaPackage.PARAMETER_EXTENSION__VALUE:
 				setTypedValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -202,9 +202,9 @@ public class AlgorithmParameterImpl extends AmaltheaExtendedEObjectImpl implemen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.ALGORITHM_PARAMETER__KEY:
+			case AmaltheaPackage.PARAMETER_EXTENSION__KEY:
 				return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
-			case AmaltheaPackage.ALGORITHM_PARAMETER__VALUE:
+			case AmaltheaPackage.PARAMETER_EXTENSION__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
@@ -306,4 +306,4 @@ public class AlgorithmParameterImpl extends AmaltheaExtendedEObjectImpl implemen
 		return container == null ? null : (EMap<String, String>)container.eGet(eContainmentFeature());
 	}
 
-} //AlgorithmParameterImpl
+} //ParameterExtensionImpl

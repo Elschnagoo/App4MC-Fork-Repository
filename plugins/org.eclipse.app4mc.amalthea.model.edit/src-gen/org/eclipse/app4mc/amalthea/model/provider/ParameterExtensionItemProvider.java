@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -15,30 +15,48 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
-import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+
+import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.AbstractProcess} object.
+ * This is the item provider adapter for a {@link java.util.Map.Entry} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class AbstractProcessItemProvider extends AbstractMemoryElementItemProvider {
+public class ParameterExtensionItemProvider 
+	extends AmaltheaExtendedItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractProcessItemProvider(AdapterFactory adapterFactory) {
+	public ParameterExtensionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -53,31 +71,65 @@ public class AbstractProcessItemProvider extends AbstractMemoryElementItemProvid
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPriorityPropertyDescriptor(object);
+			addKeyPropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Priority feature.
+	 * This adds a property descriptor for the Key feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPriorityPropertyDescriptor(Object object) {
+	protected void addKeyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AbstractProcess_priority_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractProcess_priority_feature", "_UI_AbstractProcess_type"),
-				 AmaltheaPackage.eINSTANCE.getAbstractProcess_Priority(),
+				 getString("_UI_ParameterExtension_key_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterExtension_key_feature", "_UI_ParameterExtension_type"),
+				 AmaltheaPackage.eINSTANCE.getParameterExtension_Key(),
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ParameterExtension_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterExtension_value_feature", "_UI_ParameterExtension_type"),
+				 AmaltheaPackage.eINSTANCE.getParameterExtension_Value(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns ParameterExtension.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object getImage(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ParameterExtension"));
 	}
 
 	/**
@@ -98,10 +150,8 @@ public class AbstractProcessItemProvider extends AbstractMemoryElementItemProvid
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((AbstractProcess)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_AbstractProcess_type") :
-			getString("_UI_AbstractProcess_type") + " " + label;
+		Map.Entry<?, ?> parameterExtension = (Map.Entry<?, ?>)object;
+		return "" + parameterExtension.getKey() + " -> " + parameterExtension.getValue();
 	}
 	
 
@@ -116,8 +166,9 @@ public class AbstractProcessItemProvider extends AbstractMemoryElementItemProvid
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(AbstractProcess.class)) {
-			case AmaltheaPackage.ABSTRACT_PROCESS__PRIORITY:
+		switch (notification.getFeatureID(Map.Entry.class)) {
+			case AmaltheaPackage.PARAMETER_EXTENSION__KEY:
+			case AmaltheaPackage.PARAMETER_EXTENSION__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -134,6 +185,17 @@ public class AbstractProcessItemProvider extends AbstractMemoryElementItemProvid
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return AmaltheaEditPlugin.INSTANCE;
 	}
 
 }

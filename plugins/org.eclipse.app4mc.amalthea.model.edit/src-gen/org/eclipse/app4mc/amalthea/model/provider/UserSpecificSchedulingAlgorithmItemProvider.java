@@ -72,7 +72,7 @@ public class UserSpecificSchedulingAlgorithmItemProvider extends TaskSchedulingA
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getUserSpecificSchedulingAlgorithm_AlgorithmParameters());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getUserSpecificSchedulingAlgorithm_ParameterExtensions());
 		}
 		return childrenFeatures;
 	}
@@ -135,7 +135,7 @@ public class UserSpecificSchedulingAlgorithmItemProvider extends TaskSchedulingA
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(UserSpecificSchedulingAlgorithm.class)) {
-			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__ALGORITHM_PARAMETERS:
+			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__PARAMETER_EXTENSIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -155,8 +155,8 @@ public class UserSpecificSchedulingAlgorithmItemProvider extends TaskSchedulingA
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getUserSpecificSchedulingAlgorithm_AlgorithmParameters(),
-				 AmaltheaFactory.eINSTANCE.create(AmaltheaPackage.eINSTANCE.getAlgorithmParameter())));
+				(AmaltheaPackage.eINSTANCE.getUserSpecificSchedulingAlgorithm_ParameterExtensions(),
+				 AmaltheaFactory.eINSTANCE.create(AmaltheaPackage.eINSTANCE.getParameterExtension())));
 	}
 
 }

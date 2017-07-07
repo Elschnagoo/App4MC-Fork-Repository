@@ -23,6 +23,8 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getSchedulingAlgorithm <em>Scheduling Algorithm</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getParentAssociation <em>Parent Association</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getParentScheduler <em>Parent Scheduler</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskScheduler()
@@ -55,5 +57,47 @@ public interface TaskScheduler extends Scheduler {
 	 * @generated
 	 */
 	void setSchedulingAlgorithm(TaskSchedulingAlgorithm value);
+
+	/**
+	 * Returns the value of the '<em><b>Parent Association</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parent Association</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parent Association</em>' containment reference.
+	 * @see #setParentAssociation(SchedulerAssociation)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskScheduler_ParentAssociation()
+	 * @model containment="true"
+	 * @generated
+	 */
+	SchedulerAssociation getParentAssociation();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getParentAssociation <em>Parent Association</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parent Association</em>' containment reference.
+	 * @see #getParentAssociation()
+	 * @generated
+	 */
+	void setParentAssociation(SchedulerAssociation value);
+
+	/**
+	 * Returns the value of the '<em><b>Parent Scheduler</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parent Scheduler</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parent Scheduler</em>' reference.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskScheduler_ParentScheduler()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='<%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%> _parentAssociation = this.getParentAssociation();\n<%org.eclipse.app4mc.amalthea.model.TaskScheduler%> _parent = null;\nif (_parentAssociation!=null)\n{\n\t_parent=_parentAssociation.getParent();\n}\nreturn _parent;'"
+	 * @generated
+	 */
+	TaskScheduler getParentScheduler();
 
 } // TaskScheduler

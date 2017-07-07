@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.EMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm#getAlgorithmParameters <em>Algorithm Parameters</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm#getParameterExtensions <em>Parameter Extensions</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getUserSpecificSchedulingAlgorithm()
@@ -36,20 +36,20 @@ import org.eclipse.emf.common.util.EMap;
  */
 public interface UserSpecificSchedulingAlgorithm extends TaskSchedulingAlgorithm, InterruptSchedulingAlgorithm {
 	/**
-	 * Returns the value of the '<em><b>Algorithm Parameters</b></em>' map.
+	 * Returns the value of the '<em><b>Parameter Extensions</b></em>' map.
 	 * The key is of type {@link java.lang.String},
 	 * and the value is of type {@link java.lang.String},
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Algorithm Parameters</em>' map isn't clear,
+	 * If the meaning of the '<em>Parameter Extensions</em>' map isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Algorithm Parameters</em>' map.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getUserSpecificSchedulingAlgorithm_AlgorithmParameters()
-	 * @model mapType="org.eclipse.app4mc.amalthea.model.AlgorithmParameter<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+	 * @return the value of the '<em>Parameter Extensions</em>' map.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getUserSpecificSchedulingAlgorithm_ParameterExtensions()
+	 * @model mapType="org.eclipse.app4mc.amalthea.model.ParameterExtension<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
 	 * @generated
 	 */
-	EMap<String, String> getAlgorithmParameters();
+	EMap<String, String> getParameterExtensions();
 
 } // UserSpecificSchedulingAlgorithm

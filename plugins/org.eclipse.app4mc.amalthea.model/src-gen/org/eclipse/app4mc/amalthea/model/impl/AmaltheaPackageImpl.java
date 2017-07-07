@@ -309,7 +309,9 @@ import org.eclipse.app4mc.amalthea.model.SamplingType;
 import org.eclipse.app4mc.amalthea.model.SchedType;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
+import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
 import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
@@ -1708,6 +1710,41 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass taskSchedulerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass schedulerAssociationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass interruptControllerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass schedulingParametersEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass parameterExtensionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass interruptSchedulingAlgorithmEClass = null;
 
 	/**
@@ -1813,13 +1850,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass algorithmParameterEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass schedulingUnitEClass = null;
 
 	/**
@@ -1849,20 +1879,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass vendorOperatingSystemEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass taskSchedulerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass interruptControllerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -7485,6 +7501,24 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTaskAllocation_SchedulingParameters() {
+		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTaskAllocation_ParameterExtensions() {
+		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getISRAllocation() {
 		return isrAllocationEClass;
 	}
@@ -7881,6 +7915,177 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTaskScheduler() {
+		return taskSchedulerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTaskScheduler_SchedulingAlgorithm() {
+		return (EReference)taskSchedulerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTaskScheduler_ParentAssociation() {
+		return (EReference)taskSchedulerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTaskScheduler_ParentScheduler() {
+		return (EReference)taskSchedulerEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSchedulerAssociation() {
+		return schedulerAssociationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSchedulerAssociation_Parent() {
+		return (EReference)schedulerAssociationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSchedulerAssociation_Child() {
+		return (EReference)schedulerAssociationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSchedulerAssociation_SchedulingParameters() {
+		return (EReference)schedulerAssociationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSchedulerAssociation_ParameterExtensions() {
+		return (EReference)schedulerAssociationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInterruptController() {
+		return interruptControllerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInterruptController_SchedulingAlgorithm() {
+		return (EReference)interruptControllerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSchedulingParameters() {
+		return schedulingParametersEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSchedulingParameters_Priority() {
+		return (EAttribute)schedulingParametersEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSchedulingParameters_MinBudget() {
+		return (EReference)schedulingParametersEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSchedulingParameters_MaxBudget() {
+		return (EReference)schedulingParametersEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSchedulingParameters_Replenishment() {
+		return (EReference)schedulingParametersEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getParameterExtension() {
+		return parameterExtensionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParameterExtension_Key() {
+		return (EAttribute)parameterExtensionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParameterExtension_Value() {
+		return (EAttribute)parameterExtensionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInterruptSchedulingAlgorithm() {
 		return interruptSchedulingAlgorithmEClass;
 	}
@@ -8016,7 +8221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getUserSpecificSchedulingAlgorithm_AlgorithmParameters() {
+	public EReference getUserSpecificSchedulingAlgorithm_ParameterExtensions() {
 		return (EReference)userSpecificSchedulingAlgorithmEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -8027,33 +8232,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EClass getPriorityBased() {
 		return priorityBasedEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAlgorithmParameter() {
-		return algorithmParameterEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAlgorithmParameter_Key() {
-		return (EAttribute)algorithmParameterEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAlgorithmParameter_Value() {
-		return (EAttribute)algorithmParameterEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -8207,42 +8385,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EAttribute getVendorOperatingSystem_Version() {
 		return (EAttribute)vendorOperatingSystemEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTaskScheduler() {
-		return taskSchedulerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTaskScheduler_SchedulingAlgorithm() {
-		return (EReference)taskSchedulerEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getInterruptController() {
-		return interruptControllerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getInterruptController_SchedulingAlgorithm() {
-		return (EReference)interruptControllerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -12516,6 +12658,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__TASK);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__SCHEDULER);
 		createEAttribute(taskAllocationEClass, TASK_ALLOCATION__PRIORITY);
+		createEReference(taskAllocationEClass, TASK_ALLOCATION__SCHEDULING_PARAMETERS);
+		createEReference(taskAllocationEClass, TASK_ALLOCATION__PARAMETER_EXTENSIONS);
 
 		isrAllocationEClass = createEClass(ISR_ALLOCATION);
 		createEReference(isrAllocationEClass, ISR_ALLOCATION__ISR);
@@ -12571,6 +12715,30 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(schedulerEClass, SCHEDULER__SCHEDULING_UNIT);
 		createEAttribute(schedulerEClass, SCHEDULER__SCHEDULE_UNIT_PRIORITY);
 
+		taskSchedulerEClass = createEClass(TASK_SCHEDULER);
+		createEReference(taskSchedulerEClass, TASK_SCHEDULER__SCHEDULING_ALGORITHM);
+		createEReference(taskSchedulerEClass, TASK_SCHEDULER__PARENT_ASSOCIATION);
+		createEReference(taskSchedulerEClass, TASK_SCHEDULER__PARENT_SCHEDULER);
+
+		schedulerAssociationEClass = createEClass(SCHEDULER_ASSOCIATION);
+		createEReference(schedulerAssociationEClass, SCHEDULER_ASSOCIATION__PARENT);
+		createEReference(schedulerAssociationEClass, SCHEDULER_ASSOCIATION__CHILD);
+		createEReference(schedulerAssociationEClass, SCHEDULER_ASSOCIATION__SCHEDULING_PARAMETERS);
+		createEReference(schedulerAssociationEClass, SCHEDULER_ASSOCIATION__PARAMETER_EXTENSIONS);
+
+		interruptControllerEClass = createEClass(INTERRUPT_CONTROLLER);
+		createEReference(interruptControllerEClass, INTERRUPT_CONTROLLER__SCHEDULING_ALGORITHM);
+
+		schedulingParametersEClass = createEClass(SCHEDULING_PARAMETERS);
+		createEAttribute(schedulingParametersEClass, SCHEDULING_PARAMETERS__PRIORITY);
+		createEReference(schedulingParametersEClass, SCHEDULING_PARAMETERS__MIN_BUDGET);
+		createEReference(schedulingParametersEClass, SCHEDULING_PARAMETERS__MAX_BUDGET);
+		createEReference(schedulingParametersEClass, SCHEDULING_PARAMETERS__REPLENISHMENT);
+
+		parameterExtensionEClass = createEClass(PARAMETER_EXTENSION);
+		createEAttribute(parameterExtensionEClass, PARAMETER_EXTENSION__KEY);
+		createEAttribute(parameterExtensionEClass, PARAMETER_EXTENSION__VALUE);
+
 		interruptSchedulingAlgorithmEClass = createEClass(INTERRUPT_SCHEDULING_ALGORITHM);
 
 		taskSchedulingAlgorithmEClass = createEClass(TASK_SCHEDULING_ALGORITHM);
@@ -12599,13 +12767,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		priorityBasedRoundRobinEClass = createEClass(PRIORITY_BASED_ROUND_ROBIN);
 
 		userSpecificSchedulingAlgorithmEClass = createEClass(USER_SPECIFIC_SCHEDULING_ALGORITHM);
-		createEReference(userSpecificSchedulingAlgorithmEClass, USER_SPECIFIC_SCHEDULING_ALGORITHM__ALGORITHM_PARAMETERS);
+		createEReference(userSpecificSchedulingAlgorithmEClass, USER_SPECIFIC_SCHEDULING_ALGORITHM__PARAMETER_EXTENSIONS);
 
 		priorityBasedEClass = createEClass(PRIORITY_BASED);
-
-		algorithmParameterEClass = createEClass(ALGORITHM_PARAMETER);
-		createEAttribute(algorithmParameterEClass, ALGORITHM_PARAMETER__KEY);
-		createEAttribute(algorithmParameterEClass, ALGORITHM_PARAMETER__VALUE);
 
 		schedulingUnitEClass = createEClass(SCHEDULING_UNIT);
 
@@ -12628,12 +12792,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(vendorOperatingSystemEClass, VENDOR_OPERATING_SYSTEM__OS_NAME);
 		createEAttribute(vendorOperatingSystemEClass, VENDOR_OPERATING_SYSTEM__VENDOR);
 		createEAttribute(vendorOperatingSystemEClass, VENDOR_OPERATING_SYSTEM__VERSION);
-
-		taskSchedulerEClass = createEClass(TASK_SCHEDULER);
-		createEReference(taskSchedulerEClass, TASK_SCHEDULER__SCHEDULING_ALGORITHM);
-
-		interruptControllerEClass = createEClass(INTERRUPT_CONTROLLER);
-		createEReference(interruptControllerEClass, INTERRUPT_CONTROLLER__SCHEDULING_ALGORITHM);
 
 		osInstructionsEClass = createEClass(OS_INSTRUCTIONS);
 		createEReference(osInstructionsEClass, OS_INSTRUCTIONS__API_OVERHEAD);
@@ -13399,6 +13557,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		osDataConsistencyEClass.getESuperTypes().add(this.getBaseObject());
 		semaphoreEClass.getESuperTypes().add(this.getReferableBaseObject());
 		schedulerEClass.getESuperTypes().add(this.getReferableBaseObject());
+		taskSchedulerEClass.getESuperTypes().add(this.getScheduler());
+		interruptControllerEClass.getESuperTypes().add(this.getScheduler());
 		interruptSchedulingAlgorithmEClass.getESuperTypes().add(this.getBaseObject());
 		taskSchedulingAlgorithmEClass.getESuperTypes().add(this.getBaseObject());
 		osekEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
@@ -13421,8 +13581,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		schedulingSWUnitEClass.getESuperTypes().add(this.getBaseObject());
 		operatingSystemEClass.getESuperTypes().add(this.getBaseObject());
 		vendorOperatingSystemEClass.getESuperTypes().add(this.getOperatingSystem());
-		taskSchedulerEClass.getESuperTypes().add(this.getScheduler());
-		interruptControllerEClass.getESuperTypes().add(this.getScheduler());
 		osInstructionsEClass.getESuperTypes().add(this.getReferableBaseObject());
 		osAPIInstructionsEClass.getESuperTypes().add(this.getBaseObject());
 		osISRInstructionsEClass.getESuperTypes().add(this.getBaseObject());
@@ -14264,6 +14422,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getTaskAllocation_Task(), this.getTask(), null, "task", null, 1, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_Scheduler(), this.getTaskScheduler(), null, "scheduler", null, 1, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTaskAllocation_Priority(), theEcorePackage.getEInt(), "priority", "0", 0, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTaskAllocation_SchedulingParameters(), this.getSchedulingParameters(), null, "schedulingParameters", null, 0, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTaskAllocation_ParameterExtensions(), this.getParameterExtension(), null, "parameterExtensions", null, 0, -1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(isrAllocationEClass, ISRAllocation.class, "ISRAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getISRAllocation_Isr(), this.getISR(), null, "isr", null, 1, 1, ISRAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14319,6 +14479,30 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getScheduler_SchedulingUnit(), this.getSchedulingUnit(), null, "schedulingUnit", null, 0, 1, Scheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScheduler_ScheduleUnitPriority(), theEcorePackage.getEInt(), "scheduleUnitPriority", "0", 0, 1, Scheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(taskSchedulerEClass, TaskScheduler.class, "TaskScheduler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTaskScheduler_SchedulingAlgorithm(), this.getTaskSchedulingAlgorithm(), null, "schedulingAlgorithm", null, 0, 1, TaskScheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTaskScheduler_ParentAssociation(), this.getSchedulerAssociation(), null, "parentAssociation", null, 0, 1, TaskScheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTaskScheduler_ParentScheduler(), this.getTaskScheduler(), null, "parentScheduler", null, 0, 1, TaskScheduler.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(schedulerAssociationEClass, SchedulerAssociation.class, "SchedulerAssociation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSchedulerAssociation_Parent(), this.getTaskScheduler(), null, "parent", null, 0, 1, SchedulerAssociation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSchedulerAssociation_Child(), this.getTaskScheduler(), null, "child", null, 0, 1, SchedulerAssociation.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getSchedulerAssociation_SchedulingParameters(), this.getSchedulingParameters(), null, "schedulingParameters", null, 0, 1, SchedulerAssociation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSchedulerAssociation_ParameterExtensions(), this.getParameterExtension(), null, "parameterExtensions", null, 0, -1, SchedulerAssociation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(interruptControllerEClass, InterruptController.class, "InterruptController", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInterruptController_SchedulingAlgorithm(), this.getInterruptSchedulingAlgorithm(), null, "schedulingAlgorithm", null, 0, 1, InterruptController.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(schedulingParametersEClass, SchedulingParameters.class, "SchedulingParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSchedulingParameters_Priority(), theEcorePackage.getEInt(), "priority", "0", 0, 1, SchedulingParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSchedulingParameters_MinBudget(), this.getTime(), null, "minBudget", null, 0, 1, SchedulingParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSchedulingParameters_MaxBudget(), this.getTime(), null, "maxBudget", null, 0, 1, SchedulingParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSchedulingParameters_Replenishment(), this.getTime(), null, "replenishment", null, 0, 1, SchedulingParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(parameterExtensionEClass, Map.Entry.class, "ParameterExtension", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParameterExtension_Key(), theEcorePackage.getEString(), "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameterExtension_Value(), theEcorePackage.getEString(), "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(interruptSchedulingAlgorithmEClass, InterruptSchedulingAlgorithm.class, "InterruptSchedulingAlgorithm", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(taskSchedulingAlgorithmEClass, TaskSchedulingAlgorithm.class, "TaskSchedulingAlgorithm", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -14347,13 +14531,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(priorityBasedRoundRobinEClass, PriorityBasedRoundRobin.class, "PriorityBasedRoundRobin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(userSpecificSchedulingAlgorithmEClass, UserSpecificSchedulingAlgorithm.class, "UserSpecificSchedulingAlgorithm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getUserSpecificSchedulingAlgorithm_AlgorithmParameters(), this.getAlgorithmParameter(), null, "algorithmParameters", null, 0, -1, UserSpecificSchedulingAlgorithm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUserSpecificSchedulingAlgorithm_ParameterExtensions(), this.getParameterExtension(), null, "parameterExtensions", null, 0, -1, UserSpecificSchedulingAlgorithm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(priorityBasedEClass, PriorityBased.class, "PriorityBased", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(algorithmParameterEClass, Map.Entry.class, "AlgorithmParameter", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAlgorithmParameter_Key(), theEcorePackage.getEString(), "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAlgorithmParameter_Value(), theEcorePackage.getEString(), "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(schedulingUnitEClass, SchedulingUnit.class, "SchedulingUnit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -14376,12 +14556,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getVendorOperatingSystem_OsName(), theEcorePackage.getEString(), "osName", null, 0, 1, VendorOperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVendorOperatingSystem_Vendor(), theEcorePackage.getEString(), "vendor", null, 0, 1, VendorOperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVendorOperatingSystem_Version(), theEcorePackage.getEString(), "version", null, 0, 1, VendorOperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(taskSchedulerEClass, TaskScheduler.class, "TaskScheduler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTaskScheduler_SchedulingAlgorithm(), this.getTaskSchedulingAlgorithm(), null, "schedulingAlgorithm", null, 0, 1, TaskScheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(interruptControllerEClass, InterruptController.class, "InterruptController", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInterruptController_SchedulingAlgorithm(), this.getInterruptSchedulingAlgorithm(), null, "schedulingAlgorithm", null, 0, 1, InterruptController.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(osInstructionsEClass, OsInstructions.class, "OsInstructions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOsInstructions_ApiOverhead(), this.getOsAPIInstructions(), null, "apiOverhead", null, 0, 1, OsInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
