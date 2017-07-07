@@ -35,6 +35,7 @@ import org.eclipse.app4mc.multicore.partitioning.utils.CheckLabels;
 import org.eclipse.app4mc.multicore.partitioning.utils.CycleElimination;
 import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
 import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
+import org.eclipse.app4mc.multicore.partitioning.utils.RemoveGraphEdges;
 import org.eclipse.app4mc.multicore.partitioning.utils.RunnableCorePairingToPP;
 import org.eclipse.app4mc.multicore.partitioning.utils.TagToPP;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -52,6 +53,7 @@ public class PrePartitioning {
 
 	private static boolean TAGGROUPS = true;
 	private static boolean COREGROUPS = false;
+	private static boolean APSCONSID = true;
 
 	public PrePartitioning(final IPreferenceStore store) {
 		setActivationGroups(store.getBoolean(IParConstants.PRE_ACTIVATION));
@@ -85,10 +87,12 @@ public class PrePartitioning {
 
 
 	/**
-	 * PrePartitioning performs -affinityConstraint Runnable cumulation-, -activation grouping-, -global graph
-	 * grouping- and -cycle elimination- based on the class' parameters; the prepartitioned model will be
-	 * saved along a separate file without affinitycontraints (these are replaced by cumulated runnables, but
-	 * later on resolved into the original runnables after partitioning)
+	 * PrePartitioning performs -affinityConstraint Runnable cumulation-,
+	 * -activation grouping-, -global graph grouping- and -cycle elimination-
+	 * based on the class' parameters; the prepartitioned model will be saved
+	 * along a separate file without affinitycontraints (these are replaced by
+	 * cumulated runnables, but later on resolved into the original runnables
+	 * after partitioning)
 	 *
 	 * @param modelCopy
 	 * @param monitor
@@ -154,9 +158,8 @@ public class PrePartitioning {
 			final CheckLabels cl = new CheckLabels();
 			cl.setSwm(modelCopy.getSwModel());
 
-			// results in unresolved references
 			if (modelCopy.getConstraintsModel() != null) {
-				modelCopy.getConstraintsModel().getAffinityConstraints().clear();
+				// modelCopy.getConstraintsModel().getAffinityConstraints().clear();
 				cl.setCMModel(modelCopy.getConstraintsModel());
 			}
 			cl.run(monitor);
@@ -166,12 +169,12 @@ public class PrePartitioning {
 						null);
 				return null;
 			}
-			if (null == modelCopy.getConstraintsModel()){
+			if (null == modelCopy.getConstraintsModel()) {
 				modelCopy.setConstraintsModel(cl.getCMModel());
 			}
-			else if (0 == modelCopy.getConstraintsModel().getRunnableSequencingConstraints().size()){
-			modelCopy.getConstraintsModel().getRunnableSequencingConstraints()
-					.addAll(cl.getCMModel().getRunnableSequencingConstraints());
+			else if (0 == modelCopy.getConstraintsModel().getRunnableSequencingConstraints().size()) {
+				modelCopy.getConstraintsModel().getRunnableSequencingConstraints()
+						.addAll(cl.getCMModel().getRunnableSequencingConstraints());
 			}
 			PartLog.getInstance().log("Graph creation (constraint model) finished.");
 		}
@@ -179,6 +182,11 @@ public class PrePartitioning {
 			PartLog.getInstance().log("ConstraintsModel already existing.");
 		}
 
+
+		if (APSCONSID) {
+			new RemoveGraphEdges().removeAPSRSCs(modelCopy.getConstraintsModel().getRunnableSequencingConstraints(),
+					modelCopy.getSwModel());
+		}
 		assert null != modelCopy.getSwModel();
 		assert null != modelCopy.getConstraintsModel().getRunnableSequencingConstraints();
 
@@ -223,7 +231,8 @@ public class PrePartitioning {
 	}
 
 	/**
-	 * combining runnables via affinity constraints @param, @return AmaltheaModel
+	 * combining runnables via affinity constraints @param, @return
+	 * AmaltheaModel
 	 */
 	private Amalthea mergeRunnablesFromAffntyCnstrnts(final Amalthea modelCopy) {
 		if (modelCopy.getConstraintsModel() != null && modelCopy.getConstraintsModel().getAffinityConstraints() != null
