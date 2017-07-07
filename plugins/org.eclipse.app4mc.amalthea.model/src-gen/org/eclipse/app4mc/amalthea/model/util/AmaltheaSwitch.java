@@ -72,7 +72,6 @@ import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
@@ -271,6 +270,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
@@ -1900,11 +1900,11 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.CORE_ALLOCATION: {
-				CoreAllocation coreAllocation = (CoreAllocation)theEObject;
-				T1 result = caseCoreAllocation(coreAllocation);
-				if (result == null) result = caseBaseObject(coreAllocation);
-				if (result == null) result = caseIAnnotatable(coreAllocation);
+			case AmaltheaPackage.SCHEDULER_ALLOCATION: {
+				SchedulerAllocation schedulerAllocation = (SchedulerAllocation)theEObject;
+				T1 result = caseSchedulerAllocation(schedulerAllocation);
+				if (result == null) result = caseBaseObject(schedulerAllocation);
+				if (result == null) result = caseIAnnotatable(schedulerAllocation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -5854,17 +5854,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Core Allocation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Scheduler Allocation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Core Allocation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Scheduler Allocation</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCoreAllocation(CoreAllocation object) {
+	public T1 caseSchedulerAllocation(SchedulerAllocation object) {
 		return null;
 	}
 

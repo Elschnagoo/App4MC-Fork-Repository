@@ -82,7 +82,6 @@ import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
@@ -309,6 +308,7 @@ import org.eclipse.app4mc.amalthea.model.SamplingType;
 import org.eclipse.app4mc.amalthea.model.SchedType;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
@@ -1626,7 +1626,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass coreAllocationEClass = null;
+	private EClass schedulerAllocationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -7375,7 +7375,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMappingModel_CoreAllocation() {
+	public EReference getMappingModel_SchedulerAllocation() {
 		return (EReference)mappingModelEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -7438,8 +7438,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCoreAllocation() {
-		return coreAllocationEClass;
+	public EClass getSchedulerAllocation() {
+		return schedulerAllocationEClass;
 	}
 
 	/**
@@ -7447,8 +7447,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCoreAllocation_Scheduler() {
-		return (EReference)coreAllocationEClass.getEStructuralFeatures().get(0);
+	public EReference getSchedulerAllocation_Scheduler() {
+		return (EReference)schedulerAllocationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7456,8 +7456,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCoreAllocation_Core() {
-		return (EReference)coreAllocationEClass.getEStructuralFeatures().get(1);
+	public EReference getSchedulerAllocation_Responsibility() {
+		return (EReference)schedulerAllocationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSchedulerAllocation_ExecutingCore() {
+		return (EReference)schedulerAllocationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -7492,8 +7501,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTaskAllocation_CoreAffinity() {
+		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getTaskAllocation_Priority() {
-		return (EAttribute)taskAllocationEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)taskAllocationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -7502,7 +7520,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	public EReference getTaskAllocation_SchedulingParameters() {
-		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(3);
+		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -7511,7 +7529,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	public EReference getTaskAllocation_ParameterExtensions() {
-		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(4);
+		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -12642,7 +12660,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(hwElementRefEClass, HW_ELEMENT_REF__PORT);
 
 		mappingModelEClass = createEClass(MAPPING_MODEL);
-		createEReference(mappingModelEClass, MAPPING_MODEL__CORE_ALLOCATION);
+		createEReference(mappingModelEClass, MAPPING_MODEL__SCHEDULER_ALLOCATION);
 		createEReference(mappingModelEClass, MAPPING_MODEL__RUNNABLE_ALLOCATION);
 		createEReference(mappingModelEClass, MAPPING_MODEL__TASK_ALLOCATION);
 		createEReference(mappingModelEClass, MAPPING_MODEL__ISR_ALLOCATION);
@@ -12650,13 +12668,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(mappingModelEClass, MAPPING_MODEL__PHYSICAL_SECTION_MAPPING);
 		createEAttribute(mappingModelEClass, MAPPING_MODEL__ADDRESS_MAPPING_TYPE);
 
-		coreAllocationEClass = createEClass(CORE_ALLOCATION);
-		createEReference(coreAllocationEClass, CORE_ALLOCATION__SCHEDULER);
-		createEReference(coreAllocationEClass, CORE_ALLOCATION__CORE);
+		schedulerAllocationEClass = createEClass(SCHEDULER_ALLOCATION);
+		createEReference(schedulerAllocationEClass, SCHEDULER_ALLOCATION__SCHEDULER);
+		createEReference(schedulerAllocationEClass, SCHEDULER_ALLOCATION__RESPONSIBILITY);
+		createEReference(schedulerAllocationEClass, SCHEDULER_ALLOCATION__EXECUTING_CORE);
 
 		taskAllocationEClass = createEClass(TASK_ALLOCATION);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__TASK);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__SCHEDULER);
+		createEReference(taskAllocationEClass, TASK_ALLOCATION__CORE_AFFINITY);
 		createEAttribute(taskAllocationEClass, TASK_ALLOCATION__PRIORITY);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__SCHEDULING_PARAMETERS);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__PARAMETER_EXTENSIONS);
@@ -13547,7 +13567,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		hwAccessPathRefEClass.getESuperTypes().add(this.getHwAccessPathElement());
 		hwElementRefEClass.getESuperTypes().add(this.getHwAccessPathElement());
 		mappingModelEClass.getESuperTypes().add(this.getBaseObject());
-		coreAllocationEClass.getESuperTypes().add(this.getBaseObject());
+		schedulerAllocationEClass.getESuperTypes().add(this.getBaseObject());
 		taskAllocationEClass.getESuperTypes().add(this.getBaseObject());
 		isrAllocationEClass.getESuperTypes().add(this.getBaseObject());
 		runnableAllocationEClass.getESuperTypes().add(this.getBaseObject());
@@ -14406,7 +14426,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getHwElementRef_Port(), this.getComplexPort(), null, "port", null, 0, 1, HwElementRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mappingModelEClass, MappingModel.class, "MappingModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMappingModel_CoreAllocation(), this.getCoreAllocation(), null, "coreAllocation", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMappingModel_SchedulerAllocation(), this.getSchedulerAllocation(), null, "schedulerAllocation", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMappingModel_RunnableAllocation(), this.getRunnableAllocation(), null, "runnableAllocation", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMappingModel_TaskAllocation(), this.getTaskAllocation(), null, "taskAllocation", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMappingModel_IsrAllocation(), this.getISRAllocation(), null, "isrAllocation", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14414,13 +14434,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getMappingModel_PhysicalSectionMapping(), this.getPhysicalSectionMapping(), null, "physicalSectionMapping", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMappingModel_AddressMappingType(), this.getMemoryAddressMappingType(), "addressMappingType", null, 0, 1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(coreAllocationEClass, CoreAllocation.class, "CoreAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCoreAllocation_Scheduler(), this.getScheduler(), null, "scheduler", null, 1, 1, CoreAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCoreAllocation_Core(), this.getCore(), null, "core", null, 1, -1, CoreAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(schedulerAllocationEClass, SchedulerAllocation.class, "SchedulerAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSchedulerAllocation_Scheduler(), this.getScheduler(), null, "scheduler", null, 1, 1, SchedulerAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSchedulerAllocation_Responsibility(), this.getCore(), null, "responsibility", null, 1, -1, SchedulerAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSchedulerAllocation_ExecutingCore(), this.getCore(), null, "executingCore", null, 0, 1, SchedulerAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskAllocationEClass, TaskAllocation.class, "TaskAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTaskAllocation_Task(), this.getTask(), null, "task", null, 1, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_Scheduler(), this.getTaskScheduler(), null, "scheduler", null, 1, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTaskAllocation_CoreAffinity(), this.getCore(), null, "coreAffinity", null, 0, -1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTaskAllocation_Priority(), theEcorePackage.getEInt(), "priority", "0", 0, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_SchedulingParameters(), this.getSchedulingParameters(), null, "schedulingParameters", null, 0, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_ParameterExtensions(), this.getParameterExtension(), null, "parameterExtensions", null, 0, -1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

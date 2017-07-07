@@ -54,6 +54,7 @@ public class TaskAllocationItemProvider extends BaseObjectItemProvider {
 
 			addTaskPropertyDescriptor(object);
 			addSchedulerPropertyDescriptor(object);
+			addCoreAffinityPropertyDescriptor(object);
 			addPriorityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -93,6 +94,28 @@ public class TaskAllocationItemProvider extends BaseObjectItemProvider {
 				 getString("_UI_TaskAllocation_scheduler_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_TaskAllocation_scheduler_feature", "_UI_TaskAllocation_type"),
 				 AmaltheaPackage.eINSTANCE.getTaskAllocation_Scheduler(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Core Affinity feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCoreAffinityPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TaskAllocation_coreAffinity_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TaskAllocation_coreAffinity_feature", "_UI_TaskAllocation_type"),
+				 AmaltheaPackage.eINSTANCE.getTaskAllocation_CoreAffinity(),
 				 true,
 				 false,
 				 true,

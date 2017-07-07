@@ -12882,13 +12882,13 @@ public interface AmaltheaPackage extends EPackage {
 	int MAPPING_MODEL__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Core Allocation</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Scheduler Allocation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_MODEL__CORE_ALLOCATION = BASE_OBJECT_FEATURE_COUNT + 0;
+	int MAPPING_MODEL__SCHEDULER_ALLOCATION = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Runnable Allocation</b></em>' containment reference list.
@@ -12963,14 +12963,14 @@ public interface AmaltheaPackage extends EPackage {
 	int MAPPING_MODEL_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.CoreAllocationImpl <em>Core Allocation</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerAllocationImpl <em>Scheduler Allocation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.CoreAllocationImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCoreAllocation()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.SchedulerAllocationImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSchedulerAllocation()
 	 * @generated
 	 */
-	int CORE_ALLOCATION = 175;
+	int SCHEDULER_ALLOCATION = 175;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -12979,7 +12979,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CORE_ALLOCATION__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
+	int SCHEDULER_ALLOCATION__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Scheduler</b></em>' reference.
@@ -12988,34 +12988,43 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CORE_ALLOCATION__SCHEDULER = BASE_OBJECT_FEATURE_COUNT + 0;
+	int SCHEDULER_ALLOCATION__SCHEDULER = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Core</b></em>' reference list.
+	 * The feature id for the '<em><b>Responsibility</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CORE_ALLOCATION__CORE = BASE_OBJECT_FEATURE_COUNT + 1;
+	int SCHEDULER_ALLOCATION__RESPONSIBILITY = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Core Allocation</em>' class.
+	 * The feature id for the '<em><b>Executing Core</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CORE_ALLOCATION_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 2;
+	int SCHEDULER_ALLOCATION__EXECUTING_CORE = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Core Allocation</em>' class.
+	 * The number of structural features of the '<em>Scheduler Allocation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CORE_ALLOCATION_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
+	int SCHEDULER_ALLOCATION_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Scheduler Allocation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULER_ALLOCATION_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl <em>Task Allocation</em>}' class.
@@ -13055,13 +13064,22 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK_ALLOCATION__SCHEDULER = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Core Affinity</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_ALLOCATION__CORE_AFFINITY = BASE_OBJECT_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Priority</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_ALLOCATION__PRIORITY = BASE_OBJECT_FEATURE_COUNT + 2;
+	int TASK_ALLOCATION__PRIORITY = BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Scheduling Parameters</b></em>' containment reference.
@@ -13070,7 +13088,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_ALLOCATION__SCHEDULING_PARAMETERS = BASE_OBJECT_FEATURE_COUNT + 3;
+	int TASK_ALLOCATION__SCHEDULING_PARAMETERS = BASE_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Parameter Extensions</b></em>' map.
@@ -13079,7 +13097,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_ALLOCATION__PARAMETER_EXTENSIONS = BASE_OBJECT_FEATURE_COUNT + 4;
+	int TASK_ALLOCATION__PARAMETER_EXTENSIONS = BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Task Allocation</em>' class.
@@ -13088,7 +13106,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_ALLOCATION_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 5;
+	int TASK_ALLOCATION_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Task Allocation</em>' class.
@@ -29483,15 +29501,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getMappingModel();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.MappingModel#getCoreAllocation <em>Core Allocation</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.MappingModel#getSchedulerAllocation <em>Scheduler Allocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Core Allocation</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.MappingModel#getCoreAllocation()
+	 * @return the meta object for the containment reference list '<em>Scheduler Allocation</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.MappingModel#getSchedulerAllocation()
 	 * @see #getMappingModel()
 	 * @generated
 	 */
-	EReference getMappingModel_CoreAllocation();
+	EReference getMappingModel_SchedulerAllocation();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.MappingModel#getRunnableAllocation <em>Runnable Allocation</em>}'.
@@ -29560,36 +29578,47 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getMappingModel_AddressMappingType();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.CoreAllocation <em>Core Allocation</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation <em>Scheduler Allocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Core Allocation</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.CoreAllocation
+	 * @return the meta object for class '<em>Scheduler Allocation</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.SchedulerAllocation
 	 * @generated
 	 */
-	EClass getCoreAllocation();
+	EClass getSchedulerAllocation();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.CoreAllocation#getScheduler <em>Scheduler</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getScheduler <em>Scheduler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Scheduler</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.CoreAllocation#getScheduler()
-	 * @see #getCoreAllocation()
+	 * @see org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getScheduler()
+	 * @see #getSchedulerAllocation()
 	 * @generated
 	 */
-	EReference getCoreAllocation_Scheduler();
+	EReference getSchedulerAllocation_Scheduler();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.CoreAllocation#getCore <em>Core</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getResponsibility <em>Responsibility</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Core</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.CoreAllocation#getCore()
-	 * @see #getCoreAllocation()
+	 * @return the meta object for the reference list '<em>Responsibility</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getResponsibility()
+	 * @see #getSchedulerAllocation()
 	 * @generated
 	 */
-	EReference getCoreAllocation_Core();
+	EReference getSchedulerAllocation_Responsibility();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getExecutingCore <em>Executing Core</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Executing Core</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getExecutingCore()
+	 * @see #getSchedulerAllocation()
+	 * @generated
+	 */
+	EReference getSchedulerAllocation_ExecutingCore();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TaskAllocation <em>Task Allocation</em>}'.
@@ -29622,6 +29651,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTaskAllocation_Scheduler();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getCoreAffinity <em>Core Affinity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Core Affinity</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TaskAllocation#getCoreAffinity()
+	 * @see #getTaskAllocation()
+	 * @generated
+	 */
+	EReference getTaskAllocation_CoreAffinity();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getPriority <em>Priority</em>}'.

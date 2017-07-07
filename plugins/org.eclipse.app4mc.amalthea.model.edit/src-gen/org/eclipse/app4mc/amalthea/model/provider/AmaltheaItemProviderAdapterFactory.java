@@ -2957,26 +2957,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CoreAllocation} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CoreAllocationItemProvider coreAllocationItemProvider;
+	protected SchedulerAllocationItemProvider schedulerAllocationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.CoreAllocation}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCoreAllocationAdapter() {
-		if (coreAllocationItemProvider == null) {
-			coreAllocationItemProvider = new CoreAllocationItemProvider(this);
+	public Adapter createSchedulerAllocationAdapter() {
+		if (schedulerAllocationItemProvider == null) {
+			schedulerAllocationItemProvider = new SchedulerAllocationItemProvider(this);
 		}
 
-		return coreAllocationItemProvider;
+		return schedulerAllocationItemProvider;
 	}
 
 	/**
@@ -6057,7 +6057,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (hwAccessPathRefItemProvider != null) hwAccessPathRefItemProvider.dispose();
 		if (hwElementRefItemProvider != null) hwElementRefItemProvider.dispose();
 		if (mappingModelItemProvider != null) mappingModelItemProvider.dispose();
-		if (coreAllocationItemProvider != null) coreAllocationItemProvider.dispose();
+		if (schedulerAllocationItemProvider != null) schedulerAllocationItemProvider.dispose();
 		if (taskAllocationItemProvider != null) taskAllocationItemProvider.dispose();
 		if (isrAllocationItemProvider != null) isrAllocationItemProvider.dispose();
 		if (runnableAllocationItemProvider != null) runnableAllocationItemProvider.dispose();

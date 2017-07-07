@@ -9,6 +9,7 @@ import org.eclipse.app4mc.amalthea.model.AbstractTime
 import org.eclipse.app4mc.amalthea.model.AccessPathRef
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType
+import org.eclipse.app4mc.amalthea.model.Amalthea
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry
@@ -30,7 +31,6 @@ import org.eclipse.app4mc.amalthea.model.ComponentScope
 import org.eclipse.app4mc.amalthea.model.Composite
 import org.eclipse.app4mc.amalthea.model.Condition
 import org.eclipse.app4mc.amalthea.model.Connector
-import org.eclipse.app4mc.amalthea.model.CoreAllocation
 import org.eclipse.app4mc.amalthea.model.CoreClassification
 import org.eclipse.app4mc.amalthea.model.CountMetric
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit
@@ -44,6 +44,7 @@ import org.eclipse.app4mc.amalthea.model.DataStability
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition
 import org.eclipse.app4mc.amalthea.model.Deviation
 import org.eclipse.app4mc.amalthea.model.DoubleObject
+import org.eclipse.app4mc.amalthea.model.EventChainContainer
 import org.eclipse.app4mc.amalthea.model.EventChainReference
 import org.eclipse.app4mc.amalthea.model.EventConfig
 import org.eclipse.app4mc.amalthea.model.FInterfacePort
@@ -109,6 +110,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement
 import org.eclipse.app4mc.amalthea.model.RunnableScope
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum
 import org.eclipse.app4mc.amalthea.model.SenderReceiverRead
@@ -139,8 +141,6 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
-import org.eclipse.app4mc.amalthea.model.EventChainContainer
-import org.eclipse.app4mc.amalthea.model.Amalthea
 
 class CustomItemProviderService {
 
@@ -1426,12 +1426,12 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						CoreAllocationItemProvider
+	 * 						SchedulerAllocationItemProvider
 	 *****************************************************************************/
-	def static String getCoreAllocationItemProviderText(Object object, String defaultText) {
-		if (object instanceof CoreAllocation) {
+	def static String getSchedulerAllocationItemProviderText(Object object, String defaultText) {
+		if (object instanceof SchedulerAllocation) {
 			val schedName = object?.scheduler?.name
-			val cores = object?.core
+			val cores = object?.responsibility
 			val s1 = if(schedName.isNullOrEmpty) "<scheduler>" else "Scheduler " + schedName
 			val s2 = cores.map[e | ppName(e?.name)].join(", ")
 			return "Allocation: " + s1 + " -- Cores ( " + s2 + " )";
@@ -1440,13 +1440,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getCoreAllocationItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getSchedulerAllocationItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(CoreAllocation)) {
-			case AmaltheaPackage::CORE_ALLOCATION__SCHEDULER,
-			case AmaltheaPackage::CORE_ALLOCATION__CORE:
+		switch notification.getFeatureID(typeof(SchedulerAllocation)) {
+			case AmaltheaPackage::SCHEDULER_ALLOCATION__SCHEDULER,
+			case AmaltheaPackage::SCHEDULER_ALLOCATION__RESPONSIBILITY:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-			case AmaltheaPackage::CORE_ALLOCATION__CUSTOM_PROPERTIES:
+			case AmaltheaPackage::SCHEDULER_ALLOCATION__CUSTOM_PROPERTIES:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
 		}
 		return list

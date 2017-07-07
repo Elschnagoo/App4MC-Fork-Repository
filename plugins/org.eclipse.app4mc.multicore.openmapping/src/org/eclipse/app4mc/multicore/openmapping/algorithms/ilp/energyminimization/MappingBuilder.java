@@ -21,11 +21,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.ojalgo.optimisation.Variable;
 
 public class MappingBuilder {
@@ -79,13 +79,13 @@ public class MappingBuilder {
 		this.mappingModel = this.mmInstance.createMappingModel();
 
 		for (final SimpleEntry<ExtendedCore, Scheduler> entry : this.mCoreToScheduler) {
-			final CoreAllocation ca = this.mmInstance.createCoreAllocation();
+			final SchedulerAllocation sa = this.mmInstance.createSchedulerAllocation();
 			final ExtendedCore c = entry.getKey();
 			final Scheduler s = entry.getValue();
 			try {
-				ca.setScheduler(s);
-				ca.getCore().add(c.getCore());
-				this.mappingModel.getCoreAllocation().add(ca);
+				sa.setScheduler(s);
+				sa.getResponsibility().add(c.getCore());
+				this.mappingModel.getSchedulerAllocation().add(sa);
 			}
 			catch (final Exception e) {
 				e.printStackTrace();

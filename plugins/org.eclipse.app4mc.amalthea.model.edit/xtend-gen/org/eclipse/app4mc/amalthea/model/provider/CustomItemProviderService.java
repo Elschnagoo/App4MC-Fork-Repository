@@ -40,7 +40,6 @@ import org.eclipse.app4mc.amalthea.model.Composite;
 import org.eclipse.app4mc.amalthea.model.Condition;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CoreType;
@@ -136,6 +135,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.Section;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
@@ -2549,24 +2549,24 @@ public class CustomItemProviderService {
   }
   
   /**
-   * CoreAllocationItemProvider
+   * SchedulerAllocationItemProvider
    */
-  public static String getCoreAllocationItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof CoreAllocation)) {
+  public static String getSchedulerAllocationItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof SchedulerAllocation)) {
       Scheduler _scheduler = null;
-      if (((CoreAllocation)object)!=null) {
-        _scheduler=((CoreAllocation)object).getScheduler();
+      if (((SchedulerAllocation)object)!=null) {
+        _scheduler=((SchedulerAllocation)object).getScheduler();
       }
       String _name = null;
       if (_scheduler!=null) {
         _name=_scheduler.getName();
       }
       final String schedName = _name;
-      EList<Core> _core = null;
-      if (((CoreAllocation)object)!=null) {
-        _core=((CoreAllocation)object).getCore();
+      EList<Core> _responsibility = null;
+      if (((SchedulerAllocation)object)!=null) {
+        _responsibility=((SchedulerAllocation)object).getResponsibility();
       }
-      final EList<Core> cores = _core;
+      final EList<Core> cores = _responsibility;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(schedName);
       if (_isNullOrEmpty) {
@@ -2590,15 +2590,15 @@ public class CustomItemProviderService {
     }
   }
   
-  public static List<ViewerNotification> getCoreAllocationItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getSchedulerAllocationItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(CoreAllocation.class);
+    int _featureID = notification.getFeatureID(SchedulerAllocation.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.CORE_ALLOCATION__SCHEDULER)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.SCHEDULER_ALLOCATION__SCHEDULER)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.CORE_ALLOCATION__CORE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.SCHEDULER_ALLOCATION__RESPONSIBILITY)) {
         _matched=true;
       }
     }
@@ -2608,7 +2608,7 @@ public class CustomItemProviderService {
       list.add(_viewerNotification);
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.CORE_ALLOCATION__CUSTOM_PROPERTIES)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.SCHEDULER_ALLOCATION__CUSTOM_PROPERTIES)) {
         _matched=true;
         Object _notifier_1 = notification.getNotifier();
         ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);

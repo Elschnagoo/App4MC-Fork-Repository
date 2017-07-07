@@ -13,8 +13,8 @@ import java.util.Set;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.Microcontroller;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.AbstractValidatorImpl;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
@@ -37,13 +37,13 @@ public class MappingModelValidatorImpl extends AbstractValidatorImpl {
 	 */
 	public void checkCoreReferenceOfCoreAllocation(final Amalthea amalthea) {
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<CoreAllocation> allocations = new HashSet<>();
+		final Set<SchedulerAllocation> allocations = new HashSet<>();
 		final Set<Core> cores = new HashSet<>();
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
-			if (elem instanceof CoreAllocation) {
-				final CoreAllocation allocation = (CoreAllocation) elem;
+			if (elem instanceof SchedulerAllocation) {
+				final SchedulerAllocation allocation = (SchedulerAllocation) elem;
 				allocations.add(allocation);
 			} else if (elem instanceof Microcontroller) {
 				final Microcontroller microcontroller = (Microcontroller) elem;
@@ -58,18 +58,18 @@ public class MappingModelValidatorImpl extends AbstractValidatorImpl {
 			}
 		}
 
-		for (final CoreAllocation allocation : allocations) {
+		for (final SchedulerAllocation allocation : allocations) {
 			if (null != allocation) {
-				final Collection<Core> coreList = allocation.getCore();
+				final Collection<Core> coreList = allocation.getResponsibility();
 				if (null == coreList) {
-					this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getCoreAllocation_Core());
+					this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility());
 				} else {
 					if (true == coreList.isEmpty()) {
-						this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getCoreAllocation_Core());
+						this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility());
 					} else {
 						for (final Core core : coreList) {
 							if ((null == core) || (false == cores.contains(core))) {
-								this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getCoreAllocation_Core());
+								this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility());
 							}
 						}
 					}

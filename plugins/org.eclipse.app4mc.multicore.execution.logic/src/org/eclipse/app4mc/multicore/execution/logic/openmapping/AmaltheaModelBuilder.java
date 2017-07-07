@@ -16,10 +16,10 @@ import java.util.Iterator;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 
 public class AmaltheaModelBuilder {
@@ -69,10 +69,10 @@ public class AmaltheaModelBuilder {
 				// Add scheduler to os model
 				os.getTaskSchedulers().add(scheduler.getSchedulerRef());
 				// Create entries in mapping model
-				final CoreAllocation coreAlloc = AmaltheaFactory.eINSTANCE.createCoreAllocation();
-				coreAlloc.getCore().add(core.getCoreRef());
-				coreAlloc.setScheduler(scheduler.getSchedulerRef());
-				mappingModel.getCoreAllocation().add(coreAlloc);
+				final SchedulerAllocation schedAlloc = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
+				schedAlloc.getResponsibility().add(core.getCoreRef());
+				schedAlloc.setScheduler(scheduler.getSchedulerRef());
+				mappingModel.getSchedulerAllocation().add(schedAlloc);
 				// Remember StepScheduler in map
 				coreSchedulerMap.put(core, scheduler);
 			}

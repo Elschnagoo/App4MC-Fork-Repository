@@ -19,12 +19,12 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
@@ -69,9 +69,9 @@ public class MappingModelCheckValidatorImpl extends AbstractValidatorImpl {
 		final List<Scheduler> allSchedulers = new ArrayList<Scheduler>(
 				getObjectHelper().getAllInstancesAndInheritedOf(mappingModel, Scheduler.class));
 
-		// CoreAllocations
-		final List<CoreAllocation> allCoreAllocs = new ArrayList<CoreAllocation>(
-				getObjectHelper().getAllInstancesAndInheritedOf(mappingModel, CoreAllocation.class));
+		// SchedulerAllocation
+		final List<SchedulerAllocation> allCoreAllocs = new ArrayList<SchedulerAllocation>(
+				getObjectHelper().getAllInstancesAndInheritedOf(mappingModel, SchedulerAllocation.class));
 
 		// Process --> Scheduler
 		checkTaskToSchedulerMappings(allTaskAllocs, allTasks);
@@ -160,18 +160,18 @@ public class MappingModelCheckValidatorImpl extends AbstractValidatorImpl {
 		}
 	}
 
-	private void checkSchedulerToCoreMapping(final List<Scheduler> schedulers, final List<CoreAllocation> coreAllocs) {
+	private void checkSchedulerToCoreMapping(final List<Scheduler> schedulers, final List<SchedulerAllocation> coreAllocs) {
 		// Scheduler --> Core
 
-		for (final CoreAllocation coreAlloc : coreAllocs) {
+		for (final SchedulerAllocation coreAlloc : coreAllocs) {
 			final Scheduler sched = coreAlloc.getScheduler();
-			final EList<Core> cores = coreAlloc.getCore();
+			final EList<Core> cores = coreAlloc.getResponsibility();
 			if (cores.isEmpty() && sched == null) {
-				this.issueCreator.issue(coreAlloc, AmaltheaPackage.eINSTANCE.getCoreAllocation_Core(),
+				this.issueCreator.issue(coreAlloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility(),
 						"Scheduler2Core Mapping-Error: Core Allocation is left blank", coreAlloc);
 			}
 			else if (sched != null && cores.isEmpty()) {
-				this.issueCreator.issue(coreAlloc, AmaltheaPackage.eINSTANCE.getCoreAllocation_Scheduler(),
+				this.issueCreator.issue(coreAlloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Scheduler(),
 						"Scheduler2Core Mapping-Error: Scheduler \"" + sched.getName() + "\" is not mapped to any Core",
 						coreAlloc);
 			}
@@ -182,7 +182,7 @@ public class MappingModelCheckValidatorImpl extends AbstractValidatorImpl {
 					sb.append("\"" + core.getName() + "\",");
 				}
 
-				this.issueCreator.issue(coreAlloc, AmaltheaPackage.eINSTANCE.getCoreAllocation_Core(),
+				this.issueCreator.issue(coreAlloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility(),
 						"Scheduler2Core Mapping-Error: Core(s) " + sb.toString()
 								+ " is/are not mapped to any Scheduler",
 						coreAlloc);

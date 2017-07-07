@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 
 /**
@@ -25,6 +26,7 @@ import org.eclipse.emf.common.util.EMap;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getTask <em>Task</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getScheduler <em>Scheduler</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getCoreAffinity <em>Core Affinity</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getPriority <em>Priority</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getSchedulingParameters <em>Scheduling Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getParameterExtensions <em>Parameter Extensions</em>}</li>
@@ -86,6 +88,22 @@ public interface TaskAllocation extends BaseObject {
 	 * @generated
 	 */
 	void setScheduler(TaskScheduler value);
+
+	/**
+	 * Returns the value of the '<em><b>Core Affinity</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Core}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Core Affinity</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Core Affinity</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskAllocation_CoreAffinity()
+	 * @model
+	 * @generated
+	 */
+	EList<Core> getCoreAffinity();
 
 	/**
 	 * Returns the value of the '<em><b>Priority</b></em>' attribute.

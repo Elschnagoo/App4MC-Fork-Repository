@@ -1846,7 +1846,7 @@ class HwElementRef extends HwAccessPathElement
 
 class MappingModel extends BaseObject
 {
-	contains CoreAllocation[] coreAllocation
+	contains SchedulerAllocation[] schedulerAllocation
 	contains RunnableAllocation[] runnableAllocation
 	contains TaskAllocation[] taskAllocation
 	contains ISRAllocation[] isrAllocation
@@ -1874,12 +1874,13 @@ enum MemoryAddressMappingType
 //////////////// Generalizations for the Allocations (assignment to cores)
 
 /*
- * Allocation of Cores to schedulers
+ * Allocation of Schedulers
  */
-class CoreAllocation extends BaseObject
+class SchedulerAllocation extends BaseObject
 {
 	refers Scheduler[1] scheduler
-	refers Core[+] core
+	refers Core[+] responsibility
+	refers Core executingCore
 }
 
 
@@ -1889,6 +1890,7 @@ class TaskAllocation extends BaseObject
 {
 	refers Task[1] task
 	refers TaskScheduler[1] scheduler
+	refers Core[] coreAffinity
 	int priority="0"	// TODO: Remove (moved to schedulingParameters)
 	
 	contains SchedulingParameters schedulingParameters

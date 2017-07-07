@@ -207,7 +207,7 @@ public class AmaltheaMerger {
 			addAll(main.getTaskAllocation(), tmp.getTaskAllocation());
 			addAll(main.getIsrAllocation(), tmp.getIsrAllocation());
 			addAll(main.getRunnableAllocation(), tmp.getRunnableAllocation());
-			addAll(main.getCoreAllocation(), tmp.getCoreAllocation());
+			addAll(main.getSchedulerAllocation(), tmp.getSchedulerAllocation());
 			addAll(main.getMemoryMapping(), tmp.getMemoryMapping());
 			addIfAbsent(main.getPhysicalSectionMapping(), tmp.getPhysicalSectionMapping());
 		}	

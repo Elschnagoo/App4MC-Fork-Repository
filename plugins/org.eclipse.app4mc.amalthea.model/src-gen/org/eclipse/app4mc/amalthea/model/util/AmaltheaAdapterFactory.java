@@ -72,7 +72,6 @@ import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
@@ -271,6 +270,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
@@ -1095,8 +1095,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createMappingModelAdapter();
 			}
 			@Override
-			public Adapter caseCoreAllocation(CoreAllocation object) {
-				return createCoreAllocationAdapter();
+			public Adapter caseSchedulerAllocation(SchedulerAllocation object) {
+				return createSchedulerAllocationAdapter();
 			}
 			@Override
 			public Adapter caseTaskAllocation(TaskAllocation object) {
@@ -4153,16 +4153,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CoreAllocation <em>Core Allocation</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation <em>Scheduler Allocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.CoreAllocation
+	 * @see org.eclipse.app4mc.amalthea.model.SchedulerAllocation
 	 * @generated
 	 */
-	public Adapter createCoreAllocationAdapter() {
+	public Adapter createSchedulerAllocationAdapter() {
 		return null;
 	}
 

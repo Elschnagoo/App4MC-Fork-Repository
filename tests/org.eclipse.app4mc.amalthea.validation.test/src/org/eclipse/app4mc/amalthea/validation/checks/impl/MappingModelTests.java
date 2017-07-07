@@ -23,7 +23,6 @@ import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
@@ -31,6 +30,7 @@ import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
@@ -56,7 +56,7 @@ public class MappingModelTests {
 	final List<TaskAllocation> allTaskAllocs = new ArrayList<TaskAllocation>();
 
 	final List<Scheduler> allSchedulers = new ArrayList<Scheduler>();
-	final List<CoreAllocation> allCoreAllocs = new ArrayList<CoreAllocation>();
+	final List<SchedulerAllocation> allSchedulerAllocs = new ArrayList<SchedulerAllocation>();
 
 
 	@Before
@@ -102,7 +102,7 @@ public class MappingModelTests {
 				.andReturn(this.allSchedulers);
 		// CoreAllocations
 		EasyMock.expect(this.eObjectHelper.getAllInstancesAndInheritedOf(this.amaltheaModel.getMappingModel(),
-				CoreAllocation.class)).andReturn(this.allCoreAllocs);
+				SchedulerAllocation.class)).andReturn(this.allSchedulerAllocs);
 	}
 
 	private Amalthea prepareAmaltheaModel() {
@@ -143,13 +143,13 @@ public class MappingModelTests {
 		taskAlloc.setTask(task);
 		taskAlloc.setScheduler(taskScheduler);
 
-		final CoreAllocation coreAlloc = AmaltheaFactory.eINSTANCE.createCoreAllocation();
-		coreAlloc.getCore().add(core);
-		coreAlloc.setScheduler(taskScheduler);
+		final SchedulerAllocation schedAlloc = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
+		schedAlloc.getResponsibility().add(core);
+		schedAlloc.setScheduler(taskScheduler);
 
 		this.amaltheaModel.getSwModel().getTasks().add(task);
 		this.amaltheaModel.getMappingModel().getTaskAllocation().add(taskAlloc);
-		this.amaltheaModel.getMappingModel().getCoreAllocation().add(coreAlloc);
+		this.amaltheaModel.getMappingModel().getSchedulerAllocation().add(schedAlloc);
 
 		this.amaltheaModel.getOsModel().getOperatingSystems().add(os);
 		os.getTaskSchedulers().add(taskScheduler);
@@ -189,14 +189,14 @@ public class MappingModelTests {
 		taskAlloc.setScheduler(taskScheduler);
 
 
-		final CoreAllocation coreAlloc = AmaltheaFactory.eINSTANCE.createCoreAllocation();
-		coreAlloc.getCore().add(core);
+		final SchedulerAllocation coreAlloc = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
+		coreAlloc.getResponsibility().add(core);
 		coreAlloc.setScheduler(taskScheduler);
 
 		this.amaltheaModel.getSwModel().getTasks().add(task);
 		this.amaltheaModel.getSwModel().getTasks().add(task_left);
 		this.amaltheaModel.getMappingModel().getTaskAllocation().add(taskAlloc);
-		this.amaltheaModel.getMappingModel().getCoreAllocation().add(coreAlloc);
+		this.amaltheaModel.getMappingModel().getSchedulerAllocation().add(coreAlloc);
 
 		this.amaltheaModel.getOsModel().getOperatingSystems().add(os);
 		os.getTaskSchedulers().add(taskScheduler);
@@ -206,7 +206,7 @@ public class MappingModelTests {
 		 * getAllInstances()
 		 */
 		this.allTaskAllocs.add(taskAlloc);
-		this.allCoreAllocs.add(coreAlloc);
+		this.allSchedulerAllocs.add(coreAlloc);
 		this.allSchedulers.add(taskScheduler);
 		this.allTasks.addAll(Arrays.asList(task, task_left));
 
@@ -247,13 +247,13 @@ public class MappingModelTests {
 		taskAlloc.setTask(task);
 		taskAlloc.setScheduler(taskScheduler);
 
-		final CoreAllocation coreAlloc = AmaltheaFactory.eINSTANCE.createCoreAllocation();
-		coreAlloc.getCore().add(core);
-		coreAlloc.setScheduler(taskScheduler);
+		final SchedulerAllocation schedAlloc = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
+		schedAlloc.getResponsibility().add(core);
+		schedAlloc.setScheduler(taskScheduler);
 
 		this.amaltheaModel.getSwModel().getTasks().add(task);
 		this.amaltheaModel.getMappingModel().getTaskAllocation().add(taskAlloc);
-		this.amaltheaModel.getMappingModel().getCoreAllocation().add(coreAlloc);
+		this.amaltheaModel.getMappingModel().getSchedulerAllocation().add(schedAlloc);
 
 		this.amaltheaModel.getOsModel().getOperatingSystems().add(os);
 		os.getTaskSchedulers().add(taskScheduler);
@@ -264,7 +264,7 @@ public class MappingModelTests {
 		 * getAllInstances()
 		 */
 		this.allTaskAllocs.add(taskAlloc);
-		this.allCoreAllocs.add(coreAlloc);
+		this.allSchedulerAllocs.add(schedAlloc);
 		this.allSchedulers.addAll(Arrays.asList(taskScheduler, taskScheduler_left));
 		this.allTasks.add(task);
 
@@ -303,13 +303,13 @@ public class MappingModelTests {
 		 */
 		// taskAlloc.setScheduler(taskScheduler);
 
-		final CoreAllocation coreAlloc = AmaltheaFactory.eINSTANCE.createCoreAllocation();
-		coreAlloc.getCore().add(core);
+		final SchedulerAllocation coreAlloc = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
+		coreAlloc.getResponsibility().add(core);
 		coreAlloc.setScheduler(taskScheduler);
 
 		this.amaltheaModel.getSwModel().getTasks().add(task);
 		this.amaltheaModel.getMappingModel().getTaskAllocation().add(taskAlloc);
-		this.amaltheaModel.getMappingModel().getCoreAllocation().add(coreAlloc);
+		this.amaltheaModel.getMappingModel().getSchedulerAllocation().add(coreAlloc);
 
 		this.amaltheaModel.getOsModel().getOperatingSystems().add(os);
 		os.getTaskSchedulers().add(taskScheduler);
@@ -319,7 +319,7 @@ public class MappingModelTests {
 		 * getAllInstances()
 		 */
 		this.allTaskAllocs.add(taskAlloc);
-		this.allCoreAllocs.add(coreAlloc);
+		this.allSchedulerAllocs.add(coreAlloc);
 		this.allSchedulers.add(taskScheduler);
 		this.allTasks.add(task);
 
@@ -359,13 +359,13 @@ public class MappingModelTests {
 		// taskAlloc.setProcess(task);
 		taskAlloc.setScheduler(taskScheduler);
 
-		final CoreAllocation coreAlloc = AmaltheaFactory.eINSTANCE.createCoreAllocation();
-		coreAlloc.getCore().add(core);
-		coreAlloc.setScheduler(taskScheduler);
+		final SchedulerAllocation schedAlloc = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
+		schedAlloc.getResponsibility().add(core);
+		schedAlloc.setScheduler(taskScheduler);
 
 		this.amaltheaModel.getSwModel().getTasks().add(task);
 		this.amaltheaModel.getMappingModel().getTaskAllocation().add(taskAlloc);
-		this.amaltheaModel.getMappingModel().getCoreAllocation().add(coreAlloc);
+		this.amaltheaModel.getMappingModel().getSchedulerAllocation().add(schedAlloc);
 
 		this.amaltheaModel.getOsModel().getOperatingSystems().add(os);
 		os.getTaskSchedulers().add(taskScheduler);
@@ -375,7 +375,7 @@ public class MappingModelTests {
 		 * getAllInstances()
 		 */
 		this.allTaskAllocs.add(taskAlloc);
-		this.allCoreAllocs.add(coreAlloc);
+		this.allSchedulerAllocs.add(schedAlloc);
 		this.allSchedulers.add(taskScheduler);
 		this.allTasks.add(task);
 
@@ -415,13 +415,13 @@ public class MappingModelTests {
 		// taskAlloc.setProcess(task);
 		// taskAlloc.setScheduler(taskScheduler);
 
-		final CoreAllocation coreAlloc = AmaltheaFactory.eINSTANCE.createCoreAllocation();
-		coreAlloc.getCore().add(core);
-		coreAlloc.setScheduler(taskScheduler);
+		final SchedulerAllocation schedAlloc = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
+		schedAlloc.getResponsibility().add(core);
+		schedAlloc.setScheduler(taskScheduler);
 
 		this.amaltheaModel.getSwModel().getTasks().add(task);
 		this.amaltheaModel.getMappingModel().getTaskAllocation().add(taskAlloc);
-		this.amaltheaModel.getMappingModel().getCoreAllocation().add(coreAlloc);
+		this.amaltheaModel.getMappingModel().getSchedulerAllocation().add(schedAlloc);
 
 		this.amaltheaModel.getOsModel().getOperatingSystems().add(os);
 		os.getTaskSchedulers().add(taskScheduler);
@@ -431,7 +431,7 @@ public class MappingModelTests {
 		 * getAllInstances()
 		 */
 		this.allTaskAllocs.add(taskAlloc);
-		this.allCoreAllocs.add(coreAlloc);
+		this.allSchedulerAllocs.add(schedAlloc);
 		this.allSchedulers.add(taskScheduler);
 		this.allTasks.add(task);
 
@@ -470,13 +470,13 @@ public class MappingModelTests {
 		taskAlloc.setTask(task);
 		taskAlloc.setScheduler(taskScheduler);
 
-		final CoreAllocation coreAlloc = AmaltheaFactory.eINSTANCE.createCoreAllocation();
-		coreAlloc.getCore().add(core);
+		final SchedulerAllocation schedAlloc = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
+		schedAlloc.getResponsibility().add(core);
 		// coreAlloc.setScheduler(taskScheduler);
 
 		this.amaltheaModel.getSwModel().getTasks().add(task);
 		this.amaltheaModel.getMappingModel().getTaskAllocation().add(taskAlloc);
-		this.amaltheaModel.getMappingModel().getCoreAllocation().add(coreAlloc);
+		this.amaltheaModel.getMappingModel().getSchedulerAllocation().add(schedAlloc);
 
 		this.amaltheaModel.getOsModel().getOperatingSystems().add(os);
 		os.getTaskSchedulers().add(taskScheduler);
@@ -486,15 +486,15 @@ public class MappingModelTests {
 		 * getAllInstances()
 		 */
 		this.allTaskAllocs.add(taskAlloc);
-		this.allCoreAllocs.add(coreAlloc);
+		this.allSchedulerAllocs.add(schedAlloc);
 		this.allSchedulers.add(taskScheduler);
 		this.allTasks.add(task);
 
 		// Due to missing info in CoreAlloc ({missing}Scheduler -> Core)
 
-		this.issueCreator.issue(coreAlloc, AmaltheaPackage.eINSTANCE.getCoreAllocation_Core(),
+		this.issueCreator.issue(schedAlloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility(),
 				"Scheduler2Core Mapping-Error: Core(s) \"" + core.getName() + "\", is/are not mapped to any Scheduler",
-				coreAlloc);
+				schedAlloc);
 
 		// Unmapped core detected
 		this.issueCreator.issue(taskScheduler, AmaltheaPackage.eINSTANCE.getIReferable_Name(),
@@ -529,13 +529,13 @@ public class MappingModelTests {
 		taskAlloc.setTask(task);
 		taskAlloc.setScheduler(taskScheduler);
 
-		final CoreAllocation coreAlloc = AmaltheaFactory.eINSTANCE.createCoreAllocation();
+		final SchedulerAllocation schedAlloc = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
 		// coreAlloc.getCore().add(core);
-		coreAlloc.setScheduler(taskScheduler);
+		schedAlloc.setScheduler(taskScheduler);
 
 		this.amaltheaModel.getSwModel().getTasks().add(task);
 		this.amaltheaModel.getMappingModel().getTaskAllocation().add(taskAlloc);
-		this.amaltheaModel.getMappingModel().getCoreAllocation().add(coreAlloc);
+		this.amaltheaModel.getMappingModel().getSchedulerAllocation().add(schedAlloc);
 
 		this.amaltheaModel.getOsModel().getOperatingSystems().add(os);
 		os.getTaskSchedulers().add(taskScheduler);
@@ -545,14 +545,14 @@ public class MappingModelTests {
 		 * getAllInstances()
 		 */
 		this.allTaskAllocs.add(taskAlloc);
-		this.allCoreAllocs.add(coreAlloc);
+		this.allSchedulerAllocs.add(schedAlloc);
 		this.allSchedulers.add(taskScheduler);
 		this.allTasks.add(task);
 
 		// Due to missing info in CoreAlloc (Scheduler -> {missing}Core)
-		this.issueCreator.issue(coreAlloc, AmaltheaPackage.eINSTANCE.getCoreAllocation_Scheduler(),
+		this.issueCreator.issue(schedAlloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Scheduler(),
 				"Scheduler2Core Mapping-Error: Scheduler \"" + taskScheduler.getName() + "\" is not mapped to any Core",
-				coreAlloc);
+				schedAlloc);
 
 		// Unmapped core detected
 		this.issueCreator.issue(taskScheduler, AmaltheaPackage.eINSTANCE.getIReferable_Name(),
@@ -586,13 +586,13 @@ public class MappingModelTests {
 		taskAlloc.setTask(task);
 		taskAlloc.setScheduler(taskScheduler);
 
-		final CoreAllocation coreAlloc = AmaltheaFactory.eINSTANCE.createCoreAllocation();
+		final SchedulerAllocation schedAlloc = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
 		// coreAlloc.getCore().add(core);
 		// coreAlloc.setScheduler(taskScheduler);
 
 		this.amaltheaModel.getSwModel().getTasks().add(task);
 		this.amaltheaModel.getMappingModel().getTaskAllocation().add(taskAlloc);
-		this.amaltheaModel.getMappingModel().getCoreAllocation().add(coreAlloc);
+		this.amaltheaModel.getMappingModel().getSchedulerAllocation().add(schedAlloc);
 
 		this.amaltheaModel.getOsModel().getOperatingSystems().add(os);
 		os.getTaskSchedulers().add(taskScheduler);
@@ -602,13 +602,13 @@ public class MappingModelTests {
 		 * getAllInstances()
 		 */
 		this.allTaskAllocs.add(taskAlloc);
-		this.allCoreAllocs.add(coreAlloc);
+		this.allSchedulerAllocs.add(schedAlloc);
 		this.allSchedulers.add(taskScheduler);
 		this.allTasks.add(task);
 
 		// Due to missing info in CoreAlloc ({missing}Scheduler -> {missing}Core)
-		this.issueCreator.issue(coreAlloc, AmaltheaPackage.eINSTANCE.getCoreAllocation_Core(),
-				"Scheduler2Core Mapping-Error: Core Allocation is left blank", coreAlloc);
+		this.issueCreator.issue(schedAlloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility(),
+				"Scheduler2Core Mapping-Error: Core Allocation is left blank", schedAlloc);
 		// Unmapped core detected
 		this.issueCreator.issue(taskScheduler, AmaltheaPackage.eINSTANCE.getIReferable_Name(),
 				"Scheduler2Core Mapping-Error: Scheduler not mapped to any core: " + taskScheduler.getName(),

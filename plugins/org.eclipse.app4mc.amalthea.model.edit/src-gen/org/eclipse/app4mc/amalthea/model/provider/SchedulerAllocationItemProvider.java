@@ -1,13 +1,13 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
  *  http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  *     Generated using Eclipse EMF
- *
+ * 
  * *******************************************************************************
  */
 package org.eclipse.app4mc.amalthea.model.provider;
@@ -17,31 +17,35 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.CoreAllocation} object. <!--
- * begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation} object.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
  * @generated
  */
-public class CoreAllocationItemProvider extends BaseObjectItemProvider {
+public class SchedulerAllocationItemProvider extends BaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CoreAllocationItemProvider(AdapterFactory adapterFactory) {
+	public SchedulerAllocationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
 	/**
 	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -50,14 +54,16 @@ public class CoreAllocationItemProvider extends BaseObjectItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addSchedulerPropertyDescriptor(object);
-			addCorePropertyDescriptor(object);
+			addResponsibilityPropertyDescriptor(object);
+			addExecutingCorePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
 	 * This adds a property descriptor for the Scheduler feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addSchedulerPropertyDescriptor(Object object) {
@@ -65,9 +71,9 @@ public class CoreAllocationItemProvider extends BaseObjectItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CoreAllocation_scheduler_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CoreAllocation_scheduler_feature", "_UI_CoreAllocation_type"),
-				 AmaltheaPackage.eINSTANCE.getCoreAllocation_Scheduler(),
+				 getString("_UI_SchedulerAllocation_scheduler_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SchedulerAllocation_scheduler_feature", "_UI_SchedulerAllocation_type"),
+				 AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Scheduler(),
 				 true,
 				 false,
 				 true,
@@ -77,18 +83,19 @@ public class CoreAllocationItemProvider extends BaseObjectItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Core feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Responsibility feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCorePropertyDescriptor(Object object) {
+	protected void addResponsibilityPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CoreAllocation_core_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CoreAllocation_core_feature", "_UI_CoreAllocation_type"),
-				 AmaltheaPackage.eINSTANCE.getCoreAllocation_Core(),
+				 getString("_UI_SchedulerAllocation_responsibility_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SchedulerAllocation_responsibility_feature", "_UI_SchedulerAllocation_type"),
+				 AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility(),
 				 true,
 				 false,
 				 true,
@@ -98,17 +105,41 @@ public class CoreAllocationItemProvider extends BaseObjectItemProvider {
 	}
 
 	/**
-	 * This returns CoreAllocation.gif.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Executing Core feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addExecutingCorePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SchedulerAllocation_executingCore_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SchedulerAllocation_executingCore_feature", "_UI_SchedulerAllocation_type"),
+				 AmaltheaPackage.eINSTANCE.getSchedulerAllocation_ExecutingCore(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns SchedulerAllocation.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CoreAllocation"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SchedulerAllocation"));
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -118,11 +149,12 @@ public class CoreAllocationItemProvider extends BaseObjectItemProvider {
 
 	/**
 	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		return getString("_UI_CoreAllocation_type");
+		return getString("_UI_SchedulerAllocation_type");
 	}
 
 	/**
@@ -131,14 +163,14 @@ public class CoreAllocationItemProvider extends BaseObjectItemProvider {
 	@Override
 	public String getText(final Object object) {
 		// delegate to custom item provider
-		return CustomItemProviderService.getCoreAllocationItemProviderText(object, getTextGen(object));
+		return CustomItemProviderService.getSchedulerAllocationItemProviderText(object, getTextGen(object));
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
-	 * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void notifyChangedGen(Notification notification) {
@@ -155,7 +187,7 @@ public class CoreAllocationItemProvider extends BaseObjectItemProvider {
 
 		// delegate to custom item provider and execute locally
 		final List<ViewerNotification> notifications = CustomItemProviderService
-				.getCoreAllocationItemProviderNotifications(notification);
+				.getSchedulerAllocationItemProviderNotifications(notification);
 		for (final ViewerNotification vn : notifications) {
 			fireNotifyChanged(vn);
 		}
@@ -166,7 +198,8 @@ public class CoreAllocationItemProvider extends BaseObjectItemProvider {
 	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

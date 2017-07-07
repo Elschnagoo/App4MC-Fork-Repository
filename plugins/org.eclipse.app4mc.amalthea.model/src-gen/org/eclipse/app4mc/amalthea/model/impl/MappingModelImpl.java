@@ -15,13 +15,13 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -45,7 +45,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MappingModelImpl#getCoreAllocation <em>Core Allocation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MappingModelImpl#getSchedulerAllocation <em>Scheduler Allocation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MappingModelImpl#getRunnableAllocation <em>Runnable Allocation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MappingModelImpl#getTaskAllocation <em>Task Allocation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MappingModelImpl#getIsrAllocation <em>Isr Allocation</em>}</li>
@@ -58,14 +58,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	/**
-	 * The cached value of the '{@link #getCoreAllocation() <em>Core Allocation</em>}' containment reference list.
+	 * The cached value of the '{@link #getSchedulerAllocation() <em>Scheduler Allocation</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCoreAllocation()
+	 * @see #getSchedulerAllocation()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CoreAllocation> coreAllocation;
+	protected EList<SchedulerAllocation> schedulerAllocation;
 
 	/**
 	 * The cached value of the '{@link #getRunnableAllocation() <em>Runnable Allocation</em>}' containment reference list.
@@ -161,11 +161,11 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CoreAllocation> getCoreAllocation() {
-		if (coreAllocation == null) {
-			coreAllocation = new EObjectContainmentEList<CoreAllocation>(CoreAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__CORE_ALLOCATION);
+	public EList<SchedulerAllocation> getSchedulerAllocation() {
+		if (schedulerAllocation == null) {
+			schedulerAllocation = new EObjectContainmentEList<SchedulerAllocation>(SchedulerAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__SCHEDULER_ALLOCATION);
 		}
-		return coreAllocation;
+		return schedulerAllocation;
 	}
 
 	/**
@@ -257,8 +257,8 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.MAPPING_MODEL__CORE_ALLOCATION:
-				return ((InternalEList<?>)getCoreAllocation()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.MAPPING_MODEL__SCHEDULER_ALLOCATION:
+				return ((InternalEList<?>)getSchedulerAllocation()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.MAPPING_MODEL__RUNNABLE_ALLOCATION:
 				return ((InternalEList<?>)getRunnableAllocation()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.MAPPING_MODEL__TASK_ALLOCATION:
@@ -281,8 +281,8 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.MAPPING_MODEL__CORE_ALLOCATION:
-				return getCoreAllocation();
+			case AmaltheaPackage.MAPPING_MODEL__SCHEDULER_ALLOCATION:
+				return getSchedulerAllocation();
 			case AmaltheaPackage.MAPPING_MODEL__RUNNABLE_ALLOCATION:
 				return getRunnableAllocation();
 			case AmaltheaPackage.MAPPING_MODEL__TASK_ALLOCATION:
@@ -308,9 +308,9 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.MAPPING_MODEL__CORE_ALLOCATION:
-				getCoreAllocation().clear();
-				getCoreAllocation().addAll((Collection<? extends CoreAllocation>)newValue);
+			case AmaltheaPackage.MAPPING_MODEL__SCHEDULER_ALLOCATION:
+				getSchedulerAllocation().clear();
+				getSchedulerAllocation().addAll((Collection<? extends SchedulerAllocation>)newValue);
 				return;
 			case AmaltheaPackage.MAPPING_MODEL__RUNNABLE_ALLOCATION:
 				getRunnableAllocation().clear();
@@ -347,8 +347,8 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MAPPING_MODEL__CORE_ALLOCATION:
-				getCoreAllocation().clear();
+			case AmaltheaPackage.MAPPING_MODEL__SCHEDULER_ALLOCATION:
+				getSchedulerAllocation().clear();
 				return;
 			case AmaltheaPackage.MAPPING_MODEL__RUNNABLE_ALLOCATION:
 				getRunnableAllocation().clear();
@@ -380,8 +380,8 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MAPPING_MODEL__CORE_ALLOCATION:
-				return coreAllocation != null && !coreAllocation.isEmpty();
+			case AmaltheaPackage.MAPPING_MODEL__SCHEDULER_ALLOCATION:
+				return schedulerAllocation != null && !schedulerAllocation.isEmpty();
 			case AmaltheaPackage.MAPPING_MODEL__RUNNABLE_ALLOCATION:
 				return runnableAllocation != null && !runnableAllocation.isEmpty();
 			case AmaltheaPackage.MAPPING_MODEL__TASK_ALLOCATION:

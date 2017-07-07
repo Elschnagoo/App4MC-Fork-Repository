@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getCoreAllocation <em>Core Allocation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getSchedulerAllocation <em>Scheduler Allocation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getRunnableAllocation <em>Runnable Allocation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getTaskAllocation <em>Task Allocation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MappingModel#getIsrAllocation <em>Isr Allocation</em>}</li>
@@ -38,20 +38,20 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface MappingModel extends BaseObject {
 	/**
-	 * Returns the value of the '<em><b>Core Allocation</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.CoreAllocation}.
+	 * Returns the value of the '<em><b>Scheduler Allocation</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Core Allocation</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Scheduler Allocation</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Core Allocation</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_CoreAllocation()
+	 * @return the value of the '<em>Scheduler Allocation</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_SchedulerAllocation()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<CoreAllocation> getCoreAllocation();
+	EList<SchedulerAllocation> getSchedulerAllocation();
 
 	/**
 	 * Returns the value of the '<em><b>Runnable Allocation</b></em>' containment reference list.

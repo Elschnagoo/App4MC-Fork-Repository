@@ -66,7 +66,6 @@ import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CoreType;
@@ -255,6 +254,7 @@ import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SamplingType;
 import org.eclipse.app4mc.amalthea.model.SchedType;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
 import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
@@ -492,7 +492,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.HW_ACCESS_PATH_REF: return createHwAccessPathRef();
 			case AmaltheaPackage.HW_ELEMENT_REF: return createHwElementRef();
 			case AmaltheaPackage.MAPPING_MODEL: return createMappingModel();
-			case AmaltheaPackage.CORE_ALLOCATION: return createCoreAllocation();
+			case AmaltheaPackage.SCHEDULER_ALLOCATION: return createSchedulerAllocation();
 			case AmaltheaPackage.TASK_ALLOCATION: return createTaskAllocation();
 			case AmaltheaPackage.ISR_ALLOCATION: return createISRAllocation();
 			case AmaltheaPackage.RUNNABLE_ALLOCATION: return createRunnableAllocation();
@@ -2113,9 +2113,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CoreAllocation createCoreAllocation() {
-		CoreAllocationImpl coreAllocation = new CoreAllocationImpl();
-		return coreAllocation;
+	public SchedulerAllocation createSchedulerAllocation() {
+		SchedulerAllocationImpl schedulerAllocation = new SchedulerAllocationImpl();
+		return schedulerAllocation;
 	}
 
 	/**

@@ -3002,7 +3002,7 @@ core: The core that processes the process/runnable that accesses the semaphore (
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="coreAllocation" type="am:CoreAllocation"/>
+          <xsd:element name="schedulerAllocation" type="am:SchedulerAllocation"/>
           <xsd:element name="runnableAllocation" type="am:RunnableAllocation"/>
           <xsd:element name="taskAllocation" type="am:TaskAllocation"/>
           <xsd:element name="isrAllocation" type="am:ISRAllocation"/>
@@ -3014,24 +3014,26 @@ core: The core that processes the process/runnable that accesses the semaphore (
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="MappingModel" type="am:MappingModel"/>
-  <xsd:complexType name="CoreAllocation">
+  <xsd:complexType name="SchedulerAllocation">
     <xsd:annotation>
-      <xsd:documentation>Allocation of Cores to schedulers</xsd:documentation>
+      <xsd:documentation>Allocation of Schedulers</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="scheduler" type="am:Scheduler"/>
-          <xsd:element name="core" type="am:Core"/>
+          <xsd:element name="responsibility" type="am:Core"/>
+          <xsd:element name="executingCore" type="am:Core"/>
         </xsd:choice>
         <xsd:attribute name="scheduler" type="xsd:string"/>
-        <xsd:attribute name="core" type="xsd:string"/>
+        <xsd:attribute name="responsibility" type="xsd:string"/>
+        <xsd:attribute name="executingCore" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="CoreAllocation" type="am:CoreAllocation">
+  <xsd:element name="SchedulerAllocation" type="am:SchedulerAllocation">
     <xsd:annotation>
-      <xsd:documentation>Allocation of Cores to schedulers</xsd:documentation>
+      <xsd:documentation>Allocation of Schedulers</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="TaskAllocation">
@@ -3040,12 +3042,14 @@ core: The core that processes the process/runnable that accesses the semaphore (
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="task" type="am:Task"/>
           <xsd:element name="scheduler" type="am:TaskScheduler"/>
+          <xsd:element name="coreAffinity" type="am:Core"/>
           <xsd:element name="schedulingParameters" type="am:SchedulingParameters"/>
           <xsd:element name="parameterExtensions" type="am:ParameterExtension"/>
         </xsd:choice>
         <xsd:attribute name="priority" type="xsd:int"/>
         <xsd:attribute name="task" type="xsd:string"/>
         <xsd:attribute name="scheduler" type="xsd:string"/>
+        <xsd:attribute name="coreAffinity" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

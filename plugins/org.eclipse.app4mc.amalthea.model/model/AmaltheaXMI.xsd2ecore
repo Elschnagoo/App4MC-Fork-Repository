@@ -1295,7 +1295,7 @@
     <nested inputs="amalthea.xcore#/EPackage/HwElementRef" outputs="AmaltheaXMI.xsd#//HwElementRef;XSDElementDeclaration=173"/>
     <nested inputs="amalthea.xcore#/EPackage/MappingModel" outputs="AmaltheaXMI.xsd#//MappingModel;XSDComplexTypeDefinition=174">
       <nested inputs="amalthea.xcore#/EPackage/MappingModel/addressMappingType" outputs="AmaltheaXMI.xsd#//MappingModel;XSDComplexTypeDefinition=174/XSDAttributeUse"/>
-      <nested inputs="amalthea.xcore#/EPackage/MappingModel/coreAllocation" outputs="AmaltheaXMI.xsd#//MappingModel;XSDComplexTypeDefinition=174/XSDParticle/XSDModelGroup/XSDParticle"/>
+      <nested inputs="amalthea.xcore#/EPackage/MappingModel/schedulerAllocation" outputs="AmaltheaXMI.xsd#//MappingModel;XSDComplexTypeDefinition=174/XSDParticle/XSDModelGroup/XSDParticle"/>
       <nested inputs="amalthea.xcore#/EPackage/MappingModel/runnableAllocation" outputs="AmaltheaXMI.xsd#//MappingModel;XSDComplexTypeDefinition=174/XSDParticle/XSDModelGroup/XSDParticle=1"/>
       <nested inputs="amalthea.xcore#/EPackage/MappingModel/taskAllocation" outputs="AmaltheaXMI.xsd#//MappingModel;XSDComplexTypeDefinition=174/XSDParticle/XSDModelGroup/XSDParticle=2"/>
       <nested inputs="amalthea.xcore#/EPackage/MappingModel/isrAllocation" outputs="AmaltheaXMI.xsd#//MappingModel;XSDComplexTypeDefinition=174/XSDParticle/XSDModelGroup/XSDParticle=3"/>
@@ -1304,23 +1304,31 @@
           outputs="AmaltheaXMI.xsd#//MappingModel;XSDComplexTypeDefinition=174/XSDParticle/XSDModelGroup/XSDParticle=5"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/MappingModel" outputs="AmaltheaXMI.xsd#//MappingModel;XSDElementDeclaration=174"/>
-    <nested inputs="amalthea.xcore#/EPackage/CoreAllocation" outputs="AmaltheaXMI.xsd#//CoreAllocation;XSDComplexTypeDefinition=175">
-      <nested inputs="amalthea.xcore#/EPackage/CoreAllocation/scheduler" outputs="AmaltheaXMI.xsd#//CoreAllocation;XSDComplexTypeDefinition=175/XSDAttributeUse"/>
-      <nested inputs="amalthea.xcore#/EPackage/CoreAllocation/scheduler" outputs="AmaltheaXMI.xsd#//CoreAllocation;XSDComplexTypeDefinition=175/XSDParticle/XSDModelGroup/XSDParticle"/>
-      <nested inputs="amalthea.xcore#/EPackage/CoreAllocation/core" outputs="AmaltheaXMI.xsd#//CoreAllocation;XSDComplexTypeDefinition=175/XSDAttributeUse=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/CoreAllocation/core" outputs="AmaltheaXMI.xsd#//CoreAllocation;XSDComplexTypeDefinition=175/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+    <nested inputs="amalthea.xcore#/EPackage/SchedulerAllocation" outputs="AmaltheaXMI.xsd#//SchedulerAllocation;XSDComplexTypeDefinition=175">
+      <nested inputs="amalthea.xcore#/EPackage/SchedulerAllocation/scheduler" outputs="AmaltheaXMI.xsd#//SchedulerAllocation;XSDComplexTypeDefinition=175/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/SchedulerAllocation/scheduler" outputs="AmaltheaXMI.xsd#//SchedulerAllocation;XSDComplexTypeDefinition=175/XSDParticle/XSDModelGroup/XSDParticle"/>
+      <nested inputs="amalthea.xcore#/EPackage/SchedulerAllocation/responsibility"
+          outputs="AmaltheaXMI.xsd#//SchedulerAllocation;XSDComplexTypeDefinition=175/XSDAttributeUse=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/SchedulerAllocation/responsibility"
+          outputs="AmaltheaXMI.xsd#//SchedulerAllocation;XSDComplexTypeDefinition=175/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/SchedulerAllocation/executingCore"
+          outputs="AmaltheaXMI.xsd#//SchedulerAllocation;XSDComplexTypeDefinition=175/XSDAttributeUse=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/SchedulerAllocation/executingCore"
+          outputs="AmaltheaXMI.xsd#//SchedulerAllocation;XSDComplexTypeDefinition=175/XSDParticle/XSDModelGroup/XSDParticle=2"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/CoreAllocation" outputs="AmaltheaXMI.xsd#//CoreAllocation;XSDElementDeclaration=175"/>
+    <nested inputs="amalthea.xcore#/EPackage/SchedulerAllocation" outputs="AmaltheaXMI.xsd#//SchedulerAllocation;XSDElementDeclaration=175"/>
     <nested inputs="amalthea.xcore#/EPackage/TaskAllocation" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176">
       <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/priority" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDAttributeUse"/>
       <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/task" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDAttributeUse=1"/>
       <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/task" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDParticle/XSDModelGroup/XSDParticle"/>
       <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/scheduler" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDAttributeUse=2"/>
       <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/scheduler" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/coreAffinity" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDAttributeUse=3"/>
+      <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/coreAffinity" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDParticle/XSDModelGroup/XSDParticle=2"/>
       <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/schedulingParameters"
-          outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDParticle/XSDModelGroup/XSDParticle=2"/>
-      <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/parameterExtensions"
           outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDParticle/XSDModelGroup/XSDParticle=3"/>
+      <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/parameterExtensions"
+          outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDParticle/XSDModelGroup/XSDParticle=4"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/TaskAllocation" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDElementDeclaration=176"/>
     <nested inputs="amalthea.xcore#/EPackage/ISRAllocation" outputs="AmaltheaXMI.xsd#//ISRAllocation;XSDComplexTypeDefinition=177">

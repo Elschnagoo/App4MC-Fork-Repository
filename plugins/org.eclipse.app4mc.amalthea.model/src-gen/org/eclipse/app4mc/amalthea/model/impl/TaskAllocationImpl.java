@@ -12,7 +12,10 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.util.Collection;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
@@ -21,6 +24,7 @@ import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
@@ -29,6 +33,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -42,6 +47,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getTask <em>Task</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getScheduler <em>Scheduler</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getCoreAffinity <em>Core Affinity</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getSchedulingParameters <em>Scheduling Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getParameterExtensions <em>Parameter Extensions</em>}</li>
@@ -69,6 +75,16 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * @ordered
 	 */
 	protected TaskScheduler scheduler;
+
+	/**
+	 * The cached value of the '{@link #getCoreAffinity() <em>Core Affinity</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCoreAffinity()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Core> coreAffinity;
 
 	/**
 	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
@@ -210,6 +226,18 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Core> getCoreAffinity() {
+		if (coreAffinity == null) {
+			coreAffinity = new EObjectResolvingEList<Core>(Core.class, this, AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY);
+		}
+		return coreAffinity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getPriority() {
 		return priority;
 	}
@@ -311,6 +339,8 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULER:
 				if (resolve) return getScheduler();
 				return basicGetScheduler();
+			case AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY:
+				return getCoreAffinity();
 			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
 				return getPriority();
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
@@ -327,6 +357,7 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -335,6 +366,10 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 				return;
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULER:
 				setScheduler((TaskScheduler)newValue);
+				return;
+			case AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY:
+				getCoreAffinity().clear();
+				getCoreAffinity().addAll((Collection<? extends Core>)newValue);
 				return;
 			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
 				setPriority((Integer)newValue);
@@ -363,6 +398,9 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULER:
 				setScheduler((TaskScheduler)null);
 				return;
+			case AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY:
+				getCoreAffinity().clear();
+				return;
 			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
 				setPriority(PRIORITY_EDEFAULT);
 				return;
@@ -388,6 +426,8 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 				return task != null;
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULER:
 				return scheduler != null;
+			case AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY:
+				return coreAffinity != null && !coreAffinity.isEmpty();
 			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
 				return priority != PRIORITY_EDEFAULT;
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:

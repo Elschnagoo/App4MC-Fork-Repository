@@ -21,13 +21,14 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.DoubleAdder;
 import java.util.stream.Collectors;
+
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 
@@ -40,17 +41,16 @@ public class OMUtil {
 	 */
 	public static OMMapping createOMMapping(final MappingModel model){
 		List<TaskAllocation> allocations = model.getTaskAllocation();
-		List<CoreAllocation> coreAllocs = model.getCoreAllocation();
+		List<SchedulerAllocation> schedAllocs = model.getSchedulerAllocation();
 		
 		final Map<Core,OMCore> cores = new HashMap<>();
 		final Map<Scheduler,Core> schedToCore = new HashMap<>();
 
 
-		for(CoreAllocation ca:coreAllocs) {
-			Core c = ca.getCore().get(0);
-			Scheduler s = ca.getScheduler();
+		for(SchedulerAllocation sa:schedAllocs) {
+			Core c = sa.getResponsibility().get(0);
+			Scheduler s = sa.getScheduler();
 			schedToCore.put(s, c);
-			
 		}
 		
 		OMMapping m = new OMMapping();
@@ -65,7 +65,6 @@ public class OMUtil {
 			m.addAllocation(alloc);
 		}
 		
-
 		return m;
 	}
 	

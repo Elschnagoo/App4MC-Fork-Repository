@@ -98,7 +98,7 @@ public class MappingModelItemProvider extends BaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_CoreAllocation());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_SchedulerAllocation());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_RunnableAllocation());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_TaskAllocation());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMappingModel_IsrAllocation());
@@ -180,7 +180,7 @@ public class MappingModelItemProvider extends BaseObjectItemProvider {
 			case AmaltheaPackage.MAPPING_MODEL__ADDRESS_MAPPING_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case AmaltheaPackage.MAPPING_MODEL__CORE_ALLOCATION:
+			case AmaltheaPackage.MAPPING_MODEL__SCHEDULER_ALLOCATION:
 			case AmaltheaPackage.MAPPING_MODEL__RUNNABLE_ALLOCATION:
 			case AmaltheaPackage.MAPPING_MODEL__TASK_ALLOCATION:
 			case AmaltheaPackage.MAPPING_MODEL__ISR_ALLOCATION:
@@ -205,8 +205,8 @@ public class MappingModelItemProvider extends BaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getMappingModel_CoreAllocation(),
-				 AmaltheaFactory.eINSTANCE.createCoreAllocation()));
+				(AmaltheaPackage.eINSTANCE.getMappingModel_SchedulerAllocation(),
+				 AmaltheaFactory.eINSTANCE.createSchedulerAllocation()));
 
 		newChildDescriptors.add
 			(createChildParameter

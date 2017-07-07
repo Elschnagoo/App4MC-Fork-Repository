@@ -17,12 +17,12 @@ import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreAllocation;
 import org.eclipse.app4mc.amalthea.model.ECU;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwSystem;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.Microcontroller;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
 import org.eclipse.app4mc.amalthea.validation.ta.checks.MappingModelValidator;
 import org.junit.Before;
@@ -56,12 +56,12 @@ public class MappingModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final MappingModel mappingModel = AmaltheaFactory.eINSTANCE.createMappingModel();
-		final CoreAllocation allocation = AmaltheaFactory.eINSTANCE.createCoreAllocation();
+		final SchedulerAllocation allocation = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
 
 		amalthea.setMappingModel(mappingModel);
-		mappingModel.getCoreAllocation().add(allocation);
+		mappingModel.getSchedulerAllocation().add(allocation);
 
-		this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getCoreAllocation_Core());
+		this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -81,14 +81,14 @@ public class MappingModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final MappingModel mappingModel = AmaltheaFactory.eINSTANCE.createMappingModel();
-		final CoreAllocation allocation = AmaltheaFactory.eINSTANCE.createCoreAllocation();
+		final SchedulerAllocation allocation = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
 		final Core core = AmaltheaFactory.eINSTANCE.createCore();
 
 		amalthea.setMappingModel(mappingModel);
-		mappingModel.getCoreAllocation().add(allocation);
-		allocation.getCore().add(core);
+		mappingModel.getSchedulerAllocation().add(allocation);
+		allocation.getResponsibility().add(core);
 
-		this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getCoreAllocation_Core());
+		this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -114,7 +114,7 @@ public class MappingModelValidatorTests {
 
 		final Core core = AmaltheaFactory.eINSTANCE.createCore();
 		final MappingModel mappingModel = AmaltheaFactory.eINSTANCE.createMappingModel();
-		final CoreAllocation allocation = AmaltheaFactory.eINSTANCE.createCoreAllocation();
+		final SchedulerAllocation allocation = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
 
 		amalthea.setHwModel(hwModel);
 		hwModel.setSystem(hwSystem);
@@ -123,8 +123,8 @@ public class MappingModelValidatorTests {
 		microcontroller.getCores().add(core);
 
 		amalthea.setMappingModel(mappingModel);
-		mappingModel.getCoreAllocation().add(allocation);
-		allocation.getCore().add(core);
+		mappingModel.getSchedulerAllocation().add(allocation);
+		allocation.getResponsibility().add(core);
 
 		EasyMock.replay(this.issueCreator);
 

@@ -1166,13 +1166,13 @@ public interface AmaltheaFactory extends EFactory {
 	MappingModel createMappingModel();
 
 	/**
-	 * Returns a new object of class '<em>Core Allocation</em>'.
+	 * Returns a new object of class '<em>Scheduler Allocation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Core Allocation</em>'.
+	 * @return a new object of class '<em>Scheduler Allocation</em>'.
 	 * @generated
 	 */
-	CoreAllocation createCoreAllocation();
+	SchedulerAllocation createSchedulerAllocation();
 
 	/**
 	 * Returns a new object of class '<em>Task Allocation</em>'.
