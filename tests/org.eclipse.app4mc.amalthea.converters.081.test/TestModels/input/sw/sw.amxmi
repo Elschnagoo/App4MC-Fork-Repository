@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <runnables name="r1" activation="ECA?type=EventActivation" callback="false" service="false"/>
+    <runnables name="r2" callback="false" service="false">
+      <activation xsi:type="am:EventActivation" href="amlt:/#ECA.1?type=EventActivation"/>
+    </runnables>
+    <activations xsi:type="am:EventActivation" name="ECA"/>
+  </swModel>
+</am:Amalthea>
