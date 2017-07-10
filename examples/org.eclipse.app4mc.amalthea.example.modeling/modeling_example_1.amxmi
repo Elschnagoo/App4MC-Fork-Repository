@@ -170,7 +170,7 @@
     <taskAllocation task="Task_2?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />
     <taskAllocation task="Task_3?type=Task" scheduler="Scheduler_2?type=TaskScheduler" />
     <taskAllocation task="Task_4?type=Task" scheduler="Scheduler_2?type=TaskScheduler" />
-    <coreAllocation scheduler="Scheduler_1?type=TaskScheduler" core="Core_1?type=Core" />
-    <coreAllocation scheduler="Scheduler_2?type=TaskScheduler" core="Core_2?type=Core" />
+    <schedulerAllocation scheduler="Scheduler_1?type=TaskScheduler" responsibility="Core_1?type=Core" />
+    <schedulerAllocation scheduler="Scheduler_2?type=TaskScheduler" responsibility="Core_2?type=Core" />
   </mappingModel>
 </am:Amalthea>

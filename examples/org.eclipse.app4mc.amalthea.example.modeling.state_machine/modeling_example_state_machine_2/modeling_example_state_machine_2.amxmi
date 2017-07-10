@@ -216,7 +216,7 @@
   <mappingModel addressMappingType="offset">
     <taskAllocation task="Task_1?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0" />
     <taskAllocation task="Task_2?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0" />
-    <coreAllocation scheduler="Scheduler_1?type=TaskScheduler" core="Core_1?type=Core" />
+    <schedulerAllocation scheduler="Scheduler_1?type=TaskScheduler" responsibility="Core_1?type=Core" />
     <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="0" abstractElement="state?type=ModeLabel" />
     <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="8" abstractElement="message?type=ModeLabel" />
   </mappingModel>

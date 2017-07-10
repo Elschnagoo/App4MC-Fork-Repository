@@ -648,7 +648,7 @@
     <taskAllocation task="Task_4?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0" />
     <taskAllocation task="Task_5?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0" />
     <taskAllocation task="Task_6?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0" />
-    <coreAllocation scheduler="Scheduler_1?type=TaskScheduler" core="Core_1?type=Core" />
+    <schedulerAllocation scheduler="Scheduler_1?type=TaskScheduler" responsibility="Core_1?type=Core" />
     <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="0" abstractElement="u?type=ModeLabel" />
     <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="1" abstractElement="e?type=ModeLabel" />
     <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="2" abstractElement="y?type=ModeLabel" />
