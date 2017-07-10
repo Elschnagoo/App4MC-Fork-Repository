@@ -28,5 +28,5 @@ package org.eclipse.app4mc.amalthea.model;
  * @model abstract="true"
  * @generated
  */
-public interface Activation extends ReferableBaseObject {
+public interface Activation extends ReferableBaseObject, ITaggable {
 } // Activation

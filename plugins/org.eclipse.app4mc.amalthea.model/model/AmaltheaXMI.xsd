@@ -2332,6 +2332,10 @@ maximum: Maximum allowed latency</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="tags" type="am:Tag"/>
+        </xsd:choice>
+        <xsd:attribute name="tags" type="xsd:string"/>
         <xsd:attribute name="description" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -3840,11 +3844,13 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="stimulusDeviation" type="am:Deviation"/>
           <xsd:element name="setModeValueList" type="am:ModeValueList"/>
           <xsd:element name="enablingModeValueList" type="am:ModeValueList"/>
           <xsd:element name="disablingModeValueList" type="am:ModeValueList"/>
         </xsd:choice>
+        <xsd:attribute name="tags" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5370,7 +5376,12 @@ It can be also a group of runnable items without deviation, because the deviatio
 Used for first definition of an activation rate, which is later refined by stimulus.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:ReferableBaseObject"/>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="tags" type="am:Tag"/>
+        </xsd:choice>
+        <xsd:attribute name="tags" type="xsd:string"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Activation" type="am:Activation">

@@ -13518,6 +13518,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		componentScopeEClass.getESuperTypes().add(this.getDataGroupScope());
 		eventModelEClass.getESuperTypes().add(this.getBaseObject());
 		eventEClass.getESuperTypes().add(this.getReferableBaseObject());
+		eventEClass.getESuperTypes().add(this.getITaggable());
 		eventSetEClass.getESuperTypes().add(this.getEvent());
 		entityEventEClass.getESuperTypes().add(this.getEvent());
 		triggerEventEClass.getESuperTypes().add(this.getEntityEvent());
@@ -13616,6 +13617,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		memoryClassificationEClass.getESuperTypes().add(this.getClassification());
 		stimuliModelEClass.getESuperTypes().add(this.getBaseObject());
 		stimulusEClass.getESuperTypes().add(this.getReferableBaseObject());
+		stimulusEClass.getESuperTypes().add(this.getITaggable());
 		modeValueListEClass.getESuperTypes().add(this.getBaseObject());
 		modeValueListEntryEClass.getESuperTypes().add(this.getBaseObject());
 		periodicEClass.getESuperTypes().add(this.getStimulus());
@@ -13712,6 +13714,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		dataTypeDefinitionEClass.getESuperTypes().add(this.getTypeDefinition());
 		baseTypeDefinitionEClass.getESuperTypes().add(this.getTypeDefinition());
 		activationEClass.getESuperTypes().add(this.getReferableBaseObject());
+		activationEClass.getESuperTypes().add(this.getITaggable());
 		periodicActivationEClass.getESuperTypes().add(this.getActivation());
 		sporadicActivationEClass.getESuperTypes().add(this.getActivation());
 		singleActivationEClass.getESuperTypes().add(this.getActivation());

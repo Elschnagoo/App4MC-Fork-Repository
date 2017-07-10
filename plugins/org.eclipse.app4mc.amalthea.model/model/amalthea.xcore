@@ -1348,7 +1348,7 @@ class EventModel extends BaseObject
 /*
  * An abstract event
  */
-abstract class Event extends ReferableBaseObject
+abstract class Event extends ReferableBaseObject, ITaggable
 {
 	String description
 }
@@ -2420,7 +2420,7 @@ class StimuliModel extends BaseObject
  * A stimulus activates the process
  * deviationStimulus: defines the deviation of the activation times of the stimulus
  */
-abstract class Stimulus extends ReferableBaseObject
+abstract class Stimulus extends ReferableBaseObject, ITaggable
 {
 	contains Deviation<Time> stimulusDeviation
 	contains ModeValueList setModeValueList
@@ -3445,7 +3445,7 @@ class BaseTypeDefinition extends TypeDefinition
  * General abstraction for activation source.
  * Used for first definition of an activation rate, which is later refined by stimulus.
  */
-abstract class Activation extends ReferableBaseObject
+abstract class Activation extends ReferableBaseObject, ITaggable
 {
 }
 

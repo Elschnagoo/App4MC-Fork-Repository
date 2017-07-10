@@ -33,7 +33,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model abstract="true"
  * @generated
  */
-public interface Event extends ReferableBaseObject {
+public interface Event extends ReferableBaseObject, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->

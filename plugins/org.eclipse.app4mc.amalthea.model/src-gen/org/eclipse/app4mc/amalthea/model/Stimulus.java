@@ -38,7 +38,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model abstract="true"
  * @generated
  */
-public interface Stimulus extends ReferableBaseObject {
+public interface Stimulus extends ReferableBaseObject, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Stimulus Deviation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

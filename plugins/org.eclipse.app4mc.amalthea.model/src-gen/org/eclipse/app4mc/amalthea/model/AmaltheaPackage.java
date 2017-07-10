@@ -8207,13 +8207,22 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__TAGS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT__DESCRIPTION = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+	int EVENT__DESCRIPTION = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Event</em>' class.
@@ -8222,7 +8231,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
+	int EVENT_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -8287,6 +8296,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_SET__UNIQUE_NAME = EVENT__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_SET__TAGS = EVENT__TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -8380,6 +8398,15 @@ public interface AmaltheaPackage extends EPackage {
 	int ENTITY_EVENT__UNIQUE_NAME = EVENT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EVENT__TAGS = EVENT__TAGS;
+
+	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8462,6 +8489,15 @@ public interface AmaltheaPackage extends EPackage {
 	int TRIGGER_EVENT__UNIQUE_NAME = ENTITY_EVENT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER_EVENT__TAGS = ENTITY_EVENT__TAGS;
+
+	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8542,6 +8578,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CUSTOM_EVENT__UNIQUE_NAME = ENTITY_EVENT__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_EVENT__TAGS = ENTITY_EVENT__TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -8635,6 +8680,15 @@ public interface AmaltheaPackage extends EPackage {
 	int STIMULUS_EVENT__UNIQUE_NAME = ENTITY_EVENT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STIMULUS_EVENT__TAGS = ENTITY_EVENT__TAGS;
+
+	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8724,6 +8778,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_EVENT__UNIQUE_NAME = ENTITY_EVENT__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_EVENT__TAGS = ENTITY_EVENT__TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -8835,6 +8898,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESS_CHAIN_EVENT__UNIQUE_NAME = ENTITY_EVENT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_CHAIN_EVENT__TAGS = ENTITY_EVENT__TAGS;
+
+	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8942,6 +9014,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RUNNABLE_EVENT__UNIQUE_NAME = TRIGGER_EVENT__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_EVENT__TAGS = TRIGGER_EVENT__TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -9062,6 +9143,15 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL_EVENT__UNIQUE_NAME = TRIGGER_EVENT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_EVENT__TAGS = TRIGGER_EVENT__TAGS;
+
+	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9180,6 +9270,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CHANNEL_EVENT__UNIQUE_NAME = TRIGGER_EVENT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_EVENT__TAGS = TRIGGER_EVENT__TAGS;
+
+	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9296,6 +9395,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEMAPHORE_EVENT__UNIQUE_NAME = ENTITY_EVENT__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMAPHORE_EVENT__TAGS = ENTITY_EVENT__TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -16219,13 +16327,22 @@ public interface AmaltheaPackage extends EPackage {
 	int STIMULUS__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STIMULUS__TAGS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Stimulus Deviation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STIMULUS__STIMULUS_DEVIATION = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+	int STIMULUS__STIMULUS_DEVIATION = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Set Mode Value List</b></em>' containment reference.
@@ -16234,7 +16351,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STIMULUS__SET_MODE_VALUE_LIST = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
+	int STIMULUS__SET_MODE_VALUE_LIST = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Enabling Mode Value List</b></em>' containment reference.
@@ -16243,7 +16360,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STIMULUS__ENABLING_MODE_VALUE_LIST = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+	int STIMULUS__ENABLING_MODE_VALUE_LIST = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Disabling Mode Value List</b></em>' containment reference.
@@ -16252,7 +16369,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STIMULUS__DISABLING_MODE_VALUE_LIST = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
+	int STIMULUS__DISABLING_MODE_VALUE_LIST = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Stimulus</em>' class.
@@ -16261,7 +16378,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STIMULUS_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
+	int STIMULUS_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -16429,6 +16546,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC__UNIQUE_NAME = STIMULUS__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC__TAGS = STIMULUS__TAGS;
+
+	/**
 	 * The feature id for the '<em><b>Stimulus Deviation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -16565,6 +16691,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_EVENT__UNIQUE_NAME = STIMULUS__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC_EVENT__TAGS = STIMULUS__TAGS;
+
+	/**
 	 * The feature id for the '<em><b>Stimulus Deviation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -16672,6 +16807,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYNTHETIC__UNIQUE_NAME = STIMULUS__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNTHETIC__TAGS = STIMULUS__TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Stimulus Deviation</b></em>' containment reference.
@@ -16856,6 +17000,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CUSTOM_STIMULUS__UNIQUE_NAME = STIMULUS__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_STIMULUS__TAGS = STIMULUS__TAGS;
+
+	/**
 	 * The feature id for the '<em><b>Stimulus Deviation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -16972,6 +17125,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SINGLE__UNIQUE_NAME = STIMULUS__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE__TAGS = STIMULUS__TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Stimulus Deviation</b></em>' containment reference.
@@ -17092,6 +17254,15 @@ public interface AmaltheaPackage extends EPackage {
 	int INTER_PROCESS__UNIQUE_NAME = STIMULUS__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_PROCESS__TAGS = STIMULUS__TAGS;
+
+	/**
 	 * The feature id for the '<em><b>Stimulus Deviation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17210,6 +17381,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SPORADIC__UNIQUE_NAME = STIMULUS__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPORADIC__TAGS = STIMULUS__TAGS;
+
+	/**
 	 * The feature id for the '<em><b>Stimulus Deviation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17326,6 +17506,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_STIMULUS__UNIQUE_NAME = STIMULUS__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_STIMULUS__TAGS = STIMULUS__TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Stimulus Deviation</b></em>' containment reference.
@@ -17453,6 +17642,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ARRIVAL_CURVE__UNIQUE_NAME = STIMULUS__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRIVAL_CURVE__TAGS = STIMULUS__TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Stimulus Deviation</b></em>' containment reference.
@@ -23272,13 +23470,22 @@ public interface AmaltheaPackage extends EPackage {
 	int ACTIVATION__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVATION__TAGS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Activation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVATION_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+	int ACTIVATION_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -23343,6 +23550,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERIODIC_ACTIVATION__UNIQUE_NAME = ACTIVATION__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC_ACTIVATION__TAGS = ACTIVATION__TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Min</b></em>' containment reference.
@@ -23463,6 +23679,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SPORADIC_ACTIVATION__UNIQUE_NAME = ACTIVATION__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPORADIC_ACTIVATION__TAGS = ACTIVATION__TAGS;
+
+	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -23552,6 +23777,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SINGLE_ACTIVATION__UNIQUE_NAME = ACTIVATION__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_ACTIVATION__TAGS = ACTIVATION__TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Min</b></em>' containment reference.
@@ -23645,6 +23879,15 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_ACTIVATION__UNIQUE_NAME = ACTIVATION__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_ACTIVATION__TAGS = ACTIVATION__TAGS;
+
+	/**
 	 * The feature id for the '<em><b>Trigger</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -23734,6 +23977,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CUSTOM_ACTIVATION__UNIQUE_NAME = ACTIVATION__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_ACTIVATION__TAGS = ACTIVATION__TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.

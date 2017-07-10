@@ -55,9 +55,32 @@ public class EventItemProvider extends ReferableBaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addTagsPropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Tags feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTagsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ITaggable_tags_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ITaggable_tags_feature", "_UI_ITaggable_type"),
+				 AmaltheaPackage.eINSTANCE.getITaggable_Tags(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

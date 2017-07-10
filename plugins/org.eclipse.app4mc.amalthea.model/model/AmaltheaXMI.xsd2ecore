@@ -1023,8 +1023,10 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/EventModel" outputs="AmaltheaXMI.xsd#//EventModel;XSDElementDeclaration=124"/>
     <nested inputs="amalthea.xcore#/EPackage/Event" outputs="AmaltheaXMI.xsd#//Event;XSDComplexTypeDefinition=125">
-      <nested inputs="amalthea.xcore#/EPackage/Event/description" outputs="AmaltheaXMI.xsd#//Event;XSDComplexTypeDefinition=125/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/Event/description" outputs="AmaltheaXMI.xsd#//Event;XSDComplexTypeDefinition=125/XSDAttributeUse=1"/>
     </nested>
+    <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//Event;XSDComplexTypeDefinition=125/XSDAttributeUse"/>
+    <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//Event;XSDComplexTypeDefinition=125/XSDParticle/XSDModelGroup/XSDParticle"/>
     <nested inputs="amalthea.xcore#/EPackage/Event" outputs="AmaltheaXMI.xsd#//Event;XSDElementDeclaration=125"/>
     <nested inputs="amalthea.xcore#/EPackage/EventSet" outputs="AmaltheaXMI.xsd#//EventSet;XSDComplexTypeDefinition=126">
       <nested inputs="amalthea.xcore#/EPackage/EventSet/events" outputs="AmaltheaXMI.xsd#//EventSet;XSDComplexTypeDefinition=126/XSDAttributeUse"/>
@@ -1632,11 +1634,13 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/StimuliModel" outputs="AmaltheaXMI.xsd#//StimuliModel;XSDElementDeclaration=225"/>
     <nested inputs="amalthea.xcore#/EPackage/Stimulus" outputs="AmaltheaXMI.xsd#//Stimulus;XSDComplexTypeDefinition=226">
-      <nested inputs="amalthea.xcore#/EPackage/Stimulus/stimulusDeviation" outputs="AmaltheaXMI.xsd#//Stimulus;XSDComplexTypeDefinition=226/XSDParticle/XSDModelGroup/XSDParticle"/>
-      <nested inputs="amalthea.xcore#/EPackage/Stimulus/setModeValueList" outputs="AmaltheaXMI.xsd#//Stimulus;XSDComplexTypeDefinition=226/XSDParticle/XSDModelGroup/XSDParticle=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/Stimulus/enablingModeValueList" outputs="AmaltheaXMI.xsd#//Stimulus;XSDComplexTypeDefinition=226/XSDParticle/XSDModelGroup/XSDParticle=2"/>
-      <nested inputs="amalthea.xcore#/EPackage/Stimulus/disablingModeValueList" outputs="AmaltheaXMI.xsd#//Stimulus;XSDComplexTypeDefinition=226/XSDParticle/XSDModelGroup/XSDParticle=3"/>
+      <nested inputs="amalthea.xcore#/EPackage/Stimulus/stimulusDeviation" outputs="AmaltheaXMI.xsd#//Stimulus;XSDComplexTypeDefinition=226/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/Stimulus/setModeValueList" outputs="AmaltheaXMI.xsd#//Stimulus;XSDComplexTypeDefinition=226/XSDParticle/XSDModelGroup/XSDParticle=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/Stimulus/enablingModeValueList" outputs="AmaltheaXMI.xsd#//Stimulus;XSDComplexTypeDefinition=226/XSDParticle/XSDModelGroup/XSDParticle=3"/>
+      <nested inputs="amalthea.xcore#/EPackage/Stimulus/disablingModeValueList" outputs="AmaltheaXMI.xsd#//Stimulus;XSDComplexTypeDefinition=226/XSDParticle/XSDModelGroup/XSDParticle=4"/>
     </nested>
+    <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//Stimulus;XSDComplexTypeDefinition=226/XSDAttributeUse"/>
+    <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//Stimulus;XSDComplexTypeDefinition=226/XSDParticle/XSDModelGroup/XSDParticle"/>
     <nested inputs="amalthea.xcore#/EPackage/Stimulus" outputs="AmaltheaXMI.xsd#//Stimulus;XSDElementDeclaration=226"/>
     <nested inputs="amalthea.xcore#/EPackage/ModeValueList" outputs="AmaltheaXMI.xsd#//ModeValueList;XSDComplexTypeDefinition=227">
       <nested inputs="amalthea.xcore#/EPackage/ModeValueList/entries" outputs="AmaltheaXMI.xsd#//ModeValueList;XSDComplexTypeDefinition=227/XSDParticle/XSDModelGroup/XSDParticle"/>
@@ -2116,6 +2120,8 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/BaseTypeDefinition" outputs="AmaltheaXMI.xsd#//BaseTypeDefinition;XSDElementDeclaration=312"/>
     <nested inputs="amalthea.xcore#/EPackage/Activation" outputs="AmaltheaXMI.xsd#//Activation;XSDComplexTypeDefinition=313"/>
+    <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//Activation;XSDComplexTypeDefinition=313/XSDAttributeUse"/>
+    <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//Activation;XSDComplexTypeDefinition=313/XSDParticle/XSDModelGroup/XSDParticle"/>
     <nested inputs="amalthea.xcore#/EPackage/Activation" outputs="AmaltheaXMI.xsd#//Activation;XSDElementDeclaration=313"/>
     <nested inputs="amalthea.xcore#/EPackage/PeriodicActivation" outputs="AmaltheaXMI.xsd#//PeriodicActivation;XSDComplexTypeDefinition=314">
       <nested inputs="amalthea.xcore#/EPackage/PeriodicActivation/min" outputs="AmaltheaXMI.xsd#//PeriodicActivation;XSDComplexTypeDefinition=314/XSDParticle/XSDModelGroup/XSDParticle"/>
