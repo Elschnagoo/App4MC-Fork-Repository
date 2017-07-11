@@ -70,6 +70,8 @@ import org.eclipse.app4mc.amalthea.model.Composite;
 import org.eclipse.app4mc.amalthea.model.CompoundType;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.Connector;
+import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
+import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
@@ -101,10 +103,12 @@ import org.eclipse.app4mc.amalthea.model.DataStabilityGroup;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
+import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
+import org.eclipse.app4mc.amalthea.model.DynamicPriority;
 import org.eclipse.app4mc.amalthea.model.ECU;
 import org.eclipse.app4mc.amalthea.model.ECUType;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
@@ -126,6 +130,8 @@ import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
+import org.eclipse.app4mc.amalthea.model.FixedPriority;
+import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
@@ -133,6 +139,7 @@ import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HardwareTypeDescription;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
@@ -218,6 +225,7 @@ import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
 import org.eclipse.app4mc.amalthea.model.Pin;
 import org.eclipse.app4mc.amalthea.model.Pointer;
+import org.eclipse.app4mc.amalthea.model.PollingPeriodicServer;
 import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
@@ -249,6 +257,7 @@ import org.eclipse.app4mc.amalthea.model.ReferenceObject;
 import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
 import org.eclipse.app4mc.amalthea.model.Requirement;
 import org.eclipse.app4mc.amalthea.model.RequirementLimit;
+import org.eclipse.app4mc.amalthea.model.ReservationBasedServer;
 import org.eclipse.app4mc.amalthea.model.RunEntityCallStatistic;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint;
@@ -291,6 +300,7 @@ import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
 import org.eclipse.app4mc.amalthea.model.Sporadic;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
+import org.eclipse.app4mc.amalthea.model.SporadicServer;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.StimulusEvent;
@@ -2061,12 +2071,52 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.FIXED_PRIORITY: {
+				FixedPriority fixedPriority = (FixedPriority)theEObject;
+				T1 result = caseFixedPriority(fixedPriority);
+				if (result == null) result = caseTaskSchedulingAlgorithm(fixedPriority);
+				if (result == null) result = caseBaseObject(fixedPriority);
+				if (result == null) result = caseIAnnotatable(fixedPriority);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.FIXED_PRIORITY_PREEMPTIVE: {
+				FixedPriorityPreemptive fixedPriorityPreemptive = (FixedPriorityPreemptive)theEObject;
+				T1 result = caseFixedPriorityPreemptive(fixedPriorityPreemptive);
+				if (result == null) result = caseFixedPriority(fixedPriorityPreemptive);
+				if (result == null) result = caseTaskSchedulingAlgorithm(fixedPriorityPreemptive);
+				if (result == null) result = caseBaseObject(fixedPriorityPreemptive);
+				if (result == null) result = caseIAnnotatable(fixedPriorityPreemptive);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.OSEK: {
 				OSEK osek = (OSEK)theEObject;
 				T1 result = caseOSEK(osek);
+				if (result == null) result = caseFixedPriority(osek);
 				if (result == null) result = caseTaskSchedulingAlgorithm(osek);
 				if (result == null) result = caseBaseObject(osek);
 				if (result == null) result = caseIAnnotatable(osek);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.DEADLINE_MONOTONIC: {
+				DeadlineMonotonic deadlineMonotonic = (DeadlineMonotonic)theEObject;
+				T1 result = caseDeadlineMonotonic(deadlineMonotonic);
+				if (result == null) result = caseFixedPriority(deadlineMonotonic);
+				if (result == null) result = caseTaskSchedulingAlgorithm(deadlineMonotonic);
+				if (result == null) result = caseBaseObject(deadlineMonotonic);
+				if (result == null) result = caseIAnnotatable(deadlineMonotonic);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.RATE_MONOTONIC: {
+				RateMonotonic rateMonotonic = (RateMonotonic)theEObject;
+				T1 result = caseRateMonotonic(rateMonotonic);
+				if (result == null) result = caseFixedPriority(rateMonotonic);
+				if (result == null) result = caseTaskSchedulingAlgorithm(rateMonotonic);
+				if (result == null) result = caseBaseObject(rateMonotonic);
+				if (result == null) result = caseIAnnotatable(rateMonotonic);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2119,9 +2169,19 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.DYNAMIC_PRIORITY: {
+				DynamicPriority dynamicPriority = (DynamicPriority)theEObject;
+				T1 result = caseDynamicPriority(dynamicPriority);
+				if (result == null) result = caseTaskSchedulingAlgorithm(dynamicPriority);
+				if (result == null) result = caseBaseObject(dynamicPriority);
+				if (result == null) result = caseIAnnotatable(dynamicPriority);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.LEAST_LOCAL_REMAINING_EXECUTION_TIME_FIRST: {
 				LeastLocalRemainingExecutionTimeFirst leastLocalRemainingExecutionTimeFirst = (LeastLocalRemainingExecutionTimeFirst)theEObject;
 				T1 result = caseLeastLocalRemainingExecutionTimeFirst(leastLocalRemainingExecutionTimeFirst);
+				if (result == null) result = caseDynamicPriority(leastLocalRemainingExecutionTimeFirst);
 				if (result == null) result = caseTaskSchedulingAlgorithm(leastLocalRemainingExecutionTimeFirst);
 				if (result == null) result = caseBaseObject(leastLocalRemainingExecutionTimeFirst);
 				if (result == null) result = caseIAnnotatable(leastLocalRemainingExecutionTimeFirst);
@@ -2131,36 +2191,88 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.EARLIEST_DEADLINE_FIRST: {
 				EarliestDeadlineFirst earliestDeadlineFirst = (EarliestDeadlineFirst)theEObject;
 				T1 result = caseEarliestDeadlineFirst(earliestDeadlineFirst);
+				if (result == null) result = caseDynamicPriority(earliestDeadlineFirst);
 				if (result == null) result = caseTaskSchedulingAlgorithm(earliestDeadlineFirst);
 				if (result == null) result = caseBaseObject(earliestDeadlineFirst);
 				if (result == null) result = caseIAnnotatable(earliestDeadlineFirst);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.DEADLINE_MONOTONIC: {
-				DeadlineMonotonic deadlineMonotonic = (DeadlineMonotonic)theEObject;
-				T1 result = caseDeadlineMonotonic(deadlineMonotonic);
-				if (result == null) result = caseTaskSchedulingAlgorithm(deadlineMonotonic);
-				if (result == null) result = caseBaseObject(deadlineMonotonic);
-				if (result == null) result = caseIAnnotatable(deadlineMonotonic);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.RATE_MONOTONIC: {
-				RateMonotonic rateMonotonic = (RateMonotonic)theEObject;
-				T1 result = caseRateMonotonic(rateMonotonic);
-				if (result == null) result = caseTaskSchedulingAlgorithm(rateMonotonic);
-				if (result == null) result = caseBaseObject(rateMonotonic);
-				if (result == null) result = caseIAnnotatable(rateMonotonic);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.PRIORITY_BASED_ROUND_ROBIN: {
 				PriorityBasedRoundRobin priorityBasedRoundRobin = (PriorityBasedRoundRobin)theEObject;
 				T1 result = casePriorityBasedRoundRobin(priorityBasedRoundRobin);
+				if (result == null) result = caseDynamicPriority(priorityBasedRoundRobin);
 				if (result == null) result = caseTaskSchedulingAlgorithm(priorityBasedRoundRobin);
 				if (result == null) result = caseBaseObject(priorityBasedRoundRobin);
 				if (result == null) result = caseIAnnotatable(priorityBasedRoundRobin);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.RESERVATION_BASED_SERVER: {
+				ReservationBasedServer reservationBasedServer = (ReservationBasedServer)theEObject;
+				T1 result = caseReservationBasedServer(reservationBasedServer);
+				if (result == null) result = caseTaskSchedulingAlgorithm(reservationBasedServer);
+				if (result == null) result = caseBaseObject(reservationBasedServer);
+				if (result == null) result = caseIAnnotatable(reservationBasedServer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.DEFERRABLE_SERVER: {
+				DeferrableServer deferrableServer = (DeferrableServer)theEObject;
+				T1 result = caseDeferrableServer(deferrableServer);
+				if (result == null) result = caseReservationBasedServer(deferrableServer);
+				if (result == null) result = caseTaskSchedulingAlgorithm(deferrableServer);
+				if (result == null) result = caseBaseObject(deferrableServer);
+				if (result == null) result = caseIAnnotatable(deferrableServer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.POLLING_PERIODIC_SERVER: {
+				PollingPeriodicServer pollingPeriodicServer = (PollingPeriodicServer)theEObject;
+				T1 result = casePollingPeriodicServer(pollingPeriodicServer);
+				if (result == null) result = caseReservationBasedServer(pollingPeriodicServer);
+				if (result == null) result = caseTaskSchedulingAlgorithm(pollingPeriodicServer);
+				if (result == null) result = caseBaseObject(pollingPeriodicServer);
+				if (result == null) result = caseIAnnotatable(pollingPeriodicServer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.SPORADIC_SERVER: {
+				SporadicServer sporadicServer = (SporadicServer)theEObject;
+				T1 result = caseSporadicServer(sporadicServer);
+				if (result == null) result = caseReservationBasedServer(sporadicServer);
+				if (result == null) result = caseTaskSchedulingAlgorithm(sporadicServer);
+				if (result == null) result = caseBaseObject(sporadicServer);
+				if (result == null) result = caseIAnnotatable(sporadicServer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CONSTANT_BANDWIDTH_SERVER: {
+				ConstantBandwidthServer constantBandwidthServer = (ConstantBandwidthServer)theEObject;
+				T1 result = caseConstantBandwidthServer(constantBandwidthServer);
+				if (result == null) result = caseReservationBasedServer(constantBandwidthServer);
+				if (result == null) result = caseTaskSchedulingAlgorithm(constantBandwidthServer);
+				if (result == null) result = caseBaseObject(constantBandwidthServer);
+				if (result == null) result = caseIAnnotatable(constantBandwidthServer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CONSTANT_BANDWIDTH_SERVER_WITH_CASH: {
+				ConstantBandwidthServerWithCASH constantBandwidthServerWithCASH = (ConstantBandwidthServerWithCASH)theEObject;
+				T1 result = caseConstantBandwidthServerWithCASH(constantBandwidthServerWithCASH);
+				if (result == null) result = caseReservationBasedServer(constantBandwidthServerWithCASH);
+				if (result == null) result = caseTaskSchedulingAlgorithm(constantBandwidthServerWithCASH);
+				if (result == null) result = caseBaseObject(constantBandwidthServerWithCASH);
+				if (result == null) result = caseIAnnotatable(constantBandwidthServerWithCASH);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.GROUPING: {
+				Grouping grouping = (Grouping)theEObject;
+				T1 result = caseGrouping(grouping);
+				if (result == null) result = caseTaskSchedulingAlgorithm(grouping);
+				if (result == null) result = caseBaseObject(grouping);
+				if (result == null) result = caseIAnnotatable(grouping);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -6167,6 +6279,36 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Fixed Priority</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Fixed Priority</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseFixedPriority(FixedPriority object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Fixed Priority Preemptive</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Fixed Priority Preemptive</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseFixedPriorityPreemptive(FixedPriorityPreemptive object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>OSEK</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -6178,6 +6320,36 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseOSEK(OSEK object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Deadline Monotonic</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Deadline Monotonic</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseDeadlineMonotonic(DeadlineMonotonic object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Rate Monotonic</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Rate Monotonic</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseRateMonotonic(RateMonotonic object) {
 		return null;
 	}
 
@@ -6257,6 +6429,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Dynamic Priority</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Dynamic Priority</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseDynamicPriority(DynamicPriority object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Least Local Remaining Execution Time First</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -6287,36 +6474,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Deadline Monotonic</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Deadline Monotonic</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseDeadlineMonotonic(DeadlineMonotonic object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Rate Monotonic</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Rate Monotonic</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseRateMonotonic(RateMonotonic object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Priority Based Round Robin</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -6328,6 +6485,111 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 casePriorityBasedRoundRobin(PriorityBasedRoundRobin object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reservation Based Server</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reservation Based Server</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseReservationBasedServer(ReservationBasedServer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Deferrable Server</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Deferrable Server</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseDeferrableServer(DeferrableServer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Polling Periodic Server</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Polling Periodic Server</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 casePollingPeriodicServer(PollingPeriodicServer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sporadic Server</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sporadic Server</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseSporadicServer(SporadicServer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Constant Bandwidth Server</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Constant Bandwidth Server</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseConstantBandwidthServer(ConstantBandwidthServer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Constant Bandwidth Server With CASH</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Constant Bandwidth Server With CASH</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseConstantBandwidthServerWithCASH(ConstantBandwidthServerWithCASH object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Grouping</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Grouping</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseGrouping(Grouping object) {
 		return null;
 	}
 

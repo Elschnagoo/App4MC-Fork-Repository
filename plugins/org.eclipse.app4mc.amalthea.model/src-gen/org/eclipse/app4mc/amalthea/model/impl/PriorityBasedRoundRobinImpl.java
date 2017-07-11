@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class PriorityBasedRoundRobinImpl extends TaskSchedulingAlgorithmImpl implements PriorityBasedRoundRobin {
+public class PriorityBasedRoundRobinImpl extends DynamicPriorityImpl implements PriorityBasedRoundRobin {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

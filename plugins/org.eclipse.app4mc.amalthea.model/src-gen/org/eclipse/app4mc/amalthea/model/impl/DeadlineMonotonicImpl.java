@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class DeadlineMonotonicImpl extends TaskSchedulingAlgorithmImpl implements DeadlineMonotonic {
+public class DeadlineMonotonicImpl extends FixedPriorityImpl implements DeadlineMonotonic {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

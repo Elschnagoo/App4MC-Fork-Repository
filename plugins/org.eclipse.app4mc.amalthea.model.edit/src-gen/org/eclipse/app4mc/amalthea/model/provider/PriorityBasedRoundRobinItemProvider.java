@@ -27,7 +27,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PriorityBasedRoundRobinItemProvider extends TaskSchedulingAlgorithmItemProvider {
+public class PriorityBasedRoundRobinItemProvider extends DynamicPriorityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

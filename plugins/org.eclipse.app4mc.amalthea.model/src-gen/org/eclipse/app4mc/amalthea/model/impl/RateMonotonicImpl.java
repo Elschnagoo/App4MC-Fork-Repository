@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class RateMonotonicImpl extends TaskSchedulingAlgorithmImpl implements RateMonotonic {
+public class RateMonotonicImpl extends FixedPriorityImpl implements RateMonotonic {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

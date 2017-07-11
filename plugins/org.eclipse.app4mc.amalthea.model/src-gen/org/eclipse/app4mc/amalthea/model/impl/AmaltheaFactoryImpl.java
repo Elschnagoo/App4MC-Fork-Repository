@@ -64,6 +64,8 @@ import org.eclipse.app4mc.amalthea.model.ConcurrencyType;
 import org.eclipse.app4mc.amalthea.model.Condition;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.Connector;
+import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
+import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
@@ -93,6 +95,7 @@ import org.eclipse.app4mc.amalthea.model.DataStabilityGroup;
 import org.eclipse.app4mc.amalthea.model.DataStabilityLevel;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
+import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
@@ -114,6 +117,7 @@ import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
+import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
@@ -121,6 +125,7 @@ import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.GroupingType;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
@@ -206,6 +211,7 @@ import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
 import org.eclipse.app4mc.amalthea.model.Pin;
 import org.eclipse.app4mc.amalthea.model.PinType;
 import org.eclipse.app4mc.amalthea.model.Pointer;
+import org.eclipse.app4mc.amalthea.model.PollingPeriodicServer;
 import org.eclipse.app4mc.amalthea.model.Preemption;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
@@ -274,6 +280,7 @@ import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
 import org.eclipse.app4mc.amalthea.model.Sporadic;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
+import org.eclipse.app4mc.amalthea.model.SporadicServer;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.StimulusEvent;
 import org.eclipse.app4mc.amalthea.model.StringObject;
@@ -508,16 +515,23 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.INTERRUPT_CONTROLLER: return createInterruptController();
 			case AmaltheaPackage.SCHEDULING_PARAMETERS: return createSchedulingParameters();
 			case AmaltheaPackage.PARAMETER_EXTENSION: return (EObject)createParameterExtension();
+			case AmaltheaPackage.FIXED_PRIORITY_PREEMPTIVE: return createFixedPriorityPreemptive();
 			case AmaltheaPackage.OSEK: return createOSEK();
+			case AmaltheaPackage.DEADLINE_MONOTONIC: return createDeadlineMonotonic();
+			case AmaltheaPackage.RATE_MONOTONIC: return createRateMonotonic();
 			case AmaltheaPackage.PFAIR_PD2: return createPfairPD2();
 			case AmaltheaPackage.PARTLY_PFAIR_PD2: return createPartlyPFairPD2();
 			case AmaltheaPackage.EARLY_RELEASE_FAIR_PD2: return createEarlyReleaseFairPD2();
 			case AmaltheaPackage.PARTLY_EARLY_RELEASE_FAIR_PD2: return createPartlyEarlyReleaseFairPD2();
 			case AmaltheaPackage.LEAST_LOCAL_REMAINING_EXECUTION_TIME_FIRST: return createLeastLocalRemainingExecutionTimeFirst();
 			case AmaltheaPackage.EARLIEST_DEADLINE_FIRST: return createEarliestDeadlineFirst();
-			case AmaltheaPackage.DEADLINE_MONOTONIC: return createDeadlineMonotonic();
-			case AmaltheaPackage.RATE_MONOTONIC: return createRateMonotonic();
 			case AmaltheaPackage.PRIORITY_BASED_ROUND_ROBIN: return createPriorityBasedRoundRobin();
+			case AmaltheaPackage.DEFERRABLE_SERVER: return createDeferrableServer();
+			case AmaltheaPackage.POLLING_PERIODIC_SERVER: return createPollingPeriodicServer();
+			case AmaltheaPackage.SPORADIC_SERVER: return createSporadicServer();
+			case AmaltheaPackage.CONSTANT_BANDWIDTH_SERVER: return createConstantBandwidthServer();
+			case AmaltheaPackage.CONSTANT_BANDWIDTH_SERVER_WITH_CASH: return createConstantBandwidthServerWithCASH();
+			case AmaltheaPackage.GROUPING: return createGrouping();
 			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM: return createUserSpecificSchedulingAlgorithm();
 			case AmaltheaPackage.PRIORITY_BASED: return createPriorityBased();
 			case AmaltheaPackage.SCHEDULING_HW_UNIT: return createSchedulingHWUnit();
@@ -2273,9 +2287,39 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public FixedPriorityPreemptive createFixedPriorityPreemptive() {
+		FixedPriorityPreemptiveImpl fixedPriorityPreemptive = new FixedPriorityPreemptiveImpl();
+		return fixedPriorityPreemptive;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OSEK createOSEK() {
 		OSEKImpl osek = new OSEKImpl();
 		return osek;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DeadlineMonotonic createDeadlineMonotonic() {
+		DeadlineMonotonicImpl deadlineMonotonic = new DeadlineMonotonicImpl();
+		return deadlineMonotonic;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RateMonotonic createRateMonotonic() {
+		RateMonotonicImpl rateMonotonic = new RateMonotonicImpl();
+		return rateMonotonic;
 	}
 
 	/**
@@ -2343,29 +2387,69 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DeadlineMonotonic createDeadlineMonotonic() {
-		DeadlineMonotonicImpl deadlineMonotonic = new DeadlineMonotonicImpl();
-		return deadlineMonotonic;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RateMonotonic createRateMonotonic() {
-		RateMonotonicImpl rateMonotonic = new RateMonotonicImpl();
-		return rateMonotonic;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public PriorityBasedRoundRobin createPriorityBasedRoundRobin() {
 		PriorityBasedRoundRobinImpl priorityBasedRoundRobin = new PriorityBasedRoundRobinImpl();
 		return priorityBasedRoundRobin;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DeferrableServer createDeferrableServer() {
+		DeferrableServerImpl deferrableServer = new DeferrableServerImpl();
+		return deferrableServer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PollingPeriodicServer createPollingPeriodicServer() {
+		PollingPeriodicServerImpl pollingPeriodicServer = new PollingPeriodicServerImpl();
+		return pollingPeriodicServer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SporadicServer createSporadicServer() {
+		SporadicServerImpl sporadicServer = new SporadicServerImpl();
+		return sporadicServer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConstantBandwidthServer createConstantBandwidthServer() {
+		ConstantBandwidthServerImpl constantBandwidthServer = new ConstantBandwidthServerImpl();
+		return constantBandwidthServer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConstantBandwidthServerWithCASH createConstantBandwidthServerWithCASH() {
+		ConstantBandwidthServerWithCASHImpl constantBandwidthServerWithCASH = new ConstantBandwidthServerWithCASHImpl();
+		return constantBandwidthServerWithCASH;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Grouping createGrouping() {
+		GroupingImpl grouping = new GroupingImpl();
+		return grouping;
 	}
 
 	/**

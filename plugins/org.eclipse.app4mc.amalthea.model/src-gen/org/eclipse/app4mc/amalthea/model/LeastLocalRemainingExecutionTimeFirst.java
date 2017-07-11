@@ -27,5 +27,5 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface LeastLocalRemainingExecutionTimeFirst extends TaskSchedulingAlgorithm {
+public interface LeastLocalRemainingExecutionTimeFirst extends DynamicPriority {
 } // LeastLocalRemainingExecutionTimeFirst

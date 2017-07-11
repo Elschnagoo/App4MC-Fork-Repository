@@ -27,5 +27,5 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface PriorityBasedRoundRobin extends TaskSchedulingAlgorithm {
+public interface PriorityBasedRoundRobin extends DynamicPriority {
 } // PriorityBasedRoundRobin

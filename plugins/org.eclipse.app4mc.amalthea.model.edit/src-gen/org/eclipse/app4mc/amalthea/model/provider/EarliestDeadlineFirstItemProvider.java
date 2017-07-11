@@ -27,7 +27,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class EarliestDeadlineFirstItemProvider extends TaskSchedulingAlgorithmItemProvider {
+public class EarliestDeadlineFirstItemProvider extends DynamicPriorityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class OSEKImpl extends TaskSchedulingAlgorithmImpl implements OSEK {
+public class OSEKImpl extends FixedPriorityImpl implements OSEK {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

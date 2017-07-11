@@ -185,7 +185,22 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
+				 AmaltheaFactory.eINSTANCE.createFixedPriorityPreemptive()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
 				 AmaltheaFactory.eINSTANCE.createOSEK()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
+				 AmaltheaFactory.eINSTANCE.createDeadlineMonotonic()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
+				 AmaltheaFactory.eINSTANCE.createRateMonotonic()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -220,17 +235,37 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createDeadlineMonotonic()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
-				 AmaltheaFactory.eINSTANCE.createRateMonotonic()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
 				 AmaltheaFactory.eINSTANCE.createPriorityBasedRoundRobin()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
+				 AmaltheaFactory.eINSTANCE.createDeferrableServer()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
+				 AmaltheaFactory.eINSTANCE.createPollingPeriodicServer()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
+				 AmaltheaFactory.eINSTANCE.createSporadicServer()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
+				 AmaltheaFactory.eINSTANCE.createConstantBandwidthServer()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
+				 AmaltheaFactory.eINSTANCE.createConstantBandwidthServerWithCASH()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
+				 AmaltheaFactory.eINSTANCE.createGrouping()));
 
 		newChildDescriptors.add
 			(createChildParameter

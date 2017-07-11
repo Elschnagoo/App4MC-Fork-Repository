@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class EarliestDeadlineFirstImpl extends TaskSchedulingAlgorithmImpl implements EarliestDeadlineFirst {
+public class EarliestDeadlineFirstImpl extends DynamicPriorityImpl implements EarliestDeadlineFirst {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

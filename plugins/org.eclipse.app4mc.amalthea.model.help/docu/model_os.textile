@@ -32,6 +32,8 @@ h4. Scheduling SW Unit
 
 This class is used when scheduling is done by software unit.
 
+*TODO update diagram (Instructions!)*
+
 !../pictures/model_os_swunit.png!
 
 h4. Scheduling Algorithm
@@ -40,17 +42,35 @@ This is an abstract class for the different scheduling algorithms.
 
 table(classic). 
 |_. Scheduling Algorithm  |_. Description |
-| OSEK | OSEK compliant Scheduling Algorithm |
-| PfairPD2 | Proportionate Fair PD ^2^ Scheduling Algorithm |
-| PartlyPFairPD2 | PPfair-PD ^2^ (Partly Proportionate Fair PD ^2^ Scheduling Algorithm) |
-| PartlyEarlyReleaseFairPD2 | P-ERfair-PD ^2^ (Partly Early Release Fair PD ^2^ Scheduling Algorithm) |
-| EarlyReleaseFairPD2 | ERfair-PD ^2^ (Early Release Fair PD ^2^ Scheduling Algorithm) |
-| LeastLocalRemainingExecutionTimeFirst | Task with the smallest local remaining execution time gets the highest priority |
-| EarliestDeadlineFirst | EDF (Earliest Deadline First Scheduling Algorithm): Task with the earliest deadline gets the highest priority |
-| DeadlineMonotonic | DMS (Deadline Monotonic Scheduling Algorithm): Task with the shortest period gets the lowest priority |
-| RateMonotonic | RMS (Rate Monotonic Scheduling Algorithm): Task with the shortest period gets the highest priority |
-| PriorityBasedRoundRobin | Round Robin Scheduling Algorithm with prioritized processes |
-| UserSpecificSchedulingAlgorithm | This class contains a list of algorithm parameter. Each parameter has a key and a value (both Strings). A user can store all information for its own specific scheduling algorithm here |
+| Grouping | This scheduler is a logical grouping of tasks/child-schedulers, e.g. a partition with attached budget for all tasks. This scheduler does not take any scheduling decisions and a parent scheduler is mandatory. |
+| UserSpecificSchedulingAlgorithm | This class contains a list of algorithm parameters. Each parameter has a key and a value (both Strings). A user can store all information for its own specific scheduling algorithm here. |
+|\2{background:#e6ffe6;}. Fixed Priority |
+| OSEK | OSEK compliant Scheduling |
+| FixedPriorityPreemptive | Fixed Priority Preemptive Scheduling (e.g. AUTOSAR) |
+| DeadlineMonotonic | Deadline Monotonic Scheduling (DMS): Task with the shortest period gets the lowest priority. |
+| RateMonotonic | Rate Monotonic Scheduling (RMS): Task with the shortest period gets the highest priority. |
+|\2{background:#e6ffe6;}. Dynamic Priority |
+| EarliestDeadlineFirst | Earliest Deadline First (EDF): Task with the earliest deadline gets the highest priority. |
+| LeastLocalRemainingExecutionTimeFirst | Least Local Remaining Execution-time First (LLREF): Task with the smallest local remaining execution time gets the highest priority. |
+| PriorityBasedRoundRobin | Round Robin Scheduling Algorithm with prioritized processes. |
+|\2{background:#e6ffe6;}. Proportionate Fair (Pfair) |
+| PfairPD2 | Proportionate Fair PD<notextile><sup>2</sup></notextile> Scheduling (Pfair-PD<notextile><sup>2</sup></notextile>) |
+| PartlyPfairPD2 | Partly Proportionate Fair PD<notextile><sup>2</sup></notextile> Scheduling (PPfair-PD<notextile><sup>2</sup></notextile>) |
+| EarlyReleaseFairPD2 | Early Release Fair PD<notextile><sup>2</sup></notextile> Scheduling (ERfair-PD<notextile><sup>2</sup></notextile>) |
+| PartlyEarlyReleaseFairPD2 | Partly Early Release Fair PD<notextile><sup>2</sup></notextile> Scheduling (P-ERfair-PD<notextile><sup>2</sup></notextile>) |
+|\2{background:#e6ffe6;}. Reservation Based Server |
+| DeferrableServer | Deferrable Server (DS): provides a fixed budget, in which the budget replenishment is done periodically. |
+| PollingPeriodicServer | Polling Server (PS): provides a fixed budget periodically that is only available at pre-defined times. |
+| SporadicServer | Sporadic Server (SS): provides a fixed budget, in which the budget replenishment is performed only if it was consumed. |
+| ConstantBandwidthServer | Constant Bandwidth Server (CBS): provides a fixed utilization for executing jobs, in which the deadline for execution is independent on the execution time of jobs. |
+| ConstantBandwidthServerWithCASH | Constant Bandwidth Server (CBS) with capacity sharing (CASH). Consumes residual slack from other servers (work conserving). |
+
+h5. Further information
+
+Details regarding proportionate fair (*Pfair*) scheduling and the variants of the *PD<notextile><sup>2</sup></notextile> Pfair* algorithm can be found in the dissertation "Effcient and Flexible Fair Scheduling of Real-time Tasks on Multiprocessors" by Anand Srinivasan (see "dissertation":https://www.cs.unc.edu/~anderson/diss/srinidiss.pdf at University of North Carolina at Chapel Hill).
+
+An overview regarding *Reservation Servers* is given in the lecture "Resource Reservation Servers" by Jan Reineke (see "lecture":https://embedded.cs.uni-saarland.de/lectures/realtimesystems/resourceReservationServers.pdf at Saarland University).
+
 
 
 h3. Os Overhead

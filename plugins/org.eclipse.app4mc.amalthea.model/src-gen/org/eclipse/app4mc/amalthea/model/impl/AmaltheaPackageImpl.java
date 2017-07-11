@@ -80,6 +80,8 @@ import org.eclipse.app4mc.amalthea.model.ConcurrencyType;
 import org.eclipse.app4mc.amalthea.model.Condition;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.Connector;
+import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
+import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
@@ -115,10 +117,12 @@ import org.eclipse.app4mc.amalthea.model.DataStabilityLevel;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
+import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
+import org.eclipse.app4mc.amalthea.model.DynamicPriority;
 import org.eclipse.app4mc.amalthea.model.ECUType;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
@@ -139,6 +143,8 @@ import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
+import org.eclipse.app4mc.amalthea.model.FixedPriority;
+import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
@@ -148,6 +154,7 @@ import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.GroupingType;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HardwareTypeDescription;
@@ -247,6 +254,7 @@ import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
 import org.eclipse.app4mc.amalthea.model.Pin;
 import org.eclipse.app4mc.amalthea.model.PinType;
 import org.eclipse.app4mc.amalthea.model.Pointer;
+import org.eclipse.app4mc.amalthea.model.PollingPeriodicServer;
 import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.Preemption;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
@@ -283,6 +291,7 @@ import org.eclipse.app4mc.amalthea.model.ReferenceObject;
 import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
 import org.eclipse.app4mc.amalthea.model.Requirement;
 import org.eclipse.app4mc.amalthea.model.RequirementLimit;
+import org.eclipse.app4mc.amalthea.model.ReservationBasedServer;
 import org.eclipse.app4mc.amalthea.model.RunEntityCallStatistic;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint;
@@ -332,6 +341,7 @@ import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
 import org.eclipse.app4mc.amalthea.model.Sporadic;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
+import org.eclipse.app4mc.amalthea.model.SporadicServer;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.StimulusEvent;
@@ -1759,7 +1769,35 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass fixedPriorityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fixedPriorityPreemptiveEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass osekEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass deadlineMonotonicEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass rateMonotonicEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1801,6 +1839,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass dynamicPriorityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass leastLocalRemainingExecutionTimeFirstEClass = null;
 
 	/**
@@ -1815,21 +1860,56 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass deadlineMonotonicEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass rateMonotonicEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass priorityBasedRoundRobinEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass reservationBasedServerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass deferrableServerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pollingPeriodicServerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sporadicServerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass constantBandwidthServerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass constantBandwidthServerWithCASHEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass groupingEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -8122,8 +8202,44 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getFixedPriority() {
+		return fixedPriorityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFixedPriorityPreemptive() {
+		return fixedPriorityPreemptiveEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOSEK() {
 		return osekEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDeadlineMonotonic() {
+		return deadlineMonotonicEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRateMonotonic() {
+		return rateMonotonicEClass;
 	}
 
 	/**
@@ -8185,6 +8301,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDynamicPriority() {
+		return dynamicPriorityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLeastLocalRemainingExecutionTimeFirst() {
 		return leastLocalRemainingExecutionTimeFirstEClass;
 	}
@@ -8203,26 +8328,71 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDeadlineMonotonic() {
-		return deadlineMonotonicEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getRateMonotonic() {
-		return rateMonotonicEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPriorityBasedRoundRobin() {
 		return priorityBasedRoundRobinEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getReservationBasedServer() {
+		return reservationBasedServerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDeferrableServer() {
+		return deferrableServerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPollingPeriodicServer() {
+		return pollingPeriodicServerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSporadicServer() {
+		return sporadicServerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConstantBandwidthServer() {
+		return constantBandwidthServerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConstantBandwidthServerWithCASH() {
+		return constantBandwidthServerWithCASHEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGrouping() {
+		return groupingEClass;
 	}
 
 	/**
@@ -12763,7 +12933,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		taskSchedulingAlgorithmEClass = createEClass(TASK_SCHEDULING_ALGORITHM);
 
+		fixedPriorityEClass = createEClass(FIXED_PRIORITY);
+
+		fixedPriorityPreemptiveEClass = createEClass(FIXED_PRIORITY_PREEMPTIVE);
+
 		osekEClass = createEClass(OSEK);
+
+		deadlineMonotonicEClass = createEClass(DEADLINE_MONOTONIC);
+
+		rateMonotonicEClass = createEClass(RATE_MONOTONIC);
 
 		pfairEClass = createEClass(PFAIR);
 		createEAttribute(pfairEClass, PFAIR__QUANT_SIZE_NS);
@@ -12776,15 +12954,27 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		partlyEarlyReleaseFairPD2EClass = createEClass(PARTLY_EARLY_RELEASE_FAIR_PD2);
 
+		dynamicPriorityEClass = createEClass(DYNAMIC_PRIORITY);
+
 		leastLocalRemainingExecutionTimeFirstEClass = createEClass(LEAST_LOCAL_REMAINING_EXECUTION_TIME_FIRST);
 
 		earliestDeadlineFirstEClass = createEClass(EARLIEST_DEADLINE_FIRST);
 
-		deadlineMonotonicEClass = createEClass(DEADLINE_MONOTONIC);
-
-		rateMonotonicEClass = createEClass(RATE_MONOTONIC);
-
 		priorityBasedRoundRobinEClass = createEClass(PRIORITY_BASED_ROUND_ROBIN);
+
+		reservationBasedServerEClass = createEClass(RESERVATION_BASED_SERVER);
+
+		deferrableServerEClass = createEClass(DEFERRABLE_SERVER);
+
+		pollingPeriodicServerEClass = createEClass(POLLING_PERIODIC_SERVER);
+
+		sporadicServerEClass = createEClass(SPORADIC_SERVER);
+
+		constantBandwidthServerEClass = createEClass(CONSTANT_BANDWIDTH_SERVER);
+
+		constantBandwidthServerWithCASHEClass = createEClass(CONSTANT_BANDWIDTH_SERVER_WITH_CASH);
+
+		groupingEClass = createEClass(GROUPING);
 
 		userSpecificSchedulingAlgorithmEClass = createEClass(USER_SPECIFIC_SCHEDULING_ALGORITHM);
 		createEReference(userSpecificSchedulingAlgorithmEClass, USER_SPECIFIC_SCHEDULING_ALGORITHM__PARAMETER_EXTENSIONS);
@@ -13582,17 +13772,27 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		interruptControllerEClass.getESuperTypes().add(this.getScheduler());
 		interruptSchedulingAlgorithmEClass.getESuperTypes().add(this.getBaseObject());
 		taskSchedulingAlgorithmEClass.getESuperTypes().add(this.getBaseObject());
-		osekEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
+		fixedPriorityEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
+		fixedPriorityPreemptiveEClass.getESuperTypes().add(this.getFixedPriority());
+		osekEClass.getESuperTypes().add(this.getFixedPriority());
+		deadlineMonotonicEClass.getESuperTypes().add(this.getFixedPriority());
+		rateMonotonicEClass.getESuperTypes().add(this.getFixedPriority());
 		pfairEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
 		pfairPD2EClass.getESuperTypes().add(this.getPfair());
 		partlyPFairPD2EClass.getESuperTypes().add(this.getPfair());
 		earlyReleaseFairPD2EClass.getESuperTypes().add(this.getPfair());
 		partlyEarlyReleaseFairPD2EClass.getESuperTypes().add(this.getPfair());
-		leastLocalRemainingExecutionTimeFirstEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
-		earliestDeadlineFirstEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
-		deadlineMonotonicEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
-		rateMonotonicEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
-		priorityBasedRoundRobinEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
+		dynamicPriorityEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
+		leastLocalRemainingExecutionTimeFirstEClass.getESuperTypes().add(this.getDynamicPriority());
+		earliestDeadlineFirstEClass.getESuperTypes().add(this.getDynamicPriority());
+		priorityBasedRoundRobinEClass.getESuperTypes().add(this.getDynamicPriority());
+		reservationBasedServerEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
+		deferrableServerEClass.getESuperTypes().add(this.getReservationBasedServer());
+		pollingPeriodicServerEClass.getESuperTypes().add(this.getReservationBasedServer());
+		sporadicServerEClass.getESuperTypes().add(this.getReservationBasedServer());
+		constantBandwidthServerEClass.getESuperTypes().add(this.getReservationBasedServer());
+		constantBandwidthServerWithCASHEClass.getESuperTypes().add(this.getReservationBasedServer());
+		groupingEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
 		userSpecificSchedulingAlgorithmEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
 		userSpecificSchedulingAlgorithmEClass.getESuperTypes().add(this.getInterruptSchedulingAlgorithm());
 		priorityBasedEClass.getESuperTypes().add(this.getInterruptSchedulingAlgorithm());
@@ -14532,7 +14732,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(taskSchedulingAlgorithmEClass, TaskSchedulingAlgorithm.class, "TaskSchedulingAlgorithm", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(fixedPriorityEClass, FixedPriority.class, "FixedPriority", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(fixedPriorityPreemptiveEClass, FixedPriorityPreemptive.class, "FixedPriorityPreemptive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(osekEClass, org.eclipse.app4mc.amalthea.model.OSEK.class, "OSEK", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(deadlineMonotonicEClass, DeadlineMonotonic.class, "DeadlineMonotonic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(rateMonotonicEClass, RateMonotonic.class, "RateMonotonic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(pfairEClass, Pfair.class, "Pfair", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPfair_QuantSizeNs(), theEcorePackage.getEInt(), "quantSizeNs", "0", 0, 1, Pfair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14545,15 +14753,27 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(partlyEarlyReleaseFairPD2EClass, PartlyEarlyReleaseFairPD2.class, "PartlyEarlyReleaseFairPD2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(dynamicPriorityEClass, DynamicPriority.class, "DynamicPriority", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(leastLocalRemainingExecutionTimeFirstEClass, LeastLocalRemainingExecutionTimeFirst.class, "LeastLocalRemainingExecutionTimeFirst", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(earliestDeadlineFirstEClass, EarliestDeadlineFirst.class, "EarliestDeadlineFirst", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(deadlineMonotonicEClass, DeadlineMonotonic.class, "DeadlineMonotonic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(rateMonotonicEClass, RateMonotonic.class, "RateMonotonic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(priorityBasedRoundRobinEClass, PriorityBasedRoundRobin.class, "PriorityBasedRoundRobin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(reservationBasedServerEClass, ReservationBasedServer.class, "ReservationBasedServer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(deferrableServerEClass, DeferrableServer.class, "DeferrableServer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(pollingPeriodicServerEClass, PollingPeriodicServer.class, "PollingPeriodicServer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(sporadicServerEClass, SporadicServer.class, "SporadicServer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(constantBandwidthServerEClass, ConstantBandwidthServer.class, "ConstantBandwidthServer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(constantBandwidthServerWithCASHEClass, ConstantBandwidthServerWithCASH.class, "ConstantBandwidthServerWithCASH", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(groupingEClass, Grouping.class, "Grouping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(userSpecificSchedulingAlgorithmEClass, UserSpecificSchedulingAlgorithm.class, "UserSpecificSchedulingAlgorithm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUserSpecificSchedulingAlgorithm_ParameterExtensions(), this.getParameterExtension(), null, "parameterExtensions", null, 0, -1, UserSpecificSchedulingAlgorithm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -3440,6 +3440,144 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DeferrableServer} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DeferrableServerItemProvider deferrableServerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DeferrableServer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDeferrableServerAdapter() {
+		if (deferrableServerItemProvider == null) {
+			deferrableServerItemProvider = new DeferrableServerItemProvider(this);
+		}
+
+		return deferrableServerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PollingPeriodicServer} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PollingPeriodicServerItemProvider pollingPeriodicServerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PollingPeriodicServer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPollingPeriodicServerAdapter() {
+		if (pollingPeriodicServerItemProvider == null) {
+			pollingPeriodicServerItemProvider = new PollingPeriodicServerItemProvider(this);
+		}
+
+		return pollingPeriodicServerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SporadicServer} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SporadicServerItemProvider sporadicServerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SporadicServer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSporadicServerAdapter() {
+		if (sporadicServerItemProvider == null) {
+			sporadicServerItemProvider = new SporadicServerItemProvider(this);
+		}
+
+		return sporadicServerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConstantBandwidthServerItemProvider constantBandwidthServerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConstantBandwidthServerAdapter() {
+		if (constantBandwidthServerItemProvider == null) {
+			constantBandwidthServerItemProvider = new ConstantBandwidthServerItemProvider(this);
+		}
+
+		return constantBandwidthServerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConstantBandwidthServerWithCASHItemProvider constantBandwidthServerWithCASHItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConstantBandwidthServerWithCASHAdapter() {
+		if (constantBandwidthServerWithCASHItemProvider == null) {
+			constantBandwidthServerWithCASHItemProvider = new ConstantBandwidthServerWithCASHItemProvider(this);
+		}
+
+		return constantBandwidthServerWithCASHItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Grouping} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GroupingItemProvider groupingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Grouping}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGroupingAdapter() {
+		if (groupingItemProvider == null) {
+			groupingItemProvider = new GroupingItemProvider(this);
+		}
+
+		return groupingItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3690,6 +3828,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return parameterExtensionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FixedPriorityPreemptiveItemProvider fixedPriorityPreemptiveItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFixedPriorityPreemptiveAdapter() {
+		if (fixedPriorityPreemptiveItemProvider == null) {
+			fixedPriorityPreemptiveItemProvider = new FixedPriorityPreemptiveItemProvider(this);
+		}
+
+		return fixedPriorityPreemptiveItemProvider;
 	}
 
 	/**
@@ -6073,16 +6234,23 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (interruptControllerItemProvider != null) interruptControllerItemProvider.dispose();
 		if (schedulingParametersItemProvider != null) schedulingParametersItemProvider.dispose();
 		if (parameterExtensionItemProvider != null) parameterExtensionItemProvider.dispose();
+		if (fixedPriorityPreemptiveItemProvider != null) fixedPriorityPreemptiveItemProvider.dispose();
 		if (osekItemProvider != null) osekItemProvider.dispose();
+		if (deadlineMonotonicItemProvider != null) deadlineMonotonicItemProvider.dispose();
+		if (rateMonotonicItemProvider != null) rateMonotonicItemProvider.dispose();
 		if (pfairPD2ItemProvider != null) pfairPD2ItemProvider.dispose();
 		if (partlyPFairPD2ItemProvider != null) partlyPFairPD2ItemProvider.dispose();
 		if (earlyReleaseFairPD2ItemProvider != null) earlyReleaseFairPD2ItemProvider.dispose();
 		if (partlyEarlyReleaseFairPD2ItemProvider != null) partlyEarlyReleaseFairPD2ItemProvider.dispose();
 		if (leastLocalRemainingExecutionTimeFirstItemProvider != null) leastLocalRemainingExecutionTimeFirstItemProvider.dispose();
 		if (earliestDeadlineFirstItemProvider != null) earliestDeadlineFirstItemProvider.dispose();
-		if (deadlineMonotonicItemProvider != null) deadlineMonotonicItemProvider.dispose();
-		if (rateMonotonicItemProvider != null) rateMonotonicItemProvider.dispose();
 		if (priorityBasedRoundRobinItemProvider != null) priorityBasedRoundRobinItemProvider.dispose();
+		if (deferrableServerItemProvider != null) deferrableServerItemProvider.dispose();
+		if (pollingPeriodicServerItemProvider != null) pollingPeriodicServerItemProvider.dispose();
+		if (sporadicServerItemProvider != null) sporadicServerItemProvider.dispose();
+		if (constantBandwidthServerItemProvider != null) constantBandwidthServerItemProvider.dispose();
+		if (constantBandwidthServerWithCASHItemProvider != null) constantBandwidthServerWithCASHItemProvider.dispose();
+		if (groupingItemProvider != null) groupingItemProvider.dispose();
 		if (userSpecificSchedulingAlgorithmItemProvider != null) userSpecificSchedulingAlgorithmItemProvider.dispose();
 		if (priorityBasedItemProvider != null) priorityBasedItemProvider.dispose();
 		if (schedulingHWUnitItemProvider != null) schedulingHWUnitItemProvider.dispose();

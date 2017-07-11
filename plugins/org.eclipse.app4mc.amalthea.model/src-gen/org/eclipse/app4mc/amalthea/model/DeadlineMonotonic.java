@@ -27,5 +27,5 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface DeadlineMonotonic extends TaskSchedulingAlgorithm {
+public interface DeadlineMonotonic extends FixedPriority {
 } // DeadlineMonotonic

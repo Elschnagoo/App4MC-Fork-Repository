@@ -70,6 +70,8 @@ import org.eclipse.app4mc.amalthea.model.Composite;
 import org.eclipse.app4mc.amalthea.model.CompoundType;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.Connector;
+import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
+import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
@@ -101,10 +103,12 @@ import org.eclipse.app4mc.amalthea.model.DataStabilityGroup;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
+import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
+import org.eclipse.app4mc.amalthea.model.DynamicPriority;
 import org.eclipse.app4mc.amalthea.model.ECU;
 import org.eclipse.app4mc.amalthea.model.ECUType;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
@@ -126,6 +130,8 @@ import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
+import org.eclipse.app4mc.amalthea.model.FixedPriority;
+import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
@@ -133,6 +139,7 @@ import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HardwareTypeDescription;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
@@ -218,6 +225,7 @@ import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
 import org.eclipse.app4mc.amalthea.model.Pin;
 import org.eclipse.app4mc.amalthea.model.Pointer;
+import org.eclipse.app4mc.amalthea.model.PollingPeriodicServer;
 import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
@@ -249,6 +257,7 @@ import org.eclipse.app4mc.amalthea.model.ReferenceObject;
 import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
 import org.eclipse.app4mc.amalthea.model.Requirement;
 import org.eclipse.app4mc.amalthea.model.RequirementLimit;
+import org.eclipse.app4mc.amalthea.model.ReservationBasedServer;
 import org.eclipse.app4mc.amalthea.model.RunEntityCallStatistic;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint;
@@ -291,6 +300,7 @@ import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
 import org.eclipse.app4mc.amalthea.model.Sporadic;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
+import org.eclipse.app4mc.amalthea.model.SporadicServer;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.StimulusEvent;
@@ -1171,8 +1181,24 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createTaskSchedulingAlgorithmAdapter();
 			}
 			@Override
+			public Adapter caseFixedPriority(FixedPriority object) {
+				return createFixedPriorityAdapter();
+			}
+			@Override
+			public Adapter caseFixedPriorityPreemptive(FixedPriorityPreemptive object) {
+				return createFixedPriorityPreemptiveAdapter();
+			}
+			@Override
 			public Adapter caseOSEK(OSEK object) {
 				return createOSEKAdapter();
+			}
+			@Override
+			public Adapter caseDeadlineMonotonic(DeadlineMonotonic object) {
+				return createDeadlineMonotonicAdapter();
+			}
+			@Override
+			public Adapter caseRateMonotonic(RateMonotonic object) {
+				return createRateMonotonicAdapter();
 			}
 			@Override
 			public Adapter casePfair(Pfair object) {
@@ -1195,6 +1221,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createPartlyEarlyReleaseFairPD2Adapter();
 			}
 			@Override
+			public Adapter caseDynamicPriority(DynamicPriority object) {
+				return createDynamicPriorityAdapter();
+			}
+			@Override
 			public Adapter caseLeastLocalRemainingExecutionTimeFirst(LeastLocalRemainingExecutionTimeFirst object) {
 				return createLeastLocalRemainingExecutionTimeFirstAdapter();
 			}
@@ -1203,16 +1233,36 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createEarliestDeadlineFirstAdapter();
 			}
 			@Override
-			public Adapter caseDeadlineMonotonic(DeadlineMonotonic object) {
-				return createDeadlineMonotonicAdapter();
-			}
-			@Override
-			public Adapter caseRateMonotonic(RateMonotonic object) {
-				return createRateMonotonicAdapter();
-			}
-			@Override
 			public Adapter casePriorityBasedRoundRobin(PriorityBasedRoundRobin object) {
 				return createPriorityBasedRoundRobinAdapter();
+			}
+			@Override
+			public Adapter caseReservationBasedServer(ReservationBasedServer object) {
+				return createReservationBasedServerAdapter();
+			}
+			@Override
+			public Adapter caseDeferrableServer(DeferrableServer object) {
+				return createDeferrableServerAdapter();
+			}
+			@Override
+			public Adapter casePollingPeriodicServer(PollingPeriodicServer object) {
+				return createPollingPeriodicServerAdapter();
+			}
+			@Override
+			public Adapter caseSporadicServer(SporadicServer object) {
+				return createSporadicServerAdapter();
+			}
+			@Override
+			public Adapter caseConstantBandwidthServer(ConstantBandwidthServer object) {
+				return createConstantBandwidthServerAdapter();
+			}
+			@Override
+			public Adapter caseConstantBandwidthServerWithCASH(ConstantBandwidthServerWithCASH object) {
+				return createConstantBandwidthServerWithCASHAdapter();
+			}
+			@Override
+			public Adapter caseGrouping(Grouping object) {
+				return createGroupingAdapter();
 			}
 			@Override
 			public Adapter caseUserSpecificSchedulingAlgorithm(UserSpecificSchedulingAlgorithm object) {
@@ -4419,6 +4469,34 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.FixedPriority <em>Fixed Priority</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.FixedPriority
+	 * @generated
+	 */
+	public Adapter createFixedPriorityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive <em>Fixed Priority Preemptive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive
+	 * @generated
+	 */
+	public Adapter createFixedPriorityPreemptiveAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OSEK <em>OSEK</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -4429,6 +4507,34 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOSEKAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DeadlineMonotonic <em>Deadline Monotonic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.DeadlineMonotonic
+	 * @generated
+	 */
+	public Adapter createDeadlineMonotonicAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.RateMonotonic <em>Rate Monotonic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.RateMonotonic
+	 * @generated
+	 */
+	public Adapter createRateMonotonicAdapter() {
 		return null;
 	}
 
@@ -4503,6 +4609,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DynamicPriority <em>Dynamic Priority</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.DynamicPriority
+	 * @generated
+	 */
+	public Adapter createDynamicPriorityAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst <em>Least Local Remaining Execution Time First</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -4531,34 +4651,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DeadlineMonotonic <em>Deadline Monotonic</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.DeadlineMonotonic
-	 * @generated
-	 */
-	public Adapter createDeadlineMonotonicAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.RateMonotonic <em>Rate Monotonic</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.RateMonotonic
-	 * @generated
-	 */
-	public Adapter createRateMonotonicAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin <em>Priority Based Round Robin</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -4569,6 +4661,104 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPriorityBasedRoundRobinAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ReservationBasedServer <em>Reservation Based Server</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ReservationBasedServer
+	 * @generated
+	 */
+	public Adapter createReservationBasedServerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DeferrableServer <em>Deferrable Server</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.DeferrableServer
+	 * @generated
+	 */
+	public Adapter createDeferrableServerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PollingPeriodicServer <em>Polling Periodic Server</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.PollingPeriodicServer
+	 * @generated
+	 */
+	public Adapter createPollingPeriodicServerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SporadicServer <em>Sporadic Server</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.SporadicServer
+	 * @generated
+	 */
+	public Adapter createSporadicServerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer <em>Constant Bandwidth Server</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer
+	 * @generated
+	 */
+	public Adapter createConstantBandwidthServerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH <em>Constant Bandwidth Server With CASH</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH
+	 * @generated
+	 */
+	public Adapter createConstantBandwidthServerWithCASHAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Grouping <em>Grouping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.Grouping
+	 * @generated
+	 */
+	public Adapter createGroupingAdapter() {
 		return null;
 	}
 

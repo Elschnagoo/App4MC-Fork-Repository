@@ -2107,12 +2107,42 @@ abstract class TaskSchedulingAlgorithm extends BaseObject
 {
 }
 
+
 /*
- * Priority based scheduling algorithm
+ * Fixed Priority Scheduling
  */
-class OSEK extends TaskSchedulingAlgorithm
+abstract class FixedPriority extends TaskSchedulingAlgorithm
 {
 }
+
+/*
+ * Fixed Priority Preemptive scheduling algorithm
+ */
+class FixedPriorityPreemptive extends FixedPriority
+{
+}
+
+/*
+ * OSEK scheduling algorithm
+ */
+class OSEK extends FixedPriority
+{
+}
+
+/*
+ * task with shortest deadline has highest priority
+ */
+class DeadlineMonotonic extends FixedPriority
+{
+}
+
+/*
+ * task with shortest recurrence (i.e. period) has highest priority
+ */
+class RateMonotonic extends FixedPriority
+{
+}
+
 
 /*
  * Proportionate Fair (Pfair) Scheduling
@@ -2156,37 +2186,80 @@ class PartlyEarlyReleaseFairPD2 extends Pfair
 }
 
 /*
+ * Dynamic Priority Scheduling
+ */
+abstract class DynamicPriority extends TaskSchedulingAlgorithm
+{
+}
+
+/*
  * global scheduling algorithm
  */
-class LeastLocalRemainingExecutionTimeFirst extends TaskSchedulingAlgorithm
+class LeastLocalRemainingExecutionTimeFirst extends DynamicPriority
 {
 }
 
 /*
  * earliest absolute deadline first
  */
-class EarliestDeadlineFirst extends TaskSchedulingAlgorithm
+class EarliestDeadlineFirst extends DynamicPriority
 {
 }
 
-/*
- * task with shortest deadline has highest priority
- */
-class DeadlineMonotonic extends TaskSchedulingAlgorithm
-{
-}
-
-/*
- * task with shortest recurrence (i.e. period) has highest priority
- */
-class RateMonotonic extends TaskSchedulingAlgorithm
-{
-}
 
 /*
  * all tasks with equal priority executed for certain time slice
  */
-class PriorityBasedRoundRobin extends TaskSchedulingAlgorithm
+class PriorityBasedRoundRobin extends DynamicPriority
+{
+}
+
+/*
+ * Reservation Based Server
+ */
+abstract class ReservationBasedServer extends TaskSchedulingAlgorithm
+{
+}
+
+/*
+ * Deferrable Server
+ */
+class DeferrableServer extends ReservationBasedServer
+{
+}
+
+/*
+ * Polling Periodic Server
+ */
+class PollingPeriodicServer extends ReservationBasedServer
+{
+}
+
+/*
+ * Sporadic Server
+ */
+class SporadicServer extends ReservationBasedServer
+{
+}
+
+/*
+ * Constant Bandwidth Server
+ */
+class ConstantBandwidthServer extends ReservationBasedServer
+{
+}
+
+/*
+ * Constant Bandwidth Server With CASH
+ */
+class ConstantBandwidthServerWithCASH extends ReservationBasedServer
+{
+}
+
+/*
+ * logical grouping of tasks/child-schedulers
+ */
+class Grouping extends TaskSchedulingAlgorithm
 {
 }
 

@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class LeastLocalRemainingExecutionTimeFirstImpl extends TaskSchedulingAlgorithmImpl implements LeastLocalRemainingExecutionTimeFirst {
+public class LeastLocalRemainingExecutionTimeFirstImpl extends DynamicPriorityImpl implements LeastLocalRemainingExecutionTimeFirst {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

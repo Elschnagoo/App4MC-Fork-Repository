@@ -27,5 +27,5 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface RateMonotonic extends TaskSchedulingAlgorithm {
+public interface RateMonotonic extends FixedPriority {
 } // RateMonotonic

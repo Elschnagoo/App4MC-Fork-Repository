@@ -19,7 +19,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Priority based scheduling algorithm
+ * OSEK scheduling algorithm
  * <!-- end-model-doc -->
  *
  *
@@ -27,5 +27,5 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface OSEK extends TaskSchedulingAlgorithm {
+public interface OSEK extends FixedPriority {
 } // OSEK

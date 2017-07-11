@@ -1301,6 +1301,15 @@ public interface AmaltheaFactory extends EFactory {
 	SchedulingParameters createSchedulingParameters();
 
 	/**
+	 * Returns a new object of class '<em>Fixed Priority Preemptive</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Fixed Priority Preemptive</em>'.
+	 * @generated
+	 */
+	FixedPriorityPreemptive createFixedPriorityPreemptive();
+
+	/**
 	 * Returns a new object of class '<em>OSEK</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1308,6 +1317,24 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	OSEK createOSEK();
+
+	/**
+	 * Returns a new object of class '<em>Deadline Monotonic</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Deadline Monotonic</em>'.
+	 * @generated
+	 */
+	DeadlineMonotonic createDeadlineMonotonic();
+
+	/**
+	 * Returns a new object of class '<em>Rate Monotonic</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Rate Monotonic</em>'.
+	 * @generated
+	 */
+	RateMonotonic createRateMonotonic();
 
 	/**
 	 * Returns a new object of class '<em>Pfair PD2</em>'.
@@ -1364,24 +1391,6 @@ public interface AmaltheaFactory extends EFactory {
 	EarliestDeadlineFirst createEarliestDeadlineFirst();
 
 	/**
-	 * Returns a new object of class '<em>Deadline Monotonic</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Deadline Monotonic</em>'.
-	 * @generated
-	 */
-	DeadlineMonotonic createDeadlineMonotonic();
-
-	/**
-	 * Returns a new object of class '<em>Rate Monotonic</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Rate Monotonic</em>'.
-	 * @generated
-	 */
-	RateMonotonic createRateMonotonic();
-
-	/**
 	 * Returns a new object of class '<em>Priority Based Round Robin</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1389,6 +1398,60 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	PriorityBasedRoundRobin createPriorityBasedRoundRobin();
+
+	/**
+	 * Returns a new object of class '<em>Deferrable Server</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Deferrable Server</em>'.
+	 * @generated
+	 */
+	DeferrableServer createDeferrableServer();
+
+	/**
+	 * Returns a new object of class '<em>Polling Periodic Server</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Polling Periodic Server</em>'.
+	 * @generated
+	 */
+	PollingPeriodicServer createPollingPeriodicServer();
+
+	/**
+	 * Returns a new object of class '<em>Sporadic Server</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sporadic Server</em>'.
+	 * @generated
+	 */
+	SporadicServer createSporadicServer();
+
+	/**
+	 * Returns a new object of class '<em>Constant Bandwidth Server</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Constant Bandwidth Server</em>'.
+	 * @generated
+	 */
+	ConstantBandwidthServer createConstantBandwidthServer();
+
+	/**
+	 * Returns a new object of class '<em>Constant Bandwidth Server With CASH</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Constant Bandwidth Server With CASH</em>'.
+	 * @generated
+	 */
+	ConstantBandwidthServerWithCASH createConstantBandwidthServerWithCASH();
+
+	/**
+	 * Returns a new object of class '<em>Grouping</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Grouping</em>'.
+	 * @generated
+	 */
+	Grouping createGrouping();
 
 	/**
 	 * Returns a new object of class '<em>User Specific Scheduling Algorithm</em>'.

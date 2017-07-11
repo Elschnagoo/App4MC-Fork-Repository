@@ -27,5 +27,5 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface EarliestDeadlineFirst extends TaskSchedulingAlgorithm {
+public interface EarliestDeadlineFirst extends DynamicPriority {
 } // EarliestDeadlineFirst
