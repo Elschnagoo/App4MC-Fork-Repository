@@ -54,6 +54,7 @@ public class SemaphoreAccessItemProvider extends RunnableItemItemProvider {
 
 			addSemaphorePropertyDescriptor(object);
 			addAccessPropertyDescriptor(object);
+			addWaitingBehaviourPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -92,6 +93,28 @@ public class SemaphoreAccessItemProvider extends RunnableItemItemProvider {
 				 getString("_UI_SemaphoreAccess_access_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_SemaphoreAccess_access_feature", "_UI_SemaphoreAccess_type"),
 				 AmaltheaPackage.eINSTANCE.getSemaphoreAccess_Access(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Waiting Behaviour feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWaitingBehaviourPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SemaphoreAccess_waitingBehaviour_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SemaphoreAccess_waitingBehaviour_feature", "_UI_SemaphoreAccess_type"),
+				 AmaltheaPackage.eINSTANCE.getSemaphoreAccess_WaitingBehaviour(),
 				 true,
 				 false,
 				 false,
@@ -153,6 +176,7 @@ public class SemaphoreAccessItemProvider extends RunnableItemItemProvider {
 
 		switch (notification.getFeatureID(SemaphoreAccess.class)) {
 			case AmaltheaPackage.SEMAPHORE_ACCESS__ACCESS:
+			case AmaltheaPackage.SEMAPHORE_ACCESS__WAITING_BEHAVIOUR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

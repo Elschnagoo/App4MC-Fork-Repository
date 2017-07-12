@@ -55,11 +55,34 @@ public class SemaphoreItemProvider extends ReferableBaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addSemaphoreTypePropertyDescriptor(object);
 			addInitialValuePropertyDescriptor(object);
 			addMaxValuePropertyDescriptor(object);
 			addPriorityCeilingProtocolPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Semaphore Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSemaphoreTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Semaphore_semaphoreType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Semaphore_semaphoreType_feature", "_UI_Semaphore_type"),
+				 AmaltheaPackage.eINSTANCE.getSemaphore_SemaphoreType(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -176,6 +199,7 @@ public class SemaphoreItemProvider extends ReferableBaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Semaphore.class)) {
+			case AmaltheaPackage.SEMAPHORE__SEMAPHORE_TYPE:
 			case AmaltheaPackage.SEMAPHORE__INITIAL_VALUE:
 			case AmaltheaPackage.SEMAPHORE__MAX_VALUE:
 			case AmaltheaPackage.SEMAPHORE__PRIORITY_CEILING_PROTOCOL:

@@ -29,6 +29,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Semaphore#getSemaphoreType <em>Semaphore Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Semaphore#getInitialValue <em>Initial Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Semaphore#getMaxValue <em>Max Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Semaphore#isPriorityCeilingProtocol <em>Priority Ceiling Protocol</em>}</li>
@@ -39,6 +40,35 @@ package org.eclipse.app4mc.amalthea.model;
  * @generated
  */
 public interface Semaphore extends ReferableBaseObject {
+	/**
+	 * Returns the value of the '<em><b>Semaphore Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.SemaphoreType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Semaphore Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Semaphore Type</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.SemaphoreType
+	 * @see #setSemaphoreType(SemaphoreType)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphore_SemaphoreType()
+	 * @model unique="false"
+	 * @generated
+	 */
+	SemaphoreType getSemaphoreType();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Semaphore#getSemaphoreType <em>Semaphore Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Semaphore Type</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.SemaphoreType
+	 * @see #getSemaphoreType()
+	 * @generated
+	 */
+	void setSemaphoreType(SemaphoreType value);
+
 	/**
 	 * Returns the value of the '<em><b>Initial Value</b></em>' attribute.
 	 * The default value is <code>"0"</code>.

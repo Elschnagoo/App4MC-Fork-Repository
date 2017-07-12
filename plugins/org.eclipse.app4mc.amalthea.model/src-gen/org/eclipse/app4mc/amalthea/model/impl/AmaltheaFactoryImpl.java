@@ -271,6 +271,7 @@ import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum;
 import org.eclipse.app4mc.amalthea.model.SemaphoreEvent;
 import org.eclipse.app4mc.amalthea.model.SemaphoreEventType;
+import org.eclipse.app4mc.amalthea.model.SemaphoreType;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverRead;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
@@ -708,6 +709,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createAccessMultiplicityFromString(eDataType, initialValue);
 			case AmaltheaPackage.DATA_STABILITY_LEVEL:
 				return createDataStabilityLevelFromString(eDataType, initialValue);
+			case AmaltheaPackage.SEMAPHORE_TYPE:
+				return createSemaphoreTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.CONDITION:
 				return createConditionFromString(eDataType, initialValue);
 			case AmaltheaPackage.GROUPING_TYPE:
@@ -817,6 +820,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertAccessMultiplicityToString(eDataType, instanceValue);
 			case AmaltheaPackage.DATA_STABILITY_LEVEL:
 				return convertDataStabilityLevelToString(eDataType, instanceValue);
+			case AmaltheaPackage.SEMAPHORE_TYPE:
+				return convertSemaphoreTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.CONDITION:
 				return convertConditionToString(eDataType, instanceValue);
 			case AmaltheaPackage.GROUPING_TYPE:
@@ -4079,6 +4084,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertDataStabilityLevelToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SemaphoreType createSemaphoreTypeFromString(EDataType eDataType, String initialValue) {
+		SemaphoreType result = SemaphoreType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSemaphoreTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

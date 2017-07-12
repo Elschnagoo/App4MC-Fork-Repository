@@ -16,6 +16,7 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum;
+import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreAccessImpl#getSemaphore <em>Semaphore</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreAccessImpl#getAccess <em>Access</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreAccessImpl#getWaitingBehaviour <em>Waiting Behaviour</em>}</li>
  * </ul>
  *
  * @generated
@@ -68,6 +70,26 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 	 * @ordered
 	 */
 	protected SemaphoreAccessEnum access = ACCESS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWaitingBehaviour() <em>Waiting Behaviour</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWaitingBehaviour()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final WaitingBehaviour WAITING_BEHAVIOUR_EDEFAULT = WaitingBehaviour._UNDEFINED_;
+
+	/**
+	 * The cached value of the '{@link #getWaitingBehaviour() <em>Waiting Behaviour</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWaitingBehaviour()
+	 * @generated
+	 * @ordered
+	 */
+	protected WaitingBehaviour waitingBehaviour = WAITING_BEHAVIOUR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,6 +174,27 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public WaitingBehaviour getWaitingBehaviour() {
+		return waitingBehaviour;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWaitingBehaviour(WaitingBehaviour newWaitingBehaviour) {
+		WaitingBehaviour oldWaitingBehaviour = waitingBehaviour;
+		waitingBehaviour = newWaitingBehaviour == null ? WAITING_BEHAVIOUR_EDEFAULT : newWaitingBehaviour;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SEMAPHORE_ACCESS__WAITING_BEHAVIOUR, oldWaitingBehaviour, waitingBehaviour));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -160,6 +203,8 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 				return basicGetSemaphore();
 			case AmaltheaPackage.SEMAPHORE_ACCESS__ACCESS:
 				return getAccess();
+			case AmaltheaPackage.SEMAPHORE_ACCESS__WAITING_BEHAVIOUR:
+				return getWaitingBehaviour();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -177,6 +222,9 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 				return;
 			case AmaltheaPackage.SEMAPHORE_ACCESS__ACCESS:
 				setAccess((SemaphoreAccessEnum)newValue);
+				return;
+			case AmaltheaPackage.SEMAPHORE_ACCESS__WAITING_BEHAVIOUR:
+				setWaitingBehaviour((WaitingBehaviour)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -196,6 +244,9 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 			case AmaltheaPackage.SEMAPHORE_ACCESS__ACCESS:
 				setAccess(ACCESS_EDEFAULT);
 				return;
+			case AmaltheaPackage.SEMAPHORE_ACCESS__WAITING_BEHAVIOUR:
+				setWaitingBehaviour(WAITING_BEHAVIOUR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -212,6 +263,8 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 				return semaphore != null;
 			case AmaltheaPackage.SEMAPHORE_ACCESS__ACCESS:
 				return access != ACCESS_EDEFAULT;
+			case AmaltheaPackage.SEMAPHORE_ACCESS__WAITING_BEHAVIOUR:
+				return waitingBehaviour != WAITING_BEHAVIOUR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -228,6 +281,8 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (access: ");
 		result.append(access);
+		result.append(", waitingBehaviour: ");
+		result.append(waitingBehaviour);
 		result.append(')');
 		return result.toString();
 	}

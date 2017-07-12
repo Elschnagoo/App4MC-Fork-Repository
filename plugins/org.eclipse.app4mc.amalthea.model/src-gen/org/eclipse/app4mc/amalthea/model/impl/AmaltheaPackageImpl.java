@@ -329,6 +329,7 @@ import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum;
 import org.eclipse.app4mc.amalthea.model.SemaphoreEvent;
 import org.eclipse.app4mc.amalthea.model.SemaphoreEventType;
+import org.eclipse.app4mc.amalthea.model.SemaphoreType;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverCommunication;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverRead;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
@@ -2960,6 +2961,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EEnum dataStabilityLevelEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum semaphoreTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -7959,7 +7967,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSemaphore_InitialValue() {
+	public EAttribute getSemaphore_SemaphoreType() {
 		return (EAttribute)semaphoreEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -7968,7 +7976,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSemaphore_MaxValue() {
+	public EAttribute getSemaphore_InitialValue() {
 		return (EAttribute)semaphoreEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -7977,8 +7985,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSemaphore_PriorityCeilingProtocol() {
+	public EAttribute getSemaphore_MaxValue() {
 		return (EAttribute)semaphoreEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSemaphore_PriorityCeilingProtocol() {
+		return (EAttribute)semaphoreEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -11073,6 +11090,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSemaphoreAccess_WaitingBehaviour() {
+		return (EAttribute)semaphoreAccessEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSenderReceiverCommunication() {
 		return senderReceiverCommunicationEClass;
 	}
@@ -12018,6 +12044,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getSemaphoreType() {
+		return semaphoreTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getCondition() {
 		return conditionEEnum;
 	}
@@ -12897,6 +12932,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(nonAtomicDataCoherencyEClass, NON_ATOMIC_DATA_COHERENCY__ACCESS_MULTIPLICITY);
 
 		semaphoreEClass = createEClass(SEMAPHORE);
+		createEAttribute(semaphoreEClass, SEMAPHORE__SEMAPHORE_TYPE);
 		createEAttribute(semaphoreEClass, SEMAPHORE__INITIAL_VALUE);
 		createEAttribute(semaphoreEClass, SEMAPHORE__MAX_VALUE);
 		createEAttribute(semaphoreEClass, SEMAPHORE__PRIORITY_CEILING_PROTOCOL);
@@ -13360,6 +13396,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		semaphoreAccessEClass = createEClass(SEMAPHORE_ACCESS);
 		createEReference(semaphoreAccessEClass, SEMAPHORE_ACCESS__SEMAPHORE);
 		createEAttribute(semaphoreAccessEClass, SEMAPHORE_ACCESS__ACCESS);
+		createEAttribute(semaphoreAccessEClass, SEMAPHORE_ACCESS__WAITING_BEHAVIOUR);
 
 		senderReceiverCommunicationEClass = createEClass(SENDER_RECEIVER_COMMUNICATION);
 		createEAttribute(senderReceiverCommunicationEClass, SENDER_RECEIVER_COMMUNICATION__BUFFERED);
@@ -13496,6 +13533,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		osDataConsistencyModeEEnum = createEEnum(OS_DATA_CONSISTENCY_MODE);
 		accessMultiplicityEEnum = createEEnum(ACCESS_MULTIPLICITY);
 		dataStabilityLevelEEnum = createEEnum(DATA_STABILITY_LEVEL);
+		semaphoreTypeEEnum = createEEnum(SEMAPHORE_TYPE);
 		conditionEEnum = createEEnum(CONDITION);
 		groupingTypeEEnum = createEEnum(GROUPING_TYPE);
 		waitEventTypeEEnum = createEEnum(WAIT_EVENT_TYPE);
@@ -14696,6 +14734,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getNonAtomicDataCoherency_AccessMultiplicity(), this.getAccessMultiplicity(), "accessMultiplicity", null, 0, 1, NonAtomicDataCoherency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(semaphoreEClass, Semaphore.class, "Semaphore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSemaphore_SemaphoreType(), this.getSemaphoreType(), "semaphoreType", null, 0, 1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSemaphore_InitialValue(), theEcorePackage.getEInt(), "initialValue", "0", 0, 1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSemaphore_MaxValue(), theEcorePackage.getEInt(), "maxValue", "0", 0, 1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSemaphore_PriorityCeilingProtocol(), theEcorePackage.getEBoolean(), "priorityCeilingProtocol", "false", 0, 1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15182,6 +15221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(semaphoreAccessEClass, SemaphoreAccess.class, "SemaphoreAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSemaphoreAccess_Semaphore(), this.getSemaphore(), null, "semaphore", null, 1, 1, SemaphoreAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSemaphoreAccess_Access(), this.getSemaphoreAccessEnum(), "access", null, 0, 1, SemaphoreAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSemaphoreAccess_WaitingBehaviour(), this.getWaitingBehaviour(), "waitingBehaviour", null, 0, 1, SemaphoreAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(senderReceiverCommunicationEClass, SenderReceiverCommunication.class, "SenderReceiverCommunication", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSenderReceiverCommunication_Buffered(), theEcorePackage.getEBoolean(), "buffered", "false", 0, 1, SenderReceiverCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15554,6 +15594,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(dataStabilityLevelEEnum, DataStabilityLevel.PROCESS);
 		addEEnumLiteral(dataStabilityLevelEEnum, DataStabilityLevel.RUNNABLE);
 		addEEnumLiteral(dataStabilityLevelEEnum, DataStabilityLevel.SCHEDULE_SECTION);
+
+		initEEnum(semaphoreTypeEEnum, SemaphoreType.class, "SemaphoreType");
+		addEEnumLiteral(semaphoreTypeEEnum, SemaphoreType._UNDEFINED_);
+		addEEnumLiteral(semaphoreTypeEEnum, SemaphoreType.COUNTING_SEMAPHORE);
+		addEEnumLiteral(semaphoreTypeEEnum, SemaphoreType.RESOURCE);
+		addEEnumLiteral(semaphoreTypeEEnum, SemaphoreType.SPINLOCK);
 
 		initEEnum(conditionEEnum, Condition.class, "Condition");
 		addEEnumLiteral(conditionEEnum, Condition._UNDEFINED_);

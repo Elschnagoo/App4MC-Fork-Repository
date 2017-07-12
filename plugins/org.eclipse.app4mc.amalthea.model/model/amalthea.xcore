@@ -2023,9 +2023,17 @@ enum DataStabilityLevel {
  */
 class Semaphore extends ReferableBaseObject
 {
+	SemaphoreType semaphoreType
 	int initialValue = "0"
 	int maxValue = "0"
 	boolean priorityCeilingProtocol = "false"
+}
+
+enum SemaphoreType {
+	_undefined_ // Display: "<semaphore type>"
+	CountingSemaphore
+    Resource
+    Spinlock
 }
 
 
@@ -3296,6 +3304,7 @@ class SemaphoreAccess extends RunnableItem
 {
 	refers Semaphore[1] semaphore
 	SemaphoreAccessEnum access
+	WaitingBehaviour waitingBehaviour
 }
 
 /*

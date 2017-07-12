@@ -14,6 +14,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
+import org.eclipse.app4mc.amalthea.model.SemaphoreType;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#getSemaphoreType <em>Semaphore Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#getInitialValue <em>Initial Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#getMaxValue <em>Max Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#isPriorityCeilingProtocol <em>Priority Ceiling Protocol</em>}</li>
@@ -37,6 +39,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore {
+	/**
+	 * The default value of the '{@link #getSemaphoreType() <em>Semaphore Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSemaphoreType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final SemaphoreType SEMAPHORE_TYPE_EDEFAULT = SemaphoreType._UNDEFINED_;
+
+	/**
+	 * The cached value of the '{@link #getSemaphoreType() <em>Semaphore Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSemaphoreType()
+	 * @generated
+	 * @ordered
+	 */
+	protected SemaphoreType semaphoreType = SEMAPHORE_TYPE_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getInitialValue() <em>Initial Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -121,6 +143,27 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SemaphoreType getSemaphoreType() {
+		return semaphoreType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSemaphoreType(SemaphoreType newSemaphoreType) {
+		SemaphoreType oldSemaphoreType = semaphoreType;
+		semaphoreType = newSemaphoreType == null ? SEMAPHORE_TYPE_EDEFAULT : newSemaphoreType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SEMAPHORE__SEMAPHORE_TYPE, oldSemaphoreType, semaphoreType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getInitialValue() {
 		return initialValue;
 	}
@@ -187,6 +230,8 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.SEMAPHORE__SEMAPHORE_TYPE:
+				return getSemaphoreType();
 			case AmaltheaPackage.SEMAPHORE__INITIAL_VALUE:
 				return getInitialValue();
 			case AmaltheaPackage.SEMAPHORE__MAX_VALUE:
@@ -205,6 +250,9 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AmaltheaPackage.SEMAPHORE__SEMAPHORE_TYPE:
+				setSemaphoreType((SemaphoreType)newValue);
+				return;
 			case AmaltheaPackage.SEMAPHORE__INITIAL_VALUE:
 				setInitialValue((Integer)newValue);
 				return;
@@ -226,6 +274,9 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.SEMAPHORE__SEMAPHORE_TYPE:
+				setSemaphoreType(SEMAPHORE_TYPE_EDEFAULT);
+				return;
 			case AmaltheaPackage.SEMAPHORE__INITIAL_VALUE:
 				setInitialValue(INITIAL_VALUE_EDEFAULT);
 				return;
@@ -247,6 +298,8 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.SEMAPHORE__SEMAPHORE_TYPE:
+				return semaphoreType != SEMAPHORE_TYPE_EDEFAULT;
 			case AmaltheaPackage.SEMAPHORE__INITIAL_VALUE:
 				return initialValue != INITIAL_VALUE_EDEFAULT;
 			case AmaltheaPackage.SEMAPHORE__MAX_VALUE:
@@ -267,7 +320,9 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (initialValue: ");
+		result.append(" (semaphoreType: ");
+		result.append(semaphoreType);
+		result.append(", initialValue: ");
 		result.append(initialValue);
 		result.append(", maxValue: ");
 		result.append(maxValue);

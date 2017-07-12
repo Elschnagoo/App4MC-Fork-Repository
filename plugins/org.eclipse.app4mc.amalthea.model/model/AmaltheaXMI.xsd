@@ -375,6 +375,14 @@
       <xsd:enumeration value="scheduleSection"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="SemaphoreType">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="CountingSemaphore"/>
+      <xsd:enumeration value="Resource"/>
+      <xsd:enumeration value="Spinlock"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="Condition">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -3187,6 +3195,7 @@ priorityCeilingProtocol: enables priority ceiling for this resource</xsd:documen
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
+        <xsd:attribute name="semaphoreType" type="am:SemaphoreType"/>
         <xsd:attribute name="initialValue" type="xsd:int"/>
         <xsd:attribute name="maxValue" type="xsd:int"/>
         <xsd:attribute name="priorityCeilingProtocol" type="xsd:boolean"/>
@@ -5148,6 +5157,7 @@ It can be used to define which mode value is written to the label.</xsd:document
           <xsd:element name="semaphore" type="am:Semaphore"/>
         </xsd:choice>
         <xsd:attribute name="access" type="am:SemaphoreAccessEnum"/>
+        <xsd:attribute name="waitingBehaviour" type="am:WaitingBehaviour"/>
         <xsd:attribute name="semaphore" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>

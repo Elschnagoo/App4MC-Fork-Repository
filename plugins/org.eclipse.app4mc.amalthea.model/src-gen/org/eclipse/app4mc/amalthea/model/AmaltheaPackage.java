@@ -13838,13 +13838,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Semaphore Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMAPHORE__SEMAPHORE_TYPE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Initial Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE__INITIAL_VALUE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+	int SEMAPHORE__INITIAL_VALUE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Max Value</b></em>' attribute.
@@ -13853,7 +13862,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE__MAX_VALUE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
+	int SEMAPHORE__MAX_VALUE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Priority Ceiling Protocol</b></em>' attribute.
@@ -13862,7 +13871,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE__PRIORITY_CEILING_PROTOCOL = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+	int SEMAPHORE__PRIORITY_CEILING_PROTOCOL = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Semaphore</em>' class.
@@ -13871,7 +13880,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
+	int SEMAPHORE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -22586,13 +22595,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE_ACCESS__ACCESS = RUNNABLE_ITEM_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Waiting Behaviour</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMAPHORE_ACCESS__WAITING_BEHAVIOUR = RUNNABLE_ITEM_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Semaphore Access</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE_ACCESS_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
+	int SEMAPHORE_ACCESS_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -24898,6 +24916,16 @@ public interface AmaltheaPackage extends EPackage {
 	int DATA_STABILITY_LEVEL = 364;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreType <em>Semaphore Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.SemaphoreType
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreType()
+	 * @generated
+	 */
+	int SEMAPHORE_TYPE = 365;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Condition <em>Condition</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24905,7 +24933,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCondition()
 	 * @generated
 	 */
-	int CONDITION = 365;
+	int CONDITION = 366;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.GroupingType <em>Grouping Type</em>}' enum.
@@ -24915,7 +24943,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGroupingType()
 	 * @generated
 	 */
-	int GROUPING_TYPE = 366;
+	int GROUPING_TYPE = 367;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.WaitEventType <em>Wait Event Type</em>}' enum.
@@ -24925,7 +24953,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWaitEventType()
 	 * @generated
 	 */
-	int WAIT_EVENT_TYPE = 367;
+	int WAIT_EVENT_TYPE = 368;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.WaitingBehaviour <em>Waiting Behaviour</em>}' enum.
@@ -24935,7 +24963,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWaitingBehaviour()
 	 * @generated
 	 */
-	int WAITING_BEHAVIOUR = 368;
+	int WAITING_BEHAVIOUR = 369;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ISRCategory <em>ISR Category</em>}' enum.
@@ -24945,7 +24973,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getISRCategory()
 	 * @generated
 	 */
-	int ISR_CATEGORY = 369;
+	int ISR_CATEGORY = 370;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.AccessPrecedenceType <em>Access Precedence Type</em>}' enum.
@@ -24955,7 +24983,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAccessPrecedenceType()
 	 * @generated
 	 */
-	int ACCESS_PRECEDENCE_TYPE = 370;
+	int ACCESS_PRECEDENCE_TYPE = 371;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.OrderType <em>Order Type</em>}' enum.
@@ -24965,7 +24993,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOrderType()
 	 * @generated
 	 */
-	int ORDER_TYPE = 371;
+	int ORDER_TYPE = 372;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelDataStability <em>Label Data Stability</em>}' enum.
@@ -24975,7 +25003,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelDataStability()
 	 * @generated
 	 */
-	int LABEL_DATA_STABILITY = 372;
+	int LABEL_DATA_STABILITY = 373;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ReceiveOperation <em>Receive Operation</em>}' enum.
@@ -24985,7 +25013,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getReceiveOperation()
 	 * @generated
 	 */
-	int RECEIVE_OPERATION = 373;
+	int RECEIVE_OPERATION = 374;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelAccessDataStability <em>Label Access Data Stability</em>}' enum.
@@ -24995,7 +25023,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessDataStability()
 	 * @generated
 	 */
-	int LABEL_ACCESS_DATA_STABILITY = 374;
+	int LABEL_ACCESS_DATA_STABILITY = 375;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelAccessEnum <em>Label Access Enum</em>}' enum.
@@ -25005,7 +25033,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessEnum()
 	 * @generated
 	 */
-	int LABEL_ACCESS_ENUM = 375;
+	int LABEL_ACCESS_ENUM = 376;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum <em>Semaphore Access Enum</em>}' enum.
@@ -25015,7 +25043,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreAccessEnum()
 	 * @generated
 	 */
-	int SEMAPHORE_ACCESS_ENUM = 376;
+	int SEMAPHORE_ACCESS_ENUM = 377;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Preemption <em>Preemption</em>}' enum.
@@ -25025,7 +25053,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPreemption()
 	 * @generated
 	 */
-	int PREEMPTION = 377;
+	int PREEMPTION = 378;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ConcurrencyType <em>Concurrency Type</em>}' enum.
@@ -25035,7 +25063,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConcurrencyType()
 	 * @generated
 	 */
-	int CONCURRENCY_TYPE = 378;
+	int CONCURRENCY_TYPE = 379;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ASILType <em>ASIL Type</em>}' enum.
@@ -25045,7 +25073,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getASILType()
 	 * @generated
 	 */
-	int ASIL_TYPE = 379;
+	int ASIL_TYPE = 380;
 
 
 	/**
@@ -30728,6 +30756,17 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getSemaphore();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Semaphore#getSemaphoreType <em>Semaphore Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Semaphore Type</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Semaphore#getSemaphoreType()
+	 * @see #getSemaphore()
+	 * @generated
+	 */
+	EAttribute getSemaphore_SemaphoreType();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Semaphore#getInitialValue <em>Initial Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -34419,6 +34458,17 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getSemaphoreAccess_Access();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.SemaphoreAccess#getWaitingBehaviour <em>Waiting Behaviour</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Waiting Behaviour</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.SemaphoreAccess#getWaitingBehaviour()
+	 * @see #getSemaphoreAccess()
+	 * @generated
+	 */
+	EAttribute getSemaphoreAccess_WaitingBehaviour();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SenderReceiverCommunication <em>Sender Receiver Communication</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -35510,6 +35560,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getDataStabilityLevel();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.app4mc.amalthea.model.SemaphoreType <em>Semaphore Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Semaphore Type</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.SemaphoreType
+	 * @generated
+	 */
+	EEnum getSemaphoreType();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.app4mc.amalthea.model.Condition <em>Condition</em>}'.
