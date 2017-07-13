@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <swModel>
-    <tasks name="Task_1" priority="4" preemption="preemptive" multipleTaskActivationLimit="1">
+    <tasks name="Task_1" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_1?type=Runnable" />
         </graphEntries>
       </callGraph>
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="4" />
+      </customProperties>
     </tasks>
-    <tasks name="Task_2" priority="3" preemption="preemptive" multipleTaskActivationLimit="1">
+    <tasks name="Task_2" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_1?type=Runnable" />
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_2?type=Runnable" />
         </graphEntries>
       </callGraph>
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="3" />
+      </customProperties>
     </tasks>
-    <tasks name="Task_3" priority="2" preemption="preemptive" multipleTaskActivationLimit="1">
+    <tasks name="Task_3" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_1?type=Runnable" />
@@ -24,8 +30,11 @@
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_3?type=Runnable" />
         </graphEntries>
       </callGraph>
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="2" />
+      </customProperties>
     </tasks>
-    <tasks name="Task_4" priority="1" preemption="preemptive" multipleTaskActivationLimit="1">
+    <tasks name="Task_4" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_1?type=Runnable" />
@@ -34,6 +43,9 @@
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_4?type=Runnable" />
         </graphEntries>
       </callGraph>
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="1" />
+      </customProperties>
     </tasks>
     <runnables name="Runnable_1_1">
       <runnableItems xsi:type="am:RunnableInstructions">
@@ -89,9 +101,6 @@
   <hwModel>
     <coreTypes name="Core_type" instructionsPerCycle="1" />
     <system name="System">
-      <quartzes name="Quartz" type="STATIC">
-        <frequency unit="MHz" value="100.0" />
-      </quartzes>
       <ecus name="Ecu">
         <microcontrollers name="Processor">
           <memories name="Memory">
@@ -105,6 +114,9 @@
           </cores>
         </microcontrollers>
       </ecus>
+      <quartzes name="Quartz" type="STATIC">
+        <frequency unit="MHz" value="100.0" />
+      </quartzes>
     </system>
   </hwModel>
   <osModel>

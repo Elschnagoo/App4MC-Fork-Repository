@@ -3,12 +3,6 @@
   <hwModel>
     <coreTypes name="DefaultCore" instructionsPerCycle="1" />
     <system name="Democar">
-      <quartzes name="QuartzOscillator_1" type="STATIC">
-        <frequency unit="MHz" value="200.0" />
-      </quartzes>
-      <quartzes name="QuartzOscillator_2" type="STATIC">
-        <frequency unit="MHz" value="200.0" />
-      </quartzes>
       <ecus name="ECU_1">
         <microcontrollers name="Processor_1">
           <memories name="Mem_1">
@@ -22,6 +16,12 @@
           </cores>
         </microcontrollers>
       </ecus>
+      <quartzes name="QuartzOscillator_1" type="STATIC">
+        <frequency unit="MHz" value="200.0" />
+      </quartzes>
+      <quartzes name="QuartzOscillator_2" type="STATIC">
+        <frequency unit="MHz" value="200.0" />
+      </quartzes>
     </system>
   </hwModel>
 </am:Amalthea>

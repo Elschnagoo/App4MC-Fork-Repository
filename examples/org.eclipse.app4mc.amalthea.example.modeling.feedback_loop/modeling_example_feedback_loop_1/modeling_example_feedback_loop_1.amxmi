@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <swModel>
-    <tasks name="Task_1" priority="3" stimuli="Stimulus_Task_1?type=Periodic" osekTaskGroup="3" preemption="preemptive" multipleTaskActivationLimit="1">
+    <tasks name="Task_1" stimuli="Stimulus_Task_1?type=Periodic" osekTaskGroup="3" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
         <graphEntries xsi:type="am:ModeSwitch" valueProvider="e?type=ModeLabel">
           <entries values="E/E_0?type=ModeLiteral">
@@ -19,8 +19,11 @@
           <calls xsi:type="am:TaskRunnableCall" runnable="R1?type=Runnable" />
         </graphEntries>
       </callGraph>
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="3" />
+      </customProperties>
     </tasks>
-    <tasks name="Task_2" priority="2" stimuli="Stimulus_Task_2?type=Periodic" osekTaskGroup="2" preemption="preemptive" multipleTaskActivationLimit="1">
+    <tasks name="Task_2" stimuli="Stimulus_Task_2?type=Periodic" osekTaskGroup="2" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
         <graphEntries xsi:type="am:ModeSwitch" valueProvider="state?type=ModeLabel">
           <entries values="State/State_0?type=ModeLiteral">
@@ -92,8 +95,11 @@
           <calls xsi:type="am:TaskRunnableCall" runnable="R2?type=Runnable" />
         </graphEntries>
       </callGraph>
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="2" />
+      </customProperties>
     </tasks>
-    <tasks name="Task_3" priority="1" stimuli="Stimulus_Task_3?type=Periodic" osekTaskGroup="1" preemption="preemptive" multipleTaskActivationLimit="1">
+    <tasks name="Task_3" stimuli="Stimulus_Task_3?type=Periodic" osekTaskGroup="1" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
         <graphEntries xsi:type="am:ModeSwitch" valueProvider="y?type=ModeLabel">
           <entries values="Y/Y_0?type=ModeLiteral">
@@ -113,8 +119,11 @@
           </entries>
         </graphEntries>
       </callGraph>
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="1" />
+      </customProperties>
     </tasks>
-    <tasks name="Task_4" priority="1" stimuli="IPA_Task_4?type=InterProcess" osekTaskGroup="1" preemption="preemptive" multipleTaskActivationLimit="1">
+    <tasks name="Task_4" stimuli="IPA_Task_4?type=InterProcess" osekTaskGroup="1" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
         <graphEntries xsi:type="am:ModeSwitch" valueProvider="w?type=ModeLabel">
           <entries values="W/W_0?type=ModeLiteral">
@@ -164,6 +173,9 @@
           <calls xsi:type="am:TaskRunnableCall" runnable="R_4?type=Runnable" />
         </graphEntries>
       </callGraph>
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="1" />
+      </customProperties>
     </tasks>
     <runnables name="Set_e_0" callback="false" service="false">
       <runnableItems xsi:type="am:ModeLabelAccess" data="e?type=ModeLabel" access="write" modeValue="E/E_0?type=ModeLiteral" />
@@ -443,10 +455,10 @@
     <events xsi:type="am:StimulusEvent" name="Event_IPA_Task_4" entity="IPA_Task_4?type=InterProcess" />
   </eventModel>
   <mappingModel addressMappingType="offset">
-    <taskAllocation task="Task_1?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0" />
-    <taskAllocation task="Task_2?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0" />
-    <taskAllocation task="Task_3?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0" />
-    <taskAllocation task="Task_4?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0" />
+    <taskAllocation task="Task_1?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />
+    <taskAllocation task="Task_2?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />
+    <taskAllocation task="Task_3?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />
+    <taskAllocation task="Task_4?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />
     <schedulerAllocation scheduler="Scheduler_1?type=TaskScheduler" responsibility="Core_1?type=Core" />
     <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="0" abstractElement="u?type=ModeLabel" />
     <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="1" abstractElement="e?type=ModeLabel" />

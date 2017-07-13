@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <swModel>
-    <tasks name="Task_1" priority="1" stimuli="Stimulus_1?type=Periodic" osekTaskGroup="1" preemption="preemptive" multipleTaskActivationLimit="1">
+    <tasks name="Task_1" stimuli="Stimulus_1?type=Periodic" osekTaskGroup="1" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
         <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="20.0">
@@ -35,8 +35,11 @@
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1?type=Runnable" />
         </graphEntries>
       </callGraph>
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="1" />
+      </customProperties>
     </tasks>
-    <tasks name="Task_2" priority="2" osekTaskGroup="2" preemption="preemptive" multipleTaskActivationLimit="1">
+    <tasks name="Task_2" osekTaskGroup="2" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
         <graphEntries xsi:type="am:ModeSwitch" valueProvider="message?type=ModeLabel">
           <entries values="MessageMode/MessageContent_2?type=ModeLiteral">
@@ -66,6 +69,9 @@
           </defaultEntry>
         </graphEntries>
       </callGraph>
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="2" />
+      </customProperties>
     </tasks>
     <runnables name="Runnable_1_1" callback="false" service="false">
       <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="MessageMode/MessageContent_1?type=ModeLiteral" />
@@ -241,8 +247,8 @@
     <events xsi:type="am:StimulusEvent" name="Event_Stimulus_2" />
   </eventModel>
   <mappingModel addressMappingType="offset">
-    <taskAllocation task="Task_1?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0" />
-    <taskAllocation task="Task_2?type=Task" scheduler="Scheduler_1?type=TaskScheduler" priority="0" />
+    <taskAllocation task="Task_1?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />
+    <taskAllocation task="Task_2?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />
     <schedulerAllocation scheduler="Scheduler_1?type=TaskScheduler" responsibility="Core_1?type=Core" />
     <memoryMapping memory="Memory_1?type=Memory" memoryPositionAddress="0" abstractElement="message?type=ModeLabel" />
   </mappingModel>

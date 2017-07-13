@@ -919,33 +919,33 @@
     <labels name="WheelSpeedVoltage2" constant="false" bVolatile="false" dataStability="noProtection">
       <size value="16" unit="bit" />
     </labels>
-    <processPrototypes name="ESSP0" priority="0" firstRunnable="EcuVehicleSpeedSensor?type=Runnable" lastRunnable="VehicleSpeedSensorVoter?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
+    <processPrototypes name="ESSP0" firstRunnable="EcuVehicleSpeedSensor?type=Runnable" lastRunnable="VehicleSpeedSensorVoter?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
       <runnableCalls runnable="EcuVehicleSpeedSensor?type=Runnable" />
       <runnableCalls runnable="VehicleSpeedSensorTranslation?type=Runnable" />
       <runnableCalls runnable="VehicleSpeedSensorVoter?type=Runnable" />
     </processPrototypes>
-    <processPrototypes name="ESSP1" priority="0" firstRunnable="CylNumObserver?type=Runnable" lastRunnable="DecelerationSensorDiagnosis?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
+    <processPrototypes name="ESSP1" firstRunnable="CylNumObserver?type=Runnable" lastRunnable="DecelerationSensorDiagnosis?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
       <runnableCalls runnable="CylNumObserver?type=Runnable" />
       <runnableCalls runnable="DecelerationSensorDiagnosis?type=Runnable" />
     </processPrototypes>
-    <processPrototypes name="ESSP2" priority="0" firstRunnable="WheelSpeedSensorDiagnosis?type=Runnable" lastRunnable="BrakePedalSensorDiagnosis?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
+    <processPrototypes name="ESSP2" firstRunnable="WheelSpeedSensorDiagnosis?type=Runnable" lastRunnable="BrakePedalSensorDiagnosis?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
       <runnableCalls runnable="WheelSpeedSensorDiagnosis?type=Runnable" />
       <runnableCalls runnable="BrakePedalSensorDiagnosis?type=Runnable" />
     </processPrototypes>
-    <processPrototypes name="ESSP3" priority="0" firstRunnable="MassAirFlowSensor?type=Runnable" lastRunnable="InjectionTimeActuation?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
+    <processPrototypes name="ESSP3" firstRunnable="MassAirFlowSensor?type=Runnable" lastRunnable="InjectionTimeActuation?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
       <runnableCalls runnable="MassAirFlowSensor?type=Runnable" />
       <runnableCalls runnable="BaseFuelMass?type=Runnable" />
       <runnableCalls runnable="TransientFuelMass?type=Runnable" />
       <runnableCalls runnable="TotalFuelMass?type=Runnable" />
       <runnableCalls runnable="InjectionTimeActuation?type=Runnable" />
     </processPrototypes>
-    <processPrototypes name="ESSP4" priority="0" firstRunnable="APedSensor?type=Runnable" lastRunnable="ThrottleActuator?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
+    <processPrototypes name="ESSP4" firstRunnable="APedSensor?type=Runnable" lastRunnable="ThrottleActuator?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
       <runnableCalls runnable="APedSensor?type=Runnable" />
       <runnableCalls runnable="APedVoter?type=Runnable" />
       <runnableCalls runnable="ThrottleController?type=Runnable" />
       <runnableCalls runnable="ThrottleActuator?type=Runnable" />
     </processPrototypes>
-    <processPrototypes name="ESSP5" priority="0" firstRunnable="ThrottleSensor?type=Runnable" lastRunnable="EcuStopLightActuator?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
+    <processPrototypes name="ESSP5" firstRunnable="ThrottleSensor?type=Runnable" lastRunnable="EcuStopLightActuator?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
       <runnableCalls runnable="ThrottleSensor?type=Runnable" />
       <runnableCalls runnable="EcuBrakePedalSensor?type=Runnable" />
       <runnableCalls runnable="BrakePedalSensorTranslation?type=Runnable" />
@@ -957,7 +957,7 @@
       <runnableCalls runnable="StopLightActuator?type=Runnable" />
       <runnableCalls runnable="EcuStopLightActuator?type=Runnable" />
     </processPrototypes>
-    <processPrototypes name="ESSP6" priority="0" firstRunnable="VehicleStateMonitor?type=Runnable" lastRunnable="EcuBrakeActuator?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
+    <processPrototypes name="ESSP6" firstRunnable="VehicleStateMonitor?type=Runnable" lastRunnable="EcuBrakeActuator?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
       <runnableCalls runnable="VehicleStateMonitor?type=Runnable" />
       <runnableCalls runnable="EcuDecelerationSensor?type=Runnable" />
       <runnableCalls runnable="DecelerationSensorTranslation?type=Runnable" />
@@ -968,16 +968,16 @@
       <runnableCalls runnable="BrakeActuator?type=Runnable" />
       <runnableCalls runnable="EcuBrakeActuator?type=Runnable" />
     </processPrototypes>
-    <processPrototypes name="ESSP7" priority="0" firstRunnable="VehicleSpeedSensorDiagnosis?type=Runnable" lastRunnable="BrakeActuatorMonitor?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
+    <processPrototypes name="ESSP7" firstRunnable="VehicleSpeedSensorDiagnosis?type=Runnable" lastRunnable="BrakeActuatorMonitor?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
       <runnableCalls runnable="VehicleSpeedSensorDiagnosis?type=Runnable" />
       <runnableCalls runnable="BrakeActuatorMonitor?type=Runnable" />
     </processPrototypes>
-    <processPrototypes name="ESSP8" priority="0" firstRunnable="DiagnosisArbiter?type=Runnable" lastRunnable="IgnitionTimeActuation?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
+    <processPrototypes name="ESSP8" firstRunnable="DiagnosisArbiter?type=Runnable" lastRunnable="IgnitionTimeActuation?type=Runnable" activation="Timer_10MS?type=PeriodicActivation">
       <runnableCalls runnable="DiagnosisArbiter?type=Runnable" />
       <runnableCalls runnable="IgnitionTiming?type=Runnable" />
       <runnableCalls runnable="IgnitionTimeActuation?type=Runnable" />
     </processPrototypes>
-    <processPrototypes name="ESSP9" priority="0" firstRunnable="EcuWheelSpeedSensor?type=Runnable" lastRunnable="WheelSpeedSensorVoter?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
+    <processPrototypes name="ESSP9" firstRunnable="EcuWheelSpeedSensor?type=Runnable" lastRunnable="WheelSpeedSensorVoter?type=Runnable" activation="Timer_5MS?type=PeriodicActivation">
       <runnableCalls runnable="EcuWheelSpeedSensor?type=Runnable" />
       <runnableCalls runnable="WheelSpeedSensorTranslation?type=Runnable" />
       <runnableCalls runnable="WheelSpeedSensorVoter?type=Runnable" />

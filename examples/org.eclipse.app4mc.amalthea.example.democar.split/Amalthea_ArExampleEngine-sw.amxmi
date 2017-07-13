@@ -13,7 +13,7 @@
     <tags name="SwcInjIgnActuation" tagType="SOFTWARE_COMPONENT" />
   </commonElements>
   <swModel>
-    <tasks name="Task10ms" priority="4" preemption="cooperative" multipleTaskActivationLimit="3">
+    <tasks name="Task10ms" preemption="cooperative" multipleTaskActivationLimit="3">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="APedVoter?type=Runnable" />
@@ -26,8 +26,11 @@
         </graphEntries>
       </callGraph>
       <stimuli xsi:type="am:Periodic" href="amlt:/#OsScheduleTable_2_EP_0?type=Periodic" />
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="4" />
+      </customProperties>
     </tasks>
-    <tasks name="Task5ms" priority="6" preemption="cooperative" multipleTaskActivationLimit="3">
+    <tasks name="Task5ms" preemption="cooperative" multipleTaskActivationLimit="3">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="APedSensor?type=Runnable" />
@@ -36,16 +39,22 @@
         </graphEntries>
       </callGraph>
       <stimuli xsi:type="am:Periodic" href="amlt:/#OsScheduleTable_1_EP_0?type=Periodic" />
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="6" />
+      </customProperties>
     </tasks>
-    <tasks name="TaskCylNum" priority="8" preemption="cooperative" multipleTaskActivationLimit="1">
+    <tasks name="TaskCylNum" preemption="cooperative" multipleTaskActivationLimit="1">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="CylNumObserver?type=Runnable" />
         </graphEntries>
       </callGraph>
       <stimuli xsi:type="am:Periodic" href="amlt:/#OsScheduleTable_2_EP_0?type=Periodic" />
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="8" />
+      </customProperties>
     </tasks>
-    <tasks name="TaskInjIgnActuation" priority="8" preemption="cooperative" multipleTaskActivationLimit="1">
+    <tasks name="TaskInjIgnActuation" preemption="cooperative" multipleTaskActivationLimit="1">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="InjectionTimeActuation?type=Runnable" />
@@ -53,6 +62,9 @@
         </graphEntries>
       </callGraph>
       <stimuli xsi:type="am:Periodic" href="amlt:/#OsScheduleTable_2_EP_0?type=Periodic" />
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="8" />
+      </customProperties>
     </tasks>
     <runnables name="APedSensor" tags="SwcEngineSensors?type=Tag">
       <runnableItems xsi:type="am:LabelAccess" data="APedSensor1Voltage?type=Label" access="read" dataStability="inherited" />

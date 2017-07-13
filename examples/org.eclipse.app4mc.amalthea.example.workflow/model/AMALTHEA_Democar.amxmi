@@ -13,7 +13,7 @@
     <tags name="SwcInjIgnActuation" tagType="SOFTWARE_COMPONENT" />
   </commonElements>
   <swModel>
-    <tasks name="Task_10MS" priority="10" stimuli="Timer_10MS?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="10">
+    <tasks name="Task_10MS" stimuli="Timer_10MS?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="10">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="CheckPlausability?type=Runnable" />
@@ -51,15 +51,21 @@
           <calls xsi:type="am:TaskRunnableCall" runnable="IgnitionTimeActuation?type=Runnable" />
         </graphEntries>
       </callGraph>
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="10" />
+      </customProperties>
     </tasks>
-    <tasks name="Task_20MS" priority="10" stimuli="Timer_20MS?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="10">
+    <tasks name="Task_20MS" stimuli="Timer_20MS?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="10">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="BrakeForceArbiter?type=Runnable" />
         </graphEntries>
       </callGraph>
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="10" />
+      </customProperties>
     </tasks>
-    <tasks name="Task_5MS" priority="10" stimuli="Timer_5MS?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="10">
+    <tasks name="Task_5MS" stimuli="Timer_5MS?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="10">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="EcuBrakeActuator?type=Runnable" />
@@ -73,6 +79,9 @@
           <calls xsi:type="am:TaskRunnableCall" runnable="MassAirFlowSensor?type=Runnable" />
         </graphEntries>
       </callGraph>
+      <customProperties key="priority">
+        <value xsi:type="am:StringObject" value="10" />
+      </customProperties>
     </tasks>
     <runnables name="ABSCalculation" tags="SwcABSCalculation?type=Tag">
       <runnableItems xsi:type="am:LabelAccess" data="VotedDecelerationRate?type=Label" access="read" dataStability="inherited" />
@@ -984,9 +993,6 @@
   <hwModel>
     <coreTypes name="Default" instructionsPerCycle="1" />
     <system name="Democar">
-      <quartzes name="QuartzOscillator_1" type="STATIC">
-        <frequency unit="MHz" value="200.0" />
-      </quartzes>
       <ecus name="ECU_1">
         <microcontrollers name="Processor_1">
           <memories name="Mem_1">
@@ -997,6 +1003,9 @@
           </cores>
         </microcontrollers>
       </ecus>
+      <quartzes name="QuartzOscillator_1" type="STATIC">
+        <frequency unit="MHz" value="200.0" />
+      </quartzes>
     </system>
   </hwModel>
   <osModel>
