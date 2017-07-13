@@ -1,0 +1,322 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _DGqOIKPrEeWDWL6qw48qbg,_GD2C4KPpEeWDWL6qw48qbg
+Element-Name: MigrateAllExamples
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _H9tv8GfREeemx6PYm0mbHQ
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 7/13/17 4:02 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Model Explorer" | get-tree | get-menu "New/Example..." | click
+with [get-window "New Example"] {
+    get-tree | select "AMALTHEA Examples/Democar Examples" | double-click
+    get-button Finish | click
+}
+get-view "Model Explorer" | get-tree | get-menu "New/Example..." | click
+with [get-window "New Example"] {
+    get-tree | select "AMALTHEA Examples/Hwmodel Examples" | double-click
+    get-button Finish | click
+}
+get-view "Model Explorer" | get-tree | get-menu "New/Example..." | click
+with [get-window "New Example"] {
+    get-tree | select "AMALTHEA Examples/Modeling Examples" | double-click
+    get-button Finish | click
+}
+get-view "Model Explorer" | get-tree | get-menu "New/Example..." | click
+with [get-window "New Example"] {
+    get-tree | select "AMALTHEA Examples/Workflow Examples" | double-click
+    get-button Finish | click
+}
+get-view "Model Explorer" | get-tree | select "org.eclipse.app4mc.amalthea.example.democar/AMALTHEA_Democar.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree | key-type "M1+h"
+with [get-window Search] {
+    get-combo -after [get-label "Containing text:"] | set-text "0.8.1"
+    get-combo -after [get-label "File name patterns (separated by comma):"] | set-text "*.amxmi"
+    get-button "Replace..." | click
+}
+with [get-window "Replace Text Matches"] {
+    get-combo -after [get-label "With:"] | set-text "0.8.0"
+    get-button OK | click
+}
+
+ 
+get-view "Model Explorer" | get-tree | select "org.eclipse.app4mc.amalthea.example.democar/AMALTHEA_Democar.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+with [get-window "AMALTHEA Model Migration"] {
+    get-group "Migration details" | get-combo -after [get-label "Model Version"] | select "0.8.1"
+    get-button "Migrate Models" | click
+}
+get-window "AMALTHEA Model Migration" | get-button OK | click
+with [get-view "Model Explorer" | get-tree] {
+    select "org.eclipse.app4mc.amalthea.example.democar.mapping/model/AMALTHEA_Democar_MappingExample_withTasks.amxmi" "org.eclipse.app4mc.amalthea.example.democar.mapping/model/AMALTHEA_Democar_MappingExample-hw.amxmi" "org.eclipse.app4mc.amalthea.example.democar.mapping/model/AMALTHEA_Democar_MappingExample.amxmi"
+    get-menu "AMALTHEA Model Migration" | click
+}
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+with [get-view "Model Explorer" | get-tree] {
+    select "org.eclipse.app4mc.amalthea.example.democar.mapping/modelEnergyEfficient/AMALTHEA_Democar_EnergyEfficientMappingExample.amxmi" "org.eclipse.app4mc.amalthea.example.democar.mapping/modelEnergyEfficient/AMALTHEA_HVAC_EnergyEfficientMapping_Example.amxmi" "org.eclipse.app4mc.amalthea.example.democar.mapping/modelEnergyEfficient/IMX6.amxmi"
+    get-menu "AMALTHEA Model Migration" | click
+}
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+with [get-view "Model Explorer" | get-tree] {
+    select "org.eclipse.app4mc.amalthea.example.democar.split/Amalthea_ArExampleEngine-hw.amxmi" "org.eclipse.app4mc.amalthea.example.democar.split/Amalthea_ArExampleEngine-os.amxmi" "org.eclipse.app4mc.amalthea.example.democar.split/Amalthea_ArExampleEngine-stimuli.amxmi" "org.eclipse.app4mc.amalthea.example.democar.split/Amalthea_ArExampleEngine-sw.amxmi"
+    get-menu "AMALTHEA Model Migration" | click
+}
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+with [get-view "Model Explorer" | get-tree] {
+    select "org.eclipse.app4mc.amalthea.example.hwmodel/gateway.amxmi" "org.eclipse.app4mc.amalthea.example.hwmodel/memory.amxmi" "org.eclipse.app4mc.amalthea.example.hwmodel/MPC5668G.amxmi"
+    get-menu "AMALTHEA Model Migration" | click
+}
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree | select "org.eclipse.app4mc.amalthea.example.modeling/modeling_example_1.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.client_server/modeling_example_client_server_1/modeling_example_client_server_1.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.client_server/modeling_example_client_server_2/modeling_example_client_server_2.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.client_server/modeling_example_client_server_3/modeling_example_client_server_3.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.client_server/modeling_example_client_server_4/modeling_example_client_server_4.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.client_server/modeling_example_client_server_5/modeling_example_client_server_5.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.client_server/modeling_example_client_server_6/modeling_example_client_server_6.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.client_server/modeling_example_client_server_7/modeling_example_client_server_7.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.client_server/modeling_example_client_server_8/modeling_example_client_server_8.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.client_server/modeling_example_client_server_9/modeling_example_client_server_9.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.feedback_loop/modeling_example_feedback_loop_1/modeling_example_feedback_loop_1.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.feedback_loop/modeling_example_feedback_loop_2/modeling_example_feedback_loop_2.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.feedback_loop/modeling_example_feedback_loop_3/modeling_example_feedback_loop_3.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.feedback_loop/modeling_example_feedback_loop_4/modeling_example_feedback_loop_4.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.feedback_loop/modeling_example_feedback_loop_5/modeling_example_feedback_loop_5.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.feedback_loop/modeling_example_feedback_loop_6/modeling_example_feedback_loop_6.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.feedback_loop/modeling_example_feedback_loop_7/modeling_example_feedback_loop_7.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.feedback_loop/modeling_example_feedback_loop_8/modeling_example_feedback_loop_8.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.feedback_loop/modeling_example_feedback_loop_9/modeling_example_feedback_loop_9.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.periodic/modeling_example_periodic_1/modeling_example_periodic_1.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.periodic/modeling_example_periodic_2/modeling_example_periodic_2.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.periodic/modeling_example_periodic_3/modeling_example_periodic_3.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.periodic/modeling_example_periodic_4/modeling_example_periodic_4.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.periodic/modeling_example_periodic_5/modeling_example_periodic_5.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.periodic/modeling_example_periodic_6/modeling_example_periodic_6.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.periodic/modeling_example_periodic_7/modeling_example_periodic_7.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.periodic/modeling_example_periodic_8/modeling_example_periodic_8.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.periodic/modeling_example_periodic_9/modeling_example_periodic_9.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine/modeling_example_state_machine_1/modeling_example_state_machine_1.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine/modeling_example_state_machine_2/modeling_example_state_machine_2.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine/modeling_example_state_machine_3/modeling_example_state_machine_3.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine/modeling_example_state_machine_4/modeling_example_state_machine_4.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine/modeling_example_state_machine_5/modeling_example_state_machine_5.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine/modeling_example_state_machine_6/modeling_example_state_machine_6.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine/modeling_example_state_machine_7/modeling_example_state_machine_7.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine/modeling_example_state_machine_8/modeling_example_state_machine_8.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine/modeling_example_state_machine_9/modeling_example_state_machine_9.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop/modeling_example_state_machine_feedback_loop_1/modeling_example_state_machine_feedback_loop_1.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop/modeling_example_state_machine_feedback_loop_2/modeling_example_state_machine_feedback_loop_2.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop/modeling_example_state_machine_feedback_loop_3/modeling_example_state_machine_feedback_loop_3.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop/modeling_example_state_machine_feedback_loop_4/modeling_example_state_machine_feedback_loop_4.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop/modeling_example_state_machine_feedback_loop_5/modeling_example_state_machine_feedback_loop_5.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop/modeling_example_state_machine_feedback_loop_6/modeling_example_state_machine_feedback_loop_6.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop/modeling_example_state_machine_feedback_loop_7/modeling_example_state_machine_feedback_loop_7.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop/modeling_example_state_machine_feedback_loop_8/modeling_example_state_machine_feedback_loop_8.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree 
+    | select "org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop/modeling_example_state_machine_feedback_loop_9/modeling_example_state_machine_feedback_loop_9.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+get-view "Model Explorer" | get-tree | select "org.eclipse.app4mc.amalthea.example.modeling2/modeling_example_2.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+with [get-view "Model Explorer" | get-tree] {
+    select "org.eclipse.app4mc.amalthea.example.workflow/model/AMALTHEA_Components.amxmi" "org.eclipse.app4mc.amalthea.example.workflow/model/AMALTHEA_Democar.amxmi"
+    get-menu "AMALTHEA Model Migration" | click
+}
+get-window "AMALTHEA Model Migration" | get-button "Migrate Models" | click
+get-window "AMALTHEA Model Migration" | get-button OK | click
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
