@@ -72,7 +72,6 @@ Details regarding proportionate fair (*Pfair*) scheduling and the variants of th
 An overview regarding *Reservation Servers* is given in the lecture "Resource Reservation Servers" by Jan Reineke (see "lecture":https://embedded.cs.uni-saarland.de/lectures/realtimesystems/resourceReservationServers.pdf at Saarland University).
 
 
-
 h3. Os Overhead
 
 It is possible to define the overhead that is produced by an operating system. The defined overhead can be assigned to an operating system definition. Each overhead information is defined as a set of instructions that has to be executed when the corresponding OS function is used. The instructions can be either a constant set or a deviation of instructions. It is possible to define the overhead for the ISR category one and two and for a number of operating system API functions.
@@ -145,6 +144,7 @@ With this object, a semaphore can be described which limits the access of severa
 table(classic). 
 |_. Attribute  |_. Description |
 | __name__ | Name of semaphore (inherited from ReferableBaseObject) |
-| __maxValue__ | Maximum number of processes that can concurrently access the semaphore |
+| __semaphoreType__ | Defines how the semaphore is implemented |
 | __initialValue__ | Initial number of processes that access the semaphore |
+| __maxValue__ | Maximum number of processes that can concurrently access the semaphore |
 | __priorityCeilingPrototcol__ | Defines if the priority ceiling protocol is activated. If it is activated, a process that accesses the semaphore gets a higher priority as the processes that can also access the same semaphore |
