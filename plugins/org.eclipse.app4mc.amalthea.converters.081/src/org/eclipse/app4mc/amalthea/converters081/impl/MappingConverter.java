@@ -49,9 +49,64 @@ public class MappingConverter extends AbstractConverter {
 		}
 		final Element rootElement = root.getRootElement();
 
-		updateMappingModel(rootElement);
+		updateMappingModel_coreAllocation(rootElement);
+		
+		updateMappingModel_schedulerAllocation(rootElement);
 
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
+	}
+	
+	/**
+	 * This method is used to migrate the MappingModel data (priority element from TaskAllocation should be moved to SchedulingParameters element: For further
+	 * details, check : Bug 511284, 518070 )
+	 *
+	 *
+	 * @param rootElement
+	 *            Amalthea root element
+	 */
+	private void updateMappingModel_schedulerAllocation(Element rootElement) {
+		
+		final StringBuffer xpathBuffer = new StringBuffer();
+
+		xpathBuffer.append("./mappingModel/taskAllocation");
+		
+		
+		final List<Element> taskAllocationElements = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
+				Element.class, this.helper.getGenericNS("xsi"));
+		
+		boolean priorityAddedAsSchedulingParameter=false;
+ 
+		for (Element taskAllocationElement : taskAllocationElements) {
+			
+			Attribute priorityAttribute = taskAllocationElement.getAttribute("priority");
+
+			if(priorityAttribute !=null){
+				
+				String value = priorityAttribute.getValue();
+				
+				/*-- removing attribute based on the metamodel changes introduced in 0.8.1 --*/
+
+				taskAllocationElement.removeAttribute(priorityAttribute);
+				
+				if(!value.equals("0")){
+					
+					priorityAddedAsSchedulingParameter=true;
+					
+					Element schedulingParametersElement=new Element("schedulingParameters");
+					
+					schedulingParametersElement.setAttribute("priority", value);
+					
+					taskAllocationElement.addContent(schedulingParametersElement);
+				}
+
+
+			}
+
+		}
+		
+		if(priorityAddedAsSchedulingParameter){
+			this.logger.info("Priority is removed from TaskAllocation elements and added as a attribute in corresponding SchedulingParameters element");
+		}
 	}
 
 	/**
@@ -62,7 +117,7 @@ public class MappingConverter extends AbstractConverter {
 	 * @param rootElement
 	 *            Amalthea root element
 	 */
-	private void updateMappingModel(Element rootElement) {
+	private void updateMappingModel_coreAllocation(Element rootElement) {
 
 		
 		final StringBuffer xpathBuffer = new StringBuffer();

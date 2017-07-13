@@ -51,7 +51,69 @@ public class SwConverter extends AbstractConverter {
 
 		updateRunnable(rootElement);
 
+		updateAllAbstractProcessElements(rootElement);
+
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
+	}
+
+	/**
+	 * This method is used to remove priority from sub-classes of AbstractProcess (For further
+	 * details, check : Bug 511284, 518070  )
+	 *
+	 *
+	 * @param rootElement
+	 *            Amalthea root element
+	 */
+	private void updateAllAbstractProcessElements(Element rootElement) {
+		
+		final StringBuffer xpathBuffer = new StringBuffer();
+
+		xpathBuffer.append("./swModel/tasks");
+		xpathBuffer.append("|");
+		xpathBuffer.append("./swModel/isrs");
+		xpathBuffer.append("|");
+		xpathBuffer.append("./swModel/processPrototypes");
+
+		final List<Element> abstractProcessElements = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
+				Element.class, this.helper.getGenericNS("xsi"));
+		
+		for (Element abstractProcessElement : abstractProcessElements) {
+			
+			Attribute priorityAttribute = abstractProcessElement.getAttribute("priority");
+			
+			if(priorityAttribute !=null){
+				String value = priorityAttribute.getValue();
+				
+				/*-- removing attribute based on the metamodel changes introduced in 0.8.1 --*/
+				
+				abstractProcessElement.removeAttribute(priorityAttribute);
+				
+				if(!value.equals("0")){
+ 					
+					Element customPropertiesElement=new Element("customProperties");
+					
+					customPropertiesElement.setAttribute("key", "priority");
+					
+					Element valueElement=new Element("value");
+					
+					valueElement.setAttribute("type", "am:StringObject", this.helper.getGenericNS("xsi"));
+					
+					valueElement.setAttribute("value", value);
+					
+					customPropertiesElement.addContent(valueElement);
+					
+					abstractProcessElement.addContent(customPropertiesElement);
+					
+					this.logger.info("Priority is removed from : "+abstractProcessElement.getName()+" element ("+abstractProcessElement.getAttributeValue("name")+") and added as a CustomProperty with key as Priority");
+					
+				}
+				
+				
+			}
+			
+		}
+		
+		
 	}
 
 	/**

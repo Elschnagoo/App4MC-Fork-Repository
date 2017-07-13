@@ -18,6 +18,7 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.converters081.impl.ConstraintsConverter;
 import org.eclipse.app4mc.amalthea.converters081.impl.HwConverter;
+import org.eclipse.app4mc.amalthea.converters081.impl.MappingConverter;
 import org.eclipse.app4mc.amalthea.converters081.impl.SwConverter;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -37,11 +38,15 @@ public class SwConverterTest extends AbstractConverterTest {
 
 		final String[] inputFiles = new String[] { "/sw/sw.amxmi","/sw/sw2.amxmi" };
 
+		final String[] inputFiles_priority = new String[] { "/sw_priority/sw_priority.amxmi" };
+
 
 
 		return Arrays.asList(new Object[][] {
-				{ "Models with SW Model", true, inputFiles, "Migration of Amalthea models containing SW Model " } ,
-  });
+			{ "Models with SW Model", true, inputFiles, "Migration of Amalthea models containing SW Model " } ,
+
+			{ "Models with SW Model - having sub-classes of AbstractProcess (e.g: Task, ISR, ProcessPrototyes)", true, inputFiles_priority, "Migration of Amalthea models containing SW Model (with AbstractProcess elements)" } 
+		});
 	}
 
 	public SwConverterTest(final String testDataID, final boolean canExecuteTestCase, final String[] xmlFiles,
@@ -55,7 +60,7 @@ public class SwConverterTest extends AbstractConverterTest {
 	public void testConversion() {
 		super.testConversion(org.eclipse.app4mc.amalthea.converters081.impl.NamespaceConverter.class,
 				org.eclipse.app4mc.amalthea.converters081.impl.RootElementConverter.class, ConstraintsConverter.class,
-				HwConverter.class, SwConverter.class);
+				HwConverter.class, SwConverter.class, MappingConverter.class);
 	}
 
 
@@ -76,12 +81,36 @@ public class SwConverterTest extends AbstractConverterTest {
 
 		if(document.getBaseURI().endsWith("sw.amxmi")){
 			assertTrue( "Runnable migration is not successful" , runnableElements.size()==2);
-			
+
 		}
 
-		
-		
-	 
+		//check for priority inside AbstractProcessElements
+
+		final StringBuffer absProcessXpathBuffer = new StringBuffer();
+
+		absProcessXpathBuffer.append("./swModel/tasks[@priority]");
+		absProcessXpathBuffer.append("|");
+		absProcessXpathBuffer.append("./swModel/isrs[@priority]");
+		absProcessXpathBuffer.append("|");
+		absProcessXpathBuffer.append("./swModel/processPrototypes[@priority]");
+
+
+
+		final List<Element> abstractProcessElements = this.helper.getXpathResult(document.getRootElement(),
+				absProcessXpathBuffer.toString(), Element.class, this.helper.getGenericNS("xsi"));
+
+
+		assertTrue( "Priority from AbstractProcess elements is not migrated properly" , abstractProcessElements.size()==0);
+
+
+		//check for priority inside TaskAllocation
+
+
+		final List<Element> taskAllocationElements = this.helper.getXpathResult(document.getRootElement(),
+				"./mappingModel/taskAllocation[@priority]", Element.class, this.helper.getGenericNS("xsi"));
+
+		assertTrue( "Priority from TaskAllocation elements is not migrated properly" , taskAllocationElements.size()==0);
+
 
 	}
 

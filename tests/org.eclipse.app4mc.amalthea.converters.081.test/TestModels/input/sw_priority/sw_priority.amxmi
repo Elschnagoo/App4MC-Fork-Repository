@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <isrs name="isr_1" priority="2"/>
+    <tasks name="task_1" priority="4" osekTaskGroup="0" multipleTaskActivationLimit="0"/>
+    <tasks name="task_2" priority="0" osekTaskGroup="0" multipleTaskActivationLimit="0">
+      <customProperties key="key">
+        <value xsi:type="am:StringObject" value="value"/>
+      </customProperties>
+    </tasks>
+    <processPrototypes name="process_prototype_1" priority="0"/>
+  </swModel>
+  <mappingModel>
+    <taskAllocation priority="0"/>
+    <taskAllocation priority="10"/>
+    <taskAllocation priority="2"/>
+  </mappingModel>
+</am:Amalthea>
