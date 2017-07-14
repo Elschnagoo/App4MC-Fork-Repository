@@ -13874,13 +13874,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE__PRIORITY_CEILING_PROTOCOL = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Semaphore Accesses</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMAPHORE__SEMAPHORE_ACCESSES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Semaphore</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
+	int SEMAPHORE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -22604,13 +22613,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE_ACCESS__WAITING_BEHAVIOUR = RUNNABLE_ITEM_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Semaphore Link Int</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMAPHORE_ACCESS__SEMAPHORE_LINK_INT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Semaphore Access</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE_ACCESS_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
+	int SEMAPHORE_ACCESS_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -30800,6 +30818,17 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getSemaphore_PriorityCeilingProtocol();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Semaphore#getSemaphoreAccesses <em>Semaphore Accesses</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Semaphore Accesses</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Semaphore#getSemaphoreAccesses()
+	 * @see #getSemaphore()
+	 * @generated
+	 */
+	EReference getSemaphore_SemaphoreAccesses();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Scheduler <em>Scheduler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -34467,6 +34496,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSemaphoreAccess_WaitingBehaviour();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SemaphoreAccess <em>Semaphore Link Int</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Semaphore Link Int</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.SemaphoreAccess
+	 * @see #getSemaphoreAccess()
+	 * @generated
+	 */
+	EReference getSemaphoreAccess_SemaphoreLinkInt();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SenderReceiverCommunication <em>Sender Receiver Communication</em>}'.

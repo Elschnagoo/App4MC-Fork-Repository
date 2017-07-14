@@ -19,6 +19,7 @@ import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -36,6 +37,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreAccessImpl#getSemaphore <em>Semaphore</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreAccessImpl#getAccess <em>Access</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreAccessImpl#getWaitingBehaviour <em>Waiting Behaviour</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreAccessImpl#getSemaphoreLinkInt <em>Semaphore Link Int</em>}</li>
  * </ul>
  *
  * @generated
@@ -92,6 +94,16 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 	protected WaitingBehaviour waitingBehaviour = WAITING_BEHAVIOUR_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getSemaphoreLinkInt() <em>Semaphore Link Int</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSemaphoreLinkInt()
+	 * @generated
+	 * @ordered
+	 */
+	protected Semaphore semaphoreLinkInt;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -146,6 +158,8 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 		semaphore = newSemaphore;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SEMAPHORE_ACCESS__SEMAPHORE, oldSemaphore, semaphore));
+ 		//Additional setting transient value for transient bi-directional reference
+ 		setSemaphoreLinkInt(newSemaphore);
 	}
 
 	/**
@@ -195,6 +209,96 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Semaphore getSemaphoreLinkInt() {
+		if (semaphoreLinkInt != null && semaphoreLinkInt.eIsProxy()) {
+			InternalEObject oldSemaphoreLinkInt = (InternalEObject)semaphoreLinkInt;
+			semaphoreLinkInt = (Semaphore)eResolveProxy(oldSemaphoreLinkInt);
+			if (semaphoreLinkInt != oldSemaphoreLinkInt) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.SEMAPHORE_ACCESS__SEMAPHORE_LINK_INT, oldSemaphoreLinkInt, semaphoreLinkInt));
+			}
+		}
+		return semaphoreLinkInt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Semaphore basicGetSemaphoreLinkInt() {
+		return semaphoreLinkInt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSemaphoreLinkInt(Semaphore newSemaphoreLinkInt, NotificationChain msgs) {
+		Semaphore oldSemaphoreLinkInt = semaphoreLinkInt;
+		semaphoreLinkInt = newSemaphoreLinkInt;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SEMAPHORE_ACCESS__SEMAPHORE_LINK_INT, oldSemaphoreLinkInt, newSemaphoreLinkInt);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSemaphoreLinkInt(Semaphore newSemaphoreLinkInt) {
+		if (newSemaphoreLinkInt != semaphoreLinkInt) {
+			NotificationChain msgs = null;
+			if (semaphoreLinkInt != null)
+				msgs = ((InternalEObject)semaphoreLinkInt).eInverseRemove(this, AmaltheaPackage.SEMAPHORE__SEMAPHORE_ACCESSES, Semaphore.class, msgs);
+			if (newSemaphoreLinkInt != null)
+				msgs = ((InternalEObject)newSemaphoreLinkInt).eInverseAdd(this, AmaltheaPackage.SEMAPHORE__SEMAPHORE_ACCESSES, Semaphore.class, msgs);
+			msgs = basicSetSemaphoreLinkInt(newSemaphoreLinkInt, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SEMAPHORE_ACCESS__SEMAPHORE_LINK_INT, newSemaphoreLinkInt, newSemaphoreLinkInt));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.SEMAPHORE_ACCESS__SEMAPHORE_LINK_INT:
+				if (semaphoreLinkInt != null)
+					msgs = ((InternalEObject)semaphoreLinkInt).eInverseRemove(this, AmaltheaPackage.SEMAPHORE__SEMAPHORE_ACCESSES, Semaphore.class, msgs);
+				return basicSetSemaphoreLinkInt((Semaphore)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.SEMAPHORE_ACCESS__SEMAPHORE_LINK_INT:
+				return basicSetSemaphoreLinkInt(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -205,6 +309,9 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 				return getAccess();
 			case AmaltheaPackage.SEMAPHORE_ACCESS__WAITING_BEHAVIOUR:
 				return getWaitingBehaviour();
+			case AmaltheaPackage.SEMAPHORE_ACCESS__SEMAPHORE_LINK_INT:
+				if (resolve) return getSemaphoreLinkInt();
+				return basicGetSemaphoreLinkInt();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -225,6 +332,9 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 				return;
 			case AmaltheaPackage.SEMAPHORE_ACCESS__WAITING_BEHAVIOUR:
 				setWaitingBehaviour((WaitingBehaviour)newValue);
+				return;
+			case AmaltheaPackage.SEMAPHORE_ACCESS__SEMAPHORE_LINK_INT:
+				setSemaphoreLinkInt((Semaphore)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -247,6 +357,9 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 			case AmaltheaPackage.SEMAPHORE_ACCESS__WAITING_BEHAVIOUR:
 				setWaitingBehaviour(WAITING_BEHAVIOUR_EDEFAULT);
 				return;
+			case AmaltheaPackage.SEMAPHORE_ACCESS__SEMAPHORE_LINK_INT:
+				setSemaphoreLinkInt((Semaphore)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -265,6 +378,8 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 				return access != ACCESS_EDEFAULT;
 			case AmaltheaPackage.SEMAPHORE_ACCESS__WAITING_BEHAVIOUR:
 				return waitingBehaviour != WAITING_BEHAVIOUR_EDEFAULT;
+			case AmaltheaPackage.SEMAPHORE_ACCESS__SEMAPHORE_LINK_INT:
+				return semaphoreLinkInt != null;
 		}
 		return super.eIsSet(featureID);
 	}

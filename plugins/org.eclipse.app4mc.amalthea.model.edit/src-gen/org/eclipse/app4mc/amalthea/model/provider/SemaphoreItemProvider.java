@@ -59,6 +59,7 @@ public class SemaphoreItemProvider extends ReferableBaseObjectItemProvider {
 			addInitialValuePropertyDescriptor(object);
 			addMaxValuePropertyDescriptor(object);
 			addPriorityCeilingProtocolPropertyDescriptor(object);
+			addSemaphoreAccessesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -149,6 +150,30 @@ public class SemaphoreItemProvider extends ReferableBaseObjectItemProvider {
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Semaphore Accesses feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSemaphoreAccessesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Semaphore_semaphoreAccesses_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Semaphore_semaphoreAccesses_feature", "_UI_Semaphore_type"),
+				 AmaltheaPackage.eINSTANCE.getSemaphore_SemaphoreAccesses(),
+				 false,
+				 false,
+				 true,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**

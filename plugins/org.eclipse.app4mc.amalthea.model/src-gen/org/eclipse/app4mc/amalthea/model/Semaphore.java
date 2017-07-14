@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,6 +34,7 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Semaphore#getInitialValue <em>Initial Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Semaphore#getMaxValue <em>Max Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Semaphore#isPriorityCeilingProtocol <em>Priority Ceiling Protocol</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Semaphore#getSemaphoreAccesses <em>Semaphore Accesses</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphore()
@@ -149,5 +151,22 @@ public interface Semaphore extends ReferableBaseObject {
 	 * @generated
 	 */
 	void setPriorityCeilingProtocol(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Semaphore Accesses</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.SemaphoreAccess}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Semaphore Accesses</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Semaphore Accesses</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphore_SemaphoreAccesses()
+	 * @model opposite="semaphoreLinkInt" transient="true" suppressedSetVisibility="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @generated
+	 */
+	EList<SemaphoreAccess> getSemaphoreAccesses();
 
 } // Semaphore

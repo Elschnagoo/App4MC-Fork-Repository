@@ -12,15 +12,25 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.util.Collection;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
+import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
 import org.eclipse.app4mc.amalthea.model.SemaphoreType;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,6 +44,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#getInitialValue <em>Initial Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#getMaxValue <em>Max Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#isPriorityCeilingProtocol <em>Priority Ceiling Protocol</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#getSemaphoreAccesses <em>Semaphore Accesses</em>}</li>
  * </ul>
  *
  * @generated
@@ -118,6 +129,16 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * @ordered
 	 */
 	protected boolean priorityCeilingProtocol = PRIORITY_CEILING_PROTOCOL_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSemaphoreAccesses() <em>Semaphore Accesses</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSemaphoreAccesses()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SemaphoreAccess> semaphoreAccesses;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -227,6 +248,47 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<SemaphoreAccess> getSemaphoreAccesses() {
+		if (semaphoreAccesses == null) {
+			semaphoreAccesses = new EObjectWithInverseResolvingEList<SemaphoreAccess>(SemaphoreAccess.class, this, AmaltheaPackage.SEMAPHORE__SEMAPHORE_ACCESSES, AmaltheaPackage.SEMAPHORE_ACCESS__SEMAPHORE_LINK_INT);
+		}
+		return semaphoreAccesses;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.SEMAPHORE__SEMAPHORE_ACCESSES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSemaphoreAccesses()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.SEMAPHORE__SEMAPHORE_ACCESSES:
+				return ((InternalEList<?>)getSemaphoreAccesses()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -238,6 +300,8 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 				return getMaxValue();
 			case AmaltheaPackage.SEMAPHORE__PRIORITY_CEILING_PROTOCOL:
 				return isPriorityCeilingProtocol();
+			case AmaltheaPackage.SEMAPHORE__SEMAPHORE_ACCESSES:
+				return getSemaphoreAccesses();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -247,6 +311,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -261,6 +326,10 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 				return;
 			case AmaltheaPackage.SEMAPHORE__PRIORITY_CEILING_PROTOCOL:
 				setPriorityCeilingProtocol((Boolean)newValue);
+				return;
+			case AmaltheaPackage.SEMAPHORE__SEMAPHORE_ACCESSES:
+				getSemaphoreAccesses().clear();
+				getSemaphoreAccesses().addAll((Collection<? extends SemaphoreAccess>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -286,6 +355,9 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 			case AmaltheaPackage.SEMAPHORE__PRIORITY_CEILING_PROTOCOL:
 				setPriorityCeilingProtocol(PRIORITY_CEILING_PROTOCOL_EDEFAULT);
 				return;
+			case AmaltheaPackage.SEMAPHORE__SEMAPHORE_ACCESSES:
+				getSemaphoreAccesses().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -306,6 +378,8 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 				return maxValue != MAX_VALUE_EDEFAULT;
 			case AmaltheaPackage.SEMAPHORE__PRIORITY_CEILING_PROTOCOL:
 				return priorityCeilingProtocol != PRIORITY_CEILING_PROTOCOL_EDEFAULT;
+			case AmaltheaPackage.SEMAPHORE__SEMAPHORE_ACCESSES:
+				return semaphoreAccesses != null && !semaphoreAccesses.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
