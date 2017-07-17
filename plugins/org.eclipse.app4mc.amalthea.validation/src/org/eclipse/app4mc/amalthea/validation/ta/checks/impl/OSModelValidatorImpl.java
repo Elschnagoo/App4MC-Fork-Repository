@@ -1,17 +1,14 @@
 package org.eclipse.app4mc.amalthea.validation.ta.checks.impl;
 
-import java.math.BigInteger;
 import java.util.HashSet;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.OSModel;
-import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
 import org.eclipse.app4mc.amalthea.model.SemaphoreEvent;
-import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.AbstractValidatorImpl;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
@@ -136,25 +133,4 @@ public class OSModelValidatorImpl extends AbstractValidatorImpl {
 		}
 	}
 
-	/*
-	 * Checks the value of property delay. The parameter must not be set lower than zero.
-	 * If this is the case, it will be handled as an error.
-	 */
-	public void checkSchedulingHWUnitDelayUnsigned(Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof SchedulingHWUnit) {
-				SchedulingHWUnit schedulingHWUnit = (SchedulingHWUnit) elem;
-				Time delay = schedulingHWUnit.getDelay();
-				if(null != delay) {
-					BigInteger value = delay.getValue();
-					if(0 > value.signum()) {
-						this.issueCreator.issue(delay, AmaltheaPackage.eINSTANCE.getSchedulingHWUnit_Delay(), value);
-					}
-				}
-			}
-		}
-	}
 }
