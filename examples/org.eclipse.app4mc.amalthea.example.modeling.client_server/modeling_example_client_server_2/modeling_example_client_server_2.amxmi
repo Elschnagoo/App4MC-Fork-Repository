@@ -233,7 +233,6 @@
     <semaphores name="Semaphore" initialValue="0" maxValue="1" priorityCeilingProtocol="true" />
     <operatingSystems name="Generic_OS">
       <taskSchedulers name="Scheduler_1">
-        
         <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
       <osDataConsistency mode="noProtection" />

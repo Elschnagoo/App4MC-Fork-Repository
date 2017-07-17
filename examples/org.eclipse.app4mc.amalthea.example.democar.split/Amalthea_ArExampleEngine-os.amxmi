@@ -3,11 +3,9 @@
   <osModel>
     <operatingSystems name="OperatingSystem">
       <taskSchedulers name="Task_Scheduler_Core_1">
-        
         <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
       <taskSchedulers name="Task_Scheduler_Core_2">
-        
         <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
       <osDataConsistency mode="noProtection" />
