@@ -17,6 +17,7 @@ import java.util.Map;
 import org.apache.log4j.LogManager;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters081.utils.HelperUtils_080_081;
+import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
@@ -54,8 +55,12 @@ public class OSConverter extends AbstractConverter {
 	}
 
 	/**
-	 * This method is used to migrate the OS model data (AlgorithmParameter elements to ParameterExtension inside UserSpecificSchedulingAlgorithm : For further
-	 * details, check : Bug 518070  )
+	 * This method is used to migrate the OS model data 
+	 * 
+	 * 1. AlgorithmParameter elements to ParameterExtension inside UserSpecificSchedulingAlgorithm : For further
+	 * details, check : Bug 518070  
+	 * 
+	 * 2. Removal of SchedulingUnit from TaskScheduler and InterruptContoller elements. For further details check : 
 	 *
 	 *
 	 * @param rootElement
@@ -75,9 +80,11 @@ public class OSConverter extends AbstractConverter {
 				Element.class, this.helper.getGenericNS("xsi"));
  
 
-		for (Element sourceElement : sourceElements) { 
+		for (Element schedulerElement : sourceElements) { 
 			
-			final List<Element> algorithmParameterElements = this.helper.getXpathResult(sourceElement, "./schedulingAlgorithm[@xsi:type=\"am:UserSpecificSchedulingAlgorithm\"]/parameter",
+			//Changing model based on : Bug 518070  
+			
+			final List<Element> algorithmParameterElements = this.helper.getXpathResult(schedulerElement, "./schedulingAlgorithm[@xsi:type=\"am:UserSpecificSchedulingAlgorithm\"]/parameter",
 					Element.class, this.helper.getGenericNS("xsi"));
 
 			 for (Element algorithmParameterElement : algorithmParameterElements) {
@@ -85,6 +92,106 @@ public class OSConverter extends AbstractConverter {
 				 algorithmParameterElement.setName("parameterExtensions");
 			}
 			
+			 /*====================== Changing model based on : Bug 519746 ======================*/
+			 
+			//Adding customProperty "scheduleUnitPriority"
+			 
+			String scheduleUnitPriority= schedulerElement.getAttributeValue("scheduleUnitPriority");
+			 
+			if(scheduleUnitPriority!=null && !scheduleUnitPriority.equals("0")){
+				addCustomProperty(schedulerElement, "scheduleUnitPriority", schedulerElement.getAttributeValue("scheduleUnitPriority"));
+			}
+			 
+			//removal of scheduleUnitPriority attribute
+			schedulerElement.removeAttribute("scheduleUnitPriority");
+			
+			Element schedulingUnitElement = schedulerElement.getChild("schedulingUnit");
+			
+			if(schedulingUnitElement !=null){
+				
+				this.logger.warn("SchedulingUnit removed from Scheduler : "+ schedulerElement.getAttributeValue("name"));
+				
+				String schedulingUnitType = schedulingUnitElement.getAttributeValue("type", this.helper.getGenericNS("xsi"));
+				
+				if(schedulingUnitType !=null){
+					
+					if(schedulingUnitType.equals("am:SchedulingHWUnit")){
+						
+						moveCustomPropertiesOfSchedulingUnit(schedulerElement, schedulingUnitElement,"SchedulingHWUnit_CustomProperty__");
+						 
+						//Adding customProperty "delay"
+						Element delayElement = schedulingUnitElement.getChild("delay");
+						if(delayElement!=null){
+							delayElement.detach();
+							
+							Element customPropertiesElement=new Element("customProperties");
+							
+							customPropertiesElement.setAttribute("key", "SchedulingHWUnit___delay");
+							
+							delayElement.setName("value");
+							
+							delayElement.setAttribute("type", "am:TimeObject", this.helper.getGenericNS("xsi"));
+							
+							//adding as a value to CustomProperty
+							customPropertiesElement.addContent(delayElement);
+							
+							//adding customProperty to Scheduler Eleemnt
+							schedulerElement.addContent(customPropertiesElement);
+							
+							addCustomProperty(schedulerElement, "SchedulingHWUnit___delay", schedulerElement.getAttributeValue("delay"));
+						}
+						
+						
+					}else if(schedulingUnitType.equals("am:SchedulingSWUnit")){
+						
+						moveCustomPropertiesOfSchedulingUnit(schedulerElement, schedulingUnitElement,"SchedulingSWUnit_CustomProperty__");
+						
+						/*- fetching all Instruction elements and associating to RunnableInstructions */
+						List<Element> instructionElements = schedulingUnitElement.getChildren("instructions");
+						
+						if(instructionElements.size()>0){
+							this.logger.warn("-- Instructions inside SchedulingSWUnit are migrated to RunnableInstructions element");
+						}
+						
+						for (Element instructionElement : instructionElements) {
+							
+							Element clone = instructionElement.clone();
+							
+							clone.setName("default");
+							
+							Element computationItemElement=new Element("computationItems");
+							
+							computationItemElement.setAttribute("type", "am:RunnableInstructions", this.helper.getGenericNS("xsi"));
+							
+							computationItemElement.addContent(clone);
+							
+							schedulerElement.addContent(computationItemElement);
+							
+						}
+						
+						//Adding customProperty "priority"
+						
+						String priority=schedulingUnitElement.getAttributeValue("priority");
+						
+						if(priority !=null && !priority.equals("0")){
+							addCustomProperty(schedulerElement, "SchedulingSWUnit___priority", priority);
+						}
+						
+						//removing interruptController
+						if(schedulingUnitElement.removeAttribute("interruptController") || schedulingUnitElement.removeChild("interruptController")){
+							this.logger.warn("-- InterruptController inside SchedulingSWUnit is removed, as there is no equivalent element for it in AMALTHEA 0.8.1");
+						}
+						
+					}
+				}
+				
+				
+				/*- removing SchedulingHWUnit --*/
+				
+				schedulerElement.removeChild("schedulingUnit");
+				
+
+			}
 			
 		}
 
@@ -92,5 +199,28 @@ public class OSConverter extends AbstractConverter {
 		
 		
 	}
+
+	private void moveCustomPropertiesOfSchedulingUnit(Element schedulerElement, Element schedulingUnitElement, String prefix) {
+		
+		List<Element> customPropertyElements = schedulingUnitElement.getChildren("customProperties");
+		
+		for (Element customProperty : customPropertyElements) {
+			
+			Element cloneCustomProperty = customProperty.clone();
+			
+			Attribute keyAttribute = cloneCustomProperty.getAttribute("key");
+			
+			if(keyAttribute !=null){
+				String value = keyAttribute.getValue();
+				keyAttribute.setValue(prefix+value);
+			}
+			
+			/*- adding CustomProperty to Scheduler */
+			
+			schedulerElement.addContent(cloneCustomProperty);
+			
+		}
+	}
+	
  
 }

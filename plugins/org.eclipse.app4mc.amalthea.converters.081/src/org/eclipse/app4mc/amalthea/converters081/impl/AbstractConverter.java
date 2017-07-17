@@ -13,6 +13,7 @@ package org.eclipse.app4mc.amalthea.converters081.impl;
 import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters081.utils.HelperUtils_080_081;
+import org.jdom2.Element;
 
 public abstract class AbstractConverter implements IConverter {
 
@@ -21,4 +22,32 @@ public abstract class AbstractConverter implements IConverter {
 	protected Logger logger;
 
 
+	/**
+	 * This method is used to add CustomProperty to the parent Element, with the supplied key and value
+	 * @param parentElement Element for which CustomProperty shall be added to
+	 * @param key
+	 * @param value
+	 */
+	protected void addCustomProperty(Element parentElement, String key, String value){
+
+		if(value == null){
+			return ;
+		}
+		
+		Element customPropertiesElement=new Element("customProperties");
+		
+		customPropertiesElement.setAttribute("key", key);
+		
+		Element valueElement=new Element("value");
+		
+		valueElement.setAttribute("type", "am:StringObject", this.helper.getGenericNS("xsi"));
+		
+		valueElement.setAttribute("value", value);
+		
+		customPropertiesElement.addContent(valueElement);
+		
+		parentElement.addContent(customPropertiesElement);
+		
+		
+	}
 }
