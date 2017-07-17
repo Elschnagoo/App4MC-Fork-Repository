@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Jenetics
 Bundle-SymbolicName: org.jenetics
-Bundle-Version: 3.0.1.qualifier
-Bundle-ClassPath: libs/org.jenetics-3.0.1.jar
+Bundle-Version: 3.8.0.qualifier
+Bundle-ClassPath: libs/org.jenetics-3.8.0.jar
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.jenetics,
  org.jenetics.engine,
