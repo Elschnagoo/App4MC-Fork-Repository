@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <osModel>
+    <operatingSystems>
+      <taskSchedulers name="TS1" scheduleUnitPriority="223">
+        <customProperties key="ts1_key">
+          <value xsi:type="am:StringObject" value="TS1_Value"/>
+        </customProperties>
+        <schedulingUnit xsi:type="am:SchedulingSWUnit" priority="22" interruptController="IC1?type=InterruptController">
+          <instructions xsi:type="am:InstructionsConstant" value="121"/>
+          <instructions xsi:type="am:InstructionsDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="232"/>
+              <upperBound xsi:type="am:LongObject" value="23232"/>
+              <distribution xsi:type="am:GaussDistribution">
+                <mean xsi:type="am:LongObject" value="232"/>
+              </distribution>
+            </deviation>
+          </instructions>
+          <instructions xsi:type="am:InstructionsConstant" value="56"/>
+        </schedulingUnit>
+      </taskSchedulers>
+      <taskSchedulers name="TS2" scheduleUnitPriority="0">
+        <customProperties key="ts2_key">
+          <value xsi:type="am:TimeObject" value="20" unit="us"/>
+        </customProperties>
+        <schedulingUnit xsi:type="am:SchedulingHWUnit">
+          <customProperties key="delay_custom">
+            <value xsi:type="am:TimeObject" value="232" unit="ms"/>
+          </customProperties>
+          <delay value="131" unit="s"/>
+        </schedulingUnit>
+      </taskSchedulers>
+      <interruptControllers name="IC1" scheduleUnitPriority="0">
+        <schedulingUnit xsi:type="am:SchedulingSWUnit" priority="2222" interruptController="IC2?type=InterruptController">
+          <instructions xsi:type="am:InstructionsConstant" value="5"/>
+          <instructions xsi:type="am:InstructionsConstant" value="20"/>
+          <instructions xsi:type="am:InstructionsDeviation">
+            <fetchStatistic>
+              <count xsi:type="am:MinAvgMaxStatistic" min="6" avg="6.0" max="6"/>
+            </fetchStatistic>
+          </instructions>
+          <instructions xsi:type="am:InstructionsConstant" value="55"/>
+        </schedulingUnit>
+        <schedulingAlgorithm xsi:type="am:PriorityBased">
+          <customProperties key="pc1"/>
+        </schedulingAlgorithm>
+      </interruptControllers>
+      <interruptControllers name="IC2" scheduleUnitPriority="0">
+        <schedulingUnit xsi:type="am:SchedulingHWUnit">
+          <delay value="55" unit="ns"/>
+        </schedulingUnit>
+        <schedulingAlgorithm xsi:type="am:UserSpecificSchedulingAlgorithm">
+          <parameter key="a" value="a1"/>
+          <parameter key="a1" value="a11"/>
+        </schedulingAlgorithm>
+      </interruptControllers>
+    </operatingSystems>
+  </osModel>
+</am:Amalthea>
