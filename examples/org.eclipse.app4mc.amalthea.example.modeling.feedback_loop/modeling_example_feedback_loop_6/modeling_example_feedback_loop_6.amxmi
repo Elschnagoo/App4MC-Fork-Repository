@@ -617,10 +617,8 @@
   </hwModel>
   <osModel>
     <operatingSystems name="Generic_OS">
-      <taskSchedulers name="Scheduler_1" scheduleUnitPriority="0">
-        <schedulingUnit xsi:type="am:SchedulingHWUnit">
-          <delay value="0" unit="ns" />
-        </schedulingUnit>
+      <taskSchedulers name="Scheduler_1">
+        
         <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
       <osDataConsistency mode="noProtection" />

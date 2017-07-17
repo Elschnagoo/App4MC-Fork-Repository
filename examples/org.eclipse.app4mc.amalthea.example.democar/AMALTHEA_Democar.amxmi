@@ -1011,9 +1011,7 @@
   <osModel>
     <operatingSystems name="OperatingSystem">
       <taskSchedulers name="Task_Scheduler_Core_1">
-        <schedulingUnit xsi:type="am:SchedulingHWUnit">
-          <delay value="1" unit="ns" />
-        </schedulingUnit>
+        
         <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
       <osDataConsistency />

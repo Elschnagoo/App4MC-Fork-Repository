@@ -122,15 +122,11 @@
   <osModel>
     <operatingSystems name="OperatingSystem">
       <taskSchedulers name="Scheduler_1">
-        <schedulingUnit xsi:type="am:SchedulingHWUnit">
-          <delay value="100" unit="ns" />
-        </schedulingUnit>
+        
         <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
       <taskSchedulers name="Scheduler_2">
-        <schedulingUnit xsi:type="am:SchedulingHWUnit">
-          <delay value="100" unit="ns" />
-        </schedulingUnit>
+        
         <schedulingAlgorithm xsi:type="am:OSEK" />
       </taskSchedulers>
       <osDataConsistency />
