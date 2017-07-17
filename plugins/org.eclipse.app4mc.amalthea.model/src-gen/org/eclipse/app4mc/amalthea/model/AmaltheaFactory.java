@@ -1472,24 +1472,6 @@ public interface AmaltheaFactory extends EFactory {
 	PriorityBased createPriorityBased();
 
 	/**
-	 * Returns a new object of class '<em>Scheduling HW Unit</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Scheduling HW Unit</em>'.
-	 * @generated
-	 */
-	SchedulingHWUnit createSchedulingHWUnit();
-
-	/**
-	 * Returns a new object of class '<em>Scheduling SW Unit</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Scheduling SW Unit</em>'.
-	 * @generated
-	 */
-	SchedulingSWUnit createSchedulingSWUnit();
-
-	/**
 	 * Returns a new object of class '<em>Operating System</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

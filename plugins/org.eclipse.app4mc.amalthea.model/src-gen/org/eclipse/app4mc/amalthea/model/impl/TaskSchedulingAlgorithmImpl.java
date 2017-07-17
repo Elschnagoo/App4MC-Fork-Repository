@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public abstract class TaskSchedulingAlgorithmImpl extends BaseObjectImpl implements TaskSchedulingAlgorithm {
+public abstract class TaskSchedulingAlgorithmImpl extends AlgorithmImpl implements TaskSchedulingAlgorithm {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

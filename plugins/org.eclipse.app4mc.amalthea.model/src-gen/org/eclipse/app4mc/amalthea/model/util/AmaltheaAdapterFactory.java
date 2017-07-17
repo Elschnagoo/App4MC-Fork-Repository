@@ -25,6 +25,7 @@ import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
+import org.eclipse.app4mc.amalthea.model.Algorithm;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
@@ -68,6 +69,7 @@ import org.eclipse.app4mc.amalthea.model.ComponentScope;
 import org.eclipse.app4mc.amalthea.model.ComponentsModel;
 import org.eclipse.app4mc.amalthea.model.Composite;
 import org.eclipse.app4mc.amalthea.model.CompoundType;
+import org.eclipse.app4mc.amalthea.model.ComputationItem;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
@@ -281,10 +283,7 @@ import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
-import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
-import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
-import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
@@ -1153,6 +1152,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createSchedulerAdapter();
 			}
 			@Override
+			public Adapter caseComputationItem(ComputationItem object) {
+				return createComputationItemAdapter();
+			}
+			@Override
 			public Adapter caseTaskScheduler(TaskScheduler object) {
 				return createTaskSchedulerAdapter();
 			}
@@ -1171,6 +1174,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseParameterExtension(Map.Entry<String, String> object) {
 				return createParameterExtensionAdapter();
+			}
+			@Override
+			public Adapter caseAlgorithm(Algorithm object) {
+				return createAlgorithmAdapter();
 			}
 			@Override
 			public Adapter caseInterruptSchedulingAlgorithm(InterruptSchedulingAlgorithm object) {
@@ -1271,18 +1278,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePriorityBased(PriorityBased object) {
 				return createPriorityBasedAdapter();
-			}
-			@Override
-			public Adapter caseSchedulingUnit(SchedulingUnit object) {
-				return createSchedulingUnitAdapter();
-			}
-			@Override
-			public Adapter caseSchedulingHWUnit(SchedulingHWUnit object) {
-				return createSchedulingHWUnitAdapter();
-			}
-			@Override
-			public Adapter caseSchedulingSWUnit(SchedulingSWUnit object) {
-				return createSchedulingSWUnitAdapter();
 			}
 			@Override
 			public Adapter caseOperatingSystem(OperatingSystem object) {
@@ -4371,6 +4366,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ComputationItem <em>Computation Item</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ComputationItem
+	 * @generated
+	 */
+	public Adapter createComputationItemAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TaskScheduler <em>Task Scheduler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -4437,6 +4446,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createParameterExtensionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Algorithm <em>Algorithm</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.Algorithm
+	 * @generated
+	 */
+	public Adapter createAlgorithmAdapter() {
 		return null;
 	}
 
@@ -4787,48 +4810,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPriorityBasedAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SchedulingUnit <em>Scheduling Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SchedulingUnit
-	 * @generated
-	 */
-	public Adapter createSchedulingUnitAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SchedulingHWUnit <em>Scheduling HW Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SchedulingHWUnit
-	 * @generated
-	 */
-	public Adapter createSchedulingHWUnitAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SchedulingSWUnit <em>Scheduling SW Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SchedulingSWUnit
-	 * @generated
-	 */
-	public Adapter createSchedulingSWUnitAdapter() {
 		return null;
 	}
 

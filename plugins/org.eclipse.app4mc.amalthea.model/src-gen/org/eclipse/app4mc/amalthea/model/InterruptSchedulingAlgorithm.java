@@ -20,7 +20,6 @@ package org.eclipse.app4mc.amalthea.model;
  *
  * <!-- begin-model-doc -->
  * Interrupt Scheduling Algorithm
- * these are the different scheduling algorithms
  * <!-- end-model-doc -->
  *
  *
@@ -28,5 +27,5 @@ package org.eclipse.app4mc.amalthea.model;
  * @model abstract="true"
  * @generated
  */
-public interface InterruptSchedulingAlgorithm extends BaseObject {
+public interface InterruptSchedulingAlgorithm extends Algorithm {
 } // InterruptSchedulingAlgorithm

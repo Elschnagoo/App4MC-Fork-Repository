@@ -27,7 +27,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class TaskSchedulingAlgorithmItemProvider extends BaseObjectItemProvider {
+public class TaskSchedulingAlgorithmItemProvider extends AlgorithmItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

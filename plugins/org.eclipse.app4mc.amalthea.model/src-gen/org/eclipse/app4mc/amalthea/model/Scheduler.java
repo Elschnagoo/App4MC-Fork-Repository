@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,16 +20,15 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * scheduling Algorithm: The used algorithm for scheduling
- * schedulingUnit: The unit that performs the scheduling algorithm, this can be a hardware or software unit
+ * scheduling algorithm: The used algorithm for scheduling
+ * computation items: steps to perform the scheduling algorithm
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Scheduler#getSchedulingUnit <em>Scheduling Unit</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Scheduler#getScheduleUnitPriority <em>Schedule Unit Priority</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Scheduler#getComputationItems <em>Computation Items</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScheduler()
@@ -37,56 +37,28 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface Scheduler extends ReferableBaseObject {
 	/**
-	 * Returns the value of the '<em><b>Scheduling Unit</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Computation Items</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ComputationItem}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Scheduling Unit</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Computation Items</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Scheduling Unit</em>' containment reference.
-	 * @see #setSchedulingUnit(SchedulingUnit)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScheduler_SchedulingUnit()
+	 * @return the value of the '<em>Computation Items</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScheduler_ComputationItems()
 	 * @model containment="true"
 	 * @generated
 	 */
-	SchedulingUnit getSchedulingUnit();
+	EList<ComputationItem> getComputationItems();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Scheduler#getSchedulingUnit <em>Scheduling Unit</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Scheduling Unit</em>' containment reference.
-	 * @see #getSchedulingUnit()
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return null;'"
 	 * @generated
 	 */
-	void setSchedulingUnit(SchedulingUnit value);
-
-	/**
-	 * Returns the value of the '<em><b>Schedule Unit Priority</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Schedule Unit Priority</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Schedule Unit Priority</em>' attribute.
-	 * @see #setScheduleUnitPriority(int)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScheduler_ScheduleUnitPriority()
-	 * @model default="0" unique="false"
-	 * @generated
-	 */
-	int getScheduleUnitPriority();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Scheduler#getScheduleUnitPriority <em>Schedule Unit Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Schedule Unit Priority</em>' attribute.
-	 * @see #getScheduleUnitPriority()
-	 * @generated
-	 */
-	void setScheduleUnitPriority(int value);
+	Algorithm getSchedulingAlgorithm();
 
 } // Scheduler

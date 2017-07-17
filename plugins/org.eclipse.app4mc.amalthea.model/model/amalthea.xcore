@@ -2043,15 +2043,24 @@ enum SemaphoreType {
 
 
 /*
- * scheduling Algorithm: The used algorithm for scheduling
- * schedulingUnit: The unit that performs the scheduling algorithm, this can be a hardware or software unit
+ * scheduling algorithm: The used algorithm for scheduling
+ * computation items: steps to perform the scheduling algorithm
  */
 abstract class Scheduler extends ReferableBaseObject
 {
-	contains SchedulingUnit schedulingUnit //TODO: remove
-	int scheduleUnitPriority = "0" //TODO: remove
+	op Algorithm getSchedulingAlgorithm() {
+		null
+	}
+	
+	contains ComputationItem[] computationItems 
 }
 
+/*
+ * Representation of a object that describes computation
+ */
+abstract class ComputationItem extends BaseObject
+{
+}
 
 class TaskScheduler extends Scheduler
 {
@@ -2104,19 +2113,21 @@ class ParameterExtension wraps java.util.Map$Entry
 }
 
 
+abstract class Algorithm extends BaseObject
+{
+}
+
 /*
  * Interrupt Scheduling Algorithm
- * these are the different scheduling algorithms
  */
-abstract class InterruptSchedulingAlgorithm extends BaseObject
+abstract class InterruptSchedulingAlgorithm extends Algorithm
 {
 }
 
 /*
  * Task Scheduling Algorithm
- * these are the different scheduling algorithms
  */
-abstract class TaskSchedulingAlgorithm extends BaseObject
+abstract class TaskSchedulingAlgorithm extends Algorithm
 {
 }
 
@@ -2291,43 +2302,6 @@ class PriorityBased extends InterruptSchedulingAlgorithm
 {
 }
 
-/*
- * Scheduling Unit
- * see Scheduler
- */
-abstract class SchedulingUnit
-{
-}
-
-/*
- * Hardware scheduling unit is used in Scheduler when scheduling performs by hardware
- * Each schedule core requires a amount of time equal to delay to execute scheduling
- * 
- */
-class SchedulingHWUnit extends SchedulingUnit, BaseObject
-{
-	contains Time delay
-}
-
-/*
- * The Software Scheduling Unit is used in a Scheduler when scheduling performs by Software
- * It describes an ISR that performs scheduling.
- */
-class SchedulingSWUnit extends SchedulingUnit, BaseObject
-{
-	/*
-	 * The priority of the scheduling ISR
-	 */
-	int priority = "0"
-	/*
-	 * The instructions of the scheduling ISR
-	 */
-	contains Instructions [] instructions
-	/*
-	 * The Interrupt Controller that manages the scheduling ISR 
-	 */
-	refers InterruptController interruptController
-}
 
 class OperatingSystem extends BaseObject
 {
@@ -3186,7 +3160,7 @@ abstract class RunnableItem extends BaseObject
 /*
  * Representation of the execution cost of a Runnable (default and core-specific)
  */
-class RunnableInstructions extends RunnableItem {
+class RunnableInstructions extends RunnableItem, ComputationItem {
 	contains Instructions[1] ^default
 	contains RunnableInstructionsEntry[] extended
 }
@@ -3221,7 +3195,7 @@ class RunnableModeSwitch extends RunnableItem
 /*
  * Representation of a label access of a run entity.
  */
-class LabelAccess extends RunnableItem
+class LabelAccess extends RunnableItem, ComputationItem
 {
 	refers Label[1] data
 	LabelAccessEnum access

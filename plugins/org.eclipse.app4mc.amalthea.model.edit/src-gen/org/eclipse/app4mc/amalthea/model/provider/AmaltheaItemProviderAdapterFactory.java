@@ -3624,52 +3624,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SchedulingHWUnit} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SchedulingHWUnitItemProvider schedulingHWUnitItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulingHWUnit}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSchedulingHWUnitAdapter() {
-		if (schedulingHWUnitItemProvider == null) {
-			schedulingHWUnitItemProvider = new SchedulingHWUnitItemProvider(this);
-		}
-
-		return schedulingHWUnitItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SchedulingSWUnit} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SchedulingSWUnitItemProvider schedulingSWUnitItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulingSWUnit}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSchedulingSWUnitAdapter() {
-		if (schedulingSWUnitItemProvider == null) {
-			schedulingSWUnitItemProvider = new SchedulingSWUnitItemProvider(this);
-		}
-
-		return schedulingSWUnitItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OperatingSystem} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6253,8 +6207,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (groupingItemProvider != null) groupingItemProvider.dispose();
 		if (userSpecificSchedulingAlgorithmItemProvider != null) userSpecificSchedulingAlgorithmItemProvider.dispose();
 		if (priorityBasedItemProvider != null) priorityBasedItemProvider.dispose();
-		if (schedulingHWUnitItemProvider != null) schedulingHWUnitItemProvider.dispose();
-		if (schedulingSWUnitItemProvider != null) schedulingSWUnitItemProvider.dispose();
 		if (operatingSystemItemProvider != null) operatingSystemItemProvider.dispose();
 		if (vendorOperatingSystemItemProvider != null) vendorOperatingSystemItemProvider.dispose();
 		if (osInstructionsItemProvider != null) osInstructionsItemProvider.dispose();

@@ -13,24 +13,24 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm;
+import org.eclipse.app4mc.amalthea.model.ComputationItem;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Interrupt Scheduling Algorithm</b></em>'.
+ * An implementation of the model object '<em><b>Computation Item</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public abstract class InterruptSchedulingAlgorithmImpl extends AlgorithmImpl implements InterruptSchedulingAlgorithm {
+public abstract class ComputationItemImpl extends BaseObjectImpl implements ComputationItem {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InterruptSchedulingAlgorithmImpl() {
+	protected ComputationItemImpl() {
 		super();
 	}
 
@@ -41,7 +41,7 @@ public abstract class InterruptSchedulingAlgorithmImpl extends AlgorithmImpl imp
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getInterruptSchedulingAlgorithm();
+		return AmaltheaPackage.eINSTANCE.getComputationItem();
 	}
 
-} //InterruptSchedulingAlgorithmImpl
+} //ComputationItemImpl

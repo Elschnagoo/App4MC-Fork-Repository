@@ -262,9 +262,7 @@ import org.eclipse.app4mc.amalthea.model.SchedType;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
-import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
-import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
@@ -535,8 +533,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.GROUPING: return createGrouping();
 			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM: return createUserSpecificSchedulingAlgorithm();
 			case AmaltheaPackage.PRIORITY_BASED: return createPriorityBased();
-			case AmaltheaPackage.SCHEDULING_HW_UNIT: return createSchedulingHWUnit();
-			case AmaltheaPackage.SCHEDULING_SW_UNIT: return createSchedulingSWUnit();
 			case AmaltheaPackage.OPERATING_SYSTEM: return createOperatingSystem();
 			case AmaltheaPackage.VENDOR_OPERATING_SYSTEM: return createVendorOperatingSystem();
 			case AmaltheaPackage.OS_INSTRUCTIONS: return createOsInstructions();
@@ -2475,26 +2471,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public PriorityBased createPriorityBased() {
 		PriorityBasedImpl priorityBased = new PriorityBasedImpl();
 		return priorityBased;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SchedulingHWUnit createSchedulingHWUnit() {
-		SchedulingHWUnitImpl schedulingHWUnit = new SchedulingHWUnitImpl();
-		return schedulingHWUnit;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SchedulingSWUnit createSchedulingSWUnit() {
-		SchedulingSWUnitImpl schedulingSWUnit = new SchedulingSWUnitImpl();
-		return schedulingSWUnit;
 	}
 
 	/**

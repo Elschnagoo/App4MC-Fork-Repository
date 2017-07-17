@@ -35,7 +35,7 @@ import org.eclipse.emf.common.util.EMap;
  * @model
  * @generated
  */
-public interface RunnableInstructions extends RunnableItem {
+public interface RunnableInstructions extends RunnableItem, ComputationItem {
 	/**
 	 * Returns the value of the '<em><b>Default</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

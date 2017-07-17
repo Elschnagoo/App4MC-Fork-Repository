@@ -12,17 +12,24 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Scheduler;
-import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
+import java.lang.reflect.InvocationTargetException;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.app4mc.amalthea.model.Algorithm;
+import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ComputationItem;
+import org.eclipse.app4mc.amalthea.model.Scheduler;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,42 +39,21 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerImpl#getSchedulingUnit <em>Scheduling Unit</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerImpl#getScheduleUnitPriority <em>Schedule Unit Priority</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerImpl#getComputationItems <em>Computation Items</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements Scheduler {
 	/**
-	 * The cached value of the '{@link #getSchedulingUnit() <em>Scheduling Unit</em>}' containment reference.
+	 * The cached value of the '{@link #getComputationItems() <em>Computation Items</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSchedulingUnit()
+	 * @see #getComputationItems()
 	 * @generated
 	 * @ordered
 	 */
-	protected SchedulingUnit schedulingUnit;
-
-	/**
-	 * The default value of the '{@link #getScheduleUnitPriority() <em>Schedule Unit Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getScheduleUnitPriority()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int SCHEDULE_UNIT_PRIORITY_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getScheduleUnitPriority() <em>Schedule Unit Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getScheduleUnitPriority()
-	 * @generated
-	 * @ordered
-	 */
-	protected int scheduleUnitPriority = SCHEDULE_UNIT_PRIORITY_EDEFAULT;
+	protected EList<ComputationItem> computationItems;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,23 +79,11 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SchedulingUnit getSchedulingUnit() {
-		return schedulingUnit;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSchedulingUnit(SchedulingUnit newSchedulingUnit, NotificationChain msgs) {
-		SchedulingUnit oldSchedulingUnit = schedulingUnit;
-		schedulingUnit = newSchedulingUnit;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SCHEDULER__SCHEDULING_UNIT, oldSchedulingUnit, newSchedulingUnit);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<ComputationItem> getComputationItems() {
+		if (computationItems == null) {
+			computationItems = new EObjectContainmentEList<ComputationItem>(ComputationItem.class, this, AmaltheaPackage.SCHEDULER__COMPUTATION_ITEMS);
 		}
-		return msgs;
+		return computationItems;
 	}
 
 	/**
@@ -117,39 +91,8 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSchedulingUnit(SchedulingUnit newSchedulingUnit) {
-		if (newSchedulingUnit != schedulingUnit) {
-			NotificationChain msgs = null;
-			if (schedulingUnit != null)
-				msgs = ((InternalEObject)schedulingUnit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SCHEDULER__SCHEDULING_UNIT, null, msgs);
-			if (newSchedulingUnit != null)
-				msgs = ((InternalEObject)newSchedulingUnit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SCHEDULER__SCHEDULING_UNIT, null, msgs);
-			msgs = basicSetSchedulingUnit(newSchedulingUnit, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SCHEDULER__SCHEDULING_UNIT, newSchedulingUnit, newSchedulingUnit));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getScheduleUnitPriority() {
-		return scheduleUnitPriority;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setScheduleUnitPriority(int newScheduleUnitPriority) {
-		int oldScheduleUnitPriority = scheduleUnitPriority;
-		scheduleUnitPriority = newScheduleUnitPriority;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SCHEDULER__SCHEDULE_UNIT_PRIORITY, oldScheduleUnitPriority, scheduleUnitPriority));
+	public Algorithm getSchedulingAlgorithm() {
+		return null;
 	}
 
 	/**
@@ -160,8 +103,8 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.SCHEDULER__SCHEDULING_UNIT:
-				return basicSetSchedulingUnit(null, msgs);
+			case AmaltheaPackage.SCHEDULER__COMPUTATION_ITEMS:
+				return ((InternalEList<?>)getComputationItems()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -174,10 +117,8 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.SCHEDULER__SCHEDULING_UNIT:
-				return getSchedulingUnit();
-			case AmaltheaPackage.SCHEDULER__SCHEDULE_UNIT_PRIORITY:
-				return getScheduleUnitPriority();
+			case AmaltheaPackage.SCHEDULER__COMPUTATION_ITEMS:
+				return getComputationItems();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -187,14 +128,13 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.SCHEDULER__SCHEDULING_UNIT:
-				setSchedulingUnit((SchedulingUnit)newValue);
-				return;
-			case AmaltheaPackage.SCHEDULER__SCHEDULE_UNIT_PRIORITY:
-				setScheduleUnitPriority((Integer)newValue);
+			case AmaltheaPackage.SCHEDULER__COMPUTATION_ITEMS:
+				getComputationItems().clear();
+				getComputationItems().addAll((Collection<? extends ComputationItem>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -208,11 +148,8 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SCHEDULER__SCHEDULING_UNIT:
-				setSchedulingUnit((SchedulingUnit)null);
-				return;
-			case AmaltheaPackage.SCHEDULER__SCHEDULE_UNIT_PRIORITY:
-				setScheduleUnitPriority(SCHEDULE_UNIT_PRIORITY_EDEFAULT);
+			case AmaltheaPackage.SCHEDULER__COMPUTATION_ITEMS:
+				getComputationItems().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -226,10 +163,8 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SCHEDULER__SCHEDULING_UNIT:
-				return schedulingUnit != null;
-			case AmaltheaPackage.SCHEDULER__SCHEDULE_UNIT_PRIORITY:
-				return scheduleUnitPriority != SCHEDULE_UNIT_PRIORITY_EDEFAULT;
+			case AmaltheaPackage.SCHEDULER__COMPUTATION_ITEMS:
+				return computationItems != null && !computationItems.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -240,14 +175,12 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * @generated
 	 */
 	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (scheduleUnitPriority: ");
-		result.append(scheduleUnitPriority);
-		result.append(')');
-		return result.toString();
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.SCHEDULER___GET_SCHEDULING_ALGORITHM:
+				return getSchedulingAlgorithm();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //SchedulerImpl

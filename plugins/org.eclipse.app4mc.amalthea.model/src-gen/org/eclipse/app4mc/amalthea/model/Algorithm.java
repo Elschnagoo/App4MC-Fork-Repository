@@ -15,17 +15,13 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Task Scheduling Algorithm</b></em>'.
+ * A representation of the model object '<em><b>Algorithm</b></em>'.
  * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * Task Scheduling Algorithm
- * <!-- end-model-doc -->
  *
- *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskSchedulingAlgorithm()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAlgorithm()
  * @model abstract="true"
  * @generated
  */
-public interface TaskSchedulingAlgorithm extends Algorithm {
-} // TaskSchedulingAlgorithm
+public interface Algorithm extends BaseObject {
+} // Algorithm

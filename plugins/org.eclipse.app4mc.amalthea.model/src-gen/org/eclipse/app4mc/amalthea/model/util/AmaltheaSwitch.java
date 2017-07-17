@@ -25,6 +25,7 @@ import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
+import org.eclipse.app4mc.amalthea.model.Algorithm;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
@@ -68,6 +69,7 @@ import org.eclipse.app4mc.amalthea.model.ComponentScope;
 import org.eclipse.app4mc.amalthea.model.ComponentsModel;
 import org.eclipse.app4mc.amalthea.model.Composite;
 import org.eclipse.app4mc.amalthea.model.CompoundType;
+import org.eclipse.app4mc.amalthea.model.ComputationItem;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
@@ -281,10 +283,7 @@ import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
-import org.eclipse.app4mc.amalthea.model.SchedulingHWUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
-import org.eclipse.app4mc.amalthea.model.SchedulingSWUnit;
-import org.eclipse.app4mc.amalthea.model.SchedulingUnit;
 import org.eclipse.app4mc.amalthea.model.Section;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
@@ -2017,6 +2016,14 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.COMPUTATION_ITEM: {
+				ComputationItem computationItem = (ComputationItem)theEObject;
+				T1 result = caseComputationItem(computationItem);
+				if (result == null) result = caseBaseObject(computationItem);
+				if (result == null) result = caseIAnnotatable(computationItem);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.TASK_SCHEDULER: {
 				TaskScheduler taskScheduler = (TaskScheduler)theEObject;
 				T1 result = caseTaskScheduler(taskScheduler);
@@ -2055,9 +2062,18 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.ALGORITHM: {
+				Algorithm algorithm = (Algorithm)theEObject;
+				T1 result = caseAlgorithm(algorithm);
+				if (result == null) result = caseBaseObject(algorithm);
+				if (result == null) result = caseIAnnotatable(algorithm);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.INTERRUPT_SCHEDULING_ALGORITHM: {
 				InterruptSchedulingAlgorithm interruptSchedulingAlgorithm = (InterruptSchedulingAlgorithm)theEObject;
 				T1 result = caseInterruptSchedulingAlgorithm(interruptSchedulingAlgorithm);
+				if (result == null) result = caseAlgorithm(interruptSchedulingAlgorithm);
 				if (result == null) result = caseBaseObject(interruptSchedulingAlgorithm);
 				if (result == null) result = caseIAnnotatable(interruptSchedulingAlgorithm);
 				if (result == null) result = defaultCase(theEObject);
@@ -2066,6 +2082,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.TASK_SCHEDULING_ALGORITHM: {
 				TaskSchedulingAlgorithm taskSchedulingAlgorithm = (TaskSchedulingAlgorithm)theEObject;
 				T1 result = caseTaskSchedulingAlgorithm(taskSchedulingAlgorithm);
+				if (result == null) result = caseAlgorithm(taskSchedulingAlgorithm);
 				if (result == null) result = caseBaseObject(taskSchedulingAlgorithm);
 				if (result == null) result = caseIAnnotatable(taskSchedulingAlgorithm);
 				if (result == null) result = defaultCase(theEObject);
@@ -2075,6 +2092,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				FixedPriority fixedPriority = (FixedPriority)theEObject;
 				T1 result = caseFixedPriority(fixedPriority);
 				if (result == null) result = caseTaskSchedulingAlgorithm(fixedPriority);
+				if (result == null) result = caseAlgorithm(fixedPriority);
 				if (result == null) result = caseBaseObject(fixedPriority);
 				if (result == null) result = caseIAnnotatable(fixedPriority);
 				if (result == null) result = defaultCase(theEObject);
@@ -2085,6 +2103,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseFixedPriorityPreemptive(fixedPriorityPreemptive);
 				if (result == null) result = caseFixedPriority(fixedPriorityPreemptive);
 				if (result == null) result = caseTaskSchedulingAlgorithm(fixedPriorityPreemptive);
+				if (result == null) result = caseAlgorithm(fixedPriorityPreemptive);
 				if (result == null) result = caseBaseObject(fixedPriorityPreemptive);
 				if (result == null) result = caseIAnnotatable(fixedPriorityPreemptive);
 				if (result == null) result = defaultCase(theEObject);
@@ -2095,6 +2114,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseOSEK(osek);
 				if (result == null) result = caseFixedPriority(osek);
 				if (result == null) result = caseTaskSchedulingAlgorithm(osek);
+				if (result == null) result = caseAlgorithm(osek);
 				if (result == null) result = caseBaseObject(osek);
 				if (result == null) result = caseIAnnotatable(osek);
 				if (result == null) result = defaultCase(theEObject);
@@ -2105,6 +2125,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseDeadlineMonotonic(deadlineMonotonic);
 				if (result == null) result = caseFixedPriority(deadlineMonotonic);
 				if (result == null) result = caseTaskSchedulingAlgorithm(deadlineMonotonic);
+				if (result == null) result = caseAlgorithm(deadlineMonotonic);
 				if (result == null) result = caseBaseObject(deadlineMonotonic);
 				if (result == null) result = caseIAnnotatable(deadlineMonotonic);
 				if (result == null) result = defaultCase(theEObject);
@@ -2115,6 +2136,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseRateMonotonic(rateMonotonic);
 				if (result == null) result = caseFixedPriority(rateMonotonic);
 				if (result == null) result = caseTaskSchedulingAlgorithm(rateMonotonic);
+				if (result == null) result = caseAlgorithm(rateMonotonic);
 				if (result == null) result = caseBaseObject(rateMonotonic);
 				if (result == null) result = caseIAnnotatable(rateMonotonic);
 				if (result == null) result = defaultCase(theEObject);
@@ -2124,6 +2146,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				Pfair pfair = (Pfair)theEObject;
 				T1 result = casePfair(pfair);
 				if (result == null) result = caseTaskSchedulingAlgorithm(pfair);
+				if (result == null) result = caseAlgorithm(pfair);
 				if (result == null) result = caseBaseObject(pfair);
 				if (result == null) result = caseIAnnotatable(pfair);
 				if (result == null) result = defaultCase(theEObject);
@@ -2134,6 +2157,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = casePfairPD2(pfairPD2);
 				if (result == null) result = casePfair(pfairPD2);
 				if (result == null) result = caseTaskSchedulingAlgorithm(pfairPD2);
+				if (result == null) result = caseAlgorithm(pfairPD2);
 				if (result == null) result = caseBaseObject(pfairPD2);
 				if (result == null) result = caseIAnnotatable(pfairPD2);
 				if (result == null) result = defaultCase(theEObject);
@@ -2144,6 +2168,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = casePartlyPFairPD2(partlyPFairPD2);
 				if (result == null) result = casePfair(partlyPFairPD2);
 				if (result == null) result = caseTaskSchedulingAlgorithm(partlyPFairPD2);
+				if (result == null) result = caseAlgorithm(partlyPFairPD2);
 				if (result == null) result = caseBaseObject(partlyPFairPD2);
 				if (result == null) result = caseIAnnotatable(partlyPFairPD2);
 				if (result == null) result = defaultCase(theEObject);
@@ -2154,6 +2179,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseEarlyReleaseFairPD2(earlyReleaseFairPD2);
 				if (result == null) result = casePfair(earlyReleaseFairPD2);
 				if (result == null) result = caseTaskSchedulingAlgorithm(earlyReleaseFairPD2);
+				if (result == null) result = caseAlgorithm(earlyReleaseFairPD2);
 				if (result == null) result = caseBaseObject(earlyReleaseFairPD2);
 				if (result == null) result = caseIAnnotatable(earlyReleaseFairPD2);
 				if (result == null) result = defaultCase(theEObject);
@@ -2164,6 +2190,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = casePartlyEarlyReleaseFairPD2(partlyEarlyReleaseFairPD2);
 				if (result == null) result = casePfair(partlyEarlyReleaseFairPD2);
 				if (result == null) result = caseTaskSchedulingAlgorithm(partlyEarlyReleaseFairPD2);
+				if (result == null) result = caseAlgorithm(partlyEarlyReleaseFairPD2);
 				if (result == null) result = caseBaseObject(partlyEarlyReleaseFairPD2);
 				if (result == null) result = caseIAnnotatable(partlyEarlyReleaseFairPD2);
 				if (result == null) result = defaultCase(theEObject);
@@ -2173,6 +2200,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				DynamicPriority dynamicPriority = (DynamicPriority)theEObject;
 				T1 result = caseDynamicPriority(dynamicPriority);
 				if (result == null) result = caseTaskSchedulingAlgorithm(dynamicPriority);
+				if (result == null) result = caseAlgorithm(dynamicPriority);
 				if (result == null) result = caseBaseObject(dynamicPriority);
 				if (result == null) result = caseIAnnotatable(dynamicPriority);
 				if (result == null) result = defaultCase(theEObject);
@@ -2183,6 +2211,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseLeastLocalRemainingExecutionTimeFirst(leastLocalRemainingExecutionTimeFirst);
 				if (result == null) result = caseDynamicPriority(leastLocalRemainingExecutionTimeFirst);
 				if (result == null) result = caseTaskSchedulingAlgorithm(leastLocalRemainingExecutionTimeFirst);
+				if (result == null) result = caseAlgorithm(leastLocalRemainingExecutionTimeFirst);
 				if (result == null) result = caseBaseObject(leastLocalRemainingExecutionTimeFirst);
 				if (result == null) result = caseIAnnotatable(leastLocalRemainingExecutionTimeFirst);
 				if (result == null) result = defaultCase(theEObject);
@@ -2193,6 +2222,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseEarliestDeadlineFirst(earliestDeadlineFirst);
 				if (result == null) result = caseDynamicPriority(earliestDeadlineFirst);
 				if (result == null) result = caseTaskSchedulingAlgorithm(earliestDeadlineFirst);
+				if (result == null) result = caseAlgorithm(earliestDeadlineFirst);
 				if (result == null) result = caseBaseObject(earliestDeadlineFirst);
 				if (result == null) result = caseIAnnotatable(earliestDeadlineFirst);
 				if (result == null) result = defaultCase(theEObject);
@@ -2203,6 +2233,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = casePriorityBasedRoundRobin(priorityBasedRoundRobin);
 				if (result == null) result = caseDynamicPriority(priorityBasedRoundRobin);
 				if (result == null) result = caseTaskSchedulingAlgorithm(priorityBasedRoundRobin);
+				if (result == null) result = caseAlgorithm(priorityBasedRoundRobin);
 				if (result == null) result = caseBaseObject(priorityBasedRoundRobin);
 				if (result == null) result = caseIAnnotatable(priorityBasedRoundRobin);
 				if (result == null) result = defaultCase(theEObject);
@@ -2212,6 +2243,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				ReservationBasedServer reservationBasedServer = (ReservationBasedServer)theEObject;
 				T1 result = caseReservationBasedServer(reservationBasedServer);
 				if (result == null) result = caseTaskSchedulingAlgorithm(reservationBasedServer);
+				if (result == null) result = caseAlgorithm(reservationBasedServer);
 				if (result == null) result = caseBaseObject(reservationBasedServer);
 				if (result == null) result = caseIAnnotatable(reservationBasedServer);
 				if (result == null) result = defaultCase(theEObject);
@@ -2222,6 +2254,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseDeferrableServer(deferrableServer);
 				if (result == null) result = caseReservationBasedServer(deferrableServer);
 				if (result == null) result = caseTaskSchedulingAlgorithm(deferrableServer);
+				if (result == null) result = caseAlgorithm(deferrableServer);
 				if (result == null) result = caseBaseObject(deferrableServer);
 				if (result == null) result = caseIAnnotatable(deferrableServer);
 				if (result == null) result = defaultCase(theEObject);
@@ -2232,6 +2265,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = casePollingPeriodicServer(pollingPeriodicServer);
 				if (result == null) result = caseReservationBasedServer(pollingPeriodicServer);
 				if (result == null) result = caseTaskSchedulingAlgorithm(pollingPeriodicServer);
+				if (result == null) result = caseAlgorithm(pollingPeriodicServer);
 				if (result == null) result = caseBaseObject(pollingPeriodicServer);
 				if (result == null) result = caseIAnnotatable(pollingPeriodicServer);
 				if (result == null) result = defaultCase(theEObject);
@@ -2242,6 +2276,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseSporadicServer(sporadicServer);
 				if (result == null) result = caseReservationBasedServer(sporadicServer);
 				if (result == null) result = caseTaskSchedulingAlgorithm(sporadicServer);
+				if (result == null) result = caseAlgorithm(sporadicServer);
 				if (result == null) result = caseBaseObject(sporadicServer);
 				if (result == null) result = caseIAnnotatable(sporadicServer);
 				if (result == null) result = defaultCase(theEObject);
@@ -2252,6 +2287,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseConstantBandwidthServer(constantBandwidthServer);
 				if (result == null) result = caseReservationBasedServer(constantBandwidthServer);
 				if (result == null) result = caseTaskSchedulingAlgorithm(constantBandwidthServer);
+				if (result == null) result = caseAlgorithm(constantBandwidthServer);
 				if (result == null) result = caseBaseObject(constantBandwidthServer);
 				if (result == null) result = caseIAnnotatable(constantBandwidthServer);
 				if (result == null) result = defaultCase(theEObject);
@@ -2262,6 +2298,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseConstantBandwidthServerWithCASH(constantBandwidthServerWithCASH);
 				if (result == null) result = caseReservationBasedServer(constantBandwidthServerWithCASH);
 				if (result == null) result = caseTaskSchedulingAlgorithm(constantBandwidthServerWithCASH);
+				if (result == null) result = caseAlgorithm(constantBandwidthServerWithCASH);
 				if (result == null) result = caseBaseObject(constantBandwidthServerWithCASH);
 				if (result == null) result = caseIAnnotatable(constantBandwidthServerWithCASH);
 				if (result == null) result = defaultCase(theEObject);
@@ -2271,6 +2308,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				Grouping grouping = (Grouping)theEObject;
 				T1 result = caseGrouping(grouping);
 				if (result == null) result = caseTaskSchedulingAlgorithm(grouping);
+				if (result == null) result = caseAlgorithm(grouping);
 				if (result == null) result = caseBaseObject(grouping);
 				if (result == null) result = caseIAnnotatable(grouping);
 				if (result == null) result = defaultCase(theEObject);
@@ -2281,6 +2319,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseUserSpecificSchedulingAlgorithm(userSpecificSchedulingAlgorithm);
 				if (result == null) result = caseTaskSchedulingAlgorithm(userSpecificSchedulingAlgorithm);
 				if (result == null) result = caseInterruptSchedulingAlgorithm(userSpecificSchedulingAlgorithm);
+				if (result == null) result = caseAlgorithm(userSpecificSchedulingAlgorithm);
 				if (result == null) result = caseBaseObject(userSpecificSchedulingAlgorithm);
 				if (result == null) result = caseIAnnotatable(userSpecificSchedulingAlgorithm);
 				if (result == null) result = defaultCase(theEObject);
@@ -2290,32 +2329,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				PriorityBased priorityBased = (PriorityBased)theEObject;
 				T1 result = casePriorityBased(priorityBased);
 				if (result == null) result = caseInterruptSchedulingAlgorithm(priorityBased);
+				if (result == null) result = caseAlgorithm(priorityBased);
 				if (result == null) result = caseBaseObject(priorityBased);
 				if (result == null) result = caseIAnnotatable(priorityBased);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.SCHEDULING_UNIT: {
-				SchedulingUnit schedulingUnit = (SchedulingUnit)theEObject;
-				T1 result = caseSchedulingUnit(schedulingUnit);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.SCHEDULING_HW_UNIT: {
-				SchedulingHWUnit schedulingHWUnit = (SchedulingHWUnit)theEObject;
-				T1 result = caseSchedulingHWUnit(schedulingHWUnit);
-				if (result == null) result = caseSchedulingUnit(schedulingHWUnit);
-				if (result == null) result = caseBaseObject(schedulingHWUnit);
-				if (result == null) result = caseIAnnotatable(schedulingHWUnit);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.SCHEDULING_SW_UNIT: {
-				SchedulingSWUnit schedulingSWUnit = (SchedulingSWUnit)theEObject;
-				T1 result = caseSchedulingSWUnit(schedulingSWUnit);
-				if (result == null) result = caseSchedulingUnit(schedulingSWUnit);
-				if (result == null) result = caseBaseObject(schedulingSWUnit);
-				if (result == null) result = caseIAnnotatable(schedulingSWUnit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3017,6 +3033,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				RunnableInstructions runnableInstructions = (RunnableInstructions)theEObject;
 				T1 result = caseRunnableInstructions(runnableInstructions);
 				if (result == null) result = caseRunnableItem(runnableInstructions);
+				if (result == null) result = caseComputationItem(runnableInstructions);
 				if (result == null) result = caseBaseObject(runnableInstructions);
 				if (result == null) result = caseIAnnotatable(runnableInstructions);
 				if (result == null) result = defaultCase(theEObject);
@@ -3050,6 +3067,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				LabelAccess labelAccess = (LabelAccess)theEObject;
 				T1 result = caseLabelAccess(labelAccess);
 				if (result == null) result = caseRunnableItem(labelAccess);
+				if (result == null) result = caseComputationItem(labelAccess);
 				if (result == null) result = caseBaseObject(labelAccess);
 				if (result == null) result = caseIAnnotatable(labelAccess);
 				if (result == null) result = defaultCase(theEObject);
@@ -6174,6 +6192,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Computation Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Computation Item</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseComputationItem(ComputationItem object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Task Scheduler</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -6245,6 +6278,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseParameterExtension(Map.Entry<String, String> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Algorithm</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Algorithm</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseAlgorithm(Algorithm object) {
 		return null;
 	}
 
@@ -6620,51 +6668,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 casePriorityBased(PriorityBased object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Scheduling Unit</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Scheduling Unit</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseSchedulingUnit(SchedulingUnit object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Scheduling HW Unit</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Scheduling HW Unit</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseSchedulingHWUnit(SchedulingHWUnit object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Scheduling SW Unit</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Scheduling SW Unit</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseSchedulingSWUnit(SchedulingSWUnit object) {
 		return null;
 	}
 

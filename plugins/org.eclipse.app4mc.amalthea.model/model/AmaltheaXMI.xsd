@@ -3212,22 +3212,34 @@ priorityCeilingProtocol: enables priority ceiling for this resource</xsd:documen
   </xsd:element>
   <xsd:complexType abstract="true" name="Scheduler">
     <xsd:annotation>
-      <xsd:documentation>scheduling Algorithm: The used algorithm for scheduling
-schedulingUnit: The unit that performs the scheduling algorithm, this can be a hardware or software unit</xsd:documentation>
+      <xsd:documentation>scheduling algorithm: The used algorithm for scheduling
+computation items: steps to perform the scheduling algorithm</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="schedulingUnit" type="am:SchedulingUnit"/>
+          <xsd:element name="computationItems" type="am:ComputationItem"/>
         </xsd:choice>
-        <xsd:attribute name="scheduleUnitPriority" type="xsd:int"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Scheduler" type="am:Scheduler">
     <xsd:annotation>
-      <xsd:documentation>scheduling Algorithm: The used algorithm for scheduling
-schedulingUnit: The unit that performs the scheduling algorithm, this can be a hardware or software unit</xsd:documentation>
+      <xsd:documentation>scheduling algorithm: The used algorithm for scheduling
+computation items: steps to perform the scheduling algorithm</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="ComputationItem">
+    <xsd:annotation>
+      <xsd:documentation>Representation of a object that describes computation</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ComputationItem" type="am:ComputationItem">
+    <xsd:annotation>
+      <xsd:documentation>Representation of a object that describes computation</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="TaskScheduler">
@@ -3299,34 +3311,36 @@ schedulingUnit: The unit that performs the scheduling algorithm, this can be a h
       <xsd:documentation>Parameter extensions (used for scheduling algorithms)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="InterruptSchedulingAlgorithm">
-    <xsd:annotation>
-      <xsd:documentation>Interrupt Scheduling Algorithm
-these are the different scheduling algorithms</xsd:documentation>
-    </xsd:annotation>
+  <xsd:complexType abstract="true" name="Algorithm">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Algorithm" type="am:Algorithm"/>
+  <xsd:complexType abstract="true" name="InterruptSchedulingAlgorithm">
+    <xsd:annotation>
+      <xsd:documentation>Interrupt Scheduling Algorithm</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Algorithm"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="InterruptSchedulingAlgorithm" type="am:InterruptSchedulingAlgorithm">
     <xsd:annotation>
-      <xsd:documentation>Interrupt Scheduling Algorithm
-these are the different scheduling algorithms</xsd:documentation>
+      <xsd:documentation>Interrupt Scheduling Algorithm</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="TaskSchedulingAlgorithm">
     <xsd:annotation>
-      <xsd:documentation>Task Scheduling Algorithm
-these are the different scheduling algorithms</xsd:documentation>
+      <xsd:documentation>Task Scheduling Algorithm</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:BaseObject"/>
+      <xsd:extension base="am:Algorithm"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="TaskSchedulingAlgorithm" type="am:TaskSchedulingAlgorithm">
     <xsd:annotation>
-      <xsd:documentation>Task Scheduling Algorithm
-these are the different scheduling algorithms</xsd:documentation>
+      <xsd:documentation>Task Scheduling Algorithm</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="FixedPriority">
@@ -3642,82 +3656,6 @@ these are the different scheduling algorithms</xsd:documentation>
   <xsd:element name="PriorityBased" type="am:PriorityBased">
     <xsd:annotation>
       <xsd:documentation>Priority based Scheduling Algorithm for Interrupts</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType abstract="true" name="SchedulingUnit">
-    <xsd:annotation>
-      <xsd:documentation>Scheduling Unit
-see Scheduler</xsd:documentation>
-    </xsd:annotation>
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="SchedulingUnit" type="am:SchedulingUnit">
-    <xsd:annotation>
-      <xsd:documentation>Scheduling Unit
-see Scheduler</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="SchedulingHWUnit">
-    <xsd:annotation>
-      <xsd:documentation>Hardware scheduling unit is used in Scheduler when scheduling performs by hardware
-Each schedule core requires a amount of time equal to delay to execute scheduling</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:SchedulingUnit">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
-          <xsd:element name="delay" type="am:Time"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="SchedulingHWUnit" type="am:SchedulingHWUnit">
-    <xsd:annotation>
-      <xsd:documentation>Hardware scheduling unit is used in Scheduler when scheduling performs by hardware
-Each schedule core requires a amount of time equal to delay to execute scheduling</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="SchedulingSWUnit">
-    <xsd:annotation>
-      <xsd:documentation>The Software Scheduling Unit is used in a Scheduler when scheduling performs by Software
-It describes an ISR that performs scheduling.</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:SchedulingUnit">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
-          <xsd:element name="instructions" type="am:Instructions">
-            <xsd:annotation>
-              <xsd:documentation>The instructions of the scheduling ISR</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
-          <xsd:element name="interruptController" type="am:InterruptController">
-            <xsd:annotation>
-              <xsd:documentation>The Interrupt Controller that manages the scheduling ISR</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
-        </xsd:choice>
-        <xsd:attribute name="priority" type="xsd:int">
-          <xsd:annotation>
-            <xsd:documentation>The priority of the scheduling ISR</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="interruptController" type="xsd:string">
-          <xsd:annotation>
-            <xsd:documentation>The Interrupt Controller that manages the scheduling ISR</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="SchedulingSWUnit" type="am:SchedulingSWUnit">
-    <xsd:annotation>
-      <xsd:documentation>The Software Scheduling Unit is used in a Scheduler when scheduling performs by Software
-It describes an ISR that performs scheduling.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="OperatingSystem">
