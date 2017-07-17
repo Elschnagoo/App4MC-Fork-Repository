@@ -15,26 +15,9 @@ The basic element in the OS Model is the operating system. There can multiple op
 
 h3. Scheduler
 
-Interrupt controller and task scheduler have a scheduling algorithm. The picture below shows that both types are inherited of the scheduler type. Each scheduler has a scheduling unit. The scheduling unit can be either a hardware scheduling unit or a software scheduling unit. 
+Interrupt controller and task scheduler have a scheduling algorithm. The picture below shows that both types are inherited of the scheduler type. Each scheduler has computation items. These items (a subset of the runnable items) characterize the runtime behavior of the scheduler.
 
 !../pictures/model_os_scheduler.png!
-
-h4. Scheduling HW Unit
-
-This class is used when scheduling is done by a hardware unit. The only attribute of this class
-is the delay attribute. It represents the amount of time that is required to execute scheduling.
-
-!../pictures/model_os_hwunit.png!
-
-*(validation-rule) _SchedulingHWUnit_: The _Time_ object in the role of _delay_ must not contain a negative value!
-
-h4. Scheduling SW Unit
-
-This class is used when scheduling is done by software unit.
-
-*TODO update diagram (Instructions!)*
-
-!../pictures/model_os_swunit.png!
 
 h4. Scheduling Algorithm
 
