@@ -40,7 +40,6 @@ import org.eclipse.emf.ecore.EObject;
 public interface SchedulingParameters extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Priority</em>' attribute isn't clear,
@@ -48,12 +47,12 @@ public interface SchedulingParameters extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Priority</em>' attribute.
-	 * @see #setPriority(int)
+	 * @see #setPriority(Integer)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulingParameters_Priority()
-	 * @model default="0" unique="false"
+	 * @model unique="false"
 	 * @generated
 	 */
-	int getPriority();
+	Integer getPriority();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SchedulingParameters#getPriority <em>Priority</em>}' attribute.
@@ -63,7 +62,7 @@ public interface SchedulingParameters extends EObject {
 	 * @see #getPriority()
 	 * @generated
 	 */
-	void setPriority(int value);
+	void setPriority(Integer value);
 
 	/**
 	 * Returns the value of the '<em><b>Min Budget</b></em>' containment reference.

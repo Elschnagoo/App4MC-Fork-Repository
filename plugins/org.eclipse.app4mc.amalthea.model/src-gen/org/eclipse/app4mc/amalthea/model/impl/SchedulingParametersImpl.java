@@ -51,7 +51,7 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int PRIORITY_EDEFAULT = 0;
+	protected static final Integer PRIORITY_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
@@ -61,7 +61,7 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	 * @generated
 	 * @ordered
 	 */
-	protected int priority = PRIORITY_EDEFAULT;
+	protected Integer priority = PRIORITY_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getMinBudget() <em>Min Budget</em>}' containment reference.
@@ -117,7 +117,7 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPriority() {
+	public Integer getPriority() {
 		return priority;
 	}
 
@@ -126,8 +126,8 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPriority(int newPriority) {
-		int oldPriority = priority;
+	public void setPriority(Integer newPriority) {
+		Integer oldPriority = priority;
 		priority = newPriority;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SCHEDULING_PARAMETERS__PRIORITY, oldPriority, priority));
@@ -357,7 +357,7 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.SCHEDULING_PARAMETERS__PRIORITY:
-				return priority != PRIORITY_EDEFAULT;
+				return PRIORITY_EDEFAULT == null ? priority != null : !PRIORITY_EDEFAULT.equals(priority);
 			case AmaltheaPackage.SCHEDULING_PARAMETERS__MIN_BUDGET:
 				return minBudget != null;
 			case AmaltheaPackage.SCHEDULING_PARAMETERS__MAX_BUDGET:

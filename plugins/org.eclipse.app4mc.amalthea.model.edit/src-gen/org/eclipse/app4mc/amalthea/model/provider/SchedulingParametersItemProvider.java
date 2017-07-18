@@ -96,7 +96,7 @@ public class SchedulingParametersItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -162,8 +162,11 @@ public class SchedulingParametersItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		SchedulingParameters schedulingParameters = (SchedulingParameters)object;
-		return getString("_UI_SchedulingParameters_type") + " " + schedulingParameters.getPriority();
+		Integer labelValue = ((SchedulingParameters)object).getPriority();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ?
+			getString("_UI_SchedulingParameters_type") :
+			getString("_UI_SchedulingParameters_type") + " " + label;
 	}
 	
 
