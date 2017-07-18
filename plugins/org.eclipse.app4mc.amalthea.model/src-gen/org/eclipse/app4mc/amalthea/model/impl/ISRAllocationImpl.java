@@ -68,7 +68,7 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int PRIORITY_EDEFAULT = 0;
+	protected static final Integer PRIORITY_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
@@ -78,7 +78,7 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 	 * @generated
 	 * @ordered
 	 */
-	protected int priority = PRIORITY_EDEFAULT;
+	protected Integer priority = PRIORITY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -180,7 +180,7 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPriority() {
+	public Integer getPriority() {
 		return priority;
 	}
 
@@ -189,8 +189,8 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPriority(int newPriority) {
-		int oldPriority = priority;
+	public void setPriority(Integer newPriority) {
+		Integer oldPriority = priority;
 		priority = newPriority;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ISR_ALLOCATION__PRIORITY, oldPriority, priority));
@@ -271,7 +271,7 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 			case AmaltheaPackage.ISR_ALLOCATION__CONTROLLER:
 				return controller != null;
 			case AmaltheaPackage.ISR_ALLOCATION__PRIORITY:
-				return priority != PRIORITY_EDEFAULT;
+				return PRIORITY_EDEFAULT == null ? priority != null : !PRIORITY_EDEFAULT.equals(priority);
 		}
 		return super.eIsSet(featureID);
 	}

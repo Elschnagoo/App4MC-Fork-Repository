@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -55,7 +54,6 @@ public class TaskAllocationItemProvider extends BaseObjectItemProvider {
 			addTaskPropertyDescriptor(object);
 			addSchedulerPropertyDescriptor(object);
 			addCoreAffinityPropertyDescriptor(object);
-			addPriorityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -125,28 +123,6 @@ public class TaskAllocationItemProvider extends BaseObjectItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Priority feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPriorityPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_TaskAllocation_priority_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TaskAllocation_priority_feature", "_UI_TaskAllocation_type"),
-				 AmaltheaPackage.eINSTANCE.getTaskAllocation_Priority(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -202,8 +178,7 @@ public class TaskAllocationItemProvider extends BaseObjectItemProvider {
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		TaskAllocation taskAllocation = (TaskAllocation)object;
-		return getString("_UI_TaskAllocation_type") + " " + taskAllocation.getPriority();
+		return getString("_UI_TaskAllocation_type");
 	}
 
 	/**
@@ -226,9 +201,6 @@ public class TaskAllocationItemProvider extends BaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TaskAllocation.class)) {
-			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
 			case AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

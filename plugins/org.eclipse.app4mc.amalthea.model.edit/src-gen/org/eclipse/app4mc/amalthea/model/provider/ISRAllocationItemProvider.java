@@ -117,7 +117,7 @@ public class ISRAllocationItemProvider extends BaseObjectItemProvider {
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -147,8 +147,11 @@ public class ISRAllocationItemProvider extends BaseObjectItemProvider {
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		ISRAllocation isrAllocation = (ISRAllocation)object;
-		return getString("_UI_ISRAllocation_type") + " " + isrAllocation.getPriority();
+		Integer labelValue = ((ISRAllocation)object).getPriority();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ISRAllocation_type") :
+			getString("_UI_ISRAllocation_type") + " " + label;
 	}
 
 	/**

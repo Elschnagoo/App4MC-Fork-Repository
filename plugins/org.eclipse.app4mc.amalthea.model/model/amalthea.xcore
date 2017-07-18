@@ -1891,7 +1891,6 @@ class TaskAllocation extends BaseObject
 	refers Task[1] task
 	refers TaskScheduler[1] scheduler
 	refers Core[] coreAffinity
-	int priority="0"	// TODO: Remove (moved to schedulingParameters)
 	
 	contains SchedulingParameters schedulingParameters
 	contains ParameterExtension[] parameterExtensions
@@ -1901,7 +1900,7 @@ class ISRAllocation extends BaseObject
 {
 	refers ISR[1] isr
 	refers InterruptController[1] controller
-	int priority = "0"	//TODO: necessary ? (add parameters ?)
+	Integer priority
 }
 
 class RunnableAllocation extends BaseObject
@@ -2493,6 +2492,9 @@ class ModeValueList extends BaseObject
 	contains ModeValueListEntry[] entries
 }
 
+
+
+
 class ModeValueListEntry extends BaseObject
 {
 	refers ModeLabel[1] valueProvider
@@ -2681,7 +2683,6 @@ abstract class AbstractMemoryElement extends ReferableBaseObject, ITaggable
 
 abstract class AbstractProcess extends AbstractMemoryElement
 {
-	int priority = "0"		// TODO: remove
 }
 
 /*
@@ -2905,7 +2906,6 @@ class TerminateProcess extends CallSequenceItem
  */
 class Task extends Process
 {
-	int osekTaskGroup = "0"
 	Preemption preemption
 	
 	int multipleTaskActivationLimit = "0"

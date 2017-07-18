@@ -48,7 +48,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getTask <em>Task</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getScheduler <em>Scheduler</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getCoreAffinity <em>Core Affinity</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getSchedulingParameters <em>Scheduling Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getParameterExtensions <em>Parameter Extensions</em>}</li>
  * </ul>
@@ -85,26 +84,6 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * @ordered
 	 */
 	protected EList<Core> coreAffinity;
-
-	/**
-	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPriority()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int PRIORITY_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPriority()
-	 * @generated
-	 * @ordered
-	 */
-	protected int priority = PRIORITY_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSchedulingParameters() <em>Scheduling Parameters</em>}' containment reference.
@@ -238,27 +217,6 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPriority() {
-		return priority;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPriority(int newPriority) {
-		int oldPriority = priority;
-		priority = newPriority;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TASK_ALLOCATION__PRIORITY, oldPriority, priority));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public SchedulingParameters getSchedulingParameters() {
 		return schedulingParameters;
 	}
@@ -341,8 +299,6 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 				return basicGetScheduler();
 			case AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY:
 				return getCoreAffinity();
-			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
-				return getPriority();
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
 				return getSchedulingParameters();
 			case AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS:
@@ -371,9 +327,6 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 				getCoreAffinity().clear();
 				getCoreAffinity().addAll((Collection<? extends Core>)newValue);
 				return;
-			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
-				setPriority((Integer)newValue);
-				return;
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
 				setSchedulingParameters((SchedulingParameters)newValue);
 				return;
@@ -401,9 +354,6 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 			case AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY:
 				getCoreAffinity().clear();
 				return;
-			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
-				setPriority(PRIORITY_EDEFAULT);
-				return;
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
 				setSchedulingParameters((SchedulingParameters)null);
 				return;
@@ -428,30 +378,12 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 				return scheduler != null;
 			case AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY:
 				return coreAffinity != null && !coreAffinity.isEmpty();
-			case AmaltheaPackage.TASK_ALLOCATION__PRIORITY:
-				return priority != PRIORITY_EDEFAULT;
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
 				return schedulingParameters != null;
 			case AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS:
 				return parameterExtensions != null && !parameterExtensions.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (priority: ");
-		result.append(priority);
-		result.append(')');
-		return result.toString();
 	}
 
 } //TaskAllocationImpl

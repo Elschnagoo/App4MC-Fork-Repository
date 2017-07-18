@@ -7590,17 +7590,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTaskAllocation_Priority() {
-		return (EAttribute)taskAllocationEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getTaskAllocation_SchedulingParameters() {
-		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(4);
+		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -7609,7 +7600,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	public EReference getTaskAllocation_ParameterExtensions() {
-		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(5);
+		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -9678,15 +9669,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAbstractProcess_Priority() {
-		return (EAttribute)abstractProcessEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getCustomEntity() {
 		return customEntityEClass;
 	}
@@ -10191,7 +10173,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTask_OsekTaskGroup() {
+	public EAttribute getTask_Preemption() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -10200,17 +10182,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTask_Preemption() {
-		return (EAttribute)taskEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getTask_MultipleTaskActivationLimit() {
-		return (EAttribute)taskEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)taskEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -12847,7 +12820,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__TASK);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__SCHEDULER);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__CORE_AFFINITY);
-		createEAttribute(taskAllocationEClass, TASK_ALLOCATION__PRIORITY);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__SCHEDULING_PARAMETERS);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__PARAMETER_EXTENSIONS);
 
@@ -13159,7 +13131,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(abstractMemoryElementEClass, ABSTRACT_MEMORY_ELEMENT__MAPPINGS);
 
 		abstractProcessEClass = createEClass(ABSTRACT_PROCESS);
-		createEAttribute(abstractProcessEClass, ABSTRACT_PROCESS__PRIORITY);
 
 		customEntityEClass = createEClass(CUSTOM_ENTITY);
 		createEAttribute(customEntityEClass, CUSTOM_ENTITY__TYPE_NAME);
@@ -13240,7 +13211,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		terminateProcessEClass = createEClass(TERMINATE_PROCESS);
 
 		taskEClass = createEClass(TASK);
-		createEAttribute(taskEClass, TASK__OSEK_TASK_GROUP);
 		createEAttribute(taskEClass, TASK__PREEMPTION);
 		createEAttribute(taskEClass, TASK__MULTIPLE_TASK_ACTIVATION_LIMIT);
 
@@ -14645,14 +14615,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getTaskAllocation_Task(), this.getTask(), null, "task", null, 1, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_Scheduler(), this.getTaskScheduler(), null, "scheduler", null, 1, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_CoreAffinity(), this.getCore(), null, "coreAffinity", null, 0, -1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTaskAllocation_Priority(), theEcorePackage.getEInt(), "priority", "0", 0, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_SchedulingParameters(), this.getSchedulingParameters(), null, "schedulingParameters", null, 0, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_ParameterExtensions(), this.getParameterExtension(), null, "parameterExtensions", null, 0, -1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(isrAllocationEClass, ISRAllocation.class, "ISRAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getISRAllocation_Isr(), this.getISR(), null, "isr", null, 1, 1, ISRAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getISRAllocation_Controller(), this.getInterruptController(), null, "controller", null, 1, 1, ISRAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getISRAllocation_Priority(), theEcorePackage.getEInt(), "priority", "0", 0, 1, ISRAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getISRAllocation_Priority(), theEcorePackage.getEIntegerObject(), "priority", null, 0, 1, ISRAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableAllocationEClass, RunnableAllocation.class, "RunnableAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnableAllocation_Scheduler(), this.getScheduler(), null, "scheduler", null, 1, 1, RunnableAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14961,7 +14930,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getAbstractMemoryElement_Mappings(), this.getMemoryMapping(), this.getMemoryMapping_AbstractElementLinkInt(), "mappings", null, 0, -1, AbstractMemoryElement.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractProcessEClass, AbstractProcess.class, "AbstractProcess", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractProcess_Priority(), theEcorePackage.getEInt(), "priority", "0", 0, 1, AbstractProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customEntityEClass, CustomEntity.class, "CustomEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomEntity_TypeName(), theEcorePackage.getEString(), "typeName", null, 0, 1, CustomEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15054,7 +15022,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(terminateProcessEClass, TerminateProcess.class, "TerminateProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTask_OsekTaskGroup(), theEcorePackage.getEInt(), "osekTaskGroup", "0", 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Preemption(), this.getPreemption(), "preemption", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_MultipleTaskActivationLimit(), theEcorePackage.getEInt(), "multipleTaskActivationLimit", "0", 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

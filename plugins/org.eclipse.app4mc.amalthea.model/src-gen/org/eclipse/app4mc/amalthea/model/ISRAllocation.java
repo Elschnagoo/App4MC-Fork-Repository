@@ -86,7 +86,6 @@ public interface ISRAllocation extends BaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Priority</em>' attribute isn't clear,
@@ -94,12 +93,12 @@ public interface ISRAllocation extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Priority</em>' attribute.
-	 * @see #setPriority(int)
+	 * @see #setPriority(Integer)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getISRAllocation_Priority()
-	 * @model default="0" unique="false"
+	 * @model unique="false"
 	 * @generated
 	 */
-	int getPriority();
+	Integer getPriority();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ISRAllocation#getPriority <em>Priority</em>}' attribute.
@@ -109,6 +108,6 @@ public interface ISRAllocation extends BaseObject {
 	 * @see #getPriority()
 	 * @generated
 	 */
-	void setPriority(int value);
+	void setPriority(Integer value);
 
 } // ISRAllocation

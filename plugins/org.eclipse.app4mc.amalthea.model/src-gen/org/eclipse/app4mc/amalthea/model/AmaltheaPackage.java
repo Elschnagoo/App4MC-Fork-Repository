@@ -13181,22 +13181,13 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK_ALLOCATION__CORE_AFFINITY = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Priority</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_ALLOCATION__PRIORITY = BASE_OBJECT_FEATURE_COUNT + 3;
-
-	/**
 	 * The feature id for the '<em><b>Scheduling Parameters</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_ALLOCATION__SCHEDULING_PARAMETERS = BASE_OBJECT_FEATURE_COUNT + 4;
+	int TASK_ALLOCATION__SCHEDULING_PARAMETERS = BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Parameter Extensions</b></em>' map.
@@ -13205,7 +13196,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_ALLOCATION__PARAMETER_EXTENSIONS = BASE_OBJECT_FEATURE_COUNT + 5;
+	int TASK_ALLOCATION__PARAMETER_EXTENSIONS = BASE_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Task Allocation</em>' class.
@@ -13214,7 +13205,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_ALLOCATION_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 6;
+	int TASK_ALLOCATION_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Task Allocation</em>' class.
@@ -18877,22 +18868,13 @@ public interface AmaltheaPackage extends EPackage {
 	int ABSTRACT_PROCESS__MAPPINGS = ABSTRACT_MEMORY_ELEMENT__MAPPINGS;
 
 	/**
-	 * The feature id for the '<em><b>Priority</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_PROCESS__PRIORITY = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Abstract Process</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PROCESS_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 1;
+	int ABSTRACT_PROCESS_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -19175,15 +19157,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS__MAPPINGS = ABSTRACT_PROCESS__MAPPINGS;
-
-	/**
-	 * The feature id for the '<em><b>Priority</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROCESS__PRIORITY = ABSTRACT_PROCESS__PRIORITY;
 
 	/**
 	 * The feature id for the '<em><b>Call Graph</b></em>' containment reference.
@@ -20413,15 +20386,6 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK__MAPPINGS = PROCESS__MAPPINGS;
 
 	/**
-	 * The feature id for the '<em><b>Priority</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__PRIORITY = PROCESS__PRIORITY;
-
-	/**
 	 * The feature id for the '<em><b>Call Graph</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20440,22 +20404,13 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK__STIMULI = PROCESS__STIMULI;
 
 	/**
-	 * The feature id for the '<em><b>Osek Task Group</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__OSEK_TASK_GROUP = PROCESS_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Preemption</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__PREEMPTION = PROCESS_FEATURE_COUNT + 1;
+	int TASK__PREEMPTION = PROCESS_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Multiple Task Activation Limit</b></em>' attribute.
@@ -20464,7 +20419,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__MULTIPLE_TASK_ACTIVATION_LIMIT = PROCESS_FEATURE_COUNT + 2;
+	int TASK__MULTIPLE_TASK_ACTIVATION_LIMIT = PROCESS_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Task</em>' class.
@@ -20473,7 +20428,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = PROCESS_FEATURE_COUNT + 3;
+	int TASK_FEATURE_COUNT = PROCESS_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -20565,15 +20520,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISR__MAPPINGS = PROCESS__MAPPINGS;
-
-	/**
-	 * The feature id for the '<em><b>Priority</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISR__PRIORITY = PROCESS__PRIORITY;
 
 	/**
 	 * The feature id for the '<em><b>Call Graph</b></em>' containment reference.
@@ -20701,15 +20647,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_PROTOTYPE__MAPPINGS = ABSTRACT_PROCESS__MAPPINGS;
-
-	/**
-	 * The feature id for the '<em><b>Priority</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROCESS_PROTOTYPE__PRIORITY = ABSTRACT_PROCESS__PRIORITY;
 
 	/**
 	 * The feature id for the '<em><b>Preemption</b></em>' attribute.
@@ -30268,17 +30205,6 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getTaskAllocation_CoreAffinity();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getPriority <em>Priority</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Priority</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.TaskAllocation#getPriority()
-	 * @see #getTaskAllocation()
-	 * @generated
-	 */
-	EAttribute getTaskAllocation_Priority();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getSchedulingParameters <em>Scheduling Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32741,17 +32667,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getAbstractProcess();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.AbstractProcess#getPriority <em>Priority</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Priority</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractProcess#getPriority()
-	 * @see #getAbstractProcess()
-	 * @generated
-	 */
-	EAttribute getAbstractProcess_Priority();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.CustomEntity <em>Custom Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -33342,17 +33257,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTask();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Task#getOsekTaskGroup <em>Osek Task Group</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Osek Task Group</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Task#getOsekTaskGroup()
-	 * @see #getTask()
-	 * @generated
-	 */
-	EAttribute getTask_OsekTaskGroup();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Task#getPreemption <em>Preemption</em>}'.

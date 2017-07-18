@@ -17,8 +17,10 @@ package org.eclipse.app4mc.amalthea.validation.checks.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.Algorithm;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Core;
+import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
@@ -160,20 +162,22 @@ public class MappingModelCheckValidatorImpl extends AbstractValidatorImpl {
 		}
 	}
 
-	private void checkSchedulerToCoreMapping(final List<Scheduler> schedulers, final List<SchedulerAllocation> coreAllocs) {
+	private void checkSchedulerToCoreMapping(final List<Scheduler> schedulers, final List<SchedulerAllocation> schedAllocs) {
 		// Scheduler --> Core
 
-		for (final SchedulerAllocation coreAlloc : coreAllocs) {
-			final Scheduler sched = coreAlloc.getScheduler();
-			final EList<Core> cores = coreAlloc.getResponsibility();
+		// TODO Grouping does not require a core responsibility
+		
+		for (final SchedulerAllocation alloc : schedAllocs) {
+			final Scheduler sched = alloc.getScheduler();
+			final EList<Core> cores = alloc.getResponsibility();
 			if (cores.isEmpty() && sched == null) {
-				this.issueCreator.issue(coreAlloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility(),
-						"Scheduler2Core Mapping-Error: Core Allocation is left blank", coreAlloc);
+				this.issueCreator.issue(alloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility(),
+						"Scheduler2Core Mapping-Error: Scheduler and Responsibility are left blank", alloc);
 			}
 			else if (sched != null && cores.isEmpty()) {
-				this.issueCreator.issue(coreAlloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Scheduler(),
-						"Scheduler2Core Mapping-Error: Scheduler \"" + sched.getName() + "\" is not mapped to any Core",
-						coreAlloc);
+				this.issueCreator.issue(alloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Scheduler(),
+						"Scheduler2Core Mapping-Error: Scheduler \"" + sched.getName() + "\" is not responsible for any Core",
+						alloc);
 			}
 			else if (!cores.isEmpty() && sched == null) {
 
@@ -182,10 +186,10 @@ public class MappingModelCheckValidatorImpl extends AbstractValidatorImpl {
 					sb.append("\"" + core.getName() + "\",");
 				}
 
-				this.issueCreator.issue(coreAlloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility(),
+				this.issueCreator.issue(alloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility(),
 						"Scheduler2Core Mapping-Error: Core(s) " + sb.toString()
 								+ " is/are not mapped to any Scheduler",
-						coreAlloc);
+						alloc);
 			}
 			else {
 				// Scheduler and Core information are available (not 'null')
@@ -198,9 +202,12 @@ public class MappingModelCheckValidatorImpl extends AbstractValidatorImpl {
 		 * Checks if there are unmapped Schedulers left, i.e. missing Scheduler -> Core(s) mapping
 		 */
 		for (final Scheduler leftScheduler : schedulers) {
-
+			
+			Algorithm algo = leftScheduler.getSchedulingAlgorithm();
+			if (algo != null && algo instanceof Grouping ) continue;	// no core responsibility required
+			
 			this.issueCreator.issue(leftScheduler, AmaltheaPackage.eINSTANCE.getIReferable_Name(),
-					"Scheduler2Core Mapping-Error: Scheduler not mapped to any core: " + leftScheduler.getName(),
+					"Scheduler2Core Mapping-Error: Scheduler not responsible for any core: " + leftScheduler.getName(),
 					leftScheduler);
 		}
 	}

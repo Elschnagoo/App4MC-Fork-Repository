@@ -3058,7 +3058,6 @@ core: The core that processes the process/runnable that accesses the semaphore (
           <xsd:element name="schedulingParameters" type="am:SchedulingParameters"/>
           <xsd:element name="parameterExtensions" type="am:ParameterExtension"/>
         </xsd:choice>
-        <xsd:attribute name="priority" type="xsd:int"/>
         <xsd:attribute name="task" type="xsd:string"/>
         <xsd:attribute name="scheduler" type="xsd:string"/>
         <xsd:attribute name="coreAffinity" type="xsd:string"/>
@@ -4275,9 +4274,7 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
   <xsd:element name="AbstractMemoryElement" type="am:AbstractMemoryElement"/>
   <xsd:complexType abstract="true" name="AbstractProcess">
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractMemoryElement">
-        <xsd:attribute name="priority" type="xsd:int"/>
-      </xsd:extension>
+      <xsd:extension base="am:AbstractMemoryElement"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="AbstractProcess" type="am:AbstractProcess"/>
@@ -4692,7 +4689,6 @@ and includes the direct representation of all abstractions.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Process">
-        <xsd:attribute name="osekTaskGroup" type="xsd:int"/>
         <xsd:attribute name="preemption" type="am:Preemption"/>
         <xsd:attribute name="multipleTaskActivationLimit" type="xsd:int"/>
       </xsd:extension>

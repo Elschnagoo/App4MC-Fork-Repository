@@ -1326,12 +1326,11 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/SchedulerAllocation" outputs="AmaltheaXMI.xsd#//SchedulerAllocation;XSDElementDeclaration=175"/>
     <nested inputs="amalthea.xcore#/EPackage/TaskAllocation" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176">
-      <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/priority" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDAttributeUse"/>
-      <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/task" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDAttributeUse=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/task" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDAttributeUse"/>
       <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/task" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDParticle/XSDModelGroup/XSDParticle"/>
-      <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/scheduler" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDAttributeUse=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/scheduler" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDAttributeUse=1"/>
       <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/scheduler" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDParticle/XSDModelGroup/XSDParticle=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/coreAffinity" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDAttributeUse=3"/>
+      <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/coreAffinity" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDAttributeUse=2"/>
       <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/coreAffinity" outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDParticle/XSDModelGroup/XSDParticle=2"/>
       <nested inputs="amalthea.xcore#/EPackage/TaskAllocation/schedulingParameters"
           outputs="AmaltheaXMI.xsd#//TaskAllocation;XSDComplexTypeDefinition=176/XSDParticle/XSDModelGroup/XSDParticle=3"/>
@@ -1768,9 +1767,7 @@
     <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//AbstractMemoryElement;XSDComplexTypeDefinition=255/XSDAttributeUse"/>
     <nested inputs="amalthea.xcore#/EPackage/ITaggable/tags" outputs="AmaltheaXMI.xsd#//AbstractMemoryElement;XSDComplexTypeDefinition=255/XSDParticle/XSDModelGroup/XSDParticle"/>
     <nested inputs="amalthea.xcore#/EPackage/AbstractMemoryElement" outputs="AmaltheaXMI.xsd#//AbstractMemoryElement;XSDElementDeclaration=255"/>
-    <nested inputs="amalthea.xcore#/EPackage/AbstractProcess" outputs="AmaltheaXMI.xsd#//AbstractProcess;XSDComplexTypeDefinition=256">
-      <nested inputs="amalthea.xcore#/EPackage/AbstractProcess/priority" outputs="AmaltheaXMI.xsd#//AbstractProcess;XSDComplexTypeDefinition=256/XSDAttributeUse"/>
-    </nested>
+    <nested inputs="amalthea.xcore#/EPackage/AbstractProcess" outputs="AmaltheaXMI.xsd#//AbstractProcess;XSDComplexTypeDefinition=256"/>
     <nested inputs="amalthea.xcore#/EPackage/AbstractProcess" outputs="AmaltheaXMI.xsd#//AbstractProcess;XSDElementDeclaration=256"/>
     <nested inputs="amalthea.xcore#/EPackage/CustomEntity" outputs="AmaltheaXMI.xsd#//CustomEntity;XSDComplexTypeDefinition=257">
       <nested inputs="amalthea.xcore#/EPackage/CustomEntity/typeName" outputs="AmaltheaXMI.xsd#//CustomEntity;XSDComplexTypeDefinition=257/XSDAttributeUse"/>
@@ -1883,9 +1880,8 @@
     <nested inputs="amalthea.xcore#/EPackage/TerminateProcess" outputs="AmaltheaXMI.xsd#//TerminateProcess;XSDComplexTypeDefinition=279"/>
     <nested inputs="amalthea.xcore#/EPackage/TerminateProcess" outputs="AmaltheaXMI.xsd#//TerminateProcess;XSDElementDeclaration=279"/>
     <nested inputs="amalthea.xcore#/EPackage/Task" outputs="AmaltheaXMI.xsd#//Task;XSDComplexTypeDefinition=280">
-      <nested inputs="amalthea.xcore#/EPackage/Task/osekTaskGroup" outputs="AmaltheaXMI.xsd#//Task;XSDComplexTypeDefinition=280/XSDAttributeUse"/>
-      <nested inputs="amalthea.xcore#/EPackage/Task/preemption" outputs="AmaltheaXMI.xsd#//Task;XSDComplexTypeDefinition=280/XSDAttributeUse=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/Task/multipleTaskActivationLimit" outputs="AmaltheaXMI.xsd#//Task;XSDComplexTypeDefinition=280/XSDAttributeUse=2"/>
+      <nested inputs="amalthea.xcore#/EPackage/Task/preemption" outputs="AmaltheaXMI.xsd#//Task;XSDComplexTypeDefinition=280/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/Task/multipleTaskActivationLimit" outputs="AmaltheaXMI.xsd#//Task;XSDComplexTypeDefinition=280/XSDAttributeUse=1"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/Task" outputs="AmaltheaXMI.xsd#//Task;XSDElementDeclaration=280"/>
     <nested inputs="amalthea.xcore#/EPackage/ISR" outputs="AmaltheaXMI.xsd#//ISR;XSDComplexTypeDefinition=281">

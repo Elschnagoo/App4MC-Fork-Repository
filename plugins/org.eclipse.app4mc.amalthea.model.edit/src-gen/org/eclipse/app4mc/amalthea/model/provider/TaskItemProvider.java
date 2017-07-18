@@ -55,33 +55,10 @@ public class TaskItemProvider extends ProcessItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOsekTaskGroupPropertyDescriptor(object);
 			addPreemptionPropertyDescriptor(object);
 			addMultipleTaskActivationLimitPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Osek Task Group feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOsekTaskGroupPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Task_osekTaskGroup_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_osekTaskGroup_feature", "_UI_Task_type"),
-				 AmaltheaPackage.eINSTANCE.getTask_OsekTaskGroup(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -176,7 +153,6 @@ public class TaskItemProvider extends ProcessItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Task.class)) {
-			case AmaltheaPackage.TASK__OSEK_TASK_GROUP:
 			case AmaltheaPackage.TASK__PREEMPTION:
 			case AmaltheaPackage.TASK__MULTIPLE_TASK_ACTIVATION_LIMIT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
