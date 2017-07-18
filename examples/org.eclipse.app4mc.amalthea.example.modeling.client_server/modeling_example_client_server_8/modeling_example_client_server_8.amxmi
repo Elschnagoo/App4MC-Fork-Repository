@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <swModel>
-    <tasks name="Task_1" stimuli="Stimulus_1?type=Periodic" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
+    <tasks name="Task_1" stimuli="Stimulus_1?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_1">
           <calls xsi:type="am:InterProcessActivation" stimulus="Stimulus_2?type=InterProcess" />
@@ -12,7 +12,7 @@
         <value xsi:type="am:StringObject" value="1" />
       </customProperties>
     </tasks>
-    <tasks name="Task_2" stimuli="Stimulus_2?type=InterProcess" osekTaskGroup="0" preemption="preemptive" multipleTaskActivationLimit="2">
+    <tasks name="Task_2" stimuli="Stimulus_2?type=InterProcess" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="20.0">
