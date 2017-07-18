@@ -74,7 +74,7 @@ public class OMAllocation {
 		// Piko-Seconds per Second
 		final BigDecimal psps = BigDecimal.valueOf(1000L * 1000L * 1000L * 1000L);
 		final BigDecimal computationTime = psps.multiply(ins).divide(ips, 5, RoundingMode.CEILING)
-				.multiply(BigDecimal.valueOf(this.task.getRecursionFactor()), MathContext.DECIMAL128);
+				.divide(BigDecimal.valueOf(this.task.getRecursionFactor()), MathContext.DECIMAL128);
 		return computationTime.longValue();
 	}
 }

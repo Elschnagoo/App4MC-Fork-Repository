@@ -72,8 +72,8 @@ public class OMTask {
 			itPropertyConstraints.forEach((k, v) -> parsePropertyConstraint(k, v));
 		}
 	}
-	
-	//TODO This should be handled more compact
+
+	// TODO This should be handled more compact
 	private void parsePropertyConstraint(String k, Value v) {
 		UniversalHandler.getInstance().logCon("T: " + taskRef.getName() + " - Parsing (K: " + k + " V: " + v + ")");
 		// Check if we have a valid Property Constraint
@@ -89,7 +89,7 @@ public class OMTask {
 					// Skipping
 				}
 			}
-			
+
 			if (ref.getValue() instanceof CoreClassifier) {
 				OMCoreClassifier ot = new OMCoreClassifier((CoreClassifier) ref.getValue());
 				if (k.contains(sTokenInclude)) {
@@ -329,6 +329,15 @@ public class OMTask {
 		return iPeriod;
 	}
 
+	/**
+	 * Returns the recursion factor of a Task
+	 * 
+	 * The recursion factor is the quotient of the max period among all tasks
+	 * and the period of this task, e.g. if the max period is 100ms, and this
+	 * tasks period is 50ms, the recursion factor is 0.5.
+	 * 
+	 * @return Double The recursion factor RF with 0.0 < RF <= 1.0
+	 */
 	public double getRecursionFactor() {
 		if (iPeriod < 0) {
 			getPeriod();
@@ -369,7 +378,7 @@ public class OMTask {
 	public static void init() {
 		iMaxPeriod = -1;
 	}
-	
+
 	public static long getMaxPeriod() {
 		return iMaxPeriod;
 	}
