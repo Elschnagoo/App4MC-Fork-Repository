@@ -88,7 +88,7 @@ public class SwConverterTest extends AbstractConverterTest {
 
 		final StringBuffer absProcessXpathBuffer = new StringBuffer();
 
-		absProcessXpathBuffer.append("./swModel/tasks[@priority]");
+		absProcessXpathBuffer.append("./swModel/tasks[@priority or @osekTaskGroup]");
 		absProcessXpathBuffer.append("|");
 		absProcessXpathBuffer.append("./swModel/isrs[@priority]");
 		absProcessXpathBuffer.append("|");

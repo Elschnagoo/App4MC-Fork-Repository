@@ -108,6 +108,28 @@ public class SwConverter extends AbstractConverter {
 					
 				}
 				
+			}
+			
+			/*-- removing osekTaskGroup attribute inside Task element:  based on the metamodel changes introduced in 0.8.1 --*/
+			
+			if(abstractProcessElement.getName().equals("tasks")){
+				
+				 Attribute osekTaskGroupAttribute = abstractProcessElement.getAttribute("osekTaskGroup");
+				 
+				 if(osekTaskGroupAttribute !=null){
+					 
+					 String osekTaskGroupValue = osekTaskGroupAttribute.getValue();
+					 
+					 abstractProcessElement.removeAttribute(osekTaskGroupAttribute);
+					 
+					 if(!osekTaskGroupValue.equals("0")){
+						 addCustomProperty(abstractProcessElement, "osekTaskGroup", osekTaskGroupValue);
+						 
+						 this.logger.info("osekTaskGroup attribute is removed from Task ("+abstractProcessElement.getAttributeValue("name")+") and added as a CustomProperty with key as osekTaskGroup");
+					 }
+					 
+				 }
+				
 				
 			}
 			
