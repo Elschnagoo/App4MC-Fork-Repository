@@ -80,8 +80,10 @@ import org.eclipse.app4mc.amalthea.model.ModeLabelAccess
 import org.eclipse.app4mc.amalthea.model.ModeLiteral
 import org.eclipse.app4mc.amalthea.model.ModeSwitch
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry
+import org.eclipse.app4mc.amalthea.model.ModeValue
+import org.eclipse.app4mc.amalthea.model.ModeValueConjunction
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction
 import org.eclipse.app4mc.amalthea.model.ModeValueList
-import org.eclipse.app4mc.amalthea.model.ModeValueListEntry
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec
 import org.eclipse.app4mc.amalthea.model.OrderType
@@ -141,7 +143,6 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
-import org.eclipse.app4mc.amalthea.model.ModeValue
 
 class CustomItemProviderService {
 
@@ -1860,6 +1861,31 @@ class CustomItemProviderService {
 			return defaultText
 		}
 	}
+
+
+	/*****************************************************************************
+	 * 						ModeValueDisjunctionItemProvider
+	 *****************************************************************************/
+	def static String getModeValueDisjunctionItemProviderText(Object object, String defaultText) {
+		if (object instanceof ModeValueDisjunction) {
+			return getContainingFeatureName(object) + "OR List"
+		} else {
+			return defaultText
+		}
+	}
+
+
+	/*****************************************************************************
+	 * 						ModeValueConjunctionItemProvider
+	 *****************************************************************************/
+	def static String getModeValueConjunctionItemProviderText(Object object, String defaultText) {
+		if (object instanceof ModeValueConjunction) {
+			return "AND List"
+		} else {
+			return defaultText
+		}
+	}
+
 
 	/*****************************************************************************
 	 * 						ModeValueItemProvider

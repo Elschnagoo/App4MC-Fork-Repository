@@ -102,6 +102,8 @@ import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
+import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
@@ -3437,6 +3439,29 @@ public class CustomItemProviderService {
     if ((object instanceof ModeValueList)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
       return (_containingFeatureName + defaultText);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  /**
+   * ModeValueDisjunctionItemProvider
+   */
+  public static String getModeValueDisjunctionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ModeValueDisjunction)) {
+      String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
+      return (_containingFeatureName + "OR List");
+    } else {
+      return defaultText;
+    }
+  }
+  
+  /**
+   * ModeValueConjunctionItemProvider
+   */
+  public static String getModeValueConjunctionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ModeValueConjunction)) {
+      return "AND List";
     } else {
       return defaultText;
     }
