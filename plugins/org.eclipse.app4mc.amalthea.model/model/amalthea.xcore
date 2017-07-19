@@ -2483,22 +2483,33 @@ abstract class Stimulus extends ReferableBaseObject, ITaggable
 {
 	contains Deviation<Time> stimulusDeviation
 	contains ModeValueList setModeValueList
-	contains ModeValueList enablingModeValueList
-	contains ModeValueList disablingModeValueList
+	contains ModeValueDisjunction enablingModeValueList
+	contains ModeValueDisjunction disablingModeValueList
 }
 
 class ModeValueList extends BaseObject
 {
-	contains ModeValueListEntry[] entries
+	contains ModeValue[] entries
 }
 
+abstract class ModeValueListEntry extends BaseObject
+{
+}
 
-
-
-class ModeValueListEntry extends BaseObject
+class ModeValue extends ModeValueListEntry
 {
 	refers ModeLabel[1] valueProvider
 	refers ModeLiteral [1] value
+}
+
+class ModeValueConjunction extends ModeValueListEntry
+{
+	contains ModeValue[+] entries
+}
+
+class ModeValueDisjunction extends BaseObject
+{
+	contains ModeValueListEntry[] entries
 }
 
 /*

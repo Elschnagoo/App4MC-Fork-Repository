@@ -16,24 +16,24 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Mode Value List</b></em>'.
+ * A representation of the model object '<em><b>Mode Value Disjunction</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeValueList#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunction#getEntries <em>Entries</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeValueList()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeValueDisjunction()
  * @model
  * @generated
  */
-public interface ModeValueList extends BaseObject {
+public interface ModeValueDisjunction extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ModeValue}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ModeValueListEntry}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Entries</em>' containment reference list isn't clear,
@@ -41,10 +41,10 @@ public interface ModeValueList extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeValueList_Entries()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeValueDisjunction_Entries()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<ModeValue> getEntries();
+	EList<ModeValueListEntry> getEntries();
 
-} // ModeValueList
+} // ModeValueDisjunction

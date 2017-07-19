@@ -182,8 +182,10 @@ import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
+import org.eclipse.app4mc.amalthea.model.ModeValue;
+import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.Network;
 import org.eclipse.app4mc.amalthea.model.NetworkType;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
@@ -547,7 +549,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.MEMORY_CLASSIFICATION: return createMemoryClassification();
 			case AmaltheaPackage.STIMULI_MODEL: return createStimuliModel();
 			case AmaltheaPackage.MODE_VALUE_LIST: return createModeValueList();
-			case AmaltheaPackage.MODE_VALUE_LIST_ENTRY: return createModeValueListEntry();
+			case AmaltheaPackage.MODE_VALUE: return createModeValue();
+			case AmaltheaPackage.MODE_VALUE_CONJUNCTION: return createModeValueConjunction();
+			case AmaltheaPackage.MODE_VALUE_DISJUNCTION: return createModeValueDisjunction();
 			case AmaltheaPackage.PERIODIC: return createPeriodic();
 			case AmaltheaPackage.PERIODIC_EVENT: return createPeriodicEvent();
 			case AmaltheaPackage.SYNTHETIC: return createSynthetic();
@@ -2618,9 +2622,29 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModeValueListEntry createModeValueListEntry() {
-		ModeValueListEntryImpl modeValueListEntry = new ModeValueListEntryImpl();
-		return modeValueListEntry;
+	public ModeValue createModeValue() {
+		ModeValueImpl modeValue = new ModeValueImpl();
+		return modeValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModeValueConjunction createModeValueConjunction() {
+		ModeValueConjunctionImpl modeValueConjunction = new ModeValueConjunctionImpl();
+		return modeValueConjunction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModeValueDisjunction createModeValueDisjunction() {
+		ModeValueDisjunctionImpl modeValueDisjunction = new ModeValueDisjunctionImpl();
+		return modeValueDisjunction;
 	}
 
 	/**

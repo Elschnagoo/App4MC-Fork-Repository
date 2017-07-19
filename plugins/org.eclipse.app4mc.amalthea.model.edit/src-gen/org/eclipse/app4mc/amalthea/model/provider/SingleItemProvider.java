@@ -174,7 +174,6 @@ public class SingleItemProvider extends StimulusItemProvider {
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_SetModeValueList() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList();
 

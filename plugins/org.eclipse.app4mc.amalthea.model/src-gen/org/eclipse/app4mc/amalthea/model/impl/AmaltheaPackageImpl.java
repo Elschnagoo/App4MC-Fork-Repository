@@ -225,6 +225,9 @@ import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
+import org.eclipse.app4mc.amalthea.model.ModeValue;
+import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.Network;
@@ -2071,6 +2074,27 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass modeValueListEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modeValueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modeValueConjunctionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modeValueDisjunctionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -9084,8 +9108,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModeValueListEntry_ValueProvider() {
-		return (EReference)modeValueListEntryEClass.getEStructuralFeatures().get(0);
+	public EClass getModeValue() {
+		return modeValueEClass;
 	}
 
 	/**
@@ -9093,8 +9117,53 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModeValueListEntry_Value() {
-		return (EReference)modeValueListEntryEClass.getEStructuralFeatures().get(1);
+	public EReference getModeValue_ValueProvider() {
+		return (EReference)modeValueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModeValue_Value() {
+		return (EReference)modeValueEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getModeValueConjunction() {
+		return modeValueConjunctionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModeValueConjunction_Entries() {
+		return (EReference)modeValueConjunctionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getModeValueDisjunction() {
+		return modeValueDisjunctionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModeValueDisjunction_Entries() {
+		return (EReference)modeValueDisjunctionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -13047,8 +13116,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(modeValueListEClass, MODE_VALUE_LIST__ENTRIES);
 
 		modeValueListEntryEClass = createEClass(MODE_VALUE_LIST_ENTRY);
-		createEReference(modeValueListEntryEClass, MODE_VALUE_LIST_ENTRY__VALUE_PROVIDER);
-		createEReference(modeValueListEntryEClass, MODE_VALUE_LIST_ENTRY__VALUE);
+
+		modeValueEClass = createEClass(MODE_VALUE);
+		createEReference(modeValueEClass, MODE_VALUE__VALUE_PROVIDER);
+		createEReference(modeValueEClass, MODE_VALUE__VALUE);
+
+		modeValueConjunctionEClass = createEClass(MODE_VALUE_CONJUNCTION);
+		createEReference(modeValueConjunctionEClass, MODE_VALUE_CONJUNCTION__ENTRIES);
+
+		modeValueDisjunctionEClass = createEClass(MODE_VALUE_DISJUNCTION);
+		createEReference(modeValueDisjunctionEClass, MODE_VALUE_DISJUNCTION__ENTRIES);
 
 		periodicEClass = createEClass(PERIODIC);
 		createEReference(periodicEClass, PERIODIC__OFFSET);
@@ -13787,6 +13864,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		stimulusEClass.getESuperTypes().add(this.getITaggable());
 		modeValueListEClass.getESuperTypes().add(this.getBaseObject());
 		modeValueListEntryEClass.getESuperTypes().add(this.getBaseObject());
+		modeValueEClass.getESuperTypes().add(this.getModeValueListEntry());
+		modeValueConjunctionEClass.getESuperTypes().add(this.getModeValueListEntry());
+		modeValueDisjunctionEClass.getESuperTypes().add(this.getBaseObject());
 		periodicEClass.getESuperTypes().add(this.getStimulus());
 		periodicEventEClass.getESuperTypes().add(this.getStimulus());
 		syntheticEClass.getESuperTypes().add(this.getStimulus());
@@ -14839,15 +14919,23 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		g1.getETypeArguments().add(g2);
 		initEReference(getStimulus_StimulusDeviation(), g1, null, "stimulusDeviation", null, 0, 1, Stimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStimulus_SetModeValueList(), this.getModeValueList(), null, "setModeValueList", null, 0, 1, Stimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStimulus_EnablingModeValueList(), this.getModeValueList(), null, "enablingModeValueList", null, 0, 1, Stimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStimulus_DisablingModeValueList(), this.getModeValueList(), null, "disablingModeValueList", null, 0, 1, Stimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStimulus_EnablingModeValueList(), this.getModeValueDisjunction(), null, "enablingModeValueList", null, 0, 1, Stimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStimulus_DisablingModeValueList(), this.getModeValueDisjunction(), null, "disablingModeValueList", null, 0, 1, Stimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeValueListEClass, ModeValueList.class, "ModeValueList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModeValueList_Entries(), this.getModeValueListEntry(), null, "entries", null, 0, -1, ModeValueList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeValueList_Entries(), this.getModeValue(), null, "entries", null, 0, -1, ModeValueList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(modeValueListEntryEClass, ModeValueListEntry.class, "ModeValueListEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModeValueListEntry_ValueProvider(), this.getModeLabel(), null, "valueProvider", null, 1, 1, ModeValueListEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModeValueListEntry_Value(), this.getModeLiteral(), null, "value", null, 1, 1, ModeValueListEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(modeValueListEntryEClass, ModeValueListEntry.class, "ModeValueListEntry", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(modeValueEClass, ModeValue.class, "ModeValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModeValue_ValueProvider(), this.getModeLabel(), null, "valueProvider", null, 1, 1, ModeValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeValue_Value(), this.getModeLiteral(), null, "value", null, 1, 1, ModeValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(modeValueConjunctionEClass, ModeValueConjunction.class, "ModeValueConjunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModeValueConjunction_Entries(), this.getModeValue(), null, "entries", null, 1, -1, ModeValueConjunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(modeValueDisjunctionEClass, ModeValueDisjunction.class, "ModeValueDisjunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModeValueDisjunction_Entries(), this.getModeValueListEntry(), null, "entries", null, 0, -1, ModeValueDisjunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(periodicEClass, Periodic.class, "Periodic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPeriodic_Offset(), this.getTime(), null, "offset", null, 0, 1, Periodic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

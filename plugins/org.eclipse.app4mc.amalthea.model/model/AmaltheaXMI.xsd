@@ -3923,8 +3923,8 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
           <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="stimulusDeviation" type="am:Deviation"/>
           <xsd:element name="setModeValueList" type="am:ModeValueList"/>
-          <xsd:element name="enablingModeValueList" type="am:ModeValueList"/>
-          <xsd:element name="disablingModeValueList" type="am:ModeValueList"/>
+          <xsd:element name="enablingModeValueList" type="am:ModeValueDisjunction"/>
+          <xsd:element name="disablingModeValueList" type="am:ModeValueDisjunction"/>
         </xsd:choice>
         <xsd:attribute name="tags" type="xsd:string"/>
       </xsd:extension>
@@ -3941,15 +3941,21 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="entries" type="am:ModeValueListEntry"/>
+          <xsd:element name="entries" type="am:ModeValue"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeValueList" type="am:ModeValueList"/>
-  <xsd:complexType name="ModeValueListEntry">
+  <xsd:complexType abstract="true" name="ModeValueListEntry">
     <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
+      <xsd:extension base="am:BaseObject"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ModeValueListEntry" type="am:ModeValueListEntry"/>
+  <xsd:complexType name="ModeValue">
+    <xsd:complexContent>
+      <xsd:extension base="am:ModeValueListEntry">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="valueProvider" type="am:ModeLabel"/>
           <xsd:element name="value" type="am:ModeLiteral"/>
@@ -3959,7 +3965,27 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ModeValueListEntry" type="am:ModeValueListEntry"/>
+  <xsd:element name="ModeValue" type="am:ModeValue"/>
+  <xsd:complexType name="ModeValueConjunction">
+    <xsd:complexContent>
+      <xsd:extension base="am:ModeValueListEntry">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entries" type="am:ModeValue"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ModeValueConjunction" type="am:ModeValueConjunction"/>
+  <xsd:complexType name="ModeValueDisjunction">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entries" type="am:ModeValueListEntry"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ModeValueDisjunction" type="am:ModeValueDisjunction"/>
   <xsd:complexType name="Periodic">
     <xsd:annotation>
       <xsd:documentation>This activates a task periodically

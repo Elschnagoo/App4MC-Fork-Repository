@@ -101,8 +101,8 @@ import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
+import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
@@ -3443,18 +3443,18 @@ public class CustomItemProviderService {
   }
   
   /**
-   * ModeValueListEntryItemProvider
+   * ModeValueItemProvider
    */
-  public static String getModeValueListEntryItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ModeValueListEntry)) {
+  public static String getModeValueItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ModeValue)) {
       ModeLabel _valueProvider = null;
-      if (((ModeValueListEntry)object)!=null) {
-        _valueProvider=((ModeValueListEntry)object).getValueProvider();
+      if (((ModeValue)object)!=null) {
+        _valueProvider=((ModeValue)object).getValueProvider();
       }
       final ModeLabel prov = _valueProvider;
       ModeLiteral _value = null;
-      if (((ModeValueListEntry)object)!=null) {
-        _value=((ModeValueListEntry)object).getValue();
+      if (((ModeValue)object)!=null) {
+        _value=((ModeValue)object).getValue();
       }
       final ModeLiteral value = _value;
       String _xifexpression = null;
@@ -3484,15 +3484,15 @@ public class CustomItemProviderService {
     }
   }
   
-  public static List<ViewerNotification> getModeValueListEntryItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getModeValueItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(ModeValueListEntry.class);
+    int _featureID = notification.getFeatureID(ModeValue.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE_LIST_ENTRY__VALUE)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE__VALUE)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE_LIST_ENTRY__VALUE_PROVIDER)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE__VALUE_PROVIDER)) {
         _matched=true;
       }
     }

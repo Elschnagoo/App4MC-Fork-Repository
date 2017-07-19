@@ -199,6 +199,9 @@ import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
+import org.eclipse.app4mc.amalthea.model.ModeValue;
+import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.Network;
@@ -2494,6 +2497,32 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseModeValueListEntry(modeValueListEntry);
 				if (result == null) result = caseBaseObject(modeValueListEntry);
 				if (result == null) result = caseIAnnotatable(modeValueListEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.MODE_VALUE: {
+				ModeValue modeValue = (ModeValue)theEObject;
+				T1 result = caseModeValue(modeValue);
+				if (result == null) result = caseModeValueListEntry(modeValue);
+				if (result == null) result = caseBaseObject(modeValue);
+				if (result == null) result = caseIAnnotatable(modeValue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.MODE_VALUE_CONJUNCTION: {
+				ModeValueConjunction modeValueConjunction = (ModeValueConjunction)theEObject;
+				T1 result = caseModeValueConjunction(modeValueConjunction);
+				if (result == null) result = caseModeValueListEntry(modeValueConjunction);
+				if (result == null) result = caseBaseObject(modeValueConjunction);
+				if (result == null) result = caseIAnnotatable(modeValueConjunction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.MODE_VALUE_DISJUNCTION: {
+				ModeValueDisjunction modeValueDisjunction = (ModeValueDisjunction)theEObject;
+				T1 result = caseModeValueDisjunction(modeValueDisjunction);
+				if (result == null) result = caseBaseObject(modeValueDisjunction);
+				if (result == null) result = caseIAnnotatable(modeValueDisjunction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -6953,6 +6982,51 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseModeValueListEntry(ModeValueListEntry object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Mode Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Mode Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseModeValue(ModeValue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Mode Value Conjunction</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Mode Value Conjunction</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseModeValueConjunction(ModeValueConjunction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Mode Value Disjunction</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Mode Value Disjunction</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseModeValueDisjunction(ModeValueDisjunction object) {
 		return null;
 	}
 

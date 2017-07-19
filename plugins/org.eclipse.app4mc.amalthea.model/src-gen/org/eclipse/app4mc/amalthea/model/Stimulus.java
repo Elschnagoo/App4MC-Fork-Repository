@@ -100,12 +100,12 @@ public interface Stimulus extends ReferableBaseObject, ITaggable {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Enabling Mode Value List</em>' containment reference.
-	 * @see #setEnablingModeValueList(ModeValueList)
+	 * @see #setEnablingModeValueList(ModeValueDisjunction)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimulus_EnablingModeValueList()
 	 * @model containment="true"
 	 * @generated
 	 */
-	ModeValueList getEnablingModeValueList();
+	ModeValueDisjunction getEnablingModeValueList();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Stimulus#getEnablingModeValueList <em>Enabling Mode Value List</em>}' containment reference.
@@ -115,7 +115,7 @@ public interface Stimulus extends ReferableBaseObject, ITaggable {
 	 * @see #getEnablingModeValueList()
 	 * @generated
 	 */
-	void setEnablingModeValueList(ModeValueList value);
+	void setEnablingModeValueList(ModeValueDisjunction value);
 
 	/**
 	 * Returns the value of the '<em><b>Disabling Mode Value List</b></em>' containment reference.
@@ -126,12 +126,12 @@ public interface Stimulus extends ReferableBaseObject, ITaggable {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Disabling Mode Value List</em>' containment reference.
-	 * @see #setDisablingModeValueList(ModeValueList)
+	 * @see #setDisablingModeValueList(ModeValueDisjunction)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimulus_DisablingModeValueList()
 	 * @model containment="true"
 	 * @generated
 	 */
-	ModeValueList getDisablingModeValueList();
+	ModeValueDisjunction getDisablingModeValueList();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Stimulus#getDisablingModeValueList <em>Disabling Mode Value List</em>}' containment reference.
@@ -141,6 +141,6 @@ public interface Stimulus extends ReferableBaseObject, ITaggable {
 	 * @see #getDisablingModeValueList()
 	 * @generated
 	 */
-	void setDisablingModeValueList(ModeValueList value);
+	void setDisablingModeValueList(ModeValueDisjunction value);
 
 } // Stimulus

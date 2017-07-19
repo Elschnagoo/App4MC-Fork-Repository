@@ -153,7 +153,7 @@ public class ModeValueListItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getModeValueList_Entries(),
-				 AmaltheaFactory.eINSTANCE.createModeValueListEntry()));
+				 AmaltheaFactory.eINSTANCE.createModeValue()));
 	}
 
 }

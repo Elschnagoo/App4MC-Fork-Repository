@@ -4084,26 +4084,72 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeValueListEntry} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeValue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModeValueListEntryItemProvider modeValueListEntryItemProvider;
+	protected ModeValueItemProvider modeValueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValueListEntry}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createModeValueListEntryAdapter() {
-		if (modeValueListEntryItemProvider == null) {
-			modeValueListEntryItemProvider = new ModeValueListEntryItemProvider(this);
+	public Adapter createModeValueAdapter() {
+		if (modeValueItemProvider == null) {
+			modeValueItemProvider = new ModeValueItemProvider(this);
 		}
 
-		return modeValueListEntryItemProvider;
+		return modeValueItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeValueConjunction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModeValueConjunctionItemProvider modeValueConjunctionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValueConjunction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createModeValueConjunctionAdapter() {
+		if (modeValueConjunctionItemProvider == null) {
+			modeValueConjunctionItemProvider = new ModeValueConjunctionItemProvider(this);
+		}
+
+		return modeValueConjunctionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModeValueDisjunctionItemProvider modeValueDisjunctionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createModeValueDisjunctionAdapter() {
+		if (modeValueDisjunctionItemProvider == null) {
+			modeValueDisjunctionItemProvider = new ModeValueDisjunctionItemProvider(this);
+		}
+
+		return modeValueDisjunctionItemProvider;
 	}
 
 	/**
@@ -6221,7 +6267,9 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (memoryClassificationItemProvider != null) memoryClassificationItemProvider.dispose();
 		if (stimuliModelItemProvider != null) stimuliModelItemProvider.dispose();
 		if (modeValueListItemProvider != null) modeValueListItemProvider.dispose();
-		if (modeValueListEntryItemProvider != null) modeValueListEntryItemProvider.dispose();
+		if (modeValueItemProvider != null) modeValueItemProvider.dispose();
+		if (modeValueConjunctionItemProvider != null) modeValueConjunctionItemProvider.dispose();
+		if (modeValueDisjunctionItemProvider != null) modeValueDisjunctionItemProvider.dispose();
 		if (periodicItemProvider != null) periodicItemProvider.dispose();
 		if (periodicEventItemProvider != null) periodicEventItemProvider.dispose();
 		if (syntheticItemProvider != null) syntheticItemProvider.dispose();

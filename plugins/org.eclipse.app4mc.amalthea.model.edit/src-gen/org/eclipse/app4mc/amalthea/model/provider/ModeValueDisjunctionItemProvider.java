@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -18,30 +18,30 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.EventStimulus;
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.EventStimulus} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunction} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class EventStimulusItemProvider extends StimulusItemProvider {
+public class ModeValueDisjunctionItemProvider extends BaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EventStimulusItemProvider(AdapterFactory adapterFactory) {
+	public ModeValueDisjunctionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -56,31 +56,8 @@ public class EventStimulusItemProvider extends StimulusItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTriggerPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Trigger feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTriggerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EventStimulus_trigger_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EventStimulus_trigger_feature", "_UI_EventStimulus_type"),
-				 AmaltheaPackage.eINSTANCE.getEventStimulus_Trigger(),
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -95,7 +72,7 @@ public class EventStimulusItemProvider extends StimulusItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getEventStimulus_Counter());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getModeValueDisjunction_Entries());
 		}
 		return childrenFeatures;
 	}
@@ -114,14 +91,14 @@ public class EventStimulusItemProvider extends StimulusItemProvider {
 	}
 
 	/**
-	 * This returns EventStimulus.gif.
+	 * This returns ModeValueDisjunction.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/EventStimulus"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModeValueDisjunction"));
 	}
 
 	/**
@@ -142,10 +119,7 @@ public class EventStimulusItemProvider extends StimulusItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((EventStimulus)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_EventStimulus_type") :
-			getString("_UI_EventStimulus_type") + " " + label;
+		return getString("_UI_ModeValueDisjunction_type");
 	}
 	
 
@@ -160,8 +134,8 @@ public class EventStimulusItemProvider extends StimulusItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(EventStimulus.class)) {
-			case AmaltheaPackage.EVENT_STIMULUS__COUNTER:
+		switch (notification.getFeatureID(ModeValueDisjunction.class)) {
+			case AmaltheaPackage.MODE_VALUE_DISJUNCTION__ENTRIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -181,31 +155,13 @@ public class EventStimulusItemProvider extends StimulusItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getEventStimulus_Counter(),
-				 AmaltheaFactory.eINSTANCE.createCounter()));
-	}
+				(AmaltheaPackage.eINSTANCE.getModeValueDisjunction_Entries(),
+				 AmaltheaFactory.eINSTANCE.createModeValue()));
 
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList();
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getModeValueDisjunction_Entries(),
+				 AmaltheaFactory.eINSTANCE.createModeValueConjunction()));
 	}
 
 }

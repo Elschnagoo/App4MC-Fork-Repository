@@ -15,8 +15,8 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ModeValue;
-import org.eclipse.app4mc.amalthea.model.ModeValueList;
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
+import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -30,18 +30,18 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Mode Value List</b></em>'.
+ * An implementation of the model object '<em><b>Mode Value Disjunction</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeValueListImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeValueDisjunctionImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
+public class ModeValueDisjunctionImpl extends BaseObjectImpl implements ModeValueDisjunction {
 	/**
 	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -50,14 +50,14 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ModeValue> entries;
+	protected EList<ModeValueListEntry> entries;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModeValueListImpl() {
+	protected ModeValueDisjunctionImpl() {
 		super();
 	}
 
@@ -68,7 +68,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getModeValueList();
+		return AmaltheaPackage.eINSTANCE.getModeValueDisjunction();
 	}
 
 	/**
@@ -76,9 +76,9 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ModeValue> getEntries() {
+	public EList<ModeValueListEntry> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList<ModeValue>(ModeValue.class, this, AmaltheaPackage.MODE_VALUE_LIST__ENTRIES);
+			entries = new EObjectContainmentEList<ModeValueListEntry>(ModeValueListEntry.class, this, AmaltheaPackage.MODE_VALUE_DISJUNCTION__ENTRIES);
 		}
 		return entries;
 	}
@@ -91,7 +91,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_VALUE_DISJUNCTION__ENTRIES:
 				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -105,7 +105,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_VALUE_DISJUNCTION__ENTRIES:
 				return getEntries();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -120,9 +120,9 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_VALUE_DISJUNCTION__ENTRIES:
 				getEntries().clear();
-				getEntries().addAll((Collection<? extends ModeValue>)newValue);
+				getEntries().addAll((Collection<? extends ModeValueListEntry>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -136,7 +136,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_VALUE_DISJUNCTION__ENTRIES:
 				getEntries().clear();
 				return;
 		}
@@ -151,10 +151,10 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_VALUE_DISJUNCTION__ENTRIES:
 				return entries != null && !entries.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ModeValueListImpl
+} //ModeValueDisjunctionImpl

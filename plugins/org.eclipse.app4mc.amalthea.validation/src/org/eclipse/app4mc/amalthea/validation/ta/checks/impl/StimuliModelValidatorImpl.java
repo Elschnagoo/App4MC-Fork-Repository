@@ -24,6 +24,7 @@ import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
 import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
+import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.SWModel;
@@ -442,11 +443,11 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				SWModel swModel = (SWModel) elem;
 				modeLabels.addAll(swModel.getModeLabels());
 			}
-			if (elem instanceof ModeValueListEntry) {
-				ModeValueListEntry entry = (ModeValueListEntry) elem;
+			if (elem instanceof ModeValue) {
+				ModeValue entry = (ModeValue) elem;
 				ModeLabel valueProvider = entry.getValueProvider();
 				if(null == valueProvider) {
-					this.issueCreator.issue(entry, AmaltheaPackage.eINSTANCE.getModeValueListEntry_ValueProvider());
+					this.issueCreator.issue(entry, AmaltheaPackage.eINSTANCE.getModeValue_ValueProvider());
 				} else {
 					valueProviders.put(valueProvider, entry);
 				}
@@ -457,7 +458,7 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 		for(ModeLabel modeLabel : valueProviders.keySet()) {
 			if(false == modeLabels.contains(modeLabel)) {
 				ModeValueListEntry modeValueListEntry = valueProviders.get(modeLabel);
-				this.issueCreator.issue(modeValueListEntry, AmaltheaPackage.eINSTANCE.getModeValueListEntry_ValueProvider());
+				this.issueCreator.issue(modeValueListEntry, AmaltheaPackage.eINSTANCE.getModeValue_ValueProvider());
 			}
 		}
 		

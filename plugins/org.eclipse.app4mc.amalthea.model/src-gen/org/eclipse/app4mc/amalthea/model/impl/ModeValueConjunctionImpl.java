@@ -16,7 +16,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
-import org.eclipse.app4mc.amalthea.model.ModeValueList;
+import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -30,18 +30,18 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Mode Value List</b></em>'.
+ * An implementation of the model object '<em><b>Mode Value Conjunction</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeValueListImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeValueConjunctionImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
+public class ModeValueConjunctionImpl extends ModeValueListEntryImpl implements ModeValueConjunction {
 	/**
 	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -57,7 +57,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModeValueListImpl() {
+	protected ModeValueConjunctionImpl() {
 		super();
 	}
 
@@ -68,7 +68,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getModeValueList();
+		return AmaltheaPackage.eINSTANCE.getModeValueConjunction();
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	 */
 	public EList<ModeValue> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList<ModeValue>(ModeValue.class, this, AmaltheaPackage.MODE_VALUE_LIST__ENTRIES);
+			entries = new EObjectContainmentEList<ModeValue>(ModeValue.class, this, AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES);
 		}
 		return entries;
 	}
@@ -91,7 +91,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES:
 				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -105,7 +105,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES:
 				return getEntries();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -120,7 +120,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES:
 				getEntries().clear();
 				getEntries().addAll((Collection<? extends ModeValue>)newValue);
 				return;
@@ -136,7 +136,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES:
 				getEntries().clear();
 				return;
 		}
@@ -151,10 +151,10 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES:
 				return entries != null && !entries.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ModeValueListImpl
+} //ModeValueConjunctionImpl

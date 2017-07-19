@@ -141,6 +141,7 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
+import org.eclipse.app4mc.amalthea.model.ModeValue
 
 class CustomItemProviderService {
 
@@ -1861,10 +1862,10 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ModeValueListEntryItemProvider
+	 * 						ModeValueItemProvider
 	 *****************************************************************************/
-	def static String getModeValueListEntryItemProviderText(Object object, String defaultText) {
-		if (object instanceof ModeValueListEntry) {
+	def static String getModeValueItemProviderText(Object object, String defaultText) {
+		if (object instanceof ModeValue) {
 			val prov = object?.valueProvider
 			val value = object?.value
 			val s1 = if(prov?.name.isNullOrEmpty) "<mode label>" else "Mode Label " + prov.name
@@ -1875,12 +1876,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getModeValueListEntryItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getModeValueItemProviderNotifications(Notification notification) {
 		val list = newArrayList
 
-		switch notification.getFeatureID(typeof(ModeValueListEntry)) {
-			case AmaltheaPackage::MODE_VALUE_LIST_ENTRY__VALUE,
-			case AmaltheaPackage::MODE_VALUE_LIST_ENTRY__VALUE_PROVIDER:
+		switch notification.getFeatureID(typeof(ModeValue)) {
+			case AmaltheaPackage::MODE_VALUE__VALUE,
+			case AmaltheaPackage::MODE_VALUE__VALUE_PROVIDER:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 		}
 		return list

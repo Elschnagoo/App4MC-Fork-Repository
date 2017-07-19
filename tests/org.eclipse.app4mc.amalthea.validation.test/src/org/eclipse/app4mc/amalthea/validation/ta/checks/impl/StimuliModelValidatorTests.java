@@ -26,6 +26,7 @@ import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
 import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
+import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.Periodic;
@@ -1966,14 +1967,14 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
 		final ModeValueList modeValueList = AmaltheaFactory.eINSTANCE.createModeValueList();
-		final ModeValueListEntry modeValueListEntry = AmaltheaFactory.eINSTANCE.createModeValueListEntry();
+		final ModeValue modeValue = AmaltheaFactory.eINSTANCE.createModeValue();
 		
 		amalthea.setStimuliModel(stimuliModel);
 		stimuliModel.getStimuli().add(single);
 		single.setSetModeValueList(modeValueList);
-		modeValueList.getEntries().add(modeValueListEntry);
+		modeValueList.getEntries().add(modeValue);
 
-		this.issueCreator.issue(modeValueListEntry, AmaltheaPackage.eINSTANCE.getModeValueListEntry_ValueProvider());
+		this.issueCreator.issue(modeValue, AmaltheaPackage.eINSTANCE.getModeValue_ValueProvider());
 		
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -1997,15 +1998,15 @@ public class StimuliModelValidatorTests {
 		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
 		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
 		final ModeValueList modeValueList = AmaltheaFactory.eINSTANCE.createModeValueList();
-		final ModeValueListEntry modeValueListEntry = AmaltheaFactory.eINSTANCE.createModeValueListEntry();
+		final ModeValue modeValue = AmaltheaFactory.eINSTANCE.createModeValue();
 		
 		amalthea.setSwModel(swModel);
 		swModel.getModeLabels().add(modeLabel);
 		amalthea.setStimuliModel(stimuliModel);
 		stimuliModel.getStimuli().add(single);
 		single.setSetModeValueList(modeValueList);
-		modeValueList.getEntries().add(modeValueListEntry);
-		modeValueListEntry.setValueProvider(modeLabel);
+		modeValueList.getEntries().add(modeValue);
+		modeValue.setValueProvider(modeLabel);
 
 		EasyMock.replay(this.issueCreator);
 		
@@ -2028,16 +2029,16 @@ public class StimuliModelValidatorTests {
 		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
 		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
 		final ModeValueList modeValueList = AmaltheaFactory.eINSTANCE.createModeValueList();
-		final ModeValueListEntry modeValueListEntry = AmaltheaFactory.eINSTANCE.createModeValueListEntry();
+		final ModeValue modeValue = AmaltheaFactory.eINSTANCE.createModeValue();
 		
 		amalthea.setSwModel(swModel);
 		amalthea.setStimuliModel(stimuliModel);
 		stimuliModel.getStimuli().add(single);
 		single.setSetModeValueList(modeValueList);
-		modeValueList.getEntries().add(modeValueListEntry);
-		modeValueListEntry.setValueProvider(modeLabel);
+		modeValueList.getEntries().add(modeValue);
+		modeValue.setValueProvider(modeLabel);
 
-		this.issueCreator.issue(modeValueListEntry, AmaltheaPackage.eINSTANCE.getModeValueListEntry_ValueProvider());
+		this.issueCreator.issue(modeValue, AmaltheaPackage.eINSTANCE.getModeValue_ValueProvider());
 		
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);

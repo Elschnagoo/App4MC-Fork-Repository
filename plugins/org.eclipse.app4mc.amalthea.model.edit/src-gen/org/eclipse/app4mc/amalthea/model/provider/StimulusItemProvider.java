@@ -188,12 +188,12 @@ public class StimulusItemProvider extends ReferableBaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList(),
-				 AmaltheaFactory.eINSTANCE.createModeValueList()));
+				 AmaltheaFactory.eINSTANCE.createModeValueDisjunction()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList(),
-				 AmaltheaFactory.eINSTANCE.createModeValueList()));
+				 AmaltheaFactory.eINSTANCE.createModeValueDisjunction()));
 	}
 
 	/**
@@ -208,7 +208,6 @@ public class StimulusItemProvider extends ReferableBaseObjectItemProvider {
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_SetModeValueList() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList();
 

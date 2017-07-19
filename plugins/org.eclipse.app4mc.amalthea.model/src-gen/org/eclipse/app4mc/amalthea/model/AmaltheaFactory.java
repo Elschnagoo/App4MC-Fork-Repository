@@ -1598,13 +1598,31 @@ public interface AmaltheaFactory extends EFactory {
 	ModeValueList createModeValueList();
 
 	/**
-	 * Returns a new object of class '<em>Mode Value List Entry</em>'.
+	 * Returns a new object of class '<em>Mode Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mode Value List Entry</em>'.
+	 * @return a new object of class '<em>Mode Value</em>'.
 	 * @generated
 	 */
-	ModeValueListEntry createModeValueListEntry();
+	ModeValue createModeValue();
+
+	/**
+	 * Returns a new object of class '<em>Mode Value Conjunction</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Mode Value Conjunction</em>'.
+	 * @generated
+	 */
+	ModeValueConjunction createModeValueConjunction();
+
+	/**
+	 * Returns a new object of class '<em>Mode Value Disjunction</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Mode Value Disjunction</em>'.
+	 * @generated
+	 */
+	ModeValueDisjunction createModeValueDisjunction();
 
 	/**
 	 * Returns a new object of class '<em>Periodic</em>'.
