@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <swModel>
+    <runnables name="run" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableModeSwitch" valueProvider="ML-1?type=ModeLabel">
+        <entries values="ModeA/bbb?type=ModeLiteral ModeA/ccc?type=ModeLiteral">
+          <items xsi:type="am:Group" ordered="true" />
+        </entries>
+        <entries values="ModeA/aaa?type=ModeLiteral">
+          <items xsi:type="am:Group" ordered="true" />
+        </entries>
+        <defaultEntry>
+          <items xsi:type="am:Group" ordered="true" />
+        </defaultEntry>
+      </runnableItems>
+    </runnables>
+    <modes name="ModeA">
+      <literals name="aaa" />
+      <literals name="bbb" />
+      <literals name="ccc" />
+    </modes>
+    <modes name="ModeX">
+      <literals name="xxx" />
+      <literals name="yyy" />
+      <literals name="zzz" />
+    </modes>
+    <modeLabels name="ML-1" initialValue="ModeA/aaa?type=ModeLiteral" />
+    <modeLabels name="ML-2" initialValue="ModeX/yyy?type=ModeLiteral" />
+  </swModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:CustomStimulus">
+      <setModeValueList>
+        <entries valueProvider="ML-1?type=ModeLabel" value="ModeA/aaa?type=ModeLiteral" />
+      </setModeValueList>
+      <enablingModeValueList>
+        <entries valueProvider="ML-2?type=ModeLabel" value="ModeX/yyy?type=ModeLiteral" />
+        <entries valueProvider="ML-2?type=ModeLabel" value="ModeX/zzz?type=ModeLiteral" />
+      </enablingModeValueList>
+      <disablingModeValueList>
+        <entries valueProvider="ML-1?type=ModeLabel" value="ModeA/bbb?type=ModeLiteral" />
+      </disablingModeValueList>
+    </stimuli>
+  </stimuliModel>
+</am:Amalthea>
