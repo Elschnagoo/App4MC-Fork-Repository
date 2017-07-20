@@ -9351,7 +9351,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEventStimulus_Trigger() {
+	public EReference getEventStimulus_TriggeringEvents() {
 		return (EReference)eventStimulusEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -13155,7 +13155,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(sporadicEClass, SPORADIC__DESCRIPTION);
 
 		eventStimulusEClass = createEClass(EVENT_STIMULUS);
-		createEReference(eventStimulusEClass, EVENT_STIMULUS__TRIGGER);
+		createEReference(eventStimulusEClass, EVENT_STIMULUS__TRIGGERING_EVENTS);
 		createEReference(eventStimulusEClass, EVENT_STIMULUS__COUNTER);
 
 		arrivalCurveEClass = createEClass(ARRIVAL_CURVE);
@@ -14965,7 +14965,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getSporadic_Description(), theEcorePackage.getEString(), "description", null, 0, 1, Sporadic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventStimulusEClass, EventStimulus.class, "EventStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEventStimulus_Trigger(), this.getTriggerEvent(), null, "trigger", null, 1, 1, EventStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEventStimulus_TriggeringEvents(), this.getTriggerEvent(), null, "triggeringEvents", null, 1, -1, EventStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEventStimulus_Counter(), this.getCounter(), null, "counter", null, 0, 1, EventStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(arrivalCurveEClass, ArrivalCurve.class, "ArrivalCurve", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

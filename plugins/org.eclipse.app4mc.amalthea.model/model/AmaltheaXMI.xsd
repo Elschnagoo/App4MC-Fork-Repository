@@ -4131,10 +4131,10 @@ triggerTimes: the list of all trigger times</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="trigger" type="am:TriggerEvent"/>
+          <xsd:element name="triggeringEvents" type="am:TriggerEvent"/>
           <xsd:element name="counter" type="am:Counter"/>
         </xsd:choice>
-        <xsd:attribute name="trigger" type="xsd:string"/>
+        <xsd:attribute name="triggeringEvents" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

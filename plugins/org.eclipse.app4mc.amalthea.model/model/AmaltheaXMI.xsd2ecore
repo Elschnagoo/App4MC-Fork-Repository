@@ -1711,8 +1711,8 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/Sporadic" outputs="AmaltheaXMI.xsd#//Sporadic;XSDElementDeclaration=248"/>
     <nested inputs="amalthea.xcore#/EPackage/EventStimulus" outputs="AmaltheaXMI.xsd#//EventStimulus;XSDComplexTypeDefinition=249">
-      <nested inputs="amalthea.xcore#/EPackage/EventStimulus/trigger" outputs="AmaltheaXMI.xsd#//EventStimulus;XSDComplexTypeDefinition=249/XSDAttributeUse"/>
-      <nested inputs="amalthea.xcore#/EPackage/EventStimulus/trigger" outputs="AmaltheaXMI.xsd#//EventStimulus;XSDComplexTypeDefinition=249/XSDParticle/XSDModelGroup/XSDParticle"/>
+      <nested inputs="amalthea.xcore#/EPackage/EventStimulus/triggeringEvents" outputs="AmaltheaXMI.xsd#//EventStimulus;XSDComplexTypeDefinition=249/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/EventStimulus/triggeringEvents" outputs="AmaltheaXMI.xsd#//EventStimulus;XSDComplexTypeDefinition=249/XSDParticle/XSDModelGroup/XSDParticle"/>
       <nested inputs="amalthea.xcore#/EPackage/EventStimulus/counter" outputs="AmaltheaXMI.xsd#//EventStimulus;XSDComplexTypeDefinition=249/XSDParticle/XSDModelGroup/XSDParticle=1"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/EventStimulus" outputs="AmaltheaXMI.xsd#//EventStimulus;XSDElementDeclaration=249"/>

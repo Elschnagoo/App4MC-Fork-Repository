@@ -17997,13 +17997,13 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
 
 	/**
-	 * The feature id for the '<em><b>Trigger</b></em>' reference.
+	 * The feature id for the '<em><b>Triggering Events</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_STIMULUS__TRIGGER = STIMULUS_FEATURE_COUNT + 0;
+	int EVENT_STIMULUS__TRIGGERING_EVENTS = STIMULUS_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -32385,15 +32385,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getEventStimulus();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.EventStimulus#getTrigger <em>Trigger</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.EventStimulus#getTriggeringEvents <em>Triggering Events</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Trigger</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.EventStimulus#getTrigger()
+	 * @return the meta object for the reference list '<em>Triggering Events</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.EventStimulus#getTriggeringEvents()
 	 * @see #getEventStimulus()
 	 * @generated
 	 */
-	EReference getEventStimulus_Trigger();
+	EReference getEventStimulus_TriggeringEvents();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.EventStimulus#getCounter <em>Counter</em>}'.

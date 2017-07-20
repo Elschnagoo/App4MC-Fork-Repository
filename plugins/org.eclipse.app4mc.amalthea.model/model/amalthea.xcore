@@ -2587,7 +2587,7 @@ class Sporadic extends Stimulus
  */
 class EventStimulus extends Stimulus
 {
-	refers TriggerEvent[1] trigger
+	refers TriggerEvent[+] triggeringEvents
 	contains Counter counter
 }
 
@@ -2873,7 +2873,7 @@ class OsEvent extends ReferableBaseObject, ITaggable
  */
 class InterProcessActivation extends CallSequenceItem
 {
-	refers Stimulus stimulus
+	refers Stimulus stimulus	//TODO restrict to InterProcess
 }
 
 /*
