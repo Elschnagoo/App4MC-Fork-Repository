@@ -4153,72 +4153,72 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Periodic} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PeriodicStimulus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PeriodicItemProvider periodicItemProvider;
+	protected PeriodicStimulusItemProvider periodicStimulusItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Periodic}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PeriodicStimulus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createPeriodicAdapter() {
-		if (periodicItemProvider == null) {
-			periodicItemProvider = new PeriodicItemProvider(this);
+	public Adapter createPeriodicStimulusAdapter() {
+		if (periodicStimulusItemProvider == null) {
+			periodicStimulusItemProvider = new PeriodicStimulusItemProvider(this);
 		}
 
-		return periodicItemProvider;
+		return periodicStimulusItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PeriodicEvent} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PeriodicEventItemProvider periodicEventItemProvider;
+	protected VariableRateStimulusItemProvider variableRateStimulusItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PeriodicEvent}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createPeriodicEventAdapter() {
-		if (periodicEventItemProvider == null) {
-			periodicEventItemProvider = new PeriodicEventItemProvider(this);
+	public Adapter createVariableRateStimulusAdapter() {
+		if (variableRateStimulusItemProvider == null) {
+			variableRateStimulusItemProvider = new VariableRateStimulusItemProvider(this);
 		}
 
-		return periodicEventItemProvider;
+		return variableRateStimulusItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Synthetic} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SyntheticStimulus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SyntheticItemProvider syntheticItemProvider;
+	protected SyntheticStimulusItemProvider syntheticStimulusItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Synthetic}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SyntheticStimulus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSyntheticAdapter() {
-		if (syntheticItemProvider == null) {
-			syntheticItemProvider = new SyntheticItemProvider(this);
+	public Adapter createSyntheticStimulusAdapter() {
+		if (syntheticStimulusItemProvider == null) {
+			syntheticStimulusItemProvider = new SyntheticStimulusItemProvider(this);
 		}
 
-		return syntheticItemProvider;
+		return syntheticStimulusItemProvider;
 	}
 
 	/**
@@ -4268,72 +4268,72 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Single} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SingleStimulus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SingleItemProvider singleItemProvider;
+	protected SingleStimulusItemProvider singleStimulusItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Single}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SingleStimulus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSingleAdapter() {
-		if (singleItemProvider == null) {
-			singleItemProvider = new SingleItemProvider(this);
+	public Adapter createSingleStimulusAdapter() {
+		if (singleStimulusItemProvider == null) {
+			singleStimulusItemProvider = new SingleStimulusItemProvider(this);
 		}
 
-		return singleItemProvider;
+		return singleStimulusItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InterProcess} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InterProcessStimulus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InterProcessItemProvider interProcessItemProvider;
+	protected InterProcessStimulusItemProvider interProcessStimulusItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InterProcess}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InterProcessStimulus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createInterProcessAdapter() {
-		if (interProcessItemProvider == null) {
-			interProcessItemProvider = new InterProcessItemProvider(this);
+	public Adapter createInterProcessStimulusAdapter() {
+		if (interProcessStimulusItemProvider == null) {
+			interProcessStimulusItemProvider = new InterProcessStimulusItemProvider(this);
 		}
 
-		return interProcessItemProvider;
+		return interProcessStimulusItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Sporadic} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SporadicStimulus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SporadicItemProvider sporadicItemProvider;
+	protected SporadicStimulusItemProvider sporadicStimulusItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Sporadic}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SporadicStimulus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSporadicAdapter() {
-		if (sporadicItemProvider == null) {
-			sporadicItemProvider = new SporadicItemProvider(this);
+	public Adapter createSporadicStimulusAdapter() {
+		if (sporadicStimulusItemProvider == null) {
+			sporadicStimulusItemProvider = new SporadicStimulusItemProvider(this);
 		}
 
-		return sporadicItemProvider;
+		return sporadicStimulusItemProvider;
 	}
 
 	/**
@@ -4360,26 +4360,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ArrivalCurve} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ArrivalCurveItemProvider arrivalCurveItemProvider;
+	protected ArrivalCurveStimulusItemProvider arrivalCurveStimulusItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ArrivalCurve}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createArrivalCurveAdapter() {
-		if (arrivalCurveItemProvider == null) {
-			arrivalCurveItemProvider = new ArrivalCurveItemProvider(this);
+	public Adapter createArrivalCurveStimulusAdapter() {
+		if (arrivalCurveStimulusItemProvider == null) {
+			arrivalCurveStimulusItemProvider = new ArrivalCurveStimulusItemProvider(this);
 		}
 
-		return arrivalCurveItemProvider;
+		return arrivalCurveStimulusItemProvider;
 	}
 
 	/**
@@ -4866,26 +4866,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InterProcessActivation} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InterProcessTrigger} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InterProcessActivationItemProvider interProcessActivationItemProvider;
+	protected InterProcessTriggerItemProvider interProcessTriggerItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InterProcessActivation}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InterProcessTrigger}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createInterProcessActivationAdapter() {
-		if (interProcessActivationItemProvider == null) {
-			interProcessActivationItemProvider = new InterProcessActivationItemProvider(this);
+	public Adapter createInterProcessTriggerAdapter() {
+		if (interProcessTriggerItemProvider == null) {
+			interProcessTriggerItemProvider = new InterProcessTriggerItemProvider(this);
 		}
 
-		return interProcessActivationItemProvider;
+		return interProcessTriggerItemProvider;
 	}
 
 	/**
@@ -6270,16 +6270,16 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (modeValueItemProvider != null) modeValueItemProvider.dispose();
 		if (modeValueConjunctionItemProvider != null) modeValueConjunctionItemProvider.dispose();
 		if (modeValueDisjunctionItemProvider != null) modeValueDisjunctionItemProvider.dispose();
-		if (periodicItemProvider != null) periodicItemProvider.dispose();
-		if (periodicEventItemProvider != null) periodicEventItemProvider.dispose();
-		if (syntheticItemProvider != null) syntheticItemProvider.dispose();
+		if (periodicStimulusItemProvider != null) periodicStimulusItemProvider.dispose();
+		if (variableRateStimulusItemProvider != null) variableRateStimulusItemProvider.dispose();
+		if (syntheticStimulusItemProvider != null) syntheticStimulusItemProvider.dispose();
 		if (timestampListItemProvider != null) timestampListItemProvider.dispose();
 		if (customStimulusItemProvider != null) customStimulusItemProvider.dispose();
-		if (singleItemProvider != null) singleItemProvider.dispose();
-		if (interProcessItemProvider != null) interProcessItemProvider.dispose();
-		if (sporadicItemProvider != null) sporadicItemProvider.dispose();
+		if (singleStimulusItemProvider != null) singleStimulusItemProvider.dispose();
+		if (interProcessStimulusItemProvider != null) interProcessStimulusItemProvider.dispose();
+		if (sporadicStimulusItemProvider != null) sporadicStimulusItemProvider.dispose();
 		if (eventStimulusItemProvider != null) eventStimulusItemProvider.dispose();
-		if (arrivalCurveItemProvider != null) arrivalCurveItemProvider.dispose();
+		if (arrivalCurveStimulusItemProvider != null) arrivalCurveStimulusItemProvider.dispose();
 		if (arrivalCurveEntryItemProvider != null) arrivalCurveEntryItemProvider.dispose();
 		if (clockTriangleFunctionItemProvider != null) clockTriangleFunctionItemProvider.dispose();
 		if (clockSinusFunctionItemProvider != null) clockSinusFunctionItemProvider.dispose();
@@ -6301,7 +6301,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (clearEventItemProvider != null) clearEventItemProvider.dispose();
 		if (eventMaskItemProvider != null) eventMaskItemProvider.dispose();
 		if (osEventItemProvider != null) osEventItemProvider.dispose();
-		if (interProcessActivationItemProvider != null) interProcessActivationItemProvider.dispose();
+		if (interProcessTriggerItemProvider != null) interProcessTriggerItemProvider.dispose();
 		if (enforcedMigrationItemProvider != null) enforcedMigrationItemProvider.dispose();
 		if (taskRunnableCallItemProvider != null) taskRunnableCallItemProvider.dispose();
 		if (schedulePointItemProvider != null) schedulePointItemProvider.dispose();

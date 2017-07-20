@@ -197,7 +197,7 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 			
 			if (element.getValue().signum() <= 0) {
 				found = false;
-				if (!found) found = (classID == PERIODIC && featureID == PERIODIC__RECURRENCE);
+				if (!found) found = (classID == PERIODIC_STIMULUS && featureID == PERIODIC_STIMULUS__RECURRENCE);
 				if (!found) found = (classID == PERIODIC_ACTIVATION && featureID == PERIODIC_ACTIVATION__RECURRENCE);
 				if (!found) found = (classID == CLOCK_SINUS_FUNCTION && featureID == CLOCK_SINUS_FUNCTION__PERIOD);
 				if (!found) found = (classID == CLOCK_TRIANGLE_FUNCTION && featureID == CLOCK_TRIANGLE_FUNCTION__PERIOD);
@@ -221,7 +221,7 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 				if (!found) found = (classID == SINGLE_ACTIVATION && featureID == SINGLE_ACTIVATION__MIN);
 				if (!found) found = (classID == SINGLE_ACTIVATION && featureID == SINGLE_ACTIVATION__MAX);
 				if (!found) found = (classID == RUNNABLE && featureID == RUNNABLE__DEADLINE);
-				if (!found) found = (classID == PERIODIC && featureID == PERIODIC__OFFSET);
+				if (!found) found = (classID == PERIODIC_STIMULUS && featureID == PERIODIC_STIMULUS__OFFSET);
 				
 				if (found) {
 					this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getAbstractTime_Value(),

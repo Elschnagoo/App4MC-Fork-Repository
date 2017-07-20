@@ -13,8 +13,8 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.InterProcessActivation;
-import org.eclipse.app4mc.amalthea.model.Stimulus;
+import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
+import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -25,18 +25,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Inter Process Activation</b></em>'.
+ * An implementation of the model object '<em><b>Inter Process Trigger</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.InterProcessActivationImpl#getStimulus <em>Stimulus</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.InterProcessTriggerImpl#getStimulus <em>Stimulus</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class InterProcessActivationImpl extends CallSequenceItemImpl implements InterProcessActivation {
+public class InterProcessTriggerImpl extends CallSequenceItemImpl implements InterProcessTrigger {
 	/**
 	 * The cached value of the '{@link #getStimulus() <em>Stimulus</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -45,14 +45,14 @@ public class InterProcessActivationImpl extends CallSequenceItemImpl implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected Stimulus stimulus;
+	protected InterProcessStimulus stimulus;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InterProcessActivationImpl() {
+	protected InterProcessTriggerImpl() {
 		super();
 	}
 
@@ -63,7 +63,7 @@ public class InterProcessActivationImpl extends CallSequenceItemImpl implements 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getInterProcessActivation();
+		return AmaltheaPackage.eINSTANCE.getInterProcessTrigger();
 	}
 
 	/**
@@ -71,13 +71,13 @@ public class InterProcessActivationImpl extends CallSequenceItemImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Stimulus getStimulus() {
+	public InterProcessStimulus getStimulus() {
 		if (stimulus != null && stimulus.eIsProxy()) {
 			InternalEObject oldStimulus = (InternalEObject)stimulus;
-			stimulus = (Stimulus)eResolveProxy(oldStimulus);
+			stimulus = (InterProcessStimulus)eResolveProxy(oldStimulus);
 			if (stimulus != oldStimulus) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.INTER_PROCESS_ACTIVATION__STIMULUS, oldStimulus, stimulus));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.INTER_PROCESS_TRIGGER__STIMULUS, oldStimulus, stimulus));
 			}
 		}
 		return stimulus;
@@ -88,7 +88,7 @@ public class InterProcessActivationImpl extends CallSequenceItemImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Stimulus basicGetStimulus() {
+	public InterProcessStimulus basicGetStimulus() {
 		return stimulus;
 	}
 
@@ -97,11 +97,11 @@ public class InterProcessActivationImpl extends CallSequenceItemImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStimulus(Stimulus newStimulus) {
-		Stimulus oldStimulus = stimulus;
+	public void setStimulus(InterProcessStimulus newStimulus) {
+		InterProcessStimulus oldStimulus = stimulus;
 		stimulus = newStimulus;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.INTER_PROCESS_ACTIVATION__STIMULUS, oldStimulus, stimulus));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.INTER_PROCESS_TRIGGER__STIMULUS, oldStimulus, stimulus));
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class InterProcessActivationImpl extends CallSequenceItemImpl implements 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.INTER_PROCESS_ACTIVATION__STIMULUS:
+			case AmaltheaPackage.INTER_PROCESS_TRIGGER__STIMULUS:
 				if (resolve) return getStimulus();
 				return basicGetStimulus();
 		}
@@ -127,8 +127,8 @@ public class InterProcessActivationImpl extends CallSequenceItemImpl implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.INTER_PROCESS_ACTIVATION__STIMULUS:
-				setStimulus((Stimulus)newValue);
+			case AmaltheaPackage.INTER_PROCESS_TRIGGER__STIMULUS:
+				setStimulus((InterProcessStimulus)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -142,8 +142,8 @@ public class InterProcessActivationImpl extends CallSequenceItemImpl implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.INTER_PROCESS_ACTIVATION__STIMULUS:
-				setStimulus((Stimulus)null);
+			case AmaltheaPackage.INTER_PROCESS_TRIGGER__STIMULUS:
+				setStimulus((InterProcessStimulus)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -157,10 +157,10 @@ public class InterProcessActivationImpl extends CallSequenceItemImpl implements 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.INTER_PROCESS_ACTIVATION__STIMULUS:
+			case AmaltheaPackage.INTER_PROCESS_TRIGGER__STIMULUS:
 				return stimulus != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //InterProcessActivationImpl
+} //InterProcessTriggerImpl

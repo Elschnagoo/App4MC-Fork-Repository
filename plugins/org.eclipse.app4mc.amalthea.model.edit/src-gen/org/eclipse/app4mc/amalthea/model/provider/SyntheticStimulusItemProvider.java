@@ -18,7 +18,7 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Synthetic;
+import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -29,19 +29,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Synthetic} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.SyntheticStimulus} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SyntheticItemProvider extends StimulusItemProvider {
+public class SyntheticStimulusItemProvider extends StimulusItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SyntheticItemProvider(AdapterFactory adapterFactory) {
+	public SyntheticStimulusItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -72,9 +72,9 @@ public class SyntheticItemProvider extends StimulusItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSynthetic_Offset());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSynthetic_Period());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSynthetic_TriggerTimes());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Offset());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Period());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSyntheticStimulus_TriggerTimes());
 		}
 		return childrenFeatures;
 	}
@@ -93,14 +93,14 @@ public class SyntheticItemProvider extends StimulusItemProvider {
 	}
 
 	/**
-	 * This returns Synthetic.gif.
+	 * This returns SyntheticStimulus.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Synthetic"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SyntheticStimulus"));
 	}
 
 	/**
@@ -121,10 +121,10 @@ public class SyntheticItemProvider extends StimulusItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Synthetic)object).getName();
+		String label = ((SyntheticStimulus)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Synthetic_type") :
-			getString("_UI_Synthetic_type") + " " + label;
+			getString("_UI_SyntheticStimulus_type") :
+			getString("_UI_SyntheticStimulus_type") + " " + label;
 	}
 	
 
@@ -139,10 +139,10 @@ public class SyntheticItemProvider extends StimulusItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Synthetic.class)) {
-			case AmaltheaPackage.SYNTHETIC__OFFSET:
-			case AmaltheaPackage.SYNTHETIC__PERIOD:
-			case AmaltheaPackage.SYNTHETIC__TRIGGER_TIMES:
+		switch (notification.getFeatureID(SyntheticStimulus.class)) {
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__OFFSET:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__PERIOD:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__TRIGGER_TIMES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -162,17 +162,17 @@ public class SyntheticItemProvider extends StimulusItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSynthetic_Offset(),
+				(AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Offset(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSynthetic_Period(),
+				(AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Period(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSynthetic_TriggerTimes(),
+				(AmaltheaPackage.eINSTANCE.getSyntheticStimulus_TriggerTimes(),
 				 AmaltheaFactory.eINSTANCE.createTimestampList()));
 	}
 
@@ -190,8 +190,8 @@ public class SyntheticItemProvider extends StimulusItemProvider {
 		boolean qualify =
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getSynthetic_Offset() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getSynthetic_Period();
+			childFeature == AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Offset() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Period();
 
 		if (qualify) {
 			return getString

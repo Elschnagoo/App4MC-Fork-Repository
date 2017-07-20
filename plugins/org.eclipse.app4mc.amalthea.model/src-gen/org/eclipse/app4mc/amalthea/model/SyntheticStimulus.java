@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Synthetic</b></em>'.
+ * A representation of the model object '<em><b>Synthetic Stimulus</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -29,16 +29,16 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Synthetic#getOffset <em>Offset</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Synthetic#getPeriod <em>Period</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Synthetic#getTriggerTimes <em>Trigger Times</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.SyntheticStimulus#getOffset <em>Offset</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.SyntheticStimulus#getPeriod <em>Period</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.SyntheticStimulus#getTriggerTimes <em>Trigger Times</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSynthetic()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSyntheticStimulus()
  * @model
  * @generated
  */
-public interface Synthetic extends Stimulus {
+public interface SyntheticStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Offset</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -49,14 +49,14 @@ public interface Synthetic extends Stimulus {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Offset</em>' containment reference.
 	 * @see #setOffset(Time)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSynthetic_Offset()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSyntheticStimulus_Offset()
 	 * @model containment="true"
 	 * @generated
 	 */
 	Time getOffset();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Synthetic#getOffset <em>Offset</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SyntheticStimulus#getOffset <em>Offset</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Offset</em>' containment reference.
@@ -75,14 +75,14 @@ public interface Synthetic extends Stimulus {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Period</em>' containment reference.
 	 * @see #setPeriod(Time)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSynthetic_Period()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSyntheticStimulus_Period()
 	 * @model containment="true"
 	 * @generated
 	 */
 	Time getPeriod();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Synthetic#getPeriod <em>Period</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SyntheticStimulus#getPeriod <em>Period</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Period</em>' containment reference.
@@ -101,14 +101,14 @@ public interface Synthetic extends Stimulus {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Trigger Times</em>' containment reference.
 	 * @see #setTriggerTimes(TimestampList)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSynthetic_TriggerTimes()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSyntheticStimulus_TriggerTimes()
 	 * @model containment="true"
 	 * @generated
 	 */
 	TimestampList getTriggerTimes();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Synthetic#getTriggerTimes <em>Trigger Times</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SyntheticStimulus#getTriggerTimes <em>Trigger Times</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Trigger Times</em>' containment reference.
@@ -117,4 +117,4 @@ public interface Synthetic extends Stimulus {
 	 */
 	void setTriggerTimes(TimestampList value);
 
-} // Synthetic
+} // SyntheticStimulus

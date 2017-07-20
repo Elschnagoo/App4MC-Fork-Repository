@@ -26,11 +26,11 @@ import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
-import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.Single;
+import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
-import org.eclipse.app4mc.amalthea.model.Synthetic;
+import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TimestampList;
@@ -58,14 +58,14 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
-			if (elem instanceof Periodic) {
-				final Periodic periodic = (Periodic) elem;
+			if (elem instanceof PeriodicStimulus) {
+				final PeriodicStimulus periodic = (PeriodicStimulus) elem;
 				final Time recurrence = periodic.getRecurrence();
 				if (null != recurrence) {
 					final BigInteger value = recurrence.getValue();
 					final TimeUnit unit = recurrence.getUnit();
 					if ((0 >= value.signum()) || (TimeUnit._UNDEFINED_ == unit)) {
-						this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodic_Recurrence(), value, unit);
+						this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Recurrence(), value, unit);
 					}
 				}
 			}
@@ -79,13 +79,13 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 	public void checkClockReferenceOfPeriodic(final Amalthea amalthea) {
 
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<Periodic> periodics = new HashSet<>();
+		final Set<PeriodicStimulus> periodics = new HashSet<>();
 		final Set<Clock> clocks = new HashSet<>();
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
-			if (elem instanceof Periodic) {
-				final Periodic periodic = (Periodic) elem;
+			if (elem instanceof PeriodicStimulus) {
+				final PeriodicStimulus periodic = (PeriodicStimulus) elem;
 				periodics.add(periodic);
 			} else if (elem instanceof StimuliModel) {
 				final StimuliModel stimuliModel = (StimuliModel) elem;
@@ -98,11 +98,11 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 			}
 		}
 
-		for (final Periodic periodic : periodics) {
+		for (final PeriodicStimulus periodic : periodics) {
 			if (null != periodic) {
 				final Clock clock = periodic.getClock();
 				if ((null == clock) || (false == clocks.contains(clock))) {
-					this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodic_Clock());
+					this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Clock());
 				}
 			}
 		}
@@ -193,13 +193,13 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
-			if (elem instanceof Periodic) {
-				Periodic periodic = (Periodic) elem;
+			if (elem instanceof PeriodicStimulus) {
+				PeriodicStimulus periodic = (PeriodicStimulus) elem;
 				Time offset = periodic.getOffset();
 				if(null != offset) {
 					BigInteger value = offset.getValue();
 					if(0 > value.signum()) {
-						this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getPeriodic_Offset(), value);
+						this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Offset(), value);
 					}
 				}
 			}
@@ -215,13 +215,13 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
-			if (elem instanceof Periodic) {
-				Periodic periodic = (Periodic) elem;
+			if (elem instanceof PeriodicStimulus) {
+				PeriodicStimulus periodic = (PeriodicStimulus) elem;
 				Time recurrence = periodic.getRecurrence();
 				if(null != recurrence) {
 					BigInteger value = recurrence.getValue();
 					if(0 > value.signum()) {
-						this.issueCreator.issue(recurrence, AmaltheaPackage.eINSTANCE.getPeriodic_Recurrence(), value);
+						this.issueCreator.issue(recurrence, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Recurrence(), value);
 					}
 				}
 			}
@@ -237,13 +237,13 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
-			if (elem instanceof Synthetic) {
-				Synthetic synthetic = (Synthetic) elem;
+			if (elem instanceof SyntheticStimulus) {
+				SyntheticStimulus synthetic = (SyntheticStimulus) elem;
 				Time offset = synthetic.getOffset();
 				if(null != offset) {
 					BigInteger value = offset.getValue();
 					if(0 > value.signum()) {
-						this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getSynthetic_Offset(), value);
+						this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Offset(), value);
 					}
 				}
 			}
@@ -259,13 +259,13 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
-			if (elem instanceof Synthetic) {
-				Synthetic synthetic = (Synthetic) elem;
+			if (elem instanceof SyntheticStimulus) {
+				SyntheticStimulus synthetic = (SyntheticStimulus) elem;
 				Time period = synthetic.getPeriod();
 				if(null != period) {
 					BigInteger value = period.getValue();
 					if(0 > value.signum()) {
-						this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getSynthetic_Period(), value);
+						this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Period(), value);
 					}
 				}
 			}
@@ -304,13 +304,13 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
-			if (elem instanceof Single) {
-				Single single = (Single) elem;
+			if (elem instanceof SingleStimulus) {
+				SingleStimulus single = (SingleStimulus) elem;
 				Time activation = single.getActivation();
 				if(null != activation) {
 					BigInteger value = activation.getValue();
 					if(0 > value.signum()) {
-						this.issueCreator.issue(activation, AmaltheaPackage.eINSTANCE.getSingle_Activation(), value);
+						this.issueCreator.issue(activation, AmaltheaPackage.eINSTANCE.getSingleStimulus_Activation(), value);
 					}
 				}
 			}

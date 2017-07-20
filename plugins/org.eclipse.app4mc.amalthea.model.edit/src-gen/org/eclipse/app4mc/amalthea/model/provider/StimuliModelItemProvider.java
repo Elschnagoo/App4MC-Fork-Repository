@@ -158,17 +158,17 @@ public class StimuliModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimuliModel_Stimuli(),
-				 AmaltheaFactory.eINSTANCE.createPeriodic()));
+				 AmaltheaFactory.eINSTANCE.createPeriodicStimulus()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimuliModel_Stimuli(),
-				 AmaltheaFactory.eINSTANCE.createPeriodicEvent()));
+				 AmaltheaFactory.eINSTANCE.createVariableRateStimulus()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimuliModel_Stimuli(),
-				 AmaltheaFactory.eINSTANCE.createSynthetic()));
+				 AmaltheaFactory.eINSTANCE.createSyntheticStimulus()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -178,17 +178,17 @@ public class StimuliModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimuliModel_Stimuli(),
-				 AmaltheaFactory.eINSTANCE.createSingle()));
+				 AmaltheaFactory.eINSTANCE.createSingleStimulus()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimuliModel_Stimuli(),
-				 AmaltheaFactory.eINSTANCE.createInterProcess()));
+				 AmaltheaFactory.eINSTANCE.createInterProcessStimulus()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimuliModel_Stimuli(),
-				 AmaltheaFactory.eINSTANCE.createSporadic()));
+				 AmaltheaFactory.eINSTANCE.createSporadicStimulus()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -198,7 +198,7 @@ public class StimuliModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimuliModel_Stimuli(),
-				 AmaltheaFactory.eINSTANCE.createArrivalCurve()));
+				 AmaltheaFactory.eINSTANCE.createArrivalCurveStimulus()));
 
 		newChildDescriptors.add
 			(createChildParameter

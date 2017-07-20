@@ -34,8 +34,8 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
 import org.eclipse.app4mc.amalthea.model.Array;
-import org.eclipse.app4mc.amalthea.model.ArrivalCurve;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
+import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
@@ -180,8 +180,8 @@ import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
-import org.eclipse.app4mc.amalthea.model.InterProcess;
-import org.eclipse.app4mc.amalthea.model.InterProcessActivation;
+import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
+import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.InterfaceKind;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm;
@@ -249,9 +249,8 @@ import org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.PartlyPFairPD2;
 import org.eclipse.app4mc.amalthea.model.PercentageMetric;
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
-import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
-import org.eclipse.app4mc.amalthea.model.PeriodicEvent;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Pfair;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
@@ -339,12 +338,12 @@ import org.eclipse.app4mc.amalthea.model.SeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.Severity;
-import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
+import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
-import org.eclipse.app4mc.amalthea.model.Sporadic;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.SporadicServer;
+import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.StimulusEvent;
@@ -355,7 +354,7 @@ import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.SynchronizationType;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
-import org.eclipse.app4mc.amalthea.model.Synthetic;
+import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
@@ -382,6 +381,7 @@ import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Value;
+import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitEventType;
@@ -2101,21 +2101,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass periodicEClass = null;
+	private EClass periodicStimulusEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass periodicEventEClass = null;
+	private EClass variableRateStimulusEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass syntheticEClass = null;
+	private EClass syntheticStimulusEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2136,21 +2136,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass singleEClass = null;
+	private EClass singleStimulusEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass interProcessEClass = null;
+	private EClass interProcessStimulusEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass sporadicEClass = null;
+	private EClass sporadicStimulusEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2164,7 +2164,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass arrivalCurveEClass = null;
+	private EClass arrivalCurveStimulusEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2360,7 +2360,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass interProcessActivationEClass = null;
+	private EClass interProcessTriggerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -9171,8 +9171,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPeriodic() {
-		return periodicEClass;
+	public EClass getPeriodicStimulus() {
+		return periodicStimulusEClass;
 	}
 
 	/**
@@ -9180,8 +9180,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPeriodic_Offset() {
-		return (EReference)periodicEClass.getEStructuralFeatures().get(0);
+	public EReference getPeriodicStimulus_Offset() {
+		return (EReference)periodicStimulusEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -9189,8 +9189,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPeriodic_Recurrence() {
-		return (EReference)periodicEClass.getEStructuralFeatures().get(1);
+	public EReference getPeriodicStimulus_Recurrence() {
+		return (EReference)periodicStimulusEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -9198,8 +9198,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPeriodic_Clock() {
-		return (EReference)periodicEClass.getEStructuralFeatures().get(2);
+	public EReference getPeriodicStimulus_Clock() {
+		return (EReference)periodicStimulusEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -9207,8 +9207,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPeriodicEvent() {
-		return periodicEventEClass;
+	public EClass getVariableRateStimulus() {
+		return variableRateStimulusEClass;
 	}
 
 	/**
@@ -9216,8 +9216,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSynthetic() {
-		return syntheticEClass;
+	public EClass getSyntheticStimulus() {
+		return syntheticStimulusEClass;
 	}
 
 	/**
@@ -9225,8 +9225,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSynthetic_Offset() {
-		return (EReference)syntheticEClass.getEStructuralFeatures().get(0);
+	public EReference getSyntheticStimulus_Offset() {
+		return (EReference)syntheticStimulusEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -9234,8 +9234,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSynthetic_Period() {
-		return (EReference)syntheticEClass.getEStructuralFeatures().get(1);
+	public EReference getSyntheticStimulus_Period() {
+		return (EReference)syntheticStimulusEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -9243,8 +9243,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSynthetic_TriggerTimes() {
-		return (EReference)syntheticEClass.getEStructuralFeatures().get(2);
+	public EReference getSyntheticStimulus_TriggerTimes() {
+		return (EReference)syntheticStimulusEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -9288,8 +9288,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSingle() {
-		return singleEClass;
+	public EClass getSingleStimulus() {
+		return singleStimulusEClass;
 	}
 
 	/**
@@ -9297,8 +9297,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSingle_Activation() {
-		return (EReference)singleEClass.getEStructuralFeatures().get(0);
+	public EReference getSingleStimulus_Activation() {
+		return (EReference)singleStimulusEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -9306,8 +9306,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getInterProcess() {
-		return interProcessEClass;
+	public EClass getInterProcessStimulus() {
+		return interProcessStimulusEClass;
 	}
 
 	/**
@@ -9315,8 +9315,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterProcess_Counter() {
-		return (EReference)interProcessEClass.getEStructuralFeatures().get(0);
+	public EReference getInterProcessStimulus_Counter() {
+		return (EReference)interProcessStimulusEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -9324,8 +9324,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSporadic() {
-		return sporadicEClass;
+	public EClass getSporadicStimulus() {
+		return sporadicStimulusEClass;
 	}
 
 	/**
@@ -9333,8 +9333,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSporadic_Description() {
-		return (EAttribute)sporadicEClass.getEStructuralFeatures().get(0);
+	public EAttribute getSporadicStimulus_Description() {
+		return (EAttribute)sporadicStimulusEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -9369,8 +9369,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getArrivalCurve() {
-		return arrivalCurveEClass;
+	public EClass getArrivalCurveStimulus() {
+		return arrivalCurveStimulusEClass;
 	}
 
 	/**
@@ -9378,8 +9378,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getArrivalCurve_Entries() {
-		return (EReference)arrivalCurveEClass.getEStructuralFeatures().get(0);
+	public EReference getArrivalCurveStimulus_Entries() {
+		return (EReference)arrivalCurveStimulusEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -10143,8 +10143,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getInterProcessActivation() {
-		return interProcessActivationEClass;
+	public EClass getInterProcessTrigger() {
+		return interProcessTriggerEClass;
 	}
 
 	/**
@@ -10152,8 +10152,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterProcessActivation_Stimulus() {
-		return (EReference)interProcessActivationEClass.getEStructuralFeatures().get(0);
+	public EReference getInterProcessTrigger_Stimulus() {
+		return (EReference)interProcessTriggerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -13127,17 +13127,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		modeValueDisjunctionEClass = createEClass(MODE_VALUE_DISJUNCTION);
 		createEReference(modeValueDisjunctionEClass, MODE_VALUE_DISJUNCTION__ENTRIES);
 
-		periodicEClass = createEClass(PERIODIC);
-		createEReference(periodicEClass, PERIODIC__OFFSET);
-		createEReference(periodicEClass, PERIODIC__RECURRENCE);
-		createEReference(periodicEClass, PERIODIC__CLOCK);
+		periodicStimulusEClass = createEClass(PERIODIC_STIMULUS);
+		createEReference(periodicStimulusEClass, PERIODIC_STIMULUS__OFFSET);
+		createEReference(periodicStimulusEClass, PERIODIC_STIMULUS__RECURRENCE);
+		createEReference(periodicStimulusEClass, PERIODIC_STIMULUS__CLOCK);
 
-		periodicEventEClass = createEClass(PERIODIC_EVENT);
+		variableRateStimulusEClass = createEClass(VARIABLE_RATE_STIMULUS);
 
-		syntheticEClass = createEClass(SYNTHETIC);
-		createEReference(syntheticEClass, SYNTHETIC__OFFSET);
-		createEReference(syntheticEClass, SYNTHETIC__PERIOD);
-		createEReference(syntheticEClass, SYNTHETIC__TRIGGER_TIMES);
+		syntheticStimulusEClass = createEClass(SYNTHETIC_STIMULUS);
+		createEReference(syntheticStimulusEClass, SYNTHETIC_STIMULUS__OFFSET);
+		createEReference(syntheticStimulusEClass, SYNTHETIC_STIMULUS__PERIOD);
+		createEReference(syntheticStimulusEClass, SYNTHETIC_STIMULUS__TRIGGER_TIMES);
 
 		timestampListEClass = createEClass(TIMESTAMP_LIST);
 		createEReference(timestampListEClass, TIMESTAMP_LIST__TIMESTAMPS);
@@ -13145,21 +13145,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		customStimulusEClass = createEClass(CUSTOM_STIMULUS);
 		createEAttribute(customStimulusEClass, CUSTOM_STIMULUS__DESCRIPTION);
 
-		singleEClass = createEClass(SINGLE);
-		createEReference(singleEClass, SINGLE__ACTIVATION);
+		singleStimulusEClass = createEClass(SINGLE_STIMULUS);
+		createEReference(singleStimulusEClass, SINGLE_STIMULUS__ACTIVATION);
 
-		interProcessEClass = createEClass(INTER_PROCESS);
-		createEReference(interProcessEClass, INTER_PROCESS__COUNTER);
+		interProcessStimulusEClass = createEClass(INTER_PROCESS_STIMULUS);
+		createEReference(interProcessStimulusEClass, INTER_PROCESS_STIMULUS__COUNTER);
 
-		sporadicEClass = createEClass(SPORADIC);
-		createEAttribute(sporadicEClass, SPORADIC__DESCRIPTION);
+		sporadicStimulusEClass = createEClass(SPORADIC_STIMULUS);
+		createEAttribute(sporadicStimulusEClass, SPORADIC_STIMULUS__DESCRIPTION);
 
 		eventStimulusEClass = createEClass(EVENT_STIMULUS);
 		createEReference(eventStimulusEClass, EVENT_STIMULUS__TRIGGERING_EVENTS);
 		createEReference(eventStimulusEClass, EVENT_STIMULUS__COUNTER);
 
-		arrivalCurveEClass = createEClass(ARRIVAL_CURVE);
-		createEReference(arrivalCurveEClass, ARRIVAL_CURVE__ENTRIES);
+		arrivalCurveStimulusEClass = createEClass(ARRIVAL_CURVE_STIMULUS);
+		createEReference(arrivalCurveStimulusEClass, ARRIVAL_CURVE_STIMULUS__ENTRIES);
 
 		arrivalCurveEntryEClass = createEClass(ARRIVAL_CURVE_ENTRY);
 		createEAttribute(arrivalCurveEntryEClass, ARRIVAL_CURVE_ENTRY__NUMBER_OF_EVENTS);
@@ -13272,8 +13272,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		osEventEClass = createEClass(OS_EVENT);
 		createEAttribute(osEventEClass, OS_EVENT__COMMUNICATION_OVERHEAD_IN_BIT);
 
-		interProcessActivationEClass = createEClass(INTER_PROCESS_ACTIVATION);
-		createEReference(interProcessActivationEClass, INTER_PROCESS_ACTIVATION__STIMULUS);
+		interProcessTriggerEClass = createEClass(INTER_PROCESS_TRIGGER);
+		createEReference(interProcessTriggerEClass, INTER_PROCESS_TRIGGER__STIMULUS);
 
 		enforcedMigrationEClass = createEClass(ENFORCED_MIGRATION);
 		createEReference(enforcedMigrationEClass, ENFORCED_MIGRATION__RESOURCE_OWNER);
@@ -13867,16 +13867,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		modeValueEClass.getESuperTypes().add(this.getModeValueListEntry());
 		modeValueConjunctionEClass.getESuperTypes().add(this.getModeValueListEntry());
 		modeValueDisjunctionEClass.getESuperTypes().add(this.getBaseObject());
-		periodicEClass.getESuperTypes().add(this.getStimulus());
-		periodicEventEClass.getESuperTypes().add(this.getStimulus());
-		syntheticEClass.getESuperTypes().add(this.getStimulus());
+		periodicStimulusEClass.getESuperTypes().add(this.getStimulus());
+		variableRateStimulusEClass.getESuperTypes().add(this.getStimulus());
+		syntheticStimulusEClass.getESuperTypes().add(this.getStimulus());
 		timestampListEClass.getESuperTypes().add(this.getBaseObject());
 		customStimulusEClass.getESuperTypes().add(this.getStimulus());
-		singleEClass.getESuperTypes().add(this.getStimulus());
-		interProcessEClass.getESuperTypes().add(this.getStimulus());
-		sporadicEClass.getESuperTypes().add(this.getStimulus());
+		singleStimulusEClass.getESuperTypes().add(this.getStimulus());
+		interProcessStimulusEClass.getESuperTypes().add(this.getStimulus());
+		sporadicStimulusEClass.getESuperTypes().add(this.getStimulus());
 		eventStimulusEClass.getESuperTypes().add(this.getStimulus());
-		arrivalCurveEClass.getESuperTypes().add(this.getStimulus());
+		arrivalCurveStimulusEClass.getESuperTypes().add(this.getStimulus());
 		arrivalCurveEntryEClass.getESuperTypes().add(this.getBaseObject());
 		clockEClass.getESuperTypes().add(this.getReferableBaseObject());
 		clockTriangleFunctionEClass.getESuperTypes().add(this.getClock());
@@ -13906,7 +13906,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		eventMaskEClass.getESuperTypes().add(this.getBaseObject());
 		osEventEClass.getESuperTypes().add(this.getReferableBaseObject());
 		osEventEClass.getESuperTypes().add(this.getITaggable());
-		interProcessActivationEClass.getESuperTypes().add(this.getCallSequenceItem());
+		interProcessTriggerEClass.getESuperTypes().add(this.getCallSequenceItem());
 		enforcedMigrationEClass.getESuperTypes().add(this.getCallSequenceItem());
 		taskRunnableCallEClass.getESuperTypes().add(this.getCallSequenceItem());
 		schedulePointEClass.getESuperTypes().add(this.getCallSequenceItem());
@@ -14937,17 +14937,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(modeValueDisjunctionEClass, ModeValueDisjunction.class, "ModeValueDisjunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModeValueDisjunction_Entries(), this.getModeValueListEntry(), null, "entries", null, 0, -1, ModeValueDisjunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(periodicEClass, Periodic.class, "Periodic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPeriodic_Offset(), this.getTime(), null, "offset", null, 0, 1, Periodic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPeriodic_Recurrence(), this.getTime(), null, "recurrence", null, 0, 1, Periodic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPeriodic_Clock(), this.getClock(), null, "clock", null, 0, 1, Periodic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(periodicStimulusEClass, PeriodicStimulus.class, "PeriodicStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPeriodicStimulus_Offset(), this.getTime(), null, "offset", null, 0, 1, PeriodicStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPeriodicStimulus_Recurrence(), this.getTime(), null, "recurrence", null, 0, 1, PeriodicStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPeriodicStimulus_Clock(), this.getClock(), null, "clock", null, 0, 1, PeriodicStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(periodicEventEClass, PeriodicEvent.class, "PeriodicEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(variableRateStimulusEClass, VariableRateStimulus.class, "VariableRateStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(syntheticEClass, Synthetic.class, "Synthetic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSynthetic_Offset(), this.getTime(), null, "offset", null, 0, 1, Synthetic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSynthetic_Period(), this.getTime(), null, "period", null, 0, 1, Synthetic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSynthetic_TriggerTimes(), this.getTimestampList(), null, "triggerTimes", null, 0, 1, Synthetic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(syntheticStimulusEClass, SyntheticStimulus.class, "SyntheticStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSyntheticStimulus_Offset(), this.getTime(), null, "offset", null, 0, 1, SyntheticStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSyntheticStimulus_Period(), this.getTime(), null, "period", null, 0, 1, SyntheticStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSyntheticStimulus_TriggerTimes(), this.getTimestampList(), null, "triggerTimes", null, 0, 1, SyntheticStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(timestampListEClass, TimestampList.class, "TimestampList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTimestampList_Timestamps(), this.getTime(), null, "timestamps", null, 0, -1, TimestampList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14955,21 +14955,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(customStimulusEClass, CustomStimulus.class, "CustomStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomStimulus_Description(), theEcorePackage.getEString(), "description", null, 0, 1, CustomStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(singleEClass, Single.class, "Single", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSingle_Activation(), this.getTime(), null, "activation", null, 0, 1, Single.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(singleStimulusEClass, SingleStimulus.class, "SingleStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSingleStimulus_Activation(), this.getTime(), null, "activation", null, 0, 1, SingleStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(interProcessEClass, InterProcess.class, "InterProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInterProcess_Counter(), this.getCounter(), null, "counter", null, 0, 1, InterProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(interProcessStimulusEClass, InterProcessStimulus.class, "InterProcessStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInterProcessStimulus_Counter(), this.getCounter(), null, "counter", null, 0, 1, InterProcessStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(sporadicEClass, Sporadic.class, "Sporadic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSporadic_Description(), theEcorePackage.getEString(), "description", null, 0, 1, Sporadic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(sporadicStimulusEClass, SporadicStimulus.class, "SporadicStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSporadicStimulus_Description(), theEcorePackage.getEString(), "description", null, 0, 1, SporadicStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventStimulusEClass, EventStimulus.class, "EventStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEventStimulus_TriggeringEvents(), this.getTriggerEvent(), null, "triggeringEvents", null, 1, -1, EventStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEventStimulus_Counter(), this.getCounter(), null, "counter", null, 0, 1, EventStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(arrivalCurveEClass, ArrivalCurve.class, "ArrivalCurve", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getArrivalCurve_Entries(), this.getArrivalCurveEntry(), null, "entries", null, 0, -1, ArrivalCurve.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(arrivalCurveStimulusEClass, ArrivalCurveStimulus.class, "ArrivalCurveStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getArrivalCurveStimulus_Entries(), this.getArrivalCurveEntry(), null, "entries", null, 0, -1, ArrivalCurveStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(arrivalCurveEntryEClass, ArrivalCurveEntry.class, "ArrivalCurveEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getArrivalCurveEntry_NumberOfEvents(), theEcorePackage.getEInt(), "numberOfEvents", "0", 0, 1, ArrivalCurveEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15094,8 +15094,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(osEventEClass, OsEvent.class, "OsEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOsEvent_CommunicationOverheadInBit(), theEcorePackage.getEInt(), "communicationOverheadInBit", "0", 0, 1, OsEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(interProcessActivationEClass, InterProcessActivation.class, "InterProcessActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInterProcessActivation_Stimulus(), this.getStimulus(), null, "stimulus", null, 0, 1, InterProcessActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(interProcessTriggerEClass, InterProcessTrigger.class, "InterProcessTrigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInterProcessTrigger_Stimulus(), this.getInterProcessStimulus(), null, "stimulus", null, 0, 1, InterProcessTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(enforcedMigrationEClass, EnforcedMigration.class, "EnforcedMigration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEnforcedMigration_ResourceOwner(), this.getScheduler(), null, "resourceOwner", null, 0, 1, EnforcedMigration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

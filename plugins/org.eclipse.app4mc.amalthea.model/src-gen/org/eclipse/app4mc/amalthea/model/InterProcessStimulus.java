@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Inter Process</b></em>'.
+ * A representation of the model object '<em><b>Inter Process Stimulus</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -26,14 +26,14 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.InterProcess#getCounter <em>Counter</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.InterProcessStimulus#getCounter <em>Counter</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcess()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcessStimulus()
  * @model
  * @generated
  */
-public interface InterProcess extends Stimulus {
+public interface InterProcessStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Counter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -44,14 +44,14 @@ public interface InterProcess extends Stimulus {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Counter</em>' containment reference.
 	 * @see #setCounter(Counter)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcess_Counter()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcessStimulus_Counter()
 	 * @model containment="true"
 	 * @generated
 	 */
 	Counter getCounter();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.InterProcess#getCounter <em>Counter</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.InterProcessStimulus#getCounter <em>Counter</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Counter</em>' containment reference.
@@ -60,4 +60,4 @@ public interface InterProcess extends Stimulus {
 	 */
 	void setCounter(Counter value);
 
-} // InterProcess
+} // InterProcessStimulus

@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Periodic Event</b></em>'.
+ * A representation of the model object '<em><b>Variable Rate Stimulus</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -23,9 +23,9 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-model-doc -->
  *
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicEvent()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateStimulus()
  * @model
  * @generated
  */
-public interface PeriodicEvent extends Stimulus {
-} // PeriodicEvent
+public interface VariableRateStimulus extends Stimulus {
+} // VariableRateStimulus

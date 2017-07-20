@@ -16,7 +16,7 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
-import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
@@ -59,8 +59,8 @@ public class CheckActivations {
 		for (final Stimulus stim : Stim.getStimuli()) {
 			final PeriodicActivation act = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
 			act.setName(stim.getName());
-			if (stim instanceof Periodic) {
-				final Periodic per = (Periodic) stim;
+			if (stim instanceof PeriodicStimulus) {
+				final PeriodicStimulus per = (PeriodicStimulus) stim;
 				if (null != per.getRecurrence()) {
 					final Time t = AmaltheaFactory.eINSTANCE.createTime();
 					t.setUnit(per.getRecurrence().getUnit());

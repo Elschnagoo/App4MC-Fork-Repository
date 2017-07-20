@@ -12,7 +12,7 @@
 package org.eclipse.app4mc.multicore.openmapping.model.specs;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelSpec;
@@ -49,7 +49,7 @@ public class ModelSpecTaskStimuli extends ModelSpec {
 			}
 
 			for (final Stimulus stim : stimList) {
-				if (!(stim instanceof Periodic)) {
+				if (!(stim instanceof PeriodicStimulus)) {
 					log("Task " + task.getName() + " has a non-Periodic stimulus (not yet supported).");
 					cond &= false;
 					continue;

@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Inter Process Activation</b></em>'.
+ * A representation of the model object '<em><b>Inter Process Trigger</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -26,14 +26,14 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.InterProcessActivation#getStimulus <em>Stimulus</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.InterProcessTrigger#getStimulus <em>Stimulus</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcessActivation()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcessTrigger()
  * @model
  * @generated
  */
-public interface InterProcessActivation extends CallSequenceItem {
+public interface InterProcessTrigger extends CallSequenceItem {
 	/**
 	 * Returns the value of the '<em><b>Stimulus</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -43,21 +43,21 @@ public interface InterProcessActivation extends CallSequenceItem {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Stimulus</em>' reference.
-	 * @see #setStimulus(Stimulus)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcessActivation_Stimulus()
+	 * @see #setStimulus(InterProcessStimulus)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcessTrigger_Stimulus()
 	 * @model
 	 * @generated
 	 */
-	Stimulus getStimulus();
+	InterProcessStimulus getStimulus();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.InterProcessActivation#getStimulus <em>Stimulus</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.InterProcessTrigger#getStimulus <em>Stimulus</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Stimulus</em>' reference.
 	 * @see #getStimulus()
 	 * @generated
 	 */
-	void setStimulus(Stimulus value);
+	void setStimulus(InterProcessStimulus value);
 
-} // InterProcessActivation
+} // InterProcessTrigger

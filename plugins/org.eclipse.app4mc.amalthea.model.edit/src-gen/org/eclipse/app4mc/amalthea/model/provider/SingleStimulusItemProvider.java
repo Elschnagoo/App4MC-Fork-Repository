@@ -18,7 +18,7 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ArrivalCurve;
+import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -29,19 +29,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ArrivalCurve} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.SingleStimulus} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ArrivalCurveItemProvider extends StimulusItemProvider {
+public class SingleStimulusItemProvider extends StimulusItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArrivalCurveItemProvider(AdapterFactory adapterFactory) {
+	public SingleStimulusItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -72,7 +72,7 @@ public class ArrivalCurveItemProvider extends StimulusItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getArrivalCurve_Entries());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSingleStimulus_Activation());
 		}
 		return childrenFeatures;
 	}
@@ -91,14 +91,14 @@ public class ArrivalCurveItemProvider extends StimulusItemProvider {
 	}
 
 	/**
-	 * This returns ArrivalCurve.gif.
+	 * This returns SingleStimulus.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ArrivalCurve"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SingleStimulus"));
 	}
 
 	/**
@@ -119,10 +119,10 @@ public class ArrivalCurveItemProvider extends StimulusItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ArrivalCurve)object).getName();
+		String label = ((SingleStimulus)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ArrivalCurve_type") :
-			getString("_UI_ArrivalCurve_type") + " " + label;
+			getString("_UI_SingleStimulus_type") :
+			getString("_UI_SingleStimulus_type") + " " + label;
 	}
 	
 
@@ -137,8 +137,8 @@ public class ArrivalCurveItemProvider extends StimulusItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ArrivalCurve.class)) {
-			case AmaltheaPackage.ARRIVAL_CURVE__ENTRIES:
+		switch (notification.getFeatureID(SingleStimulus.class)) {
+			case AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -158,8 +158,8 @@ public class ArrivalCurveItemProvider extends StimulusItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getArrivalCurve_Entries(),
-				 AmaltheaFactory.eINSTANCE.createArrivalCurveEntry()));
+				(AmaltheaPackage.eINSTANCE.getSingleStimulus_Activation(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
 	}
 
 	/**

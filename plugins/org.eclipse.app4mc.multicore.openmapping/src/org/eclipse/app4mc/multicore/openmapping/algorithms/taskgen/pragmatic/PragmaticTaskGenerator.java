@@ -21,10 +21,10 @@ import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
-import org.eclipse.app4mc.amalthea.model.Sporadic;
+import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -81,12 +81,12 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 			final Activation activation = activations.next();
 
 			if (activation instanceof PeriodicActivation) {
-				final Periodic stimuliPeriodic = convertPeriodicActivation((PeriodicActivation) activation);
+				final PeriodicStimulus stimuliPeriodic = convertPeriodicActivation((PeriodicActivation) activation);
 				getAmaltheaModel().getStimuliModel().getStimuli().add(stimuliPeriodic);
 				this.mActivationStimuli.put(activation, stimuliPeriodic);
 			}
 			else if (activation instanceof SporadicActivation) {
-				final Sporadic stimuliSporadic = convertSporadicActivation((SporadicActivation) activation);
+				final SporadicStimulus stimuliSporadic = convertSporadicActivation((SporadicActivation) activation);
 				getAmaltheaModel().getStimuliModel().getStimuli().add(stimuliSporadic);
 				this.mActivationStimuli.put(activation, stimuliSporadic);
 			}
@@ -97,12 +97,12 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 		return true;
 	}
 
-	private Periodic convertPeriodicActivation(final PeriodicActivation activation) {
+	private PeriodicStimulus convertPeriodicActivation(final PeriodicActivation activation) {
 		// Periodic activation element
 		final String name = activation.getName();
 		UniversalHandler.getInstance().logCon("Connverting Periodic Activation Element '" + name);
 
-		final Periodic stimuliPeriodic = getStimuliInstance().createPeriodic();
+		final PeriodicStimulus stimuliPeriodic = getStimuliInstance().createPeriodicStimulus();
 		stimuliPeriodic.setName(name);
 
 		if (activation.getOffset() != null) {
@@ -121,11 +121,11 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 		return stimuliPeriodic;
 	}
 
-	private Sporadic convertSporadicActivation(final SporadicActivation activation) {
+	private SporadicStimulus convertSporadicActivation(final SporadicActivation activation) {
 		final String name = activation.getName();
 		UniversalHandler.getInstance().logCon("Connverting Sporiadic Activation Element '" + name);
 
-		final Sporadic stimuliSporadic = getStimuliInstance().createSporadic();
+		final SporadicStimulus stimuliSporadic = getStimuliInstance().createSporadicStimulus();
 		stimuliSporadic.setName(name);
 		
 		// Check which timing information is present and try to convert deviations as well

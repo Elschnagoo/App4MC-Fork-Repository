@@ -3986,7 +3986,7 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeValueDisjunction" type="am:ModeValueDisjunction"/>
-  <xsd:complexType name="Periodic">
+  <xsd:complexType name="PeriodicStimulus">
     <xsd:annotation>
       <xsd:documentation>This activates a task periodically
 offset: Time of first activation
@@ -4004,7 +4004,7 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Periodic" type="am:Periodic">
+  <xsd:element name="PeriodicStimulus" type="am:PeriodicStimulus">
     <xsd:annotation>
       <xsd:documentation>This activates a task periodically
 offset: Time of first activation
@@ -4012,7 +4012,7 @@ recurrence: Time between following activations
 clock: Time base which defines deviation of time, multiple stimuli can have the same time base</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="PeriodicEvent">
+  <xsd:complexType name="VariableRateStimulus">
     <xsd:annotation>
       <xsd:documentation>Periodic avtivation based on other events, like rotation speed dependency</xsd:documentation>
     </xsd:annotation>
@@ -4020,12 +4020,12 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
       <xsd:extension base="am:Stimulus"/>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="PeriodicEvent" type="am:PeriodicEvent">
+  <xsd:element name="VariableRateStimulus" type="am:VariableRateStimulus">
     <xsd:annotation>
       <xsd:documentation>Periodic avtivation based on other events, like rotation speed dependency</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="Synthetic">
+  <xsd:complexType name="SyntheticStimulus">
     <xsd:annotation>
       <xsd:documentation>Activations triggered depending on a defined list of trigger times
 offset: to shift the occurrences in negative or positive direction on the time bar
@@ -4042,7 +4042,7 @@ triggerTimes: the list of all trigger times</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Synthetic" type="am:Synthetic">
+  <xsd:element name="SyntheticStimulus" type="am:SyntheticStimulus">
     <xsd:annotation>
       <xsd:documentation>Activations triggered depending on a defined list of trigger times
 offset: to shift the occurrences in negative or positive direction on the time bar
@@ -4075,7 +4075,7 @@ triggerTimes: the list of all trigger times</xsd:documentation>
       <xsd:documentation>Stimulus to describe own custom types of activations, including properties</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="Single">
+  <xsd:complexType name="SingleStimulus">
     <xsd:annotation>
       <xsd:documentation>Single scheduling event at a defined time.</xsd:documentation>
     </xsd:annotation>
@@ -4087,12 +4087,12 @@ triggerTimes: the list of all trigger times</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Single" type="am:Single">
+  <xsd:element name="SingleStimulus" type="am:SingleStimulus">
     <xsd:annotation>
       <xsd:documentation>Single scheduling event at a defined time.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="InterProcess">
+  <xsd:complexType name="InterProcessStimulus">
     <xsd:annotation>
       <xsd:documentation>Defines activation based on a explicit inter process activation.</xsd:documentation>
     </xsd:annotation>
@@ -4104,12 +4104,12 @@ triggerTimes: the list of all trigger times</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="InterProcess" type="am:InterProcess">
+  <xsd:element name="InterProcessStimulus" type="am:InterProcessStimulus">
     <xsd:annotation>
       <xsd:documentation>Defines activation based on a explicit inter process activation.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="Sporadic">
+  <xsd:complexType name="SporadicStimulus">
     <xsd:annotation>
       <xsd:documentation>Stimulus for sporadic activation of task</xsd:documentation>
     </xsd:annotation>
@@ -4119,7 +4119,7 @@ triggerTimes: the list of all trigger times</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Sporadic" type="am:Sporadic">
+  <xsd:element name="SporadicStimulus" type="am:SporadicStimulus">
     <xsd:annotation>
       <xsd:documentation>Stimulus for sporadic activation of task</xsd:documentation>
     </xsd:annotation>
@@ -4143,7 +4143,7 @@ triggerTimes: the list of all trigger times</xsd:documentation>
       <xsd:documentation>Stimulus which is activated by an event.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="ArrivalCurve">
+  <xsd:complexType name="ArrivalCurveStimulus">
     <xsd:annotation>
       <xsd:documentation>Arrival Curve Stimulus</xsd:documentation>
     </xsd:annotation>
@@ -4155,7 +4155,7 @@ triggerTimes: the list of all trigger times</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ArrivalCurve" type="am:ArrivalCurve">
+  <xsd:element name="ArrivalCurveStimulus" type="am:ArrivalCurveStimulus">
     <xsd:annotation>
       <xsd:documentation>Arrival Curve Stimulus</xsd:documentation>
     </xsd:annotation>
@@ -4627,20 +4627,20 @@ If there is a process, it is possible to set the event for a specific process in
       <xsd:documentation>A event that can be set, cleared and waited for by a process</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="InterProcessActivation">
+  <xsd:complexType name="InterProcessTrigger">
     <xsd:annotation>
       <xsd:documentation>Triggers a stimulus to activate its processes</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:CallSequenceItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="stimulus" type="am:Stimulus"/>
+          <xsd:element name="stimulus" type="am:InterProcessStimulus"/>
         </xsd:choice>
         <xsd:attribute name="stimulus" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="InterProcessActivation" type="am:InterProcessActivation">
+  <xsd:element name="InterProcessTrigger" type="am:InterProcessTrigger">
     <xsd:annotation>
       <xsd:documentation>Triggers a stimulus to activate its processes</xsd:documentation>
     </xsd:annotation>

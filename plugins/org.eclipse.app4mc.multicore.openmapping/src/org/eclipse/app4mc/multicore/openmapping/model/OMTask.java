@@ -23,11 +23,11 @@ import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
-import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.Sporadic;
+import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -243,8 +243,8 @@ public class OMTask {
 		}
 		if (iPeriod < 0) {
 			for (Stimulus s : lSt) {
-				if (s instanceof Periodic) {
-					Periodic ps = (Periodic) s;
+				if (s instanceof PeriodicStimulus) {
+					PeriodicStimulus ps = (PeriodicStimulus) s;
 					Time x = ps.getRecurrence();
 					if (x == null) {
 						iPeriod = 0;
@@ -283,8 +283,8 @@ public class OMTask {
 					return iPeriod;
 				}
 				// Support fot FMTV
-				if (s instanceof Sporadic) {
-					Sporadic spst = (Sporadic) s;
+				if (s instanceof SporadicStimulus) {
+					SporadicStimulus spst = (SporadicStimulus) s;
 					Deviation<Time> dev = spst.getStimulusDeviation();
 					Time x = dev.getLowerBound();
 					if (x == null) {

@@ -25,8 +25,8 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
 import org.eclipse.app4mc.amalthea.model.Array;
-import org.eclipse.app4mc.amalthea.model.ArrivalCurve;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
+import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.BetaDistribution;
@@ -142,8 +142,8 @@ import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
-import org.eclipse.app4mc.amalthea.model.InterProcess;
-import org.eclipse.app4mc.amalthea.model.InterProcessActivation;
+import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
+import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.InterfaceKind;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -204,9 +204,8 @@ import org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.PartlyPFairPD2;
 import org.eclipse.app4mc.amalthea.model.PercentageMetric;
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
-import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
-import org.eclipse.app4mc.amalthea.model.PeriodicEvent;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
@@ -276,12 +275,12 @@ import org.eclipse.app4mc.amalthea.model.SenderReceiverRead;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.Severity;
-import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
+import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
-import org.eclipse.app4mc.amalthea.model.Sporadic;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.SporadicServer;
+import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.StimulusEvent;
 import org.eclipse.app4mc.amalthea.model.StringObject;
@@ -290,7 +289,7 @@ import org.eclipse.app4mc.amalthea.model.StructEntry;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronizationType;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
-import org.eclipse.app4mc.amalthea.model.Synthetic;
+import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
@@ -313,6 +312,7 @@ import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Value;
+import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitEventType;
@@ -552,16 +552,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.MODE_VALUE: return createModeValue();
 			case AmaltheaPackage.MODE_VALUE_CONJUNCTION: return createModeValueConjunction();
 			case AmaltheaPackage.MODE_VALUE_DISJUNCTION: return createModeValueDisjunction();
-			case AmaltheaPackage.PERIODIC: return createPeriodic();
-			case AmaltheaPackage.PERIODIC_EVENT: return createPeriodicEvent();
-			case AmaltheaPackage.SYNTHETIC: return createSynthetic();
+			case AmaltheaPackage.PERIODIC_STIMULUS: return createPeriodicStimulus();
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS: return createVariableRateStimulus();
+			case AmaltheaPackage.SYNTHETIC_STIMULUS: return createSyntheticStimulus();
 			case AmaltheaPackage.TIMESTAMP_LIST: return createTimestampList();
 			case AmaltheaPackage.CUSTOM_STIMULUS: return createCustomStimulus();
-			case AmaltheaPackage.SINGLE: return createSingle();
-			case AmaltheaPackage.INTER_PROCESS: return createInterProcess();
-			case AmaltheaPackage.SPORADIC: return createSporadic();
+			case AmaltheaPackage.SINGLE_STIMULUS: return createSingleStimulus();
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS: return createInterProcessStimulus();
+			case AmaltheaPackage.SPORADIC_STIMULUS: return createSporadicStimulus();
 			case AmaltheaPackage.EVENT_STIMULUS: return createEventStimulus();
-			case AmaltheaPackage.ARRIVAL_CURVE: return createArrivalCurve();
+			case AmaltheaPackage.ARRIVAL_CURVE_STIMULUS: return createArrivalCurveStimulus();
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY: return createArrivalCurveEntry();
 			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION: return createClockTriangleFunction();
 			case AmaltheaPackage.CLOCK_SINUS_FUNCTION: return createClockSinusFunction();
@@ -583,7 +583,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CLEAR_EVENT: return createClearEvent();
 			case AmaltheaPackage.EVENT_MASK: return createEventMask();
 			case AmaltheaPackage.OS_EVENT: return createOsEvent();
-			case AmaltheaPackage.INTER_PROCESS_ACTIVATION: return createInterProcessActivation();
+			case AmaltheaPackage.INTER_PROCESS_TRIGGER: return createInterProcessTrigger();
 			case AmaltheaPackage.ENFORCED_MIGRATION: return createEnforcedMigration();
 			case AmaltheaPackage.TASK_RUNNABLE_CALL: return createTaskRunnableCall();
 			case AmaltheaPackage.SCHEDULE_POINT: return createSchedulePoint();
@@ -2652,9 +2652,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Periodic createPeriodic() {
-		PeriodicImpl periodic = new PeriodicImpl();
-		return periodic;
+	public PeriodicStimulus createPeriodicStimulus() {
+		PeriodicStimulusImpl periodicStimulus = new PeriodicStimulusImpl();
+		return periodicStimulus;
 	}
 
 	/**
@@ -2662,9 +2662,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PeriodicEvent createPeriodicEvent() {
-		PeriodicEventImpl periodicEvent = new PeriodicEventImpl();
-		return periodicEvent;
+	public VariableRateStimulus createVariableRateStimulus() {
+		VariableRateStimulusImpl variableRateStimulus = new VariableRateStimulusImpl();
+		return variableRateStimulus;
 	}
 
 	/**
@@ -2672,9 +2672,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Synthetic createSynthetic() {
-		SyntheticImpl synthetic = new SyntheticImpl();
-		return synthetic;
+	public SyntheticStimulus createSyntheticStimulus() {
+		SyntheticStimulusImpl syntheticStimulus = new SyntheticStimulusImpl();
+		return syntheticStimulus;
 	}
 
 	/**
@@ -2702,9 +2702,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Single createSingle() {
-		SingleImpl single = new SingleImpl();
-		return single;
+	public SingleStimulus createSingleStimulus() {
+		SingleStimulusImpl singleStimulus = new SingleStimulusImpl();
+		return singleStimulus;
 	}
 
 	/**
@@ -2712,9 +2712,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterProcess createInterProcess() {
-		InterProcessImpl interProcess = new InterProcessImpl();
-		return interProcess;
+	public InterProcessStimulus createInterProcessStimulus() {
+		InterProcessStimulusImpl interProcessStimulus = new InterProcessStimulusImpl();
+		return interProcessStimulus;
 	}
 
 	/**
@@ -2722,9 +2722,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Sporadic createSporadic() {
-		SporadicImpl sporadic = new SporadicImpl();
-		return sporadic;
+	public SporadicStimulus createSporadicStimulus() {
+		SporadicStimulusImpl sporadicStimulus = new SporadicStimulusImpl();
+		return sporadicStimulus;
 	}
 
 	/**
@@ -2742,9 +2742,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArrivalCurve createArrivalCurve() {
-		ArrivalCurveImpl arrivalCurve = new ArrivalCurveImpl();
-		return arrivalCurve;
+	public ArrivalCurveStimulus createArrivalCurveStimulus() {
+		ArrivalCurveStimulusImpl arrivalCurveStimulus = new ArrivalCurveStimulusImpl();
+		return arrivalCurveStimulus;
 	}
 
 	/**
@@ -2962,9 +2962,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterProcessActivation createInterProcessActivation() {
-		InterProcessActivationImpl interProcessActivation = new InterProcessActivationImpl();
-		return interProcessActivation;
+	public InterProcessTrigger createInterProcessTrigger() {
+		InterProcessTriggerImpl interProcessTrigger = new InterProcessTriggerImpl();
+		return interProcessTrigger;
 	}
 
 	/**

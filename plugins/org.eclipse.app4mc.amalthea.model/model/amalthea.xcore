@@ -2518,7 +2518,7 @@ class ModeValueDisjunction extends BaseObject
  * recurrence: Time between following activations
  * clock: Time base which defines deviation of time, multiple stimuli can have the same time base
  */
-class Periodic extends Stimulus
+class PeriodicStimulus extends Stimulus
 {
 	contains Time offset
 	contains Time recurrence
@@ -2528,7 +2528,7 @@ class Periodic extends Stimulus
 /*
  * Periodic avtivation based on other events, like rotation speed dependency
  */
-class PeriodicEvent extends Stimulus
+class VariableRateStimulus extends Stimulus
 {
 }
 
@@ -2538,7 +2538,7 @@ class PeriodicEvent extends Stimulus
  * period: to set the period, after which the trigger times are to be repeated
  * triggerTimes: the list of all trigger times
  */
-class Synthetic extends Stimulus
+class SyntheticStimulus extends Stimulus
 {
 	contains Time offset
 	contains Time period
@@ -2561,7 +2561,7 @@ class CustomStimulus extends Stimulus
 /*
  * Single scheduling event at a defined time.
  */
-class Single extends Stimulus
+class SingleStimulus extends Stimulus
 {
 	contains Time activation
 }
@@ -2569,7 +2569,7 @@ class Single extends Stimulus
 /*
  * Defines activation based on a explicit inter process activation.
  */
-class InterProcess extends Stimulus
+class InterProcessStimulus extends Stimulus
 {
 	contains Counter counter
 }
@@ -2577,7 +2577,7 @@ class InterProcess extends Stimulus
 /*
  * Stimulus for sporadic activation of task
  */
-class Sporadic extends Stimulus
+class SporadicStimulus extends Stimulus
 {
 	String description
 }
@@ -2594,7 +2594,7 @@ class EventStimulus extends Stimulus
 /*
  * Arrival Curve Stimulus
  */
-class ArrivalCurve extends Stimulus
+class ArrivalCurveStimulus extends Stimulus
 {
 	contains ArrivalCurveEntry[] entries
 }
@@ -2871,9 +2871,9 @@ class OsEvent extends ReferableBaseObject, ITaggable
 /*
  * Triggers a stimulus to activate its processes
  */
-class InterProcessActivation extends CallSequenceItem
+class InterProcessTrigger extends CallSequenceItem
 {
-	refers Stimulus stimulus	//TODO restrict to InterProcess
+	refers InterProcessStimulus stimulus
 }
 
 /*

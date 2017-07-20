@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Single</b></em>'.
+ * A representation of the model object '<em><b>Single Stimulus</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -26,14 +26,14 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Single#getActivation <em>Activation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.SingleStimulus#getActivation <em>Activation</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSingle()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSingleStimulus()
  * @model
  * @generated
  */
-public interface Single extends Stimulus {
+public interface SingleStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Activation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -44,14 +44,14 @@ public interface Single extends Stimulus {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Activation</em>' containment reference.
 	 * @see #setActivation(Time)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSingle_Activation()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSingleStimulus_Activation()
 	 * @model containment="true"
 	 * @generated
 	 */
 	Time getActivation();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Single#getActivation <em>Activation</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SingleStimulus#getActivation <em>Activation</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Activation</em>' containment reference.
@@ -60,4 +60,4 @@ public interface Single extends Stimulus {
 	 */
 	void setActivation(Time value);
 
-} // Single
+} // SingleStimulus

@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Periodic</b></em>'.
+ * A representation of the model object '<em><b>Periodic Stimulus</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -29,16 +29,16 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Periodic#getOffset <em>Offset</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Periodic#getRecurrence <em>Recurrence</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Periodic#getClock <em>Clock</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicStimulus#getOffset <em>Offset</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicStimulus#getRecurrence <em>Recurrence</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicStimulus#getClock <em>Clock</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodic()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicStimulus()
  * @model
  * @generated
  */
-public interface Periodic extends Stimulus {
+public interface PeriodicStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Offset</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -49,14 +49,14 @@ public interface Periodic extends Stimulus {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Offset</em>' containment reference.
 	 * @see #setOffset(Time)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodic_Offset()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicStimulus_Offset()
 	 * @model containment="true"
 	 * @generated
 	 */
 	Time getOffset();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Periodic#getOffset <em>Offset</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.PeriodicStimulus#getOffset <em>Offset</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Offset</em>' containment reference.
@@ -75,14 +75,14 @@ public interface Periodic extends Stimulus {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Recurrence</em>' containment reference.
 	 * @see #setRecurrence(Time)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodic_Recurrence()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicStimulus_Recurrence()
 	 * @model containment="true"
 	 * @generated
 	 */
 	Time getRecurrence();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Periodic#getRecurrence <em>Recurrence</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.PeriodicStimulus#getRecurrence <em>Recurrence</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Recurrence</em>' containment reference.
@@ -101,14 +101,14 @@ public interface Periodic extends Stimulus {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Clock</em>' reference.
 	 * @see #setClock(Clock)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodic_Clock()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicStimulus_Clock()
 	 * @model
 	 * @generated
 	 */
 	Clock getClock();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Periodic#getClock <em>Clock</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.PeriodicStimulus#getClock <em>Clock</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Clock</em>' reference.
@@ -117,4 +117,4 @@ public interface Periodic extends Stimulus {
 	 */
 	void setClock(Clock value);
 
-} // Periodic
+} // PeriodicStimulus

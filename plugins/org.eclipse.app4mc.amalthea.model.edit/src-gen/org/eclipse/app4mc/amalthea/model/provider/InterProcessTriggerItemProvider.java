@@ -24,18 +24,18 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.InterProcessActivation} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.InterProcessTrigger} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class InterProcessActivationItemProvider extends CallSequenceItemItemProvider {
+public class InterProcessTriggerItemProvider extends CallSequenceItemItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterProcessActivationItemProvider(AdapterFactory adapterFactory) {
+	public InterProcessTriggerItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -64,9 +64,9 @@ public class InterProcessActivationItemProvider extends CallSequenceItemItemProv
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_InterProcessActivation_stimulus_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InterProcessActivation_stimulus_feature", "_UI_InterProcessActivation_type"),
-				 AmaltheaPackage.eINSTANCE.getInterProcessActivation_Stimulus(),
+				 getString("_UI_InterProcessTrigger_stimulus_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InterProcessTrigger_stimulus_feature", "_UI_InterProcessTrigger_type"),
+				 AmaltheaPackage.eINSTANCE.getInterProcessTrigger_Stimulus(),
 				 true,
 				 false,
 				 true,
@@ -76,13 +76,13 @@ public class InterProcessActivationItemProvider extends CallSequenceItemItemProv
 	}
 
 	/**
-	 * This returns InterProcessActivation.gif.
+	 * This returns InterProcessTrigger.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/InterProcessActivation"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/InterProcessTrigger"));
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class InterProcessActivationItemProvider extends CallSequenceItemItemProv
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		return getString("_UI_InterProcessActivation_type");
+		return getString("_UI_InterProcessTrigger_type");
 	}
 
 	/**

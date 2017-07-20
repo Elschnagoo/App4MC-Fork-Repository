@@ -30,8 +30,8 @@ import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
 import org.eclipse.app4mc.amalthea.model.Array;
-import org.eclipse.app4mc.amalthea.model.ArrivalCurve;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
+import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
@@ -164,8 +164,8 @@ import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
-import org.eclipse.app4mc.amalthea.model.InterProcess;
-import org.eclipse.app4mc.amalthea.model.InterProcessActivation;
+import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
+import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -221,9 +221,8 @@ import org.eclipse.app4mc.amalthea.model.PairingConstraint;
 import org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.PartlyPFairPD2;
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
-import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
-import org.eclipse.app4mc.amalthea.model.PeriodicEvent;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Pfair;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
@@ -297,12 +296,12 @@ import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
 import org.eclipse.app4mc.amalthea.model.SeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
-import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
+import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
-import org.eclipse.app4mc.amalthea.model.Sporadic;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.SporadicServer;
+import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.StimulusEvent;
@@ -312,7 +311,7 @@ import org.eclipse.app4mc.amalthea.model.StructEntry;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
-import org.eclipse.app4mc.amalthea.model.Synthetic;
+import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
@@ -337,6 +336,7 @@ import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Value;
+import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
@@ -2526,36 +2526,36 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.PERIODIC: {
-				Periodic periodic = (Periodic)theEObject;
-				T1 result = casePeriodic(periodic);
-				if (result == null) result = caseStimulus(periodic);
-				if (result == null) result = caseReferableBaseObject(periodic);
-				if (result == null) result = caseITaggable(periodic);
-				if (result == null) result = caseIAnnotatable(periodic);
-				if (result == null) result = caseIReferable(periodic);
+			case AmaltheaPackage.PERIODIC_STIMULUS: {
+				PeriodicStimulus periodicStimulus = (PeriodicStimulus)theEObject;
+				T1 result = casePeriodicStimulus(periodicStimulus);
+				if (result == null) result = caseStimulus(periodicStimulus);
+				if (result == null) result = caseReferableBaseObject(periodicStimulus);
+				if (result == null) result = caseITaggable(periodicStimulus);
+				if (result == null) result = caseIAnnotatable(periodicStimulus);
+				if (result == null) result = caseIReferable(periodicStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.PERIODIC_EVENT: {
-				PeriodicEvent periodicEvent = (PeriodicEvent)theEObject;
-				T1 result = casePeriodicEvent(periodicEvent);
-				if (result == null) result = caseStimulus(periodicEvent);
-				if (result == null) result = caseReferableBaseObject(periodicEvent);
-				if (result == null) result = caseITaggable(periodicEvent);
-				if (result == null) result = caseIAnnotatable(periodicEvent);
-				if (result == null) result = caseIReferable(periodicEvent);
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS: {
+				VariableRateStimulus variableRateStimulus = (VariableRateStimulus)theEObject;
+				T1 result = caseVariableRateStimulus(variableRateStimulus);
+				if (result == null) result = caseStimulus(variableRateStimulus);
+				if (result == null) result = caseReferableBaseObject(variableRateStimulus);
+				if (result == null) result = caseITaggable(variableRateStimulus);
+				if (result == null) result = caseIAnnotatable(variableRateStimulus);
+				if (result == null) result = caseIReferable(variableRateStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.SYNTHETIC: {
-				Synthetic synthetic = (Synthetic)theEObject;
-				T1 result = caseSynthetic(synthetic);
-				if (result == null) result = caseStimulus(synthetic);
-				if (result == null) result = caseReferableBaseObject(synthetic);
-				if (result == null) result = caseITaggable(synthetic);
-				if (result == null) result = caseIAnnotatable(synthetic);
-				if (result == null) result = caseIReferable(synthetic);
+			case AmaltheaPackage.SYNTHETIC_STIMULUS: {
+				SyntheticStimulus syntheticStimulus = (SyntheticStimulus)theEObject;
+				T1 result = caseSyntheticStimulus(syntheticStimulus);
+				if (result == null) result = caseStimulus(syntheticStimulus);
+				if (result == null) result = caseReferableBaseObject(syntheticStimulus);
+				if (result == null) result = caseITaggable(syntheticStimulus);
+				if (result == null) result = caseIAnnotatable(syntheticStimulus);
+				if (result == null) result = caseIReferable(syntheticStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2578,36 +2578,36 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.SINGLE: {
-				Single single = (Single)theEObject;
-				T1 result = caseSingle(single);
-				if (result == null) result = caseStimulus(single);
-				if (result == null) result = caseReferableBaseObject(single);
-				if (result == null) result = caseITaggable(single);
-				if (result == null) result = caseIAnnotatable(single);
-				if (result == null) result = caseIReferable(single);
+			case AmaltheaPackage.SINGLE_STIMULUS: {
+				SingleStimulus singleStimulus = (SingleStimulus)theEObject;
+				T1 result = caseSingleStimulus(singleStimulus);
+				if (result == null) result = caseStimulus(singleStimulus);
+				if (result == null) result = caseReferableBaseObject(singleStimulus);
+				if (result == null) result = caseITaggable(singleStimulus);
+				if (result == null) result = caseIAnnotatable(singleStimulus);
+				if (result == null) result = caseIReferable(singleStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.INTER_PROCESS: {
-				InterProcess interProcess = (InterProcess)theEObject;
-				T1 result = caseInterProcess(interProcess);
-				if (result == null) result = caseStimulus(interProcess);
-				if (result == null) result = caseReferableBaseObject(interProcess);
-				if (result == null) result = caseITaggable(interProcess);
-				if (result == null) result = caseIAnnotatable(interProcess);
-				if (result == null) result = caseIReferable(interProcess);
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS: {
+				InterProcessStimulus interProcessStimulus = (InterProcessStimulus)theEObject;
+				T1 result = caseInterProcessStimulus(interProcessStimulus);
+				if (result == null) result = caseStimulus(interProcessStimulus);
+				if (result == null) result = caseReferableBaseObject(interProcessStimulus);
+				if (result == null) result = caseITaggable(interProcessStimulus);
+				if (result == null) result = caseIAnnotatable(interProcessStimulus);
+				if (result == null) result = caseIReferable(interProcessStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.SPORADIC: {
-				Sporadic sporadic = (Sporadic)theEObject;
-				T1 result = caseSporadic(sporadic);
-				if (result == null) result = caseStimulus(sporadic);
-				if (result == null) result = caseReferableBaseObject(sporadic);
-				if (result == null) result = caseITaggable(sporadic);
-				if (result == null) result = caseIAnnotatable(sporadic);
-				if (result == null) result = caseIReferable(sporadic);
+			case AmaltheaPackage.SPORADIC_STIMULUS: {
+				SporadicStimulus sporadicStimulus = (SporadicStimulus)theEObject;
+				T1 result = caseSporadicStimulus(sporadicStimulus);
+				if (result == null) result = caseStimulus(sporadicStimulus);
+				if (result == null) result = caseReferableBaseObject(sporadicStimulus);
+				if (result == null) result = caseITaggable(sporadicStimulus);
+				if (result == null) result = caseIAnnotatable(sporadicStimulus);
+				if (result == null) result = caseIReferable(sporadicStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2622,14 +2622,14 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.ARRIVAL_CURVE: {
-				ArrivalCurve arrivalCurve = (ArrivalCurve)theEObject;
-				T1 result = caseArrivalCurve(arrivalCurve);
-				if (result == null) result = caseStimulus(arrivalCurve);
-				if (result == null) result = caseReferableBaseObject(arrivalCurve);
-				if (result == null) result = caseITaggable(arrivalCurve);
-				if (result == null) result = caseIAnnotatable(arrivalCurve);
-				if (result == null) result = caseIReferable(arrivalCurve);
+			case AmaltheaPackage.ARRIVAL_CURVE_STIMULUS: {
+				ArrivalCurveStimulus arrivalCurveStimulus = (ArrivalCurveStimulus)theEObject;
+				T1 result = caseArrivalCurveStimulus(arrivalCurveStimulus);
+				if (result == null) result = caseStimulus(arrivalCurveStimulus);
+				if (result == null) result = caseReferableBaseObject(arrivalCurveStimulus);
+				if (result == null) result = caseITaggable(arrivalCurveStimulus);
+				if (result == null) result = caseIAnnotatable(arrivalCurveStimulus);
+				if (result == null) result = caseIReferable(arrivalCurveStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2877,12 +2877,12 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.INTER_PROCESS_ACTIVATION: {
-				InterProcessActivation interProcessActivation = (InterProcessActivation)theEObject;
-				T1 result = caseInterProcessActivation(interProcessActivation);
-				if (result == null) result = caseCallSequenceItem(interProcessActivation);
-				if (result == null) result = caseBaseObject(interProcessActivation);
-				if (result == null) result = caseIAnnotatable(interProcessActivation);
+			case AmaltheaPackage.INTER_PROCESS_TRIGGER: {
+				InterProcessTrigger interProcessTrigger = (InterProcessTrigger)theEObject;
+				T1 result = caseInterProcessTrigger(interProcessTrigger);
+				if (result == null) result = caseCallSequenceItem(interProcessTrigger);
+				if (result == null) result = caseBaseObject(interProcessTrigger);
+				if (result == null) result = caseIAnnotatable(interProcessTrigger);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -7031,47 +7031,47 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Periodic</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Periodic Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Periodic</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Periodic Stimulus</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePeriodic(Periodic object) {
+	public T1 casePeriodicStimulus(PeriodicStimulus object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Periodic Event</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Rate Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Periodic Event</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Rate Stimulus</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePeriodicEvent(PeriodicEvent object) {
+	public T1 caseVariableRateStimulus(VariableRateStimulus object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Synthetic</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Synthetic Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Synthetic</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Synthetic Stimulus</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSynthetic(Synthetic object) {
+	public T1 caseSyntheticStimulus(SyntheticStimulus object) {
 		return null;
 	}
 
@@ -7106,47 +7106,47 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Single</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Single Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Single</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Single Stimulus</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSingle(Single object) {
+	public T1 caseSingleStimulus(SingleStimulus object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Inter Process</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Inter Process Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Inter Process</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Inter Process Stimulus</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseInterProcess(InterProcess object) {
+	public T1 caseInterProcessStimulus(InterProcessStimulus object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Sporadic</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Sporadic Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Sporadic</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Sporadic Stimulus</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSporadic(Sporadic object) {
+	public T1 caseSporadicStimulus(SporadicStimulus object) {
 		return null;
 	}
 
@@ -7166,17 +7166,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Arrival Curve</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Arrival Curve Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Arrival Curve</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Arrival Curve Stimulus</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseArrivalCurve(ArrivalCurve object) {
+	public T1 caseArrivalCurveStimulus(ArrivalCurveStimulus object) {
 		return null;
 	}
 
@@ -7586,17 +7586,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Inter Process Activation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Inter Process Trigger</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Inter Process Activation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Inter Process Trigger</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseInterProcessActivation(InterProcessActivation object) {
+	public T1 caseInterProcessTrigger(InterProcessTrigger object) {
 		return null;
 	}
 

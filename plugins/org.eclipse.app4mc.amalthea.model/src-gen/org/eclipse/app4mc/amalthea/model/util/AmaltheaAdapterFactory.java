@@ -30,8 +30,8 @@ import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
 import org.eclipse.app4mc.amalthea.model.Array;
-import org.eclipse.app4mc.amalthea.model.ArrivalCurve;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
+import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
@@ -164,8 +164,8 @@ import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
-import org.eclipse.app4mc.amalthea.model.InterProcess;
-import org.eclipse.app4mc.amalthea.model.InterProcessActivation;
+import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
+import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -221,9 +221,8 @@ import org.eclipse.app4mc.amalthea.model.PairingConstraint;
 import org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.PartlyPFairPD2;
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
-import org.eclipse.app4mc.amalthea.model.Periodic;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
-import org.eclipse.app4mc.amalthea.model.PeriodicEvent;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Pfair;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
@@ -297,12 +296,12 @@ import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
 import org.eclipse.app4mc.amalthea.model.SeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
-import org.eclipse.app4mc.amalthea.model.Single;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
+import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
-import org.eclipse.app4mc.amalthea.model.Sporadic;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.SporadicServer;
+import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.StimulusEvent;
@@ -312,7 +311,7 @@ import org.eclipse.app4mc.amalthea.model.StructEntry;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
-import org.eclipse.app4mc.amalthea.model.Synthetic;
+import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
@@ -337,6 +336,7 @@ import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Value;
+import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
@@ -1371,16 +1371,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createModeValueDisjunctionAdapter();
 			}
 			@Override
-			public Adapter casePeriodic(Periodic object) {
-				return createPeriodicAdapter();
+			public Adapter casePeriodicStimulus(PeriodicStimulus object) {
+				return createPeriodicStimulusAdapter();
 			}
 			@Override
-			public Adapter casePeriodicEvent(PeriodicEvent object) {
-				return createPeriodicEventAdapter();
+			public Adapter caseVariableRateStimulus(VariableRateStimulus object) {
+				return createVariableRateStimulusAdapter();
 			}
 			@Override
-			public Adapter caseSynthetic(Synthetic object) {
-				return createSyntheticAdapter();
+			public Adapter caseSyntheticStimulus(SyntheticStimulus object) {
+				return createSyntheticStimulusAdapter();
 			}
 			@Override
 			public Adapter caseTimestampList(TimestampList object) {
@@ -1391,24 +1391,24 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createCustomStimulusAdapter();
 			}
 			@Override
-			public Adapter caseSingle(Single object) {
-				return createSingleAdapter();
+			public Adapter caseSingleStimulus(SingleStimulus object) {
+				return createSingleStimulusAdapter();
 			}
 			@Override
-			public Adapter caseInterProcess(InterProcess object) {
-				return createInterProcessAdapter();
+			public Adapter caseInterProcessStimulus(InterProcessStimulus object) {
+				return createInterProcessStimulusAdapter();
 			}
 			@Override
-			public Adapter caseSporadic(Sporadic object) {
-				return createSporadicAdapter();
+			public Adapter caseSporadicStimulus(SporadicStimulus object) {
+				return createSporadicStimulusAdapter();
 			}
 			@Override
 			public Adapter caseEventStimulus(EventStimulus object) {
 				return createEventStimulusAdapter();
 			}
 			@Override
-			public Adapter caseArrivalCurve(ArrivalCurve object) {
-				return createArrivalCurveAdapter();
+			public Adapter caseArrivalCurveStimulus(ArrivalCurveStimulus object) {
+				return createArrivalCurveStimulusAdapter();
 			}
 			@Override
 			public Adapter caseArrivalCurveEntry(ArrivalCurveEntry object) {
@@ -1519,8 +1519,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createOsEventAdapter();
 			}
 			@Override
-			public Adapter caseInterProcessActivation(InterProcessActivation object) {
-				return createInterProcessActivationAdapter();
+			public Adapter caseInterProcessTrigger(InterProcessTrigger object) {
+				return createInterProcessTriggerAdapter();
 			}
 			@Override
 			public Adapter caseEnforcedMigration(EnforcedMigration object) {
@@ -5137,44 +5137,44 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Periodic <em>Periodic</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PeriodicStimulus <em>Periodic Stimulus</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Periodic
+	 * @see org.eclipse.app4mc.amalthea.model.PeriodicStimulus
 	 * @generated
 	 */
-	public Adapter createPeriodicAdapter() {
+	public Adapter createPeriodicStimulusAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PeriodicEvent <em>Periodic Event</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus <em>Variable Rate Stimulus</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.PeriodicEvent
+	 * @see org.eclipse.app4mc.amalthea.model.VariableRateStimulus
 	 * @generated
 	 */
-	public Adapter createPeriodicEventAdapter() {
+	public Adapter createVariableRateStimulusAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Synthetic <em>Synthetic</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SyntheticStimulus <em>Synthetic Stimulus</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Synthetic
+	 * @see org.eclipse.app4mc.amalthea.model.SyntheticStimulus
 	 * @generated
 	 */
-	public Adapter createSyntheticAdapter() {
+	public Adapter createSyntheticStimulusAdapter() {
 		return null;
 	}
 
@@ -5207,44 +5207,44 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Single <em>Single</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SingleStimulus <em>Single Stimulus</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Single
+	 * @see org.eclipse.app4mc.amalthea.model.SingleStimulus
 	 * @generated
 	 */
-	public Adapter createSingleAdapter() {
+	public Adapter createSingleStimulusAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InterProcess <em>Inter Process</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InterProcessStimulus <em>Inter Process Stimulus</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.InterProcess
+	 * @see org.eclipse.app4mc.amalthea.model.InterProcessStimulus
 	 * @generated
 	 */
-	public Adapter createInterProcessAdapter() {
+	public Adapter createInterProcessStimulusAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Sporadic <em>Sporadic</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SporadicStimulus <em>Sporadic Stimulus</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Sporadic
+	 * @see org.eclipse.app4mc.amalthea.model.SporadicStimulus
 	 * @generated
 	 */
-	public Adapter createSporadicAdapter() {
+	public Adapter createSporadicStimulusAdapter() {
 		return null;
 	}
 
@@ -5263,16 +5263,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ArrivalCurve <em>Arrival Curve</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus <em>Arrival Curve Stimulus</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ArrivalCurve
+	 * @see org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus
 	 * @generated
 	 */
-	public Adapter createArrivalCurveAdapter() {
+	public Adapter createArrivalCurveStimulusAdapter() {
 		return null;
 	}
 
@@ -5655,16 +5655,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InterProcessActivation <em>Inter Process Activation</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InterProcessTrigger <em>Inter Process Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.InterProcessActivation
+	 * @see org.eclipse.app4mc.amalthea.model.InterProcessTrigger
 	 * @generated
 	 */
-	public Adapter createInterProcessActivationAdapter() {
+	public Adapter createInterProcessTriggerAdapter() {
 		return null;
 	}
 

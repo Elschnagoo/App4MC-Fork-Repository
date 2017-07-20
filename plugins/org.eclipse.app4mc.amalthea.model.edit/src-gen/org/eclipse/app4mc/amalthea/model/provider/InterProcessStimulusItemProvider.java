@@ -18,31 +18,29 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Periodic} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.InterProcessStimulus} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class PeriodicItemProvider extends StimulusItemProvider {
+public class InterProcessStimulusItemProvider extends StimulusItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PeriodicItemProvider(AdapterFactory adapterFactory) {
+	public InterProcessStimulusItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -57,31 +55,8 @@ public class PeriodicItemProvider extends StimulusItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addClockPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Clock feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addClockPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Periodic_clock_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Periodic_clock_feature", "_UI_Periodic_type"),
-				 AmaltheaPackage.eINSTANCE.getPeriodic_Clock(),
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -96,8 +71,7 @@ public class PeriodicItemProvider extends StimulusItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodic_Offset());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodic_Recurrence());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getInterProcessStimulus_Counter());
 		}
 		return childrenFeatures;
 	}
@@ -116,14 +90,14 @@ public class PeriodicItemProvider extends StimulusItemProvider {
 	}
 
 	/**
-	 * This returns Periodic.gif.
+	 * This returns InterProcessStimulus.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Periodic"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/InterProcessStimulus"));
 	}
 
 	/**
@@ -144,10 +118,10 @@ public class PeriodicItemProvider extends StimulusItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Periodic)object).getName();
+		String label = ((InterProcessStimulus)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Periodic_type") :
-			getString("_UI_Periodic_type") + " " + label;
+			getString("_UI_InterProcessStimulus_type") :
+			getString("_UI_InterProcessStimulus_type") + " " + label;
 	}
 	
 
@@ -162,9 +136,8 @@ public class PeriodicItemProvider extends StimulusItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Periodic.class)) {
-			case AmaltheaPackage.PERIODIC__OFFSET:
-			case AmaltheaPackage.PERIODIC__RECURRENCE:
+		switch (notification.getFeatureID(InterProcessStimulus.class)) {
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -184,13 +157,8 @@ public class PeriodicItemProvider extends StimulusItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getPeriodic_Offset(),
-				 AmaltheaFactory.eINSTANCE.createTime()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getPeriodic_Recurrence(),
-				 AmaltheaFactory.eINSTANCE.createTime()));
+				(AmaltheaPackage.eINSTANCE.getInterProcessStimulus_Counter(),
+				 AmaltheaFactory.eINSTANCE.createCounter()));
 	}
 
 	/**
@@ -206,9 +174,7 @@ public class PeriodicItemProvider extends StimulusItemProvider {
 
 		boolean qualify =
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getPeriodic_Offset() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getPeriodic_Recurrence();
+			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList();
 
 		if (qualify) {
 			return getString

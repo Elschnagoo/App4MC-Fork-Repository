@@ -24,7 +24,7 @@ import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.Single;
+import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -106,7 +106,7 @@ public class AmaltheaExporter {
 
 	private void transformStimuli(final EList<Stimulus> stimuli, final Model model) {
 		for (final org.eclipse.app4mc.amalthea._import.atdb.model.Stimulus myStimulus : model.getStimuli()) {
-			final Single aStimulus = this.factory.createSingle();
+			final SingleStimulus aStimulus = this.factory.createSingleStimulus();
 			aStimulus.setName(myStimulus.getName());
 			final Time time = this.factory.createTime();
 			time.setValue(BigInteger.valueOf(myStimulus.getMoment()));

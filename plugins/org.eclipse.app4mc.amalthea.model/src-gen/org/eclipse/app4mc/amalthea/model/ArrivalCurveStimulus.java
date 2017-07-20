@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Arrival Curve</b></em>'.
+ * A representation of the model object '<em><b>Arrival Curve Stimulus</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -27,14 +27,14 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ArrivalCurve#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus#getEntries <em>Entries</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getArrivalCurve()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getArrivalCurveStimulus()
  * @model
  * @generated
  */
-public interface ArrivalCurve extends Stimulus {
+public interface ArrivalCurveStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry}.
@@ -45,10 +45,10 @@ public interface ArrivalCurve extends Stimulus {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getArrivalCurve_Entries()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getArrivalCurveStimulus_Entries()
 	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ArrivalCurveEntry> getEntries();
 
-} // ArrivalCurve
+} // ArrivalCurveStimulus

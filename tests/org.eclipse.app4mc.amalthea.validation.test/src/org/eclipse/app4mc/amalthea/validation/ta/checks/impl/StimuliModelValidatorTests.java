@@ -18,7 +18,7 @@ import org.easymock.EasyMock;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ArrivalCurve;
+import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.Clock;
 import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
@@ -29,11 +29,11 @@ import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
-import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.Single;
+import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
-import org.eclipse.app4mc.amalthea.model.Synthetic;
+import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TimestampList;
@@ -70,7 +70,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
@@ -81,7 +81,7 @@ public class StimuliModelValidatorTests {
 		recurrence.setValue(value);
 		recurrence.setUnit(unit);
 
-		this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodic_Recurrence(), value, unit);
+		this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Recurrence(), value, unit);
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -101,7 +101,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
@@ -112,7 +112,7 @@ public class StimuliModelValidatorTests {
 		recurrence.setValue(value);
 		recurrence.setUnit(unit);
 
-		this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodic_Recurrence(), value, unit);
+		this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Recurrence(), value, unit);
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -132,7 +132,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
@@ -188,12 +188,12 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 
 		amalthea.setStimuliModel(stimuliModel);
 		stimuliModel.getStimuli().add(periodic);
 
-		this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodic_Clock());
+		this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Clock());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -214,13 +214,13 @@ public class StimuliModelValidatorTests {
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Clock clock = AmaltheaFactory.eINSTANCE.createClockSinusFunction();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 
 		amalthea.setStimuliModel(stimuliModel);
 		stimuliModel.getStimuli().add(periodic);
 		periodic.setClock(clock);
 
-		this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodic_Clock());
+		this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Clock());
 
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -241,7 +241,7 @@ public class StimuliModelValidatorTests {
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final Clock clock = AmaltheaFactory.eINSTANCE.createClockSinusFunction();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 
 		amalthea.setStimuliModel(stimuliModel);
 		stimuliModel.getClocks().add(clock);
@@ -714,7 +714,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 		final Time offset = null;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -738,7 +738,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
@@ -749,7 +749,7 @@ public class StimuliModelValidatorTests {
 		offset.setValue(value);
 		offset.setUnit(unit);
 		
-		this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getPeriodic_Offset(), value);
+		this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Offset(), value);
 		
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -769,7 +769,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
@@ -797,7 +797,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
@@ -825,7 +825,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 		final Time recurrence = null;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -849,7 +849,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
@@ -860,7 +860,7 @@ public class StimuliModelValidatorTests {
 		recurrence.setValue(value);
 		recurrence.setUnit(unit);
 		
-		this.issueCreator.issue(recurrence, AmaltheaPackage.eINSTANCE.getPeriodic_Recurrence(), value);
+		this.issueCreator.issue(recurrence, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Recurrence(), value);
 		
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -880,7 +880,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
@@ -908,7 +908,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Periodic periodic = AmaltheaFactory.eINSTANCE.createPeriodic();
+		final PeriodicStimulus periodic = AmaltheaFactory.eINSTANCE.createPeriodicStimulus();
 		final Time recurrence = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
@@ -936,7 +936,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final SyntheticStimulus synthetic = AmaltheaFactory.eINSTANCE.createSyntheticStimulus();
 		final Time offset = null;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -960,7 +960,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final SyntheticStimulus synthetic = AmaltheaFactory.eINSTANCE.createSyntheticStimulus();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
@@ -971,7 +971,7 @@ public class StimuliModelValidatorTests {
 		offset.setValue(value);
 		offset.setUnit(unit);
 		
-		this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getSynthetic_Offset(), value);
+		this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Offset(), value);
 		
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -991,7 +991,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final SyntheticStimulus synthetic = AmaltheaFactory.eINSTANCE.createSyntheticStimulus();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
@@ -1019,7 +1019,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final SyntheticStimulus synthetic = AmaltheaFactory.eINSTANCE.createSyntheticStimulus();
 		final Time offset = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
@@ -1047,7 +1047,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final SyntheticStimulus synthetic = AmaltheaFactory.eINSTANCE.createSyntheticStimulus();
 		final Time period = null;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1071,7 +1071,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final SyntheticStimulus synthetic = AmaltheaFactory.eINSTANCE.createSyntheticStimulus();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
@@ -1082,7 +1082,7 @@ public class StimuliModelValidatorTests {
 		period.setValue(value);
 		period.setUnit(unit);
 		
-		this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getSynthetic_Period(), value);
+		this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Period(), value);
 		
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -1102,7 +1102,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final SyntheticStimulus synthetic = AmaltheaFactory.eINSTANCE.createSyntheticStimulus();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
@@ -1130,7 +1130,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final SyntheticStimulus synthetic = AmaltheaFactory.eINSTANCE.createSyntheticStimulus();
 		final Time period = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
@@ -1158,7 +1158,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final SyntheticStimulus synthetic = AmaltheaFactory.eINSTANCE.createSyntheticStimulus();
 		TimestampList timestampList = AmaltheaFactory.eINSTANCE.createTimestampList();
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1182,7 +1182,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final SyntheticStimulus synthetic = AmaltheaFactory.eINSTANCE.createSyntheticStimulus();
 		final TimestampList timestampList = AmaltheaFactory.eINSTANCE.createTimestampList();
 		final Time timestamp = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.valueOf(-10);
@@ -1215,7 +1215,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final SyntheticStimulus synthetic = AmaltheaFactory.eINSTANCE.createSyntheticStimulus();
 		final TimestampList timestampList = AmaltheaFactory.eINSTANCE.createTimestampList();
 		final Time timestamp = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.ZERO;
@@ -1245,7 +1245,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Synthetic synthetic = AmaltheaFactory.eINSTANCE.createSynthetic();
+		final SyntheticStimulus synthetic = AmaltheaFactory.eINSTANCE.createSyntheticStimulus();
 		final TimestampList timestampList = AmaltheaFactory.eINSTANCE.createTimestampList();
 		final Time timestamp = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.TEN;
@@ -1275,7 +1275,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final SingleStimulus single = AmaltheaFactory.eINSTANCE.createSingleStimulus();
 		final Time activation = null;
 		
 		amalthea.setStimuliModel(stimuliModel);
@@ -1299,7 +1299,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final SingleStimulus single = AmaltheaFactory.eINSTANCE.createSingleStimulus();
 		final Time activation = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.valueOf(-10);
 		final TimeUnit unit = TimeUnit.MS;
@@ -1310,7 +1310,7 @@ public class StimuliModelValidatorTests {
 		activation.setValue(value);
 		activation.setUnit(unit);
 		
-		this.issueCreator.issue(activation, AmaltheaPackage.eINSTANCE.getSingle_Activation(), value);
+		this.issueCreator.issue(activation, AmaltheaPackage.eINSTANCE.getSingleStimulus_Activation(), value);
 		
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -1330,7 +1330,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final SingleStimulus single = AmaltheaFactory.eINSTANCE.createSingleStimulus();
 		final Time activation = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.ZERO;
 		final TimeUnit unit = TimeUnit.MS;
@@ -1358,7 +1358,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final SingleStimulus single = AmaltheaFactory.eINSTANCE.createSingleStimulus();
 		final Time activation = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.TEN;
 		final TimeUnit unit = TimeUnit.MS;
@@ -1386,7 +1386,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveStimulus arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurveStimulus();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time lower = null;
 		
@@ -1412,7 +1412,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveStimulus arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurveStimulus();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.valueOf(-10);
@@ -1445,7 +1445,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveStimulus arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurveStimulus();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.ZERO;
@@ -1475,7 +1475,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveStimulus arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurveStimulus();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time lower = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.TEN;
@@ -1505,7 +1505,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveStimulus arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurveStimulus();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time upper = null;
 		
@@ -1531,7 +1531,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveStimulus arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurveStimulus();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.valueOf(-10);
@@ -1564,7 +1564,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveStimulus arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurveStimulus();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.ZERO;
@@ -1594,7 +1594,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final ArrivalCurve arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurve();
+		final ArrivalCurveStimulus arrivalCurve = AmaltheaFactory.eINSTANCE.createArrivalCurveStimulus();
 		final ArrivalCurveEntry entry = AmaltheaFactory.eINSTANCE.createArrivalCurveEntry();
 		final Time upper = AmaltheaFactory.eINSTANCE.createTime();
 		final BigInteger value = BigInteger.TEN;
@@ -1965,7 +1965,7 @@ public class StimuliModelValidatorTests {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
-		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final SingleStimulus single = AmaltheaFactory.eINSTANCE.createSingleStimulus();
 		final ModeValueList modeValueList = AmaltheaFactory.eINSTANCE.createModeValueList();
 		final ModeValue modeValue = AmaltheaFactory.eINSTANCE.createModeValue();
 		
@@ -1996,7 +1996,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
-		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final SingleStimulus single = AmaltheaFactory.eINSTANCE.createSingleStimulus();
 		final ModeValueList modeValueList = AmaltheaFactory.eINSTANCE.createModeValueList();
 		final ModeValue modeValue = AmaltheaFactory.eINSTANCE.createModeValue();
 		
@@ -2027,7 +2027,7 @@ public class StimuliModelValidatorTests {
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
 		final SWModel swModel = AmaltheaFactory.eINSTANCE.createSWModel();
 		final ModeLabel modeLabel = AmaltheaFactory.eINSTANCE.createModeLabel();
-		final Single single = AmaltheaFactory.eINSTANCE.createSingle();
+		final SingleStimulus single = AmaltheaFactory.eINSTANCE.createSingleStimulus();
 		final ModeValueList modeValueList = AmaltheaFactory.eINSTANCE.createModeValueList();
 		final ModeValue modeValue = AmaltheaFactory.eINSTANCE.createModeValue();
 		

@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Sporadic</b></em>'.
+ * A representation of the model object '<em><b>Sporadic Stimulus</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -26,14 +26,14 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Sporadic#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.SporadicStimulus#getDescription <em>Description</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSporadic()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSporadicStimulus()
  * @model
  * @generated
  */
-public interface Sporadic extends Stimulus {
+public interface SporadicStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -44,14 +44,14 @@ public interface Sporadic extends Stimulus {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSporadic_Description()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSporadicStimulus_Description()
 	 * @model unique="false"
 	 * @generated
 	 */
 	String getDescription();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Sporadic#getDescription <em>Description</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SporadicStimulus#getDescription <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Description</em>' attribute.
@@ -60,4 +60,4 @@ public interface Sporadic extends Stimulus {
 	 */
 	void setDescription(String value);
 
-} // Sporadic
+} // SporadicStimulus

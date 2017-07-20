@@ -17,7 +17,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Sporadic;
+import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -28,19 +28,19 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Sporadic} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.SporadicStimulus} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SporadicItemProvider extends StimulusItemProvider {
+public class SporadicStimulusItemProvider extends StimulusItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SporadicItemProvider(AdapterFactory adapterFactory) {
+	public SporadicStimulusItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -71,9 +71,9 @@ public class SporadicItemProvider extends StimulusItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Sporadic_description_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Sporadic_description_feature", "_UI_Sporadic_type"),
-				 AmaltheaPackage.eINSTANCE.getSporadic_Description(),
+				 getString("_UI_SporadicStimulus_description_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SporadicStimulus_description_feature", "_UI_SporadicStimulus_type"),
+				 AmaltheaPackage.eINSTANCE.getSporadicStimulus_Description(),
 				 true,
 				 false,
 				 false,
@@ -83,14 +83,14 @@ public class SporadicItemProvider extends StimulusItemProvider {
 	}
 
 	/**
-	 * This returns Sporadic.gif.
+	 * This returns SporadicStimulus.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Sporadic"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SporadicStimulus"));
 	}
 
 	/**
@@ -111,10 +111,10 @@ public class SporadicItemProvider extends StimulusItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Sporadic)object).getName();
+		String label = ((SporadicStimulus)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Sporadic_type") :
-			getString("_UI_Sporadic_type") + " " + label;
+			getString("_UI_SporadicStimulus_type") :
+			getString("_UI_SporadicStimulus_type") + " " + label;
 	}
 	
 
@@ -129,8 +129,8 @@ public class SporadicItemProvider extends StimulusItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Sporadic.class)) {
-			case AmaltheaPackage.SPORADIC__DESCRIPTION:
+		switch (notification.getFeatureID(SporadicStimulus.class)) {
+			case AmaltheaPackage.SPORADIC_STIMULUS__DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -1625,31 +1625,31 @@ public interface AmaltheaFactory extends EFactory {
 	ModeValueDisjunction createModeValueDisjunction();
 
 	/**
-	 * Returns a new object of class '<em>Periodic</em>'.
+	 * Returns a new object of class '<em>Periodic Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Periodic</em>'.
+	 * @return a new object of class '<em>Periodic Stimulus</em>'.
 	 * @generated
 	 */
-	Periodic createPeriodic();
+	PeriodicStimulus createPeriodicStimulus();
 
 	/**
-	 * Returns a new object of class '<em>Periodic Event</em>'.
+	 * Returns a new object of class '<em>Variable Rate Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Periodic Event</em>'.
+	 * @return a new object of class '<em>Variable Rate Stimulus</em>'.
 	 * @generated
 	 */
-	PeriodicEvent createPeriodicEvent();
+	VariableRateStimulus createVariableRateStimulus();
 
 	/**
-	 * Returns a new object of class '<em>Synthetic</em>'.
+	 * Returns a new object of class '<em>Synthetic Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Synthetic</em>'.
+	 * @return a new object of class '<em>Synthetic Stimulus</em>'.
 	 * @generated
 	 */
-	Synthetic createSynthetic();
+	SyntheticStimulus createSyntheticStimulus();
 
 	/**
 	 * Returns a new object of class '<em>Timestamp List</em>'.
@@ -1670,31 +1670,31 @@ public interface AmaltheaFactory extends EFactory {
 	CustomStimulus createCustomStimulus();
 
 	/**
-	 * Returns a new object of class '<em>Single</em>'.
+	 * Returns a new object of class '<em>Single Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Single</em>'.
+	 * @return a new object of class '<em>Single Stimulus</em>'.
 	 * @generated
 	 */
-	Single createSingle();
+	SingleStimulus createSingleStimulus();
 
 	/**
-	 * Returns a new object of class '<em>Inter Process</em>'.
+	 * Returns a new object of class '<em>Inter Process Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Inter Process</em>'.
+	 * @return a new object of class '<em>Inter Process Stimulus</em>'.
 	 * @generated
 	 */
-	InterProcess createInterProcess();
+	InterProcessStimulus createInterProcessStimulus();
 
 	/**
-	 * Returns a new object of class '<em>Sporadic</em>'.
+	 * Returns a new object of class '<em>Sporadic Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Sporadic</em>'.
+	 * @return a new object of class '<em>Sporadic Stimulus</em>'.
 	 * @generated
 	 */
-	Sporadic createSporadic();
+	SporadicStimulus createSporadicStimulus();
 
 	/**
 	 * Returns a new object of class '<em>Event Stimulus</em>'.
@@ -1706,13 +1706,13 @@ public interface AmaltheaFactory extends EFactory {
 	EventStimulus createEventStimulus();
 
 	/**
-	 * Returns a new object of class '<em>Arrival Curve</em>'.
+	 * Returns a new object of class '<em>Arrival Curve Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Arrival Curve</em>'.
+	 * @return a new object of class '<em>Arrival Curve Stimulus</em>'.
 	 * @generated
 	 */
-	ArrivalCurve createArrivalCurve();
+	ArrivalCurveStimulus createArrivalCurveStimulus();
 
 	/**
 	 * Returns a new object of class '<em>Arrival Curve Entry</em>'.
@@ -1904,13 +1904,13 @@ public interface AmaltheaFactory extends EFactory {
 	OsEvent createOsEvent();
 
 	/**
-	 * Returns a new object of class '<em>Inter Process Activation</em>'.
+	 * Returns a new object of class '<em>Inter Process Trigger</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Inter Process Activation</em>'.
+	 * @return a new object of class '<em>Inter Process Trigger</em>'.
 	 * @generated
 	 */
-	InterProcessActivation createInterProcessActivation();
+	InterProcessTrigger createInterProcessTrigger();
 
 	/**
 	 * Returns a new object of class '<em>Enforced Migration</em>'.

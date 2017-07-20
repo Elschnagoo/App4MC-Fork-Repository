@@ -63,7 +63,6 @@ import org.eclipse.app4mc.amalthea.model.Instructions
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation
 import org.eclipse.app4mc.amalthea.model.IntegerObject
-import org.eclipse.app4mc.amalthea.model.InterProcessActivation
 import org.eclipse.app4mc.amalthea.model.InterfaceKind
 import org.eclipse.app4mc.amalthea.model.LabelAccess
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum
@@ -143,6 +142,7 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
+import org.eclipse.app4mc.amalthea.model.InterProcessTrigger
 
 class CustomItemProviderService {
 
@@ -2129,8 +2129,8 @@ class CustomItemProviderService {
 	 * 						InterProcessActivationItemProvider
 	 *****************************************************************************/
 	def static String getInterProcessActivationItemProviderText(Object object, String defaultText) {
-		if (object instanceof InterProcessActivation) {
-			val stimulusName = object?.stimulus?.name
+		if (object instanceof InterProcessTrigger) {
+			val stimulusName = object?.getStimulus?.name
 			val s1 = ppName(stimulusName, "<stimulus>")
 			return "activate " + s1
 		} else {
@@ -2140,8 +2140,8 @@ class CustomItemProviderService {
 
 	def static List<ViewerNotification> getInterProcessActivationItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(InterProcessActivation)) {
-			case AmaltheaPackage::INTER_PROCESS_ACTIVATION__STIMULUS:
+		switch notification.getFeatureID(typeof(InterProcessTrigger)) {
+			case AmaltheaPackage::INTER_PROCESS_TRIGGER__STIMULUS:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 		}
 		return list

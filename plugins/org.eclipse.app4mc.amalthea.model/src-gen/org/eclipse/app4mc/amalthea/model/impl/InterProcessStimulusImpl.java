@@ -14,7 +14,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Counter;
-import org.eclipse.app4mc.amalthea.model.InterProcess;
+import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -26,18 +26,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Inter Process</b></em>'.
+ * An implementation of the model object '<em><b>Inter Process Stimulus</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.InterProcessImpl#getCounter <em>Counter</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.InterProcessStimulusImpl#getCounter <em>Counter</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class InterProcessImpl extends StimulusImpl implements InterProcess {
+public class InterProcessStimulusImpl extends StimulusImpl implements InterProcessStimulus {
 	/**
 	 * The cached value of the '{@link #getCounter() <em>Counter</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -53,7 +53,7 @@ public class InterProcessImpl extends StimulusImpl implements InterProcess {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InterProcessImpl() {
+	protected InterProcessStimulusImpl() {
 		super();
 	}
 
@@ -64,7 +64,7 @@ public class InterProcessImpl extends StimulusImpl implements InterProcess {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getInterProcess();
+		return AmaltheaPackage.eINSTANCE.getInterProcessStimulus();
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class InterProcessImpl extends StimulusImpl implements InterProcess {
 		Counter oldCounter = counter;
 		counter = newCounter;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.INTER_PROCESS__COUNTER, oldCounter, newCounter);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER, oldCounter, newCounter);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -100,14 +100,14 @@ public class InterProcessImpl extends StimulusImpl implements InterProcess {
 		if (newCounter != counter) {
 			NotificationChain msgs = null;
 			if (counter != null)
-				msgs = ((InternalEObject)counter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INTER_PROCESS__COUNTER, null, msgs);
+				msgs = ((InternalEObject)counter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER, null, msgs);
 			if (newCounter != null)
-				msgs = ((InternalEObject)newCounter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INTER_PROCESS__COUNTER, null, msgs);
+				msgs = ((InternalEObject)newCounter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER, null, msgs);
 			msgs = basicSetCounter(newCounter, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.INTER_PROCESS__COUNTER, newCounter, newCounter));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER, newCounter, newCounter));
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class InterProcessImpl extends StimulusImpl implements InterProcess {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.INTER_PROCESS__COUNTER:
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				return basicSetCounter(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -132,7 +132,7 @@ public class InterProcessImpl extends StimulusImpl implements InterProcess {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.INTER_PROCESS__COUNTER:
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				return getCounter();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -146,7 +146,7 @@ public class InterProcessImpl extends StimulusImpl implements InterProcess {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.INTER_PROCESS__COUNTER:
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				setCounter((Counter)newValue);
 				return;
 		}
@@ -161,7 +161,7 @@ public class InterProcessImpl extends StimulusImpl implements InterProcess {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.INTER_PROCESS__COUNTER:
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				setCounter((Counter)null);
 				return;
 		}
@@ -176,10 +176,10 @@ public class InterProcessImpl extends StimulusImpl implements InterProcess {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.INTER_PROCESS__COUNTER:
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				return counter != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //InterProcessImpl
+} //InterProcessStimulusImpl

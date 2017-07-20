@@ -13,7 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Single;
+import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.Time;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -26,18 +26,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Single</b></em>'.
+ * An implementation of the model object '<em><b>Single Stimulus</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SingleImpl#getActivation <em>Activation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SingleStimulusImpl#getActivation <em>Activation</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class SingleImpl extends StimulusImpl implements Single {
+public class SingleStimulusImpl extends StimulusImpl implements SingleStimulus {
 	/**
 	 * The cached value of the '{@link #getActivation() <em>Activation</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -53,7 +53,7 @@ public class SingleImpl extends StimulusImpl implements Single {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SingleImpl() {
+	protected SingleStimulusImpl() {
 		super();
 	}
 
@@ -64,7 +64,7 @@ public class SingleImpl extends StimulusImpl implements Single {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getSingle();
+		return AmaltheaPackage.eINSTANCE.getSingleStimulus();
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class SingleImpl extends StimulusImpl implements Single {
 		Time oldActivation = activation;
 		activation = newActivation;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SINGLE__ACTIVATION, oldActivation, newActivation);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION, oldActivation, newActivation);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -100,14 +100,14 @@ public class SingleImpl extends StimulusImpl implements Single {
 		if (newActivation != activation) {
 			NotificationChain msgs = null;
 			if (activation != null)
-				msgs = ((InternalEObject)activation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SINGLE__ACTIVATION, null, msgs);
+				msgs = ((InternalEObject)activation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION, null, msgs);
 			if (newActivation != null)
-				msgs = ((InternalEObject)newActivation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SINGLE__ACTIVATION, null, msgs);
+				msgs = ((InternalEObject)newActivation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION, null, msgs);
 			msgs = basicSetActivation(newActivation, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SINGLE__ACTIVATION, newActivation, newActivation));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION, newActivation, newActivation));
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class SingleImpl extends StimulusImpl implements Single {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.SINGLE__ACTIVATION:
+			case AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION:
 				return basicSetActivation(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -132,7 +132,7 @@ public class SingleImpl extends StimulusImpl implements Single {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.SINGLE__ACTIVATION:
+			case AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION:
 				return getActivation();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -146,7 +146,7 @@ public class SingleImpl extends StimulusImpl implements Single {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.SINGLE__ACTIVATION:
+			case AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION:
 				setActivation((Time)newValue);
 				return;
 		}
@@ -161,7 +161,7 @@ public class SingleImpl extends StimulusImpl implements Single {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SINGLE__ACTIVATION:
+			case AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION:
 				setActivation((Time)null);
 				return;
 		}
@@ -176,10 +176,10 @@ public class SingleImpl extends StimulusImpl implements Single {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SINGLE__ACTIVATION:
+			case AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION:
 				return activation != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //SingleImpl
+} //SingleStimulusImpl

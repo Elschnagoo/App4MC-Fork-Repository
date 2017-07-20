@@ -202,7 +202,7 @@ public class CallSequenceItemProvider extends GraphEntryBaseItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getCallSequence_Calls(),
-				 AmaltheaFactory.eINSTANCE.createInterProcessActivation()));
+				 AmaltheaFactory.eINSTANCE.createInterProcessTrigger()));
 
 		newChildDescriptors.add
 			(createChildParameter

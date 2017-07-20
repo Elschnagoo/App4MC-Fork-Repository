@@ -20,9 +20,9 @@ import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
-import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.Sporadic;
+import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
@@ -260,8 +260,8 @@ public class OMTask {
 	public long getPeriod() {
 		if (period < 0) {
 			for (Stimulus s : getTaskRef().getStimuli()) {
-				if (s instanceof Periodic) {
-					Periodic ps = (Periodic) s;
+				if (s instanceof PeriodicStimulus) {
+					PeriodicStimulus ps = (PeriodicStimulus) s;
 					Time x = ps.getRecurrence();
 					if (x == null) {
 						period = 0;
@@ -296,8 +296,8 @@ public class OMTask {
 					return period;
 				}
 				// Support fot FMTV
-				if(s instanceof Sporadic) {
-					Sporadic spst = (Sporadic) s;
+				if(s instanceof SporadicStimulus) {
+					SporadicStimulus spst = (SporadicStimulus) s;
 					Deviation<Time> dev = spst.getStimulusDeviation();
 					Time x = dev.getLowerBound();
 					if (x == null) {

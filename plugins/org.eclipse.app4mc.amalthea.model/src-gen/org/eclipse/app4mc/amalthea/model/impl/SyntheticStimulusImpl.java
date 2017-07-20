@@ -13,7 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Synthetic;
+import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimestampList;
 
@@ -27,20 +27,20 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Synthetic</b></em>'.
+ * An implementation of the model object '<em><b>Synthetic Stimulus</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SyntheticImpl#getOffset <em>Offset</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SyntheticImpl#getPeriod <em>Period</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SyntheticImpl#getTriggerTimes <em>Trigger Times</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SyntheticStimulusImpl#getOffset <em>Offset</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SyntheticStimulusImpl#getPeriod <em>Period</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SyntheticStimulusImpl#getTriggerTimes <em>Trigger Times</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class SyntheticImpl extends StimulusImpl implements Synthetic {
+public class SyntheticStimulusImpl extends StimulusImpl implements SyntheticStimulus {
 	/**
 	 * The cached value of the '{@link #getOffset() <em>Offset</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -76,7 +76,7 @@ public class SyntheticImpl extends StimulusImpl implements Synthetic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SyntheticImpl() {
+	protected SyntheticStimulusImpl() {
 		super();
 	}
 
@@ -87,7 +87,7 @@ public class SyntheticImpl extends StimulusImpl implements Synthetic {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getSynthetic();
+		return AmaltheaPackage.eINSTANCE.getSyntheticStimulus();
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class SyntheticImpl extends StimulusImpl implements Synthetic {
 		Time oldOffset = offset;
 		offset = newOffset;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SYNTHETIC__OFFSET, oldOffset, newOffset);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SYNTHETIC_STIMULUS__OFFSET, oldOffset, newOffset);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -123,14 +123,14 @@ public class SyntheticImpl extends StimulusImpl implements Synthetic {
 		if (newOffset != offset) {
 			NotificationChain msgs = null;
 			if (offset != null)
-				msgs = ((InternalEObject)offset).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNTHETIC__OFFSET, null, msgs);
+				msgs = ((InternalEObject)offset).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNTHETIC_STIMULUS__OFFSET, null, msgs);
 			if (newOffset != null)
-				msgs = ((InternalEObject)newOffset).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNTHETIC__OFFSET, null, msgs);
+				msgs = ((InternalEObject)newOffset).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNTHETIC_STIMULUS__OFFSET, null, msgs);
 			msgs = basicSetOffset(newOffset, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SYNTHETIC__OFFSET, newOffset, newOffset));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SYNTHETIC_STIMULUS__OFFSET, newOffset, newOffset));
 	}
 
 	/**
@@ -151,7 +151,7 @@ public class SyntheticImpl extends StimulusImpl implements Synthetic {
 		Time oldPeriod = period;
 		period = newPeriod;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SYNTHETIC__PERIOD, oldPeriod, newPeriod);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SYNTHETIC_STIMULUS__PERIOD, oldPeriod, newPeriod);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -166,14 +166,14 @@ public class SyntheticImpl extends StimulusImpl implements Synthetic {
 		if (newPeriod != period) {
 			NotificationChain msgs = null;
 			if (period != null)
-				msgs = ((InternalEObject)period).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNTHETIC__PERIOD, null, msgs);
+				msgs = ((InternalEObject)period).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNTHETIC_STIMULUS__PERIOD, null, msgs);
 			if (newPeriod != null)
-				msgs = ((InternalEObject)newPeriod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNTHETIC__PERIOD, null, msgs);
+				msgs = ((InternalEObject)newPeriod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNTHETIC_STIMULUS__PERIOD, null, msgs);
 			msgs = basicSetPeriod(newPeriod, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SYNTHETIC__PERIOD, newPeriod, newPeriod));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SYNTHETIC_STIMULUS__PERIOD, newPeriod, newPeriod));
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class SyntheticImpl extends StimulusImpl implements Synthetic {
 		TimestampList oldTriggerTimes = triggerTimes;
 		triggerTimes = newTriggerTimes;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SYNTHETIC__TRIGGER_TIMES, oldTriggerTimes, newTriggerTimes);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SYNTHETIC_STIMULUS__TRIGGER_TIMES, oldTriggerTimes, newTriggerTimes);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -209,14 +209,14 @@ public class SyntheticImpl extends StimulusImpl implements Synthetic {
 		if (newTriggerTimes != triggerTimes) {
 			NotificationChain msgs = null;
 			if (triggerTimes != null)
-				msgs = ((InternalEObject)triggerTimes).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNTHETIC__TRIGGER_TIMES, null, msgs);
+				msgs = ((InternalEObject)triggerTimes).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNTHETIC_STIMULUS__TRIGGER_TIMES, null, msgs);
 			if (newTriggerTimes != null)
-				msgs = ((InternalEObject)newTriggerTimes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNTHETIC__TRIGGER_TIMES, null, msgs);
+				msgs = ((InternalEObject)newTriggerTimes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SYNTHETIC_STIMULUS__TRIGGER_TIMES, null, msgs);
 			msgs = basicSetTriggerTimes(newTriggerTimes, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SYNTHETIC__TRIGGER_TIMES, newTriggerTimes, newTriggerTimes));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SYNTHETIC_STIMULUS__TRIGGER_TIMES, newTriggerTimes, newTriggerTimes));
 	}
 
 	/**
@@ -227,11 +227,11 @@ public class SyntheticImpl extends StimulusImpl implements Synthetic {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.SYNTHETIC__OFFSET:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__OFFSET:
 				return basicSetOffset(null, msgs);
-			case AmaltheaPackage.SYNTHETIC__PERIOD:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__PERIOD:
 				return basicSetPeriod(null, msgs);
-			case AmaltheaPackage.SYNTHETIC__TRIGGER_TIMES:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__TRIGGER_TIMES:
 				return basicSetTriggerTimes(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -245,11 +245,11 @@ public class SyntheticImpl extends StimulusImpl implements Synthetic {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.SYNTHETIC__OFFSET:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__OFFSET:
 				return getOffset();
-			case AmaltheaPackage.SYNTHETIC__PERIOD:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__PERIOD:
 				return getPeriod();
-			case AmaltheaPackage.SYNTHETIC__TRIGGER_TIMES:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__TRIGGER_TIMES:
 				return getTriggerTimes();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -263,13 +263,13 @@ public class SyntheticImpl extends StimulusImpl implements Synthetic {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.SYNTHETIC__OFFSET:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__OFFSET:
 				setOffset((Time)newValue);
 				return;
-			case AmaltheaPackage.SYNTHETIC__PERIOD:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__PERIOD:
 				setPeriod((Time)newValue);
 				return;
-			case AmaltheaPackage.SYNTHETIC__TRIGGER_TIMES:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__TRIGGER_TIMES:
 				setTriggerTimes((TimestampList)newValue);
 				return;
 		}
@@ -284,13 +284,13 @@ public class SyntheticImpl extends StimulusImpl implements Synthetic {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SYNTHETIC__OFFSET:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__OFFSET:
 				setOffset((Time)null);
 				return;
-			case AmaltheaPackage.SYNTHETIC__PERIOD:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__PERIOD:
 				setPeriod((Time)null);
 				return;
-			case AmaltheaPackage.SYNTHETIC__TRIGGER_TIMES:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__TRIGGER_TIMES:
 				setTriggerTimes((TimestampList)null);
 				return;
 		}
@@ -305,14 +305,14 @@ public class SyntheticImpl extends StimulusImpl implements Synthetic {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SYNTHETIC__OFFSET:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__OFFSET:
 				return offset != null;
-			case AmaltheaPackage.SYNTHETIC__PERIOD:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__PERIOD:
 				return period != null;
-			case AmaltheaPackage.SYNTHETIC__TRIGGER_TIMES:
+			case AmaltheaPackage.SYNTHETIC_STIMULUS__TRIGGER_TIMES:
 				return triggerTimes != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //SyntheticImpl
+} //SyntheticStimulusImpl

@@ -18,29 +18,30 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.InterProcess;
+import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.InterProcess} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class InterProcessItemProvider extends StimulusItemProvider {
+public class ArrivalCurveStimulusItemProvider extends StimulusItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterProcessItemProvider(AdapterFactory adapterFactory) {
+	public ArrivalCurveStimulusItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -71,7 +72,7 @@ public class InterProcessItemProvider extends StimulusItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getInterProcess_Counter());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getArrivalCurveStimulus_Entries());
 		}
 		return childrenFeatures;
 	}
@@ -90,14 +91,14 @@ public class InterProcessItemProvider extends StimulusItemProvider {
 	}
 
 	/**
-	 * This returns InterProcess.gif.
+	 * This returns ArrivalCurveStimulus.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/InterProcess"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ArrivalCurveStimulus"));
 	}
 
 	/**
@@ -118,10 +119,10 @@ public class InterProcessItemProvider extends StimulusItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((InterProcess)object).getName();
+		String label = ((ArrivalCurveStimulus)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_InterProcess_type") :
-			getString("_UI_InterProcess_type") + " " + label;
+			getString("_UI_ArrivalCurveStimulus_type") :
+			getString("_UI_ArrivalCurveStimulus_type") + " " + label;
 	}
 	
 
@@ -136,8 +137,8 @@ public class InterProcessItemProvider extends StimulusItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(InterProcess.class)) {
-			case AmaltheaPackage.INTER_PROCESS__COUNTER:
+		switch (notification.getFeatureID(ArrivalCurveStimulus.class)) {
+			case AmaltheaPackage.ARRIVAL_CURVE_STIMULUS__ENTRIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -157,8 +158,8 @@ public class InterProcessItemProvider extends StimulusItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getInterProcess_Counter(),
-				 AmaltheaFactory.eINSTANCE.createCounter()));
+				(AmaltheaPackage.eINSTANCE.getArrivalCurveStimulus_Entries(),
+				 AmaltheaFactory.eINSTANCE.createArrivalCurveEntry()));
 	}
 
 	/**

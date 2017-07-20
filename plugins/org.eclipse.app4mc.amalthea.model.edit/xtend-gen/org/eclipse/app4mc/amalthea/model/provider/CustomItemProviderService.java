@@ -79,7 +79,8 @@ import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
-import org.eclipse.app4mc.amalthea.model.InterProcessActivation;
+import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
+import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.InterfaceKind;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -146,7 +147,6 @@ import org.eclipse.app4mc.amalthea.model.SenderReceiverRead;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
-import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.StringObject;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
@@ -4045,10 +4045,10 @@ public class CustomItemProviderService {
    * InterProcessActivationItemProvider
    */
   public static String getInterProcessActivationItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof InterProcessActivation)) {
-      Stimulus _stimulus = null;
-      if (((InterProcessActivation)object)!=null) {
-        _stimulus=((InterProcessActivation)object).getStimulus();
+    if ((object instanceof InterProcessTrigger)) {
+      InterProcessStimulus _stimulus = null;
+      if (((InterProcessTrigger)object)!=null) {
+        _stimulus=((InterProcessTrigger)object).getStimulus();
       }
       String _name = null;
       if (_stimulus!=null) {
@@ -4064,9 +4064,9 @@ public class CustomItemProviderService {
   
   public static List<ViewerNotification> getInterProcessActivationItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(InterProcessActivation.class);
+    int _featureID = notification.getFeatureID(InterProcessTrigger.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.INTER_PROCESS_ACTIVATION__STIMULUS)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.INTER_PROCESS_TRIGGER__STIMULUS)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);

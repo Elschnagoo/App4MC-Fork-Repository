@@ -13,24 +13,24 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.PeriodicEvent;
+import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Periodic Event</b></em>'.
+ * An implementation of the model object '<em><b>Variable Rate Stimulus</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class PeriodicEventImpl extends StimulusImpl implements PeriodicEvent {
+public class VariableRateStimulusImpl extends StimulusImpl implements VariableRateStimulus {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PeriodicEventImpl() {
+	protected VariableRateStimulusImpl() {
 		super();
 	}
 
@@ -41,7 +41,7 @@ public class PeriodicEventImpl extends StimulusImpl implements PeriodicEvent {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getPeriodicEvent();
+		return AmaltheaPackage.eINSTANCE.getVariableRateStimulus();
 	}
 
-} //PeriodicEventImpl
+} //VariableRateStimulusImpl

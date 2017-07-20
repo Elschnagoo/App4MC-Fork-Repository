@@ -12,52 +12,55 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.util.Collection;
-
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ArrivalCurve;
-import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
+import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Arrival Curve</b></em>'.
+ * An implementation of the model object '<em><b>Sporadic Stimulus</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ArrivalCurveImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SporadicStimulusImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
+public class SporadicStimulusImpl extends StimulusImpl implements SporadicStimulus {
 	/**
-	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEntries()
+	 * @see #getDescription()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ArrivalCurveEntry> entries;
+	protected static final String DESCRIPTION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ArrivalCurveImpl() {
+	protected SporadicStimulusImpl() {
 		super();
 	}
 
@@ -68,7 +71,7 @@ public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getArrivalCurve();
+		return AmaltheaPackage.eINSTANCE.getSporadicStimulus();
 	}
 
 	/**
@@ -76,11 +79,8 @@ public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ArrivalCurveEntry> getEntries() {
-		if (entries == null) {
-			entries = new EObjectContainmentEList<ArrivalCurveEntry>(ArrivalCurveEntry.class, this, AmaltheaPackage.ARRIVAL_CURVE__ENTRIES);
-		}
-		return entries;
+	public String getDescription() {
+		return description;
 	}
 
 	/**
@@ -88,13 +88,11 @@ public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE__ENTRIES:
-				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SPORADIC_STIMULUS__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -105,8 +103,8 @@ public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE__ENTRIES:
-				return getEntries();
+			case AmaltheaPackage.SPORADIC_STIMULUS__DESCRIPTION:
+				return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -116,13 +114,11 @@ public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE__ENTRIES:
-				getEntries().clear();
-				getEntries().addAll((Collection<? extends ArrivalCurveEntry>)newValue);
+			case AmaltheaPackage.SPORADIC_STIMULUS__DESCRIPTION:
+				setDescription((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -136,8 +132,8 @@ public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE__ENTRIES:
-				getEntries().clear();
+			case AmaltheaPackage.SPORADIC_STIMULUS__DESCRIPTION:
+				setDescription(DESCRIPTION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -151,10 +147,26 @@ public class ArrivalCurveImpl extends StimulusImpl implements ArrivalCurve {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE__ENTRIES:
-				return entries != null && !entries.isEmpty();
+			case AmaltheaPackage.SPORADIC_STIMULUS__DESCRIPTION:
+				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ArrivalCurveImpl
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (description: ");
+		result.append(description);
+		result.append(')');
+		return result.toString();
+	}
+
+} //SporadicStimulusImpl

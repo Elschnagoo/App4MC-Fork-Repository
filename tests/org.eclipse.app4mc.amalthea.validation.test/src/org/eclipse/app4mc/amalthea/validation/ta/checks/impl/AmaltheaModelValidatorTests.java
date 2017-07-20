@@ -24,7 +24,7 @@ import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.SWModel;
@@ -399,7 +399,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 
 		periodic.setStimulusDeviation(deviation);
@@ -427,7 +427,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final Distribution<Time> distribution = fac.createUniformDistribution();
 		final Time lowerBound = fac.createTime();
@@ -465,7 +465,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final Distribution<Time> distribution = fac.createUniformDistribution();
 
@@ -492,7 +492,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final Distribution<Time> distribution = fac.createUniformDistribution();
 		final Time upperBound = fac.createTime();
@@ -526,7 +526,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final Distribution<Time> distribution = fac.createUniformDistribution();
 		final Time lowerBound = fac.createTime();
@@ -560,7 +560,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final Distribution<Time> distribution = fac.createUniformDistribution();
 		final Time lowerBound = fac.createTime();
@@ -595,7 +595,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final BetaDistribution<Time> distribution = fac.createBetaDistribution();
 		final double alpha = -1;
@@ -630,7 +630,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final BetaDistribution<Time> distribution = fac.createBetaDistribution();
 		final double beta = 1;
@@ -662,7 +662,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final BetaDistribution<Time> distribution = fac.createBetaDistribution();
 		final double alpha = 1;
@@ -694,7 +694,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final BetaDistribution<Time> distribution = fac.createBetaDistribution();
 		final double alpha = 1;
@@ -725,7 +725,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final Distribution<Time> distribution = fac.createUniformDistribution();
 
@@ -756,7 +756,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final Distribution<Time> distribution = fac.createUniformDistribution();
 		final Time lowerBound = fac.createTime();
@@ -967,7 +967,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final Distribution<Time> distribution = fac.createGaussDistribution();
 		final Time lowerBound = fac.createTime();
@@ -1006,7 +1006,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final GaussDistribution<Time> distribution = fac.createGaussDistribution();
 		final Time lowerBound = fac.createTime();
@@ -1052,7 +1052,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final GaussDistribution<Time> distribution = fac.createGaussDistribution();
 		final Time lowerBound = fac.createTime();
@@ -1098,7 +1098,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final GaussDistribution<Time> distribution = fac.createGaussDistribution();
 		final Time lowerBound = fac.createTime();
@@ -1446,7 +1446,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final Distribution<Time> distribution = fac.createWeibullEstimators();
 		final Time lowerBound = fac.createTime();
@@ -1484,7 +1484,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final WeibullEstimators<Time> distribution = fac.createWeibullEstimators();
 		final Time lowerBound = fac.createTime();
@@ -1526,7 +1526,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final WeibullEstimators<Time> distribution = fac.createWeibullEstimators();
 		final Time lowerBound = fac.createTime();
@@ -1568,7 +1568,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final WeibullEstimators<Time> distribution = fac.createWeibullEstimators();
 		final Time lowerBound = fac.createTime();
@@ -1607,7 +1607,7 @@ public class AmaltheaModelValidatorTests {
 		AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
 		final Amalthea amalthea = fac.createAmalthea();
 		final StimuliModel stimuliModel = fac.createStimuliModel();
-		final Periodic periodic = fac.createPeriodic();
+		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 		final WeibullEstimators<Time> distribution = fac.createWeibullEstimators();
 		final Time mean = fac.createTime();

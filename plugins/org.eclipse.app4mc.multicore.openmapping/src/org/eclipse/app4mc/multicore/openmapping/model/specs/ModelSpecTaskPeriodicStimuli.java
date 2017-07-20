@@ -14,7 +14,7 @@ package org.eclipse.app4mc.multicore.openmapping.model.specs;
 import java.math.BigInteger;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.Periodic;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
@@ -45,11 +45,11 @@ public class ModelSpecTaskPeriodicStimuli extends ModelSpec {
 		for (final Task task : model.getSwModel().getTasks()) {
 			final EList<Stimulus> stimList = task.getStimuli();
 			for (final Stimulus stim : stimList) {
-				if (!(stim instanceof Periodic)) {
+				if (!(stim instanceof PeriodicStimulus)) {
 					continue;
 				}
 
-				final Periodic per = (Periodic) stim;
+				final PeriodicStimulus per = (PeriodicStimulus) stim;
 
 				if (per.getRecurrence() == null) {
 					log("Periodic Stimulus " + per.getName() + " doesn't have a Recurrence set.");

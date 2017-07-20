@@ -16,28 +16,33 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.PeriodicEvent;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.PeriodicEvent} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.PeriodicStimulus} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class PeriodicEventItemProvider extends StimulusItemProvider {
+public class PeriodicStimulusItemProvider extends StimulusItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PeriodicEventItemProvider(AdapterFactory adapterFactory) {
+	public PeriodicStimulusItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -52,19 +57,73 @@ public class PeriodicEventItemProvider extends StimulusItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addClockPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This returns PeriodicEvent.gif.
+	 * This adds a property descriptor for the Clock feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClockPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PeriodicStimulus_clock_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PeriodicStimulus_clock_feature", "_UI_PeriodicStimulus_type"),
+				 AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Clock(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Offset());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Recurrence());
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
+	 * This returns PeriodicStimulus.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PeriodicEvent"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/PeriodicStimulus"));
 	}
 
 	/**
@@ -85,10 +144,10 @@ public class PeriodicEventItemProvider extends StimulusItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((PeriodicEvent)object).getName();
+		String label = ((PeriodicStimulus)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_PeriodicEvent_type") :
-			getString("_UI_PeriodicEvent_type") + " " + label;
+			getString("_UI_PeriodicStimulus_type") :
+			getString("_UI_PeriodicStimulus_type") + " " + label;
 	}
 	
 
@@ -102,6 +161,13 @@ public class PeriodicEventItemProvider extends StimulusItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(PeriodicStimulus.class)) {
+			case AmaltheaPackage.PERIODIC_STIMULUS__OFFSET:
+			case AmaltheaPackage.PERIODIC_STIMULUS__RECURRENCE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -115,6 +181,16 @@ public class PeriodicEventItemProvider extends StimulusItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Offset(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Recurrence(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
 	}
 
 	/**
@@ -130,7 +206,9 @@ public class PeriodicEventItemProvider extends StimulusItemProvider {
 
 		boolean qualify =
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList();
+			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Offset() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Recurrence();
 
 		if (qualify) {
 			return getString
