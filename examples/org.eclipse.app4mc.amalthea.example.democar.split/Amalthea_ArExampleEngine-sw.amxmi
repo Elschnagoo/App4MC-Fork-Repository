@@ -25,7 +25,7 @@
           <calls xsi:type="am:TaskRunnableCall" runnable="IgnitionTiming?type=Runnable" />
         </graphEntries>
       </callGraph>
-      <stimuli xsi:type="am:Periodic" href="amlt:/#OsScheduleTable_2_EP_0?type=Periodic" />
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#OsScheduleTable_2_EP_0?type=PeriodicStimulus" />
       <customProperties key="priority">
         <value xsi:type="am:StringObject" value="4" />
       </customProperties>
@@ -38,7 +38,7 @@
           <calls xsi:type="am:TaskRunnableCall" runnable="MassAirFlowSensor?type=Runnable" />
         </graphEntries>
       </callGraph>
-      <stimuli xsi:type="am:Periodic" href="amlt:/#OsScheduleTable_1_EP_0?type=Periodic" />
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#OsScheduleTable_1_EP_0?type=PeriodicStimulus" />
       <customProperties key="priority">
         <value xsi:type="am:StringObject" value="6" />
       </customProperties>
@@ -49,7 +49,7 @@
           <calls xsi:type="am:TaskRunnableCall" runnable="CylNumObserver?type=Runnable" />
         </graphEntries>
       </callGraph>
-      <stimuli xsi:type="am:Periodic" href="amlt:/#OsScheduleTable_2_EP_0?type=Periodic" />
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#OsScheduleTable_2_EP_0?type=PeriodicStimulus" />
       <customProperties key="priority">
         <value xsi:type="am:StringObject" value="8" />
       </customProperties>
@@ -61,7 +61,7 @@
           <calls xsi:type="am:TaskRunnableCall" runnable="IgnitionTimeActuation?type=Runnable" />
         </graphEntries>
       </callGraph>
-      <stimuli xsi:type="am:Periodic" href="amlt:/#OsScheduleTable_2_EP_0?type=Periodic" />
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#OsScheduleTable_2_EP_0?type=PeriodicStimulus" />
       <customProperties key="priority">
         <value xsi:type="am:StringObject" value="8" />
       </customProperties>

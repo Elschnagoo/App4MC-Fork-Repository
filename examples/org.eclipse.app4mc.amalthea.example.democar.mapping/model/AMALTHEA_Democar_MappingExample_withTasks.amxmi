@@ -14,7 +14,7 @@
     <coreClassifiers name="FPU" />
   </commonElements>
   <swModel>
-    <tasks name="Task_ESSP0" stimuli="Timer_5MS?type=Periodic" multipleTaskActivationLimit="0">
+    <tasks name="Task_ESSP0" stimuli="Timer_5MS?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <customProperties key="[ConstraintExclude] Exclude Targets with FPU">
         <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier" />
       </customProperties>
@@ -26,7 +26,7 @@
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_ESSP1" stimuli="Timer_10MS?type=Periodic" multipleTaskActivationLimit="0">
+    <tasks name="Task_ESSP1" stimuli="Timer_10MS?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <customProperties key="[ConstraintExclude] Exclude Targets with FPU">
         <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier" />
       </customProperties>
@@ -37,7 +37,7 @@
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_ESSP2" stimuli="Timer_10MS?type=Periodic" multipleTaskActivationLimit="0">
+    <tasks name="Task_ESSP2" stimuli="Timer_10MS?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <customProperties key="[ConstraintExclude] Exclude Targets with FPU">
         <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier" />
       </customProperties>
@@ -48,7 +48,7 @@
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_ESSP3" stimuli="Timer_5MS?type=Periodic" multipleTaskActivationLimit="0">
+    <tasks name="Task_ESSP3" stimuli="Timer_5MS?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <customProperties key="[ConstraintExclude] Exclude Targets with FPU">
         <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier" />
       </customProperties>
@@ -62,7 +62,7 @@
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_ESSP4" stimuli="Timer_5MS?type=Periodic" multipleTaskActivationLimit="0">
+    <tasks name="Task_ESSP4" stimuli="Timer_5MS?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <customProperties key="[ConstraintExclude] Exclude Targets with FPU">
         <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier" />
       </customProperties>
@@ -75,7 +75,7 @@
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_ESSP5" stimuli="Timer_5MS?type=Periodic" multipleTaskActivationLimit="0">
+    <tasks name="Task_ESSP5" stimuli="Timer_5MS?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <customProperties key="[ConstraintInclude] Requires Targets with FPU">
         <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier" />
       </customProperties>
@@ -94,7 +94,7 @@
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_ESSP6" stimuli="Timer_10MS?type=Periodic" multipleTaskActivationLimit="0">
+    <tasks name="Task_ESSP6" stimuli="Timer_10MS?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <customProperties key="[ConstraintInclude] Requires Targets with FPU">
         <value xsi:type="am:ReferenceObject" value="FPU?type=CoreClassifier" />
       </customProperties>
@@ -112,7 +112,7 @@
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_ESSP7" stimuli="Timer_10MS?type=Periodic" multipleTaskActivationLimit="0">
+    <tasks name="Task_ESSP7" stimuli="Timer_10MS?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="VehicleSpeedSensorDiagnosis?type=Runnable" />
@@ -120,7 +120,7 @@
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_ESSP8" stimuli="Timer_10MS?type=Periodic" multipleTaskActivationLimit="0">
+    <tasks name="Task_ESSP8" stimuli="Timer_10MS?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="DiagnosisArbiter?type=Runnable" />
@@ -129,7 +129,7 @@
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_ESSP9" stimuli="Timer_5MS?type=Periodic" multipleTaskActivationLimit="0">
+    <tasks name="Task_ESSP9" stimuli="Timer_5MS?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="EcuWheelSpeedSensor?type=Runnable" />
@@ -1124,15 +1124,15 @@
     </activations>
   </swModel>
   <stimuliModel>
-    <stimuli xsi:type="am:Periodic" name="Timer_10MS">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Timer_10MS">
       <offset value="0" unit="ms" />
       <recurrence value="10" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Timer_20MS">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Timer_20MS">
       <offset value="0" unit="ms" />
       <recurrence value="20" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Timer_5MS">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Timer_5MS">
       <offset value="0" unit="ms" />
       <recurrence value="5" unit="ms" />
     </stimuli>

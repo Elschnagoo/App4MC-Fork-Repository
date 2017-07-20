@@ -1,0 +1,237 @@
+
+h2. Constraints Model
+
+The constraints model contains different kind of constraints. There are the runnable-sequencing-constraints that can be used to define a required order for the runnables of the Software Model, the affinity constraints for defining the constraints for the mapping of runnables, processes and schedulers, and the timing constraints for restricting the time span between events or the duration of event chains. Regarding to that, it is also possible to define event chains in this model. 
+
+!../pictures/model_constraints.png!
+
+
+h3. Requirements
+
+The Requirements are used to specify quality requirements for the dynamic architecture. 
+Requirements are divided into the following types depending on the entity type for which the requirement is specified:
+* Architecture Requirements for components
+* Process Chain Requirements for process chains
+* Process Requirements for tasks and isrs
+* Runnable Requirements for runnables
+
+The Severity attribute is used to describe the quality impact if the requirement is not fulfilled.
+The Limit defines the metric, the value and if the value for the metric is an upper limit or a lower limit. 
+Depending on the metric unit, the following Limits can be specified
+* Count Requirement Limit for metrics like __Preemptions__
+* CPU Percentage Requirement Limit for metrics like __CPULoad__
+* Frequency Requirement Limit for metrics like __CacheMissFrequency__
+* Percentage Requirement Limit for metrics like __OsOverheadRelative__
+* Time Requirement Limit for metrics like __ResponseTime__
+
+!(scale)../pictures/model_constraints_requirements.png!
+
+An example for a requirement is the Deadline for a task. The Deadline is specified by an upper limit for the response time of the respective task.
+
+
+h3. Runnable Sequencing Constraints
+
+These constraints can be used to define execution orders of runnables, or in other words, the dependencies between runnables. These dependencies can result from data exchange or any functional dependency, which is not necessarily visible by other model parameter.
+
+The following requirements can be specified with this constraint:
+* Execution sequence of runnables A->B, meaning A has to be finished before B starts
+* Scope on certain process(es), when a runnable is executed multiple times in different process contexts
+* Binding of runnables within a process (loosely, strict)
+* Position, where sequence should start (start sequence), end (end sequence) or at any position
+* Occurrence attribute for multiple preceding/succeeding runnables (all or at least one)
+
+
+A __RunnableSequencingConstraint__ contains a list of __ProcessRunnableGroup__ elements and an enumeration describing the basic rule for the sequencing. Each runnable group collects references to the runnables that should be sequenced. The sequence is defined by the order of the runnable groups within the sequencing constraint. The order of the runnables references within a group is unimportant. To sequence two runnables it is necessary to create the __RunnableSequencingConstraint__ and two __ProcessRunnableGroups__, each referencing a runnable.
+
+It is possible to describe that a set of runnables have to be executed before or after another runnable or set of runnables. For that it is possible to put more than one runnable reference in a group. As already mentioned, the order of the referenced runnables within a __ProcessRunnableGroup__ is unimportant. 
+
+The __RunnableOrderType__ provides different sequencing modes. The mode "loose binding" allows the execution of runnables (that are not part of the constraint) between the runnables of the sequencing-constraint. In addition to that, the option "lose binding & unspecified start runnable" allows to start with any runnable from the sequence, but the sequence itself must not be violated.
+
+The "strict binding" option is the opposite of "loose binding". It says that the runnables must execute in direct order, without any interrupt by another runnable. With "start-", "any-" and "end sequence" it can be defined if the runnables of the constraint should be executed at the start, at the end or at any position in the process. 
+
+A runnable-sequencing-constraint is independent of the processes that are executing the runnables. With a scope it is possible to define that a sequencing-constraint checks only the runnables of a set of processes or just one process. The scope can be defined individually for each runnable.
+
+!../pictures/model_constraints_runnable_sequencing.png!
+
+The following picture shows a __RunnableSequencingConstraint__. The constraint has two runnable groups, visualized by the circles. In this case there is just one runnable in each group.
+The runnables in the group must be executed in the order of the group. Basically there is no restriction on which core or process the runnables are executed. It is important that the order is correct, and that the runnable of one group terminates before the runnable of the next group starts.
+
+!../pictures/model_constraints_runnable_sequencing_basic.png!
+
+The __RunnableSequencingConstraint__ in this figure has two processes as a scope in its second group. That means that the runnable "R3" is allowed to be executed on the processes "P1" and "P3". But it is only expected one time!
+
+!../pictures/model_constraints_runnable_sequencing_scope.png!
+
+Each runnable-sequencing-constraint has a runnable-order-type.
+This type can be:
+* loose binding
+* loose binding & unspecified start runnable
+* strict binding & any sequence
+* strict binding & start sequence
+* strict binding & end sequence
+ 
+The meaning of "loose binding" is that the runnables of a constraint do not have to follow each other directly, they can be also separated by other runnables that are not part of the sequencing-constraint.
+"Unspecified start runnable" means that the order of runnables must be fulfilled (this is always the case) but it does not matter which of the runnables is the runnable to start with.
+So with an "unspecified start runnable" the sequence can be:
+* "R1" -> "R3" -> "R4" 
+* "R3" -> "R4" -> "R1"
+* "R4" -> "R1" -> "R3"
+
+The opposite of loose binding is strict binding. It means that, if the runnables are executed within the same process, they have to be executed directly after each other. It is not allowed that other runnables than the sequencing runnables execute within this sequence.
+The mode "start sequence" means that the first runnable has to be at the beginning of its process. Assuming that all runnables are executed on the same processes, the combination "strict binding & start sequence" means that all runnables of the constraint have to be executed in the correct order at the beginning of the process.
+The mode "end sequence" is like "start sequence" but here the last runnable must be executed at the end of the last process of the runnable sequence.
+
+
+h3. Data Age Constraints
+
+Data Age constraints are used to define when the information in a label becomes valid or invalid after its last update. Therefore a runnable and a label has to be set. The information update occurs when the runnable performs a write access on the label. It is possible to define the minimum time after the information of a label update becomes valid. This means that the information shall not be used for further calculations before this time is over. The maximum time on the other hand defines the time after the label update when the information becomes invalid. Beside of time it is possible to define a minimum and maximum cycle. The cycle is related to the activation of the process that executes the runnable. 
+
+!../pictures/model_constraints_data_age.png!
+
+*(validation-rule) DataAgeTime: The _Time_ object in the role of _minimumTime_ must not contain a negative value!
+*(validation-rule) DataAgeTime: The _Time_ object in the role of _maximumTime_ must not contain a negative value!
+
+
+h3. Data Coherency Groups
+
+A __DataCoherencyGroup__ is used to define data coherency requirements for a group of labels.
+The Direction hereby is used to specify if the labels have to be read or written coherently. Moreover, the scope attribute defines the context of the coherent read or write requirement. Possible scopes are components, processes, and runnables.
+
+!../pictures/model_constraints_data_coherency.png!
+
+h3. Data Stability Groups
+
+A __DataStabilityGroup__ is used to define that the values of labels have to be kept stable within a given execution context.
+Currently, the following execution contexts are covered by the scope:
+* Component
+* Process
+* Runnable
+This means that it has to be guaranteed that the values of labels are identical either within the runnable, the process, or the component in which the denoted labels are accessed.
+
+!../pictures/model_constraints_data_stability.png!
+
+h3. Event Chains
+
+The concept for event chains is based on the Timing Augmented Description Language. 
+The Timing Augmented Description Language (TADL) is coming from the "TIMMO-2-USE ":https://itea3.org/project/timmo-2-use.html project.  
+
+!../pictures/model_constraints_eventchain.png!
+
+The __(Abstract)EventChain__ consists of __EventChainItems__. These items are classified in two types:
+
+# EventChainReferences -> EventChain: Used to reference already global defined EvenChains in the root list of the model.
+# EventChainContainers -> SubEventChain: Inner anonymous EventChains, which are only defined once and has no global meaning, but only in the context of the current defined EventChain.
+
+An Event Chain object references always two events, a stimulus event and a response event. To define a simple event chain that just contains two events, one event chain object is enough. In this case it would just be a chain that with its stimulus as first event and the response as second event. 
+If more events are required it is necessary to add sub event chains. The stimulus is always the first event of an event chain, the response is always the last event. The events that are defined in the sub event chains are the events in between. 
+
+The picture below shows a simple example for an event chain of four events in a row.
+The top level chain defines the first event (E1) and the last event (E4).
+It contains a number of event chains. They describe the way from E1 to E4. 
+These sub event chains are added as __segments__ to the parent. 
+For this some rules has to be considered:
+The stimulus of the first child event chain has to be the same as the stimulus of the parent (red in picture).
+The stimulus of other child event chains have to be equal to the response of the previous chain (blue in picture).
+The response of the last child event chain has to be the same as the response of the parent (green in picture).
+
+!{width: 500px}../pictures/model_constraints_eventchain_segments.png!
+
+
+As a stimulus or response event it is either possible to use an Entity Event or an Event Set.
+An Entity Event is a single event regarding to an entity like a task or a runnable. So it can be e.g. the start of a runnable. 
+If a set of events is used, then all events of this group must occur fulfill the event chain. The order in which the events occur is not important. 
+
+!../pictures/model_constraints_eventchain_eventgroups.png!
+
+
+h3. Timing Constraints
+
+h4. Synchronization Constraints
+
+An __EventSynchronizationConstraint__ describes how tightly the occurrences of a group of events follow each other.
+There must exist a sequence of time windows of width tolerance, such that every occurrence of every event in events belongs to at least one window, and every window is populated by at least one occurrence of every event.
+The parameter __multipleOccurrencesAllowed__ defines, whether for the constraint all occurrences have to be considered or just the subsequent ones.
+
+An __EventChainSynchronizationConstraint__ describes how tightly the occurrences of an event chain follow the occurrences of a different event chain.
+The __SynchronizationType__ defines which parts of the event chains have to be in sync, stimulus or response, and the width of a time window sets the allowed tolerance.
+The parameter __multipleOccurrencesAllowed__ defines, whether for the constraint all occurrences have to be considered or just the subsequent ones.
+
+!../pictures/model_constraints_timing_sync.png!
+
+*(validation-rule) _SynchronizationConstraint_: The _Time_ object in the role of _tolerance_ must not contain a negative value!
+
+h4. Repetition Constraint
+
+A __RepetitionConstraint__ describes the distribution of the occurrences of a single event, including jitter.
+Every sequence of span occurrences of event must have a length of at least lower and at most upper time units.
+
+!../pictures/model_constraints_timing_repetition.png!
+
+*(validation-rule) _RepetitionConstraint_: The _Time_ object in the role of _lower_ must not contain a negative value!
+*(validation-rule) _RepetitionConstraint_: The _Time_ object in the role of _upper_ must not contain a negative value!
+*(validation-rule) _RepetitionConstraint_: The _Time_ object in the role of _period_ must not contain a negative value!
+*(validation-rule) _RepetitionConstraint_: The _Time_ object in the role of _jitter_ must not contain a negative value!
+
+h4. Delay Constraint
+
+A Delay Constraint imposes limits between the occurrences of an event called source and an event called target.
+Every instance of source must be matched by an instance of target, within a time window starting at lower and ending at upper time units relative to the source occurrence.
+In addition, a __MappingType__ defines whether there is a strong ( __OneToOne__ ), neutral ( __Reaction__ ), or weak ( __UniqueReaction__ ) delay relation between the events.
+
+!../pictures/model_constraints_timing_delay.png!
+
+*(validation-rule) _DelayConstraint_: The _Time_ object in the role of _lower_ must not contain a negative value!
+*(validation-rule) _DelayConstraint_: The _Time_ object in the role of _upper_ must not contain a negative value!
+
+h4. Event Chain Latency Constraint
+
+An __EventChainLatencyConstraint__ defines how long before each response a corresponding stimulus must have occurred ( __Age__ ), or how long after a stimulus a corresponding response must occur ( __Reaction__ ).
+It always refers to an EventChain.
+
+!../pictures/model_constraints_timing_latency.png!
+
+*(validation-rule) _EventChainLatencyConstraint_: The _Time_ object in the role of _minimum_ must not contain a negative value!
+*(validation-rule) _EventChainLatencyConstraint_: The _Time_ object in the role of _maximum_ must not contain a negative value!
+
+h3. Affinity Constraints
+
+Affinity constraints are used to define the mapping of executable objects to each other.
+The objects that can be mapped are:
+* Runnables
+* Processes (Task or ISR)
+* Labels
+
+!../pictures/model_constraints_affinity.png!
+
+An affinity constraint can either be a pairing or a separation constraint. A pairing constraint contains one amount of objects and a target. The pairing constraints say "All these objects must run together on this target". A separation constraint contains two groups of objects and a target. It says "This group of objects is not allowed to be mapped with the other group of objects on the specific target". So the separation constraint can be used to forbid a combination of objects on a target. It can also be used to say "These objects are not allowed to be mapped on this target". In this case only one group of the separation constraint is used.
+
+Each affinity constraint has one or more targets. The type of the target depends on the type that should be mapped.
+
+h4. Data Affinity Constraints
+
+A __DataConstraint__ is used to define the mapping of label objects to memory units.
+
+!../pictures/model_constraints_affinity_data.png!
+
+h4. Process Affinity Constraints
+
+A __ProcessConstraint__ is used to define the mapping of process (Task or ISR) objects to processing cores or scheduling units.
+
+!../pictures/model_constraints_affinity_process.png!
+
+h4. Runnable Affinity Constraints
+
+A __RunnableConstraint__ is used to define the mapping of runnable objects to processing cores or scheduling units.
+
+!../pictures/model_constraints_affinity_runnable.png!
+
+
+h3. Physical Section Constraints
+
+A __PhysicalSectionConstraint__ is used to to define the mapping of Section objects to Memories. This mapping of Section object to Memory objects specifies that corresponding *PhysicalSectionMapping* associated to this *Section* element can be allocated only in the mapped Memories.
+
+bc. Example: PhysicalSectionConstraint with the below properties has the following semantic:
+	name: Ram1_Ram2_PhysicalSectionConstraint
+	Memories : RAM1, RAM2
+	Section : .abc.reini
+Semantic: PhysicalSectionMapping for .abc.reini section can only be allocated either in RAM1 or RAM2 or in both. But not in other Memories.

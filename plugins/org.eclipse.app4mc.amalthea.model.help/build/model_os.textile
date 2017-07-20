@@ -1,0 +1,133 @@
+
+h2. OS Model
+
+This part of the AMALTHEA model describes the provided functionality of an operating system. It mainly provides a way to specify how access is given to certain system resources. Therefore the concepts of scheduling, buffering, and semaphores are supported, which are described in detail in the following chapter.
+
+!../pictures/model_os_overview.png!
+
+
+h3. Operating System
+
+The basic element in the OS Model is the operating system. There can multiple operating systems in one model. The operating system type can be used to describe a generic operating system. It is also possible to use the vendor operating system type to define a vendor specific OS. An operating system contains a number of task schedulers and interrupt controllers. A task scheduler controls the execution of a task on one or multiple processor cores. An interrupt controller is the controller for the execution of ISRs and can be also mapped to multiple cores. The mapping of tasks and ISRs to their controller and the mapping of the controller to the cores can be done in the Mapping Model. An operating system can also contain a description of the overhead it produces. For this there is a more detailed explanation below.  
+ 
+!../pictures/model_os_operatingsystem.png!
+
+
+h3. Scheduler
+
+Interrupt controller and task scheduler have a scheduling algorithm. The picture below shows that both types are inherited of the scheduler type. Each scheduler has computation items. These items (a subset of the runnable items) characterize the runtime behavior of the scheduler.
+
+!../pictures/model_os_scheduler.png!
+
+h4. Scheduling Algorithm
+
+This is an abstract class for the different scheduling algorithms.
+
+table(classic). 
+|_. Scheduling Algorithm  |_. Description |
+| Grouping | This scheduler is a logical grouping of tasks/child-schedulers, e.g. a partition with attached budget for all tasks. This scheduler does not take any scheduling decisions and a parent scheduler is mandatory. |
+| UserSpecificSchedulingAlgorithm | This class contains a list of algorithm parameters. Each parameter has a key and a value (both Strings). A user can store all information for its own specific scheduling algorithm here. |
+|\2{background:#e6ffe6;}. Fixed Priority |
+| OSEK | OSEK compliant Scheduling |
+| FixedPriorityPreemptive | Fixed Priority Preemptive Scheduling (e.g. AUTOSAR) |
+| DeadlineMonotonic | Deadline Monotonic Scheduling (DMS): Task with the shortest period gets the lowest priority. |
+| RateMonotonic | Rate Monotonic Scheduling (RMS): Task with the shortest period gets the highest priority. |
+|\2{background:#e6ffe6;}. Dynamic Priority |
+| EarliestDeadlineFirst | Earliest Deadline First (EDF): Task with the earliest deadline gets the highest priority. |
+| LeastLocalRemainingExecutionTimeFirst | Least Local Remaining Execution-time First (LLREF): Task with the smallest local remaining execution time gets the highest priority. |
+| PriorityBasedRoundRobin | Round Robin Scheduling Algorithm with prioritized processes. |
+|\2{background:#e6ffe6;}. Proportionate Fair (Pfair) |
+| PfairPD2 | Proportionate Fair PD<notextile><sup>2</sup></notextile> Scheduling (Pfair-PD<notextile><sup>2</sup></notextile>) |
+| PartlyPfairPD2 | Partly Proportionate Fair PD<notextile><sup>2</sup></notextile> Scheduling (PPfair-PD<notextile><sup>2</sup></notextile>) |
+| EarlyReleaseFairPD2 | Early Release Fair PD<notextile><sup>2</sup></notextile> Scheduling (ERfair-PD<notextile><sup>2</sup></notextile>) |
+| PartlyEarlyReleaseFairPD2 | Partly Early Release Fair PD<notextile><sup>2</sup></notextile> Scheduling (P-ERfair-PD<notextile><sup>2</sup></notextile>) |
+|\2{background:#e6ffe6;}. Reservation Based Server |
+| DeferrableServer | Deferrable Server (DS): provides a fixed budget, in which the budget replenishment is done periodically. |
+| PollingPeriodicServer | Polling Server (PS): provides a fixed budget periodically that is only available at pre-defined times. |
+| SporadicServer | Sporadic Server (SS): provides a fixed budget, in which the budget replenishment is performed only if it was consumed. |
+| ConstantBandwidthServer | Constant Bandwidth Server (CBS): provides a fixed utilization for executing jobs, in which the deadline for execution is independent on the execution time of jobs. |
+| ConstantBandwidthServerWithCASH | Constant Bandwidth Server (CBS) with capacity sharing (CASH). Consumes residual slack from other servers (work conserving). |
+
+h5. Further information
+
+Details regarding proportionate fair (*Pfair*) scheduling and the variants of the *PD<notextile><sup>2</sup></notextile> Pfair* algorithm can be found in the dissertation "Effcient and Flexible Fair Scheduling of Real-time Tasks on Multiprocessors" by Anand Srinivasan (see "dissertation":https://www.cs.unc.edu/~anderson/diss/srinidiss.pdf at University of North Carolina at Chapel Hill).
+
+An overview regarding *Reservation Servers* is given in the lecture "Resource Reservation Servers" by Jan Reineke (see "lecture":https://embedded.cs.uni-saarland.de/lectures/realtimesystems/resourceReservationServers.pdf at Saarland University).
+
+
+h3. Os Overhead
+
+It is possible to define the overhead that is produced by an operating system. The defined overhead can be assigned to an operating system definition. Each overhead information is defined as a set of instructions that has to be executed when the corresponding OS function is used. The instructions can be either a constant set or a deviation of instructions. It is possible to define the overhead for the ISR category one and two and for a number of operating system API functions.
+
+!../pictures/model_os_osoverhead.png!
+
+h4. ISR Overhead
+
+* ISR category 1 & 2: Describes the overhead for ISRs of category one and two by adding a set of instructions that is executed at start and terminate of the ISR 
+
+h4. API Overhead
+
+There exists also an overhead for API calls. The following API calls are considered:
+
+* API Activate Task: Runtime overhead for the activation of a task or ISR by another task or ISR (inside the activating process)
+* API Terminate Task: Runtime for explicit task termination call (inside a task)
+
+* API Schedule: Runtime for task scheduling (on scheduling request)
+
+* API Request Resource: Runtime overhead for requesting a semaphore (inside a runnable)
+* API Release Resource: Runtime overhead for releasing a semaphore (inside a runnable)
+
+* API Set Event: Runtime overhead for requesting an OS event (inside a task or ISR)
+* API Wait Event: Runtime overhead for waiting for an OS event (inside a task or ISR)
+* API Clear Event: Runtime overhead for clearing an OS event (inside a task or ISR)
+
+* API Send Message: Runtime overhead for cross-core process activation or event (inside a task or ISR) 
+* API Enforced Migration: Runtime overhead for migrating from one scheduler to another scheduler (inside a task or ISR)
+           
+* API Suspend OsInterrupts
+* API Resume OsInterrupts
+
+* API Request Spinlock
+* API Release Spinlock
+
+* API SenderReceiver Read
+* API SenderReceiver Write
+
+* API SynchronousServerCallPoint
+
+* API IOC Read
+* API IOC Write
+
+h3(#os-data-consistency). OS Data Consistency
+
+The __OsDataConsistency__ class provides a way to configure an automatic data consistency mechanism of an operating system. It is used to cover the following two use cases:
+* Provide a configuration for external tools that perform a data consistency calculation based on the stated information.
+* Provide the results of a performed data consistency calculation which then have to be considered by external tools (e.g. by timing simulation).
+
+!../pictures/model_os_data_consistency.png!
+
+To distinguish the different use cases and to consequently also indicate the workflow progress for achieving data consistency, __OsDataConsistencyMode__ allows to define the general configuration of the data consistency. The following modes are available:
+
+# noProtection: data stability and coherency is NOT automatically ensured.
+# automaticProtection: data stability and coherency HAS TO BE ensured according configuration either via custom protection or via model elements.
+## customProtection: data stability and coherency IS ensured according configuration but not via model elements.
+## handeldByModelElements: data stability and coherency IS ensured via model elements.
+
+The __DataStability__ class defines for which sequence of runnables data has to be kept stable. This can either be stability within a process meaning over all its runnables, within each runnable or within each schedule section. Furthermore, it can be stated whether all data is considered for stability or just those accessed multiple times.
+
+The __NonAtomicDataCoherency__ class defines for which sequence of runnables data has to be kept coherent. Like for data stability it can be stated whether all data is considered for coherency or just those accessed multiple times.
+
+
+h3. Semaphore
+
+With this object, a semaphore can be described which limits the access of several processes to one resource at the same time.
+
+!../pictures/model_os_semaphore.png!
+
+table(classic). 
+|_. Attribute  |_. Description |
+| __name__ | Name of semaphore (inherited from ReferableBaseObject) |
+| __semaphoreType__ | Defines how the semaphore is implemented |
+| __initialValue__ | Initial number of processes that access the semaphore |
+| __maxValue__ | Maximum number of processes that can concurrently access the semaphore |
+| __priorityCeilingPrototcol__ | Defines if the priority ceiling protocol is activated. If it is activated, a process that accesses the semaphore gets a higher priority as the processes that can also access the same semaphore |

@@ -13,7 +13,7 @@
     <tags name="SwcInjIgnActuation" tagType="SOFTWARE_COMPONENT" />
   </commonElements>
   <swModel>
-    <tasks name="Task_10MS" stimuli="Timer_10MS?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="10">
+    <tasks name="Task_10MS" stimuli="Timer_10MS?type=PeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="10">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="CheckPlausability?type=Runnable" />
@@ -55,7 +55,7 @@
         <value xsi:type="am:StringObject" value="10" />
       </customProperties>
     </tasks>
-    <tasks name="Task_20MS" stimuli="Timer_20MS?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="10">
+    <tasks name="Task_20MS" stimuli="Timer_20MS?type=PeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="10">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="BrakeForceArbiter?type=Runnable" />
@@ -65,7 +65,7 @@
         <value xsi:type="am:StringObject" value="10" />
       </customProperties>
     </tasks>
-    <tasks name="Task_5MS" stimuli="Timer_5MS?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="10">
+    <tasks name="Task_5MS" stimuli="Timer_5MS?type=PeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="10">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence">
           <calls xsi:type="am:TaskRunnableCall" runnable="EcuBrakeActuator?type=Runnable" />
@@ -1017,15 +1017,15 @@
     </operatingSystems>
   </osModel>
   <stimuliModel>
-    <stimuli xsi:type="am:Periodic" name="Timer_10MS">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Timer_10MS">
       <offset unit="ms" />
       <recurrence value="10" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Timer_20MS">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Timer_20MS">
       <offset unit="ms" />
       <recurrence value="20" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Timer_5MS">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Timer_5MS">
       <offset unit="ms" />
       <recurrence value="5" unit="ms" />
     </stimuli>

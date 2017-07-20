@@ -131,19 +131,19 @@
     </operatingSystems>
   </osModel>
   <stimuliModel>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_1">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_1">
       <offset unit="ms" />
       <recurrence value="180" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_2">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_2">
       <offset unit="ms" />
       <recurrence value="200" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_3">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_3">
       <offset unit="ms" />
       <recurrence value="300" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_4">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_4">
       <offset unit="ms" />
       <recurrence value="1" unit="s" />
     </stimuli>

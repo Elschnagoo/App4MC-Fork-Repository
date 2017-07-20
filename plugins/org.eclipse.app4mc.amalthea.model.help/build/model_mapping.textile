@@ -1,0 +1,56 @@
+
+h2. Mapping Model
+
+The mapping model is intended to provide tools that use hardware and software models (e.g. code generators) information about the corresponding mappings and allocations. This information contains associations between
+* schedulers and executable software: A scheduler manages and distributes executable software like runnables or tasks on its managed cores,
+* schedulers and cores: A scheduler can manage one or more cores and deploy computations on these
+* data and memories: Data (such as functions, variables, heap etc) is mapped on static and volatile memories.
+
+
+h3. Overview
+
+The Meta Model specifying the Mapping Model is shown below. 
+
+!(scale)../pictures/model_mapping_overview.png!
+
+h4. MappingModel
+
+The __MappingModel__ serves as a container for each of the mapping rules, i.e. __Allocations__ (executable software and cores which are allocated to schedulers) and __Mappings__ (labels and software which is mapped to memories).
+
+
+h3. Mappings
+
+
+h4. MemoryMapping
+
+The __MemoryMapping__ is a class, describing the mapping of parts of the software model to __Memory__. It is used to associate specializations of the __AbstractMemoryElement__ (i.e. __Label__, __Runnable__, __TaskPrototype__ and __Process__). The target memory is specified by a reference to an explicit __Memory__ within an existing hardware model. The position in memory can also be defined as address here. If the address is a absolute memory address, a offset address from the memories first address, or if the address information is not expected at all is defined by the __Memory Address Mapping Type__ enumeration in the root element of the __Mapping Model__. The  Additional attributes, e.g. to supply further information for a code generator, may be described by the containment attributeList.
+
+
+h4. PhysicalSectionMapping
+
+The _PhysicalSectionMapping_ class (can also be called as *Physical Memory Section* ) describes the following:
+* mapping of various *Section* elements to a specific *Memory*
+* mapping various *Label and Runnable* elements to a Physical Memory Section
+* description of memory address location where the Physical Memory Section is allocated 
+
+
+h3. Allocations
+
+!(scale)../pictures/model_mapping_allocation.png!
+
+h4. CoreAllocation
+
+The __CoreAllocation__ describes the allocation of cores to a __Scheduler__. This class consists of references to the respective __Scheduler__, which specified within an existing OS model, and a core, which is specified in a hardware model. Further attributes, which may be used to supply additional information, e.g. for a code generator, may be described by the containment attributeList.
+
+
+h4. RunnableAllocation
+
+The __RunnableAllocation__ is a specialization of the __ExecutableAllocation__. It is used to associate a __Runnable__, specified within an existing software model, with a __Scheduler__.
+
+h4. ISRAllocation
+
+The __ISRAllocation__ is used to associate  an __ISR__ with an __InterruptConroller__. The attribute 'priority' can be used to assign a value for this specific context. If the value is set, it will be used instead of the default.
+
+h4. TaskAllocation
+
+The __TaskAllocation__ is used to associate a __Task__ with a __TaskScheduler__. The attribute 'priority' can be used to assign a value for this specific context. If the value is set, it will be used instead of the default.

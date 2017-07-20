@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <swModel>
-    <tasks name="Task_1" stimuli="Stimulus_Task_1?type=Periodic" multipleTaskActivationLimit="2">
+    <tasks name="Task_1" stimuli="Stimulus_Task_1?type=PeriodicStimulus" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_1_1">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1?type=Runnable" />
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_2" stimuli="Stimulus_Task_2?type=Periodic" multipleTaskActivationLimit="2">
+    <tasks name="Task_2" stimuli="Stimulus_Task_2?type=PeriodicStimulus" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_2_1">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2?type=Runnable" />
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_3" stimuli="Stimulus_Task_3?type=Periodic" multipleTaskActivationLimit="2">
+    <tasks name="Task_3" stimuli="Stimulus_Task_3?type=PeriodicStimulus" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_3_1">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3?type=Runnable" />
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_4" stimuli="Stimulus_Task_4?type=Periodic" multipleTaskActivationLimit="2">
+    <tasks name="Task_4" stimuli="Stimulus_Task_4?type=PeriodicStimulus" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_4_1">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4?type=Runnable" />
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_5" stimuli="Stimulus_Task_5?type=Periodic" multipleTaskActivationLimit="2">
+    <tasks name="Task_5" stimuli="Stimulus_Task_5?type=PeriodicStimulus" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_5_1">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_5?type=Runnable" />
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_6" stimuli="Stimulus_Task_6?type=Periodic" multipleTaskActivationLimit="2">
+    <tasks name="Task_6" stimuli="Stimulus_Task_6?type=PeriodicStimulus" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_6_1">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6?type=Runnable" />
         </graphEntries>
       </callGraph>
     </tasks>
-    <tasks name="Task_7" stimuli="Stimulus_Task_7?type=Periodic" multipleTaskActivationLimit="2">
+    <tasks name="Task_7" stimuli="Stimulus_Task_7?type=PeriodicStimulus" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_7_1">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_7_1?type=Runnable" />
@@ -174,31 +174,31 @@
     </operatingSystems>
   </osModel>
   <stimuliModel>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_1">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_1">
       <offset value="0" unit="ms" />
       <recurrence value="80" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_2">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_2">
       <offset value="0" unit="ms" />
       <recurrence value="120" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_3">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_3">
       <offset value="0" unit="ms" />
       <recurrence value="160" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_4">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_4">
       <offset value="0" unit="ms" />
       <recurrence value="180" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_5">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_5">
       <offset value="0" unit="ms" />
       <recurrence value="200" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_6">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_6">
       <offset value="0" unit="ms" />
       <recurrence value="300" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_7">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_7">
       <offset value="0" unit="ms" />
       <recurrence value="1000" unit="ms" />
     </stimuli>
@@ -287,25 +287,25 @@
       <entity href="amlt:/#Runnable_7_2?type=Runnable" />
     </events>
     <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_1">
-      <entity xsi:type="am:Periodic" href="amlt:/#Stimulus_Task_1?type=Periodic" />
+      <entity xsi:type="am:PeriodicStimulus" href="amlt:/#Stimulus_Task_1?type=PeriodicStimulus" />
     </events>
     <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_2">
-      <entity xsi:type="am:Periodic" href="amlt:/#Stimulus_Task_2?type=Periodic" />
+      <entity xsi:type="am:PeriodicStimulus" href="amlt:/#Stimulus_Task_2?type=PeriodicStimulus" />
     </events>
     <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_3">
-      <entity xsi:type="am:Periodic" href="amlt:/#Stimulus_Task_3?type=Periodic" />
+      <entity xsi:type="am:PeriodicStimulus" href="amlt:/#Stimulus_Task_3?type=PeriodicStimulus" />
     </events>
     <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_4">
-      <entity xsi:type="am:Periodic" href="amlt:/#Stimulus_Task_4?type=Periodic" />
+      <entity xsi:type="am:PeriodicStimulus" href="amlt:/#Stimulus_Task_4?type=PeriodicStimulus" />
     </events>
     <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_5">
-      <entity xsi:type="am:Periodic" href="amlt:/#Stimulus_Task_5?type=Periodic" />
+      <entity xsi:type="am:PeriodicStimulus" href="amlt:/#Stimulus_Task_5?type=PeriodicStimulus" />
     </events>
     <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_6" description="">
-      <entity xsi:type="am:Periodic" href="amlt:/#Stimulus_Task_6?type=Periodic" />
+      <entity xsi:type="am:PeriodicStimulus" href="amlt:/#Stimulus_Task_6?type=PeriodicStimulus" />
     </events>
     <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_7">
-      <entity xsi:type="am:Periodic" href="amlt:/#Stimulus_Task_7?type=Periodic" />
+      <entity xsi:type="am:PeriodicStimulus" href="amlt:/#Stimulus_Task_7?type=PeriodicStimulus" />
     </events>
   </eventModel>
   <mappingModel addressMappingType="offset">

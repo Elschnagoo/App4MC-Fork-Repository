@@ -1,0 +1,28 @@
+
+h2. Event Model
+
+The event model provides the classes to describe the BTF-Events that can be used for the tracing configuration, for the modeling of event chains and for some timing constraints. 
+
+!(scale)../pictures/model_events.png!
+
+
+There are different event classes for the different entity types that can be traced: 
+
+table(classic). 
+|_. Entity |_. Event Class |
+| Process (Task, ISR) | ProcessEvent |
+| Stimulus | StimulusEvent |
+| Runnable | RunnableEvent |
+| Label | LabelEvent |
+| Semaphore | SemaphoreEvent |
+
+
+In a running system, each entity can have different states. An event trace consists of the events that are visualizing the state-transitions of the traced entities. To define such an event in the model, each kind of event class contains an event-type-enumeration that provides the event-types for the state-transitions of its entity. The following picture shows the possible states of a process: 
+
+!../pictures/model_events_process.png!
+
+So for example the event-type-enumeration for a process event contains the events __activate__, __start__, __resume__, ...
+
+If it is required to define an event like "start-event of *some* process" then it is enough to create a object of type __ProcessEvent__ and set the event-type __start__.
+
+It is also possible to restrict the definition of an event to a special entity. So it can be defined like "start-event of task T_1". Therefore it is possible to reference a process from __ProcessEvent__. In general, each event class can reference an entity of the corresponding type. In addition to that, each event class provides individual restrictions. So it is possible for __ProcessEvent__ that the event is not only restricted to a special process, it can be also restricted to a core. So that would be like "start-event of task T_1 on core C_2". Another example is the class __RunnableEvent__, it allows to restrict the event to a runnable, the process that executes the runnable and the core that executes the process. 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <swModel>
-    <tasks name="Task_1" stimuli="Stimulus_Task_1?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="2">
+    <tasks name="Task_1" stimuli="Stimulus_Task_1?type=PeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_1">
-          <calls xsi:type="am:InterProcessActivation" stimulus="IPA_Task_2?type=InterProcess" />
+          <calls xsi:type="am:InterProcessTrigger" stimulus="IPA_Task_2?type=InterProcessStimulus" />
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1?type=Runnable" />
         </graphEntries>
       </callGraph>
@@ -12,7 +12,7 @@
         <value xsi:type="am:StringObject" value="2" />
       </customProperties>
     </tasks>
-    <tasks name="Task_2" stimuli="IPA_Task_2?type=InterProcess" preemption="preemptive" multipleTaskActivationLimit="2">
+    <tasks name="Task_2" stimuli="IPA_Task_2?type=InterProcessStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="33.0">
@@ -36,10 +36,10 @@
         <value xsi:type="am:StringObject" value="1" />
       </customProperties>
     </tasks>
-    <tasks name="Task_3" stimuli="Stimulus_Task_3?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="2">
+    <tasks name="Task_3" stimuli="Stimulus_Task_3?type=PeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_3">
-          <calls xsi:type="am:InterProcessActivation" stimulus="IPA_Task_4?type=InterProcess" />
+          <calls xsi:type="am:InterProcessTrigger" stimulus="IPA_Task_4?type=InterProcessStimulus" />
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3?type=Runnable" />
         </graphEntries>
       </callGraph>
@@ -47,7 +47,7 @@
         <value xsi:type="am:StringObject" value="4" />
       </customProperties>
     </tasks>
-    <tasks name="Task_4" stimuli="IPA_Task_4?type=InterProcess" preemption="preemptive" multipleTaskActivationLimit="2">
+    <tasks name="Task_4" stimuli="IPA_Task_4?type=InterProcessStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="20.0">
@@ -81,7 +81,7 @@
         <value xsi:type="am:StringObject" value="3" />
       </customProperties>
     </tasks>
-    <tasks name="Task_5" stimuli="Stimulus_Task_5?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="2">
+    <tasks name="Task_5" stimuli="Stimulus_Task_5?type=PeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CS_Task_7">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_5_1?type=Runnable" />
@@ -256,20 +256,20 @@
     </operatingSystems>
   </osModel>
   <stimuliModel>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_1">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_1">
       <offset value="0" unit="ms" />
       <recurrence value="220" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_3">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_3">
       <offset value="0" unit="ms" />
       <recurrence value="50" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_Task_5">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_5">
       <offset value="0" unit="ms" />
       <recurrence value="500" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:InterProcess" name="IPA_Task_2" />
-    <stimuli xsi:type="am:InterProcess" name="IPA_Task_4" />
+    <stimuli xsi:type="am:InterProcessStimulus" name="IPA_Task_2" />
+    <stimuli xsi:type="am:InterProcessStimulus" name="IPA_Task_4" />
   </stimuliModel>
   <constraintsModel />
   <eventModel>
@@ -319,18 +319,18 @@
     </events>
     <events xsi:type="am:RunnableEvent" name="Event_Runnable_State_2" entity="Runnable_State_2?type=Runnable" />
     <events xsi:type="am:StimulusEvent" name="Event_IPA_Task_2">
-      <entity xsi:type="am:InterProcess" href="amlt:/#IPA_Task_2?type=InterProcess" />
+      <entity xsi:type="am:InterProcessStimulus" href="amlt:/#IPA_Task_2?type=InterProcessStimulus" />
     </events>
     <events xsi:type="am:StimulusEvent" name="Event_IPA_Task_4">
-      <entity xsi:type="am:InterProcess" href="amlt:/#IPA_Task_4?type=InterProcess" />
+      <entity xsi:type="am:InterProcessStimulus" href="amlt:/#IPA_Task_4?type=InterProcessStimulus" />
     </events>
     <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_1">
-      <entity xsi:type="am:Periodic" href="amlt:/#Stimulus_Task_1?type=Periodic" />
+      <entity xsi:type="am:PeriodicStimulus" href="amlt:/#Stimulus_Task_1?type=PeriodicStimulus" />
     </events>
     <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_3">
-      <entity xsi:type="am:Periodic" href="amlt:/#Stimulus_Task_3?type=Periodic" />
+      <entity xsi:type="am:PeriodicStimulus" href="amlt:/#Stimulus_Task_3?type=PeriodicStimulus" />
     </events>
-    <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_5" entity="Stimulus_Task_5?type=Periodic" />
+    <events xsi:type="am:StimulusEvent" name="Event_Stimulus_Task_5" entity="Stimulus_Task_5?type=PeriodicStimulus" />
   </eventModel>
   <mappingModel addressMappingType="offset">
     <taskAllocation task="Task_1?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />

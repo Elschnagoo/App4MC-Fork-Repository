@@ -1,0 +1,419 @@
+
+h2. Software Model
+
+The AMALTHEA software model is central accessible through the __SWModel__ element. 
+
+
+h3. Memory Information
+
+Analyzing and mapping the software structure to available memories needs additional information of the included elements. This type of information targets the consumed size of memory of an element, represented by the __size__ attribute of type __DataUnit__. The element __AbstractMemoryElement__ is a generalized element that provides this data. The following image shows the structure and also the elements of the software model that are extending __AbstractMemoryElement__ (the overview picture is only showing the hierarchy and not possible relationships between the elements):
+
+!(scale)../pictures/model_sw_memory_inf.png!
+
+
+h3. Labels
+
+The label element represents a data element. It is directly located in a defined area of a given memory.
+It can be used as a parameter, a temporarily existing variable or representing a  constant value.
+
+!../pictures/model_sw_label.png!
+
+The following attributes are describing a label:
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name  |_. Description |
+| __name__ | The name represented as String value (derived from __AbstractElementMemoryInformation__) |
+| __displayName__ | In addition to the name attribute, which must be unique, a label can also be described by an additional and optional display name. The displayName attribute must not be unique. It can be used for example to represent specification data, which can be different from the unique name (like a symbol) of an available software build. |
+| __dataType__ | Reference to the data type definition |
+| __constant__ | Boolean value to represent, if label is representing a constant value |
+| __bVolatile__ | Boolean value to mark a label as volatile |
+| __dataStability__ | Enumeration value to represent the data stability needs of the label. If set, it overwrites the global settings stated by the __OsDataDependency__, otherwise it inherits them (see <notextile><a href="./model_os.html#os-data-consistency">OS Data Consistency</a></notextile>). |
+
+h3. Channels
+
+The channel element has two different characteristics: it represents a data element in memory and also a way how runnables transmit larger amounts of data. A typical applications is the streaming of video data where a continuous sequence of images is sent in smaller chunks.
+
+!../pictures/model_sw_channel.png!
+
+The following attributes are describing a label:
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name  |_. Description |
+| __name__ | The name represented as String value (derived from __AbstractElementMemoryInformation__) |
+| __displayName__ | In addition to the name attribute, which must be unique, a label can also be described by an additional and optional display name. The displayName attribute must not be unique. It can be used for example to represent specification data, which can be different from the unique name (like a symbol) of an available software build. |
+| __elementType__ | Reference to the data type definition of a single element |
+| __defaultElements__ | Number of elements initially in the channel (at start-up) |
+| __maxElements__ | Depth of channel (maximum number of elements that may be stored) |
+
+
+h3. Data Types
+
+h4. General Information
+
+The AMALTHEA data model supports meta information for base data types. Therefore the element __BaseTypeDefinition__ exists in the software part of the model. It consists of the name and number of bits to define a data type. Additional information to store is the mapping information of these data types for a target platform, represented by the __DataPlatformMapping__ element, like AUTOSAR or any other one.
+
+The compound data types are data structures, based on given or defined base types.
+In the literature they are also often named composite or derived types "see Wiki":http://en.wikipedia.org/wiki/Data_type.
+The result of this type of definition is an own data type, which can be used as base data types.
+They can consist of static structures or dynamic ones, like arrays or stacks.
+
+!../pictures/model_sw_type_system.png!
+
+The following compound data type definitions are currently supported:
+
+* Pointer: Holds a reference to another type using its memory address
+* Array: Contains a number of elements of the same data type. The size of an array can be fixed or expandable.
+* Struct: Contains other data types in a structured way, often called fields or members.  The fields can be accessed by their name.
+
+h4. Sample
+
+In the picture below a small sample is modeled containing the following information:
+
+* Boolean type with size of 8 bits and platform mapping for AR (Boolean) and C (bool)
+* Char16 type with size of 16 bits and platform mapping for AR (Char16) and C (short)
+* charArray consists of 4 elements of type Char16
+* "hello world struct" with the attribute name (Char16) and valid (Boolean)
+
+Note: The picture shows the activated element types for better understanding!
+
+!(gray)../pictures/model_sw_type_sample.png!
+
+
+h3. Activations
+
+Activations are used to specify the intended activation behavior of __Runnables__ and __ProcessPrototypes__. Typically they are defined before the creation of tasks (and the runnable to task mappings). So if there are no tasks defined, or if the mapping of runnables to tasks is not done, this is a way to document when the runnables should be executed.  
+Activations are independent of other top level elements in the AMALTHEA model. Single, periodic, sporadic, event or custom (free textual description) activation pattern can be defined. This information can be used in the following development steps to create tasks, stimuli and the mappings to dedicated hardware.
+
+!../pictures/model_sw_activation.png!
+
+*(validation-rule) _PeriodicActivation_: The _Time_ object in the role of _mim_ must not contain a negative value!
+*(validation-rule) _PeriodicActivation_: The _Time_ object in the role of _max_ must not contain a negative value!
+*(validation-rule) _PeriodicActivation_: The _Time_ object in the role of _offset_ must not contain a negative value!
+*(validation-rule) _PeriodicActivation_: The _Time_ object in the role of _deadline_ must not contain a negative value!
+*(validation-rule) _SingleActivation_: The _Time_ object in the role of _min_ must not contain a negative value!
+*(validation-rule) _SingleActivation_: The _Time_ object in the role of _max_ must not contain a negative value!
+
+
+h3. Runnables and Services
+
+Both elements, runnables and services, are an abstraction of an executable entity. They are both represented by the __Runnable__ element and are distinguished by using the service attribute of type boolean.
+Instead of tasks, which are providing a context for the operating system, runnables and services are including the instructions to perform. They include an abstraction of these instructions using different algorithms, based on performance data.
+The difference between runnables and functions is based on their activation and type of calling. While the initial activation of a runnable can only be performed by a task or another runnable, services can only be activated by runnables or other services.
+Runnables and Services in the AMALTHEA model currently have no call parameters. __Remark: Under discussion for one of the next releases.__
+
+Based on these types of information, an additional analysis can be performed.
+The next picture is showing the call graph of task, runnable and services.
+
+!../pictures/model_sw_call_graph.png!
+
+
+h3. Runnables
+
+The next picture shows the general structure of the __Runnable__ element.
+
+!../pictures/model_sw_runnable_overview.png!
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __callback__ | __True__ if a runnable is used as a callback |
+| __service__ | __True__ if __Runnable__ element can be seen in a service or global function manner. In more detail, the __Runnable__ is only called from other __Runnables__ and not directly from a __Task__ context. |
+| __deadline__ | Information in __Time__ at which the element must be finished / terminated. |
+| __runnableItems__ | List containing __RunnableItem__ objects, representing instructions, label accesses, other __Runnable__ accesses. The possibilities are described below. |
+| __tags__ | Can be used to annotate or group special kind of __Runnables__ |
+| __activation__ | Although runnables in the simulation can be only activated by tasks, it is possible to specify an activation pattern for a runnable. |
+| __asilLevel__ | Possibility to specify the ASIL level ("automotive safety integrity level"). |
+
+*(validation-rule) _Runnable_: The _Time_ object in the role of _deadline_ must not contain a negative value!
+
+
+h3. Runnable Items
+
+The __RunnableItems__ are describing the detailed behavior of a __Runnable__ element. This can be either an abstraction of instructions by representing the used running time or representing access to other elements like __Runnables__, __Labels__ and __Semaphore__. An overview of the different possibilities is given in the next pictures.
+
+
+h4. Groups
+
+!../pictures/model_sw_runnable_items_1_group.png!
+
+A __Group__ is used to structure the __RunnableItems__. The __boolean__ attribute __isOrdered__ indicates if the execution order of the contained elements is fixed or random. 
+
+
+h4. Calls and AUTOSAR communication
+
+!(scale)../pictures/model_sw_runnable_items__calls.png!
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __RunnableCall__ | The activation of another __Runnable__. |
+| __ServerCall__ | An abstract description for client/server communication. It refers to a required runnable that describes the called server operation |
+| __SenderReceiverCommunication__ | An abstract description for sender-receiver-communication (it can be read or write). If the access has to be buffered is represented using the values of __LabelAccessBuffering__. |
+
+
+h4. Label Access
+
+!(scale)../pictures/model_sw_runnable_items__label_access.png!
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __access__ | The type of access is represented using the values of __LabelAccessEnum__. |
+| __data__ | Describes the access to an existent __Label__ (set as reference). |
+| __dataStability__ | Describes the data stability needs. If set, it overwrites the label settings, otherwise it inherits them (see <notextile><a href="./model_os.html#os-data-consistency">OS Data Consistency</a></notextile>). |
+| __statistic__ | Defines the frequency of the label access.  |
+| __transmissionPolicy__ | The following attributes reflect the computing demand (time) depending on data: <ul><li> *chunkSize*: Size of a part of an element, maximum is the element size. </li><li> *chunkProcessingInstructions*: Number of instructions that will be executed to transmit one chunk. </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *transmitRatio*: Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
+
+
+h4. Channel Access
+
+
+!../pictures/model_sw_runnable_items__channel_access.png!
+
+Common attributes:
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __data__ | Describes the access (__ChannelSend__ or __ChannelReceive__) to an existent __Channel__ (set as reference). |
+| __elements__ | Maximum number of elements that are transmitted. |
+| __transmissionPolicy__ | The following attributes reflect computing demand (time) depending on data: <ul><li> *chunkSize*: Size of a part of an element, maximum is the element size. </li><li> *chunkProcessingInstructions*: Number of instructions that will be executed to send / receive one chunk. </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *transmitRatio*: Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
+
+Receive attributes:
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __receiveOperation__ | The type of an operation is defined by LIFO or FIFO, Read or Take: <ul><li> *LIFO*: last-in, first-out </li><li> *FIFO*: first-in, first-out </li><li> *Read*: reads elements (without modifying the channel content) </li><li> *Take*: removes the received elements </li></ul> |
+| __elementIndex__ | Position (index) in channel at which the operation is effective. Zero is the default and denotes the oldest (FIFO) or newest element (LIFO) in the channel. |
+| __lowerBound__ | Minimum number of elements returned by the operation. The value must be in the range [0,n], with n is the maximum number of elements that are received. Default value is n. |
+| __dataMustBeNew__ | Specify if the operation must only return elements that are not previously read by the runnable. Default value is false. |
+
+
+h4. Semaphore Access
+
+!../pictures/model_sw_runnable_items_3_semaphores.png!
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __SemaphoreAccess__ | Represents an access of a Semaphore. The type of access is defined using the __SemaphoreAccessEnum__ values. The __Semaphore__ itself is set as a reference to an existent one. |
+| __access__ | <ul><li> *request*: TODO </li><li> *exclusive*: TODO </li><li> *release*: TODO </li></ul> |
+| __waitingBehaviour__ | <ul><li> *active*: TODO </li><li> *passive*: TODO </li></ul> |
+
+
+h4. Mode Label Access
+
+!../pictures/model_sw_runnable_items_4_modes.png!
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __ModeLabelAccess__ | Describes the access to an existing __ModeLabel__ (set as reference). The type of access is represented using the values of __LabelAccessEnum__: @write@ represents the change of a mode label. The defined __ModeLiteral__ is set. @read@ indicates that the behavior of the runnable is influenced by the current value of the __ModeLabel__. |
+
+*(validation-rule)  _ModeLabelAccess_: The _Mode_ objects referenced via _modeValue_ and _data_ must be equal!
+
+
+h4. Runnable Mode Switch
+
+With the __RunnableModeSwitch__ it is possible to define different execution paths. They can be used like __if-else__ or __switch-case__ statements in a programming language. A __RunnableModeSwitch__ uses the value of a __ModeLabel__ (with the help of __ModeValueProvider__) to decide which path has to be executed. 
+A __ModeSwitchEntry__ object is referenced to represent the different paths and each entry defines the value the mode must have to execute the path with the help of the __ModeLiteral__ values.
+At the __RunnableModeSwitch__ it is also possible to define a default path, which is executed if none of the __ModeSwitchEntries__ fits to the current set value of the mode.
+
+!../pictures/model_sw_runnablemodeswitch.png!
+
+
+h4. Runnable Probability Switch
+
+Each entry (path) of a __Runnable Probability Switch__ has a probability-value. As the name indicates, this is the value that defines the probability that the path is executed. It is computed as a fraction of its value divided by the sum of all __Probability Switch Entries__ in the surrounding switch.
+
+!../pictures/model_sw_runnableprobabilityswitch.png!
+
+
+h4. Runnable Instructions
+
+__Runnable Instructions__ allow to specify the default instructions and (optional) the instructions for specific core types (e.g. FPGA). These extended instructions are implemented as a map with the core type as the key.
+
+!../pictures/model_sw_runnableinstructions.png!
+
+
+h4. Statistical Values
+
+!../pictures/model_sw_statistic.png!
+
+It is possible to add to different elements (as shown in the picture above) different types of statistical values. These values can be used to describe in more detail the following behaviors:
+
+* __RunEntityCallStatistic__: Can be used to describe in more detail the dynamic call behavior of a [__Task__ - __Runnable__] or [__Runnable__ - __Runnable__] call. The value is representing how often the call is performed.
+* __LabelAccessStatistic__: Describes in more detail the dynamic behavior accessing a __Label__ by having cache misses or how often a read/write is performed.
+* __InstructionFetch__: Describes the behavior to fetch instructions from the memory.
+
+
+h3. Tasks / ISR
+
+The following figure shows the structure which describes __Tasks__ and Interrupt Service Routines (__ISR__) in the AMALTHEA software model. The abstract class __Process__ generalizes ISRs and Tasks and provides the common attributes, like priority for priority based scheduling algorithms or the activation represented by the __Stimulus__. A __Task__ or __ISR__ contains __calls__ either to other Tasks or Runnables. These types of __calls__ are included in the __callGraph__ attribute.
+
+!(scale)../pictures/model_sw_task_isr.png!
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __name__ | Name of the process |
+| __priority__ | Priority of the process for priority based scheduling. |
+| __osekTaskGroup__ | Priority for defining groups of tasks according OSEK
+| __callGraph__ | List of task calls. This specifies the behavior of the process. The objects will be executed in the same order they are stored in the list. |
+| __preemption__ | Defines the preemption of a task by higher priority tasks. |
+| __multipleTaskActivationLimit__ | Defines the maximal number of existing instances from the same task, which is checked for load limitation reasons when a task is activated. For the case of an exceeded multipleTaskActivationLimit, the activation is ignored.|
+| __stimuli__ | Reference to one or more __Stimuli__ representing the different types of possible activations of this __Task__|
+
+
+h3. The Call Graph
+
+The __Call Graph__ is used to define how a __Task__ or __ISR__ behaves during its execution. For that it contains two different kinds of elements, __Call Sequences__ and __Switches__. The following picture shows the data structure of a __Call Graph__: 
+
+!(scale)../pictures/model_sw_task_callgraph.png!
+
+The __Call Graph__ contains a list of elements of type __GraphEntryBase__. This is the basic, abstract type for the __Switch__ types and for the __Call Sequence__. With the __Switches__ it is possible to define different execution paths. They can be used like __if-else__ or __switch-case__ statements in a programming language. There are two different kind of __Switches__, a __Mode Switch__ and a __Probability Switch__. Each __Switch__ contains a number __Switch Entry__ objects. These are the different possible program paths that can be executed. Also like the __Call Graph__, the __Switch Entry__ can contain a list of objects that can be __Switches__ or __Call Sequences__. 
+
+
+h4. Mode Switch
+
+A __Mode Switch__ uses the value of a __Mode Label__ to decide which entry has to be executed. Therefore a __Mode Label__ object is referenced (via ModeValueProvider) and each entry defines the values the mode label must have to execute the path. 
+
+!(scale)../pictures/model_sw_modeswitch.png!
+
+
+h4. Probability Switch
+
+Each entry (path) of a __Probability Switch__ has a probability-value. As the name indicates, this is the value that defines the probability that the path is executed. It is computed as a fraction of its value divided by the sum of all __Probability Switch Entries__ in the surrounding switch.
+
+
+!(scale)../pictures/model_sw_probabilityswitch.png!
+
+h4. Call Sequence
+
+A __Call Sequence__ contains a list of elements that are executed by the __Process__. The following list gives a short overview over these elements:
+* __Wait Event__: Wait for an __OS-Event__ 
+* __Clear Event__: Clear an __OS-Event__
+* __Set Event__: Set/Fire an __OS-Event__
+* __Enforced Migration__: Migrate to another __Scheduler__
+* __Inter Process Activation__: Activate a __Process__
+* __Schedule Point__: Trigger the Scheduler
+* __Task Runnable Call__: Invoke a __Runnable__
+
+The following picture shows the structure of a __Call Graph__. The graph is like a tree of __Call Sequences__ and __Switches__. The __Call Sequences__ are used to define what the task is actually executing. With the __Switches__ it is possible to define alternative execution paths. The elements of the graph are executed in the order they are stored in the data model. The same goes for the elements within a __Call Sequence__.
+
+!../pictures/model_sw_task_callgraph_structure.png!
+
+
+h3. Call Sequence Content
+
+As already explained, the content of a __Call Sequence__ specifies what a process is actually doing when it is executed.
+This section describes the different entry-types of a __Call Sequence__.
+
+h4. Task Runnable Call
+
+With the __Task Runnable Call__ the process executes a specific runnable.  
+
+h4. Enforced Migration
+
+Each process is controlled by at least one scheduler. A scheduler is the resource owner of one or multiple processor cores (The scheduler decides on which of its cores the process is executed). The __Enforced Migration__ forces the process to switch to another scheduler. Therefore the __Enforced Migration__ entry contains a reference to the new scheduler.
+
+h4. Inter Process Activation
+
+The __Inter Process Activation__ references a stimulus of type __Inter Process__. The execution of an __Inter Process Activation__ entry triggers the processes that are mapped to this stimulus.  
+
+h4. Schedule Point
+
+At a __Schedule Point__, the process calls the scheduler that currently administrates it. This is used for cooperative task scheduling (see OSEK Specification 2.2.3, 2005).
+
+h4. Terminate Process
+
+If a __Terminate Process__ is reached during the execution of a __Call Graph__, the __Task__ or __ISR__ terminates immediately. It is not required to insert this element at the end of a __Call Graph__. It can be used to define an execution path (by using __Switches__) that terminates a process.   
+
+h4. Wait/Clear/Set Event
+
+The AMALTHEA Software Model contains a list of __OS-Event__ objects. These can be used for task synchronization. To deal with __OS-Events__ a __Call Sequence__ can execute the elements __Wait Event__, __Clear Event__ and __Set Event__. 
+
+!../pictures/model_sw_osevents.png!
+
+With __Wait Event__ the process waits for a number of events (defined in the __Event Mask__) to be set. Here it can be defined if the process waits just for one of the __OS-Events__ (maskType = OR) or for all of them (maskType = AND). The __waiting behavior__ defines if the process is blocking the core when it waits (active) or not (passive). 
+
+__Set Event__ sets/fires a list of __OS-Events__. Here it is possible to define a context for the __OS-Event__. If a process is referenced, then the __OS-Events__ are set just for this process.
+
+The execution of a __Clear Event__ entry unsets all referenced __OS-Events__. 
+
+For more information about OS-Events, see the OSEK Specification 2.2.3, 2005. 
+
+
+h3. Modes
+
+h4. Modes and Mode Labels
+
+The __Mode__ element denotes a specific system state. It is described using the following attributes:
+
+!(scale)../pictures/model_sw_modes.png!
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __name__ | Name of the mode |
+| __literals__ | Enumeration values of the mode |
+
+Modes are used in __Mode Switches__ inside the __Call Graph__ of __Tasks__ and __ISRs__ using __Mode Labels__. Moreover, mode labels are used to enable and disable __Stimuli__.
+
+The __Mode Label__ element represents a value of a specific __Mode__. Is is described using the following attributes:
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __name__ | Name of the mode label |
+| __displayName__ | In addition to the name attribute, which must be unique, a mode label can also be described by an additional and optional display name. The displayName attribute must not be unique. It can be used for example to represent specification data, which can be different from the unique name (like a symbol) of an available software build. |
+| __mode__ | Reference of the __Mode__ |
+| __initialValue__ | Initial value of the referenced mode |
+
+h4. Mode Changes
+
+The value of the mode label can be changed from its initial value using the set-mode-labels-list of a __Stimulus__.
+
+Another possibility is a write access within a Runnable via __Mode Label Access__.
+
+
+h3. Process Prototypes
+
+!(scale)../pictures/model_sw_process_prototype.png!
+
+In addition to the Task elements, the AMALTHEA model contains an element process prototype.
+This prototype can be used to define raw data of a task. It can be used to specify access to
+labels (read, write) or other runnables/functions as possible with the normal task, but not the
+order of the access. These prototypes are then processed by different algorithms. The algorithms are creating the tasks, are filling, verifying or modifying the data based on their different checks. The final result of this processing are tasks, which are corresponding to the data of the prototypes.
+
+!../pictures/process_prototypes.png!
+
+These tasks are representing the current state and can be further processed, for example to generate code or further simulation. With the process prototypes available in the model, it is possible to define the structure of the software in an early development phase. The implementation at that moment is open and not yet completed, but the general idea can be verified.
+Another issue can be the distribution to a multi-core system, coming from a single-core system. Therefore the call graph can be analyzed and computed to get the right order and parallelization of the elements and dependencies.
+
+
+h3. Process Chains
+
+The following figure shows the structure which describes __Process Chains__ in the AMALTHEA software model. A process chain is used to group task and isrs together which are executing after each other and represent an end-to-end data processing path. The processes inside a process chain are connected via __Inter Process Activations__.
+
+The following attributes are describing a process chain:
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __name__ | Name of the process chain |
+| __processes__ | List of tasks and isrs which are included in the process chain |
+
+
+h3. Custom Entities
+
+!../pictures/model_custom_entity.png!
+
+The __CustomEntity__ element defines a way to add not yet available elements of the software model in a generic way. The only contained attribute defines the type of the entity by setting it as a __String__. Additional properties can be set using the __CustomAttributes__.
+
+
+h3. Section
+
+Section (Virtual Memory Section) is used to group the memory elements (Labels, Runnables). This is achieved by associating the *Section* element to *Label* & *Runnable* elements
+ 
+Below are properties of Section element:
+
+* name
+* asilLevel
+
+!../pictures/model_section.png!
+
+With this type of information available, the complexity of mapping software components to memories can be reduced. The next picture gives an overview about the general idea of the mapping with Sections.
+
+!../pictures/model_section_memory.png!
+

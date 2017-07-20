@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <swModel>
-    <tasks name="Task_1" stimuli="Stimulus_1?type=Periodic" preemption="preemptive" multipleTaskActivationLimit="2">
+    <tasks name="Task_1" stimuli="Stimulus_1?type=PeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_1">
-          <calls xsi:type="am:InterProcessActivation" stimulus="Stimulus_2?type=InterProcess" />
+          <calls xsi:type="am:InterProcessTrigger" stimulus="Stimulus_2?type=InterProcessStimulus" />
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1?type=Runnable" />
         </graphEntries>
       </callGraph>
@@ -12,7 +12,7 @@
         <value xsi:type="am:StringObject" value="1" />
       </customProperties>
     </tasks>
-    <tasks name="Task_2" stimuli="Stimulus_2?type=InterProcess" preemption="preemptive" multipleTaskActivationLimit="2">
+    <tasks name="Task_2" stimuli="Stimulus_2?type=InterProcessStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
         <graphEntries xsi:type="am:ProbabilitySwitch">
           <entries probability="20.0">
@@ -147,11 +147,11 @@
     </operatingSystems>
   </osModel>
   <stimuliModel>
-    <stimuli xsi:type="am:Periodic" name="Stimulus_1">
+    <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_1">
       <offset value="0" unit="ms" />
       <recurrence value="50" unit="ms" />
     </stimuli>
-    <stimuli xsi:type="am:InterProcess" name="Stimulus_2" />
+    <stimuli xsi:type="am:InterProcessStimulus" name="Stimulus_2" />
   </stimuliModel>
   <constraintsModel />
   <eventModel>
@@ -163,7 +163,7 @@
     <events xsi:type="am:RunnableEvent" name="Event_Runnable_2_3" entity="Runnable_2_3?type=Runnable" />
     <events xsi:type="am:RunnableEvent" name="Event_Runnable_2_4" entity="Runnable_2_4?type=Runnable" />
     <events xsi:type="am:RunnableEvent" name="Event_Runnable_2_default" entity="Runnable_2_default?type=Runnable" />
-    <events xsi:type="am:StimulusEvent" name="Event_Stimulus_1" entity="Stimulus_1?type=Periodic" />
+    <events xsi:type="am:StimulusEvent" name="Event_Stimulus_1" entity="Stimulus_1?type=PeriodicStimulus" />
     <events xsi:type="am:StimulusEvent" name="Event_Stimulus_2" />
   </eventModel>
   <mappingModel addressMappingType="offset">
