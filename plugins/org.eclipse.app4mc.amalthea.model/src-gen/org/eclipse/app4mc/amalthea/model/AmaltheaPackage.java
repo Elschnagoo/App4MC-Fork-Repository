@@ -8607,13 +8607,22 @@ public interface AmaltheaPackage extends EPackage {
 	int CUSTOM_EVENT__EVENT_TYPE = TRIGGER_EVENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Explicit Triggers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_EVENT__EXPLICIT_TRIGGERS = TRIGGER_EVENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Custom Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_EVENT_FEATURE_COUNT = TRIGGER_EVENT_FEATURE_COUNT + 1;
+	int CUSTOM_EVENT_FEATURE_COUNT = TRIGGER_EVENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -17752,13 +17761,22 @@ public interface AmaltheaPackage extends EPackage {
 	int INTER_PROCESS_STIMULUS__COUNTER = STIMULUS_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Explicit Triggers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS = STIMULUS_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Inter Process Stimulus</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTER_PROCESS_STIMULUS_FEATURE_COUNT = STIMULUS_FEATURE_COUNT + 1;
+	int INTER_PROCESS_STIMULUS_FEATURE_COUNT = STIMULUS_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -20213,13 +20231,22 @@ public interface AmaltheaPackage extends EPackage {
 	int INTER_PROCESS_TRIGGER__STIMULUS = CALL_SEQUENCE_ITEM_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Stimulus Link Int</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_PROCESS_TRIGGER__STIMULUS_LINK_INT = CALL_SEQUENCE_ITEM_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Inter Process Trigger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTER_PROCESS_TRIGGER_FEATURE_COUNT = CALL_SEQUENCE_ITEM_FEATURE_COUNT + 1;
+	int INTER_PROCESS_TRIGGER_FEATURE_COUNT = CALL_SEQUENCE_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Inter Process Trigger</em>' class.
@@ -23264,13 +23291,22 @@ public interface AmaltheaPackage extends EPackage {
 	int CUSTOM_EVENT_TRIGGER__EVENT = RUNNABLE_ITEM_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Event Link Int</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_EVENT_TRIGGER__EVENT_LINK_INT = RUNNABLE_ITEM_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Custom Event Trigger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_EVENT_TRIGGER_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 1;
+	int CUSTOM_EVENT_TRIGGER_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -28776,6 +28812,17 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getCustomEvent_EventType();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.CustomEvent#getExplicitTriggers <em>Explicit Triggers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Explicit Triggers</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.CustomEvent#getExplicitTriggers()
+	 * @see #getCustomEvent()
+	 * @generated
+	 */
+	EReference getCustomEvent_ExplicitTriggers();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.StimulusEvent <em>Stimulus Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32409,6 +32456,17 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getInterProcessStimulus_Counter();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.InterProcessStimulus#getExplicitTriggers <em>Explicit Triggers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Explicit Triggers</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.InterProcessStimulus#getExplicitTriggers()
+	 * @see #getInterProcessStimulus()
+	 * @generated
+	 */
+	EReference getInterProcessStimulus_ExplicitTriggers();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SporadicStimulus <em>Sporadic Stimulus</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -33399,6 +33457,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInterProcessTrigger_Stimulus();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.InterProcessTrigger <em>Stimulus Link Int</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Stimulus Link Int</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.InterProcessTrigger
+	 * @see #getInterProcessTrigger()
+	 * @generated
+	 */
+	EReference getInterProcessTrigger_StimulusLinkInt();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.EnforcedMigration <em>Enforced Migration</em>}'.
@@ -34782,6 +34851,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCustomEventTrigger_Event();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.CustomEventTrigger <em>Event Link Int</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Event Link Int</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.CustomEventTrigger
+	 * @see #getCustomEventTrigger()
+	 * @generated
+	 */
+	EReference getCustomEventTrigger_EventLinkInt();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DataType <em>Data Type</em>}'.

@@ -12,17 +12,25 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.util.Collection;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
+import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,6 +41,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.InterProcessStimulusImpl#getCounter <em>Counter</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.InterProcessStimulusImpl#getExplicitTriggers <em>Explicit Triggers</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,6 +56,16 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 	 * @ordered
 	 */
 	protected Counter counter;
+
+	/**
+	 * The cached value of the '{@link #getExplicitTriggers() <em>Explicit Triggers</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExplicitTriggers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<InterProcessTrigger> explicitTriggers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,11 +134,40 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<InterProcessTrigger> getExplicitTriggers() {
+		if (explicitTriggers == null) {
+			explicitTriggers = new EObjectWithInverseResolvingEList<InterProcessTrigger>(InterProcessTrigger.class, this, AmaltheaPackage.INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS, AmaltheaPackage.INTER_PROCESS_TRIGGER__STIMULUS_LINK_INT);
+		}
+		return explicitTriggers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExplicitTriggers()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				return basicSetCounter(null, msgs);
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS:
+				return ((InternalEList<?>)getExplicitTriggers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -134,6 +182,8 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 		switch (featureID) {
 			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				return getCounter();
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS:
+				return getExplicitTriggers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -143,11 +193,16 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				setCounter((Counter)newValue);
+				return;
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS:
+				getExplicitTriggers().clear();
+				getExplicitTriggers().addAll((Collection<? extends InterProcessTrigger>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -164,6 +219,9 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				setCounter((Counter)null);
 				return;
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS:
+				getExplicitTriggers().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -178,6 +236,8 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 		switch (featureID) {
 			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				return counter != null;
+			case AmaltheaPackage.INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS:
+				return explicitTriggers != null && !explicitTriggers.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

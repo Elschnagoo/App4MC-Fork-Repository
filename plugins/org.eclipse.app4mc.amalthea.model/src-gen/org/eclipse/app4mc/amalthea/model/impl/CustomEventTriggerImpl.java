@@ -17,6 +17,7 @@ import org.eclipse.app4mc.amalthea.model.CustomEvent;
 import org.eclipse.app4mc.amalthea.model.CustomEventTrigger;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CustomEventTriggerImpl#getEvent <em>Event</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CustomEventTriggerImpl#getEventLinkInt <em>Event Link Int</em>}</li>
  * </ul>
  *
  * @generated
@@ -46,6 +48,16 @@ public class CustomEventTriggerImpl extends RunnableItemImpl implements CustomEv
 	 * @ordered
 	 */
 	protected CustomEvent event;
+
+	/**
+	 * The cached value of the '{@link #getEventLinkInt() <em>Event Link Int</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEventLinkInt()
+	 * @generated
+	 * @ordered
+	 */
+	protected CustomEvent eventLinkInt;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,6 +114,98 @@ public class CustomEventTriggerImpl extends RunnableItemImpl implements CustomEv
 		event = newEvent;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT, oldEvent, event));
+ 		//Additional setting transient value for transient bi-directional reference
+ 		setEventLinkInt(newEvent);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CustomEvent getEventLinkInt() {
+		if (eventLinkInt != null && eventLinkInt.eIsProxy()) {
+			InternalEObject oldEventLinkInt = (InternalEObject)eventLinkInt;
+			eventLinkInt = (CustomEvent)eResolveProxy(oldEventLinkInt);
+			if (eventLinkInt != oldEventLinkInt) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT_LINK_INT, oldEventLinkInt, eventLinkInt));
+			}
+		}
+		return eventLinkInt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CustomEvent basicGetEventLinkInt() {
+		return eventLinkInt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetEventLinkInt(CustomEvent newEventLinkInt, NotificationChain msgs) {
+		CustomEvent oldEventLinkInt = eventLinkInt;
+		eventLinkInt = newEventLinkInt;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT_LINK_INT, oldEventLinkInt, newEventLinkInt);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEventLinkInt(CustomEvent newEventLinkInt) {
+		if (newEventLinkInt != eventLinkInt) {
+			NotificationChain msgs = null;
+			if (eventLinkInt != null)
+				msgs = ((InternalEObject)eventLinkInt).eInverseRemove(this, AmaltheaPackage.CUSTOM_EVENT__EXPLICIT_TRIGGERS, CustomEvent.class, msgs);
+			if (newEventLinkInt != null)
+				msgs = ((InternalEObject)newEventLinkInt).eInverseAdd(this, AmaltheaPackage.CUSTOM_EVENT__EXPLICIT_TRIGGERS, CustomEvent.class, msgs);
+			msgs = basicSetEventLinkInt(newEventLinkInt, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT_LINK_INT, newEventLinkInt, newEventLinkInt));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT_LINK_INT:
+				if (eventLinkInt != null)
+					msgs = ((InternalEObject)eventLinkInt).eInverseRemove(this, AmaltheaPackage.CUSTOM_EVENT__EXPLICIT_TRIGGERS, CustomEvent.class, msgs);
+				return basicSetEventLinkInt((CustomEvent)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT_LINK_INT:
+				return basicSetEventLinkInt(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -115,6 +219,9 @@ public class CustomEventTriggerImpl extends RunnableItemImpl implements CustomEv
 			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT:
 				if (resolve) return getEvent();
 				return basicGetEvent();
+			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT_LINK_INT:
+				if (resolve) return getEventLinkInt();
+				return basicGetEventLinkInt();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -129,6 +236,9 @@ public class CustomEventTriggerImpl extends RunnableItemImpl implements CustomEv
 		switch (featureID) {
 			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT:
 				setEvent((CustomEvent)newValue);
+				return;
+			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT_LINK_INT:
+				setEventLinkInt((CustomEvent)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -145,6 +255,9 @@ public class CustomEventTriggerImpl extends RunnableItemImpl implements CustomEv
 			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT:
 				setEvent((CustomEvent)null);
 				return;
+			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT_LINK_INT:
+				setEventLinkInt((CustomEvent)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -159,6 +272,8 @@ public class CustomEventTriggerImpl extends RunnableItemImpl implements CustomEv
 		switch (featureID) {
 			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT:
 				return event != null;
+			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT_LINK_INT:
+				return eventLinkInt != null;
 		}
 		return super.eIsSet(featureID);
 	}

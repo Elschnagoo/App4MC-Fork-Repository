@@ -30,7 +30,9 @@ package org.eclipse.app4mc.amalthea.model;
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCustomEventTrigger()
- * @model
+ * @model features="eventLinkInt" 
+ *        eventLinkIntType="org.eclipse.app4mc.amalthea.model.CustomEvent" eventLinkIntOpposite="explicitTriggers" eventLinkIntRequired="true" eventLinkIntTransient="true" eventLinkIntSuppressedGetVisibility="true" eventLinkIntSuppressedSetVisibility="true"
+ *        eventLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
  * @generated
  */
 public interface CustomEventTrigger extends RunnableItem {

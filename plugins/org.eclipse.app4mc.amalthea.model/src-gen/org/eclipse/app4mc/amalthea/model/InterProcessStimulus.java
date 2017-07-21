@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,6 +28,7 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.InterProcessStimulus#getCounter <em>Counter</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.InterProcessStimulus#getExplicitTriggers <em>Explicit Triggers</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcessStimulus()
@@ -59,5 +61,22 @@ public interface InterProcessStimulus extends Stimulus {
 	 * @generated
 	 */
 	void setCounter(Counter value);
+
+	/**
+	 * Returns the value of the '<em><b>Explicit Triggers</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.InterProcessTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Explicit Triggers</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Explicit Triggers</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcessStimulus_ExplicitTriggers()
+	 * @model opposite="stimulusLinkInt" transient="true" suppressedSetVisibility="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @generated
+	 */
+	EList<InterProcessTrigger> getExplicitTriggers();
 
 } // InterProcessStimulus

@@ -6263,6 +6263,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getCustomEvent_ExplicitTriggers() {
+		return (EReference)customEventEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getStimulusEvent() {
 		return stimulusEventEClass;
 	}
@@ -9332,6 +9341,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getInterProcessStimulus_ExplicitTriggers() {
+		return (EReference)interProcessStimulusEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSporadicStimulus() {
 		return sporadicStimulusEClass;
 	}
@@ -10162,6 +10180,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getInterProcessTrigger_Stimulus() {
 		return (EReference)interProcessTriggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInterProcessTrigger_StimulusLinkInt() {
+		return (EReference)interProcessTriggerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -11323,6 +11350,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getCustomEventTrigger_Event() {
 		return (EReference)customEventTriggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCustomEventTrigger_EventLinkInt() {
+		return (EReference)customEventTriggerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -12717,6 +12753,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		customEventEClass = createEClass(CUSTOM_EVENT);
 		createEAttribute(customEventEClass, CUSTOM_EVENT__EVENT_TYPE);
+		createEReference(customEventEClass, CUSTOM_EVENT__EXPLICIT_TRIGGERS);
 
 		stimulusEventEClass = createEClass(STIMULUS_EVENT);
 		createEReference(stimulusEventEClass, STIMULUS_EVENT__ENTITY);
@@ -13176,6 +13213,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		interProcessStimulusEClass = createEClass(INTER_PROCESS_STIMULUS);
 		createEReference(interProcessStimulusEClass, INTER_PROCESS_STIMULUS__COUNTER);
+		createEReference(interProcessStimulusEClass, INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS);
 
 		sporadicStimulusEClass = createEClass(SPORADIC_STIMULUS);
 		createEAttribute(sporadicStimulusEClass, SPORADIC_STIMULUS__DESCRIPTION);
@@ -13300,6 +13338,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		interProcessTriggerEClass = createEClass(INTER_PROCESS_TRIGGER);
 		createEReference(interProcessTriggerEClass, INTER_PROCESS_TRIGGER__STIMULUS);
+		createEReference(interProcessTriggerEClass, INTER_PROCESS_TRIGGER__STIMULUS_LINK_INT);
 
 		enforcedMigrationEClass = createEClass(ENFORCED_MIGRATION);
 		createEReference(enforcedMigrationEClass, ENFORCED_MIGRATION__RESOURCE_OWNER);
@@ -13465,6 +13504,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		customEventTriggerEClass = createEClass(CUSTOM_EVENT_TRIGGER);
 		createEReference(customEventTriggerEClass, CUSTOM_EVENT_TRIGGER__EVENT);
+		createEReference(customEventTriggerEClass, CUSTOM_EVENT_TRIGGER__EVENT_LINK_INT);
 
 		dataTypeEClass = createEClass(DATA_TYPE);
 
@@ -14523,6 +14563,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(customEventEClass, CustomEvent.class, "CustomEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomEvent_EventType(), theEcorePackage.getEString(), "eventType", null, 0, 1, CustomEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCustomEvent_ExplicitTriggers(), this.getCustomEventTrigger(), this.getCustomEventTrigger_EventLinkInt(), "explicitTriggers", null, 0, -1, CustomEvent.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stimulusEventEClass, StimulusEvent.class, "StimulusEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStimulusEvent_Entity(), this.getStimulus(), null, "entity", null, 0, 1, StimulusEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14990,6 +15031,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(interProcessStimulusEClass, InterProcessStimulus.class, "InterProcessStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInterProcessStimulus_Counter(), this.getCounter(), null, "counter", null, 0, 1, InterProcessStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInterProcessStimulus_ExplicitTriggers(), this.getInterProcessTrigger(), this.getInterProcessTrigger_StimulusLinkInt(), "explicitTriggers", null, 0, -1, InterProcessStimulus.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sporadicStimulusEClass, SporadicStimulus.class, "SporadicStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSporadicStimulus_Description(), theEcorePackage.getEString(), "description", null, 0, 1, SporadicStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15126,6 +15168,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(interProcessTriggerEClass, InterProcessTrigger.class, "InterProcessTrigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInterProcessTrigger_Stimulus(), this.getInterProcessStimulus(), null, "stimulus", null, 0, 1, InterProcessTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInterProcessTrigger_StimulusLinkInt(), this.getInterProcessStimulus(), this.getInterProcessStimulus_ExplicitTriggers(), "stimulusLinkInt", null, 1, 1, InterProcessTrigger.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(enforcedMigrationEClass, EnforcedMigration.class, "EnforcedMigration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEnforcedMigration_ResourceOwner(), this.getScheduler(), null, "resourceOwner", null, 0, 1, EnforcedMigration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15302,6 +15345,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(customEventTriggerEClass, CustomEventTrigger.class, "CustomEventTrigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCustomEventTrigger_Event(), this.getCustomEvent(), null, "event", null, 1, 1, CustomEventTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCustomEventTrigger_EventLinkInt(), this.getCustomEvent(), this.getCustomEvent_ExplicitTriggers(), "eventLinkInt", null, 1, 1, CustomEventTrigger.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataTypeEClass, DataType.class, "DataType", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

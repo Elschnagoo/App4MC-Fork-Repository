@@ -1379,6 +1379,11 @@ abstract class TriggerEvent extends EntityEvent
 class CustomEvent extends TriggerEvent
 {
 	String eventType
+	
+	// back pointer (readonly)
+	@GenModel(property="Readonly", suppressedSetVisibility="true")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient CustomEventTrigger[] explicitTriggers opposite eventLinkInt 
 }
 
 /*
@@ -2572,6 +2577,11 @@ class SingleStimulus extends Stimulus
 class InterProcessStimulus extends Stimulus
 {
 	contains Counter counter
+	
+	// back pointer (readonly)
+	@GenModel(property="Readonly", suppressedSetVisibility="true")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient InterProcessTrigger[] explicitTriggers opposite stimulusLinkInt 
 }
 
 /*
@@ -2874,6 +2884,10 @@ class OsEvent extends ReferableBaseObject, ITaggable
 class InterProcessTrigger extends CallSequenceItem
 {
 	refers InterProcessStimulus stimulus
+	
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
+	refers transient InterProcessStimulus[1] stimulusLinkInt opposite explicitTriggers
 }
 
 /*
@@ -3431,6 +3445,10 @@ enum ConcurrencyType
 class CustomEventTrigger extends RunnableItem
 {
 	refers CustomEvent[1] event
+	
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
+	refers transient CustomEvent[1] eventLinkInt opposite explicitTriggers
 }
 
 

@@ -30,7 +30,9 @@ package org.eclipse.app4mc.amalthea.model;
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcessTrigger()
- * @model
+ * @model features="stimulusLinkInt" 
+ *        stimulusLinkIntType="org.eclipse.app4mc.amalthea.model.InterProcessStimulus" stimulusLinkIntOpposite="explicitTriggers" stimulusLinkIntRequired="true" stimulusLinkIntTransient="true" stimulusLinkIntSuppressedGetVisibility="true" stimulusLinkIntSuppressedSetVisibility="true"
+ *        stimulusLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
  * @generated
  */
 public interface InterProcessTrigger extends CallSequenceItem {
