@@ -14,53 +14,45 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
+import org.eclipse.app4mc.amalthea.model.CustomEventTrigger;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Custom Event</b></em>'.
+ * An implementation of the model object '<em><b>Custom Event Trigger</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CustomEventImpl#getEventType <em>Event Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CustomEventTriggerImpl#getEvent <em>Event</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CustomEventImpl extends TriggerEventImpl implements CustomEvent {
+public class CustomEventTriggerImpl extends RunnableItemImpl implements CustomEventTrigger {
 	/**
-	 * The default value of the '{@link #getEventType() <em>Event Type</em>}' attribute.
+	 * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEventType()
+	 * @see #getEvent()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String EVENT_TYPE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getEventType() <em>Event Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEventType()
-	 * @generated
-	 * @ordered
-	 */
-	protected String eventType = EVENT_TYPE_EDEFAULT;
+	protected CustomEvent event;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CustomEventImpl() {
+	protected CustomEventTriggerImpl() {
 		super();
 	}
 
@@ -71,7 +63,7 @@ public class CustomEventImpl extends TriggerEventImpl implements CustomEvent {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getCustomEvent();
+		return AmaltheaPackage.eINSTANCE.getCustomEventTrigger();
 	}
 
 	/**
@@ -79,8 +71,16 @@ public class CustomEventImpl extends TriggerEventImpl implements CustomEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getEventType() {
-		return eventType;
+	public CustomEvent getEvent() {
+		if (event != null && event.eIsProxy()) {
+			InternalEObject oldEvent = (InternalEObject)event;
+			event = (CustomEvent)eResolveProxy(oldEvent);
+			if (event != oldEvent) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT, oldEvent, event));
+			}
+		}
+		return event;
 	}
 
 	/**
@@ -88,11 +88,20 @@ public class CustomEventImpl extends TriggerEventImpl implements CustomEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEventType(String newEventType) {
-		String oldEventType = eventType;
-		eventType = newEventType;
+	public CustomEvent basicGetEvent() {
+		return event;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEvent(CustomEvent newEvent) {
+		CustomEvent oldEvent = event;
+		event = newEvent;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CUSTOM_EVENT__EVENT_TYPE, oldEventType, eventType));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT, oldEvent, event));
 	}
 
 	/**
@@ -103,8 +112,9 @@ public class CustomEventImpl extends TriggerEventImpl implements CustomEvent {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.CUSTOM_EVENT__EVENT_TYPE:
-				return getEventType();
+			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT:
+				if (resolve) return getEvent();
+				return basicGetEvent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -117,8 +127,8 @@ public class CustomEventImpl extends TriggerEventImpl implements CustomEvent {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.CUSTOM_EVENT__EVENT_TYPE:
-				setEventType((String)newValue);
+			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT:
+				setEvent((CustomEvent)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -132,8 +142,8 @@ public class CustomEventImpl extends TriggerEventImpl implements CustomEvent {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.CUSTOM_EVENT__EVENT_TYPE:
-				setEventType(EVENT_TYPE_EDEFAULT);
+			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT:
+				setEvent((CustomEvent)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -147,26 +157,10 @@ public class CustomEventImpl extends TriggerEventImpl implements CustomEvent {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.CUSTOM_EVENT__EVENT_TYPE:
-				return EVENT_TYPE_EDEFAULT == null ? eventType != null : !EVENT_TYPE_EDEFAULT.equals(eventType);
+			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT:
+				return event != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (eventType: ");
-		result.append(eventType);
-		result.append(')');
-		return result.toString();
-	}
-
-} //CustomEventImpl
+} //CustomEventTriggerImpl

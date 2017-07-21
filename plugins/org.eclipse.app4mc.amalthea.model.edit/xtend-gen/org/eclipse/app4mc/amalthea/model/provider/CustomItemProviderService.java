@@ -45,6 +45,8 @@ import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
+import org.eclipse.app4mc.amalthea.model.CustomEvent;
+import org.eclipse.app4mc.amalthea.model.CustomEventTrigger;
 import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
 import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
@@ -4056,7 +4058,7 @@ public class CustomItemProviderService {
       }
       final String stimulusName = _name;
       final String s1 = CustomItemProviderService.ppName(stimulusName, "<stimulus>");
-      return ("activate " + s1);
+      return ("trigger " + s1);
     } else {
       return defaultText;
     }
@@ -4675,6 +4677,40 @@ public class CustomItemProviderService {
         ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);
         list.add(_viewerNotification_1);
       }
+    }
+    return list;
+  }
+  
+  /**
+   * CustomEventTriggerItemProvider
+   */
+  public static String getCustomEventTriggerItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof CustomEventTrigger)) {
+      CustomEvent _event = null;
+      if (((CustomEventTrigger)object)!=null) {
+        _event=((CustomEventTrigger)object).getEvent();
+      }
+      String _name = null;
+      if (_event!=null) {
+        _name=_event.getName();
+      }
+      final String eventName = _name;
+      final String s1 = CustomItemProviderService.ppName(eventName, "<custom event>");
+      return ("trigger " + s1);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getCustomEventTriggerItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(CustomEventTrigger.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.CUSTOM_EVENT_TRIGGER__EVENT)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
     }
     return list;
   }

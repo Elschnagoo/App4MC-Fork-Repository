@@ -1376,7 +1376,7 @@ abstract class TriggerEvent extends EntityEvent
 {
 }
 
-class CustomEvent extends EntityEvent
+class CustomEvent extends TriggerEvent
 {
 	String eventType
 }
@@ -3424,6 +3424,15 @@ enum ConcurrencyType
 	MultiCoreSafe
 	SingleCorePrioSafe
 }
+
+/*
+ * Explicitly trigger a custom event from a runnable.
+ */
+class CustomEventTrigger extends RunnableItem
+{
+	refers CustomEvent[1] event
+}
+
 
 /*
  * Central access point for different data type definitions

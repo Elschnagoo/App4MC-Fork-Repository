@@ -282,6 +282,11 @@ public class GroupItemProvider extends RunnableItemItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
 				 AmaltheaFactory.eINSTANCE.createRunnableCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getGroup_Items(),
+				 AmaltheaFactory.eINSTANCE.createCustomEventTrigger()));
 	}
 
 }

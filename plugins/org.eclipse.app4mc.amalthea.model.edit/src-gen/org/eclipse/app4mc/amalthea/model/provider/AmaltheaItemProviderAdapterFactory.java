@@ -5579,6 +5579,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CustomEventTrigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CustomEventTriggerItemProvider customEventTriggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.CustomEventTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCustomEventTriggerAdapter() {
+		if (customEventTriggerItemProvider == null) {
+			customEventTriggerItemProvider = new CustomEventTriggerItemProvider(this);
+		}
+
+		return customEventTriggerItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InstructionsDeviation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6332,6 +6355,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (runnableProbabilitySwitchItemProvider != null) runnableProbabilitySwitchItemProvider.dispose();
 		if (groupItemProvider != null) groupItemProvider.dispose();
 		if (runnableCallItemProvider != null) runnableCallItemProvider.dispose();
+		if (customEventTriggerItemProvider != null) customEventTriggerItemProvider.dispose();
 		if (structItemProvider != null) structItemProvider.dispose();
 		if (structEntryItemProvider != null) structEntryItemProvider.dispose();
 		if (arrayItemProvider != null) arrayItemProvider.dispose();

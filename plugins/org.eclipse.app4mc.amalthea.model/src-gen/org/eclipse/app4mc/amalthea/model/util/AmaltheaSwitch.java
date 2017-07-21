@@ -86,6 +86,7 @@ import org.eclipse.app4mc.amalthea.model.CrossbarSwitch;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
 import org.eclipse.app4mc.amalthea.model.CustomEntity;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
+import org.eclipse.app4mc.amalthea.model.CustomEventTrigger;
 import org.eclipse.app4mc.amalthea.model.CustomStimulus;
 import org.eclipse.app4mc.amalthea.model.DataAge;
 import org.eclipse.app4mc.amalthea.model.DataAgeConstraint;
@@ -1465,6 +1466,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.CUSTOM_EVENT: {
 				CustomEvent customEvent = (CustomEvent)theEObject;
 				T1 result = caseCustomEvent(customEvent);
+				if (result == null) result = caseTriggerEvent(customEvent);
 				if (result == null) result = caseEntityEvent(customEvent);
 				if (result == null) result = caseEvent(customEvent);
 				if (result == null) result = caseReferableBaseObject(customEvent);
@@ -3222,6 +3224,15 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseRunnableItem(runnableCall);
 				if (result == null) result = caseBaseObject(runnableCall);
 				if (result == null) result = caseIAnnotatable(runnableCall);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER: {
+				CustomEventTrigger customEventTrigger = (CustomEventTrigger)theEObject;
+				T1 result = caseCustomEventTrigger(customEventTrigger);
+				if (result == null) result = caseRunnableItem(customEventTrigger);
+				if (result == null) result = caseBaseObject(customEventTrigger);
+				if (result == null) result = caseIAnnotatable(customEventTrigger);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -8122,6 +8133,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseRunnableCall(RunnableCall object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Custom Event Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Custom Event Trigger</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseCustomEventTrigger(CustomEventTrigger object) {
 		return null;
 	}
 

@@ -86,6 +86,7 @@ import org.eclipse.app4mc.amalthea.model.CrossbarSwitch;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
 import org.eclipse.app4mc.amalthea.model.CustomEntity;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
+import org.eclipse.app4mc.amalthea.model.CustomEventTrigger;
 import org.eclipse.app4mc.amalthea.model.CustomStimulus;
 import org.eclipse.app4mc.amalthea.model.DataAge;
 import org.eclipse.app4mc.amalthea.model.DataAgeConstraint;
@@ -1661,6 +1662,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseRunnableCall(RunnableCall object) {
 				return createRunnableCallAdapter();
+			}
+			@Override
+			public Adapter caseCustomEventTrigger(CustomEventTrigger object) {
+				return createCustomEventTriggerAdapter();
 			}
 			@Override
 			public Adapter caseDataType(DataType object) {
@@ -6155,6 +6160,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRunnableCallAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CustomEventTrigger <em>Custom Event Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.CustomEventTrigger
+	 * @generated
+	 */
+	public Adapter createCustomEventTriggerAdapter() {
 		return null;
 	}
 

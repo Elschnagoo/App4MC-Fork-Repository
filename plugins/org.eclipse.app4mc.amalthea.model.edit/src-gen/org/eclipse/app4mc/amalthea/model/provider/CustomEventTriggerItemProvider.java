@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -17,30 +17,28 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.CustomEvent;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.CustomEvent} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.CustomEventTrigger} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CustomEventItemProvider extends TriggerEventItemProvider {
+public class CustomEventTriggerItemProvider extends RunnableItemItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CustomEventItemProvider(AdapterFactory adapterFactory) {
+	public CustomEventTriggerItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -55,42 +53,42 @@ public class CustomEventItemProvider extends TriggerEventItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addEventTypePropertyDescriptor(object);
+			addEventPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Event Type feature.
+	 * This adds a property descriptor for the Event feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addEventTypePropertyDescriptor(Object object) {
+	protected void addEventPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CustomEvent_eventType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CustomEvent_eventType_feature", "_UI_CustomEvent_type"),
-				 AmaltheaPackage.eINSTANCE.getCustomEvent_EventType(),
+				 getString("_UI_CustomEventTrigger_event_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CustomEventTrigger_event_feature", "_UI_CustomEventTrigger_type"),
+				 AmaltheaPackage.eINSTANCE.getCustomEventTrigger_Event(),
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This returns CustomEvent.gif.
+	 * This returns CustomEventTrigger.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomEvent"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomEventTrigger"));
 	}
 
 	/**
@@ -109,14 +107,18 @@ public class CustomEventItemProvider extends TriggerEventItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
-		String label = ((CustomEvent)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_CustomEvent_type") :
-			getString("_UI_CustomEvent_type") + " " + label;
+	public String getTextGen(Object object) {
+		return getString("_UI_CustomEventTrigger_type");
 	}
-	
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomItemProviderService.getCustomEventTriggerItemProviderText(object, getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -125,15 +127,25 @@ public class CustomEventItemProvider extends TriggerEventItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void notifyChangedGen(Notification notification) {
+		updateChildren(notification);
+		super.notifyChanged(notification);
+	}
+
+	/**
+	 * @generated NOT
+	 */
 	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChanged(final Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(CustomEvent.class)) {
-			case AmaltheaPackage.CUSTOM_EVENT__EVENT_TYPE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		// delegate to custom item provider and execute locally
+		final List<ViewerNotification> notifications = CustomItemProviderService
+				.getCustomEventTriggerItemProviderNotifications(notification);
+		for (final ViewerNotification vn : notifications) {
+			fireNotifyChanged(vn);
 		}
+
 		super.notifyChanged(notification);
 	}
 

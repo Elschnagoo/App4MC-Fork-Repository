@@ -97,6 +97,7 @@ import org.eclipse.app4mc.amalthea.model.CrossbarSwitch;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
 import org.eclipse.app4mc.amalthea.model.CustomEntity;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
+import org.eclipse.app4mc.amalthea.model.CustomEventTrigger;
 import org.eclipse.app4mc.amalthea.model.CustomStimulus;
 import org.eclipse.app4mc.amalthea.model.DataAge;
 import org.eclipse.app4mc.amalthea.model.DataAgeConstraint;
@@ -2606,6 +2607,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass runnableCallEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass customEventTriggerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -11304,6 +11312,24 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCustomEventTrigger() {
+		return customEventTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCustomEventTrigger_Event() {
+		return (EReference)customEventTriggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDataType() {
 		return dataTypeEClass;
 	}
@@ -13437,6 +13463,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(runnableCallEClass, RUNNABLE_CALL__STATISTIC);
 		createEReference(runnableCallEClass, RUNNABLE_CALL__RUNNABLE_LINK_INT);
 
+		customEventTriggerEClass = createEClass(CUSTOM_EVENT_TRIGGER);
+		createEReference(customEventTriggerEClass, CUSTOM_EVENT_TRIGGER__EVENT);
+
 		dataTypeEClass = createEClass(DATA_TYPE);
 
 		compoundTypeEClass = createEClass(COMPOUND_TYPE);
@@ -13758,7 +13787,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		eventSetEClass.getESuperTypes().add(this.getEvent());
 		entityEventEClass.getESuperTypes().add(this.getEvent());
 		triggerEventEClass.getESuperTypes().add(this.getEntityEvent());
-		customEventEClass.getESuperTypes().add(this.getEntityEvent());
+		customEventEClass.getESuperTypes().add(this.getTriggerEvent());
 		stimulusEventEClass.getESuperTypes().add(this.getEntityEvent());
 		processEventEClass.getESuperTypes().add(this.getEntityEvent());
 		processChainEventEClass.getESuperTypes().add(this.getEntityEvent());
@@ -13948,6 +13977,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runnableProbabilitySwitchEClass.getESuperTypes().add(this.getRunnableItem());
 		groupEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableCallEClass.getESuperTypes().add(this.getRunnableItem());
+		customEventTriggerEClass.getESuperTypes().add(this.getRunnableItem());
 		compoundTypeEClass.getESuperTypes().add(this.getDataType());
 		structEClass.getESuperTypes().add(this.getCompoundType());
 		structEClass.getESuperTypes().add(this.getBaseObject());
@@ -15269,6 +15299,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getRunnableCall_Runnable(), this.getRunnable(), null, "runnable", null, 1, 1, RunnableCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnableCall_Statistic(), this.getRunEntityCallStatistic(), null, "statistic", null, 0, 1, RunnableCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnableCall_RunnableLinkInt(), this.getRunnable(), this.getRunnable_RunnableCalls(), "runnableLinkInt", null, 1, 1, RunnableCall.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(customEventTriggerEClass, CustomEventTrigger.class, "CustomEventTrigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCustomEventTrigger_Event(), this.getCustomEvent(), null, "event", null, 1, 1, CustomEventTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataTypeEClass, DataType.class, "DataType", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

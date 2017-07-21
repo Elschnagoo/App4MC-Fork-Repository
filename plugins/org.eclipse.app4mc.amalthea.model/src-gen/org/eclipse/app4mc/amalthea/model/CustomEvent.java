@@ -29,7 +29,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface CustomEvent extends EntityEvent {
+public interface CustomEvent extends TriggerEvent {
 	/**
 	 * Returns the value of the '<em><b>Event Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->

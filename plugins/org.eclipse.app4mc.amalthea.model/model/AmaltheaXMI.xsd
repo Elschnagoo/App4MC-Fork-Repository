@@ -2399,7 +2399,7 @@ maximum: Maximum allowed latency</xsd:documentation>
   </xsd:element>
   <xsd:complexType name="CustomEvent">
     <xsd:complexContent>
-      <xsd:extension base="am:EntityEvent">
+      <xsd:extension base="am:TriggerEvent">
         <xsd:attribute name="eventType" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -5289,6 +5289,24 @@ It can be also a group of runnable items without deviation, because the deviatio
   <xsd:element name="RunnableCall" type="am:RunnableCall">
     <xsd:annotation>
       <xsd:documentation>Representation of a runnable call of a run entity.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CustomEventTrigger">
+    <xsd:annotation>
+      <xsd:documentation>Explicitly trigger a custom event from a runnable.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:RunnableItem">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="event" type="am:CustomEvent"/>
+        </xsd:choice>
+        <xsd:attribute name="event" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CustomEventTrigger" type="am:CustomEventTrigger">
+    <xsd:annotation>
+      <xsd:documentation>Explicitly trigger a custom event from a runnable.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="DataType">

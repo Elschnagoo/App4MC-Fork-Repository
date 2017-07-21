@@ -143,6 +143,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger
+import org.eclipse.app4mc.amalthea.model.CustomEventTrigger
 
 class CustomItemProviderService {
 
@@ -2132,7 +2133,7 @@ class CustomItemProviderService {
 		if (object instanceof InterProcessTrigger) {
 			val stimulusName = object?.getStimulus?.name
 			val s1 = ppName(stimulusName, "<stimulus>")
-			return "activate " + s1
+			return "trigger " + s1
 		} else {
 			return defaultText
 		}
@@ -2480,6 +2481,31 @@ class CustomItemProviderService {
 		return list
 	}
 
+
+	/*****************************************************************************
+	 * 						CustomEventTriggerItemProvider
+	 *****************************************************************************/
+	def static String getCustomEventTriggerItemProviderText(Object object, String defaultText) {
+		if (object instanceof CustomEventTrigger) {
+			val eventName = object?.event?.name
+			val s1 = ppName(eventName, "<custom event>")
+			return "trigger " + s1
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getCustomEventTriggerItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(CustomEventTrigger)) {
+			case AmaltheaPackage::CUSTOM_EVENT_TRIGGER__EVENT:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+		}
+		return list
+	}
+
+
 	/*****************************************************************************
 	 * 						SenderReceiverReadItemProvider
 	 *****************************************************************************/
@@ -2501,6 +2527,7 @@ class CustomItemProviderService {
 		}
 		return list
 	}
+
 
 	/*****************************************************************************
 	 * 						SenderReceiverWriteItemProvider

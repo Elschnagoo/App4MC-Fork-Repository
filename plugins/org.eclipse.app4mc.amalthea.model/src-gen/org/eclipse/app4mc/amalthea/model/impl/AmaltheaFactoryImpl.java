@@ -78,6 +78,7 @@ import org.eclipse.app4mc.amalthea.model.CrossbarSwitch;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
 import org.eclipse.app4mc.amalthea.model.CustomEntity;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
+import org.eclipse.app4mc.amalthea.model.CustomEventTrigger;
 import org.eclipse.app4mc.amalthea.model.CustomStimulus;
 import org.eclipse.app4mc.amalthea.model.DataAgeConstraint;
 import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
@@ -614,6 +615,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH: return createRunnableProbabilitySwitch();
 			case AmaltheaPackage.GROUP: return createGroup();
 			case AmaltheaPackage.RUNNABLE_CALL: return createRunnableCall();
+			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER: return createCustomEventTrigger();
 			case AmaltheaPackage.STRUCT: return createStruct();
 			case AmaltheaPackage.STRUCT_ENTRY: return createStructEntry();
 			case AmaltheaPackage.ARRAY: return createArray();
@@ -3265,6 +3267,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public RunnableCall createRunnableCall() {
 		RunnableCallImpl runnableCall = new RunnableCallImpl();
 		return runnableCall;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CustomEventTrigger createCustomEventTrigger() {
+		CustomEventTriggerImpl customEventTrigger = new CustomEventTriggerImpl();
+		return customEventTrigger;
 	}
 
 	/**

@@ -21,6 +21,7 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedBaseTypeDefinit
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomActivationItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEntityItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEventTriggerItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedDataTypeDefinitionItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedEventActivationItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGroupItemProvider;
@@ -79,6 +80,11 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	@Override
 	public Adapter createCustomEntityAdapter() {
 		return new ExtendedCustomEntityItemProvider(this);
+	}
+
+	@Override
+	public Adapter createCustomEventTriggerAdapter() {
+		return new ExtendedCustomEventTriggerItemProvider(this);
 	}
 
 	@Override

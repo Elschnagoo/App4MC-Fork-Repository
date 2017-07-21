@@ -2174,6 +2174,15 @@ public interface AmaltheaFactory extends EFactory {
 	RunnableCall createRunnableCall();
 
 	/**
+	 * Returns a new object of class '<em>Custom Event Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Custom Event Trigger</em>'.
+	 * @generated
+	 */
+	CustomEventTrigger createCustomEventTrigger();
+
+	/**
 	 * Returns a new object of class '<em>Struct</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
