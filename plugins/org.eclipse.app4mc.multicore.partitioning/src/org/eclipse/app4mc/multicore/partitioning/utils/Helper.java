@@ -23,6 +23,7 @@ import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
+import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
@@ -297,7 +298,8 @@ public class Helper {
 				}
 			}
 			if (pp.getActivation() == null && pp.getRunnableCalls().get(0).getRunnable().getFirstActivation() != null) {
-				pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getFirstActivation());		//TODO: handle multiple activations
+				pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getFirstActivation());
+				// TODO: handle multiple activations
 			}
 			else if (pp.getRunnableCalls().get(0).getRunnable().getFirstActivation() == null) {
 				PartLog.getInstance().log("Runnable " + pp.getRunnableCalls().get(0).getRunnable().getName()
@@ -345,7 +347,45 @@ public class Helper {
 		for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
 			instrSum += getInstructions(trc.getRunnable());
 		}
+
 		return instrSum;
+	}
+
+	public double getPPIntrSumActRel(final ProcessPrototype pp) {
+		long instrSum = 0;
+		for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+			instrSum += getInstructions(trc.getRunnable());
+		}
+		// mpis = multiplier in seconds
+		double mpis = 0;
+		if (pp.getActivation() instanceof PeriodicActivation) {
+			final PeriodicActivation pact = (PeriodicActivation) pp.getActivation();
+			if (null != pact.getMax().getValue() && null != pact.getMin().getValue() && null != pact.getMax().getUnit()
+					&& null != pact.getMin().getUnit()) {
+				mpis = (pact.getMax().getValue().doubleValue() + pact.getMin().getValue().doubleValue()) / 2;
+			}
+			mpis *= getTimeUnit(pact);
+		}
+		instrSum *= mpis;
+		return instrSum;
+	}
+
+	public double getTimeUnit(final PeriodicActivation pact) {
+		switch (pact.getMax().getUnit()) {
+			case MS:
+				return 0.001;
+			case US:
+				return 0.000001;
+			case NS:
+				return 0.000000001;
+			case PS:
+				return 0.000000000001;
+			case S:
+				return 1;
+			default:
+				break;
+		}
+		return 0;
 	}
 
 }

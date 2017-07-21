@@ -222,16 +222,18 @@ public class ESSPe {
 
 
 	/**
-	 * find PP with > 1 TRCs, return the one with most cumulated instructions
+	 * find PP with > 1 TRCs, return the one with most cumulated instructions *
+	 * activation
 	 *
 	 * @return
 	 */
 	private ProcessPrototype getLongestPP() {
 		ProcessPrototype pps = null;
-		long max = 0;
+		double max = 0;
 		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
 			if (pp.getRunnableCalls().size() > 1 && !isSequence(pp)) {
-				final long temp = new Helper().getPPInstructions(pp);
+				final double temp = new Helper().getPPIntrSumActRel(pp);
+				PartLog.getInstance().log(Double.toString(temp));
 				if (temp > max) {
 					max = temp;
 					pps = pp;
