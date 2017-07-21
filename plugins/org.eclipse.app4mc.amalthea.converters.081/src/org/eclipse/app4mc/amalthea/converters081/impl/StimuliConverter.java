@@ -17,6 +17,7 @@ import java.util.Map;
 import org.apache.log4j.LogManager;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters081.utils.HelperUtils_080_081;
+import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
@@ -49,8 +50,48 @@ public class StimuliConverter extends AbstractConverter {
 		final Element rootElement = root.getRootElement();
 
 		updateAllModeValueListEntryElements(rootElement);
+		
+		updateEventStimulus(rootElement);
 
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
+	}
+
+	/**
+	 * This method is used to migrate all EventStimulus elements (For further
+	 * details, check : Bug 519925 )
+	 *
+	 *
+	 * @param rootElement
+	 *            Amalthea root element
+	 */
+	private void updateEventStimulus(Element rootElement) {
+
+		final StringBuffer xpathBuffer = new StringBuffer();
+
+		xpathBuffer.append("./stimuliModel/stimuli[@xsi:type=\"am:EventStimulus\"]");
+
+
+		final List<Element> eventStimulusElements = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
+				Element.class, this.helper.getGenericNS("xsi"));
+		
+		for (Element eventStimulusElement : eventStimulusElements) {
+			
+			Attribute triggerAttribute = eventStimulusElement.getAttribute("trigger");
+			
+			if(triggerAttribute!=null){
+				 triggerAttribute.setName("triggeringEvents");
+			}
+			
+			List<Element> triggerElements = eventStimulusElement.getChildren("trigger");
+			
+			if(triggerElements !=null ){
+				for (Element triggerElement : triggerElements) {
+					triggerElement.setName("triggeringEvents");
+				}
+			}
+			
+		}
+		
 	}
 
 	/**

@@ -39,12 +39,16 @@ public class StimuliConverterTest extends AbstractConverterTest {
 
 		final String[] inputFiles = new String[] { "/stimuli/stimuli.amxmi" };
 
+		final String[] inputFiles_stimuli = new String[] { "/stimuli_event/eventModel.amxmi", "/stimuli_event/eventStimulus.amxmi"  };
+
 
 
 
 		return Arrays.asList(new Object[][] {
 			{ "Models with Stimuli Model (Containing ModeValueListEntry elements)", true, inputFiles, "Migration of Amalthea models containing Stimuli model(Containing ModeValueListEntry elements) " } ,
 
+			{ "Models with Stimuli Model (Containing EventStimulus elements)", true, inputFiles_stimuli, "Migration of Amalthea models containing Stimulus model(Containing EventStimulus elements) " }
+			
 			  
 		});
 	}
@@ -74,6 +78,7 @@ public class StimuliConverterTest extends AbstractConverterTest {
 	protected void modelFileVerificationHook(final Document document) {
 		super.modelFileVerificationHook(document);
 
+		/*-------------- Case 1 -----------------*/
 		final StringBuffer xpathBuffer = new StringBuffer();
 
 		xpathBuffer.append("./stimuliModel/stimuli/setModeValueList/entries[@xsi:type=\"am:ModeValue\"]");
@@ -85,9 +90,29 @@ public class StimuliConverterTest extends AbstractConverterTest {
 		final List<Element> abstractProcessElements = this.helper.getXpathResult(document.getRootElement(),
 				xpathBuffer.toString(), Element.class, this.helper.getGenericNS("xsi"));
 
-		assertTrue( "Unable to migrate Stimul model containing ModeValueListEntry elements " , abstractProcessElements.size()==4);
+		if(document.getBaseURI().endsWith("stimuli.amxmi")){
+			assertTrue( "Unable to migrate Stimul model containing ModeValueListEntry elements " , abstractProcessElements.size()==4);
+		}
 
+		/*-------------- Case 2 -----------------*/
 
+		final StringBuffer xpathBuffer_eventStimulus = new StringBuffer();
+
+		xpathBuffer_eventStimulus.append("./stimuliModel/stimuli[@xsi:type=\"am:EventStimulus\"]");
+		
+		final List<Element> eventStimulusElements = this.helper.getXpathResult(document.getRootElement(),
+				xpathBuffer_eventStimulus.toString(), Element.class, this.helper.getGenericNS("xsi"));
+
+		for (Element eventStimulusElement : eventStimulusElements) {
+			
+			boolean migStatus_eventStimulus=(eventStimulusElement.getAttribute("triggeringEvents") !=null) ||(eventStimulusElement.getChildren("triggeringEvents").size()>0);
+			
+			assertTrue( "Unable to migrate Stimul model containing EventStimulus elements " , migStatus_eventStimulus);
+			
+			
+			 
+		}
+		
 	}
 
 

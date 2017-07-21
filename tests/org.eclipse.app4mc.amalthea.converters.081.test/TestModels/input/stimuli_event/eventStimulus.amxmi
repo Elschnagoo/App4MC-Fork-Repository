@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <stimuliModel>
+    <stimuli xsi:type="am:EventStimulus" name="eventStimuli" trigger="labelEvent_1?type=LabelEvent"/>
+    <stimuli xsi:type="am:EventStimulus" name="eventStimuli_1">
+      <trigger xsi:type="am:LabelEvent" href="amlt:/#externalEvent?type=LabelEvent"/>
+    </stimuli>
+  </stimuliModel>
+  <eventModel>
+    <events xsi:type="am:LabelEvent" name="labelEvent_1"/>
+  </eventModel>
+</am:Amalthea>
