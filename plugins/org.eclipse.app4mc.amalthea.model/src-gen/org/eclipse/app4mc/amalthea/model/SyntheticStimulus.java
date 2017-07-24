@@ -19,7 +19,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Activations triggered depending on a defined list of trigger times
+ * Stimulus triggered depending on a defined list of trigger times
  * offset: to shift the occurrences in negative or positive direction on the time bar
  * period: to set the period, after which the trigger times are to be repeated
  * triggerTimes: the list of all trigger times

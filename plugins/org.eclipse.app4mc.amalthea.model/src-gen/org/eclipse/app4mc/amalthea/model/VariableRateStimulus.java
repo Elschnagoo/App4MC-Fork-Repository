@@ -19,7 +19,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Periodic avtivation based on other events, like rotation speed dependency
+ * Periodic stimulus based on other events, like rotation speed
  * <!-- end-model-doc -->
  *
  *

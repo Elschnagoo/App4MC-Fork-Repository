@@ -2518,7 +2518,7 @@ class ModeValueDisjunction extends BaseObject
 }
 
 /*
- * This activates a task periodically
+ * Stimulus that is triggered periodically
  * offset: Time of first activation
  * recurrence: Time between following activations
  * clock: Time base which defines deviation of time, multiple stimuli can have the same time base
@@ -2531,14 +2531,14 @@ class PeriodicStimulus extends Stimulus
 }
 
 /*
- * Periodic avtivation based on other events, like rotation speed dependency
+ * Periodic stimulus based on other events, like rotation speed
  */
 class VariableRateStimulus extends Stimulus
 {
 }
 
 /*
- * Activations triggered depending on a defined list of trigger times
+ * Stimulus triggered depending on a defined list of trigger times
  * offset: to shift the occurrences in negative or positive direction on the time bar
  * period: to set the period, after which the trigger times are to be repeated
  * triggerTimes: the list of all trigger times

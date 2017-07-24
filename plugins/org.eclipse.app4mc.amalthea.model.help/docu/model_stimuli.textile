@@ -11,26 +11,26 @@ h3. Stimuli
 !(scale)../pictures/model_stimuli_stimuli.png!
 
 A stimulus is responsible to activate processes. The following different types are available:
-* *ArrivalCurve*: A list of time-borders in which a specified number of events are expected
+* *ArrivalCurveStimulus*: A list of time-borders in which a specified number of events are expected
 * *CustomStimulus*: To describe own custom types of activations, including properties
-* *EventStimulus*: Activation triggered by an event, defined in the event model. Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
-* *InterProcess*: Activations based on an explicit inter-process activation. Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
-* *Periodic*: Periodic activations based on an offset and a recurrence.
-* *PeriodicEvent*: Periodic activations based on other events, like rotation speed dependency
-* *Single*: Activates the process only once
-* *Sporadic*: Sporadic activations of processes
-* *Synthetic*:  Activations periodically triggered depending on a defined list of trigger times.
+* *EventStimulus*: Activation triggered by an event, defined in the event model.<br/>Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
+* *InterProcessStimulus*: Activations based on an explicit inter-process activation.<br/>Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
+* *PeriodicStimulus*: Periodic activations based on an offset and a recurrence.
+* *VariableRateStimulus*: Periodic activations based on other events, like rotation speed dependency
+* *SingleStimulus*: Activates the process only once
+* *SporadicStimulus*: Sporadic activations of processes
+* *SyntheticStimulus*:  Activations periodically triggered depending on a defined list of trigger times.
 
-*(validation-rule) _Periodic_: The _Time_ object in the role of _offset_ must not contain a negative value!
-*(validation-rule) _Periodic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
-*(validation-rule) _Synthetic_: The _Time_ object in the role of _offset_ must not contain a negative value!
-*(validation-rule) _Synthetic_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
+*(validation-rule) _PeriodicStimulus_: The _Time_ object in the role of _offset_ must not contain a negative value!
+*(validation-rule) _PeriodicStimulus_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
+*(validation-rule) _SyntheticStimulus_: The _Time_ object in the role of _offset_ must not contain a negative value!
+*(validation-rule) _SyntheticStimulus_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
 *(validation-rule) _TimestampList_: The _Time_ objects in the role of _timestamps_ must not contain a negative value!
-*(validation-rule) _Single_: The _Time_ object in the role of _activation_ must not contain a negative value!
+*(validation-rule) _SingleStimulus_: The _Time_ object in the role of _activation_ must not contain a negative value!
 *(validation-rule) _ArrivalCurveEntry_: The _Time_ object in the role of _lowerTimeBorder_ must not contain a negative value!
 *(validation-rule) _ArrivalCurveEntry_: The _Time_ object in the role of _upperTimeBorder_ must not contain a negative value!
 
-It is possible to define a deviation of time for every type of stimulus. For this, a stimulus can have an object of type Deviation, which refers to the deviation in the common model. This reference uses the class SignedTime as parameter for the generic values of the deviation. So the deviation is about time. The values (negative or positive) represents a shift of the activation to left or right on the time line. In this way it is possible to increase or decrease the activation time.
+It is possible to define a deviation of time for every type of stimulus. For this, a stimulus can have an object of type Deviation, which refers to the deviation in the common model. This reference uses the class Time as parameter for the generic values of the deviation. So the deviation is about time. The values (negative or positive) represents a shift of the activation to left or right on the time line. In this way it is possible to increase or decrease the activation time.
 
 It is possible to define lists of mode label values for a stimulus. An entry in this list is always a pair of a mode label and a mode literal. One of this lists is the set-mode-labels-list. Each time the stimulus is triggered all mode labels in this list are set to the corresponding value. 
 The enabling-mode-label-list and the disabling-mode-label-list can be used to enable or disable a stimulus by setting the mode label to a specific value (e.g. by a write access with a runnable).

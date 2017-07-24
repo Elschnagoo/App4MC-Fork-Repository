@@ -19,7 +19,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This activates a task periodically
+ * Stimulus that is triggered periodically
  * offset: Time of first activation
  * recurrence: Time between following activations
  * clock: Time base which defines deviation of time, multiple stimuli can have the same time base

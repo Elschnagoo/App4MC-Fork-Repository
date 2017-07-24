@@ -3988,7 +3988,7 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
   <xsd:element name="ModeValueDisjunction" type="am:ModeValueDisjunction"/>
   <xsd:complexType name="PeriodicStimulus">
     <xsd:annotation>
-      <xsd:documentation>This activates a task periodically
+      <xsd:documentation>Stimulus that is triggered periodically
 offset: Time of first activation
 recurrence: Time between following activations
 clock: Time base which defines deviation of time, multiple stimuli can have the same time base</xsd:documentation>
@@ -4006,7 +4006,7 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
   </xsd:complexType>
   <xsd:element name="PeriodicStimulus" type="am:PeriodicStimulus">
     <xsd:annotation>
-      <xsd:documentation>This activates a task periodically
+      <xsd:documentation>Stimulus that is triggered periodically
 offset: Time of first activation
 recurrence: Time between following activations
 clock: Time base which defines deviation of time, multiple stimuli can have the same time base</xsd:documentation>
@@ -4014,7 +4014,7 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
   </xsd:element>
   <xsd:complexType name="VariableRateStimulus">
     <xsd:annotation>
-      <xsd:documentation>Periodic avtivation based on other events, like rotation speed dependency</xsd:documentation>
+      <xsd:documentation>Periodic stimulus based on other events, like rotation speed</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus"/>
@@ -4022,12 +4022,12 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
   </xsd:complexType>
   <xsd:element name="VariableRateStimulus" type="am:VariableRateStimulus">
     <xsd:annotation>
-      <xsd:documentation>Periodic avtivation based on other events, like rotation speed dependency</xsd:documentation>
+      <xsd:documentation>Periodic stimulus based on other events, like rotation speed</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="SyntheticStimulus">
     <xsd:annotation>
-      <xsd:documentation>Activations triggered depending on a defined list of trigger times
+      <xsd:documentation>Stimulus triggered depending on a defined list of trigger times
 offset: to shift the occurrences in negative or positive direction on the time bar
 period: to set the period, after which the trigger times are to be repeated
 triggerTimes: the list of all trigger times</xsd:documentation>
@@ -4044,7 +4044,7 @@ triggerTimes: the list of all trigger times</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="SyntheticStimulus" type="am:SyntheticStimulus">
     <xsd:annotation>
-      <xsd:documentation>Activations triggered depending on a defined list of trigger times
+      <xsd:documentation>Stimulus triggered depending on a defined list of trigger times
 offset: to shift the occurrences in negative or positive direction on the time bar
 period: to set the period, after which the trigger times are to be repeated
 triggerTimes: the list of all trigger times</xsd:documentation>
