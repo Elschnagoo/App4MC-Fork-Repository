@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _XJJcUKP8EeWDWL6qw48qbg
-Runtime-Version: 2.1.0.201605312320
-Save-Time: 7/3/17 5:09 PM
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 7/24/17 11:00 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -28,7 +28,7 @@ exec-with-options {
 //options
 with [get-view Search | get-tree] {
     get-property itemCount | equals 2 | verify-true
-    get-item "Periodic Stimulus_Task_1" | get-property caption | equals "Periodic Stimulus_Task_1" | verify-true
+    get-item "Periodic Stimulus Stimulus_Task_1" | get-property caption | equals "Periodic Stimulus Stimulus_Task_1" | verify-true
     get-item "Task Task_1" | get-property caption | equals "Task Task_1" | verify-true
 }
 get-view Search | get-tree | select "Task Task_1" | double-click
@@ -36,7 +36,7 @@ with [get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.am
     get-item "AMALTHEA.*/Software/Tasks.*/Task_1" | get-property caption | equals "Task_1" | verify-true
     get-item "AMALTHEA.*/Software/Tasks.*/Task_1" | get-property selected | equals true | verify-true
 }
-get-view Search | get-tree | select "Periodic Stimulus_Task_1" | double-click
+get-view Search | get-tree | select "Periodic Stimulus Stimulus_Task_1" | double-click
 with [get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.amxmi Contents" | get-tree] {
     get-item "AMALTHEA.*/Stimuli/Stimulus_Task_1" | get-property caption | equals "Stimulus_Task_1" | verify-true
     get-item "AMALTHEA.*/Stimuli/Stimulus_Task_1" | get-property selected | equals true | verify-true

@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _k5bhkKe7EeWKy_GaRsFWZw
-Runtime-Version: 2.1.0.201605312320
-Save-Time: 7/3/17 5:08 PM
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 7/24/17 10:22 AM
 Testcase-Type: ecl
 Verifications: _OCzUMKM-EeW6_Mq9rZ9GtQ
 
@@ -36,7 +36,7 @@ with [get-view Properties | get-tree] {
 with [get-window "Stimuli -- Task Angle_Sync"] {
     get-table | get-property itemCount | equals 20 | verify-true
     with [get-table -after [get-label Feature]] {
-        get-item "Periodic periodic_6660us" | get-property caption | equals "Periodic periodic_6660us" | verify-true
+        get-item "Periodic Stimulus periodic_6660us" | get-property caption | equals "Periodic Stimulus periodic_6660us" | verify-true
         get-property itemCount | equals 1 | verify-true
     }
 }
