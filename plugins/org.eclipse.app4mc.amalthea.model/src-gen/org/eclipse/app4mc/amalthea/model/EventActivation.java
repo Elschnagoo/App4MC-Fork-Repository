@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +27,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.EventActivation#getTrigger <em>Trigger</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.EventActivation#getTriggeringEvents <em>Triggering Events</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.EventActivation#getCounter <em>Counter</em>}</li>
  * </ul>
  *
@@ -36,30 +37,20 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface EventActivation extends Activation {
 	/**
-	 * Returns the value of the '<em><b>Trigger</b></em>' reference.
+	 * Returns the value of the '<em><b>Triggering Events</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TriggerEvent}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Trigger</em>' reference isn't clear,
+	 * If the meaning of the '<em>Triggering Events</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Trigger</em>' reference.
-	 * @see #setTrigger(TriggerEvent)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventActivation_Trigger()
+	 * @return the value of the '<em>Triggering Events</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventActivation_TriggeringEvents()
 	 * @model required="true"
 	 * @generated
 	 */
-	TriggerEvent getTrigger();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.EventActivation#getTrigger <em>Trigger</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Trigger</em>' reference.
-	 * @see #getTrigger()
-	 * @generated
-	 */
-	void setTrigger(TriggerEvent value);
+	EList<TriggerEvent> getTriggeringEvents();
 
 	/**
 	 * Returns the value of the '<em><b>Counter</b></em>' containment reference.

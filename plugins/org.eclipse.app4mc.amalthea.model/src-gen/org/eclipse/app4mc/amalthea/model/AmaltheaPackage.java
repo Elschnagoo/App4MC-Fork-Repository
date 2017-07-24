@@ -24096,22 +24096,13 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_ACTIVATION__OFFSET = ACTIVATION_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Deadline</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERIODIC_ACTIVATION__DEADLINE = ACTIVATION_FEATURE_COUNT + 4;
-
-	/**
 	 * The number of structural features of the '<em>Periodic Activation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERIODIC_ACTIVATION_FEATURE_COUNT = ACTIVATION_FEATURE_COUNT + 5;
+	int PERIODIC_ACTIVATION_FEATURE_COUNT = ACTIVATION_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -24387,13 +24378,13 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_ACTIVATION__TAGS = ACTIVATION__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Trigger</b></em>' reference.
+	 * The feature id for the '<em><b>Triggering Events</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_ACTIVATION__TRIGGER = ACTIVATION_FEATURE_COUNT + 0;
+	int EVENT_ACTIVATION__TRIGGERING_EVENTS = ACTIVATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -35170,17 +35161,6 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getPeriodicActivation_Offset();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.PeriodicActivation#getDeadline <em>Deadline</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Deadline</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.PeriodicActivation#getDeadline()
-	 * @see #getPeriodicActivation()
-	 * @generated
-	 */
-	EReference getPeriodicActivation_Deadline();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SporadicActivation <em>Sporadic Activation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -35255,15 +35235,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getEventActivation();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.EventActivation#getTrigger <em>Trigger</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.EventActivation#getTriggeringEvents <em>Triggering Events</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Trigger</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.EventActivation#getTrigger()
+	 * @return the meta object for the reference list '<em>Triggering Events</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.EventActivation#getTriggeringEvents()
 	 * @see #getEventActivation()
 	 * @generated
 	 */
-	EReference getEventActivation_Trigger();
+	EReference getEventActivation_TriggeringEvents();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.EventActivation#getCounter <em>Counter</em>}'.

@@ -11627,15 +11627,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPeriodicActivation_Deadline() {
-		return (EReference)periodicActivationEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getSporadicActivation() {
 		return sporadicActivationEClass;
 	}
@@ -11699,7 +11690,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEventActivation_Trigger() {
+	public EReference getEventActivation_TriggeringEvents() {
 		return (EReference)eventActivationEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -13547,7 +13538,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(periodicActivationEClass, PERIODIC_ACTIVATION__MAX);
 		createEReference(periodicActivationEClass, PERIODIC_ACTIVATION__RECURRENCE);
 		createEReference(periodicActivationEClass, PERIODIC_ACTIVATION__OFFSET);
-		createEReference(periodicActivationEClass, PERIODIC_ACTIVATION__DEADLINE);
 
 		sporadicActivationEClass = createEClass(SPORADIC_ACTIVATION);
 		createEAttribute(sporadicActivationEClass, SPORADIC_ACTIVATION__DESCRIPTION);
@@ -13558,7 +13548,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(singleActivationEClass, SINGLE_ACTIVATION__MAX);
 
 		eventActivationEClass = createEClass(EVENT_ACTIVATION);
-		createEReference(eventActivationEClass, EVENT_ACTIVATION__TRIGGER);
+		createEReference(eventActivationEClass, EVENT_ACTIVATION__TRIGGERING_EVENTS);
 		createEReference(eventActivationEClass, EVENT_ACTIVATION__COUNTER);
 
 		customActivationEClass = createEClass(CUSTOM_ACTIVATION);
@@ -15388,7 +15378,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getPeriodicActivation_Max(), this.getTime(), null, "max", null, 0, 1, PeriodicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPeriodicActivation_Recurrence(), this.getTime(), null, "recurrence", null, 0, 1, PeriodicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPeriodicActivation_Offset(), this.getTime(), null, "offset", null, 0, 1, PeriodicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPeriodicActivation_Deadline(), this.getTime(), null, "deadline", null, 0, 1, PeriodicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sporadicActivationEClass, SporadicActivation.class, "SporadicActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSporadicActivation_Description(), theEcorePackage.getEString(), "description", null, 0, 1, SporadicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15402,7 +15391,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getSingleActivation_Max(), this.getTime(), null, "max", null, 0, 1, SingleActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventActivationEClass, EventActivation.class, "EventActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEventActivation_Trigger(), this.getTriggerEvent(), null, "trigger", null, 1, 1, EventActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEventActivation_TriggeringEvents(), this.getTriggerEvent(), null, "triggeringEvents", null, 1, -1, EventActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEventActivation_Counter(), this.getCounter(), null, "counter", null, 0, 1, EventActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customActivationEClass, CustomActivation.class, "CustomActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

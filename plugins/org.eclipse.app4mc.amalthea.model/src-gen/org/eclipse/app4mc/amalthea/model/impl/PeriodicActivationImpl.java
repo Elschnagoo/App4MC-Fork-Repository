@@ -36,7 +36,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicActivationImpl#getMax <em>Max</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicActivationImpl#getRecurrence <em>Recurrence</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicActivationImpl#getOffset <em>Offset</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicActivationImpl#getDeadline <em>Deadline</em>}</li>
  * </ul>
  *
  * @generated
@@ -81,16 +80,6 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 	 * @ordered
 	 */
 	protected Time offset;
-
-	/**
-	 * The cached value of the '{@link #getDeadline() <em>Deadline</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeadline()
-	 * @generated
-	 * @ordered
-	 */
-	protected Time deadline;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -288,49 +277,6 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Time getDeadline() {
-		return deadline;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDeadline(Time newDeadline, NotificationChain msgs) {
-		Time oldDeadline = deadline;
-		deadline = newDeadline;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PERIODIC_ACTIVATION__DEADLINE, oldDeadline, newDeadline);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDeadline(Time newDeadline) {
-		if (newDeadline != deadline) {
-			NotificationChain msgs = null;
-			if (deadline != null)
-				msgs = ((InternalEObject)deadline).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC_ACTIVATION__DEADLINE, null, msgs);
-			if (newDeadline != null)
-				msgs = ((InternalEObject)newDeadline).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC_ACTIVATION__DEADLINE, null, msgs);
-			msgs = basicSetDeadline(newDeadline, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PERIODIC_ACTIVATION__DEADLINE, newDeadline, newDeadline));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -342,8 +288,6 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 				return basicSetRecurrence(null, msgs);
 			case AmaltheaPackage.PERIODIC_ACTIVATION__OFFSET:
 				return basicSetOffset(null, msgs);
-			case AmaltheaPackage.PERIODIC_ACTIVATION__DEADLINE:
-				return basicSetDeadline(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -364,8 +308,6 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 				return getRecurrence();
 			case AmaltheaPackage.PERIODIC_ACTIVATION__OFFSET:
 				return getOffset();
-			case AmaltheaPackage.PERIODIC_ACTIVATION__DEADLINE:
-				return getDeadline();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -389,9 +331,6 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 				return;
 			case AmaltheaPackage.PERIODIC_ACTIVATION__OFFSET:
 				setOffset((Time)newValue);
-				return;
-			case AmaltheaPackage.PERIODIC_ACTIVATION__DEADLINE:
-				setDeadline((Time)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -417,9 +356,6 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 			case AmaltheaPackage.PERIODIC_ACTIVATION__OFFSET:
 				setOffset((Time)null);
 				return;
-			case AmaltheaPackage.PERIODIC_ACTIVATION__DEADLINE:
-				setDeadline((Time)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -440,8 +376,6 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 				return recurrence != null;
 			case AmaltheaPackage.PERIODIC_ACTIVATION__OFFSET:
 				return offset != null;
-			case AmaltheaPackage.PERIODIC_ACTIVATION__DEADLINE:
-				return deadline != null;
 		}
 		return super.eIsSet(featureID);
 	}

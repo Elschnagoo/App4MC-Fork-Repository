@@ -120,11 +120,6 @@ public class SWModelValidator extends AbstractCheckValidator implements IssueCre
 		this.softwareModelValidatorImpl.checkPeriodicActivationOffsetUnsigned(amalthea);
 	}
 	
-	@Check(constraint = "PeriodicActivationDeadlineUnsigned", categories = { "TAConstraint" })
-	public void checkPeriodicActivationDeadlineUnsigned(final Amalthea amalthea) {
-		this.softwareModelValidatorImpl.checkPeriodicActivationDeadlineUnsigned(amalthea);
-	}
-
 	@Check(constraint = "SingleActivationMinUnsigned", categories = { "TAConstraint" })
 	public void checkSingleActivationMinUnsigned(final Amalthea amalthea) {
 		this.softwareModelValidatorImpl.checkSingleActivationMinUnsigned(amalthea);

@@ -57,25 +57,25 @@ public class EventActivationItemProvider extends ActivationItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTriggerPropertyDescriptor(object);
+			addTriggeringEventsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Trigger feature.
+	 * This adds a property descriptor for the Triggering Events feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTriggerPropertyDescriptor(Object object) {
+	protected void addTriggeringEventsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_EventActivation_trigger_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EventActivation_trigger_feature", "_UI_EventActivation_type"),
-				 AmaltheaPackage.eINSTANCE.getEventActivation_Trigger(),
+				 getString("_UI_EventActivation_triggeringEvents_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EventActivation_triggeringEvents_feature", "_UI_EventActivation_type"),
+				 AmaltheaPackage.eINSTANCE.getEventActivation_TriggeringEvents(),
 				 true,
 				 false,
 				 true,

@@ -12,6 +12,8 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.util.Collection;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
@@ -20,10 +22,14 @@ import org.eclipse.app4mc.amalthea.model.TriggerEvent;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +39,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.EventActivationImpl#getTrigger <em>Trigger</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.EventActivationImpl#getTriggeringEvents <em>Triggering Events</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.EventActivationImpl#getCounter <em>Counter</em>}</li>
  * </ul>
  *
@@ -41,14 +47,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class EventActivationImpl extends ActivationImpl implements EventActivation {
 	/**
-	 * The cached value of the '{@link #getTrigger() <em>Trigger</em>}' reference.
+	 * The cached value of the '{@link #getTriggeringEvents() <em>Triggering Events</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTrigger()
+	 * @see #getTriggeringEvents()
 	 * @generated
 	 * @ordered
 	 */
-	protected TriggerEvent trigger;
+	protected EList<TriggerEvent> triggeringEvents;
 
 	/**
 	 * The cached value of the '{@link #getCounter() <em>Counter</em>}' containment reference.
@@ -84,37 +90,11 @@ public class EventActivationImpl extends ActivationImpl implements EventActivati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TriggerEvent getTrigger() {
-		if (trigger != null && trigger.eIsProxy()) {
-			InternalEObject oldTrigger = (InternalEObject)trigger;
-			trigger = (TriggerEvent)eResolveProxy(oldTrigger);
-			if (trigger != oldTrigger) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.EVENT_ACTIVATION__TRIGGER, oldTrigger, trigger));
-			}
+	public EList<TriggerEvent> getTriggeringEvents() {
+		if (triggeringEvents == null) {
+			triggeringEvents = new EObjectResolvingEList<TriggerEvent>(TriggerEvent.class, this, AmaltheaPackage.EVENT_ACTIVATION__TRIGGERING_EVENTS);
 		}
-		return trigger;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TriggerEvent basicGetTrigger() {
-		return trigger;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTrigger(TriggerEvent newTrigger) {
-		TriggerEvent oldTrigger = trigger;
-		trigger = newTrigger;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.EVENT_ACTIVATION__TRIGGER, oldTrigger, trigger));
+		return triggeringEvents;
 	}
 
 	/**
@@ -182,9 +162,8 @@ public class EventActivationImpl extends ActivationImpl implements EventActivati
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.EVENT_ACTIVATION__TRIGGER:
-				if (resolve) return getTrigger();
-				return basicGetTrigger();
+			case AmaltheaPackage.EVENT_ACTIVATION__TRIGGERING_EVENTS:
+				return getTriggeringEvents();
 			case AmaltheaPackage.EVENT_ACTIVATION__COUNTER:
 				return getCounter();
 		}
@@ -196,11 +175,13 @@ public class EventActivationImpl extends ActivationImpl implements EventActivati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.EVENT_ACTIVATION__TRIGGER:
-				setTrigger((TriggerEvent)newValue);
+			case AmaltheaPackage.EVENT_ACTIVATION__TRIGGERING_EVENTS:
+				getTriggeringEvents().clear();
+				getTriggeringEvents().addAll((Collection<? extends TriggerEvent>)newValue);
 				return;
 			case AmaltheaPackage.EVENT_ACTIVATION__COUNTER:
 				setCounter((Counter)newValue);
@@ -217,8 +198,8 @@ public class EventActivationImpl extends ActivationImpl implements EventActivati
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.EVENT_ACTIVATION__TRIGGER:
-				setTrigger((TriggerEvent)null);
+			case AmaltheaPackage.EVENT_ACTIVATION__TRIGGERING_EVENTS:
+				getTriggeringEvents().clear();
 				return;
 			case AmaltheaPackage.EVENT_ACTIVATION__COUNTER:
 				setCounter((Counter)null);
@@ -235,8 +216,8 @@ public class EventActivationImpl extends ActivationImpl implements EventActivati
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.EVENT_ACTIVATION__TRIGGER:
-				return trigger != null;
+			case AmaltheaPackage.EVENT_ACTIVATION__TRIGGERING_EVENTS:
+				return triggeringEvents != null && !triggeringEvents.isEmpty();
 			case AmaltheaPackage.EVENT_ACTIVATION__COUNTER:
 				return counter != null;
 		}

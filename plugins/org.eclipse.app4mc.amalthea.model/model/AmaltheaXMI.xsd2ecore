@@ -2153,7 +2153,6 @@
       <nested inputs="amalthea.xcore#/EPackage/PeriodicActivation/max" outputs="AmaltheaXMI.xsd#//PeriodicActivation;XSDComplexTypeDefinition=327/XSDParticle/XSDModelGroup/XSDParticle=1"/>
       <nested inputs="amalthea.xcore#/EPackage/PeriodicActivation/recurrence" outputs="AmaltheaXMI.xsd#//PeriodicActivation;XSDComplexTypeDefinition=327/XSDParticle/XSDModelGroup/XSDParticle=2"/>
       <nested inputs="amalthea.xcore#/EPackage/PeriodicActivation/offset" outputs="AmaltheaXMI.xsd#//PeriodicActivation;XSDComplexTypeDefinition=327/XSDParticle/XSDModelGroup/XSDParticle=3"/>
-      <nested inputs="amalthea.xcore#/EPackage/PeriodicActivation/deadline" outputs="AmaltheaXMI.xsd#//PeriodicActivation;XSDComplexTypeDefinition=327/XSDParticle/XSDModelGroup/XSDParticle=4"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/PeriodicActivation" outputs="AmaltheaXMI.xsd#//PeriodicActivation;XSDElementDeclaration=327"/>
     <nested inputs="amalthea.xcore#/EPackage/SporadicActivation" outputs="AmaltheaXMI.xsd#//SporadicActivation;XSDComplexTypeDefinition=328">
@@ -2168,8 +2167,8 @@
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/SingleActivation" outputs="AmaltheaXMI.xsd#//SingleActivation;XSDElementDeclaration=329"/>
     <nested inputs="amalthea.xcore#/EPackage/EventActivation" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=330">
-      <nested inputs="amalthea.xcore#/EPackage/EventActivation/trigger" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=330/XSDAttributeUse"/>
-      <nested inputs="amalthea.xcore#/EPackage/EventActivation/trigger" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=330/XSDParticle/XSDModelGroup/XSDParticle"/>
+      <nested inputs="amalthea.xcore#/EPackage/EventActivation/triggeringEvents" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=330/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/EventActivation/triggeringEvents" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=330/XSDParticle/XSDModelGroup/XSDParticle"/>
       <nested inputs="amalthea.xcore#/EPackage/EventActivation/counter" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=330/XSDParticle/XSDModelGroup/XSDParticle=1"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/EventActivation" outputs="AmaltheaXMI.xsd#//EventActivation;XSDElementDeclaration=330"/>

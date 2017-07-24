@@ -114,8 +114,8 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 		if (activation.getMin() != null) {
 			stimuliPeriodic.setRecurrence(EcoreUtil.copy(activation.getMin()));
 		}
-		if (activation.getDeadline() != null) {
-			stimuliPeriodic.setRecurrence(EcoreUtil.copy(activation.getDeadline()));
+		if (activation.getRecurrence() != null) {
+			stimuliPeriodic.setRecurrence(EcoreUtil.copy(activation.getRecurrence()));
 		}
 
 		return stimuliPeriodic;

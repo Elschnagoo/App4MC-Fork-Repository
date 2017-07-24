@@ -659,28 +659,6 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 	}
 
 	/*
-	 * Checks the value of property deadline. The parameter must not be set lower than zero.
-	 * If this is the case, it will be handled as an error.
-	 */
-	public void checkPeriodicActivationDeadlineUnsigned(Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof PeriodicActivation) {
-				PeriodicActivation periodicActivation = (PeriodicActivation) elem;
-				Time deadline = periodicActivation.getDeadline();
-				if(null != deadline) {
-					BigInteger value = deadline.getValue();
-					if(0 > value.signum()) {
-						this.issueCreator.issue(deadline, AmaltheaPackage.eINSTANCE.getPeriodicActivation_Deadline(), value);
-					}
-				}
-			}
-		}
-	}
-
-	/*
 	 * Checks the value of property min. The parameter must not be set lower than zero.
 	 * If this is the case, it will be handled as an error.
 	 */

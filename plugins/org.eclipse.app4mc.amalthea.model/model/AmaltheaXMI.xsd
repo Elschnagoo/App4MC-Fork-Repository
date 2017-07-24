@@ -5519,7 +5519,6 @@ Used for first definition of an activation rate, which is later refined by stimu
           <xsd:element name="max" type="am:Time"/>
           <xsd:element name="recurrence" type="am:Time"/>
           <xsd:element name="offset" type="am:Time"/>
-          <xsd:element name="deadline" type="am:Time"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -5565,10 +5564,10 @@ Used for first definition of an activation rate, which is later refined by stimu
     <xsd:complexContent>
       <xsd:extension base="am:Activation">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="trigger" type="am:TriggerEvent"/>
+          <xsd:element name="triggeringEvents" type="am:TriggerEvent"/>
           <xsd:element name="counter" type="am:Counter"/>
         </xsd:choice>
-        <xsd:attribute name="trigger" type="xsd:string"/>
+        <xsd:attribute name="triggeringEvents" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

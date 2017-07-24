@@ -30,7 +30,6 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicActivation#getMax <em>Max</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicActivation#getRecurrence <em>Recurrence</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicActivation#getOffset <em>Offset</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicActivation#getDeadline <em>Deadline</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicActivation()
@@ -141,31 +140,5 @@ public interface PeriodicActivation extends Activation {
 	 * @generated
 	 */
 	void setOffset(Time value);
-
-	/**
-	 * Returns the value of the '<em><b>Deadline</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Deadline</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Deadline</em>' containment reference.
-	 * @see #setDeadline(Time)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicActivation_Deadline()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Time getDeadline();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.PeriodicActivation#getDeadline <em>Deadline</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Deadline</em>' containment reference.
-	 * @see #getDeadline()
-	 * @generated
-	 */
-	void setDeadline(Time value);
 
 } // PeriodicActivation

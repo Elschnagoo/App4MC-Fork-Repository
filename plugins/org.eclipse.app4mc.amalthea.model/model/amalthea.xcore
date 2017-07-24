@@ -3561,7 +3561,6 @@ class PeriodicActivation extends Activation
 	contains Time max
 	contains Time recurrence
 	contains Time offset
-	contains Time deadline
 }
 
 class SporadicActivation extends Activation
@@ -3584,7 +3583,7 @@ class SingleActivation extends Activation
  */
 class EventActivation extends Activation
 {
-	refers TriggerEvent[1] trigger
+	refers TriggerEvent[+] triggeringEvents
 	contains Counter counter
 }
 

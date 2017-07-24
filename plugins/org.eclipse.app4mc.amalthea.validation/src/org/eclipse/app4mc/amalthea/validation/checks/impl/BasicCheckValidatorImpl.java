@@ -217,7 +217,6 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 				if (!found) found = (classID == PERIODIC_ACTIVATION && featureID == PERIODIC_ACTIVATION__OFFSET);
 				if (!found) found = (classID == PERIODIC_ACTIVATION && featureID == PERIODIC_ACTIVATION__MIN);
 				if (!found) found = (classID == PERIODIC_ACTIVATION && featureID == PERIODIC_ACTIVATION__MAX);
-				if (!found) found = (classID == PERIODIC_ACTIVATION && featureID == PERIODIC_ACTIVATION__DEADLINE);
 				if (!found) found = (classID == SINGLE_ACTIVATION && featureID == SINGLE_ACTIVATION__MIN);
 				if (!found) found = (classID == SINGLE_ACTIVATION && featureID == SINGLE_ACTIVATION__MAX);
 				if (!found) found = (classID == RUNNABLE && featureID == RUNNABLE__DEADLINE);

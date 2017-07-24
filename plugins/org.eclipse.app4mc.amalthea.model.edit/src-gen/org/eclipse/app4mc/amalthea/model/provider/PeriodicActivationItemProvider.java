@@ -76,7 +76,6 @@ public class PeriodicActivationItemProvider extends ActivationItemProvider {
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Max());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Recurrence());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Offset());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Deadline());
 		}
 		return childrenFeatures;
 	}
@@ -146,7 +145,6 @@ public class PeriodicActivationItemProvider extends ActivationItemProvider {
 			case AmaltheaPackage.PERIODIC_ACTIVATION__MAX:
 			case AmaltheaPackage.PERIODIC_ACTIVATION__RECURRENCE:
 			case AmaltheaPackage.PERIODIC_ACTIVATION__OFFSET:
-			case AmaltheaPackage.PERIODIC_ACTIVATION__DEADLINE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -183,11 +181,6 @@ public class PeriodicActivationItemProvider extends ActivationItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Offset(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getPeriodicActivation_Deadline(),
-				 AmaltheaFactory.eINSTANCE.createTime()));
 	}
 
 	/**
@@ -205,8 +198,7 @@ public class PeriodicActivationItemProvider extends ActivationItemProvider {
 			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicActivation_Min() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicActivation_Max() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicActivation_Recurrence() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicActivation_Offset() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicActivation_Deadline();
+			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicActivation_Offset();
 
 		if (qualify) {
 			return getString
