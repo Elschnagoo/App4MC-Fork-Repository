@@ -105,7 +105,7 @@ public class StimuliConverterTest extends AbstractConverterTest {
 
 		for (Element eventStimulusElement : eventStimulusElements) {
 			
-			boolean migStatus_eventStimulus=(eventStimulusElement.getAttribute("triggeringEvents") !=null) ||(eventStimulusElement.getChildren("triggeringEvents").size()>0);
+			boolean migStatus_eventStimulus=(eventStimulusElement.getAttribute("trigger") ==null) ||(eventStimulusElement.getChildren("trigger").size()==0);
 			
 			assertTrue( "Unable to migrate Stimul model containing EventStimulus elements " , migStatus_eventStimulus);
 			

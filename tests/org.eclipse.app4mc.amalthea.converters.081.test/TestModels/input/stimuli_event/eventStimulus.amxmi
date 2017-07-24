@@ -1,12 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <isrs priority="0">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence">
+          <calls xsi:type="am:InterProcessActivation">
+            <stimulus xsi:type="am:InterProcess" href="amlt:/#foreignStimuli?type=InterProcess"/>
+          </calls>
+        </graphEntries>
+        <graphEntries xsi:type="am:ModeSwitch">
+          <defaultEntry>
+            <items xsi:type="am:CallSequence">
+              <calls xsi:type="am:InterProcessActivation" stimulus="no-name?type=PeriodicEvent"/>
+            </items>
+          </defaultEntry>
+        </graphEntries>
+        <graphEntries xsi:type="am:ProbabilitySwitch">
+          <entries probability="0.0">
+            <items xsi:type="am:ProbabilitySwitch">
+              <entries probability="0.0">
+                <items xsi:type="am:CallSequence">
+                  <calls xsi:type="am:InterProcessActivation" stimulus="no-name?type=Periodic"/>
+                </items>
+              </entries>
+            </items>
+          </entries>
+        </graphEntries>
+      </callGraph>
+      <stimuli xsi:type="am:CustomStimulus" href="amlt:/#no-name?type=CustomStimulus"/>
+      <stimuli xsi:type="am:EventStimulus" href="amlt:/#eventStimuli?type=EventStimulus"/>
+      <stimuli xsi:type="am:EventStimulus" href="amlt:/#eventStimuli_1?type=EventStimulus"/>
+      <stimuli xsi:type="am:EventStimulus" href="amlt:/#foreignEventStimulus?type=EventStimulus"/>
+      <stimuli xsi:type="am:InterProcess" href="amlt:/#no-name?type=InterProcess"/>
+      <stimuli xsi:type="am:InterProcess" href="amlt:/#foreignStimuli?type=InterProcess"/>
+      <stimuli xsi:type="am:Periodic" href="amlt:/#no-name?type=Periodic"/>
+      <stimuli xsi:type="am:PeriodicEvent" href="amlt:/#no-name?type=PeriodicEvent"/>
+      <stimuli xsi:type="am:Single" href="amlt:/#no-name?type=Single"/>
+      <stimuli xsi:type="am:Single" href="amlt:/#no-name?type=Single"/>
+      <stimuli xsi:type="am:Single" href="amlt:/#no-name?type=Single"/>
+      <stimuli xsi:type="am:Sporadic" href="amlt:/#no-name?type=Sporadic"/>
+      <stimuli xsi:type="am:Synthetic" href="amlt:/#no-name?type=Synthetic"/>
+    </isrs>
+    <tasks priority="0" osekTaskGroup="0" multipleTaskActivationLimit="0">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence">
+          <calls xsi:type="am:InterProcessActivation" stimulus="no-name?type=InterProcess"/>
+          <calls xsi:type="am:InterProcessActivation">
+            <stimulus xsi:type="am:EventStimulus" href="amlt:/#foreignEventStimulus?type=EventStimulus"/>
+          </calls>
+        </graphEntries>
+        <graphEntries xsi:type="am:ModeSwitch">
+          <entries>
+            <items xsi:type="am:CallSequence">
+              <calls xsi:type="am:InterProcessActivation" stimulus="no-name?type=InterProcess"/>
+            </items>
+            <items xsi:type="am:ModeSwitch">
+              <entries/>
+              <entries>
+                <items xsi:type="am:CallSequence">
+                  <calls xsi:type="am:InterProcessActivation" stimulus="no-name?type=CustomStimulus"/>
+                </items>
+                <items xsi:type="am:ModeSwitch">
+                  <defaultEntry>
+                    <items xsi:type="am:CallSequence">
+                      <calls xsi:type="am:InterProcessActivation" stimulus="no-name?type=Single"/>
+                    </items>
+                  </defaultEntry>
+                </items>
+                <items xsi:type="am:ProbabilitySwitch">
+                  <entries probability="0.0">
+                    <items xsi:type="am:CallSequence">
+                      <calls xsi:type="am:InterProcessActivation" stimulus="no-name?type=Synthetic"/>
+                    </items>
+                  </entries>
+                </items>
+              </entries>
+              <defaultEntry>
+                <items xsi:type="am:CallSequence">
+                  <calls xsi:type="am:InterProcessActivation"/>
+                </items>
+              </defaultEntry>
+            </items>
+            <items xsi:type="am:ProbabilitySwitch">
+              <entries probability="0.0">
+                <items xsi:type="am:CallSequence"/>
+                <items xsi:type="am:ModeSwitch">
+                  <defaultEntry>
+                    <items xsi:type="am:ModeSwitch">
+                      <entries>
+                        <items xsi:type="am:CallSequence">
+                          <calls xsi:type="am:InterProcessActivation">
+                            <stimulus xsi:type="am:EventStimulus" href="amlt:/#foreignEventStimulus?type=EventStimulus"/>
+                          </calls>
+                        </items>
+                      </entries>
+                    </items>
+                  </defaultEntry>
+                </items>
+                <items xsi:type="am:ProbabilitySwitch"/>
+              </entries>
+            </items>
+          </entries>
+          <defaultEntry>
+            <items xsi:type="am:CallSequence">
+              <calls xsi:type="am:InterProcessActivation" stimulus="no-name?type=InterProcess"/>
+            </items>
+          </defaultEntry>
+        </graphEntries>
+        <graphEntries xsi:type="am:ProbabilitySwitch"/>
+      </callGraph>
+      <stimuli xsi:type="am:EventStimulus" href="amlt:/#eventStimuli?type=EventStimulus"/>
+      <stimuli xsi:type="am:EventStimulus" href="amlt:/#eventStimuli_1?type=EventStimulus"/>
+      <stimuli xsi:type="am:EventStimulus" href="amlt:/#foreignEventStimulus?type=EventStimulus"/>
+      <stimuli xsi:type="am:InterProcess" href="amlt:/#no-name?type=InterProcess"/>
+    </tasks>
+    <tasks name="Task2" priority="0" stimuli="no-name?type=CustomStimulus" osekTaskGroup="0" multipleTaskActivationLimit="0"/>
+  </swModel>
   <stimuliModel>
     <stimuli xsi:type="am:EventStimulus" name="eventStimuli" trigger="labelEvent_1?type=LabelEvent"/>
     <stimuli xsi:type="am:EventStimulus" name="eventStimuli_1">
       <trigger xsi:type="am:LabelEvent" href="amlt:/#externalEvent?type=LabelEvent"/>
     </stimuli>
+    <stimuli xsi:type="am:ArrivalCurve"/>
+    <stimuli xsi:type="am:CustomStimulus"/>
+    <stimuli xsi:type="am:InterProcess"/>
+    <stimuli xsi:type="am:Periodic"/>
+    <stimuli xsi:type="am:PeriodicEvent"/>
+    <stimuli xsi:type="am:Single"/>
+    <stimuli xsi:type="am:Single"/>
+    <stimuli xsi:type="am:Single"/>
+    <stimuli xsi:type="am:Sporadic"/>
+    <stimuli xsi:type="am:Synthetic"/>
   </stimuliModel>
   <eventModel>
-    <events xsi:type="am:LabelEvent" name="labelEvent_1"/>
+    <events xsi:type="am:LabelEvent" name="labelEvent_1">
+      <customProperties/>
+    </events>
+    <events xsi:type="am:StimulusEvent" name="stimulusEvent" description="" entity="no-name?type=Periodic"/>
   </eventModel>
 </am:Amalthea>
