@@ -37,6 +37,8 @@ These objects are containments of __Task__ or __Runnable__ and can have addition
 
 | | Back pointer (read only) |>. Reference | |
 | @LabelAccess@ |{color:green}. &#8592; *labelAccesses* |>. *data* &#8594; | @Label@ |
+| @ChannelAccess@ |{color:green}. &#8592; *channelAccesses* |>. *data* &#8594; | @Channel@ |
+| @SemaphoreAccess@ |{color:green}. &#8592; *semaphoreAccesses* |>. *semaphore* &#8594; | @Semaphore@ |
 | @TaskRunnableCall@ |{color:green}. &#8592; *taskRunnableCalls* |>. *runnable* &#8594; | @Runnable@ |
 | @RunnableCall@ |{color:green}. &#8592; *runnableCalls* |>. *runnable* &#8594; | @Runnable@ |
 
@@ -51,6 +53,12 @@ Labels and runnables can be located in exactly one section. The back pointer pro
 | | Back pointer (read only) |>. Reference | |
 | @Label@ |{color:green}. &#8592; *labels* |>. *section* &#8594; | @Section@ |
 | @Runnable@ |{color:green}. &#8592; *runnables* |>. *section* &#8594; | @Section@ |
+
+CustomEvent and InterProcessStimulus can have explicit triggers. The pointer is established from CustomEventTrigger and InterProcessTrigger. The back pointers provides easier access to the triggering runnables / processes.
+
+| | Back pointer (read only) |>. Reference | |
+| @CustomEventTrigger@ |{color:green}. &#8592; *explicitTriggers* |>. *event* &#8594; | @CustomEvent@ |
+| @InterProcessTrigger@ |{color:green}. &#8592; *explicitTriggers* |>. *stimulus* &#8594; | @InterProcessStimulus@ |
 
 h4. Implementation
 

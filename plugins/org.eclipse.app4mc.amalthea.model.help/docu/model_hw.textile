@@ -28,7 +28,6 @@ The __ComplexNode__ is the generalization of all hardware components. It holds t
 
 table(classic). 
 |_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| quartzes | Containment | * | __Quartz__ | Containment for __Quartz__ objects (i.e. frequency generators) located on the specialization of this element. |
 | prescaler | Containment | * | __Prescaler__ | Containment for __Prescaler__ (i.e. frequency prescaler) objects located on the specialization of this element. |
 | memories | Containment | * | __Memory__ | Containment for __Memory__ (i.e. memories, such as RAM or ROM) objects located on the specialization of this element. |
 | networks | Containment | * | __Network__ | Containment for __Network__ (i.e. networks, such as LIN, CAN or ETHERNET) objects located on the specialization of this element. |
@@ -91,12 +90,12 @@ table(classic).
 
 h4. Quartz
 
-The __Quartz__ is a specialization of the __ComplexNode__ and represents a frequency generator which may be located on any __ComplexNode__ or its specializations. It may be referenced by any number of __Prescalers__.
+The __Quartz__ is defined on __HWSystem__ level and represents a frequency generator. It may be referenced by any number of __Prescalers__.
 
 table(classic). 
 |_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
 | type | __QType__ | 1 | STATIC / DYNAMIC | Specifies if the __Quartz__ operates at either a static or dynamic frequency. |
-| frequency | Integer | ? | 0 - 255 | Frequency on which this __Quartz__ is operating. |
+| frequency | __Frequency__ | 1 |  | Frequency on which this __Quartz__ is operating. |
 
 h4. Component
 

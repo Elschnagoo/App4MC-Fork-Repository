@@ -41,7 +41,7 @@ The __ListObject__ can be used to store multi-valued custom properties.
 h3. Time (and Time Unit)
 
 The AMALTHEA data model includes a common element to describe time ranges in an easy way, the __Time__ element. The __Time__ class in general allows to define negative time values. If only positive values are expected the AMALTHEA validation will show a warning.
-The __Time__ element can be referred by any other element for specifying attributes to store time information.
+The __Time__ element can be contained by any other element for specifying attributes to store time information.
 Time units are needed to describe different timing behavior and requirements, like deadlines or offsets of components.
 To support different time ranges, especially different time units, AMALTHEA predefines these types like seconds, milli-seconds, micro-seconds,  nano-seconds or pico-seconds.
 
