@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <customProperties key="st1">
+    <value xsi:type="am:ReferenceObject" value="no-name?type=ArrivalCurve"/>
+  </customProperties>
+  <customProperties key="st2">
+    <value xsi:type="am:ReferenceObject">
+      <value xsi:type="am:EventStimulus" href="amlt:/#foreignEventStimulus?type=EventStimulus"/>
+    </value>
+  </customProperties>
+  <customProperties key="st3">
+    <value xsi:type="am:ListObject">
+      <values xsi:type="am:ReferenceObject" value="no-name?type=ArrivalCurve"/>
+      <values xsi:type="am:ReferenceObject">
+        <value xsi:type="am:EventStimulus" href="amlt:/#foreignEventStimulus?type=EventStimulus"/>
+      </values>
+      <values xsi:type="am:ListObject">
+        <values xsi:type="am:ReferenceObject" value="eventStimuli_1?type=EventStimulus"/>
+      </values>
+      <values xsi:type="am:ListObject">
+        <values xsi:type="am:ListObject">
+          <values xsi:type="am:ListObject">
+            <values xsi:type="am:ListObject">
+              <values xsi:type="am:ReferenceObject">
+                <value xsi:type="am:InterProcess" href="amlt:/#foreignStimuli?type=InterProcess"/>
+              </values>
+            </values>
+          </values>
+        </values>
+      </values>
+    </value>
+  </customProperties>
   <swModel>
     <isrs priority="0">
       <callGraph>

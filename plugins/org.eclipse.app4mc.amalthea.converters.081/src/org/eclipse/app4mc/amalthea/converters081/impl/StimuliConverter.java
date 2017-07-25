@@ -54,8 +54,105 @@ public class StimuliConverter extends AbstractConverter {
 		updateAllModeValueListEntryElements(rootElement);
 		
 		updateAllStimulusElements(rootElement);
+		
+		updateCustomPropertiesForStimulus(rootElement);
 
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
+	}
+
+	private void updateCustomPropertiesForStimulus(Element rootElement) {
+		
+		final StringBuffer xpathBuffer = new StringBuffer();
+
+		xpathBuffer.append(".//customProperties/value[@value]");
+		xpathBuffer.append("|");
+		xpathBuffer.append(".//customProperties/value/value");
+		xpathBuffer.append("|");
+		xpathBuffer.append(".//customProperties//values[@value]");
+		xpathBuffer.append("|");
+		xpathBuffer.append(".//customProperties//values/value");
+		
+		
+		Map<String, String> namesMap=new HashMap<String, String>();
+
+		namesMap.put("ArrivalCurve","ArrivalCurveStimulus");
+		namesMap.put("InterProcess","InterProcessStimulus");
+		namesMap.put("Periodic","PeriodicStimulus");
+		namesMap.put("PeriodicEvent","VariableRateStimulus");
+		namesMap.put("Single","SingleStimulus");
+		namesMap.put("Sporadic","SporadicStimulus");
+		namesMap.put("Synthetic","SyntheticStimulus");
+
+		
+		
+		final List<Element> elements = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
+				Element.class, this.helper.getGenericNS("xsi"));
+		
+		for (Element element : elements) {
+			
+			Attribute typeAttribute = element.getAttribute("type", this.helper.getGenericNS("xsi"));
+
+			Attribute valueAttribute = element.getAttribute("value");
+			
+			Attribute hrefAttribute = element.getAttribute("href");
+			
+			/*-
+			 * Case 1:  <value xsi:type="am:ReferenceObject" value="no-name?type=ArrivalCurve"/>
+			 * 
+			 */
+			if(typeAttribute !=null && valueAttribute !=null){
+				
+				String value = valueAttribute.getValue();
+			 
+				final int indexOfEquals = value.indexOf("=");
+				
+				if(indexOfEquals!=-1){
+					String stimulusName = value.substring(indexOfEquals+1, value.length());
+					
+					if(namesMap.containsKey(stimulusName)){
+						
+						String newValue = value.substring(0, indexOfEquals+1)+namesMap.get(stimulusName);
+						
+						valueAttribute.setValue(newValue);
+						
+					}
+				}
+					
+			}
+			
+			/*-
+			 * Case 2:   <value xsi:type="am:EventStimulus" href="amlt:/#foreignEventStimulus?type=EventStimulus"/>
+			 */
+			else if((valueAttribute == null) && (hrefAttribute !=null) && (typeAttribute !=null)){
+				
+				updateStimulusTypeAttribute(element);
+				
+			 
+				String value = hrefAttribute.getValue();
+				 
+				final int indexOfEquals = value.indexOf("=");
+				
+				if(indexOfEquals!=-1){
+					String stimulusName = value.substring(indexOfEquals+1, value.length());
+					
+					if(namesMap.containsKey(stimulusName)){
+						
+						String newValue = value.substring(0, indexOfEquals+1)+namesMap.get(stimulusName);
+						
+						hrefAttribute.setValue(newValue);
+						
+					}
+				}
+ 
+				
+				
+			}
+			
+			
+			
+		}
+		
+		
 	}
 
 	/**

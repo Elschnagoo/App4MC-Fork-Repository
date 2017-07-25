@@ -109,9 +109,21 @@ public class StimuliConverterTest extends AbstractConverterTest {
 			
 			assertTrue( "Unable to migrate Stimul model containing EventStimulus elements " , migStatus_eventStimulus);
 			
-			
-			 
 		}
+		
+		
+		if(document.getBaseURI().endsWith("eventStimulus.amxmi")){
+			
+			final List<Element> custProps_ObjRefs = this.helper.getXpathResult(document.getRootElement(),
+					".//customProperties[@key=\"st3\"]/value/values/values/values/values/values/value", Element.class, this.helper.getGenericNS("xsi"));
+			
+			assertTrue("Expected to have CustomProperty", custProps_ObjRefs.size()==1);
+			
+			String hrefValue = custProps_ObjRefs.get(0).getAttributeValue("href");
+			
+			assertTrue("Stimulus reference not migrated", hrefValue.equals("amlt:/#foreignStimuli?type=InterProcessStimulus"));
+		}
+		
 		
 	}
 
