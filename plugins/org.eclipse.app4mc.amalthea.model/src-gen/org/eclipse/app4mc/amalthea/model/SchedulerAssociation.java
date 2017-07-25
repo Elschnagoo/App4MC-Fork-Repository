@@ -32,7 +32,9 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulerAssociation()
- * @model
+ * @model features="parentLinkInt" 
+ *        parentLinkIntType="org.eclipse.app4mc.amalthea.model.TaskScheduler" parentLinkIntOpposite="childAssociations" parentLinkIntTransient="true" parentLinkIntSuppressedGetVisibility="true" parentLinkIntSuppressedSetVisibility="true"
+ *        parentLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
  * @generated
  */
 public interface SchedulerAssociation extends EObject {

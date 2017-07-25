@@ -12,6 +12,8 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.util.Collection;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
@@ -20,10 +22,19 @@ import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions;
+
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +46,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskSchedulerImpl#getSchedulingAlgorithm <em>Scheduling Algorithm</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskSchedulerImpl#getParentAssociation <em>Parent Association</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskSchedulerImpl#getChildAssociations <em>Child Associations</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskSchedulerImpl#getParentScheduler <em>Parent Scheduler</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskSchedulerImpl#getChildSchedulers <em>Child Schedulers</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,6 +73,16 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * @ordered
 	 */
 	protected SchedulerAssociation parentAssociation;
+
+	/**
+	 * The cached value of the '{@link #getChildAssociations() <em>Child Associations</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getChildAssociations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SchedulerAssociation> childAssociations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -171,6 +194,18 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<SchedulerAssociation> getChildAssociations() {
+		if (childAssociations == null) {
+			childAssociations = new EObjectWithInverseResolvingEList<SchedulerAssociation>(SchedulerAssociation.class, this, AmaltheaPackage.TASK_SCHEDULER__CHILD_ASSOCIATIONS, AmaltheaPackage.SCHEDULER_ASSOCIATION__PARENT_LINK_INT);
+		}
+		return childAssociations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TaskScheduler getParentScheduler() {
 		TaskScheduler parentScheduler = basicGetParentScheduler();
 		return parentScheduler != null && parentScheduler.eIsProxy() ? (TaskScheduler)eResolveProxy((InternalEObject)parentScheduler) : parentScheduler;
@@ -195,6 +230,36 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<TaskScheduler> getChildSchedulers() {
+		EList<SchedulerAssociation> _childAssociations = this.getChildAssociations();
+		final Function1<SchedulerAssociation, TaskScheduler> _function = new Function1<SchedulerAssociation, TaskScheduler>() {
+			public TaskScheduler apply(final SchedulerAssociation it) {
+				return it.getChild();
+			}
+		};
+		return XcoreEListExtensions.<SchedulerAssociation, TaskScheduler>map(_childAssociations, _function);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.TASK_SCHEDULER__CHILD_ASSOCIATIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getChildAssociations()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -202,6 +267,8 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 				return basicSetSchedulingAlgorithm(null, msgs);
 			case AmaltheaPackage.TASK_SCHEDULER__PARENT_ASSOCIATION:
 				return basicSetParentAssociation(null, msgs);
+			case AmaltheaPackage.TASK_SCHEDULER__CHILD_ASSOCIATIONS:
+				return ((InternalEList<?>)getChildAssociations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -218,9 +285,13 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 				return getSchedulingAlgorithm();
 			case AmaltheaPackage.TASK_SCHEDULER__PARENT_ASSOCIATION:
 				return getParentAssociation();
+			case AmaltheaPackage.TASK_SCHEDULER__CHILD_ASSOCIATIONS:
+				return getChildAssociations();
 			case AmaltheaPackage.TASK_SCHEDULER__PARENT_SCHEDULER:
 				if (resolve) return getParentScheduler();
 				return basicGetParentScheduler();
+			case AmaltheaPackage.TASK_SCHEDULER__CHILD_SCHEDULERS:
+				return getChildSchedulers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -230,6 +301,7 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -238,6 +310,10 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 				return;
 			case AmaltheaPackage.TASK_SCHEDULER__PARENT_ASSOCIATION:
 				setParentAssociation((SchedulerAssociation)newValue);
+				return;
+			case AmaltheaPackage.TASK_SCHEDULER__CHILD_ASSOCIATIONS:
+				getChildAssociations().clear();
+				getChildAssociations().addAll((Collection<? extends SchedulerAssociation>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -257,6 +333,9 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 			case AmaltheaPackage.TASK_SCHEDULER__PARENT_ASSOCIATION:
 				setParentAssociation((SchedulerAssociation)null);
 				return;
+			case AmaltheaPackage.TASK_SCHEDULER__CHILD_ASSOCIATIONS:
+				getChildAssociations().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -273,8 +352,12 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 				return schedulingAlgorithm != null;
 			case AmaltheaPackage.TASK_SCHEDULER__PARENT_ASSOCIATION:
 				return parentAssociation != null;
+			case AmaltheaPackage.TASK_SCHEDULER__CHILD_ASSOCIATIONS:
+				return childAssociations != null && !childAssociations.isEmpty();
 			case AmaltheaPackage.TASK_SCHEDULER__PARENT_SCHEDULER:
 				return basicGetParentScheduler() != null;
+			case AmaltheaPackage.TASK_SCHEDULER__CHILD_SCHEDULERS:
+				return !getChildSchedulers().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

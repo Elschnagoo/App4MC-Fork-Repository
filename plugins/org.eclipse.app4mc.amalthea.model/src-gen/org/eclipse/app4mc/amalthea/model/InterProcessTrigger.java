@@ -47,7 +47,7 @@ public interface InterProcessTrigger extends CallSequenceItem {
 	 * @return the value of the '<em>Stimulus</em>' reference.
 	 * @see #setStimulus(InterProcessStimulus)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcessTrigger_Stimulus()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	InterProcessStimulus getStimulus();

@@ -57,9 +57,35 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addChildAssociationsPropertyDescriptor(object);
 			addParentSchedulerPropertyDescriptor(object);
+			addChildSchedulersPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Child Associations feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addChildAssociationsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TaskScheduler_childAssociations_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TaskScheduler_childAssociations_feature", "_UI_TaskScheduler_type"),
+				 AmaltheaPackage.eINSTANCE.getTaskScheduler_ChildAssociations(),
+				 false,
+				 false,
+				 true,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**
@@ -76,6 +102,28 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 				 getString("_UI_TaskScheduler_parentScheduler_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_TaskScheduler_parentScheduler_feature", "_UI_TaskScheduler_type"),
 				 AmaltheaPackage.eINSTANCE.getTaskScheduler_ParentScheduler(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Child Schedulers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addChildSchedulersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TaskScheduler_childSchedulers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TaskScheduler_childSchedulers_feature", "_UI_TaskScheduler_type"),
+				 AmaltheaPackage.eINSTANCE.getTaskScheduler_ChildSchedulers(),
 				 false,
 				 false,
 				 false,

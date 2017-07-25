@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +25,9 @@ package org.eclipse.app4mc.amalthea.model;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getSchedulingAlgorithm <em>Scheduling Algorithm</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getParentAssociation <em>Parent Association</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getChildAssociations <em>Child Associations</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getParentScheduler <em>Parent Scheduler</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getChildSchedulers <em>Child Schedulers</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskScheduler()
@@ -85,6 +88,23 @@ public interface TaskScheduler extends Scheduler {
 	void setParentAssociation(SchedulerAssociation value);
 
 	/**
+	 * Returns the value of the '<em><b>Child Associations</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Child Associations</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Child Associations</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskScheduler_ChildAssociations()
+	 * @model opposite="parentLinkInt" transient="true" suppressedSetVisibility="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @generated
+	 */
+	EList<SchedulerAssociation> getChildAssociations();
+
+	/**
 	 * Returns the value of the '<em><b>Parent Scheduler</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -99,5 +119,22 @@ public interface TaskScheduler extends Scheduler {
 	 * @generated
 	 */
 	TaskScheduler getParentScheduler();
+
+	/**
+	 * Returns the value of the '<em><b>Child Schedulers</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TaskScheduler}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Child Schedulers</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Child Schedulers</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskScheduler_ChildSchedulers()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='<%org.eclipse.emf.common.util.EList%><<%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%>> _childAssociations = this.getChildAssociations();\nfinal <%org.eclipse.xtext.xbase.lib.Functions.Function1%><<%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%>, <%org.eclipse.app4mc.amalthea.model.TaskScheduler%>> _function = new <%org.eclipse.xtext.xbase.lib.Functions.Function1%><<%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%>, <%org.eclipse.app4mc.amalthea.model.TaskScheduler%>>()\n{\n\tpublic <%org.eclipse.app4mc.amalthea.model.TaskScheduler%> apply(final <%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%> it)\n\t{\n\t\treturn it.getChild();\n\t}\n};\nreturn <%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.<<%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%>, <%org.eclipse.app4mc.amalthea.model.TaskScheduler%>>map(_childAssociations, _function);'"
+	 * @generated
+	 */
+	EList<TaskScheduler> getChildSchedulers();
 
 } // TaskScheduler

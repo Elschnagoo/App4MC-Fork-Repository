@@ -8099,8 +8099,26 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTaskScheduler_ParentScheduler() {
+	public EReference getTaskScheduler_ChildAssociations() {
 		return (EReference)taskSchedulerEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTaskScheduler_ParentScheduler() {
+		return (EReference)taskSchedulerEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTaskScheduler_ChildSchedulers() {
+		return (EReference)taskSchedulerEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -8126,7 +8144,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSchedulerAssociation_Child() {
+	public EReference getSchedulerAssociation_ParentLinkInt() {
 		return (EReference)schedulerAssociationEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -8135,7 +8153,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSchedulerAssociation_SchedulingParameters() {
+	public EReference getSchedulerAssociation_Child() {
 		return (EReference)schedulerAssociationEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -8144,8 +8162,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSchedulerAssociation_ParameterExtensions() {
+	public EReference getSchedulerAssociation_SchedulingParameters() {
 		return (EReference)schedulerAssociationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSchedulerAssociation_ParameterExtensions() {
+		return (EReference)schedulerAssociationEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -13007,10 +13034,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		taskSchedulerEClass = createEClass(TASK_SCHEDULER);
 		createEReference(taskSchedulerEClass, TASK_SCHEDULER__SCHEDULING_ALGORITHM);
 		createEReference(taskSchedulerEClass, TASK_SCHEDULER__PARENT_ASSOCIATION);
+		createEReference(taskSchedulerEClass, TASK_SCHEDULER__CHILD_ASSOCIATIONS);
 		createEReference(taskSchedulerEClass, TASK_SCHEDULER__PARENT_SCHEDULER);
+		createEReference(taskSchedulerEClass, TASK_SCHEDULER__CHILD_SCHEDULERS);
 
 		schedulerAssociationEClass = createEClass(SCHEDULER_ASSOCIATION);
 		createEReference(schedulerAssociationEClass, SCHEDULER_ASSOCIATION__PARENT);
+		createEReference(schedulerAssociationEClass, SCHEDULER_ASSOCIATION__PARENT_LINK_INT);
 		createEReference(schedulerAssociationEClass, SCHEDULER_ASSOCIATION__CHILD);
 		createEReference(schedulerAssociationEClass, SCHEDULER_ASSOCIATION__SCHEDULING_PARAMETERS);
 		createEReference(schedulerAssociationEClass, SCHEDULER_ASSOCIATION__PARAMETER_EXTENSIONS);
@@ -14821,10 +14851,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(taskSchedulerEClass, TaskScheduler.class, "TaskScheduler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTaskScheduler_SchedulingAlgorithm(), this.getTaskSchedulingAlgorithm(), null, "schedulingAlgorithm", null, 0, 1, TaskScheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskScheduler_ParentAssociation(), this.getSchedulerAssociation(), null, "parentAssociation", null, 0, 1, TaskScheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTaskScheduler_ChildAssociations(), this.getSchedulerAssociation(), this.getSchedulerAssociation_ParentLinkInt(), "childAssociations", null, 0, -1, TaskScheduler.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskScheduler_ParentScheduler(), this.getTaskScheduler(), null, "parentScheduler", null, 0, 1, TaskScheduler.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getTaskScheduler_ChildSchedulers(), this.getTaskScheduler(), null, "childSchedulers", null, 0, -1, TaskScheduler.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(schedulerAssociationEClass, SchedulerAssociation.class, "SchedulerAssociation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSchedulerAssociation_Parent(), this.getTaskScheduler(), null, "parent", null, 0, 1, SchedulerAssociation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSchedulerAssociation_ParentLinkInt(), this.getTaskScheduler(), this.getTaskScheduler_ChildAssociations(), "parentLinkInt", null, 0, 1, SchedulerAssociation.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSchedulerAssociation_Child(), this.getTaskScheduler(), null, "child", null, 0, 1, SchedulerAssociation.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getSchedulerAssociation_SchedulingParameters(), this.getSchedulingParameters(), null, "schedulingParameters", null, 0, 1, SchedulerAssociation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSchedulerAssociation_ParameterExtensions(), this.getParameterExtension(), null, "parameterExtensions", null, 0, -1, SchedulerAssociation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15157,7 +15190,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getOsEvent_CommunicationOverheadInBit(), theEcorePackage.getEInt(), "communicationOverheadInBit", "0", 0, 1, OsEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(interProcessTriggerEClass, InterProcessTrigger.class, "InterProcessTrigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInterProcessTrigger_Stimulus(), this.getInterProcessStimulus(), null, "stimulus", null, 0, 1, InterProcessTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInterProcessTrigger_Stimulus(), this.getInterProcessStimulus(), null, "stimulus", null, 1, 1, InterProcessTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInterProcessTrigger_StimulusLinkInt(), this.getInterProcessStimulus(), this.getInterProcessStimulus_ExplicitTriggers(), "stimulusLinkInt", null, 1, 1, InterProcessTrigger.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(enforcedMigrationEClass, EnforcedMigration.class, "EnforcedMigration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

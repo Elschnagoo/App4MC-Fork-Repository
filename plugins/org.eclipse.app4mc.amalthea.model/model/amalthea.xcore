@@ -2072,14 +2072,28 @@ class TaskScheduler extends Scheduler
 	
 	contains SchedulerAssociation parentAssociation
 	
+	// back pointer (readonly)
+	@GenModel(property="Readonly", suppressedSetVisibility="true")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient SchedulerAssociation[] childAssociations opposite parentLinkInt 
+	
 	@GenModel(propertyCategory="Read only")
 	refers derived readonly TaskScheduler parentScheduler get {
 		return parentAssociation?.parent
+	}
+	
+	@GenModel(propertyCategory="Read only")
+	refers derived readonly TaskScheduler[] childSchedulers get {
+		return childAssociations.map[child]
 	}
 }
 
 class SchedulerAssociation {
 	refers TaskScheduler parent
+	
+	// hidden link (internal)
+	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
+	refers transient TaskScheduler parentLinkInt opposite childAssociations
 	
 	@GenModel(propertyCategory="Read only")
 	refers derived readonly TaskScheduler child get {
@@ -2883,7 +2897,7 @@ class OsEvent extends ReferableBaseObject, ITaggable
  */
 class InterProcessTrigger extends CallSequenceItem
 {
-	refers InterProcessStimulus stimulus
+	refers InterProcessStimulus[1] stimulus
 	
 	// hidden link (internal)
 	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")

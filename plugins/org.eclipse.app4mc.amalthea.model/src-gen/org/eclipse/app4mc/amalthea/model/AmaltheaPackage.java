@@ -14111,13 +14111,31 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK_SCHEDULER__PARENT_ASSOCIATION = SCHEDULER_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Child Associations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_SCHEDULER__CHILD_ASSOCIATIONS = SCHEDULER_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Parent Scheduler</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_SCHEDULER__PARENT_SCHEDULER = SCHEDULER_FEATURE_COUNT + 2;
+	int TASK_SCHEDULER__PARENT_SCHEDULER = SCHEDULER_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Child Schedulers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_SCHEDULER__CHILD_SCHEDULERS = SCHEDULER_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Task Scheduler</em>' class.
@@ -14126,7 +14144,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_SCHEDULER_FEATURE_COUNT = SCHEDULER_FEATURE_COUNT + 3;
+	int TASK_SCHEDULER_FEATURE_COUNT = SCHEDULER_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -14184,13 +14202,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SCHEDULER_ASSOCIATION__PARENT = 0;
 
 	/**
+	 * The feature id for the '<em><b>Parent Link Int</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULER_ASSOCIATION__PARENT_LINK_INT = 1;
+
+	/**
 	 * The feature id for the '<em><b>Child</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULER_ASSOCIATION__CHILD = 1;
+	int SCHEDULER_ASSOCIATION__CHILD = 2;
 
 	/**
 	 * The feature id for the '<em><b>Scheduling Parameters</b></em>' containment reference.
@@ -14199,7 +14226,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULER_ASSOCIATION__SCHEDULING_PARAMETERS = 2;
+	int SCHEDULER_ASSOCIATION__SCHEDULING_PARAMETERS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Parameter Extensions</b></em>' map.
@@ -14208,7 +14235,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULER_ASSOCIATION__PARAMETER_EXTENSIONS = 3;
+	int SCHEDULER_ASSOCIATION__PARAMETER_EXTENSIONS = 4;
 
 	/**
 	 * The number of structural features of the '<em>Scheduler Association</em>' class.
@@ -14217,7 +14244,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULER_ASSOCIATION_FEATURE_COUNT = 4;
+	int SCHEDULER_ASSOCIATION_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Scheduler Association</em>' class.
@@ -30986,6 +31013,17 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getTaskScheduler_ParentAssociation();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getChildAssociations <em>Child Associations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Child Associations</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TaskScheduler#getChildAssociations()
+	 * @see #getTaskScheduler()
+	 * @generated
+	 */
+	EReference getTaskScheduler_ChildAssociations();
+
+	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getParentScheduler <em>Parent Scheduler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -30995,6 +31033,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTaskScheduler_ParentScheduler();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getChildSchedulers <em>Child Schedulers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Child Schedulers</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TaskScheduler#getChildSchedulers()
+	 * @see #getTaskScheduler()
+	 * @generated
+	 */
+	EReference getTaskScheduler_ChildSchedulers();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation <em>Scheduler Association</em>}'.
@@ -31016,6 +31065,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSchedulerAssociation_Parent();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation <em>Parent Link Int</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Parent Link Int</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.SchedulerAssociation
+	 * @see #getSchedulerAssociation()
+	 * @generated
+	 */
+	EReference getSchedulerAssociation_ParentLinkInt();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getChild <em>Child</em>}'.
