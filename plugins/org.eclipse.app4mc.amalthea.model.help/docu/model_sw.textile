@@ -310,9 +310,9 @@ h4. Enforced Migration
 
 Each process is controlled by at least one scheduler. A scheduler is the resource owner of one or multiple processor cores (The scheduler decides on which of its cores the process is executed). The __Enforced Migration__ forces the process to switch to another scheduler. Therefore the __Enforced Migration__ entry contains a reference to the new scheduler.
 
-h4. Inter Process Activation
+h4. Inter Process Trigger
 
-The __Inter Process Activation__ references a stimulus of type __Inter Process__. The execution of an __Inter Process Activation__ entry triggers the processes that are mapped to this stimulus.  
+The __Inter Process Trigger__ references a stimulus of type __Inter Process Stimulus__. The execution of an __Inter Process Trigger__ entry triggers the processes that are mapped to this stimulus.  
 
 h4. Schedule Point
 
