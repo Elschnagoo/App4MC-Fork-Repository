@@ -34,6 +34,8 @@
 		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.split</module>
 		<module>../../examples/org.eclipse.app4mc.amalthea.example.hwmodel</module>
 		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling</module>
+		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.scheduler</module>
+		
 		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling2</module>
 		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.client_server</module>
 		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.feedback_loop</module>

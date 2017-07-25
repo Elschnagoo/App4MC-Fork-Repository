@@ -69,6 +69,11 @@
                      name="org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop"
                      contentURI="examples/org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop/"
                      description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
+               <projectDescriptor
+                     contentURI="examples/org.eclipse.app4mc.amalthea.example.modeling.scheduler/"
+                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"
+                     name="org.eclipse.app4mc.amalthea.example.modeling.scheduler">
+               </projectDescriptor>
       </example>
     </extension>
     
