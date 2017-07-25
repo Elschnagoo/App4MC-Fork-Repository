@@ -398,18 +398,55 @@ table(classic){margin-left:40px}.
 |http://app4mc.eclipse.org/amalthea/0.8.0 |http://app4mc.eclipse.org/amalthea/0.8.1 |
 
 
-*Below attributes are removed :*
-
-table(classic){margin-left:40px}. 
-| *_Variable Name (version APP4MC 0.8.0)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
-| xAccessPattern |  String | MemoryType| HW model |xAccessPattern attribute and its value present in MemoryType element are removed from the amxmi file |
-
+ 
 
 *Below Classes/Interfaces behaviour is changed:*
 
 table(classic){margin-left:40px}. 
-| *_Class Name (version APP4MC 0.8.0)_* | *_AMALTHEA sub model_* | *_Changes in behavior_* |*_Model Migration behavior_* |
-|SubEventChain|Constraints Model|SubEventChain class (in 0.8.0) is replaced by EventChainContainer class (in 0.8.1). EventChainContainer class is modelled to contain SubEventChain elements (in 0.8.1) which are non referrable child EventChain elements.|In amxmi file, xsi:type with "am:SubEventChain" is replaced with "am:EventChainContainer". If sub EventChain elements are referred inside EventChainReference or inside TimingConstraints, then corresponding reference is removed and the reference String is stored in a CustomProperty|
+| *_Class Name (version APP4MC 0.8.0)_* | *_AMALTHEA sub model_* | *_Changes in behavior (as per 0.8.1)_* |*_Model Migration behavior_* |
+|SubEventChain|Constraints Model|SubEventChain class (in 0.8.0) is replaced by EventChainContainer class (in 0.8.1). EventChainContainer class is modelled to contain SubEventChain elements (in 0.8.1) which are non referrable child EventChain elements.| <ul><li>In amxmi file, xsi:type with "am:SubEventChain" is replaced with "am:EventChainContainer".</li><li>If sub EventChain elements are referred inside EventChainReference or inside TimingConstraints __(e.g: EventChainLatencyConstraint or EventChainSynchronizationConstraint)__:<ul><li> Then corresponding reference is removed and the reference String is stored in a CustomProperty of the corresponding element</li></ul></li></ul>|
+|Quartz|Hardware Model| Quartz is not extending ComplexNode class. In addition below are the other changes w.r.t. Quartz: <ul><li>It is no longer possible to have nested Quartz elements</li><li>All Quartz elements should be present in single list, which is part of HwSystem class</li></ul>| <ul><li>Per each amxmi file, from HWModel all Quartz elements are collected (__both root and sub Quartz elements__) and are added in a central list which is part of HwSystem.</li><ul><li> Quartz element definitions are removed from the other HW elements __(which are sub-classes of ComplexNode)__ </li></ul></ul>|
+|ModeValueListEntry|Stimuli model|ModeValueListEntry class is having two sub-classes ModeValue and ModeValueConjunction|ModeValue type is associated to all the ModeValueListEntry elements|
 
 
+*Below references are removed from storage format (amxmi):*
 
+table(classic){margin-left:40px}. 
+| *_Variable Name (version APP4MC 0.8.0)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|quartzes|List<Quartz>| <ul><li>Core</li><li>ECU</li><li>HwComponent</li><li>Memory</li><li>Microcontroller</li><li>Network</li></ul>|Hardware Model|All Quartz elements from these model elements are moved to HwSystem element. <br><b>Note:</b>If there are nested Quartz elements, they are flattened and stored inside a single list|
+
+
+*Below Classes are removed:*
+
+table(classic){margin-left:40px}. 
+| *_Class Name (version APP4MC 0.8.0)_* | *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|CoreAllocation|Mapping Model|CoreAllocation is replaced by SchedulerAllocation. As a part of model migration, In Mapping model references of CoreAllocation are changed as SchedulerAllocation. Also the "core" attribute/tag of it is renamed to "responsibility" |
+|SchedulingHWUnit|OS model|SchedulingHWUnit reference is removed from Scheduler|
+|SchedulingSWUnit|OS model|SchedulingSWUnit reference is removed from Scheduler and content of Instructions is copied to the corresponding ComputationItem elements of type RunnableInstructions|
+|ArrivalCurve|Stimuli model|This class is renamed to ArrivalCurveStimulus. Element type is updated at both defintion and references in amxmi file|
+|InterProcess|Stimuli model|This class is renamed to InterProcessStimulus. Element type is updated at both defintion and references in amxmi file|
+|Periodic|Stimuli model|This class is renamed to PeriodicStimulus. Element type is updated at both defintion and references in amxmi file|
+|PeriodicEvent|Stimuli model|This class is renamed to VariableRateStimulus. Element type is updated at both defintion and references in amxmi file|
+|Single|Stimuli model|This class is renamed to SingleStimulus. Element type is updated at both defintion and references in amxmi file|
+|Sporadic|Stimuli model|This class is renamed to SporadicStimulus. Element type is updated at both defintion and references in amxmi file|
+|Synthetic|Stimuli model|This class is renamed to SyntheticStimulus. Element type is updated at both defintion and references in amxmi file|
+|InterProcessActivation|SW model|This class is renamed to InterProcessTrigger. Element type is updated at both defintion and references in amxmi file|
+
+*Below references are removed/changed:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|coreAllocation|CoreAllocation|MappingModel|Mapping Model|coreAllocation tag name is renamed to schedulerAllocation. Equivalent of CoreAllocation is SchedulerAllocation element |
+|priority|integer|TaskAllocation|Mapping Model|priority attribute is removed|
+| xAccessPattern |  String | MemoryType| HW model |xAccessPattern attribute and its value present in MemoryType element are removed from the amxmi file |
+|parameter|AlgorithmParameter|Scheduler| OS model| parameter tag name is changed to parameterExtensions (_Also the new variable Type here is : ParameterExtensions_)|
+|scheduleUnitPriority|integer |Scheduler| OS model| scheduleUnitPriority attribute is removed|
+|delay|Time |SchedulingHWUnit| OS model| delay tag is removed|
+|instructions|Instructions |SchedulingSWUnit| OS model| "instructions" tag is removed from the SchedulingSWUnit and each "instructions" tag content is copied as a "default" tag of computationItems (of type RunnableInstructions)  |
+|schedulingUnit|SchedulingUnit|Scheduler|OS model|schedulingUnit tag is removed. And the contents of SchedulingSWUnit are migrated to ComputationItem's|
+|trigger|TriggerEvent|EventStimulus|Event model|renamed to triggeringEvents|
+|activation|Activation|Runnable|SW model|renamed to activations|
+|deadline|Time|PeriodicActivation|SW model|deadline attribute is removed|
+|trigger|TriggerEvent|EventActivation|SW model|renamed to triggeringEvents|
+|priority|integer|Process|SW model|priority attribute is removed|
+|osekTaskGroup|integer|Task|SW model|osekTaskGroup attribute is removed|
