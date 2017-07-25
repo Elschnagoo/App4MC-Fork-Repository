@@ -21,12 +21,6 @@
             class="org.eclipse.app4mc.multicore.execution.ui.traceview.view.FXViewPartTraceView"
             id="org.eclipse.app4mc.multicore.execution.ui.widget.traceview.views.FXViewPartTraceView">
       </view>
-      <view
-            class="org.eclipse.app4mc.multicore.execution.ui.traceview.test.MyViewPart"
-            id="org.eclipse.app4mc.multicore.execution.ui.widget.traceview.test.MyView"
-            name="MyView"
-            restorable="true">
-      </view>
    </extension>
 
 </plugin>
