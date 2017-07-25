@@ -19,6 +19,7 @@ Interrupt controller and task scheduler have a scheduling algorithm. The picture
 
 !../pictures/model_os_scheduler.png!
 
+
 h4. Scheduling Algorithm
 
 This is an abstract class for the different scheduling algorithms.
@@ -53,6 +54,35 @@ h5. Further information
 Details regarding proportionate fair (*Pfair*) scheduling and the variants of the *PD<notextile><sup>2</sup></notextile> Pfair* algorithm can be found in the dissertation "Effcient and Flexible Fair Scheduling of Real-time Tasks on Multiprocessors" by Anand Srinivasan (see "dissertation":https://www.cs.unc.edu/~anderson/diss/srinidiss.pdf at University of North Carolina at Chapel Hill).
 
 An overview regarding *Reservation Servers* is given in the lecture "Resource Reservation Servers" by Jan Reineke (see "lecture":https://embedded.cs.uni-saarland.de/lectures/realtimesystems/resourceReservationServers.pdf at Saarland University).
+
+
+h4. Scheduling Parameters
+
+TODO typical values are predefined, if not set values are null !
+
+!../pictures/model_os_scheduling_parameters.png!
+
+table(classic). 
+|_. Attribute  |_. Description |
+| __priority__ | Specifies the priority for the child-scheduler for priority based scheduling algorithms like FPP. |
+| __minBudget__ |/2. In budget-based scheduling algorithms like sporadic servers the runtime in a periodic time-interval must be given. The budget can be defined via min/max budgets. If no intervals are possible, the maxBudget is the key value. |
+| __maxBudget__ |
+| __replenishment__ | The replenishment time defines period in which the budget is restored. |
+
+
+
+h4. Scheduler Association
+
+A hierarchy of schedulers can be specified with intermediate objects of class __SchedulerAssociation__. If set, the parent scheduler takes the initial decision who is executing.  If the child-scheduler is not a grouping of tasks, it can take scheduling decisions if permission is granted by the parent. The association also contains the relevant parameters of the scheduler in the hierarchical context.
+
+!../pictures/model_os_scheduler_association.png!
+
+table(classic). 
+|_. Attribute  |_. Description |
+| __parent__ | Refers to the parent scheduler |
+| __child__ | Derived attribute that is computed based on the containment reference "parentAssociation" from __Scheduler__ to __SchedulerAssociation__ |
+| __schedulingParameters__ |/2. See chapter "Scheduling Parameters" |
+| __parameterExtensions__ |
 
 
 h3. Os Overhead
