@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <activations xsi:type="am:PeriodicActivation" name="pa">
+      <deadline value="22" unit="ms"/>
+    </activations>
+    <activations xsi:type="am:EventActivation" name="ea" trigger="le?type=LabelEvent"/>
+    <activations xsi:type="am:EventActivation" name="ea2">
+      <trigger xsi:type="am:LabelEvent" href="amlt:/#labelEvent_foreign?type=LabelEvent"/>
+    </activations>
+  </swModel>
+  <eventModel>
+    <events xsi:type="am:LabelEvent" name="le"/>
+  </eventModel>
+</am:Amalthea>

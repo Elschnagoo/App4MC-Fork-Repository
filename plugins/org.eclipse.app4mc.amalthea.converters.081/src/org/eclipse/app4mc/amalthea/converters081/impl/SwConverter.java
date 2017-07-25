@@ -50,6 +50,8 @@ public class SwConverter extends AbstractConverter {
 		final Element rootElement = root.getRootElement();
 
 		updateRunnable(rootElement);
+		
+		updateActivations(rootElement);
 
 		updateAllAbstractProcessElements(rootElement);
 
@@ -172,6 +174,84 @@ public class SwConverter extends AbstractConverter {
 		}
 
 
+		
+		
+	}
+	/**
+	 * This method is used to migrate both PeriodicAtivation (removal of deadline ) and EventActivation (change of trigger tag to triggeringEvents)
+	 *
+	 * @param rootElement
+	 *            Amalthea root element
+	 */
+	private void updateActivations(Element rootElement) {
+		
+		
+		final StringBuffer xpathBuffer = new StringBuffer();
+		
+		xpathBuffer.append("./swModel/activations");
+		
+		
+		final List<Element> activationElements = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
+				Element.class, this.helper.getGenericNS("xsi"));
+		
+		
+		boolean removedDeadLine=false;
+		
+		for (Element activationElement : activationElements) { 
+			
+			if(activationElement.getAttributeValue("type", this.helper.getGenericNS("xsi")).contains("am:PeriodicActivation")){
+				
+				Element deadlineElement = activationElement.getChild("deadline");
+				
+				if(deadlineElement !=null){
+					
+					deadlineElement.detach();
+					
+					
+					Element customPropertiesElement=new Element("customProperties");
+					
+					customPropertiesElement.setAttribute("key", "deadline");
+					
+					deadlineElement.setName("value");
+					
+					deadlineElement.setAttribute("type", "am:TimeObject", this.helper.getGenericNS("xsi"));
+					
+					//adding as a value to CustomProperty
+					customPropertiesElement.addContent(deadlineElement);
+					
+					//adding customProperty to Activation Eleemnt
+					activationElement.addContent(customPropertiesElement);
+					
+				removedDeadLine=true;
+					
+				}
+
+			}else if(activationElement.getAttributeValue("type", this.helper.getGenericNS("xsi")).contains("am:EventActivation")){
+				
+				List<Element> triggerElements = activationElement.getChildren("trigger");
+
+				if(triggerElements !=null){
+					for (Element element : triggerElements) {
+						element.setName("triggeringEvents");
+					}
+				}
+				
+				Attribute triggerAttribute = activationElement.getAttribute("trigger");
+				
+				if(triggerAttribute!=null){
+					triggerAttribute.setName("triggeringEvents");
+				}
+				
+				
+			}
+			 
+		}
+		
+		if(removedDeadLine){
+			this.logger.warn("-- Deadline inside PeriodicActivation elements is removed, as there is no equivalent element for it in AMALTHEA 0.8.1");
+		}
+		
+		
 		
 		
 	}

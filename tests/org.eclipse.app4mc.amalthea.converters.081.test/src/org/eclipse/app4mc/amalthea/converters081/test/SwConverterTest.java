@@ -41,11 +41,16 @@ public class SwConverterTest extends AbstractConverterTest {
 		final String[] inputFiles_priority = new String[] { "/sw_priority/sw_priority.amxmi" };
 
 
+		final String[] inputFiles_activations = new String[] { "/activations/events.amxmi" , "/activations/sw_activations.amxmi"};
+		
 
 		return Arrays.asList(new Object[][] {
 			{ "Models with SW Model", true, inputFiles, "Migration of Amalthea models containing SW Model " } ,
 
-			{ "Models with SW Model - having sub-classes of AbstractProcess (e.g: Task, ISR, ProcessPrototyes)", true, inputFiles_priority, "Migration of Amalthea models containing SW Model (with AbstractProcess elements)" } 
+			{ "Models with SW Model - having sub-classes of AbstractProcess (e.g: Task, ISR, ProcessPrototyes)", true, inputFiles_priority, "Migration of Amalthea models containing SW Model (with AbstractProcess elements)"},   
+			
+			{ "Models with Activations & Triggers", true, inputFiles_activations, "Migration of Amalthea models containing PeriodicActivation's & EventActivation's " }
+			
 		});
 	}
 
@@ -110,6 +115,20 @@ public class SwConverterTest extends AbstractConverterTest {
 				"./mappingModel/taskAllocation[@priority]", Element.class, this.helper.getGenericNS("xsi"));
 
 		assertTrue( "Priority from TaskAllocation elements is not migrated properly" , taskAllocationElements.size()==0);
+		
+		final List<Element> deadlineElements = this.helper.getXpathResult(document.getRootElement(),
+				"./swModel/activations[@xsi:type=\"am:PeriodicActivation\"]/deadline", Element.class, this.helper.getGenericNS("xsi"));
+
+		assertTrue( "PeriodicActivation is not migrated w.r.t. deadline" , deadlineElements.size()==0);
+		
+		final List<Element> triggerElements = this.helper.getXpathResult(document.getRootElement(),
+				"./swModel/activations[@xsi:type=\"am:EventActivation\"]/deadline", Element.class, this.helper.getGenericNS("xsi"));
+
+		assertTrue( "EventActivation is not migrated w.r.t. trigger" , triggerElements.size()==0);
+		
+		
+		
+		
 
 
 	}
