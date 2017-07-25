@@ -32,15 +32,30 @@ A stimulus is responsible to activate processes. The following different types a
 
 It is possible to define a deviation of time for every type of stimulus. For this, a stimulus can have an object of type Deviation, which refers to the deviation in the common model. This reference uses the class Time as parameter for the generic values of the deviation. So the deviation is about time. The values (negative or positive) represents a shift of the activation to left or right on the time line. In this way it is possible to increase or decrease the activation time.
 
-It is possible to define lists of mode label values for a stimulus. An entry in this list is always a pair of a mode label and a mode literal. One of this lists is the set-mode-labels-list. Each time the stimulus is triggered all mode labels in this list are set to the corresponding value. 
-The enabling-mode-label-list and the disabling-mode-label-list can be used to enable or disable a stimulus by setting the mode label to a specific value (e.g. by a write access with a runnable).
-* If there are entries in the disabling-mode-label-list, the stimulus is disabled if one of these mode labels has the defined value.
-* If there are entries in the enabling-mode-label-list, the stimuli is disabled if no one of these mode labels has the defined value.  
-* If there are entries in both lists, the stimulus is disabled when at least one label of the disabling-mode-label-list has the defined value or if all labels in the enabling-mode-label-list are different to their defined value. If no one of the disabling-mode-label-list fits its value but at least one of the enabling-mode-label-list, then the stimulus is enabled. 
+*Mode label lists*
+
+It is possible to define lists of mode label values for a stimulus. An entry in this list is always a pair of a mode label and a mode literal.
 
 !(scale)../pictures/model_stimuli_modevaluelist.png!
- 
-*(validation-rule)  _ModeValueListEntry_: The _Mode_ objects referenced via _valueProvider_ and _value_ must be equal!
+
+*(validation-rule)  _ModeValue_: The _Mode_ objects referenced via _valueProvider_ and _value_ must be equal!
+
+
+The *set-mode-labels-list* indicates: Each time the stimulus is triggered all mode labels in this list are set to the corresponding value. 
+
+The *enabling-mode-label-list* and the *disabling-mode-label-list* can be used to enable or disable a stimulus by setting the mode label to a specific value (e.g. by a write access with a runnable).
+
+Meaning:
+* If there are no list entries at all, the stimulus is enabled.
+* If only the disabling-list has entries, the stimulus is disabled if the condition is fulfilled, otherwise enabled.
+* If only the enabling-list has entries, the stimuli is enabled if the condition is fulfilled, otherwise disabled.  
+* If there are entries in both lists, disabling has precedence.
+
+table(classic){text-align:center;margin-left:50px}.
+|\2/2. |\2. _disabling-list_ |
+| true | false|
+|/2. _enabling-list_ |true |{color:red}. disabled |{color:green}. enabled | 
+|false |{color:red}. disabled |{color:red}. disabled |
 
 
 h4. Single
