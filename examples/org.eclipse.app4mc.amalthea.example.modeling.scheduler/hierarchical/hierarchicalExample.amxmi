@@ -1,101 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <swModel>
-    <tasks name="TaskA1" multipleTaskActivationLimit="0" />
-    <tasks name="TaskB1" multipleTaskActivationLimit="0" />
-    <tasks name="TaskC1" multipleTaskActivationLimit="0" />
-    <tasks name="TaskD1" multipleTaskActivationLimit="0" />
-    <tasks name="TaskA2" multipleTaskActivationLimit="0" />
-    <tasks name="TaskB2" multipleTaskActivationLimit="0" />
-    <tasks name="TaskC2" multipleTaskActivationLimit="0" />
-    <tasks name="TaskD2" multipleTaskActivationLimit="0" />
+    <tasks name="TaskA1" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskB1" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskC1" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskD1" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskA2" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskB2" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskC2" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskD2" multipleTaskActivationLimit="0"/>
   </swModel>
   <hwModel>
-    <coreTypes name="core" bitWidth="0" instructionsPerCycle="1.0" />
+    <coreTypes name="core" bitWidth="0" instructionsPerCycle="1.0"/>
     <system name="HwSystem">
       <ecus name="ECU">
         <microcontrollers name="µC">
           <cores name="CoreA" coreType="core?type=CoreType" lockstepGroup="0">
-            <prescaler name="200mhz" clockRatio="2.0" quartz="quarz?type=Quartz" />
+            <prescaler name="200mhz" clockRatio="2.0" quartz="quarz?type=Quartz"/>
           </cores>
           <cores name="CoreB" coreType="core?type=CoreType" lockstepGroup="0">
-            <prescaler name="200mhz" clockRatio="2.0" quartz="quarz?type=Quartz" />
+            <prescaler name="200mhz" clockRatio="2.0" quartz="quarz?type=Quartz"/>
           </cores>
         </microcontrollers>
       </ecus>
       <quartzes name="quarz" type="STATIC">
-        <frequency unit="MHz" value="100.0" />
+        <frequency unit="MHz" value="100.0"/>
       </quartzes>
     </system>
   </hwModel>
   <osModel>
     <operatingSystems>
       <taskSchedulers name="Priority Based Round Robin">
-        <schedulingAlgorithm xsi:type="am:PriorityBasedRoundRobin" />
+        <schedulingAlgorithm xsi:type="am:PriorityBasedRoundRobin"/>
       </taskSchedulers>
       <taskSchedulers name="OSEKA">
-        <schedulingAlgorithm xsi:type="am:OSEK" />
+        <schedulingAlgorithm xsi:type="am:OSEK"/>
         <parentAssociation parent="Priority+Based+Round+Robin?type=TaskScheduler">
-          <schedulingParameters priority="20" />
+          <schedulingParameters priority="20"/>
         </parentAssociation>
       </taskSchedulers>
       <taskSchedulers name="OSEKB">
-        <schedulingAlgorithm xsi:type="am:OSEK" />
+        <schedulingAlgorithm xsi:type="am:OSEK"/>
         <parentAssociation parent="Priority+Based+Round+Robin?type=TaskScheduler">
-          <schedulingParameters priority="15" />
+          <schedulingParameters priority="15"/>
         </parentAssociation>
       </taskSchedulers>
       <taskSchedulers name="OSEKC">
-        <schedulingAlgorithm xsi:type="am:OSEK" />
+        <schedulingAlgorithm xsi:type="am:OSEK"/>
         <parentAssociation>
-          <schedulingParameters priority="5" />
+          <schedulingParameters priority="5"/>
         </parentAssociation>
       </taskSchedulers>
       <taskSchedulers name="OSEKD">
-        <schedulingAlgorithm xsi:type="am:OSEK" />
+        <schedulingAlgorithm xsi:type="am:OSEK"/>
         <parentAssociation parent="Priority+Based+Round+Robin?type=TaskScheduler">
-          <schedulingParameters priority="10" />
+          <schedulingParameters priority="10"/>
         </parentAssociation>
       </taskSchedulers>
     </operatingSystems>
   </osModel>
   <mappingModel>
-    <schedulerAllocation scheduler="Priority+Based+Round+Robin?type=TaskScheduler" responsibility="CoreA?type=Core CoreB?type=Core" executingCore="CoreA?type=Core" />
-    <schedulerAllocation scheduler="OSEKA?type=TaskScheduler" responsibility="CoreA?type=Core" executingCore="CoreA?type=Core" />
-    <schedulerAllocation scheduler="OSEKB?type=TaskScheduler" responsibility="CoreA?type=Core" executingCore="CoreA?type=Core" />
-    <schedulerAllocation scheduler="OSEKC?type=TaskScheduler" responsibility="CoreB?type=Core" executingCore="CoreB?type=Core" />
-    <schedulerAllocation scheduler="OSEKD?type=TaskScheduler" responsibility="CoreB?type=Core" executingCore="CoreB?type=Core" />
+    <schedulerAllocation scheduler="Priority+Based+Round+Robin?type=TaskScheduler" responsibility="CoreA?type=Core CoreB?type=Core" executingCore="CoreA?type=Core"/>
+    <schedulerAllocation scheduler="OSEKA?type=TaskScheduler" responsibility="CoreA?type=Core" executingCore="CoreA?type=Core"/>
+    <schedulerAllocation scheduler="OSEKB?type=TaskScheduler" responsibility="CoreA?type=Core" executingCore="CoreA?type=Core"/>
+    <schedulerAllocation scheduler="OSEKC?type=TaskScheduler" responsibility="CoreB?type=Core" executingCore="CoreB?type=Core"/>
+    <schedulerAllocation scheduler="OSEKD?type=TaskScheduler" responsibility="CoreB?type=Core" executingCore="CoreB?type=Core"/>
     <taskAllocation task="TaskA1?type=Task" scheduler="OSEKA?type=TaskScheduler">
-      <schedulingParameters priority="5" />
-      <schedulingParameters priority="50" />
+      <schedulingParameters priority="5"/>
     </taskAllocation>
     <taskAllocation task="TaskA2?type=Task" scheduler="OSEKA?type=TaskScheduler">
-      <schedulingParameters priority="15" />
-      <schedulingParameters priority="30" />
+      <schedulingParameters priority="15"/>
     </taskAllocation>
     <taskAllocation task="TaskB1?type=Task" scheduler="OSEKB?type=TaskScheduler">
-      <schedulingParameters priority="10" />
-      <schedulingParameters priority="55" />
+      <schedulingParameters priority="10"/>
     </taskAllocation>
     <taskAllocation task="TaskB2?type=Task" scheduler="OSEKB?type=TaskScheduler">
-      <schedulingParameters priority="50" />
-      <schedulingParameters priority="60" />
+      <schedulingParameters priority="50"/>
     </taskAllocation>
     <taskAllocation task="TaskC1?type=Task" scheduler="OSEKC?type=TaskScheduler">
-      <schedulingParameters priority="40" />
-      <schedulingParameters priority="75" />
+      <schedulingParameters priority="40"/>
     </taskAllocation>
     <taskAllocation task="TaskC2?type=Task" scheduler="OSEKC?type=TaskScheduler">
-      <schedulingParameters priority="20" />
-      <schedulingParameters priority="20" />
+      <schedulingParameters priority="20"/>
     </taskAllocation>
     <taskAllocation task="TaskD1?type=Task" scheduler="OSEKD?type=TaskScheduler">
-      <schedulingParameters priority="25" />
-      <schedulingParameters priority="100" />
+      <schedulingParameters priority="25"/>
     </taskAllocation>
     <taskAllocation task="TaskD2?type=Task" scheduler="OSEKD?type=TaskScheduler">
-      <schedulingParameters priority="55" />
-      <schedulingParameters priority="10" />
+      <schedulingParameters priority="55"/>
     </taskAllocation>
   </mappingModel>
 </am:Amalthea>
