@@ -2264,6 +2264,15 @@ public interface AmaltheaFactory extends EFactory {
 	PeriodicActivation createPeriodicActivation();
 
 	/**
+	 * Returns a new object of class '<em>Variable Rate Activation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Variable Rate Activation</em>'.
+	 * @generated
+	 */
+	VariableRateActivation createVariableRateActivation();
+
+	/**
 	 * Returns a new object of class '<em>Sporadic Activation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

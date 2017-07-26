@@ -313,6 +313,7 @@ import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Value;
+import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
@@ -625,6 +626,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.DATA_TYPE_DEFINITION: return createDataTypeDefinition();
 			case AmaltheaPackage.BASE_TYPE_DEFINITION: return createBaseTypeDefinition();
 			case AmaltheaPackage.PERIODIC_ACTIVATION: return createPeriodicActivation();
+			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION: return createVariableRateActivation();
 			case AmaltheaPackage.SPORADIC_ACTIVATION: return createSporadicActivation();
 			case AmaltheaPackage.SINGLE_ACTIVATION: return createSingleActivation();
 			case AmaltheaPackage.EVENT_ACTIVATION: return createEventActivation();
@@ -3367,6 +3369,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public PeriodicActivation createPeriodicActivation() {
 		PeriodicActivationImpl periodicActivation = new PeriodicActivationImpl();
 		return periodicActivation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VariableRateActivation createVariableRateActivation() {
+		VariableRateActivationImpl variableRateActivation = new VariableRateActivationImpl();
+		return variableRateActivation;
 	}
 
 	/**

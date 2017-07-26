@@ -337,6 +337,7 @@ import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Value;
+import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
@@ -3351,6 +3352,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(periodicActivation);
 				if (result == null) result = caseIAnnotatable(periodicActivation);
 				if (result == null) result = caseIReferable(periodicActivation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION: {
+				VariableRateActivation variableRateActivation = (VariableRateActivation)theEObject;
+				T1 result = caseVariableRateActivation(variableRateActivation);
+				if (result == null) result = caseActivation(variableRateActivation);
+				if (result == null) result = caseReferableBaseObject(variableRateActivation);
+				if (result == null) result = caseITaggable(variableRateActivation);
+				if (result == null) result = caseIAnnotatable(variableRateActivation);
+				if (result == null) result = caseIReferable(variableRateActivation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -8343,6 +8355,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 casePeriodicActivation(PeriodicActivation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Rate Activation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Rate Activation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseVariableRateActivation(VariableRateActivation object) {
 		return null;
 	}
 

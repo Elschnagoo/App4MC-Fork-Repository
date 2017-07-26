@@ -3577,6 +3577,15 @@ class PeriodicActivation extends Activation
 	contains Time offset
 }
 
+/*
+ * Periodic activation based on other events, like rotation speed
+ */
+class VariableRateActivation extends Activation
+{
+	String description
+	contains Deviation<Time> activationDeviation
+}
+
 class SporadicActivation extends Activation
 {
 	String description

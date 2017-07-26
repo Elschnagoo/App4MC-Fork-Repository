@@ -382,6 +382,7 @@ import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Value;
+import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
@@ -2705,6 +2706,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass periodicActivationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass variableRateActivationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -11654,6 +11662,33 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getVariableRateActivation() {
+		return variableRateActivationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVariableRateActivation_Description() {
+		return (EAttribute)variableRateActivationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getVariableRateActivation_ActivationDeviation() {
+		return (EReference)variableRateActivationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSporadicActivation() {
 		return sporadicActivationEClass;
 	}
@@ -13569,6 +13604,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(periodicActivationEClass, PERIODIC_ACTIVATION__RECURRENCE);
 		createEReference(periodicActivationEClass, PERIODIC_ACTIVATION__OFFSET);
 
+		variableRateActivationEClass = createEClass(VARIABLE_RATE_ACTIVATION);
+		createEAttribute(variableRateActivationEClass, VARIABLE_RATE_ACTIVATION__DESCRIPTION);
+		createEReference(variableRateActivationEClass, VARIABLE_RATE_ACTIVATION__ACTIVATION_DEVIATION);
+
 		sporadicActivationEClass = createEClass(SPORADIC_ACTIVATION);
 		createEAttribute(sporadicActivationEClass, SPORADIC_ACTIVATION__DESCRIPTION);
 		createEReference(sporadicActivationEClass, SPORADIC_ACTIVATION__ACTIVATION_DEVIATION);
@@ -14055,6 +14094,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		activationEClass.getESuperTypes().add(this.getReferableBaseObject());
 		activationEClass.getESuperTypes().add(this.getITaggable());
 		periodicActivationEClass.getESuperTypes().add(this.getActivation());
+		variableRateActivationEClass.getESuperTypes().add(this.getActivation());
 		sporadicActivationEClass.getESuperTypes().add(this.getActivation());
 		singleActivationEClass.getESuperTypes().add(this.getActivation());
 		eventActivationEClass.getESuperTypes().add(this.getActivation());
@@ -15411,6 +15451,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getPeriodicActivation_Max(), this.getTime(), null, "max", null, 0, 1, PeriodicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPeriodicActivation_Recurrence(), this.getTime(), null, "recurrence", null, 0, 1, PeriodicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPeriodicActivation_Offset(), this.getTime(), null, "offset", null, 0, 1, PeriodicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(variableRateActivationEClass, VariableRateActivation.class, "VariableRateActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVariableRateActivation_Description(), theEcorePackage.getEString(), "description", null, 0, 1, VariableRateActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(this.getDeviation());
+		g2 = createEGenericType(this.getTime());
+		g1.getETypeArguments().add(g2);
+		initEReference(getVariableRateActivation_ActivationDeviation(), g1, null, "activationDeviation", null, 0, 1, VariableRateActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sporadicActivationEClass, SporadicActivation.class, "SporadicActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSporadicActivation_Description(), theEcorePackage.getEString(), "description", null, 0, 1, SporadicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

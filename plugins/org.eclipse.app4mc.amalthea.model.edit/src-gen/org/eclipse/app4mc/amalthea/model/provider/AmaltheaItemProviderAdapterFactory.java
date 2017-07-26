@@ -5855,6 +5855,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.VariableRateActivation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VariableRateActivationItemProvider variableRateActivationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.VariableRateActivation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVariableRateActivationAdapter() {
+		if (variableRateActivationItemProvider == null) {
+			variableRateActivationItemProvider = new VariableRateActivationItemProvider(this);
+		}
+
+		return variableRateActivationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SporadicActivation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6365,6 +6388,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (dataTypeDefinitionItemProvider != null) dataTypeDefinitionItemProvider.dispose();
 		if (baseTypeDefinitionItemProvider != null) baseTypeDefinitionItemProvider.dispose();
 		if (periodicActivationItemProvider != null) periodicActivationItemProvider.dispose();
+		if (variableRateActivationItemProvider != null) variableRateActivationItemProvider.dispose();
 		if (sporadicActivationItemProvider != null) sporadicActivationItemProvider.dispose();
 		if (singleActivationItemProvider != null) singleActivationItemProvider.dispose();
 		if (eventActivationItemProvider != null) eventActivationItemProvider.dispose();

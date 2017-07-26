@@ -24159,6 +24159,106 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_ACTIVATION_OPERATION_COUNT = ACTIVATION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.VariableRateActivationImpl <em>Variable Rate Activation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.VariableRateActivationImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getVariableRateActivation()
+	 * @generated
+	 */
+	int VARIABLE_RATE_ACTIVATION = 328;
+
+	/**
+	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION__CUSTOM_PROPERTIES = ACTIVATION__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION__NAME = ACTIVATION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Unique Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION__UNIQUE_NAME = ACTIVATION__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION__TAGS = ACTIVATION__TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION__DESCRIPTION = ACTIVATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Activation Deviation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION__ACTIVATION_DEVIATION = ACTIVATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Variable Rate Activation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION_FEATURE_COUNT = ACTIVATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION___COMPUTE_UNIQUE_NAME = ACTIVATION___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Encode</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION___ENCODE__STRING = ACTIVATION___ENCODE__STRING;
+
+	/**
+	 * The number of operations of the '<em>Variable Rate Activation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION_OPERATION_COUNT = ACTIVATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.SporadicActivationImpl <em>Sporadic Activation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24166,7 +24266,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSporadicActivation()
 	 * @generated
 	 */
-	int SPORADIC_ACTIVATION = 328;
+	int SPORADIC_ACTIVATION = 329;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24266,7 +24366,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSingleActivation()
 	 * @generated
 	 */
-	int SINGLE_ACTIVATION = 329;
+	int SINGLE_ACTIVATION = 330;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24366,7 +24466,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventActivation()
 	 * @generated
 	 */
-	int EVENT_ACTIVATION = 330;
+	int EVENT_ACTIVATION = 331;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24466,7 +24566,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCustomActivation()
 	 * @generated
 	 */
-	int CUSTOM_ACTIVATION = 331;
+	int CUSTOM_ACTIVATION = 332;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24557,7 +24657,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessStatistic()
 	 * @generated
 	 */
-	int LABEL_ACCESS_STATISTIC = 332;
+	int LABEL_ACCESS_STATISTIC = 333;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24612,7 +24712,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInstructionFetch()
 	 * @generated
 	 */
-	int INSTRUCTION_FETCH = 333;
+	int INSTRUCTION_FETCH = 334;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24676,7 +24776,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunEntityCallStatistic()
 	 * @generated
 	 */
-	int RUN_ENTITY_CALL_STATISTIC = 334;
+	int RUN_ENTITY_CALL_STATISTIC = 335;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24722,7 +24822,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeUnit()
 	 * @generated
 	 */
-	int TIME_UNIT = 335;
+	int TIME_UNIT = 336;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.FrequencyUnit <em>Frequency Unit</em>}' enum.
@@ -24732,7 +24832,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFrequencyUnit()
 	 * @generated
 	 */
-	int FREQUENCY_UNIT = 336;
+	int FREQUENCY_UNIT = 337;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.DataSizeUnit <em>Data Size Unit</em>}' enum.
@@ -24742,7 +24842,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataSizeUnit()
 	 * @generated
 	 */
-	int DATA_SIZE_UNIT = 337;
+	int DATA_SIZE_UNIT = 338;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.DataRateUnit <em>Data Rate Unit</em>}' enum.
@@ -24752,7 +24852,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataRateUnit()
 	 * @generated
 	 */
-	int DATA_RATE_UNIT = 338;
+	int DATA_RATE_UNIT = 339;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SamplingType <em>Sampling Type</em>}' enum.
@@ -24762,7 +24862,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSamplingType()
 	 * @generated
 	 */
-	int SAMPLING_TYPE = 339;
+	int SAMPLING_TYPE = 340;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.InterfaceKind <em>Interface Kind</em>}' enum.
@@ -24772,7 +24872,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterfaceKind()
 	 * @generated
 	 */
-	int INTERFACE_KIND = 340;
+	int INTERFACE_KIND = 341;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.RunnableOrderType <em>Runnable Order Type</em>}' enum.
@@ -24782,7 +24882,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableOrderType()
 	 * @generated
 	 */
-	int RUNNABLE_ORDER_TYPE = 341;
+	int RUNNABLE_ORDER_TYPE = 342;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SynchronizationType <em>Synchronization Type</em>}' enum.
@@ -24792,7 +24892,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSynchronizationType()
 	 * @generated
 	 */
-	int SYNCHRONIZATION_TYPE = 342;
+	int SYNCHRONIZATION_TYPE = 343;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.MappingType <em>Mapping Type</em>}' enum.
@@ -24802,7 +24902,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMappingType()
 	 * @generated
 	 */
-	int MAPPING_TYPE = 343;
+	int MAPPING_TYPE = 344;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LatencyType <em>Latency Type</em>}' enum.
@@ -24812,7 +24912,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLatencyType()
 	 * @generated
 	 */
-	int LATENCY_TYPE = 344;
+	int LATENCY_TYPE = 345;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Severity <em>Severity</em>}' enum.
@@ -24822,7 +24922,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSeverity()
 	 * @generated
 	 */
-	int SEVERITY = 345;
+	int SEVERITY = 346;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LimitType <em>Limit Type</em>}' enum.
@@ -24832,7 +24932,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLimitType()
 	 * @generated
 	 */
-	int LIMIT_TYPE = 346;
+	int LIMIT_TYPE = 347;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.TimeMetric <em>Time Metric</em>}' enum.
@@ -24842,7 +24942,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeMetric()
 	 * @generated
 	 */
-	int TIME_METRIC = 347;
+	int TIME_METRIC = 348;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.CountMetric <em>Count Metric</em>}' enum.
@@ -24852,7 +24952,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCountMetric()
 	 * @generated
 	 */
-	int COUNT_METRIC = 348;
+	int COUNT_METRIC = 349;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.PercentageMetric <em>Percentage Metric</em>}' enum.
@@ -24862,7 +24962,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPercentageMetric()
 	 * @generated
 	 */
-	int PERCENTAGE_METRIC = 349;
+	int PERCENTAGE_METRIC = 350;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.CPUPercentageMetric <em>CPU Percentage Metric</em>}' enum.
@@ -24872,7 +24972,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCPUPercentageMetric()
 	 * @generated
 	 */
-	int CPU_PERCENTAGE_METRIC = 350;
+	int CPU_PERCENTAGE_METRIC = 351;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.FrequencyMetric <em>Frequency Metric</em>}' enum.
@@ -24882,7 +24982,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFrequencyMetric()
 	 * @generated
 	 */
-	int FREQUENCY_METRIC = 351;
+	int FREQUENCY_METRIC = 352;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.CoherencyDirection <em>Coherency Direction</em>}' enum.
@@ -24892,7 +24992,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCoherencyDirection()
 	 * @generated
 	 */
-	int COHERENCY_DIRECTION = 352;
+	int COHERENCY_DIRECTION = 353;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ProcessEventType <em>Process Event Type</em>}' enum.
@@ -24902,7 +25002,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessEventType()
 	 * @generated
 	 */
-	int PROCESS_EVENT_TYPE = 353;
+	int PROCESS_EVENT_TYPE = 354;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.RunnableEventType <em>Runnable Event Type</em>}' enum.
@@ -24912,7 +25012,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableEventType()
 	 * @generated
 	 */
-	int RUNNABLE_EVENT_TYPE = 354;
+	int RUNNABLE_EVENT_TYPE = 355;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelEventType <em>Label Event Type</em>}' enum.
@@ -24922,7 +25022,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelEventType()
 	 * @generated
 	 */
-	int LABEL_EVENT_TYPE = 355;
+	int LABEL_EVENT_TYPE = 356;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ChannelEventType <em>Channel Event Type</em>}' enum.
@@ -24932,7 +25032,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChannelEventType()
 	 * @generated
 	 */
-	int CHANNEL_EVENT_TYPE = 356;
+	int CHANNEL_EVENT_TYPE = 357;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreEventType <em>Semaphore Event Type</em>}' enum.
@@ -24942,7 +25042,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreEventType()
 	 * @generated
 	 */
-	int SEMAPHORE_EVENT_TYPE = 357;
+	int SEMAPHORE_EVENT_TYPE = 358;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.QType <em>QType</em>}' enum.
@@ -24952,7 +25052,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getQType()
 	 * @generated
 	 */
-	int QTYPE = 358;
+	int QTYPE = 359;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.MemoryTypeEnum <em>Memory Type Enum</em>}' enum.
@@ -24962,7 +25062,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryTypeEnum()
 	 * @generated
 	 */
-	int MEMORY_TYPE_ENUM = 359;
+	int MEMORY_TYPE_ENUM = 360;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.BusType <em>Bus Type</em>}' enum.
@@ -24972,7 +25072,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBusType()
 	 * @generated
 	 */
-	int BUS_TYPE = 360;
+	int BUS_TYPE = 361;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.RWType <em>RW Type</em>}' enum.
@@ -24982,7 +25082,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRWType()
 	 * @generated
 	 */
-	int RW_TYPE = 361;
+	int RW_TYPE = 362;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SchedType <em>Sched Type</em>}' enum.
@@ -24992,7 +25092,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSchedType()
 	 * @generated
 	 */
-	int SCHED_TYPE = 362;
+	int SCHED_TYPE = 363;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.PinType <em>Pin Type</em>}' enum.
@@ -25002,7 +25102,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPinType()
 	 * @generated
 	 */
-	int PIN_TYPE = 363;
+	int PIN_TYPE = 364;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType <em>Memory Address Mapping Type</em>}' enum.
@@ -25012,7 +25112,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryAddressMappingType()
 	 * @generated
 	 */
-	int MEMORY_ADDRESS_MAPPING_TYPE = 364;
+	int MEMORY_ADDRESS_MAPPING_TYPE = 365;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode <em>Os Data Consistency Mode</em>}' enum.
@@ -25022,7 +25122,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsDataConsistencyMode()
 	 * @generated
 	 */
-	int OS_DATA_CONSISTENCY_MODE = 365;
+	int OS_DATA_CONSISTENCY_MODE = 366;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.AccessMultiplicity <em>Access Multiplicity</em>}' enum.
@@ -25032,7 +25132,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAccessMultiplicity()
 	 * @generated
 	 */
-	int ACCESS_MULTIPLICITY = 366;
+	int ACCESS_MULTIPLICITY = 367;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.DataStabilityLevel <em>Data Stability Level</em>}' enum.
@@ -25042,7 +25142,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataStabilityLevel()
 	 * @generated
 	 */
-	int DATA_STABILITY_LEVEL = 367;
+	int DATA_STABILITY_LEVEL = 368;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreType <em>Semaphore Type</em>}' enum.
@@ -25052,7 +25152,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreType()
 	 * @generated
 	 */
-	int SEMAPHORE_TYPE = 368;
+	int SEMAPHORE_TYPE = 369;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Condition <em>Condition</em>}' enum.
@@ -25062,7 +25162,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCondition()
 	 * @generated
 	 */
-	int CONDITION = 369;
+	int CONDITION = 370;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.GroupingType <em>Grouping Type</em>}' enum.
@@ -25072,7 +25172,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGroupingType()
 	 * @generated
 	 */
-	int GROUPING_TYPE = 370;
+	int GROUPING_TYPE = 371;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.WaitEventType <em>Wait Event Type</em>}' enum.
@@ -25082,7 +25182,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWaitEventType()
 	 * @generated
 	 */
-	int WAIT_EVENT_TYPE = 371;
+	int WAIT_EVENT_TYPE = 372;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.WaitingBehaviour <em>Waiting Behaviour</em>}' enum.
@@ -25092,7 +25192,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWaitingBehaviour()
 	 * @generated
 	 */
-	int WAITING_BEHAVIOUR = 372;
+	int WAITING_BEHAVIOUR = 373;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ISRCategory <em>ISR Category</em>}' enum.
@@ -25102,7 +25202,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getISRCategory()
 	 * @generated
 	 */
-	int ISR_CATEGORY = 373;
+	int ISR_CATEGORY = 374;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.AccessPrecedenceType <em>Access Precedence Type</em>}' enum.
@@ -25112,7 +25212,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAccessPrecedenceType()
 	 * @generated
 	 */
-	int ACCESS_PRECEDENCE_TYPE = 374;
+	int ACCESS_PRECEDENCE_TYPE = 375;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.OrderType <em>Order Type</em>}' enum.
@@ -25122,7 +25222,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOrderType()
 	 * @generated
 	 */
-	int ORDER_TYPE = 375;
+	int ORDER_TYPE = 376;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelDataStability <em>Label Data Stability</em>}' enum.
@@ -25132,7 +25232,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelDataStability()
 	 * @generated
 	 */
-	int LABEL_DATA_STABILITY = 376;
+	int LABEL_DATA_STABILITY = 377;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ReceiveOperation <em>Receive Operation</em>}' enum.
@@ -25142,7 +25242,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getReceiveOperation()
 	 * @generated
 	 */
-	int RECEIVE_OPERATION = 377;
+	int RECEIVE_OPERATION = 378;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelAccessDataStability <em>Label Access Data Stability</em>}' enum.
@@ -25152,7 +25252,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessDataStability()
 	 * @generated
 	 */
-	int LABEL_ACCESS_DATA_STABILITY = 378;
+	int LABEL_ACCESS_DATA_STABILITY = 379;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelAccessEnum <em>Label Access Enum</em>}' enum.
@@ -25162,7 +25262,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessEnum()
 	 * @generated
 	 */
-	int LABEL_ACCESS_ENUM = 379;
+	int LABEL_ACCESS_ENUM = 380;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum <em>Semaphore Access Enum</em>}' enum.
@@ -25172,7 +25272,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreAccessEnum()
 	 * @generated
 	 */
-	int SEMAPHORE_ACCESS_ENUM = 380;
+	int SEMAPHORE_ACCESS_ENUM = 381;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Preemption <em>Preemption</em>}' enum.
@@ -25182,7 +25282,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPreemption()
 	 * @generated
 	 */
-	int PREEMPTION = 381;
+	int PREEMPTION = 382;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ConcurrencyType <em>Concurrency Type</em>}' enum.
@@ -25192,7 +25292,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConcurrencyType()
 	 * @generated
 	 */
-	int CONCURRENCY_TYPE = 382;
+	int CONCURRENCY_TYPE = 383;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ASILType <em>ASIL Type</em>}' enum.
@@ -25202,7 +25302,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getASILType()
 	 * @generated
 	 */
-	int ASIL_TYPE = 383;
+	int ASIL_TYPE = 384;
 
 
 	/**
@@ -35219,6 +35319,38 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPeriodicActivation_Offset();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation <em>Variable Rate Activation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable Rate Activation</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.VariableRateActivation
+	 * @generated
+	 */
+	EClass getVariableRateActivation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.VariableRateActivation#getDescription()
+	 * @see #getVariableRateActivation()
+	 * @generated
+	 */
+	EAttribute getVariableRateActivation_Description();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation#getActivationDeviation <em>Activation Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Activation Deviation</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.VariableRateActivation#getActivationDeviation()
+	 * @see #getVariableRateActivation()
+	 * @generated
+	 */
+	EReference getVariableRateActivation_ActivationDeviation();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SporadicActivation <em>Sporadic Activation</em>}'.

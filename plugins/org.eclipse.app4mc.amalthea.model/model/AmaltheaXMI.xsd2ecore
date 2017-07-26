@@ -2155,41 +2155,48 @@
       <nested inputs="amalthea.xcore#/EPackage/PeriodicActivation/offset" outputs="AmaltheaXMI.xsd#//PeriodicActivation;XSDComplexTypeDefinition=327/XSDParticle/XSDModelGroup/XSDParticle=3"/>
     </nested>
     <nested inputs="amalthea.xcore#/EPackage/PeriodicActivation" outputs="AmaltheaXMI.xsd#//PeriodicActivation;XSDElementDeclaration=327"/>
-    <nested inputs="amalthea.xcore#/EPackage/SporadicActivation" outputs="AmaltheaXMI.xsd#//SporadicActivation;XSDComplexTypeDefinition=328">
-      <nested inputs="amalthea.xcore#/EPackage/SporadicActivation/description" outputs="AmaltheaXMI.xsd#//SporadicActivation;XSDComplexTypeDefinition=328/XSDAttributeUse"/>
+    <nested inputs="amalthea.xcore#/EPackage/VariableRateActivation" outputs="AmaltheaXMI.xsd#//VariableRateActivation;XSDComplexTypeDefinition=328">
+      <nested inputs="amalthea.xcore#/EPackage/VariableRateActivation/description"
+          outputs="AmaltheaXMI.xsd#//VariableRateActivation;XSDComplexTypeDefinition=328/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/VariableRateActivation/activationDeviation"
+          outputs="AmaltheaXMI.xsd#//VariableRateActivation;XSDComplexTypeDefinition=328/XSDParticle/XSDModelGroup/XSDParticle"/>
+    </nested>
+    <nested inputs="amalthea.xcore#/EPackage/VariableRateActivation" outputs="AmaltheaXMI.xsd#//VariableRateActivation;XSDElementDeclaration=328"/>
+    <nested inputs="amalthea.xcore#/EPackage/SporadicActivation" outputs="AmaltheaXMI.xsd#//SporadicActivation;XSDComplexTypeDefinition=329">
+      <nested inputs="amalthea.xcore#/EPackage/SporadicActivation/description" outputs="AmaltheaXMI.xsd#//SporadicActivation;XSDComplexTypeDefinition=329/XSDAttributeUse"/>
       <nested inputs="amalthea.xcore#/EPackage/SporadicActivation/activationDeviation"
-          outputs="AmaltheaXMI.xsd#//SporadicActivation;XSDComplexTypeDefinition=328/XSDParticle/XSDModelGroup/XSDParticle"/>
+          outputs="AmaltheaXMI.xsd#//SporadicActivation;XSDComplexTypeDefinition=329/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/SporadicActivation" outputs="AmaltheaXMI.xsd#//SporadicActivation;XSDElementDeclaration=328"/>
-    <nested inputs="amalthea.xcore#/EPackage/SingleActivation" outputs="AmaltheaXMI.xsd#//SingleActivation;XSDComplexTypeDefinition=329">
-      <nested inputs="amalthea.xcore#/EPackage/SingleActivation/min" outputs="AmaltheaXMI.xsd#//SingleActivation;XSDComplexTypeDefinition=329/XSDParticle/XSDModelGroup/XSDParticle"/>
-      <nested inputs="amalthea.xcore#/EPackage/SingleActivation/max" outputs="AmaltheaXMI.xsd#//SingleActivation;XSDComplexTypeDefinition=329/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+    <nested inputs="amalthea.xcore#/EPackage/SporadicActivation" outputs="AmaltheaXMI.xsd#//SporadicActivation;XSDElementDeclaration=329"/>
+    <nested inputs="amalthea.xcore#/EPackage/SingleActivation" outputs="AmaltheaXMI.xsd#//SingleActivation;XSDComplexTypeDefinition=330">
+      <nested inputs="amalthea.xcore#/EPackage/SingleActivation/min" outputs="AmaltheaXMI.xsd#//SingleActivation;XSDComplexTypeDefinition=330/XSDParticle/XSDModelGroup/XSDParticle"/>
+      <nested inputs="amalthea.xcore#/EPackage/SingleActivation/max" outputs="AmaltheaXMI.xsd#//SingleActivation;XSDComplexTypeDefinition=330/XSDParticle/XSDModelGroup/XSDParticle=1"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/SingleActivation" outputs="AmaltheaXMI.xsd#//SingleActivation;XSDElementDeclaration=329"/>
-    <nested inputs="amalthea.xcore#/EPackage/EventActivation" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=330">
-      <nested inputs="amalthea.xcore#/EPackage/EventActivation/triggeringEvents" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=330/XSDAttributeUse"/>
-      <nested inputs="amalthea.xcore#/EPackage/EventActivation/triggeringEvents" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=330/XSDParticle/XSDModelGroup/XSDParticle"/>
-      <nested inputs="amalthea.xcore#/EPackage/EventActivation/counter" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=330/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+    <nested inputs="amalthea.xcore#/EPackage/SingleActivation" outputs="AmaltheaXMI.xsd#//SingleActivation;XSDElementDeclaration=330"/>
+    <nested inputs="amalthea.xcore#/EPackage/EventActivation" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=331">
+      <nested inputs="amalthea.xcore#/EPackage/EventActivation/triggeringEvents" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=331/XSDAttributeUse"/>
+      <nested inputs="amalthea.xcore#/EPackage/EventActivation/triggeringEvents" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=331/XSDParticle/XSDModelGroup/XSDParticle"/>
+      <nested inputs="amalthea.xcore#/EPackage/EventActivation/counter" outputs="AmaltheaXMI.xsd#//EventActivation;XSDComplexTypeDefinition=331/XSDParticle/XSDModelGroup/XSDParticle=1"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/EventActivation" outputs="AmaltheaXMI.xsd#//EventActivation;XSDElementDeclaration=330"/>
-    <nested inputs="amalthea.xcore#/EPackage/CustomActivation" outputs="AmaltheaXMI.xsd#//CustomActivation;XSDComplexTypeDefinition=331">
-      <nested inputs="amalthea.xcore#/EPackage/CustomActivation/description" outputs="AmaltheaXMI.xsd#//CustomActivation;XSDComplexTypeDefinition=331/XSDAttributeUse"/>
+    <nested inputs="amalthea.xcore#/EPackage/EventActivation" outputs="AmaltheaXMI.xsd#//EventActivation;XSDElementDeclaration=331"/>
+    <nested inputs="amalthea.xcore#/EPackage/CustomActivation" outputs="AmaltheaXMI.xsd#//CustomActivation;XSDComplexTypeDefinition=332">
+      <nested inputs="amalthea.xcore#/EPackage/CustomActivation/description" outputs="AmaltheaXMI.xsd#//CustomActivation;XSDComplexTypeDefinition=332/XSDAttributeUse"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/CustomActivation" outputs="AmaltheaXMI.xsd#//CustomActivation;XSDElementDeclaration=331"/>
-    <nested inputs="amalthea.xcore#/EPackage/LabelAccessStatistic" outputs="AmaltheaXMI.xsd#//LabelAccessStatistic;XSDComplexTypeDefinition=332">
-      <nested inputs="amalthea.xcore#/EPackage/LabelAccessStatistic/value" outputs="AmaltheaXMI.xsd#//LabelAccessStatistic;XSDComplexTypeDefinition=332/XSDParticle/XSDModelGroup/XSDParticle"/>
-      <nested inputs="amalthea.xcore#/EPackage/LabelAccessStatistic/cacheMisses" outputs="AmaltheaXMI.xsd#//LabelAccessStatistic;XSDComplexTypeDefinition=332/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+    <nested inputs="amalthea.xcore#/EPackage/CustomActivation" outputs="AmaltheaXMI.xsd#//CustomActivation;XSDElementDeclaration=332"/>
+    <nested inputs="amalthea.xcore#/EPackage/LabelAccessStatistic" outputs="AmaltheaXMI.xsd#//LabelAccessStatistic;XSDComplexTypeDefinition=333">
+      <nested inputs="amalthea.xcore#/EPackage/LabelAccessStatistic/value" outputs="AmaltheaXMI.xsd#//LabelAccessStatistic;XSDComplexTypeDefinition=333/XSDParticle/XSDModelGroup/XSDParticle"/>
+      <nested inputs="amalthea.xcore#/EPackage/LabelAccessStatistic/cacheMisses" outputs="AmaltheaXMI.xsd#//LabelAccessStatistic;XSDComplexTypeDefinition=333/XSDParticle/XSDModelGroup/XSDParticle=1"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/LabelAccessStatistic" outputs="AmaltheaXMI.xsd#//LabelAccessStatistic;XSDElementDeclaration=332"/>
-    <nested inputs="amalthea.xcore#/EPackage/InstructionFetch" outputs="AmaltheaXMI.xsd#//InstructionFetch;XSDComplexTypeDefinition=333">
-      <nested inputs="amalthea.xcore#/EPackage/InstructionFetch/count" outputs="AmaltheaXMI.xsd#//InstructionFetch;XSDComplexTypeDefinition=333/XSDParticle/XSDModelGroup/XSDParticle"/>
-      <nested inputs="amalthea.xcore#/EPackage/InstructionFetch/misses" outputs="AmaltheaXMI.xsd#//InstructionFetch;XSDComplexTypeDefinition=333/XSDParticle/XSDModelGroup/XSDParticle=1"/>
-      <nested inputs="amalthea.xcore#/EPackage/InstructionFetch/cyclesPerFetch" outputs="AmaltheaXMI.xsd#//InstructionFetch;XSDComplexTypeDefinition=333/XSDParticle/XSDModelGroup/XSDParticle=2"/>
+    <nested inputs="amalthea.xcore#/EPackage/LabelAccessStatistic" outputs="AmaltheaXMI.xsd#//LabelAccessStatistic;XSDElementDeclaration=333"/>
+    <nested inputs="amalthea.xcore#/EPackage/InstructionFetch" outputs="AmaltheaXMI.xsd#//InstructionFetch;XSDComplexTypeDefinition=334">
+      <nested inputs="amalthea.xcore#/EPackage/InstructionFetch/count" outputs="AmaltheaXMI.xsd#//InstructionFetch;XSDComplexTypeDefinition=334/XSDParticle/XSDModelGroup/XSDParticle"/>
+      <nested inputs="amalthea.xcore#/EPackage/InstructionFetch/misses" outputs="AmaltheaXMI.xsd#//InstructionFetch;XSDComplexTypeDefinition=334/XSDParticle/XSDModelGroup/XSDParticle=1"/>
+      <nested inputs="amalthea.xcore#/EPackage/InstructionFetch/cyclesPerFetch" outputs="AmaltheaXMI.xsd#//InstructionFetch;XSDComplexTypeDefinition=334/XSDParticle/XSDModelGroup/XSDParticle=2"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/InstructionFetch" outputs="AmaltheaXMI.xsd#//InstructionFetch;XSDElementDeclaration=333"/>
-    <nested inputs="amalthea.xcore#/EPackage/RunEntityCallStatistic" outputs="AmaltheaXMI.xsd#//RunEntityCallStatistic;XSDComplexTypeDefinition=334">
-      <nested inputs="amalthea.xcore#/EPackage/RunEntityCallStatistic/statistic" outputs="AmaltheaXMI.xsd#//RunEntityCallStatistic;XSDComplexTypeDefinition=334/XSDParticle/XSDModelGroup/XSDParticle"/>
+    <nested inputs="amalthea.xcore#/EPackage/InstructionFetch" outputs="AmaltheaXMI.xsd#//InstructionFetch;XSDElementDeclaration=334"/>
+    <nested inputs="amalthea.xcore#/EPackage/RunEntityCallStatistic" outputs="AmaltheaXMI.xsd#//RunEntityCallStatistic;XSDComplexTypeDefinition=335">
+      <nested inputs="amalthea.xcore#/EPackage/RunEntityCallStatistic/statistic" outputs="AmaltheaXMI.xsd#//RunEntityCallStatistic;XSDComplexTypeDefinition=335/XSDParticle/XSDModelGroup/XSDParticle"/>
     </nested>
-    <nested inputs="amalthea.xcore#/EPackage/RunEntityCallStatistic" outputs="AmaltheaXMI.xsd#//RunEntityCallStatistic;XSDElementDeclaration=334"/>
+    <nested inputs="amalthea.xcore#/EPackage/RunEntityCallStatistic" outputs="AmaltheaXMI.xsd#//RunEntityCallStatistic;XSDElementDeclaration=335"/>
   </nested>
 </xsd2ecore:XSD2EcoreMappingRoot>

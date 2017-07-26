@@ -337,6 +337,7 @@ import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Value;
+import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
@@ -1718,6 +1719,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePeriodicActivation(PeriodicActivation object) {
 				return createPeriodicActivationAdapter();
+			}
+			@Override
+			public Adapter caseVariableRateActivation(VariableRateActivation object) {
+				return createVariableRateActivationAdapter();
 			}
 			@Override
 			public Adapter caseSporadicActivation(SporadicActivation object) {
@@ -6356,6 +6361,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPeriodicActivationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation <em>Variable Rate Activation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.VariableRateActivation
+	 * @generated
+	 */
+	public Adapter createVariableRateActivationAdapter() {
 		return null;
 	}
 

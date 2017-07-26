@@ -222,6 +222,11 @@ public class SWModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSWModel_Activations(),
+				 AmaltheaFactory.eINSTANCE.createVariableRateActivation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSWModel_Activations(),
 				 AmaltheaFactory.eINSTANCE.createSporadicActivation()));
 
 		newChildDescriptors.add
