@@ -158,7 +158,7 @@ public class ILPBasedLoadBalancing extends AbstractILPBasedMappingAlgorithm {
 			final Variable allocation[] = vars[taskIndex];
 			// Search for the core where this task is assigned to
 			for (int i = 0; i < allocation.length; i++) {
-				if (allocation[i].getValue().compareTo(BigDecimal.ONE) == 0) {
+				if (allocation[i].getValue().intValue() == 1) { //compareTo(BigDecimal.ONE) == 0) {
 					// Create a new ProcessAllocation element and set core &
 					// task references
 					try {
