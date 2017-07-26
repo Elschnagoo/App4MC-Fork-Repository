@@ -141,6 +141,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
+import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
 import org.eclipse.app4mc.amalthea.model.Section;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
@@ -2814,6 +2815,21 @@ public class CustomItemProviderService {
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
     }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS)) {
+        _matched=true;
+      }
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier_1 = notification.getNotifier();
+        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);
+        list.add(_viewerNotification_1);
+      }
+    }
     return list;
   }
   
@@ -3091,6 +3107,17 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       return s1;
+    } else {
+      return defaultText;
+    }
+  }
+  
+  /**
+   * SchedulingParametersItemProvider
+   */
+  public static String getSchedulingParametersItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof SchedulingParameters)) {
+      return "Parameters (Scheduling)";
     } else {
       return defaultText;
     }

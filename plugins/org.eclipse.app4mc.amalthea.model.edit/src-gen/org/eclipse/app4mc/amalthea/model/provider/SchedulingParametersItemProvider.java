@@ -160,15 +160,22 @@ public class SchedulingParametersItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		Integer labelValue = ((SchedulingParameters)object).getPriority();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_SchedulingParameters_type") :
 			getString("_UI_SchedulingParameters_type") + " " + label;
 	}
-	
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomItemProviderService.getSchedulingParametersItemProviderText(object, getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

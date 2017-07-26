@@ -34,6 +34,7 @@ import org.eclipse.app4mc.amalthea.model.Connector
 import org.eclipse.app4mc.amalthea.model.CoreClassification
 import org.eclipse.app4mc.amalthea.model.CountMetric
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit
+import org.eclipse.app4mc.amalthea.model.CustomEventTrigger
 import org.eclipse.app4mc.amalthea.model.DataAgeCycle
 import org.eclipse.app4mc.amalthea.model.DataAgeTime
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup
@@ -63,6 +64,7 @@ import org.eclipse.app4mc.amalthea.model.Instructions
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation
 import org.eclipse.app4mc.amalthea.model.IntegerObject
+import org.eclipse.app4mc.amalthea.model.InterProcessTrigger
 import org.eclipse.app4mc.amalthea.model.InterfaceKind
 import org.eclipse.app4mc.amalthea.model.LabelAccess
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum
@@ -112,6 +114,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement
 import org.eclipse.app4mc.amalthea.model.RunnableScope
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation
+import org.eclipse.app4mc.amalthea.model.SchedulingParameters
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum
 import org.eclipse.app4mc.amalthea.model.SenderReceiverRead
@@ -142,8 +145,6 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
-import org.eclipse.app4mc.amalthea.model.InterProcessTrigger
-import org.eclipse.app4mc.amalthea.model.CustomEventTrigger
 
 class CustomItemProviderService {
 
@@ -1527,8 +1528,13 @@ class CustomItemProviderService {
 		switch notification.getFeatureID(typeof(TaskAllocation)) {
 			case AmaltheaPackage::TASK_ALLOCATION__TASK,
 			case AmaltheaPackage::TASK_ALLOCATION__SCHEDULER:
-				// update the label but not the content tree
+				// update the label
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS,
+			case AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS:
+				// update the content tree
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+			
 		}
 		return list
 	}
@@ -1687,6 +1693,17 @@ class CustomItemProviderService {
 			val feature = object?.eContainingFeature()
 			val s1 = if(feature == null) "" else feature.name
 			return s1
+		} else {
+			return defaultText
+		}
+	}
+
+	/*****************************************************************************
+	 * 						SchedulingParametersItemProvider
+	 *****************************************************************************/
+	def static String getSchedulingParametersItemProviderText(Object object, String defaultText) {
+		if (object instanceof SchedulingParameters) {
+			return "Parameters (Scheduling)";
 		} else {
 			return defaultText
 		}
