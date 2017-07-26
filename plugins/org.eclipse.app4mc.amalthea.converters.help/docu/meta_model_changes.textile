@@ -443,4 +443,4 @@ table(classic){margin-left:40px}.
 |trigger|TriggerEvent|EventActivation|SW model|renamed to triggeringEvents|
 |priority|integer|Process|SW model|priority attribute is removed|
 |osekTaskGroup|integer|Task|SW model|osekTaskGroup attribute is removed|
-|quartzes|List of Quartz| <ul><li>Core</li><li>ECU</li><li>HwComponent</li><li>Memory</li><li>Microcontroller</li><li>Network</li></ul>|Hardware Model|All Quartz elements from these model elements are moved to HwSystem element. <br><b>Note:</b>If there are nested Quartz elements, they are flattened and stored inside a single list|
+|quartzes|List of Quartz| <ul><li>Core</li><li>ECU</li><li>HwComponent</li><li>Memory</li><li>Microcontroller</li><li>Network</li></ul>|Hardware Model|All Quartz elements from these model elements are moved to HwSystem element. <br/><b>Note:</b>If there are nested Quartz elements, they are flattened and stored inside a single list|
