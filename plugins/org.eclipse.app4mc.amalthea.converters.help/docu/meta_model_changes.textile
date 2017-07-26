@@ -409,13 +409,6 @@ table(classic){margin-left:40px}.
 |ModeValueListEntry|Stimuli model|ModeValueListEntry class is having two sub-classes ModeValue and ModeValueConjunction|ModeValue type is associated to all the ModeValueListEntry elements|
 
 
-*Below references are removed from storage format (amxmi):*
-
-table(classic){margin-left:40px}. 
-| *_Variable Name (version APP4MC 0.8.0)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
-|quartzes|List<Quartz>| <ul><li>Core</li><li>ECU</li><li>HwComponent</li><li>Memory</li><li>Microcontroller</li><li>Network</li></ul>|Hardware Model|All Quartz elements from these model elements are moved to HwSystem element. <br><b>Note:</b>If there are nested Quartz elements, they are flattened and stored inside a single list|
-
-
 *Below Classes are removed:*
 
 table(classic){margin-left:40px}. 
@@ -450,3 +443,4 @@ table(classic){margin-left:40px}.
 |trigger|TriggerEvent|EventActivation|SW model|renamed to triggeringEvents|
 |priority|integer|Process|SW model|priority attribute is removed|
 |osekTaskGroup|integer|Task|SW model|osekTaskGroup attribute is removed|
+|quartzes|List of Quartz| <ul><li>Core</li><li>ECU</li><li>HwComponent</li><li>Memory</li><li>Microcontroller</li><li>Network</li></ul>|Hardware Model|All Quartz elements from these model elements are moved to HwSystem element. <br><b>Note:</b>If there are nested Quartz elements, they are flattened and stored inside a single list|
