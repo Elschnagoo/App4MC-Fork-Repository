@@ -31,56 +31,40 @@ An example for a requirement is the Deadline for a task. The Deadline is specifi
 
 h3. Runnable Sequencing Constraints
 
-These constraints can be used to define execution orders of runnables, or in other words, the dependencies between runnables. These dependencies can result from data exchange or any functional dependency, which is not necessarily visible by other model parameter.
+These constraints can be used to define execution orders of runnables or, in other words, the dependencies between runnables. These dependencies can result from data exchange or any functional dependency that is not necessarily visible by other model parameters.
 
 The following requirements can be specified with this constraint:
-* Execution sequence of runnables A->B, meaning A has to be finished before B starts
-* Scope on certain process(es), when a runnable is executed multiple times in different process contexts
-* Binding of runnables within a process (loosely, strict)
-* Position, where sequence should start (start sequence), end (end sequence) or at any position
-* Occurrence attribute for multiple preceding/succeeding runnables (all or at least one)
-
-
-A __RunnableSequencingConstraint__ contains a list of __ProcessRunnableGroup__ elements and an enumeration describing the basic rule for the sequencing. Each runnable group collects references to the runnables that should be sequenced. The sequence is defined by the order of the runnable groups within the sequencing constraint. The order of the runnables references within a group is unimportant. To sequence two runnables it is necessary to create the __RunnableSequencingConstraint__ and two __ProcessRunnableGroups__, each referencing a runnable.
-
-It is possible to describe that a set of runnables have to be executed before or after another runnable or set of runnables. For that it is possible to put more than one runnable reference in a group. As already mentioned, the order of the referenced runnables within a __ProcessRunnableGroup__ is unimportant. 
-
-The __RunnableOrderType__ provides different sequencing modes. The mode "loose binding" allows the execution of runnables (that are not part of the constraint) between the runnables of the sequencing-constraint. In addition to that, the option "lose binding & unspecified start runnable" allows to start with any runnable from the sequence, but the sequence itself must not be violated.
-
-The "strict binding" option is the opposite of "loose binding". It says that the runnables must execute in direct order, without any interrupt by another runnable. With "start-", "any-" and "end sequence" it can be defined if the runnables of the constraint should be executed at the start, at the end or at any position in the process. 
-
-A runnable-sequencing-constraint is independent of the processes that are executing the runnables. With a scope it is possible to define that a sequencing-constraint checks only the runnables of a set of processes or just one process. The scope can be defined individually for each runnable.
+* Execution sequence of runnables A  ->B, meaning A has to be finished before B starts
+* Scope on certain process/processes, when a runnable is executed multiple times in different process contexts
+* Succession of runnables within a process (strict, loose)
+* Position of sequence within a process (start, end, any position)
 
 !../pictures/model_constraints_runnable_sequencing.png!
 
-The following picture shows a __RunnableSequencingConstraint__. The constraint has two runnable groups, visualized by the circles. In this case there is just one runnable in each group.
-The runnables in the group must be executed in the order of the group. Basically there is no restriction on which core or process the runnables are executed. It is important that the order is correct, and that the runnable of one group terminates before the runnable of the next group starts.
+A __RunnableSequencingConstraint__ contains a list of __ProcessRunnableGroup__ elements and an enumeration __RunnableOrderType__ describing the basic rule for the sequencing. In general, a runnable sequencing constraint is independent of the processes that execute the runnables. Via the attribute "processScope" it is possible to define that a sequencing constraint is only valid for runnables within just one process or a set of processes.
+
+The __ProcessRunnableGroups__ contain references to runnables that should be sequenced. The sequence is defined by the order of the runnable groups within the sequencing constraint. The order of the runnable references within a group is undefined.
+To sequence two runnables it is consequently necessary to create a __RunnableSequencingConstraint__ with two __ProcessRunnableGroups__, each referencing one of the runnables.
+To describe that a set of runnables have to be executed before or after another runnable or set of runnables, it is possible to put more than one runnable reference in a group. As already mentioned, the order of the referenced runnables within a __ProcessRunnableGroup__ is unimportant. 
+
+The following picture visualises a __RunnableSequencingConstraint__ and multiple possible runtime situations. The constraint has two runnable groups, each depicted by an ellipsis. In this example, there is just one runnable in each group. The runnables in the groups must be executed in the order of the group ("R1" before "R2"). There is no restriction in which process context the runnables are executed. It is important that the order is correct and that the runnable of one group terminates before the runnable of the next group starts. The exemplary runtime situations shown in the lower part of the figure visualise situations that satisfy this constraint (blue) and those who violate the constraint (red).
 
 !../pictures/model_constraints_runnable_sequencing_basic.png!
 
-The __RunnableSequencingConstraint__ in this figure has two processes as a scope in its second group. That means that the runnable "R3" is allowed to be executed on the processes "P1" and "P3". But it is only expected one time!
+The __RunnableSequencingConstraint__ in the next figure has two processes set as a scope in its second group. That means that the runnable "R3" is allowed to be executed on the processes "P1" or "P3" (blue). But it is only expected to be executed one time in between (red)!
 
 !../pictures/model_constraints_runnable_sequencing_scope.png!
 
-Each runnable-sequencing-constraint has a runnable-order-type.
-This type can be:
-* loose binding
-* loose binding & unspecified start runnable
-* strict binding & any sequence
-* strict binding & start sequence
-* strict binding & end sequence
- 
-The meaning of "loose binding" is that the runnables of a constraint do not have to follow each other directly, they can be also separated by other runnables that are not part of the sequencing-constraint.
-"Unspecified start runnable" means that the order of runnables must be fulfilled (this is always the case) but it does not matter which of the runnables is the runnable to start with.
-So with an "unspecified start runnable" the sequence can be:
-* "R1" -> "R3" -> "R4" 
-* "R3" -> "R4" -> "R1"
-* "R4" -> "R1" -> "R3"
+Each __RunnableSequencingConstraint__ has a __RunnableOrderType__. It provides the following sequencing modes:
+* successor
+* immediateSuccessorAnySequence
+* immediateSuccessorEndSequence
+* immediateSuccessorStartSequence
 
-The opposite of loose binding is strict binding. It means that, if the runnables are executed within the same process, they have to be executed directly after each other. It is not allowed that other runnables than the sequencing runnables execute within this sequence.
-The mode "start sequence" means that the first runnable has to be at the beginning of its process. Assuming that all runnables are executed on the same processes, the combination "strict binding & start sequence" means that all runnables of the constraint have to be executed in the correct order at the beginning of the process.
-The mode "end sequence" is like "start sequence" but here the last runnable must be executed at the end of the last process of the runnable sequence.
-
+The meaning of the mode "successor" is that the runnable groups of a sequencing constraint do not have to follow each other directly, i.e., runnables that are not part of the constraint can be executed in between.
+In contrast to this, the modes starting with "immediateSuccessor" express that the runnables referenced by the runnable groups must execute in direct order, so without any runnable in between. With "StartSequence", "AnySequence" and "EndSequence" it is further constrained that the runnables of the constraint have to be executed at the beginning, at the end or at any position in a process.
+Assuming that all runnables are executed on the same process, the mode "immediateSuccessorStartSequence" means that all runnables of the constraint have to be executed in the correct order at the beginning of the process.
+The mode "immediateSuccessorEndSequence" is like "immediateSuccessorStartSequence", but here the runnable sequence must be executed at the end of the process.
 
 h3. Data Age Constraints
 
