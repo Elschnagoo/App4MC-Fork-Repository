@@ -16,7 +16,7 @@ A stimulus is responsible to activate processes. The following different types a
 * *EventStimulus*: Activation triggered by an event, defined in the event model.<br/>Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
 * *InterProcessStimulus*: Activations based on an explicit inter-process activation.<br/>Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
 * *PeriodicStimulus*: Periodic activations based on an offset and a recurrence.
-* *VariableRateStimulus*: Periodic activations based on other events, like rotation speed dependency
+* *VariableRateStimulus*: Periodic activations based on other events, like rotation speed
 * *SingleStimulus*: Activates the process only once
 * *SporadicStimulus*: Sporadic activations of processes
 * *SyntheticStimulus*:  Activations periodically triggered depending on a defined list of trigger times.

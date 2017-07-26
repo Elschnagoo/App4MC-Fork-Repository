@@ -30,6 +30,7 @@
       <toc	file="toc/user_sw_develop-toc.xml"				primary="false"> </toc>
       <toc	file="toc/user_sw_runtime-toc.xml"				primary="false"> </toc>
       <toc	file="toc/user_concepts-toc.xml"				primary="false"> </toc>
+      <toc	file="toc/user_scheduling-toc.xml"				primary="false"> </toc>
       <toc	file="toc/user_channel-toc.xml"					primary="false"> </toc>
       <toc	file="toc/user_memorysection-toc.xml"			primary="false"> </toc>
 
