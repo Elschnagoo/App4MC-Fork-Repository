@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.eclipse.app4mc.amalthea.example.hwmodel</name>
+	<name>app4mc.example.modeling.state_machine</name>
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
+	 
 		<buildCommand>
 			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
 			<triggers>auto,full,incremental,</triggers>
 			<arguments>
 				<dictionary>
 					<key>LaunchConfigHandle</key>
-					<value>&lt;project&gt;/.externalToolBuilders/org.eclipse.app4mc.amalthea.example.hwmodel.launch</value>
+					<value>&lt;project&gt;/.externalToolBuilders/app4mc.example.modeling.state_machine.launch</value>
 				</dictionary>
 				<dictionary>
 					<key>incclean</key>

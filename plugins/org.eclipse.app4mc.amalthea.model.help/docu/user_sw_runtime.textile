@@ -9,12 +9,12 @@ To model the observed behavior in the AMALTHEA model there are schedulable units
 
 In the following sections, a high level description of the individual elements of a software description that define the dynamic behavior are presented.
 
+
 h4. Processes (Tasks or ISRs)
 
 !{width: 1000px}../pictures/user_sw_runtime_gantt_task.png!
 
 Processes represent executable units that are managed by an operating system scheduler. A process is thus the smallest schedulable unit managed by the operating system. Each process also has its own name space and resources (including memory) protected against use from other processes. In general, two different kinds of processes can be distinguished: task and Interrupt Service Routine (ISR). Latter is a software routine called in case of an interrupt. ISRs have normally higher priority than tasks and can only be suspended by another ISR which presents a higher priority than the one running. In the Gantt chart above, a task called 'TASK_InputProcessing' can be seen. All elements that run within the context of a process are described in the following sections.
-
 
 h5. Runnables
 
@@ -42,13 +42,15 @@ h5. Semaphore
 
 The main functionality of a semaphore is to control simultaneous use of a single resource by several entities, e.g. scheduling of requests, multiple access protection.
 
+
 h4. Stimulation
 
-Before, we described the dynamic behavior of a specific process instance. In general however, a process is not only activated once but many times. The action of activating a process is called stimulation. The following stimulation patterns can thereby be distinguished:
+Before, we described the dynamic behavior of a specific process instance. In general however, a process is not only activated once but many times. The action of activating a process is called stimulation. The following stimulation patterns are typically used for specification:
 * Single: single activation of a process
-* Periodic: periodic activation of a process with a specific frequency
 * Sporadic: recurring activation of a process without following a specific pattern  
+* Periodic: periodic activation of a process with a specific frequency
+* VariableRate: periodic activations based on other events, like rotation speed
 * Event: activation triggered by a __TriggerEvent__
-* Custom: custom activation (free textual description)
+* InterProcess: activations based on an explicit inter-process trigger
 
 !../pictures/model__stimuli.png!

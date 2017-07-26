@@ -24,7 +24,13 @@ h3. Allocations
 
 h4. SchedulerAllocation
 
-The __SchedulerAllocation__ describes the allocation of  a __Scheduler__ to cores. This class consists of references to the respective __Scheduler__, which specified within an existing OS model, and a core, which is specified in a hardware model. Further attributes, which may be used to supply additional information, e.g. for a code generator, may be described by the containment attributeList.
+The __SchedulerAllocation__ describes the allocation of  a __Scheduler__ to cores. This class consists of references to the respective __Scheduler__, which is specified within an existing OS model, and a core, which is specified in a hardware model. Schedulers with algorithm "Grouping" are not allocated since they take no decisions and produce no overhead. 
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __scheduler__ | The scheduler (that is specified in more detail). |
+| __responsibility__ | Defines the cores the scheduler is responsible for. On these cores the scheduler takes decisions. Multiple schedulers can be responsible for one core because of hierarchies. Child-schedulers only take decisions, if they parent-schedulers allows them to (e.g. hypervisors with virtual machines which execute an own operating system). Tasks allocated to this scheduler execute on the intersection between coreAffinity and the responsibility of the scheduler. If this is null the configuration is invalid. If the intersection results in multiple cores, the task can migrate. |
+| __executingCore__ | Defines on which core the scheduling algorithm is actually executed to consider the overhead.  |
 
 h4. RunnableAllocation
 
@@ -32,7 +38,15 @@ The __RunnableAllocation__ is a specialization of the __ExecutableAllocation__. 
 
 h4. TaskAllocation
 
-The __TaskAllocation__ is used to associate a __Task__ with a __TaskScheduler__. The attributes 'schedulingParameters' and 'parameterExtensions' are used to assign values for this specific allocation.
+The __TaskAllocation__ is used to associate a __Task__ with its __TaskScheduler__.
+
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+|_. Name |_. Description |
+| __task__ | The task  (that is specified in more detail). |
+| __scheduler__ | Specifies the unique allocation to the scheduler of the task. |
+| __coreAffinity__ | Specifies the possible cores the task can run. If only one core is specified, the task runs on this core. If multiple cores are specified, the task can migrate between the cores. The task executes on the intersection between coreAffinity and the responsibility of the scheduler. If this is null the configuration is invalid. If the intersection results in multiple cores, the task can migrate. |
+| __schedulingParameters__ |/2. Used to assign scheduling parameters for this specific allocation. For details see chapter "Scheduling Parameters" in OS Model. |
+| __parameterExtensions__ |
 
 h4. ISRAllocation
 

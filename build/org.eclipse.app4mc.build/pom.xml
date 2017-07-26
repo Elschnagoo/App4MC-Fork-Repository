@@ -33,15 +33,15 @@
 		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.mapping</module>
 		<module>../../examples/org.eclipse.app4mc.amalthea.example.democar.split</module>
 		<module>../../examples/org.eclipse.app4mc.amalthea.example.hwmodel</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.scheduler</module>
+		<module>../../examples/app4mc.example.modeling</module>
+		<module>../../examples/app4mc.example.modeling.scheduler</module>
 		
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling2</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.client_server</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.feedback_loop</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.periodic</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.state_machine</module>
-		<module>../../examples/org.eclipse.app4mc.amalthea.example.modeling.state_machine_feedback_loop</module>
+		<module>../../examples/app4mc.example.modeling2</module>
+		<module>../../examples/app4mc.example.modeling.client_server</module>
+		<module>../../examples/app4mc.example.modeling.feedback_loop</module>
+		<module>../../examples/app4mc.example.modeling.periodic</module>
+		<module>../../examples/app4mc.example.modeling.state_machine</module>
+		<module>../../examples/app4mc.example.modeling.state_machine_feedback_loop</module>
 		<module>../../examples/org.eclipse.app4mc.amalthea.example.workflow</module>
 		
 		<module>../../plugins/org.eclipse.app4mc.amalthea.emf.util</module>
