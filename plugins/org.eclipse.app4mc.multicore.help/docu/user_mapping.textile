@@ -43,28 +43,31 @@ The _Heuristic Data Flow Graph (DFG) load balancing_ algorithm aims at achieving
 
 The first step in this algorithm is to determine the most complex @Task@ (usually representing the critical path) and allocate it to the best fit core of a hardware platform. The runtime for each @Task@ will now be estimated for every @Core@ within the @System@ and allocated to a @Core@ which has the smallest increase of the longest overall runtime within all cores.
 
-One of the major benefits of this algorithm is its very low runtime. The information which is processed by this mapping strategy and, as such, has to be present in the input models, is shown in table [tab:mapLoadBalILP].
+One of the major benefits of this algorithm is its very low runtime. The information which is processed by this mapping strategy and, as such, has to be present in the input models, is shown in "Table 2":#tab:table2.
+
 
 h4(#sec:mapLoadBalILP). Mapping Strategy 2: ILP based load balancing
 
-A comparatively simple ILP based strategy to allocate tasks to processors while minimizing the total execution time is presented in . This method supports multiple processors with the same processing speed (e.g. homogeneous processors) and it does not consider any dependencies between the tasks (e.g. waiting for the results of the predecessor).
+This section described a comparatively simple ILP based strategy for allocating tasks to processors while minimizing the total execution time. This method supports multiple processors with the same processing speed (e.g. homogeneous processors) and it does not consider any dependencies between the tasks (e.g. waiting for the results of the predecessor).
 
-As described by the author, load balancing within this method is achieved by minimizing the highest execution duration <span class="math">C_{max}</span> of all <span class="math">m</span> processing units with <span class="math">n</span> tasks (see eq. [eq:evalIlpLoadBalanceMin] and [eq:evalIlpLoadBalanceSubject]). The variable <span class="math">x_{ij}</span> is set to <span class="math">1</span> if a task <span class="math">j</span> is allocated to processor <span class="math">i</span> and <span class="math">0</span> otherwise. Eq. [eq:evalIlpLoadBalanceLimit] guarantees that each task is allocated to exactly one processor while [eq:evalIlpLoadBalanceInteger] limits variables <span class="math">x_{ij}</span> type to boolean values. The duration of a task <span class="math">j</span> is specified by <span class="math">p_{j}</span>.
+Load balancing within this method is achieved by minimizing the highest execution duration _C_ _~max~_ of all _m_ processing units with _n_ tasks. The variable _x_ _~ij~_ is set to _1_ if a task _j_ is allocated to processor _i_ and _0_ otherwise. The model guarantees that each task is allocated to exactly one processor and limits the variables _x_ _~ij~_ type to boolean values. The duration (execution time) of a task _j_ is specified by _p_ _~j~_.
 
-<span class="math">\begin{aligned}
-{2}
-&amp; \text{minimize} &amp; &amp; C_{max}
-\label{eq:evalIlpLoadBalanceMin} \\
-&amp; \text{subject to} \quad &amp; &amp; \sum_{j=1}^{n}x_{ij}p_j \leq C_{max}, \; i = 1, \ldots, n
-\label{eq:evalIlpLoadBalanceSubject} \\
-&amp; &amp; &amp; \sum_{i=1}^{m}x_{ij}=1, \; j = 1, \ldots, n
-\label{eq:evalIlpLoadBalanceLimit} \\
-&amp; &amp; &amp; x_{ij} \in {0,1}
-\label{eq:evalIlpLoadBalanceInteger}\end{aligned}</span>
+!{width:33.0%;height:auto;}../pictures/mapping/matheq.png(ILP notation for Load Balancing)!
 
-One of the downsides in this algorithm is caused by <span class="math">p_{j}</span> in eq. [eq:evalIlpLoadBalanceSubject] which forces an equal processing duration of a task <span class="math">j</span> on all cores. It is however possible to expand the method to support heterogeneous processors (in this case: processors with different processing speeds) with a minor modification[2]: replacing <span class="math">p_{j}</span> with <span class="math">p_{ij}</span>, i.e. a separate processing duration of task <span class="math">j</span> for every core <span class="math">i</span>, will solve this problem.
+One of the downsides in this algorithm is caused by variable _p_ _~j~_ which forces an equal processing duration of a task _j_ on all cores. It is however possible to expand the method to support heterogeneous processors (in this case: processors with different processing speeds) with a minor modification: replacing _p_ _~j~_ with _p_ _~ij~_, i.e. a separate processing duration of task _j_ for every core _i_, will solve this problem.
 
-The minimal amount of information which is required to execute this algorithm is outlined in Table [tab:mapLoadBalILP].
+The minimal amount of information which is required to execute this algorithm is outlined in "Table 2":#tab:table2.
+
+p<(#tab:table2). 
+
+|_. Source Model|_. Element|_. Description|
+|<. HW|<. @Core@|<. A @Core@ represents the target of an allocation, an OS Model with a @Scheduler@ for each @Core@ will be generated.|
+|<. |<. @CoreType@ @Prescaler@ @Quartz@|<. A @Cores@ @Prescaler@, the referenced @Quartz@ and the @CoreTypes@ attribute @CyclesPerTick@ of a @Core@ are used to determine the number of processed @Instructions@ per second.|
+|<. SW|<. @Task@|<. @Tasks@ will be allocated to a @Core@ (over the @Cores@ @Scheduler@)|
+|<. |<. @Runnable@|<. @Runnables@ are derived from a @Tasks@ @TaskRunnableCalls@, their attribute @Instructions@ is used during the load calculation for each @Core@|
+|<. Stimuli|<. @Stimulus@ (@Periodic@)|<. The @Periodic@ Stimulus is used to specify the @Tasks@ activation rate, i.e. the period between its calls|
+
+p=. Table 2
 
 h4(#sec:mapEnergy). Mapping Strategy 3: Minimizing Energy Consumption
 
@@ -86,8 +89,20 @@ This algorithm has been implemented with two constraints:
 * Only multi&#45;core systems may be chosen as target platform, single core is not supported.
 * The algorithm is not meant to be used on heterogeneous cores, i.e. only multiple instances of the same type of core are supported.
 
-Table [tab:mapEnergy] lists the minimal amount of information which has to be present in the input models in order for this mapping strategy to work as well the special annotations which are added to the mapping model.
+"Table 3":#tab:table3 lists the minimal amount of information which has to be present in the input models in order for this mapping strategy to work as well the special annotations which are added to the mapping model.
 
+p<(#tab:table3). 
+
+|_. Source Model|_. Element|_. Description|
+|<. HW|<. @Core@|<. A @Core@ represents the target of an allocation, an OS Model with a @Scheduler@ for each @Core@ will be generated.|
+|<. |<. @CoreType@ @Prescaler@ @Quartz@|<. A @Cores@ @Prescaler@, the referenced @Quartz@ and the @CoreTypes@ attribute @CyclesPerTick@ of a @Core@ are used to determine the number of processed @Instructions@ per second.|
+|<. |<. |<. The @CoreTypes@ attributes (@DoubleValue@) starting with the label _EnEf&#45;Volt&#95;{SomeID}_ and _EnEf&#45;Scale&#95;{SomeID}_ are used to specify the voltage levels, i.e. the performance of a core during a specific voltage.|
+|<. SW|<. @Runnable@|<. @Runnables@ will be distributed on the @Cores@ (over the @Cores@ @Scheduler@), their attribute @Instructions@ is used during the load calculation for each @Core@|
+|<. |<. @Activation@ (@Periodic@)|<. The @Periodic@ activation specifies the recurrence of the @Runnable@. The lowest recurrence is used to specify the overall deadline of all @Runnables@, i.e. the max amount of time for the sum of all @Runnable@ executions.|
+|<. Constraints|<. @Process-Runnable-Group@ @Runnable-Sequencing-Constraint@|<. Are used to determine the executional order of the @Runnables@ as well as their interdependencies|
+|<. Mapping|<. @Runnable-Allocation@ @Custom-Property@ @LongValue@|<. Specifies the selected voltage level and the number of @ExecutionCycles@ at this voltage level.|
+
+p=. Table 3
 
 h3(#sec:mapUtilization). Utilization of the AMALTHEAs Mapping Plugin
 
@@ -145,9 +160,9 @@ Setting one of these values to zero will pass the value of INT&#95;MAX to the so
 
 h4(#sec:mapCreateMapping). Generating a mapping
 
-Depending on the selected mapping strategy, it may be required to create tasks in advance of the mapping algorithm. The method *'Create Tasks'*, which is accessible through the _AMALTHEA Software Models_ file context menu (right click on _<span class="math">\ast</span>.amxmi_ and _<span class="math">\ast</span>.amxmi&#45;sw_ files), is capable of transforming partitioned[3] software models into software models with tasks.
+Depending on the selected mapping strategy, it may be required to create tasks in advance of the mapping algorithm. The method *'Create Tasks'*, which is accessible through the _AMALTHEA Software Models_ file context menu (right click on _<span class="math">\ast</span>.amxmi_ and _<span class="math">\ast</span>.amxmi&#45;sw_ files), is capable of transforming partitioned software models into software models with tasks.
 
-The mapping can be performed once input models with the required amount of information are present[4]. Opening the context menu again (right click on _<span class="math">\ast</span>.amxmi_ and _<span class="math">\ast</span>.amxmi&#45;sw_ files) and selecting *'Perform Mapping'* will open the 'Perform Mapping GUI' (see Figure [fig:mapGUI]).
+The mapping can be performed once input models with the required amount of information are present. Opening the context menu again (right click on _<span class="math">\ast</span>.amxmi_ and _<span class="math">\ast</span>.amxmi&#45;sw_ files) and selecting *'Perform Mapping'* will open the 'Perform Mapping GUI' (see Figure [fig:mapGUI]).
 
 !{width:95.0%;height:auto;}MappingGUI.png(Perform Mapping GUI)!
 Perform Mapping GUI
@@ -160,12 +175,3 @@ The fields within the GUI are described below.
 
 
 fn1. Oj!Algorithms, licensed under the MIT license, see: http://ojalgo.org
-
-
-fn2. Mentioned, among others, in 
-
-
-fn3. A detailed guide on partitioning a model is available in Chapter [chapter:partitioning]
-
-
-fn4. see section [sec:mapImplementation] for detailed information about the mapping strategies and their required amount of information
