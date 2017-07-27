@@ -430,9 +430,9 @@ table(classic){margin-left:40px}.
 table(classic){margin-left:40px}. 
 | *_Variable Name_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |coreAllocation|CoreAllocation|MappingModel|Mapping Model|coreAllocation tag name is renamed to schedulerAllocation. Equivalent of CoreAllocation is SchedulerAllocation element |
-|priority|integer|TaskAllocation|Mapping Model|priority attribute is removed|
+|priority|integer|TaskAllocation|Mapping Model|priority attribute is removed from TaskAllocation and its corresponding value is copied to priority attribute of the SchedulingParameters |
 | xAccessPattern |  String | MemoryType| HW model |xAccessPattern attribute and its value present in MemoryType element are removed from the amxmi file |
-|parameter|AlgorithmParameter|Scheduler| OS model| parameter tag name is changed to parameterExtensions (_Also the new variable Type here is : ParameterExtensions_)|
+|parameter|AlgorithmParameter|Scheduler| OS model| parameter tag name is changed to parameterExtensions (_Also changed variable Type here is : ParameterExtensions_)|
 |scheduleUnitPriority|integer |Scheduler| OS model| scheduleUnitPriority attribute is removed|
 |delay|Time |SchedulingHWUnit| OS model| delay tag is removed|
 |instructions|Instructions |SchedulingSWUnit| OS model| "instructions" tag is removed from the SchedulingSWUnit and each "instructions" tag content is copied as a "default" tag of computationItems (of type RunnableInstructions)  |
@@ -443,4 +443,4 @@ table(classic){margin-left:40px}.
 |trigger|TriggerEvent|EventActivation|SW model|renamed to triggeringEvents|
 |priority|integer|Process|SW model|priority attribute is removed|
 |osekTaskGroup|integer|Task|SW model|osekTaskGroup attribute is removed|
-|quartzes|List of Quartz| <ul><li>Core</li><li>ECU</li><li>HwComponent</li><li>Memory</li><li>Microcontroller</li><li>Network</li></ul>|Hardware Model|All Quartz elements from these model elements are moved to HwSystem element. <br/><b>Note:</b>If there are nested Quartz elements, they are flattened and stored inside a single list|
+|quartzes|List of Quartz| Core<br/>ECU<br/>HwComponent<br/>Memory<br/>Microcontroller<br/>Network|Hardware Model|All Quartz elements from these model elements are moved to HwSystem element. <br/><b>Note:</b>If there are nested Quartz elements, they are flattened and stored inside a single list|
