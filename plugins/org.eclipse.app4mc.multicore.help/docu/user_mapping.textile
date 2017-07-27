@@ -106,14 +106,13 @@ p=. Table 3
 
 h3(#sec:mapUtilization). Utilization of the AMALTHEAs Mapping Plugin
 
-This section provides information on the utilization of the AMALTHEA Mapping Plugin, i.e. its configuration (section [sec:mapConfiguration]) and how to generate mappings (section [sec:mapCreateMapping]).
+This section provides information on the utilization of the AMALTHEA Mapping Plugin, i.e. its configuration (section "Configuration and Preferences":#sec:mapConfiguration ) and how to generate mappings (section "Generating a mapping":#sec:mapCreateMapping ).
 
 h4(#sec:mapConfiguration). Configuration and Preferences
 
-!{width:95.0%;height:auto;}MappingPreferences.png(AMALTHEA Mapping Plugin's Preferences Page)!
-AMALTHEA Mapping Plugin's Preferences Page
+!{width:50.0%;height:auto;}../pictures/mapping/MappingPreferences.png(AMALTHEA Mapping Plugin's Preferences Page)!
 
-The configuration of AMALTHEAs Mapping Plugin can be performed through its preferences page (see Figure [fig:mapPreferences]). It is integrated into the AMALTHEA Tool Platform and can be accessed through the menu bar under 'Window' <span class="math">\rightarrow</span> 'Preferences' <span class="math">\rightarrow</span> 'AMALTHEA Mapping'. The configurable fields, their types and their descriptions are listed below.
+The configuration of AMALTHEAs Mapping Plugin can be performed through its preferences page. It is integrated into APP4MC and can be accessed through the menu bar under 'Window' -> 'Preferences' -> 'AMALTHEA Mapping'. The configurable fields, their types and their descriptions are listed below.
 
 h4(#enabling-verbose-logging). Enabling verbose logging
 
@@ -123,20 +122,18 @@ h4(#specifying-the-output-location). Specifying the output location
 
 The radio buttons under *_'Select output location'_* allow to customize the directory which where newly generated files will be placed into.
 
-<ul>
-<li><p>*Default location* specifies the 'output' directory within the respective projects root folder as destination for all new generated files.</p></li>
-<li><p>*Custom location (relative to project root)* will ensure that all new files are created in a custom directory of the respective projects root folder. The name of this custom directory can be customized by changing the value in the text field below the radio buttons.</p></li>
-<li><p>*Custom location (absolute path)* allows the user to specify a full custom destination for new generated files. The destination can be specified by either changing the value of the text field below the radio buttons, or by using the "Select" button.</p>
-<p>_Hint: It should be noted, that using this option will NOT update the project explorers folder list once the mapping is finished. It should be avoided to use this option in combination with a target location within the eclipse workspace._</p></li>
-</ul>
+* *Default location* specifies the 'output' directory within the respective projects root folder as destination for all new generated files.
+* *Custom location (relative to project root)* will ensure that all new files are created in a custom directory of the respective projects root folder. The name of this custom directory can be customized by changing the value in the text field below the radio buttons.
+* *Custom location (absolute path)* allows the user to specify a full custom destination for new generated files. The destination can be specified by either changing the value of the text field below the radio buttons, or by using the "Select" button.
+_Hint: It should be noted, that using this option will NOT update the project explorers folder list once the mapping is finished. It should be avoided to use this option in combination with a target location within the eclipse workspace._
 
 h4(#selecting-a-mapping-algorithm). Selecting a mapping algorithm
 
 The radio buttons within *_'Select mapping algorithm'_* allow to customize the mapping strategy which should be applied during the mapping process. Currently, there are three valid options:
 
-* *Load balancing for DFG*, described in section [sec:mapLoadBalDFG]
-* *ILP based load balancing*, described in section [sec:mapLoadBalILP]
-* *Energy efficient mapping*, described in section [sec:mapEnergy]
+* *Load balancing for DFG*, described in section "Mapping Strategy 1: Heuristic DFG load balancing":#sec:mapLoadBalDFG
+* *ILP based load balancing*, described in section "Mapping Strategy 2: ILP based load balancing":#sec:mapLoadBalILP
+* *Energy efficient mapping*, described in section "Mapping Strategy 3: Minimizing Energy Consumption":#sec:mapEnergy
 
 h4(#configuring-mathematical-solver). Configuring Mathematical Solver
 
@@ -162,10 +159,9 @@ h4(#sec:mapCreateMapping). Generating a mapping
 
 Depending on the selected mapping strategy, it may be required to create tasks in advance of the mapping algorithm. The method *'Create Tasks'*, which is accessible through the _AMALTHEA Software Models_ file context menu (right click on _<span class="math">\ast</span>.amxmi_ and _<span class="math">\ast</span>.amxmi&#45;sw_ files), is capable of transforming partitioned software models into software models with tasks.
 
-The mapping can be performed once input models with the required amount of information are present. Opening the context menu again (right click on _<span class="math">\ast</span>.amxmi_ and _<span class="math">\ast</span>.amxmi&#45;sw_ files) and selecting *'Perform Mapping'* will open the 'Perform Mapping GUI' (see Figure [fig:mapGUI]).
+The mapping can be performed once input models with the required amount of information are present. Opening the context menu again (right click on _*.amxmi_ and _*.amxmi&#45;sw_ files) and selecting *'Perform Mapping'* will open the 'Perform Mapping GUI'.
 
-!{width:95.0%;height:auto;}MappingGUI.png(Perform Mapping GUI)!
-Perform Mapping GUI
+!{width:66.0%;height:auto;}../pictures/mapping/MappingGUI.png(Perform Mapping GUI)!
 
 The fields within the GUI are described below.
 
