@@ -1,0 +1,170 @@
+
+h2. Mapping
+
+The AMALTHEA partitioning approach supports various features, which can be combined and configured in order to exploit software parallelism in various ways. Besides mandatory model enhancements such as the label access analysis leading to a constraints model with @RunnableSequencingConstraints@ and the cycle elimination to provide directed acyclic graphs, features like activation grouping or the independent graph grouping can be optionally performed. Subsequently, one of two different partitioning approaches can be performed, that cut the created graphs into partitions (@ProcessPrototypes@) that can later be transformed to tasks. These tasks can be efficiently executed in parallel on a target platform, since ordering constraints are considered and task execution time and inter task communications are minimized. On the one hand, the __CPP__ approach performs graph theoretical mechanisms to initially reveal a critical path of @runnables@ (also denoted as nodes) and dependencies (also denoted as edges) from a source node to a sink node. That initial path is assigned to the first partition and branch nodes are identified and assigned to additional tasks with respect to order constraints, execution cycles and communication overheads. This partitioning approach provides an automatic @runnable@ distribution resulting in an efficient parallelism factor with respect to an unbounded number of tasks and causal runnable orders i.e. dependencies. On the other hand, the __ESSP__ partitioning approach performs a timing based partitioning with respect to a bounded number of partitions (configurable by the user), since this case is often mandatory in order to meet system requirements. Both approaches therefore read, adapt and write AMALTHEA specific constraints and software models and express the first approaches within the AMALTHEA platform to automatically exploit system parallelism and utilize parallel resources. The user benefits from not manually assigning runnables to tasks through a complex, error prone and time consuming process but triggering a configurable partitioning approach, that automatically performs that assignment using different algorithms for various optimizing criteria in order to distribute existing software effectively.
+
+
+h3. Usage of Partitioning
+
+The following configuration window shows the different features, which are available for the partitioning process.
+
+!../pictures/Partitioning/Config.png!
+
+Each process is described in the following sections.
+
+In order to start the partitioning, the user is intended can right click on an __.amxmi__ file and select the __Perform Partitioning__ command as shown in the following figure. 
+!../pictures/Partitioning/click_small.png!
+
+Alternatively, a workflow can be written (using the MWE2 eclipse workflow engine) to start the partitioning process and further define various workflows for different inputs and outputs (see example at this partitioning help's end).
+
+With regard to the partitioning configuration, the partitioning process will perform various model adaptations as shown in the following figure and described in the next sections.
+
+!(scale)../pictures/Partitioning/psteps_small.png!
+
+
+h3. Pre-Partitioning
+
+In order to perform the actual partitioning based on <i>DAWG</i>s (directed acyclic weighted graphs), various processing needs to be performed on the given input i.e. a set of runnables with label accesses, execution cycles and activations. Required processing are creating a constraints model with @RunnableSequencingConstraints@ and cycle elimination that creates @AccessPrecedences@ for each dependency that needs to be decomposed from a @RunnableSequencingConstraint@ to eliminate one or more cycles. Further adaptations can create @ProcessPrototypes@ in order to group runnables based on activation references or based on independent graphs.
+
+h4. Activation Analysis
+
+Typical for embedded software, code fragments need to be executed within different intervals i.e. timers, interrupts or events. Sensors or actuators for example must often be read within short intervals for precise and accurate executions. Contrarily, certain processing fragments independent from the system's stability can be executed at greater intervals due to having less impact on the system's performance. Such activations can either be referenced by tasks via the stimulation model or by runnables via activations in the software model. By assessing these model entities and references, temporal classification can be implied. The activation analysis feature creates @ProcessPrototypes@ for each activation and assigns referencing runnables correspondingly via creating @TaskRunnableCalls@ within the @ProcessPrototypes@.
+
+h4. Label Analysis
+
+The label analysis comprises the comparison of read and write accesses of all runnables for identifying dependencies. For example, in case runnable __A__ writes a label and another runnable __B__ reads the same label, runnable __B__ depends on runnable __A__. This dependency is saved as a @RunnableSequencingConstraint@. Such @RunnableSequencingConstraint@ is the basis for performing a __DAG__ (directed acyclic graph) analysis and allows the determination of concurrency due to giving information about fork and join dependencies respectively @runnables@ that can be calculated in parallel. Furthermore, the label access analysis allows deriving memory structure via common data accesses. The @RunnableSequencingConstraints@ are stored within a new or an existing constraints model. An example is given in the following picture:
+
+!../pictures/Partitioning/dependency_new.png!
+
+h4. Cycle Elimination
+
+The cycle elimination is a mandatory step for all subsequent methods and features. Topological and graph theoretical calculations require <i>DAWG</i>s, such that a cycle elimination has to be performed in advance. A cycle may occur in case two runnables share the same resource (label) in both directions, i.e. both runnables read and write the same label, or in case runnable __A__ reads label __BA__ and writes label __AB__ and runnable __B__ reads label __AB__ and writes label __BA__. Furthermore, a cycle may be formed across multiple runnables. For the purpose of finding such cycles, the external __JgraphT__ library has been added to the project, that supports finding all of these cycles. After all cycles have been identified, a specific mechanism (configurable through 'Minimal dependency decompositions for cycle elimination' in the preference page) detects edges (dependencies), which occur in multiple cycles. This mechanism iterates over edges within multiple cycles in descending order, i.e. it starts with an edge, that occurs in most cycles for ensuring minimal edge elimination. In order to retain a dependency that has been selected for elimination, such selected edges are transformed from a @RunnableSequencingConstraint@ to an @AccessPrecedence@. After edge sharing cycles have been decomposed, all cycles that do not share any edges have to be decomposed as well. For each of these cycles an edge can be identified that provides an optimal retaining graph (configurable through 'Increase parallelization potential for cycle elimination result' in the preference page). The following figure shows 7 cycle elimination possibilities with an example graph.
+!(scale)../pictures/Partitioning/cycle_small.png!
+Red transitions indicate edges, that are decomposed into @AccessPrecedences@ for the corresponding solution. Rretaining graphs are shown on the right side of each solution indicated by a dashed rectangle. For illustration purposes, we assume equal execution time for each runnable (letter). Solution 1 and 5 (green dashed rectangles) feature the minimal runtime for two tasks. This assessment is made with respect to topological graph structure respectively the __span__ of a graph (critical path) compared with its __parallelism__.
+
+
+h3. Partitioning Algorithms
+
+Each of the algorithms described in the following creates ProcessPrototypes i.e. task precursor.
+
+h4. Independent Graph Partitioning (GGP)
+
+The independent graph identification process, or also denoted as global graph partitioning, can be executed after the cycle elimination in case the user selected the corresponding entry in the configurations ('Create independent graph partitions'). This methodology looks for graphs or single nodes, that do not share any label with other runnables or complete graphs that do not share labels with other graphs. Such methodology allows forming tasks, which can be totally distributed to either different cores or even to totally different systems as seen in the following figure:
+
+!(scale)../pictures/Partitioning/GGP_small.png!
+
+h4. Critical Path Partitioning (CPP)
+
+The __CPP__ approach considers node weights (i.e. arbitrary computation / execution cycles / instructions of @runnables@) and partitions <i>DAWG</i>s, whereas @runnables@ are equally distributed among an automatically determined number of partitions. The partitioning's objective is to reduce overall execution time and inter-task communication. The subsequent mapping methodology further considers resource constraints (availability of hardware and software resources namely program and data memory). The system's critical path is assigned to the first partition and branches of the graph are subsequently assigned to additional partitions. The approach has been chosen, because the critical path features mandatory sequential ordering, that cannot be computed in parallel. Thus, the weight of a critical path provides a lower bound on the total time to perform all the jobs. A CPP example is shown in the following figure (left = input graph; right = partitioning result):
+
+!(scale)../pictures/Partitioning/LGP_small.png!
+
+h4. Earliest Start Schedule Partitioning (ESSP)
+
+The __ESSP__ partitioning is developed for allowing the user to restrict the number of partitioning. This may be important and useful in very large systems in order to keep the task creation and task inter-communication costs low. The __ESSP__ partitioning balances runnables across partitions with respect to their causal orders. For this purpose, only runnable's @eit@ (earliest initial time) -values are calculated that define the sum of the longest preceding path's instructions. The methodology picks the partition with the lowest schedule length, calculates a set of assignable @runnables@, which predecessors are already scheduled, and assigns a runnable to the current partition that minimizes the schedule length.
+
+h4. Partitioning Example
+
+The following figure illustrates the resulting partitions of the previously described algorithms based on an example graph shown on the left. On the right, the partitioning results are shown for (top) - CPP, (middle) - ESSP configured with 2 partitions and (bottom) - ESSP for 3 partitions.
+
+!(scale)../pictures/Partitioning/partexample.png!
+
+
+h3. Further Features
+
+Two further features provide graph visualizations and a different graph representation through __RunnableSequencingConstraints__.
+
+h4. Applet Generation
+
+The applet generation can be triggered with a different command in the context menu via right-clicking on an __.amxmi__ file. In case the file contains a software model with __runnables__ and a constraints model with __RunnableSequencingConstraints__, a java file will be generated that can be executed as an applet with the help of the __JgraphT__ library. Such an applet visualizes a graph and can be adapted in an applet viewer. The following figure shows such an applet.
+
+!(scale)../pictures/Partitioning/applet_small.png!
+
+h4. Dependency Alternative
+
+This file generation feature focuses on a constraints model approach that features a different dependency representation compared with the result from the label access analysis that always features two __RunnableGroups__ with each one __RunnableGroupEntry__ entity within a __RunnableSequencingConstraint__. The approach can be adapted to feature more __RunnableGroups__ and more __RunnableGroupEntries__ and a less amount of __RunnableSequencingConstraints__, derived from the same graph. An example is expressed in the following figure.
+
+!../pictures/Partitioning/TA_small.png!
+
+h3. Workflow example
+
+The described features can also be triggered by a workflow (Eclipse's MWE2 workflow engine), exemplarily shown in the following code.
+
+bc.. 
+Workflow {
+//basic setup
+loadModule('/System/Resources')
+loadModule('/APP4MC/Workflow')
+
+//Importing needed packages
+importPackage(org.eclipse.app4mc.amalthea.workflow.component)
+importPackage(org.eclipse.app4mc.amalthea.workflow.core)
+importPackage(org.eclipse.app4mc.multicore.partitioning.workflow)
+
+//Configure logging
+addLoggerToConsole("org.eclipse.app4mc.multicore")
+addLoggerToConsole("org.eclipse.app4mc.amalthea.workflow")
+
+print("Starting Workflow ...")
+//general setup
+const BASE = "platform:/resource"
+const PROJECT = BASE + "/org.eclipse.app4mc.amalthea.example.democar.mapping"
+const MODEL_LOCATION1 = PROJECT + "/model/AMALTHEA_Democar_MappingExample.amxmi"
+
+var ctx = new DefaultContext()
+
+//Reader
+var reader = new ModelReader()
+reader.addFileName(MODEL_LOCATION1)
+reader.run(ctx)
+
+//prepartitioning
+var prepart = new PrePartitioningWrkflw()
+prepart.setAa(false)
+prepart.setGgp(false)
+prepart.setMinimEdge(false)
+prepart.setEffEdge(false)
+prepart.run(ctx)
+//result is saved in modelslot prePartitioning
+
+//Writer
+var writer = new ModelWriter()
+writer.setModelSlot("prePartitioning")
+writer.setFileName("prePartitioning")
+writer.setSingleFile(true)
+writer.setOutputDir(PROJECT + "/workflow-output")
+writer.run(ctx)
+
+//partitioning
+var part = new GeneratePartitioning()
+part.setModelLoc(MODEL_LOCATION1);
+part.setModelSlot("prePartitioning")
+part.setPartitioningAlg("essp")
+part.setNumberOfPartitions("4")
+part.run(ctx)
+
+//Writer
+var writer = new ModelWriter()
+writer.setModelSlot("partitioning")
+writer.setFileName("partitioning")
+writer.setSingleFile(true)
+writer.setOutputDir(PROJECT + "/workflow-output")
+writer.run(ctx)
+
+print("Finished Workflow")
+ctx.clear()
+endWorkflow()
+p. 
+
+h3. Plugin dependencies
+
+bc.. 
+org.eclipse.core.runtime,
+org.eclipse.emf.ecore,
+org.eclipse.emf.ecore.xmi,
+org.eclipse.sphinx.emf,
+org.eclipse.ui,
+org.jgrapht,
+org.eclipse.app4mc.amalthea.model,
+org.eclipse.app4mc.multicore.openmapping
+p. 

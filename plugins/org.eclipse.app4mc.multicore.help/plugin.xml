@@ -34,19 +34,23 @@
       </toc>
       
       <toc
-            file="root-dev_partitioning-toc.xml"
+            file="root-user_multicore-toc.xml"
             primary="false">
       </toc>
       <toc
-            file="root-dev_wizard-toc.xml"
+            file="toc/user_partitioning-toc.xml"
             primary="false">
       </toc>
       <toc
-            file="toc/dev_partitioning-toc.xml"
+            file="toc/user_mapping-toc.xml"
             primary="false">
       </toc>
       <toc
             file="toc/tutorial_wizard-toc.xml"
+            primary="false">
+      </toc>
+      <toc
+            file="root-dev_wizard-toc.xml"
             primary="false">
       </toc>
    </extension>
