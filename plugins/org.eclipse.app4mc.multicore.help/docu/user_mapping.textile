@@ -1,18 +1,18 @@
 h2(#chapter:mapping). Mapping
 
-One of the essential steps during embedded software development for multi&#45;core platforms is the mapping from elements of the software to elements of the hardware, e.g. @Tasks@ to @Schedulers@, @Labels@ to @Memorys@ etc. This is usually a non trivial task, as an infinite number of combinations arises if either the software or the hardware becomes very complex. The purpose of AMALTHEAs Mapping Plugin is to determine such a mapping and store it in a _*Mapping Model*_ which will contain the allocations of elements of the _*Software Model*_ to elements of the _*Hardware Model*_.
+One of the essential steps during embedded software development for multi&#45;core platforms is the mapping from elements of the software to elements of the hardware, e.g. @Tasks@ to @Schedulers@, @Labels@ to @Memorys@ etc. This is usually a non trivial task, as an infinite number of combinations arises if either the software or the hardware becomes very complex. The purpose of APP4MCs OpenMapping Plugin is to determine such a mapping and store it in a _*Mapping Model*_ which will contain the allocations of elements of the _*Software Model*_ to elements of the _*Hardware Model*_.
 
 h3(#sec:mapConcept). Concept
 
-The conceptual implementation of AMALTHEAs Mapping Plugin is shown in the following Figure. 
+The conceptual implementation of OpenMapping Plugin is shown in the following Figure. 
 
-!{width:75.0%;height:auto;}../pictures/mapping/MappingToolConcept.png(Concept of the AMALTHEAs Mapping Plugin)!
+!{width:75.0%;height:auto;}../pictures/mapping/MappingToolConcept.png(Concept of the OpenMapping Plugin)!
 
 As shown in the top of this figure, it requires several models to operate. The models for *Software*, *Hardware* and *Constraints* are mandatory while the *Property Constraints* Model is optional.
 
-Using AMALTHEAs Mapping Plugin, the user is able to choose between different mapping strategies. Currently these strategies are split into two categories: _Heuristic methods_ and _Integer Linear Programming (ILP) based methods_. Unlike ILP based methods, Heuristic methods, such as the _Heuristic Data Flow Graph (DFG) load balancing_, will immediately create a mapping.
+Using the OpenMapping Plugin, the user is able to choose between different mapping strategies. Currently these strategies are split into two categories: _Heuristic methods_ and _Integer Linear Programming (ILP) based methods_. Unlike ILP based methods, Heuristic methods, such as the _Heuristic Data Flow Graph (DFG) load balancing_, will immediately create a mapping.
 
-ILP based methods on the other hand will first need to generate an ILP model of the mapping problem according to the selected mapping strategy, e.g. _ILP based load balancing_ or _Energy aware mapping_. Once the ILP model has been created, it will be solved by one of the mathematical _Solvers_. Currently, the open source project Oj!Algo[1] has been used in AMALTHEAs Mapping Plugin. Furthermore, the user can activate an optional MPS generator, which will generate an MPS file containing the ILP problem. This file may be used to solve the ILP problem by external (e.g. commercial) solvers, which tend to be more efficient in solving larger models compared to open source Java implementations.
+ILP based methods on the other hand will first need to generate an ILP model of the mapping problem according to the selected mapping strategy, e.g. _ILP based load balancing_ or _Energy aware mapping_. Once the ILP model has been created, it will be solved by one of the mathematical _Solvers_. Currently, the open source project Oj!Algo[1] has been used in OpenMapping Plugin. Furthermore, the user can activate an optional MPS generator, which will generate an MPS file containing the ILP problem. This file may be used to solve the ILP problem by external (e.g. commercial) solvers, which tend to be more efficient in solving larger models compared to open source Java implementations.
 
 Once a mapping has been determined, it is displayed within the eclipse console and following output models are generated:
 
@@ -22,11 +22,11 @@ Once a mapping has been determined, it is displayed within the eclipse console a
 
 h3(#sec:mapImplementation). Implementation
 
-The following subsections give a short introduction about the different algorithm implementations of AMALTHEAs Mapping Plugin. Section "Task generation":#sec:mapTaskGen describes the task generation method which is used to convert process prototypes into tasks. It is meant to be used by mapping algorithms which do not feature task generation by themselves. Sections "Mapping Strategy 1: Heuristic DFG load balancing":#sec:mapLoadBalDFG and "Mapping Strategy 2: ILP based load balancing":#sec:mapLoadBalILP describe a heuristic and a mathematical load balancing approach for mapping of tasks to cores. Last but not least, a more complex method for energy efficient task mapping with its own task creation algorithm is outlined in section "Mapping Strategy 3: Minimizing Energy Consumption":#sec:mapEnergy.
+The following subsections give a short introduction about the different algorithm implementations of the OpenMapping Plugin. Section "Task generation":#sec:mapTaskGen describes the task generation method which is used to convert process prototypes into tasks. It is meant to be used by mapping algorithms which do not feature task generation by themselves. Sections "Mapping Strategy 1: Heuristic DFG load balancing":#sec:mapLoadBalDFG and "Mapping Strategy 2: ILP based load balancing":#sec:mapLoadBalILP describe a heuristic and a mathematical load balancing approach for mapping tasks to cores. Finally, a more complex method for energy efficient task mapping with its own task creation algorithm is outlined in section "Mapping Strategy 3: Minimizing Energy Consumption":#sec:mapEnergy.
 
 h4(#sec:mapTaskGen). Task generation
 
-The task generation method in AMALTHEAs Mapping Plugin is a pragmatic way to create tasks for other mapping algorithms which require @Tasks@, i.e. are not designed to agglomerate @Runnables@ into @Tasks@ on their own. This step utilizes @ProcessPrototypes@ which are generated by the partitioning plugin (see Chapter *Partitioning*) and transforms them into @Tasks@. Furthermore, it will also create the *_Stimuli Model_* which contains the activation elements for the @Tasks@, i.e. @Periodic@. An overview about the transformed elements and their sources as well as destinations is shown in "Table 1":#tab:table1.
+The task generation method in OpenMapping Plugin is a pragmatic way to create tasks for other mapping algorithms which require @Tasks@, i.e. are not designed to agglomerate @Runnables@ into @Tasks@ on their own. This step utilizes @ProcessPrototypes@ which are generated by the partitioning plugin (see Chapter *Partitioning*) and transforms them into @Tasks@. Furthermore, it will also create the *_Stimuli Model_* which contains the activation elements for the @Tasks@, i.e. @Periodic@. An overview about the transformed elements and their sources as well as destinations is shown in "Table 1":#tab:table1.
 
 p<(#tab:table1). 
 
@@ -71,7 +71,7 @@ p=. Table 2
 
 h4(#sec:mapEnergy). Mapping Strategy 3: Minimizing Energy Consumption
 
-This mapping algorithm is based on the work _"Task Scheduling and Voltage Selection for Energy Minimization"_ from Zhang et al. which presents a framework which aims at minimizing the energy consumption of variable voltage processors executing real time dependent tasks. This method is implemented as a two phase approach which integrates
+This mapping algorithm is based on the work _"Task Scheduling and Voltage Selection for Energy Minimization"_ from Zhang et al. which presents a framework that aims at minimizing the energy consumption of variable voltage processors executing real time dependent tasks. This method is implemented as a two phase approach which integrates
 
 * *Task assignment*: allocating each task to a core
 * *Task ordering*: ordering the tasks in due consideration of their constraints and deadlines
@@ -104,7 +104,7 @@ p<(#tab:table3).
 
 p=. Table 3
 
-h3(#sec:mapUtilization). Utilization of the AMALTHEAs Mapping Plugin
+h3(#sec:mapUtilization). Utilization of the OpenMapping Plugin
 
 This section provides information on the utilization of the AMALTHEA Mapping Plugin, i.e. its configuration (section "Configuration and Preferences":#sec:mapConfiguration ) and how to generate mappings (section "Generating a mapping":#sec:mapCreateMapping ).
 
@@ -112,7 +112,7 @@ h4(#sec:mapConfiguration). Configuration and Preferences
 
 !{width:50.0%;height:auto;}../pictures/mapping/MappingPreferences.png(AMALTHEA Mapping Plugin's Preferences Page)!
 
-The configuration of AMALTHEAs Mapping Plugin can be performed through its preferences page. It is integrated into APP4MC and can be accessed through the menu bar under 'Window' -> 'Preferences' -> 'AMALTHEA Mapping'. The configurable fields, their types and their descriptions are listed below.
+The configuration of OpenMapping Plugin can be performed through its preferences page. It is integrated into APP4MC and can be accessed through the menu bar under 'Window' -> 'Preferences' -> 'AMALTHEA Mapping'. The configurable fields, their types and their descriptions are listed below.
 
 h4(#enabling-verbose-logging). Enabling verbose logging
 
@@ -157,7 +157,7 @@ Setting one of these values to zero will pass the value of INT&#95;MAX to the so
 
 h4(#sec:mapCreateMapping). Generating a mapping
 
-Depending on the selected mapping strategy, it may be required to create tasks in advance of the mapping algorithm. The method *'Create Tasks'*, which is accessible through the _AMALTHEA Software Models_ file context menu (right click on _<span class="math">\ast</span>.amxmi_ and _<span class="math">\ast</span>.amxmi&#45;sw_ files), is capable of transforming partitioned software models into software models with tasks.
+Depending on the selected mapping strategy, it may be required to create tasks in advance of the mapping algorithm. The method *'Create Tasks'*, which is accessible through the _AMALTHEA Software Models_ file context menu (right click on _*.amxmi_ and _*.amxmi&#45;sw_ files), is capable of transforming partitioned software models into software models with tasks.
 
 The mapping can be performed once input models with the required amount of information are present. Opening the context menu again (right click on _*.amxmi_ and _*.amxmi&#45;sw_ files) and selecting *'Perform Mapping'* will open the 'Perform Mapping GUI'.
 
