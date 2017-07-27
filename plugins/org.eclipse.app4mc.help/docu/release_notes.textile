@@ -1,6 +1,28 @@
 h1. Release Notes
 
 
+h2. Eclipse APP4MC 0.8.1 (Jul 2017)
+
+General
+* Model changes (extension and harmonization)
+* Improved model handling
+* New tooling: EMF Graphical Viewer
+
+Model handling
+* Model migration support (0.8.0 -> 0.8.1)
+* New support for compressed model files (zip)
+* More back references
+
+Model changes
+* Extended Schedulers (hierarchical, reservation based)
+* Extend Semaphore definition (types)
+* Consistent naming of Triggers, Activations and Stimuli
+* New elements for data driven computation (conditions, triggers)
+
+_For details see "Release 0.8.1 issues":https://projects.eclipse.org/projects/technology.app4mc/releases/0.8.1/bugs_
+
+
+
 h2. Eclipse APP4MC 0.8.0 (Apr 2017)
 
 General
