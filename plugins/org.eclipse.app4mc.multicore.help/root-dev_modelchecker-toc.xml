@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?NLS TYPE="org.eclipse.help.toc"?>
-
-<toc label="Dev Guide Modelchecker Root" link_to="../org.eclipse.app4mc.help/mainToc.xml#app4mc.docu.dev.multicore">
-   <link toc="toc/modelChecker-toc.xml"/>
-  
-</toc>

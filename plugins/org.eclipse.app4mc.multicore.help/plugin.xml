@@ -22,17 +22,7 @@
       <toc
             file="toc/tutorial_taskvis-toc.xml"
             primary="false">
-      </toc>
-      <toc
-            file="toc/modelChecker-toc.xml"
-            primary="false">
-      </toc>
-      
-      <toc
-            file="root-dev_modelchecker-toc.xml"
-            primary="false">
-      </toc>
-      
+      </toc> 
       <toc
             file="root-user_multicore-toc.xml"
             primary="false">
@@ -46,11 +36,11 @@
             primary="false">
       </toc>
       <toc
-            file="toc/tutorial_wizard-toc.xml"
+            file="toc/user_modelChecker-toc.xml"
             primary="false">
-      </toc>
+      </toc>  
       <toc
-            file="root-dev_wizard-toc.xml"
+            file="toc/user_wizard-toc.xml"
             primary="false">
       </toc>
    </extension>

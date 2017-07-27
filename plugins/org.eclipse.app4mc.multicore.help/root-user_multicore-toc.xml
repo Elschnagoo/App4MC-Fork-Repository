@@ -4,5 +4,7 @@
 <toc label="User Guide Multicore Root" link_to="../org.eclipse.app4mc.help/mainToc.xml#app4mc.docu.multicore">
    <link toc="toc/user_partitioning-toc.xml"/>
    <link toc="toc/user_mapping-toc.xml"/>
+   <link toc="toc/user_modelChecker-toc.xml"/>
+   <link toc="toc/user_wizard-toc.xml"/>
   
 </toc>
