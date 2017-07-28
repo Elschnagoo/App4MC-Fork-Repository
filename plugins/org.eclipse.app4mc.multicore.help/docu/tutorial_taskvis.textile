@@ -16,19 +16,19 @@ Creating such a Model can either be done manually or by following the Tutorial o
 
 *Step 1*
 
-!../pictures/TaskVisualizer/01-taskvis.png!
+!../pictures/task-visualizer/01-taskvis.png!
 
 Right-click the file containing the System you would like to visualize and select "Visualize Task Execution" from the "AMALTHEA Multicore Features" context menu to open the Task Visualization Overview.
 
 *Step 2*
 
-!../pictures/TaskVisualizer/02-taskvis-overview.png!
+!../pictures/task-visualizer/02-taskvis-overview.png!
 
 The Task Visualization Overview provides basic information about the software as well as the hardware of the system. The upper part summarizes the allocations of Tasks to Cores, along with the number of total instructions per Task, the period between a tasks activation, the core these tasks are allocated to, as well as the Worst Case Execution Time (WCET) in terms of ps and percentages of the cores total utilization. THe lower part summaraizes the available cores along with the number of computatable instructions per second (IPS) and their utilization (with 1.0 being 100%). Continue by clicking next to advance to the the Task Dependencie Overview. 
 
 *Step 3*
 
-!../pictures/TaskVisualizer/03-taskvis-dependencies.png!
+!../pictures/task-visualizer/03-taskvis-dependencies.png!
 
 The Task Dependencies Overview visualizes the task graph with its inter-task dependencies as well as the communication delay. For simplicity, several restrictions are applied to the considered dependencies as illustrated in the box "Relations Filter".    
 
@@ -38,7 +38,7 @@ For this tutorial, we activate the task precedence consideration and advance to 
 
 *Step 4*
 
-!../pictures/TaskVisualizer/04-taskvis-scheduling.png!
+!../pictures/task-visualizer/04-taskvis-scheduling.png!
 
 The Scheduling Selection screen allows to fine-tune the execution visualization and to specify a scheduling algorithm. Until now, the following scheduling approaches are implemented:
 
@@ -54,7 +54,7 @@ To continue with this tutorial, set all values as shown in the figure and click 
 
 *Step 5*
 
-!../pictures/TaskVisualizer/05-taskvis-traceview.png!
+!../pictures/task-visualizer/05-taskvis-traceview.png!
 
 Finally, a Gantt-Chart illustrating the execution of each core is shown. By double-clicking the tab "TraceView", you can maximize the window to full-screen.
 

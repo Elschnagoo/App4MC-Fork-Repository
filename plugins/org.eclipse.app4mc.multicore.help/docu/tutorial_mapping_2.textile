@@ -6,7 +6,7 @@ The following section will describe how to calculate a mapping with the AMALTHEA
 
 *Step 1*
 
-!../pictures/ExampleMapping/09-preferences.png!
+!../pictures/tutorial-mapping/09-preferences.png!
 
 The first step is to change the mapping algorithm into the "Energy efficient mapping" algorithm. Do this by clicking on "Window" and then "Preferences" in the menu bar. The preferences window will open and you are able to configure the mapping plugin on its preferences page under the point "AMALTHEA Mapping".
 Select "Energy efficient mapping (Experimental)" and close the page using the OK button on the bottom.
@@ -21,7 +21,7 @@ Similar to the previous example, the name of the project as well as the path hav
 
 *Step 4*
 
-!../pictures/ExampleMapping/10Inspect.png!
+!../pictures/tutorial-mapping/10-inspect.png!
 
 Once the mapping is performed, two additional files will be generated in the "output" folder. The mapping can be found in the file "AMALTHEA_????_MappingExample_withTasks_mapping.amxmi-mapping". To inspect this file, just double-click on it to open a content tree explorer.
 Additional information about the mapping is provided in the console.
