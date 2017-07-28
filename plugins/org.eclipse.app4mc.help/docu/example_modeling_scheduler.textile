@@ -1,7 +1,19 @@
-h3. Modeling Example "Scheduler"
+h3. Modeling Examples "Scheduler"
 
-TODO
+The following elements are used to illustrate the structure of the example schedulers:
 
-hierarchical
+!../pictures/ExampleModeling/modeling_example_scheduler_legend.png!
 
-..
+
+h4. Hierarchical Scheduler
+
+In this example the main scheduler realizes a *Priority Round Robin* strategy. The main scheduler works as a global scheduler that schedules subsystems like virtual machines or hypervisor partitions. Each partition realizes an *OSEK* scheduling system. In this case the main scheduler is responsible for both cores but only running on one core. Each *OSEK* subsystem is responsible for exactly one core but only if the main scheduler grants the core usage. The *OSEK* subsystems then decide on a FPP basis, which task can run. The coreAffinity for the tasks is not needed, since their scheduler is only responsible for one core.
+
+!../pictures/ExampleModeling/modeling_example_scheduler_hierarchical.png!
+
+
+h4. Partitioned_FPP Scheduler
+
+In this example a custom FPP scheduler named *Partitioned_FPP* is representing a global scheduler. It schedules tasks on a FPP basis but with the additional constraint that it’s group must have budget left (has similarities to QNX’s adaptive partitioned scheduling). The scheduler "Grouping" is only there to assign budgets to a logical task group and define no mapping or responsibility at all. Therefore in the taskAllocation only priority and coreAffinity are specified. The coreAffinity of tasks in the same group can differ, even task migration is possible if a task’s affinity is *CoreA* as well as *CoreB*.
+
+!../pictures/ExampleModeling/modeling_example_scheduler_partitioned_fpp.png!
