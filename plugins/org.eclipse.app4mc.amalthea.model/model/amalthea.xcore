@@ -43,7 +43,7 @@ import java.nio.charset.StandardCharsets
 // ===============================================================================
 // ===============================================================================
 
- class Amalthea extends BaseObject {
+class Amalthea extends BaseObject {
  	
  	derived readonly String version get {
 		return "0.8.1"

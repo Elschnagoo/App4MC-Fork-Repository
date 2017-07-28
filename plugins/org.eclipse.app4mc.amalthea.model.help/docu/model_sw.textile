@@ -191,8 +191,8 @@ h4. Semaphore Access
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
 | __SemaphoreAccess__ | Represents an access of a Semaphore. The type of access is defined using the __SemaphoreAccessEnum__ values. The __Semaphore__ itself is set as a reference to an existent one. |
-| __access__ | <ul><li> *request*: TODO </li><li> *exclusive*: TODO </li><li> *release*: TODO </li></ul> |
-| __waitingBehaviour__ | <ul><li> *active*: TODO </li><li> *passive*: TODO </li></ul> |
+| __access__ | Defines the type of access (request, exclusive, release). |
+| __waitingBehaviour__ | Defines if the process is blocking the core when it waits (active) or not (passive). |
 
 
 h4. Mode Label Access
@@ -334,7 +334,7 @@ The AMALTHEA Software Model contains a list of __OS-Event__ objects. These can b
 
 !../pictures/model_sw_osevents.png!
 
-With __Wait Event__ the process waits for a number of events (defined in the __Event Mask__) to be set. Here it can be defined if the process waits just for one of the __OS-Events__ (maskType = OR) or for all of them (maskType = AND). The __waiting behavior__ defines if the process is blocking the core when it waits (active) or not (passive). 
+With __Wait Event__ the process waits for a number of events (defined in the __Event Mask__) to be set. Here it can be defined if the process waits just for one of the __OS-Events__ (maskType = OR) or for all of them (maskType = AND). The __waiting behaviour__ defines if the process is blocking the core when it waits (active) or not (passive). 
 
 __Set Event__ sets/fires a list of __OS-Events__. Here it is possible to define a context for the __OS-Event__. If a process is referenced, then the __OS-Events__ are set just for this process.
 

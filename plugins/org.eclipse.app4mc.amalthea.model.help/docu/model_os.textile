@@ -58,7 +58,7 @@ An overview regarding *Reservation Servers* is given in the lecture "Resource Re
 
 h4. Scheduling Parameters
 
-TODO typical values are predefined, if not set values are null !
+The class SchedulingParameters contains predefined parameters that are relevant for many scheduling algorithms. If a parameter is not used in a given context the value is null. Additional parameters can be added as key-value pairs of class ParameterExtensions.
 
 !../pictures/model_os_scheduling_parameters.png!
 
