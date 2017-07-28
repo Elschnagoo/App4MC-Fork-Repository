@@ -2,5 +2,30 @@
 h3. Scheduling
 
 
-h4. TODO
+h4. Scheduler to Core assignment
+
+We distinguish between physical mapping and responsibility 
+* *Executing Core* means a scheduler produces algorithmic overhead on a core
+* *Responsibility* means a scheduler controls the scheduling on core(s)
+	
+!../pictures/user-scheduling-sched-allocation.png!
+
+
+h4. Task to Scheduler assignment
+
+Tasks have a core affinity and are assigned to a scheduler
+* *Core Affinity* Specifies the possible cores the task can run on. If only one core is specified, the task runs on this core. If multiple cores are specified, the task can migrate between the cores.
+* *Scheduler* specifies the unique allocation of the task to a scheduler.
+
+The scheduling parameters are determined by the scheduling algorithm and are only valid for a specific task - scheduler combination. Therefore the parameters are specified in the TaskAllocation object.
+
+!../pictures/user-scheduling-task-allocation.png!
+
+
+h4. Scheduler hierarchies
+
+Schedulers can be arranged in a hierarchy. If set, the parent scheduler takes the initial decision and delegates to a child-scheduler.  If the child-scheduler is not a grouping of tasks, it can take scheduling decisions if permission is granted by the parent.
+The scheduling parameters are determined by the scheduling algorithm of the parent scheduler. Therefore the relevant parameters in the hierarchical context are specified in the (intermediate) SchedulerAssociation object.
+
+!../pictures/user-scheduling-hierarchy.png!
 
