@@ -27,6 +27,30 @@ All rights reserved.
       <import plugin="org.eclipse.ui.ide"/>
       <import plugin="org.sqlite.jdbc"/>
       <import plugin="org.eclipse.help"/>
+      <import plugin="org.eclipse.sirius.common"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.app4mc.amalthea.sphinx"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.sphinx.emf"/>
+      <import plugin="org.eclipse.app4mc.amalthea.model" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius" version="3.1.4" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.ui" version="3.1.4" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.e4.core.services" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase"/>
+      <import plugin="org.eclipse.sirius.common.acceleo.aql"/>
+      <import plugin="org.eclipse.app4mc.amalthea.model.edit"/>
+      <import plugin="org.eclipse.app4mc.amalthea.sphinx.ui"/>
+      <import plugin="org.eclipse.sirius.common.acceleo.mtl"/>
+      <import plugin="org.eclipse.sirius.common.acceleo.mtl.ide"/>
+      <import plugin="org.eclipse.sirius.diagram"/>
+      <import plugin="org.eclipse.sirius.ecore.extender"/>
+      <import plugin="org.eclipse.sirius.diagram.ui"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor"/>
+      <import plugin="org.eclipse.sirius.common.ui"/>
+      <import plugin="org.eclipse.sirius.ext.base"/>
+      <import plugin="org.eclipse.sirius.diagram.ui.ext"/>
+      <import plugin="org.eclipse.sirius.common.ui.ext"/>
+      <import plugin="org.eclipse.app4mc.amalthea.editors.sirius" version="0.7.1" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -38,6 +62,20 @@ All rights reserved.
 
    <plugin
          id="org.eclipse.app4mc.amalthea.editors.help"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.editors.sirius"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.editors.sirius.design"
          download-size="0"
          install-size="0"
          version="0.0.0"

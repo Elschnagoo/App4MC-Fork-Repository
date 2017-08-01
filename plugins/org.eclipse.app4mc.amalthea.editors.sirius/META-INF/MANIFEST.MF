@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Amalthea Sirius
+Bundle-SymbolicName: org.eclipse.app4mc.amalthea.editors.sirius;singleton:=true
+Bundle-Version: 0.8.1.qualifier
+Bundle-Activator: org.eclipse.app4mc.amalthea.editors.sirius.Activator
+Bundle-Vendor: Eclipse.org
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.sirius.common,
+ org.eclipse.emf.ecore,
+ org.eclipse.app4mc.amalthea.sphinx,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.sphinx.emf,
+ org.eclipse.app4mc.amalthea.model;bundle-version="0.8.1",
+ org.eclipse.sirius;bundle-version="3.1.4",
+ org.eclipse.sirius.ui;bundle-version="3.1.4",
+ org.eclipse.e4.core.services;bundle-version="2.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Export-Package: org.eclipse.app4mc.amalthea.editors.sirius,
+ org.eclipse.app4mc.amalthea.editors.sirius.command,
+ org.eclipse.app4mc.amalthea.editors.sirius.helper,
+ org.eclipse.app4mc.amalthea.editors.sirius.integration

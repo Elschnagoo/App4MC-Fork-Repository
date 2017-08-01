@@ -100,6 +100,8 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.help</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.help</module>
 		<module>../../plugins/org.eclipse.app4mc.validation.help</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.editors.sirius</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.editors.sirius.design</module>
 
 		<!-- Features -->
 
@@ -137,8 +139,8 @@
 
 		<!-- Other -->
 
-		<module>../org.eclipse.app4mc.converters.p2repo</module>
-		<module>../org.eclipse.app4mc.p2repo</module>
+		<!--<module>../org.eclipse.app4mc.converters.p2repo</module>
+		<module>../org.eclipse.app4mc.p2repo</module>-->
 		<module>../org.eclipse.app4mc.platform.product</module>
 		<module>../org.eclipse.app4mc.target</module>
 
