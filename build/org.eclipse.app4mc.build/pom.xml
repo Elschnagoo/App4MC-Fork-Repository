@@ -139,8 +139,8 @@
 
 		<!-- Other -->
 
-		<!--<module>../org.eclipse.app4mc.converters.p2repo</module>
-		<module>../org.eclipse.app4mc.p2repo</module>-->
+		<module>../org.eclipse.app4mc.converters.p2repo</module>
+		<module>../org.eclipse.app4mc.p2repo</module>
 		<module>../org.eclipse.app4mc.platform.product</module>
 		<module>../org.eclipse.app4mc.target</module>
 
