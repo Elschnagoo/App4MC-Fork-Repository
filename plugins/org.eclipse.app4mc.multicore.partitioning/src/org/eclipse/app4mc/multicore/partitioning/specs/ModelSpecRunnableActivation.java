@@ -7,8 +7,7 @@
  *
  * Contributors:
  *     Dortmund University of Applied Sciences and Arts - initial API and implementation
- *
- ******************************************************************************/
+ *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.specs;
 
 import org.eclipse.app4mc.amalthea.model.Activation;
