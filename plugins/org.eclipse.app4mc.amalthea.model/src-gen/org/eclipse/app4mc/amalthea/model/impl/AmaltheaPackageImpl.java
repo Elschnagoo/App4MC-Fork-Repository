@@ -14052,8 +14052,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		channelEClass.getESuperTypes().add(this.getAbstractMemoryElement());
 		channelEClass.getESuperTypes().add(this.getIDisplayName());
 		modeLabelEClass.getESuperTypes().add(this.getAbstractMemoryElement());
-		modeLabelEClass.getESuperTypes().add(this.getIAnnotatable());
-		modeLabelEClass.getESuperTypes().add(this.getIReferable());
 		modeLabelEClass.getESuperTypes().add(this.getIDisplayName());
 		sectionEClass.getESuperTypes().add(this.getReferableBaseObject());
 		runnableItemEClass.getESuperTypes().add(this.getBaseObject());

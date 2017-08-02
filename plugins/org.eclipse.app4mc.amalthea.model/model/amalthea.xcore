@@ -3144,7 +3144,7 @@ class Channel extends AbstractMemoryElement, IDisplayName
 }
 
 
-class ModeLabel extends AbstractMemoryElement, IAnnotatable, IReferable, IDisplayName
+class ModeLabel extends AbstractMemoryElement, IDisplayName
 {
 	
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
