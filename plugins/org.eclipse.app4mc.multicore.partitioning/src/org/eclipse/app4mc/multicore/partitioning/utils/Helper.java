@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2016 Dortmund University of Applied Sciences and Arts and others.
+ * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.utils;
 
@@ -57,17 +57,15 @@ public class Helper {
 		for (final RunnableItem ra : r.getRunnableItems()) {
 			if (ra instanceof RunnableInstructions) {
 				final RunnableInstructions ri = (RunnableInstructions) ra;
-				rt += ri.getDefault() instanceof InstructionsConstant
-						? ((InstructionsConstant) ri.getDefault()).getValue()
-						: ri.getDefault() instanceof InstructionsDeviation ? (((InstructionsDeviation) ri.getDefault())
-								.getDeviation().getLowerBound().getValue()
-								+ ((InstructionsDeviation) ri.getDefault()).getDeviation().getUpperBound().getValue())
-								/ 2 : 0;
+				rt += ri.getDefault() instanceof InstructionsConstant ? ((InstructionsConstant) ri.getDefault()).getValue()
+						: ri.getDefault() instanceof InstructionsDeviation
+								? (((InstructionsDeviation) ri.getDefault()).getDeviation().getLowerBound().getValue()
+										+ ((InstructionsDeviation) ri.getDefault()).getDeviation().getUpperBound().getValue()) / 2
+								: 0;
 			}
 		}
 		if (rt == 0) {
-			PartLog.getInstance().log(
-					"No instructions constant / deviation found at Runnable " + r.getName() + ". Assuming 1.", null);
+			PartLog.getInstance().log("No instructions constant / deviation found at Runnable " + r.getName() + ". Assuming 1.", null);
 			final InstructionsConstant ic = AmaltheaFactory.eINSTANCE.createInstructionsConstant();
 			ic.setValue(1);
 			final RunnableInstructions ri = AmaltheaFactory.eINSTANCE.createRunnableInstructions();
@@ -129,6 +127,55 @@ public class Helper {
 		return rt + getInstructions(r);
 	}
 
+	/**
+	 * creates a ProcessPrototype with all runnables
+	 *
+	 * @param swm
+	 */
+	public void checkTRCsVsAllRunnables(final SWModel swm) {
+		if (getAllTRCs(swm).size() < swm.getRunnables().size()) {
+			final ProcessPrototype pp = AmaltheaFactory.eINSTANCE.createProcessPrototype();
+			pp.setName("AllRunnables");
+			final EList<TaskRunnableCall> alltrcs = new BasicEList<TaskRunnableCall>();
+			for (final Runnable r : swm.getRunnables()) {
+				final TaskRunnableCall trc = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
+				trc.setRunnable(r);
+				alltrcs.add(trc);
+			}
+			pp.getRunnableCalls().addAll(alltrcs);
+			swm.getProcessPrototypes().add(pp);
+			PartLog.getInstance().log("Created AllRunnablesPP with " + alltrcs.size() + " TRCs");
+		}
+	}
+
+	/**
+	 * Checks if all runnables within the given software model reference an
+	 * activation
+	 *
+	 * @param swm
+	 *
+	 * @return false if any runnable has no activation reference, true otherwise
+	 */
+	public boolean allRunnablesReferActivation(final SWModel swm) {
+		for (final Runnable r : swm.getRunnables()) {
+			if (null == r.getFirstActivation()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 *
+	 * @return all taskrunnablecalls across processprototypes
+	 */
+	public EList<TaskRunnableCall> getAllTRCs(final SWModel swm) {
+		final EList<TaskRunnableCall> trcs = new BasicEList<TaskRunnableCall>();
+		for (final ProcessPrototype pp : swm.getProcessPrototypes()) {
+			trcs.addAll(pp.getRunnableCalls());
+		}
+		return trcs;
+	}
 
 	/**
 	 * calculates the longest runtime of a runnable according to all succeeding
@@ -173,10 +220,9 @@ public class Helper {
 				for (final RunnableItem ri2 : runnable2.getRunnableItems()) {
 					if (ri2 instanceof LabelAccess) {
 						final LabelAccess la2 = (LabelAccess) ri2;
-						if (la1.getData().equals(la2.getData()) && ((la1.getAccess().equals(LabelAccessEnum.READ)
-								&& la2.getAccess().equals(LabelAccessEnum.WRITE))
-								|| (la1.getAccess().equals(LabelAccessEnum.WRITE)
-										&& la2.getAccess().equals(LabelAccessEnum.READ)))) {
+						if (la1.getData().equals(la2.getData())
+								&& ((la1.getAccess().equals(LabelAccessEnum.READ) && la2.getAccess().equals(LabelAccessEnum.WRITE))
+										|| (la1.getAccess().equals(LabelAccessEnum.WRITE) && la2.getAccess().equals(LabelAccessEnum.READ)))) {
 							return la1.getData();
 						}
 					}
@@ -288,20 +334,18 @@ public class Helper {
 	public SWModel updatePPsFirstLastActParams(final SWModel swm) {
 		for (final ProcessPrototype pp : swm.getProcessPrototypes()) {
 			if (pp.getRunnableCalls().size() > 0) {
-				if (pp.getFirstRunnable() == null
-						|| pp.getFirstRunnable() != pp.getRunnableCalls().get(0).getRunnable()) {
+				if (pp.getFirstRunnable() == null || pp.getFirstRunnable() != pp.getRunnableCalls().get(0).getRunnable()) {
 					pp.setFirstRunnable(pp.getRunnableCalls().get(0).getRunnable());
 				}
-				if (pp.getLastRunnable() == null || pp.getLastRunnable() != pp.getRunnableCalls()
-						.get(pp.getRunnableCalls().size() - 1).getRunnable()) {
+				if (pp.getLastRunnable() == null || pp.getLastRunnable() != pp.getRunnableCalls().get(pp.getRunnableCalls().size() - 1).getRunnable()) {
 					pp.setLastRunnable(pp.getRunnableCalls().get(pp.getRunnableCalls().size() - 1).getRunnable());
 				}
 			}
-			if (pp.getActivation() == null && pp.getRunnableCalls().get(0).getRunnable().getFirstActivation() != null) {
+			if (null == pp.getActivation() && 0 < pp.getRunnableCalls().size() && pp.getRunnableCalls().get(0).getRunnable().getFirstActivation() != null) {
 				pp.setActivation(pp.getRunnableCalls().get(0).getRunnable().getFirstActivation());
 				// TODO: handle multiple activations
 			}
-			else if (pp.getRunnableCalls().get(0).getRunnable().getFirstActivation() == null) {
+			else if (pp.getRunnableCalls().size() > 0 && pp.getRunnableCalls().get(0).getRunnable().getFirstActivation() == null) {
 				PartLog.getInstance().log("Runnable " + pp.getRunnableCalls().get(0).getRunnable().getName()
 						+ " has no activation, this might be a problem for the mapping process.");
 			}
@@ -321,15 +365,12 @@ public class Helper {
 		sb.append(String.format("%2S%10S%16S%6S", " #", "PP", "Instructionssum", "#TRCs") + " TRCs\n");
 		sb.append("******************************************************\n");
 		for (final ProcessPrototype pp : processPrototypes) {
-			sb.append(String.format("%2s%10s%16s%6s", i++, pp.getName(), getPPInstructions(pp),
-					pp.getRunnableCalls().size()) + " ");
+			sb.append(String.format("%2s%10s%16s%6s", i++, pp.getName(), getPPInstructions(pp), pp.getRunnableCalls().size()) + " ");
 			// sb.append("ProcessPrototype " + pp.getName() + "(" +
 			// getPPInstructions(pp) + ") : ");
 			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
 				sb.append(String.format("%30s",
-						trc.getRunnable().getName().substring(0,
-								trc.getRunnable().getName().length() > 29 ? 29 : trc.getRunnable().getName().length())
-								+ " "));
+						trc.getRunnable().getName().substring(0, trc.getRunnable().getName().length() > 29 ? 29 : trc.getRunnable().getName().length()) + " "));
 			}
 			sb.append("\n");
 		}
@@ -351,17 +392,21 @@ public class Helper {
 		return instrSum;
 	}
 
+	/**
+	 * @param pp
+	 * @return double sum of all runnbles' instructions multiplied with PP's
+	 *         periodic activation in seconds
+	 */
 	public double getPPIntrSumActRel(final ProcessPrototype pp) {
 		long instrSum = 0;
 		for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
 			instrSum += getInstructions(trc.getRunnable());
 		}
 		// mpis = multiplier in seconds
-		double mpis = 0;
+		double mpis = 1;
 		if (pp.getActivation() instanceof PeriodicActivation) {
 			final PeriodicActivation pact = (PeriodicActivation) pp.getActivation();
-			if (null != pact.getMax().getValue() && null != pact.getMin().getValue() && null != pact.getMax().getUnit()
-					&& null != pact.getMin().getUnit()) {
+			if (null != pact.getMax().getValue() && null != pact.getMin().getValue() && null != pact.getMax().getUnit() && null != pact.getMin().getUnit()) {
 				mpis = (pact.getMax().getValue().doubleValue() + pact.getMin().getValue().doubleValue()) / 2;
 			}
 			mpis *= getTimeUnit(pact);
@@ -370,6 +415,10 @@ public class Helper {
 		return instrSum;
 	}
 
+	/**
+	 * @param pact
+	 * @return double fraction representing the time unit of the given period
+	 */
 	public double getTimeUnit(final PeriodicActivation pact) {
 		switch (pact.getMax().getUnit()) {
 			case MS:
@@ -386,6 +435,36 @@ public class Helper {
 				break;
 		}
 		return 0;
+	}
+
+	/**
+	 * @param rscl
+	 * @return true if all RunnableSequencingConstraints have two groups and at
+	 *         least one runnable in each
+	 */
+	public boolean AllRSCsHave2ValidEntries(final EList<RunnableSequencingConstraint> rscl) {
+		for (final RunnableSequencingConstraint rsc : rscl) {
+			if (null == rsc.getRunnableGroups().get(0) || null == rsc.getRunnableGroups().get(1) || 1 > rsc.getRunnableGroups().get(0).getRunnables().size()
+					|| 1 > rsc.getRunnableGroups().get(1).getRunnables().size()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+
+	/**
+	 * @param swm
+	 * @return true if all Runnables are called once (single task runnable call)
+	 */
+
+	public boolean tRCsAreConsist(final SWModel swm) {
+		for (final Runnable r : swm.getRunnables()) {
+			if (r.getRunnableCalls().size() > 1) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }
