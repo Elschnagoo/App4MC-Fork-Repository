@@ -1,14 +1,16 @@
 /*******************************************************************************
- * Copyright (c) 2016 Dortmund University of Applied Sciences and Arts and others.
+ * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.utils;
+
+import java.util.ArrayList;
 
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
@@ -16,8 +18,8 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
-import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.SWModel;
@@ -27,6 +29,7 @@ import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * This class creates ProcessPrototypes and including taskRunnableCalls
@@ -52,6 +55,7 @@ public class CheckActivations {
 	 */
 	public void createPPs(final SWModel swm, final StimuliModel Stim, final IProgressMonitor monitor) {
 		this.stimu = Stim;
+		checkHarmonicActivations(swm.getActivations());
 		// if there is a Stimuli model, there also must be tasks, that reference
 		// the activations; correspondingly, activations must be created and
 		// referenced by runnables
@@ -93,7 +97,8 @@ public class CheckActivations {
 					assert null != ref;
 					for (final CallSequenceItem csi : ((CallSequence) geb).getCalls()) {
 						if (csi instanceof TaskRunnableCall) {
-							((TaskRunnableCall) csi).getRunnable().getActivations().add(ref);	//TODO: handle multiple activations
+							((TaskRunnableCall) csi).getRunnable().getActivations().add(ref);
+							// TODO: handle multiple activations
 						}
 					}
 				}
@@ -101,6 +106,35 @@ public class CheckActivations {
 		}
 		createPPs(swm, monitor);
 	}
+
+	/**
+	 * checks whether all periodic activations are harmonic
+	 *
+	 * @return true if periodic activations are harmonic
+	 */
+	public boolean checkHarmonicActivations(final EList<Activation> acts) {
+		final ArrayList<Long> pacts = new ArrayList<>();
+		for (final Activation act : acts) {
+			if (act instanceof PeriodicActivation) {
+				final PeriodicActivation pa = (PeriodicActivation) act;
+				pacts.add((pa.getMin().getValue().longValue() + pa.getMax().getValue().longValue()) / 2);
+			}
+			else {
+				PartLog.getInstance().log(act.getName() + " is not a periodic activation and is ignored for schedulability analysis.");
+			}
+		}
+		// Collections.sort(pacts, Collections.reverseOrder());
+		for (int i = 0; i < pacts.size(); i++) {
+			final Long currentAct = pacts.get(i);
+			for (int j = i; j < pacts.size(); j++) {
+				if (currentAct % pacts.get(j) > 0) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 
 	/**
 	 * The createPP method without any stimuli parameter creates
@@ -126,7 +160,8 @@ public class CheckActivations {
 				pp.setActivation(swm.getActivations().get(act));
 				// for (int r = 0; r < swm.getRunnables().size(); r++) {
 				for (final Runnable r : swm.getRunnables()) {
-					assert null != r.getFirstActivation();		//TODO: handle multiple activations
+					assert null != r.getFirstActivation();
+					// TODO: handle multiple activations
 					if (null != r.getFirstActivation()) {
 						if (r.getFirstActivation().equals(swm.getActivations().get(act))) {
 							final TaskRunnableCall trc = instance.createTaskRunnableCall();
@@ -140,9 +175,8 @@ public class CheckActivations {
 					}
 				}
 				if (pp.getRunnableCalls().size() == 0) {
-					PartLog.getInstance()
-							.log("There is an activation that is not referenced by any runnable (will be ignored) "
-									+ pp.getActivation().getName(), null);
+					PartLog.getInstance().log("There is an activation that is not referenced by any runnable (will be ignored) " + pp.getActivation().getName(),
+							null);
 				}
 				else {
 					swm.getProcessPrototypes().add(pp);
