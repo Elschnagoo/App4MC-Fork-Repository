@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.utils;
 
-import java.util.ArrayList;
-
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
@@ -29,7 +27,6 @@ import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.common.util.EList;
 
 /**
  * This class creates ProcessPrototypes and including taskRunnableCalls
@@ -55,7 +52,6 @@ public class CheckActivations {
 	 */
 	public void createPPs(final SWModel swm, final StimuliModel Stim, final IProgressMonitor monitor) {
 		this.stimu = Stim;
-		checkHarmonicActivations(swm.getActivations());
 		// if there is a Stimuli model, there also must be tasks, that reference
 		// the activations; correspondingly, activations must be created and
 		// referenced by runnables
@@ -106,35 +102,6 @@ public class CheckActivations {
 		}
 		createPPs(swm, monitor);
 	}
-
-	/**
-	 * checks whether all periodic activations are harmonic
-	 *
-	 * @return true if periodic activations are harmonic
-	 */
-	public boolean checkHarmonicActivations(final EList<Activation> acts) {
-		final ArrayList<Long> pacts = new ArrayList<>();
-		for (final Activation act : acts) {
-			if (act instanceof PeriodicActivation) {
-				final PeriodicActivation pa = (PeriodicActivation) act;
-				pacts.add((pa.getMin().getValue().longValue() + pa.getMax().getValue().longValue()) / 2);
-			}
-			else {
-				PartLog.getInstance().log(act.getName() + " is not a periodic activation and is ignored for schedulability analysis.");
-			}
-		}
-		// Collections.sort(pacts, Collections.reverseOrder());
-		for (int i = 0; i < pacts.size(); i++) {
-			final Long currentAct = pacts.get(i);
-			for (int j = i; j < pacts.size(); j++) {
-				if (currentAct % pacts.get(j) > 0) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-
 
 	/**
 	 * The createPP method without any stimuli parameter creates
