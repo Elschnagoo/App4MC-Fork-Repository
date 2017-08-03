@@ -11,10 +11,12 @@
 package org.eclipse.app4mc.multicore.partitioning.utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
+import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
@@ -362,10 +364,10 @@ public class Helper {
 		final StringBuffer sb = new StringBuffer();
 		short i = 0;
 		sb.append("******************************************************\n");
-		sb.append(String.format("%2S%10S%16S%6S", " #", "PP", "Instructionssum", "#TRCs") + " TRCs\n");
+		sb.append(String.format("%2S%22S%16S%6S", " #", "PP", "Instructionssum", "#TRCs") + " TRCs\n");
 		sb.append("******************************************************\n");
 		for (final ProcessPrototype pp : processPrototypes) {
-			sb.append(String.format("%2s%10s%16s%6s", i++, pp.getName(), getPPInstructions(pp), pp.getRunnableCalls().size()) + " ");
+			sb.append(String.format("%2s%22.21s%16.15s%6s", i++, pp.getName(), getPPInstructions(pp), pp.getRunnableCalls().size()) + " ");
 			// sb.append("ProcessPrototype " + pp.getName() + "(" +
 			// getPPInstructions(pp) + ") : ");
 			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
@@ -467,4 +469,33 @@ public class Helper {
 		return true;
 	}
 
+	/**
+	 * checks whether all periodic activations are harmonic
+	 *
+	 * @return true if periodic activations are harmonic
+	 */
+	public boolean activationsAreHarmonic(final EList<Activation> acts) {
+		final ArrayList<Long> pacts = new ArrayList<>();
+		for (final Activation act : acts) {
+			if (act instanceof PeriodicActivation) {
+				final PeriodicActivation pa = (PeriodicActivation) act;
+				pacts.add((pa.getMin().getValue().add(pa.getMax().getValue())).longValue() / 2);
+			}
+			else {
+				PartLog.getInstance().log(act.getName() + " is not a periodic activation and is ignored for harmonic activation analysis.");
+			}
+		}
+		Collections.sort(pacts, Collections.reverseOrder());
+		if (pacts.size() > 1) {
+			for (int i = 0; i < pacts.size(); i++) {
+				final Long currentAct = pacts.get(i);
+				for (int j = i; j < pacts.size(); j++) {
+					if (currentAct % pacts.get(j) > 0) {
+						return false;
+					}
+				}
+			}
+		}
+		return true;
+	}
 }
