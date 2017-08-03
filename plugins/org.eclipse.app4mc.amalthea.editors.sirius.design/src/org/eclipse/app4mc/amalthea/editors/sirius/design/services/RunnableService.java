@@ -45,32 +45,29 @@ public class RunnableService {
 	private List<Label> getLabelAccessesForRunnableItems(final List<RunnableItem> items,
 			final LabelAccessEnum accessType) {
 		final List<Label> result = new ArrayList<>();
-		if (null != items) {
-			final TreeIterator<EObject> iter = EcoreUtil.getAllContents(items);
-			while (iter.hasNext()) {
-				final EObject item = iter.next();
-				if (item instanceof LabelAccess && ((LabelAccess) item).getAccess().equals(accessType)) {
-					result.add(((LabelAccess) item).getData());
-				}
+		final TreeIterator<EObject> iter = EcoreUtil.getAllContents(items);
+		while (iter.hasNext()) {
+			final EObject item = iter.next();
+			if (item instanceof LabelAccess && ((LabelAccess) item).getAccess().equals(accessType)) {
+				result.add(((LabelAccess) item).getData());
 			}
 		}
 		return result;
 	}
 
 	public List<Runnable> getCommunicationForRunnable(final Runnable runnable) {
-		System.out.println("Getting communication for Runnable " + runnable.getName());
 		final List<Runnable> result = new ArrayList<>();
-		final TreeIterator<EObject> iter = EcoreUtil.getAllContents(runnable.getRunnableItems());
-		while (iter.hasNext()) {
-			final EObject item = iter.next();
-			if (item instanceof LabelAccess && ((LabelAccess) item).getAccess().equals(LabelAccessEnum.WRITE)) {
-				final Label label = ((LabelAccess) item).getData();
-				if (null != label) {
-					for (final LabelAccess labelAccess : label.getLabelAccesses()) {
-						if (labelAccess != item && labelAccess.getAccess().equals(LabelAccessEnum.READ)) {
-							System.out.println("Communication found! " + runnable.getName() + "->" + label.getName()
-									+ "->" + ((Runnable) labelAccess.eContainer()).getName());
-							result.add((Runnable) labelAccess.eContainer());
+		if (null != runnable) {
+			final TreeIterator<EObject> iter = EcoreUtil.getAllContents(runnable.getRunnableItems());
+			while (iter.hasNext()) {
+				final EObject item = iter.next();
+				if (item instanceof LabelAccess && ((LabelAccess) item).getAccess().equals(LabelAccessEnum.WRITE)) {
+					final Label label = ((LabelAccess) item).getData();
+					if (null != label) {
+						for (final LabelAccess labelAccess : label.getLabelAccesses()) {
+							if (labelAccess != item && labelAccess.getAccess().equals(LabelAccessEnum.READ)) {
+								result.add((Runnable) labelAccess.eContainer());
+							}
 						}
 					}
 				}

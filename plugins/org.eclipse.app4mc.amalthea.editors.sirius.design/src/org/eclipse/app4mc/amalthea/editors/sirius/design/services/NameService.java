@@ -17,7 +17,7 @@ import org.eclipse.app4mc.amalthea.model.IReferable;
 public class NameService {
 
 	public int lengthOfName(final IReferable referable) {
-		if (null != referable.getName()) {
+		if (null != referable && null != referable.getName()) {
 			return referable.getName().length() + 2;
 		}
 		return 0;

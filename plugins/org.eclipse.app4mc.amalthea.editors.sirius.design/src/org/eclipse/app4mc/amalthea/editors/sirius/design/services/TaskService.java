@@ -30,14 +30,14 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 public class TaskService {
 
 	public boolean checkTaskPreemptive(final Task task) {
-		if (task.getPreemption().equals(Preemption.PREEMPTIVE)) {
+		if (null != task && task.getPreemption().equals(Preemption.PREEMPTIVE)) {
 			return true;
 		}
 		return false;
 	}
 
 	public boolean checkTaskPreemptionUnknown(final Task task) {
-		if (task.getPreemption().equals(Preemption._UNDEFINED_)) {
+		if (null != task && task.getPreemption().equals(Preemption._UNDEFINED_)) {
 			return true;
 		}
 		return false;

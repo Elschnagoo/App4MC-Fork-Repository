@@ -24,17 +24,21 @@ public class LabelService {
 
 	public List<Runnable> getRunnablesFromLabelAccesses(final Label label) {
 		final List<Runnable> result = new ArrayList<>();
-		for (final LabelAccess labelAccess : label.getLabelAccesses()) {
-			result.add((Runnable) labelAccess.eContainer());
+		if (null != label) {
+			for (final LabelAccess labelAccess : label.getLabelAccesses()) {
+				result.add((Runnable) labelAccess.eContainer());
+			}
 		}
 		return result;
 	}
 
 	public List<Runnable> getReadAccessRunnableForLabel(final Label label) {
 		final List<Runnable> result = new ArrayList<>();
-		for (final LabelAccess labelAccess : label.getLabelAccesses()) {
-			if (labelAccess.getAccess().equals(LabelAccessEnum.READ)) {
-				result.add((Runnable) labelAccess.eContainer());
+		if (null != label) {
+			for (final LabelAccess labelAccess : label.getLabelAccesses()) {
+				if (labelAccess.getAccess().equals(LabelAccessEnum.READ)) {
+					result.add((Runnable) labelAccess.eContainer());
+				}
 			}
 		}
 		return result;
@@ -42,9 +46,11 @@ public class LabelService {
 
 	public List<Runnable> getWriteAccessRunnableForLabel(final Label label) {
 		final List<Runnable> result = new ArrayList<>();
-		for (final LabelAccess labelAccess : label.getLabelAccesses()) {
-			if (labelAccess.getAccess().equals(LabelAccessEnum.WRITE)) {
-				result.add((Runnable) labelAccess.eContainer());
+		if (null != label) {
+			for (final LabelAccess labelAccess : label.getLabelAccesses()) {
+				if (labelAccess.getAccess().equals(LabelAccessEnum.WRITE)) {
+					result.add((Runnable) labelAccess.eContainer());
+				}
 			}
 		}
 		return result;
