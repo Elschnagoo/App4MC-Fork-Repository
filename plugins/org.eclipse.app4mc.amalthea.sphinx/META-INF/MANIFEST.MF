@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Amalthea Model Sphinx Extensions
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.sphinx;singleton:=true
-Bundle-Version: 0.8.1.qualifier
+Bundle-Version: 0.8.2.qualifier
 Bundle-Activator: org.eclipse.app4mc.amalthea.sphinx.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore,

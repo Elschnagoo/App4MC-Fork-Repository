@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Multicore Open Mapping
 Bundle-SymbolicName: org.eclipse.app4mc.multicore.openmapping;singleton:=true
-Bundle-Version: 0.8.1.qualifier
+Bundle-Version: 0.8.2.qualifier
 Bundle-Activator: org.eclipse.app4mc.multicore.openmapping.OpenMappingPlugin
 Require-Bundle: org.apache.log4j,
  org.eclipse.core.runtime,
