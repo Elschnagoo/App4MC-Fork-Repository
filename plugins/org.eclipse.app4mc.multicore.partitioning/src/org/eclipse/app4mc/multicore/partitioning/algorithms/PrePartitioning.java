@@ -12,6 +12,7 @@ package org.eclipse.app4mc.multicore.partitioning.algorithms;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
+import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.multicore.partitioning.IParConstants;
 import org.eclipse.app4mc.multicore.partitioning.utils.AsilToPP;
 import org.eclipse.app4mc.multicore.partitioning.utils.CheckActivations;
@@ -109,34 +110,58 @@ public class PrePartitioning {
 
 		// grouping runnables into ProcessPrototypes via ASIL references
 		if (this.asilGroups) {
-			final AsilToPP ac = new AsilToPP(modelCopy.getSwModel());
-			ac.createPPsFromASILsSplit();
-			PartLog.getInstance().log("ASIL grouping:\n" + new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes()));
+			boolean found = false;
+			for (final Runnable r : modelCopy.getSwModel().getRunnables()) {
+				if (null != r.getAsilLevel()) {
+					found = true;
+					break;
+				}
+			}
+			if (found) {
+				final AsilToPP ac = new AsilToPP(modelCopy.getSwModel());
+				ac.createPPsFromASILsSplit();
+				PartLog.getInstance().log("ASIL grouping:\n" + new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes()));
+			}
+			else {
+				PartLog.getInstance().log("No Runnable references an ASIL level. ASIL partitioning stopped.");
+			}
 
 		}
 
 		// grouping runnables into ProcessPrototypes via tag references
 		if (this.tagGroups) {
-			final TagToPP tpp = new TagToPP(modelCopy.getSwModel(), modelCopy.getCommonElements());
-			tpp.createPPsFromTagsSplit();
-			PartLog.getInstance().log("Tag grouping:\n" + new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes()));
+			if (modelCopy.getCommonElements().getTags().size() > 0) {
+				final TagToPP tpp = new TagToPP(modelCopy.getSwModel(), modelCopy.getCommonElements());
+				tpp.createPPsFromTagsSplit();
+				PartLog.getInstance().log("Tag grouping:\n" + new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes()));
+			}
+			else {
+				PartLog.getInstance().log("No Tags found, stopping Runnable Tag partitioning.");
+			}
 		}
 
 		// grouping runnables into ProcessPrototypes via RunnableCorePairing
 		// constraints
 		if (this.rcpGroups) {
-			final RunnableCorePairingToPP rcp = new RunnableCorePairingToPP(modelCopy.getSwModel(), modelCopy.getConstraintsModel());
-			rcp.getPPsFromCorePairingsSplit();
-			PartLog.getInstance().log("RCP grouping:\n" + new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes()));
-			// modelCopy.getSwModel().getProcessPrototypes()
-			// .addAll(new RunnableCorePairingToPP(modelCopy.getSwModel(),
-			// modelCopy.getConstraintsModel()).getPPsFromCorePairings());
+			if (modelCopy.getConstraintsModel().getAffinityConstraints().size() > 0) {
+				final RunnableCorePairingToPP rcp = new RunnableCorePairingToPP(modelCopy.getSwModel(), modelCopy.getConstraintsModel());
+				rcp.getPPsFromCorePairingsSplit();
+				PartLog.getInstance().log("RCP grouping:\n" + new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes()));
+			}
+			else {
+				PartLog.getInstance().log("No Affinity Constraints found, stopping Runnable Core Pairing partitioning.");
+			}
 		}
 
 		// merge Runnable pairings (affinity constraints)
 		if (this.rpGroups) {
-			modelCopy = new MergeRunnablePairings().merge(modelCopy);
-			PartLog.getInstance().log("RP grouping:\n" + new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes()));
+			if (modelCopy.getConstraintsModel().getAffinityConstraints().size() > 0) {
+				modelCopy = new MergeRunnablePairings().merge(modelCopy);
+				PartLog.getInstance().log("RP grouping:\n" + new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes()));
+			}
+			else {
+				PartLog.getInstance().log("No Affinity Constraints found, stopping Runnable Pairing partitioning.");
+			}
 		}
 
 		// generating constraints model representing a graph
@@ -204,6 +229,11 @@ public class PrePartitioning {
 			modelCopy.setSwModel(ggp.getSwm());
 			modelCopy.setConstraintsModel(ggp.getCm());
 			PartLog.getInstance().log("GGP finished. Created ProcessPrototypes: " + ggp.getSwm().getProcessPrototypes().size());
+		}
+
+		if (new Helper().activationsAreHarmonic(modelCopy.getSwModel().getActivations())) {
+			PartLog.getInstance().log(
+					"Activations in this model are harmonic! This allows a more sophisticated essp algorithm, that splits partitions with regard to their activation parameter!");
 		}
 
 		// print prepartitioning result
