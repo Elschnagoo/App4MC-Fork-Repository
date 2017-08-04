@@ -57,6 +57,15 @@ public class OMRunnable {
 
 		return (this.instructions = parseRunnableItems(this.runnableRef.getRunnableItems()));
 	}
+	
+	/**
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		final String out = "Runnable:" + this.getRunnableRef().getName() + "(" + this.getInstructionCount() +")";
+		return out;
+	}
 
 	private long parseRunnableItems(final EList<RunnableItem> runnableItemsList) {
 		// Process all RunnableItems and search for instructions
