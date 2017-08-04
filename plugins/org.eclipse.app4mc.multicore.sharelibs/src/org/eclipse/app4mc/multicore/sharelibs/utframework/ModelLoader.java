@@ -24,6 +24,10 @@ public class ModelLoader {
 	/**
 	 * Democar mapping with task model
 	 */
+	public final static String DEMOCAR_WITH_PP = "../../examples/org.eclipse.app4mc.amalthea.example.democar.mapping/model/AMALTHEA_Democar_MappingExample.amxmi";
+	/**
+	 * Democar mapping with task model
+	 */
 	public final static String DEMOCAR_WITH_TASKS = "../../examples/org.eclipse.app4mc.amalthea.example.democar.mapping/model/AMALTHEA_Democar_MappingExample_withTasks.amxmi";
 	/**
 	 * Democar mapping
