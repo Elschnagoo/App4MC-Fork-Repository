@@ -50,8 +50,10 @@ public class ConsoleOutputHandler {
 	public ConsoleOutputHandler(final String name) {
 		this.name = name;
 		this.console = fetchConsole();
-		if (null != this.console) {
+		if (null != this.console && PlatformUI.isWorkbenchRunning()) {
 			this.outStream = this.console.newMessageStream();
+		} else {
+			this.outStream = null;
 		}
 	}
 
