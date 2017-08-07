@@ -6,9 +6,9 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Dortmund University of Applied Sciences and Arts - initial API and implementation
- *
- ******************************************************************************/
+ *   Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *   
+ *******************************************************************************/
 package org.eclipse.app4mc.multicore.openmapping.algorithms.helper;
 
 import java.util.ArrayList;
