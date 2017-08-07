@@ -11,6 +11,10 @@
             class="org.eclipse.app4mc.multicore.partitioning.handlers.WriteAppletHandler"
             commandId="org.eclipse.app4mc.multicore.partitioning.visualize">
       </handler>
+      <handler
+            class="org.eclipse.app4mc.multicore.partitioning.handlers.WriteGraphvizHandler"
+            commandId="org.eclipse.app4mc.multicore.partitioning.visualize2">
+      </handler>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -66,6 +70,32 @@
             </visibleWhen>
          </command>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.app4mc.multicore.menu?after=org.eclipse.app4mc.multicore.openmapping.popups.performMapping">
+         <command
+               commandId="org.eclipse.app4mc.multicore.partitioning.visualize2"
+               id="org.eclipse.app4mc.multicore.partitioning.popups.visualize2"
+               label="Create Graphviz (.dot) file"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <instanceof
+                           value="org.eclipse.core.resources.IResource">
+                     </instanceof>
+                     <test
+                           property="org.eclipse.core.resources.extension"
+                           value="amxmi">
+                     </test>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
@@ -76,6 +106,10 @@
       <command
             id="org.eclipse.app4mc.multicore.partitioning.visualize"
             name="Generate Applet">
+      </command>
+      <command
+            id="org.eclipse.app4mc.multicore.partitioning.visualize2"
+            name="Generate Graphviz">
       </command>
    </extension>
    

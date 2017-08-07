@@ -498,4 +498,31 @@ public class Helper {
 		}
 		return true;
 	}
+
+	public boolean runnablesContainedinSamePP(final EList<Runnable> runnables, final EList<Runnable> runnables2) {
+		for (final Runnable r : runnables) {
+			for (final Runnable r2 : runnables2) {
+				for (final TaskRunnableCall rc : r.getTaskRunnableCalls()) {
+					for (final TaskRunnableCall rc2 : r2.getTaskRunnableCalls()) {
+						if (rc.eContainer().equals(rc2.eContainer())) {
+							return true;
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+
+	public boolean runnablesContainedinSamePP(final Runnable r1, final Runnable r2) {
+		for (final TaskRunnableCall trc1 : r1.getTaskRunnableCalls()) {
+			for (final TaskRunnableCall trc2 : r2.getTaskRunnableCalls()) {
+				if (trc1.eContainer().equals(trc2.eContainer())) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 }
