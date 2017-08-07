@@ -3,6 +3,7 @@
 
 <toc label="Editors Root" link_to="../org.eclipse.app4mc.help/mainToc.xml#app4mc.docu.editors">
    <link toc="toc/editors-toc.xml"/>
+   <link toc="toc/sirius-editor-toc.xml"/>
    
   
 </toc>

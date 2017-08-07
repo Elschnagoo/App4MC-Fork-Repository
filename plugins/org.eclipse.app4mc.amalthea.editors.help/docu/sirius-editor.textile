@@ -1,0 +1,120 @@
+h2. Sirius Viewer
+
+Basic graphical viewers are realized using "Sirius":https://www.eclipse.org/sirius/.
+
+The following viewers are treated as a POC (Proof of concept) and are not final.
+They can be extended and further developed to show additional parts of the model.
+
+h3. Activate capabilities for project
+
+The following steps will activate the Sirius feature and AMALTHEA viewpoints:
+
+To use Sirius, projects needs to have the __Modeling Feature__ enabled. This can be done by right clicking on the project and select *Configure - Convert to Modeling Project*. Note that a new file __representations.aird__ is created at top level of the project. This file is containing the user created diagrams.
+
+!../pictures/sirius_convert_project.png!
+
+Activate the AMALTHEA viewpoint by right click on the project and select *Viewpoint Selection*. 
+
+!../pictures/sirius_viewpoints_selection.png!
+
+**Note:** Using one of the available commands to open a view using a right click on an element automatically adds the Modeling Nature and selects the available AMALTHEA viewpoint.
+
+h3. Available Diagrams
+
+h4. Task View
+
+The current version of the Task View shows the Task as a container with the included Runnables.
+
+Open/Create a view for a __Task__ element by right click on it and select __Task View__.
+
+!../pictures/sirius_task_view_create.png!
+
+A new diagram is shown based on the given __Task__ element.
+
+!../pictures/sirius_task_view_1.png!
+
+h5. Communication Layer
+
+The Communication Layer shows direct dependencies between __Runnables__. Therefore the following requirement must be fulfilled:
+
+# Runnable R1 writes Label L1
+# Runnable R2 reads Label L1
+
+Enable it through the Layers option menu.
+
+!../pictures/sirius_task_view_comm_layer_enable.png!
+
+In this sample some of the available communications are fulfilling this requirement.
+
+!../pictures/sirius_task_view_comm_layer_show1.png!
+
+h5. Label Layer
+
+The Label Layer shows all Read/Write dependencies between __Runnables__ and __Labels__.
+
+Enable it through the Layers option menu.
+
+!../pictures/sirius_task_view_label_layer_enable.png!
+
+After some arrangement it can look like the following:
+
+!../pictures/sirius_task_view_label_layer_show.png!
+
+h4. Label View
+
+The Label View shows a __Label__ element including read/write accesses from corresponding __Runnables__.
+
+Open/Create a view for a __Label__ element by right click on it and select __Label View__.
+
+!../pictures/sirius_label_view_create.png!
+
+A new diagram is shown based on the given __Label__ element.
+
+!../pictures/sirius_label_view_1.png!
+
+h4. EventChain View
+
+The __EventChain__ view is the first version to show the included __Events__.
+If there is a reference to a __RunnableEvent__, the corresponding __Runnable__ is also shown.
+This behavior can be extended also for __Labels__ and __Tasks__ for example.
+
+Open/Create a view for an __EventChain__ element by right click on it and select __Event Chain View__.
+
+!../pictures/sirius_event_chain_view_create.png!
+
+A new diagram is opening showing the order of the included __Events__.
+If there is a __RunnableEvent__, the association to the __Runnable__ includes the configured __EventType__.
+
+!../pictures/sirius_event_chain_view_show.png!
+
+h4. Tasks View
+
+The __Tasks__ view is in general the same view as the already mentioned __Task__ view above with the advantage to get an overview about all included __Tasks__ of a Software model.
+
+To open/create a Tasks view it is needed to switch to the Sirius perspective.
+* This can be done by **Window - Perspective - Open Perspective - Other** and select then Sirius.
+* On the left side inside of the Model Explorer go to an AMALTHEA model, expand it and do a right click on the __Software__ model.
+* Select **New Representation - new Tasks Overview** to create a new diagram.
+* Change the name if needed and click on ok.
+
+The same additional options are available as in the normal __Task__ view like the __Label Layer__ and __Communication Layer__.
+
+!../pictures/sirius_tasks_view_create.png!
+
+!../pictures/sirius_tasks_view_show.png!
+
+h4. Mapping View
+
+The __Mapping__ view gives an overview of the relation between __Cores__, __Schedulers__ and __Tasks__, which is defined in the __Mapping Model__ of AMALTHEA.
+
+To open/create a Tasks view it is needed to switch to the Sirius perspective.
+* This can be done by **Window - Perspective - Open Perspective - Other** and select then Sirius.
+* On the left side inside of the Model Explorer go to an AMALTHEA model, expand it and do a right click on the __Mapping__ model.
+* Select **New Representation - new Tasks Overview** to create a new diagram.
+* Change the name if needed and click on ok.
+
+!../pictures/sirius_mapping_view_create.png!
+
+!../pictures/sirius_mapping_view_show.png!
+
+

@@ -11,6 +11,10 @@
             file="toc/editors-toc.xml"
             primary="false">
       </toc>
+      <toc
+            file="toc/sirius-editor-toc.xml"
+            primary="false">
+      </toc>
    </extension>
 
 </plugin>

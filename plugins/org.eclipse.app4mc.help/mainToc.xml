@@ -20,9 +20,11 @@
          <anchor id="app4mc.docu.examples"/>
       </topic>
       <topic label="Tutorials">
-         <anchor id="app4mc.docu.tutorials"/>
+        <anchor id="app4mc.docu.tutorials"/>
       </topic>
-      <anchor id="app4mc.docu.editors"/>
+      <topic label="Editors / Viewers">
+      	<anchor id="app4mc.docu.editors"/>
+      </topic>
       <anchor id="app4mc.docu.validation"/>
       <anchor id="app4mc.docu.converters"/>
       <anchor id="app4mc.docu.multicore"/>
