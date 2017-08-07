@@ -12,15 +12,18 @@
  */
 package org.eclipse.app4mc.amalthea.editors.sirius.command;
 
-import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.eclipse.app4mc.amalthea.editors.sirius.Activator;
 import org.eclipse.app4mc.amalthea.editors.sirius.helper.RepresentationQuery;
 import org.eclipse.app4mc.amalthea.editors.sirius.helper.ViewPointSelector;
 import org.eclipse.app4mc.amalthea.model.IReferable;
-import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -29,15 +32,22 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
+import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
+import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sphinx.emf.util.EcorePlatformUtil;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -48,9 +58,10 @@ import com.google.common.base.Preconditions;
 /**
  * This action is called for any events that want to open graphical Sirius based editor for an AMALTHEA element.
  */
+@SuppressWarnings("restriction")
 public class OpenGraphicalEditorAction<S extends IReferable> {
 
-	
+
 	private ILog logger = Activator.getDefault().getLog();
 	protected final S sphinxElement;
 	protected S element;
@@ -78,25 +89,78 @@ public class OpenGraphicalEditorAction<S extends IReferable> {
 			}
 			if (!result) {
 				IFile iFile = EcorePlatformUtil.getFile(this.sphinxElement);
-				IContainer directory = iFile.getParent();
-				for (final File file : directory.getLocation().toFile().listFiles()) {
-					// lookup for corresponding Sirius file
-					if (file.getName().endsWith(".aird")) {
-						IFile tmp = EcorePlatformUtil.getFile(URI.createFileURI(file.getPath().toString()));
-						URI uri = URI.createPlatformResourceURI(tmp.getFullPath().toString(), true);
-						Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
-						session.open(new NullProgressMonitor());
-						this.session = session;
-						if (!checkSession(session)) {
-							// handle error case
-						}
+				IProject project = iFile.getProject();
+				try {
+					IFile aird = null;
+					for (final IResource file : project.members()) {
+						// lookup for corresponding Sirius file
+						aird = searchAirdFile(project);
 					}
+					if (null == aird) {
+						// if !result check Sirius project nature and creation of aird file
+						setupProject(project);
+						aird = searchAirdFile(project);
+						Session session = setupSession(aird);
+						addViewPoint(session);
+					}
+					else {
+						setupSession(aird);
+					}
+				}
+				catch (CoreException e) {
+					this.logger.log(
+							new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Error at creating Sirius session!", e));
 				}
 			}
 		}
 		else {
 			this.element = this.sphinxElement;
 		}
+	}
+
+	private Session setupSession(IFile aird) {
+		URI uri = URI.createPlatformResourceURI(aird.getFullPath().toString(), true);
+		Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
+		session.open(new NullProgressMonitor());
+		this.session = session;
+		if (!checkSession(session)) {
+			// handle error case
+		}
+		return session;
+	}
+	
+	private void addViewPoint(Session session) throws CoreException {
+		Set<Viewpoint> availableViewpoints = ViewpointSelection.getViewpoints("amxmi");
+		if (availableViewpoints.isEmpty())
+			throw new CoreException(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+					"Could not found viewport for fileextension amxmi"));
+		Set<Viewpoint> viewpoints = new HashSet<Viewpoint>();
+		for(Viewpoint p : availableViewpoints)
+			viewpoints.add(SiriusResourceHelper.getCorrespondingViewpoint(session, p));
+		RecordingCommand command = new ChangeViewpointSelectionCommand(
+		        session,
+		        new ViewpointSelectionCallback(),
+		        viewpoints, new HashSet<Viewpoint>(), new NullProgressMonitor());
+		    session.getTransactionalEditingDomain().getCommandStack()
+		        .execute(command);
+	}
+
+	private IFile searchAirdFile(IProject project) throws CoreException {
+		IFile result = null;
+		if (null != project) {
+			for (final IResource file : project.members()) {
+				// lookup for corresponding Sirius file
+				if (file instanceof IFile && file.getName().endsWith(".aird")) {
+					result = (IFile) file;
+					break;
+				}
+			}
+		}
+		return result;
+	}
+
+	private void setupProject(IProject project) throws CoreException {
+		ModelingProjectManager.INSTANCE.convertToModelingProject(project, new NullProgressMonitor());
 	}
 
 
@@ -180,7 +244,8 @@ public class OpenGraphicalEditorAction<S extends IReferable> {
 			PlatformUI.getWorkbench().getProgressService().runInUI(context, runnable, null);
 		}
 		catch (InvocationTargetException | InterruptedException e) {
-			this.logger.log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Error at open representation for element ", e));
+			this.logger.log(
+					new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Error at open representation for element ", e));
 		}
 	}
 
