@@ -6,7 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *   Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *   
  *******************************************************************************/
 
 package org.eclipse.app4mc.multicore.sharelibs.utframework;
@@ -21,6 +22,10 @@ public class ModelLoader {
 	 * Democar example model
 	 */
 	public final static String DEMOCAR = "../../examples/org.eclipse.app4mc.amalthea.example.democar/AMALTHEA_Democar.amxmi";
+	/**
+	 * Democar mapping with task model
+	 */
+	public final static String DEMOCAR_WITH_PP = "../../examples/org.eclipse.app4mc.amalthea.example.democar.mapping/model/AMALTHEA_Democar_MappingExample.amxmi";
 	/**
 	 * Democar mapping with task model
 	 */

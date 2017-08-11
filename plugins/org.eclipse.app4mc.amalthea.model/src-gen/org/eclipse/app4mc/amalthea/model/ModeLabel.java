@@ -30,7 +30,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface ModeLabel extends AbstractMemoryElement, IAnnotatable, IReferable, IDisplayName {
+public interface ModeLabel extends AbstractMemoryElement, IDisplayName {
 	/**
 	 * Returns the value of the '<em><b>Mode</b></em>' reference.
 	 * <!-- begin-user-doc -->

@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2016 Dortmund University of Applied Sciences and Arts and others.
+ * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning;
 
@@ -40,6 +40,10 @@ public class ParPreferenceInitializer extends AbstractPreferenceInitializer {
 		this.store.setDefault(IParConstants.PRE_LOC_STRING, "output");
 		this.store.setDefault(IParConstants.PRE_LOC_RADIO, "0");
 		this.store.setDefault(IParConstants.PRE_PARTITIONING_ALG, "essp"); // ESSP
+		this.store.setDefault(IParConstants.PRE_ASIL, false);
+		this.store.setDefault(IParConstants.PRE_RPC, false);
+		this.store.setDefault(IParConstants.PRE_RCPC, false);
+		this.store.setDefault(IParConstants.PRE_TAGS, false);
 	}
 
 }

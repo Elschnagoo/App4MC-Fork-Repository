@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2016 Dortmund University of Applied Sciences and Arts and others.
+ * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.utils;
 
@@ -16,8 +16,8 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
-import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.SWModel;
@@ -93,7 +93,8 @@ public class CheckActivations {
 					assert null != ref;
 					for (final CallSequenceItem csi : ((CallSequence) geb).getCalls()) {
 						if (csi instanceof TaskRunnableCall) {
-							((TaskRunnableCall) csi).getRunnable().getActivations().add(ref);	//TODO: handle multiple activations
+							((TaskRunnableCall) csi).getRunnable().getActivations().add(ref);
+							// TODO: handle multiple activations
 						}
 					}
 				}
@@ -126,7 +127,8 @@ public class CheckActivations {
 				pp.setActivation(swm.getActivations().get(act));
 				// for (int r = 0; r < swm.getRunnables().size(); r++) {
 				for (final Runnable r : swm.getRunnables()) {
-					assert null != r.getFirstActivation();		//TODO: handle multiple activations
+					assert null != r.getFirstActivation();
+					// TODO: handle multiple activations
 					if (null != r.getFirstActivation()) {
 						if (r.getFirstActivation().equals(swm.getActivations().get(act))) {
 							final TaskRunnableCall trc = instance.createTaskRunnableCall();
@@ -140,9 +142,8 @@ public class CheckActivations {
 					}
 				}
 				if (pp.getRunnableCalls().size() == 0) {
-					PartLog.getInstance()
-							.log("There is an activation that is not referenced by any runnable (will be ignored) "
-									+ pp.getActivation().getName(), null);
+					PartLog.getInstance().log("There is an activation that is not referenced by any runnable (will be ignored) " + pp.getActivation().getName(),
+							null);
 				}
 				else {
 					swm.getProcessPrototypes().add(pp);

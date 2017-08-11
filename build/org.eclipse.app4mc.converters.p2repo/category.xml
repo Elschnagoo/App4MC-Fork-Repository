@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.eclipse.app4mc.amalthea.converters_0.8.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.converters" version="0.8.1.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.converters_0.8.2.qualifier.jar" id="org.eclipse.app4mc.amalthea.converters" version="0.8.2.qualifier">
       <category name="org.eclipse.app4mc.amalthea.converters"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.converters.sdk_0.8.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.converters.sdk" version="0.8.1.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.converters.sdk_0.8.2.qualifier.jar" id="org.eclipse.app4mc.amalthea.converters.sdk" version="0.8.2.qualifier">
       <category name="org.eclipse.app4mc.amalthea.converters"/>
    </feature>
    <category-def name="org.eclipse.app4mc.amalthea.converters" label="APP4MC Converters"/>

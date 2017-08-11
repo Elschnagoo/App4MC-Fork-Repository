@@ -52,7 +52,7 @@ public interface Amalthea extends BaseObject {
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_Version()
 	 * @model unique="false" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='return \"0.8.1\";'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='return \"0.8.2\";'"
 	 * @generated
 	 */
 	String getVersion();

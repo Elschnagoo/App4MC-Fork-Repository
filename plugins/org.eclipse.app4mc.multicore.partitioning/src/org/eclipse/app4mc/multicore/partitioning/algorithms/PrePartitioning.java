@@ -6,40 +6,25 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.algorithms;
 
-import java.util.Iterator;
-
-import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
-import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
-import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
-import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.partitioning.IParConstants;
+import org.eclipse.app4mc.multicore.partitioning.utils.AsilToPP;
 import org.eclipse.app4mc.multicore.partitioning.utils.CheckActivations;
 import org.eclipse.app4mc.multicore.partitioning.utils.CheckLabels;
 import org.eclipse.app4mc.multicore.partitioning.utils.CycleElimination;
 import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
+import org.eclipse.app4mc.multicore.partitioning.utils.MergeRunnablePairings;
 import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
 import org.eclipse.app4mc.multicore.partitioning.utils.RemoveGraphEdges;
 import org.eclipse.app4mc.multicore.partitioning.utils.RunnableCorePairingToPP;
 import org.eclipse.app4mc.multicore.partitioning.utils.TagToPP;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.preference.IPreferenceStore;
 
@@ -51,15 +36,20 @@ public class PrePartitioning {
 	private boolean efficientEdgeInCycle = false;
 	private boolean minimalEdgeDis = false;
 
-	private static boolean TAGGROUPS = true;
-	private static boolean COREGROUPS = false;
-	private static boolean APSCONSID = true;
+	private boolean tagGroups = true;
+	private boolean rcpGroups = false;
+	private boolean asilGroups = false;
+	private boolean rpGroups = false;
 
 	public PrePartitioning(final IPreferenceStore store) {
 		setActivationGroups(store.getBoolean(IParConstants.PRE_ACTIVATION));
 		setEfficientEdgeInCycle(store.getBoolean(IParConstants.PRE_EFF_EDGE));
 		setGgp(store.getBoolean(IParConstants.PRE_GGP));
 		setMinimalEdgeDis(store.getBoolean(IParConstants.PRE_MIN_EDGES));
+		setTagGroups(store.getBoolean(IParConstants.PRE_TAGS));
+		setRcpGroups(store.getBoolean(IParConstants.PRE_RCPC));
+		setAsilGroups(store.getBoolean(IParConstants.PRE_ASIL));
+		setRpGroups(store.getBoolean(IParConstants.PRE_RPC));
 	}
 
 	public PrePartitioning(final boolean ag, final boolean ggp, final boolean effEdges, final boolean minimalEdges) {
@@ -67,22 +57,6 @@ public class PrePartitioning {
 		setEfficientEdgeInCycle(effEdges);
 		setGgp(ggp);
 		setMinimalEdgeDis(minimalEdges);
-	}
-
-	public boolean isEfficientEdgeInCycle() {
-		return this.efficientEdgeInCycle;
-	}
-
-	public boolean isMinimalEdgeDis() {
-		return this.minimalEdgeDis;
-	}
-
-	public void setMinimalEdgeDis(final boolean minimalEdgeDis) {
-		this.minimalEdgeDis = minimalEdgeDis;
-	}
-
-	public void setEfficientEdgeInCycle(final boolean effCycleElim) {
-		this.efficientEdgeInCycle = effCycleElim;
 	}
 
 
@@ -107,8 +81,6 @@ public class PrePartitioning {
 			return null;
 		}
 
-		modelCopy = mergeRunnablesFromAffntyCnstrnts(modelCopy);
-
 		// grouping runnables into ProcessPrototypes via activation references
 		if (this.activationGroups) {
 			PartLog.getInstance().setLogName("Activation Analysis");
@@ -123,9 +95,7 @@ public class PrePartitioning {
 				ca.createPPs(modelCopy.getSwModel(), monitor);
 			}
 			else {
-				PartLog.getInstance().log(
-						"Neither stimulation model nor activation within swmodel found. No activation analaysis possible",
-						null);
+				PartLog.getInstance().log("Neither stimulation model nor activation within swmodel found. No activation analaysis possible", null);
 			}
 			assert null != ca.getSwmo();
 			if (null == ca.getSwmo() || ca.getSwmo().getRunnables().size() < 1) {
@@ -134,27 +104,68 @@ public class PrePartitioning {
 			else {
 				modelCopy.setSwModel(ca.getSwmo());
 				modelCopy.setStimuliModel(ca.getStimu());
-				PartLog.getInstance().log("Activation Analysis finished. Created ProcessPrototypes: "
-						+ ca.getSwmo().getProcessPrototypes().size());
+				PartLog.getInstance().log("Activation Analysis finished. Created ProcessPrototypes: " + ca.getSwmo().getProcessPrototypes().size());
 			}
 		}
 
-		// grouping runnables into ProcessPrototypes via tag references
-		if (TAGGROUPS) {
-			final TagToPP tpp = new TagToPP(modelCopy.getSwModel(), modelCopy.getCommonElements());
-			tpp.createPPsFromTags();
-		}
-		// grouping runnables into ProcessPrototypes via tag references
-		if (COREGROUPS) {
-			modelCopy.getSwModel().getProcessPrototypes()
-					.addAll(new RunnableCorePairingToPP(modelCopy.getSwModel(), modelCopy.getConstraintsModel())
-							.getPPsFromCorePairings());
+		// grouping runnables into ProcessPrototypes via ASIL references
+		if (this.asilGroups) {
+			boolean found = false;
+			for (final Runnable r : modelCopy.getSwModel().getRunnables()) {
+				if (null != r.getAsilLevel()) {
+					found = true;
+					break;
+				}
+			}
+			if (found) {
+				final AsilToPP ac = new AsilToPP(modelCopy.getSwModel());
+				ac.createPPsFromASILsSplit();
+				PartLog.getInstance().log("ASIL grouping:\n" + new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes()));
+			}
+			else {
+				PartLog.getInstance().log("No Runnable references an ASIL level. ASIL partitioning stopped.");
+			}
+
 		}
 
+		// grouping runnables into ProcessPrototypes via tag references
+		if (this.tagGroups) {
+			if (modelCopy.getCommonElements().getTags().size() > 0) {
+				final TagToPP tpp = new TagToPP(modelCopy.getSwModel(), modelCopy.getCommonElements());
+				tpp.createPPsFromTagsSplit();
+				PartLog.getInstance().log("Tag grouping:\n" + new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes()));
+			}
+			else {
+				PartLog.getInstance().log("No Tags found, stopping Runnable Tag partitioning.");
+			}
+		}
+
+		// grouping runnables into ProcessPrototypes via RunnableCorePairing
+		// constraints
+		if (this.rcpGroups) {
+			if (modelCopy.getConstraintsModel().getAffinityConstraints().size() > 0) {
+				final RunnableCorePairingToPP rcp = new RunnableCorePairingToPP(modelCopy.getSwModel(), modelCopy.getConstraintsModel());
+				rcp.getPPsFromCorePairingsSplit();
+				PartLog.getInstance().log("RCP grouping:\n" + new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes()));
+			}
+			else {
+				PartLog.getInstance().log("No Affinity Constraints found, stopping Runnable Core Pairing partitioning.");
+			}
+		}
+
+		// merge Runnable pairings (affinity constraints)
+		if (this.rpGroups) {
+			if (modelCopy.getConstraintsModel().getAffinityConstraints().size() > 0) {
+				modelCopy = new MergeRunnablePairings().merge(modelCopy);
+				PartLog.getInstance().log("RP grouping:\n" + new Helper().writePPs(modelCopy.getSwModel().getProcessPrototypes()));
+			}
+			else {
+				PartLog.getInstance().log("No Affinity Constraints found, stopping Runnable Pairing partitioning.");
+			}
+		}
 
 		// generating constraints model representing a graph
-		if (modelCopy.getConstraintsModel() == null
-				|| modelCopy.getConstraintsModel().getRunnableSequencingConstraints().size() == 0) {
+		if (modelCopy.getConstraintsModel() == null || modelCopy.getConstraintsModel().getRunnableSequencingConstraints().size() == 0) {
 			final CheckLabels cl = new CheckLabels();
 			cl.setSwm(modelCopy.getSwModel());
 
@@ -164,17 +175,14 @@ public class PrePartitioning {
 			}
 			cl.run(monitor);
 			if (cl.getCMModel() == null || cl.getCMModel().getRunnableSequencingConstraints().size() < 1) {
-				PartLog.getInstance().log(
-						"No Constraintsmodel / Runnable Sequencing Constraints created! Stopping Prepartitioning.",
-						null);
+				PartLog.getInstance().log("No Constraintsmodel / Runnable Sequencing Constraints created! Stopping Prepartitioning.", null);
 				return null;
 			}
 			if (null == modelCopy.getConstraintsModel()) {
 				modelCopy.setConstraintsModel(cl.getCMModel());
 			}
 			else if (0 == modelCopy.getConstraintsModel().getRunnableSequencingConstraints().size()) {
-				modelCopy.getConstraintsModel().getRunnableSequencingConstraints()
-						.addAll(cl.getCMModel().getRunnableSequencingConstraints());
+				modelCopy.getConstraintsModel().getRunnableSequencingConstraints().addAll(cl.getCMModel().getRunnableSequencingConstraints());
 			}
 			PartLog.getInstance().log("Graph creation (constraint model) finished.");
 		}
@@ -183,9 +191,11 @@ public class PrePartitioning {
 		}
 
 
-		if (APSCONSID) {
-			new RemoveGraphEdges().removeAPSRSCs(modelCopy.getConstraintsModel().getRunnableSequencingConstraints(),
-					modelCopy.getSwModel());
+		if (aPSarepresent(modelCopy.getSwModel().getProcessPrototypes())) {
+			final RemoveGraphEdges rge = new RemoveGraphEdges();
+			rge.removeAPSRSCs(modelCopy.getConstraintsModel().getRunnableSequencingConstraints(), modelCopy.getSwModel());
+			modelCopy.getConstraintsModel().getRunnableSequencingConstraints().clear();
+			modelCopy.getConstraintsModel().getRunnableSequencingConstraints().addAll(rge.getRSCs());
 		}
 		assert null != modelCopy.getSwModel();
 		assert null != modelCopy.getConstraintsModel().getRunnableSequencingConstraints();
@@ -213,14 +223,17 @@ public class PrePartitioning {
 			ggp.build();
 			assert null != ggp.getCm() && null != ggp.getSwm();
 			if (ggp.getCm() == null || ggp.getCm() == null) {
-				PartLog.getInstance()
-						.log("GGP did not result in swmodel / constraints model. Stopping Prepartitioning.", null);
+				PartLog.getInstance().log("GGP did not result in swmodel / constraints model. Stopping Prepartitioning.", null);
 				return null;
 			}
 			modelCopy.setSwModel(ggp.getSwm());
 			modelCopy.setConstraintsModel(ggp.getCm());
-			PartLog.getInstance()
-					.log("GGP finished. Created ProcessPrototypes: " + ggp.getSwm().getProcessPrototypes().size());
+			PartLog.getInstance().log("GGP finished. Created ProcessPrototypes: " + ggp.getSwm().getProcessPrototypes().size());
+		}
+
+		if (new Helper().activationsAreHarmonic(modelCopy.getSwModel().getActivations())) {
+			PartLog.getInstance().log(
+					"Activations in this model are harmonic! This allows a more sophisticated essp algorithm, that splits partitions with regard to their activation parameter!");
 		}
 
 		// print prepartitioning result
@@ -231,93 +244,19 @@ public class PrePartitioning {
 	}
 
 	/**
-	 * combining runnables via affinity constraints @param, @return
-	 * AmaltheaModel
+	 * Checks if AccessPrecedences exist
+	 *
+	 * @param processPrototypes
+	 *            required since PPs may contain AccessPrecedences
+	 * @return true if AccessPrecedences exist within PPs
 	 */
-	private Amalthea mergeRunnablesFromAffntyCnstrnts(final Amalthea modelCopy) {
-		if (modelCopy.getConstraintsModel() != null && modelCopy.getConstraintsModel().getAffinityConstraints() != null
-				&& modelCopy.getConstraintsModel().getAffinityConstraints().size() > 0) {
-			PartLog.getInstance().log("Found AffinityConstraints, Creating CumulatedRunnables");
-			final AmaltheaFactory af = AmaltheaFactory.eINSTANCE;
-			final EList<AffinityConstraint> acs = modelCopy.getConstraintsModel().getAffinityConstraints();
-			for (final AffinityConstraint ac : acs) {
-				// null check since runnables shall only be cumulated if they
-				// dont pair with a target (e.g. core)
-				if (ac instanceof RunnablePairingConstraint && ((RunnablePairingConstraint) ac).getTarget() == null) {
-					final RunnablePairingConstraint rpc = (RunnablePairingConstraint) ac;
-					final Runnable r = af.createRunnable();
-					r.setName(
-							"CumulatedRunnable" + modelCopy.getConstraintsModel().getAffinityConstraints().indexOf(ac));
-					final RunnableGroup rg = rpc.getGroup();
-					final RunnableEntityGroup reg = (RunnableEntityGroup) rg;
-					long instrCum = 0;
-					for (final Runnable run : reg.getRunnables()) {
-						instrCum += new Helper().getInstructions(run);
-						// do not add instruction constants / deviations;
-						// cumulation is added later
-						final EList<RunnableItem> ril = new BasicEList<RunnableItem>();
-						for (final RunnableItem ri : run.getRunnableItems()) {
-							if (!(ri instanceof InstructionsConstant || ri instanceof InstructionsDeviation)) {
-								ril.add(ri);
-							}
-						}
-						r.getRunnableItems().addAll(ril);
-						r.getActivations().add(run.getFirstActivation());	//TODO: handle multiple activations
-						r.getTags().addAll(run.getTags());
-					}
-					final InstructionsConstant ic = af.createInstructionsConstant();
-					ic.setValue(instrCum);
-					final RunnableInstructions runInst = af.createRunnableInstructions();
-					runInst.setDefault(ic);
-					r.getRunnableItems().add(runInst);
-					modelCopy.getSwModel().getRunnables().add(r);
-
-					// also remove taskrunnablecall refs from tasks
-					for (final Task t : modelCopy.getSwModel().getTasks()) {
-						for (final GraphEntryBase geb : t.getCallGraph().getGraphEntries()) {
-							if (geb instanceof CallSequence) {
-								final EList<TaskRunnableCall> rtrcs = new BasicEList<TaskRunnableCall>();
-								final CallSequence cs = (CallSequence) geb;
-								for (final CallSequenceItem csi : cs.getCalls()) {
-									if (csi instanceof TaskRunnableCall) {
-										final TaskRunnableCall trc = (TaskRunnableCall) csi;
-										if (reg.getRunnables().contains(trc.getRunnable())) {
-											rtrcs.add(trc);
-										}
-									}
-								}
-								cs.getCalls().removeAll(rtrcs);
-							}
-						}
-					}
-
-					// replace refs to cumulated runnables within
-					// processPrototypes
-					for (final ProcessPrototype pp : modelCopy.getSwModel().getProcessPrototypes()) {
-						final Iterator<TaskRunnableCall> trcIt = pp.getRunnableCalls().iterator();
-						final EList<TaskRunnableCall> trcsadd = new BasicEList<>();
-						while (trcIt.hasNext()) {
-							final TaskRunnableCall trc = trcIt.next();
-							if (reg.getRunnables().contains(trc.getRunnable())) {
-								trcIt.remove();
-								if (!trcsadd.contains(r)) {
-									final TaskRunnableCall trcnew = af.createTaskRunnableCall();
-									trcnew.setRunnable(r);
-									trcsadd.add(trcnew);
-								}
-							}
-						}
-						pp.getRunnableCalls().addAll(trcsadd);
-					}
-					new Helper().updatePPsFirstLastActParams(modelCopy.getSwModel());
-
-					// remove runnable pairing runnables (cumulated runnable
-					// replaces these temporarily)
-					modelCopy.getSwModel().getRunnables().removeAll(reg.getRunnables());
-				}
+	private boolean aPSarepresent(final EList<ProcessPrototype> processPrototypes) {
+		for (final ProcessPrototype pp : processPrototypes) {
+			if (pp.getAccessPrecedenceSpec().size() > 0) {
+				return true;
 			}
 		}
-		return modelCopy;
+		return false;
 	}
 
 
@@ -325,19 +264,36 @@ public class PrePartitioning {
 		return this.enableLog;
 	}
 
-	public boolean getActivationGroups() {
-		return this.activationGroups;
-	}
 
 	public void setActivationGroups(final boolean ActivationGroups) {
 		this.activationGroups = ActivationGroups;
 	}
 
-	public boolean isGgp() {
-		return this.ggp;
-	}
-
 	public void setGgp(final boolean ggp) {
 		this.ggp = ggp;
+	}
+
+	public void setTagGroups(final boolean tagGroups) {
+		this.tagGroups = tagGroups;
+	}
+
+	public void setRcpGroups(final boolean rcpGroups) {
+		this.rcpGroups = rcpGroups;
+	}
+
+	public void setAsilGroups(final boolean asilGroups) {
+		this.asilGroups = asilGroups;
+	}
+
+	public void setRpGroups(final boolean rpGroups) {
+		this.rpGroups = rpGroups;
+	}
+
+	public void setMinimalEdgeDis(final boolean minimalEdgeDis) {
+		this.minimalEdgeDis = minimalEdgeDis;
+	}
+
+	public void setEfficientEdgeInCycle(final boolean effCycleElim) {
+		this.efficientEdgeInCycle = effCycleElim;
 	}
 }

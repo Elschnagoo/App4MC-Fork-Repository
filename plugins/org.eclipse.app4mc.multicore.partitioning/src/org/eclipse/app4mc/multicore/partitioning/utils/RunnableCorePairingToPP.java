@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.utils;
 
@@ -37,7 +37,11 @@ public class RunnableCorePairingToPP {
 		this.cm = CM;
 	}
 
-	public EList<ProcessPrototype> getPPsFromCorePairings() {
+	public void getPPsFromCorePairingsSplit() {
+		this.swm.getProcessPrototypes().addAll(getPPsFromCorePairings());
+	}
+
+	private EList<ProcessPrototype> getPPsFromCorePairings() {
 		final EList<ProcessPrototype> ppl = new BasicEList<ProcessPrototype>();
 		final HashMap<Core, Integer> CorePPIndexMap = new HashMap<Core, Integer>();
 

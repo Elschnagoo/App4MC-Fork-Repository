@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Multicore Examples Installer
 Bundle-SymbolicName: org.eclipse.app4mc.multicore.examples.installer;singleton:=true
-Bundle-Version: 0.8.1.qualifier
+Bundle-Version: 0.8.2.qualifier
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.emf.common.ui

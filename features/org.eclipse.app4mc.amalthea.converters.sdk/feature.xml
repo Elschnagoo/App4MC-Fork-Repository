@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.app4mc.amalthea.converters.sdk"
       label="APP4MC AMALTHEA Converters SDK"
-      version="0.8.1.qualifier"
+      version="0.8.2.qualifier"
       provider-name="Eclipse.org"
       license-feature="org.eclipse.license"
       license-feature-version="1.0.1.qualifier">
@@ -12,7 +12,7 @@
    </description>
 
    <copyright url="https://projects.eclipse.org/projects/technology.app4mc">
-      (c) Copyright Eclipse APP4MC contributors and others. 2016. 
+      (c) Copyright Eclipse APP4MC contributors and others. 2017. 
 All rights reserved.
    </copyright>
 

@@ -6,9 +6,9 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Dortmund University of Applied Sciences and Arts - initial API and implementation
- *
- ******************************************************************************/
+ *   Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *   
+ *******************************************************************************/
 package org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger;
 
 import java.util.ArrayList;

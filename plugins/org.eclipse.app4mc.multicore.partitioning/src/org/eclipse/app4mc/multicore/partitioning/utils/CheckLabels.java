@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2016 Dortmund University of Applied Sciences and Arts and others.
+ * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.utils;
 
@@ -56,14 +56,8 @@ public class CheckLabels {
 	private boolean RSCLReveals(final RunnableSequencingConstraint rsc) {
 		for (final RunnableSequencingConstraint rsc2 : this.CM.getRunnableSequencingConstraints()) {
 			if (rsc2.getRunnableGroups().size() == 2) {
-				if ((rsc2.getRunnableGroups().get(0).getRunnables().get(0)
-						.equals(rsc.getRunnableGroups().get(0).getRunnables().get(0))
-						&& rsc2.getRunnableGroups().get(1).getRunnables().get(0)
-								.equals(rsc.getRunnableGroups().get(1).getRunnables().get(0)))
-						|| (rsc2.getRunnableGroups().get(0).getRunnables().get(0)
-								.equals(rsc.getRunnableGroups().get(1).getRunnables().get(0))
-								&& rsc2.getRunnableGroups().get(1).getRunnables().get(0)
-										.equals(rsc.getRunnableGroups().get(0).getRunnables().get(0)))) {
+				if (rsc2.getRunnableGroups().get(0).getRunnables().get(0).equals(rsc.getRunnableGroups().get(0).getRunnables().get(0))
+						&& rsc2.getRunnableGroups().get(1).getRunnables().get(0).equals(rsc.getRunnableGroups().get(1).getRunnables().get(0))) {
 					return true;
 				}
 			}
@@ -100,25 +94,20 @@ public class CheckLabels {
 								final LabelAccess la2 = (LabelAccess) ri2;
 								if (la1.getData() != null && la2.getData() != null) {
 									if (la1.getData().getName().equals(la2.getData().getName())) {
-										if (((la1.getAccess().equals(LabelAccessEnum.READ)
-												&& la2.getAccess().equals(LabelAccessEnum.WRITE))
-												|| (la1.getAccess().equals(LabelAccessEnum.WRITE)
-														&& la2.getAccess().equals(LabelAccessEnum.READ)))) {
-											final RunnableSequencingConstraint RSC = factory
-													.createRunnableSequencingConstraint();
+										if (((la1.getAccess().equals(LabelAccessEnum.READ) && la2.getAccess().equals(LabelAccessEnum.WRITE))
+												|| (la1.getAccess().equals(LabelAccessEnum.WRITE) && la2.getAccess().equals(LabelAccessEnum.READ)))) {
+											final RunnableSequencingConstraint RSC = factory.createRunnableSequencingConstraint();
 											RSC.setOrderType(RunnableOrderType.SUCCESSOR);
 											final RunnableEntityGroup prg1 = factory.createRunnableEntityGroup();
 											final RunnableEntityGroup prg2 = factory.createRunnableEntityGroup();
 											prg1.getRunnables().add(r1);
 											prg2.getRunnables().add(r2);
-											if (la1.getAccess().equals(LabelAccessEnum.WRITE)
-													&& la2.getAccess().equals(LabelAccessEnum.READ)) {
+											if (la1.getAccess().equals(LabelAccessEnum.WRITE) && la2.getAccess().equals(LabelAccessEnum.READ)) {
 												RSC.getRunnableGroups().add(prg1);
 												RSC.getRunnableGroups().add(prg2);
 												RSC.setName(r1.getName() + "-->" + r2.getName());
 											}
-											else if (la1.getAccess().equals(LabelAccessEnum.READ)
-													&& la2.getAccess().equals(LabelAccessEnum.WRITE)) {
+											else if (la1.getAccess().equals(LabelAccessEnum.READ) && la2.getAccess().equals(LabelAccessEnum.WRITE)) {
 												RSC.getRunnableGroups().add(prg2);
 												RSC.getRunnableGroups().add(prg1);
 												RSC.setName(r2.getName() + "-->" + r1.getName());
@@ -135,8 +124,8 @@ public class CheckLabels {
 				}
 			}
 		}
-		PartLog.getInstance().log("Label Access Analysis finished and created "
-				+ this.CM.getRunnableSequencingConstraints().size() + " RunnableSequencingConstraints.");
+		PartLog.getInstance()
+				.log("Label Access Analysis finished and created " + this.CM.getRunnableSequencingConstraints().size() + " RunnableSequencingConstraints.");
 		return Status.OK_STATUS;
 	}
 

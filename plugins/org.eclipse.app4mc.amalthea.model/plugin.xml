@@ -19,7 +19,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated amalthea -->
       <package
-            uri="http://app4mc.eclipse.org/amalthea/0.8.1"
+            uri="http://app4mc.eclipse.org/amalthea/0.8.2"
             class="org.eclipse.app4mc.amalthea.model.AmaltheaPackage"
             genModel="model/amalthea.xcore"/>
    </extension>

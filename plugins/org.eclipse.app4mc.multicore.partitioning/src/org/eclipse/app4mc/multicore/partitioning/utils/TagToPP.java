@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.utils;
 
@@ -39,12 +39,13 @@ public class TagToPP {
 	}
 
 	/**
-	 * If Runnables refer a Tag, ProcessPrototypes (named 'Tag_Tagname') are created and TaskRunnableCalls are
-	 * assigned to those ProcessPrototypes for each Runnable that refers this Tag
+	 * If Runnables refer a Tag, ProcessPrototypes (named 'Tag_Tagname') are
+	 * created and TaskRunnableCalls are assigned to those ProcessPrototypes for
+	 * each Runnable that refers this Tag
 	 *
 	 * @return List of ProcessPrototypes
 	 */
-	public void createPPsFromTags() {
+	public void createPPsFromTagsSplit() {
 		if (null == this.cem || null == this.cem.getTags()) {
 			PartLog.getInstance().log("Either no Tags or no CommonElements model existing", null);
 			return;
@@ -55,7 +56,7 @@ public class TagToPP {
 		}
 
 		// if there are no PPs, create one with all runnables calls
-		if (this.swm.getProcessPrototypes().size() < 1 || null == swm.getProcessPrototypes()) {
+		if (this.swm.getProcessPrototypes().size() < 1 || null == this.swm.getProcessPrototypes()) {
 			final ProcessPrototype pp = AmaltheaFactory.eINSTANCE.createProcessPrototype();
 			pp.setName("allRunnables");
 			for (final Runnable r : this.swm.getRunnables()) {
@@ -63,7 +64,7 @@ public class TagToPP {
 				trc.setRunnable(r);
 				pp.getRunnableCalls().add(trc);
 			}
-			swm.getProcessPrototypes().add(pp);
+			this.swm.getProcessPrototypes().add(pp);
 		}
 
 
@@ -89,14 +90,14 @@ public class TagToPP {
 					if (TagPPIndexMap.containsKey(trc.getRunnable().getTags().get(0))) {
 						final TaskRunnableCall trc2 = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
 						trc2.setRunnable(trc.getRunnable());
-						this.swm.getProcessPrototypes().get(TagPPIndexMap.get(trc.getRunnable().getTags().get(0)))
-								.getRunnableCalls().add(trc2);
+						this.swm.getProcessPrototypes().get(TagPPIndexMap.get(trc.getRunnable().getTags().get(0))).getRunnableCalls().add(trc2);
 						it2.remove();
 					}
 					else {
 						final ProcessPrototype pp2 = AmaltheaFactory.eINSTANCE.createProcessPrototype();
-						pp2.setName(pp.getName() + trc.getRunnable().getTags().get(0).getName());
-						if (null != trc.getRunnable().getFirstActivation()) {		//TODO: handle multiple activations
+						pp2.setName(pp.getName() + "_" + trc.getRunnable().getTags().get(0).getName());
+						if (null != trc.getRunnable().getFirstActivation()) {
+							// TODO: handle multiple activations
 							pp2.setActivation(trc.getRunnable().getFirstActivation());
 						}
 						final TaskRunnableCall trc2 = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
@@ -104,8 +105,7 @@ public class TagToPP {
 						pp2.getRunnableCalls().add(trc2);
 						it2.remove();
 						it.add(pp2);
-						TagPPIndexMap.put(trc.getRunnable().getTags().get(0),
-								this.swm.getProcessPrototypes().indexOf(pp2));
+						TagPPIndexMap.put(trc.getRunnable().getTags().get(0), this.swm.getProcessPrototypes().indexOf(pp2));
 					}
 				}
 			}
