@@ -1,6 +1,6 @@
 properties([
     buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')),
-    parameters([string(defaultValue: '', description: '''A specific commit ID can be provided to build older releases. If no ID is entered then the latest commit (HEAD) is used.''', name: 'COMMIT_ID')])//,
+    parameters([string(defaultValue: '', description: '''A specific commit ID can be provided to build older releases. If no ID is entered then the latest commit (HEAD) is used.''', name: 'COMMIT_ID')]),
     pipelineTriggers([pollSCM('H/15 * * * *')])
   ])
 node {
