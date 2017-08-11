@@ -34,6 +34,7 @@ import org.eclipse.app4mc.amalthea.converters.common.xpath.utils.ProcessorElemen
 import org.eclipse.app4mc.amalthea.converters.ui.utils.ConverterElement;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.IMigrationStatus;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.MigrationSettings;
+import org.eclipse.app4mc.amalthea.converters.ui.utils.ModelVersions;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionPoint;
@@ -238,15 +239,7 @@ public class ModelMigrationJob extends Job {
 
 		/*- Note: These are the various AMALTHEA model versions which are released.
 		 *  Order of the below list should be same as the release order- > as based on this order, model migration steps are prepared*/
-		final List<String> versions = new ArrayList<String>();
-		versions.add("itea.103");
-		versions.add("itea.110");
-		versions.add("itea.111");
-		versions.add("0.7.0");
-		versions.add("0.7.1");
-		versions.add("0.7.2");
-		versions.add("0.8.0");
-		versions.add("0.8.1");
+		final List<String> versions = ModelVersions.get();
 
 		final int inputModelVersionIndex = versions.indexOf(inputModelVersion);
 		final int outputModelVersionIndex = versions.indexOf(outputModelVersion);

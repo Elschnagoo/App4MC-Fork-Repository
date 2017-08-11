@@ -1,0 +1,38 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _jM_kkCT9EeeH-ILjZpHGGg
+Element-Name: ModelMigration_WATERS_Challenge_Model_0_7_2_0_8_2
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _JBYG8H57Eee54pF-EjLQ8Q
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 8/11/17 11:55 AM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Model Explorer" | get-tree | select "WATERS_Challenge/ChallengeModel_w_LabelStats_fixedLabelMapping_App4mc_v072.amxmi" 
+    | get-menu "AMALTHEA Model Migration" | click
+with [get-window "AMALTHEA Model Migration"] {
+    get-group "Migration details" | get-combo -after [get-label "Model Version"] | select "0.8.2"
+    get-button "Migrate Models" | click
+}
+get-window "AMALTHEA Model Migration" | get-button OK | click
+
+get-view "Model Explorer" | get-tree | select "WATERS_Challenge/_migration/ChallengeModel_w_LabelStats_fixedLabelMapping_App4mc_v072.amxmi" 
+    | select "WATERS_Challenge/_migration/ChallengeModel_w_LabelStats_fixedLabelMapping_App4mc_v072.amxmi" | get-menu "Open With/Text Editor" | click
+get-editor "ChallengeModel_w_LabelStats_fixedLabelMapping_App4mc_v072.amxmi" | get-text-viewer | get-property "getText()" 
+    | contains "xmlns:am=\"http://app4mc.eclipse.org/amalthea/0.8.2\"" | verify-true
+
+/*- check root tag. As per model migration to 0.8.2 -> root tag will be am:Amalthea */
+
+get-editor "ChallengeModel_w_LabelStats_fixedLabelMapping_App4mc_v072.amxmi" | get-text-viewer | get-property "getText()" 
+    | contains "am:Amalthea" | verify-true
+    
+  /*- Check problems view and verify that migration is successful */  
+get-tab-folder -index 2 | get-tab-item Problems | click
+get-view Problems | get-label "0 items" | get-property caption | equals "0 items" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

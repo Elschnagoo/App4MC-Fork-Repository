@@ -13,8 +13,10 @@ package org.eclipse.app4mc.amalthea.converters.ui.dialog;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Level;
@@ -30,6 +32,7 @@ import org.eclipse.app4mc.amalthea.converters.ui.providers.StyledLabelProvider;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.IMigrationStatus;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.MigrationInputFile;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.MigrationSettings;
+import org.eclipse.app4mc.amalthea.converters.ui.utils.ModelVersions;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.beans.PojoProperties;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
@@ -192,47 +195,24 @@ public class ModelMigrationDialog extends Dialog {
 				final String version = ModelMigrationDialog.this.getTxtInputModelVersion().getText();
 
 				if (version != null) {
-					if (version.equals("itea.103")) {
+					
+					
+					List<String> allSupportedVersions=ModelVersions.get();
+					 
+					
+					int totalVersionSize=allSupportedVersions.size();
+					
+					int startIndex=allSupportedVersions.indexOf(version);
+					
+					if(startIndex!=-1){
+						
+						List<String> subList = allSupportedVersions.subList(startIndex+1, totalVersionSize);
+						Collections.reverse(subList);
 						ModelMigrationDialog.this.getMig_model_version_combo().setItems(
-								new String[] { "0.8.1", "0.8.0", "0.7.2", "0.7.1", "0.7.0", "itea.111", "itea.110" });
-
+								subList.toArray(new String[]{}));
+						ModelMigrationDialog.this.getMig_model_version_combo().select(0);
 					}
-					else if (version.equals("itea.110")) {
-						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.8.1", "0.8.0", "0.7.2", "0.7.1", "0.7.0", "itea.111" });
-					}
-					else if (version.equals("itea.111")) {
-						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.8.1", "0.8.0", "0.7.2", "0.7.1", "0.7.0" });
-					}
-					else if (version.equals("0.7.0")) {
-						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.8.1", "0.8.0", "0.7.2", "0.7.1" });
-
-					}
-					else if (version.equals("0.7.1")) {
-						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.8.1", "0.8.0", "0.7.2" });
-
-					}
-					else if (version.equals("0.7.2")) {
-						ModelMigrationDialog.this.getMig_model_version_combo()
-								.setItems(new String[] { "0.8.1", "0.8.0" });
-
-					}
-					else if (version.equals("0.8.0")) {
-						ModelMigrationDialog.this.getMig_model_version_combo().setItems(new String[] { "0.8.1" });
-
-					}
-					else if (version.equals("0.8.1")) {
-						ModelMigrationDialog.this.getMig_model_version_combo().setItems(new String[] { "" });
-
-						ModelMigrationDialog.this.getMig_model_version_combo().setEnabled(false);
-
-						ModelMigrationDialog.this.getMig_model_version_combo().setEnabled(false);
-					}
-					ModelMigrationDialog.this.getMig_model_version_combo().select(0);
-
+					
 				}
 
 			}
@@ -373,7 +353,6 @@ public class ModelMigrationDialog extends Dialog {
 		return shlAmalthea;
 	}
 
-	@SuppressWarnings("unused")
 	private void addEmptyLabels(final Group grpInitialModel) {
 		new Label(grpInitialModel, SWT.NONE);
 		new Label(grpInitialModel, SWT.NONE);

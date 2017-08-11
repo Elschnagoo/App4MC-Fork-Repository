@@ -221,6 +221,9 @@ public class ModelLoaderJob extends Job {
 		else if (this.helper.isNS_AvailableIn_081(namespace)) {
 			migModelFile.setModelVersion("0.8.1");
 		}
+		else if (this.helper.isNS_AvailableIn_082(namespace)) {
+			migModelFile.setModelVersion("0.8.2");
+		}
 		else {
 			migModelFile.setModelVersion("invalid");
 		}
