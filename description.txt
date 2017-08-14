@@ -1,1 +1,7 @@
 Application Platform Project for MultiCore (APP4MC) - Project repository
+
+Development workflow:
+
+ - master: only for published versions of APP4MC
+
+ - develop: for continuous development (will be merged to master before an official release)
