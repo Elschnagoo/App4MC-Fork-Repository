@@ -256,12 +256,10 @@ The following figure shows the structure which describes __Tasks__ and Interrupt
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
 | __name__ | Name of the process |
-| __priority__ | Priority of the process for priority based scheduling. |
-| __osekTaskGroup__ | Priority for defining groups of tasks according OSEK
+| __stimuli__ | Reference to one or more __Stimuli__ representing the different types of possible activations of this __Process__|
 | __callGraph__ | List of task calls. This specifies the behavior of the process. The objects will be executed in the same order they are stored in the list. |
 | __preemption__ | Defines the preemption of a task by higher priority tasks. |
 | __multipleTaskActivationLimit__ | Defines the maximal number of existing instances from the same task, which is checked for load limitation reasons when a task is activated. For the case of an exceeded multipleTaskActivationLimit, the activation is ignored.|
-| __stimuli__ | Reference to one or more __Stimuli__ representing the different types of possible activations of this __Task__|
 
 
 h3. The Call Graph
@@ -294,7 +292,7 @@ A __Call Sequence__ contains a list of elements that are executed by the __Proce
 * __Clear Event__: Clear an __OS-Event__
 * __Set Event__: Set/Fire an __OS-Event__
 * __Enforced Migration__: Migrate to another __Scheduler__
-* __Inter Process Activation__: Activate a __Process__
+* __Inter Process Trigger__: "Start" another __Process__ (via Trigger and Stimulus)
 * __Schedule Point__: Trigger the Scheduler
 * __Task Runnable Call__: Invoke a __Runnable__
 
@@ -392,6 +390,8 @@ Another issue can be the distribution to a multi-core system, coming from a sing
 h3. Process Chains
 
 The following figure shows the structure which describes __Process Chains__ in the AMALTHEA software model. A process chain is used to group task and isrs together which are executing after each other and represent an end-to-end data processing path. The processes inside a process chain are connected via __Inter Process Activations__.
+
+!../pictures/model_sw_process_chain.png!
 
 The following attributes are describing a process chain:
 
