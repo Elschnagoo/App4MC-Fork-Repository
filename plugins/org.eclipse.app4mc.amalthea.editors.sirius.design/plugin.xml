@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="org.eclipse.app4mc.amalthea.editors.sirius.design.Activator"
+               id="org.eclipse.app4mc.amalthea.editors.design"
+	       name="amalthea">
+    </component>
+  </extension>
+  <extension
+        point="org.eclipse.ui.handlers">
+     <handler
+           class="org.eclipse.app4mc.amalthea.editors.sirius.design.command.OpenTaskEditorHandler"
+           commandId="org.eclipse.app4mc.amalthea.editors.design.task.openwith">
+     </handler>
+     <handler
+           class="org.eclipse.app4mc.amalthea.editors.sirius.design.command.OpenLabelEditorHandler"
+           commandId="org.eclipse.app4mc.amalthea.editors.design.label.openwith">
+     </handler>
+     <handler
+           class="org.eclipse.app4mc.amalthea.editors.sirius.design.command.OpenEventChainEditorHandler"
+           commandId="org.eclipse.app4mc.amalthea.editors.design.eventchain.openwith">
+     </handler>
+  </extension>
+  <extension
+        point="org.eclipse.ui.menus">
+     <menuContribution
+           allPopups="false"
+           locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+        <command
+              commandId="org.eclipse.app4mc.amalthea.editors.design.task.openwith"
+              id="org.eclipse.app4mc.amalthea.openmapping.popups.taskview"
+              label="Task View"
+              style="push">
+           <visibleWhen>
+              <with
+                    variable="selection">
+                 <iterate
+                       operator="or">
+                    <instanceof
+                          value="org.eclipse.app4mc.amalthea.model.Task">
+                    </instanceof>
+                 </iterate>
+              </with>
+           </visibleWhen>
+        </command>
+        <command
+              commandId="org.eclipse.app4mc.amalthea.editors.design.label.openwith"
+              id="org.eclipse.app4mc.amalthea.openmapping.popups.labelview"
+              label="Label View"
+              style="push">
+           <visibleWhen>
+              <with
+                    variable="selection">
+                 <iterate
+                       operator="or">
+                    <instanceof
+                          value="org.eclipse.app4mc.amalthea.model.Label">
+                    </instanceof>
+                 </iterate>
+              </with>
+           </visibleWhen>
+        </command>
+        <command
+              commandId="org.eclipse.app4mc.amalthea.editors.design.eventchain.openwith"
+              id="org.eclipse.app4mc.amalthea.openmapping.popups.eventchainview"
+              label="EventChain View"
+              style="push">
+           <visibleWhen>
+              <with
+                    variable="selection">
+                 <iterate
+                       operator="or">
+                    <instanceof
+                          value="org.eclipse.app4mc.amalthea.model.EventChain">
+                    </instanceof>
+                 </iterate>
+              </with>
+           </visibleWhen>
+        </command>
+     </menuContribution>
+  </extension>
+  <extension
+        point="org.eclipse.ui.commands">
+     <command
+           id="org.eclipse.app4mc.amalthea.editors.design.task.openwith"
+           name="Task View">
+     </command>
+     <command
+           id="org.eclipse.app4mc.amalthea.editors.design.label.openwith"
+           name="Label View">
+     </command>
+     <command
+           id="org.eclipse.app4mc.amalthea.editors.design.eventchain.openwith"
+           name="EventChain View">
+     </command>
+
+  </extension>
+</plugin>

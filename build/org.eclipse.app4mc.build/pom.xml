@@ -101,6 +101,8 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.help</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.help</module>
 		<module>../../plugins/org.eclipse.app4mc.validation.help</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.editors.sirius</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.editors.sirius.design</module>
 
 		<!-- Features -->
 
@@ -156,6 +158,7 @@
 		<module>../../tests/org.eclipse.app4mc.amalthea.validation.test</module>
 		<module>../../tests/org.eclipse.app4mc.multicore.openmapping.test</module>
 		<module>../../tests/org.eclipse.app4mc.multicore.sharelibs.test</module>
+		<module>../../tests/org.eclipse.app4mc.amalthea.editors.sirius.design.test</module>
 		<module>../../tests/org.eclipse.app4mc.rcptt</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.model.test</module>
 	</modules>
