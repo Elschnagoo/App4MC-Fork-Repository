@@ -125,14 +125,12 @@ public class ConsoleOutputHandler {
 	 * Focus the console
 	 */
 	public void focus() {
-		if (PlatformUI.isWorkbenchRunning()) {
-			try {
+		try {
+			if (PlatformUI.isWorkbenchRunning()) {
 				final IWorkbench workbench = PlatformUI.getWorkbench();
 				final IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
 				if (window == null) {
-					return; // Skip! //TODO: There should be a better solution
-							// for
-					// this.
+					return;
 				}
 				final IWorkbenchPage page = window.getActivePage();
 				final String id = IConsoleConstants.ID_CONSOLE_VIEW;
@@ -144,11 +142,11 @@ public class ConsoleOutputHandler {
 				} catch (final PartInitException e) {
 					e.printStackTrace();
 				}
-			} catch (final NullPointerException e) {
-				this.log.debug("focus: No Eclipse workbench available, nothing to do!");
-			} catch (final NoClassDefFoundError e) {
-				this.log.debug("focus: No Eclipse workbench available, nothing to do!");
 			}
+		} catch (final NullPointerException e) {
+			this.log.debug("focus: No Eclipse workbench available, nothing to do!");
+		} catch (final NoClassDefFoundError e) {
+			this.log.debug("focus: No Eclipse workbench available, nothing to do!");
 		}
 	}
 }
