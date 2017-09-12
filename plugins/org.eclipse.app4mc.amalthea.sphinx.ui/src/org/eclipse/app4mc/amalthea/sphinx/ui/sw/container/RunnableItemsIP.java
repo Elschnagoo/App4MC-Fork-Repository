@@ -13,33 +13,21 @@ package org.eclipse.app4mc.amalthea.sphinx.ui.sw.container;
 
 import java.util.Collection;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.provider.AmaltheaEditPlugin;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.app4mc.amalthea.sphinx.ui.ExtendedSphinxTransientItemProvider;
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.sphinx.emf.edit.TransientItemProvider;
 
-public class RunnableItemsIP extends TransientItemProvider {
+public class RunnableItemsIP extends ExtendedSphinxTransientItemProvider {
 
 	public RunnableItemsIP(final AdapterFactory adapterFactory, final Runnable parent) {
 		super(adapterFactory);
 		parent.eAdapters().add(this);
 	}
 
-	private EStructuralFeature myFeature() {
+	protected EStructuralFeature myFeature() {
 		return AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems();
-	}
-
-	private AmaltheaFactory myFactory() {
-		return AmaltheaFactory.eINSTANCE;
 	}
 
 	/**
@@ -84,28 +72,6 @@ public class RunnableItemsIP extends TransientItemProvider {
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createChannelReceive()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createChannelSend()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createCustomEventTrigger()));
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createDragAndDropCommand(org.eclipse.emf.edit.domain.EditingDomain,
-	 *      java.lang.Object, float, int, int, java.util.Collection)
-	 */
-	@Override
-	protected Command createDragAndDropCommand(final EditingDomain domain, final Object owner, final float location,
-			final int operations, final int operation, final Collection<?> collection) {
-		if (!(owner instanceof TransientItemProvider)
-				&& new AddCommand(domain, (EObject) owner, myFeature(), collection).canExecute()) {
-			return super.createDragAndDropCommand(domain, owner, location, operations, operation, collection);
-		}
-		return UnexecutableCommand.INSTANCE;
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getResourceLocator()
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return AmaltheaEditPlugin.INSTANCE.getPluginResourceLocator();
 	}
 
 }
