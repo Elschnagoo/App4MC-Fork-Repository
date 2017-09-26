@@ -34,7 +34,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class RunnableInstructionsItemProvider extends RunnableItemItemProvider {
+public class RunnableInstructionsItemProvider extends ComputationItemItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

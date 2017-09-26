@@ -13942,7 +13942,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		osDataConsistencyEClass.getESuperTypes().add(this.getBaseObject());
 		semaphoreEClass.getESuperTypes().add(this.getReferableBaseObject());
 		schedulerEClass.getESuperTypes().add(this.getReferableBaseObject());
-		computationItemEClass.getESuperTypes().add(this.getBaseObject());
+		computationItemEClass.getESuperTypes().add(this.getRunnableItem());
 		taskSchedulerEClass.getESuperTypes().add(this.getScheduler());
 		interruptControllerEClass.getESuperTypes().add(this.getScheduler());
 		algorithmEClass.getESuperTypes().add(this.getBaseObject());
@@ -14055,11 +14055,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		modeLabelEClass.getESuperTypes().add(this.getIDisplayName());
 		sectionEClass.getESuperTypes().add(this.getReferableBaseObject());
 		runnableItemEClass.getESuperTypes().add(this.getBaseObject());
-		runnableInstructionsEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableInstructionsEClass.getESuperTypes().add(this.getComputationItem());
 		modeLabelAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableModeSwitchEClass.getESuperTypes().add(this.getRunnableItem());
-		labelAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		labelAccessEClass.getESuperTypes().add(this.getComputationItem());
 		channelAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		channelSendEClass.getESuperTypes().add(this.getChannelAccess());

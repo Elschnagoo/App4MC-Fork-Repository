@@ -2025,6 +2025,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.COMPUTATION_ITEM: {
 				ComputationItem computationItem = (ComputationItem)theEObject;
 				T1 result = caseComputationItem(computationItem);
+				if (result == null) result = caseRunnableItem(computationItem);
 				if (result == null) result = caseBaseObject(computationItem);
 				if (result == null) result = caseIAnnotatable(computationItem);
 				if (result == null) result = defaultCase(theEObject);
@@ -3064,8 +3065,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS: {
 				RunnableInstructions runnableInstructions = (RunnableInstructions)theEObject;
 				T1 result = caseRunnableInstructions(runnableInstructions);
-				if (result == null) result = caseRunnableItem(runnableInstructions);
 				if (result == null) result = caseComputationItem(runnableInstructions);
+				if (result == null) result = caseRunnableItem(runnableInstructions);
 				if (result == null) result = caseBaseObject(runnableInstructions);
 				if (result == null) result = caseIAnnotatable(runnableInstructions);
 				if (result == null) result = defaultCase(theEObject);
@@ -3098,8 +3099,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.LABEL_ACCESS: {
 				LabelAccess labelAccess = (LabelAccess)theEObject;
 				T1 result = caseLabelAccess(labelAccess);
-				if (result == null) result = caseRunnableItem(labelAccess);
 				if (result == null) result = caseComputationItem(labelAccess);
+				if (result == null) result = caseRunnableItem(labelAccess);
 				if (result == null) result = caseBaseObject(labelAccess);
 				if (result == null) result = caseIAnnotatable(labelAccess);
 				if (result == null) result = defaultCase(theEObject);

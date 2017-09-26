@@ -39,7 +39,7 @@ package org.eclipse.app4mc.amalthea.model;
  *        dataLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
  * @generated
  */
-public interface LabelAccess extends RunnableItem, ComputationItem {
+public interface LabelAccess extends ComputationItem {
 	/**
 	 * Returns the value of the '<em><b>Data</b></em>' reference.
 	 * <!-- begin-user-doc -->

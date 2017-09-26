@@ -2062,7 +2062,7 @@ abstract class Scheduler extends ReferableBaseObject
 /*
  * Representation of a object that describes computation
  */
-abstract class ComputationItem extends BaseObject
+abstract class ComputationItem extends RunnableItem
 {
 }
 
@@ -3199,7 +3199,7 @@ abstract class RunnableItem extends BaseObject
 /*
  * Representation of the execution cost of a Runnable (default and core-specific)
  */
-class RunnableInstructions extends RunnableItem, ComputationItem {
+class RunnableInstructions extends ComputationItem {
 	contains Instructions[1] ^default
 	contains RunnableInstructionsEntry[] extended
 }
@@ -3234,7 +3234,7 @@ class RunnableModeSwitch extends RunnableItem
 /*
  * Representation of a label access of a run entity.
  */
-class LabelAccess extends RunnableItem, ComputationItem
+class LabelAccess extends ComputationItem
 {
 	refers Label[1] data
 	LabelAccessEnum access

@@ -14010,6 +14010,52 @@ public interface AmaltheaPackage extends EPackage {
 	int SCHEDULER_OPERATION_COUNT = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.RunnableItemImpl <em>Runnable Item</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.RunnableItemImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableItem()
+	 * @generated
+	 */
+	int RUNNABLE_ITEM = 295;
+
+	/**
+	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_ITEM__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
+
+	/**
+	 * The number of structural features of the '<em>Runnable Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_ITEM_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Container Notification Required</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED = BASE_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Runnable Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_ITEM_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ComputationItemImpl <em>Computation Item</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14026,7 +14072,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPUTATION_ITEM__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
+	int COMPUTATION_ITEM__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
 	 * The number of structural features of the '<em>Computation Item</em>' class.
@@ -14035,7 +14081,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPUTATION_ITEM_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 0;
+	int COMPUTATION_ITEM_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Container Notification Required</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTATION_ITEM___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Computation Item</em>' class.
@@ -14044,7 +14099,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPUTATION_ITEM_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
+	int COMPUTATION_ITEM_OPERATION_COUNT = RUNNABLE_ITEM_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TaskSchedulerImpl <em>Task Scheduler</em>}' class.
@@ -21939,52 +21994,6 @@ public interface AmaltheaPackage extends EPackage {
 	int SECTION_OPERATION_COUNT = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.RunnableItemImpl <em>Runnable Item</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.RunnableItemImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableItem()
-	 * @generated
-	 */
-	int RUNNABLE_ITEM = 295;
-
-	/**
-	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RUNNABLE_ITEM__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
-
-	/**
-	 * The number of structural features of the '<em>Runnable Item</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RUNNABLE_ITEM_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED = BASE_OBJECT_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Runnable Item</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RUNNABLE_ITEM_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.RunnableInstructionsImpl <em>Runnable Instructions</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -22001,7 +22010,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_INSTRUCTIONS__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
+	int RUNNABLE_INSTRUCTIONS__CUSTOM_PROPERTIES = COMPUTATION_ITEM__CUSTOM_PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Default</b></em>' containment reference.
@@ -22010,7 +22019,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_INSTRUCTIONS__DEFAULT = RUNNABLE_ITEM_FEATURE_COUNT + 0;
+	int RUNNABLE_INSTRUCTIONS__DEFAULT = COMPUTATION_ITEM_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Extended</b></em>' map.
@@ -22019,7 +22028,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_INSTRUCTIONS__EXTENDED = RUNNABLE_ITEM_FEATURE_COUNT + 1;
+	int RUNNABLE_INSTRUCTIONS__EXTENDED = COMPUTATION_ITEM_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Runnable Instructions</em>' class.
@@ -22028,7 +22037,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_INSTRUCTIONS_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
+	int RUNNABLE_INSTRUCTIONS_FEATURE_COUNT = COMPUTATION_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -22037,7 +22046,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_INSTRUCTIONS___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
+	int RUNNABLE_INSTRUCTIONS___CONTAINER_NOTIFICATION_REQUIRED = COMPUTATION_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Runnable Instructions</em>' class.
@@ -22046,7 +22055,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_INSTRUCTIONS_OPERATION_COUNT = RUNNABLE_ITEM_OPERATION_COUNT + 0;
+	int RUNNABLE_INSTRUCTIONS_OPERATION_COUNT = COMPUTATION_ITEM_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.RunnableInstructionsEntryImpl <em>Runnable Instructions Entry</em>}' class.
@@ -22257,7 +22266,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
+	int LABEL_ACCESS__CUSTOM_PROPERTIES = COMPUTATION_ITEM__CUSTOM_PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Data</b></em>' reference.
@@ -22266,7 +22275,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__DATA = RUNNABLE_ITEM_FEATURE_COUNT + 0;
+	int LABEL_ACCESS__DATA = COMPUTATION_ITEM_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Access</b></em>' attribute.
@@ -22275,7 +22284,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__ACCESS = RUNNABLE_ITEM_FEATURE_COUNT + 1;
+	int LABEL_ACCESS__ACCESS = COMPUTATION_ITEM_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Statistic</b></em>' containment reference.
@@ -22284,7 +22293,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__STATISTIC = RUNNABLE_ITEM_FEATURE_COUNT + 2;
+	int LABEL_ACCESS__STATISTIC = COMPUTATION_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Transmission Policy</b></em>' containment reference.
@@ -22293,7 +22302,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__TRANSMISSION_POLICY = RUNNABLE_ITEM_FEATURE_COUNT + 3;
+	int LABEL_ACCESS__TRANSMISSION_POLICY = COMPUTATION_ITEM_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Data Stability</b></em>' attribute.
@@ -22302,7 +22311,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__DATA_STABILITY = RUNNABLE_ITEM_FEATURE_COUNT + 4;
+	int LABEL_ACCESS__DATA_STABILITY = COMPUTATION_ITEM_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Data Link Int</b></em>' reference.
@@ -22311,7 +22320,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__DATA_LINK_INT = RUNNABLE_ITEM_FEATURE_COUNT + 5;
+	int LABEL_ACCESS__DATA_LINK_INT = COMPUTATION_ITEM_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Label Access</em>' class.
@@ -22320,7 +22329,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 6;
+	int LABEL_ACCESS_FEATURE_COUNT = COMPUTATION_ITEM_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -22329,7 +22338,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
+	int LABEL_ACCESS___CONTAINER_NOTIFICATION_REQUIRED = COMPUTATION_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Label Access</em>' class.
@@ -22338,7 +22347,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS_OPERATION_COUNT = RUNNABLE_ITEM_OPERATION_COUNT + 0;
+	int LABEL_ACCESS_OPERATION_COUNT = COMPUTATION_ITEM_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ChannelAccessImpl <em>Channel Access</em>}' class.

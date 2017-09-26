@@ -3233,7 +3233,7 @@ computation items: steps to perform the scheduling algorithm</xsd:documentation>
       <xsd:documentation>Representation of a object that describes computation</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:BaseObject"/>
+      <xsd:extension base="am:RunnableItem"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ComputationItem" type="am:ComputationItem">
@@ -4975,7 +4975,7 @@ which are belonging together.</xsd:documentation>
       <xsd:documentation>Representation of the execution cost of a Runnable (default and core-specific)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:ComputationItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="default" type="am:Instructions"/>
           <xsd:element name="extended" type="am:RunnableInstructionsEntry"/>
@@ -5048,7 +5048,7 @@ It can be used to define which mode value is written to the label.</xsd:document
       <xsd:documentation>Representation of a label access of a run entity.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:ComputationItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="data" type="am:Label"/>
           <xsd:element name="statistic" type="am:LabelAccessStatistic">

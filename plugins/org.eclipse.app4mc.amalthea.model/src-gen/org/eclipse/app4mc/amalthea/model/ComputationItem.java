@@ -27,5 +27,5 @@ package org.eclipse.app4mc.amalthea.model;
  * @model abstract="true"
  * @generated
  */
-public interface ComputationItem extends BaseObject {
+public interface ComputationItem extends RunnableItem {
 } // ComputationItem

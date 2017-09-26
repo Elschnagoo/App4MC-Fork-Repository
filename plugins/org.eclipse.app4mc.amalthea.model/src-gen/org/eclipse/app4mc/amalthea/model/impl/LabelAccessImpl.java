@@ -46,7 +46,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class LabelAccessImpl extends RunnableItemImpl implements LabelAccess {
+public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess {
 	/**
 	 * The cached value of the '{@link #getData() <em>Data</em>}' reference.
 	 * <!-- begin-user-doc -->

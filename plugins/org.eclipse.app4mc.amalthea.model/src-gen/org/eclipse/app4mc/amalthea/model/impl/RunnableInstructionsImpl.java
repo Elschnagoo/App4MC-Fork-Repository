@@ -45,7 +45,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class RunnableInstructionsImpl extends RunnableItemImpl implements RunnableInstructions {
+public class RunnableInstructionsImpl extends ComputationItemImpl implements RunnableInstructions {
 	/**
 	 * The cached value of the '{@link #getDefault() <em>Default</em>}' containment reference.
 	 * <!-- begin-user-doc -->
