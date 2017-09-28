@@ -861,6 +861,9 @@
               pattern="org\.eclipse\.app4mc\.amalthea\.model"/>
           <operand
               xsi:type="predicates:NamePredicate"
+              pattern="org\.eclipse\.app4mc\.amalthea\.model\.test"/>
+          <operand
+              xsi:type="predicates:NamePredicate"
               pattern="org\.eclipse\.app4mc\.amalthea\.sphinx"/>
           <operand
               xsi:type="predicates:NamePredicate"
@@ -1044,6 +1047,9 @@
         <operand
             xsi:type="predicates:NamePredicate"
             pattern="org\.eclipse\.app4mc\.amalthea\..*example.*"/>
+        <operand
+            xsi:type="predicates:NamePredicate"
+            pattern="app4mc\.example.*"/>
       </predicate>
     </workingSet>
     <workingSet
