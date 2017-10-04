@@ -224,8 +224,7 @@ public class CustomItemProviderService {
    * Pretty print methods
    */
   private static String ppCamelCase(final String s) {
-    String[] _splitByCharacterTypeCamelCase = StringUtils.splitByCharacterTypeCamelCase(s);
-    return StringUtils.join(_splitByCharacterTypeCamelCase, " ");
+    return StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(s), " ");
   }
   
   private static String ppName(final String name) {
@@ -258,16 +257,14 @@ public class CustomItemProviderService {
     if (_equals) {
       return "<frequency>";
     }
-    double _value = frequency.getValue();
-    final String value = Double.toString(_value);
+    final String value = Double.toString(frequency.getValue());
     String _xifexpression = null;
     FrequencyUnit _unit = frequency.getUnit();
     boolean _equals_1 = Objects.equal(_unit, FrequencyUnit._UNDEFINED_);
     if (_equals_1) {
       _xifexpression = "<unit>";
     } else {
-      FrequencyUnit _unit_1 = frequency.getUnit();
-      _xifexpression = _unit_1.getLiteral();
+      _xifexpression = frequency.getUnit().getLiteral();
     }
     final String unit = _xifexpression;
     return ((value + " ") + unit);
@@ -284,8 +281,7 @@ public class CustomItemProviderService {
     if (_equals_1) {
       _xifexpression = "???";
     } else {
-      BigInteger _value_1 = time.getValue();
-      _xifexpression = _value_1.toString();
+      _xifexpression = time.getValue().toString();
     }
     final String value = _xifexpression;
     String _xifexpression_1 = null;
@@ -294,8 +290,7 @@ public class CustomItemProviderService {
     if (_equals_2) {
       _xifexpression_1 = "<unit>";
     } else {
-      TimeUnit _unit_1 = time.getUnit();
-      _xifexpression_1 = _unit_1.getLiteral();
+      _xifexpression_1 = time.getUnit().getLiteral();
     }
     final String unit = _xifexpression_1;
     return ((value + " ") + unit);
@@ -312,8 +307,7 @@ public class CustomItemProviderService {
     if (_equals_1) {
       _xifexpression = "???";
     } else {
-      BigInteger _value_1 = size.getValue();
-      _xifexpression = _value_1.toString();
+      _xifexpression = size.getValue().toString();
     }
     final String value = _xifexpression;
     String _xifexpression_1 = null;
@@ -322,8 +316,7 @@ public class CustomItemProviderService {
     if (_equals_2) {
       _xifexpression_1 = "<unit>";
     } else {
-      DataSizeUnit _unit_1 = size.getUnit();
-      _xifexpression_1 = _unit_1.getLiteral();
+      _xifexpression_1 = size.getUnit().getLiteral();
     }
     final String unit = _xifexpression_1;
     return ((value + " ") + unit);
@@ -334,9 +327,7 @@ public class CustomItemProviderService {
     if (_equals) {
       return "";
     }
-    String _replace = name.replace("Distribution", "");
-    String _replace_1 = _replace.replace("Estimators", "");
-    return _replace_1.replace("Parameters", "");
+    return name.replace("Distribution", "").replace("Estimators", "").replace("Parameters", "");
   }
   
   private static String getInstructionsText(final Instructions instr) {
@@ -748,8 +739,7 @@ public class CustomItemProviderService {
         _xifexpression = (feature + " -- ");
       }
       final String s1 = _xifexpression;
-      long _value = ((InstructionsConstant)object).getValue();
-      final String s2 = Long.toString(_value);
+      final String s2 = Long.toString(((InstructionsConstant)object).getValue());
       return ((s1 + "instructions (constant): ") + s2);
     } else {
       return defaultText;
@@ -1230,8 +1220,7 @@ public class CustomItemProviderService {
       if (_isNullOrEmpty) {
         _xifexpression = "<process>";
       } else {
-        EClass _eClass = proc.eClass();
-        String _name_1 = _eClass.getName();
+        String _name_1 = proc.eClass().getName();
         String _plus = (_name_1 + " ");
         String _name_2 = proc.getName();
         _xifexpression = (_plus + _name_2);
@@ -1622,8 +1611,7 @@ public class CustomItemProviderService {
       if (_isNullOrEmpty) {
         _xifexpression = "<process>";
       } else {
-        EClass _eClass = proc.eClass();
-        String _name_2 = _eClass.getName();
+        String _name_2 = proc.eClass().getName();
         String _plus = (_name_2 + " ");
         String _name_3 = proc.getName();
         _xifexpression = (_plus + _name_3);
@@ -1865,8 +1853,7 @@ public class CustomItemProviderService {
         if (_isNullOrEmpty) {
           _xifexpression_1 = "<runnable>";
         } else {
-          org.eclipse.app4mc.amalthea.model.Runnable _runnable_1 = ((RunnableScope)scope).getRunnable();
-          String _name_2 = _runnable_1.getName();
+          String _name_2 = ((RunnableScope)scope).getRunnable().getName();
           _xifexpression_1 = ("Runnable " + _name_2);
         }
         _switchResult = _xifexpression_1;
@@ -1884,12 +1871,9 @@ public class CustomItemProviderService {
           if (_isNullOrEmpty) {
             _xifexpression_1 = "<process>";
           } else {
-            AbstractProcess _process_1 = ((ProcessScope)scope).getProcess();
-            EClass _eClass = _process_1.eClass();
-            String _name_2 = _eClass.getName();
+            String _name_2 = ((ProcessScope)scope).getProcess().eClass().getName();
             String _plus = (_name_2 + " ");
-            AbstractProcess _process_2 = ((ProcessScope)scope).getProcess();
-            String _name_3 = _process_2.getName();
+            String _name_3 = ((ProcessScope)scope).getProcess().getName();
             _xifexpression_1 = (_plus + _name_3);
           }
           _switchResult = _xifexpression_1;
@@ -1908,8 +1892,7 @@ public class CustomItemProviderService {
           if (_isNullOrEmpty) {
             _xifexpression_1 = "<component>";
           } else {
-            Component _component_1 = ((ComponentScope)scope).getComponent();
-            String _name_2 = _component_1.getName();
+            String _name_2 = ((ComponentScope)scope).getComponent().getName();
             _xifexpression_1 = ("Component " + _name_2);
           }
           _switchResult = _xifexpression_1;
@@ -2012,13 +1995,12 @@ public class CustomItemProviderService {
         _xifexpression = "<sub chain>";
       } else {
         String _xifexpression_1 = null;
-        String _name = chain.getName();
-        boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name);
+        boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(chain.getName());
         if (_isNullOrEmpty) {
           _xifexpression_1 = "Sub Chain";
         } else {
-          String _name_1 = chain.getName();
-          _xifexpression_1 = ("(Sub Chain) " + _name_1);
+          String _name = chain.getName();
+          _xifexpression_1 = ("(Sub Chain) " + _name);
         }
         _xifexpression = _xifexpression_1;
       }
@@ -2141,8 +2123,7 @@ public class CustomItemProviderService {
         int _size = memoryNames.size();
         boolean _greaterThan = (_size > 10);
         if (_greaterThan) {
-          List<String> _subList = memoryNames.subList(0, 10);
-          String _join = IterableExtensions.join(_subList, ", ");
+          String _join = IterableExtensions.join(memoryNames.subList(0, 10), ", ");
           String _plus = (" Memories : " + _join);
           _xifexpression_2 = (_plus + ", ...");
         } else {
@@ -2587,8 +2568,7 @@ public class CustomItemProviderService {
         }
         return CustomItemProviderService.ppName(_name_1);
       };
-      List<String> _map = ListExtensions.<Core, String>map(cores, _function);
-      final String s2 = IterableExtensions.join(_map, ", ");
+      final String s2 = IterableExtensions.join(ListExtensions.<Core, String>map(cores, _function), ", ");
       return (((("Allocation: " + s1) + " -- Cores ( ") + s2) + " )");
     } else {
       return defaultText;
@@ -2869,8 +2849,7 @@ public class CustomItemProviderService {
       if (_isNullOrEmpty_1) {
         _xifexpression_1 = "<element>";
       } else {
-        EClass _eClass = elem.eClass();
-        String _name_2 = _eClass.getName();
+        String _name_2 = elem.eClass().getName();
         String _plus = (_name_2 + " ");
         String _name_3 = elem.getName();
         _xifexpression_1 = (_plus + _name_3);
@@ -2960,8 +2939,7 @@ public class CustomItemProviderService {
         int _size = sectionNames.size();
         boolean _greaterThan = (_size > 10);
         if (_greaterThan) {
-          List<String> _subList = sectionNames.subList(0, 10);
-          String _join = IterableExtensions.join(_subList, ", ");
+          String _join = IterableExtensions.join(sectionNames.subList(0, 10), ", ");
           String _plus = (" Sections : " + _join);
           _xifexpression_2 = (_plus + ", ...");
         } else {
@@ -3036,8 +3014,7 @@ public class CustomItemProviderService {
    */
   public static String getDataStabilityItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof DataStability)) {
-      boolean _isEnabled = ((DataStability)object).isEnabled();
-      String _string = Boolean.valueOf(_isEnabled).toString();
+      String _string = Boolean.valueOf(((DataStability)object).isEnabled()).toString();
       return ("OS Data Stability - enabled: " + _string);
     } else {
       return defaultText;
@@ -3049,8 +3026,7 @@ public class CustomItemProviderService {
    */
   public static String getNonAtomicDataCoherencyItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof NonAtomicDataCoherency)) {
-      boolean _isEnabled = ((NonAtomicDataCoherency)object).isEnabled();
-      String _string = Boolean.valueOf(_isEnabled).toString();
+      String _string = Boolean.valueOf(((NonAtomicDataCoherency)object).isEnabled()).toString();
       return ("OS Data Coherency - enabled: " + _string);
     } else {
       return defaultText;
@@ -3183,8 +3159,7 @@ public class CustomItemProviderService {
       if (_isNullOrEmpty) {
         _xifexpression = "<process>";
       } else {
-        EClass _eClass = proc.eClass();
-        String _name_1 = _eClass.getName();
+        String _name_1 = proc.eClass().getName();
         String _plus = (_name_1 + " ");
         String _name_2 = proc.getName();
         _xifexpression = (_plus + _name_2);
@@ -3281,9 +3256,7 @@ public class CustomItemProviderService {
       if ((Objects.equal(grp, null) || Objects.equal(grp, GroupingType._UNDEFINED_))) {
         _xifexpression_1 = "<grouping>";
       } else {
-        String _literal = grp.getLiteral();
-        String _ppCamelCase = CustomItemProviderService.ppCamelCase(_literal);
-        _xifexpression_1 = _ppCamelCase.toLowerCase();
+        _xifexpression_1 = CustomItemProviderService.ppCamelCase(grp.getLiteral()).toLowerCase();
       }
       final String s2 = _xifexpression_1;
       String _xifexpression_2 = null;
@@ -3298,8 +3271,7 @@ public class CustomItemProviderService {
           }
           return CustomItemProviderService.ppName(_name);
         };
-        List<String> _map = ListExtensions.<CoreClassifier, String>map(cla, _function);
-        _xifexpression_2 = IterableExtensions.join(_map, ", ");
+        _xifexpression_2 = IterableExtensions.join(ListExtensions.<CoreClassifier, String>map(cla, _function), ", ");
       }
       final String s3 = _xifexpression_2;
       return ((((s1 + " (") + s2) + "): ") + s3);
@@ -3352,8 +3324,7 @@ public class CustomItemProviderService {
       if (_isNullOrEmpty) {
         _xifexpression = "<element>";
       } else {
-        EClass _eClass = elem.eClass();
-        String _name_1 = _eClass.getName();
+        String _name_1 = elem.eClass().getName();
         String _plus = (_name_1 + " ");
         String _name_2 = elem.getName();
         _xifexpression = (_plus + _name_2);
@@ -3409,9 +3380,7 @@ public class CustomItemProviderService {
       if ((Objects.equal(grp, null) || Objects.equal(grp, GroupingType._UNDEFINED_))) {
         _xifexpression_1 = "<grouping>";
       } else {
-        String _literal = grp.getLiteral();
-        String _ppCamelCase = CustomItemProviderService.ppCamelCase(_literal);
-        _xifexpression_1 = _ppCamelCase.toLowerCase();
+        _xifexpression_1 = CustomItemProviderService.ppCamelCase(grp.getLiteral()).toLowerCase();
       }
       final String s2 = _xifexpression_1;
       String _xifexpression_2 = null;
@@ -3426,8 +3395,7 @@ public class CustomItemProviderService {
           }
           return CustomItemProviderService.ppName(_name);
         };
-        List<String> _map = ListExtensions.<MemoryClassifier, String>map(cla, _function);
-        _xifexpression_2 = IterableExtensions.join(_map, ", ");
+        _xifexpression_2 = IterableExtensions.join(ListExtensions.<MemoryClassifier, String>map(cla, _function), ", ");
       }
       final String s3 = _xifexpression_2;
       return ((((s1 + " (") + s2) + "): ") + s3);
@@ -4014,8 +3982,7 @@ public class CustomItemProviderService {
   public static String getGroupItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof Group)) {
       String _xifexpression = null;
-      String _name = ((Group)object).getName();
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name);
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(((Group)object).getName());
       if (_isNullOrEmpty) {
         _xifexpression = null;
       } else {
@@ -4843,8 +4810,7 @@ public class CustomItemProviderService {
       if (_isNullOrEmpty) {
         _xifexpression = "<process>";
       } else {
-        EClass _eClass = proc.eClass();
-        String _name_1 = _eClass.getName();
+        String _name_1 = proc.eClass().getName();
         String _plus = (_name_1 + " ");
         String _name_2 = proc.getName();
         _xifexpression = (_plus + _name_2);
