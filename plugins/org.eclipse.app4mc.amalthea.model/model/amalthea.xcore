@@ -1,15 +1,12 @@
-/**
- * *******************************************************************************
- *  Copyright (c) 2017 Robert Bosch GmbH and others.
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- * *******************************************************************************
- */
- 
- 
- @GenModel(
+// *******************************************************************************
+//  Copyright (c) 2017 Robert Bosch GmbH and others.
+//  All rights reserved. This program and the accompanying materials
+//  are made available under the terms of the Eclipse Public License v1.0
+//  which accompanies this distribution, and is available at
+//  http://www.eclipse.org/legal/epl-v10.html
+// *******************************************************************************
+
+@GenModel(
 	modelName="Amalthea", prefix="Amalthea",
 	editDirectory="/org.eclipse.app4mc.amalthea.model.edit/src-gen",
 	rootExtendsClass="org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl",
@@ -324,12 +321,12 @@ class DataSize {
 	 */
 	op long getNumberBits() {
 		val bits = AmaltheaServices.convertToBit(this)
-		if (bits == null) -1L else bits.longValue
+		if (bits === null) -1L else bits.longValue
 	}
 	
 	op long getNumberBytes() {
 		val bits = AmaltheaServices.convertToBit(this)
-		if (bits == null) -1L else Math::ceil(bits.longValue / 8).longValue
+		if (bits === null) -1L else Math::ceil(bits.longValue / 8).longValue
 	}
 }
 
@@ -403,7 +400,7 @@ class ListObject extends Value {
 class StringObject extends Value{
 	String[1] value
 	op String toString() {
-		if (value == null)
+		if (value === null)
 			return "(String) null"
 		else
 			return "(String) \"" + value + "\""
@@ -416,7 +413,7 @@ class StringObject extends Value{
 class BigIntegerObject extends Value{ 
 	BigInteger[1] value = "0"
 	op String toString() {
-		if (value == null)
+		if (value === null)
 			return "(BigInteger) null"
 		else
 			return "(BigInteger) \"" + value + "\""
@@ -430,7 +427,7 @@ class ReferenceObject extends Value
 {
 	refers IReferable value
 	op String toString() {
-		if (value == null)
+		if (value === null)
 			return "(Reference) null"
 		else
 			return "(Reference) " + value.eClass.name + " \"" + value.name + "\""
