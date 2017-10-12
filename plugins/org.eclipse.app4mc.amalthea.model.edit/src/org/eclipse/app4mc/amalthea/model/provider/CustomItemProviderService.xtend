@@ -145,12 +145,14 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
+import org.eclipse.app4mc.amalthea.model.GetResultServerCall
+import org.eclipse.app4mc.amalthea.model.BlockingType
 
 class CustomItemProviderService {
 
 	private def static getContainingFeatureName(EObject object, String defaultText, String separator) {
 		val feature = object?.eContainingFeature()
-		val name = if(feature == null) defaultText else feature.name + separator
+		val name = if(feature === null) defaultText else feature.name + separator
 		return name
 	}
 
@@ -159,7 +161,7 @@ class CustomItemProviderService {
 	}
 	
 	private def static getLabelProviderText(Object object, AdapterFactory rootAF) {
-		if (object != null && rootAF.isFactoryForType(object)) {
+		if (object !== null && rootAF.isFactoryForType(object)) {
 			val plainAdapter = rootAF.adapt(object, typeof(IItemLabelProvider))
 			if (plainAdapter instanceof IItemLabelProvider) {
 				return plainAdapter.getText(object)
@@ -205,7 +207,7 @@ class CustomItemProviderService {
 
 
 	private def static getFrequencyText(Frequency frequency) {
-		if (frequency == null) return "<frequency>"
+		if (frequency === null) return "<frequency>"
 		
 		val value = Double.toString(frequency.value)
 		val unit = if (frequency.unit == FrequencyUnit::_UNDEFINED_) "<unit>" else frequency.unit.literal
@@ -213,23 +215,23 @@ class CustomItemProviderService {
 	}
 
 	private def static getTimeText(AbstractTime time) {
-		if (time == null) return "<time>"
+		if (time === null) return "<time>"
 		
-		val value = if (time.value == null) "???" else time.value.toString
+		val value = if (time.value === null) "???" else time.value.toString
 		val unit = if (time.unit == TimeUnit::_UNDEFINED_) "<unit>" else time.unit.literal
 		return value + " " + unit
 	}
 
 	private def static getDataSizeText(DataSize size) {
-		if (size == null) return "<data size>"
+		if (size === null) return "<data size>"
 		
-		val value = if (size.value == null) "???" else size.value.toString
+		val value = if (size.value === null) "???" else size.value.toString
 		val unit = if (size.unit == DataSizeUnit::_UNDEFINED_) "<unit>" else size.unit.literal
 		return value + " " + unit
 	}
 
 	private def static trimDistName(String name) {
-		if (name == null) return ""
+		if (name === null) return ""
 		
 		return name.replace("Distribution", "").replace("Estimators", "").replace("Parameters", "")
 	}
@@ -251,7 +253,7 @@ class CustomItemProviderService {
 			val key = object?.getKey()
 			val value = object?.getValue()
 			val s1 = if(key.isNullOrEmpty) "<key>" else "\"" + key + "\""
-			val s2 = if(value == null) "null" else value
+			val s2 = if(value === null) "null" else value
 			return s1 + " -> " + s2;
 		} else {
 			return defaultText
@@ -341,7 +343,7 @@ class CustomItemProviderService {
 	def static String getStringObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof StringObject) {
 			val s1 = getContainingFeatureName(object)
-			val s2 = if(object?.value == null) "null" else "\"" + object.value + "\"";
+			val s2 = if(object?.value === null) "null" else "\"" + object.value + "\"";
 			return s1 + s2
 		} else {
 			return defaultText
@@ -354,7 +356,7 @@ class CustomItemProviderService {
 	def static String getBigIntegerObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof BigIntegerObject) {
 			val s1 = getContainingFeatureName(object)
-			val s2 = if(object?.value == null) "null" else "\"" + object.value + "\"";
+			val s2 = if(object?.value === null) "null" else "\"" + object.value + "\"";
 			return s1 + s2
 		} else {
 			return defaultText
@@ -437,8 +439,8 @@ class CustomItemProviderService {
 			val lower = object?.lowerBound
 			val upper = object?.upperBound
 			val s1 = if(distName.isNullOrEmpty) "Dist: ???" else "Dist: " + trimDistName(distName)
-			val s2 = if(lower == null) "" else " lowerBound: " + lower
-			val s3 = if(upper == null) "" else " upperBound: " + upper
+			val s2 = if(lower === null) "" else " lowerBound: " + lower
+			val s3 = if(upper === null) "" else " upperBound: " + upper
 			
 	 		return s1 + s2 + s3
 		}
@@ -637,7 +639,7 @@ class CustomItemProviderService {
 			val kind = object?.kind
 			val name = object?.name
 			val s1 = ppName(cName, "<component>")
-			val s2 = if(kind == null || kind == InterfaceKind::_UNDEFINED_) "<kind>" else kind.literal
+			val s2 = if(kind === null || kind == InterfaceKind::_UNDEFINED_) "<kind>" else kind.literal
 			val s3 = ppName(name, "<port>")
 			return s1 + " " + s2 + " " + s3
 		} else {
@@ -655,7 +657,7 @@ class CustomItemProviderService {
 			val portName = object?.port?.name
 			var String s2 = ""
 			var String s4 = ""
-			if (object?.instance == null) {
+			if (object?.instance === null) {
 				s4 = " (enclosing composite)"
 			} else {
 				s2 = if(instName.isNullOrEmpty) "??? / " else instName + " / "
@@ -706,7 +708,7 @@ class CustomItemProviderService {
 			val name = object?.name
 			val event = object?.event
 			val s1 = ppName(name)
-			var s2 = if(event == null) "<event>" else getLabelProviderText(event, rootAF)
+			var s2 = if(event === null) "<event>" else getLabelProviderText(event, rootAF)
 			
 			return "Config " + s1 + " -> trace " + s2
 		} else {
@@ -844,8 +846,8 @@ class CustomItemProviderService {
 		if (object instanceof CountRequirementLimit) {
 			val metric = object?.metric
 			val limitType = object?.limitType
-			val limitValue = if (object == null) 0 else object.limitValue
-			val s1 = if(metric == null || metric == CountMetric::_UNDEFINED_) "<count metric>" else metric.literal + " count"
+			val limitValue = if (object === null) 0 else object.limitValue
+			val s1 = if(metric === null || metric == CountMetric::_UNDEFINED_) "<count metric>" else metric.literal + " count"
 			val s2 = getLimitTypeText(limitType)
 			val s3 = Double.toString(limitValue)
 			return s1 + s2 + s3
@@ -862,8 +864,8 @@ class CustomItemProviderService {
 			val metric = object?.metric
 			val hwContext = object?.hardwareContext?.name
 			val limitType = object?.limitType
-			val limitValue = if (object == null) 0 else object.limitValue
-			val s1 = if(metric == null || metric == CPUPercentageMetric::_UNDEFINED_) "<CPU % metric>" else metric.literal
+			val limitValue = if (object === null) 0 else object.limitValue
+			val s1 = if(metric === null || metric == CPUPercentageMetric::_UNDEFINED_) "<CPU % metric>" else metric.literal
 			val s2 = if(hwContext.isNullOrEmpty) "" else " on " + hwContext
 			val s3 = getLimitTypeText(limitType)
 			val s4 = Double.toString(limitValue) + " %"
@@ -881,7 +883,7 @@ class CustomItemProviderService {
 			val metric = object?.metric
 			val limitType = object?.limitType
 			val limitValue = object?.limitValue
-			val s1 = if(metric == null || metric == FrequencyMetric::_UNDEFINED_) "<frequency metric>" else metric.literal
+			val s1 = if(metric === null || metric == FrequencyMetric::_UNDEFINED_) "<frequency metric>" else metric.literal
 			val s2 = getLimitTypeText(limitType)
 			val s3 = getFrequencyText(limitValue)
 			return s1 + s2 + s3
@@ -908,8 +910,8 @@ class CustomItemProviderService {
 		if (object instanceof PercentageRequirementLimit) {
 			val metric = object?.metric
 			val limitType = object?.limitType
-			val limitValue = if (object == null) 0 else object.limitValue
-			val s1 = if(metric == null || metric == PercentageMetric::_UNDEFINED_) "<% metric>" else metric.literal
+			val limitValue = if (object === null) 0 else object.limitValue
+			val s1 = if(metric === null || metric == PercentageMetric::_UNDEFINED_) "<% metric>" else metric.literal
 			val s2 = getLimitTypeText(limitType)
 			val s3 = Double.toString(limitValue) + " %"
 			return s1 + s2 + s3
@@ -926,7 +928,7 @@ class CustomItemProviderService {
 			val metric = object?.metric
 			val limitType = object?.limitType
 			val limitValue = object?.limitValue
-			val s1 = if(metric == null || metric == TimeMetric::_UNDEFINED_) "<time metric>" else metric.literal
+			val s1 = if(metric === null || metric == TimeMetric::_UNDEFINED_) "<time metric>" else metric.literal
 			val s2 = getLimitTypeText(limitType)
 			val s3 = getTimeText(limitValue)
 			return s1 + s2 + s3
@@ -1072,7 +1074,7 @@ class CustomItemProviderService {
 			val direction = object?.direction
 			val scope = object?.scope
 			val s1 = ppName(name, "<group>")
-			val s2 = if(direction == null || direction == CoherencyDirection::_UNDEFINED_) "<direction>" else direction.literal
+			val s2 = if(direction === null || direction == CoherencyDirection::_UNDEFINED_) "<direction>" else direction.literal
 			val s3 = switch scope {
 				RunnableScope: if (scope.runnable?.name.isNullOrEmpty) "<runnable>" else "Runnable " + scope.runnable.name
 				ProcessScope: if (scope.process?.name.isNullOrEmpty) "<process>" else scope.process.eClass.name + " " + scope.process.name
@@ -1130,7 +1132,7 @@ class CustomItemProviderService {
 		if (object instanceof EventChainContainer) {
 			val chain = object?.eventChain
 			val s1 = getContainingFeatureName(object)
-			val s2 = if(chain == null) "<sub chain>" else if (chain.name.isNullOrEmpty) "Sub Chain" else "(Sub Chain) " + chain.name
+			val s2 = if(chain === null) "<sub chain>" else if (chain.name.isNullOrEmpty) "Sub Chain" else "(Sub Chain) " + chain.name
 			return s1 + s2
 		} else {
 			return defaultText
@@ -1378,8 +1380,8 @@ class CustomItemProviderService {
 	def static String getLatencyConstantItemProviderText(Object object, String defaultText) {
 		if (object instanceof LatencyConstant) {
 			val type = object?.accessType
-			val value = if(object == null) 0 else object.value
-			val s1 = if(type == null || type == RWType::_UNDEFINED_) "?" else type.literal
+			val value = if(object === null) 0 else object.value
+			val s1 = if(type === null || type == RWType::_UNDEFINED_) "?" else type.literal
 			val s2 = Long.toString(value)
 			return "Access: " + s1 + " -- Latency (constant): " + s2
 		} else {
@@ -1395,7 +1397,7 @@ class CustomItemProviderService {
 		if (object instanceof LatencyDeviation) {
 			val type = object.accessType
 			val distName = object?.deviation?.distribution?.eClass?.name
-			val s1 = if(type == null || type == RWType::_UNDEFINED_) "?" else type.literal
+			val s1 = if(type === null || type == RWType::_UNDEFINED_) "?" else type.literal
 			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
 			return "Access: " + s1 + " -- Latency (deviation): " + s2
 		} else {
@@ -1632,7 +1634,7 @@ class CustomItemProviderService {
 			val mode = object.mode
 			
 			val s1 = "OS Data Consistency - "
-			val s2 = if(mode == null || mode == OsDataConsistencyMode::_UNDEFINED_) "?" else mode.literal
+			val s2 = if(mode === null || mode == OsDataConsistencyMode::_UNDEFINED_) "?" else mode.literal
 			return s1 + s2
 		} else {
 			return defaultText
@@ -1691,7 +1693,7 @@ class CustomItemProviderService {
 	def static String getOsISRInstructionsItemProviderText(Object object, String defaultText) {
 		if (object instanceof OsISRInstructions) {
 			val feature = object?.eContainingFeature()
-			val s1 = if(feature == null) "" else feature.name
+			val s1 = if(feature === null) "" else feature.name
 			return s1
 		} else {
 			return defaultText
@@ -1790,8 +1792,8 @@ class CustomItemProviderService {
 			val grp = object?.grouping
 			val cla = object?.classifiers
 
-			val s1 = if(con == null || con == Condition::_UNDEFINED_) "<condition>" else con.literal
-			val s2 = if(grp == null || grp == GroupingType::_UNDEFINED_) "<grouping>" else ppCamelCase(grp.literal).toLowerCase
+			val s1 = if(con === null || con == Condition::_UNDEFINED_) "<condition>" else con.literal
+			val s2 = if(grp === null || grp == GroupingType::_UNDEFINED_) "<grouping>" else ppCamelCase(grp.literal).toLowerCase
 			val s3 = if (cla.isNullOrEmpty) "<classifiers>" else cla.map[e| ppName(e?.name)].join(", ")
 			return s1 + " (" + s2 + "): " + s3;
 		} else {
@@ -1843,8 +1845,8 @@ class CustomItemProviderService {
 			val grp = object?.grouping
 			val cla = object?.classifiers
 
-			val s1 = if(con == null || con == Condition::_UNDEFINED_) "<condition>" else con.literal
-			val s2 = if(grp == null || grp == GroupingType::_UNDEFINED_) "<grouping>" else ppCamelCase(grp.literal).toLowerCase
+			val s1 = if(con === null || con == Condition::_UNDEFINED_) "<condition>" else con.literal
+			val s2 = if(grp === null || grp == GroupingType::_UNDEFINED_) "<grouping>" else ppCamelCase(grp.literal).toLowerCase
 			val s3 = if (cla.isNullOrEmpty) "<classifiers>" else cla.map[e| ppName(e?.name)].join(", ")
 			return s1 + " (" + s2 + "): " + s3;
 		} else {
@@ -1913,7 +1915,7 @@ class CustomItemProviderService {
 			val prov = object?.valueProvider
 			val value = object?.value
 			val s1 = if(prov?.name.isNullOrEmpty) "<mode label>" else "Mode Label " + prov.name
-			val s2 = if(value == null) "<value>" else value.toString
+			val s2 = if(value === null) "<value>" else value.toString
 			return s1 + " == " + s2
 		} else {
 			return defaultText
@@ -1937,7 +1939,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getArrivalCurveEntryItemProviderText(Object object, String defaultText) {
 		if (object instanceof ArrivalCurveEntry) {
-			val numEvents = if (object == null) 0 else object.numberOfEvents
+			val numEvents = if (object === null) 0 else object.numberOfEvents
 			val s1 = getTimeText(object?.lowerTimeBorder)
 			val s2 = getTimeText(object?.upperTimeBorder)
 			return "#events: " + numEvents + " -- interval: " + s1 + ", " + s2
@@ -1995,7 +1997,7 @@ class CustomItemProviderService {
 			val s1 = ppName(originName, "<runnable>")
 			val s2 = ppName(targetName, "<runnable>")
 			val s3 = ppName(labelName, "<label>")
-			val s4 = if(accessType == null || accessType == AccessPrecedenceType::_UNDEFINED_) "<access>" else accessType.literal
+			val s4 = if(accessType === null || accessType == AccessPrecedenceType::_UNDEFINED_) "<access>" else accessType.literal
 			return "Spec: " + s1 + " --> " + s2 + " (" + s3 + " : " + s4 + ")"
 		} else {
 			return defaultText
@@ -2024,7 +2026,7 @@ class CustomItemProviderService {
 			val order = object?.orderType
 			val s1 = ppName(originName, "<runnable>")
 			val s2 = ppName(targetName, "<runnable>")
-			val s3 = if(order == null || order == OrderType::_UNDEFINED_) "<order>" else order.literal
+			val s3 = if(order === null || order == OrderType::_UNDEFINED_) "<order>" else order.literal
 			return "Spec: " + s1 + " --> " + s2 + " (" + s3 + ")"
 		} else {
 			return defaultText
@@ -2077,7 +2079,7 @@ class CustomItemProviderService {
 			val serverRun = object?.serverRunnable?.name
 			val waiting = object?.waitingBehaviour
 			val s1 = ppName(serverRun, "<runnable>")
-			val s2 = if(waiting == null || waiting == WaitingBehaviour::_UNDEFINED_) "undefined" else waiting.literal
+			val s2 = if(waiting === null || waiting == WaitingBehaviour::_UNDEFINED_) "undefined" else waiting.literal
 			return "call server: " + s1 + " (sync - " + s2 + " waiting)"
 		} else {
 			return defaultText
@@ -2095,6 +2097,31 @@ class CustomItemProviderService {
 		return list
 	}
 
+	/*****************************************************************************
+	 * 						GetResultServerCallItemProvider
+	 *****************************************************************************/
+	def static String getGetResultServerCallItemProviderText(Object object, String defaultText) {
+		if (object instanceof GetResultServerCall) {
+			val serverRun = object?.serverRunnable?.name
+			val blocking = object?.blockingType
+			val s1 = ppName(serverRun, "<runnable>")
+			val s2 = if(blocking === null || blocking == BlockingType::_UNDEFINED_) "undefined" else blocking.literal.replace("_", " ")
+			return "call server: " + s1 + " (get result - " + s2 + ")"
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getGetResultServerCallItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(GetResultServerCall)) {
+			case AmaltheaPackage::GET_RESULT_SERVER_CALL__SERVER_RUNNABLE,
+			case AmaltheaPackage::GET_RESULT_SERVER_CALL__BLOCKING_TYPE:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+		}
+		return list
+	}
 
 	/*****************************************************************************
 	 * 						ChainedProcessPrototypeItemProvider
@@ -2102,8 +2129,8 @@ class CustomItemProviderService {
 	def static String getChainedProcessPrototypeItemProviderText(Object object, String defaultText) {
 		if (object instanceof ChainedProcessPrototype) {
 			val proto = object?.prototype?.name
-			val apply = if(object == null) 0 else object.apply
-			val offset = if(object == null) 0 else object.offset
+			val apply = if(object === null) 0 else object.apply
+			val offset = if(object === null) 0 else object.offset
 			val s1 = ppName(proto, "<process prototype>")
 			return "Chained Prototype " + s1 + "(apply: " + apply + " offset: " + offset + ")"
 		} else {
@@ -2129,15 +2156,15 @@ class CustomItemProviderService {
 	def static String getGroupItemProviderText(Object object, String defaultText) {
 		if (object instanceof Group) {
 			val name = if (object.name.isNullOrEmpty) null else object.name
-			val ordered = if(object == null) false else object.isOrdered
+			val ordered = if(object === null) false else object.isOrdered
 			val result = if(ordered) "(Sequence)" else "(Set)"
-			return if (name == null) result else result + " " + name
+			return if (name === null) result else result + " " + name
 		}
 	}
 	
 	def static String getGroupItemProviderImageName(Object object) {
 		if (object instanceof Group) {
-			val ordered = if(object == null) false else object.isOrdered
+			val ordered = if(object === null) false else object.isOrdered
 			return "Group_" + if(ordered) "ordered" else "unordered"
 		}
 	}
@@ -2328,7 +2355,7 @@ class CustomItemProviderService {
 		if (object instanceof LabelAccess) {
 			val access = object?.access
 			val labelName = object?.data?.name
-			val s1 = if(access == null || access == LabelAccessEnum::_UNDEFINED_) "<access>" else access.literal
+			val s1 = if(access === null || access == LabelAccessEnum::_UNDEFINED_) "<access>" else access.literal
 			val s2 = ppName(labelName, "<label>")
 			return s1 + " " + s2
 		} else {
@@ -2399,7 +2426,7 @@ class CustomItemProviderService {
 		if (object instanceof SemaphoreAccess) {
 			val access = object?.access
 			val semName = object?.semaphore?.name
-			val s1 = if(access == null || access == SemaphoreAccessEnum::_UNDEFINED_) "<access>" else access.literal
+			val s1 = if(access === null || access == SemaphoreAccessEnum::_UNDEFINED_) "<access>" else access.literal
 			val s2 = ppName(semName, "<semaphore>")
 			return s1 + " " + s2
 
@@ -2426,7 +2453,7 @@ class CustomItemProviderService {
 		if (object instanceof ModeLabelAccess) {
 			val access = object?.access
 			val label = object?.data?.name
-			val s1 = if(access == null || access == LabelAccessEnum::_UNDEFINED_) "<access>" else access.literal
+			val s1 = if(access === null || access == LabelAccessEnum::_UNDEFINED_) "<access>" else access.literal
 			val s2 = ppName(label, "<mode label>")
 			return s1 + " " + s2
 		} else {
@@ -2454,7 +2481,7 @@ class CustomItemProviderService {
 			val instr = object?.getValue()
 
 			val s1 = if(typeName.isNullOrEmpty) "<core type>" else "Core Type " + typeName
-			val s2 = if(instr == null) "<instructions>" else getInstructionsText(instr)
+			val s2 = if(instr === null) "<instructions>" else getInstructionsText(instr)
 			return s1 + " -- " + s2;
 		} else {
 			return defaultText
@@ -2597,7 +2624,7 @@ class CustomItemProviderService {
 	def static String getWaitEventItemProviderText(Object object, String defaultText) {
 		if (object instanceof WaitEvent) {
 			val waiting = object?.waitingBehaviour
-			val s1 = if(waiting == null || waiting == WaitingBehaviour::_UNDEFINED_) "<waiting>" else waiting.literal
+			val s1 = if(waiting === null || waiting == WaitingBehaviour::_UNDEFINED_) "<waiting>" else waiting.literal
 			return "WaitEvent " + s1
 		} else {
 			return defaultText

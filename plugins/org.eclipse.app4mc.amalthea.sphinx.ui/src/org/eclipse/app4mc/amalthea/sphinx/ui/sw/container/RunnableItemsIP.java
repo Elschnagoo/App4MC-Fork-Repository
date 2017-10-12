@@ -69,6 +69,7 @@ public class RunnableItemsIP extends ExtendedSphinxTransientItemProvider {
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createSenderReceiverWrite()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createSynchronousServerCall()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createAsynchronousServerCall()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createGetResultServerCall()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createChannelReceive()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createChannelSend()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createCustomEventTrigger()));

@@ -2056,13 +2056,6 @@ abstract class Scheduler extends ReferableBaseObject
 	contains ComputationItem[] computationItems 
 }
 
-/*
- * Representation of a object that describes computation
- */
-abstract class ComputationItem extends RunnableItem
-{
-}
-
 class TaskScheduler extends Scheduler
 {
 	contains TaskSchedulingAlgorithm schedulingAlgorithm
@@ -3194,6 +3187,13 @@ abstract class RunnableItem extends BaseObject
 }
 
 /*
+ * Representation of a object that describes computation
+ */
+abstract class ComputationItem extends RunnableItem
+{
+}
+
+/*
  * Representation of the execution cost of a Runnable (default and core-specific)
  */
 class RunnableInstructions extends ComputationItem {
@@ -3388,6 +3388,26 @@ class SynchronousServerCall extends ServerCall
 class AsynchronousServerCall extends ServerCall
 {
 	refers Runnable resultRunnable
+}
+
+/*
+ * Get the result of a previous asynchronous server call
+ */
+class GetResultServerCall extends ServerCall
+{
+	BlockingType blockingType
+}
+
+/*
+ * Blocking type
+ */
+enum BlockingType
+{
+	_undefined_ // Display: "<blocking>"
+	active_wait
+	passive_wait
+	non_blocking
+
 }
 
 /*

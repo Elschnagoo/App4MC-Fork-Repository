@@ -24,6 +24,7 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEntityIte
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEventTriggerItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedDataTypeDefinitionItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedEventActivationItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGetResultServerCallItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGroupItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedISRItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedLabelAccessItemProvider;
@@ -55,6 +56,11 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	@Override
 	public Adapter createAsynchronousServerCallAdapter() {
 		return new ExtendedAsynchronousServerCallItemProvider(this);
+	}
+
+	@Override
+	public Adapter createGetResultServerCallAdapter() {
+		return new ExtendedGetResultServerCallItemProvider(this);
 	}
 
 	@Override

@@ -21,6 +21,7 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
+import org.eclipse.app4mc.amalthea.model.BlockingType;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
@@ -70,6 +71,7 @@ import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
+import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.GroupingType;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
@@ -195,8 +197,7 @@ public class CustomItemProviderService {
     }
     final EStructuralFeature feature = _eContainingFeature;
     String _xifexpression = null;
-    boolean _equals = Objects.equal(feature, null);
-    if (_equals) {
+    if ((feature == null)) {
       _xifexpression = defaultText;
     } else {
       String _name = feature.getName();
@@ -211,7 +212,7 @@ public class CustomItemProviderService {
   }
   
   private static String getLabelProviderText(final Object object, final AdapterFactory rootAF) {
-    if (((!Objects.equal(object, null)) && rootAF.isFactoryForType(object))) {
+    if (((object != null) && rootAF.isFactoryForType(object))) {
       final Object plainAdapter = rootAF.adapt(object, IItemLabelProvider.class);
       if ((plainAdapter instanceof IItemLabelProvider)) {
         return ((IItemLabelProvider)plainAdapter).getText(object);
@@ -253,15 +254,14 @@ public class CustomItemProviderService {
   }
   
   private static String getFrequencyText(final Frequency frequency) {
-    boolean _equals = Objects.equal(frequency, null);
-    if (_equals) {
+    if ((frequency == null)) {
       return "<frequency>";
     }
     final String value = Double.toString(frequency.getValue());
     String _xifexpression = null;
     FrequencyUnit _unit = frequency.getUnit();
-    boolean _equals_1 = Objects.equal(_unit, FrequencyUnit._UNDEFINED_);
-    if (_equals_1) {
+    boolean _equals = Objects.equal(_unit, FrequencyUnit._UNDEFINED_);
+    if (_equals) {
       _xifexpression = "<unit>";
     } else {
       _xifexpression = frequency.getUnit().getLiteral();
@@ -271,14 +271,13 @@ public class CustomItemProviderService {
   }
   
   private static String getTimeText(final AbstractTime time) {
-    boolean _equals = Objects.equal(time, null);
-    if (_equals) {
+    if ((time == null)) {
       return "<time>";
     }
     String _xifexpression = null;
     BigInteger _value = time.getValue();
-    boolean _equals_1 = Objects.equal(_value, null);
-    if (_equals_1) {
+    boolean _tripleEquals = (_value == null);
+    if (_tripleEquals) {
       _xifexpression = "???";
     } else {
       _xifexpression = time.getValue().toString();
@@ -286,8 +285,8 @@ public class CustomItemProviderService {
     final String value = _xifexpression;
     String _xifexpression_1 = null;
     TimeUnit _unit = time.getUnit();
-    boolean _equals_2 = Objects.equal(_unit, TimeUnit._UNDEFINED_);
-    if (_equals_2) {
+    boolean _equals = Objects.equal(_unit, TimeUnit._UNDEFINED_);
+    if (_equals) {
       _xifexpression_1 = "<unit>";
     } else {
       _xifexpression_1 = time.getUnit().getLiteral();
@@ -297,14 +296,13 @@ public class CustomItemProviderService {
   }
   
   private static String getDataSizeText(final DataSize size) {
-    boolean _equals = Objects.equal(size, null);
-    if (_equals) {
+    if ((size == null)) {
       return "<data size>";
     }
     String _xifexpression = null;
     BigInteger _value = size.getValue();
-    boolean _equals_1 = Objects.equal(_value, null);
-    if (_equals_1) {
+    boolean _tripleEquals = (_value == null);
+    if (_tripleEquals) {
       _xifexpression = "???";
     } else {
       _xifexpression = size.getValue().toString();
@@ -312,8 +310,8 @@ public class CustomItemProviderService {
     final String value = _xifexpression;
     String _xifexpression_1 = null;
     DataSizeUnit _unit = size.getUnit();
-    boolean _equals_2 = Objects.equal(_unit, DataSizeUnit._UNDEFINED_);
-    if (_equals_2) {
+    boolean _equals = Objects.equal(_unit, DataSizeUnit._UNDEFINED_);
+    if (_equals) {
       _xifexpression_1 = "<unit>";
     } else {
       _xifexpression_1 = size.getUnit().getLiteral();
@@ -323,8 +321,7 @@ public class CustomItemProviderService {
   }
   
   private static String trimDistName(final String name) {
-    boolean _equals = Objects.equal(name, null);
-    if (_equals) {
+    if ((name == null)) {
       return "";
     }
     return name.replace("Distribution", "").replace("Estimators", "").replace("Parameters", "");
@@ -370,8 +367,7 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       Object _xifexpression_1 = null;
-      boolean _equals = Objects.equal(value, null);
-      if (_equals) {
+      if ((value == null)) {
         _xifexpression_1 = "null";
       } else {
         _xifexpression_1 = value;
@@ -488,8 +484,8 @@ public class CustomItemProviderService {
       if (((StringObject)object)!=null) {
         _value=((StringObject)object).getValue();
       }
-      boolean _equals = Objects.equal(_value, null);
-      if (_equals) {
+      boolean _tripleEquals = (_value == null);
+      if (_tripleEquals) {
         _xifexpression = "null";
       } else {
         String _value_1 = ((StringObject)object).getValue();
@@ -514,8 +510,8 @@ public class CustomItemProviderService {
       if (((BigIntegerObject)object)!=null) {
         _value=((BigIntegerObject)object).getValue();
       }
-      boolean _equals = Objects.equal(_value, null);
-      if (_equals) {
+      boolean _tripleEquals = (_value == null);
+      if (_tripleEquals) {
         _xifexpression = "null";
       } else {
         BigInteger _value_1 = ((BigIntegerObject)object).getValue();
@@ -635,16 +631,14 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       String _xifexpression_1 = null;
-      boolean _equals = Objects.equal(lower, null);
-      if (_equals) {
+      if ((lower == null)) {
         _xifexpression_1 = "";
       } else {
         _xifexpression_1 = (" lowerBound: " + lower);
       }
       final String s2 = _xifexpression_1;
       String _xifexpression_2 = null;
-      boolean _equals_1 = Objects.equal(upper, null);
-      if (_equals_1) {
+      if ((upper == null)) {
         _xifexpression_2 = "";
       } else {
         _xifexpression_2 = (" upperBound: " + upper);
@@ -980,7 +974,7 @@ public class CustomItemProviderService {
       final String name = _name;
       final String s1 = CustomItemProviderService.ppName(cName, "<component>");
       String _xifexpression = null;
-      if ((Objects.equal(kind, null) || Objects.equal(kind, InterfaceKind._UNDEFINED_))) {
+      if (((kind == null) || Objects.equal(kind, InterfaceKind._UNDEFINED_))) {
         _xifexpression = "<kind>";
       } else {
         _xifexpression = kind.getLiteral();
@@ -1022,8 +1016,8 @@ public class CustomItemProviderService {
       if (((QualifiedPort)object)!=null) {
         _instance_1=((QualifiedPort)object).getInstance();
       }
-      boolean _equals = Objects.equal(_instance_1, null);
-      if (_equals) {
+      boolean _tripleEquals = (_instance_1 == null);
+      if (_tripleEquals) {
         s4 = " (enclosing composite)";
       } else {
         String _xifexpression = null;
@@ -1106,8 +1100,7 @@ public class CustomItemProviderService {
       final EntityEvent event = _event;
       final String s1 = CustomItemProviderService.ppName(name);
       String _xifexpression = null;
-      boolean _equals = Objects.equal(event, null);
-      if (_equals) {
+      if ((event == null)) {
         _xifexpression = "<event>";
       } else {
         _xifexpression = CustomItemProviderService.getLabelProviderText(event, rootAF);
@@ -1356,15 +1349,14 @@ public class CustomItemProviderService {
       }
       final LimitType limitType = _limitType;
       int _xifexpression = (int) 0;
-      boolean _equals = Objects.equal(object, null);
-      if (_equals) {
+      if ((object == null)) {
         _xifexpression = 0;
       } else {
         _xifexpression = ((CountRequirementLimit)object).getLimitValue();
       }
       final int limitValue = _xifexpression;
       String _xifexpression_1 = null;
-      if ((Objects.equal(metric, null) || Objects.equal(metric, CountMetric._UNDEFINED_))) {
+      if (((metric == null) || Objects.equal(metric, CountMetric._UNDEFINED_))) {
         _xifexpression_1 = "<count metric>";
       } else {
         String _literal = metric.getLiteral();
@@ -1404,15 +1396,14 @@ public class CustomItemProviderService {
       }
       final LimitType limitType = _limitType;
       double _xifexpression = (double) 0;
-      boolean _equals = Objects.equal(object, null);
-      if (_equals) {
+      if ((object == null)) {
         _xifexpression = 0;
       } else {
         _xifexpression = ((CPUPercentageRequirementLimit)object).getLimitValue();
       }
       final double limitValue = _xifexpression;
       String _xifexpression_1 = null;
-      if ((Objects.equal(metric, null) || Objects.equal(metric, CPUPercentageMetric._UNDEFINED_))) {
+      if (((metric == null) || Objects.equal(metric, CPUPercentageMetric._UNDEFINED_))) {
         _xifexpression_1 = "<CPU % metric>";
       } else {
         _xifexpression_1 = metric.getLiteral();
@@ -1456,7 +1447,7 @@ public class CustomItemProviderService {
       }
       final Frequency limitValue = _limitValue;
       String _xifexpression = null;
-      if ((Objects.equal(metric, null) || Objects.equal(metric, FrequencyMetric._UNDEFINED_))) {
+      if (((metric == null) || Objects.equal(metric, FrequencyMetric._UNDEFINED_))) {
         _xifexpression = "<frequency metric>";
       } else {
         _xifexpression = metric.getLiteral();
@@ -1507,15 +1498,14 @@ public class CustomItemProviderService {
       }
       final LimitType limitType = _limitType;
       double _xifexpression = (double) 0;
-      boolean _equals = Objects.equal(object, null);
-      if (_equals) {
+      if ((object == null)) {
         _xifexpression = 0;
       } else {
         _xifexpression = ((PercentageRequirementLimit)object).getLimitValue();
       }
       final double limitValue = _xifexpression;
       String _xifexpression_1 = null;
-      if ((Objects.equal(metric, null) || Objects.equal(metric, PercentageMetric._UNDEFINED_))) {
+      if (((metric == null) || Objects.equal(metric, PercentageMetric._UNDEFINED_))) {
         _xifexpression_1 = "<% metric>";
       } else {
         _xifexpression_1 = metric.getLiteral();
@@ -1551,7 +1541,7 @@ public class CustomItemProviderService {
       }
       final Time limitValue = _limitValue;
       String _xifexpression = null;
-      if ((Objects.equal(metric, null) || Objects.equal(metric, TimeMetric._UNDEFINED_))) {
+      if (((metric == null) || Objects.equal(metric, TimeMetric._UNDEFINED_))) {
         _xifexpression = "<time metric>";
       } else {
         _xifexpression = metric.getLiteral();
@@ -1833,7 +1823,7 @@ public class CustomItemProviderService {
       final DataGroupScope scope = _scope;
       final String s1 = CustomItemProviderService.ppName(name, "<group>");
       String _xifexpression = null;
-      if ((Objects.equal(direction, null) || Objects.equal(direction, CoherencyDirection._UNDEFINED_))) {
+      if (((direction == null) || Objects.equal(direction, CoherencyDirection._UNDEFINED_))) {
         _xifexpression = "<direction>";
       } else {
         _xifexpression = direction.getLiteral();
@@ -1990,8 +1980,7 @@ public class CustomItemProviderService {
       final SubEventChain chain = _eventChain;
       final String s1 = CustomItemProviderService.getContainingFeatureName(((EObject)object));
       String _xifexpression = null;
-      boolean _equals = Objects.equal(chain, null);
-      if (_equals) {
+      if ((chain == null)) {
         _xifexpression = "<sub chain>";
       } else {
         String _xifexpression_1 = null;
@@ -2441,15 +2430,14 @@ public class CustomItemProviderService {
       }
       final RWType type = _accessType;
       long _xifexpression = (long) 0;
-      boolean _equals = Objects.equal(object, null);
-      if (_equals) {
+      if ((object == null)) {
         _xifexpression = 0;
       } else {
         _xifexpression = ((LatencyConstant)object).getValue();
       }
       final long value = _xifexpression;
       String _xifexpression_1 = null;
-      if ((Objects.equal(type, null) || Objects.equal(type, RWType._UNDEFINED_))) {
+      if (((type == null) || Objects.equal(type, RWType._UNDEFINED_))) {
         _xifexpression_1 = "?";
       } else {
         _xifexpression_1 = type.getLiteral();
@@ -2486,7 +2474,7 @@ public class CustomItemProviderService {
       }
       final String distName = _name;
       String _xifexpression = null;
-      if ((Objects.equal(type, null) || Objects.equal(type, RWType._UNDEFINED_))) {
+      if (((type == null) || Objects.equal(type, RWType._UNDEFINED_))) {
         _xifexpression = "?";
       } else {
         _xifexpression = type.getLiteral();
@@ -2997,7 +2985,7 @@ public class CustomItemProviderService {
       final OsDataConsistencyMode mode = ((OsDataConsistency)object).getMode();
       final String s1 = "OS Data Consistency - ";
       String _xifexpression = null;
-      if ((Objects.equal(mode, null) || Objects.equal(mode, OsDataConsistencyMode._UNDEFINED_))) {
+      if (((mode == null) || Objects.equal(mode, OsDataConsistencyMode._UNDEFINED_))) {
         _xifexpression = "?";
       } else {
         _xifexpression = mode.getLiteral();
@@ -3075,8 +3063,7 @@ public class CustomItemProviderService {
       }
       final EStructuralFeature feature = _eContainingFeature;
       String _xifexpression = null;
-      boolean _equals = Objects.equal(feature, null);
-      if (_equals) {
+      if ((feature == null)) {
         _xifexpression = "";
       } else {
         _xifexpression = feature.getName();
@@ -3246,14 +3233,14 @@ public class CustomItemProviderService {
       }
       final EList<CoreClassifier> cla = _classifiers;
       String _xifexpression = null;
-      if ((Objects.equal(con, null) || Objects.equal(con, Condition._UNDEFINED_))) {
+      if (((con == null) || Objects.equal(con, Condition._UNDEFINED_))) {
         _xifexpression = "<condition>";
       } else {
         _xifexpression = con.getLiteral();
       }
       final String s1 = _xifexpression;
       String _xifexpression_1 = null;
-      if ((Objects.equal(grp, null) || Objects.equal(grp, GroupingType._UNDEFINED_))) {
+      if (((grp == null) || Objects.equal(grp, GroupingType._UNDEFINED_))) {
         _xifexpression_1 = "<grouping>";
       } else {
         _xifexpression_1 = CustomItemProviderService.ppCamelCase(grp.getLiteral()).toLowerCase();
@@ -3370,14 +3357,14 @@ public class CustomItemProviderService {
       }
       final EList<MemoryClassifier> cla = _classifiers;
       String _xifexpression = null;
-      if ((Objects.equal(con, null) || Objects.equal(con, Condition._UNDEFINED_))) {
+      if (((con == null) || Objects.equal(con, Condition._UNDEFINED_))) {
         _xifexpression = "<condition>";
       } else {
         _xifexpression = con.getLiteral();
       }
       final String s1 = _xifexpression;
       String _xifexpression_1 = null;
-      if ((Objects.equal(grp, null) || Objects.equal(grp, GroupingType._UNDEFINED_))) {
+      if (((grp == null) || Objects.equal(grp, GroupingType._UNDEFINED_))) {
         _xifexpression_1 = "<grouping>";
       } else {
         _xifexpression_1 = CustomItemProviderService.ppCamelCase(grp.getLiteral()).toLowerCase();
@@ -3493,8 +3480,7 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       String _xifexpression_1 = null;
-      boolean _equals = Objects.equal(value, null);
-      if (_equals) {
+      if ((value == null)) {
         _xifexpression_1 = "<value>";
       } else {
         _xifexpression_1 = value.toString();
@@ -3532,8 +3518,7 @@ public class CustomItemProviderService {
   public static String getArrivalCurveEntryItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ArrivalCurveEntry)) {
       int _xifexpression = (int) 0;
-      boolean _equals = Objects.equal(object, null);
-      if (_equals) {
+      if ((object == null)) {
         _xifexpression = 0;
       } else {
         _xifexpression = ((ArrivalCurveEntry)object).getNumberOfEvents();
@@ -3700,7 +3685,7 @@ public class CustomItemProviderService {
       final String s2 = CustomItemProviderService.ppName(targetName, "<runnable>");
       final String s3 = CustomItemProviderService.ppName(labelName, "<label>");
       String _xifexpression = null;
-      if ((Objects.equal(accessType, null) || Objects.equal(accessType, AccessPrecedenceType._UNDEFINED_))) {
+      if (((accessType == null) || Objects.equal(accessType, AccessPrecedenceType._UNDEFINED_))) {
         _xifexpression = "<access>";
       } else {
         _xifexpression = accessType.getLiteral();
@@ -3773,7 +3758,7 @@ public class CustomItemProviderService {
       final String s1 = CustomItemProviderService.ppName(originName, "<runnable>");
       final String s2 = CustomItemProviderService.ppName(targetName, "<runnable>");
       String _xifexpression = null;
-      if ((Objects.equal(order, null) || Objects.equal(order, OrderType._UNDEFINED_))) {
+      if (((order == null) || Objects.equal(order, OrderType._UNDEFINED_))) {
         _xifexpression = "<order>";
       } else {
         _xifexpression = order.getLiteral();
@@ -3882,7 +3867,7 @@ public class CustomItemProviderService {
       final WaitingBehaviour waiting = _waitingBehaviour;
       final String s1 = CustomItemProviderService.ppName(serverRun, "<runnable>");
       String _xifexpression = null;
-      if ((Objects.equal(waiting, null) || Objects.equal(waiting, WaitingBehaviour._UNDEFINED_))) {
+      if (((waiting == null) || Objects.equal(waiting, WaitingBehaviour._UNDEFINED_))) {
         _xifexpression = "undefined";
       } else {
         _xifexpression = waiting.getLiteral();
@@ -3915,6 +3900,59 @@ public class CustomItemProviderService {
   }
   
   /**
+   * GetResultServerCallItemProvider
+   */
+  public static String getGetResultServerCallItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof GetResultServerCall)) {
+      org.eclipse.app4mc.amalthea.model.Runnable _serverRunnable = null;
+      if (((GetResultServerCall)object)!=null) {
+        _serverRunnable=((GetResultServerCall)object).getServerRunnable();
+      }
+      String _name = null;
+      if (_serverRunnable!=null) {
+        _name=_serverRunnable.getName();
+      }
+      final String serverRun = _name;
+      BlockingType _blockingType = null;
+      if (((GetResultServerCall)object)!=null) {
+        _blockingType=((GetResultServerCall)object).getBlockingType();
+      }
+      final BlockingType blocking = _blockingType;
+      final String s1 = CustomItemProviderService.ppName(serverRun, "<runnable>");
+      String _xifexpression = null;
+      if (((blocking == null) || Objects.equal(blocking, BlockingType._UNDEFINED_))) {
+        _xifexpression = "undefined";
+      } else {
+        _xifexpression = blocking.getLiteral().replace("_", " ");
+      }
+      final String s2 = _xifexpression;
+      return (((("call server: " + s1) + " (get result - ") + s2) + ")");
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getGetResultServerCallItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(GetResultServerCall.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.GET_RESULT_SERVER_CALL__SERVER_RUNNABLE)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.GET_RESULT_SERVER_CALL__BLOCKING_TYPE)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+    }
+    return list;
+  }
+  
+  /**
    * ChainedProcessPrototypeItemProvider
    */
   public static String getChainedProcessPrototypeItemProviderText(final Object object, final String defaultText) {
@@ -3929,16 +3967,14 @@ public class CustomItemProviderService {
       }
       final String proto = _name;
       int _xifexpression = (int) 0;
-      boolean _equals = Objects.equal(object, null);
-      if (_equals) {
+      if ((object == null)) {
         _xifexpression = 0;
       } else {
         _xifexpression = ((ChainedProcessPrototype)object).getApply();
       }
       final int apply = _xifexpression;
       int _xifexpression_1 = (int) 0;
-      boolean _equals_1 = Objects.equal(object, null);
-      if (_equals_1) {
+      if ((object == null)) {
         _xifexpression_1 = 0;
       } else {
         _xifexpression_1 = ((ChainedProcessPrototype)object).getOffset();
@@ -3990,8 +4026,7 @@ public class CustomItemProviderService {
       }
       final String name = _xifexpression;
       boolean _xifexpression_1 = false;
-      boolean _equals = Objects.equal(object, null);
-      if (_equals) {
+      if ((object == null)) {
         _xifexpression_1 = false;
       } else {
         _xifexpression_1 = ((Group)object).isOrdered();
@@ -4005,8 +4040,7 @@ public class CustomItemProviderService {
       }
       final String result = _xifexpression_2;
       String _xifexpression_3 = null;
-      boolean _equals_1 = Objects.equal(name, null);
-      if (_equals_1) {
+      if ((name == null)) {
         _xifexpression_3 = result;
       } else {
         _xifexpression_3 = ((result + " ") + name);
@@ -4019,8 +4053,7 @@ public class CustomItemProviderService {
   public static String getGroupItemProviderImageName(final Object object) {
     if ((object instanceof Group)) {
       boolean _xifexpression = false;
-      boolean _equals = Objects.equal(object, null);
-      if (_equals) {
+      if ((object == null)) {
         _xifexpression = false;
       } else {
         _xifexpression = ((Group)object).isOrdered();
@@ -4358,7 +4391,7 @@ public class CustomItemProviderService {
       }
       final String labelName = _name;
       String _xifexpression = null;
-      if ((Objects.equal(access, null) || Objects.equal(access, LabelAccessEnum._UNDEFINED_))) {
+      if (((access == null) || Objects.equal(access, LabelAccessEnum._UNDEFINED_))) {
         _xifexpression = "<access>";
       } else {
         _xifexpression = access.getLiteral();
@@ -4485,7 +4518,7 @@ public class CustomItemProviderService {
       }
       final String semName = _name;
       String _xifexpression = null;
-      if ((Objects.equal(access, null) || Objects.equal(access, SemaphoreAccessEnum._UNDEFINED_))) {
+      if (((access == null) || Objects.equal(access, SemaphoreAccessEnum._UNDEFINED_))) {
         _xifexpression = "<access>";
       } else {
         _xifexpression = access.getLiteral();
@@ -4538,7 +4571,7 @@ public class CustomItemProviderService {
       }
       final String label = _name;
       String _xifexpression = null;
-      if ((Objects.equal(access, null) || Objects.equal(access, LabelAccessEnum._UNDEFINED_))) {
+      if (((access == null) || Objects.equal(access, LabelAccessEnum._UNDEFINED_))) {
         _xifexpression = "<access>";
       } else {
         _xifexpression = access.getLiteral();
@@ -4599,8 +4632,7 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       String _xifexpression_1 = null;
-      boolean _equals = Objects.equal(instr, null);
-      if (_equals) {
+      if ((instr == null)) {
         _xifexpression_1 = "<instructions>";
       } else {
         _xifexpression_1 = CustomItemProviderService.getInstructionsText(instr);
@@ -4846,7 +4878,7 @@ public class CustomItemProviderService {
       }
       final WaitingBehaviour waiting = _waitingBehaviour;
       String _xifexpression = null;
-      if ((Objects.equal(waiting, null) || Objects.equal(waiting, WaitingBehaviour._UNDEFINED_))) {
+      if (((waiting == null) || Objects.equal(waiting, WaitingBehaviour._UNDEFINED_))) {
         _xifexpression = "<waiting>";
       } else {
         _xifexpression = waiting.getLiteral();
