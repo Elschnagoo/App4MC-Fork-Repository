@@ -11,135 +11,130 @@ import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.core.runtime.Assert;
 import org.junit.Test;
 
-
-
 public class TimeComparisonTest {
 
 	@Test
 	public void case1() {
-		
+
 		Time t1 = createTime("1", "s");
 		Time t2 = createTime("1000", "ms");
-		
+
 		int compareTo = t1.compareTo(t2);
 
-		Assert.isTrue(compareTo==0,"Failed to compare Time objects having TimeUnit second and Millisecond");
-		
+		Assert.isTrue(compareTo == 0, "Failed to compare Time objects having TimeUnit Second and Millisecond");
+
 	}
-	
+
 	@Test
 	public void case2() {
-		
+
 		Time t1 = createTime("1", "s");
 		Time t2 = createTime("1000000", "us");
-		
+
 		int compareTo = t1.compareTo(t2);
 
-		Assert.isTrue(compareTo==0,"Failed to compare Time objects having TimeUnit second and Microsecond");
-		
+		Assert.isTrue(compareTo == 0, "Failed to compare Time objects having TimeUnit Second and Microsecond");
+
 	}
-	
+
 	@Test
 	public void case3() {
-		
+
 		Time t1 = createTime("1", "s");
 		Time t2 = createTime("1000000000", "ns");
-		
+
 		int compareTo = t1.compareTo(t2);
 
-		Assert.isTrue(compareTo==0,"Failed to compare Time objects having TimeUnit second and Nanosecond");
-		
+		Assert.isTrue(compareTo == 0, "Failed to compare Time objects having TimeUnit Second and Nanosecond");
+
 	}
-	
+
 	@Test
 	public void case4() {
-		
+
 		Time t1 = createTime("1", "s");
 		Time t2 = createTime("1000000000000", "ps");
-		
+
 		int compareTo = t1.compareTo(t2);
 
-		Assert.isTrue(compareTo==0,"Failed to compare Time objects having TimeUnit second and Picosecond");
-		
+		Assert.isTrue(compareTo == 0, "Failed to compare Time objects having TimeUnit Second and Picosecond");
+
 	}
-	
+
 	@Test
 	public void case5() {
-		
+
 		Time t1 = createTime("1", "s");
-		Time t2 = createTime("1000", "-");
-		
-		boolean isExceptionThrown=false;
-		
-		try {
-			 t1.compareTo(t2);
-		} catch (RuntimeException e) {
-			isExceptionThrown=true;
-		}
-		
-		Assert.isTrue(isExceptionThrown,"Failed to compare Time objects");
-		
+		TimeObject t2 = createTimeObject("1000", "ms");
+
+		int compareTo = t1.compareTo(t2);
+
+		Assert.isTrue(compareTo == 0, "Failed to compare Time and TimeObject");
+
 	}
-	
+
 	@Test
 	public void case6() {
-		
-		Time t1 = createTime("1", "s");;
 
-		Assert.isTrue(t1.compareTo(t1)==0,"Failed to compare Time objects which are same");
-		
+		Time t1 = createTime("1", "s");
+
+		Assert.isTrue(t1.compareTo(t1) == 0, "Failed to compare Time objects which are same");
+
 	}
-	
-	
+
 	@Test
 	public void case7() {
-		
-		Time t1 = null;
-		Time t2 = null;
-		
-		
-		Assert.isTrue(AmaltheaServices.compareTimeElement(t1, t2)==0,"Failed to compare Time objects");
-		
-	}
-	
-	@Test
-	public void case8() {
-		
-		Time t1 = createTime("1", "s");
-		Time t2 = null;
-		
-		boolean isExceptionThrown=false;
-		
-		try {
-			 t1.compareTo(t2);
-		} catch (RuntimeException e) {
-			isExceptionThrown=true;
-		}
-		
-		Assert.isTrue(isExceptionThrown,"Failed to compare Time objects");
-		
-	}
-	
-	
-	@Test
-	public void case9() {
-		
-		TimeObject t1 = createTimeObject("1", "s");
+
+		Time t1 = createTime("1000000000000", "_undefined_");
 		Time t2 = createTime("1000000000000", "ps");
-		
+
 		Exception e = null;
-		try{
-				t1.compareTo(t2);
-			
-		}catch(Exception e1){
-			e=e1;
+		try {
+			t1.compareTo(t2);
+		} catch (Exception e1) {
+			e = e1;
 		}
 
-		Assert.isTrue(e.getMessage().contains("Can not compare AbstractTime objects of different types :TimeObject , Time"),"Failed to compare Time and TimeObjec - > Exception is not thrown..");
-		
+		Assert.isTrue(e.getMessage().contains("Undefined time unit"),
+				"Failed to compare Time with undefined unit -> Exception is not thrown..");
+
 	}
-	
-	
+
+	@Test
+	public void case8() {
+
+		Time t1 = createTime("1", "s");
+		Time t2 = null;
+
+		boolean isExceptionThrown = false;
+
+		try {
+			t1.compareTo(t2);
+		} catch (RuntimeException e) {
+			isExceptionThrown = true;
+		}
+
+		Assert.isTrue(isExceptionThrown, "Failed to compare Time object and null -> RuntimeException is not thrown..");
+
+	}
+
+	@Test
+	public void case9() {
+
+		Time t1 = null;
+		Time t2 = createTime("1000000000000", "ps");
+
+		boolean isExceptionThrown = false;
+
+		try {
+			AmaltheaServices.compareTimeElement(t1, t2);
+		} catch (NullPointerException e1) {
+			isExceptionThrown = true;
+		}
+
+		Assert.isTrue(isExceptionThrown, "Failed to compare null and Time object - > NullPointerException is not thrown..");
+
+	}
 
 	private Time createTime(String value1, String unit1) {
 
@@ -162,5 +157,5 @@ public class TimeComparisonTest {
 
 		return timeObject;
 	}
- 
+
 }
