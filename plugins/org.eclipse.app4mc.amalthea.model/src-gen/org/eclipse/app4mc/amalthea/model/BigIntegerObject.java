@@ -66,7 +66,7 @@ public interface BigIntegerObject extends Value {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%java.math.BigInteger%> _value = this.getValue();\nboolean _equals = <%com.google.common.base.Objects%>.equal(_value, null);\nif (_equals)\n{\n\treturn \"(BigInteger) null\";\n}\nelse\n{\n\t<%java.math.BigInteger%> _value_1 = this.getValue();\n\t<%java.lang.String%> _plus = (\"(BigInteger) \\\"\" + _value_1);\n\treturn (_plus + \"\\\"\");\n}'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.math.BigInteger%&gt; _value = this.getValue();\nboolean _tripleEquals = (_value == null);\nif (_tripleEquals)\n{\n\treturn \"(BigInteger) null\";\n}\nelse\n{\n\t&lt;%java.math.BigInteger%&gt; _value_1 = this.getValue();\n\t&lt;%java.lang.String%&gt; _plus = (\"(BigInteger) \\\"\" + _value_1);\n\treturn (_plus + \"\\\"\");\n}'"
 	 * @generated
 	 */
 	String toString();

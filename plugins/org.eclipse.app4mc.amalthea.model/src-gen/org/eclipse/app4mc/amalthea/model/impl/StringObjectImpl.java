@@ -12,8 +12,6 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import com.google.common.base.Objects;
-
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
@@ -108,8 +106,8 @@ public class StringObjectImpl extends ValueImpl implements StringObject {
 	 */
 	public String toString() {
 		String _value = this.getValue();
-		boolean _equals = Objects.equal(_value, null);
-		if (_equals) {
+		boolean _tripleEquals = (_value == null);
+		if (_tripleEquals) {
 			return "(String) null";
 		}
 		else {

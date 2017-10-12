@@ -163,9 +163,7 @@ public class DataRateImpl extends AmaltheaExtendedEObjectImpl implements DataRat
 			_xifexpression = "<unit>";
 		}
 		else {
-			DataRateUnit _unit_1 = this.getUnit();
-			String _literal = _unit_1.getLiteral();
-			_xifexpression = _literal.replace("PerSecond", "/s");
+			_xifexpression = this.getUnit().getLiteral().replace("PerSecond", "/s");
 		}
 		return (_plus + _xifexpression);
 	}

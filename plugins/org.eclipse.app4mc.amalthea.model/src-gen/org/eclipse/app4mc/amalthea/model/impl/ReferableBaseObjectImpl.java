@@ -165,12 +165,10 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 * @generated
 	 */
 	public String computeUniqueName() {
-		String _name = this.getName();
-		String _encode = this.encode(_name);
+		String _encode = this.encode(this.getName());
 		String _plus = (_encode + "?type=");
-		EClass _eClass = this.eClass();
-		String _name_1 = _eClass.getName();
-		return (_plus + _name_1);
+		String _name = this.eClass().getName();
+		return (_plus + _name);
 	}
 
 	/**
@@ -186,8 +184,7 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 				_xifexpression = "no-name";
 			}
 			else {
-				String _string = StandardCharsets.UTF_8.toString();
-				_xifexpression = URLEncoder.encode(str, _string);
+				_xifexpression = URLEncoder.encode(str, StandardCharsets.UTF_8.toString());
 			}
 			return _xifexpression;
 		}

@@ -74,7 +74,7 @@ public interface RunnableInstructions extends ComputationItem {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Extended</em>' map.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableInstructions_Extended()
-	 * @model mapType="org.eclipse.app4mc.amalthea.model.RunnableInstructionsEntry<org.eclipse.app4mc.amalthea.model.CoreType, org.eclipse.app4mc.amalthea.model.Instructions>"
+	 * @model mapType="org.eclipse.app4mc.amalthea.model.RunnableInstructionsEntry&lt;org.eclipse.app4mc.amalthea.model.CoreType, org.eclipse.app4mc.amalthea.model.Instructions&gt;"
 	 * @generated
 	 */
 	EMap<CoreType, Instructions> getExtended();

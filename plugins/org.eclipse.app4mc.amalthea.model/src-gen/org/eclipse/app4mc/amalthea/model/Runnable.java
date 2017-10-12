@@ -246,7 +246,7 @@ public interface Runnable extends AbstractMemoryElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%org.eclipse.app4mc.amalthea.model.Activation%>> _activations = this.getActivations();\nreturn <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%org.eclipse.app4mc.amalthea.model.Activation%>>head(_activations);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Activation%&gt;&gt;head(this.getActivations());'"
 	 * @generated
 	 */
 	Activation getFirstActivation();

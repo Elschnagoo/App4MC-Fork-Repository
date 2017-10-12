@@ -27,7 +27,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
@@ -95,9 +94,7 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 		EObject _eContainer = this.eContainer();
 		Object _eGet = null;
 		if (_eContainer!=null) {
-			EClass _eClass = this.eClass();
-			EStructuralFeature _eStructuralFeature = _eClass.getEStructuralFeature("name");
-			_eGet=_eContainer.eGet(_eStructuralFeature);
+			_eGet=_eContainer.eGet(this.eClass().getEStructuralFeature("name"));
 		}
 		final String containerName = this.encode(((String) _eGet));
 		String _computeUniqueName = super.computeUniqueName();

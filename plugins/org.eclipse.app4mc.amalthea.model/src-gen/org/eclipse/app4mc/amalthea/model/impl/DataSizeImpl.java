@@ -164,8 +164,7 @@ public class DataSizeImpl extends AmaltheaExtendedEObjectImpl implements DataSiz
 			_xifexpression = "<unit>";
 		}
 		else {
-			DataSizeUnit _unit_1 = this.getUnit();
-			_xifexpression = _unit_1.getLiteral();
+			_xifexpression = this.getUnit().getLiteral();
 		}
 		return (_plus + _xifexpression);
 	}
@@ -189,8 +188,7 @@ public class DataSizeImpl extends AmaltheaExtendedEObjectImpl implements DataSiz
 		{
 			final BigInteger bits = AmaltheaServices.convertToBit(this);
 			long _xifexpression = (long) 0;
-			boolean _equals = Objects.equal(bits, null);
-			if (_equals) {
+			if ((bits == null)) {
 				_xifexpression = (-1L);
 			}
 			else {
@@ -211,15 +209,13 @@ public class DataSizeImpl extends AmaltheaExtendedEObjectImpl implements DataSiz
 		{
 			final BigInteger bits = AmaltheaServices.convertToBit(this);
 			long _xifexpression = (long) 0;
-			boolean _equals = Objects.equal(bits, null);
-			if (_equals) {
+			if ((bits == null)) {
 				_xifexpression = (-1L);
 			}
 			else {
 				long _longValue = bits.longValue();
 				long _divide = (_longValue / 8);
-				double _ceil = Math.ceil(_divide);
-				_xifexpression = Double.valueOf(_ceil).longValue();
+				_xifexpression = Double.valueOf(Math.ceil(_divide)).longValue();
 			}
 			_xblockexpression = _xifexpression;
 		}

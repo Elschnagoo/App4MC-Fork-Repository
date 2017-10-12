@@ -164,8 +164,7 @@ public abstract class AbstractTimeImpl extends AmaltheaExtendedEObjectImpl imple
 			_xifexpression = "<unit>";
 		}
 		else {
-			TimeUnit _unit_1 = this.getUnit();
-			_xifexpression = _unit_1.getLiteral();
+			_xifexpression = this.getUnit().getLiteral();
 		}
 		return (_plus + _xifexpression);
 	}

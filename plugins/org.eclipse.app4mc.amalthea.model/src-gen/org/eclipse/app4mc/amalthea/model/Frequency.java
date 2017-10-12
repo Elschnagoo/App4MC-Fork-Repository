@@ -105,7 +105,7 @@ public interface Frequency extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='double _value = this.getValue();\n<%java.lang.String%> _plus = (<%java.lang.Double%>.valueOf(_value) + \" \");\n<%java.lang.String%> _xifexpression = null;\n<%org.eclipse.app4mc.amalthea.model.FrequencyUnit%> _unit = this.getUnit();\nboolean _equals = <%com.google.common.base.Objects%>.equal(_unit, <%org.eclipse.app4mc.amalthea.model.FrequencyUnit%>._UNDEFINED_);\nif (_equals)\n{\n\t_xifexpression = \"<unit>\";\n}\nelse\n{\n\t<%org.eclipse.app4mc.amalthea.model.FrequencyUnit%> _unit_1 = this.getUnit();\n\t_xifexpression = _unit_1.getLiteral();\n}\nreturn (_plus + _xifexpression);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='double _value = this.getValue();\n&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Double%&gt;.valueOf(_value) + \" \");\n&lt;%java.lang.String%&gt; _xifexpression = null;\n&lt;%org.eclipse.app4mc.amalthea.model.FrequencyUnit%&gt; _unit = this.getUnit();\nboolean _equals = &lt;%com.google.common.base.Objects%&gt;.equal(_unit, &lt;%org.eclipse.app4mc.amalthea.model.FrequencyUnit%&gt;._UNDEFINED_);\nif (_equals)\n{\n\t_xifexpression = \"&lt;unit&gt;\";\n}\nelse\n{\n\t_xifexpression = this.getUnit().getLiteral();\n}\nreturn (_plus + _xifexpression);'"
 	 * @generated
 	 */
 	String toString();

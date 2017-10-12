@@ -65,7 +65,7 @@ public interface DoubleObject extends Value {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='double _value = this.getValue();\nreturn (\"(double) \" + <%java.lang.Double%>.valueOf(_value));'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='double _value = this.getValue();\nreturn (\"(double) \" + &lt;%java.lang.Double%&gt;.valueOf(_value));'"
 	 * @generated
 	 */
 	String toString();

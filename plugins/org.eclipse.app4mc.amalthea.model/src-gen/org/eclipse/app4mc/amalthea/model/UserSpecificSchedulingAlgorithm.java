@@ -47,7 +47,7 @@ public interface UserSpecificSchedulingAlgorithm extends TaskSchedulingAlgorithm
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameter Extensions</em>' map.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getUserSpecificSchedulingAlgorithm_ParameterExtensions()
-	 * @model mapType="org.eclipse.app4mc.amalthea.model.ParameterExtension<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+	 * @model mapType="org.eclipse.app4mc.amalthea.model.ParameterExtension&lt;org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString&gt;"
 	 * @generated
 	 */
 	EMap<String, String> getParameterExtensions();

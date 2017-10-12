@@ -28,7 +28,7 @@ public interface Port extends ReferableBaseObject, ITaggable {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();\n<%java.lang.Object%> _eGet = null;\nif (_eContainer!=null)\n{\n\t<%org.eclipse.emf.ecore.EClass%> _eClass = this.eClass();\n\t<%org.eclipse.emf.ecore.EStructuralFeature%> _eStructuralFeature = _eClass.getEStructuralFeature(\"name\");\n\t_eGet=_eContainer.eGet(_eStructuralFeature);\n}\nfinal <%java.lang.String%> containerName = this.encode(((<%java.lang.String%>) _eGet));\n<%java.lang.String%> _computeUniqueName = super.computeUniqueName();\nreturn ((containerName + \"/\") + _computeUniqueName);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n&lt;%java.lang.Object%&gt; _eGet = null;\nif (_eContainer!=null)\n{\n\t_eGet=_eContainer.eGet(this.eClass().getEStructuralFeature(\"name\"));\n}\nfinal &lt;%java.lang.String%&gt; containerName = this.encode(((&lt;%java.lang.String%&gt;) _eGet));\n&lt;%java.lang.String%&gt; _computeUniqueName = super.computeUniqueName();\nreturn ((containerName + \"/\") + _computeUniqueName);'"
 	 * @generated
 	 */
 	String computeUniqueName();

@@ -115,7 +115,7 @@ public interface TaskScheduler extends Scheduler {
 	 * @return the value of the '<em>Parent Scheduler</em>' reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskScheduler_ParentScheduler()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='<%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%> _parentAssociation = this.getParentAssociation();\n<%org.eclipse.app4mc.amalthea.model.TaskScheduler%> _parent = null;\nif (_parentAssociation!=null)\n{\n\t_parent=_parentAssociation.getParent();\n}\nreturn _parent;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='&lt;%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%&gt; _parentAssociation = this.getParentAssociation();\n&lt;%org.eclipse.app4mc.amalthea.model.TaskScheduler%&gt; _parent = null;\nif (_parentAssociation!=null)\n{\n\t_parent=_parentAssociation.getParent();\n}\nreturn _parent;'"
 	 * @generated
 	 */
 	TaskScheduler getParentScheduler();
@@ -132,7 +132,7 @@ public interface TaskScheduler extends Scheduler {
 	 * @return the value of the '<em>Child Schedulers</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskScheduler_ChildSchedulers()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='<%org.eclipse.emf.common.util.EList%><<%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%>> _childAssociations = this.getChildAssociations();\nfinal <%org.eclipse.xtext.xbase.lib.Functions.Function1%><<%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%>, <%org.eclipse.app4mc.amalthea.model.TaskScheduler%>> _function = new <%org.eclipse.xtext.xbase.lib.Functions.Function1%><<%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%>, <%org.eclipse.app4mc.amalthea.model.TaskScheduler%>>()\n{\n\tpublic <%org.eclipse.app4mc.amalthea.model.TaskScheduler%> apply(final <%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%> it)\n\t{\n\t\treturn it.getChild();\n\t}\n};\nreturn <%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.<<%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%>, <%org.eclipse.app4mc.amalthea.model.TaskScheduler%>>map(_childAssociations, _function);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%&gt;, &lt;%org.eclipse.app4mc.amalthea.model.TaskScheduler%&gt;&gt; _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%&gt;, &lt;%org.eclipse.app4mc.amalthea.model.TaskScheduler%&gt;&gt;()\n{\n\tpublic &lt;%org.eclipse.app4mc.amalthea.model.TaskScheduler%&gt; apply(final &lt;%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%&gt; it)\n\t{\n\t\treturn it.getChild();\n\t}\n};\nreturn &lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.SchedulerAssociation%&gt;, &lt;%org.eclipse.app4mc.amalthea.model.TaskScheduler%&gt;&gt;map(this.getChildAssociations(), _function);'"
 	 * @generated
 	 */
 	EList<TaskScheduler> getChildSchedulers();

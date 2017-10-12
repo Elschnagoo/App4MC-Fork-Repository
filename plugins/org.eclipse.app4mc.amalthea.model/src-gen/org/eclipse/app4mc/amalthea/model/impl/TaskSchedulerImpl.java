@@ -231,13 +231,12 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * @generated
 	 */
 	public EList<TaskScheduler> getChildSchedulers() {
-		EList<SchedulerAssociation> _childAssociations = this.getChildAssociations();
 		final Function1<SchedulerAssociation, TaskScheduler> _function = new Function1<SchedulerAssociation, TaskScheduler>() {
 			public TaskScheduler apply(final SchedulerAssociation it) {
 				return it.getChild();
 			}
 		};
-		return XcoreEListExtensions.<SchedulerAssociation, TaskScheduler>map(_childAssociations, _function);
+		return XcoreEListExtensions.<SchedulerAssociation, TaskScheduler>map(this.getChildAssociations(), _function);
 	}
 
 	/**

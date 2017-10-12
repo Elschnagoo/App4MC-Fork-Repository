@@ -49,7 +49,7 @@ public interface IAnnotatable extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Custom Properties</em>' map.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getIAnnotatable_CustomProperties()
-	 * @model mapType="org.eclipse.app4mc.amalthea.model.CustomProperty<org.eclipse.emf.ecore.EString, org.eclipse.app4mc.amalthea.model.Value>"
+	 * @model mapType="org.eclipse.app4mc.amalthea.model.CustomProperty&lt;org.eclipse.emf.ecore.EString, org.eclipse.app4mc.amalthea.model.Value&gt;"
 	 * @generated
 	 */
 	EMap<String, Value> getCustomProperties();

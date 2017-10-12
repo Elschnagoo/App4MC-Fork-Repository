@@ -94,7 +94,7 @@ public interface DataSize extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%java.math.BigInteger%> _value = this.getValue();\n<%java.lang.String%> _plus = (_value + \" \");\n<%java.lang.String%> _xifexpression = null;\n<%org.eclipse.app4mc.amalthea.model.DataSizeUnit%> _unit = this.getUnit();\nboolean _equals = <%com.google.common.base.Objects%>.equal(_unit, <%org.eclipse.app4mc.amalthea.model.DataSizeUnit%>._UNDEFINED_);\nif (_equals)\n{\n\t_xifexpression = \"<unit>\";\n}\nelse\n{\n\t<%org.eclipse.app4mc.amalthea.model.DataSizeUnit%> _unit_1 = this.getUnit();\n\t_xifexpression = _unit_1.getLiteral();\n}\nreturn (_plus + _xifexpression);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.math.BigInteger%&gt; _value = this.getValue();\n&lt;%java.lang.String%&gt; _plus = (_value + \" \");\n&lt;%java.lang.String%&gt; _xifexpression = null;\n&lt;%org.eclipse.app4mc.amalthea.model.DataSizeUnit%&gt; _unit = this.getUnit();\nboolean _equals = &lt;%com.google.common.base.Objects%&gt;.equal(_unit, &lt;%org.eclipse.app4mc.amalthea.model.DataSizeUnit%&gt;._UNDEFINED_);\nif (_equals)\n{\n\t_xifexpression = \"&lt;unit&gt;\";\n}\nelse\n{\n\t_xifexpression = this.getUnit().getLiteral();\n}\nreturn (_plus + _xifexpression);'"
 	 * @generated
 	 */
 	String toString();
@@ -115,7 +115,7 @@ public interface DataSize extends EObject {
 	 * Convenience methods to retrieve the size in Bits and Bytes
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='long _xblockexpression = (long) 0;\n{\n\tfinal <%java.math.BigInteger%> bits = <%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.convertToBit(this);\n\tlong _xifexpression = (long) 0;\n\tboolean _equals = <%com.google.common.base.Objects%>.equal(bits, null);\n\tif (_equals)\n\t{\n\t\t_xifexpression = (-1L);\n\t}\n\telse\n\t{\n\t\t_xifexpression = bits.longValue();\n\t}\n\t_xblockexpression = _xifexpression;\n}\nreturn _xblockexpression;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='long _xblockexpression = (long) 0;\n{\n\tfinal &lt;%java.math.BigInteger%&gt; bits = &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%&gt;.convertToBit(this);\n\tlong _xifexpression = (long) 0;\n\tif ((bits == null))\n\t{\n\t\t_xifexpression = (-1L);\n\t}\n\telse\n\t{\n\t\t_xifexpression = bits.longValue();\n\t}\n\t_xblockexpression = _xifexpression;\n}\nreturn _xblockexpression;'"
 	 * @generated
 	 */
 	long getNumberBits();
@@ -124,7 +124,7 @@ public interface DataSize extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='long _xblockexpression = (long) 0;\n{\n\tfinal <%java.math.BigInteger%> bits = <%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.convertToBit(this);\n\tlong _xifexpression = (long) 0;\n\tboolean _equals = <%com.google.common.base.Objects%>.equal(bits, null);\n\tif (_equals)\n\t{\n\t\t_xifexpression = (-1L);\n\t}\n\telse\n\t{\n\t\tlong _longValue = bits.longValue();\n\t\tlong _divide = (_longValue / 8);\n\t\tdouble _ceil = <%java.lang.Math%>.ceil(_divide);\n\t\t_xifexpression = <%java.lang.Double%>.valueOf(_ceil).longValue();\n\t}\n\t_xblockexpression = _xifexpression;\n}\nreturn _xblockexpression;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='long _xblockexpression = (long) 0;\n{\n\tfinal &lt;%java.math.BigInteger%&gt; bits = &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%&gt;.convertToBit(this);\n\tlong _xifexpression = (long) 0;\n\tif ((bits == null))\n\t{\n\t\t_xifexpression = (-1L);\n\t}\n\telse\n\t{\n\t\tlong _longValue = bits.longValue();\n\t\tlong _divide = (_longValue / 8);\n\t\t_xifexpression = &lt;%java.lang.Double%&gt;.valueOf(&lt;%java.lang.Math%&gt;.ceil(_divide)).longValue();\n\t}\n\t_xblockexpression = _xifexpression;\n}\nreturn _xblockexpression;'"
 	 * @generated
 	 */
 	long getNumberBytes();

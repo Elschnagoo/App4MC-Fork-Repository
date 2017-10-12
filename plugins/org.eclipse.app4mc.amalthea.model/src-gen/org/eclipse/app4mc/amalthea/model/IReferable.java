@@ -86,7 +86,7 @@ public interface IReferable extends EObject {
 	 * Overwrite this method to define specific IDs (used by name-based references).
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%java.lang.String%> _name = this.getName();\n<%java.lang.String%> _encode = this.encode(_name);\n<%java.lang.String%> _plus = (_encode + \"?type=\");\n<%org.eclipse.emf.ecore.EClass%> _eClass = this.eClass();\n<%java.lang.String%> _name_1 = _eClass.getName();\nreturn (_plus + _name_1);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _encode = this.encode(this.getName());\n&lt;%java.lang.String%&gt; _plus = (_encode + \"?type=\");\n&lt;%java.lang.String%&gt; _name = this.eClass().getName();\nreturn (_plus + _name);'"
 	 * @generated
 	 */
 	String computeUniqueName();
@@ -95,7 +95,7 @@ public interface IReferable extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false" strUnique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try\n{\n\t<%java.lang.String%> _xifexpression = null;\n\tboolean _isNullOrEmpty = <%org.eclipse.xtext.xbase.lib.StringExtensions%>.isNullOrEmpty(str);\n\tif (_isNullOrEmpty)\n\t{\n\t\t_xifexpression = \"no-name\";\n\t}\n\telse\n\t{\n\t\t<%java.lang.String%> _string = <%java.nio.charset.StandardCharsets%>.UTF_8.toString();\n\t\t_xifexpression = <%java.net.URLEncoder%>.encode(str, _string);\n\t}\n\treturn _xifexpression;\n}\ncatch (Throwable _e)\n{\n\tthrow org.eclipse.xtext.xbase.lib.Exceptions.sneakyThrow(_e);\n}'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try\n{\n\t&lt;%java.lang.String%&gt; _xifexpression = null;\n\tboolean _isNullOrEmpty = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%&gt;.isNullOrEmpty(str);\n\tif (_isNullOrEmpty)\n\t{\n\t\t_xifexpression = \"no-name\";\n\t}\n\telse\n\t{\n\t\t_xifexpression = &lt;%java.net.URLEncoder%&gt;.encode(str, &lt;%java.nio.charset.StandardCharsets%&gt;.UTF_8.toString());\n\t}\n\treturn _xifexpression;\n}\ncatch (Throwable _e)\n{\n\tthrow org.eclipse.xtext.xbase.lib.Exceptions.sneakyThrow(_e);\n}'"
 	 * @generated
 	 */
 	String encode(String str);

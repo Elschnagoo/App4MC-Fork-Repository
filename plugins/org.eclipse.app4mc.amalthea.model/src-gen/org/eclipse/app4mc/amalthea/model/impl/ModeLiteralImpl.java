@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
@@ -63,9 +62,7 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 		EObject _eContainer = this.eContainer();
 		Object _eGet = null;
 		if (_eContainer!=null) {
-			EClass _eClass = this.eClass();
-			EStructuralFeature _eStructuralFeature = _eClass.getEStructuralFeature("name");
-			_eGet=_eContainer.eGet(_eStructuralFeature);
+			_eGet=_eContainer.eGet(this.eClass().getEStructuralFeature("name"));
 		}
 		final String containerName = this.encode(((String) _eGet));
 		String _computeUniqueName = super.computeUniqueName();
@@ -81,9 +78,7 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 		EObject _eContainer = this.eContainer();
 		Object _eGet = null;
 		if (_eContainer!=null) {
-			EClass _eClass = this.eClass();
-			EStructuralFeature _eStructuralFeature = _eClass.getEStructuralFeature("name");
-			_eGet=_eContainer.eGet(_eStructuralFeature);
+			_eGet=_eContainer.eGet(this.eClass().getEStructuralFeature("name"));
 		}
 		final String modeName = ((String) _eGet);
 		String _xifexpression = null;
@@ -96,8 +91,7 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 		}
 		String _plus = (_xifexpression + "::");
 		String _xifexpression_1 = null;
-		String _name = this.getName();
-		boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(_name);
+		boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(this.getName());
 		if (_isNullOrEmpty_1) {
 			_xifexpression_1 = "<literal>";
 		}

@@ -12,8 +12,6 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import com.google.common.base.Objects;
-
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
@@ -117,18 +115,15 @@ public class ReferenceObjectImpl extends ValueImpl implements ReferenceObject {
 	 */
 	public String toString() {
 		IReferable _value = this.getValue();
-		boolean _equals = Objects.equal(_value, null);
-		if (_equals) {
+		boolean _tripleEquals = (_value == null);
+		if (_tripleEquals) {
 			return "(Reference) null";
 		}
 		else {
-			IReferable _value_1 = this.getValue();
-			EClass _eClass = _value_1.eClass();
-			String _name = _eClass.getName();
+			String _name = this.getValue().eClass().getName();
 			String _plus = ("(Reference) " + _name);
 			String _plus_1 = (_plus + " \"");
-			IReferable _value_2 = this.getValue();
-			String _name_1 = _value_2.getName();
+			String _name_1 = this.getValue().getName();
 			String _plus_2 = (_plus_1 + _name_1);
 			return (_plus_2 + "\"");
 		}

@@ -12,8 +12,6 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import com.google.common.base.Objects;
-
 import java.lang.reflect.InvocationTargetException;
 
 import java.math.BigInteger;
@@ -110,8 +108,8 @@ public class BigIntegerObjectImpl extends ValueImpl implements BigIntegerObject 
 	 */
 	public String toString() {
 		BigInteger _value = this.getValue();
-		boolean _equals = Objects.equal(_value, null);
-		if (_equals) {
+		boolean _tripleEquals = (_value == null);
+		if (_tripleEquals) {
 			return "(BigInteger) null";
 		}
 		else {

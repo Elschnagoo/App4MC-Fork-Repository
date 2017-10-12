@@ -170,8 +170,7 @@ public class FrequencyImpl extends AmaltheaExtendedEObjectImpl implements Freque
 			_xifexpression = "<unit>";
 		}
 		else {
-			FrequencyUnit _unit_1 = this.getUnit();
-			_xifexpression = _unit_1.getLiteral();
+			_xifexpression = this.getUnit().getLiteral();
 		}
 		return (_plus + _xifexpression);
 	}

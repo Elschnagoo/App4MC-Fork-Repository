@@ -474,8 +474,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	public Activation getFirstActivation() {
-		EList<Activation> _activations = this.getActivations();
-		return IterableExtensions.<Activation>head(_activations);
+		return IterableExtensions.<Activation>head(this.getActivations());
 	}
 
 	/**

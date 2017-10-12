@@ -75,7 +75,7 @@ public interface SchedulerAssociation extends EObject {
 	 * @return the value of the '<em>Child</em>' reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulerAssociation_Child()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='<%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();\nreturn ((<%org.eclipse.app4mc.amalthea.model.TaskScheduler%>) _eContainer);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\nreturn ((&lt;%org.eclipse.app4mc.amalthea.model.TaskScheduler%&gt;) _eContainer);'"
 	 * @generated
 	 */
 	TaskScheduler getChild();
@@ -118,7 +118,7 @@ public interface SchedulerAssociation extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameter Extensions</em>' map.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulerAssociation_ParameterExtensions()
-	 * @model mapType="org.eclipse.app4mc.amalthea.model.ParameterExtension<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+	 * @model mapType="org.eclipse.app4mc.amalthea.model.ParameterExtension&lt;org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString&gt;"
 	 * @generated
 	 */
 	EMap<String, String> getParameterExtensions();

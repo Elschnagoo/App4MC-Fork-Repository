@@ -65,7 +65,7 @@ public interface FloatObject extends Value {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='float _value = this.getValue();\nreturn (\"(float) \" + <%java.lang.Float%>.valueOf(_value));'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='float _value = this.getValue();\nreturn (\"(float) \" + &lt;%java.lang.Float%&gt;.valueOf(_value));'"
 	 * @generated
 	 */
 	String toString();

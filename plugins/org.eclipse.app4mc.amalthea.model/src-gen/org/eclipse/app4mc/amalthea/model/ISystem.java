@@ -96,7 +96,7 @@ public interface ISystem extends EObject {
 	 * @return the value of the '<em>Inner Ports</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getISystem_InnerPorts()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return <%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.getInnerPorts(this);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%&gt;.getInnerPorts(this);'"
 	 * @generated
 	 */
 	EList<QualifiedPort> getInnerPorts();
