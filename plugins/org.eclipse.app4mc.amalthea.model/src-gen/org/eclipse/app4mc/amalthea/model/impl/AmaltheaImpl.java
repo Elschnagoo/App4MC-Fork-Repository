@@ -21,6 +21,7 @@ import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
+import org.eclipse.app4mc.amalthea.model.MeasurementModel;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.SWModel;
@@ -54,6 +55,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getMappingModel <em>Mapping Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getComponentsModel <em>Components Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getConfigModel <em>Config Model</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AmaltheaImpl#getMeasurementModel <em>Measurement Model</em>}</li>
  * </ul>
  *
  * @generated
@@ -178,6 +180,16 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * @ordered
 	 */
 	protected ConfigModel configModel;
+
+	/**
+	 * The cached value of the '{@link #getMeasurementModel() <em>Measurement Model</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMeasurementModel()
+	 * @generated
+	 * @ordered
+	 */
+	protected MeasurementModel measurementModel;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -685,6 +697,49 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public MeasurementModel getMeasurementModel() {
+		return measurementModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMeasurementModel(MeasurementModel newMeasurementModel, NotificationChain msgs) {
+		MeasurementModel oldMeasurementModel = measurementModel;
+		measurementModel = newMeasurementModel;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.AMALTHEA__MEASUREMENT_MODEL, oldMeasurementModel, newMeasurementModel);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMeasurementModel(MeasurementModel newMeasurementModel) {
+		if (newMeasurementModel != measurementModel) {
+			NotificationChain msgs = null;
+			if (measurementModel != null)
+				msgs = ((InternalEObject)measurementModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__MEASUREMENT_MODEL, null, msgs);
+			if (newMeasurementModel != null)
+				msgs = ((InternalEObject)newMeasurementModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.AMALTHEA__MEASUREMENT_MODEL, null, msgs);
+			msgs = basicSetMeasurementModel(newMeasurementModel, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.AMALTHEA__MEASUREMENT_MODEL, newMeasurementModel, newMeasurementModel));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -710,6 +765,8 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 				return basicSetComponentsModel(null, msgs);
 			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
 				return basicSetConfigModel(null, msgs);
+			case AmaltheaPackage.AMALTHEA__MEASUREMENT_MODEL:
+				return basicSetMeasurementModel(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -746,6 +803,8 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 				return getComponentsModel();
 			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
 				return getConfigModel();
+			case AmaltheaPackage.AMALTHEA__MEASUREMENT_MODEL:
+				return getMeasurementModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -790,6 +849,9 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 				return;
 			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
 				setConfigModel((ConfigModel)newValue);
+				return;
+			case AmaltheaPackage.AMALTHEA__MEASUREMENT_MODEL:
+				setMeasurementModel((MeasurementModel)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -836,6 +898,9 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
 				setConfigModel((ConfigModel)null);
 				return;
+			case AmaltheaPackage.AMALTHEA__MEASUREMENT_MODEL:
+				setMeasurementModel((MeasurementModel)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -872,6 +937,8 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 				return componentsModel != null;
 			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
 				return configModel != null;
+			case AmaltheaPackage.AMALTHEA__MEASUREMENT_MODEL:
+				return measurementModel != null;
 		}
 		return super.eIsSet(featureID);
 	}

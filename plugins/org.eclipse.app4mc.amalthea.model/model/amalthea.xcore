@@ -57,6 +57,7 @@ class Amalthea extends BaseObject {
 	contains MappingModel mappingModel
 	contains ComponentsModel componentsModel
 	contains ConfigModel configModel
+	contains MeasurementModel measurementModel
 }
 
 
@@ -3665,3 +3666,39 @@ enum ASILType
 	A
 	QM
 }
+
+
+// ===============================================================================
+// ===============================================================================
+// 
+// 									Measurement Model
+// 
+// ===============================================================================
+// ===============================================================================
+
+class MeasurementModel extends BaseObject
+{
+	contains Measurement[] measurements
+}
+
+abstract class Measurement extends BaseObject
+{
+	contains Time[] runtimes
+	contains Deviation<Time> runtimeDeviation
+}
+
+class EventChainMeasurement extends Measurement
+{
+	refers EventChain[1] eventChain
+}
+
+class TaskMeasurement extends Measurement
+{
+	refers Task[1] task
+}
+
+class RunnableMeasurement extends Measurement
+{
+	refers Runnable[1] runnable
+}
+

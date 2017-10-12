@@ -124,6 +124,7 @@ import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainContainer;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
+import org.eclipse.app4mc.amalthea.model.EventChainMeasurement;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
@@ -140,6 +141,7 @@ import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
+import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Grouping;
@@ -184,6 +186,8 @@ import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.ListObject;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
+import org.eclipse.app4mc.amalthea.model.Measurement;
+import org.eclipse.app4mc.amalthea.model.MeasurementModel;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryClassification;
 import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
@@ -274,6 +278,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
@@ -321,6 +326,7 @@ import org.eclipse.app4mc.amalthea.model.TargetMemory;
 import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
+import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
@@ -2022,15 +2028,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.COMPUTATION_ITEM: {
-				ComputationItem computationItem = (ComputationItem)theEObject;
-				T1 result = caseComputationItem(computationItem);
-				if (result == null) result = caseRunnableItem(computationItem);
-				if (result == null) result = caseBaseObject(computationItem);
-				if (result == null) result = caseIAnnotatable(computationItem);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.TASK_SCHEDULER: {
 				TaskScheduler taskScheduler = (TaskScheduler)theEObject;
 				T1 result = caseTaskScheduler(taskScheduler);
@@ -3062,6 +3059,15 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.COMPUTATION_ITEM: {
+				ComputationItem computationItem = (ComputationItem)theEObject;
+				T1 result = caseComputationItem(computationItem);
+				if (result == null) result = caseRunnableItem(computationItem);
+				if (result == null) result = caseBaseObject(computationItem);
+				if (result == null) result = caseIAnnotatable(computationItem);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS: {
 				RunnableInstructions runnableInstructions = (RunnableInstructions)theEObject;
 				T1 result = caseRunnableInstructions(runnableInstructions);
@@ -3199,6 +3205,16 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseRunnableItem(asynchronousServerCall);
 				if (result == null) result = caseBaseObject(asynchronousServerCall);
 				if (result == null) result = caseIAnnotatable(asynchronousServerCall);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.GET_RESULT_SERVER_CALL: {
+				GetResultServerCall getResultServerCall = (GetResultServerCall)theEObject;
+				T1 result = caseGetResultServerCall(getResultServerCall);
+				if (result == null) result = caseServerCall(getResultServerCall);
+				if (result == null) result = caseRunnableItem(getResultServerCall);
+				if (result == null) result = caseBaseObject(getResultServerCall);
+				if (result == null) result = caseIAnnotatable(getResultServerCall);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3432,6 +3448,49 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseRunEntityCallStatistic(runEntityCallStatistic);
 				if (result == null) result = caseBaseObject(runEntityCallStatistic);
 				if (result == null) result = caseIAnnotatable(runEntityCallStatistic);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.MEASUREMENT_MODEL: {
+				MeasurementModel measurementModel = (MeasurementModel)theEObject;
+				T1 result = caseMeasurementModel(measurementModel);
+				if (result == null) result = caseBaseObject(measurementModel);
+				if (result == null) result = caseIAnnotatable(measurementModel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.MEASUREMENT: {
+				Measurement measurement = (Measurement)theEObject;
+				T1 result = caseMeasurement(measurement);
+				if (result == null) result = caseBaseObject(measurement);
+				if (result == null) result = caseIAnnotatable(measurement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.EVENT_CHAIN_MEASUREMENT: {
+				EventChainMeasurement eventChainMeasurement = (EventChainMeasurement)theEObject;
+				T1 result = caseEventChainMeasurement(eventChainMeasurement);
+				if (result == null) result = caseMeasurement(eventChainMeasurement);
+				if (result == null) result = caseBaseObject(eventChainMeasurement);
+				if (result == null) result = caseIAnnotatable(eventChainMeasurement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TASK_MEASUREMENT: {
+				TaskMeasurement taskMeasurement = (TaskMeasurement)theEObject;
+				T1 result = caseTaskMeasurement(taskMeasurement);
+				if (result == null) result = caseMeasurement(taskMeasurement);
+				if (result == null) result = caseBaseObject(taskMeasurement);
+				if (result == null) result = caseIAnnotatable(taskMeasurement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.RUNNABLE_MEASUREMENT: {
+				RunnableMeasurement runnableMeasurement = (RunnableMeasurement)theEObject;
+				T1 result = caseRunnableMeasurement(runnableMeasurement);
+				if (result == null) result = caseMeasurement(runnableMeasurement);
+				if (result == null) result = caseBaseObject(runnableMeasurement);
+				if (result == null) result = caseIAnnotatable(runnableMeasurement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -6245,21 +6304,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Computation Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Computation Item</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseComputationItem(ComputationItem object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Task Scheduler</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -7880,6 +7924,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Computation Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Computation Item</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseComputationItem(ComputationItem object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Runnable Instructions</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -8101,6 +8160,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseAsynchronousServerCall(AsynchronousServerCall object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Get Result Server Call</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Get Result Server Call</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseGetResultServerCall(GetResultServerCall object) {
 		return null;
 	}
 
@@ -8476,6 +8550,81 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseRunEntityCallStatistic(RunEntityCallStatistic object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Measurement Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Measurement Model</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseMeasurementModel(MeasurementModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Measurement</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Measurement</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseMeasurement(Measurement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Event Chain Measurement</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Event Chain Measurement</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseEventChainMeasurement(EventChainMeasurement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Task Measurement</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Task Measurement</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseTaskMeasurement(TaskMeasurement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Runnable Measurement</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Runnable Measurement</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseRunnableMeasurement(RunnableMeasurement object) {
 		return null;
 	}
 

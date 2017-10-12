@@ -5510,6 +5510,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.GetResultServerCall} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GetResultServerCallItemProvider getResultServerCallItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.GetResultServerCall}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGetResultServerCallAdapter() {
+		if (getResultServerCallItemProvider == null) {
+			getResultServerCallItemProvider = new GetResultServerCallItemProvider(this);
+		}
+
+		return getResultServerCallItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6039,6 +6062,98 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.MeasurementModel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MeasurementModelItemProvider measurementModelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.MeasurementModel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMeasurementModelAdapter() {
+		if (measurementModelItemProvider == null) {
+			measurementModelItemProvider = new MeasurementModelItemProvider(this);
+		}
+
+		return measurementModelItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EventChainMeasurement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EventChainMeasurementItemProvider eventChainMeasurementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EventChainMeasurement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEventChainMeasurementAdapter() {
+		if (eventChainMeasurementItemProvider == null) {
+			eventChainMeasurementItemProvider = new EventChainMeasurementItemProvider(this);
+		}
+
+		return eventChainMeasurementItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TaskMeasurement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TaskMeasurementItemProvider taskMeasurementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TaskMeasurement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTaskMeasurementAdapter() {
+		if (taskMeasurementItemProvider == null) {
+			taskMeasurementItemProvider = new TaskMeasurementItemProvider(this);
+		}
+
+		return taskMeasurementItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.RunnableMeasurement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RunnableMeasurementItemProvider runnableMeasurementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.RunnableMeasurement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRunnableMeasurementAdapter() {
+		if (runnableMeasurementItemProvider == null) {
+			runnableMeasurementItemProvider = new RunnableMeasurementItemProvider(this);
+		}
+
+		return runnableMeasurementItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6375,6 +6490,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (senderReceiverWriteItemProvider != null) senderReceiverWriteItemProvider.dispose();
 		if (synchronousServerCallItemProvider != null) synchronousServerCallItemProvider.dispose();
 		if (asynchronousServerCallItemProvider != null) asynchronousServerCallItemProvider.dispose();
+		if (getResultServerCallItemProvider != null) getResultServerCallItemProvider.dispose();
 		if (runnableProbabilitySwitchItemProvider != null) runnableProbabilitySwitchItemProvider.dispose();
 		if (groupItemProvider != null) groupItemProvider.dispose();
 		if (runnableCallItemProvider != null) runnableCallItemProvider.dispose();
@@ -6396,6 +6512,10 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (labelAccessStatisticItemProvider != null) labelAccessStatisticItemProvider.dispose();
 		if (instructionFetchItemProvider != null) instructionFetchItemProvider.dispose();
 		if (runEntityCallStatisticItemProvider != null) runEntityCallStatisticItemProvider.dispose();
+		if (measurementModelItemProvider != null) measurementModelItemProvider.dispose();
+		if (eventChainMeasurementItemProvider != null) eventChainMeasurementItemProvider.dispose();
+		if (taskMeasurementItemProvider != null) taskMeasurementItemProvider.dispose();
+		if (runnableMeasurementItemProvider != null) runnableMeasurementItemProvider.dispose();
 	}
 
 }

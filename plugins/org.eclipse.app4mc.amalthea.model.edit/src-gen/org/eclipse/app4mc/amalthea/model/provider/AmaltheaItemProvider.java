@@ -108,6 +108,7 @@ public class AmaltheaItemProvider extends BaseObjectItemProvider {
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_MappingModel());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_ComponentsModel());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_ConfigModel());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getAmalthea_MeasurementModel());
 		}
 		return childrenFeatures;
 	}
@@ -194,6 +195,7 @@ public class AmaltheaItemProvider extends BaseObjectItemProvider {
 			case AmaltheaPackage.AMALTHEA__MAPPING_MODEL:
 			case AmaltheaPackage.AMALTHEA__COMPONENTS_MODEL:
 			case AmaltheaPackage.AMALTHEA__CONFIG_MODEL:
+			case AmaltheaPackage.AMALTHEA__MEASUREMENT_MODEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -265,6 +267,11 @@ public class AmaltheaItemProvider extends BaseObjectItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getAmalthea_ConfigModel(),
 				 AmaltheaFactory.eINSTANCE.createConfigModel()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getAmalthea_MeasurementModel(),
+				 AmaltheaFactory.eINSTANCE.createMeasurementModel()));
 	}
 
 }

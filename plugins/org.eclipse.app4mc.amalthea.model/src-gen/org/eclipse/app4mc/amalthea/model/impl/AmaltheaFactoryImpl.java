@@ -31,6 +31,7 @@ import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
+import org.eclipse.app4mc.amalthea.model.BlockingType;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.Bridge;
@@ -109,6 +110,7 @@ import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainContainer;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
+import org.eclipse.app4mc.amalthea.model.EventChainMeasurement;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
@@ -125,6 +127,7 @@ import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
+import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.GroupingType;
@@ -166,6 +169,7 @@ import org.eclipse.app4mc.amalthea.model.ListObject;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.MappingType;
+import org.eclipse.app4mc.amalthea.model.MeasurementModel;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType;
 import org.eclipse.app4mc.amalthea.model.MemoryClassification;
@@ -250,6 +254,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableEventType;
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
+import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
@@ -299,6 +304,7 @@ import org.eclipse.app4mc.amalthea.model.TargetMemory;
 import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
+import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
@@ -613,6 +619,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.SENDER_RECEIVER_WRITE: return createSenderReceiverWrite();
 			case AmaltheaPackage.SYNCHRONOUS_SERVER_CALL: return createSynchronousServerCall();
 			case AmaltheaPackage.ASYNCHRONOUS_SERVER_CALL: return createAsynchronousServerCall();
+			case AmaltheaPackage.GET_RESULT_SERVER_CALL: return createGetResultServerCall();
 			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH: return createRunnableProbabilitySwitch();
 			case AmaltheaPackage.GROUP: return createGroup();
 			case AmaltheaPackage.RUNNABLE_CALL: return createRunnableCall();
@@ -634,6 +641,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.LABEL_ACCESS_STATISTIC: return createLabelAccessStatistic();
 			case AmaltheaPackage.INSTRUCTION_FETCH: return createInstructionFetch();
 			case AmaltheaPackage.RUN_ENTITY_CALL_STATISTIC: return createRunEntityCallStatistic();
+			case AmaltheaPackage.MEASUREMENT_MODEL: return createMeasurementModel();
+			case AmaltheaPackage.EVENT_CHAIN_MEASUREMENT: return createEventChainMeasurement();
+			case AmaltheaPackage.TASK_MEASUREMENT: return createTaskMeasurement();
+			case AmaltheaPackage.RUNNABLE_MEASUREMENT: return createRunnableMeasurement();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -739,6 +750,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createLabelAccessEnumFromString(eDataType, initialValue);
 			case AmaltheaPackage.SEMAPHORE_ACCESS_ENUM:
 				return createSemaphoreAccessEnumFromString(eDataType, initialValue);
+			case AmaltheaPackage.BLOCKING_TYPE:
+				return createBlockingTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.PREEMPTION:
 				return createPreemptionFromString(eDataType, initialValue);
 			case AmaltheaPackage.CONCURRENCY_TYPE:
@@ -850,6 +863,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertLabelAccessEnumToString(eDataType, instanceValue);
 			case AmaltheaPackage.SEMAPHORE_ACCESS_ENUM:
 				return convertSemaphoreAccessEnumToString(eDataType, instanceValue);
+			case AmaltheaPackage.BLOCKING_TYPE:
+				return convertBlockingTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.PREEMPTION:
 				return convertPreemptionToString(eDataType, instanceValue);
 			case AmaltheaPackage.CONCURRENCY_TYPE:
@@ -3246,6 +3261,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public GetResultServerCall createGetResultServerCall() {
+		GetResultServerCallImpl getResultServerCall = new GetResultServerCallImpl();
+		return getResultServerCall;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public RunnableProbabilitySwitch createRunnableProbabilitySwitch() {
 		RunnableProbabilitySwitchImpl runnableProbabilitySwitch = new RunnableProbabilitySwitchImpl();
 		return runnableProbabilitySwitch;
@@ -3449,6 +3474,46 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public RunEntityCallStatistic createRunEntityCallStatistic() {
 		RunEntityCallStatisticImpl runEntityCallStatistic = new RunEntityCallStatisticImpl();
 		return runEntityCallStatistic;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MeasurementModel createMeasurementModel() {
+		MeasurementModelImpl measurementModel = new MeasurementModelImpl();
+		return measurementModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EventChainMeasurement createEventChainMeasurement() {
+		EventChainMeasurementImpl eventChainMeasurement = new EventChainMeasurementImpl();
+		return eventChainMeasurement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TaskMeasurement createTaskMeasurement() {
+		TaskMeasurementImpl taskMeasurement = new TaskMeasurementImpl();
+		return taskMeasurement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RunnableMeasurement createRunnableMeasurement() {
+		RunnableMeasurementImpl runnableMeasurement = new RunnableMeasurementImpl();
+		return runnableMeasurement;
 	}
 
 	/**
@@ -4368,6 +4433,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertSemaphoreAccessEnumToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BlockingType createBlockingTypeFromString(EDataType eDataType, String initialValue) {
+		BlockingType result = BlockingType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertBlockingTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

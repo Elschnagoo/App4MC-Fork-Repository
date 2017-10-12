@@ -2147,6 +2147,15 @@ public interface AmaltheaFactory extends EFactory {
 	AsynchronousServerCall createAsynchronousServerCall();
 
 	/**
+	 * Returns a new object of class '<em>Get Result Server Call</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Get Result Server Call</em>'.
+	 * @generated
+	 */
+	GetResultServerCall createGetResultServerCall();
+
+	/**
 	 * Returns a new object of class '<em>Runnable Probability Switch</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2334,6 +2343,42 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	RunEntityCallStatistic createRunEntityCallStatistic();
+
+	/**
+	 * Returns a new object of class '<em>Measurement Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Measurement Model</em>'.
+	 * @generated
+	 */
+	MeasurementModel createMeasurementModel();
+
+	/**
+	 * Returns a new object of class '<em>Event Chain Measurement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Event Chain Measurement</em>'.
+	 * @generated
+	 */
+	EventChainMeasurement createEventChainMeasurement();
+
+	/**
+	 * Returns a new object of class '<em>Task Measurement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Task Measurement</em>'.
+	 * @generated
+	 */
+	TaskMeasurement createTaskMeasurement();
+
+	/**
+	 * Returns a new object of class '<em>Runnable Measurement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Runnable Measurement</em>'.
+	 * @generated
+	 */
+	RunnableMeasurement createRunnableMeasurement();
 
 	/**
 	 * Returns the package supported by this factory.

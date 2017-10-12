@@ -34,6 +34,7 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getMappingModel <em>Mapping Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getComponentsModel <em>Components Model</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getConfigModel <em>Config Model</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Amalthea#getMeasurementModel <em>Measurement Model</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea()
@@ -342,5 +343,31 @@ public interface Amalthea extends BaseObject {
 	 * @generated
 	 */
 	void setConfigModel(ConfigModel value);
+
+	/**
+	 * Returns the value of the '<em><b>Measurement Model</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Measurement Model</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Measurement Model</em>' containment reference.
+	 * @see #setMeasurementModel(MeasurementModel)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_MeasurementModel()
+	 * @model containment="true"
+	 * @generated
+	 */
+	MeasurementModel getMeasurementModel();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Amalthea#getMeasurementModel <em>Measurement Model</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Measurement Model</em>' containment reference.
+	 * @see #getMeasurementModel()
+	 * @generated
+	 */
+	void setMeasurementModel(MeasurementModel value);
 
 } // Amalthea

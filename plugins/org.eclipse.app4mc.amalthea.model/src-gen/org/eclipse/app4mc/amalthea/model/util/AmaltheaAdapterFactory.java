@@ -124,6 +124,7 @@ import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainContainer;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
+import org.eclipse.app4mc.amalthea.model.EventChainMeasurement;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
@@ -140,6 +141,7 @@ import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
+import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Grouping;
@@ -184,6 +186,8 @@ import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.ListObject;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
+import org.eclipse.app4mc.amalthea.model.Measurement;
+import org.eclipse.app4mc.amalthea.model.MeasurementModel;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryClassification;
 import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
@@ -274,6 +278,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
@@ -321,6 +326,7 @@ import org.eclipse.app4mc.amalthea.model.TargetMemory;
 import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
+import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
@@ -1157,10 +1163,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createSchedulerAdapter();
 			}
 			@Override
-			public Adapter caseComputationItem(ComputationItem object) {
-				return createComputationItemAdapter();
-			}
-			@Override
 			public Adapter caseTaskScheduler(TaskScheduler object) {
 				return createTaskSchedulerAdapter();
 			}
@@ -1593,6 +1595,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createRunnableItemAdapter();
 			}
 			@Override
+			public Adapter caseComputationItem(ComputationItem object) {
+				return createComputationItemAdapter();
+			}
+			@Override
 			public Adapter caseRunnableInstructions(RunnableInstructions object) {
 				return createRunnableInstructionsAdapter();
 			}
@@ -1651,6 +1657,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAsynchronousServerCall(AsynchronousServerCall object) {
 				return createAsynchronousServerCallAdapter();
+			}
+			@Override
+			public Adapter caseGetResultServerCall(GetResultServerCall object) {
+				return createGetResultServerCallAdapter();
 			}
 			@Override
 			public Adapter caseRunnableProbabilitySwitch(RunnableProbabilitySwitch object) {
@@ -1751,6 +1761,26 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseRunEntityCallStatistic(RunEntityCallStatistic object) {
 				return createRunEntityCallStatisticAdapter();
+			}
+			@Override
+			public Adapter caseMeasurementModel(MeasurementModel object) {
+				return createMeasurementModelAdapter();
+			}
+			@Override
+			public Adapter caseMeasurement(Measurement object) {
+				return createMeasurementAdapter();
+			}
+			@Override
+			public Adapter caseEventChainMeasurement(EventChainMeasurement object) {
+				return createEventChainMeasurementAdapter();
+			}
+			@Override
+			public Adapter caseTaskMeasurement(TaskMeasurement object) {
+				return createTaskMeasurementAdapter();
+			}
+			@Override
+			public Adapter caseRunnableMeasurement(RunnableMeasurement object) {
+				return createRunnableMeasurementAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -4391,20 +4421,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ComputationItem <em>Computation Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ComputationItem
-	 * @generated
-	 */
-	public Adapter createComputationItemAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TaskScheduler <em>Task Scheduler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -5917,6 +5933,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ComputationItem <em>Computation Item</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ComputationItem
+	 * @generated
+	 */
+	public Adapter createComputationItemAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.RunnableInstructions <em>Runnable Instructions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -6123,6 +6153,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAsynchronousServerCallAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.GetResultServerCall <em>Get Result Server Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.GetResultServerCall
+	 * @generated
+	 */
+	public Adapter createGetResultServerCallAdapter() {
 		return null;
 	}
 
@@ -6473,6 +6517,76 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRunEntityCallStatisticAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.MeasurementModel <em>Measurement Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.MeasurementModel
+	 * @generated
+	 */
+	public Adapter createMeasurementModelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Measurement <em>Measurement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.Measurement
+	 * @generated
+	 */
+	public Adapter createMeasurementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EventChainMeasurement <em>Event Chain Measurement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.EventChainMeasurement
+	 * @generated
+	 */
+	public Adapter createEventChainMeasurementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TaskMeasurement <em>Task Measurement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.TaskMeasurement
+	 * @generated
+	 */
+	public Adapter createTaskMeasurementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.RunnableMeasurement <em>Runnable Measurement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.RunnableMeasurement
+	 * @generated
+	 */
+	public Adapter createRunnableMeasurementAdapter() {
 		return null;
 	}
 

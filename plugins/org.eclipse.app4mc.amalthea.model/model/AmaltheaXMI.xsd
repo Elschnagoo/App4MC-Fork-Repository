@@ -500,6 +500,17 @@ exclusive: gets access to requested semaphore only when there is no other user a
       <xsd:enumeration value="release"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="BlockingType">
+    <xsd:annotation>
+      <xsd:documentation>Blocking type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="active_wait"/>
+      <xsd:enumeration value="passive_wait"/>
+      <xsd:enumeration value="non_blocking"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="Preemption">
     <xsd:annotation>
       <xsd:documentation>Preemption type for scheduling</xsd:documentation>
@@ -555,6 +566,7 @@ exclusive: gets access to requested semaphore only when there is no other user a
           <xsd:element name="mappingModel" type="am:MappingModel"/>
           <xsd:element name="componentsModel" type="am:ComponentsModel"/>
           <xsd:element name="configModel" type="am:ConfigModel"/>
+          <xsd:element name="measurementModel" type="am:MeasurementModel"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -3218,19 +3230,6 @@ computation items: steps to perform the scheduling algorithm</xsd:documentation>
 computation items: steps to perform the scheduling algorithm</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="ComputationItem">
-    <xsd:annotation>
-      <xsd:documentation>Representation of a object that describes computation</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ComputationItem" type="am:ComputationItem">
-    <xsd:annotation>
-      <xsd:documentation>Representation of a object that describes computation</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType name="TaskScheduler">
     <xsd:complexContent>
       <xsd:extension base="am:Scheduler">
@@ -4960,6 +4959,19 @@ which are belonging together.</xsd:documentation>
       <xsd:documentation>Representation of a object that can be executed by a Runnable</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="ComputationItem">
+    <xsd:annotation>
+      <xsd:documentation>Representation of a object that describes computation</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:RunnableItem"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ComputationItem" type="am:ComputationItem">
+    <xsd:annotation>
+      <xsd:documentation>Representation of a object that describes computation</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="RunnableInstructions">
     <xsd:annotation>
       <xsd:documentation>Representation of the execution cost of a Runnable (default and core-specific)</xsd:documentation>
@@ -5222,6 +5234,21 @@ It refers to a optional runnable that exploits the results produced by the serve
     <xsd:annotation>
       <xsd:documentation>A asynchronous server call
 It refers to a optional runnable that exploits the results produced by the server</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="GetResultServerCall">
+    <xsd:annotation>
+      <xsd:documentation>Get the result of a previous asynchronous server call</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:ServerCall">
+        <xsd:attribute name="blockingType" type="am:BlockingType"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="GetResultServerCall" type="am:GetResultServerCall">
+    <xsd:annotation>
+      <xsd:documentation>Get the result of a previous asynchronous server call</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="RunnableProbabilitySwitch">
@@ -5632,4 +5659,58 @@ Used for first definition of an activation rate, which is later refined by stimu
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="RunEntityCallStatistic" type="am:RunEntityCallStatistic"/>
+  <xsd:complexType name="MeasurementModel">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="measurements" type="am:Measurement"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="MeasurementModel" type="am:MeasurementModel"/>
+  <xsd:complexType abstract="true" name="Measurement">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="runtimes" type="am:Time"/>
+          <xsd:element name="runtimeDeviation" type="am:Deviation"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Measurement" type="am:Measurement"/>
+  <xsd:complexType name="EventChainMeasurement">
+    <xsd:complexContent>
+      <xsd:extension base="am:Measurement">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="eventChain" type="am:EventChain"/>
+        </xsd:choice>
+        <xsd:attribute name="eventChain" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="EventChainMeasurement" type="am:EventChainMeasurement"/>
+  <xsd:complexType name="TaskMeasurement">
+    <xsd:complexContent>
+      <xsd:extension base="am:Measurement">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="task" type="am:Task"/>
+        </xsd:choice>
+        <xsd:attribute name="task" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TaskMeasurement" type="am:TaskMeasurement"/>
+  <xsd:complexType name="RunnableMeasurement">
+    <xsd:complexContent>
+      <xsd:extension base="am:Measurement">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="runnable" type="am:Runnable"/>
+        </xsd:choice>
+        <xsd:attribute name="runnable" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="RunnableMeasurement" type="am:RunnableMeasurement"/>
 </xsd:schema>

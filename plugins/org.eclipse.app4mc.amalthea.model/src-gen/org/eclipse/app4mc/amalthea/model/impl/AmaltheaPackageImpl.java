@@ -41,6 +41,7 @@ import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
+import org.eclipse.app4mc.amalthea.model.BlockingType;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.Bridge;
@@ -137,6 +138,7 @@ import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainContainer;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
+import org.eclipse.app4mc.amalthea.model.EventChainMeasurement;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventChainSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
@@ -155,6 +157,7 @@ import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
+import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Grouping;
@@ -208,6 +211,8 @@ import org.eclipse.app4mc.amalthea.model.ListObject;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.MappingType;
+import org.eclipse.app4mc.amalthea.model.Measurement;
+import org.eclipse.app4mc.amalthea.model.MeasurementModel;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType;
 import org.eclipse.app4mc.amalthea.model.MemoryClassification;
@@ -309,6 +314,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableEventType;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
@@ -364,6 +370,7 @@ import org.eclipse.app4mc.amalthea.model.TargetMemory;
 import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
+import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
@@ -1725,13 +1732,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass computationItemEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass taskSchedulerEClass = null;
 
 	/**
@@ -2488,6 +2488,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass computationItemEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass runnableInstructionsEClass = null;
 
 	/**
@@ -2587,6 +2594,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass asynchronousServerCallEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass getResultServerCallEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2762,6 +2776,41 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass runEntityCallStatisticEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass measurementModelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass measurementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eventChainMeasurementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass taskMeasurementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass runnableMeasurementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3090,6 +3139,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum blockingTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum preemptionEEnum = null;
 
 	/**
@@ -3285,6 +3341,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getAmalthea_ConfigModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAmalthea_MeasurementModel() {
+		return (EReference)amaltheaEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -8071,15 +8136,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getComputationItem() {
-		return computationItemEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTaskScheduler() {
 		return taskSchedulerEClass;
 	}
@@ -10843,6 +10899,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getComputationItem() {
+		return computationItemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRunnableInstructions() {
 		return runnableInstructionsEClass;
 	}
@@ -11277,6 +11342,24 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getAsynchronousServerCall_ResultRunnable() {
 		return (EReference)asynchronousServerCallEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGetResultServerCall() {
+		return getResultServerCallEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGetResultServerCall_BlockingType() {
+		return (EAttribute)getResultServerCallEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11869,6 +11952,105 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getMeasurementModel() {
+		return measurementModelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMeasurementModel_Measurements() {
+		return (EReference)measurementModelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMeasurement() {
+		return measurementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMeasurement_Runtimes() {
+		return (EReference)measurementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMeasurement_RuntimeDeviation() {
+		return (EReference)measurementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEventChainMeasurement() {
+		return eventChainMeasurementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEventChainMeasurement_EventChain() {
+		return (EReference)eventChainMeasurementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTaskMeasurement() {
+		return taskMeasurementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTaskMeasurement_Task() {
+		return (EReference)taskMeasurementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRunnableMeasurement() {
+		return runnableMeasurementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRunnableMeasurement_Runnable() {
+		return (EReference)runnableMeasurementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getTimeUnit() {
 		return timeUnitEEnum;
 	}
@@ -12283,6 +12465,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getBlockingType() {
+		return blockingTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getPreemption() {
 		return preemptionEEnum;
 	}
@@ -12346,6 +12537,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(amaltheaEClass, AMALTHEA__MAPPING_MODEL);
 		createEReference(amaltheaEClass, AMALTHEA__COMPONENTS_MODEL);
 		createEReference(amaltheaEClass, AMALTHEA__CONFIG_MODEL);
+		createEReference(amaltheaEClass, AMALTHEA__MEASUREMENT_MODEL);
 
 		commonElementsEClass = createEClass(COMMON_ELEMENTS);
 		createEReference(commonElementsEClass, COMMON_ELEMENTS__TAGS);
@@ -13064,8 +13256,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(schedulerEClass, SCHEDULER__COMPUTATION_ITEMS);
 		createEOperation(schedulerEClass, SCHEDULER___GET_SCHEDULING_ALGORITHM);
 
-		computationItemEClass = createEClass(COMPUTATION_ITEM);
-
 		taskSchedulerEClass = createEClass(TASK_SCHEDULER);
 		createEReference(taskSchedulerEClass, TASK_SCHEDULER__SCHEDULING_ALGORITHM);
 		createEReference(taskSchedulerEClass, TASK_SCHEDULER__PARENT_ASSOCIATION);
@@ -13481,6 +13671,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runnableItemEClass = createEClass(RUNNABLE_ITEM);
 		createEOperation(runnableItemEClass, RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED);
 
+		computationItemEClass = createEClass(COMPUTATION_ITEM);
+
 		runnableInstructionsEClass = createEClass(RUNNABLE_INSTRUCTIONS);
 		createEReference(runnableInstructionsEClass, RUNNABLE_INSTRUCTIONS__DEFAULT);
 		createEReference(runnableInstructionsEClass, RUNNABLE_INSTRUCTIONS__EXTENDED);
@@ -13544,6 +13736,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		asynchronousServerCallEClass = createEClass(ASYNCHRONOUS_SERVER_CALL);
 		createEReference(asynchronousServerCallEClass, ASYNCHRONOUS_SERVER_CALL__RESULT_RUNNABLE);
+
+		getResultServerCallEClass = createEClass(GET_RESULT_SERVER_CALL);
+		createEAttribute(getResultServerCallEClass, GET_RESULT_SERVER_CALL__BLOCKING_TYPE);
 
 		runnableProbabilitySwitchEClass = createEClass(RUNNABLE_PROBABILITY_SWITCH);
 		createEReference(runnableProbabilitySwitchEClass, RUNNABLE_PROBABILITY_SWITCH__ENTRIES);
@@ -13635,6 +13830,22 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runEntityCallStatisticEClass = createEClass(RUN_ENTITY_CALL_STATISTIC);
 		createEReference(runEntityCallStatisticEClass, RUN_ENTITY_CALL_STATISTIC__STATISTIC);
 
+		measurementModelEClass = createEClass(MEASUREMENT_MODEL);
+		createEReference(measurementModelEClass, MEASUREMENT_MODEL__MEASUREMENTS);
+
+		measurementEClass = createEClass(MEASUREMENT);
+		createEReference(measurementEClass, MEASUREMENT__RUNTIMES);
+		createEReference(measurementEClass, MEASUREMENT__RUNTIME_DEVIATION);
+
+		eventChainMeasurementEClass = createEClass(EVENT_CHAIN_MEASUREMENT);
+		createEReference(eventChainMeasurementEClass, EVENT_CHAIN_MEASUREMENT__EVENT_CHAIN);
+
+		taskMeasurementEClass = createEClass(TASK_MEASUREMENT);
+		createEReference(taskMeasurementEClass, TASK_MEASUREMENT__TASK);
+
+		runnableMeasurementEClass = createEClass(RUNNABLE_MEASUREMENT);
+		createEReference(runnableMeasurementEClass, RUNNABLE_MEASUREMENT__RUNNABLE);
+
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
 		frequencyUnitEEnum = createEEnum(FREQUENCY_UNIT);
@@ -13682,6 +13893,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		labelAccessDataStabilityEEnum = createEEnum(LABEL_ACCESS_DATA_STABILITY);
 		labelAccessEnumEEnum = createEEnum(LABEL_ACCESS_ENUM);
 		semaphoreAccessEnumEEnum = createEEnum(SEMAPHORE_ACCESS_ENUM);
+		blockingTypeEEnum = createEEnum(BLOCKING_TYPE);
 		preemptionEEnum = createEEnum(PREEMPTION);
 		concurrencyTypeEEnum = createEEnum(CONCURRENCY_TYPE);
 		asilTypeEEnum = createEEnum(ASIL_TYPE);
@@ -13942,7 +14154,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		osDataConsistencyEClass.getESuperTypes().add(this.getBaseObject());
 		semaphoreEClass.getESuperTypes().add(this.getReferableBaseObject());
 		schedulerEClass.getESuperTypes().add(this.getReferableBaseObject());
-		computationItemEClass.getESuperTypes().add(this.getRunnableItem());
 		taskSchedulerEClass.getESuperTypes().add(this.getScheduler());
 		interruptControllerEClass.getESuperTypes().add(this.getScheduler());
 		algorithmEClass.getESuperTypes().add(this.getBaseObject());
@@ -14055,6 +14266,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		modeLabelEClass.getESuperTypes().add(this.getIDisplayName());
 		sectionEClass.getESuperTypes().add(this.getReferableBaseObject());
 		runnableItemEClass.getESuperTypes().add(this.getBaseObject());
+		computationItemEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableInstructionsEClass.getESuperTypes().add(this.getComputationItem());
 		modeLabelAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableModeSwitchEClass.getESuperTypes().add(this.getRunnableItem());
@@ -14069,6 +14281,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		serverCallEClass.getESuperTypes().add(this.getRunnableItem());
 		synchronousServerCallEClass.getESuperTypes().add(this.getServerCall());
 		asynchronousServerCallEClass.getESuperTypes().add(this.getServerCall());
+		getResultServerCallEClass.getESuperTypes().add(this.getServerCall());
 		runnableProbabilitySwitchEClass.getESuperTypes().add(this.getRunnableItem());
 		groupEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableCallEClass.getESuperTypes().add(this.getRunnableItem());
@@ -14098,6 +14311,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		labelAccessStatisticEClass.getESuperTypes().add(this.getBaseObject());
 		instructionFetchEClass.getESuperTypes().add(this.getBaseObject());
 		runEntityCallStatisticEClass.getESuperTypes().add(this.getBaseObject());
+		measurementModelEClass.getESuperTypes().add(this.getBaseObject());
+		measurementEClass.getESuperTypes().add(this.getBaseObject());
+		eventChainMeasurementEClass.getESuperTypes().add(this.getMeasurement());
+		taskMeasurementEClass.getESuperTypes().add(this.getMeasurement());
+		runnableMeasurementEClass.getESuperTypes().add(this.getMeasurement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(amaltheaEClass, Amalthea.class, "Amalthea", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -14113,6 +14331,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getAmalthea_MappingModel(), this.getMappingModel(), null, "mappingModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAmalthea_ComponentsModel(), this.getComponentsModel(), null, "componentsModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAmalthea_ConfigModel(), this.getConfigModel(), null, "configModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAmalthea_MeasurementModel(), this.getMeasurementModel(), null, "measurementModel", null, 0, 1, Amalthea.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commonElementsEClass, CommonElements.class, "CommonElements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCommonElements_Tags(), this.getTag(), null, "tags", null, 0, -1, CommonElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14882,8 +15101,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getScheduler__GetSchedulingAlgorithm(), this.getAlgorithm(), "getSchedulingAlgorithm", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(computationItemEClass, ComputationItem.class, "ComputationItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(taskSchedulerEClass, TaskScheduler.class, "TaskScheduler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTaskScheduler_SchedulingAlgorithm(), this.getTaskSchedulingAlgorithm(), null, "schedulingAlgorithm", null, 0, 1, TaskScheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskScheduler_ParentAssociation(), this.getSchedulerAssociation(), null, "parentAssociation", null, 0, 1, TaskScheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15316,6 +15533,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getRunnableItem__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEClass(computationItemEClass, ComputationItem.class, "ComputationItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(runnableInstructionsEClass, RunnableInstructions.class, "RunnableInstructions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnableInstructions_Default(), this.getInstructions(), null, "default", null, 1, 1, RunnableInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnableInstructions_Extended(), this.getRunnableInstructionsEntry(), null, "extended", null, 0, -1, RunnableInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15385,6 +15604,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(asynchronousServerCallEClass, AsynchronousServerCall.class, "AsynchronousServerCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAsynchronousServerCall_ResultRunnable(), this.getRunnable(), null, "resultRunnable", null, 0, 1, AsynchronousServerCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(getResultServerCallEClass, GetResultServerCall.class, "GetResultServerCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGetResultServerCall_BlockingType(), this.getBlockingType(), "blockingType", null, 0, 1, GetResultServerCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableProbabilitySwitchEClass, RunnableProbabilitySwitch.class, "RunnableProbabilitySwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getProbabilitySwitchEntry());
@@ -15484,6 +15706,25 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(runEntityCallStatisticEClass, RunEntityCallStatistic.class, "RunEntityCallStatistic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunEntityCallStatistic_Statistic(), this.getNumericStatistic(), null, "statistic", null, 0, 1, RunEntityCallStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(measurementModelEClass, MeasurementModel.class, "MeasurementModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMeasurementModel_Measurements(), this.getMeasurement(), null, "measurements", null, 0, -1, MeasurementModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(measurementEClass, Measurement.class, "Measurement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMeasurement_Runtimes(), this.getTime(), null, "runtimes", null, 0, -1, Measurement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(this.getDeviation());
+		g2 = createEGenericType(this.getTime());
+		g1.getETypeArguments().add(g2);
+		initEReference(getMeasurement_RuntimeDeviation(), g1, null, "runtimeDeviation", null, 0, 1, Measurement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eventChainMeasurementEClass, EventChainMeasurement.class, "EventChainMeasurement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEventChainMeasurement_EventChain(), this.getEventChain(), null, "eventChain", null, 1, 1, EventChainMeasurement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(taskMeasurementEClass, TaskMeasurement.class, "TaskMeasurement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTaskMeasurement_Task(), this.getTask(), null, "task", null, 1, 1, TaskMeasurement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(runnableMeasurementEClass, RunnableMeasurement.class, "RunnableMeasurement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRunnableMeasurement_Runnable(), this.getRunnable(), null, "runnable", null, 1, 1, RunnableMeasurement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
@@ -15827,6 +16068,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(semaphoreAccessEnumEEnum, SemaphoreAccessEnum.EXCLUSIVE);
 		addEEnumLiteral(semaphoreAccessEnumEEnum, SemaphoreAccessEnum.RELEASE);
 
+		initEEnum(blockingTypeEEnum, BlockingType.class, "BlockingType");
+		addEEnumLiteral(blockingTypeEEnum, BlockingType._UNDEFINED_);
+		addEEnumLiteral(blockingTypeEEnum, BlockingType.ACTIVE_WAIT);
+		addEEnumLiteral(blockingTypeEEnum, BlockingType.PASSIVE_WAIT);
+		addEEnumLiteral(blockingTypeEEnum, BlockingType.NON_BLOCKING);
+
 		initEEnum(preemptionEEnum, Preemption.class, "Preemption");
 		addEEnumLiteral(preemptionEEnum, Preemption._UNDEFINED_);
 		addEEnumLiteral(preemptionEEnum, Preemption.PREEMPTIVE);
@@ -15849,6 +16096,25 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 } //AmaltheaPackageImpl
