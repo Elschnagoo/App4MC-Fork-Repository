@@ -551,9 +551,6 @@
       <requirement
           name="org.eclipse.license.feature.group"/>
       <requirement
-          name="org.eclipse.epp.package.automotive.feature.feature.group"
-          versionRange="[4.5.0,4.6.0)"/>
-      <requirement
           name="org.eclipse.cdt.remote.feature.group"
           versionRange="[8.8.0,8.9.0)"/>
       <requirement
@@ -698,6 +695,41 @@
           name="org.eclipse.ease.lang.jvm.feature.feature.group"
           versionRange="[0.3.0,0.4.0)"/>
       <requirement
+          name="org.eclipse.fx.ide.basic.feature.feature.group"
+          versionRange="2.4.0"/>
+      <requirement
+          name="org.eclipse.fx.ide.converter.feature.feature.group"
+          versionRange="2.4.0"/>
+      <requirement
+          name="org.eclipse.fx.ide.css.feature.feature.group"
+          versionRange="2.4.0"/>
+      <requirement
+          name="org.eclipse.fx.ide.feature.feature.group"
+          versionRange="2.4.0"/>
+      <requirement
+          name="org.eclipse.fx.ide.fxgraph.feature.feature.group"
+          versionRange="2.4.0"/>
+      <requirement
+          name="org.eclipse.fx.ide.fxml.feature.feature.group"
+          versionRange="2.4.0"/>
+      <requirement
+          name="org.eclipse.fx.ide.gmod.feature.feature.group"
+          versionRange="2.4.0"
+          filter=""/>
+      <requirement
+          name="org.eclipse.fx.ide.l10n.feature.feature.group"
+          versionRange="2.4.0"/>
+      <requirement
+          name="org.eclipse.fx.ide.ldef.feature.feature.group"
+          versionRange="2.4.0"
+          filter=""/>
+      <requirement
+          name="org.eclipse.fx.ide.pde.feature.feature.group"
+          versionRange="2.4.0"/>
+      <requirement
+          name="org.eclipse.fx.ide.rrobot.feature.feature.group"
+          versionRange="2.4.0"/>
+      <requirement
           name="com.sun.xml.bind"
           versionRange="2.2.0"/>
       <requirement
@@ -755,6 +787,12 @@
           name="org.apache.commons.logging"
           versionRange="1.1.1"/>
       <requirement
+          name="org.apache.commons.math"
+          versionRange="2.1.0"/>
+      <requirement
+          name="org.apache.commons.math3"
+          versionRange="3.5.0"/>
+      <requirement
           name="org.apache.httpcomponents.httpclient"
           versionRange="4.3.6"/>
       <requirement
@@ -787,9 +825,6 @@
           name="org.slf4j.log4j"
           versionRange="[1.7.2,1.8.0)"/>
       <requirement
-          name="org.swtchart"
-          versionRange="0.7.0"/>
-      <requirement
           name="*"/>
       <sourceLocator
           rootFolder="${git.clone.app4mc.location}">
@@ -821,7 +856,11 @@
         <repository
             url="http://download.eclipse.org/ease/update/release"/>
         <repository
+            url="http://download.eclipse.org/efxclipse/updates-released/2.4.0/site"/>
+        <repository
             url="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/"/>
+        <repository
+            url="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository/"/>
         <repository
             url="http://franca.github.io/franca/update_site/releases"/>
       </repositoryList>
