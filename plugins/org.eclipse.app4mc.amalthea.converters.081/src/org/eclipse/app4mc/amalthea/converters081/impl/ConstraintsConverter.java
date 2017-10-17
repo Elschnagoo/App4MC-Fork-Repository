@@ -308,7 +308,12 @@ public class ConstraintsConverter extends AbstractConverter {
 
 					/*- performing validation, to identify if childelements are referred */
 
-					if (!allRootEventChainElements.contains(refEventChainName)) {
+					/*
+					 * ASSUMPTION !!! : In case of model element reference, elements name should be already encoded as a part of the reference.
+					 * 
+					 * allRootEventChainElements -> obtained from the CacheBuilder should already contain encoded names of the EventChain elements
+					 */
+					if (!allRootEventChainElements.contains((refEventChainName))) {
 
 						/*- this is the case child EventChain element is referred (Note: As per AMALTHEA 0.8.1, it is not supported)*/
 
@@ -346,7 +351,13 @@ public class ConstraintsConverter extends AbstractConverter {
 
 					/*- performing validation, to identify if childelements are referred */
 
-					if (!allRootEventChainElements.contains(refEventChainName)) {
+					/*
+					 * ASSUMPTION !!! : In case of model element reference (refEventChainName), elements name should be already encoded as a part of the reference.
+					 * 
+					 * allRootEventChainElements -> obtained from the CacheBuilder should already contain encoded names of the EventChain elements
+					 */
+					
+					if (!allRootEventChainElements.contains((refEventChainName))) {
 
 						/*- this is the case child EventChain element is referred (Note: As per AMALTHEA 0.8.1, it is not supported)*/
 
@@ -368,9 +379,9 @@ public class ConstraintsConverter extends AbstractConverter {
 	private void logEventChainMessage_TimingConstraint(final Element timingConstraintElement,
 			final String refEventChainName) {
 
-		this.logger.warn("Sub EventChain : " + refEventChainName + " is referred inside TimingConstraint as \"Scope\": "
+		this.logger.warn("Sub EventChain : " + this.helper.decodeName(refEventChainName) + " is referred inside TimingConstraint as \"Scope\": "
 				+ timingConstraintElement.getAttributeValue("name")
-				+ ". As per 0.8.0, it is not valid to refer sub EventChain elements directly."
+				+ ". As per 0.8.1, it is not valid to refer sub EventChain elements directly."
 				+ System.getProperty("line.separator") + " EventChain " + refEventChainName
 				+ "'s association is removed from TimingConstraint object, and corresponding information is stored as a CustomProperty");
 
@@ -381,10 +392,10 @@ public class ConstraintsConverter extends AbstractConverter {
 			final Element eventChainReferenceElement, final String refEventChainString,
 			final String refEventChainName) {
 
-		this.logger.warn("Sub EventChain : " + refEventChainName
+		this.logger.warn("Sub EventChain : " + this.helper.decodeName(refEventChainName)
 				+ " is referred inside EventChainReference of EventChain : "
 				+ rootEventChainElement.getAttributeValue("name")
-				+ ". As per 0.8.0, it is not valid to refer sub EventChain elements inside EventChainReference."
+				+ ". As per 0.8.1, it is not valid to refer sub EventChain elements inside EventChainReference."
 				+ System.getProperty("line.separator")
 				+ " eventChain association is removed from EventChainReference object, and corresponding information is stored as a CustomProperty");
 
@@ -456,5 +467,6 @@ public class ConstraintsConverter extends AbstractConverter {
 		return this.constraintElementsCacheBuilder;
 	}
 
+	
 
 }

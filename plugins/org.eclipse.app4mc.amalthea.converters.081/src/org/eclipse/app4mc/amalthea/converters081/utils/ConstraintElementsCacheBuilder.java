@@ -66,7 +66,7 @@ public class ConstraintElementsCacheBuilder implements ICache {
 				final String eventChain_name = element.getAttributeValue("name");
 
 				if (eventChain_name != null) {
-					rootEventChainNames.add(eventChain_name);
+					rootEventChainNames.add(this.helper.encodeName(eventChain_name));
 				}
 			}
 
@@ -88,5 +88,6 @@ public class ConstraintElementsCacheBuilder implements ICache {
 		this.map.clear();
 	}
 
+ 
 
 }

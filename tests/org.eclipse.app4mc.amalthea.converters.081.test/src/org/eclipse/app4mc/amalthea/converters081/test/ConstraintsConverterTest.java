@@ -33,7 +33,7 @@ public class ConstraintsConverterTest extends AbstractConverterTest {
 	@Parameterized.Parameters(name = "{index}: Test data ID: {0}. Description : {3}")
 	public static Collection<Object[]> getTestData() {
 
-		final String[] inputFiles = new String[] { "/eventChain/default.amxmi", "/eventChain/eventChain.amxmi" };
+		final String[] inputFiles = new String[] { "/eventChain/default.amxmi", "/eventChain/eventChain.amxmi", "/eventChain/democar.amxmi" };
 
 
 		return Arrays.asList(new Object[][] { { "Models with Constraint Model", true, inputFiles,
@@ -76,6 +76,8 @@ public class ConstraintsConverterTest extends AbstractConverterTest {
 
 		timingConstraints_migrationVerification_Case3(document);
 
+		timingConstraints_migrationVerification_Case5(document);
+
 
 		/* ===========LatencyConstraints ================= */
 
@@ -88,6 +90,8 @@ public class ConstraintsConverterTest extends AbstractConverterTest {
 
 	}
 
+
+	
 
 	/**
 	 * This is the scenario in which EventChainReference element refers to the sub EventChain elements present in
@@ -324,4 +328,42 @@ public class ConstraintsConverterTest extends AbstractConverterTest {
 		}
 	}
 
+	
+	private void timingConstraints_migrationVerification_Case5(Document document) {
+
+		if(document.getBaseURI().endsWith("democar.amxmi")){
+			
+			  StringBuffer xpathBuffer = new StringBuffer();
+
+			xpathBuffer.append(".//timingConstraints[@xsi:type=\"am:EventChainLatencyConstraint\" and @name=\"a\"]");
+			
+			  List<Element> elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(),
+					Element.class, this.helper.getGenericNS("xsi"));
+			
+			assertTrue("EventChainLatencyConstraint element should exists with name : a", elements.size() == 1);
+
+			  Element eventChainLatencyConstraintElement = elements.get(0);
+
+				 assertTrue("Unable to migrate event chain element references for EventChainLatencyConstraint for element \"a\" - due to failure in encoding of the content",
+						 eventChainLatencyConstraintElement.getAttributeValue("scope").equals("Test+1?type=EventChain"));
+				 
+				 //second criteria
+
+				 xpathBuffer=new StringBuffer();
+
+				 xpathBuffer.append(".//timingConstraints[@xsi:type=\"am:EventChainLatencyConstraint\" and @name=\"d\"]");
+
+				 elements = this.helper.getXpathResult(document.getRootElement(), xpathBuffer.toString(),
+						 Element.class, this.helper.getGenericNS("xsi"));
+
+				 assertTrue("EventChainLatencyConstraint element should exists with name : d", elements.size() == 1);
+
+				 eventChainLatencyConstraintElement = elements.get(0);
+
+				 assertTrue("Unable to migrate event chain element references for EventChainLatencyConstraint for element \"d\" - due to failure in encoding of the content",
+						 eventChainLatencyConstraintElement.getAttributeValue("scope").equals("Test+1?type=EventChain"));
+			
+			
+		}
+	}
 }

@@ -14,6 +14,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -898,5 +902,35 @@ public abstract class AbstractHelper {
 
 			populateStack(parentElement, st, modelVersion);
 		}
+	}
+	
+	public String encodeName(final String name) {
+		if (name == null || name.length() == 0) {
+			return "no-name";
+		}
+
+		String result;
+		try {
+			result = URLEncoder.encode(name, StandardCharsets.UTF_8.toString());
+		}
+		catch (final UnsupportedEncodingException e) {
+			result = name; // keep old name - we have no better option
+		}
+		return result;
+	}
+	
+	public String decodeName(final String name) {
+		if (name == null || name.length() == 0) {
+			return "no-name";
+		}
+
+		String result;
+		try {
+			result = URLDecoder.decode(name, StandardCharsets.UTF_8.toString());
+		}
+		catch (final UnsupportedEncodingException e) {
+			result = name; // keep old name - we have no better option
+		}
+		return result;
 	}
 }
