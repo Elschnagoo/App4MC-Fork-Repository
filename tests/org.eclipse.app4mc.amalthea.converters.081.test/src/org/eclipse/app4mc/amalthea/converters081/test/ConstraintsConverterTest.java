@@ -361,7 +361,7 @@ public class ConstraintsConverterTest extends AbstractConverterTest {
 				 eventChainLatencyConstraintElement = elements.get(0);
 
 				 assertTrue("Unable to migrate event chain element references for EventChainLatencyConstraint for element \"d\" - due to failure in encoding of the content",
-						 eventChainLatencyConstraintElement.getAttributeValue("scope").equals("Test+1?type=EventChain"));
+						 eventChainLatencyConstraintElement.getAttributeValue("scope")==null);
 			
 			
 		}
