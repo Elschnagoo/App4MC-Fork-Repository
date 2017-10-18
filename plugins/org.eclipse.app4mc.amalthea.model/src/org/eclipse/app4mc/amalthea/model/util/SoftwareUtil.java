@@ -36,14 +36,44 @@ import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 
 public class SoftwareUtil {
 
+	/**
+	 * Traverse the call graph of a process and collect all items of the call sequences.
+	 * 
+	 * @param process
+	 * 		- Process (Task or ISR)
+	 * @return list of CallSequenceItems
+	 */
 	public static List<CallSequenceItem> collectCalls(final Process process) {
 		return collectCalls(process, null, null);
 	}
 
+	/**
+	 * Traverse the call graph of a process and collect all items of the call sequences.
+	 * Collection can be restricted to specific modes.
+	 * 
+	 * @param process
+	 * 		- Process (Task or ISR)
+	 * @param modes
+	 * 		- list of mode literals that should be considered
+	 * @return list of CallSequenceItems
+	 */
 	public static List<CallSequenceItem> collectCalls(final Process process, final List<ModeLiteral> modes) {
 		return collectCalls(process, modes, null);
 	}
 
+	
+	/**
+	 * Traverse the call graph of a process and collect all items of the call sequences.
+	 * Collection can be restricted to specific modes and filtered by a lambda expression.
+	 * 
+	 * @param process
+	 * 		- Process (Task or ISR)
+	 * @param modes
+	 * 		- list of mode literals that should be considered
+	 * @param filter
+	 * 		- lambda expression (e.g. "a -> a instanceof TaskRunnableCall")
+	 * @return list of CallSequenceItems
+	 */
 	public static List<CallSequenceItem> collectCalls(final Process process, final List<ModeLiteral> modes,
 			final Function<CallSequenceItem, Boolean> filter) {
 		List<CallSequenceItem> itemList = new ArrayList<CallSequenceItem>();
@@ -84,18 +114,47 @@ public class SoftwareUtil {
 		}
 	}
 
-	public static List<RunnableItem> collectRunnableItems(final Runnable run) {
-		return collectRunnableItems(run, null, null);
+	/**
+	 * Traverse the runnable items graph of a runnable and collect all items.
+	 * 
+	 * @param runnable
+	 * 		- Runnable
+	 * @return list of RunnableItems
+	 */
+	public static List<RunnableItem> collectRunnableItems(final Runnable runnable) {
+		return collectRunnableItems(runnable, null, null);
 	}
 
-	public static List<RunnableItem> collectRunnableItems(final Runnable run, final List<ModeLiteral> modes) {
-		return collectRunnableItems(run, modes, null);
+	/**
+	 * Traverse the runnable items graph of a runnable and collect all items.
+	 * Collection can be restricted to specific modes.
+	 * 
+	 * @param runnable
+	 * 		- Runnable
+	 * @param modes
+	 * 		- list of mode literals that should be considered
+	 * @return list of RunnableItems
+	 */
+	public static List<RunnableItem> collectRunnableItems(final Runnable runnable, final List<ModeLiteral> modes) {
+		return collectRunnableItems(runnable, modes, null);
 	}
 
-	public static List<RunnableItem> collectRunnableItems(final Runnable run, final List<ModeLiteral> modes,
+	/**
+	 * Traverse the runnable items graph of a runnable and collect all items.
+	 * Collection can be restricted to specific modes and filtered by a lambda expression.
+	 * 
+	 * @param runnable
+	 * 		- Runnable
+	 * @param modes
+	 * 		- list of mode literals that should be considered
+	 * @param filter
+	 * 		- lambda expression (e.g. "a -> a instanceof LabelAccess")
+	 * @return list of RunnableItems
+	 */
+	public static List<RunnableItem> collectRunnableItems(final Runnable runnable, final List<ModeLiteral> modes,
 			final Function<RunnableItem, Boolean> filter) {
 		List<RunnableItem> itemList = new ArrayList<RunnableItem>();
-		collectRunnableItems(run.getRunnableItems(), modes, filter, itemList);
+		collectRunnableItems(runnable.getRunnableItems(), modes, filter, itemList);
 		return itemList;
 	}
 
