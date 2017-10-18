@@ -17,6 +17,7 @@ package org.eclipse.app4mc.amalthea.model.util;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
@@ -36,81 +37,95 @@ import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 public class SoftwareUtil {
 
 	public static List<CallSequenceItem> collectCalls(final Process process) {
-		return collectCalls(process, null);
+		return collectCalls(process, null, null);
 	}
 
 	public static List<CallSequenceItem> collectCalls(final Process process, final List<ModeLiteral> modes) {
+		return collectCalls(process, modes, null);
+	}
+
+	public static List<CallSequenceItem> collectCalls(final Process process, final List<ModeLiteral> modes,
+			final Function<CallSequenceItem, Boolean> filter) {
 		List<CallSequenceItem> itemList = new ArrayList<CallSequenceItem>();
 		if (process.getCallGraph() != null) {
-			collectCallSequenceItems(process.getCallGraph().getGraphEntries(), modes, itemList);
+			collectCallSequenceItems(process.getCallGraph().getGraphEntries(), modes, filter, itemList);
 		}
 		return itemList;
 	}
 
 	private static void collectCallSequenceItems(final List<GraphEntryBase> input, final List<ModeLiteral> modes,
-			final List<CallSequenceItem> itemList) {
+			final Function<CallSequenceItem, Boolean> filter, final List<CallSequenceItem> itemList) {
 		for (GraphEntryBase entry : input) {
 			if (entry instanceof ProbabilitySwitch) {
 				ProbabilitySwitch propSwitch = (ProbabilitySwitch) entry;
 				for (ProbabilitySwitchEntry<GraphEntryBase> pse : propSwitch.getEntries()) {
-					collectCallSequenceItems(pse.getItems(), modes, itemList);
+					collectCallSequenceItems(pse.getItems(), modes, filter, itemList);
 				}
 			} else if (entry instanceof ModeSwitch) {
 				ModeSwitch modeSwitch = (ModeSwitch) entry;
 				boolean includeDefault = true;
 				for (ModeSwitchEntry<GraphEntryBase> mse : modeSwitch.getEntries()) {
 					if (modes == null) {
-						collectCallSequenceItems(mse.getItems(), modes, itemList);
+						collectCallSequenceItems(mse.getItems(), modes, filter, itemList);
 					} else if (!Collections.disjoint(mse.getValues(), modes)) {
-						collectCallSequenceItems(mse.getItems(), modes, itemList);
+						collectCallSequenceItems(mse.getItems(), modes, filter, itemList);
 						includeDefault = false;
 					}
 				}
 				if (includeDefault && modeSwitch.getDefaultEntry() != null) {
-					collectCallSequenceItems(modeSwitch.getDefaultEntry().getItems(), modes, itemList);
+					collectCallSequenceItems(modeSwitch.getDefaultEntry().getItems(), modes, filter, itemList);
 				}
 			} else if (entry instanceof CallSequence) {
-				itemList.addAll(((CallSequence) entry).getCalls());
+				for (CallSequenceItem item : ((CallSequence) entry).getCalls()) {
+					if (filter == null || filter.apply(item))
+						itemList.add(item);
+				}
 			}
 		}
 	}
 
 	public static List<RunnableItem> collectRunnableItems(final Runnable run) {
-		return collectRunnableItems(run, null);
+		return collectRunnableItems(run, null, null);
 	}
 
 	public static List<RunnableItem> collectRunnableItems(final Runnable run, final List<ModeLiteral> modes) {
+		return collectRunnableItems(run, modes, null);
+	}
+
+	public static List<RunnableItem> collectRunnableItems(final Runnable run, final List<ModeLiteral> modes,
+			final Function<RunnableItem, Boolean> filter) {
 		List<RunnableItem> itemList = new ArrayList<RunnableItem>();
-		collectRunnableItems(run.getRunnableItems(), modes, itemList);
+		collectRunnableItems(run.getRunnableItems(), modes, filter, itemList);
 		return itemList;
 	}
 
 	private static void collectRunnableItems(final List<RunnableItem> input, final List<ModeLiteral> modes,
-			final List<RunnableItem> itemList) {
+			final Function<RunnableItem, Boolean> filter, final List<RunnableItem> itemList) {
 		for (RunnableItem item : input) {
 			if (item instanceof Group) {
-				collectRunnableItems(((Group) item).getItems(), modes, itemList);
+				collectRunnableItems(((Group) item).getItems(), modes, filter, itemList);
 			} else if (item instanceof RunnableProbabilitySwitch) {
 				RunnableProbabilitySwitch propSwitch = (RunnableProbabilitySwitch) item;
 				for (ProbabilitySwitchEntry<RunnableItem> pse : propSwitch.getEntries()) {
-					collectRunnableItems(pse.getItems(), modes, itemList);
+					collectRunnableItems(pse.getItems(), modes, filter, itemList);
 				}
 			} else if (item instanceof RunnableModeSwitch) {
 				RunnableModeSwitch modeSwitch = (RunnableModeSwitch) item;
 				boolean includeDefault = true;
 				for (ModeSwitchEntry<RunnableItem> mse : modeSwitch.getEntries()) {
 					if (modes == null) {
-						collectRunnableItems(mse.getItems(), modes, itemList);
+						collectRunnableItems(mse.getItems(), modes, filter, itemList);
 					} else if (!Collections.disjoint(mse.getValues(), modes)) {
-						collectRunnableItems(mse.getItems(), modes, itemList);
+						collectRunnableItems(mse.getItems(), modes, filter, itemList);
 						includeDefault = false;
 					}
 				}
 				if (includeDefault && modeSwitch.getDefaultEntry() != null) {
-					collectRunnableItems(modeSwitch.getDefaultEntry().getItems(), modes, itemList);
+					collectRunnableItems(modeSwitch.getDefaultEntry().getItems(), modes, filter, itemList);
 				}
 			} else {
-				itemList.add(item);
+				if (filter == null || filter.apply(item))
+					itemList.add(item);
 			}
 		}
 	}
