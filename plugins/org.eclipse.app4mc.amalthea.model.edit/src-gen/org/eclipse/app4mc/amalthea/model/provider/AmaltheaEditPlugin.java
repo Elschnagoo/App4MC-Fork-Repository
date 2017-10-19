@@ -13,7 +13,6 @@
 package org.eclipse.app4mc.amalthea.model.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**

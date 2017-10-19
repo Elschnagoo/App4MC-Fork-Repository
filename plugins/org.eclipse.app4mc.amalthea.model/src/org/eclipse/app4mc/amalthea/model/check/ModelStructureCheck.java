@@ -12,7 +12,7 @@
  * *******************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.model.util;
+package org.eclipse.app4mc.amalthea.model.check;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-public class ModelStructureUtil {
+public class ModelStructureCheck {
 
 	/**
 	 * Model checker for debugging.

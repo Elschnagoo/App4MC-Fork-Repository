@@ -23,5 +23,5 @@ import org.junit.runners.Suite.SuiteClasses;
 		MappingModelTests.class,
 		HardwareModelTests.class })
 public class AllTests {
-
+	// empty class to start test suite
 }

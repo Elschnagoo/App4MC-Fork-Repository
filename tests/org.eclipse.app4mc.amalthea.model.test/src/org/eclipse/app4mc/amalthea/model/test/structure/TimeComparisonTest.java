@@ -2,7 +2,6 @@ package org.eclipse.app4mc.amalthea.model.test.structure;
 
 import java.math.BigInteger;
 
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.Time;
