@@ -69,16 +69,21 @@ public class AmaltheaResource extends XMIResourceImpl {
 	}
 
 	private boolean isZipFile(final URI uri) {
-		URI fileURI = EcoreResourceUtil.convertToAbsoluteFileURI(uri);
+		boolean result = false;
 		
-		try (ZipFile f = new ZipFile(fileURI.toFileString())) {
-			return true;
-		} catch (ZipException e) {
-			return false;
-		} catch (IOException e1) {
-			//e1.printStackTrace();
-			return false;
+		URI fileURI = EcoreResourceUtil.convertToAbsoluteFileURI(uri);
+		if (fileURI != null) {
+			try (ZipFile f = new ZipFile(fileURI.toFileString())) {
+				// zipped file detected
+				result = true;
+			} catch (ZipException e) {
+				// not a zip file
+			} catch (IOException e1) {
+				// unable to read
+			}
 		}
+		
+		return result;
 	}
 	
 	/**
