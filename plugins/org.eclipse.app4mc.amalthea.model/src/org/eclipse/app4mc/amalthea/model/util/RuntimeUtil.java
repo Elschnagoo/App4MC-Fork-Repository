@@ -15,5 +15,18 @@
 package org.eclipse.app4mc.amalthea.model.util;
 
 public class RuntimeUtil {
+	
+	public static enum TimeType {
+	    BCET,
+	    ACET,
+	    WCET
+	 }
+	
+	public static enum PositionType {
+		FIRST,
+		LAST
+	}
+	
 
+	
 }
