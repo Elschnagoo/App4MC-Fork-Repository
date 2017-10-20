@@ -57,7 +57,7 @@ public class DeploymentUtil {
 		Set<Task> tasks = new HashSet<>();
 		Set<TaskScheduler> schedulers = new HashSet<>();
 		if (model.getMappingModel()!= null) {
-			if (model.getMappingModel().getSchedulerAllocation() != null) {
+			if (model.getMappingModel().getSchedulerAllocation() != null && !model.getMappingModel().getSchedulerAllocation().isEmpty()) {
 				//first find all schedulers responsible for the core 
 				for (SchedulerAllocation schedAllocRun: model.getMappingModel().getSchedulerAllocation()) {
 					if (schedAllocRun.getScheduler() instanceof TaskScheduler) {
@@ -69,7 +69,7 @@ public class DeploymentUtil {
 			}
 		}
 		//check for all task allocations if the assigned scheduler is in the list
-		if (model.getMappingModel().getTaskAllocation() != null) {
+		if (model.getMappingModel().getTaskAllocation() != null && !model.getMappingModel().getTaskAllocation().isEmpty()) {
 			for (TaskAllocation taskAllocation : model.getMappingModel().getTaskAllocation()) {
 				if (schedulers.contains(taskAllocation.getScheduler())) {
 					//check core affinities - if affinities are empty the responsibility counts
@@ -125,7 +125,7 @@ public class DeploymentUtil {
 	public static List<TaskAllocation> getTaskAllocations(Task task, Amalthea model) {
 		List<TaskAllocation> allocs = new ArrayList<TaskAllocation>();
 		
-		if (model.getMappingModel().getTaskAllocation() != null) {
+		if (model.getMappingModel().getTaskAllocation() != null && !model.getMappingModel().getTaskAllocation().isEmpty()) {
 			for (TaskAllocation ta : model.getMappingModel().getTaskAllocation()) {
 				if (ta.getTask().equals(task)) {
 					allocs.add(ta);
@@ -202,7 +202,7 @@ public class DeploymentUtil {
 	 */
 	public static Set<TaskAllocation> getTaskAllocationsForScheduler(TaskScheduler taskScheduler, MappingModel mappingmodel) {
 		HashSet<TaskAllocation> taskAllocations = new HashSet<>();
-		if (mappingmodel.getTaskAllocation() != null) {
+		if (mappingmodel.getTaskAllocation() != null && !mappingmodel.getTaskAllocation().isEmpty()) {
 			for (TaskAllocation taRun : mappingmodel.getTaskAllocation()) {
 				if (taRun.getScheduler()!= null && taRun.getScheduler().equals(taskScheduler)) {
 					taskAllocations.add(taRun);
@@ -225,17 +225,17 @@ public class DeploymentUtil {
 		if(process == null && model.getMappingModel() == null) 
 			return result;
 		Set<TaskAllocation> taskAllocations = new HashSet<>();
-		if (model.getMappingModel().getTaskAllocation() != null && process instanceof Task) {
+		if (model.getMappingModel().getTaskAllocation() != null && process instanceof Task && !model.getMappingModel().getTaskAllocation().isEmpty()) {
 			for (TaskAllocation taskAlloc : model.getMappingModel().getTaskAllocation()) {
 				if (taskAlloc.getTask().equals(process))
 					taskAllocations.add(taskAlloc);
 			}
-			if (model.getMappingModel().getSchedulerAllocation() != null ) {
+			if (model.getMappingModel().getSchedulerAllocation() != null && !model.getMappingModel().getSchedulerAllocation().isEmpty() ) {
 				for (SchedulerAllocation schedAlloc: model.getMappingModel().getSchedulerAllocation()) {
 					for (TaskAllocation taskAlloc : taskAllocations) {
 						if (schedAlloc.getScheduler().equals(taskAlloc.getScheduler()))
 							//check core affinity -- retain the core affinity with the scheduler responsibility 
-							if (taskAlloc.getCoreAffinity()!= null) {
+							if (taskAlloc.getCoreAffinity()!= null && !taskAlloc.getCoreAffinity().isEmpty()) {
 								for (Core core : taskAlloc.getCoreAffinity()) {
 									if (schedAlloc.getResponsibility().contains(core))
 										result.add(core);
@@ -249,9 +249,9 @@ public class DeploymentUtil {
 			}
 			return result;
 		}
-		if (model.getMappingModel().getIsrAllocation() != null && process instanceof ISR) {
+		if (model.getMappingModel().getIsrAllocation() != null && process instanceof ISR && !model.getMappingModel().getIsrAllocation().isEmpty()) {
 			for (ISRAllocation isrAlloc : model.getMappingModel().getIsrAllocation()) {
-				if (isrAlloc.getIsr().equals(process) && model.getMappingModel().getSchedulerAllocation() != null) {
+				if (isrAlloc.getIsr().equals(process) && model.getMappingModel().getSchedulerAllocation() != null && !model.getMappingModel().getSchedulerAllocation().isEmpty()) {
 					for (SchedulerAllocation coreAlloc : model.getMappingModel().getSchedulerAllocation()) {
 						if (coreAlloc.getScheduler().equals(isrAlloc.getController())) {
 							result.addAll(coreAlloc.getResponsibility());
