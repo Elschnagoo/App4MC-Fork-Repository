@@ -15,9 +15,6 @@
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser
-            type="xml"
-            class="org.eclipse.app4mc.tracing.converter.ot1.OT1.util.OT1ResourceFactoryImpl"/>
-      <parser
             class="org.eclipse.app4mc.tracing.converter.ot1.OT1.util.OT1ResourceFactoryImpl"
             type="ot1">
       </parser>
