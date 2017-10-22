@@ -21503,13 +21503,22 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL__DATA_STABILITY = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Stability Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__STABILITY_LEVEL = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Label Accesses</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL__LABEL_ACCESSES = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 5;
+	int LABEL__LABEL_ACCESSES = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Section</b></em>' reference.
@@ -21518,7 +21527,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL__SECTION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 6;
+	int LABEL__SECTION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Section Link Int</b></em>' reference.
@@ -21527,7 +21536,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL__SECTION_LINK_INT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 7;
+	int LABEL__SECTION_LINK_INT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Label</em>' class.
@@ -21536,7 +21545,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
+	int LABEL_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -22350,13 +22359,22 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL_ACCESS__DATA_STABILITY = COMPUTATION_ITEM_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Implementation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_ACCESS__IMPLEMENTATION = COMPUTATION_ITEM_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Data Link Int</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__DATA_LINK_INT = COMPUTATION_ITEM_FEATURE_COUNT + 5;
+	int LABEL_ACCESS__DATA_LINK_INT = COMPUTATION_ITEM_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Label Access</em>' class.
@@ -22365,7 +22383,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS_FEATURE_COUNT = COMPUTATION_ITEM_FEATURE_COUNT + 6;
+	int LABEL_ACCESS_FEATURE_COUNT = COMPUTATION_ITEM_FEATURE_COUNT + 7;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -25667,6 +25685,16 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL_ACCESS_ENUM = 387;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelAccessImplementation <em>Label Access Implementation</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.LabelAccessImplementation
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessImplementation()
+	 * @generated
+	 */
+	int LABEL_ACCESS_IMPLEMENTATION = 388;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum <em>Semaphore Access Enum</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -25674,7 +25702,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreAccessEnum()
 	 * @generated
 	 */
-	int SEMAPHORE_ACCESS_ENUM = 388;
+	int SEMAPHORE_ACCESS_ENUM = 389;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.BlockingType <em>Blocking Type</em>}' enum.
@@ -25684,7 +25712,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBlockingType()
 	 * @generated
 	 */
-	int BLOCKING_TYPE = 389;
+	int BLOCKING_TYPE = 390;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Preemption <em>Preemption</em>}' enum.
@@ -25694,7 +25722,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPreemption()
 	 * @generated
 	 */
-	int PREEMPTION = 390;
+	int PREEMPTION = 391;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ConcurrencyType <em>Concurrency Type</em>}' enum.
@@ -25704,7 +25732,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConcurrencyType()
 	 * @generated
 	 */
-	int CONCURRENCY_TYPE = 391;
+	int CONCURRENCY_TYPE = 392;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ASILType <em>ASIL Type</em>}' enum.
@@ -25714,7 +25742,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getASILType()
 	 * @generated
 	 */
-	int ASIL_TYPE = 392;
+	int ASIL_TYPE = 393;
 
 
 	/**
@@ -34591,6 +34619,17 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getLabel_DataStability();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Label#getStabilityLevel <em>Stability Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Stability Level</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Label#getStabilityLevel()
+	 * @see #getLabel()
+	 * @generated
+	 */
+	EAttribute getLabel_StabilityLevel();
+
+	/**
 	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Label#getLabelAccesses <em>Label Accesses</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -34998,6 +35037,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLabelAccess_DataStability();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getImplementation <em>Implementation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Implementation</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.LabelAccess#getImplementation()
+	 * @see #getLabelAccess()
+	 * @generated
+	 */
+	EAttribute getLabelAccess_Implementation();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.LabelAccess <em>Data Link Int</em>}'.
@@ -36584,6 +36634,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getLabelAccessEnum();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.app4mc.amalthea.model.LabelAccessImplementation <em>Label Access Implementation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Label Access Implementation</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.LabelAccessImplementation
+	 * @generated
+	 */
+	EEnum getLabelAccessImplementation();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum <em>Semaphore Access Enum</em>}'.

@@ -15,6 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.DataStabilityLevel;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -48,6 +49,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#isConstant <em>Constant</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#isBVolatile <em>BVolatile</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getDataStability <em>Data Stability</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getStabilityLevel <em>Stability Level</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getLabelAccesses <em>Label Accesses</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getSection <em>Section</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getSectionLinkInt <em>Section Link Int</em>}</li>
@@ -145,6 +147,26 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * @ordered
 	 */
 	protected LabelDataStability dataStability = DATA_STABILITY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getStabilityLevel() <em>Stability Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStabilityLevel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final DataStabilityLevel STABILITY_LEVEL_EDEFAULT = DataStabilityLevel._UNDEFINED_;
+
+	/**
+	 * The cached value of the '{@link #getStabilityLevel() <em>Stability Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStabilityLevel()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataStabilityLevel stabilityLevel = STABILITY_LEVEL_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getLabelAccesses() <em>Label Accesses</em>}' reference list.
@@ -327,6 +349,27 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataStabilityLevel getStabilityLevel() {
+		return stabilityLevel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStabilityLevel(DataStabilityLevel newStabilityLevel) {
+		DataStabilityLevel oldStabilityLevel = stabilityLevel;
+		stabilityLevel = newStabilityLevel == null ? STABILITY_LEVEL_EDEFAULT : newStabilityLevel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL__STABILITY_LEVEL, oldStabilityLevel, stabilityLevel));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<LabelAccess> getLabelAccesses() {
 		if (labelAccesses == null) {
 			labelAccesses = new EObjectWithInverseResolvingEList<LabelAccess>(LabelAccess.class, this, AmaltheaPackage.LABEL__LABEL_ACCESSES, AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT);
@@ -489,6 +532,8 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 				return isBVolatile();
 			case AmaltheaPackage.LABEL__DATA_STABILITY:
 				return getDataStability();
+			case AmaltheaPackage.LABEL__STABILITY_LEVEL:
+				return getStabilityLevel();
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				return getLabelAccesses();
 			case AmaltheaPackage.LABEL__SECTION:
@@ -524,6 +569,9 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 				return;
 			case AmaltheaPackage.LABEL__DATA_STABILITY:
 				setDataStability((LabelDataStability)newValue);
+				return;
+			case AmaltheaPackage.LABEL__STABILITY_LEVEL:
+				setStabilityLevel((DataStabilityLevel)newValue);
 				return;
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				getLabelAccesses().clear();
@@ -562,6 +610,9 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 			case AmaltheaPackage.LABEL__DATA_STABILITY:
 				setDataStability(DATA_STABILITY_EDEFAULT);
 				return;
+			case AmaltheaPackage.LABEL__STABILITY_LEVEL:
+				setStabilityLevel(STABILITY_LEVEL_EDEFAULT);
+				return;
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				getLabelAccesses().clear();
 				return;
@@ -593,6 +644,8 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 				return bVolatile != BVOLATILE_EDEFAULT;
 			case AmaltheaPackage.LABEL__DATA_STABILITY:
 				return dataStability != DATA_STABILITY_EDEFAULT;
+			case AmaltheaPackage.LABEL__STABILITY_LEVEL:
+				return stabilityLevel != STABILITY_LEVEL_EDEFAULT;
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				return labelAccesses != null && !labelAccesses.isEmpty();
 			case AmaltheaPackage.LABEL__SECTION:
@@ -653,6 +706,8 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 		result.append(bVolatile);
 		result.append(", dataStability: ");
 		result.append(dataStability);
+		result.append(", stabilityLevel: ");
+		result.append(stabilityLevel);
 		result.append(')');
 		return result.toString();
 	}

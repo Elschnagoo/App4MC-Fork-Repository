@@ -360,9 +360,10 @@
   <xsd:simpleType name="DataStabilityLevel">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="period"/>
       <xsd:enumeration value="process"/>
-      <xsd:enumeration value="runnable"/>
       <xsd:enumeration value="scheduleSection"/>
+      <xsd:enumeration value="runnable"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="SemaphoreType">
@@ -485,6 +486,14 @@ Inherited means that the setting of the Label is used</xsd:documentation>
       <xsd:enumeration value="_undefined_"/>
       <xsd:enumeration value="read"/>
       <xsd:enumeration value="write"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="LabelAccessImplementation">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="explicit"/>
+      <xsd:enumeration value="implicit"/>
+      <xsd:enumeration value="timed"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="SemaphoreAccessEnum">
@@ -4902,6 +4911,7 @@ The final state can be several Tasks, which can be computed using provided infor
             <xsd:documentation>Defines the data stability needs of the label</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="stabilityLevel" type="am:DataStabilityLevel"/>
         <xsd:attribute name="section" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -5083,6 +5093,7 @@ It can be used to define which mode value is written to the label.</xsd:document
             <xsd:documentation>Defines the data stability needs of the label access</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="implementation" type="am:LabelAccessImplementation"/>
         <xsd:attribute name="data" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>

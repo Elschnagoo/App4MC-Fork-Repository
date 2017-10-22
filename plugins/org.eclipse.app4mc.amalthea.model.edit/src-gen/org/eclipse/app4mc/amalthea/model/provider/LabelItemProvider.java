@@ -62,6 +62,7 @@ public class LabelItemProvider extends AbstractMemoryElementItemProvider {
 			addConstantPropertyDescriptor(object);
 			addBVolatilePropertyDescriptor(object);
 			addDataStabilityPropertyDescriptor(object);
+			addStabilityLevelPropertyDescriptor(object);
 			addLabelAccessesPropertyDescriptor(object);
 			addSectionPropertyDescriptor(object);
 		}
@@ -148,6 +149,28 @@ public class LabelItemProvider extends AbstractMemoryElementItemProvider {
 				 getString("_UI_Label_dataStability_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Label_dataStability_feature", "_UI_Label_type"),
 				 AmaltheaPackage.eINSTANCE.getLabel_DataStability(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Stability Level feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStabilityLevelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Label_stabilityLevel_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Label_stabilityLevel_feature", "_UI_Label_type"),
+				 AmaltheaPackage.eINSTANCE.getLabel_StabilityLevel(),
 				 true,
 				 false,
 				 false,
@@ -284,6 +307,7 @@ public class LabelItemProvider extends AbstractMemoryElementItemProvider {
 			case AmaltheaPackage.LABEL__CONSTANT:
 			case AmaltheaPackage.LABEL__BVOLATILE:
 			case AmaltheaPackage.LABEL__DATA_STABILITY:
+			case AmaltheaPackage.LABEL__STABILITY_LEVEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AmaltheaPackage.LABEL__DATA_TYPE:

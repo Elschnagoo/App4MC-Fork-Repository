@@ -31,6 +31,7 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getStatistic <em>Statistic</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getTransmissionPolicy <em>Transmission Policy</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getDataStability <em>Data Stability</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getImplementation <em>Implementation</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccess()
@@ -172,5 +173,34 @@ public interface LabelAccess extends ComputationItem {
 	 * @generated
 	 */
 	void setDataStability(LabelAccessDataStability value);
+
+	/**
+	 * Returns the value of the '<em><b>Implementation</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.LabelAccessImplementation}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Implementation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Implementation</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.LabelAccessImplementation
+	 * @see #setImplementation(LabelAccessImplementation)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccess_Implementation()
+	 * @model unique="false"
+	 * @generated
+	 */
+	LabelAccessImplementation getImplementation();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getImplementation <em>Implementation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Implementation</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.LabelAccessImplementation
+	 * @see #getImplementation()
+	 * @generated
+	 */
+	void setImplementation(LabelAccessImplementation value);
 
 } // LabelAccess

@@ -17,6 +17,7 @@ import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
+import org.eclipse.app4mc.amalthea.model.LabelAccessImplementation;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 
@@ -41,6 +42,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getStatistic <em>Statistic</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getTransmissionPolicy <em>Transmission Policy</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getDataStability <em>Data Stability</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getImplementation <em>Implementation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getDataLinkInt <em>Data Link Int</em>}</li>
  * </ul>
  *
@@ -116,6 +118,26 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * @ordered
 	 */
 	protected LabelAccessDataStability dataStability = DATA_STABILITY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImplementation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final LabelAccessImplementation IMPLEMENTATION_EDEFAULT = LabelAccessImplementation._UNDEFINED_;
+
+	/**
+	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImplementation()
+	 * @generated
+	 * @ordered
+	 */
+	protected LabelAccessImplementation implementation = IMPLEMENTATION_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getDataLinkInt() <em>Data Link Int</em>}' reference.
@@ -319,6 +341,27 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public LabelAccessImplementation getImplementation() {
+		return implementation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setImplementation(LabelAccessImplementation newImplementation) {
+		LabelAccessImplementation oldImplementation = implementation;
+		implementation = newImplementation == null ? IMPLEMENTATION_EDEFAULT : newImplementation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION, oldImplementation, implementation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Label getDataLinkInt() {
 		if (dataLinkInt != null && dataLinkInt.eIsProxy()) {
 			InternalEObject oldDataLinkInt = (InternalEObject)dataLinkInt;
@@ -427,6 +470,8 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 				return getTransmissionPolicy();
 			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
 				return getDataStability();
+			case AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION:
+				return getImplementation();
 			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
 				if (resolve) return getDataLinkInt();
 				return basicGetDataLinkInt();
@@ -456,6 +501,9 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 				return;
 			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
 				setDataStability((LabelAccessDataStability)newValue);
+				return;
+			case AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION:
+				setImplementation((LabelAccessImplementation)newValue);
 				return;
 			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
 				setDataLinkInt((Label)newValue);
@@ -487,6 +535,9 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
 				setDataStability(DATA_STABILITY_EDEFAULT);
 				return;
+			case AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION:
+				setImplementation(IMPLEMENTATION_EDEFAULT);
+				return;
 			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
 				setDataLinkInt((Label)null);
 				return;
@@ -512,6 +563,8 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 				return transmissionPolicy != null;
 			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
 				return dataStability != DATA_STABILITY_EDEFAULT;
+			case AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION:
+				return implementation != IMPLEMENTATION_EDEFAULT;
 			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
 				return dataLinkInt != null;
 		}
@@ -532,6 +585,8 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 		result.append(access);
 		result.append(", dataStability: ");
 		result.append(dataStability);
+		result.append(", implementation: ");
+		result.append(implementation);
 		result.append(')');
 		return result.toString();
 	}

@@ -31,6 +31,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#isConstant <em>Constant</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#isBVolatile <em>BVolatile</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getDataStability <em>Data Stability</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getStabilityLevel <em>Stability Level</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getLabelAccesses <em>Label Accesses</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getSection <em>Section</em>}</li>
  * </ul>
@@ -147,6 +148,35 @@ public interface Label extends AbstractMemoryElement, IDisplayName {
 	 * @generated
 	 */
 	void setDataStability(LabelDataStability value);
+
+	/**
+	 * Returns the value of the '<em><b>Stability Level</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.DataStabilityLevel}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Stability Level</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Stability Level</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.DataStabilityLevel
+	 * @see #setStabilityLevel(DataStabilityLevel)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_StabilityLevel()
+	 * @model unique="false"
+	 * @generated
+	 */
+	DataStabilityLevel getStabilityLevel();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Label#getStabilityLevel <em>Stability Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Stability Level</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.DataStabilityLevel
+	 * @see #getStabilityLevel()
+	 * @generated
+	 */
+	void setStabilityLevel(DataStabilityLevel value);
 
 	/**
 	 * Returns the value of the '<em><b>Label Accesses</b></em>' reference list.

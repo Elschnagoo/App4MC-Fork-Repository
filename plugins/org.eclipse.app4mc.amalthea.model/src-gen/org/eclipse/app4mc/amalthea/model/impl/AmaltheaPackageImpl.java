@@ -194,6 +194,7 @@ import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
+import org.eclipse.app4mc.amalthea.model.LabelAccessImplementation;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 import org.eclipse.app4mc.amalthea.model.LabelDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
@@ -3134,6 +3135,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EEnum labelAccessEnumEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum labelAccessImplementationEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -10763,8 +10771,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLabel_LabelAccesses() {
-		return (EReference)labelEClass.getEStructuralFeatures().get(4);
+	public EAttribute getLabel_StabilityLevel() {
+		return (EAttribute)labelEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -10772,7 +10780,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLabel_Section() {
+	public EReference getLabel_LabelAccesses() {
 		return (EReference)labelEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -10781,8 +10789,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLabel_SectionLinkInt() {
+	public EReference getLabel_Section() {
 		return (EReference)labelEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLabel_SectionLinkInt() {
+		return (EReference)labelEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -11105,8 +11122,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLabelAccess_Implementation() {
+		return (EAttribute)labelAccessEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getLabelAccess_DataLinkInt() {
-		return (EReference)labelAccessEClass.getEStructuralFeatures().get(5);
+		return (EReference)labelAccessEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -12473,6 +12499,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getLabelAccessImplementation() {
+		return labelAccessImplementationEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getSemaphoreAccessEnum() {
 		return semaphoreAccessEnumEEnum;
 	}
@@ -13668,6 +13703,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(labelEClass, LABEL__CONSTANT);
 		createEAttribute(labelEClass, LABEL__BVOLATILE);
 		createEAttribute(labelEClass, LABEL__DATA_STABILITY);
+		createEAttribute(labelEClass, LABEL__STABILITY_LEVEL);
 		createEReference(labelEClass, LABEL__LABEL_ACCESSES);
 		createEReference(labelEClass, LABEL__SECTION);
 		createEReference(labelEClass, LABEL__SECTION_LINK_INT);
@@ -13716,6 +13752,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(labelAccessEClass, LABEL_ACCESS__STATISTIC);
 		createEReference(labelAccessEClass, LABEL_ACCESS__TRANSMISSION_POLICY);
 		createEAttribute(labelAccessEClass, LABEL_ACCESS__DATA_STABILITY);
+		createEAttribute(labelAccessEClass, LABEL_ACCESS__IMPLEMENTATION);
 		createEReference(labelAccessEClass, LABEL_ACCESS__DATA_LINK_INT);
 
 		channelAccessEClass = createEClass(CHANNEL_ACCESS);
@@ -13911,6 +13948,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		receiveOperationEEnum = createEEnum(RECEIVE_OPERATION);
 		labelAccessDataStabilityEEnum = createEEnum(LABEL_ACCESS_DATA_STABILITY);
 		labelAccessEnumEEnum = createEEnum(LABEL_ACCESS_ENUM);
+		labelAccessImplementationEEnum = createEEnum(LABEL_ACCESS_IMPLEMENTATION);
 		semaphoreAccessEnumEEnum = createEEnum(SEMAPHORE_ACCESS_ENUM);
 		blockingTypeEEnum = createEEnum(BLOCKING_TYPE);
 		preemptionEEnum = createEEnum(PREEMPTION);
@@ -15532,6 +15570,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getLabel_Constant(), theEcorePackage.getEBoolean(), "constant", "false", 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLabel_BVolatile(), theEcorePackage.getEBoolean(), "bVolatile", "false", 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLabel_DataStability(), this.getLabelDataStability(), "dataStability", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLabel_StabilityLevel(), this.getDataStabilityLevel(), "stabilityLevel", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabel_LabelAccesses(), this.getLabelAccess(), this.getLabelAccess_DataLinkInt(), "labelAccesses", null, 0, -1, Label.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabel_Section(), this.getSection(), null, "section", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabel_SectionLinkInt(), this.getSection(), this.getSection_Labels(), "sectionLinkInt", null, 0, 1, Label.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15587,6 +15626,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getLabelAccess_Statistic(), this.getLabelAccessStatistic(), null, "statistic", null, 0, 1, LabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabelAccess_TransmissionPolicy(), this.getTransmissionPolicy(), null, "transmissionPolicy", null, 0, 1, LabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLabelAccess_DataStability(), this.getLabelAccessDataStability(), "dataStability", null, 0, 1, LabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLabelAccess_Implementation(), this.getLabelAccessImplementation(), "implementation", null, 0, 1, LabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabelAccess_DataLinkInt(), this.getLabel(), this.getLabel_LabelAccesses(), "dataLinkInt", null, 1, 1, LabelAccess.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(channelAccessEClass, ChannelAccess.class, "ChannelAccess", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -16009,9 +16049,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEEnum(dataStabilityLevelEEnum, DataStabilityLevel.class, "DataStabilityLevel");
 		addEEnumLiteral(dataStabilityLevelEEnum, DataStabilityLevel._UNDEFINED_);
+		addEEnumLiteral(dataStabilityLevelEEnum, DataStabilityLevel.PERIOD);
 		addEEnumLiteral(dataStabilityLevelEEnum, DataStabilityLevel.PROCESS);
-		addEEnumLiteral(dataStabilityLevelEEnum, DataStabilityLevel.RUNNABLE);
 		addEEnumLiteral(dataStabilityLevelEEnum, DataStabilityLevel.SCHEDULE_SECTION);
+		addEEnumLiteral(dataStabilityLevelEEnum, DataStabilityLevel.RUNNABLE);
 
 		initEEnum(semaphoreTypeEEnum, SemaphoreType.class, "SemaphoreType");
 		addEEnumLiteral(semaphoreTypeEEnum, SemaphoreType._UNDEFINED_);
@@ -16083,6 +16124,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(labelAccessEnumEEnum, LabelAccessEnum._UNDEFINED_);
 		addEEnumLiteral(labelAccessEnumEEnum, LabelAccessEnum.READ);
 		addEEnumLiteral(labelAccessEnumEEnum, LabelAccessEnum.WRITE);
+
+		initEEnum(labelAccessImplementationEEnum, LabelAccessImplementation.class, "LabelAccessImplementation");
+		addEEnumLiteral(labelAccessImplementationEEnum, LabelAccessImplementation._UNDEFINED_);
+		addEEnumLiteral(labelAccessImplementationEEnum, LabelAccessImplementation.EXPLICIT);
+		addEEnumLiteral(labelAccessImplementationEEnum, LabelAccessImplementation.IMPLICIT);
+		addEEnumLiteral(labelAccessImplementationEEnum, LabelAccessImplementation.TIMED);
 
 		initEEnum(semaphoreAccessEnumEEnum, SemaphoreAccessEnum.class, "SemaphoreAccessEnum");
 		addEEnumLiteral(semaphoreAccessEnumEEnum, SemaphoreAccessEnum._UNDEFINED_);

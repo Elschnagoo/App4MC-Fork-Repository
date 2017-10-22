@@ -155,6 +155,7 @@ import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
+import org.eclipse.app4mc.amalthea.model.LabelAccessImplementation;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 import org.eclipse.app4mc.amalthea.model.LabelDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
@@ -750,6 +751,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createLabelAccessDataStabilityFromString(eDataType, initialValue);
 			case AmaltheaPackage.LABEL_ACCESS_ENUM:
 				return createLabelAccessEnumFromString(eDataType, initialValue);
+			case AmaltheaPackage.LABEL_ACCESS_IMPLEMENTATION:
+				return createLabelAccessImplementationFromString(eDataType, initialValue);
 			case AmaltheaPackage.SEMAPHORE_ACCESS_ENUM:
 				return createSemaphoreAccessEnumFromString(eDataType, initialValue);
 			case AmaltheaPackage.BLOCKING_TYPE:
@@ -863,6 +866,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertLabelAccessDataStabilityToString(eDataType, instanceValue);
 			case AmaltheaPackage.LABEL_ACCESS_ENUM:
 				return convertLabelAccessEnumToString(eDataType, instanceValue);
+			case AmaltheaPackage.LABEL_ACCESS_IMPLEMENTATION:
+				return convertLabelAccessImplementationToString(eDataType, instanceValue);
 			case AmaltheaPackage.SEMAPHORE_ACCESS_ENUM:
 				return convertSemaphoreAccessEnumToString(eDataType, instanceValue);
 			case AmaltheaPackage.BLOCKING_TYPE:
@@ -4425,6 +4430,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertLabelAccessEnumToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LabelAccessImplementation createLabelAccessImplementationFromString(EDataType eDataType, String initialValue) {
+		LabelAccessImplementation result = LabelAccessImplementation.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLabelAccessImplementationToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

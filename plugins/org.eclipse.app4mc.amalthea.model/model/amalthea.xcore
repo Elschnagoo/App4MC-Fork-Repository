@@ -2010,10 +2010,11 @@ enum AccessMultiplicity {
 }
 
 enum DataStabilityLevel {
-	_undefined_ // Display: "<data stability level>"
-	process
-	runnable
-	scheduleSection
+	_undefined_ 	// Display: "<data stability level>"
+	period			// between consecutive activations
+	process			// within a Task or ISR
+	scheduleSection	// between Schedule points (explizit schedule points, begin and end of process)
+	runnable		// within a Runnable
 }
 
 /*
@@ -3116,6 +3117,8 @@ class Label extends AbstractMemoryElement, IDisplayName
 	 */
 	LabelDataStability dataStability
 	
+	DataStabilityLevel stabilityLevel
+	
 	// back pointer (readonly)
 	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
@@ -3258,6 +3261,8 @@ class LabelAccess extends ComputationItem
 	 */
 	LabelAccessDataStability dataStability
 
+	LabelAccessImplementation implementation
+
 	// hidden link (internal)
 	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
 	refers transient Label[1] dataLinkInt opposite labelAccesses
@@ -3313,12 +3318,19 @@ enum LabelAccessDataStability {
 	handledByModelElements
 }
 
-enum LabelAccessEnum
-{
+enum LabelAccessEnum {
 	_undefined_ // Display: "<access>"
 	read
 	write
 }
+
+enum LabelAccessImplementation {
+	_undefined_ // Display: "<implementation>"
+	explicit	// also known as "direct"
+	implicit	// also known as "optimized"
+	timed
+}
+
 
 /*
  * Describes an semaphore access

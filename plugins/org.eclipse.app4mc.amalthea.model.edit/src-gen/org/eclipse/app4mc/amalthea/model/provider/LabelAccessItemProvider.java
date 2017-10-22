@@ -57,6 +57,7 @@ public class LabelAccessItemProvider extends ComputationItemItemProvider {
 			addDataPropertyDescriptor(object);
 			addAccessPropertyDescriptor(object);
 			addDataStabilityPropertyDescriptor(object);
+			addImplementationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -117,6 +118,28 @@ public class LabelAccessItemProvider extends ComputationItemItemProvider {
 				 getString("_UI_LabelAccess_dataStability_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_LabelAccess_dataStability_feature", "_UI_LabelAccess_type"),
 				 AmaltheaPackage.eINSTANCE.getLabelAccess_DataStability(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Implementation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addImplementationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LabelAccess_implementation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LabelAccess_implementation_feature", "_UI_LabelAccess_type"),
+				 AmaltheaPackage.eINSTANCE.getLabelAccess_Implementation(),
 				 true,
 				 false,
 				 false,
@@ -209,6 +232,7 @@ public class LabelAccessItemProvider extends ComputationItemItemProvider {
 		switch (notification.getFeatureID(LabelAccess.class)) {
 			case AmaltheaPackage.LABEL_ACCESS__ACCESS:
 			case AmaltheaPackage.LABEL_ACCESS__DATA_STABILITY:
+			case AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AmaltheaPackage.LABEL_ACCESS__STATISTIC:

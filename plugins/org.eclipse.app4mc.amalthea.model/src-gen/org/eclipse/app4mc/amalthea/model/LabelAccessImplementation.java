@@ -20,14 +20,14 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Data Stability Level</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Label Access Implementation</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataStabilityLevel()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccessImplementation()
  * @model
  * @generated
  */
-public enum DataStabilityLevel implements Enumerator {
+public enum LabelAccessImplementation implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -39,44 +39,34 @@ public enum DataStabilityLevel implements Enumerator {
 	_UNDEFINED_(0, "_undefined_", "_undefined_"),
 
 	/**
-	 * The '<em><b>Period</b></em>' literal object.
+	 * The '<em><b>Explicit</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PERIOD_VALUE
+	 * @see #EXPLICIT_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PERIOD(0, "period", "period"),
+	EXPLICIT(0, "explicit", "explicit"),
 
 	/**
-	 * The '<em><b>Process</b></em>' literal object.
+	 * The '<em><b>Implicit</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PROCESS_VALUE
+	 * @see #IMPLICIT_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PROCESS(0, "process", "process"),
+	IMPLICIT(0, "implicit", "implicit"),
 
 	/**
-	 * The '<em><b>Schedule Section</b></em>' literal object.
+	 * The '<em><b>Timed</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SCHEDULE_SECTION_VALUE
+	 * @see #TIMED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	SCHEDULE_SECTION(0, "scheduleSection", "scheduleSection"),
-
-	/**
-	 * The '<em><b>Runnable</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #RUNNABLE_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	RUNNABLE(0, "runnable", "runnable");
+	TIMED(0, "timed", "timed");
 
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
@@ -94,99 +84,83 @@ public enum DataStabilityLevel implements Enumerator {
 	public static final int _UNDEFINED__VALUE = 0;
 
 	/**
-	 * The '<em><b>Period</b></em>' literal value.
+	 * The '<em><b>Explicit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Period</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Explicit</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #PERIOD
-	 * @model name="period"
+	 * @see #EXPLICIT
+	 * @model name="explicit"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PERIOD_VALUE = 0;
+	public static final int EXPLICIT_VALUE = 0;
 
 	/**
-	 * The '<em><b>Process</b></em>' literal value.
+	 * The '<em><b>Implicit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Process</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Implicit</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #PROCESS
-	 * @model name="process"
+	 * @see #IMPLICIT
+	 * @model name="implicit"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PROCESS_VALUE = 0;
+	public static final int IMPLICIT_VALUE = 0;
 
 	/**
-	 * The '<em><b>Schedule Section</b></em>' literal value.
+	 * The '<em><b>Timed</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Schedule Section</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Timed</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #SCHEDULE_SECTION
-	 * @model name="scheduleSection"
+	 * @see #TIMED
+	 * @model name="timed"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SCHEDULE_SECTION_VALUE = 0;
+	public static final int TIMED_VALUE = 0;
 
 	/**
-	 * The '<em><b>Runnable</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Runnable</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #RUNNABLE
-	 * @model name="runnable"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RUNNABLE_VALUE = 0;
-
-	/**
-	 * An array of all the '<em><b>Data Stability Level</b></em>' enumerators.
+	 * An array of all the '<em><b>Label Access Implementation</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final DataStabilityLevel[] VALUES_ARRAY =
-		new DataStabilityLevel[] {
+	private static final LabelAccessImplementation[] VALUES_ARRAY =
+		new LabelAccessImplementation[] {
 			_UNDEFINED_,
-			PERIOD,
-			PROCESS,
-			SCHEDULE_SECTION,
-			RUNNABLE,
+			EXPLICIT,
+			IMPLICIT,
+			TIMED,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Data Stability Level</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Label Access Implementation</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<DataStabilityLevel> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<LabelAccessImplementation> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Data Stability Level</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Label Access Implementation</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static DataStabilityLevel get(String literal) {
+	public static LabelAccessImplementation get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			DataStabilityLevel result = VALUES_ARRAY[i];
+			LabelAccessImplementation result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -195,16 +169,16 @@ public enum DataStabilityLevel implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Data Stability Level</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Label Access Implementation</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static DataStabilityLevel getByName(String name) {
+	public static LabelAccessImplementation getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			DataStabilityLevel result = VALUES_ARRAY[i];
+			LabelAccessImplementation result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -213,14 +187,14 @@ public enum DataStabilityLevel implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Data Stability Level</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Label Access Implementation</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static DataStabilityLevel get(int value) {
+	public static LabelAccessImplementation get(int value) {
 		switch (value) {
 			case _UNDEFINED__VALUE: return _UNDEFINED_;
 		}
@@ -254,7 +228,7 @@ public enum DataStabilityLevel implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private DataStabilityLevel(int value, String name, String literal) {
+	private LabelAccessImplementation(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -298,4 +272,4 @@ public enum DataStabilityLevel implements Enumerator {
 		return literal;
 	}
 	
-} //DataStabilityLevel
+} //LabelAccessImplementation
