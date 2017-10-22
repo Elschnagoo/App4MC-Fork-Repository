@@ -136,6 +136,7 @@ import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
+import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
@@ -1201,6 +1202,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseFixedPriorityPreemptive(FixedPriorityPreemptive object) {
 				return createFixedPriorityPreemptiveAdapter();
+			}
+			@Override
+			public Adapter caseFixedPriorityPreemptiveWithBudgetEnforcement(FixedPriorityPreemptiveWithBudgetEnforcement object) {
+				return createFixedPriorityPreemptiveWithBudgetEnforcementAdapter();
 			}
 			@Override
 			public Adapter caseOSEK(OSEK object) {
@@ -4557,6 +4562,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFixedPriorityPreemptiveAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement <em>Fixed Priority Preemptive With Budget Enforcement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement
+	 * @generated
+	 */
+	public Adapter createFixedPriorityPreemptiveWithBudgetEnforcementAdapter() {
 		return null;
 	}
 

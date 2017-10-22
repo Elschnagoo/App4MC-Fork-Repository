@@ -31,6 +31,7 @@ table(classic).
 |\2{background:#e6ffe6;}. Fixed Priority |
 | OSEK | OSEK compliant Scheduling |
 | FixedPriorityPreemptive | Fixed Priority Preemptive Scheduling (e.g. AUTOSAR) |
+| FixedPriorityPreemptiveWithBudgetEnforcement | Fixed Priority Preemptive Scheduling (with budget enforcement) |
 | DeadlineMonotonic | Deadline Monotonic Scheduling (DMS): Task with the shortest period gets the lowest priority. |
 | RateMonotonic | Rate Monotonic Scheduling (RMS): Task with the shortest period gets the highest priority. |
 |\2{background:#e6ffe6;}. Dynamic Priority |

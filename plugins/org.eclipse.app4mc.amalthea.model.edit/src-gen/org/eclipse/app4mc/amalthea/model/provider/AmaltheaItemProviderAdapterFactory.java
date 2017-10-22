@@ -3808,6 +3808,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FixedPriorityPreemptiveWithBudgetEnforcementItemProvider fixedPriorityPreemptiveWithBudgetEnforcementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFixedPriorityPreemptiveWithBudgetEnforcementAdapter() {
+		if (fixedPriorityPreemptiveWithBudgetEnforcementItemProvider == null) {
+			fixedPriorityPreemptiveWithBudgetEnforcementItemProvider = new FixedPriorityPreemptiveWithBudgetEnforcementItemProvider(this);
+		}
+
+		return fixedPriorityPreemptiveWithBudgetEnforcementItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OsInstructions} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6396,6 +6419,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (schedulingParametersItemProvider != null) schedulingParametersItemProvider.dispose();
 		if (parameterExtensionItemProvider != null) parameterExtensionItemProvider.dispose();
 		if (fixedPriorityPreemptiveItemProvider != null) fixedPriorityPreemptiveItemProvider.dispose();
+		if (fixedPriorityPreemptiveWithBudgetEnforcementItemProvider != null) fixedPriorityPreemptiveWithBudgetEnforcementItemProvider.dispose();
 		if (osekItemProvider != null) osekItemProvider.dispose();
 		if (deadlineMonotonicItemProvider != null) deadlineMonotonicItemProvider.dispose();
 		if (rateMonotonicItemProvider != null) rateMonotonicItemProvider.dispose();

@@ -150,6 +150,7 @@ import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
+import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
@@ -1796,6 +1797,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass fixedPriorityPreemptiveEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fixedPriorityPreemptiveWithBudgetEnforcementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -8379,6 +8387,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getFixedPriorityPreemptiveWithBudgetEnforcement() {
+		return fixedPriorityPreemptiveWithBudgetEnforcementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOSEK() {
 		return osekEClass;
 	}
@@ -13293,6 +13310,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		fixedPriorityPreemptiveEClass = createEClass(FIXED_PRIORITY_PREEMPTIVE);
 
+		fixedPriorityPreemptiveWithBudgetEnforcementEClass = createEClass(FIXED_PRIORITY_PREEMPTIVE_WITH_BUDGET_ENFORCEMENT);
+
 		osekEClass = createEClass(OSEK);
 
 		deadlineMonotonicEClass = createEClass(DEADLINE_MONOTONIC);
@@ -14161,6 +14180,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		taskSchedulingAlgorithmEClass.getESuperTypes().add(this.getAlgorithm());
 		fixedPriorityEClass.getESuperTypes().add(this.getTaskSchedulingAlgorithm());
 		fixedPriorityPreemptiveEClass.getESuperTypes().add(this.getFixedPriority());
+		fixedPriorityPreemptiveWithBudgetEnforcementEClass.getESuperTypes().add(this.getFixedPriority());
 		osekEClass.getESuperTypes().add(this.getFixedPriority());
 		deadlineMonotonicEClass.getESuperTypes().add(this.getFixedPriority());
 		rateMonotonicEClass.getESuperTypes().add(this.getFixedPriority());
@@ -15137,6 +15157,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(fixedPriorityEClass, FixedPriority.class, "FixedPriority", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(fixedPriorityPreemptiveEClass, FixedPriorityPreemptive.class, "FixedPriorityPreemptive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(fixedPriorityPreemptiveWithBudgetEnforcementEClass, FixedPriorityPreemptiveWithBudgetEnforcement.class, "FixedPriorityPreemptiveWithBudgetEnforcement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(osekEClass, org.eclipse.app4mc.amalthea.model.OSEK.class, "OSEK", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

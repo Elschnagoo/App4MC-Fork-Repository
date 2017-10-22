@@ -136,6 +136,7 @@ import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
+import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
@@ -2110,6 +2111,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseAlgorithm(fixedPriorityPreemptive);
 				if (result == null) result = caseBaseObject(fixedPriorityPreemptive);
 				if (result == null) result = caseIAnnotatable(fixedPriorityPreemptive);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.FIXED_PRIORITY_PREEMPTIVE_WITH_BUDGET_ENFORCEMENT: {
+				FixedPriorityPreemptiveWithBudgetEnforcement fixedPriorityPreemptiveWithBudgetEnforcement = (FixedPriorityPreemptiveWithBudgetEnforcement)theEObject;
+				T1 result = caseFixedPriorityPreemptiveWithBudgetEnforcement(fixedPriorityPreemptiveWithBudgetEnforcement);
+				if (result == null) result = caseFixedPriority(fixedPriorityPreemptiveWithBudgetEnforcement);
+				if (result == null) result = caseTaskSchedulingAlgorithm(fixedPriorityPreemptiveWithBudgetEnforcement);
+				if (result == null) result = caseAlgorithm(fixedPriorityPreemptiveWithBudgetEnforcement);
+				if (result == null) result = caseBaseObject(fixedPriorityPreemptiveWithBudgetEnforcement);
+				if (result == null) result = caseIAnnotatable(fixedPriorityPreemptiveWithBudgetEnforcement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -6450,6 +6462,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseFixedPriorityPreemptive(FixedPriorityPreemptive object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Fixed Priority Preemptive With Budget Enforcement</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Fixed Priority Preemptive With Budget Enforcement</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseFixedPriorityPreemptiveWithBudgetEnforcement(FixedPriorityPreemptiveWithBudgetEnforcement object) {
 		return null;
 	}
 

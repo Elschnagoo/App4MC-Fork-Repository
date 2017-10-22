@@ -238,6 +238,11 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
+				 AmaltheaFactory.eINSTANCE.createFixedPriorityPreemptiveWithBudgetEnforcement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTaskScheduler_SchedulingAlgorithm(),
 				 AmaltheaFactory.eINSTANCE.createOSEK()));
 
 		newChildDescriptors.add

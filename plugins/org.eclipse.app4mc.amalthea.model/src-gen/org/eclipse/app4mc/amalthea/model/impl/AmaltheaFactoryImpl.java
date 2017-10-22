@@ -121,6 +121,7 @@ import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
+import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
@@ -525,6 +526,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.SCHEDULING_PARAMETERS: return createSchedulingParameters();
 			case AmaltheaPackage.PARAMETER_EXTENSION: return (EObject)createParameterExtension();
 			case AmaltheaPackage.FIXED_PRIORITY_PREEMPTIVE: return createFixedPriorityPreemptive();
+			case AmaltheaPackage.FIXED_PRIORITY_PREEMPTIVE_WITH_BUDGET_ENFORCEMENT: return createFixedPriorityPreemptiveWithBudgetEnforcement();
 			case AmaltheaPackage.OSEK: return createOSEK();
 			case AmaltheaPackage.DEADLINE_MONOTONIC: return createDeadlineMonotonic();
 			case AmaltheaPackage.RATE_MONOTONIC: return createRateMonotonic();
@@ -2314,6 +2316,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public FixedPriorityPreemptive createFixedPriorityPreemptive() {
 		FixedPriorityPreemptiveImpl fixedPriorityPreemptive = new FixedPriorityPreemptiveImpl();
 		return fixedPriorityPreemptive;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FixedPriorityPreemptiveWithBudgetEnforcement createFixedPriorityPreemptiveWithBudgetEnforcement() {
+		FixedPriorityPreemptiveWithBudgetEnforcementImpl fixedPriorityPreemptiveWithBudgetEnforcement = new FixedPriorityPreemptiveWithBudgetEnforcementImpl();
+		return fixedPriorityPreemptiveWithBudgetEnforcement;
 	}
 
 	/**

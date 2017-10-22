@@ -1310,6 +1310,15 @@ public interface AmaltheaFactory extends EFactory {
 	FixedPriorityPreemptive createFixedPriorityPreemptive();
 
 	/**
+	 * Returns a new object of class '<em>Fixed Priority Preemptive With Budget Enforcement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Fixed Priority Preemptive With Budget Enforcement</em>'.
+	 * @generated
+	 */
+	FixedPriorityPreemptiveWithBudgetEnforcement createFixedPriorityPreemptiveWithBudgetEnforcement();
+
+	/**
 	 * Returns a new object of class '<em>OSEK</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

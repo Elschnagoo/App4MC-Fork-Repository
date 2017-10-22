@@ -2156,6 +2156,13 @@ class FixedPriorityPreemptive extends FixedPriority
 }
 
 /*
+ * Fixed Priority Preemptive scheduling algorithm (with budget enforcement)
+ */
+class FixedPriorityPreemptiveWithBudgetEnforcement extends FixedPriority
+{
+}
+
+/*
  * OSEK scheduling algorithm
  */
 class OSEK extends FixedPriority

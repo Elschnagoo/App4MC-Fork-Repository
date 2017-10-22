@@ -3357,6 +3357,19 @@ computation items: steps to perform the scheduling algorithm</xsd:documentation>
       <xsd:documentation>Fixed Priority Preemptive scheduling algorithm</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="FixedPriorityPreemptiveWithBudgetEnforcement">
+    <xsd:annotation>
+      <xsd:documentation>Fixed Priority Preemptive scheduling algorithm (with budget enforcement)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:FixedPriority"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="FixedPriorityPreemptiveWithBudgetEnforcement" type="am:FixedPriorityPreemptiveWithBudgetEnforcement">
+    <xsd:annotation>
+      <xsd:documentation>Fixed Priority Preemptive scheduling algorithm (with budget enforcement)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="OSEK">
     <xsd:annotation>
       <xsd:documentation>OSEK scheduling algorithm</xsd:documentation>
