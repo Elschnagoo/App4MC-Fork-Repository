@@ -73,6 +73,8 @@ import org.eclipse.app4mc.amalthea.model.ComplexNode;
 import org.eclipse.app4mc.amalthea.model.ComplexPin;
 import org.eclipse.app4mc.amalthea.model.ComplexPort;
 import org.eclipse.app4mc.amalthea.model.Component;
+import org.eclipse.app4mc.amalthea.model.ComponentEvent;
+import org.eclipse.app4mc.amalthea.model.ComponentEventType;
 import org.eclipse.app4mc.amalthea.model.ComponentInstance;
 import org.eclipse.app4mc.amalthea.model.ComponentScope;
 import org.eclipse.app4mc.amalthea.model.ComponentsModel;
@@ -1378,6 +1380,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass semaphoreEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass componentEventEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2981,6 +2990,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EEnum semaphoreEventTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum componentEventTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -6633,6 +6649,33 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getSemaphoreEvent_Core() {
 		return (EReference)semaphoreEventEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getComponentEvent() {
+		return componentEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getComponentEvent_EventType() {
+		return (EAttribute)componentEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponentEvent_Entity() {
+		return (EReference)componentEventEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -12301,6 +12344,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getComponentEventType() {
+		return componentEventTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getQType() {
 		return qTypeEEnum;
 	}
@@ -13089,6 +13141,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(semaphoreEventEClass, SEMAPHORE_EVENT__RUNNABLE);
 		createEReference(semaphoreEventEClass, SEMAPHORE_EVENT__PROCESS);
 		createEReference(semaphoreEventEClass, SEMAPHORE_EVENT__CORE);
+
+		componentEventEClass = createEClass(COMPONENT_EVENT);
+		createEAttribute(componentEventEClass, COMPONENT_EVENT__EVENT_TYPE);
+		createEReference(componentEventEClass, COMPONENT_EVENT__ENTITY);
 
 		hwModelEClass = createEClass(HW_MODEL);
 		createEReference(hwModelEClass, HW_MODEL__SYSTEM_TYPES);
@@ -13926,6 +13982,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		labelEventTypeEEnum = createEEnum(LABEL_EVENT_TYPE);
 		channelEventTypeEEnum = createEEnum(CHANNEL_EVENT_TYPE);
 		semaphoreEventTypeEEnum = createEEnum(SEMAPHORE_EVENT_TYPE);
+		componentEventTypeEEnum = createEEnum(COMPONENT_EVENT_TYPE);
 		qTypeEEnum = createEEnum(QTYPE);
 		memoryTypeEnumEEnum = createEEnum(MEMORY_TYPE_ENUM);
 		busTypeEEnum = createEEnum(BUS_TYPE);
@@ -14163,6 +14220,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		labelEventEClass.getESuperTypes().add(this.getTriggerEvent());
 		channelEventEClass.getESuperTypes().add(this.getTriggerEvent());
 		semaphoreEventEClass.getESuperTypes().add(this.getEntityEvent());
+		componentEventEClass.getESuperTypes().add(this.getEntityEvent());
 		hwModelEClass.getESuperTypes().add(this.getBaseObject());
 		complexNodeEClass.getESuperTypes().add(this.getReferableBaseObject());
 		complexNodeEClass.getESuperTypes().add(this.getITaggable());
@@ -14935,6 +14993,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getSemaphoreEvent_Runnable(), this.getRunnable(), null, "runnable", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSemaphoreEvent_Process(), this.getProcess(), null, "process", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSemaphoreEvent_Core(), this.getCore(), null, "core", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(componentEventEClass, ComponentEvent.class, "ComponentEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getComponentEvent_EventType(), this.getComponentEventType(), "eventType", null, 1, 1, ComponentEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentEvent_Entity(), this.getComponent(), null, "entity", null, 0, 1, ComponentEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwModelEClass, HWModel.class, "HWModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHWModel_SystemTypes(), this.getSystemType(), null, "systemTypes", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15990,6 +16052,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(semaphoreEventTypeEEnum, SemaphoreEventType._ALL_);
 		addEEnumLiteral(semaphoreEventTypeEEnum, SemaphoreEventType.LOCK);
 		addEEnumLiteral(semaphoreEventTypeEEnum, SemaphoreEventType.UNLOCK);
+
+		initEEnum(componentEventTypeEEnum, ComponentEventType.class, "ComponentEventType");
+		addEEnumLiteral(componentEventTypeEEnum, ComponentEventType._ALL_);
+		addEEnumLiteral(componentEventTypeEEnum, ComponentEventType.START);
+		addEEnumLiteral(componentEventTypeEEnum, ComponentEventType.END);
 
 		initEEnum(qTypeEEnum, QType.class, "QType");
 		addEEnumLiteral(qTypeEEnum, QType._UNDEFINED_);

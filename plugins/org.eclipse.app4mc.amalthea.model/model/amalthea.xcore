@@ -1437,7 +1437,7 @@ class RunnableEvent extends TriggerEvent
 /*
  * Describes the event of a label access
  * eventType: The type of event
- * entity: The accessed label that fires the event
+ * entity: The accessed label that fires the event (optional)
  * runnable: The runnable that accesses the label (optional)
  * process: The process that accesses the label (optional)
  */
@@ -1452,7 +1452,7 @@ class LabelEvent extends TriggerEvent
 /*
  * Describes the event of a channel access
  * eventType: The type of event
- * entity: The accessed channel that fires the event
+ * entity: The accessed channel that fires the event (optional)
  * runnable: The runnable that accesses the label (optional)
  * process: The process that accesses the label (optional)
  */
@@ -1467,7 +1467,7 @@ class ChannelEvent extends TriggerEvent
 /*
  * Describes the event of a semaphore access
  * eventType: The type of event
- * entity: The accessed semaphore that fires the event
+ * entity: The accessed semaphore that fires the event (optional)
  * runnable: The runnable that accesses the semaphore (optional)
  * process: The process that accesses the semaphore (optional)
  * core: The core that processes the process/runnable that accesses the semaphore (optional)
@@ -1479,6 +1479,17 @@ class SemaphoreEvent extends EntityEvent
 	refers Runnable runnable
 	refers Process process
 	refers Core core
+}
+
+/*
+ * Describes the event of a component
+ * eventType: The type of event
+ * entity: The component that fires the event (optional)
+ */
+class ComponentEvent extends EntityEvent
+{
+	ComponentEventType[1] eventType
+	refers Component entity
 }
 
 /*
@@ -1542,6 +1553,16 @@ enum SemaphoreEventType
 	_all_
 	lock
 	unlock
+}
+
+/*
+ * The types of a component event
+ */
+enum ComponentEventType
+{
+	_all_
+	start
+	end
 }
 
 

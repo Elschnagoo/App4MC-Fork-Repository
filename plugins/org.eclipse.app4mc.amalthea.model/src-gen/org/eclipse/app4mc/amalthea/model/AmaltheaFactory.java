@@ -887,6 +887,15 @@ public interface AmaltheaFactory extends EFactory {
 	SemaphoreEvent createSemaphoreEvent();
 
 	/**
+	 * Returns a new object of class '<em>Component Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Component Event</em>'.
+	 * @generated
+	 */
+	ComponentEvent createComponentEvent();
+
+	/**
 	 * Returns a new object of class '<em>HW Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

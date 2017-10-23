@@ -21,7 +21,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- begin-model-doc -->
  * Describes the event of a label access
  * eventType: The type of event
- * entity: The accessed label that fires the event
+ * entity: The accessed label that fires the event (optional)
  * runnable: The runnable that accesses the label (optional)
  * process: The process that accesses the label (optional)
  * <!-- end-model-doc -->

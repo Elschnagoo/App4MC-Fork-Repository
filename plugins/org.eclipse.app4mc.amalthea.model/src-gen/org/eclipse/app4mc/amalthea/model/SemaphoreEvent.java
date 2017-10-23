@@ -21,7 +21,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- begin-model-doc -->
  * Describes the event of a semaphore access
  * eventType: The type of event
- * entity: The accessed semaphore that fires the event
+ * entity: The accessed semaphore that fires the event (optional)
  * runnable: The runnable that accesses the semaphore (optional)
  * process: The process that accesses the semaphore (optional)
  * core: The core that processes the process/runnable that accesses the semaphore (optional)

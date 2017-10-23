@@ -2244,6 +2244,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ComponentEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComponentEventItemProvider componentEventItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ComponentEvent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createComponentEventAdapter() {
+		if (componentEventItemProvider == null) {
+			componentEventItemProvider = new ComponentEventItemProvider(this);
+		}
+
+		return componentEventItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HWModel} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6371,6 +6394,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (labelEventItemProvider != null) labelEventItemProvider.dispose();
 		if (channelEventItemProvider != null) channelEventItemProvider.dispose();
 		if (semaphoreEventItemProvider != null) semaphoreEventItemProvider.dispose();
+		if (componentEventItemProvider != null) componentEventItemProvider.dispose();
 		if (hwModelItemProvider != null) hwModelItemProvider.dispose();
 		if (hwSystemItemProvider != null) hwSystemItemProvider.dispose();
 		if (ecuItemProvider != null) ecuItemProvider.dispose();

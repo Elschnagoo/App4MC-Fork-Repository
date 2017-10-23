@@ -64,6 +64,7 @@ import org.eclipse.app4mc.amalthea.model.ComplexNode;
 import org.eclipse.app4mc.amalthea.model.ComplexPin;
 import org.eclipse.app4mc.amalthea.model.ComplexPort;
 import org.eclipse.app4mc.amalthea.model.Component;
+import org.eclipse.app4mc.amalthea.model.ComponentEvent;
 import org.eclipse.app4mc.amalthea.model.ComponentInstance;
 import org.eclipse.app4mc.amalthea.model.ComponentScope;
 import org.eclipse.app4mc.amalthea.model.ComponentsModel;
@@ -1568,6 +1569,18 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(semaphoreEvent);
 				if (result == null) result = caseIAnnotatable(semaphoreEvent);
 				if (result == null) result = caseIReferable(semaphoreEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.COMPONENT_EVENT: {
+				ComponentEvent componentEvent = (ComponentEvent)theEObject;
+				T1 result = caseComponentEvent(componentEvent);
+				if (result == null) result = caseEntityEvent(componentEvent);
+				if (result == null) result = caseEvent(componentEvent);
+				if (result == null) result = caseReferableBaseObject(componentEvent);
+				if (result == null) result = caseITaggable(componentEvent);
+				if (result == null) result = caseIAnnotatable(componentEvent);
+				if (result == null) result = caseIReferable(componentEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -5562,6 +5575,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseSemaphoreEvent(SemaphoreEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Component Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Component Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseComponentEvent(ComponentEvent object) {
 		return null;
 	}
 

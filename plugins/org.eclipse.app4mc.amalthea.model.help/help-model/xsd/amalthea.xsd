@@ -280,6 +280,16 @@
       <xsd:enumeration value="unlock"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="ComponentEventType">
+    <xsd:annotation>
+      <xsd:documentation>The types of a component event</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_all_"/>
+      <xsd:enumeration value="start"/>
+      <xsd:enumeration value="end"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="QType">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -360,9 +370,10 @@
   <xsd:simpleType name="DataStabilityLevel">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="period"/>
       <xsd:enumeration value="process"/>
-      <xsd:enumeration value="runnable"/>
       <xsd:enumeration value="scheduleSection"/>
+      <xsd:enumeration value="runnable"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="SemaphoreType">
@@ -485,6 +496,14 @@ Inherited means that the setting of the Label is used</xsd:documentation>
       <xsd:enumeration value="_undefined_"/>
       <xsd:enumeration value="read"/>
       <xsd:enumeration value="write"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="LabelAccessImplementation">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="explicit"/>
+      <xsd:enumeration value="implicit"/>
+      <xsd:enumeration value="timed"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="SemaphoreAccessEnum">
@@ -2516,7 +2535,7 @@ core: The core that processes the runnable (processes the process that executes 
     <xsd:annotation>
       <xsd:documentation>Describes the event of a label access
 eventType: The type of event
-entity: The accessed label that fires the event
+entity: The accessed label that fires the event (optional)
 runnable: The runnable that accesses the label (optional)
 process: The process that accesses the label (optional)</xsd:documentation>
     </xsd:annotation>
@@ -2538,7 +2557,7 @@ process: The process that accesses the label (optional)</xsd:documentation>
     <xsd:annotation>
       <xsd:documentation>Describes the event of a label access
 eventType: The type of event
-entity: The accessed label that fires the event
+entity: The accessed label that fires the event (optional)
 runnable: The runnable that accesses the label (optional)
 process: The process that accesses the label (optional)</xsd:documentation>
     </xsd:annotation>
@@ -2547,7 +2566,7 @@ process: The process that accesses the label (optional)</xsd:documentation>
     <xsd:annotation>
       <xsd:documentation>Describes the event of a channel access
 eventType: The type of event
-entity: The accessed channel that fires the event
+entity: The accessed channel that fires the event (optional)
 runnable: The runnable that accesses the label (optional)
 process: The process that accesses the label (optional)</xsd:documentation>
     </xsd:annotation>
@@ -2569,7 +2588,7 @@ process: The process that accesses the label (optional)</xsd:documentation>
     <xsd:annotation>
       <xsd:documentation>Describes the event of a channel access
 eventType: The type of event
-entity: The accessed channel that fires the event
+entity: The accessed channel that fires the event (optional)
 runnable: The runnable that accesses the label (optional)
 process: The process that accesses the label (optional)</xsd:documentation>
     </xsd:annotation>
@@ -2578,7 +2597,7 @@ process: The process that accesses the label (optional)</xsd:documentation>
     <xsd:annotation>
       <xsd:documentation>Describes the event of a semaphore access
 eventType: The type of event
-entity: The accessed semaphore that fires the event
+entity: The accessed semaphore that fires the event (optional)
 runnable: The runnable that accesses the semaphore (optional)
 process: The process that accesses the semaphore (optional)
 core: The core that processes the process/runnable that accesses the semaphore (optional)</xsd:documentation>
@@ -2603,10 +2622,33 @@ core: The core that processes the process/runnable that accesses the semaphore (
     <xsd:annotation>
       <xsd:documentation>Describes the event of a semaphore access
 eventType: The type of event
-entity: The accessed semaphore that fires the event
+entity: The accessed semaphore that fires the event (optional)
 runnable: The runnable that accesses the semaphore (optional)
 process: The process that accesses the semaphore (optional)
 core: The core that processes the process/runnable that accesses the semaphore (optional)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ComponentEvent">
+    <xsd:annotation>
+      <xsd:documentation>Describes the event of a component
+eventType: The type of event
+entity: The component that fires the event (optional)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:EntityEvent">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entity" type="am:Component"/>
+        </xsd:choice>
+        <xsd:attribute name="eventType" type="am:ComponentEventType" use="required"/>
+        <xsd:attribute name="entity" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ComponentEvent" type="am:ComponentEvent">
+    <xsd:annotation>
+      <xsd:documentation>Describes the event of a component
+eventType: The type of event
+entity: The component that fires the event (optional)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="HWModel">
@@ -4902,6 +4944,7 @@ The final state can be several Tasks, which can be computed using provided infor
             <xsd:documentation>Defines the data stability needs of the label</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="stabilityLevel" type="am:DataStabilityLevel"/>
         <xsd:attribute name="section" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -5083,6 +5126,7 @@ It can be used to define which mode value is written to the label.</xsd:document
             <xsd:documentation>Defines the data stability needs of the label access</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="implementation" type="am:LabelAccessImplementation"/>
         <xsd:attribute name="data" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>

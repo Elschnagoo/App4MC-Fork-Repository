@@ -57,6 +57,8 @@ import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ComplexPin;
 import org.eclipse.app4mc.amalthea.model.ComplexPort;
 import org.eclipse.app4mc.amalthea.model.Component;
+import org.eclipse.app4mc.amalthea.model.ComponentEvent;
+import org.eclipse.app4mc.amalthea.model.ComponentEventType;
 import org.eclipse.app4mc.amalthea.model.ComponentInstance;
 import org.eclipse.app4mc.amalthea.model.ComponentScope;
 import org.eclipse.app4mc.amalthea.model.ComponentsModel;
@@ -479,6 +481,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.LABEL_EVENT: return createLabelEvent();
 			case AmaltheaPackage.CHANNEL_EVENT: return createChannelEvent();
 			case AmaltheaPackage.SEMAPHORE_EVENT: return createSemaphoreEvent();
+			case AmaltheaPackage.COMPONENT_EVENT: return createComponentEvent();
 			case AmaltheaPackage.HW_MODEL: return createHWModel();
 			case AmaltheaPackage.HW_SYSTEM: return createHwSystem();
 			case AmaltheaPackage.ECU: return createECU();
@@ -707,6 +710,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createChannelEventTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.SEMAPHORE_EVENT_TYPE:
 				return createSemaphoreEventTypeFromString(eDataType, initialValue);
+			case AmaltheaPackage.COMPONENT_EVENT_TYPE:
+				return createComponentEventTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.QTYPE:
 				return createQTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.MEMORY_TYPE_ENUM:
@@ -822,6 +827,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertChannelEventTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.SEMAPHORE_EVENT_TYPE:
 				return convertSemaphoreEventTypeToString(eDataType, instanceValue);
+			case AmaltheaPackage.COMPONENT_EVENT_TYPE:
+				return convertComponentEventTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.QTYPE:
 				return convertQTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.MEMORY_TYPE_ENUM:
@@ -1841,6 +1848,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public SemaphoreEvent createSemaphoreEvent() {
 		SemaphoreEventImpl semaphoreEvent = new SemaphoreEventImpl();
 		return semaphoreEvent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ComponentEvent createComponentEvent() {
+		ComponentEventImpl componentEvent = new ComponentEventImpl();
+		return componentEvent;
 	}
 
 	/**
@@ -3990,6 +4007,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertSemaphoreEventTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ComponentEventType createComponentEventTypeFromString(EDataType eDataType, String initialValue) {
+		ComponentEventType result = ComponentEventType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertComponentEventTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

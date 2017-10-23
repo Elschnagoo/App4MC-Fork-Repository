@@ -280,6 +280,16 @@
       <xsd:enumeration value="unlock"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="ComponentEventType">
+    <xsd:annotation>
+      <xsd:documentation>The types of a component event</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_all_"/>
+      <xsd:enumeration value="start"/>
+      <xsd:enumeration value="end"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="QType">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -2525,7 +2535,7 @@ core: The core that processes the runnable (processes the process that executes 
     <xsd:annotation>
       <xsd:documentation>Describes the event of a label access
 eventType: The type of event
-entity: The accessed label that fires the event
+entity: The accessed label that fires the event (optional)
 runnable: The runnable that accesses the label (optional)
 process: The process that accesses the label (optional)</xsd:documentation>
     </xsd:annotation>
@@ -2547,7 +2557,7 @@ process: The process that accesses the label (optional)</xsd:documentation>
     <xsd:annotation>
       <xsd:documentation>Describes the event of a label access
 eventType: The type of event
-entity: The accessed label that fires the event
+entity: The accessed label that fires the event (optional)
 runnable: The runnable that accesses the label (optional)
 process: The process that accesses the label (optional)</xsd:documentation>
     </xsd:annotation>
@@ -2556,7 +2566,7 @@ process: The process that accesses the label (optional)</xsd:documentation>
     <xsd:annotation>
       <xsd:documentation>Describes the event of a channel access
 eventType: The type of event
-entity: The accessed channel that fires the event
+entity: The accessed channel that fires the event (optional)
 runnable: The runnable that accesses the label (optional)
 process: The process that accesses the label (optional)</xsd:documentation>
     </xsd:annotation>
@@ -2578,7 +2588,7 @@ process: The process that accesses the label (optional)</xsd:documentation>
     <xsd:annotation>
       <xsd:documentation>Describes the event of a channel access
 eventType: The type of event
-entity: The accessed channel that fires the event
+entity: The accessed channel that fires the event (optional)
 runnable: The runnable that accesses the label (optional)
 process: The process that accesses the label (optional)</xsd:documentation>
     </xsd:annotation>
@@ -2587,7 +2597,7 @@ process: The process that accesses the label (optional)</xsd:documentation>
     <xsd:annotation>
       <xsd:documentation>Describes the event of a semaphore access
 eventType: The type of event
-entity: The accessed semaphore that fires the event
+entity: The accessed semaphore that fires the event (optional)
 runnable: The runnable that accesses the semaphore (optional)
 process: The process that accesses the semaphore (optional)
 core: The core that processes the process/runnable that accesses the semaphore (optional)</xsd:documentation>
@@ -2612,10 +2622,33 @@ core: The core that processes the process/runnable that accesses the semaphore (
     <xsd:annotation>
       <xsd:documentation>Describes the event of a semaphore access
 eventType: The type of event
-entity: The accessed semaphore that fires the event
+entity: The accessed semaphore that fires the event (optional)
 runnable: The runnable that accesses the semaphore (optional)
 process: The process that accesses the semaphore (optional)
 core: The core that processes the process/runnable that accesses the semaphore (optional)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ComponentEvent">
+    <xsd:annotation>
+      <xsd:documentation>Describes the event of a component
+eventType: The type of event
+entity: The component that fires the event (optional)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:EntityEvent">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entity" type="am:Component"/>
+        </xsd:choice>
+        <xsd:attribute name="eventType" type="am:ComponentEventType" use="required"/>
+        <xsd:attribute name="entity" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ComponentEvent" type="am:ComponentEvent">
+    <xsd:annotation>
+      <xsd:documentation>Describes the event of a component
+eventType: The type of event
+entity: The component that fires the event (optional)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="HWModel">
