@@ -792,53 +792,58 @@ public class RuntimeUtil {
 		HashMap<Stimulus, Long> map = new HashMap<>();
 		
 		for(Stimulus stimulus : process.getStimuli()) {
-			if(stimulus instanceof PeriodicStimulus && ((filter == null) || (filter.apply(stimulus)) )) {
-				PeriodicStimulus p = ((PeriodicStimulus)stimulus);
-				map.put(p, depthCounter);
-			} else if(stimulus instanceof ArrivalCurveStimulus) {
-				ArrivalCurveStimulus p = ((ArrivalCurveStimulus)stimulus);
-				map.put(p, depthCounter);
-			} else if(stimulus instanceof CustomStimulus) {
-				CustomStimulus p = ((CustomStimulus)stimulus);
-				map.put(p, depthCounter);
-			} else if(stimulus instanceof EventStimulus) {
-				EventStimulus p = ((EventStimulus)stimulus);
-				map.put(p, depthCounter);
-			} else if(stimulus instanceof InterProcessStimulus) {
-				InterProcessStimulus ip = ((InterProcessStimulus)stimulus);
-				long ipPrescaler = 1L;
-				if(ip.getCounter() != null) {
-					ipPrescaler = ip.getCounter().getPrescaler();
-				}
-				Map<Process, Long> triggeringProcesses = getTriggeringProcesses(model, ip, null);
-				for(Process triggeringProcess : triggeringProcesses.keySet()) {
-					if(triggeringProcess.equals(process)) {
-						continue; //don't follow loops
+			
+			if((filter == null) || (filter.apply(stimulus))) {
+			
+				if(stimulus instanceof PeriodicStimulus) {
+					PeriodicStimulus p = ((PeriodicStimulus)stimulus);
+					map.put(p, depthCounter);
+				} else if(stimulus instanceof ArrivalCurveStimulus) {
+					ArrivalCurveStimulus p = ((ArrivalCurveStimulus)stimulus);
+					map.put(p, depthCounter);
+				} else if(stimulus instanceof CustomStimulus) {
+					CustomStimulus p = ((CustomStimulus)stimulus);
+					map.put(p, depthCounter);
+				} else if(stimulus instanceof EventStimulus) {
+					EventStimulus p = ((EventStimulus)stimulus);
+					map.put(p, depthCounter);
+				} else if(stimulus instanceof InterProcessStimulus) {
+					InterProcessStimulus ip = ((InterProcessStimulus)stimulus);
+					long ipPrescaler = 1L;
+					if(ip.getCounter() != null) {
+						ipPrescaler = ip.getCounter().getPrescaler();
 					}
-					long ipaPrescaler = triggeringProcesses.get(triggeringProcess);
-					Map<Stimulus, Long> plainTriggerForProcess = getPlainTriggerForProcess(model, triggeringProcess, depthCounter*ipaPrescaler*ipPrescaler, filter);
-					map.putAll(plainTriggerForProcess);
+					Map<Process, Long> triggeringProcesses = getTriggeringProcesses(model, ip, null);
+					for(Process triggeringProcess : triggeringProcesses.keySet()) {
+						if(triggeringProcess.equals(process)) {
+							continue; //don't follow loops
+						}
+						long ipaPrescaler = triggeringProcesses.get(triggeringProcess);
+						Map<Stimulus, Long> plainTriggerForProcess = getPlainTriggerForProcess(model, triggeringProcess, depthCounter*ipaPrescaler*ipPrescaler, filter);
+						map.putAll(plainTriggerForProcess);
+					}
+				
+				} else if(stimulus instanceof VariableRateStimulus) {
+					VariableRateStimulus p = ((VariableRateStimulus)stimulus);
+					map.put(p, depthCounter);
+				} else if(stimulus instanceof SingleStimulus) {
+					SingleStimulus p = ((SingleStimulus)stimulus);
+					map.put(p, depthCounter);
+				} else if(stimulus instanceof SporadicStimulus) {
+					SporadicStimulus s = ((SporadicStimulus)stimulus);
+					map.put(s, depthCounter);
+				} else if(stimulus instanceof SyntheticStimulus) {
+					SyntheticStimulus p = ((SyntheticStimulus)stimulus);
+					map.put(p, depthCounter);
 				}
-			
-			} else if(stimulus instanceof VariableRateStimulus) {
-				VariableRateStimulus p = ((VariableRateStimulus)stimulus);
-				map.put(p, depthCounter);
-			} else if(stimulus instanceof SingleStimulus) {
-				SingleStimulus p = ((SingleStimulus)stimulus);
-				map.put(p, depthCounter);
-			} else if(stimulus instanceof SporadicStimulus  && ((filter == null) || (filter.apply(stimulus)) )) {
-				SporadicStimulus s = ((SporadicStimulus)stimulus);
-				map.put(s, depthCounter);
-			} else if(stimulus instanceof SyntheticStimulus) {
-				SyntheticStimulus p = ((SyntheticStimulus)stimulus);
-				map.put(p, depthCounter);
+			} else {
+				//not in filter
 			}
-			
 		}
-		
 		return map;
 	}
 	
+		
 	public static boolean periodicStimulusFilter(Stimulus stimulus) {
 		if(stimulus instanceof PeriodicStimulus) {
 			return true;
@@ -853,11 +858,18 @@ public class RuntimeUtil {
 			return false;
 		}
 	}
+	public static boolean customStimulusFilter(Stimulus stimulus) {
+		if(stimulus instanceof CustomStimulus) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	public static Time getMean(Deviation<? extends Time> deviation) {
 		return getMean(deviation.getDistribution(), deviation.getLowerBound(), deviation.getUpperBound());
 	}
-	protected static Time getMean(Distribution<? extends Time> distribution2, Time lowerBound, Time upperBound) {
+	public static Time getMean(Distribution<? extends Time> distribution2, Time lowerBound, Time upperBound) {
 		Time mean = null;
 		Distribution<? extends Time> distribution = ((Distribution<? extends Time>)distribution2);
 		if(distribution instanceof BetaDistribution) {
