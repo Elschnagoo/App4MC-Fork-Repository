@@ -14,6 +14,7 @@ table(classic).
 | Runnable | RunnableEvent |
 | Label | LabelEvent |
 | Semaphore | SemaphoreEvent |
+| Component | ComponentEvent |
 
 
 In a running system, each entity can have different states. An event trace consists of the events that are visualizing the state-transitions of the traced entities. To define such an event in the model, each kind of event class contains an event-type-enumeration that provides the event-types for the state-transitions of its entity. The following picture shows the possible states of a process: 
@@ -22,6 +23,30 @@ In a running system, each entity can have different states. An event trace consi
 
 So for example the event-type-enumeration for a process event contains the events __activate__, __start__, __resume__, ...
 
+A description of the individual events can be found in the following table:
+
+table(classic). 
+|_. Event Class |_. Event Type |_. Description |
+|/12. ProcessEvent | activate | The process instance is activated by a stimulus. |
+| start | The process instance is allocated to the core and starts execution for the first time. |
+| resume | The preempted process instance continues execution on the same or other core. |
+| preempt | The executing process instance is stopped by the scheduler, e.g. because of a higher priority process which is activated. |
+| poll | The process instance has requested a resource by polling (active waiting) which is not available. |
+| run | The process instance resumes execution after polling (i.e. active waiting) for a resource. |
+| wait | The process has requested a non-set OS EVENT (see OSEK 2.2.3 Extended Task Model, WAIT_Event()). |
+| poll_parking | The parking process instance is allocated to the core and again polls (i.e. actively waits) for a resource. |
+| park | The active waiting process instance is preemptedby another process. |
+| release_parking | The resource which is requested by a parking process instance becomes available, but the parking process stays preempted and changes to READY state.|
+| release | The OS EVENT which was requested by a process is set (see OSEK 2.2.3 Extended Task Model, SET_Event()) and the process is ready to proceed execution. |
+| terminate | The process instance has finished execution.|
+|/4. RunnableEvent | start | The runnable instance is allocated to the core and starts execution for the first time. |
+| suspend | The executing runnable instance is stopped, because the calling process is suspended. |
+| resume | The suspended runnable instance continues execution on the same or another core. |
+| terminate | The runnable instance has finished execution. |
+|/2. Component | start | The execution of the component started, i.e. the first runnable in the list of runnables of the component instance is started. |
+| end | The execution of the component completed, i.e. all runnables in the list of runnables of the component instance were executed at least once. |
+
 If it is required to define an event like "start-event of *some* process" then it is enough to create a object of type __ProcessEvent__ and set the event-type __start__.
 
 It is also possible to restrict the definition of an event to a special entity. So it can be defined like "start-event of task T_1". Therefore it is possible to reference a process from __ProcessEvent__. In general, each event class can reference an entity of the corresponding type. In addition to that, each event class provides individual restrictions. So it is possible for __ProcessEvent__ that the event is not only restricted to a special process, it can be also restricted to a core. So that would be like "start-event of task T_1 on core C_2". Another example is the class __RunnableEvent__, it allows to restrict the event to a runnable, the process that executes the runnable and the core that executes the process. 
+
