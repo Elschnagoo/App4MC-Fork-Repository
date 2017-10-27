@@ -27,7 +27,8 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 | __dataType__ | Reference to the data type definition |
 | __constant__ | Boolean value to represent, if label is representing a constant value |
 | __bVolatile__ | Boolean value to mark a label as volatile |
-| __dataStability__ | Enumeration value to represent the data stability needs of the label. If set, it overwrites the global settings stated by the __OsDataDependency__, otherwise it inherits them (see <notextile><a href="./model_os.html#os-data-consistency">OS Data Consistency</a></notextile>). |
+| __dataStability__ | Enumeration value to represent the data stability needs of the label. If set, it overwrites the global settings stated by the __OsDataConsistency__, otherwise it inherits them (see <notextile><a href="./model_os.html#os-data-consistency">OS Data Consistency</a></notextile>). |
+| __stabilityLevel__ | Enumeration value to represent the data stability level of the label. If set, it overwrites the global settings stated by the __OsDataConsistency__, otherwise it inherits them (see <notextile><a href="./model_os.html#os-data-consistency">OS Data Stability</a></notextile>). |
 
 h3. Channels
 
@@ -145,8 +146,11 @@ h4. Calls and AUTOSAR communication
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
 | __RunnableCall__ | The activation of another __Runnable__. |
-| __ServerCall__ | An abstract description for client/server communication. It refers to a required runnable that describes the called server operation |
 | __SenderReceiverCommunication__ | An abstract description for sender-receiver-communication (it can be read or write). |
+| __ServerCall__ | An abstract description for client/server communication. It refers to a required runnable that describes the called server operation |
+| __SynchronousServerCall__ | A synchronous server call with defined waiting behaviour. |
+| __AsynchronousServerCall__ | An asynchronous server call with (optional) specification of result runnable. |
+| __GetResultsServerCall__ | Get the result of a previous asynchronous server call (with defined blocking behaviour). |
 
 
 h4. Label Access
@@ -158,7 +162,8 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 | __access__ | The type of access is represented using the values of __LabelAccessEnum__. |
 | __data__ | Describes the access to an existent __Label__ (set as reference). |
 | __dataStability__ | Describes the data stability needs. If set, it overwrites the label settings, otherwise it inherits them (see <notextile><a href="./model_os.html#os-data-consistency">OS Data Consistency</a></notextile>). |
-| __statistic__ | Defines the frequency of the label access.  |
+| __implementation__ | Describes how a label access is implemented:	<ul><li>*explicit*: also known as "direct" </li><li>*implicit*: also known as "optimized"</li><li>*timed*</li></ul> |
+| __statistic__ | Defines the frequency of the label access. |
 | __transmissionPolicy__ | The following attributes reflect the computing demand (time) depending on data: <ul><li> *chunkSize*: Size of a part of an element, maximum is the element size. </li><li> *chunkProcessingInstructions*: Number of instructions that will be executed to transmit one chunk. </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *transmitRatio*: Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
 
 

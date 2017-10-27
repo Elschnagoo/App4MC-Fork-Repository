@@ -144,7 +144,13 @@ To distinguish the different use cases and to consequently also indicate the wor
 ## customProtection: data stability and coherency IS ensured according configuration but not via model elements.
 ## handeldByModelElements: data stability and coherency IS ensured via model elements.
 
-The __DataStability__ class defines for which sequence of runnables data has to be kept stable. This can either be stability within a process meaning over all its runnables, within each runnable or within each schedule section. Furthermore, it can be stated whether all data is considered for stability or just those accessed multiple times.
+The __DataStability__ class defines for which sequence of runnables data has to be kept stable. Furthermore, it can be stated whether all data is considered for stability or just those accessed multiple times.
+
+DataStabilityLevel:
+* __period__			- between consecutive activations
+* __process__			- within a Task or ISR
+* __scheduleSection__	- between Schedule points (explizit schedule points, begin and end of process)
+* __runnable__			- within a Runnable
 
 The __NonAtomicDataCoherency__ class defines for which sequence of runnables data has to be kept coherent. Like for data stability it can be stated whether all data is considered for coherency or just those accessed multiple times.
 
