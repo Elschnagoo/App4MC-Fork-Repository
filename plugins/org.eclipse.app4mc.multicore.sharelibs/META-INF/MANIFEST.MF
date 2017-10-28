@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Sharelibs Plugin
+Bundle-Name: APP4MC Multicore Sharelibs
 Bundle-SymbolicName: org.eclipse.app4mc.multicore.sharelibs;singleton:=true
 Bundle-Version: 0.8.2.qualifier
 Bundle-Activator: org.eclipse.app4mc.multicore.sharelibs.ShareLibsPlugin
@@ -21,3 +21,4 @@ Export-Package: org.eclipse.app4mc.multicore.sharelibs,
  org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger,
  org.eclipse.app4mc.multicore.sharelibs.modelchecker.specs,
  org.eclipse.app4mc.multicore.sharelibs.utframework
+Bundle-Vendor: Eclipse.org

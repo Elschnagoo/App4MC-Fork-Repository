@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _0NvUQKP5EeWDWL6qw48qbg
-Runtime-Version: 2.1.0.201605312320
-Save-Time: 7/3/17 5:16 PM
+Runtime-Version: 2.0.1.201508250612
+Save-Time: 10/28/17 5:11 PM
 Testcase-Type: ecl
 Verifications: _DBrfIKP5EeWDWL6qw48qbg
 
@@ -21,7 +21,7 @@ get-view "Model Explorer" | get-tree | select "org.eclipse.app4mc.amalthea.examp
 with [get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.amxmi Contents" | get-tree] {
     get-item "AMALTHEA.*/Software.*" | get-property caption | equals "Software" | verify-true
     get-item "AMALTHEA.*/Hardware.*" | get-property caption | equals "Hardware" | verify-true
-    get-item "AMALTHEA.*/Operating System.*" | get-property caption | equals "Operating System" | verify-true
+    get-item "AMALTHEA.*/Operating Systems.*" | get-property caption | equals "Operating Systems" | verify-true
     get-item "AMALTHEA.*/Stimuli.*" | get-property caption | equals "Stimuli" | verify-true
     get-item "AMALTHEA.*/Constraints.*" | get-property caption | equals "Constraints" | verify-true
     get-item "AMALTHEA.*/Events.*" | get-property caption | equals "Events" | verify-true
@@ -32,7 +32,7 @@ get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.amxmi Co
 with [get-editor "modeling_example_1.amxmi" | get-section "modeling_example_1.amxmi Contents" | get-tree] {
     get-item "AMALTHEA.*/Software.*" | get-property caption | equals "Software [SWModel]" | verify-true
     get-item "AMALTHEA.*/Hardware.*" | get-property caption | equals "Hardware [HWModel]" | verify-true
-    get-item "AMALTHEA.*/Operating System.*" | get-property caption | equals "Operating System.*" | verify-true
+    get-item "AMALTHEA.*/Operating Systems.*" | get-property caption | equals "Operating Systems [OSModel]" | verify-true
     get-item "AMALTHEA.*/Stimuli.*" | get-property caption | equals "Stimuli [StimuliModel]" | verify-true
     get-item "AMALTHEA.*/Constraints.*" | get-property caption | equals "Constraints [ConstraintsModel]" | verify-true
     get-item "AMALTHEA.*/Events.*" | get-property caption | equals "Events [EventModel]" | verify-true
