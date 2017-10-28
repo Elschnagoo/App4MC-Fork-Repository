@@ -147,6 +147,9 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
 import org.eclipse.app4mc.amalthea.model.GetResultServerCall
 import org.eclipse.app4mc.amalthea.model.BlockingType
+import org.eclipse.app4mc.amalthea.model.TaskMeasurement
+import org.eclipse.app4mc.amalthea.model.RunnableMeasurement
+import org.eclipse.app4mc.amalthea.model.EventChainMeasurement
 
 class CustomItemProviderService {
 
@@ -565,19 +568,6 @@ class CustomItemProviderService {
 
 
 	/*****************************************************************************
-	 * 						ComponentItemProvider
-	 *****************************************************************************/
-	def static String getComponentItemProviderText(Object object, String defaultText) {
-		if (object instanceof Component) {
-			val name = object?.name
-			val s1 = ppName(name, "<component>")
-			return s1
-		} else {
-			return defaultText
-		}
-	}
-
-	/*****************************************************************************
 	 * 						ComponentInstanceItemProvider
 	 *****************************************************************************/
 	def static String getComponentInstanceItemProviderText(Object object, String defaultText) {
@@ -602,19 +592,6 @@ class CustomItemProviderService {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
 		}
 		return list
-	}
-
-	/*****************************************************************************
-	 * 						CompositeItemProvider
-	 *****************************************************************************/
-	def static String getCompositeItemProviderText(Object object, String defaultText) {
-		if (object instanceof Composite) {
-			val name = object?.name
-			val s1 = ppName(name, "<composite>")
-			return s1
-		} else {
-			return defaultText
-		}
 	}
 
 	/*****************************************************************************
@@ -678,20 +655,6 @@ class CustomItemProviderService {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 		}
 		return list
-	}
-
-
-	/*****************************************************************************
-	 * 						SystemItemProvider
-	 *****************************************************************************/
-	def static String getSystemItemProviderText(Object object, String defaultText) {
-		if (object instanceof System) {
-			val name = object?.name
-			val s1 = ppName(name, "<system>")
-			return s1
-		} else {
-			return defaultText
-		}
 	}
 
 
@@ -2719,5 +2682,78 @@ class CustomItemProviderService {
 		}
 	}
 
+
+///// _________________________ Measurement _________________________
+
+
+
+	/*****************************************************************************
+	 * 						TaskMeasurementItemProvider
+	 *****************************************************************************/
+	def static String getTaskMeasurementItemProviderText(Object object, String defaultText) {
+		if (object instanceof TaskMeasurement) {
+			val taskName = object?.task?.name
+			val s1 = ppName(taskName, "<task>")
+			return "Measurement -- Task " + s1;
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getTaskMeasurementItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(TaskMeasurement)) {
+			case AmaltheaPackage::TASK_MEASUREMENT__TASK:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+		}
+		return list
+	}
+
+	/*****************************************************************************
+	 * 						RunnableMeasurementItemProvider
+	 *****************************************************************************/
+	def static String getRunnableMeasurementItemProviderText(Object object, String defaultText) {
+		if (object instanceof RunnableMeasurement) {
+			val runName = object?.runnable?.name
+			val s1 = ppName(runName, "<runnable>")
+			return "Measurement -- Runnable " + s1;
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getRunnableMeasurementItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(RunnableMeasurement)) {
+			case AmaltheaPackage::RUNNABLE_MEASUREMENT__RUNNABLE:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+		}
+		return list
+	}
+
+	/*****************************************************************************
+	 * 						EventChainMeasurementItemProvider
+	 *****************************************************************************/
+	def static String getEventChainMeasurementItemProviderText(Object object, String defaultText) {
+		if (object instanceof EventChainMeasurement) {
+			val ecName = object?.eventChain?.name
+			val s1 = ppName(ecName, "<event chain>")
+			return "Measurement -- Event Chain " + s1;
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getEventChainMeasurementItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(EventChainMeasurement)) {
+			case AmaltheaPackage::EVENT_CHAIN_MEASUREMENT__EVENT_CHAIN:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+		}
+		return list
+	}
 
 }

@@ -37,7 +37,6 @@ import org.eclipse.app4mc.amalthea.model.ComplexPort;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ComponentInstance;
 import org.eclipse.app4mc.amalthea.model.ComponentScope;
-import org.eclipse.app4mc.amalthea.model.Composite;
 import org.eclipse.app4mc.amalthea.model.Condition;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.Core;
@@ -63,6 +62,7 @@ import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainContainer;
+import org.eclipse.app4mc.amalthea.model.EventChainMeasurement;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
 import org.eclipse.app4mc.amalthea.model.FInterfacePort;
@@ -137,6 +137,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
@@ -159,6 +160,7 @@ import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
+import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.Time;
@@ -847,23 +849,6 @@ public class CustomItemProviderService {
   }
   
   /**
-   * ComponentItemProvider
-   */
-  public static String getComponentItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof Component)) {
-      String _name = null;
-      if (((Component)object)!=null) {
-        _name=((Component)object).getName();
-      }
-      final String name = _name;
-      final String s1 = CustomItemProviderService.ppName(name, "<component>");
-      return s1;
-    } else {
-      return defaultText;
-    }
-  }
-  
-  /**
    * ComponentInstanceItemProvider
    */
   public static String getComponentInstanceItemProviderText(final Object object, final String defaultText) {
@@ -916,23 +901,6 @@ public class CustomItemProviderService {
       }
     }
     return list;
-  }
-  
-  /**
-   * CompositeItemProvider
-   */
-  public static String getCompositeItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof Composite)) {
-      String _name = null;
-      if (((Composite)object)!=null) {
-        _name=((Composite)object).getName();
-      }
-      final String name = _name;
-      final String s1 = CustomItemProviderService.ppName(name, "<composite>");
-      return s1;
-    } else {
-      return defaultText;
-    }
   }
   
   /**
@@ -1064,23 +1032,6 @@ public class CustomItemProviderService {
       list.add(_viewerNotification);
     }
     return list;
-  }
-  
-  /**
-   * SystemItemProvider
-   */
-  public static String getSystemItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof org.eclipse.app4mc.amalthea.model.System)) {
-      String _name = null;
-      if (((org.eclipse.app4mc.amalthea.model.System)object)!=null) {
-        _name=((org.eclipse.app4mc.amalthea.model.System)object).getName();
-      }
-      final String name = _name;
-      final String s1 = CustomItemProviderService.ppName(name, "<system>");
-      return s1;
-    } else {
-      return defaultText;
-    }
   }
   
   /**
@@ -5007,5 +4958,107 @@ public class CustomItemProviderService {
     } else {
       return defaultText;
     }
+  }
+  
+  /**
+   * TaskMeasurementItemProvider
+   */
+  public static String getTaskMeasurementItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof TaskMeasurement)) {
+      Task _task = null;
+      if (((TaskMeasurement)object)!=null) {
+        _task=((TaskMeasurement)object).getTask();
+      }
+      String _name = null;
+      if (_task!=null) {
+        _name=_task.getName();
+      }
+      final String taskName = _name;
+      final String s1 = CustomItemProviderService.ppName(taskName, "<task>");
+      return ("Measurement -- Task " + s1);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getTaskMeasurementItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(TaskMeasurement.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.TASK_MEASUREMENT__TASK)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+    }
+    return list;
+  }
+  
+  /**
+   * RunnableMeasurementItemProvider
+   */
+  public static String getRunnableMeasurementItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof RunnableMeasurement)) {
+      org.eclipse.app4mc.amalthea.model.Runnable _runnable = null;
+      if (((RunnableMeasurement)object)!=null) {
+        _runnable=((RunnableMeasurement)object).getRunnable();
+      }
+      String _name = null;
+      if (_runnable!=null) {
+        _name=_runnable.getName();
+      }
+      final String runName = _name;
+      final String s1 = CustomItemProviderService.ppName(runName, "<runnable>");
+      return ("Measurement -- Runnable " + s1);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getRunnableMeasurementItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(RunnableMeasurement.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_MEASUREMENT__RUNNABLE)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+    }
+    return list;
+  }
+  
+  /**
+   * EventChainMeasurementItemProvider
+   */
+  public static String getEventChainMeasurementItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof EventChainMeasurement)) {
+      EventChain _eventChain = null;
+      if (((EventChainMeasurement)object)!=null) {
+        _eventChain=((EventChainMeasurement)object).getEventChain();
+      }
+      String _name = null;
+      if (_eventChain!=null) {
+        _name=_eventChain.getName();
+      }
+      final String ecName = _name;
+      final String s1 = CustomItemProviderService.ppName(ecName, "<event chain>");
+      return ("Measurement -- Event Chain " + s1);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getEventChainMeasurementItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(EventChainMeasurement.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.EVENT_CHAIN_MEASUREMENT__EVENT_CHAIN)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+    }
+    return list;
   }
 }
