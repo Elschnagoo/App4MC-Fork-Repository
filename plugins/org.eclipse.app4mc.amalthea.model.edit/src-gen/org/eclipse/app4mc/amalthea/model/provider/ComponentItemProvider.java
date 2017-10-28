@@ -1,13 +1,13 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
  *  http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  *     Generated using Eclipse EMF
- *
+ * 
  * *******************************************************************************
  */
 package org.eclipse.app4mc.amalthea.model.provider;
@@ -19,23 +19,27 @@ import java.util.List;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Component;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Component} object. <!--
- * begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Component} object.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
  * @generated
  */
 public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ComponentItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +48,8 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 
 	/**
 	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -64,7 +69,8 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 
 	/**
 	 * This adds a property descriptor for the Tags feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addTagsPropertyDescriptor(Object object) {
@@ -85,7 +91,8 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 
 	/**
 	 * This adds a property descriptor for the Tasks feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addTasksPropertyDescriptor(Object object) {
@@ -106,7 +113,8 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 
 	/**
 	 * This adds a property descriptor for the Runnables feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addRunnablesPropertyDescriptor(Object object) {
@@ -127,7 +135,8 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 
 	/**
 	 * This adds a property descriptor for the Labels feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addLabelsPropertyDescriptor(Object object) {
@@ -148,7 +157,8 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 
 	/**
 	 * This adds a property descriptor for the Semaphores feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addSemaphoresPropertyDescriptor(Object object) {
@@ -169,7 +179,8 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 
 	/**
 	 * This adds a property descriptor for the Os Events feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addOsEventsPropertyDescriptor(Object object) {
@@ -192,8 +203,8 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -206,7 +217,8 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -219,7 +231,8 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 
 	/**
 	 * This returns Component.gif.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -228,7 +241,8 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -238,30 +252,24 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 
 	/**
 	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTextGen(Object object) {
+	@Override
+	public String getText(Object object) {
 		String label = ((Component)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Component_type") :
 			getString("_UI_Component_type") + " " + label;
 	}
+	
 
 	/**
-	 * @generated NOT
-	 */
-	@Override
-	public String getText(final Object object) {
-		// delegate to custom item provider
-		return CustomItemProviderService.getComponentItemProviderText(object, getTextGen(object));
-	}
-
-	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
-	 * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -279,7 +287,8 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
