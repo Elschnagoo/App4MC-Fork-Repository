@@ -4022,9 +4022,9 @@ public class CustomItemProviderService {
   }
   
   /**
-   * InterProcessActivationItemProvider
+   * InterProcessTriggerItemProvider
    */
-  public static String getInterProcessActivationItemProviderText(final Object object, final String defaultText) {
+  public static String getInterProcessTriggerItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof InterProcessTrigger)) {
       InterProcessStimulus _stimulus = null;
       if (((InterProcessTrigger)object)!=null) {
@@ -4042,7 +4042,7 @@ public class CustomItemProviderService {
     }
   }
   
-  public static List<ViewerNotification> getInterProcessActivationItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getInterProcessTriggerItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(InterProcessTrigger.class);
     boolean _matched = false;

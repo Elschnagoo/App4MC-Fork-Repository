@@ -16,6 +16,7 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject
+import org.eclipse.app4mc.amalthea.model.BlockingType
 import org.eclipse.app4mc.amalthea.model.BooleanObject
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit
@@ -28,7 +29,6 @@ import org.eclipse.app4mc.amalthea.model.CoherencyDirection
 import org.eclipse.app4mc.amalthea.model.Component
 import org.eclipse.app4mc.amalthea.model.ComponentInstance
 import org.eclipse.app4mc.amalthea.model.ComponentScope
-import org.eclipse.app4mc.amalthea.model.Composite
 import org.eclipse.app4mc.amalthea.model.Condition
 import org.eclipse.app4mc.amalthea.model.Connector
 import org.eclipse.app4mc.amalthea.model.CoreClassification
@@ -46,6 +46,7 @@ import org.eclipse.app4mc.amalthea.model.DataTypeDefinition
 import org.eclipse.app4mc.amalthea.model.Deviation
 import org.eclipse.app4mc.amalthea.model.DoubleObject
 import org.eclipse.app4mc.amalthea.model.EventChainContainer
+import org.eclipse.app4mc.amalthea.model.EventChainMeasurement
 import org.eclipse.app4mc.amalthea.model.EventChainReference
 import org.eclipse.app4mc.amalthea.model.EventConfig
 import org.eclipse.app4mc.amalthea.model.FInterfacePort
@@ -54,6 +55,7 @@ import org.eclipse.app4mc.amalthea.model.Frequency
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit
+import org.eclipse.app4mc.amalthea.model.GetResultServerCall
 import org.eclipse.app4mc.amalthea.model.Group
 import org.eclipse.app4mc.amalthea.model.GroupingType
 import org.eclipse.app4mc.amalthea.model.HwAccessPath
@@ -109,6 +111,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint
 import org.eclipse.app4mc.amalthea.model.RunnableCall
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions
 import org.eclipse.app4mc.amalthea.model.RunnableItem
+import org.eclipse.app4mc.amalthea.model.RunnableMeasurement
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement
@@ -124,9 +127,9 @@ import org.eclipse.app4mc.amalthea.model.SingleValueStatistic
 import org.eclipse.app4mc.amalthea.model.StringObject
 import org.eclipse.app4mc.amalthea.model.SubEventChain
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall
-import org.eclipse.app4mc.amalthea.model.System
 import org.eclipse.app4mc.amalthea.model.TagGroup
 import org.eclipse.app4mc.amalthea.model.TaskAllocation
+import org.eclipse.app4mc.amalthea.model.TaskMeasurement
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall
 import org.eclipse.app4mc.amalthea.model.Time
 import org.eclipse.app4mc.amalthea.model.TimeMetric
@@ -145,11 +148,6 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
-import org.eclipse.app4mc.amalthea.model.GetResultServerCall
-import org.eclipse.app4mc.amalthea.model.BlockingType
-import org.eclipse.app4mc.amalthea.model.TaskMeasurement
-import org.eclipse.app4mc.amalthea.model.RunnableMeasurement
-import org.eclipse.app4mc.amalthea.model.EventChainMeasurement
 
 class CustomItemProviderService {
 
@@ -2134,9 +2132,9 @@ class CustomItemProviderService {
 
 
 	/*****************************************************************************
-	 * 						InterProcessActivationItemProvider
+	 * 						InterProcessTriggerItemProvider
 	 *****************************************************************************/
-	def static String getInterProcessActivationItemProviderText(Object object, String defaultText) {
+	def static String getInterProcessTriggerItemProviderText(Object object, String defaultText) {
 		if (object instanceof InterProcessTrigger) {
 			val stimulusName = object?.getStimulus?.name
 			val s1 = ppName(stimulusName, "<stimulus>")
@@ -2146,7 +2144,7 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getInterProcessActivationItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getInterProcessTriggerItemProviderNotifications(Notification notification) {
 		val list = newArrayList
 		switch notification.getFeatureID(typeof(InterProcessTrigger)) {
 			case AmaltheaPackage::INTER_PROCESS_TRIGGER__STIMULUS:

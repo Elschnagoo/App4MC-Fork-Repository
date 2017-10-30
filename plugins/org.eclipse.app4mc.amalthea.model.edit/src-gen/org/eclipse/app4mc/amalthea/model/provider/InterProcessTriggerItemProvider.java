@@ -109,7 +109,7 @@ public class InterProcessTriggerItemProvider extends CallSequenceItemItemProvide
 	@Override
 	public String getText(final Object object) {
 		// delegate to custom item provider
-		return CustomItemProviderService.getInterProcessActivationItemProviderText(object, getTextGen(object));
+		return CustomItemProviderService.getInterProcessTriggerItemProviderText(object, getTextGen(object));
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class InterProcessTriggerItemProvider extends CallSequenceItemItemProvide
 
 		// delegate to custom item provider and execute locally
 		final List<ViewerNotification> notifications = CustomItemProviderService
-				.getInterProcessActivationItemProviderNotifications(notification);
+				.getInterProcessTriggerItemProviderNotifications(notification);
 		for (final ViewerNotification vn : notifications) {
 			fireNotifyChanged(vn);
 		}
