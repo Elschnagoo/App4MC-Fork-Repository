@@ -4,7 +4,7 @@ h1. Release Notes
 h2. Eclipse APP4MC 0.8.2 (Oct 2017)
 
 General
-* Model changes (extension and harmonization)
+* Model changes (extensions)
 * New graphical editors (based on Sirius)
 
 Model handling
@@ -12,10 +12,10 @@ Model handling
 * New model utilities
 
 Model changes
-* New measurement model
 * New runnable item to get the result of an asynchronous request
+* New possibility to specify the label access implementation
+* New measurement model
 * New component event
-* Possibility to specify the label access implementation
 
 _For details see "Release 0.8.2 issues":https://projects.eclipse.org/projects/technology.app4mc/releases/0.8.2/bugs_
 

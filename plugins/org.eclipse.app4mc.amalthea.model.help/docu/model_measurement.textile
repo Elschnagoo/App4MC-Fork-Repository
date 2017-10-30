@@ -1,0 +1,11 @@
+
+h2. Measurement Model
+
+
+The measurement model provides the possibility to store runtime measurements. The main purpose is to exchange measured times, either as a series of single values or as derived statistical data.
+
+Measurements refer to given elements of other model parts and can easily be exchanged (added, removed, updated).
+
+Additional info like "creator", "date" or "hardware" should be entered as custom attributes of __MeasurementModel__.
+
+!../pictures/model_measurement.png!
