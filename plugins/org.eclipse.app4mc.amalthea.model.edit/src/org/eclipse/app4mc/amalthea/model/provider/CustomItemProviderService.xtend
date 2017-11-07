@@ -2186,7 +2186,8 @@ class CustomItemProviderService {
 
 		switch notification.getFeatureID(typeof(ModeLabel)) {
 			case AmaltheaPackage::MODE_LABEL__NAME,
-			case AmaltheaPackage::MODE_LABEL__MODE:
+			case AmaltheaPackage::MODE_LABEL__MODE,
+			case AmaltheaPackage::MODE_LABEL__INITIAL_VALUE:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 		}
 		return list
