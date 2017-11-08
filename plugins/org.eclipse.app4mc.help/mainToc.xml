@@ -39,6 +39,7 @@
       <anchor id="app4mc.docu.dev.workflow"/>
       <anchor id="app4mc.docu.dev.converters"/>
       <anchor id="app4mc.docu.dev.multicore"/>
+      <anchor id="app4mc.docu.dev.utilities"/>
       <anchor id="app4mc.docu.dev.misc"/>
    </topic>
    <link toc="toc/release_notes-toc.xml"/>

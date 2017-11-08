@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Model Utils Root" link_to="../org.eclipse.app4mc.help/mainToc.xml#app4mc.docu.dev.utilities">
+   <topic label="Model Utilities">
+      <link toc="toc/dev_model_util-toc.xml"/>
+      <link toc="toc/dev_model_util_base-toc.xml"/>
+      <link toc="toc/dev_model_util_common-toc.xml"/>
+      <link toc="toc/dev_model_util_software-toc.xml"/>
+      <link toc="toc/dev_model_util_runtime-toc.xml"/>
+      <link toc="toc/dev_model_util_deployment-toc.xml"/>
+      <link toc="toc/dev_model_util_hardware-toc.xml"/>
+   </topic>
+  
+</toc>

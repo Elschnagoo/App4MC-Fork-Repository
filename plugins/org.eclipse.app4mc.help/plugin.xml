@@ -25,10 +25,7 @@
       <toc	file="toc/dev_overview-toc.xml"			primary="false"> </toc>
       <toc	file="toc/dev_atdb-toc.xml"				primary="false"> </toc>
       <toc	file="toc/roadmap-toc.xml"				primary="false"> </toc>
-      <toc
-            file="toc/release_notes-toc.xml"
-            primary="false">
-      </toc>
+      <toc	file="toc/release_notes-toc.xml"		primary="false"> </toc>
 
    </extension>
 
