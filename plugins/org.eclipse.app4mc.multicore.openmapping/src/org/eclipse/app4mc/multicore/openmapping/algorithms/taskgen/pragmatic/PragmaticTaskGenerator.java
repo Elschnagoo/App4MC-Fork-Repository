@@ -178,7 +178,7 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 			UniversalHandler.getInstance().logCon("Activation elements successfully converted.");
 		}
 
-		UniversalHandler.getInstance().log("Runnable Dependency Graph has been successfully created.", null);
+		UniversalHandler.getInstance().log("Runnable Dependency Graph has been successfully created.");
 
 		// Now we can start with the actual Task generation
 		int iTotalRunnables = 0;

@@ -57,6 +57,9 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 
@@ -113,25 +116,25 @@ public class UniversalHandler {
 	UniversalHandler() {
 		try {
 			AmaltheaPackage.eINSTANCE.eClass();
-		}
-		catch (final Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 		}
 
 		final String viewId = "org.eclipse.app4mc.multicore.sharelibs.modelchecker.views.ModelCheckerView";
 
-
 		try {
-			// For testing env we don't need model checker view
-			if (!TestUtil.isTesting()) {
-				this.modelCheckerView = (LogView)
-
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(viewId);
-
+			// For testing env / workflow we don't need model checker view
+			if (!TestUtil.isTesting() && PlatformUI.isWorkbenchRunning()) {
+				final IWorkbench workbench = PlatformUI.getWorkbench();
+				final IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+				if (window == null) {
+					return;
+				}
+				final IWorkbenchPage page = window.getActivePage();
+				this.modelCheckerView = (LogView) page.findView(viewId);
 				this.modelCheckerView.setFocus();
 			}
-		}
-		catch (final Exception e) {
+		} catch (final Exception e) {
 			System.out.println("Warning! Not possible to show model checker view");
 			e.printStackTrace();
 		}
@@ -145,13 +148,11 @@ public class UniversalHandler {
 		try (final ByteArrayInputStream stream = new ByteArrayInputStream(string.toString().getBytes("UTF-8"))) {
 			if (outFile.exists()) {
 				outFile.setContents(stream, true, true, null);
-			}
-			else {
+			} else {
 				outFile.create(stream, true, null);
 			}
 			stream.close();
-		}
-		catch (CoreException | IOException e) {
+		} catch (CoreException | IOException e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -176,14 +177,12 @@ public class UniversalHandler {
 			res.load(null);
 			if (copyModel) {
 				content = copier.copyAll(res.getContents());
-			}
-			else {
+			} else {
 				content = res.getContents();
 			}
 
 			setModel(content);
-		}
-		catch (final WrappedException | IOException e) {
+		} catch (final WrappedException | IOException e) {
 			e.printStackTrace();
 		}
 		if (copyModel) {
@@ -218,8 +217,7 @@ public class UniversalHandler {
 		try {
 			resource.getContents().add(model);
 			resource.save(null);
-		}
-		catch (final IOException e) {
+		} catch (final IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -239,35 +237,25 @@ public class UniversalHandler {
 		for (final EObject model : models) {
 			if (model instanceof CommonElements) {
 				containerModel.setCommonElements((CommonElements) model);
-			}
-			else if (model instanceof SWModel) {
+			} else if (model instanceof SWModel) {
 				containerModel.setSwModel((SWModel) model);
-			}
-			else if (model instanceof HWModel) {
+			} else if (model instanceof HWModel) {
 				containerModel.setHwModel((HWModel) model);
-			}
-			else if (model instanceof ConstraintsModel) {
+			} else if (model instanceof ConstraintsModel) {
 				containerModel.setConstraintsModel((ConstraintsModel) model);
-			}
-			else if (model instanceof MappingModel) {
+			} else if (model instanceof MappingModel) {
 				containerModel.setMappingModel((MappingModel) model);
-			}
-			else if (model instanceof StimuliModel) {
+			} else if (model instanceof StimuliModel) {
 				containerModel.setStimuliModel((StimuliModel) model);
-			}
-			else if (model instanceof OSModel) {
+			} else if (model instanceof OSModel) {
 				containerModel.setOsModel((OSModel) model);
-			}
-			else if (model instanceof PropertyConstraintsModel) {
+			} else if (model instanceof PropertyConstraintsModel) {
 				containerModel.setPropertyConstraintsModel((PropertyConstraintsModel) model);
-			}
-			else if (model instanceof EventModel) {
+			} else if (model instanceof EventModel) {
 				containerModel.setEventModel((EventModel) model);
-			}
-			else if (model instanceof ComponentsModel) {
+			} else if (model instanceof ComponentsModel) {
 				containerModel.setComponentsModel((ComponentsModel) model);
-			}
-			else if (model instanceof ConfigModel) {
+			} else if (model instanceof ConfigModel) {
 				containerModel.setConfigModel((ConfigModel) model);
 			}
 		}
@@ -356,21 +344,20 @@ public class UniversalHandler {
 				this.aLog = Logger.getLogger(this.pluginId);
 			}
 			switch (severity) {
-				case IStatus.OK:
-				case IStatus.INFO:
-				case IStatus.WARNING:
-					this.aLog.info(message);
-					break;
-				case IStatus.ERROR:
-				case IStatus.CANCEL:
-					this.aLog.error(message);
-					break;
+			case IStatus.OK:
+			case IStatus.INFO:
+			case IStatus.WARNING:
+				this.aLog.info(message);
+				break;
+			case IStatus.ERROR:
+			case IStatus.CANCEL:
+				this.aLog.error(message);
+				break;
 			}
 			if (null != e) {
 				this.aLog.error("Exception: " + e);
 			}
-		}
-		else {
+		} else {
 			getLog().log(new Status(severity, getPluginId(), IStatus.OK, message, e));
 		}
 	}
