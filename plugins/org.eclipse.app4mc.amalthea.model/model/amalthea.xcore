@@ -609,13 +609,12 @@ class SingleValueStatistic extends NumericStatistic
 /*
  * Modes
  */
-class Mode extends ReferableBaseObject 
-{
+class Mode extends ReferableBaseObject {
 	contains ModeLiteral [] literals opposite containingMode
 }
 
-class ModeLiteral extends ReferableBaseObject 
-{
+class ModeLiteral extends ReferableBaseObject {
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	container readonly Mode containingMode opposite literals
 
 	op String computeUniqueName() {
@@ -660,7 +659,7 @@ interface ISystem {
 
 
 abstract class Port extends ReferableBaseObject, ITaggable {
-	
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")	
 	container readonly Component containingComponent opposite ports
 	
 	op String computeUniqueName() {
@@ -1699,8 +1698,8 @@ class NetworkType extends HardwareTypeDescription
 }
 
 // Element for Autosar PinGroup entities
-class HwPort extends ReferableBaseObject
-{
+class HwPort extends ReferableBaseObject {
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	container readonly ComplexNode containingNode opposite ports
 	
 	contains Pin pins

@@ -43,6 +43,7 @@ public interface ModeLiteral extends ReferableBaseObject {
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeLiteral_ContainingMode()
 	 * @see org.eclipse.app4mc.amalthea.model.Mode#getLiterals
 	 * @model opposite="literals" transient="false" changeable="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
 	Mode getContainingMode();

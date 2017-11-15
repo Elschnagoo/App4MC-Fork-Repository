@@ -43,6 +43,7 @@ public interface Port extends ReferableBaseObject, ITaggable {
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPort_ContainingComponent()
 	 * @see org.eclipse.app4mc.amalthea.model.Component#getPorts
 	 * @model opposite="ports" transient="false" changeable="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
 	Component getContainingComponent();

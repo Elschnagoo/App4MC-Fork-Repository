@@ -44,6 +44,7 @@ public interface HwPort extends ReferableBaseObject {
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwPort_ContainingNode()
 	 * @see org.eclipse.app4mc.amalthea.model.ComplexNode#getPorts
 	 * @model opposite="ports" transient="false" changeable="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
 	ComplexNode getContainingNode();

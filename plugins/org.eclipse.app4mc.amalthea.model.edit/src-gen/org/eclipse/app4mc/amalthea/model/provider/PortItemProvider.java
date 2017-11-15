@@ -99,8 +99,10 @@ public class PortItemProvider extends ReferableBaseObjectItemProvider {
 				 false,
 				 false,
 				 null,
-				 null,
-				 null));
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**
