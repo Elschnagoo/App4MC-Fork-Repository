@@ -17,16 +17,19 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 import org.eclipse.app4mc.amalthea.model.Tag;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
@@ -39,6 +42,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PortImpl#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PortImpl#getContainingComponent <em>Containing Component</em>}</li>
  * </ul>
  *
  * @generated
@@ -90,15 +94,77 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Component getContainingComponent() {
+		if (eContainerFeatureID() != AmaltheaPackage.PORT__CONTAINING_COMPONENT) return null;
+		return (Component)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Component basicGetContainingComponent() {
+		if (eContainerFeatureID() != AmaltheaPackage.PORT__CONTAINING_COMPONENT) return null;
+		return (Component)eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String computeUniqueName() {
-		EObject _eContainer = this.eContainer();
-		Object _eGet = null;
-		if (_eContainer!=null) {
-			_eGet=_eContainer.eGet(this.eClass().getEStructuralFeature("name"));
+		Component _containingComponent = this.getContainingComponent();
+		String _name = null;
+		if (_containingComponent!=null) {
+			_name=_containingComponent.getName();
 		}
-		final String containerName = this.encode(((String) _eGet));
-		String _computeUniqueName = super.computeUniqueName();
-		return ((containerName + "/") + _computeUniqueName);
+		return this.basicComputeUniqueNameWithPrefix(_name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.PORT__CONTAINING_COMPONENT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, AmaltheaPackage.PORT__CONTAINING_COMPONENT, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.PORT__CONTAINING_COMPONENT:
+				return eBasicSetContainer(null, AmaltheaPackage.PORT__CONTAINING_COMPONENT, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case AmaltheaPackage.PORT__CONTAINING_COMPONENT:
+				return eInternalContainer().eInverseRemove(this, AmaltheaPackage.COMPONENT__PORTS, Component.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -111,6 +177,9 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 		switch (featureID) {
 			case AmaltheaPackage.PORT__TAGS:
 				return getTags();
+			case AmaltheaPackage.PORT__CONTAINING_COMPONENT:
+				if (resolve) return getContainingComponent();
+				return basicGetContainingComponent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,6 +226,8 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 		switch (featureID) {
 			case AmaltheaPackage.PORT__TAGS:
 				return tags != null && !tags.isEmpty();
+			case AmaltheaPackage.PORT__CONTAINING_COMPONENT:
+				return basicGetContainingComponent() != null;
 		}
 		return super.eIsSet(featureID);
 	}

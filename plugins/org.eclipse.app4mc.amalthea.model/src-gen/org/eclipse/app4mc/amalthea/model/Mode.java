@@ -38,6 +38,7 @@ public interface Mode extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Literals</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ModeLiteral}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.ModeLiteral#getContainingMode <em>Containing Mode</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Literals</em>' containment reference list isn't clear,
@@ -46,7 +47,8 @@ public interface Mode extends ReferableBaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Literals</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMode_Literals()
-	 * @model containment="true"
+	 * @see org.eclipse.app4mc.amalthea.model.ModeLiteral#getContainingMode
+	 * @model opposite="containingMode" containment="true"
 	 * @generated
 	 */
 	EList<ModeLiteral> getLiterals();

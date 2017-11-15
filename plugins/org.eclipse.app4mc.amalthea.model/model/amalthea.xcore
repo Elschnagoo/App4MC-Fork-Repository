@@ -45,7 +45,7 @@ class Amalthea extends BaseObject {
  	derived readonly String version get {
 		return "0.8.2"
 	}
- 	
+
  	contains CommonElements commonElements
 	contains SWModel swModel
 	contains HWModel hwModel
@@ -125,7 +125,13 @@ interface IReferable
 	}
 	@GenModel(documentation="Overwrite this method to define specific IDs (used by name-based references).")
 	op String computeUniqueName() {
+		return basicComputeUniqueName
+	}
+	op String basicComputeUniqueName() {
 		return encode(name) + "?type=" + eClass.name
+	}
+	op String basicComputeUniqueNameWithPrefix(String prefix) {
+		return encode(prefix) + "/" + basicComputeUniqueName
 	}
 	op String encode(String str) {
 		return (if (str.nullOrEmpty) "no-name" else URLEncoder.encode(str, StandardCharsets.UTF_8.toString))
@@ -398,7 +404,7 @@ class ListObject extends Value {
 /*
  * Object for using the elementary datatype String as generic parameter
  */
-class StringObject extends Value{
+class StringObject extends Value {
 	String[1] value
 	op String toString() {
 		if (value === null)
@@ -411,7 +417,7 @@ class StringObject extends Value{
 /*
  * Object for using the elementary datatype String as generic parameter
  */
-class BigIntegerObject extends Value{ 
+class BigIntegerObject extends Value { 
 	BigInteger[1] value = "0"
 	op String toString() {
 		if (value === null)
@@ -424,8 +430,7 @@ class BigIntegerObject extends Value{
 /*
  * Object for using object reference as generic parameter
  */
-class ReferenceObject extends Value
-{
+class ReferenceObject extends Value {
 	refers IReferable value
 	op String toString() {
 		if (value === null)
@@ -438,7 +443,7 @@ class ReferenceObject extends Value
 /*
  * Object for using the elementary datatype integer as generic parameter
  */
-class IntegerObject extends Value{
+class IntegerObject extends Value {
 	int[1] value = "0"
 	op String toString() {
 		return "(int) " + value
@@ -448,7 +453,7 @@ class IntegerObject extends Value{
 /*
  * Object for using the elementary datatype long as generic parameter
  */
-class LongObject extends Value{
+class LongObject extends Value {
 	long[1] value = "0"
 	op String toString() {
 		return "(long) " + value
@@ -458,7 +463,7 @@ class LongObject extends Value{
 /*
  * Object for using the elementary datatype float as generic parameter
  */
-class FloatObject extends Value{
+class FloatObject extends Value {
 	float[1] value = "0f"
 	op String toString() {
 		return "(float) " + value
@@ -468,7 +473,7 @@ class FloatObject extends Value{
 /*
  * Object for using the elementary datatype double as generic parameter
  */
-class DoubleObject extends Value{
+class DoubleObject extends Value {
 	double[1] value = "0.0"
 	op String toString() {
 		return "(double) " + value
@@ -478,7 +483,7 @@ class DoubleObject extends Value{
 /*
  * Object for using the elementary datatype boolean as generic parameter
  */
-class BooleanObject extends Value{
+class BooleanObject extends Value {
 	boolean[1] value = "false"
 	op String toString() {
 		return "(boolean) " + value
@@ -492,7 +497,7 @@ class TimeObject extends AbstractTime, Value {
 }
 
 
-class Deviation<T>{
+class Deviation<T> {
 	contains T lowerBound
 	contains T upperBound
 	contains Distribution<T> distribution
@@ -606,18 +611,19 @@ class SingleValueStatistic extends NumericStatistic
  */
 class Mode extends ReferableBaseObject 
 {
-	contains ModeLiteral [] literals	
+	contains ModeLiteral [] literals opposite containingMode
 }
 
 class ModeLiteral extends ReferableBaseObject 
 {
+	container readonly Mode containingMode opposite literals
+
 	op String computeUniqueName() {
-		val containerName = encode(eContainer?.eGet(eClass.getEStructuralFeature("name")) as String)
-		return containerName + "/" + super.computeUniqueName
+		return basicComputeUniqueNameWithPrefix(containingMode?.name)
 	}
 	
 	op String toString() {
-		val modeName = eContainer?.eGet(eClass.getEStructuralFeature("name")) as String
+		val modeName = containingMode?.name
 		return (if (modeName.nullOrEmpty) "<mode>" else modeName) + "::" + (if (name.nullOrEmpty) "<literal>" else name)
 	}
 }
@@ -654,14 +660,16 @@ interface ISystem {
 
 
 abstract class Port extends ReferableBaseObject, ITaggable {
+	
+	container readonly Component containingComponent opposite ports
+	
 	op String computeUniqueName() {
-		val containerName = encode(eContainer?.eGet(eClass.getEStructuralFeature("name")) as String)
-		return containerName + "/" + super.computeUniqueName
+		return basicComputeUniqueNameWithPrefix(containingComponent?.name)
 	}
 }
 
 class Component extends ReferableBaseObject, ITaggable {
-	contains Port[] ports
+	contains Port[] ports opposite containingComponent
 	refers AbstractProcess[] tasks
 	refers Runnable[] runnables
 	refers Label[] labels
@@ -1595,7 +1603,7 @@ abstract class ComplexNode extends ReferableBaseObject, ITaggable
 	contains Memory[] memories
 	contains Network[] networks
 	contains HwComponent[] components
-	contains HwPort[] ports
+	contains HwPort[] ports opposite containingNode
 }
 
 class HwSystem extends ComplexNode
@@ -1693,11 +1701,12 @@ class NetworkType extends HardwareTypeDescription
 // Element for Autosar PinGroup entities
 class HwPort extends ReferableBaseObject
 {
+	container readonly ComplexNode containingNode opposite ports
+	
 	contains Pin pins
 	
 	op String computeUniqueName() {
-		val containerName = encode(eContainer?.eGet(eClass.getEStructuralFeature("name")) as String)
-		return containerName + "/" + super.computeUniqueName
+		return basicComputeUniqueNameWithPrefix(containingNode?.name)
 	}
 }
 
@@ -2721,6 +2730,11 @@ class SWModel extends BaseObject
 	contains ProcessChain[] processChains
 	contains Mode[] modes
 	contains ModeLabel[] modeLabels
+
+	op ModeLiteral modeLiteral(String mode, String literal) {
+		if (mode.isNullOrEmpty || literal.isNullOrEmpty) return null
+		return modes?.findFirst[it.name == mode]?.literals?.findFirst[it.name == literal]
+	}
 }
 
 abstract class AbstractMemoryElement extends ReferableBaseObject, ITaggable

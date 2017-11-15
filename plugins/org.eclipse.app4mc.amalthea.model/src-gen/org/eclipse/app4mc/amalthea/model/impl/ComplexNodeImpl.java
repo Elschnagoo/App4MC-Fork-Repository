@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -234,9 +235,24 @@ public abstract class ComplexNodeImpl extends ReferableBaseObjectImpl implements
 	 */
 	public EList<HwPort> getPorts() {
 		if (ports == null) {
-			ports = new EObjectContainmentEList<HwPort>(HwPort.class, this, AmaltheaPackage.COMPLEX_NODE__PORTS);
+			ports = new EObjectContainmentWithInverseEList<HwPort>(HwPort.class, this, AmaltheaPackage.COMPLEX_NODE__PORTS, AmaltheaPackage.HW_PORT__CONTAINING_NODE);
 		}
 		return ports;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.COMPLEX_NODE__PORTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPorts()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

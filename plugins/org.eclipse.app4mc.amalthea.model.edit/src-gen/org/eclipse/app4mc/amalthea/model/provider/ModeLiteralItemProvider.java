@@ -16,9 +16,11 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
@@ -47,8 +49,31 @@ public class ModeLiteralItemProvider extends ReferableBaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addContainingModePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Containing Mode feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addContainingModePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ModeLiteral_containingMode_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ModeLiteral_containingMode_feature", "_UI_ModeLiteral_type"),
+				 AmaltheaPackage.eINSTANCE.getModeLiteral_ContainingMode(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

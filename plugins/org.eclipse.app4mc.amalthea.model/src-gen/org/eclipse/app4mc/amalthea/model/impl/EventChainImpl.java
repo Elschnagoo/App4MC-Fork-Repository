@@ -132,10 +132,31 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 	 * @generated
 	 */
 	public String computeUniqueName() {
+		return this.basicComputeUniqueName();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String basicComputeUniqueName() {
 		String _encode = this.encode(this.getName());
 		String _plus = (_encode + "?type=");
 		String _name = this.eClass().getName();
 		return (_plus + _name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String basicComputeUniqueNameWithPrefix(final String prefix) {
+		String _encode = this.encode(prefix);
+		String _plus = (_encode + "/");
+		String _basicComputeUniqueName = this.basicComputeUniqueName();
+		return (_plus + _basicComputeUniqueName);
 	}
 
 	/**
@@ -266,6 +287,8 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 		if (baseClass == IReferable.class) {
 			switch (baseOperationID) {
 				case AmaltheaPackage.IREFERABLE___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.EVENT_CHAIN___COMPUTE_UNIQUE_NAME;
+				case AmaltheaPackage.IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME: return AmaltheaPackage.EVENT_CHAIN___BASIC_COMPUTE_UNIQUE_NAME;
+				case AmaltheaPackage.IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING: return AmaltheaPackage.EVENT_CHAIN___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 				case AmaltheaPackage.IREFERABLE___ENCODE__STRING: return AmaltheaPackage.EVENT_CHAIN___ENCODE__STRING;
 				default: return -1;
 			}
@@ -283,6 +306,10 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 		switch (operationID) {
 			case AmaltheaPackage.EVENT_CHAIN___COMPUTE_UNIQUE_NAME:
 				return computeUniqueName();
+			case AmaltheaPackage.EVENT_CHAIN___BASIC_COMPUTE_UNIQUE_NAME:
+				return basicComputeUniqueName();
+			case AmaltheaPackage.EVENT_CHAIN___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING:
+				return basicComputeUniqueNameWithPrefix((String)arguments.get(0));
 			case AmaltheaPackage.EVENT_CHAIN___ENCODE__STRING:
 				return encode((String)arguments.get(0));
 		}

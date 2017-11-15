@@ -54,6 +54,7 @@ public class PortItemProvider extends ReferableBaseObjectItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addTagsPropertyDescriptor(object);
+			addContainingComponentPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -75,6 +76,28 @@ public class PortItemProvider extends ReferableBaseObjectItemProvider {
 				 true,
 				 false,
 				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Containing Component feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addContainingComponentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Port_containingComponent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Port_containingComponent_feature", "_UI_Port_type"),
+				 AmaltheaPackage.eINSTANCE.getPort_ContainingComponent(),
+				 false,
+				 false,
+				 false,
 				 null,
 				 null,
 				 null));

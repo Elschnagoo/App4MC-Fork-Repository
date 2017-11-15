@@ -15,6 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ComplexNode;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.Pin;
@@ -26,7 +27,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#getContainingNode <em>Containing Node</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#getPins <em>Pins</em>}</li>
  * </ul>
  *
@@ -72,6 +73,26 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getHwPort();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ComplexNode getContainingNode() {
+		if (eContainerFeatureID() != AmaltheaPackage.HW_PORT__CONTAINING_NODE) return null;
+		return (ComplexNode)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ComplexNode basicGetContainingNode() {
+		if (eContainerFeatureID() != AmaltheaPackage.HW_PORT__CONTAINING_NODE) return null;
+		return (ComplexNode)eInternalContainer();
 	}
 
 	/**
@@ -123,14 +144,28 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * @generated
 	 */
 	public String computeUniqueName() {
-		EObject _eContainer = this.eContainer();
-		Object _eGet = null;
-		if (_eContainer!=null) {
-			_eGet=_eContainer.eGet(this.eClass().getEStructuralFeature("name"));
+		ComplexNode _containingNode = this.getContainingNode();
+		String _name = null;
+		if (_containingNode!=null) {
+			_name=_containingNode.getName();
 		}
-		final String containerName = this.encode(((String) _eGet));
-		String _computeUniqueName = super.computeUniqueName();
-		return ((containerName + "/") + _computeUniqueName);
+		return this.basicComputeUniqueNameWithPrefix(_name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.HW_PORT__CONTAINING_NODE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, AmaltheaPackage.HW_PORT__CONTAINING_NODE, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -141,6 +176,8 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case AmaltheaPackage.HW_PORT__CONTAINING_NODE:
+				return eBasicSetContainer(null, AmaltheaPackage.HW_PORT__CONTAINING_NODE, msgs);
 			case AmaltheaPackage.HW_PORT__PINS:
 				return basicSetPins(null, msgs);
 		}
@@ -153,8 +190,25 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case AmaltheaPackage.HW_PORT__CONTAINING_NODE:
+				return eInternalContainer().eInverseRemove(this, AmaltheaPackage.COMPLEX_NODE__PORTS, ComplexNode.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.HW_PORT__CONTAINING_NODE:
+				if (resolve) return getContainingNode();
+				return basicGetContainingNode();
 			case AmaltheaPackage.HW_PORT__PINS:
 				return getPins();
 		}
@@ -199,6 +253,8 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.HW_PORT__CONTAINING_NODE:
+				return basicGetContainingNode() != null;
 			case AmaltheaPackage.HW_PORT__PINS:
 				return pins != null;
 		}

@@ -18,6 +18,12 @@ package org.eclipse.app4mc.amalthea.model;
  * A representation of the model object '<em><b>Mode Literal</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeLiteral#getContainingMode <em>Containing Mode</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeLiteral()
  * @model
@@ -25,10 +31,27 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface ModeLiteral extends ReferableBaseObject {
 	/**
+	 * Returns the value of the '<em><b>Containing Mode</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.Mode#getLiterals <em>Literals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Containing Mode</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Containing Mode</em>' container reference.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeLiteral_ContainingMode()
+	 * @see org.eclipse.app4mc.amalthea.model.Mode#getLiterals
+	 * @model opposite="literals" transient="false" changeable="false"
+	 * @generated
+	 */
+	Mode getContainingMode();
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n&lt;%java.lang.Object%&gt; _eGet = null;\nif (_eContainer!=null)\n{\n\t_eGet=_eContainer.eGet(this.eClass().getEStructuralFeature(\"name\"));\n}\nfinal &lt;%java.lang.String%&gt; containerName = this.encode(((&lt;%java.lang.String%&gt;) _eGet));\n&lt;%java.lang.String%&gt; _computeUniqueName = super.computeUniqueName();\nreturn ((containerName + \"/\") + _computeUniqueName);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.Mode%&gt; _containingMode = this.getContainingMode();\n&lt;%java.lang.String%&gt; _name = null;\nif (_containingMode!=null)\n{\n\t_name=_containingMode.getName();\n}\nreturn this.basicComputeUniqueNameWithPrefix(_name);'"
 	 * @generated
 	 */
 	String computeUniqueName();
@@ -37,7 +60,7 @@ public interface ModeLiteral extends ReferableBaseObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n&lt;%java.lang.Object%&gt; _eGet = null;\nif (_eContainer!=null)\n{\n\t_eGet=_eContainer.eGet(this.eClass().getEStructuralFeature(\"name\"));\n}\nfinal &lt;%java.lang.String%&gt; modeName = ((&lt;%java.lang.String%&gt;) _eGet);\n&lt;%java.lang.String%&gt; _xifexpression = null;\nboolean _isNullOrEmpty = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%&gt;.isNullOrEmpty(modeName);\nif (_isNullOrEmpty)\n{\n\t_xifexpression = \"&lt;mode&gt;\";\n}\nelse\n{\n\t_xifexpression = modeName;\n}\n&lt;%java.lang.String%&gt; _plus = (_xifexpression + \"::\");\n&lt;%java.lang.String%&gt; _xifexpression_1 = null;\nboolean _isNullOrEmpty_1 = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%&gt;.isNullOrEmpty(this.getName());\nif (_isNullOrEmpty_1)\n{\n\t_xifexpression_1 = \"&lt;literal&gt;\";\n}\nelse\n{\n\t_xifexpression_1 = this.getName();\n}\nreturn (_plus + _xifexpression_1);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.Mode%&gt; _containingMode = this.getContainingMode();\n&lt;%java.lang.String%&gt; _name = null;\nif (_containingMode!=null)\n{\n\t_name=_containingMode.getName();\n}\nfinal &lt;%java.lang.String%&gt; modeName = _name;\n&lt;%java.lang.String%&gt; _xifexpression = null;\nboolean _isNullOrEmpty = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%&gt;.isNullOrEmpty(modeName);\nif (_isNullOrEmpty)\n{\n\t_xifexpression = \"&lt;mode&gt;\";\n}\nelse\n{\n\t_xifexpression = modeName;\n}\n&lt;%java.lang.String%&gt; _plus = (_xifexpression + \"::\");\n&lt;%java.lang.String%&gt; _xifexpression_1 = null;\nboolean _isNullOrEmpty_1 = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%&gt;.isNullOrEmpty(this.getName());\nif (_isNullOrEmpty_1)\n{\n\t_xifexpression_1 = \"&lt;literal&gt;\";\n}\nelse\n{\n\t_xifexpression_1 = this.getName();\n}\nreturn (_plus + _xifexpression_1);'"
 	 * @generated
 	 */
 	String toString();

@@ -12,6 +12,10 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import com.google.common.base.Objects;
+
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.Activation;
@@ -22,6 +26,7 @@ import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
+import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
 import org.eclipse.app4mc.amalthea.model.ProcessChain;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
@@ -39,6 +44,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -399,6 +409,43 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ModeLiteral modeLiteral(final String mode, final String literal) {
+		if ((StringExtensions.isNullOrEmpty(mode) || StringExtensions.isNullOrEmpty(literal))) {
+			return null;
+		}
+		EList<Mode> _modes = this.getModes();
+		Mode _findFirst = null;
+		if (_modes!=null) {
+			final Function1<Mode, Boolean> _function = new Function1<Mode, Boolean>() {
+				public Boolean apply(final Mode it) {
+					String _name = it.getName();
+					return Boolean.valueOf(Objects.equal(_name, mode));
+				}
+			};
+			_findFirst=IterableExtensions.<Mode>findFirst(_modes, _function);
+		}
+		EList<ModeLiteral> _literals = null;
+		if (_findFirst!=null) {
+			_literals=_findFirst.getLiterals();
+		}
+		ModeLiteral _findFirst_1 = null;
+		if (_literals!=null) {
+			final Function1<ModeLiteral, Boolean> _function_1 = new Function1<ModeLiteral, Boolean>() {
+				public Boolean apply(final ModeLiteral it) {
+					String _name = it.getName();
+					return Boolean.valueOf(Objects.equal(_name, literal));
+				}
+			};
+			_findFirst_1=IterableExtensions.<ModeLiteral>findFirst(_literals, _function_1);
+		}
+		return _findFirst_1;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -635,6 +682,20 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 				return modeLabels != null && !modeLabels.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.SW_MODEL___MODE_LITERAL__STRING_STRING:
+				return modeLiteral((String)arguments.get(0), (String)arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //SWModelImpl

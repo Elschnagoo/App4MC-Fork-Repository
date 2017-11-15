@@ -86,10 +86,28 @@ public interface IReferable extends EObject {
 	 * Overwrite this method to define specific IDs (used by name-based references).
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _encode = this.encode(this.getName());\n&lt;%java.lang.String%&gt; _plus = (_encode + \"?type=\");\n&lt;%java.lang.String%&gt; _name = this.eClass().getName();\nreturn (_plus + _name);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.basicComputeUniqueName();'"
 	 * @generated
 	 */
 	String computeUniqueName();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _encode = this.encode(this.getName());\n&lt;%java.lang.String%&gt; _plus = (_encode + \"?type=\");\n&lt;%java.lang.String%&gt; _name = this.eClass().getName();\nreturn (_plus + _name);'"
+	 * @generated
+	 */
+	String basicComputeUniqueName();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" prefixUnique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _encode = this.encode(prefix);\n&lt;%java.lang.String%&gt; _plus = (_encode + \"/\");\n&lt;%java.lang.String%&gt; _basicComputeUniqueName = this.basicComputeUniqueName();\nreturn (_plus + _basicComputeUniqueName);'"
+	 * @generated
+	 */
+	String basicComputeUniqueNameWithPrefix(String prefix);
 
 	/**
 	 * <!-- begin-user-doc -->

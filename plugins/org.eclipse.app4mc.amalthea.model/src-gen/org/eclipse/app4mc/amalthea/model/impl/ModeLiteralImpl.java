@@ -16,13 +16,16 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.IReferable;
+import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
+
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
@@ -30,6 +33,12 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Mode Literal</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeLiteralImpl#getContainingMode <em>Containing Mode</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -58,15 +67,33 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Mode getContainingMode() {
+		if (eContainerFeatureID() != AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE) return null;
+		return (Mode)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Mode basicGetContainingMode() {
+		if (eContainerFeatureID() != AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE) return null;
+		return (Mode)eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String computeUniqueName() {
-		EObject _eContainer = this.eContainer();
-		Object _eGet = null;
-		if (_eContainer!=null) {
-			_eGet=_eContainer.eGet(this.eClass().getEStructuralFeature("name"));
+		Mode _containingMode = this.getContainingMode();
+		String _name = null;
+		if (_containingMode!=null) {
+			_name=_containingMode.getName();
 		}
-		final String containerName = this.encode(((String) _eGet));
-		String _computeUniqueName = super.computeUniqueName();
-		return ((containerName + "/") + _computeUniqueName);
+		return this.basicComputeUniqueNameWithPrefix(_name);
 	}
 
 	/**
@@ -75,12 +102,12 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 	 * @generated
 	 */
 	public String toString() {
-		EObject _eContainer = this.eContainer();
-		Object _eGet = null;
-		if (_eContainer!=null) {
-			_eGet=_eContainer.eGet(this.eClass().getEStructuralFeature("name"));
+		Mode _containingMode = this.getContainingMode();
+		String _name = null;
+		if (_containingMode!=null) {
+			_name=_containingMode.getName();
 		}
-		final String modeName = ((String) _eGet);
+		final String modeName = _name;
 		String _xifexpression = null;
 		boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(modeName);
 		if (_isNullOrEmpty) {
@@ -99,6 +126,79 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 			_xifexpression_1 = this.getName();
 		}
 		return (_plus + _xifexpression_1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE:
+				return eBasicSetContainer(null, AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE:
+				return eInternalContainer().eInverseRemove(this, AmaltheaPackage.MODE__LITERALS, Mode.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE:
+				if (resolve) return getContainingMode();
+				return basicGetContainingMode();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE:
+				return basicGetContainingMode() != null;
+		}
+		return super.eIsSet(featureID);
 	}
 
 	/**

@@ -408,13 +408,31 @@ public interface AmaltheaPackage extends EPackage {
 	int IREFERABLE___COMPUTE_UNIQUE_NAME = 0;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME = 1;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = 2;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IREFERABLE___ENCODE__STRING = 1;
+	int IREFERABLE___ENCODE__STRING = 3;
 
 	/**
 	 * The number of operations of the '<em>IReferable</em>' class.
@@ -423,7 +441,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IREFERABLE_OPERATION_COUNT = 2;
+	int IREFERABLE_OPERATION_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ReferableObjectImpl <em>Referable Object</em>}' class.
@@ -470,6 +488,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int REFERABLE_OBJECT___COMPUTE_UNIQUE_NAME = IREFERABLE___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERABLE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME = IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERABLE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -545,13 +581,31 @@ public interface AmaltheaPackage extends EPackage {
 	int REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME = IANNOTATABLE_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME = IANNOTATABLE_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = IANNOTATABLE_OPERATION_COUNT + 2;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REFERABLE_BASE_OBJECT___ENCODE__STRING = IANNOTATABLE_OPERATION_COUNT + 1;
+	int REFERABLE_BASE_OBJECT___ENCODE__STRING = IANNOTATABLE_OPERATION_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Referable Base Object</em>' class.
@@ -560,7 +614,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REFERABLE_BASE_OBJECT_OPERATION_COUNT = IANNOTATABLE_OPERATION_COUNT + 2;
+	int REFERABLE_BASE_OBJECT_OPERATION_COUNT = IANNOTATABLE_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ITaggable <em>ITaggable</em>}' class.
@@ -701,6 +755,24 @@ public interface AmaltheaPackage extends EPackage {
 	int TAG___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -781,6 +853,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLASSIFIER___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -865,6 +955,24 @@ public interface AmaltheaPackage extends EPackage {
 	int CORE_CLASSIFIER___COMPUTE_UNIQUE_NAME = CLASSIFIER___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CORE_CLASSIFIER___BASIC_COMPUTE_UNIQUE_NAME = CLASSIFIER___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CORE_CLASSIFIER___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = CLASSIFIER___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -945,6 +1053,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int MEMORY_CLASSIFIER___COMPUTE_UNIQUE_NAME = CLASSIFIER___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMORY_CLASSIFIER___BASIC_COMPUTE_UNIQUE_NAME = CLASSIFIER___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMORY_CLASSIFIER___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = CLASSIFIER___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -2746,6 +2872,24 @@ public interface AmaltheaPackage extends EPackage {
 	int MODE___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2801,13 +2945,40 @@ public interface AmaltheaPackage extends EPackage {
 	int MODE_LITERAL__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Containing Mode</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_LITERAL__CONTAINING_MODE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Mode Literal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODE_LITERAL_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+	int MODE_LITERAL_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_LITERAL___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_LITERAL___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -3048,13 +3219,40 @@ public interface AmaltheaPackage extends EPackage {
 	int PORT__TAGS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Containing Component</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__CONTAINING_COMPONENT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
+	int PORT_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -3200,6 +3398,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -3374,6 +3590,24 @@ public interface AmaltheaPackage extends EPackage {
 	int COMPOSITE___COMPUTE_UNIQUE_NAME = COMPONENT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE___BASIC_COMPUTE_UNIQUE_NAME = COMPONENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = COMPONENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3492,6 +3726,24 @@ public interface AmaltheaPackage extends EPackage {
 	int SYSTEM___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3581,6 +3833,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_INSTANCE___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_INSTANCE___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_INSTANCE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -3775,6 +4045,15 @@ public interface AmaltheaPackage extends EPackage {
 	int FINTERFACE_PORT__TAGS = PORT__TAGS;
 
 	/**
+	 * The feature id for the '<em><b>Containing Component</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINTERFACE_PORT__CONTAINING_COMPONENT = PORT__CONTAINING_COMPONENT;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3800,6 +4079,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FINTERFACE_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINTERFACE_PORT___BASIC_COMPUTE_UNIQUE_NAME = PORT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINTERFACE_PORT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = PORT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -4130,6 +4427,24 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_SEQUENCING_CONSTRAINT___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_SEQUENCING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_SEQUENCING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4201,6 +4516,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int AFFINITY_CONSTRAINT___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFFINITY_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFFINITY_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -4276,6 +4609,24 @@ public interface AmaltheaPackage extends EPackage {
 	int SEPARATION_CONSTRAINT___COMPUTE_UNIQUE_NAME = AFFINITY_CONSTRAINT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = AFFINITY_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = AFFINITY_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4347,6 +4698,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PAIRING_CONSTRAINT___COMPUTE_UNIQUE_NAME = AFFINITY_CONSTRAINT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = AFFINITY_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = AFFINITY_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -4551,6 +4920,24 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_SEPARATION_CONSTRAINT___COMPUTE_UNIQUE_NAME = SEPARATION_CONSTRAINT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4640,6 +5027,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_SEPARATION_CONSTRAINT___COMPUTE_UNIQUE_NAME = SEPARATION_CONSTRAINT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -4733,6 +5138,24 @@ public interface AmaltheaPackage extends EPackage {
 	int DATA_SEPARATION_CONSTRAINT___COMPUTE_UNIQUE_NAME = SEPARATION_CONSTRAINT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = SEPARATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4822,6 +5245,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RUNNABLE_PAIRING_CONSTRAINT___COMPUTE_UNIQUE_NAME = PAIRING_CONSTRAINT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -4915,6 +5356,24 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESS_PAIRING_CONSTRAINT___COMPUTE_UNIQUE_NAME = PAIRING_CONSTRAINT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5004,6 +5463,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_PAIRING_CONSTRAINT___COMPUTE_UNIQUE_NAME = PAIRING_CONSTRAINT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = PAIRING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -5714,13 +6191,31 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_CHAIN___COMPUTE_UNIQUE_NAME = ABSTRACT_EVENT_CHAIN_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_CHAIN___BASIC_COMPUTE_UNIQUE_NAME = ABSTRACT_EVENT_CHAIN_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_CHAIN___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ABSTRACT_EVENT_CHAIN_OPERATION_COUNT + 2;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN___ENCODE__STRING = ABSTRACT_EVENT_CHAIN_OPERATION_COUNT + 1;
+	int EVENT_CHAIN___ENCODE__STRING = ABSTRACT_EVENT_CHAIN_OPERATION_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Event Chain</em>' class.
@@ -5729,7 +6224,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_OPERATION_COUNT = ABSTRACT_EVENT_CHAIN_OPERATION_COUNT + 2;
+	int EVENT_CHAIN_OPERATION_COUNT = ABSTRACT_EVENT_CHAIN_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.SubEventChainImpl <em>Sub Event Chain</em>}' class.
@@ -6043,6 +6538,24 @@ public interface AmaltheaPackage extends EPackage {
 	int TIMING_CONSTRAINT___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6134,6 +6647,24 @@ public interface AmaltheaPackage extends EPackage {
 	int PHYSICAL_SECTION_CONSTRAINT___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_SECTION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_SECTION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6223,6 +6754,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYNCHRONIZATION_CONSTRAINT___COMPUTE_UNIQUE_NAME = TIMING_CONSTRAINT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONIZATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = TIMING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONIZATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = TIMING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -6323,6 +6872,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_SYNCHRONIZATION_CONSTRAINT___COMPUTE_UNIQUE_NAME = SYNCHRONIZATION_CONSTRAINT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_SYNCHRONIZATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = SYNCHRONIZATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_SYNCHRONIZATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = SYNCHRONIZATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -6432,6 +6999,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT___COMPUTE_UNIQUE_NAME = SYNCHRONIZATION_CONSTRAINT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = SYNCHRONIZATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = SYNCHRONIZATION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -6552,6 +7137,24 @@ public interface AmaltheaPackage extends EPackage {
 	int DELAY_CONSTRAINT___COMPUTE_UNIQUE_NAME = TIMING_CONSTRAINT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELAY_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = TIMING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELAY_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = TIMING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6659,6 +7262,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_CHAIN_LATENCY_CONSTRAINT___COMPUTE_UNIQUE_NAME = TIMING_CONSTRAINT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_CHAIN_LATENCY_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = TIMING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_CHAIN_LATENCY_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = TIMING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -6788,6 +7409,24 @@ public interface AmaltheaPackage extends EPackage {
 	int REPETITION_CONSTRAINT___COMPUTE_UNIQUE_NAME = TIMING_CONSTRAINT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPETITION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = TIMING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPETITION_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = TIMING_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6886,6 +7525,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_AGE_CONSTRAINT___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_AGE_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_AGE_CONSTRAINT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -7839,6 +8496,24 @@ public interface AmaltheaPackage extends EPackage {
 	int DATA_COHERENCY_GROUP___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_COHERENCY_GROUP___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_COHERENCY_GROUP___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7928,6 +8603,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_STABILITY_GROUP___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STABILITY_GROUP___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STABILITY_GROUP___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -8242,6 +8935,24 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8342,6 +9053,24 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_SET___COMPUTE_UNIQUE_NAME = EVENT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_SET___BASIC_COMPUTE_UNIQUE_NAME = EVENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_SET___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8433,6 +9162,24 @@ public interface AmaltheaPackage extends EPackage {
 	int ENTITY_EVENT___COMPUTE_UNIQUE_NAME = EVENT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME = EVENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8522,6 +9269,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRIGGER_EVENT___COMPUTE_UNIQUE_NAME = ENTITY_EVENT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER_EVENT___BASIC_COMPUTE_UNIQUE_NAME = ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -8633,6 +9398,24 @@ public interface AmaltheaPackage extends EPackage {
 	int CUSTOM_EVENT___COMPUTE_UNIQUE_NAME = TRIGGER_EVENT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_EVENT___BASIC_COMPUTE_UNIQUE_NAME = TRIGGER_EVENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = TRIGGER_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8731,6 +9514,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int STIMULUS_EVENT___COMPUTE_UNIQUE_NAME = ENTITY_EVENT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STIMULUS_EVENT___BASIC_COMPUTE_UNIQUE_NAME = ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STIMULUS_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -8851,6 +9652,24 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESS_EVENT___COMPUTE_UNIQUE_NAME = ENTITY_EVENT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_EVENT___BASIC_COMPUTE_UNIQUE_NAME = ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8967,6 +9786,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_CHAIN_EVENT___COMPUTE_UNIQUE_NAME = ENTITY_EVENT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_CHAIN_EVENT___BASIC_COMPUTE_UNIQUE_NAME = ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_CHAIN_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -9096,6 +9933,24 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_EVENT___COMPUTE_UNIQUE_NAME = TRIGGER_EVENT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_EVENT___BASIC_COMPUTE_UNIQUE_NAME = TRIGGER_EVENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = TRIGGER_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9223,6 +10078,24 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL_EVENT___COMPUTE_UNIQUE_NAME = TRIGGER_EVENT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_EVENT___BASIC_COMPUTE_UNIQUE_NAME = TRIGGER_EVENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = TRIGGER_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9348,6 +10221,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHANNEL_EVENT___COMPUTE_UNIQUE_NAME = TRIGGER_EVENT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_EVENT___BASIC_COMPUTE_UNIQUE_NAME = TRIGGER_EVENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = TRIGGER_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -9486,6 +10377,24 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE_EVENT___COMPUTE_UNIQUE_NAME = ENTITY_EVENT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMAPHORE_EVENT___BASIC_COMPUTE_UNIQUE_NAME = ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMAPHORE_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9593,6 +10502,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EVENT___COMPUTE_UNIQUE_NAME = ENTITY_EVENT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EVENT___BASIC_COMPUTE_UNIQUE_NAME = ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ENTITY_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -9831,6 +10758,24 @@ public interface AmaltheaPackage extends EPackage {
 	int COMPLEX_NODE___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9985,6 +10930,24 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_SYSTEM___COMPUTE_UNIQUE_NAME = COMPLEX_NODE___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_SYSTEM___BASIC_COMPUTE_UNIQUE_NAME = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_SYSTEM___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10128,6 +11091,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECU___COMPUTE_UNIQUE_NAME = COMPLEX_NODE___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECU___BASIC_COMPUTE_UNIQUE_NAME = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECU___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -10275,6 +11256,24 @@ public interface AmaltheaPackage extends EPackage {
 	int MICROCONTROLLER___COMPUTE_UNIQUE_NAME = COMPLEX_NODE___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MICROCONTROLLER___BASIC_COMPUTE_UNIQUE_NAME = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MICROCONTROLLER___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10418,6 +11417,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CORE___COMPUTE_UNIQUE_NAME = COMPLEX_NODE___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CORE___BASIC_COMPUTE_UNIQUE_NAME = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CORE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -10565,6 +11582,24 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY___COMPUTE_UNIQUE_NAME = COMPLEX_NODE___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMORY___BASIC_COMPUTE_UNIQUE_NAME = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMORY___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10701,6 +11736,24 @@ public interface AmaltheaPackage extends EPackage {
 	int NETWORK___COMPUTE_UNIQUE_NAME = COMPLEX_NODE___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___BASIC_COMPUTE_UNIQUE_NAME = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10799,6 +11852,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int QUARTZ___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUARTZ___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUARTZ___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -10937,6 +12008,24 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_COMPONENT___COMPUTE_UNIQUE_NAME = COMPLEX_NODE___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_COMPONENT___BASIC_COMPUTE_UNIQUE_NAME = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_COMPONENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = COMPLEX_NODE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11017,6 +12106,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int HARDWARE_TYPE_DESCRIPTION___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HARDWARE_TYPE_DESCRIPTION___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HARDWARE_TYPE_DESCRIPTION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -11101,6 +12208,24 @@ public interface AmaltheaPackage extends EPackage {
 	int ABSTRACTION_TYPE___COMPUTE_UNIQUE_NAME = HARDWARE_TYPE_DESCRIPTION___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACTION_TYPE___BASIC_COMPUTE_UNIQUE_NAME = HARDWARE_TYPE_DESCRIPTION___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACTION_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = HARDWARE_TYPE_DESCRIPTION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11181,6 +12306,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_TYPE___COMPUTE_UNIQUE_NAME = ABSTRACTION_TYPE___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_TYPE___BASIC_COMPUTE_UNIQUE_NAME = ABSTRACTION_TYPE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ABSTRACTION_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -11265,6 +12408,24 @@ public interface AmaltheaPackage extends EPackage {
 	int ECU_TYPE___COMPUTE_UNIQUE_NAME = ABSTRACTION_TYPE___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECU_TYPE___BASIC_COMPUTE_UNIQUE_NAME = ABSTRACTION_TYPE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECU_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ABSTRACTION_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11345,6 +12506,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int MICROCONTROLLER_TYPE___COMPUTE_UNIQUE_NAME = ABSTRACTION_TYPE___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MICROCONTROLLER_TYPE___BASIC_COMPUTE_UNIQUE_NAME = ABSTRACTION_TYPE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MICROCONTROLLER_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ABSTRACTION_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -11456,6 +12635,24 @@ public interface AmaltheaPackage extends EPackage {
 	int CORE_TYPE___COMPUTE_UNIQUE_NAME = ABSTRACTION_TYPE___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CORE_TYPE___BASIC_COMPUTE_UNIQUE_NAME = ABSTRACTION_TYPE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CORE_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ABSTRACTION_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11565,6 +12762,24 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY_TYPE___COMPUTE_UNIQUE_NAME = HARDWARE_TYPE_DESCRIPTION___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMORY_TYPE___BASIC_COMPUTE_UNIQUE_NAME = HARDWARE_TYPE_DESCRIPTION___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMORY_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = HARDWARE_TYPE_DESCRIPTION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11665,6 +12880,24 @@ public interface AmaltheaPackage extends EPackage {
 	int NETWORK_TYPE___COMPUTE_UNIQUE_NAME = HARDWARE_TYPE_DESCRIPTION___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_TYPE___BASIC_COMPUTE_UNIQUE_NAME = HARDWARE_TYPE_DESCRIPTION___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = HARDWARE_TYPE_DESCRIPTION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11720,13 +12953,22 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_PORT__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Containing Node</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_PORT__CONTAINING_NODE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Pins</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_PORT__PINS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+	int HW_PORT__PINS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Hw Port</em>' class.
@@ -11735,7 +12977,25 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_PORT_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
+	int HW_PORT_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_PORT___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_PORT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -11820,6 +13080,24 @@ public interface AmaltheaPackage extends EPackage {
 	int PIN___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIN___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIN___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11873,6 +13151,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPLEX_PORT__UNIQUE_NAME = HW_PORT__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Containing Node</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPLEX_PORT__CONTAINING_NODE = HW_PORT__CONTAINING_NODE;
 
 	/**
 	 * The feature id for the '<em><b>Pins</b></em>' containment reference.
@@ -11972,6 +13259,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPLEX_PORT_FEATURE_COUNT = HW_PORT_FEATURE_COUNT + 9;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPLEX_PORT___BASIC_COMPUTE_UNIQUE_NAME = HW_PORT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPLEX_PORT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = HW_PORT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -12081,6 +13386,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPLEX_PIN___COMPUTE_UNIQUE_NAME = PIN___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPLEX_PIN___BASIC_COMPUTE_UNIQUE_NAME = PIN___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPLEX_PIN___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = PIN___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -12247,6 +13570,24 @@ public interface AmaltheaPackage extends EPackage {
 	int CROSSBAR_SWITCH___COMPUTE_UNIQUE_NAME = NETWORK_TYPE___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CROSSBAR_SWITCH___BASIC_COMPUTE_UNIQUE_NAME = NETWORK_TYPE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CROSSBAR_SWITCH___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = NETWORK_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12356,6 +13697,24 @@ public interface AmaltheaPackage extends EPackage {
 	int BUS___COMPUTE_UNIQUE_NAME = NETWORK_TYPE___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUS___BASIC_COMPUTE_UNIQUE_NAME = NETWORK_TYPE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = NETWORK_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12456,6 +13815,24 @@ public interface AmaltheaPackage extends EPackage {
 	int BRIDGE___COMPUTE_UNIQUE_NAME = NETWORK_TYPE___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BRIDGE___BASIC_COMPUTE_UNIQUE_NAME = NETWORK_TYPE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BRIDGE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = NETWORK_TYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12536,6 +13913,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACCESS_PATH___COMPUTE_UNIQUE_NAME = IREFERABLE___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCESS_PATH___BASIC_COMPUTE_UNIQUE_NAME = IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCESS_PATH___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -12629,6 +14024,24 @@ public interface AmaltheaPackage extends EPackage {
 	int LATENCY_ACCESS_PATH___COMPUTE_UNIQUE_NAME = ACCESS_PATH___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATENCY_ACCESS_PATH___BASIC_COMPUTE_UNIQUE_NAME = ACCESS_PATH___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATENCY_ACCESS_PATH___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ACCESS_PATH___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12718,6 +14131,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int HW_ACCESS_PATH___COMPUTE_UNIQUE_NAME = ACCESS_PATH___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_ACCESS_PATH___BASIC_COMPUTE_UNIQUE_NAME = ACCESS_PATH___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_ACCESS_PATH___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ACCESS_PATH___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -13644,6 +15075,24 @@ public interface AmaltheaPackage extends EPackage {
 	int PHYSICAL_SECTION_MAPPING___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_SECTION_MAPPING___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_SECTION_MAPPING___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14009,6 +15458,24 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMAPHORE___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMAPHORE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14089,6 +15556,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCHEDULER___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULER___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULER___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -14225,6 +15710,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TASK_SCHEDULER___COMPUTE_UNIQUE_NAME = SCHEDULER___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_SCHEDULER___BASIC_COMPUTE_UNIQUE_NAME = SCHEDULER___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_SCHEDULER___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = SCHEDULER___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -14398,6 +15901,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERRUPT_CONTROLLER___COMPUTE_UNIQUE_NAME = SCHEDULER___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPT_CONTROLLER___BASIC_COMPUTE_UNIQUE_NAME = SCHEDULER___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPT_CONTROLLER___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = SCHEDULER___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -15863,6 +17384,24 @@ public interface AmaltheaPackage extends EPackage {
 	int OS_INSTRUCTIONS___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_INSTRUCTIONS___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_INSTRUCTIONS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -16849,6 +18388,24 @@ public interface AmaltheaPackage extends EPackage {
 	int STIMULUS___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STIMULUS___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17224,6 +18781,24 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_STIMULUS___COMPUTE_UNIQUE_NAME = STIMULUS___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17340,6 +18915,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int VARIABLE_RATE_STIMULUS___COMPUTE_UNIQUE_NAME = STIMULUS___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -17485,6 +19078,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYNTHETIC_STIMULUS___COMPUTE_UNIQUE_NAME = STIMULUS___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNTHETIC_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNTHETIC_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -17660,6 +19271,24 @@ public interface AmaltheaPackage extends EPackage {
 	int CUSTOM_STIMULUS___COMPUTE_UNIQUE_NAME = STIMULUS___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17785,6 +19414,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SINGLE_STIMULUS___COMPUTE_UNIQUE_NAME = STIMULUS___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -17923,6 +19570,24 @@ public interface AmaltheaPackage extends EPackage {
 	int INTER_PROCESS_STIMULUS___COMPUTE_UNIQUE_NAME = STIMULUS___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_PROCESS_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_PROCESS_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18048,6 +19713,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SPORADIC_STIMULUS___COMPUTE_UNIQUE_NAME = STIMULUS___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPORADIC_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPORADIC_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -18186,6 +19869,24 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_STIMULUS___COMPUTE_UNIQUE_NAME = STIMULUS___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18311,6 +20012,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ARRIVAL_CURVE_STIMULUS___COMPUTE_UNIQUE_NAME = STIMULUS___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRIVAL_CURVE_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRIVAL_CURVE_STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = STIMULUS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -18450,6 +20169,24 @@ public interface AmaltheaPackage extends EPackage {
 	int CLOCK___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18557,6 +20294,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLOCK_TRIANGLE_FUNCTION___COMPUTE_UNIQUE_NAME = CLOCK___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK_TRIANGLE_FUNCTION___BASIC_COMPUTE_UNIQUE_NAME = CLOCK___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK_TRIANGLE_FUNCTION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = CLOCK___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -18668,6 +20423,24 @@ public interface AmaltheaPackage extends EPackage {
 	int CLOCK_SINUS_FUNCTION___COMPUTE_UNIQUE_NAME = CLOCK___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK_SINUS_FUNCTION___BASIC_COMPUTE_UNIQUE_NAME = CLOCK___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK_SINUS_FUNCTION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = CLOCK___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18748,6 +20521,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLOCK_MULTIPLIER_LIST___COMPUTE_UNIQUE_NAME = CLOCK___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK_MULTIPLIER_LIST___BASIC_COMPUTE_UNIQUE_NAME = CLOCK___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK_MULTIPLIER_LIST___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = CLOCK___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -18977,13 +20768,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SW_MODEL_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 14;
 
 	/**
+	 * The operation id for the '<em>Mode Literal</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SW_MODEL___MODE_LITERAL__STRING_STRING = BASE_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>SW Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SW_MODEL_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
+	int SW_MODEL_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.AbstractMemoryElementImpl <em>Abstract Memory Element</em>}' class.
@@ -19066,6 +20866,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_MEMORY_ELEMENT___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -19166,6 +20984,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_PROCESS___COMPUTE_UNIQUE_NAME = ABSTRACT_MEMORY_ELEMENT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PROCESS___BASIC_COMPUTE_UNIQUE_NAME = ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PROCESS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -19277,6 +21113,24 @@ public interface AmaltheaPackage extends EPackage {
 	int CUSTOM_ENTITY___COMPUTE_UNIQUE_NAME = ABSTRACT_MEMORY_ELEMENT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_ENTITY___BASIC_COMPUTE_UNIQUE_NAME = ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_ENTITY___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19357,6 +21211,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_CHAIN___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_CHAIN___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_CHAIN___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -19475,6 +21347,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS___COMPUTE_UNIQUE_NAME = ABSTRACT_PROCESS___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS___BASIC_COMPUTE_UNIQUE_NAME = ABSTRACT_PROCESS___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ABSTRACT_PROCESS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -20311,6 +22201,24 @@ public interface AmaltheaPackage extends EPackage {
 	int OS_EVENT___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_EVENT___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_EVENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20731,6 +22639,24 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK___COMPUTE_UNIQUE_NAME = PROCESS___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK___BASIC_COMPUTE_UNIQUE_NAME = PROCESS___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = PROCESS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20856,6 +22782,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISR___COMPUTE_UNIQUE_NAME = PROCESS___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISR___BASIC_COMPUTE_UNIQUE_NAME = PROCESS___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISR___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = PROCESS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -21028,6 +22972,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_PROTOTYPE___COMPUTE_UNIQUE_NAME = ABSTRACT_PROCESS___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_PROTOTYPE___BASIC_COMPUTE_UNIQUE_NAME = ABSTRACT_PROCESS___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_PROTOTYPE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ABSTRACT_PROCESS___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -21476,6 +23438,24 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE___COMPUTE_UNIQUE_NAME = ABSTRACT_MEMORY_ELEMENT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE___BASIC_COMPUTE_UNIQUE_NAME = ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21666,6 +23646,24 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL___COMPUTE_UNIQUE_NAME = ABSTRACT_MEMORY_ELEMENT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL___BASIC_COMPUTE_UNIQUE_NAME = ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21811,6 +23809,24 @@ public interface AmaltheaPackage extends EPackage {
 	int CHANNEL___COMPUTE_UNIQUE_NAME = ABSTRACT_MEMORY_ELEMENT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL___BASIC_COMPUTE_UNIQUE_NAME = ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21938,6 +23954,24 @@ public interface AmaltheaPackage extends EPackage {
 	int MODE_LABEL___COMPUTE_UNIQUE_NAME = ABSTRACT_MEMORY_ELEMENT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_LABEL___BASIC_COMPUTE_UNIQUE_NAME = ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_LABEL___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ABSTRACT_MEMORY_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -22036,6 +24070,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SECTION___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECTION___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECTION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -24004,6 +26056,24 @@ public interface AmaltheaPackage extends EPackage {
 	int TYPE_DEFINITION___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEFINITION___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEFINITION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24084,6 +26154,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_TYPE_DEFINITION___COMPUTE_UNIQUE_NAME = TYPE_DEFINITION___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE_DEFINITION___BASIC_COMPUTE_UNIQUE_NAME = TYPE_DEFINITION___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE_DEFINITION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = TYPE_DEFINITION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -24177,6 +26265,24 @@ public interface AmaltheaPackage extends EPackage {
 	int BASE_TYPE_DEFINITION___COMPUTE_UNIQUE_NAME = TYPE_DEFINITION___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_TYPE_DEFINITION___BASIC_COMPUTE_UNIQUE_NAME = TYPE_DEFINITION___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_TYPE_DEFINITION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = TYPE_DEFINITION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24257,6 +26363,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVATION___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -24377,6 +26501,24 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_ACTIVATION___COMPUTE_UNIQUE_NAME = ACTIVATION___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC_ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME = ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC_ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24475,6 +26617,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int VARIABLE_RATE_ACTIVATION___COMPUTE_UNIQUE_NAME = ACTIVATION___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME = ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -24577,6 +26737,24 @@ public interface AmaltheaPackage extends EPackage {
 	int SPORADIC_ACTIVATION___COMPUTE_UNIQUE_NAME = ACTIVATION___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPORADIC_ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME = ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPORADIC_ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24675,6 +26853,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SINGLE_ACTIVATION___COMPUTE_UNIQUE_NAME = ACTIVATION___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME = ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -24777,6 +26973,24 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_ACTIVATION___COMPUTE_UNIQUE_NAME = ACTIVATION___COMPUTE_UNIQUE_NAME;
 
 	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME = ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
 	 * The operation id for the '<em>Encode</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24866,6 +27080,24 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CUSTOM_ACTIVATION___COMPUTE_UNIQUE_NAME = ACTIVATION___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME = ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = ACTIVATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -26175,6 +28407,26 @@ public interface AmaltheaPackage extends EPackage {
 	EOperation getIReferable__ComputeUniqueName();
 
 	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IReferable#basicComputeUniqueName() <em>Basic Compute Unique Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Basic Compute Unique Name</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.IReferable#basicComputeUniqueName()
+	 * @generated
+	 */
+	EOperation getIReferable__BasicComputeUniqueName();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IReferable#basicComputeUniqueNameWithPrefix(java.lang.String) <em>Basic Compute Unique Name With Prefix</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.IReferable#basicComputeUniqueNameWithPrefix(java.lang.String)
+	 * @generated
+	 */
+	EOperation getIReferable__BasicComputeUniqueNameWithPrefix__String();
+
+	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IReferable#encode(java.lang.String) <em>Encode</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -27323,6 +29575,17 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getModeLiteral();
 
 	/**
+	 * Returns the meta object for the container reference '{@link org.eclipse.app4mc.amalthea.model.ModeLiteral#getContainingMode <em>Containing Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Containing Mode</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ModeLiteral#getContainingMode()
+	 * @see #getModeLiteral()
+	 * @generated
+	 */
+	EReference getModeLiteral_ContainingMode();
+
+	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ModeLiteral#computeUniqueName() <em>Compute Unique Name</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -27458,6 +29721,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPort();
+
+	/**
+	 * Returns the meta object for the container reference '{@link org.eclipse.app4mc.amalthea.model.Port#getContainingComponent <em>Containing Component</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Containing Component</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Port#getContainingComponent()
+	 * @see #getPort()
+	 * @generated
+	 */
+	EReference getPort_ContainingComponent();
 
 	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Port#computeUniqueName() <em>Compute Unique Name</em>}' operation.
@@ -30461,6 +32735,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getHwPort();
+
+	/**
+	 * Returns the meta object for the container reference '{@link org.eclipse.app4mc.amalthea.model.HwPort#getContainingNode <em>Containing Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Containing Node</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwPort#getContainingNode()
+	 * @see #getHwPort()
+	 * @generated
+	 */
+	EReference getHwPort_ContainingNode();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwPort#getPins <em>Pins</em>}'.
@@ -33670,6 +35955,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSWModel_ModeLabels();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.SWModel#modeLiteral(java.lang.String, java.lang.String) <em>Mode Literal</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Mode Literal</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.SWModel#modeLiteral(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getSWModel__ModeLiteral__String_String();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.AbstractMemoryElement <em>Abstract Memory Element</em>}'.

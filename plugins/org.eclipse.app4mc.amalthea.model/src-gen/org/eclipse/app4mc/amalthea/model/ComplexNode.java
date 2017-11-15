@@ -112,6 +112,7 @@ public interface ComplexNode extends ReferableBaseObject, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Ports</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwPort}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.HwPort#getContainingNode <em>Containing Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ports</em>' containment reference list isn't clear,
@@ -120,7 +121,8 @@ public interface ComplexNode extends ReferableBaseObject, ITaggable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ports</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComplexNode_Ports()
-	 * @model containment="true"
+	 * @see org.eclipse.app4mc.amalthea.model.HwPort#getContainingNode
+	 * @model opposite="containingNode" containment="true"
 	 * @generated
 	 */
 	EList<HwPort> getPorts();

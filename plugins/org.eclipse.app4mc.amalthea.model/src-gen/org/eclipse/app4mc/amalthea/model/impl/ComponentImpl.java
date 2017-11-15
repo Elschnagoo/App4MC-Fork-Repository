@@ -31,7 +31,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -163,7 +163,7 @@ public class ComponentImpl extends ReferableBaseObjectImpl implements Component 
 	 */
 	public EList<Port> getPorts() {
 		if (ports == null) {
-			ports = new EObjectContainmentEList<Port>(Port.class, this, AmaltheaPackage.COMPONENT__PORTS);
+			ports = new EObjectContainmentWithInverseEList<Port>(Port.class, this, AmaltheaPackage.COMPONENT__PORTS, AmaltheaPackage.PORT__CONTAINING_COMPONENT);
 		}
 		return ports;
 	}
@@ -226,6 +226,21 @@ public class ComponentImpl extends ReferableBaseObjectImpl implements Component 
 			osEvents = new EObjectResolvingEList<OsEvent>(OsEvent.class, this, AmaltheaPackage.COMPONENT__OS_EVENTS);
 		}
 		return osEvents;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.COMPONENT__PORTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPorts()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

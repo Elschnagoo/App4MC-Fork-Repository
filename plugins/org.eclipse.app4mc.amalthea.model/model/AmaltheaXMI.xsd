@@ -1233,7 +1233,12 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
   </xsd:element>
   <xsd:complexType name="ModeLiteral">
     <xsd:complexContent>
-      <xsd:extension base="am:ReferableBaseObject"/>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="containingMode" type="am:Mode"/>
+        </xsd:choice>
+        <xsd:attribute name="containingMode" type="xsd:string"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeLiteral" type="am:ModeLiteral"/>
@@ -1273,8 +1278,10 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
+          <xsd:element name="containingComponent" type="am:Component"/>
         </xsd:choice>
         <xsd:attribute name="tags" type="xsd:string"/>
+        <xsd:attribute name="containingComponent" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -2852,8 +2859,10 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="containingNode" type="am:ComplexNode"/>
           <xsd:element name="pins" type="am:Pin"/>
         </xsd:choice>
+        <xsd:attribute name="containingNode" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

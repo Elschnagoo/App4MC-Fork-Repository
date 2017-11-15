@@ -25,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -78,9 +78,24 @@ public class ModeImpl extends ReferableBaseObjectImpl implements Mode {
 	 */
 	public EList<ModeLiteral> getLiterals() {
 		if (literals == null) {
-			literals = new EObjectContainmentEList<ModeLiteral>(ModeLiteral.class, this, AmaltheaPackage.MODE__LITERALS);
+			literals = new EObjectContainmentWithInverseEList<ModeLiteral>(ModeLiteral.class, this, AmaltheaPackage.MODE__LITERALS, AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE);
 		}
 		return literals;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.MODE__LITERALS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLiterals()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

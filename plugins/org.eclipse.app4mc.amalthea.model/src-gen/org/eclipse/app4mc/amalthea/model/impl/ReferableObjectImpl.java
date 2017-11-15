@@ -133,10 +133,31 @@ public abstract class ReferableObjectImpl extends AmaltheaExtendedEObjectImpl im
 	 * @generated
 	 */
 	public String computeUniqueName() {
+		return this.basicComputeUniqueName();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String basicComputeUniqueName() {
 		String _encode = this.encode(this.getName());
 		String _plus = (_encode + "?type=");
 		String _name = this.eClass().getName();
 		return (_plus + _name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String basicComputeUniqueNameWithPrefix(final String prefix) {
+		String _encode = this.encode(prefix);
+		String _plus = (_encode + "/");
+		String _basicComputeUniqueName = this.basicComputeUniqueName();
+		return (_plus + _basicComputeUniqueName);
 	}
 
 	/**
@@ -233,6 +254,10 @@ public abstract class ReferableObjectImpl extends AmaltheaExtendedEObjectImpl im
 		switch (operationID) {
 			case AmaltheaPackage.REFERABLE_OBJECT___COMPUTE_UNIQUE_NAME:
 				return computeUniqueName();
+			case AmaltheaPackage.REFERABLE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME:
+				return basicComputeUniqueName();
+			case AmaltheaPackage.REFERABLE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING:
+				return basicComputeUniqueNameWithPrefix((String)arguments.get(0));
 			case AmaltheaPackage.REFERABLE_OBJECT___ENCODE__STRING:
 				return encode((String)arguments.get(0));
 		}

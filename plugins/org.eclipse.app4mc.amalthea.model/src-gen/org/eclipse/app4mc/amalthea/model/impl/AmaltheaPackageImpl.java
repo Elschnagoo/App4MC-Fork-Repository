@@ -3524,8 +3524,26 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getIReferable__Encode__String() {
+	public EOperation getIReferable__BasicComputeUniqueName() {
 		return iReferableEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getIReferable__BasicComputeUniqueNameWithPrefix__String() {
+		return iReferableEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getIReferable__Encode__String() {
+		return iReferableEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -4514,6 +4532,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getModeLiteral_ContainingMode() {
+		return (EReference)modeLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getModeLiteral__ComputeUniqueName() {
 		return modeLiteralEClass.getEOperations().get(0);
 	}
@@ -4624,6 +4651,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EClass getPort() {
 		return portEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPort_ContainingComponent() {
+		return (EReference)portEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7178,8 +7214,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwPort_Pins() {
+	public EReference getHwPort_ContainingNode() {
 		return (EReference)hwPortEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHwPort_Pins() {
+		return (EReference)hwPortEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -9880,6 +9925,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getSWModel_ModeLabels() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSWModel__ModeLiteral__String_String() {
+		return swModelEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -12664,6 +12718,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(iReferableEClass, IREFERABLE__NAME);
 		createEAttribute(iReferableEClass, IREFERABLE__UNIQUE_NAME);
 		createEOperation(iReferableEClass, IREFERABLE___COMPUTE_UNIQUE_NAME);
+		createEOperation(iReferableEClass, IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME);
+		createEOperation(iReferableEClass, IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING);
 		createEOperation(iReferableEClass, IREFERABLE___ENCODE__STRING);
 
 		iDisplayNameEClass = createEClass(IDISPLAY_NAME);
@@ -12815,6 +12871,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(modeEClass, MODE__LITERALS);
 
 		modeLiteralEClass = createEClass(MODE_LITERAL);
+		createEReference(modeLiteralEClass, MODE_LITERAL__CONTAINING_MODE);
 		createEOperation(modeLiteralEClass, MODE_LITERAL___COMPUTE_UNIQUE_NAME);
 		createEOperation(modeLiteralEClass, MODE_LITERAL___TO_STRING);
 
@@ -12832,6 +12889,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(iSystemEClass, ISYSTEM__INNER_PORTS);
 
 		portEClass = createEClass(PORT);
+		createEReference(portEClass, PORT__CONTAINING_COMPONENT);
 		createEOperation(portEClass, PORT___COMPUTE_UNIQUE_NAME);
 
 		componentEClass = createEClass(COMPONENT);
@@ -13219,6 +13277,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(networkTypeEClass, NETWORK_TYPE__BIT_WIDTH);
 
 		hwPortEClass = createEClass(HW_PORT);
+		createEReference(hwPortEClass, HW_PORT__CONTAINING_NODE);
 		createEReference(hwPortEClass, HW_PORT__PINS);
 		createEOperation(hwPortEClass, HW_PORT___COMPUTE_UNIQUE_NAME);
 
@@ -13622,6 +13681,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(swModelEClass, SW_MODEL__PROCESS_CHAINS);
 		createEReference(swModelEClass, SW_MODEL__MODES);
 		createEReference(swModelEClass, SW_MODEL__MODE_LABELS);
+		createEOperation(swModelEClass, SW_MODEL___MODE_LITERAL__STRING_STRING);
 
 		abstractMemoryElementEClass = createEClass(ABSTRACT_MEMORY_ELEMENT);
 		createEReference(abstractMemoryElementEClass, ABSTRACT_MEMORY_ELEMENT__SIZE);
@@ -14472,7 +14532,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getIReferable__ComputeUniqueName(), theEcorePackage.getEString(), "computeUniqueName", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = initEOperation(getIReferable__Encode__String(), theEcorePackage.getEString(), "encode", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIReferable__BasicComputeUniqueName(), theEcorePackage.getEString(), "basicComputeUniqueName", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		EOperation op = initEOperation(getIReferable__BasicComputeUniqueNameWithPrefix__String(), theEcorePackage.getEString(), "basicComputeUniqueNameWithPrefix", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEString(), "prefix", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getIReferable__Encode__String(), theEcorePackage.getEString(), "encode", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theEcorePackage.getEString(), "str", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(iDisplayNameEClass, IDisplayName.class, "IDisplayName", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -14656,9 +14721,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getSingleValueStatistic_Value(), theEcorePackage.getEFloat(), "value", "0f", 0, 1, SingleValueStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeEClass, Mode.class, "Mode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMode_Literals(), this.getModeLiteral(), null, "literals", null, 0, -1, Mode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMode_Literals(), this.getModeLiteral(), this.getModeLiteral_ContainingMode(), "literals", null, 0, -1, Mode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeLiteralEClass, ModeLiteral.class, "ModeLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModeLiteral_ContainingMode(), this.getMode(), this.getMode_Literals(), "containingMode", null, 0, 1, ModeLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getModeLiteral__ComputeUniqueName(), theEcorePackage.getEString(), "computeUniqueName", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -14678,11 +14744,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getISystem_InnerPorts(), this.getQualifiedPort(), null, "innerPorts", null, 0, -1, ISystem.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(portEClass, Port.class, "Port", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPort_ContainingComponent(), this.getComponent(), this.getComponent_Ports(), "containingComponent", null, 0, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getPort__ComputeUniqueName(), theEcorePackage.getEString(), "computeUniqueName", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(componentEClass, Component.class, "Component", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getComponent_Ports(), this.getPort(), null, "ports", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponent_Ports(), this.getPort(), this.getPort_ContainingComponent(), "ports", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponent_Tasks(), this.getAbstractProcess(), null, "tasks", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponent_Runnables(), this.getRunnable(), null, "runnables", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponent_Labels(), this.getLabel(), null, "labels", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15013,7 +15080,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getComplexNode_Memories(), this.getMemory(), null, "memories", null, 0, -1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComplexNode_Networks(), this.getNetwork(), null, "networks", null, 0, -1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComplexNode_Components(), this.getHwComponent(), null, "components", null, 0, -1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComplexNode_Ports(), this.getHwPort(), null, "ports", null, 0, -1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComplexNode_Ports(), this.getHwPort(), this.getHwPort_ContainingNode(), "ports", null, 0, -1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwSystemEClass, HwSystem.class, "HwSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHwSystem_SystemType(), this.getSystemType(), null, "systemType", null, 0, 1, HwSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15071,6 +15138,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getNetworkType_BitWidth(), theEcorePackage.getEInt(), "bitWidth", "0", 0, 1, NetworkType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwPortEClass, HwPort.class, "HwPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHwPort_ContainingNode(), this.getComplexNode(), this.getComplexNode_Ports(), "containingNode", null, 0, 1, HwPort.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwPort_Pins(), this.getPin(), null, "pins", null, 0, 1, HwPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getHwPort__ComputeUniqueName(), theEcorePackage.getEString(), "computeUniqueName", 0, 1, !IS_UNIQUE, IS_ORDERED);
@@ -15482,6 +15550,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getSWModel_ProcessChains(), this.getProcessChain(), null, "processChains", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSWModel_Modes(), this.getMode(), null, "modes", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSWModel_ModeLabels(), this.getModeLabel(), null, "modeLabels", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getSWModel__ModeLiteral__String_String(), this.getModeLiteral(), "modeLiteral", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEString(), "mode", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEString(), "literal", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(abstractMemoryElementEClass, AbstractMemoryElement.class, "AbstractMemoryElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAbstractMemoryElement_Size(), this.getDataSize(), null, "size", null, 0, 1, AbstractMemoryElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -39,6 +39,7 @@ public interface Component extends ReferableBaseObject, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Ports</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Port}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.Port#getContainingComponent <em>Containing Component</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ports</em>' containment reference list isn't clear,
@@ -47,7 +48,8 @@ public interface Component extends ReferableBaseObject, ITaggable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ports</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComponent_Ports()
-	 * @model containment="true"
+	 * @see org.eclipse.app4mc.amalthea.model.Port#getContainingComponent
+	 * @model opposite="containingComponent" containment="true"
 	 * @generated
 	 */
 	EList<Port> getPorts();

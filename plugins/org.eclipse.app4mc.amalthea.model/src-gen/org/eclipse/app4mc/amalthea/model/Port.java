@@ -18,6 +18,12 @@ package org.eclipse.app4mc.amalthea.model;
  * A representation of the model object '<em><b>Port</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Port#getContainingComponent <em>Containing Component</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPort()
  * @model abstract="true"
@@ -25,10 +31,27 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface Port extends ReferableBaseObject, ITaggable {
 	/**
+	 * Returns the value of the '<em><b>Containing Component</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.Component#getPorts <em>Ports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Containing Component</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Containing Component</em>' container reference.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPort_ContainingComponent()
+	 * @see org.eclipse.app4mc.amalthea.model.Component#getPorts
+	 * @model opposite="ports" transient="false" changeable="false"
+	 * @generated
+	 */
+	Component getContainingComponent();
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n&lt;%java.lang.Object%&gt; _eGet = null;\nif (_eContainer!=null)\n{\n\t_eGet=_eContainer.eGet(this.eClass().getEStructuralFeature(\"name\"));\n}\nfinal &lt;%java.lang.String%&gt; containerName = this.encode(((&lt;%java.lang.String%&gt;) _eGet));\n&lt;%java.lang.String%&gt; _computeUniqueName = super.computeUniqueName();\nreturn ((containerName + \"/\") + _computeUniqueName);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.Component%&gt; _containingComponent = this.getContainingComponent();\n&lt;%java.lang.String%&gt; _name = null;\nif (_containingComponent!=null)\n{\n\t_name=_containingComponent.getName();\n}\nreturn this.basicComputeUniqueNameWithPrefix(_name);'"
 	 * @generated
 	 */
 	String computeUniqueName();

@@ -22,6 +22,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.HwPort#getContainingNode <em>Containing Node</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwPort#getPins <em>Pins</em>}</li>
  * </ul>
  *
@@ -30,6 +31,23 @@ package org.eclipse.app4mc.amalthea.model;
  * @generated
  */
 public interface HwPort extends ReferableBaseObject {
+	/**
+	 * Returns the value of the '<em><b>Containing Node</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.ComplexNode#getPorts <em>Ports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Containing Node</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Containing Node</em>' container reference.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwPort_ContainingNode()
+	 * @see org.eclipse.app4mc.amalthea.model.ComplexNode#getPorts
+	 * @model opposite="ports" transient="false" changeable="false"
+	 * @generated
+	 */
+	ComplexNode getContainingNode();
+
 	/**
 	 * Returns the value of the '<em><b>Pins</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -60,7 +78,7 @@ public interface HwPort extends ReferableBaseObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n&lt;%java.lang.Object%&gt; _eGet = null;\nif (_eContainer!=null)\n{\n\t_eGet=_eContainer.eGet(this.eClass().getEStructuralFeature(\"name\"));\n}\nfinal &lt;%java.lang.String%&gt; containerName = this.encode(((&lt;%java.lang.String%&gt;) _eGet));\n&lt;%java.lang.String%&gt; _computeUniqueName = super.computeUniqueName();\nreturn ((containerName + \"/\") + _computeUniqueName);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.ComplexNode%&gt; _containingNode = this.getContainingNode();\n&lt;%java.lang.String%&gt; _name = null;\nif (_containingNode!=null)\n{\n\t_name=_containingNode.getName();\n}\nreturn this.basicComputeUniqueNameWithPrefix(_name);'"
 	 * @generated
 	 */
 	String computeUniqueName();
