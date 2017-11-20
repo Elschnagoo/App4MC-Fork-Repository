@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Amalthea Converters to Itea-1.1.1 Test
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.converters.111.test
-Bundle-Version: 0.8.2.qualifier
+Bundle-Version: 0.8.3.qualifier
 Fragment-Host: org.eclipse.app4mc.amalthea.converters.111
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.junit;bundle-version="4.12.0",
