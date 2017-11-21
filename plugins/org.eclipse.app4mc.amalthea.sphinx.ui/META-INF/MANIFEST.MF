@@ -10,7 +10,7 @@ Require-Bundle: org.eclipse.emf.common,
  org.eclipse.ui.navigator,
  org.eclipse.app4mc.amalthea.model,
  org.eclipse.app4mc.amalthea.model.edit
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Export-Package: org.eclipse.app4mc.amalthea.sphinx.ui,

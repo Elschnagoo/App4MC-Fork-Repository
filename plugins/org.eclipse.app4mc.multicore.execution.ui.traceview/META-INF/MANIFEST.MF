@@ -17,4 +17,4 @@ Export-Package: org.eclipse.app4mc.multicore.execution.ui.traceview;
    org.eclipse.jface.resource,
    org.eclipse.app4mc.multicore.execution.ui.widget.emtracewidget,
    org.eclipse.ui.plugin"
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC

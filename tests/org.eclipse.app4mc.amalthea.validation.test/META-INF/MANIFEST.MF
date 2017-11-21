@@ -10,4 +10,4 @@ Require-Bundle: org.easymock,
  org.eclipse.sphinx.emf.check.catalog
 Import-Package: org.eclipse.sphinx.emf.util
 Export-Package: org.eclipse.app4mc.amalthea.validation.checks.impl
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC

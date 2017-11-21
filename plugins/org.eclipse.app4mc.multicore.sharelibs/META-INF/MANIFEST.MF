@@ -21,4 +21,4 @@ Export-Package: org.eclipse.app4mc.multicore.sharelibs,
  org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger,
  org.eclipse.app4mc.multicore.sharelibs.modelchecker.specs,
  org.eclipse.app4mc.multicore.sharelibs.utframework
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC

@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.eclipse.app4mc.amalthea.model.edit;singleton:=true
 Bundle-Version: 0.8.3.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.app4mc.amalthea.model.provider.AmaltheaEditPlugin$Implementation
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.app4mc.amalthea.model.provider

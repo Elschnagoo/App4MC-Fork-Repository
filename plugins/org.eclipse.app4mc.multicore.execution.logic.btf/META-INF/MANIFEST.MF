@@ -8,4 +8,4 @@ Require-Bundle: org.eclipse.app4mc.multicore.execution.logic,
  org.junit
 Export-Package: org.eclipse.app4mc.multicore.execution.logic.btf;uses:="org.eclipse.app4mc.multicore.execution.executionmodel,org.eclipse.app4mc.multicore.execution.btf.model",
  org.eclipse.app4mc.multicore.execution.logic.btf.model
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC

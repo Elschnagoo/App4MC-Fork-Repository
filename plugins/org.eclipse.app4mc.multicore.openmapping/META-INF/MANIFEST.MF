@@ -19,7 +19,7 @@ Require-Bundle: org.apache.log4j,
  org.eclipse.app4mc.multicore.sharelibs 
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC
 Export-Package: org.eclipse.app4mc.multicore.openmapping;uses:="org.eclipse.app4mc.multicore.sharedlibs",
  org.eclipse.app4mc.multicore.openmapping.algorithms;uses:="org.eclipse.app4mc.multicore.sharedlibs",
  org.eclipse.app4mc.multicore.openmapping.algorithms.taskgen.pragmatic,

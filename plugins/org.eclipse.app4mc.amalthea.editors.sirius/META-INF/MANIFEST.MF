@@ -4,7 +4,7 @@ Bundle-Name: APP4MC Amalthea Sirius
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.editors.sirius;singleton:=true
 Bundle-Version: 0.8.3.qualifier
 Bundle-Activator: org.eclipse.app4mc.amalthea.editors.sirius.Activator
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.sirius.common,

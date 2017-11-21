@@ -8,9 +8,9 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.app4mc.amalthea.model,
  org.eclipse.app4mc.amalthea.model.impl,
  org.eclipse.app4mc.amalthea.model.util
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC
 Bundle-Localization: plugin
-Require-Bundle: org.apache.commons.math3;bundle-version="3.5.0",
+Require-Bundle: org.apache.commons.math3;visibility:=reexport,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,

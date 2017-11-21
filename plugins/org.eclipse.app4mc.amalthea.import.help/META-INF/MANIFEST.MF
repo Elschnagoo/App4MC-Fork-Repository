@@ -4,4 +4,4 @@ Bundle-Name: APP4MC Amalthea Import Help
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.import.help;singleton:=true
 Bundle-Version: 0.8.3.qualifier
 Require-Bundle: org.eclipse.help
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC

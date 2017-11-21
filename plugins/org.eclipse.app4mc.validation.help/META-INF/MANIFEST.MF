@@ -3,5 +3,5 @@ Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Validation Help
 Bundle-SymbolicName: org.eclipse.app4mc.validation.help;singleton:=true
 Bundle-Version: 0.8.3.qualifier
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC
 Require-Bundle: org.eclipse.help

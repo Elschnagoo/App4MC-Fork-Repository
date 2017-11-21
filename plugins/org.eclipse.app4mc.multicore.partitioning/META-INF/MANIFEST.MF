@@ -18,7 +18,7 @@ Require-Bundle: org.apache.log4j,
  org.eclipse.app4mc.multicore.sharelibs
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC
 Export-Package: org.eclipse.app4mc.multicore.partitioning,
  org.eclipse.app4mc.multicore.partitioning.algorithms;
   uses:="org.eclipse.app4mc.multicore.sharedlibs,

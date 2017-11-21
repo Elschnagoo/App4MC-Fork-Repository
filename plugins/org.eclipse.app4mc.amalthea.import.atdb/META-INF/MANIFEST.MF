@@ -12,4 +12,4 @@ Require-Bundle: org.sqlite.jdbc,
  org.eclipse.app4mc.amalthea.model
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC

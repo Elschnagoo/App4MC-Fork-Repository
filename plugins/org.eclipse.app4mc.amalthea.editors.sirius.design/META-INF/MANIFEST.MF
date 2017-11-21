@@ -29,4 +29,4 @@ Require-Bundle: org.eclipse.xtext.xbase,
  org.eclipse.app4mc.amalthea.editors.sirius;bundle-version="0.7.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC

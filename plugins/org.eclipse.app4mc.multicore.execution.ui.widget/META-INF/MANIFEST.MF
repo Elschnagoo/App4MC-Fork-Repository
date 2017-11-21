@@ -10,5 +10,5 @@ Export-Package: org.eclipse.app4mc.multicore.execution.ui.widget.emtracewidget,
 Require-Bundle: org.eclipse.app4mc.multicore.execution.logic,
  org.eclipse.app4mc.multicore.openmapping,
  org.eclipse.osgi
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC
 Import-Package: org.eclipse.core.runtime

@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Amalthea Workflow Example
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.example.workflow
 Bundle-Version: 0.8.3.qualifier
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sphinx.emf,

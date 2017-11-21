@@ -7,4 +7,4 @@ Fragment-Host: org.eclipse.app4mc.amalthea.converters.111
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.junit;bundle-version="4.12.0",
  com.google.guava
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC

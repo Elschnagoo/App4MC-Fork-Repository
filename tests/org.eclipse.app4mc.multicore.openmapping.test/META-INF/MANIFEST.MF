@@ -6,4 +6,4 @@ Bundle-Version: 0.8.3.qualifier
 Fragment-Host: org.eclipse.app4mc.multicore.openmapping
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.junit
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC

@@ -15,7 +15,7 @@ Require-Bundle: org.apache.commons.lang,
  org.eclipse.app4mc.amalthea.model,
  org.eclipse.app4mc.amalthea.model.edit,
  org.eclipse.app4mc.amalthea.sphinx.ui
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Export-Package: org.eclipse.app4mc.amalthea.sphinx.ui.editors,

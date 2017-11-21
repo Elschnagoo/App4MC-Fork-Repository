@@ -3,7 +3,7 @@
       id="org.eclipse.app4mc.tracing"
       label="APP4MC Tracing"
       version="0.8.3.qualifier"
-      provider-name="Eclipse.org"
+      provider-name="Eclipse APP4MC"
       license-feature="org.eclipse.license"
       license-feature-version="1.0.1.qualifier">
 

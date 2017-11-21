@@ -16,5 +16,5 @@ Export-Package: org.eclipse.app4mc.multicore.execution.logic.executionmodel;uses
  org.eclipse.app4mc.multicore.execution.logic.openmapping;uses:="org.eclipse.app4mc.amalthea.model",
  org.eclipse.app4mc.multicore.execution.logic.systemproxy,
  org.eclipse.app4mc.multicore.execution.logic.systemproxy.scheduler
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: Eclipse APP4MC
 Bundle-ClassPath:  .
