@@ -79,6 +79,7 @@
 		<module>../../plugins/com.mxgraph</module>
 		<module>../../plugins/org.sqlite.jdbc</module>
 
+		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.083</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.082</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.081</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.080</module>
@@ -155,6 +156,8 @@
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.080.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.081.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.082.test</module>
+		<module>../../tests/org.eclipse.app4mc.amalthea.converters.083.test</module>
+		
 		<module>../../tests/org.eclipse.app4mc.amalthea.validation.test</module>
 		<module>../../tests/org.eclipse.app4mc.multicore.openmapping.test</module>
 		<module>../../tests/org.eclipse.app4mc.multicore.sharelibs.test</module>
