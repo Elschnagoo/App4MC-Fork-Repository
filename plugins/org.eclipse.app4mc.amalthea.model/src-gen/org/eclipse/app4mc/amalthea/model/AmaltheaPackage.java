@@ -362,14 +362,14 @@ public interface AmaltheaPackage extends EPackage {
 	int COMMON_ELEMENTS_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.IReferable <em>IReferable</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.INamed <em>INamed</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.IReferable
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getIReferable()
+	 * @see org.eclipse.app4mc.amalthea.model.INamed
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getINamed()
 	 * @generated
 	 */
-	int IREFERABLE = 7;
+	int INAMED = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -378,7 +378,44 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IREFERABLE__NAME = 0;
+	int INAMED__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>INamed</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INAMED_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>INamed</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INAMED_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.IReferable <em>IReferable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.IReferable
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getIReferable()
+	 * @generated
+	 */
+	int IREFERABLE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IREFERABLE__NAME = INAMED__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Unique Name</b></em>' attribute.
@@ -387,7 +424,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IREFERABLE__UNIQUE_NAME = 1;
+	int IREFERABLE__UNIQUE_NAME = INAMED_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>IReferable</em>' class.
@@ -396,7 +433,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IREFERABLE_FEATURE_COUNT = 2;
+	int IREFERABLE_FEATURE_COUNT = INAMED_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -405,7 +442,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IREFERABLE___COMPUTE_UNIQUE_NAME = 0;
+	int IREFERABLE___COMPUTE_UNIQUE_NAME = INAMED_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
@@ -414,7 +451,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME = 1;
+	int IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME = INAMED_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
@@ -423,7 +460,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = 2;
+	int IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = INAMED_OPERATION_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -432,7 +469,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IREFERABLE___ENCODE__STRING = 3;
+	int IREFERABLE___ENCODE__STRING = INAMED_OPERATION_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>IReferable</em>' class.
@@ -441,7 +478,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IREFERABLE_OPERATION_COUNT = 4;
+	int IREFERABLE_OPERATION_COUNT = INAMED_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ReferableObjectImpl <em>Referable Object</em>}' class.
@@ -661,7 +698,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getIDisplayName()
 	 * @generated
 	 */
-	int IDISPLAY_NAME = 8;
+	int IDISPLAY_NAME = 9;
 
 	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
@@ -698,7 +735,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTag()
 	 * @generated
 	 */
-	int TAG = 9;
+	int TAG = 10;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -798,7 +835,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClassifier()
 	 * @generated
 	 */
-	int CLASSIFIER = 10;
+	int CLASSIFIER = 11;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -898,7 +935,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCoreClassifier()
 	 * @generated
 	 */
-	int CORE_CLASSIFIER = 11;
+	int CORE_CLASSIFIER = 12;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -998,7 +1035,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryClassifier()
 	 * @generated
 	 */
-	int MEMORY_CLASSIFIER = 12;
+	int MEMORY_CLASSIFIER = 13;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -1098,7 +1135,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInstructions()
 	 * @generated
 	 */
-	int INSTRUCTIONS = 13;
+	int INSTRUCTIONS = 14;
 
 	/**
 	 * The feature id for the '<em><b>Fetch Statistic</b></em>' containment reference.
@@ -1144,7 +1181,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTransmissionPolicy()
 	 * @generated
 	 */
-	int TRANSMISSION_POLICY = 14;
+	int TRANSMISSION_POLICY = 15;
 
 	/**
 	 * The feature id for the '<em><b>Chunk Size</b></em>' containment reference.
@@ -1199,7 +1236,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInstructionsDeviation()
 	 * @generated
 	 */
-	int INSTRUCTIONS_DEVIATION = 15;
+	int INSTRUCTIONS_DEVIATION = 16;
 
 	/**
 	 * The feature id for the '<em><b>Fetch Statistic</b></em>' containment reference.
@@ -1254,7 +1291,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInstructionsConstant()
 	 * @generated
 	 */
-	int INSTRUCTIONS_CONSTANT = 16;
+	int INSTRUCTIONS_CONSTANT = 17;
 
 	/**
 	 * The feature id for the '<em><b>Fetch Statistic</b></em>' containment reference.
@@ -1309,7 +1346,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeComparable()
 	 * @generated
 	 */
-	int TIME_COMPARABLE = 17;
+	int TIME_COMPARABLE = 18;
 
 	/**
 	 * The number of structural features of the '<em>Time Comparable</em>' class.
@@ -1337,7 +1374,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAbstractTime()
 	 * @generated
 	 */
-	int ABSTRACT_TIME = 18;
+	int ABSTRACT_TIME = 19;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1401,7 +1438,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTime()
 	 * @generated
 	 */
-	int TIME = 19;
+	int TIME = 20;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1474,7 +1511,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFrequency()
 	 * @generated
 	 */
-	int FREQUENCY = 20;
+	int FREQUENCY = 21;
 
 	/**
 	 * The feature id for the '<em><b>Unit</b></em>' attribute.
@@ -1538,7 +1575,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataSize()
 	 * @generated
 	 */
-	int DATA_SIZE = 21;
+	int DATA_SIZE = 22;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1620,7 +1657,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataRate()
 	 * @generated
 	 */
-	int DATA_RATE = 22;
+	int DATA_RATE = 23;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1675,7 +1712,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCustomProperty()
 	 * @generated
 	 */
-	int CUSTOM_PROPERTY = 23;
+	int CUSTOM_PROPERTY = 24;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1721,7 +1758,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 24;
+	int VALUE = 25;
 
 	/**
 	 * The number of structural features of the '<em>Value</em>' class.
@@ -1758,7 +1795,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getListObject()
 	 * @generated
 	 */
-	int LIST_OBJECT = 25;
+	int LIST_OBJECT = 26;
 
 	/**
 	 * The feature id for the '<em><b>Values</b></em>' containment reference list.
@@ -1813,7 +1850,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStringObject()
 	 * @generated
 	 */
-	int STRING_OBJECT = 26;
+	int STRING_OBJECT = 27;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1868,7 +1905,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBigIntegerObject()
 	 * @generated
 	 */
-	int BIG_INTEGER_OBJECT = 27;
+	int BIG_INTEGER_OBJECT = 28;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1923,7 +1960,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getReferenceObject()
 	 * @generated
 	 */
-	int REFERENCE_OBJECT = 28;
+	int REFERENCE_OBJECT = 29;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' reference.
@@ -1978,7 +2015,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getIntegerObject()
 	 * @generated
 	 */
-	int INTEGER_OBJECT = 29;
+	int INTEGER_OBJECT = 30;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2033,7 +2070,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLongObject()
 	 * @generated
 	 */
-	int LONG_OBJECT = 30;
+	int LONG_OBJECT = 31;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2088,7 +2125,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFloatObject()
 	 * @generated
 	 */
-	int FLOAT_OBJECT = 31;
+	int FLOAT_OBJECT = 32;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2143,7 +2180,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDoubleObject()
 	 * @generated
 	 */
-	int DOUBLE_OBJECT = 32;
+	int DOUBLE_OBJECT = 33;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2198,7 +2235,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBooleanObject()
 	 * @generated
 	 */
-	int BOOLEAN_OBJECT = 33;
+	int BOOLEAN_OBJECT = 34;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2253,7 +2290,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeObject()
 	 * @generated
 	 */
-	int TIME_OBJECT = 34;
+	int TIME_OBJECT = 35;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2326,7 +2363,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDeviation()
 	 * @generated
 	 */
-	int DEVIATION = 35;
+	int DEVIATION = 36;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
@@ -2390,7 +2427,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDistribution()
 	 * @generated
 	 */
-	int DISTRIBUTION = 36;
+	int DISTRIBUTION = 37;
 
 	/**
 	 * The number of structural features of the '<em>Distribution</em>' class.
@@ -2418,7 +2455,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWeibullDistribution()
 	 * @generated
 	 */
-	int WEIBULL_DISTRIBUTION = 37;
+	int WEIBULL_DISTRIBUTION = 38;
 
 	/**
 	 * The number of structural features of the '<em>Weibull Distribution</em>' class.
@@ -2446,7 +2483,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWeibullParameters()
 	 * @generated
 	 */
-	int WEIBULL_PARAMETERS = 38;
+	int WEIBULL_PARAMETERS = 39;
 
 	/**
 	 * The feature id for the '<em><b>Kappa</b></em>' attribute.
@@ -2492,7 +2529,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWeibullEstimators()
 	 * @generated
 	 */
-	int WEIBULL_ESTIMATORS = 39;
+	int WEIBULL_ESTIMATORS = 40;
 
 	/**
 	 * The feature id for the '<em><b>Mean</b></em>' containment reference.
@@ -2538,7 +2575,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getUniformDistribution()
 	 * @generated
 	 */
-	int UNIFORM_DISTRIBUTION = 40;
+	int UNIFORM_DISTRIBUTION = 41;
 
 	/**
 	 * The number of structural features of the '<em>Uniform Distribution</em>' class.
@@ -2566,7 +2603,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBoundaries()
 	 * @generated
 	 */
-	int BOUNDARIES = 41;
+	int BOUNDARIES = 42;
 
 	/**
 	 * The feature id for the '<em><b>Sampling Type</b></em>' attribute.
@@ -2603,7 +2640,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGaussDistribution()
 	 * @generated
 	 */
-	int GAUSS_DISTRIBUTION = 42;
+	int GAUSS_DISTRIBUTION = 43;
 
 	/**
 	 * The feature id for the '<em><b>Sd</b></em>' containment reference.
@@ -2649,7 +2686,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBetaDistribution()
 	 * @generated
 	 */
-	int BETA_DISTRIBUTION = 43;
+	int BETA_DISTRIBUTION = 44;
 
 	/**
 	 * The feature id for the '<em><b>Alpha</b></em>' attribute.
@@ -2695,7 +2732,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNumericStatistic()
 	 * @generated
 	 */
-	int NUMERIC_STATISTIC = 44;
+	int NUMERIC_STATISTIC = 45;
 
 	/**
 	 * The number of structural features of the '<em>Numeric Statistic</em>' class.
@@ -2723,7 +2760,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMinAvgMaxStatistic()
 	 * @generated
 	 */
-	int MIN_AVG_MAX_STATISTIC = 45;
+	int MIN_AVG_MAX_STATISTIC = 46;
 
 	/**
 	 * The feature id for the '<em><b>Min</b></em>' attribute.
@@ -2778,7 +2815,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSingleValueStatistic()
 	 * @generated
 	 */
-	int SINGLE_VALUE_STATISTIC = 46;
+	int SINGLE_VALUE_STATISTIC = 47;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2815,7 +2852,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMode()
 	 * @generated
 	 */
-	int MODE = 47;
+	int MODE = 48;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -2915,7 +2952,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeLiteral()
 	 * @generated
 	 */
-	int MODE_LITERAL = 48;
+	int MODE_LITERAL = 49;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3024,7 +3061,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComponentsModel()
 	 * @generated
 	 */
-	int COMPONENTS_MODEL = 49;
+	int COMPONENTS_MODEL = 50;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3070,43 +3107,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENTS_MODEL_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.INamedElement <em>INamed Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.INamedElement
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getINamedElement()
-	 * @generated
-	 */
-	int INAMED_ELEMENT = 50;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INAMED_ELEMENT__NAME = 0;
-
-	/**
-	 * The number of structural features of the '<em>INamed Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INAMED_ELEMENT_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>INamed Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INAMED_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ISystem <em>ISystem</em>}' class.
@@ -28365,6 +28365,27 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getITaggable_Tags();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.INamed <em>INamed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>INamed</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.INamed
+	 * @generated
+	 */
+	EClass getINamed();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.INamed#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.INamed#getName()
+	 * @see #getINamed()
+	 * @generated
+	 */
+	EAttribute getINamed_Name();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.IReferable <em>IReferable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28373,17 +28394,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getIReferable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.IReferable#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.IReferable#getName()
-	 * @see #getIReferable()
-	 * @generated
-	 */
-	EAttribute getIReferable_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.IReferable#getUniqueName <em>Unique Name</em>}'.
@@ -29636,27 +29646,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getComponentsModel_Systems();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.INamedElement <em>INamed Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>INamed Element</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.INamedElement
-	 * @generated
-	 */
-	EClass getINamedElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.INamedElement#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.INamedElement#getName()
-	 * @see #getINamedElement()
-	 * @generated
-	 */
-	EAttribute getINamedElement_Name();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ISystem <em>ISystem</em>}'.

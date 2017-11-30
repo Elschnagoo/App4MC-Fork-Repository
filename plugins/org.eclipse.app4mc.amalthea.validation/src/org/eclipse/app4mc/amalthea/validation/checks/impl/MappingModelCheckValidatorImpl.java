@@ -206,7 +206,7 @@ public class MappingModelCheckValidatorImpl extends AbstractValidatorImpl {
 			Algorithm algo = leftScheduler.getSchedulingAlgorithm();
 			if (algo != null && algo instanceof Grouping ) continue;	// no core responsibility required
 			
-			this.issueCreator.issue(leftScheduler, AmaltheaPackage.eINSTANCE.getIReferable_Name(),
+			this.issueCreator.issue(leftScheduler, AmaltheaPackage.eINSTANCE.getINamed_Name(),
 					"Scheduler2Core Mapping-Error: Scheduler not responsible for any core: " + leftScheduler.getName(),
 					leftScheduler);
 		}

@@ -665,9 +665,9 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>ITaggable: Possibility to add tags to an elements</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="IReferable">
+  <xsd:complexType abstract="true" name="INamed">
     <xsd:annotation>
-      <xsd:documentation>IReferable: Name attribute and computed ID for name based references</xsd:documentation>
+      <xsd:documentation>INamed: Name attribute</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -676,9 +676,22 @@ Needs to be extended by other classes.</xsd:documentation>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="name" type="xsd:string"/>
   </xsd:complexType>
+  <xsd:element name="INamed" type="am:INamed">
+    <xsd:annotation>
+      <xsd:documentation>INamed: Name attribute</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="IReferable">
+    <xsd:annotation>
+      <xsd:documentation>IReferable: Computed ID for name based references</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:INamed"/>
+    </xsd:complexContent>
+  </xsd:complexType>
   <xsd:element name="IReferable" type="am:IReferable">
     <xsd:annotation>
-      <xsd:documentation>IReferable: Name attribute and computed ID for name based references</xsd:documentation>
+      <xsd:documentation>IReferable: Computed ID for name based references</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="IDisplayName">
@@ -1253,15 +1266,6 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ComponentsModel" type="am:ComponentsModel"/>
-  <xsd:complexType abstract="true" name="INamedElement">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="name" type="xsd:string"/>
-  </xsd:complexType>
-  <xsd:element name="INamedElement" type="am:INamedElement"/>
   <xsd:complexType abstract="true" name="ISystem">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="componentInstances" type="am:ComponentInstance"/>

@@ -20,6 +20,7 @@ import java.nio.charset.StandardCharsets;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.EventChain;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -250,9 +251,14 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.EVENT_CHAIN__NAME: return AmaltheaPackage.INAMED__NAME;
+				default: return -1;
+			}
+		}
 		if (baseClass == IReferable.class) {
 			switch (derivedFeatureID) {
-				case AmaltheaPackage.EVENT_CHAIN__NAME: return AmaltheaPackage.IREFERABLE__NAME;
 				case AmaltheaPackage.EVENT_CHAIN__UNIQUE_NAME: return AmaltheaPackage.IREFERABLE__UNIQUE_NAME;
 				default: return -1;
 			}
@@ -267,9 +273,14 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.INAMED__NAME: return AmaltheaPackage.EVENT_CHAIN__NAME;
+				default: return -1;
+			}
+		}
 		if (baseClass == IReferable.class) {
 			switch (baseFeatureID) {
-				case AmaltheaPackage.IREFERABLE__NAME: return AmaltheaPackage.EVENT_CHAIN__NAME;
 				case AmaltheaPackage.IREFERABLE__UNIQUE_NAME: return AmaltheaPackage.EVENT_CHAIN__UNIQUE_NAME;
 				default: return -1;
 			}
@@ -284,6 +295,11 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
 		if (baseClass == IReferable.class) {
 			switch (baseOperationID) {
 				case AmaltheaPackage.IREFERABLE___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.EVENT_CHAIN___COMPUTE_UNIQUE_NAME;

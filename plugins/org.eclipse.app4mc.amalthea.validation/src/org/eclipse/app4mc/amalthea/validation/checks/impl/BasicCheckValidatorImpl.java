@@ -74,10 +74,10 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 			if (visitedObjects.containsKey(id)) {
 				final IReferable firstElement = visitedObjects.put(id, null);
 				if (firstElement != null) {
-					this.issueCreator.issue(firstElement, AmaltheaPackage.eINSTANCE.getIReferable_Name(),
+					this.issueCreator.issue(firstElement, AmaltheaPackage.eINSTANCE.getINamed_Name(),
 							firstElement.eClass().getName(), firstElement.getName());
 				}
-				this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getIReferable_Name(),
+				this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getINamed_Name(),
 						element.eClass().getName(), element.getName());
 			} else {
 				visitedObjects.put(id, element);
@@ -94,7 +94,7 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 
 		for (final IReferable element : getObjectHelper().getAllInstancesAndInheritedOf(model, IReferable.class)) {
 			if (Strings.isNullOrEmpty(element.getName())) {
-				this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getIReferable_Name(),
+				this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getINamed_Name(),
 						getObjectHelper().getClassName(element));
 			}
 		}

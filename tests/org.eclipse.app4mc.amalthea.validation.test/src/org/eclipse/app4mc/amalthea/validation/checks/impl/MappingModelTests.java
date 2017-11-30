@@ -268,7 +268,7 @@ public class MappingModelTests {
 		this.allSchedulers.addAll(Arrays.asList(taskScheduler, taskScheduler_left));
 		this.allTasks.add(task);
 
-		this.issueCreator.issue(taskScheduler_left, AmaltheaPackage.eINSTANCE.getIReferable_Name(),
+		this.issueCreator.issue(taskScheduler_left, AmaltheaPackage.eINSTANCE.getINamed_Name(),
 				"Scheduler2Core Mapping-Error: Scheduler not responsible for any core: " + taskScheduler_left.getName(),
 				taskScheduler_left);
 
@@ -497,7 +497,7 @@ public class MappingModelTests {
 				schedAlloc);
 
 		// Unmapped core detected
-		this.issueCreator.issue(taskScheduler, AmaltheaPackage.eINSTANCE.getIReferable_Name(),
+		this.issueCreator.issue(taskScheduler, AmaltheaPackage.eINSTANCE.getINamed_Name(),
 				"Scheduler2Core Mapping-Error: Scheduler not responsible for any core: " + taskScheduler.getName(),
 				taskScheduler);
 		EasyMock.replay(this.issueCreator);
@@ -555,7 +555,7 @@ public class MappingModelTests {
 				schedAlloc);
 
 		// Unmapped core detected
-		this.issueCreator.issue(taskScheduler, AmaltheaPackage.eINSTANCE.getIReferable_Name(),
+		this.issueCreator.issue(taskScheduler, AmaltheaPackage.eINSTANCE.getINamed_Name(),
 				"Scheduler2Core Mapping-Error: Scheduler not responsible for any core: " + taskScheduler.getName(),
 				taskScheduler);
 		EasyMock.replay(this.issueCreator);
@@ -610,7 +610,7 @@ public class MappingModelTests {
 		this.issueCreator.issue(schedAlloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility(),
 				"Scheduler2Core Mapping-Error: Scheduler and Responsibility are left blank", schedAlloc);
 		// Unmapped core detected
-		this.issueCreator.issue(taskScheduler, AmaltheaPackage.eINSTANCE.getIReferable_Name(),
+		this.issueCreator.issue(taskScheduler, AmaltheaPackage.eINSTANCE.getINamed_Name(),
 				"Scheduler2Core Mapping-Error: Scheduler not responsible for any core: " + taskScheduler.getName(),
 				taskScheduler);
 		EasyMock.replay(this.issueCreator);

@@ -16,7 +16,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Connector;
-import org.eclipse.app4mc.amalthea.model.INamedElement;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.Tag;
@@ -351,9 +351,9 @@ public class ConnectorImpl extends BaseObjectImpl implements Connector {
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == INamedElement.class) {
+		if (baseClass == INamed.class) {
 			switch (derivedFeatureID) {
-				case AmaltheaPackage.CONNECTOR__NAME: return AmaltheaPackage.INAMED_ELEMENT__NAME;
+				case AmaltheaPackage.CONNECTOR__NAME: return AmaltheaPackage.INAMED__NAME;
 				default: return -1;
 			}
 		}
@@ -373,9 +373,9 @@ public class ConnectorImpl extends BaseObjectImpl implements Connector {
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == INamedElement.class) {
+		if (baseClass == INamed.class) {
 			switch (baseFeatureID) {
-				case AmaltheaPackage.INAMED_ELEMENT__NAME: return AmaltheaPackage.CONNECTOR__NAME;
+				case AmaltheaPackage.INAMED__NAME: return AmaltheaPackage.CONNECTOR__NAME;
 				default: return -1;
 			}
 		}

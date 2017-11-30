@@ -176,7 +176,7 @@ import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwSystem;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
-import org.eclipse.app4mc.amalthea.model.INamedElement;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISRCategory;
@@ -470,6 +470,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass iTaggableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iNamedEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -771,13 +778,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass componentsModelEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass iNamedElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3488,6 +3488,24 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getINamed() {
+		return iNamedEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getINamed_Name() {
+		return (EAttribute)iNamedEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getIReferable() {
 		return iReferableEClass;
 	}
@@ -3497,17 +3515,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getIReferable_Name() {
-		return (EAttribute)iReferableEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getIReferable_UniqueName() {
-		return (EAttribute)iReferableEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)iReferableEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4579,24 +4588,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getComponentsModel_Systems() {
 		return (EReference)componentsModelEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getINamedElement() {
-		return iNamedElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getINamedElement_Name() {
-		return (EAttribute)iNamedElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -12714,8 +12705,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		iTaggableEClass = createEClass(ITAGGABLE);
 		createEReference(iTaggableEClass, ITAGGABLE__TAGS);
 
+		iNamedEClass = createEClass(INAMED);
+		createEAttribute(iNamedEClass, INAMED__NAME);
+
 		iReferableEClass = createEClass(IREFERABLE);
-		createEAttribute(iReferableEClass, IREFERABLE__NAME);
 		createEAttribute(iReferableEClass, IREFERABLE__UNIQUE_NAME);
 		createEOperation(iReferableEClass, IREFERABLE___COMPUTE_UNIQUE_NAME);
 		createEOperation(iReferableEClass, IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME);
@@ -12878,9 +12871,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		componentsModelEClass = createEClass(COMPONENTS_MODEL);
 		createEReference(componentsModelEClass, COMPONENTS_MODEL__COMPONENTS);
 		createEReference(componentsModelEClass, COMPONENTS_MODEL__SYSTEMS);
-
-		iNamedElementEClass = createEClass(INAMED_ELEMENT);
-		createEAttribute(iNamedElementEClass, INAMED_ELEMENT__NAME);
 
 		iSystemEClass = createEClass(ISYSTEM);
 		createEReference(iSystemEClass, ISYSTEM__COMPONENT_INSTANCES);
@@ -14122,6 +14112,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		referableObjectEClass.getESuperTypes().add(this.getIReferable());
 		referableBaseObjectEClass.getESuperTypes().add(this.getIAnnotatable());
 		referableBaseObjectEClass.getESuperTypes().add(this.getIReferable());
+		iReferableEClass.getESuperTypes().add(this.getINamed());
 		tagEClass.getESuperTypes().add(this.getReferableBaseObject());
 		classifierEClass.getESuperTypes().add(this.getReferableBaseObject());
 		coreClassifierEClass.getESuperTypes().add(this.getClassifier());
@@ -14186,7 +14177,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		componentInstanceEClass.getESuperTypes().add(this.getReferableBaseObject());
 		componentInstanceEClass.getESuperTypes().add(this.getITaggable());
 		connectorEClass.getESuperTypes().add(this.getBaseObject());
-		connectorEClass.getESuperTypes().add(this.getINamedElement());
+		connectorEClass.getESuperTypes().add(this.getINamed());
 		connectorEClass.getESuperTypes().add(this.getITaggable());
 		qualifiedPortEClass.getESuperTypes().add(this.getBaseObject());
 		fInterfacePortEClass.getESuperTypes().add(this.getPort());
@@ -14236,7 +14227,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		eventChainEClass.getESuperTypes().add(this.getAbstractEventChain());
 		eventChainEClass.getESuperTypes().add(this.getIReferable());
 		subEventChainEClass.getESuperTypes().add(this.getAbstractEventChain());
-		subEventChainEClass.getESuperTypes().add(this.getINamedElement());
+		subEventChainEClass.getESuperTypes().add(this.getINamed());
 		eventChainItemEClass.getESuperTypes().add(this.getBaseObject());
 		eventChainReferenceEClass.getESuperTypes().add(this.getEventChainItem());
 		eventChainContainerEClass.getESuperTypes().add(this.getEventChainItem());
@@ -14526,8 +14517,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(iTaggableEClass, ITaggable.class, "ITaggable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getITaggable_Tags(), this.getTag(), null, "tags", null, 0, -1, ITaggable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(iNamedEClass, INamed.class, "INamed", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getINamed_Name(), theEcorePackage.getEString(), "name", null, 0, 1, INamed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(iReferableEClass, IReferable.class, "IReferable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIReferable_Name(), theEcorePackage.getEString(), "name", null, 0, 1, IReferable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIReferable_UniqueName(), theEcorePackage.getEString(), "uniqueName", null, 0, 1, IReferable.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getIReferable__ComputeUniqueName(), theEcorePackage.getEString(), "computeUniqueName", 0, 1, !IS_UNIQUE, IS_ORDERED);
@@ -14733,9 +14726,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(componentsModelEClass, ComponentsModel.class, "ComponentsModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComponentsModel_Components(), this.getComponent(), null, "components", null, 0, -1, ComponentsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponentsModel_Systems(), this.getSystem(), null, "systems", null, 0, -1, ComponentsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(iNamedElementEClass, INamedElement.class, "INamedElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getINamedElement_Name(), theEcorePackage.getEString(), "name", null, 0, 1, INamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iSystemEClass, ISystem.class, "ISystem", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getISystem_ComponentInstances(), this.getComponentInstance(), null, "componentInstances", null, 0, -1, ISystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

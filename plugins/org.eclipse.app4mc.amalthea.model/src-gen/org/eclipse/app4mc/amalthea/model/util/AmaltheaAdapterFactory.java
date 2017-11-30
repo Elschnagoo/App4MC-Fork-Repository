@@ -158,7 +158,7 @@ import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwSystem;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
-import org.eclipse.app4mc.amalthea.model.INamedElement;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
@@ -445,6 +445,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createITaggableAdapter();
 			}
 			@Override
+			public Adapter caseINamed(INamed object) {
+				return createINamedAdapter();
+			}
+			@Override
 			public Adapter caseIReferable(IReferable object) {
 				return createIReferableAdapter();
 			}
@@ -615,10 +619,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseComponentsModel(ComponentsModel object) {
 				return createComponentsModelAdapter();
-			}
-			@Override
-			public Adapter caseINamedElement(INamedElement object) {
-				return createINamedElementAdapter();
 			}
 			@Override
 			public Adapter caseISystem(ISystem object) {
@@ -1911,6 +1911,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.INamed <em>INamed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.INamed
+	 * @generated
+	 */
+	public Adapter createINamedAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.IReferable <em>IReferable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -2509,20 +2523,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createComponentsModelAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.INamedElement <em>INamed Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.INamedElement
-	 * @generated
-	 */
-	public Adapter createINamedElementAdapter() {
 		return null;
 	}
 

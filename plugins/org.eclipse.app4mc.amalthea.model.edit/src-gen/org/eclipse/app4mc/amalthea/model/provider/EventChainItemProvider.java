@@ -70,9 +70,9 @@ public class EventChainItemProvider extends AbstractEventChainItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IReferable_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IReferable_name_feature", "_UI_IReferable_type"),
-				 AmaltheaPackage.eINSTANCE.getIReferable_Name(),
+				 getString("_UI_INamed_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_INamed_name_feature", "_UI_INamed_type"),
+				 AmaltheaPackage.eINSTANCE.getINamed_Name(),
 				 true,
 				 false,
 				 false,

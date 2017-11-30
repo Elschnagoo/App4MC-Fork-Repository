@@ -158,7 +158,7 @@ import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwSystem;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
-import org.eclipse.app4mc.amalthea.model.INamedElement;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
@@ -442,6 +442,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				ReferableObject referableObject = (ReferableObject)theEObject;
 				T1 result = caseReferableObject(referableObject);
 				if (result == null) result = caseIReferable(referableObject);
+				if (result == null) result = caseINamed(referableObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -450,6 +451,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseReferableBaseObject(referableBaseObject);
 				if (result == null) result = caseIAnnotatable(referableBaseObject);
 				if (result == null) result = caseIReferable(referableBaseObject);
+				if (result == null) result = caseINamed(referableBaseObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -465,9 +467,16 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.INAMED: {
+				INamed iNamed = (INamed)theEObject;
+				T1 result = caseINamed(iNamed);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.IREFERABLE: {
 				IReferable iReferable = (IReferable)theEObject;
 				T1 result = caseIReferable(iReferable);
+				if (result == null) result = caseINamed(iReferable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -483,6 +492,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(tag);
 				if (result == null) result = caseIAnnotatable(tag);
 				if (result == null) result = caseIReferable(tag);
+				if (result == null) result = caseINamed(tag);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -492,6 +502,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(classifier);
 				if (result == null) result = caseIAnnotatable(classifier);
 				if (result == null) result = caseIReferable(classifier);
+				if (result == null) result = caseINamed(classifier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -502,6 +513,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(coreClassifier);
 				if (result == null) result = caseIAnnotatable(coreClassifier);
 				if (result == null) result = caseIReferable(coreClassifier);
+				if (result == null) result = caseINamed(coreClassifier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -512,6 +524,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(memoryClassifier);
 				if (result == null) result = caseIAnnotatable(memoryClassifier);
 				if (result == null) result = caseIReferable(memoryClassifier);
+				if (result == null) result = caseINamed(memoryClassifier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -753,6 +766,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(mode);
 				if (result == null) result = caseIAnnotatable(mode);
 				if (result == null) result = caseIReferable(mode);
+				if (result == null) result = caseINamed(mode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -762,6 +776,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(modeLiteral);
 				if (result == null) result = caseIAnnotatable(modeLiteral);
 				if (result == null) result = caseIReferable(modeLiteral);
+				if (result == null) result = caseINamed(modeLiteral);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -770,12 +785,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseComponentsModel(componentsModel);
 				if (result == null) result = caseBaseObject(componentsModel);
 				if (result == null) result = caseIAnnotatable(componentsModel);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.INAMED_ELEMENT: {
-				INamedElement iNamedElement = (INamedElement)theEObject;
-				T1 result = caseINamedElement(iNamedElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -792,6 +801,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(port);
 				if (result == null) result = caseIAnnotatable(port);
 				if (result == null) result = caseIReferable(port);
+				if (result == null) result = caseINamed(port);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -802,6 +812,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(component);
 				if (result == null) result = caseIAnnotatable(component);
 				if (result == null) result = caseIReferable(component);
+				if (result == null) result = caseINamed(component);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -814,6 +825,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(composite);
 				if (result == null) result = caseIAnnotatable(composite);
 				if (result == null) result = caseIReferable(composite);
+				if (result == null) result = caseINamed(composite);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -825,6 +837,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseISystem(system);
 				if (result == null) result = caseIAnnotatable(system);
 				if (result == null) result = caseIReferable(system);
+				if (result == null) result = caseINamed(system);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -835,6 +848,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(componentInstance);
 				if (result == null) result = caseIAnnotatable(componentInstance);
 				if (result == null) result = caseIReferable(componentInstance);
+				if (result == null) result = caseINamed(componentInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -842,7 +856,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				Connector connector = (Connector)theEObject;
 				T1 result = caseConnector(connector);
 				if (result == null) result = caseBaseObject(connector);
-				if (result == null) result = caseINamedElement(connector);
+				if (result == null) result = caseINamed(connector);
 				if (result == null) result = caseITaggable(connector);
 				if (result == null) result = caseIAnnotatable(connector);
 				if (result == null) result = defaultCase(theEObject);
@@ -864,6 +878,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(fInterfacePort);
 				if (result == null) result = caseIAnnotatable(fInterfacePort);
 				if (result == null) result = caseIReferable(fInterfacePort);
+				if (result == null) result = caseINamed(fInterfacePort);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -897,6 +912,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(runnableSequencingConstraint);
 				if (result == null) result = caseIAnnotatable(runnableSequencingConstraint);
 				if (result == null) result = caseIReferable(runnableSequencingConstraint);
+				if (result == null) result = caseINamed(runnableSequencingConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -906,6 +922,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(affinityConstraint);
 				if (result == null) result = caseIAnnotatable(affinityConstraint);
 				if (result == null) result = caseIReferable(affinityConstraint);
+				if (result == null) result = caseINamed(affinityConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -916,6 +933,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(separationConstraint);
 				if (result == null) result = caseIAnnotatable(separationConstraint);
 				if (result == null) result = caseIReferable(separationConstraint);
+				if (result == null) result = caseINamed(separationConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -926,6 +944,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(pairingConstraint);
 				if (result == null) result = caseIAnnotatable(pairingConstraint);
 				if (result == null) result = caseIReferable(pairingConstraint);
+				if (result == null) result = caseINamed(pairingConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -957,6 +976,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(runnableSeparationConstraint);
 				if (result == null) result = caseIAnnotatable(runnableSeparationConstraint);
 				if (result == null) result = caseIReferable(runnableSeparationConstraint);
+				if (result == null) result = caseINamed(runnableSeparationConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -970,6 +990,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(processSeparationConstraint);
 				if (result == null) result = caseIAnnotatable(processSeparationConstraint);
 				if (result == null) result = caseIReferable(processSeparationConstraint);
+				if (result == null) result = caseINamed(processSeparationConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -983,6 +1004,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(dataSeparationConstraint);
 				if (result == null) result = caseIAnnotatable(dataSeparationConstraint);
 				if (result == null) result = caseIReferable(dataSeparationConstraint);
+				if (result == null) result = caseINamed(dataSeparationConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -996,6 +1018,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(runnablePairingConstraint);
 				if (result == null) result = caseIAnnotatable(runnablePairingConstraint);
 				if (result == null) result = caseIReferable(runnablePairingConstraint);
+				if (result == null) result = caseINamed(runnablePairingConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1009,6 +1032,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(processPairingConstraint);
 				if (result == null) result = caseIAnnotatable(processPairingConstraint);
 				if (result == null) result = caseIReferable(processPairingConstraint);
+				if (result == null) result = caseINamed(processPairingConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1022,6 +1046,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(dataPairingConstraint);
 				if (result == null) result = caseIAnnotatable(dataPairingConstraint);
 				if (result == null) result = caseIReferable(dataPairingConstraint);
+				if (result == null) result = caseINamed(dataPairingConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1141,6 +1166,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseAbstractEventChain(eventChain);
 				if (result == null) result = caseIReferable(eventChain);
 				if (result == null) result = caseBaseObject(eventChain);
+				if (result == null) result = caseINamed(eventChain);
 				if (result == null) result = caseIAnnotatable(eventChain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -1149,7 +1175,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				SubEventChain subEventChain = (SubEventChain)theEObject;
 				T1 result = caseSubEventChain(subEventChain);
 				if (result == null) result = caseAbstractEventChain(subEventChain);
-				if (result == null) result = caseINamedElement(subEventChain);
+				if (result == null) result = caseINamed(subEventChain);
 				if (result == null) result = caseBaseObject(subEventChain);
 				if (result == null) result = caseIAnnotatable(subEventChain);
 				if (result == null) result = defaultCase(theEObject);
@@ -1187,6 +1213,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(timingConstraint);
 				if (result == null) result = caseIAnnotatable(timingConstraint);
 				if (result == null) result = caseIReferable(timingConstraint);
+				if (result == null) result = caseINamed(timingConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1196,6 +1223,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(physicalSectionConstraint);
 				if (result == null) result = caseIAnnotatable(physicalSectionConstraint);
 				if (result == null) result = caseIReferable(physicalSectionConstraint);
+				if (result == null) result = caseINamed(physicalSectionConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1206,6 +1234,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(synchronizationConstraint);
 				if (result == null) result = caseIAnnotatable(synchronizationConstraint);
 				if (result == null) result = caseIReferable(synchronizationConstraint);
+				if (result == null) result = caseINamed(synchronizationConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1217,6 +1246,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(eventSynchronizationConstraint);
 				if (result == null) result = caseIAnnotatable(eventSynchronizationConstraint);
 				if (result == null) result = caseIReferable(eventSynchronizationConstraint);
+				if (result == null) result = caseINamed(eventSynchronizationConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1228,6 +1258,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(eventChainSynchronizationConstraint);
 				if (result == null) result = caseIAnnotatable(eventChainSynchronizationConstraint);
 				if (result == null) result = caseIReferable(eventChainSynchronizationConstraint);
+				if (result == null) result = caseINamed(eventChainSynchronizationConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1238,6 +1269,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(delayConstraint);
 				if (result == null) result = caseIAnnotatable(delayConstraint);
 				if (result == null) result = caseIReferable(delayConstraint);
+				if (result == null) result = caseINamed(delayConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1248,6 +1280,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(eventChainLatencyConstraint);
 				if (result == null) result = caseIAnnotatable(eventChainLatencyConstraint);
 				if (result == null) result = caseIReferable(eventChainLatencyConstraint);
+				if (result == null) result = caseINamed(eventChainLatencyConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1258,6 +1291,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(repetitionConstraint);
 				if (result == null) result = caseIAnnotatable(repetitionConstraint);
 				if (result == null) result = caseIReferable(repetitionConstraint);
+				if (result == null) result = caseINamed(repetitionConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1267,6 +1301,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(dataAgeConstraint);
 				if (result == null) result = caseIAnnotatable(dataAgeConstraint);
 				if (result == null) result = caseIReferable(dataAgeConstraint);
+				if (result == null) result = caseINamed(dataAgeConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1381,6 +1416,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(dataCoherencyGroup);
 				if (result == null) result = caseIAnnotatable(dataCoherencyGroup);
 				if (result == null) result = caseIReferable(dataCoherencyGroup);
+				if (result == null) result = caseINamed(dataCoherencyGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1390,6 +1426,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(dataStabilityGroup);
 				if (result == null) result = caseIAnnotatable(dataStabilityGroup);
 				if (result == null) result = caseIReferable(dataStabilityGroup);
+				if (result == null) result = caseINamed(dataStabilityGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1435,6 +1472,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(event);
 				if (result == null) result = caseIAnnotatable(event);
 				if (result == null) result = caseIReferable(event);
+				if (result == null) result = caseINamed(event);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1446,6 +1484,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(eventSet);
 				if (result == null) result = caseIAnnotatable(eventSet);
 				if (result == null) result = caseIReferable(eventSet);
+				if (result == null) result = caseINamed(eventSet);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1457,6 +1496,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(entityEvent);
 				if (result == null) result = caseIAnnotatable(entityEvent);
 				if (result == null) result = caseIReferable(entityEvent);
+				if (result == null) result = caseINamed(entityEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1469,6 +1509,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(triggerEvent);
 				if (result == null) result = caseIAnnotatable(triggerEvent);
 				if (result == null) result = caseIReferable(triggerEvent);
+				if (result == null) result = caseINamed(triggerEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1482,6 +1523,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(customEvent);
 				if (result == null) result = caseIAnnotatable(customEvent);
 				if (result == null) result = caseIReferable(customEvent);
+				if (result == null) result = caseINamed(customEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1494,6 +1536,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(stimulusEvent);
 				if (result == null) result = caseIAnnotatable(stimulusEvent);
 				if (result == null) result = caseIReferable(stimulusEvent);
+				if (result == null) result = caseINamed(stimulusEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1506,6 +1549,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(processEvent);
 				if (result == null) result = caseIAnnotatable(processEvent);
 				if (result == null) result = caseIReferable(processEvent);
+				if (result == null) result = caseINamed(processEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1518,6 +1562,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(processChainEvent);
 				if (result == null) result = caseIAnnotatable(processChainEvent);
 				if (result == null) result = caseIReferable(processChainEvent);
+				if (result == null) result = caseINamed(processChainEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1531,6 +1576,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(runnableEvent);
 				if (result == null) result = caseIAnnotatable(runnableEvent);
 				if (result == null) result = caseIReferable(runnableEvent);
+				if (result == null) result = caseINamed(runnableEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1544,6 +1590,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(labelEvent);
 				if (result == null) result = caseIAnnotatable(labelEvent);
 				if (result == null) result = caseIReferable(labelEvent);
+				if (result == null) result = caseINamed(labelEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1557,6 +1604,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(channelEvent);
 				if (result == null) result = caseIAnnotatable(channelEvent);
 				if (result == null) result = caseIReferable(channelEvent);
+				if (result == null) result = caseINamed(channelEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1569,6 +1617,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(semaphoreEvent);
 				if (result == null) result = caseIAnnotatable(semaphoreEvent);
 				if (result == null) result = caseIReferable(semaphoreEvent);
+				if (result == null) result = caseINamed(semaphoreEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1581,6 +1630,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(componentEvent);
 				if (result == null) result = caseIAnnotatable(componentEvent);
 				if (result == null) result = caseIReferable(componentEvent);
+				if (result == null) result = caseINamed(componentEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1599,6 +1649,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(complexNode);
 				if (result == null) result = caseIAnnotatable(complexNode);
 				if (result == null) result = caseIReferable(complexNode);
+				if (result == null) result = caseINamed(complexNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1610,6 +1661,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(hwSystem);
 				if (result == null) result = caseIAnnotatable(hwSystem);
 				if (result == null) result = caseIReferable(hwSystem);
+				if (result == null) result = caseINamed(hwSystem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1621,6 +1673,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(ecu);
 				if (result == null) result = caseIAnnotatable(ecu);
 				if (result == null) result = caseIReferable(ecu);
+				if (result == null) result = caseINamed(ecu);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1632,6 +1685,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(microcontroller);
 				if (result == null) result = caseIAnnotatable(microcontroller);
 				if (result == null) result = caseIReferable(microcontroller);
+				if (result == null) result = caseINamed(microcontroller);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1643,6 +1697,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(core);
 				if (result == null) result = caseIAnnotatable(core);
 				if (result == null) result = caseIReferable(core);
+				if (result == null) result = caseINamed(core);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1654,6 +1709,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(memory);
 				if (result == null) result = caseIAnnotatable(memory);
 				if (result == null) result = caseIReferable(memory);
+				if (result == null) result = caseINamed(memory);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1665,6 +1721,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(network);
 				if (result == null) result = caseIAnnotatable(network);
 				if (result == null) result = caseIReferable(network);
+				if (result == null) result = caseINamed(network);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1675,6 +1732,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(quartz);
 				if (result == null) result = caseIAnnotatable(quartz);
 				if (result == null) result = caseIReferable(quartz);
+				if (result == null) result = caseINamed(quartz);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1686,6 +1744,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(hwComponent);
 				if (result == null) result = caseIAnnotatable(hwComponent);
 				if (result == null) result = caseIReferable(hwComponent);
+				if (result == null) result = caseINamed(hwComponent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1696,6 +1755,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(hardwareTypeDescription);
 				if (result == null) result = caseIAnnotatable(hardwareTypeDescription);
 				if (result == null) result = caseIReferable(hardwareTypeDescription);
+				if (result == null) result = caseINamed(hardwareTypeDescription);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1707,6 +1767,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(abstractionType);
 				if (result == null) result = caseIAnnotatable(abstractionType);
 				if (result == null) result = caseIReferable(abstractionType);
+				if (result == null) result = caseINamed(abstractionType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1719,6 +1780,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(systemType);
 				if (result == null) result = caseIAnnotatable(systemType);
 				if (result == null) result = caseIReferable(systemType);
+				if (result == null) result = caseINamed(systemType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1731,6 +1793,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(ecuType);
 				if (result == null) result = caseIAnnotatable(ecuType);
 				if (result == null) result = caseIReferable(ecuType);
+				if (result == null) result = caseINamed(ecuType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1743,6 +1806,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(microcontrollerType);
 				if (result == null) result = caseIAnnotatable(microcontrollerType);
 				if (result == null) result = caseIReferable(microcontrollerType);
+				if (result == null) result = caseINamed(microcontrollerType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1755,6 +1819,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(coreType);
 				if (result == null) result = caseIAnnotatable(coreType);
 				if (result == null) result = caseIReferable(coreType);
+				if (result == null) result = caseINamed(coreType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1766,6 +1831,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(memoryType);
 				if (result == null) result = caseIAnnotatable(memoryType);
 				if (result == null) result = caseIReferable(memoryType);
+				if (result == null) result = caseINamed(memoryType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1777,6 +1843,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(networkType);
 				if (result == null) result = caseIAnnotatable(networkType);
 				if (result == null) result = caseIReferable(networkType);
+				if (result == null) result = caseINamed(networkType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1786,6 +1853,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(hwPort);
 				if (result == null) result = caseIAnnotatable(hwPort);
 				if (result == null) result = caseIReferable(hwPort);
+				if (result == null) result = caseINamed(hwPort);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1795,6 +1863,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(pin);
 				if (result == null) result = caseIAnnotatable(pin);
 				if (result == null) result = caseIReferable(pin);
+				if (result == null) result = caseINamed(pin);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1805,6 +1874,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(complexPort);
 				if (result == null) result = caseIAnnotatable(complexPort);
 				if (result == null) result = caseIReferable(complexPort);
+				if (result == null) result = caseINamed(complexPort);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1815,6 +1885,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(complexPin);
 				if (result == null) result = caseIAnnotatable(complexPin);
 				if (result == null) result = caseIReferable(complexPin);
+				if (result == null) result = caseINamed(complexPin);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1833,6 +1904,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(crossbarSwitch);
 				if (result == null) result = caseIAnnotatable(crossbarSwitch);
 				if (result == null) result = caseIReferable(crossbarSwitch);
+				if (result == null) result = caseINamed(crossbarSwitch);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1845,6 +1917,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(bus);
 				if (result == null) result = caseIAnnotatable(bus);
 				if (result == null) result = caseIReferable(bus);
+				if (result == null) result = caseINamed(bus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1857,6 +1930,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(bridge);
 				if (result == null) result = caseIAnnotatable(bridge);
 				if (result == null) result = caseIReferable(bridge);
+				if (result == null) result = caseINamed(bridge);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1864,6 +1938,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				AccessPath accessPath = (AccessPath)theEObject;
 				T1 result = caseAccessPath(accessPath);
 				if (result == null) result = caseIReferable(accessPath);
+				if (result == null) result = caseINamed(accessPath);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1872,6 +1947,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseLatencyAccessPath(latencyAccessPath);
 				if (result == null) result = caseAccessPath(latencyAccessPath);
 				if (result == null) result = caseIReferable(latencyAccessPath);
+				if (result == null) result = caseINamed(latencyAccessPath);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1880,6 +1956,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseHwAccessPath(hwAccessPath);
 				if (result == null) result = caseAccessPath(hwAccessPath);
 				if (result == null) result = caseIReferable(hwAccessPath);
+				if (result == null) result = caseINamed(hwAccessPath);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1993,6 +2070,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(physicalSectionMapping);
 				if (result == null) result = caseIAnnotatable(physicalSectionMapping);
 				if (result == null) result = caseIReferable(physicalSectionMapping);
+				if (result == null) result = caseINamed(physicalSectionMapping);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2030,6 +2108,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(semaphore);
 				if (result == null) result = caseIAnnotatable(semaphore);
 				if (result == null) result = caseIReferable(semaphore);
+				if (result == null) result = caseINamed(semaphore);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2039,6 +2118,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(scheduler);
 				if (result == null) result = caseIAnnotatable(scheduler);
 				if (result == null) result = caseIReferable(scheduler);
+				if (result == null) result = caseINamed(scheduler);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2049,6 +2129,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(taskScheduler);
 				if (result == null) result = caseIAnnotatable(taskScheduler);
 				if (result == null) result = caseIReferable(taskScheduler);
+				if (result == null) result = caseINamed(taskScheduler);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2065,6 +2146,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(interruptController);
 				if (result == null) result = caseIAnnotatable(interruptController);
 				if (result == null) result = caseIReferable(interruptController);
+				if (result == null) result = caseINamed(interruptController);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2387,6 +2469,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(osInstructions);
 				if (result == null) result = caseIAnnotatable(osInstructions);
 				if (result == null) result = caseIReferable(osInstructions);
+				if (result == null) result = caseINamed(osInstructions);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2507,6 +2590,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(stimulus);
 				if (result == null) result = caseIAnnotatable(stimulus);
 				if (result == null) result = caseIReferable(stimulus);
+				if (result == null) result = caseINamed(stimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2560,6 +2644,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(periodicStimulus);
 				if (result == null) result = caseIAnnotatable(periodicStimulus);
 				if (result == null) result = caseIReferable(periodicStimulus);
+				if (result == null) result = caseINamed(periodicStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2571,6 +2656,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(variableRateStimulus);
 				if (result == null) result = caseIAnnotatable(variableRateStimulus);
 				if (result == null) result = caseIReferable(variableRateStimulus);
+				if (result == null) result = caseINamed(variableRateStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2582,6 +2668,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(syntheticStimulus);
 				if (result == null) result = caseIAnnotatable(syntheticStimulus);
 				if (result == null) result = caseIReferable(syntheticStimulus);
+				if (result == null) result = caseINamed(syntheticStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2601,6 +2688,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(customStimulus);
 				if (result == null) result = caseIAnnotatable(customStimulus);
 				if (result == null) result = caseIReferable(customStimulus);
+				if (result == null) result = caseINamed(customStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2612,6 +2700,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(singleStimulus);
 				if (result == null) result = caseIAnnotatable(singleStimulus);
 				if (result == null) result = caseIReferable(singleStimulus);
+				if (result == null) result = caseINamed(singleStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2623,6 +2712,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(interProcessStimulus);
 				if (result == null) result = caseIAnnotatable(interProcessStimulus);
 				if (result == null) result = caseIReferable(interProcessStimulus);
+				if (result == null) result = caseINamed(interProcessStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2634,6 +2724,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(sporadicStimulus);
 				if (result == null) result = caseIAnnotatable(sporadicStimulus);
 				if (result == null) result = caseIReferable(sporadicStimulus);
+				if (result == null) result = caseINamed(sporadicStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2645,6 +2736,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(eventStimulus);
 				if (result == null) result = caseIAnnotatable(eventStimulus);
 				if (result == null) result = caseIReferable(eventStimulus);
+				if (result == null) result = caseINamed(eventStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2656,6 +2748,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(arrivalCurveStimulus);
 				if (result == null) result = caseIAnnotatable(arrivalCurveStimulus);
 				if (result == null) result = caseIReferable(arrivalCurveStimulus);
+				if (result == null) result = caseINamed(arrivalCurveStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2673,6 +2766,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(clock);
 				if (result == null) result = caseIAnnotatable(clock);
 				if (result == null) result = caseIReferable(clock);
+				if (result == null) result = caseINamed(clock);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2683,6 +2777,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(clockTriangleFunction);
 				if (result == null) result = caseIAnnotatable(clockTriangleFunction);
 				if (result == null) result = caseIReferable(clockTriangleFunction);
+				if (result == null) result = caseINamed(clockTriangleFunction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2693,6 +2788,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(clockSinusFunction);
 				if (result == null) result = caseIAnnotatable(clockSinusFunction);
 				if (result == null) result = caseIReferable(clockSinusFunction);
+				if (result == null) result = caseINamed(clockSinusFunction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2703,6 +2799,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(clockMultiplierList);
 				if (result == null) result = caseIAnnotatable(clockMultiplierList);
 				if (result == null) result = caseIReferable(clockMultiplierList);
+				if (result == null) result = caseINamed(clockMultiplierList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2729,6 +2826,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(abstractMemoryElement);
 				if (result == null) result = caseIAnnotatable(abstractMemoryElement);
 				if (result == null) result = caseIReferable(abstractMemoryElement);
+				if (result == null) result = caseINamed(abstractMemoryElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2740,6 +2838,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(abstractProcess);
 				if (result == null) result = caseIAnnotatable(abstractProcess);
 				if (result == null) result = caseIReferable(abstractProcess);
+				if (result == null) result = caseINamed(abstractProcess);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2751,6 +2850,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(customEntity);
 				if (result == null) result = caseIAnnotatable(customEntity);
 				if (result == null) result = caseIReferable(customEntity);
+				if (result == null) result = caseINamed(customEntity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2760,6 +2860,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(processChain);
 				if (result == null) result = caseIAnnotatable(processChain);
 				if (result == null) result = caseIReferable(processChain);
+				if (result == null) result = caseINamed(processChain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2772,6 +2873,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(process);
 				if (result == null) result = caseIAnnotatable(process);
 				if (result == null) result = caseIReferable(process);
+				if (result == null) result = caseINamed(process);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2900,6 +3002,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(osEvent);
 				if (result == null) result = caseIAnnotatable(osEvent);
 				if (result == null) result = caseIReferable(osEvent);
+				if (result == null) result = caseINamed(osEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2958,6 +3061,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(task);
 				if (result == null) result = caseIAnnotatable(task);
 				if (result == null) result = caseIReferable(task);
+				if (result == null) result = caseINamed(task);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2971,6 +3075,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(isr);
 				if (result == null) result = caseIAnnotatable(isr);
 				if (result == null) result = caseIReferable(isr);
+				if (result == null) result = caseINamed(isr);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2983,6 +3088,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(processPrototype);
 				if (result == null) result = caseIAnnotatable(processPrototype);
 				if (result == null) result = caseIReferable(processPrototype);
+				if (result == null) result = caseINamed(processPrototype);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3028,6 +3134,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(runnable);
 				if (result == null) result = caseIAnnotatable(runnable);
 				if (result == null) result = caseIReferable(runnable);
+				if (result == null) result = caseINamed(runnable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3040,6 +3147,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(label);
 				if (result == null) result = caseIAnnotatable(label);
 				if (result == null) result = caseIReferable(label);
+				if (result == null) result = caseINamed(label);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3052,6 +3160,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(channel);
 				if (result == null) result = caseIAnnotatable(channel);
 				if (result == null) result = caseIReferable(channel);
+				if (result == null) result = caseINamed(channel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3064,6 +3173,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(modeLabel);
 				if (result == null) result = caseIAnnotatable(modeLabel);
 				if (result == null) result = caseIReferable(modeLabel);
+				if (result == null) result = caseINamed(modeLabel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3073,6 +3183,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(section);
 				if (result == null) result = caseIAnnotatable(section);
 				if (result == null) result = caseIReferable(section);
+				if (result == null) result = caseINamed(section);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3353,6 +3464,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(typeDefinition);
 				if (result == null) result = caseIAnnotatable(typeDefinition);
 				if (result == null) result = caseIReferable(typeDefinition);
+				if (result == null) result = caseINamed(typeDefinition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3363,6 +3475,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(dataTypeDefinition);
 				if (result == null) result = caseIAnnotatable(dataTypeDefinition);
 				if (result == null) result = caseIReferable(dataTypeDefinition);
+				if (result == null) result = caseINamed(dataTypeDefinition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3373,6 +3486,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseReferableBaseObject(baseTypeDefinition);
 				if (result == null) result = caseIAnnotatable(baseTypeDefinition);
 				if (result == null) result = caseIReferable(baseTypeDefinition);
+				if (result == null) result = caseINamed(baseTypeDefinition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3383,6 +3497,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(activation);
 				if (result == null) result = caseIAnnotatable(activation);
 				if (result == null) result = caseIReferable(activation);
+				if (result == null) result = caseINamed(activation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3394,6 +3509,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(periodicActivation);
 				if (result == null) result = caseIAnnotatable(periodicActivation);
 				if (result == null) result = caseIReferable(periodicActivation);
+				if (result == null) result = caseINamed(periodicActivation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3405,6 +3521,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(variableRateActivation);
 				if (result == null) result = caseIAnnotatable(variableRateActivation);
 				if (result == null) result = caseIReferable(variableRateActivation);
+				if (result == null) result = caseINamed(variableRateActivation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3416,6 +3533,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(sporadicActivation);
 				if (result == null) result = caseIAnnotatable(sporadicActivation);
 				if (result == null) result = caseIReferable(sporadicActivation);
+				if (result == null) result = caseINamed(sporadicActivation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3427,6 +3545,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(singleActivation);
 				if (result == null) result = caseIAnnotatable(singleActivation);
 				if (result == null) result = caseIReferable(singleActivation);
+				if (result == null) result = caseINamed(singleActivation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3438,6 +3557,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(eventActivation);
 				if (result == null) result = caseIAnnotatable(eventActivation);
 				if (result == null) result = caseIReferable(eventActivation);
+				if (result == null) result = caseINamed(eventActivation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3449,6 +3569,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseITaggable(customActivation);
 				if (result == null) result = caseIAnnotatable(customActivation);
 				if (result == null) result = caseIReferable(customActivation);
+				if (result == null) result = caseINamed(customActivation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3625,6 +3746,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseITaggable(ITaggable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>INamed</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>INamed</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseINamed(INamed object) {
 		return null;
 	}
 
@@ -4270,21 +4406,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseComponentsModel(ComponentsModel object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>INamed Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>INamed Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseINamedElement(INamedElement object) {
 		return null;
 	}
 

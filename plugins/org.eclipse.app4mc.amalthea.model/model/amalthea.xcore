@@ -112,12 +112,19 @@ interface ITaggable
 
 
 /*
- * IReferable: Name attribute and computed ID for name based references
+ * INamed: Name attribute
  */
-interface IReferable
-{
+interface INamed {
 	@GenModel(propertyCategory="Main")
 	String name
+}
+
+
+/*
+ * IReferable: Computed ID for name based references
+ */
+interface IReferable extends INamed
+{
 	// use IPropertySheetEntry.FILTER_ID_EXPERT ("org.eclipse.ui.views.properties.expert")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	id derived readonly String uniqueName get {
@@ -152,6 +159,7 @@ class Tag extends ReferableBaseObject
 	// String tagName -> replaced by attribute "name"
 	String tagType
 }
+
 
 /*
  * Classifiers for hardware properties
@@ -642,9 +650,6 @@ class ComponentsModel extends BaseObject {
 	contains System[] systems
 }
 
-interface INamedElement {
-	String name
-}
 
 interface ISystem {
 	contains ComponentInstance[] componentInstances
@@ -686,7 +691,7 @@ class ComponentInstance extends ReferableBaseObject, ITaggable {
 	refers Component ^type
 }
 
-class Connector extends BaseObject, INamedElement, ITaggable {
+class Connector extends BaseObject, INamed, ITaggable {
 	contains QualifiedPort sourcePort
 	contains QualifiedPort targetPort
 }
@@ -1014,7 +1019,7 @@ class EventChain extends AbstractEventChain, IReferable
 {	
 }
 
-class SubEventChain extends AbstractEventChain, INamedElement
+class SubEventChain extends AbstractEventChain, INamed
 {	
 }
 

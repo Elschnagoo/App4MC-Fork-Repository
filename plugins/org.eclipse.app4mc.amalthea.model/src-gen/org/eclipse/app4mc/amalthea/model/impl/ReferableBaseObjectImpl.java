@@ -19,6 +19,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 import org.eclipse.app4mc.amalthea.model.Value;
@@ -308,9 +309,14 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.REFERABLE_BASE_OBJECT__NAME: return AmaltheaPackage.INAMED__NAME;
+				default: return -1;
+			}
+		}
 		if (baseClass == IReferable.class) {
 			switch (derivedFeatureID) {
-				case AmaltheaPackage.REFERABLE_BASE_OBJECT__NAME: return AmaltheaPackage.IREFERABLE__NAME;
 				case AmaltheaPackage.REFERABLE_BASE_OBJECT__UNIQUE_NAME: return AmaltheaPackage.IREFERABLE__UNIQUE_NAME;
 				default: return -1;
 			}
@@ -325,9 +331,14 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.INAMED__NAME: return AmaltheaPackage.REFERABLE_BASE_OBJECT__NAME;
+				default: return -1;
+			}
+		}
 		if (baseClass == IReferable.class) {
 			switch (baseFeatureID) {
-				case AmaltheaPackage.IREFERABLE__NAME: return AmaltheaPackage.REFERABLE_BASE_OBJECT__NAME;
 				case AmaltheaPackage.IREFERABLE__UNIQUE_NAME: return AmaltheaPackage.REFERABLE_BASE_OBJECT__UNIQUE_NAME;
 				default: return -1;
 			}
@@ -342,6 +353,11 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
 		if (baseClass == IReferable.class) {
 			switch (baseOperationID) {
 				case AmaltheaPackage.IREFERABLE___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;

@@ -30,7 +30,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface Connector extends BaseObject, INamedElement, ITaggable {
+public interface Connector extends BaseObject, INamed, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Source Port</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
