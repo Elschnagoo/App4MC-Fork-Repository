@@ -67,6 +67,7 @@ public class ActivationsIP extends ExtendedSphinxTransientItemProvider {
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createPeriodicActivation()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createEventActivation()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createCustomActivation()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createVariableRateActivation()));
 	}
 
 }
