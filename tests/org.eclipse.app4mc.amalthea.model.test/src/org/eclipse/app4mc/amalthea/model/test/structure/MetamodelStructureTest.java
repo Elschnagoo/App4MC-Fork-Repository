@@ -93,10 +93,15 @@ public final class MetamodelStructureTest {
 					if (eRef.getEType() instanceof EClass) {
 						final EClass refClass = (EClass) eRef.getEType();
 						if (eRef.isContainment()) {
-							// print("Containment reference", eClass, eRef, refClass);
+							// print("Containment reference", eClass, eRef, refClass, Level.INFO);
 							continue;
 						}
 
+						if (eRef.isContainer()) {
+							print("Container reference", eClass, eRef, refClass, Level.INFO);
+							continue;
+						}
+						
 						if (eRef.isTransient()) {
 							if (eRef.isDerived()) {
 								print("Derived reference", eClass, eRef, refClass, Level.INFO);
@@ -109,7 +114,7 @@ public final class MetamodelStructureTest {
 
 						if (amPackage.getIReferable().isSuperTypeOf(refClass)) {
 							// valid reference
-							// print("Valid reference", eClass, eRef, refClass);
+							// print("Valid reference", eClass, eRef, refClass, Level.INFO);
 							continue;
 						}
 
