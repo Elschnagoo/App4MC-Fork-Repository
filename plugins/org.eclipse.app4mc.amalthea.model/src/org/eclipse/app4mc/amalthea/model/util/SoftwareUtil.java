@@ -672,7 +672,7 @@ public class SoftwareUtil {
 		for (LabelAccess la : label.getLabelAccesses()) {
 			if (la.getAccess().equals(LabelAccessEnum.READ)) {
 				Runnable run = ModelUtil.getParentContainer(la, Runnable.class);
-				if (modeLiterals != null && !modeLiterals.isEmpty() && (SoftwareUtil.collectRunnableItems(run, modeLiterals).contains(la))) {
+				if (modeLiterals == null || modeLiterals.isEmpty() || (SoftwareUtil.collectRunnableItems(run, modeLiterals)).contains(la)) {
 					result.add((Runnable) ModelUtil.getParentContainer(la, Runnable.class));
 				}
 			}
@@ -765,8 +765,9 @@ public class SoftwareUtil {
 		for (LabelAccess la : label.getLabelAccesses()) {
 			if (la.getAccess().equals(LabelAccessEnum.WRITE)) {
 				Runnable run = ModelUtil.getParentContainer(la, Runnable.class);
-				if (modeLiterals != null && !modeLiterals.isEmpty() &&(SoftwareUtil.collectRunnableItems(run, modeLiterals)).contains(la))
+				if (modeLiterals == null || modeLiterals.isEmpty() || (SoftwareUtil.collectRunnableItems(run, modeLiterals)).contains(la)) {
 					result.add((Runnable) ModelUtil.getParentContainer(la, Runnable.class));
+				}
 			}
 		}
 		return result;
