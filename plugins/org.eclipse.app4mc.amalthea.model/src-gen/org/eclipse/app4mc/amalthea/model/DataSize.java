@@ -14,12 +14,14 @@ package org.eclipse.app4mc.amalthea.model;
 
 import java.math.BigInteger;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Data Size</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * General data size class to define size (value and unit)
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -33,7 +35,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DataSize extends EObject {
+public interface DataSize extends Quantity {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
@@ -98,15 +100,6 @@ public interface DataSize extends EObject {
 	 * @generated
 	 */
 	String toString();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return true;'"
-	 * @generated
-	 */
-	boolean containerNotificationRequired();
 
 	/**
 	 * <!-- begin-user-doc -->

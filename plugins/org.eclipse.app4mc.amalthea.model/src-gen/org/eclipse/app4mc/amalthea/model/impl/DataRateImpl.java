@@ -22,8 +22,6 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -46,7 +44,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class DataRateImpl extends AmaltheaExtendedEObjectImpl implements DataRate {
+public class DataRateImpl extends QuantityImpl implements DataRate {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->

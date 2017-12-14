@@ -20,8 +20,6 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -38,33 +36,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.FrequencyImpl#getUnit <em>Unit</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.FrequencyImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.FrequencyImpl#getUnit <em>Unit</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class FrequencyImpl extends AmaltheaExtendedEObjectImpl implements Frequency {
-	/**
-	 * The default value of the '{@link #getUnit() <em>Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUnit()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final FrequencyUnit UNIT_EDEFAULT = FrequencyUnit._UNDEFINED_;
-
-	/**
-	 * The cached value of the '{@link #getUnit() <em>Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUnit()
-	 * @generated
-	 * @ordered
-	 */
-	protected FrequencyUnit unit = UNIT_EDEFAULT;
-
+public class FrequencyImpl extends QuantityImpl implements Frequency {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -86,6 +64,26 @@ public class FrequencyImpl extends AmaltheaExtendedEObjectImpl implements Freque
 	protected double value = VALUE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getUnit() <em>Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnit()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final FrequencyUnit UNIT_EDEFAULT = FrequencyUnit._UNDEFINED_;
+
+	/**
+	 * The cached value of the '{@link #getUnit() <em>Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnit()
+	 * @generated
+	 * @ordered
+	 */
+	protected FrequencyUnit unit = UNIT_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -102,27 +100,6 @@ public class FrequencyImpl extends AmaltheaExtendedEObjectImpl implements Freque
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getFrequency();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FrequencyUnit getUnit() {
-		return unit;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUnit(FrequencyUnit newUnit) {
-		FrequencyUnit oldUnit = unit;
-		unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.FREQUENCY__UNIT, oldUnit, unit));
 	}
 
 	/**
@@ -151,8 +128,20 @@ public class FrequencyImpl extends AmaltheaExtendedEObjectImpl implements Freque
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean containerNotificationRequired() {
-		return true;
+	public FrequencyUnit getUnit() {
+		return unit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnit(FrequencyUnit newUnit) {
+		FrequencyUnit oldUnit = unit;
+		unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.FREQUENCY__UNIT, oldUnit, unit));
 	}
 
 	/**
@@ -183,10 +172,10 @@ public class FrequencyImpl extends AmaltheaExtendedEObjectImpl implements Freque
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.FREQUENCY__UNIT:
-				return getUnit();
 			case AmaltheaPackage.FREQUENCY__VALUE:
 				return getValue();
+			case AmaltheaPackage.FREQUENCY__UNIT:
+				return getUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -199,11 +188,11 @@ public class FrequencyImpl extends AmaltheaExtendedEObjectImpl implements Freque
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.FREQUENCY__UNIT:
-				setUnit((FrequencyUnit)newValue);
-				return;
 			case AmaltheaPackage.FREQUENCY__VALUE:
 				setValue((Double)newValue);
+				return;
+			case AmaltheaPackage.FREQUENCY__UNIT:
+				setUnit((FrequencyUnit)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -217,11 +206,11 @@ public class FrequencyImpl extends AmaltheaExtendedEObjectImpl implements Freque
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.FREQUENCY__UNIT:
-				setUnit(UNIT_EDEFAULT);
-				return;
 			case AmaltheaPackage.FREQUENCY__VALUE:
 				setValue(VALUE_EDEFAULT);
+				return;
+			case AmaltheaPackage.FREQUENCY__UNIT:
+				setUnit(UNIT_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -235,10 +224,10 @@ public class FrequencyImpl extends AmaltheaExtendedEObjectImpl implements Freque
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.FREQUENCY__UNIT:
-				return unit != UNIT_EDEFAULT;
 			case AmaltheaPackage.FREQUENCY__VALUE:
 				return value != VALUE_EDEFAULT;
+			case AmaltheaPackage.FREQUENCY__UNIT:
+				return unit != UNIT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -251,8 +240,6 @@ public class FrequencyImpl extends AmaltheaExtendedEObjectImpl implements Freque
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.FREQUENCY___CONTAINER_NOTIFICATION_REQUIRED:
-				return containerNotificationRequired();
 			case AmaltheaPackage.FREQUENCY___TO_STRING:
 				return toString();
 		}

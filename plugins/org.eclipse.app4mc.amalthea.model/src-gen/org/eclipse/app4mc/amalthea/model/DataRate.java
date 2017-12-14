@@ -14,12 +14,14 @@ package org.eclipse.app4mc.amalthea.model;
 
 import java.math.BigInteger;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Data Rate</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * General data rate class to define rate (value and unit)
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -33,7 +35,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DataRate extends EObject {
+public interface DataRate extends Quantity {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * The default value is <code>"0"</code>.

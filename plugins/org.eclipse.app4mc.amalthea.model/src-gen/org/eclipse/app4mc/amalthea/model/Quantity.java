@@ -12,20 +12,30 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Weibull Distribution</b></em>'.
+ * A representation of the model object '<em><b>Quantity</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Abstract Weibull distribution
+ * Abstract class for Quantities (value + unit)
  * <!-- end-model-doc -->
  *
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getWeibullDistribution()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getQuantity()
  * @model abstract="true"
  * @generated
  */
-public interface WeibullDistribution<T> extends Distribution<T> {
-} // WeibullDistribution
+public interface Quantity extends EObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return true;'"
+	 * @generated
+	 */
+	boolean containerNotificationRequired();
+
+} // Quantity

@@ -768,6 +768,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createConcurrencyTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.ASIL_TYPE:
 				return createASILTypeFromString(eDataType, initialValue);
+			case AmaltheaPackage.ADDRESS:
+				return createAddressFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -885,6 +887,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertConcurrencyTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.ASIL_TYPE:
 				return convertASILTypeToString(eDataType, instanceValue);
+			case AmaltheaPackage.ADDRESS:
+				return convertAddressToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -4588,6 +4592,54 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 */
 	public String convertASILTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public long createAddress(final String it) {
+		Long _xifexpression = null;
+		if ((it != null)) {
+			Long _xifexpression_1 = null;
+			if ((it.startsWith("-") || it.startsWith("+"))) {
+				throw new NumberFormatException("Sign character");
+			}
+			else {
+				_xifexpression_1 = Long.decode(it);
+			}
+			_xifexpression = _xifexpression_1;
+		}
+		return (_xifexpression).longValue();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Long createAddressFromString(EDataType eDataType, String initialValue) {
+		return createAddress(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAddress(final long it) {
+		String _hexString = Long.toHexString(it);
+		return ("0x" + _hexString);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAddressToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : convertAddress((Long)instanceValue);
 	}
 
 	/**

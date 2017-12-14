@@ -130,7 +130,7 @@ public interface ComplexPort extends HwPort {
 	 * @return the value of the '<em>Base Address</em>' attribute.
 	 * @see #setBaseAddress(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComplexPort_BaseAddress()
-	 * @model default="0" unique="false"
+	 * @model default="0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.Address"
 	 * @generated
 	 */
 	long getBaseAddress();
@@ -157,7 +157,7 @@ public interface ComplexPort extends HwPort {
 	 * @return the value of the '<em>Address Range</em>' attribute.
 	 * @see #setAddressRange(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComplexPort_AddressRange()
-	 * @model default="0" unique="false"
+	 * @model default="0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.Address"
 	 * @generated
 	 */
 	long getAddressRange();

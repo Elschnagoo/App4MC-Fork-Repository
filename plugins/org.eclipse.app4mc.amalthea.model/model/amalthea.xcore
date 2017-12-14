@@ -219,23 +219,31 @@ class InstructionsConstant extends Instructions
 
 
 /*
- * Time unit enumeration for available units.
+ * Abstract class for Quantities (value + unit)
+ */
+abstract class Quantity {
+	op boolean containerNotificationRequired() {
+		return true
+	}
+}
+
+
+/*
+ * Time units (enumeration for available units)
  */
 enum TimeUnit
 {
 	_undefined_ // Display: "<unit>"
-	s
-	ms
-	us
-	ns
 	ps
+	ns
+	us
+	ms
+	s
 }
 
-interface TimeComparable wraps java.lang.Comparable<AbstractTime>{
+interface TimeComparable wraps java.lang.Comparable<AbstractTime> {}
 
-}
-
-abstract class AbstractTime extends TimeComparable{
+abstract class AbstractTime extends TimeComparable {
 	
 	BigInteger value = "0"
 	TimeUnit unit
@@ -252,19 +260,14 @@ abstract class AbstractTime extends TimeComparable{
 }
 
 /*
- * General time class to use including value and given time unit.
+ * General time class to define time value and unit.
  */
-class Time extends AbstractTime
-{
-	op boolean containerNotificationRequired() {
-		return true
-	}
-	
+class Time extends AbstractTime, Quantity {
 }
 
 
 /*
- * Frequency unit enumeration for available units
+ * Frequency units (enumeration for available units)
  */
 enum FrequencyUnit {
 	_undefined_ // Display: "<unit>"
@@ -276,23 +279,21 @@ enum FrequencyUnit {
 }
 
 /*
- * General frequency class to define a frequency value
+ * General frequency class to define frequency value and unit
  */
-class Frequency {
-	FrequencyUnit unit
-	double value = "0.0"
+class Frequency extends Quantity {
 	
-	op boolean containerNotificationRequired() {
-		return true
-	}
+	double value = "0.0"
+	FrequencyUnit unit
 	
 	op String toString() {
 		return value + " " +  if (unit == FrequencyUnit::_UNDEFINED_ ) "<unit>" else unit.literal
 	}
 }
 
+
 /*
- * Representing data sizes
+ * Data size units (enumeration for available units)
  */
 enum DataSizeUnit {
 	_undefined_ // Display: "<unit>"
@@ -319,16 +320,16 @@ enum DataSizeUnit {
 	TiB
 }
 
-class DataSize {
+/*
+ * General data size class to define size (value and unit)
+ */
+class DataSize extends Quantity {
+	
 	BigInteger value = "0"
 	DataSizeUnit unit
 	
 	op String toString() {
 		return value + " " +  if (unit == DataSizeUnit::_UNDEFINED_ ) "<unit>" else unit.literal
-	}
-	
-	op boolean containerNotificationRequired() {
-		return true
 	}
 	
 	/*
@@ -345,8 +346,9 @@ class DataSize {
 	}
 }
 
+
 /*
- * Representing data rates
+ * Data rate units (enumeration for available units)
  */
 enum DataRateUnit {
 	_undefined_ // Display: "<unit>"
@@ -373,7 +375,11 @@ enum DataRateUnit {
 	TiBPerSecond
 }
 
-class DataRate {
+/*
+ * General data rate class to define rate (value and unit)
+ */
+class DataRate extends Quantity {
+	
 	BigInteger value = "0"
 	DataRateUnit unit
 	
@@ -382,6 +388,8 @@ class DataRate {
 	}
 	
 }
+
+
 
 /*
  * custom property container for map
@@ -524,7 +532,7 @@ abstract class Distribution<T>
 }
 
 /*
- * Abstract weibull distribution
+ * Abstract Weibull distribution
  */
 abstract class WeibullDistribution<T> extends Distribution<T>
 {
@@ -634,6 +642,24 @@ class ModeLiteral extends ReferableBaseObject {
 		return (if (modeName.nullOrEmpty) "<mode>" else modeName) + "::" + (if (name.nullOrEmpty) "<literal>" else name)
 	}
 }
+
+/*
+ * Hardware Address (long; specified as hexadecimal value)
+ */
+@ExtendedMetaData(minInclusive="0")
+type Address wraps long
+create {
+	if (it !== null) {
+		if (it.startsWith("-") || it.startsWith("+"))
+			throw new NumberFormatException("Sign character")
+	 	else
+			Long.decode(it)
+	}
+}
+convert {
+	"0x" + Long.toHexString(it)
+}
+
 
 
 // ===============================================================================
@@ -1725,8 +1751,8 @@ class ComplexPort extends HwPort
 	refers Network[1] network
 	boolean master = "false"
 	int bitWidth = "0"
-	long baseAddress = "0"
-	long addressRange = "0"
+	Address baseAddress = "0"
+	Address addressRange = "0"
 	RWType direction
 	int writeCycles = "0"
 	int readCycles = "0"

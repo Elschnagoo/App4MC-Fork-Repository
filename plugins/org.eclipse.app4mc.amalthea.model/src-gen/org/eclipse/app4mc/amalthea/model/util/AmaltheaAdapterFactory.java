@@ -260,6 +260,7 @@ import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.QualifiedPort;
+import org.eclipse.app4mc.amalthea.model.Quantity;
 import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
@@ -487,6 +488,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseInstructionsConstant(InstructionsConstant object) {
 				return createInstructionsConstantAdapter();
+			}
+			@Override
+			public Adapter caseQuantity(Quantity object) {
+				return createQuantityAdapter();
 			}
 			@Override
 			public Adapter caseTimeComparable(Comparable<AbstractTime> object) {
@@ -2061,6 +2066,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInstructionsConstantAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Quantity <em>Quantity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.Quantity
+	 * @generated
+	 */
+	public Adapter createQuantityAdapter() {
 		return null;
 	}
 

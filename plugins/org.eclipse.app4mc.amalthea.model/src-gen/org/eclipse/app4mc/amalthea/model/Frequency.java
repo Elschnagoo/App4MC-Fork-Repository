@@ -12,7 +12,6 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,51 +19,22 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * General frequency class to define a frequency value
+ * General frequency class to define frequency value and unit
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Frequency#getUnit <em>Unit</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Frequency#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Frequency#getUnit <em>Unit</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getFrequency()
  * @model
  * @generated
  */
-public interface Frequency extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Unit</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.FrequencyUnit}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Unit</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unit</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.FrequencyUnit
-	 * @see #setUnit(FrequencyUnit)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getFrequency_Unit()
-	 * @model unique="false"
-	 * @generated
-	 */
-	FrequencyUnit getUnit();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Frequency#getUnit <em>Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unit</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.FrequencyUnit
-	 * @see #getUnit()
-	 * @generated
-	 */
-	void setUnit(FrequencyUnit value);
-
+public interface Frequency extends Quantity {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * The default value is <code>"0.0"</code>.
@@ -93,13 +63,33 @@ public interface Frequency extends EObject {
 	void setValue(double value);
 
 	/**
+	 * Returns the value of the '<em><b>Unit</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.FrequencyUnit}.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Unit</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Unit</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.FrequencyUnit
+	 * @see #setUnit(FrequencyUnit)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getFrequency_Unit()
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return true;'"
 	 * @generated
 	 */
-	boolean containerNotificationRequired();
+	FrequencyUnit getUnit();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Frequency#getUnit <em>Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Unit</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.FrequencyUnit
+	 * @see #getUnit()
+	 * @generated
+	 */
+	void setUnit(FrequencyUnit value);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -16,7 +16,8 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Quantity;
-import org.eclipse.app4mc.amalthea.model.Time;
+
+import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -24,18 +25,18 @@ import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Time</b></em>'.
+ * An implementation of the model object '<em><b>Quantity</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class TimeImpl extends AbstractTimeImpl implements Time {
+public abstract class QuantityImpl extends AmaltheaExtendedEObjectImpl implements Quantity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TimeImpl() {
+	protected QuantityImpl() {
 		super();
 	}
 
@@ -46,7 +47,7 @@ public class TimeImpl extends AbstractTimeImpl implements Time {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getTime();
+		return AmaltheaPackage.eINSTANCE.getQuantity();
 	}
 
 	/**
@@ -64,28 +65,12 @@ public class TimeImpl extends AbstractTimeImpl implements Time {
 	 * @generated
 	 */
 	@Override
-	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Quantity.class) {
-			switch (baseOperationID) {
-				case AmaltheaPackage.QUANTITY___CONTAINER_NOTIFICATION_REQUIRED: return AmaltheaPackage.TIME___CONTAINER_NOTIFICATION_REQUIRED;
-				default: return -1;
-			}
-		}
-		return super.eDerivedOperationID(baseOperationID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.TIME___CONTAINER_NOTIFICATION_REQUIRED:
+			case AmaltheaPackage.QUANTITY___CONTAINER_NOTIFICATION_REQUIRED:
 				return containerNotificationRequired();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
 
-} //TimeImpl
+} //QuantityImpl

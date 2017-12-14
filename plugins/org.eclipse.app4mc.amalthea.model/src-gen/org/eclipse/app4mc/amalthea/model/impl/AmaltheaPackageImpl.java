@@ -295,6 +295,7 @@ import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.QType;
 import org.eclipse.app4mc.amalthea.model.QualifiedPort;
+import org.eclipse.app4mc.amalthea.model.Quantity;
 import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.RWType;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
@@ -403,14 +404,18 @@ import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 import org.eclipse.app4mc.amalthea.model.WeibullParameters;
 
+import org.eclipse.app4mc.amalthea.model.util.AmaltheaValidator;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -547,6 +552,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass instructionsConstantEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass quantityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3195,6 +3207,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	private EEnum asilTypeEEnum = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType addressEDataType = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -3248,6 +3267,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		// Initialize created meta-data
 		theAmaltheaPackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theAmaltheaPackage, 
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return AmaltheaValidator.INSTANCE;
+				 }
+			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theAmaltheaPackage.freeze();
@@ -3731,6 +3759,24 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getQuantity() {
+		return quantityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getQuantity__ContainerNotificationRequired() {
+		return quantityEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTimeComparable() {
 		return timeComparableEClass;
 	}
@@ -3794,15 +3840,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTime__ContainerNotificationRequired() {
-		return timeEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getFrequency() {
 		return frequencyEClass;
 	}
@@ -3812,7 +3849,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getFrequency_Unit() {
+	public EAttribute getFrequency_Value() {
 		return (EAttribute)frequencyEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -3821,7 +3858,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getFrequency_Value() {
+	public EAttribute getFrequency_Unit() {
 		return (EAttribute)frequencyEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -3830,17 +3867,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getFrequency__ContainerNotificationRequired() {
-		return frequencyEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EOperation getFrequency__ToString() {
-		return frequencyEClass.getEOperations().get(1);
+		return frequencyEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -3884,7 +3912,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDataSize__ContainerNotificationRequired() {
+	public EOperation getDataSize__GetNumberBits() {
 		return dataSizeEClass.getEOperations().get(1);
 	}
 
@@ -3893,17 +3921,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDataSize__GetNumberBits() {
-		return dataSizeEClass.getEOperations().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EOperation getDataSize__GetNumberBytes() {
-		return dataSizeEClass.getEOperations().get(3);
+		return dataSizeEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -12650,6 +12669,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getAddress() {
+		return addressEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AmaltheaFactory getAmaltheaFactory() {
 		return (AmaltheaFactory)getEFactoryInstance();
 	}
@@ -12743,6 +12771,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		instructionsConstantEClass = createEClass(INSTRUCTIONS_CONSTANT);
 		createEAttribute(instructionsConstantEClass, INSTRUCTIONS_CONSTANT__VALUE);
 
+		quantityEClass = createEClass(QUANTITY);
+		createEOperation(quantityEClass, QUANTITY___CONTAINER_NOTIFICATION_REQUIRED);
+
 		timeComparableEClass = createEClass(TIME_COMPARABLE);
 
 		abstractTimeEClass = createEClass(ABSTRACT_TIME);
@@ -12752,19 +12783,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEOperation(abstractTimeEClass, ABSTRACT_TIME___COMPARE_TO__ABSTRACTTIME);
 
 		timeEClass = createEClass(TIME);
-		createEOperation(timeEClass, TIME___CONTAINER_NOTIFICATION_REQUIRED);
 
 		frequencyEClass = createEClass(FREQUENCY);
-		createEAttribute(frequencyEClass, FREQUENCY__UNIT);
 		createEAttribute(frequencyEClass, FREQUENCY__VALUE);
-		createEOperation(frequencyEClass, FREQUENCY___CONTAINER_NOTIFICATION_REQUIRED);
+		createEAttribute(frequencyEClass, FREQUENCY__UNIT);
 		createEOperation(frequencyEClass, FREQUENCY___TO_STRING);
 
 		dataSizeEClass = createEClass(DATA_SIZE);
 		createEAttribute(dataSizeEClass, DATA_SIZE__VALUE);
 		createEAttribute(dataSizeEClass, DATA_SIZE__UNIT);
 		createEOperation(dataSizeEClass, DATA_SIZE___TO_STRING);
-		createEOperation(dataSizeEClass, DATA_SIZE___CONTAINER_NOTIFICATION_REQUIRED);
 		createEOperation(dataSizeEClass, DATA_SIZE___GET_NUMBER_BITS);
 		createEOperation(dataSizeEClass, DATA_SIZE___GET_NUMBER_BYTES);
 
@@ -14061,6 +14089,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		preemptionEEnum = createEEnum(PREEMPTION);
 		concurrencyTypeEEnum = createEEnum(CONCURRENCY_TYPE);
 		asilTypeEEnum = createEEnum(ASIL_TYPE);
+
+		// Create data types
+		addressEDataType = createEDataType(ADDRESS);
 	}
 
 	/**
@@ -14121,6 +14152,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		instructionsConstantEClass.getESuperTypes().add(this.getInstructions());
 		abstractTimeEClass.getESuperTypes().add(this.getTimeComparable());
 		timeEClass.getESuperTypes().add(this.getAbstractTime());
+		timeEClass.getESuperTypes().add(this.getQuantity());
+		frequencyEClass.getESuperTypes().add(this.getQuantity());
+		dataSizeEClass.getESuperTypes().add(this.getQuantity());
+		dataRateEClass.getESuperTypes().add(this.getQuantity());
 		listObjectEClass.getESuperTypes().add(this.getValue());
 		stringObjectEClass.getESuperTypes().add(this.getValue());
 		bigIntegerObjectEClass.getESuperTypes().add(this.getValue());
@@ -14565,6 +14600,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(instructionsConstantEClass, InstructionsConstant.class, "InstructionsConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInstructionsConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, InstructionsConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(quantityEClass, Quantity.class, "Quantity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getQuantity__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(timeComparableEClass, Comparable.class, "TimeComparable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime>");
 
 		initEClass(abstractTimeEClass, AbstractTime.class, "AbstractTime", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -14578,13 +14617,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(timeEClass, Time.class, "Time", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTime__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(frequencyEClass, Frequency.class, "Frequency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFrequency_Unit(), this.getFrequencyUnit(), "unit", null, 0, 1, Frequency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrequency_Value(), theEcorePackage.getEDouble(), "value", "0.0", 0, 1, Frequency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getFrequency__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEAttribute(getFrequency_Unit(), this.getFrequencyUnit(), "unit", null, 0, 1, Frequency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getFrequency__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -14593,8 +14628,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getDataSize_Unit(), this.getDataSizeUnit(), "unit", null, 0, 1, DataSize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getDataSize__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getDataSize__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getDataSize__GetNumberBits(), theEcorePackage.getELong(), "getNumberBits", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -15139,8 +15172,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getComplexPort_Network(), this.getNetwork(), null, "network", null, 1, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComplexPort_Master(), theEcorePackage.getEBoolean(), "master", "false", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComplexPort_BitWidth(), theEcorePackage.getEInt(), "bitWidth", "0", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexPort_BaseAddress(), theEcorePackage.getELong(), "baseAddress", "0", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexPort_AddressRange(), theEcorePackage.getELong(), "addressRange", "0", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComplexPort_BaseAddress(), this.getAddress(), "baseAddress", "0", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComplexPort_AddressRange(), this.getAddress(), "addressRange", "0", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComplexPort_Direction(), this.getRWType(), "direction", null, 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComplexPort_WriteCycles(), theEcorePackage.getEInt(), "writeCycles", "0", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComplexPort_ReadCycles(), theEcorePackage.getEInt(), "readCycles", "0", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15915,11 +15948,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
 		addEEnumLiteral(timeUnitEEnum, TimeUnit._UNDEFINED_);
-		addEEnumLiteral(timeUnitEEnum, TimeUnit.S);
-		addEEnumLiteral(timeUnitEEnum, TimeUnit.MS);
-		addEEnumLiteral(timeUnitEEnum, TimeUnit.US);
-		addEEnumLiteral(timeUnitEEnum, TimeUnit.NS);
 		addEEnumLiteral(timeUnitEEnum, TimeUnit.PS);
+		addEEnumLiteral(timeUnitEEnum, TimeUnit.NS);
+		addEEnumLiteral(timeUnitEEnum, TimeUnit.US);
+		addEEnumLiteral(timeUnitEEnum, TimeUnit.MS);
+		addEEnumLiteral(timeUnitEEnum, TimeUnit.S);
 
 		initEEnum(frequencyUnitEEnum, FrequencyUnit.class, "FrequencyUnit");
 		addEEnumLiteral(frequencyUnitEEnum, FrequencyUnit._UNDEFINED_);
@@ -16292,12 +16325,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(asilTypeEEnum, ASILType.A);
 		addEEnumLiteral(asilTypeEEnum, ASILType.QM);
 
+		// Initialize data types
+		initEDataType(addressEDataType, long.class, "Address", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+
 		// Create resource
 		createResource(eNS_URI);
 
 		// Create annotations
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
+		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		createExtendedMetaDataAnnotations();
 	}
 
 	/**
@@ -16312,6 +16350,22 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		  (this, 
 		   source, 
 		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createExtendedMetaDataAnnotations() {
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";	
+		addAnnotation
+		  (addressEDataType, 
+		   source, 
+		   new String[] {
+			 "minInclusive", "0"
 		   });
 	}
 

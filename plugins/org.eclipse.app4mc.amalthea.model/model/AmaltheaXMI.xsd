@@ -4,20 +4,20 @@
   <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/XMI.xsd"/>
   <xsd:simpleType name="TimeUnit">
     <xsd:annotation>
-      <xsd:documentation>Time unit enumeration for available units.</xsd:documentation>
+      <xsd:documentation>Time units (enumeration for available units)</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="s"/>
-      <xsd:enumeration value="ms"/>
-      <xsd:enumeration value="us"/>
-      <xsd:enumeration value="ns"/>
       <xsd:enumeration value="ps"/>
+      <xsd:enumeration value="ns"/>
+      <xsd:enumeration value="us"/>
+      <xsd:enumeration value="ms"/>
+      <xsd:enumeration value="s"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="FrequencyUnit">
     <xsd:annotation>
-      <xsd:documentation>Frequency unit enumeration for available units</xsd:documentation>
+      <xsd:documentation>Frequency units (enumeration for available units)</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -29,7 +29,7 @@
   </xsd:simpleType>
   <xsd:simpleType name="DataSizeUnit">
     <xsd:annotation>
-      <xsd:documentation>Representing data sizes</xsd:documentation>
+      <xsd:documentation>Data size units (enumeration for available units)</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -55,7 +55,7 @@
   </xsd:simpleType>
   <xsd:simpleType name="DataRateUnit">
     <xsd:annotation>
-      <xsd:documentation>Representing data rates</xsd:documentation>
+      <xsd:documentation>Data rate units (enumeration for available units)</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -815,6 +815,21 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Constant set of execution cycles</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="Quantity">
+    <xsd:annotation>
+      <xsd:documentation>Abstract class for Quantities (value + unit)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="Quantity" type="am:Quantity">
+    <xsd:annotation>
+      <xsd:documentation>Abstract class for Quantities (value + unit)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType abstract="true" name="TimeComparable">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -834,7 +849,7 @@ Needs to be extended by other classes.</xsd:documentation>
   <xsd:element name="AbstractTime" type="am:AbstractTime"/>
   <xsd:complexType name="Time">
     <xsd:annotation>
-      <xsd:documentation>General time class to use including value and given time unit.</xsd:documentation>
+      <xsd:documentation>General time class to define time value and unit.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:AbstractTime"/>
@@ -842,46 +857,57 @@ Needs to be extended by other classes.</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="Time" type="am:Time">
     <xsd:annotation>
-      <xsd:documentation>General time class to use including value and given time unit.</xsd:documentation>
+      <xsd:documentation>General time class to define time value and unit.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="Frequency">
     <xsd:annotation>
-      <xsd:documentation>General frequency class to define a frequency value</xsd:documentation>
+      <xsd:documentation>General frequency class to define frequency value and unit</xsd:documentation>
     </xsd:annotation>
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="unit" type="am:FrequencyUnit"/>
-    <xsd:attribute name="value" type="xsd:double"/>
+    <xsd:complexContent>
+      <xsd:extension base="am:Quantity">
+        <xsd:attribute name="value" type="xsd:double"/>
+        <xsd:attribute name="unit" type="am:FrequencyUnit"/>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Frequency" type="am:Frequency">
     <xsd:annotation>
-      <xsd:documentation>General frequency class to define a frequency value</xsd:documentation>
+      <xsd:documentation>General frequency class to define frequency value and unit</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="DataSize">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="value" type="xsd:string"/>
-    <xsd:attribute name="unit" type="am:DataSizeUnit"/>
+    <xsd:annotation>
+      <xsd:documentation>General data size class to define size (value and unit)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Quantity">
+        <xsd:attribute name="value" type="xsd:string"/>
+        <xsd:attribute name="unit" type="am:DataSizeUnit"/>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="DataSize" type="am:DataSize"/>
+  <xsd:element name="DataSize" type="am:DataSize">
+    <xsd:annotation>
+      <xsd:documentation>General data size class to define size (value and unit)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="DataRate">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="value" type="xsd:string"/>
-    <xsd:attribute name="unit" type="am:DataRateUnit"/>
+    <xsd:annotation>
+      <xsd:documentation>General data rate class to define rate (value and unit)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Quantity">
+        <xsd:attribute name="value" type="xsd:string"/>
+        <xsd:attribute name="unit" type="am:DataRateUnit"/>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="DataRate" type="am:DataRate"/>
+  <xsd:element name="DataRate" type="am:DataRate">
+    <xsd:annotation>
+      <xsd:documentation>General data rate class to define rate (value and unit)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="CustomProperty">
     <xsd:annotation>
       <xsd:documentation>custom property container for map</xsd:documentation>
@@ -1083,7 +1109,7 @@ The generic class T defines the data-type of the value-range of the distribution
   </xsd:element>
   <xsd:complexType abstract="true" name="WeibullDistribution">
     <xsd:annotation>
-      <xsd:documentation>Abstract weibull distribution</xsd:documentation>
+      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Distribution"/>
@@ -1091,7 +1117,7 @@ The generic class T defines the data-type of the value-range of the distribution
   </xsd:complexType>
   <xsd:element name="WeibullDistribution" type="am:WeibullDistribution">
     <xsd:annotation>
-      <xsd:documentation>Abstract weibull distribution</xsd:documentation>
+      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="WeibullParameters">
@@ -2885,8 +2911,8 @@ entity: The component that fires the event (optional)</xsd:documentation>
         </xsd:choice>
         <xsd:attribute name="master" type="xsd:boolean"/>
         <xsd:attribute name="bitWidth" type="xsd:int"/>
-        <xsd:attribute name="baseAddress" type="xsd:long"/>
-        <xsd:attribute name="addressRange" type="xsd:long"/>
+        <xsd:attribute name="baseAddress" type="xsd:string"/>
+        <xsd:attribute name="addressRange" type="xsd:string"/>
         <xsd:attribute name="direction" type="am:RWType"/>
         <xsd:attribute name="writeCycles" type="xsd:int"/>
         <xsd:attribute name="readCycles" type="xsd:int"/>

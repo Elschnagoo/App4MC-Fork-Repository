@@ -19,7 +19,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * General time class to use including value and given time unit.
+ * General time class to define time value and unit.
  * <!-- end-model-doc -->
  *
  *
@@ -27,14 +27,5 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface Time extends AbstractTime {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return true;'"
-	 * @generated
-	 */
-	boolean containerNotificationRequired();
-
+public interface Time extends AbstractTime, Quantity {
 } // Time

@@ -260,6 +260,7 @@ import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.QualifiedPort;
+import org.eclipse.app4mc.amalthea.model.Quantity;
 import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
@@ -554,6 +555,12 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.QUANTITY: {
+				Quantity quantity = (Quantity)theEObject;
+				T1 result = caseQuantity(quantity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.TIME_COMPARABLE: {
 				@SuppressWarnings("unchecked") Comparable<AbstractTime> timeComparable = (Comparable<AbstractTime>)theEObject;
 				T1 result = caseTimeComparable(timeComparable);
@@ -571,6 +578,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				Time time = (Time)theEObject;
 				T1 result = caseTime(time);
 				if (result == null) result = caseAbstractTime(time);
+				if (result == null) result = caseQuantity(time);
 				if (result == null) result = caseTimeComparable(time);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -578,18 +586,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.FREQUENCY: {
 				Frequency frequency = (Frequency)theEObject;
 				T1 result = caseFrequency(frequency);
+				if (result == null) result = caseQuantity(frequency);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DATA_SIZE: {
 				DataSize dataSize = (DataSize)theEObject;
 				T1 result = caseDataSize(dataSize);
+				if (result == null) result = caseQuantity(dataSize);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DATA_RATE: {
 				DataRate dataRate = (DataRate)theEObject;
 				T1 result = caseDataRate(dataRate);
+				if (result == null) result = caseQuantity(dataRate);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3911,6 +3922,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseInstructionsConstant(InstructionsConstant object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Quantity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Quantity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseQuantity(Quantity object) {
 		return null;
 	}
 

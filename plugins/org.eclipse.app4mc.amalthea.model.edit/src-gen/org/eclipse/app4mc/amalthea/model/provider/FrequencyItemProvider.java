@@ -18,18 +18,10 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Frequency;
-import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -39,8 +31,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  *
  * @generated
  */
-public class FrequencyItemProvider extends AmaltheaExtendedItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class FrequencyItemProvider extends QuantityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -60,8 +51,8 @@ public class FrequencyItemProvider extends AmaltheaExtendedItemProviderAdapter i
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addUnitPropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
+			addUnitPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -133,11 +124,8 @@ public class FrequencyItemProvider extends AmaltheaExtendedItemProviderAdapter i
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		FrequencyUnit labelValue = ((Frequency)object).getUnit();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Frequency_type") :
-			getString("_UI_Frequency_type") + " " + label;
+		Frequency frequency = (Frequency)object;
+		return getString("_UI_Frequency_type") + " " + frequency.getValue();
 	}
 
 	/**
@@ -161,8 +149,8 @@ public class FrequencyItemProvider extends AmaltheaExtendedItemProviderAdapter i
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Frequency.class)) {
-			case AmaltheaPackage.FREQUENCY__UNIT:
 			case AmaltheaPackage.FREQUENCY__VALUE:
+			case AmaltheaPackage.FREQUENCY__UNIT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -178,16 +166,6 @@ public class FrequencyItemProvider extends AmaltheaExtendedItemProviderAdapter i
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return AmaltheaEditPlugin.INSTANCE;
 	}
 
 }

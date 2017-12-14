@@ -23,8 +23,6 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -47,7 +45,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class DataSizeImpl extends AmaltheaExtendedEObjectImpl implements DataSize {
+public class DataSizeImpl extends QuantityImpl implements DataSize {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -174,15 +172,6 @@ public class DataSizeImpl extends AmaltheaExtendedEObjectImpl implements DataSiz
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean containerNotificationRequired() {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public long getNumberBits() {
 		long _xblockexpression = (long) 0;
 		{
@@ -300,8 +289,6 @@ public class DataSizeImpl extends AmaltheaExtendedEObjectImpl implements DataSiz
 		switch (operationID) {
 			case AmaltheaPackage.DATA_SIZE___TO_STRING:
 				return toString();
-			case AmaltheaPackage.DATA_SIZE___CONTAINER_NOTIFICATION_REQUIRED:
-				return containerNotificationRequired();
 			case AmaltheaPackage.DATA_SIZE___GET_NUMBER_BITS:
 				return getNumberBits();
 			case AmaltheaPackage.DATA_SIZE___GET_NUMBER_BYTES:
