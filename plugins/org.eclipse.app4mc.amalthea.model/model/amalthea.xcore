@@ -2096,7 +2096,7 @@ class TaskScheduler extends Scheduler
 {
 	contains TaskSchedulingAlgorithm schedulingAlgorithm
 	
-	contains SchedulerAssociation parentAssociation
+	contains SchedulerAssociation parentAssociation opposite child
 	
 	// back pointer (readonly)
 	@GenModel(property="Readonly", suppressedSetVisibility="true")
@@ -2115,16 +2115,14 @@ class TaskScheduler extends Scheduler
 }
 
 class SchedulerAssociation {
+	@GenModel(propertyCategory="Read only")
+	container readonly TaskScheduler child opposite parentAssociation
+	
 	refers TaskScheduler parent
 	
 	// hidden link (internal)
 	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
 	refers transient TaskScheduler parentLinkInt opposite childAssociations
-	
-	@GenModel(propertyCategory="Read only")
-	refers derived readonly TaskScheduler child get {
-		return eContainer as TaskScheduler
-	}
 	
 	contains SchedulingParameters schedulingParameters
 	contains ParameterExtension[] parameterExtensions
@@ -3189,7 +3187,7 @@ class ModeLabel extends AbstractMemoryElement, IDisplayName
 	
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers derived readonly Mode mode get {
-		return initialValue?.eContainer as Mode
+		return initialValue?.containingMode
 	}
 	refers ModeLiteral[1] initialValue
 }

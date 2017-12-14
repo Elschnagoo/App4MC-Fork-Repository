@@ -15767,13 +15767,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SCHEDULER_ASSOCIATION = 189;
 
 	/**
+	 * The feature id for the '<em><b>Child</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULER_ASSOCIATION__CHILD = 0;
+
+	/**
 	 * The feature id for the '<em><b>Parent</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULER_ASSOCIATION__PARENT = 0;
+	int SCHEDULER_ASSOCIATION__PARENT = 1;
 
 	/**
 	 * The feature id for the '<em><b>Parent Link Int</b></em>' reference.
@@ -15782,16 +15791,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULER_ASSOCIATION__PARENT_LINK_INT = 1;
-
-	/**
-	 * The feature id for the '<em><b>Child</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCHEDULER_ASSOCIATION__CHILD = 2;
+	int SCHEDULER_ASSOCIATION__PARENT_LINK_INT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Scheduling Parameters</b></em>' containment reference.
@@ -34022,6 +34022,17 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getSchedulerAssociation();
 
 	/**
+	 * Returns the meta object for the container reference '{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getChild <em>Child</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Child</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getChild()
+	 * @see #getSchedulerAssociation()
+	 * @generated
+	 */
+	EReference getSchedulerAssociation_Child();
+
+	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -34042,17 +34053,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSchedulerAssociation_ParentLinkInt();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getChild <em>Child</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Child</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getChild()
-	 * @see #getSchedulerAssociation()
-	 * @generated
-	 */
-	EReference getSchedulerAssociation_Child();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getSchedulingParameters <em>Scheduling Parameters</em>}'.

@@ -3298,6 +3298,7 @@ computation items: steps to perform the scheduling algorithm</xsd:documentation>
   <xsd:element name="TaskScheduler" type="am:TaskScheduler"/>
   <xsd:complexType name="SchedulerAssociation">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="child" type="am:TaskScheduler"/>
       <xsd:element name="parent" type="am:TaskScheduler"/>
       <xsd:element name="schedulingParameters" type="am:SchedulingParameters"/>
       <xsd:element name="parameterExtensions" type="am:ParameterExtension"/>
@@ -3305,6 +3306,7 @@ computation items: steps to perform the scheduling algorithm</xsd:documentation>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="child" type="xsd:string"/>
     <xsd:attribute name="parent" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="SchedulerAssociation" type="am:SchedulerAssociation"/>

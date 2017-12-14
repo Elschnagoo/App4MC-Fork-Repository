@@ -73,8 +73,8 @@ public class SchedulerAssociationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addParentPropertyDescriptor(object);
 			addChildPropertyDescriptor(object);
+			addParentPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

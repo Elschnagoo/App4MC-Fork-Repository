@@ -21,7 +21,6 @@ import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -129,11 +128,11 @@ public class ModeLabelImpl extends AbstractMemoryElementImpl implements ModeLabe
 	 */
 	public Mode basicGetMode() {
 		ModeLiteral _initialValue = this.getInitialValue();
-		EObject _eContainer = null;
+		Mode _containingMode = null;
 		if (_initialValue!=null) {
-			_eContainer=_initialValue.eContainer();
+			_containingMode=_initialValue.getContainingMode();
 		}
-		return ((Mode) _eContainer);
+		return _containingMode;
 	}
 
 	/**

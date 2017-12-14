@@ -25,7 +25,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -42,9 +41,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerAssociationImpl#getChild <em>Child</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerAssociationImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerAssociationImpl#getParentLinkInt <em>Parent Link Int</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerAssociationImpl#getChild <em>Child</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerAssociationImpl#getSchedulingParameters <em>Scheduling Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerAssociationImpl#getParameterExtensions <em>Parameter Extensions</em>}</li>
  * </ul>
@@ -109,6 +108,26 @@ public class SchedulerAssociationImpl extends AmaltheaExtendedEObjectImpl implem
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getSchedulerAssociation();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TaskScheduler getChild() {
+		if (eContainerFeatureID() != AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD) return null;
+		return (TaskScheduler)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TaskScheduler basicGetChild() {
+		if (eContainerFeatureID() != AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD) return null;
+		return (TaskScheduler)eInternalContainer();
 	}
 
 	/**
@@ -216,26 +235,6 @@ public class SchedulerAssociationImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TaskScheduler getChild() {
-		TaskScheduler child = basicGetChild();
-		return child != null && child.eIsProxy() ? (TaskScheduler)eResolveProxy((InternalEObject)child) : child;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TaskScheduler basicGetChild() {
-		EObject _eContainer = this.eContainer();
-		return ((TaskScheduler) _eContainer);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public SchedulingParameters getSchedulingParameters() {
 		return schedulingParameters;
 	}
@@ -294,6 +293,10 @@ public class SchedulerAssociationImpl extends AmaltheaExtendedEObjectImpl implem
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD, msgs);
 			case AmaltheaPackage.SCHEDULER_ASSOCIATION__PARENT_LINK_INT:
 				if (parentLinkInt != null)
 					msgs = ((InternalEObject)parentLinkInt).eInverseRemove(this, AmaltheaPackage.TASK_SCHEDULER__CHILD_ASSOCIATIONS, TaskScheduler.class, msgs);
@@ -310,6 +313,8 @@ public class SchedulerAssociationImpl extends AmaltheaExtendedEObjectImpl implem
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD:
+				return eBasicSetContainer(null, AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD, msgs);
 			case AmaltheaPackage.SCHEDULER_ASSOCIATION__PARENT_LINK_INT:
 				return basicSetParentLinkInt(null, msgs);
 			case AmaltheaPackage.SCHEDULER_ASSOCIATION__SCHEDULING_PARAMETERS:
@@ -326,17 +331,31 @@ public class SchedulerAssociationImpl extends AmaltheaExtendedEObjectImpl implem
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD:
+				return eInternalContainer().eInverseRemove(this, AmaltheaPackage.TASK_SCHEDULER__PARENT_ASSOCIATION, TaskScheduler.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD:
+				if (resolve) return getChild();
+				return basicGetChild();
 			case AmaltheaPackage.SCHEDULER_ASSOCIATION__PARENT:
 				if (resolve) return getParent();
 				return basicGetParent();
 			case AmaltheaPackage.SCHEDULER_ASSOCIATION__PARENT_LINK_INT:
 				if (resolve) return getParentLinkInt();
 				return basicGetParentLinkInt();
-			case AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD:
-				if (resolve) return getChild();
-				return basicGetChild();
 			case AmaltheaPackage.SCHEDULER_ASSOCIATION__SCHEDULING_PARAMETERS:
 				return getSchedulingParameters();
 			case AmaltheaPackage.SCHEDULER_ASSOCIATION__PARAMETER_EXTENSIONS:
@@ -402,12 +421,12 @@ public class SchedulerAssociationImpl extends AmaltheaExtendedEObjectImpl implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD:
+				return basicGetChild() != null;
 			case AmaltheaPackage.SCHEDULER_ASSOCIATION__PARENT:
 				return parent != null;
 			case AmaltheaPackage.SCHEDULER_ASSOCIATION__PARENT_LINK_INT:
 				return parentLinkInt != null;
-			case AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD:
-				return basicGetChild() != null;
 			case AmaltheaPackage.SCHEDULER_ASSOCIATION__SCHEDULING_PARAMETERS:
 				return schedulingParameters != null;
 			case AmaltheaPackage.SCHEDULER_ASSOCIATION__PARAMETER_EXTENSIONS:

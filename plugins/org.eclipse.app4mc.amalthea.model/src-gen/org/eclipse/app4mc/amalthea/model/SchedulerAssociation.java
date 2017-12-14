@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getParent <em>Parent</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getChild <em>Child</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getParent <em>Parent</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getSchedulingParameters <em>Scheduling Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getParameterExtensions <em>Parameter Extensions</em>}</li>
  * </ul>
@@ -38,6 +38,24 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface SchedulerAssociation extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Child</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getParentAssociation <em>Parent Association</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Child</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Child</em>' container reference.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulerAssociation_Child()
+	 * @see org.eclipse.app4mc.amalthea.model.TaskScheduler#getParentAssociation
+	 * @model opposite="parentAssociation" transient="false" changeable="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only'"
+	 * @generated
+	 */
+	TaskScheduler getChild();
+
 	/**
 	 * Returns the value of the '<em><b>Parent</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -63,22 +81,6 @@ public interface SchedulerAssociation extends EObject {
 	 * @generated
 	 */
 	void setParent(TaskScheduler value);
-
-	/**
-	 * Returns the value of the '<em><b>Child</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Child</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Child</em>' reference.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulerAssociation_Child()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\nreturn ((&lt;%org.eclipse.app4mc.amalthea.model.TaskScheduler%&gt;) _eContainer);'"
-	 * @generated
-	 */
-	TaskScheduler getChild();
 
 	/**
 	 * Returns the value of the '<em><b>Scheduling Parameters</b></em>' containment reference.

@@ -179,9 +179,9 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 		if (newParentAssociation != parentAssociation) {
 			NotificationChain msgs = null;
 			if (parentAssociation != null)
-				msgs = ((InternalEObject)parentAssociation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TASK_SCHEDULER__PARENT_ASSOCIATION, null, msgs);
+				msgs = ((InternalEObject)parentAssociation).eInverseRemove(this, AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD, SchedulerAssociation.class, msgs);
 			if (newParentAssociation != null)
-				msgs = ((InternalEObject)newParentAssociation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TASK_SCHEDULER__PARENT_ASSOCIATION, null, msgs);
+				msgs = ((InternalEObject)newParentAssociation).eInverseAdd(this, AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD, SchedulerAssociation.class, msgs);
 			msgs = basicSetParentAssociation(newParentAssociation, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -248,6 +248,10 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case AmaltheaPackage.TASK_SCHEDULER__PARENT_ASSOCIATION:
+				if (parentAssociation != null)
+					msgs = ((InternalEObject)parentAssociation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TASK_SCHEDULER__PARENT_ASSOCIATION, null, msgs);
+				return basicSetParentAssociation((SchedulerAssociation)otherEnd, msgs);
 			case AmaltheaPackage.TASK_SCHEDULER__CHILD_ASSOCIATIONS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getChildAssociations()).basicAdd(otherEnd, msgs);
 		}

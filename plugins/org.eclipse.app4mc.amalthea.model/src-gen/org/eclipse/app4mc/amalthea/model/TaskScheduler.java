@@ -63,6 +63,7 @@ public interface TaskScheduler extends Scheduler {
 
 	/**
 	 * Returns the value of the '<em><b>Parent Association</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getChild <em>Child</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Parent Association</em>' containment reference isn't clear,
@@ -72,7 +73,8 @@ public interface TaskScheduler extends Scheduler {
 	 * @return the value of the '<em>Parent Association</em>' containment reference.
 	 * @see #setParentAssociation(SchedulerAssociation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskScheduler_ParentAssociation()
-	 * @model containment="true"
+	 * @see org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getChild
+	 * @model opposite="child" containment="true"
 	 * @generated
 	 */
 	SchedulerAssociation getParentAssociation();
