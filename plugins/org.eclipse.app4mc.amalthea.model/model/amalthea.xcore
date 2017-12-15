@@ -1988,7 +1988,7 @@ class MemoryMapping extends BaseObject
 	/*
 	 * The position of the element in the mapped memory
 	 */
-	long memoryPositionAddress = "0"
+	Address memoryPositionAddress = "0"
 	
 	// hidden link (internal)
 	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
@@ -2008,10 +2008,10 @@ class PhysicalSectionMapping extends ReferableBaseObject
 	refers Memory[1] memory
 
 	@GenModel(propertyCategory="Memory")
-	long startAddress = "0"
+	Address startAddress = "0"
 
 	@GenModel(propertyCategory="Memory")
-	long endAddress	= "0"
+	Address endAddress	= "0"
 
 	refers Label[] labels  
 

@@ -104,7 +104,7 @@ public interface MemoryMapping extends BaseObject {
 	 * @return the value of the '<em>Memory Position Address</em>' attribute.
 	 * @see #setMemoryPositionAddress(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemoryMapping_MemoryPositionAddress()
-	 * @model default="0" unique="false"
+	 * @model default="0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.Address"
 	 * @generated
 	 */
 	long getMemoryPositionAddress();

@@ -3186,7 +3186,7 @@ to a specific memory.</xsd:documentation>
           <xsd:element name="abstractElement" type="am:AbstractMemoryElement"/>
           <xsd:element name="memory" type="am:Memory"/>
         </xsd:choice>
-        <xsd:attribute name="memoryPositionAddress" type="xsd:long">
+        <xsd:attribute name="memoryPositionAddress" type="xsd:string">
           <xsd:annotation>
             <xsd:documentation>The position of the element in the mapped memory</xsd:documentation>
           </xsd:annotation>
@@ -3211,8 +3211,8 @@ to a specific memory.</xsd:documentation>
           <xsd:element name="labels" type="am:Label"/>
           <xsd:element name="runEntities" type="am:Runnable"/>
         </xsd:choice>
-        <xsd:attribute name="startAddress" type="xsd:long"/>
-        <xsd:attribute name="endAddress" type="xsd:long"/>
+        <xsd:attribute name="startAddress" type="xsd:string"/>
+        <xsd:attribute name="endAddress" type="xsd:string"/>
         <xsd:attribute name="origin" type="xsd:string"/>
         <xsd:attribute name="memory" type="xsd:string"/>
         <xsd:attribute name="labels" type="xsd:string"/>
