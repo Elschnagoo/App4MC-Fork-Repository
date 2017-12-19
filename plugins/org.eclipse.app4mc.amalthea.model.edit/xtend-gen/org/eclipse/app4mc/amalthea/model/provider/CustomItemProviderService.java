@@ -84,6 +84,8 @@ import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
+import org.eclipse.app4mc.amalthea.model.InterfaceKind;
+import org.eclipse.app4mc.amalthea.model.InterfacePort;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
@@ -919,18 +921,38 @@ public class CustomItemProviderService {
   }
   
   /**
-   * FInterfacePortItemProvider
+   * InterfacePortItemProvider
    */
-  public static String getFInterfacePortItemProviderText(final Object object, final String defaultText) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nFInterfacePort cannot be resolved to a type."
-      + "\nThe method or field eContainer is undefined for the type Object"
-      + "\nThe method or field kind is undefined for the type Object"
-      + "\nThe method or field name is undefined for the type Object"
-      + "\n=== cannot be resolved"
-      + "\n|| cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nliteral cannot be resolved");
+  public static String getInterfacePortItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof InterfacePort)) {
+      Component _containingComponent = null;
+      if (((InterfacePort)object)!=null) {
+        _containingComponent=((InterfacePort)object).getContainingComponent();
+      }
+      final String cName = _containingComponent.getName();
+      InterfaceKind _kind = null;
+      if (((InterfacePort)object)!=null) {
+        _kind=((InterfacePort)object).getKind();
+      }
+      final InterfaceKind kind = _kind;
+      String _name = null;
+      if (((InterfacePort)object)!=null) {
+        _name=((InterfacePort)object).getName();
+      }
+      final String name = _name;
+      final String s1 = CustomItemProviderService.ppName(cName, "<component>");
+      String _xifexpression = null;
+      if (((kind == null) || Objects.equal(kind, InterfaceKind._UNDEFINED_))) {
+        _xifexpression = "<kind>";
+      } else {
+        _xifexpression = kind.getLiteral();
+      }
+      final String s2 = _xifexpression;
+      final String s3 = CustomItemProviderService.ppName(name, "<port>");
+      return ((((s1 + " ") + s2) + " ") + s3);
+    } else {
+      return defaultText;
+    }
   }
   
   /**

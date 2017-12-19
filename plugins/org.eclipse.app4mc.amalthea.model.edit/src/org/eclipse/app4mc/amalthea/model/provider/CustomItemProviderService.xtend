@@ -26,7 +26,6 @@ import org.eclipse.app4mc.amalthea.model.ChannelReceive
 import org.eclipse.app4mc.amalthea.model.ChannelSend
 import org.eclipse.app4mc.amalthea.model.ClearEvent
 import org.eclipse.app4mc.amalthea.model.CoherencyDirection
-import org.eclipse.app4mc.amalthea.model.Component
 import org.eclipse.app4mc.amalthea.model.ComponentInstance
 import org.eclipse.app4mc.amalthea.model.ComponentScope
 import org.eclipse.app4mc.amalthea.model.Condition
@@ -49,7 +48,6 @@ import org.eclipse.app4mc.amalthea.model.EventChainContainer
 import org.eclipse.app4mc.amalthea.model.EventChainMeasurement
 import org.eclipse.app4mc.amalthea.model.EventChainReference
 import org.eclipse.app4mc.amalthea.model.EventConfig
-import org.eclipse.app4mc.amalthea.model.FInterfacePort
 import org.eclipse.app4mc.amalthea.model.FloatObject
 import org.eclipse.app4mc.amalthea.model.Frequency
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric
@@ -68,6 +66,7 @@ import org.eclipse.app4mc.amalthea.model.InstructionsDeviation
 import org.eclipse.app4mc.amalthea.model.IntegerObject
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger
 import org.eclipse.app4mc.amalthea.model.InterfaceKind
+import org.eclipse.app4mc.amalthea.model.InterfacePort
 import org.eclipse.app4mc.amalthea.model.LabelAccess
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum
 import org.eclipse.app4mc.amalthea.model.LatencyAccessPath
@@ -606,11 +605,11 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						FInterfacePortItemProvider
+	 * 						InterfacePortItemProvider
 	 *****************************************************************************/
-	def static String getFInterfacePortItemProviderText(Object object, String defaultText) {
-		if (object instanceof FInterfacePort) {
-			val cName = (object?.eContainer as Component).name
+	def static String getInterfacePortItemProviderText(Object object, String defaultText) {
+		if (object instanceof InterfacePort) {
+			val cName = object?.containingComponent.name
 			val kind = object?.kind
 			val name = object?.name
 			val s1 = ppName(cName, "<component>")

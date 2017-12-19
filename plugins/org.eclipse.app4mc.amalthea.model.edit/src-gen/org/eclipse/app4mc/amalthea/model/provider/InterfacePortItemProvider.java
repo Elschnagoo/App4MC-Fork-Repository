@@ -132,14 +132,24 @@ public class InterfacePortItemProvider extends PortItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		String label = ((InterfacePort)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_InterfacePort_type") :
 			getString("_UI_InterfacePort_type") + " " + label;
 	}
-	
+
+	/**
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(Object object) {
+		// delegate to custom item provider
+		return CustomItemProviderService.getInterfacePortItemProviderText(object, getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
