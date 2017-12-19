@@ -4046,14 +4046,14 @@ public interface AmaltheaPackage extends EPackage {
 	int QUALIFIED_PORT_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.FInterfacePortImpl <em>FInterface Port</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.InterfacePortImpl <em>Interface Port</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.FInterfacePortImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFInterfacePort()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.InterfacePortImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterfacePort()
 	 * @generated
 	 */
-	int FINTERFACE_PORT = 60;
+	int INTERFACE_PORT = 60;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4062,7 +4062,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FINTERFACE_PORT__CUSTOM_PROPERTIES = PORT__CUSTOM_PROPERTIES;
+	int INTERFACE_PORT__CUSTOM_PROPERTIES = PORT__CUSTOM_PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4071,7 +4071,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FINTERFACE_PORT__NAME = PORT__NAME;
+	int INTERFACE_PORT__NAME = PORT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Unique Name</b></em>' attribute.
@@ -4080,7 +4080,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FINTERFACE_PORT__UNIQUE_NAME = PORT__UNIQUE_NAME;
+	int INTERFACE_PORT__UNIQUE_NAME = PORT__UNIQUE_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Tags</b></em>' reference list.
@@ -4089,7 +4089,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FINTERFACE_PORT__TAGS = PORT__TAGS;
+	int INTERFACE_PORT__TAGS = PORT__TAGS;
 
 	/**
 	 * The feature id for the '<em><b>Containing Component</b></em>' container reference.
@@ -4098,16 +4098,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FINTERFACE_PORT__CONTAINING_COMPONENT = PORT__CONTAINING_COMPONENT;
-
-	/**
-	 * The feature id for the '<em><b>Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FINTERFACE_PORT__KIND = PORT_FEATURE_COUNT + 0;
+	int INTERFACE_PORT__CONTAINING_COMPONENT = PORT__CONTAINING_COMPONENT;
 
 	/**
 	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
@@ -4116,16 +4107,25 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FINTERFACE_PORT__INTERFACE_NAME = PORT_FEATURE_COUNT + 1;
+	int INTERFACE_PORT__INTERFACE_NAME = PORT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>FInterface Port</em>' class.
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FINTERFACE_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 2;
+	int INTERFACE_PORT__KIND = PORT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Interface Port</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
@@ -4134,7 +4134,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FINTERFACE_PORT___BASIC_COMPUTE_UNIQUE_NAME = PORT___BASIC_COMPUTE_UNIQUE_NAME;
+	int INTERFACE_PORT___BASIC_COMPUTE_UNIQUE_NAME = PORT___BASIC_COMPUTE_UNIQUE_NAME;
 
 	/**
 	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
@@ -4143,7 +4143,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FINTERFACE_PORT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = PORT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+	int INTERFACE_PORT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = PORT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 
 	/**
 	 * The operation id for the '<em>Encode</em>' operation.
@@ -4152,7 +4152,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FINTERFACE_PORT___ENCODE__STRING = PORT___ENCODE__STRING;
+	int INTERFACE_PORT___ENCODE__STRING = PORT___ENCODE__STRING;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -4161,16 +4161,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FINTERFACE_PORT___COMPUTE_UNIQUE_NAME = PORT___COMPUTE_UNIQUE_NAME;
+	int INTERFACE_PORT___COMPUTE_UNIQUE_NAME = PORT___COMPUTE_UNIQUE_NAME;
 
 	/**
-	 * The number of operations of the '<em>FInterface Port</em>' class.
+	 * The number of operations of the '<em>Interface Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FINTERFACE_PORT_OPERATION_COUNT = PORT_OPERATION_COUNT + 0;
+	int INTERFACE_PORT_OPERATION_COUNT = PORT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ConfigModelImpl <em>Config Model</em>}' class.
@@ -29960,36 +29960,36 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getQualifiedPort_Port();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.FInterfacePort <em>FInterface Port</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.InterfacePort <em>Interface Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>FInterface Port</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.FInterfacePort
+	 * @return the meta object for class '<em>Interface Port</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.InterfacePort
 	 * @generated
 	 */
-	EClass getFInterfacePort();
+	EClass getInterfacePort();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.FInterfacePort#getKind <em>Kind</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Kind</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.FInterfacePort#getKind()
-	 * @see #getFInterfacePort()
-	 * @generated
-	 */
-	EAttribute getFInterfacePort_Kind();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.FInterfacePort#getInterfaceName <em>Interface Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.InterfacePort#getInterfaceName <em>Interface Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Interface Name</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.FInterfacePort#getInterfaceName()
-	 * @see #getFInterfacePort()
+	 * @see org.eclipse.app4mc.amalthea.model.InterfacePort#getInterfaceName()
+	 * @see #getInterfacePort()
 	 * @generated
 	 */
-	EAttribute getFInterfacePort_InterfaceName();
+	EAttribute getInterfacePort_InterfaceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.InterfacePort#getKind <em>Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Kind</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.InterfacePort#getKind()
+	 * @see #getInterfacePort()
+	 * @generated
+	 */
+	EAttribute getInterfacePort_Kind();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ConfigModel <em>Config Model</em>}'.

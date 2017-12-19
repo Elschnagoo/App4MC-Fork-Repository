@@ -979,26 +979,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.FInterfacePort} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InterfacePort} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected FInterfacePortItemProvider fInterfacePortItemProvider;
+	protected InterfacePortItemProvider interfacePortItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.FInterfacePort}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InterfacePort}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createFInterfacePortAdapter() {
-		if (fInterfacePortItemProvider == null) {
-			fInterfacePortItemProvider = new FInterfacePortItemProvider(this);
+	public Adapter createInterfacePortAdapter() {
+		if (interfacePortItemProvider == null) {
+			interfacePortItemProvider = new InterfacePortItemProvider(this);
 		}
 
-		return fInterfacePortItemProvider;
+		return interfacePortItemProvider;
 	}
 
 	/**
@@ -6339,7 +6339,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (componentInstanceItemProvider != null) componentInstanceItemProvider.dispose();
 		if (connectorItemProvider != null) connectorItemProvider.dispose();
 		if (qualifiedPortItemProvider != null) qualifiedPortItemProvider.dispose();
-		if (fInterfacePortItemProvider != null) fInterfacePortItemProvider.dispose();
+		if (interfacePortItemProvider != null) interfacePortItemProvider.dispose();
 		if (configModelItemProvider != null) configModelItemProvider.dispose();
 		if (eventConfigItemProvider != null) eventConfigItemProvider.dispose();
 		if (constraintsModelItemProvider != null) constraintsModelItemProvider.dispose();

@@ -121,7 +121,6 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
-import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
@@ -152,6 +151,7 @@ import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.InterfaceKind;
+import org.eclipse.app4mc.amalthea.model.InterfacePort;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
@@ -426,7 +426,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.COMPONENT_INSTANCE: return createComponentInstance();
 			case AmaltheaPackage.CONNECTOR: return createConnector();
 			case AmaltheaPackage.QUALIFIED_PORT: return createQualifiedPort();
-			case AmaltheaPackage.FINTERFACE_PORT: return createFInterfacePort();
+			case AmaltheaPackage.INTERFACE_PORT: return createInterfacePort();
 			case AmaltheaPackage.CONFIG_MODEL: return createConfigModel();
 			case AmaltheaPackage.EVENT_CONFIG: return createEventConfig();
 			case AmaltheaPackage.CONSTRAINTS_MODEL: return createConstraintsModel();
@@ -1309,9 +1309,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FInterfacePort createFInterfacePort() {
-		FInterfacePortImpl fInterfacePort = new FInterfacePortImpl();
-		return fInterfacePort;
+	public InterfacePort createInterfacePort() {
+		InterfacePortImpl interfacePort = new InterfacePortImpl();
+		return interfacePort;
 	}
 
 	/**

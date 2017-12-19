@@ -392,13 +392,13 @@ public interface AmaltheaFactory extends EFactory {
 	QualifiedPort createQualifiedPort();
 
 	/**
-	 * Returns a new object of class '<em>FInterface Port</em>'.
+	 * Returns a new object of class '<em>Interface Port</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>FInterface Port</em>'.
+	 * @return a new object of class '<em>Interface Port</em>'.
 	 * @generated
 	 */
-	FInterfacePort createFInterfacePort();
+	InterfacePort createInterfacePort();
 
 	/**
 	 * Returns a new object of class '<em>Config Model</em>'.

@@ -134,7 +134,6 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
-import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
@@ -171,6 +170,7 @@ import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
+import org.eclipse.app4mc.amalthea.model.InterfacePort;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -881,15 +881,15 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.FINTERFACE_PORT: {
-				FInterfacePort fInterfacePort = (FInterfacePort)theEObject;
-				T1 result = caseFInterfacePort(fInterfacePort);
-				if (result == null) result = casePort(fInterfacePort);
-				if (result == null) result = caseReferableBaseObject(fInterfacePort);
-				if (result == null) result = caseITaggable(fInterfacePort);
-				if (result == null) result = caseIAnnotatable(fInterfacePort);
-				if (result == null) result = caseIReferable(fInterfacePort);
-				if (result == null) result = caseINamed(fInterfacePort);
+			case AmaltheaPackage.INTERFACE_PORT: {
+				InterfacePort interfacePort = (InterfacePort)theEObject;
+				T1 result = caseInterfacePort(interfacePort);
+				if (result == null) result = casePort(interfacePort);
+				if (result == null) result = caseReferableBaseObject(interfacePort);
+				if (result == null) result = caseITaggable(interfacePort);
+				if (result == null) result = caseIAnnotatable(interfacePort);
+				if (result == null) result = caseIReferable(interfacePort);
+				if (result == null) result = caseINamed(interfacePort);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -4556,17 +4556,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>FInterface Port</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Interface Port</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>FInterface Port</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Interface Port</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseFInterfacePort(FInterfacePort object) {
+	public T1 caseInterfacePort(InterfacePort object) {
 		return null;
 	}
 

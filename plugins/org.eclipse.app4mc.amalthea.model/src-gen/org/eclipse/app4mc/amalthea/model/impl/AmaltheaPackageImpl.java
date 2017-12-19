@@ -149,7 +149,6 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
-import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
@@ -190,6 +189,7 @@ import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.InterfaceKind;
+import org.eclipse.app4mc.amalthea.model.InterfacePort;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -852,7 +852,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass fInterfacePortEClass = null;
+	private EClass interfacePortEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4839,8 +4839,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getFInterfacePort() {
-		return fInterfacePortEClass;
+	public EClass getInterfacePort() {
+		return interfacePortEClass;
 	}
 
 	/**
@@ -4848,8 +4848,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getFInterfacePort_Kind() {
-		return (EAttribute)fInterfacePortEClass.getEStructuralFeatures().get(0);
+	public EAttribute getInterfacePort_InterfaceName() {
+		return (EAttribute)interfacePortEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4857,8 +4857,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getFInterfacePort_InterfaceName() {
-		return (EAttribute)fInterfacePortEClass.getEStructuralFeatures().get(1);
+	public EAttribute getInterfacePort_Kind() {
+		return (EAttribute)interfacePortEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -12933,9 +12933,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(qualifiedPortEClass, QUALIFIED_PORT__INSTANCE);
 		createEReference(qualifiedPortEClass, QUALIFIED_PORT__PORT);
 
-		fInterfacePortEClass = createEClass(FINTERFACE_PORT);
-		createEAttribute(fInterfacePortEClass, FINTERFACE_PORT__KIND);
-		createEAttribute(fInterfacePortEClass, FINTERFACE_PORT__INTERFACE_NAME);
+		interfacePortEClass = createEClass(INTERFACE_PORT);
+		createEAttribute(interfacePortEClass, INTERFACE_PORT__INTERFACE_NAME);
+		createEAttribute(interfacePortEClass, INTERFACE_PORT__KIND);
 
 		configModelEClass = createEClass(CONFIG_MODEL);
 		createEReference(configModelEClass, CONFIG_MODEL__EVENTS_TO_TRACE);
@@ -14215,7 +14215,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		connectorEClass.getESuperTypes().add(this.getINamed());
 		connectorEClass.getESuperTypes().add(this.getITaggable());
 		qualifiedPortEClass.getESuperTypes().add(this.getBaseObject());
-		fInterfacePortEClass.getESuperTypes().add(this.getPort());
+		interfacePortEClass.getESuperTypes().add(this.getPort());
 		configModelEClass.getESuperTypes().add(this.getBaseObject());
 		eventConfigEClass.getESuperTypes().add(this.getBaseObject());
 		constraintsModelEClass.getESuperTypes().add(this.getBaseObject());
@@ -14794,9 +14794,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getQualifiedPort_Instance(), this.getComponentInstance(), null, "instance", null, 0, 1, QualifiedPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getQualifiedPort_Port(), this.getPort(), null, "port", null, 0, 1, QualifiedPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(fInterfacePortEClass, FInterfacePort.class, "FInterfacePort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFInterfacePort_Kind(), this.getInterfaceKind(), "kind", null, 0, 1, FInterfacePort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFInterfacePort_InterfaceName(), theEcorePackage.getEString(), "interfaceName", null, 0, 1, FInterfacePort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(interfacePortEClass, InterfacePort.class, "InterfacePort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInterfacePort_InterfaceName(), theEcorePackage.getEString(), "interfaceName", null, 0, 1, InterfacePort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInterfacePort_Kind(), this.getInterfaceKind(), "kind", null, 0, 1, InterfacePort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(configModelEClass, ConfigModel.class, "ConfigModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConfigModel_EventsToTrace(), this.getEventConfig(), null, "eventsToTrace", null, 0, -1, ConfigModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16015,6 +16015,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(interfaceKindEEnum, InterfaceKind._UNDEFINED_);
 		addEEnumLiteral(interfaceKindEEnum, InterfaceKind.PROVIDES);
 		addEEnumLiteral(interfaceKindEEnum, InterfaceKind.REQUIRES);
+		addEEnumLiteral(interfaceKindEEnum, InterfaceKind.PROVIDES_REQUIRES);
 
 		initEEnum(runnableOrderTypeEEnum, RunnableOrderType.class, "RunnableOrderType");
 		addEEnumLiteral(runnableOrderTypeEEnum, RunnableOrderType._UNDEFINED_);

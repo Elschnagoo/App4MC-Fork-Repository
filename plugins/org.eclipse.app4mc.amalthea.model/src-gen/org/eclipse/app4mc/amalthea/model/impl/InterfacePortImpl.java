@@ -13,8 +13,8 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.InterfaceKind;
+import org.eclipse.app4mc.amalthea.model.InterfacePort;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -24,39 +24,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>FInterface Port</b></em>'.
+ * An implementation of the model object '<em><b>Interface Port</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.FInterfacePortImpl#getKind <em>Kind</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.FInterfacePortImpl#getInterfaceName <em>Interface Name</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.InterfacePortImpl#getInterfaceName <em>Interface Name</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.InterfacePortImpl#getKind <em>Kind</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class FInterfacePortImpl extends PortImpl implements FInterfacePort {
-	/**
-	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final InterfaceKind KIND_EDEFAULT = InterfaceKind._UNDEFINED_;
-
-	/**
-	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
-	protected InterfaceKind kind = KIND_EDEFAULT;
-
+public class InterfacePortImpl extends PortImpl implements InterfacePort {
 	/**
 	 * The default value of the '{@link #getInterfaceName() <em>Interface Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -78,11 +58,31 @@ public class FInterfacePortImpl extends PortImpl implements FInterfacePort {
 	protected String interfaceName = INTERFACE_NAME_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final InterfaceKind KIND_EDEFAULT = InterfaceKind._UNDEFINED_;
+
+	/**
+	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected InterfaceKind kind = KIND_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected FInterfacePortImpl() {
+	protected InterfacePortImpl() {
 		super();
 	}
 
@@ -93,28 +93,7 @@ public class FInterfacePortImpl extends PortImpl implements FInterfacePort {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getFInterfacePort();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InterfaceKind getKind() {
-		return kind;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setKind(InterfaceKind newKind) {
-		InterfaceKind oldKind = kind;
-		kind = newKind == null ? KIND_EDEFAULT : newKind;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.FINTERFACE_PORT__KIND, oldKind, kind));
+		return AmaltheaPackage.eINSTANCE.getInterfacePort();
 	}
 
 	/**
@@ -135,7 +114,28 @@ public class FInterfacePortImpl extends PortImpl implements FInterfacePort {
 		String oldInterfaceName = interfaceName;
 		interfaceName = newInterfaceName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.FINTERFACE_PORT__INTERFACE_NAME, oldInterfaceName, interfaceName));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.INTERFACE_PORT__INTERFACE_NAME, oldInterfaceName, interfaceName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InterfaceKind getKind() {
+		return kind;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setKind(InterfaceKind newKind) {
+		InterfaceKind oldKind = kind;
+		kind = newKind == null ? KIND_EDEFAULT : newKind;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.INTERFACE_PORT__KIND, oldKind, kind));
 	}
 
 	/**
@@ -146,10 +146,10 @@ public class FInterfacePortImpl extends PortImpl implements FInterfacePort {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.FINTERFACE_PORT__KIND:
-				return getKind();
-			case AmaltheaPackage.FINTERFACE_PORT__INTERFACE_NAME:
+			case AmaltheaPackage.INTERFACE_PORT__INTERFACE_NAME:
 				return getInterfaceName();
+			case AmaltheaPackage.INTERFACE_PORT__KIND:
+				return getKind();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -162,11 +162,11 @@ public class FInterfacePortImpl extends PortImpl implements FInterfacePort {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.FINTERFACE_PORT__KIND:
-				setKind((InterfaceKind)newValue);
-				return;
-			case AmaltheaPackage.FINTERFACE_PORT__INTERFACE_NAME:
+			case AmaltheaPackage.INTERFACE_PORT__INTERFACE_NAME:
 				setInterfaceName((String)newValue);
+				return;
+			case AmaltheaPackage.INTERFACE_PORT__KIND:
+				setKind((InterfaceKind)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -180,11 +180,11 @@ public class FInterfacePortImpl extends PortImpl implements FInterfacePort {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.FINTERFACE_PORT__KIND:
-				setKind(KIND_EDEFAULT);
-				return;
-			case AmaltheaPackage.FINTERFACE_PORT__INTERFACE_NAME:
+			case AmaltheaPackage.INTERFACE_PORT__INTERFACE_NAME:
 				setInterfaceName(INTERFACE_NAME_EDEFAULT);
+				return;
+			case AmaltheaPackage.INTERFACE_PORT__KIND:
+				setKind(KIND_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -198,10 +198,10 @@ public class FInterfacePortImpl extends PortImpl implements FInterfacePort {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.FINTERFACE_PORT__KIND:
-				return kind != KIND_EDEFAULT;
-			case AmaltheaPackage.FINTERFACE_PORT__INTERFACE_NAME:
+			case AmaltheaPackage.INTERFACE_PORT__INTERFACE_NAME:
 				return INTERFACE_NAME_EDEFAULT == null ? interfaceName != null : !INTERFACE_NAME_EDEFAULT.equals(interfaceName);
+			case AmaltheaPackage.INTERFACE_PORT__KIND:
+				return kind != KIND_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -216,12 +216,12 @@ public class FInterfacePortImpl extends PortImpl implements FInterfacePort {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (kind: ");
-		result.append(kind);
-		result.append(", interfaceName: ");
+		result.append(" (interfaceName: ");
 		result.append(interfaceName);
+		result.append(", kind: ");
+		result.append(kind);
 		result.append(')');
 		return result.toString();
 	}
 
-} //FInterfacePortImpl
+} //InterfacePortImpl

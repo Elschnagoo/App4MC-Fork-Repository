@@ -97,6 +97,7 @@
       <xsd:enumeration value="_undefined_"/>
       <xsd:enumeration value="provides"/>
       <xsd:enumeration value="requires"/>
+      <xsd:enumeration value="provides_requires"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="RunnableOrderType">
@@ -1404,15 +1405,15 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="QualifiedPort" type="am:QualifiedPort"/>
-  <xsd:complexType name="FInterfacePort">
+  <xsd:complexType name="InterfacePort">
     <xsd:complexContent>
       <xsd:extension base="am:Port">
-        <xsd:attribute name="kind" type="am:InterfaceKind"/>
         <xsd:attribute name="interfaceName" type="xsd:string"/>
+        <xsd:attribute name="kind" type="am:InterfaceKind"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="FInterfacePort" type="am:FInterfacePort"/>
+  <xsd:element name="InterfacePort" type="am:InterfacePort"/>
   <xsd:complexType name="ConfigModel">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">

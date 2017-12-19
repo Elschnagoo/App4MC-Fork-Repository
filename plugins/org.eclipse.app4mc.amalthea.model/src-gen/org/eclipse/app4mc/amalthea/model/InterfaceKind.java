@@ -56,7 +56,17 @@ public enum InterfaceKind implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	REQUIRES(0, "requires", "requires");
+	REQUIRES(0, "requires", "requires"),
+
+	/**
+	 * The '<em><b>Provides requires</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PROVIDES_REQUIRES_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PROVIDES_REQUIRES(0, "provides_requires", "provides_requires");
 
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
@@ -104,6 +114,21 @@ public enum InterfaceKind implements Enumerator {
 	public static final int REQUIRES_VALUE = 0;
 
 	/**
+	 * The '<em><b>Provides requires</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Provides requires</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #PROVIDES_REQUIRES
+	 * @model name="provides_requires"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PROVIDES_REQUIRES_VALUE = 0;
+
+	/**
 	 * An array of all the '<em><b>Interface Kind</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -114,6 +139,7 @@ public enum InterfaceKind implements Enumerator {
 			_UNDEFINED_,
 			PROVIDES,
 			REQUIRES,
+			PROVIDES_REQUIRES,
 		};
 
 	/**

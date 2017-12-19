@@ -727,15 +727,16 @@ class QualifiedPort extends BaseObject {
 	refers Port port
 }
 
-class FInterfacePort extends Port {
-	InterfaceKind kind
+class InterfacePort extends Port {
 	String interfaceName
+	InterfaceKind kind
 }
 
 enum InterfaceKind {
-	_undefined_ // Display: "<kind>"
-	provides // Display: "PROVIDES"
-	requires // Display: "REQUIRES"
+	_undefined_			// Display: "<kind>"
+	provides			// Display: "PROVIDES"
+	requires			// Display: "REQUIRES"
+	provides_requires	// Display: "PROVIDES+REQUIRES"
 }
 
 

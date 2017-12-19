@@ -134,7 +134,6 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
-import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
@@ -171,6 +170,7 @@ import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
+import org.eclipse.app4mc.amalthea.model.InterfacePort;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -658,8 +658,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createQualifiedPortAdapter();
 			}
 			@Override
-			public Adapter caseFInterfacePort(FInterfacePort object) {
-				return createFInterfacePortAdapter();
+			public Adapter caseInterfacePort(InterfacePort object) {
+				return createInterfacePortAdapter();
 			}
 			@Override
 			public Adapter caseConfigModel(ConfigModel object) {
@@ -2658,16 +2658,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.FInterfacePort <em>FInterface Port</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InterfacePort <em>Interface Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.FInterfacePort
+	 * @see org.eclipse.app4mc.amalthea.model.InterfacePort
 	 * @generated
 	 */
-	public Adapter createFInterfacePortAdapter() {
+	public Adapter createInterfacePortAdapter() {
 		return null;
 	}
 

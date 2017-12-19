@@ -298,7 +298,7 @@ public class ComponentItemProvider extends ReferableBaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getComponent_Ports(),
-				 AmaltheaFactory.eINSTANCE.createFInterfacePort()));
+				 AmaltheaFactory.eINSTANCE.createInterfacePort()));
 	}
 
 }

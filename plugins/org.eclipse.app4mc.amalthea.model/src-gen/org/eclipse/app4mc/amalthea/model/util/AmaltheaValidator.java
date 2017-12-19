@@ -149,7 +149,6 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
-import org.eclipse.app4mc.amalthea.model.FInterfacePort;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
@@ -191,6 +190,7 @@ import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.InterfaceKind;
+import org.eclipse.app4mc.amalthea.model.InterfacePort;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -607,8 +607,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateConnector((Connector)value, diagnostics, context);
 			case AmaltheaPackage.QUALIFIED_PORT:
 				return validateQualifiedPort((QualifiedPort)value, diagnostics, context);
-			case AmaltheaPackage.FINTERFACE_PORT:
-				return validateFInterfacePort((FInterfacePort)value, diagnostics, context);
+			case AmaltheaPackage.INTERFACE_PORT:
+				return validateInterfacePort((InterfacePort)value, diagnostics, context);
 			case AmaltheaPackage.CONFIG_MODEL:
 				return validateConfigModel((ConfigModel)value, diagnostics, context);
 			case AmaltheaPackage.EVENT_CONFIG:
@@ -1833,8 +1833,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFInterfacePort(FInterfacePort fInterfacePort, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(fInterfacePort, diagnostics, context);
+	public boolean validateInterfacePort(InterfacePort interfacePort, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(interfacePort, diagnostics, context);
 	}
 
 	/**
