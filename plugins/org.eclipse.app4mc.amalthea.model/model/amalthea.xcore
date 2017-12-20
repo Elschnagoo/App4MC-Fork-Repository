@@ -1764,7 +1764,7 @@ class ComplexPort extends HwPort
 class ComplexPin extends Pin
 {
 	PinType ^type
-	long baseAddress = "0"
+	Address baseAddress = "0"
 	RWType direction
 }
 

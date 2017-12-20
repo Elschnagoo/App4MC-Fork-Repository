@@ -2927,7 +2927,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:Pin">
         <xsd:attribute name="type" type="am:PinType"/>
-        <xsd:attribute name="baseAddress" type="xsd:long"/>
+        <xsd:attribute name="baseAddress" type="xsd:string"/>
         <xsd:attribute name="direction" type="am:RWType"/>
       </xsd:extension>
     </xsd:complexContent>
