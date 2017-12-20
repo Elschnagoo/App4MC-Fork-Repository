@@ -2926,6 +2926,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				ModeSwitchEntry<?> modeSwitchEntry = (ModeSwitchEntry<?>)theEObject;
 				T1 result = caseModeSwitchEntry(modeSwitchEntry);
 				if (result == null) result = caseBaseObject(modeSwitchEntry);
+				if (result == null) result = caseINamed(modeSwitchEntry);
 				if (result == null) result = caseIAnnotatable(modeSwitchEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

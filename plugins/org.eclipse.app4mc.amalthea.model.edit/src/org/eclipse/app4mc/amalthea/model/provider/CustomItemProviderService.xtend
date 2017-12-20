@@ -1848,7 +1848,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getModeValueDisjunctionItemProviderText(Object object, String defaultText) {
 		if (object instanceof ModeValueDisjunction) {
-			return getContainingFeatureName(object) + "OR List"
+			return getContainingFeatureName(object) + "OR"
 		} else {
 			return defaultText
 		}
@@ -1860,7 +1860,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getModeValueConjunctionItemProviderText(Object object, String defaultText) {
 		if (object instanceof ModeValueConjunction) {
-			return "AND List"
+			return "AND"
 		} else {
 			return defaultText
 		}
@@ -2198,11 +2198,13 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getModeSwitchItemProviderText(Object object, String defaultText) {
 		if (object instanceof ModeSwitch) {
-			val valueName = object.valueProvider?.name
-			val modeName = object.valueProvider?.mode?.name
-			val s1 = ppName(valueName, "<mode label>")
-			val s2 = ppName(modeName, "<mode>")
-			return "Switch " + s1 + " (" + s2 + ")";
+// TODO: remove obsolete code for customization (both methods)
+//			val valueName = object.valueProvider?.name
+//			val modeName = object.valueProvider?.mode?.name
+//			val s1 = ppName(valueName, "<mode label>")
+//			val s2 = ppName(modeName, "<mode>")
+//			return "Switch " + s1 + " (" + s2 + ")";
+			return "Mode Switch"
 		} else {
 			return defaultText
 		}
@@ -2211,8 +2213,6 @@ class CustomItemProviderService {
 	def static List<ViewerNotification> getModeSwitchItemProviderNotifications(Notification notification) {
 		val list = newArrayList
 		switch notification.getFeatureID(typeof(ModeSwitch)) {
-			case AmaltheaPackage::MODE_SWITCH__VALUE_PROVIDER:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))	
 			case AmaltheaPackage.MODE_SWITCH__ENTRIES,
 			case AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
@@ -2226,11 +2226,13 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getRunnableModeSwitchItemProviderText(Object object, String defaultText) {
 		if (object instanceof RunnableModeSwitch) {
-			val valueName = object.valueProvider?.name
-			val modeName = object.valueProvider?.mode?.name
-			val s1 = ppName(valueName, "<mode label>")
-			val s2 = ppName(modeName, "<mode>")
-			return "Switch " + s1 + " (" + s2 + ")";
+// TODO: remove obsolete code for customization (both methods)
+//			val valueName = object.valueProvider?.name
+//			val modeName = object.valueProvider?.mode?.name
+//			val s1 = ppName(valueName, "<mode label>")
+//			val s2 = ppName(modeName, "<mode>")
+//			return "Switch " + s1 + " (" + s2 + ")";
+			return "Mode Switch"
 		} else {
 			return defaultText
 		}
@@ -2239,8 +2241,6 @@ class CustomItemProviderService {
 	def static List<ViewerNotification> getRunnableModeSwitchItemProviderNotifications(Notification notification) {
 		val list = newArrayList
 		switch notification.getFeatureID(typeof(RunnableModeSwitch)) {
-			case AmaltheaPackage::RUNNABLE_MODE_SWITCH__VALUE_PROVIDER:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES,
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
@@ -2254,10 +2254,12 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getModeSwitchEntryItemProviderText(Object object, String defaultText) {
 		if (object instanceof ModeSwitchEntry<?>) {
-			val valueName = object?.values?.join("", ", ", "", [name])
-			val s1 = "case: "
-			val s2 = if(valueName.isNullOrEmpty) "<mode literals>" else valueName
-			return s1 + s2
+			// Idea: create short notation if structure is simple (like the old one)
+			// val valueName = object?.values?.join("", ", ", "", [name])
+
+			val entryName = object?.name
+			val s1 = if (entryName.nullOrEmpty) "_" else "\"" + entryName + "\""
+			return "case: " + s1
 		} else {
 			return defaultText
 		}
@@ -2267,9 +2269,10 @@ class CustomItemProviderService {
 		val list = newArrayList
 
 		switch notification.getFeatureID(typeof(ModeSwitchEntry)) {
+			case AmaltheaPackage::MODE_SWITCH_ENTRY__CONDITION,
 			case AmaltheaPackage::MODE_SWITCH_ENTRY__ITEMS:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
-			case AmaltheaPackage::MODE_SWITCH_ENTRY__VALUES:
+			case AmaltheaPackage::MODE_SWITCH_ENTRY__NAME:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 		}
 		return list

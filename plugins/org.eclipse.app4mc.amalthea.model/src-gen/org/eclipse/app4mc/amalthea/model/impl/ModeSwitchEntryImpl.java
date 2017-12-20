@@ -15,9 +15,11 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ModeLiteral;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -26,8 +28,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -38,7 +41,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchEntryImpl#getValues <em>Values</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchEntryImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchEntryImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchEntryImpl#getItems <em>Items</em>}</li>
  * </ul>
  *
@@ -46,14 +50,34 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitchEntry<T> {
 	/**
-	 * The cached value of the '{@link #getValues() <em>Values</em>}' reference list.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValues()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ModeLiteral> values;
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected ModeValueDisjunction condition;
 
 	/**
 	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
@@ -89,11 +113,63 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ModeLiteral> getValues() {
-		if (values == null) {
-			values = new EObjectResolvingEList<ModeLiteral>(ModeLiteral.class, this, AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES);
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_SWITCH_ENTRY__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModeValueDisjunction getCondition() {
+		return condition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCondition(ModeValueDisjunction newCondition, NotificationChain msgs) {
+		ModeValueDisjunction oldCondition = condition;
+		condition = newCondition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION, oldCondition, newCondition);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return values;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCondition(ModeValueDisjunction newCondition) {
+		if (newCondition != condition) {
+			NotificationChain msgs = null;
+			if (condition != null)
+				msgs = ((InternalEObject)condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION, null, msgs);
+			if (newCondition != null)
+				msgs = ((InternalEObject)newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION, null, msgs);
+			msgs = basicSetCondition(newCondition, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION, newCondition, newCondition));
 	}
 
 	/**
@@ -116,6 +192,8 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
+				return basicSetCondition(null, msgs);
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
 				return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
 		}
@@ -130,8 +208,10 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES:
-				return getValues();
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__NAME:
+				return getName();
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
+				return getCondition();
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
 				return getItems();
 		}
@@ -147,9 +227,11 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES:
-				getValues().clear();
-				getValues().addAll((Collection<? extends ModeLiteral>)newValue);
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__NAME:
+				setName((String)newValue);
+				return;
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
+				setCondition((ModeValueDisjunction)newValue);
 				return;
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
 				getItems().clear();
@@ -167,8 +249,11 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES:
-				getValues().clear();
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
+				setCondition((ModeValueDisjunction)null);
 				return;
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
 				getItems().clear();
@@ -185,12 +270,62 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES:
-				return values != null && !values.isEmpty();
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
+				return condition != null;
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
 				return items != null && !items.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.MODE_SWITCH_ENTRY__NAME: return AmaltheaPackage.INAMED__NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.INAMED__NAME: return AmaltheaPackage.MODE_SWITCH_ENTRY__NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ModeSwitchEntryImpl

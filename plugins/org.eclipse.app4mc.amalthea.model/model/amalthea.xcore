@@ -2840,18 +2840,17 @@ class CallSequence extends GraphEntryBase
  */
 class ModeSwitch extends GraphEntryBase
 {
-	refers ModeLabel valueProvider
 	contains ModeSwitchEntry<GraphEntryBase>[] entries
 	contains ModeSwitchDefault<GraphEntryBase> defaultEntry	
 }
 
 /*
  * A switch entry for a ModeSwitch. 
- * It describes a path of the switch and the required mode values to use this path
+ * It describes a path of the switch and the required mode condition to use this path
  */
-class ModeSwitchEntry<T> extends BaseObject
+class ModeSwitchEntry<T> extends BaseObject, INamed
 {
-	refers ModeLiteral[+] values
+	contains ModeValueDisjunction[1] condition
 	contains T[] items
 }
 
@@ -3298,7 +3297,6 @@ class ModeLabelAccess extends RunnableItem
 
 class RunnableModeSwitch extends RunnableItem
 {
-	refers ModeLabel valueProvider
 	contains ModeSwitchEntry<RunnableItem>[] entries
 	contains ModeSwitchDefault<RunnableItem> defaultEntry
 }

@@ -118,9 +118,10 @@ public class SoftwareUtil {
 				for (ModeSwitchEntry<GraphEntryBase> mse : modeSwitch.getEntries()) {
 					if (modes == null) {
 						collectCallSequenceItems(mse.getItems(), modes, filter, itemList);
-					} else if (!Collections.disjoint(mse.getValues(), modes)) {
-						collectCallSequenceItems(mse.getItems(), modes, filter, itemList);
-						includeDefault = false;
+// TODO: mode condition evaluation
+//					} else if (!Collections.disjoint(mse.getValues(), modes)) {
+//						collectCallSequenceItems(mse.getItems(), modes, filter, itemList);
+//						includeDefault = false;
 					}
 				}
 				if (includeDefault && modeSwitch.getDefaultEntry() != null) {
@@ -195,9 +196,10 @@ public class SoftwareUtil {
 				for (ModeSwitchEntry<RunnableItem> mse : modeSwitch.getEntries()) {
 					if (modes == null) {
 						collectRunnableItems(mse.getItems(), modes, filter, itemList);
-					} else if (!Collections.disjoint(mse.getValues(), modes)) {
-						collectRunnableItems(mse.getItems(), modes, filter, itemList);
-						includeDefault = false;
+// TODO: mode condition evaluation
+//					} else if (!Collections.disjoint(mse.getValues(), modes)) {
+//						collectRunnableItems(mse.getItems(), modes, filter, itemList);
+//						includeDefault = false;
 					}
 				}
 				if (includeDefault && modeSwitch.getDefaultEntry() != null) {
@@ -828,6 +830,7 @@ public class SoftwareUtil {
 		for (RunnableCall rc : runnable.getRunnableCalls()) {
 			Runnable run = ModelUtil.getParentContainer(rc, Runnable.class);
 			if (modeLiterals != null && !modeLiterals.isEmpty()) {
+// TODO: contains runnable ????
 				if (SoftwareUtil.collectRunnableItems(run, modeLiterals).contains(runnable))
 						result.add(run);
 			}

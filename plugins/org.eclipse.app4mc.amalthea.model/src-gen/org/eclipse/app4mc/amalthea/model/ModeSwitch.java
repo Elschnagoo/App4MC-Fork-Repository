@@ -27,7 +27,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeSwitch#getValueProvider <em>Value Provider</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeSwitch#getEntries <em>Entries</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeSwitch#getDefaultEntry <em>Default Entry</em>}</li>
  * </ul>
@@ -37,32 +36,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface ModeSwitch extends GraphEntryBase {
-	/**
-	 * Returns the value of the '<em><b>Value Provider</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Value Provider</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value Provider</em>' reference.
-	 * @see #setValueProvider(ModeLabel)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeSwitch_ValueProvider()
-	 * @model
-	 * @generated
-	 */
-	ModeLabel getValueProvider();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeSwitch#getValueProvider <em>Value Provider</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value Provider</em>' reference.
-	 * @see #getValueProvider()
-	 * @generated
-	 */
-	void setValueProvider(ModeLabel value);
-
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry}<code>&lt;org.eclipse.app4mc.amalthea.model.GraphEntryBase&gt;</code>.

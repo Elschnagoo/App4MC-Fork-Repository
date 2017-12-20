@@ -21589,22 +21589,13 @@ public interface AmaltheaPackage extends EPackage {
 	int MODE_SWITCH__CUSTOM_PROPERTIES = GRAPH_ENTRY_BASE__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Value Provider</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODE_SWITCH__VALUE_PROVIDER = GRAPH_ENTRY_BASE_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODE_SWITCH__ENTRIES = GRAPH_ENTRY_BASE_FEATURE_COUNT + 1;
+	int MODE_SWITCH__ENTRIES = GRAPH_ENTRY_BASE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Default Entry</b></em>' containment reference.
@@ -21613,7 +21604,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODE_SWITCH__DEFAULT_ENTRY = GRAPH_ENTRY_BASE_FEATURE_COUNT + 2;
+	int MODE_SWITCH__DEFAULT_ENTRY = GRAPH_ENTRY_BASE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Mode Switch</em>' class.
@@ -21622,7 +21613,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODE_SWITCH_FEATURE_COUNT = GRAPH_ENTRY_BASE_FEATURE_COUNT + 3;
+	int MODE_SWITCH_FEATURE_COUNT = GRAPH_ENTRY_BASE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Mode Switch</em>' class.
@@ -21653,13 +21644,22 @@ public interface AmaltheaPackage extends EPackage {
 	int MODE_SWITCH_ENTRY__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Values</b></em>' reference list.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODE_SWITCH_ENTRY__VALUES = BASE_OBJECT_FEATURE_COUNT + 0;
+	int MODE_SWITCH_ENTRY__NAME = BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_SWITCH_ENTRY__CONDITION = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -21668,7 +21668,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODE_SWITCH_ENTRY__ITEMS = BASE_OBJECT_FEATURE_COUNT + 1;
+	int MODE_SWITCH_ENTRY__ITEMS = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Mode Switch Entry</em>' class.
@@ -21677,7 +21677,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODE_SWITCH_ENTRY_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 2;
+	int MODE_SWITCH_ENTRY_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Mode Switch Entry</em>' class.
@@ -24449,22 +24449,13 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_MODE_SWITCH__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Value Provider</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RUNNABLE_MODE_SWITCH__VALUE_PROVIDER = RUNNABLE_ITEM_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_MODE_SWITCH__ENTRIES = RUNNABLE_ITEM_FEATURE_COUNT + 1;
+	int RUNNABLE_MODE_SWITCH__ENTRIES = RUNNABLE_ITEM_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Default Entry</b></em>' containment reference.
@@ -24473,7 +24464,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY = RUNNABLE_ITEM_FEATURE_COUNT + 2;
+	int RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY = RUNNABLE_ITEM_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Runnable Mode Switch</em>' class.
@@ -24482,7 +24473,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_MODE_SWITCH_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
+	int RUNNABLE_MODE_SWITCH_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -36191,17 +36182,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getModeSwitch();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.ModeSwitch#getValueProvider <em>Value Provider</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Value Provider</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitch#getValueProvider()
-	 * @see #getModeSwitch()
-	 * @generated
-	 */
-	EReference getModeSwitch_ValueProvider();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ModeSwitch#getEntries <em>Entries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36234,15 +36214,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getModeSwitchEntry();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getValues <em>Values</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getCondition <em>Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Values</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getValues()
+	 * @return the meta object for the containment reference '<em>Condition</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getCondition()
 	 * @see #getModeSwitchEntry()
 	 * @generated
 	 */
-	EReference getModeSwitchEntry_Values();
+	EReference getModeSwitchEntry_Condition();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getItems <em>Items</em>}'.
@@ -37420,17 +37400,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRunnableModeSwitch();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getValueProvider <em>Value Provider</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Value Provider</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getValueProvider()
-	 * @see #getRunnableModeSwitch()
-	 * @generated
-	 */
-	EReference getRunnableModeSwitch_ValueProvider();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch#getEntries <em>Entries</em>}'.

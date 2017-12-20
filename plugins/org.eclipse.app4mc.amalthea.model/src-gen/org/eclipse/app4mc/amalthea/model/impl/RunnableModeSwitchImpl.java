@@ -15,7 +15,6 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
@@ -42,7 +41,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableModeSwitchImpl#getValueProvider <em>Value Provider</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableModeSwitchImpl#getEntries <em>Entries</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableModeSwitchImpl#getDefaultEntry <em>Default Entry</em>}</li>
  * </ul>
@@ -50,16 +48,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class RunnableModeSwitchImpl extends RunnableItemImpl implements RunnableModeSwitch {
-	/**
-	 * The cached value of the '{@link #getValueProvider() <em>Value Provider</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueProvider()
-	 * @generated
-	 * @ordered
-	 */
-	protected ModeLabel valueProvider;
-
 	/**
 	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -97,44 +85,6 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getRunnableModeSwitch();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ModeLabel getValueProvider() {
-		if (valueProvider != null && valueProvider.eIsProxy()) {
-			InternalEObject oldValueProvider = (InternalEObject)valueProvider;
-			valueProvider = (ModeLabel)eResolveProxy(oldValueProvider);
-			if (valueProvider != oldValueProvider) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER, oldValueProvider, valueProvider));
-			}
-		}
-		return valueProvider;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ModeLabel basicGetValueProvider() {
-		return valueProvider;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setValueProvider(ModeLabel newValueProvider) {
-		ModeLabel oldValueProvider = valueProvider;
-		valueProvider = newValueProvider;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER, oldValueProvider, valueProvider));
 	}
 
 	/**
@@ -216,9 +166,6 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER:
-				if (resolve) return getValueProvider();
-				return basicGetValueProvider();
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES:
 				return getEntries();
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY:
@@ -236,9 +183,6 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER:
-				setValueProvider((ModeLabel)newValue);
-				return;
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES:
 				getEntries().clear();
 				getEntries().addAll((Collection<? extends ModeSwitchEntry<RunnableItem>>)newValue);
@@ -258,9 +202,6 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER:
-				setValueProvider((ModeLabel)null);
-				return;
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES:
 				getEntries().clear();
 				return;
@@ -279,8 +220,6 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER:
-				return valueProvider != null;
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES:
 				return entries != null && !entries.isEmpty();
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY:

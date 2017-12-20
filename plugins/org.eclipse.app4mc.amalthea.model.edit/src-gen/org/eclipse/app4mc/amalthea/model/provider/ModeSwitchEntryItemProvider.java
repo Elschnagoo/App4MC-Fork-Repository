@@ -15,6 +15,7 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -22,6 +23,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -50,30 +52,30 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuesPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Values feature.
+	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuesPropertyDescriptor(Object object) {
+	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ModeSwitchEntry_values_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ModeSwitchEntry_values_feature", "_UI_ModeSwitchEntry_type"),
-				 AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Values(),
+				 getString("_UI_INamed_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_INamed_name_feature", "_UI_INamed_type"),
+				 AmaltheaPackage.eINSTANCE.getINamed_Name(),
 				 true,
 				 false,
-				 true,
-				 null,
-				 null,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_MainPropertyCategory"),
 				 null));
 	}
 
@@ -89,6 +91,7 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Condition());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Items());
 		}
 		return childrenFeatures;
@@ -131,7 +134,10 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		return getString("_UI_ModeSwitchEntry_type");
+		String label = ((ModeSwitchEntry<?>)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ModeSwitchEntry_type") :
+			getString("_UI_ModeSwitchEntry_type") + " " + label;
 	}
 
 	/**
@@ -154,6 +160,10 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ModeSwitchEntry.class)) {
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -178,6 +188,18 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 		super.notifyChanged(notification);
 	}
 
+//	/**
+//	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+//	 * that can be created under this object.
+//	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+//	 * @generated
+//	 */
+//	protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
+//		super.collectNewChildDescriptors(newChildDescriptors, object);
+//
+//		// ***** uncomment method and regenerate if required *****
+//	}
+
 	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
@@ -187,13 +209,19 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
 		// ***** Solution 1: call generated method (as a generic solution)
-		//collectNewChildDescriptorsGen(newChildDescriptors, object);
+//		collectNewChildDescriptorsGen(newChildDescriptors, object);
 		
 		// ***** Solution 2: customized collector
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+		
+		newChildDescriptors.add
+		(createChildParameter
+			(AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Condition(),
+			 AmaltheaFactory.eINSTANCE.createModeValueDisjunction()));
+
 		EcoreGenericsHelper.collectNewChildDescriptorsForSwitchEntry(
 				AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Items(), newChildDescriptors);
-
+		
 		// postprocessing
 		EcoreGenericsHelper.correctChildDescriptorListForGenericTypes(object, newChildDescriptors);
 	}
@@ -212,7 +240,8 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 
 		boolean qualify =
 			childFeature == AmaltheaPackage.eINSTANCE.getIAnnotatable_CustomProperties() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Items();
+			childFeature == AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Items() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Condition();
 
 		if (qualify) {
 			return getString

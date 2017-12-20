@@ -4501,11 +4501,9 @@ This just defines that the processes should be chained.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:GraphEntryBase">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="valueProvider" type="am:ModeLabel"/>
           <xsd:element name="entries" type="am:ModeSwitchEntry"/>
           <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
         </xsd:choice>
-        <xsd:attribute name="valueProvider" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -4517,22 +4515,22 @@ This just defines that the processes should be chained.</xsd:documentation>
   <xsd:complexType name="ModeSwitchEntry">
     <xsd:annotation>
       <xsd:documentation>A switch entry for a ModeSwitch.
-It describes a path of the switch and the required mode values to use this path</xsd:documentation>
+It describes a path of the switch and the required mode condition to use this path</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="values" type="am:ModeLiteral"/>
+          <xsd:element name="condition" type="am:ModeValueDisjunction"/>
           <xsd:element name="items" type="ecore:EObject"/>
         </xsd:choice>
-        <xsd:attribute name="values" type="xsd:string"/>
+        <xsd:attribute name="name" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeSwitchEntry" type="am:ModeSwitchEntry">
     <xsd:annotation>
       <xsd:documentation>A switch entry for a ModeSwitch.
-It describes a path of the switch and the required mode values to use this path</xsd:documentation>
+It describes a path of the switch and the required mode condition to use this path</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ModeSwitchDefault">
@@ -5134,11 +5132,9 @@ It can be used to define which mode value is written to the label.</xsd:document
     <xsd:complexContent>
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="valueProvider" type="am:ModeLabel"/>
           <xsd:element name="entries" type="am:ModeSwitchEntry"/>
           <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
         </xsd:choice>
-        <xsd:attribute name="valueProvider" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

@@ -3385,7 +3385,7 @@ public class CustomItemProviderService {
   public static String getModeValueDisjunctionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ModeValueDisjunction)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      return (_containingFeatureName + "OR List");
+      return (_containingFeatureName + "OR");
     } else {
       return defaultText;
     }
@@ -3396,7 +3396,7 @@ public class CustomItemProviderService {
    */
   public static String getModeValueConjunctionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ModeValueConjunction)) {
-      return "AND List";
+      return "AND";
     } else {
       return defaultText;
     }
@@ -4116,25 +4116,7 @@ public class CustomItemProviderService {
    */
   public static String getModeSwitchItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ModeSwitch)) {
-      ModeLabel _valueProvider = ((ModeSwitch)object).getValueProvider();
-      String _name = null;
-      if (_valueProvider!=null) {
-        _name=_valueProvider.getName();
-      }
-      final String valueName = _name;
-      ModeLabel _valueProvider_1 = ((ModeSwitch)object).getValueProvider();
-      Mode _mode = null;
-      if (_valueProvider_1!=null) {
-        _mode=_valueProvider_1.getMode();
-      }
-      String _name_1 = null;
-      if (_mode!=null) {
-        _name_1=_mode.getName();
-      }
-      final String modeName = _name_1;
-      final String s1 = CustomItemProviderService.ppName(valueName, "<mode label>");
-      final String s2 = CustomItemProviderService.ppName(modeName, "<mode>");
-      return (((("Switch " + s1) + " (") + s2) + ")");
+      return "Mode Switch";
     } else {
       return defaultText;
     }
@@ -4144,26 +4126,18 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ModeSwitch.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH__VALUE_PROVIDER)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH__ENTRIES)) {
       _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH__ENTRIES)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY)) {
         _matched=true;
       }
-      if (!_matched) {
-        if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY)) {
-          _matched=true;
-        }
-      }
-      if (_matched) {
-        Object _notifier_1 = notification.getNotifier();
-        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);
-        list.add(_viewerNotification_1);
-      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, false);
+      list.add(_viewerNotification);
     }
     return list;
   }
@@ -4173,25 +4147,7 @@ public class CustomItemProviderService {
    */
   public static String getRunnableModeSwitchItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof RunnableModeSwitch)) {
-      ModeLabel _valueProvider = ((RunnableModeSwitch)object).getValueProvider();
-      String _name = null;
-      if (_valueProvider!=null) {
-        _name=_valueProvider.getName();
-      }
-      final String valueName = _name;
-      ModeLabel _valueProvider_1 = ((RunnableModeSwitch)object).getValueProvider();
-      Mode _mode = null;
-      if (_valueProvider_1!=null) {
-        _mode=_valueProvider_1.getMode();
-      }
-      String _name_1 = null;
-      if (_mode!=null) {
-        _name_1=_mode.getName();
-      }
-      final String modeName = _name_1;
-      final String s1 = CustomItemProviderService.ppName(valueName, "<mode label>");
-      final String s2 = CustomItemProviderService.ppName(modeName, "<mode>");
-      return (((("Switch " + s1) + " (") + s2) + ")");
+      return "Mode Switch";
     } else {
       return defaultText;
     }
@@ -4201,26 +4157,18 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(RunnableModeSwitch.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_MODE_SWITCH__VALUE_PROVIDER)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES)) {
       _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY)) {
         _matched=true;
       }
-      if (!_matched) {
-        if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY)) {
-          _matched=true;
-        }
-      }
-      if (_matched) {
-        Object _notifier_1 = notification.getNotifier();
-        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);
-        list.add(_viewerNotification_1);
-      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, false);
+      list.add(_viewerNotification);
     }
     return list;
   }
@@ -4230,28 +4178,20 @@ public class CustomItemProviderService {
    */
   public static String getModeSwitchEntryItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ModeSwitchEntry<?>)) {
-      EList<ModeLiteral> _values = null;
+      String _name = null;
       if (((ModeSwitchEntry<?>)object)!=null) {
-        _values=((ModeSwitchEntry<?>)object).getValues();
+        _name=((ModeSwitchEntry<?>)object).getName();
       }
-      String _join = null;
-      if (_values!=null) {
-        final Function1<ModeLiteral, CharSequence> _function = (ModeLiteral it) -> {
-          return it.getName();
-        };
-        _join=IterableExtensions.<ModeLiteral>join(_values, "", ", ", "", _function);
-      }
-      final String valueName = _join;
-      final String s1 = "case: ";
+      final String entryName = _name;
       String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(valueName);
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(entryName);
       if (_isNullOrEmpty) {
-        _xifexpression = "<mode literals>";
+        _xifexpression = "_";
       } else {
-        _xifexpression = valueName;
+        _xifexpression = (("\"" + entryName) + "\"");
       }
-      final String s2 = _xifexpression;
-      return (s1 + s2);
+      final String s1 = _xifexpression;
+      return ("case: " + s1);
     } else {
       return defaultText;
     }
@@ -4261,14 +4201,21 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ModeSwitchEntry.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION)) {
       _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, false);
       list.add(_viewerNotification);
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__VALUES)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_SWITCH_ENTRY__NAME)) {
         _matched=true;
         Object _notifier_1 = notification.getNotifier();
         ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, false, true);

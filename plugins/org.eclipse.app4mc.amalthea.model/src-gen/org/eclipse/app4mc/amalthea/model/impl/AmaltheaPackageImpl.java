@@ -10113,7 +10113,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModeSwitch_ValueProvider() {
+	public EReference getModeSwitch_Entries() {
 		return (EReference)modeSwitchEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -10122,17 +10122,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModeSwitch_Entries() {
-		return (EReference)modeSwitchEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getModeSwitch_DefaultEntry() {
-		return (EReference)modeSwitchEClass.getEStructuralFeatures().get(2);
+		return (EReference)modeSwitchEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -10149,7 +10140,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModeSwitchEntry_Values() {
+	public EReference getModeSwitchEntry_Condition() {
 		return (EReference)modeSwitchEntryEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -11148,7 +11139,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRunnableModeSwitch_ValueProvider() {
+	public EReference getRunnableModeSwitch_Entries() {
 		return (EReference)runnableModeSwitchEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -11157,17 +11148,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRunnableModeSwitch_Entries() {
-		return (EReference)runnableModeSwitchEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getRunnableModeSwitch_DefaultEntry() {
-		return (EReference)runnableModeSwitchEClass.getEStructuralFeatures().get(2);
+		return (EReference)runnableModeSwitchEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -13727,12 +13709,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(callSequenceEClass, CALL_SEQUENCE__CALLS);
 
 		modeSwitchEClass = createEClass(MODE_SWITCH);
-		createEReference(modeSwitchEClass, MODE_SWITCH__VALUE_PROVIDER);
 		createEReference(modeSwitchEClass, MODE_SWITCH__ENTRIES);
 		createEReference(modeSwitchEClass, MODE_SWITCH__DEFAULT_ENTRY);
 
 		modeSwitchEntryEClass = createEClass(MODE_SWITCH_ENTRY);
-		createEReference(modeSwitchEntryEClass, MODE_SWITCH_ENTRY__VALUES);
+		createEReference(modeSwitchEntryEClass, MODE_SWITCH_ENTRY__CONDITION);
 		createEReference(modeSwitchEntryEClass, MODE_SWITCH_ENTRY__ITEMS);
 
 		modeSwitchDefaultEClass = createEClass(MODE_SWITCH_DEFAULT);
@@ -13876,7 +13857,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(modeLabelAccessEClass, MODE_LABEL_ACCESS__MODE_VALUE);
 
 		runnableModeSwitchEClass = createEClass(RUNNABLE_MODE_SWITCH);
-		createEReference(runnableModeSwitchEClass, RUNNABLE_MODE_SWITCH__VALUE_PROVIDER);
 		createEReference(runnableModeSwitchEClass, RUNNABLE_MODE_SWITCH__ENTRIES);
 		createEReference(runnableModeSwitchEClass, RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY);
 
@@ -14436,6 +14416,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		callSequenceEClass.getESuperTypes().add(this.getGraphEntryBase());
 		modeSwitchEClass.getESuperTypes().add(this.getGraphEntryBase());
 		modeSwitchEntryEClass.getESuperTypes().add(this.getBaseObject());
+		modeSwitchEntryEClass.getESuperTypes().add(this.getINamed());
 		modeSwitchDefaultEClass.getESuperTypes().add(this.getBaseObject());
 		probabilitySwitchEClass.getESuperTypes().add(this.getGraphEntryBase());
 		probabilitySwitchEntryEClass.getESuperTypes().add(this.getBaseObject());
@@ -15604,7 +15585,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getCallSequence_Calls(), this.getCallSequenceItem(), null, "calls", null, 0, -1, CallSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeSwitchEClass, ModeSwitch.class, "ModeSwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModeSwitch_ValueProvider(), this.getModeLabel(), null, "valueProvider", null, 0, 1, ModeSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(this.getModeSwitchEntry());
 		g2 = createEGenericType(this.getGraphEntryBase());
 		g1.getETypeArguments().add(g2);
@@ -15615,7 +15595,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getModeSwitch_DefaultEntry(), g1, null, "defaultEntry", null, 0, 1, ModeSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeSwitchEntryEClass, ModeSwitchEntry.class, "ModeSwitchEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModeSwitchEntry_Values(), this.getModeLiteral(), null, "values", null, 1, -1, ModeSwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeSwitchEntry_Condition(), this.getModeValueDisjunction(), null, "condition", null, 1, 1, ModeSwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(modeSwitchEntryEClass_T);
 		initEReference(getModeSwitchEntry_Items(), g1, null, "items", null, 0, -1, ModeSwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -15767,7 +15747,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getModeLabelAccess_ModeValue(), this.getModeLiteral(), null, "modeValue", null, 0, 1, ModeLabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableModeSwitchEClass, RunnableModeSwitch.class, "RunnableModeSwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRunnableModeSwitch_ValueProvider(), this.getModeLabel(), null, "valueProvider", null, 0, 1, RunnableModeSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(this.getModeSwitchEntry());
 		g2 = createEGenericType(this.getRunnableItem());
 		g1.getETypeArguments().add(g2);
