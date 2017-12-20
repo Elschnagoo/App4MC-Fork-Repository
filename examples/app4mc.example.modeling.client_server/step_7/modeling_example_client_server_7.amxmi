@@ -44,23 +44,35 @@
     </tasks>
     <tasks name="Task_2" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:ModeSwitch" valueProvider="message?type=ModeLabel">
-          <entries values="MessageMode/MessageContent_2?type=ModeLiteral">
+        <graphEntries xsi:type="am:ModeSwitch">
+          <entries name="Content_2">
+		    <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="MessageMode/MessageContent_2?type=ModeLiteral"/>
+            </condition>
             <items xsi:type="am:CallSequence" name="CallSequence_2_2">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_2?type=Runnable" />
             </items>
           </entries>
-          <entries values="MessageMode/MessageContent_3?type=ModeLiteral">
+          <entries name="Content_3">
+		    <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="MessageMode/MessageContent_3?type=ModeLiteral"/>
+            </condition>
             <items xsi:type="am:CallSequence" name="CallSequence_2_3">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_3?type=Runnable" />
             </items>
           </entries>
-          <entries values="MessageMode/MessageContent_1?type=ModeLiteral">
+          <entries name="Content_1">
+		    <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="MessageMode/MessageContent_1?type=ModeLiteral"/>
+            </condition>
             <items xsi:type="am:CallSequence" name="CallSequence_2_1">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_1?type=Runnable" />
             </items>
           </entries>
-          <entries values="MessageMode/MessageContent_4?type=ModeLiteral">
+          <entries name="Content_4">
+		    <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="MessageMode/MessageContent_4?type=ModeLiteral"/>
+            </condition>
             <items xsi:type="am:CallSequence" name="CallSequence_2_4">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_4?type=Runnable" />
             </items>

@@ -28,20 +28,29 @@
     </tasks>
     <tasks name="Task_2" stimuli="Stimulus_Task_2?type=PeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
-        <graphEntries xsi:type="am:ModeSwitch" valueProvider="state?type=ModeLabel">
-          <entries values="State/State_1?type=ModeLiteral">
+        <graphEntries xsi:type="am:ModeSwitch">
+          <entries name="State_1">
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="state?type=ModeLabel" value="State/State_1?type=ModeLiteral"/>
+            </condition>
             <items xsi:type="am:CallSequence" name="CallSequence_State_1">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_State_1?type=Runnable" />
             </items>
             <items xsi:type="am:ModeSwitch" />
           </entries>
-          <entries values="State/State_0?type=ModeLiteral">
+          <entries name="State_0">
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="state?type=ModeLabel" value="State/State_0?type=ModeLiteral"/>
+            </condition>
             <items xsi:type="am:CallSequence" name="CallSequence_State_0">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_State_0?type=Runnable" />
             </items>
             <items xsi:type="am:ModeSwitch" />
           </entries>
-          <entries values="State/State_2?type=ModeLiteral">
+          <entries name="State_2">
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="state?type=ModeLabel" value="State/State_2?type=ModeLiteral"/>
+            </condition>
             <items xsi:type="am:CallSequence" name="CallSequence_State_2">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_State_2?type=Runnable" />
             </items>
