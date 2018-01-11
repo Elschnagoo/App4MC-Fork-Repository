@@ -12,15 +12,20 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ModeLabel;
+import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
-import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -50,7 +55,7 @@ public class ModeValueDisjunctionImpl extends BaseObjectImpl implements ModeValu
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ModeValueListEntry> entries;
+	protected EList<ModeValueDisjunctionEntry> entries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,11 +81,27 @@ public class ModeValueDisjunctionImpl extends BaseObjectImpl implements ModeValu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ModeValueListEntry> getEntries() {
+	public EList<ModeValueDisjunctionEntry> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList<ModeValueListEntry>(ModeValueListEntry.class, this, AmaltheaPackage.MODE_VALUE_DISJUNCTION__ENTRIES);
+			entries = new EObjectContainmentEList<ModeValueDisjunctionEntry>(ModeValueDisjunctionEntry.class, this, AmaltheaPackage.MODE_VALUE_DISJUNCTION__ENTRIES);
 		}
 		return entries;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSatisfiedBy(final EMap<ModeLabel, ModeLiteral> assignment) {
+		EList<ModeValueDisjunctionEntry> _entries = this.getEntries();
+		for (final ModeValueDisjunctionEntry entry : _entries) {
+			boolean _isSatisfiedBy = entry.isSatisfiedBy(assignment);
+			if (_isSatisfiedBy) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -122,7 +143,7 @@ public class ModeValueDisjunctionImpl extends BaseObjectImpl implements ModeValu
 		switch (featureID) {
 			case AmaltheaPackage.MODE_VALUE_DISJUNCTION__ENTRIES:
 				getEntries().clear();
-				getEntries().addAll((Collection<? extends ModeValueListEntry>)newValue);
+				getEntries().addAll((Collection<? extends ModeValueDisjunctionEntry>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -155,6 +176,21 @@ public class ModeValueDisjunctionImpl extends BaseObjectImpl implements ModeValu
 				return entries != null && !entries.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.MODE_VALUE_DISJUNCTION___IS_SATISFIED_BY__EMAP:
+				return isSatisfiedBy((EMap<ModeLabel, ModeLiteral>)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //ModeValueDisjunctionImpl

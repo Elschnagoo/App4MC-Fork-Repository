@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -57,10 +58,33 @@ public class AbstractEventChainItemProvider extends BaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addNamePropertyDescriptor(object);
 			addStimulusPropertyDescriptor(object);
 			addResponsePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_INamed_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_INamed_name_feature", "_UI_INamed_type"),
+				 AmaltheaPackage.eINSTANCE.getINamed_Name(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_MainPropertyCategory"),
+				 null));
 	}
 
 	/**
@@ -156,7 +180,10 @@ public class AbstractEventChainItemProvider extends BaseObjectItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_AbstractEventChain_type");
+		String label = ((AbstractEventChain)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_AbstractEventChain_type") :
+			getString("_UI_AbstractEventChain_type") + " " + label;
 	}
 	
 
@@ -172,6 +199,9 @@ public class AbstractEventChainItemProvider extends BaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(AbstractEventChain.class)) {
+			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__SEGMENTS:
 			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__STRANDS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

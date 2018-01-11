@@ -28,7 +28,7 @@ import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SingleStimulus;
@@ -1958,10 +1958,10 @@ public class StimuliModelValidatorTests {
 	}
 	
 	/**
-	 * Test for validation method {@link StimuliModelValidator#checkModeValueListEntryModeLabelConstraint(AMALTHEA)}
+	 * Test for validation method {@link StimuliModelValidator#checkModeValueProviderConstraint(AMALTHEA)}
 	 */
 	@Test
-	public void test_ModeValueListEntryModeLabelConstraint_null() {
+	public void test_ModeValueProviderConstraint_null() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
@@ -1980,17 +1980,17 @@ public class StimuliModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 		
 		// test
-		this.classUnderTest.checkModeValueListEntryModeLabelConstraint(amalthea);
+		this.classUnderTest.checkModeValueProviderConstraint(amalthea);
 		
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 	
 	/**
-	 * Test for validation method {@link StimuliModelValidator#checkModeValueListEntryModeLabelConstraint(AMALTHEA)}
+	 * Test for validation method {@link StimuliModelValidator#checkModeValueProviderConstraint(AMALTHEA)}
 	 */
 	@Test
-	public void test_ModeValueListEntryModeLabelConstraint_positive() {
+	public void test_ModeValueProviderConstraint_positive() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
@@ -2011,17 +2011,17 @@ public class StimuliModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 		
 		// test
-		this.classUnderTest.checkModeValueListEntryModeLabelConstraint(amalthea);
+		this.classUnderTest.checkModeValueProviderConstraint(amalthea);
 		
 		// evaluate
 		EasyMock.verify(this.issueCreator);
 	}
 	
 	/**
-	 * Test for validation method {@link StimuliModelValidator#checkModeValueListEntryModeLabelConstraint(AMALTHEA)}
+	 * Test for validation method {@link StimuliModelValidator#checkModeValueProviderConstraint(AMALTHEA)}
 	 */
 	@Test
-	public void test_ModeValueListEntryModeLabelConstraint_negative() {
+	public void test_ModeValueProviderConstraint_negative() {
 		// prepare
 		final Amalthea amalthea = AmaltheaFactory.eINSTANCE.createAmalthea();
 		final StimuliModel stimuliModel = AmaltheaFactory.eINSTANCE.createStimuliModel();
@@ -2044,7 +2044,7 @@ public class StimuliModelValidatorTests {
 		EasyMock.replay(this.issueCreator);
 		
 		// test
-		this.classUnderTest.checkModeValueListEntryModeLabelConstraint(amalthea);
+		this.classUnderTest.checkModeValueProviderConstraint(amalthea);
 		
 		// evaluate
 		EasyMock.verify(this.issueCreator);

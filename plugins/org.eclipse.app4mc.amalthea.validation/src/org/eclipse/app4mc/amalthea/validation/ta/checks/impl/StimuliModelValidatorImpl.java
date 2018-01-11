@@ -25,7 +25,7 @@ import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
-import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SingleStimulus;
@@ -429,14 +429,14 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 
 	
 	/*
-	 * Checks if property valueProvider of {@link ModeValueListEntry} references an existing {@link ModeLiteral}.
+	 * Checks if property valueProvider of {@link ModeValue} references an existing {@link ModeLiteral}.
 	 * If this is not the case, it will be handled as an error.
 	 */
-	public void checkModeValueListEntryModeLabelConstraint(Amalthea amalthea) {
+	public void checkModeValueProviderConstraint(Amalthea amalthea) {
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
 
 		final List<ModeLabel> modeLabels = new ArrayList<>();
-		final Map<ModeLabel, ModeValueListEntry> valueProviders = new HashMap<>();
+		final Map<ModeLabel, ModeValue> valueProviders = new HashMap<>();
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
 			if (elem instanceof SWModel) {
@@ -457,8 +457,8 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 		// check
 		for(ModeLabel modeLabel : valueProviders.keySet()) {
 			if(false == modeLabels.contains(modeLabel)) {
-				ModeValueListEntry modeValueListEntry = valueProviders.get(modeLabel);
-				this.issueCreator.issue(modeValueListEntry, AmaltheaPackage.eINSTANCE.getModeValue_ValueProvider());
+				ModeValue entry = valueProviders.get(modeLabel);
+				this.issueCreator.issue(entry, AmaltheaPackage.eINSTANCE.getModeValue_ValueProvider());
 			}
 		}
 		

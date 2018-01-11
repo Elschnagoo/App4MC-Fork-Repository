@@ -175,6 +175,7 @@ import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl;
+import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl;
 import org.eclipse.app4mc.amalthea.model.impl.RunnableInstructionsEntryImpl;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -3418,26 +3419,37 @@ public class CustomItemProviderService {
       }
       final ModeLiteral value = _value;
       String _xifexpression = null;
+      EObject _eContainer = null;
+      if (((ModeValue)object)!=null) {
+        _eContainer=((ModeValue)object).eContainer();
+      }
+      if ((_eContainer instanceof ModeValueList)) {
+        _xifexpression = " <- ";
+      } else {
+        _xifexpression = " == ";
+      }
+      final String relation = _xifexpression;
+      String _xifexpression_1 = null;
       String _name = null;
       if (prov!=null) {
         _name=prov.getName();
       }
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name);
       if (_isNullOrEmpty) {
-        _xifexpression = "<mode label>";
+        _xifexpression_1 = "<mode label>";
       } else {
         String _name_1 = prov.getName();
-        _xifexpression = ("Mode Label " + _name_1);
+        _xifexpression_1 = ("Mode Label " + _name_1);
       }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
+      final String s1 = _xifexpression_1;
+      String _xifexpression_2 = null;
       if ((value == null)) {
-        _xifexpression_1 = "<value>";
+        _xifexpression_2 = "<value>";
       } else {
-        _xifexpression_1 = value.toString();
+        _xifexpression_2 = value.toString();
       }
-      final String s2 = _xifexpression_1;
-      return ((s1 + " == ") + s2);
+      final String s2 = _xifexpression_2;
+      return ((s1 + relation) + s2);
     } else {
       return defaultText;
     }
@@ -3445,13 +3457,13 @@ public class CustomItemProviderService {
   
   public static List<ViewerNotification> getModeValueItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(ModeValue.class);
+    int _featureID = notification.getFeatureID(ModeValueImpl.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE__VALUE)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE__VALUE_PROVIDER)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE__VALUE_PROVIDER)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE__VALUE)) {
         _matched=true;
       }
     }

@@ -43,7 +43,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface AbstractEventChain extends BaseObject {
+public interface AbstractEventChain extends BaseObject, INamed {
 	/**
 	 * Returns the value of the '<em><b>Stimulus</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -127,15 +127,6 @@ public interface AbstractEventChain extends BaseObject {
 	 * @generated
 	 */
 	EList<EventChainItem> getStrands();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return null;'"
-	 * @generated
-	 */
-	String getName();
 
 	/**
 	 * <!-- begin-user-doc -->

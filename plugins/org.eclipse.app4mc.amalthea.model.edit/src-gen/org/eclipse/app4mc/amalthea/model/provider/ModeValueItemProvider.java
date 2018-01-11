@@ -15,7 +15,6 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -31,7 +30,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModeValueItemProvider extends ModeValueListEntryItemProvider {
+public class ModeValueItemProvider extends ModeValueDisjunctionEntryItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

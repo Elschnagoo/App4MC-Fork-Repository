@@ -18,19 +18,21 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 
 public class AmaltheaServices {
 
 	public static BigInteger convertToBit(DataSize size) {
 		if (size == null || size.getValue() == null)
 			return null;
-
+	
 		BigInteger bitBase = size.getValue();
 		BigInteger byteBase = size.getValue().multiply(BigInteger.valueOf(8));
-
+	
 		switch (size.getUnit()) {
 		case _UNDEFINED_:
 			return null;
@@ -44,7 +46,7 @@ public class AmaltheaServices {
 			return bitBase.multiply(BigInteger.TEN.pow(9));
 		case TBIT:
 			return bitBase.multiply(BigInteger.TEN.pow(12));
-
+	
 		case KIBIT:
 			return bitBase.multiply(BigInteger.valueOf(2).pow(10));
 		case MIBIT:
@@ -53,7 +55,7 @@ public class AmaltheaServices {
 			return bitBase.multiply(BigInteger.valueOf(2).pow(30));
 		case TIBIT:
 			return bitBase.multiply(BigInteger.valueOf(2).pow(40));
-
+	
 		case B:
 			return byteBase;
 		case KB:
@@ -64,7 +66,7 @@ public class AmaltheaServices {
 			return byteBase.multiply(BigInteger.TEN.pow(9));
 		case TB:
 			return byteBase.multiply(BigInteger.TEN.pow(12));
-
+	
 		case KI_B:
 			return byteBase.multiply(BigInteger.valueOf(2).pow(10));
 		case MI_B:
@@ -74,7 +76,41 @@ public class AmaltheaServices {
 		case TI_B:
 			return byteBase.multiply(BigInteger.valueOf(2).pow(40));
 		}
+	
+		return null;
+	}
 
+	/**
+	 * This method is used to convert the value of Time/TimeObject element's value
+	 * to BigInteger in Pico Seconds
+	 * 
+	 * @param abstractTime
+	 *            AbstractTime object
+	 * @return value BigInteger in Pico Seconds
+	 */
+	public static BigInteger convertToPS(AbstractTime abstractTime) {
+	
+		BigInteger timeValue = abstractTime.getValue();
+	
+		if (timeValue != null) {
+	
+			switch (abstractTime.getUnit()) {
+			case _UNDEFINED_:
+				return null;
+			case PS:
+				return timeValue;
+			case NS:
+				return timeValue.multiply(BigInteger.TEN.pow(3));
+			case US:
+				return timeValue.multiply(BigInteger.TEN.pow(6));
+			case MS:
+				return timeValue.multiply(BigInteger.TEN.pow(9));
+			case S:
+				return timeValue.multiply(BigInteger.TEN.pow(12));
+			}
+	
+		}
+	
 		return null;
 	}
 
@@ -100,6 +136,43 @@ public class AmaltheaServices {
 		return null;
 	}
 
+	/**
+	 * This method is used to compare AbstractTime objects (Time/TimeObject) on the
+	 * basis of their values (obtained in pico seconds after applying the conversion
+	 * based on TimeUnit)
+	 * 
+	 * @param t1
+	 *            AbstractTime object
+	 * @param t2
+	 *            AbstractTime object
+	 * @return -1 ,0 or 1
+	 */
+	public static int compareTimeElement(final AbstractTime t1, final AbstractTime t2) {
+		if (t1 == null || t2 == null) {
+			throw new NullPointerException();
+		}
+	
+		if (t1.getUnit() == TimeUnit._UNDEFINED_) {
+			throw new RuntimeException("Undefined time unit : " + t1);
+		}
+	
+		if (t2.getUnit() == TimeUnit._UNDEFINED_) {
+			throw new RuntimeException("Undefined time unit : " + t2);
+		}
+	
+		if (t1 == t2) {
+			return 0;
+		}
+	
+		BigInteger value1 = convertToPS(t1);
+		BigInteger value2 = convertToPS(t2);
+	
+		assert value1 != null;
+		assert value2 != null;
+	
+		return value1.compareTo(value2);
+	}
+
 	public static EList<QualifiedPort> getInnerPorts(ISystem system) {
 		List<QualifiedPort> qualifiedPorts = new ArrayList<QualifiedPort>();
 		for (ComponentInstance inst : system.getComponentInstances()) {
@@ -118,77 +191,6 @@ public class AmaltheaServices {
 		} else {
 			return ECollections.unmodifiableEList(qualifiedPorts);
 		}
-	}
-
-	/**
-	 * This method is used to compare AbstractTime objects (Time/TimeObject) on the
-	 * basis of their values (obtained in pico seconds after applying the conversion
-	 * based on TimeUnit)
-	 * 
-	 * @param t1
-	 *            AbstractTime object
-	 * @param t2
-	 *            AbstractTime object
-	 * @return -1 ,0 or 1
-	 */
-	public static int compareTimeElement(final AbstractTime t1, final AbstractTime t2) {
-		if (t1 == null || t2 == null) {
-			throw new NullPointerException();
-		}
-
-		if (t1.getUnit() == TimeUnit._UNDEFINED_) {
-			throw new RuntimeException("Undefined time unit : " + t1);
-		}
-
-		if (t2.getUnit() == TimeUnit._UNDEFINED_) {
-			throw new RuntimeException("Undefined time unit : " + t2);
-		}
-
-		if (t1 == t2) {
-			return 0;
-		}
-
-		BigInteger value1 = convertToPS(t1);
-		BigInteger value2 = convertToPS(t2);
-
-		assert value1 != null;
-		assert value2 != null;
-
-		return value1.compareTo(value2);
-	}
-
-	/**
-	 * This method is used to convert the value of Time/TimeObject element's value
-	 * to BigInteger in Pico Seconds
-	 * 
-	 * @param abstractTime
-	 *            AbstractTime object
-	 * @return value BigInteger in Pico Seconds
-	 */
-	public static BigInteger convertToPS(AbstractTime abstractTime) {
-
-		BigInteger timeValue = abstractTime.getValue();
-
-		if (timeValue != null) {
-
-			switch (abstractTime.getUnit()) {
-			case _UNDEFINED_:
-				return null;
-			case PS:
-				return timeValue;
-			case NS:
-				return timeValue.multiply(BigInteger.TEN.pow(3));
-			case US:
-				return timeValue.multiply(BigInteger.TEN.pow(6));
-			case MS:
-				return timeValue.multiply(BigInteger.TEN.pow(9));
-			case S:
-				return timeValue.multiply(BigInteger.TEN.pow(12));
-			}
-
-		}
-
-		return null;
 	}
 
 }

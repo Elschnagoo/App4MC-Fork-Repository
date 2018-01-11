@@ -53,32 +53,9 @@ public class EventChainItemProvider extends AbstractEventChainItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
 			addUniqueNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_INamed_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_INamed_name_feature", "_UI_INamed_type"),
-				 AmaltheaPackage.eINSTANCE.getINamed_Name(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 getString("_UI_MainPropertyCategory"),
-				 null));
 	}
 
 	/**
@@ -153,7 +130,6 @@ public class EventChainItemProvider extends AbstractEventChainItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(EventChain.class)) {
-			case AmaltheaPackage.EVENT_CHAIN__NAME:
 			case AmaltheaPackage.EVENT_CHAIN__UNIQUE_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

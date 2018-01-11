@@ -1026,16 +1026,12 @@ class TagGroup extends RunnableGroup, ProcessGroup, BaseObject
  * segments: Sub event chains
  * strands: alternative event paths
  */
-abstract class AbstractEventChain extends BaseObject
+abstract class AbstractEventChain extends BaseObject, INamed
 {
 	refers Event stimulus
 	refers Event response
 	contains EventChainItem[] segments
 	contains EventChainItem[] strands
-	
-	op String getName() {
-		null
-	}
 	
 	op boolean containerNotificationRequired() {
 		return true
@@ -1046,15 +1042,13 @@ class EventChain extends AbstractEventChain, IReferable
 {	
 }
 
-class SubEventChain extends AbstractEventChain, INamed
+class SubEventChain extends AbstractEventChain
 {	
 }
 
 abstract class EventChainItem extends BaseObject
 {
-	op AbstractEventChain getEventChain() {
-		null
-	}
+	op AbstractEventChain getEventChain() {}
 }
 
 class EventChainReference extends EventChainItem
@@ -2112,11 +2106,9 @@ enum SemaphoreType {
  */
 abstract class Scheduler extends ReferableBaseObject
 {
-	op Algorithm getSchedulingAlgorithm() {
-		null
-	}
-	
 	contains ComputationItem[] computationItems 
+	
+	op Algorithm getSchedulingAlgorithm() {}
 }
 
 class TaskScheduler extends Scheduler
@@ -2569,24 +2561,48 @@ class ModeValueList extends BaseObject
 	contains ModeValue[] entries
 }
 
-abstract class ModeValueListEntry extends BaseObject
-{
-}
-
-class ModeValue extends ModeValueListEntry
-{
-	refers ModeLabel[1] valueProvider
+class ModeValueMapEntry wraps java.util.Map$Entry {
+	refers ModeLabel[1] key
 	refers ModeLiteral [1] value
-}
-
-class ModeValueConjunction extends ModeValueListEntry
-{
-	contains ModeValue[+] entries
 }
 
 class ModeValueDisjunction extends BaseObject
 {
-	contains ModeValueListEntry[] entries
+	contains ModeValueDisjunctionEntry[+] entries
+	
+	op boolean isSatisfiedBy(ModeValueMapEntry[] assignment) {
+		for (ModeValueDisjunctionEntry entry : entries) {
+				if (entry.isSatisfiedBy(assignment)) return true;
+		}
+		return false;
+	}
+}
+
+abstract class ModeValueDisjunctionEntry extends BaseObject
+{
+	op boolean isSatisfiedBy(ModeValueMapEntry[] assignment) {false}
+}
+
+class ModeValue extends ModeValueDisjunctionEntry
+{
+	refers ModeLabel[1] valueProvider
+	refers ModeLiteral [1] value
+	
+	op boolean isSatisfiedBy(ModeValueMapEntry[] assignment) {
+		return assignment.get(valueProvider) === value;
+	}
+}
+
+class ModeValueConjunction extends ModeValueDisjunctionEntry
+{
+	contains ModeValue[+] entries
+	
+	op boolean isSatisfiedBy(ModeValueMapEntry[] assignment) {
+		for (ModeValue entry : entries) {
+				if (! entry.isSatisfiedBy(assignment)) return false;
+		}
+		return true;
+	}
 }
 
 /*

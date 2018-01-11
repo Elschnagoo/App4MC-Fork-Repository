@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +31,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface ModeValue extends ModeValueListEntry {
+public interface ModeValue extends ModeValueDisjunctionEntry {
 	/**
 	 * Returns the value of the '<em><b>Value Provider</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -82,5 +83,14 @@ public interface ModeValue extends ModeValueListEntry {
 	 * @generated
 	 */
 	void setValue(ModeLiteral value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" assignmentMapType="org.eclipse.app4mc.amalthea.model.ModeValueMapEntry&lt;org.eclipse.app4mc.amalthea.model.ModeLabel, org.eclipse.app4mc.amalthea.model.ModeLiteral&gt;"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.ModeLiteral%&gt; _get = assignment.get(this.getValueProvider());\n&lt;%org.eclipse.app4mc.amalthea.model.ModeLiteral%&gt; _value = this.getValue();\nreturn (_get == _value);'"
+	 * @generated
+	 */
+	boolean isSatisfiedBy(EMap<ModeLabel, ModeLiteral> assignment);
 
 } // ModeValue

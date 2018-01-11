@@ -13,6 +13,7 @@
 package org.eclipse.app4mc.amalthea.model;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +31,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ModeValueConjunction extends ModeValueListEntry {
+public interface ModeValueConjunction extends ModeValueDisjunctionEntry {
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ModeValue}.
@@ -46,5 +47,14 @@ public interface ModeValueConjunction extends ModeValueListEntry {
 	 * @generated
 	 */
 	EList<ModeValue> getEntries();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" assignmentMapType="org.eclipse.app4mc.amalthea.model.ModeValueMapEntry&lt;org.eclipse.app4mc.amalthea.model.ModeLabel, org.eclipse.app4mc.amalthea.model.ModeLiteral&gt;"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%org.eclipse.app4mc.amalthea.model.ModeValue%&gt;&gt; _entries = this.getEntries();\nfor (final &lt;%org.eclipse.app4mc.amalthea.model.ModeValue%&gt; entry : _entries)\n{\n\tboolean _isSatisfiedBy = entry.isSatisfiedBy(assignment);\n\tboolean _not = (!_isSatisfiedBy);\n\tif (_not)\n\t{\n\t\treturn false;\n\t}\n}\nreturn true;'"
+	 * @generated
+	 */
+	boolean isSatisfiedBy(EMap<ModeLabel, ModeLiteral> assignment);
 
 } // ModeValueConjunction

@@ -239,8 +239,8 @@ import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.Network;
 import org.eclipse.app4mc.amalthea.model.NetworkType;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
@@ -965,14 +965,16 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateStimulus((Stimulus)value, diagnostics, context);
 			case AmaltheaPackage.MODE_VALUE_LIST:
 				return validateModeValueList((ModeValueList)value, diagnostics, context);
-			case AmaltheaPackage.MODE_VALUE_LIST_ENTRY:
-				return validateModeValueListEntry((ModeValueListEntry)value, diagnostics, context);
+			case AmaltheaPackage.MODE_VALUE_MAP_ENTRY:
+				return validateModeValueMapEntry((Map.Entry<?, ?>)value, diagnostics, context);
+			case AmaltheaPackage.MODE_VALUE_DISJUNCTION:
+				return validateModeValueDisjunction((ModeValueDisjunction)value, diagnostics, context);
+			case AmaltheaPackage.MODE_VALUE_DISJUNCTION_ENTRY:
+				return validateModeValueDisjunctionEntry((ModeValueDisjunctionEntry)value, diagnostics, context);
 			case AmaltheaPackage.MODE_VALUE:
 				return validateModeValue((ModeValue)value, diagnostics, context);
 			case AmaltheaPackage.MODE_VALUE_CONJUNCTION:
 				return validateModeValueConjunction((ModeValueConjunction)value, diagnostics, context);
-			case AmaltheaPackage.MODE_VALUE_DISJUNCTION:
-				return validateModeValueDisjunction((ModeValueDisjunction)value, diagnostics, context);
 			case AmaltheaPackage.PERIODIC_STIMULUS:
 				return validatePeriodicStimulus((PeriodicStimulus)value, diagnostics, context);
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS:
@@ -3444,8 +3446,26 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateModeValueListEntry(ModeValueListEntry modeValueListEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(modeValueListEntry, diagnostics, context);
+	public boolean validateModeValueMapEntry(Map.Entry<?, ?> modeValueMapEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint((EObject)modeValueMapEntry, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateModeValueDisjunction(ModeValueDisjunction modeValueDisjunction, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(modeValueDisjunction, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateModeValueDisjunctionEntry(ModeValueDisjunctionEntry modeValueDisjunctionEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(modeValueDisjunctionEntry, diagnostics, context);
 	}
 
 	/**
@@ -3464,15 +3484,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateModeValueConjunction(ModeValueConjunction modeValueConjunction, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(modeValueConjunction, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateModeValueDisjunction(ModeValueDisjunction modeValueDisjunction, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(modeValueDisjunction, diagnostics, context);
 	}
 
 	/**

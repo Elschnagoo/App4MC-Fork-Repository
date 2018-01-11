@@ -20,6 +20,7 @@ import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Event;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
+import org.eclipse.app4mc.amalthea.model.INamed;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -42,6 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AbstractEventChainImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AbstractEventChainImpl#getStimulus <em>Stimulus</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AbstractEventChainImpl#getResponse <em>Response</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AbstractEventChainImpl#getSegments <em>Segments</em>}</li>
@@ -51,6 +53,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public abstract class AbstractEventChainImpl extends BaseObjectImpl implements AbstractEventChain {
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getStimulus() <em>Stimulus</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -108,6 +130,27 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getAbstractEventChain();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ABSTRACT_EVENT_CHAIN__NAME, oldName, name));
 	}
 
 	/**
@@ -215,15 +258,6 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean containerNotificationRequired() {
 		return true;
 	}
@@ -252,6 +286,8 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__NAME:
+				return getName();
 			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__STIMULUS:
 				if (resolve) return getStimulus();
 				return basicGetStimulus();
@@ -275,6 +311,9 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__NAME:
+				setName((String)newValue);
+				return;
 			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__STIMULUS:
 				setStimulus((Event)newValue);
 				return;
@@ -301,6 +340,9 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__STIMULUS:
 				setStimulus((Event)null);
 				return;
@@ -325,6 +367,8 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__STIMULUS:
 				return stimulus != null;
 			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__RESPONSE:
@@ -343,14 +387,60 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.ABSTRACT_EVENT_CHAIN__NAME: return AmaltheaPackage.INAMED__NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.INAMED__NAME: return AmaltheaPackage.ABSTRACT_EVENT_CHAIN__NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN___GET_NAME:
-				return getName();
 			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN___CONTAINER_NOTIFICATION_REQUIRED:
 				return containerNotificationRequired();
 		}
 		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //AbstractEventChainImpl

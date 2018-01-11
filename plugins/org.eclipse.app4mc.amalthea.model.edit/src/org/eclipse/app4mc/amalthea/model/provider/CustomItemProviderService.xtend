@@ -82,7 +82,6 @@ import org.eclipse.app4mc.amalthea.model.ModeLabelAccess
 import org.eclipse.app4mc.amalthea.model.ModeLiteral
 import org.eclipse.app4mc.amalthea.model.ModeSwitch
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry
-import org.eclipse.app4mc.amalthea.model.ModeValue
 import org.eclipse.app4mc.amalthea.model.ModeValueConjunction
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction
 import org.eclipse.app4mc.amalthea.model.ModeValueList
@@ -141,12 +140,14 @@ import org.eclipse.app4mc.amalthea.model.TypeRef
 import org.eclipse.app4mc.amalthea.model.WaitEvent
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl
+import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl
 import org.eclipse.app4mc.amalthea.model.impl.RunnableInstructionsEntryImpl
 import org.eclipse.emf.common.notify.AdapterFactory
 import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
+import org.eclipse.app4mc.amalthea.model.ModeValue
 
 class CustomItemProviderService {
 
@@ -1874,9 +1875,10 @@ class CustomItemProviderService {
 		if (object instanceof ModeValue) {
 			val prov = object?.valueProvider
 			val value = object?.value
+			val relation = if(object?.eContainer instanceof ModeValueList) " <- " else " == "
 			val s1 = if(prov?.name.isNullOrEmpty) "<mode label>" else "Mode Label " + prov.name
 			val s2 = if(value === null) "<value>" else value.toString
-			return s1 + " == " + s2
+			return s1 + relation + s2
 		} else {
 			return defaultText
 		}
@@ -1885,9 +1887,9 @@ class CustomItemProviderService {
 	def static List<ViewerNotification> getModeValueItemProviderNotifications(Notification notification) {
 		val list = newArrayList
 
-		switch notification.getFeatureID(typeof(ModeValue)) {
-			case AmaltheaPackage::MODE_VALUE__VALUE,
-			case AmaltheaPackage::MODE_VALUE__VALUE_PROVIDER:
+		switch notification.getFeatureID(typeof(ModeValueImpl)) {
+			case AmaltheaPackage::MODE_VALUE__VALUE_PROVIDER,
+			case AmaltheaPackage::MODE_VALUE__VALUE:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 		}
 		return list

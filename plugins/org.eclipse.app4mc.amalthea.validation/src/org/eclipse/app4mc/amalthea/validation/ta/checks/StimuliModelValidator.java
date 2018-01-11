@@ -115,8 +115,8 @@ public class StimuliModelValidator extends AbstractCheckValidator implements Iss
 		this.stimuliModelValidator.checkClockMultiplierListEntryTimeUnsigned(amalthea);
 	}
 	
-	@Check(constraint = "ModeValueListEntryModeLabelConstraint", categories = { "TAConstraint" })
-	public void checkModeValueListEntryModeLabelConstraint(final Amalthea amalthea) {
-		this.stimuliModelValidator.checkModeValueListEntryModeLabelConstraint(amalthea);
+	@Check(constraint = "ModeValueProviderConstraint", categories = { "TAConstraint" })
+	public void checkModeValueProviderConstraint(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkModeValueProviderConstraint(amalthea);
 	}
 }

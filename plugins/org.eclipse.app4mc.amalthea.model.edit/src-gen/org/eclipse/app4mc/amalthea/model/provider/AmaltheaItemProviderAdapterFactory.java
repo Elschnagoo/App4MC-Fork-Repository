@@ -4130,6 +4130,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModeValueMapEntryItemProvider modeValueMapEntryItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createModeValueMapEntryAdapter() {
+		if (modeValueMapEntryItemProvider == null) {
+			modeValueMapEntryItemProvider = new ModeValueMapEntryItemProvider(this);
+		}
+
+		return modeValueMapEntryItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeValue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6476,9 +6499,10 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (memoryClassificationItemProvider != null) memoryClassificationItemProvider.dispose();
 		if (stimuliModelItemProvider != null) stimuliModelItemProvider.dispose();
 		if (modeValueListItemProvider != null) modeValueListItemProvider.dispose();
+		if (modeValueMapEntryItemProvider != null) modeValueMapEntryItemProvider.dispose();
+		if (modeValueDisjunctionItemProvider != null) modeValueDisjunctionItemProvider.dispose();
 		if (modeValueItemProvider != null) modeValueItemProvider.dispose();
 		if (modeValueConjunctionItemProvider != null) modeValueConjunctionItemProvider.dispose();
-		if (modeValueDisjunctionItemProvider != null) modeValueDisjunctionItemProvider.dispose();
 		if (periodicStimulusItemProvider != null) periodicStimulusItemProvider.dispose();
 		if (variableRateStimulusItemProvider != null) variableRateStimulusItemProvider.dispose();
 		if (syntheticStimulusItemProvider != null) syntheticStimulusItemProvider.dispose();

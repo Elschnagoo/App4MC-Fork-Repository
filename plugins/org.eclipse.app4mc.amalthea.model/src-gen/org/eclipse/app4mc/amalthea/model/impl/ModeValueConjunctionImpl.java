@@ -12,15 +12,21 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ModeLabel;
+import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -41,7 +47,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ModeValueConjunctionImpl extends ModeValueListEntryImpl implements ModeValueConjunction {
+public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl implements ModeValueConjunction {
 	/**
 	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -81,6 +87,23 @@ public class ModeValueConjunctionImpl extends ModeValueListEntryImpl implements 
 			entries = new EObjectContainmentEList<ModeValue>(ModeValue.class, this, AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES);
 		}
 		return entries;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSatisfiedBy(final EMap<ModeLabel, ModeLiteral> assignment) {
+		EList<ModeValue> _entries = this.getEntries();
+		for (final ModeValue entry : _entries) {
+			boolean _isSatisfiedBy = entry.isSatisfiedBy(assignment);
+			boolean _not = (!_isSatisfiedBy);
+			if (_not) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -155,6 +178,37 @@ public class ModeValueConjunctionImpl extends ModeValueListEntryImpl implements 
 				return entries != null && !entries.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == ModeValueDisjunctionEntry.class) {
+			switch (baseOperationID) {
+				case AmaltheaPackage.MODE_VALUE_DISJUNCTION_ENTRY___IS_SATISFIED_BY__EMAP: return AmaltheaPackage.MODE_VALUE_CONJUNCTION___IS_SATISFIED_BY__EMAP;
+				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.MODE_VALUE_CONJUNCTION___IS_SATISFIED_BY__EMAP:
+				return isSatisfiedBy((EMap<ModeLabel, ModeLiteral>)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //ModeValueConjunctionImpl

@@ -1934,6 +1934,7 @@ strands: alternative event paths</xsd:documentation>
           <xsd:element name="segments" type="am:EventChainItem"/>
           <xsd:element name="strands" type="am:EventChainItem"/>
         </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="stimulus" type="xsd:string"/>
         <xsd:attribute name="response" type="xsd:string"/>
       </xsd:extension>
@@ -1952,17 +1953,13 @@ strands: alternative event paths</xsd:documentation>
   </xsd:element>
   <xsd:complexType name="EventChain">
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractEventChain">
-        <xsd:attribute name="name" type="xsd:string"/>
-      </xsd:extension>
+      <xsd:extension base="am:AbstractEventChain"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="EventChain" type="am:EventChain"/>
   <xsd:complexType name="SubEventChain">
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractEventChain">
-        <xsd:attribute name="name" type="xsd:string"/>
-      </xsd:extension>
+      <xsd:extension base="am:AbstractEventChain"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="SubEventChain" type="am:SubEventChain"/>
@@ -4033,15 +4030,37 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeValueList" type="am:ModeValueList"/>
-  <xsd:complexType abstract="true" name="ModeValueListEntry">
+  <xsd:complexType name="ModeValueMapEntry">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="key" type="am:ModeLabel"/>
+      <xsd:element name="value" type="am:ModeLiteral"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="key" type="xsd:string"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="ModeValueMapEntry" type="am:ModeValueMapEntry"/>
+  <xsd:complexType name="ModeValueDisjunction">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entries" type="am:ModeValueDisjunctionEntry"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ModeValueDisjunction" type="am:ModeValueDisjunction"/>
+  <xsd:complexType abstract="true" name="ModeValueDisjunctionEntry">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject"/>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ModeValueListEntry" type="am:ModeValueListEntry"/>
+  <xsd:element name="ModeValueDisjunctionEntry" type="am:ModeValueDisjunctionEntry"/>
   <xsd:complexType name="ModeValue">
     <xsd:complexContent>
-      <xsd:extension base="am:ModeValueListEntry">
+      <xsd:extension base="am:ModeValueDisjunctionEntry">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="valueProvider" type="am:ModeLabel"/>
           <xsd:element name="value" type="am:ModeLiteral"/>
@@ -4054,7 +4073,7 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
   <xsd:element name="ModeValue" type="am:ModeValue"/>
   <xsd:complexType name="ModeValueConjunction">
     <xsd:complexContent>
-      <xsd:extension base="am:ModeValueListEntry">
+      <xsd:extension base="am:ModeValueDisjunctionEntry">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entries" type="am:ModeValue"/>
         </xsd:choice>
@@ -4062,16 +4081,6 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeValueConjunction" type="am:ModeValueConjunction"/>
-  <xsd:complexType name="ModeValueDisjunction">
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="entries" type="am:ModeValueListEntry"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ModeValueDisjunction" type="am:ModeValueDisjunction"/>
   <xsd:complexType name="PeriodicStimulus">
     <xsd:annotation>
       <xsd:documentation>Stimulus that is triggered periodically

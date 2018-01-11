@@ -238,8 +238,8 @@ import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
+import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.ModeValueListEntry;
 import org.eclipse.app4mc.amalthea.model.Network;
 import org.eclipse.app4mc.amalthea.model.NetworkType;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
@@ -2105,7 +2105,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass modeValueListEntryEClass = null;
+	private EClass modeValueMapEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modeValueDisjunctionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modeValueDisjunctionEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2120,13 +2134,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass modeValueConjunctionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass modeValueDisjunctionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -5451,17 +5458,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getAbstractEventChain__GetName() {
-		return abstractEventChainEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EOperation getAbstractEventChain__ContainerNotificationRequired() {
-		return abstractEventChainEClass.getEOperations().get(1);
+		return abstractEventChainEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -9330,8 +9328,71 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getModeValueListEntry() {
-		return modeValueListEntryEClass;
+	public EClass getModeValueMapEntry() {
+		return modeValueMapEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModeValueMapEntry_Key() {
+		return (EReference)modeValueMapEntryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModeValueMapEntry_Value() {
+		return (EReference)modeValueMapEntryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getModeValueDisjunction() {
+		return modeValueDisjunctionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModeValueDisjunction_Entries() {
+		return (EReference)modeValueDisjunctionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getModeValueDisjunction__IsSatisfiedBy__EMap() {
+		return modeValueDisjunctionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getModeValueDisjunctionEntry() {
+		return modeValueDisjunctionEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getModeValueDisjunctionEntry__IsSatisfiedBy__EMap() {
+		return modeValueDisjunctionEntryEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -9366,6 +9427,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getModeValue__IsSatisfiedBy__EMap() {
+		return modeValueEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModeValueConjunction() {
 		return modeValueConjunctionEClass;
 	}
@@ -9384,17 +9454,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getModeValueDisjunction() {
-		return modeValueDisjunctionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getModeValueDisjunction_Entries() {
-		return (EReference)modeValueDisjunctionEClass.getEStructuralFeatures().get(0);
+	public EOperation getModeValueConjunction__IsSatisfiedBy__EMap() {
+		return modeValueConjunctionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -13013,7 +13074,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN__RESPONSE);
 		createEReference(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN__SEGMENTS);
 		createEReference(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN__STRANDS);
-		createEOperation(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN___GET_NAME);
 		createEOperation(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN___CONTAINER_NOTIFICATION_REQUIRED);
 
 		eventChainEClass = createEClass(EVENT_CHAIN);
@@ -13593,17 +13653,25 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		modeValueListEClass = createEClass(MODE_VALUE_LIST);
 		createEReference(modeValueListEClass, MODE_VALUE_LIST__ENTRIES);
 
-		modeValueListEntryEClass = createEClass(MODE_VALUE_LIST_ENTRY);
+		modeValueMapEntryEClass = createEClass(MODE_VALUE_MAP_ENTRY);
+		createEReference(modeValueMapEntryEClass, MODE_VALUE_MAP_ENTRY__KEY);
+		createEReference(modeValueMapEntryEClass, MODE_VALUE_MAP_ENTRY__VALUE);
+
+		modeValueDisjunctionEClass = createEClass(MODE_VALUE_DISJUNCTION);
+		createEReference(modeValueDisjunctionEClass, MODE_VALUE_DISJUNCTION__ENTRIES);
+		createEOperation(modeValueDisjunctionEClass, MODE_VALUE_DISJUNCTION___IS_SATISFIED_BY__EMAP);
+
+		modeValueDisjunctionEntryEClass = createEClass(MODE_VALUE_DISJUNCTION_ENTRY);
+		createEOperation(modeValueDisjunctionEntryEClass, MODE_VALUE_DISJUNCTION_ENTRY___IS_SATISFIED_BY__EMAP);
 
 		modeValueEClass = createEClass(MODE_VALUE);
 		createEReference(modeValueEClass, MODE_VALUE__VALUE_PROVIDER);
 		createEReference(modeValueEClass, MODE_VALUE__VALUE);
+		createEOperation(modeValueEClass, MODE_VALUE___IS_SATISFIED_BY__EMAP);
 
 		modeValueConjunctionEClass = createEClass(MODE_VALUE_CONJUNCTION);
 		createEReference(modeValueConjunctionEClass, MODE_VALUE_CONJUNCTION__ENTRIES);
-
-		modeValueDisjunctionEClass = createEClass(MODE_VALUE_DISJUNCTION);
-		createEReference(modeValueDisjunctionEClass, MODE_VALUE_DISJUNCTION__ENTRIES);
+		createEOperation(modeValueConjunctionEClass, MODE_VALUE_CONJUNCTION___IS_SATISFIED_BY__EMAP);
 
 		periodicStimulusEClass = createEClass(PERIODIC_STIMULUS);
 		createEReference(periodicStimulusEClass, PERIODIC_STIMULUS__OFFSET);
@@ -14239,10 +14307,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		tagGroupEClass.getESuperTypes().add(this.getProcessGroup());
 		tagGroupEClass.getESuperTypes().add(this.getBaseObject());
 		abstractEventChainEClass.getESuperTypes().add(this.getBaseObject());
+		abstractEventChainEClass.getESuperTypes().add(this.getINamed());
 		eventChainEClass.getESuperTypes().add(this.getAbstractEventChain());
 		eventChainEClass.getESuperTypes().add(this.getIReferable());
 		subEventChainEClass.getESuperTypes().add(this.getAbstractEventChain());
-		subEventChainEClass.getESuperTypes().add(this.getINamed());
 		eventChainItemEClass.getESuperTypes().add(this.getBaseObject());
 		eventChainReferenceEClass.getESuperTypes().add(this.getEventChainItem());
 		eventChainContainerEClass.getESuperTypes().add(this.getEventChainItem());
@@ -14384,10 +14452,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		stimulusEClass.getESuperTypes().add(this.getReferableBaseObject());
 		stimulusEClass.getESuperTypes().add(this.getITaggable());
 		modeValueListEClass.getESuperTypes().add(this.getBaseObject());
-		modeValueListEntryEClass.getESuperTypes().add(this.getBaseObject());
-		modeValueEClass.getESuperTypes().add(this.getModeValueListEntry());
-		modeValueConjunctionEClass.getESuperTypes().add(this.getModeValueListEntry());
 		modeValueDisjunctionEClass.getESuperTypes().add(this.getBaseObject());
+		modeValueDisjunctionEntryEClass.getESuperTypes().add(this.getBaseObject());
+		modeValueEClass.getESuperTypes().add(this.getModeValueDisjunctionEntry());
+		modeValueConjunctionEClass.getESuperTypes().add(this.getModeValueDisjunctionEntry());
 		periodicStimulusEClass.getESuperTypes().add(this.getStimulus());
 		variableRateStimulusEClass.getESuperTypes().add(this.getStimulus());
 		syntheticStimulusEClass.getESuperTypes().add(this.getStimulus());
@@ -14873,8 +14941,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getAbstractEventChain_Response(), this.getEvent(), null, "response", null, 0, 1, AbstractEventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAbstractEventChain_Segments(), this.getEventChainItem(), null, "segments", null, 0, -1, AbstractEventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAbstractEventChain_Strands(), this.getEventChainItem(), null, "strands", null, 0, -1, AbstractEventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getAbstractEventChain__GetName(), theEcorePackage.getEString(), "getName", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getAbstractEventChain__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -15466,17 +15532,33 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(modeValueListEClass, ModeValueList.class, "ModeValueList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModeValueList_Entries(), this.getModeValue(), null, "entries", null, 0, -1, ModeValueList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(modeValueListEntryEClass, ModeValueListEntry.class, "ModeValueListEntry", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(modeValueMapEntryEClass, Map.Entry.class, "ModeValueMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModeValueMapEntry_Key(), this.getModeLabel(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeValueMapEntry_Value(), this.getModeLiteral(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(modeValueDisjunctionEClass, ModeValueDisjunction.class, "ModeValueDisjunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModeValueDisjunction_Entries(), this.getModeValueDisjunctionEntry(), null, "entries", null, 1, -1, ModeValueDisjunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getModeValueDisjunction__IsSatisfiedBy__EMap(), theEcorePackage.getEBoolean(), "isSatisfiedBy", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getModeValueMapEntry(), "assignment", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(modeValueDisjunctionEntryEClass, ModeValueDisjunctionEntry.class, "ModeValueDisjunctionEntry", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = initEOperation(getModeValueDisjunctionEntry__IsSatisfiedBy__EMap(), theEcorePackage.getEBoolean(), "isSatisfiedBy", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getModeValueMapEntry(), "assignment", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(modeValueEClass, ModeValue.class, "ModeValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModeValue_ValueProvider(), this.getModeLabel(), null, "valueProvider", null, 1, 1, ModeValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModeValue_Value(), this.getModeLiteral(), null, "value", null, 1, 1, ModeValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		op = initEOperation(getModeValue__IsSatisfiedBy__EMap(), theEcorePackage.getEBoolean(), "isSatisfiedBy", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getModeValueMapEntry(), "assignment", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(modeValueConjunctionEClass, ModeValueConjunction.class, "ModeValueConjunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModeValueConjunction_Entries(), this.getModeValue(), null, "entries", null, 1, -1, ModeValueConjunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(modeValueDisjunctionEClass, ModeValueDisjunction.class, "ModeValueDisjunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModeValueDisjunction_Entries(), this.getModeValueListEntry(), null, "entries", null, 0, -1, ModeValueDisjunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		op = initEOperation(getModeValueConjunction__IsSatisfiedBy__EMap(), theEcorePackage.getEBoolean(), "isSatisfiedBy", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getModeValueMapEntry(), "assignment", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(periodicStimulusEClass, PeriodicStimulus.class, "PeriodicStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPeriodicStimulus_Offset(), this.getTime(), null, "offset", null, 0, 1, PeriodicStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

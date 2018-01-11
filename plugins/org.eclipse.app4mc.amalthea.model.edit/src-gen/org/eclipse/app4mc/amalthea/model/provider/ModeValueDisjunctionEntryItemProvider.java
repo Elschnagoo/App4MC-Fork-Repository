@@ -16,27 +16,25 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.SubEventChain;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.SubEventChain} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SubEventChainItemProvider extends AbstractEventChainItemProvider {
+public class ModeValueDisjunctionEntryItemProvider extends BaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SubEventChainItemProvider(AdapterFactory adapterFactory) {
+	public ModeValueDisjunctionEntryItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -53,17 +51,6 @@ public class SubEventChainItemProvider extends AbstractEventChainItemProvider {
 
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This returns SubEventChain.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SubEventChain"));
 	}
 
 	/**
@@ -84,10 +71,7 @@ public class SubEventChainItemProvider extends AbstractEventChainItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((SubEventChain)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_SubEventChain_type") :
-			getString("_UI_SubEventChain_type") + " " + label;
+		return getString("_UI_ModeValueDisjunctionEntry_type");
 	}
 	
 
@@ -114,29 +98,6 @@ public class SubEventChainItemProvider extends AbstractEventChainItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getAbstractEventChain_Segments() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getAbstractEventChain_Strands();
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

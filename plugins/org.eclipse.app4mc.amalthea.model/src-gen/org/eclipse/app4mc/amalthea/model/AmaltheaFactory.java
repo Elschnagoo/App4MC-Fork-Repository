@@ -1616,6 +1616,15 @@ public interface AmaltheaFactory extends EFactory {
 	ModeValueList createModeValueList();
 
 	/**
+	 * Returns a new object of class '<em>Mode Value Disjunction</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Mode Value Disjunction</em>'.
+	 * @generated
+	 */
+	ModeValueDisjunction createModeValueDisjunction();
+
+	/**
 	 * Returns a new object of class '<em>Mode Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1632,15 +1641,6 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	ModeValueConjunction createModeValueConjunction();
-
-	/**
-	 * Returns a new object of class '<em>Mode Value Disjunction</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mode Value Disjunction</em>'.
-	 * @generated
-	 */
-	ModeValueDisjunction createModeValueDisjunction();
 
 	/**
 	 * Returns a new object of class '<em>Periodic Stimulus</em>'.

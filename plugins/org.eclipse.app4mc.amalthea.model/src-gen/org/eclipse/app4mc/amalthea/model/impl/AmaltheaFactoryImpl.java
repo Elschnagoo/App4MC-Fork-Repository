@@ -563,9 +563,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.MEMORY_CLASSIFICATION: return createMemoryClassification();
 			case AmaltheaPackage.STIMULI_MODEL: return createStimuliModel();
 			case AmaltheaPackage.MODE_VALUE_LIST: return createModeValueList();
+			case AmaltheaPackage.MODE_VALUE_MAP_ENTRY: return (EObject)createModeValueMapEntry();
+			case AmaltheaPackage.MODE_VALUE_DISJUNCTION: return createModeValueDisjunction();
 			case AmaltheaPackage.MODE_VALUE: return createModeValue();
 			case AmaltheaPackage.MODE_VALUE_CONJUNCTION: return createModeValueConjunction();
-			case AmaltheaPackage.MODE_VALUE_DISJUNCTION: return createModeValueDisjunction();
 			case AmaltheaPackage.PERIODIC_STIMULUS: return createPeriodicStimulus();
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS: return createVariableRateStimulus();
 			case AmaltheaPackage.SYNTHETIC_STIMULUS: return createSyntheticStimulus();
@@ -2679,6 +2680,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Map.Entry<ModeLabel, ModeLiteral> createModeValueMapEntry() {
+		ModeValueMapEntryImpl modeValueMapEntry = new ModeValueMapEntryImpl();
+		return modeValueMapEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModeValueDisjunction createModeValueDisjunction() {
+		ModeValueDisjunctionImpl modeValueDisjunction = new ModeValueDisjunctionImpl();
+		return modeValueDisjunction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ModeValue createModeValue() {
 		ModeValueImpl modeValue = new ModeValueImpl();
 		return modeValue;
@@ -2692,16 +2713,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public ModeValueConjunction createModeValueConjunction() {
 		ModeValueConjunctionImpl modeValueConjunction = new ModeValueConjunctionImpl();
 		return modeValueConjunction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ModeValueDisjunction createModeValueDisjunction() {
-		ModeValueDisjunctionImpl modeValueDisjunction = new ModeValueDisjunctionImpl();
-		return modeValueDisjunction;
 	}
 
 	/**
