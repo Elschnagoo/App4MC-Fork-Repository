@@ -20,17 +20,17 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Time Unit</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Voltage Unit</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * Time units (enumeration of available units)
+ * Voltage units (enumeration of available units)
  * <!-- end-model-doc -->
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimeUnit()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVoltageUnit()
  * @model
  * @generated
  */
-public enum TimeUnit implements Enumerator {
+public enum VoltageUnit implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -42,54 +42,34 @@ public enum TimeUnit implements Enumerator {
 	_UNDEFINED_(0, "_undefined_", "_undefined_"),
 
 	/**
-	 * The '<em><b>Ps</b></em>' literal object.
+	 * The '<em><b>UV</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PS_VALUE
+	 * @see #UV_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PS(0, "ps", "ps"),
+	UV(0, "uV", "uV"),
 
 	/**
-	 * The '<em><b>Ns</b></em>' literal object.
+	 * The '<em><b>MV</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NS_VALUE
+	 * @see #MV_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NS(0, "ns", "ns"),
+	MV(0, "mV", "mV"),
 
 	/**
-	 * The '<em><b>Us</b></em>' literal object.
+	 * The '<em><b>V</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #US_VALUE
+	 * @see #V_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	US(0, "us", "us"),
-
-	/**
-	 * The '<em><b>Ms</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #MS_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	MS(0, "ms", "ms"),
-
-	/**
-	 * The '<em><b>S</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #S_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	S(0, "s", "s");
+	V(0, "V", "V");
 
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
@@ -107,115 +87,83 @@ public enum TimeUnit implements Enumerator {
 	public static final int _UNDEFINED__VALUE = 0;
 
 	/**
-	 * The '<em><b>Ps</b></em>' literal value.
+	 * The '<em><b>UV</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Ps</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>UV</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #PS
-	 * @model name="ps"
+	 * @see #UV
+	 * @model name="uV"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PS_VALUE = 0;
+	public static final int UV_VALUE = 0;
 
 	/**
-	 * The '<em><b>Ns</b></em>' literal value.
+	 * The '<em><b>MV</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Ns</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>MV</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #NS
-	 * @model name="ns"
+	 * @see #MV
+	 * @model name="mV"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NS_VALUE = 0;
+	public static final int MV_VALUE = 0;
 
 	/**
-	 * The '<em><b>Us</b></em>' literal value.
+	 * The '<em><b>V</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Us</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>V</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #US
-	 * @model name="us"
+	 * @see #V
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int US_VALUE = 0;
+	public static final int V_VALUE = 0;
 
 	/**
-	 * The '<em><b>Ms</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Ms</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #MS
-	 * @model name="ms"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int MS_VALUE = 0;
-
-	/**
-	 * The '<em><b>S</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>S</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #S
-	 * @model name="s"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int S_VALUE = 0;
-
-	/**
-	 * An array of all the '<em><b>Time Unit</b></em>' enumerators.
+	 * An array of all the '<em><b>Voltage Unit</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final TimeUnit[] VALUES_ARRAY =
-		new TimeUnit[] {
+	private static final VoltageUnit[] VALUES_ARRAY =
+		new VoltageUnit[] {
 			_UNDEFINED_,
-			PS,
-			NS,
-			US,
-			MS,
-			S,
+			UV,
+			MV,
+			V,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Time Unit</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Voltage Unit</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<TimeUnit> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<VoltageUnit> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Time Unit</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Voltage Unit</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static TimeUnit get(String literal) {
+	public static VoltageUnit get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			TimeUnit result = VALUES_ARRAY[i];
+			VoltageUnit result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -224,16 +172,16 @@ public enum TimeUnit implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Time Unit</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Voltage Unit</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static TimeUnit getByName(String name) {
+	public static VoltageUnit getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			TimeUnit result = VALUES_ARRAY[i];
+			VoltageUnit result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -242,14 +190,14 @@ public enum TimeUnit implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Time Unit</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Voltage Unit</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static TimeUnit get(int value) {
+	public static VoltageUnit get(int value) {
 		switch (value) {
 			case _UNDEFINED__VALUE: return _UNDEFINED_;
 		}
@@ -283,7 +231,7 @@ public enum TimeUnit implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private TimeUnit(int value, String name, String literal) {
+	private VoltageUnit(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -327,4 +275,4 @@ public enum TimeUnit implements Enumerator {
 		return literal;
 	}
 	
-} //TimeUnit
+} //VoltageUnit

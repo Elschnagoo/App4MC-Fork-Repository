@@ -397,6 +397,8 @@ import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
+import org.eclipse.app4mc.amalthea.model.Voltage;
+import org.eclipse.app4mc.amalthea.model.VoltageUnit;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitEventType;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
@@ -587,6 +589,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass frequencyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass voltageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2868,6 +2877,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum voltageUnitEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum dataSizeUnitEEnum = null;
 
 	/**
@@ -3876,6 +3892,42 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EOperation getFrequency__ToString() {
 		return frequencyEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getVoltage() {
+		return voltageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVoltage_Value() {
+		return (EAttribute)voltageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVoltage_Unit() {
+		return (EAttribute)voltageEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getVoltage__ToString() {
+		return voltageEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -12262,6 +12314,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getVoltageUnit() {
+		return voltageUnitEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getDataSizeUnit() {
 		return dataSizeUnitEEnum;
 	}
@@ -12831,6 +12892,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(frequencyEClass, FREQUENCY__VALUE);
 		createEAttribute(frequencyEClass, FREQUENCY__UNIT);
 		createEOperation(frequencyEClass, FREQUENCY___TO_STRING);
+
+		voltageEClass = createEClass(VOLTAGE);
+		createEAttribute(voltageEClass, VOLTAGE__VALUE);
+		createEAttribute(voltageEClass, VOLTAGE__UNIT);
+		createEOperation(voltageEClass, VOLTAGE___TO_STRING);
 
 		dataSizeEClass = createEClass(DATA_SIZE);
 		createEAttribute(dataSizeEClass, DATA_SIZE__VALUE);
@@ -14087,6 +14153,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
 		frequencyUnitEEnum = createEEnum(FREQUENCY_UNIT);
+		voltageUnitEEnum = createEEnum(VOLTAGE_UNIT);
 		dataSizeUnitEEnum = createEEnum(DATA_SIZE_UNIT);
 		dataRateUnitEEnum = createEEnum(DATA_RATE_UNIT);
 		samplingTypeEEnum = createEEnum(SAMPLING_TYPE);
@@ -14202,6 +14269,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		timeEClass.getESuperTypes().add(this.getAbstractTime());
 		timeEClass.getESuperTypes().add(this.getQuantity());
 		frequencyEClass.getESuperTypes().add(this.getQuantity());
+		voltageEClass.getESuperTypes().add(this.getQuantity());
 		dataSizeEClass.getESuperTypes().add(this.getQuantity());
 		dataRateEClass.getESuperTypes().add(this.getQuantity());
 		listObjectEClass.getESuperTypes().add(this.getValue());
@@ -14671,6 +14739,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getFrequency_Unit(), this.getFrequencyUnit(), "unit", null, 0, 1, Frequency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getFrequency__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(voltageEClass, Voltage.class, "Voltage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVoltage_Value(), theEcorePackage.getEDouble(), "value", "0.0", 0, 1, Voltage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVoltage_Unit(), this.getVoltageUnit(), "unit", null, 0, 1, Voltage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getVoltage__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataSizeEClass, DataSize.class, "DataSize", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataSize_Value(), theEcorePackage.getEBigInteger(), "value", "0", 0, 1, DataSize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16021,6 +16095,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(frequencyUnitEEnum, FrequencyUnit.KHZ);
 		addEEnumLiteral(frequencyUnitEEnum, FrequencyUnit.MHZ);
 		addEEnumLiteral(frequencyUnitEEnum, FrequencyUnit.GHZ);
+
+		initEEnum(voltageUnitEEnum, VoltageUnit.class, "VoltageUnit");
+		addEEnumLiteral(voltageUnitEEnum, VoltageUnit._UNDEFINED_);
+		addEEnumLiteral(voltageUnitEEnum, VoltageUnit.UV);
+		addEEnumLiteral(voltageUnitEEnum, VoltageUnit.MV);
+		addEEnumLiteral(voltageUnitEEnum, VoltageUnit.V);
 
 		initEEnum(dataSizeUnitEEnum, DataSizeUnit.class, "DataSizeUnit");
 		addEEnumLiteral(dataSizeUnitEEnum, DataSizeUnit._UNDEFINED_);

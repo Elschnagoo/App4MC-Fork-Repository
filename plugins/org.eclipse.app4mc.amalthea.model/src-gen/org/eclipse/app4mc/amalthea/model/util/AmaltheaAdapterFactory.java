@@ -349,6 +349,7 @@ import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
+import org.eclipse.app4mc.amalthea.model.Voltage;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
@@ -508,6 +509,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseFrequency(Frequency object) {
 				return createFrequencyAdapter();
+			}
+			@Override
+			public Adapter caseVoltage(Voltage object) {
+				return createVoltageAdapter();
 			}
 			@Override
 			public Adapter caseDataSize(DataSize object) {
@@ -2140,6 +2145,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFrequencyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Voltage <em>Voltage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.Voltage
+	 * @generated
+	 */
+	public Adapter createVoltageAdapter() {
 		return null;
 	}
 

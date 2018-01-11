@@ -349,6 +349,7 @@ import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
+import org.eclipse.app4mc.amalthea.model.Voltage;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
@@ -587,6 +588,13 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				Frequency frequency = (Frequency)theEObject;
 				T1 result = caseFrequency(frequency);
 				if (result == null) result = caseQuantity(frequency);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.VOLTAGE: {
+				Voltage voltage = (Voltage)theEObject;
+				T1 result = caseVoltage(voltage);
+				if (result == null) result = caseQuantity(voltage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -4005,6 +4013,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseFrequency(Frequency object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Voltage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Voltage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseVoltage(Voltage object) {
 		return null;
 	}
 

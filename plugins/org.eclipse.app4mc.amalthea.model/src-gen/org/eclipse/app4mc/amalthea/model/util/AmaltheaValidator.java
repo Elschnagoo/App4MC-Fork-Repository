@@ -399,6 +399,8 @@ import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
+import org.eclipse.app4mc.amalthea.model.Voltage;
+import org.eclipse.app4mc.amalthea.model.VoltageUnit;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitEventType;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
@@ -533,6 +535,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateTime((Time)value, diagnostics, context);
 			case AmaltheaPackage.FREQUENCY:
 				return validateFrequency((Frequency)value, diagnostics, context);
+			case AmaltheaPackage.VOLTAGE:
+				return validateVoltage((Voltage)value, diagnostics, context);
 			case AmaltheaPackage.DATA_SIZE:
 				return validateDataSize((DataSize)value, diagnostics, context);
 			case AmaltheaPackage.DATA_RATE:
@@ -1183,6 +1187,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateTimeUnit((TimeUnit)value, diagnostics, context);
 			case AmaltheaPackage.FREQUENCY_UNIT:
 				return validateFrequencyUnit((FrequencyUnit)value, diagnostics, context);
+			case AmaltheaPackage.VOLTAGE_UNIT:
+				return validateVoltageUnit((VoltageUnit)value, diagnostics, context);
 			case AmaltheaPackage.DATA_SIZE_UNIT:
 				return validateDataSizeUnit((DataSizeUnit)value, diagnostics, context);
 			case AmaltheaPackage.DATA_RATE_UNIT:
@@ -1495,6 +1501,15 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateFrequency(Frequency frequency, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(frequency, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateVoltage(Voltage voltage, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(voltage, diagnostics, context);
 	}
 
 	/**
@@ -4419,6 +4434,15 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateFrequencyUnit(FrequencyUnit frequencyUnit, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateVoltageUnit(VoltageUnit voltageUnit, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

@@ -122,6 +122,15 @@ public interface AmaltheaFactory extends EFactory {
 	Frequency createFrequency();
 
 	/**
+	 * Returns a new object of class '<em>Voltage</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Voltage</em>'.
+	 * @generated
+	 */
+	Voltage createVoltage();
+
+	/**
 	 * Returns a new object of class '<em>Data Size</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

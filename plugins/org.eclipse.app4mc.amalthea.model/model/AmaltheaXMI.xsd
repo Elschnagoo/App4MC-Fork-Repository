@@ -4,7 +4,7 @@
   <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/XMI.xsd"/>
   <xsd:simpleType name="TimeUnit">
     <xsd:annotation>
-      <xsd:documentation>Time units (enumeration for available units)</xsd:documentation>
+      <xsd:documentation>Time units (enumeration of available units)</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -17,7 +17,7 @@
   </xsd:simpleType>
   <xsd:simpleType name="FrequencyUnit">
     <xsd:annotation>
-      <xsd:documentation>Frequency units (enumeration for available units)</xsd:documentation>
+      <xsd:documentation>Frequency units (enumeration of available units)</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -27,9 +27,20 @@
       <xsd:enumeration value="GHz"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="VoltageUnit">
+    <xsd:annotation>
+      <xsd:documentation>Voltage units (enumeration of available units)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="uV"/>
+      <xsd:enumeration value="mV"/>
+      <xsd:enumeration value="V"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="DataSizeUnit">
     <xsd:annotation>
-      <xsd:documentation>Data size units (enumeration for available units)</xsd:documentation>
+      <xsd:documentation>Data size units (enumeration of available units)</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -55,7 +66,7 @@
   </xsd:simpleType>
   <xsd:simpleType name="DataRateUnit">
     <xsd:annotation>
-      <xsd:documentation>Data rate units (enumeration for available units)</xsd:documentation>
+      <xsd:documentation>Data rate units (enumeration of available units)</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -875,6 +886,22 @@ Needs to be extended by other classes.</xsd:documentation>
   <xsd:element name="Frequency" type="am:Frequency">
     <xsd:annotation>
       <xsd:documentation>General frequency class to define frequency value and unit</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="Voltage">
+    <xsd:annotation>
+      <xsd:documentation>General voltage class to define voltage value and unit</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Quantity">
+        <xsd:attribute name="value" type="xsd:double"/>
+        <xsd:attribute name="unit" type="am:VoltageUnit"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Voltage" type="am:Voltage">
+    <xsd:annotation>
+      <xsd:documentation>General voltage class to define voltage value and unit</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="DataSize">

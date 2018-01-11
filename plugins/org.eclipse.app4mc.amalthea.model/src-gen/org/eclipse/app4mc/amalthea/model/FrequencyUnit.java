@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * Frequency units (enumeration for available units)
+ * Frequency units (enumeration of available units)
  * <!-- end-model-doc -->
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getFrequencyUnit()
  * @model

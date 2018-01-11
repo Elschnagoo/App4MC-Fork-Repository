@@ -229,7 +229,7 @@ abstract class Quantity {
 
 
 /*
- * Time units (enumeration for available units)
+ * Time units (enumeration of available units)
  */
 enum TimeUnit
 {
@@ -267,7 +267,7 @@ class Time extends AbstractTime, Quantity {
 
 
 /*
- * Frequency units (enumeration for available units)
+ * Frequency units (enumeration of available units)
  */
 enum FrequencyUnit {
 	_undefined_ // Display: "<unit>"
@@ -293,7 +293,31 @@ class Frequency extends Quantity {
 
 
 /*
- * Data size units (enumeration for available units)
+ * Voltage units (enumeration of available units)
+ */
+enum VoltageUnit {
+	_undefined_ // Display: "<unit>"
+	uV
+	mV
+	V
+}
+
+/*
+ * General voltage class to define voltage value and unit
+ */
+class Voltage extends Quantity {
+	
+	double value = "0.0"
+	VoltageUnit unit
+	
+	op String toString() {
+		return value + " " +  if (unit == VoltageUnit::_UNDEFINED_ ) "<unit>" else unit.literal
+	}
+}
+
+
+/*
+ * Data size units (enumeration of available units)
  */
 enum DataSizeUnit {
 	_undefined_ // Display: "<unit>"
@@ -348,7 +372,7 @@ class DataSize extends Quantity {
 
 
 /*
- * Data rate units (enumeration for available units)
+ * Data rate units (enumeration of available units)
  */
 enum DataRateUnit {
 	_undefined_ // Display: "<unit>"

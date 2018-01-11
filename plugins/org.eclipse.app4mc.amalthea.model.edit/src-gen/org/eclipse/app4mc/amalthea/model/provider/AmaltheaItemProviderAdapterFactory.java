@@ -266,6 +266,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Voltage} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VoltageItemProvider voltageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Voltage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVoltageAdapter() {
+		if (voltageItemProvider == null) {
+			voltageItemProvider = new VoltageItemProvider(this);
+		}
+
+		return voltageItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DataSize} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6331,6 +6354,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (instructionsConstantItemProvider != null) instructionsConstantItemProvider.dispose();
 		if (timeItemProvider != null) timeItemProvider.dispose();
 		if (frequencyItemProvider != null) frequencyItemProvider.dispose();
+		if (voltageItemProvider != null) voltageItemProvider.dispose();
 		if (dataSizeItemProvider != null) dataSizeItemProvider.dispose();
 		if (dataRateItemProvider != null) dataRateItemProvider.dispose();
 		if (customPropertyItemProvider != null) customPropertyItemProvider.dispose();

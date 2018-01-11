@@ -326,6 +326,8 @@ import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
+import org.eclipse.app4mc.amalthea.model.Voltage;
+import org.eclipse.app4mc.amalthea.model.VoltageUnit;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitEventType;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
@@ -395,6 +397,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: return createInstructionsConstant();
 			case AmaltheaPackage.TIME: return createTime();
 			case AmaltheaPackage.FREQUENCY: return createFrequency();
+			case AmaltheaPackage.VOLTAGE: return createVoltage();
 			case AmaltheaPackage.DATA_SIZE: return createDataSize();
 			case AmaltheaPackage.DATA_RATE: return createDataRate();
 			case AmaltheaPackage.CUSTOM_PROPERTY: return (EObject)createCustomProperty();
@@ -669,6 +672,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createTimeUnitFromString(eDataType, initialValue);
 			case AmaltheaPackage.FREQUENCY_UNIT:
 				return createFrequencyUnitFromString(eDataType, initialValue);
+			case AmaltheaPackage.VOLTAGE_UNIT:
+				return createVoltageUnitFromString(eDataType, initialValue);
 			case AmaltheaPackage.DATA_SIZE_UNIT:
 				return createDataSizeUnitFromString(eDataType, initialValue);
 			case AmaltheaPackage.DATA_RATE_UNIT:
@@ -788,6 +793,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertTimeUnitToString(eDataType, instanceValue);
 			case AmaltheaPackage.FREQUENCY_UNIT:
 				return convertFrequencyUnitToString(eDataType, instanceValue);
+			case AmaltheaPackage.VOLTAGE_UNIT:
+				return convertVoltageUnitToString(eDataType, instanceValue);
 			case AmaltheaPackage.DATA_SIZE_UNIT:
 				return convertDataSizeUnitToString(eDataType, instanceValue);
 			case AmaltheaPackage.DATA_RATE_UNIT:
@@ -993,6 +1000,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public Frequency createFrequency() {
 		FrequencyImpl frequency = new FrequencyImpl();
 		return frequency;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Voltage createVoltage() {
+		VoltageImpl voltage = new VoltageImpl();
+		return voltage;
 	}
 
 	/**
@@ -3602,6 +3619,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertFrequencyUnitToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VoltageUnit createVoltageUnitFromString(EDataType eDataType, String initialValue) {
+		VoltageUnit result = VoltageUnit.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVoltageUnitToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
