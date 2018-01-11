@@ -93,6 +93,7 @@ public class CheckActivations {
 					assert null != ref;
 					for (final CallSequenceItem csi : ((CallSequence) geb).getCalls()) {
 						if (csi instanceof TaskRunnableCall) {
+							((TaskRunnableCall) csi).getRunnable().getActivations().clear();
 							((TaskRunnableCall) csi).getRunnable().getActivations().add(ref);
 							// TODO: handle multiple activations
 						}
@@ -114,14 +115,18 @@ public class CheckActivations {
 	 * @throws Exception
 	 */
 	public void createPPs(final SWModel swm, final IProgressMonitor monitor) {
-		monitor.beginTask("Acitvation Grouping", swm.getActivations().size());
+		if (null != monitor) {
+			monitor.beginTask("Acitvation Grouping", swm.getActivations().size());
+		}
 		PartLog.getInstance().setLogName("Activation Analysis");
 		if (swm.getActivations().size() != 0) {
 			AmaltheaPackage.eINSTANCE.eClass();
 			final AmaltheaFactory instance = AmaltheaFactory.eINSTANCE;
 			PartLog.getInstance().log("There are " + swm.getActivations().size() + " activations.");
 			for (int act = 0; act < swm.getActivations().size(); act++) {
-				monitor.worked(1);
+				if (null != monitor) {
+					monitor.worked(1);
+				}
 				final ProcessPrototype pp = instance.createProcessPrototype();
 				pp.setName(swm.getActivations().get(act).getName());
 				pp.setActivation(swm.getActivations().get(act));
@@ -142,8 +147,9 @@ public class CheckActivations {
 					}
 				}
 				if (pp.getRunnableCalls().size() == 0) {
-					PartLog.getInstance().log("There is an activation that is not referenced by any runnable (will be ignored) " + pp.getActivation().getName(),
-							null);
+					PartLog.getInstance()
+							.log("There is an activation that is not referenced by any runnable (will be ignored) "
+									+ pp.getActivation().getName(), null);
 				}
 				else {
 					swm.getProcessPrototypes().add(pp);

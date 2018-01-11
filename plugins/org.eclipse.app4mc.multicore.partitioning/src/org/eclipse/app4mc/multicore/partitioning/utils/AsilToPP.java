@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.utils;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.Activation;
@@ -29,17 +32,13 @@ import org.eclipse.emf.common.util.EList;
 public class AsilToPP {
 
 	public AsilToPP(final SWModel Swm) {
-		setSwm(Swm);
+		this.swm = Swm;
 	}
 
-	private SWModel swm;
-
-	public void setSwm(final SWModel swm) {
-		this.swm = swm;
-	}
+	private final SWModel swm;
 
 	/**
-	 * Creates ProcessPrototypes for each referenced ASIL level and assigens
+	 * Creates ProcessPrototypes for each referenced ASIL level and assigns
 	 * runnables correspondingly. May result in multiple RunnablesCalls for the
 	 * same runnable if other ProcessPrototypes are already existing.
 	 */
@@ -65,10 +64,10 @@ public class AsilToPP {
 	}
 
 	/**
-	 * Creates ProcessPrototypes for each referenced ASIL level and assigens
-	 * runnables correspondingly. Considers existing ProcessPrototypes, such
-	 * that they will be split if existing ProcessPrototypes have runnables
-	 * referencing different ASIL levels.
+	 * Creates ProcessPrototypes (max 4) for each referenced ASIL level and
+	 * assigns runnables correspondingly. Considers existing ProcessPrototypes,
+	 * such that TaskRunnableCalls are removed from existing ProcessPrototypes
+	 * if corresponding runnables reference ASIL levels.
 	 */
 	public void createPPsFromASILsSplit() {
 		final EList<ProcessPrototype> newPPs = new BasicEList<ProcessPrototype>();
@@ -106,6 +105,39 @@ public class AsilToPP {
 		this.swm.getProcessPrototypes().addAll(newPPs);
 	}
 
+	/**
+	 * Splits existing ProcessPrototypes for each referenced ASIL level and
+	 * assigens runnables correspondingly. Potentially may result in max #PPs*5
+	 */
+	public void createPPsFromASILsSplitEach() {
+		final EList<ProcessPrototype> newPPs = new BasicEList<ProcessPrototype>();
+		final Iterator<ProcessPrototype> ppit = this.swm.getProcessPrototypes().iterator();
+		while (ppit.hasNext()) {
+			final ProcessPrototype pp = ppit.next();
+			final List<ASILType> asils = new ArrayList<ASILType>();
+			final List<TaskRunnableCall> asiltrcs = pp.getRunnableCalls().stream().distinct()
+					.filter(trc -> (null != trc.getRunnable().getAsilLevel()
+							&& trc.getRunnable().getAsilLevel().toString() != "_undefined_"))
+					.collect(Collectors.toList());
+			asiltrcs.stream().forEach(trc -> asils.add(trc.getRunnable().getAsilLevel()));
+			final List<ASILType> asilsd = asils.stream().distinct().collect(Collectors.toList());
+			for (final ASILType at : asilsd) {
+				final ProcessPrototype ppa = AmaltheaFactory.eINSTANCE.createProcessPrototype();
+				ppa.setName(pp.getName() + "_" + at.getName());
+				ppa.setActivation(pp.getActivation());
+				ppa.getRunnableCalls().addAll(asiltrcs.stream()
+						.filter(trc -> trc.getRunnable().getAsilLevel().equals(at)).collect(Collectors.toList()));
+				pp.getRunnableCalls().removeAll(ppa.getRunnableCalls());
+				if (pp.getRunnableCalls().size() < 1) {
+					ppit.remove();
+					// this.swm.getProcessPrototypes().remove(pp);
+				}
+				newPPs.add(ppa);
+			}
+		}
+		this.swm.getProcessPrototypes().addAll(newPPs);
+	}
+
 
 	private void addTrcToNewAsilPP(final EList<ProcessPrototype> newPPs, final TaskRunnableCall trcnew) {
 		for (final ProcessPrototype pp : newPPs) {
@@ -119,11 +151,13 @@ public class AsilToPP {
 		}
 	}
 
-	private boolean newPPsContains(final EList<ProcessPrototype> newPPs, final ASILType asilLevel, final Activation activation) {
+	private boolean newPPsContains(final EList<ProcessPrototype> newPPs, final ASILType asilLevel,
+			final Activation activation) {
 		for (final ProcessPrototype pp : newPPs) {
 			if (pp.getRunnableCalls().size() > 0) {
 				final TaskRunnableCall trc = pp.getRunnableCalls().get(0);
-				if (trc.getRunnable().getAsilLevel().equals(asilLevel) && trc.getRunnable().getFirstActivation().equals(activation)) {
+				if (trc.getRunnable().getAsilLevel().equals(asilLevel)
+						&& trc.getRunnable().getFirstActivation().equals(activation)) {
 					return true;
 				}
 			}
@@ -143,7 +177,7 @@ public class AsilToPP {
 
 	private boolean RunnableRefsASIL(final ASILType at) {
 		for (final Runnable r : this.swm.getRunnables()) {
-			if (null != r.getAsilLevel()) {
+			if (null != r.getAsilLevel() && "_undefined_" != r.getAsilLevel().getName()) {
 				if (r.getAsilLevel().equals(at)) {
 					return true;
 				}
