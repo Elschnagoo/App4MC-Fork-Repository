@@ -33,6 +33,17 @@
                id="converters.083.rootElement">
          </dependent-on-converter>
       </converter>
+      <converter
+            converter-class="org.eclipse.app4mc.amalthea.converters083.impl.SwConverter"
+            enabled="true"
+            id="SwConverter"
+            input-model-version="0.8.2"
+            name="org.eclipse.app4mc.amalthea.converters.083.swconverter"
+            output-model-version="0.8.3">
+         <dependent-on-converter
+               id="converters.083.rootElement">
+         </dependent-on-converter>
+      </converter>
    </extension>
 
 </plugin>
