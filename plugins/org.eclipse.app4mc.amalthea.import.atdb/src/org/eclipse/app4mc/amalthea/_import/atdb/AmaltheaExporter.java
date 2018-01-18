@@ -111,7 +111,7 @@ public class AmaltheaExporter {
 			final Time time = this.factory.createTime();
 			time.setValue(BigInteger.valueOf(myStimulus.getMoment()));
 			time.setUnit(TimeUnit.get(myStimulus.getTimeBase()));
-			aStimulus.setActivation(time);
+			aStimulus.setOccurrence(time);
 			stimuli.add(aStimulus);
 			this.stimuli.put(aStimulus.getName(), aStimulus);
 		}
