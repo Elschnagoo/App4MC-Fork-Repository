@@ -3,16 +3,22 @@
   <swModel>
     <tasks name="Task_1" stimuli="Stimulus_Task_1?type=PeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
-        <graphEntries xsi:type="am:ModeSwitch" valueProvider="e?type=ModeLabel">
-          <entries values="E/E_0?type=ModeLiteral">
+        <graphEntries xsi:type="am:ModeSwitch">
+          <entries>
             <items xsi:type="am:CallSequence" name="CS_e_0">
               <calls xsi:type="am:TaskRunnableCall" runnable="Set_u_0?type=Runnable" />
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="e?type=ModeLabel" value="E/E_0?type=ModeLiteral" />
+            </condition>
           </entries>
-          <entries values="E/E_1?type=ModeLiteral">
+          <entries>
             <items xsi:type="am:CallSequence" name="CS_e_1">
               <calls xsi:type="am:TaskRunnableCall" runnable="Set_u_1?type=Runnable" />
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="e?type=ModeLabel" value="E/E_1?type=ModeLiteral" />
+            </condition>
           </entries>
         </graphEntries>
         <graphEntries xsi:type="am:CallSequence" name="CS_R1">
@@ -29,60 +35,87 @@
     </tasks>
     <tasks name="Task_2" stimuli="IPA_Task_2?type=InterProcessStimulus" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
-        <graphEntries xsi:type="am:ModeSwitch" valueProvider="state?type=ModeLabel">
-          <entries values="State/State_0?type=ModeLiteral">
+        <graphEntries xsi:type="am:ModeSwitch">
+          <entries>
             <items xsi:type="am:CallSequence" name="CS_state_0">
               <calls xsi:type="am:TaskRunnableCall" runnable="Set_y_0?type=Runnable" />
               <calls xsi:type="am:TaskRunnableCall" runnable="Set_w_0?type=Runnable" />
             </items>
-            <items xsi:type="am:ModeSwitch" valueProvider="u?type=ModeLabel">
-              <entries values="U/U_0?type=ModeLiteral">
+            <items xsi:type="am:ModeSwitch">
+              <entries>
                 <items xsi:type="am:CallSequence" name="CS_0_to_0">
                   <calls xsi:type="am:TaskRunnableCall" runnable="Set_state_0?type=Runnable" />
                 </items>
+                <condition>
+                  <entries xsi:type="am:ModeValue" valueProvider="u?type=ModeLabel" value="U/U_0?type=ModeLiteral" />
+                </condition>
               </entries>
-              <entries values="U/U_1?type=ModeLiteral">
+              <entries>
                 <items xsi:type="am:CallSequence" name="CS_0_to_1">
                   <calls xsi:type="am:TaskRunnableCall" runnable="Set_state_1?type=Runnable" />
                 </items>
+                <condition>
+                  <entries xsi:type="am:ModeValue" valueProvider="u?type=ModeLabel" value="U/U_1?type=ModeLiteral" />
+                </condition>
               </entries>
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="state?type=ModeLabel" value="State/State_0?type=ModeLiteral" />
+            </condition>
           </entries>
-          <entries values="State/State_1?type=ModeLiteral">
+          <entries>
             <items xsi:type="am:CallSequence" name="CS_state_1">
               <calls xsi:type="am:TaskRunnableCall" runnable="Set_y_50?type=Runnable" />
               <calls xsi:type="am:TaskRunnableCall" runnable="Set_w_50?type=Runnable" />
             </items>
-            <items xsi:type="am:ModeSwitch" valueProvider="u?type=ModeLabel">
-              <entries values="U/U_0?type=ModeLiteral">
+            <items xsi:type="am:ModeSwitch">
+              <entries>
                 <items xsi:type="am:CallSequence" name="CS_1_to_0">
                   <calls xsi:type="am:TaskRunnableCall" runnable="Set_state_0?type=Runnable" />
                 </items>
+                <condition>
+                  <entries xsi:type="am:ModeValue" valueProvider="u?type=ModeLabel" value="U/U_0?type=ModeLiteral" />
+                </condition>
               </entries>
-              <entries values="U/U_1?type=ModeLiteral">
+              <entries>
                 <items xsi:type="am:CallSequence" name="CS_1_to_2">
                   <calls xsi:type="am:TaskRunnableCall" runnable="Set_state_2?type=Runnable" />
                 </items>
+                <condition>
+                  <entries xsi:type="am:ModeValue" valueProvider="u?type=ModeLabel" value="U/U_1?type=ModeLiteral" />
+                </condition>
               </entries>
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="state?type=ModeLabel" value="State/State_1?type=ModeLiteral" />
+            </condition>
           </entries>
-          <entries values="State/State_2?type=ModeLiteral">
+          <entries>
             <items xsi:type="am:CallSequence" name="CS_state_2">
               <calls xsi:type="am:TaskRunnableCall" runnable="Set_y_100?type=Runnable" />
               <calls xsi:type="am:TaskRunnableCall" runnable="Set_w_100?type=Runnable" />
             </items>
-            <items xsi:type="am:ModeSwitch" valueProvider="u?type=ModeLabel">
-              <entries values="U/U_0?type=ModeLiteral">
+            <items xsi:type="am:ModeSwitch">
+              <entries>
                 <items xsi:type="am:CallSequence" name="CS_2_to_1">
                   <calls xsi:type="am:TaskRunnableCall" runnable="Set_state_1?type=Runnable" />
                 </items>
+                <condition>
+                  <entries xsi:type="am:ModeValue" valueProvider="u?type=ModeLabel" value="U/U_0?type=ModeLiteral" />
+                </condition>
               </entries>
-              <entries values="U/U_1?type=ModeLiteral">
+              <entries>
                 <items xsi:type="am:CallSequence" name="CS_2_to_2">
                   <calls xsi:type="am:TaskRunnableCall" runnable="Set_state_2?type=Runnable" />
                 </items>
+                <condition>
+                  <entries xsi:type="am:ModeValue" valueProvider="u?type=ModeLabel" value="U/U_1?type=ModeLiteral" />
+                </condition>
               </entries>
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="state?type=ModeLabel" value="State/State_2?type=ModeLiteral" />
+            </condition>
           </entries>
         </graphEntries>
         <graphEntries xsi:type="am:CallSequence" name="CS_IPA_T3">
@@ -111,21 +144,30 @@
     </tasks>
     <tasks name="Task_3" stimuli="IPA_Task_3?type=InterProcessStimulus" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
-        <graphEntries xsi:type="am:ModeSwitch" valueProvider="y?type=ModeLabel">
-          <entries values="Y/Y_0?type=ModeLiteral">
+        <graphEntries xsi:type="am:ModeSwitch">
+          <entries>
             <items xsi:type="am:CallSequence" name="CS_y_0">
               <calls xsi:type="am:TaskRunnableCall" runnable="R_3_0?type=Runnable" />
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="y?type=ModeLabel" value="Y/Y_0?type=ModeLiteral" />
+            </condition>
           </entries>
-          <entries values="Y/Y_50?type=ModeLiteral">
+          <entries>
             <items xsi:type="am:CallSequence" name="CS_y_1">
               <calls xsi:type="am:TaskRunnableCall" runnable="R_3_1?type=Runnable" />
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="y?type=ModeLabel" value="Y/Y_50?type=ModeLiteral" />
+            </condition>
           </entries>
-          <entries values="Y/Y_100?type=ModeLiteral">
+          <entries>
             <items xsi:type="am:CallSequence" name="CS_y_2">
               <calls xsi:type="am:TaskRunnableCall" runnable="R_3_2?type=Runnable" />
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="y?type=ModeLabel" value="Y/Y_100?type=ModeLiteral" />
+            </condition>
           </entries>
         </graphEntries>
       </callGraph>
@@ -138,8 +180,8 @@
     </tasks>
     <tasks name="Task_4" stimuli="IPA_Task_4?type=InterProcessStimulus" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
-        <graphEntries xsi:type="am:ModeSwitch" valueProvider="w?type=ModeLabel">
-          <entries values="W/W_0?type=ModeLiteral">
+        <graphEntries xsi:type="am:ModeSwitch">
+          <entries>
             <items xsi:type="am:ProbabilitySwitch">
               <entries probability="0.3">
                 <items xsi:type="am:CallSequence" name="CS_w_0_e_0">
@@ -152,8 +194,11 @@
                 </items>
               </entries>
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="w?type=ModeLabel" value="W/W_0?type=ModeLiteral" />
+            </condition>
           </entries>
-          <entries values="W/W_50?type=ModeLiteral">
+          <entries>
             <items xsi:type="am:ProbabilitySwitch">
               <entries probability="0.5">
                 <items xsi:type="am:CallSequence" name="CS_w_50_e_0">
@@ -166,8 +211,11 @@
                 </items>
               </entries>
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="w?type=ModeLabel" value="W/W_50?type=ModeLiteral" />
+            </condition>
           </entries>
-          <entries values="W/W_100?type=ModeLiteral">
+          <entries>
             <items xsi:type="am:ProbabilitySwitch">
               <entries probability="0.7">
                 <items xsi:type="am:CallSequence" name="CS_w_100_e_0">
@@ -180,6 +228,9 @@
                 </items>
               </entries>
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="w?type=ModeLabel" value="W/W_100?type=ModeLiteral" />
+            </condition>
           </entries>
         </graphEntries>
         <graphEntries xsi:type="am:CallSequence" name="CS_Task_4_Post">
@@ -236,26 +287,38 @@
     </tasks>
     <tasks name="Task_6" stimuli="IPA_Task_6?type=InterProcessStimulus" preemption="preemptive" multipleTaskActivationLimit="1">
       <callGraph>
-        <graphEntries xsi:type="am:ModeSwitch" valueProvider="message?type=ModeLabel">
-          <entries values="Message/Message_1?type=ModeLiteral">
+        <graphEntries xsi:type="am:ModeSwitch">
+          <entries>
             <items xsi:type="am:CallSequence" name="CallSequence_6_1">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_1?type=Runnable" />
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="Message/Message_1?type=ModeLiteral" />
+            </condition>
           </entries>
-          <entries values="Message/Message_2?type=ModeLiteral">
+          <entries>
             <items xsi:type="am:CallSequence" name="CallSequence_6_2">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_2?type=Runnable" />
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="Message/Message_2?type=ModeLiteral" />
+            </condition>
           </entries>
-          <entries values="Message/Message_3?type=ModeLiteral">
+          <entries>
             <items xsi:type="am:CallSequence" name="CallSequence_6_3">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_3?type=Runnable" />
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="Message/Message_3?type=ModeLiteral" />
+            </condition>
           </entries>
-          <entries values="Message/Message_4?type=ModeLiteral">
+          <entries>
             <items xsi:type="am:CallSequence" name="CallSequence_6_4">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_4?type=Runnable" />
             </items>
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="Message/Message_4?type=ModeLiteral" />
+            </condition>
           </entries>
           <defaultEntry>
             <items xsi:type="am:CallSequence" name="CallSequence_6_x">
