@@ -149,6 +149,7 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
+import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
@@ -262,7 +263,9 @@ import org.eclipse.app4mc.amalthea.model.PartlyPFairPD2;
 import org.eclipse.app4mc.amalthea.model.PercentageMetric;
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
+import org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
+import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.Pfair;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
@@ -305,6 +308,7 @@ import org.eclipse.app4mc.amalthea.model.ReceiveOperation;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 import org.eclipse.app4mc.amalthea.model.ReferableObject;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
+import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
 import org.eclipse.app4mc.amalthea.model.Requirement;
 import org.eclipse.app4mc.amalthea.model.RequirementLimit;
@@ -357,7 +361,6 @@ import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.SporadicServer;
-import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.StimulusEvent;
@@ -368,7 +371,6 @@ import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.SynchronizationType;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
-import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
@@ -387,7 +389,6 @@ import org.eclipse.app4mc.amalthea.model.TimeMetric;
 import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
-import org.eclipse.app4mc.amalthea.model.TimestampList;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TriggerEvent;
@@ -979,22 +980,24 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateModeValue((ModeValue)value, diagnostics, context);
 			case AmaltheaPackage.MODE_VALUE_CONJUNCTION:
 				return validateModeValueConjunction((ModeValueConjunction)value, diagnostics, context);
+			case AmaltheaPackage.FIXED_PERIODIC:
+				return validateFixedPeriodic((FixedPeriodic)value, diagnostics, context);
 			case AmaltheaPackage.PERIODIC_STIMULUS:
 				return validatePeriodicStimulus((PeriodicStimulus)value, diagnostics, context);
+			case AmaltheaPackage.RELATIVE_PERIODIC_STIMULUS:
+				return validateRelativePeriodicStimulus((RelativePeriodicStimulus)value, diagnostics, context);
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS:
 				return validateVariableRateStimulus((VariableRateStimulus)value, diagnostics, context);
-			case AmaltheaPackage.SYNTHETIC_STIMULUS:
-				return validateSyntheticStimulus((SyntheticStimulus)value, diagnostics, context);
-			case AmaltheaPackage.TIMESTAMP_LIST:
-				return validateTimestampList((TimestampList)value, diagnostics, context);
+			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS:
+				return validatePeriodicSyntheticStimulus((PeriodicSyntheticStimulus)value, diagnostics, context);
 			case AmaltheaPackage.CUSTOM_STIMULUS:
 				return validateCustomStimulus((CustomStimulus)value, diagnostics, context);
 			case AmaltheaPackage.SINGLE_STIMULUS:
 				return validateSingleStimulus((SingleStimulus)value, diagnostics, context);
 			case AmaltheaPackage.INTER_PROCESS_STIMULUS:
 				return validateInterProcessStimulus((InterProcessStimulus)value, diagnostics, context);
-			case AmaltheaPackage.SPORADIC_STIMULUS:
-				return validateSporadicStimulus((SporadicStimulus)value, diagnostics, context);
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS:
+				return validatePeriodicBurstStimulus((PeriodicBurstStimulus)value, diagnostics, context);
 			case AmaltheaPackage.EVENT_STIMULUS:
 				return validateEventStimulus((EventStimulus)value, diagnostics, context);
 			case AmaltheaPackage.ARRIVAL_CURVE_STIMULUS:
@@ -3506,8 +3509,26 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateFixedPeriodic(FixedPeriodic fixedPeriodic, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(fixedPeriodic, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validatePeriodicStimulus(PeriodicStimulus periodicStimulus, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(periodicStimulus, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRelativePeriodicStimulus(RelativePeriodicStimulus relativePeriodicStimulus, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(relativePeriodicStimulus, diagnostics, context);
 	}
 
 	/**
@@ -3524,17 +3545,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSyntheticStimulus(SyntheticStimulus syntheticStimulus, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(syntheticStimulus, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTimestampList(TimestampList timestampList, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(timestampList, diagnostics, context);
+	public boolean validatePeriodicSyntheticStimulus(PeriodicSyntheticStimulus periodicSyntheticStimulus, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(periodicSyntheticStimulus, diagnostics, context);
 	}
 
 	/**
@@ -3569,8 +3581,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSporadicStimulus(SporadicStimulus sporadicStimulus, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(sporadicStimulus, diagnostics, context);
+	public boolean validatePeriodicBurstStimulus(PeriodicBurstStimulus periodicBurstStimulus, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(periodicBurstStimulus, diagnostics, context);
 	}
 
 	/**

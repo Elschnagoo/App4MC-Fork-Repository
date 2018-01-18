@@ -72,7 +72,7 @@ public class SingleStimulusItemProvider extends StimulusItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSingleStimulus_Activation());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSingleStimulus_Occurrence());
 		}
 		return childrenFeatures;
 	}
@@ -138,7 +138,7 @@ public class SingleStimulusItemProvider extends StimulusItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SingleStimulus.class)) {
-			case AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION:
+			case AmaltheaPackage.SINGLE_STIMULUS__OCCURRENCE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -158,7 +158,7 @@ public class SingleStimulusItemProvider extends StimulusItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSingleStimulus_Activation(),
+				(AmaltheaPackage.eINSTANCE.getSingleStimulus_Occurrence(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
 	}
 

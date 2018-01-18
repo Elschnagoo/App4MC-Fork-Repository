@@ -19,14 +19,14 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Single scheduling event at a defined time.
+ * Single occurrence at a defined time.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.SingleStimulus#getActivation <em>Activation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.SingleStimulus#getOccurrence <em>Occurrence</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSingleStimulus()
@@ -35,29 +35,29 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface SingleStimulus extends Stimulus {
 	/**
-	 * Returns the value of the '<em><b>Activation</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Occurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Activation</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Occurrence</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Activation</em>' containment reference.
-	 * @see #setActivation(Time)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSingleStimulus_Activation()
+	 * @return the value of the '<em>Occurrence</em>' containment reference.
+	 * @see #setOccurrence(Time)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSingleStimulus_Occurrence()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Time getActivation();
+	Time getOccurrence();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SingleStimulus#getActivation <em>Activation</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SingleStimulus#getOccurrence <em>Occurrence</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Activation</em>' containment reference.
-	 * @see #getActivation()
+	 * @param value the new value of the '<em>Occurrence</em>' containment reference.
+	 * @see #getOccurrence()
 	 * @generated
 	 */
-	void setActivation(Time value);
+	void setOccurrence(Time value);
 
 } // SingleStimulus

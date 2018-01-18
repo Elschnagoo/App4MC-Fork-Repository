@@ -214,7 +214,9 @@ import org.eclipse.app4mc.amalthea.model.PartlyPFairPD2;
 import org.eclipse.app4mc.amalthea.model.PercentageMetric;
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
+import org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
+import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
@@ -249,6 +251,7 @@ import org.eclipse.app4mc.amalthea.model.RWType;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
 import org.eclipse.app4mc.amalthea.model.ReceiveOperation;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
+import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
 import org.eclipse.app4mc.amalthea.model.RunEntityCallStatistic;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
@@ -290,7 +293,6 @@ import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.SporadicServer;
-import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.StimulusEvent;
 import org.eclipse.app4mc.amalthea.model.StringObject;
@@ -299,7 +301,6 @@ import org.eclipse.app4mc.amalthea.model.StructEntry;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronizationType;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
-import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
@@ -317,7 +318,6 @@ import org.eclipse.app4mc.amalthea.model.TimeMetric;
 import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
-import org.eclipse.app4mc.amalthea.model.TimestampList;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
@@ -571,13 +571,13 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.MODE_VALUE: return createModeValue();
 			case AmaltheaPackage.MODE_VALUE_CONJUNCTION: return createModeValueConjunction();
 			case AmaltheaPackage.PERIODIC_STIMULUS: return createPeriodicStimulus();
+			case AmaltheaPackage.RELATIVE_PERIODIC_STIMULUS: return createRelativePeriodicStimulus();
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS: return createVariableRateStimulus();
-			case AmaltheaPackage.SYNTHETIC_STIMULUS: return createSyntheticStimulus();
-			case AmaltheaPackage.TIMESTAMP_LIST: return createTimestampList();
+			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS: return createPeriodicSyntheticStimulus();
 			case AmaltheaPackage.CUSTOM_STIMULUS: return createCustomStimulus();
 			case AmaltheaPackage.SINGLE_STIMULUS: return createSingleStimulus();
 			case AmaltheaPackage.INTER_PROCESS_STIMULUS: return createInterProcessStimulus();
-			case AmaltheaPackage.SPORADIC_STIMULUS: return createSporadicStimulus();
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS: return createPeriodicBurstStimulus();
 			case AmaltheaPackage.EVENT_STIMULUS: return createEventStimulus();
 			case AmaltheaPackage.ARRIVAL_CURVE_STIMULUS: return createArrivalCurveStimulus();
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY: return createArrivalCurveEntry();
@@ -2747,6 +2747,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public RelativePeriodicStimulus createRelativePeriodicStimulus() {
+		RelativePeriodicStimulusImpl relativePeriodicStimulus = new RelativePeriodicStimulusImpl();
+		return relativePeriodicStimulus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public VariableRateStimulus createVariableRateStimulus() {
 		VariableRateStimulusImpl variableRateStimulus = new VariableRateStimulusImpl();
 		return variableRateStimulus;
@@ -2757,19 +2767,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SyntheticStimulus createSyntheticStimulus() {
-		SyntheticStimulusImpl syntheticStimulus = new SyntheticStimulusImpl();
-		return syntheticStimulus;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TimestampList createTimestampList() {
-		TimestampListImpl timestampList = new TimestampListImpl();
-		return timestampList;
+	public PeriodicSyntheticStimulus createPeriodicSyntheticStimulus() {
+		PeriodicSyntheticStimulusImpl periodicSyntheticStimulus = new PeriodicSyntheticStimulusImpl();
+		return periodicSyntheticStimulus;
 	}
 
 	/**
@@ -2807,9 +2807,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SporadicStimulus createSporadicStimulus() {
-		SporadicStimulusImpl sporadicStimulus = new SporadicStimulusImpl();
-		return sporadicStimulus;
+	public PeriodicBurstStimulus createPeriodicBurstStimulus() {
+		PeriodicBurstStimulusImpl periodicBurstStimulus = new PeriodicBurstStimulusImpl();
+		return periodicBurstStimulus;
 	}
 
 	/**

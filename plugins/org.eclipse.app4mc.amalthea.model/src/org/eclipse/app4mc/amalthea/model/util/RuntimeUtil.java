@@ -54,9 +54,9 @@ import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.SingleStimulus;
-import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
+import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
-import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
+import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
@@ -572,24 +572,25 @@ public class RuntimeUtil {
 				//result.addAll(getPeriods(model, getTriggeringProcess(model, ip), tt));
 		
 			} else if(stimulus instanceof VariableRateStimulus) {
-				VariableRateStimulus pe = ((VariableRateStimulus)stimulus);
+				VariableRateStimulus vr = ((VariableRateStimulus)stimulus);
 				//System.out.println(s);
 				Time time = null;
 				switch(tt) {
 				case ACET:	
-					if(pe.getStimulusDeviation() != null) {
-						time = getMean(pe.getStimulusDeviation());
-					}
-					break;
-				case BCET:
-					if(pe.getStimulusDeviation() != null) {
-						time = pe.getStimulusDeviation().getUpperBound();
-					}
-					break;
-				case WCET:
-					if(pe.getStimulusDeviation() != null) {
-						time = pe.getStimulusDeviation().getLowerBound();
-					}
+// TODO fix it
+//					if(vr.getStimulusDeviation() != null) {
+//						time = getMean(vr.getStimulusDeviation());
+//					}
+//					break;
+//				case BCET:
+//					if(vr.getStimulusDeviation() != null) {
+//						time = vr.getStimulusDeviation().getUpperBound();
+//					}
+//					break;
+//				case WCET:
+//					if(vr.getStimulusDeviation() != null) {
+//						time = vr.getStimulusDeviation().getLowerBound();
+//					}
 					break;
 				default:
 					break;
@@ -613,23 +614,24 @@ public class RuntimeUtil {
 				default:
 					break;
 				}
-			} else if(stimulus instanceof SporadicStimulus) {
-				SporadicStimulus s = ((SporadicStimulus)stimulus);
+			} else if(stimulus instanceof RelativePeriodicStimulus) {
+				RelativePeriodicStimulus rp = ((RelativePeriodicStimulus)stimulus);
 				Time time = null;
 				switch(tt) {
 				case ACET:
-					if(s.getStimulusDeviation() != null) {
-						time = getMean(s.getStimulusDeviation());
+// TODO check changes
+					if(rp.getNextOccurrence() != null) {
+						time = getMean(rp.getNextOccurrence());
 					}
 					break;
 				case BCET:
-					if(s.getStimulusDeviation() != null) {
-						time = (s.getStimulusDeviation().getUpperBound());
+					if(rp.getNextOccurrence() != null) {
+						time = (rp.getNextOccurrence().getUpperBound());
 					}
 					break;
 				case WCET:
-					if(s.getStimulusDeviation() != null) {
-						time = (s.getStimulusDeviation().getLowerBound());
+					if(rp.getNextOccurrence() != null) {
+						time = (rp.getNextOccurrence().getLowerBound());
 					}
 					break;
 				default:
@@ -643,7 +645,7 @@ public class RuntimeUtil {
 				} else {
 					result.add(time);
 				}
-			} else if(stimulus instanceof SyntheticStimulus) {
+			} else if(stimulus instanceof PeriodicSyntheticStimulus) {
 				switch(tt) {
 				case ACET:			
 					break;
@@ -713,14 +715,15 @@ public class RuntimeUtil {
 	 * @param processes
 	 * @return Map of processes with a sporadic activation and depending on tt the time between activations
 	 */
-	public static Map<Process, List<Time>> getProcessesWithSporadicStimulus(Amalthea model, TimeType tt) {
+	public static Map<Process, List<Time>> getProcessesWithRelativePeriodicStimulus(Amalthea model, TimeType tt) {
 		Set<Process> processes = new HashSet<>();
 		processes.addAll(model.getSwModel().getTasks());
 		processes.addAll(model.getSwModel().getIsrs());
 		
+// TODO check
 		Map<Process, List<Time>> result = processes.stream().collect(
-				Collectors.toMap(p -> p, p -> p.getStimuli().stream().filter(s -> (s instanceof SporadicStimulus))
-				.map(s -> getActivationTimeFromDeviation(((SporadicStimulus)s).getStimulusDeviation(), tt))
+				Collectors.toMap(p -> p, p -> p.getStimuli().stream().filter(s -> (s instanceof RelativePeriodicStimulus))
+				.map(s -> getActivationTimeFromDeviation(((RelativePeriodicStimulus)s).getNextOccurrence(), tt))
 				.collect(Collectors.toList())));
 		
 		return result;
@@ -745,15 +748,16 @@ public class RuntimeUtil {
 	 * @param processes
 	 * @return Map of processes with a sporadic activation and the deviation of the activations
 	 */
-	public static Map<Process, List<Deviation<Time>>> getProcessesWithSporadicStimulus(Amalthea model) {
+	public static Map<Process, List<Deviation<Time>>> getProcessesWithRelativePeriodicStimulus(Amalthea model) {
 		List<Process> processes = new ArrayList<>();
 		processes.addAll(model.getSwModel().getTasks());
 		processes.addAll(model.getSwModel().getIsrs());
-		processes.stream().filter(p -> p.getStimuli().stream().filter(s -> (s instanceof SporadicStimulus)).collect(Collectors.toList()).size() > 0 );
-		
+		processes.stream().filter(p -> p.getStimuli().stream().filter(s -> (s instanceof RelativePeriodicStimulus)).collect(Collectors.toList()).size() > 0 );
+
+// TODO check
 		Map<Process, List<Deviation<Time>>> result = processes.stream().collect(
-				Collectors.toMap(p -> p, p -> p.getStimuli().stream().filter(s -> (s instanceof SporadicStimulus))
-				.map(s -> ((SporadicStimulus)s).getStimulusDeviation())
+				Collectors.toMap(p -> p, p -> p.getStimuli().stream().filter(s -> (s instanceof RelativePeriodicStimulus))
+				.map(s -> ((RelativePeriodicStimulus)s).getNextOccurrence())
 				.collect(Collectors.toList())));
 	
 		return result;
@@ -831,11 +835,11 @@ public class RuntimeUtil {
 				} else if(stimulus instanceof SingleStimulus) {
 					SingleStimulus p = ((SingleStimulus)stimulus);
 					map.put(p, depthCounter);
-				} else if(stimulus instanceof SporadicStimulus) {
-					SporadicStimulus s = ((SporadicStimulus)stimulus);
+				} else if(stimulus instanceof RelativePeriodicStimulus) {
+					RelativePeriodicStimulus s = ((RelativePeriodicStimulus)stimulus);
 					map.put(s, depthCounter);
-				} else if(stimulus instanceof SyntheticStimulus) {
-					SyntheticStimulus p = ((SyntheticStimulus)stimulus);
+				} else if(stimulus instanceof PeriodicSyntheticStimulus) {
+					PeriodicSyntheticStimulus p = ((PeriodicSyntheticStimulus)stimulus);
 					map.put(p, depthCounter);
 				}
 			} else {
@@ -854,7 +858,7 @@ public class RuntimeUtil {
 		}
 	}
 	public static boolean sporadicStimulusFilter(Stimulus stimulus) {
-		if(stimulus instanceof SporadicStimulus) {
+		if(stimulus instanceof RelativePeriodicStimulus) {
 			return true;
 		} else {
 			return false;

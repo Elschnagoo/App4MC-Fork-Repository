@@ -16,13 +16,17 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus} object.
@@ -52,8 +56,64 @@ public class VariableRateStimulusItemProvider extends StimulusItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addClockPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Clock feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClockPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_VariableRateStimulus_clock_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_VariableRateStimulus_clock_feature", "_UI_VariableRateStimulus_type"),
+				 AmaltheaPackage.eINSTANCE.getVariableRateStimulus_Clock(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_OccurrencesPerStep());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_Step());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_MaxIncreasePerStep());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_MaxDecreasePerStep());
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -102,6 +162,15 @@ public class VariableRateStimulusItemProvider extends StimulusItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(VariableRateStimulus.class)) {
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__STEP:
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP:
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -115,6 +184,26 @@ public class VariableRateStimulusItemProvider extends StimulusItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_OccurrencesPerStep(),
+				 AmaltheaFactory.eINSTANCE.createDeviation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_Step(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_MaxIncreasePerStep(),
+				 AmaltheaFactory.eINSTANCE.createDoubleObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_MaxDecreasePerStep(),
+				 AmaltheaFactory.eINSTANCE.createDoubleObject()));
 	}
 
 	/**
@@ -130,7 +219,9 @@ public class VariableRateStimulusItemProvider extends StimulusItemProvider {
 
 		boolean qualify =
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList();
+			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getVariableRateStimulus_MaxIncreasePerStep() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getVariableRateStimulus_MaxDecreasePerStep();
 
 		if (qualify) {
 			return getString

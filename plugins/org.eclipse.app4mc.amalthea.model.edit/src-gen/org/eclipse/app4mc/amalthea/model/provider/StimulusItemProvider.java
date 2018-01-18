@@ -96,7 +96,6 @@ public class StimulusItemProvider extends ReferableBaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getStimulus_StimulusDeviation());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getStimulus_SetModeValueList());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList());
@@ -154,7 +153,6 @@ public class StimulusItemProvider extends ReferableBaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Stimulus.class)) {
-			case AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION:
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
 			case AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST:
 			case AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST:
@@ -174,11 +172,6 @@ public class StimulusItemProvider extends ReferableBaseObjectItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getStimulus_StimulusDeviation(),
-				 AmaltheaFactory.eINSTANCE.createDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter

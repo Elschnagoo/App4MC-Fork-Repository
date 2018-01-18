@@ -16,35 +16,40 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Timestamp List</b></em>'.
+ * A representation of the model object '<em><b>Periodic Synthetic Stimulus</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * Stimulus (repeated periodically) with a defined list of occurrences.
+ * occurenceTimes: List of all occurrences
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.TimestampList#getTimestamps <em>Timestamps</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus#getOccurenceTimes <em>Occurence Times</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimestampList()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicSyntheticStimulus()
  * @model
  * @generated
  */
-public interface TimestampList extends BaseObject {
+public interface PeriodicSyntheticStimulus extends Stimulus, FixedPeriodic {
 	/**
-	 * Returns the value of the '<em><b>Timestamps</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Occurence Times</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Time}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Timestamps</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Occurence Times</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Timestamps</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimestampList_Timestamps()
+	 * @return the value of the '<em>Occurence Times</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicSyntheticStimulus_OccurenceTimes()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Time> getTimestamps();
+	EList<Time> getOccurenceTimes();
 
-} // TimestampList
+} // PeriodicSyntheticStimulus

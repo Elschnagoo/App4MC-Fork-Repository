@@ -4023,7 +4023,7 @@ AbstractMemoryElement-to-Memory Mapping</xsd:documentation>
   <xsd:element name="StimuliModel" type="am:StimuliModel"/>
   <xsd:complexType abstract="true" name="Stimulus">
     <xsd:annotation>
-      <xsd:documentation>Every process/task can have one or more stimuli
+      <xsd:documentation>Every process/task can have one or more stimuli.
 A stimulus activates the process
 deviationStimulus: defines the deviation of the activation times of the stimulus</xsd:documentation>
     </xsd:annotation>
@@ -4031,7 +4031,6 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
-          <xsd:element name="stimulusDeviation" type="am:Deviation"/>
           <xsd:element name="setModeValueList" type="am:ModeValueList"/>
           <xsd:element name="enablingModeValueList" type="am:ModeValueDisjunction"/>
           <xsd:element name="disablingModeValueList" type="am:ModeValueDisjunction"/>
@@ -4042,7 +4041,7 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
   </xsd:complexType>
   <xsd:element name="Stimulus" type="am:Stimulus">
     <xsd:annotation>
-      <xsd:documentation>Every process/task can have one or more stimuli
+      <xsd:documentation>Every process/task can have one or more stimuli.
 A stimulus activates the process
 deviationStimulus: defines the deviation of the activation times of the stimulus</xsd:documentation>
     </xsd:annotation>
@@ -4108,83 +4107,121 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeValueConjunction" type="am:ModeValueConjunction"/>
+  <xsd:complexType abstract="true" name="FixedPeriodic">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus that is triggered periodically.
+offset: Time of first occurrence
+recurrence: Time between following occurrences</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="offset" type="am:Time"/>
+      <xsd:element name="recurrence" type="am:Time"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="FixedPeriodic" type="am:FixedPeriodic">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus that is triggered periodically.
+offset: Time of first occurrence
+recurrence: Time between following occurrences</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="PeriodicStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus that is triggered periodically
-offset: Time of first activation
-recurrence: Time between following activations
-clock: Time base which defines deviation of time, multiple stimuli can have the same time base</xsd:documentation>
+      <xsd:documentation>Stimulus that is triggered periodically.
+jitter: Deviation from true periodicity to real occurrence
+minDistance: Minimal time between occurrences</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="offset" type="am:Time"/>
           <xsd:element name="recurrence" type="am:Time"/>
+          <xsd:element name="jitter" type="am:Deviation"/>
+          <xsd:element name="minDistance" type="am:Time"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PeriodicStimulus" type="am:PeriodicStimulus">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus that is triggered periodically.
+jitter: Deviation from true periodicity to real occurrence
+minDistance: Minimal time between occurrences</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="RelativePeriodicStimulus">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus that is triggered relative to the previous occurrence.
+offset: Time of first occurrence
+step: Time (Deviation) between successive occurrences</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Stimulus">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="offset" type="am:Time"/>
+          <xsd:element name="nextOccurrence" type="am:Deviation"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="RelativePeriodicStimulus" type="am:RelativePeriodicStimulus">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus that is triggered relative to the previous occurrence.
+offset: Time of first occurrence
+step: Time (Deviation) between successive occurrences</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="VariableRateStimulus">
+    <xsd:annotation>
+      <xsd:documentation>Periodic stimulus based on other events, like rotation speed
+clock: Time base which defines deviation of time, multiple stimuli can have the same time base</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Stimulus">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="occurrencesPerStep" type="am:Deviation"/>
+          <xsd:element name="step" type="am:Time"/>
+          <xsd:element name="maxIncreasePerStep" type="am:DoubleObject"/>
+          <xsd:element name="maxDecreasePerStep" type="am:DoubleObject"/>
           <xsd:element name="clock" type="am:Clock"/>
         </xsd:choice>
         <xsd:attribute name="clock" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="PeriodicStimulus" type="am:PeriodicStimulus">
+  <xsd:element name="VariableRateStimulus" type="am:VariableRateStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus that is triggered periodically
-offset: Time of first activation
-recurrence: Time between following activations
+      <xsd:documentation>Periodic stimulus based on other events, like rotation speed
 clock: Time base which defines deviation of time, multiple stimuli can have the same time base</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="VariableRateStimulus">
+  <xsd:complexType name="PeriodicSyntheticStimulus">
     <xsd:annotation>
-      <xsd:documentation>Periodic stimulus based on other events, like rotation speed</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Stimulus"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="VariableRateStimulus" type="am:VariableRateStimulus">
-    <xsd:annotation>
-      <xsd:documentation>Periodic stimulus based on other events, like rotation speed</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="SyntheticStimulus">
-    <xsd:annotation>
-      <xsd:documentation>Stimulus triggered depending on a defined list of trigger times
-offset: to shift the occurrences in negative or positive direction on the time bar
-period: to set the period, after which the trigger times are to be repeated
-triggerTimes: the list of all trigger times</xsd:documentation>
+      <xsd:documentation>Stimulus (repeated periodically) with a defined list of occurrences.
+occurenceTimes: List of all occurrences</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="offset" type="am:Time"/>
-          <xsd:element name="period" type="am:Time"/>
-          <xsd:element name="triggerTimes" type="am:TimestampList"/>
+          <xsd:element name="recurrence" type="am:Time"/>
+          <xsd:element name="occurenceTimes" type="am:Time"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="SyntheticStimulus" type="am:SyntheticStimulus">
+  <xsd:element name="PeriodicSyntheticStimulus" type="am:PeriodicSyntheticStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus triggered depending on a defined list of trigger times
-offset: to shift the occurrences in negative or positive direction on the time bar
-period: to set the period, after which the trigger times are to be repeated
-triggerTimes: the list of all trigger times</xsd:documentation>
+      <xsd:documentation>Stimulus (repeated periodically) with a defined list of occurrences.
+occurenceTimes: List of all occurrences</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="TimestampList">
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="timestamps" type="am:Time"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TimestampList" type="am:TimestampList"/>
   <xsd:complexType name="CustomStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus to describe own custom types of activations, including properties</xsd:documentation>
+      <xsd:documentation>Stimulus to describe own custom types, including properties.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
@@ -4194,29 +4231,29 @@ triggerTimes: the list of all trigger times</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="CustomStimulus" type="am:CustomStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus to describe own custom types of activations, including properties</xsd:documentation>
+      <xsd:documentation>Stimulus to describe own custom types, including properties.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="SingleStimulus">
     <xsd:annotation>
-      <xsd:documentation>Single scheduling event at a defined time.</xsd:documentation>
+      <xsd:documentation>Single occurrence at a defined time.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="activation" type="am:Time"/>
+          <xsd:element name="occurrence" type="am:Time"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="SingleStimulus" type="am:SingleStimulus">
     <xsd:annotation>
-      <xsd:documentation>Single scheduling event at a defined time.</xsd:documentation>
+      <xsd:documentation>Single occurrence at a defined time.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="InterProcessStimulus">
     <xsd:annotation>
-      <xsd:documentation>Defines activation based on a explicit inter process activation.</xsd:documentation>
+      <xsd:documentation>Stimulus based on a explicit inter process trigger.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
@@ -4228,22 +4265,30 @@ triggerTimes: the list of all trigger times</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="InterProcessStimulus" type="am:InterProcessStimulus">
     <xsd:annotation>
-      <xsd:documentation>Defines activation based on a explicit inter process activation.</xsd:documentation>
+      <xsd:documentation>Stimulus based on a explicit inter process trigger.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="SporadicStimulus">
+  <xsd:complexType name="PeriodicBurstStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus for sporadic activation of task</xsd:documentation>
+      <xsd:documentation>Stimulus  (repeated periodically) for burst occurrences
+slotLenght: Time slot for the burst</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
-        <xsd:attribute name="description" type="xsd:string"/>
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="offset" type="am:Time"/>
+          <xsd:element name="recurrence" type="am:Time"/>
+          <xsd:element name="slotLenght" type="am:Time"/>
+          <xsd:element name="occurrenceMinDistance" type="am:Time"/>
+        </xsd:choice>
+        <xsd:attribute name="occurrenceCount" type="xsd:int"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="SporadicStimulus" type="am:SporadicStimulus">
+  <xsd:element name="PeriodicBurstStimulus" type="am:PeriodicBurstStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus for sporadic activation of task</xsd:documentation>
+      <xsd:documentation>Stimulus  (repeated periodically) for burst occurrences
+slotLenght: Time slot for the burst</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="EventStimulus">
@@ -4289,7 +4334,7 @@ triggerTimes: the list of all trigger times</xsd:documentation>
           <xsd:element name="lowerTimeBorder" type="am:Time"/>
           <xsd:element name="upperTimeBorder" type="am:Time"/>
         </xsd:choice>
-        <xsd:attribute name="numberOfEvents" type="xsd:int"/>
+        <xsd:attribute name="numberOfOccurrences" type="xsd:int"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5683,7 +5728,8 @@ Used for first definition of an activation rate, which is later refined by stimu
     <xsd:complexContent>
       <xsd:extension base="am:Activation">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="activationDeviation" type="am:Deviation"/>
+          <xsd:element name="occurrencesPerStep" type="am:Deviation"/>
+          <xsd:element name="step" type="am:Time"/>
         </xsd:choice>
         <xsd:attribute name="description" type="xsd:string"/>
       </xsd:extension>

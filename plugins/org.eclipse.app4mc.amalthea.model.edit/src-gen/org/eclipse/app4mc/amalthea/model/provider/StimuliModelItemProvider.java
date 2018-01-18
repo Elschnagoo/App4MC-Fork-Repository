@@ -163,12 +163,17 @@ public class StimuliModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimuliModel_Stimuli(),
+				 AmaltheaFactory.eINSTANCE.createRelativePeriodicStimulus()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getStimuliModel_Stimuli(),
 				 AmaltheaFactory.eINSTANCE.createVariableRateStimulus()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimuliModel_Stimuli(),
-				 AmaltheaFactory.eINSTANCE.createSyntheticStimulus()));
+				 AmaltheaFactory.eINSTANCE.createPeriodicSyntheticStimulus()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -188,7 +193,7 @@ public class StimuliModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimuliModel_Stimuli(),
-				 AmaltheaFactory.eINSTANCE.createSporadicStimulus()));
+				 AmaltheaFactory.eINSTANCE.createPeriodicBurstStimulus()));
 
 		newChildDescriptors.add
 			(createChildParameter

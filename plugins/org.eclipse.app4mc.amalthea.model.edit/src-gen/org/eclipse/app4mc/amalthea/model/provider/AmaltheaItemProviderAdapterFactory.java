@@ -4268,6 +4268,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RelativePeriodicStimulusItemProvider relativePeriodicStimulusItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRelativePeriodicStimulusAdapter() {
+		if (relativePeriodicStimulusItemProvider == null) {
+			relativePeriodicStimulusItemProvider = new RelativePeriodicStimulusItemProvider(this);
+		}
+
+		return relativePeriodicStimulusItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4291,49 +4314,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SyntheticStimulus} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SyntheticStimulusItemProvider syntheticStimulusItemProvider;
+	protected PeriodicSyntheticStimulusItemProvider periodicSyntheticStimulusItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SyntheticStimulus}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSyntheticStimulusAdapter() {
-		if (syntheticStimulusItemProvider == null) {
-			syntheticStimulusItemProvider = new SyntheticStimulusItemProvider(this);
+	public Adapter createPeriodicSyntheticStimulusAdapter() {
+		if (periodicSyntheticStimulusItemProvider == null) {
+			periodicSyntheticStimulusItemProvider = new PeriodicSyntheticStimulusItemProvider(this);
 		}
 
-		return syntheticStimulusItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimestampList} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TimestampListItemProvider timestampListItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimestampList}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTimestampListAdapter() {
-		if (timestampListItemProvider == null) {
-			timestampListItemProvider = new TimestampListItemProvider(this);
-		}
-
-		return timestampListItemProvider;
+		return periodicSyntheticStimulusItemProvider;
 	}
 
 	/**
@@ -4406,26 +4406,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SporadicStimulus} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SporadicStimulusItemProvider sporadicStimulusItemProvider;
+	protected PeriodicBurstStimulusItemProvider periodicBurstStimulusItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SporadicStimulus}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSporadicStimulusAdapter() {
-		if (sporadicStimulusItemProvider == null) {
-			sporadicStimulusItemProvider = new SporadicStimulusItemProvider(this);
+	public Adapter createPeriodicBurstStimulusAdapter() {
+		if (periodicBurstStimulusItemProvider == null) {
+			periodicBurstStimulusItemProvider = new PeriodicBurstStimulusItemProvider(this);
 		}
 
-		return sporadicStimulusItemProvider;
+		return periodicBurstStimulusItemProvider;
 	}
 
 	/**
@@ -6528,13 +6528,13 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (modeValueItemProvider != null) modeValueItemProvider.dispose();
 		if (modeValueConjunctionItemProvider != null) modeValueConjunctionItemProvider.dispose();
 		if (periodicStimulusItemProvider != null) periodicStimulusItemProvider.dispose();
+		if (relativePeriodicStimulusItemProvider != null) relativePeriodicStimulusItemProvider.dispose();
 		if (variableRateStimulusItemProvider != null) variableRateStimulusItemProvider.dispose();
-		if (syntheticStimulusItemProvider != null) syntheticStimulusItemProvider.dispose();
-		if (timestampListItemProvider != null) timestampListItemProvider.dispose();
+		if (periodicSyntheticStimulusItemProvider != null) periodicSyntheticStimulusItemProvider.dispose();
 		if (customStimulusItemProvider != null) customStimulusItemProvider.dispose();
 		if (singleStimulusItemProvider != null) singleStimulusItemProvider.dispose();
 		if (interProcessStimulusItemProvider != null) interProcessStimulusItemProvider.dispose();
-		if (sporadicStimulusItemProvider != null) sporadicStimulusItemProvider.dispose();
+		if (periodicBurstStimulusItemProvider != null) periodicBurstStimulusItemProvider.dispose();
 		if (eventStimulusItemProvider != null) eventStimulusItemProvider.dispose();
 		if (arrivalCurveStimulusItemProvider != null) arrivalCurveStimulusItemProvider.dispose();
 		if (arrivalCurveEntryItemProvider != null) arrivalCurveEntryItemProvider.dispose();

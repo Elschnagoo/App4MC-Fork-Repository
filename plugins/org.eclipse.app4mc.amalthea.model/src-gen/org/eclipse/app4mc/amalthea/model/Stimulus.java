@@ -19,7 +19,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Every process/task can have one or more stimuli
+ * Every process/task can have one or more stimuli.
  * A stimulus activates the process
  * deviationStimulus: defines the deviation of the activation times of the stimulus
  * <!-- end-model-doc -->
@@ -28,7 +28,6 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Stimulus#getStimulusDeviation <em>Stimulus Deviation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Stimulus#getSetModeValueList <em>Set Mode Value List</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Stimulus#getEnablingModeValueList <em>Enabling Mode Value List</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Stimulus#getDisablingModeValueList <em>Disabling Mode Value List</em>}</li>
@@ -39,32 +38,6 @@ package org.eclipse.app4mc.amalthea.model;
  * @generated
  */
 public interface Stimulus extends ReferableBaseObject, ITaggable {
-	/**
-	 * Returns the value of the '<em><b>Stimulus Deviation</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Stimulus Deviation</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Stimulus Deviation</em>' containment reference.
-	 * @see #setStimulusDeviation(Deviation)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimulus_StimulusDeviation()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Deviation<Time> getStimulusDeviation();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Stimulus#getStimulusDeviation <em>Stimulus Deviation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Stimulus Deviation</em>' containment reference.
-	 * @see #getStimulusDeviation()
-	 * @generated
-	 */
-	void setStimulusDeviation(Deviation<Time> value);
-
 	/**
 	 * Returns the value of the '<em><b>Set Mode Value List</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

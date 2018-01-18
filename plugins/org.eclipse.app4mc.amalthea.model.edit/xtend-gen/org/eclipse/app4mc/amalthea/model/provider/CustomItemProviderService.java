@@ -647,7 +647,12 @@ public class CustomItemProviderService {
         _xifexpression_2 = (" upperBound: " + upper);
       }
       final String s3 = _xifexpression_2;
-      return ((s1 + s2) + s3);
+      String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
+      String _plus = (_containingFeatureName + "(");
+      String _plus_1 = (_plus + s1);
+      String _plus_2 = (_plus_1 + ")");
+      String _plus_3 = (_plus_2 + s2);
+      return (_plus_3 + s3);
     }
     return null;
   }
@@ -3484,9 +3489,9 @@ public class CustomItemProviderService {
       if ((object == null)) {
         _xifexpression = 0;
       } else {
-        _xifexpression = ((ArrivalCurveEntry)object).getNumberOfEvents();
+        _xifexpression = ((ArrivalCurveEntry)object).getNumberOfOccurrences();
       }
-      final int numEvents = _xifexpression;
+      final int num = _xifexpression;
       Time _lowerTimeBorder = null;
       if (((ArrivalCurveEntry)object)!=null) {
         _lowerTimeBorder=((ArrivalCurveEntry)object).getLowerTimeBorder();
@@ -3497,7 +3502,7 @@ public class CustomItemProviderService {
         _upperTimeBorder=((ArrivalCurveEntry)object).getUpperTimeBorder();
       }
       final String s2 = CustomItemProviderService.getTimeText(_upperTimeBorder);
-      return ((((("#events: " + Integer.valueOf(numEvents)) + " -- interval: ") + s1) + ", ") + s2);
+      return ((((("#occurrences: " + Integer.valueOf(num)) + " -- interval: ") + s1) + ", ") + s2);
     } else {
       return defaultText;
     }
@@ -3507,7 +3512,7 @@ public class CustomItemProviderService {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ArrivalCurveEntry.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_EVENTS)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_OCCURRENCES)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);

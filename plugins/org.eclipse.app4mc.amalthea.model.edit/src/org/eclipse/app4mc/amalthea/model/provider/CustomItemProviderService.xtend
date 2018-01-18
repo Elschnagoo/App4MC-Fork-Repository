@@ -443,7 +443,7 @@ class CustomItemProviderService {
 			val s2 = if(lower === null) "" else " lowerBound: " + lower
 			val s3 = if(upper === null) "" else " upperBound: " + upper
 			
-	 		return s1 + s2 + s3
+	 		return getContainingFeatureName(object) + "(" + s1 + ")" + s2 + s3
 		}
 	}
 
@@ -1901,10 +1901,10 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getArrivalCurveEntryItemProviderText(Object object, String defaultText) {
 		if (object instanceof ArrivalCurveEntry) {
-			val numEvents = if (object === null) 0 else object.numberOfEvents
+			val num = if (object === null) 0 else object.numberOfOccurrences
 			val s1 = getTimeText(object?.lowerTimeBorder)
 			val s2 = getTimeText(object?.upperTimeBorder)
-			return "#events: " + numEvents + " -- interval: " + s1 + ", " + s2
+			return "#occurrences: " + num + " -- interval: " + s1 + ", " + s2
 		} else {
 			return defaultText
 		}
@@ -1914,7 +1914,7 @@ class CustomItemProviderService {
 		val list = newArrayList
 
 		switch notification.getFeatureID(typeof(ArrivalCurveEntry)) {
-			case AmaltheaPackage::ARRIVAL_CURVE_ENTRY__NUMBER_OF_EVENTS:
+			case AmaltheaPackage::ARRIVAL_CURVE_ENTRY__NUMBER_OF_OCCURRENCES:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 			case AmaltheaPackage::ARRIVAL_CURVE_ENTRY__LOWER_TIME_BORDER,
 			case AmaltheaPackage::ARRIVAL_CURVE_ENTRY__UPPER_TIME_BORDER:

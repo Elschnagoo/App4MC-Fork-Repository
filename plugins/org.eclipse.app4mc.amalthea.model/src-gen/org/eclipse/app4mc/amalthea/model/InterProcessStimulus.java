@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Defines activation based on a explicit inter process activation.
+ * Stimulus based on a explicit inter process trigger.
  * <!-- end-model-doc -->
  *
  * <p>

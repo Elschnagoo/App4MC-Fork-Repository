@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ArrivalCurveEntryImpl#getNumberOfEvents <em>Number Of Events</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ArrivalCurveEntryImpl#getNumberOfOccurrences <em>Number Of Occurrences</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ArrivalCurveEntryImpl#getLowerTimeBorder <em>Lower Time Border</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ArrivalCurveEntryImpl#getUpperTimeBorder <em>Upper Time Border</em>}</li>
  * </ul>
@@ -41,24 +41,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurveEntry {
 	/**
-	 * The default value of the '{@link #getNumberOfEvents() <em>Number Of Events</em>}' attribute.
+	 * The default value of the '{@link #getNumberOfOccurrences() <em>Number Of Occurrences</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNumberOfEvents()
+	 * @see #getNumberOfOccurrences()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int NUMBER_OF_EVENTS_EDEFAULT = 0;
+	protected static final int NUMBER_OF_OCCURRENCES_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getNumberOfEvents() <em>Number Of Events</em>}' attribute.
+	 * The cached value of the '{@link #getNumberOfOccurrences() <em>Number Of Occurrences</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNumberOfEvents()
+	 * @see #getNumberOfOccurrences()
 	 * @generated
 	 * @ordered
 	 */
-	protected int numberOfEvents = NUMBER_OF_EVENTS_EDEFAULT;
+	protected int numberOfOccurrences = NUMBER_OF_OCCURRENCES_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getLowerTimeBorder() <em>Lower Time Border</em>}' containment reference.
@@ -104,8 +104,8 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getNumberOfEvents() {
-		return numberOfEvents;
+	public int getNumberOfOccurrences() {
+		return numberOfOccurrences;
 	}
 
 	/**
@@ -113,11 +113,11 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNumberOfEvents(int newNumberOfEvents) {
-		int oldNumberOfEvents = numberOfEvents;
-		numberOfEvents = newNumberOfEvents;
+	public void setNumberOfOccurrences(int newNumberOfOccurrences) {
+		int oldNumberOfOccurrences = numberOfOccurrences;
+		numberOfOccurrences = newNumberOfOccurrences;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_EVENTS, oldNumberOfEvents, numberOfEvents));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_OCCURRENCES, oldNumberOfOccurrences, numberOfOccurrences));
 	}
 
 	/**
@@ -230,8 +230,8 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_EVENTS:
-				return getNumberOfEvents();
+			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_OCCURRENCES:
+				return getNumberOfOccurrences();
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__LOWER_TIME_BORDER:
 				return getLowerTimeBorder();
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__UPPER_TIME_BORDER:
@@ -248,8 +248,8 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_EVENTS:
-				setNumberOfEvents((Integer)newValue);
+			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_OCCURRENCES:
+				setNumberOfOccurrences((Integer)newValue);
 				return;
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__LOWER_TIME_BORDER:
 				setLowerTimeBorder((Time)newValue);
@@ -269,8 +269,8 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_EVENTS:
-				setNumberOfEvents(NUMBER_OF_EVENTS_EDEFAULT);
+			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_OCCURRENCES:
+				setNumberOfOccurrences(NUMBER_OF_OCCURRENCES_EDEFAULT);
 				return;
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__LOWER_TIME_BORDER:
 				setLowerTimeBorder((Time)null);
@@ -290,8 +290,8 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_EVENTS:
-				return numberOfEvents != NUMBER_OF_EVENTS_EDEFAULT;
+			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_OCCURRENCES:
+				return numberOfOccurrences != NUMBER_OF_OCCURRENCES_EDEFAULT;
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__LOWER_TIME_BORDER:
 				return lowerTimeBorder != null;
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__UPPER_TIME_BORDER:
@@ -310,8 +310,8 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (numberOfEvents: ");
-		result.append(numberOfEvents);
+		result.append(" (numberOfOccurrences: ");
+		result.append(numberOfOccurrences);
 		result.append(')');
 		return result.toString();
 	}

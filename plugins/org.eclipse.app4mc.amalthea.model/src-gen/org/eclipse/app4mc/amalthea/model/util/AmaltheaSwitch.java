@@ -134,6 +134,7 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
+import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
@@ -229,7 +230,9 @@ import org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.PartlyPFairPD2;
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
+import org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
+import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.Pfair;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
@@ -266,6 +269,7 @@ import org.eclipse.app4mc.amalthea.model.RateMonotonic;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 import org.eclipse.app4mc.amalthea.model.ReferableObject;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
+import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
 import org.eclipse.app4mc.amalthea.model.Requirement;
 import org.eclipse.app4mc.amalthea.model.RequirementLimit;
@@ -310,7 +314,6 @@ import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.SporadicServer;
-import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.StimulusEvent;
@@ -320,7 +323,6 @@ import org.eclipse.app4mc.amalthea.model.StructEntry;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
-import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
@@ -337,7 +339,6 @@ import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
-import org.eclipse.app4mc.amalthea.model.TimestampList;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TriggerEvent;
@@ -2662,15 +2663,34 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.FIXED_PERIODIC: {
+				FixedPeriodic fixedPeriodic = (FixedPeriodic)theEObject;
+				T1 result = caseFixedPeriodic(fixedPeriodic);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.PERIODIC_STIMULUS: {
 				PeriodicStimulus periodicStimulus = (PeriodicStimulus)theEObject;
 				T1 result = casePeriodicStimulus(periodicStimulus);
 				if (result == null) result = caseStimulus(periodicStimulus);
+				if (result == null) result = caseFixedPeriodic(periodicStimulus);
 				if (result == null) result = caseReferableBaseObject(periodicStimulus);
 				if (result == null) result = caseITaggable(periodicStimulus);
 				if (result == null) result = caseIAnnotatable(periodicStimulus);
 				if (result == null) result = caseIReferable(periodicStimulus);
 				if (result == null) result = caseINamed(periodicStimulus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.RELATIVE_PERIODIC_STIMULUS: {
+				RelativePeriodicStimulus relativePeriodicStimulus = (RelativePeriodicStimulus)theEObject;
+				T1 result = caseRelativePeriodicStimulus(relativePeriodicStimulus);
+				if (result == null) result = caseStimulus(relativePeriodicStimulus);
+				if (result == null) result = caseReferableBaseObject(relativePeriodicStimulus);
+				if (result == null) result = caseITaggable(relativePeriodicStimulus);
+				if (result == null) result = caseIAnnotatable(relativePeriodicStimulus);
+				if (result == null) result = caseIReferable(relativePeriodicStimulus);
+				if (result == null) result = caseINamed(relativePeriodicStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2686,23 +2706,16 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.SYNTHETIC_STIMULUS: {
-				SyntheticStimulus syntheticStimulus = (SyntheticStimulus)theEObject;
-				T1 result = caseSyntheticStimulus(syntheticStimulus);
-				if (result == null) result = caseStimulus(syntheticStimulus);
-				if (result == null) result = caseReferableBaseObject(syntheticStimulus);
-				if (result == null) result = caseITaggable(syntheticStimulus);
-				if (result == null) result = caseIAnnotatable(syntheticStimulus);
-				if (result == null) result = caseIReferable(syntheticStimulus);
-				if (result == null) result = caseINamed(syntheticStimulus);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.TIMESTAMP_LIST: {
-				TimestampList timestampList = (TimestampList)theEObject;
-				T1 result = caseTimestampList(timestampList);
-				if (result == null) result = caseBaseObject(timestampList);
-				if (result == null) result = caseIAnnotatable(timestampList);
+			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS: {
+				PeriodicSyntheticStimulus periodicSyntheticStimulus = (PeriodicSyntheticStimulus)theEObject;
+				T1 result = casePeriodicSyntheticStimulus(periodicSyntheticStimulus);
+				if (result == null) result = caseStimulus(periodicSyntheticStimulus);
+				if (result == null) result = caseFixedPeriodic(periodicSyntheticStimulus);
+				if (result == null) result = caseReferableBaseObject(periodicSyntheticStimulus);
+				if (result == null) result = caseITaggable(periodicSyntheticStimulus);
+				if (result == null) result = caseIAnnotatable(periodicSyntheticStimulus);
+				if (result == null) result = caseIReferable(periodicSyntheticStimulus);
+				if (result == null) result = caseINamed(periodicSyntheticStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2742,15 +2755,16 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.SPORADIC_STIMULUS: {
-				SporadicStimulus sporadicStimulus = (SporadicStimulus)theEObject;
-				T1 result = caseSporadicStimulus(sporadicStimulus);
-				if (result == null) result = caseStimulus(sporadicStimulus);
-				if (result == null) result = caseReferableBaseObject(sporadicStimulus);
-				if (result == null) result = caseITaggable(sporadicStimulus);
-				if (result == null) result = caseIAnnotatable(sporadicStimulus);
-				if (result == null) result = caseIReferable(sporadicStimulus);
-				if (result == null) result = caseINamed(sporadicStimulus);
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS: {
+				PeriodicBurstStimulus periodicBurstStimulus = (PeriodicBurstStimulus)theEObject;
+				T1 result = casePeriodicBurstStimulus(periodicBurstStimulus);
+				if (result == null) result = caseStimulus(periodicBurstStimulus);
+				if (result == null) result = caseFixedPeriodic(periodicBurstStimulus);
+				if (result == null) result = caseReferableBaseObject(periodicBurstStimulus);
+				if (result == null) result = caseITaggable(periodicBurstStimulus);
+				if (result == null) result = caseIAnnotatable(periodicBurstStimulus);
+				if (result == null) result = caseIReferable(periodicBurstStimulus);
+				if (result == null) result = caseINamed(periodicBurstStimulus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -7347,6 +7361,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Fixed Periodic</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Fixed Periodic</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseFixedPeriodic(FixedPeriodic object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Periodic Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -7358,6 +7387,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 casePeriodicStimulus(PeriodicStimulus object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Relative Periodic Stimulus</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Relative Periodic Stimulus</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseRelativePeriodicStimulus(RelativePeriodicStimulus object) {
 		return null;
 	}
 
@@ -7377,32 +7421,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Synthetic Stimulus</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Periodic Synthetic Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Synthetic Stimulus</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Periodic Synthetic Stimulus</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSyntheticStimulus(SyntheticStimulus object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Timestamp List</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Timestamp List</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseTimestampList(TimestampList object) {
+	public T1 casePeriodicSyntheticStimulus(PeriodicSyntheticStimulus object) {
 		return null;
 	}
 
@@ -7452,17 +7481,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Sporadic Stimulus</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Periodic Burst Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Sporadic Stimulus</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Periodic Burst Stimulus</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSporadicStimulus(SporadicStimulus object) {
+	public T1 casePeriodicBurstStimulus(PeriodicBurstStimulus object) {
 		return null;
 	}
 

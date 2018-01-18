@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.TimestampList;
+import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -29,19 +29,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.TimestampList} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TimestampListItemProvider extends BaseObjectItemProvider {
+public class PeriodicSyntheticStimulusItemProvider extends StimulusItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimestampListItemProvider(AdapterFactory adapterFactory) {
+	public PeriodicSyntheticStimulusItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -72,7 +72,9 @@ public class TimestampListItemProvider extends BaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getTimestampList_Timestamps());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicSyntheticStimulus_OccurenceTimes());
 		}
 		return childrenFeatures;
 	}
@@ -91,14 +93,14 @@ public class TimestampListItemProvider extends BaseObjectItemProvider {
 	}
 
 	/**
-	 * This returns TimestampList.gif.
+	 * This returns PeriodicSyntheticStimulus.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TimestampList"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/PeriodicSyntheticStimulus"));
 	}
 
 	/**
@@ -119,7 +121,10 @@ public class TimestampListItemProvider extends BaseObjectItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_TimestampList_type");
+		String label = ((PeriodicSyntheticStimulus)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PeriodicSyntheticStimulus_type") :
+			getString("_UI_PeriodicSyntheticStimulus_type") + " " + label;
 	}
 	
 
@@ -134,8 +139,10 @@ public class TimestampListItemProvider extends BaseObjectItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TimestampList.class)) {
-			case AmaltheaPackage.TIMESTAMP_LIST__TIMESTAMPS:
+		switch (notification.getFeatureID(PeriodicSyntheticStimulus.class)) {
+			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OFFSET:
+			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__RECURRENCE:
+			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURENCE_TIMES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -155,8 +162,44 @@ public class TimestampListItemProvider extends BaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTimestampList_Timestamps(),
+				(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicSyntheticStimulus_OccurenceTimes(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicSyntheticStimulus_OccurenceTimes();
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

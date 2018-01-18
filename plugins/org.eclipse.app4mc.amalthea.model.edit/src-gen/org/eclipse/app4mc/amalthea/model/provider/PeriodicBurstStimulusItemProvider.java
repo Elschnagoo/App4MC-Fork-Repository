@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -18,30 +18,32 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
+import org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.SyntheticStimulus} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SyntheticStimulusItemProvider extends StimulusItemProvider {
+public class PeriodicBurstStimulusItemProvider extends StimulusItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SyntheticStimulusItemProvider(AdapterFactory adapterFactory) {
+	public PeriodicBurstStimulusItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -56,8 +58,31 @@ public class SyntheticStimulusItemProvider extends StimulusItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addOccurrenceCountPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Occurrence Count feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOccurrenceCountPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PeriodicBurstStimulus_occurrenceCount_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PeriodicBurstStimulus_occurrenceCount_feature", "_UI_PeriodicBurstStimulus_type"),
+				 AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_OccurrenceCount(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -72,9 +97,10 @@ public class SyntheticStimulusItemProvider extends StimulusItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Offset());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Period());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSyntheticStimulus_TriggerTimes());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_SlotLenght());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_OccurrenceMinDistance());
 		}
 		return childrenFeatures;
 	}
@@ -93,14 +119,14 @@ public class SyntheticStimulusItemProvider extends StimulusItemProvider {
 	}
 
 	/**
-	 * This returns SyntheticStimulus.gif.
+	 * This returns PeriodicBurstStimulus.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SyntheticStimulus"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/PeriodicBurstStimulus"));
 	}
 
 	/**
@@ -121,10 +147,10 @@ public class SyntheticStimulusItemProvider extends StimulusItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((SyntheticStimulus)object).getName();
+		String label = ((PeriodicBurstStimulus)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_SyntheticStimulus_type") :
-			getString("_UI_SyntheticStimulus_type") + " " + label;
+			getString("_UI_PeriodicBurstStimulus_type") :
+			getString("_UI_PeriodicBurstStimulus_type") + " " + label;
 	}
 	
 
@@ -139,10 +165,14 @@ public class SyntheticStimulusItemProvider extends StimulusItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(SyntheticStimulus.class)) {
-			case AmaltheaPackage.SYNTHETIC_STIMULUS__OFFSET:
-			case AmaltheaPackage.SYNTHETIC_STIMULUS__PERIOD:
-			case AmaltheaPackage.SYNTHETIC_STIMULUS__TRIGGER_TIMES:
+		switch (notification.getFeatureID(PeriodicBurstStimulus.class)) {
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__OCCURRENCE_COUNT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__OFFSET:
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__RECURRENCE:
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__SLOT_LENGHT:
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__OCCURRENCE_MIN_DISTANCE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -162,18 +192,23 @@ public class SyntheticStimulusItemProvider extends StimulusItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Offset(),
+				(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Period(),
+				(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSyntheticStimulus_TriggerTimes(),
-				 AmaltheaFactory.eINSTANCE.createTimestampList()));
+				(AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_SlotLenght(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_OccurrenceMinDistance(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
 	}
 
 	/**
@@ -190,8 +225,10 @@ public class SyntheticStimulusItemProvider extends StimulusItemProvider {
 		boolean qualify =
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Offset() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Period();
+			childFeature == AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_SlotLenght() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_OccurrenceMinDistance();
 
 		if (qualify) {
 			return getString

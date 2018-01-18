@@ -15,13 +15,11 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Tag;
-import org.eclipse.app4mc.amalthea.model.Time;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -44,7 +42,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getTags <em>Tags</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getStimulusDeviation <em>Stimulus Deviation</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getSetModeValueList <em>Set Mode Value List</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getEnablingModeValueList <em>Enabling Mode Value List</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getDisablingModeValueList <em>Disabling Mode Value List</em>}</li>
@@ -62,16 +59,6 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @ordered
 	 */
 	protected EList<Tag> tags;
-
-	/**
-	 * The cached value of the '{@link #getStimulusDeviation() <em>Stimulus Deviation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStimulusDeviation()
-	 * @generated
-	 * @ordered
-	 */
-	protected Deviation<Time> stimulusDeviation;
 
 	/**
 	 * The cached value of the '{@link #getSetModeValueList() <em>Set Mode Value List</em>}' containment reference.
@@ -132,49 +119,6 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.STIMULUS__TAGS);
 		}
 		return tags;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Deviation<Time> getStimulusDeviation() {
-		return stimulusDeviation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetStimulusDeviation(Deviation<Time> newStimulusDeviation, NotificationChain msgs) {
-		Deviation<Time> oldStimulusDeviation = stimulusDeviation;
-		stimulusDeviation = newStimulusDeviation;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION, oldStimulusDeviation, newStimulusDeviation);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStimulusDeviation(Deviation<Time> newStimulusDeviation) {
-		if (newStimulusDeviation != stimulusDeviation) {
-			NotificationChain msgs = null;
-			if (stimulusDeviation != null)
-				msgs = ((InternalEObject)stimulusDeviation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION, null, msgs);
-			if (newStimulusDeviation != null)
-				msgs = ((InternalEObject)newStimulusDeviation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION, null, msgs);
-			msgs = basicSetStimulusDeviation(newStimulusDeviation, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION, newStimulusDeviation, newStimulusDeviation));
 	}
 
 	/**
@@ -314,8 +258,6 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION:
-				return basicSetStimulusDeviation(null, msgs);
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
 				return basicSetSetModeValueList(null, msgs);
 			case AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST:
@@ -336,8 +278,6 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 		switch (featureID) {
 			case AmaltheaPackage.STIMULUS__TAGS:
 				return getTags();
-			case AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION:
-				return getStimulusDeviation();
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
 				return getSetModeValueList();
 			case AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST:
@@ -360,9 +300,6 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 			case AmaltheaPackage.STIMULUS__TAGS:
 				getTags().clear();
 				getTags().addAll((Collection<? extends Tag>)newValue);
-				return;
-			case AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION:
-				setStimulusDeviation((Deviation<Time>)newValue);
 				return;
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
 				setSetModeValueList((ModeValueList)newValue);
@@ -388,9 +325,6 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 			case AmaltheaPackage.STIMULUS__TAGS:
 				getTags().clear();
 				return;
-			case AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION:
-				setStimulusDeviation((Deviation<Time>)null);
-				return;
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
 				setSetModeValueList((ModeValueList)null);
 				return;
@@ -414,8 +348,6 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 		switch (featureID) {
 			case AmaltheaPackage.STIMULUS__TAGS:
 				return tags != null && !tags.isEmpty();
-			case AmaltheaPackage.STIMULUS__STIMULUS_DEVIATION:
-				return stimulusDeviation != null;
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
 				return setModeValueList != null;
 			case AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST:

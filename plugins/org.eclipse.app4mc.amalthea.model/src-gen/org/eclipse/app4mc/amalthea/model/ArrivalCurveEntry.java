@@ -22,7 +22,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry#getNumberOfEvents <em>Number Of Events</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry#getNumberOfOccurrences <em>Number Of Occurrences</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry#getLowerTimeBorder <em>Lower Time Border</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry#getUpperTimeBorder <em>Upper Time Border</em>}</li>
  * </ul>
@@ -33,31 +33,31 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface ArrivalCurveEntry extends BaseObject {
 	/**
-	 * Returns the value of the '<em><b>Number Of Events</b></em>' attribute.
+	 * Returns the value of the '<em><b>Number Of Occurrences</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Number Of Events</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Number Of Occurrences</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Number Of Events</em>' attribute.
-	 * @see #setNumberOfEvents(int)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getArrivalCurveEntry_NumberOfEvents()
+	 * @return the value of the '<em>Number Of Occurrences</em>' attribute.
+	 * @see #setNumberOfOccurrences(int)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getArrivalCurveEntry_NumberOfOccurrences()
 	 * @model default="0" unique="false"
 	 * @generated
 	 */
-	int getNumberOfEvents();
+	int getNumberOfOccurrences();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry#getNumberOfEvents <em>Number Of Events</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry#getNumberOfOccurrences <em>Number Of Occurrences</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Number Of Events</em>' attribute.
-	 * @see #getNumberOfEvents()
+	 * @param value the new value of the '<em>Number Of Occurrences</em>' attribute.
+	 * @see #getNumberOfOccurrences()
 	 * @generated
 	 */
-	void setNumberOfEvents(int value);
+	void setNumberOfOccurrences(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Lower Time Border</b></em>' containment reference.

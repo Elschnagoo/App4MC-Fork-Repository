@@ -2568,13 +2568,12 @@ class StimuliModel extends BaseObject
 }
 
 /*
- * Every process/task can have one or more stimuli
+ * Every process/task can have one or more stimuli.
  * A stimulus activates the process
  * deviationStimulus: defines the deviation of the activation times of the stimulus
  */
 abstract class Stimulus extends ReferableBaseObject, ITaggable
 {
-	contains Deviation<Time> stimulusDeviation
 	contains ModeValueList setModeValueList
 	contains ModeValueDisjunction enablingModeValueList
 	contains ModeValueDisjunction disablingModeValueList
@@ -2630,45 +2629,63 @@ class ModeValueConjunction extends ModeValueDisjunctionEntry
 }
 
 /*
- * Stimulus that is triggered periodically
- * offset: Time of first activation
- * recurrence: Time between following activations
- * clock: Time base which defines deviation of time, multiple stimuli can have the same time base
+ * Stimulus that is triggered periodically.
+ * offset: Time of first occurrence
+ * recurrence: Time between following occurrences
  */
-class PeriodicStimulus extends Stimulus
-{
+interface FixedPeriodic {
 	contains Time offset
 	contains Time recurrence
-	refers Clock clock
+}
+
+/*
+ * Stimulus that is triggered periodically.
+ * jitter: Deviation from true periodicity to real occurrence
+ * minDistance: Minimal time between occurrences
+ */
+class PeriodicStimulus extends Stimulus, FixedPeriodic
+{
+	contains Deviation<Time> jitter
+	contains Time minDistance
+}
+
+/*
+ * Stimulus that is triggered relative to the previous occurrence.
+ * offset: Time of first occurrence
+ * step: Time (Deviation) between successive occurrences
+ */
+class RelativePeriodicStimulus extends Stimulus
+{
+	contains Time offset
+	contains Deviation<Time> nextOccurrence
 }
 
 /*
  * Periodic stimulus based on other events, like rotation speed
+ * clock: Time base which defines deviation of time, multiple stimuli can have the same time base
  */
 class VariableRateStimulus extends Stimulus
 {
+	contains Deviation<DoubleObject> occurrencesPerStep
+	contains Time step
+	contains DoubleObject maxIncreasePerStep
+	contains DoubleObject maxDecreasePerStep
+	
+	refers Clock clock
 }
 
 /*
- * Stimulus triggered depending on a defined list of trigger times
- * offset: to shift the occurrences in negative or positive direction on the time bar
- * period: to set the period, after which the trigger times are to be repeated
- * triggerTimes: the list of all trigger times
+ * Stimulus (repeated periodically) with a defined list of occurrences.
+ * occurenceTimes: List of all occurrences
  */
-class SyntheticStimulus extends Stimulus
+class PeriodicSyntheticStimulus extends Stimulus, FixedPeriodic
 {
-	contains Time offset
-	contains Time period
-	contains TimestampList triggerTimes
+	contains Time[] occurenceTimes
 }
 
-class TimestampList extends BaseObject
-{
-	contains Time[] timestamps
-}
 
 /*
- * Stimulus to describe own custom types of activations, including properties
+ * Stimulus to describe own custom types, including properties.
  */
 class CustomStimulus extends Stimulus
 {
@@ -2676,15 +2693,15 @@ class CustomStimulus extends Stimulus
 }
 
 /*
- * Single scheduling event at a defined time.
+ * Single occurrence at a defined time.
  */
 class SingleStimulus extends Stimulus
 {
-	contains Time activation
+	contains Time occurrence
 }
 
 /*
- * Defines activation based on a explicit inter process activation.
+ * Stimulus based on a explicit inter process trigger.
  */
 class InterProcessStimulus extends Stimulus
 {
@@ -2697,11 +2714,15 @@ class InterProcessStimulus extends Stimulus
 }
 
 /*
- * Stimulus for sporadic activation of task
+ * Stimulus  (repeated periodically) for burst occurrences
+ * slotLenght: Time slot for the burst
  */
-class SporadicStimulus extends Stimulus
+class PeriodicBurstStimulus extends Stimulus, FixedPeriodic
 {
-	String description
+	contains Time slotLenght
+	
+	contains Time occurrenceMinDistance
+	int occurrenceCount = "0"
 }
 
 /*
@@ -2723,7 +2744,7 @@ class ArrivalCurveStimulus extends Stimulus
 
 class ArrivalCurveEntry extends BaseObject
 {
-	int numberOfEvents = "0"
+	int numberOfOccurrences = "0"
 	contains Time lowerTimeBorder
 	contains Time upperTimeBorder
 }
@@ -3722,7 +3743,8 @@ class PeriodicActivation extends Activation
 class VariableRateActivation extends Activation
 {
 	String description
-	contains Deviation<Time> activationDeviation
+	contains Deviation<DoubleObject> occurrencesPerStep
+	contains Time step
 }
 
 class SporadicActivation extends Activation

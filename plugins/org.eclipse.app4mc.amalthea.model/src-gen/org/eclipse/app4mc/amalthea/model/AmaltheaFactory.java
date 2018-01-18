@@ -1661,6 +1661,15 @@ public interface AmaltheaFactory extends EFactory {
 	PeriodicStimulus createPeriodicStimulus();
 
 	/**
+	 * Returns a new object of class '<em>Relative Periodic Stimulus</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Relative Periodic Stimulus</em>'.
+	 * @generated
+	 */
+	RelativePeriodicStimulus createRelativePeriodicStimulus();
+
+	/**
 	 * Returns a new object of class '<em>Variable Rate Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1670,22 +1679,13 @@ public interface AmaltheaFactory extends EFactory {
 	VariableRateStimulus createVariableRateStimulus();
 
 	/**
-	 * Returns a new object of class '<em>Synthetic Stimulus</em>'.
+	 * Returns a new object of class '<em>Periodic Synthetic Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Synthetic Stimulus</em>'.
+	 * @return a new object of class '<em>Periodic Synthetic Stimulus</em>'.
 	 * @generated
 	 */
-	SyntheticStimulus createSyntheticStimulus();
-
-	/**
-	 * Returns a new object of class '<em>Timestamp List</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Timestamp List</em>'.
-	 * @generated
-	 */
-	TimestampList createTimestampList();
+	PeriodicSyntheticStimulus createPeriodicSyntheticStimulus();
 
 	/**
 	 * Returns a new object of class '<em>Custom Stimulus</em>'.
@@ -1715,13 +1715,13 @@ public interface AmaltheaFactory extends EFactory {
 	InterProcessStimulus createInterProcessStimulus();
 
 	/**
-	 * Returns a new object of class '<em>Sporadic Stimulus</em>'.
+	 * Returns a new object of class '<em>Periodic Burst Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Sporadic Stimulus</em>'.
+	 * @return a new object of class '<em>Periodic Burst Stimulus</em>'.
 	 * @generated
 	 */
-	SporadicStimulus createSporadicStimulus();
+	PeriodicBurstStimulus createPeriodicBurstStimulus();
 
 	/**
 	 * Returns a new object of class '<em>Event Stimulus</em>'.

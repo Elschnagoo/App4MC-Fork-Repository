@@ -53,24 +53,25 @@ public class ArrivalCurveEntryItemProvider extends BaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNumberOfEventsPropertyDescriptor(object);
+			addNumberOfOccurrencesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Number Of Events feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Number Of Occurrences feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNumberOfEventsPropertyDescriptor(Object object) {
+	protected void addNumberOfOccurrencesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ArrivalCurveEntry_numberOfEvents_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ArrivalCurveEntry_numberOfEvents_feature", "_UI_ArrivalCurveEntry_type"),
-				 AmaltheaPackage.eINSTANCE.getArrivalCurveEntry_NumberOfEvents(),
+				 getString("_UI_ArrivalCurveEntry_numberOfOccurrences_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ArrivalCurveEntry_numberOfOccurrences_feature", "_UI_ArrivalCurveEntry_type"),
+				 AmaltheaPackage.eINSTANCE.getArrivalCurveEntry_NumberOfOccurrences(),
 				 true,
 				 false,
 				 false,
@@ -135,7 +136,7 @@ public class ArrivalCurveEntryItemProvider extends BaseObjectItemProvider {
 	 */
 	public String getTextGen(Object object) {
 		ArrivalCurveEntry arrivalCurveEntry = (ArrivalCurveEntry)object;
-		return getString("_UI_ArrivalCurveEntry_type") + " " + arrivalCurveEntry.getNumberOfEvents();
+		return getString("_UI_ArrivalCurveEntry_type") + " " + arrivalCurveEntry.getNumberOfOccurrences();
 	}
 
 	/**
@@ -158,7 +159,7 @@ public class ArrivalCurveEntryItemProvider extends BaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ArrivalCurveEntry.class)) {
-			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_EVENTS:
+			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__NUMBER_OF_OCCURRENCES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY__LOWER_TIME_BORDER:

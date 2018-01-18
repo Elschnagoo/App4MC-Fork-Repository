@@ -32,21 +32,21 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SingleStimulusImpl#getActivation <em>Activation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SingleStimulusImpl#getOccurrence <em>Occurrence</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SingleStimulusImpl extends StimulusImpl implements SingleStimulus {
 	/**
-	 * The cached value of the '{@link #getActivation() <em>Activation</em>}' containment reference.
+	 * The cached value of the '{@link #getOccurrence() <em>Occurrence</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getActivation()
+	 * @see #getOccurrence()
 	 * @generated
 	 * @ordered
 	 */
-	protected Time activation;
+	protected Time occurrence;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,8 +72,8 @@ public class SingleStimulusImpl extends StimulusImpl implements SingleStimulus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Time getActivation() {
-		return activation;
+	public Time getOccurrence() {
+		return occurrence;
 	}
 
 	/**
@@ -81,11 +81,11 @@ public class SingleStimulusImpl extends StimulusImpl implements SingleStimulus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetActivation(Time newActivation, NotificationChain msgs) {
-		Time oldActivation = activation;
-		activation = newActivation;
+	public NotificationChain basicSetOccurrence(Time newOccurrence, NotificationChain msgs) {
+		Time oldOccurrence = occurrence;
+		occurrence = newOccurrence;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION, oldActivation, newActivation);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SINGLE_STIMULUS__OCCURRENCE, oldOccurrence, newOccurrence);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -96,18 +96,18 @@ public class SingleStimulusImpl extends StimulusImpl implements SingleStimulus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setActivation(Time newActivation) {
-		if (newActivation != activation) {
+	public void setOccurrence(Time newOccurrence) {
+		if (newOccurrence != occurrence) {
 			NotificationChain msgs = null;
-			if (activation != null)
-				msgs = ((InternalEObject)activation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION, null, msgs);
-			if (newActivation != null)
-				msgs = ((InternalEObject)newActivation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION, null, msgs);
-			msgs = basicSetActivation(newActivation, msgs);
+			if (occurrence != null)
+				msgs = ((InternalEObject)occurrence).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SINGLE_STIMULUS__OCCURRENCE, null, msgs);
+			if (newOccurrence != null)
+				msgs = ((InternalEObject)newOccurrence).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SINGLE_STIMULUS__OCCURRENCE, null, msgs);
+			msgs = basicSetOccurrence(newOccurrence, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION, newActivation, newActivation));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SINGLE_STIMULUS__OCCURRENCE, newOccurrence, newOccurrence));
 	}
 
 	/**
@@ -118,8 +118,8 @@ public class SingleStimulusImpl extends StimulusImpl implements SingleStimulus {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION:
-				return basicSetActivation(null, msgs);
+			case AmaltheaPackage.SINGLE_STIMULUS__OCCURRENCE:
+				return basicSetOccurrence(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -132,8 +132,8 @@ public class SingleStimulusImpl extends StimulusImpl implements SingleStimulus {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION:
-				return getActivation();
+			case AmaltheaPackage.SINGLE_STIMULUS__OCCURRENCE:
+				return getOccurrence();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -146,8 +146,8 @@ public class SingleStimulusImpl extends StimulusImpl implements SingleStimulus {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION:
-				setActivation((Time)newValue);
+			case AmaltheaPackage.SINGLE_STIMULUS__OCCURRENCE:
+				setOccurrence((Time)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -161,8 +161,8 @@ public class SingleStimulusImpl extends StimulusImpl implements SingleStimulus {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION:
-				setActivation((Time)null);
+			case AmaltheaPackage.SINGLE_STIMULUS__OCCURRENCE:
+				setOccurrence((Time)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -176,8 +176,8 @@ public class SingleStimulusImpl extends StimulusImpl implements SingleStimulus {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SINGLE_STIMULUS__ACTIVATION:
-				return activation != null;
+			case AmaltheaPackage.SINGLE_STIMULUS__OCCURRENCE:
+				return occurrence != null;
 		}
 		return super.eIsSet(featureID);
 	}

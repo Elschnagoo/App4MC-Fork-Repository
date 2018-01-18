@@ -24,8 +24,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -57,31 +55,8 @@ public class PeriodicStimulusItemProvider extends StimulusItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addClockPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Clock feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addClockPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PeriodicStimulus_clock_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PeriodicStimulus_clock_feature", "_UI_PeriodicStimulus_type"),
-				 AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Clock(),
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -96,8 +71,10 @@ public class PeriodicStimulusItemProvider extends StimulusItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Offset());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Recurrence());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Jitter());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_MinDistance());
 		}
 		return childrenFeatures;
 	}
@@ -165,6 +142,8 @@ public class PeriodicStimulusItemProvider extends StimulusItemProvider {
 		switch (notification.getFeatureID(PeriodicStimulus.class)) {
 			case AmaltheaPackage.PERIODIC_STIMULUS__OFFSET:
 			case AmaltheaPackage.PERIODIC_STIMULUS__RECURRENCE:
+			case AmaltheaPackage.PERIODIC_STIMULUS__JITTER:
+			case AmaltheaPackage.PERIODIC_STIMULUS__MIN_DISTANCE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -184,12 +163,22 @@ public class PeriodicStimulusItemProvider extends StimulusItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Offset(),
+				(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Recurrence(),
+				(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Jitter(),
+				 AmaltheaFactory.eINSTANCE.createDeviation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_MinDistance(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
 	}
 
@@ -207,8 +196,9 @@ public class PeriodicStimulusItemProvider extends StimulusItemProvider {
 		boolean qualify =
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Offset() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Recurrence();
+			childFeature == AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicStimulus_MinDistance();
 
 		if (qualify) {
 			return getString

@@ -19,7 +19,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Stimulus to describe own custom types of activations, including properties
+ * Stimulus to describe own custom types, including properties.
  * <!-- end-model-doc -->
  *
  * <p>

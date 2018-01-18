@@ -13,7 +13,8 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Clock;
+import org.eclipse.app4mc.amalthea.model.Deviation;
+import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Time;
 
@@ -35,7 +36,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicStimulusImpl#getOffset <em>Offset</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicStimulusImpl#getRecurrence <em>Recurrence</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicStimulusImpl#getClock <em>Clock</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicStimulusImpl#getJitter <em>Jitter</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicStimulusImpl#getMinDistance <em>Min Distance</em>}</li>
  * </ul>
  *
  * @generated
@@ -62,14 +64,24 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	protected Time recurrence;
 
 	/**
-	 * The cached value of the '{@link #getClock() <em>Clock</em>}' reference.
+	 * The cached value of the '{@link #getJitter() <em>Jitter</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getClock()
+	 * @see #getJitter()
 	 * @generated
 	 * @ordered
 	 */
-	protected Clock clock;
+	protected Deviation<Time> jitter;
+
+	/**
+	 * The cached value of the '{@link #getMinDistance() <em>Min Distance</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMinDistance()
+	 * @generated
+	 * @ordered
+	 */
+	protected Time minDistance;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -181,16 +193,23 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Clock getClock() {
-		if (clock != null && clock.eIsProxy()) {
-			InternalEObject oldClock = (InternalEObject)clock;
-			clock = (Clock)eResolveProxy(oldClock);
-			if (clock != oldClock) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.PERIODIC_STIMULUS__CLOCK, oldClock, clock));
-			}
+	public Deviation<Time> getJitter() {
+		return jitter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetJitter(Deviation<Time> newJitter, NotificationChain msgs) {
+		Deviation<Time> oldJitter = jitter;
+		jitter = newJitter;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PERIODIC_STIMULUS__JITTER, oldJitter, newJitter);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return clock;
+		return msgs;
 	}
 
 	/**
@@ -198,8 +217,18 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Clock basicGetClock() {
-		return clock;
+	public void setJitter(Deviation<Time> newJitter) {
+		if (newJitter != jitter) {
+			NotificationChain msgs = null;
+			if (jitter != null)
+				msgs = ((InternalEObject)jitter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC_STIMULUS__JITTER, null, msgs);
+			if (newJitter != null)
+				msgs = ((InternalEObject)newJitter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC_STIMULUS__JITTER, null, msgs);
+			msgs = basicSetJitter(newJitter, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PERIODIC_STIMULUS__JITTER, newJitter, newJitter));
 	}
 
 	/**
@@ -207,11 +236,42 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setClock(Clock newClock) {
-		Clock oldClock = clock;
-		clock = newClock;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PERIODIC_STIMULUS__CLOCK, oldClock, clock));
+	public Time getMinDistance() {
+		return minDistance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMinDistance(Time newMinDistance, NotificationChain msgs) {
+		Time oldMinDistance = minDistance;
+		minDistance = newMinDistance;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PERIODIC_STIMULUS__MIN_DISTANCE, oldMinDistance, newMinDistance);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMinDistance(Time newMinDistance) {
+		if (newMinDistance != minDistance) {
+			NotificationChain msgs = null;
+			if (minDistance != null)
+				msgs = ((InternalEObject)minDistance).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC_STIMULUS__MIN_DISTANCE, null, msgs);
+			if (newMinDistance != null)
+				msgs = ((InternalEObject)newMinDistance).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC_STIMULUS__MIN_DISTANCE, null, msgs);
+			msgs = basicSetMinDistance(newMinDistance, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PERIODIC_STIMULUS__MIN_DISTANCE, newMinDistance, newMinDistance));
 	}
 
 	/**
@@ -226,6 +286,10 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 				return basicSetOffset(null, msgs);
 			case AmaltheaPackage.PERIODIC_STIMULUS__RECURRENCE:
 				return basicSetRecurrence(null, msgs);
+			case AmaltheaPackage.PERIODIC_STIMULUS__JITTER:
+				return basicSetJitter(null, msgs);
+			case AmaltheaPackage.PERIODIC_STIMULUS__MIN_DISTANCE:
+				return basicSetMinDistance(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -242,9 +306,10 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 				return getOffset();
 			case AmaltheaPackage.PERIODIC_STIMULUS__RECURRENCE:
 				return getRecurrence();
-			case AmaltheaPackage.PERIODIC_STIMULUS__CLOCK:
-				if (resolve) return getClock();
-				return basicGetClock();
+			case AmaltheaPackage.PERIODIC_STIMULUS__JITTER:
+				return getJitter();
+			case AmaltheaPackage.PERIODIC_STIMULUS__MIN_DISTANCE:
+				return getMinDistance();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -254,6 +319,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -263,8 +329,11 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 			case AmaltheaPackage.PERIODIC_STIMULUS__RECURRENCE:
 				setRecurrence((Time)newValue);
 				return;
-			case AmaltheaPackage.PERIODIC_STIMULUS__CLOCK:
-				setClock((Clock)newValue);
+			case AmaltheaPackage.PERIODIC_STIMULUS__JITTER:
+				setJitter((Deviation<Time>)newValue);
+				return;
+			case AmaltheaPackage.PERIODIC_STIMULUS__MIN_DISTANCE:
+				setMinDistance((Time)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -284,8 +353,11 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 			case AmaltheaPackage.PERIODIC_STIMULUS__RECURRENCE:
 				setRecurrence((Time)null);
 				return;
-			case AmaltheaPackage.PERIODIC_STIMULUS__CLOCK:
-				setClock((Clock)null);
+			case AmaltheaPackage.PERIODIC_STIMULUS__JITTER:
+				setJitter((Deviation<Time>)null);
+				return;
+			case AmaltheaPackage.PERIODIC_STIMULUS__MIN_DISTANCE:
+				setMinDistance((Time)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -303,10 +375,46 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 				return offset != null;
 			case AmaltheaPackage.PERIODIC_STIMULUS__RECURRENCE:
 				return recurrence != null;
-			case AmaltheaPackage.PERIODIC_STIMULUS__CLOCK:
-				return clock != null;
+			case AmaltheaPackage.PERIODIC_STIMULUS__JITTER:
+				return jitter != null;
+			case AmaltheaPackage.PERIODIC_STIMULUS__MIN_DISTANCE:
+				return minDistance != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == FixedPeriodic.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.PERIODIC_STIMULUS__OFFSET: return AmaltheaPackage.FIXED_PERIODIC__OFFSET;
+				case AmaltheaPackage.PERIODIC_STIMULUS__RECURRENCE: return AmaltheaPackage.FIXED_PERIODIC__RECURRENCE;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == FixedPeriodic.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.FIXED_PERIODIC__OFFSET: return AmaltheaPackage.PERIODIC_STIMULUS__OFFSET;
+				case AmaltheaPackage.FIXED_PERIODIC__RECURRENCE: return AmaltheaPackage.PERIODIC_STIMULUS__RECURRENCE;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //PeriodicStimulusImpl
