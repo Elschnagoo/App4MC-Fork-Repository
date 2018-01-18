@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.3" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <swModel>
-    <tasks name="Task_4" stimuli="Stimulus_Task_4?type=SporadicStimulus" preemption="preemptive" multipleTaskActivationLimit="3">
+    <tasks name="Task_4" stimuli="Stimulus_Task_4?type=RelativePeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="3">
       <callGraph>
         <graphEntries xsi:type="am:CallSequence" name="CallSequence_4_1">
           <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_1?type=Runnable" />
@@ -136,14 +136,14 @@
   </osModel>
   <stimuliModel>
     <stimuli xsi:type="am:InterProcessStimulus" name="Stimulus_Task_2" />
-    <stimuli xsi:type="am:SporadicStimulus" name="Stimulus_Task_4">
-      <stimulusDeviation>
+    <stimuli xsi:type="am:RelativePeriodicStimulus" name="Stimulus_Task_4">
+      <nextOccurrence>
         <upperBound xsi:type="am:Time" value="100" unit="ms" />
         <distribution xsi:type="am:GaussDistribution">
           <sd xsi:type="am:Time" value="5" unit="ms" />
           <mean xsi:type="am:Time" value="30" unit="ms" />
         </distribution>
-      </stimulusDeviation>
+      </nextOccurrence>
     </stimuli>
     <stimuli xsi:type="am:InterProcessStimulus" name="Stimulus_Task_3" />
     <stimuli xsi:type="am:PeriodicStimulus" name="Stimulus_Task_1">
