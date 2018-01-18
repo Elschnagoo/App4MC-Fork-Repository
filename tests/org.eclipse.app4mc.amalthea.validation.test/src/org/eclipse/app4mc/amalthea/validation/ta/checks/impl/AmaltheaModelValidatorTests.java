@@ -402,7 +402,7 @@ public class AmaltheaModelValidatorTests {
 		final PeriodicStimulus periodic = fac.createPeriodicStimulus();
 		final Deviation<Time> deviation = fac.createDeviation();
 
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -440,7 +440,7 @@ public class AmaltheaModelValidatorTests {
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -470,7 +470,7 @@ public class AmaltheaModelValidatorTests {
 		final Distribution<Time> distribution = fac.createUniformDistribution();
 
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -501,7 +501,7 @@ public class AmaltheaModelValidatorTests {
 		upperBound.setUnit(TimeUnit.S);
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -535,7 +535,7 @@ public class AmaltheaModelValidatorTests {
 		lowerBound.setUnit(TimeUnit.S);
 		deviation.setLowerBound(lowerBound);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -573,7 +573,7 @@ public class AmaltheaModelValidatorTests {
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -604,7 +604,7 @@ public class AmaltheaModelValidatorTests {
 		distribution.setAlpha(alpha);
 		distribution.setBeta(beta);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -637,7 +637,7 @@ public class AmaltheaModelValidatorTests {
 
 		distribution.setBeta(beta);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -669,7 +669,7 @@ public class AmaltheaModelValidatorTests {
 
 		distribution.setAlpha(alpha);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -703,7 +703,7 @@ public class AmaltheaModelValidatorTests {
 		distribution.setAlpha(alpha);
 		distribution.setBeta(beta);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -730,7 +730,7 @@ public class AmaltheaModelValidatorTests {
 		final Distribution<Time> distribution = fac.createUniformDistribution();
 
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -769,7 +769,7 @@ public class AmaltheaModelValidatorTests {
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -980,7 +980,7 @@ public class AmaltheaModelValidatorTests {
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -1027,7 +1027,7 @@ public class AmaltheaModelValidatorTests {
 		distribution.setMean(mean);
 		distribution.setSd(sd);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -1073,7 +1073,7 @@ public class AmaltheaModelValidatorTests {
 		distribution.setMean(mean);
 		distribution.setSd(sd);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -1119,7 +1119,7 @@ public class AmaltheaModelValidatorTests {
 		distribution.setMean(mean);
 		distribution.setSd(sd);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -1459,7 +1459,7 @@ public class AmaltheaModelValidatorTests {
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -1501,7 +1501,7 @@ public class AmaltheaModelValidatorTests {
 		mean.setUnit(TimeUnit.S);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -1543,7 +1543,7 @@ public class AmaltheaModelValidatorTests {
 		mean.setUnit(TimeUnit.S);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -1585,7 +1585,7 @@ public class AmaltheaModelValidatorTests {
 		mean.setUnit(TimeUnit.S);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 
@@ -1616,7 +1616,7 @@ public class AmaltheaModelValidatorTests {
 		mean.setUnit(TimeUnit.S);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
-		periodic.setStimulusDeviation(deviation);
+		periodic.setJitter(deviation);
 		stimuliModel.getStimuli().add(periodic);
 		amalthea.setStimuliModel(stimuliModel);
 

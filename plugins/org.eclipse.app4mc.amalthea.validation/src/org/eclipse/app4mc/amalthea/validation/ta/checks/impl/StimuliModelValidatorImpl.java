@@ -25,15 +25,14 @@ import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
+import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
-import org.eclipse.app4mc.amalthea.model.SyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
-import org.eclipse.app4mc.amalthea.model.TimestampList;
+import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.AbstractValidatorImpl;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
@@ -65,7 +64,7 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 					final BigInteger value = recurrence.getValue();
 					final TimeUnit unit = recurrence.getUnit();
 					if ((0 >= value.signum()) || (TimeUnit._UNDEFINED_ == unit)) {
-						this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Recurrence(), value, unit);
+						this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence(), value, unit);
 					}
 				}
 			}
@@ -76,33 +75,33 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 	 * Checks the parameter recurrence of {@link Periodic}. The parameter must not be set to zero or lower.
 	 * If this is the case, it will be handled as an error.
 	 */
-	public void checkClockReferenceOfPeriodic(final Amalthea amalthea) {
+	public void checkClockReferenceOfVariableRate(final Amalthea amalthea) {
 
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<PeriodicStimulus> periodics = new HashSet<>();
-		final Set<Clock> clocks = new HashSet<>();
+		final Set<VariableRateStimulus> stimuliSet = new HashSet<>();
+		final Set<Clock> clockSet = new HashSet<>();
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
-			if (elem instanceof PeriodicStimulus) {
-				final PeriodicStimulus periodic = (PeriodicStimulus) elem;
-				periodics.add(periodic);
+			if (elem instanceof VariableRateStimulus) {
+				final VariableRateStimulus vr = (VariableRateStimulus) elem;
+				stimuliSet.add(vr);
 			} else if (elem instanceof StimuliModel) {
 				final StimuliModel stimuliModel = (StimuliModel) elem;
 				final Collection<Clock> clockList = stimuliModel.getClocks();
 				for (final Clock clock : clockList) {
 					if (null != clock) {
-						clocks.add(clock);
+						clockSet.add(clock);
 					}
 				}
 			}
 		}
 
-		for (final PeriodicStimulus periodic : periodics) {
-			if (null != periodic) {
-				final Clock clock = periodic.getClock();
-				if ((null == clock) || (false == clocks.contains(clock))) {
-					this.issueCreator.issue(periodic, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Clock());
+		for (final VariableRateStimulus vr : stimuliSet) {
+			if (null != vr) {
+				final Clock clock = vr.getClock();
+				if ((null == clock) || (false == clockSet.contains(clock))) {
+					this.issueCreator.issue(vr, AmaltheaPackage.eINSTANCE.getVariableRateStimulus_Clock());
 				}
 			}
 		}
@@ -199,7 +198,7 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				if(null != offset) {
 					BigInteger value = offset.getValue();
 					if(0 > value.signum()) {
-						this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Offset(), value);
+						this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset(), value);
 					}
 				}
 			}
@@ -221,7 +220,7 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				if(null != recurrence) {
 					BigInteger value = recurrence.getValue();
 					if(0 > value.signum()) {
-						this.issueCreator.issue(recurrence, AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Recurrence(), value);
+						this.issueCreator.issue(recurrence, AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence(), value);
 					}
 				}
 			}
@@ -237,13 +236,13 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
-			if (elem instanceof SyntheticStimulus) {
-				SyntheticStimulus synthetic = (SyntheticStimulus) elem;
+			if (elem instanceof PeriodicSyntheticStimulus) {
+				PeriodicSyntheticStimulus synthetic = (PeriodicSyntheticStimulus) elem;
 				Time offset = synthetic.getOffset();
 				if(null != offset) {
 					BigInteger value = offset.getValue();
 					if(0 > value.signum()) {
-						this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Offset(), value);
+						this.issueCreator.issue(offset, AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset(), value);
 					}
 				}
 			}
@@ -254,18 +253,18 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 	 * Checks the value of property recurrence. The parameter must not be set lower than zero.
 	 * If this is the case, it will be handled as an error.
 	 */
-	public void checkSyntheticPeriodUnsigned(Amalthea amalthea) {
+	public void checkSyntheticRecurrenceUnsigned(Amalthea amalthea) {
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
-			if (elem instanceof SyntheticStimulus) {
-				SyntheticStimulus synthetic = (SyntheticStimulus) elem;
-				Time period = synthetic.getPeriod();
+			if (elem instanceof PeriodicSyntheticStimulus) {
+				PeriodicSyntheticStimulus synthetic = (PeriodicSyntheticStimulus) elem;
+				Time period = synthetic.getRecurrence();
 				if(null != period) {
 					BigInteger value = period.getValue();
 					if(0 > value.signum()) {
-						this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getSyntheticStimulus_Period(), value);
+						this.issueCreator.issue(period, AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence(), value);
 					}
 				}
 			}
@@ -276,18 +275,18 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 	 * Checks the values of property timestamps. The parameters must not be set lower than zero.
 	 * If this is the case, it will be handled as an error.
 	 */
-	public void checkTimestampListTimestampsUnsigned(Amalthea amalthea) {
+	public void checkSyntheticTimestampsUnsigned(Amalthea amalthea) {
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
-			if (elem instanceof TimestampList) {
-				TimestampList timestampList = (TimestampList) elem;
-				for(Time timestamp : timestampList.getTimestamps()) {
+			if (elem instanceof PeriodicSyntheticStimulus) {
+
+				for(Time timestamp : ((PeriodicSyntheticStimulus) elem).getOccurenceTimes()) {
 					if(null != timestamp) {
 						BigInteger value = timestamp.getValue();
 						if(0 > value.signum()) {
-							this.issueCreator.issue(timestamp, AmaltheaPackage.eINSTANCE.getTimestampList_Timestamps(), value);
+							this.issueCreator.issue(timestamp, AmaltheaPackage.eINSTANCE.getPeriodicSyntheticStimulus_OccurenceTimes(), value);
 						}
 					}
 				}
@@ -299,18 +298,18 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 	 * Checks the value of property activation. The parameter must not be set lower than zero.
 	 * If this is the case, it will be handled as an error.
 	 */
-	public void checkSingleActivationUnsigned(Amalthea amalthea) {
+	public void checkSingleOccurrenceUnsigned(Amalthea amalthea) {
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
 			if (elem instanceof SingleStimulus) {
 				SingleStimulus single = (SingleStimulus) elem;
-				Time activation = single.getActivation();
+				Time activation = single.getOccurrence();
 				if(null != activation) {
 					BigInteger value = activation.getValue();
 					if(0 > value.signum()) {
-						this.issueCreator.issue(activation, AmaltheaPackage.eINSTANCE.getSingleStimulus_Activation(), value);
+						this.issueCreator.issue(activation, AmaltheaPackage.eINSTANCE.getSingleStimulus_Occurrence(), value);
 					}
 				}
 			}

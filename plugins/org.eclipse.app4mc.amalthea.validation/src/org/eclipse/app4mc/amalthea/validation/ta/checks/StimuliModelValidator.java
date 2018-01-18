@@ -42,7 +42,7 @@ public class StimuliModelValidator extends AbstractCheckValidator implements Iss
 
 	@Check(constraint = "ClockReferenceOfPeriodicConstraint", categories = { "TAConstraint" })
 	public void checkClockReferenceOfPeriodic(final Amalthea amalthea) {
-		this.stimuliModelValidator.checkClockReferenceOfPeriodic(amalthea);
+		this.stimuliModelValidator.checkClockReferenceOfVariableRate(amalthea);
 	}
 
 	@Check(constraint = "ClockTriangleFunctionConstraint", categories = { "TAConstraint" })
@@ -77,17 +77,17 @@ public class StimuliModelValidator extends AbstractCheckValidator implements Iss
 	
 	@Check(constraint = "SyntheticPeriodUnsigned", categories = { "TAConstraint" })
 	public void checkSyntheticPeriodUnsigned(final Amalthea amalthea) {
-		this.stimuliModelValidator.checkSyntheticPeriodUnsigned(amalthea);
+		this.stimuliModelValidator.checkSyntheticRecurrenceUnsigned(amalthea);
 	}
 	
 	@Check(constraint = "TimestampListTimestampsUnsigned", categories = { "TAConstraint" })
 	public void checkTimestampListTimestampsUnsigned(final Amalthea amalthea) {
-		this.stimuliModelValidator.checkTimestampListTimestampsUnsigned(amalthea);
+		this.stimuliModelValidator.checkSyntheticTimestampsUnsigned(amalthea);
 	}
 	
 	@Check(constraint = "SingleActivationUnsigned", categories = { "TAConstraint" })
 	public void checkSingleActivationUnsigned(final Amalthea amalthea) {
-		this.stimuliModelValidator.checkSingleActivationUnsigned(amalthea);
+		this.stimuliModelValidator.checkSingleOccurrenceUnsigned(amalthea);
 	}
 	
 	@Check(constraint = "ArrivalCurveEntryLowerUnsigned", categories = { "TAConstraint" })
