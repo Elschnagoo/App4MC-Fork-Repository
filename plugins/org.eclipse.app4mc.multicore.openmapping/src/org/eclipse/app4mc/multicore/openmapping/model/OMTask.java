@@ -26,8 +26,8 @@ import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
+import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -283,9 +283,9 @@ public class OMTask {
 					return iPeriod;
 				}
 				// Support fot FMTV
-				if (s instanceof SporadicStimulus) {
-					SporadicStimulus spst = (SporadicStimulus) s;
-					Deviation<Time> dev = spst.getStimulusDeviation();
+				if (s instanceof RelativePeriodicStimulus) {
+					RelativePeriodicStimulus spst = (RelativePeriodicStimulus) s;
+					Deviation<Time> dev = spst.getNextOccurrence();
 					Time x = dev.getLowerBound();
 					if (x == null) {
 						iPeriod = 0;

@@ -21,10 +21,10 @@ import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
+import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
-import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
+import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -86,7 +86,7 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 				this.mActivationStimuli.put(activation, stimuliPeriodic);
 			}
 			else if (activation instanceof SporadicActivation) {
-				final SporadicStimulus stimuliSporadic = convertSporadicActivation((SporadicActivation) activation);
+				final RelativePeriodicStimulus stimuliSporadic = convertSporadicActivation((SporadicActivation) activation);
 				getAmaltheaModel().getStimuliModel().getStimuli().add(stimuliSporadic);
 				this.mActivationStimuli.put(activation, stimuliSporadic);
 			}
@@ -121,11 +121,11 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 		return stimuliPeriodic;
 	}
 
-	private SporadicStimulus convertSporadicActivation(final SporadicActivation activation) {
+	private RelativePeriodicStimulus convertSporadicActivation(final SporadicActivation activation) {
 		final String name = activation.getName();
 		UniversalHandler.getInstance().logCon("Connverting Sporiadic Activation Element '" + name);
 
-		final SporadicStimulus stimuliSporadic = getStimuliInstance().createSporadicStimulus();
+		final RelativePeriodicStimulus stimuliSporadic = getStimuliInstance().createRelativePeriodicStimulus();
 		stimuliSporadic.setName(name);
 		
 		// Check which timing information is present and try to convert deviations as well
@@ -144,7 +144,7 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 				stimuliDeviation.setDistribution(EcoreUtil.copy(activation.getActivationDeviation().getDistribution()));
 			}
 			
-			stimuliSporadic.setStimulusDeviation(stimuliDeviation);
+			stimuliSporadic.setNextOccurrence(stimuliDeviation);
 		}
 
 		return stimuliSporadic;

@@ -21,8 +21,8 @@ import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
+import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.SporadicStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
@@ -296,9 +296,9 @@ public class OMTask {
 					return period;
 				}
 				// Support fot FMTV
-				if(s instanceof SporadicStimulus) {
-					SporadicStimulus spst = (SporadicStimulus) s;
-					Deviation<Time> dev = spst.getStimulusDeviation();
+				if(s instanceof RelativePeriodicStimulus) {
+					RelativePeriodicStimulus spst = (RelativePeriodicStimulus) s;
+					Deviation<Time> dev = spst.getNextOccurrence();
 					Time x = dev.getLowerBound();
 					if (x == null) {
 						period = 0;
