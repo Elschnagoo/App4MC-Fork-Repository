@@ -10,6 +10,12 @@
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.partitioning.utils;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -28,6 +34,7 @@ import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
@@ -408,35 +415,52 @@ public class Helper {
 		double mpis = 1;
 		if (pp.getActivation() instanceof PeriodicActivation) {
 			final PeriodicActivation pact = (PeriodicActivation) pp.getActivation();
-			if (null != pact.getMax().getValue() && null != pact.getMin().getValue() && null != pact.getMax().getUnit() && null != pact.getMin().getUnit()) {
-				mpis = (pact.getMax().getValue().doubleValue() + pact.getMin().getValue().doubleValue()) / 2;
-			}
-			mpis *= getTimeUnit(pact);
+			mpis = getMeanActivation(pact) * getTimeUnit(pact);
 		}
 		instrSum *= mpis;
 		return instrSum;
+	}
+
+	private double getMeanActivation(final PeriodicActivation pact) {
+		if (null != pact.getMax() && null != pact.getMin() && null != pact.getMax().getValue()
+				&& null != pact.getMin().getValue() && null != pact.getMax().getUnit()
+				&& null != pact.getMin().getUnit()) {
+			return (pact.getMax().getValue().add(pact.getMin().getValue())).divide(BigInteger.valueOf(2)).doubleValue();
+		}
+		PartLog.getInstance().log(pact.getName() + " min/max values set", null);
+		return 0;
 	}
 
 	/**
 	 * @param pact
 	 * @return double fraction representing the time unit of the given period
 	 */
-	public double getTimeUnit(final PeriodicActivation pact) {
-		switch (pact.getMax().getUnit()) {
+	public double getTimeUnit(final Activation pact) {
+		if (pact instanceof PeriodicActivation) {
+			final PeriodicActivation periodic = (PeriodicActivation) pact;
+			final double mean = getMeanActivation(periodic);
+			if (null != periodic.getMax() && null != periodic.getMax().getUnit()) {
+				switch (periodic.getMax().getUnit()) {
 			case MS:
-				return 0.001;
+						return mean * 0.001;
 			case US:
-				return 0.000001;
+						return mean * 0.000001;
 			case NS:
-				return 0.000000001;
+						return mean * 0.000000001;
 			case PS:
-				return 0.000000000001;
+						return mean * 0.000000000001;
 			case S:
-				return 1;
+						return mean * 1;
 			default:
 				break;
 		}
+			}
+			else {
+				PartLog.getInstance().log(periodic.getName() + " requres a max value and a timeunit to be set", null);
+			}
+		}
 		return 0;
+
 	}
 
 	/**
@@ -475,20 +499,21 @@ public class Helper {
 	 * @return true if periodic activations are harmonic
 	 */
 	public boolean activationsAreHarmonic(final EList<Activation> acts) {
-		final ArrayList<Long> pacts = new ArrayList<>();
+		final ArrayList<Double> pacts = new ArrayList<>();
 		for (final Activation act : acts) {
 			if (act instanceof PeriodicActivation) {
 				final PeriodicActivation pa = (PeriodicActivation) act;
-				pacts.add((pa.getMin().getValue().add(pa.getMax().getValue())).longValue() / 2);
+				pacts.add(getMeanActivation(pa));
 			}
 			else {
-				PartLog.getInstance().log(act.getName() + " is not a periodic activation and is ignored for harmonic activation analysis.");
+				PartLog.getInstance().log(act.getName()
+						+ " is not a periodic activation and is ignored for harmonic activation analysis.");
 			}
 		}
 		Collections.sort(pacts, Collections.reverseOrder());
 		if (pacts.size() > 1) {
 			for (int i = 0; i < pacts.size(); i++) {
-				final Long currentAct = pacts.get(i);
+				final Double currentAct = pacts.get(i);
 				for (int j = i; j < pacts.size(); j++) {
 					if (currentAct % pacts.get(j) > 0) {
 						return false;
