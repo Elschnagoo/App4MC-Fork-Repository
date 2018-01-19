@@ -28,6 +28,7 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ServerCall#getServerRunnable <em>Server Runnable</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ServerCall#getPort <em>Port</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getServerCall()
@@ -60,5 +61,31 @@ public interface ServerCall extends RunnableItem {
 	 * @generated
 	 */
 	void setServerRunnable(org.eclipse.app4mc.amalthea.model.Runnable value);
+
+	/**
+	 * Returns the value of the '<em><b>Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Port</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Port</em>' reference.
+	 * @see #setPort(Port)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getServerCall_Port()
+	 * @model
+	 * @generated
+	 */
+	Port getPort();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ServerCall#getPort <em>Port</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Port</em>' reference.
+	 * @see #getPort()
+	 * @generated
+	 */
+	void setPort(Port value);
 
 } // ServerCall

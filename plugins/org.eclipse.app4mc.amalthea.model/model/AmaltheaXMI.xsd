@@ -5314,9 +5314,11 @@ It can be used to define which mode value is written to the label.</xsd:document
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="label" type="am:Label"/>
+          <xsd:element name="port" type="am:Port"/>
         </xsd:choice>
         <xsd:attribute name="buffered" type="xsd:boolean"/>
         <xsd:attribute name="label" type="xsd:string"/>
+        <xsd:attribute name="port" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5367,8 +5369,10 @@ It refers to a required runnable that describes the called server operation</xsd
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="serverRunnable" type="am:Runnable"/>
+          <xsd:element name="port" type="am:Port"/>
         </xsd:choice>
         <xsd:attribute name="serverRunnable" type="xsd:string"/>
+        <xsd:attribute name="port" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

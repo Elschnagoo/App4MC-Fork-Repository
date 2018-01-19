@@ -53,6 +53,7 @@ public class ServerCallItemProvider extends RunnableItemItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addServerRunnablePropertyDescriptor(object);
+			addPortPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -71,6 +72,28 @@ public class ServerCallItemProvider extends RunnableItemItemProvider {
 				 getString("_UI_ServerCall_serverRunnable_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ServerCall_serverRunnable_feature", "_UI_ServerCall_type"),
 				 AmaltheaPackage.eINSTANCE.getServerCall_ServerRunnable(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Port feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPortPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ServerCall_port_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ServerCall_port_feature", "_UI_ServerCall_type"),
+				 AmaltheaPackage.eINSTANCE.getServerCall_Port(),
 				 true,
 				 false,
 				 true,

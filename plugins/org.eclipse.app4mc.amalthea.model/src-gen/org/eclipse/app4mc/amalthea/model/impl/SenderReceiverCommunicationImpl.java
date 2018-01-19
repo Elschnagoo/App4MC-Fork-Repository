@@ -14,6 +14,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Label;
+import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.SenderReceiverCommunication;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SenderReceiverCommunicationImpl#isBuffered <em>Buffered</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SenderReceiverCommunicationImpl#getLabel <em>Label</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SenderReceiverCommunicationImpl#getPort <em>Port</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +69,16 @@ public abstract class SenderReceiverCommunicationImpl extends RunnableItemImpl i
 	 * @ordered
 	 */
 	protected Label label;
+
+	/**
+	 * The cached value of the '{@link #getPort() <em>Port</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected Port port;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -151,6 +163,44 @@ public abstract class SenderReceiverCommunicationImpl extends RunnableItemImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Port getPort() {
+		if (port != null && port.eIsProxy()) {
+			InternalEObject oldPort = (InternalEObject)port;
+			port = (Port)eResolveProxy(oldPort);
+			if (port != oldPort) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.SENDER_RECEIVER_COMMUNICATION__PORT, oldPort, port));
+			}
+		}
+		return port;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port basicGetPort() {
+		return port;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPort(Port newPort) {
+		Port oldPort = port;
+		port = newPort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SENDER_RECEIVER_COMMUNICATION__PORT, oldPort, port));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -159,6 +209,9 @@ public abstract class SenderReceiverCommunicationImpl extends RunnableItemImpl i
 			case AmaltheaPackage.SENDER_RECEIVER_COMMUNICATION__LABEL:
 				if (resolve) return getLabel();
 				return basicGetLabel();
+			case AmaltheaPackage.SENDER_RECEIVER_COMMUNICATION__PORT:
+				if (resolve) return getPort();
+				return basicGetPort();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -176,6 +229,9 @@ public abstract class SenderReceiverCommunicationImpl extends RunnableItemImpl i
 				return;
 			case AmaltheaPackage.SENDER_RECEIVER_COMMUNICATION__LABEL:
 				setLabel((Label)newValue);
+				return;
+			case AmaltheaPackage.SENDER_RECEIVER_COMMUNICATION__PORT:
+				setPort((Port)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -195,6 +251,9 @@ public abstract class SenderReceiverCommunicationImpl extends RunnableItemImpl i
 			case AmaltheaPackage.SENDER_RECEIVER_COMMUNICATION__LABEL:
 				setLabel((Label)null);
 				return;
+			case AmaltheaPackage.SENDER_RECEIVER_COMMUNICATION__PORT:
+				setPort((Port)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -211,6 +270,8 @@ public abstract class SenderReceiverCommunicationImpl extends RunnableItemImpl i
 				return buffered != BUFFERED_EDEFAULT;
 			case AmaltheaPackage.SENDER_RECEIVER_COMMUNICATION__LABEL:
 				return label != null;
+			case AmaltheaPackage.SENDER_RECEIVER_COMMUNICATION__PORT:
+				return port != null;
 		}
 		return super.eIsSet(featureID);
 	}

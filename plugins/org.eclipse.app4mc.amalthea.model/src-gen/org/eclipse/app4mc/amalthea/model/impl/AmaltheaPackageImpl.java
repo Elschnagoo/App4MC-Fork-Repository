@@ -11584,6 +11584,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSenderReceiverCommunication_Port() {
+		return (EReference)senderReceiverCommunicationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSenderReceiverRead() {
 		return senderReceiverReadEClass;
 	}
@@ -11622,6 +11631,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getServerCall_ServerRunnable() {
 		return (EReference)serverCallEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getServerCall_Port() {
+		return (EReference)serverCallEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -14114,6 +14132,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		senderReceiverCommunicationEClass = createEClass(SENDER_RECEIVER_COMMUNICATION);
 		createEAttribute(senderReceiverCommunicationEClass, SENDER_RECEIVER_COMMUNICATION__BUFFERED);
 		createEReference(senderReceiverCommunicationEClass, SENDER_RECEIVER_COMMUNICATION__LABEL);
+		createEReference(senderReceiverCommunicationEClass, SENDER_RECEIVER_COMMUNICATION__PORT);
 
 		senderReceiverReadEClass = createEClass(SENDER_RECEIVER_READ);
 
@@ -14122,6 +14141,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		serverCallEClass = createEClass(SERVER_CALL);
 		createEReference(serverCallEClass, SERVER_CALL__SERVER_RUNNABLE);
+		createEReference(serverCallEClass, SERVER_CALL__PORT);
 
 		synchronousServerCallEClass = createEClass(SYNCHRONOUS_SERVER_CALL);
 		createEAttribute(synchronousServerCallEClass, SYNCHRONOUS_SERVER_CALL__WAITING_BEHAVIOUR);
@@ -16050,6 +16070,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(senderReceiverCommunicationEClass, SenderReceiverCommunication.class, "SenderReceiverCommunication", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSenderReceiverCommunication_Buffered(), theEcorePackage.getEBoolean(), "buffered", "false", 0, 1, SenderReceiverCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSenderReceiverCommunication_Label(), this.getLabel(), null, "label", null, 1, 1, SenderReceiverCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSenderReceiverCommunication_Port(), this.getPort(), null, "port", null, 0, 1, SenderReceiverCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(senderReceiverReadEClass, SenderReceiverRead.class, "SenderReceiverRead", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -16058,6 +16079,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(serverCallEClass, ServerCall.class, "ServerCall", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getServerCall_ServerRunnable(), this.getRunnable(), null, "serverRunnable", null, 1, 1, ServerCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServerCall_Port(), this.getPort(), null, "port", null, 0, 1, ServerCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(synchronousServerCallEClass, SynchronousServerCall.class, "SynchronousServerCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSynchronousServerCall_WaitingBehaviour(), this.getWaitingBehaviour(), "waitingBehaviour", null, 0, 1, SynchronousServerCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

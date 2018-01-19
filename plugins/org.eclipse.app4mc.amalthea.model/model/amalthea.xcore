@@ -3490,6 +3490,8 @@ abstract class SenderReceiverCommunication extends RunnableItem
 {
 	boolean buffered = "false"
 	refers Label[1] label
+	
+	refers Port port
 }
 
 /*
@@ -3515,6 +3517,8 @@ class SenderReceiverWrite extends SenderReceiverCommunication
 abstract class ServerCall extends RunnableItem
 {
 	refers Runnable[1] serverRunnable
+	
+	refers Port port
 }
 
 /*

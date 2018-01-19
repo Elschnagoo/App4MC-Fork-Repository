@@ -25277,13 +25277,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SENDER_RECEIVER_COMMUNICATION__LABEL = RUNNABLE_ITEM_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENDER_RECEIVER_COMMUNICATION__PORT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Sender Receiver Communication</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SENDER_RECEIVER_COMMUNICATION_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
+	int SENDER_RECEIVER_COMMUNICATION_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -25339,6 +25348,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SENDER_RECEIVER_READ__LABEL = SENDER_RECEIVER_COMMUNICATION__LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENDER_RECEIVER_READ__PORT = SENDER_RECEIVER_COMMUNICATION__PORT;
 
 	/**
 	 * The number of structural features of the '<em>Sender Receiver Read</em>' class.
@@ -25405,6 +25423,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SENDER_RECEIVER_WRITE__LABEL = SENDER_RECEIVER_COMMUNICATION__LABEL;
 
 	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENDER_RECEIVER_WRITE__PORT = SENDER_RECEIVER_COMMUNICATION__PORT;
+
+	/**
 	 * The feature id for the '<em><b>Notified Runnables</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -25469,13 +25496,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SERVER_CALL__SERVER_RUNNABLE = RUNNABLE_ITEM_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_CALL__PORT = RUNNABLE_ITEM_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Server Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVER_CALL_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 1;
+	int SERVER_CALL_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -25522,6 +25558,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYNCHRONOUS_SERVER_CALL__SERVER_RUNNABLE = SERVER_CALL__SERVER_RUNNABLE;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONOUS_SERVER_CALL__PORT = SERVER_CALL__PORT;
 
 	/**
 	 * The feature id for the '<em><b>Waiting Behaviour</b></em>' attribute.
@@ -25588,6 +25633,15 @@ public interface AmaltheaPackage extends EPackage {
 	int ASYNCHRONOUS_SERVER_CALL__SERVER_RUNNABLE = SERVER_CALL__SERVER_RUNNABLE;
 
 	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASYNCHRONOUS_SERVER_CALL__PORT = SERVER_CALL__PORT;
+
+	/**
 	 * The feature id for the '<em><b>Result Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -25650,6 +25704,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int GET_RESULT_SERVER_CALL__SERVER_RUNNABLE = SERVER_CALL__SERVER_RUNNABLE;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_RESULT_SERVER_CALL__PORT = SERVER_CALL__PORT;
 
 	/**
 	 * The feature id for the '<em><b>Blocking Type</b></em>' attribute.
@@ -38189,6 +38252,17 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getSenderReceiverCommunication_Label();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SenderReceiverCommunication#getPort <em>Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Port</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.SenderReceiverCommunication#getPort()
+	 * @see #getSenderReceiverCommunication()
+	 * @generated
+	 */
+	EReference getSenderReceiverCommunication_Port();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SenderReceiverRead <em>Sender Receiver Read</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -38239,6 +38313,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getServerCall_ServerRunnable();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.ServerCall#getPort <em>Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Port</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ServerCall#getPort()
+	 * @see #getServerCall()
+	 * @generated
+	 */
+	EReference getServerCall_Port();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SynchronousServerCall <em>Synchronous Server Call</em>}'.

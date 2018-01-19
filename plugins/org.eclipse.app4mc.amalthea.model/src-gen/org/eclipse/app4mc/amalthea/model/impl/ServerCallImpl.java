@@ -13,6 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.ServerCall;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ServerCallImpl#getServerRunnable <em>Server Runnable</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ServerCallImpl#getPort <em>Port</em>}</li>
  * </ul>
  *
  * @generated
@@ -45,6 +47,16 @@ public abstract class ServerCallImpl extends RunnableItemImpl implements ServerC
 	 * @ordered
 	 */
 	protected org.eclipse.app4mc.amalthea.model.Runnable serverRunnable;
+
+	/**
+	 * The cached value of the '{@link #getPort() <em>Port</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected Port port;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -108,12 +120,53 @@ public abstract class ServerCallImpl extends RunnableItemImpl implements ServerC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Port getPort() {
+		if (port != null && port.eIsProxy()) {
+			InternalEObject oldPort = (InternalEObject)port;
+			port = (Port)eResolveProxy(oldPort);
+			if (port != oldPort) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.SERVER_CALL__PORT, oldPort, port));
+			}
+		}
+		return port;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port basicGetPort() {
+		return port;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPort(Port newPort) {
+		Port oldPort = port;
+		port = newPort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SERVER_CALL__PORT, oldPort, port));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.SERVER_CALL__SERVER_RUNNABLE:
 				if (resolve) return getServerRunnable();
 				return basicGetServerRunnable();
+			case AmaltheaPackage.SERVER_CALL__PORT:
+				if (resolve) return getPort();
+				return basicGetPort();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -128,6 +181,9 @@ public abstract class ServerCallImpl extends RunnableItemImpl implements ServerC
 		switch (featureID) {
 			case AmaltheaPackage.SERVER_CALL__SERVER_RUNNABLE:
 				setServerRunnable((org.eclipse.app4mc.amalthea.model.Runnable)newValue);
+				return;
+			case AmaltheaPackage.SERVER_CALL__PORT:
+				setPort((Port)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -144,6 +200,9 @@ public abstract class ServerCallImpl extends RunnableItemImpl implements ServerC
 			case AmaltheaPackage.SERVER_CALL__SERVER_RUNNABLE:
 				setServerRunnable((org.eclipse.app4mc.amalthea.model.Runnable)null);
 				return;
+			case AmaltheaPackage.SERVER_CALL__PORT:
+				setPort((Port)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -158,6 +217,8 @@ public abstract class ServerCallImpl extends RunnableItemImpl implements ServerC
 		switch (featureID) {
 			case AmaltheaPackage.SERVER_CALL__SERVER_RUNNABLE:
 				return serverRunnable != null;
+			case AmaltheaPackage.SERVER_CALL__PORT:
+				return port != null;
 		}
 		return super.eIsSet(featureID);
 	}
