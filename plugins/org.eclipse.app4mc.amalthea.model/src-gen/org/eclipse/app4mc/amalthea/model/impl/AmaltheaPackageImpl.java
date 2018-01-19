@@ -16305,6 +16305,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(timeMetricEEnum, TimeMetric.ACTIVATE_TO_ACTIVATE);
 		addEEnumLiteral(timeMetricEEnum, TimeMetric.CORE_EXECUTION_TIME);
 		addEEnumLiteral(timeMetricEEnum, TimeMetric.END_TO_END);
+		addEEnumLiteral(timeMetricEEnum, TimeMetric.END_TO_START);
 		addEEnumLiteral(timeMetricEEnum, TimeMetric.GROSS_EXECUTION_TIME);
 		addEEnumLiteral(timeMetricEEnum, TimeMetric.LATENESS);
 		addEEnumLiteral(timeMetricEEnum, TimeMetric.MEMORY_ACCESS_TIME);

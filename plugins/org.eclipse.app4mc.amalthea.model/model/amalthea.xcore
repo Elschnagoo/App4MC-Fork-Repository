@@ -1293,6 +1293,7 @@ enum TimeMetric {
 	ActivateToActivate
 	CoreExecutionTime
 	EndToEnd
+	EndToStart
 	GrossExecutionTime
 	Lateness
 	MemoryAccessTime

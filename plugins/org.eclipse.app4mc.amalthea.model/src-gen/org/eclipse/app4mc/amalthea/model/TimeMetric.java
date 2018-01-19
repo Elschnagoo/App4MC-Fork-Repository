@@ -69,6 +69,16 @@ public enum TimeMetric implements Enumerator {
 	END_TO_END(0, "EndToEnd", "EndToEnd"),
 
 	/**
+	 * The '<em><b>End To Start</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #END_TO_START_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	END_TO_START(0, "EndToStart", "EndToStart"),
+
+	/**
 	 * The '<em><b>Gross Execution Time</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -257,6 +267,21 @@ public enum TimeMetric implements Enumerator {
 	 * @ordered
 	 */
 	public static final int END_TO_END_VALUE = 0;
+
+	/**
+	 * The '<em><b>End To Start</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>End To Start</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #END_TO_START
+	 * @model name="EndToStart"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int END_TO_START_VALUE = 0;
 
 	/**
 	 * The '<em><b>Gross Execution Time</b></em>' literal value.
@@ -465,6 +490,7 @@ public enum TimeMetric implements Enumerator {
 			ACTIVATE_TO_ACTIVATE,
 			CORE_EXECUTION_TIME,
 			END_TO_END,
+			END_TO_START,
 			GROSS_EXECUTION_TIME,
 			LATENESS,
 			MEMORY_ACCESS_TIME,

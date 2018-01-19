@@ -164,6 +164,7 @@
       <xsd:enumeration value="ActivateToActivate"/>
       <xsd:enumeration value="CoreExecutionTime"/>
       <xsd:enumeration value="EndToEnd"/>
+      <xsd:enumeration value="EndToStart"/>
       <xsd:enumeration value="GrossExecutionTime"/>
       <xsd:enumeration value="Lateness"/>
       <xsd:enumeration value="MemoryAccessTime"/>
