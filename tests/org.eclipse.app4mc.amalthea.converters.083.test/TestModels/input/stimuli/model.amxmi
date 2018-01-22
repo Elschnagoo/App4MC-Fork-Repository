@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <commonElements>
+    <tags name="SwcEngineController" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcActuators" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcBrakeForceArbiter" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcABSCalculation" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcSensors" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcSensorPostprocessing" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcCylNumObserver" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcBrakeForceCalculation" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcEngineSensors" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcInjIgnActuation" tagType="SOFTWARE_COMPONENT"/>
+  </commonElements>
+  <swModel>
+    <isrs name="i1" stimuli="sst?type=SyntheticStimulus"/>
+    <isrs name="i2">
+      <stimuli xsi:type="am:SyntheticStimulus" href="amlt:/#externalSyntheticStimulus?type=SyntheticStimulus"/>
+      <stimuli xsi:type="am:SyntheticStimulus" href="amlt:/#sst?type=SyntheticStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#Timer_5MS?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#Timer_20MS?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#Timer_10MS?type=PeriodicStimulus"/>
+    </isrs>
+    <isrs name="ies3">
+      <stimuli xsi:type="am:SporadicStimulus" href="amlt:/#ss1?type=SporadicStimulus"/>
+      <stimuli xsi:type="am:SporadicStimulus" href="amlt:/#externalSporadicStimulus?type=SporadicStimulus"/>
+    </isrs>
+    <isrs name="i55">
+      <stimuli xsi:type="am:ArrivalCurveStimulus" href="amlt:/#acs?type=ArrivalCurveStimulus"/>
+      <stimuli xsi:type="am:CustomStimulus" href="amlt:/#no-name?type=CustomStimulus"/>
+      <stimuli xsi:type="am:EventStimulus" href="amlt:/#no-name?type=EventStimulus"/>
+      <stimuli xsi:type="am:InterProcessStimulus" href="amlt:/#no-name?type=InterProcessStimulus"/>
+      <stimuli xsi:type="am:InterProcessStimulus" href="amlt:/#no-name?type=InterProcessStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#external_periodic_stimulus?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#p1?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#p2?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#Timer_10MS?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#Timer_20MS?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#Timer_5MS?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:SingleStimulus" href="amlt:/#ss1t?type=SingleStimulus"/>
+      <stimuli xsi:type="am:SporadicStimulus" href="amlt:/#externalSporadicStimulus?type=SporadicStimulus"/>
+      <stimuli xsi:type="am:SporadicStimulus" href="amlt:/#ss1?type=SporadicStimulus"/>
+      <stimuli xsi:type="am:SporadicStimulus" href="amlt:/#ss2?type=SporadicStimulus"/>
+      <stimuli xsi:type="am:SyntheticStimulus" href="amlt:/#externalSyntheticStimulus?type=SyntheticStimulus"/>
+      <stimuli xsi:type="am:SyntheticStimulus" href="amlt:/#sst?type=SyntheticStimulus"/>
+    </isrs>
+    <isrs name="i6" stimuli="acs?type=ArrivalCurveStimulus no-name?type=CustomStimulus no-name?type=EventStimulus no-name?type=InterProcessStimulus no-name?type=InterProcessStimulus"/>
+    <tasks name="t1" stimuli="sst?type=SyntheticStimulus" multipleTaskActivationLimit="0"/>
+    <tasks name="t2" multipleTaskActivationLimit="0">
+      <stimuli xsi:type="am:SyntheticStimulus" href="amlt:/#externalSyntheticStimulus?type=SyntheticStimulus"/>
+      <stimuli xsi:type="am:SyntheticStimulus" href="amlt:/#sst?type=SyntheticStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#Timer_5MS?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#Timer_20MS?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#Timer_10MS?type=PeriodicStimulus"/>
+    </tasks>
+    <tasks name="t3" stimuli="ss1?type=SporadicStimulus ss2?type=SporadicStimulus" multipleTaskActivationLimit="0"/>
+    <tasks name="t4" multipleTaskActivationLimit="0">
+      <stimuli xsi:type="am:ArrivalCurveStimulus" href="amlt:/#acs?type=ArrivalCurveStimulus"/>
+      <stimuli xsi:type="am:CustomStimulus" href="amlt:/#no-name?type=CustomStimulus"/>
+      <stimuli xsi:type="am:EventStimulus" href="amlt:/#no-name?type=EventStimulus"/>
+      <stimuli xsi:type="am:InterProcessStimulus" href="amlt:/#no-name?type=InterProcessStimulus"/>
+      <stimuli xsi:type="am:InterProcessStimulus" href="amlt:/#no-name?type=InterProcessStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#external_periodic_stimulus?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#p1?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#p2?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#Timer_10MS?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#Timer_20MS?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#Timer_5MS?type=PeriodicStimulus"/>
+    </tasks>
+    <tasks name="t5" multipleTaskActivationLimit="0">
+      <stimuli xsi:type="am:PeriodicStimulus" href="amlt:/#external_periodic_stimulus?type=PeriodicStimulus"/>
+      <stimuli xsi:type="am:SporadicStimulus" href="amlt:/#externalSporadicStimulus?type=SporadicStimulus"/>
+      <stimuli xsi:type="am:SyntheticStimulus" href="amlt:/#externalSyntheticStimulus?type=SyntheticStimulus"/>
+    </tasks>
+  </swModel>
+  <hwModel>
+    <coreTypes name="Default" bitWidth="0" instructionsPerCycle="1.0"/>
+    <system name="Democar">
+      <ecus name="ECU_1">
+        <microcontrollers name="Processor_1">
+          <memories name="Mem_1">
+            <ports xsi:type="am:ComplexPort" name="Mem_1_port" master="false" bitWidth="16" baseAddress="0" addressRange="0" direction="R" writeCycles="10" readCycles="10" schedValue="0"/>
+          </memories>
+          <cores name="Core_1" coreType="Default?type=CoreType" lockstepGroup="0">
+            <prescaler name="Core_1_prescaler" clockRatio="0.0" quartz="QuartzOscillator_1?type=Quartz"/>
+          </cores>
+        </microcontrollers>
+      </ecus>
+      <quartzes name="QuartzOscillator_1" type="STATIC">
+        <frequency unit="MHz" value="200.0"/>
+      </quartzes>
+    </system>
+  </hwModel>
+  <osModel>
+    <operatingSystems name="OperatingSystem">
+      <taskSchedulers name="Task_Scheduler_Core_1">
+        <schedulingAlgorithm xsi:type="am:OSEK"/>
+      </taskSchedulers>
+      <osDataConsistency/>
+    </operatingSystems>
+  </osModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:PeriodicStimulus" name="Timer_10MS">
+      <offset value="0" unit="ms"/>
+      <recurrence value="10" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" name="Timer_20MS">
+      <offset value="0" unit="ms"/>
+      <recurrence value="20" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" name="Timer_5MS">
+      <offset value="0" unit="ms"/>
+      <recurrence value="5" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:SyntheticStimulus" name="sst">
+      <stimulusDeviation>
+        <lowerBound xsi:type="am:Time" value="12" unit="us"/>
+        <upperBound xsi:type="am:Time" value="232" unit="us"/>
+        <distribution xsi:type="am:BetaDistribution" alpha="0.0" beta="0.0"/>
+      </stimulusDeviation>
+      <period value="22" unit="s"/>
+      <triggerTimes>
+        <timestamps value="22" unit="ms"/>
+        <timestamps value="66" unit="ns"/>
+      </triggerTimes>
+    </stimuli>
+    <stimuli xsi:type="am:SporadicStimulus" name="ss1">
+      <stimulusDeviation>
+        <lowerBound xsi:type="am:Time" value="0"/>
+        <upperBound xsi:type="am:Time" value="0"/>
+        <distribution xsi:type="am:BetaDistribution" alpha="0.0" beta="0.0"/>
+      </stimulusDeviation>
+    </stimuli>
+    <stimuli xsi:type="am:SporadicStimulus" name="ss2">
+      <stimulusDeviation>
+        <lowerBound xsi:type="am:Time" value="0"/>
+        <upperBound xsi:type="am:Time" value="0"/>
+        <distribution xsi:type="am:BetaDistribution" alpha="0.0" beta="0.0"/>
+      </stimulusDeviation>
+    </stimuli>
+    <stimuli xsi:type="am:ArrivalCurveStimulus" name="acs">
+      <stimulusDeviation>
+        <lowerBound xsi:type="am:Time" value="0"/>
+        <upperBound xsi:type="am:Time" value="0"/>
+        <distribution xsi:type="am:GaussDistribution"/>
+      </stimulusDeviation>
+      <setModeValueList/>
+      <entries numberOfEvents="20"/>
+      <entries numberOfEvents="30"/>
+    </stimuli>
+    <stimuli xsi:type="am:SingleStimulus" name="ss1t">
+      <stimulusDeviation/>
+      <activation value="121" unit="us"/>
+    </stimuli>
+    <stimuli xsi:type="am:CustomStimulus">
+      <stimulusDeviation/>
+    </stimuli>
+    <stimuli xsi:type="am:InterProcessStimulus">
+      <stimulusDeviation/>
+    </stimuli>
+    <stimuli xsi:type="am:EventStimulus">
+      <stimulusDeviation/>
+    </stimuli>
+    <stimuli xsi:type="am:InterProcessStimulus">
+      <stimulusDeviation/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" name="p1" clock="no-name?type=ClockMultiplierList">
+      <stimulusDeviation/>
+      <offset value="0"/>
+      <recurrence value="0"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" name="p2">
+      <stimulusDeviation/>
+    </stimuli>
+    <clocks xsi:type="am:ClockMultiplierList">
+      <entries multiplier="0.0"/>
+    </clocks>
+  </stimuliModel>
+  <eventModel>
+    <events xsi:type="am:StimulusEvent" name="s1" entity="sst?type=SyntheticStimulus"/>
+    <events xsi:type="am:StimulusEvent" name="s2">
+      <entity xsi:type="am:SyntheticStimulus" href="amlt:/#externalSyntheticStimulus?type=SyntheticStimulus"/>
+    </events>
+    <events xsi:type="am:StimulusEvent" name="se4" entity="ss1?type=SporadicStimulus"/>
+    <events xsi:type="am:StimulusEvent" name="se5">
+      <entity xsi:type="am:SporadicStimulus" href="amlt:/#externalSporadicStimulus?type=SporadicStimulus"/>
+    </events>
+    <events xsi:type="am:StimulusEvent" name="ss2" entity="p1?type=PeriodicStimulus"/>
+    <events xsi:type="am:StimulusEvent" name="sdfa">
+      <entity xsi:type="am:PeriodicStimulus" href="amlt:/#external_periodic_stimulus?type=PeriodicStimulus"/>
+    </events>
+  </eventModel>
+  <constraintsModel>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_05" severity="Critical">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="5" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_10" severity="Critical">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="10" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_20" severity="Critical">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="20" unit="ms"/>
+      </limit>
+    </requirements>
+  </constraintsModel>
+  <componentsModel>
+    <components name="C1">
+      <ports xsi:type="am:FInterfacePort" name="p1" kind="provides"/>
+    </components>
+    <components xsi:type="am:Composite" name="comp1">
+      <ports xsi:type="am:FInterfacePort" name="c2"/>
+      <componentInstances/>
+      <connectors>
+        <sourcePort port="C1/p1?type=FInterfacePort"/>
+        <targetPort>
+          <port xsi:type="am:FInterfacePort" href="amlt:/#ExternalComponent/externalPort?type=FInterfacePort"/>
+        </targetPort>
+      </connectors>
+      <groundedPorts port="C1/p1?type=FInterfacePort"/>
+    </components>
+    <systems>
+      <componentInstances/>
+      <connectors>
+        <sourcePort port="comp1/c2?type=FInterfacePort"/>
+        <targetPort port="C1/p1?type=FInterfacePort"/>
+      </connectors>
+      <groundedPorts port="C1/p1?type=FInterfacePort"/>
+    </systems>
+    <systems>
+      <connectors>
+        <sourcePort port="C1/p1?type=FInterfacePort"/>
+        <targetPort port="comp1/c2?type=FInterfacePort"/>
+      </connectors>
+      <groundedPorts port="comp1/c2?type=FInterfacePort"/>
+      <groundedPorts/>
+    </systems>
+  </componentsModel>
+</am:Amalthea>
