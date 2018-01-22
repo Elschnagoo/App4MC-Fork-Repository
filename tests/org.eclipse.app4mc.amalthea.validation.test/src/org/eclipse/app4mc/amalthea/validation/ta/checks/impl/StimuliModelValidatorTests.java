@@ -1187,11 +1187,11 @@ public class StimuliModelValidatorTests {
 		
 		amalthea.setStimuliModel(stimuliModel);
 		stimuliModel.getStimuli().add(synthetic);
-		synthetic.getOccurenceTimes().add(timestamp);
+		synthetic.getOccurrenceTimes().add(timestamp);
 		timestamp.setValue(value);
 		timestamp.setUnit(unit);
 		
-		this.issueCreator.issue(timestamp, AmaltheaPackage.eINSTANCE.getPeriodicSyntheticStimulus_OccurenceTimes(), value);
+		this.issueCreator.issue(timestamp, AmaltheaPackage.eINSTANCE.getPeriodicSyntheticStimulus_OccurrenceTimes(), value);
 		
 		EasyMock.expectLastCall().times(1);
 		EasyMock.replay(this.issueCreator);
@@ -1218,7 +1218,7 @@ public class StimuliModelValidatorTests {
 		
 		amalthea.setStimuliModel(stimuliModel);
 		stimuliModel.getStimuli().add(synthetic);
-		synthetic.getOccurenceTimes().add(timestamp);
+		synthetic.getOccurrenceTimes().add(timestamp);
 		timestamp.setValue(value);
 		timestamp.setUnit(unit);
 		
@@ -1246,7 +1246,7 @@ public class StimuliModelValidatorTests {
 		
 		amalthea.setStimuliModel(stimuliModel);
 		stimuliModel.getStimuli().add(synthetic);
-		synthetic.getOccurenceTimes().add(timestamp);
+		synthetic.getOccurrenceTimes().add(timestamp);
 		timestamp.setValue(value);
 		timestamp.setUnit(unit);
 		

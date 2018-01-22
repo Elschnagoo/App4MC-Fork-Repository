@@ -282,11 +282,11 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 			final EObject elem = amaIter.next();
 			if (elem instanceof PeriodicSyntheticStimulus) {
 
-				for(Time timestamp : ((PeriodicSyntheticStimulus) elem).getOccurenceTimes()) {
+				for(Time timestamp : ((PeriodicSyntheticStimulus) elem).getOccurrenceTimes()) {
 					if(null != timestamp) {
 						BigInteger value = timestamp.getValue();
 						if(0 > value.signum()) {
-							this.issueCreator.issue(timestamp, AmaltheaPackage.eINSTANCE.getPeriodicSyntheticStimulus_OccurenceTimes(), value);
+							this.issueCreator.issue(timestamp, AmaltheaPackage.eINSTANCE.getPeriodicSyntheticStimulus_OccurrenceTimes(), value);
 						}
 					}
 				}
