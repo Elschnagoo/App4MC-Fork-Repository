@@ -19437,13 +19437,13 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_SYNTHETIC_STIMULUS__RECURRENCE = STIMULUS_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Occurence Times</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Occurrence Times</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERIODIC_SYNTHETIC_STIMULUS__OCCURENCE_TIMES = STIMULUS_FEATURE_COUNT + 2;
+	int PERIODIC_SYNTHETIC_STIMULUS__OCCURRENCE_TIMES = STIMULUS_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Periodic Synthetic Stimulus</em>' class.
@@ -20008,13 +20008,13 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_BURST_STIMULUS__RECURRENCE = STIMULUS_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Slot Lenght</b></em>' containment reference.
+	 * The feature id for the '<em><b>Burst Length</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERIODIC_BURST_STIMULUS__SLOT_LENGHT = STIMULUS_FEATURE_COUNT + 2;
+	int PERIODIC_BURST_STIMULUS__BURST_LENGTH = STIMULUS_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Occurrence Min Distance</b></em>' containment reference.
@@ -35961,15 +35961,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getPeriodicSyntheticStimulus();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus#getOccurenceTimes <em>Occurence Times</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus#getOccurrenceTimes <em>Occurrence Times</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Occurence Times</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus#getOccurenceTimes()
+	 * @return the meta object for the containment reference list '<em>Occurrence Times</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus#getOccurrenceTimes()
 	 * @see #getPeriodicSyntheticStimulus()
 	 * @generated
 	 */
-	EReference getPeriodicSyntheticStimulus_OccurenceTimes();
+	EReference getPeriodicSyntheticStimulus_OccurrenceTimes();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.CustomStimulus <em>Custom Stimulus</em>}'.
@@ -36056,15 +36056,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getPeriodicBurstStimulus();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus#getSlotLenght <em>Slot Lenght</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus#getBurstLength <em>Burst Length</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Slot Lenght</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus#getSlotLenght()
+	 * @return the meta object for the containment reference '<em>Burst Length</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus#getBurstLength()
 	 * @see #getPeriodicBurstStimulus()
 	 * @generated
 	 */
-	EReference getPeriodicBurstStimulus_SlotLenght();
+	EReference getPeriodicBurstStimulus_BurstLength();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus#getOccurrenceMinDistance <em>Occurrence Min Distance</em>}'.

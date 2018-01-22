@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicBurstStimulusImpl#getOffset <em>Offset</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicBurstStimulusImpl#getRecurrence <em>Recurrence</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicBurstStimulusImpl#getSlotLenght <em>Slot Lenght</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicBurstStimulusImpl#getBurstLength <em>Burst Length</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicBurstStimulusImpl#getOccurrenceMinDistance <em>Occurrence Min Distance</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicBurstStimulusImpl#getOccurrenceCount <em>Occurrence Count</em>}</li>
  * </ul>
@@ -64,14 +64,14 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	protected Time recurrence;
 
 	/**
-	 * The cached value of the '{@link #getSlotLenght() <em>Slot Lenght</em>}' containment reference.
+	 * The cached value of the '{@link #getBurstLength() <em>Burst Length</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSlotLenght()
+	 * @see #getBurstLength()
 	 * @generated
 	 * @ordered
 	 */
-	protected Time slotLenght;
+	protected Time burstLength;
 
 	/**
 	 * The cached value of the '{@link #getOccurrenceMinDistance() <em>Occurrence Min Distance</em>}' containment reference.
@@ -213,8 +213,8 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Time getSlotLenght() {
-		return slotLenght;
+	public Time getBurstLength() {
+		return burstLength;
 	}
 
 	/**
@@ -222,11 +222,11 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSlotLenght(Time newSlotLenght, NotificationChain msgs) {
-		Time oldSlotLenght = slotLenght;
-		slotLenght = newSlotLenght;
+	public NotificationChain basicSetBurstLength(Time newBurstLength, NotificationChain msgs) {
+		Time oldBurstLength = burstLength;
+		burstLength = newBurstLength;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PERIODIC_BURST_STIMULUS__SLOT_LENGHT, oldSlotLenght, newSlotLenght);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PERIODIC_BURST_STIMULUS__BURST_LENGTH, oldBurstLength, newBurstLength);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -237,18 +237,18 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSlotLenght(Time newSlotLenght) {
-		if (newSlotLenght != slotLenght) {
+	public void setBurstLength(Time newBurstLength) {
+		if (newBurstLength != burstLength) {
 			NotificationChain msgs = null;
-			if (slotLenght != null)
-				msgs = ((InternalEObject)slotLenght).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC_BURST_STIMULUS__SLOT_LENGHT, null, msgs);
-			if (newSlotLenght != null)
-				msgs = ((InternalEObject)newSlotLenght).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC_BURST_STIMULUS__SLOT_LENGHT, null, msgs);
-			msgs = basicSetSlotLenght(newSlotLenght, msgs);
+			if (burstLength != null)
+				msgs = ((InternalEObject)burstLength).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC_BURST_STIMULUS__BURST_LENGTH, null, msgs);
+			if (newBurstLength != null)
+				msgs = ((InternalEObject)newBurstLength).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PERIODIC_BURST_STIMULUS__BURST_LENGTH, null, msgs);
+			msgs = basicSetBurstLength(newBurstLength, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PERIODIC_BURST_STIMULUS__SLOT_LENGHT, newSlotLenght, newSlotLenght));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PERIODIC_BURST_STIMULUS__BURST_LENGTH, newBurstLength, newBurstLength));
 	}
 
 	/**
@@ -327,8 +327,8 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 				return basicSetOffset(null, msgs);
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__RECURRENCE:
 				return basicSetRecurrence(null, msgs);
-			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__SLOT_LENGHT:
-				return basicSetSlotLenght(null, msgs);
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__BURST_LENGTH:
+				return basicSetBurstLength(null, msgs);
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__OCCURRENCE_MIN_DISTANCE:
 				return basicSetOccurrenceMinDistance(null, msgs);
 		}
@@ -347,8 +347,8 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 				return getOffset();
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__RECURRENCE:
 				return getRecurrence();
-			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__SLOT_LENGHT:
-				return getSlotLenght();
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__BURST_LENGTH:
+				return getBurstLength();
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__OCCURRENCE_MIN_DISTANCE:
 				return getOccurrenceMinDistance();
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__OCCURRENCE_COUNT:
@@ -371,8 +371,8 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__RECURRENCE:
 				setRecurrence((Time)newValue);
 				return;
-			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__SLOT_LENGHT:
-				setSlotLenght((Time)newValue);
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__BURST_LENGTH:
+				setBurstLength((Time)newValue);
 				return;
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__OCCURRENCE_MIN_DISTANCE:
 				setOccurrenceMinDistance((Time)newValue);
@@ -398,8 +398,8 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__RECURRENCE:
 				setRecurrence((Time)null);
 				return;
-			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__SLOT_LENGHT:
-				setSlotLenght((Time)null);
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__BURST_LENGTH:
+				setBurstLength((Time)null);
 				return;
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__OCCURRENCE_MIN_DISTANCE:
 				setOccurrenceMinDistance((Time)null);
@@ -423,8 +423,8 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 				return offset != null;
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__RECURRENCE:
 				return recurrence != null;
-			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__SLOT_LENGHT:
-				return slotLenght != null;
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__BURST_LENGTH:
+				return burstLength != null;
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__OCCURRENCE_MIN_DISTANCE:
 				return occurrenceMinDistance != null;
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__OCCURRENCE_COUNT:

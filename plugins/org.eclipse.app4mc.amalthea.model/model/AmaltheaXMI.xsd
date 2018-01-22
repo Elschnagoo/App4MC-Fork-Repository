@@ -4202,14 +4202,14 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
   <xsd:complexType name="PeriodicSyntheticStimulus">
     <xsd:annotation>
       <xsd:documentation>Stimulus (repeated periodically) with a defined list of occurrences.
-occurenceTimes: List of all occurrences</xsd:documentation>
+occurrenceTimes: List of all occurrences</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="offset" type="am:Time"/>
           <xsd:element name="recurrence" type="am:Time"/>
-          <xsd:element name="occurenceTimes" type="am:Time"/>
+          <xsd:element name="occurrenceTimes" type="am:Time"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -4217,7 +4217,7 @@ occurenceTimes: List of all occurrences</xsd:documentation>
   <xsd:element name="PeriodicSyntheticStimulus" type="am:PeriodicSyntheticStimulus">
     <xsd:annotation>
       <xsd:documentation>Stimulus (repeated periodically) with a defined list of occurrences.
-occurenceTimes: List of all occurrences</xsd:documentation>
+occurrenceTimes: List of all occurrences</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="CustomStimulus">
@@ -4272,14 +4272,14 @@ occurenceTimes: List of all occurrences</xsd:documentation>
   <xsd:complexType name="PeriodicBurstStimulus">
     <xsd:annotation>
       <xsd:documentation>Stimulus  (repeated periodically) for burst occurrences
-slotLenght: Time slot for the burst</xsd:documentation>
+burstLength: Time frame for the burst (occurrences after the length are clipped)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="offset" type="am:Time"/>
           <xsd:element name="recurrence" type="am:Time"/>
-          <xsd:element name="slotLenght" type="am:Time"/>
+          <xsd:element name="burstLength" type="am:Time"/>
           <xsd:element name="occurrenceMinDistance" type="am:Time"/>
         </xsd:choice>
         <xsd:attribute name="occurrenceCount" type="xsd:int"/>
@@ -4289,7 +4289,7 @@ slotLenght: Time slot for the burst</xsd:documentation>
   <xsd:element name="PeriodicBurstStimulus" type="am:PeriodicBurstStimulus">
     <xsd:annotation>
       <xsd:documentation>Stimulus  (repeated periodically) for burst occurrences
-slotLenght: Time slot for the burst</xsd:documentation>
+burstLength: Time frame for the burst (occurrences after the length are clipped)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="EventStimulus">

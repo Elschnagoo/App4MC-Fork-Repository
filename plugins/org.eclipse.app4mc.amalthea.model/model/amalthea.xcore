@@ -2677,11 +2677,11 @@ class VariableRateStimulus extends Stimulus
 
 /*
  * Stimulus (repeated periodically) with a defined list of occurrences.
- * occurenceTimes: List of all occurrences
+ * occurrenceTimes: List of all occurrences
  */
 class PeriodicSyntheticStimulus extends Stimulus, FixedPeriodic
 {
-	contains Time[] occurenceTimes
+	contains Time[] occurrenceTimes
 }
 
 
@@ -2716,11 +2716,11 @@ class InterProcessStimulus extends Stimulus
 
 /*
  * Stimulus  (repeated periodically) for burst occurrences
- * slotLenght: Time slot for the burst
+ * burstLength: Time frame for the burst (occurrences after the length are clipped)
  */
 class PeriodicBurstStimulus extends Stimulus, FixedPeriodic
 {
-	contains Time slotLenght
+	contains Time burstLength
 	
 	contains Time occurrenceMinDistance
 	int occurrenceCount = "0"

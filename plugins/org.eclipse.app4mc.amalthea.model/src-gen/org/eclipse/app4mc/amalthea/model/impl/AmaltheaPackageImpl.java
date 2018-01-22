@@ -9658,7 +9658,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPeriodicSyntheticStimulus_OccurenceTimes() {
+	public EReference getPeriodicSyntheticStimulus_OccurrenceTimes() {
 		return (EReference)periodicSyntheticStimulusEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -9739,7 +9739,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPeriodicBurstStimulus_SlotLenght() {
+	public EReference getPeriodicBurstStimulus_BurstLength() {
 		return (EReference)periodicBurstStimulusEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -13856,7 +13856,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__CLOCK);
 
 		periodicSyntheticStimulusEClass = createEClass(PERIODIC_SYNTHETIC_STIMULUS);
-		createEReference(periodicSyntheticStimulusEClass, PERIODIC_SYNTHETIC_STIMULUS__OCCURENCE_TIMES);
+		createEReference(periodicSyntheticStimulusEClass, PERIODIC_SYNTHETIC_STIMULUS__OCCURRENCE_TIMES);
 
 		customStimulusEClass = createEClass(CUSTOM_STIMULUS);
 		createEAttribute(customStimulusEClass, CUSTOM_STIMULUS__DESCRIPTION);
@@ -13869,7 +13869,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(interProcessStimulusEClass, INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS);
 
 		periodicBurstStimulusEClass = createEClass(PERIODIC_BURST_STIMULUS);
-		createEReference(periodicBurstStimulusEClass, PERIODIC_BURST_STIMULUS__SLOT_LENGHT);
+		createEReference(periodicBurstStimulusEClass, PERIODIC_BURST_STIMULUS__BURST_LENGTH);
 		createEReference(periodicBurstStimulusEClass, PERIODIC_BURST_STIMULUS__OCCURRENCE_MIN_DISTANCE);
 		createEAttribute(periodicBurstStimulusEClass, PERIODIC_BURST_STIMULUS__OCCURRENCE_COUNT);
 
@@ -15771,7 +15771,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getVariableRateStimulus_Clock(), this.getClock(), null, "clock", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(periodicSyntheticStimulusEClass, PeriodicSyntheticStimulus.class, "PeriodicSyntheticStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPeriodicSyntheticStimulus_OccurenceTimes(), this.getTime(), null, "occurenceTimes", null, 0, -1, PeriodicSyntheticStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPeriodicSyntheticStimulus_OccurrenceTimes(), this.getTime(), null, "occurrenceTimes", null, 0, -1, PeriodicSyntheticStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customStimulusEClass, CustomStimulus.class, "CustomStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomStimulus_Description(), theEcorePackage.getEString(), "description", null, 0, 1, CustomStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15784,7 +15784,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getInterProcessStimulus_ExplicitTriggers(), this.getInterProcessTrigger(), this.getInterProcessTrigger_StimulusLinkInt(), "explicitTriggers", null, 0, -1, InterProcessStimulus.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(periodicBurstStimulusEClass, PeriodicBurstStimulus.class, "PeriodicBurstStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPeriodicBurstStimulus_SlotLenght(), this.getTime(), null, "slotLenght", null, 0, 1, PeriodicBurstStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPeriodicBurstStimulus_BurstLength(), this.getTime(), null, "burstLength", null, 0, 1, PeriodicBurstStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPeriodicBurstStimulus_OccurrenceMinDistance(), this.getTime(), null, "occurrenceMinDistance", null, 0, 1, PeriodicBurstStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPeriodicBurstStimulus_OccurrenceCount(), theEcorePackage.getEInt(), "occurrenceCount", "0", 0, 1, PeriodicBurstStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

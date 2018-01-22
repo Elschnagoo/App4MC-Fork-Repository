@@ -20,14 +20,14 @@ package org.eclipse.app4mc.amalthea.model;
  *
  * <!-- begin-model-doc -->
  * Stimulus  (repeated periodically) for burst occurrences
- * slotLenght: Time slot for the burst
+ * burstLength: Time frame for the burst (occurrences after the length are clipped)
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus#getSlotLenght <em>Slot Lenght</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus#getBurstLength <em>Burst Length</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus#getOccurrenceMinDistance <em>Occurrence Min Distance</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus#getOccurrenceCount <em>Occurrence Count</em>}</li>
  * </ul>
@@ -38,30 +38,30 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface PeriodicBurstStimulus extends Stimulus, FixedPeriodic {
 	/**
-	 * Returns the value of the '<em><b>Slot Lenght</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Burst Length</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Slot Lenght</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Burst Length</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Slot Lenght</em>' containment reference.
-	 * @see #setSlotLenght(Time)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicBurstStimulus_SlotLenght()
+	 * @return the value of the '<em>Burst Length</em>' containment reference.
+	 * @see #setBurstLength(Time)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicBurstStimulus_BurstLength()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Time getSlotLenght();
+	Time getBurstLength();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus#getSlotLenght <em>Slot Lenght</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.PeriodicBurstStimulus#getBurstLength <em>Burst Length</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Slot Lenght</em>' containment reference.
-	 * @see #getSlotLenght()
+	 * @param value the new value of the '<em>Burst Length</em>' containment reference.
+	 * @see #getBurstLength()
 	 * @generated
 	 */
-	void setSlotLenght(Time value);
+	void setBurstLength(Time value);
 
 	/**
 	 * Returns the value of the '<em><b>Occurrence Min Distance</b></em>' containment reference.

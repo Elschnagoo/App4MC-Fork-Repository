@@ -42,7 +42,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicSyntheticStimulusImpl#getOffset <em>Offset</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicSyntheticStimulusImpl#getRecurrence <em>Recurrence</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicSyntheticStimulusImpl#getOccurenceTimes <em>Occurence Times</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicSyntheticStimulusImpl#getOccurrenceTimes <em>Occurrence Times</em>}</li>
  * </ul>
  *
  * @generated
@@ -69,14 +69,14 @@ public class PeriodicSyntheticStimulusImpl extends StimulusImpl implements Perio
 	protected Time recurrence;
 
 	/**
-	 * The cached value of the '{@link #getOccurenceTimes() <em>Occurence Times</em>}' containment reference list.
+	 * The cached value of the '{@link #getOccurrenceTimes() <em>Occurrence Times</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOccurenceTimes()
+	 * @see #getOccurrenceTimes()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Time> occurenceTimes;
+	protected EList<Time> occurrenceTimes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -188,11 +188,11 @@ public class PeriodicSyntheticStimulusImpl extends StimulusImpl implements Perio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Time> getOccurenceTimes() {
-		if (occurenceTimes == null) {
-			occurenceTimes = new EObjectContainmentEList<Time>(Time.class, this, AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURENCE_TIMES);
+	public EList<Time> getOccurrenceTimes() {
+		if (occurrenceTimes == null) {
+			occurrenceTimes = new EObjectContainmentEList<Time>(Time.class, this, AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURRENCE_TIMES);
 		}
-		return occurenceTimes;
+		return occurrenceTimes;
 	}
 
 	/**
@@ -207,8 +207,8 @@ public class PeriodicSyntheticStimulusImpl extends StimulusImpl implements Perio
 				return basicSetOffset(null, msgs);
 			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__RECURRENCE:
 				return basicSetRecurrence(null, msgs);
-			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURENCE_TIMES:
-				return ((InternalEList<?>)getOccurenceTimes()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURRENCE_TIMES:
+				return ((InternalEList<?>)getOccurrenceTimes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -225,8 +225,8 @@ public class PeriodicSyntheticStimulusImpl extends StimulusImpl implements Perio
 				return getOffset();
 			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__RECURRENCE:
 				return getRecurrence();
-			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURENCE_TIMES:
-				return getOccurenceTimes();
+			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURRENCE_TIMES:
+				return getOccurrenceTimes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -246,9 +246,9 @@ public class PeriodicSyntheticStimulusImpl extends StimulusImpl implements Perio
 			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__RECURRENCE:
 				setRecurrence((Time)newValue);
 				return;
-			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURENCE_TIMES:
-				getOccurenceTimes().clear();
-				getOccurenceTimes().addAll((Collection<? extends Time>)newValue);
+			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURRENCE_TIMES:
+				getOccurrenceTimes().clear();
+				getOccurrenceTimes().addAll((Collection<? extends Time>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -268,8 +268,8 @@ public class PeriodicSyntheticStimulusImpl extends StimulusImpl implements Perio
 			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__RECURRENCE:
 				setRecurrence((Time)null);
 				return;
-			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURENCE_TIMES:
-				getOccurenceTimes().clear();
+			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURRENCE_TIMES:
+				getOccurrenceTimes().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -287,8 +287,8 @@ public class PeriodicSyntheticStimulusImpl extends StimulusImpl implements Perio
 				return offset != null;
 			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__RECURRENCE:
 				return recurrence != null;
-			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURENCE_TIMES:
-				return occurenceTimes != null && !occurenceTimes.isEmpty();
+			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURRENCE_TIMES:
+				return occurrenceTimes != null && !occurrenceTimes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

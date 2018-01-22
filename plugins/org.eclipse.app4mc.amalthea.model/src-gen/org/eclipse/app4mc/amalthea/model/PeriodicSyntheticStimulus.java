@@ -21,14 +21,14 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * Stimulus (repeated periodically) with a defined list of occurrences.
- * occurenceTimes: List of all occurrences
+ * occurrenceTimes: List of all occurrences
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus#getOccurenceTimes <em>Occurence Times</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus#getOccurrenceTimes <em>Occurrence Times</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicSyntheticStimulus()
@@ -37,19 +37,19 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface PeriodicSyntheticStimulus extends Stimulus, FixedPeriodic {
 	/**
-	 * Returns the value of the '<em><b>Occurence Times</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Occurrence Times</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Time}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Occurence Times</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Occurrence Times</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Occurence Times</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicSyntheticStimulus_OccurenceTimes()
+	 * @return the value of the '<em>Occurrence Times</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicSyntheticStimulus_OccurrenceTimes()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Time> getOccurenceTimes();
+	EList<Time> getOccurrenceTimes();
 
 } // PeriodicSyntheticStimulus

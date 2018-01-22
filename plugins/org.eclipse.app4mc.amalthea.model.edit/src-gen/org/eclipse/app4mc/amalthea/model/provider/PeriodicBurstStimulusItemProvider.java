@@ -99,7 +99,7 @@ public class PeriodicBurstStimulusItemProvider extends StimulusItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_SlotLenght());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_BurstLength());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_OccurrenceMinDistance());
 		}
 		return childrenFeatures;
@@ -171,7 +171,7 @@ public class PeriodicBurstStimulusItemProvider extends StimulusItemProvider {
 				return;
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__OFFSET:
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__RECURRENCE:
-			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__SLOT_LENGHT:
+			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__BURST_LENGTH:
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS__OCCURRENCE_MIN_DISTANCE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -202,7 +202,7 @@ public class PeriodicBurstStimulusItemProvider extends StimulusItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_SlotLenght(),
+				(AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_BurstLength(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
 
 		newChildDescriptors.add
@@ -227,7 +227,7 @@ public class PeriodicBurstStimulusItemProvider extends StimulusItemProvider {
 			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_SlotLenght() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_BurstLength() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_OccurrenceMinDistance();
 
 		if (qualify) {
