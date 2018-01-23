@@ -4,20 +4,20 @@
   <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/XMI.xsd"/>
   <xsd:simpleType name="TimeUnit">
     <xsd:annotation>
-      <xsd:documentation>Time unit enumeration for available units.</xsd:documentation>
+      <xsd:documentation>Time units (enumeration of available units)</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="s"/>
-      <xsd:enumeration value="ms"/>
-      <xsd:enumeration value="us"/>
-      <xsd:enumeration value="ns"/>
       <xsd:enumeration value="ps"/>
+      <xsd:enumeration value="ns"/>
+      <xsd:enumeration value="us"/>
+      <xsd:enumeration value="ms"/>
+      <xsd:enumeration value="s"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="FrequencyUnit">
     <xsd:annotation>
-      <xsd:documentation>Frequency unit enumeration for available units</xsd:documentation>
+      <xsd:documentation>Frequency units (enumeration of available units)</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -27,9 +27,20 @@
       <xsd:enumeration value="GHz"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="VoltageUnit">
+    <xsd:annotation>
+      <xsd:documentation>Voltage units (enumeration of available units)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="uV"/>
+      <xsd:enumeration value="mV"/>
+      <xsd:enumeration value="V"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="DataSizeUnit">
     <xsd:annotation>
-      <xsd:documentation>Representing data sizes</xsd:documentation>
+      <xsd:documentation>Data size units (enumeration of available units)</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -55,7 +66,7 @@
   </xsd:simpleType>
   <xsd:simpleType name="DataRateUnit">
     <xsd:annotation>
-      <xsd:documentation>Representing data rates</xsd:documentation>
+      <xsd:documentation>Data rate units (enumeration of available units)</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -97,6 +108,7 @@
       <xsd:enumeration value="_undefined_"/>
       <xsd:enumeration value="provides"/>
       <xsd:enumeration value="requires"/>
+      <xsd:enumeration value="provides_requires"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="RunnableOrderType">
@@ -152,6 +164,7 @@
       <xsd:enumeration value="ActivateToActivate"/>
       <xsd:enumeration value="CoreExecutionTime"/>
       <xsd:enumeration value="EndToEnd"/>
+      <xsd:enumeration value="EndToStart"/>
       <xsd:enumeration value="GrossExecutionTime"/>
       <xsd:enumeration value="Lateness"/>
       <xsd:enumeration value="MemoryAccessTime"/>
@@ -665,9 +678,9 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>ITaggable: Possibility to add tags to an elements</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="IReferable">
+  <xsd:complexType abstract="true" name="INamed">
     <xsd:annotation>
-      <xsd:documentation>IReferable: Name attribute and computed ID for name based references</xsd:documentation>
+      <xsd:documentation>INamed: Name attribute</xsd:documentation>
     </xsd:annotation>
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -676,9 +689,22 @@ Needs to be extended by other classes.</xsd:documentation>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="name" type="xsd:string"/>
   </xsd:complexType>
+  <xsd:element name="INamed" type="am:INamed">
+    <xsd:annotation>
+      <xsd:documentation>INamed: Name attribute</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="IReferable">
+    <xsd:annotation>
+      <xsd:documentation>IReferable: Computed ID for name based references</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:INamed"/>
+    </xsd:complexContent>
+  </xsd:complexType>
   <xsd:element name="IReferable" type="am:IReferable">
     <xsd:annotation>
-      <xsd:documentation>IReferable: Name attribute and computed ID for name based references</xsd:documentation>
+      <xsd:documentation>IReferable: Computed ID for name based references</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="IDisplayName">
@@ -802,6 +828,21 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Constant set of execution cycles</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="Quantity">
+    <xsd:annotation>
+      <xsd:documentation>Abstract class for Quantities (value + unit)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="Quantity" type="am:Quantity">
+    <xsd:annotation>
+      <xsd:documentation>Abstract class for Quantities (value + unit)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType abstract="true" name="TimeComparable">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -821,7 +862,7 @@ Needs to be extended by other classes.</xsd:documentation>
   <xsd:element name="AbstractTime" type="am:AbstractTime"/>
   <xsd:complexType name="Time">
     <xsd:annotation>
-      <xsd:documentation>General time class to use including value and given time unit.</xsd:documentation>
+      <xsd:documentation>General time class to define time value and unit.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:AbstractTime"/>
@@ -829,46 +870,73 @@ Needs to be extended by other classes.</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="Time" type="am:Time">
     <xsd:annotation>
-      <xsd:documentation>General time class to use including value and given time unit.</xsd:documentation>
+      <xsd:documentation>General time class to define time value and unit.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="Frequency">
     <xsd:annotation>
-      <xsd:documentation>General frequency class to define a frequency value</xsd:documentation>
+      <xsd:documentation>General frequency class to define frequency value and unit</xsd:documentation>
     </xsd:annotation>
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="unit" type="am:FrequencyUnit"/>
-    <xsd:attribute name="value" type="xsd:double"/>
+    <xsd:complexContent>
+      <xsd:extension base="am:Quantity">
+        <xsd:attribute name="value" type="xsd:double"/>
+        <xsd:attribute name="unit" type="am:FrequencyUnit"/>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Frequency" type="am:Frequency">
     <xsd:annotation>
-      <xsd:documentation>General frequency class to define a frequency value</xsd:documentation>
+      <xsd:documentation>General frequency class to define frequency value and unit</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="Voltage">
+    <xsd:annotation>
+      <xsd:documentation>General voltage class to define voltage value and unit</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Quantity">
+        <xsd:attribute name="value" type="xsd:double"/>
+        <xsd:attribute name="unit" type="am:VoltageUnit"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Voltage" type="am:Voltage">
+    <xsd:annotation>
+      <xsd:documentation>General voltage class to define voltage value and unit</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="DataSize">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="value" type="xsd:string"/>
-    <xsd:attribute name="unit" type="am:DataSizeUnit"/>
+    <xsd:annotation>
+      <xsd:documentation>General data size class to define size (value and unit)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Quantity">
+        <xsd:attribute name="value" type="xsd:string"/>
+        <xsd:attribute name="unit" type="am:DataSizeUnit"/>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="DataSize" type="am:DataSize"/>
+  <xsd:element name="DataSize" type="am:DataSize">
+    <xsd:annotation>
+      <xsd:documentation>General data size class to define size (value and unit)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="DataRate">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="value" type="xsd:string"/>
-    <xsd:attribute name="unit" type="am:DataRateUnit"/>
+    <xsd:annotation>
+      <xsd:documentation>General data rate class to define rate (value and unit)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Quantity">
+        <xsd:attribute name="value" type="xsd:string"/>
+        <xsd:attribute name="unit" type="am:DataRateUnit"/>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="DataRate" type="am:DataRate"/>
+  <xsd:element name="DataRate" type="am:DataRate">
+    <xsd:annotation>
+      <xsd:documentation>General data rate class to define rate (value and unit)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="CustomProperty">
     <xsd:annotation>
       <xsd:documentation>custom property container for map</xsd:documentation>
@@ -1070,7 +1138,7 @@ The generic class T defines the data-type of the value-range of the distribution
   </xsd:element>
   <xsd:complexType abstract="true" name="WeibullDistribution">
     <xsd:annotation>
-      <xsd:documentation>Abstract weibull distribution</xsd:documentation>
+      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Distribution"/>
@@ -1078,7 +1146,7 @@ The generic class T defines the data-type of the value-range of the distribution
   </xsd:complexType>
   <xsd:element name="WeibullDistribution" type="am:WeibullDistribution">
     <xsd:annotation>
-      <xsd:documentation>Abstract weibull distribution</xsd:documentation>
+      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="WeibullParameters">
@@ -1253,15 +1321,6 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ComponentsModel" type="am:ComponentsModel"/>
-  <xsd:complexType abstract="true" name="INamedElement">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="name" type="xsd:string"/>
-  </xsd:complexType>
-  <xsd:element name="INamedElement" type="am:INamedElement"/>
   <xsd:complexType abstract="true" name="ISystem">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="componentInstances" type="am:ComponentInstance"/>
@@ -1374,15 +1433,15 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="QualifiedPort" type="am:QualifiedPort"/>
-  <xsd:complexType name="FInterfacePort">
+  <xsd:complexType name="InterfacePort">
     <xsd:complexContent>
       <xsd:extension base="am:Port">
-        <xsd:attribute name="kind" type="am:InterfaceKind"/>
         <xsd:attribute name="interfaceName" type="xsd:string"/>
+        <xsd:attribute name="kind" type="am:InterfaceKind"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="FInterfacePort" type="am:FInterfacePort"/>
+  <xsd:element name="InterfacePort" type="am:InterfacePort"/>
   <xsd:complexType name="ConfigModel">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
@@ -1903,6 +1962,7 @@ strands: alternative event paths</xsd:documentation>
           <xsd:element name="segments" type="am:EventChainItem"/>
           <xsd:element name="strands" type="am:EventChainItem"/>
         </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="stimulus" type="xsd:string"/>
         <xsd:attribute name="response" type="xsd:string"/>
       </xsd:extension>
@@ -1921,17 +1981,13 @@ strands: alternative event paths</xsd:documentation>
   </xsd:element>
   <xsd:complexType name="EventChain">
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractEventChain">
-        <xsd:attribute name="name" type="xsd:string"/>
-      </xsd:extension>
+      <xsd:extension base="am:AbstractEventChain"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="EventChain" type="am:EventChain"/>
   <xsd:complexType name="SubEventChain">
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractEventChain">
-        <xsd:attribute name="name" type="xsd:string"/>
-      </xsd:extension>
+      <xsd:extension base="am:AbstractEventChain"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="SubEventChain" type="am:SubEventChain"/>
@@ -2881,8 +2937,8 @@ entity: The component that fires the event (optional)</xsd:documentation>
         </xsd:choice>
         <xsd:attribute name="master" type="xsd:boolean"/>
         <xsd:attribute name="bitWidth" type="xsd:int"/>
-        <xsd:attribute name="baseAddress" type="xsd:long"/>
-        <xsd:attribute name="addressRange" type="xsd:long"/>
+        <xsd:attribute name="baseAddress" type="xsd:string"/>
+        <xsd:attribute name="addressRange" type="xsd:string"/>
         <xsd:attribute name="direction" type="am:RWType"/>
         <xsd:attribute name="writeCycles" type="xsd:int"/>
         <xsd:attribute name="readCycles" type="xsd:int"/>
@@ -2896,7 +2952,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:Pin">
         <xsd:attribute name="type" type="am:PinType"/>
-        <xsd:attribute name="baseAddress" type="xsd:long"/>
+        <xsd:attribute name="baseAddress" type="xsd:string"/>
         <xsd:attribute name="direction" type="am:RWType"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -3156,7 +3212,7 @@ to a specific memory.</xsd:documentation>
           <xsd:element name="abstractElement" type="am:AbstractMemoryElement"/>
           <xsd:element name="memory" type="am:Memory"/>
         </xsd:choice>
-        <xsd:attribute name="memoryPositionAddress" type="xsd:long">
+        <xsd:attribute name="memoryPositionAddress" type="xsd:string">
           <xsd:annotation>
             <xsd:documentation>The position of the element in the mapped memory</xsd:documentation>
           </xsd:annotation>
@@ -3181,8 +3237,8 @@ to a specific memory.</xsd:documentation>
           <xsd:element name="labels" type="am:Label"/>
           <xsd:element name="runEntities" type="am:Runnable"/>
         </xsd:choice>
-        <xsd:attribute name="startAddress" type="xsd:long"/>
-        <xsd:attribute name="endAddress" type="xsd:long"/>
+        <xsd:attribute name="startAddress" type="xsd:string"/>
+        <xsd:attribute name="endAddress" type="xsd:string"/>
         <xsd:attribute name="origin" type="xsd:string"/>
         <xsd:attribute name="memory" type="xsd:string"/>
         <xsd:attribute name="labels" type="xsd:string"/>
@@ -3294,6 +3350,7 @@ computation items: steps to perform the scheduling algorithm</xsd:documentation>
   <xsd:element name="TaskScheduler" type="am:TaskScheduler"/>
   <xsd:complexType name="SchedulerAssociation">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="child" type="am:TaskScheduler"/>
       <xsd:element name="parent" type="am:TaskScheduler"/>
       <xsd:element name="schedulingParameters" type="am:SchedulingParameters"/>
       <xsd:element name="parameterExtensions" type="am:ParameterExtension"/>
@@ -3301,6 +3358,7 @@ computation items: steps to perform the scheduling algorithm</xsd:documentation>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="child" type="xsd:string"/>
     <xsd:attribute name="parent" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="SchedulerAssociation" type="am:SchedulerAssociation"/>
@@ -3966,7 +4024,7 @@ AbstractMemoryElement-to-Memory Mapping</xsd:documentation>
   <xsd:element name="StimuliModel" type="am:StimuliModel"/>
   <xsd:complexType abstract="true" name="Stimulus">
     <xsd:annotation>
-      <xsd:documentation>Every process/task can have one or more stimuli
+      <xsd:documentation>Every process/task can have one or more stimuli.
 A stimulus activates the process
 deviationStimulus: defines the deviation of the activation times of the stimulus</xsd:documentation>
     </xsd:annotation>
@@ -3974,7 +4032,6 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
-          <xsd:element name="stimulusDeviation" type="am:Deviation"/>
           <xsd:element name="setModeValueList" type="am:ModeValueList"/>
           <xsd:element name="enablingModeValueList" type="am:ModeValueDisjunction"/>
           <xsd:element name="disablingModeValueList" type="am:ModeValueDisjunction"/>
@@ -3985,7 +4042,7 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
   </xsd:complexType>
   <xsd:element name="Stimulus" type="am:Stimulus">
     <xsd:annotation>
-      <xsd:documentation>Every process/task can have one or more stimuli
+      <xsd:documentation>Every process/task can have one or more stimuli.
 A stimulus activates the process
 deviationStimulus: defines the deviation of the activation times of the stimulus</xsd:documentation>
     </xsd:annotation>
@@ -4000,15 +4057,37 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeValueList" type="am:ModeValueList"/>
-  <xsd:complexType abstract="true" name="ModeValueListEntry">
+  <xsd:complexType name="ModeValueMapEntry">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="key" type="am:ModeLabel"/>
+      <xsd:element name="value" type="am:ModeLiteral"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="key" type="xsd:string"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="ModeValueMapEntry" type="am:ModeValueMapEntry"/>
+  <xsd:complexType name="ModeValueDisjunction">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entries" type="am:ModeValueDisjunctionEntry"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ModeValueDisjunction" type="am:ModeValueDisjunction"/>
+  <xsd:complexType abstract="true" name="ModeValueDisjunctionEntry">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject"/>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ModeValueListEntry" type="am:ModeValueListEntry"/>
+  <xsd:element name="ModeValueDisjunctionEntry" type="am:ModeValueDisjunctionEntry"/>
   <xsd:complexType name="ModeValue">
     <xsd:complexContent>
-      <xsd:extension base="am:ModeValueListEntry">
+      <xsd:extension base="am:ModeValueDisjunctionEntry">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="valueProvider" type="am:ModeLabel"/>
           <xsd:element name="value" type="am:ModeLiteral"/>
@@ -4021,7 +4100,7 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
   <xsd:element name="ModeValue" type="am:ModeValue"/>
   <xsd:complexType name="ModeValueConjunction">
     <xsd:complexContent>
-      <xsd:extension base="am:ModeValueListEntry">
+      <xsd:extension base="am:ModeValueDisjunctionEntry">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entries" type="am:ModeValue"/>
         </xsd:choice>
@@ -4029,93 +4108,121 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeValueConjunction" type="am:ModeValueConjunction"/>
-  <xsd:complexType name="ModeValueDisjunction">
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="entries" type="am:ModeValueListEntry"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
+  <xsd:complexType abstract="true" name="FixedPeriodic">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus that is triggered periodically.
+offset: Time of first occurrence
+recurrence: Time between following occurrences</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="offset" type="am:Time"/>
+      <xsd:element name="recurrence" type="am:Time"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
   </xsd:complexType>
-  <xsd:element name="ModeValueDisjunction" type="am:ModeValueDisjunction"/>
+  <xsd:element name="FixedPeriodic" type="am:FixedPeriodic">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus that is triggered periodically.
+offset: Time of first occurrence
+recurrence: Time between following occurrences</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="PeriodicStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus that is triggered periodically
-offset: Time of first activation
-recurrence: Time between following activations
-clock: Time base which defines deviation of time, multiple stimuli can have the same time base</xsd:documentation>
+      <xsd:documentation>Stimulus that is triggered periodically.
+jitter: Deviation from true periodicity to real occurrence
+minDistance: Minimal time between occurrences</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="offset" type="am:Time"/>
           <xsd:element name="recurrence" type="am:Time"/>
+          <xsd:element name="jitter" type="am:Deviation"/>
+          <xsd:element name="minDistance" type="am:Time"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PeriodicStimulus" type="am:PeriodicStimulus">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus that is triggered periodically.
+jitter: Deviation from true periodicity to real occurrence
+minDistance: Minimal time between occurrences</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="RelativePeriodicStimulus">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus that is triggered relative to the previous occurrence.
+offset: Time of first occurrence
+step: Time (Deviation) between successive occurrences</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Stimulus">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="offset" type="am:Time"/>
+          <xsd:element name="nextOccurrence" type="am:Deviation"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="RelativePeriodicStimulus" type="am:RelativePeriodicStimulus">
+    <xsd:annotation>
+      <xsd:documentation>Stimulus that is triggered relative to the previous occurrence.
+offset: Time of first occurrence
+step: Time (Deviation) between successive occurrences</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="VariableRateStimulus">
+    <xsd:annotation>
+      <xsd:documentation>Periodic stimulus based on other events, like rotation speed
+clock: Time base which defines deviation of time, multiple stimuli can have the same time base</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Stimulus">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="occurrencesPerStep" type="am:Deviation"/>
+          <xsd:element name="step" type="am:Time"/>
+          <xsd:element name="maxIncreasePerStep" type="am:DoubleObject"/>
+          <xsd:element name="maxDecreasePerStep" type="am:DoubleObject"/>
           <xsd:element name="clock" type="am:Clock"/>
         </xsd:choice>
         <xsd:attribute name="clock" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="PeriodicStimulus" type="am:PeriodicStimulus">
+  <xsd:element name="VariableRateStimulus" type="am:VariableRateStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus that is triggered periodically
-offset: Time of first activation
-recurrence: Time between following activations
+      <xsd:documentation>Periodic stimulus based on other events, like rotation speed
 clock: Time base which defines deviation of time, multiple stimuli can have the same time base</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="VariableRateStimulus">
+  <xsd:complexType name="PeriodicSyntheticStimulus">
     <xsd:annotation>
-      <xsd:documentation>Periodic stimulus based on other events, like rotation speed</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Stimulus"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="VariableRateStimulus" type="am:VariableRateStimulus">
-    <xsd:annotation>
-      <xsd:documentation>Periodic stimulus based on other events, like rotation speed</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="SyntheticStimulus">
-    <xsd:annotation>
-      <xsd:documentation>Stimulus triggered depending on a defined list of trigger times
-offset: to shift the occurrences in negative or positive direction on the time bar
-period: to set the period, after which the trigger times are to be repeated
-triggerTimes: the list of all trigger times</xsd:documentation>
+      <xsd:documentation>Stimulus (repeated periodically) with a defined list of occurrences.
+occurrenceTimes: List of all occurrences</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="offset" type="am:Time"/>
-          <xsd:element name="period" type="am:Time"/>
-          <xsd:element name="triggerTimes" type="am:TimestampList"/>
+          <xsd:element name="recurrence" type="am:Time"/>
+          <xsd:element name="occurrenceTimes" type="am:Time"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="SyntheticStimulus" type="am:SyntheticStimulus">
+  <xsd:element name="PeriodicSyntheticStimulus" type="am:PeriodicSyntheticStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus triggered depending on a defined list of trigger times
-offset: to shift the occurrences in negative or positive direction on the time bar
-period: to set the period, after which the trigger times are to be repeated
-triggerTimes: the list of all trigger times</xsd:documentation>
+      <xsd:documentation>Stimulus (repeated periodically) with a defined list of occurrences.
+occurrenceTimes: List of all occurrences</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="TimestampList">
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="timestamps" type="am:Time"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TimestampList" type="am:TimestampList"/>
   <xsd:complexType name="CustomStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus to describe own custom types of activations, including properties</xsd:documentation>
+      <xsd:documentation>Stimulus to describe own custom types, including properties.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
@@ -4125,29 +4232,29 @@ triggerTimes: the list of all trigger times</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="CustomStimulus" type="am:CustomStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus to describe own custom types of activations, including properties</xsd:documentation>
+      <xsd:documentation>Stimulus to describe own custom types, including properties.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="SingleStimulus">
     <xsd:annotation>
-      <xsd:documentation>Single scheduling event at a defined time.</xsd:documentation>
+      <xsd:documentation>Single occurrence at a defined time.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="activation" type="am:Time"/>
+          <xsd:element name="occurrence" type="am:Time"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="SingleStimulus" type="am:SingleStimulus">
     <xsd:annotation>
-      <xsd:documentation>Single scheduling event at a defined time.</xsd:documentation>
+      <xsd:documentation>Single occurrence at a defined time.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="InterProcessStimulus">
     <xsd:annotation>
-      <xsd:documentation>Defines activation based on a explicit inter process activation.</xsd:documentation>
+      <xsd:documentation>Stimulus based on a explicit inter process trigger.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
@@ -4159,22 +4266,30 @@ triggerTimes: the list of all trigger times</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="InterProcessStimulus" type="am:InterProcessStimulus">
     <xsd:annotation>
-      <xsd:documentation>Defines activation based on a explicit inter process activation.</xsd:documentation>
+      <xsd:documentation>Stimulus based on a explicit inter process trigger.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="SporadicStimulus">
+  <xsd:complexType name="PeriodicBurstStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus for sporadic activation of task</xsd:documentation>
+      <xsd:documentation>Stimulus  (repeated periodically) for burst occurrences
+burstLength: Time frame for the burst (occurrences after the length are clipped)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
-        <xsd:attribute name="description" type="xsd:string"/>
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="offset" type="am:Time"/>
+          <xsd:element name="recurrence" type="am:Time"/>
+          <xsd:element name="burstLength" type="am:Time"/>
+          <xsd:element name="occurrenceMinDistance" type="am:Time"/>
+        </xsd:choice>
+        <xsd:attribute name="occurrenceCount" type="xsd:int"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="SporadicStimulus" type="am:SporadicStimulus">
+  <xsd:element name="PeriodicBurstStimulus" type="am:PeriodicBurstStimulus">
     <xsd:annotation>
-      <xsd:documentation>Stimulus for sporadic activation of task</xsd:documentation>
+      <xsd:documentation>Stimulus  (repeated periodically) for burst occurrences
+burstLength: Time frame for the burst (occurrences after the length are clipped)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="EventStimulus">
@@ -4220,7 +4335,7 @@ triggerTimes: the list of all trigger times</xsd:documentation>
           <xsd:element name="lowerTimeBorder" type="am:Time"/>
           <xsd:element name="upperTimeBorder" type="am:Time"/>
         </xsd:choice>
-        <xsd:attribute name="numberOfEvents" type="xsd:int"/>
+        <xsd:attribute name="numberOfOccurrences" type="xsd:int"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -4468,11 +4583,9 @@ This just defines that the processes should be chained.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:GraphEntryBase">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="valueProvider" type="am:ModeLabel"/>
           <xsd:element name="entries" type="am:ModeSwitchEntry"/>
           <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
         </xsd:choice>
-        <xsd:attribute name="valueProvider" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -4484,22 +4597,22 @@ This just defines that the processes should be chained.</xsd:documentation>
   <xsd:complexType name="ModeSwitchEntry">
     <xsd:annotation>
       <xsd:documentation>A switch entry for a ModeSwitch.
-It describes a path of the switch and the required mode values to use this path</xsd:documentation>
+It describes a path of the switch and the required mode condition to use this path</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="values" type="am:ModeLiteral"/>
+          <xsd:element name="condition" type="am:ModeValueDisjunction"/>
           <xsd:element name="items" type="ecore:EObject"/>
         </xsd:choice>
-        <xsd:attribute name="values" type="xsd:string"/>
+        <xsd:attribute name="name" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeSwitchEntry" type="am:ModeSwitchEntry">
     <xsd:annotation>
       <xsd:documentation>A switch entry for a ModeSwitch.
-It describes a path of the switch and the required mode values to use this path</xsd:documentation>
+It describes a path of the switch and the required mode condition to use this path</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ModeSwitchDefault">
@@ -5101,11 +5214,9 @@ It can be used to define which mode value is written to the label.</xsd:document
     <xsd:complexContent>
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="valueProvider" type="am:ModeLabel"/>
           <xsd:element name="entries" type="am:ModeSwitchEntry"/>
           <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
         </xsd:choice>
-        <xsd:attribute name="valueProvider" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5203,9 +5314,11 @@ It can be used to define which mode value is written to the label.</xsd:document
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="label" type="am:Label"/>
+          <xsd:element name="port" type="am:Port"/>
         </xsd:choice>
         <xsd:attribute name="buffered" type="xsd:boolean"/>
         <xsd:attribute name="label" type="xsd:string"/>
+        <xsd:attribute name="port" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5256,8 +5369,10 @@ It refers to a required runnable that describes the called server operation</xsd
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="serverRunnable" type="am:Runnable"/>
+          <xsd:element name="port" type="am:Port"/>
         </xsd:choice>
         <xsd:attribute name="serverRunnable" type="xsd:string"/>
+        <xsd:attribute name="port" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5618,7 +5733,8 @@ Used for first definition of an activation rate, which is later refined by stimu
     <xsd:complexContent>
       <xsd:extension base="am:Activation">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="activationDeviation" type="am:Deviation"/>
+          <xsd:element name="occurrencesPerStep" type="am:Deviation"/>
+          <xsd:element name="step" type="am:Time"/>
         </xsd:choice>
         <xsd:attribute name="description" type="xsd:string"/>
       </xsd:extension>
