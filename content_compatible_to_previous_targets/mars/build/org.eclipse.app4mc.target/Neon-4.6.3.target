@@ -10,6 +10,11 @@
 <repository location="http://download.eclipse.org/ease/update/release"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.license.feature.group" version="1.0.1.v20140414-1359"/>
+<repository location="http://download.eclipse.org/cbi/updates/license/"/>
+</location>
+
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="com.google.gson" version="2.7.0.v20170129-0911"/>
 <unit id="com.sun.xml.bind" version="2.2.0.v201505121915"/>
 <unit id="java_cup.runtime" version="0.10.0.v201005080400"/>
@@ -41,7 +46,7 @@
 <unit id="org.apache.xml.serializer" version="2.7.1.v201005080400"/>
 <unit id="org.easymock" version="2.4.0.v20090202-0900"/>
 <unit id="org.easymock" version="2.4.0.v20090202-0900"/>
-<unit id="org.slf4j.api" version="1.7.2.v20121108-1250"/>
+<unit id="org.slf4j.api" version="1.7.10.v20170224-1220"/>
 <unit id="org.slf4j.apis.jcl" version="1.7.10.v20160208-0839"/>
 <unit id="org.slf4j.apis.log4j" version="1.7.10.v20160208-0839"/>
 <unit id="org.swtchart" version="0.10.0.v201605200358"/>

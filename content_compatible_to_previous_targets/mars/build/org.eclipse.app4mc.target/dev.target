@@ -176,5 +176,12 @@
 <unit id="org.eclipse.sirius.runtime.aql.feature.group" version="3.1.9.201706271256"/>
 <repository location="http://download.eclipse.org/sirius/updates/releases/3.1.9/mars/"/>
 </location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.egit.feature.group" version="4.0.3.201509231615-r"/>
+<unit id="org.eclipse.egit.mylyn.feature.group" version="4.0.3.201509231615-r"/>
+<unit id="org.eclipse.egit.source.feature.group" version="4.0.3.201509231615-r"/>
+<repository location="http://download.eclipse.org/egit/updates-4.0.3"/>
+</location>
+
 </locations>
 </target>
