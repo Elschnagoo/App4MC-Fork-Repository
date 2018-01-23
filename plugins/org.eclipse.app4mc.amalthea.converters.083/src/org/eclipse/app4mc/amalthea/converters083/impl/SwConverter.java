@@ -53,7 +53,32 @@ public class SwConverter extends AbstractConverter {
 
 		migrateModeSwitchElements(rootElement);
 
+		migrateVariableRateActivationElements(rootElement);
+
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
+	}
+
+	/**
+	 * This method is used to migrate the contents of VariableRateActivation based on the changes introduced as per Bug 529831
+	 *
+	 *
+	 * @param rootElement
+	 *            Amalthea root element
+	 */
+	private void migrateVariableRateActivationElements(Element rootElement) {
+
+		final StringBuffer xpathBuffer = new StringBuffer();
+
+		xpathBuffer.append("./swModel/activations[@xsi:type=\"am:VariableRateActivation\"]");
+		
+		final List<Element> variableRateActivationElements = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
+				Element.class, this.helper.getGenericNS("xsi"),this.helper.getNS_083("am") );
+		
+		for (Element element : variableRateActivationElements) {
+			
+			element.removeChildren("activationDeviation");
+		}
+		
 	}
 
 	/**
