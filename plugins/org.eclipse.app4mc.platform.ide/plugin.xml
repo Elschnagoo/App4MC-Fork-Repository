@@ -29,7 +29,7 @@
          </property>
          <property
                name="aboutText"
-               value="APP4MC Tool Platform&#x0A;&#x0A;(c) Copyright Eclipse APP4MC contributors and others. 2017. &#x0A;All rights reserved.&#x0A;&#x0A;Version 0.8.3">
+               value="APP4MC Tool Platform&#x0A;&#x0A;(c) Copyright Eclipse APP4MC contributors and others. 2018. &#x0A;All rights reserved.&#x0A;&#x0A;Version 0.8.3">
          </property>
          <property
                name="windowImages"
