@@ -42,34 +42,14 @@ public enum TimeUnit implements Enumerator {
 	_UNDEFINED_(0, "_undefined_", "_undefined_"),
 
 	/**
-	 * The '<em><b>Ps</b></em>' literal object.
+	 * The '<em><b>S</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PS_VALUE
+	 * @see #S_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PS(0, "ps", "ps"),
-
-	/**
-	 * The '<em><b>Ns</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NS_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	NS(0, "ns", "ns"),
-
-	/**
-	 * The '<em><b>Us</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #US_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	US(0, "us", "us"),
+	S(0, "s", "s"),
 
 	/**
 	 * The '<em><b>Ms</b></em>' literal object.
@@ -82,14 +62,34 @@ public enum TimeUnit implements Enumerator {
 	MS(0, "ms", "ms"),
 
 	/**
-	 * The '<em><b>S</b></em>' literal object.
+	 * The '<em><b>Us</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #S_VALUE
+	 * @see #US_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	S(0, "s", "s");
+	US(0, "us", "us"),
+
+	/**
+	 * The '<em><b>Ns</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NS(0, "ns", "ns"),
+
+	/**
+	 * The '<em><b>Ps</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PS(0, "ps", "ps");
 
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
@@ -107,49 +107,19 @@ public enum TimeUnit implements Enumerator {
 	public static final int _UNDEFINED__VALUE = 0;
 
 	/**
-	 * The '<em><b>Ps</b></em>' literal value.
+	 * The '<em><b>S</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Ps</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>S</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #PS
-	 * @model name="ps"
+	 * @see #S
+	 * @model name="s"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PS_VALUE = 0;
-
-	/**
-	 * The '<em><b>Ns</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Ns</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #NS
-	 * @model name="ns"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int NS_VALUE = 0;
-
-	/**
-	 * The '<em><b>Us</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Us</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #US
-	 * @model name="us"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int US_VALUE = 0;
+	public static final int S_VALUE = 0;
 
 	/**
 	 * The '<em><b>Ms</b></em>' literal value.
@@ -167,19 +137,49 @@ public enum TimeUnit implements Enumerator {
 	public static final int MS_VALUE = 0;
 
 	/**
-	 * The '<em><b>S</b></em>' literal value.
+	 * The '<em><b>Us</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>S</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Us</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #S
-	 * @model name="s"
+	 * @see #US
+	 * @model name="us"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int S_VALUE = 0;
+	public static final int US_VALUE = 0;
+
+	/**
+	 * The '<em><b>Ns</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Ns</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NS
+	 * @model name="ns"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NS_VALUE = 0;
+
+	/**
+	 * The '<em><b>Ps</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Ps</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #PS
+	 * @model name="ps"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PS_VALUE = 0;
 
 	/**
 	 * An array of all the '<em><b>Time Unit</b></em>' enumerators.
@@ -190,11 +190,11 @@ public enum TimeUnit implements Enumerator {
 	private static final TimeUnit[] VALUES_ARRAY =
 		new TimeUnit[] {
 			_UNDEFINED_,
-			PS,
-			NS,
-			US,
-			MS,
 			S,
+			MS,
+			US,
+			NS,
+			PS,
 		};
 
 	/**

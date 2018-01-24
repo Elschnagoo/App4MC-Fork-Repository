@@ -234,11 +234,11 @@ abstract class Quantity {
 enum TimeUnit
 {
 	_undefined_ // Display: "<unit>"
-	ps
-	ns
-	us
-	ms
 	s
+	ms
+	us
+	ns
+	ps
 }
 
 interface TimeComparable wraps java.lang.Comparable<AbstractTime> {}

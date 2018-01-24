@@ -16212,11 +16212,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
 		addEEnumLiteral(timeUnitEEnum, TimeUnit._UNDEFINED_);
-		addEEnumLiteral(timeUnitEEnum, TimeUnit.PS);
-		addEEnumLiteral(timeUnitEEnum, TimeUnit.NS);
-		addEEnumLiteral(timeUnitEEnum, TimeUnit.US);
-		addEEnumLiteral(timeUnitEEnum, TimeUnit.MS);
 		addEEnumLiteral(timeUnitEEnum, TimeUnit.S);
+		addEEnumLiteral(timeUnitEEnum, TimeUnit.MS);
+		addEEnumLiteral(timeUnitEEnum, TimeUnit.US);
+		addEEnumLiteral(timeUnitEEnum, TimeUnit.NS);
+		addEEnumLiteral(timeUnitEEnum, TimeUnit.PS);
 
 		initEEnum(frequencyUnitEEnum, FrequencyUnit.class, "FrequencyUnit");
 		addEEnumLiteral(frequencyUnitEEnum, FrequencyUnit._UNDEFINED_);
@@ -16604,25 +16604,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://www.eclipse.org/emf/2002/Ecore
-		createEcoreAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";	
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-		   });
 	}
 
 	/**
