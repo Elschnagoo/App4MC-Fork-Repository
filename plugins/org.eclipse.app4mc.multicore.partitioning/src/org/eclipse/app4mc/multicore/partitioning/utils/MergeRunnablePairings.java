@@ -22,6 +22,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.Tag;
+import org.eclipse.app4mc.amalthea.model.TagGroup;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.emf.common.util.BasicEList;
@@ -120,6 +121,11 @@ public class MergeRunnablePairings {
 	}
 
 	private void ceckConsistency(final RunnablePairingConstraint rpc) {
+		if (rpc.getTarget() instanceof TagGroup) {
+			PartLog.getInstance().log("Tag Group Pairing Constraints are not yet considered during the partitioning", null);
+			// TODO implement TagGroup consideration
+			return;
+		}
 		final RunnableGroup rg = rpc.getGroup();
 		final RunnableEntityGroup reg = (RunnableEntityGroup) rg;
 
@@ -146,9 +152,8 @@ public class MergeRunnablePairings {
 					: "" + " includes " + as.size() + " different activations", null);
 		}
 		if (ts.size() > 1) {
-			PartLog.getInstance().log(
-					"Inconsistency: RunnablePairingConstraint " + null != rpc.getName() ? rpc.getName() : "" + " includes " + ts.size() + " different tags",
-					null);
+			PartLog.getInstance().log("Inconsistency: RunnablePairingConstraint " + null != rpc.getName() ? rpc.getName()
+					: "" + " includes " + ts.size() + " different tags", null);
 		}
 		if (ass.size() > 1) {
 			PartLog.getInstance().log("Inconsistency: RunnablePairingConstraint " + null != rpc.getName() ? rpc.getName()
