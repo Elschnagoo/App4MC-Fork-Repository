@@ -11,7 +11,7 @@
 		<version>0.8.3-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.eclipse.app4mc.amalthea.workflow.base</artifactId>
+	<artifactId>org.eclipse.app4mc.amalthea.workflow.mwe2</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
 </project>
