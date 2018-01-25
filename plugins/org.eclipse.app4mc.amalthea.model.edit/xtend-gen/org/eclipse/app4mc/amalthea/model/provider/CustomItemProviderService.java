@@ -52,6 +52,8 @@ import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
+import org.eclipse.app4mc.amalthea.model.DataRate;
+import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.DataStability;
@@ -318,6 +320,31 @@ public class CustomItemProviderService {
       _xifexpression_1 = "<unit>";
     } else {
       _xifexpression_1 = size.getUnit().getLiteral();
+    }
+    final String unit = _xifexpression_1;
+    return ((value + " ") + unit);
+  }
+  
+  private static String getDataRateText(final DataRate rate) {
+    if ((rate == null)) {
+      return "<data rate>";
+    }
+    String _xifexpression = null;
+    BigInteger _value = rate.getValue();
+    boolean _tripleEquals = (_value == null);
+    if (_tripleEquals) {
+      _xifexpression = "???";
+    } else {
+      _xifexpression = rate.getValue().toString();
+    }
+    final String value = _xifexpression;
+    String _xifexpression_1 = null;
+    DataRateUnit _unit = rate.getUnit();
+    boolean _equals = Objects.equal(_unit, DataRateUnit._UNDEFINED_);
+    if (_equals) {
+      _xifexpression_1 = "<unit>";
+    } else {
+      _xifexpression_1 = rate.getUnit().getLiteral();
     }
     final String unit = _xifexpression_1;
     return ((value + " ") + unit);
@@ -591,6 +618,19 @@ public class CustomItemProviderService {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
       String _dataSizeText = CustomItemProviderService.getDataSizeText(((DataSize)object));
       return (_containingFeatureName + _dataSizeText);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  /**
+   * DataRateItemProvider
+   */
+  public static String getDataRateItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof DataRate)) {
+      String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
+      String _dataRateText = CustomItemProviderService.getDataRateText(((DataRate)object));
+      return (_containingFeatureName + _dataRateText);
     } else {
       return defaultText;
     }
@@ -3949,7 +3989,7 @@ public class CustomItemProviderService {
       }
       final int offset = _xifexpression_1;
       final String s1 = CustomItemProviderService.ppName(proto, "<process prototype>");
-      return (((((("Chained Prototype " + s1) + "(apply: ") + Integer.valueOf(apply)) + " offset: ") + Integer.valueOf(offset)) + ")");
+      return (((((("Chained Prototype " + s1) + " ( apply: ") + Integer.valueOf(apply)) + " offset: ") + Integer.valueOf(offset)) + " )");
     } else {
       return defaultText;
     }

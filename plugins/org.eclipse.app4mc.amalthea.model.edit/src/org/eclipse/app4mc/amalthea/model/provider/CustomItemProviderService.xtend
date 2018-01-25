@@ -148,6 +148,8 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
 import org.eclipse.app4mc.amalthea.model.ModeValue
+import org.eclipse.app4mc.amalthea.model.DataRate
+import org.eclipse.app4mc.amalthea.model.DataRateUnit
 
 class CustomItemProviderService {
 
@@ -228,6 +230,14 @@ class CustomItemProviderService {
 		
 		val value = if (size.value === null) "???" else size.value.toString
 		val unit = if (size.unit == DataSizeUnit::_UNDEFINED_) "<unit>" else size.unit.literal
+		return value + " " + unit
+	}
+
+	private def static getDataRateText(DataRate rate) {
+		if (rate === null) return "<data rate>"
+		
+		val value = if (rate.value === null) "???" else rate.value.toString
+		val unit = if (rate.unit == DataRateUnit::_UNDEFINED_) "<unit>" else rate.unit.literal
 		return value + " " + unit
 	}
 
@@ -425,6 +435,18 @@ class CustomItemProviderService {
 	def static String getDataSizeItemProviderText(Object object, String defaultText) {
 	if (object instanceof DataSize) {
 			return getContainingFeatureName(object) + getDataSizeText(object)
+		} else {
+			return defaultText
+		}
+	}
+	
+
+	/*****************************************************************************
+	 * 						DataRateItemProvider
+	 *****************************************************************************/
+	def static String getDataRateItemProviderText(Object object, String defaultText) {
+	if (object instanceof DataRate) {
+			return getContainingFeatureName(object) + getDataRateText(object)
 		} else {
 			return defaultText
 		}
@@ -2094,7 +2116,7 @@ class CustomItemProviderService {
 			val apply = if(object === null) 0 else object.apply
 			val offset = if(object === null) 0 else object.offset
 			val s1 = ppName(proto, "<process prototype>")
-			return "Chained Prototype " + s1 + "(apply: " + apply + " offset: " + offset + ")"
+			return "Chained Prototype " + s1 + " ( apply: " + apply + " offset: " + offset + " )"
 		} else {
 			return defaultText
 		}
