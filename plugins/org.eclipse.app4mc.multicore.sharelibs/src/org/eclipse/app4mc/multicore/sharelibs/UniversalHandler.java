@@ -202,9 +202,9 @@ public class UniversalHandler {
 	 */
 	public void writeModel(final URI uri, final EObject model) {
 		// Inspired by
-		// org.eclipse.app4mc.amalthea.workflow.base.AmaltheaWriter#invokeInternal
+		// org.eclipse.app4mc.amalthea.workflow.mwe2.AmaltheaWriter#invokeInternal
 		// and
-		// org.eclipse.app4mc.amalthea.workflow.base.AmaltheaWriter#saveModel
+		// org.eclipse.app4mc.amalthea.workflow.mwe2.AmaltheaWriter#saveModel
 		final ResourceSet resSet = new ResourceSetImpl();
 		resSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("amxmi", new AmaltheaResourceFactory());
 		((ResourceSetImpl) resSet).setURIResourceMap(this.cache2);

@@ -53,9 +53,9 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx.ui</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx.ui.editors</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.validation</module>
-		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.base</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.core</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.ease</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.mwe2</module>
 		<module>../../plugins/org.eclipse.app4mc.atdb.metrics</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.sharelibs</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.examples.installer</module>

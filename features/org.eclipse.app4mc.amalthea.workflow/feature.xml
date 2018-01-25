@@ -32,7 +32,7 @@ All rights reserved.
    </requires>
 
    <plugin
-         id="org.eclipse.app4mc.amalthea.workflow.base"
+         id="org.eclipse.app4mc.amalthea.workflow.mwe2"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -25,7 +25,7 @@ All rights reserved.
          version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.app4mc.amalthea.workflow.base.source"
+         id="org.eclipse.app4mc.amalthea.workflow.mwe2.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
