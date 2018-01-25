@@ -11,7 +11,7 @@
  *
  * *******************************************************************************
  */
-package org.eclipse.app4mc.amalthea.workflow.util;
+package org.eclipse.app4mc.amalthea.workflow.mwe2.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Preemption;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
-import org.eclipse.app4mc.amalthea.workflow.base.AmaltheaWorkflow;
+import org.eclipse.app4mc.amalthea.workflow.mwe2.AmaltheaWorkflow;
 import org.eclipse.emf.mwe.core.WorkflowContext;
 import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;

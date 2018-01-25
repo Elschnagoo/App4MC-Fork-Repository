@@ -21,9 +21,12 @@ import org.eclipse.app4mc.amalthea.workflow.core.exception.WorkflowException;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * Base abstract class to implement a workflow component. In general a workflow consists of several workflow component
- * implementations, which are called one after another. A basic sample workflow with the available components can be
- * like the following: <br>
+ * Base abstract class to implement a workflow component.
+ * In general a workflow consists of several workflow component
+ * implementations, which are called one after another.
+ * <br>
+ * A basic sample workflow with the available components can be like the following:
+ * <br><br>
  * <code>
  * Context ctx = new DefaultContext(); <br>
  * ModelReader reader = new ModelReader(); <br>

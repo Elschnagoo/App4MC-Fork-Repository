@@ -11,7 +11,7 @@
  *
  * *******************************************************************************
  */
-package org.eclipse.app4mc.amalthea.workflow.base;
+package org.eclipse.app4mc.amalthea.workflow.mwe2;
 
 import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.model.Amalthea;

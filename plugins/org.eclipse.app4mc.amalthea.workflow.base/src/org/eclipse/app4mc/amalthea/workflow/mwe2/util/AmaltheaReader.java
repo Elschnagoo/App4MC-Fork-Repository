@@ -11,7 +11,7 @@
  *
  * *******************************************************************************
  */
-package org.eclipse.app4mc.amalthea.workflow.util;
+package org.eclipse.app4mc.amalthea.workflow.mwe2.util;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaResourceFactory;
-import org.eclipse.app4mc.amalthea.workflow.base.AmaltheaWorkflow;
+import org.eclipse.app4mc.amalthea.workflow.mwe2.AmaltheaWorkflow;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
