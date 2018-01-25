@@ -5,8 +5,8 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _Tiz1sFPuEeayW6ylYvxLSQ
 Manually-Ordered: true
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 7/13/17 3:38 PM
+Runtime-Version: 2.2.0.201706152316
+Save-Time: 1/25/18 3:33 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -27,5 +27,7 @@ _NJvwcOefEeaiFOHXKhXAwA	// kind: 'test' name: 'ModelMigration_app4mc-0.7.1_app4m
 _zWhYcCTzEeeH-ILjZpHGGg	// kind: 'test' name: 'ModelMigration_app4mc-0.7.1_app4mc-0.8.0-democar' path: 'modelmigration/0.8.0/ModelMigration_app4mc-0_7_1_app4mc-0_8_0-democar.test'
 _6Uiu8CT9EeeH-ILjZpHGGg	// kind: 'test' name: 'ModelMigration_WATERS_Challenge_Model_0.7.2_0.8.0' path: 'modelmigration/0.8.0/ModelMigration_WATERS_Challenge_Model_0_7_2_0_8_0.test'
 _AgBMIGfNEeeQu-AnfDE_ow	// kind: 'test' name: 'ModelMigration_WATERS_Challenge_Model_0_7_2_0_8_1' path: 'modelmigration/0.8.1/ModelMigration_WATERS_Challenge_Model_0_7_2_0_8_1.test'
+_JBYG8H57Eee54pF-EjLQ8Q	// kind: 'test' name: 'ModelMigration_WATERS_Challenge_Model_0_7_2_0_8_2' path: 'modelmigration/0.8.2/ModelMigration_WATERS_Challenge_Model_0_7_2_0_8_2.test'
+_lbhL0AEeEeipOoT0WTOJUg	// kind: 'test' name: 'ModelMigration_WATERS_Challenge_Model_0_8_2_0_8_3' path: 'modelmigration/0.8.3/ModelMigration_WATERS_Challenge_Model_0_8_2_0_8_3.test'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
