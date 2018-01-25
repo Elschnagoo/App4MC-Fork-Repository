@@ -334,6 +334,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SamplingType;
+import org.eclipse.app4mc.amalthea.model.Scenario;
 import org.eclipse.app4mc.amalthea.model.SchedType;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
@@ -2172,6 +2173,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass variableRateStimulusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass scenarioEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -9604,7 +9612,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVariableRateStimulus_OccurrencesPerStep() {
+	public EReference getVariableRateStimulus_Step() {
 		return (EReference)variableRateStimulusEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -9613,7 +9621,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVariableRateStimulus_Step() {
+	public EReference getVariableRateStimulus_OccurrencesPerStep() {
 		return (EReference)variableRateStimulusEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -9640,8 +9648,35 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVariableRateStimulus_Clock() {
+	public EReference getVariableRateStimulus_Scenario() {
 		return (EReference)variableRateStimulusEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getScenario() {
+		return scenarioEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getScenario_Recurrence() {
+		return (EReference)scenarioEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getScenario_Clock() {
+		return (EReference)scenarioEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -13849,11 +13884,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(relativePeriodicStimulusEClass, RELATIVE_PERIODIC_STIMULUS__NEXT_OCCURRENCE);
 
 		variableRateStimulusEClass = createEClass(VARIABLE_RATE_STIMULUS);
-		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP);
 		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__STEP);
+		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP);
 		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP);
 		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP);
-		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__CLOCK);
+		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__SCENARIO);
+
+		scenarioEClass = createEClass(SCENARIO);
+		createEReference(scenarioEClass, SCENARIO__RECURRENCE);
+		createEReference(scenarioEClass, SCENARIO__CLOCK);
 
 		periodicSyntheticStimulusEClass = createEClass(PERIODIC_SYNTHETIC_STIMULUS);
 		createEReference(periodicSyntheticStimulusEClass, PERIODIC_SYNTHETIC_STIMULUS__OCCURRENCE_TIMES);
@@ -15761,14 +15800,18 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getRelativePeriodicStimulus_NextOccurrence(), g1, null, "nextOccurrence", null, 0, 1, RelativePeriodicStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(variableRateStimulusEClass, VariableRateStimulus.class, "VariableRateStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getVariableRateStimulus_Step(), this.getTime(), null, "step", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(this.getDeviation());
 		g2 = createEGenericType(this.getDoubleObject());
 		g1.getETypeArguments().add(g2);
 		initEReference(getVariableRateStimulus_OccurrencesPerStep(), g1, null, "occurrencesPerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariableRateStimulus_Step(), this.getTime(), null, "step", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariableRateStimulus_MaxIncreasePerStep(), this.getDoubleObject(), null, "maxIncreasePerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariableRateStimulus_MaxDecreasePerStep(), this.getDoubleObject(), null, "maxDecreasePerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariableRateStimulus_Clock(), this.getClock(), null, "clock", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariableRateStimulus_Scenario(), this.getScenario(), null, "scenario", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getScenario_Recurrence(), this.getTime(), null, "recurrence", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScenario_Clock(), this.getClock(), null, "clock", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(periodicSyntheticStimulusEClass, PeriodicSyntheticStimulus.class, "PeriodicSyntheticStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPeriodicSyntheticStimulus_OccurrenceTimes(), this.getTime(), null, "occurrenceTimes", null, 0, -1, PeriodicSyntheticStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

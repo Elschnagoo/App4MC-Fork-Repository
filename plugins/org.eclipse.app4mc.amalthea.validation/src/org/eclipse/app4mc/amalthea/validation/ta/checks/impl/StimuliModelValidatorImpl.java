@@ -28,6 +28,7 @@ import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.SWModel;
+import org.eclipse.app4mc.amalthea.model.Scenario;
 import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Time;
@@ -72,15 +73,58 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 	}
 
 	/*
-	 * Checks the parameter recurrence of {@link Periodic}. The parameter must not be set to zero or lower.
-	 * If this is the case, it will be handled as an error.
+	 * Checks {@link VariableRateStimulus}.
+	 *  - The scenario must be set.
 	 */
-	public void checkClockReferenceOfVariableRate(final Amalthea amalthea) {
+	public void checkVariableRateScenario(final Amalthea amalthea) {
 
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof VariableRateStimulus) {
+				final VariableRateStimulus vr = (VariableRateStimulus) elem;
+				final Scenario sc = vr.getScenario();
+				if (sc == null) {
+					// Scenario is undefined
+					this.issueCreator.issue(vr, AmaltheaPackage.eINSTANCE.getVariableRateStimulus_Scenario());
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks {@link Scenario}.
+	 *  - The parameter recurrence must be greater than zero.
+	 */
+	public void checkScenarioRecurrence(final Amalthea amalthea) {
+		
+		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+		while (amaIter.hasNext()) {
+			final EObject elem = amaIter.next();
+			if (elem instanceof Scenario) {
+				final Scenario sc = (Scenario) elem;
+				final Time recurrence = sc.getRecurrence();
+				if (null != recurrence) {
+					final BigInteger value = recurrence.getValue();
+					final TimeUnit unit = recurrence.getUnit();
+					if ((0 >= value.signum()) || (TimeUnit._UNDEFINED_ == unit)) {
+						this.issueCreator.issue(sc, AmaltheaPackage.eINSTANCE.getScenario_Recurrence(), value, unit);
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Checks {@link Scenario}.
+	 *  - The clock reference must be valid.
+	 */
+	public void checkScenarioClock(final Amalthea amalthea) {
+		
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
 		final Set<VariableRateStimulus> stimuliSet = new HashSet<>();
 		final Set<Clock> clockSet = new HashSet<>();
-
+		
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
 			if (elem instanceof VariableRateStimulus) {
@@ -96,12 +140,16 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 				}
 			}
 		}
-
+		
 		for (final VariableRateStimulus vr : stimuliSet) {
-			if (null != vr) {
-				final Clock clock = vr.getClock();
-				if ((null == clock) || (false == clockSet.contains(clock))) {
-					this.issueCreator.issue(vr, AmaltheaPackage.eINSTANCE.getVariableRateStimulus_Clock());
+			if (vr != null) {
+				final Scenario sc = vr.getScenario();
+				if (sc != null) {					
+					// Check clock reference
+					final Clock clock = sc.getClock();
+					if ((null == clock) || (false == clockSet.contains(clock))) {
+						this.issueCreator.issue(sc, AmaltheaPackage.eINSTANCE.getScenario_Clock());
+					}
 				}
 			}
 		}

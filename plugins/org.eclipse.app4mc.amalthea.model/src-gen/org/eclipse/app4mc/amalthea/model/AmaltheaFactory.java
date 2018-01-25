@@ -1679,6 +1679,15 @@ public interface AmaltheaFactory extends EFactory {
 	VariableRateStimulus createVariableRateStimulus();
 
 	/**
+	 * Returns a new object of class '<em>Scenario</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Scenario</em>'.
+	 * @generated
+	 */
+	Scenario createScenario();
+
+	/**
 	 * Returns a new object of class '<em>Periodic Synthetic Stimulus</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

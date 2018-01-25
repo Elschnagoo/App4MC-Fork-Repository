@@ -27,11 +27,11 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getOccurrencesPerStep <em>Occurrences Per Step</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getStep <em>Step</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getOccurrencesPerStep <em>Occurrences Per Step</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getMaxIncreasePerStep <em>Max Increase Per Step</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getMaxDecreasePerStep <em>Max Decrease Per Step</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getClock <em>Clock</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getScenario <em>Scenario</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateStimulus()
@@ -39,32 +39,6 @@ package org.eclipse.app4mc.amalthea.model;
  * @generated
  */
 public interface VariableRateStimulus extends Stimulus {
-	/**
-	 * Returns the value of the '<em><b>Occurrences Per Step</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Occurrences Per Step</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Occurrences Per Step</em>' containment reference.
-	 * @see #setOccurrencesPerStep(Deviation)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateStimulus_OccurrencesPerStep()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Deviation<DoubleObject> getOccurrencesPerStep();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getOccurrencesPerStep <em>Occurrences Per Step</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Occurrences Per Step</em>' containment reference.
-	 * @see #getOccurrencesPerStep()
-	 * @generated
-	 */
-	void setOccurrencesPerStep(Deviation<DoubleObject> value);
-
 	/**
 	 * Returns the value of the '<em><b>Step</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -90,6 +64,32 @@ public interface VariableRateStimulus extends Stimulus {
 	 * @generated
 	 */
 	void setStep(Time value);
+
+	/**
+	 * Returns the value of the '<em><b>Occurrences Per Step</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Occurrences Per Step</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Occurrences Per Step</em>' containment reference.
+	 * @see #setOccurrencesPerStep(Deviation)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateStimulus_OccurrencesPerStep()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Deviation<DoubleObject> getOccurrencesPerStep();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getOccurrencesPerStep <em>Occurrences Per Step</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Occurrences Per Step</em>' containment reference.
+	 * @see #getOccurrencesPerStep()
+	 * @generated
+	 */
+	void setOccurrencesPerStep(Deviation<DoubleObject> value);
 
 	/**
 	 * Returns the value of the '<em><b>Max Increase Per Step</b></em>' containment reference.
@@ -144,29 +144,29 @@ public interface VariableRateStimulus extends Stimulus {
 	void setMaxDecreasePerStep(DoubleObject value);
 
 	/**
-	 * Returns the value of the '<em><b>Clock</b></em>' reference.
+	 * Returns the value of the '<em><b>Scenario</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Clock</em>' reference isn't clear,
+	 * If the meaning of the '<em>Scenario</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Clock</em>' reference.
-	 * @see #setClock(Clock)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateStimulus_Clock()
-	 * @model
+	 * @return the value of the '<em>Scenario</em>' containment reference.
+	 * @see #setScenario(Scenario)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateStimulus_Scenario()
+	 * @model containment="true"
 	 * @generated
 	 */
-	Clock getClock();
+	Scenario getScenario();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getClock <em>Clock</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getScenario <em>Scenario</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Clock</em>' reference.
-	 * @see #getClock()
+	 * @param value the new value of the '<em>Scenario</em>' containment reference.
+	 * @see #getScenario()
 	 * @generated
 	 */
-	void setClock(Clock value);
+	void setScenario(Scenario value);
 
 } // VariableRateStimulus

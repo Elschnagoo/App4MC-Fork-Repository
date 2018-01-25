@@ -219,11 +219,25 @@
     message="The recurrence parameter of Periodic contains an invalid value: {0} {1}!"
     categories="TAConstraint"/>
 <constraints
-    id="ClockReferenceOfPeriodicConstraint"
-    label="Periodic Clock"
+    id="VariableRateScenarioConstraint"
+    label="VariableRate Scenario"
+    description="Checks if reference to Scenario is valid"
+    severity="Error"
+    message="The Scenario is missing!"
+    categories="TAConstraint"/>
+<constraints
+    id="ScenarioRecurrenceConstraint"
+    label="Scenario Recurrence"
+    description="Checks if recurrence parameter of Scenario is greater than zero"
+    severity="Error"
+    message="The recurrence parameter of Scenario contains an invalid value: {0} {1}!"
+    categories="TAConstraint"/>
+<constraints
+    id="ScenarioClockReferenceConstraint"
+    label="Scenario Clock"
     description="Checks if reference to Clock is valid"
     severity="Error"
-    message="The Clock reference of Periodic is invalid!"
+    message="The Clock is missing!"
     categories="TAConstraint"/>
 <constraints
     id="ClockTriangleFunctionConstraint"

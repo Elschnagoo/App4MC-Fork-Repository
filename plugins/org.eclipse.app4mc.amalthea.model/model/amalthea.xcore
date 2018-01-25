@@ -2667,11 +2667,16 @@ class RelativePeriodicStimulus extends Stimulus
  */
 class VariableRateStimulus extends Stimulus
 {
-	contains Deviation<DoubleObject> occurrencesPerStep
 	contains Time step
+	contains Deviation<DoubleObject> occurrencesPerStep
 	contains DoubleObject maxIncreasePerStep
 	contains DoubleObject maxDecreasePerStep
 	
+	contains Scenario scenario
+}
+
+class Scenario {
+	contains Time recurrence
 	refers Clock clock
 }
 
@@ -2683,7 +2688,6 @@ class PeriodicSyntheticStimulus extends Stimulus, FixedPeriodic
 {
 	contains Time[] occurrenceTimes
 }
-
 
 /*
  * Stimulus to describe own custom types, including properties.

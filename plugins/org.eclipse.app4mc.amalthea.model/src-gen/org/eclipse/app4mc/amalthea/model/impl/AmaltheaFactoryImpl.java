@@ -272,6 +272,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SamplingType;
+import org.eclipse.app4mc.amalthea.model.Scenario;
 import org.eclipse.app4mc.amalthea.model.SchedType;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
@@ -573,6 +574,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.PERIODIC_STIMULUS: return createPeriodicStimulus();
 			case AmaltheaPackage.RELATIVE_PERIODIC_STIMULUS: return createRelativePeriodicStimulus();
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS: return createVariableRateStimulus();
+			case AmaltheaPackage.SCENARIO: return createScenario();
 			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS: return createPeriodicSyntheticStimulus();
 			case AmaltheaPackage.CUSTOM_STIMULUS: return createCustomStimulus();
 			case AmaltheaPackage.SINGLE_STIMULUS: return createSingleStimulus();
@@ -2760,6 +2762,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public VariableRateStimulus createVariableRateStimulus() {
 		VariableRateStimulusImpl variableRateStimulus = new VariableRateStimulusImpl();
 		return variableRateStimulus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Scenario createScenario() {
+		ScenarioImpl scenario = new ScenarioImpl();
+		return scenario;
 	}
 
 	/**

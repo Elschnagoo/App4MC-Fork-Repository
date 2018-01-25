@@ -294,6 +294,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
+import org.eclipse.app4mc.amalthea.model.Scenario;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
@@ -2703,6 +2704,12 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseIAnnotatable(variableRateStimulus);
 				if (result == null) result = caseIReferable(variableRateStimulus);
 				if (result == null) result = caseINamed(variableRateStimulus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.SCENARIO: {
+				Scenario scenario = (Scenario)theEObject;
+				T1 result = caseScenario(scenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -7417,6 +7424,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseVariableRateStimulus(VariableRateStimulus object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Scenario</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Scenario</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseScenario(Scenario object) {
 		return null;
 	}
 

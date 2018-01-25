@@ -40,9 +40,19 @@ public class StimuliModelValidator extends AbstractCheckValidator implements Iss
 		this.stimuliModelValidator.checkPeriodicRecurrence(amalthea);
 	}
 
-	@Check(constraint = "ClockReferenceOfPeriodicConstraint", categories = { "TAConstraint" })
-	public void checkClockReferenceOfPeriodic(final Amalthea amalthea) {
-		this.stimuliModelValidator.checkClockReferenceOfVariableRate(amalthea);
+	@Check(constraint = "VariableRateScenarioConstraint", categories = { "TAConstraint" })
+	public void checkVariableRateScenario(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkVariableRateScenario(amalthea);
+	}
+
+	@Check(constraint = "ScenarioRecurrenceConstraint", categories = { "TAConstraint" })
+	public void checkScenarioRecurrence(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkScenarioRecurrence(amalthea);
+	}
+
+	@Check(constraint = "ScenarioClockReferenceConstraint", categories = { "TAConstraint" })
+	public void checkScenarioClock(final Amalthea amalthea) {
+		this.stimuliModelValidator.checkScenarioClock(amalthea);
 	}
 
 	@Check(constraint = "ClockTriangleFunctionConstraint", categories = { "TAConstraint" })

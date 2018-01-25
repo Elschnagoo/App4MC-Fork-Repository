@@ -4314,6 +4314,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Scenario} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ScenarioItemProvider scenarioItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Scenario}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createScenarioAdapter() {
+		if (scenarioItemProvider == null) {
+			scenarioItemProvider = new ScenarioItemProvider(this);
+		}
+
+		return scenarioItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6530,6 +6553,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (periodicStimulusItemProvider != null) periodicStimulusItemProvider.dispose();
 		if (relativePeriodicStimulusItemProvider != null) relativePeriodicStimulusItemProvider.dispose();
 		if (variableRateStimulusItemProvider != null) variableRateStimulusItemProvider.dispose();
+		if (scenarioItemProvider != null) scenarioItemProvider.dispose();
 		if (periodicSyntheticStimulusItemProvider != null) periodicSyntheticStimulusItemProvider.dispose();
 		if (customStimulusItemProvider != null) customStimulusItemProvider.dispose();
 		if (singleStimulusItemProvider != null) singleStimulusItemProvider.dispose();

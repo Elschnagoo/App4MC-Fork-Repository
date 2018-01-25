@@ -13,9 +13,9 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Clock;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
+import org.eclipse.app4mc.amalthea.model.Scenario;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 
@@ -35,26 +35,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.VariableRateStimulusImpl#getOccurrencesPerStep <em>Occurrences Per Step</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.VariableRateStimulusImpl#getStep <em>Step</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.VariableRateStimulusImpl#getOccurrencesPerStep <em>Occurrences Per Step</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.VariableRateStimulusImpl#getMaxIncreasePerStep <em>Max Increase Per Step</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.VariableRateStimulusImpl#getMaxDecreasePerStep <em>Max Decrease Per Step</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.VariableRateStimulusImpl#getClock <em>Clock</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.VariableRateStimulusImpl#getScenario <em>Scenario</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class VariableRateStimulusImpl extends StimulusImpl implements VariableRateStimulus {
-	/**
-	 * The cached value of the '{@link #getOccurrencesPerStep() <em>Occurrences Per Step</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOccurrencesPerStep()
-	 * @generated
-	 * @ordered
-	 */
-	protected Deviation<DoubleObject> occurrencesPerStep;
-
 	/**
 	 * The cached value of the '{@link #getStep() <em>Step</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -64,6 +54,16 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * @ordered
 	 */
 	protected Time step;
+
+	/**
+	 * The cached value of the '{@link #getOccurrencesPerStep() <em>Occurrences Per Step</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOccurrencesPerStep()
+	 * @generated
+	 * @ordered
+	 */
+	protected Deviation<DoubleObject> occurrencesPerStep;
 
 	/**
 	 * The cached value of the '{@link #getMaxIncreasePerStep() <em>Max Increase Per Step</em>}' containment reference.
@@ -86,14 +86,14 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	protected DoubleObject maxDecreasePerStep;
 
 	/**
-	 * The cached value of the '{@link #getClock() <em>Clock</em>}' reference.
+	 * The cached value of the '{@link #getScenario() <em>Scenario</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getClock()
+	 * @see #getScenario()
 	 * @generated
 	 * @ordered
 	 */
-	protected Clock clock;
+	protected Scenario scenario;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,49 +112,6 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getVariableRateStimulus();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Deviation<DoubleObject> getOccurrencesPerStep() {
-		return occurrencesPerStep;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOccurrencesPerStep(Deviation<DoubleObject> newOccurrencesPerStep, NotificationChain msgs) {
-		Deviation<DoubleObject> oldOccurrencesPerStep = occurrencesPerStep;
-		occurrencesPerStep = newOccurrencesPerStep;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP, oldOccurrencesPerStep, newOccurrencesPerStep);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOccurrencesPerStep(Deviation<DoubleObject> newOccurrencesPerStep) {
-		if (newOccurrencesPerStep != occurrencesPerStep) {
-			NotificationChain msgs = null;
-			if (occurrencesPerStep != null)
-				msgs = ((InternalEObject)occurrencesPerStep).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP, null, msgs);
-			if (newOccurrencesPerStep != null)
-				msgs = ((InternalEObject)newOccurrencesPerStep).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP, null, msgs);
-			msgs = basicSetOccurrencesPerStep(newOccurrencesPerStep, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP, newOccurrencesPerStep, newOccurrencesPerStep));
 	}
 
 	/**
@@ -198,6 +155,49 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__STEP, newStep, newStep));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Deviation<DoubleObject> getOccurrencesPerStep() {
+		return occurrencesPerStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOccurrencesPerStep(Deviation<DoubleObject> newOccurrencesPerStep, NotificationChain msgs) {
+		Deviation<DoubleObject> oldOccurrencesPerStep = occurrencesPerStep;
+		occurrencesPerStep = newOccurrencesPerStep;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP, oldOccurrencesPerStep, newOccurrencesPerStep);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOccurrencesPerStep(Deviation<DoubleObject> newOccurrencesPerStep) {
+		if (newOccurrencesPerStep != occurrencesPerStep) {
+			NotificationChain msgs = null;
+			if (occurrencesPerStep != null)
+				msgs = ((InternalEObject)occurrencesPerStep).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP, null, msgs);
+			if (newOccurrencesPerStep != null)
+				msgs = ((InternalEObject)newOccurrencesPerStep).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP, null, msgs);
+			msgs = basicSetOccurrencesPerStep(newOccurrencesPerStep, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP, newOccurrencesPerStep, newOccurrencesPerStep));
 	}
 
 	/**
@@ -291,16 +291,23 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Clock getClock() {
-		if (clock != null && clock.eIsProxy()) {
-			InternalEObject oldClock = (InternalEObject)clock;
-			clock = (Clock)eResolveProxy(oldClock);
-			if (clock != oldClock) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.VARIABLE_RATE_STIMULUS__CLOCK, oldClock, clock));
-			}
+	public Scenario getScenario() {
+		return scenario;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetScenario(Scenario newScenario, NotificationChain msgs) {
+		Scenario oldScenario = scenario;
+		scenario = newScenario;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__SCENARIO, oldScenario, newScenario);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return clock;
+		return msgs;
 	}
 
 	/**
@@ -308,20 +315,18 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Clock basicGetClock() {
-		return clock;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setClock(Clock newClock) {
-		Clock oldClock = clock;
-		clock = newClock;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__CLOCK, oldClock, clock));
+	public void setScenario(Scenario newScenario) {
+		if (newScenario != scenario) {
+			NotificationChain msgs = null;
+			if (scenario != null)
+				msgs = ((InternalEObject)scenario).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_STIMULUS__SCENARIO, null, msgs);
+			if (newScenario != null)
+				msgs = ((InternalEObject)newScenario).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_STIMULUS__SCENARIO, null, msgs);
+			msgs = basicSetScenario(newScenario, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__SCENARIO, newScenario, newScenario));
 	}
 
 	/**
@@ -332,14 +337,16 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
-				return basicSetOccurrencesPerStep(null, msgs);
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__STEP:
 				return basicSetStep(null, msgs);
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
+				return basicSetOccurrencesPerStep(null, msgs);
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP:
 				return basicSetMaxIncreasePerStep(null, msgs);
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP:
 				return basicSetMaxDecreasePerStep(null, msgs);
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__SCENARIO:
+				return basicSetScenario(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -352,17 +359,16 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
-				return getOccurrencesPerStep();
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__STEP:
 				return getStep();
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
+				return getOccurrencesPerStep();
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP:
 				return getMaxIncreasePerStep();
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP:
 				return getMaxDecreasePerStep();
-			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__CLOCK:
-				if (resolve) return getClock();
-				return basicGetClock();
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__SCENARIO:
+				return getScenario();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -376,11 +382,11 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
-				setOccurrencesPerStep((Deviation<DoubleObject>)newValue);
-				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__STEP:
 				setStep((Time)newValue);
+				return;
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
+				setOccurrencesPerStep((Deviation<DoubleObject>)newValue);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP:
 				setMaxIncreasePerStep((DoubleObject)newValue);
@@ -388,8 +394,8 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP:
 				setMaxDecreasePerStep((DoubleObject)newValue);
 				return;
-			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__CLOCK:
-				setClock((Clock)newValue);
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__SCENARIO:
+				setScenario((Scenario)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -403,11 +409,11 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
-				setOccurrencesPerStep((Deviation<DoubleObject>)null);
-				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__STEP:
 				setStep((Time)null);
+				return;
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
+				setOccurrencesPerStep((Deviation<DoubleObject>)null);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP:
 				setMaxIncreasePerStep((DoubleObject)null);
@@ -415,8 +421,8 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP:
 				setMaxDecreasePerStep((DoubleObject)null);
 				return;
-			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__CLOCK:
-				setClock((Clock)null);
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__SCENARIO:
+				setScenario((Scenario)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -430,16 +436,16 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
-				return occurrencesPerStep != null;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__STEP:
 				return step != null;
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
+				return occurrencesPerStep != null;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP:
 				return maxIncreasePerStep != null;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP:
 				return maxDecreasePerStep != null;
-			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__CLOCK:
-				return clock != null;
+			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__SCENARIO:
+				return scenario != null;
 		}
 		return super.eIsSet(featureID);
 	}

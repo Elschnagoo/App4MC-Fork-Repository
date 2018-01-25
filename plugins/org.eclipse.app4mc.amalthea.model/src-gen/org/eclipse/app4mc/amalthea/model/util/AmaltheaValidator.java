@@ -336,6 +336,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SamplingType;
+import org.eclipse.app4mc.amalthea.model.Scenario;
 import org.eclipse.app4mc.amalthea.model.SchedType;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
@@ -988,6 +989,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateRelativePeriodicStimulus((RelativePeriodicStimulus)value, diagnostics, context);
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS:
 				return validateVariableRateStimulus((VariableRateStimulus)value, diagnostics, context);
+			case AmaltheaPackage.SCENARIO:
+				return validateScenario((Scenario)value, diagnostics, context);
 			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS:
 				return validatePeriodicSyntheticStimulus((PeriodicSyntheticStimulus)value, diagnostics, context);
 			case AmaltheaPackage.CUSTOM_STIMULUS:
@@ -3538,6 +3541,15 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateVariableRateStimulus(VariableRateStimulus variableRateStimulus, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(variableRateStimulus, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateScenario(Scenario scenario, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(scenario, diagnostics, context);
 	}
 
 	/**
