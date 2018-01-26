@@ -140,7 +140,11 @@ public class StimuliConverter extends AbstractConverter {
 		
 		for (Element stimulusElement : stimulusElements) {
 
-			if((stimulusElement.getChild("clock")==null) && (stimulusElement.getAttribute("clock")==null)) {
+			Element clockElement = stimulusElement.getChild("clock");
+			
+			Attribute clockAttribute = stimulusElement.getAttribute("clock");
+			
+			if((clockElement==null) && (clockAttribute==null)) {
 				//renaming stimulusDeviation to jitter  
 				Element stimulusDeviationElement = stimulusElement.getChild("stimulusDeviation");
 				if(stimulusDeviationElement !=null) {
@@ -156,11 +160,53 @@ public class StimuliConverter extends AbstractConverter {
 				
 				//renaming recurrence to step  
 				Element recurrenceElement = stimulusElement.getChild("recurrence");
+				 
+				Element offsetElement = stimulusElement.getChild("offset");
+				
+				/* ================Scenario Eleemnt======================*/
+				Element scenarioElement=new Element("scenario");
+				
 				if(recurrenceElement !=null) {
-					recurrenceElement.setName("step");
+					recurrenceElement.detach();
+					//Adding recurrance as a part of scenario
+					scenarioElement.addContent(recurrenceElement);
+				}
+
+				if(clockElement!=null) {
+					clockElement.detach();
+					//Adding clock as a part of Clock
+					scenarioElement.addContent(clockElement);
+				}else if(clockAttribute!=null) {
+					clockAttribute.detach();
+					scenarioElement.setAttribute(clockAttribute);
 				}
 				
+				//Adding Scenario as a part of stimulus element
+				stimulusElement.addContent(scenarioElement);
+
+				if(offsetElement !=null) {
+					
+					Element customPropertiesElement=new Element("customProperties");
+					
+					customPropertiesElement.setAttribute("key", "offset");
+					
+					offsetElement.detach();
+					
+					offsetElement.setName("value");
+					
+					offsetElement.setAttribute("type", "am:TimeObject", this.helper.getGenericNS("xsi"));
+					
+					customPropertiesElement.addContent(offsetElement);
+					
+					scenarioElement.addContent(customPropertiesElement);
+					
+				}
+				
+				/* ================Scenario Eleemnt======================*/
+				
+				
 				stimulusElement.removeChild("offset");
+				
 				stimulusElement.removeChild("stimulusDeviation");
 				
 			}
