@@ -34,7 +34,7 @@ All rights reserved.
       <import plugin="org.eclipse.emf.mwe2.lib"/>
       <import plugin="org.eclipse.emf.mwe2.launch"/>
       <import plugin="org.eclipse.app4mc.amalthea.model"/>
-      <import plugin="org.eclipse.app4mc.amalthea.workflow.base"/>
+      <import plugin="org.eclipse.app4mc.amalthea.workflow.mwe2"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.sphinx.emf"/>
