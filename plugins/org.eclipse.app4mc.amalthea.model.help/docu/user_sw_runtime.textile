@@ -47,7 +47,6 @@ h4. Stimulation
 
 Before, we described the dynamic behavior of a specific process instance. In general however, a process is not only activated once but many times. The action of activating a process is called stimulation. The following stimulation patterns are typically used for specification:
 * Single: single activation of a process
-* Sporadic: recurring activation of a process without following a specific pattern  
 * Periodic: periodic activation of a process with a specific frequency
 * VariableRate: periodic activations based on other events, like rotation speed
 * Event: activation triggered by a __TriggerEvent__
