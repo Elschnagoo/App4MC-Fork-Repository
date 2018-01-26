@@ -15,22 +15,28 @@ A stimulus is responsible to activate processes. The following different types a
 * *CustomStimulus*: To describe own custom types of activations, including properties
 * *EventStimulus*: Activation triggered by an event, defined in the event model.<br/>Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
 * *InterProcessStimulus*: Activations based on an explicit inter-process activation.<br/>Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
-* *PeriodicStimulus*: Periodic activations based on an offset and a recurrence.
 * *VariableRateStimulus*: Periodic activations based on other events, like rotation speed
 * *SingleStimulus*: Activates the process only once
-* *SporadicStimulus*: Sporadic activations of processes
-* *SyntheticStimulus*:  Activations periodically triggered depending on a defined list of trigger times.
+* *PeriodicStimulus*: Periodic activations based on an offset and a recurrence.
+* *PeriodicBurstStimulus*: Defines a periodic burst pattern of the process.
+* *RelativePeriodicStimulus*: Periodic activation based on offset and a recurrence. In contrast to *PeriodicStimulus* the recurrence is relative to the last occurrence and a deviation is mandatory. 
+* *PeriodicSyntheticStimulus*: Defines a periodically triggered stimuli depending on a defined list of trigger times.
 
 *(validation-rule) _PeriodicStimulus_: The _Time_ object in the role of _offset_ must not contain a negative value!
 *(validation-rule) _PeriodicStimulus_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
-*(validation-rule) _SyntheticStimulus_: The _Time_ object in the role of _offset_ must not contain a negative value!
-*(validation-rule) _SyntheticStimulus_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
+*(validation-rule) _PeriodicBurstStimulus_: The _Time_ object in the role of _offset_ must not contain a negative value!
+*(validation-rule) _PeriodicBurstStimulus_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
+*(validation-rule) _PeriodicBurstStimulus_:  if _occurrenceCount_ * _occurrenceMinDinstance_ > _burstLength_ only the number of activation that fit into the burstLength are executed!
+*(validation-rule) _PeriodicSyntheticStimulus_: The _Time_ object in the role of _offset_ must not contain a negative value!
+*(validation-rule) _PeriodicSyntheticStimulus_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
 *(validation-rule) _TimestampList_: The _Time_ objects in the role of _timestamps_ must not contain a negative value!
-*(validation-rule) _SingleStimulus_: The _Time_ object in the role of _activation_ must not contain a negative value!
+*(validation-rule) _SingleStimulus_: The _Time_ object in the role of _occurrence_ must not contain a negative value!
 *(validation-rule) _ArrivalCurveEntry_: The _Time_ object in the role of _lowerTimeBorder_ must not contain a negative value!
 *(validation-rule) _ArrivalCurveEntry_: The _Time_ object in the role of _upperTimeBorder_ must not contain a negative value!
+        
 
-It is possible to define a deviation of time for every type of stimulus. For this, a stimulus can have an object of type Deviation, which refers to the deviation in the common model. This reference uses the class Time as parameter for the generic values of the deviation. So the deviation is about time. The values (negative or positive) represents a shift of the activation to left or right on the time line. In this way it is possible to increase or decrease the activation time.
+
+###.. It is possible to define a deviation of time for every type of stimulus. For this, a stimulus can have an object of type Deviation, which refers to the deviation in the common model. This reference uses the class Time as parameter for the generic values of the deviation. So the deviation is about time. The values (negative or positive) represents a shift of the occurrence to left or right on the time line. In this way it is possible to increase or decrease the trigger point.
 
 *Mode label lists*
 
@@ -60,62 +66,88 @@ table(classic){text-align:center;margin-left:50px}.
 
 h4. Single
 
-_Single_ allows to specify an activation at a single relative point in time. The first activation occurs after the time units specified by _activation_.
+_Single_ allows to specify an activation at a single relative point in time. The single activation occurs after the time units specified by _occurrence_.
 
-!../pictures/model_stimuli_single.png!
-
-
-h4. Periodic
-
-_Periodic_ allows to specify periodic activations based on an offset and a recurrence. The first activation occurs after the time units specified by _offset_, and then every following activation occurs after the time units specified by _recurrence_. This means, in general, an activation of instance i is triggered at time t = _offset_ + i * _recurrence_.
-
-The following figure shows a _Periodic_ stimulus example with a fix offset and recurrence time. 
-
-!../pictures/model_stimuli_periodic.png!
-
-In addition, the same _Periodic_ stimulus can be extended by a Gaussian deviation. The activation time varies then according the values of the distribution, as depicted in the following figure.
-
-!../pictures/model_stimuli_periodic_deviation.png!
-
-Besides the deviation, a _Periodic_ stimulus can also have a clock.
+!{width:650}../pictures/model_stimuli_single.png!
 
 
-h4. Synthetic
+h4. _FixedPeriodic_
 
-_Synthetic_ allows to specify a periodic activation of trigger times. It is defined by a list of timestamps _triggerTimes_ of size m, a period _recurrence_, and an offset _offset_. Each timestamp in _triggerTimes_ specifies a single activation at a relative point in time. The moment in time these timestamps are relative to is defined the following way: an activation of instance i is triggered at time t = _offset_ + floor(i / m) * _recurrence_ + _triggerTimes_[i modulo m].
+In general all period based Stimuli specify periodic activations based on an offset and a recurrence. The first activation occurs after the time units specified by _offset_, and then every following activation occurs after the time units specified by _recurrence_. This means, in general, an activation of instance i is triggered at time t = _offset_ + i * _recurrence_.
 
-The following figure shows a _Synthetic_ stimulus example with two periodic activations after the time units T1 and T2.
+The following figure shows a _Periodic_ Stimulus example with only a fix offset and recurrence time. 
+
+!{width:650px}../pictures/model_stimuli_periodic.png!
+
+h4. Periodic 
+
+In addition to the standard periodic behavior the _Periodic_ Stimulus can be extended by a _Jitter_ e.g. an Gaussian deviation. The activation time of each occurrence jitters according to the values of the distribution as depicted in the following figure. Depending on the _Jitter_ distribution the upper bound of the current and the lower bound of the next activation can be close to each other or even overlap. The _minDistance_ value allows the user to define the minimum distance between the current and the next activation.
+
+!{width:650px}../pictures/model_stimuli_periodic_jitter.png!
+
+The recurrence of a _Periodic_ Stimulus is absolute. This means that a recurrence of 10ms points exactly to the next activation every 10ms. The _Jitter_ describes the deviation of the occurrence around this absolute value.     
+
+h4. RelativePeriodic 
+
+In contrast to the _Periodic_ Stimulus the _RelativePeriodic_ Stimulus allows to specify relative recurrences. The next activation depends on the current activation time and the added deviation for the next step. The _lower_ and _upperBound_ are specified in the _nextOccurrence_ deviation similar to the _Jitter_ specification in the _Periodic_ Stimulus.       
+ 
+!{width:650px}../pictures/model_stimuli_periodic_relative.png!
+
+h4. PeriodicBurst
+
+The _PeriodicBurst_ Stimulus specifies a set of burst activations that are periodically repeated. This means that multiple activations occur very close to each other and this recurs in a periodic matter. The burst pattern has a fixed recurrence period and every burst results in multiple activations. 
+
+!{width:600px}../pictures/model_stimuli_periodic_burst.png!
+
+The number of occurrences per burst are specified via _occurrenceCount_. The _occurrenceMinDinstance_ defines the minimal distance between them. The _burstLength_ defines the maximum time the burst pattern can last. If the number of occurrences multiplied with the minimum distance between activations is bigger than the _burstLength_ only the number of activations that fit into the _burstLength_ are executed. 
+
+h4. PeriodicSynthetic
+
+_PeriodicSynthetic_ allows to specify a periodic activation of trigger patterns. It is defined by a list of List of _occurrenceTimes_, a period _recurrence_, and an _offset_. Each time value in _occurrenceTimes_ specifies a single activation at a relative point in time. The moment in time these time values are relative and is defined the following way: an activation of instance i is triggered at time t = _offset_ + floor(i / m) * _recurrence_ + _occurrenceTimes_[i modulo m].
+
+The following figure shows a _Synthetic_ Stimulus example with two periodic activations after the time units T1 and T2.
 
 !../pictures/model_stimuli_synthetic.png!
 
-h4. Arrival Curves
 
-An arrival curve is described as a list of time-borders in which a specified number of events are expected. The picture below shows an example for this. In the first picture there is a number of events on a timeline.
+h4. VariableRateStimulus
 
-!{width:400px}../pictures/model_stimuli_arrival_curve_1.png!
+With the _VariableRate_ Stimulus the description of task activation based on e.g. the crankshaft rotation speed or other adaptive variable rate activations. The user can set _maxDecrease_ and _maxIncrease_ values to describe the number of additional respectively reduced task activations that can occur within a predefined time _step_. With these values, the maximum acceleration and maximum deceleration of the stimuli can be calculated.
 
-In the picture below every distance between two events is measured. The minimum and the maximum distance is added to the table as time-border for the occurrence of two events. This means that after one event there has to be at least a gap of one time-unit before the next event can occur. It also means that there will be always a second event within eight time units after the event before. Basically this would be enough to describe an Arrival Curve Stimulus. But it is possible to create a more precise stimulus by describing additional time borders for greater number of events. This is shown in the steps below. 
+In the deviation _occurrencesPerStep_ the lower and upper frequency of the variable rate are described. The distribution can be used to describe the standard frequency occurrences. The user can describe that the frequency is distributed e.g. uniformly over the complete frequency band or as another example the occurrences happens mostly at the _Boundaries_ of the frequency band that can be specfied with the _CornerCase_ _samplingType_ in the distribution.
 
-!{width:400px}../pictures/model_stimuli_arrival_curve_2.png!
 
-The same as for two events in the picture above is done here for three events. Like already mentioned above, this is an additional restriction for occurrence of an event. 
+!{width:600}../pictures/model_stimuli_variableRate.png!
 
-!{width:400px}../pictures/model_stimuli_arrival_curve_3.png!
+h5. Clocks
 
-And for four events:
 
-!{width:400px}../pictures/model_stimuli_arrival_curve_4.png!
-
-The picture below shows the table as arrival curve graph. The red line is the upper-time-border that shows the latest time where the event will occur. The green line shows the earliest possible time where the event can occur. 
-
-!{width:600px}../pictures/model_stimuli_arrival_curve_5.png!
-
-h3. Clocks
-
-A clock is a time base which describes the progress of time for one or more periodic stimuli in relation to global time. If two equal stimuli have a different time base, the time of task activation can be different. There are different kind of clock functions, the clock sinus function, the clock triangle function and the clock multiplier list. The clock multiplier list is a list of timestamp-multiplier value pairs. Is a specified timestamp arrived, the clock changes to the corresponding multiplier value.
+An additional feature for the _variableRate_ Stimulus is the description of _simulationScenario_ that specify the progression of the _variableRate_ over time. The _clock_ is a time base which describes the progress of time for one or more periodic stimuli in relation to global time. The periodic  stimuli is described via the _recurrence_ property. If two equal stimuli have a different time base, the time of task activation can be different. There are different kind of clock functions, the clock sinus function, the clock triangle function and the clock multiplier list. The clock multiplier list is a list of timestamp-multiplier value pairs. Is a specified timestamp arrived, the clock changes to the corresponding multiplier value.
 
 !(scale)../pictures/model_stimuli_clocks.png!
 
 *(validation-rule) _ClockTriangleFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
 *(validation-rule) _ClockSinusFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
 *(validation-rule) _ClockMultiplierListEntry_: The _Time_ object in the role of _time_ must not contain a negative value!
+
+h4. Arrival Curves
+
+An arrival curve is described as a list of time-borders in which a specified number of activations are expected. The picture below shows an example for this. In the first picture there is a number of occurrences on a timeline.
+
+!{width:500px}../pictures/model_stimuli_arrival_curve_1.png!
+
+In the picture below every distance between two activations is measured. The minimum and the maximum distance is added to the table as time-border for the occurrence of two activations. This means that after one activations there has to be at least a gap of one time-unit before the next activations can occur. It also means that there will be always a second activations within eight time units after the last activations. Basically this would be enough to describe an Arrival Curve Stimulus. But it is possible to create a more precise stimulus by describing additional time borders for greater number of occurrences. This is shown in the steps below. 
+
+!{width:400px}../pictures/model_stimuli_arrival_curve_2.png!
+
+The same as for two activations in the picture above is done here for three activations. Like already mentioned above, this is an additional restriction for occurrence of an activations. 
+
+!{width:400px}../pictures/model_stimuli_arrival_curve_3.png!
+
+And for four activations:
+
+!{width:400px}../pictures/model_stimuli_arrival_curve_4.png!
+
+The picture below shows the table as arrival curve graph. The red line is the upper-time-border that shows the latest time where the activations will occur. The green line shows the earliest possible time where the activations can occur. 
+
+!{width:600px}../pictures/model_stimuli_arrival_curve_5.png!
