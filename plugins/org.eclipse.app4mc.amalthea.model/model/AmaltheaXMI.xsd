@@ -8,11 +8,11 @@
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="ps"/>
-      <xsd:enumeration value="ns"/>
-      <xsd:enumeration value="us"/>
-      <xsd:enumeration value="ms"/>
       <xsd:enumeration value="s"/>
+      <xsd:enumeration value="ms"/>
+      <xsd:enumeration value="us"/>
+      <xsd:enumeration value="ns"/>
+      <xsd:enumeration value="ps"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="FrequencyUnit">

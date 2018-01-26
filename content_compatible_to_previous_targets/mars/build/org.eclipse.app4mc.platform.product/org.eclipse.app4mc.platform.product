@@ -35,6 +35,7 @@ Version 0.8.0
       startupMessageRect="7,252,445,20"
       startupForegroundColor="003813" />
    <launcher name="app4mc">
+      <solaris/>
       <win useIco="true">
          <ico path="icons/app4mc-logo.ico"/>
          <bmp/>
@@ -141,11 +142,21 @@ This Agreement is governed by the laws of the State of New York and the intellec
    </plugins>
 
    <features>
+      <feature id="org.eclipse.app4mc.platform.3rdparty"/>
       <feature id="org.eclipse.app4mc.platform.sdk"/>
       <feature id="org.eclipse.platform"/>
+      <feature id="org.eclipse.cdt"/>
+      <feature id="org.eclipse.cdt.autotools"/>
+      <feature id="org.eclipse.cdt.gdb"/>
+      <feature id="org.eclipse.cdt.gnu.build"/>
+      <feature id="org.eclipse.cdt.gnu.debug"/>
+      <feature id="org.eclipse.cdt.gnu.dsf"/>
+      <feature id="org.eclipse.cdt.platform"/>
+      <feature id="org.eclipse.cdt.remote"/>
       <feature id="org.eclipse.draw2d"/>
       <feature id="org.eclipse.e4.rcp"/>
       <feature id="org.eclipse.ease.feature"/>
+      <feature id="org.eclipse.ease.javascript.feature"/>
       <feature id="org.eclipse.ease.lang.jvm.feature"/>
       <feature id="org.eclipse.ease.modules.feature"/>
       <feature id="org.eclipse.ease.ui.feature"/>
@@ -159,6 +170,9 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <feature id="org.eclipse.emf.common"/>
       <feature id="org.eclipse.emf.common.ui"/>
       <feature id="org.eclipse.emf.compare"/>
+      <feature id="org.eclipse.emf.compare.diagram.gmf"/>
+      <feature id="org.eclipse.emf.compare.ide.ui"/>
+      <feature id="org.eclipse.emf.compare.rcp.ui"/>
       <feature id="org.eclipse.emf.converter"/>
       <feature id="org.eclipse.emf.databinding"/>
       <feature id="org.eclipse.emf.databinding.edit"/>
@@ -174,6 +188,8 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <feature id="org.eclipse.emf.mapping.ecore"/>
       <feature id="org.eclipse.emf.mapping.ecore.editor"/>
       <feature id="org.eclipse.emf.mapping.ui"/>
+      <feature id="org.eclipse.emf.mwe.core"/>
+      <feature id="org.eclipse.emf.mwe.ui"/>
       <feature id="org.eclipse.emf.mwe2.runtime.sdk"/>
       <feature id="org.eclipse.emf.transaction"/>
       <feature id="org.eclipse.emf.validation"/>
@@ -195,6 +211,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <feature id="org.eclipse.jdt"/>
       <feature id="org.eclipse.ocl"/>
       <feature id="org.eclipse.pde"/>
+      <feature id="org.eclipse.remote"/>
       <feature id="org.eclipse.rcp"/>
       <feature id="org.eclipse.sphinx"/>
       <feature id="org.eclipse.uml2"/>
@@ -203,12 +220,18 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <feature id="org.eclipse.wst.xml_core.feature"/>
       <feature id="org.eclipse.wst.xml_ui.feature"/>
       <feature id="org.eclipse.wst.xml_userdoc.feature"/>
+      <feature id="org.eclipse.xpand"/>
+      <feature id="org.eclipse.xpand.ui"/>
       <feature id="org.eclipse.xsd"/>
       <feature id="org.eclipse.xsd.edit"/>
       <feature id="org.eclipse.xsd.editor"/>
       <feature id="org.eclipse.xsd.ecore.converter"/>
       <feature id="org.eclipse.xsd.mapping"/>
+      <feature id="org.eclipse.xtend"/>
+      <feature id="org.eclipse.xtend.dependencies"/>
       <feature id="org.eclipse.xtend.sdk"/>
+      <feature id="org.eclipse.xtend.typesystem.emf"/>
+      <feature id="org.eclipse.xtend.ui"/>
       <feature id="org.eclipse.xtext.docs"/>
       <feature id="org.eclipse.xtext.examples"/>
       <feature id="org.eclipse.xtext.runtime"/>
@@ -230,89 +253,9 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <feature id="org.eclipse.fx.ide.pde.feature"/>
       <feature id="org.eclipse.fx.ide.rrobot.feature"/>
       <feature id="org.eclipse.fx.runtime.min.feature"/>
-      <feature id="org.eclipse.sirius.runtime"/>
-      <feature id="org.eclipse.sirius.runtime.ide.ui"/>
-      <feature id="org.eclipse.sirius.runtime.aql"/>
-      <feature id="org.eclipse.acceleo"/>
-      <feature id="org.eclipse.sirius.runtime.acceleo"/>
-      <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo"/>
-      <feature id="org.eclipse.emf.mwe.core.feature"/>
-      <feature id="org.eclipse.acceleo.query"/>
-      <feature id="org.eclipse.sphinx.emf.compare"/>
-      <feature id="org.eclipse.emf.compare.ide.ui"/>
-      <feature id="org.eclipse.xtend"/>
-      <feature id="org.eclipse.sphinx.xtendxpand"/>
-      <feature id="org.eclipse.ecf.filetransfer.httpclient4.feature"/>
-      <feature id="org.eclipse.uml2.codegen.ecore.ui"/>
-      <feature id="org.eclipse.ecf.core.ssl.feature"/>
-      <feature id="org.eclipse.app4mc.validation"/>
-      <feature id="org.eclipse.uml2.uml.edit"/>
-      <feature id="org.eclipse.app4mc.examples.sdk"/>
-      <feature id="org.eclipse.xtext.xtext.ui.source"/>
-      <feature id="org.eclipse.xtext.ui.source"/>
-      <feature id="org.eclipse.xtext.runtime.source"/>
-      <feature id="org.eclipse.sphinx.emf.validation"/>
-      <feature id="org.eclipse.app4mc.tracing"/>
-      <feature id="org.eclipse.sphinx.emf.metamodelgen"/>
-      <feature id="org.eclipse.app4mc.amalthea.models"/>
-      <feature id="org.eclipse.app4mc.amalthea.multicore"/>
-      <feature id="org.eclipse.app4mc.amalthea.workflow.sdk"/>
-      <feature id="org.eclipse.sphinx.core"/>
-      <feature id="org.eclipse.app4mc.amalthea.models.sdk"/>
-      <feature id="org.eclipse.app4mc.amalthea.editors.sdk"/>
-      <feature id="org.eclipse.sphinx.emf.search"/>
-      <feature id="org.eclipse.uml2.common.edit"/>
-      <feature id="org.eclipse.app4mc.amalthea.export.sdk"/>
-      <feature id="org.eclipse.sphinx.emf.check"/>
-      <feature id="org.eclipse.xtext.xbase.source"/>
-      <feature id="org.eclipse.app4mc.amalthea.multicore.sdk"/>
-      <feature id="org.eclipse.app4mc.platform"/>
-      <feature id="org.eclipse.app4mc.amalthea.workflow.common"/>
-      <feature id="org.eclipse.uml2.common"/>
-      <feature id="org.eclipse.sphinx.emf.editors.forms"/>
-      <feature id="org.eclipse.app4mc.tracing.sdk"/>
-      <feature id="org.eclipse.uml2.uml"/>
-      <feature id="org.eclipse.app4mc.docu.sdk"/>
-      <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
-      <feature id="org.eclipse.app4mc.examples"/>
-      <feature id="org.eclipse.sphinx.jdtpde"/>
-      <feature id="org.eclipse.app4mc.amalthea.workflow.scripting.sdk"/>
-      <feature id="org.eclipse.app4mc.amalthea.edit.sdk"/>
-      <feature id="org.eclipse.sphinx.emf.serialization"/>
-      <feature id="org.eclipse.app4mc.amalthea.import.sdk"/>
-      <feature id="org.eclipse.xtext.xbase.lib.source"/>
-      <feature id="org.eclipse.app4mc.amalthea.workflow"/>
-      <feature id="org.eclipse.app4mc.amalthea.converters"/>
-      <feature id="org.eclipse.xtext.examples.source"/>
-      <feature id="org.eclipse.sphinx.gmf.editors"/>
-      <feature id="org.eclipse.app4mc.amalthea.workflow.common.sdk"/>
-      <feature id="org.eclipse.sphinx.emf.serialization.generators"/>
-      <feature id="org.eclipse.app4mc.amalthea.converters.sdk"/>
-      <feature id="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature"/>
-      <feature id="org.eclipse.app4mc.amalthea.export"/>
-      <feature id="org.eclipse.app4mc.amalthea.editors"/>
-      <feature id="org.eclipse.sphinx.emf.mwe.dynamic"/>
-      <feature id="org.eclipse.app4mc.docu"/>
-      <feature id="org.eclipse.sphinx.emf.navigators"/>
-      <feature id="org.eclipse.sphinx.emf.editors"/>
-      <feature id="org.eclipse.app4mc.validation.sdk"/>
-      <feature id="org.eclipse.app4mc.amalthea.workflow.scripting"/>
-      <feature id="org.eclipse.app4mc.amalthea.import"/>
-      <feature id="org.eclipse.app4mc.amalthea.edit"/>
-      <feature id="org.eclipse.xpand" version="2.2.0.v201605260315"/>
-      <feature id="org.eclipse.xpand.ui" version="2.2.0.v201605260315"/>
-      <feature id="org.eclipse.xtend.ui" version="2.2.0.v201605260315"/>
-      <feature id="org.eclipse.emf.mwe.ui.feature" version="1.3.20.v201605261103"/>
-      <feature id="org.eclipse.emf.compare.rcp.ui" version="3.2.1.201608311750"/>
-      <feature id="org.eclipse.xtend.typesystem.emf"/>
-      <feature id="org.eclipse.xtend.dependencies"/>
-      <feature id="org.eclipse.ease.lang.javascript.feature" version="0.4.0.I201611211504"/>
-      <feature id="org.eclipse.wst.jsdt.feature" version="2.0.0.v201608301904"/>
-      <feature id="org.eclipse.wst.jsdt.nodejs.feature"/>
-      <feature id="org.eclipse.wst.jsdt.chromium.debug.feature" version="0.4.0.v201609071943"/>
-      <feature id="org.eclipse.app4mc.platform.3rdparty"/>
-      <feature id="org.eclipse.egit"/>
-      <feature id="org.eclipse.jgit" version="4.9.1.201712030800-r"/>
+	  
+	  <feature id="org.eclipse.egit"/>
+      <feature id="org.eclipse.jgit" />
    </features>
 
    <configurations>
@@ -324,13 +267,11 @@ This Agreement is governed by the laws of the State of New York and the intellec
    </configurations>
 
    <repositories>
-      <repository location="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository" enabled="true" name= "Orbit Neon.3"  />
-      <repository location="http://download.eclipse.org/eclipse/updates/4.6" enabled="true" name="Eclipse 4.6"/>
-      <repository location="http://download.eclipse.org/releases/neon" enabled="true" name="NEON"/>
-	  <repository location="http://updates.yakindu.org/neon/releases" enabled="false" name="Yakindu"/>
-      <repository location="http://updates.yakindu.org/sct/neon/releases/" enabled="false" name="Yakindu SCT"/>
-      
-  
+      <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/" enabled="true" name="Orbit Mars.2"/>
+      <repository location="http://download.eclipse.org/eclipse/updates/4.5" enabled="true" name="Eclipse 4.5"/>
+      <repository location="http://download.eclipse.org/releases/mars" enabled="true" name="MARS"/>
+      <repository location="http://updates.yakindu.org/mars/releases" enabled="false" name="Yakindu"/>
+      <repository location="http://updates.yakindu.org/sct/mars/releases/" enabled="false" name="Yakindu SCT"/>
    </repositories>
 
    <preferencesInfo>

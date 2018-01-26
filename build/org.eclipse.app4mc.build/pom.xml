@@ -22,6 +22,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
 	</properties>
+	
+	  
 
 	<!-- Common plugins and features contained in the open source distribution -->
 	<modules>
@@ -78,6 +80,8 @@
 		<module>../../plugins/org.ojalgo</module>
 		<module>../../plugins/com.mxgraph</module>
 		<module>../../plugins/org.sqlite.jdbc</module>
+		<!--  <module>../../plugins/org.slf4j.impl.custom</module>-->
+		
 
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.083</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.082</module>
@@ -166,6 +170,28 @@
 		<module>../../tests/org.eclipse.app4mc.amalthea.model.test</module>
 	</modules>
 
+	
+	 <profiles>
+   <profile>
+     <id>neon</id>
+     
+     <!-- <activation>
+      <property>
+        <name>target</name>
+        <value>neon</value>
+      </property>
+    </activation>-->
+	
+	 <activation>
+        <activeByDefault>true</activeByDefault>
+    </activation>
+    
+	
+	<modules>
+	<!--<module></module>--> 
+	</modules>
+	
+	
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -258,7 +284,7 @@
 							<groupId>org.eclipse.app4mc.build</groupId>
 							<artifactId>org.eclipse.app4mc.target</artifactId>
 							<version>0.8.3-SNAPSHOT</version>
-							<classifier>Mars-4.5.2</classifier>
+							<classifier>dev</classifier>
 						</artifact>
 					</target>
 				</configuration>
@@ -340,4 +366,269 @@
 		</plugins>
 	</build>
 
+	</profile>
+	
+	  <profile>
+     <id>mars</id>
+     
+     <!-- <activation>
+      <property>
+        <name>target</name>
+        <value>mars</value>
+      </property>
+    </activation>-->
+    
+	
+	<modules>
+	<!--<module></module>--> 
+	</modules>
+	
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+
+				<executions>
+					<execution>
+						<id>replace-build-token</id>
+						<phase>pre-clean</phase>
+
+						<configuration>
+							<target>
+							<!--<echo>==================Modifying the directory contents======================</echo>
+							
+							 <delete dir="../org.eclipse.app4mc.platform.product"/>
+    								   <copy todir="../org.eclipse.app4mc.platform.product">
+    										<fileset dir="../../content_compatible_to_previous_targets/mars/build/org.eclipse.app4mc.platform.product/">
+    										 
+    										</fileset>
+    									 </copy> 
+    									 
+    									  <delete dir="../org.eclipse.app4mc.target"/>
+    								   <copy todir="../org.eclipse.app4mc.target">
+    										<fileset dir="../../content_compatible_to_previous_targets/mars/build/org.eclipse.app4mc.target/">
+    										 
+    										</fileset>
+    									 </copy> 
+    									 
+    									 
+    									
+    										  <delete dir="../../features/org.eclipse.app4mc.multicore"/>
+    								   <copy todir="../../features/org.eclipse.app4mc.multicore">
+    										<fileset dir="../../content_compatible_to_previous_targets/mars/features/org.eclipse.app4mc.multicore/">
+    										 
+    										</fileset>
+    									 </copy> 
+    									 
+    									 
+    										  <delete dir="../../features/org.eclipse.app4mc.platform.3rdparty"/>
+    								   <copy todir="../../features/org.eclipse.app4mc.platform.3rdparty">
+    										<fileset dir="../../content_compatible_to_previous_targets/mars/features/org.eclipse.app4mc.platform.3rdparty/">
+    										 
+    										</fileset>
+    									 </copy> 
+    									 
+    									   <delete dir="../../features/org.eclipse.app4mc.validation.sdk"/>
+    								   <copy todir="../../features/org.eclipse.app4mc.validation.sdk">
+    										<fileset dir="../../content_compatible_to_previous_targets/mars/features/org.eclipse.app4mc.validation.sdk/">
+    										 
+    										</fileset>
+    									 </copy> 
+    									 -->
+								  
+							</target>
+						</configuration>
+
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					
+						
+					
+				</executions>
+
+			</plugin>
+			
+				<plugin>
+				
+				
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho.version}</version>
+
+					<dependencies>
+						<dependency>
+							<groupId>org.eclipse.tycho.extras</groupId>
+							<artifactId>tycho-buildtimestamp-jgit</artifactId>
+							<version>${tycho.version}</version>
+						</dependency>
+					</dependencies>
+
+					<configuration>
+						<timestampProvider>jgit</timestampProvider>
+						<jgit.ignore>pom.xml</jgit.ignore>
+						<jgit.dirtyWorkingTree>ignore</jgit.dirtyWorkingTree>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-p2-plugin</artifactId>
+					<version>${tycho.version}</version>
+
+					<configuration>
+						<baselineRepositories>
+							<repository>
+								<url>https://git.eclipse.org/r/app4mc/org.eclipse.app4mc</url>
+							</repository>
+						</baselineRepositories>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho.version}</version>
+					
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<extraClasspathElements>
+							<extraClasspathElement>
+								<groupId>com.oracle</groupId>
+								<artifactId>javafx</artifactId>
+								<version>8.0.0-SNAPSHOT</version>
+								<systemPath>${java.home}/lib/jfxswt.jar</systemPath>
+								<scope>system</scope>
+							</extraClasspathElement>
+						</extraClasspathElements>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+
+				<configuration>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+
+					<target>
+						<artifact>
+							<groupId>org.eclipse.app4mc.build</groupId>
+							<artifactId>org.eclipse.app4mc.target</artifactId>
+							<version>0.8.3-SNAPSHOT</version>
+							<classifier>dev</classifier>
+						</artifact>
+					</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+
+				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho.version}</version>
+
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho.version}</version>
+
+				<configuration>
+					<includes>
+						<forkMode>never</forkMode>
+						<include>**/*Test.java</include>
+						<include>**/*Tests.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.4.201502262128</version>
+
+				<executions>
+					<!-- Prepares the property pointing to the JaCoCo runtime agent which
+						is passed as VM argument when Maven the Surefire plugin is executed. -->
+					<execution>
+						<id>pre-unit-test</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<!-- Sets the path to the file which contains the execution data. -->
+							<destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
+						</configuration>
+					</execution>
+
+					<!-- Ensures that the code coverage report for unit tests is created
+						after unit tests have been run. -->
+					<execution>
+						<id>post-unit-test</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<!-- Sets the path to the file which contains the execution data. -->
+							<dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
+							<!-- Sets the output directory for the code coverage report. -->
+							<outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	</profile>
+	
+	</profiles>
 </project>
