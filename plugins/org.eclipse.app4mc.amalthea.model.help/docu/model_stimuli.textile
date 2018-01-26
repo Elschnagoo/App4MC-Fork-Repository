@@ -11,22 +11,22 @@ h3. Stimuli
 !(scale)../pictures/model_stimuli_stimuli.png!
 
 A stimulus is responsible to activate processes. The following different types are available:
-* *ArrivalCurveStimulus*: A list of time-borders in which a specified number of events are expected
-* *CustomStimulus*: To describe own custom types of activations, including properties
-* *EventStimulus*: Activation triggered by an event, defined in the event model.<br/>Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
-* *InterProcessStimulus*: Activations based on an explicit inter-process activation.<br/>Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
-* *VariableRateStimulus*: Periodic activations based on other events, like rotation speed
-* *SingleStimulus*: Activates the process only once
-* *PeriodicStimulus*: Periodic activations based on an offset and a recurrence.
+* *SingleStimulus*: Activates the process only once.
+* *ArrivalCurveStimulus*: A list of time-borders in which a specified number of occurrences are expected.
+* *PeriodicStimulus*: Periodic activations based on an offset, a recurrence and (optionally) a jitter.
+* *PeriodicSyntheticStimulus*: Defines a periodically triggered stimuli depending on a defined list of occurrence times.
 * *PeriodicBurstStimulus*: Defines a periodic burst pattern of the process.
-* *RelativePeriodicStimulus*: Periodic activation based on offset and a recurrence. In contrast to *PeriodicStimulus* the recurrence is relative to the last occurrence and a deviation is mandatory. 
-* *PeriodicSyntheticStimulus*: Defines a periodically triggered stimuli depending on a defined list of trigger times.
+* *RelativePeriodicStimulus*: Periodic activation based on offset and a recurrence.<br>In contrast to PeriodicStimulus the recurrence is relative to the last occurrence and a deviation is mandatory. 
+* *VariableRateStimulus*: Periodic activations based on other events, like rotation speed.
+* *InterProcessStimulus*: Activations based on an explicit inter-process activation.<br>Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
+* *EventStimulus*: Activation triggered by an event, defined in the event model.<br>Contains a Counter element if activation is either shifted and / or happening every n<sup>th</sup> time.
+* *CustomStimulus*: To describe own custom types of activations, including properties.
+
 
 *(validation-rule) _PeriodicStimulus_: The _Time_ object in the role of _offset_ must not contain a negative value!
 *(validation-rule) _PeriodicStimulus_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
 *(validation-rule) _PeriodicBurstStimulus_: The _Time_ object in the role of _offset_ must not contain a negative value!
 *(validation-rule) _PeriodicBurstStimulus_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
-*(validation-rule) _PeriodicBurstStimulus_:  if _occurrenceCount_ * _occurrenceMinDinstance_ > _burstLength_ only the number of activation that fit into the burstLength are executed!
 *(validation-rule) _PeriodicSyntheticStimulus_: The _Time_ object in the role of _offset_ must not contain a negative value!
 *(validation-rule) _PeriodicSyntheticStimulus_: The _Time_ object in the role of _recurrence_ must not contain a negative value!
 *(validation-rule) _TimestampList_: The _Time_ objects in the role of _timestamps_ must not contain a negative value!
@@ -71,65 +71,6 @@ _Single_ allows to specify an activation at a single relative point in time. The
 !{width:650}../pictures/model_stimuli_single.png!
 
 
-h4. _FixedPeriodic_
-
-In general all period based Stimuli specify periodic activations based on an offset and a recurrence. The first activation occurs after the time units specified by _offset_, and then every following activation occurs after the time units specified by _recurrence_. This means, in general, an activation of instance i is triggered at time t = _offset_ + i * _recurrence_.
-
-The following figure shows a _Periodic_ Stimulus example with only a fix offset and recurrence time. 
-
-!{width:650px}../pictures/model_stimuli_periodic.png!
-
-h4. Periodic 
-
-In addition to the standard periodic behavior the _Periodic_ Stimulus can be extended by a _Jitter_ e.g. an Gaussian deviation. The activation time of each occurrence jitters according to the values of the distribution as depicted in the following figure. Depending on the _Jitter_ distribution the upper bound of the current and the lower bound of the next activation can be close to each other or even overlap. The _minDistance_ value allows the user to define the minimum distance between the current and the next activation.
-
-!{width:650px}../pictures/model_stimuli_periodic_jitter.png!
-
-The recurrence of a _Periodic_ Stimulus is absolute. This means that a recurrence of 10ms points exactly to the next activation every 10ms. The _Jitter_ describes the deviation of the occurrence around this absolute value.     
-
-h4. RelativePeriodic 
-
-In contrast to the _Periodic_ Stimulus the _RelativePeriodic_ Stimulus allows to specify relative recurrences. The next activation depends on the current activation time and the added deviation for the next step. The _lower_ and _upperBound_ are specified in the _nextOccurrence_ deviation similar to the _Jitter_ specification in the _Periodic_ Stimulus.       
- 
-!{width:650px}../pictures/model_stimuli_periodic_relative.png!
-
-h4. PeriodicBurst
-
-The _PeriodicBurst_ Stimulus specifies a set of burst activations that are periodically repeated. This means that multiple activations occur very close to each other and this recurs in a periodic matter. The burst pattern has a fixed recurrence period and every burst results in multiple activations. 
-
-!{width:600px}../pictures/model_stimuli_periodic_burst.png!
-
-The number of occurrences per burst are specified via _occurrenceCount_. The _occurrenceMinDinstance_ defines the minimal distance between them. The _burstLength_ defines the maximum time the burst pattern can last. If the number of occurrences multiplied with the minimum distance between activations is bigger than the _burstLength_ only the number of activations that fit into the _burstLength_ are executed. 
-
-h4. PeriodicSynthetic
-
-_PeriodicSynthetic_ allows to specify a periodic activation of trigger patterns. It is defined by a list of List of _occurrenceTimes_, a period _recurrence_, and an _offset_. Each time value in _occurrenceTimes_ specifies a single activation at a relative point in time. The moment in time these time values are relative and is defined the following way: an activation of instance i is triggered at time t = _offset_ + floor(i / m) * _recurrence_ + _occurrenceTimes_[i modulo m].
-
-The following figure shows a _Synthetic_ Stimulus example with two periodic activations after the time units T1 and T2.
-
-!../pictures/model_stimuli_synthetic.png!
-
-
-h4. VariableRateStimulus
-
-With the _VariableRate_ Stimulus the description of task activation based on e.g. the crankshaft rotation speed or other adaptive variable rate activations. The user can set _maxDecrease_ and _maxIncrease_ values to describe the number of additional respectively reduced task activations that can occur within a predefined time _step_. With these values, the maximum acceleration and maximum deceleration of the stimuli can be calculated.
-
-In the deviation _occurrencesPerStep_ the lower and upper frequency of the variable rate are described. The distribution can be used to describe the standard frequency occurrences. The user can describe that the frequency is distributed e.g. uniformly over the complete frequency band or as another example the occurrences happens mostly at the _Boundaries_ of the frequency band that can be specfied with the _CornerCase_ _samplingType_ in the distribution.
-
-
-!{width:600}../pictures/model_stimuli_variableRate.png!
-
-h5. Clocks
-
-
-An additional feature for the _variableRate_ Stimulus is the description of _simulationScenario_ that specify the progression of the _variableRate_ over time. The _clock_ is a time base which describes the progress of time for one or more periodic stimuli in relation to global time. The periodic  stimuli is described via the _recurrence_ property. If two equal stimuli have a different time base, the time of task activation can be different. There are different kind of clock functions, the clock sinus function, the clock triangle function and the clock multiplier list. The clock multiplier list is a list of timestamp-multiplier value pairs. Is a specified timestamp arrived, the clock changes to the corresponding multiplier value.
-
-!(scale)../pictures/model_stimuli_clocks.png!
-
-*(validation-rule) _ClockTriangleFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
-*(validation-rule) _ClockSinusFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
-*(validation-rule) _ClockMultiplierListEntry_: The _Time_ object in the role of _time_ must not contain a negative value!
-
 h4. Arrival Curves
 
 An arrival curve is described as a list of time-borders in which a specified number of activations are expected. The picture below shows an example for this. In the first picture there is a number of occurrences on a timeline.
@@ -151,3 +92,73 @@ And for four activations:
 The picture below shows the table as arrival curve graph. The red line is the upper-time-border that shows the latest time where the activations will occur. The green line shows the earliest possible time where the activations can occur. 
 
 !{width:600px}../pictures/model_stimuli_arrival_curve_5.png!
+
+
+h4. _FixedPeriodic_
+
+In general all period based Stimuli specify periodic activations based on an offset and a recurrence. The first activation occurs after the time units specified by _offset_, and then every following activation occurs after the time units specified by _recurrence_. This means, in general, an activation of instance i is triggered at time t = _offset_ + i * _recurrence_.
+
+The following figure shows a _Periodic_ Stimulus example with only a fix offset and recurrence time. 
+
+!{width:650px}../pictures/model_stimuli_periodic.png!
+
+
+h4. Periodic 
+
+In addition to the standard periodic behavior the _Periodic_ Stimulus can be extended by a _Jitter_ e.g. an Gaussian deviation. The activation time of each occurrence jitters according to the values of the distribution as depicted in the following figure. Depending on the _Jitter_ distribution the upper bound of the current and the lower bound of the next activation can be close to each other or even overlap. The _minDistance_ value allows the user to define the minimum distance between the current and the next activation.
+
+!{width:650px}../pictures/model_stimuli_periodic_jitter.png!
+
+The recurrence of a _Periodic_ Stimulus is absolute. This means that a recurrence of 10ms points exactly to the next activation every 10ms. The _Jitter_ describes the deviation of the occurrence around this absolute value.     
+
+
+h4. PeriodicSynthetic
+
+_PeriodicSynthetic_ allows to specify a periodic activation of trigger patterns. It is defined by a list of List of _occurrenceTimes_, a period _recurrence_, and an _offset_. Each time value in _occurrenceTimes_ specifies a single activation at a relative point in time. The moment in time these time values are relative and is defined the following way: an activation of instance i is triggered at time t = _offset_ + floor(i / m) * _recurrence_ + _occurrenceTimes_[i modulo m].
+
+The following figure shows a _Synthetic_ Stimulus example with two periodic activations after the time units T1 and T2.
+
+!../pictures/model_stimuli_synthetic.png!
+
+
+h4. PeriodicBurst
+
+The _PeriodicBurst_ Stimulus specifies a set of burst activations that are periodically repeated. This means that multiple activations occur very close to each other and this recurs in a periodic matter. The burst pattern has a fixed recurrence period and every burst results in multiple activations. 
+
+!{width:700px}../pictures/model_stimuli_periodic_burst.png!
+
+The number of occurrences per burst are specified via _occurrenceCount_. The _occurrenceMinDinstance_ defines the minimal distance between them. The _burstLength_ defines the maximum time the burst pattern can last. If the number of occurrences multiplied with the minimum distance between activations is bigger than the _burstLength_ only the number of activations that fit into the _burstLength_ are executed. 
+
+
+h4. RelativePeriodic 
+
+In contrast to the _Periodic_ Stimulus the _RelativePeriodic_ Stimulus allows to specify relative recurrences. The next activation depends on the current activation time and the added deviation for the next step. The _lower_ and _upperBound_ are specified in the _nextOccurrence_ deviation similar to the _Jitter_ specification in the _Periodic_ Stimulus.       
+ 
+!{width:700px}../pictures/model_stimuli_periodic_relative.png!
+
+
+h4. VariableRateStimulus
+
+With the _VariableRate_ Stimulus the description of task activation based on e.g. the crankshaft rotation speed or other adaptive variable rate activations.
+
+The _step_ has to be defined as a base value for the following specifications.<br>
+In the deviation _occurrencesPerStep_ the lower and upper frequency of the variable rate are described. The distribution can be used to describe the standard frequency occurrences. The user can describe that the frequency is distributed e.g. uniformly over the complete frequency band or as another example the occurrences happens mostly at the _Boundaries_ of the frequency band that can be specfied with the _CornerCase_ _samplingType_ in the distribution.<br>
+The user can set _maxDecrease_ and _maxIncrease_ values to describe the number of additional respectively reduced task activations that can occur within a predefined time _step_. With these values, the maximum acceleration and maximum deceleration of the stimuli can be calculated.
+
+!{width:700}../pictures/model_stimuli_variableRate.png!
+
+An additional feature for the _variableRate_ Stimulus is the description of _simulationScenario_ that specifies the progression of the _variableRate_ over time.
+In contract to the generic specification via statistical values the scenario defines the computation via the _recurrence_ property that is modified by a factor based on a _clock_.
+
+
+h3. Clocks
+
+The _clock_ is a time base which describes the progress of time for one or more variable rate stimuli in relation to global time.
+If two equal stimuli have a different time base, the time of task activation can be different. There are different kind of clock functions, the clock sinus function, the clock triangle function and the clock multiplier list. The clock multiplier list is a list of timestamp-multiplier value pairs. Is a specified timestamp arrived, the clock changes to the corresponding multiplier value.
+
+!(scale)../pictures/model_stimuli_clocks.png!
+
+
+*(validation-rule) _ClockTriangleFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
+*(validation-rule) _ClockSinusFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
+*(validation-rule) _ClockMultiplierListEntry_: The _Time_ object in the role of _time_ must not contain a negative value!

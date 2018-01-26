@@ -45,7 +45,6 @@
 <unit id="org.apache.xml.resolver" version="1.2.0.v201005080400"/>
 <unit id="org.apache.xml.serializer" version="2.7.1.v201005080400"/>
 <unit id="org.easymock" version="2.4.0.v20090202-0900"/>
-<unit id="org.easymock" version="2.4.0.v20090202-0900"/>
 <unit id="org.swtchart" version="0.10.0.v201605200358"/>
 <repository location="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository"/>
 </location>

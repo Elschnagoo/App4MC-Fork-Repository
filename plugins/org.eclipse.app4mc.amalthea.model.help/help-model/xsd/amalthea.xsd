@@ -8,11 +8,11 @@
     </xsd:annotation>
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="ps"/>
-      <xsd:enumeration value="ns"/>
-      <xsd:enumeration value="us"/>
-      <xsd:enumeration value="ms"/>
       <xsd:enumeration value="s"/>
+      <xsd:enumeration value="ms"/>
+      <xsd:enumeration value="us"/>
+      <xsd:enumeration value="ns"/>
+      <xsd:enumeration value="ps"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="FrequencyUnit">
@@ -4183,13 +4183,12 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
     <xsd:complexContent>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="occurrencesPerStep" type="am:Deviation"/>
           <xsd:element name="step" type="am:Time"/>
+          <xsd:element name="occurrencesPerStep" type="am:Deviation"/>
           <xsd:element name="maxIncreasePerStep" type="am:DoubleObject"/>
           <xsd:element name="maxDecreasePerStep" type="am:DoubleObject"/>
-          <xsd:element name="clock" type="am:Clock"/>
+          <xsd:element name="scenario" type="am:Scenario"/>
         </xsd:choice>
-        <xsd:attribute name="clock" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -4199,6 +4198,18 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
 clock: Time base which defines deviation of time, multiple stimuli can have the same time base</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="Scenario">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="recurrence" type="am:Time"/>
+          <xsd:element name="clock" type="am:Clock"/>
+        </xsd:choice>
+        <xsd:attribute name="clock" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Scenario" type="am:Scenario"/>
   <xsd:complexType name="PeriodicSyntheticStimulus">
     <xsd:annotation>
       <xsd:documentation>Stimulus (repeated periodically) with a defined list of occurrences.

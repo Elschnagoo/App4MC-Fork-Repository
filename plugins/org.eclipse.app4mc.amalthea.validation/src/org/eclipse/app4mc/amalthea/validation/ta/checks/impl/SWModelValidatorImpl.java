@@ -45,7 +45,6 @@ import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.AbstractValidatorImpl;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 
