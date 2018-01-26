@@ -12,7 +12,6 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Scenario extends EObject {
+public interface Scenario extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Recurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

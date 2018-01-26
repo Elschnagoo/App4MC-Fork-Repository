@@ -14676,6 +14676,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		periodicStimulusEClass.getESuperTypes().add(this.getFixedPeriodic());
 		relativePeriodicStimulusEClass.getESuperTypes().add(this.getStimulus());
 		variableRateStimulusEClass.getESuperTypes().add(this.getStimulus());
+		scenarioEClass.getESuperTypes().add(this.getBaseObject());
 		periodicSyntheticStimulusEClass.getESuperTypes().add(this.getStimulus());
 		periodicSyntheticStimulusEClass.getESuperTypes().add(this.getFixedPeriodic());
 		customStimulusEClass.getESuperTypes().add(this.getStimulus());

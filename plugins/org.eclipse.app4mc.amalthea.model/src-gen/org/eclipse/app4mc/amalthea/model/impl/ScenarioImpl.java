@@ -17,8 +17,6 @@ import org.eclipse.app4mc.amalthea.model.Clock;
 import org.eclipse.app4mc.amalthea.model.Scenario;
 import org.eclipse.app4mc.amalthea.model.Time;
 
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -41,7 +39,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ScenarioImpl extends AmaltheaExtendedEObjectImpl implements Scenario {
+public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	/**
 	 * The cached value of the '{@link #getRecurrence() <em>Recurrence</em>}' containment reference.
 	 * <!-- begin-user-doc -->

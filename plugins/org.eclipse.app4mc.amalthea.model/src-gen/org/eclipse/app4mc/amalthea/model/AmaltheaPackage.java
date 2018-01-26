@@ -19356,13 +19356,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SCENARIO = 249;
 
 	/**
+	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
+
+	/**
 	 * The feature id for the '<em><b>Recurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__RECURRENCE = 0;
+	int SCENARIO__RECURRENCE = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Clock</b></em>' reference.
@@ -19371,7 +19380,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__CLOCK = 1;
+	int SCENARIO__CLOCK = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Scenario</em>' class.
@@ -19380,7 +19389,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO_FEATURE_COUNT = 2;
+	int SCENARIO_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Scenario</em>' class.
@@ -19389,7 +19398,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO_OPERATION_COUNT = 0;
+	int SCENARIO_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.PeriodicSyntheticStimulusImpl <em>Periodic Synthetic Stimulus</em>}' class.

@@ -2675,7 +2675,7 @@ class VariableRateStimulus extends Stimulus
 	contains Scenario scenario
 }
 
-class Scenario {
+class Scenario extends BaseObject {
 	contains Time recurrence
 	refers Clock clock
 }

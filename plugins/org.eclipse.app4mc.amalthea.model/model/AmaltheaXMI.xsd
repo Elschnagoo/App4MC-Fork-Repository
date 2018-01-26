@@ -4199,14 +4199,15 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="Scenario">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="recurrence" type="am:Time"/>
-      <xsd:element name="clock" type="am:Clock"/>
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="clock" type="xsd:string"/>
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="recurrence" type="am:Time"/>
+          <xsd:element name="clock" type="am:Clock"/>
+        </xsd:choice>
+        <xsd:attribute name="clock" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Scenario" type="am:Scenario"/>
   <xsd:complexType name="PeriodicSyntheticStimulus">

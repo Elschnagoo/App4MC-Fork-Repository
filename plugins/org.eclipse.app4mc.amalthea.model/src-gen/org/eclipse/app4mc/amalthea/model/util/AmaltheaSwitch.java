@@ -2710,6 +2710,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.SCENARIO: {
 				Scenario scenario = (Scenario)theEObject;
 				T1 result = caseScenario(scenario);
+				if (result == null) result = caseBaseObject(scenario);
+				if (result == null) result = caseIAnnotatable(scenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
