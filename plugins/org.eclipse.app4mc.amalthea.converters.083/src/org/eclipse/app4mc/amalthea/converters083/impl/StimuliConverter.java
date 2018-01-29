@@ -392,7 +392,6 @@ public class StimuliConverter extends AbstractConverter {
 	private void migrateArrivalCurveStimulus(Element rootElement) {
 
 		
-		// Step 1: changing the type from SyntheticStimulus to PeriodicSyntheticStimulus 
 		final StringBuffer xpathBufferForDefinition = new StringBuffer();
 
 		xpathBufferForDefinition.append("./stimuliModel/stimuli[@xsi:type=\"am:ArrivalCurveStimulus\"]");
@@ -433,7 +432,7 @@ public class StimuliConverter extends AbstractConverter {
 	private void migrateSporadicStimulus(Element rootElement) {
 
 		
-		// Step 1: changing the type from SyntheticStimulus to PeriodicSyntheticStimulus 
+		// Step 1: changing the type from SporadicStimulus to RelativePeriodicStimulus 
 		final StringBuffer xpathBufferForDefinition = new StringBuffer();
 
 		xpathBufferForDefinition.append("./stimuliModel/stimuli[@xsi:type=\"am:SporadicStimulus\"]");
@@ -505,7 +504,7 @@ public class StimuliConverter extends AbstractConverter {
 						Element.class, this.helper.getGenericNS("xsi"),this.helper.getNS_083("am") );
 				
 				for (Element timeStampsElement : timeStampsElements) {
-					timeStampsElement.setName("occurenceTimes");
+					timeStampsElement.setName("occurrenceTimes");
 					timeStampsElement.detach();
 					syntheticStimulusElement.addContent(timeStampsElement);
 				}
