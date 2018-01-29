@@ -11,7 +11,7 @@ Follow the below steps to increase the heap memory setting of APP4MC :
  
  !(gray_scale)../pictures/ui/vm_arguments_configuration.png!
  
-h4(#migration-vm-args). Linked files in eclipse project (virtual files)
+h4(#migration-linked-files). Linked files in eclipse project (virtual files)
 
 In case you want to have linked files in eclipse project, during the drag and drop of the files select *"Link to files"* option in _*File Operation*_ dialog and uncheck _*create link locations relative to*_ option
 
