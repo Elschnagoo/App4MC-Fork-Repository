@@ -10,6 +10,13 @@ Follow the below steps to increase the heap memory setting of APP4MC :
 * Open *app4mc.ini* file (_present in the location where APP4MC is installed_) and change the parameter -Xmx from 2g to 4g. (_*Note*: In case if APP4MC plugins are integrated inside custom eclipse application, then corresponding &lt;application_name&gt;.ini file -Xmx parameter should be updated as specified below_)
  
  !(gray_scale)../pictures/ui/vm_arguments_configuration.png!
+ 
+h4(#migration-vm-args). Linked files in eclipse project (virtual files)
+
+In case you want to have linked files in eclipse project, during the drag and drop of the files select *"Link to files"* option in _*File Operation*_ dialog and uncheck _*create link locations relative to*_ option
+
+ 
+ !(gray_scale)../pictures/ui/linked_files_creation.png!
 
 h4(#migration-uuid). Usage of UUID's instead of URI fragments inside AMALTHEA models
 

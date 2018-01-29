@@ -452,3 +452,50 @@ h3. Version APP4MC 0.8.1 to APP4MC 0.8.2
 table(classic){margin-left:40px}. 
 | *_AMALTHEA Namespace (version App4MC 0.8.1)_* | *_AMALTHEA Namespace  (version App4MC 0.8.2)_* |
 |http://app4mc.eclipse.org/amalthea/0.8.1 |http://app4mc.eclipse.org/amalthea/0.8.2 |
+
+h3. Version APP4MC 0.8.2 to APP4MC 0.8.3
+
+*Change in the namespace:* 
+
+table(classic){margin-left:40px}. 
+| *_AMALTHEA Namespace (version App4MC 0.8.2)_* | *_AMALTHEA Namespace  (version App4MC 0.8.3)_* |
+|http://app4mc.eclipse.org/amalthea/0.8.2 |http://app4mc.eclipse.org/amalthea/0.8.3 |
+
+
+
+
+*Below Classes/Interfaces behaviour is changed:*
+
+table(classic){margin-left:40px}. 
+| *_Class Name (version APP4MC 0.8.2)_* | *_AMALTHEA sub model_* | *_Changes in behavior (as per 0.8.3)_* |*_Model Migration behavior_* |
+|ModeSwitch, RunnableModelSwitch|SW Model| valueProvider (_of ModeLabel reference_) is removed and is associated to ModeValue element.  |valueProvider (_of ModeLabel reference_) is removed and is associated to ModeValue element, which is created inside ModeValueDisjunction element contained in ModeSwitch, RunnableModeSwitch|
+|ModeSwitchEntry|SW Model| values (_of type list of ModeLiteral_) is removed and is as ModeValue element inside ModeValueDisjunction class.|values (_of type list of ModeLiteral_) is removed and each element in the list is associated as ModeValue element, which is created inside ModeValueDisjunction element contained in ModeSwitch, RunnableModeSwitch|
+|PeriodicStimulus|Stimuli Model|stimulusDevaiation, offset, clock elements are removed|For migration, below points are to be considered:<ul><li>If *clock value is set* for PeriodicStimuls, then this PeriodicStimulus will be migrated as VariableRateStimulus.	<ul><li>clock, recurrence elements are moved from PeriodicStimulus to Scenario element, contained inside VariableRateStimulus.</li>			<li>offset element vlaue is moved as a customProperty for Scenario element</li>		</ul>	</li><li>If *clock value is not set* for PeriodicStimuls, then type of the element will not be changed.	<ul><li>stimulsDeviation element is renamed as jitter.</li></ul>	</li></ul>|
+
+*Below Classes are removed:*
+
+table(classic){margin-left:40px}. 
+| *_Class Name (version APP4MC 0.8.2)_* | *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|FInterfacePort|Components Model|FinterfacePort is replaced by InterfacePort class. As a part of model migration, in Components model -&gt; type attribute for the definition of FInterfacePort is changed from "am:FInterfacePort" to "am:InterfacePort",  and new type (InterfacePort) is also updated for references of FInterfacePort  |
+|SyntheticStimulus|Stimuli Model|SyntheticStimulus is replaced by PeriodicSyntheticStimulus class. As a part of model migration, in Stimuli model -&gt; type attribute for the definition of FInterfacePort is changed from "am:SyntheticStimulus" to "am:PeriodicSyntheticStimulus",  and new type (PeriodicSyntheticStimulus) is also updated for references of SyntheticStimulus  |
+|SporadicStimulus|Stimuli Model|SporadicStimulus is replaced by RelativePeriodicStimulus class. As a part of model migration, in Stimuli model -&gt; type attribute for the definition of SporadicStimulus is changed from "am:SporadicStimulus" to "am:RelativePeriodicStimulus",  and new type (RelativePeriodicStimulus) is also updated for references of SporadicStimulus  |
+ 
+
+
+*Below references are removed/changed:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|activationDeviation|Deviation|VariableRateActivation|SW Model|activationDeviation element is removed from the VariableRateActivation element |
+|valueProvider|ModeLabel|ModeSwitch, RunnableModeSwitch|SW Model|valueProvider (_ModeLabel reference_) is removed directly from _*ModeSwitch, RunnableModelSwitch*_ elements and associated to each ModeValue element ->&gt; which is created inside condition element (_of type ModeValueDisJunction_) |
+|values|ModeLiteral|ModeSwitch, RunnableModeSwitch|SW Model|values list is removed directly from  _*ModeSwitch, RunnableModelSwitch*_ and associated inside condition element (_of type ModeValueDisJunction_) as different ModeValue elements (_Note: Each element in values List is created a seperate ModeValue element inside condition element_)|
+|period|Time|SyntheticStimulus|Stimuli Model|period element is changed to recurrence|
+|triggerTimes|TimeStampList|SyntheticStimulus|Stimuli Model|triggerTimes element is removed from SyntheticStimulus. Content of TriggerTimes element -&gt; *timeStamps list* is migrated as occurrenceTimes element inside SyntheticStimulus |
+|stimulusDeviation|Deviation|SporadicStimulus|Stimuli Model|stimulusDeviation element is changed as nextOccurrence|
+|numberOfEvents|Integer|ArrivalCurveEntry|Stimuli Model|numberOfEvents element is changed as  numberOfOccurrences|
+|stimulusDeviation|Deviation|ArrivalCurveStimulus, SingleStimulus, CustomStimulus, InterProcessStimulus, EventStimulus, SyntheticStimulus |Stimuli Model|stimulusDeviation element is removed from SingleStimulus|
+|activation|Time|SingleStimulus|Stimuli Model|activation element is changed as occurrence|
+|stimulusDeviation|Deviation|PeriodicStimulus|Stimuli Model|If clock value is *not set* for PeriodicStimulus, in this case stimulusDeviation element is changed as jitter.|
+|recurrence, clock |Time|PeriodicStimulus|Stimuli Model|If clock value is *set* for PeriodicStimulus, in this case both recurrence and clock are removed directly from PeriodicStimulus and their values are added inside Scenario element -&gt; contained inside PeriodicStimulus(_which will be migrated to VariableRateStimulus as a part of migration_)|
+|offset |Time|PeriodicStimulus|Stimuli Model|If clock value is *set* for PeriodicStimulus, in this case offset element is removed directly from PeriodicStimulus and its value is added inside Scenario element -&gt; contained inside PeriodicStimulus(_which will be migrated to VariableRateStimulus as a part of migration_) as a CustomProperty with name "offset"|
+|stimulusDeviation|Deviation|PeriodicStimulus |Stimuli Model|If clock value is *set* then stimulusDeviation element is removed from PeriodicStimulus|
