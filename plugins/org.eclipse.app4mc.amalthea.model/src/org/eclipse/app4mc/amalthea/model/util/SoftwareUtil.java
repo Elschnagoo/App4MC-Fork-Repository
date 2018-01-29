@@ -831,9 +831,17 @@ public class SoftwareUtil {
 		for (RunnableCall rc : runnable.getRunnableCalls()) {
 			Runnable run = ModelUtil.getParentContainer(rc, Runnable.class);
 			if (modes != null && !modes.isEmpty()) {
-// TODO: contains runnable ????
-				if (SoftwareUtil.collectRunnableItems(run, modes).contains(runnable))
-						result.add(run);
+				EList<RunnableItem> runItems = SoftwareUtil.collectRunnableItems(run, modes);
+				if (runItems != null  && runItems.isEmpty() ) {
+					for (RunnableItem runItem : runItems) {
+						if (runItem instanceof RunnableCall) {
+							if (((RunnableCall) runItem).getRunnable().equals(runnable)) {
+								result.add(run);
+							}
+						}
+					}
+					
+				}
 			}
 			else
 				result.add(run);
