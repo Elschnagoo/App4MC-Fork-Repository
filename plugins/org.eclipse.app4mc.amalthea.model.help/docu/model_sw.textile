@@ -376,6 +376,15 @@ The value of the mode label can be changed from its initial value using the set-
 
 Another possibility is a write access within a Runnable via __Mode Label Access__.
 
+h4. Mode Conditions
+
+Mode conditions allow to specify dedicated states of the overall system. 
+Depending on the condition evaluation (via __isSatisfiedBy()__) switches can be executed or stimuli can be influenced.
+The ModeValueMap represents the system state that has to be provided as an external input, e.g. from a simulation or analysis tool.
+
+!(scale)../pictures/model_sw_modecondition.png!
+
+
 
 h3. Process Prototypes
 

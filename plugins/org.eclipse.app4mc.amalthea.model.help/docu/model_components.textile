@@ -52,9 +52,9 @@ h4. QualifiedPort
 A 'qualified' port refers a 'ComponentInstance' and a 'Port'.
 If the 'instance' link is null then the QualifiedPort refers to a port of the enclosing composite. 
 
-h4. FInterfacePort
+h4. InterfacePort
 
-The 'FInterfacePort' class contains the attribute 'kind' to set the port direction ('provides' or 'requires').
+The 'InterfacePort' class contains the attribute 'kind' to set the port direction.
 The attribute 'interface name' can be used to refer to an external definition, e.g. described in detail with the Franca IDL. 
 
 
@@ -75,13 +75,13 @@ The same example is shown in the standard AMALTHEA editor.
 
 h3. Franca IDL
 
-Franca is a common interface definition  language (IDL). The initial version has been developed by the GENIVI consortium as part of the standardization of an In-Vehicle Infotainment (IVI) platform. The first public version of Franca was released in 2012 under the Eclipse Public License. The future development of Franca will take place in an official Eclipse project under the Eclipse Modeling Top-level Project.
+Franca is a common interface definition  language (IDL). The initial version has been developed by the GENIVI consortium as part of the standardization of an In-Vehicle Infotainment (IVI) platform. The first public version of Franca was released in 2012 under the Eclipse Public License. Franca is approved as official Eclipse project.
 
 The Franca IDL files can be edited in a textual editor that is provided by Franca. 
 
 !../pictures/model_franca_editor_screenshot.png!
 
-AMALTHEA ports can specify the 'interface name' to refer to interfaces in Franca.
+AMALTHEA ports can specify the 'interface name' to refer to interfaces.
 
 !../pictures/model_components_Franca_IDL.png!
 
