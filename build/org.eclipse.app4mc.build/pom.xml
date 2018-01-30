@@ -15,6 +15,8 @@
 
 	<properties>
 		<tycho.version>0.25.0</tycho.version>
+		<tycho-extras-version>0.21.0</tycho-extras-version>
+		
 		<build-helper.version>1.9.1</build-helper.version>
 		<org.jboss.tools.tycho-plugins.version>0.23.2</org.jboss.tools.tycho-plugins.version>
 
@@ -196,11 +198,11 @@
 		<pluginManagement>
 			<plugins>
 			
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.eclipse.cbi.maven.plugins</groupId>
 				<artifactId>eclipse-jarsigner-plugin</artifactId>
-				<version>1.1.4</version>
-			</plugin>
+				<version>1.1.3</version>
+			</plugin> -->
 		
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
