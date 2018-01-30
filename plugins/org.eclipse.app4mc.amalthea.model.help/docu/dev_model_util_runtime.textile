@@ -3,4 +3,8 @@ h3. Runtime Utilities
 
 **Classes**
 
-* RuntimeUtil.java
+* "RuntimeUtil":../help-javadoc/RuntimeUtil.html
+
+* "RuntimeUtil.PositionType":../help-javadoc/RuntimeUtil.PositionType.html
+* "RuntimeUtil.TimeType":../help-javadoc/RuntimeUtil.TimeType.html
+

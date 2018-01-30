@@ -3,4 +3,5 @@ h3. Deployment Utilities
 
 **Classes**
 
-* DeploymentUtil.java
+* "DeploymentUtil":../help-javadoc/DeploymentUtil.html
+

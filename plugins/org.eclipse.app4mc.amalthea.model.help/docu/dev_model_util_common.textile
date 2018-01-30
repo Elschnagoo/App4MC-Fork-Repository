@@ -3,7 +3,8 @@ h3. Common Utilities
 
 **Classes**
 
-* ModelUtil.java
-* FactoryUtil.java
+* "ModelUtil":../help-javadoc/ModelUtil.html
+* "FactoryUtil":../help-javadoc/FactoryUtil.html
 
-* CustomPropertyUtil.java
+* "CustomPropertyUtil":../help-javadoc/CustomPropertyUtil.html
+

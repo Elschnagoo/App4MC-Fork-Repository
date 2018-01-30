@@ -3,4 +3,5 @@ h3. Software Utilities
 
 **Classes**
 
-* SoftwareUtil.java
+* "SoftwareUtil":../help-javadoc/SoftwareUtil.html
+
