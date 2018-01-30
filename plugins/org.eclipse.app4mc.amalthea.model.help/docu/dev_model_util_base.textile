@@ -1,17 +1,75 @@
 
-h3. General Helper Functions
+h3. General Helper Classes
 
 **Classes**
 
 * "SearchElementsUtility":../help-javadoc/SearchElementsUtility.html
+** This class contains utility methods which are used to search AMALTHEA model elements based on name (_also regex supported_), type. This utility internally builds a cache model and it is relatively fast for fetching the elements instead iterating through the model elements and finding the required ones.
 * "DeleteElementsUtility":../help-javadoc/DeleteElementsUtility.html
-
+** This class contains utility methods which are used to perform deletion of AMALTHEA model elements. These methods will be performance efficient while deleting huge number of objects
 * "ModelStaticCacheBuilder":../help-javadoc/ModelStaticCacheBuilder.html
+** This class is used to build a *static* cache for the entire AMALTHEA model. This cache can be used to fetch the model elements based on the name. *Note:* As this cache is *static*, if AMALTHEA model is changed, this cache should be deleted and re-created.  
 * "ModelDynamicCacheBuilder":../help-javadoc/ModelDynamicCacheBuilder.html
+** This class is used to build a *dynamic* cache for the entire AMALTHEA model. This cache can be used to fetch the model elements based on the name. *Note:* As this cache is *dynamic* -&gt; it will be implicitly updated if AMALTHEA model is changed. If AMALTHEA model is changing frequently, this cache should not be used - as this can impact performance.
 
+h4. How to use util API of these classes
 
-h4. How to use
+* SearchElementsUtility<blockquote><code>
 
+		Amalthea model=buildAmaltheaModel(<filePath>);
+		
+		SearchElementsUtility searchElementsUtility=new SearchElementsUtility(model);
+		 
+		 List<Label> elementsBasedOnName = searchElementsUtility.getElementsBasedOnName("d0",Label.class);
+		 
+		 List<Label> elementsBasedOnRegex = searchElementsUtility.getElementsBasedOnRegex("d\\d", Label.class);
+		 
+		 List<Label> elementsBasedOnType = searchElementsUtility.getElementsBasedOnType(Label.class);
+		 
+		 /* Supplying AMALTHEA model directly to the API */
+		 
+		 elementsBasedOnName=SearchElementsUtility.getElementsBasedOnName(model, "d0", Label.class);
+		 
+</code></blockquote>
+* DeleteElementsUtility<blockquote><code>
+		Amalthea model=buildAmaltheaModel(<filePath>);
+		
+		/* Deleting multiple model elements from AMALTHEA model */
+		
+		DeleteElementsUtility.deleteAll(model.getSwModel().getLabels(), model);
+		
+		org.eclipse.emf.ecore.resource.Resource resource=...
+		
+		/* Deleting multiple model elements which are belonging to a specific resource */
 
-h4. Example code
-
+		DeleteElementsUtility.deleteAll(model.getSwModel().getLabels(), resource);
+	
+</code></blockquote>
+* ModelStaticCacheBuilder<blockquote><code>
+		 Amalthea model=buildAmaltheaModel(<filePath>);
+		 
+		 ModelStaticCacheBuilder modelStaticCacheBuilder =new ModelStaticCacheBuilder(model);
+		
+		 List<Label>  elementsBasedOnName = modelStaticCacheBuilder.getElementsBasedOnName("d0", Label.class);
+	
+</code></blockquote>
+* ModelDynamicCacheBuilder<blockquote><code>
+		Amalthea model=buildAmaltheaModel(<filePath>);
+		
+		ModelDynamicCacheBuilder modelDynamicCacheBuilder=new ModelDynamicCacheBuilder(model);
+		
+		List<Label>  elementsBasedOnName = modelDynamicCacheBuilder.getElementsBasedOnName("d0", Label.class);
+		
+		/* Deleting multiple model elements from AMALTHEA model */
+		
+		DeleteElementsUtility.deleteAll(model.getSwModel().getLabels(), model);
+		
+ 		// Adding new Label "L1" into AMALTHEA model
+		
+		elementsBasedOnName = modelDynamicCacheBuilder.getElementsBasedOnName("L1", Label.class);
+		
+		//In the above case, cache is automatically updated based on the model change 
+		
+		assertEquals("Cache should be dynamically updated and should contain all the latest model elements ",1, elementsBasedOnName.size());
+ 			
+</code></blockquote>
