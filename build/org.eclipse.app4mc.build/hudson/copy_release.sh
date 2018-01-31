@@ -31,12 +31,12 @@ if [ ${#tag_name} -gt 0 ]; then
   echo 'Creating product folder for tag '$tag_name
   mkdir -p $product_folder/$tag_name
   cp -v $release_build_folder/org.eclipse.app4mc.*.zip "$product_folder/$tag_name"
-  cp -v $p2_build_folder/org.eclipse.app4mc.p2repo-*-SNAPSHOT-*.zip "$product_folder/$tag_name"
+  cp -v $p2_build_folder/org.eclipse.app4mc.p2repo-*-SNAPSHOT*.zip "$product_folder/$tag_name"
   echo 'Removing SNAPSHOT in names...'
   for file in "$product_folder/$tag_name"/*.zip; do
     mv -v "$file" "${file/-SNAPSHOT/}"
   done
   echo 'Creating updatesites folder for tag '$tag_name
   mkdir -p $updatesite_folder/$tag_name
-  unzip $p2_build_folder/org.eclipse.app4mc.p2repo-*-SNAPSHOT-*.zip -d $updatesite_folder/$tag_name
+  unzip $p2_build_folder/org.eclipse.app4mc.p2repo-*-SNAPSHOT*.zip -d $updatesite_folder/$tag_name
 fi
