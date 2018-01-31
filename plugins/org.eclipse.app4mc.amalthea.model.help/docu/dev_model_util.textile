@@ -1,8 +1,19 @@
 
 h3. Overview
 
-Scope
+The model utilities provide implementations for typical usage scenarios:
 
-Categories
 
-...
+- *General Helper Classes* := Support for search, delete and caches
+- *Common Utilities* := Support for creation of elements and handling of custom properties
+- *Software Utilities* := Call graph traversal, accesses, calls
+- *Runtime Utilities* := Runtime, utilization, instructions
+- *Deployment Utilities* := Mapping of tasks to cores and data to memory
+- *Hardware Utilities* := Access pathes and latencies
+
+
+
+**__Scope__**
+
+The model utilities are part of the model plugin.
+
